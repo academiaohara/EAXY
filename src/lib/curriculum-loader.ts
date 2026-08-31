@@ -25,6 +25,33 @@ export function getAllCourseIds(): string[] {
   return loadCurriculum().courses.map((c) => c.id);
 }
 
+export function getAllTopicParams(): Array<{ courseId: string; topicId: string }> {
+  return loadCurriculum().courses.flatMap((course) =>
+    course.topics.map((topic) => ({
+      courseId: course.id,
+      topicId: topic.id,
+    })),
+  );
+}
+
+export function getTopicFromCourse(
+  courseId: string,
+  topicId: string,
+): { course: CourseWithTopics; topic: TopicWithLessons; topicIndex: number } | null {
+  const course = loadCourse(courseId);
+  if (!course) return null;
+
+  const enriched = enrichCourse(course);
+  const topicIndex = enriched.topics.findIndex((t) => t.id === topicId);
+  if (topicIndex === -1) return null;
+
+  return {
+    course: enriched,
+    topic: enriched.topics[topicIndex],
+    topicIndex,
+  };
+}
+
 export function enrichCourse(course: Course): CourseWithTopics {
   const index = loadLessonIndex();
   const lessonMap = new Map(index.lessons.map((l) => [l.slug, l]));

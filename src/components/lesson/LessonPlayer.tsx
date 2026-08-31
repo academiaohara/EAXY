@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Lesson, Step, CheckResult, WidgetAnswer } from "@/lib/lesson-schema";
 import {
@@ -10,15 +10,24 @@ import {
   stepRequiresCheck,
 } from "@/lib/lesson-engine";
 import { getLessonProgress, saveLessonProgress } from "@/lib/progress";
+import {
+  awardLessonStars,
+  calculateLessonStars,
+} from "@/lib/gamification";
 import { MathContent } from "@/lib/math";
 import { LessonActionBar } from "@/components/layout";
-import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Button } from "@/components/ui/Button";
 import { FeedbackPanel } from "@/components/lesson/FeedbackPanel";
+import { LessonProgressHeader } from "@/components/lesson/LessonProgressHeader";
+import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { TapSelect, SliderExplore, FractionBar } from "@/components/widgets";
 
 interface LessonPlayerProps {
   lesson: Lesson;
+  courseId?: string;
+  topicId?: string;
+  nextLessonSlug?: string | null;
+  backHref?: string;
 }
 
 function getInitialAnswer(step: Step): WidgetAnswer | null {
@@ -36,24 +45,37 @@ function getInitialAnswer(step: Step): WidgetAnswer | null {
   }
 }
 
-export function LessonPlayer({ lesson }: LessonPlayerProps) {
+export function LessonPlayer({
+  lesson,
+  courseId,
+  topicId,
+  nextLessonSlug,
+  backHref = "/rutas",
+}: LessonPlayerProps) {
   const saved = getLessonProgress(lesson.slug);
+  const initialStep = lesson.steps[saved?.currentStepIndex ?? 0];
   const [stepIndex, setStepIndex] = useState(saved?.currentStepIndex ?? 0);
-  const [answer, setAnswer] = useState<WidgetAnswer | null>(null);
+  const [answer, setAnswer] = useState<WidgetAnswer | null>(() =>
+    getInitialAnswer(initialStep),
+  );
   const [checkResult, setCheckResult] = useState<CheckResult | null>(null);
   const [hintIndex, setHintIndex] = useState(0);
+  const [incorrectAttempts, setIncorrectAttempts] = useState(0);
   const [completedStepIds, setCompletedStepIds] = useState<string[]>(
     saved?.completedStepIds ?? [],
   );
   const [finished, setFinished] = useState(false);
+  const [earnedStars, setEarnedStars] = useState(0);
 
   const step = lesson.steps[stepIndex];
 
-  useEffect(() => {
-    setAnswer(getInitialAnswer(step));
+  const goToStep = (nextIndex: number) => {
+    const nextStep = lesson.steps[nextIndex];
+    setStepIndex(nextIndex);
+    setAnswer(getInitialAnswer(nextStep));
     setCheckResult(null);
     setHintIndex(0);
-  }, [step]);
+  };
 
   const persistProgress = useCallback(
     (newStepIndex: number, newCompleted: string[]) => {
@@ -73,6 +95,9 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
     if (!step.widget || !answer) return;
     const result = checkWidgetAnswer(step.widget, answer);
     setCheckResult(result);
+    if (!result.correct) {
+      setIncorrectAttempts((n) => n + 1);
+    }
     if (result.correct && !completedStepIds.includes(step.id)) {
       const updated = [...completedStepIds, step.id];
       setCompletedStepIds(updated);
@@ -90,11 +115,13 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
 
     if (stepIndex < lesson.steps.length - 1) {
       const nextIndex = stepIndex + 1;
-      setStepIndex(nextIndex);
-      persistProgress(nextIndex, [
-        ...new Set([...completedStepIds, step.id]),
-      ]);
+      const updated = [...new Set([...completedStepIds, step.id])];
+      persistProgress(nextIndex, updated);
+      goToStep(nextIndex);
     } else {
+      const stars = calculateLessonStars(hintIndex, incorrectAttempts);
+      setEarnedStars(stars);
+      awardLessonStars(stars);
       setFinished(true);
       persistProgress(stepIndex, [
         ...new Set([...completedStepIds, step.id]),
@@ -160,34 +187,36 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
 
   if (finished) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center gap-6 px-2 py-10 text-center sm:py-12"
-      >
-        <div className="text-5xl sm:text-6xl">🎉</div>
-        <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
-          ¡Lección completada!
-        </h2>
-        <p className="max-w-md text-sm text-slate-600 sm:text-base">
-          Has terminado &ldquo;{lesson.title}&rdquo;. Sigue practicando para
-          afianzar lo aprendido.
-        </p>
-        <Link
-          href="/"
-          className="touch-target inline-flex min-h-11 items-center justify-center rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 sm:min-h-12 sm:text-base"
-        >
-          Volver al inicio
-        </Link>
-      </motion.div>
+      <LessonComplete
+        lessonTitle={lesson.title}
+        stars={earnedStars}
+        courseId={courseId}
+        topicId={topicId}
+        nextLessonSlug={nextLessonSlug}
+      />
     );
   }
 
   return (
     <div className="flex flex-col gap-5 sm:gap-6">
-      <ProgressBar current={stepIndex + 1} total={lesson.steps.length} />
+      <header className="flex items-center gap-3 sm:gap-4">
+        <Link
+          href={backHref}
+          className="touch-target flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100"
+          aria-label="Salir de la lección"
+        >
+          ✕
+        </Link>
 
-      <div className="flex flex-1 flex-col gap-5 pb-2 sm:gap-6 md:pb-0">
+        <div className="min-w-0 flex-1">
+          <LessonProgressHeader
+            current={stepIndex + 1}
+            total={lesson.steps.length}
+          />
+        </div>
+      </header>
+
+      <div className="rounded-2xl border border-emerald-100 bg-white p-4 shadow-sm sm:p-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={step.id}
@@ -198,15 +227,17 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
             className="space-y-5 sm:space-y-6"
           >
             {step.title && (
-              <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
+              <h2 className="text-center text-lg font-bold text-slate-900 sm:text-xl">
                 {step.title}
               </h2>
             )}
 
-            <MathContent content={step.content} />
+            <MathContent content={step.content} className="text-center" />
 
             {step.widget && (
-              <div className="mt-2 sm:mt-4">{renderWidget()}</div>
+              <div className="mt-2 flex justify-center sm:mt-4">
+                {renderWidget()}
+              </div>
             )}
 
             {checkResult && (
@@ -229,13 +260,29 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
               (answer.type === "tap_select" && !answer.selectedId)
             }
             fullWidth
+            className="!rounded-2xl !bg-slate-200 !text-slate-700 hover:!bg-slate-300 disabled:!bg-slate-100"
           >
             Comprobar
           </Button>
         )}
 
+        {checkResult && !checkResult.correct && (
+          <Button
+            variant="secondary"
+            onClick={() => setHintIndex((i) => i + 1)}
+            className="!rounded-2xl"
+          >
+            ¿Por qué?
+          </Button>
+        )}
+
         {(!needsCheck || checkResult?.correct) && (
-          <Button onClick={handleNext} disabled={!canAdvance} fullWidth>
+          <Button
+            onClick={handleNext}
+            disabled={!canAdvance}
+            fullWidth
+            className="!rounded-2xl !bg-emerald-500 hover:!bg-emerald-600 disabled:!bg-slate-200 disabled:!text-slate-400"
+          >
             {isLastStep ? "Finalizar" : "Continuar"}
           </Button>
         )}
