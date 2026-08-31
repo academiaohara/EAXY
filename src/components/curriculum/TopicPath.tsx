@@ -204,7 +204,7 @@ export function TopicPath({
                   href={`/presentacion/${activePresentationSlug}`}
                   className="block text-center text-sm font-medium text-indigo-700 hover:text-indigo-900"
                 >
-                  Ver presentación HTML
+                  Ver presentación
                 </Link>
               )}
             </div>

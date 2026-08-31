@@ -6,7 +6,7 @@ import {
 } from "@/lib/presentation-loader";
 import { loadLessonIndex } from "@/lib/lesson-loader";
 import { loadCurriculum } from "@/lib/curriculum-loader";
-import { IspringPresentationViewer } from "@/components/presentation/IspringPresentationViewer";
+import { PresentationPlayer } from "@/components/presentation/PresentationPlayer";
 import { PageContainer, PageShell } from "@/components/layout";
 
 interface PageProps {
@@ -41,7 +41,7 @@ export default async function PresentationPage({ params }: PageProps) {
         width="wide"
         className="page-container--padded-y flex min-h-0 flex-1 flex-col pb-4 sm:pb-6"
       >
-        <IspringPresentationViewer
+        <PresentationPlayer
           presentation={presentation}
           backHref={backHref}
         />

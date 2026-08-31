@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "validate:lessons": "tsx scripts/validate-lessons.ts",
-    "import:presentation": "tsx scripts/import-ispring-presentation.ts"
+    "import:presentation": "tsx scripts/import-ispring-presentation.ts",
+    "sync:presentation-assets": "tsx scripts/import-ispring-presentation.ts"
   },
   "dependencies": {
     "framer-motion": "^13.1.1",
