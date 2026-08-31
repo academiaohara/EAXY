@@ -1,6 +1,15 @@
 {
   "lessons": [
     {
+      "slug": "numeros-naturales-intro",
+      "title": "Introducción a los números naturales",
+      "description": "Descubre para qué sirven los números naturales, el sistema decimal, el valor posicional y el redondeo.",
+      "topic": "numeros-naturales",
+      "courseId": "eso-1",
+      "topicId": "numeros-naturales",
+      "estimatedMinutes": 12
+    },
+    {
       "slug": "fracciones-intro",
       "title": "Introducción a las fracciones",
       "description": "Aprende qué es una fracción, cómo representarla y cómo encontrar fracciones equivalentes.",

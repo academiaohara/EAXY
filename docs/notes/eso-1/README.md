@@ -11,7 +11,7 @@ Apuntes de referencia para diseñar lecciones interactivas de primer curso de ES
 
 ## Temas
 
-1. Los números naturales
+1. Los números naturales — *lección disponible: `numeros-naturales-intro`*
 2. Potencias y raíces
 3. Divisibilidad
 4. Los números enteros

@@ -12,7 +12,7 @@
           "title": "Los números naturales",
           "description": "Valor posicional, operaciones y problemas con números naturales.",
           "sourcePdf": "docs/notes/eso-1/source/tema-01-numeros-naturales.pdf",
-          "lessonSlugs": []
+          "lessonSlugs": ["numeros-naturales-intro"]
         },
         {
           "id": "potencias-raices",
