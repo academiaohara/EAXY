@@ -20,29 +20,119 @@ const CONTENT_DIR = join(process.cwd(), "content/presentations");
 const EMBED_OVERRIDES = `
 <style>
   #promoLink,
-  .promo-link {
+  .promo-link,
+  .free-logo,
+  .final-slide,
+  .top-panel,
+  .bottom-panel,
+  .landscape-bottom-panel,
+  .universal-side-panel,
+  .universal-control-panel,
+  .show-side-panel-button,
+  .launch-screen,
+  .menu_layer,
+  .trial_banner {
     display: none !important;
     visibility: hidden !important;
+    pointer-events: none !important;
   }
+
   html,
-  body {
+  body,
+  #content,
+  #playerView {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background: #dcdee0 !important;
+  }
+
+  .universal,
+  .universal.universal_webkit,
+  .universal.side-panel-hidden {
+    background: transparent !important;
+  }
+
+  .universal .universal__main-container,
+  .universal.side-panel-hidden .universal__main-container {
+    width: 100% !important;
+    left: 0 !important;
+    margin: 0 !important;
   }
 </style>
 `;
+
+const EMBED_PLAYER_INIT = `
+				function onPlayerInit(playerWrapper)
+				{
+					var player = playerWrapper.wt ? playerWrapper.wt() : playerWrapper;
+
+					var preloader = document.getElementById("preloader");
+					if (preloader && preloader.parentNode) {
+						preloader.parentNode.removeChild(preloader);
+					}
+
+					document.querySelectorAll(".universal").forEach(function (el) {
+						el.classList.add("side-panel-hidden");
+					});
+
+					function isFinalSlide() {
+						try {
+							var slide = player.currentSlide && player.currentSlide();
+							return !!(slide && slide.li && slide.li());
+						} catch (e) {
+							return false;
+						}
+					}
+
+					function leaveFinalSlide() {
+						if (!isFinalSlide()) return;
+						var idx = player.currentSlideIndex && player.currentSlideIndex();
+						if (typeof idx === "number" && idx > 0 && player.gotoSlide) {
+							player.gotoSlide(idx - 1);
+						}
+					}
+
+					if (player.slideChangeEvent) {
+						player.slideChangeEvent().addHandler(leaveFinalSlide);
+					}
+
+					if (player.gotoNextSlide) {
+						var originalNext = player.gotoNextSlide.bind(player);
+						player.gotoNextSlide = function () {
+							originalNext();
+							leaveFinalSlide();
+						};
+					}
+
+					if (typeof MutationObserver !== "undefined") {
+						var observer = new MutationObserver(function () {
+							document.querySelectorAll(".final-slide, .free-logo").forEach(function (el) {
+								el.style.display = "none";
+							});
+							leaveFinalSlide();
+						});
+						observer.observe(document.body, { childList: true, subtree: true });
+					}
+				}`;
 
 function countSlides(dataDir: string): number {
   return readdirSync(dataDir).filter((file) => /^slide\d+\.js$/.test(file)).length;
 }
 
 function buildEmbedHtml(sourceHtml: string): string {
-  if (sourceHtml.includes("</head>")) {
-    return sourceHtml.replace("</head>", `${EMBED_OVERRIDES}</head>`);
+  let html = sourceHtml.replace(
+    /function onPlayerInit\(player\)\s*\{[\s\S]*?\n\t\t\t\t\}/,
+    EMBED_PLAYER_INIT.trim(),
+  );
+
+  if (html.includes("</head>")) {
+    html = html.replace("</head>", `${EMBED_OVERRIDES}</head>`);
+  } else {
+    html = `${EMBED_OVERRIDES}${html}`;
   }
 
-  return `${EMBED_OVERRIDES}${sourceHtml}`;
+  return html;
 }
 
 function importPresentation(): void {
