@@ -18,6 +18,7 @@ interface TopicPathProps {
   topic: TopicWithLessons;
   topicIndex: number;
   topics: Array<{ id: string; lessonSlugs: string[] }>;
+  presentationByLesson?: Record<string, string>;
 }
 
 interface PathNodeProps {
@@ -107,6 +108,7 @@ export function TopicPath({
   topic,
   topicIndex,
   topics,
+  presentationByLesson = {},
 }: TopicPathProps) {
   const mounted = useHasMounted();
   const [selectedSlug, setSelectedSlug] = useState(
@@ -147,6 +149,9 @@ export function TopicPath({
 
   const selectedStatus = activeLesson?.status ?? "locked";
   const canStart = selectedStatus !== "locked";
+  const activePresentationSlug = activeLesson
+    ? presentationByLesson[activeLesson.lesson.slug]
+    : null;
 
   return (
     <div className="flex flex-col">
@@ -184,18 +189,25 @@ export function TopicPath({
           </p>
 
           {canStart ? (
-            <Link
-              href={`/leccion/${activeLesson.lesson.slug}`}
-              className="mt-4 block"
-            >
-              <Button fullWidth className="!rounded-2xl !bg-indigo-600">
-                {selectedStatus === "in_progress"
-                  ? "Continuar"
-                  : selectedStatus === "completed"
-                    ? "Repasar"
-                    : "Empezar"}
-              </Button>
-            </Link>
+            <div className="mt-4 space-y-3">
+              <Link href={`/leccion/${activeLesson.lesson.slug}`} className="block">
+                <Button fullWidth className="!rounded-2xl !bg-indigo-600">
+                  {selectedStatus === "in_progress"
+                    ? "Continuar"
+                    : selectedStatus === "completed"
+                      ? "Repasar"
+                      : "Empezar"}
+                </Button>
+              </Link>
+              {activePresentationSlug && (
+                <Link
+                  href={`/presentacion/${activePresentationSlug}`}
+                  className="block text-center text-sm font-medium text-indigo-700 hover:text-indigo-900"
+                >
+                  Ver presentación HTML
+                </Link>
+              )}
+            </div>
           ) : (
             <p className="mt-4 text-center text-sm text-slate-500">
               Completa la lección anterior para desbloquear
