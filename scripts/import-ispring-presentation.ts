@@ -24,10 +24,7 @@ const EMBED_OVERRIDES = `
   .free-logo,
   .final-slide,
   .top-panel,
-  .bottom-panel,
-  .landscape-bottom-panel,
   .universal-side-panel,
-  .universal-control-panel,
   .show-side-panel-button,
   .launch-screen,
   .menu_layer,
@@ -38,19 +35,51 @@ const EMBED_OVERRIDES = `
   }
 
   html,
-  body,
-  #content,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #ffffff !important;
+  }
+
+  :root {
+    --page-background-color: #ffffff !important;
+    --player-background-color: #ffffff !important;
+  }
+
+  #content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #ffffff !important;
+  }
+
   #playerView {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: #dcdee0 !important;
+    background: transparent !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 
   .universal,
   .universal.universal_webkit,
-  .universal.side-panel-hidden {
-    background: transparent !important;
+  .universal.side-panel-hidden,
+  .playerView,
+  .slidesContainer,
+  .framesLayer,
+  .universal__main-container {
+    background: #ffffff !important;
   }
 
   .universal .universal__main-container,
@@ -63,6 +92,29 @@ const EMBED_OVERRIDES = `
 `;
 
 const EMBED_PLAYER_INIT = `
+				function fitPlayerView(playerWrapper, player) {
+					var width = window.innerWidth || document.documentElement.clientWidth;
+					var height = window.innerHeight || document.documentElement.clientHeight;
+					var playerView = document.getElementById("playerView");
+					if (playerView) {
+						playerView.style.width = width + "px";
+						playerView.style.height = height + "px";
+					}
+					document.documentElement.style.setProperty(
+						"--page-background-color",
+						"#ffffff",
+					);
+					try {
+						var view = player.view && player.view();
+						if (view && view.resize) {
+							view.resize(width, height);
+						}
+						if (playerWrapper && playerWrapper.resize) {
+							playerWrapper.resize(width, height);
+						}
+					} catch (e) {}
+				}
+
 				function onPlayerInit(playerWrapper)
 				{
 					var player = playerWrapper.wt ? playerWrapper.wt() : playerWrapper;
@@ -75,6 +127,14 @@ const EMBED_PLAYER_INIT = `
 					document.querySelectorAll(".universal").forEach(function (el) {
 						el.classList.add("side-panel-hidden");
 					});
+
+					fitPlayerView(playerWrapper, player);
+					window.addEventListener("resize", function () {
+						fitPlayerView(playerWrapper, player);
+					});
+					setTimeout(function () {
+						fitPlayerView(playerWrapper, player);
+					}, 250);
 
 					function isFinalSlide() {
 						try {
@@ -131,6 +191,39 @@ function buildEmbedHtml(sourceHtml: string): string {
   } else {
     html = `${EMBED_OVERRIDES}${html}`;
   }
+
+  html = html.replace(
+    /body \{background-color:#dcdee0;\}/,
+    "body {background-color:#ffffff;}",
+  );
+  html = html.replace(
+    /html style=background-color:#dcdee0;/,
+    "html style=background-color:#ffffff;",
+  );
+
+  html = html.replace(
+    /if \(startup\)\s*\n\t\t\t\tstartup\(start\);\s*\n\t\t\telse\s*\n\t\t\t\tstart\(\);/,
+    `function clearIspringProgress() {
+				try {
+					for (var i = localStorage.length - 1; i >= 0; i--) {
+						var key = localStorage.key(i);
+						if (key && key.indexOf("ispring") === 0) {
+							localStorage.removeItem(key);
+						}
+					}
+				} catch (e) {}
+			}
+
+			function beginPresentation() {
+				clearIspringProgress();
+				start(null);
+			}
+
+			if (startup)
+				startup(beginPresentation);
+			else
+				beginPresentation();`,
+  );
 
   return html;
 }

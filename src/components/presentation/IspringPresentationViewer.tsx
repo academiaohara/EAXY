@@ -32,13 +32,13 @@ export function IspringPresentationViewer({
             {presentation.slideCount} diapositivas
           </div>
           <p className="text-xs text-slate-500">
-            Haz clic en la diapositiva para avanzar paso a paso
+            Usa los botones inferiores para avanzar o retroceder
           </p>
         </div>
       </header>
 
       <div
-        className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl bg-[#dcdee0] shadow-xl ring-1 ring-slate-200"
+        className="mx-auto w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-slate-200"
         style={{ aspectRatio: `${presentation.width} / ${presentation.height}` }}
       >
         <iframe
