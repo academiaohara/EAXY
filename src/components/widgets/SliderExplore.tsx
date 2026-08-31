@@ -61,7 +61,7 @@ export function SliderExplore({
     widget.visual.type === "rect_division" ? value : 0;
 
   return (
-    <div className="space-y-6 rounded-2xl border border-slate-200 bg-slate-50 p-5">
+    <div className="space-y-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:space-y-6 sm:p-5">
       {widget.visual.type === "rect_division" && (
         <RectDivisionVisual totalParts={divisionCount} />
       )}

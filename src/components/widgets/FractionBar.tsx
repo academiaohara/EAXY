@@ -34,7 +34,7 @@ export function FractionBar({
 
   return (
     <div className="space-y-4">
-      <div className="flex h-20 w-full overflow-hidden rounded-2xl border-2 border-slate-200">
+      <div className="flex h-16 w-full overflow-hidden rounded-2xl border-2 border-slate-200 sm:h-20">
         {Array.from({ length: widget.totalParts }, (_, i) => {
           const isShaded = i < shadedParts;
           const isCorrect = showResult && isShaded && i < target;
@@ -65,13 +65,13 @@ export function FractionBar({
         })}
       </div>
 
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
         <span className="text-slate-600">
           Partes sombreadas:{" "}
           <strong className="text-slate-900">{shadedParts}</strong> de{" "}
           <strong className="text-slate-900">{widget.totalParts}</strong>
         </span>
-        <span className="rounded-lg bg-indigo-50 px-3 py-1 font-medium text-indigo-700">
+        <span className="w-fit rounded-lg bg-indigo-50 px-3 py-1 font-medium text-indigo-700">
           Objetivo: {widget.targetNumerator}/{widget.targetDenominator}
         </span>
       </div>

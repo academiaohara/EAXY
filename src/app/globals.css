@@ -4,6 +4,12 @@
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
+  --page-padding-x: 1rem;
+  --page-padding-y: 1.5rem;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
 }
 
 @theme inline {
@@ -11,12 +17,70 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Anchos de contenido reutilizables (generan max-w-lesson, etc.) */
+  --max-width-lesson: 42rem;
+  --max-width-content: 48rem;
+  --max-width-wide: 72rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-padding-x: 1.5rem;
+    --page-padding-y: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-padding-x: 2rem;
+    --page-padding-y: 2.5rem;
+  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Contenedor con padding fluido y safe areas */
+.page-container {
+  padding-left: max(var(--page-padding-x), var(--safe-area-left));
+  padding-right: max(var(--page-padding-x), var(--safe-area-right));
+}
+
+.page-container--padded-y {
+  padding-top: var(--page-padding-y);
+  padding-bottom: var(--page-padding-y);
+}
+
+/* Objetivos táctiles mínimos (44px recomendado) */
+.touch-target {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+/* Barra de acciones fija en móvil con safe area inferior */
+.lesson-action-bar {
+  margin-left: calc(-1 * max(var(--page-padding-x), var(--safe-area-left)));
+  margin-right: calc(-1 * max(var(--page-padding-x), var(--safe-area-right)));
+  padding-left: max(var(--page-padding-x), var(--safe-area-left));
+  padding-right: max(var(--page-padding-x), var(--safe-area-right));
+  padding-bottom: max(0.75rem, var(--safe-area-bottom));
+}
+
+.prose-math {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 640px) {
+  .prose-math {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
 }
 
 .prose-math p {
@@ -32,10 +96,15 @@ body {
   color: #1e293b;
 }
 
+input[type="range"] {
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
   background: #6366f1;
   cursor: pointer;
@@ -43,8 +112,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-  height: 20px;
-  width: 20px;
+  height: 22px;
+  width: 22px;
   border-radius: 50%;
   background: #6366f1;
   cursor: pointer;
