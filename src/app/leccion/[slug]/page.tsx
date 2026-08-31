@@ -59,7 +59,7 @@ export default async function LessonPage({ params }: PageProps) {
               href={`/presentacion/${presentation.slug}`}
               className="mt-2 inline-flex text-sm font-semibold text-indigo-700 hover:text-indigo-900"
             >
-              Ver presentación HTML →
+              Ver presentación →
             </Link>
           </div>
         )}
