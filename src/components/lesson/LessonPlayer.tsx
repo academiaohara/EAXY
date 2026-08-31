@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Lesson, Step, CheckResult, WidgetAnswer } from "@/lib/lesson-schema";
@@ -10,7 +11,9 @@ import {
 } from "@/lib/lesson-engine";
 import { getLessonProgress, saveLessonProgress } from "@/lib/progress";
 import { MathContent } from "@/lib/math";
+import { LessonActionBar } from "@/components/layout";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { Button } from "@/components/ui/Button";
 import { FeedbackPanel } from "@/components/lesson/FeedbackPanel";
 import { TapSelect, SliderExplore, FractionBar } from "@/components/widgets";
 
@@ -160,85 +163,83 @@ export function LessonPlayer({ lesson }: LessonPlayerProps) {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center gap-6 py-12 text-center"
+        className="flex flex-col items-center gap-6 px-2 py-10 text-center sm:py-12"
       >
-        <div className="text-6xl">🎉</div>
-        <h2 className="text-2xl font-bold text-slate-900">
+        <div className="text-5xl sm:text-6xl">🎉</div>
+        <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
           ¡Lección completada!
         </h2>
-        <p className="max-w-md text-slate-600">
+        <p className="max-w-md text-sm text-slate-600 sm:text-base">
           Has terminado &ldquo;{lesson.title}&rdquo;. Sigue practicando para
           afianzar lo aprendido.
         </p>
-        <a
+        <Link
           href="/"
-          className="rounded-xl bg-indigo-600 px-6 py-3 font-medium text-white transition hover:bg-indigo-700"
+          className="touch-target inline-flex min-h-11 items-center justify-center rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-indigo-700 sm:min-h-12 sm:text-base"
         >
           Volver al inicio
-        </a>
+        </Link>
       </motion.div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-5 sm:gap-6">
       <ProgressBar current={stepIndex + 1} total={lesson.steps.length} />
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={step.id}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.3 }}
-          className="space-y-6"
-        >
-          {step.title && (
-            <h2 className="text-xl font-bold text-slate-900">{step.title}</h2>
-          )}
+      <div className="flex flex-1 flex-col gap-5 pb-2 sm:gap-6 md:pb-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={step.id}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-5 sm:space-y-6"
+          >
+            {step.title && (
+              <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
+                {step.title}
+              </h2>
+            )}
 
-          <MathContent content={step.content} />
+            <MathContent content={step.content} />
 
-          {step.widget && (
-            <div className="mt-4">{renderWidget()}</div>
-          )}
+            {step.widget && (
+              <div className="mt-2 sm:mt-4">{renderWidget()}</div>
+            )}
 
-          {checkResult && (
-            <FeedbackPanel
-              result={checkResult}
-              hintIndex={hintIndex}
-              onShowHint={() => setHintIndex((i) => i + 1)}
-            />
-          )}
-        </motion.div>
-      </AnimatePresence>
+            {checkResult && (
+              <FeedbackPanel
+                result={checkResult}
+                hintIndex={hintIndex}
+                onShowHint={() => setHintIndex((i) => i + 1)}
+              />
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="flex gap-3 pt-2">
+      <LessonActionBar>
         {needsCheck && !checkResult?.correct && (
-          <button
-            type="button"
+          <Button
             onClick={handleCheck}
             disabled={
               !answer ||
               (answer.type === "tap_select" && !answer.selectedId)
             }
-            className="flex-1 rounded-xl bg-indigo-600 py-3 font-medium text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+            fullWidth
           >
             Comprobar
-          </button>
+          </Button>
         )}
 
         {(!needsCheck || checkResult?.correct) && (
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={!canAdvance}
-            className="flex-1 rounded-xl bg-indigo-600 py-3 font-medium text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300"
-          >
+          <Button onClick={handleNext} disabled={!canAdvance} fullWidth>
             {isLastStep ? "Finalizar" : "Continuar"}
-          </button>
+          </Button>
         )}
-      </div>
+      </LessonActionBar>
     </div>
   );
 }

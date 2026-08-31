@@ -1,33 +1,37 @@
 import Link from "next/link";
 import { enrichCourse, loadCurriculum } from "@/lib/curriculum-loader";
 import { loadLessonIndex } from "@/lib/lesson-loader";
+import {
+  PageContainer,
+  PageShell,
+  SiteFooter,
+  SiteHeader,
+} from "@/components/layout";
 
 export default function HomePage() {
   const curriculum = loadCurriculum();
   const lessonIndex = loadLessonIndex();
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 text-lg font-bold text-white">
-              E
-            </span>
-            <span className="text-xl font-bold text-slate-900">Eaxy</span>
-          </div>
+    <PageShell>
+      <SiteHeader
+        width="wide"
+        trailing={
           <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700">
             Matemáticas
           </span>
-        </div>
-      </header>
+        }
+      />
 
-      <main className="mx-auto max-w-2xl px-4 py-8">
-        <section className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+      <PageContainer
+        width="wide"
+        className="page-container--padded-y flex-1 pb-8 sm:pb-12"
+      >
+        <section className="mb-8 sm:mb-10 lg:mb-12">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
             Aprende haciendo
           </h1>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 max-w-2xl text-base text-slate-600 sm:mt-3 sm:text-lg">
             Lecciones interactivas de matemáticas con manipulativos visuales,
             retos y feedback inmediato.
           </p>
@@ -37,17 +41,17 @@ export default function HomePage() {
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500">
             Cursos
           </h2>
-          <div className="space-y-3">
+          <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
             {curriculum.courses.map((course) => {
               const enriched = enrichCourse(course);
               return (
                 <Link
                   key={course.id}
                   href={`/curso/${course.id}`}
-                  className="block rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-indigo-300 hover:shadow-md"
+                  className="block rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-indigo-300 hover:shadow-md sm:p-5"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-semibold text-slate-900">
                         {course.title}
                       </h3>
@@ -79,15 +83,15 @@ export default function HomePage() {
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-500">
               Acceso rápido
             </h2>
-            <div className="space-y-3">
+            <div className="grid gap-3 sm:gap-4 lg:grid-cols-2">
               {lessonIndex.lessons.map((lesson) => (
                 <Link
                   key={lesson.slug}
                   href={`/leccion/${lesson.slug}`}
-                  className="block rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-indigo-300 hover:shadow-md"
+                  className="block rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-indigo-300 hover:shadow-md sm:p-5"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-semibold text-slate-900">
                         {lesson.title}
                       </h3>
@@ -109,11 +113,9 @@ export default function HomePage() {
             </div>
           </section>
         )}
-      </main>
+      </PageContainer>
 
-      <footer className="mt-auto border-t border-slate-200 py-6 text-center text-xs text-slate-400">
-        Eaxy — Plataforma de aprendizaje interactivo
-      </footer>
-    </div>
+      <SiteFooter />
+    </PageShell>
   );
 }

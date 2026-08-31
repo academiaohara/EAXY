@@ -33,6 +33,18 @@ docs/architecture.md    → Arquitectura técnica detallada
 - **Validar lecciones:** `npm run validate:lessons` antes de commitear contenido nuevo.
 - **No implementar aún:** auth, pagos, física, tecnología.
 
+## Diseño responsive
+
+Usa siempre los componentes de layout para nuevas pantallas:
+
+- `PageShell` — envoltorio de página (`min-h-dvh`, columna flex).
+- `PageContainer` — ancho y padding fluido (`width`: `lesson` | `content` | `wide`).
+- `SiteHeader` / `SiteFooter` — cabecera y pie reutilizables.
+- `LessonActionBar` — acciones pegadas abajo en móvil (safe area incluida).
+- `Button` — botones con objetivo táctil mínimo (44px).
+
+Tokens en `globals.css`: `--page-padding-x/y`, safe areas, `.page-container`, `.touch-target`, `.prose-math`. En widgets y UI, prioriza clases `sm:` / `lg:` y apila en columna en móvil cuando haya filas densas.
+
 ## Cómo añadir una lección
 
 1. Crear JSON en `content/math/` siguiendo `lesson-schema.ts`.

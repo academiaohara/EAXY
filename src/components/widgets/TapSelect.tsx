@@ -22,7 +22,7 @@ export function TapSelect({
   correctId,
 }: TapSelectProps) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2 lg:gap-4">
       {widget.options.map((option) => {
         const isSelected = selectedId === option.id;
         const isCorrect = showResult && option.id === correctId;
@@ -54,7 +54,7 @@ export function TapSelect({
                   : {}
             }
             transition={{ duration: 0.4 }}
-            className={`rounded-2xl border-2 bg-white p-4 text-left transition-colors disabled:cursor-not-allowed ${borderClass}`}
+            className={`touch-target min-h-14 w-full rounded-2xl border-2 bg-white p-4 text-left transition-colors disabled:cursor-not-allowed sm:min-h-16 ${borderClass}`}
           >
             {option.image && (
               <div

@@ -27,7 +27,7 @@ export function FeedbackPanel({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.3 }}
-        className={`rounded-2xl border-2 p-4 ${
+        className={`rounded-2xl border-2 p-4 sm:p-5 ${
           result.correct
             ? "border-emerald-200 bg-emerald-50"
             : "border-amber-200 bg-amber-50"
