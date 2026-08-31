@@ -6,7 +6,7 @@ import {
 } from "@/lib/presentation-loader";
 import { loadLessonIndex } from "@/lib/lesson-loader";
 import { loadCurriculum } from "@/lib/curriculum-loader";
-import { HtmlSlideViewer } from "@/components/presentation/HtmlSlideViewer";
+import { IspringPresentationViewer } from "@/components/presentation/IspringPresentationViewer";
 import { PageContainer, PageShell } from "@/components/layout";
 
 interface PageProps {
@@ -41,7 +41,10 @@ export default async function PresentationPage({ params }: PageProps) {
         width="wide"
         className="page-container--padded-y flex min-h-0 flex-1 flex-col pb-4 sm:pb-6"
       >
-        <HtmlSlideViewer presentation={presentation} backHref={backHref} />
+        <IspringPresentationViewer
+          presentation={presentation}
+          backHref={backHref}
+        />
 
         {meta && (
           <div className="mx-auto mt-6 w-full max-w-5xl rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4 sm:p-5">
