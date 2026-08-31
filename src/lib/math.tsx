@@ -33,7 +33,13 @@ function renderBlockMath(text: string): string {
   });
 }
 
-export function MathContent({ content }: { content: string }) {
+export function MathContent({
+  content,
+  className,
+}: {
+  content: string;
+  className?: string;
+}) {
   const html = useMemo(() => {
     const withBlocks = renderBlockMath(content);
     const withInline = renderInlineMath(withBlocks);
@@ -48,7 +54,7 @@ export function MathContent({ content }: { content: string }) {
 
   return (
     <div
-      className="prose-math text-base text-slate-700"
+      className={`prose-math text-base text-slate-700 ${className ?? ""}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

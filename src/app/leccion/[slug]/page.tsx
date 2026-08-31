@@ -1,8 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { loadLesson, getAllLessonSlugs } from "@/lib/lesson-loader";
+import { loadLesson, getAllLessonSlugs, loadLessonIndex } from "@/lib/lesson-loader";
+import { loadCurriculum } from "@/lib/curriculum-loader";
+import { getNextLessonSlug } from "@/lib/course-progress";
 import { LessonPlayer } from "@/components/lesson/LessonPlayer";
-import { PageContainer, PageShell, SiteHeader } from "@/components/layout";
+import { PageContainer, PageShell } from "@/components/layout";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,28 +23,35 @@ export default async function LessonPage({ params }: PageProps) {
     notFound();
   }
 
+  const index = loadLessonIndex();
+  const meta = index.lessons.find((l) => l.slug === slug);
+  const curriculum = loadCurriculum();
+  const course = meta?.courseId
+    ? curriculum.courses.find((c) => c.id === meta.courseId)
+    : null;
+
+  const nextLessonSlug = course
+    ? getNextLessonSlug(slug, course.topics)
+    : null;
+
+  const backHref =
+    meta?.courseId && meta?.topicId
+      ? `/curso/${meta.courseId}/tema/${meta.topicId}`
+      : "/rutas";
+
   return (
     <PageShell>
-      <SiteHeader
-        width="lesson"
-        leading={
-          <Link
-            href="/"
-            className="touch-target flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100"
-            aria-label="Volver al inicio"
-          >
-            ←
-          </Link>
-        }
-        title={lesson.title}
-        subtitle={lesson.topic}
-      />
-
       <PageContainer
         width="lesson"
         className="page-container--padded-y flex-1 pb-4 sm:pb-6"
       >
-        <LessonPlayer lesson={lesson} />
+        <LessonPlayer
+          lesson={lesson}
+          courseId={meta?.courseId}
+          topicId={meta?.topicId}
+          nextLessonSlug={nextLessonSlug}
+          backHref={backHref}
+        />
       </PageContainer>
     </PageShell>
   );
