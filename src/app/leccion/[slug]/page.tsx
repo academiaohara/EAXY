@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadLesson, getAllLessonSlugs, loadLessonIndex } from "@/lib/lesson-loader";
 import { loadCurriculum } from "@/lib/curriculum-loader";
 import { getNextLessonSlug } from "@/lib/course-progress";
+import { getPresentationForLesson } from "@/lib/presentation-loader";
 import { LessonPlayer } from "@/components/lesson/LessonPlayer";
 import { PageContainer, PageShell } from "@/components/layout";
 
@@ -39,12 +41,29 @@ export default async function LessonPage({ params }: PageProps) {
       ? `/curso/${meta.courseId}/tema/${meta.topicId}`
       : "/rutas";
 
+  const presentation = getPresentationForLesson(slug);
+
   return (
     <PageShell>
       <PageContainer
         width="lesson"
         className="page-container--padded-y flex-1 pb-4 sm:pb-6"
       >
+        {presentation && (
+          <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:mb-6">
+            <p className="text-sm text-slate-700">
+              También puedes ver la presentación original del tema en formato
+              diapositivas.
+            </p>
+            <Link
+              href={`/presentacion/${presentation.slug}`}
+              className="mt-2 inline-flex text-sm font-semibold text-indigo-700 hover:text-indigo-900"
+            >
+              Ver presentación HTML →
+            </Link>
+          </div>
+        )}
+
         <LessonPlayer
           lesson={lesson}
           courseId={meta?.courseId}

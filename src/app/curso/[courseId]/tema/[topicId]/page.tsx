@@ -4,6 +4,7 @@ import {
   getAllTopicParams,
   getTopicFromCourse,
 } from "@/lib/curriculum-loader";
+import { loadPresentationIndex } from "@/lib/presentation-loader";
 import { PageContainer, PageShell, SiteFooter } from "@/components/layout";
 import { AppNav } from "@/components/navigation/AppNav";
 import { CourseInfoCard } from "@/components/curriculum/CourseInfoCard";
@@ -26,6 +27,11 @@ export default async function TopicPage({ params }: TopicPageProps) {
   }
 
   const { course, topic, topicIndex } = result;
+  const presentationByLesson = Object.fromEntries(
+    loadPresentationIndex()
+      .presentations.filter((entry) => entry.lessonSlug)
+      .map((entry) => [entry.lessonSlug!, entry.slug]),
+  );
 
   return (
     <PageShell>
@@ -54,6 +60,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               topic={topic}
               topicIndex={topicIndex}
               topics={course.topics}
+              presentationByLesson={presentationByLesson}
             />
           </div>
         </div>
