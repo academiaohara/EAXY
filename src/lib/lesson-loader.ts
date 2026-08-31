@@ -8,6 +8,7 @@ import {
 } from "./lesson-schema";
 
 const CONTENT_DIR = join(process.cwd(), "content", "math");
+const SKIP_FILES = new Set(["index.json", "curriculum.json"]);
 
 export function loadLesson(slug: string): Lesson {
   const filePath = join(CONTENT_DIR, `${slug}.json`);
@@ -26,6 +27,6 @@ export function loadLessonIndex(): LessonIndex {
 export function getAllLessonSlugs(): string[] {
   const files = readdirSync(CONTENT_DIR);
   return files
-    .filter((f) => f.endsWith(".json") && f !== "index.json")
+    .filter((f) => f.endsWith(".json") && !SKIP_FILES.has(f))
     .map((f) => f.replace(".json", ""));
 }
