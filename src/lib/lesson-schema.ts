@@ -79,6 +79,8 @@ export const lessonIndexSchema = z.object({
       title: z.string(),
       description: z.string(),
       topic: z.string(),
+      courseId: z.string().optional(),
+      topicId: z.string().optional(),
       estimatedMinutes: z.number().positive(),
     }),
   ),
