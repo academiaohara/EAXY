@@ -1,12 +1,3 @@
 {
-  "presentations": [
-    {
-      "slug": "numeros-naturales-intro",
-      "title": "Introducción a los números naturales",
-      "description": "Presentación del tema: origen de los naturales, sistema decimal, valor posicional y redondeo.",
-      "lessonSlug": "numeros-naturales-intro",
-      "slideCount": 6,
-      "estimatedMinutes": 8
-    }
-  ]
+  "presentations": []
 }

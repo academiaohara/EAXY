@@ -12,7 +12,7 @@
           "title": "Los números naturales",
           "description": "Valor posicional, operaciones y problemas con números naturales.",
           "sourcePdf": "docs/notes/eso-1/source/tema-01-numeros-naturales.pdf",
-          "lessonSlugs": ["numeros-naturales-intro"]
+          "lessonSlugs": []
         },
         {
           "id": "potencias-raices",
@@ -60,7 +60,7 @@
           "title": "Las fracciones",
           "description": "Concepto de fracción, fracciones equivalentes y comparación.",
           "sourcePdf": "docs/notes/eso-1/source/tema-07-fracciones.pdf",
-          "lessonSlugs": ["fracciones-intro"]
+          "lessonSlugs": []
         },
         {
           "id": "operaciones-fracciones",
