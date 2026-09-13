@@ -5,9 +5,14 @@ import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { getConceptBySlug } from "@/content";
 import { mockSubmitExerciseAttempt } from "@/lib/exercises/e2e-mock";
 import { recalculateStudentConceptMastery } from "@/lib/exercises/mastery";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
+import {
+  mockGetExercise,
+  mockRecordExerciseAttempt,
+} from "@/lib/learning/e2e-mock";
 import { syncLessonCompletionForExercise } from "@/lib/learning-paths/actions";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
@@ -27,6 +32,23 @@ export async function submitExerciseAttempt(
   const studentId = await requireAuthenticatedUserId();
 
   if (isE2EMockClassroomEnabled()) {
+    const catalogExercise = mockGetExercise(exerciseId);
+    if (catalogExercise) {
+      const content = parseExerciseContent(catalogExercise.type, catalogExercise.content);
+      const parsedAnswer = parseExerciseAnswer(catalogExercise.type, answer);
+      const result = checkAnswer(catalogExercise.type, content, parsedAnswer);
+      const mastery = mockRecordExerciseAttempt(studentId, exerciseId, result.correct);
+      const concept = getConceptBySlug(catalogExercise.concept_slug);
+
+      return {
+        correct: result.correct,
+        correctAnswer: result.correctAnswer,
+        explanation: result.explanation,
+        mastery,
+        conceptTitle: concept?.title ?? "Concepto",
+      };
+    }
+
     return mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
   }
 

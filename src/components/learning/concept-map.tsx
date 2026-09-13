@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MasteryBadge } from "@/components/learning/mastery-badge";
+import { MasteryProgressBar } from "@/components/learning/mastery-progress-bar";
 import { formatMasteryPercent } from "@/lib/mastery/states";
 import type { ConceptProgress } from "@/lib/learning/queries";
 import { cn } from "@/lib/utils";
@@ -70,12 +71,7 @@ function ConceptCard({ concept }: { concept: ConceptProgress }) {
         {hasStarted ? <span>{formatMasteryPercent(concept.mastery)} dominio</span> : <span>Sin empezar</span>}
       </div>
 
-      <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-        <div
-          className="h-full rounded-full bg-cobalt transition-all"
-          style={{ width: `${Math.round(concept.mastery * 100)}%` }}
-        />
-      </div>
+      <MasteryProgressBar mastery={concept.mastery} attemptCount={concept.attemptCount} />
     </Link>
   );
 }

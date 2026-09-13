@@ -1,4 +1,5 @@
 import { ConceptMap } from "@/components/learning/concept-map";
+import { ProgressStats } from "@/components/learning/progress-stats";
 import { getCourseOverview } from "@/lib/learning/queries";
 import { formatMasteryPercent } from "@/lib/mastery/states";
 
@@ -38,6 +39,8 @@ export default async function ProgresoPage() {
           <p className="font-display text-3xl font-semibold text-ink">{overview.masteredCount}</p>
         </div>
       </div>
+
+      <ProgressStats concepts={overview.concepts} />
 
       <ConceptMap concepts={overview.concepts} />
     </div>

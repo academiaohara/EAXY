@@ -8,6 +8,7 @@ import { MasteryBadge } from "@/components/learning/mastery-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { formatMasteryPercent } from "@/lib/mastery/states";
 
 type PracticeExercise = {
   id: string;
@@ -44,15 +45,20 @@ export function PracticeSession({
   const [mastery, setMastery] = useState(initialMastery);
   const [attemptCount, setAttemptCount] = useState(initialAttemptCount);
   const [sessionKey, setSessionKey] = useState(0);
+  const [updatedMasteryLabel, setUpdatedMasteryLabel] = useState<string | null>(null);
 
   const currentExercise = exercises[exerciseIndex];
   const isFinished = exerciseIndex >= exercises.length;
 
   function handleExerciseCompleted(result: {
     mastery?: number;
+    conceptTitle?: string;
   }) {
     if (result.mastery !== undefined) {
       setMastery(result.mastery);
+      setUpdatedMasteryLabel(
+        `Tu dominio de «${conceptTitle}» ahora es ${formatMasteryPercent(result.mastery)}.`,
+      );
     }
     setAttemptCount((count) => count + 1);
     setCompletedCount((count) => count + 1);
@@ -66,7 +72,10 @@ export function PracticeSession({
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:px-6">
+    <div
+      className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:px-6"
+      data-testid="practice-session"
+    >
       <div className="flex items-center gap-3">
         <Link
           href="/aprender"
@@ -85,6 +94,11 @@ export function PracticeSession({
           <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">{conceptTitle}</h1>
           <MasteryBadge mastery={mastery} attemptCount={attemptCount} showPercent />
         </div>
+        {updatedMasteryLabel ? (
+          <p className="text-sm text-emerald-700" role="status" data-testid="mastery-update">
+            {updatedMasteryLabel}
+          </p>
+        ) : null}
         <p className="text-ink-muted">{conceptDescription}</p>
       </header>
 
