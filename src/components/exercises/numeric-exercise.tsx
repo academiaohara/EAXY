@@ -12,10 +12,14 @@ import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 type NumericExerciseProps = {
   exerciseId: string;
   content: NumericContent;
-  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function NumericExercise({ exerciseId, content, onCompleted }: NumericExerciseProps) {
+export function NumericExercise({
+  exerciseId,
+  content,
+  onAttemptResult,
+}: NumericExerciseProps) {
   const [value, setValue] = useState("");
   const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -40,7 +44,7 @@ export function NumericExercise({ exerciseId, content, onCompleted }: NumericExe
           Date.now() - startedAt,
         );
         setFeedback(result);
-        onCompleted?.(result);
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(

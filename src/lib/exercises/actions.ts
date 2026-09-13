@@ -1,13 +1,14 @@
 "use server";
 
-import { getConceptById } from "@/content";
 import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
+import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
-import { isE2ELearningMockEnabled, mockRecordExerciseAttempt } from "@/lib/learning/e2e-mock";
+import { mockSubmitExerciseAttempt } from "@/lib/exercises/e2e-mock";
 import { recalculateStudentConceptMastery } from "@/lib/exercises/mastery";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
+import { syncLessonCompletionForExercise } from "@/lib/learning-paths/actions";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 type ExerciseRecord = {
@@ -25,25 +26,8 @@ export async function submitExerciseAttempt(
 ): Promise<SubmitExerciseAttemptResult> {
   const studentId = await requireAuthenticatedUserId();
 
-  if (isE2ELearningMockEnabled()) {
-    const { mockGetExercise } = await import("@/lib/learning/e2e-mock");
-    const exercise = mockGetExercise(exerciseId);
-    if (!exercise) {
-      throw new Error("Ejercicio no encontrado");
-    }
-
-    const content = parseExerciseContent(exercise.type, exercise.content);
-    const parsedAnswer = parseExerciseAnswer(exercise.type, answer);
-    const result = checkAnswer(exercise.type, content, parsedAnswer);
-    const mastery = mockRecordExerciseAttempt(studentId, exerciseId, result.correct);
-
-    return {
-      correct: result.correct,
-      correctAnswer: result.correctAnswer,
-      explanation: result.explanation,
-      mastery,
-      conceptSlug: exercise.concept_slug,
-    };
+  if (isE2EMockClassroomEnabled()) {
+    return mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
   }
 
   const supabase = await createServerSupabaseClient();
@@ -94,13 +78,26 @@ export async function submitExerciseAttempt(
   }
 
   const mastery = await recalculateStudentConceptMastery(studentId, typedExercise.concept_id);
-  const concept = getConceptById(typedExercise.concept_id);
+
+  const { data: concept } = await supabase
+    .from("concepts")
+    .select("title")
+    .eq("id", typedExercise.concept_id)
+    .maybeSingle();
+
+  let lessonCompleted = false;
+
+  if (result.correct) {
+    const completion = await syncLessonCompletionForExercise(exerciseId);
+    lessonCompleted = completion.lessonCompleted;
+  }
 
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
     explanation: result.explanation,
     mastery,
-    conceptSlug: concept?.slug,
+    conceptTitle: concept?.title ?? "Concepto",
+    lessonCompleted,
   };
 }

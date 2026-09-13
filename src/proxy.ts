@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import {
-  E2E_MOCK_USER_COOKIE,
+  E2E_STUDENT_SESSION_COOKIE,
   isE2EMockClassroomEnabled,
   MOCK_TEACHER_ID,
 } from "@/lib/classrooms/e2e-mock";
@@ -33,7 +33,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (isE2EMockClassroomEnabled()) {
-    const mockUserId = request.cookies.get(E2E_MOCK_USER_COOKIE)?.value ?? MOCK_TEACHER_ID;
+    const mockUserId = request.cookies.get(E2E_STUDENT_SESSION_COOKIE)?.value ?? MOCK_TEACHER_ID;
     const isTeacher = mockUserId === MOCK_TEACHER_ID;
 
     if ((isTeacherOnlyPath(pathname) || isTeacherManagementPath(pathname)) && !isTeacher) {

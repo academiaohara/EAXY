@@ -21,5 +21,6 @@ test("alumno provisionado puede iniciar sesión y llega a /aprender", async ({ p
   await page.getByTestId("student-login-submit").click();
 
   await expect(page).toHaveURL(/\/aprender$/);
-  await expect(page.getByRole("heading", { name: "Aprender" })).toBeVisible();
+  await expect(page.getByTestId("course-outline")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Matemáticas 2º ESO" })).toBeVisible();
 });

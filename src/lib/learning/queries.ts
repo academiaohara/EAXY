@@ -14,9 +14,6 @@ import {
   mockGetRecentAttempts,
   mockGetStudentMastery,
 } from "@/lib/learning/e2e-mock";
-import { buildStudentSnapshot } from "@/lib/learning/snapshot";
-import { getPrimaryRecommendation } from "@/lib/recommendations/engine";
-import type { Recommendation } from "@/lib/recommendations/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type ConceptProgress = {
@@ -131,12 +128,6 @@ export async function getCourseOverview(): Promise<CourseOverview> {
     practicedCount,
     masteredCount,
   };
-}
-
-export async function getPrimaryRecommendationForStudent(): Promise<Recommendation | null> {
-  const studentId = await requireAuthenticatedUserId();
-  const snapshot = await buildStudentSnapshot(studentId);
-  return getPrimaryRecommendation(snapshot);
 }
 
 export async function getPracticeConceptData(conceptSlug: string): Promise<PracticeConceptData | null> {

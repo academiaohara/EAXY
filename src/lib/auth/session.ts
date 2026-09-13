@@ -1,9 +1,7 @@
-import { cookies } from "next/headers";
 import {
-  E2E_MOCK_USER_COOKIE,
   isE2EMockClassroomEnabled,
   MOCK_TEACHER_ID,
-  mockResolveAuthenticatedUserId,
+  mockGetSessionUserId,
 } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
@@ -16,8 +14,10 @@ export type SessionUser = {
 
 export async function getSessionUser(): Promise<SessionUser | null> {
   if (isE2EMockClassroomEnabled()) {
-    const cookieStore = await cookies();
-    const userId = mockResolveAuthenticatedUserId(cookieStore.get(E2E_MOCK_USER_COOKIE)?.value);
+    const userId = await mockGetSessionUserId();
+    if (!userId) {
+      return null;
+    }
     const isTeacher = userId === MOCK_TEACHER_ID;
 
     return {

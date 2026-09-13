@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`R6 — descanso > recomienda descanso tras 5 ejercicios en la última hora 1`] = `"¡Buen trabajo! Tómate un descanso o repasa lo aprendido mañana."`;

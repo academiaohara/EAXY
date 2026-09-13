@@ -1,6 +1,5 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {
   DUMMY_STUDENT_AUTH_EMAIL,
@@ -13,10 +12,9 @@ import {
   recordFailedLoginAttempt,
 } from "@/lib/auth/login-rate-limit";
 import {
-  E2E_MOCK_USER_COOKIE,
   isE2EMockClassroomEnabled,
-  mockGetStudentIdForUsername,
   mockSignInStudent,
+  setMockStudentSession,
 } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -55,21 +53,13 @@ export async function signInStudent(
   }
 
   if (isE2EMockClassroomEnabled()) {
-    if (!mockSignInStudent(normalizedUsername, password)) {
+    const studentId = mockSignInStudent(normalizedUsername, password);
+    if (!studentId) {
       recordFailedLoginAttempt(normalizedUsername);
       return { error: GENERIC_STUDENT_LOGIN_ERROR };
     }
 
-    const studentId = mockGetStudentIdForUsername(normalizedUsername);
-    if (studentId) {
-      const cookieStore = await cookies();
-      cookieStore.set(E2E_MOCK_USER_COOKIE, studentId, {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-      });
-    }
-
+    await setMockStudentSession(studentId);
     clearLoginAttempts(normalizedUsername);
     redirect(STUDENT_LOGIN_REDIRECT_PATH);
   }

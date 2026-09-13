@@ -112,7 +112,7 @@ export function PracticeSession({
               exerciseId={currentExercise.id}
               type={currentExercise.type}
               content={currentExercise.content}
-              onCompleted={handleExerciseCompleted}
+              onAttemptResult={handleExerciseCompleted}
             />
           </CardContent>
         </Card>

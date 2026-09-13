@@ -11,13 +11,13 @@ import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 type MultipleChoiceExerciseProps = {
   exerciseId: string;
   content: MultipleChoiceContent;
-  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
 export function MultipleChoiceExercise({
   exerciseId,
   content,
-  onCompleted,
+  onAttemptResult,
 }: MultipleChoiceExerciseProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
@@ -40,7 +40,7 @@ export function MultipleChoiceExercise({
           Date.now() - startedAt,
         );
         setFeedback(result);
-        onCompleted?.(result);
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(

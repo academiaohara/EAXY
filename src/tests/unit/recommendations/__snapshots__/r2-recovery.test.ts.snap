@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`R2 — recuperación > recomienda recuperar el concepto con mastery más bajo 1`] = `"Tu dominio de «Concepto A» es bajo (20%). Practiquemos para reforzarlo."`;

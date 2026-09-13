@@ -1,97 +1,87 @@
 import Link from "next/link";
-import { ArrowRightIcon, BookOpenIcon, TargetIcon, TrophyIcon } from "lucide-react";
-import { ConceptMap } from "@/components/learning/concept-map";
+import { redirect } from "next/navigation";
+import { MasteryBadge } from "@/components/exercises/mastery-badge";
+import { CourseOutlineView } from "@/components/learning/course-outline";
 import { RecommendationCard } from "@/components/learning/recommendation-card";
-import { getConceptById } from "@/content";
-import {
-  getCourseOverview,
-  getPrimaryRecommendationForStudent,
-} from "@/lib/learning/queries";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
+import { getCourseOutline } from "@/lib/curriculum/queries";
+import { getStudentConceptMasterySummaries } from "@/lib/exercises/queries";
+import { getStudentRecommendation } from "@/lib/recommendations/queries";
 
 export default async function AprenderPage() {
-  const [overview, recommendation] = await Promise.all([
-    getCourseOverview(),
-    getPrimaryRecommendationForStudent(),
+  const studentId = await getAuthenticatedUserIdOrNull();
+
+  if (!studentId) {
+    redirect("/entrar");
+  }
+
+  const [outline, masterySummaries, recommendation] = await Promise.all([
+    getCourseOutline(studentId),
+    getStudentConceptMasterySummaries(studentId),
+    getStudentRecommendation(studentId),
   ]);
 
-  const recommendedConcept =
-    recommendation?.conceptId != null
-      ? getConceptById(recommendation.conceptId)
-      : undefined;
-
-  const nextConcepts = overview.concepts
-    .filter((concept) => concept.attemptCount === 0)
-    .slice(0, 3);
+  if (!outline) {
+    return (
+      <main className="flex flex-1 flex-col items-center justify-center p-8">
+        <h1 className="font-heading text-3xl font-semibold tracking-tight">Aprender</h1>
+        <p className="mt-2 text-muted-foreground">
+          No hay cursos disponibles todavía. Vuelve más tarde.
+        </p>
+      </main>
+    );
+  }
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-10 px-4 py-8 sm:px-6">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 p-6 sm:p-8">
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">Aprender</h1>
-        <p className="max-w-2xl text-ink-muted">{overview.courseDescription}</p>
+        <h1 className="font-heading text-3xl font-semibold tracking-tight">Aprender</h1>
+        <p className="text-muted-foreground">
+          Tu espacio de aprendizaje personal. Practica ejercicios y sigue tu progreso por
+          concepto.
+        </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
-        <Card>
-          <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <BookOpenIcon className="size-5 text-cobalt" aria-hidden />
-            <CardTitle className="text-base">Conceptos</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="font-display text-3xl font-semibold">{overview.concepts.length}</p>
-            <p className="text-sm text-ink-muted">en {overview.courseTitle}</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <TargetIcon className="size-5 text-cobalt" aria-hidden />
-            <CardTitle className="text-base">Practicados</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="font-display text-3xl font-semibold">{overview.practicedCount}</p>
-            <p className="text-sm text-ink-muted">conceptos con al menos un intento</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <TrophyIcon className="size-5 text-cobalt" aria-hidden />
-            <CardTitle className="text-base">Dominados</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="font-display text-3xl font-semibold">{overview.masteredCount}</p>
-            <p className="text-sm text-ink-muted">mastery ≥ 85 %</p>
-          </CardContent>
-        </Card>
-      </div>
+      {recommendation ? <RecommendationCard recommendation={recommendation} /> : null}
 
-      {recommendation && (
-        <RecommendationCard
-          recommendation={recommendation}
-          conceptTitle={recommendedConcept?.title}
-          conceptSlug={recommendedConcept?.slug ?? null}
-        />
-      )}
+      <Card>
+        <CardHeader>
+          <CardTitle>Práctica libre</CardTitle>
+          <CardDescription>
+            Continúa practicando para reforzar lo que vas aprendiendo.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Link href="/practicar">
+            <Button data-testid="aprender-practicar-link">Ir a practicar</Button>
+          </Link>
+        </CardContent>
+      </Card>
 
-      {nextConcepts.length > 0 && (
-        <section className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="font-display text-xl font-semibold text-ink">Por empezar</h2>
-            <Link href="/progreso">
-              <Button variant="ghost" size="sm">
-                Ver mapa completo
-                <ArrowRightIcon data-icon="inline-end" />
-              </Button>
-            </Link>
-          </div>
-          <ConceptMap concepts={nextConcepts} groupByModule={false} />
-        </section>
-      )}
-
-      <section className="space-y-4">
-        <h2 className="font-display text-xl font-semibold text-ink">Todo el curso</h2>
-        <ConceptMap concepts={overview.concepts} />
+      <section className="space-y-3" data-testid="mastery-overview">
+        <h2 className="font-heading text-xl font-semibold tracking-tight">Tu dominio</h2>
+        {masterySummaries.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            Aún no hay conceptos disponibles en el catálogo.
+          </p>
+        ) : (
+          <ul className="space-y-2">
+            {masterySummaries.map((summary) => (
+              <li
+                key={summary.conceptId}
+                className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-paper-raised px-4 py-3"
+              >
+                <span className="text-sm font-medium text-ink">{summary.conceptTitle}</span>
+                <MasteryBadge mastery={summary.mastery} hasAttempts={summary.hasAttempts} />
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
-    </div>
+
+      <CourseOutlineView outline={outline} />
+    </main>
   );
 }

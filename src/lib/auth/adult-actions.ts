@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { E2E_MOCK_USER_COOKIE, isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { clearMockStudentSession, isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type AuthFormResult = {
@@ -95,9 +95,7 @@ export async function signInWithGoogle(): Promise<void> {
 
 export async function signOut(): Promise<void> {
   if (isE2EMockClassroomEnabled()) {
-    const { cookies } = await import("next/headers");
-    const cookieStore = await cookies();
-    cookieStore.delete(E2E_MOCK_USER_COOKIE);
+    await clearMockStudentSession();
     redirect("/");
   }
 

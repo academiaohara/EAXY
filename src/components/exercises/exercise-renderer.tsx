@@ -14,11 +14,26 @@ type ExerciseRendererProps = {
   exerciseId: string;
   type: ExerciseType;
   content: unknown;
-  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
+  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function ExerciseRenderer({ exerciseId, type, content, onCompleted }: ExerciseRendererProps) {
+export function ExerciseRenderer({
+  exerciseId,
+  type,
+  content,
+  onAttemptComplete,
+  onAttemptResult,
+}: ExerciseRendererProps) {
   const parsedContent = parseExerciseContent(type, content);
+
+  function handleAttemptResult(result: SubmitExerciseAttemptResult) {
+    onAttemptComplete?.({
+      mastery: result.mastery,
+      conceptTitle: result.conceptTitle,
+    });
+    onAttemptResult?.(result);
+  }
 
   switch (type) {
     case "multiple_choice":
@@ -26,7 +41,7 @@ export function ExerciseRenderer({ exerciseId, type, content, onCompleted }: Exe
         <MultipleChoiceExercise
           exerciseId={exerciseId}
           content={parsedContent as MultipleChoiceContent}
-          onCompleted={onCompleted}
+          onAttemptResult={handleAttemptResult}
         />
       );
     case "numeric":
@@ -34,7 +49,7 @@ export function ExerciseRenderer({ exerciseId, type, content, onCompleted }: Exe
         <NumericExercise
           exerciseId={exerciseId}
           content={parsedContent as NumericContent}
-          onCompleted={onCompleted}
+          onAttemptResult={handleAttemptResult}
         />
       );
     default:

@@ -1,26 +1,31 @@
-import { DEFAULT_RULES } from "@/lib/recommendations/rules";
-import type { Recommendation, StudentSnapshot } from "@/lib/recommendations/types";
+import { recommendationRules } from "@/lib/recommendations/rules";
+import type { Recommendation, RecommendationContext } from "@/lib/recommendations/types";
+
+export type GetRecommendationsOptions = {
+  classroomId?: string;
+  limit?: number;
+};
 
 export function getRecommendations(
-  snapshot: StudentSnapshot,
-  options?: { limit?: number },
+  context: RecommendationContext,
+  options?: GetRecommendationsOptions,
 ): Recommendation[] {
-  const limit = options?.limit ?? 1;
-  const results: Recommendation[] = [];
+  const scopedContext: RecommendationContext = {
+    ...context,
+    classroomId: options?.classroomId ?? context.classroomId,
+  };
 
-  for (const rule of DEFAULT_RULES) {
-    const recommendation = rule.evaluate(snapshot);
+  const recommendations: Recommendation[] = [];
+
+  for (const evaluateRule of recommendationRules) {
+    const recommendation = evaluateRule(scopedContext);
+
     if (recommendation) {
-      results.push(recommendation);
-      if (results.length >= limit) {
-        break;
-      }
+      recommendations.push(recommendation);
+      break;
     }
   }
 
-  return results;
-}
-
-export function getPrimaryRecommendation(snapshot: StudentSnapshot): Recommendation | null {
-  return getRecommendations(snapshot, { limit: 1 })[0] ?? null;
+  const limit = options?.limit ?? 1;
+  return recommendations.slice(0, limit);
 }

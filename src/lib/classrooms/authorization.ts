@@ -1,17 +1,28 @@
-import { cookies } from "next/headers";
 import { AuthorizationError } from "@/lib/classrooms/errors";
 import {
-  E2E_MOCK_USER_COOKIE,
   isE2EMockClassroomEnabled,
   mockAssertClassroomTeacher,
-  mockResolveAuthenticatedUserId,
+  mockGetSessionUserId,
+  mockRequireAuthenticatedUserId,
 } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
+export async function getAuthenticatedUserIdOrNull(): Promise<string | null> {
+  if (isE2EMockClassroomEnabled()) {
+    return mockGetSessionUserId();
+  }
+
+  const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return user?.id ?? null;
+}
+
 export async function requireAuthenticatedUserId(): Promise<string> {
   if (isE2EMockClassroomEnabled()) {
-    const cookieStore = await cookies();
-    return mockResolveAuthenticatedUserId(cookieStore.get(E2E_MOCK_USER_COOKIE)?.value);
+    return mockRequireAuthenticatedUserId();
   }
 
   const supabase = await createServerSupabaseClient();
