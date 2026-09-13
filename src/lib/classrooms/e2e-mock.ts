@@ -12,6 +12,10 @@ import type {
   ProvisionedStudent,
   ProvisionStudentsResult,
 } from "@/lib/classrooms/types";
+import type {
+  Recommendation,
+  RecommendationContext,
+} from "@/lib/recommendations/types";
 
 const MOCK_TEACHER_ID = "e2e-teacher-id";
 
@@ -201,6 +205,16 @@ const mockConceptTitles = new Map<string, string>([
 ]);
 
 const mockLearningPathsByStudent = new Map<string, MockLearningPath[]>();
+
+const MOCK_PREREQUISITES = [
+  {
+    conceptId: "b1000000-0000-4000-8000-000000000002",
+    prerequisiteId: "b1000000-0000-4000-8000-000000000001",
+    minMastery: 0.4,
+  },
+];
+
+const mockRecommendationLogs: Array<{ studentId: string; recommendation: Recommendation }> = [];
 
 /**
  * Aulas en las que el profesor mock tiene permiso (simula is_classroom_teacher = true).
@@ -568,4 +582,84 @@ export function mockGetLessonDetail(lessonId: string, paths: MockLearningPath[])
         ? ("started" as const)
         : ("not_started" as const),
   };
+}
+
+export function mockGetRecommendationContext(
+  studentId: string,
+  _classroomId?: string,
+): RecommendationContext {
+  const now = new Date();
+  const paths = getMockLearningPathList(studentId);
+  const pathByLesson = new Map(paths.map((path) => [path.lessonId, path]));
+  const studentAttempts = mockAttempts.filter((attempt) => attempt.studentId === studentId);
+
+  const concepts = [...mockConceptTitles.entries()].map(([id, title]) => ({ id, title }));
+
+  const masteryByConcept = new Map<
+    string,
+    {
+      conceptId: string;
+      mastery: number;
+      lastAttemptAt: Date | null;
+    }
+  >();
+
+  for (const concept of concepts) {
+    const conceptAttempts = studentAttempts
+      .filter(
+        (attempt) =>
+          mockExercises.find((exercise) => exercise.id === attempt.exerciseId)?.conceptId ===
+          concept.id,
+      )
+      .sort((left, right) => right.createdAt.getTime() - left.createdAt.getTime());
+
+    masteryByConcept.set(concept.id, {
+      conceptId: concept.id,
+      mastery: mockMasteryByStudentConcept.get(`${studentId}:${concept.id}`) ?? 0,
+      lastAttemptAt: conceptAttempts[0]?.createdAt ?? null,
+    });
+  }
+
+  return {
+    now,
+    concepts,
+    masteryByConcept,
+    exercises: mockExercises.map((exercise) => ({
+      id: exercise.id,
+      conceptId: exercise.conceptId,
+      difficulty: exercise.difficulty,
+    })),
+    attempts: studentAttempts.map((attempt) => ({
+      exerciseId: attempt.exerciseId,
+      conceptId:
+        mockExercises.find((exercise) => exercise.id === attempt.exerciseId)?.conceptId ?? "",
+      correct: attempt.correct,
+      createdAt: attempt.createdAt,
+    })),
+    lessons: MOCK_COURSE.module.lessons.map((lesson) => ({
+      id: lesson.id,
+      title: lesson.title,
+      moduleOrderIndex: MOCK_COURSE.module.orderIndex,
+      orderIndex: lesson.orderIndex,
+      conceptIds: lesson.conceptIds,
+      progressStatus:
+        pathByLesson.get(lesson.id)?.status === "completed"
+          ? ("completed" as const)
+          : pathByLesson.has(lesson.id)
+            ? ("started" as const)
+            : ("not_started" as const),
+    })),
+    prerequisites: MOCK_PREREQUISITES,
+    pendingAssignments: [],
+  };
+}
+
+export function mockLogRecommendation(studentId: string, recommendation: Recommendation): void {
+  mockRecommendationLogs.push({ studentId, recommendation });
+}
+
+export function mockGetRecommendationLogs(studentId: string): Recommendation[] {
+  return mockRecommendationLogs
+    .filter((entry) => entry.studentId === studentId)
+    .map((entry) => entry.recommendation);
 }

@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`recommendation rules > R1 — prioriza asignación pendiente del aula 1`] = `"Tienes una tarea pendiente en el aula 3º A."`;
+
+exports[`recommendation rules > R2 — recupera el concepto con mastery más bajo sin práctica reciente 1`] = `"Tu dominio de «Ecuaciones básicas» es bajo (20%). Practiquemos para reforzarlo."`;
+
+exports[`recommendation rules > R3 — refuerza concepto en developing con errores recientes 1`] = `"Has tenido dificultades recientes con «Ecuaciones básicas». Un poco más de práctica ayudará."`;
+
+exports[`recommendation rules > R4 — avanza cuando los prerrequisitos están cumplidos 1`] = `"Ya dominas los conceptos previos. ¡Siguiente paso: «Ecuaciones avanzadas»!"`;
+
+exports[`recommendation rules > R5 — sugiere repaso espaciado en conceptos proficient 1`] = `"Hace tiempo que no practicas «Ecuaciones básicas». Un repaso rápido lo mantendrá fresco."`;
+
+exports[`recommendation rules > R6 — recomienda descanso tras 5 ejercicios en la última hora 1`] = `"¡Buen trabajo! Tómate un descanso o repasa lo aprendido mañana."`;
+
+exports[`recommendation rules > R7 — continúa con la siguiente lección lineal del curso 1`] = `"Continúa con la siguiente lección del curso."`;

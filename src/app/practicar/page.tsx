@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ExerciseRenderer } from "@/components/exercises/exercise-renderer";
+import { RecommendationCard } from "@/components/learning/recommendation-card";
 import { getAuthenticatedUserId } from "@/lib/auth/session";
-import { getNextPracticeExercise } from "@/lib/exercises/queries";
+import { getRecommendedPracticeSession } from "@/lib/recommendations/service";
 import { Button } from "@/components/ui/button";
 
 type PracticarPageProps = {
@@ -17,7 +18,13 @@ export default async function PracticarPage({ searchParams }: PracticarPageProps
   }
 
   const { ejercicio } = await searchParams;
-  const exercise = await getNextPracticeExercise(ejercicio);
+  const session = await getRecommendedPracticeSession(ejercicio);
+
+  if (!session) {
+    redirect("/entrar");
+  }
+
+  const { recommendation, exercise } = session;
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 p-6 sm:p-8">
@@ -38,7 +45,21 @@ export default async function PracticarPage({ searchParams }: PracticarPageProps
         )}
       </header>
 
-      {!exercise ? (
+      {recommendation && <RecommendationCard recommendation={recommendation} />}
+
+      {recommendation?.action === "rest" ? (
+        <div
+          className="rounded-lg border border-border bg-paper-raised p-6 text-center"
+          data-testid="practice-rest-panel"
+        >
+          <p className="text-muted-foreground">
+            Has practicado mucho en la última hora. Descansa un poco antes de continuar.
+          </p>
+          <Link href="/curso" className="mt-4 inline-block">
+            <Button variant="outline">Ver curso</Button>
+          </Link>
+        </div>
+      ) : !exercise ? (
         <div className="rounded-lg border border-border bg-paper-raised p-6 text-center">
           <p className="text-muted-foreground">No hay ejercicios disponibles todavía.</p>
           <Link href="/aprender" className="mt-4 inline-block">

@@ -55,6 +55,13 @@ values
     'Resolver ecuaciones que requieren aplicar la propiedad distributiva antes de despejar.'
   );
 
+insert into public.concept_prerequisites (concept_id, prerequisite_id, min_mastery)
+values (
+  'b1000000-0000-4000-8000-000000000002',
+  'b1000000-0000-4000-8000-000000000001',
+  0.4
+);
+
 insert into public.lesson_concepts (lesson_id, concept_id)
 values
   ('a3000000-0000-4000-8000-000000000001', 'b1000000-0000-4000-8000-000000000001'),
