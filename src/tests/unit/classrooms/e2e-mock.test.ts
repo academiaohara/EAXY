@@ -3,8 +3,10 @@ import { AuthorizationError } from "@/lib/classrooms/errors";
 import {
   isE2EMockClassroomEnabled,
   mockAssertClassroomTeacher,
+  mockGetCourseOutline,
   mockGetStudentPassword,
   mockIsClassroomTeacher,
+  mockMarkLessonCompleted,
   mockProvisionStudents,
   mockSignInStudent,
   mockSubmitExerciseAttempt,
@@ -70,5 +72,21 @@ describe("mock authorization", () => {
     );
 
     expect(attempt.correct).toBe(true);
+  });
+
+  it("mockMarkLessonCompleted actualiza el resumen del curso", () => {
+    const studentId = "e2e-student-curso-test";
+    mockMarkLessonCompleted(studentId, "a3000000-0000-4000-8000-000000000001");
+
+    const outline = mockGetCourseOutline([
+      {
+        lessonId: "a3000000-0000-4000-8000-000000000001",
+        status: "completed",
+        completedAt: "2026-09-13T12:00:00.000Z",
+      },
+    ]);
+
+    expect(outline.completedLessons).toBe(1);
+    expect(outline.totalLessons).toBe(3);
   });
 });

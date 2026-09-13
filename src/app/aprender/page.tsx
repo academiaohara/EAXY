@@ -19,11 +19,18 @@ export default async function AprenderPage() {
         </p>
       </div>
 
-      <Link href="/practicar">
-        <Button size="lg" data-testid="aprender-practicar-link">
-          Empezar a practicar
-        </Button>
-      </Link>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Link href="/curso">
+          <Button size="lg" variant="outline" data-testid="aprender-curso-link">
+            Ver curso
+          </Button>
+        </Link>
+        <Link href="/practicar">
+          <Button size="lg" data-testid="aprender-practicar-link">
+            Empezar a practicar
+          </Button>
+        </Link>
+      </div>
     </main>
   );
 }
