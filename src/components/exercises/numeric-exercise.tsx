@@ -7,18 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { NumericContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type NumericExerciseProps = {
   exerciseId: string;
   content: NumericContent;
+  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
+export function NumericExercise({ exerciseId, content, onCompleted }: NumericExerciseProps) {
   const [value, setValue] = useState("");
-  const [feedback, setFeedback] = useState<{
-    correct: boolean;
-    correctAnswer: string | number;
-  } | null>(null);
+  const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
   const [isPending, startTransition] = useTransition();
@@ -41,6 +40,7 @@ export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onCompleted?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
@@ -56,16 +56,19 @@ export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
 
       <div className="space-y-2">
         <Label htmlFor={`numeric-${exerciseId}`}>Tu respuesta</Label>
-        <Input
-          id={`numeric-${exerciseId}`}
-          type="text"
-          inputMode="decimal"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-          disabled={isPending || feedback !== null}
-          className="max-w-xs font-mono"
-          data-testid="numeric-exercise-input"
-        />
+        <div className="flex max-w-xs items-center gap-2">
+          <Input
+            id={`numeric-${exerciseId}`}
+            type="text"
+            inputMode="decimal"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+            disabled={isPending || feedback !== null}
+            className="font-mono"
+            data-testid="numeric-exercise-input"
+          />
+          {content.unit && <span className="text-sm text-ink-muted">{content.unit}</span>}
+        </div>
       </div>
 
       {errorMessage && (
@@ -73,15 +76,21 @@ export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
       )}
 
       {feedback && (
-        <p
-          className={`text-sm ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}
-          role="status"
-          data-testid="exercise-feedback"
-        >
-          {feedback.correct
-            ? "Correcto."
-            : `Incorrecto. La respuesta correcta es: ${feedback.correctAnswer}`}
-        </p>
+        <div className="space-y-2" role="status" data-testid="exercise-feedback">
+          <p className={`text-sm font-medium ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}>
+            {feedback.correct
+              ? "¡Correcto!"
+              : `Incorrecto. La respuesta correcta es: ${feedback.correctAnswer}${content.unit ? ` ${content.unit}` : ""}`}
+          </p>
+          {feedback.explanation && (
+            <p className="rounded-lg bg-muted/60 px-3 py-2 text-sm text-ink-muted">{feedback.explanation}</p>
+          )}
+          {feedback.mastery !== undefined && (
+            <p className="text-xs text-ink-muted">
+              Dominio actualizado: {Math.round(feedback.mastery * 100)} %
+            </p>
+          )}
+        </div>
       )}
 
       <Button

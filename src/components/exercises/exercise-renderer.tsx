@@ -8,14 +8,16 @@ import type {
   MultipleChoiceContent,
   NumericContent,
 } from "@/lib/exercise-engine/types";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type ExerciseRendererProps = {
   exerciseId: string;
   type: ExerciseType;
   content: unknown;
+  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRendererProps) {
+export function ExerciseRenderer({ exerciseId, type, content, onCompleted }: ExerciseRendererProps) {
   const parsedContent = parseExerciseContent(type, content);
 
   switch (type) {
@@ -24,6 +26,7 @@ export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRenderer
         <MultipleChoiceExercise
           exerciseId={exerciseId}
           content={parsedContent as MultipleChoiceContent}
+          onCompleted={onCompleted}
         />
       );
     case "numeric":
@@ -31,6 +34,7 @@ export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRenderer
         <NumericExercise
           exerciseId={exerciseId}
           content={parsedContent as NumericContent}
+          onCompleted={onCompleted}
         />
       );
     default:

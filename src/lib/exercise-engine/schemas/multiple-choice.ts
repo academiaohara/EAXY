@@ -11,6 +11,7 @@ export const multipleChoiceContentSchema = z.object({
     )
     .min(2),
   correctOptionId: z.string().min(1),
+  explanation: z.string().min(1).optional(),
 });
 
 export const multipleChoiceAnswerSchema = z.object({

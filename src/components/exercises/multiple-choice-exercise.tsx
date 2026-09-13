@@ -6,18 +6,21 @@ import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import type { MultipleChoiceContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type MultipleChoiceExerciseProps = {
   exerciseId: string;
   content: MultipleChoiceContent;
+  onCompleted?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceExerciseProps) {
+export function MultipleChoiceExercise({
+  exerciseId,
+  content,
+  onCompleted,
+}: MultipleChoiceExerciseProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<{
-    correct: boolean;
-    correctAnswer: string | number;
-  } | null>(null);
+  const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
   const [isPending, startTransition] = useTransition();
@@ -37,6 +40,7 @@ export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceEx
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onCompleted?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
@@ -46,7 +50,9 @@ export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceEx
     });
   }
 
-  const selectedLabel = content.options.find((option) => option.id === feedback?.correctAnswer)?.text;
+  const selectedLabel = content.options.find(
+    (option) => option.id === feedback?.correctAnswer,
+  )?.text;
 
   return (
     <div className="space-y-4" data-testid="multiple-choice-exercise">
@@ -80,15 +86,21 @@ export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceEx
       )}
 
       {feedback && (
-        <p
-          className={`text-sm ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}
-          role="status"
-          data-testid="exercise-feedback"
-        >
-          {feedback.correct
-            ? "Correcto."
-            : `Incorrecto. La respuesta correcta es: ${selectedLabel ?? feedback.correctAnswer}`}
-        </p>
+        <div className="space-y-2" role="status" data-testid="exercise-feedback">
+          <p className={`text-sm font-medium ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}>
+            {feedback.correct
+              ? "¡Correcto!"
+              : `Incorrecto. La respuesta correcta es: ${selectedLabel ?? feedback.correctAnswer}`}
+          </p>
+          {feedback.explanation && (
+            <p className="rounded-lg bg-muted/60 px-3 py-2 text-sm text-ink-muted">{feedback.explanation}</p>
+          )}
+          {feedback.mastery !== undefined && (
+            <p className="text-xs text-ink-muted">
+              Dominio actualizado: {Math.round(feedback.mastery * 100)} %
+            </p>
+          )}
+        </div>
       )}
 
       <Button

@@ -9,7 +9,8 @@ import type {
   ProvisionStudentsResult,
 } from "@/lib/classrooms/types";
 
-const MOCK_TEACHER_ID = "e2e-teacher-id";
+export const MOCK_TEACHER_ID = "e2e-teacher-id";
+export const E2E_MOCK_USER_COOKIE = "e2e_mock_user_id";
 
 /**
  * Aulas en las que el profesor mock tiene permiso (simula is_classroom_teacher = true).
@@ -39,14 +40,30 @@ export function isE2EMockClassroomEnabled(): boolean {
   );
 }
 
-/** Simula auth.getUser() → usuario autenticado como profesor E2E. */
+/** Simula auth.getUser(). Lee la cookie de sesión mock o devuelve el profesor por defecto. */
+export function mockResolveAuthenticatedUserId(cookieUserId?: string | null): string {
+  if (cookieUserId && cookieUserId.length > 0) {
+    return cookieUserId;
+  }
+  return MOCK_TEACHER_ID;
+}
+
+/** @deprecated Usar mockResolveAuthenticatedUserId con cookie. */
 export function mockRequireAuthenticatedUserId(): string {
   return MOCK_TEACHER_ID;
+}
+
+export function mockGetStudentIdForUsername(username: string): string | null {
+  return mockCredentialsByUsername.get(username)?.studentId ?? null;
 }
 
 /** Simula la RPC is_classroom_teacher(classroom_id). */
 export function mockIsClassroomTeacher(classroomId: string): boolean {
   return authorizedClassroomIds.has(classroomId);
+}
+
+export function mockAuthorizeClassroom(classroomId: string): void {
+  authorizedClassroomIds.add(classroomId);
 }
 
 /** Simula assertClassroomTeacher: exige sesión + is_classroom_teacher. */

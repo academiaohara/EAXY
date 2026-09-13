@@ -19,6 +19,7 @@ function checkMultipleChoice(
     correct,
     score: correct ? 1 : 0,
     correctAnswer: content.correctOptionId,
+    explanation: content.explanation,
   };
 }
 
@@ -30,6 +31,7 @@ function checkNumeric(content: NumericContent, answer: NumericAnswer): CheckAnsw
     correct,
     score: correct ? 1 : 0,
     correctAnswer: content.correctAnswer,
+    explanation: content.explanation,
   };
 }
 
