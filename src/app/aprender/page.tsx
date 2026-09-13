@@ -21,6 +21,16 @@ export default async function AprenderPage() {
       </header>
 
       <section className="rounded-xl border border-border bg-paper-raised p-6">
+        <h2 className="font-heading text-xl font-semibold">Curso de matemáticas</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Recorre las lecciones del curso, mira los vídeos y practica concepto a concepto.
+        </p>
+        <Button className="mt-4" asChild data-testid="aprender-course-link">
+          <Link href="/aprender/curso">Ver curso</Link>
+        </Button>
+      </section>
+
+      <section className="rounded-xl border border-border bg-paper-raised p-6">
         <h2 className="font-heading text-xl font-semibold">Práctica libre</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           Resuelve ejercicios del curso de ecuaciones. Cada intento actualiza tu mastery.

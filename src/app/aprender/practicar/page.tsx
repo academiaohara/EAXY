@@ -5,13 +5,17 @@ import { PracticeSession } from "@/components/learning/practice-session";
 import { Button } from "@/components/ui/button";
 
 type PracticarPageProps = {
-  searchParams: Promise<{ ejercicio?: string }>;
+  searchParams: Promise<{ ejercicio?: string; leccion?: string }>;
 };
 
 export default async function PracticarPage({ searchParams }: PracticarPageProps) {
   const studentId = await requireAuthenticatedUserOrRedirect();
-  const { ejercicio } = await searchParams;
-  const exercise = await getPracticeExerciseForStudent(studentId, ejercicio ?? null);
+  const { ejercicio, leccion } = await searchParams;
+  const exercise = await getPracticeExerciseForStudent(
+    studentId,
+    ejercicio ?? null,
+    leccion ?? null,
+  );
 
   if (!exercise) {
     return (
@@ -29,7 +33,7 @@ export default async function PracticarPage({ searchParams }: PracticarPageProps
 
   return (
     <main className="flex flex-1 flex-col p-6 md:p-8">
-      <PracticeSession exercise={exercise} />
+      <PracticeSession exercise={exercise} lessonId={leccion ?? null} />
     </main>
   );
 }

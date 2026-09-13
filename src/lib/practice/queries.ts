@@ -21,18 +21,42 @@ type ExerciseRow = {
 export async function getPracticeExerciseForStudent(
   studentId: string,
   preferredExerciseId?: string | null,
+  lessonId?: string | null,
 ): Promise<PracticeExercise | null> {
   if (isE2EMockClassroomEnabled()) {
-    return mockGetPracticeExercise(studentId, preferredExerciseId);
+    return mockGetPracticeExercise(studentId, preferredExerciseId, lessonId);
   }
 
   const supabase = await createServerSupabaseClient();
 
-  const { data: exercises, error: exercisesError } = await supabase
+  let exercisesQuery = supabase
     .from("exercises")
     .select("id, concept_id, type, difficulty, content, concepts(title)")
     .order("difficulty", { ascending: true })
     .order("id", { ascending: true });
+
+  if (lessonId) {
+    const { data: lessonConcepts, error: lessonConceptsError } = await supabase
+      .from("lesson_concepts")
+      .select("concept_id")
+      .eq("lesson_id", lessonId);
+
+    if (lessonConceptsError) {
+      throw new Error(
+        `No se pudieron cargar conceptos de la lección: ${lessonConceptsError.message}`,
+      );
+    }
+
+    const conceptIds = (lessonConcepts ?? []).map((row) => row.concept_id);
+
+    if (conceptIds.length === 0) {
+      return null;
+    }
+
+    exercisesQuery = exercisesQuery.in("concept_id", conceptIds);
+  }
+
+  const { data: exercises, error: exercisesError } = await exercisesQuery;
 
   if (exercisesError) {
     throw new Error(`No se pudieron cargar ejercicios: ${exercisesError.message}`);

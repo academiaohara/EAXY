@@ -17,13 +17,21 @@ values (
 );
 
 insert into public.lessons (id, module_id, title, order_index, video_url)
-values (
-  'a3000000-0000-4000-8000-000000000001',
-  'a2000000-0000-4000-8000-000000000001',
-  'Ecuaciones de primer grado',
-  0,
-  null
-);
+values
+  (
+    'a3000000-0000-4000-8000-000000000001',
+    'a2000000-0000-4000-8000-000000000001',
+    'Ecuaciones lineales básicas',
+    0,
+    'https://www.youtube.com/embed/KO5jN1S0N-k'
+  ),
+  (
+    'a3000000-0000-4000-8000-000000000002',
+    'a2000000-0000-4000-8000-000000000001',
+    'Ecuaciones con paréntesis',
+    1,
+    null
+  );
 
 insert into public.concepts (id, slug, title, description)
 values
@@ -43,7 +51,7 @@ values
 insert into public.lesson_concepts (lesson_id, concept_id)
 values
   ('a3000000-0000-4000-8000-000000000001', 'b1000000-0000-4000-8000-000000000001'),
-  ('a3000000-0000-4000-8000-000000000001', 'b1000000-0000-4000-8000-000000000002');
+  ('a3000000-0000-4000-8000-000000000002', 'b1000000-0000-4000-8000-000000000002');
 
 insert into public.exercises (id, concept_id, type, difficulty, content)
 values

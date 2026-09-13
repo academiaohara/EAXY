@@ -10,13 +10,14 @@ import type { PracticeExercise } from "@/lib/practice/types";
 
 type PracticeSessionProps = {
   exercise: PracticeExercise;
+  lessonId?: string | null;
 };
 
 function formatMasteryPercent(mastery: number): string {
   return `${Math.round(mastery * 100)}%`;
 }
 
-export function PracticeSession({ exercise }: PracticeSessionProps) {
+export function PracticeSession({ exercise, lessonId }: PracticeSessionProps) {
   const router = useRouter();
   const [attemptResult, setAttemptResult] = useState<SubmitExerciseAttemptResult | null>(null);
 
@@ -59,7 +60,9 @@ export function PracticeSession({ exercise }: PracticeSessionProps) {
             Siguiente ejercicio
           </Button>
           <Button type="button" variant="outline" asChild>
-            <Link href="/aprender">Volver a Aprender</Link>
+            <Link href={lessonId ? `/aprender/curso/${lessonId}` : "/aprender"}>
+              {lessonId ? "Volver a la lección" : "Volver a Aprender"}
+            </Link>
           </Button>
         </div>
       )}

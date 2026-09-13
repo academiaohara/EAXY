@@ -2,6 +2,10 @@ import { cookies } from "next/headers";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { mockResetLearningPathState } from "@/lib/classrooms/e2e-mock-learning-paths";
+import {
+  getContentExerciseIdsForLesson,
+} from "@/lib/content/fixtures";
 import {
   getPracticeExerciseFixtureById,
   PRACTICE_EXERCISE_FIXTURES,
@@ -53,10 +57,7 @@ export async function mockSetSessionUserId(userId: string): Promise<void> {
 export function mockResetPracticeState(): void {
   mockAttempts.length = 0;
   inMemorySessionUserId = null;
-}
-
-function getStudentAttempts(studentId: string): MockAttemptRecord[] {
-  return mockAttempts.filter((attempt) => attempt.studentId === studentId);
+  mockResetLearningPathState();
 }
 
 function getMasteryByConcept(studentId: string): Record<string, number> {
@@ -83,12 +84,44 @@ function getMasteryByConcept(studentId: string): Record<string, number> {
   return masteryByConcept;
 }
 
+export function mockGetMasteryByConcept(studentId: string): Record<string, number> {
+  return getMasteryByConcept(studentId);
+}
+
+export function mockGetConceptIdsWithCorrectAttempt(studentId: string): string[] {
+  const conceptIds = new Set<string>();
+
+  for (const attempt of mockAttempts) {
+    if (attempt.studentId === studentId && attempt.correct) {
+      conceptIds.add(attempt.conceptId);
+    }
+  }
+
+  return [...conceptIds];
+}
+
+function getStudentAttempts(studentId: string): MockAttemptRecord[] {
+  return mockAttempts.filter((attempt) => attempt.studentId === studentId);
+}
+
+function filterExercisesForLesson(lessonId?: string | null) {
+  if (!lessonId) {
+    return PRACTICE_EXERCISE_FIXTURES;
+  }
+
+  const allowedExerciseIds = new Set(getContentExerciseIdsForLesson(lessonId));
+  return PRACTICE_EXERCISE_FIXTURES.filter((exercise) => allowedExerciseIds.has(exercise.id));
+}
+
 export function mockGetPracticeExercise(
   studentId: string,
   preferredExerciseId?: string | null,
+  lessonId?: string | null,
 ): PracticeExercise | null {
+  const lessonExercises = filterExercisesForLesson(lessonId);
+
   const exerciseId = selectNextPracticeExercise(
-    PRACTICE_EXERCISE_FIXTURES.map((exercise) => ({
+    lessonExercises.map((exercise) => ({
       id: exercise.id,
       conceptId: exercise.conceptId,
       difficulty: exercise.difficulty,
