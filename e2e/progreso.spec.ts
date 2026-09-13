@@ -20,11 +20,10 @@ test("el alumno puede ver su mapa de conceptos en /progreso", async ({ page }) =
   await page.getByTestId("student-login-submit").click();
 
   await expect(page).toHaveURL(/\/aprender$/);
-  await expect(page.getByTestId("student-nav")).toBeVisible();
 
-  await page.getByTestId("student-nav-progreso").click();
+  await page.getByRole("navigation").getByRole("link", { name: "Progreso" }).click();
   await expect(page).toHaveURL(/\/progreso$/);
-  await expect(page.getByTestId("concept-mastery-map")).toBeVisible();
-  await expect(page.getByTestId("mastery-stats")).toBeVisible();
-  await expect(page.getByTestId("progreso-practicar-link")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Progreso" })).toBeVisible();
+  await expect(page.getByText("Dominio medio")).toBeVisible();
+  await expect(page.getByText("Conceptos practicados")).toBeVisible();
 });

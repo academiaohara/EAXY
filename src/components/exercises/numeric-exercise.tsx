@@ -60,16 +60,19 @@ export function NumericExercise({
 
       <div className="space-y-2">
         <Label htmlFor={`numeric-${exerciseId}`}>Tu respuesta</Label>
-        <Input
-          id={`numeric-${exerciseId}`}
-          type="text"
-          inputMode="decimal"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
-          disabled={isPending || feedback !== null}
-          className="max-w-xs font-mono"
-          data-testid="numeric-exercise-input"
-        />
+        <div className="flex max-w-xs items-center gap-2">
+          <Input
+            id={`numeric-${exerciseId}`}
+            type="text"
+            inputMode="decimal"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+            disabled={isPending || feedback !== null}
+            className="font-mono"
+            data-testid="numeric-exercise-input"
+          />
+          {content.unit && <span className="text-sm text-ink-muted">{content.unit}</span>}
+        </div>
       </div>
 
       {errorMessage && (
@@ -77,15 +80,21 @@ export function NumericExercise({
       )}
 
       {feedback && (
-        <p
-          className={`text-sm ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}
-          role="status"
-          data-testid="exercise-feedback"
-        >
-          {feedback.correct
-            ? "Correcto."
-            : `Incorrecto. La respuesta correcta es: ${feedback.correctAnswer}`}
-        </p>
+        <div className="space-y-2" role="status" data-testid="exercise-feedback">
+          <p className={`text-sm font-medium ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}>
+            {feedback.correct
+              ? "¡Correcto!"
+              : `Incorrecto. La respuesta correcta es: ${feedback.correctAnswer}${content.unit ? ` ${content.unit}` : ""}`}
+          </p>
+          {feedback.explanation && (
+            <p className="rounded-lg bg-muted/60 px-3 py-2 text-sm text-ink-muted">{feedback.explanation}</p>
+          )}
+          {feedback.mastery !== undefined && (
+            <p className="text-xs text-ink-muted">
+              Dominio actualizado: {Math.round(feedback.mastery * 100)} %
+            </p>
+          )}
+        </div>
       )}
 
       <Button

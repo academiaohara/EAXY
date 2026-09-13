@@ -95,6 +95,7 @@ export async function submitExerciseAttempt(
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
+    explanation: result.explanation,
     mastery,
     conceptTitle: concept?.title ?? "Concepto",
     lessonCompleted,
