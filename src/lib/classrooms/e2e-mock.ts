@@ -39,9 +39,10 @@ export function isE2EMockClassroomEnabled(): boolean {
   );
 }
 
-/** Simula auth.getUser() → usuario autenticado como profesor E2E. */
-export function mockRequireAuthenticatedUserId(): string {
-  return MOCK_TEACHER_ID;
+/** Simula auth.getUser() → sesión E2E (profesor por defecto en rutas docentes). */
+export async function mockRequireAuthenticatedUserId(): Promise<string> {
+  const { mockGetSessionUserId } = await import("@/lib/classrooms/e2e-mock-practice");
+  return (await mockGetSessionUserId()) ?? MOCK_TEACHER_ID;
 }
 
 /** Simula la RPC is_classroom_teacher(classroom_id). */
@@ -50,12 +51,12 @@ export function mockIsClassroomTeacher(classroomId: string): boolean {
 }
 
 /** Simula assertClassroomTeacher: exige sesión + is_classroom_teacher. */
-export function mockAssertClassroomTeacher(classroomId: string): string {
-  mockRequireAuthenticatedUserId();
+export async function mockAssertClassroomTeacher(classroomId: string): Promise<string> {
   if (!mockIsClassroomTeacher(classroomId)) {
     throw new AuthorizationError("No tienes permiso para gestionar esta aula");
   }
-  return MOCK_TEACHER_ID;
+
+  return mockRequireAuthenticatedUserId();
 }
 
 export function getE2EMockClassroomName(): string {
@@ -161,9 +162,16 @@ export function mockGetStudentPassword(studentId: string): string {
   return `mock-password-${studentId}`;
 }
 
-export function mockSignInStudent(username: string, password: string): boolean {
+export function mockSignInStudent(
+  username: string,
+  password: string,
+): MockStudentCredential | null {
   const credentials = mockCredentialsByUsername.get(username);
-  return credentials !== undefined && credentials.password === password;
+  if (!credentials || credentials.password !== password) {
+    return null;
+  }
+
+  return credentials;
 }
 
 export function getMockStudentAuthEmail(username: string): string | null {

@@ -36,10 +36,10 @@ describe("isE2EMockClassroomEnabled", () => {
 });
 
 describe("mock authorization", () => {
-  it("permite e2e-classroom y rechaza aulas no autorizadas", () => {
+  it("permite e2e-classroom y rechaza aulas no autorizadas", async () => {
     expect(mockIsClassroomTeacher("e2e-classroom")).toBe(true);
     expect(mockIsClassroomTeacher("otra-aula")).toBe(false);
-    expect(() => mockAssertClassroomTeacher("otra-aula")).toThrow(AuthorizationError);
+    await expect(mockAssertClassroomTeacher("otra-aula")).rejects.toThrow(AuthorizationError);
   });
 
   it("getStudentPassword mock exige alumno existente y aula autorizada", () => {

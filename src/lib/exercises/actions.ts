@@ -1,6 +1,8 @@
 "use server";
 
 import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
+import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { mockSubmitExerciseAttempt } from "@/lib/classrooms/e2e-mock-practice";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
@@ -22,6 +24,16 @@ export async function submitExerciseAttempt(
   hintsUsed = 0,
 ): Promise<SubmitExerciseAttemptResult> {
   const studentId = await requireAuthenticatedUserId();
+
+  if (isE2EMockClassroomEnabled()) {
+    return mockSubmitExerciseAttempt(
+      studentId,
+      exerciseId,
+      answer,
+      Math.max(0, timeSpentMs),
+    );
+  }
+
   const supabase = await createServerSupabaseClient();
 
   const { data: exercise, error: exerciseError } = await supabase
@@ -71,8 +83,24 @@ export async function submitExerciseAttempt(
 
   await recalculateStudentConceptMastery(studentId, typedExercise.concept_id);
 
+  const { data: conceptRow } = await supabase
+    .from("concepts")
+    .select("title")
+    .eq("id", typedExercise.concept_id)
+    .maybeSingle();
+
+  const { data: masteryRow } = await supabase
+    .from("student_concept_mastery")
+    .select("mastery")
+    .eq("student_id", studentId)
+    .eq("concept_id", typedExercise.concept_id)
+    .maybeSingle();
+
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
+    conceptId: typedExercise.concept_id,
+    conceptTitle: conceptRow?.title,
+    mastery: masteryRow ? Number(masteryRow.mastery) : undefined,
   };
 }

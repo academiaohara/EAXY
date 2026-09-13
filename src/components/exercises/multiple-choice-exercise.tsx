@@ -6,13 +6,19 @@ import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import type { MultipleChoiceContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type MultipleChoiceExerciseProps = {
   exerciseId: string;
   content: MultipleChoiceContent;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceExerciseProps) {
+export function MultipleChoiceExercise({
+  exerciseId,
+  content,
+  onAttemptResult,
+}: MultipleChoiceExerciseProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<{
     correct: boolean;
@@ -37,6 +43,7 @@ export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceEx
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(

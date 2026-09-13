@@ -7,13 +7,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { NumericContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type NumericExerciseProps = {
   exerciseId: string;
   content: NumericContent;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
-export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
+export function NumericExercise({
+  exerciseId,
+  content,
+  onAttemptResult,
+}: NumericExerciseProps) {
   const [value, setValue] = useState("");
   const [feedback, setFeedback] = useState<{
     correct: boolean;
@@ -41,6 +47,7 @@ export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
