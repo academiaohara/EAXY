@@ -14,6 +14,7 @@ import {
 import {
   isE2EMockClassroomEnabled,
   mockSignInStudent,
+  setMockStudentSession,
 } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -52,11 +53,13 @@ export async function signInStudent(
   }
 
   if (isE2EMockClassroomEnabled()) {
-    if (!mockSignInStudent(normalizedUsername, password)) {
+    const studentId = mockSignInStudent(normalizedUsername, password);
+    if (!studentId) {
       recordFailedLoginAttempt(normalizedUsername);
       return { error: GENERIC_STUDENT_LOGIN_ERROR };
     }
 
+    await setMockStudentSession(studentId);
     clearLoginAttempts(normalizedUsername);
     redirect(STUDENT_LOGIN_REDIRECT_PATH);
   }

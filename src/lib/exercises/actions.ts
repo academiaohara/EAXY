@@ -1,9 +1,11 @@
 "use server";
 
 import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
+import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { mockSubmitExerciseAttempt } from "@/lib/exercises/e2e-mock";
 import { recalculateStudentConceptMastery } from "@/lib/exercises/mastery";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
@@ -22,6 +24,11 @@ export async function submitExerciseAttempt(
   hintsUsed = 0,
 ): Promise<SubmitExerciseAttemptResult> {
   const studentId = await requireAuthenticatedUserId();
+
+  if (isE2EMockClassroomEnabled()) {
+    return mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
+  }
+
   const supabase = await createServerSupabaseClient();
 
   const { data: exercise, error: exerciseError } = await supabase
@@ -69,10 +76,18 @@ export async function submitExerciseAttempt(
     throw new Error(`No se pudo guardar el intento: ${insertError.message}`);
   }
 
-  await recalculateStudentConceptMastery(studentId, typedExercise.concept_id);
+  const mastery = await recalculateStudentConceptMastery(studentId, typedExercise.concept_id);
+
+  const { data: concept } = await supabase
+    .from("concepts")
+    .select("title")
+    .eq("id", typedExercise.concept_id)
+    .maybeSingle();
 
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
+    mastery,
+    conceptTitle: concept?.title ?? "Concepto",
   };
 }

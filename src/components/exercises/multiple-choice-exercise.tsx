@@ -10,13 +10,20 @@ import { submitExerciseAttempt } from "@/lib/exercises/actions";
 type MultipleChoiceExerciseProps = {
   exerciseId: string;
   content: MultipleChoiceContent;
+  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
 };
 
-export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceExerciseProps) {
+export function MultipleChoiceExercise({
+  exerciseId,
+  content,
+  onAttemptComplete,
+}: MultipleChoiceExerciseProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<{
     correct: boolean;
     correctAnswer: string | number;
+    mastery: number;
+    conceptTitle: string;
   } | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
@@ -37,6 +44,10 @@ export function MultipleChoiceExercise({ exerciseId, content }: MultipleChoiceEx
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onAttemptComplete?.({
+          mastery: result.mastery,
+          conceptTitle: result.conceptTitle,
+        });
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
