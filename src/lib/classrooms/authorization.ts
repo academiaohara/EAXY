@@ -2,9 +2,23 @@ import { AuthorizationError } from "@/lib/classrooms/errors";
 import {
   isE2EMockClassroomEnabled,
   mockAssertClassroomTeacher,
+  mockGetSessionUserId,
   mockRequireAuthenticatedUserId,
 } from "@/lib/classrooms/e2e-mock";
 import { createServerSupabaseClient } from "@/lib/supabase";
+
+export async function getAuthenticatedUserIdOrNull(): Promise<string | null> {
+  if (isE2EMockClassroomEnabled()) {
+    return mockGetSessionUserId();
+  }
+
+  const supabase = await createServerSupabaseClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return user?.id ?? null;
+}
 
 export async function requireAuthenticatedUserId(): Promise<string> {
   if (isE2EMockClassroomEnabled()) {

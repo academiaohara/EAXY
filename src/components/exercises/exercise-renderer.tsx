@@ -13,9 +13,15 @@ type ExerciseRendererProps = {
   exerciseId: string;
   type: ExerciseType;
   content: unknown;
+  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
 };
 
-export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRendererProps) {
+export function ExerciseRenderer({
+  exerciseId,
+  type,
+  content,
+  onAttemptComplete,
+}: ExerciseRendererProps) {
   const parsedContent = parseExerciseContent(type, content);
 
   switch (type) {
@@ -24,6 +30,7 @@ export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRenderer
         <MultipleChoiceExercise
           exerciseId={exerciseId}
           content={parsedContent as MultipleChoiceContent}
+          onAttemptComplete={onAttemptComplete}
         />
       );
     case "numeric":
@@ -31,6 +38,7 @@ export function ExerciseRenderer({ exerciseId, type, content }: ExerciseRenderer
         <NumericExercise
           exerciseId={exerciseId}
           content={parsedContent as NumericContent}
+          onAttemptComplete={onAttemptComplete}
         />
       );
     default:

@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { AuthorizationError, NotFoundError } from "@/lib/classrooms/errors";
 import {
   formatSequentialUsername,
@@ -10,6 +11,7 @@ import type {
 } from "@/lib/classrooms/types";
 
 const MOCK_TEACHER_ID = "e2e-teacher-id";
+export const E2E_STUDENT_SESSION_COOKIE = "e2e_student_session";
 
 /**
  * Aulas en las que el profesor mock tiene permiso (simula is_classroom_teacher = true).
@@ -39,9 +41,39 @@ export function isE2EMockClassroomEnabled(): boolean {
   );
 }
 
-/** Simula auth.getUser() → usuario autenticado como profesor E2E. */
-export function mockRequireAuthenticatedUserId(): string {
+export async function setMockStudentSession(studentId: string): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.set(E2E_STUDENT_SESSION_COOKIE, studentId, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "lax",
+  });
+}
+
+export async function clearMockStudentSession(): Promise<void> {
+  const cookieStore = await cookies();
+  cookieStore.delete(E2E_STUDENT_SESSION_COOKIE);
+}
+
+/** Devuelve la sesión activa: alumno si inició sesión, si no el profesor mock. */
+export async function mockGetSessionUserId(): Promise<string | null> {
+  const cookieStore = await cookies();
+  const studentId = cookieStore.get(E2E_STUDENT_SESSION_COOKIE)?.value;
+  if (studentId) {
+    return studentId;
+  }
+
   return MOCK_TEACHER_ID;
+}
+
+/** Simula auth.getUser() → usuario autenticado (alumno o profesor E2E). */
+export async function mockRequireAuthenticatedUserId(): Promise<string> {
+  const userId = await mockGetSessionUserId();
+  if (!userId) {
+    throw new AuthorizationError("Debes iniciar sesión para realizar esta acción");
+  }
+
+  return userId;
 }
 
 /** Simula la RPC is_classroom_teacher(classroom_id). */
@@ -49,9 +81,8 @@ export function mockIsClassroomTeacher(classroomId: string): boolean {
   return authorizedClassroomIds.has(classroomId);
 }
 
-/** Simula assertClassroomTeacher: exige sesión + is_classroom_teacher. */
+/** Simula assertClassroomTeacher: el profesor mock siempre tiene permiso en aulas autorizadas. */
 export function mockAssertClassroomTeacher(classroomId: string): string {
-  mockRequireAuthenticatedUserId();
   if (!mockIsClassroomTeacher(classroomId)) {
     throw new AuthorizationError("No tienes permiso para gestionar esta aula");
   }
@@ -161,9 +192,13 @@ export function mockGetStudentPassword(studentId: string): string {
   return `mock-password-${studentId}`;
 }
 
-export function mockSignInStudent(username: string, password: string): boolean {
+export function mockSignInStudent(username: string, password: string): string | null {
   const credentials = mockCredentialsByUsername.get(username);
-  return credentials !== undefined && credentials.password === password;
+  if (!credentials || credentials.password !== password) {
+    return null;
+  }
+
+  return credentials.studentId;
 }
 
 export function getMockStudentAuthEmail(username: string): string | null {

@@ -11,13 +11,20 @@ import { submitExerciseAttempt } from "@/lib/exercises/actions";
 type NumericExerciseProps = {
   exerciseId: string;
   content: NumericContent;
+  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
 };
 
-export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
+export function NumericExercise({
+  exerciseId,
+  content,
+  onAttemptComplete,
+}: NumericExerciseProps) {
   const [value, setValue] = useState("");
   const [feedback, setFeedback] = useState<{
     correct: boolean;
     correctAnswer: string | number;
+    mastery: number;
+    conceptTitle: string;
   } | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
@@ -41,6 +48,10 @@ export function NumericExercise({ exerciseId, content }: NumericExerciseProps) {
           Date.now() - startedAt,
         );
         setFeedback(result);
+        onAttemptComplete?.({
+          mastery: result.mastery,
+          conceptTitle: result.conceptTitle,
+        });
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
