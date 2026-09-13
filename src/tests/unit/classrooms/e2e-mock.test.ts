@@ -6,6 +6,8 @@ import {
   mockGetStudentPassword,
   mockIsClassroomTeacher,
   mockProvisionStudents,
+  mockSignInStudent,
+  mockSubmitExerciseAttempt,
 } from "@/lib/classrooms/e2e-mock";
 
 describe("isE2EMockClassroomEnabled", () => {
@@ -49,5 +51,24 @@ describe("mock authorization", () => {
     expect(() => mockGetStudentPassword("desconocido")).toThrow(
       "No se encontraron credenciales para este alumno",
     );
+  });
+
+  it("mockSignInStudent establece sesión de alumno y permite enviar intentos", () => {
+    const result = mockProvisionStudents("e2e-classroom", ["Luis Práctica"]);
+    const username = result.succeeded[0]?.username;
+    const password = result.succeeded[0]?.password;
+
+    expect(username).toBeDefined();
+    expect(mockSignInStudent(username!, password!)).toBe(true);
+
+    const studentId = `e2e-student-${username!.toLowerCase()}`;
+    const attempt = mockSubmitExerciseAttempt(
+      studentId,
+      "c1000000-0000-4000-8000-000000000001",
+      { selectedOptionId: "b" },
+      1000,
+    );
+
+    expect(attempt.correct).toBe(true);
   });
 });

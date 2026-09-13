@@ -3,6 +3,10 @@ import {
   formatSequentialUsername,
   parseSequentialUsername,
 } from "@/lib/credentials/username";
+import { checkAnswer } from "@/lib/exercise-engine/check-answer";
+import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
+import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { calculateMastery, roundMastery } from "@/lib/mastery/calculator";
 import type {
   ClassroomStudent,
   ProvisionedStudent,
@@ -10,6 +14,58 @@ import type {
 } from "@/lib/classrooms/types";
 
 const MOCK_TEACHER_ID = "e2e-teacher-id";
+
+let mockCurrentStudentId: string | null = null;
+
+type MockExercise = {
+  id: string;
+  conceptId: string;
+  conceptTitle: string;
+  type: ExerciseType;
+  difficulty: number;
+  content: unknown;
+};
+
+type MockAttempt = {
+  studentId: string;
+  exerciseId: string;
+  correct: boolean;
+  createdAt: Date;
+};
+
+const mockExercises: MockExercise[] = [
+  {
+    id: "c1000000-0000-4000-8000-000000000001",
+    conceptId: "b1000000-0000-4000-8000-000000000001",
+    conceptTitle: "Ecuaciones lineales básicas",
+    type: "multiple_choice",
+    difficulty: 1,
+    content: {
+      question: "¿Cuál es el valor de x en la ecuación 2x + 4 = 10?",
+      options: [
+        { id: "a", text: "x = 2" },
+        { id: "b", text: "x = 3" },
+        { id: "c", text: "x = 4" },
+        { id: "d", text: "x = 6" },
+      ],
+      correctOptionId: "b",
+    },
+  },
+  {
+    id: "c1000000-0000-4000-8000-000000000002",
+    conceptId: "b1000000-0000-4000-8000-000000000001",
+    conceptTitle: "Ecuaciones lineales básicas",
+    type: "numeric",
+    difficulty: 2,
+    content: {
+      question: "Resuelve: 3x - 5 = 10. ¿Cuánto vale x?",
+      correctAnswer: 5,
+    },
+  },
+];
+
+const mockAttempts: MockAttempt[] = [];
+const mockMasteryByStudentConcept = new Map<string, number>();
 
 /**
  * Aulas en las que el profesor mock tiene permiso (simula is_classroom_teacher = true).
@@ -39,9 +95,101 @@ export function isE2EMockClassroomEnabled(): boolean {
   );
 }
 
-/** Simula auth.getUser() → usuario autenticado como profesor E2E. */
+export function mockGetAuthenticatedUserId(): string | null {
+  return mockCurrentStudentId ?? MOCK_TEACHER_ID;
+}
+
+/** Simula auth.getUser() → alumno en sesión o profesor E2E por defecto. */
 export function mockRequireAuthenticatedUserId(): string {
-  return MOCK_TEACHER_ID;
+  return mockGetAuthenticatedUserId() ?? MOCK_TEACHER_ID;
+}
+
+export function mockSetCurrentStudentId(studentId: string): void {
+  mockCurrentStudentId = studentId;
+}
+
+export function mockClearCurrentStudentId(): void {
+  mockCurrentStudentId = null;
+}
+
+export function mockGetPracticeExerciseCatalog() {
+  return mockExercises.map((exercise) => ({
+    id: exercise.id,
+    conceptId: exercise.conceptId,
+    type: exercise.type,
+    difficulty: exercise.difficulty,
+  }));
+}
+
+export function mockGetPracticeExercise(exerciseId: string) {
+  const exercise = mockExercises.find((item) => item.id === exerciseId);
+  if (!exercise) {
+    return null;
+  }
+
+  return {
+    id: exercise.id,
+    conceptId: exercise.conceptId,
+    conceptTitle: exercise.conceptTitle,
+    type: exercise.type,
+    difficulty: exercise.difficulty,
+    content: exercise.content,
+  };
+}
+
+export function mockGetAttemptedExerciseIds(studentId: string): Set<string> {
+  const attempted = mockAttempts
+    .filter((attempt) => attempt.studentId === studentId)
+    .map((attempt) => attempt.exerciseId);
+  return new Set(attempted);
+}
+
+export function mockSubmitExerciseAttempt(
+  studentId: string,
+  exerciseId: string,
+  answer: unknown,
+  _timeSpentMs: number,
+): { correct: boolean; correctAnswer: string | number; mastery: number } {
+  const exercise = mockExercises.find((item) => item.id === exerciseId);
+  if (!exercise) {
+    throw new Error("Ejercicio no encontrado");
+  }
+
+  const content = parseExerciseContent(exercise.type, exercise.content);
+  const parsedAnswer = parseExerciseAnswer(exercise.type, answer);
+  const result = checkAnswer(exercise.type, content, parsedAnswer);
+
+  mockAttempts.push({
+    studentId,
+    exerciseId,
+    correct: result.correct,
+    createdAt: new Date(),
+  });
+
+  const conceptAttempts = mockAttempts
+    .filter(
+      (attempt) =>
+        attempt.studentId === studentId &&
+        mockExercises.find((item) => item.id === attempt.exerciseId)?.conceptId ===
+          exercise.conceptId,
+    )
+    .map((attempt) => ({
+      correct: attempt.correct,
+      createdAt: attempt.createdAt,
+    }));
+
+  const mastery = roundMastery(calculateMastery(conceptAttempts));
+  mockMasteryByStudentConcept.set(`${studentId}:${exercise.conceptId}`, mastery);
+
+  return {
+    correct: result.correct,
+    correctAnswer: result.correctAnswer,
+    mastery,
+  };
+}
+
+export function mockGetStudentMastery(studentId: string, conceptId: string): number {
+  return mockMasteryByStudentConcept.get(`${studentId}:${conceptId}`) ?? 0;
 }
 
 /** Simula la RPC is_classroom_teacher(classroom_id). */
@@ -163,7 +311,12 @@ export function mockGetStudentPassword(studentId: string): string {
 
 export function mockSignInStudent(username: string, password: string): boolean {
   const credentials = mockCredentialsByUsername.get(username);
-  return credentials !== undefined && credentials.password === password;
+  if (credentials === undefined || credentials.password !== password) {
+    return false;
+  }
+
+  mockSetCurrentStudentId(credentials.studentId);
+  return true;
 }
 
 export function getMockStudentAuthEmail(username: string): string | null {
