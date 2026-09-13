@@ -197,7 +197,7 @@ export function StudentsTable({ students, onStudentUpdated }: StudentsTableProps
 
           <div className="space-y-4">
             {visiblePassword ? (
-              <p className="rounded-md border bg-muted/40 px-3 py-2 font-mono text-sm" data-testid="visible-password">
+              <p className="rounded-md border border-border bg-cobalt-tint/40 px-3 py-2 font-mono text-sm font-medium tracking-wide" data-testid="visible-password">
                 {visiblePassword}
               </p>
             ) : (
