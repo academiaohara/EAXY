@@ -14,11 +14,11 @@ El motor evalúa estas reglas tras eventos relevantes y crea asignaciones según
 
 Heredados de `classrooms.assignment_mode`, sobreescribibles por regla:
 
-| Modo | Resultado de una regla que aplica |
-|---|---|
-| `auto` | Crea `assignment` en estado `active` directamente |
+| Modo       | Resultado de una regla que aplica                                             |
+| ---------- | ----------------------------------------------------------------------------- |
+| `auto`     | Crea `assignment` en estado `active` directamente                             |
 | `approval` | Crea `assignment` en estado `pending_approval`; el profesor aprueba o rechaza |
-| `manual` | Las reglas no se evalúan (solo asignación manual) |
+| `manual`   | Las reglas no se evalúan (solo asignación manual)                             |
 
 ### Flujo con aprobación
 
@@ -32,11 +32,11 @@ Regla se cumple
 
 ## Triggers (cuándo evaluar)
 
-| Trigger | Momento |
-|---|---|
-| `after_attempt` | Tras cada intento del alumno en contexto del aula (o global si la regla lo indica) |
-| `on_mastery_change` | Cuando el mastery de un concepto cruza un umbral |
-| `scheduled` | Cron diario (p. ej. 07:00) para repasos programados |
+| Trigger             | Momento                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------- |
+| `after_attempt`     | Tras cada intento del alumno en contexto del aula (o global si la regla lo indica) |
+| `on_mastery_change` | Cuando el mastery de un concepto cruza un umbral                                   |
+| `scheduled`         | Cron diario (p. ej. 07:00) para repasos programados                                |
 
 En MVP se implementan `after_attempt` y `scheduled`. `on_mastery_change` puede ser un alias de `after_attempt` con filtro de umbral.
 
@@ -71,14 +71,14 @@ En MVP se implementan `after_attempt` y `scheduled`. `on_mastery_change` puede s
 
 ### Campos soportados (MVP)
 
-| Campo | Descripción |
-|---|---|
-| `concept_mastery` | Valor 0–1 del concepto |
-| `mastery_state` | `struggling`, `developing`, `proficient`, `mastered` |
-| `attempt_count` | Nº de intentos en el concepto (ventana opcional) |
-| `recent_score_avg` | Media de scores en últimos N intentos |
-| `active_assignment` | ¿Ya existe asignación activa de tipo X para este concepto? |
-| `days_since_last_attempt` | Días desde último intento en el concepto |
+| Campo                     | Descripción                                                |
+| ------------------------- | ---------------------------------------------------------- |
+| `concept_mastery`         | Valor 0–1 del concepto                                     |
+| `mastery_state`           | `struggling`, `developing`, `proficient`, `mastered`       |
+| `attempt_count`           | Nº de intentos en el concepto (ventana opcional)           |
+| `recent_score_avg`        | Media de scores en últimos N intentos                      |
+| `active_assignment`       | ¿Ya existe asignación activa de tipo X para este concepto? |
+| `days_since_last_attempt` | Días desde último intento en el concepto                   |
 
 ### Operadores
 
@@ -97,14 +97,14 @@ En MVP se implementan `after_attempt` y `scheduled`. `on_mastery_change` puede s
 }
 ```
 
-| Campo | Valores |
-|---|---|
-| `type` | `reinforcement`, `recovery`, `advance`, `task`, `recommended` |
-| `target` | `matching_student` (quien cumple condición), `classroom` (todos), `explicit` (lista en metadata) |
-| `contentItemId` | Contenido a asignar (selección manual en MVP) |
-| `exerciseIds` | Alternativa: ejercicios sueltos elegidos por el profesor |
-| `conceptIds` | Solo en fase 4: el sistema auto-selecciona ejercicios del banco |
-| `dueInDays` | Plazo opcional |
+| Campo           | Valores                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------ |
+| `type`          | `reinforcement`, `recovery`, `advance`, `task`, `recommended`                                    |
+| `target`        | `matching_student` (quien cumple condición), `classroom` (todos), `explicit` (lista en metadata) |
+| `contentItemId` | Contenido a asignar (selección manual en MVP)                                                    |
+| `exerciseIds`   | Alternativa: ejercicios sueltos elegidos por el profesor                                         |
+| `conceptIds`    | Solo en fase 4: el sistema auto-selecciona ejercicios del banco                                  |
+| `dueInDays`     | Plazo opcional                                                                                   |
 
 ## Evaluación
 
@@ -115,7 +115,7 @@ function evaluateRulesForStudent(
   classroomId: string,
   studentId: string,
   trigger: RuleTrigger,
-  context?: { attemptId?: string; conceptIds?: string[] }
+  context?: { attemptId?: string; conceptIds?: string[] },
 ): RuleEvaluationResult[];
 ```
 
@@ -139,12 +139,12 @@ La condición `none: [{ field: "active_assignment", ... }]` evita asignar el mis
 
 El profesor puede partir de plantillas al crear una regla:
 
-| Plantilla | Condición | Acción |
-|---|---|---|
-| Refuerzo básico | mastery < 0.4, ≥ 3 intentos | `reinforcement` con set del concepto |
-| Recuperación post-evaluación | mastery < 0.5 tras sesión en vivo | `recovery` |
-| Avance automático | mastery ≥ 0.85 en concepto actual | `advance` a siguiente concepto del curso |
-| Repaso semanal | mastery en [0.7, 0.85), 7 días sin practicar | `recommended` (trigger `scheduled`) |
+| Plantilla                    | Condición                                    | Acción                                   |
+| ---------------------------- | -------------------------------------------- | ---------------------------------------- |
+| Refuerzo básico              | mastery < 0.4, ≥ 3 intentos                  | `reinforcement` con set del concepto     |
+| Recuperación post-evaluación | mastery < 0.5 tras sesión en vivo            | `recovery`                               |
+| Avance automático            | mastery ≥ 0.85 en concepto actual            | `advance` a siguiente concepto del curso |
+| Repaso semanal               | mastery en [0.7, 0.85), 7 días sin practicar | `recommended` (trigger `scheduled`)      |
 
 ## UI del profesor
 

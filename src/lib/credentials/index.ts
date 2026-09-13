@@ -5,8 +5,13 @@ export {
   generateStudentPassword,
 } from "./encryption";
 export {
+  formatSequentialUsername,
   generateUsername,
-  normalizeDisplayNameToUsernameBase,
-  resolveUsernameWithSuffix,
+  parseSequentialUsername,
+  USERNAME_PREFIX,
+  USERNAME_SEQUENCE_LENGTH,
 } from "./username";
-export type { UsernameAvailabilityLookup } from "./username";
+export type {
+  NextUsernameSequenceLookup,
+  UsernameAvailabilityLookup,
+} from "./username";

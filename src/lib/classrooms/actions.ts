@@ -3,29 +3,34 @@
 import { randomUUID } from "node:crypto";
 import { assertClassroomTeacher, requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
 import { AuthorizationError, NotFoundError } from "@/lib/classrooms/errors";
+import {
+  getE2EMockClassroomName,
+  getE2EMockStudents,
+  isE2EMockClassroomEnabled,
+  mockGetStudentPassword,
+  mockProvisionStudents,
+  mockRegenerateStudentPassword,
+} from "@/lib/classrooms/e2e-mock";
 import { rollbackPartialStudentProvisioning } from "@/lib/classrooms/provisioning-rollback";
+import type {
+  ClassroomStudent,
+  ProvisionFailure,
+  ProvisionedStudent,
+  ProvisionStudentsResult,
+} from "@/lib/classrooms/types";
 import { decryptPassword, encryptPassword, generateStudentPassword } from "@/lib/credentials/encryption";
 import { generateUsername } from "@/lib/credentials/username";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { createServerSupabaseClient } from "@/lib/supabase";
+
+export type {
+  ClassroomStudent,
+  ProvisionedStudent,
+  ProvisionFailure,
+  ProvisionStudentsResult,
+} from "@/lib/classrooms/types";
 
 const INTERNAL_STUDENT_EMAIL_DOMAIN = "students.internal.eaxy";
-
-export type ProvisionedStudent = {
-  displayName: string;
-  username: string;
-  password: string;
-};
-
-export type ProvisionFailure = {
-  displayName: string;
-  reason: string;
-};
-
-export type ProvisionStudentsResult = {
-  succeeded: ProvisionedStudent[];
-  failed: ProvisionFailure[];
-};
 
 function buildInternalStudentEmail(userId: string): string {
   return `${userId}@${INTERNAL_STUDENT_EMAIL_DOMAIN}`;
@@ -37,7 +42,7 @@ async function provisionSingleStudent(
   teacherId: string,
 ): Promise<ProvisionedStudent> {
   const admin = createAdminClient();
-  const username = await generateUsername(displayName, classroomId);
+  const username = await generateUsername();
   const password = generateStudentPassword();
   const userId = randomUUID();
   const authEmailInternal = buildInternalStudentEmail(userId);
@@ -105,11 +110,67 @@ async function provisionSingleStudent(
   };
 }
 
+export async function getClassroomStudents(
+  classroomId: string,
+): Promise<ClassroomStudent[]> {
+  await assertClassroomTeacher(classroomId);
+
+  if (isE2EMockClassroomEnabled()) {
+    return getE2EMockStudents(classroomId);
+  }
+
+  const admin = createAdminClient();
+
+  const { data, error } = await admin
+    .from("student_credentials")
+    .select("student_id, username, profiles!inner(display_name)")
+    .eq("classroom_scope_id", classroomId);
+
+  if (error) {
+    throw new Error(`No se pudo cargar el listado de alumnos: ${error.message}`);
+  }
+
+  return (data ?? []).map((row) => {
+    const profile = Array.isArray(row.profiles) ? row.profiles[0] : row.profiles;
+
+    return {
+      studentId: row.student_id,
+      displayName: profile?.display_name ?? "Sin nombre",
+      username: row.username,
+    };
+  });
+}
+
+export async function getClassroomName(classroomId: string): Promise<string> {
+  await assertClassroomTeacher(classroomId);
+
+  if (isE2EMockClassroomEnabled()) {
+    return getE2EMockClassroomName();
+  }
+
+  const supabase = await createServerSupabaseClient();
+  const { data, error } = await supabase
+    .from("classrooms")
+    .select("name")
+    .eq("id", classroomId)
+    .maybeSingle();
+
+  if (error || !data) {
+    throw new NotFoundError("No se encontró el aula");
+  }
+
+  return data.name;
+}
+
 export async function provisionStudents(
   classroomId: string,
   studentNames: string[],
 ): Promise<ProvisionStudentsResult> {
   const teacherId = await assertClassroomTeacher(classroomId);
+
+  if (isE2EMockClassroomEnabled()) {
+    return mockProvisionStudents(classroomId, studentNames);
+  }
   const succeeded: ProvisionedStudent[] = [];
   const failed: ProvisionFailure[] = [];
 
@@ -143,8 +204,64 @@ export async function provisionStudents(
   return { succeeded, failed };
 }
 
+export async function regenerateStudentPassword(studentId: string): Promise<string> {
+  if (isE2EMockClassroomEnabled()) {
+    await requireAuthenticatedUserId();
+    return mockRegenerateStudentPassword(studentId);
+  }
+
+  const teacherId = await requireAuthenticatedUserId();
+  const admin = createAdminClient();
+
+  const { data: credentials, error } = await admin
+    .from("student_credentials")
+    .select("classroom_scope_id")
+    .eq("student_id", studentId)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`No se pudieron leer las credenciales del alumno: ${error.message}`);
+  }
+
+  if (!credentials) {
+    throw new NotFoundError("No se encontraron credenciales para este alumno");
+  }
+
+  await assertClassroomTeacher(credentials.classroom_scope_id);
+
+  const password = generateStudentPassword();
+  const { error: authUpdateError } = await admin.auth.admin.updateUserById(studentId, {
+    password,
+  });
+
+  if (authUpdateError) {
+    throw new Error(`No se pudo actualizar la contraseña en Auth: ${authUpdateError.message}`);
+  }
+
+  const { error: credentialsUpdateError } = await admin
+    .from("student_credentials")
+    .update({
+      password_encrypted: encryptPassword(password),
+      last_password_reset_by: teacherId,
+      last_password_reset_at: new Date().toISOString(),
+    })
+    .eq("student_id", studentId);
+
+  if (credentialsUpdateError) {
+    throw new Error(
+      `No se pudo actualizar la contraseña cifrada: ${credentialsUpdateError.message}`,
+    );
+  }
+
+  return password;
+}
+
 export async function getStudentPassword(studentId: string): Promise<string> {
   await requireAuthenticatedUserId();
+
+  if (isE2EMockClassroomEnabled()) {
+    return mockGetStudentPassword(studentId);
+  }
 
   const admin = createAdminClient();
   const { data: credentials, error } = await admin

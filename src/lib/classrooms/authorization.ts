@@ -1,7 +1,16 @@
-import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { AuthorizationError } from "@/lib/classrooms/errors";
+import {
+  isE2EMockClassroomEnabled,
+  mockAssertClassroomTeacher,
+  mockRequireAuthenticatedUserId,
+} from "@/lib/classrooms/e2e-mock";
+import { createServerSupabaseClient } from "@/lib/supabase";
 
 export async function requireAuthenticatedUserId(): Promise<string> {
+  if (isE2EMockClassroomEnabled()) {
+    return mockRequireAuthenticatedUserId();
+  }
+
   const supabase = await createServerSupabaseClient();
   const {
     data: { user },
@@ -16,6 +25,10 @@ export async function requireAuthenticatedUserId(): Promise<string> {
 }
 
 export async function assertClassroomTeacher(classroomId: string): Promise<string> {
+  if (isE2EMockClassroomEnabled()) {
+    return mockAssertClassroomTeacher(classroomId);
+  }
+
   const userId = await requireAuthenticatedUserId();
   const supabase = await createServerSupabaseClient();
   const { data: isTeacher, error } = await supabase.rpc("is_classroom_teacher", {

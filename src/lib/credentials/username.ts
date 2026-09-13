@@ -1,48 +1,31 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 
-export function normalizeDisplayNameToUsernameBase(displayName: string): string {
-  return displayName
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, ".")
-    .replace(/[^a-z0-9.]/g, "")
-    .replace(/\.+/g, ".")
-    .replace(/^\.+|\.+$/g, "");
+export const USERNAME_PREFIX = "XY";
+export const USERNAME_SEQUENCE_LENGTH = 6;
+const USERNAME_PATTERN = /^XY(\d{6})$/;
+
+export function formatSequentialUsername(sequence: number): string {
+  return `${USERNAME_PREFIX}${sequence.toString().padStart(USERNAME_SEQUENCE_LENGTH, "0")}`;
 }
 
-export type UsernameAvailabilityLookup = (
-  classroomId: string,
-  username: string,
-) => Promise<boolean>;
-
-export async function resolveUsernameWithSuffix(
-  baseUsername: string,
-  isUsernameTaken: (username: string) => Promise<boolean>,
-): Promise<string> {
-  if (!(await isUsernameTaken(baseUsername))) {
-    return baseUsername;
+export function parseSequentialUsername(username: string): number | null {
+  const match = username.match(USERNAME_PATTERN);
+  if (!match) {
+    return null;
   }
 
-  let suffix = 2;
-
-  while (await isUsernameTaken(`${baseUsername}${suffix}`)) {
-    suffix += 1;
-  }
-
-  return `${baseUsername}${suffix}`;
+  return Number.parseInt(match[1], 10);
 }
 
-async function defaultUsernameAvailabilityLookup(
-  classroomId: string,
-  username: string,
-): Promise<boolean> {
+export type UsernameAvailabilityLookup = (username: string) => Promise<boolean>;
+
+export type NextUsernameSequenceLookup = () => Promise<number>;
+
+async function defaultUsernameAvailabilityLookup(username: string): Promise<boolean> {
   const admin = createAdminClient();
   const { data, error } = await admin
     .from("student_credentials")
     .select("student_id")
-    .eq("classroom_scope_id", classroomId)
     .eq("username", username)
     .maybeSingle();
 
@@ -53,18 +36,38 @@ async function defaultUsernameAvailabilityLookup(
   return data !== null;
 }
 
-export async function generateUsername(
-  displayName: string,
-  classroomId: string,
-  lookup: UsernameAvailabilityLookup = defaultUsernameAvailabilityLookup,
-): Promise<string> {
-  const baseUsername = normalizeDisplayNameToUsernameBase(displayName);
+async function defaultNextUsernameSequenceLookup(): Promise<number> {
+  const admin = createAdminClient();
+  const { data, error } = await admin
+    .from("student_credentials")
+    .select("username")
+    .like("username", `${USERNAME_PREFIX}%`)
+    .order("username", { ascending: false })
+    .limit(1);
 
-  if (!baseUsername) {
-    throw new Error("El nombre no es válido para generar un username");
+  if (error) {
+    throw new Error(`No se pudo obtener el siguiente username secuencial: ${error.message}`);
   }
 
-  return resolveUsernameWithSuffix(baseUsername, (username) =>
-    lookup(classroomId, username),
-  );
+  if (!data?.length) {
+    return 1;
+  }
+
+  const lastSequence = parseSequentialUsername(data[0].username);
+  return lastSequence === null ? 1 : lastSequence + 1;
+}
+
+export async function generateUsername(
+  getNextSequence: NextUsernameSequenceLookup = defaultNextUsernameSequenceLookup,
+  isUsernameTaken: UsernameAvailabilityLookup = defaultUsernameAvailabilityLookup,
+): Promise<string> {
+  let sequence = await getNextSequence();
+  let candidate = formatSequentialUsername(sequence);
+
+  while (await isUsernameTaken(candidate)) {
+    sequence += 1;
+    candidate = formatSequentialUsername(sequence);
+  }
+
+  return candidate;
 }

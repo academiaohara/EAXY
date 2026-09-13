@@ -11,13 +11,13 @@ Motor **determinista, basado en reglas**, sin IA. Cada recomendación incluye un
 
 ## Entradas
 
-| Dato | Fuente |
-|---|---|
-| `concept_mastery` del estudiante | `concept_mastery` |
-| Grafo de prerrequisitos | `concept_prerequisites` |
-| Últimos intentos | `attempts` (recencia, racha de errores) |
-| Progreso en lecciones | `learning_paths` (fase 2) |
-| Asignaciones pendientes del aula | `assignments` + `assignment_targets` |
+| Dato                             | Fuente                                  |
+| -------------------------------- | --------------------------------------- |
+| `concept_mastery` del estudiante | `concept_mastery`                       |
+| Grafo de prerrequisitos          | `concept_prerequisites`                 |
+| Últimos intentos                 | `attempts` (recencia, racha de errores) |
+| Progreso en lecciones            | `learning_paths` (fase 2)               |
+| Asignaciones pendientes del aula | `assignments` + `assignment_targets`    |
 
 ## Salida
 
@@ -28,8 +28,8 @@ type Recommendation = {
   contentItemId?: string;
   priority: number;
   explanation: {
-    ruleId: string;        // identificador estable de la regla
-    summary: string;       // texto en español para el usuario
+    ruleId: string; // identificador estable de la regla
+    summary: string; // texto en español para el usuario
     details: Record<string, unknown>; // datos que activaron la regla
   };
 };
@@ -116,7 +116,7 @@ Dada una acción y un `conceptId`:
 // src/lib/recommendations/engine.ts
 function getRecommendations(
   studentId: string,
-  options?: { classroomId?: string; limit?: number }
+  options?: { classroomId?: string; limit?: number },
 ): Recommendation[];
 ```
 
@@ -137,12 +137,12 @@ function getRecommendations(
 
 ## Diferencia con Assignment Rules
 
-| | Recomendaciones | Assignment Rules |
-|---|---|---|
-| Destinatario | El estudiante (sugerencia) | El aula (tarea formal) |
-| Obligatoriedad | Opcional | Puede tener fecha límite |
-| Quién configura | Sistema (global) | Profesor (por aula) |
-| Modo aprobación | No aplica | Sí (`approval`) |
+|                 | Recomendaciones            | Assignment Rules         |
+| --------------- | -------------------------- | ------------------------ |
+| Destinatario    | El estudiante (sugerencia) | El aula (tarea formal)   |
+| Obligatoriedad  | Opcional                   | Puede tener fecha límite |
+| Quién configura | Sistema (global)           | Profesor (por aula)      |
+| Modo aprobación | No aplica                  | Sí (`approval`)          |
 
 Un profesor puede convertir una recomendación en asignación con un clic.
 

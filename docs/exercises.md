@@ -32,14 +32,14 @@ exercise.definition (JSON en BD)
 
 ## Tipos de ejercicio (MVP)
 
-| Tipo | Descripción | Prioridad |
-|---|---|---|
-| `tap_select` | Elegir una o varias opciones | Fase 1 |
-| `number_input` | Introducir número (con tolerancia) | Fase 1 |
-| `fraction_input` | Fracción o número mixto | Fase 1 |
-| `ordering` | Ordenar elementos | Fase 2 |
-| `drag_match` | Emparejar conceptos | Fase 2 |
-| `graph_point` | Señalar punto en plano | Fase 3 |
+| Tipo             | Descripción                        | Prioridad |
+| ---------------- | ---------------------------------- | --------- |
+| `tap_select`     | Elegir una o varias opciones       | Fase 1    |
+| `number_input`   | Introducir número (con tolerancia) | Fase 1    |
+| `fraction_input` | Fracción o número mixto            | Fase 1    |
+| `ordering`       | Ordenar elementos                  | Fase 2    |
+| `drag_match`     | Emparejar conceptos                | Fase 2    |
+| `graph_point`    | Señalar punto en plano             | Fase 3    |
 
 Cada tipo tiene:
 
@@ -85,12 +85,12 @@ Cada tipo tiene:
 
 ## Puntuación
 
-| Resultado | score |
-|---|---|
-| Correcto | 1.0 |
+| Resultado                            | score            |
+| ------------------------------------ | ---------------- |
+| Correcto                             | 1.0              |
 | Parcialmente correcto (multi-select) | aciertos / total |
-| Incorrecto | 0.0 |
-| Con tolerancia numérica | 1.0 si `|respuesta - correcta| ≤ ε` |
+| Incorrecto                           | 0.0              |
+| Con tolerancia numérica              | 1.0 si `         | respuesta - correcta | ≤ ε` |
 
 El `score` alimenta el cálculo de mastery (ver `learning-model.md`).
 
@@ -132,12 +132,12 @@ Script `npm run validate:exercises` (futuro):
 
 ## Testing
 
-| Qué | Cómo |
-|---|---|
+| Qué                    | Cómo                                                     |
+| ---------------------- | -------------------------------------------------------- |
 | `checkAnswer` por tipo | Vitest con casos borde (tolerancia, multi-select, vacío) |
-| Schemas Zod | Vitest con definiciones válidas e inválidas |
-| Widgets | Testing Library: interacción + estado |
-| Flujo completo | E2E Playwright: responder y ver feedback |
+| Schemas Zod            | Vitest con definiciones válidas e inválidas              |
+| Widgets                | Testing Library: interacción + estado                    |
+| Flujo completo         | E2E Playwright: responder y ver feedback                 |
 
 ## Documentos relacionados
 

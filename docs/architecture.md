@@ -53,14 +53,14 @@ Aplicación **Next.js 16 (App Router)** con lógica de dominio en TypeScript pur
 
 Módulos puros, testables con Vitest, sin dependencia de React:
 
-| Módulo | Responsabilidad |
-|---|---|
-| `exercise-engine/` | Esquemas Zod, validación de respuestas, puntuación |
-| `mastery/` | Cálculo y actualización de dominio por concepto |
-| `recommendations/` | Motor de recomendaciones explicables |
-| `assignment-rules/` | Evaluación de reglas y generación de propuestas |
-| `live-sessions/` | Estado de sesión, agregación de respuestas |
-| `content/` | Resolución de rutas de aprendizaje (curso → unidad → lección) |
+| Módulo              | Responsabilidad                                               |
+| ------------------- | ------------------------------------------------------------- |
+| `exercise-engine/`  | Esquemas Zod, validación de respuestas, puntuación            |
+| `mastery/`          | Cálculo y actualización de dominio por concepto               |
+| `recommendations/`  | Motor de recomendaciones explicables                          |
+| `assignment-rules/` | Evaluación de reglas y generación de propuestas               |
+| `live-sessions/`    | Estado de sesión, agregación de respuestas                    |
+| `content/`          | Resolución de rutas de aprendizaje (curso → unidad → lección) |
 
 ### 4. Datos (`src/lib/supabase/`, migraciones SQL)
 
@@ -163,33 +163,33 @@ docs/                        # documentación (este directorio)
 
 ## Decisiones técnicas (aprobadas)
 
-| Decisión | Elección | Motivo |
-|---|---|---|
-| Backend | Supabase (PostgreSQL) | Auth, RLS, Realtime y SQL en un solo stack |
-| Entornos Supabase | Local (CLI) + remoto dev; prod separado pre-lanzamiento | Aislar datos reales |
-| Lógica de dominio | TypeScript puro en `src/lib/` | Testeable con Vitest sin montar Next.js |
-| Ejercicios | Esquema JSON + Zod + widgets React | Extensible, validación compartida cliente/servidor |
-| Contenido curricular | BD en producción; JSON en repo para seeds/CI | Publicación sin despliegue de código |
-| Estado de sesión en vivo | PostgreSQL + Realtime | Consistencia + baja latencia para UI del profesor |
-| Feedback en vivo | Configurable por sesión; **default: al cerrar pregunta** | Menos distracción en aula |
-| Mastery | Media ponderada con decaimiento; tabla derivada recalculada en cada intento | Consultas rápidas; historial en `attempts` |
-| Umbrales cualitativos | Globales fijos en MVP | Simplicidad |
-| Navegación | Libre; bloqueo opcional por unidad (curso/aula) | Flexibilidad pedagógica |
-| Recomendaciones | Calculadas on-demand + cache opcional | Siempre explicables; sin jobs opacos en MVP |
-| Auth menores | Cuentas provisionadas por profesor; sin email del menor | Privacidad y cumplimiento |
-| Auth adultos | Registro público email + contraseña | Modo personal |
-| Co-docencia | Varios teachers por aula, mismos permisos | Equipos docentes |
-| Selección de ejercicios en asignación | Manual en MVP; auto-selección en fase 4 | Control docente primero |
-| Marca | **Eaxy** en documentación y UI | — |
+| Decisión                              | Elección                                                                    | Motivo                                             |
+| ------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------- |
+| Backend                               | Supabase (PostgreSQL)                                                       | Auth, RLS, Realtime y SQL en un solo stack         |
+| Entornos Supabase                     | Local (CLI) + remoto dev; prod separado pre-lanzamiento                     | Aislar datos reales                                |
+| Lógica de dominio                     | TypeScript puro en `src/lib/`                                               | Testeable con Vitest sin montar Next.js            |
+| Ejercicios                            | Esquema JSON + Zod + widgets React                                          | Extensible, validación compartida cliente/servidor |
+| Contenido curricular                  | BD en producción; JSON en repo para seeds/CI                                | Publicación sin despliegue de código               |
+| Estado de sesión en vivo              | PostgreSQL + Realtime                                                       | Consistencia + baja latencia para UI del profesor  |
+| Feedback en vivo                      | Configurable por sesión; **default: al cerrar pregunta**                    | Menos distracción en aula                          |
+| Mastery                               | Media ponderada con decaimiento; tabla derivada recalculada en cada intento | Consultas rápidas; historial en `attempts`         |
+| Umbrales cualitativos                 | Globales fijos en MVP                                                       | Simplicidad                                        |
+| Navegación                            | Libre; bloqueo opcional por unidad (curso/aula)                             | Flexibilidad pedagógica                            |
+| Recomendaciones                       | Calculadas on-demand + cache opcional                                       | Siempre explicables; sin jobs opacos en MVP        |
+| Auth menores                          | Cuentas provisionadas por profesor; sin email del menor                     | Privacidad y cumplimiento                          |
+| Auth adultos                          | Registro público email + contraseña                                         | Modo personal                                      |
+| Co-docencia                           | Varios teachers por aula, mismos permisos                                   | Equipos docentes                                   |
+| Selección de ejercicios en asignación | Manual en MVP; auto-selección en fase 4                                     | Control docente primero                            |
+| Marca                                 | **Eaxy** en documentación y UI                                              | —                                                  |
 
 ## Testing (resumen)
 
-| Capa | Herramienta | Qué cubrir |
-|---|---|---|
-| Dominio | Vitest | exercise-engine, mastery, recommendations, assignment-rules |
-| Componentes | Vitest + Testing Library | widgets de ejercicio, formularios críticos |
-| Integración | Vitest + Supabase local | RLS, triggers, funciones SQL |
-| E2E | Playwright | flujos estudiante, profesor, sesión en vivo |
+| Capa        | Herramienta              | Qué cubrir                                                  |
+| ----------- | ------------------------ | ----------------------------------------------------------- |
+| Dominio     | Vitest                   | exercise-engine, mastery, recommendations, assignment-rules |
+| Componentes | Vitest + Testing Library | widgets de ejercicio, formularios críticos                  |
+| Integración | Vitest + Supabase local  | RLS, triggers, funciones SQL                                |
+| E2E         | Playwright               | flujos estudiante, profesor, sesión en vivo                 |
 
 Detalle de estrategia en `roadmap.md` (fase de testing).
 

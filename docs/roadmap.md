@@ -197,14 +197,14 @@ Fases 4 y 5 pueden paralelizarse tras Fase 3.
 
 ## Métricas de progreso
 
-| Fase | Métrica clave |
-|---|---|
-| 1 | Ejercicio completado con mastery actualizado |
-| 2 | Recomendación generada con explicación |
-| 3 | Tarea asignada y completada en aula |
-| 4 | Regla automática ejecutada sin intervención |
-| 5 | Sesión en vivo con ≥ 1 respuesta → attempt |
-| 6 | Curso ESO 1 publicado con ≥ 50 ejercicios |
+| Fase | Métrica clave                                |
+| ---- | -------------------------------------------- |
+| 1    | Ejercicio completado con mastery actualizado |
+| 2    | Recomendación generada con explicación       |
+| 3    | Tarea asignada y completada en aula          |
+| 4    | Regla automática ejecutada sin intervención  |
+| 5    | Sesión en vivo con ≥ 1 respuesta → attempt   |
+| 6    | Curso ESO 1 publicado con ≥ 50 ejercicios    |
 
 ## Documentos relacionados
 
