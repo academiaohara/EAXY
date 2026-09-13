@@ -29,10 +29,13 @@ export default async function AprenderPage() {
         <CardHeader>
           <CardTitle>Siguiente paso</CardTitle>
           <CardDescription>
-            Continúa practicando para reforzar lo que vas aprendiendo.
+            Explora el curso o continúa practicando para reforzar lo que vas aprendiendo.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-wrap gap-3">
+          <Link href="/curso">
+            <Button variant="outline" data-testid="aprender-curso-link">Ver curso</Button>
+          </Link>
           <Link href="/practicar">
             <Button data-testid="aprender-practicar-link">Ir a practicar</Button>
           </Link>

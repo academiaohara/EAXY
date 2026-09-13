@@ -7,6 +7,7 @@ import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine
 import type { ExerciseType } from "@/lib/exercise-engine/types";
 import { mockSubmitExerciseAttempt } from "@/lib/exercises/e2e-mock";
 import { recalculateStudentConceptMastery } from "@/lib/exercises/mastery";
+import { syncLessonProgressForConcept } from "@/lib/learning-paths/service";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
@@ -26,7 +27,14 @@ export async function submitExerciseAttempt(
   const studentId = await requireAuthenticatedUserId();
 
   if (isE2EMockClassroomEnabled()) {
-    return mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
+    const mockResult = mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
+    const exercise = await import("@/lib/exercises/e2e-mock").then((mod) =>
+      mod.mockGetExerciseById(exerciseId),
+    );
+    if (exercise) {
+      await syncLessonProgressForConcept(studentId, exercise.concept_id);
+    }
+    return mockResult;
   }
 
   const supabase = await createServerSupabaseClient();
@@ -77,6 +85,7 @@ export async function submitExerciseAttempt(
   }
 
   const mastery = await recalculateStudentConceptMastery(studentId, typedExercise.concept_id);
+  await syncLessonProgressForConcept(studentId, typedExercise.concept_id);
 
   const { data: concept } = await supabase
     .from("concepts")

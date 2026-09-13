@@ -22,7 +22,7 @@ values (
   'a2000000-0000-4000-8000-000000000001',
   'Ecuaciones de primer grado',
   0,
-  null
+  'https://www.youtube.com/watch?v=LwY6QJoJqiY'
 );
 
 insert into public.concepts (id, slug, title, description)
