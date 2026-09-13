@@ -5,6 +5,7 @@ export type SubmitExerciseAttemptResult = {
   correctAnswer: string | number;
   mastery: number;
   conceptTitle: string;
+  lessonCompleted?: boolean;
 };
 
 export type PracticeExerciseContext = {

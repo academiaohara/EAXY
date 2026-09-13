@@ -17,3 +17,10 @@ export const MASTERY_DECAY_LAMBDA = Math.LN2 / MASTERY_HALF_LIFE_DAYS;
 
 /** Ventana máxima de intentos considerados (últimos 30 días). */
 export const MASTERY_WINDOW_DAYS = 30;
+
+/** Umbrales cualitativos globales (ver learning-model.md). */
+export const MASTERY_STRUGGLING_MAX = 0.4;
+export const MASTERY_DEVELOPING_MAX = 0.7;
+export const MASTERY_PROFICIENT_MIN = 0.7;
+export const MASTERY_PROFICIENT_MAX = 0.85;
+export const MASTERY_MASTERED_MIN = 0.85;

@@ -7,25 +7,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { NumericContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type NumericExerciseProps = {
   exerciseId: string;
   content: NumericContent;
-  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
 export function NumericExercise({
   exerciseId,
   content,
-  onAttemptComplete,
+  onAttemptResult,
 }: NumericExerciseProps) {
   const [value, setValue] = useState("");
-  const [feedback, setFeedback] = useState<{
-    correct: boolean;
-    correctAnswer: string | number;
-    mastery: number;
-    conceptTitle: string;
-  } | null>(null);
+  const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
   const [isPending, startTransition] = useTransition();
@@ -48,10 +44,7 @@ export function NumericExercise({
           Date.now() - startedAt,
         );
         setFeedback(result);
-        onAttemptComplete?.({
-          mastery: result.mastery,
-          conceptTitle: result.conceptTitle,
-        });
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
