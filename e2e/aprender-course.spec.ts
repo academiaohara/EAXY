@@ -23,6 +23,11 @@ test("el alumno puede navegar el curso desde /aprender", async ({ page }) => {
   await page.getByTestId("student-login-submit").click();
 
   await expect(page).toHaveURL(/\/aprender$/);
+  await expect(page.getByTestId("recommendation-card")).toBeVisible();
+  await expect(page.getByTestId("recommendation-summary")).toContainText(
+    "Continúa con la siguiente lección del curso.",
+  );
+
   await page.getByTestId(`lesson-link-${DEMO_LESSON_ID}`).click();
 
   await expect(page).toHaveURL(new RegExp(`/aprender/leccion/${DEMO_LESSON_ID}$`));

@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`R1 — asignación pendiente > recomienda practicar la tarea pendiente del aula 1`] = `"Tienes una tarea pendiente en el aula 1º A."`;

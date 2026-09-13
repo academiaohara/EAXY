@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`R7 — continuar curso > recomienda la siguiente lección lineal no completada 1`] = `"Continúa con la siguiente lección del curso."`;
