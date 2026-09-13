@@ -1,5 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { GENERIC_STUDENT_LOGIN_ERROR } from "@/lib/auth/constants";
+import {
+  DUMMY_STUDENT_AUTH_EMAIL,
+  GENERIC_STUDENT_LOGIN_ERROR,
+} from "@/lib/auth/constants";
 import { resetLoginRateLimitState } from "@/lib/auth/login-rate-limit";
 
 const mockSignInWithPassword = vi.fn();
@@ -52,11 +55,17 @@ describe("signInStudent", () => {
 
   it("devuelve error genérico si el username no existe", async () => {
     mockMaybeSingle.mockResolvedValue({ data: null, error: null });
+    mockSignInWithPassword.mockResolvedValue({
+      error: { message: "Invalid login credentials" },
+    });
 
     const result = await signInStudent("XY999999", "cualquier-password");
 
     expect(result).toEqual({ error: GENERIC_STUDENT_LOGIN_ERROR });
-    expect(mockSignInWithPassword).not.toHaveBeenCalled();
+    expect(mockSignInWithPassword).toHaveBeenCalledWith({
+      email: DUMMY_STUDENT_AUTH_EMAIL,
+      password: "cualquier-password",
+    });
   });
 
   it("devuelve el mismo error genérico si la contraseña es incorrecta", async () => {
