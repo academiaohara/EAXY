@@ -62,7 +62,7 @@ El acceso de **alumno** a un aula es **exclusivamente** mediante username + cont
 2. Pega o escribe una **lista de nombres** (uno por línea).
 3. Server Action `provisionStudents` (secret key + verificación de teacher):
    - Por cada nombre:
-     - Genera `username` (normalizado, sin acentos; sufijo numérico si colisión en el aula).
+     - Genera `username` secuencial global (`XY000001`, `XY000002`, …).
      - Genera `password` aleatoria (alfabeto sin `0`/`O`, `1`/`l`/`I`; longitud ~10–12).
      - Crea `auth.users` con email sintético interno (`{uuid}@students.internal.eaxy`).
      - Establece contraseña en Supabase Auth.
@@ -75,7 +75,7 @@ El acceso de **alumno** a un aula es **exclusivamente** mediante username + cont
 
 ```
 Alumno en /entrar → introduce username + password
-  → Server Action resuelve username (por aula o global) → email sintético interno
+  → Server Action resuelve username (único global) → email sintético interno
   → supabase.auth.signInWithPassword({ email: sintético, password })
   → sesión establecida (account_origin = teacher_provisioned)
 ```

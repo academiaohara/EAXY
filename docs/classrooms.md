@@ -16,10 +16,10 @@ Estudiante Ana
 
 ## Roles
 
-| Rol | Permisos |
-|---|---|
+| Rol       | Permisos                                                                                                                         |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `teacher` | Crear/editar aula, invitar alumnos, asignar tareas, configurar reglas, lanzar sesiones en vivo, ver progreso de alumnos del aula |
-| `student` | Ver asignaciones del aula, completar tareas, unirse a sesiones en vivo, ver su propio progreso |
+| `student` | Ver asignaciones del aula, completar tareas, unirse a sesiones en vivo, ver su propio progreso                                   |
 
 Un usuario puede ser profesor en unas aulas y estudiante en otras.
 
@@ -35,13 +35,13 @@ Un usuario puede ser profesor en unas aulas y estudiante en otras.
 
 ### Tipos
 
-| Tipo | Propósito | Origen típico |
-|---|---|---|
-| `task` | Tarea explícita del profesor | Manual |
-| `reinforcement` | Practicar concepto con mastery bajo | Regla o manual |
-| `recovery` | Recuperar concepto no dominado tras evaluación | Regla o manual |
-| `advance` | Avanzar a siguiente unidad/concepto | Regla o manual |
-| `recommended` | Material sugerido, sin fecha límite estricta | Manual o regla |
+| Tipo            | Propósito                                      | Origen típico  |
+| --------------- | ---------------------------------------------- | -------------- |
+| `task`          | Tarea explícita del profesor                   | Manual         |
+| `reinforcement` | Practicar concepto con mastery bajo            | Regla o manual |
+| `recovery`      | Recuperar concepto no dominado tras evaluación | Regla o manual |
+| `advance`       | Avanzar a siguiente unidad/concepto            | Regla o manual |
+| `recommended`   | Material sugerido, sin fecha límite estricta   | Manual o regla |
 
 ### Estados
 
@@ -103,22 +103,22 @@ El estudiante siempre ve **su** mastery global; en contexto de aula puede ver ad
 
 Configuración a nivel de `classrooms.assignment_mode`:
 
-| Modo | Comportamiento |
-|---|---|
-| `auto` | Las reglas activas generan asignaciones directamente en estado `active` |
+| Modo       | Comportamiento                                                                     |
+| ---------- | ---------------------------------------------------------------------------------- |
+| `auto`     | Las reglas activas generan asignaciones directamente en estado `active`            |
 | `approval` | Las reglas generan propuestas en `pending_approval`; el profesor aprueba o rechaza |
-| `manual` | Las reglas no se ejecutan; solo asignaciones manuales |
+| `manual`   | Las reglas no se ejecutan; solo asignaciones manuales                              |
 
 Cada regla puede sobreescribir el modo del aula con `mode_override`.
 
 ## Integración con otros módulos
 
-| Módulo | Integración |
-|---|---|
-| Assignment Rules | Genera asignaciones según mastery (ver `assignment-rules.md`) |
-| Live Sessions | Pertenece a un `classroom_id`; respuestas generan `attempts` |
-| Recommendations | El profesor puede «fijar» una recomendación del sistema como `recommended` |
-| Learning Model | Mastery consultado, nunca duplicado por aula |
+| Módulo           | Integración                                                                |
+| ---------------- | -------------------------------------------------------------------------- |
+| Assignment Rules | Genera asignaciones según mastery (ver `assignment-rules.md`)              |
+| Live Sessions    | Pertenece a un `classroom_id`; respuestas generan `attempts`               |
+| Recommendations  | El profesor puede «fijar» una recomendación del sistema como `recommended` |
+| Learning Model   | Mastery consultado, nunca duplicado por aula                               |
 
 ## Rutas de UI propuestas
 

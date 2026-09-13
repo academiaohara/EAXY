@@ -38,13 +38,13 @@ La fórmula vive en `src/lib/mastery/calculator.ts`, configurable por constantes
 
 Para UI y reglas, se derivan etiquetas a partir de umbrales fijos:
 
-| Estado | Mastery | Uso |
-|---|---|---|
-| `not_started` | sin intentos | Gris en mapa de conceptos |
-| `struggling` | < 0.4 | Recuperación, refuerzo |
-| `developing` | 0.4 – 0.7 | Práctica guiada |
-| `proficient` | 0.7 – 0.85 | Repaso espaciado |
-| `mastered` | ≥ 0.85 | Avance a prerrequisitos desbloqueados |
+| Estado        | Mastery      | Uso                                   |
+| ------------- | ------------ | ------------------------------------- |
+| `not_started` | sin intentos | Gris en mapa de conceptos             |
+| `struggling`  | < 0.4        | Recuperación, refuerzo                |
+| `developing`  | 0.4 – 0.7    | Práctica guiada                       |
+| `proficient`  | 0.7 – 0.85   | Repaso espaciado                      |
+| `mastered`    | ≥ 0.85       | Avance a prerrequisitos desbloqueados |
 
 Los umbrales son **constantes globales en el MVP** (decisión aprobada). Configuración por aula o curso queda para fases posteriores.
 
@@ -82,14 +82,14 @@ Esto permite:
 
 ### Qué cuenta como intento
 
-| Acción | ¿Genera attempt? |
-|---|---|
-| Ejercicio en modo personal | Sí |
-| Ejercicio en asignación | Sí (`source=assignment`) |
-| Respuesta en sesión en vivo (móvil) | Sí (`source=live_session`) |
-| Marca manual del profesor en sesión | Sí (`submitted_by=teacher`) |
-| Ver un vídeo sin evaluación | No (solo evento de progreso opcional) |
-| Abrir una lección sin ejercicio | No |
+| Acción                              | ¿Genera attempt?                      |
+| ----------------------------------- | ------------------------------------- |
+| Ejercicio en modo personal          | Sí                                    |
+| Ejercicio en asignación             | Sí (`source=assignment`)              |
+| Respuesta en sesión en vivo (móvil) | Sí (`source=live_session`)            |
+| Marca manual del profesor en sesión | Sí (`submitted_by=teacher`)           |
+| Ver un vídeo sin evaluación         | No (solo evento de progreso opcional) |
+| Abrir una lección sin ejercicio     | No                                    |
 
 ## Recorrido de aprendizaje personal
 
@@ -104,12 +104,12 @@ Sin profesor, el estudiante sigue un **curso publicado** (árbol unidad → lecc
 
 ## Integración con el resto del sistema
 
-| Sistema | Cómo usa el modelo de aprendizaje |
-|---|---|
-| Exercise Engine | Cada ejercicio declara `concept_ids` y pesos |
-| Recomendaciones | Lee `concept_mastery` + grafo |
-| Assignment Rules | Condiciones sobre mastery y estados cualitativos |
-| Live Sessions | Respuestas → `attempts` → recálculo de mastery |
+| Sistema            | Cómo usa el modelo de aprendizaje                    |
+| ------------------ | ---------------------------------------------------- |
+| Exercise Engine    | Cada ejercicio declara `concept_ids` y pesos         |
+| Recomendaciones    | Lee `concept_mastery` + grafo                        |
+| Assignment Rules   | Condiciones sobre mastery y estados cualitativos     |
+| Live Sessions      | Respuestas → `attempts` → recálculo de mastery       |
 | Dashboard profesor | Agregación de mastery por alumno y concepto del aula |
 
 ## Eventos de dominio (futuro)

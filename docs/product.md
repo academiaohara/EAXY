@@ -24,14 +24,14 @@ El progreso **pertenece al estudiante** y persiste aunque no pertenezca a ningun
 
 Un estudiante puede pertenecer a **una o varias aulas**. Las aulas no reemplazan el progreso personal; lo **contextualizan** con la capa docente:
 
-| Capacidad docente | Descripción |
-|---|---|
-| Tareas | Asignaciones explícitas de contenido o ejercicios |
-| Refuerzo | Práctica dirigida sobre conceptos débiles |
-| Recuperación | Recorrido para recuperar conceptos no dominados |
-| Avance | Propuesta de avanzar cuando el dominio lo permite |
-| Material recomendado | Contenido sugerido por el profesor |
-| Seguimiento | Vista agregada del progreso por alumno y por aula |
+| Capacidad docente    | Descripción                                       |
+| -------------------- | ------------------------------------------------- |
+| Tareas               | Asignaciones explícitas de contenido o ejercicios |
+| Refuerzo             | Práctica dirigida sobre conceptos débiles         |
+| Recuperación         | Recorrido para recuperar conceptos no dominados   |
+| Avance               | Propuesta de avanzar cuando el dominio lo permite |
+| Material recomendado | Contenido sugerido por el profesor                |
+| Seguimiento          | Vista agregada del progreso por alumno y por aula |
 
 El profesor puede trabajar en tres niveles de automatización para las asignaciones automáticas (ver `assignment-rules.md`):
 
@@ -47,9 +47,9 @@ Complemento del aula, no un producto aparte. El profesor lanza una sesión en ti
 
 Decisión aprobada para el MVP:
 
-| Tipo de cuenta | Cómo se crea | Modos disponibles | Datos de contacto |
-|---|---|---|---|
-| **Adulto (autoregistro)** | Registro público con email + contraseña u OAuth (Google) | Modo personal; puede ser profesor y gestionar aulas | Email del proveedor OAuth o email propio |
+| Tipo de cuenta              | Cómo se crea                                                                 | Modos disponibles                                     | Datos de contacto                                                |
+| --------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------- |
+| **Adulto (autoregistro)**   | Registro público con email + contraseña u OAuth (Google)                     | Modo personal; puede ser profesor y gestionar aulas   | Email del proveedor OAuth o email propio                         |
 | **Estudiante provisionado** | Siempre por un profesor dentro de un aula (alta masiva por lista de nombres) | Solo aulas (y progreso personal asociado a su cuenta) | **Ninguno** — sin email, teléfono ni datos de contacto del menor |
 
 ### Estudiantes menores: sin registro público
@@ -97,12 +97,12 @@ Un usuario que entra con **Google** se trata como adulto autoregistrado (`accoun
 
 ## Personas
 
-| Persona | Tipo de cuenta | Objetivo principal |
-|---|---|---|
-| Estudiante adulto (solo) | Autoregistro | Aprender a su ritmo con el curso completo en modo personal |
-| Estudiante (en aula) | Provisionado por profesor | Cumplir tareas del aula, practicar y ver su progreso |
-| Profesor | Autoregistro u OAuth Google | Gestionar aulas, alta masiva de alumnos, asignar tareas, seguir mastery, sesiones en vivo |
-| Admin (futuro) | Autoregistro / invitación | Gestionar catálogo de cursos, conceptos y usuarios de centro |
+| Persona                  | Tipo de cuenta              | Objetivo principal                                                                        |
+| ------------------------ | --------------------------- | ----------------------------------------------------------------------------------------- |
+| Estudiante adulto (solo) | Autoregistro                | Aprender a su ritmo con el curso completo en modo personal                                |
+| Estudiante (en aula)     | Provisionado por profesor   | Cumplir tareas del aula, practicar y ver su progreso                                      |
+| Profesor                 | Autoregistro u OAuth Google | Gestionar aulas, alta masiva de alumnos, asignar tareas, seguir mastery, sesiones en vivo |
+| Admin (futuro)           | Autoregistro / invitación   | Gestionar catálogo de cursos, conceptos y usuarios de centro                              |
 
 ## Fuera de alcance inicial
 

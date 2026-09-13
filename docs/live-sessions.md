@@ -4,9 +4,9 @@ Actividad en tiempo real tipo Kahoot integrada en el aula. Las respuestas alimen
 
 ## Dos modos
 
-| Modo | Quién responde | Caso de uso |
-|---|---|---|
-| `mobile` | Cada alumno desde su móvil | Aula con dispositivos |
+| Modo     | Quién responde                             | Caso de uso                |
+| -------- | ------------------------------------------ | -------------------------- |
+| `mobile` | Cada alumno desde su móvil                 | Aula con dispositivos      |
 | `manual` | El profesor marca acierto/fallo por alumno | Sin móviles, pizarra, oral |
 
 En ambos modos se crea un `attempt` y un `live_session_response` vinculados.
@@ -17,13 +17,13 @@ En ambos modos se crea un `attempt` y un `live_session_response` vinculados.
 lobby → active → question → results → question → ... → ended
 ```
 
-| Estado | Descripción |
-|---|---|
-| `lobby` | Alumnos se unen con código; profesor espera |
-| `active` | Sesión en curso; sin pregunta visible aún |
-| `question` | Pregunta actual abierta; alumnos responden o profesor marca |
-| `results` | Resultados agregados visibles; profesor decide siguiente paso |
-| `ended` | Sesión cerrada; mastery ya actualizado |
+| Estado     | Descripción                                                   |
+| ---------- | ------------------------------------------------------------- |
+| `lobby`    | Alumnos se unen con código; profesor espera                   |
+| `active`   | Sesión en curso; sin pregunta visible aún                     |
+| `question` | Pregunta actual abierta; alumnos responden o profesor marca   |
+| `results`  | Resultados agregados visibles; profesor decide siguiente paso |
+| `ended`    | Sesión cerrada; mastery ya actualizado                        |
 
 ## Flujo modo móvil
 
@@ -82,12 +82,12 @@ El `score` se toma del marcado (`1.0` o `0.0`). El `exercise_id` sigue vinculado
 
 ### Eventos broadcast
 
-| Evento | Payload | Quién emite |
-|---|---|---|
-| `session_state` | `{ status, currentQuestionId }` | Profesor (host) |
-| `participant_joined` | `{ studentId, name }` | Sistema |
-| `response_received` | `{ questionId, count, correctCount }` | Servidor (agregado, sin PII) |
-| `question_closed` | `{ questionId, stats }` | Profesor |
+| Evento               | Payload                               | Quién emite                  |
+| -------------------- | ------------------------------------- | ---------------------------- |
+| `session_state`      | `{ status, currentQuestionId }`       | Profesor (host)              |
+| `participant_joined` | `{ studentId, name }`                 | Sistema                      |
+| `response_received`  | `{ questionId, count, correctCount }` | Servidor (agregado, sin PII) |
+| `question_closed`    | `{ questionId, stats }`               | Profesor                     |
 
 Los alumnos **no** reciben las respuestas individuales de otros; solo el profesor ve el detalle.
 
@@ -141,11 +141,11 @@ Esto permite que una sesión en vivo en «Fracciones equivalentes» actualice el
 
 ## Testing
 
-| Capa | Qué |
-|---|---|
-| Vitest | Transiciones de estado, agregación de respuestas |
-| Vitest | Modo manual → attempt con `submitted_by=teacher` |
-| Integración | Realtime + Server Action (Supabase local) |
+| Capa           | Qué                                                     |
+| -------------- | ------------------------------------------------------- |
+| Vitest         | Transiciones de estado, agregación de respuestas        |
+| Vitest         | Modo manual → attempt con `submitted_by=teacher`        |
+| Integración    | Realtime + Server Action (Supabase local)               |
 | E2E Playwright | Flujo completo: host lanza, alumno responde, resultados |
 
 ## Documentos relacionados

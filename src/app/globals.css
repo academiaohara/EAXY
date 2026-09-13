@@ -128,3 +128,46 @@
     @apply font-sans;
   }
 }
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .print-area {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  .credential-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+    border: 1px dashed #999 !important;
+    page-break-inside: avoid;
+  }
+
+  body.print-single-card * {
+    visibility: hidden;
+  }
+
+  body.print-single-card .single-card-print,
+  body.print-single-card .single-card-print * {
+    visibility: visible;
+  }
+
+  body.print-single-card .single-card-print {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85mm;
+  }
+}
