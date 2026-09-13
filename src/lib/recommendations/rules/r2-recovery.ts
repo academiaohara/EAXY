@@ -1,7 +1,6 @@
 import {
   conceptHasExercises,
   formatConceptMastery,
-  getConceptById,
   hoursSince,
   isConceptStruggling,
 } from "@/lib/recommendations/helpers";

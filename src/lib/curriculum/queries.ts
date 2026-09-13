@@ -371,10 +371,7 @@ export async function getLessonDetail(
   };
 }
 
-export async function getExerciseForPractice(
-  exerciseId: string,
-  _studentId: string | null,
-): Promise<{
+export async function getExerciseForPractice(exerciseId: string): Promise<{
   id: string;
   conceptId: string;
   type: string;

@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ExercisePractice } from "@/components/learning/exercise-practice";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getExerciseForPractice } from "@/lib/curriculum/queries";
@@ -11,7 +11,12 @@ type ExercisePageProps = {
 export default async function ExercisePage({ params }: ExercisePageProps) {
   const { exerciseId } = await params;
   const studentId = await getAuthenticatedUserIdOrNull();
-  const exercise = await getExerciseForPractice(exerciseId, studentId);
+
+  if (!studentId) {
+    redirect("/entrar");
+  }
+
+  const exercise = await getExerciseForPractice(exerciseId);
 
   if (!exercise) {
     notFound();

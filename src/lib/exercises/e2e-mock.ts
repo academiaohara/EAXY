@@ -181,8 +181,9 @@ export function mockSubmitExerciseAttempt(
   studentId: string,
   exerciseId: string,
   answer: unknown,
-  _timeSpentMs: number,
+  timeSpentMs: number,
 ): SubmitExerciseAttemptResult {
+  void timeSpentMs;
   const exercise = mockGetExerciseById(exerciseId);
 
   if (!exercise) {

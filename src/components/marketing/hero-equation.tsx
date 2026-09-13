@@ -1,20 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 const STEPS = ["2x + 4 = 10", "2x = 6", "x = 3"];
 
 const STEP_DELAYS_MS = [0, 1400, 1400];
 
+function subscribeToReducedMotion(callback: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export function HeroEquation() {
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot,
+  );
   const [stepIndex, setStepIndex] = useState(0);
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     if (prefersReducedMotion) {
-      setStepIndex(STEPS.length - 1);
       return;
     }
 
@@ -34,7 +50,9 @@ export function HeroEquation() {
     return () => {
       timeouts.forEach(clearTimeout);
     };
-  }, []);
+  }, [prefersReducedMotion]);
+
+  const displayIndex = prefersReducedMotion ? STEPS.length - 1 : stepIndex;
 
   return (
     <div
@@ -43,11 +61,11 @@ export function HeroEquation() {
     >
       <p className="mb-3 text-xs font-medium text-ink-muted">Resolviendo</p>
       <p
-        key={animationKey}
+        key={prefersReducedMotion ? "static" : animationKey}
         className="hero-equation-step font-mono text-2xl font-medium tracking-tight text-ink sm:text-3xl"
         aria-live="polite"
       >
-        {STEPS[stepIndex]}
+        {STEPS[displayIndex]}
       </p>
     </div>
   );

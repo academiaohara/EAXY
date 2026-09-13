@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ExerciseRenderer } from "@/components/exercises/exercise-renderer";
 import { MasteryBadge } from "@/components/exercises/mastery-badge";
+import { MasteryProgressBar } from "@/components/learning/mastery-progress-bar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { PracticeExerciseContext } from "@/lib/exercises/types";
 import { formatMasteryPercent } from "@/lib/mastery/status";
@@ -26,12 +27,15 @@ export function PracticeSession({ context }: PracticeSessionProps) {
 
   return (
     <div className="space-y-6" data-testid="practice-session">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="text-sm text-muted-foreground">Concepto</p>
-          <p className="font-medium text-ink">{context.conceptTitle}</p>
+      <div className="space-y-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-sm text-muted-foreground">Concepto</p>
+            <p className="font-medium text-ink">{context.conceptTitle}</p>
+          </div>
+          <MasteryBadge mastery={mastery} hasAttempts={hasAttempts} />
         </div>
-        <MasteryBadge mastery={mastery} hasAttempts={hasAttempts} />
+        <MasteryProgressBar mastery={mastery} hasAttempts={hasAttempts} />
       </div>
 
       <Card>
