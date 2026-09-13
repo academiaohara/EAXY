@@ -31,7 +31,7 @@ export function MasteryBadge({
   const state = getMasteryState(mastery, attemptCount);
 
   return (
-    <Badge className={cn(STATE_STYLES[state], className)}>
+    <Badge className={cn(STATE_STYLES[state], className)} data-testid="mastery-badge">
       {MASTERY_STATE_LABELS[state]}
       {showPercent && state !== "not_started" ? ` · ${formatMasteryPercent(mastery)}` : null}
     </Badge>

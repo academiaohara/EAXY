@@ -26,4 +26,5 @@ test("el alumno puede ver su mapa de conceptos en /progreso", async ({ page }) =
   await expect(page.getByRole("heading", { name: "Progreso" })).toBeVisible();
   await expect(page.getByText("Dominio medio")).toBeVisible();
   await expect(page.getByText("Conceptos practicados")).toBeVisible();
+  await expect(page.getByTestId("mastery-stats")).toBeVisible();
 });

@@ -1,11 +1,11 @@
-import { getMasteryStatus } from "@/lib/mastery/status";
+import { getMasteryState } from "@/lib/mastery/states";
 
 type MasteryProgressBarProps = {
   mastery: number;
-  hasAttempts: boolean;
+  attemptCount?: number;
 };
 
-const STATUS_COLORS: Record<ReturnType<typeof getMasteryStatus>, string> = {
+const STATE_COLORS: Record<ReturnType<typeof getMasteryState>, string> = {
   not_started: "bg-muted-foreground/30",
   struggling: "bg-destructive",
   developing: "bg-amber-500",
@@ -13,9 +13,12 @@ const STATUS_COLORS: Record<ReturnType<typeof getMasteryStatus>, string> = {
   mastered: "bg-emerald-600",
 };
 
-export function MasteryProgressBar({ mastery, hasAttempts }: MasteryProgressBarProps) {
-  const status = getMasteryStatus(mastery, hasAttempts);
-  const percent = hasAttempts ? Math.round(mastery * 100) : 0;
+export function MasteryProgressBar({
+  mastery,
+  attemptCount = 0,
+}: MasteryProgressBarProps) {
+  const state = getMasteryState(mastery, attemptCount);
+  const percent = attemptCount > 0 ? Math.round(mastery * 100) : 0;
 
   return (
     <div
@@ -27,7 +30,7 @@ export function MasteryProgressBar({ mastery, hasAttempts }: MasteryProgressBarP
       data-testid="mastery-progress-bar"
     >
       <div
-        className={`h-full rounded-full transition-all ${STATUS_COLORS[status]}`}
+        className={`h-full rounded-full transition-all ${STATE_COLORS[state]}`}
         style={{ width: `${percent}%` }}
       />
     </div>
