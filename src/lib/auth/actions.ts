@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import {
+  DUMMY_STUDENT_AUTH_EMAIL,
   GENERIC_STUDENT_LOGIN_ERROR,
   STUDENT_LOGIN_REDIRECT_PATH,
 } from "@/lib/auth/constants";
@@ -61,19 +62,15 @@ export async function signInStudent(
   }
 
   const authEmailInternal = await lookupStudentAuthEmail(normalizedUsername);
-
-  if (!authEmailInternal) {
-    recordFailedLoginAttempt(normalizedUsername);
-    return { error: GENERIC_STUDENT_LOGIN_ERROR };
-  }
+  const emailForSignIn = authEmailInternal ?? DUMMY_STUDENT_AUTH_EMAIL;
 
   const supabase = await createServerSupabaseClient();
   const { error: signInError } = await supabase.auth.signInWithPassword({
-    email: authEmailInternal,
+    email: emailForSignIn,
     password,
   });
 
-  if (signInError) {
+  if (signInError || !authEmailInternal) {
     recordFailedLoginAttempt(normalizedUsername);
     return { error: GENERIC_STUDENT_LOGIN_ERROR };
   }
