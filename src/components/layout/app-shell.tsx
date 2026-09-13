@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BookOpenIcon, GraduationCapIcon, LineChartIcon, UsersIcon } from "lucide-react";
+import { MobileNav } from "@/components/layout/mobile-nav";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
@@ -72,7 +73,8 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
         </div>
       </header>
 
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 pb-16 sm:pb-0">{children}</main>
+      <MobileNav />
     </div>
   );
 }

@@ -1,7 +1,13 @@
 /**
  * Estados cualitativos derivados del mastery (umbrales globales fijos en MVP).
- * Ver docs/learning-model.md.
+ * Fuente única de verdad — ver docs/learning-model.md.
  */
+
+import {
+  MASTERY_DEVELOPING_MAX,
+  MASTERY_MASTERED_MIN,
+  MASTERY_STRUGGLING_MAX,
+} from "@/lib/mastery/constants";
 
 export const MASTERY_STATES = [
   "not_started",
@@ -13,27 +19,31 @@ export const MASTERY_STATES = [
 
 export type MasteryState = (typeof MASTERY_STATES)[number];
 
+/** @deprecated Usar MASTERY_THRESHOLDS desde constants vía getMasteryState */
 export const MASTERY_THRESHOLDS = {
-  struggling: 0.4,
-  developing: 0.7,
-  proficient: 0.85,
+  struggling: MASTERY_STRUGGLING_MAX,
+  developing: MASTERY_DEVELOPING_MAX,
+  proficient: MASTERY_MASTERED_MIN,
 } as const;
 
-export function getMasteryState(mastery: number | null | undefined, attemptCount = 1): MasteryState {
+export function getMasteryState(
+  mastery: number | null | undefined,
+  attemptCount = 1,
+): MasteryState {
   if (mastery === null || mastery === undefined || attemptCount <= 0) {
     return "not_started";
   }
-  if (mastery < MASTERY_THRESHOLDS.struggling) return "struggling";
-  if (mastery < MASTERY_THRESHOLDS.developing) return "developing";
-  if (mastery < MASTERY_THRESHOLDS.proficient) return "proficient";
+  if (mastery < MASTERY_STRUGGLING_MAX) return "struggling";
+  if (mastery < MASTERY_DEVELOPING_MAX) return "developing";
+  if (mastery < MASTERY_MASTERED_MIN) return "proficient";
   return "mastered";
 }
 
 export const MASTERY_STATE_LABELS: Record<MasteryState, string> = {
   not_started: "Sin empezar",
-  struggling: "Necesita refuerzo",
+  struggling: "En recuperación",
   developing: "En progreso",
-  proficient: "Casi dominado",
+  proficient: "Competente",
   mastered: "Dominado",
 };
 
@@ -47,5 +57,9 @@ export const MASTERY_STATE_DESCRIPTIONS: Record<MasteryState, string> = {
 
 export function formatMasteryPercent(mastery: number | null | undefined): string {
   if (mastery === null || mastery === undefined) return "—";
-  return `${Math.round(mastery * 100)} %`;
+  return `${Math.round(mastery * 100)}%`;
+}
+
+export function getMasteryStateLabel(state: MasteryState): string {
+  return MASTERY_STATE_LABELS[state];
 }

@@ -36,6 +36,7 @@ describe("formatMasteryPercent", () => {
 describe("MASTERY_STATE_LABELS", () => {
   it("tiene etiqueta en español para cada estado", () => {
     expect(MASTERY_STATE_LABELS.not_started).toBe("Sin empezar");
+    expect(MASTERY_STATE_LABELS.developing).toBe("En progreso");
     expect(MASTERY_STATE_LABELS.mastered).toBe("Dominado");
   });
 });

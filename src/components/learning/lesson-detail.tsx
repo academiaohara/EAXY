@@ -7,9 +7,9 @@ import {
 } from "@/lib/learning-paths/completion";
 import {
   formatMasteryPercent,
-  getMasteryQualitativeState,
+  getMasteryState,
   MASTERY_STATE_LABELS,
-} from "@/lib/mastery/state";
+} from "@/lib/mastery/states";
 import type { LessonDetail } from "@/lib/curriculum/types";
 
 type LessonDetailViewProps = {
@@ -49,7 +49,7 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
           <h2 className="font-heading text-lg font-medium">Conceptos</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {lesson.concepts.map((concept) => {
-              const state = getMasteryQualitativeState(concept.mastery, concept.attemptCount);
+              const state = getMasteryState(concept.mastery, concept.attemptCount);
               return (
                 <Card key={concept.id} className="p-3">
                   <p className="font-medium">{concept.title}</p>

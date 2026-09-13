@@ -10,6 +10,7 @@ import type { Recommendation, RecommendationAction } from "@/lib/recommendations
 
 type RecommendationCardProps = {
   recommendation: Recommendation;
+  actionHref?: string | null;
 };
 
 function actionLabel(action: RecommendationAction): string {
@@ -27,25 +28,11 @@ function actionLabel(action: RecommendationAction): string {
   }
 }
 
-function actionHref(recommendation: Recommendation): string | null {
-  if (recommendation.action === "rest") {
-    return null;
-  }
-
-  if (recommendation.exerciseId) {
-    return `/aprender/ejercicio/${recommendation.exerciseId}`;
-  }
-
-  if (recommendation.lessonId) {
-    return `/aprender/leccion/${recommendation.lessonId}`;
-  }
-
-  return "/aprender";
-}
-
-export function RecommendationCard({ recommendation }: RecommendationCardProps) {
+export function RecommendationCard({
+  recommendation,
+  actionHref: href = null,
+}: RecommendationCardProps) {
   const [showDetails, setShowDetails] = useState(false);
-  const href = actionHref(recommendation);
   const detailRows = formatRecommendationDetails(recommendation.explanation.details);
 
   return (
