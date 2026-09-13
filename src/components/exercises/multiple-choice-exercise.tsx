@@ -50,7 +50,9 @@ export function MultipleChoiceExercise({
     });
   }
 
-  const selectedLabel = content.options.find((option) => option.id === feedback?.correctAnswer)?.text;
+  const selectedLabel = content.options.find(
+    (option) => option.id === feedback?.correctAnswer,
+  )?.text;
 
   return (
     <div className="space-y-4" data-testid="multiple-choice-exercise">
@@ -84,15 +86,21 @@ export function MultipleChoiceExercise({
       )}
 
       {feedback && (
-        <p
-          className={`text-sm ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}
-          role="status"
-          data-testid="exercise-feedback"
-        >
-          {feedback.correct
-            ? "Correcto."
-            : `Incorrecto. La respuesta correcta es: ${selectedLabel ?? feedback.correctAnswer}`}
-        </p>
+        <div className="space-y-2" role="status" data-testid="exercise-feedback">
+          <p className={`text-sm font-medium ${feedback.correct ? "text-emerald-700" : "text-destructive"}`}>
+            {feedback.correct
+              ? "¡Correcto!"
+              : `Incorrecto. La respuesta correcta es: ${selectedLabel ?? feedback.correctAnswer}`}
+          </p>
+          {feedback.explanation && (
+            <p className="rounded-lg bg-muted/60 px-3 py-2 text-sm text-ink-muted">{feedback.explanation}</p>
+          )}
+          {feedback.mastery !== undefined && (
+            <p className="text-xs text-ink-muted">
+              Dominio actualizado: {Math.round(feedback.mastery * 100)} %
+            </p>
+          )}
+        </div>
       )}
 
       <Button

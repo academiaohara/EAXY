@@ -10,7 +10,7 @@ import type {
   ProvisionStudentsResult,
 } from "@/lib/classrooms/types";
 
-const MOCK_TEACHER_ID = "e2e-teacher-id";
+export const MOCK_TEACHER_ID = "e2e-teacher-id";
 export const E2E_STUDENT_SESSION_COOKIE = "e2e_student_session";
 
 /**
@@ -79,6 +79,10 @@ export async function mockRequireAuthenticatedUserId(): Promise<string> {
 /** Simula la RPC is_classroom_teacher(classroom_id). */
 export function mockIsClassroomTeacher(classroomId: string): boolean {
   return authorizedClassroomIds.has(classroomId);
+}
+
+export function mockAuthorizeClassroom(classroomId: string): void {
+  authorizedClassroomIds.add(classroomId);
 }
 
 /** Simula assertClassroomTeacher: el profesor mock siempre tiene permiso en aulas autorizadas. */

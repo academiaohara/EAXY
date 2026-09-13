@@ -208,6 +208,7 @@ export function mockSubmitExerciseAttempt(
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
+    explanation: result.explanation,
     mastery,
     conceptTitle: concept?.title ?? "Concepto",
   };

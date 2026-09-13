@@ -3,18 +3,21 @@
 import { useEffect, useState } from "react";
 
 const STEPS = ["2x + 4 = 10", "2x = 6", "x = 3"];
-
 const STEP_DELAYS_MS = [0, 1400, 1400];
 
+function getInitialStepIndex(): number {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? STEPS.length - 1 : 0;
+}
+
 export function HeroEquation() {
-  const [stepIndex, setStepIndex] = useState(0);
-  const [animationKey, setAnimationKey] = useState(0);
+  const [stepIndex, setStepIndex] = useState(getInitialStepIndex);
+  const [animationKey, setAnimationKey] = useState(getInitialStepIndex);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      setStepIndex(STEPS.length - 1);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
 

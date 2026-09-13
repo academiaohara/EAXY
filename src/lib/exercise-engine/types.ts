@@ -6,6 +6,8 @@ export type MultipleChoiceContent = {
   question: string;
   options: { id: string; text: string }[];
   correctOptionId: string;
+  /** Explicación mostrada tras responder (correcto o no). */
+  explanation?: string;
 };
 
 export type MultipleChoiceAnswer = {
@@ -16,6 +18,9 @@ export type NumericContent = {
   question: string;
   correctAnswer: number;
   tolerance?: number;
+  /** Unidad o sufijo a mostrar junto al input (p. ej. "€", "%"). */
+  unit?: string;
+  explanation?: string;
 };
 
 export type NumericAnswer = {
@@ -30,6 +35,7 @@ export type CheckAnswerResult = {
   correct: boolean;
   score: number;
   correctAnswer: string | number;
+  explanation?: string;
 };
 
 export type ExerciseRow = {

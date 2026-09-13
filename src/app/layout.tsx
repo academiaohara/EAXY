@@ -22,11 +22,15 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eaxy",
-  description: "Aprendizaje adaptativo de matemáticas",
+  title: {
+    default: "Eaxy — Matemáticas adaptativas",
+    template: "%s · Eaxy",
+  },
+  description:
+    "Plataforma de aprendizaje adaptativo de matemáticas para ESO. Practica a tu ritmo o gestiona aulas con seguimiento del progreso.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"

@@ -3,6 +3,7 @@ import type { ExerciseRow } from "@/lib/exercise-engine/types";
 export type SubmitExerciseAttemptResult = {
   correct: boolean;
   correctAnswer: string | number;
+  explanation?: string;
   mastery: number;
   conceptTitle: string;
   lessonCompleted?: boolean;
