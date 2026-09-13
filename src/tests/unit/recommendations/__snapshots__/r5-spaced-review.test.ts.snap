@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`R5 — repaso espaciado > recomienda repaso tras 7 días sin practicar un concepto competente 1`] = `"Hace tiempo que no practicas «Concepto A». Un repaso rápido lo mantendrá fresco."`;

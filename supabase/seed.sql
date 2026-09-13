@@ -45,6 +45,14 @@ values
   ('a3000000-0000-4000-8000-000000000001', 'b1000000-0000-4000-8000-000000000001'),
   ('a3000000-0000-4000-8000-000000000001', 'b1000000-0000-4000-8000-000000000002');
 
+insert into public.concept_prerequisites (concept_id, prerequisite_id, min_mastery)
+values
+  (
+    'b1000000-0000-4000-8000-000000000002',
+    'b1000000-0000-4000-8000-000000000001',
+    0.4
+  );
+
 insert into public.exercises (id, concept_id, type, difficulty, content)
 values
   (

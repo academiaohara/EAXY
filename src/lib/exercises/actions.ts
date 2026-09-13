@@ -8,6 +8,7 @@ import type { ExerciseType } from "@/lib/exercise-engine/types";
 import { mockSubmitExerciseAttempt } from "@/lib/exercises/e2e-mock";
 import { recalculateStudentConceptMastery } from "@/lib/exercises/mastery";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
+import { syncLessonCompletionForExercise } from "@/lib/learning-paths/actions";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 type ExerciseRecord = {
@@ -84,10 +85,18 @@ export async function submitExerciseAttempt(
     .eq("id", typedExercise.concept_id)
     .maybeSingle();
 
+  let lessonCompleted = false;
+
+  if (result.correct) {
+    const completion = await syncLessonCompletionForExercise(exerciseId);
+    lessonCompleted = completion.lessonCompleted;
+  }
+
   return {
     correct: result.correct,
     correctAnswer: result.correctAnswer,
     mastery,
     conceptTitle: concept?.title ?? "Concepto",
+    lessonCompleted,
   };
 }

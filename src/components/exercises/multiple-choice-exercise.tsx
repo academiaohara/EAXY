@@ -6,25 +6,21 @@ import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import type { MultipleChoiceContent } from "@/lib/exercise-engine/types";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
+import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
 type MultipleChoiceExerciseProps = {
   exerciseId: string;
   content: MultipleChoiceContent;
-  onAttemptComplete?: (result: { mastery: number; conceptTitle: string }) => void;
+  onAttemptResult?: (result: SubmitExerciseAttemptResult) => void;
 };
 
 export function MultipleChoiceExercise({
   exerciseId,
   content,
-  onAttemptComplete,
+  onAttemptResult,
 }: MultipleChoiceExerciseProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-  const [feedback, setFeedback] = useState<{
-    correct: boolean;
-    correctAnswer: string | number;
-    mastery: number;
-    conceptTitle: string;
-  } | null>(null);
+  const [feedback, setFeedback] = useState<SubmitExerciseAttemptResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [startedAt] = useState(() => Date.now());
   const [isPending, startTransition] = useTransition();
@@ -44,10 +40,7 @@ export function MultipleChoiceExercise({
           Date.now() - startedAt,
         );
         setFeedback(result);
-        onAttemptComplete?.({
-          mastery: result.mastery,
-          conceptTitle: result.conceptTitle,
-        });
+        onAttemptResult?.(result);
       } catch (error) {
         setFeedback(null);
         setErrorMessage(
