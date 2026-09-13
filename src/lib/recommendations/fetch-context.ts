@@ -108,8 +108,6 @@ export async function fetchRecommendationContext(
     .from("exercises")
     .select("id, concept_id, difficulty");
 
-  const exerciseIds = (exercises ?? []).map((exercise) => exercise.id as string);
-
   const { data: attempts } = await supabase
     .from("exercise_attempts")
     .select("exercise_id, correct, created_at")

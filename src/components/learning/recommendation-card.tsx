@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { formatRecommendationDetails } from "@/lib/recommendations/format-details";
 import type { Recommendation, RecommendationAction } from "@/lib/recommendations/types";
 
 type RecommendationCardProps = {
@@ -45,6 +46,7 @@ function actionHref(recommendation: Recommendation): string | null {
 export function RecommendationCard({ recommendation }: RecommendationCardProps) {
   const [showDetails, setShowDetails] = useState(false);
   const href = actionHref(recommendation);
+  const detailRows = formatRecommendationDetails(recommendation.explanation.details);
 
   return (
     <Card className="border-cobalt/20 bg-cobalt-tint/20 p-5" data-testid="recommendation-card">
@@ -66,17 +68,25 @@ export function RecommendationCard({ recommendation }: RecommendationCardProps) 
             {showDetails ? "Ocultar detalles" : "¿Por qué me recomiendas esto?"}
           </button>
           {showDetails ? (
-            <pre
-              className="overflow-x-auto rounded-md bg-paper-raised p-3 text-xs text-muted-foreground"
+            <dl
+              className="rounded-md bg-paper-raised p-3 text-sm"
               data-testid="recommendation-details"
             >
-              {JSON.stringify(recommendation.explanation.details, null, 2)}
-            </pre>
+              {detailRows.map((row) => (
+                <div key={row.label} className="flex flex-wrap gap-x-2 py-1">
+                  <dt className="text-muted-foreground">{row.label}:</dt>
+                  <dd className="font-medium text-ink">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
           ) : null}
         </div>
 
         {href ? (
-          <Button render={<Link href={href} data-testid="recommendation-cta" />}>
+          <Button
+            nativeButton={false}
+            render={<Link href={href} data-testid="recommendation-cta" />}
+          >
             Empezar
           </Button>
         ) : null}

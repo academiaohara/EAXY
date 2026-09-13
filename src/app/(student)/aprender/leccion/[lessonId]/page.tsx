@@ -26,7 +26,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <main className="flex flex-1 flex-col p-6 md:p-10">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
       <LessonDetailView lesson={lesson} />
     </main>
   );

@@ -81,7 +81,10 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
                     ) : null}
                   </div>
                 </div>
-                <Button render={<Link href={`/aprender/ejercicio/${exercise.id}`} />}>
+                <Button
+                  nativeButton={false}
+                  render={<Link href={`/aprender/ejercicio/${exercise.id}`} />}
+                >
                   {exercise.hasCorrectAttempt ? "Repasar" : "Practicar"}
                 </Button>
               </div>

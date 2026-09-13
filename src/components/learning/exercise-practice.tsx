@@ -55,6 +55,7 @@ export function ExercisePractice({
             <Button
               className="mt-4"
               variant="outline"
+              nativeButton={false}
               render={<Link href={`/aprender/leccion/${lessonId}`} />}
             >
               Volver a la lección

@@ -34,7 +34,11 @@ test("el alumno puede navegar el curso desde /aprender", async ({ page }) => {
   await expect(page.getByTestId("lesson-detail")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Ecuaciones de primer grado" })).toBeVisible();
 
-  await page.getByRole("link", { name: "Practicar" }).first().click();
+  await page
+    .getByTestId("lesson-exercises")
+    .getByRole("button", { name: "Practicar" })
+    .first()
+    .click();
   await expect(page).toHaveURL(new RegExp(`/aprender/ejercicio/${DEMO_EXERCISE_ID}$`));
   await expect(page.getByTestId("exercise-practice")).toBeVisible();
   await expect(page.getByTestId("multiple-choice-exercise")).toBeVisible();
