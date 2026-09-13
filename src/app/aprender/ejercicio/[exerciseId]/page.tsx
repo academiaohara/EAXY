@@ -1,6 +1,5 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ExercisePractice } from "@/components/learning/exercise-practice";
-import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getExerciseForPractice } from "@/lib/curriculum/queries";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
 
@@ -10,12 +9,6 @@ type ExercisePageProps = {
 
 export default async function ExercisePage({ params }: ExercisePageProps) {
   const { exerciseId } = await params;
-  const studentId = await getAuthenticatedUserIdOrNull();
-
-  if (!studentId) {
-    redirect("/entrar");
-  }
-
   const exercise = await getExerciseForPractice(exerciseId);
 
   if (!exercise) {
@@ -23,7 +16,7 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
   }
 
   return (
-    <main className="flex flex-1 flex-col p-6 md:p-10">
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
       <ExercisePractice
         exerciseId={exercise.id}
         type={exercise.type as ExerciseType}

@@ -17,6 +17,28 @@ type ProgressStats = {
   notStarted: number;
 };
 
+const STATUS_SORT_ORDER: Record<ReturnType<typeof getMasteryStatus>, number> = {
+  struggling: 0,
+  developing: 1,
+  not_started: 2,
+  proficient: 3,
+  mastered: 4,
+};
+
+function sortSummaries(summaries: ConceptMasterySummary[]): ConceptMasterySummary[] {
+  return [...summaries].sort((a, b) => {
+    const statusA = getMasteryStatus(a.mastery, a.hasAttempts);
+    const statusB = getMasteryStatus(b.mastery, b.hasAttempts);
+    const orderDiff = STATUS_SORT_ORDER[statusA] - STATUS_SORT_ORDER[statusB];
+
+    if (orderDiff !== 0) {
+      return orderDiff;
+    }
+
+    return a.conceptTitle.localeCompare(b.conceptTitle, "es");
+  });
+}
+
 function computeStats(summaries: ConceptMasterySummary[]): ProgressStats {
   const stats: ProgressStats = {
     mastered: 0,
@@ -35,6 +57,7 @@ function computeStats(summaries: ConceptMasterySummary[]): ProgressStats {
 }
 
 export function ConceptMasteryMap({ summaries }: ConceptMasteryMapProps) {
+  const sortedSummaries = sortSummaries(summaries);
   const stats = computeStats(summaries);
 
   if (summaries.length === 0) {
@@ -56,7 +79,7 @@ export function ConceptMasteryMap({ summaries }: ConceptMasteryMapProps) {
       </div>
 
       <ul className="space-y-3">
-        {summaries.map((summary) => (
+        {sortedSummaries.map((summary) => (
           <li
             key={summary.conceptId}
             className="rounded-lg border border-border bg-paper-raised p-4"
