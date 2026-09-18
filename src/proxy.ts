@@ -4,7 +4,7 @@ import {
   E2E_STUDENT_SESSION_COOKIE,
   isE2EMockClassroomEnabled,
   MOCK_TEACHER_ID,
-} from "@/lib/classrooms/e2e-mock";
+} from "@/lib/classrooms/e2e-mock-flags";
 import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 
 const PROTECTED_PREFIXES = ["/aprender", "/practicar", "/progreso", "/aulas"];

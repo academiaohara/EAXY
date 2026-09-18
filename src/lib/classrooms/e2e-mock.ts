@@ -1,6 +1,11 @@
 import { cookies } from "next/headers";
 import { AuthorizationError, NotFoundError } from "@/lib/classrooms/errors";
 import {
+  E2E_STUDENT_SESSION_COOKIE,
+  isE2EMockClassroomEnabled,
+  MOCK_TEACHER_ID,
+} from "@/lib/classrooms/e2e-mock-flags";
+import {
   formatSequentialUsername,
   parseSequentialUsername,
 } from "@/lib/credentials/username";
@@ -10,8 +15,7 @@ import type {
   ProvisionStudentsResult,
 } from "@/lib/classrooms/types";
 
-export const MOCK_TEACHER_ID = "e2e-teacher-id";
-export const E2E_STUDENT_SESSION_COOKIE = "e2e_student_session";
+export { E2E_STUDENT_SESSION_COOKIE, isE2EMockClassroomEnabled, MOCK_TEACHER_ID };
 
 /**
  * Aulas en las que el profesor mock tiene permiso (simula is_classroom_teacher = true).
@@ -29,17 +33,6 @@ type MockStudentCredential = {
 };
 
 const mockCredentialsByUsername = new Map<string, MockStudentCredential>();
-
-/**
- * El mock solo puede activarse fuera de producción, aunque E2E_MOCK_CLASSROOM esté definida.
- * En Vercel (NODE_ENV=production) siempre se usa Supabase real.
- */
-export function isE2EMockClassroomEnabled(): boolean {
-  return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.E2E_MOCK_CLASSROOM === "true"
-  );
-}
 
 export async function setMockStudentSession(studentId: string): Promise<void> {
   const cookieStore = await cookies();
