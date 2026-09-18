@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { clearMockStudentSession, isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type AuthFormResult = {
@@ -94,6 +95,10 @@ export async function signInWithGoogle(): Promise<void> {
 }
 
 export async function signOut(): Promise<void> {
+  if (isContentPreviewModeEnabled()) {
+    redirect("/aprender");
+  }
+
   if (isE2EMockClassroomEnabled()) {
     await clearMockStudentSession();
     redirect("/");

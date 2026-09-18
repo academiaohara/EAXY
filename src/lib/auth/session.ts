@@ -3,6 +3,10 @@ import {
   MOCK_TEACHER_ID,
   mockGetSessionUserId,
 } from "@/lib/classrooms/e2e-mock";
+import {
+  isContentPreviewModeEnabled,
+  PREVIEW_GUEST_ID,
+} from "@/lib/content-preview/mode";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type SessionUser = {
@@ -13,6 +17,15 @@ export type SessionUser = {
 };
 
 export async function getSessionUser(): Promise<SessionUser | null> {
+  if (isContentPreviewModeEnabled()) {
+    return {
+      id: PREVIEW_GUEST_ID,
+      displayName: "Previsualización",
+      accountOrigin: "self_registered",
+      isTeacher: false,
+    };
+  }
+
   if (isE2EMockClassroomEnabled()) {
     const userId = await mockGetSessionUserId();
     if (!userId) {

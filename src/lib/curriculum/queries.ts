@@ -1,5 +1,11 @@
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import {
+  getPreviewCourseOutline,
+  getPreviewExerciseForPractice,
+  getPreviewLessonDetail,
+} from "@/lib/content-preview/curriculum-queries";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import {
   getE2EMockCourseOutline,
   getE2EMockExercise,
   getE2EMockLessonDetail,
@@ -97,6 +103,10 @@ async function resolveCourseId(studentId: string | null): Promise<string> {
 export async function getCourseOutline(studentId: string | null): Promise<CourseOutline | null> {
   if (isE2EMockClassroomEnabled()) {
     return getE2EMockCourseOutline();
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    return getPreviewCourseOutline();
   }
 
   const supabase = await createServerSupabaseClient();
@@ -220,6 +230,10 @@ export async function getLessonDetail(
 ): Promise<LessonDetail | null> {
   if (isE2EMockClassroomEnabled()) {
     return getE2EMockLessonDetail(lessonId);
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    return getPreviewLessonDetail(lessonId);
   }
 
   const supabase = await createServerSupabaseClient();
@@ -381,6 +395,10 @@ export async function getExerciseForPractice(exerciseId: string): Promise<{
 } | null> {
   if (isE2EMockClassroomEnabled()) {
     return getE2EMockExercise(exerciseId);
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    return getPreviewExerciseForPractice(exerciseId);
   }
 
   const supabase = await createServerSupabaseClient();

@@ -3,6 +3,7 @@ import { BookOpenIcon, GraduationCapIcon, LineChartIcon, UsersIcon } from "lucid
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -19,9 +20,16 @@ const navItems = [
 
 export async function AppShell({ children, active = "aprender" }: AppShellProps) {
   const user = await getSessionUser();
+  const previewMode = isContentPreviewModeEnabled();
 
   return (
     <div className="flex min-h-full flex-col">
+      {previewMode ? (
+        <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950">
+          Modo previsualización: acceso abierto al catálogo local. El registro se activará más
+          adelante.
+        </div>
+      ) : null}
       <header className="border-b border-border bg-paper-raised/80 backdrop-blur-sm">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-6">
@@ -64,11 +72,13 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
                 Hola, <span className="font-medium text-ink">{user.displayName}</span>
               </p>
             )}
-            <form action={signOut}>
-              <Button type="submit" variant="ghost" size="sm">
-                Salir
-              </Button>
-            </form>
+            {!previewMode ? (
+              <form action={signOut}>
+                <Button type="submit" variant="ghost" size="sm">
+                  Salir
+                </Button>
+              </form>
+            ) : null}
           </div>
         </div>
       </header>
