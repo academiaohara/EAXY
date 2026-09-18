@@ -1,4 +1,6 @@
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { getPreviewRecommendationContext } from "@/lib/content-preview/recommendations";
 import { getE2EMockRecommendationContext } from "@/lib/recommendations/e2e-mock";
 import type {
   AssignmentContext,
@@ -48,6 +50,10 @@ export async function fetchRecommendationContext(
 ): Promise<RecommendationContext> {
   if (isE2EMockClassroomEnabled()) {
     return getE2EMockRecommendationContext(studentId, options?.referenceDate);
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    return getPreviewRecommendationContext(studentId, options?.referenceDate);
   }
 
   const supabase = await createServerSupabaseClient();

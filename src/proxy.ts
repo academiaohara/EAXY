@@ -5,6 +5,7 @@ import {
   isE2EMockClassroomEnabled,
   MOCK_TEACHER_ID,
 } from "@/lib/classrooms/e2e-mock";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 
 const PROTECTED_PREFIXES = ["/aprender", "/practicar", "/progreso", "/aulas"];
 const TEACHER_PREFIXES = ["/aulas/nueva"];
@@ -29,6 +30,14 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (!isProtectedPath(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    if (pathname.startsWith("/aulas")) {
+      return NextResponse.redirect(new URL("/aprender", request.url));
+    }
+
     return NextResponse.next();
   }
 

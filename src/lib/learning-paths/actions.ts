@@ -1,10 +1,15 @@
 "use server";
 
-import { isLessonComplete } from "@/lib/learning-paths/completion";
 import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { isLessonComplete } from "@/lib/learning-paths/completion";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export async function markLessonStarted(lessonId: string): Promise<void> {
+  if (isContentPreviewModeEnabled()) {
+    return;
+  }
+
   const studentId = await requireAuthenticatedUserId();
   const supabase = await createServerSupabaseClient();
 
@@ -29,6 +34,10 @@ export async function markLessonStarted(lessonId: string): Promise<void> {
 export async function syncLessonCompletionForExercise(
   exerciseId: string,
 ): Promise<{ lessonCompleted: boolean; lessonId: string | null }> {
+  if (isContentPreviewModeEnabled()) {
+    return { lessonCompleted: false, lessonId: null };
+  }
+
   const studentId = await requireAuthenticatedUserId();
   const supabase = await createServerSupabaseClient();
 

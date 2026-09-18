@@ -1,6 +1,7 @@
 "use server";
 
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import type { Recommendation } from "@/lib/recommendations/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
@@ -8,7 +9,7 @@ export async function logRecommendation(
   studentId: string,
   recommendation: Recommendation,
 ): Promise<void> {
-  if (isE2EMockClassroomEnabled()) {
+  if (isE2EMockClassroomEnabled() || isContentPreviewModeEnabled()) {
     return;
   }
 

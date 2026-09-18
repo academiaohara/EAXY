@@ -2,6 +2,7 @@
 
 import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
+import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
@@ -31,7 +32,7 @@ export async function submitExerciseAttempt(
 ): Promise<SubmitExerciseAttemptResult> {
   const studentId = await requireAuthenticatedUserId();
 
-  if (isE2EMockClassroomEnabled()) {
+  if (isE2EMockClassroomEnabled() || isContentPreviewModeEnabled()) {
     const catalogExercise = mockGetExercise(exerciseId);
     if (catalogExercise) {
       const content = parseExerciseContent(catalogExercise.type, catalogExercise.content);
