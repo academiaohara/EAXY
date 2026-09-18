@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { curriculum, getConceptById, getOrderedConcepts } from "@/content";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { isContentPreviewModeEnabled, PREVIEW_GUEST_ID } from "@/lib/content-preview/mode";
 import { getCourseOverview } from "@/lib/learning/queries";
 import { pickPracticeConceptSlug } from "@/lib/learning/pick-practice-concept";
 import { getStudentRecommendation } from "@/lib/recommendations/queries";
@@ -13,9 +13,11 @@ export default async function PracticarIndexPage() {
     redirect("/entrar");
   }
 
+  const effectiveStudentId = studentId ?? PREVIEW_GUEST_ID;
+
   const [overview, recommendation] = await Promise.all([
     getCourseOverview(),
-    getStudentRecommendation(studentId),
+    getStudentRecommendation(effectiveStudentId),
   ]);
 
   if (recommendation?.conceptId) {
