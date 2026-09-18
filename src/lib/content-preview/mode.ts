@@ -24,10 +24,14 @@ export function isContentPreviewModeEnabled(): boolean {
     return true;
   }
 
-  // Vercel sin Supabase configurado: abrir el catálogo para revisar contenido.
-  if (process.env.VERCEL === "1" && !isSupabaseConfigured()) {
+  if (process.env.NODE_ENV === "test") {
+    return false;
+  }
+
+  // Temporal en Vercel: catálogo abierto mientras el registro no esté listo.
+  if (process.env.VERCEL === "1") {
     return true;
   }
 
-  return false;
+  return !isSupabaseConfigured();
 }

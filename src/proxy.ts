@@ -1,11 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import {
-  E2E_STUDENT_SESSION_COOKIE,
-  isE2EMockClassroomEnabled,
-  MOCK_TEACHER_ID,
-} from "@/lib/classrooms/e2e-mock-flags";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 
 const PROTECTED_PREFIXES = ["/aprender", "/practicar", "/progreso", "/aulas"];
 const TEACHER_PREFIXES = ["/aulas/nueva"];
@@ -26,6 +19,43 @@ function isTeacherManagementPath(pathname: string): boolean {
   return /^\/aulas\/[^/]+\/(alumnos|asignaciones|reglas|sesiones)/.test(pathname);
 }
 
+function isSupabaseConfigured(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+  );
+}
+
+/** Lógica duplicada a propósito: el proxy edge no debe importar módulos de app. */
+function isContentPreviewEnabled(): boolean {
+  if (process.env.CONTENT_PREVIEW_MODE === "false") {
+    return false;
+  }
+
+  if (process.env.CONTENT_PREVIEW_MODE === "true") {
+    return true;
+  }
+
+  if (process.env.NODE_ENV === "test") {
+    return false;
+  }
+
+  // Temporal en Vercel: catálogo abierto mientras el registro no esté listo.
+  if (process.env.VERCEL === "1") {
+    return true;
+  }
+
+  return !isSupabaseConfigured();
+}
+
+function openLearningAccessRedirect(pathname: string, request: NextRequest) {
+  if (pathname.startsWith("/aulas")) {
+    return NextResponse.redirect(new URL("/aprender", request.url));
+  }
+
+  return NextResponse.next();
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -33,17 +63,18 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (isContentPreviewModeEnabled()) {
-    if (pathname.startsWith("/aulas")) {
-      return NextResponse.redirect(new URL("/aprender", request.url));
-    }
-
-    return NextResponse.next();
+  if (isContentPreviewEnabled() || !isSupabaseConfigured()) {
+    return openLearningAccessRedirect(pathname, request);
   }
 
-  if (isE2EMockClassroomEnabled()) {
-    const mockUserId = request.cookies.get(E2E_STUDENT_SESSION_COOKIE)?.value ?? MOCK_TEACHER_ID;
-    const isTeacher = mockUserId === MOCK_TEACHER_ID;
+  const isE2EMock =
+    process.env.NODE_ENV !== "production" &&
+    process.env.E2E_MOCK_CLASSROOM === "true";
+
+  if (isE2EMock) {
+    const mockUserId =
+      request.cookies.get("e2e_student_session")?.value ?? "e2e-teacher-id";
+    const isTeacher = mockUserId === "e2e-teacher-id";
 
     if ((isTeacherOnlyPath(pathname) || isTeacherManagementPath(pathname)) && !isTeacher) {
       return NextResponse.redirect(new URL("/aprender", request.url));
@@ -52,22 +83,13 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-  if (!supabaseUrl || !supabaseKey) {
-    if (pathname.startsWith("/aulas")) {
-      return NextResponse.redirect(new URL("/aprender", request.url));
-    }
-
-    return NextResponse.next();
-  }
+  const { createServerClient } = await import("@supabase/ssr");
 
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
-    supabaseUrl,
-    supabaseKey,
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
     {
       cookies: {
         getAll() {
