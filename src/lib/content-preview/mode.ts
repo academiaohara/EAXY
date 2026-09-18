@@ -3,11 +3,9 @@ export const PREVIEW_GUEST_ID = "preview-guest";
 
 /**
  * Modo de previsualización del catálogo sin Supabase ni login.
- * Solo activo fuera de producción (`CONTENT_PREVIEW_MODE=true`).
+ * Activo cuando `CONTENT_PREVIEW_MODE=true` (local, Vercel, etc.).
+ * Desactivar antes del lanzamiento público con registro real.
  */
 export function isContentPreviewModeEnabled(): boolean {
-  return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.CONTENT_PREVIEW_MODE === "true"
-  );
+  return process.env.CONTENT_PREVIEW_MODE === "true";
 }
