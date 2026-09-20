@@ -1,10 +1,14 @@
 import {
   curriculum,
+  getAllCourses,
   getConceptBySlug,
+  getCourseById,
   getLessonById,
   getLessonForConcept,
 } from "@/content";
+import { getCurriculumLessonMeta } from "@/lib/curriculum/lesson-meta";
 import type {
+  CourseCatalogEntry,
   CourseOutline,
   ExerciseSummary,
   LessonDetail,
@@ -23,14 +27,58 @@ function extractQuestionPreview(content: unknown): string {
   return "Ejercicio";
 }
 
-export function getPreviewCourseOutline(): CourseOutline {
+function buildLessonSummary(lesson: {
+  id: string;
+  title: string;
+  orderIndex: number;
+  videoUrl?: string;
+  conceptSlugs: string[];
+}): CourseOutline["modules"][number]["lessons"][number] {
+  const meta = getCurriculumLessonMeta(lesson.id);
+
+  return {
+    id: lesson.id,
+    title: lesson.title,
+    orderIndex: lesson.orderIndex,
+    videoUrl: lesson.videoUrl ?? null,
+    exerciseCount: curriculum.exercises.filter((exercise) =>
+      lesson.conceptSlugs.includes(exercise.conceptSlug),
+    ).length,
+    pathStatus: "not_started",
+    conceptIds: lesson.conceptSlugs
+      .map((slug) => getConceptBySlug(slug)?.id)
+      .filter((id): id is string => Boolean(id)),
+    kind: meta?.kind ?? "exercises",
+    interactiveSlug: meta?.interactiveSlug,
+    stepCount: meta?.stepCount,
+  };
+}
+
+export function getPreviewCourseCatalog(): CourseCatalogEntry[] {
+  return getAllCourses(curriculum).map((course) => ({
+    id: course.id,
+    title: course.title,
+    description: course.description,
+    orderIndex: course.orderIndex,
+    moduleCount: course.modules.length,
+    lessonCount: course.modules.reduce((count, module) => count + module.lessons.length, 0),
+  }));
+}
+
+export function getPreviewCourseOutline(courseId: string): CourseOutline | null {
+  const course = getCourseById(courseId, curriculum);
+  if (!course) {
+    return null;
+  }
+
   return {
     course: {
-      id: curriculum.course.id,
-      title: curriculum.course.title,
-      description: curriculum.course.description,
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      orderIndex: course.orderIndex,
     },
-    modules: [...curriculum.modules]
+    modules: [...course.modules]
       .sort((a, b) => a.orderIndex - b.orderIndex)
       .map((courseModule) => ({
         id: courseModule.id,
@@ -38,19 +86,7 @@ export function getPreviewCourseOutline(): CourseOutline {
         orderIndex: courseModule.orderIndex,
         lessons: [...courseModule.lessons]
           .sort((a, b) => a.orderIndex - b.orderIndex)
-          .map((lesson) => ({
-            id: lesson.id,
-            title: lesson.title,
-            orderIndex: lesson.orderIndex,
-            videoUrl: lesson.videoUrl ?? null,
-            exerciseCount: curriculum.exercises.filter((exercise) =>
-              lesson.conceptSlugs.includes(exercise.conceptSlug),
-            ).length,
-            pathStatus: "not_started" as const,
-            conceptIds: lesson.conceptSlugs
-              .map((slug) => getConceptBySlug(slug)?.id)
-              .filter((id): id is string => Boolean(id)),
-          })),
+          .map((lesson) => buildLessonSummary(lesson)),
       })),
   };
 }
@@ -61,7 +97,8 @@ export function getPreviewLessonDetail(lessonId: string): LessonDetail | null {
     return null;
   }
 
-  const { module: courseModule, lesson } = lessonRef;
+  const { course, module: courseModule, lesson } = lessonRef;
+  const meta = getCurriculumLessonMeta(lesson.id);
   const concepts = lesson.conceptSlugs
     .map((slug) => getConceptBySlug(slug))
     .filter((concept): concept is NonNullable<typeof concept> => Boolean(concept));
@@ -93,7 +130,10 @@ export function getPreviewLessonDetail(lessonId: string): LessonDetail | null {
     pathStatus: "not_started",
     conceptIds,
     moduleTitle: courseModule.title,
-    courseTitle: curriculum.course.title,
+    courseTitle: course.title,
+    kind: meta?.kind ?? "exercises",
+    interactiveSlug: meta?.interactiveSlug,
+    stepCount: meta?.stepCount,
     concepts: concepts.map((concept) => ({
       id: concept.id,
       slug: concept.slug,

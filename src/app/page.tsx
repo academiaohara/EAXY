@@ -24,8 +24,9 @@ const features = [
   },
   {
     icon: BookOpenIcon,
-    title: "Curso completo de 2º ESO",
-    description: `${curriculum.modules.length} unidades, ${curriculum.concepts.length} conceptos y ${curriculum.exercises.length} ejercicios interactivos sobre enteros, fracciones, ecuaciones y más.`,
+    title: "De 1.º ESO a 2.º Bachillerato",
+    description:
+      "Catálogo progresivo por niveles: elige tu curso y accede a lecciones interactivas y ejercicios adaptados a lo que ya dominas.",
   },
   {
     icon: UsersIcon,
@@ -98,7 +99,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <p className="inline-flex items-center gap-2 rounded-full border border-cobalt/20 bg-cobalt-tint/50 px-3 py-1 text-xs font-medium text-cobalt">
                 <GraduationCapIcon className="size-3.5" aria-hidden />
-                Matemáticas adaptativas · 2º ESO
+                Matemáticas adaptativas · ESO y Bachillerato
               </p>
               <h1 className="font-display text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl lg:text-6xl">
                 Aprende matemáticas haciendo, a tu ritmo
@@ -118,8 +119,7 @@ export default function HomePage() {
                 </Link>
               </div>
               <p className="text-sm text-ink-muted">
-                {curriculum.exercises.length} ejercicios · {curriculum.concepts.length} conceptos ·
-                feedback inmediato
+                {curriculum.courses.length} niveles · lecciones interactivas · feedback inmediato
               </p>
             </div>
 
@@ -238,7 +238,7 @@ export default function HomePage() {
           <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
             <div className="rounded-2xl border border-cobalt/20 bg-gradient-to-br from-cobalt-tint to-paper-raised px-6 py-12 text-center sm:px-12">
               <h2 className="font-display text-3xl font-semibold tracking-tight text-ink">
-                Empieza hoy con {curriculum.course.title}
+                Empieza hoy con Eaxy
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-ink-muted">
                 Regístrate gratis y practica tu primer ejercicio en menos de un minuto. Si eres

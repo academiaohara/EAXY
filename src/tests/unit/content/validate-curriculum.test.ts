@@ -1,13 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { curriculum, validateCurriculum } from "@/content";
+import { curriculum, getAllCourses, validateCurriculum } from "@/content";
 
 describe("validateCurriculum", () => {
   it("valida el catálogo principal sin errores", () => {
     expect(validateCurriculum(curriculum)).toEqual([]);
   });
 
-  it("incluye al menos 12 conceptos y 30 ejercicios", () => {
-    expect(curriculum.concepts.length).toBeGreaterThanOrEqual(12);
-    expect(curriculum.exercises.length).toBeGreaterThanOrEqual(30);
+  it("incluye los seis niveles de ESO y Bachillerato", () => {
+    expect(getAllCourses(curriculum)).toHaveLength(6);
+  });
+
+  it("tiene la lección interactiva de 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    expect(fourthYear?.modules).toHaveLength(1);
+    expect(fourthYear?.modules[0]?.lessons[0]?.interactiveSlug).toBe("sistemas-no-lineales");
   });
 });

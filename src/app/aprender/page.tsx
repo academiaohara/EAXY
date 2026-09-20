@@ -1,25 +1,25 @@
 import Link from "next/link";
 import { AprenderQuickStats } from "@/components/learning/aprender-quick-stats";
-import { CourseOutlineView } from "@/components/learning/course-outline";
+import { CourseCatalogView } from "@/components/learning/course-catalog";
 import { RecommendationCard } from "@/components/learning/recommendation-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
-import { getCourseOutline } from "@/lib/curriculum/queries";
+import { getCourseCatalog } from "@/lib/curriculum/queries";
 import { getCourseOverview } from "@/lib/learning/queries";
 import { resolveRecommendationHref } from "@/lib/recommendations/resolve-href";
 import { getStudentRecommendation } from "@/lib/recommendations/queries";
 
 export default async function AprenderPage() {
-  const studentId = (await getAuthenticatedUserIdOrNull())!;
+  const studentId = await getAuthenticatedUserIdOrNull();
 
-  const [outline, recommendation, overview] = await Promise.all([
-    getCourseOutline(studentId),
-    getStudentRecommendation(studentId),
-    getCourseOverview(),
+  const [catalog, recommendation, overview] = await Promise.all([
+    getCourseCatalog(),
+    studentId ? getStudentRecommendation(studentId) : Promise.resolve(null),
+    studentId ? getCourseOverview() : Promise.resolve(null),
   ]);
 
-  if (!outline) {
+  if (catalog.length === 0) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center p-8">
         <h1 className="font-heading text-3xl font-semibold tracking-tight">Aprender</h1>
@@ -39,12 +39,14 @@ export default async function AprenderPage() {
       <header className="space-y-2">
         <h1 className="font-heading text-3xl font-semibold tracking-tight">Aprender</h1>
         <p className="text-muted-foreground">
-          Tu espacio de aprendizaje personal. Practica ejercicios y sigue tu progreso por
-          concepto.
+          Elige tu nivel y accede a las lecciones disponibles. Iremos ampliando el catálogo poco a
+          poco.
         </p>
       </header>
 
-      <AprenderQuickStats overview={overview} />
+      {overview && overview.concepts.length > 0 ? (
+        <AprenderQuickStats overview={overview} />
+      ) : null}
 
       {recommendation ? (
         <RecommendationCard
@@ -57,7 +59,7 @@ export default async function AprenderPage() {
         <CardHeader>
           <CardTitle>Práctica libre</CardTitle>
           <CardDescription>
-            Continúa practicando para reforzar lo que vas aprendiendo.
+            Refuerza conceptos con ejercicios cuando estén disponibles en tu nivel.
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-3">
@@ -72,7 +74,7 @@ export default async function AprenderPage() {
         </CardContent>
       </Card>
 
-      <CourseOutlineView outline={outline} />
+      <CourseCatalogView courses={catalog} />
     </main>
   );
 }

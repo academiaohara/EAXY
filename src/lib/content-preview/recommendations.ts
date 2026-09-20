@@ -1,21 +1,23 @@
-import { curriculum, getConceptBySlug } from "@/content";
+import { curriculum, getAllCourses, getConceptBySlug } from "@/content";
 import type { RecommendationContext } from "@/lib/recommendations/types";
 
 export function getPreviewRecommendationContext(
   studentId: string,
   referenceDate = new Date(),
 ): RecommendationContext {
-  const lessons = curriculum.modules.flatMap((courseModule) =>
-    courseModule.lessons.map((lesson) => ({
-      id: lesson.id,
-      title: lesson.title,
-      orderIndex: lesson.orderIndex,
-      moduleOrderIndex: courseModule.orderIndex,
-      conceptIds: lesson.conceptSlugs
-        .map((slug) => getConceptBySlug(slug)?.id)
-        .filter((id): id is string => Boolean(id)),
-      pathStatus: "not_started" as const,
-    })),
+  const lessons = getAllCourses(curriculum).flatMap((course) =>
+    course.modules.flatMap((courseModule) =>
+      courseModule.lessons.map((lesson) => ({
+        id: lesson.id,
+        title: lesson.title,
+        orderIndex: lesson.orderIndex,
+        moduleOrderIndex: courseModule.orderIndex,
+        conceptIds: lesson.conceptSlugs
+          .map((slug) => getConceptBySlug(slug)?.id)
+          .filter((id): id is string => Boolean(id)),
+        pathStatus: "not_started" as const,
+      })),
+    ),
   );
 
   const lessonIdsByConcept = new Map<string, string[]>();

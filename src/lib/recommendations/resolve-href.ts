@@ -1,4 +1,5 @@
 import { curriculum, getConceptById } from "@/content";
+import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import type { Recommendation } from "@/lib/recommendations/types";
 
 export function resolveRecommendationHref(recommendation: Recommendation): string | null {
@@ -11,7 +12,7 @@ export function resolveRecommendationHref(recommendation: Recommendation): strin
   }
 
   if (recommendation.lessonId) {
-    return `/aprender/leccion/${recommendation.lessonId}`;
+    return resolveLessonHref(recommendation.lessonId);
   }
 
   if (recommendation.conceptId) {

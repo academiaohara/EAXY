@@ -1,9 +1,13 @@
 import type { ExerciseContent, ExerciseType } from "@/lib/exercise-engine/types";
 
+export type LessonKind = "exercises" | "interactive";
+
 export type CurriculumCourse = {
   id: string;
   title: string;
   description: string;
+  orderIndex: number;
+  modules: CurriculumModule[];
 };
 
 export type CurriculumConcept = {
@@ -21,6 +25,9 @@ export type CurriculumLesson = {
   summary: string;
   orderIndex: number;
   videoUrl?: string;
+  kind?: LessonKind;
+  /** Slug de lección interactiva cuando kind === "interactive". */
+  interactiveSlug?: string;
   conceptSlugs: string[];
 };
 
@@ -40,8 +47,7 @@ export type CurriculumExercise = {
 };
 
 export type Curriculum = {
-  course: CurriculumCourse;
-  modules: CurriculumModule[];
+  courses: CurriculumCourse[];
   concepts: CurriculumConcept[];
   exercises: CurriculumExercise[];
 };
