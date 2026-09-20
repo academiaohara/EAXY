@@ -10,11 +10,17 @@ describe("validateCurriculum", () => {
     expect(getAllCourses(curriculum)).toHaveLength(6);
   });
 
-  it("tiene la lección interactiva de 4.º ESO", () => {
+  it("tiene las cinco lecciones interactivas del tema 7 en 4.º ESO", () => {
     const fourthYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("4º ESO"),
     );
-    expect(fourthYear?.modules).toHaveLength(1);
-    expect(fourthYear?.modules[0]?.lessons[0]?.interactiveSlug).toBe("sistemas-no-lineales");
+    expect(fourthYear?.modules[0]?.lessons).toHaveLength(5);
+    expect(fourthYear?.modules[0]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ecuaciones-lineales-dos-incognitas",
+      "sistemas-lineales-grafica",
+      "resolucion-sistemas-lineales",
+      "sistemas-no-lineales",
+      "problemas-con-sistemas",
+    ]);
   });
 });

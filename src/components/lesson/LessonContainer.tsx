@@ -51,7 +51,7 @@ export function LessonContainer({ lesson }: LessonContainerProps) {
     [feedback],
   );
 
-  function handleConceptContinue() {
+  function advanceStep() {
     if (stepIndex < totalSteps - 1) {
       setStepIndex((prev) => prev + 1);
     } else {
@@ -59,15 +59,13 @@ export function LessonContainer({ lesson }: LessonContainerProps) {
     }
   }
 
+  function handlePassiveContinue() {
+    advanceStep();
+  }
+
   function handleNext() {
     setFeedback(null);
-
-    if (stepIndex < totalSteps - 1) {
-      setStepIndex((prev) => prev + 1);
-      return;
-    }
-
-    setCompleted(true);
+    advanceStep();
   }
 
   if (completed) {
@@ -135,7 +133,7 @@ export function LessonContainer({ lesson }: LessonContainerProps) {
         key={currentStep.id}
         step={currentStep}
         onCheck={handleCheck}
-        onContinue={handleConceptContinue}
+        onContinue={handlePassiveContinue}
         disabled={feedback !== null}
       />
 

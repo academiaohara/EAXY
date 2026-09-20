@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { LessonContainer } from "@/components/lesson/LessonContainer";
-import { interactiveLessons } from "@/data/lessons/sistemas-no-lineales";
+import { interactiveLessons } from "@/data/lessons";
 
 type InteractiveLessonPageProps = {
   params: Promise<{ slug: string }>;
