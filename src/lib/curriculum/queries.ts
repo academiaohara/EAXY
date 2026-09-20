@@ -1,16 +1,21 @@
+import { getCourseById } from "@/content";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import {
+  getPreviewCourseCatalog,
   getPreviewCourseOutline,
   getPreviewExerciseForPractice,
   getPreviewLessonDetail,
 } from "@/lib/content-preview/curriculum-queries";
 import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import {
+  getE2EMockCourseCatalog,
   getE2EMockCourseOutline,
   getE2EMockExercise,
   getE2EMockLessonDetail,
 } from "@/lib/curriculum/e2e-mock";
+import { getCurriculumLessonMeta } from "@/lib/curriculum/lesson-meta";
 import type {
+  CourseCatalogEntry,
   CourseOutline,
   ExerciseSummary,
   LessonDetail,
@@ -18,7 +23,7 @@ import type {
 } from "@/lib/curriculum/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
-const DEFAULT_COURSE_ID = "a1000000-0000-4000-8000-000000000001";
+const DEFAULT_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
 
 type LearningPathRow = {
   lesson_id: string;
@@ -68,6 +73,37 @@ function buildPathStatusMap(
   return map;
 }
 
+function sortCoursesByCurriculumOrder(courses: CourseCatalogEntry[]): CourseCatalogEntry[] {
+  return [...courses].sort((a, b) => {
+    const orderA = getCourseById(a.id)?.orderIndex ?? Number.MAX_SAFE_INTEGER;
+    const orderB = getCourseById(b.id)?.orderIndex ?? Number.MAX_SAFE_INTEGER;
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+    return a.title.localeCompare(b.title, "es");
+  });
+}
+
+function enrichLessonSummary(
+  lesson: {
+    id: string;
+    title: string;
+    orderIndex: number;
+    videoUrl: string | null;
+    exerciseCount: number;
+    pathStatus: LessonSummary["pathStatus"];
+    conceptIds: string[];
+  },
+): LessonSummary {
+  const meta = getCurriculumLessonMeta(lesson.id);
+  return {
+    ...lesson,
+    kind: meta?.kind ?? "exercises",
+    interactiveSlug: meta?.interactiveSlug,
+    stepCount: meta?.stepCount,
+  };
+}
+
 async function resolveCourseId(studentId: string | null): Promise<string> {
   if (!studentId) {
     return DEFAULT_COURSE_ID;
@@ -100,17 +136,85 @@ async function resolveCourseId(studentId: string | null): Promise<string> {
   return (course?.id as string | undefined) ?? DEFAULT_COURSE_ID;
 }
 
-export async function getCourseOutline(studentId: string | null): Promise<CourseOutline | null> {
+export async function getCourseCatalog(): Promise<CourseCatalogEntry[]> {
   if (isE2EMockClassroomEnabled()) {
-    return getE2EMockCourseOutline();
+    return getE2EMockCourseCatalog();
   }
 
   if (isContentPreviewModeEnabled()) {
-    return getPreviewCourseOutline();
+    return getPreviewCourseCatalog();
   }
 
   const supabase = await createServerSupabaseClient();
-  const courseId = await resolveCourseId(studentId);
+
+  const { data: courses, error: coursesError } = await supabase
+    .from("courses")
+    .select("id, title, description")
+    .order("created_at", { ascending: true });
+
+  if (coursesError || !courses) {
+    return [];
+  }
+
+  const courseIds = courses.map((course) => course.id as string);
+
+  const { data: modules } = await supabase
+    .from("modules")
+    .select("id, course_id")
+    .in("course_id", courseIds.length > 0 ? courseIds : ["00000000-0000-0000-0000-000000000000"]);
+
+  const moduleIds = (modules ?? []).map((module) => module.id as string);
+
+  const { data: lessons } = await supabase
+    .from("lessons")
+    .select("id, module_id")
+    .in("module_id", moduleIds.length > 0 ? moduleIds : ["00000000-0000-0000-0000-000000000000"]);
+
+  const moduleCountByCourse = new Map<string, number>();
+  const lessonCountByCourse = new Map<string, number>();
+  const moduleToCourse = new Map<string, string>();
+
+  for (const courseModule of modules ?? []) {
+    const courseId = courseModule.course_id as string;
+    moduleToCourse.set(courseModule.id as string, courseId);
+    moduleCountByCourse.set(courseId, (moduleCountByCourse.get(courseId) ?? 0) + 1);
+  }
+
+  for (const lesson of lessons ?? []) {
+    const courseId = moduleToCourse.get(lesson.module_id as string);
+    if (!courseId) continue;
+    lessonCountByCourse.set(courseId, (lessonCountByCourse.get(courseId) ?? 0) + 1);
+  }
+
+  const catalog = courses.map((course) => {
+    const id = course.id as string;
+    const curriculumCourse = getCourseById(id);
+    return {
+      id,
+      title: course.title as string,
+      description: (course.description as string | null) ?? null,
+      orderIndex: curriculumCourse?.orderIndex ?? 0,
+      moduleCount: moduleCountByCourse.get(id) ?? 0,
+      lessonCount: lessonCountByCourse.get(id) ?? 0,
+    };
+  });
+
+  return sortCoursesByCurriculumOrder(catalog);
+}
+
+export async function getCourseOutline(
+  courseId: string,
+  studentId: string | null,
+): Promise<CourseOutline | null> {
+  if (isE2EMockClassroomEnabled()) {
+    return getE2EMockCourseOutline(courseId);
+  }
+
+  if (isContentPreviewModeEnabled()) {
+    return getPreviewCourseOutline(courseId);
+  }
+
+  const supabase = await createServerSupabaseClient();
 
   const { data: course, error: courseError } = await supabase
     .from("courses")
@@ -134,6 +238,19 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
 
   const moduleIds = modules.map((module) => module.id as string);
 
+  if (moduleIds.length === 0) {
+    const curriculumCourse = getCourseById(courseId);
+    return {
+      course: {
+        id: course.id as string,
+        title: course.title as string,
+        description: (course.description as string | null) ?? null,
+        orderIndex: curriculumCourse?.orderIndex,
+      },
+      modules: [],
+    };
+  }
+
   const { data: lessons, error: lessonsError } = await supabase
     .from("lessons")
     .select("id, module_id, title, order_index, video_url")
@@ -149,7 +266,7 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
   const { data: lessonConcepts } = await supabase
     .from("lesson_concepts")
     .select("lesson_id, concept_id")
-    .in("lesson_id", lessonIds);
+    .in("lesson_id", lessonIds.length > 0 ? lessonIds : ["00000000-0000-0000-0000-000000000000"]);
 
   const conceptIdsByLesson = new Map<string, string[]>();
   const allConceptIds = new Set<string>();
@@ -179,7 +296,7 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
 
   let pathStatusMap = new Map<string, LessonSummary["pathStatus"]>();
 
-  if (studentId) {
+  if (studentId && lessonIds.length > 0) {
     const { data: paths } = await supabase
       .from("learning_paths")
       .select("lesson_id, status")
@@ -193,7 +310,7 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
 
   for (const lesson of lessons) {
     const lessonId = lesson.id as string;
-    const summary: LessonSummary = {
+    const summary = enrichLessonSummary({
       id: lessonId,
       title: lesson.title as string,
       orderIndex: lesson.order_index as number,
@@ -201,7 +318,7 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
       exerciseCount: exerciseCountByLesson.get(lessonId) ?? 0,
       pathStatus: pathStatusMap.get(lessonId) ?? "not_started",
       conceptIds: conceptIdsByLesson.get(lessonId) ?? [],
-    };
+    });
 
     const moduleId = lesson.module_id as string;
     const existing = lessonsByModule.get(moduleId) ?? [];
@@ -209,11 +326,14 @@ export async function getCourseOutline(studentId: string | null): Promise<Course
     lessonsByModule.set(moduleId, existing);
   }
 
+  const curriculumCourse = getCourseById(courseId);
+
   return {
     course: {
       id: course.id as string,
       title: course.title as string,
       description: (course.description as string | null) ?? null,
+      orderIndex: curriculumCourse?.orderIndex,
     },
     modules: modules.map((module) => ({
       id: module.id as string,
@@ -263,6 +383,8 @@ export async function getLessonDetail(
     .select("title")
     .eq("id", module.course_id as string)
     .maybeSingle();
+
+  const meta = getCurriculumLessonMeta(lessonId);
 
   const { data: lessonConcepts } = await supabase
     .from("lesson_concepts")
@@ -374,6 +496,9 @@ export async function getLessonDetail(
     conceptIds,
     moduleTitle: module.title as string,
     courseTitle: (course?.title as string) ?? "Curso",
+    kind: meta?.kind ?? "exercises",
+    interactiveSlug: meta?.interactiveSlug,
+    stepCount: meta?.stepCount,
     concepts: (conceptRows ?? []).map((concept) => ({
       id: concept.id as string,
       slug: concept.slug as string,
@@ -430,4 +555,12 @@ export async function getExerciseForPractice(exerciseId: string): Promise<{
     lessonId: (lessonLink?.lesson_id as string | undefined) ?? null,
     lessonTitle: lessonData?.title ?? null,
   };
+}
+
+/** @deprecated Usar getCourseOutline(courseId, studentId). Mantenido para compatibilidad interna. */
+export async function getDefaultCourseOutline(
+  studentId: string | null,
+): Promise<CourseOutline | null> {
+  const courseId = studentId ? await resolveCourseId(studentId) : DEFAULT_COURSE_ID;
+  return getCourseOutline(courseId, studentId);
 }

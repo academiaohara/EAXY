@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import {
   countCompletedExercises,
 } from "@/lib/learning-paths/completion";
+import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import {
   formatMasteryPercent,
   getMasteryState,
@@ -23,6 +24,39 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
       hasCorrectAttempt: exercise.hasCorrectAttempt,
     })),
   );
+
+  if (lesson.kind === "interactive" && lesson.interactiveSlug) {
+    return (
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">
+        <header className="space-y-3">
+          <Link
+            href="/aprender"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            ← Volver a niveles
+          </Link>
+          <div className="space-y-1">
+            <p className="text-sm text-muted-foreground">
+              {lesson.courseTitle} · {lesson.moduleTitle}
+            </p>
+            <h1 className="font-heading text-3xl font-semibold tracking-tight">{lesson.title}</h1>
+          </div>
+        </header>
+
+        <Card className="space-y-4 p-6">
+          <Badge>Lección interactiva</Badge>
+          <p className="text-sm text-muted-foreground">
+            {lesson.stepCount
+              ? `Recorrido guiado de ${lesson.stepCount} pasos con teoría, preguntas y feedback inmediato.`
+              : "Recorrido guiado con teoría, preguntas y feedback inmediato."}
+          </p>
+          <Button nativeButton={false} render={<Link href={resolveLessonHref(lesson.id)} />}>
+            Iniciar lección
+          </Button>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">

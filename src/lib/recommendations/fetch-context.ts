@@ -13,7 +13,7 @@ import type {
 } from "@/lib/recommendations/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
-const DEFAULT_COURSE_ID = "a1000000-0000-4000-8000-000000000001";
+const DEFAULT_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
 const MS_PER_HOUR = 60 * 60 * 1000;
 
 async function resolveCourseId(studentId: string): Promise<string> {

@@ -29,12 +29,20 @@ describe("resolveRecommendationHref", () => {
     ).toBe("/aprender/ejercicio/c1000000-0000-4000-8000-000000000001");
   });
 
-  it("enlaza a practicar por concepto cuando hay conceptId", () => {
+  it("enlaza a la lección interactiva cuando hay lessonId", () => {
+    expect(
+      resolveRecommendationHref(
+        baseRecommendation({ lessonId: "a3000000-0000-4000-8000-000000000701" }),
+      ),
+    ).toBe("/aprender/leccion-interactiva/sistemas-no-lineales");
+  });
+
+  it("cae en /practicar cuando el concepto no existe en el catálogo", () => {
     expect(
       resolveRecommendationHref(
         baseRecommendation({ conceptId: "b1000000-0000-4000-8000-000000000001" }),
       ),
-    ).toBe("/practicar/linear-equations-basic");
+    ).toBe("/practicar");
   });
 
   it("cae en /practicar como fallback", () => {

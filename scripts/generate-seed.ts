@@ -7,7 +7,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { curriculum, getOrderedLessons, validateCurriculum } from "../src/content";
+import { curriculum, getAllCourses, getOrderedLessons, validateCurriculum } from "../src/content";
 
 function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
@@ -37,45 +37,63 @@ export function generateSeedSql(): string {
 
   lines.push("insert into public.courses (id, title, description) values");
   lines.push(
-    `  (${sqlString(curriculum.course.id)}, ${sqlString(curriculum.course.title)}, ${sqlString(curriculum.course.description)});`,
-  );
-  lines.push("");
-
-  lines.push("insert into public.modules (id, course_id, title, order_index) values");
-  lines.push(
-    [...curriculum.modules]
-      .sort((a, b) => a.orderIndex - b.orderIndex)
+    getAllCourses(curriculum)
       .map(
-        (module) =>
-          `  (${sqlString(module.id)}, ${sqlString(curriculum.course.id)}, ${sqlString(module.title)}, ${module.orderIndex})`,
+        (course) =>
+          `  (${sqlString(course.id)}, ${sqlString(course.title)}, ${sqlString(course.description)})`,
       )
       .join(",\n") + ";",
   );
   lines.push("");
 
-  lines.push("insert into public.lessons (id, module_id, title, summary, order_index, video_url) values");
-  lines.push(
-    curriculum.modules
-      .flatMap((module) =>
-        module.lessons.map(
-          (lesson) =>
+  const allModules = getAllCourses(curriculum).flatMap((course) =>
+    course.modules.map((module) => ({ course, module })),
+  );
+
+  if (allModules.length > 0) {
+    lines.push("insert into public.modules (id, course_id, title, order_index) values");
+    lines.push(
+      allModules
+        .map(
+          ({ course, module }) =>
+            `  (${sqlString(module.id)}, ${sqlString(course.id)}, ${sqlString(module.title)}, ${module.orderIndex})`,
+        )
+        .join(",\n") + ";",
+    );
+    lines.push("");
+  }
+
+  const allLessons = getAllCourses(curriculum).flatMap((course) =>
+    course.modules.flatMap((module) =>
+      module.lessons.map((lesson) => ({ module, lesson })),
+    ),
+  );
+
+  if (allLessons.length > 0) {
+    lines.push("insert into public.lessons (id, module_id, title, summary, order_index, video_url) values");
+    lines.push(
+      allLessons
+        .map(
+          ({ module, lesson }) =>
             `  (${sqlString(lesson.id)}, ${sqlString(module.id)}, ${sqlString(lesson.title)}, ${sqlString(lesson.summary)}, ${lesson.orderIndex}, ${sqlNullable(lesson.videoUrl)})`,
-        ),
-      )
-      .join(",\n") + ";",
-  );
-  lines.push("");
+        )
+        .join(",\n") + ";",
+    );
+    lines.push("");
+  }
 
-  lines.push("insert into public.concepts (id, slug, title, description) values");
-  lines.push(
-    curriculum.concepts
-      .map(
-        (concept) =>
-          `  (${sqlString(concept.id)}, ${sqlString(concept.slug)}, ${sqlString(concept.title)}, ${sqlString(concept.description)})`,
-      )
-      .join(",\n") + ";",
-  );
-  lines.push("");
+  if (curriculum.concepts.length > 0) {
+    lines.push("insert into public.concepts (id, slug, title, description) values");
+    lines.push(
+      curriculum.concepts
+        .map(
+          (concept) =>
+            `  (${sqlString(concept.id)}, ${sqlString(concept.slug)}, ${sqlString(concept.title)}, ${sqlString(concept.description)})`,
+        )
+        .join(",\n") + ";",
+    );
+    lines.push("");
+  }
 
   const prerequisiteRows = curriculum.concepts.flatMap((concept) =>
     (concept.prerequisites ?? []).map(
@@ -91,28 +109,30 @@ export function generateSeedSql(): string {
     lines.push("");
   }
 
-  lines.push("insert into public.lesson_concepts (lesson_id, concept_id) values");
-  lines.push(
-    getOrderedLessons(curriculum)
-      .flatMap((lesson) =>
-        lesson.conceptSlugs.map(
-          (slug) => `  (${sqlString(lesson.id)}, ${sqlString(conceptIdBySlug.get(slug)!)})`,
-        ),
-      )
-      .join(",\n") + ";",
+  const lessonConceptRows = getOrderedLessons(curriculum).flatMap((lesson) =>
+    lesson.conceptSlugs.map(
+      (slug) => `  (${sqlString(lesson.id)}, ${sqlString(conceptIdBySlug.get(slug)!)})`,
+    ),
   );
-  lines.push("");
 
-  lines.push("insert into public.exercises (id, concept_id, type, difficulty, content) values");
-  lines.push(
-    curriculum.exercises
-      .map(
-        (exercise) =>
-          `  (${sqlString(exercise.id)}, ${sqlString(conceptIdBySlug.get(exercise.conceptSlug)!)}, ${sqlString(exercise.type)}, ${exercise.difficulty}, ${sqlJson(exercise.content)})`,
-      )
-      .join(",\n") + ";",
-  );
-  lines.push("");
+  if (lessonConceptRows.length > 0) {
+    lines.push("insert into public.lesson_concepts (lesson_id, concept_id) values");
+    lines.push(lessonConceptRows.join(",\n") + ";");
+    lines.push("");
+  }
+
+  if (curriculum.exercises.length > 0) {
+    lines.push("insert into public.exercises (id, concept_id, type, difficulty, content) values");
+    lines.push(
+      curriculum.exercises
+        .map(
+          (exercise) =>
+            `  (${sqlString(exercise.id)}, ${sqlString(conceptIdBySlug.get(exercise.conceptSlug)!)}, ${sqlString(exercise.type)}, ${exercise.difficulty}, ${sqlJson(exercise.content)})`,
+        )
+        .join(",\n") + ";",
+    );
+    lines.push("");
+  }
 
   return lines.join("\n");
 }

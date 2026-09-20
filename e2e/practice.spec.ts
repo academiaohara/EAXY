@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-const PRACTICE_CONCEPT_SLUG = "integers-add-subtract";
-
 async function provisionAndLoginStudent(page: import("@playwright/test").Page) {
   const uniqueName = `Alumno Práctica ${Date.now()}`;
 
@@ -28,24 +26,16 @@ async function provisionAndLoginStudent(page: import("@playwright/test").Page) {
   await expect(page).toHaveURL(/\/aprender$/);
 }
 
-test("alumno puede practicar un ejercicio y ver mastery actualizado", async ({ page }) => {
-  await provisionAndLoginStudent(page);
-
-  await page.goto(`/practicar/${PRACTICE_CONCEPT_SLUG}`);
-  await expect(page.getByTestId("practice-session")).toBeVisible();
-  await expect(page.getByTestId("multiple-choice-exercise")).toBeVisible();
-
-  await page.locator('input[value="a"]').check();
-  await page.getByTestId("exercise-submit-button").click();
-
-  await expect(page.getByTestId("mastery-update")).toContainText("Tu dominio");
-  await expect(page.getByTestId("mastery-badge")).toContainText("%");
-});
-
-test("Ir a practicar redirige a un concepto concreto", async ({ page }) => {
+test("Ir a practicar vuelve a /aprender cuando no hay ejercicios disponibles", async ({ page }) => {
   await provisionAndLoginStudent(page);
 
   await page.getByTestId("aprender-practicar-link").click();
-  await expect(page).toHaveURL(/\/practicar\/.+/);
-  await expect(page.getByTestId("practice-session")).toBeVisible();
+  await expect(page).toHaveURL(/\/aprender$/);
+});
+
+test("un concepto inexistente devuelve 404 en /practicar", async ({ page }) => {
+  await provisionAndLoginStudent(page);
+
+  await page.goto("/practicar/concepto-inexistente");
+  await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
 });

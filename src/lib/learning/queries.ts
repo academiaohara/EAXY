@@ -122,8 +122,9 @@ export async function getCourseOverview(): Promise<CourseOverview> {
   const masteredCount = progress.filter((entry) => entry.mastery >= 0.85).length;
 
   return {
-    courseTitle: curriculum.course.title,
-    courseDescription: curriculum.course.description,
+    courseTitle: "Matemáticas ESO y Bachillerato",
+    courseDescription:
+      "Catálogo de matemáticas desde 1.º ESO hasta 2.º Bachillerato. Practica a tu ritmo con lecciones y ejercicios interactivos.",
     concepts: progress,
     practicedCount,
     masteredCount,

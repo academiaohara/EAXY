@@ -1,7 +1,16 @@
+export type LessonKind = "exercises" | "interactive";
+
 export type CourseSummary = {
   id: string;
   title: string;
   description: string | null;
+  orderIndex?: number;
+};
+
+export type CourseCatalogEntry = CourseSummary & {
+  orderIndex: number;
+  moduleCount: number;
+  lessonCount: number;
 };
 
 export type ModuleSummary = {
@@ -19,6 +28,9 @@ export type LessonSummary = {
   exerciseCount: number;
   pathStatus: "not_started" | "started" | "completed";
   conceptIds: string[];
+  kind: LessonKind;
+  interactiveSlug?: string;
+  stepCount?: number;
 };
 
 export type LessonDetail = LessonSummary & {
