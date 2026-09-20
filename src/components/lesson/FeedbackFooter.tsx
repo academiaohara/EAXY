@@ -30,7 +30,7 @@ export function FeedbackFooter({
       role="status"
       data-testid="lesson-feedback-footer"
     >
-      <div className="mx-auto flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
           {isCorrect ? (
             <CheckCircle2Icon className="mt-0.5 size-5 shrink-0 text-emerald-600" />

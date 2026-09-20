@@ -99,10 +99,11 @@ export function SystemGraphTool({ config }: SystemGraphToolProps) {
         })}
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-border bg-paper-raised p-3">
+      <div className="rounded-xl border border-border bg-paper-raised p-3">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="mx-auto w-full max-w-[360px]"
+          className="aspect-square w-full"
+          preserveAspectRatio="xMidYMid meet"
           role="img"
           aria-label="Representación gráfica de rectas"
         >
