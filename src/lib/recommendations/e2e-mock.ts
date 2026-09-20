@@ -1,6 +1,6 @@
 import type { RecommendationContext } from "@/lib/recommendations/types";
 
-const DEMO_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
+const DEMO_LESSON_ID = "a3000000-0000-4000-8000-000000000701"; // 1. Ecuaciones lineales
 
 export function getE2EMockRecommendationContext(
   studentId: string,
@@ -16,7 +16,7 @@ export function getE2EMockRecommendationContext(
     lessons: [
       {
         id: DEMO_LESSON_ID,
-        title: "Sistemas de ecuaciones no lineales",
+        title: "1. Ecuaciones lineales con dos incógnitas",
         orderIndex: 1,
         moduleOrderIndex: 1,
         conceptIds: [],

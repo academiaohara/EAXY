@@ -34,7 +34,7 @@ describe("resolveRecommendationHref", () => {
       resolveRecommendationHref(
         baseRecommendation({ lessonId: "a3000000-0000-4000-8000-000000000701" }),
       ),
-    ).toBe("/aprender/leccion-interactiva/sistemas-no-lineales");
+    ).toBe("/aprender/leccion-interactiva/ecuaciones-lineales-dos-incognitas");
   });
 
   it("cae en /practicar cuando el concepto no existe en el catálogo", () => {

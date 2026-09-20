@@ -1,5 +1,5 @@
 import { getLessonById } from "@/content";
-import { interactiveLessons } from "@/data/lessons/sistemas-no-lineales";
+import { interactiveLessons } from "@/data/lessons";
 import type { LessonKind } from "@/lib/curriculum/types";
 
 export type CurriculumLessonMeta = {

@@ -1,8 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { AnimatedSolution } from "@/components/lesson/steps/AnimatedSolution";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
+import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
 import { MultipleChoice } from "@/components/lesson/steps/MultipleChoice";
 import type { LessonStep } from "@/lib/lesson/types";
 
@@ -33,6 +35,14 @@ export function InteractiveQuestion({
         </Button>
       </div>
     );
+  }
+
+  if (step.type === "animated_solution") {
+    return <AnimatedSolution step={step} onContinue={onContinue ?? (() => {})} />;
+  }
+
+  if (step.type === "interactive_tool") {
+    return <InteractiveToolStepView step={step} onContinue={onContinue ?? (() => {})} />;
   }
 
   if (step.type === "fill_in_blank") {

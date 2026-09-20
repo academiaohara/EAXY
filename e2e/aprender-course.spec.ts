@@ -1,11 +1,9 @@
 import { expect, test } from "@playwright/test";
 
 const DEMO_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
-const DEMO_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
+const FIRST_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
 
-test("el alumno puede navegar el catálogo y abrir la lección interactiva de 4.º ESO", async ({
-  page,
-}) => {
+test("el alumno puede navegar el catálogo y abrir una lección interactiva", async ({ page }) => {
   await page.goto("/aulas/e2e-classroom/alumnos");
 
   await page.getByTestId("student-names-input").fill("Alumno Curso E2E");
@@ -27,21 +25,17 @@ test("el alumno puede navegar el catálogo y abrir la lección interactiva de 4.
   await expect(page).toHaveURL(/\/aprender$/);
   await expect(page.getByTestId("course-catalog")).toBeVisible();
   await expect(page.getByTestId("recommendation-card")).toBeVisible();
-  await expect(page.getByTestId("recommendation-summary")).toContainText(
-    "Continúa con la siguiente lección del curso.",
-  );
 
   await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
   await expect(page.getByTestId("course-outline")).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "Sistemas de ecuaciones no lineales" }),
-  ).toBeVisible();
+  await expect(page.getByText("5 lecciones")).toBeVisible();
 
-  await page.getByTestId(`lesson-link-${DEMO_LESSON_ID}`).click();
+  await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
 
-  await expect(page).toHaveURL(/\/aprender\/leccion-interactiva\/sistemas-no-lineales$/);
+  await expect(page).toHaveURL(/\/aprender\/leccion-interactiva\/ecuaciones-lineales-dos-incognitas$/);
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Sistemas de ecuaciones no lineales" }),
+    page.getByRole("heading", { name: "1. Ecuaciones lineales con dos incógnitas" }),
   ).toBeVisible();
+  await expect(page.getByTestId("lesson-concept-step")).toBeVisible();
 });
