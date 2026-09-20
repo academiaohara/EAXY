@@ -8,7 +8,9 @@ type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "war
 export function ConceptCard({ title, content, math, warning }: ConceptCardProps) {
   return (
     <Card className="space-y-4 border-border bg-paper-raised p-6 shadow-sm">
-      <h2 className="font-heading text-xl font-semibold tracking-tight text-ink">{title}</h2>
+      <h2 className="font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+        {title}
+      </h2>
 
       {content?.map((paragraph) => (
         <p key={paragraph} className="text-sm leading-relaxed text-ink-muted">

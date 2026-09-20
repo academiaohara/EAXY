@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getInteractiveLessonContext } from "@/content";
 import { LessonContainer } from "@/components/lesson/LessonContainer";
 import { interactiveLessons } from "@/data/lessons";
 
@@ -14,9 +15,18 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
     notFound();
   }
 
+  const context = getInteractiveLessonContext(slug);
+  const navigation = context
+    ? {
+        courseId: context.course.id,
+        courseTitle: context.course.title,
+        moduleTitle: context.module.title,
+      }
+    : undefined;
+
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
-      <LessonContainer lesson={lesson} />
+    <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col p-6 sm:p-8">
+      <LessonContainer lesson={lesson} navigation={navigation} />
     </main>
   );
 }

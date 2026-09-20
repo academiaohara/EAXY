@@ -65,6 +65,24 @@ export function getLessonById(
   return undefined;
 }
 
+export function getInteractiveLessonContext(
+  slug: string,
+  source: Curriculum = curriculum,
+):
+  | { course: CurriculumCourse; module: CurriculumModule; lesson: CurriculumLesson }
+  | undefined {
+  for (const course of getAllCourses(source)) {
+    for (const courseModule of course.modules) {
+      for (const lesson of courseModule.lessons) {
+        if (lesson.interactiveSlug === slug) {
+          return { course, module: courseModule, lesson };
+        }
+      }
+    }
+  }
+  return undefined;
+}
+
 /** Lecciones en orden lineal del curso (curso → módulo → lección). */
 export function getOrderedLessons(
   source: Curriculum = curriculum,
