@@ -40,7 +40,7 @@ export function FeedbackFooter({
         <p
           className={cn("text-lg font-semibold", isCorrect ? "text-emerald-800" : "text-red-700")}
         >
-          {isCorrect ? "🎉 ¡Correcto!" : "Incorrecto"}
+          {isCorrect ? "¡Correcto!" : "Incorrecto"}
         </p>
 
         {showWhy && explanation ? (

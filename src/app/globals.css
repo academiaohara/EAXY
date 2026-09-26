@@ -151,6 +151,261 @@
   }
 }
 
+/* --- Tutor (bola peluda) --------------------------------------------- */
+
+.tutor-mascot {
+  display: inline-block;
+  line-height: 0;
+}
+
+.tutor-mascot svg {
+  display: block;
+  overflow: visible;
+}
+
+.tutor-mascot-body,
+.tutor-mascot-squash,
+.tutor-mascot-fur,
+.tutor-mascot-eye,
+.tutor-mascot-eye-shape,
+.tutor-mascot-pupil-drift,
+.tutor-mascot-pupil-aim,
+.tutor-mascot-brow {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/*
+ * El salto vive en `body` y el achatamiento en `squash`: separarlos mantiene la
+ * cara pegada al cuerpo mientras el rebote deforma la silueta.
+ */
+.tutor-mascot-body {
+  transform-origin: 50% 88%;
+  animation: tutor-float 3.6s ease-in-out infinite;
+}
+
+.tutor-mascot-squash {
+  transform-origin: 50% 94%;
+}
+
+.tutor-mascot[data-animation="bounce"] .tutor-mascot-body {
+  animation: tutor-bounce 1.1s ease-in-out infinite;
+}
+
+.tutor-mascot[data-animation="bounce"] .tutor-mascot-squash {
+  animation: tutor-squash 1.1s ease-in-out infinite;
+}
+
+.tutor-mascot[data-animation="tilt"] .tutor-mascot-body {
+  animation: tutor-tilt 4.4s ease-in-out infinite;
+}
+
+.tutor-mascot[data-animation="droop"] .tutor-mascot-body {
+  animation: tutor-droop 3.2s ease-in-out infinite;
+}
+
+.tutor-mascot[data-animation="droop"] .tutor-mascot-squash {
+  animation: tutor-squash-soft 3.2s ease-in-out infinite;
+}
+
+.tutor-mascot[data-animation="pop"] .tutor-mascot-body {
+  animation:
+    tutor-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+    tutor-float 3.6s ease-in-out 0.45s infinite;
+}
+
+.tutor-mascot-fur {
+  animation: tutor-fur-shiver 5.5s ease-in-out infinite;
+}
+
+.tutor-mascot-eye {
+  animation: tutor-blink 5.4s ease-in-out infinite;
+}
+
+.tutor-mascot[data-blink="false"] .tutor-mascot-eye {
+  animation: none;
+}
+
+.tutor-mascot-eye-shape,
+.tutor-mascot-brow {
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tutor-mascot-pupil-drift {
+  animation: tutor-gaze 9s ease-in-out infinite;
+}
+
+.tutor-mascot[data-gaze="pointer"] .tutor-mascot-pupil-drift {
+  animation: none;
+}
+
+.tutor-mascot-pupil-aim {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tutor-mascot-pupil {
+  transition: r 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tutor-mascot-lid {
+  transition: cy 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes tutor-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes tutor-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  8% {
+    transform: translateY(2px);
+  }
+  34% {
+    transform: translateY(-22px);
+  }
+  62% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes tutor-squash {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  8% {
+    transform: scale(1.05, 0.95);
+  }
+  34% {
+    transform: scale(0.96, 1.04);
+  }
+  62% {
+    transform: scale(1.08, 0.92);
+  }
+  80% {
+    transform: scale(0.99, 1.01);
+  }
+}
+
+@keyframes tutor-squash-soft {
+  0%,
+  100% {
+    transform: scale(1.02, 0.985);
+  }
+  50% {
+    transform: scale(1.03, 0.975);
+  }
+}
+
+@keyframes tutor-tilt {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(5deg) translateY(-3px);
+  }
+}
+
+/* «Animando»: un balanceo suave, sin aplastar la bola. */
+@keyframes tutor-droop {
+  0%,
+  100% {
+    transform: translateY(2px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(4px) rotate(2deg);
+  }
+}
+
+@keyframes tutor-pop {
+  0% {
+    transform: scale(0.6, 0.6);
+  }
+  60% {
+    transform: scale(1.1, 1.06);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes tutor-fur-shiver {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  45% {
+    transform: rotate(-0.8deg) scale(1.012);
+  }
+  70% {
+    transform: rotate(0.9deg) scale(0.994);
+  }
+}
+
+@keyframes tutor-blink {
+  0%,
+  88%,
+  100% {
+    transform: scaleY(1);
+  }
+  91% {
+    transform: scaleY(0.08);
+  }
+  94% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tutor-gaze {
+  0%,
+  18% {
+    transform: translate(0, 0);
+  }
+  30%,
+  44% {
+    transform: translate(-3px, 1.5px);
+  }
+  56%,
+  70% {
+    transform: translate(3px, -1.5px);
+  }
+  82%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tutor-mascot-body,
+  .tutor-mascot-squash,
+  .tutor-mascot-fur,
+  .tutor-mascot-eye,
+  .tutor-mascot-pupil-drift {
+    animation: none !important;
+  }
+
+  .tutor-mascot-eye-shape,
+  .tutor-mascot-brow,
+  .tutor-mascot-pupil-aim,
+  .tutor-mascot-pupil,
+  .tutor-mascot-lid {
+    transition: none;
+  }
+}
+
 @media print {
   .no-print {
     display: none !important;

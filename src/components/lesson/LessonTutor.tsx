@@ -1,16 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import { MessageCircleIcon, MicIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
+import type { TutorMood } from "@/lib/tutor/moods";
 
 type LessonTutorProps = {
   message: string;
+  mood?: TutorMood;
   className?: string;
 };
 
-export function LessonTutor({ message, className }: LessonTutorProps) {
+export function LessonTutor({ message, mood = "idle", className }: LessonTutorProps) {
   return (
     <div
       className={cn(
@@ -23,17 +25,12 @@ export function LessonTutor({ message, className }: LessonTutorProps) {
       <div className="mx-auto flex w-full max-w-4xl items-end justify-start gap-2 pl-1 sm:pl-2">
         <div className="pointer-events-auto flex shrink-0 flex-col items-center gap-1.5 pb-0.5">
           <div className="relative size-[4.5rem] sm:size-20">
-            <div
-              className="absolute inset-x-2 bottom-0 h-2 rounded-full bg-black/10 blur-sm"
-              aria-hidden
-            />
-            <Image
-              src="/tutor/soot-sprite.jpg"
-              alt="Tutor Eaxy"
-              width={80}
-              height={80}
-              className="relative size-[4.5rem] animate-[lesson-tutor-float_3s_ease-in-out_infinite] rounded-full object-cover object-center sm:size-20"
+            <TutorMascot
+              mood={mood}
+              size={80}
+              label={null}
               priority
+              className="relative mx-auto size-[4.5rem] sm:size-20"
             />
           </div>
           <div className="flex items-center gap-1.5 text-slate-400">

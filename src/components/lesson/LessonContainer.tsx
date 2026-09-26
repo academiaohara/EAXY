@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import { useCallback, useState } from "react";
-import { CheckCircle2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FeedbackFooter } from "@/components/lesson/FeedbackFooter";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonBottomBar } from "@/components/lesson/LessonBottomBar";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
 import { LessonTutor } from "@/components/lesson/LessonTutor";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
 import { getStepTutorMessage } from "@/lib/lesson/tutor-message";
+import { tutorMoodForFeedback } from "@/lib/tutor/moods";
 import type { FeedbackStatus, InteractiveLesson, LessonStep } from "@/lib/lesson/types";
 
 type LessonNavigationContext = {
@@ -91,10 +92,13 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         data-testid="lesson-complete"
       >
         <div className="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
-          <div className="bg-gradient-to-b from-emerald-50 to-white px-8 pb-2 pt-12 text-center">
-            <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-emerald-100 ring-4 ring-emerald-50">
-              <CheckCircle2Icon className="size-10 text-emerald-600" />
-            </div>
+          <div className="bg-gradient-to-b from-emerald-50 to-white px-8 pb-2 pt-10 text-center">
+            <TutorMascot
+              mood="celebrate"
+              size={112}
+              className="mx-auto"
+              label="El tutor celebra que has completado la lección"
+            />
           </div>
           <div className="space-y-5 px-8 pb-10 pt-6 text-center">
             <div className="space-y-2">
@@ -124,8 +128,13 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     );
   }
 
+  const tutorMood = feedback ? tutorMoodForFeedback(feedback) : "idle";
+
   return (
-    <div className="relative flex h-full min-h-0 w-full flex-1 flex-col" data-testid="interactive-lesson">
+    <div
+      className="relative flex h-full min-h-0 w-full flex-1 flex-col"
+      data-testid="interactive-lesson"
+    >
       <h1 className="sr-only">{lesson.title}</h1>
       <p className="sr-only">{currentStep.title}</p>
 
@@ -159,7 +168,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         <LessonBottomBar control={control} fixed />
       ) : null}
 
-      <LessonTutor message={getStepTutorMessage(currentStep)} />
+      <LessonTutor mood={tutorMood} message={getStepTutorMessage(currentStep)} />
     </div>
   );
 }
