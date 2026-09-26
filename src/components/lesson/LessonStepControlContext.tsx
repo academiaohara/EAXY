@@ -40,11 +40,19 @@ export function useLessonStepControl() {
   return context;
 }
 
+function controlSignature(control: LessonStepControl | null): string {
+  if (!control) {
+    return "null";
+  }
+  return `${control.label}|${control.disabled ? "1" : "0"}|${control.testId ?? ""}`;
+}
+
 export function useRegisterLessonStepControl(control: LessonStepControl | null) {
   const { setControl } = useLessonStepControl();
+  const signature = controlSignature(control);
 
   useEffect(() => {
     setControl(control);
     return () => setControl(null);
-  }, [control, setControl]);
+  }, [control, signature, setControl]);
 }

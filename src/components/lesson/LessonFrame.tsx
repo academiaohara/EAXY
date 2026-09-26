@@ -42,7 +42,8 @@ export function LessonFrame({
   return (
     <div
       className={cn(
-        "flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
+        "grid h-full min-h-0 w-full grid-rows-[auto_minmax(0,1fr)_auto] overflow-hidden bg-paper-raised transition-colors duration-300",
+        "border-y-2 border-slate-200 sm:rounded-2xl sm:border-2",
         isCorrect && "border-emerald-400 shadow-emerald-100/80",
         isIncorrect && "border-red-300 shadow-red-100/60",
         !feedback && "border-slate-200",
@@ -72,9 +73,13 @@ export function LessonFrame({
         </div>
       </header>
 
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">{children}</div>
+      <div className="min-h-0 overflow-y-auto overscroll-contain px-4 py-4 sm:px-8 sm:py-6">
+        <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center">
+          {children}
+        </div>
+      </div>
 
-      {footer ? <div className="shrink-0">{footer}</div> : null}
+      {footer ? <div className="min-h-0 shrink-0 border-t border-slate-100">{footer}</div> : null}
     </div>
   );
 }

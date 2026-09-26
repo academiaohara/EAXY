@@ -58,22 +58,22 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     [feedback],
   );
 
-  function advanceStep() {
+  const handlePassiveContinue = useCallback(() => {
     if (stepIndex < totalSteps - 1) {
-      setStepIndex((prev) => prev + 1);
-    } else {
-      setCompleted(true);
+      setStepIndex(stepIndex + 1);
+      return;
     }
-  }
+    setCompleted(true);
+  }, [stepIndex, totalSteps]);
 
-  function handlePassiveContinue() {
-    advanceStep();
-  }
-
-  function handleNext() {
+  const handleNext = useCallback(() => {
     setFeedback(null);
-    advanceStep();
-  }
+    if (stepIndex < totalSteps - 1) {
+      setStepIndex(stepIndex + 1);
+      return;
+    }
+    setCompleted(true);
+  }, [stepIndex, totalSteps]);
 
   function restartLesson() {
     setStepIndex(0);
@@ -85,10 +85,10 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   if (completed) {
     return (
       <div
-        className="mx-auto flex h-full w-full max-w-2xl items-center justify-center p-4 sm:p-6"
+        className="flex h-full min-h-0 w-full items-center justify-center p-4 sm:p-6"
         data-testid="lesson-complete"
       >
-        <div className="w-full overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
+        <div className="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
           <div className="bg-gradient-to-b from-emerald-50 to-white px-8 pb-2 pt-12 text-center">
             <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-emerald-100 ring-4 ring-emerald-50">
               <CheckCircle2Icon className="size-10 text-emerald-600" />
@@ -136,7 +136,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
 
   return (
     <div
-      className="mx-auto flex h-full min-h-0 w-full max-w-2xl flex-col p-4 sm:p-6"
+      className="flex h-full min-h-0 w-full flex-1 flex-col sm:p-4"
       data-testid="interactive-lesson"
     >
       <h1 className="sr-only">{lesson.title}</h1>
@@ -149,7 +149,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         stars={stars}
         feedback={feedback}
         footer={footer}
-        className="h-full"
+        className="min-h-0 flex-1 shadow-sm"
       >
         <InteractiveQuestion
           key={currentStep.id}

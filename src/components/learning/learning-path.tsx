@@ -29,7 +29,7 @@ function pickDefaultLesson(modules: ModuleSummary[]): LessonSummary | null {
   return firstModule?.lessons[0] ?? null;
 }
 
-function lessonStatus(lesson: LessonSummary): "completed" | "active" | "available" | "locked" {
+function lessonStatus(lesson: LessonSummary): "completed" | "active" | "available" {
   if (lesson.pathStatus === "completed") {
     return "completed";
   }
@@ -44,41 +44,40 @@ type PathNodeProps = {
   status: ReturnType<typeof lessonStatus>;
   isSelected: boolean;
   isLast: boolean;
+  href: string;
   onSelect: () => void;
 };
 
-function PathNode({ lesson, status, isSelected, isLast, onSelect }: PathNodeProps) {
+function PathNode({ lesson, status, isSelected, isLast, href, onSelect }: PathNodeProps) {
   const isInteractive = lesson.kind === "interactive";
-  const isLocked = status === "locked";
 
   return (
     <div className="relative flex items-start gap-4">
       {!isLast ? (
         <div
-          className="absolute left-6 top-12 h-[calc(100%-0.5rem)] w-0.5 -translate-x-1/2 bg-slate-200"
+          className="pointer-events-none absolute left-6 top-12 h-[calc(100%-0.5rem)] w-0.5 -translate-x-1/2 bg-slate-200"
           aria-hidden
         />
       ) : null}
 
-      <button
-        type="button"
+      <Link
+        href={href}
         onClick={onSelect}
-        disabled={isLocked}
+        data-testid={`lesson-link-${lesson.id}`}
         className={cn(
-          "relative z-10 flex shrink-0 flex-col items-center outline-none",
-          isLocked ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+          "relative z-10 flex min-w-0 flex-1 items-start gap-4 rounded-xl outline-none transition-colors hover:bg-slate-50/80",
+          isSelected && "bg-cobalt-tint/20",
         )}
-        aria-pressed={isSelected}
-        aria-label={lesson.title}
+        aria-current={isSelected ? "step" : undefined}
       >
-        <div
+        <span
           className={cn(
-            "flex size-12 items-center justify-center rounded-full border-[3px] transition-all sm:size-14",
+            "flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] transition-all sm:size-14",
             status === "completed" && "border-cobalt bg-cobalt text-white",
             status === "active" &&
               "border-cobalt bg-white shadow-[0_0_0_4px_rgba(47,95,224,0.15)]",
-            status === "available" && "border-slate-200 bg-white hover:border-cobalt/50",
-            isSelected && status !== "locked" && "ring-2 ring-cobalt/30 ring-offset-2",
+            status === "available" && "border-slate-200 bg-white group-hover:border-cobalt/50",
+            isSelected && "ring-2 ring-cobalt/30 ring-offset-2",
           )}
         >
           {status === "completed" ? (
@@ -90,27 +89,26 @@ function PathNode({ lesson, status, isSelected, isLast, onSelect }: PathNodeProp
           ) : (
             <span className="text-xs font-bold text-cobalt">Ej</span>
           )}
-        </div>
-      </button>
+        </span>
 
-      <div className="min-w-0 flex-1 pb-10 pt-2">
-        <p
-          className={cn(
-            "font-medium leading-snug",
-            isLocked ? "text-slate-400" : "text-ink",
-            isSelected && !isLocked && "font-semibold text-cobalt",
-          )}
-        >
-          {lesson.title.replace(/^\d+\.\s*/, "")}
-        </p>
-        <p className="text-xs text-muted-foreground">
-          {lesson.kind === "interactive"
-            ? lesson.stepCount
-              ? `${lesson.stepCount} pasos`
-              : "Lección interactiva"
-            : `${lesson.exerciseCount} ejercicios`}
-        </p>
-      </div>
+        <span className="min-w-0 flex-1 pb-10 pt-2">
+          <span
+            className={cn(
+              "block font-medium leading-snug",
+              isSelected ? "font-semibold text-cobalt" : "text-ink",
+            )}
+          >
+            {lesson.title.replace(/^\d+\.\s*/, "")}
+          </span>
+          <span className="block text-xs text-muted-foreground">
+            {lesson.kind === "interactive"
+              ? lesson.stepCount
+                ? `${lesson.stepCount} pasos`
+                : "Lección interactiva"
+              : `${lesson.exerciseCount} ejercicios`}
+          </span>
+        </span>
+      </Link>
     </div>
   );
 }
@@ -124,36 +122,37 @@ export function LearningPath({ modules }: LearningPathProps) {
 
   return (
     <div className="space-y-10" data-testid="learning-path">
-      {modules.map((module, moduleIndex) => (
-        <section key={module.id} data-testid={`module-${module.id}`}>
+      {modules.map((courseModule, moduleIndex) => (
+        <section key={courseModule.id} data-testid={`module-${courseModule.id}`}>
           <div className="mb-6 inline-flex flex-col rounded-xl border-2 border-cobalt/30 bg-white px-4 py-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-cobalt">
               Nivel {moduleIndex + 1}
             </span>
-            <span className="font-heading text-lg font-semibold text-ink">{module.title}</span>
+            <span className="font-heading text-lg font-semibold text-ink">{courseModule.title}</span>
           </div>
 
-          {module.lessons.length === 0 ? (
+          {courseModule.lessons.length === 0 ? (
             <p className="text-sm text-muted-foreground">Sin lecciones todavía en este tema.</p>
           ) : (
             <div className="pl-1">
-              {module.lessons.map((lesson, index) => (
+              {courseModule.lessons.map((lesson, index) => (
                 <PathNode
                   key={lesson.id}
                   lesson={lesson}
                   status={lessonStatus(lesson)}
                   isSelected={selectedId === lesson.id}
-                  isLast={index === module.lessons.length - 1}
+                  isLast={index === courseModule.lessons.length - 1}
+                  href={resolveLessonHref(lesson.id)}
                   onSelect={() => setSelectedId(lesson.id)}
                 />
               ))}
             </div>
           )}
 
-          <div className="mt-6">
+          <div className="relative z-10 mt-6">
             <TopicExercisesSection
-              moduleTitle={module.title}
-              exercises={module.topicExercises}
+              moduleTitle={courseModule.title}
+              exercises={courseModule.topicExercises ?? []}
             />
           </div>
         </section>
@@ -169,7 +168,6 @@ export function LearningPath({ modules }: LearningPathProps) {
             nativeButton={false}
             className="mt-4 w-full rounded-full py-6 text-base font-semibold sm:w-auto sm:min-w-[160px]"
             render={<Link href={resolveLessonHref(selectedLesson.id)} />}
-            data-testid={`lesson-link-${selectedLesson.id}`}
           >
             {selectedLesson.pathStatus === "completed" ? "Repasar" : "Empezar"}
           </Button>
