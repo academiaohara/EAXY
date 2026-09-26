@@ -17,21 +17,21 @@ const MAX_GAZE_OFFSET = 5.5;
 
 const EYES = [
   {
-    cx: 82,
-    cy: 97,
-    rx: 17,
-    ry: 19,
+    cx: 81,
+    cy: 98,
+    rx: 18.5,
+    ry: 20.5,
     rotation: -8,
-    pupilRadius: 8.6,
+    pupilRadius: 9.6,
     pupilBias: { x: 1, y: 1 },
   },
   {
-    cx: 122,
+    cx: 123,
     cy: 92,
-    rx: 16,
-    ry: 18,
+    rx: 17.5,
+    ry: 19.5,
     rotation: 6,
-    pupilRadius: 8.2,
+    pupilRadius: 9.1,
     pupilBias: { x: -0.5, y: 1 },
   },
 ] as const;
@@ -69,9 +69,9 @@ export function TutorMascot({
 
   const fur = useMemo(
     () => ({
-      outline: buildFurOutline({ ...BODY, tufts: 108, seed }),
-      hairs: buildStrayHairs({ ...BODY, count: 11, seed: seed + 31 }),
-      texture: buildFurTexture({ ...BODY, count: 26, seed: seed + 97 }),
+      outline: buildFurOutline({ ...BODY, tufts: 156, seed }),
+      hairs: buildStrayHairs({ ...BODY, count: 7, seed: seed + 31 }),
+      texture: buildFurTexture({ ...BODY, count: 16, seed: seed + 97 }),
     }),
     [seed],
   );
@@ -169,52 +169,77 @@ export function TutorMascot({
           >
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.55"
-              numOctaves={2}
+              baseFrequency="0.42"
+              numOctaves={3}
               seed={seed}
               result="noise"
             />
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="5"
+              scale="7"
               xChannelSelector="R"
               yChannelSelector="G"
             />
           </filter>
+
+          <filter
+            id={`${uid}-soft`}
+            x="-15%"
+            y="-15%"
+            width="130%"
+            height="130%"
+          >
+            <feGaussianBlur stdDeviation="2.4" />
+          </filter>
+
+          {EYES.map((eye, index) => (
+            <clipPath key={`clip-${index}`} id={`${uid}-eye-clip-${index}`}>
+              <ellipse rx={eye.rx} ry={eye.ry} />
+            </clipPath>
+          ))}
         </defs>
 
         <g className="tutor-mascot-body">
-          <g className="tutor-mascot-fur">
-            <path
-              d={fur.outline}
-              fill={`url(#${uid}-body)`}
-              filter={`url(#${uid}-fuzz)`}
-            />
-
-            {fur.hairs.map((hair, index) => (
-              <path
-                key={`hair-${index}`}
-                d={hair.d}
-                fill="none"
-                stroke="#161616"
-                strokeWidth={hair.width}
-                strokeOpacity={hair.opacity}
-                strokeLinecap="round"
+          <g className="tutor-mascot-squash">
+            <g className="tutor-mascot-fur">
+              <circle
+                cx={BODY.cx}
+                cy={BODY.cy}
+                r={BODY.radius * 0.99}
+                fill={`url(#${uid}-body)`}
+                filter={`url(#${uid}-soft)`}
               />
-            ))}
-
-            {fur.texture.map((stroke, index) => (
               <path
-                key={`texture-${index}`}
-                d={stroke.d}
-                fill="none"
-                stroke="#a8a8a8"
-                strokeWidth={stroke.width}
-                strokeOpacity={stroke.opacity}
-                strokeLinecap="round"
+                d={fur.outline}
+                fill={`url(#${uid}-body)`}
+                filter={`url(#${uid}-fuzz)`}
               />
-            ))}
+
+              {fur.hairs.map((hair, index) => (
+                <path
+                  key={`hair-${index}`}
+                  d={hair.d}
+                  fill="none"
+                  stroke="#161616"
+                  strokeWidth={hair.width}
+                  strokeOpacity={hair.opacity}
+                  strokeLinecap="round"
+                />
+              ))}
+
+              {fur.texture.map((stroke, index) => (
+                <path
+                  key={`texture-${index}`}
+                  d={stroke.d}
+                  fill="none"
+                  stroke="#d5d5d5"
+                  strokeWidth={stroke.width}
+                  strokeOpacity={stroke.opacity}
+                  strokeLinecap="round"
+                />
+              ))}
+            </g>
           </g>
 
           <g className="tutor-mascot-face">
@@ -247,6 +272,7 @@ export function TutorMascot({
                       style={{ transform: `scaleY(${expression.eyeScaleY})` }}
                     >
                       <ellipse
+                        className="tutor-mascot-eye-white"
                         rx={eye.rx}
                         ry={eye.ry}
                         fill={`url(#${uid}-eye)`}
@@ -276,13 +302,26 @@ export function TutorMascot({
                             fill="#ffffff"
                           />
                           <circle
-                            cx={eye.pupilRadius * 0.34}
-                            cy={eye.pupilRadius * 0.4}
-                            r={eye.pupilRadius * 0.14}
+                            cx={eye.pupilRadius * 0.36}
+                            cy={eye.pupilRadius * 0.42}
+                            r={eye.pupilRadius * 0.1}
                             fill="#ffffff"
-                            fillOpacity={0.55}
+                            fillOpacity={0.35}
                           />
                         </g>
+                      </g>
+
+                      <g clipPath={`url(#${uid}-eye-clip-${index})`}>
+                        <ellipse
+                          className="tutor-mascot-lid"
+                          rx={eye.rx * 1.7}
+                          ry={eye.ry * 1.25}
+                          cy={
+                            eye.ry * (1 - 2 * expression.lidCoverage) +
+                            eye.ry * 1.25
+                          }
+                          fill="#242424"
+                        />
                       </g>
                     </g>
                   </g>

@@ -69,8 +69,8 @@ export function buildFurOutline({
   for (let index = 0; index < tufts; index += 1) {
     const baseAngle = (index / tufts) * TAU;
     const tipAngle = ((index + 0.5) / tufts) * TAU;
-    const baseRadius = radius * (0.97 + random() * 0.04);
-    const tipRadius = radius * (1.03 + random() * 0.1);
+    const baseRadius = radius * (0.97 + random() * 0.03);
+    const tipRadius = radius * (1.01 + random() * 0.07);
 
     commands.push(
       index === 0
@@ -96,18 +96,18 @@ export function buildStrayHairs({
   const hairs: TutorStroke[] = [];
 
   for (let index = 0; index < count; index += 1) {
-    const angle = ((index + random() * 0.8) / count) * TAU;
-    const curl = (random() - 0.5) * 0.5;
-    const length = radius * (0.14 + random() * 0.22);
+    const angle = ((index + random() * 0.85) / count) * TAU;
+    const curl = (random() - 0.5) * 0.6;
+    const length = radius * (0.09 + random() * 0.16);
 
-    const start = polar(cx, cy, radius * 0.9, angle);
-    const control = polar(cx, cy, radius + length * 0.55, angle + curl * 0.6);
+    const start = polar(cx, cy, radius * 0.88, angle);
+    const control = polar(cx, cy, radius + length * 0.5, angle + curl * 0.6);
     const end = polar(cx, cy, radius + length, angle + curl);
 
     hairs.push({
       d: `M${pointToString(start)} Q${pointToString(control)} ${pointToString(end)}`,
-      width: round(0.9 + random() * 0.9),
-      opacity: round(0.45 + random() * 0.35),
+      width: round(0.45 + random() * 0.35),
+      opacity: round(0.72 + random() * 0.28),
     });
   }
 
@@ -126,11 +126,12 @@ export function buildFurTexture({
   const strokes: TutorStroke[] = [];
 
   for (let index = 0; index < count; index += 1) {
-    // Sesgo hacia la mitad inferior (ángulos 0..PI en coordenadas SVG).
-    const angle = random() * Math.PI * 1.35 - Math.PI * 0.18;
-    const distance = radius * (0.3 + random() * 0.4);
-    const length = radius * (0.08 + random() * 0.14);
-    const drift = (random() - 0.5) * 0.7;
+    // Mitad inferior del cuerpo (ángulos 0..PI en coordenadas SVG), como en el
+    // referente: el pelo peinado solo se insinúa bajo la cara.
+    const angle = Math.PI * (0.1 + random() * 0.8);
+    const distance = radius * (0.55 + random() * 0.27);
+    const length = radius * (0.07 + random() * 0.07);
+    const drift = (random() - 0.5) * 0.18;
 
     const start = polar(cx, cy, distance, angle);
     const control = polar(cx, cy, distance + length * 0.6, angle + drift * 0.4);
@@ -138,8 +139,8 @@ export function buildFurTexture({
 
     strokes.push({
       d: `M${pointToString(start)} Q${pointToString(control)} ${pointToString(end)}`,
-      width: round(0.8 + random() * 0.8),
-      opacity: round(0.12 + random() * 0.2),
+      width: round(0.6 + random() * 0.4),
+      opacity: round(0.05 + random() * 0.07),
     });
   }
 

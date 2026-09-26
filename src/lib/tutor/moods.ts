@@ -8,6 +8,8 @@ export type TutorBodyAnimation = "float" | "bounce" | "tilt" | "droop" | "pop";
 export type TutorExpression = {
   /** Achatamiento vertical del ojo: <1 entorna la mirada. */
   eyeScaleY: number;
+  /** Fracción del ojo tapada por el párpado inferior (0 = ojo abierto). */
+  lidCoverage: number;
   /** Desplazamiento de la pupila en unidades del viewBox. */
   pupilOffset: TutorPoint;
   pupilScale: number;
@@ -32,6 +34,7 @@ export const TUTOR_MOODS: readonly TutorMood[] = [
 export const tutorExpressions: Record<TutorMood, TutorExpression> = {
   idle: {
     eyeScaleY: 1,
+    lidCoverage: 0,
     pupilOffset: { x: 0, y: 0 },
     pupilScale: 1,
     browOffset: 0,
@@ -42,11 +45,12 @@ export const tutorExpressions: Record<TutorMood, TutorExpression> = {
     label: "El tutor te acompaña mientras trabajas",
   },
   happy: {
-    eyeScaleY: 0.78,
+    eyeScaleY: 0.94,
+    lidCoverage: 0.38,
     pupilOffset: { x: 0, y: 1.5 },
     pupilScale: 1.05,
-    browOffset: -3,
-    browRotation: -8,
+    browOffset: -4,
+    browRotation: 4,
     browOpacity: 0.5,
     bodyAnimation: "bounce",
     blink: true,
@@ -54,32 +58,35 @@ export const tutorExpressions: Record<TutorMood, TutorExpression> = {
   },
   celebrate: {
     eyeScaleY: 1.08,
+    lidCoverage: 0.1,
     pupilOffset: { x: 0, y: -1.5 },
     pupilScale: 1.16,
-    browOffset: -6,
-    browRotation: -12,
+    browOffset: -7,
+    browRotation: 7,
     browOpacity: 0.55,
     bodyAnimation: "bounce",
     blink: true,
     label: "El tutor celebra tu respuesta",
   },
   thinking: {
-    eyeScaleY: 0.9,
+    eyeScaleY: 0.92,
+    lidCoverage: 0.18,
     pupilOffset: { x: -5, y: -4 },
     pupilScale: 0.95,
-    browOffset: -1,
-    browRotation: 12,
+    browOffset: -2,
+    browRotation: 11,
     browOpacity: 0.6,
     bodyAnimation: "tilt",
     blink: true,
     label: "El tutor está pensando",
   },
   sad: {
-    eyeScaleY: 0.72,
+    eyeScaleY: 0.76,
+    lidCoverage: 0.08,
     pupilOffset: { x: 0, y: 4 },
     pupilScale: 0.92,
-    browOffset: 3,
-    browRotation: 16,
+    browOffset: 2,
+    browRotation: -15,
     browOpacity: 0.65,
     bodyAnimation: "droop",
     blink: true,
@@ -87,10 +94,11 @@ export const tutorExpressions: Record<TutorMood, TutorExpression> = {
   },
   surprised: {
     eyeScaleY: 1.14,
+    lidCoverage: 0,
     pupilOffset: { x: 0, y: 0 },
     pupilScale: 0.74,
-    browOffset: -7,
-    browRotation: -2,
+    browOffset: -9,
+    browRotation: 0,
     browOpacity: 0.5,
     bodyAnimation: "pop",
     blink: false,

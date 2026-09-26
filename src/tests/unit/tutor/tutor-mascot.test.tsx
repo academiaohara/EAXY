@@ -72,14 +72,36 @@ describe("TutorMascot", () => {
     );
   });
 
-  it("dibuja dos ojos con pupila y brillo", () => {
+  it("dibuja dos ojos con pupila, párpado y ceja", () => {
     render(<TutorMascot label={null} />);
 
     const mascot = screen.getByTestId("tutor-mascot");
 
-    expect(mascot.querySelectorAll("ellipse")).toHaveLength(2);
+    expect(mascot.querySelectorAll(".tutor-mascot-eye-white")).toHaveLength(2);
     expect(mascot.querySelectorAll(".tutor-mascot-pupil")).toHaveLength(2);
+    expect(mascot.querySelectorAll(".tutor-mascot-lid")).toHaveLength(2);
     expect(mascot.querySelectorAll(".tutor-mascot-brow")).toHaveLength(2);
+  });
+
+  it("baja el párpado al sonreír y lo sube en reposo", () => {
+    const { unmount } = render(<TutorMascot label={null} mood="idle" />);
+    const idleLid = Number(
+      screen
+        .getByTestId("tutor-mascot")
+        .querySelector(".tutor-mascot-lid")
+        ?.getAttribute("cy"),
+    );
+    unmount();
+
+    render(<TutorMascot label={null} mood="happy" />);
+    const happyLid = Number(
+      screen
+        .getByTestId("tutor-mascot")
+        .querySelector(".tutor-mascot-lid")
+        ?.getAttribute("cy"),
+    );
+
+    expect(happyLid).toBeLessThan(idleLid);
   });
 
   it("aplica el tamaño pedido al SVG", () => {
