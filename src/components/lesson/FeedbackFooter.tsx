@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
+import { tutorMoodForFeedback } from "@/lib/tutor/moods";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type FeedbackFooterProps = {
@@ -31,7 +33,9 @@ export function FeedbackFooter({
         variant === "fixed"
           ? "fixed inset-x-0 bottom-0 z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]"
           : "shrink-0 shadow-none",
-        isCorrect ? "border-emerald-300 bg-emerald-50" : "border-red-200 bg-red-50",
+        isCorrect
+          ? "border-emerald-300 bg-emerald-50"
+          : "border-red-200 bg-red-50",
       )}
       role="status"
       data-testid="lesson-feedback-footer"
@@ -43,14 +47,21 @@ export function FeedbackFooter({
         )}
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p
-            className={cn(
-              "text-lg font-semibold",
-              isCorrect ? "text-emerald-800" : "text-red-700",
-            )}
-          >
-            {isCorrect ? "🎉 ¡Correcto!" : "Incorrecto"}
-          </p>
+          <div className="flex items-center gap-3">
+            <TutorMascot
+              mood={tutorMoodForFeedback(status)}
+              size={52}
+              label={null}
+            />
+            <p
+              className={cn(
+                "text-lg font-semibold",
+                isCorrect ? "text-emerald-800" : "text-red-700",
+              )}
+            >
+              {isCorrect ? "¡Correcto!" : "Incorrecto"}
+            </p>
+          </div>
 
           <div className="flex flex-wrap gap-2">
             {explanation ? (
