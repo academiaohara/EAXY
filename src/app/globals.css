@@ -203,3 +203,77 @@
     transform: translateY(-4px);
   }
 }
+
+@keyframes lesson-tutor-hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-10px) scale(1.04);
+  }
+  70% {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+@keyframes lesson-tutor-wobble {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-7deg);
+  }
+  75% {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes lesson-tutor-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 6px) scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -2px) scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes lesson-tutor-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -3px) scale(1.08);
+  }
+}
+
+/* El contenido del paso entra desde arriba al avanzar en la lección. */
+@keyframes lesson-step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson-step-enter {
+  animation: lesson-step-enter 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-step-enter,
+  [class*="lesson-tutor-"] {
+    animation: none !important;
+  }
+}

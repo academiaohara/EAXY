@@ -15,6 +15,8 @@ type StepPhaseBadgeProps = {
 const phaseStyles: Record<LessonStepPhase, string> = {
   explanation: "border-cobalt/30 bg-cobalt-tint/60 text-cobalt",
   resolution: "border-emerald-300/60 bg-emerald-50 text-emerald-800",
+  exploration: "border-violet-300/60 bg-violet-50 text-violet-800",
+  practice: "border-amber-300/60 bg-amber-50 text-amber-800",
 };
 
 export function StepPhaseBadge({ step, className }: StepPhaseBadgeProps) {

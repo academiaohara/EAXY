@@ -69,7 +69,12 @@ type MathBlockListProps = {
 
 export function MathBlockList({ blocks, className }: MathBlockListProps) {
   return (
-    <div className={cn("space-y-2 rounded-lg bg-muted/40 px-4 py-3", className)}>
+    <div
+      className={cn(
+        "space-y-2 self-start rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4",
+        className,
+      )}
+    >
       {blocks.map((block) => (
         <MathRenderer key={block} text={block} display />
       ))}

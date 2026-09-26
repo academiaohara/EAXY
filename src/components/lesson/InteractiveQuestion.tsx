@@ -41,7 +41,7 @@ function ConceptStepView({
   useRegisterLessonStepControl(control);
 
   return (
-    <div className={compact ? "space-y-2" : "space-y-6"} data-testid="lesson-concept-step">
+    <div data-testid="lesson-concept-step">
       <ConceptCard
         title={step.title}
         content={step.content}
@@ -49,6 +49,7 @@ function ConceptStepView({
         warning={step.warning}
         compact={compact}
         showTitle={false}
+        split
       />
     </div>
   );

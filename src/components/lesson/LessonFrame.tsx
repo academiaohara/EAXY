@@ -1,35 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { FlagIcon, Volume2Icon, XIcon, ZapIcon } from "lucide-react";
+import { StarIcon, XIcon } from "lucide-react";
 import { LessonProgressHeader } from "@/components/lesson/LessonProgressHeader";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type LessonFrameProps = {
   closeHref: string;
+  lessonTitle: string;
   currentStep: number;
   totalSteps: number;
   stars?: number;
+  totalStars?: number;
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
   className?: string;
 };
 
-function LessonStarBadge({ stars }: { stars: number }) {
+/** Ancho útil compartido por cabecera, contenido y pie: casi todo el viewport. */
+export const LESSON_SHELL_WIDTH = "mx-auto w-full max-w-[112rem] px-4 sm:px-6 lg:px-10";
+
+function LessonStarCounter({ stars, totalStars }: { stars: number; totalStars?: number }) {
   return (
-    <div className="flex items-center gap-1 text-sm font-semibold text-emerald-600">
-      <span>{stars}</span>
-      <span aria-hidden>⭐</span>
+    <div
+      className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-sm font-semibold text-amber-600 shadow-sm ring-1 ring-slate-200/70"
+      data-testid="lesson-stars"
+      aria-label={
+        totalStars ? `${stars} de ${totalStars} estrellas` : `${stars} estrellas conseguidas`
+      }
+    >
+      <StarIcon className="size-4 fill-amber-400 text-amber-400" aria-hidden />
+      <span className="tabular-nums">
+        {stars}
+        {totalStars ? <span className="text-amber-600/60">/{totalStars}</span> : null}
+      </span>
     </div>
   );
 }
 
 export function LessonFrame({
   closeHref,
+  lessonTitle,
   currentStep,
   totalSteps,
   stars = 0,
+  totalStars,
   feedback = null,
   children,
   className,
@@ -39,13 +55,10 @@ export function LessonFrame({
 
   return (
     <div
-      className={cn(
-        "relative flex h-full min-h-0 w-full flex-col overflow-hidden bg-[#eef0f3]",
-        className,
-      )}
+      className={cn("relative flex h-full min-h-0 w-full flex-col overflow-hidden", className)}
       data-testid="lesson-frame"
     >
-      <div className="mx-auto flex w-full max-w-4xl shrink-0 items-center gap-3 px-4 pb-2 pt-3 sm:px-6 sm:pt-4">
+      <div className={cn("flex shrink-0 items-center gap-3 pb-3 pt-3 sm:gap-4", LESSON_SHELL_WIDTH)}>
         <Link
           href={closeHref}
           className="flex size-9 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-white/80 hover:text-slate-800"
@@ -55,50 +68,31 @@ export function LessonFrame({
           <XIcon className="size-5" />
         </Link>
 
-        <LessonProgressHeader current={currentStep} total={totalSteps} />
-
-        <div className="flex shrink-0 items-center gap-2">
-          <LessonStarBadge stars={stars} />
-          <div
-            className="flex size-8 items-center justify-center rounded-full bg-white/80 text-amber-500 shadow-sm ring-1 ring-slate-200/70"
-            title="Racha"
-            aria-hidden
-          >
-            <ZapIcon className="size-4 fill-amber-400" />
+        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+          <div className="flex items-baseline justify-between gap-3">
+            <p className="truncate text-xs font-medium text-slate-500 sm:text-sm">{lessonTitle}</p>
+            <p className="shrink-0 text-[11px] font-semibold tabular-nums text-slate-400">
+              Paso {currentStep} de {totalSteps}
+            </p>
           </div>
+          <LessonProgressHeader current={currentStep} total={totalSteps} />
         </div>
+
+        <LessonStarCounter stars={stars} totalStars={totalStars} />
       </div>
 
-      <div className="relative mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col px-3 pb-28 sm:px-6 sm:pb-32">
+      <div className={cn("flex min-h-0 flex-1 flex-col pb-3", LESSON_SHELL_WIDTH)}>
         <div
           className={cn(
-            "relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
+            "flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
             isCorrect && "border-emerald-400 shadow-emerald-100/80",
-            isIncorrect && "border-red-300 shadow-red-100/60",
-            !feedback && "border-white/80",
+            isIncorrect && "border-rose-300 shadow-rose-100/60",
+            !feedback && "border-white",
           )}
         >
-          <div className="absolute left-3 top-3 z-10 flex flex-col gap-1 sm:left-4 sm:top-4">
-            <button
-              type="button"
-              className="flex size-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-              aria-label="Reportar problema"
-            >
-              <FlagIcon className="size-3.5" />
-            </button>
-            <button
-              type="button"
-              className="flex size-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600"
-              aria-label="Activar sonido"
-            >
-              <Volume2Icon className="size-3.5" />
-            </button>
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
+            {children}
           </div>
-
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-10 sm:px-10 sm:py-12">
-            <div className="mx-auto flex min-h-full w-full max-w-2xl flex-col justify-center">{children}</div>
-          </div>
-
         </div>
       </div>
     </div>
