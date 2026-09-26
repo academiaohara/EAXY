@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BookOpenIcon, ChevronRightIcon, SparklesIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import type { CourseOutline, LessonSummary } from "@/lib/curriculum/types";
 
@@ -139,6 +140,11 @@ export function CourseOutlineView({ outline, backHref = "/aprender" }: CourseOut
                 ))}
               </div>
             )}
+
+            <TopicExercisesSection
+              moduleTitle={module.title}
+              exercises={module.topicExercises}
+            />
           </section>
         ))
       )}

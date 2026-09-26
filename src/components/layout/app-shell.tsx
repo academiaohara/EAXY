@@ -83,7 +83,7 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
         </div>
       </header>
 
-      <main className="flex-1 pb-16 sm:pb-0">{children}</main>
+      <main className="flex min-h-0 flex-1 flex-col pb-16 sm:pb-0">{children}</main>
       <MobileNav />
     </div>
   );
