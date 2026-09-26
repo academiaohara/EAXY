@@ -6,13 +6,14 @@ import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
 import { MultipleChoice } from "@/components/lesson/steps/MultipleChoice";
-import type { LessonStep } from "@/lib/lesson/types";
+import type { FeedbackStatus, LessonStep } from "@/lib/lesson/types";
 
 type InteractiveQuestionProps = {
   step: LessonStep;
   onCheck: (correct: boolean) => void;
   onContinue?: () => void;
   disabled?: boolean;
+  feedback?: FeedbackStatus | null;
 };
 
 export function InteractiveQuestion({
@@ -20,17 +21,24 @@ export function InteractiveQuestion({
   onCheck,
   onContinue,
   disabled = false,
+  feedback = null,
 }: InteractiveQuestionProps) {
   if (step.type === "concept") {
     return (
-      <div className="space-y-6" data-testid="lesson-concept-step">
+      <div className="space-y-8" data-testid="lesson-concept-step">
         <ConceptCard
           title={step.title}
           content={step.content}
           math={step.math}
           warning={step.warning}
+          variant="inline"
         />
-        <Button type="button" onClick={onContinue} data-testid="lesson-continue-button">
+        <Button
+          type="button"
+          onClick={onContinue}
+          className="w-full rounded-full py-6 text-base font-semibold"
+          data-testid="lesson-continue-button"
+        >
           Continuar
         </Button>
       </div>
@@ -46,8 +54,22 @@ export function InteractiveQuestion({
   }
 
   if (step.type === "fill_in_blank") {
-    return <FillInBlank step={step} onCheck={onCheck} disabled={disabled} />;
+    return (
+      <FillInBlank
+        step={step}
+        onCheck={onCheck}
+        disabled={disabled}
+        feedback={feedback}
+      />
+    );
   }
 
-  return <MultipleChoice step={step} onCheck={onCheck} disabled={disabled} />;
+  return (
+    <MultipleChoice
+      step={step}
+      onCheck={onCheck}
+      disabled={disabled}
+      feedback={feedback}
+    />
+  );
 }

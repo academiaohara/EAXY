@@ -18,11 +18,17 @@ export function InteractiveToolStepView({ step, onContinue }: InteractiveToolSte
         content={step.content}
         math={step.math}
         warning={step.warning}
+        variant="inline"
       />
 
       {step.tool === "system-graph" ? <SystemGraphTool config={step.graph} /> : null}
 
-      <Button type="button" onClick={onContinue} data-testid="lesson-continue-button">
+      <Button
+        type="button"
+        onClick={onContinue}
+        className="w-full rounded-full py-6 text-base font-semibold"
+        data-testid="lesson-continue-button"
+      >
         Continuar
       </Button>
     </div>

@@ -1,19 +1,33 @@
 import { AlertTriangleIcon } from "lucide-react";
 import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
-import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import type { LessonStepBase } from "@/lib/lesson/types";
 
-type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "warning">;
+type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "warning"> & {
+  variant?: "card" | "inline";
+};
 
-export function ConceptCard({ title, content, math, warning }: ConceptCardProps) {
+export function ConceptCard({
+  title,
+  content,
+  math,
+  warning,
+  variant = "card",
+}: ConceptCardProps) {
   return (
-    <Card className="space-y-4 border-border bg-paper-raised p-6 shadow-sm">
+    <div
+      className={cn(
+        "space-y-4",
+        variant === "card" &&
+          "rounded-xl border border-slate-200 bg-slate-50/50 p-5 sm:p-6",
+      )}
+    >
       <h2 className="font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl">
         {title}
       </h2>
 
       {content?.map((paragraph) => (
-        <p key={paragraph} className="text-sm leading-relaxed text-ink-muted">
+        <p key={paragraph} className="text-sm leading-relaxed text-ink-muted sm:text-base">
           <MathRenderer text={paragraph} />
         </p>
       ))}
@@ -28,6 +42,6 @@ export function ConceptCard({ title, content, math, warning }: ConceptCardProps)
           </p>
         </div>
       ) : null}
-    </Card>
+    </div>
   );
 }

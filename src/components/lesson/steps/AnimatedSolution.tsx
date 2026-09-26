@@ -33,6 +33,7 @@ export function AnimatedSolution({ step, onContinue }: AnimatedSolutionProps) {
         content={step.content}
         math={step.math}
         warning={step.warning}
+        variant="inline"
       />
 
       <div className="space-y-4">
@@ -63,6 +64,7 @@ export function AnimatedSolution({ step, onContinue }: AnimatedSolutionProps) {
         <Button
           type="button"
           onClick={handleAdvance}
+          className="w-full rounded-full py-6 text-base font-semibold sm:w-auto"
           data-testid={isLastFrame ? "lesson-continue-button" : "lesson-animation-next"}
         >
           {isLastFrame ? "Continuar" : "Ver siguiente paso"}
