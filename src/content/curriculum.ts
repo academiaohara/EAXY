@@ -1,4 +1,5 @@
 import type { Curriculum } from "@/content/types";
+import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
 /**
  * Fuente única de verdad del contenido curricular de desarrollo.
@@ -52,6 +53,7 @@ export const curriculum: Curriculum = {
           id: moduleId(7),
           title: "Sistemas de ecuaciones",
           orderIndex: 1,
+          topicExercises: sistemasEcuacionesTopicExercises,
           lessons: [
             {
               id: lessonId(701),

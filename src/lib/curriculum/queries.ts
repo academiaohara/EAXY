@@ -1,4 +1,4 @@
-import { getCourseById } from "@/content";
+import { getCourseById, getTopicExercisesForModule } from "@/content";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import {
   getPreviewCourseCatalog,
@@ -335,12 +335,21 @@ export async function getCourseOutline(
       description: (course.description as string | null) ?? null,
       orderIndex: curriculumCourse?.orderIndex,
     },
-    modules: modules.map((module) => ({
-      id: module.id as string,
-      title: module.title as string,
-      orderIndex: module.order_index as number,
-      lessons: lessonsByModule.get(module.id as string) ?? [],
-    })),
+    modules: modules.map((module) => {
+      const moduleId = module.id as string;
+      return {
+        id: moduleId,
+        title: module.title as string,
+        orderIndex: module.order_index as number,
+        lessons: lessonsByModule.get(moduleId) ?? [],
+        topicExercises: getTopicExercisesForModule(moduleId).map((exercise) => ({
+          id: exercise.id,
+          title: exercise.title,
+          statement: exercise.statement,
+          solutionVideoUrl: exercise.solutionVideoUrl,
+        })),
+      };
+    }),
   };
 }
 

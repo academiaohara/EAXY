@@ -31,11 +31,21 @@ export type CurriculumLesson = {
   conceptSlugs: string[];
 };
 
+/** Ejercicio de tema con enunciado y vídeo de resolución (fuera del motor interactivo). */
+export type CurriculumTopicExercise = {
+  id: string;
+  title: string;
+  /** Enunciado en texto plano; admite LaTeX inline con $...$. */
+  statement: string;
+  solutionVideoUrl: string;
+};
+
 export type CurriculumModule = {
   id: string;
   title: string;
   orderIndex: number;
   lessons: CurriculumLesson[];
+  topicExercises?: CurriculumTopicExercise[];
 };
 
 export type CurriculumExercise = {

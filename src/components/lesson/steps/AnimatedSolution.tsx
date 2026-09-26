@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronRightIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useCallback, useMemo, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { cn } from "@/lib/utils";
 import type { AnimatedSolutionStep } from "@/lib/lesson/types";
@@ -11,34 +10,50 @@ import type { AnimatedSolutionStep } from "@/lib/lesson/types";
 type AnimatedSolutionProps = {
   step: AnimatedSolutionStep;
   onContinue: () => void;
+  compact?: boolean;
 };
 
-export function AnimatedSolution({ step, onContinue }: AnimatedSolutionProps) {
+export function AnimatedSolution({ step, onContinue, compact = false }: AnimatedSolutionProps) {
   const [frameIndex, setFrameIndex] = useState(0);
   const totalFrames = step.frames.length;
   const isLastFrame = frameIndex >= totalFrames - 1;
 
-  function handleAdvance() {
+  const handleAdvance = useCallback(() => {
     if (isLastFrame) {
       onContinue();
       return;
     }
     setFrameIndex((prev) => prev + 1);
-  }
+  }, [isLastFrame, onContinue]);
+
+  const control = useMemo(
+    () => ({
+      label: isLastFrame ? "Continuar" : "Ver siguiente paso",
+      onClick: handleAdvance,
+      testId: isLastFrame ? "lesson-continue-button" : "lesson-animation-next",
+    }),
+    [handleAdvance, isLastFrame],
+  );
+
+  useRegisterLessonStepControl(control);
 
   return (
-    <div className="space-y-6" data-testid="lesson-animated-solution">
+    <div className={compact ? "space-y-3" : "space-y-6"} data-testid="lesson-animated-solution">
       <ConceptCard
         title={step.title}
         content={step.content}
         math={step.math}
         warning={step.warning}
+        compact={compact}
+        showTitle={false}
       />
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span>Paso {frameIndex + 1} de {totalFrames}</span>
-          <span>Pulsa para avanzar en la resolución</span>
+          <span>
+            Paso {frameIndex + 1} de {totalFrames}
+          </span>
+          <span>Resolución paso a paso</span>
         </div>
 
         <div className="space-y-2">
@@ -46,12 +61,13 @@ export function AnimatedSolution({ step, onContinue }: AnimatedSolutionProps) {
             <div
               key={`${frame.math}-${index}`}
               className={cn(
-                "rounded-lg border border-border bg-paper-raised px-4 py-3 transition-all",
-                index === frameIndex && "border-cobalt bg-cobalt-tint/30 animate-in fade-in slide-in-from-bottom-2 duration-300",
+                "rounded-lg border border-border bg-paper-raised px-3 py-2 transition-all",
+                index === frameIndex &&
+                  "border-emerald-400/70 bg-emerald-50/80 animate-in fade-in slide-in-from-bottom-2 duration-300",
               )}
             >
               {frame.caption ? (
-                <p className="mb-2 text-sm text-muted-foreground">
+                <p className="mb-1 text-xs text-muted-foreground">
                   <MathRenderer text={frame.caption} />
                 </p>
               ) : null}
@@ -59,15 +75,6 @@ export function AnimatedSolution({ step, onContinue }: AnimatedSolutionProps) {
             </div>
           ))}
         </div>
-
-        <Button
-          type="button"
-          onClick={handleAdvance}
-          data-testid={isLastFrame ? "lesson-continue-button" : "lesson-animation-next"}
-        >
-          {isLastFrame ? "Continuar" : "Ver siguiente paso"}
-          {!isLastFrame ? <ChevronRightIcon data-icon="inline-end" /> : null}
-        </Button>
       </div>
     </div>
   );

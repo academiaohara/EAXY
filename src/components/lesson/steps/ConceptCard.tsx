@@ -3,17 +3,46 @@ import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
 import { Card } from "@/components/ui/card";
 import type { LessonStepBase } from "@/lib/lesson/types";
 
-type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "warning">;
+type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "warning"> & {
+  compact?: boolean;
+  showTitle?: boolean;
+};
 
-export function ConceptCard({ title, content, math, warning }: ConceptCardProps) {
+export function ConceptCard({
+  title,
+  content,
+  math,
+  warning,
+  compact = false,
+  showTitle = true,
+}: ConceptCardProps) {
   return (
-    <Card className="space-y-4 border-border bg-paper-raised p-6 shadow-sm">
-      <h2 className="font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl">
-        {title}
-      </h2>
+    <Card
+      className={
+        compact
+          ? "space-y-2 border-0 bg-transparent p-0 shadow-none"
+          : "space-y-4 border-border bg-paper-raised p-6 shadow-sm"
+      }
+    >
+      {showTitle ? (
+        <h2
+          className={
+            compact
+              ? "font-heading text-lg font-semibold tracking-tight text-ink"
+              : "font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl"
+          }
+        >
+          {title}
+        </h2>
+      ) : null}
 
       {content?.map((paragraph) => (
-        <p key={paragraph} className="text-sm leading-relaxed text-ink-muted">
+        <p
+          key={paragraph}
+          className={
+            compact ? "text-sm leading-snug text-ink-muted" : "text-sm leading-relaxed text-ink-muted"
+          }
+        >
           <MathRenderer text={paragraph} />
         </p>
       ))}

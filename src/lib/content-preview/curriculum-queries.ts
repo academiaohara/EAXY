@@ -87,6 +87,12 @@ export function getPreviewCourseOutline(courseId: string): CourseOutline | null 
         lessons: [...courseModule.lessons]
           .sort((a, b) => a.orderIndex - b.orderIndex)
           .map((lesson) => buildLessonSummary(lesson)),
+        topicExercises: (courseModule.topicExercises ?? []).map((exercise) => ({
+          id: exercise.id,
+          title: exercise.title,
+          statement: exercise.statement,
+          solutionVideoUrl: exercise.solutionVideoUrl,
+        })),
       })),
   };
 }

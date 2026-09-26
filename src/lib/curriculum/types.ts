@@ -13,11 +13,19 @@ export type CourseCatalogEntry = CourseSummary & {
   lessonCount: number;
 };
 
+export type TopicExerciseSummary = {
+  id: string;
+  title: string;
+  statement: string;
+  solutionVideoUrl: string;
+};
+
 export type ModuleSummary = {
   id: string;
   title: string;
   orderIndex: number;
   lessons: LessonSummary[];
+  topicExercises: TopicExerciseSummary[];
 };
 
 export type LessonSummary = {

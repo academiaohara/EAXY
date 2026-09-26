@@ -11,6 +11,7 @@ type FeedbackFooterProps = {
   explanation?: string;
   isLastStep?: boolean;
   onNext: () => void;
+  variant?: "fixed" | "docked";
 };
 
 export function FeedbackFooter({
@@ -18,13 +19,17 @@ export function FeedbackFooter({
   explanation,
   isLastStep = false,
   onNext,
+  variant = "fixed",
 }: FeedbackFooterProps) {
   const isCorrect = status === "correct";
 
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 border-t px-4 py-4 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] animate-in slide-in-from-bottom duration-300",
+        "border-t px-4 py-4 animate-in slide-in-from-bottom duration-300",
+        variant === "fixed"
+          ? "fixed inset-x-0 bottom-0 z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]"
+          : "shrink-0 shadow-none",
         isCorrect ? "border-emerald-200 bg-emerald-50" : "border-destructive/30 bg-destructive/5",
       )}
       role="status"

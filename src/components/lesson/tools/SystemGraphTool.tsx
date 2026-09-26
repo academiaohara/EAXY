@@ -10,6 +10,7 @@ const DEFAULT_COLORS = ["#2f5fe0", "#c0392b", "#16a085", "#d35400"];
 
 type SystemGraphToolProps = {
   config: SystemGraphConfig;
+  compact?: boolean;
 };
 
 function toSvgX(x: number, xMin: number, xMax: number, width: number, pad: number): number {
@@ -47,7 +48,7 @@ function linePath(
   return `M ${toSvgX(x1, xMin, xMax, width, pad)} ${toSvgY(y1, yMin, yMax, height, pad)} L ${toSvgX(x2, xMin, xMax, width, pad)} ${toSvgY(y2, yMin, yMax, height, pad)}`;
 }
 
-export function SystemGraphTool({ config }: SystemGraphToolProps) {
+export function SystemGraphTool({ config, compact = false }: SystemGraphToolProps) {
   const [visibleIds, setVisibleIds] = useState<Set<string>>(
     () => new Set(config.lines.map((line) => line.id)),
   );
@@ -99,10 +100,15 @@ export function SystemGraphTool({ config }: SystemGraphToolProps) {
         })}
       </div>
 
-      <div className="rounded-xl border border-border bg-paper-raised p-3">
+      <div
+        className={cn(
+          "rounded-xl border border-border bg-paper-raised p-3",
+          compact && "max-h-[min(36vh,16rem)] overflow-hidden",
+        )}
+      >
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="aspect-square w-full"
+          className={cn("aspect-square w-full", compact && "max-h-[min(34vh,15rem)]")}
           preserveAspectRatio="xMidYMid meet"
           role="img"
           aria-label="Representación gráfica de rectas"

@@ -20,6 +20,23 @@ export function getCourseById(id: string, source: Curriculum = curriculum): Curr
   return source.courses.find((course) => course.id === id);
 }
 
+export function getModuleById(
+  id: string,
+  source: Curriculum = curriculum,
+): { course: CurriculumCourse; module: CurriculumModule } | undefined {
+  for (const course of getAllCourses(source)) {
+    const courseModule = course.modules.find((candidate) => candidate.id === id);
+    if (courseModule) {
+      return { course, module: courseModule };
+    }
+  }
+  return undefined;
+}
+
+export function getTopicExercisesForModule(moduleId: string, source: Curriculum = curriculum) {
+  return getModuleById(moduleId, source)?.module.topicExercises ?? [];
+}
+
 export function getConceptBySlug(slug: string, source: Curriculum = curriculum) {
   return source.concepts.find((concept) => concept.slug === slug);
 }
@@ -159,6 +176,10 @@ export function validateCurriculum(source: Curriculum = curriculum): CurriculumV
     allModules.flatMap((module) => module.lessons.map((lesson) => lesson.id)),
   );
   assertUnique("exercises.id", source.exercises.map((exercise) => exercise.id));
+  assertUnique(
+    "topicExercises.id",
+    allModules.flatMap((module) => (module.topicExercises ?? []).map((exercise) => exercise.id)),
+  );
 
   for (const course of source.courses) {
     assertUnique(

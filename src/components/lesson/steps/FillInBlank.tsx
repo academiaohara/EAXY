@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useCallback, useMemo, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import { cn } from "@/lib/utils";
@@ -12,14 +12,20 @@ type FillInBlankProps = {
   step: FillInBlankStep;
   onCheck: (correct: boolean) => void;
   disabled?: boolean;
+  compact?: boolean;
 };
 
-export function FillInBlank({ step, onCheck, disabled = false }: FillInBlankProps) {
+export function FillInBlank({
+  step,
+  onCheck,
+  disabled = false,
+  compact = false,
+}: FillInBlankProps) {
   const [value, setValue] = useState("");
   const [checked, setChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  function handleCheck() {
+  const handleCheck = useCallback(() => {
     if (!value.trim() || checked) {
       return;
     }
@@ -27,15 +33,31 @@ export function FillInBlank({ step, onCheck, disabled = false }: FillInBlankProp
     setIsCorrect(correct);
     setChecked(true);
     onCheck(correct);
-  }
+  }, [checked, onCheck, step.correctAnswers, value]);
+
+  const control = useMemo(() => {
+    if (checked) {
+      return null;
+    }
+    return {
+      label: "Comprobar",
+      onClick: handleCheck,
+      disabled: !value.trim() || disabled,
+      testId: "lesson-check-button",
+    };
+  }, [checked, disabled, handleCheck, value]);
+
+  useRegisterLessonStepControl(control);
 
   return (
-    <div className="space-y-6" data-testid="lesson-fill-in-blank">
+    <div className={compact ? "space-y-3" : "space-y-6"} data-testid="lesson-fill-in-blank">
       <ConceptCard
         title={step.title}
         content={step.content}
         math={step.math}
         warning={step.warning}
+        compact={compact}
+        showTitle={false}
       />
 
       <div className="space-y-3">
@@ -64,17 +86,6 @@ export function FillInBlank({ step, onCheck, disabled = false }: FillInBlankProp
           <p className="text-xs text-muted-foreground">
             Pista: <MathRenderer text={step.hint} />
           </p>
-        ) : null}
-
-        {!checked ? (
-          <Button
-            type="button"
-            onClick={handleCheck}
-            disabled={!value.trim() || disabled}
-            data-testid="lesson-check-button"
-          >
-            Comprobar
-          </Button>
         ) : null}
       </div>
     </div>
