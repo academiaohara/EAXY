@@ -1,4 +1,4 @@
-import type { TutorPoint } from "@/lib/tutor/geometry";
+import type { TutorPoint } from "@/lib/tutor/types";
 
 export type GazeTargetOptions = {
   pointerX: number;

@@ -1,6 +1,7 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
+import { TUTOR_BODY_IMAGE } from "@/lib/tutor/anatomy";
 import { getTutorExpression } from "@/lib/tutor/moods";
 
 function stubMatchMedia(matches: boolean) {
@@ -113,39 +114,12 @@ describe("TutorMascot", () => {
     expect(svg).toHaveAttribute("height", "140");
   });
 
-  it("genera el mismo pelaje con la misma semilla", () => {
-    const { unmount } = render(<TutorMascot label={null} seed={12} />);
-    const first = screen
-      .getByTestId("tutor-mascot")
-      .querySelector("path")
-      ?.getAttribute("d");
-    unmount();
+  it("incrusta la ilustración base del tutor", () => {
+    render(<TutorMascot label={null} />);
 
-    render(<TutorMascot label={null} seed={12} />);
-    const second = screen
-      .getByTestId("tutor-mascot")
-      .querySelector("path")
-      ?.getAttribute("d");
+    const image = screen.getByTestId("tutor-mascot").querySelector("image");
 
-    expect(first).toBeTruthy();
-    expect(second).toBe(first);
-  });
-
-  it("cambia de pelaje al cambiar la semilla", () => {
-    const { unmount } = render(<TutorMascot label={null} seed={1} />);
-    const first = screen
-      .getByTestId("tutor-mascot")
-      .querySelector("path")
-      ?.getAttribute("d");
-    unmount();
-
-    render(<TutorMascot label={null} seed={2} />);
-    const second = screen
-      .getByTestId("tutor-mascot")
-      .querySelector("path")
-      ?.getAttribute("d");
-
-    expect(second).not.toBe(first);
+    expect(image).toHaveAttribute("href", TUTOR_BODY_IMAGE);
   });
 
   it("sigue al puntero cuando se le pide", async () => {

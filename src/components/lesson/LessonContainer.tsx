@@ -7,16 +7,15 @@ import { FeedbackFooter } from "@/components/lesson/FeedbackFooter";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonBottomBar } from "@/components/lesson/LessonBottomBar";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
+import { LessonTutor } from "@/components/lesson/LessonTutor";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
-import type {
-  FeedbackStatus,
-  InteractiveLesson,
-  LessonStep,
-} from "@/lib/lesson/types";
+import { getStepTutorMessage } from "@/lib/lesson/tutor-message";
+import { tutorMoodForFeedback } from "@/lib/tutor/moods";
+import type { FeedbackStatus, InteractiveLesson, LessonStep } from "@/lib/lesson/types";
 
 type LessonNavigationContext = {
   courseId: string;
@@ -46,9 +45,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
   const isLastStep = stepIndex === totalSteps - 1;
-  const courseHref = navigation
-    ? `/aprender/curso/${navigation.courseId}`
-    : "/aprender";
+  const courseHref = navigation ? `/aprender/curso/${navigation.courseId}` : "/aprender";
 
   const handleCheck = useCallback(
     (correct: boolean) => {
@@ -91,7 +88,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   if (completed) {
     return (
       <div
-        className="flex h-full min-h-0 w-full items-center justify-center p-4 sm:p-6"
+        className="flex h-full min-h-0 w-full items-center justify-center bg-[#eef0f3] p-4 sm:p-6"
         data-testid="lesson-complete"
       >
         <div className="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
@@ -105,25 +102,16 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
           </div>
           <div className="space-y-5 px-8 pb-10 pt-6 text-center">
             <div className="space-y-2">
-              <h1 className="font-heading text-2xl font-semibold">
-                ¡Lección completada!
-              </h1>
+              <h1 className="font-heading text-2xl font-semibold">¡Lección completada!</h1>
               <p className="text-sm text-muted-foreground">
                 Has terminado &ldquo;{lesson.title}&rdquo;.
               </p>
               {stars > 0 ? (
-                <p className="text-sm font-medium text-emerald-700">
-                  {stars} ⭐ en esta sesión
-                </p>
+                <p className="text-sm font-medium text-emerald-700">{stars} ⭐ en esta sesión</p>
               ) : null}
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
-              <Button
-                type="button"
-                variant="outline"
-                className="rounded-full"
-                onClick={restartLesson}
-              >
+              <Button type="button" variant="outline" className="rounded-full" onClick={restartLesson}>
                 Repetir lección
               </Button>
               <Button
@@ -140,21 +128,11 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     );
   }
 
-  const footer = feedback ? (
-    <FeedbackFooter
-      variant="docked"
-      status={feedback}
-      explanation={getStepExplanation(currentStep)}
-      isLastStep={isLastStep}
-      onNext={handleNext}
-    />
-  ) : control ? (
-    <LessonBottomBar control={control} />
-  ) : null;
+  const tutorMood = feedback ? tutorMoodForFeedback(feedback) : "idle";
 
   return (
     <div
-      className="flex h-full min-h-0 w-full flex-1 flex-col sm:p-4"
+      className="relative flex h-full min-h-0 w-full flex-1 flex-col"
       data-testid="interactive-lesson"
     >
       <h1 className="sr-only">{lesson.title}</h1>
@@ -166,8 +144,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         totalSteps={totalSteps}
         stars={stars}
         feedback={feedback}
-        footer={footer}
-        className="min-h-0 flex-1 shadow-sm"
+        className="min-h-0 flex-1"
       >
         <InteractiveQuestion
           key={currentStep.id}
@@ -178,6 +155,20 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
           compact
         />
       </LessonFrame>
+
+      {feedback ? (
+        <FeedbackFooter
+          variant="fixed"
+          status={feedback}
+          explanation={getStepExplanation(currentStep)}
+          isLastStep={isLastStep}
+          onNext={handleNext}
+        />
+      ) : control ? (
+        <LessonBottomBar control={control} fixed />
+      ) : null}
+
+      <LessonTutor mood={tutorMood} message={getStepTutorMessage(currentStep)} />
     </div>
   );
 }

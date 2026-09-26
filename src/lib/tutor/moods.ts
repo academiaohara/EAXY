@@ -1,4 +1,4 @@
-import type { TutorPoint } from "@/lib/tutor/geometry";
+import type { TutorPoint } from "@/lib/tutor/types";
 
 export type TutorMood =
   "idle" | "happy" | "celebrate" | "thinking" | "sad" | "surprised";
@@ -81,10 +81,10 @@ export const tutorExpressions: Record<TutorMood, TutorExpression> = {
     label: "El tutor está pensando",
   },
   sad: {
-    eyeScaleY: 0.76,
-    lidCoverage: 0.08,
-    pupilOffset: { x: 0, y: 4 },
-    pupilScale: 0.92,
+    eyeScaleY: 0.88,
+    lidCoverage: 0.14,
+    pupilOffset: { x: 0, y: 3 },
+    pupilScale: 0.95,
     browOffset: 2,
     browRotation: -15,
     browOpacity: 0.65,
