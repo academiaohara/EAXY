@@ -26,16 +26,22 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
 
   return (
     <div
-      className="flex min-h-dvh flex-col"
+      className="flex min-h-dvh flex-col [&:has([data-testid=interactive-lesson-layout])]:[--app-chrome-h:0px] [&:has([data-testid=interactive-lesson-layout])_[data-app-chrome]]:hidden"
       style={{ "--app-chrome-h": appChromeHeight } as React.CSSProperties}
     >
       {previewMode ? (
-        <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950">
+        <div
+          className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950"
+          data-app-chrome
+        >
           Modo previsualización: acceso abierto al catálogo local. El registro se activará más
           adelante.
         </div>
       ) : null}
-      <header className="border-b border-border bg-paper-raised/80 backdrop-blur-sm">
+      <header
+        className="border-b border-border bg-paper-raised/80 backdrop-blur-sm"
+        data-app-chrome
+      >
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-6">
             <Link
