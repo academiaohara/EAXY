@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2Icon, XCircleIcon } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { cn } from "@/lib/utils";
@@ -21,46 +21,65 @@ export function FeedbackFooter({
   onNext,
   variant = "fixed",
 }: FeedbackFooterProps) {
+  const [showWhy, setShowWhy] = useState(false);
   const isCorrect = status === "correct";
 
   return (
     <div
       className={cn(
-        "border-t px-4 py-4 animate-in slide-in-from-bottom duration-300",
+        "border-t-2 px-4 py-4 animate-in slide-in-from-bottom duration-300",
         variant === "fixed"
           ? "fixed inset-x-0 bottom-0 z-50 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]"
           : "shrink-0 shadow-none",
-        isCorrect ? "border-emerald-200 bg-emerald-50" : "border-destructive/30 bg-destructive/5",
+        isCorrect ? "border-emerald-300 bg-emerald-50" : "border-red-200 bg-red-50",
       )}
       role="status"
       data-testid="lesson-feedback-footer"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-start gap-3">
-          {isCorrect ? (
-            <CheckCircle2Icon className="mt-0.5 size-5 shrink-0 text-emerald-600" />
-          ) : (
-            <XCircleIcon className="mt-0.5 size-5 shrink-0 text-destructive" />
-          )}
-          <div className="space-y-1">
-            <p
-              className={cn(
-                "font-medium",
-                isCorrect ? "text-emerald-800" : "text-destructive",
-              )}
-            >
-              {isCorrect ? "¡Correcto!" : "Incorrecto"}
-            </p>
+      <div
+        className={cn(
+          "mx-auto flex w-full flex-col gap-4",
+          variant === "fixed" ? "max-w-2xl" : "max-w-none",
+        )}
+      >
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p
+            className={cn(
+              "text-lg font-semibold",
+              isCorrect ? "text-emerald-800" : "text-red-700",
+            )}
+          >
+            {isCorrect ? "🎉 ¡Correcto!" : "Incorrecto"}
+          </p>
+
+          <div className="flex flex-wrap gap-2">
             {explanation ? (
-              <p className="text-sm text-ink-muted">
-                <MathRenderer text={explanation} />
-              </p>
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-full border-slate-300 bg-white"
+                onClick={() => setShowWhy((prev) => !prev)}
+                data-testid="lesson-why-button"
+              >
+                ¿Por qué?
+              </Button>
             ) : null}
+            <Button
+              type="button"
+              className="min-w-[120px] rounded-full bg-emerald-500 font-semibold text-white hover:bg-emerald-600"
+              onClick={onNext}
+              data-testid="lesson-next-button"
+            >
+              {isLastStep ? "Finalizar" : "Continuar"}
+            </Button>
           </div>
         </div>
-        <Button type="button" onClick={onNext} data-testid="lesson-next-button">
-          {isLastStep ? "Finalizar lección" : "Continuar"}
-        </Button>
+
+        {showWhy && explanation ? (
+          <p className="text-sm leading-relaxed text-ink-muted">
+            <MathRenderer text={explanation} />
+          </p>
+        ) : null}
       </div>
     </div>
   );

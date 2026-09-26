@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { CheckIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
@@ -14,6 +15,13 @@ type MultipleChoiceProps = {
   compact?: boolean;
 };
 
+function useOptionGrid(options: MultipleChoiceStep["options"]): boolean {
+  if (options.length === 4) {
+    return true;
+  }
+  return options.every((option) => option.text.length <= 24);
+}
+
 export function MultipleChoice({
   step,
   onCheck,
@@ -22,6 +30,7 @@ export function MultipleChoice({
 }: MultipleChoiceProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
+  const useGrid = useOptionGrid(step.options);
 
   const handleCheck = useCallback(() => {
     if (!selectedId || checked) {
@@ -46,58 +55,70 @@ export function MultipleChoice({
 
   useRegisterLessonStepControl(control);
 
+  const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
+
   return (
-    <div className={compact ? "space-y-3" : "space-y-6"} data-testid="lesson-multiple-choice">
-      <ConceptCard
-        title={step.title}
-        content={step.content}
-        math={step.math}
-        warning={step.warning}
-        compact={compact}
-        showTitle={false}
-      />
+    <div className={compact ? "space-y-4" : "space-y-8"} data-testid="lesson-multiple-choice">
+      {showContext ? (
+        <ConceptCard
+          title={step.title}
+          content={step.content}
+          math={step.math}
+          warning={step.warning}
+          compact={compact}
+          showTitle={false}
+        />
+      ) : null}
 
-      <div className="space-y-3">
-        <p className="font-medium text-ink">
+      <div className={compact ? "space-y-4" : "space-y-6"}>
+        <h2
+          className={cn(
+            "text-center font-heading font-semibold leading-snug text-ink",
+            compact ? "text-lg" : "text-xl sm:text-2xl",
+          )}
+        >
           <MathRenderer text={step.question} />
-        </p>
+        </h2>
 
-        <fieldset className="space-y-2" disabled={disabled || checked}>
+        <fieldset disabled={disabled || checked}>
           <legend className="sr-only">Opciones de respuesta</legend>
-          {step.options.map((option) => {
-            const isSelected = selectedId === option.id;
-            const isCorrectOption = option.id === step.correctOptionId;
+          <div className={cn("grid gap-3", useGrid ? "grid-cols-2" : "grid-cols-1")}>
+            {step.options.map((option) => {
+              const isSelected = selectedId === option.id;
+              const isCorrectOption = option.id === step.correctOptionId;
 
-            return (
-              <label
-                key={option.id}
-                className={cn(
-                  "flex cursor-pointer items-start gap-3 rounded-xl border border-border bg-paper-raised px-3 py-2 transition-all",
-                  isSelected && !checked && "border-cobalt bg-cobalt-tint/40",
-                  checked && isCorrectOption && "border-emerald-500 bg-emerald-50",
-                  checked &&
-                    isSelected &&
-                    !isCorrectOption &&
-                    "border-destructive bg-destructive/5 animate-shake",
-                )}
-              >
-                <input
-                  type="radio"
-                  name={`step-${step.id}`}
-                  checked={isSelected}
-                  onChange={() => setSelectedId(option.id)}
-                  className="mt-1 accent-cobalt"
-                />
-                <span className="text-sm text-ink">
-                  <MathRenderer text={option.text} />
-                </span>
-              </label>
-            );
-          })}
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => setSelectedId(option.id)}
+                  className={cn(
+                    "relative flex min-h-[3.25rem] items-center justify-center rounded-xl border-2 bg-white px-3 py-2.5 text-center text-sm font-medium transition-all sm:min-h-[3.5rem] sm:text-base",
+                    isSelected && !checked && "border-cobalt bg-cobalt-tint/30",
+                    !isSelected && !checked && "border-slate-200 hover:border-slate-300",
+                    checked && isCorrectOption && "border-emerald-500 bg-emerald-50 text-emerald-900",
+                    checked &&
+                      isSelected &&
+                      !isCorrectOption &&
+                      "border-red-400 bg-red-50 animate-shake",
+                  )}
+                >
+                  <span>
+                    <MathRenderer text={option.text} />
+                  </span>
+                  {checked && isCorrectOption ? (
+                    <span className="absolute right-2 top-2 flex size-5 items-center justify-center rounded-full bg-emerald-500 text-white">
+                      <CheckIcon className="size-3" strokeWidth={3} />
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </fieldset>
 
         {step.hint && !checked ? (
-          <p className="text-xs text-muted-foreground">
+          <p className="text-center text-xs text-muted-foreground">
             Pista: <MathRenderer text={step.hint} />
           </p>
         ) : null}

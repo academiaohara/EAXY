@@ -34,8 +34,8 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
 
   await expect(page).toHaveURL(/\/aprender\/leccion-interactiva\/ecuaciones-lineales-dos-incognitas$/);
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "1. Ecuaciones lineales con dos incógnitas" }),
-  ).toBeVisible();
   await expect(page.getByTestId("lesson-concept-step")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "¿Qué es una ecuación lineal con dos incógnitas?" }),
+  ).toBeVisible();
 });

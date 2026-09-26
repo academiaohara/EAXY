@@ -4,17 +4,14 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { CheckCircle2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { FeedbackFooter } from "@/components/lesson/FeedbackFooter";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonBottomBar } from "@/components/lesson/LessonBottomBar";
-import { LessonBreadcrumb } from "@/components/lesson/LessonBreadcrumb";
+import { LessonFrame } from "@/components/lesson/LessonFrame";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
-import { ProgressBar } from "@/components/lesson/ProgressBar";
-import { StepPhaseBadge } from "@/components/lesson/StepPhaseBadge";
 import type { FeedbackStatus, InteractiveLesson, LessonStep } from "@/lib/lesson/types";
 
 type LessonNavigationContext = {
@@ -35,13 +32,11 @@ function getStepExplanation(step: LessonStep): string | undefined {
   return undefined;
 }
 
-function LessonContainerBody({
-  lesson,
-  navigation,
-}: LessonContainerProps) {
+function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const [stepIndex, setStepIndex] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
   const [completed, setCompleted] = useState(false);
+  const [stars, setStars] = useState(0);
   const { control } = useLessonStepControl();
 
   const totalSteps = lesson.steps.length;
@@ -55,6 +50,9 @@ function LessonContainerBody({
         return;
       }
 
+      if (correct) {
+        setStars((prev) => prev + 1);
+      }
       setFeedback(correct ? "correct" : "incorrect");
     },
     [feedback],
@@ -81,107 +79,87 @@ function LessonContainerBody({
     setStepIndex(0);
     setFeedback(null);
     setCompleted(false);
+    setStars(0);
   }
 
   if (completed) {
     return (
       <div
-        className="mx-auto flex h-full w-full max-w-4xl items-center justify-center p-4 sm:p-6"
+        className="mx-auto flex h-full w-full max-w-2xl items-center justify-center p-4 sm:p-6"
         data-testid="lesson-complete"
       >
-        <Card className="w-full max-w-lg overflow-hidden border-border bg-paper-raised shadow-sm">
-          <div className="bg-gradient-to-br from-emerald-500/10 via-cobalt-tint/40 to-transparent px-8 pb-2 pt-10">
-            <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-emerald-100 ring-4 ring-emerald-50">
-              <CheckCircle2Icon className="size-8 text-emerald-600" />
+        <div className="w-full overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
+          <div className="bg-gradient-to-b from-emerald-50 to-white px-8 pb-2 pt-12 text-center">
+            <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-emerald-100 ring-4 ring-emerald-50">
+              <CheckCircle2Icon className="size-10 text-emerald-600" />
             </div>
           </div>
-          <div className="space-y-4 px-8 pb-8 pt-6 text-center">
+          <div className="space-y-5 px-8 pb-10 pt-6 text-center">
             <div className="space-y-2">
               <h1 className="font-heading text-2xl font-semibold">¡Lección completada!</h1>
               <p className="text-sm text-muted-foreground">
                 Has terminado &ldquo;{lesson.title}&rdquo;.
               </p>
+              {stars > 0 ? (
+                <p className="text-sm font-medium text-emerald-700">{stars} ⭐ en esta sesión</p>
+              ) : null}
             </div>
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
-              <Button type="button" variant="outline" onClick={restartLesson}>
+              <Button type="button" variant="outline" className="rounded-full" onClick={restartLesson}>
                 Repetir lección
               </Button>
-              <Button nativeButton={false} render={<Link href={courseHref} />}>
+              <Button
+                nativeButton={false}
+                className="rounded-full"
+                render={<Link href={courseHref} />}
+              >
                 Volver al curso
               </Button>
             </div>
           </div>
-        </Card>
+        </div>
       </div>
     );
   }
 
+  const footer = feedback ? (
+    <FeedbackFooter
+      variant="docked"
+      status={feedback}
+      explanation={getStepExplanation(currentStep)}
+      isLastStep={isLastStep}
+      onNext={handleNext}
+    />
+  ) : control ? (
+    <LessonBottomBar control={control} />
+  ) : null;
+
   return (
     <div
-      className="mx-auto flex h-full min-h-0 w-full max-w-4xl flex-col gap-3 p-4 sm:gap-4 sm:p-6"
+      className="mx-auto flex h-full min-h-0 w-full max-w-2xl flex-col p-4 sm:p-6"
       data-testid="interactive-lesson"
     >
-      <header className="shrink-0 space-y-2">
-        <LessonBreadcrumb
-          courseId={navigation?.courseId}
-          courseTitle={navigation?.courseTitle}
-          moduleTitle={navigation?.moduleTitle}
+      <h1 className="sr-only">{lesson.title}</h1>
+      <p className="sr-only">{currentStep.title}</p>
+
+      <LessonFrame
+        closeHref={courseHref}
+        currentStep={stepIndex + 1}
+        totalSteps={totalSteps}
+        stars={stars}
+        feedback={feedback}
+        footer={footer}
+        className="h-full"
+      >
+        <InteractiveQuestion
+          key={currentStep.id}
+          step={currentStep}
+          onCheck={handleCheck}
+          onContinue={handlePassiveContinue}
+          disabled={feedback !== null}
+          compact
         />
-
-        <div className="overflow-hidden rounded-xl border border-border bg-paper-raised shadow-sm">
-          <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border/60 bg-gradient-to-r from-cobalt-tint/70 via-paper-raised to-paper-raised px-4 py-3 sm:px-5">
-            <div className="min-w-0 space-y-1">
-              {navigation?.moduleTitle ? (
-                <p className="text-[11px] font-medium uppercase tracking-wide text-cobalt">
-                  {navigation.moduleTitle}
-                </p>
-              ) : (
-                <p className="text-[11px] font-medium uppercase tracking-wide text-cobalt">
-                  {lesson.subtitle}
-                </p>
-              )}
-              <h1 className="font-heading text-lg font-semibold tracking-tight text-ink sm:text-xl">
-                {lesson.title}
-              </h1>
-            </div>
-            <StepPhaseBadge step={currentStep} />
-          </div>
-          <div className="px-4 py-2 sm:px-5">
-            <ProgressBar current={stepIndex + 1} total={totalSteps} />
-          </div>
-        </div>
-      </header>
-
-      <section className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-border bg-paper-raised shadow-sm">
-        <div className="shrink-0 border-b border-border/60 px-4 py-2 sm:px-5">
-          <h2 className="font-heading text-base font-medium text-ink">{currentStep.title}</h2>
-        </div>
-
-        <div className="min-h-0 flex-1 overflow-hidden">
-          <div className="h-full overflow-hidden px-4 py-3 sm:px-5 sm:py-4">
-            <InteractiveQuestion
-              key={currentStep.id}
-              step={currentStep}
-              onCheck={handleCheck}
-              onContinue={handlePassiveContinue}
-              disabled={feedback !== null}
-              compact
-            />
-          </div>
-        </div>
-
-        {feedback ? (
-          <FeedbackFooter
-            variant="docked"
-            status={feedback}
-            explanation={getStepExplanation(currentStep)}
-            isLastStep={isLastStep}
-            onNext={handleNext}
-          />
-        ) : control ? (
-          <LessonBottomBar control={control} />
-        ) : null}
-      </section>
+      </LessonFrame>
     </div>
   );
 }

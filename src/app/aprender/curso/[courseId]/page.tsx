@@ -17,7 +17,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col p-6 sm:p-8">
       <CourseOutlineView outline={outline} />
     </main>
   );
