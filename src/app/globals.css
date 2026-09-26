@@ -176,8 +176,8 @@
 }
 
 /*
- * El salto vive en `body` y el achatamiento en `squash`, que solo envuelve al
- * pelaje: así la cara no se deforma al rebotar.
+ * El salto vive en `body` y el achatamiento en `squash`: separarlos mantiene la
+ * cara pegada al cuerpo mientras el rebote deforma la silueta.
  */
 .tutor-mascot-body {
   transform-origin: 50% 88%;
@@ -286,26 +286,26 @@
     transform: scale(1, 1);
   }
   8% {
-    transform: scale(1.07, 0.93);
+    transform: scale(1.05, 0.95);
   }
   34% {
-    transform: scale(0.94, 1.06);
+    transform: scale(0.96, 1.04);
   }
   62% {
-    transform: scale(1.11, 0.89);
+    transform: scale(1.08, 0.92);
   }
   80% {
-    transform: scale(0.98, 1.02);
+    transform: scale(0.99, 1.01);
   }
 }
 
 @keyframes tutor-squash-soft {
   0%,
   100% {
-    transform: scale(1.05, 0.95);
+    transform: scale(1.04, 0.96);
   }
   50% {
-    transform: scale(1.07, 0.93);
+    transform: scale(1.06, 0.94);
   }
 }
 

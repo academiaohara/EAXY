@@ -50,7 +50,7 @@ export function FeedbackFooter({
           <div className="flex items-center gap-3">
             <TutorMascot
               mood={tutorMoodForFeedback(status)}
-              size={60}
+              size={68}
               className="shrink-0"
               label={null}
             />

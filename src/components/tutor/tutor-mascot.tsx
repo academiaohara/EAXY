@@ -240,94 +240,94 @@ export function TutorMascot({
                 />
               ))}
             </g>
-          </g>
 
-          <g className="tutor-mascot-face">
-            {EYES.map((eye, index) => {
-              const mirror = index === 1 ? -1 : 1;
+            <g className="tutor-mascot-face">
+              {EYES.map((eye, index) => {
+                const mirror = index === 1 ? -1 : 1;
 
-              return (
-                <g
-                  key={`eye-${index}`}
-                  transform={`translate(${eye.cx} ${eye.cy}) rotate(${eye.rotation})`}
-                >
-                  <path
-                    className="tutor-mascot-brow"
-                    d="M-13 -24 Q0 -30 13 -25"
-                    fill="none"
-                    stroke="#050505"
-                    strokeWidth={3.2}
-                    strokeLinecap="round"
-                    strokeOpacity={expression.browOpacity}
-                    style={{
-                      transform: `translateY(${expression.browOffset}px) rotate(${
-                        expression.browRotation * mirror
-                      }deg)`,
-                    }}
-                  />
+                return (
+                  <g
+                    key={`eye-${index}`}
+                    transform={`translate(${eye.cx} ${eye.cy}) rotate(${eye.rotation})`}
+                  >
+                    <path
+                      className="tutor-mascot-brow"
+                      d="M-13 -24 Q0 -30 13 -25"
+                      fill="none"
+                      stroke="#050505"
+                      strokeWidth={3.2}
+                      strokeLinecap="round"
+                      strokeOpacity={expression.browOpacity}
+                      style={{
+                        transform: `translateY(${expression.browOffset}px) rotate(${
+                          expression.browRotation * mirror
+                        }deg)`,
+                      }}
+                    />
 
-                  <g className="tutor-mascot-eye">
-                    <g
-                      className="tutor-mascot-eye-shape"
-                      style={{ transform: `scaleY(${expression.eyeScaleY})` }}
-                    >
-                      <ellipse
-                        className="tutor-mascot-eye-white"
-                        rx={eye.rx}
-                        ry={eye.ry}
-                        fill={`url(#${uid}-eye)`}
-                        stroke="#0a0a0a"
-                        strokeOpacity={0.18}
-                        strokeWidth={1.2}
-                      />
+                    <g className="tutor-mascot-eye">
+                      <g
+                        className="tutor-mascot-eye-shape"
+                        style={{ transform: `scaleY(${expression.eyeScaleY})` }}
+                      >
+                        <ellipse
+                          className="tutor-mascot-eye-white"
+                          rx={eye.rx}
+                          ry={eye.ry}
+                          fill={`url(#${uid}-eye)`}
+                          stroke="#0a0a0a"
+                          strokeOpacity={0.18}
+                          strokeWidth={1.2}
+                        />
 
-                      <g className="tutor-mascot-pupil-drift">
-                        <g
-                          className="tutor-mascot-pupil-aim"
-                          style={{
-                            transform: `translate(${gaze.x + eye.pupilBias.x}px, ${
-                              gaze.y + eye.pupilBias.y
-                            }px)`,
-                          }}
-                        >
-                          <circle
-                            className="tutor-mascot-pupil"
-                            r={eye.pupilRadius * expression.pupilScale}
-                            fill="#0a0a0a"
-                          />
-                          <circle
-                            cx={-eye.pupilRadius * 0.32}
-                            cy={-eye.pupilRadius * 0.38}
-                            r={eye.pupilRadius * 0.26}
-                            fill="#ffffff"
-                          />
-                          <circle
-                            cx={eye.pupilRadius * 0.36}
-                            cy={eye.pupilRadius * 0.42}
-                            r={eye.pupilRadius * 0.1}
-                            fill="#ffffff"
-                            fillOpacity={0.35}
+                        <g className="tutor-mascot-pupil-drift">
+                          <g
+                            className="tutor-mascot-pupil-aim"
+                            style={{
+                              transform: `translate(${gaze.x + eye.pupilBias.x}px, ${
+                                gaze.y + eye.pupilBias.y
+                              }px)`,
+                            }}
+                          >
+                            <circle
+                              className="tutor-mascot-pupil"
+                              r={eye.pupilRadius * expression.pupilScale}
+                              fill="#0a0a0a"
+                            />
+                            <circle
+                              cx={-eye.pupilRadius * 0.32}
+                              cy={-eye.pupilRadius * 0.38}
+                              r={eye.pupilRadius * 0.26}
+                              fill="#ffffff"
+                            />
+                            <circle
+                              cx={eye.pupilRadius * 0.36}
+                              cy={eye.pupilRadius * 0.42}
+                              r={eye.pupilRadius * 0.1}
+                              fill="#ffffff"
+                              fillOpacity={0.35}
+                            />
+                          </g>
+                        </g>
+
+                        <g clipPath={`url(#${uid}-eye-clip-${index})`}>
+                          <ellipse
+                            className="tutor-mascot-lid"
+                            rx={eye.rx * 1.7}
+                            ry={eye.ry * 1.25}
+                            cy={
+                              eye.ry * (1 - 2 * expression.lidCoverage) +
+                              eye.ry * 1.25
+                            }
+                            fill="#242424"
                           />
                         </g>
                       </g>
-
-                      <g clipPath={`url(#${uid}-eye-clip-${index})`}>
-                        <ellipse
-                          className="tutor-mascot-lid"
-                          rx={eye.rx * 1.7}
-                          ry={eye.ry * 1.25}
-                          cy={
-                            eye.ry * (1 - 2 * expression.lidCoverage) +
-                            eye.ry * 1.25
-                          }
-                          fill="#242424"
-                        />
-                      </g>
                     </g>
                   </g>
-                </g>
-              );
-            })}
+                );
+              })}
+            </g>
           </g>
         </g>
       </svg>
