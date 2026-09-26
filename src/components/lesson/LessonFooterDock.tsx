@@ -19,7 +19,7 @@ export function LessonFooterDock({ tutor, action, feedback = null }: LessonFoote
         "shrink-0 border-t transition-colors duration-300",
         feedback === "correct" && "border-emerald-200 bg-emerald-50/80",
         feedback === "incorrect" && "border-rose-200 bg-rose-50/80",
-        !feedback && "border-slate-200/80 bg-white/70",
+        !feedback && "border-slate-200/80 bg-slate-100/70",
       )}
       data-testid="lesson-footer-dock"
     >

@@ -16,17 +16,18 @@ type LessonTutorProps = {
 };
 
 const bubbleTone: Record<TutorReaction, string> = {
-  idle: "border-slate-200/90 bg-white",
-  thinking: "border-slate-200/90 bg-white",
-  correct: "border-emerald-200 bg-emerald-50",
-  incorrect: "border-rose-200 bg-rose-50",
+  idle: "border-slate-300 bg-white",
+  thinking: "border-slate-300 bg-white",
+  correct: "border-emerald-300 bg-emerald-50",
+  incorrect: "border-rose-300 bg-rose-50",
 };
 
+/** Pico del globo: mismo relleno y borde que la burbuja, apuntando a la bola. */
 const tailTone: Record<TutorReaction, string> = {
-  idle: "border-slate-200/90 bg-white",
-  thinking: "border-slate-200/90 bg-white",
-  correct: "border-emerald-200 bg-emerald-50",
-  incorrect: "border-rose-200 bg-rose-50",
+  idle: "fill-white stroke-slate-300",
+  thinking: "fill-white stroke-slate-300",
+  correct: "fill-emerald-50 stroke-emerald-300",
+  incorrect: "fill-rose-50 stroke-rose-300",
 };
 
 const spriteAnimation: Record<TutorReaction, string> = {
@@ -71,7 +72,7 @@ export function LessonTutor({
 
   return (
     <div
-      className={cn("flex min-w-0 items-center gap-3 sm:gap-4", className)}
+      className={cn("flex min-w-0 items-center gap-4 sm:gap-5", className)}
       data-testid="lesson-tutor"
       aria-live="polite"
     >
@@ -102,13 +103,13 @@ export function LessonTutor({
         )}
         data-testid="lesson-tutor-bubble"
       >
-        <span
-          className={cn(
-            "absolute -left-1.5 top-1/2 size-3 -translate-y-1/2 rotate-45 border-b border-l",
-            tailTone[reaction],
-          )}
+        <svg
+          className="absolute -left-[15px] top-1/2 h-6 w-4 -translate-y-1/2"
+          viewBox="0 0 16 24"
           aria-hidden
-        />
+        >
+          <path d="M16 2 L1.5 12 L16 22" className={tailTone[reaction]} strokeWidth={1} />
+        </svg>
         <p className="font-medium">
           <MathRenderer text={message} />
         </p>
