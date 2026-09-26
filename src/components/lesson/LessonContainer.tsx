@@ -8,10 +8,12 @@ import { FeedbackFooter } from "@/components/lesson/FeedbackFooter";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonBottomBar } from "@/components/lesson/LessonBottomBar";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
+import { LessonTutor } from "@/components/lesson/LessonTutor";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
+import { getStepTutorMessage } from "@/lib/lesson/tutor-message";
 import type { FeedbackStatus, InteractiveLesson, LessonStep } from "@/lib/lesson/types";
 
 type LessonNavigationContext = {
@@ -85,7 +87,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   if (completed) {
     return (
       <div
-        className="flex h-full min-h-0 w-full items-center justify-center p-4 sm:p-6"
+        className="flex h-full min-h-0 w-full items-center justify-center bg-[#eef0f3] p-4 sm:p-6"
         data-testid="lesson-complete"
       >
         <div className="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
@@ -122,23 +124,8 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     );
   }
 
-  const footer = feedback ? (
-    <FeedbackFooter
-      variant="docked"
-      status={feedback}
-      explanation={getStepExplanation(currentStep)}
-      isLastStep={isLastStep}
-      onNext={handleNext}
-    />
-  ) : control ? (
-    <LessonBottomBar control={control} />
-  ) : null;
-
   return (
-    <div
-      className="flex h-full min-h-0 w-full flex-1 flex-col sm:p-4"
-      data-testid="interactive-lesson"
-    >
+    <div className="relative flex h-full min-h-0 w-full flex-1 flex-col" data-testid="interactive-lesson">
       <h1 className="sr-only">{lesson.title}</h1>
       <p className="sr-only">{currentStep.title}</p>
 
@@ -148,8 +135,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         totalSteps={totalSteps}
         stars={stars}
         feedback={feedback}
-        footer={footer}
-        className="min-h-0 flex-1 shadow-sm"
+        className="min-h-0 flex-1"
       >
         <InteractiveQuestion
           key={currentStep.id}
@@ -160,6 +146,20 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
           compact
         />
       </LessonFrame>
+
+      {feedback ? (
+        <FeedbackFooter
+          variant="fixed"
+          status={feedback}
+          explanation={getStepExplanation(currentStep)}
+          isLastStep={isLastStep}
+          onNext={handleNext}
+        />
+      ) : control ? (
+        <LessonBottomBar control={control} fixed />
+      ) : null}
+
+      <LessonTutor message={getStepTutorMessage(currentStep)} />
     </div>
   );
 }
