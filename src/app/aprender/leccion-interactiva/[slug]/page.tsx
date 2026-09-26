@@ -25,7 +25,7 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
     : undefined;
 
   return (
-    <main className="flex h-[calc(100dvh-7.25rem)] min-h-0 flex-1 flex-col overflow-hidden sm:h-[calc(100dvh-3.5rem)]">
+    <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
       <LessonContainer lesson={lesson} navigation={navigation} />
     </main>
   );

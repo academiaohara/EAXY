@@ -23,7 +23,7 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
   const previewMode = isContentPreviewModeEnabled();
 
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="flex min-h-dvh flex-col">
       {previewMode ? (
         <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950">
           Modo previsualización: acceso abierto al catálogo local. El registro se activará más
@@ -83,7 +83,9 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
         </div>
       </header>
 
-      <main className="flex min-h-0 flex-1 flex-col pb-16 sm:pb-0">{children}</main>
+      <main className="flex min-h-0 flex-1 flex-col overflow-hidden pb-16 sm:pb-0 [&:has([data-testid=interactive-lesson-layout])]:pb-0">
+        {children}
+      </main>
       <MobileNav />
     </div>
   );
