@@ -35,7 +35,7 @@ export default async function AprenderPage() {
     : null;
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 p-6 sm:p-8">
+    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 px-4 py-6 sm:px-6 sm:py-8">
       <header className="space-y-2">
         <h1 className="font-heading text-3xl font-semibold tracking-tight">Aprender</h1>
         <p className="text-muted-foreground">
@@ -44,37 +44,45 @@ export default async function AprenderPage() {
         </p>
       </header>
 
-      {overview && overview.concepts.length > 0 ? (
-        <AprenderQuickStats overview={overview} />
-      ) : null}
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-8">
+        <div className="space-y-6">
+          {recommendation ? (
+            <RecommendationCard
+              recommendation={recommendation}
+              actionHref={recommendationHref}
+            />
+          ) : null}
 
-      {recommendation ? (
-        <RecommendationCard
-          recommendation={recommendation}
-          actionHref={recommendationHref}
-        />
-      ) : null}
+          <CourseCatalogView courses={catalog} />
+        </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Práctica libre</CardTitle>
-          <CardDescription>
-            Refuerza conceptos con ejercicios cuando estén disponibles en tu nivel.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
-          <Link href="/practicar">
-            <Button data-testid="aprender-practicar-link">Ir a practicar</Button>
-          </Link>
-          <Link href="/progreso">
-            <Button variant="outline" data-testid="aprender-progreso-link">
-              Ver progreso
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
+        <aside className="space-y-4 lg:row-start-1 lg:col-start-2">
+          {overview && overview.concepts.length > 0 ? (
+            <AprenderQuickStats overview={overview} />
+          ) : null}
 
-      <CourseCatalogView courses={catalog} />
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Práctica libre</CardTitle>
+              <CardDescription>
+                Refuerza conceptos con ejercicios cuando estén disponibles en tu nivel.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-2">
+              <Link href="/practicar" className="w-full">
+                <Button data-testid="aprender-practicar-link" className="w-full">
+                  Ir a practicar
+                </Button>
+              </Link>
+              <Link href="/progreso" className="w-full">
+                <Button variant="outline" data-testid="aprender-progreso-link" className="w-full">
+                  Ver progreso
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </aside>
+      </div>
     </main>
   );
 }
