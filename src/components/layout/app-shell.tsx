@@ -22,8 +22,13 @@ export async function AppShell({ children, active = "aprender" }: AppShellProps)
   const user = await getSessionUser();
   const previewMode = isContentPreviewModeEnabled();
 
+  const appChromeHeight = previewMode ? "7.25rem" : "3.5rem";
+
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div
+      className="flex min-h-dvh flex-col"
+      style={{ "--app-chrome-h": appChromeHeight } as React.CSSProperties}
+    >
       {previewMode ? (
         <div className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950">
           Modo previsualización: acceso abierto al catálogo local. El registro se activará más

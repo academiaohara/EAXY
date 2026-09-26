@@ -58,22 +58,22 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     [feedback],
   );
 
-  function advanceStep() {
+  const handlePassiveContinue = useCallback(() => {
     if (stepIndex < totalSteps - 1) {
-      setStepIndex((prev) => prev + 1);
-    } else {
-      setCompleted(true);
+      setStepIndex(stepIndex + 1);
+      return;
     }
-  }
+    setCompleted(true);
+  }, [stepIndex, totalSteps]);
 
-  function handlePassiveContinue() {
-    advanceStep();
-  }
-
-  function handleNext() {
+  const handleNext = useCallback(() => {
     setFeedback(null);
-    advanceStep();
-  }
+    if (stepIndex < totalSteps - 1) {
+      setStepIndex(stepIndex + 1);
+      return;
+    }
+    setCompleted(true);
+  }, [stepIndex, totalSteps]);
 
   function restartLesson() {
     setStepIndex(0);

@@ -55,7 +55,7 @@ function PathNode({ lesson, status, isSelected, isLast, href, onSelect }: PathNo
     <div className="relative flex items-start gap-4">
       {!isLast ? (
         <div
-          className="absolute left-6 top-12 h-[calc(100%-0.5rem)] w-0.5 -translate-x-1/2 bg-slate-200"
+          className="pointer-events-none absolute left-6 top-12 h-[calc(100%-0.5rem)] w-0.5 -translate-x-1/2 bg-slate-200"
           aria-hidden
         />
       ) : null}
