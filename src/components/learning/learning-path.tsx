@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { CheckIcon, SparklesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import { cn } from "@/lib/utils";
 import type { LessonSummary, ModuleSummary } from "@/lib/curriculum/types";
@@ -148,6 +149,13 @@ export function LearningPath({ modules }: LearningPathProps) {
               ))}
             </div>
           )}
+
+          <div className="mt-6">
+            <TopicExercisesSection
+              moduleTitle={module.title}
+              exercises={module.topicExercises}
+            />
+          </div>
         </section>
       ))}
 

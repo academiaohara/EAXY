@@ -1,31 +1,31 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useCallback, useMemo, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import { cn } from "@/lib/utils";
-import type { FeedbackStatus, FillInBlankStep } from "@/lib/lesson/types";
+import type { FillInBlankStep } from "@/lib/lesson/types";
 
 type FillInBlankProps = {
   step: FillInBlankStep;
   onCheck: (correct: boolean) => void;
   disabled?: boolean;
-  feedback?: FeedbackStatus | null;
+  compact?: boolean;
 };
 
 export function FillInBlank({
   step,
   onCheck,
   disabled = false,
-  feedback = null,
+  compact = false,
 }: FillInBlankProps) {
   const [value, setValue] = useState("");
   const [checked, setChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  function handleCheck() {
+  const handleCheck = useCallback(() => {
     if (!value.trim() || checked) {
       return;
     }
@@ -33,24 +33,44 @@ export function FillInBlank({
     setIsCorrect(correct);
     setChecked(true);
     onCheck(correct);
-  }
+  }, [checked, onCheck, step.correctAnswers, value]);
+
+  const control = useMemo(() => {
+    if (checked) {
+      return null;
+    }
+    return {
+      label: "Comprobar",
+      onClick: handleCheck,
+      disabled: !value.trim() || disabled,
+      testId: "lesson-check-button",
+    };
+  }, [checked, disabled, handleCheck, value]);
+
+  useRegisterLessonStepControl(control);
 
   const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
 
   return (
-    <div className="space-y-8" data-testid="lesson-fill-in-blank">
+    <div className={compact ? "space-y-4" : "space-y-8"} data-testid="lesson-fill-in-blank">
       {showContext ? (
         <ConceptCard
           title={step.title}
           content={step.content}
           math={step.math}
           warning={step.warning}
-          variant="inline"
+          compact={compact}
+          showTitle={false}
         />
       ) : null}
 
-      <div className="space-y-6">
-        <h2 className="text-center font-heading text-xl font-semibold leading-snug text-ink sm:text-2xl">
+      <div className={compact ? "space-y-4" : "space-y-6"}>
+        <h2
+          className={cn(
+            "text-center font-heading font-semibold leading-snug text-ink",
+            compact ? "text-lg" : "text-xl sm:text-2xl",
+          )}
+        >
           <MathRenderer text={step.question} />
         </h2>
 
@@ -75,23 +95,6 @@ export function FillInBlank({
           <p className="text-center text-xs text-muted-foreground">
             Pista: <MathRenderer text={step.hint} />
           </p>
-        ) : null}
-
-        {!checked && !feedback ? (
-          <Button
-            type="button"
-            onClick={handleCheck}
-            disabled={!value.trim() || disabled}
-            className={cn(
-              "w-full rounded-full py-6 text-base font-semibold",
-              !value.trim() || disabled
-                ? "bg-slate-100 text-slate-400 hover:bg-slate-100"
-                : "bg-cobalt hover:bg-cobalt/90",
-            )}
-            data-testid="lesson-check-button"
-          >
-            Comprobar
-          </Button>
         ) : null}
       </div>
     </div>

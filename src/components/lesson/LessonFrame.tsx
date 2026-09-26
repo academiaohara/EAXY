@@ -13,6 +13,8 @@ type LessonFrameProps = {
   stars?: number;
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
+  footer?: React.ReactNode;
+  className?: string;
 };
 
 function LessonStarBadge({ stars }: { stars: number }) {
@@ -31,6 +33,8 @@ export function LessonFrame({
   stars = 0,
   feedback = null,
   children,
+  footer,
+  className,
 }: LessonFrameProps) {
   const isCorrect = feedback === "correct";
   const isIncorrect = feedback === "incorrect";
@@ -38,13 +42,14 @@ export function LessonFrame({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-2xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
+        "flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
         isCorrect && "border-emerald-400 shadow-emerald-100/80",
         isIncorrect && "border-red-300 shadow-red-100/60",
         !feedback && "border-slate-200",
+        className,
       )}
     >
-      <header className="flex items-center gap-3 border-b border-slate-100 px-4 py-3 sm:px-5">
+      <header className="flex shrink-0 items-center gap-3 border-b border-slate-100 px-4 py-3 sm:px-5">
         <Link
           href={closeHref}
           className="flex size-9 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
@@ -67,7 +72,9 @@ export function LessonFrame({
         </div>
       </header>
 
-      <div className="px-4 py-6 sm:px-8 sm:py-8">{children}</div>
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">{children}</div>
+
+      {footer ? <div className="shrink-0">{footer}</div> : null}
     </div>
   );
 }
