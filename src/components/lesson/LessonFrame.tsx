@@ -17,6 +17,8 @@ type LessonFrameProps = {
   children: React.ReactNode;
   /** Capa flotante sobre el contenido (el tutor), fuera del flujo del paso. */
   overlay?: React.ReactNode;
+  /** Con el panel izquierdo abierto, la bola se mueve a la derecha para no taparse. */
+  tutorPanelOpen?: boolean;
   className?: string;
 };
 
@@ -51,6 +53,7 @@ export function LessonFrame({
   feedback = null,
   children,
   overlay,
+  tutorPanelOpen = false,
   className,
 }: LessonFrameProps) {
   const isCorrect = feedback === "correct";
@@ -101,7 +104,14 @@ export function LessonFrame({
       </div>
 
       {overlay ? (
-        <div className="pointer-events-none absolute bottom-6 left-4 z-30 sm:left-8 lg:left-12">
+        <div
+          className={cn(
+            "pointer-events-none absolute bottom-6 z-30 transition-[left,right] duration-300",
+            tutorPanelOpen
+              ? "right-4 sm:right-8 lg:right-12"
+              : "left-4 sm:left-8 lg:left-12",
+          )}
+        >
           {overlay}
         </div>
       ) : null}

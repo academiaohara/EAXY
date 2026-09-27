@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { ChevronRightIcon, XIcon } from "lucide-react";
+import { ChevronLeftIcon, XIcon } from "lucide-react";
 import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
+import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import type { HelpNode, HelpOption } from "@/lib/lesson/help-route";
 import type { TutorLogEntry } from "@/lib/lesson/tutor-log";
@@ -101,32 +102,34 @@ export function TutorPanel({
         type="button"
         className="fixed inset-0 z-40 cursor-default bg-slate-900/20 lg:hidden"
         onClick={onClose}
-        aria-label="Cerrar el panel del tutor"
+        aria-label={`Cerrar el panel de ${TUTOR_NICKNAME}`}
         data-testid="tutor-panel-backdrop"
       />
 
       <aside
-        className="fixed inset-y-0 right-0 z-50 flex w-full max-w-[26rem] flex-col border-l border-slate-200 bg-white shadow-xl lg:w-[24rem]"
+        className={cn(
+          "tutor-panel-slide-in fixed inset-y-0 left-0 z-50 flex w-full max-w-[26rem] flex-col border-r border-slate-200 bg-white shadow-xl lg:w-[24rem]",
+        )}
         role="dialog"
         aria-modal="false"
-        aria-label="Mensajes del tutor"
+        aria-label={`Mensajes de ${TUTOR_NICKNAME}`}
         data-testid="tutor-panel"
       >
-        {/* Tirador a media altura: cerrar sin subir la vista hasta la cabecera. */}
+        {/* Tirador a media altura en el borde derecho del panel. */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute left-0 top-1/2 flex h-14 w-7 -translate-x-full -translate-y-1/2 items-center justify-center rounded-l-full border border-r-0 border-slate-200 bg-white text-slate-400 shadow-[-4px_0_12px_rgba(15,23,42,0.08)] transition-colors hover:text-cobalt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt"
-          aria-label="Cerrar el panel del tutor"
+          className="absolute right-0 top-1/2 flex h-14 w-7 translate-x-full -translate-y-1/2 items-center justify-center rounded-r-full border border-l-0 border-slate-200 bg-white text-slate-400 shadow-[4px_0_12px_rgba(15,23,42,0.08)] transition-colors hover:text-cobalt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt"
+          aria-label={`Cerrar el panel de ${TUTOR_NICKNAME}`}
           data-testid="tutor-panel-edge-close"
         >
-          <ChevronRightIcon className="size-5" aria-hidden />
+          <ChevronLeftIcon className="size-5" aria-hidden />
         </button>
 
         <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 px-4 py-3">
           <TutorMascot mood={tutorMoodForReaction(reaction)} size={40} label={null} />
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-ink">Tutor</p>
+            <p className="text-sm font-semibold text-ink">{TUTOR_NICKNAME}</p>
             <p className="truncate text-xs text-ink-muted">Todo lo que te ha dicho en la lección</p>
           </div>
           <button
@@ -134,7 +137,7 @@ export function TutorPanel({
             type="button"
             onClick={onClose}
             className="flex size-9 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
-            aria-label="Cerrar el panel del tutor"
+            aria-label={`Cerrar el panel de ${TUTOR_NICKNAME}`}
             data-testid="tutor-panel-close"
           >
             <XIcon className="size-5" />
@@ -148,7 +151,7 @@ export function TutorPanel({
         >
           {log.length === 0 ? (
             <p className="text-sm text-ink-muted">
-              Aquí se van guardando los mensajes del tutor mientras avanzas.
+              Aquí se van guardando los mensajes de {TUTOR_NICKNAME} mientras avanzas.
             </p>
           ) : (
             log.map((entry, index) =>

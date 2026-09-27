@@ -59,13 +59,15 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
   // La bola flota sobre la lección, ya no vive en el pie.
   await expect(page.getByTestId("lesson-footer-dock").getByTestId("lesson-tutor")).toHaveCount(0);
 
-  // El tutor deja de hablar y se queda solo: el globo no es permanente.
-  await expect(page.getByTestId("lesson-tutor-bubble")).toBeHidden({ timeout: 15_000 });
+  // El tutor lee título y párrafos del paso; al acabar desaparece el globo.
+  await expect(page.getByTestId("lesson-tutor-bubble")).toBeVisible();
+  await expect(page.getByTestId("lesson-tutor-bubble")).toBeHidden({ timeout: 120_000 });
 
   // Pulsar la bola abre el historial de lo que el tutor ha dicho.
   await page.getByTestId("lesson-tutor-button").click();
   const panel = page.getByTestId("tutor-panel");
   await expect(panel).toBeVisible();
+  await expect(panel.getByText("Bolín")).toBeVisible();
   await expect(panel.getByTestId("tutor-panel-log")).toContainText(
     "¿Qué es una ecuación lineal con dos incógnitas?",
   );

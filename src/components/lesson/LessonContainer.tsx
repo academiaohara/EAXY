@@ -25,7 +25,7 @@ import {
 import {
   getFeedbackTutorMessage,
   getStepTutorMessage,
-  getTutorMessage,
+  getTutorSpeechQueue,
   getTutorReaction,
 } from "@/lib/lesson/tutor-message";
 import {
@@ -210,7 +210,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     <div
       className={cn(
         "flex h-full min-h-0 w-full flex-1 flex-col transition-[padding] duration-300",
-        panelOpen && "lg:pr-[24rem]",
+        panelOpen && "lg:pl-[24rem]",
       )}
       data-testid="interactive-lesson"
     >
@@ -225,9 +225,11 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         totalStars={totalStars}
         feedback={feedback}
         className="min-h-0 flex-1"
+        tutorPanelOpen={panelOpen}
         overlay={
           <LessonTutorDock
-            message={getTutorMessage(currentStep, feedback)}
+            speechKey={`${currentStep.id}:${feedback ?? "none"}`}
+            messages={getTutorSpeechQueue(currentStep, feedback)}
             reaction={reaction}
             onOpenPanel={openPanel}
             panelOpen={panelOpen}

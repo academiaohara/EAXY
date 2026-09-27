@@ -28,6 +28,33 @@ export function getTutorMessage(step: LessonStep, feedback: FeedbackStatus | nul
   return feedback ? getFeedbackTutorMessage(feedback) : getStepTutorMessage(step);
 }
 
+/**
+ * Bloques que el tutor va leyendo al entrar en un paso: título, párrafos de
+ * teoría y avisos, uno tras otro. Con feedback activo sólo suena la reacción.
+ */
+export function getTutorSpeechQueue(
+  step: LessonStep,
+  feedback: FeedbackStatus | null,
+): string[] {
+  if (feedback) {
+    return [getFeedbackTutorMessage(feedback)];
+  }
+
+  if (step.type === "multiple_choice" || step.type === "fill_in_blank") {
+    return [getStepTutorMessage(step)];
+  }
+
+  const queue: string[] = [step.title];
+  if (step.content?.length) {
+    queue.push(...step.content);
+  }
+  if (step.warning) {
+    queue.push(step.warning);
+  }
+
+  return queue;
+}
+
 /** Reacción del tutor: responde al feedback y, si no hay, al tipo de paso. */
 export function getTutorReaction(
   step: LessonStep,
