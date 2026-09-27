@@ -26,8 +26,6 @@ export type TutorMascotProps = {
    * pantalla (útil cuando el mensaje ya se muestra como texto al lado).
    */
   label?: string | null;
-  /** Carga la ilustración con prioridad (tutor visible al entrar en la página). */
-  priority?: boolean;
   className?: string;
 };
 
@@ -40,7 +38,6 @@ export function TutorMascot({
   size = 96,
   followPointer = false,
   label,
-  priority = false,
   className,
 }: TutorMascotProps) {
   const rawId = useId();
@@ -140,7 +137,6 @@ export function TutorMascot({
                 width={TUTOR_VIEWBOX}
                 height={TUTOR_VIEWBOX}
                 preserveAspectRatio="xMidYMid meet"
-                {...(priority ? { fetchPriority: "high" as const } : {})}
               />
             </g>
 

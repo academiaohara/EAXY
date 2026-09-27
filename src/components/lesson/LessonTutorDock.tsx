@@ -118,7 +118,7 @@ export function LessonTutorDock({
         aria-expanded={panelOpen}
         data-testid="lesson-tutor-button"
       >
-        <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} priority />
+        <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} />
         {unreadCount > 0 ? (
           <span
             className="absolute right-0 top-1 flex size-5 items-center justify-center rounded-full bg-cobalt text-[0.6875rem] font-bold tabular-nums text-white ring-2 ring-white"
