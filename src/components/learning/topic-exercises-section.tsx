@@ -42,7 +42,10 @@ export function TopicExercisesSection({ moduleTitle, exercises }: TopicExercises
 
   return (
     <>
-      <section className="space-y-3 lg:min-w-0" data-testid="topic-exercises">
+      <section
+        className="space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5 lg:min-w-0"
+        data-testid="topic-exercises"
+      >
         <div className="space-y-1">
           <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-ink sm:text-base">
             <DumbbellIcon className="size-4 shrink-0 text-cobalt" aria-hidden />
