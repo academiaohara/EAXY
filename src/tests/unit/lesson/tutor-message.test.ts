@@ -4,6 +4,7 @@ import {
   getStepTutorMessage,
   getTutorMessage,
   getTutorReaction,
+  getTutorSpeechQueue,
   tutorMoodForReaction,
 } from "@/lib/lesson/tutor-message";
 import type { LessonStep } from "@/lib/lesson/types";
@@ -58,6 +59,24 @@ describe("getTutorMessage", () => {
 
   it("cae en el mensaje del paso sin feedback", () => {
     expect(getTutorMessage(quizStep, null)).toBe("Suma los números");
+  });
+});
+
+describe("getTutorSpeechQueue", () => {
+  it("lee título y párrafos al entrar en un paso de teoría", () => {
+    expect(
+      getTutorSpeechQueue(
+        {
+          ...conceptStep,
+          content: ["Primer párrafo.", "Segundo párrafo."],
+        },
+        null,
+      ),
+    ).toEqual(["Introducción", "Primer párrafo.", "Segundo párrafo."]);
+  });
+
+  it("sólo suena la reacción cuando hay feedback", () => {
+    expect(getTutorSpeechQueue(quizStep, "correct")).toEqual([getFeedbackTutorMessage("correct")]);
   });
 });
 

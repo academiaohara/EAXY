@@ -70,6 +70,11 @@ function mergeShortLines(lines: string[]): string[] {
   return merged;
 }
 
+/** Convierte varios mensajes del tutor en la secuencia de frases que se leen. */
+export function flattenTutorSpeech(messages: readonly string[]): string[] {
+  return messages.flatMap((message) => splitTutorSpeech(message));
+}
+
 /** Cuánto tiempo deja el tutor una frase en pantalla. */
 export function tutorSpeechDuration(line: string): number {
   const estimated = line.length * TUTOR_SPEECH_MS_PER_CHAR;

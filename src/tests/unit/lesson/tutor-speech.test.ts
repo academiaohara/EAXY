@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  flattenTutorSpeech,
   splitTutorSpeech,
   tutorSpeechDuration,
   TUTOR_SPEECH_MAX_MS,
@@ -39,6 +40,12 @@ describe("splitTutorSpeech", () => {
 
   it("no devuelve frases vacías cuando no hay mensaje", () => {
     expect(splitTutorSpeech("")).toEqual([]);
+  });
+});
+
+describe("flattenTutorSpeech", () => {
+  it("encadena las frases de varios bloques del paso", () => {
+    expect(flattenTutorSpeech(["Hola.", "Adiós."])).toEqual(["Hola.", "Adiós."]);
   });
 });
 
