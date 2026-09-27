@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { XIcon } from "lucide-react";
+import { ChevronRightIcon, XIcon } from "lucide-react";
 import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
@@ -112,6 +112,17 @@ export function TutorPanel({
         aria-label="Mensajes del tutor"
         data-testid="tutor-panel"
       >
+        {/* Tirador a media altura: cerrar sin subir la vista hasta la cabecera. */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute left-0 top-1/2 flex h-14 w-7 -translate-x-full -translate-y-1/2 items-center justify-center rounded-l-full border border-r-0 border-slate-200 bg-white text-slate-400 shadow-[-4px_0_12px_rgba(15,23,42,0.08)] transition-colors hover:text-cobalt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt"
+          aria-label="Cerrar el panel del tutor"
+          data-testid="tutor-panel-edge-close"
+        >
+          <ChevronRightIcon className="size-5" aria-hidden />
+        </button>
+
         <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 px-4 py-3">
           <TutorMascot mood={tutorMoodForReaction(reaction)} size={40} label={null} />
           <div className="min-w-0 flex-1">

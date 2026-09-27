@@ -15,6 +15,8 @@ type LessonFrameProps = {
   totalStars?: number;
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
+  /** Capa flotante sobre el contenido (el tutor), fuera del flujo del paso. */
+  overlay?: React.ReactNode;
   className?: string;
 };
 
@@ -48,6 +50,7 @@ export function LessonFrame({
   totalStars,
   feedback = null,
   children,
+  overlay,
   className,
 }: LessonFrameProps) {
   const isCorrect = feedback === "correct";
@@ -84,17 +87,24 @@ export function LessonFrame({
       <div className={cn("flex min-h-0 flex-1 flex-col pb-3", LESSON_SHELL_WIDTH)}>
         <div
           className={cn(
-            "flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
+            "flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
             isCorrect && "border-emerald-400 shadow-emerald-100/80",
             isIncorrect && "border-rose-300 shadow-rose-100/60",
             !feedback && "border-white",
           )}
+          data-testid="lesson-step-panel"
         >
           <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
             {children}
           </div>
         </div>
       </div>
+
+      {overlay ? (
+        <div className="pointer-events-none absolute bottom-6 left-4 z-30 sm:left-8 lg:left-12">
+          {overlay}
+        </div>
+      ) : null}
     </div>
   );
 }

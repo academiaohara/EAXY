@@ -9,7 +9,7 @@ import { LessonFrame } from "@/components/lesson/LessonFrame";
 import { LessonHelpButton } from "@/components/lesson/LessonHelpButton";
 import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
 import { LessonStepHeader } from "@/components/lesson/LessonStepHeader";
-import { LessonTutor } from "@/components/lesson/LessonTutor";
+import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { TutorPanel } from "@/components/lesson/TutorPanel";
 import {
   LessonStepControlProvider,
@@ -245,6 +245,15 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         totalStars={totalStars}
         feedback={feedback}
         className="min-h-0 flex-1"
+        overlay={
+          <LessonTutorDock
+            message={getTutorMessage(currentStep, feedback)}
+            reaction={reaction}
+            onOpenPanel={openPanel}
+            unreadCount={unseen}
+            panelOpen={panelOpen}
+          />
+        }
       >
         <div
           key={currentStep.id}
@@ -263,31 +272,22 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
 
       <LessonFooterDock
         feedback={feedback}
-        tutor={
-          <LessonTutor
-            message={getTutorMessage(currentStep, feedback)}
-            reaction={reaction}
-            onOpenPanel={openPanel}
-            unreadCount={unseen}
-            panelOpen={panelOpen}
-          />
-        }
         action={
-          <>
-            {canAskForHelp ? (
-              <LessonHelpButton
-                feedback={feedback}
-                onClick={() =>
-                  openHelp(feedback === "incorrect" ? "Vamos a verlo" : "No lo entiendo")
-                }
-              />
-            ) : null}
-            {feedback ? (
-              <LessonFeedbackActions status={feedback} isLastStep={isLastStep} onNext={handleNext} />
-            ) : control ? (
-              <LessonPrimaryAction control={control} />
-            ) : null}
-          </>
+          feedback ? (
+            <LessonFeedbackActions status={feedback} isLastStep={isLastStep} onNext={handleNext} />
+          ) : control ? (
+            <LessonPrimaryAction control={control} />
+          ) : null
+        }
+        help={
+          canAskForHelp ? (
+            <LessonHelpButton
+              feedback={feedback}
+              onClick={() =>
+                openHelp(feedback === "incorrect" ? "Vamos a verlo" : "No lo entiendo")
+              }
+            />
+          ) : null
         }
       />
 

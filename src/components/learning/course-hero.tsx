@@ -1,5 +1,5 @@
 import { BookOpenIcon, DumbbellIcon, LayersIcon } from "lucide-react";
-import { TutorMascot } from "@/components/tutor/tutor-mascot";
+import { CourseMathEmblem } from "@/components/learning/course-math-emblem";
 import { getCourseProgress } from "@/lib/curriculum/course-progress";
 import type { CourseSummary, ModuleSummary } from "@/lib/curriculum/types";
 
@@ -75,9 +75,7 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
         </div>
 
         <div className="flex items-center justify-center lg:justify-end">
-          <div className="flex size-32 items-center justify-center rounded-full bg-gradient-to-b from-cobalt-tint to-white sm:size-36">
-            <TutorMascot mood="happy" size={112} label={null} />
-          </div>
+          <CourseMathEmblem />
         </div>
       </div>
     </section>

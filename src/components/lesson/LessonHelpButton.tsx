@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { HelpCircleIcon } from "lucide-react";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type LessonHelpButtonProps = {
@@ -8,17 +8,20 @@ type LessonHelpButtonProps = {
   onClick: () => void;
 };
 
-/** Puerta de entrada a la ayuda guiada: el alumno dice que no lo entiende. */
+/** Puerta de entrada a la ayuda guiada: el alumno pide que se lo expliquen. */
 export function LessonHelpButton({ feedback, onClick }: LessonHelpButtonProps) {
+  const label = feedback === "incorrect" ? "Vamos a verlo" : "No lo entiendo";
+
   return (
-    <Button
+    <button
       type="button"
-      variant="outline"
-      className="w-full rounded-full border-slate-300 bg-white py-6 font-semibold sm:w-auto sm:py-3"
       onClick={onClick}
+      className="flex size-12 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-500 shadow-sm transition-colors hover:border-cobalt/40 hover:text-cobalt focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt"
+      aria-label={label}
+      title={label}
       data-testid="lesson-help-button"
     >
-      {feedback === "incorrect" ? "Vamos a verlo" : "No lo entiendo"}
-    </Button>
+      <HelpCircleIcon className="size-6" aria-hidden />
+    </button>
   );
 }

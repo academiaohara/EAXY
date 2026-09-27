@@ -56,6 +56,12 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
   await loginAsNewStudent(page, "Alumno Tutor E2E");
   await openFirstLesson(page);
 
+  // La bola flota sobre la lección, ya no vive en el pie.
+  await expect(page.getByTestId("lesson-footer-dock").getByTestId("lesson-tutor")).toHaveCount(0);
+
+  // El tutor deja de hablar y se queda solo: el globo no es permanente.
+  await expect(page.getByTestId("lesson-tutor-bubble")).toBeHidden({ timeout: 15_000 });
+
   // Pulsar la bola abre el historial de lo que el tutor ha dicho.
   await page.getByTestId("lesson-tutor-button").click();
   const panel = page.getByTestId("tutor-panel");
@@ -65,6 +71,12 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
   );
 
   await page.getByTestId("tutor-panel-close").click();
+  await expect(panel).toBeHidden();
+
+  // El tirador a media altura también cierra el panel.
+  await page.getByTestId("lesson-tutor-button").click();
+  await expect(panel).toBeVisible();
+  await page.getByTestId("tutor-panel-edge-close").click();
   await expect(panel).toBeHidden();
 
   // Decir que no se entiende abre la ruta de ayuda con opciones, sin escribir nada.

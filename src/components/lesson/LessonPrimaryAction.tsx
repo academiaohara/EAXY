@@ -15,7 +15,7 @@ export function LessonPrimaryAction({ control }: LessonPrimaryActionProps) {
       onClick={control.onClick}
       disabled={control.disabled}
       className={cn(
-        "w-full rounded-full py-6 text-base font-semibold sm:w-auto sm:min-w-[13rem]",
+        "min-w-[11rem] rounded-full py-6 text-base font-semibold sm:min-w-[13rem]",
         control.disabled
           ? "bg-slate-200 text-slate-500 disabled:opacity-100"
           : "bg-cobalt hover:bg-cobalt/90",

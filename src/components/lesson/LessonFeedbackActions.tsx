@@ -18,15 +18,11 @@ export function LessonFeedbackActions({
   const isCorrect = status === "correct";
 
   return (
-    <div
-      className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center"
-      role="status"
-      data-testid="lesson-feedback-footer"
-    >
+    <div className="flex items-center" role="status" data-testid="lesson-feedback-footer">
       <Button
         type="button"
         className={cn(
-          "w-full rounded-full py-6 text-base font-semibold text-white sm:w-auto sm:min-w-[13rem]",
+          "min-w-[11rem] rounded-full py-6 text-base font-semibold text-white sm:min-w-[13rem]",
           isCorrect ? "bg-emerald-500 hover:bg-emerald-600" : "bg-cobalt hover:bg-cobalt/90",
         )}
         onClick={onNext}
