@@ -459,31 +459,6 @@
   }
 }
 
-@keyframes lesson-tutor-pop {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 6px) scale(0.6);
-  }
-  60% {
-    opacity: 1;
-    transform: translate(-50%, -2px) scale(1.15);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0) scale(1);
-  }
-}
-
-@keyframes lesson-tutor-pulse {
-  0%,
-  100% {
-    transform: translate(-50%, 0) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -3px) scale(1.08);
-  }
-}
-
 /* El contenido del paso entra desde arriba al avanzar en la lección. */
 @keyframes lesson-step-enter {
   from {
@@ -501,8 +476,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lesson-step-enter,
-  [class*="lesson-tutor-"] {
+  .lesson-step-enter {
     animation: none !important;
   }
 }

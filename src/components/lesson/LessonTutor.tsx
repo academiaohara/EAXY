@@ -1,6 +1,5 @@
 "use client";
 
-import { SparklesIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
@@ -8,9 +7,12 @@ import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-mes
 
 type LessonTutorProps = {
   message: string;
-  /** Texto secundario opcional (p. ej. la explicación tras responder). */
-  detail?: string;
   reaction?: TutorReaction;
+  /** Abre el panel con el historial de mensajes. */
+  onOpenPanel?: () => void;
+  /** Mensajes que el alumno no ha visto en el panel. */
+  unreadCount?: number;
+  panelOpen?: boolean;
   className?: string;
 };
 
@@ -29,41 +31,44 @@ const tailTone: Record<TutorReaction, string> = {
   incorrect: "fill-rose-50 stroke-rose-300",
 };
 
-function TutorReactionBadge({ reaction }: { reaction: TutorReaction }) {
-  if (reaction === "idle") {
-    return null;
-  }
+export function LessonTutor({
+  message,
+  reaction = "idle",
+  onOpenPanel,
+  unreadCount = 0,
+  panelOpen = false,
+  className,
+}: LessonTutorProps) {
+  const mascot = <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} priority />;
 
-  return (
-    <span
-      className={cn(
-        "absolute -top-1 left-1/2 z-10 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border text-xs font-bold shadow-sm",
-        reaction === "correct" &&
-          "animate-[lesson-tutor-pop_0.35s_ease-out] border-emerald-200 bg-white text-amber-500",
-        reaction === "incorrect" && "border-rose-200 bg-white text-rose-500",
-        reaction === "thinking" &&
-          "animate-[lesson-tutor-pulse_1.8s_ease-in-out_infinite] border-cobalt/25 bg-white text-cobalt",
-      )}
-      data-testid="lesson-tutor-reaction"
-      data-reaction={reaction}
-      aria-hidden
-    >
-      {reaction === "correct" ? <SparklesIcon className="size-4" /> : "?"}
-    </span>
-  );
-}
-
-export function LessonTutor({ message, detail, reaction = "idle", className }: LessonTutorProps) {
   return (
     <div
       className={cn("flex min-w-0 items-center gap-4 sm:gap-5", className)}
       data-testid="lesson-tutor"
       aria-live="polite"
     >
-      <div className="relative shrink-0">
-        <TutorReactionBadge reaction={reaction} />
-        <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} priority />
-      </div>
+      {onOpenPanel ? (
+        <button
+          type="button"
+          onClick={onOpenPanel}
+          className="relative shrink-0 rounded-full transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+          aria-label="Ver los mensajes del tutor"
+          aria-expanded={panelOpen}
+          data-testid="lesson-tutor-button"
+        >
+          {mascot}
+          {unreadCount > 0 ? (
+            <span
+              className="absolute right-0 top-1 flex size-5 items-center justify-center rounded-full bg-cobalt text-[0.6875rem] font-bold tabular-nums text-white ring-2 ring-white"
+              data-testid="lesson-tutor-unread"
+            >
+              {unreadCount}
+            </span>
+          ) : null}
+        </button>
+      ) : (
+        <div className="shrink-0">{mascot}</div>
+      )}
 
       <div
         className={cn(
@@ -82,11 +87,6 @@ export function LessonTutor({ message, detail, reaction = "idle", className }: L
         <p className="font-medium">
           <MathRenderer text={message} />
         </p>
-        {detail ? (
-          <p className="mt-1.5 text-[0.8125rem] font-normal leading-relaxed text-ink-muted">
-            <MathRenderer text={detail} />
-          </p>
-        ) : null}
       </div>
     </div>
   );

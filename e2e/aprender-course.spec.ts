@@ -1,12 +1,12 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 const DEMO_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
 const FIRST_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
 
-test("el alumno puede navegar el catálogo y abrir una lección interactiva", async ({ page }) => {
+async function loginAsNewStudent(page: Page, name: string) {
   await page.goto("/aulas/e2e-classroom/alumnos");
 
-  await page.getByTestId("student-names-input").fill("Alumno Curso E2E");
+  await page.getByTestId("student-names-input").fill(name);
   await page.getByTestId("provision-submit-button").click();
 
   const firstCard = page.getByTestId("credential-card").first();
@@ -14,15 +14,25 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
 
   const username = await firstCard.getByTestId("credential-username").innerText();
   const password = await firstCard.getByTestId("credential-password").innerText();
-  const usernameValue = username.replace("Usuario:", "").trim();
-  const passwordValue = password.replace("Contraseña:", "").trim();
 
   await page.goto("/entrar");
-  await page.getByTestId("student-login-username").fill(usernameValue);
-  await page.getByTestId("student-login-password").fill(passwordValue);
+  await page.getByTestId("student-login-username").fill(username.replace("Usuario:", "").trim());
+  await page.getByTestId("student-login-password").fill(password.replace("Contraseña:", "").trim());
   await page.getByTestId("student-login-submit").click();
 
   await expect(page).toHaveURL(/\/aprender$/);
+}
+
+async function openFirstLesson(page: Page) {
+  await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
+  await expect(page.getByTestId("course-outline")).toBeVisible();
+  await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
+  await expect(page.getByTestId("interactive-lesson")).toBeVisible();
+}
+
+test("el alumno puede navegar el catálogo y abrir una lección interactiva", async ({ page }) => {
+  await loginAsNewStudent(page, "Alumno Curso E2E");
+
   await expect(page.getByTestId("course-catalog")).toBeVisible();
   await expect(page.getByTestId("recommendation-card")).toBeVisible();
 
@@ -40,4 +50,37 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
   await expect(
     page.getByRole("heading", { name: "¿Qué es una ecuación lineal con dos incógnitas?" }),
   ).toBeVisible();
+});
+
+test("el alumno consulta el historial del tutor y pide ayuda con botones", async ({ page }) => {
+  await loginAsNewStudent(page, "Alumno Tutor E2E");
+  await openFirstLesson(page);
+
+  // Pulsar la bola abre el historial de lo que el tutor ha dicho.
+  await page.getByTestId("lesson-tutor-button").click();
+  const panel = page.getByTestId("tutor-panel");
+  await expect(panel).toBeVisible();
+  await expect(panel.getByTestId("tutor-panel-log")).toContainText(
+    "¿Qué es una ecuación lineal con dos incógnitas?",
+  );
+
+  await page.getByTestId("tutor-panel-close").click();
+  await expect(panel).toBeHidden();
+
+  // Decir que no se entiende abre la ruta de ayuda con opciones, sin escribir nada.
+  await page.getByTestId("lesson-help-button").click();
+  await expect(page.getByTestId("tutor-help-options")).toBeVisible();
+  await expect(page.getByTestId("tutor-help-option-theory")).toBeVisible();
+
+  // Cada explicación pregunta si ya se entiende.
+  await page.getByTestId("tutor-help-option-theory").click();
+  await expect(page.getByTestId("tutor-help-option-got-it")).toBeVisible();
+  await expect(page.getByTestId("tutor-help-option-more")).toBeVisible();
+
+  // Insistir lleva a otra respuesta, no repite la misma explicación.
+  await page.getByTestId("tutor-help-option-more").click();
+  await expect(page.getByTestId("tutor-help-option-restart")).toBeVisible();
+
+  await page.getByTestId("tutor-help-option-close").click();
+  await expect(panel).toBeHidden();
 });
