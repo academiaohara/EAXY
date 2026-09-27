@@ -1,0 +1,31 @@
+---
+description: Git y ramas para Cloud Agents (evitar conflictos de merge)
+globs:
+alwaysApply: true
+---
+
+# Git (secuencial, sin ramas viejas)
+
+Trabajo **secuencial**: un agente / un PR a la vez. Los conflictos suelen venir de un `main` local desactualizado (snapshot del entorno) o de reutilizar ramas `cursor/*` antiguas.
+
+## Antes de escribir código
+
+1. Ejecuta `npm run git:sync-main` (o `bash scripts/git-sync-main.sh`).
+2. Si estás en `main` con árbol limpio, crea la rama nueva desde ahí: `git checkout -b cursor/<nombre-descriptivo>-3464`.
+3. **No** reutilices ramas `cursor/*` remotas salvo que el usuario pida continuar esa PR concreta. Si continúas una PR, ejecuta `git:sync-main` en esa rama antes de editar.
+
+## Durante el trabajo
+
+- Acota el diff: evita tocar `package.json` / `package-lock.json` si la tarea no lo exige.
+- Si ejecutaste `next dev` y cambió `AGENTS.md`, inclúyelo en el mismo commit que el resto del trabajo (Next.js solo reescribe el bloque marcado).
+- Archivos muy compartidos (`LessonContainer.tsx`, `globals.css`, rutas bajo `aprender/` y `leccion/`): cambia solo lo necesario para la tarea.
+
+## Antes de push / abrir PR
+
+1. Vuelve a ejecutar `npm run git:sync-main` con el árbol limpio (commit o stash primero si hace falta).
+2. Resuelve conflictos en la rama, no en GitHub a ciegas.
+3. Push: `git push -u origin <rama>`.
+
+## Merge en GitHub
+
+Preferir **merge commit** o **squash** según el repo; evitar rebase force-push de ramas ya compartidas salvo indicación del usuario.
