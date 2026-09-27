@@ -15,6 +15,34 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
         "Una **solución** es un par de valores $(x, y)$ que hace cierta la igualdad. Por ejemplo, en $x + 2y = 4$, el par $(2, 1)$ es solución porque $2 + 2 \\cdot 1 = 4$.",
         "Esta ecuación tiene **infinitas soluciones**: $(0, 2)$, $(4, 0)$, $(-2, 3)$…",
       ],
+      visuals: [
+        {
+          kind: "equation-anatomy",
+          title: "Las piezas de la ecuación",
+          parts: [
+            { tex: "a", label: "número", tone: "violet" },
+            { tex: "x", label: "incógnita", tone: "cobalt" },
+            { tex: "+" },
+            { tex: "b", label: "número", tone: "violet" },
+            { tex: "y", label: "incógnita", tone: "cobalt" },
+            { tex: "=" },
+            { tex: "c", label: "término independiente", tone: "emerald" },
+          ],
+        },
+        {
+          kind: "solution-check",
+          title: "¿Es solución? Pulsa un par",
+          a: 1,
+          b: 2,
+          c: 4,
+          pairs: [
+            [2, 1],
+            [0, 2],
+            [1, 1],
+            [-2, 3],
+          ],
+        },
+      ],
     },
     {
       id: "grafica-recta",
@@ -56,7 +84,41 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
         "Las ecuaciones $y = k$ se representan con rectas **horizontales**.",
         "Las ecuaciones $x = k$ se representan con rectas **verticales**.",
       ],
-      math: ["y = 3", "y = -2", "x = -\\frac{5}{2}", "x = \\frac{1}{2}"],
+      visuals: [
+        {
+          kind: "graph-gallery",
+          items: [
+            {
+              caption: "Horizontales: $y = k$",
+              detail: "$y = 3$ y $y = -2$",
+              graph: {
+                lines: [
+                  { id: "h1", label: "$y = 3$", form: "horizontal", y: 3, color: "#2f5fe0" },
+                  { id: "h2", label: "$y = -2$", form: "horizontal", y: -2, color: "#c0392b" },
+                ],
+                xMin: -3,
+                xMax: 3,
+                yMin: -3,
+                yMax: 4,
+              },
+            },
+            {
+              caption: "Verticales: $x = k$",
+              detail: "$x = -\\frac{5}{2}$ y $x = \\frac{1}{2}$",
+              graph: {
+                lines: [
+                  { id: "v1", label: "$x = -5/2$", form: "vertical", x: -2.5, color: "#16a085" },
+                  { id: "v2", label: "$x = 1/2$", form: "vertical", x: 0.5, color: "#d35400" },
+                ],
+                xMin: -3,
+                xMax: 3,
+                yMin: -3,
+                yMax: 4,
+              },
+            },
+          ],
+        },
+      ],
     },
     {
       id: "grafica-especiales",

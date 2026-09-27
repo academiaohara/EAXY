@@ -513,3 +513,190 @@
     animation: none !important;
   }
 }
+
+/* --- Feedback: brillo alrededor del panel al acertar o fallar ------------- */
+
+.lesson-feedback-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.lesson-feedback-backdrop.is-visible {
+  opacity: 1;
+}
+
+.lesson-feedback-backdrop-correct {
+  background:
+    radial-gradient(90% 55% at 50% 108%, rgba(52, 211, 153, 0.6), rgba(52, 211, 153, 0) 72%),
+    radial-gradient(60% 40% at 50% -10%, rgba(52, 211, 153, 0.16), rgba(52, 211, 153, 0) 70%),
+    linear-gradient(to bottom, rgba(236, 253, 245, 0) 35%, rgba(209, 250, 229, 0.85));
+}
+
+.lesson-feedback-backdrop-incorrect {
+  background:
+    radial-gradient(90% 55% at 50% 108%, rgba(251, 191, 36, 0.6), rgba(251, 191, 36, 0) 72%),
+    radial-gradient(60% 40% at 50% -10%, rgba(251, 191, 36, 0.14), rgba(251, 191, 36, 0) 70%),
+    linear-gradient(to bottom, rgba(255, 251, 235, 0) 35%, rgba(254, 243, 199, 0.85));
+}
+
+@keyframes lesson-panel-pulse-correct {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(16, 185, 129, 0.45),
+      0 24px 60px -28px rgba(16, 185, 129, 0.55);
+  }
+  100% {
+    box-shadow:
+      0 0 0 14px rgba(16, 185, 129, 0),
+      0 24px 60px -28px rgba(16, 185, 129, 0.55);
+  }
+}
+
+@keyframes lesson-panel-pulse-incorrect {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(245, 158, 11, 0.45),
+      0 24px 60px -28px rgba(245, 158, 11, 0.55);
+  }
+  100% {
+    box-shadow:
+      0 0 0 14px rgba(245, 158, 11, 0),
+      0 24px 60px -28px rgba(245, 158, 11, 0.55);
+  }
+}
+
+.lesson-panel-glow-correct {
+  box-shadow:
+    0 0 0 4px rgba(16, 185, 129, 0.14),
+    0 24px 60px -28px rgba(16, 185, 129, 0.55);
+  animation: lesson-panel-pulse-correct 0.9s ease-out;
+}
+
+.lesson-panel-glow-incorrect {
+  box-shadow:
+    0 0 0 4px rgba(245, 158, 11, 0.14),
+    0 24px 60px -28px rgba(245, 158, 11, 0.55);
+  animation: lesson-panel-pulse-incorrect 0.9s ease-out;
+}
+
+/* --- Teoría: ideas que entran, términos que se pueden preguntar ----------- */
+
+@keyframes lesson-idea-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lesson-idea-enter,
+.lesson-visual-rise,
+.lesson-chat-enter {
+  animation: lesson-idea-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lesson-chat-enter {
+  animation-duration: 0.3s;
+}
+
+@keyframes lesson-title-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.lesson-title-rule {
+  transform-origin: left center;
+  animation: lesson-title-rule 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.lesson-theory strong {
+  font-weight: 650;
+  color: var(--ink);
+  background: linear-gradient(transparent 58%, rgba(47, 95, 224, 0.16) 58%);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+.lesson-theory strong[data-concept] {
+  cursor: pointer;
+  background: linear-gradient(transparent 58%, rgba(250, 204, 21, 0.45) 58%);
+  text-decoration: underline dotted rgba(23, 26, 33, 0.35);
+  text-underline-offset: 4px;
+  transition: background 0.2s ease;
+}
+
+.lesson-theory strong[data-concept]:hover,
+.lesson-theory strong[data-concept]:focus-visible {
+  background: linear-gradient(transparent 0%, rgba(250, 204, 21, 0.55) 0%);
+  outline: none;
+}
+
+/* --- Ayudas visuales --------------------------------------------------- */
+
+@keyframes lesson-draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.lesson-draw-line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lesson-draw-line 0.9s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes lesson-point-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lesson-point-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lesson-point-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-panel-glow-correct,
+  .lesson-panel-glow-incorrect,
+  .lesson-idea-enter,
+  .lesson-visual-rise,
+  .lesson-chat-enter,
+  .lesson-title-rule,
+  .lesson-point-pop {
+    animation: none !important;
+  }
+
+  .lesson-draw-line {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+
+  .lesson-feedback-backdrop {
+    transition: none;
+  }
+}

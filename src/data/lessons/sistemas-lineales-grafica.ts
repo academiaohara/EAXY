@@ -15,6 +15,28 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
         "Cada ecuación lineal con dos incógnitas se representa con una recta. La solución del sistema es el **punto de corte** de esas rectas.",
       ],
       math: ["\\begin{cases} x + 2y = 4 \\\\ x + y = 3 \\end{cases}"],
+      visuals: [
+        {
+          kind: "graph-gallery",
+          items: [
+            {
+              caption: "Se cortan en $(2, 1)$",
+              detail: "Ese punto cumple las dos ecuaciones",
+              graph: {
+                lines: [
+                  { id: "r1", label: "$x + 2y = 4$", form: "standard", a: 1, b: 2, c: 4, color: "#2f5fe0" },
+                  { id: "r2", label: "$x + y = 3$", form: "standard", a: 1, b: 1, c: 3, color: "#c0392b" },
+                ],
+                highlightPoints: [{ x: 2, y: 1 }],
+                xMin: -1,
+                xMax: 5,
+                yMin: -1,
+                yMax: 4,
+              },
+            },
+          ],
+        },
+      ],
     },
     {
       id: "grafica-sistema",
@@ -44,6 +66,57 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
         "**Compatible determinado**: las rectas se cortan en un punto → **una solución**.",
         "**Incompatible**: las rectas son paralelas → **ninguna solución**.",
         "**Indeterminado**: las rectas coinciden → **infinitas soluciones**.",
+      ],
+      visuals: [
+        {
+          kind: "graph-gallery",
+          title: "Cómo se ve cada tipo",
+          items: [
+            {
+              caption: "Una solución",
+              detail: "Se cortan",
+              graph: {
+                lines: [
+                  { id: "r1", label: "$x + 2y = 4$", form: "standard", a: 1, b: 2, c: 4, color: "#2f5fe0" },
+                  { id: "r2", label: "$x + y = 3$", form: "standard", a: 1, b: 1, c: 3, color: "#c0392b" },
+                ],
+                highlightPoints: [{ x: 2, y: 1 }],
+                xMin: -1,
+                xMax: 5,
+                yMin: -1,
+                yMax: 4,
+              },
+            },
+            {
+              caption: "Ninguna",
+              detail: "Paralelas",
+              graph: {
+                lines: [
+                  { id: "r1", label: "$x + 2y = 4$", form: "standard", a: 1, b: 2, c: 4, color: "#2f5fe0" },
+                  { id: "r2", label: "$x + 2y = 1$", form: "standard", a: 1, b: 2, c: 1, color: "#c0392b" },
+                ],
+                xMin: -1,
+                xMax: 5,
+                yMin: -1,
+                yMax: 4,
+              },
+            },
+            {
+              caption: "Infinitas",
+              detail: "Coinciden",
+              graph: {
+                lines: [
+                  { id: "r1", label: "$x + 2y = 4$", form: "standard", a: 1, b: 2, c: 4, color: "#2f5fe0" },
+                  { id: "r2", label: "$2x + 4y = 8$", form: "standard", a: 2, b: 4, c: 8, color: "#c0392b" },
+                ],
+                xMin: -1,
+                xMax: 5,
+                yMin: -1,
+                yMax: 4,
+              },
+            },
+          ],
+        },
       ],
     },
     {

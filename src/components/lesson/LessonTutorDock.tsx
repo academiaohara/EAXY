@@ -16,6 +16,8 @@ type LessonTutorDockProps = {
   reaction?: TutorReaction;
   /** Abre el panel con el historial de mensajes. */
   onOpenPanel: () => void;
+  /** Avisa de cada frase que el tutor dice, para guardarla en el historial. */
+  onSpeak?: (index: number, line: string) => void;
   panelOpen?: boolean;
   className?: string;
 };
@@ -23,36 +25,45 @@ type LessonTutorDockProps = {
 const bubbleTone: Record<TutorReaction, string> = {
   idle: "border-slate-300 bg-white",
   thinking: "border-slate-300 bg-white",
-  correct: "border-emerald-300 bg-emerald-50",
-  incorrect: "border-rose-300 bg-rose-50",
+  correct: "border-emerald-300 bg-emerald-100 font-semibold text-emerald-950",
+  incorrect: "border-amber-300 bg-amber-100 font-semibold text-amber-950",
 };
 
 /** Pico del globo: mismo relleno y borde que la burbuja, apuntando a la bola. */
 const tailTone: Record<TutorReaction, string> = {
   idle: "fill-white stroke-slate-300",
   thinking: "fill-white stroke-slate-300",
-  correct: "fill-emerald-50 stroke-emerald-300",
-  incorrect: "fill-rose-50 stroke-rose-300",
+  correct: "fill-emerald-100 stroke-emerald-300",
+  incorrect: "fill-amber-100 stroke-amber-300",
 };
 
 /**
  * Recorre frase a frase toda la cola del paso: cada una se muestra el tiempo de
- * lectura, desaparece y entra la siguiente. Al acabar no queda globo.
+ * lectura, desaparece y entra la siguiente. Al acabar no queda globo. Con el
+ * panel abierto se calla y retoma la frase al cerrarlo.
  */
 function TutorSpeechBubble({
   messages,
   reaction,
   muted,
   anchorRight,
+  onSpeak,
 }: {
   messages: readonly string[];
   reaction: TutorReaction;
   muted: boolean;
   anchorRight: boolean;
+  onSpeak?: (index: number, line: string) => void;
 }) {
   const lines = useMemo(() => flattenTutorSpeech(messages), [messages]);
   const [spoken, setSpoken] = useState(0);
   const line = lines[spoken];
+
+  useEffect(() => {
+    if (!muted && line !== undefined) {
+      onSpeak?.(spoken, line);
+    }
+  }, [line, muted, onSpeak, spoken]);
 
   useEffect(() => {
     if (muted || line === undefined) {
@@ -106,6 +117,7 @@ export function LessonTutorDock({
   messages,
   reaction = "idle",
   onOpenPanel,
+  onSpeak,
   panelOpen = false,
   className,
 }: LessonTutorDockProps) {
@@ -140,6 +152,7 @@ export function LessonTutorDock({
         reaction={reaction}
         muted={panelOpen}
         anchorRight={anchorRight}
+        onSpeak={onSpeak}
       />
     </div>
   );

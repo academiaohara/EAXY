@@ -16,6 +16,17 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
       ],
       warning:
         "Si hay raíces o incógnitas en el denominador, pueden aparecer soluciones falsas. ¡Comprueba siempre en el sistema original!",
+      visuals: [
+        {
+          kind: "cards",
+          title: "¿Lineal o no lineal?",
+          items: [
+            { title: "Lineal", math: "2x + y = 3", caption: "Letras solas, sin potencias.", tone: "emerald" },
+            { title: "No lineal", math: "x^2 + y^2 = 5", caption: "Hay cuadrados.", tone: "amber" },
+            { title: "No lineal", math: "x \\cdot y = 6", caption: "Las letras se multiplican.", tone: "amber" },
+          ],
+        },
+      ],
     },
     {
       id: "ejemplo-animado",

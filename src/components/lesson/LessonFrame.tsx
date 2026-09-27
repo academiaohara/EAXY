@@ -15,6 +15,8 @@ type LessonFrameProps = {
   totalStars?: number;
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
+  /** Pie con las acciones del paso, dentro del panel para que el brillo lo rodee todo. */
+  footer?: React.ReactNode;
   /** Capa flotante sobre el contenido (el tutor), fuera del flujo del paso. */
   overlay?: React.ReactNode;
   /** Con el panel izquierdo abierto, la bola se mueve a la derecha para no taparse. */
@@ -52,6 +54,7 @@ export function LessonFrame({
   totalStars,
   feedback = null,
   children,
+  footer,
   overlay,
   tutorPanelOpen = false,
   className,
@@ -61,9 +64,20 @@ export function LessonFrame({
 
   return (
     <div
-      className={cn("relative flex h-full min-h-0 w-full flex-col overflow-hidden", className)}
+      className={cn("relative isolate flex h-full min-h-0 w-full flex-col overflow-hidden", className)}
       data-testid="lesson-frame"
+      data-feedback={feedback ?? "none"}
     >
+      {/* Brillo de fondo alrededor del panel al acertar o fallar. */}
+      <div
+        className={cn("lesson-feedback-backdrop lesson-feedback-backdrop-correct", isCorrect && "is-visible")}
+        aria-hidden
+      />
+      <div
+        className={cn("lesson-feedback-backdrop lesson-feedback-backdrop-incorrect", isIncorrect && "is-visible")}
+        aria-hidden
+      />
+
       <div className={cn("flex shrink-0 items-center gap-3 pb-3 pt-3 sm:gap-4", LESSON_SHELL_WIDTH)}>
         <Link
           href={closeHref}
@@ -87,12 +101,12 @@ export function LessonFrame({
         <LessonStarCounter stars={stars} totalStars={totalStars} />
       </div>
 
-      <div className={cn("flex min-h-0 flex-1 flex-col pb-3", LESSON_SHELL_WIDTH)}>
+      <div className={cn("flex min-h-0 flex-1 flex-col pb-4", LESSON_SHELL_WIDTH)}>
         <div
           className={cn(
-            "flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-colors duration-300",
-            isCorrect && "border-emerald-400 shadow-emerald-100/80",
-            isIncorrect && "border-rose-300 shadow-rose-100/60",
+            "flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-[border-color,box-shadow] duration-300",
+            isCorrect && "lesson-panel-glow-correct border-emerald-400",
+            isIncorrect && "lesson-panel-glow-incorrect border-amber-400",
             !feedback && "border-white",
           )}
           data-testid="lesson-step-panel"
@@ -100,13 +114,15 @@ export function LessonFrame({
           <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
             {children}
           </div>
+          {footer}
         </div>
       </div>
 
       {overlay ? (
         <div
           className={cn(
-            "pointer-events-none absolute bottom-6 z-30 transition-[left,right] duration-300",
+            "pointer-events-none absolute z-30 transition-[left,right] duration-300",
+            footer ? "bottom-[6.75rem]" : "bottom-6",
             tutorPanelOpen
               ? "right-4 sm:right-8 lg:right-12"
               : "left-4 sm:left-8 lg:left-12",

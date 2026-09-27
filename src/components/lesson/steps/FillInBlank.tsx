@@ -49,7 +49,9 @@ export function FillInBlank({
 
   useRegisterLessonStepControl(control);
 
-  const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
+  const showContext = Boolean(
+    step.content?.length || step.math?.length || step.warning || step.visuals?.length,
+  );
 
   return (
     <div
@@ -64,6 +66,7 @@ export function FillInBlank({
           content={step.content}
           math={step.math}
           warning={step.warning}
+          visuals={step.visuals}
           compact={compact}
           showTitle={false}
         />
@@ -90,7 +93,7 @@ export function FillInBlank({
             className={cn(
               "w-full max-w-xs rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-center font-mono text-lg outline-none transition-colors focus-visible:border-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/20",
               checked && isCorrect && "border-emerald-500 bg-emerald-50",
-              checked && !isCorrect && "border-red-400 bg-red-50",
+              checked && !isCorrect && "border-amber-400 bg-amber-50 animate-shake",
             )}
             data-testid="lesson-fill-input"
           />

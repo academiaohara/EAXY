@@ -47,6 +47,7 @@ function ConceptStepView({
         content={step.content}
         math={step.math}
         warning={step.warning}
+        visuals={step.visuals}
         compact={compact}
         showTitle={false}
         split

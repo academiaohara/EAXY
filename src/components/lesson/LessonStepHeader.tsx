@@ -6,14 +6,17 @@ type LessonStepHeaderProps = {
   step: LessonStep;
 };
 
+/** Fila del título del paso, encima del contenedor de la explicación. */
 export function LessonStepHeader({ step }: LessonStepHeaderProps) {
   return (
-    <header className="space-y-2 xl:sticky xl:top-0" data-testid="lesson-step-header">
-      <StepPhaseBadge step={step} />
-      <h2 className="font-heading text-xl font-semibold leading-tight tracking-tight text-ink sm:text-2xl xl:text-[1.75rem]">
-        <MathRenderer text={step.title} />
-      </h2>
-      <div className="hidden h-0.5 w-12 rounded-full bg-cobalt/30 xl:block" aria-hidden />
+    <header className="space-y-3" data-testid="lesson-step-header">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <StepPhaseBadge step={step} className="h-6 px-2.5 text-xs" />
+        <h2 className="min-w-0 flex-1 basis-[18rem] font-heading text-2xl font-semibold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
+          <MathRenderer text={step.title} />
+        </h2>
+      </div>
+      <div className="lesson-title-rule h-0.5 w-full rounded-full bg-gradient-to-r from-cobalt/50 via-cobalt/15 to-transparent" aria-hidden />
     </header>
   );
 }

@@ -97,4 +97,42 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
 
   await page.getByTestId("tutor-help-option-close").click();
   await expect(panel).toBeHidden();
+
+  // El historial guarda cada frase de la bola; pulsar una explica sus conceptos.
+  await page.getByTestId("lesson-tutor-button").click();
+  await panel.getByTestId("tutor-log-message").filter({ hasText: "es un par de valores" }).click();
+  await expect(page.getByTestId("tutor-help-option-concept-solucion")).toBeVisible();
+  await page.getByTestId("tutor-help-option-concept-solucion").click();
+  await expect(panel.getByTestId("lesson-visual-solution-check")).toBeVisible();
+
+  // Entenderlo no cierra el panel: se puede seguir preguntando por otros mensajes.
+  await page.getByTestId("tutor-help-option-got-it").click();
+  await expect(panel).toBeVisible();
+  await page.getByTestId("tutor-panel-close").click();
+
+  // Los términos resaltados de la teoría también se pueden preguntar.
+  await page
+    .getByTestId("lesson-theory")
+    .locator('strong[data-concept="infinitas-soluciones"]')
+    .click();
+  await expect(panel).toBeVisible();
+  await expect(panel.getByTestId("tutor-log-explanation").last()).toContainText("infinitos");
+});
+
+test("la lección se ilumina en verde al acertar y en ámbar al fallar", async ({ page }) => {
+  await loginAsNewStudent(page, "Alumno Feedback E2E");
+  await openFirstLesson(page);
+
+  for (let step = 0; step < 4; step += 1) {
+    await page.getByTestId("lesson-continue-button").click();
+  }
+
+  const frame = page.getByTestId("lesson-frame");
+  await page.getByRole("button", { name: "Ninguna" }).click();
+  await page.getByTestId("lesson-check-button").click();
+  await expect(frame).toHaveAttribute("data-feedback", "incorrect");
+  await expect(page.getByTestId("lesson-feedback-help")).toHaveText("Ayúdame");
+
+  await page.getByTestId("lesson-feedback-help").click();
+  await expect(page.getByTestId("tutor-help-options")).toBeVisible();
 });

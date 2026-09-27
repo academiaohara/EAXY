@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  appendSpokenEntry,
   appendTutorEntry,
   countTutorEntries,
   feedbackMessageKey,
+  speechMessageKey,
   stepMessageKey,
   type TutorLogEntry,
 } from "@/lib/lesson/tutor-log";
@@ -50,5 +52,30 @@ describe("countTutorEntries", () => {
 
   it("no cuenta nada cuando el alumno es el único que habla", () => {
     expect(countTutorEntries([{ key: "a", author: "student", text: "Ya lo tengo" }])).toBe(0);
+  });
+});
+
+describe("appendSpokenEntry", () => {
+  it("guarda cada frase que dice el tutor", () => {
+    const log = appendSpokenEntry([tutorEntry("a")], tutorEntry("b"));
+    expect(log.map((entry) => entry.key)).toEqual(["a", "b"]);
+  });
+
+  it("no repite una frase ya dicha aunque no sea la última", () => {
+    const log = [tutorEntry("a"), tutorEntry("b")];
+    expect(appendSpokenEntry(log, tutorEntry("a"))).toBe(log);
+  });
+});
+
+describe("speechMessageKey", () => {
+  it("distingue cada frase, el paso y el feedback", () => {
+    const keys = new Set([
+      speechMessageKey("s1", null, 0),
+      speechMessageKey("s1", null, 1),
+      speechMessageKey("s2", null, 0),
+      speechMessageKey("s1", "correct", 0),
+      speechMessageKey("s1", "incorrect", 0),
+    ]);
+    expect(keys.size).toBe(5);
   });
 });
