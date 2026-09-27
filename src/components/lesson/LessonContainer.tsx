@@ -97,17 +97,17 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const canAskForHelp = hasHelpTopics(helpRoute);
 
   /**
-   * Registra lo que se dicen tutor y alumno. Lo que el tutor cuenta con el
-   * panel cerrado queda pendiente y se avisa sobre la bola.
+   * Registra lo que se dicen tutor y alumno. Lo que el tutor cuenta sin que el
+   * panel esté delante queda pendiente y se avisa sobre la bola.
    */
   const pushEntries = useCallback(
-    (entries: TutorLogEntry[]) => {
+    (entries: TutorLogEntry[], visible: boolean) => {
       setLog((prev) => entries.reduce(appendTutorEntry, prev));
-      if (!panelOpen) {
+      if (!visible) {
         setUnseen((prev) => prev + countTutorEntries(entries));
       }
     },
-    [panelOpen],
+    [],
   );
 
   const openPanel = useCallback(() => {
@@ -131,15 +131,18 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         setStars((prev) => prev + 1);
       }
       setFeedback(status);
-      pushEntries([
-        {
-          key: feedbackMessageKey(currentStep.id, status),
-          author: "tutor",
-          text: getFeedbackTutorMessage(status),
-        },
-      ]);
+      pushEntries(
+        [
+          {
+            key: feedbackMessageKey(currentStep.id, status),
+            author: "tutor",
+            text: getFeedbackTutorMessage(status),
+          },
+        ],
+        panelOpen,
+      );
     },
-    [currentStep.id, feedback, pushEntries],
+    [currentStep.id, feedback, panelOpen, pushEntries],
   );
 
   const goToNextStep = useCallback(() => {
@@ -150,8 +153,8 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
       return;
     }
     setStepIndex(stepIndex + 1);
-    pushEntries([stepEntry(nextStep)]);
-  }, [lesson.steps, pushEntries, stepIndex]);
+    pushEntries([stepEntry(nextStep)], panelOpen);
+  }, [lesson.steps, panelOpen, pushEntries, stepIndex]);
 
   const handleNext = useCallback(() => {
     setFeedback(null);
@@ -168,10 +171,13 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
 
       openPanel();
       setHelpNodeId(root.id);
-      pushEntries([
-        { key: `choice:${log.length}`, author: "student", text: trigger },
-        helpEntry(root, log.length + 1),
-      ]);
+      pushEntries(
+        [
+          { key: `choice:${log.length}`, author: "student", text: trigger },
+          helpEntry(root, log.length + 1),
+        ],
+        true,
+      );
     },
     [helpRoute, log.length, openPanel, pushEntries],
   );
@@ -185,7 +191,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
       if (next) {
         entries.push(helpEntry(next, log.length + 1));
       }
-      pushEntries(entries);
+      pushEntries(entries, true);
 
       setHelpNodeId(option.next);
       if (option.next === null) {
