@@ -1,14 +1,22 @@
 import type { LessonStep } from "@/lib/lesson/types";
 
-export type LessonStepPhase = "explanation" | "resolution";
+export type LessonStepPhase = "explanation" | "resolution" | "exploration" | "practice";
 
-const RESOLUTION_TYPES = new Set<LessonStep["type"]>(["animated_solution"]);
+const PHASE_BY_STEP_TYPE: Record<LessonStep["type"], LessonStepPhase> = {
+  concept: "explanation",
+  animated_solution: "resolution",
+  interactive_tool: "exploration",
+  multiple_choice: "practice",
+  fill_in_blank: "practice",
+};
 
 export function getLessonStepPhase(step: LessonStep): LessonStepPhase {
-  return RESOLUTION_TYPES.has(step.type) ? "resolution" : "explanation";
+  return PHASE_BY_STEP_TYPE[step.type];
 }
 
 export const LESSON_STEP_PHASE_LABELS: Record<LessonStepPhase, string> = {
   explanation: "Explicación",
   resolution: "Resolución",
+  exploration: "Exploración",
+  practice: "Práctica",
 };

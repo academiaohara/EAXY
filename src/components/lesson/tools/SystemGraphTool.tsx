@@ -102,13 +102,13 @@ export function SystemGraphTool({ config, compact = false }: SystemGraphToolProp
 
       <div
         className={cn(
-          "rounded-xl border border-border bg-paper-raised p-3",
-          compact && "max-h-[min(36vh,16rem)] overflow-hidden",
+          "mx-auto w-full rounded-2xl border border-slate-200 bg-paper-raised p-3 shadow-sm",
+          compact && "max-w-[min(100%,30rem)]",
         )}
       >
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className={cn("aspect-square w-full", compact && "max-h-[min(34vh,15rem)]")}
+          className={cn("mx-auto aspect-square w-full", compact && "max-h-[min(46vh,26rem)]")}
           preserveAspectRatio="xMidYMid meet"
           role="img"
           aria-label="Representación gráfica de rectas"

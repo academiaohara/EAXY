@@ -1,57 +1,92 @@
 "use client";
 
-import { MessageCircleIcon, MicIcon } from "lucide-react";
+import { SparklesIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
-import type { TutorMood } from "@/lib/tutor/moods";
+import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-message";
 
 type LessonTutorProps = {
   message: string;
-  mood?: TutorMood;
+  /** Texto secundario opcional (p. ej. la explicación tras responder). */
+  detail?: string;
+  reaction?: TutorReaction;
   className?: string;
 };
 
-export function LessonTutor({ message, mood = "idle", className }: LessonTutorProps) {
+const bubbleTone: Record<TutorReaction, string> = {
+  idle: "border-slate-300 bg-white",
+  thinking: "border-slate-300 bg-white",
+  correct: "border-emerald-300 bg-emerald-50",
+  incorrect: "border-rose-300 bg-rose-50",
+};
+
+/** Pico del globo: mismo relleno y borde que la burbuja, apuntando a la bola. */
+const tailTone: Record<TutorReaction, string> = {
+  idle: "fill-white stroke-slate-300",
+  thinking: "fill-white stroke-slate-300",
+  correct: "fill-emerald-50 stroke-emerald-300",
+  incorrect: "fill-rose-50 stroke-rose-300",
+};
+
+function TutorReactionBadge({ reaction }: { reaction: TutorReaction }) {
+  if (reaction === "idle") {
+    return null;
+  }
+
+  return (
+    <span
+      className={cn(
+        "absolute -top-1 left-1/2 z-10 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border text-xs font-bold shadow-sm",
+        reaction === "correct" &&
+          "animate-[lesson-tutor-pop_0.35s_ease-out] border-emerald-200 bg-white text-amber-500",
+        reaction === "incorrect" && "border-rose-200 bg-white text-rose-500",
+        reaction === "thinking" &&
+          "animate-[lesson-tutor-pulse_1.8s_ease-in-out_infinite] border-cobalt/25 bg-white text-cobalt",
+      )}
+      data-testid="lesson-tutor-reaction"
+      data-reaction={reaction}
+      aria-hidden
+    >
+      {reaction === "correct" ? <SparklesIcon className="size-4" /> : "?"}
+    </span>
+  );
+}
+
+export function LessonTutor({ message, detail, reaction = "idle", className }: LessonTutorProps) {
   return (
     <div
-      className={cn(
-        "pointer-events-none absolute inset-x-0 bottom-16 z-30 px-3 sm:bottom-[4.5rem] sm:px-5",
-        className,
-      )}
+      className={cn("flex min-w-0 items-center gap-4 sm:gap-5", className)}
       data-testid="lesson-tutor"
       aria-live="polite"
     >
-      <div className="mx-auto flex w-full max-w-4xl items-end justify-start gap-2 pl-1 sm:pl-2">
-        <div className="pointer-events-auto flex shrink-0 flex-col items-center gap-1.5 pb-0.5">
-          <div className="relative size-[4.5rem] sm:size-20">
-            <TutorMascot
-              mood={mood}
-              size={80}
-              label={null}
-              priority
-              className="relative mx-auto size-[4.5rem] sm:size-20"
-            />
-          </div>
-          <div className="flex items-center gap-1.5 text-slate-400">
-            <span className="flex size-7 items-center justify-center rounded-full bg-white/90 shadow-sm ring-1 ring-slate-200/80">
-              <MessageCircleIcon className="size-3.5" aria-hidden />
-            </span>
-            <span className="flex size-7 items-center justify-center rounded-full bg-white/90 shadow-sm ring-1 ring-slate-200/80">
-              <MicIcon className="size-3.5" aria-hidden />
-            </span>
-          </div>
-        </div>
+      <div className="relative shrink-0">
+        <TutorReactionBadge reaction={reaction} />
+        <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} priority />
+      </div>
 
-        <div className="relative mb-8 max-w-[min(100%,16rem)] rounded-2xl rounded-bl-sm border border-slate-200/90 bg-white px-3.5 py-2.5 text-sm leading-snug text-ink shadow-md shadow-slate-200/60 sm:mb-10 sm:max-w-xs">
-          <p>
-            <MathRenderer text={message} />
+      <div
+        className={cn(
+          "relative min-w-0 max-w-xl rounded-2xl border px-4 py-2.5 text-sm leading-snug text-ink shadow-sm transition-colors",
+          bubbleTone[reaction],
+        )}
+        data-testid="lesson-tutor-bubble"
+      >
+        <svg
+          className="absolute -left-[15px] top-1/2 h-6 w-4 -translate-y-1/2"
+          viewBox="0 0 16 24"
+          aria-hidden
+        >
+          <path d="M16 2 L1.5 12 L16 22" className={tailTone[reaction]} strokeWidth={1} />
+        </svg>
+        <p className="font-medium">
+          <MathRenderer text={message} />
+        </p>
+        {detail ? (
+          <p className="mt-1.5 text-[0.8125rem] font-normal leading-relaxed text-ink-muted">
+            <MathRenderer text={detail} />
           </p>
-          <span
-            className="absolute -bottom-2 left-4 size-3 rotate-45 border-b border-r border-slate-200/90 bg-white"
-            aria-hidden
-          />
-        </div>
+        ) : null}
       </div>
     </div>
   );

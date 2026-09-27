@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ChevronRightIcon, GraduationCapIcon } from "lucide-react";
+import { ArrowRightIcon, BookOpenIcon, GraduationCapIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import type { CourseCatalogEntry } from "@/lib/curriculum/types";
 
 type CourseCatalogViewProps = {
@@ -9,9 +9,6 @@ type CourseCatalogViewProps = {
 };
 
 function lessonCountLabel(count: number): string {
-  if (count === 0) {
-    return "Próximamente";
-  }
   return count === 1 ? "1 lección" : `${count} lecciones`;
 }
 
@@ -21,15 +18,15 @@ function courseShortTitle(title: string): string {
 
 export function CourseCatalogView({ courses }: CourseCatalogViewProps) {
   return (
-    <div className="space-y-5" data-testid="course-catalog">
-      <header className="space-y-2">
-        <h2 className="font-heading text-xl font-medium">Niveles</h2>
+    <section className="space-y-4" data-testid="course-catalog">
+      <header className="space-y-1">
+        <h2 className="font-heading text-xl font-semibold text-ink">Niveles</h2>
         <p className="text-sm text-muted-foreground">
           Elige tu curso. Iremos añadiendo temas y lecciones en cada nivel.
         </p>
       </header>
 
-      <div className="grid gap-3">
+      <div className="grid gap-3 sm:grid-cols-2">
         {courses.map((course) => {
           const hasLessons = course.lessonCount > 0;
 
@@ -38,51 +35,60 @@ export function CourseCatalogView({ courses }: CourseCatalogViewProps) {
               key={course.id}
               href={`/aprender/curso/${course.id}`}
               data-testid={`course-link-${course.id}`}
-              className="group block"
+              className={cn(
+                "group flex flex-col gap-3 rounded-2xl border bg-paper-raised p-4 shadow-sm outline-none transition-all focus-visible:ring-2 focus-visible:ring-cobalt/40",
+                hasLessons
+                  ? "border-slate-200 hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md"
+                  : "border-slate-200/70 opacity-75 hover:opacity-100",
+              )}
             >
-              <Card
-                className={`overflow-hidden transition-all hover:shadow-md ${
-                  hasLessons
-                    ? "border-border hover:border-cobalt/40"
-                    : "border-border/70 opacity-80 hover:opacity-100"
-                }`}
-              >
-                <div className="flex items-stretch">
-                  <div
-                    className={`flex w-16 shrink-0 flex-col items-center justify-center gap-1 px-2 text-center transition-colors ${
-                      hasLessons
-                        ? "bg-cobalt-tint/60 text-cobalt group-hover:bg-cobalt group-hover:text-white"
-                        : "bg-muted/50 text-muted-foreground"
-                    }`}
-                  >
-                    <GraduationCapIcon className="size-5" aria-hidden />
-                    <span className="text-[10px] font-semibold uppercase leading-tight tracking-wide">
-                      {courseShortTitle(course.title)}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 items-start justify-between gap-4 p-4">
-                    <div className="space-y-1">
-                      <h3 className="font-medium">{course.title}</h3>
-                      {course.description ? (
-                        <p className="text-sm text-muted-foreground">{course.description}</p>
-                      ) : null}
-                    </div>
-                    <div className="flex shrink-0 items-center gap-2">
-                      <Badge variant={hasLessons ? "default" : "outline"}>
-                        {lessonCountLabel(course.lessonCount)}
-                      </Badge>
-                      <ChevronRightIcon
-                        className="size-4 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-cobalt"
-                        aria-hidden
-                      />
-                    </div>
-                  </div>
+              <div className="flex items-center gap-3">
+                <span
+                  className={cn(
+                    "flex size-11 shrink-0 flex-col items-center justify-center rounded-xl text-center text-[10px] font-bold uppercase leading-none tracking-wide transition-colors",
+                    hasLessons
+                      ? "bg-cobalt-tint text-cobalt group-hover:bg-cobalt group-hover:text-white"
+                      : "bg-slate-100 text-slate-400",
+                  )}
+                  aria-hidden
+                >
+                  <GraduationCapIcon className="mb-0.5 size-4" />
+                  {courseShortTitle(course.title).split(" ")[0]}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-medium leading-snug text-ink group-hover:text-cobalt">
+                    {course.title}
+                  </h3>
+                  {hasLessons ? (
+                    <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <BookOpenIcon className="size-3.5" aria-hidden />
+                      {lessonCountLabel(course.lessonCount)}
+                    </p>
+                  ) : (
+                    <p className="text-xs text-muted-foreground">Próximamente</p>
+                  )}
                 </div>
-              </Card>
+                {hasLessons ? (
+                  <ArrowRightIcon
+                    className="size-4 shrink-0 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-cobalt"
+                    aria-hidden
+                  />
+                ) : (
+                  <Badge variant="outline" className="shrink-0">
+                    Pronto
+                  </Badge>
+                )}
+              </div>
+
+              {course.description ? (
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {course.description}
+                </p>
+              ) : null}
             </Link>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

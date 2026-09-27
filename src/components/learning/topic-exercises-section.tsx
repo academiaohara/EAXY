@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileTextIcon, PlayCircleIcon } from "lucide-react";
+import { DumbbellIcon, FileTextIcon, PlayCircleIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -29,21 +29,31 @@ export function TopicExercisesSection({ moduleTitle, exercises }: TopicExercises
 
   return (
     <>
-      <section className="space-y-3" data-testid="topic-exercises">
+      <section
+        className="space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5"
+        data-testid="topic-exercises"
+      >
         <div className="space-y-1">
-          <h2 className="font-heading text-lg font-medium">Ejercicios del tema</h2>
+          <h3 className="flex items-center gap-2 font-heading text-base font-semibold text-ink">
+            <DumbbellIcon className="size-4 text-cobalt" aria-hidden />
+            Ejercicios del tema
+          </h3>
           <p className="text-sm text-muted-foreground">
             Refuerzo de {moduleTitle}: consulta el enunciado y, cuando lo necesites, la resolución
             en vídeo.
           </p>
         </div>
 
-        <div className="grid gap-3">
+        <div className="grid gap-2">
           {exercises.map((exercise, index) => (
-            <Card key={exercise.id} className="p-4" data-testid={`topic-exercise-${exercise.id}`}>
+            <Card
+              key={exercise.id}
+              className="border-slate-200 p-3 shadow-none sm:p-4"
+              data-testid={`topic-exercise-${exercise.id}`}
+            >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Ejercicio {index + 1}</p>
+                <div className="min-w-0 space-y-0.5">
+                  <p className="text-xs text-muted-foreground">Ejercicio {index + 1}</p>
                   <p className="font-medium">{exercise.title}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">

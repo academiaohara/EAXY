@@ -1,21 +1,20 @@
 "use client";
 
-import Link from "next/link";
-import { useCallback, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { FeedbackFooter } from "@/components/lesson/FeedbackFooter";
+import { useCallback, useMemo, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
-import { LessonBottomBar } from "@/components/lesson/LessonBottomBar";
+import { LessonComplete } from "@/components/lesson/LessonComplete";
+import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
+import { LessonFooterDock } from "@/components/lesson/LessonFooterDock";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
+import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
+import { LessonStepHeader } from "@/components/lesson/LessonStepHeader";
 import { LessonTutor } from "@/components/lesson/LessonTutor";
-import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
-import { getStepTutorMessage } from "@/lib/lesson/tutor-message";
-import { tutorMoodForFeedback } from "@/lib/tutor/moods";
-import type { FeedbackStatus, InteractiveLesson, LessonStep } from "@/lib/lesson/types";
+import { getTutorMessage, getTutorReaction } from "@/lib/lesson/tutor-message";
+import { isQuizStep, type FeedbackStatus, type InteractiveLesson, type LessonStep } from "@/lib/lesson/types";
 
 type LessonNavigationContext = {
   courseId: string;
@@ -38,6 +37,7 @@ function getStepExplanation(step: LessonStep): string | undefined {
 function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const [stepIndex, setStepIndex] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
+  const [showExplanation, setShowExplanation] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [stars, setStars] = useState(0);
   const { control } = useLessonStepControl();
@@ -46,6 +46,10 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const currentStep = lesson.steps[stepIndex];
   const isLastStep = stepIndex === totalSteps - 1;
   const courseHref = navigation ? `/aprender/curso/${navigation.courseId}` : "/aprender";
+  const totalStars = useMemo(
+    () => lesson.steps.filter((step) => isQuizStep(step)).length,
+    [lesson.steps],
+  );
 
   const handleCheck = useCallback(
     (correct: boolean) => {
@@ -61,7 +65,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     [feedback],
   );
 
-  const handlePassiveContinue = useCallback(() => {
+  const goToNextStep = useCallback(() => {
     if (stepIndex < totalSteps - 1) {
       setStepIndex(stepIndex + 1);
       return;
@@ -71,104 +75,85 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
 
   const handleNext = useCallback(() => {
     setFeedback(null);
-    if (stepIndex < totalSteps - 1) {
-      setStepIndex(stepIndex + 1);
-      return;
-    }
-    setCompleted(true);
-  }, [stepIndex, totalSteps]);
+    setShowExplanation(false);
+    goToNextStep();
+  }, [goToNextStep]);
 
   function restartLesson() {
     setStepIndex(0);
     setFeedback(null);
+    setShowExplanation(false);
     setCompleted(false);
     setStars(0);
   }
 
   if (completed) {
     return (
-      <div
-        className="flex h-full min-h-0 w-full items-center justify-center bg-[#eef0f3] p-4 sm:p-6"
-        data-testid="lesson-complete"
-      >
-        <div className="w-full max-w-lg overflow-hidden rounded-2xl border-2 border-emerald-300 bg-paper-raised shadow-lg shadow-emerald-100/50">
-          <div className="bg-gradient-to-b from-emerald-50 to-white px-8 pb-2 pt-10 text-center">
-            <TutorMascot
-              mood="celebrate"
-              size={112}
-              className="mx-auto"
-              label="El tutor celebra que has completado la lección"
-            />
-          </div>
-          <div className="space-y-5 px-8 pb-10 pt-6 text-center">
-            <div className="space-y-2">
-              <h1 className="font-heading text-2xl font-semibold">¡Lección completada!</h1>
-              <p className="text-sm text-muted-foreground">
-                Has terminado &ldquo;{lesson.title}&rdquo;.
-              </p>
-              {stars > 0 ? (
-                <p className="text-sm font-medium text-emerald-700">{stars} ⭐ en esta sesión</p>
-              ) : null}
-            </div>
-            <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
-              <Button type="button" variant="outline" className="rounded-full" onClick={restartLesson}>
-                Repetir lección
-              </Button>
-              <Button
-                nativeButton={false}
-                className="rounded-full"
-                render={<Link href={courseHref} />}
-              >
-                Volver al curso
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <LessonComplete
+        lessonTitle={lesson.title}
+        stars={stars}
+        totalStars={totalStars}
+        courseHref={courseHref}
+        onRestart={restartLesson}
+      />
     );
   }
 
-  const tutorMood = feedback ? tutorMoodForFeedback(feedback) : "idle";
+  const explanation = getStepExplanation(currentStep);
 
   return (
-    <div
-      className="relative flex h-full min-h-0 w-full flex-1 flex-col"
-      data-testid="interactive-lesson"
-    >
+    <div className="flex h-full min-h-0 w-full flex-1 flex-col" data-testid="interactive-lesson">
       <h1 className="sr-only">{lesson.title}</h1>
-      <p className="sr-only">{currentStep.title}</p>
 
       <LessonFrame
         closeHref={courseHref}
+        lessonTitle={lesson.title}
         currentStep={stepIndex + 1}
         totalSteps={totalSteps}
         stars={stars}
+        totalStars={totalStars}
         feedback={feedback}
         className="min-h-0 flex-1"
       >
-        <InteractiveQuestion
+        <div
           key={currentStep.id}
-          step={currentStep}
-          onCheck={handleCheck}
-          onContinue={handlePassiveContinue}
-          disabled={feedback !== null}
-          compact
-        />
+          className="lesson-step-enter grid w-full gap-5 sm:gap-6 xl:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] xl:gap-12"
+        >
+          <LessonStepHeader step={currentStep} />
+          <InteractiveQuestion
+            step={currentStep}
+            onCheck={handleCheck}
+            onContinue={goToNextStep}
+            disabled={feedback !== null}
+            compact
+          />
+        </div>
       </LessonFrame>
 
-      {feedback ? (
-        <FeedbackFooter
-          variant="fixed"
-          status={feedback}
-          explanation={getStepExplanation(currentStep)}
-          isLastStep={isLastStep}
-          onNext={handleNext}
-        />
-      ) : control ? (
-        <LessonBottomBar control={control} fixed />
-      ) : null}
-
-      <LessonTutor mood={tutorMood} message={getStepTutorMessage(currentStep)} />
+      <LessonFooterDock
+        feedback={feedback}
+        tutor={
+          <LessonTutor
+            message={getTutorMessage(currentStep, feedback)}
+            detail={feedback && showExplanation ? explanation : undefined}
+            reaction={getTutorReaction(currentStep, feedback)}
+          />
+        }
+        action={
+          feedback ? (
+            <LessonFeedbackActions
+              status={feedback}
+              hasExplanation={Boolean(explanation)}
+              explanationVisible={showExplanation}
+              onToggleExplanation={() => setShowExplanation((prev) => !prev)}
+              isLastStep={isLastStep}
+              onNext={handleNext}
+            />
+          ) : control ? (
+            <LessonPrimaryAction control={control} />
+          ) : null
+        }
+      />
     </div>
   );
 }

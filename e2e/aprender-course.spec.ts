@@ -28,7 +28,9 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
 
   await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
   await expect(page.getByTestId("course-outline")).toBeVisible();
-  await expect(page.getByText("5 lecciones")).toBeVisible();
+  await expect(
+    page.getByTestId("course-hero").getByText("5 lecciones", { exact: true }),
+  ).toBeVisible();
 
   await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
 

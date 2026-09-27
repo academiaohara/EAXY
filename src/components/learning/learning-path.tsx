@@ -1,10 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { useMemo, useState } from "react";
-import { CheckIcon, SparklesIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CheckIcon, ChevronRightIcon, DumbbellIcon, SparklesIcon } from "lucide-react";
 import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
+import {
+  getLessonProgressStatus,
+  getModuleProgress,
+  type LessonProgressStatus,
+} from "@/lib/curriculum/course-progress";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import { cn } from "@/lib/utils";
 import type { LessonSummary, ModuleSummary } from "@/lib/curriculum/types";
@@ -13,166 +14,165 @@ type LearningPathProps = {
   modules: ModuleSummary[];
 };
 
-function pickDefaultLesson(modules: ModuleSummary[]): LessonSummary | null {
-  for (const courseModule of modules) {
-    const started = courseModule.lessons.find((lesson) => lesson.pathStatus === "started");
-    if (started) {
-      return started;
-    }
-    const pending = courseModule.lessons.find((lesson) => lesson.pathStatus !== "completed");
-    if (pending) {
-      return pending;
-    }
-  }
+const STATUS_LABELS: Record<LessonProgressStatus, string> = {
+  completed: "Completada",
+  started: "En curso",
+  available: "Disponible",
+};
 
-  const firstModule = modules[0];
-  return firstModule?.lessons[0] ?? null;
-}
+const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
+  completed: "bg-emerald-50 text-emerald-700",
+  started: "bg-cobalt-tint text-cobalt",
+  available: "bg-slate-100 text-slate-500",
+};
 
-function lessonStatus(lesson: LessonSummary): "completed" | "active" | "available" {
-  if (lesson.pathStatus === "completed") {
-    return "completed";
+function lessonMetaLabel(lesson: LessonSummary): string {
+  if (lesson.kind === "interactive") {
+    return lesson.stepCount ? `${lesson.stepCount} pasos guiados` : "Lección guiada";
   }
-  if (lesson.pathStatus === "started") {
-    return "active";
-  }
-  return "available";
+  return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
 }
 
 type PathNodeProps = {
   lesson: LessonSummary;
-  status: ReturnType<typeof lessonStatus>;
-  isSelected: boolean;
+  position: number;
   isLast: boolean;
-  href: string;
-  onSelect: () => void;
 };
 
-function PathNode({ lesson, status, isSelected, isLast, href, onSelect }: PathNodeProps) {
+function PathNode({ lesson, position, isLast }: PathNodeProps) {
+  const status = getLessonProgressStatus(lesson);
   const isInteractive = lesson.kind === "interactive";
 
   return (
-    <div className="relative flex items-start gap-4">
+    <li className="relative">
       {!isLast ? (
-        <div
-          className="pointer-events-none absolute left-6 top-12 h-[calc(100%-0.5rem)] w-0.5 -translate-x-1/2 bg-slate-200"
+        <span
+          className="pointer-events-none absolute left-[2.125rem] top-full h-3 w-0.5 -translate-x-1/2 bg-slate-300 sm:left-[2.5rem]"
           aria-hidden
         />
       ) : null}
 
       <Link
-        href={href}
-        onClick={onSelect}
+        href={resolveLessonHref(lesson.id)}
         data-testid={`lesson-link-${lesson.id}`}
         className={cn(
-          "relative z-10 flex min-w-0 flex-1 items-start gap-4 rounded-xl outline-none transition-colors hover:bg-slate-50/80",
-          isSelected && "bg-cobalt-tint/20",
+          "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40 sm:p-4",
+          status === "started" ? "border-cobalt/40" : "border-slate-200",
         )}
-        aria-current={isSelected ? "step" : undefined}
       >
         <span
           className={cn(
-            "flex size-12 shrink-0 items-center justify-center rounded-full border-[3px] transition-all sm:size-14",
-            status === "completed" && "border-cobalt bg-cobalt text-white",
-            status === "active" &&
-              "border-cobalt bg-white shadow-[0_0_0_4px_rgba(47,95,224,0.15)]",
-            status === "available" && "border-slate-200 bg-white group-hover:border-cobalt/50",
-            isSelected && "ring-2 ring-cobalt/30 ring-offset-2",
+            "flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
+            status === "completed" && "border-emerald-500 bg-emerald-500 text-white",
+            status === "started" &&
+              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(47,95,224,0.12)]",
+            status === "available" &&
+              "border-slate-200 bg-white text-slate-400 group-hover:border-cobalt/50 group-hover:text-cobalt",
           )}
+          aria-hidden
         >
           {status === "completed" ? (
             <CheckIcon className="size-5" strokeWidth={3} />
           ) : isInteractive ? (
-            <SparklesIcon
-              className={cn("size-5", status === "active" ? "text-emerald-500" : "text-cobalt")}
-            />
+            <SparklesIcon className="size-5" />
           ) : (
-            <span className="text-xs font-bold text-cobalt">Ej</span>
+            <DumbbellIcon className="size-5" />
           )}
         </span>
 
-        <span className="min-w-0 flex-1 pb-10 pt-2">
-          <span
-            className={cn(
-              "block font-medium leading-snug",
-              isSelected ? "font-semibold text-cobalt" : "text-ink",
-            )}
-          >
+        <span className="min-w-0 flex-1">
+          <span className="flex items-center gap-2">
+            <span className="text-[11px] font-semibold tabular-nums text-slate-400">
+              {String(position).padStart(2, "0")}
+            </span>
+            {status !== "available" ? (
+              <span
+                className={cn(
+                  "inline-flex rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                  STATUS_CHIP_STYLES[status],
+                )}
+              >
+                {STATUS_LABELS[status]}
+              </span>
+            ) : null}
+          </span>
+          <span className="mt-0.5 block font-medium leading-snug text-ink group-hover:text-cobalt">
             {lesson.title.replace(/^\d+\.\s*/, "")}
           </span>
-          <span className="block text-xs text-muted-foreground">
-            {lesson.kind === "interactive"
-              ? lesson.stepCount
-                ? `${lesson.stepCount} pasos`
-                : "Lección interactiva"
-              : `${lesson.exerciseCount} ejercicios`}
-          </span>
+          <span className="block text-xs text-muted-foreground">{lessonMetaLabel(lesson)}</span>
         </span>
+
+        <ChevronRightIcon
+          className="size-5 shrink-0 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-cobalt"
+          aria-hidden
+        />
       </Link>
+    </li>
+  );
+}
+
+function ModuleProgressPill({ courseModule }: { courseModule: ModuleSummary }) {
+  const { total, completed, percent } = getModuleProgress(courseModule);
+
+  if (total === 0) {
+    return null;
+  }
+
+  return (
+    <div className="flex items-center gap-3">
+      <div className="h-1.5 w-24 overflow-hidden rounded-full bg-slate-200">
+        <div
+          className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+      <span className="text-xs font-medium tabular-nums text-muted-foreground">
+        {completed}/{total}
+      </span>
     </div>
   );
 }
 
 export function LearningPath({ modules }: LearningPathProps) {
-  const defaultLesson = useMemo(() => pickDefaultLesson(modules), [modules]);
-  const [selectedId, setSelectedId] = useState<string | null>(() => defaultLesson?.id ?? null);
-
-  const selectedLesson =
-    modules.flatMap((m) => m.lessons).find((l) => l.id === selectedId) ?? defaultLesson;
-
   return (
     <div className="space-y-10" data-testid="learning-path">
       {modules.map((courseModule, moduleIndex) => (
-        <section key={courseModule.id} data-testid={`module-${courseModule.id}`}>
-          <div className="mb-6 inline-flex flex-col rounded-xl border-2 border-cobalt/30 bg-white px-4 py-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-cobalt">
-              Nivel {moduleIndex + 1}
-            </span>
-            <span className="font-heading text-lg font-semibold text-ink">{courseModule.title}</span>
+        <section
+          key={courseModule.id}
+          className="space-y-4"
+          data-testid={`module-${courseModule.id}`}
+        >
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200 pb-3">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-cobalt">
+                Tema {moduleIndex + 1}
+              </p>
+              <h2 className="font-heading text-xl font-semibold text-ink">{courseModule.title}</h2>
+            </div>
+            <ModuleProgressPill courseModule={courseModule} />
           </div>
 
           {courseModule.lessons.length === 0 ? (
             <p className="text-sm text-muted-foreground">Sin lecciones todavía en este tema.</p>
           ) : (
-            <div className="pl-1">
+            <ol className="space-y-3">
               {courseModule.lessons.map((lesson, index) => (
                 <PathNode
                   key={lesson.id}
                   lesson={lesson}
-                  status={lessonStatus(lesson)}
-                  isSelected={selectedId === lesson.id}
+                  position={index + 1}
                   isLast={index === courseModule.lessons.length - 1}
-                  href={resolveLessonHref(lesson.id)}
-                  onSelect={() => setSelectedId(lesson.id)}
                 />
               ))}
-            </div>
+            </ol>
           )}
 
-          <div className="relative z-10 mt-6">
-            <TopicExercisesSection
-              moduleTitle={courseModule.title}
-              exercises={courseModule.topicExercises ?? []}
-            />
-          </div>
+          <TopicExercisesSection
+            moduleTitle={courseModule.title}
+            exercises={courseModule.topicExercises ?? []}
+          />
         </section>
       ))}
-
-      {selectedLesson ? (
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-md">
-          <p className="text-sm text-muted-foreground">Siguiente paso</p>
-          <h3 className="mt-1 font-heading text-xl font-semibold text-ink">
-            {selectedLesson.title.replace(/^\d+\.\s*/, "")}
-          </h3>
-          <Button
-            nativeButton={false}
-            className="mt-4 w-full rounded-full py-6 text-base font-semibold sm:w-auto sm:min-w-[160px]"
-            render={<Link href={resolveLessonHref(selectedLesson.id)} />}
-          >
-            {selectedLesson.pathStatus === "completed" ? "Repasar" : "Empezar"}
-          </Button>
-        </div>
-      ) : null}
     </div>
   );
 }

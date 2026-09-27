@@ -58,7 +58,12 @@ export function MultipleChoice({
   const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
 
   return (
-    <div className={compact ? "space-y-4" : "space-y-8"} data-testid="lesson-multiple-choice">
+    <div
+      className={cn(
+        showContext ? "grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-12" : "space-y-4",
+      )}
+      data-testid="lesson-multiple-choice"
+    >
       {showContext ? (
         <ConceptCard
           title={step.title}
@@ -70,19 +75,24 @@ export function MultipleChoice({
         />
       ) : null}
 
-      <div className={compact ? "space-y-4" : "space-y-6"}>
-        <h2
+      <div className={cn(compact ? "space-y-4" : "space-y-6", !showContext && "max-w-3xl")}>
+        <h3
           className={cn(
-            "text-center font-heading font-semibold leading-snug text-ink",
-            compact ? "text-lg" : "text-xl sm:text-2xl",
+            "font-heading font-semibold leading-snug text-ink",
+            compact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl",
           )}
         >
           <MathRenderer text={step.question} />
-        </h2>
+        </h3>
 
         <fieldset disabled={disabled || checked}>
           <legend className="sr-only">Opciones de respuesta</legend>
-          <div className={cn("grid gap-3", useGrid ? "grid-cols-2" : "grid-cols-1")}>
+          <div
+            className={cn(
+              "grid gap-3",
+              useGrid ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1",
+            )}
+          >
             {step.options.map((option) => {
               const isSelected = selectedId === option.id;
               const isCorrectOption = option.id === step.correctOptionId;
@@ -93,9 +103,11 @@ export function MultipleChoice({
                   type="button"
                   onClick={() => setSelectedId(option.id)}
                   className={cn(
-                    "relative flex min-h-[3.25rem] items-center justify-center rounded-xl border-2 bg-white px-3 py-2.5 text-center text-sm font-medium transition-all sm:min-h-[3.5rem] sm:text-base",
+                    "relative flex min-h-[3.25rem] items-center justify-center rounded-xl border-2 bg-white px-3 py-2.5 text-center text-sm font-medium shadow-sm transition-all sm:min-h-[3.75rem] sm:text-base",
                     isSelected && !checked && "border-cobalt bg-cobalt-tint/30",
-                    !isSelected && !checked && "border-slate-200 hover:border-slate-300",
+                    !isSelected &&
+                      !checked &&
+                      "border-slate-200 hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md",
                     checked && isCorrectOption && "border-emerald-500 bg-emerald-50 text-emerald-900",
                     checked &&
                       isSelected &&
@@ -116,12 +128,6 @@ export function MultipleChoice({
             })}
           </div>
         </fieldset>
-
-        {step.hint && !checked ? (
-          <p className="text-center text-xs text-muted-foreground">
-            Pista: <MathRenderer text={step.hint} />
-          </p>
-        ) : null}
       </div>
     </div>
   );

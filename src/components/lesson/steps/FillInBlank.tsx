@@ -52,7 +52,12 @@ export function FillInBlank({
   const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
 
   return (
-    <div className={compact ? "space-y-4" : "space-y-8"} data-testid="lesson-fill-in-blank">
+    <div
+      className={cn(
+        showContext ? "grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-12" : "space-y-4",
+      )}
+      data-testid="lesson-fill-in-blank"
+    >
       {showContext ? (
         <ConceptCard
           title={step.title}
@@ -64,17 +69,17 @@ export function FillInBlank({
         />
       ) : null}
 
-      <div className={compact ? "space-y-4" : "space-y-6"}>
-        <h2
+      <div className={cn(compact ? "space-y-4" : "space-y-6", !showContext && "max-w-3xl")}>
+        <h3
           className={cn(
-            "text-center font-heading font-semibold leading-snug text-ink",
-            compact ? "text-lg" : "text-xl sm:text-2xl",
+            "font-heading font-semibold leading-snug text-ink",
+            compact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl",
           )}
         >
           <MathRenderer text={step.question} />
-        </h2>
+        </h3>
 
-        <div className="flex justify-center">
+        <div className="flex">
           <input
             type="text"
             value={value}
@@ -90,12 +95,6 @@ export function FillInBlank({
             data-testid="lesson-fill-input"
           />
         </div>
-
-        {step.hint && !checked ? (
-          <p className="text-center text-xs text-muted-foreground">
-            Pista: <MathRenderer text={step.hint} />
-          </p>
-        ) : null}
       </div>
     </div>
   );
