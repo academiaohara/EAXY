@@ -1,6 +1,5 @@
 "use client";
 
-import { LESSON_SHELL_WIDTH } from "@/components/lesson/LessonFrame";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
@@ -12,18 +11,20 @@ type LessonFooterDockProps = {
   feedback?: FeedbackStatus | null;
 };
 
+/** Pie del panel de la lección; se tiñe con el color del feedback. */
 export function LessonFooterDock({ action, help, feedback = null }: LessonFooterDockProps) {
   return (
     <div
       className={cn(
         "shrink-0 border-t transition-colors duration-300",
-        feedback === "correct" && "border-emerald-200 bg-emerald-50/80",
-        feedback === "incorrect" && "border-rose-200 bg-rose-50/80",
-        !feedback && "border-slate-200/80 bg-slate-100/70",
+        feedback === "correct" && "border-emerald-200/80 bg-emerald-50/70",
+        feedback === "incorrect" && "border-amber-200/80 bg-amber-50/70",
+        !feedback && "border-slate-100 bg-white",
       )}
       data-testid="lesson-footer-dock"
+      data-feedback={feedback ?? "none"}
     >
-      <div className={cn("flex items-center gap-3 py-3", LESSON_SHELL_WIDTH)}>
+      <div className="flex items-center gap-3 px-4 py-3.5 sm:px-8">
         {/* Espaciador simétrico al de la ayuda: deja la acción en el centro. */}
         <div className="flex-1" aria-hidden />
         <div className="flex shrink-0 items-center justify-center">{action}</div>

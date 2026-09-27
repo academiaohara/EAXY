@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { CheckIcon } from "lucide-react";
+import { CheckIcon, XIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
@@ -55,7 +55,9 @@ export function MultipleChoice({
 
   useRegisterLessonStepControl(control);
 
-  const showContext = Boolean(step.content?.length || step.math?.length || step.warning);
+  const showContext = Boolean(
+    step.content?.length || step.math?.length || step.warning || step.visuals?.length,
+  );
 
   return (
     <div
@@ -70,6 +72,7 @@ export function MultipleChoice({
           content={step.content}
           math={step.math}
           warning={step.warning}
+          visuals={step.visuals}
           compact={compact}
           showTitle={false}
         />
@@ -112,15 +115,20 @@ export function MultipleChoice({
                     checked &&
                       isSelected &&
                       !isCorrectOption &&
-                      "border-red-400 bg-red-50 animate-shake",
+                      "border-amber-400 bg-amber-50 text-amber-950 animate-shake",
                   )}
                 >
                   <span>
                     <MathRenderer text={option.text} />
                   </span>
                   {checked && isCorrectOption ? (
-                    <span className="absolute right-2 top-2 flex size-5 items-center justify-center rounded-full bg-emerald-500 text-white">
+                    <span className="lesson-point-pop absolute right-2 top-2 flex size-5 items-center justify-center rounded-full bg-emerald-500 text-white">
                       <CheckIcon className="size-3" strokeWidth={3} />
+                    </span>
+                  ) : null}
+                  {checked && isSelected && !isCorrectOption ? (
+                    <span className="lesson-point-pop absolute right-2 top-2 flex size-5 items-center justify-center rounded-full bg-amber-400 text-white">
+                      <XIcon className="size-3" strokeWidth={3} />
                     </span>
                   ) : null}
                 </button>
