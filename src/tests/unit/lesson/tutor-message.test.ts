@@ -4,8 +4,10 @@ import {
   getStepTutorMessage,
   getTutorMessage,
   getTutorReaction,
+  tutorMoodForReaction,
 } from "@/lib/lesson/tutor-message";
 import type { LessonStep } from "@/lib/lesson/types";
+import { tutorMoodForFeedback } from "@/lib/tutor/moods";
 
 const quizStep: LessonStep = {
   id: "q1",
@@ -71,5 +73,17 @@ describe("getTutorReaction", () => {
 
   it("permanece neutral en pasos de teoría", () => {
     expect(getTutorReaction(conceptStep, null)).toBe("idle");
+  });
+});
+
+describe("tutorMoodForReaction", () => {
+  it("coincide con el ánimo que ya define el feedback", () => {
+    expect(tutorMoodForReaction("correct")).toBe(tutorMoodForFeedback("correct"));
+    expect(tutorMoodForReaction("incorrect")).toBe(tutorMoodForFeedback("incorrect"));
+    expect(tutorMoodForReaction("idle")).toBe(tutorMoodForFeedback(null));
+  });
+
+  it("mantiene la mirada pensativa mientras el alumno responde", () => {
+    expect(tutorMoodForReaction("thinking")).toBe("thinking");
   });
 });

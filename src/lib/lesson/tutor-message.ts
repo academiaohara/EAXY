@@ -1,4 +1,5 @@
 import type { FeedbackStatus, LessonStep } from "@/lib/lesson/types";
+import type { TutorMood } from "@/lib/tutor/moods";
 
 /** Estado emocional del tutor; define el símbolo que aparece sobre la bola. */
 export type TutorReaction = "idle" | "thinking" | "correct" | "incorrect";
@@ -42,4 +43,16 @@ export function getTutorReaction(
     return "thinking";
   }
   return "idle";
+}
+
+const REACTION_MOODS: Record<TutorReaction, TutorMood> = {
+  idle: "idle",
+  thinking: "thinking",
+  correct: "celebrate",
+  incorrect: "sad",
+};
+
+/** Ánimo de la mascota para una reacción de la lección. */
+export function tutorMoodForReaction(reaction: TutorReaction): TutorMood {
+  return REACTION_MOODS[reaction];
 }

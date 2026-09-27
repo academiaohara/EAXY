@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
 
 type LessonCompleteProps = {
@@ -37,12 +37,10 @@ export function LessonComplete({
             >
               ✨
             </span>
-            <Image
-              src="/tutor/soot-sprite.jpg"
-              alt="Tutor Eaxy"
-              width={96}
-              height={96}
-              className="size-24 animate-[lesson-tutor-hop_0.6s_ease-out_3] rounded-full object-cover ring-2 ring-white"
+            <TutorMascot
+              mood="celebrate"
+              size={96}
+              label="El tutor celebra que has completado la lección"
             />
           </div>
         </div>

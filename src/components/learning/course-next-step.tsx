@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { SparklesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import type { NextLessonRef } from "@/lib/curriculum/course-progress";
 
@@ -51,13 +51,7 @@ export function CourseNextStep({ next }: CourseNextStepProps) {
       </div>
 
       <div className="flex items-start gap-3 rounded-3xl border border-slate-200 bg-white/70 p-4">
-        <Image
-          src="/tutor/soot-sprite.jpg"
-          alt=""
-          width={56}
-          height={56}
-          className="size-11 shrink-0 rounded-full object-cover ring-2 ring-white"
-        />
+        <TutorMascot mood="idle" size={44} label={null} className="shrink-0" />
         <p className="text-xs leading-relaxed text-muted-foreground">
           Te acompaño paso a paso dentro de la lección. Si algo no sale, pulsa{" "}
           <span className="font-medium text-ink">¿Por qué?</span> y lo vemos juntos.

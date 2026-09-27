@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { BookOpenIcon, DumbbellIcon, LayersIcon } from "lucide-react";
+import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { getCourseProgress } from "@/lib/curriculum/course-progress";
 import type { CourseSummary, ModuleSummary } from "@/lib/curriculum/types";
 
@@ -76,13 +76,7 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
 
         <div className="flex items-center justify-center lg:justify-end">
           <div className="relative flex size-32 items-center justify-center rounded-full bg-gradient-to-b from-cobalt-tint to-white sm:size-36">
-            <Image
-              src="/tutor/soot-sprite.jpg"
-              alt="Tutor Eaxy"
-              width={128}
-              height={128}
-              className="size-24 rounded-full object-cover ring-4 ring-white sm:size-28"
-            />
+            <TutorMascot mood="happy" size={112} label={null} />
             <span
               className="absolute -right-1 top-2 text-lg"
               aria-hidden
