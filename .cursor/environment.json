@@ -1,0 +1,5 @@
+{
+  "name": "EAXY",
+  "install": "npm ci",
+  "start": "bash scripts/agent-bootstrap.sh"
+}
