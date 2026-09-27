@@ -6,15 +6,42 @@ import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
 import { LessonFooterDock } from "@/components/lesson/LessonFooterDock";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
+import { LessonHelpButton } from "@/components/lesson/LessonHelpButton";
 import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
 import { LessonStepHeader } from "@/components/lesson/LessonStepHeader";
 import { LessonTutor } from "@/components/lesson/LessonTutor";
+import { TutorPanel } from "@/components/lesson/TutorPanel";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
 } from "@/components/lesson/LessonStepControlContext";
-import { getTutorMessage, getTutorReaction } from "@/lib/lesson/tutor-message";
-import { isQuizStep, type FeedbackStatus, type InteractiveLesson, type LessonStep } from "@/lib/lesson/types";
+import {
+  buildHelpRoute,
+  getHelpNode,
+  hasHelpTopics,
+  type HelpNode,
+  type HelpOption,
+} from "@/lib/lesson/help-route";
+import {
+  getFeedbackTutorMessage,
+  getStepTutorMessage,
+  getTutorMessage,
+  getTutorReaction,
+} from "@/lib/lesson/tutor-message";
+import {
+  appendTutorEntry,
+  countTutorEntries,
+  feedbackMessageKey,
+  stepMessageKey,
+  type TutorLogEntry,
+} from "@/lib/lesson/tutor-log";
+import {
+  isQuizStep,
+  type FeedbackStatus,
+  type InteractiveLesson,
+  type LessonStep,
+} from "@/lib/lesson/types";
+import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
   courseId: string;
@@ -27,19 +54,33 @@ type LessonContainerProps = {
   navigation?: LessonNavigationContext;
 };
 
-function getStepExplanation(step: LessonStep): string | undefined {
-  if (step.type === "multiple_choice" || step.type === "fill_in_blank") {
-    return step.explanation;
-  }
-  return undefined;
+function stepEntry(step: LessonStep): TutorLogEntry {
+  return {
+    key: stepMessageKey(step.id),
+    author: "tutor",
+    text: getStepTutorMessage(step),
+  };
+}
+
+function helpEntry(node: HelpNode, order: number): TutorLogEntry {
+  return {
+    key: `help:${node.id}:${order}`,
+    author: "tutor",
+    text: node.message,
+    detail: node.detail,
+    math: node.math,
+  };
 }
 
 function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const [stepIndex, setStepIndex] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
-  const [showExplanation, setShowExplanation] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [stars, setStars] = useState(0);
+  const [log, setLog] = useState<TutorLogEntry[]>(() => [stepEntry(lesson.steps[0])]);
+  const [panelOpen, setPanelOpen] = useState(false);
+  const [unseen, setUnseen] = useState(0);
+  const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const { control } = useLessonStepControl();
 
   const totalSteps = lesson.steps.length;
@@ -51,40 +92,118 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     [lesson.steps],
   );
 
+  const helpRoute = useMemo(() => buildHelpRoute(currentStep, feedback), [currentStep, feedback]);
+  const helpNode = helpNodeId ? getHelpNode(helpRoute, helpNodeId) ?? null : null;
+  const canAskForHelp = hasHelpTopics(helpRoute);
+
+  /**
+   * Registra lo que se dicen tutor y alumno. Lo que el tutor cuenta con el
+   * panel cerrado queda pendiente y se avisa sobre la bola.
+   */
+  const pushEntries = useCallback(
+    (entries: TutorLogEntry[]) => {
+      setLog((prev) => entries.reduce(appendTutorEntry, prev));
+      if (!panelOpen) {
+        setUnseen((prev) => prev + countTutorEntries(entries));
+      }
+    },
+    [panelOpen],
+  );
+
+  const openPanel = useCallback(() => {
+    setPanelOpen(true);
+    setUnseen(0);
+  }, []);
+
+  const closePanel = useCallback(() => {
+    setPanelOpen(false);
+    setUnseen(0);
+  }, []);
+
   const handleCheck = useCallback(
     (correct: boolean) => {
       if (feedback !== null) {
         return;
       }
 
+      const status: FeedbackStatus = correct ? "correct" : "incorrect";
       if (correct) {
         setStars((prev) => prev + 1);
       }
-      setFeedback(correct ? "correct" : "incorrect");
+      setFeedback(status);
+      pushEntries([
+        {
+          key: feedbackMessageKey(currentStep.id, status),
+          author: "tutor",
+          text: getFeedbackTutorMessage(status),
+        },
+      ]);
     },
-    [feedback],
+    [currentStep.id, feedback, pushEntries],
   );
 
   const goToNextStep = useCallback(() => {
-    if (stepIndex < totalSteps - 1) {
-      setStepIndex(stepIndex + 1);
+    setHelpNodeId(null);
+    const nextStep = lesson.steps[stepIndex + 1];
+    if (!nextStep) {
+      setCompleted(true);
       return;
     }
-    setCompleted(true);
-  }, [stepIndex, totalSteps]);
+    setStepIndex(stepIndex + 1);
+    pushEntries([stepEntry(nextStep)]);
+  }, [lesson.steps, pushEntries, stepIndex]);
 
   const handleNext = useCallback(() => {
     setFeedback(null);
-    setShowExplanation(false);
     goToNextStep();
   }, [goToNextStep]);
+
+  /** El alumno dice que no lo entiende: el tutor le pregunta qué parte. */
+  const openHelp = useCallback(
+    (trigger: string) => {
+      const root = getHelpNode(helpRoute, helpRoute.rootId);
+      if (!root) {
+        return;
+      }
+
+      openPanel();
+      setHelpNodeId(root.id);
+      pushEntries([
+        { key: `choice:${log.length}`, author: "student", text: trigger },
+        helpEntry(root, log.length + 1),
+      ]);
+    },
+    [helpRoute, log.length, openPanel, pushEntries],
+  );
+
+  const chooseHelpOption = useCallback(
+    (option: HelpOption) => {
+      const next = option.next ? getHelpNode(helpRoute, option.next) : undefined;
+      const entries: TutorLogEntry[] = [
+        { key: `choice:${log.length}`, author: "student", text: option.label },
+      ];
+      if (next) {
+        entries.push(helpEntry(next, log.length + 1));
+      }
+      pushEntries(entries);
+
+      setHelpNodeId(option.next);
+      if (option.next === null) {
+        closePanel();
+      }
+    },
+    [closePanel, helpRoute, log.length, pushEntries],
+  );
 
   function restartLesson() {
     setStepIndex(0);
     setFeedback(null);
-    setShowExplanation(false);
     setCompleted(false);
     setStars(0);
+    setLog([stepEntry(lesson.steps[0])]);
+    setUnseen(0);
+    setHelpNodeId(null);
+    setPanelOpen(false);
   }
 
   if (completed) {
@@ -99,10 +218,16 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     );
   }
 
-  const explanation = getStepExplanation(currentStep);
+  const reaction = getTutorReaction(currentStep, feedback);
 
   return (
-    <div className="flex h-full min-h-0 w-full flex-1 flex-col" data-testid="interactive-lesson">
+    <div
+      className={cn(
+        "flex h-full min-h-0 w-full flex-1 flex-col transition-[padding] duration-300",
+        panelOpen && "lg:pr-[24rem]",
+      )}
+      data-testid="interactive-lesson"
+    >
       <h1 className="sr-only">{lesson.title}</h1>
 
       <LessonFrame
@@ -135,24 +260,40 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         tutor={
           <LessonTutor
             message={getTutorMessage(currentStep, feedback)}
-            detail={feedback && showExplanation ? explanation : undefined}
-            reaction={getTutorReaction(currentStep, feedback)}
+            reaction={reaction}
+            onOpenPanel={openPanel}
+            unreadCount={unseen}
+            panelOpen={panelOpen}
           />
         }
         action={
-          feedback ? (
-            <LessonFeedbackActions
-              status={feedback}
-              hasExplanation={Boolean(explanation)}
-              explanationVisible={showExplanation}
-              onToggleExplanation={() => setShowExplanation((prev) => !prev)}
-              isLastStep={isLastStep}
-              onNext={handleNext}
-            />
-          ) : control ? (
-            <LessonPrimaryAction control={control} />
-          ) : null
+          <>
+            {canAskForHelp ? (
+              <LessonHelpButton
+                feedback={feedback}
+                onClick={() =>
+                  openHelp(feedback === "incorrect" ? "Vamos a verlo" : "No lo entiendo")
+                }
+              />
+            ) : null}
+            {feedback ? (
+              <LessonFeedbackActions status={feedback} isLastStep={isLastStep} onNext={handleNext} />
+            ) : control ? (
+              <LessonPrimaryAction control={control} />
+            ) : null}
+          </>
         }
+      />
+
+      <TutorPanel
+        open={panelOpen}
+        log={log}
+        helpNode={helpNode}
+        canAskForHelp={canAskForHelp}
+        reaction={reaction}
+        onClose={closePanel}
+        onStartHelp={() => openHelp("No entiendo algo")}
+        onChooseOption={chooseHelpOption}
       />
     </div>
   );

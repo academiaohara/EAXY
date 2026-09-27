@@ -75,14 +75,8 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
         </div>
 
         <div className="flex items-center justify-center lg:justify-end">
-          <div className="relative flex size-32 items-center justify-center rounded-full bg-gradient-to-b from-cobalt-tint to-white sm:size-36">
+          <div className="flex size-32 items-center justify-center rounded-full bg-gradient-to-b from-cobalt-tint to-white sm:size-36">
             <TutorMascot mood="happy" size={112} label={null} />
-            <span
-              className="absolute -right-1 top-2 text-lg"
-              aria-hidden
-            >
-              ✨
-            </span>
           </div>
         </div>
       </div>
