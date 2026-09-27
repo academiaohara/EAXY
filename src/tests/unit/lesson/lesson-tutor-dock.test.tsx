@@ -121,4 +121,39 @@ describe("LessonTutorDock", () => {
 
     expect(screen.queryByTestId("lesson-tutor-button")).not.toBeInTheDocument();
   });
+
+  it("avisa de cada frase que dice para guardarla en el historial", () => {
+    const onSpeak = vi.fn();
+    render(
+      <LessonTutorDock
+        speechKey={SPEECH_KEY}
+        messages={MESSAGES}
+        onOpenPanel={vi.fn()}
+        onSpeak={onSpeak}
+      />,
+    );
+
+    expect(onSpeak).toHaveBeenLastCalledWith(0, "¡Muy bien!");
+
+    finishLine("¡Muy bien!");
+
+    expect(onSpeak).toHaveBeenLastCalledWith(1, "Lo has clavado.");
+  });
+
+  it("no dice nada nuevo mientras el panel está abierto", () => {
+    const onSpeak = vi.fn();
+    render(
+      <LessonTutorDock
+        speechKey={SPEECH_KEY}
+        messages={MESSAGES}
+        onOpenPanel={vi.fn()}
+        onSpeak={onSpeak}
+        panelOpen
+      />,
+    );
+
+    finishLine("¡Muy bien!");
+
+    expect(onSpeak).not.toHaveBeenCalled();
+  });
 });

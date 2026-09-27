@@ -25,7 +25,9 @@ export function InteractiveToolStepView({ step, onContinue, compact = false }: I
 
   useRegisterLessonStepControl(control);
 
-  const hasContext = Boolean(step.content?.length || step.math?.length || step.warning);
+  const hasContext = Boolean(
+    step.content?.length || step.math?.length || step.warning || step.visuals?.length,
+  );
 
   return (
     <div
@@ -41,6 +43,7 @@ export function InteractiveToolStepView({ step, onContinue, compact = false }: I
           content={step.content}
           math={step.math}
           warning={step.warning}
+          visuals={step.visuals}
           compact={compact}
           showTitle={false}
         />

@@ -14,7 +14,68 @@ export type LessonStepBase = {
   math?: string[];
   /** Aviso destacado (p. ej. soluciones falsas). */
   warning?: string;
+  /** Ayudas visuales animadas que acompañan a la teoría. */
+  visuals?: LessonVisual[];
 };
+
+export type VisualTone = "cobalt" | "emerald" | "amber" | "violet" | "rose";
+
+/** Descompone una fórmula en piezas y las va señalando con su nombre. */
+export type EquationAnatomyVisual = {
+  kind: "equation-anatomy";
+  title?: string;
+  parts: { tex: string; label?: string; tone?: VisualTone }[];
+  caption?: string;
+};
+
+/** Sustituye pares $(x, y)$ en $ax + by = c$ y marca si cumplen la igualdad. */
+export type SolutionCheckVisual = {
+  kind: "solution-check";
+  title?: string;
+  a: number;
+  b: number;
+  c: number;
+  pairs: [number, number][];
+};
+
+/** Varias gráficas pequeñas que se dibujan solas, cada una con su rótulo. */
+export type GraphGalleryVisual = {
+  kind: "graph-gallery";
+  title?: string;
+  items: { caption: string; detail?: string; graph: SystemGraphConfig }[];
+};
+
+/** Tarjetas comparativas (métodos, tipos…) que entran una tras otra. */
+export type CardsVisual = {
+  kind: "cards";
+  title?: string;
+  items: { title: string; math?: string; caption?: string; tone?: VisualTone }[];
+};
+
+/** Operación en columna: las filas aparecen y, bajo la raya, el resultado. */
+export type StackVisual = {
+  kind: "stack";
+  title?: string;
+  rows: string[];
+  operator?: string;
+  result: string;
+  caption?: string;
+};
+
+/** Del enunciado al álgebra: cada frase se convierte en su expresión. */
+export type TranslateVisual = {
+  kind: "translate";
+  title?: string;
+  rows: { text: string; math: string }[];
+};
+
+export type LessonVisual =
+  | EquationAnatomyVisual
+  | SolutionCheckVisual
+  | GraphGalleryVisual
+  | CardsVisual
+  | StackVisual
+  | TranslateVisual;
 
 export type ConceptStep = LessonStepBase & {
   type: "concept";

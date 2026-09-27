@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   buildHelpRoute,
+  buildMessageHelpRoute,
+  conceptNodeId,
   getHelpNode,
   hasHelpTopics,
   HELP_ROOT_ID,
   HELP_STUCK_ID,
 } from "@/lib/lesson/help-route";
+import { getConcept } from "@/lib/lesson/concept-glossary";
 import type { LessonStep } from "@/lib/lesson/types";
 
 const quizStep: LessonStep = {
@@ -142,5 +145,70 @@ describe("hasHelpTopics", () => {
 
   it("es falso cuando el paso no aporta material de ayuda", () => {
     expect(hasHelpTopics(buildHelpRoute(bareStep, null))).toBe(false);
+  });
+});
+
+describe("buildMessageHelpRoute", () => {
+  function messageRootIds(text: string, step: LessonStep = bareStep) {
+    const route = buildMessageHelpRoute(step, null, text);
+    return getHelpNode(route, HELP_ROOT_ID)!.options.map((option) => option.id);
+  }
+
+  it("ofrece explicar los conceptos que salen en el mensaje", () => {
+    expect(messageRootIds("Las rectas son paralelas → ninguna solución.")).toEqual([
+      "concept-incompatible",
+      "clear",
+    ]);
+  });
+
+  it("añade después lo que el paso tiene para repasar", () => {
+    expect(messageRootIds("Una **solución** hace cierta la igualdad.", conceptStep)).toEqual([
+      "concept-solucion",
+      "theory",
+      "clear",
+    ]);
+  });
+
+  it("limita los conceptos para no abrumar", () => {
+    const ids = messageRootIds(
+      "Despeja la incógnita, sustituye en el sistema y comprueba la solución.",
+    );
+    expect(ids.filter((id) => id.startsWith("concept-"))).toHaveLength(3);
+  });
+
+  it("cada concepto se puede ampliar con un ejemplo y volver atrás", () => {
+    const route = buildMessageHelpRoute(bareStep, null, "Despeja $x$");
+    const node = getHelpNode(route, conceptNodeId("despejar"))!;
+    expect(node.options.map((option) => option.id)).toEqual(["got-it", "example", "other"]);
+    expect(node.options.find((option) => option.id === "other")?.next).toBe(HELP_ROOT_ID);
+  });
+
+  it("lleva la ayuda visual del concepto a su nodo", () => {
+    const route = buildMessageHelpRoute(bareStep, null, "Son paralelas");
+    expect(getHelpNode(route, conceptNodeId("incompatible"))?.visual?.kind).toBe("graph-gallery");
+  });
+
+  it("incluye el concepto pulsado aunque no salga en el texto", () => {
+    const route = buildMessageHelpRoute(bareStep, null, "hola", [getConcept("recta")!]);
+    expect(getHelpNode(route, conceptNodeId("recta"))).toBeDefined();
+  });
+
+  it("sin nada que explicar sólo deja cerrar", () => {
+    expect(messageRootIds("¡Muy bien!")).toEqual(["clear"]);
+  });
+
+  it("todas las opciones apuntan a un nodo que existe", () => {
+    const route = buildMessageHelpRoute(
+      quizStep,
+      "incorrect",
+      "Despeja la incógnita y comprueba el punto de corte",
+    );
+    for (const node of route.nodes) {
+      for (const option of node.options) {
+        if (option.next !== null) {
+          expect(getHelpNode(route, option.next), `${node.id} -> ${option.next}`).toBeDefined();
+        }
+      }
+    }
   });
 });

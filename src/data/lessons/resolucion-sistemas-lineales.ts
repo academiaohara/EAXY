@@ -18,6 +18,32 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
       ],
       warning:
         "El método de sustitución es especialmente útil cuando una incógnita tiene coeficiente $1$ o $-1$.",
+      visuals: [
+        {
+          kind: "cards",
+          title: "La idea de cada método",
+          items: [
+            {
+              title: "Sustitución",
+              math: "3(15 - 2y) - 5y = 1",
+              caption: "Despejo y meto en la otra.",
+              tone: "cobalt",
+            },
+            {
+              title: "Igualación",
+              math: "15 - 2y = \\tfrac{1 + 5y}{3}",
+              caption: "Despejo lo mismo en las dos e igualo.",
+              tone: "violet",
+            },
+            {
+              title: "Reducción",
+              math: "\\cancel{3x} - \\cancel{3x} = 0",
+              caption: "Sumo y una letra desaparece.",
+              tone: "emerald",
+            },
+          ],
+        },
+      ],
     },
     {
       id: "sustitucion-animada",
@@ -61,6 +87,16 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
       content: [
         "Multiplicamos una o ambas ecuaciones para que una incógnita tenga el mismo coeficiente con signo opuesto.",
         "Al **sumar** las ecuaciones, esa incógnita desaparece y resolvemos la que queda.",
+      ],
+      visuals: [
+        {
+          kind: "stack",
+          title: "Mira cómo desaparece la $x$",
+          rows: ["\\cancel{3x} - 5y = 1", "\\cancel{-3x} - 6y = -45"],
+          operator: "+",
+          result: "-11y = -44",
+          caption: "La 2.ª ecuación se ha multiplicado por $-3$ para que $3x$ y $-3x$ se anulen.",
+        },
       ],
     },
     {

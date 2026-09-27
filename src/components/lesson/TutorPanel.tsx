@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { ChevronLeftIcon, XIcon } from "lucide-react";
+import { Fragment, useEffect, useRef } from "react";
+import { ChevronLeftIcon, MessageCircleQuestionIcon, XIcon } from "lucide-react";
 import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
+import { LessonVisualView } from "@/components/lesson/visuals/LessonVisualView";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
@@ -13,35 +14,102 @@ import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-mes
 type TutorPanelProps = {
   open: boolean;
   log: TutorLogEntry[];
+  /** Título de cada paso, para separar el historial por pasos. */
+  stepTitles?: Record<string, string>;
   /** Nodo de ayuda abierto; sin él el panel es sólo el historial. */
   helpNode: HelpNode | null;
   /** El paso tiene algo que explicar, así que se puede pedir ayuda. */
   canAskForHelp: boolean;
   reaction: TutorReaction;
+  /** Mensaje del historial sobre el que el alumno está preguntando. */
+  activeEntryKey?: string | null;
   onClose: () => void;
   onStartHelp: () => void;
   onChooseOption: (option: HelpOption) => void;
+  /** El alumno pulsa un mensaje del tutor para que se lo explique. */
+  onAskAbout?: (entry: TutorLogEntry) => void;
 };
 
-function TutorBubble({ entry }: { entry: TutorLogEntry }) {
+const toneBubble = {
+  none: "border-slate-200 bg-white",
+  correct: "border-emerald-200 bg-emerald-50",
+  incorrect: "border-amber-200 bg-amber-50",
+};
+
+function TutorBubbleContent({ entry }: { entry: TutorLogEntry }) {
   return (
-    <div className="flex flex-col gap-2 rounded-2xl rounded-tl-sm border border-slate-200 bg-white px-4 py-3 text-sm text-ink shadow-sm">
-      <p className="font-medium">
+    <>
+      <span className="block font-medium">
         <MathRenderer text={entry.text} />
-      </p>
+      </span>
       {entry.detail?.map((paragraph) => (
-        <p key={paragraph} className="text-[0.8125rem] leading-relaxed text-ink-muted">
+        <span key={paragraph} className="block text-[0.8125rem] leading-relaxed text-ink-muted">
           <MathRenderer text={paragraph} />
-        </p>
+        </span>
       ))}
+    </>
+  );
+}
+
+function TutorBubble({
+  entry,
+  active,
+  onAsk,
+}: {
+  entry: TutorLogEntry;
+  active: boolean;
+  onAsk?: (entry: TutorLogEntry) => void;
+}) {
+  const tone = toneBubble[entry.tone ?? "none"];
+  const base =
+    "lesson-chat-enter flex max-w-[92%] flex-col gap-2 self-start rounded-2xl rounded-tl-sm border px-4 py-3 text-left text-sm text-ink shadow-sm";
+
+  if (onAsk && entry.stepId) {
+    return (
+      <button
+        type="button"
+        onClick={() => onAsk(entry)}
+        className={cn(
+          base,
+          tone,
+          "group relative transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalt",
+          active && "border-cobalt ring-2 ring-cobalt/20",
+        )}
+        aria-label={`Pregúntale a ${TUTOR_NICKNAME} por este mensaje`}
+        aria-pressed={active}
+        data-testid="tutor-log-message"
+      >
+        <TutorBubbleContent entry={entry} />
+        <span
+          className={cn(
+            "pointer-events-none absolute -bottom-2.5 right-3 flex items-center gap-1 rounded-full border border-cobalt/30 bg-white px-2 py-0.5 text-[11px] font-semibold text-cobalt shadow-sm transition-opacity",
+            active ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100",
+          )}
+          aria-hidden
+        >
+          <MessageCircleQuestionIcon className="size-3.5" />
+          {active ? "Te lo explico abajo" : "Explícame esto"}
+        </span>
+      </button>
+    );
+  }
+
+  return (
+    <div className={cn(base, tone)} data-testid="tutor-log-explanation">
+      <TutorBubbleContent entry={entry} />
       {entry.math?.length ? <MathBlockList blocks={entry.math} className="px-3 py-2" /> : null}
+      {entry.visual ? (
+        <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-3">
+          <LessonVisualView visual={entry.visual} />
+        </div>
+      ) : null}
     </div>
   );
 }
 
 function StudentBubble({ entry }: { entry: TutorLogEntry }) {
   return (
-    <div className="self-end rounded-2xl rounded-br-sm bg-cobalt px-4 py-2 text-sm font-medium text-white">
+    <div className="lesson-chat-enter max-w-[85%] self-end rounded-2xl rounded-br-sm bg-cobalt px-4 py-2 text-sm font-medium text-white">
       <MathRenderer text={entry.text} />
     </div>
   );
@@ -50,12 +118,15 @@ function StudentBubble({ entry }: { entry: TutorLogEntry }) {
 export function TutorPanel({
   open,
   log,
+  stepTitles = {},
   helpNode,
   canAskForHelp,
   reaction,
+  activeEntryKey = null,
   onClose,
   onStartHelp,
   onChooseOption,
+  onAskAbout,
 }: TutorPanelProps) {
   const listRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -88,13 +159,15 @@ export function TutorPanel({
     }
     const node = listRef.current;
     if (node) {
-      node.scrollTop = node.scrollHeight;
+      node.scrollTo({ top: node.scrollHeight, behavior: "smooth" });
     }
   }, [open, log.length, helpNode?.id]);
 
   if (!open) {
     return null;
   }
+
+  let previousStepId: string | undefined;
 
   return (
     <>
@@ -108,7 +181,7 @@ export function TutorPanel({
 
       <aside
         className={cn(
-          "tutor-panel-slide-in fixed inset-y-0 left-0 z-50 flex w-full max-w-[26rem] flex-col border-r border-slate-200 bg-white shadow-xl lg:w-[24rem]",
+          "tutor-panel-slide-in fixed inset-y-0 left-0 z-50 flex w-full max-w-[26rem] flex-col border-r border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-xl lg:w-[24rem]",
         )}
         role="dialog"
         aria-modal="false"
@@ -126,11 +199,13 @@ export function TutorPanel({
           <ChevronLeftIcon className="size-5" aria-hidden />
         </button>
 
-        <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 px-4 py-3">
+        <header className="flex shrink-0 items-center gap-3 border-b border-slate-200 bg-white px-4 py-3">
           <TutorMascot mood={tutorMoodForReaction(reaction)} size={40} label={null} />
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-ink">{TUTOR_NICKNAME}</p>
-            <p className="truncate text-xs text-ink-muted">Todo lo que te ha dicho en la lección</p>
+            <p className="truncate text-xs text-ink-muted">
+              Pulsa un mensaje y te explico lo que quieras
+            </p>
           </div>
           <button
             ref={closeRef}
@@ -146,7 +221,7 @@ export function TutorPanel({
 
         <div
           ref={listRef}
-          className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 py-4"
+          className="flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto overscroll-contain px-4 py-4"
           data-testid="tutor-panel-log"
         >
           {log.length === 0 ? (
@@ -154,13 +229,34 @@ export function TutorPanel({
               Aquí se van guardando los mensajes de {TUTOR_NICKNAME} mientras avanzas.
             </p>
           ) : (
-            log.map((entry, index) =>
-              entry.author === "tutor" ? (
-                <TutorBubble key={`${entry.key}-${index}`} entry={entry} />
-              ) : (
-                <StudentBubble key={`${entry.key}-${index}`} entry={entry} />
-              ),
-            )
+            log.map((entry, index) => {
+              const showDivider =
+                entry.stepId !== undefined && entry.stepId !== previousStepId && stepTitles[entry.stepId];
+              if (entry.stepId !== undefined) {
+                previousStepId = entry.stepId;
+              }
+              return (
+                <Fragment key={`${entry.key}-${index}`}>
+                  {showDivider ? (
+                    <div
+                      className="mt-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-ink-muted first:mt-0"
+                      data-testid="tutor-log-step-divider"
+                    >
+                      <span className="h-px flex-1 bg-slate-200" aria-hidden />
+                      <span className="max-w-[75%] truncate">
+                        <MathRenderer text={stepTitles[entry.stepId!]} />
+                      </span>
+                      <span className="h-px flex-1 bg-slate-200" aria-hidden />
+                    </div>
+                  ) : null}
+                  {entry.author === "tutor" ? (
+                    <TutorBubble entry={entry} active={entry.key === activeEntryKey} onAsk={onAskAbout} />
+                  ) : (
+                    <StudentBubble entry={entry} />
+                  )}
+                </Fragment>
+              );
+            })
           )}
         </div>
 
@@ -170,20 +266,21 @@ export function TutorPanel({
               <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
                 Elige una
               </p>
-              {helpNode.options.map((option) => (
+              {helpNode.options.map((option, index) => (
                 <button
                   key={option.id}
                   type="button"
                   onClick={() => onChooseOption(option)}
                   className={cn(
-                    "rounded-xl border-2 px-4 py-2.5 text-left text-sm font-medium transition-all",
+                    "lesson-chat-enter rounded-xl border-2 px-4 py-2.5 text-left text-sm font-medium transition-all",
                     option.next === null
                       ? "border-emerald-200 bg-emerald-50 text-emerald-900 hover:border-emerald-300"
                       : "border-slate-200 bg-white text-ink hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-sm",
                   )}
+                  style={{ animationDelay: `${index * 60}ms` }}
                   data-testid={`tutor-help-option-${option.id}`}
                 >
-                  {option.label}
+                  <MathRenderer text={option.label} />
                 </button>
               ))}
             </div>

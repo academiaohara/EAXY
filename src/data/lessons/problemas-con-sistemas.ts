@@ -14,6 +14,18 @@ export const problemasConSistemasLesson: InteractiveLesson = {
         "Muchos problemas se resuelven traduciendo el enunciado al lenguaje algebraico.",
         "Lo habitual es definir **dos incógnitas**, plantear **dos ecuaciones** con los datos del problema y resolver el sistema.",
       ],
+      visuals: [
+        {
+          kind: "translate",
+          title: "Del enunciado al álgebra",
+          rows: [
+            { text: "Lo que cuesta un bocadillo", math: "x" },
+            { text: "Lo que cuesta un refresco", math: "y" },
+            { text: "4 bocadillos y 5 refrescos cuestan 14 €", math: "4x + 5y = 14" },
+            { text: "3 bocadillos y 2 refrescos cuestan 8,40 €", math: "3x + 2y = 8{,}40" },
+          ],
+        },
+      ],
     },
     {
       id: "bocadillos",
@@ -48,6 +60,18 @@ export const problemasConSistemasLesson: InteractiveLesson = {
       content: [
         "En problemas de inversión repartimos un capital entre dos opciones con distinto interés.",
         "Una ecuación relaciona las cantidades ($x + y = \\text{total}$) y otra, los intereses ($0{,}04x + 0{,}05y = \\text{ganancia}$).",
+      ],
+      visuals: [
+        {
+          kind: "translate",
+          title: "Ejemplo: reparto 10 000 € y gano 460 €",
+          rows: [
+            { text: "Lo que pongo en la cuenta al 4 %", math: "x" },
+            { text: "Lo que pongo en la cuenta al 5 %", math: "y" },
+            { text: "Entre las dos suman 10 000 €", math: "x + y = 10\\,000" },
+            { text: "Los intereses suman 460 €", math: "0{,}04x + 0{,}05y = 460" },
+          ],
+        },
       ],
     },
     {

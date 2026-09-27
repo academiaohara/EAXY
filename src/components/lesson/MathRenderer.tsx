@@ -8,6 +8,11 @@ type MathRendererProps = {
   text: string;
   display?: boolean;
   className?: string;
+  /**
+   * Relaciona cada término en `**negrita**` con un concepto explicable. Los que
+   * lo tienen se marcan con `data-concept` para poder pulsarlos.
+   */
+  conceptLookup?: (term: string) => string | undefined;
 };
 
 function renderLatex(latex: string, display: boolean): string {
@@ -23,7 +28,7 @@ function renderLatex(latex: string, display: boolean): string {
 }
 
 /** Renderiza texto con LaTeX inline ($...$) y bloques display opcionales. */
-export function MathRenderer({ text, display = false, className }: MathRendererProps) {
+export function MathRenderer({ text, display = false, className, conceptLookup }: MathRendererProps) {
   const html = useMemo(() => {
     if (display) {
       return renderLatex(text, true);
@@ -40,10 +45,15 @@ export function MathRenderer({ text, display = false, className }: MathRendererP
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
-          .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+          .replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
+            const conceptId = conceptLookup?.(term);
+            return conceptId
+              ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
+              : `<strong>${term}</strong>`;
+          });
       })
       .join("");
-  }, [text, display]);
+  }, [text, display, conceptLookup]);
 
   if (display) {
     return (

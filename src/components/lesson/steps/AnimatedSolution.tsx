@@ -37,7 +37,9 @@ export function AnimatedSolution({ step, onContinue, compact = false }: Animated
 
   useRegisterLessonStepControl(control);
 
-  const hasContext = Boolean(step.content?.length || step.math?.length || step.warning);
+  const hasContext = Boolean(
+    step.content?.length || step.math?.length || step.warning || step.visuals?.length,
+  );
 
   return (
     <div
@@ -52,6 +54,7 @@ export function AnimatedSolution({ step, onContinue, compact = false }: Animated
           content={step.content}
           math={step.math}
           warning={step.warning}
+          visuals={step.visuals}
           compact={compact}
           showTitle={false}
         />

@@ -1,4 +1,5 @@
-import type { FeedbackStatus, LessonStep } from "@/lib/lesson/types";
+import { findConcepts, type LessonConcept } from "@/lib/lesson/concept-glossary";
+import type { FeedbackStatus, LessonStep, LessonVisual } from "@/lib/lesson/types";
 
 export type HelpOption = {
   id: string;
@@ -15,6 +16,8 @@ export type HelpNode = {
   detail?: string[];
   /** Bloques de matemáticas en modo display. */
   math?: string[];
+  /** Ayuda visual que acompaña a la explicación. */
+  visual?: LessonVisual;
   options: HelpOption[];
 };
 
@@ -181,6 +184,100 @@ export function buildHelpRoute(step: LessonStep, feedback: FeedbackStatus | null
 
 export function getHelpNode(route: HelpRoute, nodeId: string): HelpNode | undefined {
   return route.nodes.find((node) => node.id === nodeId);
+}
+
+/** Conceptos que se ofrecen como máximo por mensaje, para no abrumar. */
+export const MESSAGE_HELP_MAX_CONCEPTS = 3;
+
+export function conceptNodeId(conceptId: string): string {
+  return `concept:${conceptId}`;
+}
+
+function exampleNodeId(conceptId: string): string {
+  return `example:${conceptId}`;
+}
+
+const GOT_IT: HelpOption = { id: "got-it", label: "Ahora sí, gracias", next: null };
+const OTHER: HelpOption = { id: "other", label: "Explícame otra cosa", next: HELP_ROOT_ID };
+
+function conceptNodes(concept: LessonConcept): HelpNode[] {
+  const nodes: HelpNode[] = [
+    {
+      id: conceptNodeId(concept.id),
+      message: concept.message,
+      detail: concept.detail,
+      math: concept.math,
+      visual: concept.visual,
+      options: [
+        GOT_IT,
+        ...(concept.example
+          ? [{ id: "example", label: "Ponme un ejemplo", next: exampleNodeId(concept.id) }]
+          : []),
+        OTHER,
+      ],
+    },
+  ];
+
+  if (concept.example) {
+    nodes.push({
+      id: exampleNodeId(concept.id),
+      message: concept.example.message,
+      detail: concept.example.detail,
+      math: concept.example.math,
+      visual: concept.example.visual,
+      options: [GOT_IT, OTHER],
+    });
+  }
+
+  return nodes;
+}
+
+/**
+ * Ruta de ayuda sobre un mensaje concreto del tutor: ofrece explicar los
+ * conceptos que salen en él y, después, lo que el paso tenga para repasar.
+ * `extraConcepts` añade conceptos que no aparecen en el texto (p. ej. el
+ * término resaltado que el alumno ha pulsado en la teoría).
+ */
+export function buildMessageHelpRoute(
+  step: LessonStep,
+  feedback: FeedbackStatus | null,
+  message: string,
+  extraConcepts: LessonConcept[] = [],
+): HelpRoute {
+  const concepts = [...extraConcepts, ...findConcepts(message)]
+    .filter((concept, index, all) => all.findIndex((other) => other.id === concept.id) === index)
+    .slice(0, Math.max(MESSAGE_HELP_MAX_CONCEPTS, extraConcepts.length));
+  const topics = helpTopics(step, feedback);
+  const hasSomething = concepts.length > 0 || topics.length > 0;
+
+  const root: HelpNode = {
+    id: HELP_ROOT_ID,
+    message: hasSomething
+      ? "¿Qué quieres que te explique de esto?"
+      : "Esto es sólo un comentario, no hay nada más que explicar aquí.",
+    options: [
+      ...concepts.map((concept) => ({
+        id: `concept-${concept.id}`,
+        label: concept.question,
+        next: conceptNodeId(concept.id),
+      })),
+      ...topics.map((topic) => ({ id: topic.id, label: topic.label, next: topic.id })),
+      { id: "clear", label: "Nada, ya lo tengo", next: null },
+    ],
+  };
+
+  const topicNodes: HelpNode[] = topics.map((topic) => ({
+    id: topic.id,
+    message: topic.message,
+    detail: topic.detail,
+    math: topic.math,
+    options: [GOT_IT, OTHER],
+  }));
+
+  return {
+    rootId: HELP_ROOT_ID,
+    nodes: [root, ...concepts.flatMap(conceptNodes), ...topicNodes],
+  };
 }
 
 /** El paso ofrece algo más que "ya lo tengo". */
