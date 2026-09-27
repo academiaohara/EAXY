@@ -5,14 +5,14 @@ import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type LessonFooterDockProps = {
-  /** Tutor a la izquierda: acompaña siempre al alumno. */
-  tutor: React.ReactNode;
-  /** Acción principal del paso (comprobar, continuar, finalizar). */
+  /** Acción principal del paso (comprobar, continuar, finalizar): va centrada. */
   action: React.ReactNode;
+  /** Atajo de ayuda, a un lado para no competir con la acción principal. */
+  help?: React.ReactNode;
   feedback?: FeedbackStatus | null;
 };
 
-export function LessonFooterDock({ tutor, action, feedback = null }: LessonFooterDockProps) {
+export function LessonFooterDock({ action, help, feedback = null }: LessonFooterDockProps) {
   return (
     <div
       className={cn(
@@ -23,16 +23,11 @@ export function LessonFooterDock({ tutor, action, feedback = null }: LessonFoote
       )}
       data-testid="lesson-footer-dock"
     >
-      <div
-        className={cn(
-          "flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6",
-          LESSON_SHELL_WIDTH,
-        )}
-      >
-        <div className="min-w-0 flex-1">{tutor}</div>
-        <div className="flex w-full shrink-0 flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-          {action}
-        </div>
+      <div className={cn("flex items-center gap-3 py-3", LESSON_SHELL_WIDTH)}>
+        {/* Espaciador simétrico al de la ayuda: deja la acción en el centro. */}
+        <div className="flex-1" aria-hidden />
+        <div className="flex shrink-0 items-center justify-center">{action}</div>
+        <div className="flex flex-1 items-center justify-end">{help}</div>
       </div>
     </div>
   );
