@@ -158,7 +158,7 @@ export function TopicExercisesSection({
 
               <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto bg-paper px-5 py-6 sm:px-8 sm:py-7">
                 <section
-                  className="relative overflow-hidden rounded-xl border border-slate-200 bg-paper-raised px-5 py-5 shadow-[0_1px_0_rgba(23,26,33,0.04)] sm:px-7 sm:py-6"
+                  className="relative shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-paper-raised px-5 py-5 shadow-[0_1px_0_rgba(23,26,33,0.04)] sm:px-7 sm:py-6"
                   data-testid="topic-exercise-statement"
                 >
                   <span
@@ -175,7 +175,7 @@ export function TopicExercisesSection({
 
                 {showVideo ? (
                   <section
-                    className="overflow-hidden rounded-xl border border-slate-200 bg-black shadow-sm"
+                    className="shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-black shadow-sm"
                     data-testid="topic-exercise-video"
                   >
                     <div className="aspect-video w-full">
@@ -191,7 +191,7 @@ export function TopicExercisesSection({
                 ) : null}
 
                 <section
-                  className="flex min-h-[18rem] flex-1 flex-col"
+                  className="flex min-h-[18rem] flex-[1_0_auto] flex-col"
                   data-testid="topic-exercise-solution"
                 >
                   <div className="mb-3 flex items-center justify-between gap-3">
@@ -216,7 +216,7 @@ export function TopicExercisesSection({
                     ) : null}
                   </div>
 
-                  <div className="relative flex flex-1 overflow-hidden rounded-xl border border-[#e6dcc4] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+                  <div className="relative flex flex-[1_0_auto] overflow-hidden rounded-xl border border-[#e6dcc4] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
                     <HandwrittenSolution
                       steps={splitSolutionSteps(selectedExercise.solutionText)}
                       hidden={!solutionRevealed}
@@ -281,7 +281,7 @@ function HandwrittenSolution({ steps, hidden }: HandwrittenSolutionProps) {
         {steps.map((step, index) => (
           <li
             key={`${index}-${step}`}
-            className="relative [&_.katex]:text-[0.72em]"
+            className="relative [&_.katex]:text-[0.64em]"
           >
             <span className="absolute -left-10 top-0 text-[1.3rem] text-[#c0392b]/80 sm:-left-14">
               {index + 1})
