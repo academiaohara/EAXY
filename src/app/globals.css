@@ -449,6 +449,26 @@
   }
 }
 
+/* El panel del tutor entra deslizándose desde la izquierda. */
+@keyframes tutor-panel-slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.tutor-panel-slide-in {
+  animation: tutor-panel-slide-in-left 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tutor-panel-slide-in {
+    animation: none !important;
+  }
+}
+
 /* Cada frase que dice el tutor entra sola, como si la estuviera diciendo. */
 @keyframes lesson-tutor-speech {
   from {

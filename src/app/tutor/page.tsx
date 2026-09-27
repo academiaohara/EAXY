@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { TutorShowcase } from "@/components/tutor/tutor-showcase";
+import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 
 export const metadata: Metadata = {
-  title: "El tutor",
-  description: "Estados y animaciones del tutor de Eaxy.",
+  title: TUTOR_NICKNAME,
+  description: `Estados y animaciones de ${TUTOR_NICKNAME}, el tutor de Eaxy.`,
 };
 
 export default function TutorPage() {
@@ -15,7 +16,7 @@ export default function TutorPage() {
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-12 sm:px-6">
         <header className="mb-10 space-y-3">
           <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">
-            El tutor
+            {TUTOR_NICKNAME}
           </h1>
           <p className="max-w-2xl text-ink-muted">
             Acompaña al estudiante durante las lecciones: reacciona a cada

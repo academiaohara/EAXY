@@ -3,13 +3,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
+import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
-import { splitTutorSpeech, tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
+import { flattenTutorSpeech, tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
 import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-message";
 
 type LessonTutorDockProps = {
-  /** Lo que el tutor dice ahora mismo; se cuenta frase a frase. */
-  message: string;
+  /** Reinicia la locución al cambiar de paso o de feedback. */
+  speechKey: string;
+  /** Bloques que el tutor va leyendo en orden (título, teoría, pista…). */
+  messages: readonly string[];
   reaction?: TutorReaction;
   /** Abre el panel con el historial de mensajes. */
   onOpenPanel: () => void;
@@ -35,20 +38,21 @@ const tailTone: Record<TutorReaction, string> = {
 };
 
 /**
- * Suelta las frases del mensaje una detrás de otra, como si el tutor las fuera
- * diciendo, y desaparece al acabar: la bola se queda sola y lo dicho vive en el
- * panel. Se monta con `key={message}` para empezar de nuevo con cada mensaje.
+ * Recorre frase a frase toda la cola del paso: cada una se muestra el tiempo de
+ * lectura, desaparece y entra la siguiente. Al acabar no queda globo.
  */
 function TutorSpeechBubble({
-  message,
+  messages,
   reaction,
   muted,
+  anchorRight,
 }: {
-  message: string;
+  messages: readonly string[];
   reaction: TutorReaction;
   muted: boolean;
+  anchorRight: boolean;
 }) {
-  const lines = useMemo(() => splitTutorSpeech(message), [message]);
+  const lines = useMemo(() => flattenTutorSpeech(messages), [messages]);
   const [spoken, setSpoken] = useState(0);
   const line = lines[spoken];
 
@@ -79,7 +83,10 @@ function TutorSpeechBubble({
       data-testid="lesson-tutor-bubble"
     >
       <svg
-        className="absolute -left-[15px] top-1/2 h-6 w-4 -translate-y-1/2"
+        className={cn(
+          "absolute top-1/2 h-6 w-4 -translate-y-1/2",
+          anchorRight ? "-right-[15px] scale-x-[-1]" : "-left-[15px]",
+        )}
         viewBox="0 0 16 24"
         aria-hidden
       >
@@ -93,20 +100,27 @@ function TutorSpeechBubble({
 }
 
 /**
- * El tutor flota sobre la lección en vez de ocupar el pie: habla cuando tiene
- * algo que decir y, al pulsarlo, abre el historial de mensajes.
+ * El tutor flota sobre la lección: habla al entrar en cada paso y, al pulsarlo,
+ * abre el historial en el panel lateral.
  */
 export function LessonTutorDock({
-  message,
+  speechKey,
+  messages,
   reaction = "idle",
   onOpenPanel,
   unreadCount = 0,
   panelOpen = false,
   className,
 }: LessonTutorDockProps) {
+  const anchorRight = panelOpen;
+
   return (
     <div
-      className={cn("pointer-events-none flex items-center gap-3 sm:gap-4", className)}
+      className={cn(
+        "pointer-events-none flex items-center gap-3 sm:gap-4",
+        anchorRight && "flex-row-reverse",
+        className,
+      )}
       data-testid="lesson-tutor"
       aria-live="polite"
     >
@@ -114,7 +128,7 @@ export function LessonTutorDock({
         type="button"
         onClick={onOpenPanel}
         className="pointer-events-auto relative shrink-0 rounded-full drop-shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
-        aria-label="Ver los mensajes del tutor"
+        aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
         aria-expanded={panelOpen}
         data-testid="lesson-tutor-button"
       >
@@ -129,7 +143,13 @@ export function LessonTutorDock({
         ) : null}
       </button>
 
-      <TutorSpeechBubble key={message} message={message} reaction={reaction} muted={panelOpen} />
+      <TutorSpeechBubble
+        key={speechKey}
+        messages={messages}
+        reaction={reaction}
+        muted={panelOpen}
+        anchorRight={anchorRight}
+      />
     </div>
   );
 }
