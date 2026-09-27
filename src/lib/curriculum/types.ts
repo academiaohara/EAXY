@@ -17,6 +17,7 @@ export type TopicExerciseSummary = {
   id: string;
   title: string;
   statement: string;
+  solutionText: string;
   solutionVideoUrl: string;
 };
 

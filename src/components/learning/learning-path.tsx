@@ -155,22 +155,42 @@ export function LearningPath({ modules }: LearningPathProps) {
           {courseModule.lessons.length === 0 ? (
             <p className="text-sm text-muted-foreground">Sin lecciones todavía en este tema.</p>
           ) : (
-            <ol className="space-y-3">
-              {courseModule.lessons.map((lesson, index) => (
-                <PathNode
-                  key={lesson.id}
-                  lesson={lesson}
-                  position={index + 1}
-                  isLast={index === courseModule.lessons.length - 1}
-                />
-              ))}
-            </ol>
+            <div
+              className={cn(
+                "grid gap-6",
+                (courseModule.topicExercises?.length ?? 0) > 0 &&
+                  "lg:grid-cols-[minmax(0,1fr)_min(100%,17.5rem)] lg:items-start xl:grid-cols-[minmax(0,1fr)_19rem]",
+              )}
+            >
+              <ol className="min-w-0 space-y-3">
+                {courseModule.lessons.map((lesson, index) => (
+                  <PathNode
+                    key={lesson.id}
+                    lesson={lesson}
+                    position={index + 1}
+                    isLast={index === courseModule.lessons.length - 1}
+                  />
+                ))}
+              </ol>
+
+              {(courseModule.topicExercises?.length ?? 0) > 0 ? (
+                <aside className="min-w-0 lg:sticky lg:top-6 lg:self-start">
+                  <TopicExercisesSection
+                    moduleTitle={courseModule.title}
+                    exercises={courseModule.topicExercises ?? []}
+                  />
+                </aside>
+              ) : null}
+            </div>
           )}
 
-          <TopicExercisesSection
-            moduleTitle={courseModule.title}
-            exercises={courseModule.topicExercises ?? []}
-          />
+          {courseModule.lessons.length === 0 &&
+          (courseModule.topicExercises?.length ?? 0) > 0 ? (
+            <TopicExercisesSection
+              moduleTitle={courseModule.title}
+              exercises={courseModule.topicExercises ?? []}
+            />
+          ) : null}
         </section>
       ))}
     </div>

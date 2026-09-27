@@ -91,6 +91,7 @@ export function getPreviewCourseOutline(courseId: string): CourseOutline | null 
           id: exercise.id,
           title: exercise.title,
           statement: exercise.statement,
+          solutionText: exercise.solutionText,
           solutionVideoUrl: exercise.solutionVideoUrl,
         })),
       })),
