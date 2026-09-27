@@ -346,6 +346,7 @@ export async function getCourseOutline(
           id: exercise.id,
           title: exercise.title,
           statement: exercise.statement,
+          solutionText: exercise.solutionText,
           solutionVideoUrl: exercise.solutionVideoUrl,
         })),
       };

@@ -37,6 +37,8 @@ export type CurriculumTopicExercise = {
   title: string;
   /** Enunciado en texto plano; admite LaTeX inline con $...$. */
   statement: string;
+  /** Resolución escrita; admite LaTeX como el enunciado. */
+  solutionText: string;
   solutionVideoUrl: string;
 };
 
