@@ -69,9 +69,9 @@ describe("LessonTutorDock", () => {
     expect(onOpenPanel).toHaveBeenCalledTimes(1);
   });
 
-  it("avisa de los mensajes que el alumno no ha leído", () => {
-    render(<LessonTutorDock message={MESSAGE} onOpenPanel={vi.fn()} unreadCount={2} />);
+  it("oculta la bola mientras el panel está abierto", () => {
+    render(<LessonTutorDock message={MESSAGE} onOpenPanel={vi.fn()} panelOpen />);
 
-    expect(screen.getByTestId("lesson-tutor-unread")).toHaveTextContent("2");
+    expect(screen.queryByTestId("lesson-tutor-button")).not.toBeInTheDocument();
   });
 });
