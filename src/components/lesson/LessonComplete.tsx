@@ -32,7 +32,7 @@ export function LessonComplete({
         <div className="relative bg-gradient-to-b from-emerald-50 to-white px-8 pt-10 text-center">
           <div className="relative mx-auto size-24">
             <span
-              className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 animate-[lesson-tutor-pop_0.4s_ease-out] text-2xl"
+              className="absolute left-full top-1 z-10 -translate-x-1/2 animate-[lesson-tutor-pop_0.4s_ease-out] text-2xl"
               aria-hidden
             >
               ✨
