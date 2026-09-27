@@ -30,7 +30,6 @@ import {
 } from "@/lib/lesson/tutor-message";
 import {
   appendTutorEntry,
-  countTutorEntries,
   feedbackMessageKey,
   stepMessageKey,
   type TutorLogEntry,
@@ -79,7 +78,6 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const [stars, setStars] = useState(0);
   const [log, setLog] = useState<TutorLogEntry[]>(() => [stepEntry(lesson.steps[0])]);
   const [panelOpen, setPanelOpen] = useState(false);
-  const [unseen, setUnseen] = useState(0);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const { control } = useLessonStepControl();
 
@@ -96,28 +94,17 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const helpNode = helpNodeId ? getHelpNode(helpRoute, helpNodeId) ?? null : null;
   const canAskForHelp = hasHelpTopics(helpRoute);
 
-  /**
-   * Registra lo que se dicen tutor y alumno. Lo que el tutor cuenta sin que el
-   * panel esté delante queda pendiente y se avisa sobre la bola.
-   */
-  const pushEntries = useCallback(
-    (entries: TutorLogEntry[], visible: boolean) => {
-      setLog((prev) => entries.reduce(appendTutorEntry, prev));
-      if (!visible) {
-        setUnseen((prev) => prev + countTutorEntries(entries));
-      }
-    },
-    [],
-  );
+  /** Registra lo que se dicen tutor y alumno en el historial del panel. */
+  const pushEntries = useCallback((entries: TutorLogEntry[]) => {
+    setLog((prev) => entries.reduce(appendTutorEntry, prev));
+  }, []);
 
   const openPanel = useCallback(() => {
     setPanelOpen(true);
-    setUnseen(0);
   }, []);
 
   const closePanel = useCallback(() => {
     setPanelOpen(false);
-    setUnseen(0);
   }, []);
 
   const handleCheck = useCallback(
@@ -131,18 +118,15 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
         setStars((prev) => prev + 1);
       }
       setFeedback(status);
-      pushEntries(
-        [
-          {
-            key: feedbackMessageKey(currentStep.id, status),
-            author: "tutor",
-            text: getFeedbackTutorMessage(status),
-          },
-        ],
-        panelOpen,
-      );
+      pushEntries([
+        {
+          key: feedbackMessageKey(currentStep.id, status),
+          author: "tutor",
+          text: getFeedbackTutorMessage(status),
+        },
+      ]);
     },
-    [currentStep.id, feedback, panelOpen, pushEntries],
+    [currentStep.id, feedback, pushEntries],
   );
 
   const goToNextStep = useCallback(() => {
@@ -153,8 +137,8 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
       return;
     }
     setStepIndex(stepIndex + 1);
-    pushEntries([stepEntry(nextStep)], panelOpen);
-  }, [lesson.steps, panelOpen, pushEntries, stepIndex]);
+    pushEntries([stepEntry(nextStep)]);
+  }, [lesson.steps, pushEntries, stepIndex]);
 
   const handleNext = useCallback(() => {
     setFeedback(null);
@@ -171,13 +155,10 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
 
       openPanel();
       setHelpNodeId(root.id);
-      pushEntries(
-        [
-          { key: `choice:${log.length}`, author: "student", text: trigger },
-          helpEntry(root, log.length + 1),
-        ],
-        true,
-      );
+      pushEntries([
+        { key: `choice:${log.length}`, author: "student", text: trigger },
+        helpEntry(root, log.length + 1),
+      ]);
     },
     [helpRoute, log.length, openPanel, pushEntries],
   );
@@ -191,7 +172,7 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
       if (next) {
         entries.push(helpEntry(next, log.length + 1));
       }
-      pushEntries(entries, true);
+      pushEntries(entries);
 
       setHelpNodeId(option.next);
       if (option.next === null) {
@@ -207,7 +188,6 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     setCompleted(false);
     setStars(0);
     setLog([stepEntry(lesson.steps[0])]);
-    setUnseen(0);
     setHelpNodeId(null);
     setPanelOpen(false);
   }
@@ -252,7 +232,6 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
             messages={getTutorSpeechQueue(currentStep, feedback)}
             reaction={reaction}
             onOpenPanel={openPanel}
-            unreadCount={unseen}
             panelOpen={panelOpen}
           />
         }

@@ -16,8 +16,6 @@ type LessonTutorDockProps = {
   reaction?: TutorReaction;
   /** Abre el panel con el historial de mensajes. */
   onOpenPanel: () => void;
-  /** Mensajes que el alumno no ha leído en el panel. */
-  unreadCount?: number;
   panelOpen?: boolean;
   className?: string;
 };
@@ -108,7 +106,6 @@ export function LessonTutorDock({
   messages,
   reaction = "idle",
   onOpenPanel,
-  unreadCount = 0,
   panelOpen = false,
   className,
 }: LessonTutorDockProps) {
@@ -124,24 +121,18 @@ export function LessonTutorDock({
       data-testid="lesson-tutor"
       aria-live="polite"
     >
-      <button
-        type="button"
-        onClick={onOpenPanel}
-        className="pointer-events-auto relative shrink-0 rounded-full drop-shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
-        aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
-        aria-expanded={panelOpen}
-        data-testid="lesson-tutor-button"
-      >
-        <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} />
-        {unreadCount > 0 ? (
-          <span
-            className="absolute right-0 top-1 flex size-5 items-center justify-center rounded-full bg-cobalt text-[0.6875rem] font-bold tabular-nums text-white ring-2 ring-white"
-            data-testid="lesson-tutor-unread"
-          >
-            {unreadCount}
-          </span>
-        ) : null}
-      </button>
+      {panelOpen ? null : (
+        <button
+          type="button"
+          onClick={onOpenPanel}
+          className="pointer-events-auto relative shrink-0 rounded-full drop-shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+          aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
+          aria-expanded={false}
+          data-testid="lesson-tutor-button"
+        >
+          <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} />
+        </button>
+      )}
 
       <TutorSpeechBubble
         key={speechKey}
