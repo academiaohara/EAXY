@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { CourseHero } from "@/components/learning/course-hero";
-import { CourseNextStep } from "@/components/learning/course-next-step";
-import { LearningPath } from "@/components/learning/learning-path";
+import { CourseTopicPicker } from "@/components/learning/course-topic-picker";
 import { Card } from "@/components/ui/card";
-import { findNextLesson } from "@/lib/curriculum/course-progress";
 import type { CourseOutline } from "@/lib/curriculum/types";
 
 type CourseOutlineProps = {
@@ -13,8 +11,10 @@ type CourseOutlineProps = {
 };
 
 export function CourseOutlineView({ outline, backHref = "/aprender" }: CourseOutlineProps) {
-  const hasContent = outline.modules.some((module) => module.lessons.length > 0);
-  const next = findNextLesson(outline.modules);
+  const hasContent = outline.modules.some(
+    (module) => module.lessons.length > 0 || (module.topicExercises?.length ?? 0) > 0,
+  );
+  const hasModules = outline.modules.length > 0;
 
   return (
     <div className="flex w-full flex-col gap-6" data-testid="course-outline">
@@ -26,7 +26,7 @@ export function CourseOutlineView({ outline, backHref = "/aprender" }: CourseOut
         Volver a niveles
       </Link>
 
-      {!hasContent ? (
+      {!hasModules ? (
         <Card className="p-6 text-center" data-testid="course-empty-state">
           <p className="font-medium">Contenido próximamente</p>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -37,17 +37,16 @@ export function CourseOutlineView({ outline, backHref = "/aprender" }: CourseOut
         <>
           <CourseHero course={outline.course} modules={outline.modules} />
 
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-8">
-            {next ? (
-              <aside className="min-w-0 lg:sticky lg:top-6 lg:col-start-2 lg:row-start-1 lg:self-start">
-                <CourseNextStep next={next} />
-              </aside>
-            ) : null}
-
-            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-              <LearningPath modules={outline.modules} />
-            </div>
-          </div>
+          {hasContent ? (
+            <CourseTopicPicker courseId={outline.course.id} modules={outline.modules} />
+          ) : (
+            <Card className="p-6 text-center" data-testid="course-empty-state">
+              <p className="font-medium">Temas en preparación</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Los temas de este nivel aparecerán aquí cuando estén listos.
+              </p>
+            </Card>
+          )}
         </>
       )}
     </div>

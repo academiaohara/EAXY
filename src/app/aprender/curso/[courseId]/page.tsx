@@ -1,6 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { CourseOutlineView } from "@/components/learning/course-outline";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
+import { findDefaultModuleId, isModuleAccessible } from "@/lib/curriculum/course-navigation";
 import { getCourseOutline } from "@/lib/curriculum/queries";
 
 type CoursePageProps = {
@@ -14,6 +15,14 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   if (!outline) {
     notFound();
+  }
+
+  const defaultModuleId = findDefaultModuleId(outline.modules);
+  if (defaultModuleId) {
+    const defaultModule = outline.modules.find((courseModule) => courseModule.id === defaultModuleId);
+    if (defaultModule && isModuleAccessible(defaultModule)) {
+      redirect(`/aprender/curso/${courseId}/tema/${defaultModuleId}`);
+    }
   }
 
   return (

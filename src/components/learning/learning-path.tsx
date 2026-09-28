@@ -12,6 +12,10 @@ import type { LessonSummary, ModuleSummary } from "@/lib/curriculum/types";
 
 type LearningPathProps = {
   modules: ModuleSummary[];
+  /** Suma al índice del tema mostrado (p. ej. 3 si esta vista es el tema 4 del curso). */
+  moduleNumberOffset?: number;
+  /** Oculta la cabecera del tema (p. ej. cuando la página del tema ya la muestra). */
+  hideModuleHeaders?: boolean;
 };
 
 const STATUS_LABELS: Record<LessonProgressStatus, string> = {
@@ -133,7 +137,11 @@ function ModuleProgressPill({ courseModule }: { courseModule: ModuleSummary }) {
   );
 }
 
-export function LearningPath({ modules }: LearningPathProps) {
+export function LearningPath({
+  modules,
+  moduleNumberOffset = 0,
+  hideModuleHeaders = false,
+}: LearningPathProps) {
   return (
     <div className="space-y-10" data-testid="learning-path">
       {modules.map((courseModule, moduleIndex) => (
@@ -141,16 +149,23 @@ export function LearningPath({ modules }: LearningPathProps) {
           key={courseModule.id}
           className="space-y-4"
           data-testid={`module-${courseModule.id}`}
+          id={`module-${courseModule.id}`}
         >
-          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200 pb-3">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-cobalt">
-                Tema {moduleIndex + 1}
-              </p>
-              <h2 className="font-heading text-xl font-semibold text-ink">{courseModule.title}</h2>
+          {hideModuleHeaders ? (
+            <div className="flex justify-end">
+              <ModuleProgressPill courseModule={courseModule} />
             </div>
-            <ModuleProgressPill courseModule={courseModule} />
-          </div>
+          ) : (
+            <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-200 pb-3">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-cobalt">
+                  Tema {moduleIndex + 1 + moduleNumberOffset}
+                </p>
+                <h2 className="font-heading text-xl font-semibold text-ink">{courseModule.title}</h2>
+              </div>
+              <ModuleProgressPill courseModule={courseModule} />
+            </div>
+          )}
 
           {courseModule.lessons.length === 0 ? (
             <p className="text-sm text-muted-foreground">Sin lecciones todavía en este tema.</p>
