@@ -24,6 +24,20 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las cuatro lecciones de la unidad 2 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    const unit2 = firstYear?.modules.find((m) => m.title.includes("Potencias"));
+    expect(unit2?.lessons).toHaveLength(4);
+    expect(unit2?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "potencias-base-exponente",
+      "potencias-base-10",
+      "numeros-grandes-abreviados",
+      "raiz-cuadrada-naturales",
+    ]);
+  });
+
   it("tiene las cinco lecciones de la unidad 1 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
