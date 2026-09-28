@@ -69,13 +69,59 @@ export type TranslateVisual = {
   rows: { text: string; math: string }[];
 };
 
+/** Recta numérica con puntos y, opcionalmente, segmento de valor absoluto. */
+export type NumberLineVisual = {
+  kind: "number-line";
+  title?: string;
+  min: number;
+  max: number;
+  step?: number;
+  points?: { value: number; label?: string; tone?: VisualTone }[];
+  /** Muestra |n| como distancia desde 0 hasta n. */
+  absValue?: number;
+  caption?: string;
+};
+
+/** Tabla animada (+)(−)=… para producto o cociente. */
+export type SignRulesVisual = {
+  kind: "sign-rules";
+  title?: string;
+  operation?: "multiply" | "divide";
+  caption?: string;
+};
+
+/** Situaciones opuestas (temperatura, dinero…) con + y −. */
+export type OppositeScenariosVisual = {
+  kind: "opposite-scenarios";
+  title?: string;
+  pairs: { context: string; positive: string; negative: string }[];
+};
+
+/** Reglas visuales suma/resta mismo signo vs distinto signo. */
+export type IntegerAddRulesVisual = {
+  kind: "integer-add-rules";
+  title?: string;
+};
+
+/** Quitar paréntesis delante de + o −. */
+export type ParenthesisRulesVisual = {
+  kind: "parenthesis-rules";
+  title?: string;
+  activeCase?: "plus-add" | "plus-sub" | "minus-add" | "minus-sub";
+};
+
 export type LessonVisual =
   | EquationAnatomyVisual
   | SolutionCheckVisual
   | GraphGalleryVisual
   | CardsVisual
   | StackVisual
-  | TranslateVisual;
+  | TranslateVisual
+  | NumberLineVisual
+  | SignRulesVisual
+  | OppositeScenariosVisual
+  | IntegerAddRulesVisual
+  | ParenthesisRulesVisual;
 
 export type ConceptStep = LessonStepBase & {
   type: "concept";

@@ -2,12 +2,17 @@ import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/numeros-grandes-abreviados";
 import { potenciasBase10Lesson } from "@/data/lessons/potencias-base-10";
+import { parentesisEnterosLesson } from "@/data/lessons/parentesis-enteros";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
 import { primosCompuestosLesson } from "@/data/lessons/primos-compuestos";
 import { relacionDivisibilidadLesson } from "@/data/lessons/relacion-divisibilidad";
+import { sumaRestaEnterosLesson } from "@/data/lessons/suma-resta-enteros";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
+import { enterosPositivosNegativosLesson } from "@/data/lessons/enteros-positivos-negativos";
+import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/enteros-z-recta-valor-absoluto";
 import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
+import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/multiplicacion-division-enteros";
 import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/multiplos-divisores-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/ecuaciones-lineales-dos-incognitas";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/multiplicacion-naturales";
@@ -19,6 +24,11 @@ import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numer
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
 
 export const interactiveLessons = {
+  "enteros-positivos-negativos": enterosPositivosNegativosLesson,
+  "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
+  "suma-resta-enteros": sumaRestaEnterosLesson,
+  "parentesis-enteros": parentesisEnterosLesson,
+  "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "relacion-divisibilidad": relacionDivisibilidadLesson,
   "multiplos-divisores-naturales": multiplosDivisoresNaturalesLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
