@@ -1,10 +1,14 @@
 /**
  * Voz de Bolín: locución en español con la Web Speech API. El texto de lección
  * trae negritas y fórmulas `$...$`; aquí se convierte a algo legible por TTS.
+ * Suena como un personaje infantil: voz femenina, dulce y algo más aguda.
  */
 
 export const TUTOR_VOICE_LANG = "es-ES";
-export const TUTOR_VOICE_RATE = 0.96;
+/** Un poco más rápida, como una niña que explica con entusiasmo. */
+export const TUTOR_VOICE_RATE = 1.08;
+/** Tono más agudo; la Web Speech API no trae voces «de niño», lo simulamos con pitch. */
+export const TUTOR_VOICE_PITCH = 1.32;
 
 const VARIABLE_NAMES: Record<string, string> = {
   x: "equis",
@@ -15,6 +19,43 @@ const VARIABLE_NAMES: Record<string, string> = {
   b: "be",
   c: "ce",
 };
+
+/** Pistas en el nombre de la voz del sistema para priorizar timbre femenino / infantil. */
+const FEMININE_VOICE_HINTS = [
+  "helena",
+  "sabina",
+  "monica",
+  "mónica",
+  "paulina",
+  "laura",
+  "isabel",
+  "paloma",
+  "lucia",
+  "lucía",
+  "sofia",
+  "soledad",
+  "elvira",
+  "female",
+  "mujer",
+  "woman",
+  "girl",
+  "niña",
+  "child",
+  "infant",
+] as const;
+
+const MASCULINE_VOICE_HINTS = [
+  "jorge",
+  "carlos",
+  "pablo",
+  "diego",
+  "male",
+  "hombre",
+  "man",
+  "boy",
+] as const;
+
+let cachedCharacterVoice: SpeechSynthesisVoice | null | undefined;
 
 /** Quita marcado y simplifica matemáticas inline para leerlas en voz alta. */
 export function plainTextForTutorVoice(text: string): string {
@@ -52,12 +93,46 @@ export function isTutorVoiceSupported(): boolean {
   return typeof window !== "undefined" && "speechSynthesis" in window;
 }
 
-function pickSpanishVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+/** Puntuación para elegir la voz más dulce y femenina disponible en español. */
+export function scoreTutorCharacterVoice(voice: SpeechSynthesisVoice): number {
+  if (!voice.lang.toLowerCase().startsWith("es")) {
+    return -1000;
+  }
+
+  const label = `${voice.name} ${voice.voiceURI}`.toLowerCase();
+  let score = 0;
+
+  for (const hint of FEMININE_VOICE_HINTS) {
+    if (label.includes(hint)) {
+      score += 12;
+    }
+  }
+  for (const hint of MASCULINE_VOICE_HINTS) {
+    if (label.includes(hint)) {
+      score -= 20;
+    }
+  }
+  if (voice.localService) {
+    score += 3;
+  }
+  if (voice.lang.toLowerCase() === TUTOR_VOICE_LANG.toLowerCase()) {
+    score += 2;
+  }
+
+  return score;
+}
+
+/** Elige la voz de Bolín; la misma instancia se reutiliza en todas las frases. */
+export function pickTutorCharacterVoice(
+  voices: SpeechSynthesisVoice[],
+): SpeechSynthesisVoice | undefined {
   const spanish = voices.filter((voice) => voice.lang.toLowerCase().startsWith("es"));
-  return (
-    spanish.find((voice) => voice.localService) ??
-    spanish.find((voice) => voice.lang.toLowerCase() === TUTOR_VOICE_LANG.toLowerCase()) ??
-    spanish[0]
+  if (spanish.length === 0) {
+    return undefined;
+  }
+
+  return spanish.reduce((best, voice) =>
+    scoreTutorCharacterVoice(voice) > scoreTutorCharacterVoice(best) ? voice : best,
   );
 }
 
@@ -89,13 +164,43 @@ export function whenTutorVoicesReady(): Promise<SpeechSynthesisVoice[]> {
   });
 }
 
+function resolveCharacterVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+  if (cachedCharacterVoice !== undefined) {
+    const stillAvailable =
+      cachedCharacterVoice &&
+      voices.some((voice) => voice.voiceURI === cachedCharacterVoice?.voiceURI);
+    if (stillAvailable) {
+      return cachedCharacterVoice ?? undefined;
+    }
+  }
+
+  const picked = pickTutorCharacterVoice(voices);
+  cachedCharacterVoice = picked ?? null;
+  return picked;
+}
+
+/** Aplica la misma voz y tono infantil a cada locución. */
+export function applyTutorVoiceSettings(
+  utterance: SpeechSynthesisUtterance,
+  voice: SpeechSynthesisVoice | undefined,
+): void {
+  utterance.lang = voice?.lang ?? TUTOR_VOICE_LANG;
+  utterance.rate = TUTOR_VOICE_RATE;
+  utterance.pitch = TUTOR_VOICE_PITCH;
+  if (voice) {
+    utterance.voice = voice;
+  }
+}
+
 /** Arranca el motor de voz tras un gesto del usuario (políticas de autoplay). */
 export function primeTutorVoice(): void {
   if (!isTutorVoiceSupported()) {
     return;
   }
   window.speechSynthesis.resume();
-  void whenTutorVoicesReady();
+  void whenTutorVoicesReady().then((voices) => {
+    resolveCharacterVoice(voices);
+  });
 }
 
 export function stopTutorVoice(): void {
@@ -122,15 +227,15 @@ export function speakTutorVoice(text: string): Promise<void> {
     (voices) =>
       new Promise((resolve) => {
         const utterance = new SpeechSynthesisUtterance(plain);
-        utterance.lang = TUTOR_VOICE_LANG;
-        utterance.rate = TUTOR_VOICE_RATE;
-        const voice = pickSpanishVoice(voices);
-        if (voice) {
-          utterance.voice = voice;
-        }
+        applyTutorVoiceSettings(utterance, resolveCharacterVoice(voices));
         utterance.onend = () => resolve();
         utterance.onerror = () => resolve();
         window.speechSynthesis.speak(utterance);
       }),
   );
+}
+
+/** Solo tests: reinicia la voz en caché entre casos. */
+export function resetTutorVoiceCacheForTests(): void {
+  cachedCharacterVoice = undefined;
 }
