@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 
 const DEMO_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
+const DEMO_MODULE_ID = "a2000000-0000-4000-8000-000000000007";
 const FIRST_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
 
 async function loginAsNewStudent(page: Page, name: string) {
@@ -23,9 +24,16 @@ async function loginAsNewStudent(page: Page, name: string) {
   await expect(page).toHaveURL(/\/aprender$/);
 }
 
-async function openFirstLesson(page: Page) {
+async function openCourseTopic(page: Page) {
   await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
   await expect(page.getByTestId("course-outline")).toBeVisible();
+  await expect(page.getByTestId("course-topic-picker")).toBeVisible();
+  await page.getByTestId(`topic-link-${DEMO_MODULE_ID}`).click();
+  await expect(page.getByTestId("course-topic-view")).toBeVisible();
+}
+
+async function openFirstLesson(page: Page) {
+  await openCourseTopic(page);
   await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
 }
@@ -41,6 +49,8 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
   await expect(
     page.getByTestId("course-hero").getByText("5 lecciones", { exact: true }),
   ).toBeVisible();
+  await page.getByTestId(`topic-link-${DEMO_MODULE_ID}`).click();
+  await expect(page.getByTestId("course-topic-view")).toBeVisible();
 
   await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
 
