@@ -70,7 +70,8 @@ export function TopicExercisesSection({
   return (
     <>
       <section
-        className="space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5 lg:min-w-0"
+        id="topic-exercises"
+        className="scroll-mt-6 space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5 lg:min-w-0"
         data-testid="topic-exercises"
       >
         <div className="space-y-1">
