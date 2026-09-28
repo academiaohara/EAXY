@@ -101,7 +101,6 @@ function TutorSpeechBubble({
     return () => {
       cancelled = true;
       window.clearTimeout(minTimer);
-      stopTutorVoice();
     };
   }, [line, muted]);
 
