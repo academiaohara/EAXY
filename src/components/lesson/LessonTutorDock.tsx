@@ -7,6 +7,7 @@ import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import { flattenTutorSpeech, tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
 import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-message";
+import { primeTutorVoice, speakTutorVoice, stopTutorVoice } from "@/lib/lesson/tutor-voice";
 
 type LessonTutorDockProps = {
   /** Reinicia la locución al cambiar de paso o de feedback. */
@@ -66,16 +67,42 @@ function TutorSpeechBubble({
   }, [line, muted, onSpeak, spoken]);
 
   useEffect(() => {
+    if (muted) {
+      stopTutorVoice();
+    }
+  }, [muted]);
+
+  useEffect(() => {
     if (muted || line === undefined) {
       return;
     }
 
-    const timer = window.setTimeout(
-      () => setSpoken((previous) => previous + 1),
-      tutorSpeechDuration(line),
-    );
+    let cancelled = false;
+    let minElapsed = false;
+    let voiceFinished = false;
 
-    return () => window.clearTimeout(timer);
+    const advance = () => {
+      if (cancelled || !minElapsed || !voiceFinished) {
+        return;
+      }
+      setSpoken((previous) => previous + 1);
+    };
+
+    const minTimer = window.setTimeout(() => {
+      minElapsed = true;
+      advance();
+    }, tutorSpeechDuration(line));
+
+    void speakTutorVoice(line).then(() => {
+      voiceFinished = true;
+      advance();
+    });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(minTimer);
+      stopTutorVoice();
+    };
   }, [line, muted]);
 
   if (muted || line === undefined) {
@@ -123,6 +150,10 @@ export function LessonTutorDock({
 }: LessonTutorDockProps) {
   const anchorRight = panelOpen;
 
+  useEffect(() => {
+    primeTutorVoice();
+  }, []);
+
   return (
     <div
       className={cn(
@@ -136,7 +167,10 @@ export function LessonTutorDock({
       {panelOpen ? null : (
         <button
           type="button"
-          onClick={onOpenPanel}
+          onClick={() => {
+            primeTutorVoice();
+            onOpenPanel();
+          }}
           className="pointer-events-auto relative shrink-0 rounded-full drop-shadow-[0_6px_14px_rgba(15,23,42,0.18)] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
           aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
           aria-expanded={false}
