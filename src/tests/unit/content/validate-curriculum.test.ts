@@ -24,6 +24,21 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las cinco lecciones de la unidad 4 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    const unit4 = firstYear?.modules.find((m) => m.title.includes("enteros"));
+    expect(unit4?.lessons).toHaveLength(5);
+    expect(unit4?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "enteros-positivos-negativos",
+      "enteros-z-recta-valor-absoluto",
+      "suma-resta-enteros",
+      "parentesis-enteros",
+      "multiplicacion-division-enteros",
+    ]);
+  });
+
   it("tiene las cinco lecciones de la unidad 3 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

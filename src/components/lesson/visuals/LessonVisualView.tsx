@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import { ArrowRightIcon, CheckIcon, XIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { IntegerAddRulesVisualBlock } from "@/components/lesson/visuals/IntegerAddRulesVisual";
 import { MiniGraph } from "@/components/lesson/visuals/MiniGraph";
+import { NumberLineVisualBlock } from "@/components/lesson/visuals/NumberLineVisual";
+import { OppositeScenariosVisualBlock } from "@/components/lesson/visuals/OppositeScenariosVisual";
+import { ParenthesisRulesVisualBlock } from "@/components/lesson/visuals/ParenthesisRulesVisual";
+import { SignRulesVisualBlock } from "@/components/lesson/visuals/SignRulesVisual";
 import { checkLinearPair, formatLinearEquation } from "@/lib/lesson/visual-math";
 import type {
   CardsVisual,
@@ -348,6 +353,11 @@ export function LessonVisualView({ visual, className }: LessonVisualViewProps) {
       {visual.kind === "cards" ? <Cards visual={visual} /> : null}
       {visual.kind === "stack" ? <Stack visual={visual} /> : null}
       {visual.kind === "translate" ? <Translate visual={visual} /> : null}
+      {visual.kind === "number-line" ? <NumberLineVisualBlock visual={visual} /> : null}
+      {visual.kind === "sign-rules" ? <SignRulesVisualBlock visual={visual} /> : null}
+      {visual.kind === "opposite-scenarios" ? <OppositeScenariosVisualBlock visual={visual} /> : null}
+      {visual.kind === "integer-add-rules" ? <IntegerAddRulesVisualBlock visual={visual} /> : null}
+      {visual.kind === "parenthesis-rules" ? <ParenthesisRulesVisualBlock visual={visual} /> : null}
     </div>
   );
 }
