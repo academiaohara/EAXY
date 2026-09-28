@@ -1,9 +1,14 @@
 import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
+import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/numeros-grandes-abreviados";
 import { potenciasBase10Lesson } from "@/data/lessons/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
+import { primosCompuestosLesson } from "@/data/lessons/primos-compuestos";
+import { relacionDivisibilidadLesson } from "@/data/lessons/relacion-divisibilidad";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
+import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
+import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/multiplos-divisores-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/ecuaciones-lineales-dos-incognitas";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/multiplicacion-naturales";
 import { problemasConSistemasLesson } from "@/data/lessons/problemas-con-sistemas";
@@ -14,6 +19,11 @@ import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numer
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
 
 export const interactiveLessons = {
+  "relacion-divisibilidad": relacionDivisibilidadLesson,
+  "multiplos-divisores-naturales": multiplosDivisoresNaturalesLesson,
+  "criterios-divisibilidad": criteriosDivisibilidadLesson,
+  "primos-compuestos": primosCompuestosLesson,
+  "mcm-mcd-naturales": mcmMcdNaturalesLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,

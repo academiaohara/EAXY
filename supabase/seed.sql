@@ -12,6 +12,7 @@ insert into public.courses (id, title, description) values
 insert into public.modules (id, course_id, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'Los números naturales', 1),
   ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'Potencias y raíces', 2),
+  ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'Divisibilidad', 3),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -24,6 +25,11 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000202', 'a2000000-0000-4000-8000-000000000002', '2. Potencias de base 10', 'Ceros y exponente; leer números grandes con potencias de 10.', 2, null),
   ('a3000000-0000-4000-8000-000000000203', 'a2000000-0000-4000-8000-000000000002', '3. Números grandes abreviados', 'Forma a · 10^n; ejemplo del año luz y cantidades reales.', 3, null),
   ('a3000000-0000-4000-8000-000000000204', 'a2000000-0000-4000-8000-000000000002', '4. Raíz cuadrada', 'Raíz exacta, raíz entera, cuadrados perfectos y problemas.', 4, null),
+  ('a3000000-0000-4000-8000-000000000301', 'a2000000-0000-4000-8000-000000000003', '1. La relación de divisibilidad', 'División exacta, múltiplo y divisor; comprobar emparejamientos.', 1, null),
+  ('a3000000-0000-4000-8000-000000000302', 'a2000000-0000-4000-8000-000000000003', '2. Múltiplos y divisores', 'Series de múltiplos, parejas de divisores y búsqueda sistemática.', 2, null),
+  ('a3000000-0000-4000-8000-000000000303', 'a2000000-0000-4000-8000-000000000003', '3. Criterios de divisibilidad', 'Reglas para 2, 3, 5 y 10 sin dividir.', 3, null),
+  ('a3000000-0000-4000-8000-000000000304', 'a2000000-0000-4000-8000-000000000003', '4. Números primos y compuestos', 'Factorización, primos menores que 30 y descomposición.', 4, null),
+  ('a3000000-0000-4000-8000-000000000305', 'a2000000-0000-4000-8000-000000000003', '5. MCM y MCD', 'Método artesanal, problemas de coincidencia y reparto.', 5, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

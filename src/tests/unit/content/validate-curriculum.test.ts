@@ -24,6 +24,21 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las cinco lecciones de la unidad 3 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    const unit3 = firstYear?.modules.find((m) => m.title.includes("Divisibilidad"));
+    expect(unit3?.lessons).toHaveLength(5);
+    expect(unit3?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "relacion-divisibilidad",
+      "multiplos-divisores-naturales",
+      "criterios-divisibilidad",
+      "primos-compuestos",
+      "mcm-mcd-naturales",
+    ]);
+  });
+
   it("tiene las cuatro lecciones de la unidad 2 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
