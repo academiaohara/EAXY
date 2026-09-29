@@ -23,7 +23,7 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
         data-testid="course-topic-back"
       >
         <ArrowLeftIcon className="size-4" aria-hidden />
-        Volver a niveles
+        Volver al inicio
       </Link>
 
       <CourseTopicCarousel

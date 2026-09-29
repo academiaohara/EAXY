@@ -104,7 +104,7 @@ function enrichLessonSummary(
   };
 }
 
-async function resolveCourseId(studentId: string | null): Promise<string> {
+export async function getStudentReferenceCourseId(studentId: string | null): Promise<string> {
   if (!studentId) {
     return DEFAULT_COURSE_ID;
   }
@@ -571,6 +571,6 @@ export async function getExerciseForPractice(exerciseId: string): Promise<{
 export async function getDefaultCourseOutline(
   studentId: string | null,
 ): Promise<CourseOutline | null> {
-  const courseId = studentId ? await resolveCourseId(studentId) : DEFAULT_COURSE_ID;
+  const courseId = studentId ? await getStudentReferenceCourseId(studentId) : DEFAULT_COURSE_ID;
   return getCourseOutline(courseId, studentId);
 }
