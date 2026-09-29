@@ -43,6 +43,8 @@ async function openFirstLesson(page: Page) {
 test("el alumno puede navegar el catálogo y abrir una lección interactiva", async ({ page }) => {
   await loginAsNewStudent(page, "Alumno Curso E2E");
 
+  await expect(page.getByTestId("aprender-continue-studying")).toBeVisible();
+  await expect(page.getByTestId("aprender-continue-primary-cta")).toBeVisible();
   await expect(page.getByTestId("course-catalog")).toBeVisible();
   await expect(page.getByTestId("recommendation-card")).toBeVisible();
 

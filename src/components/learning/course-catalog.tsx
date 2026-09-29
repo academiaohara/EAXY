@@ -20,9 +20,10 @@ export function CourseCatalogView({ courses }: CourseCatalogViewProps) {
   return (
     <section className="space-y-4" data-testid="course-catalog">
       <header className="space-y-1">
-        <h2 className="font-heading text-xl font-semibold text-ink">Niveles</h2>
+        <h2 className="font-heading text-xl font-semibold text-ink">Todos los cursos</h2>
         <p className="text-sm text-muted-foreground">
-          Elige tu curso. Iremos añadiendo temas y lecciones en cada nivel.
+          Elige entre todos los niveles de ESO y Bachillerato. Entra en un curso para ver sus
+          temas y lecciones.
         </p>
       </header>
 
