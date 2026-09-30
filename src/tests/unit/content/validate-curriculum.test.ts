@@ -92,4 +92,13 @@ describe("validateCurriculum", () => {
     expect(firstYear?.modules[1]?.lessons).toHaveLength(4);
     expect(firstYear?.modules[1]?.topicExercises).toHaveLength(39);
   });
+
+  it("tiene las cinco lecciones y ejercicios resueltos de la unidad 3 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[2]?.title).toBe("Divisibilidad");
+    expect(firstYear?.modules[2]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[2]?.topicExercises).toHaveLength(45);
+  });
 });
