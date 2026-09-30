@@ -31,6 +31,8 @@ const handwriting = Caveat({
 type TopicExercisesSectionProps = {
   moduleTitle: string;
   exercises: TopicExerciseSummary[];
+  /** Ancho completo bajo las lecciones (grid de tarjetas). Por defecto, compacto. */
+  layout?: "compact" | "full";
 };
 
 function splitSolutionSteps(solutionText: string): string[] {
@@ -43,6 +45,7 @@ function splitSolutionSteps(solutionText: string): string[] {
 export function TopicExercisesSection({
   moduleTitle,
   exercises,
+  layout = "compact",
 }: TopicExercisesSectionProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showVideo, setShowVideo] = useState(false);
@@ -71,34 +74,54 @@ export function TopicExercisesSection({
     <>
       <section
         id="topic-exercises"
-        className="scroll-mt-6 space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5 lg:min-w-0"
+        className={cn(
+          "scroll-mt-6 space-y-4",
+          layout === "full"
+            ? "rounded-2xl border border-slate-200 bg-paper-raised/40 p-4 sm:p-6"
+            : "space-y-3 rounded-2xl border border-slate-200 bg-white/60 p-4 sm:p-5 lg:min-w-0",
+        )}
         data-testid="topic-exercises"
       >
         <div className="space-y-1">
-          <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-ink sm:text-base">
-            <DumbbellIcon className="size-4 shrink-0 text-cobalt" aria-hidden />
-            Ejercicios del tema
-          </h3>
-          <p className="text-xs text-muted-foreground sm:text-sm">
+          {layout === "full" ? (
+            <h2 className="flex flex-wrap items-center gap-2 font-heading text-lg font-semibold text-ink">
+              <DumbbellIcon className="size-5 shrink-0 text-cobalt" aria-hidden />
+              Ejercicios del tema
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium tabular-nums text-muted-foreground">
+                {exercises.length}
+              </span>
+            </h2>
+          ) : (
+            <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-ink sm:text-base">
+              <DumbbellIcon className="size-4 shrink-0 text-cobalt" aria-hidden />
+              Ejercicios del tema
+            </h3>
+          )}
+          <p className="text-sm text-muted-foreground">
             Refuerzo de {moduleTitle}: abre cada ejercicio para ver el enunciado
             y la resolución.
           </p>
         </div>
 
-        <div className="grid gap-2">
+        <div
+          className={cn(
+            "grid gap-2",
+            layout === "full" && "gap-3 sm:grid-cols-2 xl:grid-cols-3",
+          )}
+        >
           {exercises.map((exercise, index) => (
             <button
               key={exercise.id}
               type="button"
-              className="w-full text-left"
+              className="group w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:ring-offset-2"
               onClick={() => openExercise(index)}
               data-testid={`topic-exercise-${exercise.id}`}
             >
-              <Card className="border-slate-200 p-3 shadow-none transition-all hover:border-cobalt/40 hover:shadow-sm sm:p-3.5">
-                <p className="text-[11px] text-muted-foreground">
+              <Card className="h-full border-slate-200 p-3 shadow-none transition-all group-hover:-translate-y-0.5 group-hover:border-cobalt/40 group-hover:shadow-sm sm:p-3.5">
+                <p className="text-[11px] font-medium tabular-nums text-muted-foreground">
                   Ejercicio {index + 1}
                 </p>
-                <p className="mt-0.5 text-sm font-medium leading-snug text-ink">
+                <p className="mt-0.5 text-sm font-medium leading-snug text-ink group-hover:text-cobalt">
                   {exercise.title}
                 </p>
               </Card>

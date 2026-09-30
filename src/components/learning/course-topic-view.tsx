@@ -3,6 +3,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import { CourseTopicCarousel } from "@/components/learning/course-topic-carousel";
 import { CourseTopicQuickAccess } from "@/components/learning/course-topic-quick-access";
 import { LearningPath } from "@/components/learning/learning-path";
+import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
 import type { CourseOutline, ModuleSummary } from "@/lib/curriculum/types";
 
 type CourseTopicViewProps = {
@@ -43,19 +44,29 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
         <>
           <CourseTopicQuickAccess courseModule={courseModule} moduleNumber={moduleNumber} />
 
-          <section id="course-lessons" className="scroll-mt-6 space-y-4">
-            <header className="space-y-0.5">
-              <h2 className="font-heading text-lg font-semibold text-ink">Lecciones del tema</h2>
-              <p className="text-sm text-muted-foreground">
-                Recorre la ruta completa o entra en cualquier lección.
-              </p>
-            </header>
-            <LearningPath
-              modules={[courseModule]}
-              moduleNumberOffset={moduleNumber - 1}
-              hideModuleHeaders
+          {hasLessons ? (
+            <section id="course-lessons" className="scroll-mt-6 space-y-4">
+              <header className="space-y-0.5">
+                <h2 className="font-heading text-lg font-semibold text-ink">Lecciones del tema</h2>
+                <p className="text-sm text-muted-foreground">
+                  Recorre la ruta completa o entra en cualquier lección.
+                </p>
+              </header>
+              <LearningPath
+                modules={[courseModule]}
+                moduleNumberOffset={moduleNumber - 1}
+                hideModuleHeaders
+              />
+            </section>
+          ) : null}
+
+          {hasExercises ? (
+            <TopicExercisesSection
+              moduleTitle={courseModule.title}
+              exercises={courseModule.topicExercises ?? []}
+              layout="full"
             />
-          </section>
+          ) : null}
         </>
       )}
     </div>
