@@ -56,6 +56,24 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
       ],
     },
     {
+      id: "chocolate",
+      type: "animated_solution",
+      title: "Problema — ¿quién comió más?",
+      content: [
+        "Francisco come $\\frac{1}{4}$ de una tableta y Carmen $\\frac{2}{8}$ de otra igual. ¿Quién comió un trozo mayor?",
+      ],
+      frames: [
+        {
+          caption: "Simplifica la fracción de Carmen:",
+          math: "\\frac{2}{8} = \\frac{2 : 2}{8 : 2} = \\frac{1}{4}",
+        },
+        {
+          caption: "Conclusión:",
+          math: "\\frac{1}{4} = \\frac{2}{8} \\Rightarrow \\text{ comieron la misma cantidad}",
+        },
+      ],
+    },
+    {
       id: "anim-biblio",
       type: "animated_solution",
       title: "Ejemplo — fracción de libros prestados",

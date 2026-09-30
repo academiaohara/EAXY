@@ -37,6 +37,30 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
       ],
     },
     {
+      id: "partes-iguales",
+      type: "concept",
+      title: "Parte de la unidad",
+      content: [
+        "Tomamos un **todo** como unidad y lo dividimos en **porciones iguales**. La fracción $\\frac{a}{b}$ indica que tomamos $a$ de esas $b$ partes.",
+        "En una barra partida en $9$ trozos iguales, colorear $2$ trozos representa $\\frac{2}{9}$.",
+        "Lo importante es que las partes sean **del mismo tamaño**; si no, la fracción no describe bien la cantidad.",
+      ],
+    },
+    {
+      id: "semana",
+      type: "multiple_choice",
+      title: "Fracciones en la vida cotidiana",
+      question:
+        "Una semana tiene $7$ días. ¿Qué fracción de la semana ocupan los días hábiles (lunes a viernes)?",
+      options: [
+        { id: "a", text: "$\\frac{2}{7}$ (fin de semana)" },
+        { id: "b", text: "$\\frac{5}{7}$ (días hábiles)" },
+        { id: "c", text: "$\\frac{5}{5} = 1$" },
+      ],
+      correctOptionId: "b",
+      explanation: "Hay $5$ días hábiles de $7$: $\\frac{5}{7}$ de la semana.",
+    },
+    {
       id: "comparar-unidad",
       type: "concept",
       title: "Comparar con la unidad",
@@ -56,6 +80,21 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
           ],
         },
       ],
+    },
+    {
+      id: "check-unidad-lote",
+      type: "multiple_choice",
+      title: "Comparar con la unidad (actividad 4)",
+      question: "Entre estas fracciones, ¿cuál es **igual** a la unidad?",
+      options: [
+        { id: "a", text: "$\\frac{2}{7}$" },
+        { id: "b", text: "$\\frac{6}{6}$" },
+        { id: "c", text: "$\\frac{8}{5}$" },
+        { id: "d", text: "$\\frac{5}{6}$" },
+      ],
+      correctOptionId: "b",
+      explanation:
+        "Solo cuando numerador y denominador coinciden la fracción vale $1$. $\\frac{6}{6} = 1$; las demás son menores o mayores.",
     },
     {
       id: "check-mayor",
