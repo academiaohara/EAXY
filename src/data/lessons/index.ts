@@ -6,7 +6,10 @@ import { enterosPositivosNegativosLesson } from "@/data/lessons/enteros-positivo
 import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/enteros-z-recta-valor-absoluto";
 import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/multiplicacion-division-enteros";
+import { divisionNumerosDecimalesLesson } from "@/data/lessons/division-numeros-decimales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/multiplicacion-naturales";
+import { operacionesNumerosDecimalesLesson } from "@/data/lessons/operaciones-numeros-decimales";
+import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/ordenes-unidades-decimales";
 import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/multiplos-divisores-naturales";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/numeros-grandes-abreviados";
 import { parentesisEnterosLesson } from "@/data/lessons/parentesis-enteros";
@@ -32,7 +35,10 @@ export const interactiveLessons = {
   "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
   "mcm-mcd-naturales": mcmMcdNaturalesLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
+  "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
+  "operaciones-numeros-decimales": operacionesNumerosDecimalesLesson,
+  "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "multiplos-divisores-naturales": multiplosDivisoresNaturalesLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "parentesis-enteros": parentesisEnterosLesson,

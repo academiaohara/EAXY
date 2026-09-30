@@ -14,6 +14,7 @@ insert into public.modules (id, course_id, title, order_index) values
   ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'Potencias y raíces', 2),
   ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'Divisibilidad', 3),
   ('a2000000-0000-4000-8000-000000000004', 'a1000000-0000-4000-8000-000000000001', 'Los números enteros', 4),
+  ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'Los números decimales', 5),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -36,6 +37,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000403', 'a2000000-0000-4000-8000-000000000004', '3. Suma y resta de enteros', 'Mismo signo / distinto signo; dos métodos de cálculo.', 3, null),
   ('a3000000-0000-4000-8000-000000000404', 'a2000000-0000-4000-8000-000000000004', '4. Paréntesis con enteros', 'Quitar paréntesis, bloques y expresiones anidadas.', 4, null),
   ('a3000000-0000-4000-8000-000000000405', 'a2000000-0000-4000-8000-000000000004', '5. Multiplicación y división', 'Regla de signos y operaciones combinadas.', 5, null),
+  ('a3000000-0000-4000-8000-000000000501', 'a2000000-0000-4000-8000-000000000005', '1. Los órdenes de unidades decimales', 'Lectura y escritura, recta numérica, orden, decimales intermedios y redondeo.', 1, null),
+  ('a3000000-0000-4000-8000-000000000502', 'a2000000-0000-4000-8000-000000000005', '2. Operaciones con números decimales', 'Suma, resta y multiplicación; potencias de 10 y expresiones combinadas.', 2, null),
+  ('a3000000-0000-4000-8000-000000000503', 'a2000000-0000-4000-8000-000000000005', '3. División de números decimales', 'Cociente decimal, aproximaciones y división entre potencias de 10.', 3, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
