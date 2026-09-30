@@ -83,4 +83,13 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[0]?.topicExercises).toHaveLength(64);
   });
+
+  it("tiene las cuatro lecciones y ejercicios resueltos de la unidad 2 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[1]?.title).toBe("Potencias y raíces");
+    expect(firstYear?.modules[1]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[1]?.topicExercises).toHaveLength(39);
+  });
 });
