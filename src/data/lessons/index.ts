@@ -2,6 +2,11 @@ import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/ecuaciones-lineales-dos-incognitas";
+import { fraccionesDecimalesLesson } from "@/data/lessons/fracciones-decimales";
+import { fraccionesEquivalentesLesson } from "@/data/lessons/fracciones-equivalentes";
+import { fraccionesOperadorLesson } from "@/data/lessons/fracciones-operador";
+import { fraccionesParteUnidadLesson } from "@/data/lessons/fracciones-parte-unidad";
+import { fraccionesProblemasLesson } from "@/data/lessons/fracciones-problemas";
 import { enterosPositivosNegativosLesson } from "@/data/lessons/enteros-positivos-negativos";
 import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/enteros-z-recta-valor-absoluto";
 import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
@@ -36,6 +41,11 @@ export const interactiveLessons = {
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
+  "fracciones-decimales": fraccionesDecimalesLesson,
+  "fracciones-equivalentes": fraccionesEquivalentesLesson,
+  "fracciones-operador": fraccionesOperadorLesson,
+  "fracciones-parte-unidad": fraccionesParteUnidadLesson,
+  "fracciones-problemas": fraccionesProblemasLesson,
   "enteros-positivos-negativos": enterosPositivosNegativosLesson,
   "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
   "mcm-mcd-naturales": mcmMcdNaturalesLesson,
