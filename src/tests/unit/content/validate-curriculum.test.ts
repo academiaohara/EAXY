@@ -110,4 +110,18 @@ describe("validateCurriculum", () => {
     expect(firstYear?.modules[3]?.lessons).toHaveLength(5);
     expect(firstYear?.modules[3]?.topicExercises).toHaveLength(45);
   });
+
+  it("tiene las tres lecciones y ejercicios resueltos de la unidad 5 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[4]?.title).toBe("Los números decimales");
+    expect(firstYear?.modules[4]?.lessons).toHaveLength(3);
+    expect(firstYear?.modules[4]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ordenes-unidades-decimales",
+      "operaciones-numeros-decimales",
+      "division-numeros-decimales",
+    ]);
+    expect(firstYear?.modules[4]?.topicExercises).toHaveLength(45);
+  });
 });

@@ -1,5 +1,6 @@
 import type { Curriculum } from "@/content/types";
 import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
+import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
@@ -231,6 +232,42 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "multiplicacion-division-enteros",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(5),
+          title: "Los números decimales",
+          orderIndex: 5,
+          topicExercises: numerosDecimalesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(501),
+              title: "1. Los órdenes de unidades decimales",
+              summary:
+                "Lectura y escritura, recta numérica, orden, decimales intermedios y redondeo.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "ordenes-unidades-decimales",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(502),
+              title: "2. Operaciones con números decimales",
+              summary: "Suma, resta y multiplicación; potencias de 10 y expresiones combinadas.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "operaciones-numeros-decimales",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(503),
+              title: "3. División de números decimales",
+              summary: "Cociente decimal, aproximaciones y división entre potencias de 10.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "division-numeros-decimales",
               conceptSlugs: [],
             },
           ],
