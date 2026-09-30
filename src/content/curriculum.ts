@@ -4,6 +4,7 @@ import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-d
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
+import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
 /**
@@ -268,6 +269,60 @@ export const curriculum: Curriculum = {
               orderIndex: 3,
               kind: "interactive",
               interactiveSlug: "division-numeros-decimales",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(6),
+          title: "El sistema métrico decimal",
+          orderIndex: 6,
+          topicExercises: sistemaMetricoDecimalTopicExercises,
+          lessons: [
+            {
+              id: lessonId(601),
+              title: "1. Magnitudes y el Sistema Métrico Decimal",
+              summary:
+                "Medir magnitudes, historia del S.M.D., metro, litro, gramo y prefijos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "sistema-metrico-magnitudes",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(602),
+              title: "2. Medida de la longitud",
+              summary: "Tabla de unidades, cambios con la coma, forma compleja e incompleja.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "sistema-metrico-longitud",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(603),
+              title: "3. Medida de la capacidad",
+              summary: "Litro y múltiplos; cambios de unidad y forma compleja.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "sistema-metrico-capacidad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(604),
+              title: "4. Medida del peso",
+              summary: "Gramo, kilogramo, tonelada; cambios y problemas.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "sistema-metrico-peso",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(605),
+              title: "5. Medida de la superficie",
+              summary: "Metro cuadrado, unidades agrarias; cambios de cien en cien.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "sistema-metrico-superficie",
               conceptSlugs: [],
             },
           ],

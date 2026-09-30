@@ -20,6 +20,11 @@ import { problemasConSistemasLesson } from "@/data/lessons/problemas-con-sistema
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
 import { relacionDivisibilidadLesson } from "@/data/lessons/relacion-divisibilidad";
 import { resolucionSistemasLinealesLesson } from "@/data/lessons/resolucion-sistemas-lineales";
+import { sistemaMetricoCapacidadLesson } from "@/data/lessons/sistema-metrico-capacidad";
+import { sistemaMetricoLongitudLesson } from "@/data/lessons/sistema-metrico-longitud";
+import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/sistema-metrico-magnitudes";
+import { sistemaMetricoPesoLesson } from "@/data/lessons/sistema-metrico-peso";
+import { sistemaMetricoSuperficieLesson } from "@/data/lessons/sistema-metrico-superficie";
 import { sistemasLinealesGraficaLesson } from "@/data/lessons/sistemas-lineales-grafica";
 import { sistemasNoLinealesLesson } from "@/data/lessons/sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
@@ -49,6 +54,11 @@ export const interactiveLessons = {
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
   "relacion-divisibilidad": relacionDivisibilidadLesson,
   "resolucion-sistemas-lineales": resolucionSistemasLinealesLesson,
+  "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
+  "sistema-metrico-longitud": sistemaMetricoLongitudLesson,
+  "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
+  "sistema-metrico-peso": sistemaMetricoPesoLesson,
+  "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
   "sistemas-lineales-grafica": sistemasLinealesGraficaLesson,
   "sistemas-no-lineales": sistemasNoLinealesLesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
