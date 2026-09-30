@@ -124,4 +124,20 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[4]?.topicExercises).toHaveLength(45);
   });
+
+  it("tiene las cinco lecciones y ejercicios resueltos de la unidad 6 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[5]?.title).toBe("El sistema métrico decimal");
+    expect(firstYear?.modules[5]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[5]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "sistema-metrico-magnitudes",
+      "sistema-metrico-longitud",
+      "sistema-metrico-capacidad",
+      "sistema-metrico-peso",
+      "sistema-metrico-superficie",
+    ]);
+    expect(firstYear?.modules[5]?.topicExercises).toHaveLength(22);
+  });
 });
