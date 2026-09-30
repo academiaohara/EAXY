@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { BookOpenIcon, DumbbellIcon, PlayCircleIcon, SparklesIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { BookOpenIcon, ChevronRightIcon, DumbbellIcon, PlayCircleIcon, SparklesIcon } from "lucide-react";
 import {
   findNextLesson,
   getLessonProgressStatus,
@@ -9,6 +7,7 @@ import {
 } from "@/lib/curriculum/course-progress";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import type { ModuleSummary } from "@/lib/curriculum/types";
+import { cn } from "@/lib/utils";
 
 type CourseTopicQuickAccessProps = {
   courseModule: ModuleSummary;
@@ -23,11 +22,11 @@ function lessonMetaLabel(next: NextLessonRef): string {
   return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
 }
 
-function actionLabel(next: NextLessonRef): string {
+function nextStepHint(next: NextLessonRef): string {
   if (next.isReview) {
-    return "Repasar";
+    return "Repasar lección";
   }
-  return next.lesson.pathStatus === "started" ? "Continuar" : "Empezar";
+  return next.lesson.pathStatus === "started" ? "Continuar lección" : "Entrar en la lección";
 }
 
 export function CourseTopicQuickAccess({ courseModule, moduleNumber }: CourseTopicQuickAccessProps) {
@@ -56,6 +55,9 @@ export function CourseTopicQuickAccess({ courseModule, moduleNumber }: CourseTop
     return null;
   }
 
+  const interactiveCardLinkClass =
+    "group/card outline-none transition-all hover:-translate-y-0.5 hover:border-cobalt/55 hover:bg-cobalt-tint/35 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40";
+
   return (
     <section className="space-y-3" data-testid="course-topic-quick-access">
       <header className="space-y-0.5">
@@ -65,30 +67,37 @@ export function CourseTopicQuickAccess({ courseModule, moduleNumber }: CourseTop
 
       <div className="grid gap-3 sm:grid-cols-2">
         {next ? (
-          <Card
-            className="border-cobalt/25 bg-cobalt-tint/20 p-4 shadow-sm sm:col-span-2"
-            data-testid="quick-access-next"
+          <Link
+            href={resolveLessonHref(next.lesson.id)}
+            data-testid="quick-access-next-cta"
+            aria-label={`${nextStepHint(next)}: ${next.lesson.title.replace(/^\d+\.\s*/, "")}`}
+            className={cn(
+              "flex flex-col gap-3 overflow-hidden rounded-2xl border border-cobalt/25 bg-cobalt-tint/20 p-4 shadow-sm sm:col-span-2 sm:flex-row sm:items-center sm:gap-5 sm:p-5",
+              interactiveCardLinkClass,
+            )}
           >
-            <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-cobalt">
-              {next.isReview ? "Repaso recomendado" : "Siguiente paso"}
-            </p>
-            <p className="mt-2 font-medium leading-snug text-ink">
-              {next.lesson.title.replace(/^\d+\.\s*/, "")}
-            </p>
-            <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-              <SparklesIcon className="size-3.5 text-cobalt" aria-hidden />
-              {lessonMetaLabel(next)}
-            </p>
-            <Button
-              nativeButton={false}
-              className="mt-4 w-full rounded-full sm:w-auto"
-              render={
-                <Link href={resolveLessonHref(next.lesson.id)} data-testid="quick-access-next-cta" />
-              }
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-cobalt">
+                {next.isReview ? "Repaso recomendado" : "Siguiente paso"}
+              </p>
+              <p className="mt-2 font-medium leading-snug text-ink transition-colors group-hover/card:text-cobalt">
+                {next.lesson.title.replace(/^\d+\.\s*/, "")}
+              </p>
+              <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                <SparklesIcon className="size-3.5 text-cobalt" aria-hidden />
+                {lessonMetaLabel(next)}
+              </p>
+            </div>
+            <span
+              className="flex items-center justify-between gap-2 border-t border-cobalt/15 pt-3 text-sm font-medium text-cobalt sm:flex-col sm:items-end sm:justify-center sm:border-t-0 sm:border-l sm:pl-5 sm:pt-0"
+              aria-hidden
             >
-              {actionLabel(next)}
-            </Button>
-          </Card>
+              <span className="text-xs uppercase tracking-wide text-cobalt/80 transition-colors group-hover/card:text-cobalt sm:text-right">
+                {nextStepHint(next)}
+              </span>
+              <ChevronRightIcon className="size-5 shrink-0 transition-transform group-hover/card:translate-x-0.5" />
+            </span>
+          </Link>
         ) : null}
 
         {shortcuts.map((entry) => {
