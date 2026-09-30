@@ -122,6 +122,41 @@ export const fraccionesTopicExercisesExtra: CurriculumTopicExercise[] = [
     solutionVideoUrl: DEFAULT_VIDEO,
   },
   {
+    id: topicExerciseId(27),
+    title: "Actividad 13 — fracción y decimal en la recta (p. 82)",
+    statement:
+      "Expresa en forma de fracción y de decimal el punto situado en $0{,}4$ de la recta entre $0$ y $1$.",
+    solutionText:
+      "Es $\\frac{2}{5}$ (o $\\frac{4}{10}$); $2 : 5 = 0{,}4$.",
+    solutionVideoUrl: DEFAULT_VIDEO,
+  },
+  {
+    id: topicExerciseId(28),
+    title: "Problema — frascos de colonia (ej. 13, p. 87)",
+    statement:
+      "Con un bidón de $20$ litros se llenan $200$ frascos iguales. ¿Qué fracción de litro entra en cada frasco?",
+    solutionText:
+      "Cada frasco: $20 : 200 = 0{,}1\\,\\mathrm{l} = \\frac{1}{10}$ de litro.",
+    solutionVideoUrl: DEFAULT_VIDEO,
+  },
+  {
+    id: topicExerciseId(29),
+    title: "Problema — tabletas de chocolate (ej. 14, p. 87)",
+    statement:
+      "Francisco come $\\frac{1}{4}$ de una tableta y Carmen $\\frac{2}{8}$ de otra igual. ¿Quién ha comido un trozo más grande?",
+    solutionText:
+      "$\\frac{2}{8} = \\frac{1}{4}$; comen la misma cantidad (fracciones equivalentes).",
+    solutionVideoUrl: DEFAULT_VIDEO,
+  },
+  {
+    id: topicExerciseId(30),
+    title: "Problema — capacidad del bidón (ej. 17, p. 87)",
+    statement:
+      "En un bidón hay $8$ litros de agua, que son $\\frac{2}{5}$ de su capacidad. ¿Cuántos litros caben en total?",
+    solutionText: "$\\frac{2}{5}$ del total $= 8$ → total $= 8 : 2 \\cdot 5 = 20$ litros.",
+    solutionVideoUrl: DEFAULT_VIDEO,
+  },
+  {
     id: topicExerciseId(26),
     title: "Autoevaluación unidad 7 (p. 87)",
     statement:

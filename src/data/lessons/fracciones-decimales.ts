@@ -26,6 +26,15 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
             { tex: "= 0{,}4", label: "Decimal", tone: "amber" },
           ],
         },
+        {
+          kind: "number-line",
+          title: "En la recta entre $0$ y $1$",
+          min: 0,
+          max: 1,
+          step: 0.1,
+          points: [{ value: 0.4, label: "\\frac{2}{5}", tone: "cobalt" }],
+          caption: "Cuatro décimas = dos quintos del segmento unidad.",
+        },
       ],
     },
     {

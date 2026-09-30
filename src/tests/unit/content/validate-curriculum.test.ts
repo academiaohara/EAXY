@@ -140,4 +140,20 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[5]?.topicExercises).toHaveLength(22);
   });
+
+  it("tiene las cinco lecciones y ejercicios resueltos de la unidad 7 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[6]?.title).toBe("Las fracciones");
+    expect(firstYear?.modules[6]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[6]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "fracciones-parte-unidad",
+      "fracciones-operador",
+      "fracciones-decimales",
+      "fracciones-equivalentes",
+      "fracciones-problemas",
+    ]);
+    expect(firstYear?.modules[6]?.topicExercises).toHaveLength(30);
+  });
 });

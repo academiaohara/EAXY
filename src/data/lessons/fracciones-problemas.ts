@@ -59,6 +59,24 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
       ],
     },
     {
+      id: "bidon-frascos",
+      type: "animated_solution",
+      title: "Problema — bidón y frascos",
+      content: [
+        "Con un bidón de $20$ litros se llenan $200$ frascos iguales de agua de colonia. ¿Qué fracción de litro entra en cada frasco?",
+      ],
+      frames: [
+        {
+          caption: "Litros por frasco:",
+          math: "20 : 200 = 0{,}1\\,\\mathrm{l} = \\frac{1}{10}\\,\\mathrm{l}",
+        },
+        {
+          caption: "Como fracción de litro:",
+          math: "\\frac{1\\,\\mathrm{l}}{10} = \\frac{1}{10}",
+        },
+      ],
+    },
+    {
       id: "rosario",
       type: "animated_solution",
       title: "Problema inverso — la hucha",
@@ -75,6 +93,15 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
           math: "14 : 2 \\cdot 5 = 35\\,€",
         },
       ],
+    },
+    {
+      id: "bidon-capacidad",
+      type: "fill_in_blank",
+      title: "Problema inverso — bidón de agua",
+      question:
+        "En un bidón hay $8$ litros, que son $\\frac{2}{5}$ de su capacidad total. ¿Cuántos litros caben en total? (solo el número)",
+      correctAnswers: ["20"],
+      explanation: "$\\frac{2}{5}$ del total $= 8$ → total $= 8 : 2 \\cdot 5 = 20$ litros.",
     },
     {
       id: "check-directo",
