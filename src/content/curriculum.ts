@@ -1,4 +1,5 @@
 import type { Curriculum } from "@/content/types";
+import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
 /**
@@ -32,6 +33,7 @@ export const curriculum: Curriculum = {
           id: moduleId(1),
           title: "Los números naturales",
           orderIndex: 1,
+          topicExercises: numerosNaturalesTopicExercises,
           lessons: [
             {
               id: lessonId(101),
