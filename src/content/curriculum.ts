@@ -1,5 +1,6 @@
 import type { Curriculum } from "@/content/types";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
+import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
 /**
@@ -86,6 +87,7 @@ export const curriculum: Curriculum = {
           id: moduleId(2),
           title: "Potencias y raíces",
           orderIndex: 2,
+          topicExercises: potenciasRaicesTopicExercises,
           lessons: [
             {
               id: lessonId(201),
