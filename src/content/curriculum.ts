@@ -1,4 +1,5 @@
 import type { Curriculum } from "@/content/types";
+import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
@@ -131,6 +132,7 @@ export const curriculum: Curriculum = {
           id: moduleId(3),
           title: "Divisibilidad",
           orderIndex: 3,
+          topicExercises: divisibilidadTopicExercises,
           lessons: [
             {
               id: lessonId(301),
