@@ -101,4 +101,13 @@ describe("validateCurriculum", () => {
     expect(firstYear?.modules[2]?.lessons).toHaveLength(5);
     expect(firstYear?.modules[2]?.topicExercises).toHaveLength(45);
   });
+
+  it("tiene las cinco lecciones y ejercicios resueltos de la unidad 4 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[3]?.title).toBe("Los números enteros");
+    expect(firstYear?.modules[3]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[3]?.topicExercises).toHaveLength(45);
+  });
 });

@@ -1,5 +1,6 @@
 import type { Curriculum } from "@/content/types";
 import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
+import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
@@ -185,6 +186,7 @@ export const curriculum: Curriculum = {
           id: moduleId(4),
           title: "Los números enteros",
           orderIndex: 4,
+          topicExercises: numerosEnterosTopicExercises,
           lessons: [
             {
               id: lessonId(401),
