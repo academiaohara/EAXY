@@ -1,4 +1,5 @@
 import type { CurriculumTopicExercise } from "@/content/types";
+import { numerosNaturalesTopicExercisesExtra } from "@/data/topic-exercises/numeros-naturales-extra";
 
 function topicExerciseId(n: number) {
   return `b4000000-0000-4000-8001-${n.toString().padStart(12, "0")}`;
@@ -7,7 +8,7 @@ function topicExerciseId(n: number) {
 const DEFAULT_VIDEO = "https://www.youtube.com/embed/8ZtInClXe1Q";
 
 /** Ejercicios resueltos del tema «Los números naturales» (1.º ESO, unidad 1). */
-export const numerosNaturalesTopicExercises: CurriculumTopicExercise[] = [
+const numerosNaturalesTopicExercisesBase: CurriculumTopicExercise[] = [
   {
     id: topicExerciseId(1),
     title: "Números romanos del temario",
@@ -159,4 +160,9 @@ export const numerosNaturalesTopicExercises: CurriculumTopicExercise[] = [
       "El $50\\%$ de $2000$ es $1000$ habitantes más.\nPoblación prevista: $2000 + 1000 = 3000$ habitantes.",
     solutionVideoUrl: DEFAULT_VIDEO,
   },
+];
+
+export const numerosNaturalesTopicExercises: CurriculumTopicExercise[] = [
+  ...numerosNaturalesTopicExercisesBase,
+  ...numerosNaturalesTopicExercisesExtra,
 ];
