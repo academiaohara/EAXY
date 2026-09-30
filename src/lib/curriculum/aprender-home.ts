@@ -46,6 +46,77 @@ type LearningPathJoinedRow = {
   } | null;
 };
 
+type LearningPathCourseRaw = {
+  id: string;
+  title: string;
+};
+
+type LearningPathModuleRaw = {
+  id: string;
+  title: string;
+  order_index: number;
+  course_id: string;
+  courses: LearningPathCourseRaw | LearningPathCourseRaw[] | null;
+};
+
+type LearningPathLessonRaw = {
+  id: string;
+  title: string;
+  module_id: string;
+  modules: LearningPathModuleRaw | LearningPathModuleRaw[] | null;
+};
+
+type LearningPathJoinedRowRaw = {
+  started_at: string;
+  lesson_id: string;
+  lessons: LearningPathLessonRaw | LearningPathLessonRaw[] | null;
+};
+
+function firstRelation<T>(value: T | T[] | null | undefined): T | null {
+  if (value == null) {
+    return null;
+  }
+  return Array.isArray(value) ? (value[0] ?? null) : value;
+}
+
+function normalizeLearningPathJoinedRow(raw: LearningPathJoinedRowRaw): LearningPathJoinedRow {
+  const lessonRaw = firstRelation(raw.lessons);
+  if (!lessonRaw) {
+    return {
+      started_at: raw.started_at,
+      lesson_id: raw.lesson_id,
+      lessons: null,
+    };
+  }
+
+  const moduleRaw = firstRelation(lessonRaw.modules);
+  const courseRaw = moduleRaw ? firstRelation(moduleRaw.courses) : null;
+
+  return {
+    started_at: raw.started_at,
+    lesson_id: raw.lesson_id,
+    lessons: {
+      id: lessonRaw.id,
+      title: lessonRaw.title,
+      module_id: lessonRaw.module_id,
+      modules: moduleRaw
+        ? {
+            id: moduleRaw.id,
+            title: moduleRaw.title,
+            order_index: moduleRaw.order_index,
+            course_id: moduleRaw.course_id,
+            courses: courseRaw
+              ? {
+                  id: courseRaw.id,
+                  title: courseRaw.title,
+                }
+              : null,
+          }
+        : null,
+    },
+  };
+}
+
 function cleanLessonTitle(title: string): string {
   return title.replace(/^\d+\.\s*/, "");
 }
@@ -124,12 +195,14 @@ async function getStartedPathsFromDb(studentId: string): Promise<LearningPathJoi
     throw new Error(`No se pudo cargar tu actividad reciente: ${error.message}`);
   }
 
-  return (data ?? []) as LearningPathJoinedRow[];
+  return (data ?? []).map((row) =>
+    normalizeLearningPathJoinedRow(row as unknown as LearningPathJoinedRowRaw),
+  );
 }
 
 async function buildShortcutForCourse(
   courseId: string,
-  studentId: string,
+  studentId: string | null,
   startedAt: Date | null,
 ): Promise<AprenderStudyShortcut | null> {
   const outline = await getCourseOutline(courseId, studentId);
