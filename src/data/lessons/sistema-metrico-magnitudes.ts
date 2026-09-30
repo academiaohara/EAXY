@@ -56,7 +56,7 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
             { title: "deca", math: "10\\,\\mathrm{U}", tone: "emerald" },
             { title: "deci", math: "0{,}1\\,\\mathrm{U}", tone: "amber" },
             { title: "centi", math: "0{,}01\\,\\mathrm{U}", tone: "rose" },
-            { title: "mili", math: "0{,}001\\,\\mathrm{U}", tone: "slate" },
+            { title: "mili", math: "0{,}001\\,\\mathrm{U}", tone: "cobalt" },
           ],
         },
       ],
