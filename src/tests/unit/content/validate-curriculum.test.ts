@@ -81,5 +81,6 @@ describe("validateCurriculum", () => {
       "multiplicacion-naturales",
       "division-orden-operaciones-naturales",
     ]);
+    expect(firstYear?.modules[0]?.topicExercises).toHaveLength(64);
   });
 });
