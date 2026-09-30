@@ -1,5 +1,6 @@
 import type { Curriculum } from "@/content/types";
 import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
+import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
 import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
@@ -323,6 +324,61 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "sistema-metrico-superficie",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(8),
+          title: "Las fracciones",
+          orderIndex: 7,
+          topicExercises: fraccionesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(801),
+              title: "1. Parte de la unidad",
+              summary:
+                "Significado de fracción, numerador y denominador; menor, igual o mayor que la unidad.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "fracciones-parte-unidad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(802),
+              title: "2. La fracción como operador",
+              summary: "Calcular una fracción de un número; cálculo mental y problemas.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "fracciones-operador",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(803),
+              title: "3. Fracciones y números decimales",
+              summary: "Fracción como división; paso a decimal y decimales periódicos.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "fracciones-decimales",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(804),
+              title: "4. Fracciones equivalentes",
+              summary: "Propiedad fundamental, amplificar, simplificar e irreducibles.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "fracciones-equivalentes",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(805),
+              title: "5. Problemas con fracciones",
+              summary:
+                "Calcular la fracción, fracción de un número e inversos (parte conocida).",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "fracciones-problemas",
               conceptSlugs: [],
             },
           ],
