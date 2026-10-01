@@ -17,7 +17,7 @@ insert into public.modules (id, course_id, title, order_index) values
   ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'Los números decimales', 5),
   ('a2000000-0000-4000-8000-000000000006', 'a1000000-0000-4000-8000-000000000001', 'El sistema métrico decimal', 6),
   ('a2000000-0000-4000-8000-000000000008', 'a1000000-0000-4000-8000-000000000001', 'Las fracciones', 7),
-  ('a2000000-0000-4000-8000-000000000009', 'a1000000-0000-4000-8000-000000000001', 'Proporcionalidad y porcentajes', 8),
+  ('a2000000-0000-4000-8000-000000000009', 'a1000000-0000-4000-8000-000000000001', 'Proporcionalidad y porcentajes', 9),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values

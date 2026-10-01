@@ -387,7 +387,7 @@ export const curriculum: Curriculum = {
         {
           id: moduleId(9),
           title: "Proporcionalidad y porcentajes",
-          orderIndex: 8,
+          orderIndex: 9,
           topicExercises: proporcionalidadPorcentajesTopicExercises,
           lessons: [
             {
