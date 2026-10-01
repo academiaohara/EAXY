@@ -156,4 +156,21 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[6]?.topicExercises).toHaveLength(30);
   });
+
+  it("tiene las seis lecciones y ejercicios resueltos de la unidad 14 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[7]?.title).toBe("Tablas y gráficas");
+    expect(firstYear?.modules[7]?.lessons).toHaveLength(6);
+    expect(firstYear?.modules[7]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "tablas-graficas-coordenadas-cartesianas",
+      "tablas-graficas-informacion-puntos",
+      "tablas-graficas-interpretacion-graficas",
+      "tablas-graficas-distribuciones-estadisticas",
+      "tablas-graficas-parametros-estadisticos",
+      "tablas-graficas-graficos-estadisticos",
+    ]);
+    expect(firstYear?.modules[7]?.topicExercises).toHaveLength(23);
+  });
 });

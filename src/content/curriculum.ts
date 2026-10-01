@@ -7,6 +7,7 @@ import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-n
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
+import { tablasGraficasTopicExercises } from "@/data/topic-exercises/tablas-graficas";
 
 /**
  * Fuente única de verdad del contenido curricular de desarrollo.
@@ -379,6 +380,72 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(14),
+          title: "Tablas y gráficas",
+          orderIndex: 8,
+          topicExercises: tablasGraficasTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1401),
+              title: "1. Coordenadas cartesianas",
+              summary:
+                "Ejes X e Y, abscisa y ordenada, cuadrantes y representación de puntos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-coordenadas-cartesianas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1402),
+              title: "2. Información mediante puntos",
+              summary: "Diagramas con situaciones reales: edad, estatura, precio, velocidad…",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-informacion-puntos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1403),
+              title: "3. Interpretación de gráficas",
+              summary:
+                "Variables independiente y dependiente; tiempo, distancia, coste y contexto.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-interpretacion-graficas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1404),
+              title: "4. Distribuciones estadísticas",
+              summary:
+                "Variables cualitativas y cuantitativas; tablas de frecuencias absolutas y relativas.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-distribuciones-estadisticas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1405),
+              title: "5. Media, mediana y moda",
+              summary: "Parámetros estadísticos; datos numéricos y cualitativos.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-parametros-estadisticos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1406),
+              title: "6. Gráficos estadísticos",
+              summary:
+                "Diagrama de barras, histograma, polígono de frecuencias y diagrama de sectores.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-graficos-estadisticos",
               conceptSlugs: [],
             },
           ],
