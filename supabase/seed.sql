@@ -17,6 +17,7 @@ insert into public.modules (id, course_id, title, order_index) values
   ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'Los números decimales', 5),
   ('a2000000-0000-4000-8000-000000000006', 'a1000000-0000-4000-8000-000000000001', 'El sistema métrico decimal', 6),
   ('a2000000-0000-4000-8000-000000000008', 'a1000000-0000-4000-8000-000000000001', 'Las fracciones', 7),
+  ('a2000000-0000-4000-8000-000000000009', 'a1000000-0000-4000-8000-000000000001', 'Álgebra', 8),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -52,6 +53,12 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000803', 'a2000000-0000-4000-8000-000000000008', '3. Fracciones y números decimales', 'Fracción como división; paso a decimal y decimales periódicos.', 3, null),
   ('a3000000-0000-4000-8000-000000000804', 'a2000000-0000-4000-8000-000000000008', '4. Fracciones equivalentes', 'Propiedad fundamental, amplificar, simplificar e irreducibles.', 4, null),
   ('a3000000-0000-4000-8000-000000000805', 'a2000000-0000-4000-8000-000000000008', '5. Problemas con fracciones', 'Calcular la fracción, fracción de un número e inversos (parte conocida).', 5, null),
+  ('a3000000-0000-4000-8000-000000000901', 'a2000000-0000-4000-8000-000000000009', '1. Letras en vez de números', 'Generalizar con letras, lenguaje algebraico y primer problema con ecuación.', 1, null),
+  ('a3000000-0000-4000-8000-000000000902', 'a2000000-0000-4000-8000-000000000009', '2. Expresiones algebraicas', 'Monomios, suma y multiplicación; propiedad distributiva.', 2, null),
+  ('a3000000-0000-4000-8000-000000000903', 'a2000000-0000-4000-8000-000000000009', '3. Ecuaciones', 'Ecuaciones e identidades; miembros, términos e incógnitas.', 3, null),
+  ('a3000000-0000-4000-8000-000000000904', 'a2000000-0000-4000-8000-000000000009', '4. Primeras técnicas de resolución', 'Ecuaciones $x + a$, $x - a$, $ax$ y $x/a$; reglas de transposición.', 4, null),
+  ('a3000000-0000-4000-8000-000000000905', 'a2000000-0000-4000-8000-000000000009', '5. Ecuaciones de primer grado', 'Reducir miembros, transponer términos y comprobar la solución.', 5, null),
+  ('a3000000-0000-4000-8000-000000000906', 'a2000000-0000-4000-8000-000000000009', '6. Problemas con ecuaciones', 'Traducir enunciados, plantear ecuaciones y problemas contextualizados.', 6, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

@@ -6,6 +6,7 @@ import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-ent
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
+import { algebraTopicExercises } from "@/data/topic-exercises/algebra";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
 /**
@@ -379,6 +380,69 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(9),
+          title: "Álgebra",
+          orderIndex: 8,
+          topicExercises: algebraTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Letras en vez de números",
+              summary:
+                "Generalizar con letras, lenguaje algebraico y primer problema con ecuación.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "algebra-letras-numeros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Expresiones algebraicas",
+              summary: "Monomios, suma y multiplicación; propiedad distributiva.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "algebra-expresiones-monomios",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Ecuaciones",
+              summary: "Ecuaciones e identidades; miembros, términos e incógnitas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "algebra-ecuaciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Primeras técnicas de resolución",
+              summary: "Ecuaciones $x + a$, $x - a$, $ax$ y $x/a$; reglas de transposición.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "algebra-tecnicas-ecuaciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(905),
+              title: "5. Ecuaciones de primer grado",
+              summary: "Reducir miembros, transponer términos y comprobar la solución.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "algebra-resolucion-primer-grado",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(906),
+              title: "6. Problemas con ecuaciones",
+              summary: "Traducir enunciados, plantear ecuaciones y problemas contextualizados.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "algebra-problemas-ecuaciones",
               conceptSlugs: [],
             },
           ],
