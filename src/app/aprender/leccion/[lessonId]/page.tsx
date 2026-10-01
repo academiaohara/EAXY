@@ -26,8 +26,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
       <LessonDetailWithLocalProgress lesson={lesson} mergeLocalProgress={!studentId} />
-    </main>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, LayoutListIcon } from "lucide-react";
 import { isModuleAccessible, sortModules } from "@/lib/curriculum/course-navigation";
+import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
 import type { ModuleSummary } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
 
@@ -87,16 +88,16 @@ export function CourseTopicCarousel({
 
   const prevHref =
     prev && isModuleAccessible(prev)
-      ? `/aprender/curso/${courseId}/tema/${prev.id}`
+      ? topicHref(courseId, prev.id)
       : null;
   const nextHref =
     next && isModuleAccessible(next)
-      ? `/aprender/curso/${courseId}/tema/${next.id}`
+      ? topicHref(courseId, next.id)
       : null;
 
   return (
     <section
-      className="relative overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-b from-cobalt-tint/50 via-paper-raised to-paper-raised px-4 py-6 shadow-sm sm:px-8 sm:py-8"
+      className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-b from-cobalt-tint/70 via-paper-raised to-paper-raised px-4 py-6 shadow-sm sm:px-8 sm:py-8"
       data-testid="course-topic-carousel"
       aria-label="Temas del curso"
     >
@@ -105,9 +106,16 @@ export function CourseTopicCarousel({
         aria-hidden
       />
 
-      <p className="relative text-center text-[11px] font-bold uppercase tracking-[0.16em] text-cobalt">
-        {courseTitle}
-      </p>
+      <div className="relative flex justify-center">
+        <Link
+          href={courseHref(courseId)}
+          className="inline-flex items-center gap-1.5 rounded-full bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/15 transition-colors hover:bg-cobalt hover:text-white"
+          data-testid="topic-carousel-course-link"
+        >
+          <LayoutListIcon className="size-3.5" aria-hidden />
+          {courseTitle} · Ver temario
+        </Link>
+      </div>
 
       <div className="relative mt-5 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 sm:gap-4">
         <div className="min-w-0 scale-[0.92] opacity-70 blur-[0.4px] sm:scale-[0.88] sm:opacity-60 sm:blur-[0.6px]">
@@ -124,9 +132,11 @@ export function CourseTopicCarousel({
         </div>
 
         <div className="relative z-10 flex min-w-[8.5rem] flex-col items-center px-2 text-center sm:min-w-[10rem]">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">Tema</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
+            Tema {activeModuleNumber} de {sorted.length}
+          </p>
           <p
-            className="font-display text-6xl font-semibold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
+            className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
             data-testid="topic-carousel-active-number"
           >
             {String(activeModuleNumber).padStart(2, "0")}

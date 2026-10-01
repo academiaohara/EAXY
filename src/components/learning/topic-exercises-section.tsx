@@ -84,7 +84,7 @@ export function TopicExercisesSection({
       >
         <div className="space-y-1">
           {layout === "full" ? (
-            <h2 className="flex flex-wrap items-center gap-2 font-heading text-lg font-semibold text-ink">
+            <h2 className="flex flex-wrap items-center gap-2 font-display text-xl font-bold tracking-tight text-ink">
               <DumbbellIcon className="size-5 shrink-0 text-cobalt" aria-hidden />
               Ejercicios del tema
               <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium tabular-nums text-muted-foreground">

@@ -61,7 +61,9 @@ export function CourseTopicQuickAccess({ courseModule, moduleNumber }: CourseTop
   return (
     <section className="space-y-3" data-testid="course-topic-quick-access">
       <header className="space-y-0.5">
-        <h2 className="font-heading text-lg font-semibold text-ink">Sigue donde lo dejaste</h2>
+        <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+          Sigue donde lo dejaste
+        </h2>
         <p className="text-sm text-muted-foreground">Accesos directos a tu actividad en este tema.</p>
       </header>
 

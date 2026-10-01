@@ -22,6 +22,7 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
     ? {
         courseId: context.course.id,
         courseTitle: context.course.title,
+        moduleId: context.module.id,
         moduleTitle: context.module.title,
       }
     : undefined;

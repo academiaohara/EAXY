@@ -136,6 +136,8 @@ export function getPreviewLessonDetail(lessonId: string): LessonDetail | null {
     exerciseCount: exerciseSummaries.length,
     pathStatus: "not_started",
     conceptIds,
+    courseId: course.id,
+    moduleId: courseModule.id,
     moduleTitle: courseModule.title,
     courseTitle: course.title,
     kind: meta?.kind ?? "exercises",

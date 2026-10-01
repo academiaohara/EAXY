@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { CourseTopicCarousel } from "@/components/learning/course-topic-carousel";
 import { CourseTopicQuickAccess } from "@/components/learning/course-topic-quick-access";
 import { LearningPathWithLocalProgress } from "@/components/learning/learning-path-with-local-progress";
 import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
+import { buildLearningTrail } from "@/lib/navigation/learning-trail";
 import type { CourseOutline, ModuleSummary } from "@/lib/curriculum/types";
 
 type CourseTopicViewProps = {
@@ -18,14 +18,12 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
 
   return (
     <div className="flex w-full flex-col gap-8" data-testid="course-topic-view">
-      <Link
-        href="/aprender"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-cobalt"
-        data-testid="course-topic-back"
-      >
-        <ArrowLeftIcon className="size-4" aria-hidden />
-        Volver al inicio
-      </Link>
+      <Breadcrumbs
+        items={buildLearningTrail({
+          course: outline.course,
+          topic: { id: courseModule.id, title: courseModule.title, number: moduleNumber },
+        })}
+      />
 
       <CourseTopicCarousel
         courseId={outline.course.id}
@@ -47,7 +45,9 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
           {hasLessons ? (
             <section id="course-lessons" className="scroll-mt-6 space-y-4">
               <header className="space-y-0.5">
-                <h2 className="font-heading text-lg font-semibold text-ink">Lecciones del tema</h2>
+                <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+                  Lecciones del tema
+                </h2>
                 <p className="text-sm text-muted-foreground">
                   Recorre la ruta completa o entra en cualquier lección.
                 </p>

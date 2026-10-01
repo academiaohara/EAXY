@@ -30,6 +30,8 @@ export function getE2EMockLessonDetail(lessonId: string): LessonDetail | null {
 
   return {
     ...lesson,
+    courseId: DEMO_COURSE_ID,
+    moduleId: courseModule?.id ?? "",
     moduleTitle: courseModule?.title ?? "Sistemas de ecuaciones",
     courseTitle: course?.title ?? "Matemáticas 4º ESO",
     concepts: [],
