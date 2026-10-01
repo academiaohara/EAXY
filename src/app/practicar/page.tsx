@@ -1,8 +1,10 @@
 import { redirect } from "next/navigation";
-import { curriculum, getConceptById, getOrderedConcepts } from "@/content";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getCourseOverview } from "@/lib/learning/queries";
-import { pickPracticeConceptSlug } from "@/lib/learning/pick-practice-concept";
+import {
+  resolveDefaultPracticePath,
+  resolveRecommendedPracticePath,
+} from "@/lib/learning/resolve-practice-path";
 import { getStudentRecommendation } from "@/lib/recommendations/queries";
 
 export default async function PracticarIndexPage() {
@@ -14,25 +16,21 @@ export default async function PracticarIndexPage() {
       getStudentRecommendation(studentId),
     ]);
 
-    if (recommendation?.conceptId) {
-      const concept = getConceptById(recommendation.conceptId, curriculum);
-      if (concept) {
-        redirect(`/practicar/${concept.slug}`);
-      }
+    const recommendedPath = resolveRecommendedPracticePath(recommendation?.conceptId);
+    if (recommendedPath) {
+      redirect(recommendedPath);
     }
 
-    const slug =
-      pickPracticeConceptSlug(overview.concepts) ?? getOrderedConcepts(curriculum)[0]?.slug;
-
-    if (slug) {
-      redirect(`/practicar/${slug}`);
+    const path = resolveDefaultPracticePath(overview.concepts);
+    if (path) {
+      redirect(path);
+    }
+  } else {
+    const path = resolveDefaultPracticePath();
+    if (path) {
+      redirect(path);
     }
   }
 
-  const slug = getOrderedConcepts(curriculum)[0]?.slug;
-  if (!slug) {
-    redirect("/aprender");
-  }
-
-  redirect(`/practicar/${slug}`);
+  redirect("/aprender");
 }

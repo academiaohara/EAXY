@@ -137,6 +137,20 @@ export function getOrderedConcepts(source: Curriculum = curriculum): CurriculumC
   return ordered;
 }
 
+/** Primer tema del curso que incluye ejercicios de refuerzo (topic exercises). */
+export function getFirstModuleWithTopicExercises(source: Curriculum = curriculum):
+  | { course: CurriculumCourse; module: CurriculumModule }
+  | undefined {
+  for (const course of getAllCourses(source)) {
+    for (const courseModule of [...course.modules].sort((a, b) => a.orderIndex - b.orderIndex)) {
+      if ((courseModule.topicExercises?.length ?? 0) > 0) {
+        return { course, module: courseModule };
+      }
+    }
+  }
+  return undefined;
+}
+
 export type CurriculumValidationIssue = { path: string; message: string };
 
 function isInteractiveLesson(lesson: CurriculumLesson): boolean {
