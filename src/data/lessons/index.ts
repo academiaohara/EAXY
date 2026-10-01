@@ -18,7 +18,11 @@ import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/ordenes-unidades-
 import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/multiplos-divisores-naturales";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/numeros-grandes-abreviados";
 import { parentesisEnterosLesson } from "@/data/lessons/parentesis-enteros";
+import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/aumentos-disminuciones-porcentuales";
+import { porcentajesLesson } from "@/data/lessons/porcentajes";
 import { potenciasBase10Lesson } from "@/data/lessons/potencias-base-10";
+import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/proporcionalidad-directa-problemas";
+import { proporcionalidadMagnitudesLesson } from "@/data/lessons/proporcionalidad-magnitudes";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
 import { primosCompuestosLesson } from "@/data/lessons/primos-compuestos";
 import { problemasConSistemasLesson } from "@/data/lessons/problemas-con-sistemas";
@@ -57,7 +61,11 @@ export const interactiveLessons = {
   "multiplos-divisores-naturales": multiplosDivisoresNaturalesLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "parentesis-enteros": parentesisEnterosLesson,
+  "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
+  "porcentajes": porcentajesLesson,
   "potencias-base-10": potenciasBase10Lesson,
+  "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
+  "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
   "primos-compuestos": primosCompuestosLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
