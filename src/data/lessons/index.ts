@@ -1,3 +1,7 @@
+import { areasCirculoLesson } from "@/data/lessons/areas-circulo";
+import { areasCuadrilaterosLesson } from "@/data/lessons/areas-cuadrilateros";
+import { areasPoligonosLesson } from "@/data/lessons/areas-poligonos";
+import { areasTrianguloLesson } from "@/data/lessons/areas-triangulo";
 import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
@@ -37,6 +41,10 @@ import { sumaRestaEnterosLesson } from "@/data/lessons/suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
 
 export const interactiveLessons = {
+  "areas-circulo": areasCirculoLesson,
+  "areas-cuadrilateros": areasCuadrilaterosLesson,
+  "areas-poligonos": areasPoligonosLesson,
+  "areas-triangulo": areasTrianguloLesson,
   "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
