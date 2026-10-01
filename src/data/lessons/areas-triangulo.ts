@@ -56,7 +56,7 @@ export const areasTrianguloLesson: InteractiveLesson = {
       type: "fill_in_blank",
       title: "Parcela triangular",
       question:
-        "Una parcela tiene un lado de $20\\,\\mathrm{m}$ y altura $13\\,\\mathrm{m}$ sobre ese lado. Su área es {{answer}} $\\mathrm{m}^2$.",
+        "Una parcela tiene un lado de $20\\,\\mathrm{m}$ y altura $13\\,\\mathrm{m}$ sobre ese lado. ¿Cuál es su área en $\\mathrm{m}^2$?",
       correctAnswers: ["130", "130,0", "130.0"],
       explanation: "$A = \\dfrac{20 \\cdot 13}{2} = 130\\,\\mathrm{m}^2$.",
     },

@@ -66,7 +66,8 @@ export const areasCirculoLesson: InteractiveLesson = {
       id: "check-area",
       type: "fill_in_blank",
       title: "Área con el radio",
-      question: "Un círculo tiene radio $4\\,\\mathrm{dm}$. Usando $\\pi \\approx 3{,}14$, su área es aproximadamente {{answer}} $\\mathrm{dm}^2$.",
+      question:
+        "Un círculo tiene radio $4\\,\\mathrm{dm}$. Usando $\\pi \\approx 3{,}14$, ¿cuál es su área aproximada en $\\mathrm{dm}^2$?",
       correctAnswers: ["50,24", "50.24", "50,2", "50.2"],
       explanation: "$A = \\pi r^2 = 3{,}14 \\cdot 16 = 50{,}24\\,\\mathrm{dm}^2$.",
     },
