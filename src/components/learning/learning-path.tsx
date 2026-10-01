@@ -60,7 +60,10 @@ function PathNode({ lesson, position, isLast }: PathNodeProps) {
         data-testid={`lesson-link-${lesson.id}`}
         className={cn(
           "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40 sm:p-4",
-          status === "started" ? "border-cobalt/40" : "border-slate-200",
+          status === "completed" &&
+            "border-emerald-300/80 bg-emerald-50/40 hover:border-emerald-400/60",
+          status === "started" && "border-cobalt/40",
+          status === "available" && "border-slate-200",
         )}
       >
         <span

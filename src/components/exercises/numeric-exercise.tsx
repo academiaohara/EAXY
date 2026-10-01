@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import type { NumericContent } from "@/lib/exercise-engine/types";
+import { persistExerciseAttemptLocally } from "@/lib/exercises/persist-local-attempt";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
@@ -43,6 +44,7 @@ export function NumericExercise({
           { value: numericValue },
           Date.now() - startedAt,
         );
+        persistExerciseAttemptLocally(exerciseId, result);
         setFeedback(result);
         onAttemptResult?.(result);
       } catch (error) {

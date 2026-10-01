@@ -5,17 +5,9 @@ import {
   mockGetSessionUserId,
   mockRequireAuthenticatedUserId,
 } from "@/lib/classrooms/e2e-mock";
-import {
-  isContentPreviewModeEnabled,
-  PREVIEW_GUEST_ID,
-} from "@/lib/content-preview/mode";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export async function getAuthenticatedUserIdOrNull(): Promise<string | null> {
-  if (isContentPreviewModeEnabled()) {
-    return PREVIEW_GUEST_ID;
-  }
-
   if (isE2EMockClassroomEnabled()) {
     return mockGetSessionUserId();
   }
@@ -29,10 +21,6 @@ export async function getAuthenticatedUserIdOrNull(): Promise<string | null> {
 }
 
 export async function requireAuthenticatedUserId(): Promise<string> {
-  if (isContentPreviewModeEnabled()) {
-    return PREVIEW_GUEST_ID;
-  }
-
   if (isE2EMockClassroomEnabled()) {
     return mockRequireAuthenticatedUserId();
   }

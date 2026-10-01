@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { CheckCircle2Icon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -101,7 +103,16 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
         <h2 className="font-heading text-lg font-medium">Ejercicios</h2>
         <div className="grid gap-3">
           {lesson.exercises.map((exercise, index) => (
-            <Card key={exercise.id} className="p-4">
+            <Card
+              key={exercise.id}
+              className={cn(
+                "p-4 transition-colors",
+                exercise.hasCorrectAttempt &&
+                  "border-emerald-300/80 bg-emerald-50/50 ring-1 ring-emerald-200/60",
+              )}
+              data-testid={`lesson-exercise-${exercise.id}`}
+              data-completed={exercise.hasCorrectAttempt ? "true" : "false"}
+            >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-1">
                   <p className="text-sm text-muted-foreground">Ejercicio {index + 1}</p>
@@ -109,7 +120,10 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
                   <div className="flex gap-2">
                     <Badge variant="outline">Dificultad {exercise.difficulty}</Badge>
                     {exercise.hasCorrectAttempt ? (
-                      <Badge>Completado</Badge>
+                      <Badge className="gap-1 bg-emerald-600 text-white hover:bg-emerald-600">
+                        <CheckCircle2Icon className="size-3" aria-hidden />
+                        Completado
+                      </Badge>
                     ) : exercise.attemptCount > 0 ? (
                       <Badge variant="secondary">En progreso</Badge>
                     ) : null}

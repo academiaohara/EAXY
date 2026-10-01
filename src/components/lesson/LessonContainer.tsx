@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
@@ -38,6 +38,7 @@ import {
   type FeedbackStatus,
   type InteractiveLesson,
 } from "@/lib/lesson/types";
+import { setLocalLessonStatus } from "@/lib/local-progress/storage";
 import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
@@ -49,6 +50,10 @@ type LessonNavigationContext = {
 type LessonContainerProps = {
   lesson: InteractiveLesson;
   navigation?: LessonNavigationContext;
+  /** ID de la lección en el catálogo (para progreso local sin sesión). */
+  curriculumLessonId?: string;
+  /** Si true, guarda inicio/completado en localStorage. */
+  trackLocalProgress?: boolean;
 };
 
 /**
@@ -78,7 +83,12 @@ function helpEntry(node: HelpNode, order: number): TutorLogEntry {
   };
 }
 
-function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
+function LessonContainerBody({
+  lesson,
+  navigation,
+  curriculumLessonId,
+  trackLocalProgress = false,
+}: LessonContainerProps) {
   const [stepIndex, setStepIndex] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
   const [completed, setCompleted] = useState(false);
@@ -88,6 +98,12 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
   const { control } = useLessonStepControl();
+
+  useEffect(() => {
+    if (trackLocalProgress && curriculumLessonId) {
+      setLocalLessonStatus(curriculumLessonId, "started");
+    }
+  }, [trackLocalProgress, curriculumLessonId]);
 
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
@@ -171,10 +187,13 @@ function LessonContainerBody({ lesson, navigation }: LessonContainerProps) {
     setHelpContext(STEP_HELP);
     if (!lesson.steps[stepIndex + 1]) {
       setCompleted(true);
+      if (trackLocalProgress && curriculumLessonId) {
+        setLocalLessonStatus(curriculumLessonId, "completed");
+      }
       return;
     }
     setStepIndex(stepIndex + 1);
-  }, [lesson.steps, stepIndex]);
+  }, [curriculumLessonId, lesson.steps, stepIndex, trackLocalProgress]);
 
   const handleNext = useCallback(() => {
     setFeedback(null);

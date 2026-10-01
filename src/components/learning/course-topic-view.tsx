@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
 import { CourseTopicCarousel } from "@/components/learning/course-topic-carousel";
 import { CourseTopicQuickAccess } from "@/components/learning/course-topic-quick-access";
-import { LearningPath } from "@/components/learning/learning-path";
+import { LearningPathWithLocalProgress } from "@/components/learning/learning-path-with-local-progress";
 import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
 import type { CourseOutline, ModuleSummary } from "@/lib/curriculum/types";
 
@@ -52,7 +52,7 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
                   Recorre la ruta completa o entra en cualquier lección.
                 </p>
               </header>
-              <LearningPath
+              <LearningPathWithLocalProgress
                 modules={[courseModule]}
                 moduleNumberOffset={moduleNumber - 1}
                 hideModuleHeaders

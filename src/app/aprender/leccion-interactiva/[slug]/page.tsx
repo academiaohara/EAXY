@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getInteractiveLessonContext } from "@/content";
 import { LessonContainer } from "@/components/lesson/LessonContainer";
+import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { interactiveLessons } from "@/data/lessons";
 
 type InteractiveLessonPageProps = {
@@ -15,6 +16,7 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
     notFound();
   }
 
+  const studentId = await getAuthenticatedUserIdOrNull();
   const context = getInteractiveLessonContext(slug);
   const navigation = context
     ? {
@@ -26,7 +28,12 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
 
   return (
     <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
-      <LessonContainer lesson={lesson} navigation={navigation} />
+      <LessonContainer
+        lesson={lesson}
+        navigation={navigation}
+        curriculumLessonId={context?.lesson.id}
+        trackLocalProgress={!studentId}
+      />
     </main>
   );
 }

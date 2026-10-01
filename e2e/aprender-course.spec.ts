@@ -4,24 +4,10 @@ const DEMO_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
 const DEMO_MODULE_ID = "a2000000-0000-4000-8000-000000000007";
 const FIRST_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
 
-async function loginAsNewStudent(page: Page, name: string) {
-  await page.goto("/aulas/e2e-classroom/alumnos");
-
-  await page.getByTestId("student-names-input").fill(name);
-  await page.getByTestId("provision-submit-button").click();
-
-  const firstCard = page.getByTestId("credential-card").first();
-  await expect(firstCard).toBeVisible();
-
-  const username = await firstCard.getByTestId("credential-username").innerText();
-  const password = await firstCard.getByTestId("credential-password").innerText();
-
-  await page.goto("/entrar");
-  await page.getByTestId("student-login-username").fill(username.replace("Usuario:", "").trim());
-  await page.getByTestId("student-login-password").fill(password.replace("Contraseña:", "").trim());
-  await page.getByTestId("student-login-submit").click();
-
-  await expect(page).toHaveURL(/\/aprender$/);
+async function openAprender(page: Page) {
+  await page.goto("/aprender");
+  await expect(page.getByTestId("guest-progress-banner")).toBeVisible();
+  await expect(page.getByTestId("course-catalog")).toBeVisible();
 }
 
 async function openCourseTopic(page: Page) {
@@ -40,13 +26,11 @@ async function openFirstLesson(page: Page) {
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
 }
 
-test("el alumno puede navegar el catálogo y abrir una lección interactiva", async ({ page }) => {
-  await loginAsNewStudent(page, "Alumno Curso E2E");
+test("se puede navegar el catálogo y abrir una lección interactiva sin cuenta", async ({ page }) => {
+  await openAprender(page);
 
   await expect(page.getByTestId("aprender-continue-studying")).toBeVisible();
   await expect(page.getByTestId("aprender-continue-primary-cta")).toBeVisible();
-  await expect(page.getByTestId("course-catalog")).toBeVisible();
-  await expect(page.getByTestId("recommendation-card")).toBeVisible();
 
   await openCourseTopic(page);
   await expect(page.getByTestId("topic-carousel-active-number")).toHaveText("01");
@@ -62,18 +46,15 @@ test("el alumno puede navegar el catálogo y abrir una lección interactiva", as
   ).toBeVisible();
 });
 
-test("el alumno consulta el historial del tutor y pide ayuda con botones", async ({ page }) => {
-  await loginAsNewStudent(page, "Alumno Tutor E2E");
+test("se consulta el historial del tutor y pide ayuda con botones", async ({ page }) => {
+  await openAprender(page);
   await openFirstLesson(page);
 
-  // La bola flota sobre la lección, ya no vive en el pie.
   await expect(page.getByTestId("lesson-footer-dock").getByTestId("lesson-tutor")).toHaveCount(0);
 
-  // El tutor lee título y párrafos del paso; al acabar desaparece el globo.
   await expect(page.getByTestId("lesson-tutor-bubble")).toBeVisible();
   await expect(page.getByTestId("lesson-tutor-bubble")).toBeHidden({ timeout: 120_000 });
 
-  // Pulsar la bola abre el historial de lo que el tutor ha dicho.
   await page.getByTestId("lesson-tutor-button").click();
   const panel = page.getByTestId("tutor-panel");
   await expect(panel).toBeVisible();
@@ -85,42 +66,35 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
   await page.getByTestId("tutor-panel-close").click();
   await expect(panel).toBeHidden();
 
-  // El tirador a media altura también cierra el panel.
   await page.getByTestId("lesson-tutor-button").click();
   await expect(panel).toBeVisible();
   await page.getByTestId("tutor-panel-edge-close").click();
   await expect(panel).toBeHidden();
 
-  // Decir que no se entiende abre la ruta de ayuda con opciones, sin escribir nada.
   await page.getByTestId("lesson-help-button").click();
   await expect(page.getByTestId("tutor-help-options")).toBeVisible();
   await expect(page.getByTestId("tutor-help-option-theory")).toBeVisible();
 
-  // Cada explicación pregunta si ya se entiende.
   await page.getByTestId("tutor-help-option-theory").click();
   await expect(page.getByTestId("tutor-help-option-got-it")).toBeVisible();
   await expect(page.getByTestId("tutor-help-option-more")).toBeVisible();
 
-  // Insistir lleva a otra respuesta, no repite la misma explicación.
   await page.getByTestId("tutor-help-option-more").click();
   await expect(page.getByTestId("tutor-help-option-restart")).toBeVisible();
 
   await page.getByTestId("tutor-help-option-close").click();
   await expect(panel).toBeHidden();
 
-  // El historial guarda cada frase de la bola; pulsar una explica sus conceptos.
   await page.getByTestId("lesson-tutor-button").click();
   await panel.getByTestId("tutor-log-message").filter({ hasText: "es un par de valores" }).click();
   await expect(page.getByTestId("tutor-help-option-concept-solucion")).toBeVisible();
   await page.getByTestId("tutor-help-option-concept-solucion").click();
   await expect(panel.getByTestId("lesson-visual-solution-check")).toBeVisible();
 
-  // Entenderlo no cierra el panel: se puede seguir preguntando por otros mensajes.
   await page.getByTestId("tutor-help-option-got-it").click();
   await expect(panel).toBeVisible();
   await page.getByTestId("tutor-panel-close").click();
 
-  // Los términos resaltados de la teoría también se pueden preguntar.
   await page
     .getByTestId("lesson-theory")
     .locator('strong[data-concept="infinitas-soluciones"]')
@@ -130,7 +104,7 @@ test("el alumno consulta el historial del tutor y pide ayuda con botones", async
 });
 
 test("la lección se ilumina en verde al acertar y en ámbar al fallar", async ({ page }) => {
-  await loginAsNewStudent(page, "Alumno Feedback E2E");
+  await openAprender(page);
   await openFirstLesson(page);
 
   for (let step = 0; step < 4; step += 1) {

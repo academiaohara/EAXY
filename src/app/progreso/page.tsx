@@ -1,10 +1,14 @@
+import Link from "next/link";
 import { ConceptMap } from "@/components/learning/concept-map";
 import { ProgressStats } from "@/components/learning/progress-stats";
+import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
+import { getGuestCourseOverview } from "@/lib/learning/guest-overview";
 import { getCourseOverview } from "@/lib/learning/queries";
 import { formatMasteryPercent } from "@/lib/mastery/states";
 
 export default async function ProgresoPage() {
-  const overview = await getCourseOverview();
+  const studentId = await getAuthenticatedUserIdOrNull();
+  const overview = studentId ? await getCourseOverview() : getGuestCourseOverview();
 
   const averageMastery =
     overview.concepts.length > 0
@@ -19,6 +23,15 @@ export default async function ProgresoPage() {
         <p className="text-ink-muted">
           Mapa de conceptos de {overview.courseTitle}. Cada color refleja tu dominio actual.
         </p>
+        {!studentId ? (
+          <p className="text-sm text-amber-900/80" data-testid="progreso-guest-notice">
+            Sin cuenta, el dominio detallado no se sincroniza entre dispositivos.{" "}
+            <Link href="/registro" className="font-medium text-cobalt underline-offset-4 hover:underline">
+              Regístrate
+            </Link>{" "}
+            para guardar tu progreso.
+          </p>
+        ) : null}
       </header>
 
       <div className="grid gap-4 rounded-xl border border-border bg-paper-raised p-6 sm:grid-cols-3">

@@ -1,16 +1,18 @@
 "use server";
 
-import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import {
+  getAuthenticatedUserIdOrNull,
+  requireAuthenticatedUserId,
+} from "@/lib/classrooms/authorization";
+import { shouldUseLocalCatalog } from "@/lib/curriculum/local-catalog";
 import { isLessonComplete } from "@/lib/learning-paths/completion";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export async function markLessonStarted(lessonId: string): Promise<void> {
-  if (isContentPreviewModeEnabled()) {
+  const studentId = await getAuthenticatedUserIdOrNull();
+  if (!studentId || shouldUseLocalCatalog(studentId)) {
     return;
   }
-
-  const studentId = await requireAuthenticatedUserId();
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase.from("learning_paths").upsert(
@@ -34,11 +36,10 @@ export async function markLessonStarted(lessonId: string): Promise<void> {
 export async function syncLessonCompletionForExercise(
   exerciseId: string,
 ): Promise<{ lessonCompleted: boolean; lessonId: string | null }> {
-  if (isContentPreviewModeEnabled()) {
+  const studentId = await getAuthenticatedUserIdOrNull();
+  if (!studentId || shouldUseLocalCatalog(studentId)) {
     return { lessonCompleted: false, lessonId: null };
   }
-
-  const studentId = await requireAuthenticatedUserId();
   const supabase = await createServerSupabaseClient();
 
   const { data: exercise, error: exerciseError } = await supabase

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { LessonDetailView } from "@/components/learning/lesson-detail";
+import { LessonDetailWithLocalProgress } from "@/components/learning/lesson-detail-with-local-progress";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getLessonDetail } from "@/lib/curriculum/queries";
 import { markLessonStarted } from "@/lib/learning-paths/actions";
@@ -27,7 +27,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
-      <LessonDetailView lesson={lesson} />
+      <LessonDetailWithLocalProgress lesson={lesson} mergeLocalProgress={!studentId} />
     </main>
   );
 }

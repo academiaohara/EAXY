@@ -32,7 +32,11 @@ export function AdultRegisterForm() {
       <div className="space-y-2 text-center">
         <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">Crear cuenta</h1>
         <p className="text-sm text-ink-muted">
-          Aprende matemáticas a tu ritmo. Si eres profesor, podrás crear aulas después.
+          Aprende matemáticas a tu ritmo y guarda tu progreso de forma segura. También puedes{" "}
+          <Link href="/aprender" className="font-medium text-cobalt underline-offset-4 hover:underline">
+            probar sin registrarte
+          </Link>
+          .
         </p>
       </div>
 

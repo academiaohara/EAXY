@@ -1,5 +1,5 @@
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { shouldUseLocalCatalog } from "@/lib/curriculum/local-catalog";
 import { findNextLesson } from "@/lib/curriculum/course-progress";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import { getCourseCatalog, getCourseOutline, getStudentReferenceCourseId } from "@/lib/curriculum/queries";
@@ -254,7 +254,7 @@ async function getContinueForMockOrPreview(
 export async function getAprenderContinueStudying(
   studentId: string | null,
 ): Promise<AprenderContinueStudying | null> {
-  if (isE2EMockClassroomEnabled() || isContentPreviewModeEnabled()) {
+  if (isE2EMockClassroomEnabled() || shouldUseLocalCatalog(studentId)) {
     return getContinueForMockOrPreview(studentId);
   }
 
