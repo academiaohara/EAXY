@@ -203,4 +203,67 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[9]?.topicExercises).toHaveLength(35);
   });
+
+  it("tiene las cuatro lecciones y ejercicios resueltos de la unidad 12 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[10]?.title).toBe("Cuerpos geométricos");
+    expect(firstYear?.modules[10]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[10]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "cuerpos-geometricos-poliedros",
+      "cuerpos-geometricos-prismas",
+      "cuerpos-geometricos-piramides",
+      "cuerpos-geometricos-redondos",
+    ]);
+    expect(firstYear?.modules[10]?.topicExercises).toHaveLength(28);
+  });
+
+  it("tiene las cuatro lecciones y ejercicios resueltos de la unidad 13 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[11]?.title).toBe("Áreas y perímetros");
+    expect(firstYear?.modules[11]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[11]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "areas-cuadrilateros",
+      "areas-triangulo",
+      "areas-poligonos",
+      "areas-circulo",
+    ]);
+    expect(firstYear?.modules[11]?.topicExercises).toHaveLength(28);
+  });
+
+  it("tiene las seis lecciones y ejercicios resueltos de la unidad 14 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[12]?.title).toBe("Tablas y gráficas");
+    expect(firstYear?.modules[12]?.lessons).toHaveLength(6);
+    expect(firstYear?.modules[12]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "tablas-graficas-coordenadas-cartesianas",
+      "tablas-graficas-informacion-puntos",
+      "tablas-graficas-interpretacion-graficas",
+      "tablas-graficas-distribuciones-estadisticas",
+      "tablas-graficas-parametros-estadisticos",
+      "tablas-graficas-graficos-estadisticos",
+    ]);
+    expect(firstYear?.modules[12]?.topicExercises).toHaveLength(23);
+  });
+
+  it("tiene las cinco lecciones y ejercicios resueltos de la unidad 15 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[13]?.title).toBe("Probabilidad");
+    expect(firstYear?.modules[13]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[13]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "probabilidad-experimento-aleatorio-determinista",
+      "probabilidad-espacio-muestral",
+      "probabilidad-sucesos-seguro-imposible",
+      "probabilidad-frecuencias",
+      "probabilidad-laplace",
+    ]);
+    expect(firstYear?.modules[13]?.topicExercises).toHaveLength(15);
+  });
 });

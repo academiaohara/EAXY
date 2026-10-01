@@ -1,0 +1,82 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1ESO_13_SUBTITLE } from "@/data/lessons/shared";
+
+export const areasPoligonosLesson: InteractiveLesson = {
+  slug: "areas-poligonos",
+  title: "3. Medidas en los polígonos",
+  subtitle: TEMA_1ESO_13_SUBTITLE,
+  steps: [
+    {
+      id: "irregular",
+      type: "concept",
+      title: "Polígonos irregulares",
+      content: [
+        "Para un polígono cualquiera **descompón** la figura en triángulos (o rectángulos y triángulos).",
+        "Calcula el área de cada pieza y **suma** para obtener el área total.",
+        "El perímetro sigue siendo la suma de todos los lados del contorno.",
+      ],
+    },
+    {
+      id: "regular",
+      type: "concept",
+      title: "Polígonos regulares",
+      content: [
+        "Un polígono **regular** tiene todos los lados iguales ($l$) y la misma distancia del centro a cada lado: la **apotema** $a$.",
+        "Se descompone en $n$ triángulos iguales de base $l$ y altura $a$.",
+        "Suma de áreas: $A = n \\cdot \\dfrac{l \\cdot a}{2} = \\dfrac{P \\cdot a}{2}$, donde $P = n \\cdot l$ es el perímetro.",
+      ],
+      visuals: [
+        {
+          kind: "cards",
+          title: "Fórmula clave",
+          items: [
+            {
+              title: "Polígono regular",
+              math: "A = \\dfrac{P \\cdot a}{2}",
+              tone: "violet",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "hexagono",
+      type: "concept",
+      title: "Hexágono regular",
+      content: [
+        "En el hexágono regular del temario, el **lado coincide** con el radio de la circunferencia circunscrita.",
+        "Ejemplo: $l = 4\\,\\mathrm{cm}$, apotema $a \\approx 3{,}5\\,\\mathrm{cm}$ → $P = 24\\,\\mathrm{cm}$, $A = \\dfrac{24 \\cdot 3{,}5}{2} = 42\\,\\mathrm{cm}^2$.",
+      ],
+    },
+    {
+      id: "octogono",
+      type: "animated_solution",
+      title: "Ejemplo — octógono regular",
+      content: ["Datos del libro: lado $15\\,\\mathrm{cm}$, apotema $18\\,\\mathrm{cm}$."],
+      frames: [
+        {
+          caption: "Perímetro (8 lados):",
+          math: "P = 8 \\cdot 15 = 120\\,\\mathrm{cm}",
+        },
+        {
+          caption: "Área:",
+          math: "A = \\frac{P \\cdot a}{2} = \\frac{120 \\cdot 18}{2} = 1080\\,\\mathrm{cm}^2",
+        },
+      ],
+    },
+    {
+      id: "check-formula",
+      type: "multiple_choice",
+      title: "Trapecio y polígono regular",
+      question:
+        "Las bases de un trapecio miden $13\\,\\mathrm{cm}$ y $7\\,\\mathrm{cm}$, con altura $10\\,\\mathrm{cm}$. ¿Cuál es su área?",
+      options: [
+        { id: "a", text: "$100\\,\\mathrm{cm}^2$" },
+        { id: "b", text: "$200\\,\\mathrm{cm}^2$" },
+        { id: "c", text: "$70\\,\\mathrm{cm}^2$" },
+      ],
+      correctOptionId: "a",
+      explanation: "$A = \\dfrac{(13 + 7) \\cdot 10}{2} = 100\\,\\mathrm{cm}^2$.",
+    },
+  ],
+};

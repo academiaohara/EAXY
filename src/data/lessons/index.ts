@@ -1,3 +1,7 @@
+import { areasCirculoLesson } from "@/data/lessons/areas-circulo";
+import { areasCuadrilaterosLesson } from "@/data/lessons/areas-cuadrilateros";
+import { areasPoligonosLesson } from "@/data/lessons/areas-poligonos";
+import { areasTrianguloLesson } from "@/data/lessons/areas-triangulo";
 import { algebraEcuacionesLesson } from "@/data/lessons/algebra-ecuaciones";
 import { algebraExpresionesMonomiosLesson } from "@/data/lessons/algebra-expresiones-monomios";
 import { algebraLetrasNumerosLesson } from "@/data/lessons/algebra-letras-numeros";
@@ -6,6 +10,10 @@ import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/algebra-resol
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/algebra-tecnicas-ecuaciones";
 import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
+import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/cuerpos-geometricos-piramides";
+import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/cuerpos-geometricos-poliedros";
+import { cuerposGeometricosPrismasLesson } from "@/data/lessons/cuerpos-geometricos-prismas";
+import { cuerposGeometricosRedondosLesson } from "@/data/lessons/cuerpos-geometricos-redondos";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/ecuaciones-lineales-dos-incognitas";
 import { fraccionesDecimalesLesson } from "@/data/lessons/fracciones-decimales";
@@ -31,6 +39,11 @@ import { parentesisEnterosLesson } from "@/data/lessons/parentesis-enteros";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/aumentos-disminuciones-porcentuales";
 import { porcentajesLesson } from "@/data/lessons/porcentajes";
 import { potenciasBase10Lesson } from "@/data/lessons/potencias-base-10";
+import { probabilidadEspacioMuestralLesson } from "@/data/lessons/probabilidad-espacio-muestral";
+import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lessons/probabilidad-experimento-aleatorio-determinista";
+import { probabilidadFrecuenciasLesson } from "@/data/lessons/probabilidad-frecuencias";
+import { probabilidadLaplaceLesson } from "@/data/lessons/probabilidad-laplace";
+import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/probabilidad-sucesos-seguro-imposible";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/proporcionalidad-directa-problemas";
 import { proporcionalidadMagnitudesLesson } from "@/data/lessons/proporcionalidad-magnitudes";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
@@ -49,6 +62,12 @@ import { sistemasNoLinealesLesson } from "@/data/lessons/sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
 import { sumaRestaEnterosLesson } from "@/data/lessons/suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
+import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/tablas-graficas-coordenadas-cartesianas";
+import { tablasGraficasDistribucionesEstadisticasLesson } from "@/data/lessons/tablas-graficas-distribuciones-estadisticas";
+import { tablasGraficasGraficosEstadisticosLesson } from "@/data/lessons/tablas-graficas-graficos-estadisticos";
+import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/tablas-graficas-informacion-puntos";
+import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/tablas-graficas-interpretacion-graficas";
+import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/tablas-graficas-parametros-estadisticos";
 
 export const interactiveLessons = {
   "algebra-ecuaciones": algebraEcuacionesLesson,
@@ -58,7 +77,15 @@ export const interactiveLessons = {
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
   "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
+  "areas-circulo": areasCirculoLesson,
+  "areas-cuadrilateros": areasCuadrilaterosLesson,
+  "areas-poligonos": areasPoligonosLesson,
+  "areas-triangulo": areasTrianguloLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
+  "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
+  "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
+  "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
+  "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
   "fracciones-decimales": fraccionesDecimalesLesson,
@@ -85,6 +112,12 @@ export const interactiveLessons = {
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "porcentajes": porcentajesLesson,
   "potencias-base-10": potenciasBase10Lesson,
+  "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
+  "probabilidad-experimento-aleatorio-determinista":
+    probabilidadExperimentoAleatorioDeterministaLesson,
+  "probabilidad-frecuencias": probabilidadFrecuenciasLesson,
+  "probabilidad-laplace": probabilidadLaplaceLesson,
+  "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
@@ -103,6 +136,12 @@ export const interactiveLessons = {
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
   "suma-resta-naturales": sumaRestaNaturalesLesson,
+  "tablas-graficas-coordenadas-cartesianas": tablasGraficasCoordenadasCartesianasLesson,
+  "tablas-graficas-distribuciones-estadisticas": tablasGraficasDistribucionesEstadisticasLesson,
+  "tablas-graficas-graficos-estadisticos": tablasGraficasGraficosEstadisticosLesson,
+  "tablas-graficas-informacion-puntos": tablasGraficasInformacionPuntosLesson,
+  "tablas-graficas-interpretacion-graficas": tablasGraficasInterpretacionGraficasLesson,
+  "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;
