@@ -186,4 +186,21 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[8]?.topicExercises).toHaveLength(39);
   });
+
+  it("tiene las seis lecciones y ejercicios resueltos de la unidad 10 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[9]?.title).toBe("Álgebra");
+    expect(firstYear?.modules[9]?.lessons).toHaveLength(6);
+    expect(firstYear?.modules[9]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "algebra-letras-numeros",
+      "algebra-expresiones-monomios",
+      "algebra-ecuaciones",
+      "algebra-tecnicas-ecuaciones",
+      "algebra-resolucion-primer-grado",
+      "algebra-problemas-ecuaciones",
+    ]);
+    expect(firstYear?.modules[9]?.topicExercises).toHaveLength(35);
+  });
 });

@@ -7,4 +7,5 @@ export const TEMA_6_SUBTITLE = "1.º ESO A · Unidad 6 — El sistema métrico d
 export const TEMA_1ESO_7_SUBTITLE = "1.º ESO A · Unidad 7 — Las fracciones";
 export const TEMA_1ESO_8_SUBTITLE = "1.º ESO A · Unidad 8 — Operaciones con fracciones";
 export const TEMA_1ESO_9_SUBTITLE = "1.º ESO A · Unidad 9 — Proporcionalidad y porcentajes";
+export const TEMA_1ESO_10_SUBTITLE = "1.º ESO A · Unidad 10 — Álgebra";
 export const TEMA_7_SUBTITLE = "4.º ESO A · Tema 7 — Sistemas de ecuaciones";

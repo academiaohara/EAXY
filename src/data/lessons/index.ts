@@ -1,3 +1,9 @@
+import { algebraEcuacionesLesson } from "@/data/lessons/algebra-ecuaciones";
+import { algebraExpresionesMonomiosLesson } from "@/data/lessons/algebra-expresiones-monomios";
+import { algebraLetrasNumerosLesson } from "@/data/lessons/algebra-letras-numeros";
+import { algebraProblemasEcuacionesLesson } from "@/data/lessons/algebra-problemas-ecuaciones";
+import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/algebra-resolucion-primer-grado";
+import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/algebra-tecnicas-ecuaciones";
 import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
@@ -45,6 +51,12 @@ import { sumaRestaEnterosLesson } from "@/data/lessons/suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
 
 export const interactiveLessons = {
+  "algebra-ecuaciones": algebraEcuacionesLesson,
+  "algebra-expresiones-monomios": algebraExpresionesMonomiosLesson,
+  "algebra-letras-numeros": algebraLetrasNumerosLesson,
+  "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
+  "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
+  "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
   "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
