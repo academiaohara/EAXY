@@ -1,4 +1,5 @@
 import type { Curriculum } from "@/content/types";
+import { cuerposGeometricosTopicExercises } from "@/data/topic-exercises/cuerpos-geometricos";
 import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
 import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
 import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
@@ -379,6 +380,51 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(9),
+          title: "Cuerpos geométricos",
+          orderIndex: 8,
+          topicExercises: cuerposGeometricosTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Elementos del poliedro y poliedros regulares",
+              summary:
+                "Caras, aristas, vértices, desarrollo, los cinco sólidos platónicos y fórmula de Euler.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-poliedros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Prismas",
+              summary: "Bases, caras laterales, tipos según la base y desarrollo.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-prismas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Pirámides",
+              summary: "Base, cúspide, caras triangulares, tipos y desarrollo.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-piramides",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Cuerpos redondos",
+              summary: "Cilindro, cono y esfera; cuerpos de revolución y desarrollos.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-redondos",
               conceptSlugs: [],
             },
           ],
