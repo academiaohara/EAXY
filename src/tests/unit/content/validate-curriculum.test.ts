@@ -156,4 +156,19 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[6]?.topicExercises).toHaveLength(30);
   });
+
+  it("tiene las cuatro lecciones y ejercicios resueltos de la unidad 8 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[7]?.title).toBe("Operaciones con fracciones");
+    expect(firstYear?.modules[7]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[7]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "operaciones-fracciones-comun-denominador",
+      "operaciones-fracciones-suma-resta",
+      "operaciones-fracciones-multiplicacion-division",
+      "operaciones-fracciones-problemas",
+    ]);
+    expect(firstYear?.modules[7]?.topicExercises).toHaveLength(28);
+  });
 });

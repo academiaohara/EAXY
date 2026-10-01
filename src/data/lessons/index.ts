@@ -13,6 +13,10 @@ import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/multiplicacion-division-enteros";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/division-numeros-decimales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/multiplicacion-naturales";
+import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/operaciones-fracciones-comun-denominador";
+import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/operaciones-fracciones-multiplicacion-division";
+import { operacionesFraccionesProblemasLesson } from "@/data/lessons/operaciones-fracciones-problemas";
+import { operacionesFraccionesSumaRestaLesson } from "@/data/lessons/operaciones-fracciones-suma-resta";
 import { operacionesNumerosDecimalesLesson } from "@/data/lessons/operaciones-numeros-decimales";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/ordenes-unidades-decimales";
 import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/multiplos-divisores-naturales";
@@ -50,6 +54,11 @@ export const interactiveLessons = {
   "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
   "mcm-mcd-naturales": mcmMcdNaturalesLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
+  "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
+  "operaciones-fracciones-multiplicacion-division":
+    operacionesFraccionesMultiplicacionDivisionLesson,
+  "operaciones-fracciones-problemas": operacionesFraccionesProblemasLesson,
+  "operaciones-fracciones-suma-resta": operacionesFraccionesSumaRestaLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
   "operaciones-numeros-decimales": operacionesNumerosDecimalesLesson,

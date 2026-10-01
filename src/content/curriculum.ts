@@ -4,6 +4,7 @@ import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
 import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
+import { operacionesFraccionesTopicExercises } from "@/data/topic-exercises/operaciones-fracciones";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
@@ -379,6 +380,54 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(9),
+          title: "Operaciones con fracciones",
+          orderIndex: 8,
+          topicExercises: operacionesFraccionesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Reducción a común denominador",
+              summary:
+                "MCM de denominadores; fracciones equivalentes para comparar, ordenar y operar.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-comun-denominador",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Suma y resta de fracciones",
+              summary:
+                "Mismo o distinto denominador; enteros como fracciones; simplificar resultados.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-suma-resta",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Multiplicación y división de fracciones",
+              summary:
+                "Producto de numeradores y denominadores; división en cruz; operaciones combinadas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-multiplicacion-division",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Problemas con fracciones",
+              summary:
+                "Suma sobre el total frente a fracción del resto; problemas contextualizados del temario.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-problemas",
               conceptSlugs: [],
             },
           ],
