@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
@@ -7,56 +8,57 @@ type SiteHeaderProps = {
   variant?: "marketing" | "minimal";
 };
 
+const MARKETING_LINKS = [
+  { href: "/#como-funciona", label: "Cómo funciona" },
+  { href: "/#cursos", label: "Cursos" },
+  { href: "/#preguntas", label: "Preguntas" },
+] as const;
+
 export async function SiteHeader({ variant = "marketing" }: SiteHeaderProps) {
   const user = await getSessionUser();
 
   return (
-    <header className="border-b border-border">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="font-display text-xl font-semibold tracking-tight text-ink">
-          Eaxy
-        </Link>
+    <header className="sticky top-0 z-30 border-b border-border/70 bg-paper/75 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <BrandLogo />
 
-        <nav className="flex items-center gap-3 sm:gap-4">
-          {variant === "marketing" && (
-            <Link
-              href="#como-funciona"
-              className="hidden text-sm font-medium text-ink-muted transition-colors hover:text-cobalt sm:inline"
-            >
-              Cómo funciona
-            </Link>
-          )}
+        {variant === "marketing" ? (
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Secciones de la página">
+            {MARKETING_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:bg-paper-raised hover:text-ink"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        ) : null}
 
+        <div className="flex items-center gap-2">
           {user ? (
             <>
-              <Link
-                href="/aprender"
-                className="text-sm font-medium text-ink-muted transition-colors hover:text-cobalt"
-              >
-                Aprender
-              </Link>
               <form action={signOut}>
-                <Button type="submit" variant="outline" size="sm">
+                <Button type="submit" variant="ghost" size="sm">
                   Salir
                 </Button>
               </form>
+              <Button size="sm" nativeButton={false} render={<Link href="/aprender" />}>
+                Ir a Aprender
+              </Button>
             </>
           ) : (
             <>
-              <Link href="/aprender" className="text-sm font-medium text-ink-muted hover:text-cobalt">
-                Explorar sin cuenta
-              </Link>
-              <Link href="/login">
-                <Button variant="outline" size="sm">
-                  Entrar
-                </Button>
-              </Link>
-              <Link href="/registro" className="hidden sm:inline-flex">
-                <Button size="sm">Crear cuenta</Button>
-              </Link>
+              <Button variant="ghost" size="sm" nativeButton={false} render={<Link href="/login" />}>
+                Entrar
+              </Button>
+              <Button size="sm" nativeButton={false} render={<Link href="/aprender" />}>
+                Empezar gratis
+              </Button>
             </>
           )}
-        </nav>
+        </div>
       </div>
     </header>
   );

@@ -504,6 +504,8 @@ export async function getLessonDetail(
     exerciseCount: exerciseSummaries.length,
     pathStatus,
     conceptIds,
+    courseId: module.course_id as string,
+    moduleId: module.id as string,
     moduleTitle: module.title as string,
     courseTitle: (course?.title as string) ?? "Curso",
     kind: meta?.kind ?? "exercises",

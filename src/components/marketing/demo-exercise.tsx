@@ -22,7 +22,7 @@ export function DemoExercise() {
   const isCorrect = selected === DEMO.correctOptionId;
 
   return (
-    <div className="rounded-xl border border-border bg-paper-raised p-6 shadow-sm">
+    <div className="rounded-2xl border border-border bg-paper-raised p-6 shadow-sm">
       <p className="mb-1 text-xs font-medium uppercase tracking-wide text-cobalt">Pruébalo ahora</p>
       <p className="font-display text-lg font-medium text-ink">{DEMO.question}</p>
 
@@ -31,7 +31,7 @@ export function DemoExercise() {
           <label
             key={option.id}
             className={cn(
-              "flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm transition-colors",
+              "flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2.5 text-sm transition-colors hover:border-cobalt/40",
               selected === option.id && "border-cobalt bg-cobalt-tint/40",
               checked && option.id === DEMO.correctOptionId && "border-emerald-500 bg-emerald-50",
               checked && selected === option.id && option.id !== DEMO.correctOptionId && "border-destructive bg-destructive/5",

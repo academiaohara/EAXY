@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeftIcon, CheckCircle2Icon } from "lucide-react";
+import { CheckCircle2Icon } from "lucide-react";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { ExerciseRenderer } from "@/components/exercises/exercise-renderer";
 import { MasteryBadge } from "@/components/learning/mastery-badge";
 import { Button } from "@/components/ui/button";
@@ -76,22 +77,19 @@ export function PracticeSession({
       className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:px-6"
       data-testid="practice-session"
     >
-      <div className="flex items-center gap-3">
-        <Link
-          href="/aprender"
-          className="inline-flex items-center gap-1 text-sm text-ink-muted transition-colors hover:text-cobalt"
-        >
-          <ArrowLeftIcon className="size-4" aria-hidden />
-          Volver
-        </Link>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: "Aprender", href: "/aprender" },
+          { label: `Práctica: ${conceptTitle}` },
+        ]}
+      />
 
       <header className="space-y-3">
         <p className="text-sm font-medium text-ink-muted">
           {moduleTitle} · {lessonTitle}
         </p>
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">{conceptTitle}</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight text-ink">{conceptTitle}</h1>
           <MasteryBadge mastery={mastery} attemptCount={attemptCount} showPercent />
         </div>
         {updatedMasteryLabel ? (
@@ -143,7 +141,7 @@ export function PracticeSession({
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/aprender">
-                <Button>Volver al panel</Button>
+                <Button>Volver a Aprender</Button>
               </Link>
               <Link href={`/practicar/${conceptSlug}`}>
                 <Button variant="outline">Repetir sesión</Button>

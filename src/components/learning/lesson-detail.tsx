@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { CheckCircle2Icon } from "lucide-react";
+import { CheckCircle2Icon, PlayIcon, SparklesIcon } from "lucide-react";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import {
   getMasteryState,
   MASTERY_STATE_LABELS,
 } from "@/lib/mastery/states";
+import { buildLearningTrail, stripLessonNumber } from "@/lib/navigation/learning-trail";
 import type { LessonDetail } from "@/lib/curriculum/types";
 
 type LessonDetailViewProps = {
@@ -27,32 +29,42 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
     })),
   );
 
+  const trail = buildLearningTrail({
+    course: { id: lesson.courseId, title: lesson.courseTitle },
+    topic: { id: lesson.moduleId, title: lesson.moduleTitle },
+    leaves: [stripLessonNumber(lesson.title)],
+  });
+
   if (lesson.kind === "interactive" && lesson.interactiveSlug) {
     return (
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">
-        <header className="space-y-3">
-          <Link
-            href="/aprender"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Volver a niveles
-          </Link>
+        <header className="space-y-4">
+          <Breadcrumbs items={trail} />
           <div className="space-y-1">
             <p className="text-sm text-muted-foreground">
               {lesson.courseTitle} · {lesson.moduleTitle}
             </p>
-            <h1 className="font-heading text-3xl font-semibold tracking-tight">{lesson.title}</h1>
+            <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
           </div>
         </header>
 
         <Card className="space-y-4 p-6">
-          <Badge>Lección interactiva</Badge>
+          <Badge className="gap-1">
+            <SparklesIcon className="size-3" aria-hidden />
+            Lección interactiva
+          </Badge>
           <p className="text-sm text-muted-foreground">
             {lesson.stepCount
               ? `Recorrido guiado de ${lesson.stepCount} pasos con teoría, preguntas y feedback inmediato.`
               : "Recorrido guiado con teoría, preguntas y feedback inmediato."}
           </p>
-          <Button nativeButton={false} render={<Link href={resolveLessonHref(lesson.id)} />}>
+          <Button
+            size="lg"
+            className="self-start rounded-full"
+            nativeButton={false}
+            render={<Link href={resolveLessonHref(lesson.id)} />}
+          >
+            <PlayIcon data-icon="inline-start" aria-hidden />
             Iniciar lección
           </Button>
         </Card>
@@ -62,18 +74,13 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">
-      <header className="space-y-3">
-        <Link
-          href="/aprender"
-          className="text-sm text-muted-foreground hover:text-foreground"
-        >
-          ← Volver al curso
-        </Link>
+      <header className="space-y-4">
+        <Breadcrumbs items={trail} />
         <div className="space-y-1">
           <p className="text-sm text-muted-foreground">
             {lesson.courseTitle} · {lesson.moduleTitle}
           </p>
-          <h1 className="font-heading text-3xl font-semibold tracking-tight">{lesson.title}</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
         </div>
         <p className="text-sm text-muted-foreground">
           Progreso: {completedExercises} de {lesson.exerciseCount} ejercicios completados

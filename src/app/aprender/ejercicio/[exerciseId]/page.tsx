@@ -16,7 +16,7 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
+    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col p-6 sm:p-8">
       <ExercisePractice
         exerciseId={exercise.id}
         type={exercise.type as ExerciseType}
@@ -24,6 +24,6 @@ export default async function ExercisePage({ params }: ExercisePageProps) {
         lessonId={exercise.lessonId}
         lessonTitle={exercise.lessonTitle}
       />
-    </main>
+    </div>
   );
 }

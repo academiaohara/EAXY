@@ -43,6 +43,8 @@ export type LessonSummary = {
 };
 
 export type LessonDetail = LessonSummary & {
+  courseId: string;
+  moduleId: string;
   moduleTitle: string;
   courseTitle: string;
   exercises: ExerciseSummary[];

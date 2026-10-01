@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GaugeIcon, TargetIcon, TrophyIcon } from "lucide-react";
 import { ConceptMap } from "@/components/learning/concept-map";
 import { ProgressStats } from "@/components/learning/progress-stats";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
@@ -16,10 +17,33 @@ export default async function ProgresoPage() {
         overview.concepts.length
       : 0;
 
+  const stats = [
+    {
+      label: "Dominio medio",
+      value: formatMasteryPercent(averageMastery),
+      icon: GaugeIcon,
+      accent: "bg-cobalt-tint text-cobalt",
+    },
+    {
+      label: "Conceptos practicados",
+      value: `${overview.practicedCount}/${overview.concepts.length}`,
+      icon: TargetIcon,
+      accent: "bg-violet-50 text-violet-600",
+    },
+    {
+      label: "Conceptos dominados",
+      value: String(overview.masteredCount),
+      icon: TrophyIcon,
+      accent: "bg-emerald-50 text-emerald-600",
+    },
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6">
+    <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6 sm:py-10">
       <header className="space-y-2">
-        <h1 className="font-display text-3xl font-semibold tracking-tight text-ink">Progreso</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          Progreso
+        </h1>
         <p className="text-ink-muted">
           Mapa de conceptos de {overview.courseTitle}. Cada color refleja tu dominio actual.
         </p>
@@ -34,24 +58,28 @@ export default async function ProgresoPage() {
         ) : null}
       </header>
 
-      <div className="grid gap-4 rounded-xl border border-border bg-paper-raised p-6 sm:grid-cols-3">
-        <div>
-          <p className="text-sm text-ink-muted">Dominio medio</p>
-          <p className="font-display text-3xl font-semibold text-ink">
-            {formatMasteryPercent(averageMastery)}
-          </p>
-        </div>
-        <div>
-          <p className="text-sm text-ink-muted">Conceptos practicados</p>
-          <p className="font-display text-3xl font-semibold text-ink">
-            {overview.practicedCount}/{overview.concepts.length}
-          </p>
-        </div>
-        <div>
-          <p className="text-sm text-ink-muted">Conceptos dominados</p>
-          <p className="font-display text-3xl font-semibold text-ink">{overview.masteredCount}</p>
-        </div>
-      </div>
+      <dl className="grid gap-3 sm:grid-cols-3">
+        {stats.map((stat) => {
+          const Icon = stat.icon;
+          return (
+            <div
+              key={stat.label}
+              className="flex items-center gap-4 rounded-2xl border border-border bg-paper-raised p-5 shadow-xs"
+            >
+              <span
+                className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${stat.accent}`}
+                aria-hidden
+              >
+                <Icon className="size-5" />
+              </span>
+              <div>
+                <dt className="text-sm text-ink-muted">{stat.label}</dt>
+                <dd className="font-display text-2xl font-bold tabular-nums text-ink">{stat.value}</dd>
+              </div>
+            </div>
+          );
+        })}
+      </dl>
 
       <ProgressStats concepts={overview.concepts} />
 

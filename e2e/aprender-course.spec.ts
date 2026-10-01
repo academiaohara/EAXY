@@ -12,6 +12,11 @@ async function openAprender(page: Page) {
 
 async function openCourseTopic(page: Page) {
   await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
+  await expect(page).toHaveURL(new RegExp(`/aprender/curso/${DEMO_COURSE_ID}$`));
+  await expect(page.getByTestId("course-outline")).toBeVisible();
+  await expect(page.getByTestId("course-hero-primary-cta")).toBeVisible();
+
+  await page.getByTestId(`topic-link-${DEMO_MODULE_ID}`).click();
   await expect(page).toHaveURL(
     new RegExp(`/aprender/curso/${DEMO_COURSE_ID}/tema/${DEMO_MODULE_ID}`),
   );
@@ -35,6 +40,7 @@ test("se puede navegar el catálogo y abrir una lección interactiva sin cuenta"
   await openCourseTopic(page);
   await expect(page.getByTestId("topic-carousel-active-number")).toHaveText("01");
   await expect(page.getByTestId("quick-access-next-cta")).toBeVisible();
+  await expect(page.getByTestId("breadcrumbs")).toContainText("4º ESO");
 
   await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
 

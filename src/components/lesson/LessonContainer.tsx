@@ -44,6 +44,7 @@ import { cn } from "@/lib/utils";
 type LessonNavigationContext = {
   courseId: string;
   courseTitle: string;
+  moduleId?: string;
   moduleTitle: string;
 };
 
@@ -108,7 +109,11 @@ function LessonContainerBody({
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
   const isLastStep = stepIndex === totalSteps - 1;
-  const courseHref = navigation ? `/aprender/curso/${navigation.courseId}` : "/aprender";
+  const courseHref = !navigation
+    ? "/aprender"
+    : navigation.moduleId
+      ? `/aprender/curso/${navigation.courseId}/tema/${navigation.moduleId}`
+      : `/aprender/curso/${navigation.courseId}`;
   const totalStars = useMemo(
     () => lesson.steps.filter((step) => isQuizStep(step)).length,
     [lesson.steps],

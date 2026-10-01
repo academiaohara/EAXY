@@ -1,3 +1,4 @@
+import { cache } from "react";
 import {
   isE2EMockClassroomEnabled,
   MOCK_TEACHER_ID,
@@ -12,7 +13,7 @@ export type SessionUser = {
   isTeacher: boolean;
 };
 
-export async function getSessionUser(): Promise<SessionUser | null> {
+export const getSessionUser = cache(async function getSessionUser(): Promise<SessionUser | null> {
   if (isE2EMockClassroomEnabled()) {
     const userId = await mockGetSessionUserId();
     if (!userId) {
@@ -63,7 +64,7 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     accountOrigin: profile?.account_origin ?? "self_registered",
     isTeacher: (teacherClassrooms?.length ?? 0) > 0 || (coTeacherMembership?.length ?? 0) > 0,
   };
-}
+});
 
 export async function requireSessionUser(): Promise<SessionUser> {
   const user = await getSessionUser();

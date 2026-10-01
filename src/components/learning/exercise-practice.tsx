@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ExerciseRenderer } from "@/components/exercises/exercise-renderer";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
+import { APRENDER_HOME_HREF, stripLessonNumber } from "@/lib/navigation/learning-trail";
 
 type ExercisePracticeProps = {
   exerciseId: string;
@@ -26,23 +28,17 @@ export function ExercisePractice({
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-6" data-testid="exercise-practice">
-      <header className="space-y-2">
-        {lessonId && lessonTitle ? (
-          <Link
-            href={`/aprender/leccion/${lessonId}`}
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Volver a {lessonTitle}
-          </Link>
-        ) : (
-          <Link
-            href="/aprender"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Volver al curso
-          </Link>
-        )}
-        <h1 className="font-heading text-2xl font-semibold tracking-tight">Practicar</h1>
+      <header className="space-y-4">
+        <Breadcrumbs
+          items={[
+            { label: "Aprender", href: APRENDER_HOME_HREF },
+            ...(lessonId && lessonTitle
+              ? [{ label: stripLessonNumber(lessonTitle), href: `/aprender/leccion/${lessonId}` }]
+              : []),
+            { label: "Ejercicio" },
+          ]}
+        />
+        <h1 className="font-display text-2xl font-bold tracking-tight">Practicar</h1>
       </header>
 
       {lessonCompleted ? (

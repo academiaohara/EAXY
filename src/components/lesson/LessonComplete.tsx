@@ -84,7 +84,7 @@ export function LessonComplete({
               className="rounded-full py-6 sm:py-3 sm:min-w-[12rem]"
               render={<Link href={courseHref} />}
             >
-              Volver al curso
+              Volver al tema
             </Button>
           </div>
         </div>
