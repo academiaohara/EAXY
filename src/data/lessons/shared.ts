@@ -12,4 +12,6 @@ export const TEMA_1ESO_12_SUBTITLE = "1.º ESO A · Unidad 12 — Cuerpos geomé
 export const TEMA_1ESO_13_SUBTITLE = "1.º ESO A · Unidad 13 — Áreas y perímetros";
 export const TEMA_1ESO_14_SUBTITLE = "1.º ESO A · Unidad 14 — Tablas y gráficas";
 export const TEMA_1ESO_15_SUBTITLE = "1.º ESO A · Unidad 15 — Probabilidad";
+export const TEMA_14_SUBTITLE = TEMA_1ESO_14_SUBTITLE;
+export const TEMA_15_SUBTITLE = TEMA_1ESO_15_SUBTITLE;
 export const TEMA_7_SUBTITLE = "4.º ESO A · Tema 7 — Sistemas de ecuaciones";
