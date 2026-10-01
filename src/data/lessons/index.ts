@@ -20,6 +20,11 @@ import { numerosGrandesAbreviadosLesson } from "@/data/lessons/numeros-grandes-a
 import { parentesisEnterosLesson } from "@/data/lessons/parentesis-enteros";
 import { potenciasBase10Lesson } from "@/data/lessons/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
+import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lessons/probabilidad-experimento-aleatorio-determinista";
+import { probabilidadEspacioMuestralLesson } from "@/data/lessons/probabilidad-espacio-muestral";
+import { probabilidadFrecuenciasLesson } from "@/data/lessons/probabilidad-frecuencias";
+import { probabilidadLaplaceLesson } from "@/data/lessons/probabilidad-laplace";
+import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/probabilidad-sucesos-seguro-imposible";
 import { primosCompuestosLesson } from "@/data/lessons/primos-compuestos";
 import { problemasConSistemasLesson } from "@/data/lessons/problemas-con-sistemas";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
@@ -59,6 +64,12 @@ export const interactiveLessons = {
   "parentesis-enteros": parentesisEnterosLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
+  "probabilidad-experimento-aleatorio-determinista":
+    probabilidadExperimentoAleatorioDeterministaLesson,
+  "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
+  "probabilidad-frecuencias": probabilidadFrecuenciasLesson,
+  "probabilidad-laplace": probabilidadLaplaceLesson,
+  "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "primos-compuestos": primosCompuestosLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,

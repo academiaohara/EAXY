@@ -755,7 +755,7 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
     id: "parte-de-la-unidad",
     term: "Parte de la unidad",
     question: "¿Qué significa parte de la unidad?",
-    aliases: ["parte de la unidad"],
+    aliases: ["parte de la unidad", "todo", "del mismo tamano"],
     message:
       "Tomamos un **todo** como unidad, lo dividimos en partes iguales y la fracción indica cuántas de esas partes tomamos.",
     example: { message: "Ejemplo:", math: ["\\frac{2}{9} \\text{ son 2 porciones de 9 iguales}"] },
@@ -1163,6 +1163,140 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
     question: "¿Qué es un año luz?",
     aliases: ["ano luz"],
     message: "Un **año luz** es la distancia que recorre la luz en un año; sirve para galaxias y estrellas lejanas.",
+  },
+  {
+    id: "probabilidad",
+    term: "Probabilidad",
+    question: "¿Qué es la probabilidad?",
+    aliases: ["probabilidad"],
+    message:
+      "La **probabilidad** mide qué tan posible es un suceso. Es un número entre $0$ y $1$ (o entre $0\\,\\%$ y $100\\,\\%$).",
+    detail: [
+      "Con muchas repeticiones del experimento, la frecuencia relativa se acerca a la probabilidad.",
+    ],
+  },
+  {
+    id: "regla-laplace",
+    term: "Regla de Laplace",
+    question: "¿Qué es la regla de Laplace?",
+    aliases: ["regla de laplace"],
+    message:
+      "Si todos los resultados son **equiprobables**, la **regla de Laplace** dice: $P = \\dfrac{\\text{casos favorables}}{\\text{casos posibles}}$.",
+  },
+  {
+    id: "experimento-determinista",
+    term: "Experimento determinista",
+    question: "¿Qué es un experimento determinista?",
+    aliases: ["experimento determinista", "predecir"],
+    message:
+      "En un **experimento determinista** podemos **predecir** el resultado antes de hacerlo (mismas condiciones → mismo resultado).",
+  },
+  {
+    id: "experimento-aleatorio",
+    term: "Experimento aleatorio",
+    question: "¿Qué es un experimento aleatorio?",
+    aliases: ["experimento aleatorio", "no se puede predecir"],
+    message:
+      "En un **experimento aleatorio** **no se puede predecir** el resultado aunque repitamos el experimento en igualdad de condiciones.",
+  },
+  {
+    id: "espacio-muestral",
+    term: "Espacio muestral",
+    question: "¿Qué es el espacio muestral?",
+    aliases: ["espacio muestral", "todos los resultados posibles"],
+    message:
+      "El **espacio muestral** $E$ es el conjunto de **todos los resultados posibles** de un experimento aleatorio.",
+  },
+  {
+    id: "suceso-elemental",
+    term: "Suceso elemental",
+    question: "¿Qué es un suceso elemental?",
+    aliases: ["suceso elemental"],
+    message: "Un **suceso elemental** es **un solo** resultado posible del experimento (un elemento de $E$).",
+  },
+  {
+    id: "suceso-compuesto",
+    term: "Suceso",
+    question: "¿Qué es un suceso?",
+    aliases: ["suceso", "uno o varios sucesos elementales"],
+    message:
+      "Un **suceso** agrupa **uno o varios sucesos elementales** que cumplen una condición (por ejemplo «salir par»).",
+  },
+  {
+    id: "suceso-seguro",
+    term: "Suceso seguro",
+    question: "¿Qué es un suceso seguro?",
+    aliases: ["suceso seguro", "todos"],
+    message:
+      "El **suceso seguro** incluye **todos** los sucesos elementales de $E$: ocurre en cualquier resultado.",
+  },
+  {
+    id: "suceso-imposible",
+    term: "Suceso imposible",
+    question: "¿Qué es un suceso imposible?",
+    aliases: ["suceso imposible", "nunca"],
+    message: "El **suceso imposible** no tiene ningún resultado posible: **nunca** puede ocurrir.",
+  },
+  {
+    id: "suceso-seguro-corto",
+    term: "Seguro (probabilidad)",
+    question: "¿Qué significa «seguro» en probabilidad?",
+    aliases: ["seguro"],
+    message: "Decimos que un suceso es **seguro** cuando siempre ocurre (probabilidad $1$).",
+  },
+  {
+    id: "suceso-imposible-corto",
+    term: "Imposible (probabilidad)",
+    question: "¿Qué significa «imposible» en probabilidad?",
+    aliases: ["imposible"],
+    message: "Un suceso **imposible** no puede ocurrir (probabilidad $0$).",
+  },
+  {
+    id: "frecuencia-absoluta",
+    term: "Frecuencia absoluta",
+    question: "¿Qué es la frecuencia absoluta?",
+    aliases: ["frecuencia absoluta", "numero de veces"],
+    message:
+      "La **frecuencia absoluta** $f_i$ es el **número de veces** que aparece un suceso al repetir el experimento $n$ veces.",
+  },
+  {
+    id: "frecuencia-relativa",
+    term: "Frecuencia relativa",
+    question: "¿Qué es la frecuencia relativa?",
+    aliases: ["frecuencia relativa", "aproxima"],
+    message:
+      "La **frecuencia relativa** es $h_i = f_i / n$. La probabilidad se **aproxima** con $h_i$ cuando $n$ es grande.",
+  },
+  {
+    id: "equiprobables",
+    term: "Equiprobables",
+    question: "¿Qué significa equiprobable?",
+    aliases: ["equiprobables"],
+    message: "Dos o más resultados son **equiprobables** si tienen la misma probabilidad de salir (misma «facilidad»).",
+  },
+  {
+    id: "union-sucesos",
+    term: "Unión de sucesos",
+    question: "¿Qué significa «o» en probabilidad?",
+    aliases: ["union", "«o»"],
+    message:
+      "Con **«O»** basta que ocurra una condición u otra: cuentas la **unión** de sucesos elementales (sin repetir).",
+  },
+  {
+    id: "interseccion-sucesos",
+    term: "Intersección de sucesos",
+    question: "¿Qué significa «y» en probabilidad?",
+    aliases: ["interseccion", "«y»", "las dos"],
+    message:
+      "Con **«Y»** deben cumplirse **las dos** condiciones a la vez: cuentas la **intersección** de sucesos elementales.",
+  },
+  {
+    id: "extraccion-tres-bolas",
+    term: "Sacar varias bolas",
+    question: "¿Qué pasa si saco varias bolas?",
+    aliases: ["tres bolas"],
+    message:
+      "Al sacar **tres bolas** (u otras varias), cada secuencia ordenada de resultados puede ser un suceso elemental distinto si importa el orden.",
   },
 ];
 
