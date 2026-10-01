@@ -5,6 +5,7 @@ import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-d
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
+import { probabilidadTopicExercises } from "@/data/topic-exercises/probabilidad";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
@@ -379,6 +380,60 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(15),
+          title: "Probabilidad",
+          orderIndex: 15,
+          topicExercises: probabilidadTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1501),
+              title: "1. Experimento aleatorio y determinista",
+              summary:
+                "Predecir o no el resultado; lenguaje de la incertidumbre y clasificación de experimentos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-experimento-aleatorio-determinista",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1502),
+              title: "2. Espacio muestral y sucesos elementales",
+              summary: "Conjunto E, resultados posibles; moneda, dado, urnas y suma de dados.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-espacio-muestral",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1503),
+              title: "3. Sucesos, suceso seguro e imposible",
+              summary: "Sucesos compuestos; seguro e imposible; baraja y cartas numeradas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-sucesos-seguro-imposible",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1504),
+              title: "4. Frecuencia absoluta y relativa",
+              summary: "Tablas fi y hi; repetición de experimentos y enlace con la probabilidad.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-frecuencias",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1505),
+              title: "5. Probabilidad y regla de Laplace",
+              summary: "Equiprobabilidad; casos favorables y posibles; unión e intersección.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-laplace",
               conceptSlugs: [],
             },
           ],
