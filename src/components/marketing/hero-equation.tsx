@@ -56,7 +56,7 @@ export function HeroEquation() {
 
   return (
     <div
-      className="rounded-lg border border-border bg-paper-raised px-6 py-8"
+      className="rounded-2xl border border-border bg-paper-raised px-6 py-7 shadow-sm"
       aria-label="Ecuación resolviéndose paso a paso"
     >
       <p className="mb-3 text-xs font-medium text-ink-muted">Resolviendo</p>
