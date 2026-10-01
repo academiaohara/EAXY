@@ -12,5 +12,5 @@ test("enlaces de registro y login no devuelven 404", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Crear cuenta" })).toBeVisible();
 
   await page.goto("/login");
-  await expect(page.getByRole("heading", { name: "Acceso docente" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Iniciar sesión" })).toBeVisible();
 });

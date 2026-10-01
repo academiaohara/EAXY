@@ -1,5 +1,5 @@
-import { AppShell } from "@/components/layout/app-shell";
+import { redirect } from "next/navigation";
 
-export default function AulasLayout({ children }: { children: React.ReactNode }) {
-  return <AppShell active="aulas">{children}</AppShell>;
+export default function AulasLayout() {
+  redirect("/aprender");
 }

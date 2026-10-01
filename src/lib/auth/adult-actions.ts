@@ -2,7 +2,6 @@
 
 import { redirect } from "next/navigation";
 import { clearMockStudentSession, isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type AuthFormResult = {
@@ -56,7 +55,7 @@ export async function signInAdult(email: string, password: string): Promise<Auth
   }
 
   if (isE2EMockClassroomEnabled()) {
-    redirect("/aulas");
+    redirect("/aprender");
   }
 
   const supabase = await createServerSupabaseClient();
@@ -74,7 +73,7 @@ export async function signInAdult(email: string, password: string): Promise<Auth
 
 export async function signInWithGoogle(): Promise<void> {
   if (isE2EMockClassroomEnabled()) {
-    redirect("/aulas");
+    redirect("/aprender");
   }
 
   const supabase = await createServerSupabaseClient();
@@ -95,10 +94,6 @@ export async function signInWithGoogle(): Promise<void> {
 }
 
 export async function signOut(): Promise<void> {
-  if (isContentPreviewModeEnabled()) {
-    redirect("/aprender");
-  }
-
   if (isE2EMockClassroomEnabled()) {
     await clearMockStudentSession();
     redirect("/");

@@ -1,8 +1,8 @@
 "use server";
 
-import { requireAuthenticatedUserId } from "@/lib/classrooms/authorization";
+import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { shouldUseLocalCatalog } from "@/lib/curriculum/local-catalog";
 import { checkAnswer } from "@/lib/exercise-engine/check-answer";
 import { parseExerciseAnswer, parseExerciseContent } from "@/lib/exercise-engine/schemas";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
@@ -30,9 +30,9 @@ export async function submitExerciseAttempt(
   timeSpentMs: number,
   hintsUsed = 0,
 ): Promise<SubmitExerciseAttemptResult> {
-  const studentId = await requireAuthenticatedUserId();
+  const studentId = await getAuthenticatedUserIdOrNull();
 
-  if (isE2EMockClassroomEnabled() || isContentPreviewModeEnabled()) {
+  if (isE2EMockClassroomEnabled() && studentId) {
     const catalogExercise = mockGetExercise(exerciseId);
     if (catalogExercise) {
       const content = parseExerciseContent(catalogExercise.type, catalogExercise.content);
@@ -51,6 +51,27 @@ export async function submitExerciseAttempt(
     }
 
     return mockSubmitExerciseAttempt(studentId, exerciseId, answer, timeSpentMs);
+  }
+
+  if (!studentId || shouldUseLocalCatalog(studentId)) {
+    const catalogExercise = mockGetExercise(exerciseId);
+    if (!catalogExercise) {
+      throw new Error("Ejercicio no encontrado");
+    }
+
+    const content = parseExerciseContent(catalogExercise.type, catalogExercise.content);
+    const parsedAnswer = parseExerciseAnswer(catalogExercise.type, answer);
+    const result = checkAnswer(catalogExercise.type, content, parsedAnswer);
+    const concept = getConceptBySlug(catalogExercise.concept_slug);
+
+    return {
+      correct: result.correct,
+      correctAnswer: result.correctAnswer,
+      explanation: result.explanation,
+      mastery: 0,
+      conceptTitle: concept?.title ?? "Concepto",
+      persistLocally: true,
+    };
   }
 
   const supabase = await createServerSupabaseClient();

@@ -7,6 +7,8 @@ export type SubmitExerciseAttemptResult = {
   mastery: number;
   conceptTitle: string;
   lessonCompleted?: boolean;
+  /** El cliente debe guardar el intento en localStorage (visitante sin sesión). */
+  persistLocally?: boolean;
 };
 
 export type PracticeExerciseContext = {

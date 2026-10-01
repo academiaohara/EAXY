@@ -6,7 +6,7 @@ import {
   getPreviewExerciseForPractice,
   getPreviewLessonDetail,
 } from "@/lib/content-preview/curriculum-queries";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
+import { shouldUseLocalCatalog } from "@/lib/curriculum/local-catalog";
 import {
   getE2EMockCourseCatalog,
   getE2EMockCourseOutline,
@@ -141,7 +141,7 @@ export async function getCourseCatalog(): Promise<CourseCatalogEntry[]> {
     return getE2EMockCourseCatalog();
   }
 
-  if (isContentPreviewModeEnabled()) {
+  if (shouldUseLocalCatalog(null)) {
     return getPreviewCourseCatalog();
   }
 
@@ -210,7 +210,7 @@ export async function getCourseOutline(
     return getE2EMockCourseOutline(courseId);
   }
 
-  if (isContentPreviewModeEnabled()) {
+  if (shouldUseLocalCatalog(studentId)) {
     return getPreviewCourseOutline(courseId);
   }
 
@@ -362,7 +362,7 @@ export async function getLessonDetail(
     return getE2EMockLessonDetail(lessonId);
   }
 
-  if (isContentPreviewModeEnabled()) {
+  if (shouldUseLocalCatalog(studentId)) {
     return getPreviewLessonDetail(lessonId);
   }
 
@@ -532,7 +532,7 @@ export async function getExerciseForPractice(exerciseId: string): Promise<{
     return getE2EMockExercise(exerciseId);
   }
 
-  if (isContentPreviewModeEnabled()) {
+  if (shouldUseLocalCatalog(null)) {
     return getPreviewExerciseForPractice(exerciseId);
   }
 

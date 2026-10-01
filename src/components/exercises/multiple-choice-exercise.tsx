@@ -5,6 +5,7 @@ import { Loader2Icon } from "lucide-react";
 import { cn } from "cn";
 import { Button } from "@/components/ui/button";
 import type { MultipleChoiceContent } from "@/lib/exercise-engine/types";
+import { persistExerciseAttemptLocally } from "@/lib/exercises/persist-local-attempt";
 import { submitExerciseAttempt } from "@/lib/exercises/actions";
 import type { SubmitExerciseAttemptResult } from "@/lib/exercises/types";
 
@@ -39,6 +40,7 @@ export function MultipleChoiceExercise({
           { selectedOptionId },
           Date.now() - startedAt,
         );
+        persistExerciseAttemptLocally(exerciseId, result);
         setFeedback(result);
         onAttemptResult?.(result);
       } catch (error) {

@@ -36,9 +36,13 @@ export function AdultLoginForm() {
   return (
     <div className="mx-auto w-full max-w-sm space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">Acceso docente</h1>
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">Iniciar sesión</h1>
         <p className="text-sm text-ink-muted">
-          Entra con email o Google para aprender por tu cuenta y gestionar aulas.
+          Entra con email o Google para guardar tu progreso en la nube. También puedes{" "}
+          <Link href="/aprender" className="font-medium text-cobalt underline-offset-4 hover:underline">
+            usar Eaxy sin cuenta
+          </Link>
+          .
         </p>
       </div>
 
@@ -70,7 +74,9 @@ export function AdultLoginForm() {
         </div>
 
         {errorMessage && (
-          <p className="text-sm text-destructive" role="alert">{errorMessage}</p>
+          <p className="text-sm text-destructive" role="alert">
+            {errorMessage}
+          </p>
         )}
 
         <Button type="submit" className="w-full" disabled={isPending}>
@@ -108,12 +114,6 @@ export function AdultLoginForm() {
         ¿No tienes cuenta?{" "}
         <Link href="/registro" className="font-medium text-cobalt underline-offset-4 hover:underline">
           Regístrate
-        </Link>
-      </p>
-      <p className="text-center text-sm text-ink-muted">
-        ¿Eres alumno de un aula?{" "}
-        <Link href="/entrar" className="font-medium text-cobalt underline-offset-4 hover:underline">
-          Entra con tu usuario
         </Link>
       </p>
     </div>

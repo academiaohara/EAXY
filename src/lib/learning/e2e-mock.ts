@@ -2,7 +2,6 @@ import { curriculum, getConceptBySlug, getOrderedConcepts } from "@/content";
 import { calculateMastery, roundMastery } from "@/lib/mastery/calculator";
 import type { MasteryAttemptInput } from "@/lib/mastery/types";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
-import { isContentPreviewModeEnabled } from "@/lib/content-preview/mode";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
 
 type MockAttempt = {
@@ -37,7 +36,7 @@ function recalculateMockMastery(studentId: string, conceptId: string): number {
 }
 
 export function isE2ELearningMockEnabled(): boolean {
-  return isE2EMockClassroomEnabled() || isContentPreviewModeEnabled();
+  return isE2EMockClassroomEnabled();
 }
 
 export function mockRecordExerciseAttempt(
