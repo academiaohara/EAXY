@@ -1,100 +1,98 @@
 import Link from "next/link";
-import { BookOpenIcon, GraduationCapIcon, LineChartIcon } from "lucide-react";
+import { LogOutIcon } from "lucide-react";
+import { AppNav } from "@/components/layout/app-nav";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import { GuestProgressBanner } from "@/components/layout/guest-progress-banner";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type AppShellProps = {
   children: React.ReactNode;
-  active?: "aprender" | "progreso";
 };
 
-const navItems = [
-  { href: "/aprender", label: "Aprender", icon: BookOpenIcon, key: "aprender" as const },
-  { href: "/progreso", label: "Progreso", icon: LineChartIcon, key: "progreso" as const },
-];
+function initials(name: string): string {
+  return (
+    name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0]?.toUpperCase() ?? "")
+      .join("") || "?"
+  );
+}
 
-export async function AppShell({ children, active = "aprender" }: AppShellProps) {
+export async function AppShell({ children }: AppShellProps) {
   const user = await getSessionUser();
   const isGuest = !user;
 
-  const appChromeHeight = isGuest ? "7.25rem" : "3.5rem";
+  const appChromeHeight = isGuest ? "6.25rem" : "4rem";
 
   return (
     <div
-      className="flex min-h-dvh flex-col [&:has([data-testid=interactive-lesson-layout])]:[--app-chrome-h:0px] [&:has([data-testid=interactive-lesson-layout])_[data-app-chrome]]:hidden"
+      className="flex min-h-dvh flex-col bg-app-glow [&:has([data-testid=interactive-lesson-layout])]:[--app-chrome-h:0px] [&:has([data-testid=interactive-lesson-layout])_[data-app-chrome]]:hidden"
       style={{ "--app-chrome-h": appChromeHeight } as React.CSSProperties}
     >
-      {isGuest ? <GuestProgressBanner /> : null}
-      <header
-        className="border-b border-border bg-paper-raised/80 backdrop-blur-sm"
-        data-app-chrome
-      >
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-6">
-            <Link
-              href="/aprender"
-              className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink"
-            >
-              <GraduationCapIcon className="size-5 text-cobalt" aria-hidden />
-              Eaxy
-            </Link>
+      <div className="sticky top-0 z-30" data-app-chrome>
+        {isGuest ? <GuestProgressBanner /> : null}
+        <header className="border-b border-border/80 bg-paper-raised/75 backdrop-blur-xl">
+          <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 px-4 sm:px-6">
+            <BrandLogo href="/aprender" className="justify-self-start" />
 
-            <nav className="hidden items-center gap-1 sm:flex">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = active === item.key;
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors",
-                      isActive
-                        ? "bg-cobalt-tint text-cobalt"
-                        : "text-ink-muted hover:bg-cobalt-tint/60 hover:text-ink",
-                    )}
+            <AppNav />
+
+            <div className="flex items-center justify-self-end gap-2 sm:gap-3">
+              {user ? (
+                <>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-cobalt-tint to-violet-100 text-xs font-bold text-cobalt ring-1 ring-cobalt/15"
+                      aria-hidden
+                    >
+                      {initials(user.displayName)}
+                    </span>
+                    <p className="hidden text-sm font-medium text-ink lg:block">{user.displayName}</p>
+                  </div>
+                  <form action={signOut}>
+                    <Button
+                      type="submit"
+                      variant="ghost"
+                      size="sm"
+                      className="text-ink-muted"
+                      aria-label="Cerrar sesión"
+                    >
+                      <LogOutIcon aria-hidden />
+                      <span className="hidden sm:inline">Salir</span>
+                    </Button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    nativeButton={false}
+                    render={<Link href="/login" />}
                   >
-                    <Icon className="size-4" aria-hidden />
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {user ? (
-              <>
-                <p className="hidden text-sm text-ink-muted sm:block">
-                  Hola, <span className="font-medium text-ink">{user.displayName}</span>
-                </p>
-                <form action={signOut}>
-                  <Button type="submit" variant="ghost" size="sm">
-                    Salir
-                  </Button>
-                </form>
-              </>
-            ) : (
-              <>
-                <Link href="/login">
-                  <Button variant="outline" size="sm">
                     Entrar
                   </Button>
-                </Link>
-                <Link href="/registro" className="hidden sm:inline-flex">
-                  <Button size="sm">Crear cuenta</Button>
-                </Link>
-              </>
-            )}
+                  <Button
+                    size="sm"
+                    nativeButton={false}
+                    className="hidden sm:inline-flex"
+                    render={<Link href="/registro" />}
+                  >
+                    Crear cuenta
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
-      <main className="flex min-h-0 flex-1 flex-col overflow-hidden pb-16 sm:pb-0 [&:has([data-testid=interactive-lesson-layout])]:pb-0">
+      <main className="flex min-h-0 flex-1 flex-col overflow-hidden pb-20 md:pb-0 [&:has([data-testid=interactive-lesson-layout])]:pb-0">
         {children}
       </main>
       <MobileNav />

@@ -1,24 +1,26 @@
 import Link from "next/link";
+import { CloudOffIcon } from "lucide-react";
 
 export function GuestProgressBanner() {
   return (
     <div
-      className="border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-sm text-amber-950"
-      data-app-chrome
+      className="flex h-9 items-center justify-center gap-2 border-b border-amber-200/70 bg-amber-50/95 px-4 text-xs text-amber-950 backdrop-blur sm:text-[13px]"
       data-testid="guest-progress-banner"
     >
-      <span>
-        Estás usando Eaxy sin cuenta: tu progreso se guarda solo en este navegador y puedes perderlo
-        al borrar datos o cambiar de dispositivo.{" "}
-      </span>
-      <Link href="/registro" className="font-medium text-cobalt underline-offset-4 hover:underline">
-        Crear cuenta
-      </Link>
-      <span> o </span>
-      <Link href="/login" className="font-medium text-cobalt underline-offset-4 hover:underline">
-        iniciar sesión
-      </Link>
-      <span> para guardarlo en la nube.</span>
+      <CloudOffIcon className="hidden size-3.5 shrink-0 text-amber-600 sm:block" aria-hidden />
+      <p className="truncate">
+        <span className="sm:hidden">Progreso guardado solo en este navegador. </span>
+        <span className="hidden sm:inline">
+          Sin cuenta, tu progreso se guarda solo en este navegador.{" "}
+        </span>
+        <Link
+          href="/registro"
+          className="font-semibold text-cobalt underline-offset-4 hover:underline"
+        >
+          Crea una cuenta
+        </Link>
+        <span className="hidden sm:inline"> para no perderlo.</span>
+      </p>
     </div>
   );
 }
