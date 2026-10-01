@@ -156,4 +156,19 @@ describe("validateCurriculum", () => {
     ]);
     expect(firstYear?.modules[6]?.topicExercises).toHaveLength(30);
   });
+
+  it("tiene las cuatro lecciones y ejercicios resueltos de la unidad 12 en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[7]?.title).toBe("Cuerpos geométricos");
+    expect(firstYear?.modules[7]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[7]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "cuerpos-geometricos-poliedros",
+      "cuerpos-geometricos-prismas",
+      "cuerpos-geometricos-piramides",
+      "cuerpos-geometricos-redondos",
+    ]);
+    expect(firstYear?.modules[7]?.topicExercises).toHaveLength(28);
+  });
 });

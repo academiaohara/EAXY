@@ -1,4 +1,8 @@
 import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
+import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/cuerpos-geometricos-piramides";
+import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/cuerpos-geometricos-poliedros";
+import { cuerposGeometricosPrismasLesson } from "@/data/lessons/cuerpos-geometricos-prismas";
+import { cuerposGeometricosRedondosLesson } from "@/data/lessons/cuerpos-geometricos-redondos";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/ecuaciones-lineales-dos-incognitas";
@@ -38,6 +42,10 @@ import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
 
 export const interactiveLessons = {
   "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
+  "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
+  "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
+  "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
+  "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
