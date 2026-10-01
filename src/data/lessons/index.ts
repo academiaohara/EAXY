@@ -35,6 +35,12 @@ import { sistemasNoLinealesLesson } from "@/data/lessons/sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
 import { sumaRestaEnterosLesson } from "@/data/lessons/suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
+import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/tablas-graficas-coordenadas-cartesianas";
+import { tablasGraficasDistribucionesEstadisticasLesson } from "@/data/lessons/tablas-graficas-distribuciones-estadisticas";
+import { tablasGraficasGraficosEstadisticosLesson } from "@/data/lessons/tablas-graficas-graficos-estadisticos";
+import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/tablas-graficas-informacion-puntos";
+import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/tablas-graficas-interpretacion-graficas";
+import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/tablas-graficas-parametros-estadisticos";
 
 export const interactiveLessons = {
   "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
@@ -74,6 +80,12 @@ export const interactiveLessons = {
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
   "suma-resta-naturales": sumaRestaNaturalesLesson,
+  "tablas-graficas-coordenadas-cartesianas": tablasGraficasCoordenadasCartesianasLesson,
+  "tablas-graficas-distribuciones-estadisticas": tablasGraficasDistribucionesEstadisticasLesson,
+  "tablas-graficas-graficos-estadisticos": tablasGraficasGraficosEstadisticosLesson,
+  "tablas-graficas-informacion-puntos": tablasGraficasInformacionPuntosLesson,
+  "tablas-graficas-interpretacion-graficas": tablasGraficasInterpretacionGraficasLesson,
+  "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;
