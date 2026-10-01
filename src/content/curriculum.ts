@@ -5,6 +5,7 @@ import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-d
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
+import { proporcionalidadPorcentajesTopicExercises } from "@/data/topic-exercises/proporcionalidad-porcentajes";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
 
@@ -379,6 +380,54 @@ export const curriculum: Curriculum = {
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(9),
+          title: "Proporcionalidad y porcentajes",
+          orderIndex: 8,
+          topicExercises: proporcionalidadPorcentajesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Relación de proporcionalidad entre magnitudes",
+              summary:
+                "Magnitudes, tablas de valores, proporcionalidad directa e inversa.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "proporcionalidad-magnitudes",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Problemas de proporcionalidad directa",
+              summary:
+                "Reducción a la unidad, fracciones equivalentes y regla de tres directa.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "proporcionalidad-directa-problemas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Porcentajes",
+              summary:
+                "Tanto por ciento, fracción sobre 100, porcentajes especiales y calculadora.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "porcentajes",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Aumentos y disminuciones porcentuales",
+              summary:
+                "Subidas y rebajas de precios, intereses y variaciones porcentuales.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "aumentos-disminuciones-porcentuales",
               conceptSlugs: [],
             },
           ],
