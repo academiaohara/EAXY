@@ -4,6 +4,7 @@ import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
 import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
+import { operacionesFraccionesTopicExercises } from "@/data/topic-exercises/operaciones-fracciones";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { proporcionalidadPorcentajesTopicExercises } from "@/data/topic-exercises/proporcionalidad-porcentajes";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
@@ -386,12 +387,60 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(9),
+          title: "Operaciones con fracciones",
+          orderIndex: 8,
+          topicExercises: operacionesFraccionesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Reducción a común denominador",
+              summary:
+                "MCM de denominadores; fracciones equivalentes para comparar, ordenar y operar.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-comun-denominador",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Suma y resta de fracciones",
+              summary:
+                "Mismo o distinto denominador; enteros como fracciones; simplificar resultados.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-suma-resta",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Multiplicación y división de fracciones",
+              summary:
+                "Producto de numeradores y denominadores; división en cruz; operaciones combinadas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-multiplicacion-division",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Problemas con fracciones",
+              summary:
+                "Suma sobre el total frente a fracción del resto; problemas contextualizados del temario.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(10),
           title: "Proporcionalidad y porcentajes",
           orderIndex: 9,
           topicExercises: proporcionalidadPorcentajesTopicExercises,
           lessons: [
             {
-              id: lessonId(901),
+              id: lessonId(1001),
               title: "1. Relación de proporcionalidad entre magnitudes",
               summary:
                 "Magnitudes, tablas de valores, proporcionalidad directa e inversa.",
@@ -401,7 +450,7 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(902),
+              id: lessonId(1002),
               title: "2. Problemas de proporcionalidad directa",
               summary:
                 "Reducción a la unidad, fracciones equivalentes y regla de tres directa.",
@@ -411,7 +460,7 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(903),
+              id: lessonId(1003),
               title: "3. Porcentajes",
               summary:
                 "Tanto por ciento, fracción sobre 100, porcentajes especiales y calculadora.",
@@ -421,7 +470,7 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(904),
+              id: lessonId(1004),
               title: "4. Aumentos y disminuciones porcentuales",
               summary:
                 "Subidas y rebajas de precios, intereses y variaciones porcentuales.",

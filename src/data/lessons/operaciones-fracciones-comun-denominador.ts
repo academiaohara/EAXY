@@ -1,0 +1,65 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1ESO_8_SUBTITLE } from "@/data/lessons/shared";
+
+export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
+  slug: "operaciones-fracciones-comun-denominador",
+  title: "1. Reducción a común denominador",
+  subtitle: TEMA_1ESO_8_SUBTITLE,
+  steps: [
+    {
+      id: "intro",
+      type: "concept",
+      title: "¿Por qué un mismo denominador?",
+      content: [
+        "Comparar, ordenar o sumar fracciones es más sencillo cuando comparten **denominador**.",
+        "Ordenar $\\frac{1}{7}$, $\\frac{2}{7}$ y $\\frac{5}{7}$ es inmediato; con $\\frac{2}{3}$, $\\frac{4}{9}$ y $\\frac{5}{6}$ conviene **reducir a común denominador** primero.",
+        "Reducir es sustituir cada fracción por otra **equivalente** con el mismo denominador.",
+      ],
+    },
+    {
+      id: "metodo",
+      type: "concept",
+      title: "Método (MCM de los denominadores)",
+      content: [
+        "Calcula el **mínimo común múltiplo** $m$ de los denominadores.",
+        "En cada fracción, multiplica numerador y denominador por $\\dfrac{m}{\\text{denominador}}$ (el cociente entero entre $m$ y ese denominador).",
+        "Así todas quedan con denominador $m$ y el valor no cambia.",
+      ],
+    },
+    {
+      id: "ejemplo-12",
+      type: "animated_solution",
+      title: "Ejercicio resuelto — denominador común $12$",
+      content: ["Reduce $\\dfrac{1}{4}$ y $\\dfrac{1}{6}$ tomando $12$ como denominador común."],
+      frames: [
+        { caption: "$12 : 4 = 3$", math: "\\frac{1}{4} = \\frac{1 \\cdot 3}{4 \\cdot 3} = \\frac{3}{12}" },
+        { caption: "$12 : 6 = 2$", math: "\\frac{1}{6} = \\frac{1 \\cdot 2}{6 \\cdot 2} = \\frac{2}{12}" },
+      ],
+    },
+    {
+      id: "ejemplo-24",
+      type: "animated_solution",
+      title: "Ejemplo — $\\frac{5}{8}$, $\\frac{3}{4}$ y $\\frac{7}{12}$",
+      content: ["m.c.m.$(8, 4, 12) = 24$."],
+      frames: [
+        { caption: "$24 : 8 = 3$", math: "\\frac{5}{8} = \\frac{15}{24}" },
+        { caption: "$24 : 4 = 6$", math: "\\frac{3}{4} = \\frac{18}{24}" },
+        { caption: "$24 : 12 = 2$", math: "\\frac{7}{12} = \\frac{14}{24}" },
+      ],
+    },
+    {
+      id: "check-mcm",
+      type: "multiple_choice",
+      title: "Comprueba el método",
+      question:
+        "Para reducir $\\frac{1}{2}$ y $\\frac{1}{3}$ con denominador común $6$, ¿por cuánto amplías $\\frac{1}{2}$?",
+      options: [
+        { id: "a", text: "Por $2$ (numerador y denominador)" },
+        { id: "b", text: "Por $3$ (numerador y denominador)" },
+        { id: "c", text: "Por $6$" },
+      ],
+      correctOptionId: "b",
+      explanation: "$6 : 2 = 3$. Entonces $\\frac{1}{2} = \\frac{3}{6}$.",
+    },
+  ],
+};
