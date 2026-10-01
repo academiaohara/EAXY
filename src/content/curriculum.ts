@@ -1,13 +1,19 @@
 import type { Curriculum } from "@/content/types";
+import { areasPerimetrosTopicExercises } from "@/data/topic-exercises/areas-perimetros";
+import { cuerposGeometricosTopicExercises } from "@/data/topic-exercises/cuerpos-geometricos";
 import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
 import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
 import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
 import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
 import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
+import { operacionesFraccionesTopicExercises } from "@/data/topic-exercises/operaciones-fracciones";
 import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
 import { proporcionalidadPorcentajesTopicExercises } from "@/data/topic-exercises/proporcionalidad-porcentajes";
 import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
+import { algebraTopicExercises } from "@/data/topic-exercises/algebra";
+import { probabilidadTopicExercises } from "@/data/topic-exercises/probabilidad";
 import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
+import { tablasGraficasTopicExercises } from "@/data/topic-exercises/tablas-graficas";
 
 /**
  * Fuente única de verdad del contenido curricular de desarrollo.
@@ -386,12 +392,60 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(9),
+          title: "Operaciones con fracciones",
+          orderIndex: 8,
+          topicExercises: operacionesFraccionesTopicExercises,
+          lessons: [
+            {
+              id: lessonId(901),
+              title: "1. Reducción a común denominador",
+              summary:
+                "MCM de denominadores; fracciones equivalentes para comparar, ordenar y operar.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-comun-denominador",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(902),
+              title: "2. Suma y resta de fracciones",
+              summary:
+                "Mismo o distinto denominador; enteros como fracciones; simplificar resultados.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-suma-resta",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(903),
+              title: "3. Multiplicación y división de fracciones",
+              summary:
+                "Producto de numeradores y denominadores; división en cruz; operaciones combinadas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-multiplicacion-division",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(904),
+              title: "4. Problemas con fracciones",
+              summary:
+                "Suma sobre el total frente a fracción del resto; problemas contextualizados del temario.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "operaciones-fracciones-problemas",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(10),
           title: "Proporcionalidad y porcentajes",
           orderIndex: 9,
           topicExercises: proporcionalidadPorcentajesTopicExercises,
           lessons: [
             {
-              id: lessonId(901),
+              id: lessonId(1001),
               title: "1. Relación de proporcionalidad entre magnitudes",
               summary:
                 "Magnitudes, tablas de valores, proporcionalidad directa e inversa.",
@@ -401,7 +455,7 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(902),
+              id: lessonId(1002),
               title: "2. Problemas de proporcionalidad directa",
               summary:
                 "Reducción a la unidad, fracciones equivalentes y regla de tres directa.",
@@ -411,7 +465,7 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(903),
+              id: lessonId(1003),
               title: "3. Porcentajes",
               summary:
                 "Tanto por ciento, fracción sobre 100, porcentajes especiales y calculadora.",
@@ -421,13 +475,286 @@ export const curriculum: Curriculum = {
               conceptSlugs: [],
             },
             {
-              id: lessonId(904),
+              id: lessonId(1004),
               title: "4. Aumentos y disminuciones porcentuales",
               summary:
                 "Subidas y rebajas de precios, intereses y variaciones porcentuales.",
               orderIndex: 4,
               kind: "interactive",
               interactiveSlug: "aumentos-disminuciones-porcentuales",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(11),
+          title: "Álgebra",
+          orderIndex: 10,
+          topicExercises: algebraTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1101),
+              title: "1. Letras en vez de números",
+              summary:
+                "Generalizar con letras, lenguaje algebraico y primer problema con ecuación.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "algebra-letras-numeros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1102),
+              title: "2. Expresiones algebraicas",
+              summary: "Monomios, suma y multiplicación; propiedad distributiva.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "algebra-expresiones-monomios",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1103),
+              title: "3. Ecuaciones",
+              summary: "Ecuaciones e identidades; miembros, términos e incógnitas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "algebra-ecuaciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1104),
+              title: "4. Primeras técnicas de resolución",
+              summary: "Ecuaciones $x + a$, $x - a$, $ax$ y $x/a$; reglas de transposición.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "algebra-tecnicas-ecuaciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1105),
+              title: "5. Ecuaciones de primer grado",
+              summary: "Reducir miembros, transponer términos y comprobar la solución.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "algebra-resolucion-primer-grado",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1106),
+              title: "6. Problemas con ecuaciones",
+              summary: "Traducir enunciados, plantear ecuaciones y problemas contextualizados.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "algebra-problemas-ecuaciones",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(12),
+          title: "Cuerpos geométricos",
+          orderIndex: 12,
+          topicExercises: cuerposGeometricosTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1201),
+              title: "1. Elementos del poliedro y poliedros regulares",
+              summary:
+                "Caras, aristas, vértices, desarrollo, los cinco sólidos platónicos y fórmula de Euler.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-poliedros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1202),
+              title: "2. Prismas",
+              summary: "Bases, caras laterales, tipos según la base y desarrollo.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-prismas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1203),
+              title: "3. Pirámides",
+              summary: "Base, cúspide, caras triangulares, tipos y desarrollo.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-piramides",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1204),
+              title: "4. Cuerpos redondos",
+              summary: "Cilindro, cono y esfera; cuerpos de revolución y desarrollos.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "cuerpos-geometricos-redondos",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(13),
+          title: "Áreas y perímetros",
+          orderIndex: 13,
+          topicExercises: areasPerimetrosTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1301),
+              title: "1. Medidas en los cuadriláteros",
+              summary:
+                "Rectángulo, cuadrado, paralelogramo, rombo y trapecio; área y perímetro.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "areas-cuadrilateros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1302),
+              title: "2. Área de un triángulo",
+              summary: "Fórmula base × altura / 2; triángulos rectángulos y equiláteros.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "areas-triangulo",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1303),
+              title: "3. Medidas en los polígonos",
+              summary: "Descomposición en triángulos; polígonos regulares y apotema.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "areas-poligonos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1304),
+              title: "4. Medidas en el círculo",
+              summary: "Longitud $2\\pi r$, área $\\pi r^2$ y coronas circulares.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "areas-circulo",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(14),
+          title: "Tablas y gráficas",
+          orderIndex: 14,
+          topicExercises: tablasGraficasTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1401),
+              title: "1. Coordenadas cartesianas",
+              summary:
+                "Ejes X e Y, abscisa y ordenada, cuadrantes y representación de puntos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-coordenadas-cartesianas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1402),
+              title: "2. Información mediante puntos",
+              summary: "Diagramas con situaciones reales: edad, estatura, precio, velocidad…",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-informacion-puntos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1403),
+              title: "3. Interpretación de gráficas",
+              summary:
+                "Variables independiente y dependiente; tiempo, distancia, coste y contexto.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-interpretacion-graficas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1404),
+              title: "4. Distribuciones estadísticas",
+              summary:
+                "Variables cualitativas y cuantitativas; tablas de frecuencias absolutas y relativas.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-distribuciones-estadisticas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1405),
+              title: "5. Media, mediana y moda",
+              summary: "Parámetros estadísticos; datos numéricos y cualitativos.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-parametros-estadisticos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1406),
+              title: "6. Gráficos estadísticos",
+              summary:
+                "Diagrama de barras, histograma, polígono de frecuencias y diagrama de sectores.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "tablas-graficas-graficos-estadisticos",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(15),
+          title: "Probabilidad",
+          orderIndex: 15,
+          topicExercises: probabilidadTopicExercises,
+          lessons: [
+            {
+              id: lessonId(1501),
+              title: "1. Experimento aleatorio y determinista",
+              summary:
+                "Predecir o no el resultado; lenguaje de la incertidumbre y clasificación de experimentos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-experimento-aleatorio-determinista",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1502),
+              title: "2. Espacio muestral y sucesos elementales",
+              summary: "Conjunto E, resultados posibles; moneda, dado, urnas y suma de dados.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-espacio-muestral",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1503),
+              title: "3. Sucesos, suceso seguro e imposible",
+              summary: "Sucesos compuestos; seguro e imposible; baraja y cartas numeradas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-sucesos-seguro-imposible",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1504),
+              title: "4. Frecuencia absoluta y relativa",
+              summary: "Tablas fi y hi; repetición de experimentos y enlace con la probabilidad.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-frecuencias",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(1505),
+              title: "5. Probabilidad y regla de Laplace",
+              summary: "Equiprobabilidad; casos favorables y posibles; unión e intersección.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "probabilidad-laplace",
               conceptSlugs: [],
             },
           ],

@@ -2,7 +2,7 @@ import type { CurriculumTopicExercise } from "@/content/types";
 import { proporcionalidadPorcentajesTopicExercisesExtra } from "@/data/topic-exercises/proporcionalidad-porcentajes-extra";
 
 function topicExerciseId(n: number) {
-  return `b4000000-0000-4000-8009-${n.toString().padStart(12, "0")}`;
+  return `b4000000-0000-4000-8010-${n.toString().padStart(12, "0")}`;
 }
 
 const DEFAULT_VIDEO = "https://www.youtube.com/embed/8ZtInClXe1Q";
