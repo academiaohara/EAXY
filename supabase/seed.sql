@@ -17,6 +17,7 @@ insert into public.modules (id, course_id, title, order_index) values
   ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'Los números decimales', 5),
   ('a2000000-0000-4000-8000-000000000006', 'a1000000-0000-4000-8000-000000000001', 'El sistema métrico decimal', 6),
   ('a2000000-0000-4000-8000-000000000008', 'a1000000-0000-4000-8000-000000000001', 'Las fracciones', 7),
+  ('a2000000-0000-4000-8000-000000000013', 'a1000000-0000-4000-8000-000000000001', 'Áreas y perímetros', 8),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -52,6 +53,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000803', 'a2000000-0000-4000-8000-000000000008', '3. Fracciones y números decimales', 'Fracción como división; paso a decimal y decimales periódicos.', 3, null),
   ('a3000000-0000-4000-8000-000000000804', 'a2000000-0000-4000-8000-000000000008', '4. Fracciones equivalentes', 'Propiedad fundamental, amplificar, simplificar e irreducibles.', 4, null),
   ('a3000000-0000-4000-8000-000000000805', 'a2000000-0000-4000-8000-000000000008', '5. Problemas con fracciones', 'Calcular la fracción, fracción de un número e inversos (parte conocida).', 5, null),
+  ('a3000000-0000-4000-8000-000000001301', 'a2000000-0000-4000-8000-000000000013', '1. Medidas en los cuadriláteros', 'Rectángulo, cuadrado, paralelogramo, rombo y trapecio; área y perímetro.', 1, null),
+  ('a3000000-0000-4000-8000-000000001302', 'a2000000-0000-4000-8000-000000000013', '2. Área de un triángulo', 'Fórmula base × altura / 2; triángulos rectángulos y equiláteros.', 2, null),
+  ('a3000000-0000-4000-8000-000000001303', 'a2000000-0000-4000-8000-000000000013', '3. Medidas en los polígonos', 'Descomposición en triángulos; polígonos regulares y apotema.', 3, null),
+  ('a3000000-0000-4000-8000-000000001304', 'a2000000-0000-4000-8000-000000000013', '4. Medidas en el círculo', 'Longitud $2\pi r$, área $\pi r^2$ y coronas circulares.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
