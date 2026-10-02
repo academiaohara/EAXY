@@ -107,9 +107,15 @@ export function Classify({ step, onCheck, disabled = false, compact = false }: C
         }}
         onClick={(event) => {
           event.stopPropagation();
-          if (!locked) {
-            setSelectedId(isSelected ? null : item.id);
+          if (locked) {
+            return;
           }
+          const groupOfItem = assignments[item.id];
+          if (selectedId && selectedId !== item.id && groupOfItem) {
+            place(selectedId, groupOfItem);
+            return;
+          }
+          setSelectedId(isSelected ? null : item.id);
         }}
         disabled={locked}
         aria-pressed={isSelected}

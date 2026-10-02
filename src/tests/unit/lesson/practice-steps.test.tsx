@@ -117,6 +117,19 @@ describe("Classify", () => {
     expect(onCheck).toHaveBeenCalledWith(true);
   });
 
+  it("tocar una tarjeta ya colocada deja la seleccionada en ese mismo grupo", () => {
+    const onCheck = vi.fn();
+    renderStep(<Classify step={step} onCheck={onCheck} />);
+
+    place("7", "Primo");
+    fireEvent.click(screen.getByRole("button", { name: "9" }));
+    fireEvent.click(screen.getByRole("button", { name: "7" }));
+
+    const group = screen.getByRole("button", { name: "Grupo Primo" });
+    expect(group).toHaveTextContent("7");
+    expect(group).toHaveTextContent("9");
+  });
+
   it("señala dónde iba la tarjeta mal colocada", () => {
     const onCheck = vi.fn();
     renderStep(<Classify step={step} onCheck={onCheck} />);
