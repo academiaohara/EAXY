@@ -350,6 +350,9 @@ function LessonContainerBody({
   }
 
   const reaction = getTutorReaction(currentStep, feedback);
+  const wideStep =
+    currentStep.layout === "split" ||
+    (currentStep.type === "interactive_tool" && currentStep.layout === undefined);
   const hasWhy = feedback === "correct" && Boolean(getHelpNode(buildHelpRoute(currentStep, feedback), "why"));
 
   return (
@@ -415,7 +418,10 @@ function LessonContainerBody({
         >
           <div
             key={currentStep.id}
-            className="lesson-step-enter mx-auto flex w-full max-w-6xl flex-col gap-6 pb-24 sm:gap-7"
+            className={cn(
+              "lesson-step-enter mx-auto flex w-full flex-col gap-6 pb-24 sm:gap-7",
+              wideStep ? "max-w-6xl" : "max-w-4xl",
+            )}
           >
             <LessonStepHeader step={currentStep} />
             <InteractiveQuestion

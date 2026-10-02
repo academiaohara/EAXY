@@ -3,10 +3,12 @@
 import { useMemo } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { AnimatedSolution } from "@/components/lesson/steps/AnimatedSolution";
+import { Classify } from "@/components/lesson/steps/Classify";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
+import { FractionPick } from "@/components/lesson/steps/FractionPick";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
-import { MultipleChoice } from "@/components/lesson/steps/MultipleChoice";
+import { NumberLinePick } from "@/components/lesson/steps/NumberLinePick";
 import type { LessonStep } from "@/lib/lesson/types";
 
 type InteractiveQuestionProps = {
@@ -50,7 +52,7 @@ function ConceptStepView({
         visuals={step.visuals}
         compact={compact}
         showTitle={false}
-        split
+        layout={step.layout}
       />
     </div>
   );
@@ -79,11 +81,17 @@ export function InteractiveQuestion({
     );
   }
 
-  if (step.type === "fill_in_blank") {
-    return (
-      <FillInBlank step={step} onCheck={onCheck} disabled={disabled} compact={compact} />
-    );
+  if (step.type === "fraction_pick") {
+    return <FractionPick step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
   }
 
-  return <MultipleChoice step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+  if (step.type === "classify") {
+    return <Classify step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+  }
+
+  if (step.type === "number_line_pick") {
+    return <NumberLinePick step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+  }
+
+  return <FillInBlank step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
 }

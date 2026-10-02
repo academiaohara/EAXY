@@ -10,15 +10,14 @@ import {
 import type { LessonStep } from "@/lib/lesson/types";
 import { tutorMoodForFeedback } from "@/lib/tutor/moods";
 
-const quizStep: LessonStep = {
+const quizStep = {
   id: "q1",
-  type: "multiple_choice",
+  type: "fill_in_blank",
   title: "Pregunta",
   question: "¿Cuánto es 2+2?",
   hint: "Suma los números",
-  options: [],
-  correctOptionId: "a",
-};
+  correctAnswers: ["4"],
+} satisfies LessonStep;
 
 const conceptStep: LessonStep = {
   id: "c1",
@@ -38,7 +37,7 @@ describe("getStepTutorMessage", () => {
   it("anima sin repetir el enunciado cuando la pregunta no tiene pista", () => {
     const message = getStepTutorMessage({ ...quizStep, hint: undefined });
     expect(message).not.toContain("2+2");
-    expect(message).toMatch(/opción/i);
+    expect(message).toMatch(/casilla/i);
   });
 });
 

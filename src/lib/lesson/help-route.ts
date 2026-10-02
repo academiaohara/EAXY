@@ -1,5 +1,5 @@
 import { findConcepts, type LessonConcept } from "@/lib/lesson/concept-glossary";
-import type { FeedbackStatus, LessonStep, LessonVisual } from "@/lib/lesson/types";
+import { isQuizStep, type FeedbackStatus, type LessonStep, type LessonVisual } from "@/lib/lesson/types";
 
 export type HelpOption = {
   id: string;
@@ -40,17 +40,15 @@ type HelpTopic = {
 };
 
 function stepQuestion(step: LessonStep): string | undefined {
-  return step.type === "multiple_choice" || step.type === "fill_in_blank" ? step.question : undefined;
+  return isQuizStep(step) ? step.question : undefined;
 }
 
 function stepHint(step: LessonStep): string | undefined {
-  return step.type === "multiple_choice" || step.type === "fill_in_blank" ? step.hint : undefined;
+  return isQuizStep(step) ? step.hint : undefined;
 }
 
 function stepExplanation(step: LessonStep): string | undefined {
-  return step.type === "multiple_choice" || step.type === "fill_in_blank"
-    ? step.explanation
-    : undefined;
+  return isQuizStep(step) ? step.explanation : undefined;
 }
 
 /**

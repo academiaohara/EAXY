@@ -1,18 +1,20 @@
-import type { FeedbackStatus, LessonStep } from "@/lib/lesson/types";
+import { isQuizStep, type FeedbackStatus, type LessonStep, type PracticeStep } from "@/lib/lesson/types";
 import type { TutorMood } from "@/lib/tutor/moods";
 
 /** Estado emocional del tutor; define el símbolo que aparece sobre la bola. */
 export type TutorReaction = "idle" | "thinking" | "correct" | "incorrect";
 
 /** Ánimo por defecto cuando la pregunta no trae pista. */
-const QUIZ_FALLBACK_MESSAGE: Record<"multiple_choice" | "fill_in_blank", string> = {
-  multiple_choice: "Elige la opción que creas correcta. Sin miedo.",
+const QUIZ_FALLBACK_MESSAGE: Record<PracticeStep["type"], string> = {
   fill_in_blank: "Escribe tu respuesta en la casilla.",
+  fraction_pick: "Toca las partes para colorearlas. Si te equivocas, vuelve a tocar.",
+  classify: "Toca una tarjeta y luego el grupo donde va.",
+  number_line_pick: "Toca la recta en el punto que corresponde.",
 };
 
 /** Texto corto para el globo del tutor según el paso actual. */
 export function getStepTutorMessage(step: LessonStep): string {
-  if (step.type === "multiple_choice" || step.type === "fill_in_blank") {
+  if (isQuizStep(step)) {
     return step.hint ?? QUIZ_FALLBACK_MESSAGE[step.type];
   }
   return step.title;
@@ -40,7 +42,7 @@ export function getTutorSpeechQueue(
     return [getFeedbackTutorMessage(feedback)];
   }
 
-  if (step.type === "multiple_choice" || step.type === "fill_in_blank") {
+  if (isQuizStep(step)) {
     return [getStepTutorMessage(step)];
   }
 
@@ -66,7 +68,7 @@ export function getTutorReaction(
   if (feedback === "incorrect") {
     return "incorrect";
   }
-  if (step.type === "multiple_choice" || step.type === "fill_in_blank") {
+  if (isQuizStep(step)) {
     return "thinking";
   }
   return "idle";

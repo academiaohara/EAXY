@@ -29,11 +29,13 @@ export function InteractiveToolStepView({ step, onContinue, compact = false }: I
     step.content?.length || step.math?.length || step.warning || step.visuals?.length,
   );
 
+  const split = hasContext && (step.layout ?? "split") === "split";
+
   return (
     <div
       className={cn(
         "gap-6",
-        hasContext ? "grid lg:grid-cols-2 lg:items-start lg:gap-12" : "space-y-4",
+        split ? "grid lg:grid-cols-2 lg:items-start lg:gap-12" : "flex flex-col",
       )}
       data-testid="lesson-interactive-tool"
     >
@@ -44,6 +46,7 @@ export function InteractiveToolStepView({ step, onContinue, compact = false }: I
           math={step.math}
           warning={step.warning}
           visuals={step.visuals}
+          layout={split ? "stack" : step.layout}
           compact={compact}
           showTitle={false}
         />

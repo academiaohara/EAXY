@@ -13,14 +13,13 @@ import type { LessonStep } from "@/lib/lesson/types";
 
 const quizStep: LessonStep = {
   id: "q1",
-  type: "multiple_choice",
+  type: "fill_in_blank",
   title: "Pregunta",
   question: "¿Cuánto es $2+2$?",
   hint: "Suma los números",
   explanation: "Dos más dos son cuatro",
   content: ["Sumar es juntar cantidades."],
-  options: [],
-  correctOptionId: "a",
+  correctAnswers: ["4"],
 };
 
 const conceptStep: LessonStep = {
