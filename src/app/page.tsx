@@ -12,6 +12,7 @@ import {
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { DemoExercise } from "@/components/marketing/demo-exercise";
 import { HeroEquation } from "@/components/marketing/hero-equation";
+import { SectionDotNav } from "@/components/marketing/section-dot-nav";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 import { curriculum } from "@/content";
@@ -88,15 +89,24 @@ const faqs = [
 
 const HIGHLIGHTS = ["Gratis", "Sin registro para empezar", "Feedback inmediato"];
 
+const PAGE_SECTIONS = [
+  { id: "inicio", label: "Inicio" },
+  { id: "como-funciona", label: "Cómo funciona" },
+  { id: "cursos", label: "Cursos" },
+  { id: "ventajas", label: "Ventajas" },
+  { id: "preguntas", label: "Preguntas" },
+] as const;
+
 export default function HomePage() {
   const courses = [...curriculum.courses].sort((a, b) => a.orderIndex - b.orderIndex);
 
   return (
     <div className="flex flex-1 flex-col">
       <SiteHeader />
+      <SectionDotNav sections={PAGE_SECTIONS} />
 
       <main className="flex-1">
-        <section className="relative overflow-hidden bg-app-glow">
+        <section id="inicio" className="relative scroll-mt-20 overflow-hidden bg-app-glow">
           <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-24">
             <div className="space-y-7">
               <p className="inline-flex items-center gap-2 rounded-full border border-cobalt/15 bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt shadow-xs">
@@ -244,7 +254,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="border-y border-border bg-paper-raised">
+        <section id="ventajas" className="scroll-mt-20 border-y border-border bg-paper-raised">
           <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
             <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
               Todo lo que necesitas para aprender

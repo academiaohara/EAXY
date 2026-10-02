@@ -38,7 +38,7 @@ export async function AppShell({ children }: AppShellProps) {
         {isGuest ? <GuestProgressBanner /> : null}
         <header className="border-b border-border/80 bg-paper-raised/75 backdrop-blur-xl">
           <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 px-4 sm:px-6">
-            <BrandLogo href="/aprender" className="justify-self-start" />
+            <BrandLogo className="justify-self-start" />
 
             <AppNav />
 
