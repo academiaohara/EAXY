@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AppNav } from "@/components/layout/app-nav";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
@@ -8,35 +9,17 @@ type SiteHeaderProps = {
   variant?: "marketing" | "minimal";
 };
 
-const MARKETING_LINKS = [
-  { href: "/#como-funciona", label: "Cómo funciona" },
-  { href: "/#cursos", label: "Cursos" },
-  { href: "/#preguntas", label: "Preguntas" },
-] as const;
-
 export async function SiteHeader({ variant = "marketing" }: SiteHeaderProps) {
   const user = await getSessionUser();
 
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-paper/75 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <BrandLogo />
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:grid md:grid-cols-[1fr_auto_1fr]">
+        <BrandLogo className="justify-self-start" />
 
-        {variant === "marketing" ? (
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Secciones de la página">
-            {MARKETING_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted transition-colors hover:bg-paper-raised hover:text-ink"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        ) : null}
+        {variant === "marketing" ? <AppNav /> : null}
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-self-end gap-2">
           {user ? (
             <>
               <form action={signOut}>
