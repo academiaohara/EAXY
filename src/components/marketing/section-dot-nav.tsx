@@ -67,6 +67,7 @@ export function SectionDotNav({ sections }: SectionDotNavProps) {
           const isActive = section.id === activeId;
           return (
             <li key={section.id}>
+              {/* in-[.group:hover] en lugar de group-hover: Tailwind v4 restringe hover a @media (hover: hover). */}
               <a
                 href={`#${section.id}`}
                 onClick={(event) => handleClick(event, section.id)}
@@ -78,7 +79,7 @@ export function SectionDotNav({ sections }: SectionDotNavProps) {
                   aria-hidden
                   className={cn(
                     "pointer-events-none absolute right-full mr-2.5 whitespace-nowrap rounded-full bg-ink px-2.5 py-1 text-xs font-semibold text-paper opacity-0 shadow-md transition-all duration-200",
-                    "translate-x-1 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100",
+                    "translate-x-1 in-[.group:hover]:translate-x-0 in-[.group:hover]:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100",
                   )}
                 >
                   {section.label}
@@ -89,7 +90,7 @@ export function SectionDotNav({ sections }: SectionDotNavProps) {
                     "block rounded-full transition-all duration-200",
                     isActive
                       ? "size-2.5 bg-cobalt shadow-[0_0_0_4px] shadow-cobalt/20"
-                      : "size-2 bg-ink-muted/40 group-hover:bg-cobalt/70",
+                      : "size-2 bg-ink-muted/40 in-[.group:hover]:bg-cobalt/70",
                   )}
                 />
                 <span className="sr-only">{section.label}</span>

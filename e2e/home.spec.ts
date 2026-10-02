@@ -23,8 +23,10 @@ test("los puntos laterales navegan por las secciones de inicio", async ({ page }
   await expect(page.getByTestId("section-dot-inicio")).toHaveAttribute("aria-current", "location");
 
   const cursosDot = page.getByTestId("section-dot-cursos");
+  const cursosLabel = cursosDot.getByText("Cursos").first();
+  await expect(cursosLabel).toHaveCSS("opacity", "0");
   await cursosDot.hover();
-  await expect(cursosDot.getByText("Cursos").first()).toBeVisible();
+  await expect(cursosLabel).toHaveCSS("opacity", "1");
 
   await cursosDot.click();
   await expect(page).toHaveURL(/#cursos$/);
