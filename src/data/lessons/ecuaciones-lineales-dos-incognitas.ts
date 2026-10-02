@@ -143,16 +143,35 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuántas soluciones tiene, en general, una ecuación lineal con dos incógnitas?",
-      options: [
-        { id: "a", text: "Ninguna" },
-        { id: "b", text: "Exactamente una" },
-        { id: "c", text: "Infinitas" },
+      question: "Sustituye cada par en $x + 2y = 4$ y clasifícalo.",
+      groups: [
+        { id: "si", label: "Es solución", tone: "emerald" },
+        { id: "no", label: "No es solución", tone: "rose" },
       ],
-      correctOptionId: "c",
-      explanation: "Una recta contiene infinitos puntos, y cada punto $(x, y)$ de la recta es una solución.",
+      items: [
+        { id: "a", text: "$(2, 1)$", group: "si" },
+        { id: "b", text: "$(4, 0)$", group: "si" },
+        { id: "c", text: "$(6, -1)$", group: "si" },
+        { id: "d", text: "$(1, 1{,}5)$", group: "si" },
+        { id: "e", text: "$(1, 1)$", group: "no" },
+        { id: "f", text: "$(3, 1)$", group: "no" },
+        { id: "g", text: "$(-2, 1)$", group: "no" },
+      ],
+      hint: "Calcula $x + 2y$ con cada par: es solución si da exactamente $4$.",
+      explanation:
+        "$2 + 2 = 4$, $4 + 0 = 4$, $6 - 2 = 4$ y $1 + 3 = 4$: son soluciones. $(1,1)$ da $3$, $(3,1)$ da $5$ y $(-2,1)$ da $0$. Para cualquier $x$ hay un $y$ que cumple la ecuación: tiene **infinitas soluciones**, todas sobre la misma recta.",
+    },
+    {
+      id: "check-infinitas",
+      type: "fill_in_blank",
+      title: "Siempre hay otra solución",
+      question: "Busca una solución más de $x + 2y = 4$: si $x = 10$, ¿cuánto vale $y$? (solo el número)",
+      correctAnswers: ["-3"],
+      hint: "Sustituye $x = 10$ y despeja: $10 + 2y = 4$.",
+      explanation:
+        "$2y = 4 - 10 = -6 \\Rightarrow y = -3$. Elijas el $x$ que elijas, encuentras su $y$: la ecuación tiene infinitas soluciones.",
     },
   ],
 };

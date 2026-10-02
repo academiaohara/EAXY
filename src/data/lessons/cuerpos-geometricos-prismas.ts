@@ -39,30 +39,33 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     },
     {
       id: "check-es-prisma",
-      type: "multiple_choice",
+      type: "classify",
       title: "¿Es un prisma?",
-      question:
-        "¿Cuál de estas descripciones corresponde siempre a un prisma?",
-      options: [
-        { id: "a", text: "Tiene una base y caras laterales triangulares que se unen en un vértice." },
-        { id: "b", text: "Tiene dos bases iguales y paralelas y caras laterales paralelogramos." },
-        { id: "c", text: "Todas sus caras son triángulos equiláteros." },
+      question: "Clasifica cada descripción u objeto: ¿es un prisma o una pirámide?",
+      groups: [
+        { id: "prisma", label: "Prisma", tone: "cobalt" },
+        { id: "piramide", label: "Pirámide", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "Esa es la definición de prisma; la opción a describe una pirámide.",
+      items: [
+        { id: "a", text: "Dos bases iguales y paralelas y caras laterales paralelogramos", group: "prisma" },
+        { id: "b", text: "Una caja de zapatos", group: "prisma" },
+        { id: "c", text: "Un lápiz hexagonal sin afilar", group: "prisma" },
+        { id: "d", text: "Una base y caras laterales triangulares que se unen en un vértice", group: "piramide" },
+        { id: "e", text: "Las pirámides de Egipto", group: "piramide" },
+        { id: "f", text: "Base hexagonal y seis triángulos laterales con un vértice común", group: "piramide" },
+      ],
+      hint: "Busca las dos bases iguales y paralelas: si las hay, es un prisma.",
+      explanation:
+        "Un prisma tiene dos bases iguales y paralelas unidas por paralelogramos (la caja, el lápiz). Si hay una sola base y triángulos que se juntan en un vértice, es una pirámide.",
     },
     {
       id: "check-pentagonal",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Prisma pentagonal",
-      question: "Un prisma pentagonal tiene base pentagonal. ¿Cuántas caras tiene en total?",
-      options: [
-        { id: "a", text: "$5$" },
-        { id: "b", text: "$6$" },
-        { id: "c", text: "$7$" },
-        { id: "d", text: "$10$" },
-      ],
-      correctOptionId: "c",
+      question:
+        "Un prisma pentagonal tiene base pentagonal. ¿Cuántas caras tiene en total? (solo el número)",
+      correctAnswers: ["7"],
+      hint: "No olvides que el prisma tiene **dos** bases además de las caras laterales.",
       explanation: "$2$ bases + $5$ laterales $= 7$ caras ($n + 2$ con $n = 5$).",
     },
     {

@@ -13,7 +13,41 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
       content: [
         "Dos fracciones son **equivalentes** si representan la **misma porción** de la unidad (mismo valor numérico).",
         "Por ejemplo $\\frac{1}{4}$ y $\\frac{3}{12}$ valen lo mismo: $1 : 4 = 0{,}25$ y $3 : 12 = 0{,}25$.",
+        "Fíjate en las dos barras: son iguales y la parte coloreada ocupa lo mismo, aunque una esté partida en $4$ y la otra en $12$.",
       ],
+      visuals: [
+        {
+          kind: "fraction-figure",
+          title: "$\\frac{1}{4}$",
+          shape: "bar",
+          parts: 4,
+          shaded: 1,
+          tone: "cobalt",
+        },
+        {
+          kind: "fraction-figure",
+          title: "$\\frac{3}{12}$",
+          shape: "bar",
+          parts: 12,
+          shaded: 3,
+          tone: "emerald",
+          caption: "Misma porción de la unidad.",
+        },
+      ],
+    },
+    {
+      id: "marca-equivalente",
+      type: "fraction_pick",
+      title: "Colorea una fracción equivalente",
+      question:
+        "La barra está partida en $8$ partes iguales. Colorea $\\frac{3}{4}$ de la barra.",
+      shape: "bar",
+      numerator: 3,
+      denominator: 4,
+      parts: 8,
+      hint: "Cada cuarto de la barra son $2$ octavos. ¿Cuántos octavos son $3$ cuartos?",
+      explanation:
+        "$\\frac{3}{4} = \\frac{3 \\cdot 2}{4 \\cdot 2} = \\frac{6}{8}$: hay que colorear $6$ de las $8$ partes.",
     },
     {
       id: "propiedad",
@@ -87,16 +121,38 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     },
     {
       id: "check-equiv",
-      type: "multiple_choice",
+      type: "classify",
       title: "¿Equivalentes?",
-      question: "¿Son equivalentes $\\frac{3}{5}$ y $\\frac{6}{10}$?",
-      options: [
-        { id: "a", text: "Sí, porque $3 \\cdot 10 = 5 \\cdot 6$" },
-        { id: "b", text: "No, tienen distinto denominador" },
-        { id: "c", text: "Solo si simplificas $6/10$" },
+      question: "Clasifica cada fracción según sea o no equivalente a $\\frac{3}{5}$.",
+      groups: [
+        { id: "si", label: "Equivalente a $\\frac{3}{5}$", tone: "emerald" },
+        { id: "no", label: "No equivalente", tone: "rose" },
       ],
-      correctOptionId: "a",
-      explanation: "$\\frac{6}{10} = \\frac{3}{5}$; ambas valen $0{,}6$.",
+      items: [
+        { id: "a", text: "$\\frac{6}{10}$", group: "si" },
+        { id: "b", text: "$\\frac{9}{15}$", group: "si" },
+        { id: "c", text: "$\\frac{12}{20}$", group: "si" },
+        { id: "d", text: "$\\frac{3}{10}$", group: "no" },
+        { id: "e", text: "$\\frac{5}{3}$", group: "no" },
+        { id: "f", text: "$\\frac{4}{6}$", group: "no" },
+      ],
+      hint: "Busca si numerador y denominador se obtienen multiplicando $3$ y $5$ por el mismo número.",
+      explanation:
+        "$\\frac{6}{10}$, $\\frac{9}{15}$ y $\\frac{12}{20}$ salen de multiplicar por $2$, $3$ y $4$: valen $0{,}6$. $\\frac{3}{10}$, $\\frac{5}{3}$ y $\\frac{4}{6}$ tienen otro valor.",
+    },
+    {
+      id: "divide-equivalente",
+      type: "fraction_pick",
+      title: "Elige tú la división",
+      question:
+        "Divide la barra en el número de partes que quieras (por ejemplo $10$) y colorea una fracción equivalente a $\\frac{2}{5}$.",
+      shape: "bar",
+      numerator: 2,
+      denominator: 5,
+      adjustableParts: true,
+      hint: "Si divides en $10$ partes, cada quinto son $2$ décimos.",
+      explanation:
+        "Vale cualquier marcado equivalente: $\\frac{2}{5} = \\frac{4}{10} = \\frac{6}{15} = \\frac{8}{20}$.",
     },
     {
       id: "check-simpl",

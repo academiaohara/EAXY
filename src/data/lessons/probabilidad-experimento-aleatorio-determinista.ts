@@ -79,17 +79,24 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál de estos experimentos es determinista?",
-      options: [
-        { id: "a", text: "Lanzar un dado al aire" },
-        { id: "b", text: "Sacar una carta de una baraja española" },
-        { id: "c", text: "El resultado de dividir $10$ entre $2$" },
+      question: "Clasifica cada experimento como aleatorio o determinista.",
+      groups: [
+        { id: "aleatorio", label: "Aleatorio", tone: "cobalt" },
+        { id: "determinista", label: "Determinista", tone: "emerald" },
       ],
-      correctOptionId: "c",
+      items: [
+        { id: "a", text: "Lanzar un dado al aire", group: "aleatorio" },
+        { id: "b", text: "Sacar una carta de una baraja española", group: "aleatorio" },
+        { id: "c", text: "El resultado de dividir $10$ entre $2$", group: "determinista" },
+        { id: "d", text: "Calentar agua hasta que hierva y anotar la temperatura (a nivel del mar)", group: "determinista" },
+        { id: "e", text: "Sacar una bola de una urna con bolas de varios colores", group: "aleatorio" },
+        { id: "f", text: "Distancia que recorre un coche a $60\\ \\text{km/h}$ durante $3$ horas", group: "determinista" },
+      ],
+      hint: "Pregúntate: ¿puedo saber el resultado **antes** de hacerlo?",
       explanation:
-        "La división $10 : 2 = 5$ siempre da el mismo resultado; los otros dependen del azar.",
+        "Son deterministas los que siempre dan lo mismo: $10 : 2 = 5$, el agua hierve a $100\\,°\\text{C}$ y el coche recorre $180\\ \\text{km}$. El dado, la carta y la bola dependen del azar.",
     },
   ],
 };

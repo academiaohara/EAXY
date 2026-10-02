@@ -82,17 +82,26 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
       question:
-        "En una bolsa con $2$ bolas rojas y $3$ verdes, ¿qué tipo de suceso es «sacar una bola azul»?",
-      options: [
-        { id: "a", text: "Suceso seguro" },
-        { id: "b", text: "Suceso imposible" },
-        { id: "c", text: "Suceso elemental" },
+        "En una bolsa hay $2$ bolas rojas y $3$ verdes. Sacamos una bola al azar. Clasifica cada suceso.",
+      groups: [
+        { id: "seguro", label: "Seguro", tone: "emerald" },
+        { id: "imposible", label: "Imposible", tone: "rose" },
+        { id: "posible", label: "Ni seguro ni imposible", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "No hay bolas azules en la bolsa; el suceso no tiene ningún resultado posible.",
+      items: [
+        { id: "a", text: "Sacar una bola azul", group: "imposible" },
+        { id: "b", text: "Sacar una bola roja o verde", group: "seguro" },
+        { id: "c", text: "Sacar una bola roja", group: "posible" },
+        { id: "d", text: "Sacar una bola amarilla", group: "imposible" },
+        { id: "e", text: "Sacar una bola que no sea azul", group: "seguro" },
+        { id: "f", text: "Sacar una bola verde", group: "posible" },
+      ],
+      hint: "¿El suceso incluye **todos** los resultados posibles, **ninguno** o solo algunos?",
+      explanation:
+        "No hay bolas azules ni amarillas: esos sucesos no tienen ningún resultado, son imposibles. Toda bola es roja o verde (y ninguna es azul): seguro. «Roja» o «verde» pueden salir o no.",
     },
   ],
 };

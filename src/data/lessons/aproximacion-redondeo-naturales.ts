@@ -70,16 +70,14 @@ export const aproximacionRedondeoNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-regla",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Practica la regla",
-      question: "Redondea $458$ a las decenas. ¿Cuál es el resultado?",
-      options: [
-        { id: "a", text: "$450$" },
-        { id: "b", text: "$460$" },
-        { id: "c", text: "$500$" },
-      ],
-      correctOptionId: "b",
-      explanation: "La cifra de unidades es $8 \\geq 5$, así que subimos la decena: $460$.",
+      question: "Redondea $458$ a las decenas y marca el resultado en la recta.",
+      min: 440,
+      max: 470,
+      target: 460,
+      hint: "$458$ está entre $450$ y $460$. Mira la cifra de las unidades: ¿es $5$ o más?",
+      explanation: "La cifra de unidades es $8 \\geq 5$, así que subimos la decena: $460$. En la recta, $458$ queda más cerca de $460$ que de $450$.",
     },
     {
       id: "check-millares",

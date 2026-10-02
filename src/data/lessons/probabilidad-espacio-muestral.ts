@@ -82,16 +82,25 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "Al lanzar un dado estándar de seis caras, ¿cuál es el espacio muestral?",
-      options: [
-        { id: "a", text: "$E = \\{0, 1, 2, 3, 4, 5, 6\\}$" },
-        { id: "b", text: "$E = \\{1, 2, 3, 4, 5, 6\\}$" },
-        { id: "c", text: "$E = \\{\\text{par}, \\text{ impar}\\}$" },
+      question:
+        "Lanzamos un dado estándar de seis caras. ¿Qué elementos forman parte de su espacio muestral $E$?",
+      groups: [
+        { id: "dentro", label: "Es un elemento de $E$", tone: "emerald" },
+        { id: "fuera", label: "No es un elemento de $E$", tone: "rose" },
       ],
-      correctOptionId: "b",
-      explanation: "Cada cara del dado es un suceso elemental; no incluye el $0$ ni agrupa resultados.",
+      items: [
+        { id: "a", text: "$1$", group: "dentro" },
+        { id: "b", text: "$0$", group: "fuera" },
+        { id: "c", text: "$6$", group: "dentro" },
+        { id: "d", text: "$7$", group: "fuera" },
+        { id: "e", text: "$4$", group: "dentro" },
+        { id: "f", text: "«Par»", group: "fuera" },
+      ],
+      hint: "Los elementos de $E$ son los resultados que puedes ver en la cara superior del dado, uno a uno.",
+      explanation:
+        "$E = \\{1, 2, 3, 4, 5, 6\\}$: cada cara es un suceso elemental. No incluye el $0$ ni el $7$, y «par» agrupa varios resultados ($\\{2, 4, 6\\}$), así que es un suceso, no un elemento de $E$.",
     },
   ],
 };

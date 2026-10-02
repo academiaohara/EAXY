@@ -48,16 +48,14 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál es la solución de $\\frac{x}{5} = 2$?",
-      options: [
-        { id: "a", text: "$x = \\frac{2}{5}$" },
-        { id: "b", text: "$x = 10$" },
-        { id: "c", text: "$x = 7$" },
-      ],
-      correctOptionId: "b",
-      explanation: "Multiplicamos ambos miembros por $5$: $x = 2 \\cdot 5 = 10$.",
+      question: "Resuelve $\\frac{x}{5} = 2$ y marca la solución en la recta.",
+      min: 0,
+      max: 12,
+      target: 10,
+      hint: "El $5$ está dividiendo a $x$: pasa al otro miembro multiplicando.",
+      explanation: "Multiplicamos ambos miembros por $5$: $x = 2 \\cdot 5 = 10$. Comprobación: $\\frac{10}{5} = 2$.",
     },
   ],
 };

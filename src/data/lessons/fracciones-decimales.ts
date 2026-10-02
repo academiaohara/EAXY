@@ -38,6 +38,20 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
       ],
     },
     {
+      id: "marca-decimas",
+      type: "fraction_pick",
+      title: "Décimas en la cuadrícula",
+      question:
+        "La cuadrícula es la unidad, dividida en $10$ casillas iguales. Colorea $0{,}3$ de la unidad.",
+      shape: "grid",
+      numerator: 3,
+      denominator: 10,
+      columns: 5,
+      itemLabel: "casilla",
+      hint: "Cada casilla es una décima: $\\frac{1}{10} = 0{,}1$. ¿Cuántas décimas tiene $0{,}3$?",
+      explanation: "$0{,}3$ son tres décimas: $0{,}3 = \\frac{3}{10}$, es decir, $3$ de las $10$ casillas.",
+    },
+    {
       id: "periodicos",
       type: "concept",
       title: "Decimales periódicos",
@@ -69,16 +83,25 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     },
     {
       id: "check-13",
-      type: "multiple_choice",
-      title: "Periódico simple",
-      question: "¿Cuál es el valor decimal de $\\frac{1}{3}$?",
-      options: [
-        { id: "a", text: "$0{,}3$ (exacto)" },
-        { id: "b", text: "$0{,}33$ (exacto)" },
-        { id: "c", text: "$0{,}333\\ldots$ (infinito)" },
+      type: "classify",
+      title: "¿Exacto o periódico?",
+      question:
+        "Haz mentalmente (o en papel) cada división y clasifica la fracción según su expresión decimal.",
+      groups: [
+        { id: "exacto", label: "Decimal exacto", tone: "emerald" },
+        { id: "periodico", label: "Decimal periódico", tone: "violet" },
       ],
-      correctOptionId: "c",
-      explanation: "$1 : 3$ no termina; el $3$ se repite indefinidamente.",
+      items: [
+        { id: "a", text: "$\\frac{1}{3}$", group: "periodico" },
+        { id: "b", text: "$\\frac{2}{5}$", group: "exacto" },
+        { id: "c", text: "$\\frac{3}{8}$", group: "exacto" },
+        { id: "d", text: "$\\frac{5}{12}$", group: "periodico" },
+        { id: "e", text: "$\\frac{1}{4}$", group: "exacto" },
+        { id: "f", text: "$\\frac{2}{9}$", group: "periodico" },
+      ],
+      hint: "Divide numerador entre denominador: ¿la división llega a resto $0$ o una cifra se repite sin fin?",
+      explanation:
+        "$\\frac{2}{5} = 0{,}4$, $\\frac{3}{8} = 0{,}375$ y $\\frac{1}{4} = 0{,}25$ terminan. $\\frac{1}{3} = 0{,}\\overline{3}$, $\\frac{5}{12} = 0{,}41\\overline{6}$ y $\\frac{2}{9} = 0{,}\\overline{2}$ no terminan nunca.",
     },
   ],
 };

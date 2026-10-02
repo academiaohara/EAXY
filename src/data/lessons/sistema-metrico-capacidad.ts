@@ -47,15 +47,11 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     },
     {
       id: "check-hl",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Decilitros en un litro",
-      question: "¿Cuántos decilitros hay en $1{,}3\\,\\mathrm{l}$?",
-      options: [
-        { id: "a", text: "$13\\,\\mathrm{dl}$" },
-        { id: "b", text: "$130\\,\\mathrm{dl}$" },
-        { id: "c", text: "$1{,}3\\,\\mathrm{dl}$" },
-      ],
-      correctOptionId: "a",
+      question: "¿Cuántos decilitros hay en $1{,}3\\,\\mathrm{l}$? (solo el número)",
+      correctAnswers: ["13", "13 dl"],
+      hint: "Del litro al decilitro bajas un escalón: multiplica por $10$.",
       explanation: "$1\\,\\mathrm{l} = 10\\,\\mathrm{dl}$, así $1{,}3\\,\\mathrm{l} = 13\\,\\mathrm{dl}$.",
     },
     {

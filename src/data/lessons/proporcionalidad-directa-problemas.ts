@@ -80,16 +80,12 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
     },
     {
       id: "queso-regla",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Regla de tres — queso (act. 6)",
       question:
-        "Un trozo de $400$ g cuesta $4{,}60\\,€$. ¿Cuánto cuesta otro de $320$ g del mismo queso?",
-      options: [
-        { id: "a", text: "$3{,}68\\,€$" },
-        { id: "b", text: "$5{,}75\\,€$" },
-        { id: "c", text: "$3{,}20\\,€$" },
-      ],
-      correctOptionId: "a",
+        "Un trozo de $400$ g cuesta $4{,}60\\,€$. ¿Cuánto cuesta otro de $320$ g del mismo queso? (en euros, solo el número con coma decimal)",
+      correctAnswers: ["3,68", "3.68", "3,68 €", "3.68 €", "3,68€", "3.68€"],
+      hint: "Menos gramos, menos dinero: es directa. Plantea $\\frac{400}{320} = \\frac{4{,}60}{x}$.",
       explanation:
         "$\\frac{400}{320} = \\frac{4{,}60}{x}$ → $x = \\frac{320 \\cdot 4{,}60}{400} = 3{,}68\\,€$.",
     },

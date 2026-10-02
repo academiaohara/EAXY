@@ -63,15 +63,11 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     },
     {
       id: "check-dm2",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Decímetros cuadrados en un metro cuadrado",
-      question: "¿Cuántos $\\mathrm{dm}^2$ hay en $1\\,\\mathrm{m}^2$?",
-      options: [
-        { id: "a", text: "$10$" },
-        { id: "b", text: "$100$" },
-        { id: "c", text: "$1000$" },
-      ],
-      correctOptionId: "b",
+      question: "¿Cuántos $\\mathrm{dm}^2$ hay en $1\\,\\mathrm{m}^2$? (solo el número)",
+      correctAnswers: ["100", "100 dm2"],
+      hint: "Un cuadrado de $1\\,\\mathrm{m}$ de lado mide $10\\,\\mathrm{dm}$ de lado. ¿Cuántos cuadraditos de $1\\,\\mathrm{dm}$ caben?",
       explanation: "Un metro cuadrado son $10 \\times 10 = 100$ decímetros cuadrados.",
     },
     {

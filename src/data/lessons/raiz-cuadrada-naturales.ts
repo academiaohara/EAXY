@@ -101,15 +101,11 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-exacta",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Comprueba lo aprendido",
-      question: "¿Cuánto vale $\\sqrt{81}$?",
-      options: [
-        { id: "a", text: "$8$" },
-        { id: "b", text: "$9$" },
-        { id: "c", text: "$81$" },
-      ],
-      correctOptionId: "b",
+      question: "¿Cuánto vale $\\sqrt{81}$? (solo el número)",
+      correctAnswers: ["9"],
+      hint: "Busca el número que, multiplicado por sí mismo, da $81$.",
       explanation: "$9^2 = 81$, así que $\\sqrt{81} = 9$ (raíz exacta).",
     },
     {

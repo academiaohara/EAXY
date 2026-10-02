@@ -50,17 +50,25 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     },
     {
       id: "check-ordenada",
-      type: "multiple_choice",
+      type: "classify",
       title: "Interpretar la ordenada",
       question:
-        "En un gráfico edad–estatura, ¿qué indica que un punto tenga la **mayor ordenada** de la familia?",
-      options: [
-        { id: "a", text: "Es la persona de mayor edad." },
-        { id: "b", text: "Es la persona más alta." },
-        { id: "c", text: "Es la que está más cerca del colegio." },
+        "En el gráfico de la familia, la **edad** va en el eje X y la **estatura** en el eje Y. ¿Qué coordenada hay que mirar para responder a cada pregunta?",
+      groups: [
+        { id: "abscisa", label: "La abscisa (edad)", tone: "cobalt" },
+        { id: "ordenada", label: "La ordenada (estatura)", tone: "emerald" },
       ],
-      correctOptionId: "b",
-      explanation: "La ordenada corresponde a la estatura en ese diagrama.",
+      items: [
+        { id: "alto", text: "¿Quién es la persona más alta?", group: "ordenada" },
+        { id: "bajo", text: "¿Quién es la persona más baja?", group: "ordenada" },
+        { id: "supera", text: "¿Mide Bernardo más que Flora?", group: "ordenada" },
+        { id: "mayor", text: "¿Quién es la persona de mayor edad?", group: "abscisa" },
+        { id: "joven", text: "¿Quién es la más joven?", group: "abscisa" },
+        { id: "misma-edad", text: "¿Tienen dos personas la misma edad?", group: "abscisa" },
+      ],
+      hint: "La ordenada es la coordenada vertical; la abscisa, la horizontal. ¿Qué magnitud va en cada eje?",
+      explanation:
+        "La ordenada corresponde a la estatura en ese diagrama: la mayor ordenada es la persona más alta. Las preguntas sobre la edad se responden con la abscisa.",
     },
     {
       id: "check-misma-estatura",

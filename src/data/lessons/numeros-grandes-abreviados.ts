@@ -74,16 +74,25 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     },
     {
       id: "check-mc",
-      type: "multiple_choice",
-      title: "Elige la forma correcta",
-      question: "¿Cuál es la forma abreviada de $460\\,000$?",
-      options: [
-        { id: "a", text: "$46 \\cdot 10^3$" },
-        { id: "b", text: "$46 \\cdot 10^4$" },
-        { id: "c", text: "$460 \\cdot 10^3$" },
+      type: "classify",
+      title: "¿Qué número es?",
+      question: "Coloca cada expresión debajo del número que representa.",
+      groups: [
+        { id: "a46mil", label: "$46\\,000$", tone: "cobalt" },
+        { id: "a460mil", label: "$460\\,000$", tone: "emerald" },
+        { id: "a4600mil", label: "$4\\,600\\,000$", tone: "violet" },
       ],
-      correctOptionId: "b",
-      explanation: "$460\\,000 = 46 \\cdot 10\\,000 = 46 \\cdot 10^4$.",
+      items: [
+        { id: "a", text: "$46 \\cdot 10^3$", group: "a46mil" },
+        { id: "b", text: "$46 \\cdot 10^4$", group: "a460mil" },
+        { id: "c", text: "$46 \\cdot 10^5$", group: "a4600mil" },
+        { id: "d", text: "$460 \\cdot 10^2$", group: "a46mil" },
+        { id: "e", text: "$460 \\cdot 10^3$", group: "a460mil" },
+        { id: "f", text: "$4600 \\cdot 10^3$", group: "a4600mil" },
+      ],
+      hint: "Escribe el número y añade tantos ceros como indica el exponente de $10$.",
+      explanation:
+        "$46 \\cdot 10^4 = 46 \\cdot 10\\,000 = 460\\,000$, igual que $460 \\cdot 10^3$. La forma abreviada más cómoda usa el número sin ceros finales: $460\\,000 = 46 \\cdot 10^4$.",
     },
   ],
 };

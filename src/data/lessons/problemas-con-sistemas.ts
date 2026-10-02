@@ -76,18 +76,25 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Practica",
       question:
-        "La suma de dos números es 14. Si al mayor le sumamos 1 obtenemos el doble del menor. ¿Qué sistema planteamos?",
-      options: [
-        { id: "a", text: "$x + y = 14$ y $x + 1 = 2y$" },
-        { id: "b", text: "$x + y = 14$ y $x = y + 1$" },
-        { id: "c", text: "$xy = 14$ y $x = 2y$" },
+        "La suma de dos números es 14. Si al mayor le sumamos 1 obtenemos el doble del menor. Llamamos $x$ al mayor e $y$ al menor: ¿qué ecuaciones traducen el enunciado?",
+      groups: [
+        { id: "si", label: "Forma parte del sistema", tone: "emerald" },
+        { id: "no", label: "No traduce el enunciado", tone: "rose" },
       ],
-      correctOptionId: "a",
+      items: [
+        { id: "a", text: "$x + y = 14$", group: "si" },
+        { id: "b", text: "$x + 1 = 2y$", group: "si" },
+        { id: "c", text: "$x = y + 1$", group: "no" },
+        { id: "d", text: "$xy = 14$", group: "no" },
+        { id: "e", text: "$x = 2y$", group: "no" },
+        { id: "f", text: "$2(x + 1) = y$", group: "no" },
+      ],
+      hint: "Traduce frase a frase: «la suma es 14» y «el mayor más 1 es el doble del menor».",
       explanation:
-        "Sea $x$ el mayor e $y$ el menor. La suma da $x + y = 14$ y la condición del enunciado es $x + 1 = 2y$.",
+        "La suma da $x + y = 14$ y la condición del enunciado es $x + 1 = 2y$. Resolviendo: $x = 9$, $y = 5$ ($9 + 1 = 10 = 2 \\cdot 5$).",
     },
   ],
 };

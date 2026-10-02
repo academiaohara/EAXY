@@ -82,17 +82,39 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     },
     {
       id: "check-lectura",
-      type: "multiple_choice",
+      type: "classify",
       title: "Lectura de un decimal",
-      question: "¿Cómo se lee $5{,}004$?",
-      options: [
-        { id: "a", text: "Cinco unidades y cuatro décimas" },
-        { id: "b", text: "Cinco unidades y cuatro centésimas" },
-        { id: "c", text: "Cinco unidades y cuatro milésimas" },
+      question:
+        "Para leer un decimal nombramos el orden de su última cifra. Coloca cada número según cómo se lee su parte decimal.",
+      groups: [
+        { id: "decimas", label: "… décimas", tone: "cobalt" },
+        { id: "centesimas", label: "… centésimas", tone: "emerald" },
+        { id: "milesimas", label: "… milésimas", tone: "violet" },
       ],
-      correctOptionId: "c",
+      items: [
+        { id: "a", text: "$5{,}004$", group: "milesimas" },
+        { id: "b", text: "$5{,}04$", group: "centesimas" },
+        { id: "c", text: "$5{,}4$", group: "decimas" },
+        { id: "d", text: "$2{,}745$", group: "milesimas" },
+        { id: "e", text: "$0{,}07$", group: "centesimas" },
+        { id: "f", text: "$13{,}8$", group: "decimas" },
+      ],
+      hint: "Cuenta cuántas cifras hay después de la coma: una, décimas; dos, centésimas; tres, milésimas.",
       explanation:
-        "La última cifra significativa está en milésimas (el cero de centésimas no cuenta como «cuatro centésimas»).",
+        "$5{,}004$ se lee «cinco unidades y cuatro **milésimas**»: el $4$ está en el tercer lugar tras la coma (los ceros también ocupan su lugar). $5{,}04$ son cuatro centésimas y $5{,}4$, cuatro décimas.",
+    },
+    {
+      id: "check-redondeo",
+      type: "number_line_pick",
+      title: "Redondea y sitúa",
+      question: "Redondea $4{,}76$ a las décimas y marca el resultado en la recta.",
+      min: 4,
+      max: 5,
+      subdivisions: 10,
+      target: 4.8,
+      hint: "Fíjate en la primera cifra que suprimes (las centésimas): ¿es $5$ o mayor?",
+      explanation:
+        "La primera cifra suprimida es $6 \\geq 5$, así que sumamos $1$ a las décimas: $4{,}76 \\approx 4{,}8$. En la recta, $4{,}76$ está más cerca de $4{,}8$ que de $4{,}7$.",
     },
     {
       id: "check-orden",

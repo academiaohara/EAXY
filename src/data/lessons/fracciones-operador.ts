@@ -35,6 +35,32 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
         "Si conoces $\\frac{1}{4}$ de $8$ ($2$), entonces $\\frac{3}{4}$ de $8$ es $3 \\cdot 2 = 6$.",
         "Lo mismo con $\\frac{1}{3}$ de $12 = 4$ → $\\frac{2}{3}$ de $12 = 8$.",
       ],
+      visuals: [
+        {
+          kind: "fraction-figure",
+          title: "$\\frac{3}{4}$ de $8$ fichas",
+          shape: "set",
+          parts: 8,
+          shaded: 6,
+          columns: 4,
+          caption: "Cada cuarto son $2$ fichas; tres cuartos, $6$.",
+        },
+      ],
+    },
+    {
+      id: "marca-canicas",
+      type: "fraction_pick",
+      title: "Marca la fracción de un conjunto",
+      question: "Tienes $12$ canicas. Marca $\\frac{2}{3}$ de ellas.",
+      shape: "set",
+      numerator: 2,
+      denominator: 3,
+      parts: 12,
+      columns: 6,
+      itemLabel: "canica",
+      hint: "Primero reparte las $12$ canicas en $3$ grupos iguales: ¿cuántas hay en cada tercio?",
+      explanation:
+        "$\\frac{1}{3}$ de $12 = 12 : 3 = 4$ canicas, así que $\\frac{2}{3}$ de $12 = 4 \\cdot 2 = 8$ canicas.",
     },
     {
       id: "bombones",
@@ -82,16 +108,12 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     },
     {
       id: "check-precio",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Fracción de un precio",
       question:
-        "Boquerones a $5{,}4\\,€/\\mathrm{kg}$. ¿Cuánto cuestan $\\frac{3}{4}\\,\\mathrm{kg}$?",
-      options: [
-        { id: "a", text: "$3{,}6\\,€$" },
-        { id: "b", text: "$4{,}05\\,€$" },
-        { id: "c", text: "$4{,}5\\,€$" },
-      ],
-      correctOptionId: "b",
+        "Boquerones a $5{,}4\\,€/\\mathrm{kg}$. ¿Cuánto cuestan $\\frac{3}{4}\\,\\mathrm{kg}$? (escribe solo el número, en euros)",
+      correctAnswers: ["4,05", "4.05", "4,05 €", "4.05 €"],
+      hint: "Divide el precio de un kilo entre $4$ y multiplica por $3$.",
       explanation:
         "$\\frac{3}{4}$ de $5{,}4 = (5{,}4 : 4) \\cdot 3 = 1{,}35 \\cdot 3 = 4{,}05\\,€$.",
     },

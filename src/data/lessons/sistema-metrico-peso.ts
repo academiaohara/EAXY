@@ -59,15 +59,11 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     },
     {
       id: "check-kg",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Kilogramos y gramos",
-      question: "¿Cuántos gramos hay en $4{,}08\\,\\mathrm{kg}$?",
-      options: [
-        { id: "a", text: "$408\\,\\mathrm{g}$" },
-        { id: "b", text: "$4080\\,\\mathrm{g}$" },
-        { id: "c", text: "$40{,}8\\,\\mathrm{g}$" },
-      ],
-      correctOptionId: "b",
+      question: "¿Cuántos gramos hay en $4{,}08\\,\\mathrm{kg}$? (solo el número)",
+      correctAnswers: ["4080", "4.080", "4080 g"],
+      hint: "Del kilogramo al gramo bajas tres escalones: mueve la coma tres lugares a la derecha.",
       explanation: "Multiplica por $1000$: $4{,}08 \\cdot 1000 = 4080\\,\\mathrm{g}$.",
     },
     {

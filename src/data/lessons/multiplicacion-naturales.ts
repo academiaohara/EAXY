@@ -90,16 +90,24 @@ export const multiplicacionNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-distributiva",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál expresión es igual a $15 \\cdot (6 - 2)$?",
-      options: [
-        { id: "a", text: "$15 \\cdot 6 - 2$" },
-        { id: "b", text: "$15 \\cdot 6 - 15 \\cdot 2$" },
-        { id: "c", text: "$(15 \\cdot 6) - (15 \\cdot 2) - 2$" },
+      question: "¿Qué expresiones valen lo mismo que $15 \\cdot (6 - 2)$? Coloca cada una en su grupo.",
+      groups: [
+        { id: "igual", label: "Igual a $15 \\cdot (6 - 2)$", tone: "emerald" },
+        { id: "distinta", label: "No es igual", tone: "rose" },
       ],
-      correctOptionId: "b",
-      explanation: "La distributiva también vale con restas: $a(b - c) = ab - ac$.",
+      items: [
+        { id: "a", text: "$15 \\cdot 6 - 15 \\cdot 2$", group: "igual" },
+        { id: "b", text: "$15 \\cdot 6 - 2$", group: "distinta" },
+        { id: "c", text: "$15 \\cdot 4$", group: "igual" },
+        { id: "d", text: "$15 \\cdot 6 - 15 \\cdot 2 - 2$", group: "distinta" },
+        { id: "e", text: "$6 \\cdot 15 - 2 \\cdot 15$", group: "igual" },
+        { id: "f", text: "$15 + 6 - 2$", group: "distinta" },
+      ],
+      hint: "El $15$ multiplica a **cada** término del paréntesis. También puedes calcular: ¿cuánto vale $15 \\cdot (6 - 2)$?",
+      explanation:
+        "La distributiva también vale con restas: $a(b - c) = ab - ac$. Así $15 \\cdot (6 - 2) = 15 \\cdot 6 - 15 \\cdot 2 = 15 \\cdot 4 = 60$. Las otras dan $88$, $58$ y $19$.",
     },
   ],
 };

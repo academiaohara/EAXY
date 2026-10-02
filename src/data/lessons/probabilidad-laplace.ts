@@ -69,17 +69,19 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "fraction_pick",
       title: "Comprueba lo aprendido",
       question:
-        "Lanzamos un dado equilibrado. ¿Cuál es la probabilidad de obtener un número mayor que $4$?",
-      options: [
-        { id: "a", text: "$\\dfrac{1}{6}$" },
-        { id: "b", text: "$\\dfrac{2}{6} = \\dfrac{1}{3}$" },
-        { id: "c", text: "$\\dfrac{4}{6}$" },
-      ],
-      correctOptionId: "b",
-      explanation: "Favorables: $\\{5, 6\\}$ → $2$ casos de $6$: $P = 2/6 = 1/3$.",
+        "Lanzamos un dado equilibrado. Cada ficha es una de sus $6$ caras (casos posibles). Marca los casos favorables a «obtener un número mayor que $4$»: lo marcado será la probabilidad.",
+      shape: "set",
+      numerator: 2,
+      denominator: 6,
+      columns: 6,
+      itemLabel: "cara",
+      labels: ["1", "2", "3", "4", "5", "6"],
+      correctPieces: [4, 5],
+      hint: "Escribe $E = \\{1, 2, 3, 4, 5, 6\\}$ y señala qué resultados son **mayores** que $4$ (el $4$ no cuenta).",
+      explanation: "Favorables: $\\{5, 6\\}$ → $2$ casos de $6$: $P = \\dfrac{2}{6} = \\dfrac{1}{3}$.",
     },
   ],
 };

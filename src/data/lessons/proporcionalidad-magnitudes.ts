@@ -62,35 +62,27 @@ export const proporcionalidadMagnitudesLesson: InteractiveLesson = {
     },
     {
       id: "check-directa",
-      type: "multiple_choice",
-      title: "Identificar proporcionalidad directa (act. 3)",
-      question:
-        "¿Cuál de estos pares de magnitudes es directamente proporcional?",
-      options: [
-        { id: "a", text: "Peso de una sandía y su precio (mismo precio por kilo)" },
-        { id: "b", text: "Edad de una persona y su altura" },
-        { id: "c", text: "Talla de un pantalón y su precio" },
+      type: "classify",
+      title: "Directa, inversa o ninguna (act. 3 y 4)",
+      question: "Clasifica cada par de magnitudes según el tipo de proporcionalidad.",
+      groups: [
+        { id: "directa", label: "Directamente proporcionales", tone: "emerald" },
+        { id: "inversa", label: "Inversamente proporcionales", tone: "violet" },
+        { id: "ninguna", label: "No proporcionales", tone: "rose" },
       ],
-      correctOptionId: "a",
-      explanation:
-        "A doble peso (misma tarifa), doble precio. Edad/altura y talla/precio no siguen una razón constante.",
-    },
-    {
-      id: "check-inversa",
-      type: "multiple_choice",
-      title: "Identificar proporcionalidad inversa (act. 4)",
-      question: "¿Cuál es un ejemplo de magnitudes inversamente proporcionales?",
-      options: [
-        {
-          id: "a",
-          text: "Número de operarios que descargan un camión y tiempo empleado",
-        },
-        { id: "b", text: "Precio de las manzanas y kilos que compro con 10 €" },
-        { id: "c", text: "Número de páginas de un libro y su precio" },
+      items: [
+        { id: "sandia", text: "Peso de una sandía y su precio (mismo precio por kilo)", group: "directa" },
+        { id: "gasolina", text: "Litros de gasolina y lo que pagas por ellos", group: "directa" },
+        { id: "operarios", text: "Operarios que descargan un camión y tiempo empleado", group: "inversa" },
+        { id: "manzanas", text: "Precio del kilo de manzanas y kilos que compro con $10\\,€$", group: "inversa" },
+        { id: "velocidad", text: "Velocidad de un coche y tiempo en recorrer el mismo trayecto", group: "inversa" },
+        { id: "edad", text: "Edad de una persona y su altura", group: "ninguna" },
+        { id: "talla", text: "Talla de un pantalón y su precio", group: "ninguna" },
+        { id: "paginas", text: "Número de páginas de un libro y su precio", group: "ninguna" },
       ],
-      correctOptionId: "a",
+      hint: "Pregúntate: si una magnitud se duplica, ¿la otra se duplica, se reduce a la mitad o no sigue ninguna regla fija?",
       explanation:
-        "A más operarios, menos tiempo. Con más precio/kg compras menos kilos (también inversa); la opción (a) es el caso clásico del temario.",
+        "Directa: a doble peso o doble de litros, doble precio. Inversa: a doble de operarios, de precio por kilo o de velocidad, la mitad de tiempo o de kilos. Edad/altura, talla/precio y páginas/precio no siguen una razón ni un producto constante.",
     },
     {
       id: "operarios",

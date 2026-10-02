@@ -64,15 +64,11 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     },
     {
       id: "check-dm",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Centímetros en un metro",
-      question: "¿Cuántos centímetros hay en $1{,}28\\,\\mathrm{m}$?",
-      options: [
-        { id: "a", text: "$12{,}8\\,\\mathrm{cm}$" },
-        { id: "b", text: "$128\\,\\mathrm{cm}$" },
-        { id: "c", text: "$1280\\,\\mathrm{cm}$" },
-      ],
-      correctOptionId: "b",
+      question: "¿Cuántos centímetros hay en $1{,}28\\,\\mathrm{m}$? (solo el número)",
+      correctAnswers: ["128", "128 cm"],
+      hint: "Del metro al centímetro bajas dos escalones: multiplica por $100$.",
       explanation: "$1\\,\\mathrm{m} = 100\\,\\mathrm{cm}$, así $1{,}28\\,\\mathrm{m} = 128\\,\\mathrm{cm}$.",
     },
     {

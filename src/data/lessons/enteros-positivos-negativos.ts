@@ -61,16 +61,36 @@ export const enterosPositivosNegativosLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Comprueba lo aprendido",
-      question: "Francisco debe 85 €. ¿Qué número entero lo representa mejor?",
-      options: [
-        { id: "a", text: "$+85$" },
-        { id: "b", text: "$-85$" },
-        { id: "c", text: "$0$" },
+      question:
+        "Francisco no tiene dinero y además debe $8$ €. Marca en la recta el número entero que representa su saldo.",
+      min: -10,
+      max: 10,
+      target: -8,
+      hint: "Una deuda es lo contrario de tener dinero: ¿a qué lado del $0$ va?",
+      explanation: "Una deuda es una cantidad negativa: el saldo de Francisco es $-8$, a $8$ unidades a la izquierda del $0$.",
+    },
+    {
+      id: "check-signo",
+      type: "classify",
+      title: "¿Positivo o negativo?",
+      question: "Clasifica cada situación según el signo del número que la representa.",
+      groups: [
+        { id: "pos", label: "Positivo ($+$)", tone: "emerald" },
+        { id: "neg", label: "Negativo ($-$)", tone: "rose" },
       ],
-      correctOptionId: "b",
-      explanation: "Una deuda es una cantidad negativa: $-85$.",
+      items: [
+        { id: "a", text: "Debo $85$ €", group: "neg" },
+        { id: "b", text: "Gano $20$ € en la feria", group: "pos" },
+        { id: "c", text: "Aparco en el 2.º sótano", group: "neg" },
+        { id: "d", text: "Subo $3$ plantas", group: "pos" },
+        { id: "e", text: "Hace $5$ °C bajo cero", group: "neg" },
+        { id: "f", text: "La temperatura sube $2$ °C", group: "pos" },
+      ],
+      hint: "Deudas, bajadas y lo que está por debajo del cero se escriben con $-$.",
+      explanation:
+        "Deber, estar bajo cero o bajo tierra son negativos ($-85$, $-2$, $-5$); ganar y subir son positivos ($+20$, $+3$, $+2$).",
     },
   ],
 };

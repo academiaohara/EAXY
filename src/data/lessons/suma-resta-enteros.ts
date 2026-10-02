@@ -47,16 +47,14 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Comprueba lo aprendido",
-      question: "¿Cuánto vale $+4 - 9$?",
-      options: [
-        { id: "a", text: "$+13$" },
-        { id: "b", text: "$-5$" },
-        { id: "c", text: "$+5$" },
-      ],
-      correctOptionId: "b",
-      explanation: "Signos distintos: $9 - 4 = 5$ y gana el negativo → $-5$.",
+      question: "Sales de $+4$ y retrocedes $9$ unidades. Marca en la recta el resultado de $+4 - 9$.",
+      min: -10,
+      max: 10,
+      target: -5,
+      hint: "Restar $9$ es moverse $9$ pasos hacia la izquierda. Pasa por el $0$ y sigue contando.",
+      explanation: "Signos distintos: $9 - 4 = 5$ y gana el negativo → $+4 - 9 = -5$.",
     },
   ],
 };

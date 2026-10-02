@@ -58,16 +58,13 @@ export const algebraResolucionPrimerGradoLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Comprueba lo aprendido",
-      question: "Tras reducir, ¿cuál es el siguiente paso sensato en $5x + 4 = 10 + 3x$?",
-      options: [
-        { id: "a", text: "Dividir todo entre $5$." },
-        { id: "b", text: "Restar $3x$ en ambos miembros." },
-        { id: "c", text: "Sustituir $x = 0$." },
-      ],
-      correctOptionId: "b",
-      explanation: "Conviene agrupar las $x$ en un solo miembro: $5x - 3x + 4 = 10$.",
+      question: "Resuelve $6x + 5 = 21 + 2x$. ¿Cuánto vale $x$? (escribe solo el número)",
+      correctAnswers: ["4", "x=4"],
+      hint: "Primero agrupa las $x$ en un solo miembro transponiendo $2x$; después transpón el $5$ y divide.",
+      explanation:
+        "Transponemos $2x$: $6x - 2x + 5 = 21 \\Rightarrow 4x + 5 = 21$. Transponemos $5$: $4x = 16$. Dividimos: $x = 4$. Comprobación: $6 \\cdot 4 + 5 = 29 = 21 + 2 \\cdot 4$.",
     },
   ],
 };

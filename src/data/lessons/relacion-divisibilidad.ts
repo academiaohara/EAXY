@@ -69,16 +69,24 @@ export const relacionDivisibilidadLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "Si $54 = 9 \\cdot 6$, ¿qué afirmación es correcta?",
-      options: [
-        { id: "a", text: "$9$ es múltiplo de $54$" },
-        { id: "b", text: "$54$ es múltiplo de $6$" },
-        { id: "c", text: "$6$ no es divisor de $54$" },
+      question: "Sabemos que $54 = 9 \\cdot 6$ y $40 = 8 \\cdot 5$. Clasifica cada afirmación.",
+      groups: [
+        { id: "correcta", label: "Correcta", tone: "emerald" },
+        { id: "incorrecta", label: "Incorrecta", tone: "rose" },
       ],
-      correctOptionId: "b",
-      explanation: "El producto mayor es múltiplo de los factores; $6$ y $9$ son divisores de $54$.",
+      items: [
+        { id: "a", text: "$54$ es múltiplo de $6$", group: "correcta" },
+        { id: "b", text: "$9$ es divisor de $54$", group: "correcta" },
+        { id: "c", text: "$9$ es múltiplo de $54$", group: "incorrecta" },
+        { id: "d", text: "$6$ no es divisor de $54$", group: "incorrecta" },
+        { id: "e", text: "$40$ es múltiplo de $5$", group: "correcta" },
+        { id: "f", text: "$40$ es divisor de $8$", group: "incorrecta" },
+      ],
+      hint: "El número grande (el producto) es el **múltiplo**; los factores pequeños son sus **divisores**.",
+      explanation:
+        "El producto es múltiplo de cada factor: $54$ de $6$ y de $9$; $40$ de $8$ y de $5$. Al revés, los factores son divisores del producto, nunca múltiplos.",
     },
   ],
 };

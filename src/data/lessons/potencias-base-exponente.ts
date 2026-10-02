@@ -89,16 +89,12 @@ export const potenciasBaseExponenteLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Comprueba lo aprendido",
-      question: "¿Cuánto vale $10^4$?",
-      options: [
-        { id: "a", text: "$100$" },
-        { id: "b", text: "$1\\,000$" },
-        { id: "c", text: "$10\\,000$" },
-      ],
-      correctOptionId: "c",
-      explanation: "$10^4 = 10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$.",
+      question: "¿Cuánto vale $10^4$? (solo el número)",
+      correctAnswers: ["10000", "10 000", "10.000"],
+      hint: "Escribe el producto de cuatro dieces: $10 \\cdot 10 \\cdot 10 \\cdot 10$.",
+      explanation: "$10^4 = 10 \\cdot 10 \\cdot 10 \\cdot 10 = 10\\,000$: la base se multiplica $4$ veces, no $10 \\cdot 4$.",
     },
     {
       id: "check-cero",
