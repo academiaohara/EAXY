@@ -104,7 +104,7 @@ export const probabilidadTopicExercises: CurriculumTopicExercise[] = [
     statement:
       "Dado con tres caras «$1$», dos «$X$» y una «$2$». a) Espacio muestral. b) $P(1)$, $P(X)$, $P(2)$.",
     solutionText:
-      "Seis caras en total: $E = \\{1,1,1,X,X,2\\}$ (o contando equiprobables: $6$ resultados).\n$P(1) = 3/6 = 1/2$, $P(X) = 2/6 = 1/3$, $P(2) = 1/6$.",
+      "a) Seis caras en total: $E = \\{1,1,1,X,X,2\\}$ (o contando equiprobables: $6$ resultados).\nb) $P(1) = 3/6 = 1/2$, $P(X) = 2/6 = 1/3$, $P(2) = 1/6$.",
     solutionVideoUrl: DEFAULT_VIDEO,
   },
   {
@@ -113,7 +113,7 @@ export const probabilidadTopicExercises: CurriculumTopicExercise[] = [
     statement:
       "Urna: $1$ roja, $1$ azul, $1$ verde, $1$ blanca. Sacamos **dos bolas a la vez**. a) $|E|$. b) $P(\\text{una blanca y una roja})$. c) $P(\\text{dos rojas})$. d) $P(\\text{ninguna blanca})$.",
     solutionText:
-      "Parejas: $E = \\{RB, RV, RBl, AV, ABl, VBl\\}$ → $|E| = 6$.\nb) Solo $\\{RBl\\}$ → $P = 1/6$.\nc) Imposible dos rojas → $P = 0$.\nd) Favorables $\\{RB, RV, AV\\}$ → $P = 3/6 = 1/2$.",
+      "a) Parejas: $E = \\{RB, RV, RBl, AV, ABl, VBl\\}$ → $|E| = 6$.\nb) Solo $\\{RBl\\}$ → $P = 1/6$.\nc) Imposible dos rojas → $P = 0$.\nd) Favorables $\\{RB, RV, AV\\}$ → $P = 3/6 = 1/2$.",
     solutionVideoUrl: DEFAULT_VIDEO,
   },
   {
@@ -140,7 +140,7 @@ export const probabilidadTopicExercises: CurriculumTopicExercise[] = [
     statement:
       "Dos dados y sumamos. a) Lista $E$. b) $P(\\text{suma } 3)$. c) $P(\\text{suma } 7)$. d) $P(\\text{suma } > 10)$. e) $P(\\text{suma } 4 \\text{ o } 5)$.",
     solutionText:
-      "Hay $36$ parejas equiprobables $(1,1)$ … $(6,6)$.\nb) Suma $3$: $(1,2),(2,1)$ → $P = 2/36 = 1/18$.\nc) Suma $7$: $6$ parejas → $P = 6/36 = 1/6$.\nd) Sumas $11$ o $12$: $2+1=3$ casos → $P = 3/36 = 1/12$.\ne) Suma $4$: $3$ casos; suma $5$: $4$ casos → $7/36$.",
+      "a) Hay $36$ parejas equiprobables $(1,1)$ … $(6,6)$.\nb) Suma $3$: $(1,2),(2,1)$ → $P = 2/36 = 1/18$.\nc) Suma $7$: $6$ parejas → $P = 6/36 = 1/6$.\nd) Sumas $11$ o $12$: $2+1=3$ casos → $P = 3/36 = 1/12$.\ne) Suma $4$: $3$ casos; suma $5$: $4$ casos → $7/36$.",
     solutionVideoUrl: DEFAULT_VIDEO,
   },
 ];

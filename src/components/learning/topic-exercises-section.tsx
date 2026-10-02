@@ -20,6 +20,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  layoutSolution,
+  type SolutionLayout,
+} from "@/lib/curriculum/solution-layout";
 import type { TopicExerciseSummary } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
 
@@ -34,13 +38,6 @@ type TopicExercisesSectionProps = {
   /** Ancho completo bajo las lecciones (grid de tarjetas). Por defecto, compacto. */
   layout?: "compact" | "full";
 };
-
-function splitSolutionSteps(solutionText: string): string[] {
-  return solutionText
-    .split("\n")
-    .map((step) => step.trim())
-    .filter(Boolean);
-}
 
 export function TopicExercisesSection({
   moduleTitle,
@@ -242,7 +239,7 @@ export function TopicExercisesSection({
 
                   <div className="relative flex flex-[1_0_auto] overflow-hidden rounded-xl border border-[#e6dcc4] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
                     <HandwrittenSolution
-                      steps={splitSolutionSteps(selectedExercise.solutionText)}
+                      solutionText={selectedExercise.solutionText}
                       hidden={!solutionRevealed}
                     />
 
@@ -276,11 +273,57 @@ export function TopicExercisesSection({
 }
 
 type HandwrittenSolutionProps = {
-  steps: string[];
+  solutionText: string;
   hidden: boolean;
 };
 
-function HandwrittenSolution({ steps, hidden }: HandwrittenSolutionProps) {
+function SolutionLines({ lines }: { lines: string[] }) {
+  return lines.map((line, index) => (
+    <p key={`${index}-${line}`} className="[&_.katex]:text-[0.64em]">
+      <MathRenderer text={line} />
+    </p>
+  ));
+}
+
+function SolutionParts({
+  layout,
+  nested = false,
+}: {
+  layout: SolutionLayout;
+  nested?: boolean;
+}) {
+  return (
+    <>
+      {layout.intro.length > 0 ? (
+        <div data-testid="topic-exercise-solution-intro">
+          <SolutionLines lines={layout.intro} />
+        </div>
+      ) : null}
+      {layout.parts.map((part) => (
+        <section
+          key={part.label}
+          className={cn("relative", nested && "pl-10 sm:pl-12")}
+          data-testid={`topic-exercise-solution-part-${part.label}`}
+        >
+          <span
+            className={cn(
+              "absolute top-0 font-semibold text-[#c0392b]/85",
+              nested ? "left-0" : "-left-10 sm:-left-14",
+            )}
+          >
+            {part.label})
+          </span>
+          <div className="space-y-2">
+            <SolutionParts layout={part} nested />
+          </div>
+        </section>
+      ))}
+    </>
+  );
+}
+
+function HandwrittenSolution({ solutionText, hidden }: HandwrittenSolutionProps) {
+  const layout = layoutSolution(solutionText);
   return (
     <div
       aria-hidden={hidden}
@@ -296,24 +339,14 @@ function HandwrittenSolution({ steps, hidden }: HandwrittenSolutionProps) {
         className="absolute inset-y-0 left-9 w-px bg-[#e8a3a3] sm:left-14"
         aria-hidden
       />
-      <ol
+      <div
         className={cn(
           handwriting.className,
-          "space-y-3 text-[1.55rem] leading-[2.5rem] text-[#1f3a8a]",
+          "space-y-5 text-[1.55rem] leading-[2.5rem] text-[#1f3a8a]",
         )}
       >
-        {steps.map((step, index) => (
-          <li
-            key={`${index}-${step}`}
-            className="relative [&_.katex]:text-[0.64em]"
-          >
-            <span className="absolute -left-10 top-0 text-[1.3rem] text-[#c0392b]/80 sm:-left-14">
-              {index + 1})
-            </span>
-            <MathRenderer text={step} />
-          </li>
-        ))}
-      </ol>
+        <SolutionParts layout={layout} />
+      </div>
     </div>
   );
 }
