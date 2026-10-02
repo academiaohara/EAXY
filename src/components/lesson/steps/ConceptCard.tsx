@@ -9,11 +9,12 @@ import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import type { LessonStepBase } from "@/lib/lesson/types";
 
-type ConceptCardProps = Pick<LessonStepBase, "title" | "content" | "math" | "warning" | "visuals"> & {
+type ConceptCardProps = Pick<
+  LessonStepBase,
+  "title" | "content" | "math" | "warning" | "visuals" | "layout"
+> & {
   compact?: boolean;
   showTitle?: boolean;
-  /** En pantallas anchas coloca la teoría a un lado y fórmulas y ayudas visuales al otro. */
-  split?: boolean;
 };
 
 function conceptIdForTerm(term: string): string | undefined {
@@ -29,7 +30,7 @@ function hasExplainableTerm(paragraphs: string[]): boolean {
 /**
  * Contenedor de la explicación: las ideas entran una tras otra, los términos
  * resaltados se pueden pulsar para que el tutor los explique y las fórmulas y
- * ayudas visuales van en su propia columna.
+ * ayudas visuales van debajo, encima o al lado según `layout`.
  */
 export function ConceptCard({
   title,
@@ -39,14 +40,16 @@ export function ConceptCard({
   visuals,
   compact = false,
   showTitle = true,
-  split = false,
+  layout = "stack",
 }: ConceptCardProps) {
   const tutor = useLessonTutor();
   const paragraphs = content ?? [];
   const hasMath = Boolean(math && math.length > 0);
   const hasVisuals = Boolean(visuals && visuals.length > 0);
   const hasAside = hasMath || hasVisuals;
-  const isSplit = split && hasAside && paragraphs.length > 0;
+  const isSplit = layout === "split" && hasAside && paragraphs.length > 0;
+  const visualFirst = layout === "visual-first" && hasAside;
+  const visualCount = visuals?.length ?? 0;
   const numbered = paragraphs.length > 1;
   const lookup = tutor ? conceptIdForTerm : undefined;
   const showTermHint = Boolean(tutor) && hasExplainableTerm([...paragraphs, warning ?? ""]);
@@ -79,11 +82,13 @@ export function ConceptCard({
     >
       <div
         className={cn(
-          isSplit ? "grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start lg:gap-10" : "space-y-6",
+          isSplit
+            ? "grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start lg:gap-10"
+            : "flex flex-col gap-6",
         )}
       >
         {paragraphs.length > 0 || warning || showTitle ? (
-          <div className="min-w-0 space-y-4">
+          <div className={cn("min-w-0 space-y-4", visualFirst && "order-2")}>
             {showTitle ? (
               <h2 className="font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                 {title}
@@ -153,18 +158,27 @@ export function ConceptCard({
         ) : null}
 
         {hasAside ? (
-          <div className="min-w-0 space-y-4">
+          <div
+            className={cn(
+              "min-w-0",
+              isSplit || visualCount < 2 ? "space-y-4" : "grid gap-4 md:grid-cols-2",
+              visualFirst && "order-1",
+            )}
+          >
             {visuals?.map((visual, index) => (
               <div
                 key={`${visual.kind}-${index}`}
-                className="lesson-idea-enter rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm"
+                className={cn(
+                  "lesson-idea-enter rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm",
+                  visualFirst && "sm:p-6",
+                )}
                 style={{ animationDelay: `${200 + index * 180}ms` }}
               >
                 <LessonVisualView visual={visual} />
               </div>
             ))}
             {hasMath ? (
-              <div className="lesson-idea-enter" style={{ animationDelay: "240ms" }}>
+              <div className="lesson-idea-enter md:col-span-full" style={{ animationDelay: "240ms" }}>
                 <MathBlockList blocks={math ?? []} className="bg-white/80" />
               </div>
             ) : null}

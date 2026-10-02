@@ -85,16 +85,25 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     },
     {
       id: "check-independiente",
-      type: "multiple_choice",
+      type: "classify",
       title: "Variable independiente",
-      question: "En un gráfico que relaciona **tiempo** (eje X) y **distancia recorrida** (eje Y), ¿cuál es la variable independiente?",
-      options: [
-        { id: "a", text: "La distancia" },
-        { id: "b", text: "El tiempo" },
-        { id: "c", text: "Ninguna: son iguales" },
+      question:
+        "En cada gráfico, la primera magnitud va en el eje X y la segunda en el eje Y. Clasifica cada magnitud como variable independiente o dependiente.",
+      groups: [
+        { id: "independiente", label: "Independiente (eje X)", tone: "cobalt" },
+        { id: "dependiente", label: "Dependiente (eje Y)", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "Suele tomarse el tiempo como $x$ y la distancia como $y$ dependiente del tiempo transcurrido.",
+      items: [
+        { id: "t", text: "Tiempo, en un gráfico tiempo–distancia recorrida", group: "independiente" },
+        { id: "d", text: "Distancia recorrida, en un gráfico tiempo–distancia recorrida", group: "dependiente" },
+        { id: "e", text: "Edad, en un gráfico edad–estatura", group: "independiente" },
+        { id: "h", text: "Estatura, en un gráfico edad–estatura", group: "dependiente" },
+        { id: "k", text: "Kilos de fruta, en un gráfico kilos–precio", group: "independiente" },
+        { id: "p", text: "Precio a pagar, en un gráfico kilos–precio", group: "dependiente" },
+      ],
+      hint: "La variable dependiente es la que cambia **en función de** la otra.",
+      explanation:
+        "Suele tomarse el tiempo como $x$ y la distancia como $y$ dependiente del tiempo transcurrido. Igual ocurre con la estatura (depende de la edad) y el precio (depende de los kilos).",
     },
     {
       id: "check-parada",

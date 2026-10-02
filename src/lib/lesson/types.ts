@@ -2,12 +2,23 @@ export type StepType =
   | "concept"
   | "animated_solution"
   | "interactive_tool"
-  | "multiple_choice"
-  | "fill_in_blank";
+  | "fill_in_blank"
+  | "fraction_pick"
+  | "classify"
+  | "number_line_pick";
+
+/**
+ * Cómo se reparte el paso en pantalla:
+ * - `stack`: la teoría arriba y las ayudas visuales o la actividad debajo (por defecto).
+ * - `visual-first`: la ayuda visual manda y la teoría la acompaña debajo.
+ * - `split`: teoría a un lado y visuales al otro en pantallas anchas.
+ */
+export type StepLayout = "stack" | "visual-first" | "split";
 
 export type LessonStepBase = {
   id: string;
   title: string;
+  layout?: StepLayout;
   /** Párrafos de teoría (pueden incluir LaTeX inline con $...$). */
   content?: string[];
   /** Bloques de matemáticas en modo display (sin delimitadores). */
@@ -110,7 +121,26 @@ export type ParenthesisRulesVisual = {
   activeCase?: "plus-add" | "plus-sub" | "minus-add" | "minus-sub";
 };
 
+export type FractionShape = "bar" | "circle" | "grid" | "set";
+
+/** Figura (barra, tarta, cuadrícula o conjunto) con algunas partes coloreadas. */
+export type FractionFigureVisual = {
+  kind: "fraction-figure";
+  title?: string;
+  shape: FractionShape;
+  /** Partes iguales de cada unidad. */
+  parts: number;
+  /** Partes coloreadas en total (pueden ocupar varias unidades). */
+  shaded: number;
+  /** Unidades que se dibujan; por defecto las necesarias para `shaded`. */
+  wholes?: number;
+  columns?: number;
+  caption?: string;
+  tone?: VisualTone;
+};
+
 export type LessonVisual =
+  | FractionFigureVisual
   | EquationAnatomyVisual
   | SolutionCheckVisual
   | GraphGalleryVisual
@@ -182,29 +212,70 @@ export type InteractiveToolStep = LessonStepBase & {
   graph: SystemGraphConfig;
 };
 
-export type MultipleChoiceStep = LessonStepBase & {
-  type: "multiple_choice";
+type PracticeFields = {
   question: string;
-  options: { id: string; text: string }[];
-  correctOptionId: string;
   hint?: string;
   explanation?: string;
 };
 
-export type FillInBlankStep = LessonStepBase & {
-  type: "fill_in_blank";
-  question: string;
-  correctAnswers: string[];
-  hint?: string;
-  explanation?: string;
-};
+export type FillInBlankStep = LessonStepBase &
+  PracticeFields & {
+    type: "fill_in_blank";
+    correctAnswers: string[];
+  };
 
-export type LessonStep =
-  | ConceptStep
-  | AnimatedSolutionStep
-  | InteractiveToolStep
-  | MultipleChoiceStep
-  | FillInBlankStep;
+/**
+ * El alumno toca las partes de una figura (o los elementos de un conjunto)
+ * hasta formar la fracción pedida. Vale cualquier marcado equivalente a
+ * `numerator`/`denominator`.
+ */
+export type FractionPickStep = LessonStepBase &
+  PracticeFields & {
+    type: "fraction_pick";
+    shape: FractionShape;
+    numerator: number;
+    denominator: number;
+    /** Partes en que aparece dividida cada unidad; por defecto, el denominador. */
+    parts?: number;
+    /** Unidades disponibles (más de una para fracciones mayores que 1). */
+    wholes?: number;
+    /** Si es true, el alumno decide también en cuántas partes divide la unidad. */
+    adjustableParts?: boolean;
+    /** Si es true, sólo vale dividir la unidad en exactamente `denominator` partes. */
+    exactParts?: boolean;
+    columns?: number;
+    /** Nombre de cada elemento en conjuntos (p. ej. «canica»). */
+    itemLabel?: string;
+    /** Texto dentro de cada parte (p. ej. las caras de un dado). */
+    labels?: string[];
+    /** Índices de las partes que hay que marcar, cuando no vale cualquiera. */
+    correctPieces?: number[];
+  };
+
+/** El alumno reparte tarjetas entre dos o más grupos. */
+export type ClassifyStep = LessonStepBase &
+  PracticeFields & {
+    type: "classify";
+    groups: { id: string; label: string; tone?: VisualTone }[];
+    items: { id: string; text: string; group: string }[];
+  };
+
+/** El alumno marca un valor en la recta numérica. */
+export type NumberLinePickStep = LessonStepBase &
+  PracticeFields & {
+    type: "number_line_pick";
+    min: number;
+    max: number;
+    /** Divisiones entre dos enteros consecutivos (por defecto 1). */
+    subdivisions?: number;
+    target: number;
+    /** Cómo se lee el valor marcado: decimal (por defecto) o fracción. */
+    readout?: "decimal" | "fraction";
+  };
+
+export type PracticeStep = FillInBlankStep | FractionPickStep | ClassifyStep | NumberLinePickStep;
+
+export type LessonStep = ConceptStep | AnimatedSolutionStep | InteractiveToolStep | PracticeStep;
 
 export type InteractiveLesson = {
   slug: string;
@@ -215,8 +286,15 @@ export type InteractiveLesson = {
 
 export type FeedbackStatus = "correct" | "incorrect";
 
-export function isQuizStep(step: LessonStep): boolean {
-  return step.type === "multiple_choice" || step.type === "fill_in_blank";
+const PRACTICE_TYPES: ReadonlySet<StepType> = new Set([
+  "fill_in_blank",
+  "fraction_pick",
+  "classify",
+  "number_line_pick",
+]);
+
+export function isQuizStep(step: LessonStep): step is PracticeStep {
+  return PRACTICE_TYPES.has(step.type);
 }
 
 export function isPassiveStep(step: LessonStep): boolean {

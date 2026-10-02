@@ -62,16 +62,14 @@ export const areasTrianguloLesson: InteractiveLesson = {
     },
     {
       id: "check-catetos",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Área con catetos",
-      question: "Triángulo rectángulo con catetos $18\\,\\mathrm{cm}$ y $24\\,\\mathrm{cm}$. ¿Cuál es su área?",
-      options: [
-        { id: "a", text: "$216\\,\\mathrm{cm}^2$" },
-        { id: "b", text: "$432\\,\\mathrm{cm}^2$" },
-        { id: "c", text: "$108\\,\\mathrm{cm}^2$" },
-      ],
-      correctOptionId: "a",
-      explanation: "$A = \\dfrac{18 \\cdot 24}{2} = 216\\,\\mathrm{cm}^2$.",
+      question:
+        "Triángulo rectángulo con catetos $18\\,\\mathrm{cm}$ y $24\\,\\mathrm{cm}$. ¿Cuál es su área en $\\mathrm{cm}^2$? (escribe solo el número)",
+      correctAnswers: ["216", "216 cm2", "216 cm²"],
+      hint: "Un cateto hace de base y el otro de altura. El triángulo es la mitad del rectángulo que forman.",
+      explanation:
+        "$A = \\dfrac{18 \\cdot 24}{2} = \\dfrac{432}{2} = 216\\,\\mathrm{cm}^2$. Si no divides entre $2$ obtienes el área del rectángulo, no la del triángulo.",
     },
   ],
 };

@@ -73,16 +73,25 @@ export const areasCirculoLesson: InteractiveLesson = {
     },
     {
       id: "check-longitud",
-      type: "multiple_choice",
-      title: "Longitud de la circunferencia",
-      question: "Diámetro $10\\,\\mathrm{m}$. ¿Cuál es la longitud aproximada con $\\pi \\approx 3{,}14$?",
-      options: [
-        { id: "a", text: "$31{,}4\\,\\mathrm{m}$" },
-        { id: "b", text: "$314\\,\\mathrm{m}$" },
-        { id: "c", text: "$78{,}5\\,\\mathrm{m}$" },
+      type: "classify",
+      title: "Longitud o área",
+      question:
+        "Un círculo tiene diámetro $10\\,\\mathrm{m}$ (radio $5\\,\\mathrm{m}$). ¿Cada tarjeta corresponde a su longitud o a su área? Usa $\\pi \\approx 3{,}14$.",
+      groups: [
+        { id: "longitud", label: "Longitud de la circunferencia", tone: "cobalt" },
+        { id: "area", label: "Área del círculo", tone: "emerald" },
       ],
-      correctOptionId: "a",
-      explanation: "$l = \\pi d = 3{,}14 \\cdot 10 = 31{,}4\\,\\mathrm{m}$.",
+      items: [
+        { id: "a", text: "$\\pi d$", group: "longitud" },
+        { id: "b", text: "$\\pi r^2$", group: "area" },
+        { id: "c", text: "$3{,}14 \\cdot 10 = 31{,}4\\,\\mathrm{m}$", group: "longitud" },
+        { id: "d", text: "$3{,}14 \\cdot 5^2 = 78{,}5\\,\\mathrm{m}^2$", group: "area" },
+        { id: "e", text: "$2\\pi r$", group: "longitud" },
+        { id: "f", text: "Se mide en $\\mathrm{m}^2$", group: "area" },
+      ],
+      hint: "La longitud es un contorno (se mide en metros); el área es una superficie (en metros cuadrados) y lleva $r^2$.",
+      explanation:
+        "Longitud: $l = \\pi d = 2\\pi r = 3{,}14 \\cdot 10 = 31{,}4\\,\\mathrm{m}$. Área: $A = \\pi r^2 = 3{,}14 \\cdot 25 = 78{,}5\\,\\mathrm{m}^2$.",
     },
   ],
 };

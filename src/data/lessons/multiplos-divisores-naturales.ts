@@ -75,16 +75,24 @@ export const multiplosDivisoresNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-divisores",
-      type: "multiple_choice",
+      type: "classify",
       title: "Divisores",
-      question: "¿Cuántos divisores tiene el número primo 13?",
-      options: [
-        { id: "a", text: "1" },
-        { id: "b", text: "2" },
-        { id: "c", text: "13" },
+      question: "Busca los divisores de cada número y colócalo en su grupo.",
+      groups: [
+        { id: "dos", label: "Exactamente $2$ divisores", tone: "cobalt" },
+        { id: "mas", label: "Más de $2$ divisores", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "Un primo solo tiene dos divisores: $1$ y él mismo.",
+      items: [
+        { id: "a", text: "$13$", group: "dos" },
+        { id: "b", text: "$12$", group: "mas" },
+        { id: "c", text: "$7$", group: "dos" },
+        { id: "d", text: "$9$", group: "mas" },
+        { id: "e", text: "$2$", group: "dos" },
+        { id: "f", text: "$15$", group: "mas" },
+      ],
+      hint: "Todo número tiene al menos dos divisores: el $1$ y él mismo. ¿Tiene alguno más?",
+      explanation:
+        "$13$, $7$ y $2$ son primos: solo tienen dos divisores, $1$ y ellos mismos. $12$ ($1, 2, 3, 4, 6, 12$), $9$ ($1, 3, 9$) y $15$ ($1, 3, 5, 15$) tienen más.",
     },
   ],
 };

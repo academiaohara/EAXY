@@ -61,17 +61,14 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Comprueba lo aprendido",
       question:
-        "Un número y su anterior suman $53$. ¿Qué ecuación modela el problema si $x$ es el número?",
-      options: [
-        { id: "a", text: "$x + (x + 1) = 53$" },
-        { id: "b", text: "$x + (x - 1) = 53$" },
-        { id: "c", text: "$2x = 53$" },
-      ],
-      correctOptionId: "b",
-      explanation: "El anterior de $x$ es $x - 1$; la suma es $x + (x - 1) = 53$.",
+        "Un número y su anterior suman $53$. Plantea la ecuación y resuélvela: ¿de qué número se trata? (escribe solo el número)",
+      correctAnswers: ["27", "x=27"],
+      hint: "Llama $x$ al número. Su anterior es una unidad menos. Suma ambos e iguala a $53$.",
+      explanation:
+        "El anterior de $x$ es $x - 1$: $x + (x - 1) = 53 \\Rightarrow 2x - 1 = 53 \\Rightarrow 2x = 54 \\Rightarrow x = 27$. Comprobación: $27 + 26 = 53$.",
     },
   ],
 };

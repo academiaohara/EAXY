@@ -52,7 +52,7 @@ describe("ConceptCard", () => {
         title="Soluciones"
         content={CONTENT}
         showTitle={false}
-        split
+        layout="split"
         visuals={[{ kind: "solution-check", a: 1, b: 2, c: 4, pairs: [[2, 1]] }]}
       />,
     );

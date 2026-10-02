@@ -62,16 +62,25 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "Si $x$ es la edad actual, ¿qué expresión representa «el anterior de $x$»?",
-      options: [
-        { id: "a", text: "$x + 1$" },
-        { id: "b", text: "$x - 1$" },
-        { id: "c", text: "$2x$" },
+      question: "$x$ es tu edad actual. Lleva cada frase a la expresión que la representa.",
+      groups: [
+        { id: "menos-uno", label: "$x - 1$", tone: "cobalt" },
+        { id: "mas-uno", label: "$x + 1$", tone: "emerald" },
+        { id: "doble", label: "$2x$", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "El número anterior a $x$ se obtiene restando una unidad: $x - 1$.",
+      items: [
+        { id: "a", text: "El anterior de $x$", group: "menos-uno" },
+        { id: "b", text: "Tu edad el año pasado", group: "menos-uno" },
+        { id: "c", text: "El siguiente de $x$", group: "mas-uno" },
+        { id: "d", text: "Tu edad dentro de un año", group: "mas-uno" },
+        { id: "e", text: "El doble de tu edad", group: "doble" },
+        { id: "f", text: "$x$ más $x$", group: "doble" },
+      ],
+      hint: "«Anterior» y «el año pasado» quitan una unidad; «siguiente» y «dentro de un año» la añaden.",
+      explanation:
+        "El anterior de $x$ (o tu edad hace un año) es $x - 1$; el siguiente (o tu edad dentro de un año) es $x + 1$; el doble, o $x + x$, es $2x$.",
     },
   ],
 };

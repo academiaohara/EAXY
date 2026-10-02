@@ -87,16 +87,27 @@ export const enterosZRectaValorAbsolutoLesson: InteractiveLesson = {
     },
     {
       id: "check-orden",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Orden",
-      question: "¿Cuál es la comparación correcta?",
-      options: [
-        { id: "a", text: "$-2 > +5$" },
-        { id: "b", text: "$-2 < +5$" },
-        { id: "c", text: "$-2 = +5$" },
-      ],
-      correctOptionId: "b",
-      explanation: "Los negativos son menores que los positivos.",
+      question:
+        "Marca en la recta el **menor** de estos números: $+5$, $-2$, $0$, $-6$, $+1$.",
+      min: -8,
+      max: 8,
+      target: -6,
+      hint: "En la recta, el menor es el que queda más a la izquierda.",
+      explanation:
+        "Ordenados: $-6 < -2 < 0 < +1 < +5$. Entre negativos, es menor el de mayor valor absoluto: $-6 < -2$.",
+    },
+    {
+      id: "check-opuesto",
+      type: "number_line_pick",
+      title: "Mismo valor absoluto",
+      question: "$|+4| = 4$. Marca el **otro** entero que también tiene valor absoluto $4$.",
+      min: -8,
+      max: 8,
+      target: -4,
+      hint: "Busca el número que está a $4$ unidades del $0$, pero al otro lado.",
+      explanation: "$|-4| = 4$: $-4$ y $+4$ son opuestos y están a la misma distancia del $0$.",
     },
   ],
 };

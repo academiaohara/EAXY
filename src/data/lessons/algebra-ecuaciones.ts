@@ -38,16 +38,24 @@ export const algebraEcuacionesLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál de estas afirmaciones describe una ecuación?",
-      options: [
-        { id: "a", text: "Se cumple para cualquier valor de $x$." },
-        { id: "b", text: "Solo se cumple para algunos valores de las letras." },
-        { id: "c", text: "No contiene letras." },
+      question: "¿Ecuación o identidad? Coloca cada igualdad en su grupo.",
+      groups: [
+        { id: "ecuacion", label: "Ecuación", tone: "cobalt" },
+        { id: "identidad", label: "Identidad", tone: "emerald" },
       ],
-      correctOptionId: "b",
-      explanation: "Una ecuación tiene soluciones concretas; una identidad se cumple siempre.",
+      items: [
+        { id: "a", text: "$x + 3 = 7$", group: "ecuacion" },
+        { id: "b", text: "$x + x = 2x$", group: "identidad" },
+        { id: "c", text: "$3x = 12$", group: "ecuacion" },
+        { id: "d", text: "$2(x + 1) = 2x + 2$", group: "identidad" },
+        { id: "e", text: "$5x - 1 = 9$", group: "ecuacion" },
+        { id: "f", text: "$7x - 3x = 4x$", group: "identidad" },
+      ],
+      hint: "Prueba con dos valores distintos de $x$, por ejemplo $0$ y $1$: ¿se cumple la igualdad con los dos?",
+      explanation:
+        "Las ecuaciones solo se cumplen para valores concretos: $x + 3 = 7$ y $3x = 12$ con $x = 4$; $5x - 1 = 9$ con $x = 2$. Las identidades, como $x + x = 2x$, se cumplen para cualquier $x$.",
     },
   ],
 };

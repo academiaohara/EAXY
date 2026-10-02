@@ -113,16 +113,28 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
       explanation: "$(280 : 7) \\cdot 3 = 40 \\cdot 3 = 120$.",
     },
     {
+      id: "reloj-minutos",
+      type: "fraction_pick",
+      title: "Minutos en el reloj",
+      question:
+        "La esfera representa una hora y está dividida en $20$ porciones iguales de $3$ minutos. Marca $12$ minutos.",
+      shape: "circle",
+      numerator: 12,
+      denominator: 60,
+      parts: 20,
+      itemLabel: "porción",
+      hint: "Una hora son $60$ minutos. ¿Cuántas porciones de $3$ minutos hacen $12$ minutos?",
+      explanation:
+        "$12 : 3 = 4$ porciones de $20$: $\\frac{4}{20} = \\frac{12}{60}$ de hora.",
+    },
+    {
       id: "check-fraccion",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Minutos en una hora",
-      question: "¿Qué fracción de hora son $12$ minutos?",
-      options: [
-        { id: "a", text: "$\\frac{12}{60} = \\frac{1}{5}$" },
-        { id: "b", text: "$\\frac{12}{60} = \\frac{1}{4}$" },
-        { id: "c", text: "$\\frac{12}{100}$" },
-      ],
-      correctOptionId: "a",
+      question:
+        "¿Qué fracción de hora son $12$ minutos? Escríbela irreducible (por ejemplo, 2/3).",
+      correctAnswers: ["1/5"],
+      hint: "Escribe parte entre total, $\\frac{12}{60}$, y simplifica.",
       explanation: "$12$ min de $60$ min: $\\frac{12}{60} = \\frac{1}{5}$ h.",
     },
   ],

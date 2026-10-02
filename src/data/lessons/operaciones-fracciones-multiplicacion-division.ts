@@ -58,16 +58,14 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     },
     {
       id: "check-mult",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Multiplicación rápida",
-      question: "¿Cuánto es $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ simplificado?",
-      options: [
-        { id: "a", text: "$\\dfrac{3}{4}$" },
-        { id: "b", text: "$\\dfrac{18}{24}$ sin simplificar" },
-        { id: "c", text: "$\\dfrac{2}{3}$" },
-      ],
-      correctOptionId: "a",
-      explanation: "$\\dfrac{18}{24} = \\dfrac{3}{4}$ (divide numerador y denominador por $6$).",
+      question:
+        "Calcula $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ y escribe el resultado **simplificado** (por ejemplo, 5/7).",
+      correctAnswers: ["3/4", "0,75", "0.75"],
+      hint: "Numerador por numerador y denominador por denominador; después divide ambos por su m.c.d.",
+      explanation:
+        "$\\dfrac{2 \\cdot 9}{3 \\cdot 8} = \\dfrac{18}{24} = \\dfrac{3}{4}$ (divide numerador y denominador por $6$).",
     },
   ],
 };

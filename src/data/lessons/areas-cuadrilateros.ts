@@ -74,16 +74,15 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     },
     {
       id: "check-cuadrado",
-      type: "multiple_choice",
+      type: "number_line_pick",
       title: "Lado de un cuadrado",
-      question: "¿Cuánto mide el lado de un cuadrado de $225\\,\\mathrm{cm}^2$ de área?",
-      options: [
-        { id: "a", text: "$12\\,\\mathrm{cm}$" },
-        { id: "b", text: "$15\\,\\mathrm{cm}$" },
-        { id: "c", text: "$22{,}5\\,\\mathrm{cm}$" },
-      ],
-      correctOptionId: "b",
-      explanation: "$l = \\sqrt{225} = 15\\,\\mathrm{cm}$ porque $15^2 = 225$.",
+      question:
+        "Un cuadrado tiene $225\\,\\mathrm{cm}^2$ de área. Marca en la regla (en $\\mathrm{cm}$) cuánto mide su lado.",
+      min: 0,
+      max: 25,
+      target: 15,
+      hint: "Busca un número que, multiplicado por sí mismo, dé $225$. No es la mitad del área.",
+      explanation: "$l = \\sqrt{225} = 15\\,\\mathrm{cm}$ porque $15^2 = 15 \\cdot 15 = 225$.",
     },
     {
       id: "check-rombo",

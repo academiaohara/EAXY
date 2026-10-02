@@ -49,17 +49,17 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     },
     {
       id: "check-mcm",
-      type: "multiple_choice",
+      type: "fraction_pick",
       title: "Comprueba el método",
       question:
-        "Para reducir $\\frac{1}{2}$ y $\\frac{1}{3}$ con denominador común $6$, ¿por cuánto amplías $\\frac{1}{2}$?",
-      options: [
-        { id: "a", text: "Por $2$ (numerador y denominador)" },
-        { id: "b", text: "Por $3$ (numerador y denominador)" },
-        { id: "c", text: "Por $6$" },
-      ],
-      correctOptionId: "b",
-      explanation: "$6 : 2 = 3$. Entonces $\\frac{1}{2} = \\frac{3}{6}$.",
+        "Reducimos $\\frac{1}{2}$ y $\\frac{1}{3}$ a denominador común $6$: la barra ya está partida en sextos. Colorea $\\frac{1}{2}$ de la barra.",
+      shape: "bar",
+      numerator: 1,
+      denominator: 2,
+      parts: 6,
+      hint: "Media barra es lo mismo que cierto número de sextos. ¿Cuántas veces cabe $2$ en $6$?",
+      explanation:
+        "Has coloreado $3$ sextos: $6 : 2 = 3$, así que se amplía multiplicando numerador y denominador **por $3$**: $\\frac{1}{2} = \\frac{1 \\cdot 3}{2 \\cdot 3} = \\frac{3}{6}$.",
     },
   ],
 };

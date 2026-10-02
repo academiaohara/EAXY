@@ -6,8 +6,10 @@ const PHASE_BY_STEP_TYPE: Record<LessonStep["type"], LessonStepPhase> = {
   concept: "explanation",
   animated_solution: "resolution",
   interactive_tool: "exploration",
-  multiple_choice: "practice",
   fill_in_blank: "practice",
+  fraction_pick: "practice",
+  classify: "practice",
+  number_line_pick: "practice",
 };
 
 export function getLessonStepPhase(step: LessonStep): LessonStepPhase {

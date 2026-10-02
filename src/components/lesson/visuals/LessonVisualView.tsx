@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRightIcon, CheckIcon, XIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { FractionFigureVisualBlock } from "@/components/lesson/visuals/FractionFigure";
 import { IntegerAddRulesVisualBlock } from "@/components/lesson/visuals/IntegerAddRulesVisual";
 import { MiniGraph } from "@/components/lesson/visuals/MiniGraph";
 import { NumberLineVisualBlock } from "@/components/lesson/visuals/NumberLineVisual";
@@ -347,6 +348,7 @@ type LessonVisualViewProps = {
 export function LessonVisualView({ visual, className }: LessonVisualViewProps) {
   return (
     <div className={cn("min-w-0", className)} data-testid={`lesson-visual-${visual.kind}`}>
+      {visual.kind === "fraction-figure" ? <FractionFigureVisualBlock visual={visual} /> : null}
       {visual.kind === "equation-anatomy" ? <EquationAnatomy visual={visual} /> : null}
       {visual.kind === "solution-check" ? <SolutionCheck visual={visual} /> : null}
       {visual.kind === "graph-gallery" ? <GraphGallery visual={visual} /> : null}

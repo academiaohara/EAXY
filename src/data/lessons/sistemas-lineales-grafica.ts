@@ -140,16 +140,27 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "Gráficamente, ¿qué representa la solución de un sistema de dos ecuaciones lineales con dos incógnitas?",
-      options: [
-        { id: "a", text: "El área entre las dos rectas" },
-        { id: "b", text: "El punto de corte de las rectas" },
-        { id: "c", text: "La pendiente de una de las rectas" },
+      question:
+        "La solución de un sistema son los puntos comunes a las dos rectas. Clasifica cada caso según cuántas soluciones tiene.",
+      groups: [
+        { id: "una", label: "Una solución", tone: "emerald" },
+        { id: "ninguna", label: "Ninguna solución", tone: "rose" },
+        { id: "infinitas", label: "Infinitas soluciones", tone: "violet" },
       ],
-      correctOptionId: "b",
-      explanation: "La solución $(x, y)$ es el punto que pertenece a las dos rectas a la vez.",
+      items: [
+        { id: "corte", text: "Las rectas se cortan en un punto", group: "una" },
+        { id: "paralelas", text: "Las rectas son paralelas", group: "ninguna" },
+        { id: "coinciden", text: "Las rectas coinciden", group: "infinitas" },
+        { id: "s1", text: "$x + 2y = 4$ y $x + y = 3$", group: "una" },
+        { id: "s2", text: "$x + 2y = 4$ y $2x + 4y = 2$", group: "ninguna" },
+        { id: "s3", text: "$x + 2y = 4$ y $2x + 4y = 8$", group: "infinitas" },
+        { id: "s4", text: "$x - y = 0$ y $x + y = 2$", group: "una" },
+      ],
+      hint: "Imagina las dos rectas: ¿cuántos puntos tienen en común? Si una ecuación es otra multiplicada por un número, son la misma recta.",
+      explanation:
+        "La solución $(x, y)$ es el punto que pertenece a las dos rectas a la vez: si se cortan hay uno (por ejemplo $(2, 1)$ o $(1, 1)$), si son paralelas ninguno y si coinciden, infinitos.",
     },
   ],
 };

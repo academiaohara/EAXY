@@ -89,18 +89,14 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     },
     {
       id: "blusa",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Rebaja en una blusa (autoevaluación)",
       question:
-        "Marta compra una blusa de $35\\,€$ con un $20\\%$ de rebaja. ¿Cuánto paga?",
-      options: [
-        { id: "a", text: "$28\\,€$" },
-        { id: "b", text: "$30\\,€$" },
-        { id: "c", text: "$7\\,€$" },
-      ],
-      correctOptionId: "a",
+        "Marta compra una blusa de $35\\,€$ con un $20\\%$ de rebaja. ¿Cuánto paga, en euros? (solo el número)",
+      correctAnswers: ["28", "28 €", "28€", "28,00", "28.00"],
+      hint: "Calcula primero cuánto le descuentan y réstalo del precio. O bien: paga el $80\\%$.",
       explanation:
-        "Rebaja: $20\\%$ de $35 = 7\\,€$. Paga $35 - 7 = 28\\,€$.",
+        "Rebaja: $20\\%$ de $35 = 7\\,€$. Paga $35 - 7 = 28\\,€$ (equivale a $0{,}80 \\cdot 35 = 28$). Ojo: $7\\,€$ es el descuento, no lo que paga.",
     },
     {
       id: "comedor",

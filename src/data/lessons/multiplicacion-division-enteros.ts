@@ -68,16 +68,24 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     },
     {
       id: "check-signo",
-      type: "multiple_choice",
+      type: "classify",
       title: "Signo del producto",
-      question: "¿Cuánto vale $(-4) \\cdot (-5)$?",
-      options: [
-        { id: "a", text: "$-20$" },
-        { id: "b", text: "$+20$" },
-        { id: "c", text: "$+9$" },
+      question: "Sin calcular del todo, coloca cada operación según el signo de su resultado.",
+      groups: [
+        { id: "pos", label: "Resultado positivo", tone: "emerald" },
+        { id: "neg", label: "Resultado negativo", tone: "rose" },
       ],
-      correctOptionId: "b",
-      explanation: "Signos iguales → resultado positivo: $20$.",
+      items: [
+        { id: "a", text: "$(-4) \\cdot (-5)$", group: "pos" },
+        { id: "b", text: "$(+3) \\cdot (-6)$", group: "neg" },
+        { id: "c", text: "$(-8) : (+2)$", group: "neg" },
+        { id: "d", text: "$(-12) : (-3)$", group: "pos" },
+        { id: "e", text: "$(+7) \\cdot (+2)$", group: "pos" },
+        { id: "f", text: "$(-2) \\cdot (-3) \\cdot (-1)$", group: "neg" },
+      ],
+      hint: "Fíjate solo en los signos: ¿son iguales o distintos? Con tres factores, ve de dos en dos.",
+      explanation:
+        "Signos iguales → positivo: $(-4) \\cdot (-5) = 20$, $(-12) : (-3) = 4$, $(+7) \\cdot (+2) = 14$. Signos distintos → negativo: $-18$ y $-4$. En $(-2) \\cdot (-3) \\cdot (-1)$: $(+6) \\cdot (-1) = -6$.",
     },
     {
       id: "check-div",

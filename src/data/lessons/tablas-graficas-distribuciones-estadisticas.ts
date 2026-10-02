@@ -72,16 +72,26 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     },
     {
       id: "check-cualitativa",
-      type: "multiple_choice",
+      type: "classify",
       title: "Tipo de variable",
-      question: "¿Qué tipo de variable es «deporte preferido»?",
-      options: [
-        { id: "a", text: "Cuantitativa" },
-        { id: "b", text: "Cualitativa" },
-        { id: "c", text: "Ni una ni otra" },
+      question: "Clasifica cada variable estadística según el tipo de valores que toma.",
+      groups: [
+        { id: "cualitativa", label: "Cualitativa", tone: "violet" },
+        { id: "cuantitativa", label: "Cuantitativa", tone: "cobalt" },
       ],
-      correctOptionId: "b",
-      explanation: "Los deportes son categorías, no números.",
+      items: [
+        { id: "deporte", text: "Deporte preferido", group: "cualitativa" },
+        { id: "ojos", text: "Color de ojos", group: "cualitativa" },
+        { id: "mes", text: "Mes de nacimiento", group: "cualitativa" },
+        { id: "transporte", text: "Medio de transporte para ir al instituto", group: "cualitativa" },
+        { id: "calzado", text: "Número de calzado", group: "cuantitativa" },
+        { id: "nota", text: "Nota de un examen", group: "cuantitativa" },
+        { id: "peso", text: "Peso (kg)", group: "cuantitativa" },
+        { id: "mascotas", text: "Número de mascotas en casa", group: "cuantitativa" },
+      ],
+      hint: "Pregúntate si la respuesta es un **número** que se puede medir o contar, o una **categoría** con nombre.",
+      explanation:
+        "Deportes, colores, meses y medios de transporte son categorías, no números: cualitativas. Calzado, nota, peso y mascotas toman valores numéricos: cuantitativas.",
     },
     {
       id: "check-fr",

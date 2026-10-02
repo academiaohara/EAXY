@@ -69,16 +69,25 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuántos ceros tiene $10^8$ escrito con todas sus cifras?",
-      options: [
-        { id: "a", text: "$6$ ceros" },
-        { id: "b", text: "$8$ ceros" },
-        { id: "c", text: "$10$ ceros" },
+      question: "Empareja cada potencia con su número de ceros al escribirla con todas sus cifras.",
+      groups: [
+        { id: "seis", label: "$6$ ceros", tone: "cobalt" },
+        { id: "ocho", label: "$8$ ceros", tone: "emerald" },
+        { id: "diez", label: "$10$ ceros", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "$10^8 = 100\\,000\\,000$: la unidad seguida de 8 ceros.",
+      items: [
+        { id: "a", text: "$10^8$", group: "ocho" },
+        { id: "b", text: "$10^6$", group: "seis" },
+        { id: "c", text: "$10^{10}$", group: "diez" },
+        { id: "d", text: "$100\\,000\\,000$", group: "ocho" },
+        { id: "e", text: "$3 \\cdot 10^6$", group: "seis" },
+        { id: "f", text: "$10\\,000\\,000\\,000$", group: "diez" },
+      ],
+      hint: "En $10^n$, el exponente $n$ dice cuántos ceros siguen al $1$.",
+      explanation:
+        "$10^8 = 100\\,000\\,000$: la unidad seguida de $8$ ceros. $3 \\cdot 10^6 = 3\\,000\\,000$ (6 ceros) y $10^{10} = 10\\,000\\,000\\,000$ (10 ceros).",
     },
     {
       id: "check-millones",

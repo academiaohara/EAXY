@@ -75,16 +75,25 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     },
     {
       id: "check-histograma",
-      type: "multiple_choice",
+      type: "classify",
       title: "Elegir el gráfico",
-      question: "¿Qué gráfico conviene para **estaturas agrupadas** en intervalos de 5 cm en una clase?",
-      options: [
-        { id: "a", text: "Diagrama de barras finas con 36 barras sueltas" },
-        { id: "b", text: "Histograma" },
-        { id: "c", text: "Solo la recta numérica" },
+      question: "¿Qué gráfico conviene para cada conjunto de datos de una clase?",
+      groups: [
+        { id: "barras", label: "Diagrama de barras", tone: "cobalt" },
+        { id: "histograma", label: "Histograma", tone: "emerald" },
+        { id: "sectores", label: "Diagrama de sectores", tone: "violet" },
       ],
-      correctOptionId: "b",
-      explanation: "Muchos valores numéricos en clases → histograma (rectángulos adosados).",
+      items: [
+        { id: "estaturas", text: "Estaturas agrupadas en intervalos de $5$ cm", group: "histograma" },
+        { id: "tiempos", text: "Tiempos en una carrera agrupados en intervalos de $10$ s", group: "histograma" },
+        { id: "hermanos", text: "Número de hermanos ($0$ a $5$) de cada alumno", group: "barras" },
+        { id: "marcas", text: "Número de coches de cada marca en el aparcamiento", group: "barras" },
+        { id: "deportes", text: "Qué parte del total prefiere cada deporte", group: "sectores" },
+        { id: "gastos", text: "Reparto del presupuesto de la excursión entre transporte, comida y entradas", group: "sectores" },
+      ],
+      hint: "Intervalos con muchos datos numéricos → rectángulos adosados. Pocos valores → barras finas. Partes de un todo → sectores.",
+      explanation:
+        "Muchos valores numéricos en clases → histograma (rectángulos adosados). Pocos valores o categorías → barras. Para comparar partes de un total ($360°$) → sectores.",
     },
     {
       id: "check-sectores",

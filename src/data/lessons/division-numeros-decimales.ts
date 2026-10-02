@@ -48,16 +48,25 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     },
     {
       id: "check-div-10",
-      type: "multiple_choice",
-      title: "Dividir entre 100",
-      question: "¿Cuánto es $15{,}3 : 100$?",
-      options: [
-        { id: "a", text: "$1{,}53$" },
-        { id: "b", text: "$0{,}153$" },
-        { id: "c", text: "$153$" },
+      type: "classify",
+      title: "Dividir entre 10, 100 y 1000",
+      question: "¿Entre qué número se ha dividido en cada caso? Coloca cada tarjeta en su grupo.",
+      groups: [
+        { id: "diez", label: "$: 10$", tone: "cobalt" },
+        { id: "cien", label: "$: 100$", tone: "emerald" },
+        { id: "mil", label: "$: 1000$", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "La coma se desplaza dos lugares a la izquierda.",
+      items: [
+        { id: "a", text: "$15{,}3 \\to 1{,}53$", group: "diez" },
+        { id: "b", text: "$15{,}3 \\to 0{,}153$", group: "cien" },
+        { id: "c", text: "$15{,}3 \\to 0{,}0153$", group: "mil" },
+        { id: "d", text: "$7 \\to 0{,}7$", group: "diez" },
+        { id: "e", text: "$420 \\to 4{,}2$", group: "cien" },
+        { id: "f", text: "$2500 \\to 2{,}5$", group: "mil" },
+      ],
+      hint: "Cuenta cuántos lugares se ha movido la coma hacia la izquierda: uno, dos o tres.",
+      explanation:
+        "Entre $10$ la coma se desplaza un lugar a la izquierda, entre $100$ dos lugares y entre $1000$ tres. Por ejemplo, $15{,}3 : 100 = 0{,}153$.",
     },
     {
       id: "check-cociente",

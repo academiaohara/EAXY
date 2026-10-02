@@ -40,11 +40,12 @@ export function AnimatedSolution({ step, onContinue, compact = false }: Animated
   const hasContext = Boolean(
     step.content?.length || step.math?.length || step.warning || step.visuals?.length,
   );
+  const split = hasContext && step.layout === "split";
 
   return (
     <div
       className={cn(
-        hasContext ? "grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-12" : "space-y-4",
+        split ? "grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-12" : "flex flex-col gap-5",
       )}
       data-testid="lesson-animated-solution"
     >
@@ -55,6 +56,7 @@ export function AnimatedSolution({ step, onContinue, compact = false }: Animated
           math={step.math}
           warning={step.warning}
           visuals={step.visuals}
+          layout={split ? "stack" : step.layout}
           compact={compact}
           showTitle={false}
         />

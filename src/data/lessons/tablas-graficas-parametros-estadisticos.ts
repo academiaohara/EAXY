@@ -63,15 +63,11 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
     },
     {
       id: "check-moda-dado",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Moda del dado",
-      question: "Al tirar un dado 10 veces: $1, 5, 3, 1, 2, 6, 4, 1, 4, 3$. ¿Cuál es la moda?",
-      options: [
-        { id: "a", text: "$1$" },
-        { id: "b", text: "$3$" },
-        { id: "c", text: "$4$" },
-      ],
-      correctOptionId: "a",
+      question: "Al tirar un dado 10 veces: $1, 5, 3, 1, 2, 6, 4, 1, 4, 3$. ¿Cuál es la moda? (solo el número)",
+      correctAnswers: ["1"],
+      hint: "Cuenta cuántas veces sale cada cara: la moda es el valor que más se repite.",
       explanation: "El 1 sale 3 veces; el 3 y el 4 solo 2.",
     },
     {

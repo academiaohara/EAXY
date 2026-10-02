@@ -54,18 +54,49 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     },
     {
       id: "check-tipo",
-      type: "multiple_choice",
+      type: "classify",
       title: "¿Suma o producto?",
       question:
-        "Iván gasta $\\dfrac{2}{3}$ del dinero en una camisa y $\\dfrac{1}{5}$ **de lo que le quedaba** en una corbata. ¿Cómo calculas el gasto en la corbata?",
-      options: [
-        { id: "a", text: "$\\dfrac{1}{5} + \\dfrac{2}{3}$" },
-        { id: "b", text: "$\\dfrac{1}{5} \\cdot \\left(1 - \\dfrac{2}{3}\\right)$" },
-        { id: "c", text: "$\\dfrac{1}{5} \\cdot \\dfrac{2}{3}$" },
+        "Lee cada situación y decide qué operación hay que hacer para responderla.",
+      groups: [
+        { id: "suma", label: "Sumar fracciones", tone: "cobalt" },
+        { id: "producto", label: "Multiplicar (fracción de una fracción)", tone: "violet" },
       ],
-      correctOptionId: "b",
+      items: [
+        {
+          id: "a",
+          text: "Iván gasta $\\frac{2}{3}$ del dinero en una camisa y $\\frac{1}{5}$ **de lo que le quedaba** en una corbata. ¿Qué fracción gasta en la corbata?",
+          group: "producto",
+        },
+        {
+          id: "b",
+          text: "Ana lee $\\frac{1}{4}$ del libro el lunes y $\\frac{1}{3}$ del libro el martes. ¿Qué fracción ha leído?",
+          group: "suma",
+        },
+        {
+          id: "c",
+          text: "La mitad de la clase va en autobús y, de esos, $\\frac{2}{5}$ son chicas. ¿Qué fracción de la clase son chicas que van en autobús?",
+          group: "producto",
+        },
+        {
+          id: "d",
+          text: "Pinta $\\frac{2}{7}$ de la valla por la mañana y $\\frac{3}{7}$ por la tarde. ¿Qué fracción lleva pintada?",
+          group: "suma",
+        },
+        {
+          id: "e",
+          text: "Tiene $\\frac{3}{4}$ de una pizza y se come $\\frac{1}{3}$ **de lo que tiene**. ¿Qué fracción de pizza se come?",
+          group: "producto",
+        },
+        {
+          id: "f",
+          text: "Un grifo llena $\\frac{1}{2}$ del depósito y otro $\\frac{1}{6}$. ¿Qué fracción del depósito está llena?",
+          group: "suma",
+        },
+      ],
+      hint: "Busca la expresión «de lo que…» o «de esos»: si la fracción se aplica a **otra parte**, no al total, se multiplica.",
       explanation:
-        "Tras la camisa queda $\\dfrac{1}{3}$; la corbata es $\\dfrac{1}{5}$ de ese resto: $\\dfrac{1}{5} \\cdot \\dfrac{1}{3}$.",
+        "Si las dos partes se refieren al mismo total, se suman. Si una es parte **de otra parte**, se multiplica. Por ejemplo, tras la camisa a Iván le queda $1 - \\frac{2}{3} = \\frac{1}{3}$, y la corbata es $\\frac{1}{5} \\cdot \\frac{1}{3} = \\frac{1}{15}$ del dinero.",
     },
   ],
 };

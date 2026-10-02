@@ -91,16 +91,24 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     },
     {
       id: "check-tipo",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál de los siguientes sistemas es NO lineal?",
-      options: [
-        { id: "a", text: "$y - x = 1$ / $2x + y = 3$" },
-        { id: "b", text: "$y - x = 1$ / $x^2 + y^2 = 5$" },
-        { id: "c", text: "$3x + 2y = 0$ / $x - y = 4$" },
+      question: "Clasifica cada sistema como lineal o no lineal.",
+      groups: [
+        { id: "lineal", label: "Lineal", tone: "cobalt" },
+        { id: "no-lineal", label: "No lineal", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "El sistema B contiene $x^2 + y^2 = 5$, una ecuación de segundo grado.",
+      items: [
+        { id: "a", text: "$y - x = 1$ / $2x + y = 3$", group: "lineal" },
+        { id: "b", text: "$y - x = 1$ / $x^2 + y^2 = 5$", group: "no-lineal" },
+        { id: "c", text: "$3x + 2y = 0$ / $x - y = 4$", group: "lineal" },
+        { id: "d", text: "$xy = 6$ / $x + y = 5$", group: "no-lineal" },
+        { id: "e", text: "$y = x^2$ / $y = 4$", group: "no-lineal" },
+        { id: "f", text: "$x = 3$ / $y = -1$", group: "lineal" },
+      ],
+      hint: "Busca incógnitas al cuadrado o multiplicadas entre sí: basta una ecuación así para que el sistema no sea lineal.",
+      explanation:
+        "Son no lineales los que tienen alguna ecuación de grado mayor que $1$: $x^2 + y^2 = 5$, $xy = 6$ o $y = x^2$. En los lineales todas las incógnitas aparecen con exponente $1$ y sin multiplicarse.",
     },
     {
       id: "despejar",
@@ -113,15 +121,25 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     },
     {
       id: "soluciones",
-      type: "multiple_choice",
+      type: "classify",
       title: "Practica — Soluciones completas",
-      question: "¿Cuáles son los pares $(x, y)$ del sistema $\\begin{cases} y - x = 1 \\\\ x^2 + y^2 = 5 \\end{cases}$?",
-      options: [
-        { id: "a", text: "$(1, 2)$ y $(-2, -1)$" },
-        { id: "b", text: "$(2, 1)$ y $(-1, -2)$" },
+      question:
+        "Sustituye cada par $(x, y)$ en el sistema $\\begin{cases} y - x = 1 \\\\ x^2 + y^2 = 5 \\end{cases}$ y clasifícalo.",
+      groups: [
+        { id: "si", label: "Es solución del sistema", tone: "emerald" },
+        { id: "no", label: "No es solución", tone: "rose" },
       ],
-      correctOptionId: "a",
-      explanation: "Son las soluciones del ejemplo resuelto. Comprueba sustituyendo en ambas ecuaciones.",
+      items: [
+        { id: "a", text: "$(1, 2)$", group: "si" },
+        { id: "b", text: "$(-2, -1)$", group: "si" },
+        { id: "c", text: "$(2, 1)$", group: "no" },
+        { id: "d", text: "$(-1, -2)$", group: "no" },
+        { id: "e", text: "$(0, 1)$", group: "no" },
+        { id: "f", text: "$(1, -2)$", group: "no" },
+      ],
+      hint: "Un par es solución solo si cumple **las dos** ecuaciones a la vez. Empieza por $y - x = 1$, que es la más rápida.",
+      explanation:
+        "$(1, 2)$ y $(-2, -1)$ cumplen $y - x = 1$ y $x^2 + y^2 = 5$. $(2, 1)$ y $(-1, -2)$ dan $y - x = -1$; $(0, 1)$ cumple la primera pero $0 + 1 \\neq 5$; $(1, -2)$ cumple la segunda pero $-2 - 1 = -3$.",
     },
   ],
 };

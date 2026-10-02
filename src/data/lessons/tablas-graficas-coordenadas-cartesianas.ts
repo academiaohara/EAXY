@@ -75,16 +75,12 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     },
     {
       id: "check-q",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Intercambiar coordenadas",
       question:
-        "Si $P(3, 5)$ tiene las mismas abscisa y ordenada que $P$ pero **cambiadas de orden**, ¿cuáles son las coordenadas del nuevo punto?",
-      options: [
-        { id: "a", text: "$(3, 5)$" },
-        { id: "b", text: "$(5, 3)$" },
-        { id: "c", text: "$(-3, -5)$" },
-      ],
-      correctOptionId: "b",
+        "El punto $Q$ tiene la abscisa y la ordenada de $P(3, 5)$ pero **cambiadas de orden**. Escribe las coordenadas de $Q$ en la forma $(x, y)$.",
+      correctAnswers: ["(5, 3)", "(5,3)", "5,3", "5, 3", "(5;3)", "5;3", "Q(5,3)", "Q(5, 3)"],
+      hint: "La abscisa de $Q$ es la ordenada de $P$, y al revés.",
       explanation: "Se intercambian $x$ e $y$: de $(3, 5)$ pasamos a $(5, 3)$.",
     },
     {

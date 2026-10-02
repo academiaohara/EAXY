@@ -63,16 +63,26 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     },
     {
       id: "check-magnitud",
-      type: "multiple_choice",
+      type: "classify",
       title: "Unidades y magnitudes",
-      question: "¿Qué magnitud se mide con el gramo?",
-      options: [
-        { id: "a", text: "Longitud" },
-        { id: "b", text: "Peso (masa)" },
-        { id: "c", text: "Capacidad" },
+      question: "Coloca cada unidad junto a la magnitud que mide.",
+      groups: [
+        { id: "longitud", label: "Longitud", tone: "cobalt" },
+        { id: "peso", label: "Peso (masa)", tone: "amber" },
+        { id: "capacidad", label: "Capacidad", tone: "emerald" },
       ],
-      correctOptionId: "b",
-      explanation: "En el S.M.D., la unidad principal de peso es el gramo (aunque en la vida diaria usamos kilogramos).",
+      items: [
+        { id: "g", text: "Gramo ($\\mathrm{g}$)", group: "peso" },
+        { id: "kg", text: "Kilogramo ($\\mathrm{kg}$)", group: "peso" },
+        { id: "m", text: "Metro ($\\mathrm{m}$)", group: "longitud" },
+        { id: "km", text: "Kilómetro ($\\mathrm{km}$)", group: "longitud" },
+        { id: "cm", text: "Centímetro ($\\mathrm{cm}$)", group: "longitud" },
+        { id: "l", text: "Litro ($\\mathrm{l}$)", group: "capacidad" },
+        { id: "ml", text: "Mililitro ($\\mathrm{ml}$)", group: "capacidad" },
+      ],
+      hint: "Fíjate en la unidad principal que va detrás del prefijo: metro, gramo o litro.",
+      explanation:
+        "En el S.M.D. la longitud se mide en metros, el peso en gramos (aunque a diario usamos kilogramos) y la capacidad en litros; los prefijos no cambian la magnitud.",
     },
     {
       id: "check-kilo",

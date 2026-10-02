@@ -90,17 +90,24 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-posicional",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Qué define a un sistema posicional como el decimal?",
-      options: [
-        { id: "a", text: "Se escriben siempre letras romanas" },
-        { id: "b", text: "El valor de una cifra depende de la posición que ocupa" },
-        { id: "c", text: "Solo se pueden sumar símbolos iguales" },
+      question: "¿Cada rasgo es propio de un sistema posicional como el decimal o de uno aditivo como el egipcio o el romano?",
+      groups: [
+        { id: "posicional", label: "Posicional (decimal)", tone: "emerald" },
+        { id: "aditivo", label: "Aditivo (egipcio, romano)", tone: "amber" },
       ],
-      correctOptionId: "b",
+      items: [
+        { id: "a", text: "El valor de una cifra depende de la posición que ocupa", group: "posicional" },
+        { id: "b", text: "En $353$, el primer $3$ vale $300$ y el último vale $3$", group: "posicional" },
+        { id: "c", text: "Diez unidades de un orden forman una del orden superior", group: "posicional" },
+        { id: "d", text: "Se repiten símbolos y se suman sus valores", group: "aditivo" },
+        { id: "e", text: "$\\text{XXX} = 10 + 10 + 10 = 30$", group: "aditivo" },
+        { id: "f", text: "Se van añadiendo signos hasta completar la cantidad", group: "aditivo" },
+      ],
+      hint: "En un sistema posicional importa **dónde** está cada cifra; en uno aditivo, **cuántos** símbolos hay.",
       explanation:
-        "En el decimal, la misma cifra puede valer unidades, decenas o millares según la columna en la que esté.",
+        "En el decimal, la misma cifra puede valer unidades, decenas o millares según la columna en la que esté. En los aditivos, la cantidad se forma sumando el valor de los símbolos.",
     },
     {
       id: "check-ordenes",

@@ -52,16 +52,15 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     },
     {
       id: "mental",
-      type: "multiple_choice",
+      type: "fraction_pick",
       title: "Cálculo mental",
-      question: "¿Cuánto es $1 - \\dfrac{1}{4}$?",
-      options: [
-        { id: "a", text: "$\\dfrac{1}{4}$" },
-        { id: "b", text: "$\\dfrac{3}{4}$" },
-        { id: "c", text: "$\\dfrac{5}{4}$" },
-      ],
-      correctOptionId: "b",
-      explanation: "$1 = \\dfrac{4}{4}$; $\\dfrac{4}{4} - \\dfrac{1}{4} = \\dfrac{3}{4}$.",
+      question:
+        "La barra entera es $1$. Le quitamos $\\frac{1}{4}$: colorea lo que queda, $1 - \\frac{1}{4}$.",
+      shape: "bar",
+      numerator: 3,
+      denominator: 4,
+      hint: "La barra está partida en cuartos, así que la unidad son $\\frac{4}{4}$. ¿Cuántos cuartos quedan si quitas uno?",
+      explanation: "$1 = \\dfrac{4}{4}$; $\\dfrac{4}{4} - \\dfrac{1}{4} = \\dfrac{3}{4}$: quedan $3$ de los $4$ cuartos.",
     },
     {
       id: "check-suma",

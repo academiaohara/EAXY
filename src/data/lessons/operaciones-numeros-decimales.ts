@@ -70,16 +70,12 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     },
     {
       id: "check-coma",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Colocar la coma",
-      question: "¿Cuánto es $0{,}25 \\cdot 4$?",
-      options: [
-        { id: "a", text: "$1$" },
-        { id: "b", text: "$0{,}1$" },
-        { id: "c", text: "$10$" },
-      ],
-      correctOptionId: "a",
-      explanation: "$25 \\cdot 4 = 100$; dos cifras decimales → $1{,}00$.",
+      question: "Calcula $0{,}25 \\cdot 4$ (solo el número).",
+      correctAnswers: ["1", "1,0", "1.0", "1,00", "1.00"],
+      hint: "Multiplica como si no hubiera coma y luego separa tantas cifras decimales como tenga el factor decimal.",
+      explanation: "$25 \\cdot 4 = 100$; dos cifras decimales → $1{,}00 = 1$.",
     },
     {
       id: "check-expresion",

@@ -58,16 +58,24 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Es 186 múltiplo de 3?",
-      options: [
-        { id: "a", text: "Sí, porque $1+8+6=15$ es múltiplo de 3" },
-        { id: "b", text: "No, porque termina en 6" },
-        { id: "c", text: "Sí, porque es par" },
+      question: "Usa el criterio del $3$ y coloca cada número en su grupo.",
+      groups: [
+        { id: "si", label: "Múltiplo de $3$", tone: "emerald" },
+        { id: "no", label: "No es múltiplo de $3$", tone: "rose" },
       ],
-      correctOptionId: "a",
-      explanation: "El criterio del 3 usa la suma de cifras, no la última cifra sola.",
+      items: [
+        { id: "a", text: "$186$", group: "si" },
+        { id: "b", text: "$436$", group: "no" },
+        { id: "c", text: "$105$", group: "si" },
+        { id: "d", text: "$124$", group: "no" },
+        { id: "e", text: "$246$", group: "si" },
+        { id: "f", text: "$298$", group: "no" },
+      ],
+      hint: "Suma las cifras de cada número. Que sea par o termine en $6$ no te dice nada sobre el $3$.",
+      explanation:
+        "$186 \\rightarrow 15$, $105 \\rightarrow 6$ y $246 \\rightarrow 12$ son múltiplos de $3$. En cambio $436 \\rightarrow 13$, $124 \\rightarrow 7$ y $298 \\rightarrow 19$ no lo son, aunque terminen en cifra par.",
     },
     {
       id: "check-suma",

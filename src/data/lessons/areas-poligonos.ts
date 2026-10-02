@@ -66,17 +66,13 @@ export const areasPoligonosLesson: InteractiveLesson = {
     },
     {
       id: "check-formula",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Trapecio y polígono regular",
       question:
-        "Las bases de un trapecio miden $13\\,\\mathrm{cm}$ y $7\\,\\mathrm{cm}$, con altura $10\\,\\mathrm{cm}$. ¿Cuál es su área?",
-      options: [
-        { id: "a", text: "$100\\,\\mathrm{cm}^2$" },
-        { id: "b", text: "$200\\,\\mathrm{cm}^2$" },
-        { id: "c", text: "$70\\,\\mathrm{cm}^2$" },
-      ],
-      correctOptionId: "a",
-      explanation: "$A = \\dfrac{(13 + 7) \\cdot 10}{2} = 100\\,\\mathrm{cm}^2$.",
+        "Las bases de un trapecio miden $13\\,\\mathrm{cm}$ y $7\\,\\mathrm{cm}$, con altura $10\\,\\mathrm{cm}$. ¿Cuál es su área en $\\mathrm{cm}^2$? (escribe solo el número)",
+      correctAnswers: ["100", "100 cm2", "100 cm²"],
+      hint: "Suma las dos bases, multiplica por la altura y no olvides dividir entre $2$.",
+      explanation: "$A = \\dfrac{(13 + 7) \\cdot 10}{2} = \\dfrac{200}{2} = 100\\,\\mathrm{cm}^2$.",
     },
   ],
 };

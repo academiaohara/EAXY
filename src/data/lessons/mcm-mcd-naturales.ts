@@ -115,16 +115,13 @@ export const mcmMcdNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-mcd",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Practica MCD",
-      question: "m.c.d. (15, 20) = ?",
-      options: [
-        { id: "a", text: "$5$" },
-        { id: "b", text: "$60$" },
-        { id: "c", text: "$300$" },
-      ],
-      correctOptionId: "a",
-      explanation: "Divisores comunes: $1, 5$. El mayor es $5$.",
+      question: "m.c.d. (15, 20) = ? (solo el número)",
+      correctAnswers: ["5"],
+      hint: "Escribe los divisores de $15$ y los de $20$, y busca el **mayor** que se repite. El m.c.d. nunca supera al menor de los dos números.",
+      explanation:
+        "Divisores de $15$: $1, 3, 5, 15$. Divisores de $20$: $1, 2, 4, 5, 10, 20$. Comunes: $1, 5$. El mayor es $5$.",
     },
   ],
 };

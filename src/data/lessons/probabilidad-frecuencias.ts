@@ -64,16 +64,13 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "fill_in_blank",
       title: "Comprueba lo aprendido",
-      question: "En $50$ lanzamientos de un dado sale la cara $3$ exactamente $14$ veces. ¿Cuál es $h_3$?",
-      options: [
-        { id: "a", text: "$14$" },
-        { id: "b", text: "$0{,}28$" },
-        { id: "c", text: "$0{,}50$" },
-      ],
-      correctOptionId: "b",
-      explanation: "$h_3 = f_3 / n = 14/50 = 0{,}28$.",
+      question:
+        "En $50$ lanzamientos de un dado sale la cara $3$ exactamente $14$ veces. ¿Cuál es la frecuencia relativa $h_3$? (en decimal, con coma)",
+      correctAnswers: ["0,28", "0.28", ",28", "14/50", "7/25"],
+      hint: "La frecuencia relativa es la absoluta dividida entre el número total de lanzamientos.",
+      explanation: "$h_3 = f_3 / n = 14/50 = 0{,}28$. Ojo: $14$ es la frecuencia **absoluta** $f_3$.",
     },
   ],
 };

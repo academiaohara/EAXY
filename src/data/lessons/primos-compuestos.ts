@@ -66,16 +66,26 @@ export const primosCompuestosLesson: InteractiveLesson = {
     },
     {
       id: "check",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál de estos números es primo?",
-      options: [
-        { id: "a", text: "$21$" },
-        { id: "b", text: "$29$" },
-        { id: "c", text: "$33$" },
+      question: "Clasifica cada número como primo o compuesto.",
+      groups: [
+        { id: "primo", label: "Primo", tone: "emerald" },
+        { id: "compuesto", label: "Compuesto", tone: "amber" },
       ],
-      correctOptionId: "b",
-      explanation: "$29$ solo tiene divisores $1$ y $29$. $21 = 3 \\cdot 7$ y $33 = 3 \\cdot 11$ son compuestos.",
+      items: [
+        { id: "a", text: "$21$", group: "compuesto" },
+        { id: "b", text: "$29$", group: "primo" },
+        { id: "c", text: "$33$", group: "compuesto" },
+        { id: "d", text: "$17$", group: "primo" },
+        { id: "e", text: "$51$", group: "compuesto" },
+        { id: "f", text: "$31$", group: "primo" },
+        { id: "g", text: "$27$", group: "compuesto" },
+        { id: "h", text: "$2$", group: "primo" },
+      ],
+      hint: "Prueba a dividir entre $2$, $3$, $5$ y $7$. Si alguno es divisor (sin ser el propio número), es compuesto.",
+      explanation:
+        "$29$, $17$, $31$ y $2$ solo tienen como divisores $1$ y ellos mismos. $21 = 3 \\cdot 7$, $33 = 3 \\cdot 11$, $51 = 3 \\cdot 17$ y $27 = 3 \\cdot 9$ son compuestos.",
     },
   ],
 };

@@ -81,16 +81,24 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-orden",
-      type: "multiple_choice",
+      type: "classify",
       title: "Comprueba lo aprendido",
-      question: "¿Cuál es el valor de $6 + 2 \\cdot 4$?",
-      options: [
-        { id: "a", text: "$32$" },
-        { id: "b", text: "$14$" },
-        { id: "c", text: "$24$" },
+      question: "Calcula cada expresión respetando el orden de las operaciones y colócala según su valor.",
+      groups: [
+        { id: "catorce", label: "Vale $14$", tone: "cobalt" },
+        { id: "treinta-dos", label: "Vale $32$", tone: "violet" },
       ],
-      correctOptionId: "b",
-      explanation: "Primero $2 \\cdot 4 = 8$; después $6 + 8 = 14$.",
+      items: [
+        { id: "a", text: "$6 + 2 \\cdot 4$", group: "catorce" },
+        { id: "b", text: "$(6 + 2) \\cdot 4$", group: "treinta-dos" },
+        { id: "c", text: "$2 \\cdot 4 + 6$", group: "catorce" },
+        { id: "d", text: "$4 \\cdot (6 + 2)$", group: "treinta-dos" },
+        { id: "e", text: "$20 - 3 \\cdot 2$", group: "catorce" },
+        { id: "f", text: "$40 - 2 \\cdot 4$", group: "treinta-dos" },
+      ],
+      hint: "Primero los paréntesis; después multiplicaciones; por último sumas y restas.",
+      explanation:
+        "$6 + 2 \\cdot 4 = 6 + 8 = 14$, pero $(6 + 2) \\cdot 4 = 8 \\cdot 4 = 32$. Igualmente $20 - 3 \\cdot 2 = 20 - 6 = 14$ y $40 - 2 \\cdot 4 = 40 - 8 = 32$.",
     },
     {
       id: "check-resto",
