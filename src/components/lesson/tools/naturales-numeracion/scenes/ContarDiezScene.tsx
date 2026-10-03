@@ -20,7 +20,7 @@ export function ContarDiezScene({ onReadyChange }: ContarDiezSceneProps) {
 
   return (
     <div className="flex flex-col items-center gap-4 py-1">
-      <p className="w-full max-w-3xl text-center text-sm text-ink-muted sm:max-w-none sm:text-base">
+      <p className="w-full text-center text-sm text-ink-muted sm:max-w-none sm:whitespace-nowrap">
         Contar es ir sumando <strong className="text-ink">unidades</strong>. Cuando juntas diez, das el salto a las{" "}
         <strong className="text-ink">decenas</strong>.
       </p>
