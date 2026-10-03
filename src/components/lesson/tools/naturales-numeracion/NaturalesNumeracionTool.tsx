@@ -3,13 +3,12 @@
 import { useCallback, useMemo, useState } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
-import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/scenes/ContarDiezScene";
-import { DecimalCifrasScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalCifrasScene";
+import { DecimalContarScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalContarScene";
 import { OrigenContarScene } from "@/components/lesson/tools/naturales-numeracion/scenes/OrigenContarScene";
+import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
+import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
 import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
-import { TablaPosicionalScene } from "@/components/lesson/tools/naturales-numeracion/scenes/TablaPosicionalScene";
 import type { NaturalesNumeracionToolStep } from "@/lib/lesson/types";
-import { cn } from "@/lib/utils";
 
 type NaturalesNumeracionToolProps = {
   step: NaturalesNumeracionToolStep;
@@ -39,7 +38,6 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
   const hasContext = Boolean(
     step.content?.length || step.math?.length || step.warning || step.visuals?.length,
   );
-  const split = hasContext && (step.layout ?? "split") === "split";
 
   const scene = (() => {
     switch (step.scene) {
@@ -47,25 +45,30 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
         return <OrigenContarScene />;
       case "sistemas-historia":
         return <SistemasHistoriaScene onReadyChange={handleReadyChange} />;
-      case "decimal-cifras":
-        return <DecimalCifrasScene onReadyChange={handleReadyChange} />;
-      case "contar-diez":
-        return <ContarDiezScene onReadyChange={handleReadyChange} />;
-      case "tabla-posicional":
-        return <TablaPosicionalScene onReadyChange={handleReadyChange} />;
+      case "decimal-contar":
+        return <DecimalContarScene onReadyChange={handleReadyChange} />;
+      case "redondeo-demo":
+        return <RedondeoDemoScene onReadyChange={handleReadyChange} />;
+      case "redondeo-corte":
+        if (!step.roundingExercise) {
+          return (
+            <p className="text-sm text-rose-700">Falta configuración del ejercicio de redondeo.</p>
+          );
+        }
+        return (
+          <RedondeoCorteScene
+            n={step.roundingExercise.n}
+            orderId={step.roundingExercise.orderId}
+            onReadyChange={handleReadyChange}
+          />
+        );
       default:
         return null;
     }
   })();
 
   return (
-    <div
-      className={cn(
-        "gap-6",
-        split ? "grid lg:grid-cols-2 lg:items-start lg:gap-12" : "flex flex-col",
-      )}
-      data-testid={`naturales-numeracion-${step.scene}`}
-    >
+    <div className="flex w-full flex-col gap-5" data-testid={`naturales-numeracion-${step.scene}`}>
       {hasContext ? (
         <ConceptCard
           title={step.title}
@@ -73,20 +76,13 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
           math={step.math}
           warning={step.warning}
           visuals={step.visuals}
-          layout={split ? "stack" : step.layout}
+          layout="stack"
           compact={compact}
           showTitle={false}
         />
       ) : null}
 
-      <div
-        className={cn(
-          "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
-          !hasContext && "mx-auto w-full max-w-3xl",
-        )}
-      >
-        {scene}
-      </div>
+      <div className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">{scene}</div>
     </div>
   );
 }

@@ -2,6 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  EgyptianNumeralIcon,
+  type EgyptianSymbolId,
+} from "@/components/lesson/tools/naturales-numeracion/EgyptianNumeralIcon";
+import { TallyMarksView } from "@/components/lesson/tools/naturales-numeracion/scenes/TallyMarksView";
 import { romanToInt } from "@/components/lesson/tools/naturales-numeracion/roman";
 import { cn } from "@/lib/utils";
 
@@ -13,53 +18,35 @@ const TABS: { id: TabId; label: string; subtitle: string }[] = [
   { id: "roman", label: "Los romanos", subtitle: "Letras con reglas de resta" },
 ];
 
-const EGYPT_SYMBOLS = [
-  { value: 1, name: "Unidad", mark: "|" },
-  { value: 10, name: "Decena", mark: "∩" },
-  { value: 100, name: "Centena", mark: "◎" },
-  { value: 1_000, name: "Millar", mark: "❀" },
-  { value: 10_000, name: "Decena de millar", mark: "☝" },
-  { value: 100_000, name: "Centena de millar", mark: "🐸" },
-  { value: 1_000_000, name: "Millón", mark: "∞" },
-] as const;
+const EGYPT_SYMBOLS: {
+  id: EgyptianSymbolId;
+  value: number;
+  name: string;
+}[] = [
+  { id: "stroke-1", value: 1, name: "Unidad" },
+  { id: "heel-10", value: 10, name: "Decena" },
+  { id: "coil-100", value: 100, name: "Centena" },
+  { id: "lotus-1000", value: 1_000, name: "Millar" },
+  { id: "finger-10000", value: 10_000, name: "Decena de millar" },
+  { id: "tadpole-100000", value: 100_000, name: "Centena de millar" },
+  { id: "god-1000000", value: 1_000_000, name: "Millón" },
+];
 
-const ROMAN_KEYS = ["I", "V", "X", "L", "C", "D", "M"] as const;
+const ROMAN_KEYS: { key: string; value: number }[] = [
+  { key: "M", value: 1000 },
+  { key: "D", value: 500 },
+  { key: "C", value: 100 },
+  { key: "L", value: 50 },
+  { key: "X", value: 10 },
+  { key: "V", value: 5 },
+  { key: "I", value: 1 },
+];
 
 const TARGETS: Record<TabId, number> = {
   tally: 9,
   egypt: 47,
   roman: 14,
 };
-
-function TallyMarks({ count }: { count: number }) {
-  const groups = Math.ceil(count / 5);
-  const marks: boolean[] = [];
-  for (let g = 0; g < groups; g += 1) {
-    const inGroup = Math.min(5, count - g * 5);
-    for (let i = 0; i < inGroup; i += 1) {
-      marks.push(i === 4 && inGroup === 5);
-    }
-  }
-
-  return (
-    <div className="flex min-h-[4rem] flex-wrap items-end justify-center gap-3 rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-5">
-      {marks.length === 0 ? (
-        <span className="text-sm text-ink-muted">Pulsa «Contar uno» para dejar la primera marca.</span>
-      ) : (
-        marks.map((diagonal, index) => (
-          <span
-            key={index}
-            className={cn(
-              "relative inline-block h-10 w-1 rounded-full bg-slate-800",
-              diagonal && "after:absolute after:left-1/2 after:top-1/2 after:h-0.5 after:w-10 after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-[115deg] after:rounded-full after:bg-slate-800 after:content-['']",
-            )}
-            aria-hidden
-          />
-        ))
-      )}
-    </div>
-  );
-}
 
 type SistemasHistoriaSceneProps = {
   onReadyChange: (ready: boolean) => void;
@@ -86,7 +73,12 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
   }, [allDone, onReadyChange]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
+      <p className="text-sm text-ink-muted">
+        Tres sistemas <strong>aditivos</strong> (se suman signos). Más adelante verás el decimal, donde importa
+        la <strong>posición</strong> de cada cifra.
+      </p>
+
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
         {TABS.map((item) => (
           <button
@@ -96,7 +88,7 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
             aria-selected={tab === item.id}
             onClick={() => setTab(item.id)}
             className={cn(
-              "rounded-full border px-3 py-1.5 text-left text-sm font-semibold transition-colors sm:px-4",
+              "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
               tab === item.id
                 ? "border-cobalt bg-cobalt text-white shadow-sm"
                 : "border-slate-200 bg-white text-ink hover:border-cobalt/40",
@@ -114,10 +106,10 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
       {tab === "tally" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Cada objeto contado deja una marca. Agrupa de cinco en cinco. Llega a{" "}
+            Cada objeto deja una marca. Al quinto, se tacha en diagonal el grupo de cuatro. Llega a{" "}
             <strong className="text-ink">{TARGETS.tally}</strong> marcas.
           </p>
-          <TallyMarks count={tallyCount} />
+          <TallyMarksView count={tallyCount} />
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span className="text-2xl font-bold tabular-nums text-ink">{tallyCount}</span>
             <div className="flex gap-2">
@@ -135,87 +127,85 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               </Button>
             </div>
           </div>
-          {done.tally ? (
-            <p className="text-sm font-medium text-emerald-700">¡Listo! Así contaban sin cifras escritas.</p>
-          ) : null}
         </div>
       ) : null}
 
       {tab === "egypt" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Sistema <strong>aditivo</strong>: pulsas símbolos y sus valores se suman. Construye exactamente{" "}
+            Pulsa un símbolo para sumar su valor en decimal. Construye exactamente{" "}
             <strong className="text-ink">{TARGETS.egypt}</strong>.
           </p>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {EGYPT_SYMBOLS.map((sym) => (
               <button
-                key={sym.value}
+                key={sym.id}
                 type="button"
                 onClick={() => setEgyptTotal((t) => t + sym.value)}
-                className="flex flex-col items-center gap-1 rounded-xl border border-amber-200 bg-amber-50/60 px-2 py-3 text-center transition hover:border-amber-400 hover:bg-amber-100/80"
+                className="flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
               >
-                <span className="text-2xl leading-none" aria-hidden>
-                  {sym.mark}
-                </span>
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-800">
+                <EgyptianNumeralIcon id={sym.id} className="h-12" />
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-900">
                   {sym.name}
                 </span>
-                <span className="text-xs tabular-nums text-amber-900">{sym.value.toLocaleString("es-ES")}</span>
+                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-sm font-bold tabular-nums text-amber-950">
+                  {sym.value.toLocaleString("es-ES")}
+                </span>
               </button>
             ))}
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3">
-            <span className="text-sm text-ink-muted">Total egipcio</span>
+            <span className="text-sm text-ink-muted">Total en decimal</span>
             <span className="text-2xl font-bold tabular-nums text-ink">{egyptTotal}</span>
             <Button type="button" variant="outline" size="sm" onClick={() => setEgyptTotal(0)}>
               Empezar de cero
             </Button>
           </div>
-          {done.egypt ? (
-            <p className="text-sm font-medium text-emerald-700">Correcto: 47 como suma de símbolos.</p>
-          ) : null}
         </div>
       ) : null}
 
       {tab === "roman" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            También es aditivo, con restas como <strong>IV</strong> o <strong>XC</strong>. Forma el número{" "}
-            <strong className="text-ink">{TARGETS.roman}</strong> (pista: XIV).
+            Forma <strong className="text-ink">{TARGETS.roman}</strong> con letras romanas. Si una letra pequeña
+            va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
           </p>
-          <div className="flex flex-wrap gap-2">
-            {ROMAN_KEYS.map((key) => (
-              <Button
+          <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+            {ROMAN_KEYS.map(({ key, value }) => (
+              <button
                 key={key}
                 type="button"
-                variant="outline"
-                className="min-w-[2.5rem] font-serif text-lg"
                 onClick={() => setRomanStr((s) => s + key)}
+                className="flex flex-col items-center rounded-xl border border-violet-200 bg-violet-50/50 py-3 transition hover:border-violet-400 hover:bg-violet-100/70"
               >
-                {key}
-              </Button>
+                <span className="font-serif text-2xl font-bold text-violet-900">{key}</span>
+                <span className="text-[10px] font-semibold tabular-nums text-violet-700">{value}</span>
+              </button>
             ))}
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-violet-200 bg-violet-50/50 px-4 py-3">
-            <span className="font-serif text-3xl tracking-widest text-violet-900">{romanStr || "—"}</span>
-            <span className="text-sm text-violet-800">
-              Vale <strong className="text-lg tabular-nums">{romanValue}</strong> en decimal
+          <div className="grid gap-3 rounded-xl border border-violet-200 bg-violet-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+            <span className="text-center font-serif text-4xl tracking-[0.2em] text-violet-950 sm:text-left">
+              {romanStr || "—"}
             </span>
-            <Button type="button" variant="outline" size="sm" onClick={() => setRomanStr("")}>
+            <div className="text-center sm:text-right">
+              <p className="text-xs uppercase tracking-wide text-violet-700">Valor decimal</p>
+              <p className="text-3xl font-bold tabular-nums text-violet-900">{romanValue}</p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="sm:col-span-2 sm:justify-self-end"
+              onClick={() => setRomanStr("")}
+            >
               Borrar
             </Button>
           </div>
-          {done.roman ? (
-            <p className="text-sm font-medium text-emerald-700">XIV = 10 + (5 − 1) = 14.</p>
-          ) : null}
         </div>
       ) : null}
 
       {!allDone ? (
-        <p className="text-xs text-ink-muted">
-          Completa los tres retos (marca ✓ en cada pestaña) para continuar.
-        </p>
+        <p className="text-xs text-ink-muted">Completa los tres retos (✓ en cada pestaña) para continuar.</p>
       ) : null}
     </div>
   );
