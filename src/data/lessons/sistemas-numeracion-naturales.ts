@@ -29,9 +29,6 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       scene: "decimal-intro",
       title: "El sistema decimal",
       layout: "stack",
-      content: [
-        "Lee con calma: aquí no hay prisa. La barra superior te deja ir y volver; el verde indica lo que ya superaste.",
-      ],
     },
     {
       id: "contar-diez",
