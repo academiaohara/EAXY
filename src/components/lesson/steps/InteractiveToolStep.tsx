@@ -3,8 +3,9 @@
 import { useMemo } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
+import { NaturalesNumeracionTool } from "@/components/lesson/tools/naturales-numeracion/NaturalesNumeracionTool";
 import { SystemGraphTool } from "@/components/lesson/tools/SystemGraphTool";
-import type { InteractiveToolStep as InteractiveToolStepType } from "@/lib/lesson/types";
+import type { InteractiveToolStep as InteractiveToolStepType, SystemGraphToolStep } from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
 
 type InteractiveToolStepProps = {
@@ -13,7 +14,15 @@ type InteractiveToolStepProps = {
   compact?: boolean;
 };
 
-export function InteractiveToolStepView({ step, onContinue, compact = false }: InteractiveToolStepProps) {
+function SystemGraphInteractiveStep({
+  step,
+  onContinue,
+  compact = false,
+}: {
+  step: SystemGraphToolStep;
+  onContinue: () => void;
+  compact?: boolean;
+}) {
   const control = useMemo(
     () => ({
       label: "Continuar",
@@ -52,7 +61,15 @@ export function InteractiveToolStepView({ step, onContinue, compact = false }: I
         />
       ) : null}
 
-      {step.tool === "system-graph" ? <SystemGraphTool config={step.graph} compact={compact} /> : null}
+      <SystemGraphTool config={step.graph} compact={compact} />
     </div>
   );
+}
+
+export function InteractiveToolStepView({ step, onContinue, compact = false }: InteractiveToolStepProps) {
+  if (step.tool === "naturales-numeracion") {
+    return <NaturalesNumeracionTool step={step} onContinue={onContinue} compact={compact} />;
+  }
+
+  return <SystemGraphInteractiveStep step={step} onContinue={onContinue} compact={compact} />;
 }

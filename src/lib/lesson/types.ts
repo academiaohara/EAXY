@@ -206,11 +206,27 @@ export type SystemGraphConfig = {
   yMax?: number;
 };
 
-export type InteractiveToolStep = LessonStepBase & {
+/** Escenas de la lección 1 (1.º ESO): origen y sistemas de numeración. */
+export type NaturalesNumeracionScene =
+  | "origen-contar"
+  | "sistemas-historia"
+  | "decimal-cifras"
+  | "contar-diez"
+  | "tabla-posicional";
+
+export type SystemGraphToolStep = LessonStepBase & {
   type: "interactive_tool";
   tool: "system-graph";
   graph: SystemGraphConfig;
 };
+
+export type NaturalesNumeracionToolStep = LessonStepBase & {
+  type: "interactive_tool";
+  tool: "naturales-numeracion";
+  scene: NaturalesNumeracionScene;
+};
+
+export type InteractiveToolStep = SystemGraphToolStep | NaturalesNumeracionToolStep;
 
 type PracticeFields = {
   question: string;
