@@ -1,3 +1,5 @@
+import type { RoundingOrderId } from "@/lib/lesson/naturales-redondeo";
+
 export type StepType =
   | "concept"
   | "animated_solution"
@@ -210,9 +212,11 @@ export type SystemGraphConfig = {
 export type NaturalesNumeracionScene =
   | "origen-contar"
   | "sistemas-historia"
-  | "decimal-cifras"
-  | "contar-diez"
-  | "tabla-posicional";
+  | "decimal-contar"
+  | "redondeo-demo"
+  | "redondeo-corte";
+
+export type { RoundingOrderId } from "@/lib/lesson/naturales-redondeo";
 
 export type SystemGraphToolStep = LessonStepBase & {
   type: "interactive_tool";
@@ -224,6 +228,8 @@ export type NaturalesNumeracionToolStep = LessonStepBase & {
   type: "interactive_tool";
   tool: "naturales-numeracion";
   scene: NaturalesNumeracionScene;
+  /** Configuración del ejercicio de redondeo (escena `redondeo-corte`). */
+  roundingExercise?: { n: number; orderId: RoundingOrderId };
 };
 
 export type InteractiveToolStep = SystemGraphToolStep | NaturalesNumeracionToolStep;
