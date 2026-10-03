@@ -1,7 +1,10 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
+import {
+  useRegisterLessonStepControl,
+  type LessonContinueMeta,
+} from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/scenes/ContarDiezScene";
 import { DecimalIntroScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalIntroScene";
@@ -9,7 +12,6 @@ import { OrigenContarScene } from "@/components/lesson/tools/naturales-numeracio
 import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
 import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
 import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
-import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
 import type { NaturalesNumeracionToolStep } from "@/lib/lesson/types";
 
 type NaturalesNumeracionToolProps = {
@@ -27,7 +29,7 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
 
   const control = useMemo(
     () => ({
-      label: ready ? "Continuar" : "Continuar",
+      label: "Continuar",
       onClick: () => onContinue({ completed: ready }),
       testId: "lesson-continue-button",
     }),
