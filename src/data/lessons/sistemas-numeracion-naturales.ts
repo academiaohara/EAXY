@@ -30,7 +30,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       title: "El sistema decimal",
       layout: "stack",
       content: [
-        "Lee con calma: aquí no hay prisa. Cuando quieras, usa **Continuar** o **Saltar**; los tramos en verde en la barra superior son los que ya superaste.",
+        "Lee con calma: aquí no hay prisa. La barra superior te deja ir y volver; el verde indica lo que ya superaste.",
       ],
     },
     {
