@@ -11,6 +11,11 @@ type LessonFrameProps = {
   lessonTitle: string;
   currentStep: number;
   totalSteps: number;
+  /** Índice actual 0-based para la barra navegable. */
+  currentStepIndex?: number;
+  completedSteps?: boolean[];
+  visitedSteps?: boolean[];
+  onGoToStep?: (index: number) => void;
   stars?: number;
   totalStars?: number;
   feedback?: FeedbackStatus | null;
@@ -50,6 +55,10 @@ export function LessonFrame({
   lessonTitle,
   currentStep,
   totalSteps,
+  currentStepIndex,
+  completedSteps,
+  visitedSteps,
+  onGoToStep,
   stars = 0,
   totalStars,
   feedback = null,
@@ -95,7 +104,16 @@ export function LessonFrame({
               Paso {currentStep} de {totalSteps}
             </p>
           </div>
-          <LessonProgressHeader current={currentStep} total={totalSteps} />
+          <LessonProgressHeader
+            currentIndex={currentStepIndex ?? currentStep - 1}
+            total={totalSteps}
+            completed={completedSteps ?? []}
+            visited={visitedSteps ?? []}
+            onGoToStep={onGoToStep ?? (() => {})}
+          />
+          <p className="text-[10px] leading-snug text-slate-400">
+            Pulsa un tramo para ir a ese paso. Verde = superado; puedes volver atrás o saltar sin penalización.
+          </p>
         </div>
 
         <LessonStarCounter stars={stars} totalStars={totalStars} />

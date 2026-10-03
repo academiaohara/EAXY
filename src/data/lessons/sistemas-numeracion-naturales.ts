@@ -23,11 +23,22 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       layout: "stack",
     },
     {
-      id: "decimal-contar",
+      id: "decimal-intro",
       type: "interactive_tool",
       tool: "naturales-numeracion",
-      scene: "decimal-contar",
+      scene: "decimal-intro",
       title: "El sistema decimal",
+      layout: "stack",
+      content: [
+        "Lee con calma: aquí no hay prisa. La barra superior te deja ir y volver; el verde indica lo que ya superaste.",
+      ],
+    },
+    {
+      id: "contar-diez",
+      type: "interactive_tool",
+      tool: "naturales-numeracion",
+      scene: "contar-diez",
+      title: "Contar unidades hasta diez",
       layout: "stack",
     },
     {

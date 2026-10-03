@@ -1,5 +1,7 @@
 "use client";
 
+import { ChevronLeftIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
@@ -8,11 +10,23 @@ type LessonFooterDockProps = {
   action: React.ReactNode;
   /** Atajo de ayuda, a un lado para no competir con la acción principal. */
   help?: React.ReactNode;
+  /** Paso anterior (exploración libre). */
+  onBack?: () => void;
+  canBack?: boolean;
+  /** Avanzar sin marcar el paso como completado. */
+  onSkip?: () => void;
   feedback?: FeedbackStatus | null;
 };
 
 /** Pie del panel de la lección; se tiñe con el color del feedback. */
-export function LessonFooterDock({ action, help, feedback = null }: LessonFooterDockProps) {
+export function LessonFooterDock({
+  action,
+  help,
+  onBack,
+  canBack = false,
+  onSkip,
+  feedback = null,
+}: LessonFooterDockProps) {
   return (
     <div
       className={cn(
@@ -24,11 +38,38 @@ export function LessonFooterDock({ action, help, feedback = null }: LessonFooter
       data-testid="lesson-footer-dock"
       data-feedback={feedback ?? "none"}
     >
-      <div className="flex items-center gap-3 px-4 py-3.5 sm:px-8">
-        {/* Espaciador simétrico al de la ayuda: deja la acción en el centro. */}
-        <div className="flex-1" aria-hidden />
+      <div className="flex items-center gap-2 px-4 py-3.5 sm:gap-3 sm:px-8">
+        <div className="flex min-w-0 flex-1 items-center justify-start gap-2">
+          {canBack && onBack ? (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              className="rounded-full text-slate-600"
+              onClick={onBack}
+              data-testid="lesson-back-button"
+            >
+              <ChevronLeftIcon className="size-4" aria-hidden />
+              Atrás
+            </Button>
+          ) : null}
+        </div>
         <div className="flex shrink-0 items-center justify-center">{action}</div>
-        <div className="flex flex-1 items-center justify-end">{help}</div>
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+          {onSkip && !feedback ? (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              className="rounded-full text-slate-500"
+              onClick={onSkip}
+              data-testid="lesson-skip-button"
+            >
+              Saltar
+            </Button>
+          ) : null}
+          {help}
+        </div>
       </div>
     </div>
   );

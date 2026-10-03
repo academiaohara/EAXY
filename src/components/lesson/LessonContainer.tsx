@@ -15,6 +15,7 @@ import { TutorPanel } from "@/components/lesson/TutorPanel";
 import {
   LessonStepControlProvider,
   useLessonStepControl,
+  type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
 import { getConcept } from "@/lib/lesson/concept-glossary";
 import {
@@ -93,6 +94,12 @@ function LessonContainerBody({
   const [stepIndex, setStepIndex] = useState(0);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
   const [completed, setCompleted] = useState(false);
+  const [completedSteps, setCompletedSteps] = useState(() => lesson.steps.map(() => false));
+  const [visitedSteps, setVisitedSteps] = useState(() => {
+    const initial = lesson.steps.map(() => false);
+    initial[0] = true;
+    return initial;
+  });
   const [stars, setStars] = useState(0);
   const [log, setLog] = useState<TutorLogEntry[]>([]);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -105,6 +112,17 @@ function LessonContainerBody({
       setLocalLessonStatus(curriculumLessonId, "started");
     }
   }, [trackLocalProgress, curriculumLessonId]);
+
+  useEffect(() => {
+    setVisitedSteps((prev) => {
+      if (prev[stepIndex]) {
+        return prev;
+      }
+      const next = [...prev];
+      next[stepIndex] = true;
+      return next;
+    });
+  }, [stepIndex]);
 
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
@@ -187,23 +205,72 @@ function LessonContainerBody({
     [feedback],
   );
 
-  const goToNextStep = useCallback(() => {
-    setHelpNodeId(null);
-    setHelpContext(STEP_HELP);
-    if (!lesson.steps[stepIndex + 1]) {
-      setCompleted(true);
-      if (trackLocalProgress && curriculumLessonId) {
-        setLocalLessonStatus(curriculumLessonId, "completed");
+  const goToNextStep = useCallback(
+    (meta?: LessonContinueMeta) => {
+      const markComplete = meta?.completed !== false;
+      if (markComplete) {
+        setCompletedSteps((prev) => {
+          if (prev[stepIndex]) {
+            return prev;
+          }
+          const next = [...prev];
+          next[stepIndex] = true;
+          return next;
+        });
       }
-      return;
-    }
-    setStepIndex(stepIndex + 1);
-  }, [curriculumLessonId, lesson.steps, stepIndex, trackLocalProgress]);
+
+      setHelpNodeId(null);
+      setHelpContext(STEP_HELP);
+      if (!lesson.steps[stepIndex + 1]) {
+        setCompleted(true);
+        return;
+      }
+      setFeedback(null);
+      setStepIndex(stepIndex + 1);
+    },
+    [lesson.steps, stepIndex],
+  );
 
   const handleNext = useCallback(() => {
+    if (feedback === "correct") {
+      goToNextStep({ completed: true });
+      return;
+    }
     setFeedback(null);
-    goToNextStep();
+    goToNextStep({ completed: false });
+  }, [feedback, goToNextStep]);
+
+  const handleSkip = useCallback(() => {
+    goToNextStep({ completed: false });
   }, [goToNextStep]);
+
+  const goToStep = useCallback(
+    (index: number) => {
+      if (index < 0 || index >= totalSteps) {
+        return;
+      }
+      setFeedback(null);
+      setHelpNodeId(null);
+      setHelpContext(STEP_HELP);
+      setStepIndex(index);
+      setCompleted(false);
+    },
+    [totalSteps],
+  );
+
+  const goBack = useCallback(() => {
+    goToStep(stepIndex - 1);
+  }, [goToStep, stepIndex]);
+
+  useEffect(() => {
+    if (!completed || !trackLocalProgress || !curriculumLessonId) {
+      return;
+    }
+    const allDone = completedSteps.every(Boolean);
+    if (allDone) {
+      setLocalLessonStatus(curriculumLessonId, "completed");
+    }
+  }, [completed, completedSteps, curriculumLessonId, trackLocalProgress]);
 
   /**
    * El alumno dice que no lo entiende: el tutor le pregunta qué parte. Con
@@ -335,7 +402,21 @@ function LessonContainerBody({
     setHelpNodeId(null);
     setHelpContext(STEP_HELP);
     setPanelOpen(false);
+    setCompletedSteps(lesson.steps.map(() => false));
+    setVisitedSteps(() => {
+      const initial = lesson.steps.map(() => false);
+      initial[0] = true;
+      return initial;
+    });
   }
+
+  const incompleteSteps = useMemo(
+    () =>
+      lesson.steps
+        .map((step, index) => ({ index, title: step.title, done: completedSteps[index] }))
+        .filter((entry) => !entry.done),
+    [completedSteps, lesson.steps],
+  );
 
   if (completed) {
     return (
@@ -345,6 +426,17 @@ function LessonContainerBody({
         totalStars={totalStars}
         courseHref={courseHref}
         onRestart={restartLesson}
+        incompleteSteps={incompleteSteps}
+        onJumpToStep={(index) => {
+          setCompleted(false);
+          setFeedback(null);
+          setStepIndex(index);
+          setVisitedSteps((prev) => {
+            const next = [...prev];
+            next[index] = true;
+            return next;
+          });
+        }}
       />
     );
   }
@@ -370,7 +462,11 @@ function LessonContainerBody({
           closeHref={courseHref}
           lessonTitle={lesson.title}
           currentStep={stepIndex + 1}
+          currentStepIndex={stepIndex}
           totalSteps={totalSteps}
+          completedSteps={completedSteps}
+          visitedSteps={visitedSteps}
+          onGoToStep={goToStep}
           stars={stars}
           totalStars={totalStars}
           feedback={feedback}
@@ -389,6 +485,9 @@ function LessonContainerBody({
           footer={
             <LessonFooterDock
               feedback={feedback}
+              canBack={stepIndex > 0}
+              onBack={goBack}
+              onSkip={feedback ? undefined : handleSkip}
               action={
                 feedback ? (
                   <LessonFeedbackActions

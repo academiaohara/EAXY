@@ -5,11 +5,12 @@ import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { cn } from "@/lib/utils";
+import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
 import type { AnimatedSolutionStep } from "@/lib/lesson/types";
 
 type AnimatedSolutionProps = {
   step: AnimatedSolutionStep;
-  onContinue: () => void;
+  onContinue: (meta?: LessonContinueMeta) => void;
   compact?: boolean;
 };
 
@@ -20,7 +21,7 @@ export function AnimatedSolution({ step, onContinue, compact = false }: Animated
 
   const handleAdvance = useCallback(() => {
     if (isLastFrame) {
-      onContinue();
+      onContinue({ completed: true });
       return;
     }
     setFrameIndex((prev) => prev + 1);

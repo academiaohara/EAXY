@@ -6,12 +6,19 @@ import { Button } from "@/components/ui/button";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
 
+type IncompleteStep = {
+  index: number;
+  title: string;
+};
+
 type LessonCompleteProps = {
   lessonTitle: string;
   stars: number;
   totalStars: number;
   courseHref: string;
   onRestart: () => void;
+  incompleteSteps?: IncompleteStep[];
+  onJumpToStep?: (index: number) => void;
 };
 
 export function LessonComplete({
@@ -20,8 +27,11 @@ export function LessonComplete({
   totalStars,
   courseHref,
   onRestart,
+  incompleteSteps = [],
+  onJumpToStep,
 }: LessonCompleteProps) {
   const starSlots = Math.max(totalStars, stars, 1);
+  const allDone = incompleteSteps.length === 0;
 
   return (
     <div
@@ -32,9 +42,13 @@ export function LessonComplete({
         <div className="relative bg-gradient-to-b from-emerald-50 to-white px-8 pt-10 text-center">
           <div className="relative mx-auto size-24">
             <TutorMascot
-              mood="celebrate"
+              mood={allDone ? "celebrate" : "idle"}
               size={96}
-              label="El tutor celebra que has completado la lección"
+              label={
+                allDone
+                  ? "El tutor celebra que has completado la lección"
+                  : "El tutor te anima a repasar lo que falta"
+              }
             />
           </div>
         </div>
@@ -42,12 +56,30 @@ export function LessonComplete({
         <div className="space-y-6 px-8 pb-10 pt-6 text-center">
           <div className="space-y-2">
             <h1 className="font-heading text-2xl font-semibold sm:text-3xl">
-              ¡Lección completada!
+              {allDone ? "¡Lección completada!" : "Has recorrido la lección"}
             </h1>
             <p className="text-sm text-muted-foreground">
-              Has terminado &ldquo;{lessonTitle}&rdquo;.
+              {allDone
+                ? `Has terminado «${lessonTitle}».`
+                : `Quedan tramos sin marcar en verde en «${lessonTitle}». Puedes volver cuando quieras.`}
             </p>
           </div>
+
+          {!allDone && onJumpToStep ? (
+            <ul className="mx-auto max-w-md space-y-2 text-left text-sm">
+              {incompleteSteps.map((step) => (
+                <li key={step.index}>
+                  <button
+                    type="button"
+                    className="w-full rounded-xl border border-amber-200 bg-amber-50/80 px-4 py-2.5 text-left font-medium text-amber-950 transition hover:bg-amber-100"
+                    onClick={() => onJumpToStep(step.index)}
+                  >
+                    Ir al paso {step.index + 1}: {step.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
 
           {totalStars > 0 ? (
             <div className="space-y-2">
@@ -65,7 +97,7 @@ export function LessonComplete({
                 ))}
               </div>
               <p className="text-sm font-medium text-emerald-700">
-                {stars} de {totalStars} aciertos en esta sesión
+                {stars} de {totalStars} aciertos en las prácticas (puedes repetirlas sin prisa)
               </p>
             </div>
           ) : null}
