@@ -1,7 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
+import {
+  useRegisterLessonStepControl,
+  type LessonContinueMeta,
+} from "@/components/lesson/LessonStepControlContext";
 import { AnimatedSolution } from "@/components/lesson/steps/AnimatedSolution";
 import { Classify } from "@/components/lesson/steps/Classify";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
@@ -14,7 +17,7 @@ import type { LessonStep } from "@/lib/lesson/types";
 type InteractiveQuestionProps = {
   step: LessonStep;
   onCheck: (correct: boolean) => void;
-  onContinue?: () => void;
+  onContinue?: (meta?: LessonContinueMeta) => void;
   disabled?: boolean;
   compact?: boolean;
 };
@@ -25,7 +28,7 @@ function ConceptStepView({
   compact,
 }: {
   step: Extract<LessonStep, { type: "concept" }>;
-  onContinue?: () => void;
+  onContinue?: (meta?: LessonContinueMeta) => void;
   compact?: boolean;
 }) {
   const control = useMemo(
@@ -33,7 +36,7 @@ function ConceptStepView({
       onContinue
         ? {
             label: "Continuar",
-            onClick: onContinue,
+            onClick: () => onContinue({ completed: true }),
             testId: "lesson-continue-button",
           }
         : null,

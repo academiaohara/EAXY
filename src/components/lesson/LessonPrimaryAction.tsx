@@ -12,7 +12,7 @@ export function LessonPrimaryAction({ control }: LessonPrimaryActionProps) {
   return (
     <Button
       type="button"
-      onClick={control.onClick}
+      onClick={() => control.onClick()}
       disabled={control.disabled}
       className={cn(
         "min-w-[11rem] rounded-full py-6 text-base font-semibold sm:min-w-[13rem]",

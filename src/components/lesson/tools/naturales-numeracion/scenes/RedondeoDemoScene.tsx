@@ -53,7 +53,7 @@ export function RedondeoDemoScene({ onReadyChange }: RedondeoDemoSceneProps) {
             Siguiente ejemplo
           </Button>
         ) : (
-          <p className="text-sm font-medium text-emerald-700">Has visto los tres casos del temario.</p>
+          <p className="text-sm font-medium text-emerald-700">Has visto los tres ejemplos de redondeo.</p>
         )}
       </div>
     </div>

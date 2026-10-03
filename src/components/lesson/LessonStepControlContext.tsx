@@ -9,9 +9,14 @@ import {
   type ReactNode,
 } from "react";
 
+export type LessonContinueMeta = {
+  /** Si false, el alumno avanza pero el paso no queda marcado como completado. */
+  completed?: boolean;
+};
+
 export type LessonStepControl = {
   label: string;
-  onClick: () => void;
+  onClick: (meta?: LessonContinueMeta) => void;
   disabled?: boolean;
   testId?: string;
 };

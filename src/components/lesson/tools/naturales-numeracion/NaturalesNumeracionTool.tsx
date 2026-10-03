@@ -3,16 +3,18 @@
 import { useCallback, useMemo, useState } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
-import { DecimalContarScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalContarScene";
+import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/scenes/ContarDiezScene";
+import { DecimalIntroScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalIntroScene";
 import { OrigenContarScene } from "@/components/lesson/tools/naturales-numeracion/scenes/OrigenContarScene";
 import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
 import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
 import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
+import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
 import type { NaturalesNumeracionToolStep } from "@/lib/lesson/types";
 
 type NaturalesNumeracionToolProps = {
   step: NaturalesNumeracionToolStep;
-  onContinue: () => void;
+  onContinue: (meta?: LessonContinueMeta) => void;
   compact?: boolean;
 };
 
@@ -25,9 +27,8 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
 
   const control = useMemo(
     () => ({
-      label: "Continuar",
-      onClick: onContinue,
-      disabled: !ready,
+      label: ready ? "Continuar" : "Continuar",
+      onClick: () => onContinue({ completed: ready }),
       testId: "lesson-continue-button",
     }),
     [onContinue, ready],
@@ -45,8 +46,10 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
         return <OrigenContarScene />;
       case "sistemas-historia":
         return <SistemasHistoriaScene onReadyChange={handleReadyChange} />;
-      case "decimal-contar":
-        return <DecimalContarScene onReadyChange={handleReadyChange} />;
+      case "decimal-intro":
+        return <DecimalIntroScene onReadyChange={handleReadyChange} />;
+      case "contar-diez":
+        return <ContarDiezScene onReadyChange={handleReadyChange} />;
       case "redondeo-demo":
         return <RedondeoDemoScene onReadyChange={handleReadyChange} />;
       case "redondeo-corte":

@@ -212,7 +212,8 @@ export type SystemGraphConfig = {
 export type NaturalesNumeracionScene =
   | "origen-contar"
   | "sistemas-historia"
-  | "decimal-contar"
+  | "decimal-intro"
+  | "contar-diez"
   | "redondeo-demo"
   | "redondeo-corte";
 

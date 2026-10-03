@@ -2,17 +2,25 @@
 
 import { cn } from "@/lib/utils";
 
-type LessonProgressHeaderProps = {
-  current: number;
+export type LessonProgressHeaderProps = {
+  /** Índice del paso actual (0-based). */
+  currentIndex: number;
   total: number;
-  /** Máximo de segmentos visibles (pasos largos se agrupan visualmente). */
+  /** Paso superado (actividad hecha o acierto en práctica). */
+  completed: boolean[];
+  /** Paso visitado al menos una vez. */
+  visited: boolean[];
+  onGoToStep: (index: number) => void;
   maxSegments?: number;
 };
 
 export function LessonProgressHeader({
-  current,
+  currentIndex,
   total,
-  maxSegments = 12,
+  completed,
+  visited,
+  onGoToStep,
+  maxSegments = 16,
 }: LessonProgressHeaderProps) {
   const segmentCount = Math.min(total, maxSegments);
 
@@ -20,23 +28,36 @@ export function LessonProgressHeader({
     <div
       className="flex flex-1 items-center gap-1"
       data-testid="lesson-progress-bar"
-      aria-label={`Paso ${current} de ${total}`}
+      role="tablist"
+      aria-label={`Pasos de la lección, paso ${currentIndex + 1} de ${total}`}
     >
       {Array.from({ length: segmentCount }, (_, index) => {
-        const stepNum = index + 1;
-        const isCompleted = stepNum < current;
-        const isCurrent = stepNum === current;
+        const isCompleted = completed[index];
+        const isCurrent = index === currentIndex;
+        const isVisited = visited[index];
 
         return (
-          <div
+          <button
             key={index}
+            type="button"
+            role="tab"
+            aria-selected={isCurrent}
+            aria-label={
+              isCompleted
+                ? `Paso ${index + 1}, completado`
+                : isCurrent
+                  ? `Paso ${index + 1}, actual`
+                  : `Paso ${index + 1}${isVisited ? ", visitado" : ""}`
+            }
+            onClick={() => onGoToStep(index)}
             className={cn(
-              "h-1.5 min-w-2 flex-1 rounded-full transition-colors duration-300",
+              "h-2 min-w-2 flex-1 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/50",
               isCompleted && "bg-emerald-500",
-              isCurrent && "bg-emerald-500",
-              !isCompleted && !isCurrent && "bg-slate-200",
+              isCurrent && !isCompleted && "bg-cobalt ring-2 ring-cobalt/30",
+              isCurrent && isCompleted && "bg-emerald-500 ring-2 ring-emerald-400/50",
+              !isCompleted && !isCurrent && isVisited && "bg-emerald-200",
+              !isCompleted && !isCurrent && !isVisited && "bg-slate-200 hover:bg-slate-300",
             )}
-            aria-hidden
           />
         );
       })}
