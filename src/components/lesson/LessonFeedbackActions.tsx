@@ -1,5 +1,6 @@
 "use client";
 
+import { RotateCcwIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
@@ -10,6 +11,8 @@ type LessonFeedbackActionsProps = {
   onNext: () => void;
   /** Pregunta al tutor por qué: al acertar confirma el razonamiento, al fallar lo explica. */
   onHelp?: () => void;
+  /** Vuelve a dejar el paso en blanco para practicar otra vez. */
+  onReset?: () => void;
 };
 
 export function LessonFeedbackActions({
@@ -17,11 +20,24 @@ export function LessonFeedbackActions({
   isLastStep = false,
   onNext,
   onHelp,
+  onReset,
 }: LessonFeedbackActionsProps) {
   const isCorrect = status === "correct";
 
   return (
-    <div className="flex items-center gap-3" role="status" data-testid="lesson-feedback-footer">
+    <div className="flex flex-wrap items-center justify-end gap-3" role="status" data-testid="lesson-feedback-footer">
+      {onReset ? (
+        <Button
+          type="button"
+          variant="ghost"
+          className="rounded-full px-4 py-6 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          onClick={onReset}
+          data-testid="lesson-step-reset"
+        >
+          <RotateCcwIcon className="mr-1.5 size-4" aria-hidden />
+          Reintentar paso
+        </Button>
+      ) : null}
       {onHelp ? (
         <Button
           type="button"

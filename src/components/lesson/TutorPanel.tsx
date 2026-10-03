@@ -221,7 +221,7 @@ export function TutorPanel({
 
         <div
           ref={listRef}
-          className="flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto overscroll-contain px-4 py-4"
+          className="scrollbar-subtle flex min-h-0 flex-1 flex-col gap-3.5 overflow-y-auto overscroll-contain px-4 py-4"
           data-testid="tutor-panel-log"
         >
           {log.length === 0 ? (

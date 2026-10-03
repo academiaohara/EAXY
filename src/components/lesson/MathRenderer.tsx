@@ -58,7 +58,7 @@ export function MathRenderer({ text, display = false, className, conceptLookup }
   if (display) {
     return (
       <div
-        className={cn("overflow-x-auto py-1 text-center", className)}
+        className={cn("scrollbar-subtle overflow-x-auto py-1 text-center", className)}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     );

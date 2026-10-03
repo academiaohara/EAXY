@@ -10,24 +10,34 @@ import {
   numberLineTicks,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
+import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
+import type { NumberLinePickSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { NumberLinePickStep } from "@/lib/lesson/types";
 
 type NumberLinePickProps = {
   step: NumberLinePickStep;
-  onCheck: (correct: boolean) => void;
+  onCheck: (result: StepCheckResult) => void;
   disabled?: boolean;
   compact?: boolean;
+  saved?: NumberLinePickSnapshot | null;
 };
 
 /** Margen lateral de la recta dentro de su caja, en %. */
 const PAD = 4;
 
-export function NumberLinePick({ step, onCheck, disabled = false, compact = false }: NumberLinePickProps) {
+export function NumberLinePick({
+  step,
+  onCheck,
+  disabled = false,
+  compact = false,
+  saved = null,
+}: NumberLinePickProps) {
   const subdivisions = Math.max(1, step.subdivisions ?? 1);
   const ticks = useMemo(() => numberLineTicks(step), [step]);
-  const [index, setIndex] = useState<number | null>(null);
-  const [checked, setChecked] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const restored = saved?.kind === "number_line_pick" ? saved : null;
+  const [index, setIndex] = useState<number | null>(restored?.index ?? null);
+  const [checked, setChecked] = useState(Boolean(restored));
+  const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
   const trackRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
@@ -78,8 +88,15 @@ export function NumberLinePick({ step, onCheck, disabled = false, compact = fals
     const correct = isNumberLinePickCorrect(step, value);
     setIsCorrect(correct);
     setChecked(true);
-    onCheck(correct);
-  }, [checked, onCheck, step, value]);
+    onCheck({
+      correct,
+      snapshot: {
+        kind: "number_line_pick",
+        index: index!,
+        isCorrect: correct,
+      },
+    });
+  }, [checked, index, onCheck, step, value]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -100,6 +117,7 @@ export function NumberLinePick({ step, onCheck, disabled = false, compact = fals
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-number-line-pick">
+      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <div
         ref={trackRef}
         role="slider"

@@ -4,14 +4,17 @@ import { useCallback, useMemo, useState } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { PracticeShell } from "@/components/lesson/steps/PracticeShell";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
+import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
+import type { FillInBlankSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import { cn } from "@/lib/utils";
 import type { FillInBlankStep } from "@/lib/lesson/types";
 
 type FillInBlankProps = {
   step: FillInBlankStep;
-  onCheck: (correct: boolean) => void;
+  onCheck: (result: StepCheckResult) => void;
   disabled?: boolean;
   compact?: boolean;
+  saved?: FillInBlankSnapshot | null;
 };
 
 export function FillInBlank({
@@ -19,10 +22,12 @@ export function FillInBlank({
   onCheck,
   disabled = false,
   compact = false,
+  saved = null,
 }: FillInBlankProps) {
-  const [value, setValue] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const restored = saved?.kind === "fill_in_blank" ? saved : null;
+  const [value, setValue] = useState(restored?.value ?? "");
+  const [checked, setChecked] = useState(Boolean(restored));
+  const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
 
   const handleCheck = useCallback(() => {
     if (!value.trim() || checked) {
@@ -31,7 +36,10 @@ export function FillInBlank({
     const correct = checkFillInBlankAnswerFlexible(value, step.correctAnswers);
     setIsCorrect(correct);
     setChecked(true);
-    onCheck(correct);
+    onCheck({
+      correct,
+      snapshot: { kind: "fill_in_blank", value, isCorrect: correct },
+    });
   }, [checked, onCheck, step.correctAnswers, value]);
 
   const control = useMemo(() => {
@@ -50,6 +58,7 @@ export function FillInBlank({
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fill-in-blank">
+      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <form
         className="flex justify-center"
         onSubmit={(event) => {

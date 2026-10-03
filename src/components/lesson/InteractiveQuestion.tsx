@@ -12,14 +12,16 @@ import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
 import { FractionPick } from "@/components/lesson/steps/FractionPick";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
 import { NumberLinePick } from "@/components/lesson/steps/NumberLinePick";
+import type { PracticeStepSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { LessonStep } from "@/lib/lesson/types";
 
 type InteractiveQuestionProps = {
   step: LessonStep;
-  onCheck: (correct: boolean) => void;
+  onCheck: (result: StepCheckResult) => void;
   onContinue?: (meta?: LessonContinueMeta) => void;
   disabled?: boolean;
   compact?: boolean;
+  savedAttempt?: PracticeStepSnapshot | null;
 };
 
 function ConceptStepView({
@@ -67,6 +69,7 @@ export function InteractiveQuestion({
   onContinue,
   disabled = false,
   compact = false,
+  savedAttempt = null,
 }: InteractiveQuestionProps) {
   if (step.type === "concept") {
     return <ConceptStepView step={step} onContinue={onContinue} compact={compact} />;
@@ -85,16 +88,48 @@ export function InteractiveQuestion({
   }
 
   if (step.type === "fraction_pick") {
-    return <FractionPick step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+    return (
+      <FractionPick
+        step={step}
+        onCheck={onCheck}
+        disabled={disabled}
+        compact={compact}
+        saved={savedAttempt?.kind === "fraction_pick" ? savedAttempt : null}
+      />
+    );
   }
 
   if (step.type === "classify") {
-    return <Classify step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+    return (
+      <Classify
+        step={step}
+        onCheck={onCheck}
+        disabled={disabled}
+        compact={compact}
+        saved={savedAttempt?.kind === "classify" ? savedAttempt : null}
+      />
+    );
   }
 
   if (step.type === "number_line_pick") {
-    return <NumberLinePick step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+    return (
+      <NumberLinePick
+        step={step}
+        onCheck={onCheck}
+        disabled={disabled}
+        compact={compact}
+        saved={savedAttempt?.kind === "number_line_pick" ? savedAttempt : null}
+      />
+    );
   }
 
-  return <FillInBlank step={step} onCheck={onCheck} disabled={disabled} compact={compact} />;
+  return (
+    <FillInBlank
+      step={step}
+      onCheck={onCheck}
+      disabled={disabled}
+      compact={compact}
+      saved={savedAttempt?.kind === "fill_in_blank" ? savedAttempt : null}
+    />
+  );
 }

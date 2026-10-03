@@ -15,13 +15,16 @@ import {
   isFractionPickCorrect,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
+import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
+import type { FractionPickSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { FractionPickStep } from "@/lib/lesson/types";
 
 type FractionPickProps = {
   step: FractionPickStep;
-  onCheck: (correct: boolean) => void;
+  onCheck: (result: StepCheckResult) => void;
   disabled?: boolean;
   compact?: boolean;
+  saved?: FractionPickSnapshot | null;
 };
 
 const UNIT_NAME: Record<FractionPickStep["shape"], string> = {
@@ -31,12 +34,21 @@ const UNIT_NAME: Record<FractionPickStep["shape"], string> = {
   set: "el grupo",
 };
 
-export function FractionPick({ step, onCheck, disabled = false, compact = false }: FractionPickProps) {
+export function FractionPick({
+  step,
+  onCheck,
+  disabled = false,
+  compact = false,
+  saved = null,
+}: FractionPickProps) {
   const wholes = fractionWholes(step);
-  const [parts, setParts] = useState(() => initialFractionParts(step));
-  const [marked, setMarked] = useState<boolean[]>(() => Array(wholes * initialFractionParts(step)).fill(false));
-  const [checked, setChecked] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const restored = saved?.kind === "fraction_pick" ? saved : null;
+  const [parts, setParts] = useState(() => restored?.parts ?? initialFractionParts(step));
+  const [marked, setMarked] = useState<boolean[]>(
+    () => restored?.marked ?? Array(wholes * initialFractionParts(step)).fill(false),
+  );
+  const [checked, setChecked] = useState(Boolean(restored));
+  const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
 
   const markedCount = marked.filter(Boolean).length;
   const locked = disabled || checked;
@@ -63,7 +75,10 @@ export function FractionPick({ step, onCheck, disabled = false, compact = false 
     const correct = isFractionPickCorrect(step, parts, markedCount, markedIndices);
     setIsCorrect(correct);
     setChecked(true);
-    onCheck(correct);
+    onCheck({
+      correct,
+      snapshot: { kind: "fraction_pick", parts, marked, isCorrect: correct },
+    });
   }, [checked, marked, markedCount, onCheck, parts, step]);
 
   const control = useMemo(() => {
@@ -87,6 +102,7 @@ export function FractionPick({ step, onCheck, disabled = false, compact = false 
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fraction-pick">
+      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       {step.adjustableParts ? (
         <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-ink sm:text-base">
           <span>Divide {UNIT_NAME[step.shape]} en</span>
