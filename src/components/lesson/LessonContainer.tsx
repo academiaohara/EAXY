@@ -40,6 +40,13 @@ import {
   type FeedbackStatus,
   type InteractiveLesson,
 } from "@/lib/lesson/types";
+import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersistedStateContext";
+import {
+  clearPersistedInteractiveLesson,
+  createDefaultInteractiveLessonState,
+  readPersistedInteractiveLesson,
+  writePersistedInteractiveLesson,
+} from "@/lib/local-progress/interactive-lesson-state";
 import { setLocalLessonStatus } from "@/lib/local-progress/storage";
 import { cn } from "@/lib/utils";
 
@@ -92,18 +99,24 @@ function LessonContainerBody({
   curriculumLessonId,
   trackLocalProgress = false,
 }: LessonContainerProps) {
-  const [stepIndex, setStepIndex] = useState(0);
+  const stepCount = lesson.steps.length;
+  const defaultLessonState = useMemo(
+    () => createDefaultInteractiveLessonState(stepCount),
+    [stepCount],
+  );
+  const [storageHydrated, setStorageHydrated] = useState(false);
+
+  const [stepIndex, setStepIndex] = useState(defaultLessonState.stepIndex);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
-  const [completed, setCompleted] = useState(false);
-  const [completedSteps, setCompletedSteps] = useState(() => lesson.steps.map(() => false));
-  const [visitedSteps, setVisitedSteps] = useState(() => {
-    const initial = lesson.steps.map(() => false);
-    initial[0] = true;
-    return initial;
-  });
-  const [stepAttempts, setStepAttempts] = useState<Record<string, StepAttemptRecord>>({});
+  const [completed, setCompleted] = useState(defaultLessonState.completed);
+  const [completedSteps, setCompletedSteps] = useState(defaultLessonState.completedSteps);
+  const [visitedSteps, setVisitedSteps] = useState(defaultLessonState.visitedSteps);
+  const [stepAttempts, setStepAttempts] = useState<Record<string, StepAttemptRecord>>(
+    defaultLessonState.stepAttempts,
+  );
+  const [toolState, setToolState] = useState<Record<string, unknown>>(defaultLessonState.toolState);
   const [stepRemountKey, setStepRemountKey] = useState<Record<string, number>>({});
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(defaultLessonState.stars);
   const [log, setLog] = useState<TutorLogEntry[]>([]);
   const [panelOpen, setPanelOpen] = useState(false);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
@@ -115,6 +128,49 @@ function LessonContainerBody({
       setLocalLessonStatus(curriculumLessonId, "started");
     }
   }, [trackLocalProgress, curriculumLessonId]);
+
+  useEffect(() => {
+    const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
+    const resumeIndex = saved.stepIndex;
+    const step = lesson.steps[resumeIndex];
+    /* eslint-disable react-hooks/set-state-in-effect -- rehidratar progreso desde localStorage */
+    setStepIndex(resumeIndex);
+    setCompleted(saved.completed);
+    setCompletedSteps(saved.completedSteps);
+    setVisitedSteps(saved.visitedSteps);
+    setStepAttempts(saved.stepAttempts);
+    setToolState(saved.toolState);
+    setStars(saved.stars);
+    setFeedback(step ? (saved.stepAttempts[step.id]?.feedback ?? null) : null);
+    /* eslint-enable react-hooks/set-state-in-effect */
+    setStorageHydrated(true);
+  }, [lesson.slug, lesson.steps, stepCount]);
+
+  useEffect(() => {
+    if (!storageHydrated) {
+      return;
+    }
+    writePersistedInteractiveLesson(lesson.slug, {
+      stepIndex,
+      completedSteps,
+      visitedSteps,
+      stepAttempts,
+      stars,
+      completed,
+      toolState,
+      updatedAt: Date.now(),
+    });
+  }, [
+    lesson.slug,
+    stepIndex,
+    completedSteps,
+    visitedSteps,
+    stepAttempts,
+    stars,
+    completed,
+    toolState,
+    storageHydrated,
+  ]);
 
   useEffect(() => {
     setVisitedSteps((prev) => {
@@ -438,6 +494,7 @@ function LessonContainerBody({
   const tutorActions = useMemo(() => ({ askAboutConcept }), [askAboutConcept]);
 
   function restartLesson() {
+    clearPersistedInteractiveLesson(lesson.slug);
     setStepIndex(0);
     setFeedback(null);
     setCompleted(false);
@@ -448,6 +505,7 @@ function LessonContainerBody({
     setPanelOpen(false);
     setCompletedSteps(lesson.steps.map(() => false));
     setStepAttempts({});
+    setToolState({});
     setStepRemountKey({});
     setVisitedSteps(() => {
       const initial = lesson.steps.map(() => false);
@@ -498,7 +556,8 @@ function LessonContainerBody({
   const stepMountKey = `${currentStep.id}:${stepRemountKey[currentStep.id] ?? 0}`;
 
   return (
-    <LessonTutorProvider value={tutorActions}>
+    <LessonPersistedStateProvider toolState={toolState} onToolStateChange={setToolState}>
+      <LessonTutorProvider value={tutorActions}>
       <div
         className={cn(
           "flex h-full min-h-0 w-full flex-1 flex-col transition-[padding] duration-300",
@@ -600,6 +659,7 @@ function LessonContainerBody({
         />
       </div>
     </LessonTutorProvider>
+    </LessonPersistedStateProvider>
   );
 }
 

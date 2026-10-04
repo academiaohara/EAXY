@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { CheckIcon } from "lucide-react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { RoundingCutView } from "@/components/lesson/tools/naturales-numeracion/RoundingCutView";
 import {
   digitsOf,
@@ -13,17 +14,22 @@ import {
 } from "@/lib/lesson/naturales-redondeo";
 import { cn } from "@/lib/utils";
 
+function createDefaultRedondeoCorteState() {
+  return { picked: null as number | null };
+}
+
 type RedondeoCorteSceneProps = {
+  stepId: string;
   n: number;
   orderId: RoundingOrderId;
   onReadyChange: (ready: boolean) => void;
 };
 
-export function RedondeoCorteScene({ n, orderId, onReadyChange }: RedondeoCorteSceneProps) {
+export function RedondeoCorteScene({ stepId, n, orderId, onReadyChange }: RedondeoCorteSceneProps) {
   const digits = digitsOf(n);
   const order = orderById(orderId);
   const correctLastKept = lastKeptDigitIndex(digits.length, order.power);
-  const [picked, setPicked] = useState<number | null>(null);
+  const [{ picked }, setState] = usePersistedLessonToolState(stepId, createDefaultRedondeoCorteState);
   const success = picked === correctLastKept;
 
   useEffect(() => {
@@ -43,7 +49,7 @@ export function RedondeoCorteScene({ n, orderId, onReadyChange }: RedondeoCorteS
           <button
             key={`${digit}-${index}`}
             type="button"
-            onClick={() => setPicked(index)}
+            onClick={() => setState({ picked: index })}
             className={cn(
               "min-w-[2.75rem] rounded-xl border-2 px-2 py-3 text-2xl font-bold tabular-nums transition-all sm:text-3xl",
               picked === index

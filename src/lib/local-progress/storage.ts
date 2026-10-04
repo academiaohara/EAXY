@@ -23,6 +23,10 @@ function parseStore(raw: string | null): LocalProgressStore {
       version: 1,
       lessons: parsed.lessons ?? {},
       exercises: parsed.exercises ?? {},
+      interactiveLessons:
+        parsed.interactiveLessons && typeof parsed.interactiveLessons === "object"
+          ? parsed.interactiveLessons
+          : {},
     };
   } catch {
     return { ...EMPTY_LOCAL_PROGRESS };
@@ -36,7 +40,7 @@ export function readLocalProgress(): LocalProgressStore {
   return parseStore(window.localStorage.getItem(LOCAL_PROGRESS_STORAGE_KEY));
 }
 
-function writeLocalProgress(store: LocalProgressStore): void {
+export function writeLocalProgress(store: LocalProgressStore): void {
   if (typeof window === "undefined") {
     return;
   }

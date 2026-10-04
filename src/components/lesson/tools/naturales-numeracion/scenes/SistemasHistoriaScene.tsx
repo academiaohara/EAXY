@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { Button } from "@/components/ui/button";
 import {
   EgyptianNumeralIcon,
@@ -9,9 +10,13 @@ import {
 } from "@/components/lesson/tools/naturales-numeracion/EgyptianNumeralIcon";
 import { TallyMarksView } from "@/components/lesson/tools/naturales-numeracion/scenes/TallyMarksView";
 import { romanToInt } from "@/components/lesson/tools/naturales-numeracion/roman";
+import {
+  createDefaultSistemasHistoriaState,
+  type SistemasHistoriaTabId,
+} from "@/components/lesson/tools/naturales-numeracion/scenes/sistemas-historia-state";
 import { cn } from "@/lib/utils";
 
-type TabId = "tally" | "egypt" | "roman";
+type TabId = SistemasHistoriaTabId;
 
 const TABS: { id: TabId; label: string; subtitle: string }[] = [
   { id: "tally", label: "El hombre primitivo", subtitle: "Marcas en un hueso" },
@@ -47,14 +52,16 @@ const TARGETS: Record<TabId, number> = {
 };
 
 type SistemasHistoriaSceneProps = {
+  stepId: string;
   onReadyChange: (ready: boolean) => void;
 };
 
-export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaSceneProps) {
-  const [tab, setTab] = useState<TabId>("tally");
-  const [tallyCount, setTallyCount] = useState(0);
-  const [egyptSymbols, setEgyptSymbols] = useState<EgyptianSymbolId[]>([]);
-  const [romanStr, setRomanStr] = useState("");
+export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistoriaSceneProps) {
+  const [state, setState] = usePersistedLessonToolState(
+    stepId,
+    createDefaultSistemasHistoriaState,
+  );
+  const { tab, tallyCount, egyptSymbols, romanStr } = state;
 
   const egyptValue = useMemo(() => egyptianSymbolsToInt(egyptSymbols), [egyptSymbols]);
   const romanValue = useMemo(() => romanToInt(romanStr), [romanStr]);
@@ -85,7 +92,7 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
             type="button"
             role="tab"
             aria-selected={tab === item.id}
-            onClick={() => setTab(item.id)}
+            onClick={() => setState((prev) => ({ ...prev, tab: item.id }))}
             className={cn(
               "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
               tab === item.id
@@ -116,12 +123,18 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
                 type="button"
                 variant="outline"
                 size="sm"
-                onClick={() => setTallyCount((n) => Math.max(0, n - 1))}
+                onClick={() =>
+                  setState((prev) => ({ ...prev, tallyCount: Math.max(0, prev.tallyCount - 1) }))
+                }
                 disabled={tallyCount === 0}
               >
                 Quitar
               </Button>
-              <Button type="button" size="sm" onClick={() => setTallyCount((n) => n + 1)}>
+              <Button
+                type="button"
+                size="sm"
+                onClick={() => setState((prev) => ({ ...prev, tallyCount: prev.tallyCount + 1 }))}
+              >
                 Contar uno
               </Button>
             </div>
@@ -140,7 +153,9 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               <button
                 key={sym.id}
                 type="button"
-                onClick={() => setEgyptSymbols((s) => [...s, sym.id])}
+                onClick={() =>
+                  setState((prev) => ({ ...prev, egyptSymbols: [...prev.egyptSymbols, sym.id] }))
+                }
                 className="flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
               >
                 <EgyptianNumeralIcon id={sym.id} className="h-12" />
@@ -175,7 +190,7 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               variant="outline"
               size="sm"
               className="sm:col-span-2 sm:justify-self-end"
-              onClick={() => setEgyptSymbols([])}
+              onClick={() => setState((prev) => ({ ...prev, egyptSymbols: [] }))}
             >
               Borrar
             </Button>
@@ -194,7 +209,7 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               <button
                 key={key}
                 type="button"
-                onClick={() => setRomanStr((s) => s + key)}
+                onClick={() => setState((prev) => ({ ...prev, romanStr: prev.romanStr + key }))}
                 className="flex flex-col items-center rounded-xl border border-violet-200 bg-violet-50/50 py-3 transition hover:border-violet-400 hover:bg-violet-100/70"
               >
                 <span className="font-serif text-2xl font-bold text-violet-900">{key}</span>
@@ -215,7 +230,7 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               variant="outline"
               size="sm"
               className="sm:col-span-2 sm:justify-self-end"
-              onClick={() => setRomanStr("")}
+              onClick={() => setState((prev) => ({ ...prev, romanStr: "" }))}
             >
               Borrar
             </Button>

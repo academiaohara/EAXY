@@ -49,9 +49,15 @@ export function LessonProgressHeader({
                   ? `Paso ${index + 1}, actual`
                   : `Paso ${index + 1}${isVisited ? ", visitado" : ""}`
             }
-            onClick={() => onGoToStep(index)}
+            disabled={!isVisited && !isCurrent}
+            onClick={() => {
+              if (isVisited || isCurrent) {
+                onGoToStep(index);
+              }
+            }}
             className={cn(
               "h-2 min-w-2 flex-1 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/50",
+              !isVisited && !isCurrent && "cursor-not-allowed opacity-60",
               isCompleted && "bg-emerald-500",
               isCurrent && !isCompleted && "bg-cobalt ring-2 ring-cobalt/30",
               isCurrent && isCompleted && "bg-emerald-500 ring-2 ring-emerald-400/50",
