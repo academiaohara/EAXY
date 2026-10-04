@@ -29,10 +29,12 @@ export type StageModuleId =
 export type MulDivNaturalesScene =
   | "multiplicar-repetido"
   | "multiplicar-conteo"
+  | "multiplicacion-mano"
   | "conmutativa-producto"
   | "asociativa-producto"
   | "distributiva-bloques"
   | "reparto-igual"
+  | "division-mano"
   | "reparto-manual"
   | "exacta-entera"
   | "puente-mult-div";
