@@ -11,7 +11,6 @@ import {
   type ClassifyAssignments,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
-import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
 import type { ClassifySnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { ClassifyStep, VisualTone } from "@/lib/lesson/types";
 
@@ -162,7 +161,6 @@ export function Classify({
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-classify">
-      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <div
         className={cn(
           "flex min-h-16 flex-wrap items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed px-3 py-3 transition-colors",

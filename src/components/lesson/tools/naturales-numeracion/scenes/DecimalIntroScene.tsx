@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { cn } from "@/lib/utils";
 
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] as const;
@@ -27,7 +26,9 @@ export function DecimalIntroScene({ onReadyChange }: DecimalIntroSceneProps) {
           que ocupa (unidades, decenas, centenas…).
         </p>
         <p>
-          <MathRenderer text="El **0** indica que en ese orden no hay cantidad y nos permite escribir números como $305$ o $10\\,040$ (diez mil cuarenta)." />
+          El <strong className="text-ink">0</strong> indica que en ese orden no hay cantidad y nos permite escribir
+          números como <strong className="text-ink tabular-nums">305</strong> o{" "}
+          <strong className="whitespace-nowrap text-ink tabular-nums">10.040</strong> (diez mil cuarenta).
         </p>
         <p>
           Cada salto hacia la izquierda multiplica por diez; hacia la derecha, divides entre diez. Por eso diez

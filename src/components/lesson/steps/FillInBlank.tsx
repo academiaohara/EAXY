@@ -4,7 +4,6 @@ import { useCallback, useMemo, useState } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { PracticeShell } from "@/components/lesson/steps/PracticeShell";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
-import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
 import type { FillInBlankSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import { cn } from "@/lib/utils";
 import type { FillInBlankStep } from "@/lib/lesson/types";
@@ -58,7 +57,6 @@ export function FillInBlank({
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fill-in-blank">
-      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <form
         className="flex justify-center"
         onSubmit={(event) => {
