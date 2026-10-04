@@ -1,6 +1,6 @@
 import type { LessonSummary, ModuleSummary } from "@/lib/curriculum/types";
 
-export type LessonProgressStatus = "completed" | "started" | "available";
+export type LessonProgressStatus = "completed" | "incomplete" | "started" | "available";
 
 export type CourseProgress = {
   totalLessons: number;
@@ -21,6 +21,9 @@ export type NextLessonRef = {
 export function getLessonProgressStatus(lesson: LessonSummary): LessonProgressStatus {
   if (lesson.pathStatus === "completed") {
     return "completed";
+  }
+  if (lesson.pathStatus === "incomplete") {
+    return "incomplete";
   }
   if (lesson.pathStatus === "started") {
     return "started";
@@ -69,7 +72,9 @@ export function findNextLesson(modules: ModuleSummary[]): NextLessonRef | null {
   }));
 
   for (const { courseModule, moduleNumber } of withNumber) {
-    const started = courseModule.lessons.find((lesson) => lesson.pathStatus === "started");
+    const started = courseModule.lessons.find(
+      (lesson) => lesson.pathStatus === "started" || lesson.pathStatus === "incomplete",
+    );
     if (started) {
       return { lesson: started, module: courseModule, moduleNumber, isReview: false };
     }

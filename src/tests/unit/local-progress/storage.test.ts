@@ -13,6 +13,13 @@ describe("setLocalLessonStatus", () => {
     expect(readLocalProgress().lessons["lesson-a"]).toBe("completed");
   });
 
+  it("puede marcar incomplete y luego completed", () => {
+    setLocalLessonStatus("lesson-c", "started");
+    setLocalLessonStatus("lesson-c", "incomplete");
+    setLocalLessonStatus("lesson-c", "completed");
+    expect(readLocalProgress().lessons["lesson-c"]).toBe("completed");
+  });
+
   it("persiste en localStorage", () => {
     setLocalLessonStatus("lesson-b", "started");
     const raw = window.localStorage.getItem(LOCAL_PROGRESS_STORAGE_KEY);

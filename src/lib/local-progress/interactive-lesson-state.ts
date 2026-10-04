@@ -93,6 +93,62 @@ export function writePersistedInteractiveLesson(
   writeLocalProgress(store);
 }
 
+export type InteractiveLessonProgressSummary = {
+  stepCount: number;
+  furthestStepIndex: number;
+  completedStepCount: number;
+  pendingStepCount: number;
+  finished: boolean;
+  fullyComplete: boolean;
+};
+
+export function summarizeInteractiveLessonProgress(
+  state: PersistedInteractiveLessonState,
+  stepCount: number,
+): InteractiveLessonProgressSummary {
+  const completedStepCount = state.completedSteps.filter(Boolean).length;
+  const pendingStepCount = Math.max(0, stepCount - completedStepCount);
+  const furthestStepIndex = furthestVisitedStepIndex(state.visitedSteps);
+  const fullyComplete = state.completed && state.completedSteps.every(Boolean);
+
+  return {
+    stepCount,
+    furthestStepIndex,
+    completedStepCount,
+    pendingStepCount,
+    finished: state.completed,
+    fullyComplete,
+  };
+}
+
+export function shouldOfferInteractiveLessonResume(
+  state: PersistedInteractiveLessonState,
+  stepCount: number,
+): boolean {
+  if (state.completed) {
+    return true;
+  }
+  if (state.stepIndex > 0) {
+    return true;
+  }
+  if (furthestVisitedStepIndex(state.visitedSteps) > 0) {
+    return true;
+  }
+  if (state.completedSteps.some(Boolean)) {
+    return true;
+  }
+  if (Object.keys(state.stepAttempts).length > 0) {
+    return true;
+  }
+  if (Object.keys(state.toolState).length > 0) {
+    return true;
+  }
+  if (state.stars > 0) {
+    return true;
+  }
+  return false;
+}
+
 export function clearPersistedInteractiveLesson(lessonSlug: string): void {
   if (typeof window === "undefined") {
     return;

@@ -47,7 +47,9 @@ export function LessonProgressHeader({
                 ? `Paso ${index + 1}, completado`
                 : isCurrent
                   ? `Paso ${index + 1}, actual`
-                  : `Paso ${index + 1}${isVisited ? ", visitado" : ""}`
+                  : isVisited
+                    ? `Paso ${index + 1}, incompleto`
+                    : `Paso ${index + 1}, sin visitar`
             }
             disabled={!isVisited && !isCurrent}
             onClick={() => {
@@ -61,7 +63,7 @@ export function LessonProgressHeader({
               isCompleted && "bg-emerald-500",
               isCurrent && !isCompleted && "bg-cobalt ring-2 ring-cobalt/30",
               isCurrent && isCompleted && "bg-emerald-500 ring-2 ring-emerald-400/50",
-              !isCompleted && !isCurrent && isVisited && "bg-emerald-200",
+              !isCompleted && !isCurrent && isVisited && "bg-amber-300",
               !isCompleted && !isCurrent && !isVisited && "bg-slate-200 hover:bg-slate-300",
             )}
           />

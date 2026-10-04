@@ -8,6 +8,10 @@ import {
   type LocalLessonStatus,
   type LocalProgressStore,
 } from "@/lib/local-progress/types";
+import {
+  pickStrongerLessonStatus,
+  shouldReplaceLocalLessonStatus,
+} from "@/lib/local-progress/lesson-status-rank";
 
 function parseStore(raw: string | null): LocalProgressStore {
   if (!raw) {
@@ -50,13 +54,20 @@ export function writeLocalProgress(store: LocalProgressStore): void {
 export function setLocalLessonStatus(lessonId: string, status: LocalLessonStatus): void {
   const store = readLocalProgress();
   const current = store.lessons[lessonId];
-  if (current === "completed") {
-    return;
-  }
-  if (current === status) {
+  if (!shouldReplaceLocalLessonStatus(current, status)) {
     return;
   }
   store.lessons[lessonId] = status;
+  writeLocalProgress(store);
+  window.dispatchEvent(new CustomEvent("eaxy-local-progress-updated"));
+}
+
+export function resetLocalLessonCatalogStatus(lessonId: string): void {
+  const store = readLocalProgress();
+  if (!store.lessons[lessonId]) {
+    return;
+  }
+  delete store.lessons[lessonId];
   writeLocalProgress(store);
   window.dispatchEvent(new CustomEvent("eaxy-local-progress-updated"));
 }
@@ -79,14 +90,7 @@ export function mergeLessonPathStatus(
   serverStatus: LessonSummary["pathStatus"],
   store: LocalProgressStore,
 ): LessonSummary["pathStatus"] {
-  const local = store.lessons[lessonId];
-  if (local === "completed" || serverStatus === "completed") {
-    return "completed";
-  }
-  if (local === "started" || serverStatus === "started") {
-    return "started";
-  }
-  return serverStatus;
+  return pickStrongerLessonStatus(serverStatus, store.lessons[lessonId]);
 }
 
 export function applyLocalProgressToModules(

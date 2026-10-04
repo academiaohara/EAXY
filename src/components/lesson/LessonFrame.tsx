@@ -112,7 +112,7 @@ export function LessonFrame({
             onGoToStep={onGoToStep ?? (() => {})}
           />
           <p className="text-[10px] leading-snug text-slate-400">
-            Pulsa un tramo para ir a ese paso. Verde = superado; puedes volver atrás o saltar sin penalización.
+            Pulsa un tramo visitado para ir a ese paso. Verde = superado; ámbar = visitado sin completar.
           </p>
         </div>
 

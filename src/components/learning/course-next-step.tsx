@@ -21,7 +21,9 @@ function actionLabel(next: NextLessonRef): string {
   if (next.isReview) {
     return "Repasar";
   }
-  return next.lesson.pathStatus === "started" ? "Continuar" : "Empezar";
+  return next.lesson.pathStatus === "started" || next.lesson.pathStatus === "incomplete"
+    ? "Continuar"
+    : "Empezar";
 }
 
 export function CourseNextStep({ next }: CourseNextStepProps) {

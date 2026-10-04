@@ -38,8 +38,20 @@ export function LessonComplete({
       className="flex h-full min-h-0 w-full items-center justify-center p-4 sm:p-8"
       data-testid="lesson-complete"
     >
-      <div className="w-full max-w-2xl overflow-hidden rounded-3xl border-2 border-emerald-200 bg-paper-raised shadow-lg shadow-emerald-100/50">
-        <div className="relative bg-gradient-to-b from-emerald-50 to-white px-8 pt-10 text-center">
+      <div
+        className={cn(
+          "w-full max-w-2xl overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-lg",
+          allDone
+            ? "border-emerald-200 shadow-emerald-100/50"
+            : "border-amber-200 shadow-amber-100/50",
+        )}
+      >
+        <div
+          className={cn(
+            "relative bg-gradient-to-b px-8 pt-10 text-center",
+            allDone ? "from-emerald-50 to-white" : "from-amber-50 to-white",
+          )}
+        >
           <div className="relative mx-auto size-24">
             <TutorMascot
               mood={allDone ? "celebrate" : "idle"}

@@ -47,7 +47,11 @@ import {
   readPersistedInteractiveLesson,
   writePersistedInteractiveLesson,
 } from "@/lib/local-progress/interactive-lesson-state";
-import { readLocalProgress, setLocalLessonStatus } from "@/lib/local-progress/storage";
+import {
+  readLocalProgress,
+  resetLocalLessonCatalogStatus,
+  setLocalLessonStatus,
+} from "@/lib/local-progress/storage";
 import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
@@ -128,14 +132,19 @@ function LessonContainerBody({
       return;
     }
     if (completed) {
-      setLocalLessonStatus(curriculumLessonId, "completed");
+      const allDone = completedSteps.every(Boolean);
+      setLocalLessonStatus(curriculumLessonId, allDone ? "completed" : "incomplete");
       return;
     }
     const catalogStatus = readLocalProgress().lessons[curriculumLessonId];
-    if (catalogStatus !== "completed" && catalogStatus !== "started") {
+    if (
+      catalogStatus !== "completed" &&
+      catalogStatus !== "incomplete" &&
+      catalogStatus !== "started"
+    ) {
       setLocalLessonStatus(curriculumLessonId, "started");
     }
-  }, [storageHydrated, trackLocalProgress, curriculumLessonId, completed]);
+  }, [storageHydrated, trackLocalProgress, curriculumLessonId, completed, completedSteps]);
 
   useEffect(() => {
     const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
@@ -370,13 +379,6 @@ function LessonContainerBody({
     goToStep(stepIndex - 1);
   }, [goToStep, stepIndex]);
 
-  useEffect(() => {
-    if (!storageHydrated || !completed || !trackLocalProgress || !curriculumLessonId) {
-      return;
-    }
-    setLocalLessonStatus(curriculumLessonId, "completed");
-  }, [storageHydrated, completed, curriculumLessonId, trackLocalProgress]);
-
   /**
    * El alumno dice que no lo entiende: el tutor le pregunta qué parte. Con
    * `startNodeId` se salta la pregunta y va directo a esa explicación.
@@ -500,6 +502,9 @@ function LessonContainerBody({
 
   function restartLesson() {
     clearPersistedInteractiveLesson(lesson.slug);
+    if (trackLocalProgress && curriculumLessonId) {
+      resetLocalLessonCatalogStatus(curriculumLessonId);
+    }
     setStepIndex(0);
     setFeedback(null);
     setCompleted(false);
