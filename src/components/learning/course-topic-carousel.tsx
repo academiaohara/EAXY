@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon, LayoutListIcon } from "lucide-react";
+import { LayoutListIcon } from "lucide-react";
 import { isModuleAccessible, sortModules } from "@/lib/curriculum/course-navigation";
 import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
 import type { ModuleSummary } from "@/lib/curriculum/types";
@@ -22,27 +22,25 @@ type SideTopicProps = {
 };
 
 function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
-  const content = (
-    <>
-      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-cobalt/70">
-        Tema {String(moduleNumber).padStart(2, "0")}
-      </p>
-      <p className="mt-1 line-clamp-2 text-xs font-medium leading-snug text-ink/80">{title}</p>
-    </>
+  const numberLabel = String(moduleNumber).padStart(2, "0");
+
+  const numberClassName = cn(
+    "font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink transition-[opacity,filter] duration-200 sm:text-7xl",
+    href
+      ? "opacity-[0.22] blur-[1.5px] group-hover:opacity-100 group-hover:blur-none group-focus-visible:opacity-100 group-focus-visible:blur-none"
+      : "pointer-events-none opacity-[0.12] blur-[1.5px]",
   );
 
-  const className = cn(
-    "flex min-h-[4.5rem] min-w-0 flex-1 flex-col justify-center rounded-2xl border border-slate-200/80 bg-white/40 px-3 py-3 text-left shadow-sm backdrop-blur-sm transition-all sm:px-4",
-    side === "left" ? "items-start text-left" : "items-end text-right",
-    href
-      ? "group hover:border-cobalt/30 hover:bg-white/70 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40"
-      : "pointer-events-none opacity-40",
+  const wrapperClassName = cn(
+    "group flex min-h-[4.5rem] min-w-0 flex-1 items-center py-1",
+    side === "left" ? "justify-start sm:justify-end sm:pr-2" : "justify-end sm:justify-start sm:pl-2",
+    href && "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
   );
 
   if (!href) {
     return (
-      <div className={className} aria-hidden>
-        {content}
+      <div className={wrapperClassName} aria-hidden>
+        <span className={numberClassName}>{numberLabel}</span>
       </div>
     );
   }
@@ -50,24 +48,13 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
   return (
     <Link
       href={href}
-      className={className}
+      className={wrapperClassName}
       data-testid={`topic-carousel-${side}`}
       aria-label={`Ir al tema ${moduleNumber}: ${title}`}
     >
-      <span
-        className={cn(
-          "mb-1 flex size-7 items-center justify-center rounded-full bg-slate-100/90 text-slate-500 transition-colors group-hover:bg-cobalt-tint group-hover:text-cobalt",
-          side === "right" && "self-end",
-        )}
-        aria-hidden
-      >
-        {side === "left" ? (
-          <ChevronLeftIcon className="size-4" />
-        ) : (
-          <ChevronRightIcon className="size-4" />
-        )}
+      <span className={numberClassName} data-testid={`topic-carousel-${side}-number`}>
+        {numberLabel}
       </span>
-      {content}
     </Link>
   );
 }
@@ -118,11 +105,11 @@ export function CourseTopicCarousel({
       </div>
 
       <div className="relative mt-5 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 sm:gap-4">
-        <div className="min-w-0 scale-[0.92] opacity-70 blur-[0.4px] sm:scale-[0.88] sm:opacity-60 sm:blur-[0.6px]">
+        <div className="min-w-0">
           {prev ? (
             <SideTopic
               href={prevHref}
-              moduleNumber={activeIndex}
+              moduleNumber={activeModuleNumber - 1}
               title={prev.title}
               side="left"
             />
@@ -146,11 +133,11 @@ export function CourseTopicCarousel({
           </h1>
         </div>
 
-        <div className="min-w-0 scale-[0.92] opacity-70 blur-[0.4px] sm:scale-[0.88] sm:opacity-60 sm:blur-[0.6px]">
+        <div className="min-w-0">
           {next ? (
             <SideTopic
               href={nextHref}
-              moduleNumber={activeIndex + 2}
+              moduleNumber={activeModuleNumber + 1}
               title={next.title}
               side="right"
             />
