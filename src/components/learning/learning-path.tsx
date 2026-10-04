@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckIcon, ChevronRightIcon, DumbbellIcon, SparklesIcon } from "lucide-react";
 import {
+  findNextLesson,
   getLessonProgressStatus,
   getModuleProgress,
   type LessonProgressStatus,
@@ -24,8 +25,8 @@ const STATUS_LABELS: Record<LessonProgressStatus, string> = {
 };
 
 const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
-  completed: "bg-emerald-50 text-emerald-700",
-  started: "bg-cobalt-tint text-cobalt",
+  completed: "bg-white/20 text-white",
+  started: "bg-violet-100 text-violet-800",
   available: "bg-slate-100 text-slate-500",
 };
 
@@ -40,17 +41,24 @@ type PathNodeProps = {
   lesson: LessonSummary;
   position: number;
   isLast: boolean;
+  isNextTarget: boolean;
 };
 
-function PathNode({ lesson, position, isLast }: PathNodeProps) {
+function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
   const status = getLessonProgressStatus(lesson);
   const isInteractive = lesson.kind === "interactive";
+  const isCurrent =
+    status === "started" || (isNextTarget && status !== "completed");
+  const connectorPurple = status === "completed";
 
   return (
     <li className="relative">
       {!isLast ? (
         <span
-          className="pointer-events-none absolute left-[2.125rem] top-full h-3 w-0.5 -translate-x-1/2 bg-slate-300 sm:left-[2.5rem]"
+          className={cn(
+            "pointer-events-none absolute left-[2.125rem] top-full h-3 w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
+            connectorPurple ? "bg-violet-500" : "bg-slate-300",
+          )}
           aria-hidden
         />
       ) : null}
@@ -59,21 +67,27 @@ function PathNode({ lesson, position, isLast }: PathNodeProps) {
         href={resolveLessonHref(lesson.id)}
         data-testid={`lesson-link-${lesson.id}`}
         className={cn(
-          "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40 sm:p-4",
+          "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:p-4",
           status === "completed" &&
-            "border-emerald-300/80 bg-emerald-50/40 hover:border-emerald-400/60",
-          status === "started" && "border-cobalt/40",
-          status === "available" && "border-slate-200",
+            "border-violet-600 bg-violet-600 hover:border-violet-500 hover:bg-violet-600/95 focus-visible:ring-violet-400/50",
+          status !== "completed" &&
+            isCurrent &&
+            "border-violet-500 hover:border-violet-500 focus-visible:ring-violet-400/40",
+          status !== "completed" &&
+            !isCurrent &&
+            "border-slate-200 hover:border-cobalt/40 focus-visible:ring-cobalt/40",
         )}
       >
         <span
           className={cn(
             "flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
-            status === "completed" && "border-emerald-500 bg-emerald-500 text-white",
-            status === "started" &&
-              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(47,95,224,0.12)]",
-            status === "available" &&
-              "border-slate-200 bg-white text-slate-400 group-hover:border-cobalt/50 group-hover:text-cobalt",
+            status === "completed" && "border-white/90 bg-white/15 text-white",
+            status !== "completed" &&
+              isCurrent &&
+              "border-violet-500 bg-white text-violet-600 shadow-[0_0_0_4px_rgba(139,92,246,0.15)]",
+            status !== "completed" &&
+              !isCurrent &&
+              "border-slate-200 bg-white text-slate-400 group-hover:border-violet-400/60 group-hover:text-violet-600",
           )}
           aria-hidden
         >
@@ -88,7 +102,12 @@ function PathNode({ lesson, position, isLast }: PathNodeProps) {
 
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-2">
-            <span className="text-[11px] font-semibold tabular-nums text-slate-400">
+            <span
+              className={cn(
+                "text-[11px] font-semibold tabular-nums",
+                status === "completed" ? "text-violet-200" : "text-slate-400",
+              )}
+            >
               {String(position).padStart(2, "0")}
             </span>
             {status !== "available" ? (
@@ -102,18 +121,55 @@ function PathNode({ lesson, position, isLast }: PathNodeProps) {
               </span>
             ) : null}
           </span>
-          <span className="mt-0.5 block font-medium leading-snug text-ink group-hover:text-cobalt">
+          <span
+            className={cn(
+              "mt-0.5 block font-medium leading-snug",
+              status === "completed"
+                ? "text-white"
+                : "text-ink group-hover:text-violet-700",
+            )}
+          >
             {lesson.title.replace(/^\d+\.\s*/, "")}
           </span>
-          <span className="block text-xs text-muted-foreground">{lessonMetaLabel(lesson)}</span>
+          <span
+            className={cn(
+              "block text-xs",
+              status === "completed" ? "text-violet-100" : "text-muted-foreground",
+            )}
+          >
+            {lessonMetaLabel(lesson)}
+          </span>
         </span>
 
         <ChevronRightIcon
-          className="size-5 shrink-0 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-cobalt"
+          className={cn(
+            "size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
+            status === "completed"
+              ? "text-white/70 group-hover:text-white"
+              : "text-slate-300 group-hover:text-violet-600",
+          )}
           aria-hidden
         />
       </Link>
     </li>
+  );
+}
+
+function ModuleLessonList({ courseModule }: { courseModule: ModuleSummary }) {
+  const nextLessonId = findNextLesson([courseModule])?.lesson.id;
+
+  return (
+    <ol className="min-w-0 space-y-3">
+      {courseModule.lessons.map((lesson, index) => (
+        <PathNode
+          key={lesson.id}
+          lesson={lesson}
+          position={index + 1}
+          isLast={index === courseModule.lessons.length - 1}
+          isNextTarget={lesson.id === nextLessonId}
+        />
+      ))}
+    </ol>
   );
 }
 
@@ -128,7 +184,7 @@ function ModuleProgressPill({ courseModule }: { courseModule: ModuleSummary }) {
     <div className="flex items-center gap-3">
       <div className="h-1.5 w-24 overflow-hidden rounded-full bg-slate-200">
         <div
-          className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+          className="h-full rounded-full bg-violet-500 transition-all duration-500"
           style={{ width: `${percent}%` }}
         />
       </div>
@@ -172,16 +228,7 @@ export function LearningPath({
           {courseModule.lessons.length === 0 ? (
             <p className="text-sm text-muted-foreground">Sin lecciones todavía en este tema.</p>
           ) : (
-            <ol className="min-w-0 space-y-3">
-              {courseModule.lessons.map((lesson, index) => (
-                <PathNode
-                  key={lesson.id}
-                  lesson={lesson}
-                  position={index + 1}
-                  isLast={index === courseModule.lessons.length - 1}
-                />
-              ))}
-            </ol>
+            <ModuleLessonList courseModule={courseModule} />
           )}
         </section>
       ))}
