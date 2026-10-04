@@ -15,3 +15,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Antes de push/PR: otra vez `git:sync-main` con working tree limpio.
 - Detalle completo: `.cursor/rules/git-workflow.mdc` y `scripts/git-sync-main.sh`.
 
+# EAXY — entorno de desarrollo
+
+- El arranque del Cloud Agent ejecuta `scripts/agent-bootstrap.sh`: sincroniza `origin/main` y deja `next dev` en http://localhost:3000.
+- Sin variables de Supabase, la app usa el catálogo embebido en `/aprender` y guarda el progreso en el navegador.
+- `npx supabase start` necesita Docker y no forma parte de este entorno.
+- Comprobaciones: `npm run lint`, `npm run test:run`, `npm run test:e2e`, `npm run build`.
+
