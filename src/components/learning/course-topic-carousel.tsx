@@ -104,9 +104,9 @@ export function CourseTopicCarousel({
         </Link>
       </div>
 
-      <div className="relative mt-5 flex min-h-[4.5rem] items-center justify-center px-10 sm:px-14">
+      <div className="relative mt-5 min-h-[4.5rem]">
         {prev ? (
-          <div className="absolute left-0 top-1/2 z-20 -translate-y-1/2">
+          <div className="absolute inset-y-0 left-0 z-20 flex items-center">
             <SideTopic
               href={prevHref}
               moduleNumber={activeModuleNumber - 1}
@@ -116,23 +116,8 @@ export function CourseTopicCarousel({
           </div>
         ) : null}
 
-        <div className="relative z-10 flex min-w-[8.5rem] flex-col items-center px-2 text-center sm:min-w-[10rem]">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
-            Tema {activeModuleNumber} de {sorted.length}
-          </p>
-          <p
-            className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
-            data-testid="topic-carousel-active-number"
-          >
-            {String(activeModuleNumber).padStart(2, "0")}
-          </p>
-          <h1 className="mt-3 max-w-[14rem] font-heading text-base font-semibold leading-snug text-ink sm:max-w-[18rem] sm:text-lg">
-            {activeTitle}
-          </h1>
-        </div>
-
         {next ? (
-          <div className="absolute right-0 top-1/2 z-20 -translate-y-1/2">
+          <div className="absolute inset-y-0 right-0 z-20 flex items-center">
             <SideTopic
               href={nextHref}
               moduleNumber={activeModuleNumber + 1}
@@ -141,6 +126,23 @@ export function CourseTopicCarousel({
             />
           </div>
         ) : null}
+
+        <div className="flex items-center justify-center px-14 sm:px-16">
+          <div className="relative z-10 flex min-w-[8.5rem] flex-col items-center px-2 text-center sm:min-w-[10rem]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
+              Tema {activeModuleNumber} de {sorted.length}
+            </p>
+            <p
+              className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
+              data-testid="topic-carousel-active-number"
+            >
+              {String(activeModuleNumber).padStart(2, "0")}
+            </p>
+            <h1 className="mt-3 max-w-[14rem] font-heading text-base font-semibold leading-snug text-ink sm:max-w-[18rem] sm:text-lg">
+              {activeTitle}
+            </h1>
+          </div>
+        </div>
       </div>
     </section>
   );
