@@ -34,7 +34,8 @@ export type MulDivNaturalesScene =
   | "distributiva-bloques"
   | "reparto-igual"
   | "reparto-manual"
-  | "exacta-entera";
+  | "exacta-entera"
+  | "puente-mult-div";
 
 export type MulDivConfig = {
   scene: MulDivNaturalesScene;

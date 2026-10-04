@@ -467,7 +467,11 @@ export function ExploreStepView({
             role="status"
           >
             {isCorrect ? (
-              <p>¡Correcto! El resultado es {step.goal.kind === "expression-result" ? step.goal.target : ""}.</p>
+              <p>
+                {step.goal.kind === "boxes-equal"
+                  ? "¡Correcto! Repartiste el total en cajas iguales."
+                  : `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`}
+              </p>
             ) : (
               <>
                 <p className="font-semibold">
