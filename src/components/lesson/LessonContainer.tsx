@@ -37,7 +37,6 @@ import {
 import type { StepAttemptRecord, StepCheckResult } from "@/lib/lesson/step-attempt";
 import {
   isQuizStep,
-  isStarStep,
   type FeedbackStatus,
   type InteractiveLesson,
 } from "@/lib/lesson/types";
@@ -242,7 +241,7 @@ function LessonContainerBody({
       ? `/aprender/curso/${navigation.courseId}/tema/${navigation.moduleId}`
       : `/aprender/curso/${navigation.courseId}`;
   const totalStars = useMemo(
-    () => lesson.steps.filter((step) => isStarStep(step)).length,
+    () => lesson.steps.filter((step) => isQuizStep(step)).length,
     [lesson.steps],
   );
   const stepTitles = useMemo(
@@ -610,10 +609,7 @@ function LessonContainerBody({
     (currentStep.type === "interactive_tool" && currentStep.layout === undefined);
   const hasWhy = feedback === "correct" && Boolean(getHelpNode(buildHelpRoute(currentStep, feedback), "why"));
   const currentAttempt = stepAttempts[currentStep.id];
-  const canResetStep =
-    isQuizStep(currentStep) &&
-    currentAttempt !== undefined &&
-    !("optional" in currentStep && currentStep.optional);
+  const canResetStep = isQuizStep(currentStep) && currentAttempt !== undefined;
   const stepMountKey = `${currentStep.id}:${stepRemountKey[currentStep.id] ?? 0}`;
 
   return (
@@ -700,7 +696,6 @@ function LessonContainerBody({
               onContinue={goToNextStep}
               disabled={feedback !== null}
               savedAttempt={currentAttempt?.snapshot ?? null}
-              stageTheme={lesson.stage?.theme ?? "paper"}
               compact
             />
           </div>

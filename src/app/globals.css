@@ -98,17 +98,6 @@
   --chart-5: var(--cobalt-tint);
 }
 
-/** Tema de escenario «pizarra» (board). Paper reutiliza :root sin clase extra. */
-.lesson-stage-theme-board {
-  --stage-surface: #1a2332;
-  --stage-ink: #e8edf5;
-  --stage-muted: #94a3b8;
-  --stage-border: #334155;
-  --stage-accent: #6ee7b7;
-  --stage-accent-muted: #34d399;
-  --stage-chalk: #f8fafc;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
