@@ -23,7 +23,8 @@ export type StageModuleId =
   | "tienda-ciclista"
   | "bloques-numericos"
   | "piramide-reduccion"
-  | "mul-div-naturales";
+  | "mul-div-naturales"
+  | "jerarquia-operaciones";
 
 export type MulDivNaturalesScene =
   | "multiplicar-repetido"
@@ -400,6 +401,11 @@ export type ExploreGoal =
       /** Expresión base con tokens separados por espacios, p. ej. "9 - 1 + 3". */
       tokens: string[];
       target: number;
+    }
+  | {
+      kind: "hierarchy-sequence";
+      /** ids de operación en el orden correcto (p. ej. parentesis, div, mul). */
+      sequence: string[];
     }
   | {
       kind: "boxes-equal";

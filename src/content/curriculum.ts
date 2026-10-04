@@ -87,7 +87,7 @@ export const curriculum: Curriculum = {
             {
               id: lessonId(105),
               title: "5. División y orden de operaciones",
-              summary: "Divisiones exactas y enteras; prioridad de operaciones.",
+              summary: "Divisiones exactas y enteras; jerarquía de operaciones con escenarios interactivos.",
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "division-orden-operaciones-naturales",

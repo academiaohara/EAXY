@@ -1,10 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { MulDivConfig, MulDivNaturalesScene } from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
+
+const ASSETS = {
+  ticket: "/lesson/mul-div-naturales/ticket.png",
+  bombones: "/lesson/mul-div-naturales/bombones.png",
+  cajabombones: "/lesson/mul-div-naturales/cajabombones.png",
+} as const;
 
 export type MulDivNaturalesModuleProps = MulDivConfig & {
   stepId: string;
@@ -20,17 +27,107 @@ const COBALT = "#4353ff";
 const COBALT_TINT = "#eceeff";
 const VIOLET = "#7c3aed";
 const AMBER = "#d97706";
-function TicketIcon({ className }: { className?: string }) {
+
+function SlideBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <svg viewBox="0 0 56 40" className={cn("h-12 w-[4.5rem] min-h-[48px] min-w-[48px]", className)} aria-hidden>
-      <rect x="2" y="4" width="52" height="32" rx="6" fill="#f97316" />
-      <rect x="2" y="4" width="52" height="32" rx="6" fill="none" stroke="#ea580c" strokeWidth="2" />
-      <circle cx="8" cy="20" r="4" fill="#fff7ed" />
-      <circle cx="48" cy="20" r="4" fill="#fff7ed" />
-      <text x="28" y="24" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">
-        8€
-      </text>
-    </svg>
+    <span
+      className={cn(
+        "rounded-md border-2 border-sky-400/90 bg-white px-3 py-1 font-mono text-base font-bold text-ink shadow-sm",
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
+function TicketImage({
+  size = "md",
+  style,
+  className,
+}: {
+  size?: "sm" | "md";
+  style?: CSSProperties;
+  className?: string;
+}) {
+  const dim =
+    size === "sm"
+      ? { w: 56, h: 48, cls: "h-12 w-14 min-h-[48px] min-w-[48px]" }
+      : { w: 96, h: 80, cls: "h-[5rem] w-[6rem] min-h-[48px] min-w-[48px]" };
+  return (
+    <Image
+      src={ASSETS.ticket}
+      alt=""
+      width={dim.w}
+      height={dim.h}
+      className={cn("object-contain drop-shadow-md", dim.cls, className)}
+      style={style}
+      aria-hidden
+    />
+  );
+}
+
+function TicketFan({ count, priceLabel }: { count: number; priceLabel?: string }) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="relative flex h-[6.5rem] w-full max-w-[15rem] items-end justify-center">
+        {Array.from({ length: count }, (_, i) => (
+          <TicketImage
+            key={i}
+            style={{
+              transform: `rotate(${(i - (count - 1) / 2) * 10}deg)`,
+              marginLeft: i === 0 ? 0 : -28,
+              zIndex: i,
+            }}
+          />
+        ))}
+      </div>
+      {priceLabel ? <SlideBadge>{priceLabel}</SlideBadge> : null}
+    </div>
+  );
+}
+
+function BombonesPile({ label }: { label: string }) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <Image
+        src={ASSETS.bombones}
+        alt=""
+        width={160}
+        height={130}
+        className="h-[7.5rem] w-auto max-w-[10rem] object-contain"
+        aria-hidden
+      />
+      <SlideBadge>{label}</SlideBadge>
+    </div>
+  );
+}
+
+function CajaBombones({
+  count,
+  caption,
+  highlight,
+}: {
+  count: number | string;
+  caption?: string;
+  highlight?: boolean;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <Image
+        src={ASSETS.cajabombones}
+        alt=""
+        width={110}
+        height={95}
+        className={cn(
+          "h-[5.5rem] w-auto object-contain transition",
+          highlight && "ring-2 ring-cobalt/40 ring-offset-2",
+        )}
+        aria-hidden
+      />
+      <SlideBadge>{count}</SlideBadge>
+      {caption ? <span className="text-[10px] font-medium uppercase tracking-wide text-ink-muted">{caption}</span> : null}
+    </div>
   );
 }
 
@@ -41,29 +138,6 @@ function FichaIcon({ tone = "cobalt" }: { tone?: "cobalt" | "violet" | "amber" }
       <circle cx="24" cy="24" r="20" fill={fill} />
       <circle cx="24" cy="24" r="20" fill="none" stroke="#fff" strokeWidth="2" opacity="0.35" />
     </svg>
-  );
-}
-
-function ChocolateIcon() {
-  return (
-    <svg viewBox="0 0 44 44" className="h-11 w-11 min-h-[44px] min-w-[44px]" aria-hidden>
-      <rect x="4" y="8" width="36" height="28" rx="5" fill="#92400e" />
-      <rect x="4" y="8" width="36" height="28" rx="5" fill="none" stroke="#78350f" strokeWidth="2" />
-      <path d="M15 8v28M29 8v28M4 22h36" stroke="#fcd34d" strokeWidth="1.5" opacity="0.7" />
-    </svg>
-  );
-}
-
-function CajaIcon({ count, label }: { count: number; label: string }) {
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <svg viewBox="0 0 80 64" className="h-16 w-20" aria-hidden>
-        <path d="M8 20 L40 8 L72 20 L72 56 L8 56 Z" fill={COBALT_TINT} stroke={COBALT} strokeWidth="2.5" />
-        <path d="M8 20 L40 32 L72 20" fill="none" stroke={COBALT} strokeWidth="2" />
-      </svg>
-      <span className="rounded-lg bg-cobalt-tint px-2 py-0.5 font-mono text-sm font-bold text-ink">{count}</span>
-      <span className="text-[10px] font-medium uppercase tracking-wide text-ink-muted">{label}</span>
-    </div>
   );
 }
 
@@ -97,28 +171,28 @@ function MultiplicarRepetido({
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const [rows, setRows] = useState(reduced ? b : 0);
+  const [ticketCount, setTicketCount] = useState(reduced ? b : 1);
   const { push, clear } = useTimers();
 
   useEffect(() => {
     if (!autoPlay) {
       onReadyChange?.(true);
-      setRows(b);
+      setTicketCount(b);
       return;
     }
     if (reduced) {
-      setRows(b);
+      setTicketCount(b);
       onReadyChange?.(true);
       onAnimationComplete?.();
       return;
     }
     onReadyChange?.(false);
-    setRows(0);
-    let r = 0;
+    setTicketCount(1);
+    let n = 1;
     const tick = () => {
-      r += 1;
-      setRows(r);
-      if (r >= b) {
+      n += 1;
+      setTicketCount(n);
+      if (n >= b) {
         onReadyChange?.(true);
         onAnimationComplete?.();
         return;
@@ -127,33 +201,28 @@ function MultiplicarRepetido({
     };
     push(tick, 500);
     return clear;
-  }, [a, autoPlay, b, clear, onAnimationComplete, onReadyChange, push, reduced]);
+  }, [autoPlay, b, clear, onAnimationComplete, onReadyChange, push, reduced]);
 
   const total = a * b;
+  const sumParts = Array.from({ length: ticketCount }, () => String(a)).join(" + ");
 
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
-      <div className="flex flex-col gap-3">
-        {Array.from({ length: rows }, (_, row) => (
-          <div
-            key={row}
-            className="flex flex-wrap items-center justify-center gap-1 rounded-xl bg-cobalt-tint/60 px-2 py-2 transition-opacity duration-500"
-            style={{ opacity: reduced ? 1 : 1 }}
-          >
-            {Array.from({ length: a }, (_, col) => (
-              <TicketIcon key={col} />
-            ))}
-            {row < rows - 1 ? (
-              <span className="w-full text-center text-lg font-bold text-cobalt" aria-hidden>
-                +
-              </span>
-            ) : null}
-          </div>
-        ))}
+      <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
+        <div className="flex flex-col items-center gap-2">
+          <TicketImage />
+          <SlideBadge>{a}€</SlideBadge>
+          <span className="text-xs text-ink-muted">Una entrada</span>
+        </div>
+        <TicketFan count={ticketCount} priceLabel={ticketCount >= b ? `${total}€` : "?"} />
       </div>
-      {rows >= b ? (
+      {ticketCount >= b ? (
         <p className="text-center text-sm font-medium text-ink-muted">
-          <MathRenderer text={`$${a} + ${a} + \\cdots (${b}\\ \\text{veces}) = ${a} \\cdot ${b} = ${total}$`} />
+          <MathRenderer text={`$${sumParts} = ${a} \\cdot ${b} = ${total}$`} />
+        </p>
+      ) : ticketCount > 1 ? (
+        <p className="text-center text-sm font-medium text-cobalt">
+          <MathRenderer text={`$${sumParts}$`} />
         </p>
       ) : null}
     </div>
@@ -415,24 +484,19 @@ function RepartoIgual({
 
   return (
     <div className="space-y-4" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex max-w-[10rem] flex-wrap justify-center gap-0.5 rounded-xl border-2 border-amber-200 bg-amber-50 p-2">
-            {Array.from({ length: 8 }, (_, i) => (
-              <ChocolateIcon key={i} />
-            ))}
-          </div>
-          <span className="font-mono text-lg font-bold text-ink">{dividend}</span>
-          <span className="text-xs text-ink-muted">bombones</span>
-        </div>
-        <span className="text-2xl font-bold text-cobalt" aria-hidden>
-          →
-        </span>
-        <div className="flex flex-wrap justify-center gap-2">
-          {Array.from({ length: divisor }, (_, i) => (
-            <CajaIcon key={i} count={i < filled ? quotient : 0} label={`Caja ${i + 1}`} />
-          ))}
-        </div>
+      <div className="flex flex-wrap items-end justify-center gap-6 sm:gap-10">
+        <BombonesPile label={String(dividend)} />
+        <CajaBombones count={divisor} caption="cajas iguales" highlight />
+      </div>
+      <div className="flex flex-wrap justify-center gap-2">
+        {Array.from({ length: divisor }, (_, i) => (
+          <CajaBombones
+            key={i}
+            count={i < filled ? quotient : "…"}
+            caption={`Caja ${i + 1}`}
+            highlight={i < filled}
+          />
+        ))}
       </div>
       {filled >= divisor ? (
         <p className="text-center text-sm font-medium text-ink">
@@ -486,19 +550,24 @@ function RepartoManual({
   return (
     <div className="space-y-4" aria-label="Reparto manual en cajas iguales">
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <button
-          type="button"
-          disabled={pool <= 0}
-          className="flex min-h-[44px] min-w-[44px] flex-col items-center justify-center rounded-xl border-2 border-amber-300 bg-amber-50 px-3 py-2 disabled:opacity-40"
+        <div
+          className="flex min-h-[44px] flex-col items-center justify-center rounded-xl border-2 border-amber-200 bg-amber-50/80 px-2 py-2"
           aria-label={`Montón con ${pool} bombones por repartir`}
         >
-          <ChocolateIcon />
-          <span className="font-mono text-sm font-bold">{pool}</span>
-        </button>
+          <Image
+            src={ASSETS.bombones}
+            alt=""
+            width={100}
+            height={80}
+            className="h-16 w-auto object-contain opacity-90"
+            aria-hidden
+          />
+          <SlideBadge>{pool}</SlideBadge>
+        </div>
         <div className="grid w-full max-w-md grid-cols-2 gap-3 sm:grid-cols-3">
           {Array.from({ length: boxes }, (_, i) => (
             <div key={i} className="flex flex-col items-center gap-2 rounded-xl border-2 border-cobalt/20 bg-white p-2">
-              <CajaIcon count={boxCounts[i] ?? 0} label={`Caja ${i + 1}`} />
+              <CajaBombones count={boxCounts[i] ?? 0} caption={`Caja ${i + 1}`} />
               <div className="flex gap-2">
                 <button
                   type="button"
@@ -586,16 +655,13 @@ function ExactaEntera({
 }
 
 function MultiplicarConteo({ a, b }: { a: number; b: number }) {
+  const total = a * b;
   return (
-    <div aria-label={`${a} por ${b} fichas`}>
-      <div
-        className="mx-auto grid max-w-full gap-1 justify-items-center p-2"
-        style={{ gridTemplateColumns: `repeat(${a}, minmax(2.75rem, 1fr))` }}
-      >
-        {Array.from({ length: a * b }, (_, i) => (
-          <FichaIcon key={i} />
-        ))}
-      </div>
+    <div className="flex flex-col items-center gap-4" aria-label={`${a} euros por ${b} entradas`}>
+      <TicketFan count={b} priceLabel={`${total}€`} />
+      <p className="text-center text-sm text-ink-muted">
+        <MathRenderer text={`$${a} \\cdot ${b} = ${total}$`} />
+      </p>
     </div>
   );
 }
