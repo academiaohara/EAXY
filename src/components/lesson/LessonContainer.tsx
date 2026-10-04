@@ -47,7 +47,7 @@ import {
   readPersistedInteractiveLesson,
   writePersistedInteractiveLesson,
 } from "@/lib/local-progress/interactive-lesson-state";
-import { setLocalLessonStatus } from "@/lib/local-progress/storage";
+import { readLocalProgress, setLocalLessonStatus } from "@/lib/local-progress/storage";
 import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
@@ -124,10 +124,18 @@ function LessonContainerBody({
   const { control } = useLessonStepControl();
 
   useEffect(() => {
-    if (trackLocalProgress && curriculumLessonId) {
+    if (!storageHydrated || !trackLocalProgress || !curriculumLessonId) {
+      return;
+    }
+    if (completed) {
+      setLocalLessonStatus(curriculumLessonId, "completed");
+      return;
+    }
+    const catalogStatus = readLocalProgress().lessons[curriculumLessonId];
+    if (catalogStatus !== "completed" && catalogStatus !== "started") {
       setLocalLessonStatus(curriculumLessonId, "started");
     }
-  }, [trackLocalProgress, curriculumLessonId]);
+  }, [storageHydrated, trackLocalProgress, curriculumLessonId, completed]);
 
   useEffect(() => {
     const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
@@ -363,14 +371,11 @@ function LessonContainerBody({
   }, [goToStep, stepIndex]);
 
   useEffect(() => {
-    if (!completed || !trackLocalProgress || !curriculumLessonId) {
+    if (!storageHydrated || !completed || !trackLocalProgress || !curriculumLessonId) {
       return;
     }
-    const allDone = completedSteps.every(Boolean);
-    if (allDone) {
-      setLocalLessonStatus(curriculumLessonId, "completed");
-    }
-  }, [completed, completedSteps, curriculumLessonId, trackLocalProgress]);
+    setLocalLessonStatus(curriculumLessonId, "completed");
+  }, [storageHydrated, completed, curriculumLessonId, trackLocalProgress]);
 
   /**
    * El alumno dice que no lo entiende: el tutor le pregunta qué parte. Con
@@ -521,6 +526,17 @@ function LessonContainerBody({
         .filter((entry) => !entry.done),
     [completedSteps, lesson.steps],
   );
+
+  if (!storageHydrated) {
+    return (
+      <div
+        className="flex min-h-0 flex-1 flex-col items-center justify-center p-8"
+        data-testid="interactive-lesson"
+      >
+        <p className="text-sm text-ink-muted">Recuperando tu progreso…</p>
+      </div>
+    );
+  }
 
   if (completed) {
     return (

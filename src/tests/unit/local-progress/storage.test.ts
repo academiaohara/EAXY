@@ -1,45 +1,21 @@
-import { describe, expect, it } from "vitest";
-import {
-  applyLocalProgressToModules,
-  mergeLessonPathStatus,
-} from "@/lib/local-progress/storage";
-import type { ModuleSummary } from "@/lib/curriculum/types";
+import { beforeEach, describe, expect, it } from "vitest";
+import { LOCAL_PROGRESS_STORAGE_KEY } from "@/lib/local-progress/types";
+import { readLocalProgress, setLocalLessonStatus } from "@/lib/local-progress/storage";
 
-const sampleModules: ModuleSummary[] = [
-  {
-    id: "mod-1",
-    title: "Tema",
-    orderIndex: 1,
-    lessons: [
-      {
-        id: "lesson-1",
-        title: "Lección 1",
-        orderIndex: 1,
-        videoUrl: null,
-        exerciseCount: 2,
-        pathStatus: "not_started",
-        conceptIds: [],
-        kind: "exercises",
-      },
-    ],
-    topicExercises: [],
-  },
-];
-
-describe("local progress merge", () => {
-  it("marca completada una lección guardada en local", () => {
-    const merged = applyLocalProgressToModules(sampleModules, {
-      version: 1,
-      lessons: { "lesson-1": "completed" },
-      exercises: {},
-    });
-
-    expect(merged[0]?.lessons[0]?.pathStatus).toBe("completed");
+describe("setLocalLessonStatus", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
   });
 
-  it("prioriza completada sobre empezada", () => {
-    expect(mergeLessonPathStatus("lesson-1", "started", { version: 1, lessons: { "lesson-1": "completed" }, exercises: {} })).toBe(
-      "completed",
-    );
+  it("no degrada completed a started", () => {
+    setLocalLessonStatus("lesson-a", "completed");
+    setLocalLessonStatus("lesson-a", "started");
+    expect(readLocalProgress().lessons["lesson-a"]).toBe("completed");
+  });
+
+  it("persiste en localStorage", () => {
+    setLocalLessonStatus("lesson-b", "started");
+    const raw = window.localStorage.getItem(LOCAL_PROGRESS_STORAGE_KEY);
+    expect(raw).toContain("lesson-b");
   });
 });

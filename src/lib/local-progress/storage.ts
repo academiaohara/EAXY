@@ -49,6 +49,13 @@ export function writeLocalProgress(store: LocalProgressStore): void {
 
 export function setLocalLessonStatus(lessonId: string, status: LocalLessonStatus): void {
   const store = readLocalProgress();
+  const current = store.lessons[lessonId];
+  if (current === "completed") {
+    return;
+  }
+  if (current === status) {
+    return;
+  }
   store.lessons[lessonId] = status;
   writeLocalProgress(store);
   window.dispatchEvent(new CustomEvent("eaxy-local-progress-updated"));
