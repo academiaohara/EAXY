@@ -23,7 +23,32 @@ export type StageModuleId =
   | "tienda-ciclista"
   | "bloques-numericos"
   | "piramide-reduccion"
+  | "mul-div-naturales"
   | "jerarquia-operaciones";
+
+export type MulDivNaturalesScene =
+  | "multiplicar-repetido"
+  | "multiplicar-conteo"
+  | "conmutativa-producto"
+  | "asociativa-producto"
+  | "distributiva-bloques"
+  | "reparto-igual"
+  | "reparto-manual"
+  | "exacta-entera";
+
+export type MulDivConfig = {
+  scene: MulDivNaturalesScene;
+  /** Factor o tamaño de grupo (p. ej. $8$ entradas). */
+  a?: number;
+  b?: number;
+  c?: number;
+  dividend?: number;
+  divisor?: number;
+  /** Reparto manual: total de fichas y número de cajas. */
+  total?: number;
+  boxes?: number;
+  perBox?: number;
+};
 
 export type TiendaCiclistaItem = {
   id: string;
@@ -344,6 +369,7 @@ export type NarrateStep = LessonStepBase &
     piramide?: {
       variant: "dual-parentesis";
     };
+    mulDiv?: MulDivConfig;
   };
 
 export type PredictChoice = { id: string; label: string };
@@ -360,6 +386,7 @@ export type PredictStep = LessonStepBase &
     module?: StageModuleId;
     scene?: string;
     tienda?: NarrateStep["tienda"];
+    mulDiv?: MulDivConfig;
   };
 
 export type ExploreGoal =
@@ -379,6 +406,12 @@ export type ExploreGoal =
       kind: "hierarchy-sequence";
       /** ids de operación en el orden correcto (p. ej. parentesis, div, mul). */
       sequence: string[];
+    }
+  | {
+      kind: "boxes-equal";
+      total: number;
+      boxes: number;
+      perBox: number;
     };
 
 export type ExploreStep = LessonStepBase &
@@ -392,14 +425,16 @@ export type ExploreStep = LessonStepBase &
       items: TiendaCiclistaItem[];
       wallet: number;
     };
+    mulDiv?: MulDivConfig;
   };
 
 export type RevealStep = LessonStepBase &
   StageStepFields & {
     type: "reveal";
-    module: "bloques-numericos";
-    scene: "conmutativa" | "asociativa";
-    blocks: number[];
+    module: StageModuleId;
+    scene: string;
+    blocks?: number[];
+    mulDiv?: MulDivConfig;
     equationHighlight?: string;
   };
 
