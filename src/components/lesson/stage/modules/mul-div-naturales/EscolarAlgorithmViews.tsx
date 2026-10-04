@@ -178,7 +178,7 @@ export function DivisionManoScene({
   const step = steps[phase]!;
 
   return (
-    <div className="space-y-4" data-testid="mul-div-division-mano">
+    <div className="space-y-4">
       <DivisionBracket dividend={dividend} divisor={divisor} step={step} />
       <p className="text-center text-sm leading-relaxed text-[color:var(--stage-muted,#64748b)]">
         <MathRenderer text={step.caption} />
@@ -220,7 +220,7 @@ export function MultiplicacionManoScene({
   const width = Math.max(mStr.length, tStr.length) + 2;
 
   return (
-    <div className="space-y-4" data-testid="mul-div-multiplicacion-mano">
+    <div className="space-y-4">
       <div className="mx-auto w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
         <div className="flex justify-end gap-1 tabular-nums">
           {mStr.split("").map((ch, i) => (
