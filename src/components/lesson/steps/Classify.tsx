@@ -11,13 +11,16 @@ import {
   type ClassifyAssignments,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
+import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
+import type { ClassifySnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { ClassifyStep, VisualTone } from "@/lib/lesson/types";
 
 type ClassifyProps = {
   step: ClassifyStep;
-  onCheck: (correct: boolean) => void;
+  onCheck: (result: StepCheckResult) => void;
   disabled?: boolean;
   compact?: boolean;
+  saved?: ClassifySnapshot | null;
 };
 
 const DEFAULT_TONES: VisualTone[] = ["cobalt", "violet", "emerald", "rose"];
@@ -36,11 +39,18 @@ const GRID_COLS: Record<number, string> = {
   4: "sm:grid-cols-2 lg:grid-cols-4",
 };
 
-export function Classify({ step, onCheck, disabled = false, compact = false }: ClassifyProps) {
-  const [assignments, setAssignments] = useState<ClassifyAssignments>({});
+export function Classify({
+  step,
+  onCheck,
+  disabled = false,
+  compact = false,
+  saved = null,
+}: ClassifyProps) {
+  const restored = saved?.kind === "classify" ? saved : null;
+  const [assignments, setAssignments] = useState<ClassifyAssignments>(restored?.assignments ?? {});
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [checked, setChecked] = useState(false);
-  const [mistakes, setMistakes] = useState<string[]>([]);
+  const [checked, setChecked] = useState(Boolean(restored));
+  const [mistakes, setMistakes] = useState<string[]>(restored?.mistakes ?? []);
 
   const locked = disabled || checked;
   const complete = classifyIsComplete(step, assignments);
@@ -65,7 +75,16 @@ export function Classify({ step, onCheck, disabled = false, compact = false }: C
     setMistakes(wrong);
     setChecked(true);
     setSelectedId(null);
-    onCheck(wrong.length === 0);
+    const correct = wrong.length === 0;
+    onCheck({
+      correct,
+      snapshot: {
+        kind: "classify",
+        assignments,
+        mistakes: wrong,
+        isCorrect: correct,
+      },
+    });
   }, [assignments, checked, complete, onCheck, step]);
 
   const control = useMemo(() => {
@@ -143,6 +162,7 @@ export function Classify({ step, onCheck, disabled = false, compact = false }: C
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-classify">
+      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <div
         className={cn(
           "flex min-h-16 flex-wrap items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed px-3 py-3 transition-colors",

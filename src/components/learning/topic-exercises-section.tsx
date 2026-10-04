@@ -177,7 +177,7 @@ export function TopicExercisesSection({
                 </div>
               </DialogHeader>
 
-              <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto bg-paper px-5 py-6 sm:px-8 sm:py-7">
+              <div className="scrollbar-subtle flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto bg-paper px-5 py-6 sm:px-8 sm:py-7">
                 <section
                   className="relative shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-paper-raised px-5 py-5 shadow-[0_1px_0_rgba(23,26,33,0.04)] sm:px-7 sm:py-6"
                   data-testid="topic-exercise-statement"

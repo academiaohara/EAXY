@@ -34,6 +34,7 @@ import {
   speechMessageKey,
   type TutorLogEntry,
 } from "@/lib/lesson/tutor-log";
+import type { StepAttemptRecord, StepCheckResult } from "@/lib/lesson/step-attempt";
 import {
   isQuizStep,
   type FeedbackStatus,
@@ -100,6 +101,8 @@ function LessonContainerBody({
     initial[0] = true;
     return initial;
   });
+  const [stepAttempts, setStepAttempts] = useState<Record<string, StepAttemptRecord>>({});
+  const [stepRemountKey, setStepRemountKey] = useState<Record<string, number>>({});
   const [stars, setStars] = useState(0);
   const [log, setLog] = useState<TutorLogEntry[]>([]);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -191,18 +194,31 @@ function LessonContainerBody({
     setPanelOpen(false);
   }, []);
 
+  const feedbackForStep = useCallback(
+    (stepId: string) => stepAttempts[stepId]?.feedback ?? null,
+    [stepAttempts],
+  );
+
   const handleCheck = useCallback(
-    (correct: boolean) => {
+    (result: StepCheckResult) => {
       if (feedback !== null) {
         return;
       }
 
-      if (correct) {
+      const status: FeedbackStatus = result.correct ? "correct" : "incorrect";
+      if (result.correct) {
         setStars((prev) => prev + 1);
       }
-      setFeedback(correct ? "correct" : "incorrect");
+      setFeedback(status);
+      setStepAttempts((prev) => ({
+        ...prev,
+        [currentStep.id]: {
+          feedback: status,
+          snapshot: result.snapshot,
+        },
+      }));
     },
-    [feedback],
+    [currentStep.id, feedback],
   );
 
   const goToNextStep = useCallback(
@@ -225,10 +241,11 @@ function LessonContainerBody({
         setCompleted(true);
         return;
       }
-      setFeedback(null);
+      const nextStep = lesson.steps[stepIndex + 1];
+      setFeedback(nextStep ? feedbackForStep(nextStep.id) : null);
       setStepIndex(stepIndex + 1);
     },
-    [lesson.steps, stepIndex],
+    [feedbackForStep, lesson.steps, stepIndex],
   );
 
   const handleNext = useCallback(() => {
@@ -249,14 +266,41 @@ function LessonContainerBody({
       if (index < 0 || index >= totalSteps) {
         return;
       }
-      setFeedback(null);
+      const target = lesson.steps[index];
+      setFeedback(feedbackForStep(target.id));
       setHelpNodeId(null);
       setHelpContext(STEP_HELP);
       setStepIndex(index);
       setCompleted(false);
     },
-    [totalSteps],
+    [feedbackForStep, lesson.steps, totalSteps],
   );
+
+  const resetCurrentStep = useCallback(() => {
+    const stepId = currentStep.id;
+    const attempt = stepAttempts[stepId];
+    if (!attempt) {
+      return;
+    }
+    if (attempt.feedback === "correct") {
+      setStars((prev) => Math.max(0, prev - 1));
+    }
+    setStepAttempts((prev) => {
+      const next = { ...prev };
+      delete next[stepId];
+      return next;
+    });
+    setCompletedSteps((prev) => {
+      if (!prev[stepIndex]) {
+        return prev;
+      }
+      const next = [...prev];
+      next[stepIndex] = false;
+      return next;
+    });
+    setFeedback(null);
+    setStepRemountKey((prev) => ({ ...prev, [stepId]: (prev[stepId] ?? 0) + 1 }));
+  }, [currentStep.id, stepAttempts, stepIndex]);
 
   const goBack = useCallback(() => {
     goToStep(stepIndex - 1);
@@ -403,6 +447,8 @@ function LessonContainerBody({
     setHelpContext(STEP_HELP);
     setPanelOpen(false);
     setCompletedSteps(lesson.steps.map(() => false));
+    setStepAttempts({});
+    setStepRemountKey({});
     setVisitedSteps(() => {
       const initial = lesson.steps.map(() => false);
       initial[0] = true;
@@ -429,7 +475,8 @@ function LessonContainerBody({
         incompleteSteps={incompleteSteps}
         onJumpToStep={(index) => {
           setCompleted(false);
-          setFeedback(null);
+          const target = lesson.steps[index];
+          setFeedback(target ? feedbackForStep(target.id) : null);
           setStepIndex(index);
           setVisitedSteps((prev) => {
             const next = [...prev];
@@ -446,6 +493,9 @@ function LessonContainerBody({
     currentStep.layout === "split" ||
     (currentStep.type === "interactive_tool" && currentStep.layout === undefined);
   const hasWhy = feedback === "correct" && Boolean(getHelpNode(buildHelpRoute(currentStep, feedback), "why"));
+  const currentAttempt = stepAttempts[currentStep.id];
+  const canResetStep = isQuizStep(currentStep) && currentAttempt !== undefined;
+  const stepMountKey = `${currentStep.id}:${stepRemountKey[currentStep.id] ?? 0}`;
 
   return (
     <LessonTutorProvider value={tutorActions}>
@@ -494,6 +544,7 @@ function LessonContainerBody({
                     status={feedback}
                     isLastStep={isLastStep}
                     onNext={handleNext}
+                    onReset={canResetStep ? resetCurrentStep : undefined}
                     onHelp={
                       stepHelpAvailable
                         ? () =>
@@ -516,7 +567,7 @@ function LessonContainerBody({
           }
         >
           <div
-            key={currentStep.id}
+            key={stepMountKey}
             className={cn(
               "lesson-step-enter mx-auto flex w-full flex-col gap-6 pb-24 sm:gap-7",
               wideStep ? "max-w-6xl" : "max-w-4xl",
@@ -528,6 +579,7 @@ function LessonContainerBody({
               onCheck={handleCheck}
               onContinue={goToNextStep}
               disabled={feedback !== null}
+              savedAttempt={currentAttempt?.snapshot ?? null}
               compact
             />
           </div>

@@ -129,7 +129,7 @@ export function LessonFrame({
           )}
           data-testid="lesson-step-panel"
         >
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
+          <div className="scrollbar-subtle min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
             {children}
           </div>
           {footer}

@@ -53,7 +53,7 @@ describe("FractionPick", () => {
     expect(screen.getByTestId("fraction-readout")).toHaveTextContent("3 partes");
 
     fireEvent.click(screen.getByTestId("lesson-check-button"));
-    expect(onCheck).toHaveBeenCalledWith(true);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
   });
 
   it("deja que el alumno divida la unidad antes de colorear", () => {
@@ -71,7 +71,7 @@ describe("FractionPick", () => {
 
     fireEvent.click(pieces()[0]);
     fireEvent.click(screen.getByTestId("lesson-check-button"));
-    expect(onCheck).toHaveBeenCalledWith(true);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
   });
 
   it("marca como fallo un número de partes que no corresponde", () => {
@@ -80,7 +80,7 @@ describe("FractionPick", () => {
 
     fireEvent.click(pieces()[0]);
     fireEvent.click(screen.getByTestId("lesson-check-button"));
-    expect(onCheck).toHaveBeenCalledWith(false);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });
 
@@ -114,7 +114,7 @@ describe("Classify", () => {
     place("9", "Compuesto");
 
     fireEvent.click(screen.getByTestId("lesson-check-button"));
-    expect(onCheck).toHaveBeenCalledWith(true);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
   });
 
   it("tocar una tarjeta ya colocada deja la seleccionada en ese mismo grupo", () => {
@@ -138,7 +138,7 @@ describe("Classify", () => {
     place("9", "Primo");
     fireEvent.click(screen.getByTestId("lesson-check-button"));
 
-    expect(onCheck).toHaveBeenCalledWith(false);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
     expect(screen.getByText(/va en «Compuesto»/)).toBeInTheDocument();
   });
 });
@@ -164,6 +164,6 @@ describe("NumberLinePick", () => {
     expect(slider).toHaveAttribute("aria-valuenow", "-2");
 
     fireEvent.click(screen.getByTestId("lesson-check-button"));
-    expect(onCheck).toHaveBeenCalledWith(true);
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
   });
 });

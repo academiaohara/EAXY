@@ -112,6 +112,44 @@
   }
 }
 
+/**
+ * Barras de desplazamiento discretas: ocultas en reposo y visibles al pasar el ratón
+ * sobre la zona con scroll, alineadas con la paleta cobalt / slate de la app.
+ */
+.scrollbar-subtle {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scrollbar-subtle:hover {
+  scrollbar-color: rgb(67 83 255 / 0.32) transparent;
+}
+
+.scrollbar-subtle::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scrollbar-subtle::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-subtle::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+}
+
+.scrollbar-subtle:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(67 83 255 / 0.28);
+}
+
+.scrollbar-subtle:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(67 83 255 / 0.42);
+}
+
 @utility bg-app-glow {
   background-image:
     radial-gradient(60rem 28rem at 15% -10%, rgb(67 83 255 / 0.1), transparent 70%),
