@@ -19,7 +19,40 @@ export type LessonStageConfig = {
   theme: LessonStageTheme;
 };
 
-export type StageModuleId = "tienda-ciclista" | "bloques-numericos" | "piramide-reduccion";
+export type StageModuleId =
+  | "tienda-ciclista"
+  | "bloques-numericos"
+  | "piramide-reduccion"
+  | "tienda-fichas"
+  | "manzanas-parentesis"
+  | "fichas-propiedades";
+
+export type PredictChoice = { id: string; label: string };
+
+export type EmbeddedPredictionNumeric = {
+  kind: "numeric";
+  prompt: string;
+  correctAnswers: string[];
+  hint?: string;
+  explanation?: string;
+};
+
+export type EmbeddedPredictionChoice = {
+  kind: "choice";
+  prompt: string;
+  choices: PredictChoice[];
+  correctChoiceId: string;
+  hint?: string;
+  explanation?: string;
+};
+
+export type EmbeddedPrediction = EmbeddedPredictionNumeric | EmbeddedPredictionChoice;
+
+export type TiendaFichasConfig = {
+  items: TiendaCiclistaItem[];
+  wallet?: number;
+  mode: "sumar-estanteria" | "restar-cobro" | "explorar-toggle";
+};
 
 export type TiendaCiclistaItem = {
   id: string;
@@ -270,6 +303,8 @@ export type FillInBlankStep = LessonStepBase &
   PracticeFields & {
     type: "fill_in_blank";
     correctAnswers: string[];
+    /** Muestra fichas intercambiadas al pulsar «¿Por qué?». */
+    whyFichas?: { a: number; b: number; sum: number };
   };
 
 /**
@@ -328,6 +363,8 @@ export type NarrateStep = LessonStepBase &
     type: "narrate";
     module: StageModuleId;
     scene: string;
+    embeddedPrediction?: EmbeddedPrediction;
+    tiendaFichas?: TiendaFichasConfig;
     /** Configuración para `tienda-ciclista`. */
     tienda?: {
       items: TiendaCiclistaItem[];
@@ -339,8 +376,6 @@ export type NarrateStep = LessonStepBase &
       variant: "dual-parentesis";
     };
   };
-
-export type PredictChoice = { id: string; label: string };
 
 export type PredictStep = LessonStepBase &
   StageStepFields &
@@ -368,6 +403,13 @@ export type ExploreGoal =
       /** Expresión base con tokens separados por espacios, p. ej. "9 - 1 + 3". */
       tokens: string[];
       target: number;
+    }
+  | {
+      kind: "maximize-under-budget";
+      budget: number;
+    }
+  | {
+      kind: "module-ready";
     };
 
 export type ExploreStep = LessonStepBase &
@@ -377,6 +419,8 @@ export type ExploreStep = LessonStepBase &
     module: StageModuleId;
     scene: string;
     goal: ExploreGoal;
+    embeddedPrediction?: EmbeddedPrediction;
+    tiendaFichas?: TiendaFichasConfig;
     tienda?: {
       items: TiendaCiclistaItem[];
       wallet: number;
@@ -386,9 +430,10 @@ export type ExploreStep = LessonStepBase &
 export type RevealStep = LessonStepBase &
   StageStepFields & {
     type: "reveal";
-    module: "bloques-numericos";
-    scene: "conmutativa" | "asociativa";
+    module: StageModuleId;
+    scene: string;
     blocks: number[];
+    embeddedPrediction?: EmbeddedPrediction;
     equationHighlight?: string;
   };
 
@@ -431,7 +476,16 @@ export function isStarStep(step: LessonStep): boolean {
   if ("optional" in step && step.optional) {
     return false;
   }
-  return isQuizStep(step);
+  if (isQuizStep(step)) {
+    return true;
+  }
+  if (step.type === "narrate" && step.embeddedPrediction) {
+    return true;
+  }
+  if (step.type === "reveal" && step.embeddedPrediction) {
+    return true;
+  }
+  return false;
 }
 
 export function isPassiveStep(step: LessonStep): boolean {
