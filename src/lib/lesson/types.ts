@@ -19,7 +19,35 @@ export type LessonStageConfig = {
   theme: LessonStageTheme;
 };
 
-export type StageModuleId = "tienda-ciclista" | "bloques-numericos" | "piramide-reduccion";
+export type StageModuleId =
+  | "tienda-ciclista"
+  | "bloques-numericos"
+  | "piramide-reduccion"
+  | "mul-div-naturales";
+
+export type MulDivNaturalesScene =
+  | "multiplicar-repetido"
+  | "multiplicar-conteo"
+  | "conmutativa-producto"
+  | "asociativa-producto"
+  | "distributiva-bloques"
+  | "reparto-igual"
+  | "reparto-manual"
+  | "exacta-entera";
+
+export type MulDivConfig = {
+  scene: MulDivNaturalesScene;
+  /** Factor o tamaño de grupo (p. ej. $8$ entradas). */
+  a?: number;
+  b?: number;
+  c?: number;
+  dividend?: number;
+  divisor?: number;
+  /** Reparto manual: total de fichas y número de cajas. */
+  total?: number;
+  boxes?: number;
+  perBox?: number;
+};
 
 export type TiendaCiclistaItem = {
   id: string;
@@ -340,6 +368,7 @@ export type NarrateStep = LessonStepBase &
     piramide?: {
       variant: "dual-parentesis";
     };
+    mulDiv?: MulDivConfig;
   };
 
 export type PredictChoice = { id: string; label: string };
@@ -356,6 +385,7 @@ export type PredictStep = LessonStepBase &
     module?: StageModuleId;
     scene?: string;
     tienda?: NarrateStep["tienda"];
+    mulDiv?: MulDivConfig;
   };
 
 export type ExploreGoal =
@@ -370,6 +400,12 @@ export type ExploreGoal =
       /** Expresión base con tokens separados por espacios, p. ej. "9 - 1 + 3". */
       tokens: string[];
       target: number;
+    }
+  | {
+      kind: "boxes-equal";
+      total: number;
+      boxes: number;
+      perBox: number;
     };
 
 export type ExploreStep = LessonStepBase &
@@ -383,14 +419,16 @@ export type ExploreStep = LessonStepBase &
       items: TiendaCiclistaItem[];
       wallet: number;
     };
+    mulDiv?: MulDivConfig;
   };
 
 export type RevealStep = LessonStepBase &
   StageStepFields & {
     type: "reveal";
-    module: "bloques-numericos";
-    scene: "conmutativa" | "asociativa";
-    blocks: number[];
+    module: StageModuleId;
+    scene: string;
+    blocks?: number[];
+    mulDiv?: MulDivConfig;
     equationHighlight?: string;
   };
 

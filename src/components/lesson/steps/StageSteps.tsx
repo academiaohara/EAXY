@@ -99,6 +99,8 @@ export function NarrateStepView({
             ? { variant: "dual-parentesis" }
             : undefined
       }
+      mulDiv={step.mulDiv}
+      autoPlay={step.module === "mul-div-naturales"}
       onReadyChange={setReady}
     />
   );
@@ -171,17 +173,29 @@ export function PredictStepView({
 
   useRegisterLessonStepControl(control);
 
-  const tiendaReveal =
-    reveal && step.module === "tienda-ciclista" && step.tienda
-      ? (
-          <StageModuleRenderer
-            module="tienda-ciclista"
-            stepId={`${step.id}-reveal`}
-            scene={step.scene ?? "reveal"}
-            tienda={{ ...step.tienda, mode: step.tienda.mode ?? "sumar-cesta" }}
-            autoPlay
-          />
-        )
+  const stageReveal =
+    reveal && step.module && step.scene
+      ? step.module === "tienda-ciclista" && step.tienda
+        ? (
+            <StageModuleRenderer
+              module="tienda-ciclista"
+              stepId={`${step.id}-reveal`}
+              scene={step.scene}
+              tienda={{ ...step.tienda, mode: step.tienda.mode ?? "sumar-cesta" }}
+              autoPlay
+            />
+          )
+        : step.module === "mul-div-naturales" && step.mulDiv
+          ? (
+              <StageModuleRenderer
+                module="mul-div-naturales"
+                stepId={`${step.id}-reveal`}
+                scene={step.scene}
+                mulDiv={{ ...step.mulDiv, scene: step.mulDiv.scene }}
+                autoPlay
+              />
+            )
+          : null
       : null;
 
   return (
@@ -226,10 +240,10 @@ export function PredictStepView({
         )}
         {reveal ? (
           <div className="mt-6 space-y-3">
-            {tiendaReveal}
-            {step.mode === "numeric" ? (
+            {stageReveal}
+            {step.explanation && reveal ? (
               <p className="text-center text-sm text-ink-muted">
-                <MathRenderer text="$583 + 162 + 45 + 38 = 828$ €" />
+                <MathRenderer text={step.explanation} />
               </p>
             ) : null}
           </div>
@@ -243,6 +257,7 @@ type ExplorePersist = {
   selectedIds: string[];
   openAfter: number | null;
   closeBefore: number | null;
+  boxCounts: number[];
 };
 
 export function ExploreStepView({
@@ -259,10 +274,14 @@ export function ExploreStepView({
   saved?: ExploreSnapshot | null;
 }) {
   const defaultIds = step.tienda?.items.map((item) => item.id) ?? TEAM_ITEMS.map((i) => i.id);
+  const defaultBoxCounts =
+    step.goal.kind === "boxes-equal" ? Array.from({ length: step.goal.boxes }, () => 0) : [];
+
   const [persist, setPersist] = usePersistedLessonToolState<ExplorePersist>(step.id, () => ({
     selectedIds: defaultIds,
     openAfter: null,
     closeBefore: null,
+    boxCounts: defaultBoxCounts,
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
@@ -278,6 +297,11 @@ export function ExploreStepView({
     }
     if (step.goal.kind === "expression-result") {
       return isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore);
+    }
+    if (step.goal.kind === "boxes-equal") {
+      const goal = step.goal;
+      const sum = persist.boxCounts.reduce((s, n) => s + n, 0);
+      return sum === goal.total && persist.boxCounts.every((n) => n === goal.perBox);
     }
     return false;
   }, [persist, step]);
@@ -296,6 +320,9 @@ export function ExploreStepView({
     let correct = true;
     if (step.goal.kind === "expression-result") {
       correct = evaluatedValue === step.goal.target;
+    }
+    if (step.goal.kind === "boxes-equal") {
+      correct = placementReady;
     }
     setIsCorrect(correct);
     setChecked(true);
@@ -351,6 +378,9 @@ export function ExploreStepView({
       }
       selectedIds={persist.selectedIds}
       onSelectedIdsChange={(ids) => setPersist((prev) => ({ ...prev, selectedIds: ids }))}
+      mulDiv={step.mulDiv}
+      boxCounts={persist.boxCounts}
+      onBoxCountsChange={(boxCounts) => setPersist((prev) => ({ ...prev, boxCounts }))}
     />
   );
 
@@ -415,17 +445,25 @@ export function RevealStepView({
   );
   useRegisterLessonStepControl(control);
 
+  const blocks = step.blocks ?? [8, 6, 3];
   const equation =
-    step.scene === "conmutativa"
-      ? `$${step.blocks[0]} + ${step.blocks[1]} = ${step.blocks[1]} + ${step.blocks[0]}$`
-      : `$(${step.blocks[0]} + ${step.blocks[1]}) + ${step.blocks[2]} = ${step.blocks[0]} + (${step.blocks[1]} + ${step.blocks[2]})$`;
+    step.module === "bloques-numericos" && step.scene === "conmutativa"
+      ? `$${blocks[0]} + ${blocks[1]} = ${blocks[1]} + ${blocks[0]}$`
+      : step.module === "bloques-numericos"
+        ? `$(${blocks[0]} + ${blocks[1]}) + ${blocks[2]} = ${blocks[0]} + (${blocks[1]} + ${blocks[2]})$`
+        : step.module === "mul-div-naturales" && step.scene === "conmutativa-producto"
+          ? `$${step.mulDiv?.a ?? 8} \\cdot ${step.mulDiv?.b ?? 5} = ${step.mulDiv?.b ?? 5} \\cdot ${step.mulDiv?.a ?? 8}$`
+          : step.module === "mul-div-naturales"
+            ? `$(${step.mulDiv?.a ?? 8} \\cdot ${step.mulDiv?.b ?? 5}) \\cdot ${step.mulDiv?.c ?? 2} = ${step.mulDiv?.a ?? 8} \\cdot (${step.mulDiv?.b ?? 5} \\cdot ${step.mulDiv?.c ?? 2})$`
+            : "";
 
   const stage = (
     <StageModuleRenderer
-      module="bloques-numericos"
+      module={step.module}
       stepId={step.id}
       scene={step.scene}
-      bloques={{ blocks: step.blocks }}
+      bloques={step.blocks ? { blocks: step.blocks } : undefined}
+      mulDiv={step.mulDiv}
       onReadyChange={setReady}
     />
   );
@@ -433,9 +471,11 @@ export function RevealStepView({
   return (
     <div data-testid="lesson-reveal-step">
       <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
-        <p className="text-center text-base text-ink-muted">
-          <MathRenderer text={equation} />
-        </p>
+        {equation ? (
+          <p className="text-center text-base text-ink-muted">
+            <MathRenderer text={equation} />
+          </p>
+        ) : null}
       </StageShell>
     </div>
   );

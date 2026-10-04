@@ -1,9 +1,10 @@
 "use client";
 
 import { BloquesNumericosModule } from "@/components/lesson/stage/modules/bloques-numericos/BloquesNumericosModule";
+import { MulDivNaturalesModule } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivNaturalesModule";
 import { PiramideReduccionModule } from "@/components/lesson/stage/modules/piramide-reduccion/PiramideReduccionModule";
 import { TiendaCiclistaModule } from "@/components/lesson/stage/modules/tienda-ciclista/TiendaCiclistaModule";
-import type { StageModuleId } from "@/lib/lesson/types";
+import type { MulDivConfig, StageModuleId } from "@/lib/lesson/types";
 
 export type StageModuleRenderProps = {
   module: StageModuleId;
@@ -24,6 +25,9 @@ export type StageModuleRenderProps = {
     onCloseBeforeChange?: (index: number | null) => void;
   };
   bloques?: { blocks: number[] };
+  mulDiv?: MulDivConfig;
+  boxCounts?: number[];
+  onBoxCountsChange?: (counts: number[]) => void;
   autoPlay?: boolean;
   selectedIds?: string[];
   onSelectedIdsChange?: (ids: string[]) => void;
@@ -61,6 +65,20 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
     );
   }
 
+  if (module === "mul-div-naturales" && props.mulDiv) {
+    return (
+      <MulDivNaturalesModule
+        stepId={stepId}
+        {...props.mulDiv}
+        autoPlay={props.autoPlay}
+        boxCounts={props.boxCounts}
+        onBoxCountsChange={props.onBoxCountsChange}
+        onReadyChange={onReadyChange}
+        onAnimationComplete={props.onAnimationComplete}
+      />
+    );
+  }
+
   if (module === "piramide-reduccion" && props.piramide) {
     return (
       <PiramideReduccionModule
@@ -83,4 +101,5 @@ export const STAGE_MODULE_REGISTRY: StageModuleId[] = [
   "tienda-ciclista",
   "bloques-numericos",
   "piramide-reduccion",
+  "mul-div-naturales",
 ];
