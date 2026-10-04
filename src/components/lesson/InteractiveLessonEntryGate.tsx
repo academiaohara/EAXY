@@ -50,6 +50,7 @@ export function InteractiveLessonEntryGate({
 
   const [phase, setPhase] = useState<"checking" | "prompt" | "active">("checking");
   const [sessionKey, setSessionKey] = useState(0);
+  const [openForReview, setOpenForReview] = useState(false);
   const [savedSnapshot, setSavedSnapshot] = useState(() =>
     readPersistedInteractiveLesson(lesson.slug, stepCount),
   );
@@ -66,6 +67,7 @@ export function InteractiveLessonEntryGate({
   }, [lesson.slug, stepCount, sessionKey]);
 
   function handleContinue() {
+    setOpenForReview(true);
     setPhase("active");
   }
 
@@ -74,6 +76,7 @@ export function InteractiveLessonEntryGate({
     if (trackLocalProgress && curriculumLessonId) {
       resetLocalLessonCatalogStatus(curriculumLessonId);
     }
+    setOpenForReview(false);
     setSessionKey((key) => key + 1);
     setPhase("active");
   }
@@ -105,7 +108,7 @@ export function InteractiveLessonEntryGate({
           </DialogHeader>
           <DialogFooter className="flex-col gap-2 sm:flex-col">
             <Button type="button" className="w-full rounded-full" onClick={handleContinue}>
-              Continuar
+              {progressSummary.finished ? "Ver la lección" : "Continuar"}
             </Button>
             <Button type="button" variant="outline" className="w-full rounded-full" onClick={handleRestart}>
               Empezar de cero
@@ -129,6 +132,7 @@ export function InteractiveLessonEntryGate({
           navigation={navigation}
           curriculumLessonId={curriculumLessonId}
           trackLocalProgress={trackLocalProgress}
+          openForReview={openForReview}
         />
       ) : null}
     </>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
@@ -68,6 +68,8 @@ type LessonContainerProps = {
   curriculumLessonId?: string;
   /** Si true, guarda inicio/completado en localStorage. */
   trackLocalProgress?: boolean;
+  /** Entrar a repasar pasos aunque la lección ya conste como terminada en localStorage. */
+  openForReview?: boolean;
 };
 
 /**
@@ -102,6 +104,7 @@ function LessonContainerBody({
   navigation,
   curriculumLessonId,
   trackLocalProgress = false,
+  openForReview = false,
 }: LessonContainerProps) {
   const stepCount = lesson.steps.length;
   const defaultLessonState = useMemo(
@@ -109,6 +112,8 @@ function LessonContainerBody({
     [stepCount],
   );
   const [storageHydrated, setStorageHydrated] = useState(false);
+  const lessonFinishedPersistedRef = useRef(false);
+  const [lessonPreviouslyFinished, setLessonPreviouslyFinished] = useState(false);
 
   const [stepIndex, setStepIndex] = useState(defaultLessonState.stepIndex);
   const [feedback, setFeedback] = useState<FeedbackStatus | null>(null);
@@ -136,6 +141,9 @@ function LessonContainerBody({
       setLocalLessonStatus(curriculumLessonId, allDone ? "completed" : "incomplete");
       return;
     }
+    if (lessonPreviouslyFinished) {
+      return;
+    }
     const catalogStatus = readLocalProgress().lessons[curriculumLessonId];
     if (
       catalogStatus !== "completed" &&
@@ -144,28 +152,52 @@ function LessonContainerBody({
     ) {
       setLocalLessonStatus(curriculumLessonId, "started");
     }
-  }, [storageHydrated, trackLocalProgress, curriculumLessonId, completed, completedSteps]);
+  }, [
+    storageHydrated,
+    trackLocalProgress,
+    curriculumLessonId,
+    completed,
+    completedSteps,
+    lessonPreviouslyFinished,
+  ]);
 
   useEffect(() => {
     const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
     const resumeIndex = saved.stepIndex;
     const step = lesson.steps[resumeIndex];
+    const enterReview = openForReview && saved.completed;
+    lessonFinishedPersistedRef.current = saved.completed;
+    setLessonPreviouslyFinished(saved.completed);
     /* eslint-disable react-hooks/set-state-in-effect -- rehidratar progreso desde localStorage */
     setStepIndex(resumeIndex);
-    setCompleted(saved.completed);
+    setCompleted(enterReview ? false : saved.completed);
     setCompletedSteps(saved.completedSteps);
-    setVisitedSteps(saved.visitedSteps);
+    setVisitedSteps(() => {
+      if (enterReview && saved.completed) {
+        return Array.from({ length: stepCount }, () => true);
+      }
+      if (enterReview) {
+        return saved.visitedSteps.map(
+          (visited, index) => visited || saved.completedSteps[index] || index <= resumeIndex,
+        );
+      }
+      return saved.visitedSteps;
+    });
     setStepAttempts(saved.stepAttempts);
     setToolState(saved.toolState);
     setStars(saved.stars);
     setFeedback(step ? (saved.stepAttempts[step.id]?.feedback ?? null) : null);
     /* eslint-enable react-hooks/set-state-in-effect */
     setStorageHydrated(true);
-  }, [lesson.slug, lesson.steps, stepCount]);
+  }, [lesson.slug, lesson.steps, stepCount, openForReview]);
 
   useEffect(() => {
     if (!storageHydrated) {
       return;
+    }
+    const persistedCompleted = lessonFinishedPersistedRef.current || completed;
+    if (completed) {
+      lessonFinishedPersistedRef.current = true;
     }
     writePersistedInteractiveLesson(lesson.slug, {
       stepIndex,
@@ -173,7 +205,7 @@ function LessonContainerBody({
       visitedSteps,
       stepAttempts,
       stars,
-      completed,
+      completed: persistedCompleted,
       toolState,
       updatedAt: Date.now(),
     });
@@ -311,6 +343,8 @@ function LessonContainerBody({
       setHelpNodeId(null);
       setHelpContext(STEP_HELP);
       if (!lesson.steps[stepIndex + 1]) {
+        lessonFinishedPersistedRef.current = true;
+        setLessonPreviouslyFinished(true);
         setCompleted(true);
         return;
       }
@@ -505,6 +539,8 @@ function LessonContainerBody({
     if (trackLocalProgress && curriculumLessonId) {
       resetLocalLessonCatalogStatus(curriculumLessonId);
     }
+    lessonFinishedPersistedRef.current = false;
+    setLessonPreviouslyFinished(false);
     setStepIndex(0);
     setFeedback(null);
     setCompleted(false);
