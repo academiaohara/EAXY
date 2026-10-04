@@ -11,28 +11,26 @@ export type BloquesNumericosModuleProps = {
   onReadyChange?: (ready: boolean) => void;
 };
 
-const EMOJI_BY_SIZE = ["🍎", "🍊", "🍋"] as const;
+/** Mismo objeto en todos los sumandos: $8 + 6$ son 8 manzanas y 6 manzanas. */
+const UNIT_EMOJI = "🍎";
+const UNIT_LABEL = "manzanas";
 
 function EmojiPile({
   count,
-  emoji,
-  label,
   className,
 }: {
   count: number;
-  emoji: string;
-  label: string;
   className?: string;
 }) {
   return (
     <div className={cn("flex flex-col items-center gap-1", className)}>
       <div
-        className="flex max-w-[9rem] flex-wrap justify-center gap-0.5 rounded-xl border border-slate-200 bg-white px-2 py-2 shadow-sm"
-        aria-label={`${count} ${label}`}
+        className="flex max-w-[11rem] flex-wrap justify-center gap-0.5 rounded-xl border border-slate-200 bg-white px-2 py-2 shadow-sm"
+        aria-label={`${count} ${UNIT_LABEL}`}
       >
         {Array.from({ length: count }, (_, index) => (
           <span key={index} className="text-xl leading-none" aria-hidden>
-            {emoji}
+            {UNIT_EMOJI}
           </span>
         ))}
       </div>
@@ -65,15 +63,13 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
   if (scene === "conmutativa") {
     const first = swapped ? b : a;
     const second = swapped ? a : b;
-    const firstEmoji = EMOJI_BY_SIZE[0];
-    const secondEmoji = EMOJI_BY_SIZE[1];
 
     return (
       <div className="space-y-4" data-testid="bloques-numericos-conmutativa" aria-label="Propiedad conmutativa">
         <div className="flex flex-wrap items-end justify-center gap-4 rounded-xl bg-slate-100/80 p-4">
-          <EmojiPile count={first} emoji={firstEmoji} label="manzanas" />
+          <EmojiPile count={first} />
           <span className="pb-6 text-2xl font-bold text-ink">+</span>
-          <EmojiPile count={second} emoji={secondEmoji} label="naranjas" />
+          <EmojiPile count={second} />
           <span className="pb-6 font-mono text-lg font-bold text-ink">= {a + b}</span>
         </div>
         <p className="text-center text-sm text-ink-muted">
@@ -103,21 +99,21 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
         {groupLeft ? (
           <>
             <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/30 bg-white/80 px-3 py-2">
-              <EmojiPile count={a} emoji={EMOJI_BY_SIZE[0]} label="manzanas" />
+              <EmojiPile count={a} />
               <span className="pb-6 text-xl font-bold text-ink">+</span>
-              <EmojiPile count={b} emoji={EMOJI_BY_SIZE[1]} label="naranjas" />
+              <EmojiPile count={b} />
             </div>
             <span className="pb-6 text-xl font-bold text-ink">+</span>
-            <EmojiPile count={c!} emoji={EMOJI_BY_SIZE[2]} label="limones" />
+            <EmojiPile count={c!} />
           </>
         ) : (
           <>
-            <EmojiPile count={a} emoji={EMOJI_BY_SIZE[0]} label="manzanas" />
+            <EmojiPile count={a} />
             <span className="pb-6 text-xl font-bold text-ink">+</span>
-            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-emerald-500/35 bg-white/80 px-3 py-2">
-              <EmojiPile count={b} emoji={EMOJI_BY_SIZE[1]} label="naranjas" />
+            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/30 bg-white/80 px-3 py-2">
+              <EmojiPile count={b} />
               <span className="pb-6 text-xl font-bold text-ink">+</span>
-              <EmojiPile count={c!} emoji={EMOJI_BY_SIZE[2]} label="limones" />
+              <EmojiPile count={c!} />
             </div>
           </>
         )}
