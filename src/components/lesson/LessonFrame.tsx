@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { StarIcon, XIcon } from "lucide-react";
 import { LessonProgressHeader } from "@/components/lesson/LessonProgressHeader";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
@@ -88,14 +89,16 @@ export function LessonFrame({
       />
 
       <div className={cn("flex shrink-0 items-center gap-3 pb-3 pt-3 sm:gap-4", LESSON_SHELL_WIDTH)}>
-        <Link
-          href={closeHref}
-          className="flex size-9 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-white/80 hover:text-slate-800"
+        <Button
+          variant="ghost"
+          size="icon-lg"
+          nativeButton={false}
+          className="rounded-full text-ink-muted hover:bg-cobalt-tint hover:text-cobalt active:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_18%)] active:text-cobalt"
           aria-label="Cerrar lección"
-          data-testid="lesson-close"
+          render={<Link href={closeHref} data-testid="lesson-close" />}
         >
           <XIcon className="size-5" />
-        </Link>
+        </Button>
 
         <div className="flex min-w-0 flex-1 flex-col gap-1.5">
           <div className="flex items-baseline justify-between gap-3">
