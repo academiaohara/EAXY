@@ -25,17 +25,15 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
   const numberLabel = String(moduleNumber).padStart(2, "0");
 
   const numberClassName = cn(
-    "font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink transition-[opacity,filter] duration-200 sm:text-7xl",
+    "font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink transition-opacity duration-200 sm:text-7xl",
     href
-      ? "opacity-[0.22] blur-[1.5px] group-hover:opacity-100 group-hover:blur-none group-focus-visible:opacity-100 group-focus-visible:blur-none"
-      : "pointer-events-none opacity-[0.12] blur-[1.5px]",
+      ? "opacity-25 group-hover:opacity-100 group-focus-visible:opacity-100"
+      : "pointer-events-none opacity-20",
   );
 
   const wrapperClassName = cn(
-    "group flex size-[4.75rem] items-center justify-center rounded-2xl border border-slate-200/50 bg-white/30 shadow-sm backdrop-blur-sm transition-[border-color,background-color,box-shadow] sm:size-[5.5rem]",
-    href
-      ? "hover:border-cobalt/25 hover:bg-white/70 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40"
-      : "pointer-events-none border-transparent bg-transparent shadow-none",
+    "group flex size-[4.75rem] items-center justify-center sm:size-[5.5rem]",
+    href && "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
   );
 
   if (!href) {
