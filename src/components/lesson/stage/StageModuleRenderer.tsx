@@ -2,6 +2,7 @@
 
 import { BloquesNumericosModule } from "@/components/lesson/stage/modules/bloques-numericos/BloquesNumericosModule";
 import { PiramideReduccionModule } from "@/components/lesson/stage/modules/piramide-reduccion/PiramideReduccionModule";
+import { JerarquiaOperacionesModule } from "@/components/lesson/stage/modules/jerarquia-operaciones/JerarquiaOperacionesModule";
 import { TiendaCiclistaModule } from "@/components/lesson/stage/modules/tienda-ciclista/TiendaCiclistaModule";
 import type { StageModuleId } from "@/lib/lesson/types";
 
@@ -24,6 +25,12 @@ export type StageModuleRenderProps = {
     onCloseBeforeChange?: (index: number | null) => void;
   };
   bloques?: { blocks: number[] };
+  jerarquia?: {
+    revealPlayed?: boolean;
+    targetSequence?: string[];
+    tapSequence?: string[];
+    onTapSequenceChange?: (sequence: string[]) => void;
+  };
   autoPlay?: boolean;
   selectedIds?: string[];
   onSelectedIdsChange?: (ids: string[]) => void;
@@ -75,6 +82,20 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
     );
   }
 
+  if (module === "jerarquia-operaciones") {
+    return (
+      <JerarquiaOperacionesModule
+        scene={scene}
+        revealPlayed={props.jerarquia?.revealPlayed}
+        autoPlay={props.autoPlay}
+        targetSequence={props.jerarquia?.targetSequence}
+        tapSequence={props.jerarquia?.tapSequence}
+        onTapSequenceChange={props.jerarquia?.onTapSequenceChange}
+        onReadyChange={onReadyChange}
+      />
+    );
+  }
+
   return <p className="text-sm text-rose-700">Módulo de escenario no configurado.</p>;
 }
 
@@ -83,4 +104,5 @@ export const STAGE_MODULE_REGISTRY: StageModuleId[] = [
   "tienda-ciclista",
   "bloques-numericos",
   "piramide-reduccion",
+  "jerarquia-operaciones",
 ];

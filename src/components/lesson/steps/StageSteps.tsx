@@ -171,18 +171,64 @@ export function PredictStepView({
 
   useRegisterLessonStepControl(control);
 
+  const jerarquiaStage =
+    step.module === "jerarquia-operaciones" && step.scene ? (
+      <StageModuleRenderer
+        module="jerarquia-operaciones"
+        stepId={reveal ? `${step.id}-reveal` : step.id}
+        scene={step.scene}
+        jerarquia={{ revealPlayed: reveal }}
+      />
+    ) : null;
+
   const tiendaReveal =
-    reveal && step.module === "tienda-ciclista" && step.tienda
-      ? (
-          <StageModuleRenderer
-            module="tienda-ciclista"
-            stepId={`${step.id}-reveal`}
-            scene={step.scene ?? "reveal"}
-            tienda={{ ...step.tienda, mode: step.tienda.mode ?? "sumar-cesta" }}
-            autoPlay
-          />
-        )
-      : null;
+    reveal && step.module === "tienda-ciclista" && step.tienda ? (
+      <StageModuleRenderer
+        module="tienda-ciclista"
+        stepId={`${step.id}-reveal`}
+        scene={step.scene ?? "reveal"}
+        tienda={{ ...step.tienda, mode: step.tienda.mode ?? "sumar-cesta" }}
+        autoPlay
+      />
+    ) : null;
+
+  if (step.module === "jerarquia-operaciones" && step.scene) {
+    return (
+      <div data-testid="lesson-predict-step">
+        <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={jerarquiaStage}>
+          <h3 className="mb-4 text-center text-base font-semibold text-ink">
+            <MathRenderer text={step.question} />
+          </h3>
+          {step.mode === "choice" ? (
+            <div className="mx-auto flex max-w-md flex-col gap-2">
+              {(step.choices ?? []).map((choice) => (
+                <button
+                  key={choice.id}
+                  type="button"
+                  disabled={disabled || checked}
+                  onClick={() => setChoiceId(choice.id)}
+                  className={cn(
+                    "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition touch-manipulation",
+                    choiceId === choice.id
+                      ? "border-cobalt bg-cobalt-tint"
+                      : "border-slate-200 hover:border-cobalt/30",
+                  )}
+                  aria-pressed={choiceId === choice.id}
+                >
+                  <MathRenderer text={choice.label} />
+                </button>
+              ))}
+            </div>
+          ) : null}
+          {checked ? (
+            <p className="mt-4 text-center text-sm text-ink-muted" role="status">
+              {isCorrect ? "¡Bien visto!" : "Mira la animación: el orden importa."}
+            </p>
+          ) : null}
+        </StageShell>
+      </div>
+    );
+  }
 
   return (
     <StageViewport theme={theme} header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}>
@@ -243,6 +289,7 @@ type ExplorePersist = {
   selectedIds: string[];
   openAfter: number | null;
   closeBefore: number | null;
+  tapSequence: string[];
 };
 
 export function ExploreStepView({
@@ -263,6 +310,7 @@ export function ExploreStepView({
     selectedIds: defaultIds,
     openAfter: null,
     closeBefore: null,
+    tapSequence: [],
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
@@ -278,6 +326,13 @@ export function ExploreStepView({
     }
     if (step.goal.kind === "expression-result") {
       return isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore);
+    }
+    if (step.goal.kind === "hierarchy-sequence") {
+      const target = step.goal.sequence;
+      return (
+        persist.tapSequence.length === target.length &&
+        persist.tapSequence.every((id, i) => id === target[i])
+      );
     }
     return false;
   }, [persist, step]);
@@ -296,6 +351,9 @@ export function ExploreStepView({
     let correct = true;
     if (step.goal.kind === "expression-result") {
       correct = evaluatedValue === step.goal.target;
+    }
+    if (step.goal.kind === "hierarchy-sequence") {
+      correct = placementReady;
     }
     setIsCorrect(correct);
     setChecked(true);
@@ -346,6 +404,15 @@ export function ExploreStepView({
               closeBefore: persist.closeBefore,
               onOpenAfterChange: (index) => setPersist((prev) => ({ ...prev, openAfter: index })),
               onCloseBeforeChange: (index) => setPersist((prev) => ({ ...prev, closeBefore: index })),
+            }
+          : undefined
+      }
+      jerarquia={
+        step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-sequence"
+          ? {
+              targetSequence: step.goal.sequence,
+              tapSequence: persist.tapSequence,
+              onTapSequenceChange: (tapSequence) => setPersist((prev) => ({ ...prev, tapSequence })),
             }
           : undefined
       }

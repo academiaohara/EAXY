@@ -19,7 +19,11 @@ export type LessonStageConfig = {
   theme: LessonStageTheme;
 };
 
-export type StageModuleId = "tienda-ciclista" | "bloques-numericos" | "piramide-reduccion";
+export type StageModuleId =
+  | "tienda-ciclista"
+  | "bloques-numericos"
+  | "piramide-reduccion"
+  | "jerarquia-operaciones";
 
 export type TiendaCiclistaItem = {
   id: string;
@@ -370,6 +374,11 @@ export type ExploreGoal =
       /** Expresión base con tokens separados por espacios, p. ej. "9 - 1 + 3". */
       tokens: string[];
       target: number;
+    }
+  | {
+      kind: "hierarchy-sequence";
+      /** ids de operación en el orden correcto (p. ej. parentesis, div, mul). */
+      sequence: string[];
     };
 
 export type ExploreStep = LessonStepBase &
