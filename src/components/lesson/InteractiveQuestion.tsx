@@ -85,9 +85,6 @@ export function InteractiveQuestion({
         step={step}
         theme={stageTheme}
         onContinue={() => onContinue?.({ completed: true })}
-        onCheck={onCheck}
-        disabled={disabled}
-        saved={savedAttempt?.kind === "predict" ? savedAttempt : null}
       />
     );
   }
@@ -122,9 +119,6 @@ export function InteractiveQuestion({
         step={step}
         theme={stageTheme}
         onContinue={() => onContinue?.({ completed: true })}
-        onCheck={onCheck}
-        disabled={disabled}
-        saved={savedAttempt?.kind === "predict" ? savedAttempt : null}
       />
     );
   }

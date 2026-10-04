@@ -7,7 +7,6 @@ import { PracticeShell } from "@/components/lesson/steps/PracticeShell";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import type { FillInBlankSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import { cn } from "@/lib/utils";
-import { FichaColor, MarcoDiez } from "@/components/lesson/stage/objects";
 import type { FillInBlankStep } from "@/lib/lesson/types";
 
 type FillInBlankProps = {
@@ -29,7 +28,6 @@ export function FillInBlank({
   const [value, setValue] = useState(restored?.value ?? "");
   const [checked, setChecked] = useState(Boolean(restored));
   const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
-  const [showWhy, setShowWhy] = useState(false);
 
   usePracticeSnapshotRestore(restored, (snapshot) => {
     setValue(snapshot.value);
@@ -64,42 +62,8 @@ export function FillInBlank({
 
   useRegisterLessonStepControl(control);
 
-  const why = step.whyFichas;
-
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fill-in-blank">
-      {why ? (
-        <div className="flex justify-center">
-          <button
-            type="button"
-            className="min-h-11 rounded-full border-2 border-cobalt/30 px-4 py-2 text-sm font-semibold text-cobalt hover:bg-cobalt-tint/40"
-            onClick={() => setShowWhy((prev) => !prev)}
-            data-testid="lesson-fill-why-button"
-          >
-            ¿Por qué?
-          </button>
-        </div>
-      ) : null}
-      {showWhy && why ? (
-        <div
-          className="flex flex-wrap items-end justify-center gap-4 rounded-xl border border-cobalt/15 bg-cobalt-tint/20 p-4"
-          data-testid="lesson-fill-why-fichas"
-        >
-          <MarcoDiez label={`${why.a} fichas`}>
-            {Array.from({ length: Math.min(why.a, 10) }).map((_, index) => (
-              <FichaColor key={`a-${index}`} tone="cobalt" />
-            ))}
-          </MarcoDiez>
-          <MarcoDiez label={`${why.b} fichas`}>
-            {Array.from({ length: Math.min(why.b, 10) }).map((_, index) => (
-              <FichaColor key={`b-${index}`} tone="emerald" />
-            ))}
-          </MarcoDiez>
-          <p className="w-full text-center text-sm font-semibold text-ink">
-            {why.a} + {why.b} = {why.b} + {why.a} = {why.sum}
-          </p>
-        </div>
-      ) : null}
       <form
         className="flex justify-center"
         onSubmit={(event) => {
