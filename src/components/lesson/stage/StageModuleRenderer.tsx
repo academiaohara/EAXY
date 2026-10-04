@@ -1,14 +1,23 @@
 "use client";
 
 import { BloquesNumericosModule } from "@/components/lesson/stage/modules/bloques-numericos/BloquesNumericosModule";
+import { FichasPropiedadesModule } from "@/components/lesson/stage/modules/fichas-propiedades/FichasPropiedadesModule";
+import { ManzanasParentesisModule } from "@/components/lesson/stage/modules/manzanas-parentesis/ManzanasParentesisModule";
 import { PiramideReduccionModule } from "@/components/lesson/stage/modules/piramide-reduccion/PiramideReduccionModule";
 import { TiendaCiclistaModule } from "@/components/lesson/stage/modules/tienda-ciclista/TiendaCiclistaModule";
-import type { StageModuleId } from "@/lib/lesson/types";
+import { TiendaFichasModule } from "@/components/lesson/stage/modules/tienda-fichas/TiendaFichasModule";
+import type { EmbeddedPrediction, StageModuleId } from "@/lib/lesson/types";
 
 export type StageModuleRenderProps = {
   module: StageModuleId;
   stepId: string;
   scene: string;
+  embeddedPrediction?: EmbeddedPrediction;
+  tiendaFichas?: {
+    items?: import("@/lib/lesson/types").TiendaCiclistaItem[];
+    wallet?: number;
+    mode: "sumar-estanteria" | "restar-cobro" | "explorar-toggle";
+  };
   tienda?: {
     items?: import("@/lib/lesson/types").TiendaCiclistaItem[];
     wallet?: number;
@@ -28,10 +37,62 @@ export type StageModuleRenderProps = {
   onSelectedIdsChange?: (ids: string[]) => void;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
+  onPredictPhaseChange?: (active: boolean, canSubmit: boolean) => void;
+  onRegisterPredict?: (submit: () => boolean) => void;
+  onRegisterExplore?: (check: () => void) => void;
+  onExploreCheck?: (result: { correct: boolean; message: string }) => void;
+  exploreBudget?: number;
+  onGoalChange?: (met: boolean, liveValue: number | null) => void;
 };
 
 export function StageModuleRenderer(props: StageModuleRenderProps) {
-  const { module, stepId, scene, onReadyChange } = props;
+  const { module, stepId, scene, onReadyChange, embeddedPrediction } = props;
+
+  if (module === "tienda-fichas" && props.tiendaFichas) {
+    return (
+      <TiendaFichasModule
+        stepId={stepId}
+        mode={props.tiendaFichas.mode}
+        items={props.tiendaFichas.items ?? []}
+        wallet={props.tiendaFichas.wallet}
+        embeddedPrediction={embeddedPrediction}
+        onReadyChange={onReadyChange}
+        onPredictPhaseChange={props.onPredictPhaseChange}
+        onExploreCheck={props.onExploreCheck}
+        exploreBudget={props.exploreBudget}
+        onRegisterPredict={props.onRegisterPredict}
+        onRegisterExplore={props.onRegisterExplore}
+      />
+    );
+  }
+
+  if (module === "manzanas-parentesis") {
+    return (
+      <ManzanasParentesisModule
+        stepId={stepId}
+        scene={scene as "dual-narrate" | "explorar-bolsa" | "limite-resta"}
+        embeddedPrediction={embeddedPrediction}
+        onReadyChange={onReadyChange}
+        onPredictPhaseChange={props.onPredictPhaseChange}
+        onGoalChange={props.onGoalChange}
+        onRegisterPredict={props.onRegisterPredict}
+      />
+    );
+  }
+
+  if (module === "fichas-propiedades" && props.bloques) {
+    return (
+      <FichasPropiedadesModule
+        stepId={stepId}
+        scene={scene as "conmutativa" | "asociativa"}
+        blocks={props.bloques.blocks}
+        embeddedPrediction={embeddedPrediction}
+        onReadyChange={onReadyChange}
+        onPredictPhaseChange={props.onPredictPhaseChange}
+        onRegisterPredict={props.onRegisterPredict}
+      />
+    );
+  }
 
   if (module === "tienda-ciclista" && props.tienda) {
     return (
@@ -76,9 +137,11 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
   return <p className="text-sm text-rose-700">Módulo de escenario no configurado.</p>;
 }
 
-/** Registro de identificadores de módulo disponibles (documentación en runtime). */
 export const STAGE_MODULE_REGISTRY: StageModuleId[] = [
   "tienda-ciclista",
   "bloques-numericos",
   "piramide-reduccion",
+  "tienda-fichas",
+  "manzanas-parentesis",
+  "fichas-propiedades",
 ];
