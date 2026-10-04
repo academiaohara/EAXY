@@ -26,7 +26,7 @@ const STATUS_LABELS: Record<LessonProgressStatus, string> = {
 
 const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
   completed: "bg-white/20 text-white",
-  started: "bg-violet-100 text-violet-800",
+  started: "bg-cobalt-tint text-cobalt",
   available: "bg-slate-100 text-slate-500",
 };
 
@@ -49,7 +49,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
   const isInteractive = lesson.kind === "interactive";
   const isCurrent =
     status === "started" || (isNextTarget && status !== "completed");
-  const connectorPurple = status === "completed";
+  const connectorBrand = status === "completed";
 
   return (
     <li className="relative">
@@ -57,7 +57,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
         <span
           className={cn(
             "pointer-events-none absolute left-[2.125rem] top-full h-3 w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
-            connectorPurple ? "bg-violet-500" : "bg-slate-300",
+            connectorBrand ? "bg-cobalt" : "bg-slate-300",
           )}
           aria-hidden
         />
@@ -69,10 +69,10 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
         className={cn(
           "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:p-4",
           status === "completed" &&
-            "border-violet-600 bg-violet-600 hover:border-violet-500 hover:bg-violet-600/95 focus-visible:ring-violet-400/50",
+            "border-cobalt bg-cobalt hover:border-cobalt/90 hover:bg-cobalt/95 focus-visible:ring-cobalt/50",
           status !== "completed" &&
             isCurrent &&
-            "border-violet-500 hover:border-violet-500 focus-visible:ring-violet-400/40",
+            "border-cobalt/40 hover:border-cobalt/55 focus-visible:ring-cobalt/40",
           status !== "completed" &&
             !isCurrent &&
             "border-slate-200 hover:border-cobalt/40 focus-visible:ring-cobalt/40",
@@ -84,10 +84,10 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             status === "completed" && "border-white/90 bg-white/15 text-white",
             status !== "completed" &&
               isCurrent &&
-              "border-violet-500 bg-white text-violet-600 shadow-[0_0_0_4px_rgba(139,92,246,0.15)]",
+              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(47,95,224,0.12)]",
             status !== "completed" &&
               !isCurrent &&
-              "border-slate-200 bg-white text-slate-400 group-hover:border-violet-400/60 group-hover:text-violet-600",
+              "border-slate-200 bg-white text-slate-400 group-hover:border-cobalt/50 group-hover:text-cobalt",
           )}
           aria-hidden
         >
@@ -105,7 +105,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             <span
               className={cn(
                 "text-[11px] font-semibold tabular-nums",
-                status === "completed" ? "text-violet-200" : "text-slate-400",
+                status === "completed" ? "text-cobalt-tint" : "text-slate-400",
               )}
             >
               {String(position).padStart(2, "0")}
@@ -126,7 +126,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
               "mt-0.5 block font-medium leading-snug",
               status === "completed"
                 ? "text-white"
-                : "text-ink group-hover:text-violet-700",
+                : "text-ink group-hover:text-cobalt",
             )}
           >
             {lesson.title.replace(/^\d+\.\s*/, "")}
@@ -134,7 +134,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           <span
             className={cn(
               "block text-xs",
-              status === "completed" ? "text-violet-100" : "text-muted-foreground",
+              status === "completed" ? "text-white/80" : "text-muted-foreground",
             )}
           >
             {lessonMetaLabel(lesson)}
@@ -146,7 +146,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             "size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
             status === "completed"
               ? "text-white/70 group-hover:text-white"
-              : "text-slate-300 group-hover:text-violet-600",
+              : "text-slate-300 group-hover:text-cobalt",
           )}
           aria-hidden
         />
@@ -184,7 +184,7 @@ function ModuleProgressPill({ courseModule }: { courseModule: ModuleSummary }) {
     <div className="flex items-center gap-3">
       <div className="h-1.5 w-24 overflow-hidden rounded-full bg-slate-200">
         <div
-          className="h-full rounded-full bg-violet-500 transition-all duration-500"
+          className="h-full rounded-full bg-cobalt transition-all duration-500"
           style={{ width: `${percent}%` }}
         />
       </div>
