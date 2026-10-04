@@ -32,7 +32,7 @@ function CourseCard({ course, accent }: { course: CourseCatalogEntry; accent: st
 
   return (
     <Link
-      href={courseHref(course.id)}
+      href={courseHref(course.slug)}
       data-testid={`course-link-${course.id}`}
       className={cn(
         "group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border bg-paper-raised p-5 shadow-xs outline-none transition-all focus-visible:ring-2 focus-visible:ring-cobalt/40",

@@ -40,7 +40,7 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
 
         <p className="mt-4 flex flex-wrap items-center gap-1.5 text-sm text-white/80">
           <Link
-            href={courseHref(entry.courseId)}
+            href={courseHref(entry.courseSlug)}
             className="rounded-full bg-white/15 px-2.5 py-0.5 font-medium text-white transition-colors hover:bg-white/25"
           >
             {courseShortTitle(entry.courseTitle)}

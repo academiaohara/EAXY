@@ -24,7 +24,7 @@ function lesson(
 }
 
 function courseModule(id: string, lessons: LessonSummary[]): ModuleSummary {
-  return { id, title: `Tema ${id}`, orderIndex: 0, lessons, topicExercises: [] };
+  return { id, slug: id, title: `Tema ${id}`, orderIndex: 0, lessons, topicExercises: [] };
 }
 
 describe("getModuleProgress", () => {

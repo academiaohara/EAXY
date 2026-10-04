@@ -9,6 +9,7 @@ import type { ModuleSummary } from "@/lib/curriculum/types";
 function module(id: string, orderIndex: number, lessons: ModuleSummary["lessons"] = []): ModuleSummary {
   return {
     id,
+    slug: id,
     title: `Module ${id}`,
     orderIndex,
     lessons,

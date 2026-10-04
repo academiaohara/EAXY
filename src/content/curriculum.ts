@@ -38,12 +38,14 @@ export const curriculum: Curriculum = {
   courses: [
     {
       id: courseId(1),
+      slug: "matematicas-1-eso",
       title: "Matemáticas 1º ESO",
       description: "Primer curso de matemáticas de la ESO.",
       orderIndex: 1,
       modules: [
         {
           id: moduleId(1),
+          slug: "numeros-naturales",
           title: "Los números naturales",
           orderIndex: 1,
           topicExercises: numerosNaturalesTopicExercises,
@@ -97,6 +99,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(2),
+          slug: "potencias-y-raices",
           title: "Potencias y raíces",
           orderIndex: 2,
           topicExercises: potenciasRaicesTopicExercises,
@@ -141,6 +144,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(3),
+          slug: "divisibilidad",
           title: "Divisibilidad",
           orderIndex: 3,
           topicExercises: divisibilidadTopicExercises,
@@ -194,6 +198,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(4),
+          slug: "numeros-enteros",
           title: "Los números enteros",
           orderIndex: 4,
           topicExercises: numerosEnterosTopicExercises,
@@ -247,6 +252,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(5),
+          slug: "numeros-decimales",
           title: "Los números decimales",
           orderIndex: 5,
           topicExercises: numerosDecimalesTopicExercises,
@@ -283,6 +289,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(6),
+          slug: "sistema-metrico-decimal",
           title: "El sistema métrico decimal",
           orderIndex: 6,
           topicExercises: sistemaMetricoDecimalTopicExercises,
@@ -337,6 +344,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(8),
+          slug: "fracciones",
           title: "Las fracciones",
           orderIndex: 7,
           topicExercises: fraccionesTopicExercises,
@@ -392,6 +400,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(9),
+          slug: "operaciones-con-fracciones",
           title: "Operaciones con fracciones",
           orderIndex: 8,
           topicExercises: operacionesFraccionesTopicExercises,
@@ -440,6 +449,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(10),
+          slug: "proporcionalidad-y-porcentajes",
           title: "Proporcionalidad y porcentajes",
           orderIndex: 9,
           topicExercises: proporcionalidadPorcentajesTopicExercises,
@@ -488,6 +498,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(11),
+          slug: "algebra",
           title: "Álgebra",
           orderIndex: 10,
           topicExercises: algebraTopicExercises,
@@ -551,6 +562,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(12),
+          slug: "cuerpos-geometricos",
           title: "Cuerpos geométricos",
           orderIndex: 12,
           topicExercises: cuerposGeometricosTopicExercises,
@@ -596,6 +608,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(13),
+          slug: "areas-y-perimetros",
           title: "Áreas y perímetros",
           orderIndex: 13,
           topicExercises: areasPerimetrosTopicExercises,
@@ -641,6 +654,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(14),
+          slug: "tablas-y-graficas",
           title: "Tablas y gráficas",
           orderIndex: 14,
           topicExercises: tablasGraficasTopicExercises,
@@ -707,6 +721,7 @@ export const curriculum: Curriculum = {
         },
         {
           id: moduleId(15),
+          slug: "probabilidad",
           title: "Probabilidad",
           orderIndex: 15,
           topicExercises: probabilidadTopicExercises,
@@ -763,6 +778,7 @@ export const curriculum: Curriculum = {
     },
     {
       id: courseId(2),
+      slug: "matematicas-2-eso",
       title: "Matemáticas 2º ESO",
       description: "Segundo curso de matemáticas de la ESO.",
       orderIndex: 2,
@@ -770,6 +786,7 @@ export const curriculum: Curriculum = {
     },
     {
       id: courseId(3),
+      slug: "matematicas-3-eso",
       title: "Matemáticas 3º ESO",
       description: "Tercer curso de matemáticas de la ESO.",
       orderIndex: 3,
@@ -777,12 +794,14 @@ export const curriculum: Curriculum = {
     },
     {
       id: courseId(4),
+      slug: "matematicas-4-eso",
       title: "Matemáticas 4º ESO",
       description: "Cuarto curso de matemáticas de la ESO.",
       orderIndex: 4,
       modules: [
         {
           id: moduleId(7),
+          slug: "sistemas-de-ecuaciones",
           title: "Sistemas de ecuaciones",
           orderIndex: 1,
           topicExercises: sistemasEcuacionesTopicExercises,
@@ -838,6 +857,7 @@ export const curriculum: Curriculum = {
     },
     {
       id: courseId(5),
+      slug: "matematicas-1-bachillerato",
       title: "Matemáticas 1º Bachillerato",
       description: "Primer curso de matemáticas de Bachillerato.",
       orderIndex: 5,
@@ -845,6 +865,7 @@ export const curriculum: Curriculum = {
     },
     {
       id: courseId(6),
+      slug: "matematicas-2-bachillerato",
       title: "Matemáticas 2º Bachillerato",
       description: "Segundo curso de matemáticas de Bachillerato.",
       orderIndex: 6,

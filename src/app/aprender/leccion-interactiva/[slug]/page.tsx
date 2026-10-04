@@ -20,9 +20,9 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
   const context = getInteractiveLessonContext(slug);
   const navigation = context
     ? {
-        courseId: context.course.id,
+        courseSlug: context.course.slug,
         courseTitle: context.course.title,
-        moduleId: context.module.id,
+        moduleSlug: context.module.slug,
         moduleTitle: context.module.title,
       }
     : undefined;

@@ -224,7 +224,7 @@ export default function HomePage() {
                 return (
                   <li key={course.id}>
                     <Link
-                      href={courseHref(course.id)}
+                      href={courseHref(course.slug)}
                       className={cn(
                         "group flex items-center justify-between gap-3 rounded-2xl border bg-paper-raised px-5 py-4 shadow-xs transition-all",
                         available

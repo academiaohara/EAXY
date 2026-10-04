@@ -53,12 +53,13 @@ import {
   resetLocalLessonCatalogStatus,
   setLocalLessonStatus,
 } from "@/lib/local-progress/storage";
+import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
 import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
-  courseId: string;
+  courseSlug: string;
   courseTitle: string;
-  moduleId?: string;
+  moduleSlug?: string;
   moduleTitle: string;
 };
 
@@ -236,11 +237,11 @@ function LessonContainerBody({
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
   const isLastStep = stepIndex === totalSteps - 1;
-  const courseHref = !navigation
+  const backHref = !navigation
     ? "/aprender"
-    : navigation.moduleId
-      ? `/aprender/curso/${navigation.courseId}/tema/${navigation.moduleId}`
-      : `/aprender/curso/${navigation.courseId}`;
+    : navigation.moduleSlug
+      ? topicHref(navigation.courseSlug, navigation.moduleSlug)
+      : courseHref(navigation.courseSlug);
   const totalStars = useMemo(
     () => lesson.steps.filter((step) => isStarStep(step)).length,
     [lesson.steps],
@@ -586,7 +587,7 @@ function LessonContainerBody({
         lessonTitle={lesson.title}
         stars={stars}
         totalStars={totalStars}
-        courseHref={courseHref}
+        courseHref={backHref}
         onRestart={restartLesson}
         incompleteSteps={incompleteSteps}
         onJumpToStep={(index) => {
@@ -629,7 +630,7 @@ function LessonContainerBody({
         <h1 className="sr-only">{lesson.title}</h1>
 
         <LessonFrame
-          closeHref={courseHref}
+          closeHref={backHref}
           lessonTitle={lesson.title}
           currentStep={stepIndex + 1}
           currentStepIndex={stepIndex}

@@ -1,23 +1,34 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { CourseTopicView } from "@/components/learning/course-topic-view";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getCourseOutline } from "@/lib/curriculum/queries";
+import { resolveModuleRef } from "@/lib/curriculum/resolve-ref";
+import { topicHref } from "@/lib/navigation/learning-trail";
 
 type CourseTopicPageProps = {
   params: Promise<{ courseId: string; moduleId: string }>;
 };
 
 export default async function CourseTopicPage({ params }: CourseTopicPageProps) {
-  const { courseId, moduleId } = await params;
+  const { courseId: courseParam, moduleId: moduleParam } = await params;
+  const resolved = resolveModuleRef(courseParam, moduleParam);
+  if (!resolved) {
+    notFound();
+  }
+
   const studentId = await getAuthenticatedUserIdOrNull();
-  const outline = await getCourseOutline(courseId, studentId);
+  const outline = await getCourseOutline(resolved.courseSlug, studentId);
 
   if (!outline) {
     notFound();
   }
 
+  if (courseParam !== resolved.courseSlug || moduleParam !== resolved.slug) {
+    permanentRedirect(topicHref(resolved.courseSlug, resolved.slug));
+  }
+
   const sortedModules = [...outline.modules].sort((a, b) => a.orderIndex - b.orderIndex);
-  const moduleIndex = sortedModules.findIndex((courseModule) => courseModule.id === moduleId);
+  const moduleIndex = sortedModules.findIndex((courseModule) => courseModule.id === resolved.id);
   if (moduleIndex < 0) {
     notFound();
   }
