@@ -5,17 +5,19 @@ import type { TutorMood } from "@/lib/tutor/moods";
 export type TutorReaction = "idle" | "thinking" | "correct" | "incorrect";
 
 /** Ánimo por defecto cuando la pregunta no trae pista. */
-const QUIZ_FALLBACK_MESSAGE: Record<PracticeStep["type"], string> = {
+const QUIZ_FALLBACK_MESSAGE: Partial<Record<LessonStep["type"], string>> = {
   fill_in_blank: "Escribe tu respuesta en la casilla.",
   fraction_pick: "Toca las partes para colorearlas. Si te equivocas, vuelve a tocar.",
   classify: "Toca una tarjeta y luego el grupo donde va.",
   number_line_pick: "Toca la recta en el punto que corresponde.",
+  predict: "Responde y pulsa Comprobar.",
+  explore: "Prueba hasta cumplir el objetivo y pulsa Comprobar.",
 };
 
 /** Texto corto para el globo del tutor según el paso actual. */
 export function getStepTutorMessage(step: LessonStep): string {
   if (isQuizStep(step)) {
-    return step.hint ?? QUIZ_FALLBACK_MESSAGE[step.type];
+    return step.hint ?? QUIZ_FALLBACK_MESSAGE[step.type] ?? "Responde y pulsa Comprobar.";
   }
   return step.title;
 }
