@@ -126,6 +126,9 @@ export function evalWithParenthesisPlacement(
   if (openAfter < -1 || closeBefore === null || closeBefore < openAfter + 1) {
     return null;
   }
+  if (openAfter === -1 && closeBefore < 0) {
+    return null;
+  }
   const expr = tokensToExpression(tokens, openAfter, closeBefore);
   return evalNaturalExpression(expr);
 }

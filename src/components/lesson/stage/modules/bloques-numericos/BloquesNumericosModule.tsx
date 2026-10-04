@@ -11,17 +11,32 @@ export type BloquesNumericosModuleProps = {
   onReadyChange?: (ready: boolean) => void;
 };
 
-const UNIT = 18;
+const EMOJI_BY_SIZE = ["🍎", "🍊", "🍋"] as const;
 
-function Block({ value, tone }: { value: number; tone: string }) {
-  const width = value * UNIT;
+function EmojiPile({
+  count,
+  emoji,
+  label,
+  className,
+}: {
+  count: number;
+  emoji: string;
+  label: string;
+  className?: string;
+}) {
   return (
-    <div
-      className={cn("flex h-10 items-center justify-center rounded-md border-2 font-mono text-sm font-bold text-white shadow-sm", tone)}
-      style={{ width: `${width}px`, minWidth: `${UNIT}px` }}
-      aria-label={`Bloque de longitud ${value}`}
-    >
-      {value}
+    <div className={cn("flex flex-col items-center gap-1", className)}>
+      <div
+        className="flex max-w-[9rem] flex-wrap justify-center gap-0.5 rounded-xl border border-slate-200 bg-white px-2 py-2 shadow-sm"
+        aria-label={`${count} ${label}`}
+      >
+        {Array.from({ length: count }, (_, index) => (
+          <span key={index} className="text-xl leading-none" aria-hidden>
+            {emoji}
+          </span>
+        ))}
+      </div>
+      <span className="text-xs font-semibold text-ink-muted">{count}</span>
     </div>
   );
 }
@@ -48,14 +63,18 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
   }, [onReadyChange]);
 
   if (scene === "conmutativa") {
-    const left = swapped ? [b, a] : [a, b];
+    const first = swapped ? b : a;
+    const second = swapped ? a : b;
+    const firstEmoji = EMOJI_BY_SIZE[0];
+    const secondEmoji = EMOJI_BY_SIZE[1];
+
     return (
       <div className="space-y-4" data-testid="bloques-numericos-conmutativa" aria-label="Propiedad conmutativa">
-        <div className="flex flex-wrap items-end gap-2 rounded-xl bg-slate-100/80 p-4">
-          {left.map((value, index) => (
-            <Block key={`${value}-${index}`} value={value} tone={index === 0 ? "bg-cobalt border-cobalt" : "bg-emerald-600 border-emerald-700"} />
-          ))}
-          <span className="pb-2 font-mono text-lg font-bold text-ink">= {a + b}</span>
+        <div className="flex flex-wrap items-end justify-center gap-4 rounded-xl bg-slate-100/80 p-4">
+          <EmojiPile count={first} emoji={firstEmoji} label="manzanas" />
+          <span className="pb-6 text-2xl font-bold text-ink">+</span>
+          <EmojiPile count={second} emoji={secondEmoji} label="naranjas" />
+          <span className="pb-6 font-mono text-lg font-bold text-ink">= {a + b}</span>
         </div>
         <p className="text-center text-sm text-ink-muted">
           <MathRenderer text={swapped ? `$${b} + ${a} = ${a + b}$` : `$${a} + ${b} = ${b} + ${a}$`} />
@@ -71,49 +90,38 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
               }
             }}
           >
-            Intercambiar bloques
+            Intercambiar grupos
           </button>
         </div>
       </div>
     );
   }
 
-  const leftGroup = groupLeft ? [a + b, c] : [a, b + c];
-  const labels = groupLeft ? [`(${a}+${b})`, `${c}`] : [`${a}`, `(${b}+${c})`];
-
   return (
     <div className="space-y-4" data-testid="bloques-numericos-asociativa" aria-label="Propiedad asociativa">
-      <div className="relative flex flex-wrap items-end justify-center gap-3 rounded-xl bg-slate-100/80 p-6">
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex gap-1">
-            {groupLeft ? (
-              <>
-                <Block value={a} tone="bg-cobalt border-cobalt" />
-                <Block value={b} tone="bg-emerald-600 border-emerald-700" />
-              </>
-            ) : (
-              <Block value={a} tone="bg-cobalt border-cobalt" />
-            )}
-          </div>
-          {!groupLeft ? null : (
-            <span className="text-xs font-medium text-ink-muted">{labels[0]}</span>
-          )}
-        </div>
-        <span className="pb-2 text-xl font-bold text-ink">+</span>
-        <div className="flex flex-col items-center gap-1">
-          <div className="flex gap-1">
-            {groupLeft ? (
-              <Block value={c!} tone="bg-amber-500 border-amber-600" />
-            ) : (
-              <>
-                <Block value={b} tone="bg-emerald-600 border-emerald-700" />
-                <Block value={c!} tone="bg-amber-500 border-amber-600" />
-              </>
-            )}
-          </div>
-          <span className="text-xs font-medium text-ink-muted">{labels[1]}</span>
-        </div>
-        <span className="pb-2 font-mono text-lg font-bold text-ink">= {total}</span>
+      <div className="flex flex-wrap items-end justify-center gap-3 rounded-xl bg-slate-100/80 p-6">
+        {groupLeft ? (
+          <>
+            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/30 bg-white/80 px-3 py-2">
+              <EmojiPile count={a} emoji={EMOJI_BY_SIZE[0]} label="manzanas" />
+              <span className="pb-6 text-xl font-bold text-ink">+</span>
+              <EmojiPile count={b} emoji={EMOJI_BY_SIZE[1]} label="naranjas" />
+            </div>
+            <span className="pb-6 text-xl font-bold text-ink">+</span>
+            <EmojiPile count={c!} emoji={EMOJI_BY_SIZE[2]} label="limones" />
+          </>
+        ) : (
+          <>
+            <EmojiPile count={a} emoji={EMOJI_BY_SIZE[0]} label="manzanas" />
+            <span className="pb-6 text-xl font-bold text-ink">+</span>
+            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-emerald-500/35 bg-white/80 px-3 py-2">
+              <EmojiPile count={b} emoji={EMOJI_BY_SIZE[1]} label="naranjas" />
+              <span className="pb-6 text-xl font-bold text-ink">+</span>
+              <EmojiPile count={c!} emoji={EMOJI_BY_SIZE[2]} label="limones" />
+            </div>
+          </>
+        )}
+        <span className="pb-6 font-mono text-lg font-bold text-ink">= {total}</span>
       </div>
       <p className="text-center text-sm text-ink-muted">
         <MathRenderer

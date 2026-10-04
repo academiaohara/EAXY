@@ -23,16 +23,15 @@ const DEFAULT_ITEMS: TiendaCiclistaItem[] = [
 
 type TiendaMode = "sumar-cesta" | "restar-cartera" | "explorar-compra";
 
+type PricePop = { id: string; amount: number; sign: "+" | "−"; key: number };
+
 export type TiendaCiclistaModuleProps = {
   stepId: string;
   mode: TiendaMode;
   items?: TiendaCiclistaItem[];
   wallet?: number;
-  /** Pago fijo en modo restar (como en la diapositiva: $828 - 693$). */
   spendAmount?: number;
-  /** Reproducir animación completa (p. ej. tras predict). */
   autoPlay?: boolean;
-  /** Selección en explore */
   selectedIds?: string[];
   onSelectedIdsChange?: (ids: string[]) => void;
   onReadyChange?: (ready: boolean) => void;
@@ -59,7 +58,7 @@ function ItemIcon({ id }: { id: string }) {
 export function TiendaCiclistaModule({
   mode,
   items = DEFAULT_ITEMS,
-  wallet = 1000,
+  wallet = 828,
   spendAmount,
   autoPlay = false,
   selectedIds,
@@ -68,14 +67,12 @@ export function TiendaCiclistaModule({
   onAnimationComplete,
 }: TiendaCiclistaModuleProps) {
   const reduced = useReducedMotion();
-  const [basketIds, setBasketIds] = useState<string[]>([]);
-  const [animIndex, setAnimIndex] = useState(0);
-  const [spentPhase, setSpentPhase] = useState(0);
-  const [fixedSpendShown, setFixedSpendShown] = useState(0);
+  const [tapIds, setTapIds] = useState<string[]>([]);
+  const [pops, setPops] = useState<PricePop[]>([]);
+  const popKey = useRef(0);
   const timers = useRef<number[]>([]);
 
   const totalAll = useMemo(() => items.reduce((sum, item) => sum + item.price, 0), [items]);
-  const fixedSpend = spendAmount ?? totalAll;
 
   const selected = selectedIds ?? items.map((item) => item.id);
   const selectedTotal = useMemo(
@@ -83,6 +80,11 @@ export function TiendaCiclistaModule({
     [items, selected],
   );
   const remainder = wallet - selectedTotal;
+
+  const tapTotal = useMemo(
+    () => items.filter((item) => tapIds.includes(item.id)).reduce((s, i) => s + i.price, 0),
+    [items, tapIds],
+  );
 
   const clearTimers = useCallback(() => {
     for (const id of timers.current) {
@@ -93,23 +95,31 @@ export function TiendaCiclistaModule({
 
   useEffect(() => clearTimers, [clearTimers]);
 
+  const pushPop = useCallback((id: string, amount: number, sign: "+" | "−") => {
+    const key = popKey.current++;
+    setPops((prev) => [...prev, { id, amount, sign, key }]);
+    timers.current.push(
+      window.setTimeout(() => {
+        setPops((prev) => prev.filter((pop) => pop.key !== key));
+      }, 900),
+    );
+  }, []);
+
   useEffect(() => {
     if (mode === "explorar-compra") {
       onReadyChange?.(remainder >= 0 && remainder < 200);
       return;
     }
 
-    if (mode === "sumar-cesta") {
-      if (reduced || autoPlay) {
-        setBasketIds(items.map((item) => item.id));
-        setAnimIndex(items.length);
+    if (autoPlay && mode === "sumar-cesta") {
+      if (reduced) {
+        setTapIds(items.map((item) => item.id));
         onReadyChange?.(true);
         onAnimationComplete?.();
         return;
       }
       onReadyChange?.(false);
-      setBasketIds([]);
-      setAnimIndex(0);
+      setTapIds([]);
       let i = 0;
       const tick = () => {
         if (i >= items.length) {
@@ -118,8 +128,7 @@ export function TiendaCiclistaModule({
           return;
         }
         const item = items[i]!;
-        setBasketIds((prev) => [...prev, item.id]);
-        setAnimIndex(i + 1);
+        setTapIds((prev) => [...prev, item.id]);
         i += 1;
         timers.current.push(window.setTimeout(tick, 700));
       };
@@ -127,54 +136,32 @@ export function TiendaCiclistaModule({
       return () => clearTimers();
     }
 
-    if (mode === "restar-cartera") {
-      if (spendAmount != null) {
-        if (reduced) {
-          setFixedSpendShown(spendAmount);
-          onReadyChange?.(true);
-          onAnimationComplete?.();
-          return;
-        }
-        onReadyChange?.(false);
-        setFixedSpendShown(0);
-        const steps = 6;
-        let step = 0;
-        const tick = () => {
-          step += 1;
-          const next = Math.round((spendAmount * step) / steps);
-          setFixedSpendShown(next);
-          if (step >= steps) {
-            onReadyChange?.(true);
-            onAnimationComplete?.();
-            return;
-          }
-          timers.current.push(window.setTimeout(tick, 450));
-        };
-        timers.current.push(window.setTimeout(tick, 500));
-        return () => clearTimers();
-      }
-
+    if (autoPlay && mode === "restar-cartera" && spendAmount != null) {
       if (reduced) {
-        setSpentPhase(items.length);
         onReadyChange?.(true);
         onAnimationComplete?.();
         return;
       }
       onReadyChange?.(false);
-      setSpentPhase(0);
-      let i = 0;
+      let shown = 0;
+      const steps = 6;
+      let step = 0;
       const tick = () => {
-        if (i >= items.length) {
+        step += 1;
+        shown = Math.round((spendAmount * step) / steps);
+        if (step >= steps) {
           onReadyChange?.(true);
           onAnimationComplete?.();
           return;
         }
-        i += 1;
-        setSpentPhase(i);
-        timers.current.push(window.setTimeout(tick, 650));
+        timers.current.push(window.setTimeout(tick, 450));
       };
       timers.current.push(window.setTimeout(tick, 500));
       return () => clearTimers();
+    }
+
+    if (mode === "sumar-cesta" || mode === "restar-cartera") {
+      onReadyChange?.(true);
     }
   }, [
     autoPlay,
@@ -188,23 +175,19 @@ export function TiendaCiclistaModule({
     spendAmount,
   ]);
 
-  const runningTotal = useMemo(() => {
-    if (mode === "sumar-cesta") {
-      return items.slice(0, animIndex).reduce((s, item) => s + item.price, 0);
-    }
-    if (mode === "restar-cartera") {
-      if (spendAmount != null) {
-        return fixedSpendShown;
-      }
-      return items.slice(0, spentPhase).reduce((s, item) => s + item.price, 0);
-    }
-    return selectedTotal;
-  }, [animIndex, fixedSpendShown, items, mode, selectedTotal, spentPhase, spendAmount]);
+  const runningTotal =
+    mode === "sumar-cesta"
+      ? tapTotal
+      : mode === "restar-cartera" && !autoPlay
+        ? tapTotal
+        : mode === "restar-cartera" && autoPlay && spendAmount != null
+          ? spendAmount
+          : selectedTotal;
 
   const walletLeft =
     mode === "restar-cartera" ? wallet - runningTotal : mode === "explorar-compra" ? remainder : null;
 
-  const toggleItem = (id: string) => {
+  const toggleExploreItem = (id: string) => {
     if (!onSelectedIdsChange) {
       return;
     }
@@ -212,79 +195,120 @@ export function TiendaCiclistaModule({
     onSelectedIdsChange(next);
   };
 
+  const toggleTapItem = (id: string) => {
+    const item = items.find((entry) => entry.id === id);
+    if (!item) {
+      return;
+    }
+    setTapIds((prev) => {
+      const has = prev.includes(id);
+      if (has) {
+        return prev.filter((x) => x !== id);
+      }
+      pushPop(id, item.price, mode === "restar-cartera" ? "−" : "+");
+      return [...prev, id];
+    });
+  };
+
+  const sumParts = items
+    .filter((item) => tapIds.includes(item.id))
+    .map((item) => String(item.price))
+    .join(" + ");
+
   return (
     <div
       className="flex flex-col gap-4"
       aria-label="Tienda del equipo ciclista"
       data-testid="tienda-ciclista-module"
     >
-      <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-start">
-        <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
-          {items.map((item) => {
-            const inBasket = basketIds.includes(item.id);
-            const isSelected = selected.includes(item.id);
-            const interactive = mode === "explorar-compra";
-            return (
-              <button
-                key={item.id}
-                type="button"
-                disabled={!interactive}
-                onClick={() => toggleItem(item.id)}
-                className={cn(
-                  "flex w-[7.25rem] flex-col items-center gap-1 rounded-xl border px-2 py-3 text-center transition",
-                  interactive && "cursor-pointer hover:border-cobalt/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
-                  interactive && isSelected && "border-cobalt bg-cobalt-tint/50",
-                  !interactive && "border-slate-200 bg-slate-50/80",
-                  mode === "sumar-cesta" && inBasket && "scale-95 opacity-40",
-                )}
-                aria-pressed={interactive ? isSelected : undefined}
-                aria-label={`${item.label}, ${item.price} euros`}
-              >
-                <ItemIcon id={item.id} />
-                <span className="text-xs font-semibold text-ink">{item.label}</span>
-                <span className="text-sm font-bold text-cobalt">{item.price} €</span>
-              </button>
-            );
-          })}
-        </div>
+      <div className="relative flex flex-wrap justify-center gap-3 sm:justify-start">
+        {items.map((item) => {
+          const inTap = tapIds.includes(item.id);
+          const isSelected = selected.includes(item.id);
+          const interactiveExplore = mode === "explorar-compra";
+          const interactiveTap = mode === "sumar-cesta" || mode === "restar-cartera";
+          return (
+            <button
+              key={item.id}
+              type="button"
+              disabled={!interactiveExplore && !interactiveTap}
+              onClick={() => {
+                if (interactiveExplore) {
+                  toggleExploreItem(item.id);
+                } else if (interactiveTap) {
+                  toggleTapItem(item.id);
+                }
+              }}
+              className={cn(
+                "relative flex w-[7.25rem] flex-col items-center gap-1 rounded-xl border px-2 py-3 text-center transition",
+                (interactiveExplore || interactiveTap) &&
+                  "cursor-pointer hover:border-cobalt/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
+                interactiveExplore && isSelected && "border-cobalt bg-cobalt-tint/50",
+                interactiveTap && inTap && "border-cobalt bg-cobalt-tint/40 ring-2 ring-cobalt/20",
+                !interactiveExplore && !interactiveTap && "border-slate-200 bg-slate-50/80",
+              )}
+              aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
+              aria-label={`${item.label}, ${item.price} euros`}
+            >
+              {pops
+                .filter((pop) => pop.id === item.id)
+                .map((pop) => (
+                  <span
+                    key={pop.key}
+                    className="pointer-events-none absolute -top-1 left-1/2 z-10 -translate-x-1/2 animate-[lesson-price-pop_0.85s_ease-out_forwards] font-mono text-sm font-bold text-emerald-600"
+                  >
+                    {pop.sign}
+                    {pop.amount}
+                  </span>
+                ))}
+              <ItemIcon id={item.id} />
+              <span className="text-xs font-semibold text-ink">{item.label}</span>
+              <span className="text-sm font-bold text-cobalt">{item.price} €</span>
+            </button>
+          );
+        })}
+      </div>
 
-        <div className="flex min-w-[10rem] flex-col gap-3 rounded-xl border border-dashed border-slate-300 bg-slate-50/60 p-4">
-          {mode === "sumar-cesta" ? (
-            <>
-              <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cesta</p>
-              <p className="font-mono text-2xl font-bold text-ink" aria-live="polite">
-                {runningTotal} €
+      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/80 px-4 py-4 text-center">
+        {mode === "sumar-cesta" ? (
+          <>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Total en la cesta</p>
+            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
+              {runningTotal} €
+            </p>
+            {sumParts ? (
+              <p className="mt-1 text-sm text-ink-muted">
+                <MathRenderer text={`$${sumParts} = ${runningTotal}$ €`} />
               </p>
-              {animIndex >= items.length ? (
-                <p className="text-sm text-ink-muted">
-                  <MathRenderer text="$583 + 162 + 45 + 38 = 828$ €" />
-                </p>
-              ) : null}
-            </>
-          ) : null}
-          {mode === "restar-cartera" || mode === "explorar-compra" ? (
-            <>
-              <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cartera</p>
-              <p className="text-sm text-ink-muted">Inicio: {wallet} €</p>
-              <p className="font-mono text-2xl font-bold text-ink" aria-live="polite">
-                Quedan {walletLeft ?? wallet} €
+            ) : (
+              <p className="mt-1 text-sm text-ink-muted">Pulsa cada artículo para sumarlo.</p>
+            )}
+            {runningTotal === totalAll && tapIds.length === items.length ? (
+              <p className="mt-2 text-sm font-medium text-emerald-700">¡Equipo completo!</p>
+            ) : null}
+          </>
+        ) : null}
+        {mode === "restar-cartera" || mode === "explorar-compra" ? (
+          <>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cartera</p>
+            <p className="text-sm text-ink-muted">Tenías {wallet} €</p>
+            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
+              Quedan {walletLeft ?? wallet} €
+            </p>
+            {mode === "restar-cartera" && tapTotal > 0 ? (
+              <p className="mt-1 text-sm text-ink-muted">
+                <MathRenderer text={`$${wallet} - ${runningTotal} = ${wallet - runningTotal}$ €`} />
               </p>
-              {mode === "explorar-compra" ? (
-                <p className="text-xs text-ink-muted">
-                  Gasto: {selectedTotal} € · {wallet} − {selectedTotal} = {remainder} €
-                </p>
-              ) : spendAmount != null && fixedSpendShown >= spendAmount ? (
-                <p className="text-sm text-ink-muted">
-                  <MathRenderer text={`$${wallet} - ${spendAmount} = ${wallet - spendAmount}$ €`} />
-                </p>
-              ) : spentPhase >= items.length ? (
-                <p className="text-sm text-ink-muted">
-                  {wallet} − {fixedSpend} = {wallet - fixedSpend} €
-                </p>
-              ) : null}
-            </>
-          ) : null}
-        </div>
+            ) : mode === "restar-cartera" ? (
+              <p className="mt-1 text-sm text-ink-muted">Pulsa un artículo para restar su precio.</p>
+            ) : null}
+            {mode === "explorar-compra" ? (
+              <p className="text-xs text-ink-muted">
+                Gasto: {selectedTotal} € · {wallet} − {selectedTotal} = {remainder} €
+              </p>
+            ) : null}
+          </>
+        ) : null}
       </div>
     </div>
   );

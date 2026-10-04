@@ -40,8 +40,11 @@ type StageShellProps = {
 
 function StageShell({ theme, definitionBox, title, stage, children }: StageShellProps) {
   return (
-    <StageViewport theme={theme} stage={stage}>
-      {definitionBox ? <DefinitionBox text={definitionBox} /> : null}
+    <StageViewport
+      theme={theme}
+      header={definitionBox ? <DefinitionBox text={definitionBox} /> : null}
+      stage={stage}
+    >
       {children}
       <h3 className="sr-only">{title}</h3>
     </StageViewport>
@@ -182,8 +185,7 @@ export function PredictStepView({
       : null;
 
   return (
-    <StageViewport theme={theme}>
-      {step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}
+    <StageViewport theme={theme} header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}>
       <section
         className="lesson-idea-enter rounded-2xl border-2 border-cobalt/15 bg-white p-6 shadow-sm sm:p-8"
         data-testid="lesson-predict-step"
@@ -264,8 +266,9 @@ export function ExploreStepView({
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
+  const [isCorrect, setIsCorrect] = useState(saved?.isCorrect ?? false);
 
-  const goalMet = useMemo(() => {
+  const placementReady = useMemo(() => {
     if (step.goal.kind === "wallet-remainder" && step.tienda) {
       const total = step.tienda.items
         .filter((item) => persist.selectedIds.includes(item.id))
@@ -274,33 +277,37 @@ export function ExploreStepView({
       return left >= 0 && left < step.goal.maxRemainder;
     }
     if (step.goal.kind === "expression-result") {
-      if (!isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore)) {
-        return false;
-      }
-      const value = evalWithParenthesisPlacement(
-        step.goal.tokens,
-        persist.openAfter,
-        persist.closeBefore,
-      );
-      return value === step.goal.target;
+      return isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore);
     }
     return false;
   }, [persist, step]);
 
+  const evaluatedValue = useMemo(() => {
+    if (step.goal.kind !== "expression-result") {
+      return null;
+    }
+    return evalWithParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore);
+  }, [persist.closeBefore, persist.openAfter, step.goal]);
+
   const runCheck = useCallback(() => {
-    if (checked || !goalMet) {
+    if (checked || !placementReady) {
       return;
     }
+    let correct = true;
+    if (step.goal.kind === "expression-result") {
+      correct = evaluatedValue === step.goal.target;
+    }
+    setIsCorrect(correct);
     setChecked(true);
     onCheck({
-      correct: true,
+      correct,
       snapshot: {
         kind: "explore",
         goalMet: true,
-        isCorrect: true,
+        isCorrect: correct,
       },
     });
-  }, [checked, goalMet, onCheck]);
+  }, [checked, evaluatedValue, onCheck, placementReady, step.goal]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -309,10 +316,10 @@ export function ExploreStepView({
     return {
       label: "Comprobar",
       onClick: runCheck,
-      disabled: !goalMet || disabled,
+      disabled: !placementReady || disabled,
       testId: "lesson-check-button",
     };
-  }, [checked, disabled, goalMet, runCheck]);
+  }, [checked, disabled, placementReady, runCheck]);
 
   useRegisterLessonStepControl(control);
 
@@ -353,6 +360,32 @@ export function ExploreStepView({
         <p className="text-center text-sm font-medium text-ink">
           <MathRenderer text={step.question} />
         </p>
+        {checked ? (
+          <div
+            className={cn(
+              "mt-4 rounded-xl border px-4 py-3 text-center text-sm",
+              isCorrect
+                ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                : "border-amber-200 bg-amber-50 text-amber-950",
+            )}
+            role="status"
+          >
+            {isCorrect ? (
+              <p>¡Correcto! El resultado es {step.goal.kind === "expression-result" ? step.goal.target : ""}.</p>
+            ) : (
+              <>
+                <p className="font-semibold">
+                  Tu expresión vale {evaluatedValue ?? "?"}, no {step.goal.kind === "expression-result" ? step.goal.target : "?"}.
+                </p>
+                {step.explanation ? (
+                  <p className="mt-2 text-ink-muted">
+                    <MathRenderer text={step.explanation} />
+                  </p>
+                ) : null}
+              </>
+            )}
+          </div>
+        ) : null}
       </StageShell>
     </div>
   );

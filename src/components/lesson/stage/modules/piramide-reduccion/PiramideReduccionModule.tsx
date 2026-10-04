@@ -29,6 +29,27 @@ const RIGHT_PYRAMID: PyramidRow[] = [
   { expr: "5" },
 ];
 
+function formatExpressionPreview(
+  tokens: string[],
+  openAfter: number | null,
+  closeBefore: number | null,
+): string {
+  if (openAfter === null || closeBefore === null) {
+    return tokens.join(" ").replace(/-/g, "−");
+  }
+  const parts: string[] = [];
+  for (let i = 0; i < tokens.length; i++) {
+    if (openAfter !== null && i === openAfter + 1) {
+      parts.push("(");
+    }
+    parts.push(tokens[i]!);
+    if (closeBefore !== null && i === closeBefore) {
+      parts.push(")");
+    }
+  }
+  return parts.join(" ").replace(/-/g, "−");
+}
+
 function PyramidColumn({ title, rows, activeRow }: { title: string; rows: PyramidRow[]; activeRow: number }) {
   return (
     <div className="flex flex-col items-center gap-2">
@@ -103,28 +124,28 @@ export function PiramideReduccionModule({
   }, [tokens]);
 
   if (variant === "explorar-parentesis") {
+    const openIndexForToken = (index: number) => (index === 0 ? -1 : index - 1);
+    const expressionPreview = formatExpressionPreview(tokens, openAfter, closeBefore);
+
     return (
       <div className="space-y-4" data-testid="piramide-explorar-parentesis" aria-label="Colocar paréntesis">
-        <p className="text-center text-sm text-ink-muted">Toca entre números para abrir o cerrar un paréntesis.</p>
+        <p className="text-center text-sm text-ink-muted">
+          Toca <strong>(</strong> para abrir y <strong>)</strong> para cerrar el paréntesis.
+        </p>
         <div className="flex flex-wrap items-center justify-center gap-1 font-mono text-xl sm:text-2xl">
           {displayTokens.map((part, index) => (
             <span key={`${part.text}-${index}`} className="inline-flex items-center gap-1">
               <button
                 type="button"
-                disabled={index === 0}
                 className={cn(
                   "min-h-10 min-w-10 rounded-md border px-2 py-1 text-sm transition",
-                  index > 0 && openAfter === index - 1
+                  openAfter === openIndexForToken(index)
                     ? "border-cobalt bg-cobalt-tint font-bold text-cobalt"
                     : "border-dashed border-slate-300 text-ink-muted hover:border-cobalt/40",
-                  index === 0 && "opacity-30",
                 )}
                 aria-label={`Abrir paréntesis antes de ${part.text}`}
                 onClick={() => {
-                  if (index === 0) {
-                    return;
-                  }
-                  const next = index - 1;
+                  const next = openIndexForToken(index);
                   onOpenAfterChange?.(openAfter === next ? null : next);
                 }}
               >
@@ -150,10 +171,7 @@ export function PiramideReduccionModule({
           ))}
         </div>
         <p className="text-center text-sm text-ink-muted">
-          Expresión:{" "}
-          <MathRenderer
-            text={`$${tokens.join(" ").replace(/-/g, "−")}$`}
-          />
+          Expresión: <MathRenderer text={`$${expressionPreview}$`} />
         </p>
       </div>
     );
