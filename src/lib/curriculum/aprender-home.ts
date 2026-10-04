@@ -128,7 +128,7 @@ function actionLabelFor(
   if (isReview) {
     return "Repasar";
   }
-  if (pathStatus === "started") {
+  if (pathStatus === "started" || pathStatus === "incomplete") {
     return "Continuar";
   }
   return "Empezar";

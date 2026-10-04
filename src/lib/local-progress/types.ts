@@ -1,6 +1,6 @@
 export const LOCAL_PROGRESS_STORAGE_KEY = "eaxy-local-progress";
 
-export type LocalLessonStatus = "started" | "completed";
+export type LocalLessonStatus = "started" | "incomplete" | "completed";
 
 export type LocalExerciseRecord = {
   attemptCount: number;

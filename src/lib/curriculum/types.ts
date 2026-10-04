@@ -35,7 +35,7 @@ export type LessonSummary = {
   orderIndex: number;
   videoUrl: string | null;
   exerciseCount: number;
-  pathStatus: "not_started" | "started" | "completed";
+  pathStatus: "not_started" | "started" | "incomplete" | "completed";
   conceptIds: string[];
   kind: LessonKind;
   interactiveSlug?: string;

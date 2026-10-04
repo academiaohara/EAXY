@@ -26,7 +26,9 @@ function nextStepHint(next: NextLessonRef): string {
   if (next.isReview) {
     return "Repasar lección";
   }
-  return next.lesson.pathStatus === "started" ? "Continuar lección" : "Entrar en la lección";
+  return next.lesson.pathStatus === "started" || next.lesson.pathStatus === "incomplete"
+    ? "Continuar lección"
+    : "Entrar en la lección";
 }
 
 export function CourseTopicQuickAccess({ courseModule, moduleNumber }: CourseTopicQuickAccessProps) {

@@ -20,12 +20,14 @@ type LearningPathProps = {
 
 const STATUS_LABELS: Record<LessonProgressStatus, string> = {
   completed: "Completada",
+  incomplete: "Incompleta",
   started: "En curso",
   available: "Disponible",
 };
 
 const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
   completed: "bg-white/20 text-white",
+  incomplete: "bg-amber-100 text-amber-900",
   started: "bg-cobalt-tint text-cobalt",
   available: "bg-slate-100 text-slate-500",
 };
@@ -47,8 +49,8 @@ type PathNodeProps = {
 function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
   const status = getLessonProgressStatus(lesson);
   const isInteractive = lesson.kind === "interactive";
-  const isCurrent =
-    status === "started" || (isNextTarget && status !== "completed");
+  const isInProgress = status === "started" || status === "incomplete";
+  const isCurrent = isInProgress || (isNextTarget && status !== "completed");
   const connectorBrand = status === "completed";
 
   return (
@@ -70,10 +72,14 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:p-4",
           status === "completed" &&
             "border-cobalt bg-cobalt hover:border-cobalt/90 hover:bg-cobalt/95 focus-visible:ring-cobalt/50",
+          status === "incomplete" &&
+            "border-amber-300 bg-amber-50 hover:border-amber-400 focus-visible:ring-amber-400/40",
           status !== "completed" &&
+            status !== "incomplete" &&
             isCurrent &&
             "border-cobalt/40 hover:border-cobalt/55 focus-visible:ring-cobalt/40",
           status !== "completed" &&
+            status !== "incomplete" &&
             !isCurrent &&
             "border-slate-200 hover:border-cobalt/40 focus-visible:ring-cobalt/40",
         )}
@@ -82,10 +88,13 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           className={cn(
             "flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
             status === "completed" && "border-white/90 bg-white/15 text-white",
+            status === "incomplete" && "border-amber-500 bg-white text-amber-700",
             status !== "completed" &&
+              status !== "incomplete" &&
               isCurrent &&
               "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(47,95,224,0.12)]",
             status !== "completed" &&
+              status !== "incomplete" &&
               !isCurrent &&
               "border-slate-200 bg-white text-slate-400 group-hover:border-cobalt/50 group-hover:text-cobalt",
           )}
@@ -105,7 +114,11 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             <span
               className={cn(
                 "text-[11px] font-semibold tabular-nums",
-                status === "completed" ? "text-cobalt-tint" : "text-slate-400",
+                status === "completed"
+                  ? "text-cobalt-tint"
+                  : status === "incomplete"
+                    ? "text-amber-700"
+                    : "text-slate-400",
               )}
             >
               {String(position).padStart(2, "0")}
@@ -126,7 +139,9 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
               "mt-0.5 block font-medium leading-snug",
               status === "completed"
                 ? "text-white"
-                : "text-ink group-hover:text-cobalt",
+                : status === "incomplete"
+                  ? "text-amber-950 group-hover:text-amber-900"
+                  : "text-ink group-hover:text-cobalt",
             )}
           >
             {lesson.title.replace(/^\d+\.\s*/, "")}
@@ -134,7 +149,11 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           <span
             className={cn(
               "block text-xs",
-              status === "completed" ? "text-white/80" : "text-muted-foreground",
+              status === "completed"
+                ? "text-white/80"
+                : status === "incomplete"
+                  ? "text-amber-800/80"
+                  : "text-muted-foreground",
             )}
           >
             {lessonMetaLabel(lesson)}
@@ -146,7 +165,9 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             "size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
             status === "completed"
               ? "text-white/70 group-hover:text-white"
-              : "text-slate-300 group-hover:text-cobalt",
+              : status === "incomplete"
+                ? "text-amber-600 group-hover:text-amber-800"
+                : "text-slate-300 group-hover:text-cobalt",
           )}
           aria-hidden
         />

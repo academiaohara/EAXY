@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getInteractiveLessonContext } from "@/content";
-import { LessonContainer } from "@/components/lesson/LessonContainer";
+import { InteractiveLessonEntryGate } from "@/components/lesson/InteractiveLessonEntryGate";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { interactiveLessons } from "@/data/lessons";
 
@@ -29,7 +29,7 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
 
   return (
     <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
-      <LessonContainer
+      <InteractiveLessonEntryGate
         lesson={lesson}
         navigation={navigation}
         curriculumLessonId={context?.lesson.id}
