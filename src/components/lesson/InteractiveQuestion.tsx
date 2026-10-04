@@ -13,13 +13,7 @@ import { FractionPick } from "@/components/lesson/steps/FractionPick";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
 import { NumberLinePick } from "@/components/lesson/steps/NumberLinePick";
 import type { PracticeStepSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
-import {
-  ExploreStepView,
-  NarrateStepView,
-  PredictStepView,
-  RevealStepView,
-} from "@/components/lesson/steps/StageSteps";
-import type { LessonStageTheme, LessonStep } from "@/lib/lesson/types";
+import type { LessonStep } from "@/lib/lesson/types";
 
 type InteractiveQuestionProps = {
   step: LessonStep;
@@ -28,7 +22,6 @@ type InteractiveQuestionProps = {
   disabled?: boolean;
   compact?: boolean;
   savedAttempt?: PracticeStepSnapshot | null;
-  stageTheme?: LessonStageTheme;
 };
 
 function ConceptStepView({
@@ -77,52 +70,7 @@ export function InteractiveQuestion({
   disabled = false,
   compact = false,
   savedAttempt = null,
-  stageTheme = "paper",
 }: InteractiveQuestionProps) {
-  if (step.type === "narrate") {
-    return (
-      <NarrateStepView
-        step={step}
-        theme={stageTheme}
-        onContinue={() => onContinue?.({ completed: true })}
-      />
-    );
-  }
-
-  if (step.type === "predict") {
-    return (
-      <PredictStepView
-        step={step}
-        theme={stageTheme}
-        onCheck={onCheck}
-        disabled={disabled}
-        saved={savedAttempt?.kind === "predict" ? savedAttempt : null}
-      />
-    );
-  }
-
-  if (step.type === "explore") {
-    return (
-      <ExploreStepView
-        step={step}
-        theme={stageTheme}
-        onCheck={onCheck}
-        disabled={disabled}
-        saved={savedAttempt?.kind === "explore" ? savedAttempt : null}
-      />
-    );
-  }
-
-  if (step.type === "reveal") {
-    return (
-      <RevealStepView
-        step={step}
-        theme={stageTheme}
-        onContinue={() => onContinue?.({ completed: true })}
-      />
-    );
-  }
-
   if (step.type === "concept") {
     return <ConceptStepView step={step} onContinue={onContinue} compact={compact} />;
   }
