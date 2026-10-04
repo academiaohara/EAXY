@@ -6,7 +6,7 @@ import type { ModuleSummary } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
 
 type CourseTopicCarouselProps = {
-  courseId: string;
+  courseSlug: string;
   modules: ModuleSummary[];
   activeModuleId: string;
   activeModuleNumber: number;
@@ -59,7 +59,7 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
 }
 
 export function CourseTopicCarousel({
-  courseId,
+  courseSlug,
   modules,
   activeModuleId,
   activeModuleNumber,
@@ -74,11 +74,11 @@ export function CourseTopicCarousel({
 
   const prevHref =
     prev && isModuleAccessible(prev)
-      ? topicHref(courseId, prev.id)
+      ? topicHref(courseSlug, prev.slug)
       : null;
   const nextHref =
     next && isModuleAccessible(next)
-      ? topicHref(courseId, next.id)
+      ? topicHref(courseSlug, next.slug)
       : null;
 
   return (
@@ -94,7 +94,7 @@ export function CourseTopicCarousel({
 
       <div className="relative flex justify-center">
         <Link
-          href={courseHref(courseId)}
+          href={courseHref(courseSlug)}
           className="inline-flex items-center gap-1.5 rounded-full bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt ring-1 ring-cobalt/15 transition-colors hover:bg-cobalt hover:text-white"
           data-testid="topic-carousel-course-link"
         >

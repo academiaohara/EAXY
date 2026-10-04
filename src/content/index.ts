@@ -20,6 +20,26 @@ export function getCourseById(id: string, source: Curriculum = curriculum): Curr
   return source.courses.find((course) => course.id === id);
 }
 
+export function getCourseBySlug(slug: string, source: Curriculum = curriculum): CurriculumCourse | undefined {
+  return source.courses.find((course) => course.slug === slug);
+}
+
+export function getModuleBySlug(
+  courseSlug: string,
+  moduleSlug: string,
+  source: Curriculum = curriculum,
+): { course: CurriculumCourse; module: CurriculumModule } | undefined {
+  const course = getCourseBySlug(courseSlug, source);
+  if (!course) {
+    return undefined;
+  }
+  const courseModule = course.modules.find((candidate) => candidate.slug === moduleSlug);
+  if (!courseModule) {
+    return undefined;
+  }
+  return { course, module: courseModule };
+}
+
 export function getModuleById(
   id: string,
   source: Curriculum = curriculum,
@@ -176,6 +196,7 @@ export function validateCurriculum(source: Curriculum = curriculum): CurriculumV
   };
 
   assertUnique("courses.id", source.courses.map((course) => course.id));
+  assertUnique("courses.slug", source.courses.map((course) => course.slug));
   assertUnique(
     "courses.orderIndex",
     source.courses.map((course) => String(course.orderIndex)),
@@ -185,6 +206,12 @@ export function validateCurriculum(source: Curriculum = curriculum): CurriculumV
 
   const allModules = source.courses.flatMap((course) => course.modules);
   assertUnique("modules.id", allModules.map((module) => module.id));
+  for (const course of source.courses) {
+    assertUnique(
+      `courses.${course.slug}.modules.slug`,
+      course.modules.map((module) => module.slug),
+    );
+  }
   assertUnique(
     "lessons.id",
     allModules.flatMap((module) => module.lessons.map((lesson) => lesson.id)),

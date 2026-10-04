@@ -21,12 +21,12 @@ export function CourseTopicView({ outline, courseModule, moduleNumber }: CourseT
       <Breadcrumbs
         items={buildLearningTrail({
           course: outline.course,
-          topic: { id: courseModule.id, title: courseModule.title, number: moduleNumber },
+          topic: { slug: courseModule.slug, title: courseModule.title, number: moduleNumber },
         })}
       />
 
       <CourseTopicCarousel
-        courseId={outline.course.id}
+        courseSlug={outline.course.slug}
         modules={outline.modules}
         activeModuleId={courseModule.id}
         activeModuleNumber={moduleNumber}

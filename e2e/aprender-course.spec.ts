@@ -1,7 +1,9 @@
 import { expect, test, type Page } from "@playwright/test";
 
 const DEMO_COURSE_ID = "a1000000-0000-4000-8000-000000000004";
+const DEMO_COURSE_SLUG = "matematicas-4-eso";
 const DEMO_MODULE_ID = "a2000000-0000-4000-8000-000000000007";
+const DEMO_MODULE_SLUG = "sistemas-de-ecuaciones";
 const FIRST_LESSON_ID = "a3000000-0000-4000-8000-000000000701";
 
 async function openAprender(page: Page) {
@@ -12,13 +14,13 @@ async function openAprender(page: Page) {
 
 async function openCourseTopic(page: Page) {
   await page.getByTestId(`course-link-${DEMO_COURSE_ID}`).click();
-  await expect(page).toHaveURL(new RegExp(`/aprender/curso/${DEMO_COURSE_ID}$`));
+  await expect(page).toHaveURL(new RegExp(`/aprender/curso/${DEMO_COURSE_SLUG}$`));
   await expect(page.getByTestId("course-outline")).toBeVisible();
   await expect(page.getByTestId("course-hero-primary-cta")).toBeVisible();
 
   await page.getByTestId(`topic-link-${DEMO_MODULE_ID}`).click();
   await expect(page).toHaveURL(
-    new RegExp(`/aprender/curso/${DEMO_COURSE_ID}/tema/${DEMO_MODULE_ID}`),
+    new RegExp(`/aprender/curso/${DEMO_COURSE_SLUG}/tema/${DEMO_MODULE_SLUG}`),
   );
   await expect(page.getByTestId("course-topic-view")).toBeVisible();
   await expect(page.getByTestId("course-topic-carousel")).toBeVisible();

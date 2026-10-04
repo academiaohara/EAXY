@@ -4,6 +4,8 @@ export type LessonKind = "exercises" | "interactive";
 
 export type CurriculumCourse = {
   id: string;
+  /** Segmento de URL legible, único en el catálogo. */
+  slug: string;
   title: string;
   description: string;
   orderIndex: number;
@@ -44,6 +46,8 @@ export type CurriculumTopicExercise = {
 
 export type CurriculumModule = {
   id: string;
+  /** Segmento de URL legible, único dentro del curso. */
+  slug: string;
   title: string;
   orderIndex: number;
   lessons: CurriculumLesson[];

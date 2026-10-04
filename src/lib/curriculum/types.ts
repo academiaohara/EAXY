@@ -2,6 +2,7 @@ export type LessonKind = "exercises" | "interactive";
 
 export type CourseSummary = {
   id: string;
+  slug: string;
   title: string;
   description: string | null;
   orderIndex?: number;
@@ -23,6 +24,7 @@ export type TopicExerciseSummary = {
 
 export type ModuleSummary = {
   id: string;
+  slug: string;
   title: string;
   orderIndex: number;
   lessons: LessonSummary[];
@@ -44,7 +46,9 @@ export type LessonSummary = {
 
 export type LessonDetail = LessonSummary & {
   courseId: string;
+  courseSlug: string;
   moduleId: string;
+  moduleSlug: string;
   moduleTitle: string;
   courseTitle: string;
   exercises: ExerciseSummary[];

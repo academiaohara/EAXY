@@ -30,8 +30,8 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
   );
 
   const trail = buildLearningTrail({
-    course: { id: lesson.courseId, title: lesson.courseTitle },
-    topic: { id: lesson.moduleId, title: lesson.moduleTitle },
+    course: { slug: lesson.courseSlug, title: lesson.courseTitle },
+    topic: { slug: lesson.moduleSlug, title: lesson.moduleTitle },
     leaves: [stripLessonNumber(lesson.title)],
   });
 

@@ -6,6 +6,7 @@ import {
   getLessonById,
   getLessonForConcept,
 } from "@/content";
+import { resolveCourseRef } from "@/lib/curriculum/resolve-ref";
 import { getCurriculumLessonMeta } from "@/lib/curriculum/lesson-meta";
 import type {
   CourseCatalogEntry,
@@ -57,6 +58,7 @@ function buildLessonSummary(lesson: {
 export function getPreviewCourseCatalog(): CourseCatalogEntry[] {
   return getAllCourses(curriculum).map((course) => ({
     id: course.id,
+    slug: course.slug,
     title: course.title,
     description: course.description,
     orderIndex: course.orderIndex,
@@ -65,8 +67,13 @@ export function getPreviewCourseCatalog(): CourseCatalogEntry[] {
   }));
 }
 
-export function getPreviewCourseOutline(courseId: string): CourseOutline | null {
-  const course = getCourseById(courseId, curriculum);
+export function getPreviewCourseOutline(courseRef: string): CourseOutline | null {
+  const resolved = resolveCourseRef(courseRef);
+  if (!resolved) {
+    return null;
+  }
+
+  const course = getCourseById(resolved.id, curriculum);
   if (!course) {
     return null;
   }
@@ -74,6 +81,7 @@ export function getPreviewCourseOutline(courseId: string): CourseOutline | null 
   return {
     course: {
       id: course.id,
+      slug: course.slug,
       title: course.title,
       description: course.description,
       orderIndex: course.orderIndex,
@@ -82,6 +90,7 @@ export function getPreviewCourseOutline(courseId: string): CourseOutline | null 
       .sort((a, b) => a.orderIndex - b.orderIndex)
       .map((courseModule) => ({
         id: courseModule.id,
+        slug: courseModule.slug,
         title: courseModule.title,
         orderIndex: courseModule.orderIndex,
         lessons: [...courseModule.lessons]
@@ -137,7 +146,9 @@ export function getPreviewLessonDetail(lessonId: string): LessonDetail | null {
     pathStatus: "not_started",
     conceptIds,
     courseId: course.id,
+    courseSlug: course.slug,
     moduleId: courseModule.id,
+    moduleSlug: courseModule.slug,
     moduleTitle: courseModule.title,
     courseTitle: course.title,
     kind: meta?.kind ?? "exercises",

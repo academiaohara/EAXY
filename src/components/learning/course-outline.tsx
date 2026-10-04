@@ -53,7 +53,7 @@ export function CourseOutlineView({ outline, mergeLocalProgress = true }: Course
 
           {hasContent ? (
             <CourseTopicPicker
-              courseId={outline.course.id}
+              courseSlug={outline.course.slug}
               modules={modules}
               currentModuleId={currentModuleId}
             />

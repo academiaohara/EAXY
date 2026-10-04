@@ -6,12 +6,12 @@ export type BreadcrumbItem = {
 
 export const APRENDER_HOME_HREF = "/aprender";
 
-export function courseHref(courseId: string): string {
-  return `/aprender/curso/${courseId}`;
+export function courseHref(courseSlug: string): string {
+  return `/aprender/curso/${courseSlug}`;
 }
 
-export function topicHref(courseId: string, moduleId: string): string {
-  return `${courseHref(courseId)}/tema/${moduleId}`;
+export function topicHref(courseSlug: string, moduleSlug: string): string {
+  return `${courseHref(courseSlug)}/tema/${moduleSlug}`;
 }
 
 export function courseShortTitle(title: string): string {
@@ -22,8 +22,8 @@ export function stripLessonNumber(title: string): string {
   return title.replace(/^\d+\.\s*/, "");
 }
 
-type TrailCourse = { id: string; title: string };
-type TrailTopic = { id: string; title: string; number?: number };
+type TrailCourse = { slug: string; title: string };
+type TrailTopic = { slug: string; title: string; number?: number };
 
 /** Migas de la zona «Aprender»; el último nivel es siempre la página actual. */
 export function buildLearningTrail({
@@ -38,12 +38,12 @@ export function buildLearningTrail({
   const items: BreadcrumbItem[] = [{ label: "Aprender", href: APRENDER_HOME_HREF }];
 
   if (course) {
-    items.push({ label: courseShortTitle(course.title), href: courseHref(course.id) });
+    items.push({ label: courseShortTitle(course.title), href: courseHref(course.slug) });
   }
 
   if (course && topic) {
     const label = topic.number ? `Tema ${topic.number}: ${topic.title}` : topic.title;
-    items.push({ label, href: topicHref(course.id, topic.id) });
+    items.push({ label, href: topicHref(course.slug, topic.slug) });
   }
 
   items.push(...leaves.map((label) => ({ label })));

@@ -35,12 +35,12 @@ export function generateSeedSql(): string {
   lines.push("-- Fuente: src/content/curriculum.ts");
   lines.push("");
 
-  lines.push("insert into public.courses (id, title, description) values");
+  lines.push("insert into public.courses (id, slug, title, description) values");
   lines.push(
     getAllCourses(curriculum)
       .map(
         (course) =>
-          `  (${sqlString(course.id)}, ${sqlString(course.title)}, ${sqlString(course.description)})`,
+          `  (${sqlString(course.id)}, ${sqlString(course.slug)}, ${sqlString(course.title)}, ${sqlString(course.description)})`,
       )
       .join(",\n") + ";",
   );
@@ -51,12 +51,12 @@ export function generateSeedSql(): string {
   );
 
   if (allModules.length > 0) {
-    lines.push("insert into public.modules (id, course_id, title, order_index) values");
+    lines.push("insert into public.modules (id, course_id, slug, title, order_index) values");
     lines.push(
       allModules
         .map(
           ({ course, module }) =>
-            `  (${sqlString(module.id)}, ${sqlString(course.id)}, ${sqlString(module.title)}, ${module.orderIndex})`,
+            `  (${sqlString(module.id)}, ${sqlString(course.id)}, ${sqlString(module.slug)}, ${sqlString(module.title)}, ${module.orderIndex})`,
         )
         .join(",\n") + ";",
     );
