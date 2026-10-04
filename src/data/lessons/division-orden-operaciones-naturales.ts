@@ -3,71 +3,10 @@ import { TEMA_1_SUBTITLE } from "@/data/lessons/shared";
 
 export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
   slug: "division-orden-operaciones-naturales",
-  title: "5. División y orden de operaciones",
+  title: "5. Orden de operaciones",
   subtitle: TEMA_1_SUBTITLE,
   stage: { theme: "paper" },
   steps: [
-    {
-      id: "dividir-narrate",
-      type: "narrate",
-      title: "Dividir",
-      definitionBox: "**Dividir** es **repartir** en partes iguales.",
-      module: "mul-div-naturales",
-      scene: "reparto-igual",
-      mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
-    },
-    {
-      id: "dividir-predict",
-      type: "predict",
-      title: "Bombones por caja",
-      question: "$150$ bombones en $6$ cajas iguales. ¿Cuántos van en cada caja?",
-      mode: "choice",
-      choices: [
-        { id: "20", label: "$20$" },
-        { id: "25", label: "$25$" },
-        { id: "30", label: "$30$" },
-      ],
-      correctChoiceId: "25",
-      module: "mul-div-naturales",
-      scene: "reparto-igual",
-      mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
-      explanation: "$150 : 6 = 25$ bombones por caja.",
-    },
-    {
-      id: "dividir-explore",
-      type: "explore",
-      title: "Reparte tú",
-      question: "Reparte los $150$ bombones hasta que cada caja tenga la misma cantidad.",
-      module: "mul-div-naturales",
-      scene: "reparto-manual",
-      mulDiv: { scene: "reparto-manual", total: 150, boxes: 6, perBox: 25 },
-      goal: { kind: "boxes-equal", total: 150, boxes: 6, perBox: 25 },
-      hint: "Usa $+$ en una caja mientras queden bombones en el montón.",
-      explanation: "Seis cajas con $25$ suman $150$: división exacta.",
-    },
-    {
-      id: "tipos-narrate",
-      type: "narrate",
-      title: "Exacta y entera",
-      definitionBox:
-        "Si el **resto es $0$**, la división es **exacta** ($D = d \\cdot c$). Si el resto es $\\neq 0$, es **entera** ($D = d \\cdot c + r$).",
-      module: "mul-div-naturales",
-      scene: "exacta-entera",
-      mulDiv: { scene: "exacta-entera" },
-    },
-    {
-      id: "tipos-predict",
-      type: "predict",
-      title: "Verificación",
-      question: "Para $43 = 8 \\cdot 5 + 3$, ¿qué tipo de división es?",
-      mode: "choice",
-      choices: [
-        { id: "exacta", label: "Exacta ($D = d \\cdot c$)" },
-        { id: "entera", label: "Entera ($D = d \\cdot c + r$)" },
-      ],
-      correctChoiceId: "entera",
-      explanation: "El resto $3$ es distinto de cero.",
-    },
     {
       id: "escalera-reglas",
       type: "narrate",
@@ -92,8 +31,7 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       ],
       correctChoiceId: "mul",
       hint: "Mira qué operación está más abajo en la escalera del paso anterior.",
-      explanation:
-        "Primero $2 \\cdot 3 = 6$; luego $4 + 3 - 6 = 1$. En tus diapositivas el resultado ya era $1$.",
+      explanation: "Primero $2 \\cdot 3 = 6$; luego $4 + 3 - 6 = 1$.",
     },
     {
       id: "predict-parentesis",

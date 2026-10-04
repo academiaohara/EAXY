@@ -654,6 +654,55 @@ function ExactaEntera({
   );
 }
 
+function PuenteMultDiv({
+  a,
+  b,
+  dividend,
+  divisor,
+  onReadyChange,
+}: {
+  a: number;
+  b: number;
+  dividend: number;
+  divisor: number;
+  onReadyChange?: (ready: boolean) => void;
+}) {
+  useEffect(() => {
+    onReadyChange?.(true);
+  }, [onReadyChange]);
+
+  const product = a * b;
+  const quotient = Math.floor(dividend / divisor);
+
+  return (
+    <div
+      className="grid gap-6 sm:grid-cols-[1fr_auto_1fr] sm:items-center"
+      aria-label="Multiplicar y dividir como operaciones inversas"
+    >
+      <div className="flex flex-col items-center gap-2 rounded-2xl bg-cobalt-tint/50 px-3 py-4">
+        <p className="text-xs font-bold uppercase tracking-wide text-cobalt">Multiplicar</p>
+        <TicketFan count={b} priceLabel={`${product}€`} />
+        <p className="text-center text-xs text-ink-muted">
+          <MathRenderer text={`$${a} \\cdot ${b} = ${product}$`} />
+        </p>
+      </div>
+      <span className="hidden text-2xl text-ink-muted sm:block" aria-hidden>
+        ↔
+      </span>
+      <div className="flex flex-col items-center gap-2 rounded-2xl bg-amber-50/90 px-3 py-4">
+        <p className="text-xs font-bold uppercase tracking-wide text-amber-800">Dividir</p>
+        <div className="flex flex-wrap items-end justify-center gap-3">
+          <BombonesPile label={String(dividend)} />
+          <CajaBombones count={divisor} caption="cajas" />
+        </div>
+        <p className="text-center text-xs text-ink-muted">
+          <MathRenderer text={`$${dividend} : ${divisor} = ${quotient}$`} />
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function MultiplicarConteo({ a, b }: { a: number; b: number }) {
   const total = a * b;
   return (
@@ -699,6 +748,16 @@ export function MulDivNaturalesModule({
         );
       case "multiplicar-conteo":
         return <MultiplicarConteo a={a} b={b} />;
+      case "puente-mult-div":
+        return (
+          <PuenteMultDiv
+            a={a}
+            b={b}
+            dividend={dividend}
+            divisor={divisor}
+            onReadyChange={onReadyChange}
+          />
+        );
       case "conmutativa-producto":
         return <ConmutativaProducto a={a} b={b} onReadyChange={onReadyChange} />;
       case "asociativa-producto":

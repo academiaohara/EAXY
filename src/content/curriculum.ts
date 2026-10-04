@@ -77,17 +77,18 @@ export const curriculum: Curriculum = {
             },
             {
               id: lessonId(104),
-              title: "4. Multiplicación",
-              summary: "Propiedades, distributiva y trucos de cálculo mental.",
+              title: "4. Multiplicación y división",
+              summary:
+                "Suma repetida, propiedades, reparto en partes iguales y divisiones exactas y enteras.",
               orderIndex: 4,
               kind: "interactive",
-              interactiveSlug: "multiplicacion-naturales",
+              interactiveSlug: "multiplicacion-division-naturales",
               conceptSlugs: [],
             },
             {
               id: lessonId(105),
-              title: "5. División y orden de operaciones",
-              summary: "Divisiones exactas y enteras; jerarquía de operaciones con escenarios interactivos.",
+              title: "5. Orden de operaciones",
+              summary: "Paréntesis, prioridad ×÷ frente a +− y orden de izquierda a derecha.",
               orderIndex: 5,
               kind: "interactive",
               interactiveSlug: "division-orden-operaciones-naturales",

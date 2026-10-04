@@ -78,7 +78,7 @@ describe("validateCurriculum", () => {
       "sistemas-numeracion-naturales",
       "aproximacion-redondeo-naturales",
       "suma-resta-naturales",
-      "multiplicacion-naturales",
+      "multiplicacion-division-naturales",
       "division-orden-operaciones-naturales",
     ]);
     expect(firstYear?.modules[0]?.topicExercises).toHaveLength(64);

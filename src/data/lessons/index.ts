@@ -26,6 +26,7 @@ import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/enteros-z-recta
 import { mcmMcdNaturalesLesson } from "@/data/lessons/mcm-mcd-naturales";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/multiplicacion-division-enteros";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/division-numeros-decimales";
+import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/multiplicacion-naturales";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/operaciones-fracciones-comun-denominador";
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/operaciones-fracciones-multiplicacion-division";
@@ -103,6 +104,7 @@ export const interactiveLessons = {
   "operaciones-fracciones-problemas": operacionesFraccionesProblemasLesson,
   "operaciones-fracciones-suma-resta": operacionesFraccionesSumaRestaLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
+  "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
   "operaciones-numeros-decimales": operacionesNumerosDecimalesLesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
