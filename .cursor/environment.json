@@ -1,6 +1,6 @@
 {
   "name": "EAXY",
-  "install": "npm ci && npx playwright install --with-deps chromium",
+  "install": "npm ci\nnpx playwright install --with-deps chromium",
   "start": "bash scripts/agent-bootstrap.sh",
   "ports": [
     {
