@@ -1,4 +1,5 @@
-import { getCourseById, getTopicExercisesForModule } from "@/content";
+import { getCourseById, getLessonById, getModuleById, getTopicExercisesForModule } from "@/content";
+import { resolveCourseRef } from "@/lib/curriculum/resolve-ref";
 import { isE2EMockClassroomEnabled } from "@/lib/classrooms/e2e-mock";
 import {
   getPreviewCourseCatalog,
@@ -149,7 +150,7 @@ export async function getCourseCatalog(): Promise<CourseCatalogEntry[]> {
 
   const { data: courses, error: coursesError } = await supabase
     .from("courses")
-    .select("id, title, description")
+    .select("id, slug, title, description")
     .order("created_at", { ascending: true });
 
   if (coursesError || !courses) {
@@ -191,6 +192,7 @@ export async function getCourseCatalog(): Promise<CourseCatalogEntry[]> {
     const curriculumCourse = getCourseById(id);
     return {
       id,
+      slug: curriculumCourse?.slug ?? (course.slug as string | null) ?? id,
       title: course.title as string,
       description: (course.description as string | null) ?? null,
       orderIndex: curriculumCourse?.orderIndex ?? 0,
@@ -203,22 +205,28 @@ export async function getCourseCatalog(): Promise<CourseCatalogEntry[]> {
 }
 
 export async function getCourseOutline(
-  courseId: string,
+  courseRef: string,
   studentId: string | null,
 ): Promise<CourseOutline | null> {
+  const resolved = resolveCourseRef(courseRef);
+  if (!resolved) {
+    return null;
+  }
+  const courseId = resolved.id;
+
   if (isE2EMockClassroomEnabled()) {
-    return getE2EMockCourseOutline(courseId);
+    return getE2EMockCourseOutline(courseRef);
   }
 
   if (shouldUseLocalCatalog(studentId)) {
-    return getPreviewCourseOutline(courseId);
+    return getPreviewCourseOutline(courseRef);
   }
 
   const supabase = await createServerSupabaseClient();
 
   const { data: course, error: courseError } = await supabase
     .from("courses")
-    .select("id, title, description")
+    .select("id, slug, title, description")
     .eq("id", courseId)
     .maybeSingle();
 
@@ -228,7 +236,7 @@ export async function getCourseOutline(
 
   const { data: modules, error: modulesError } = await supabase
     .from("modules")
-    .select("id, title, order_index")
+    .select("id, slug, title, order_index")
     .eq("course_id", courseId)
     .order("order_index", { ascending: true });
 
@@ -243,6 +251,7 @@ export async function getCourseOutline(
     return {
       course: {
         id: course.id as string,
+        slug: curriculumCourse?.slug ?? (course.slug as string | null) ?? course.id,
         title: course.title as string,
         description: (course.description as string | null) ?? null,
         orderIndex: curriculumCourse?.orderIndex,
@@ -331,14 +340,17 @@ export async function getCourseOutline(
   return {
     course: {
       id: course.id as string,
+      slug: curriculumCourse?.slug ?? (course.slug as string | null) ?? course.id,
       title: course.title as string,
       description: (course.description as string | null) ?? null,
       orderIndex: curriculumCourse?.orderIndex,
     },
     modules: modules.map((module) => {
       const moduleId = module.id as string;
+      const curriculumModule = getModuleById(moduleId)?.module;
       return {
         id: moduleId,
+        slug: curriculumModule?.slug ?? (module.slug as string | null) ?? moduleId,
         title: module.title as string,
         orderIndex: module.order_index as number,
         lessons: lessonsByModule.get(moduleId) ?? [],
@@ -388,10 +400,16 @@ export async function getLessonDetail(
     return null;
   }
 
+  const courseId = module.course_id as string;
+  const moduleId = module.id as string;
+  const lessonRef = getLessonById(lessonId);
+  const curriculumCourse = getCourseById(courseId);
+  const curriculumModule = getModuleById(moduleId)?.module;
+
   const { data: course } = await supabase
     .from("courses")
-    .select("title")
-    .eq("id", module.course_id as string)
+    .select("title, slug")
+    .eq("id", courseId)
     .maybeSingle();
 
   const meta = getCurriculumLessonMeta(lessonId);
@@ -504,8 +522,10 @@ export async function getLessonDetail(
     exerciseCount: exerciseSummaries.length,
     pathStatus,
     conceptIds,
-    courseId: module.course_id as string,
-    moduleId: module.id as string,
+    courseId,
+    courseSlug: lessonRef?.course.slug ?? curriculumCourse?.slug ?? (course?.slug as string | null) ?? courseId,
+    moduleId,
+    moduleSlug: lessonRef?.module.slug ?? curriculumModule?.slug ?? moduleId,
     moduleTitle: module.title as string,
     courseTitle: (course?.title as string) ?? "Curso",
     kind: meta?.kind ?? "exercises",

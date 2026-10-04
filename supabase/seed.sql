@@ -1,37 +1,37 @@
 -- ARCHIVO GENERADO. No editar a mano: ejecuta `npm run seed:generate`.
 -- Fuente: src/content/curriculum.ts
 
-insert into public.courses (id, title, description) values
-  ('a1000000-0000-4000-8000-000000000001', 'Matemáticas 1º ESO', 'Primer curso de matemáticas de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000002', 'Matemáticas 2º ESO', 'Segundo curso de matemáticas de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000003', 'Matemáticas 3º ESO', 'Tercer curso de matemáticas de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000004', 'Matemáticas 4º ESO', 'Cuarto curso de matemáticas de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000005', 'Matemáticas 1º Bachillerato', 'Primer curso de matemáticas de Bachillerato.'),
-  ('a1000000-0000-4000-8000-000000000006', 'Matemáticas 2º Bachillerato', 'Segundo curso de matemáticas de Bachillerato.');
+insert into public.courses (id, slug, title, description) values
+  ('a1000000-0000-4000-8000-000000000001', 'matematicas-1-eso', 'Matemáticas 1º ESO', 'Primer curso de matemáticas de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000002', 'matematicas-2-eso', 'Matemáticas 2º ESO', 'Segundo curso de matemáticas de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000003', 'matematicas-3-eso', 'Matemáticas 3º ESO', 'Tercer curso de matemáticas de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000004', 'matematicas-4-eso', 'Matemáticas 4º ESO', 'Cuarto curso de matemáticas de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000005', 'matematicas-1-bachillerato', 'Matemáticas 1º Bachillerato', 'Primer curso de matemáticas de Bachillerato.'),
+  ('a1000000-0000-4000-8000-000000000006', 'matematicas-2-bachillerato', 'Matemáticas 2º Bachillerato', 'Segundo curso de matemáticas de Bachillerato.');
 
-insert into public.modules (id, course_id, title, order_index) values
-  ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'Los números naturales', 1),
-  ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'Potencias y raíces', 2),
-  ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'Divisibilidad', 3),
-  ('a2000000-0000-4000-8000-000000000004', 'a1000000-0000-4000-8000-000000000001', 'Los números enteros', 4),
-  ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'Los números decimales', 5),
-  ('a2000000-0000-4000-8000-000000000006', 'a1000000-0000-4000-8000-000000000001', 'El sistema métrico decimal', 6),
-  ('a2000000-0000-4000-8000-000000000008', 'a1000000-0000-4000-8000-000000000001', 'Las fracciones', 7),
-  ('a2000000-0000-4000-8000-000000000009', 'a1000000-0000-4000-8000-000000000001', 'Operaciones con fracciones', 8),
-  ('a2000000-0000-4000-8000-000000000010', 'a1000000-0000-4000-8000-000000000001', 'Proporcionalidad y porcentajes', 9),
-  ('a2000000-0000-4000-8000-000000000011', 'a1000000-0000-4000-8000-000000000001', 'Álgebra', 10),
-  ('a2000000-0000-4000-8000-000000000012', 'a1000000-0000-4000-8000-000000000001', 'Cuerpos geométricos', 12),
-  ('a2000000-0000-4000-8000-000000000013', 'a1000000-0000-4000-8000-000000000001', 'Áreas y perímetros', 13),
-  ('a2000000-0000-4000-8000-000000000014', 'a1000000-0000-4000-8000-000000000001', 'Tablas y gráficas', 14),
-  ('a2000000-0000-4000-8000-000000000015', 'a1000000-0000-4000-8000-000000000001', 'Probabilidad', 15),
-  ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'Sistemas de ecuaciones', 1);
+insert into public.modules (id, course_id, slug, title, order_index) values
+  ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
+  ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'potencias-y-raices', 'Potencias y raíces', 2),
+  ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'divisibilidad', 'Divisibilidad', 3),
+  ('a2000000-0000-4000-8000-000000000004', 'a1000000-0000-4000-8000-000000000001', 'numeros-enteros', 'Los números enteros', 4),
+  ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'numeros-decimales', 'Los números decimales', 5),
+  ('a2000000-0000-4000-8000-000000000006', 'a1000000-0000-4000-8000-000000000001', 'sistema-metrico-decimal', 'El sistema métrico decimal', 6),
+  ('a2000000-0000-4000-8000-000000000008', 'a1000000-0000-4000-8000-000000000001', 'fracciones', 'Las fracciones', 7),
+  ('a2000000-0000-4000-8000-000000000009', 'a1000000-0000-4000-8000-000000000001', 'operaciones-con-fracciones', 'Operaciones con fracciones', 8),
+  ('a2000000-0000-4000-8000-000000000010', 'a1000000-0000-4000-8000-000000000001', 'proporcionalidad-y-porcentajes', 'Proporcionalidad y porcentajes', 9),
+  ('a2000000-0000-4000-8000-000000000011', 'a1000000-0000-4000-8000-000000000001', 'algebra', 'Álgebra', 10),
+  ('a2000000-0000-4000-8000-000000000012', 'a1000000-0000-4000-8000-000000000001', 'cuerpos-geometricos', 'Cuerpos geométricos', 12),
+  ('a2000000-0000-4000-8000-000000000013', 'a1000000-0000-4000-8000-000000000001', 'areas-y-perimetros', 'Áreas y perímetros', 13),
+  ('a2000000-0000-4000-8000-000000000014', 'a1000000-0000-4000-8000-000000000001', 'tablas-y-graficas', 'Tablas y gráficas', 14),
+  ('a2000000-0000-4000-8000-000000000015', 'a1000000-0000-4000-8000-000000000001', 'probabilidad', 'Probabilidad', 15),
+  ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen y sistemas de numeración', 'Sistemas aditivos y posicionales: egipcio, romano y decimal.', 1, null),
   ('a3000000-0000-4000-8000-000000000102', 'a2000000-0000-4000-8000-000000000001', '2. Aproximación por redondeo', 'Regla del redondeo y aproximaciones a distintos órdenes.', 2, null),
   ('a3000000-0000-4000-8000-000000000103', 'a2000000-0000-4000-8000-000000000001', '3. Suma y resta', 'Paréntesis, propiedades conmutativa y asociativa, problemas.', 3, null),
   ('a3000000-0000-4000-8000-000000000104', 'a2000000-0000-4000-8000-000000000001', '4. Multiplicación', 'Propiedades, distributiva y trucos de cálculo mental.', 4, null),
-  ('a3000000-0000-4000-8000-000000000105', 'a2000000-0000-4000-8000-000000000001', '5. División y orden de operaciones', 'Divisiones exactas y enteras; prioridad de operaciones.', 5, null),
+  ('a3000000-0000-4000-8000-000000000105', 'a2000000-0000-4000-8000-000000000001', '5. División y orden de operaciones', 'Divisiones exactas y enteras; jerarquía de operaciones con escenarios interactivos.', 5, null),
   ('a3000000-0000-4000-8000-000000000201', 'a2000000-0000-4000-8000-000000000002', '1. Potencias: base y exponente', 'Base, exponente, cuadrado, cubo, exponente cero y cálculo.', 1, null),
   ('a3000000-0000-4000-8000-000000000202', 'a2000000-0000-4000-8000-000000000002', '2. Potencias de base 10', 'Ceros y exponente; leer números grandes con potencias de 10.', 2, null),
   ('a3000000-0000-4000-8000-000000000203', 'a2000000-0000-4000-8000-000000000002', '3. Números grandes abreviados', 'Forma a · 10^n; ejemplo del año luz y cantidades reales.', 3, null),

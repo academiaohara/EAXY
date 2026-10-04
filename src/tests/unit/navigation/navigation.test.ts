@@ -36,7 +36,7 @@ describe("learning-trail", () => {
   });
 
   it("marca el curso como página actual cuando es el último nivel", () => {
-    expect(buildLearningTrail({ course: { id: "c1", title: "Matemáticas 1º ESO" } })).toEqual([
+    expect(buildLearningTrail({ course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" } })).toEqual([
       { label: "Aprender", href: "/aprender" },
       { label: "1º ESO" },
     ]);
@@ -45,22 +45,22 @@ describe("learning-trail", () => {
   it("enlaza curso y tema y deja la hoja como página actual", () => {
     expect(
       buildLearningTrail({
-        course: { id: "c1", title: "Matemáticas 1º ESO" },
-        topic: { id: "m1", title: "Fracciones", number: 4 },
+        course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" },
+        topic: { slug: "fracciones", title: "Fracciones", number: 4 },
         leaves: ["Fracciones equivalentes"],
       }),
     ).toEqual([
       { label: "Aprender", href: "/aprender" },
-      { label: "1º ESO", href: "/aprender/curso/c1" },
-      { label: "Tema 4: Fracciones", href: "/aprender/curso/c1/tema/m1" },
+      { label: "1º ESO", href: "/aprender/curso/matematicas-1-eso" },
+      { label: "Tema 4: Fracciones", href: "/aprender/curso/matematicas-1-eso/tema/fracciones" },
       { label: "Fracciones equivalentes" },
     ]);
   });
 
   it("deja el tema sin enlace cuando es la página actual", () => {
     const trail = buildLearningTrail({
-      course: { id: "c1", title: "Matemáticas 1º ESO" },
-      topic: { id: "m1", title: "Fracciones" },
+      course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" },
+      topic: { slug: "fracciones", title: "Fracciones" },
     });
     expect(trail.at(-1)).toEqual({ label: "Fracciones" });
   });

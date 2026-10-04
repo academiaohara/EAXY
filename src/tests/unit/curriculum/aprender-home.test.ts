@@ -5,6 +5,7 @@ import type { AprenderStudyShortcut } from "@/lib/curriculum/aprender-home";
 function mockShortcut(courseId: string, lessonId: string): AprenderStudyShortcut {
   return {
     courseId,
+    courseSlug: courseId,
     courseTitle: "Curso",
     moduleId: "mod-1",
     moduleTitle: "Tema",

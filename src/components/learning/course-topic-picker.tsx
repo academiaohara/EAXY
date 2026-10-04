@@ -7,7 +7,7 @@ import type { ModuleSummary } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
 
 type CourseTopicPickerProps = {
-  courseId: string;
+  courseSlug: string;
   modules: ModuleSummary[];
   /** Tema donde el alumno debería seguir; se marca como «Estás aquí». */
   currentModuleId?: string | null;
@@ -43,7 +43,7 @@ const STATUS_CHIP: Record<TopicStatus, string> = {
   soon: "bg-slate-50 text-slate-400 ring-slate-200",
 };
 
-export function CourseTopicPicker({ courseId, modules, currentModuleId }: CourseTopicPickerProps) {
+export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: CourseTopicPickerProps) {
   const sorted = sortModules(modules);
 
   return (
@@ -161,7 +161,7 @@ export function CourseTopicPicker({ courseId, modules, currentModuleId }: Course
             <li key={courseModule.id}>
               {isAvailable ? (
                 <Link
-                  href={topicHref(courseId, courseModule.id)}
+                  href={topicHref(courseSlug, courseModule.slug)}
                   data-testid={`topic-link-${courseModule.id}`}
                   aria-current={isCurrent ? "step" : undefined}
                   className={cn(

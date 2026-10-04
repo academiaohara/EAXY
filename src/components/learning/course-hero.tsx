@@ -107,7 +107,7 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
                 <ArrowRightIcon data-icon="inline-end" aria-hidden />
               </Button>
               <Link
-                href={topicHref(course.id, next.module.id)}
+                href={topicHref(course.slug, next.module.slug)}
                 className="min-w-0 text-sm text-ink-muted transition-colors hover:text-cobalt"
                 data-testid="course-hero-topic-link"
               >

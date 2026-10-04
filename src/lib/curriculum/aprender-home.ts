@@ -3,11 +3,13 @@ import { shouldUseLocalCatalog } from "@/lib/curriculum/local-catalog";
 import { findNextLesson } from "@/lib/curriculum/course-progress";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
 import { getCourseCatalog, getCourseOutline, getStudentReferenceCourseId } from "@/lib/curriculum/queries";
+import { topicHref } from "@/lib/navigation/learning-trail";
 import type { CourseOutline, LessonSummary } from "@/lib/curriculum/types";
 import { createServerSupabaseClient } from "@/lib/supabase";
 
 export type AprenderStudyShortcut = {
   courseId: string;
+  courseSlug: string;
   courseTitle: string;
   moduleId: string;
   moduleTitle: string;
@@ -142,6 +144,7 @@ function shortcutFromNext(
   const { module: courseModule, moduleNumber } = next;
   return {
     courseId: outline.course.id,
+    courseSlug: outline.course.slug,
     courseTitle: outline.course.title,
     moduleId: courseModule.id,
     moduleTitle: courseModule.title,
@@ -149,7 +152,7 @@ function shortcutFromNext(
     lessonId: next.lesson.id,
     lessonTitle: cleanLessonTitle(next.lesson.title),
     lesson: next.lesson,
-    topicHref: `/aprender/curso/${outline.course.id}/tema/${courseModule.id}`,
+    topicHref: topicHref(outline.course.slug, courseModule.slug),
     lessonHref: resolveLessonHref(next.lesson.id),
     actionLabel: actionLabelFor(next.lesson.pathStatus, next.isReview),
     startedAt,

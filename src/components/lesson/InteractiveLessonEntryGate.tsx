@@ -20,11 +20,12 @@ import {
   summarizeInteractiveLessonProgress,
 } from "@/lib/local-progress/interactive-lesson-state";
 import { resetLocalLessonCatalogStatus } from "@/lib/local-progress/storage";
+import { APRENDER_HOME_HREF, courseHref, topicHref } from "@/lib/navigation/learning-trail";
 
 type LessonNavigationContext = {
-  courseId: string;
+  courseSlug: string;
   courseTitle: string;
-  moduleId?: string;
+  moduleSlug?: string;
   moduleTitle: string;
 };
 
@@ -42,11 +43,11 @@ export function InteractiveLessonEntryGate({
   trackLocalProgress = false,
 }: InteractiveLessonEntryGateProps) {
   const stepCount = lesson.steps.length;
-  const topicHref = navigation?.moduleId
-    ? `/aprender/curso/${navigation.courseId}/tema/${navigation.moduleId}`
+  const returnHref = navigation?.moduleSlug
+    ? topicHref(navigation.courseSlug, navigation.moduleSlug)
     : navigation
-      ? `/aprender/curso/${navigation.courseId}`
-      : "/aprender";
+      ? courseHref(navigation.courseSlug)
+      : APRENDER_HOME_HREF;
 
   const [phase, setPhase] = useState<"checking" | "prompt" | "active">("checking");
   const [sessionKey, setSessionKey] = useState(0);
@@ -117,7 +118,7 @@ export function InteractiveLessonEntryGate({
               nativeButton={false}
               variant="ghost"
               className="w-full rounded-full"
-              render={<Link href={topicHref} />}
+              render={<Link href={returnHref} />}
             >
               Volver al tema
             </Button>

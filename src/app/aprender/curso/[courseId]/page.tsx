@@ -1,19 +1,30 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { CourseOutlineView } from "@/components/learning/course-outline";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { getCourseOutline } from "@/lib/curriculum/queries";
+import { resolveCourseRef } from "@/lib/curriculum/resolve-ref";
+import { courseHref } from "@/lib/navigation/learning-trail";
 
 type CoursePageProps = {
   params: Promise<{ courseId: string }>;
 };
 
 export default async function CoursePage({ params }: CoursePageProps) {
-  const { courseId } = await params;
+  const { courseId: courseParam } = await params;
+  const resolved = resolveCourseRef(courseParam);
+  if (!resolved) {
+    notFound();
+  }
+
   const studentId = await getAuthenticatedUserIdOrNull();
-  const outline = await getCourseOutline(courseId, studentId);
+  const outline = await getCourseOutline(resolved.slug, studentId);
 
   if (!outline) {
     notFound();
+  }
+
+  if (courseParam !== resolved.slug) {
+    permanentRedirect(courseHref(resolved.slug));
   }
 
   return (
