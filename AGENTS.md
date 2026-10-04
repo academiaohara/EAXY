@@ -15,3 +15,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Antes de push/PR: otra vez `git:sync-main` con working tree limpio.
 - Detalle completo: `.cursor/rules/git-workflow.mdc` y `scripts/git-sync-main.sh`.
 
+# EAXY — solo escritorio (sin móvil)
+
+- La plataforma **no** se usa en móvil: bloqueo en `DesktopOnlyGate` (layout raíz), mínimo 768px.
+- **No** añadir navegación móvil, modos «desde el móvil», layouts `max-*` para pantallas estrechas ni features solo móvil.
+- Reglas completas: `.cursor/rules/desktop-only.mdc`.
+

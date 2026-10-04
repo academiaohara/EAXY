@@ -424,7 +424,7 @@ function ExplorarSecuencia({
             key={op.id}
             type="button"
             className={cn(
-              "min-h-11 rounded-xl border-2 px-4 py-2 text-sm font-semibold transition touch-manipulation",
+              "min-h-11 rounded-xl border-2 px-4 py-2 text-sm font-semibold transition",
               tapSequence.includes(op.id)
                 ? "border-emerald bg-emerald/15 text-emerald"
                 : "border-cobalt/30 bg-white text-ink hover:border-cobalt",

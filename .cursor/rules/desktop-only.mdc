@@ -1,0 +1,19 @@
+---
+description: La plataforma es solo escritorio; no añadir soporte móvil
+globs:
+alwaysApply: true
+---
+
+# Solo escritorio (sin móvil)
+
+Eaxy **no** debe usarse ni diseñarse para móviles.
+
+## Reglas para agentes y desarrollo
+
+- **No** añadir navegación móvil, menús inferiores, `safe-area-inset`, vistas dedicadas a móvil ni modos de producto «desde el móvil».
+- **No** añadir breakpoints `max-sm` / `max-md` ni estilos pensados solo para pantallas estrechas; el layout asume viewport ≥ 768px (`md` en Tailwind).
+- **No** ocultar la navegación principal en pantallas pequeñas (`hidden md:flex`): la app no se sirve por debajo de `md`.
+- El bloqueo está en `DesktopOnlyGate` (`src/components/layout/desktop-only-gate.tsx`) en el layout raíz.
+- Ancho mínimo documentado: `DESKTOP_MIN_WIDTH_PX` en `src/lib/layout/desktop-only.ts`.
+
+Los prefijos `sm:` / `lg:` para refinar layout en **escritorio** (columnas, tipografía) siguen siendo válidos si no sustituyen una experiencia móvil paralela.

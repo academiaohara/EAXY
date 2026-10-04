@@ -41,7 +41,7 @@ El profesor puede trabajar en tres niveles de automatización para las asignacio
 
 ## Sesiones en vivo
 
-Complemento del aula, no un producto aparte. El profesor lanza una sesión en tiempo real (estilo Kahoot) sobre un concepto; los alumnos responden desde el móvil o el profesor marca aciertos/errores manualmente. Todas las respuestas alimentan el mismo historial de intentos y mastery que el resto de la plataforma (ver `live-sessions.md`).
+Complemento del aula, no un producto aparte. El profesor lanza una sesión en tiempo real (estilo Kahoot) sobre un concepto desde el ordenador; marca aciertos/errores por alumno (modo manual). Eaxy no se usa en móvil. Todas las respuestas alimentan el mismo historial de intentos y mastery que el resto de la plataforma (ver `live-sessions.md`).
 
 ## Tipos de cuenta y menores de edad
 

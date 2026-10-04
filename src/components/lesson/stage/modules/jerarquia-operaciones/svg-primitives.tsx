@@ -175,7 +175,7 @@ export function OpBadge({
     return body;
   }
   return (
-    <button type="button" className="touch-manipulation" onClick={onClick} disabled={disabled} aria-label={label}>
+    <button type="button" onClick={onClick} disabled={disabled} aria-label={label}>
       {body}
     </button>
   );
