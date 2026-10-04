@@ -47,13 +47,13 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
       case "origen-contar":
         return <OrigenContarScene />;
       case "sistemas-historia":
-        return <SistemasHistoriaScene onReadyChange={handleReadyChange} />;
+        return <SistemasHistoriaScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "decimal-intro":
         return <DecimalIntroScene onReadyChange={handleReadyChange} />;
       case "contar-diez":
-        return <ContarDiezScene onReadyChange={handleReadyChange} />;
+        return <ContarDiezScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "redondeo-demo":
-        return <RedondeoDemoScene onReadyChange={handleReadyChange} />;
+        return <RedondeoDemoScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "redondeo-corte":
         if (!step.roundingExercise) {
           return (
@@ -62,6 +62,7 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
         }
         return (
           <RedondeoCorteScene
+            stepId={step.id}
             n={step.roundingExercise.n}
             orderId={step.roundingExercise.orderId}
             onReadyChange={handleReadyChange}

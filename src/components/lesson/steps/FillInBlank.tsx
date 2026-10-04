@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { usePracticeSnapshotRestore } from "@/lib/lesson/use-practice-snapshot-restore";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { PracticeShell } from "@/components/lesson/steps/PracticeShell";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
@@ -27,6 +28,12 @@ export function FillInBlank({
   const [value, setValue] = useState(restored?.value ?? "");
   const [checked, setChecked] = useState(Boolean(restored));
   const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
+
+  usePracticeSnapshotRestore(restored, (snapshot) => {
+    setValue(snapshot.value);
+    setChecked(true);
+    setIsCorrect(snapshot.isCorrect);
+  });
 
   const handleCheck = useCallback(() => {
     if (!value.trim() || checked) {

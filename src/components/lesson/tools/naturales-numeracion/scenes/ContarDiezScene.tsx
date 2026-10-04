@@ -1,18 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { Button } from "@/components/ui/button";
 import { BasketballBall } from "@/components/lesson/tools/naturales-numeracion/BasketballBall";
 import { cn } from "@/lib/utils";
 
 const TARGET = 10;
 
+function createDefaultContarDiezState() {
+  return { count: 0 };
+}
+
 type ContarDiezSceneProps = {
+  stepId: string;
   onReadyChange: (ready: boolean) => void;
 };
 
-export function ContarDiezScene({ onReadyChange }: ContarDiezSceneProps) {
-  const [count, setCount] = useState(0);
+export function ContarDiezScene({ stepId, onReadyChange }: ContarDiezSceneProps) {
+  const [{ count }, setState] = usePersistedLessonToolState(stepId, createDefaultContarDiezState);
 
   useEffect(() => {
     onReadyChange(count >= TARGET);
@@ -52,7 +58,7 @@ export function ContarDiezScene({ onReadyChange }: ContarDiezSceneProps) {
         type="button"
         size="lg"
         className="mt-1 rounded-full px-8"
-        onClick={() => setCount((c) => Math.min(TARGET, c + 1))}
+        onClick={() => setState((prev) => ({ count: Math.min(TARGET, prev.count + 1) }))}
         disabled={count >= TARGET}
       >
         {count === 0 ? "Empezar a contar" : "Siguiente pelota"}

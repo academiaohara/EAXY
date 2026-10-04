@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { Button } from "@/components/ui/button";
 import { RoundingCutView } from "@/components/lesson/tools/naturales-numeracion/RoundingCutView";
 import {
@@ -9,12 +10,17 @@ import {
   orderById,
 } from "@/lib/lesson/naturales-redondeo";
 
+function createDefaultRedondeoDemoState() {
+  return { index: 0 };
+}
+
 type RedondeoDemoSceneProps = {
+  stepId: string;
   onReadyChange: (ready: boolean) => void;
 };
 
-export function RedondeoDemoScene({ onReadyChange }: RedondeoDemoSceneProps) {
-  const [index, setIndex] = useState(0);
+export function RedondeoDemoScene({ stepId, onReadyChange }: RedondeoDemoSceneProps) {
+  const [{ index }, setState] = usePersistedLessonToolState(stepId, createDefaultRedondeoDemoState);
   const example = DEMO_ROUNDING_EXAMPLES[index];
   const isLast = index >= DEMO_ROUNDING_EXAMPLES.length - 1;
 
@@ -49,7 +55,7 @@ export function RedondeoDemoScene({ onReadyChange }: RedondeoDemoSceneProps) {
           Ejemplo {index + 1}/{DEMO_ROUNDING_EXAMPLES.length}
         </span>
         {!isLast ? (
-          <Button type="button" onClick={() => setIndex((i) => i + 1)}>
+          <Button type="button" onClick={() => setState((prev) => ({ index: prev.index + 1 }))}>
             Siguiente ejemplo
           </Button>
         ) : (
