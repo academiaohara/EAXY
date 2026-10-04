@@ -18,7 +18,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # EAXY — entorno de desarrollo
 
 - El arranque del Cloud Agent ejecuta `scripts/agent-bootstrap.sh`: sincroniza `origin/main` y deja `next dev` en http://localhost:3000.
-- Sin variables de Supabase, la app usa el catálogo embebido en `/aprender` y guarda el progreso en el navegador.
-- `npx supabase start` necesita Docker y no forma parte de este entorno.
+- Sin `.env.local` ni secretos de Supabase, ese script exporta claves locales de relleno y `CONTENT_PREVIEW_MODE=true`. El cliente de Supabase exige URL y clave; el catálogo de `/aprender` sigue siendo el embebido y el progreso queda en el navegador.
+- `npx supabase start` necesita Docker y no forma parte de este entorno. Con la salida del CLI, crea `.env.local` para usar Auth y aulas reales.
 - Comprobaciones: `npm run lint`, `npm run test:run`, `npm run test:e2e`, `npm run build`.
 
