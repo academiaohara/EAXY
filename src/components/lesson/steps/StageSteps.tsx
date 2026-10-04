@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { DefinitionBox } from "@/components/lesson/stage/DefinitionBox";
 import { StageModuleRenderer } from "@/components/lesson/stage/StageModuleRenderer";
 import { StageViewport } from "@/components/lesson/stage/StageViewport";
@@ -11,7 +11,7 @@ import {
   evalWithParenthesisPlacement,
   isValidParenthesisPlacement,
 } from "@/lib/lesson/stage/eval-natural-expression";
-import type { ExploreSnapshot, PredictSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
+import type { PredictSnapshot, ExploreSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import type {
   ExploreStep,
@@ -19,8 +19,16 @@ import type {
   NarrateStep,
   PredictStep,
   RevealStep,
+  TiendaCiclistaItem,
 } from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
+
+const TEAM_ITEMS: TiendaCiclistaItem[] = [
+  { id: "bici", label: "Bici", price: 583 },
+  { id: "casco", label: "Casco", price: 162 },
+  { id: "maillot", label: "Maillot", price: 45 },
+  { id: "culotte", label: "Culotte", price: 38 },
+];
 
 type StageShellProps = {
   theme: LessonStageTheme;
@@ -40,90 +48,43 @@ function StageShell({ theme, definitionBox, title, stage, children }: StageShell
   );
 }
 
-function buildEmbeddedCheckHandler(
-  submitRef: React.MutableRefObject<(() => boolean) | null>,
-  onCheck: (result: StepCheckResult) => void,
-  checked: boolean,
-) {
-  return () => {
-    if (checked || !submitRef.current) {
-      return;
-    }
-    const correct = submitRef.current();
-    onCheck({
-      correct,
-      snapshot: {
-        kind: "predict",
-        isCorrect: correct,
-        revealPlayed: correct,
-      },
-    });
-  };
-}
-
-type NarrateProps = {
+export function NarrateStepView({
+  step,
+  theme,
+  onContinue,
+}: {
   step: NarrateStep;
   theme: LessonStageTheme;
   onContinue: () => void;
-  onCheck?: (result: StepCheckResult) => void;
-  disabled?: boolean;
-  saved?: PredictSnapshot | null;
-};
-
-export function NarrateStepView({ step, theme, onContinue, onCheck, disabled, saved }: NarrateProps) {
+}) {
   const [ready, setReady] = useState(false);
-  const [predictPhase, setPredictPhase] = useState(false);
-  const [canSubmitPredict, setCanSubmitPredict] = useState(false);
-  const predictSubmitRef = useRef<(() => boolean) | null>(null);
-  const checked = Boolean(saved?.isCorrect);
 
-  const runEmbeddedCheck = useCallback(
-    buildEmbeddedCheckHandler(predictSubmitRef, onCheck ?? (() => {}), checked),
-    [checked, onCheck],
+  const control = useMemo(
+    () =>
+      ready
+        ? {
+            label: "Continuar",
+            onClick: () => onContinue(),
+            testId: "lesson-continue-button",
+          }
+        : null,
+    [onContinue, ready],
   );
-
-  const control = useMemo(() => {
-    if (step.embeddedPrediction && predictPhase && !checked) {
-      return {
-        label: "Comprobar",
-        onClick: runEmbeddedCheck,
-        disabled: !canSubmitPredict || disabled,
-        testId: "lesson-check-button",
-      };
-    }
-    return ready
-      ? {
-          label: "Continuar",
-          onClick: () => onContinue(),
-          testId: "lesson-continue-button",
-        }
-      : null;
-  }, [
-    canSubmitPredict,
-    checked,
-    disabled,
-    onContinue,
-    predictPhase,
-    ready,
-    runEmbeddedCheck,
-    step.embeddedPrediction,
-  ]);
-
   useRegisterLessonStepControl(control);
+
+  const tienda = step.tienda;
 
   const stage = (
     <StageModuleRenderer
       module={step.module}
       stepId={step.id}
       scene={step.scene}
-      embeddedPrediction={step.embeddedPrediction}
-      tiendaFichas={step.tiendaFichas}
       tienda={
-        step.tienda
+        tienda
           ? {
-              items: step.tienda.items,
-              wallet: step.tienda.wallet,
-              mode: step.tienda.mode,
+              items: tienda.items,
+              wallet: tienda.wallet,
+              mode: tienda.mode,
             }
           : undefined
       }
@@ -135,13 +96,6 @@ export function NarrateStepView({ step, theme, onContinue, onCheck, disabled, sa
             : undefined
       }
       onReadyChange={setReady}
-      onPredictPhaseChange={(active, canSubmit) => {
-        setPredictPhase(active);
-        setCanSubmitPredict(canSubmit);
-      }}
-      onRegisterPredict={(submit) => {
-        predictSubmitRef.current = submit;
-      }}
     />
   );
 
@@ -169,6 +123,8 @@ export function PredictStepView({
   const [numericValue, setNumericValue] = useState(restored?.numericValue ?? "");
   const [choiceId, setChoiceId] = useState(restored?.choiceId ?? "");
   const [checked, setChecked] = useState(Boolean(restored));
+  const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
+  const [reveal, setReveal] = useState(restored?.revealPlayed ?? false);
 
   const runCheck = useCallback(() => {
     if (checked) {
@@ -180,7 +136,9 @@ export function PredictStepView({
     } else {
       correct = choiceId === step.correctChoiceId;
     }
+    setIsCorrect(correct);
     setChecked(true);
+    setReveal(true);
     onCheck({
       correct,
       snapshot: {
@@ -209,23 +167,21 @@ export function PredictStepView({
 
   useRegisterLessonStepControl(control);
 
-  const stage =
-    step.module && step.scene ? (
-      <StageModuleRenderer
-        module={step.module}
-        stepId={step.id}
-        scene={step.scene}
-        tiendaFichas={undefined}
-        tienda={
-          step.tienda
-            ? { ...step.tienda, mode: step.tienda.mode as "sumar-cesta" }
-            : undefined
-        }
-      />
-    ) : null;
+  const tiendaReveal =
+    reveal && step.module === "tienda-ciclista" && step.tienda
+      ? (
+          <StageModuleRenderer
+            module="tienda-ciclista"
+            stepId={`${step.id}-reveal`}
+            scene={step.scene ?? "reveal"}
+            tienda={{ ...step.tienda, mode: "sumar-cesta" }}
+            autoPlay
+          />
+        )
+      : null;
 
   return (
-    <StageViewport theme={theme} stage={stage}>
+    <StageViewport theme={theme}>
       {step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}
       <section
         className="lesson-idea-enter rounded-2xl border-2 border-cobalt/15 bg-white p-6 shadow-sm sm:p-8"
@@ -265,6 +221,16 @@ export function PredictStepView({
             ))}
           </div>
         )}
+        {reveal ? (
+          <div className="mt-6 space-y-3">
+            {tiendaReveal}
+            {step.mode === "numeric" ? (
+              <p className="text-center text-sm text-ink-muted">
+                <MathRenderer text="$583 + 162 + 45 + 38 = 828$ €" />
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </section>
     </StageViewport>
   );
@@ -289,57 +255,16 @@ export function ExploreStepView({
   disabled?: boolean;
   saved?: ExploreSnapshot | null;
 }) {
-  const items = step.tiendaFichas?.items ?? step.tienda?.items ?? [];
-  const budget =
-    step.goal.kind === "maximize-under-budget"
-      ? step.goal.budget
-      : (step.tiendaFichas?.wallet ?? step.tienda?.wallet ?? 0);
-
-  const usesLegacyPersist = step.module === "piramide-reduccion" || step.module === "tienda-ciclista";
+  const defaultIds = step.tienda?.items.map((item) => item.id) ?? TEAM_ITEMS.map((i) => i.id);
   const [persist, setPersist] = usePersistedLessonToolState<ExplorePersist>(step.id, () => ({
-    selectedIds: step.tienda?.items.map((item) => item.id) ?? [],
+    selectedIds: defaultIds,
     openAfter: null,
     closeBefore: null,
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
-  const [inlineMessage, setInlineMessage] = useState<string | null>(null);
-  const [failCount, setFailCount] = useState(0);
-  const exploreCheckRef = useRef<(() => void) | null>(null);
-  const predictSubmitRef = useRef<(() => boolean) | null>(null);
-  const [predictPhase, setPredictPhase] = useState(false);
-  const [canSubmitPredict, setCanSubmitPredict] = useState(false);
-  const [expressionGoalMet, setExpressionGoalMet] = useState(false);
-  const [moduleReady, setModuleReady] = useState(false);
 
   const goalMet = useMemo(() => {
-    if (step.goal.kind === "maximize-under-budget") {
-      return false;
-    }
-    if (step.goal.kind === "expression-result") {
-      if (step.module === "piramide-reduccion") {
-        if (
-          !isValidParenthesisPlacement(
-            step.goal.tokens,
-            persist.openAfter,
-            persist.closeBefore,
-          )
-        ) {
-          return false;
-        }
-        return (
-          evalWithParenthesisPlacement(
-            step.goal.tokens,
-            persist.openAfter,
-            persist.closeBefore,
-          ) === step.goal.target
-        );
-      }
-      return expressionGoalMet;
-    }
-    if (step.goal.kind === "module-ready") {
-      return moduleReady;
-    }
     if (step.goal.kind === "wallet-remainder" && step.tienda) {
       const total = step.tienda.items
         .filter((item) => persist.selectedIds.includes(item.id))
@@ -347,133 +272,63 @@ export function ExploreStepView({
       const left = step.tienda.wallet - total;
       return left >= 0 && left < step.goal.maxRemainder;
     }
+    if (step.goal.kind === "expression-result") {
+      if (!isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore)) {
+        return false;
+      }
+      const value = evalWithParenthesisPlacement(
+        step.goal.tokens,
+        persist.openAfter,
+        persist.closeBefore,
+      );
+      return value === step.goal.target;
+    }
     return false;
-  }, [expressionGoalMet, moduleReady, persist.selectedIds, step]);
+  }, [persist, step]);
 
-  const runExploreCheck = useCallback(() => {
-    if (checked) {
-      return;
-    }
-    if (step.goal.kind === "maximize-under-budget") {
-      exploreCheckRef.current?.();
-      return;
-    }
-    if (!goalMet) {
+  const runCheck = useCallback(() => {
+    if (checked || !goalMet) {
       return;
     }
     setChecked(true);
     onCheck({
       correct: true,
-      snapshot: { kind: "explore", goalMet: true, isCorrect: true },
-    });
-  }, [checked, goalMet, onCheck, step.goal.kind]);
-
-  const runEmbeddedCheck = useCallback(() => {
-    if (checked || !predictSubmitRef.current) {
-      return;
-    }
-    const correct = predictSubmitRef.current();
-    if (correct) {
-      setModuleReady(true);
-      setChecked(true);
-    }
-    onCheck({
-      correct,
       snapshot: {
-        kind: "predict",
-        isCorrect: correct,
-        revealPlayed: correct,
+        kind: "explore",
+        goalMet: true,
+        isCorrect: true,
       },
     });
-  }, [checked, onCheck]);
+  }, [checked, goalMet, onCheck]);
 
-  const exploreControl = useMemo(() => {
+  const control = useMemo(() => {
     if (checked) {
       return null;
     }
-    if (step.embeddedPrediction && predictPhase) {
-      return {
-        label: "Comprobar",
-        onClick: runEmbeddedCheck,
-        disabled: !canSubmitPredict || disabled,
-        testId: "lesson-check-button",
-      };
-    }
-    if (step.goal.kind === "maximize-under-budget") {
-      return {
-        label: "Comprobar compra",
-        onClick: runExploreCheck,
-        disabled: disabled,
-        testId: "lesson-check-button",
-      };
-    }
     return {
       label: "Comprobar",
-      onClick: runExploreCheck,
+      onClick: runCheck,
       disabled: !goalMet || disabled,
       testId: "lesson-check-button",
     };
-  }, [
-    canSubmitPredict,
-    checked,
-    disabled,
-    goalMet,
-    predictPhase,
-    runEmbeddedCheck,
-    runExploreCheck,
-    step.embeddedPrediction,
-    step.goal.kind,
-  ]);
+  }, [checked, disabled, goalMet, runCheck]);
 
-  useRegisterLessonStepControl(exploreControl);
-
-  const handleExploreResult = useCallback(
-    (result: { correct: boolean; message: string }) => {
-      setInlineMessage(result.message);
-      if (result.correct) {
-        setChecked(true);
-        onCheck({
-          correct: true,
-          snapshot: { kind: "explore", goalMet: true, isCorrect: true },
-        });
-        return;
-      }
-      const nextFails = failCount + 1;
-      setFailCount(nextFails);
-    },
-    [failCount, onCheck],
-  );
+  useRegisterLessonStepControl(control);
 
   const stage = (
     <StageModuleRenderer
       module={step.module}
       stepId={step.id}
       scene={step.scene}
-      embeddedPrediction={step.embeddedPrediction}
-      tiendaFichas={
-        step.tiendaFichas
-          ? { ...step.tiendaFichas, items }
-          : step.tienda
-            ? {
-                items: step.tienda.items,
-                wallet: step.tienda.wallet,
-                mode: "explorar-toggle",
-              }
-            : undefined
+      tienda={
+        step.tienda
+          ? {
+              items: step.tienda.items,
+              wallet: step.tienda.wallet,
+              mode: "explorar-compra",
+            }
+          : undefined
       }
-      exploreBudget={step.goal.kind === "maximize-under-budget" ? budget : undefined}
-      onExploreCheck={handleExploreResult}
-      onRegisterExplore={(check) => {
-        exploreCheckRef.current = check;
-      }}
-      onRegisterPredict={(submit) => {
-        predictSubmitRef.current = submit;
-      }}
-      onPredictPhaseChange={(active, canSubmit) => {
-        setPredictPhase(active);
-        setCanSubmitPredict(canSubmit);
-      }}
-      onGoalChange={(met) => setExpressionGoalMet(met)}
       piramide={
         step.module === "piramide-reduccion"
           ? {
@@ -486,17 +341,10 @@ export function ExploreStepView({
             }
           : undefined
       }
-      selectedIds={usesLegacyPersist ? persist.selectedIds : undefined}
-      onSelectedIdsChange={
-        usesLegacyPersist
-          ? (ids) => setPersist((prev) => ({ ...prev, selectedIds: ids }))
-          : undefined
-      }
-      onReadyChange={setModuleReady}
+      selectedIds={persist.selectedIds}
+      onSelectedIdsChange={(ids) => setPersist((prev) => ({ ...prev, selectedIds: ids }))}
     />
   );
-
-  const showExploreHint = failCount >= 2 && step.hint && !checked;
 
   return (
     <div data-testid="lesson-explore-step">
@@ -504,16 +352,6 @@ export function ExploreStepView({
         <p className="text-center text-sm font-medium text-ink">
           <MathRenderer text={step.question} />
         </p>
-        {inlineMessage ? (
-          <p className="text-center text-sm font-medium text-amber-900" role="status">
-            {inlineMessage}
-          </p>
-        ) : null}
-        {showExploreHint ? (
-          <p className="text-center text-sm text-ink-muted">
-            <MathRenderer text={step.hint!} />
-          </p>
-        ) : null}
       </StageShell>
     </div>
   );
@@ -523,78 +361,48 @@ export function RevealStepView({
   step,
   theme,
   onContinue,
-  onCheck,
-  disabled,
-  saved,
 }: {
   step: RevealStep;
   theme: LessonStageTheme;
   onContinue: () => void;
-  onCheck?: (result: StepCheckResult) => void;
-  disabled?: boolean;
-  saved?: PredictSnapshot | null;
 }) {
   const [ready, setReady] = useState(false);
-  const [predictPhase, setPredictPhase] = useState(false);
-  const [canSubmitPredict, setCanSubmitPredict] = useState(false);
-  const predictSubmitRef = useRef<(() => boolean) | null>(null);
-  const checked = Boolean(saved?.isCorrect);
 
-  const runEmbeddedCheck = useCallback(
-    buildEmbeddedCheckHandler(predictSubmitRef, onCheck ?? (() => {}), checked),
-    [checked, onCheck],
+  const control = useMemo(
+    () =>
+      ready
+        ? {
+            label: "Continuar",
+            onClick: () => onContinue(),
+            testId: "lesson-continue-button",
+          }
+        : null,
+    [onContinue, ready],
   );
-
-  const control = useMemo(() => {
-    if (step.embeddedPrediction && predictPhase && !checked) {
-      return {
-        label: "Comprobar",
-        onClick: runEmbeddedCheck,
-        disabled: !canSubmitPredict || disabled,
-        testId: "lesson-check-button",
-      };
-    }
-    return ready
-      ? {
-          label: "Continuar",
-          onClick: () => onContinue(),
-          testId: "lesson-continue-button",
-        }
-      : null;
-  }, [
-    canSubmitPredict,
-    checked,
-    disabled,
-    onContinue,
-    predictPhase,
-    ready,
-    runEmbeddedCheck,
-    step.embeddedPrediction,
-  ]);
-
   useRegisterLessonStepControl(control);
+
+  const equation =
+    step.scene === "conmutativa"
+      ? `$${step.blocks[0]} + ${step.blocks[1]} = ${step.blocks[1]} + ${step.blocks[0]}$`
+      : `$(${step.blocks[0]} + ${step.blocks[1]}) + ${step.blocks[2]} = ${step.blocks[0]} + (${step.blocks[1]} + ${step.blocks[2]})$`;
 
   const stage = (
     <StageModuleRenderer
-      module={step.module}
+      module="bloques-numericos"
       stepId={step.id}
       scene={step.scene}
       bloques={{ blocks: step.blocks }}
-      embeddedPrediction={step.embeddedPrediction}
       onReadyChange={setReady}
-      onPredictPhaseChange={(active, canSubmit) => {
-        setPredictPhase(active);
-        setCanSubmitPredict(canSubmit);
-      }}
-      onRegisterPredict={(submit) => {
-        predictSubmitRef.current = submit;
-      }}
     />
   );
 
   return (
     <div data-testid="lesson-reveal-step">
-      <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage} />
+      <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
+        <p className="text-center text-base text-ink-muted">
+          <MathRenderer text={equation} />
+        </p>
+      </StageShell>
     </div>
   );
 }

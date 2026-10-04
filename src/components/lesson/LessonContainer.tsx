@@ -610,12 +610,8 @@ function LessonContainerBody({
     (currentStep.type === "interactive_tool" && currentStep.layout === undefined);
   const hasWhy = feedback === "correct" && Boolean(getHelpNode(buildHelpRoute(currentStep, feedback), "why"));
   const currentAttempt = stepAttempts[currentStep.id];
-  const hasEmbeddedPrediction =
-    (currentStep.type === "narrate" || currentStep.type === "reveal") &&
-    "embeddedPrediction" in currentStep &&
-    Boolean(currentStep.embeddedPrediction);
   const canResetStep =
-    (isQuizStep(currentStep) || hasEmbeddedPrediction) &&
+    isQuizStep(currentStep) &&
     currentAttempt !== undefined &&
     !("optional" in currentStep && currentStep.optional);
   const stepMountKey = `${currentStep.id}:${stepRemountKey[currentStep.id] ?? 0}`;
