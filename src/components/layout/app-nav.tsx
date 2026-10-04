@@ -11,7 +11,7 @@ export function AppNav() {
 
   return (
     <nav
-      className="hidden items-center gap-1 rounded-full border border-border bg-paper/70 p-1 md:flex"
+      className="flex items-center gap-1 rounded-full border border-border bg-paper/70 p-1"
       aria-label="Secciones principales"
       data-testid="app-nav"
     >

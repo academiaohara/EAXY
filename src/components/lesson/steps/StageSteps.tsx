@@ -199,7 +199,7 @@ export function PredictStepView({
                   disabled={disabled || checked}
                   onClick={() => setChoiceId(choice.id)}
                   className={cn(
-                    "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition touch-manipulation",
+                    "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
                     choiceId === choice.id
                       ? "border-cobalt bg-cobalt-tint"
                       : "border-slate-200 hover:border-cobalt/30",

@@ -100,10 +100,9 @@ Trigger: fin de intento | cron | acción del profesor
 ### Sesión en vivo
 
 ```
-Profesor inicia sesión → alumnos se unen (código o enlace)
-  → profesor lanza pregunta
-  → modo móvil: alumno responde → attempt + live_session_response
-  → modo manual: profesor marca por alumno → attempt + live_session_response
+Profesor inicia sesión en ordenador
+  → profesor lanza pregunta (proyectable)
+  → profesor marca por alumno → attempt + live_session_response
   → agregación en tiempo real para el dashboard del profesor
   → al cerrar: mastery actualizado igual que cualquier otro intento
 ```
@@ -120,10 +119,9 @@ src/
 │   │   ├── curso/
 │   │   ├── practicar/
 │   │   └── progreso/
-│   ├── (teacher)/           # rutas del profesor
+│   ├── (teacher)/           # rutas del profesor (escritorio)
 │   │   ├── aulas/
-│   │   └── sesiones/
-│   ├── (live)/              # UI mínima para sesión en vivo (móvil)
+│   │   └── sesiones/        # panel host sesión en vivo
 │   ├── actions/             # Server Actions agrupadas por dominio
 │   └── api/                 # Route handlers puntuales
 ├── components/

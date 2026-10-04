@@ -3,7 +3,6 @@ import { LogOutIcon } from "lucide-react";
 import { AppNav } from "@/components/layout/app-nav";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { GuestProgressBanner } from "@/components/layout/guest-progress-banner";
-import { MobileNav } from "@/components/layout/mobile-nav";
 import { signOut } from "@/lib/auth/adult-actions";
 import { getSessionUser } from "@/lib/auth/session";
 import { Button } from "@/components/ui/button";
@@ -92,10 +91,9 @@ export async function AppShell({ children }: AppShellProps) {
         </header>
       </div>
 
-      <main className="flex min-h-0 flex-1 flex-col overflow-hidden pb-20 md:pb-0 [&:has([data-testid=interactive-lesson-layout])]:pb-0">
+      <main className="flex min-h-0 flex-1 flex-col overflow-hidden [&:has([data-testid=interactive-lesson-layout])]:pb-0">
         {children}
       </main>
-      <MobileNav />
     </div>
   );
 }

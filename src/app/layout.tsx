@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { DesktopOnlyGate } from "@/components/layout/desktop-only-gate";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -35,7 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="es"
       className={`${plusJakarta.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-ink">{children}</body>
+      <body className="min-h-full bg-paper text-ink">
+        <DesktopOnlyGate>{children}</DesktopOnlyGate>
+      </body>
     </html>
   );
 }

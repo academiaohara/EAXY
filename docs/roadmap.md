@@ -123,23 +123,21 @@ Profesor configura regla de refuerzo; el sistema asigna automáticamente cuando 
 
 ## Fase 5 — Sesiones en vivo
 
-**Objetivo:** Kahoot integrado con dos modos (móvil y manual).
+**Objetivo:** Kahoot integrado en modo manual (profesor marca en ordenador; sin respuestas desde móvil).
 
 ### Entregables
 
-- [ ] Tablas: `live_sessions`, `live_session_questions`, `live_session_participants`, `live_session_responses`
+- [ ] Tablas: `live_sessions`, `live_session_questions`, `live_session_responses`
 - [ ] Supabase Realtime: canal por sesión
-- [ ] Modo móvil: alumno responde → attempt
 - [ ] Modo manual: profesor marca → attempt (`submitted_by=teacher`)
 - [ ] UI profesor: panel host, resultados agregados
-- [ ] UI alumno móvil: `/sesion/[sid]/pregunta`
 - [ ] Post-sesión: resumen + acción «asignar refuerzo»
 - [ ] Integración con assignment-rules post-sesión (opcional)
 
 ### Tests
 
 - Vitest: agregación, transiciones de estado
-- E2E: sesión completa modo móvil; sesión modo manual
+- E2E: sesión completa modo manual
 
 ### Criterio de éxito
 
@@ -157,13 +155,13 @@ Profesor lanza sesión; alumnos responden; mastery se actualiza; profesor ve res
 - [ ] Panel admin básico para publicar ejercicios
 - [ ] Más widgets: `ordering`, `drag_match`
 - [ ] Accesibilidad: ARIA, teclado, contraste
-- [ ] Responsive completo (móvil, tablet)
+- [ ] Layout pulido en escritorio (≥768px; sin soporte móvil)
 - [ ] Optimización: índices BD, cache de recomendaciones
 - [ ] CI: lint + test + validate exercises + E2E en PR
 
 ### Criterio de éxito
 
-Curso de 1º ESO publicado; usable en móvil; CI verde.
+Curso de 1º ESO publicado; experiencia sólida en escritorio; CI verde.
 
 ---
 

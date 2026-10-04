@@ -342,7 +342,7 @@ Auditoría de cada evaluación.
 | classroom_id | uuid FK            |                                                                                   |
 | host_id      | uuid FK → profiles | profesor                                                                          |
 | concept_id   | uuid FK            | foco principal                                                                    |
-| mode         | enum               | `mobile`, `manual`                                                                |
+| mode         | enum               | `manual` (único; plataforma sin móvil)                                            |
 | status       | enum               | `lobby`, `active`, `question`, `results`, `ended`                                 |
 | join_code    | text               | 6 caracteres                                                                      |
 | settings     | jsonb              | `feedback_timing`: `on_close` (default) \| `immediate`; tiempo por pregunta, etc. |
@@ -368,7 +368,7 @@ Auditoría de cada evaluación.
 | live_session_id | uuid FK                                |
 | student_id      | uuid FK                                |
 | joined_at       | timestamptz                            |
-| device_mode     | enum: `mobile`, `absent` (modo manual) |
+| presence        | enum: `present`, `absent` (lista del aula en sesión manual) |
 
 ### `live_session_responses`
 
@@ -419,7 +419,7 @@ Las recomendaciones se calculan on-demand, pero conviene persistir explicaciones
 'auto' | 'approval' | 'manual'
 
 -- live_session_mode
-'mobile' | 'manual'
+'manual'
 ```
 
 ## Migraciones y seeds

@@ -11,3 +11,4 @@ alwaysApply: true
 - Tests unitarios con Vitest en `src/tests/unit/`
 - Tests E2E con Playwright en `e2e/`
 - Alias de importación: `@/*` → `src/*`
+- **Solo escritorio:** sin soporte móvil; ver `.cursor/rules/desktop-only.mdc`

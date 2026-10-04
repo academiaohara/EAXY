@@ -14,7 +14,7 @@ Plan técnico de Eaxy — plataforma de aprendizaje adaptativo de matemáticas.
 | [classrooms.md](./classrooms.md)             | Aulas, asignaciones, vistas profesor/alumno    |
 | [recommendations.md](./recommendations.md)   | Motor de recomendaciones explicables           |
 | [assignment-rules.md](./assignment-rules.md) | Reglas de asignación automática                |
-| [live-sessions.md](./live-sessions.md)       | Sesiones en vivo (móvil y manual)              |
+| [live-sessions.md](./live-sessions.md)       | Sesiones en vivo (modo manual, solo escritorio) |
 | [security.md](./security.md)                 | Auth, RLS, permisos                            |
 | [roadmap.md](./roadmap.md)                   | Fases de implementación                        |
 

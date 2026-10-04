@@ -86,7 +86,7 @@ Esto permite:
 | ----------------------------------- | ------------------------------------- |
 | Ejercicio en modo personal          | Sí                                    |
 | Ejercicio en asignación             | Sí (`source=assignment`)              |
-| Respuesta en sesión en vivo (móvil) | Sí (`source=live_session`)            |
+| Respuesta en sesión en vivo (manual) | Sí (`source=live_session`)            |
 | Marca manual del profesor en sesión | Sí (`submitted_by=teacher`)           |
 | Ver un vídeo sin evaluación         | No (solo evento de progreso opcional) |
 | Abrir una lección sin ejercicio     | No                                    |
