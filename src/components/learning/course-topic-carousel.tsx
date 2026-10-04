@@ -32,8 +32,8 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
   );
 
   const wrapperClassName = cn(
-    "group flex min-h-[4.5rem] min-w-0 flex-1 items-center py-1",
-    side === "left" ? "justify-start sm:justify-end sm:pr-2" : "justify-end sm:justify-start sm:pl-2",
+    "group flex min-h-[4.5rem] items-center py-1",
+    side === "left" ? "justify-start" : "justify-end",
     href && "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
   );
 
@@ -104,19 +104,17 @@ export function CourseTopicCarousel({
         </Link>
       </div>
 
-      <div className="relative mt-5 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 sm:gap-4">
-        <div className="min-w-0">
-          {prev ? (
+      <div className="relative mt-5 flex min-h-[4.5rem] items-center justify-center px-10 sm:px-14">
+        {prev ? (
+          <div className="absolute left-0 top-1/2 z-20 -translate-y-1/2">
             <SideTopic
               href={prevHref}
               moduleNumber={activeModuleNumber - 1}
               title={prev.title}
               side="left"
             />
-          ) : (
-            <div className="min-h-[4.5rem]" aria-hidden />
-          )}
-        </div>
+          </div>
+        ) : null}
 
         <div className="relative z-10 flex min-w-[8.5rem] flex-col items-center px-2 text-center sm:min-w-[10rem]">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
@@ -133,18 +131,16 @@ export function CourseTopicCarousel({
           </h1>
         </div>
 
-        <div className="min-w-0">
-          {next ? (
+        {next ? (
+          <div className="absolute right-0 top-1/2 z-20 -translate-y-1/2">
             <SideTopic
               href={nextHref}
               moduleNumber={activeModuleNumber + 1}
               title={next.title}
               side="right"
             />
-          ) : (
-            <div className="min-h-[4.5rem]" aria-hidden />
-          )}
-        </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );
