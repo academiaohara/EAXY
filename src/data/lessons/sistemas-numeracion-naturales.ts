@@ -56,12 +56,18 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       scene: "redondeo-corte",
       title: "Practica el corte",
       layout: "stack",
+      content: [
+        "Pulsa el **último dígito que se conserva** al redondear al orden pedido. A su derecha irán ceros; si la primera cifra que quitas es 5 o mayor, suma 1 a la cifra anterior.",
+      ],
       roundingExercise: { n: 4587, orderId: "decenas" },
     },
     {
       id: "redondeo-escribir",
       type: "fill_in_blank",
       title: "Escribe el redondeo",
+      content: [
+        "Para redondear a los **millares**, fíjate en la cifra de **centenas**: si es 5 o mayor, el millar sube; si es menor que 5, se mantiene.",
+      ],
       question: "Redondea $24\\,963$ a los millares. Escribe el número (puedes usar o no espacios).",
       correctAnswers: ["25000", "25 000", "25.000"],
       hint: "Mira la cifra de centenas ($9$). ¿Es 5 o mayor?",

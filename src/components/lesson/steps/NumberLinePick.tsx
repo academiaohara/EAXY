@@ -10,7 +10,6 @@ import {
   numberLineTicks,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
-import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
 import type { NumberLinePickSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { NumberLinePickStep } from "@/lib/lesson/types";
 
@@ -117,7 +116,6 @@ export function NumberLinePick({
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-number-line-pick">
-      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       <div
         ref={trackRef}
         role="slider"

@@ -15,7 +15,6 @@ import {
   isFractionPickCorrect,
 } from "@/lib/lesson/practice-check";
 import { cn } from "@/lib/utils";
-import { PracticeSavedNotice } from "@/components/lesson/steps/PracticeSavedNotice";
 import type { FractionPickSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { FractionPickStep } from "@/lib/lesson/types";
 
@@ -102,7 +101,6 @@ export function FractionPick({
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fraction-pick">
-      {restored ? <PracticeSavedNotice isCorrect={restored.isCorrect} /> : null}
       {step.adjustableParts ? (
         <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-ink sm:text-base">
           <span>Divide {UNIT_NAME[step.shape]} en</span>
