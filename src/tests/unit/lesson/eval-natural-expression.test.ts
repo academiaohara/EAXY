@@ -22,6 +22,8 @@ describe("evalWithParenthesisPlacement", () => {
   it("acepta colocaciones válidas que dan 5", () => {
     expect(isValidParenthesisPlacement(tokens, 1, 4)).toBe(true);
     expect(evalWithParenthesisPlacement(tokens, 1, 4)).toBe(5);
+    expect(isValidParenthesisPlacement(tokens, -1, 4)).toBe(true);
+    expect(evalWithParenthesisPlacement(tokens, -1, 4)).toBe(11);
   });
 
   it("rechaza paréntesis incompletos", () => {

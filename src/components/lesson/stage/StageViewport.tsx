@@ -6,13 +6,15 @@ import type { ReactNode } from "react";
 
 type StageViewportProps = {
   theme: LessonStageTheme;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
+  /** Teoría o definición encima del escenario */
+  header?: ReactNode;
   /** Área del módulo SVG / animación */
   stage?: ReactNode;
 };
 
-export function StageViewport({ theme, children, className, stage }: StageViewportProps) {
+export function StageViewport({ theme, children, className, header, stage }: StageViewportProps) {
   return (
     <div
       className={cn(
@@ -22,6 +24,7 @@ export function StageViewport({ theme, children, className, stage }: StageViewpo
       )}
       data-lesson-stage-theme={theme}
     >
+      {header}
       {stage ? (
         <div
           className={cn(

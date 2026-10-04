@@ -646,6 +646,21 @@
 
 /* --- Teoría: ideas que entran, términos que se pueden preguntar ----------- */
 
+@keyframes lesson-price-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 6px) scale(0.85);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -28px) scale(1);
+  }
+}
+
 @keyframes lesson-idea-enter {
   from {
     opacity: 0;
