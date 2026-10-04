@@ -32,9 +32,10 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
   );
 
   const wrapperClassName = cn(
-    "group flex min-h-[4.5rem] items-center py-1",
-    side === "left" ? "justify-start" : "justify-end",
-    href && "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
+    "group flex size-[4.75rem] items-center justify-center rounded-2xl border border-slate-200/50 bg-white/30 shadow-sm backdrop-blur-sm transition-[border-color,background-color,box-shadow] sm:size-[5.5rem]",
+    href
+      ? "hover:border-cobalt/25 hover:bg-white/70 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40"
+      : "pointer-events-none border-transparent bg-transparent shadow-none",
   );
 
   if (!href) {
@@ -104,44 +105,46 @@ export function CourseTopicCarousel({
         </Link>
       </div>
 
-      <div className="relative mt-5 min-h-[4.5rem]">
-        {prev ? (
-          <div className="absolute inset-y-0 -left-4 z-20 flex items-center sm:-left-8">
+      <div className="relative mt-5 grid min-h-[4.5rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 sm:gap-6">
+        <div className="flex justify-center">
+          {prev ? (
             <SideTopic
               href={prevHref}
               moduleNumber={activeModuleNumber - 1}
               title={prev.title}
               side="left"
             />
-          </div>
-        ) : null}
+          ) : (
+            <div className="size-[4.75rem] shrink-0 sm:size-[5.5rem]" aria-hidden />
+          )}
+        </div>
 
-        {next ? (
-          <div className="absolute inset-y-0 -right-4 z-20 flex items-center sm:-right-8">
+        <div className="relative z-10 flex min-w-0 flex-col items-center px-1 text-center sm:px-2">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
+            Tema {activeModuleNumber} de {sorted.length}
+          </p>
+          <p
+            className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
+            data-testid="topic-carousel-active-number"
+          >
+            {String(activeModuleNumber).padStart(2, "0")}
+          </p>
+          <h1 className="mt-3 max-w-[14rem] font-heading text-base font-semibold leading-snug text-ink sm:max-w-[18rem] sm:text-lg">
+            {activeTitle}
+          </h1>
+        </div>
+
+        <div className="flex justify-center">
+          {next ? (
             <SideTopic
               href={nextHref}
               moduleNumber={activeModuleNumber + 1}
               title={next.title}
               side="right"
             />
-          </div>
-        ) : null}
-
-        <div className="flex items-center justify-center px-14 sm:px-16">
-          <div className="relative z-10 flex min-w-[8.5rem] flex-col items-center px-2 text-center sm:min-w-[10rem]">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
-              Tema {activeModuleNumber} de {sorted.length}
-            </p>
-            <p
-              className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
-              data-testid="topic-carousel-active-number"
-            >
-              {String(activeModuleNumber).padStart(2, "0")}
-            </p>
-            <h1 className="mt-3 max-w-[14rem] font-heading text-base font-semibold leading-snug text-ink sm:max-w-[18rem] sm:text-lg">
-              {activeTitle}
-            </h1>
-          </div>
+          ) : (
+            <div className="size-[4.75rem] shrink-0 sm:size-[5.5rem]" aria-hidden />
+          )}
         </div>
       </div>
     </section>
