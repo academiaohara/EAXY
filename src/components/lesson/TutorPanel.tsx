@@ -5,6 +5,7 @@ import { ChevronLeftIcon, MessageCircleQuestionIcon, XIcon } from "lucide-react"
 import { MathBlockList, MathRenderer } from "@/components/lesson/MathRenderer";
 import { LessonVisualView } from "@/components/lesson/visuals/LessonVisualView";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
+import { Button } from "@/components/ui/button";
 import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import type { HelpNode, HelpOption } from "@/lib/lesson/help-route";
@@ -207,16 +208,18 @@ export function TutorPanel({
               Pulsa un mensaje y te explico lo que quieras
             </p>
           </div>
-          <button
+          <Button
             ref={closeRef}
             type="button"
+            variant="ghost"
+            size="icon-lg"
             onClick={onClose}
-            className="flex size-9 shrink-0 items-center justify-center rounded-full text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-800"
+            className="rounded-full text-ink-muted hover:bg-cobalt-tint hover:text-cobalt active:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_18%)] active:text-cobalt"
             aria-label={`Cerrar el panel de ${TUTOR_NICKNAME}`}
             data-testid="tutor-panel-close"
           >
             <XIcon className="size-5" />
-          </button>
+          </Button>
         </header>
 
         <div
