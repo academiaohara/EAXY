@@ -4,10 +4,35 @@ export type StepType =
   | "concept"
   | "animated_solution"
   | "interactive_tool"
+  | "narrate"
+  | "predict"
+  | "explore"
+  | "reveal"
   | "fill_in_blank"
   | "fraction_pick"
   | "classify"
   | "number_line_pick";
+
+export type LessonStageTheme = "paper" | "board";
+
+export type LessonStageConfig = {
+  theme: LessonStageTheme;
+};
+
+export type StageModuleId = "tienda-ciclista" | "bloques-numericos" | "piramide-reduccion";
+
+export type TiendaCiclistaItem = {
+  id: string;
+  label: string;
+  price: number;
+};
+
+export type StageStepFields = {
+  /** Definición breve en caja destacada (estilo diapositiva del profesor). */
+  definitionBox?: string;
+  /** No cuenta para estrellas; se puede saltar sin bloquear la lección. */
+  optional?: boolean;
+};
 
 /**
  * Cómo se reparte el paso en pantalla:
@@ -298,13 +323,93 @@ export type NumberLinePickStep = LessonStepBase &
 
 export type PracticeStep = FillInBlankStep | FractionPickStep | ClassifyStep | NumberLinePickStep;
 
-export type LessonStep = ConceptStep | AnimatedSolutionStep | InteractiveToolStep | PracticeStep;
+export type NarrateStep = LessonStepBase &
+  StageStepFields & {
+    type: "narrate";
+    module: StageModuleId;
+    scene: string;
+    /** Configuración para `tienda-ciclista`. */
+    tienda?: {
+      items: TiendaCiclistaItem[];
+      wallet?: number;
+      /** Importe pagado en escena de resta (p. ej. $693$ € en la diapositiva). */
+      spendAmount?: number;
+      mode: "sumar-cesta" | "restar-cartera";
+    };
+    /** Configuración para `piramide-reduccion`. */
+    piramide?: {
+      variant: "dual-parentesis";
+    };
+  };
+
+export type PredictChoice = { id: string; label: string };
+
+export type PredictStep = LessonStepBase &
+  StageStepFields &
+  PracticeFields & {
+    type: "predict";
+    mode: "numeric" | "choice";
+    correctAnswers?: string[];
+    choices?: PredictChoice[];
+    correctChoiceId?: string;
+    /** Tras responder, reproducir escena de refuerzo (p. ej. suma completa). */
+    module?: StageModuleId;
+    scene?: string;
+    tienda?: NarrateStep["tienda"];
+  };
+
+export type ExploreGoal =
+  | {
+      kind: "wallet-remainder";
+      wallet: number;
+      /** Queda estrictamente menos que este valor. */
+      maxRemainder: number;
+    }
+  | {
+      kind: "expression-result";
+      /** Expresión base con tokens separados por espacios, p. ej. "9 - 1 + 3". */
+      tokens: string[];
+      target: number;
+    };
+
+export type ExploreStep = LessonStepBase &
+  StageStepFields &
+  PracticeFields & {
+    type: "explore";
+    module: StageModuleId;
+    scene: string;
+    goal: ExploreGoal;
+    tienda?: {
+      items: TiendaCiclistaItem[];
+      wallet: number;
+    };
+  };
+
+export type RevealStep = LessonStepBase &
+  StageStepFields & {
+    type: "reveal";
+    module: "bloques-numericos";
+    scene: "conmutativa" | "asociativa";
+    blocks: number[];
+    equationHighlight?: string;
+  };
+
+export type StageStep = NarrateStep | PredictStep | ExploreStep | RevealStep;
+
+export type LessonStep =
+  | ConceptStep
+  | AnimatedSolutionStep
+  | InteractiveToolStep
+  | StageStep
+  | PracticeStep;
 
 export type InteractiveLesson = {
   slug: string;
   title: string;
   subtitle: string;
   steps: LessonStep[];
+  /** Contenedor visual de escenario (tema paper/board). */
+  stage?: LessonStageConfig;
 };
 
 export type FeedbackStatus = "correct" | "incorrect";
@@ -314,12 +419,32 @@ const PRACTICE_TYPES: ReadonlySet<StepType> = new Set([
   "fraction_pick",
   "classify",
   "number_line_pick",
+  "predict",
+  "explore",
 ]);
 
-export function isQuizStep(step: LessonStep): step is PracticeStep {
+export function isQuizStep(
+  step: LessonStep,
+): step is PracticeStep | PredictStep | ExploreStep {
   return PRACTICE_TYPES.has(step.type);
+}
+
+export function isStarStep(step: LessonStep): boolean {
+  if ("optional" in step && step.optional) {
+    return false;
+  }
+  return isQuizStep(step);
 }
 
 export function isPassiveStep(step: LessonStep): boolean {
   return !isQuizStep(step);
+}
+
+export function isStageStep(step: LessonStep): step is StageStep {
+  return (
+    step.type === "narrate" ||
+    step.type === "predict" ||
+    step.type === "explore" ||
+    step.type === "reveal"
+  );
 }

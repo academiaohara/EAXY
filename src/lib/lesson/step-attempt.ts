@@ -27,11 +27,27 @@ export type NumberLinePickSnapshot = {
   isCorrect: boolean;
 };
 
+export type PredictSnapshot = {
+  kind: "predict";
+  numericValue?: string;
+  choiceId?: string;
+  isCorrect: boolean;
+  revealPlayed?: boolean;
+};
+
+export type ExploreSnapshot = {
+  kind: "explore";
+  goalMet: boolean;
+  isCorrect: boolean;
+};
+
 export type PracticeStepSnapshot =
   | FillInBlankSnapshot
   | FractionPickSnapshot
   | ClassifySnapshot
-  | NumberLinePickSnapshot;
+  | NumberLinePickSnapshot
+  | PredictSnapshot
+  | ExploreSnapshot;
 
 export type StepAttemptRecord = {
   feedback: FeedbackStatus;
