@@ -106,7 +106,7 @@ export function CourseTopicCarousel({
 
       <div className="relative mt-5 min-h-[4.5rem]">
         {prev ? (
-          <div className="absolute inset-y-0 left-0 z-20 flex items-center">
+          <div className="absolute inset-y-0 -left-4 z-20 flex items-center sm:-left-8">
             <SideTopic
               href={prevHref}
               moduleNumber={activeModuleNumber - 1}
@@ -117,7 +117,7 @@ export function CourseTopicCarousel({
         ) : null}
 
         {next ? (
-          <div className="absolute inset-y-0 right-0 z-20 flex items-center">
+          <div className="absolute inset-y-0 -right-4 z-20 flex items-center sm:-right-8">
             <SideTopic
               href={nextHref}
               moduleNumber={activeModuleNumber + 1}
