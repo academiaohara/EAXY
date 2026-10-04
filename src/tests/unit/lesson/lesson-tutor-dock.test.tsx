@@ -3,12 +3,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
 
-vi.mock("@/lib/lesson/tutor-voice", () => ({
-  primeTutorVoice: vi.fn(),
-  stopTutorVoice: vi.fn(),
-  speakTutorVoice: vi.fn(() => Promise.resolve()),
-}));
-
 const SPEECH_KEY = "step-1:none";
 const MESSAGES = ["¡Muy bien!", "Lo has clavado."];
 
