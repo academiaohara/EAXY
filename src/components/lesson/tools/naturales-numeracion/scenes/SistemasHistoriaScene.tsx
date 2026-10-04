@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   EgyptianNumeralIcon,
+  egyptianSymbolsToInt,
   type EgyptianSymbolId,
 } from "@/components/lesson/tools/naturales-numeracion/EgyptianNumeralIcon";
 import { TallyMarksView } from "@/components/lesson/tools/naturales-numeracion/scenes/TallyMarksView";
@@ -23,13 +24,10 @@ const EGYPT_SYMBOLS: {
   value: number;
   name: string;
 }[] = [
-  { id: "stroke-1", value: 1, name: "Unidad" },
-  { id: "heel-10", value: 10, name: "Decena" },
-  { id: "coil-100", value: 100, name: "Centena" },
-  { id: "lotus-1000", value: 1_000, name: "Millar" },
-  { id: "finger-10000", value: 10_000, name: "Decena de millar" },
-  { id: "tadpole-100000", value: 100_000, name: "Centena de millar" },
-  { id: "god-1000000", value: 1_000_000, name: "Millón" },
+  { id: "1", value: 1, name: "Unidad" },
+  { id: "10", value: 10, name: "Decena" },
+  { id: "100", value: 100, name: "Centena" },
+  { id: "1000", value: 1_000, name: "Millar" },
 ];
 
 const ROMAN_KEYS: { key: string; value: number }[] = [
@@ -55,14 +53,15 @@ type SistemasHistoriaSceneProps = {
 export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaSceneProps) {
   const [tab, setTab] = useState<TabId>("tally");
   const [tallyCount, setTallyCount] = useState(0);
-  const [egyptTotal, setEgyptTotal] = useState(0);
+  const [egyptSymbols, setEgyptSymbols] = useState<EgyptianSymbolId[]>([]);
   const [romanStr, setRomanStr] = useState("");
 
+  const egyptValue = useMemo(() => egyptianSymbolsToInt(egyptSymbols), [egyptSymbols]);
   const romanValue = useMemo(() => romanToInt(romanStr), [romanStr]);
 
   const done = {
     tally: tallyCount >= TARGETS.tally,
-    egypt: egyptTotal === TARGETS.egypt,
+    egypt: egyptValue === TARGETS.egypt,
     roman: romanValue === TARGETS.roman,
   };
 
@@ -133,15 +132,15 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
       {tab === "egypt" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Pulsa un símbolo para sumar su valor en decimal. Construye exactamente{" "}
-            <strong className="text-ink">{TARGETS.egypt}</strong>.
+            Forma <strong className="text-ink">{TARGETS.egypt}</strong> con símbolos egipcios. Cada pulso añade un
+            signo; el número es la <strong>suma</strong> de todos (como las letras romanas, pero sin restas).
           </p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {EGYPT_SYMBOLS.map((sym) => (
               <button
                 key={sym.id}
                 type="button"
-                onClick={() => setEgyptTotal((t) => t + sym.value)}
+                onClick={() => setEgyptSymbols((s) => [...s, sym.id])}
                 className="flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
               >
                 <EgyptianNumeralIcon id={sym.id} className="h-12" />
@@ -154,11 +153,31 @@ export function SistemasHistoriaScene({ onReadyChange }: SistemasHistoriaScenePr
               </button>
             ))}
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3">
-            <span className="text-sm text-ink-muted">Total en decimal</span>
-            <span className="text-2xl font-bold tabular-nums text-ink">{egyptTotal}</span>
-            <Button type="button" variant="outline" size="sm" onClick={() => setEgyptTotal(0)}>
-              Empezar de cero
+          <div className="grid gap-3 rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+            <div
+              className="flex min-h-14 flex-wrap items-center justify-center gap-1.5 sm:justify-start"
+              aria-live="polite"
+            >
+              {egyptSymbols.length === 0 ? (
+                <span className="text-2xl text-amber-900/40">—</span>
+              ) : (
+                egyptSymbols.map((id, index) => (
+                  <EgyptianNumeralIcon key={`${id}-${index}`} id={id} className="h-11" />
+                ))
+              )}
+            </div>
+            <div className="text-center sm:text-right">
+              <p className="text-xs uppercase tracking-wide text-amber-800">Valor decimal</p>
+              <p className="text-3xl font-bold tabular-nums text-amber-950">{egyptValue}</p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="sm:col-span-2 sm:justify-self-end"
+              onClick={() => setEgyptSymbols([])}
+            >
+              Borrar
             </Button>
           </div>
         </div>
