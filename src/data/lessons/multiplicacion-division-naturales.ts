@@ -5,7 +5,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
   slug: "multiplicacion-division-naturales",
   title: "4. Multiplicación y división",
   subtitle: TEMA_1_SUBTITLE,
-  stage: { theme: "paper" },
+  stage: { theme: "board" },
   steps: [
     {
       id: "multiplicar-narrate",
@@ -34,6 +34,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       scene: "multiplicar-conteo",
       mulDiv: { scene: "multiplicar-conteo", a: 8, b: 5 },
       explanation: "$8 + 8 + 8 + 8 + 8 = 8 \\cdot 5 = 40$ €.",
+    },
+    {
+      id: "multiplicacion-mano-narrate",
+      type: "narrate",
+      title: "Multiplicar a mano",
+      definitionBox:
+        "Con **varias cifras**, multiplica por cada cifra del segundo factor y **suma** las filas (desplazando cuando corresponda).",
+      module: "mul-div-naturales",
+      scene: "multiplicacion-mano",
+      mulDiv: { scene: "multiplicacion-mano", a: 34, b: 12 },
     },
     {
       id: "conmutativa-reveal",
@@ -129,6 +139,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       scene: "reparto-igual",
       mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
       explanation: "$150 : 6 = 25$. Comprueba: $6 \\cdot 25 = 150$.",
+    },
+    {
+      id: "division-mano-narrate",
+      type: "narrate",
+      title: "Dividir a mano",
+      definitionBox:
+        "En la división **cifra a cifra**: escribe el cociente, multiplica, resta y **baja** la siguiente cifra del dividendo.",
+      module: "mul-div-naturales",
+      scene: "division-mano",
+      mulDiv: { scene: "division-mano", dividend: 150, divisor: 6 },
     },
     {
       id: "dividir-explore",

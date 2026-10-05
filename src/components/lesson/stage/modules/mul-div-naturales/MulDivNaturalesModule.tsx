@@ -5,6 +5,11 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { MulDivConfig, MulDivNaturalesScene } from "@/lib/lesson/types";
+import {
+  DivisionIdentidadScene,
+  DivisionManoScene,
+  MultiplicacionManoScene,
+} from "@/components/lesson/stage/modules/mul-div-naturales/EscolarAlgorithmViews";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
@@ -74,10 +79,12 @@ function TicketFan({ count, priceLabel }: { count: number; priceLabel?: string }
         {Array.from({ length: count }, (_, i) => (
           <TicketImage
             key={i}
+            className="transition-all duration-500 ease-out"
             style={{
-              transform: `rotate(${(i - (count - 1) / 2) * 10}deg)`,
+              transform: `rotate(${(i - (count - 1) / 2) * 10}deg) scale(${i === count - 1 ? 1.05 : 1})`,
               marginLeft: i === 0 ? 0 : -28,
               zIndex: i,
+              opacity: 1,
             }}
           />
         ))}
@@ -595,65 +602,6 @@ function RepartoManual({
   );
 }
 
-function ExactaEntera({
-  autoPlay,
-  reduced,
-  onReadyChange,
-}: {
-  autoPlay?: boolean;
-  reduced: boolean;
-  onReadyChange?: (ready: boolean) => void;
-}) {
-  const [step, setStep] = useState(reduced ? 2 : 0);
-  const { push, clear } = useTimers();
-
-  useEffect(() => {
-    if (!autoPlay) {
-      setStep(2);
-      onReadyChange?.(true);
-      return;
-    }
-    if (reduced) {
-      setStep(2);
-      onReadyChange?.(true);
-      return;
-    }
-    onReadyChange?.(false);
-    setStep(0);
-    push(() => setStep(1), 800);
-    push(() => {
-      setStep(2);
-      onReadyChange?.(true);
-    }, 1600);
-    return clear;
-  }, [autoPlay, clear, onReadyChange, push, reduced]);
-
-  return (
-    <div className="grid gap-4 sm:grid-cols-2" aria-label="División exacta y división entera">
-      <div
-        className={cn(
-          "rounded-xl border-2 p-4 transition",
-          step >= 1 ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white",
-        )}
-      >
-        <p className="mb-2 text-sm font-semibold text-emerald-800">Exacta · resto $0$</p>
-        <MathRenderer text={`$150 = 6 \\cdot 25$`} />
-        <p className="mt-2 text-xs text-ink-muted">Verificación: $D = d \\cdot c$</p>
-      </div>
-      <div
-        className={cn(
-          "rounded-xl border-2 p-4 transition",
-          step >= 2 ? "border-amber-300 bg-amber-50" : "border-slate-200 bg-white opacity-60",
-        )}
-      >
-        <p className="mb-2 text-sm font-semibold text-amber-900">Entera · resto $\\neq 0$</p>
-        <MathRenderer text={`$43 = 8 \\cdot 5 + 3$`} />
-        <p className="mt-2 text-xs text-ink-muted">Verificación: $D = d \\cdot c + r$ con $r &lt; d$</p>
-      </div>
-    </div>
-  );
-}
-
 function PuenteMultDiv({
   a,
   b,
@@ -748,6 +696,28 @@ export function MulDivNaturalesModule({
         );
       case "multiplicar-conteo":
         return <MultiplicarConteo a={a} b={b} />;
+      case "multiplicacion-mano":
+        return (
+          <MultiplicacionManoScene
+            multiplicand={a}
+            multiplier={b}
+            autoPlay={autoPlay}
+            reduced={reduced}
+            onReadyChange={onReadyChange}
+            onAnimationComplete={onAnimationComplete}
+          />
+        );
+      case "division-mano":
+        return (
+          <DivisionManoScene
+            dividend={dividend}
+            divisor={divisor}
+            autoPlay={autoPlay}
+            reduced={reduced}
+            onReadyChange={onReadyChange}
+            onAnimationComplete={onAnimationComplete}
+          />
+        );
       case "puente-mult-div":
         return (
           <PuenteMultDiv
@@ -798,7 +768,11 @@ export function MulDivNaturalesModule({
         );
       case "exacta-entera":
         return (
-          <ExactaEntera autoPlay={autoPlay} reduced={reduced} onReadyChange={onReadyChange} />
+          <DivisionIdentidadScene
+            autoPlay={autoPlay}
+            reduced={reduced}
+            onReadyChange={onReadyChange}
+          />
         );
       default:
         return <p className="text-sm text-rose-700">Escena no configurada.</p>;
