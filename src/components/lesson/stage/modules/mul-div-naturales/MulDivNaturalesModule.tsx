@@ -26,6 +26,9 @@ export type MulDivNaturalesModuleProps = MulDivConfig & {
   onBoxCountsChange?: (counts: number[]) => void;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
+  /** Escena multiplicar-entradas: número de entradas visibles (5 → 6). */
+  ticketCount?: number;
+  onTicketCountChange?: (count: number) => void;
 };
 
 const COBALT = "#4353ff";
@@ -180,6 +183,71 @@ function useTimers() {
   }, []);
   useEffect(() => clear, [clear]);
   return { push, clear };
+}
+
+function ticketSumEquation(a: number, count: number) {
+  const sumParts = Array.from({ length: count }, () => String(a)).join(" + ");
+  const total = a * count;
+  return `$${sumParts} = ${a} \\cdot ${count} = ${total}$`;
+}
+
+function TicketRow({ count, price }: { count: number; price: number }) {
+  return (
+    <div
+      className="flex flex-wrap items-end justify-center gap-5 sm:gap-7"
+      aria-hidden={count === 0}
+    >
+      {Array.from({ length: count }, (_, i) => (
+        <div key={i} className="flex flex-col items-center gap-1.5">
+          <TicketImage
+            size="sm"
+            style={{ transform: `rotate(${TICKET_TILT_DEG}deg)` }}
+            className="transition-transform duration-500 ease-out"
+          />
+          <span className="font-mono text-xs font-bold text-[color:var(--stage-ink,#e8edf5)]">{price}€</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MultiplicarEntradas({
+  a,
+  initialCount,
+  ticketCount,
+  onTicketCountChange,
+}: {
+  a: number;
+  initialCount: number;
+  ticketCount: number;
+  onTicketCountChange: (count: number) => void;
+}) {
+  const count = Math.max(initialCount, ticketCount);
+  const total = a * count;
+
+  return (
+    <div className="space-y-5" aria-label={`${count} entradas de ${a} euros`}>
+      <TicketRow count={count} price={a} />
+      <p className={STAGE_MATH} aria-live="polite">
+        <MathRenderer text={ticketSumEquation(a, count)} />
+      </p>
+      <div className="flex flex-col items-center gap-2">
+        <SlideBadge>{total}€</SlideBadge>
+        <span className={STAGE_CAPTION}>{count} entradas</span>
+      </div>
+      {count === initialCount ? (
+        <div className="flex justify-center pt-1">
+          <button
+            type="button"
+            className="min-h-11 rounded-xl border-2 border-sky-400/80 bg-white/95 px-5 py-2.5 text-sm font-semibold text-ink shadow-sm transition hover:border-sky-500 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+            onClick={() => onTicketCountChange(initialCount + 1)}
+          >
+            +1 entrada
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function MultiplicarRepetido({
@@ -820,6 +888,8 @@ export function MulDivNaturalesModule({
   onBoxCountsChange,
   onReadyChange,
   onAnimationComplete,
+  ticketCount = 5,
+  onTicketCountChange,
 }: MulDivNaturalesModuleProps) {
   const reduced = useReducedMotion();
 
@@ -834,6 +904,15 @@ export function MulDivNaturalesModule({
             reduced={reduced}
             onReadyChange={onReadyChange}
             onAnimationComplete={onAnimationComplete}
+          />
+        );
+      case "multiplicar-entradas":
+        return (
+          <MultiplicarEntradas
+            a={a}
+            initialCount={b}
+            ticketCount={ticketCount}
+            onTicketCountChange={(next) => onTicketCountChange?.(next)}
           />
         );
       case "multiplicar-conteo":

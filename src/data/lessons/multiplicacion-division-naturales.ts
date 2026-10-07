@@ -8,32 +8,23 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     {
-      id: "multiplicar-narrate",
-      type: "narrate",
+      id: "multiplicar-interactivo",
+      type: "predict",
       title: "Multiplicar",
       definitionBox:
         "**Multiplicar** es una forma abreviada de **sumar varias veces el mismo número**.",
-      module: "mul-div-naturales",
-      scene: "multiplicar-repetido",
-      mulDiv: { scene: "multiplicar-repetido", a: 8, b: 5 },
-    },
-    {
-      id: "multiplicar-predict",
-      type: "predict",
-      title: "Antes de desplegarlas",
-      question:
-        "Una entrada al cine cuesta $8$ €. **Sin contar una a una**, ¿cuánto costarían $5$ entradas?",
+      question: "Ahora con $6$ entradas, ¿cuánto cuestan?",
       mode: "choice",
       choices: [
-        { id: "32", label: "$32$ €" },
         { id: "40", label: "$40$ €" },
+        { id: "48", label: "$48$ €" },
         { id: "56", label: "$56$ €" },
       ],
-      correctChoiceId: "40",
+      correctChoiceId: "48",
       module: "mul-div-naturales",
-      scene: "multiplicar-conteo",
-      mulDiv: { scene: "multiplicar-conteo", a: 8, b: 5 },
-      explanation: "$8 + 8 + 8 + 8 + 8 = 8 \\cdot 5 = 40$ €.",
+      scene: "multiplicar-entradas",
+      mulDiv: { scene: "multiplicar-entradas", a: 8, b: 5 },
+      explanation: "$8 \\cdot 6 = 8 \\cdot 5 + 8 = 48$ €.",
     },
     {
       id: "multiplicacion-mano-narrate",
