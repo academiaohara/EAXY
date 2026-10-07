@@ -40,6 +40,8 @@ export type StageModuleRenderProps = {
   onSelectedIdsChange?: (ids: string[]) => void;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
+  ticketCount?: number;
+  onTicketCountChange?: (count: number) => void;
 };
 
 export function StageModuleRenderer(props: StageModuleRenderProps) {
@@ -82,6 +84,8 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
         onBoxCountsChange={props.onBoxCountsChange}
         onReadyChange={onReadyChange}
         onAnimationComplete={props.onAnimationComplete}
+        ticketCount={props.ticketCount}
+        onTicketCountChange={props.onTicketCountChange}
       />
     );
   }

@@ -131,6 +131,19 @@ export function PredictStepView({
   const [checked, setChecked] = useState(Boolean(restored));
   const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
   const [reveal, setReveal] = useState(restored?.revealPlayed ?? false);
+  const isMultiplicarEntradas =
+    step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-entradas";
+  const entradasBase = step.mulDiv?.b ?? 5;
+  const [ticketCount, setTicketCount] = useState(() => {
+    if (restored?.ticketCount != null) {
+      return restored.ticketCount;
+    }
+    if (restored && isMultiplicarEntradas) {
+      return entradasBase + 1;
+    }
+    return entradasBase;
+  });
+  const showSixthQuestion = isMultiplicarEntradas && ticketCount > entradasBase;
 
   const runCheck = useCallback(() => {
     if (checked) {
@@ -153,9 +166,10 @@ export function PredictStepView({
         choiceId: step.mode === "choice" ? choiceId : undefined,
         isCorrect: correct,
         revealPlayed: true,
+        ticketCount: isMultiplicarEntradas ? ticketCount : undefined,
       },
     });
-  }, [checked, choiceId, numericValue, onCheck, step]);
+  }, [checked, choiceId, isMultiplicarEntradas, numericValue, onCheck, step, ticketCount]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -163,13 +177,23 @@ export function PredictStepView({
     }
     const canSubmit =
       step.mode === "numeric" ? numericValue.trim().length > 0 : Boolean(choiceId);
+    const entradasReady = !isMultiplicarEntradas || showSixthQuestion;
     return {
       label: "Comprobar",
       onClick: runCheck,
-      disabled: !canSubmit || disabled,
+      disabled: !canSubmit || disabled || !entradasReady,
       testId: "lesson-check-button",
     };
-  }, [checked, choiceId, disabled, numericValue, runCheck, step.mode]);
+  }, [
+    checked,
+    choiceId,
+    disabled,
+    isMultiplicarEntradas,
+    numericValue,
+    runCheck,
+    showSixthQuestion,
+    step.mode,
+  ]);
 
   useRegisterLessonStepControl(control);
 
@@ -182,6 +206,70 @@ export function PredictStepView({
         jerarquia={{ revealPlayed: reveal }}
       />
     ) : null;
+
+  if (isMultiplicarEntradas && step.mulDiv) {
+    const entradasStage = (
+      <StageModuleRenderer
+        module="mul-div-naturales"
+        stepId={step.id}
+        scene={step.scene ?? "multiplicar-entradas"}
+        mulDiv={{ ...step.mulDiv, scene: "multiplicar-entradas" }}
+        ticketCount={ticketCount}
+        onTicketCountChange={setTicketCount}
+      />
+    );
+
+    return (
+      <div data-testid="lesson-predict-step">
+        <StageShell
+          theme={theme}
+          definitionBox={step.definitionBox}
+          title={step.title}
+          stage={entradasStage}
+        >
+          {showSixthQuestion ? (
+            <>
+              <h3 className="lesson-idea-enter mb-4 text-center text-base font-semibold text-ink">
+                <MathRenderer text={step.question} />
+              </h3>
+              <div className="mx-auto flex max-w-md flex-col gap-2">
+                {(step.choices ?? []).map((choice) => (
+                  <button
+                    key={choice.id}
+                    type="button"
+                    disabled={disabled || checked}
+                    onClick={() => setChoiceId(choice.id)}
+                    className={cn(
+                      "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
+                      choiceId === choice.id
+                        ? "border-cobalt bg-cobalt-tint"
+                        : "border-slate-200 hover:border-cobalt/30",
+                    )}
+                    aria-pressed={choiceId === choice.id}
+                    aria-label={`${choice.id} euros`}
+                  >
+                    <MathRenderer text={choice.label} />
+                  </button>
+                ))}
+              </div>
+              {checked ? (
+                <div className="mt-4 space-y-2" role="status">
+                  <p className="text-center text-sm font-medium text-ink">
+                    {isCorrect ? "¡Correcto!" : "Casi: piensa en añadir una entrada más."}
+                  </p>
+                  {step.explanation ? (
+                    <p className="text-center text-sm text-ink-muted">
+                      <MathRenderer text={step.explanation} />
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
+            </>
+          ) : null}
+        </StageShell>
+      </div>
+    );
+  }
 
   if (step.module === "jerarquia-operaciones" && step.scene) {
     return (

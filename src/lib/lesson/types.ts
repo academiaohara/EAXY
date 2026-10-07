@@ -28,6 +28,7 @@ export type StageModuleId =
 
 export type MulDivNaturalesScene =
   | "multiplicar-repetido"
+  | "multiplicar-entradas"
   | "multiplicar-conteo"
   | "multiplicacion-mano"
   | "conmutativa-producto"

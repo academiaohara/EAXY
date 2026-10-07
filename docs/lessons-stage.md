@@ -93,7 +93,7 @@ Lista canónica: `STAGE_MODULE_REGISTRY` en `src/components/lesson/stage/StageMo
 | `tienda-ciclista` | `sumar-cesta`, `restar-cartera`, `explorar-compra` | `stage/modules/tienda-ciclista/` |
 | `bloques-numericos` | `conmutativa`, `asociativa` | `stage/modules/bloques-numericos/` |
 | `piramide-reduccion` | `dual-parentesis`, `explorar-parentesis` | `stage/modules/piramide-reduccion/` |
-| `mul-div-naturales` | `multiplicar-repetido`, `multiplicar-conteo`, `multiplicacion-mano`, `conmutativa-producto`, `asociativa-producto`, `distributiva-bloques`, `puente-mult-div`, `reparto-igual`, `division-mano`, `reparto-manual`, `exacta-entera` | `stage/modules/mul-div-naturales/` |
+| `mul-div-naturales` | `multiplicar-entradas`, `multiplicar-repetido`, `multiplicar-conteo`, `multiplicacion-mano`, `conmutativa-producto`, `asociativa-producto`, `distributiva-bloques`, `puente-mult-div`, `reparto-igual`, `division-mano`, `reparto-manual`, `exacta-entera` | `stage/modules/mul-div-naturales/` |
 
 Para añadir un módulo:
 
