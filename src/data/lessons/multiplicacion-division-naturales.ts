@@ -67,16 +67,28 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-predict",
       type: "predict",
-      title: "Dentro del paréntesis",
-      question: "¿Cuánto vale $8 \\cdot (5 + 2)$ **antes** de usar la propiedad distributiva?",
+      title: "Dos formas de calcularlo",
+      question:
+        "Compras $8$ menús. Cada menú cuesta $5$ € el bocadillo y $2$ € la bebida. ¿Cuánto pagas en total?",
       mode: "choice",
       choices: [
-        { id: "40", label: "$40$" },
-        { id: "56", label: "$56$" },
-        { id: "80", label: "$80$" },
+        {
+          id: "40",
+          label: "$40$ €",
+          incorrectFeedback: "Ese solo cuenta los bocadillos. Falta la bebida.",
+        },
+        { id: "56", label: "$56$ €" },
+        {
+          id: "80",
+          label: "$80$ €",
+          incorrectFeedback:
+            "Has multiplicado $8 \\cdot 10$; recuerda que cada menú cuesta $5 + 2 = 7$ €.",
+        },
       ],
       correctChoiceId: "56",
-      hint: "Primero suma lo del paréntesis: $5 + 2$.",
+      hint: "Suma lo que cuesta un menú completo: bocadillo más bebida.",
+      explanation:
+        "Puedes pensar: cada menú cuesta $5 + 2 = 7$ €, así que $8 \\cdot 7 = 56$ €. O también: $8 \\cdot 5 = 40$ € de bocadillos y $8 \\cdot 2 = 16$ € de bebidas, $40 + 16 = 56$ €. ¡Salen igual!",
     },
     {
       id: "distributiva-narrate",

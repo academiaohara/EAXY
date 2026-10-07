@@ -177,6 +177,13 @@ export function PredictStepView({
 
   useRegisterLessonStepControl(control);
 
+  const selectedChoice = (step.choices ?? []).find((choice) => choice.id === choiceId);
+  const checkFeedback = checked
+    ? isCorrect
+      ? step.explanation
+      : selectedChoice?.incorrectFeedback ?? step.hint
+    : null;
+
   const jerarquiaStage =
     step.module === "jerarquia-operaciones" && step.scene ? (
       <StageModuleRenderer
@@ -349,10 +356,25 @@ export function PredictStepView({
             ))}
           </div>
         )}
+        {checked && checkFeedback ? (
+          <div className="mt-5 space-y-2" role="status">
+            <p
+              className={cn(
+                "text-center text-sm font-medium",
+                isCorrect ? "text-emerald-800" : "text-amber-950",
+              )}
+            >
+              {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
+            </p>
+            <p className="text-center text-sm leading-relaxed text-ink-muted">
+              <MathRenderer text={checkFeedback} />
+            </p>
+          </div>
+        ) : null}
         {reveal ? (
           <div className="mt-6 space-y-3">
             {stageReveal}
-            {step.explanation && reveal ? (
+            {step.explanation && reveal && isCorrect && !checkFeedback ? (
               <p className="text-center text-sm text-ink-muted">
                 <MathRenderer text={step.explanation} />
               </p>
