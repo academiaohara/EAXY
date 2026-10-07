@@ -199,7 +199,7 @@ function MultiplicarSextaEntrada({
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const [fanCount, setFanCount] = useState(reduced ? totalCount : baseCount);
+  const [fanCount, setFanCount] = useState(reduced ? totalCount : 1);
   const { push, clear } = useTimers();
 
   useEffect(() => {
@@ -215,12 +215,13 @@ function MultiplicarSextaEntrada({
       return;
     }
     onReadyChange?.(false);
-    setFanCount(baseCount);
+    setFanCount(1);
+    push(() => setFanCount(baseCount), 550);
     push(() => {
       setFanCount(totalCount);
       onReadyChange?.(true);
       onAnimationComplete?.();
-    }, 700);
+    }, 1250);
     return clear;
   }, [
     autoPlay,
@@ -237,23 +238,42 @@ function MultiplicarSextaEntrada({
   const mathText =
     fanCount >= totalCount
       ? `${sumParts} = ?`
-      : `${Array.from({ length: baseCount }, () => String(a)).join(" + ")} = ${a} \\cdot ${baseCount} = ${a * baseCount}`;
+      : fanCount >= baseCount
+        ? `${sumParts} = ${a} \\cdot ${baseCount} = ${a * baseCount}`
+        : fanCount > 1
+          ? sumParts
+          : `${a}`;
+  const priceLabel =
+    fanCount >= totalCount ? "?" : fanCount >= baseCount ? `${a * baseCount}€` : `${a * fanCount}€`;
+  const fanCaption =
+    fanCount >= totalCount
+      ? `${totalCount} entradas`
+      : fanCount >= baseCount
+        ? `${baseCount} entradas`
+        : fanCount === 1
+          ? "1 entrada"
+          : `${fanCount} entradas`;
 
   return (
-    <div className="space-y-4" aria-label={`${fanCount} entradas de ${a} euros, total por calcular`}>
+    <div
+      className="space-y-4"
+      aria-label={
+        fanCount >= totalCount
+          ? `${totalCount} entradas de ${a} euros, total por calcular`
+          : fanCount >= baseCount
+            ? `${baseCount} entradas de ${a} euros, ${a * baseCount} euros en total`
+            : `${fanCount} entrada${fanCount === 1 ? "" : "s"} de ${a} euros`
+      }
+    >
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
         <div className="flex min-w-[7.5rem] flex-col items-center gap-2">
           <div className="flex h-[6.5rem] items-end">
             <TicketImage style={{ transform: `rotate(${TICKET_TILT_DEG}deg)` }} />
           </div>
           <SlideBadge>{a}€</SlideBadge>
-          <span className={STAGE_CAPTION}>Una entrada</span>
+          <span className={STAGE_CAPTION}>1 entrada</span>
         </div>
-        <TicketFan
-          count={fanCount}
-          priceLabel="?"
-          caption={fanCount >= totalCount ? `${totalCount} entradas` : `${baseCount} entradas`}
-        />
+        <TicketFan count={fanCount} priceLabel={priceLabel} caption={fanCaption} />
       </div>
       <p className={cn(STAGE_MATH, "transition-opacity duration-500")} aria-live="polite">
         <MathRenderer text={`$${mathText}$`} />
