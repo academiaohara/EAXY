@@ -362,15 +362,29 @@ export function PredictStepView({
         )}
         {checked && checkFeedback ? (
           <div className="mt-5 space-y-2" role="status">
-            {!isCorrect ? (
-              <p className="text-center text-sm font-medium text-amber-950">Revisa tu respuesta.</p>
-            ) : null}
+            <p
+              className={cn(
+                "text-center text-sm font-medium",
+                isCorrect ? "text-emerald-800" : "text-amber-950",
+              )}
+            >
+              {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
+            </p>
             <p className="text-center text-sm leading-relaxed text-ink-muted">
               <MathRenderer text={checkFeedback} />
             </p>
           </div>
         ) : null}
-        {reveal && stageReveal ? <div className="mt-6 space-y-3">{stageReveal}</div> : null}
+        {reveal ? (
+          <div className="mt-6 space-y-3">
+            {stageReveal}
+            {step.explanation && reveal && isCorrect && !checkFeedback ? (
+              <p className="text-center text-sm text-ink-muted">
+                <MathRenderer text={step.explanation} />
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </section>
     </StageViewport>
   );

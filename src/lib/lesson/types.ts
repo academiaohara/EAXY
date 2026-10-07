@@ -381,6 +381,7 @@ export type NarrateStep = LessonStepBase &
 export type PredictChoice = {
   id: string;
   label: string;
+  /** Mensaje tras comprobar si el alumno elige esta opción y no es la correcta. */
   incorrectFeedback?: string;
 };
 
