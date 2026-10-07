@@ -21,6 +21,7 @@ import type {
   RevealStep,
   TiendaCiclistaItem,
 } from "@/lib/lesson/types";
+import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import { cn } from "@/lib/utils";
 
 const TEAM_ITEMS: TiendaCiclistaItem[] = [
@@ -133,6 +134,7 @@ export function PredictStepView({
   const [checked, setChecked] = useState(Boolean(restored));
   const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
   const [reveal, setReveal] = useState(restored?.revealPlayed ?? false);
+  const [hintVisible, setHintVisible] = useState(false);
   const isMultiplicarSextaEntrada =
     step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-sexta-entrada";
 
@@ -176,6 +178,21 @@ export function PredictStepView({
   }, [checked, choiceId, disabled, numericValue, runCheck, step.mode]);
 
   useRegisterLessonStepControl(control);
+
+  const choiceOptions = useMemo(() => {
+    const base = step.choices ?? [];
+    if (!step.shuffleChoices) {
+      return base;
+    }
+    return seededShuffle(base, step.id);
+  }, [step.choices, step.id, step.shuffleChoices]);
+
+  const selectedChoice = choiceOptions.find((choice) => choice.id === choiceId);
+  const checkFeedback = checked
+    ? isCorrect
+      ? step.explanation
+      : selectedChoice?.incorrectFeedback ?? step.hint
+    : null;
 
   const jerarquiaStage =
     step.module === "jerarquia-operaciones" && step.scene ? (
@@ -318,6 +335,25 @@ export function PredictStepView({
         <h3 className="mb-4 text-center text-lg font-semibold text-ink">
           <MathRenderer text={step.question} />
         </h3>
+        {step.hint && step.hintHiddenUntilRequested && !checked ? (
+          <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
+            {hintVisible ? (
+              <p className="max-w-lg text-center text-sm leading-relaxed text-ink-muted">
+                <MathRenderer text={step.hint} />
+              </p>
+            ) : (
+              <button
+                type="button"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                aria-label="Ver pista"
+                aria-expanded={hintVisible}
+                onClick={() => setHintVisible(true)}
+              >
+                ?
+              </button>
+            )}
+          </div>
+        ) : null}
         {step.mode === "numeric" ? (
           <input
             type="text"
@@ -330,10 +366,11 @@ export function PredictStepView({
           />
         ) : (
           <div className="mx-auto flex max-w-md flex-col gap-2">
-            {(step.choices ?? []).map((choice) => (
+            {choiceOptions.map((choice) => (
               <button
                 key={choice.id}
                 type="button"
+                data-testid={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
                 className={cn(
@@ -349,10 +386,20 @@ export function PredictStepView({
             ))}
           </div>
         )}
+        {checked && checkFeedback ? (
+          <div className="mt-5 space-y-2" role="status">
+            {!isCorrect ? (
+              <p className="text-center text-sm font-medium text-amber-950">Revisa tu respuesta.</p>
+            ) : null}
+            <p className="text-center text-sm leading-relaxed text-ink-muted">
+              <MathRenderer text={checkFeedback} />
+            </p>
+          </div>
+        ) : null}
         {reveal ? (
           <div className="mt-6 space-y-3">
             {stageReveal}
-            {step.explanation && reveal ? (
+            {step.explanation && reveal && isCorrect && !checkFeedback ? (
               <p className="text-center text-sm text-ink-muted">
                 <MathRenderer text={step.explanation} />
               </p>

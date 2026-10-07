@@ -9,6 +9,7 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersistedStateContext";
 import type { PredictStep } from "@/lib/lesson/types";
+import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
 
 const step: PredictStep = {
   id: "test-predict",
@@ -64,5 +65,23 @@ describe("PredictStepView", () => {
     expect(onCheck).toHaveBeenCalledWith(
       expect.objectContaining({ correct: true, snapshot: expect.objectContaining({ kind: "predict" }) }),
     );
+  });
+
+  it("muestra pista opcional y feedback al fallar reparte el factor", () => {
+    const factorStep = multiplicacionDivisionNaturalesLesson.steps.find(
+      (s) => s.id === "distributiva-equivalencia",
+    ) as PredictStep;
+    const onCheck = vi.fn();
+    render(wrap(<PredictStepView step={factorStep} theme="paper" onCheck={onCheck} />), {
+      container: document.body,
+    });
+
+    fireEvent.click(screen.getByLabelText("Ver pista"));
+    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(/cada sumando/i);
+
+    fireEvent.click(screen.getByTestId("predict-choice-solo-primero"));
+    fireEvent.click(screen.getByTestId("lesson-check-button"));
+
+    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(/no solo al primero/i);
   });
 });

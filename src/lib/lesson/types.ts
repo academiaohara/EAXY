@@ -376,7 +376,12 @@ export type NarrateStep = LessonStepBase &
     mulDiv?: MulDivConfig;
   };
 
-export type PredictChoice = { id: string; label: string };
+export type PredictChoice = {
+  id: string;
+  label: string;
+  /** Mensaje tras comprobar si el alumno elige esta opción y no es la correcta. */
+  incorrectFeedback?: string;
+};
 
 export type PredictStep = LessonStepBase &
   StageStepFields &
@@ -386,6 +391,10 @@ export type PredictStep = LessonStepBase &
     correctAnswers?: string[];
     choices?: PredictChoice[];
     correctChoiceId?: string;
+    /** Mezcla las opciones con orden estable según el id del paso. */
+    shuffleChoices?: boolean;
+    /** La pista solo aparece al pulsar el botón «?». */
+    hintHiddenUntilRequested?: boolean;
     /** Tras responder, reproducir escena de refuerzo (p. ej. suma completa). */
     module?: StageModuleId;
     scene?: string;
