@@ -33,6 +33,13 @@ const COBALT_TINT = "#eceeff";
 const VIOLET = "#7c3aed";
 const AMBER = "#d97706";
 
+/** Misma inclinación y apilado para todas las entradas del abanico. */
+const TICKET_TILT_DEG = -14;
+const TICKET_FAN_OFFSET_PX = 16;
+
+const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
+const STAGE_MATH = "text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
+
 function SlideBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <span
@@ -72,24 +79,36 @@ function TicketImage({
   );
 }
 
-function TicketFan({ count, priceLabel }: { count: number; priceLabel?: string }) {
+function TicketFan({
+  count,
+  priceLabel,
+  caption,
+}: {
+  count: number;
+  priceLabel?: string;
+  caption?: string;
+}) {
+  const stackWidth = count > 0 ? (count - 1) * TICKET_FAN_OFFSET_PX + 96 : 96;
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="relative flex h-[6.5rem] w-full max-w-[15rem] items-end justify-center">
+    <div className="flex min-w-[7.5rem] flex-col items-center gap-2">
+      <div
+        className="relative flex h-[6.5rem] items-end justify-start"
+        style={{ width: `${stackWidth}px`, maxWidth: "100%" }}
+      >
         {Array.from({ length: count }, (_, i) => (
           <TicketImage
             key={i}
-            className="transition-all duration-500 ease-out"
+            className="absolute bottom-0 left-0 transition-all duration-500 ease-out"
             style={{
-              transform: `rotate(${(i - (count - 1) / 2) * 10}deg) scale(${i === count - 1 ? 1.05 : 1})`,
-              marginLeft: i === 0 ? 0 : -28,
+              transform: `rotate(${TICKET_TILT_DEG}deg)`,
+              left: i * TICKET_FAN_OFFSET_PX,
               zIndex: i,
-              opacity: 1,
             }}
           />
         ))}
       </div>
       {priceLabel ? <SlideBadge>{priceLabel}</SlideBadge> : null}
+      <span className={cn(STAGE_CAPTION, "min-h-[1rem]")}>{caption ?? "\u00a0"}</span>
     </div>
   );
 }
@@ -216,19 +235,27 @@ function MultiplicarRepetido({
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
-        <div className="flex flex-col items-center gap-2">
-          <TicketImage />
+        <div className="flex min-w-[7.5rem] flex-col items-center gap-2">
+          <div className="flex h-[6.5rem] items-end">
+            <TicketImage style={{ transform: `rotate(${TICKET_TILT_DEG}deg)` }} />
+          </div>
           <SlideBadge>{a}€</SlideBadge>
-          <span className="text-xs text-ink-muted">Una entrada</span>
+          <span className={STAGE_CAPTION}>Una entrada</span>
         </div>
-        <TicketFan count={ticketCount} priceLabel={ticketCount >= b ? `${total}€` : "?"} />
+        <TicketFan
+          count={ticketCount}
+          priceLabel={ticketCount >= b ? `${total}€` : "?"}
+          caption={
+            ticketCount >= b ? `${b} entradas` : ticketCount > 1 ? `${ticketCount} entradas` : "\u00a0"
+          }
+        />
       </div>
       {ticketCount >= b ? (
-        <p className="text-center text-sm font-medium text-ink-muted">
+        <p className={STAGE_MATH}>
           <MathRenderer text={`$${sumParts} = ${a} \\cdot ${b} = ${total}$`} />
         </p>
       ) : ticketCount > 1 ? (
-        <p className="text-center text-sm font-medium text-cobalt">
+        <p className={cn(STAGE_MATH, "text-[color:var(--stage-accent,#6ee7b7)]")}>
           <MathRenderer text={`$${sumParts}$`} />
         </p>
       ) : null}
@@ -240,41 +267,130 @@ function ConmutativaProducto({
   a,
   b,
   onReadyChange,
+  reduced,
 }: {
   a: number;
   b: number;
   onReadyChange?: (ready: boolean) => void;
+  reduced: boolean;
 }) {
-  const [swapped, setSwapped] = useState(false);
-  const rows = swapped ? a : b;
-  const cols = swapped ? b : a;
   const total = a * b;
+  const [swapped, setSwapped] = useState(false);
+  const [filled, setFilled] = useState(reduced ? total : 0);
+  const [animating, setAnimating] = useState(!reduced);
+  const rows = swapped ? b : a;
+  const cols = swapped ? a : b;
+  const { push, clear } = useTimers();
+
+  useEffect(() => {
+    if (reduced) {
+      setSwapped(true);
+      setFilled(total);
+      setAnimating(false);
+      onReadyChange?.(true);
+      return;
+    }
+
+    onReadyChange?.(false);
+    setSwapped(false);
+    setFilled(0);
+    setAnimating(true);
+
+    const fillSequence = (onDone: () => void) => {
+      let n = 0;
+      const tick = () => {
+        n += 1;
+        setFilled(n);
+        if (n >= total) {
+          push(onDone, 700);
+          return;
+        }
+        push(tick, 420);
+      };
+      push(tick, 500);
+    };
+
+    fillSequence(() => {
+      setSwapped(true);
+      setFilled(0);
+      fillSequence(() => {
+        setAnimating(false);
+        onReadyChange?.(true);
+      });
+    });
+
+    return clear;
+  }, [a, b, clear, onReadyChange, push, reduced, total]);
 
   return (
     <div className="space-y-4" aria-label="Propiedad conmutativa de la multiplicación">
-      <div
-        className="mx-auto grid max-w-full gap-1 justify-items-center p-3"
-        style={{ gridTemplateColumns: `repeat(${cols}, minmax(2.75rem, 1fr))` }}
-      >
-        {Array.from({ length: rows * cols }, (_, i) => (
-          <FichaIcon key={i} tone={swapped ? "violet" : "cobalt"} />
-        ))}
+      <div className="mx-auto flex max-w-full justify-center p-2" style={{ perspective: "900px" }}>
+        <div
+          className={cn(
+            "relative transition-transform duration-1000 ease-in-out",
+            swapped ? "[transform:rotateY(-72deg)_rotateX(12deg)]" : "[transform:rotateY(-28deg)_rotateX(14deg)]",
+          )}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <div
+            className="grid gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 shadow-lg"
+            style={{
+              gridTemplateColumns: `repeat(${cols}, minmax(2.25rem, 2.75rem))`,
+              gridTemplateRows: `repeat(${rows}, minmax(2.25rem, 2.75rem))`,
+            }}
+          >
+            {Array.from({ length: rows * cols }, (_, i) => {
+              const showNumber = i < filled;
+              return (
+                <div
+                  key={`${swapped ? "s" : "n"}-${i}`}
+                  className={cn(
+                    "flex items-center justify-center rounded-md border font-mono text-sm font-bold tabular-nums transition-all duration-300",
+                    showNumber
+                      ? swapped
+                        ? "border-violet-400/60 bg-violet-500/25 text-[color:var(--stage-chalk,#f8fafc)]"
+                        : "border-cobalt/50 bg-cobalt/20 text-[color:var(--stage-chalk,#f8fafc)]"
+                      : "border-[color:var(--stage-border,#334155)] bg-black/20 text-transparent",
+                  )}
+                >
+                  {showNumber ? i + 1 : ""}
+                </div>
+              );
+            })}
+          </div>
+          <div
+            className="pointer-events-none absolute inset-y-2 -right-3 w-3 rounded-r-md bg-cobalt/30"
+            style={{ transform: "translateZ(-12px)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-3 inset-x-2 h-3 rounded-b-md bg-cobalt/20"
+            style={{ transform: "translateZ(-12px)" }}
+            aria-hidden
+          />
+        </div>
       </div>
-      <p className="text-center text-sm text-ink-muted">
+      <p className={STAGE_MATH}>
         <MathRenderer text={swapped ? `$${b} \\cdot ${a} = ${total}$` : `$${a} \\cdot ${b} = ${total}$`} />
       </p>
-      <div className="flex justify-center">
-        <button
-          type="button"
-          className="min-h-[44px] rounded-xl bg-cobalt px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cobalt/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-          onClick={() => {
-            setSwapped((s) => !s);
-            onReadyChange?.(true);
-          }}
-        >
-          Girar la retícula
-        </button>
-      </div>
+      {animating ? (
+        <p className="text-center text-xs font-medium text-[color:var(--stage-muted,#94a3b8)]">
+          {swapped ? "Girando el bloque y contando otra vez…" : "Contando unidades del bloque…"}
+        </p>
+      ) : (
+        <div className="flex justify-center">
+          <button
+            type="button"
+            className="min-h-[44px] rounded-xl border-2 border-[color:var(--stage-border,#334155)] bg-black/20 px-5 py-2.5 text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+            onClick={() => {
+              setSwapped((s) => !s);
+              setFilled(total);
+            }}
+          >
+            Girar el bloque
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -729,7 +845,7 @@ export function MulDivNaturalesModule({
           />
         );
       case "conmutativa-producto":
-        return <ConmutativaProducto a={a} b={b} onReadyChange={onReadyChange} />;
+        return <ConmutativaProducto a={a} b={b} reduced={reduced} onReadyChange={onReadyChange} />;
       case "asociativa-producto":
         return <AsociativaProducto a={a} b={b} c={c} onReadyChange={onReadyChange} />;
       case "distributiva-bloques":

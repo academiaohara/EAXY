@@ -3,20 +3,23 @@ import { describe, expect, it, vi } from "vitest";
 import { MulDivNaturalesModule } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivNaturalesModule";
 
 describe("MulDivNaturalesModule", () => {
-  it("muestra la retícula conmutativa y permite girarla", async () => {
+  it("muestra el bloque conmutativo 3×5 y permite girarlo al terminar", async () => {
+    vi.useFakeTimers();
     const onReady = vi.fn();
     render(
       <MulDivNaturalesModule
         stepId="test"
         scene="conmutativa-producto"
-        a={8}
+        a={3}
         b={5}
         onReadyChange={onReady}
       />,
     );
     expect(screen.getByLabelText(/Propiedad conmutativa/i)).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: /Girar la retícula/i }));
+    await vi.runAllTimersAsync();
     expect(onReady).toHaveBeenCalledWith(true);
+    fireEvent.click(screen.getByRole("button", { name: /Girar el bloque/i }));
+    vi.useRealTimers();
   });
 
   it("reparto manual avisa cuando las cajas están llenas", async () => {

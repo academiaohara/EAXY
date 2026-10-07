@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
@@ -9,12 +9,13 @@ import {
   buildMultiplicationAlgorithmSteps,
   type DivisionAlgorithmStep,
 } from "@/components/lesson/stage/modules/mul-div-naturales/escolar-algorithms";
+import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 
 const ACCENT = "var(--stage-accent, #6ee7b7)";
 const INK = "var(--stage-ink, #e8edf5)";
 const MUTED = "var(--stage-muted, #94a3b8)";
 
-function useStepPlayback({
+function useControllableStepPlayback({
   autoPlay,
   reduced,
   stepCount,
@@ -29,44 +30,87 @@ function useStepPlayback({
   onAnimationComplete?: () => void;
   intervalMs?: number;
 }) {
-  const [phase, setPhase] = useState(reduced ? stepCount - 1 : 0);
+  const finalPhase = Math.max(0, stepCount - 1);
+  const [phase, setPhaseState] = useState(reduced ? finalPhase : 0);
+  const [playing, setPlaying] = useState(Boolean(autoPlay) && !reduced);
+  const timerRef = useRef<number | null>(null);
+  const completedRef = useRef(false);
+
+  const notifyComplete = useCallback(() => {
+    if (completedRef.current) {
+      return;
+    }
+    completedRef.current = true;
+    onReadyChange?.(true);
+    onAnimationComplete?.();
+  }, [onAnimationComplete, onReadyChange]);
+
+  const setPhase = useCallback(
+    (next: number) => {
+      const clamped = Math.max(0, Math.min(finalPhase, next));
+      setPhaseState(clamped);
+      if (clamped >= finalPhase) {
+        notifyComplete();
+      } else {
+        onReadyChange?.(false);
+        completedRef.current = false;
+      }
+    },
+    [finalPhase, notifyComplete, onReadyChange],
+  );
 
   useEffect(() => {
-    if (!autoPlay) {
-      setPhase(stepCount - 1);
-      onReadyChange?.(true);
-      return;
-    }
+    completedRef.current = false;
     if (reduced) {
-      setPhase(stepCount - 1);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
+      setPhaseState(finalPhase);
+      setPlaying(false);
+      notifyComplete();
       return;
     }
-
+    if (!autoPlay) {
+      setPhaseState(0);
+      setPlaying(false);
+      onReadyChange?.(false);
+      return;
+    }
+    setPhaseState(0);
+    setPlaying(true);
     onReadyChange?.(false);
-    setPhase(0);
-    let current = 0;
-    const timers: number[] = [];
-    const tick = () => {
-      current += 1;
-      setPhase(current);
-      if (current >= stepCount - 1) {
-        onReadyChange?.(true);
-        onAnimationComplete?.();
-        return;
-      }
-      timers.push(window.setTimeout(tick, intervalMs));
-    };
-    timers.push(window.setTimeout(tick, intervalMs));
-    return () => {
-      for (const id of timers) {
-        window.clearTimeout(id);
-      }
-    };
-  }, [autoPlay, intervalMs, onAnimationComplete, onReadyChange, reduced, stepCount]);
+  }, [autoPlay, finalPhase, notifyComplete, onReadyChange, reduced, stepCount]);
 
-  return phase;
+  useEffect(() => {
+    if (timerRef.current !== null) {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+    if (!playing || reduced || phase >= finalPhase) {
+      if (phase >= finalPhase) {
+        notifyComplete();
+      }
+      return;
+    }
+    timerRef.current = window.setTimeout(() => {
+      setPhase(phase + 1);
+    }, intervalMs);
+    return () => {
+      if (timerRef.current !== null) {
+        window.clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [finalPhase, intervalMs, notifyComplete, phase, playing, reduced, setPhase]);
+
+  const handlePlayingChange = useCallback(
+    (next: boolean) => {
+      setPlaying(next);
+      if (!next && phase >= finalPhase) {
+        notifyComplete();
+      }
+    },
+    [finalPhase, notifyComplete, phase],
+  );
+
+  return { phase, setPhase, playing, setPlaying: handlePlayingChange, stepCount };
 }
 
 function DivisionBracket({
@@ -167,7 +211,7 @@ export function DivisionManoScene({
     () => buildDivisionAlgorithmSteps(dividend, divisor),
     [dividend, divisor],
   );
-  const phase = useStepPlayback({
+  const { phase } = useControllableStepPlayback({
     autoPlay,
     reduced,
     stepCount: steps.length,
@@ -206,7 +250,7 @@ export function MultiplicacionManoScene({
     () => buildMultiplicationAlgorithmSteps(multiplicand, multiplier),
     [multiplicand, multiplier],
   );
-  const phase = useStepPlayback({
+  const { phase, setPhase, playing, setPlaying, stepCount } = useControllableStepPlayback({
     autoPlay,
     reduced,
     stepCount: steps.length,
@@ -267,7 +311,14 @@ export function MultiplicacionManoScene({
           </>
         ) : null}
       </div>
-      <p className="text-center text-sm leading-relaxed text-[color:var(--stage-muted,#64748b)]">
+      <StageStepControls
+        phase={phase}
+        stepCount={stepCount}
+        playing={playing}
+        onPhaseChange={setPhase}
+        onPlayingChange={setPlaying}
+      />
+      <p className="text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
         <MathRenderer text={step.caption} />
       </p>
     </div>

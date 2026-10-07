@@ -53,7 +53,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
         "El **producto no varía** al cambiar el orden de los factores: $a \\cdot b = b \\cdot a$.",
       module: "mul-div-naturales",
       scene: "conmutativa-producto",
-      mulDiv: { scene: "conmutativa-producto", a: 8, b: 5 },
+      mulDiv: { scene: "conmutativa-producto", a: 3, b: 5 },
     },
     {
       id: "asociativa-reveal",
