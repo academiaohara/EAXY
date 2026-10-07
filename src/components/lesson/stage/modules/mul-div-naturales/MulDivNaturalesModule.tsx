@@ -10,6 +10,7 @@ import {
   DivisionManoScene,
   MultiplicacionManoScene,
 } from "@/components/lesson/stage/modules/mul-div-naturales/EscolarAlgorithmViews";
+import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
@@ -133,20 +134,24 @@ function CajaBombones({
   count,
   caption,
   highlight,
+  size = "md",
 }: {
   count: number | string;
   caption?: string;
   highlight?: boolean;
+  size?: "sm" | "md";
 }) {
+  const dim = size === "sm" ? { w: 72, h: 62, cls: "h-14 w-[4.5rem]" } : { w: 110, h: 95, cls: "h-[5.5rem] w-auto" };
   return (
     <div className="flex flex-col items-center gap-1">
       <Image
         src={ASSETS.cajabombones}
         alt=""
-        width={110}
-        height={95}
+        width={dim.w}
+        height={dim.h}
         className={cn(
-          "h-[5.5rem] w-auto object-contain transition",
+          "object-contain transition",
+          dim.cls,
           highlight && "ring-2 ring-cobalt/40 ring-offset-2",
         )}
         aria-hidden
@@ -686,10 +691,8 @@ function DistributivaBloques({
 function RepartoIgual({
   dividend,
   divisor,
-  autoPlay,
   reduced,
   onReadyChange,
-  onAnimationComplete,
 }: {
   dividend: number;
   divisor: number;
@@ -699,59 +702,94 @@ function RepartoIgual({
   onAnimationComplete?: () => void;
 }) {
   const quotient = Math.floor(dividend / divisor);
-  const [filled, setFilled] = useState(reduced ? divisor : 0);
-  const { push, clear } = useTimers();
+  const stepCount = 3;
+  const finalPhase = stepCount - 1;
+  const [phase, setPhase] = useState(reduced ? finalPhase : 0);
 
   useEffect(() => {
-    if (!autoPlay) {
-      setFilled(divisor);
-      onReadyChange?.(true);
-      return;
-    }
-    if (reduced) {
-      setFilled(divisor);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
-      return;
-    }
+    onReadyChange?.(phase >= finalPhase);
+  }, [finalPhase, onReadyChange, phase]);
+
+  const handleRestart = useCallback(() => {
+    setPhase(0);
     onReadyChange?.(false);
-    setFilled(0);
-    let box = 0;
-    const tick = () => {
-      box += 1;
-      setFilled(box);
-      if (box >= divisor) {
-        onReadyChange?.(true);
-        onAnimationComplete?.();
-        return;
-      }
-      push(tick, 550);
-    };
-    push(tick, 400);
-    return clear;
-  }, [autoPlay, clear, divisor, onAnimationComplete, onReadyChange, push, reduced]);
+  }, [onReadyChange]);
+
+  const caption =
+    phase === 0
+      ? `${dividend} bombones en ${divisor} cajas iguales. ¿Cuántos en cada una? Cada caja muestra ${quotient} → ${dividend} : ${divisor} = ${quotient}.`
+      : phase === 1
+        ? `Ahora las cajas son de ${quotient} bombones. ¿Cuántas cajas se llenan con ${dividend}? → ${dividend} : ${quotient} = ${divisor}.`
+        : "Dividir es el camino de vuelta de multiplicar.";
 
   return (
-    <div className="space-y-4" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
-      <div className="flex flex-wrap items-end justify-center gap-6 sm:gap-10">
-        <BombonesPile label={String(dividend)} />
-        <CajaBombones count={divisor} caption="cajas iguales" highlight />
+    <div className="space-y-3" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
+      <div className="flex justify-end">
+        <StageStepControls
+          variant="embedded"
+          phase={phase}
+          stepCount={stepCount}
+          playing={false}
+          onPhaseChange={setPhase}
+          onPlayingChange={() => {}}
+          onRestart={handleRestart}
+        />
       </div>
-      <div className="flex flex-wrap justify-center gap-2">
-        {Array.from({ length: divisor }, (_, i) => (
-          <CajaBombones
-            key={i}
-            count={i < filled ? quotient : "…"}
-            caption={`Caja ${i + 1}`}
-            highlight={i < filled}
-          />
-        ))}
+      <div className="min-h-[11rem] space-y-3">
+        {phase === 0 ? (
+          <div className="flex flex-col items-center gap-3">
+            <BombonesPile label={String(dividend)} />
+            <div className="grid w-full max-w-xl grid-cols-6 gap-1">
+              {Array.from({ length: divisor }, (_, i) => (
+                <CajaBombones key={i} size="sm" count={quotient} caption={`C${i + 1}`} highlight />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-3">
+            <div className="grid w-full max-w-xl grid-cols-6 gap-1">
+              {Array.from({ length: divisor }, (_, i) => (
+                <CajaBombones key={i} size="sm" count={quotient} caption={`C${i + 1}`} highlight />
+              ))}
+            </div>
+            {phase >= 2 ? (
+              <div className="space-y-1 text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]">
+                <p>
+                  <span className="text-[#a78bfa]">{divisor}</span>
+                  <span className="text-[color:var(--stage-muted)]"> · </span>
+                  <span className="text-[#7dd3fc]">{quotient}</span>
+                  <span className="text-[color:var(--stage-muted)]"> = </span>
+                  <span>{dividend}</span>
+                </p>
+                <p>
+                  <span>{dividend}</span>
+                  <span className="text-[color:var(--stage-muted)]"> : </span>
+                  <span className="text-[#a78bfa]">{divisor}</span>
+                  <span className="text-[color:var(--stage-muted)]"> = </span>
+                  <span className="text-[#7dd3fc]">{quotient}</span>
+                </p>
+                <p>
+                  <span>{dividend}</span>
+                  <span className="text-[color:var(--stage-muted)]"> : </span>
+                  <span className="text-[#7dd3fc]">{quotient}</span>
+                  <span className="text-[color:var(--stage-muted)]"> = </span>
+                  <span className="text-[#a78bfa]">{divisor}</span>
+                </p>
+              </div>
+            ) : null}
+          </div>
+        )}
       </div>
-      {filled >= divisor ? (
-        <p className="text-center text-sm font-medium text-ink">
-          <MathRenderer text={`$${dividend} : ${divisor} = ${quotient}$`} />
-        </p>
-      ) : null}
+      <p className="min-h-[3.5rem] text-center text-sm leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
+        {phase < 2 ? caption : (
+          <>
+            {caption}{" "}
+            <span className="text-[color:var(--stage-muted,#94a3b8)]">
+              ({dividend} : {divisor} = {quotient})
+            </span>
+          </>
+        )}
+      </p>
     </div>
   );
 }
@@ -773,21 +811,21 @@ function RepartoManual({
 }) {
   const pool = total - boxCounts.reduce((s, n) => s + n, 0);
 
-  const sendOne = (boxIndex: number) => {
-    if (pool <= 0 || boxCounts[boxIndex]! >= perBox) {
-      return;
-    }
+  const adjustBox = (boxIndex: number, delta: number) => {
     const next = [...boxCounts];
-    next[boxIndex] = next[boxIndex]! + 1;
-    onBoxCountsChange?.(next);
-  };
-
-  const takeOne = (boxIndex: number) => {
-    if (boxCounts[boxIndex]! <= 0) {
-      return;
+    if (delta > 0) {
+      const add = Math.min(delta, pool);
+      if (add <= 0) {
+        return;
+      }
+      next[boxIndex] = next[boxIndex]! + add;
+    } else {
+      const remove = Math.min(-delta, next[boxIndex]!);
+      if (remove <= 0) {
+        return;
+      }
+      next[boxIndex] = next[boxIndex]! - remove;
     }
-    const next = [...boxCounts];
-    next[boxIndex] = next[boxIndex]! - 1;
     onBoxCountsChange?.(next);
   };
 
@@ -813,33 +851,35 @@ function RepartoManual({
           />
           <SlideBadge>{pool}</SlideBadge>
         </div>
-        <div className="grid w-full max-w-md grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="grid w-full max-w-lg grid-cols-2 gap-3 sm:grid-cols-4">
           {Array.from({ length: boxes }, (_, i) => (
             <div key={i} className="flex flex-col items-center gap-2 rounded-xl border-2 border-cobalt/20 bg-white p-2">
-              <CajaBombones count={boxCounts[i] ?? 0} caption={`Caja ${i + 1}`} />
-              <div className="flex gap-2">
+              <CajaBombones count={boxCounts[i] ?? 0} caption={`Caja ${i + 1}`} size="sm" />
+              <div className="flex flex-wrap justify-center gap-1">
+                {([10, 5, 1] as const).map((amount) => (
+                  <button
+                    key={`add-${amount}`}
+                    type="button"
+                    className="min-h-[36px] rounded-md bg-cobalt px-2 text-xs font-bold text-white"
+                    aria-label={`Añadir ${amount} bombones a la caja ${i + 1}`}
+                    onClick={() => adjustBox(i, amount)}
+                  >
+                    +{amount}
+                  </button>
+                ))}
                 <button
                   type="button"
-                  className="min-h-[44px] min-w-[44px] rounded-lg bg-cobalt text-lg font-bold text-white"
-                  aria-label={`Añadir un bombón a la caja ${i + 1}`}
-                  onClick={() => sendOne(i)}
-                >
-                  +
-                </button>
-                <button
-                  type="button"
-                  className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 text-lg font-bold text-ink"
+                  className="min-h-[36px] rounded-md border border-slate-200 px-2 text-xs font-bold text-ink"
                   aria-label={`Quitar un bombón de la caja ${i + 1}`}
-                  onClick={() => takeOne(i)}
+                  onClick={() => adjustBox(i, -1)}
                 >
-                  −
+                  −1
                 </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <p className="text-center text-xs text-ink-muted">Objetivo: {perBox} en cada caja</p>
     </div>
   );
 }

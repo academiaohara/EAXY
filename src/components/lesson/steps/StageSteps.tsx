@@ -101,7 +101,11 @@ export function NarrateStepView({
       }
       mulDiv={step.mulDiv}
       autoPlay={
-        step.module === "mul-div-naturales" && step.scene !== "multiplicacion-mano"
+        step.module === "mul-div-naturales" &&
+        step.scene !== "multiplicacion-mano" &&
+        step.scene !== "division-mano" &&
+        step.scene !== "reparto-igual" &&
+        step.scene !== "exacta-entera"
       }
       onReadyChange={setReady}
     />
@@ -443,10 +447,39 @@ export function ExploreStepView({
     if (step.goal.kind === "boxes-equal") {
       const goal = step.goal;
       const sum = persist.boxCounts.reduce((s, n) => s + n, 0);
-      return sum === goal.total && persist.boxCounts.every((n) => n === goal.perBox);
+      return sum === goal.total;
     }
     return false;
   }, [persist, step]);
+
+  const boxesDistributionCorrect = useMemo(() => {
+    if (step.goal.kind !== "boxes-equal") {
+      return false;
+    }
+    const goal = step.goal;
+    return (
+      persist.boxCounts.reduce((s, n) => s + n, 0) === goal.total &&
+      persist.boxCounts.every((n) => n === goal.perBox)
+    );
+  }, [persist.boxCounts, step.goal]);
+
+  const boxesUnequalMessage = useMemo(() => {
+    if (step.goal.kind !== "boxes-equal" || boxesDistributionCorrect) {
+      return null;
+    }
+    const counts = persist.boxCounts;
+    if (counts.length === 0) {
+      return null;
+    }
+    const max = Math.max(...counts);
+    const min = Math.min(...counts);
+    if (max === min) {
+      return null;
+    }
+    const maxIndex = counts.indexOf(max) + 1;
+    const minIndex = counts.indexOf(min) + 1;
+    return `La caja ${maxIndex} tiene más (${max}) y la caja ${minIndex} tiene menos (${min}).`;
+  }, [boxesDistributionCorrect, persist.boxCounts, step.goal]);
 
   const evaluatedValue = useMemo(() => {
     if (step.goal.kind !== "expression-result") {
@@ -463,8 +496,11 @@ export function ExploreStepView({
     if (step.goal.kind === "expression-result") {
       correct = evaluatedValue === step.goal.target;
     }
-    if (step.goal.kind === "hierarchy-sequence" || step.goal.kind === "boxes-equal") {
+    if (step.goal.kind === "hierarchy-sequence") {
       correct = placementReady;
+    }
+    if (step.goal.kind === "boxes-equal") {
+      correct = boxesDistributionCorrect;
     }
     setIsCorrect(correct);
     setChecked(true);
@@ -476,7 +512,7 @@ export function ExploreStepView({
         isCorrect: correct,
       },
     });
-  }, [checked, evaluatedValue, onCheck, placementReady, step.goal]);
+  }, [boxesDistributionCorrect, checked, evaluatedValue, onCheck, placementReady, step.goal]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -553,16 +589,22 @@ export function ExploreStepView({
           >
             {isCorrect ? (
               <p>
-                {step.goal.kind === "boxes-equal"
-                  ? "¡Correcto! Repartiste el total en cajas iguales."
-                  : `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`}
+                {step.goal.kind === "boxes-equal" && step.explanation ? (
+                  <MathRenderer text={step.explanation} />
+                ) : step.goal.kind === "boxes-equal" ? (
+                  "¡Correcto! Repartiste el total en cajas iguales."
+                ) : (
+                  `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`
+                )}
               </p>
             ) : (
               <>
                 <p className="font-semibold">
-                  Tu expresión vale {evaluatedValue ?? "?"}, no {step.goal.kind === "expression-result" ? step.goal.target : "?"}.
+                  {step.goal.kind === "boxes-equal" && boxesUnequalMessage
+                    ? boxesUnequalMessage
+                    : `Tu expresión vale ${evaluatedValue ?? "?"}, no ${step.goal.kind === "expression-result" ? step.goal.target : "?"}.`}
                 </p>
-                {step.explanation ? (
+                {step.explanation && step.goal.kind !== "boxes-equal" ? (
                   <p className="mt-2 text-ink-muted">
                     <MathRenderer text={step.explanation} />
                   </p>

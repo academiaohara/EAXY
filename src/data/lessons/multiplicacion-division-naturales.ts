@@ -115,25 +115,6 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       explanation: "$40 + 16 = 56$: el $8$ multiplica a **cada** sumando.",
     },
     {
-      id: "puente-narrate",
-      type: "narrate",
-      title: "Dos preguntas gemelas",
-      definitionBox:
-        "**Multiplicar** junta grupos iguales; **dividir** reparte un total en grupos iguales.",
-      module: "mul-div-naturales",
-      scene: "puente-mult-div",
-      mulDiv: { scene: "puente-mult-div", a: 8, b: 5, dividend: 150, divisor: 6 },
-    },
-    {
-      id: "dividir-narrate",
-      type: "narrate",
-      title: "Dividir",
-      definitionBox: "**Dividir** es **repartir** en partes iguales.",
-      module: "mul-div-naturales",
-      scene: "reparto-igual",
-      mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
-    },
-    {
       id: "dividir-predict",
       type: "predict",
       title: "Antes de abrir las cajas",
@@ -141,15 +122,31 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
         "Se reparten $150$ bombones en $6$ cajas **iguales**. ¿Cuántos bombones irán en **cada** caja?",
       mode: "choice",
       choices: [
-        { id: "20", label: "$20$" },
+        {
+          id: "20",
+          label: "$20$",
+          incorrectFeedback: "$20 \\cdot 6 = 120$, te quedan $30$ bombones sin repartir.",
+        },
         { id: "25", label: "$25$" },
-        { id: "30", label: "$30$" },
+        {
+          id: "30",
+          label: "$30$",
+          incorrectFeedback: "$30 \\cdot 6 = 180$, te pasas.",
+        },
       ],
       correctChoiceId: "25",
+      explanation:
+        "Piensa en la multiplicación: ¿qué número por $6$ da $150$? $25 \\cdot 6 = 150$, así que $150 : 6 = 25$.",
+    },
+    {
+      id: "dividir-narrate",
+      type: "narrate",
+      title: "Dividir",
+      definitionBox:
+        "**Dividir** reparte un total en partes iguales; es el camino de vuelta de **multiplicar**.",
       module: "mul-div-naturales",
       scene: "reparto-igual",
       mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
-      explanation: "$150 : 6 = 25$. Comprueba: $6 \\cdot 25 = 150$.",
     },
     {
       id: "division-mano-narrate",
@@ -165,20 +162,21 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       id: "dividir-explore",
       type: "explore",
       title: "Reparte tú",
-      question: "Llena las $6$ cajas **por igual** hasta vaciar el montón de $150$.",
+      question: "Reparte $60$ bombones en $4$ cajas **iguales** hasta vaciar el montón.",
       module: "mul-div-naturales",
       scene: "reparto-manual",
-      mulDiv: { scene: "reparto-manual", total: 150, boxes: 6, perBox: 25 },
-      goal: { kind: "boxes-equal", total: 150, boxes: 6, perBox: 25 },
-      hint: "Cada caja debe llevar la misma cantidad; el montón debe quedar en $0$.",
-      explanation: "Seis veces $25$ es $150$: división **exacta**.",
+      mulDiv: { scene: "reparto-manual", total: 60, boxes: 4, perBox: 15 },
+      goal: { kind: "boxes-equal", total: 60, boxes: 4, perBox: 15 },
+      suppressTutorBubble: true,
+      hint: "Reparte de forma que todas las cajas queden iguales.",
+      explanation: "$60 : 4 = 15$. Comprobación: $4 \\cdot 15 = 60$.",
     },
     {
       id: "tipos-narrate",
       type: "narrate",
       title: "Exacta y entera",
       definitionBox:
-        "Si el **resto es $0$**, la división es **exacta** ($D = d \\cdot c$). Si sobra algo, es **entera** ($D = d \\cdot c + r$, con $r < d$).",
+        "Si el **resto es 0**, la división es **exacta** ($D = d \\cdot c$). Si sobra algo, es **entera** ($D = d \\cdot c + r$, con $r < d$).",
       module: "mul-div-naturales",
       scene: "exacta-entera",
       mulDiv: { scene: "exacta-entera" },
@@ -186,15 +184,27 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "tipos-predict",
       type: "predict",
-      title: "Comprueba la fórmula",
-      question: "En $43 = 8 \\cdot 5 + 3$, ¿qué describe mejor esta división?",
+      title: "Cociente y resto",
+      question:
+        "$47$ bombones se reparten en cajas de $6$. ¿Cuál es el **cociente** y cuál el **resto**?",
       mode: "choice",
       choices: [
-        { id: "exacta", label: "Exacta — resto $0$" },
-        { id: "entera", label: "Entera — sobra resto $r$" },
+        { id: "7-5", label: "$7$ y $5$" },
+        {
+          id: "6-11",
+          label: "$6$ y $11$",
+          incorrectFeedback:
+            "$6 \\cdot 6 + 11 = 47$, pero el resto no puede ser mayor que el divisor: aún caben más cajas.",
+        },
+        {
+          id: "8-1",
+          label: "$8$ y $1$",
+          incorrectFeedback:
+            "$6 \\cdot 8 + 1 = 49$, no es $47$. Comprueba siempre con $D = d \\cdot c + r$.",
+        },
       ],
-      correctChoiceId: "entera",
-      explanation: "El resto $3$ es distinto de $0$ y menor que el divisor $8$.",
+      correctChoiceId: "7-5",
+      explanation: "Correcto. $6 \\cdot 7 + 5 = 47$ y $5 < 6$.",
     },
   ],
 };

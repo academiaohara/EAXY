@@ -4,12 +4,13 @@ export type DivisionAlgorithmStep = {
   /** Cifras del cociente mostradas (de izquierda a derecha). */
   quotientDigits: string;
   /** Número activo bajo el dividendo (resto parcial ×10 + cifra bajada). */
-  working: string;
+  working?: string;
   /** Producto divisor × cifra del cociente que se resta. */
   subtract?: string;
   /** Resto tras la resta. */
   remainderLine?: string;
   highlightQuotientIndex?: number;
+  highlightWorking?: boolean;
 };
 
 export function buildDivisionAlgorithmSteps(
@@ -77,6 +78,55 @@ export function buildDivisionAlgorithmSteps(
   });
 
   return steps;
+}
+
+/** Cinco pasos guiados para $150 : 6$ (cociente bajo el divisor, estilo España). */
+export function buildDivisionManoGuidedSteps(
+  dividend: number,
+  divisor: number,
+): DivisionAlgorithmStep[] {
+  if (dividend !== 150 || divisor !== 6) {
+    return buildDivisionAlgorithmSteps(dividend, divisor);
+  }
+
+  return [
+    {
+      caption:
+        "Cogemos las primeras cifras: **15**. ¿Cuántas veces cabe **6** en **15**? **2** veces ($2 \\cdot 6 = 12$).",
+      quotientDigits: "2",
+      working: "15",
+      highlightWorking: true,
+      highlightQuotientIndex: 0,
+    },
+    {
+      caption: "Restamos: $15 - 12 = 3$.",
+      quotientDigits: "2",
+      working: "15",
+      subtract: "12",
+      remainderLine: "3",
+    },
+    {
+      caption: "Bajamos el **0**: queda **30**.",
+      quotientDigits: "2",
+      working: "30",
+      highlightWorking: true,
+    },
+    {
+      caption:
+        "¿Cuántas veces cabe **6** en **30**? **5** veces ($5 \\cdot 6 = 30$).",
+      quotientDigits: "25",
+      working: "30",
+      subtract: "30",
+      highlightQuotientIndex: 1,
+    },
+    {
+      caption:
+        "Restamos: $30 - 30 = 0$. Cociente **25**, resto **0**. Comprobación: $25 \\cdot 6 = 150$.",
+      quotientDigits: "25",
+      working: "30",
+      remainderLine: "0",
+    },
+  ];
 }
 
 export type MultiplicationResultRow = {
