@@ -1,6 +1,12 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from "lucide-react";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PauseIcon,
+  PlayIcon,
+  RotateCcwIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type StageStepControlsProps = {
@@ -9,6 +15,8 @@ type StageStepControlsProps = {
   playing: boolean;
   onPhaseChange: (next: number) => void;
   onPlayingChange: (playing: boolean) => void;
+  onRestart?: () => void;
+  variant?: "default" | "embedded";
   className?: string;
 };
 
@@ -18,44 +26,81 @@ export function StageStepControls({
   playing,
   onPhaseChange,
   onPlayingChange,
+  onRestart,
+  variant = "default",
   className,
 }: StageStepControlsProps) {
   const atStart = phase <= 0;
   const atEnd = phase >= stepCount - 1;
+  const embedded = variant === "embedded";
+
+  const btnBase = embedded
+    ? "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-black/35 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/55 disabled:opacity-35"
+    : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/40 disabled:opacity-40";
+
+  const btnAccent = embedded
+    ? "inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[color:var(--stage-accent,#6ee7b7)]/90 text-slate-900 transition hover:bg-[color:var(--stage-accent,#6ee7b7)]"
+    : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-[color:var(--stage-accent,#6ee7b7)] text-slate-900 transition hover:opacity-90";
+
+  const iconClass = embedded ? "h-3.5 w-3.5" : "h-5 w-5";
 
   return (
     <div
-      className={cn("flex flex-wrap items-center justify-center gap-2", className)}
+      className={cn(
+        "flex items-center gap-1",
+        embedded ? "gap-0.5" : "flex-wrap justify-center gap-2",
+        className,
+      )}
       role="group"
       aria-label="Controles de animación"
     >
       <button
         type="button"
-        className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/40 disabled:opacity-40"
+        className={btnBase}
         aria-label="Retroceder un paso"
         disabled={atStart}
         onClick={() => onPhaseChange(Math.max(0, phase - 1))}
       >
-        <ChevronLeftIcon className="h-5 w-5" aria-hidden />
+        <ChevronLeftIcon className={iconClass} aria-hidden />
       </button>
+      {atEnd && onRestart ? (
+        <button
+          type="button"
+          className={btnAccent}
+          aria-label="Reiniciar animación"
+          onClick={onRestart}
+        >
+          <RotateCcwIcon className={iconClass} aria-hidden />
+        </button>
+      ) : (
+        <button
+          type="button"
+          className={btnAccent}
+          aria-label={playing ? "Pausar animación" : "Reproducir animación"}
+          onClick={() => onPlayingChange(!playing)}
+        >
+          {playing ? (
+            <PauseIcon className={iconClass} aria-hidden />
+          ) : (
+            <PlayIcon className={iconClass} aria-hidden />
+          )}
+        </button>
+      )}
       <button
         type="button"
-        className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-[color:var(--stage-accent,#6ee7b7)] text-slate-900 transition hover:opacity-90"
-        aria-label={playing ? "Pausar animación" : "Reproducir animación"}
-        onClick={() => onPlayingChange(!playing)}
-      >
-        {playing ? <PauseIcon className="h-5 w-5" aria-hidden /> : <PlayIcon className="h-5 w-5" aria-hidden />}
-      </button>
-      <button
-        type="button"
-        className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/40 disabled:opacity-40"
+        className={btnBase}
         aria-label="Avanzar un paso"
         disabled={atEnd}
         onClick={() => onPhaseChange(Math.min(stepCount - 1, phase + 1))}
       >
-        <ChevronRightIcon className="h-5 w-5" aria-hidden />
+        <ChevronRightIcon className={iconClass} aria-hidden />
       </button>
-      <span className="min-w-[3.5rem] text-center text-xs font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]">
+      <span
+        className={cn(
+          "text-center font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]",
+          embedded ? "min-w-[2.25rem] pl-0.5 text-[10px]" : "min-w-[3.5rem] text-xs",
+        )}
+      >
         {phase + 1}/{stepCount}
       </span>
     </div>

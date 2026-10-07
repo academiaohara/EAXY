@@ -79,29 +79,30 @@ export function buildDivisionAlgorithmSteps(
   return steps;
 }
 
-export type MultiplicationAlgorithmStep = {
-  caption: string;
-  /** Líneas parciales visibles (texto alineado). */
-  partialLines: { text: string; tone: "accent" | "muted" }[];
-  /** Resultado final, si ya se sumó. */
-  total?: string;
-  highlightRow?: number;
+export type MultiplicationResultRow = {
+  text: string;
+  /** Fila revelada con opacidad plena. */
+  revealed: boolean;
+  /** Resaltar el cero final (p. ej. el de 340). */
+  highlightTrailingZero?: boolean;
 };
 
-/** Algoritmo clásico: multiplica por cada cifra del segundo factor y suma. */
+export type MultiplicationAlgorithmStep = {
+  caption: string;
+  /** Tres filas fijas: primera parcial, segunda parcial desplazada, producto final. */
+  rows: [MultiplicationResultRow, MultiplicationResultRow, MultiplicationResultRow];
+  /** Índice de cifra resaltada en el segundo factor (cadena). */
+  highlightMultiplierDigitIndex?: number;
+  /** Compatibilidad con tests / consumidores legacy. */
+  total?: string;
+};
+
+/** Algoritmo clásico: cuatro pasos guiados con filas reservadas desde el inicio. */
 export function buildMultiplicationAlgorithmSteps(
   multiplicand: number,
   multiplier: number,
 ): MultiplicationAlgorithmStep[] {
-  const mStr = String(multiplicand);
   const tStr = String(multiplier);
-  const steps: MultiplicationAlgorithmStep[] = [
-    {
-      caption: "Alinea los factores y multiplica la cifra de las **unidades** del segundo factor.",
-      partialLines: [],
-    },
-  ];
-
   const partials: { value: number; shift: number; digit: number }[] = [];
   for (let i = tStr.length - 1; i >= 0; i -= 1) {
     const digit = Number(tStr[i]);
@@ -109,36 +110,58 @@ export function buildMultiplicationAlgorithmSteps(
     partials.push({ value: multiplicand * digit, shift, digit });
   }
 
-  const formatPartial = (p: { value: number; shift: number }) => {
-    const scaled = p.value * 10 ** p.shift;
-    return String(scaled);
-  };
+  const formatPartial = (p: { value: number; shift: number }) => String(p.value * 10 ** p.shift);
+  const row1Text = partials[0] ? formatPartial(partials[0]) : "";
+  const row2Text = partials[1] ? formatPartial(partials[1]) : "";
+  const totalText = String(multiplicand * multiplier);
 
-  partials.forEach((part, index) => {
-    const label =
-      part.shift === 0
-        ? `${multiplicand} · ${part.digit} = ${part.value}`
-        : `${multiplicand} · ${part.digit} · 10 = ${formatPartial(part)} (desplazada una columna)`;
+  const unitDigitIndex = tStr.length - 1;
+  const tensDigitIndex = tStr.length >= 2 ? tStr.length - 2 : 0;
 
-    steps.push({
-      caption: label,
-      partialLines: partials.slice(0, index + 1).map((p, row) => ({
-        text: formatPartial(p),
-        tone: row === index ? "accent" : "muted",
-      })),
-      highlightRow: index,
-    });
+  const faint = (text: string): MultiplicationResultRow => ({ text, revealed: false });
+  const revealed = (text: string, extra?: Partial<MultiplicationResultRow>): MultiplicationResultRow => ({
+    text,
+    revealed: true,
+    ...extra,
   });
 
-  const total = multiplicand * multiplier;
-  steps.push({
-    caption: "Suma las filas parciales para obtener el **producto**.",
-    partialLines: partials.map((p) => ({
-      text: formatPartial(p),
-      tone: "muted" as const,
-    })),
-    total: String(total),
-  });
+  const steps: MultiplicationAlgorithmStep[] = [
+    {
+      caption:
+        multiplicand === 34 && multiplier === 12
+          ? "Empezamos multiplicando 34 por la cifra de las unidades del segundo factor: 2."
+          : `Multiplicamos ${multiplicand} por la cifra de las **unidades** del segundo factor (${tStr[unitDigitIndex]}).`,
+      rows: [faint(row1Text), faint(row2Text), faint(totalText)],
+      highlightMultiplierDigitIndex: unitDigitIndex,
+    },
+    {
+      caption:
+        multiplicand === 34 && multiplier === 12
+          ? "2 × 34 = 68. Esta es la primera fila."
+          : `${tStr[unitDigitIndex]} × ${multiplicand} = ${row1Text}. Esta es la primera fila.`,
+      rows: [revealed(row1Text), faint(row2Text), faint(totalText)],
+    },
+    {
+      caption:
+        multiplicand === 34 && multiplier === 12
+          ? "Ahora multiplicamos por la cifra de las decenas: 1. Como el 1 son en realidad 10 unidades, desplazamos la fila una posición y añadimos un 0 al final."
+          : `Multiplicamos por la siguiente cifra (${tStr[tensDigitIndex]}), desplazamos la fila y añadimos ceros al final.`,
+      rows: [
+        revealed(row1Text),
+        revealed(row2Text, { highlightTrailingZero: row2Text.endsWith("0") }),
+        faint(totalText),
+      ],
+      highlightMultiplierDigitIndex: tensDigitIndex,
+    },
+    {
+      caption:
+        multiplicand === 34 && multiplier === 12
+          ? "1 × 34 = 34, que desplazado queda 340. Sumamos las filas: 68 + 340 = 408."
+          : `Sumamos las filas parciales: **${totalText}**.`,
+      rows: [revealed(row1Text), revealed(row2Text), revealed(totalText)],
+      total: totalText,
+    },
+  ];
 
   return steps;
 }
