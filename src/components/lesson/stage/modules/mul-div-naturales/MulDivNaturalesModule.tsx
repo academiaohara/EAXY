@@ -198,29 +198,40 @@ function MultiplicarRepetido({
   onAnimationComplete?: () => void;
 }) {
   const [ticketCount, setTicketCount] = useState(reduced ? b : 1);
+  /** 0 = solo suma; 1 = suma = a·b; 2 = ecuación completa */
+  const [mathPhase, setMathPhase] = useState(reduced ? 2 : 0);
   const { push, clear } = useTimers();
 
   useEffect(() => {
     if (!autoPlay) {
       onReadyChange?.(true);
       setTicketCount(b);
+      setMathPhase(2);
       return;
     }
     if (reduced) {
       setTicketCount(b);
+      setMathPhase(2);
       onReadyChange?.(true);
       onAnimationComplete?.();
       return;
     }
     onReadyChange?.(false);
     setTicketCount(1);
+    setMathPhase(0);
     let n = 1;
     const tick = () => {
       n += 1;
       setTicketCount(n);
       if (n >= b) {
-        onReadyChange?.(true);
-        onAnimationComplete?.();
+        push(() => {
+          setMathPhase(1);
+          push(() => {
+            setMathPhase(2);
+            onReadyChange?.(true);
+            onAnimationComplete?.();
+          }, 650);
+        }, 500);
         return;
       }
       push(tick, 650);
@@ -231,6 +242,18 @@ function MultiplicarRepetido({
 
   const total = a * b;
   const sumParts = Array.from({ length: ticketCount }, () => String(a)).join(" + ");
+  const fullSum = Array.from({ length: b }, () => String(a)).join(" + ");
+  const mathText =
+    ticketCount >= b
+      ? mathPhase >= 2
+        ? `$${fullSum} = ${a} \\cdot ${b} = ${total}$`
+        : mathPhase >= 1
+          ? `$${fullSum} = ${a} \\cdot ${b}$`
+          : `$${fullSum}$`
+      : ticketCount > 1
+        ? `$${sumParts}$`
+        : null;
+  const mathAccent = ticketCount >= b && mathPhase >= 1;
 
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
@@ -250,13 +273,16 @@ function MultiplicarRepetido({
           }
         />
       </div>
-      {ticketCount >= b ? (
-        <p className={STAGE_MATH}>
-          <MathRenderer text={`$${sumParts} = ${a} \\cdot ${b} = ${total}$`} />
-        </p>
-      ) : ticketCount > 1 ? (
-        <p className={cn(STAGE_MATH, "text-[color:var(--stage-accent,#6ee7b7)]")}>
-          <MathRenderer text={`$${sumParts}$`} />
+      {mathText ? (
+        <p
+          className={cn(
+            STAGE_MATH,
+            "transition-[color,opacity] duration-500 ease-out",
+            !mathAccent && "text-[color:var(--stage-accent,#6ee7b7)]",
+          )}
+          aria-live="polite"
+        >
+          <MathRenderer text={mathText} />
         </p>
       ) : null}
     </div>
