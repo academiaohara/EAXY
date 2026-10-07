@@ -9,6 +9,7 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersistedStateContext";
 import type { PredictStep } from "@/lib/lesson/types";
+import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
 
 const step: PredictStep = {
   id: "test-predict",
@@ -64,5 +65,24 @@ describe("PredictStepView", () => {
     expect(onCheck).toHaveBeenCalledWith(
       expect.objectContaining({ correct: true, snapshot: expect.objectContaining({ kind: "predict" }) }),
     );
+  });
+
+  it("muestra feedback específico al fallar el menú de la distributiva", () => {
+    const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
+      (s) => s.id === "distributiva-predict",
+    ) as PredictStep;
+    const onCheck = vi.fn();
+    render(wrap(<PredictStepView step={menuStep} theme="paper" onCheck={onCheck} />), {
+      container: document.body,
+    });
+
+    const choice40 = screen
+      .getAllByRole("button")
+      .find((button) => button.textContent?.includes("40") && button.textContent.includes("€"));
+    expect(choice40).toBeDefined();
+    fireEvent.click(choice40!);
+    fireEvent.click(screen.getByTestId("lesson-check-button"));
+
+    expect(screen.getByText(/Ese solo cuenta los bocadillos/i)).toBeInTheDocument();
   });
 });

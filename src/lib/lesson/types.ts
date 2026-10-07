@@ -376,7 +376,12 @@ export type NarrateStep = LessonStepBase &
     mulDiv?: MulDivConfig;
   };
 
-export type PredictChoice = { id: string; label: string };
+export type PredictChoice = {
+  id: string;
+  label: string;
+  /** Mensaje tras comprobar si el alumno elige esta opción y no es la correcta. */
+  incorrectFeedback?: string;
+};
 
 export type PredictStep = LessonStepBase &
   StageStepFields &
