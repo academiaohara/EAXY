@@ -604,7 +604,7 @@ export function RevealStepView({
   return (
     <div data-testid="lesson-reveal-step">
       <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
-        {equation ? (
+        {equation && step.scene !== "conmutativa-producto" ? (
           <p className="text-center text-base text-ink-muted">
             <MathRenderer text={equation} />
           </p>
