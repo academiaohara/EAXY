@@ -33,7 +33,6 @@ export type PredictSnapshot = {
   choiceId?: string;
   isCorrect: boolean;
   revealPlayed?: boolean;
-  /** Escena multiplicar-entradas: entradas mostradas (5 o 6). */
   ticketCount?: number;
 };
 
