@@ -131,19 +131,8 @@ export function PredictStepView({
   const [checked, setChecked] = useState(Boolean(restored));
   const [isCorrect, setIsCorrect] = useState(restored?.isCorrect ?? false);
   const [reveal, setReveal] = useState(restored?.revealPlayed ?? false);
-  const isMultiplicarEntradas =
-    step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-entradas";
-  const entradasBase = step.mulDiv?.b ?? 5;
-  const [ticketCount, setTicketCount] = useState(() => {
-    if (restored?.ticketCount != null) {
-      return restored.ticketCount;
-    }
-    if (restored && isMultiplicarEntradas) {
-      return entradasBase + 1;
-    }
-    return entradasBase;
-  });
-  const showSixthQuestion = isMultiplicarEntradas && ticketCount > entradasBase;
+  const isMultiplicarSextaEntrada =
+    step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-sexta-entrada";
 
   const runCheck = useCallback(() => {
     if (checked) {
@@ -166,10 +155,9 @@ export function PredictStepView({
         choiceId: step.mode === "choice" ? choiceId : undefined,
         isCorrect: correct,
         revealPlayed: true,
-        ticketCount: isMultiplicarEntradas ? ticketCount : undefined,
       },
     });
-  }, [checked, choiceId, isMultiplicarEntradas, numericValue, onCheck, step, ticketCount]);
+  }, [checked, choiceId, numericValue, onCheck, step]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -177,23 +165,13 @@ export function PredictStepView({
     }
     const canSubmit =
       step.mode === "numeric" ? numericValue.trim().length > 0 : Boolean(choiceId);
-    const entradasReady = !isMultiplicarEntradas || showSixthQuestion;
     return {
       label: "Comprobar",
       onClick: runCheck,
-      disabled: !canSubmit || disabled || !entradasReady,
+      disabled: !canSubmit || disabled,
       testId: "lesson-check-button",
     };
-  }, [
-    checked,
-    choiceId,
-    disabled,
-    isMultiplicarEntradas,
-    numericValue,
-    runCheck,
-    showSixthQuestion,
-    step.mode,
-  ]);
+  }, [checked, choiceId, disabled, numericValue, runCheck, step.mode]);
 
   useRegisterLessonStepControl(control);
 
@@ -207,64 +185,59 @@ export function PredictStepView({
       />
     ) : null;
 
-  if (isMultiplicarEntradas && step.mulDiv) {
-    const entradasStage = (
+  if (isMultiplicarSextaEntrada && step.mulDiv) {
+    const sextaStage = (
       <StageModuleRenderer
         module="mul-div-naturales"
         stepId={step.id}
-        scene={step.scene ?? "multiplicar-entradas"}
-        mulDiv={{ ...step.mulDiv, scene: "multiplicar-entradas" }}
-        ticketCount={ticketCount}
-        onTicketCountChange={setTicketCount}
+        scene={step.scene ?? "multiplicar-sexta-entrada"}
+        mulDiv={{ ...step.mulDiv, scene: "multiplicar-sexta-entrada" }}
+        autoPlay
       />
     );
 
     return (
       <div data-testid="lesson-predict-step">
-        <StageShell
-          theme={theme}
-          definitionBox={step.definitionBox}
-          title={step.title}
-          stage={entradasStage}
-        >
-          {showSixthQuestion ? (
-            <>
-              <h3 className="lesson-idea-enter mb-4 text-center text-base font-semibold text-ink">
-                <MathRenderer text={step.question} />
-              </h3>
-              <div className="mx-auto flex max-w-md flex-col gap-2">
-                {(step.choices ?? []).map((choice) => (
-                  <button
-                    key={choice.id}
-                    type="button"
-                    disabled={disabled || checked}
-                    onClick={() => setChoiceId(choice.id)}
-                    className={cn(
-                      "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
-                      choiceId === choice.id
-                        ? "border-cobalt bg-cobalt-tint"
-                        : "border-slate-200 hover:border-cobalt/30",
-                    )}
-                    aria-pressed={choiceId === choice.id}
-                    aria-label={`${choice.id} euros`}
-                  >
-                    <MathRenderer text={choice.label} />
-                  </button>
-                ))}
-              </div>
-              {checked ? (
-                <div className="mt-4 space-y-2" role="status">
-                  <p className="text-center text-sm font-medium text-ink">
-                    {isCorrect ? "¡Correcto!" : "Casi: piensa en añadir una entrada más."}
-                  </p>
-                  {step.explanation ? (
-                    <p className="text-center text-sm text-ink-muted">
-                      <MathRenderer text={step.explanation} />
-                    </p>
-                  ) : null}
-                </div>
+        <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={sextaStage}>
+          <h3 className="mb-5 text-center text-base font-semibold text-ink">
+            <MathRenderer text={step.question} />
+          </h3>
+          <div className="mx-auto grid max-w-lg grid-cols-3 gap-3 sm:gap-4">
+            {(step.choices ?? []).map((choice) => (
+              <button
+                key={choice.id}
+                type="button"
+                disabled={disabled || checked}
+                onClick={() => setChoiceId(choice.id)}
+                className={cn(
+                  "group flex aspect-square min-h-[5.5rem] flex-col items-center justify-center rounded-2xl border-2 bg-white p-3 text-center shadow-sm transition duration-200",
+                  "hover:-translate-y-1 hover:border-cobalt/70 hover:shadow-lg",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-offset-2",
+                  choiceId === choice.id
+                    ? "border-cobalt bg-cobalt-tint ring-2 ring-cobalt/30 shadow-md"
+                    : "border-slate-200",
+                  checked && choiceId !== choice.id && "opacity-55",
+                )}
+                aria-pressed={choiceId === choice.id}
+                aria-label={`${choice.id} euros`}
+              >
+                <span className="text-lg font-bold text-ink transition group-hover:text-cobalt">
+                  <MathRenderer text={choice.label} />
+                </span>
+              </button>
+            ))}
+          </div>
+          {checked ? (
+            <div className="mt-5 space-y-2" role="status">
+              <p className="text-center text-sm font-medium text-ink">
+                {isCorrect ? "¡Correcto!" : "Casi: piensa en añadir una entrada más."}
+              </p>
+              {step.explanation ? (
+                <p className="text-center text-sm text-ink-muted">
+                  <MathRenderer text={step.explanation} />
+                </p>
               ) : null}
-            </>
+            </div>
           ) : null}
         </StageShell>
       </div>
