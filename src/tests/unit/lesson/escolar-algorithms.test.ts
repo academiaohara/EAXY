@@ -14,7 +14,10 @@ describe("escolar-algorithms", () => {
 
   it("genera producto 408 para 34 × 12", () => {
     const steps = buildMultiplicationAlgorithmSteps(34, 12);
+    expect(steps).toHaveLength(4);
     const last = steps[steps.length - 1]!;
     expect(last.total).toBe("408");
+    expect(last.rows[2]?.text).toBe("408");
+    expect(steps[0]?.highlightMultiplierDigitIndex).toBe(1);
   });
 });
