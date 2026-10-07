@@ -319,18 +319,18 @@ export function MultiplicacionManoScene({
 
   return (
     <div className="mx-auto w-fit space-y-2">
-      <div className="flex items-center justify-end gap-2 pl-1">
-        <StageStepControls
-          variant="embedded"
-          phase={phase}
-          stepCount={stepCount}
-          playing={playing}
-          onPhaseChange={setPhase}
-          onPlayingChange={setPlaying}
-          onRestart={handleRestart}
-        />
-      </div>
-      <div className="rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
+      <div className="rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 pb-3 pt-2 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
+        <div className="mb-2 flex justify-end">
+          <StageStepControls
+            variant="embedded"
+            phase={phase}
+            stepCount={stepCount}
+            playing={playing}
+            onPhaseChange={setPhase}
+            onPlayingChange={setPlaying}
+            onRestart={handleRestart}
+          />
+        </div>
         <div className="flex justify-end gap-1 tabular-nums">
           {mStr.split("").map((ch, i) => (
             <span key={`m-${i}`} className="inline-block w-[1.1ch] text-right">
