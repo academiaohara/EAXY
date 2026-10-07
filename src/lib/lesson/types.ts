@@ -65,6 +65,8 @@ export type StageStepFields = {
   definitionBox?: string;
   /** No cuenta para estrellas; se puede saltar sin bloquear la lección. */
   optional?: boolean;
+  /** Oculta el globo de speech del tutor en este paso. */
+  suppressTutorBubble?: boolean;
 };
 
 /**

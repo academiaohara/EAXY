@@ -5,7 +5,7 @@ import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 import {
-  buildDivisionAlgorithmSteps,
+  buildDivisionManoGuidedSteps,
   buildMultiplicationAlgorithmSteps,
   type DivisionAlgorithmStep,
   type MultiplicationResultRow,
@@ -124,67 +124,65 @@ function DivisionBracket({
   step: DivisionAlgorithmStep;
 }) {
   const dStr = String(dividend);
-  const qSlots = dStr.length;
-  const quotient = step.quotientDigits.padEnd(qSlots, " ");
+  const quotient = step.quotientDigits;
 
   return (
     <svg
-      viewBox="0 0 320 200"
-      className="mx-auto h-auto w-full max-w-md font-mono"
+      viewBox="0 0 320 210"
+      className="mx-auto h-auto w-full max-w-sm font-mono"
       role="img"
       aria-label={`División ${dividend} entre ${divisor}`}
     >
-      <text x="24" y="36" fill={MUTED} fontSize="13" fontFamily="ui-monospace, monospace">
-        cociente
-      </text>
-      {quotient.split("").map((ch, i) => (
-        <text
-          key={`q-${i}`}
-          x={120 + i * 22}
-          y="40"
-          fontSize="28"
-          fontWeight="700"
-          fill={step.highlightQuotientIndex === i ? ACCENT : INK}
-          className="transition-all duration-500"
-        >
-          {ch.trim() ? ch : ""}
-        </text>
-      ))}
-
-      <line x1="100" y1="52" x2="280" y2="52" stroke={MUTED} strokeWidth="2" />
-
-      <text x="24" y="88" fontSize="32" fontWeight="700" fill={INK}>
+      <text x="28" y="72" fontSize="34" fontWeight="700" fill={step.highlightWorking ? ACCENT : INK}>
         {dStr}
       </text>
 
       <path
-        d="M 108 56 L 108 168 L 280 168"
+        d="M 118 48 L 118 132 L 268 132"
         fill="none"
         stroke={ACCENT}
         strokeWidth="2.5"
         strokeLinecap="round"
       />
-      <text x="118" y="88" fontSize="32" fontWeight="700" fill={ACCENT}>
+      <text x="132" y="72" fontSize="34" fontWeight="700" fill={ACCENT}>
         {divisor}
       </text>
 
+      <text x="132" y="108" fontSize="30" fontWeight="700" fill={INK}>
+        {quotient.split("").map((ch, i) => (
+          <tspan
+            key={`q-${i}`}
+            fill={step.highlightQuotientIndex === i ? ACCENT : INK}
+          >
+            {ch}
+          </tspan>
+        ))}
+      </text>
+
       {step.working ? (
-        <text x="24" y="128" fontSize="26" fontWeight="600" fill={INK} className="animate-in fade-in duration-500">
+        <text
+          x="28"
+          y="118"
+          fontSize="26"
+          fontWeight="600"
+          fill={step.highlightWorking ? ACCENT : INK}
+          className="transition-all duration-500"
+        >
           {step.working}
         </text>
       ) : null}
       {step.subtract ? (
         <>
-          <line x1="16" y1="138" x2="96" y2="138" stroke={MUTED} strokeWidth="1.5" strokeDasharray="4 3" />
-          <text x="24" y="158" fontSize="24" fill={MUTED}>
+          <line x1="20" y1="142" x2="108" y2="142" stroke={MUTED} strokeWidth="1.5" />
+          <text x="28" y="162" fontSize="24" fill={MUTED}>
             −{step.subtract}
           </text>
         </>
       ) : null}
       {step.remainderLine !== undefined ? (
         <>
-          <line x1="16" y1="168" x2="96" y2="168" stroke={MUTED} strokeWidth="2" />
-          <text x="24" y="188" fontSize="26" fontWeight="700" fill={ACCENT}>
+          <line x1="20" y1="172" x2="108" y2="172" stroke={MUTED} strokeWidth="2" />
+          <text x="28" y="192" fontSize="26" fontWeight="700" fill={ACCENT}>
             {step.remainderLine}
           </text>
         </>
@@ -209,23 +207,44 @@ export function DivisionManoScene({
   onAnimationComplete?: () => void;
 }) {
   const steps = useMemo(
-    () => buildDivisionAlgorithmSteps(dividend, divisor),
+    () => buildDivisionManoGuidedSteps(dividend, divisor),
     [dividend, divisor],
   );
-  const { phase } = useControllableStepPlayback({
-    autoPlay,
+  const { phase, setPhase, playing, setPlaying, stepCount } = useControllableStepPlayback({
+    autoPlay: false,
     reduced,
     stepCount: steps.length,
     onReadyChange,
     onAnimationComplete,
-    intervalMs: 1600,
+    intervalMs: 1300,
   });
   const step = steps[phase]!;
 
+  const handleRestart = useCallback(() => {
+    setPhase(0);
+    setPlaying(false);
+    onReadyChange?.(false);
+  }, [onReadyChange, setPhase, setPlaying]);
+
   return (
-    <div className="space-y-4">
-      <DivisionBracket dividend={dividend} divisor={divisor} step={step} />
-      <p className="text-center text-sm leading-relaxed text-[color:var(--stage-muted,#64748b)]">
+    <div className="mx-auto flex w-fit max-w-full flex-col gap-2">
+      <StageStepControls
+        variant="embedded"
+        className="self-end"
+        phase={phase}
+        stepCount={stepCount}
+        playing={playing}
+        onPhaseChange={setPhase}
+        onPlayingChange={setPlaying}
+        onRestart={handleRestart}
+      />
+      <div className="min-h-[13.5rem] w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3">
+        <DivisionBracket dividend={dividend} divisor={divisor} step={step} />
+      </div>
+      <p
+        className="min-h-[4.5rem] max-w-md text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
+        aria-live="polite"
+      >
         <MathRenderer text={step.caption} />
       </p>
     </div>
@@ -379,42 +398,19 @@ export function MultiplicacionManoScene({
 }
 
 export function DivisionIdentidadScene({
-  autoPlay,
-  reduced,
   onReadyChange,
 }: {
   autoPlay?: boolean;
   reduced: boolean;
   onReadyChange?: (ready: boolean) => void;
 }) {
-  const [phase, setPhase] = useState(reduced ? 2 : 0);
-
   useEffect(() => {
-    if (!autoPlay || reduced) {
-      setPhase(2);
-      onReadyChange?.(true);
-      return;
-    }
-    onReadyChange?.(false);
-    setPhase(0);
-    const t1 = window.setTimeout(() => setPhase(1), 900);
-    const t2 = window.setTimeout(() => {
-      setPhase(2);
-      onReadyChange?.(true);
-    }, 1800);
-    return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-    };
-  }, [autoPlay, onReadyChange, reduced]);
+    onReadyChange?.(true);
+  }, [onReadyChange]);
 
   const mini = (D: number, d: number, c: number, r: number, exact: boolean) => (
     <div className="flex flex-col items-center gap-2">
       <svg viewBox="0 0 120 100" className="h-24 w-28 font-mono">
-        <text x="8" y="22" fontSize="14" fill={exact ? ACCENT : "#fbbf24"} fontWeight="700">
-          {String(c).padStart(2, " ")}
-        </text>
-        <line x1="4" y1="28" x2="112" y2="28" stroke={MUTED} strokeWidth="1.5" />
         <text x="8" y="48" fontSize="16" fill={INK} fontWeight="700">
           {D}
         </text>
@@ -422,46 +418,39 @@ export function DivisionIdentidadScene({
         <text x="58" y="48" fontSize="16" fill={exact ? ACCENT : "#fbbf24"} fontWeight="700">
           {d}
         </text>
-        <text x="8" y="72" fontSize="14" fill={MUTED}>
-          {r === 0 ? "0" : String(r)}
+        <text x="58" y="72" fontSize="14" fill={exact ? ACCENT : "#fbbf24"} fontWeight="700">
+          {c}
         </text>
+        {!exact ? (
+          <text x="8" y="72" fontSize="14" fill={MUTED}>
+            r={r}
+          </text>
+        ) : null}
       </svg>
-      <MathRenderer
-        text={
-          exact
-            ? `$D = d \\cdot c$`
-            : `$D = d \\cdot c + r$`
-        }
-      />
     </div>
   );
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2" aria-label="División exacta y división entera">
-      <div
-        className={cn(
-          "rounded-xl border-2 p-4 transition duration-700",
-          phase >= 1 ? "border-emerald-400/50 bg-emerald-500/10" : "border-slate-600/40 opacity-70",
-        )}
-      >
-        <p className="mb-2 text-sm font-semibold text-emerald-300">Exacta · resto $0$</p>
-        {mini(150, 6, 25, 0, true)}
-        <p className="mt-2 text-center text-xs text-[color:var(--stage-muted)]">
-          <MathRenderer text={`$150 = 6 \\cdot 25$`} />
-        </p>
+    <div className="space-y-3" aria-label="División exacta y división entera">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border-2 border-emerald-400/50 bg-emerald-500/15 p-4">
+          <p className="mb-2 text-sm font-semibold text-emerald-200">Exacta</p>
+          {mini(150, 6, 25, 0, true)}
+          <p className="mt-2 text-center text-xs leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
+            <MathRenderer text={`$150 : 6 = 25$, resto $0$ → $150 = 6 \\cdot 25$.`} />
+          </p>
+        </div>
+        <div className="rounded-xl border-2 border-amber-400/50 bg-amber-500/15 p-4">
+          <p className="mb-2 text-sm font-semibold text-amber-100">Entera</p>
+          {mini(152, 6, 25, 2, false)}
+          <p className="mt-2 text-center text-xs leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
+            <MathRenderer text={`$152$ bombones en $6$ cajas → $25$ en cada una y **sobran 2** → $152 = 6 \\cdot 25 + 2$.`} />
+          </p>
+        </div>
       </div>
-      <div
-        className={cn(
-          "rounded-xl border-2 p-4 transition duration-700",
-          phase >= 2 ? "border-amber-400/50 bg-amber-500/10" : "border-slate-600/40 opacity-60",
-        )}
-      >
-        <p className="mb-2 text-sm font-semibold text-amber-200">Entera · resto $\\neq 0$</p>
-        {mini(43, 8, 5, 3, false)}
-        <p className="mt-2 text-center text-xs text-[color:var(--stage-muted)]">
-          <MathRenderer text={`$43 = 8 \\cdot 5 + 3$`} />
-        </p>
-      </div>
+      <p className="text-center text-xs leading-relaxed text-[color:var(--stage-muted,#94a3b8)]">
+        El resto siempre es menor que el divisor: si sobraran $6$, podrías llenar otra caja.
+      </p>
     </div>
   );
 }

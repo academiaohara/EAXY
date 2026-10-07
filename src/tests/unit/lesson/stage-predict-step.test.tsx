@@ -67,6 +67,25 @@ describe("PredictStepView", () => {
     );
   });
 
+  it("muestra feedback específico al fallar el menú de la distributiva", () => {
+    const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
+      (s) => s.id === "distributiva-predict",
+    ) as PredictStep;
+    const onCheck = vi.fn();
+    render(wrap(<PredictStepView step={menuStep} theme="paper" onCheck={onCheck} />), {
+      container: document.body,
+    });
+
+    const choice40 = screen
+      .getAllByRole("button")
+      .find((button) => button.textContent?.includes("40") && button.textContent.includes("€"));
+    expect(choice40).toBeDefined();
+    fireEvent.click(choice40!);
+    fireEvent.click(screen.getByTestId("lesson-check-button"));
+
+    expect(screen.getByText(/Ese solo cuenta los bocadillos/i)).toBeInTheDocument();
+  });
+
   it("muestra pista opcional y feedback al fallar reparte el factor", () => {
     const factorStep = multiplicacionDivisionNaturalesLesson.steps.find(
       (s) => s.id === "distributiva-equivalencia",
