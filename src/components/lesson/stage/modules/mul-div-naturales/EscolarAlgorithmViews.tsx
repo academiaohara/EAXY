@@ -318,19 +318,18 @@ export function MultiplicacionManoScene({
   }, [setPhase, setPlaying]);
 
   return (
-    <div className="mx-auto w-fit space-y-2">
-      <div className="rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 pb-3 pt-2 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
-        <div className="mb-2 flex justify-end">
-          <StageStepControls
-            variant="embedded"
-            phase={phase}
-            stepCount={stepCount}
-            playing={playing}
-            onPhaseChange={setPhase}
-            onPlayingChange={setPlaying}
-            onRestart={handleRestart}
-          />
-        </div>
+    <div className="flex w-fit max-w-full flex-col items-stretch gap-2">
+      <StageStepControls
+        variant="embedded"
+        className="self-end"
+        phase={phase}
+        stepCount={stepCount}
+        playing={playing}
+        onPhaseChange={setPhase}
+        onPlayingChange={setPlaying}
+        onRestart={handleRestart}
+      />
+      <div className="w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-3 pb-3 pt-2 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
         <div className="flex justify-end gap-1 tabular-nums">
           {mStr.split("").map((ch, i) => (
             <span key={`m-${i}`} className="inline-block w-[1.1ch] text-right">
@@ -366,12 +365,12 @@ export function MultiplicacionManoScene({
         </div>
       </div>
       <p
-        className="max-w-md text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
+        className="max-w-[min(100%,20rem)] text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
         aria-live="polite"
       >
         <MathRenderer text={step.caption} />
       </p>
-      <p className="max-w-md text-center text-xs text-[color:var(--stage-muted,#94a3b8)]">
+      <p className="max-w-[min(100%,20rem)] text-center text-xs text-[color:var(--stage-muted,#94a3b8)]">
         Avanza con → a tu ritmo; ▶ reproduce sola si prefieres.
       </p>
     </div>

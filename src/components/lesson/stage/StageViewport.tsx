@@ -8,13 +8,22 @@ type StageViewportProps = {
   theme: LessonStageTheme;
   children?: ReactNode;
   className?: string;
+  /** Clases extra en la superficie del escenario (p. ej. ancho compacto). */
+  stageClassName?: string;
   /** Teoría o definición encima del escenario */
   header?: ReactNode;
   /** Área del módulo SVG / animación */
   stage?: ReactNode;
 };
 
-export function StageViewport({ theme, children, className, header, stage }: StageViewportProps) {
+export function StageViewport({
+  theme,
+  children,
+  className,
+  stageClassName,
+  header,
+  stage,
+}: StageViewportProps) {
   return (
     <div
       className={cn(
@@ -31,6 +40,7 @@ export function StageViewport({ theme, children, className, header, stage }: Sta
             "w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
             theme === "board" &&
               "border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+            stageClassName,
           )}
           data-testid="lesson-stage-surface"
         >
