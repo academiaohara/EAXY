@@ -8,6 +8,7 @@ import {
   buildDivisionAlgorithmSteps,
   buildMultiplicationAlgorithmSteps,
   type DivisionAlgorithmStep,
+  type MultiplicationResultRow,
 } from "@/components/lesson/stage/modules/mul-div-naturales/escolar-algorithms";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 
@@ -231,6 +232,54 @@ export function DivisionManoScene({
   );
 }
 
+function MultiplicationResultRowLine({
+  row,
+  width,
+  isTotal,
+}: {
+  row: MultiplicationResultRow;
+  width: number;
+  isTotal: boolean;
+}) {
+  const padded = row.text.padStart(width, " ");
+  const chars = padded.split("");
+
+  return (
+    <div
+      className={cn(
+        "flex h-[2.35rem] items-center justify-end gap-1 tabular-nums transition-all duration-500",
+        row.revealed
+          ? isTotal
+            ? "text-[color:var(--stage-chalk,#f8fafc)] opacity-100"
+            : "text-[color:var(--stage-accent,#6ee7b7)] opacity-100"
+          : "text-[color:var(--stage-muted,#94a3b8)] opacity-[0.14]",
+      )}
+      aria-hidden={!row.revealed && row.text.length === 0}
+    >
+      {chars.map((ch, i) => {
+        const isHighlightZero =
+          row.revealed &&
+          row.highlightTrailingZero &&
+          ch === "0" &&
+          i === chars.length - 1 &&
+          chars.slice(0, i).some((c) => c !== " ");
+        return (
+          <span
+            key={`${row.text}-${i}`}
+            className={cn(
+              "inline-block w-[1.1ch] text-right",
+              isHighlightZero &&
+                "rounded-sm bg-[color:var(--stage-accent,#6ee7b7)]/25 text-[color:var(--stage-chalk,#f8fafc)] ring-1 ring-[color:var(--stage-accent,#6ee7b7)]",
+            )}
+          >
+            {ch === " " && !row.revealed ? "\u00a0" : ch === " " ? "\u00a0" : ch}
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
 export function MultiplicacionManoScene({
   multiplicand,
   multiplier,
@@ -261,11 +310,26 @@ export function MultiplicacionManoScene({
   const step = steps[phase]!;
   const mStr = String(multiplicand);
   const tStr = String(multiplier);
-  const width = Math.max(mStr.length, tStr.length) + 2;
+  const width = Math.max(mStr.length, tStr.length, ...step.rows.map((r) => r.text.length)) + 1;
+
+  const handleRestart = useCallback(() => {
+    setPhase(0);
+    setPlaying(true);
+  }, [setPhase, setPlaying]);
 
   return (
-    <div className="space-y-4">
-      <div className="mx-auto w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
+    <div className="space-y-3">
+      <div className="relative mx-auto w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 pb-3 pt-9 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
+        <StageStepControls
+          variant="embedded"
+          className="absolute right-2 top-2"
+          phase={phase}
+          stepCount={stepCount}
+          playing={playing}
+          onPhaseChange={setPhase}
+          onPlayingChange={setPlaying}
+          onRestart={handleRestart}
+        />
         <div className="flex justify-end gap-1 tabular-nums">
           {mStr.split("").map((ch, i) => (
             <span key={`m-${i}`} className="inline-block w-[1.1ch] text-right">
@@ -276,49 +340,34 @@ export function MultiplicacionManoScene({
         <div className="flex justify-end gap-1 tabular-nums text-[color:var(--stage-accent,#6ee7b7)]">
           <span className="mr-1 text-lg">×</span>
           {tStr.split("").map((ch, i) => (
-            <span key={`t-${i}`} className="inline-block w-[1.1ch] text-right">
+            <span
+              key={`t-${i}`}
+              className={cn(
+                "inline-block w-[1.1ch] text-right transition-colors duration-300",
+                step.highlightMultiplierDigitIndex === i &&
+                  "rounded-sm bg-[color:var(--stage-accent,#6ee7b7)]/25 text-[color:var(--stage-chalk,#f8fafc)] ring-1 ring-[color:var(--stage-accent,#6ee7b7)]",
+              )}
+            >
               {ch}
             </span>
           ))}
         </div>
         <div className="my-1 border-t-2 border-[color:var(--stage-muted,#94a3b8)]" />
-        {step.partialLines.map((line, row) => (
-          <div
-            key={`p-${row}`}
-            className={cn(
-              "flex justify-end gap-1 tabular-nums transition-opacity duration-500",
-              line.tone === "accent" ? "text-[color:var(--stage-accent,#6ee7b7)]" : "text-[color:var(--stage-muted,#94a3b8)]",
-              step.highlightRow !== undefined && row > step.highlightRow ? "opacity-30" : "opacity-100",
-            )}
-          >
-            {line.text.padStart(width, " ").split("").map((ch, i) => (
-              <span key={`${row}-${i}`} className="inline-block w-[1.1ch] text-right">
-                {ch === " " ? "\u00a0" : ch}
-              </span>
-            ))}
-          </div>
-        ))}
-        {step.total ? (
-          <>
-            <div className="my-1 border-t-2 border-[color:var(--stage-accent,#6ee7b7)]" />
-            <div className="flex justify-end gap-1 tabular-nums text-[color:var(--stage-chalk,#f8fafc)]">
-              {step.total.padStart(width, " ").split("").map((ch, i) => (
-                <span key={`tot-${i}`} className="inline-block w-[1.1ch] text-right">
-                  {ch === " " ? "\u00a0" : ch}
-                </span>
-              ))}
+        <div className="min-h-[7.05rem]">
+          {step.rows.map((row, rowIndex) => (
+            <div key={`row-${rowIndex}`}>
+              {rowIndex === 2 ? (
+                <div className="my-1 border-t-2 border-[color:var(--stage-accent,#6ee7b7)]/45" />
+              ) : null}
+              <MultiplicationResultRowLine row={row} width={width} isTotal={rowIndex === 2} />
             </div>
-          </>
-        ) : null}
+          ))}
+        </div>
       </div>
-      <StageStepControls
-        phase={phase}
-        stepCount={stepCount}
-        playing={playing}
-        onPhaseChange={setPhase}
-        onPlayingChange={setPlaying}
-      />
-      <p className="text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
+      <p
+        className="min-h-[3.25rem] text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
+        aria-live="polite"
+      >
         <MathRenderer text={step.caption} />
       </p>
     </div>
