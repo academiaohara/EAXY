@@ -314,15 +314,14 @@ export function MultiplicacionManoScene({
 
   const handleRestart = useCallback(() => {
     setPhase(0);
-    setPlaying(true);
+    setPlaying(false);
   }, [setPhase, setPlaying]);
 
   return (
-    <div className="space-y-3">
-      <div className="relative mx-auto w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 pb-3 pt-9 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
+    <div className="mx-auto w-fit space-y-2">
+      <div className="flex items-center justify-end gap-2 pl-1">
         <StageStepControls
           variant="embedded"
-          className="absolute right-2 top-2"
           phase={phase}
           stepCount={stepCount}
           playing={playing}
@@ -330,6 +329,8 @@ export function MultiplicacionManoScene({
           onPlayingChange={setPlaying}
           onRestart={handleRestart}
         />
+      </div>
+      <div className="rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
         <div className="flex justify-end gap-1 tabular-nums">
           {mStr.split("").map((ch, i) => (
             <span key={`m-${i}`} className="inline-block w-[1.1ch] text-right">
@@ -365,10 +366,13 @@ export function MultiplicacionManoScene({
         </div>
       </div>
       <p
-        className="min-h-[3.25rem] text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
+        className="max-w-md text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
         aria-live="polite"
       >
         <MathRenderer text={step.caption} />
+      </p>
+      <p className="max-w-md text-center text-xs text-[color:var(--stage-muted,#94a3b8)]">
+        Avanza con → a tu ritmo; ▶ reproduce sola si prefieres.
       </p>
     </div>
   );
