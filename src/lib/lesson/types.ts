@@ -65,6 +65,8 @@ export type StageStepFields = {
   definitionBox?: string;
   /** No cuenta para estrellas; se puede saltar sin bloquear la lección. */
   optional?: boolean;
+  /** Oculta el globo de speech del tutor en este paso. */
+  suppressTutorBubble?: boolean;
 };
 
 /**
@@ -376,7 +378,11 @@ export type NarrateStep = LessonStepBase &
     mulDiv?: MulDivConfig;
   };
 
-export type PredictChoice = { id: string; label: string };
+export type PredictChoice = {
+  id: string;
+  label: string;
+  incorrectFeedback?: string;
+};
 
 export type PredictStep = LessonStepBase &
   StageStepFields &

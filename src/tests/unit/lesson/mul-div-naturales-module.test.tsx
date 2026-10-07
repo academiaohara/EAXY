@@ -24,7 +24,7 @@ describe("MulDivNaturalesModule", () => {
 
   it("reparto manual avisa cuando las cajas están llenas", async () => {
     const onReady = vi.fn();
-    let counts = [0, 0, 0];
+    let counts = [0, 0, 0, 0];
     const onCounts = vi.fn((next: number[]) => {
       counts = next;
     });
@@ -32,36 +32,37 @@ describe("MulDivNaturalesModule", () => {
       <MulDivNaturalesModule
         stepId="test"
         scene="reparto-manual"
-        total={6}
-        boxes={3}
-        perBox={2}
+        total={60}
+        boxes={4}
+        perBox={15}
         boxCounts={counts}
         onBoxCountsChange={onCounts}
         onReadyChange={onReady}
       />,
     );
-    const clickAdd = (index: number) => {
-      const addButtons = screen.getAllByRole("button", { name: /Añadir un bombón/i });
-      fireEvent.click(addButtons[index]!);
+    const rerenderModule = () =>
       rerender(
         <MulDivNaturalesModule
           stepId="test"
           scene="reparto-manual"
-          total={6}
-          boxes={3}
-          perBox={2}
+          total={60}
+          boxes={4}
+          perBox={15}
           boxCounts={counts}
           onBoxCountsChange={onCounts}
           onReadyChange={onReady}
         />,
       );
+    const addToBox = (boxIndex: number, amount: number) => {
+      fireEvent.click(
+        screen.getByRole("button", { name: `Añadir ${amount} bombones a la caja ${boxIndex + 1}` }),
+      );
+      rerenderModule();
     };
-    clickAdd(0);
-    clickAdd(0);
-    clickAdd(1);
-    clickAdd(1);
-    clickAdd(2);
-    clickAdd(2);
+    for (let i = 0; i < 4; i++) {
+      addToBox(i, 10);
+      addToBox(i, 5);
+    }
     expect(onCounts).toHaveBeenCalled();
     expect(onReady).toHaveBeenLastCalledWith(true);
   });

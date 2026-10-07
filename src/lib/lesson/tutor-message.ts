@@ -40,6 +40,10 @@ export function getTutorSpeechQueue(
   step: LessonStep,
   feedback: FeedbackStatus | null,
 ): string[] {
+  if ("suppressTutorBubble" in step && step.suppressTutorBubble) {
+    return [];
+  }
+
   if (feedback) {
     return [getFeedbackTutorMessage(feedback)];
   }
