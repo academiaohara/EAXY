@@ -100,7 +100,9 @@ export function NarrateStepView({
             : undefined
       }
       mulDiv={step.mulDiv}
-      autoPlay={step.module === "mul-div-naturales"}
+      autoPlay={
+        step.module === "mul-div-naturales" && step.scene !== "multiplicacion-mano"
+      }
       onReadyChange={setReady}
     />
   );
