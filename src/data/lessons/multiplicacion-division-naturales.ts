@@ -103,16 +103,33 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-equivalencia",
       type: "predict",
-      title: "Misma cantidad",
-      question: "¿Qué expresión tiene **el mismo valor** que $8 \\cdot (5 + 2)$?",
+      title: "Reparte el factor",
+      question: "¿Qué expresión tiene el mismo valor que $6 \\cdot (4 + 3)$?",
       mode: "choice",
+      shuffleChoices: true,
+      hintHiddenUntilRequested: true,
+      hint: "El número de fuera multiplica a **cada sumando** del paréntesis.",
       choices: [
-        { id: "a", label: "$8 \\cdot 5 + 8 \\cdot 2$" },
-        { id: "b", label: "$8 \\cdot 5 + 2$" },
-        { id: "c", label: "$(8 + 5) \\cdot 2$" },
+        {
+          id: "distribuye-ambos",
+          label: "$6 \\cdot 4 + 6 \\cdot 3$",
+        },
+        {
+          id: "solo-primero",
+          label: "$6 \\cdot 4 + 3$",
+          incorrectFeedback:
+            "El $6$ tiene que multiplicar a los dos sumandos, no solo al primero. Aquí vale $24 + 3 = 27$, y $6 \\cdot 7 = 42$.",
+        },
+        {
+          id: "factores-cruzados",
+          label: "$6 \\cdot 4 + 4 \\cdot 3$",
+          incorrectFeedback:
+            "Cada sumando se multiplica por el mismo número de fuera: el $6$. Aquí vale $24 + 12 = 36$, y no $42$.",
+        },
       ],
-      correctChoiceId: "a",
-      explanation: "$40 + 16 = 56$: el $8$ multiplica a **cada** sumando.",
+      correctChoiceId: "distribuye-ambos",
+      explanation:
+        "Correcto. $6 \\cdot (4 + 3) = 6 \\cdot 7 = 42$ y $6 \\cdot 4 + 6 \\cdot 3 = 24 + 18 = 42$. Salen igual.",
     },
     {
       id: "dividir-predict",

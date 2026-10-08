@@ -393,6 +393,10 @@ export type PredictStep = LessonStepBase &
     correctAnswers?: string[];
     choices?: PredictChoice[];
     correctChoiceId?: string;
+    /** Mezcla las opciones con orden estable según el id del paso. */
+    shuffleChoices?: boolean;
+    /** La pista solo aparece al pulsar el botón «?». */
+    hintHiddenUntilRequested?: boolean;
     /** Tras responder, reproducir escena de refuerzo (p. ej. suma completa). */
     module?: StageModuleId;
     scene?: string;
