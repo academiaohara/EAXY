@@ -85,6 +85,47 @@ export function buildDivisionManoGuidedSteps(
   dividend: number,
   divisor: number,
 ): DivisionAlgorithmStep[] {
+  if (dividend === 152 && divisor === 6) {
+    return [
+      {
+        caption:
+          "Cogemos las primeras cifras: **15**. ¿Cuántas veces cabe **6** en **15**? **2** veces ($2 \\cdot 6 = 12$).",
+        quotientDigits: "2",
+        working: "15",
+        highlightWorking: true,
+        highlightQuotientIndex: 0,
+      },
+      {
+        caption: "Restamos: $15 - 12 = 3$.",
+        quotientDigits: "2",
+        working: "15",
+        subtract: "12",
+        remainderLine: "3",
+      },
+      {
+        caption: "Bajamos el **2**: queda **32**.",
+        quotientDigits: "2",
+        working: "32",
+        highlightWorking: true,
+      },
+      {
+        caption:
+          "¿Cuántas veces cabe **6** en **32**? **5** veces ($5 \\cdot 6 = 30$).",
+        quotientDigits: "25",
+        working: "32",
+        subtract: "30",
+        highlightQuotientIndex: 1,
+      },
+      {
+        caption:
+          "Restamos: $32 - 30 = 2$. Cociente **25**, resto **2**. Comprobación: $25 \\cdot 6 + 2 = 152$.",
+        quotientDigits: "25",
+        working: "32",
+        remainderLine: "2",
+      },
+    ];
+  }
+
   if (dividend !== 150 || divisor !== 6) {
     return buildDivisionAlgorithmSteps(dividend, divisor);
   }

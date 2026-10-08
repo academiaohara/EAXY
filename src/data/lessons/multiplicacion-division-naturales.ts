@@ -35,16 +35,6 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       explanation: "$8 \\cdot 6 = 8 \\cdot 5 + 8 = 48$ €.",
     },
     {
-      id: "multiplicacion-mano-narrate",
-      type: "narrate",
-      title: "Multiplicar a mano",
-      definitionBox:
-        "Con **varias cifras**, multiplica por cada cifra del segundo factor y **suma** las filas (desplazando cuando corresponda).",
-      module: "mul-div-naturales",
-      scene: "multiplicacion-mano",
-      mulDiv: { scene: "multiplicacion-mano", a: 34, b: 12 },
-    },
-    {
       id: "conmutativa-reveal",
       type: "reveal",
       title: "Conmutativa",
@@ -88,14 +78,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       correctChoiceId: "56",
       hint: "Suma lo que cuesta un menú completo: bocadillo más bebida.",
       explanation:
-        "Puedes pensar: cada menú cuesta $5 + 2 = 7$ €, así que $8 \\cdot 7 = 56$ €. O también: $8 \\cdot 5 = 40$ € de bocadillos y $8 \\cdot 2 = 16$ € de bebidas, $40 + 16 = 56$ €. ¡Salen igual!",
-    },
-    {
-      id: "distributiva-narrate",
-      type: "narrate",
-      title: "Distributiva",
-      definitionBox:
-        "Multiplicar una **suma** es multiplicar **cada sumando** y volver a sumar: $a(b + c) = ab + ac$.",
+        "Multiplicar una **suma** es multiplicar **cada sumando** y volver a sumar: $8 \\cdot (5 + 2) = 8 \\cdot 5 + 8 \\cdot 2 = 56$ €.",
       module: "mul-div-naturales",
       scene: "distributiva-bloques",
       mulDiv: { scene: "distributiva-bloques", a: 8, b: 5, c: 2 },
@@ -132,28 +115,14 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
         "Correcto. $6 \\cdot (4 + 3) = 6 \\cdot 7 = 42$ y $6 \\cdot 4 + 6 \\cdot 3 = 24 + 18 = 42$. Salen igual.",
     },
     {
-      id: "dividir-predict",
-      type: "predict",
-      title: "Antes de abrir las cajas",
-      question:
-        "Se reparten $150$ bombones en $6$ cajas **iguales**. ¿Cuántos bombones irán en **cada** caja?",
-      mode: "choice",
-      choices: [
-        {
-          id: "20",
-          label: "$20$",
-          incorrectFeedback: "$20 \\cdot 6 = 120$, te quedan $30$ bombones sin repartir.",
-        },
-        { id: "25", label: "$25$" },
-        {
-          id: "30",
-          label: "$30$",
-          incorrectFeedback: "$30 \\cdot 6 = 180$, te pasas.",
-        },
-      ],
-      correctChoiceId: "25",
-      explanation:
-        "Piensa en la multiplicación: ¿qué número por $6$ da $150$? $25 \\cdot 6 = 150$, así que $150 : 6 = 25$.",
+      id: "multiplicacion-mano-narrate",
+      type: "narrate",
+      title: "Multiplicar a mano",
+      definitionBox:
+        "Con **varias cifras**, multiplica por cada cifra del segundo factor y **suma** las filas (desplazando cuando corresponda). La distributiva lo explica: $34 \\cdot 12 = 34 \\cdot 10 + 34 \\cdot 2$.",
+      module: "mul-div-naturales",
+      scene: "multiplicacion-mano",
+      mulDiv: { scene: "multiplicacion-mano", a: 34, b: 12 },
     },
     {
       id: "dividir-narrate",
@@ -173,12 +142,13 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
         "En la división **cifra a cifra**: escribe el cociente, multiplica, resta y **baja** la siguiente cifra del dividendo.",
       module: "mul-div-naturales",
       scene: "division-mano",
-      mulDiv: { scene: "division-mano", dividend: 150, divisor: 6 },
+      mulDiv: { scene: "division-mano", dividend: 152, divisor: 6 },
     },
     {
       id: "dividir-explore",
       type: "explore",
       title: "Reparte tú",
+      optional: true,
       question: "Reparte $60$ bombones en $4$ cajas **iguales** hasta vaciar el montón.",
       module: "mul-div-naturales",
       scene: "reparto-manual",
@@ -193,7 +163,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       type: "narrate",
       title: "Exacta y entera",
       definitionBox:
-        "Si el **resto es 0**, la división es **exacta** ($D = d \\cdot c$). Si sobra algo, es **entera** ($D = d \\cdot c + r$, con $r < d$).",
+        "Si el **resto es 0**, la división es **exacta** ($D = d \\cdot c$). Si sobra algo, es **entera**: $D = d \\cdot c + r$ con **$r < d$**.",
       module: "mul-div-naturales",
       scene: "exacta-entera",
       mulDiv: { scene: "exacta-entera" },
