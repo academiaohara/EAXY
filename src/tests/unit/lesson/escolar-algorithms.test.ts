@@ -13,6 +13,15 @@ describe("escolar-algorithms", () => {
     expect(last.caption).toMatch(/Comprobación/i);
   });
 
+  it("genera cociente 25 y resto 2 para 152 : 6", () => {
+    const steps = buildDivisionManoGuidedSteps(152, 6);
+    expect(steps).toHaveLength(5);
+    const last = steps[steps.length - 1]!;
+    expect(last.quotientDigits).toBe("25");
+    expect(last.remainderLine).toBe("2");
+    expect(last.caption).toMatch(/resto/i);
+  });
+
   it("genera producto 408 para 34 × 12", () => {
     const steps = buildMultiplicationAlgorithmSteps(34, 12);
     expect(steps).toHaveLength(4);

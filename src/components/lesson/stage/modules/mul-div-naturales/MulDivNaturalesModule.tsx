@@ -431,10 +431,6 @@ function ConmutativaProducto({
   const [formulaPulse, setFormulaPulse] = useState(false);
   const rotateTimerRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    onReadyChange?.(true);
-  }, [onReadyChange]);
-
   useEffect(
     () => () => {
       if (rotateTimerRef.current !== null) {
@@ -451,6 +447,7 @@ function ConmutativaProducto({
     setRotating(true);
     setSwapped((current) => !current);
     setHasSwappedOnce(true);
+    onReadyChange?.(true);
     setFormulaPulse(true);
     if (rotateTimerRef.current !== null) {
       window.clearTimeout(rotateTimerRef.current);
@@ -460,7 +457,7 @@ function ConmutativaProducto({
       rotateTimerRef.current = null;
     }, reduced ? 0 : COMMUTATIVE_ROTATE_MS);
     window.setTimeout(() => setFormulaPulse(false), reduced ? 0 : 600);
-  }, [reduced, rotating]);
+  }, [onReadyChange, reduced, rotating]);
 
   const leftFactor = swapped ? b : a;
   const rightFactor = swapped ? a : b;
