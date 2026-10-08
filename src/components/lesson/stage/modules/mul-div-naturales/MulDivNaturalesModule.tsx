@@ -394,6 +394,20 @@ function MultiplicarRepetido({
   );
 }
 
+const COMMUTATIVE_CELL_REM = 2.75;
+const COMMUTATIVE_GAP_REM = 0.25;
+const COMMUTATIVE_PAD_REM = 0.5;
+const COMMUTATIVE_ROTATE_MS = 800;
+
+/** Cuadrado fijo que cabe el bloque en 0° y en 90° (filas × columnas = a × b). */
+function commutativeBlockArenaRem(rowCount: number, colCount: number) {
+  const gridWidthRem =
+    colCount * COMMUTATIVE_CELL_REM + Math.max(0, colCount - 1) * COMMUTATIVE_GAP_REM;
+  const gridHeightRem =
+    rowCount * COMMUTATIVE_CELL_REM + Math.max(0, rowCount - 1) * COMMUTATIVE_GAP_REM;
+  return Math.max(gridWidthRem, gridHeightRem) + COMMUTATIVE_PAD_REM * 2;
+}
+
 function ConmutativaProducto({
   a,
   b,
@@ -406,122 +420,148 @@ function ConmutativaProducto({
   reduced: boolean;
 }) {
   const total = a * b;
+  const rows = a;
+  const cols = b;
+  const arenaRem = commutativeBlockArenaRem(rows, cols);
+  const rotateTransition = reduced ? "duration-0" : "duration-[800ms]";
+
   const [swapped, setSwapped] = useState(false);
-  const [filled, setFilled] = useState(reduced ? total : 0);
-  const [animating, setAnimating] = useState(!reduced);
-  const rows = swapped ? b : a;
-  const cols = swapped ? a : b;
-  const { push, clear } = useTimers();
+  const [rotating, setRotating] = useState(false);
+  const [hasSwappedOnce, setHasSwappedOnce] = useState(false);
+  const [formulaPulse, setFormulaPulse] = useState(false);
+  const rotateTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (reduced) {
-      setSwapped(true);
-      setFilled(total);
-      setAnimating(false);
-      onReadyChange?.(true);
+    onReadyChange?.(true);
+  }, [onReadyChange]);
+
+  useEffect(
+    () => () => {
+      if (rotateTimerRef.current !== null) {
+        window.clearTimeout(rotateTimerRef.current);
+      }
+    },
+    [],
+  );
+
+  const handleRotate = useCallback(() => {
+    if (rotating) {
       return;
     }
+    setRotating(true);
+    setSwapped((current) => !current);
+    setHasSwappedOnce(true);
+    setFormulaPulse(true);
+    if (rotateTimerRef.current !== null) {
+      window.clearTimeout(rotateTimerRef.current);
+    }
+    rotateTimerRef.current = window.setTimeout(() => {
+      setRotating(false);
+      rotateTimerRef.current = null;
+    }, reduced ? 0 : COMMUTATIVE_ROTATE_MS);
+    window.setTimeout(() => setFormulaPulse(false), reduced ? 0 : 600);
+  }, [reduced, rotating]);
 
-    onReadyChange?.(false);
-    setSwapped(false);
-    setFilled(0);
-    setAnimating(true);
+  const leftFactor = swapped ? b : a;
+  const rightFactor = swapped ? a : b;
 
-    const fillSequence = (onDone: () => void) => {
-      let n = 0;
-      const tick = () => {
-        n += 1;
-        setFilled(n);
-        if (n >= total) {
-          push(onDone, 700);
-          return;
-        }
-        push(tick, 420);
-      };
-      push(tick, 500);
-    };
-
-    fillSequence(() => {
-      setSwapped(true);
-      setFilled(0);
-      fillSequence(() => {
-        setAnimating(false);
-        onReadyChange?.(true);
-      });
-    });
-
-    return clear;
-  }, [a, b, clear, onReadyChange, push, reduced, total]);
+  const factorColorClass = (factor: number, pulse: boolean) => {
+    const isRowFactor = factor === a;
+    if (pulse) {
+      return isRowFactor ? "text-[#7dd3fc]" : "text-[#e9d5ff]";
+    }
+    return isRowFactor ? "text-[#4353ff]" : "text-[#a78bfa]";
+  };
 
   return (
     <div className="space-y-4" aria-label="Propiedad conmutativa de la multiplicación">
-      <div className="mx-auto flex max-w-full justify-center p-2" style={{ perspective: "900px" }}>
+      <div
+        className="mx-auto flex max-w-full items-center justify-center"
+        style={{ width: `${arenaRem}rem`, height: `${arenaRem}rem` }}
+      >
         <div
           className={cn(
-            "relative transition-transform duration-1000 ease-in-out",
-            swapped ? "[transform:rotateY(-72deg)_rotateX(12deg)]" : "[transform:rotateY(-28deg)_rotateX(14deg)]",
+            "grid gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 transition-transform ease-in-out",
+            rotateTransition,
+            swapped ? "rotate-90" : "rotate-0",
           )}
-          style={{ transformStyle: "preserve-3d" }}
+          style={{
+            gridTemplateColumns: `repeat(${cols}, ${COMMUTATIVE_CELL_REM}rem)`,
+            gridTemplateRows: `repeat(${rows}, ${COMMUTATIVE_CELL_REM}rem)`,
+          }}
         >
-          <div
-            className="grid gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 shadow-lg"
-            style={{
-              gridTemplateColumns: `repeat(${cols}, minmax(2.25rem, 2.75rem))`,
-              gridTemplateRows: `repeat(${rows}, minmax(2.25rem, 2.75rem))`,
-            }}
-          >
-            {Array.from({ length: rows * cols }, (_, i) => {
-              const showNumber = i < filled;
-              return (
-                <div
-                  key={`${swapped ? "s" : "n"}-${i}`}
-                  className={cn(
-                    "flex items-center justify-center rounded-md border font-mono text-sm font-bold tabular-nums transition-all duration-300",
-                    showNumber
-                      ? swapped
-                        ? "border-violet-400/60 bg-violet-500/25 text-[color:var(--stage-chalk,#f8fafc)]"
-                        : "border-cobalt/50 bg-cobalt/20 text-[color:var(--stage-chalk,#f8fafc)]"
-                      : "border-[color:var(--stage-border,#334155)] bg-black/20 text-transparent",
-                  )}
-                >
-                  {showNumber ? i + 1 : ""}
-                </div>
-              );
-            })}
-          </div>
-          <div
-            className="pointer-events-none absolute inset-y-2 -right-3 w-3 rounded-r-md bg-cobalt/30"
-            style={{ transform: "translateZ(-12px)" }}
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -bottom-3 inset-x-2 h-3 rounded-b-md bg-cobalt/20"
-            style={{ transform: "translateZ(-12px)" }}
-            aria-hidden
-          />
+          {Array.from({ length: total }, (_, i) => {
+            const rowIndex = Math.floor(i / cols);
+            const colIndex = i % cols;
+            return (
+              <div
+                key={i}
+                className={cn(
+                  "flex items-center justify-center rounded-md border font-mono text-sm font-bold tabular-nums text-[color:var(--stage-chalk,#f8fafc)] transition-transform ease-in-out",
+                  rotateTransition,
+                  swapped ? "-rotate-90" : "rotate-0",
+                )}
+                style={{
+                  borderColor: "color-mix(in srgb, var(--stage-border, #334155) 70%, transparent)",
+                  backgroundColor: "color-mix(in srgb, #4353ff 12%, #1a2332)",
+                  boxShadow: `inset 0 3px 0 0 color-mix(in srgb, #7c3aed 55%, transparent), inset 3px 0 0 0 color-mix(in srgb, #4353ff 55%, transparent)`,
+                }}
+                title={`Fila ${rowIndex + 1}, columna ${colIndex + 1}`}
+              >
+                {i + 1}
+              </div>
+            );
+          })}
         </div>
       </div>
-      <p className={STAGE_MATH}>
-        <MathRenderer text={swapped ? `$${b} \\cdot ${a} = ${total}$` : `$${a} \\cdot ${b} = ${total}$`} />
+
+      <p
+        className={cn(
+          STAGE_MATH,
+          "transition-transform duration-300",
+          formulaPulse && !reduced && "scale-[1.03]",
+        )}
+        aria-live="polite"
+      >
+        <span className={cn("font-bold transition-colors duration-300", factorColorClass(leftFactor, formulaPulse))}>
+          {leftFactor}
+        </span>
+        <span className="mx-1 text-[color:var(--stage-muted,#94a3b8)]">·</span>
+        <span className={cn("font-bold transition-colors duration-300", factorColorClass(rightFactor, formulaPulse))}>
+          {rightFactor}
+        </span>
+        <span className="mx-1 text-[color:var(--stage-muted,#94a3b8)]">=</span>
+        <span>{total}</span>
       </p>
-      {animating ? (
-        <p className="text-center text-xs font-medium text-[color:var(--stage-muted,#94a3b8)]">
-          {swapped ? "Girando el bloque y contando otra vez…" : "Contando unidades del bloque…"}
+
+      {hasSwappedOnce ? (
+        <p
+          className={cn(
+            "text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]",
+            !reduced && "animate-in fade-in duration-700",
+          )}
+          aria-live="polite"
+        >
+          <span className="font-bold text-[#4353ff]">{a}</span>
+          <span className="mx-1 text-[color:var(--stage-muted,#94a3b8)]">·</span>
+          <span className="font-bold text-[#a78bfa]">{b}</span>
+          <span className="mx-1 text-[color:var(--stage-muted,#94a3b8)]">=</span>
+          <span className="font-bold text-[#a78bfa]">{b}</span>
+          <span className="mx-1 text-[color:var(--stage-muted,#94a3b8)]">·</span>
+          <span className="font-bold text-[#4353ff]">{a}</span>
         </p>
-      ) : (
-        <div className="flex justify-center">
-          <button
-            type="button"
-            className="min-h-[44px] rounded-xl border-2 border-[color:var(--stage-border,#334155)] bg-black/20 px-5 py-2.5 text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-            onClick={() => {
-              setSwapped((s) => !s);
-              setFilled(total);
-            }}
-          >
-            Girar el bloque
-          </button>
-        </div>
-      )}
+      ) : null}
+
+      <div className="flex justify-center">
+        <button
+          type="button"
+          disabled={rotating}
+          className="min-h-[44px] rounded-xl border-2 border-[color:var(--stage-border,#334155)] bg-black/20 px-5 py-2.5 text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt disabled:cursor-not-allowed disabled:opacity-45"
+          onClick={handleRotate}
+        >
+          Girar el bloque
+        </button>
+      </div>
     </div>
   );
 }
