@@ -1,7 +1,19 @@
 {
+<<<<<<< HEAD
   "name": "EAXY",
   "install": "npm ci\nnpx playwright install --with-deps chromium",
   "start": "bash scripts/agent-bootstrap.sh",
+=======
+  "name": "Eaxy",
+  "install": "bash .cursor/install.sh",
+  "terminals": [
+    {
+      "name": "next-dev",
+      "command": "npm run dev",
+      "description": "Next.js dev server on http://localhost:3000 (reads .env.local)."
+    }
+  ],
+>>>>>>> origin/cursor/dev-environment-setup-fc29
   "ports": [
     {
       "name": "web",
