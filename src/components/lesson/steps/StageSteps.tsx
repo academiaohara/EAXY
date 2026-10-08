@@ -36,13 +36,15 @@ type StageShellProps = {
   definitionBox?: string;
   title: string;
   stage: React.ReactNode;
+  stageClassName?: string;
   children?: React.ReactNode;
 };
 
-function StageShell({ theme, definitionBox, title, stage, children }: StageShellProps) {
+function StageShell({ theme, definitionBox, title, stage, stageClassName, children }: StageShellProps) {
   return (
     <StageViewport
       theme={theme}
+      stageClassName={stageClassName}
       header={definitionBox ? <DefinitionBox text={definitionBox} /> : null}
       stage={stage}
     >
@@ -112,9 +114,19 @@ export function NarrateStepView({
     />
   );
 
+  const compactHandAlgorithmStage =
+    step.module === "mul-div-naturales" &&
+    (step.scene === "multiplicacion-mano" || step.scene === "division-mano");
+
   return (
     <div data-testid="lesson-narrate-step">
-      <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage} />
+      <StageShell
+        theme={theme}
+        definitionBox={step.definitionBox}
+        title={step.title}
+        stage={stage}
+        stageClassName={compactHandAlgorithmStage ? "mx-auto w-fit max-w-full" : undefined}
+      />
     </div>
   );
 }
