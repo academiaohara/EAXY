@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CheckIcon, ChevronRightIcon, DumbbellIcon, SparklesIcon } from "lucide-react";
+import { LessonPathCardConstellation } from "@/components/learning/lesson-path-card-constellation";
 import {
   findNextLesson,
   getLessonProgressStatus,
@@ -27,7 +28,7 @@ const STATUS_LABELS: Record<LessonProgressStatus, string> = {
 
 const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
   completed: "bg-white/20 text-white",
-  incomplete: "bg-amber-100 text-amber-900",
+  incomplete: "bg-cobalt-tint text-cobalt",
   started: "bg-cobalt-tint text-cobalt",
   available: "bg-slate-100 text-slate-500",
 };
@@ -51,14 +52,17 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
   const isInteractive = lesson.kind === "interactive";
   const isInProgress = status === "started" || status === "incomplete";
   const isCurrent = isInProgress || (isNextTarget && status !== "completed");
+  const isUpcoming = status === "available" && !isCurrent;
   const connectorBrand = status === "completed";
+  const constellationVariant =
+    status === "completed" ? "completed" : isUpcoming ? "muted" : "active";
 
   return (
     <li className="relative">
       {!isLast ? (
         <span
           className={cn(
-            "pointer-events-none absolute left-[2.125rem] top-full h-3 w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
+            "pointer-events-none absolute left-[2.125rem] top-[calc(100%-0.25rem)] z-0 h-[calc(0.75rem+2px)] w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
             connectorBrand ? "bg-cobalt" : "bg-slate-300",
           )}
           aria-hidden
@@ -69,34 +73,29 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
         href={resolveLessonHref(lesson.id)}
         data-testid={`lesson-link-${lesson.id}`}
         className={cn(
-          "group flex items-center gap-4 rounded-2xl border bg-paper-raised p-3 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:p-4",
+          "group relative flex items-center gap-4 overflow-hidden rounded-[1.35rem] border bg-paper-raised p-3.5 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:gap-5 sm:p-4",
           status === "completed" &&
             "border-cobalt bg-cobalt hover:border-cobalt/90 hover:bg-cobalt/95 focus-visible:ring-cobalt/50",
-          status === "incomplete" &&
-            "border-amber-300 bg-amber-50 hover:border-amber-400 focus-visible:ring-amber-400/40",
           status !== "completed" &&
-            status !== "incomplete" &&
             isCurrent &&
-            "border-cobalt/40 hover:border-cobalt/55 focus-visible:ring-cobalt/40",
+            "border-slate-200 hover:border-cobalt/45 focus-visible:ring-cobalt/40",
           status !== "completed" &&
-            status !== "incomplete" &&
             !isCurrent &&
-            "border-slate-200 hover:border-cobalt/40 focus-visible:ring-cobalt/40",
+            "border-slate-200/90 hover:border-cobalt/35 focus-visible:ring-cobalt/40",
         )}
       >
+        <LessonPathCardConstellation variant={constellationVariant} />
+
         <span
           className={cn(
-            "flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
-            status === "completed" && "border-white/90 bg-white/15 text-white",
-            status === "incomplete" && "border-amber-500 bg-white text-amber-700",
+            "relative z-[1] flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
+            status === "completed" && "border-white bg-white/10 text-white",
             status !== "completed" &&
-              status !== "incomplete" &&
               isCurrent &&
-              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(47,95,224,0.12)]",
+              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(67,83,255,0.1)]",
             status !== "completed" &&
-              status !== "incomplete" &&
               !isCurrent &&
-              "border-slate-200 bg-white text-slate-400 group-hover:border-cobalt/50 group-hover:text-cobalt",
+              "border-slate-200 bg-white text-slate-300 group-hover:border-cobalt/45 group-hover:text-cobalt/80",
           )}
           aria-hidden
         >
@@ -109,16 +108,12 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           )}
         </span>
 
-        <span className="min-w-0 flex-1">
-          <span className="flex items-center gap-2">
+        <span className="relative z-[1] min-w-0 flex-1 pr-2">
+          <span className="flex flex-wrap items-center gap-2">
             <span
               className={cn(
-                "text-[11px] font-semibold tabular-nums",
-                status === "completed"
-                  ? "text-cobalt-tint"
-                  : status === "incomplete"
-                    ? "text-amber-700"
-                    : "text-slate-400",
+                "text-[11px] font-semibold tabular-nums tracking-wide",
+                status === "completed" ? "text-white/75" : isUpcoming ? "text-slate-400" : "text-slate-400",
               )}
             >
               {String(position).padStart(2, "0")}
@@ -126,7 +121,7 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
             {status !== "available" ? (
               <span
                 className={cn(
-                  "inline-flex rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",
+                  "inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]",
                   STATUS_CHIP_STYLES[status],
                 )}
               >
@@ -136,11 +131,11 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           </span>
           <span
             className={cn(
-              "mt-0.5 block font-medium leading-snug",
+              "mt-1 block font-heading text-base font-semibold leading-snug sm:text-[1.05rem]",
               status === "completed"
                 ? "text-white"
-                : status === "incomplete"
-                  ? "text-amber-950 group-hover:text-amber-900"
+                : isUpcoming
+                  ? "text-slate-500 group-hover:text-slate-600"
                   : "text-ink group-hover:text-cobalt",
             )}
           >
@@ -148,11 +143,11 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
           </span>
           <span
             className={cn(
-              "block text-xs",
+              "mt-0.5 block text-xs",
               status === "completed"
-                ? "text-white/80"
-                : status === "incomplete"
-                  ? "text-amber-800/80"
+                ? "text-white/75"
+                : isUpcoming
+                  ? "text-slate-400"
                   : "text-muted-foreground",
             )}
           >
@@ -162,11 +157,11 @@ function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
 
         <ChevronRightIcon
           className={cn(
-            "size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
+            "relative z-[1] size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
             status === "completed"
               ? "text-white/70 group-hover:text-white"
-              : status === "incomplete"
-                ? "text-amber-600 group-hover:text-amber-800"
+              : isUpcoming
+                ? "text-slate-300"
                 : "text-slate-300 group-hover:text-cobalt",
           )}
           aria-hidden
@@ -180,7 +175,7 @@ function ModuleLessonList({ courseModule }: { courseModule: ModuleSummary }) {
   const nextLessonId = findNextLesson([courseModule])?.lesson.id;
 
   return (
-    <ol className="min-w-0 space-y-3">
+    <ol className="relative min-w-0 space-y-3">
       {courseModule.lessons.map((lesson, index) => (
         <PathNode
           key={lesson.id}

@@ -1,5 +1,11 @@
 {
   "name": "EAXY",
-  "install": "npm ci",
-  "start": "bash scripts/agent-bootstrap.sh"
+  "install": "bash .cursor/install.sh",
+  "start": "bash scripts/agent-bootstrap.sh",
+  "ports": [
+    {
+      "name": "web",
+      "port": 3000
+    }
+  ]
 }

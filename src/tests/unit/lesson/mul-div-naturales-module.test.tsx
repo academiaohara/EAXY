@@ -16,9 +16,12 @@ describe("MulDivNaturalesModule", () => {
       />,
     );
     expect(screen.getByLabelText(/Propiedad conmutativa/i)).toBeInTheDocument();
-    await vi.runAllTimersAsync();
     expect(onReady).toHaveBeenCalledWith(true);
+    expect(screen.getByLabelText(/Propiedad conmutativa/i)).toHaveTextContent("3·5=15");
     fireEvent.click(screen.getByRole("button", { name: /Girar el bloque/i }));
+    await vi.advanceTimersByTimeAsync(800);
+    expect(screen.getByLabelText(/Propiedad conmutativa/i)).toHaveTextContent("5·3=15");
+    expect(screen.getByLabelText(/Propiedad conmutativa/i)).toHaveTextContent("3·5=5·3");
     vi.useRealTimers();
   });
 
