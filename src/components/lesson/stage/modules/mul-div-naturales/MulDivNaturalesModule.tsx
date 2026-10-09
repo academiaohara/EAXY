@@ -347,15 +347,33 @@ function MultiplicarRepetido({
 const COMMUTATIVE_CELL_REM = 2.75;
 const COMMUTATIVE_GAP_REM = 0.25;
 const COMMUTATIVE_PAD_REM = 0.5;
+/** border-2 en el bloque (2px por lado → 4px por eje). */
+const COMMUTATIVE_BORDER_REM = 0.25;
+const COMMUTATIVE_ARENA_SAFETY_REM = 0.25;
 const COMMUTATIVE_ROTATE_MS = 800;
 
-/** Cuadrado fijo que cabe el bloque en 0° y en 90° (filas × columnas = a × b). */
-function commutativeBlockArenaRem(rowCount: number, colCount: number) {
+function commutativeGridSizeRem(rowCount: number, colCount: number) {
   const gridWidthRem =
     colCount * COMMUTATIVE_CELL_REM + Math.max(0, colCount - 1) * COMMUTATIVE_GAP_REM;
   const gridHeightRem =
     rowCount * COMMUTATIVE_CELL_REM + Math.max(0, rowCount - 1) * COMMUTATIVE_GAP_REM;
-  return Math.max(gridWidthRem, gridHeightRem) + COMMUTATIVE_PAD_REM * 2;
+  return { gridWidthRem, gridHeightRem };
+}
+
+/** Tamaño exterior del bloque (rejilla + p-2 + border-2). */
+function commutativeBlockOuterRem(rowCount: number, colCount: number) {
+  const { gridWidthRem, gridHeightRem } = commutativeGridSizeRem(rowCount, colCount);
+  const chromeRem = COMMUTATIVE_PAD_REM * 2 + COMMUTATIVE_BORDER_REM;
+  return {
+    widthRem: gridWidthRem + chromeRem,
+    heightRem: gridHeightRem + chromeRem,
+  };
+}
+
+/** Cuadrado fijo que cabe el bloque en 0° y en 90° (filas × columnas = a × b). */
+function commutativeBlockArenaRem(rowCount: number, colCount: number) {
+  const { widthRem, heightRem } = commutativeBlockOuterRem(rowCount, colCount);
+  return Math.max(widthRem, heightRem) + COMMUTATIVE_ARENA_SAFETY_REM;
 }
 
 function ConmutativaProducto({
@@ -423,12 +441,12 @@ function ConmutativaProducto({
   return (
     <div className="space-y-4" aria-label="Propiedad conmutativa de la multiplicación">
       <div
-        className="mx-auto flex max-w-full items-center justify-center"
-        style={{ width: `${arenaRem}rem`, height: `${arenaRem}rem` }}
+        className="mx-auto flex max-w-full items-center justify-center overflow-visible"
+        style={{ width: `${arenaRem}rem`, height: `${arenaRem}rem`, minHeight: `${arenaRem}rem` }}
       >
         <div
           className={cn(
-            "grid gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 transition-transform ease-in-out",
+            "grid shrink-0 gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 transition-transform ease-in-out",
             rotateTransition,
             swapped ? "rotate-90" : "rotate-0",
           )}
