@@ -18,8 +18,9 @@ export type TopicExerciseSummary = {
   id: string;
   title: string;
   statement: string;
-  solutionText: string;
-  solutionVideoUrl: string;
+  solutionText?: string;
+  solutionImageUrl?: string;
+  solutionVideoUrl?: string;
 };
 
 export type ModuleSummary = {

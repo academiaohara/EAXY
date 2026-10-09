@@ -6,6 +6,7 @@ import {
   DumbbellIcon,
   EyeIcon,
   EyeOffIcon,
+  ImageIcon,
   PencilLineIcon,
   PlayCircleIcon,
   XIcon,
@@ -25,6 +26,10 @@ import {
   type SolutionLayout,
 } from "@/lib/curriculum/solution-layout";
 import type { TopicExerciseSummary } from "@/lib/curriculum/types";
+import {
+  isSafeExternalMediaUrl,
+  toYouTubeEmbedUrl,
+} from "@/lib/curriculum/topic-exercise-media";
 import { cn } from "@/lib/utils";
 
 const handwriting = Caveat({
@@ -54,6 +59,14 @@ export function TopicExercisesSection({
 
   const selectedExercise =
     selectedIndex !== null ? exercises[selectedIndex] : null;
+  const videoEmbedUrl = selectedExercise?.solutionVideoUrl
+    ? toYouTubeEmbedUrl(selectedExercise.solutionVideoUrl)
+    : null;
+  const solutionImageUrl = selectedExercise?.solutionImageUrl;
+  const safeSolutionImageUrl =
+    solutionImageUrl && isSafeExternalMediaUrl(solutionImageUrl)
+      ? solutionImageUrl
+      : null;
 
   const openExercise = (index: number) => {
     setSelectedIndex(index);
@@ -82,7 +95,10 @@ export function TopicExercisesSection({
         <div className="space-y-1">
           {layout === "full" ? (
             <h2 className="flex flex-wrap items-center gap-2 font-display text-xl font-bold tracking-tight text-ink">
-              <DumbbellIcon className="size-5 shrink-0 text-cobalt" aria-hidden />
+              <DumbbellIcon
+                className="size-5 shrink-0 text-cobalt"
+                aria-hidden
+              />
               Ejercicios del tema
               <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium tabular-nums text-muted-foreground">
                 {exercises.length}
@@ -90,7 +106,10 @@ export function TopicExercisesSection({
             </h2>
           ) : (
             <h3 className="flex items-center gap-2 font-heading text-sm font-semibold text-ink sm:text-base">
-              <DumbbellIcon className="size-4 shrink-0 text-cobalt" aria-hidden />
+              <DumbbellIcon
+                className="size-4 shrink-0 text-cobalt"
+                aria-hidden
+              />
               Ejercicios del tema
             </h3>
           )}
@@ -152,19 +171,21 @@ export function TopicExercisesSection({
                   </DialogTitle>
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
-                  <Button
-                    type="button"
-                    variant={showVideo ? "default" : "outline"}
-                    onClick={() => setShowVideo((value) => !value)}
-                    aria-pressed={showVideo}
-                    data-testid="topic-exercise-view-video"
-                  >
-                    <PlayCircleIcon
-                      data-icon="inline-start"
-                      className="size-4"
-                    />
-                    {showVideo ? "Ocultar vídeo" : "Ver vídeo"}
-                  </Button>
+                  {videoEmbedUrl ? (
+                    <Button
+                      type="button"
+                      variant={showVideo ? "default" : "outline"}
+                      onClick={() => setShowVideo((value) => !value)}
+                      aria-pressed={showVideo}
+                      data-testid="topic-exercise-view-video"
+                    >
+                      <PlayCircleIcon
+                        data-icon="inline-start"
+                        className="size-4"
+                      />
+                      {showVideo ? "Ocultar vídeo" : "Ver vídeo"}
+                    </Button>
+                  ) : null}
                   <Button
                     type="button"
                     variant="ghost"
@@ -201,7 +222,7 @@ export function TopicExercisesSection({
                   >
                     <div className="aspect-video w-full">
                       <iframe
-                        src={selectedExercise.solutionVideoUrl}
+                        src={videoEmbedUrl ?? undefined}
                         title={`Resolución: ${selectedExercise.title}`}
                         className="h-full w-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -212,7 +233,7 @@ export function TopicExercisesSection({
                 ) : null}
 
                 <section
-                  className="flex min-h-[18rem] flex-[1_0_auto] flex-col"
+                  className="flex min-h-[18rem] flex-[1_0_auto] flex-col gap-5"
                   data-testid="topic-exercise-solution"
                 >
                   <div className="mb-3 flex items-center justify-between gap-3">
@@ -237,31 +258,53 @@ export function TopicExercisesSection({
                     ) : null}
                   </div>
 
-                  <div className="relative flex flex-[1_0_auto] overflow-hidden rounded-xl border border-[#e6dcc4] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
-                    <HandwrittenSolution
-                      solutionText={selectedExercise.solutionText}
-                      hidden={!solutionRevealed}
-                    />
+                  {safeSolutionImageUrl ? (
+                    <div
+                      className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-sm"
+                      data-testid="topic-exercise-solution-image"
+                    >
+                      <div className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                        <ImageIcon className="size-3.5" aria-hidden />
+                        Resolución en imagen
+                      </div>
+                      {/* External author-provided URLs are intentionally supported here. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={safeSolutionImageUrl}
+                        alt={`Resolución de ${selectedExercise.title}`}
+                        loading="lazy"
+                        className="mx-auto max-h-[32rem] w-auto max-w-full rounded-lg object-contain"
+                      />
+                    </div>
+                  ) : null}
 
-                    {!solutionRevealed ? (
-                      <button
-                        type="button"
-                        onClick={() => setSolutionRevealed(true)}
-                        className="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-paper/30 text-ink outline-none transition-colors hover:bg-paper/10 focus-visible:ring-2 focus-visible:ring-cobalt"
-                        data-testid="topic-exercise-view-written"
-                      >
-                        <span className="flex size-14 items-center justify-center rounded-full bg-paper-raised text-cobalt shadow-md ring-1 ring-slate-200 transition-transform group-hover:scale-105">
-                          <EyeIcon className="size-6" aria-hidden />
-                        </span>
-                        <span className="rounded-full bg-paper-raised/90 px-4 py-1.5 text-sm font-medium shadow-sm ring-1 ring-slate-200">
-                          Ver resolución
-                        </span>
-                        <span className="text-xs text-ink-muted">
-                          Inténtalo tú primero
-                        </span>
-                      </button>
-                    ) : null}
-                  </div>
+                  {selectedExercise.solutionText ? (
+                    <div className="relative flex flex-[1_0_auto] overflow-hidden rounded-xl border border-[#e6dcc4] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+                      <HandwrittenSolution
+                        solutionText={selectedExercise.solutionText}
+                        hidden={!solutionRevealed}
+                      />
+
+                      {!solutionRevealed ? (
+                        <button
+                          type="button"
+                          onClick={() => setSolutionRevealed(true)}
+                          className="group absolute inset-0 flex flex-col items-center justify-center gap-3 bg-paper/30 text-ink outline-none transition-colors hover:bg-paper/10 focus-visible:ring-2 focus-visible:ring-cobalt"
+                          data-testid="topic-exercise-view-written"
+                        >
+                          <span className="flex size-14 items-center justify-center rounded-full bg-paper-raised text-cobalt shadow-md ring-1 ring-slate-200 transition-transform group-hover:scale-105">
+                            <EyeIcon className="size-6" aria-hidden />
+                          </span>
+                          <span className="rounded-full bg-paper-raised/90 px-4 py-1.5 text-sm font-medium shadow-sm ring-1 ring-slate-200">
+                            Ver resolución
+                          </span>
+                          <span className="text-xs text-ink-muted">
+                            Inténtalo tú primero
+                          </span>
+                        </button>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </section>
               </div>
             </>
@@ -322,7 +365,10 @@ function SolutionParts({
   );
 }
 
-function HandwrittenSolution({ solutionText, hidden }: HandwrittenSolutionProps) {
+function HandwrittenSolution({
+  solutionText,
+  hidden,
+}: HandwrittenSolutionProps) {
   const layout = layoutSolution(solutionText);
   return (
     <div

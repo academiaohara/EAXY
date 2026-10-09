@@ -27,7 +27,9 @@ function firstTopicPracticePath(): string | null {
 }
 
 /** Destino por defecto cuando el usuario abre «Practicar» sin ruta concreta. */
-export function resolveDefaultPracticePath(overviewConcepts: ConceptProgress[] = []): string | null {
+export function resolveDefaultPracticePath(
+  overviewConcepts: ConceptProgress[] = [],
+): string | null {
   const conceptSlug = pickPracticeConceptSlug(overviewConcepts);
   if (conceptSlug) {
     return conceptPracticePath(conceptSlug);
@@ -36,7 +38,9 @@ export function resolveDefaultPracticePath(overviewConcepts: ConceptProgress[] =
   return firstConceptPracticePath() ?? firstTopicPracticePath();
 }
 
-export function resolveRecommendedPracticePath(conceptId: string | null | undefined): string | null {
+export function resolveRecommendedPracticePath(
+  conceptId: string | null | undefined,
+): string | null {
   if (conceptId) {
     const concept = getConceptById(conceptId, curriculum);
     if (concept) {
@@ -68,6 +72,7 @@ export function getTopicPracticeViewModel(moduleId: string) {
       title: exercise.title,
       statement: exercise.statement,
       solutionText: exercise.solutionText,
+      solutionImageUrl: exercise.solutionImageUrl,
       solutionVideoUrl: exercise.solutionVideoUrl,
     })),
   };

@@ -51,19 +51,29 @@ function wrap(ui: ReactNode) {
 describe("PredictStepView", () => {
   it("no muestra continuar hasta comprobar la respuesta", async () => {
     const onCheck = vi.fn();
-    render(wrap(<PredictStepView step={step} theme="paper" onCheck={onCheck} />), {
-      container: document.body,
-    });
+    render(
+      wrap(<PredictStepView step={step} theme="paper" onCheck={onCheck} />),
+      {
+        container: document.body,
+      },
+    );
 
-    expect(screen.queryByTestId("lesson-continue-button")).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId("lesson-continue-button"),
+    ).not.toBeInTheDocument();
     expect(screen.getByTestId("lesson-check-button")).toBeDisabled();
 
-    fireEvent.change(screen.getByLabelText("Tu respuesta"), { target: { value: "828" } });
+    fireEvent.change(screen.getByLabelText("Tu respuesta"), {
+      target: { value: "828" },
+    });
     expect(screen.getByTestId("lesson-check-button")).toBeEnabled();
 
     fireEvent.click(screen.getByTestId("lesson-check-button"));
     expect(onCheck).toHaveBeenCalledWith(
-      expect.objectContaining({ correct: true, snapshot: expect.objectContaining({ kind: "predict" }) }),
+      expect.objectContaining({
+        correct: true,
+        snapshot: expect.objectContaining({ kind: "predict" }),
+      }),
     );
   });
 
@@ -72,35 +82,44 @@ describe("PredictStepView", () => {
       (s) => s.id === "distributiva-predict",
     ) as PredictStep;
     const onCheck = vi.fn();
-    render(wrap(<PredictStepView step={menuStep} theme="paper" onCheck={onCheck} />), {
-      container: document.body,
-    });
+    render(
+      wrap(<PredictStepView step={menuStep} theme="paper" onCheck={onCheck} />),
+      {
+        container: document.body,
+      },
+    );
 
-    const choice40 = screen
-      .getAllByRole("button")
-      .find((button) => button.textContent?.includes("40") && button.textContent.includes("€"));
-    expect(choice40).toBeDefined();
-    fireEvent.click(choice40!);
+    const choice = screen.getByTestId("predict-choice-solo-bocadillos");
+    fireEvent.click(choice);
     fireEvent.click(screen.getByTestId("lesson-check-button"));
 
-    expect(screen.getByText(/Ese solo cuenta los bocadillos/i)).toBeInTheDocument();
+    expect(screen.getByText(/deja fuera los.*bebida/i)).toBeInTheDocument();
   });
 
   it("muestra pista opcional y feedback al fallar reparte el factor", () => {
     const factorStep = multiplicacionDivisionNaturalesLesson.steps.find(
-      (s) => s.id === "distributiva-equivalencia",
+      (s) => s.id === "distributiva-predict",
     ) as PredictStep;
     const onCheck = vi.fn();
-    render(wrap(<PredictStepView step={factorStep} theme="paper" onCheck={onCheck} />), {
-      container: document.body,
-    });
+    render(
+      wrap(
+        <PredictStepView step={factorStep} theme="paper" onCheck={onCheck} />,
+      ),
+      {
+        container: document.body,
+      },
+    );
 
     fireEvent.click(screen.getByLabelText("Ver pista"));
-    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(/cada sumando/i);
+    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(
+      /forma desarrollada/i,
+    );
 
-    fireEvent.click(screen.getByTestId("predict-choice-solo-primero"));
+    fireEvent.click(screen.getByTestId("predict-choice-sin-repartir"));
     fireEvent.click(screen.getByTestId("lesson-check-button"));
 
-    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(/no solo al primero/i);
+    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(
+      /expresión equivalente/i,
+    );
   });
 });

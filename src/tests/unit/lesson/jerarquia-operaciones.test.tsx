@@ -6,17 +6,21 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division
 describe("jerarquía de operaciones", () => {
   it("la lección sigue el flujo exploración → explicación → práctica", () => {
     const steps = divisionOrdenOperacionesNaturalesLesson.steps;
-    expect(steps).toHaveLength(6);
+    expect(steps).toHaveLength(5);
     expect(
-      steps.filter((step) => "module" in step && step.module === "jerarquia-operaciones"),
-    ).toHaveLength(6);
+      steps.filter(
+        (step) => "module" in step && step.module === "jerarquia-operaciones",
+      ),
+    ).toHaveLength(5);
     expect(steps[0]?.type).toBe("predict");
-    expect(steps.filter((step) => step.type === "explore")).toHaveLength(3);
+    expect(steps.filter((step) => step.type === "explore")).toHaveLength(2);
   });
 
   it("renderiza los tres niveles de reglas", () => {
     render(<JerarquiaOperacionesModule scene="niveles-reglas" />);
-    expect(screen.getByLabelText("Niveles del orden de operaciones")).toBeInTheDocument();
+    expect(
+      screen.getByLabelText("Niveles del orden de operaciones"),
+    ).toBeInTheDocument();
     expect(screen.getByText("Paréntesis")).toBeInTheDocument();
   });
 
