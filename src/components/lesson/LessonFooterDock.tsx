@@ -12,6 +12,8 @@ type LessonFooterDockProps = {
   stageControls?: React.ReactNode;
   /** Atajo de ayuda, a un lado para no competir con la acción principal. */
   help?: React.ReactNode;
+  /** Contador de estrellas u otros metadatos discretos. */
+  meta?: React.ReactNode;
   /** Paso anterior (exploración libre). */
   onBack?: () => void;
   canBack?: boolean;
@@ -20,11 +22,12 @@ type LessonFooterDockProps = {
   feedback?: FeedbackStatus | null;
 };
 
-/** Pie del panel de la lección; se tiñe con el color del feedback. */
+/** Barra de acciones flotante en la parte inferior de la lección. */
 export function LessonFooterDock({
   action,
   stageControls,
   help,
+  meta,
   onBack,
   canBack = false,
   onSkip,
@@ -34,15 +37,15 @@ export function LessonFooterDock({
   return (
     <div
       className={cn(
-        "shrink-0 border-t transition-colors duration-300",
-        feedback === "correct" && "border-emerald-200/80 bg-emerald-50/70",
-        feedback === "incorrect" && "border-amber-200/80 bg-amber-50/70",
-        !feedback && "border-slate-100 bg-white",
+        "rounded-2xl border shadow-lg backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-300",
+        feedback === "correct" && "border-emerald-200/70 bg-emerald-50/85",
+        feedback === "incorrect" && "border-amber-200/70 bg-amber-50/85",
+        !feedback && "border-white/60 bg-white/75",
       )}
       data-testid="lesson-footer-dock"
       data-feedback={feedback ?? "none"}
     >
-      <div className="flex items-center gap-2 px-4 py-3.5 sm:gap-3 sm:px-8">
+      <div className="flex items-center gap-2 px-4 py-3 sm:gap-3 sm:px-6">
         <div className="flex min-w-0 flex-1 items-center justify-start gap-2">
           {canBack && onBack ? (
             <Button
@@ -57,6 +60,7 @@ export function LessonFooterDock({
               Atrás
             </Button>
           ) : null}
+          {meta}
         </div>
         <div className="flex shrink-0 items-center justify-center">
           {stageControls ?? action}

@@ -5,7 +5,7 @@ import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
 import { LessonFooterDock } from "@/components/lesson/LessonFooterDock";
-import { LessonFrame } from "@/components/lesson/LessonFrame";
+import { LessonFrame, LessonStarCounter } from "@/components/lesson/LessonFrame";
 import { LessonHelpButton } from "@/components/lesson/LessonHelpButton";
 import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
 import { LessonStepHeader } from "@/components/lesson/LessonStepHeader";
@@ -606,9 +606,6 @@ function LessonContainerBody({
   }
 
   const reaction = getTutorReaction(currentStep, feedback);
-  const wideStep =
-    currentStep.layout === "split" ||
-    (currentStep.type === "interactive_tool" && currentStep.layout === undefined);
   const hasWhy = feedback === "correct" && Boolean(getHelpNode(buildHelpRoute(currentStep, feedback), "why"));
   const currentAttempt = stepAttempts[currentStep.id];
   const canResetStep =
@@ -656,6 +653,11 @@ function LessonContainerBody({
           footer={
             <LessonFooterDock
               feedback={feedback}
+              meta={
+                totalStars > 0 ? (
+                  <LessonStarCounter stars={stars} totalStars={totalStars} />
+                ) : null
+              }
               canBack={stepIndex > 0 || Boolean(control?.onBack)}
               onBack={control?.onBack ?? goBack}
               onSkip={feedback ? undefined : handleSkip}
@@ -691,21 +693,23 @@ function LessonContainerBody({
           <div
             key={stepMountKey}
             className={cn(
-              "lesson-step-enter mx-auto flex w-full flex-col gap-6 pb-24 sm:gap-7",
-              wideStep ? "max-w-6xl" : "max-w-4xl",
+              "lesson-step-enter flex h-full min-h-0 w-full flex-col gap-4 overflow-hidden pb-[4.5rem] sm:gap-5",
+              "max-w-none",
             )}
           >
             <LessonStepHeader step={currentStep} />
-            <InteractiveQuestion
-              step={currentStep}
-              onCheck={handleCheck}
-              onContinue={goToNextStep}
-              onPreviousStep={goBack}
-              disabled={feedback !== null}
-              savedAttempt={currentAttempt?.snapshot ?? null}
-              stageTheme={lesson.stage?.theme ?? "paper"}
-              compact
-            />
+            <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+              <InteractiveQuestion
+                step={currentStep}
+                onCheck={handleCheck}
+                onContinue={goToNextStep}
+                onPreviousStep={goBack}
+                disabled={feedback !== null}
+                savedAttempt={currentAttempt?.snapshot ?? null}
+                stageTheme={lesson.stage?.theme ?? "paper"}
+                compact
+              />
+            </div>
           </div>
         </LessonFrame>
 

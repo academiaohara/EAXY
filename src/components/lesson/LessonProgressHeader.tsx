@@ -12,6 +12,7 @@ export type LessonProgressHeaderProps = {
   visited: boolean[];
   onGoToStep: (index: number) => void;
   maxSegments?: number;
+  className?: string;
 };
 
 export function LessonProgressHeader({
@@ -21,12 +22,13 @@ export function LessonProgressHeader({
   visited,
   onGoToStep,
   maxSegments = 16,
+  className,
 }: LessonProgressHeaderProps) {
   const segmentCount = Math.min(total, maxSegments);
 
   return (
     <div
-      className="flex flex-1 items-center gap-1"
+      className={cn("flex min-w-0 flex-1 items-center gap-1.5", className)}
       data-testid="lesson-progress-bar"
       role="tablist"
       aria-label={`Pasos de la lección, paso ${currentIndex + 1} de ${total}`}
@@ -35,6 +37,7 @@ export function LessonProgressHeader({
         const isCompleted = completed[index];
         const isCurrent = index === currentIndex;
         const isVisited = visited[index];
+        const canNavigate = isVisited || isCurrent;
 
         return (
           <button
@@ -51,20 +54,20 @@ export function LessonProgressHeader({
                     ? `Paso ${index + 1}, incompleto`
                     : `Paso ${index + 1}, sin visitar`
             }
-            disabled={!isVisited && !isCurrent}
+            disabled={!canNavigate}
             onClick={() => {
-              if (isVisited || isCurrent) {
+              if (canNavigate) {
                 onGoToStep(index);
               }
             }}
             className={cn(
-              "h-2 min-w-2 flex-1 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/50",
-              !isVisited && !isCurrent && "cursor-not-allowed opacity-60",
-              isCompleted && "bg-emerald-500",
-              isCurrent && !isCompleted && "bg-cobalt ring-2 ring-cobalt/30",
-              isCurrent && isCompleted && "bg-emerald-500 ring-2 ring-emerald-400/50",
-              !isCompleted && !isCurrent && isVisited && "bg-amber-300",
-              !isCompleted && !isCurrent && !isVisited && "bg-slate-200 hover:bg-slate-300",
+              "h-1.5 min-w-1.5 flex-1 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
+              !canNavigate && "cursor-default",
+              isCompleted && !isCurrent && "bg-emerald-500",
+              isCurrent &&
+                "bg-gradient-to-r from-emerald-500 via-emerald-400 to-[color:var(--cobalt,#4f46e5)] shadow-[0_0_0_1px_rgba(16,185,129,0.25)]",
+              !isCompleted && !isCurrent && canNavigate && "bg-slate-300/70",
+              !isCompleted && !isCurrent && !canNavigate && "bg-slate-300/35",
             )}
           />
         );
