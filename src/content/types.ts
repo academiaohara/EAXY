@@ -1,4 +1,7 @@
-import type { ExerciseContent, ExerciseType } from "@/lib/exercise-engine/types";
+import type {
+  ExerciseContent,
+  ExerciseType,
+} from "@/lib/exercise-engine/types";
 
 export type LessonKind = "exercises" | "interactive";
 
@@ -39,9 +42,12 @@ export type CurriculumTopicExercise = {
   title: string;
   /** Enunciado en texto plano; admite LaTeX inline con $...$. */
   statement: string;
-  /** Resolución escrita; admite LaTeX como el enunciado. Cada línea (`\n`) es un paso. */
-  solutionText: string;
-  solutionVideoUrl: string;
+  /** Resolución escrita opcional; admite LaTeX como el enunciado. */
+  solutionText?: string;
+  /** Imagen externa de la resolución manuscrita o visual. */
+  solutionImageUrl?: string;
+  /** Vídeo de resolución en YouTube. */
+  solutionVideoUrl?: string;
 };
 
 export type CurriculumModule = {

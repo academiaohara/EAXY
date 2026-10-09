@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Retire the currently seeded external topic exercises while preserving their UI and extending it for optional resolution images and YouTube videos.
+**Goal:** Retire the currently seeded external topic exercises, preserve their reusable UI for future authoring, and use the five lessons in 1.º ESO unit 1 as the first concise reference for lesson structure and meaningful checks.
 
-**Architecture:** Keep `TopicExercisesSection`, its route, and the existing internal lesson exercise engine. Make external exercise media optional at the content and view-model boundaries, render only resources that exist, and remove only the current topic-exercise fixtures from the curriculum catalog.
+**Architecture:** Keep `TopicExercisesSection`, its route, and the existing internal lesson exercise engine. Make external exercise media optional at the content and view-model boundaries, render only resources that exist, and remove only the current topic-exercise fixtures from the curriculum catalog. Keep lesson controls contextual and explanatory: a control question should make the learner reason about the concept, not guess a trivial arithmetic result.
 
 **Tech Stack:** Next.js 16, React 19, TypeScript, Tailwind CSS v4, Vitest, Testing Library, Playwright, GitHub Contents API.
 
@@ -12,8 +12,7 @@
 
 ## Global Constraints
 
-- Do not modify interactive lesson steps or their embedded activities.
-- Do not create new lessons or invented academic content.
+- Keep the existing lesson topics and academic scope; when reducing or refining unit 1, do not invent unrelated content.
 - Do not delete the general exercise engine or classroom/recommendation persistence.
 - Keep the desktop-only product rule.
 - Do not add GeoGebra, Manim, or other new dependencies.
@@ -30,12 +29,14 @@
 ### Task 1: Define external exercise media contracts
 
 **Files:**
+
 - Modify: `src/content/types.ts`
 - Modify: `src/lib/curriculum/types.ts`
 - Create: `src/lib/curriculum/topic-exercise-media.ts`
 - Test: `src/tests/unit/curriculum/topic-exercise-media.test.ts`
 
 **Interfaces:**
+
 - Produces `toYouTubeEmbedUrl(url: string): string | null`.
 - Produces `isSafeExternalMediaUrl(url: string): boolean`.
 - `CurriculumTopicExercise.solutionImageUrl`, `solutionVideoUrl`, and `solutionText` are optional; `statement` remains required.
@@ -50,10 +51,12 @@
 ### Task 2: Extend the exercise dialog without removing its design
 
 **Files:**
+
 - Modify: `src/components/learning/topic-exercises-section.tsx`
 - Test: `src/tests/unit/learning/topic-exercises-section.test.tsx`
 
 **Interfaces:**
+
 - Consumes `TopicExerciseSummary` with optional `solutionImageUrl`, `solutionVideoUrl`, and `solutionText`.
 - Uses `toYouTubeEmbedUrl` and `isSafeExternalMediaUrl` from Task 1.
 - Preserves the existing card, dialog, statement, text-solution reveal, and video toggle behavior.
@@ -67,6 +70,7 @@
 ### Task 3: Remove current external exercise content from the catalog
 
 **Files:**
+
 - Modify: `src/content/curriculum.ts`
 - Modify: `src/lib/curriculum/queries.ts`
 - Modify: `src/lib/learning/resolve-practice-path.ts`
@@ -75,6 +79,7 @@
 - Delete: `src/data/topic-exercises/*.ts` only after confirming no remaining imports
 
 **Interfaces:**
+
 - `getTopicPracticeViewModel(moduleId)` returns null when a module has no external exercises.
 - Topic pages retain their lesson navigation and render no empty exercise section.
 - Concept-based practice and its engine remain untouched.
@@ -89,6 +94,7 @@
 ### Task 4: Update browser coverage and repository documentation
 
 **Files:**
+
 - Modify: `e2e/practice.spec.ts`
 - Modify: `e2e/aprender-course.spec.ts` if assertions reference the external section
 - Modify: `README.md` or relevant docs only if current commands/behavior are inaccurate
@@ -99,7 +105,23 @@
 - [ ] **Step 4: Review the diff** for accidental lesson/content changes and confirm only external topic exercise data/UI contracts changed.
 - [ ] **Step 5: Commit** `test: verify external exercise removal and media UI`.
 
-### Task 5: Open the pull request
+### Task 5: Establish the unit 1 lesson reference
+
+**Files:**
+
+- Modify: `src/data/lessons/sistemas-numeracion-naturales.ts`
+- Modify: `src/data/lessons/aproximacion-redondeo-naturales.ts`
+- Modify: `src/data/lessons/suma-resta-naturales.ts`
+- Modify: `src/data/lessons/multiplicacion-division-naturales.ts`
+- Modify: `src/data/lessons/division-orden-operaciones-naturales.ts`
+- Test: `src/tests/unit/lesson/theme-one-reference.test.ts`
+
+- [ ] **Step 1: Add a focused contract test** for compact slide counts, continuity of the five lessons, and non-trivial contextual `predict` controls.
+- [ ] **Step 2: Reduce repetition** while retaining the main explanations, examples, and existing visual language.
+- [ ] **Step 3: Replace simplistic arithmetic multiple-choice checks** with questions about place value, distributivity, remainders, and order of operations.
+- [ ] **Step 4: Run the focused lesson tests and review the rendered lesson data.**
+
+### Task 6: Open the pull request
 
 **Files:** none.
 

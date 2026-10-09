@@ -1,19 +1,4 @@
 import type { Curriculum } from "@/content/types";
-import { areasPerimetrosTopicExercises } from "@/data/topic-exercises/areas-perimetros";
-import { cuerposGeometricosTopicExercises } from "@/data/topic-exercises/cuerpos-geometricos";
-import { divisibilidadTopicExercises } from "@/data/topic-exercises/divisibilidad";
-import { fraccionesTopicExercises } from "@/data/topic-exercises/fracciones";
-import { numerosDecimalesTopicExercises } from "@/data/topic-exercises/numeros-decimales";
-import { numerosEnterosTopicExercises } from "@/data/topic-exercises/numeros-enteros";
-import { numerosNaturalesTopicExercises } from "@/data/topic-exercises/numeros-naturales";
-import { operacionesFraccionesTopicExercises } from "@/data/topic-exercises/operaciones-fracciones";
-import { potenciasRaicesTopicExercises } from "@/data/topic-exercises/potencias-raices";
-import { proporcionalidadPorcentajesTopicExercises } from "@/data/topic-exercises/proporcionalidad-porcentajes";
-import { sistemaMetricoDecimalTopicExercises } from "@/data/topic-exercises/sistema-metrico-decimal";
-import { algebraTopicExercises } from "@/data/topic-exercises/algebra";
-import { probabilidadTopicExercises } from "@/data/topic-exercises/probabilidad";
-import { sistemasEcuacionesTopicExercises } from "@/data/topic-exercises/sistemas-ecuaciones";
-import { tablasGraficasTopicExercises } from "@/data/topic-exercises/tablas-graficas";
 
 /**
  * Fuente única de verdad del contenido curricular de desarrollo.
@@ -48,7 +33,6 @@ export const curriculum: Curriculum = {
           slug: "numeros-naturales",
           title: "Los números naturales",
           orderIndex: 1,
-          topicExercises: numerosNaturalesTopicExercises,
           lessons: [
             {
               id: lessonId(101),
@@ -103,7 +87,6 @@ export const curriculum: Curriculum = {
           slug: "potencias-y-raices",
           title: "Potencias y raíces",
           orderIndex: 2,
-          topicExercises: potenciasRaicesTopicExercises,
           lessons: [
             {
               id: lessonId(201),
@@ -148,7 +131,6 @@ export const curriculum: Curriculum = {
           slug: "divisibilidad",
           title: "Divisibilidad",
           orderIndex: 3,
-          topicExercises: divisibilidadTopicExercises,
           lessons: [
             {
               id: lessonId(301),
@@ -202,7 +184,6 @@ export const curriculum: Curriculum = {
           slug: "numeros-enteros",
           title: "Los números enteros",
           orderIndex: 4,
-          topicExercises: numerosEnterosTopicExercises,
           lessons: [
             {
               id: lessonId(401),
@@ -256,7 +237,6 @@ export const curriculum: Curriculum = {
           slug: "numeros-decimales",
           title: "Los números decimales",
           orderIndex: 5,
-          topicExercises: numerosDecimalesTopicExercises,
           lessons: [
             {
               id: lessonId(501),
@@ -293,7 +273,6 @@ export const curriculum: Curriculum = {
           slug: "sistema-metrico-decimal",
           title: "El sistema métrico decimal",
           orderIndex: 6,
-          topicExercises: sistemaMetricoDecimalTopicExercises,
           lessons: [
             {
               id: lessonId(601),
@@ -348,7 +327,6 @@ export const curriculum: Curriculum = {
           slug: "fracciones",
           title: "Las fracciones",
           orderIndex: 7,
-          topicExercises: fraccionesTopicExercises,
           lessons: [
             {
               id: lessonId(801),
@@ -404,7 +382,6 @@ export const curriculum: Curriculum = {
           slug: "operaciones-con-fracciones",
           title: "Operaciones con fracciones",
           orderIndex: 8,
-          topicExercises: operacionesFraccionesTopicExercises,
           lessons: [
             {
               id: lessonId(901),
@@ -453,7 +430,6 @@ export const curriculum: Curriculum = {
           slug: "proporcionalidad-y-porcentajes",
           title: "Proporcionalidad y porcentajes",
           orderIndex: 9,
-          topicExercises: proporcionalidadPorcentajesTopicExercises,
           lessons: [
             {
               id: lessonId(1001),
@@ -502,7 +478,6 @@ export const curriculum: Curriculum = {
           slug: "algebra",
           title: "Álgebra",
           orderIndex: 10,
-          topicExercises: algebraTopicExercises,
           lessons: [
             {
               id: lessonId(1101),
@@ -566,7 +541,6 @@ export const curriculum: Curriculum = {
           slug: "cuerpos-geometricos",
           title: "Cuerpos geométricos",
           orderIndex: 12,
-          topicExercises: cuerposGeometricosTopicExercises,
           lessons: [
             {
               id: lessonId(1201),
@@ -612,7 +586,6 @@ export const curriculum: Curriculum = {
           slug: "areas-y-perimetros",
           title: "Áreas y perímetros",
           orderIndex: 13,
-          topicExercises: areasPerimetrosTopicExercises,
           lessons: [
             {
               id: lessonId(1301),
@@ -658,7 +631,6 @@ export const curriculum: Curriculum = {
           slug: "tablas-y-graficas",
           title: "Tablas y gráficas",
           orderIndex: 14,
-          topicExercises: tablasGraficasTopicExercises,
           lessons: [
             {
               id: lessonId(1401),
@@ -725,7 +697,6 @@ export const curriculum: Curriculum = {
           slug: "probabilidad",
           title: "Probabilidad",
           orderIndex: 15,
-          topicExercises: probabilidadTopicExercises,
           lessons: [
             {
               id: lessonId(1501),
@@ -805,7 +776,6 @@ export const curriculum: Curriculum = {
           slug: "sistemas-de-ecuaciones",
           title: "Sistemas de ecuaciones",
           orderIndex: 1,
-          topicExercises: sistemasEcuacionesTopicExercises,
           lessons: [
             {
               id: lessonId(701),

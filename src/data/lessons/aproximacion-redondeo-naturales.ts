@@ -46,16 +46,20 @@ export const aproximacionRedondeoNaturalesLesson: InteractiveLesson = {
         "2. Si la primera cifra que quitas es $5$ o mayor, suma 1 a la cifra del orden elegido.",
         "Si es menor que $5$, dejas esa cifra igual.",
       ],
-      warning: "No confundas «aproximar» con «truncar»: al truncar solo cortas cifras, sin mirar si debes subir.",
+      warning:
+        "No confundas «aproximar» con «truncar»: al truncar solo cortas cifras, sin mirar si debes subir.",
     },
     {
       id: "293518",
       type: "animated_solution",
       title: "Redondeando $293\\,518$",
-      content: ["Vamos a redondear el mismo número a distintos órdenes, como en el libro."],
+      content: [
+        "Vamos a redondear el mismo número a distintos órdenes, como en el libro.",
+      ],
       frames: [
         {
-          caption: "A las centenas de millar (miramos la cifra de decenas de millar: $9$):",
+          caption:
+            "A las centenas de millar (miramos la cifra de decenas de millar: $9$):",
           math: "293\\,518 \\longrightarrow 300\\,000",
         },
         {
@@ -70,23 +74,29 @@ export const aproximacionRedondeoNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-regla",
-      type: "number_line_pick",
-      title: "Practica la regla",
-      question: "Redondea $458$ a las decenas y marca el resultado en la recta.",
-      min: 440,
-      max: 470,
-      target: 460,
-      hint: "$458$ está entre $450$ y $460$. Mira la cifra de las unidades: ¿es $5$ o más?",
-      explanation: "La cifra de unidades es $8 \\geq 5$, así que subimos la decena: $460$. En la recta, $458$ queda más cerca de $460$ que de $450$.",
-    },
-    {
-      id: "check-millares",
-      type: "fill_in_blank",
-      title: "Redondeo a los millares",
-      question: "Redondea $24\\,963$ a los millares. Escribe el número sin espacios.",
-      correctAnswers: ["25000", "25 000"],
-      hint: "Mira la cifra de centenas ($9$).",
-      explanation: "$24\\,963$ tiene $963$ unidades por debajo del millar; como $9 \\geq 5$, el resultado es $25\\,000$.",
+      type: "predict",
+      title: "Elige la cifra que manda",
+      question:
+        "Al redondear $24\\,963$ a los millares, ¿qué cifra debes mirar para decidir si el millar sube o se queda igual?",
+      mode: "choice",
+      choices: [
+        { id: "centenas", label: "La cifra de las centenas ($9$)" },
+        {
+          id: "decenas",
+          label: "La cifra de las decenas ($6$)",
+          incorrectFeedback:
+            "Debes mirar la primera cifra que queda a la derecha de los millares.",
+        },
+        {
+          id: "millares",
+          label: "La cifra de los millares ($4$)",
+          incorrectFeedback:
+            "Esa cifra puede subir; la decisión la toma la primera cifra que quitamos.",
+        },
+      ],
+      correctChoiceId: "centenas",
+      explanation:
+        "Al redondear a los millares, la primera cifra que desaparece es la de las centenas: como es $9$, el resultado sube a $25\\,000$.",
     },
   ],
 };

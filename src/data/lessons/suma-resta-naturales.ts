@@ -41,20 +41,11 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       },
     },
     {
-      id: "parentesis-narrate",
-      type: "narrate",
-      title: "Paréntesis",
-      definitionBox:
-        "Los **paréntesis** empaquetan resultados parciales, modificando el **orden** en que han de hacerse las operaciones.",
-      module: "piramide-reduccion",
-      scene: "dual-parentesis",
-      piramide: { variant: "dual-parentesis" },
-    },
-    {
       id: "parentesis-explore",
       type: "explore",
       title: "Coloca el paréntesis",
-      question: "En $9 - 1 + 3$, coloca un paréntesis para que el resultado sea $5$.",
+      question:
+        "En $9 - 1 + 3$, coloca un paréntesis para que el resultado sea $5$.",
       module: "piramide-reduccion",
       scene: "explorar-parentesis",
       goal: {
@@ -63,26 +54,18 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         target: 5,
       },
       hint: "¿Qué operación conviene agrupar para restar antes de sumar?",
-      explanation: "Prueba $9 - (1 + 3)$: primero $1 + 3 = 4$ y luego $9 - 4 = 5$.",
+      explanation:
+        "Prueba $9 - (1 + 3)$: primero $1 + 3 = 4$ y luego $9 - 4 = 5$.",
     },
     {
       id: "conmutativa-reveal",
       type: "reveal",
       title: "Propiedad conmutativa",
-      definitionBox: "La suma **no varía** al cambiar el orden de los sumandos: $a + b = b + a$.",
+      definitionBox:
+        "La suma **no varía** al cambiar el orden de los sumandos: $a + b = b + a$.",
       module: "bloques-numericos",
       scene: "conmutativa",
       blocks: [8, 6],
-    },
-    {
-      id: "asociativa-reveal",
-      type: "reveal",
-      title: "Propiedad asociativa",
-      definitionBox:
-        "El resultado es **independiente** de cómo se agrupen los sumandos: $(a + b) + c = a + (b + c)$.",
-      module: "bloques-numericos",
-      scene: "asociativa",
-      blocks: [8, 6, 3],
     },
   ],
 };

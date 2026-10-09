@@ -12,7 +12,7 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       type: "predict",
       title: "¿Quién tiene razón?",
       question:
-        "Ana calcula $4 + 3 \\times 2$ y obtiene $14$. Leo obtiene $10$. ¿Quién tiene razón?",
+        "Ana calcula $4 + 3 \\times 2$ y obtiene $14$. Leo obtiene $10$. ¿Quién aplica correctamente la prioridad de operaciones y por qué?",
       mode: "choice",
       choices: [
         { id: "a", label: "Ana" },
@@ -20,7 +20,8 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
         {
           id: "b",
           label: "Las dos",
-          incorrectFeedback: "No pueden las dos: solo hay un total correcto en la caja.",
+          incorrectFeedback:
+            "No pueden las dos: solo hay un total correcto en la caja.",
         },
       ],
       correctChoiceId: "l",
@@ -60,19 +61,6 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
         tokens: ["4", "+", "(", "3", "−", "2", ")", "×", "3"],
       },
       explanation: "$(3 - 2) = 1$, luego $1 \\times 3 = 3$ y $4 + 3 = 7$.",
-    },
-    {
-      id: "practica-reto",
-      type: "explore",
-      title: "Reto final",
-      question: "Reto: usa los tres niveles en $18 ÷ 3 × 2 + ( 8 − 3 )$.",
-      module: "jerarquia-operaciones",
-      scene: "practica-reducir",
-      goal: {
-        kind: "hierarchy-reduce",
-        tokens: ["18", "÷", "3", "×", "2", "+", "(", "8", "−", "3", ")"],
-      },
-      explanation: "Paréntesis $5$, luego $18 : 3 = 6$, $6 \\times 2 = 12$ y $12 + 5 = 17$.",
     },
     {
       id: "resumen-niveles",

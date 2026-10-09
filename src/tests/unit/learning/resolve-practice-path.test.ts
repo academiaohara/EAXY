@@ -1,16 +1,13 @@
 import { describe, expect, it } from "vitest";
-import {
-  resolveDefaultPracticePath,
-  topicPracticePath,
-} from "@/lib/learning/resolve-practice-path";
+import { resolveDefaultPracticePath } from "@/lib/learning/resolve-practice-path";
 import { getFirstModuleWithTopicExercises } from "@/content";
 
 describe("resolveDefaultPracticePath", () => {
-  it("redirige a ejercicios de tema cuando no hay conceptos en el catálogo", () => {
+  it("prioriza la práctica conceptual y no vuelve a ejercicios externos retirados", () => {
     const firstTopic = getFirstModuleWithTopicExercises();
-    expect(firstTopic).toBeDefined();
+    expect(firstTopic).toBeUndefined();
 
     const path = resolveDefaultPracticePath();
-    expect(path).toBe(topicPracticePath(firstTopic!.module.id));
+    expect(path === null || !path.startsWith("/practicar/tema/")).toBe(true);
   });
 });
