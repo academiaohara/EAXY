@@ -24,7 +24,7 @@ export function OrigenContarScene() {
         </p>
       </div>
 
-      <div role="img" className="grid grid-cols-4 justify-items-center gap-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-4 sm:grid-cols-6 sm:gap-3 sm:p-5" aria-label="Doce cajas en tres filas de cuatro">
+      <div role="img" className="mx-auto grid w-full max-w-sm grid-cols-4 justify-items-center gap-2 rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-4 sm:gap-3 sm:p-5" aria-label="Doce cajas en tres filas de cuatro">
         {BOXES.map((box) => (
           <div key={box} className="flex size-14 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-amber-200/80 sm:size-16">
             <SmallBox />
