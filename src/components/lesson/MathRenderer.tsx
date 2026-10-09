@@ -27,6 +27,19 @@ function renderLatex(latex: string, display: boolean): string {
   }
 }
 
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function applyBoldMarkdown(fragment: string, conceptLookup?: MathRendererProps["conceptLookup"]): string {
+  return escapeHtml(fragment).replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
+    const conceptId = conceptLookup?.(term);
+    return conceptId
+      ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
+      : `<strong>${term}</strong>`;
+  });
+}
+
 /** Renderiza texto con LaTeX inline ($...$) y bloques display opcionales. */
 export function MathRenderer({ text, display = false, className, conceptLookup }: MathRendererProps) {
   const html = useMemo(() => {
@@ -34,23 +47,24 @@ export function MathRenderer({ text, display = false, className, conceptLookup }
       return renderLatex(text, true);
     }
 
-    const parts = text.split(/(\$[^$]+\$)/g);
+    const normalized = text.replace(
+      /\*\*(\$[^$]+\$)\*\*/g,
+      (_match, latexWrapped: string) => `<strong-math>${latexWrapped}</strong-math>`,
+    );
+
+    const parts = normalized.split(/(\$[^$]+\$|<strong-math>\$[^$]+\$<\/strong-math>)/g);
     return parts
       .map((part) => {
+        const strongMath = part.match(/^<strong-math>(\$[^$]+\$)<\/strong-math>$/);
+        if (strongMath) {
+          const latex = strongMath[1]!.slice(1, -1);
+          return `<strong>${renderLatex(latex, false)}</strong>`;
+        }
         if (part.startsWith("$") && part.endsWith("$")) {
           const latex = part.slice(1, -1);
           return renderLatex(latex, false);
         }
-        return part
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
-            const conceptId = conceptLookup?.(term);
-            return conceptId
-              ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
-              : `<strong>${term}</strong>`;
-          });
+        return applyBoldMarkdown(part, conceptLookup);
       })
       .join("");
   }, [text, display, conceptLookup]);

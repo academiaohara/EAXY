@@ -656,8 +656,8 @@ function LessonContainerBody({
           footer={
             <LessonFooterDock
               feedback={feedback}
-              canBack={stepIndex > 0}
-              onBack={goBack}
+              canBack={stepIndex > 0 || Boolean(control?.onBack)}
+              onBack={control?.onBack ?? goBack}
               onSkip={feedback ? undefined : handleSkip}
               action={
                 feedback ? (
@@ -699,6 +699,7 @@ function LessonContainerBody({
               step={currentStep}
               onCheck={handleCheck}
               onContinue={goToNextStep}
+              onPreviousStep={goBack}
               disabled={feedback !== null}
               savedAttempt={currentAttempt?.snapshot ?? null}
               stageTheme={lesson.stage?.theme ?? "paper"}
