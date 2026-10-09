@@ -49,7 +49,7 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
       case "sistemas-historia":
         return <SistemasHistoriaScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "decimal-intro":
-        return <DecimalIntroScene onReadyChange={handleReadyChange} />;
+        return <DecimalIntroScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "contar-diez":
         return <ContarDiezScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "redondeo-demo":

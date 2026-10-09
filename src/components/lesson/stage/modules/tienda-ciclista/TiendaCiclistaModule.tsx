@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { TiendaCiclistaItem } from "@/lib/lesson/types";
@@ -24,6 +25,22 @@ const DEFAULT_ITEMS: TiendaCiclistaItem[] = [
 type TiendaMode = "sumar-cesta" | "restar-cartera" | "explorar-compra";
 
 type PricePop = { id: string; amount: number; sign: "+" | "−"; key: number };
+type TiendaCiclistaState = { tapIds: string[] };
+
+function createDefaultTiendaCiclistaState(): TiendaCiclistaState {
+  return { tapIds: [] };
+}
+
+function placeValueParts(value: number) {
+  const parts = [
+    { label: "millares", value: Math.floor(value / 1000) * 1000 },
+    { label: "centenas", value: Math.floor(value / 100) % 10 * 100 },
+    { label: "decenas", value: Math.floor(value / 10) % 10 * 10 },
+    { label: "unidades", value: value % 10 },
+  ];
+
+  return parts.filter((part) => part.value > 0);
+}
 
 export type TiendaCiclistaModuleProps = {
   stepId: string;
@@ -56,6 +73,7 @@ function ItemIcon({ id }: { id: string }) {
 }
 
 export function TiendaCiclistaModule({
+  stepId,
   mode,
   items = DEFAULT_ITEMS,
   wallet = 828,
@@ -67,7 +85,10 @@ export function TiendaCiclistaModule({
   onAnimationComplete,
 }: TiendaCiclistaModuleProps) {
   const reduced = useReducedMotion();
-  const [tapIds, setTapIds] = useState<string[]>([]);
+  const [storeState, setStoreState] = usePersistedLessonToolState(stepId, createDefaultTiendaCiclistaState);
+  // Autoplay needs the latest persisted setter without restarting its timer sequence.
+  const setStoreStateRef = useRef(setStoreState);
+  const { tapIds } = storeState;
   const [pops, setPops] = useState<PricePop[]>([]);
   const popKey = useRef(0);
   const timers = useRef<number[]>([]);
@@ -93,6 +114,10 @@ export function TiendaCiclistaModule({
     timers.current = [];
   }, []);
 
+  useEffect(() => {
+    setStoreStateRef.current = setStoreState;
+  }, [setStoreState]);
+
   useEffect(() => clearTimers, [clearTimers]);
 
   const pushPop = useCallback((id: string, amount: number, sign: "+" | "−") => {
@@ -113,13 +138,13 @@ export function TiendaCiclistaModule({
 
     if (autoPlay && mode === "sumar-cesta") {
       if (reduced) {
-        setTapIds(items.map((item) => item.id));
+        setStoreStateRef.current({ tapIds: items.map((item) => item.id) });
         onReadyChange?.(true);
         onAnimationComplete?.();
         return;
       }
       onReadyChange?.(false);
-      setTapIds([]);
+      setStoreStateRef.current({ tapIds: [] });
       let i = 0;
       const tick = () => {
         if (i >= items.length) {
@@ -128,7 +153,7 @@ export function TiendaCiclistaModule({
           return;
         }
         const item = items[i]!;
-        setTapIds((prev) => [...prev, item.id]);
+        setStoreStateRef.current((prev) => ({ tapIds: [...prev.tapIds, item.id] }));
         i += 1;
         timers.current.push(window.setTimeout(tick, 700));
       };
@@ -143,12 +168,10 @@ export function TiendaCiclistaModule({
         return;
       }
       onReadyChange?.(false);
-      let shown = 0;
       const steps = 6;
       let step = 0;
       const tick = () => {
         step += 1;
-        shown = Math.round((spendAmount * step) / steps);
         if (step >= steps) {
           onReadyChange?.(true);
           onAnimationComplete?.();
@@ -200,24 +223,34 @@ export function TiendaCiclistaModule({
     if (!item) {
       return;
     }
-    setTapIds((prev) => {
-      const has = prev.includes(id);
-      if (has) {
-        return prev.filter((x) => x !== id);
-      }
+    const has = tapIds.includes(id);
+    if (!has) {
       pushPop(id, item.price, mode === "restar-cartera" ? "−" : "+");
-      return [...prev, id];
-    });
+    }
+    setStoreState((prev) => ({
+      tapIds: prev.tapIds.includes(id)
+        ? prev.tapIds.filter((selectedId) => selectedId !== id)
+        : [...prev.tapIds, id],
+    }));
   };
 
-  const sumParts = items
-    .filter((item) => tapIds.includes(item.id))
-    .map((item) => String(item.price))
-    .join(" + ");
+  const tappedItems = tapIds.flatMap((id) => {
+    const item = items.find((entry) => entry.id === id);
+    return item ? [item] : [];
+  });
+  const sumParts = tappedItems.map((item) => String(item.price)).join(" + ");
+  const subtotalRows = tappedItems.map((item, index) => ({
+    item,
+    subtotal: tappedItems
+      .slice(0, index + 1)
+      .reduce((sum, selectedItem) => sum + selectedItem.price, 0),
+  }));
+  const totalParts = placeValueParts(runningTotal);
 
   return (
     <div
       className="flex flex-col gap-4"
+      role="group"
       aria-label="Tienda del equipo ciclista"
       data-testid="tienda-ciclista-module"
     >
@@ -247,7 +280,7 @@ export function TiendaCiclistaModule({
                 interactiveTap && inTap && "border-cobalt bg-cobalt-tint/40 ring-2 ring-cobalt/20",
                 !interactiveExplore && !interactiveTap && "border-slate-200 bg-slate-50/80",
               )}
-              aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
+              aria-pressed={interactiveExplore ? isSelected : interactiveTap ? inTap : undefined}
               aria-label={`${item.label}, ${item.price} euros`}
             >
               {pops
@@ -255,7 +288,10 @@ export function TiendaCiclistaModule({
                 .map((pop) => (
                   <span
                     key={pop.key}
-                    className="pointer-events-none absolute -top-1 left-1/2 z-10 -translate-x-1/2 animate-[lesson-price-pop_0.85s_ease-out_forwards] font-mono text-sm font-bold text-emerald-600"
+                    className={cn(
+                      "pointer-events-none absolute -top-1 left-1/2 z-10 -translate-x-1/2 font-mono text-sm font-bold text-emerald-600",
+                      !reduced && "animate-[lesson-price-pop_0.85s_ease-out_forwards]",
+                    )}
                   >
                     {pop.sign}
                     {pop.amount}
@@ -272,14 +308,41 @@ export function TiendaCiclistaModule({
       <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/80 px-4 py-4 text-center">
         {mode === "sumar-cesta" ? (
           <>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Total en la cesta</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Total de la compra</p>
             <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
               {runningTotal} €
             </p>
+            {subtotalRows.length > 0 ? (
+              <div className="mx-auto mt-3 max-w-md rounded-xl border border-slate-200 bg-white p-3 text-left">
+                <p className="mb-2 text-center text-[11px] font-bold uppercase tracking-wide text-ink-muted">
+                  Así crece el subtotal
+                </p>
+                <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-x-3 gap-y-1.5 text-xs tabular-nums">
+                  {subtotalRows.map(({ item, subtotal: rowTotal }, index) => (
+                    <div key={item.id} className="col-span-3 grid grid-cols-subgrid items-center">
+                      <span className="truncate text-ink-muted">{item.label}</span>
+                      <span className="text-right font-mono text-ink">
+                        {index === 0 ? item.price : `+ ${item.price}`}
+                      </span>
+                      <span className="min-w-16 text-right font-mono font-semibold text-cobalt">{rowTotal} €</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
             {sumParts ? (
-              <p className="mt-1 text-sm text-ink-muted">
-                <MathRenderer text={`$${sumParts} = ${runningTotal}$ €`} />
-              </p>
+              <div className="mt-3">
+                <p className="text-sm text-ink-muted"><MathRenderer text={`$${sumParts} = ${runningTotal}$ €`} /></p>
+                {totalParts.length > 0 ? (
+                  <p className="mt-1 text-xs text-ink-muted" aria-label={`Descomposición por valor posicional: ${totalParts.map((part) => `${part.value} ${part.label}`).join(", ")}`}>
+                    {totalParts.map((part, index) => (
+                      <span key={part.label}>
+                        {index > 0 ? " + " : ""}{part.value} <span className="font-medium">({part.label})</span>
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
+              </div>
             ) : (
               <p className="mt-1 text-sm text-ink-muted">Pulsa cada artículo para sumarlo.</p>
             )}
@@ -290,17 +353,23 @@ export function TiendaCiclistaModule({
         ) : null}
         {mode === "restar-cartera" || mode === "explorar-compra" ? (
           <>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cartera</p>
-            <p className="text-sm text-ink-muted">Tenías {wallet} €</p>
-            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
+            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">
+              {mode === "restar-cartera" ? "Presupuesto de la compra" : "Cartera"}
+            </p>
+            <p className="text-sm text-ink-muted">Disponías de <strong className="text-ink">{wallet} €</strong></p>
+            <p className={cn("font-mono text-3xl font-bold", (walletLeft ?? wallet) < 0 ? "text-rose-700" : "text-ink")} aria-live="polite">
               Quedan {walletLeft ?? wallet} €
             </p>
-            {mode === "restar-cartera" && tapTotal > 0 ? (
-              <p className="mt-1 text-sm text-ink-muted">
-                <MathRenderer text={`$${wallet} - ${runningTotal} = ${wallet - runningTotal}$ €`} />
-              </p>
+            {mode === "restar-cartera" && runningTotal > 0 ? (
+              <div className="mt-2 space-y-1 text-sm text-ink-muted">
+                <p>Coste de lo elegido: <strong className="text-ink">{runningTotal} €</strong></p>
+                <p><MathRenderer text={`$${wallet} - ${runningTotal} = ${wallet - runningTotal}$ €`} /></p>
+                <p className="rounded-lg bg-emerald-50 px-3 py-2 text-emerald-900">
+                  Comprobación: lo que queda + lo gastado = <strong>{walletLeft} + {runningTotal} = {wallet} €</strong>.
+                </p>
+              </div>
             ) : mode === "restar-cartera" ? (
-              <p className="mt-1 text-sm text-ink-muted">Pulsa un artículo para restar su precio.</p>
+              <p className="mt-1 text-sm text-ink-muted">Elige algo para comprar: el coste se resta del presupuesto.</p>
             ) : null}
             {mode === "explorar-compra" ? (
               <p className="text-xs text-ink-muted">
