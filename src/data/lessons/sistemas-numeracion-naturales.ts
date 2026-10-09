@@ -11,7 +11,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       type: "interactive_tool",
       tool: "naturales-numeracion",
       scene: "origen-contar",
-      title: "¿De dónde salen los números?",
+      title: "Contar antes de escribir",
       layout: "stack",
     },
     {
@@ -19,7 +19,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       type: "interactive_tool",
       tool: "naturales-numeracion",
       scene: "sistemas-historia",
-      title: "Tres maneras de contar",
+      title: "Tres formas de representar cantidades",
       layout: "stack",
     },
     {
@@ -27,7 +27,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       type: "interactive_tool",
       tool: "naturales-numeracion",
       scene: "decimal-intro",
-      title: "El sistema decimal",
+      title: "El valor depende del lugar",
       layout: "stack",
     },
     {
@@ -35,7 +35,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       type: "interactive_tool",
       tool: "naturales-numeracion",
       scene: "contar-diez",
-      title: "Contar unidades hasta diez",
+      title: "Diez unidades forman una decena",
       layout: "stack",
     },
   ],

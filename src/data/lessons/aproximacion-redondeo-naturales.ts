@@ -17,22 +17,20 @@ export const aproximacionRedondeoNaturalesLesson: InteractiveLesson = {
       ],
       visuals: [
         {
-          kind: "cards",
-          title: "Ejemplos del temario",
-          items: [
-            {
-              title: "Precio de una vivienda",
-              math: "268\\,251 \\approx 270\\,000",
-              caption: "Redondeo a las decenas de millar.",
-              tone: "cobalt",
-            },
-            {
-              title: "Población",
-              math: "6\\,035\\,192 \\approx 6\\,000\\,000",
-              caption: "Redondeo al millón más cercano.",
-              tone: "emerald",
-            },
+          kind: "number-line",
+          title: "El precio de la vivienda, entre dos decenas de millar",
+          min: 260_000,
+          max: 270_000,
+          step: 5_000,
+          showPositiveSign: false,
+          points: [
+            { value: 260_000, label: "$260\\,000$", tone: "cobalt" },
+            { value: 265_000, label: "$265\\,000$ · mitad", tone: "amber" },
+            { value: 268_251, label: "$268\\,251$", tone: "rose" },
+            { value: 270_000, label: "$270\\,000$", tone: "emerald" },
           ],
+          caption:
+            "$268\\,251$ está a $1\\,749$ de $270\\,000$ y a $8\\,251$ de $260\\,000$: está más cerca de $270\\,000$.",
         },
       ],
     },
@@ -74,29 +72,11 @@ export const aproximacionRedondeoNaturalesLesson: InteractiveLesson = {
     },
     {
       id: "check-regla",
-      type: "predict",
-      title: "Elige la cifra que manda",
-      question:
-        "Al redondear $24\\,963$ a los millares, ¿qué cifra debes mirar para decidir si el millar sube o se queda igual?",
-      mode: "choice",
-      choices: [
-        { id: "centenas", label: "La cifra de las centenas ($9$)" },
-        {
-          id: "decenas",
-          label: "La cifra de las decenas ($6$)",
-          incorrectFeedback:
-            "Debes mirar la primera cifra que queda a la derecha de los millares.",
-        },
-        {
-          id: "millares",
-          label: "La cifra de los millares ($4$)",
-          incorrectFeedback:
-            "Esa cifra puede subir; la decisión la toma la primera cifra que quitamos.",
-        },
-      ],
-      correctChoiceId: "centenas",
-      explanation:
-        "Al redondear a los millares, la primera cifra que desaparece es la de las centenas: como es $9$, el resultado sube a $25\\,000$.",
+      type: "interactive_tool",
+      tool: "naturales-numeracion",
+      scene: "redondeo-corte",
+      title: "Marca dónde se corta el número",
+      roundingExercise: { n: 24_963, orderId: "millares" },
     },
   ],
 };
