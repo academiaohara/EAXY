@@ -28,6 +28,13 @@ export type StageModuleRenderProps = {
   bloques?: { blocks: number[] };
   jerarquia?: {
     revealPlayed?: boolean;
+    selectedChoiceId?: string;
+    isCorrect?: boolean;
+    initialTokens?: readonly string[];
+    reduceTokens?: readonly string[];
+    reduceHistory?: readonly (readonly string[])[];
+    onReduceTokensChange?: (tokens: string[], historyRow: readonly string[]) => void;
+    reduceDisabled?: boolean;
     targetSequence?: string[];
     tapSequence?: string[];
     onTapSequenceChange?: (sequence: string[]) => void;
@@ -110,6 +117,13 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
         scene={scene}
         revealPlayed={props.jerarquia?.revealPlayed}
         autoPlay={props.autoPlay}
+        selectedChoiceId={props.jerarquia?.selectedChoiceId}
+        isCorrect={props.jerarquia?.isCorrect}
+        initialTokens={props.jerarquia?.initialTokens}
+        reduceTokens={props.jerarquia?.reduceTokens}
+        reduceHistory={props.jerarquia?.reduceHistory}
+        onReduceTokensChange={props.jerarquia?.onReduceTokensChange}
+        reduceDisabled={props.jerarquia?.reduceDisabled}
         targetSequence={props.jerarquia?.targetSequence}
         tapSequence={props.jerarquia?.tapSequence}
         onTapSequenceChange={props.jerarquia?.onTapSequenceChange}
