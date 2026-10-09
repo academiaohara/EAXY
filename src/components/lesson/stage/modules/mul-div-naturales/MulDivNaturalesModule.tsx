@@ -10,6 +10,10 @@ import {
   DivisionManoScene,
   MultiplicacionManoScene,
 } from "@/components/lesson/stage/modules/mul-div-naturales/EscolarAlgorithmViews";
+import {
+  AsociativaHuevosDiscover,
+  AsociativaTrucoMental,
+} from "@/components/lesson/stage/modules/mul-div-naturales/AsociativaScenes";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
 
@@ -531,82 +535,6 @@ function ConmutativaProducto({
   );
 }
 
-function AsociativaProducto({
-  a,
-  b,
-  c,
-  onReadyChange,
-}: {
-  a: number;
-  b: number;
-  c: number;
-  onReadyChange?: (ready: boolean) => void;
-}) {
-  const [leftGroup, setLeftGroup] = useState(true);
-  const total = a * b * c;
-
-  const piles = useMemo(() => {
-    if (leftGroup) {
-      return [
-        { label: `${a}×${b}`, count: a * b, tone: "cobalt" as const },
-        { label: `${c}`, count: c, tone: "amber" as const },
-      ];
-    }
-    return [
-      { label: `${a}`, count: a, tone: "cobalt" as const },
-      { label: `${b}×${c}`, count: b * c, tone: "violet" as const },
-    ];
-  }, [a, b, c, leftGroup]);
-
-  return (
-    <div className="space-y-4" aria-label="Propiedad asociativa de la multiplicación">
-      <div className="flex flex-wrap items-end justify-center gap-3">
-        {piles.map((pile, index) => (
-          <div key={pile.label} className="flex items-end gap-2">
-            {index === 1 ? <span className="pb-4 text-2xl font-bold text-ink">×</span> : null}
-            <div
-              className={cn(
-                "flex flex-wrap justify-center gap-0.5 rounded-xl border-2 border-dashed px-2 py-2",
-                index === 0 && leftGroup ? "border-cobalt/40 bg-cobalt-tint/50" : "",
-                index === 1 && !leftGroup ? "border-violet/40 bg-violet-50" : "border-transparent",
-              )}
-            >
-              {Array.from({ length: Math.min(pile.count, 12) }, (_, i) => (
-                <FichaIcon key={i} tone={pile.tone} />
-              ))}
-              {pile.count > 12 ? (
-                <span className="self-center px-1 text-xs font-bold text-ink-muted">+{pile.count - 12}</span>
-              ) : null}
-            </div>
-          </div>
-        ))}
-        <span className="pb-4 font-mono text-lg font-bold text-ink">= {total}</span>
-      </div>
-      <p className="text-center text-sm text-ink-muted">
-        <MathRenderer
-          text={
-            leftGroup
-              ? `$(${a} \\cdot ${b}) \\cdot ${c} = ${a * b} \\cdot ${c} = ${total}$`
-              : `$${a} \\cdot (${b} \\cdot ${c}) = ${a} \\cdot ${b * c} = ${total}$`
-          }
-        />
-      </p>
-      <div className="flex justify-center">
-        <button
-          type="button"
-          className="min-h-[44px] rounded-xl border-2 border-cobalt/30 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-cobalt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-          onClick={() => {
-            setLeftGroup((g) => !g);
-            onReadyChange?.(true);
-          }}
-        >
-          Cambiar agrupación
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function DistributivaBloques({
   a,
   b,
@@ -1029,8 +957,22 @@ export function MulDivNaturalesModule({
         );
       case "conmutativa-producto":
         return <ConmutativaProducto a={a} b={b} reduced={reduced} onReadyChange={onReadyChange} />;
+      case "asociativa-huevos":
+        return <AsociativaHuevosDiscover a={a} b={b} c={c ?? 2} onReadyChange={onReadyChange} />;
+      case "asociativa-truco":
+        return (
+          <AsociativaTrucoMental
+            a={a}
+            b={b}
+            c={c ?? 4}
+            autoPlay={autoPlay}
+            reduced={reduced}
+            onReadyChange={onReadyChange}
+            onAnimationComplete={onAnimationComplete}
+          />
+        );
       case "asociativa-producto":
-        return <AsociativaProducto a={a} b={b} c={c} onReadyChange={onReadyChange} />;
+        return <AsociativaHuevosDiscover a={a} b={b} c={c ?? 2} onReadyChange={onReadyChange} />;
       case "distributiva-bloques":
         return (
           <DistributivaBloques

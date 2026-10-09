@@ -45,14 +45,48 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       mulDiv: { scene: "conmutativa-producto", a: 3, b: 5 },
     },
     {
-      id: "asociativa-reveal",
+      id: "asociativa-descubrir",
       type: "reveal",
       title: "Asociativa",
       definitionBox:
-        "Puedes **agrupar** los factores como quieras: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$.",
+        "¿Cuántos **huevos** hay? Agrupa $8$, $5$ y $2$ como prefieras: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$.",
       module: "mul-div-naturales",
-      scene: "asociativa-producto",
-      mulDiv: { scene: "asociativa-producto", a: 8, b: 5, c: 2 },
+      scene: "asociativa-huevos",
+      mulDiv: { scene: "asociativa-huevos", a: 8, b: 5, c: 2 },
+    },
+    {
+      id: "asociativa-truco-narrate",
+      type: "narrate",
+      title: "Un truco para calcular",
+      definitionBox:
+        "La asociativa no es solo teoría: te ayuda a **calcular más rápido** en la cabeza.",
+      module: "mul-div-naturales",
+      scene: "asociativa-truco",
+      mulDiv: { scene: "asociativa-truco", a: 25, b: 7, c: 4 },
+    },
+    {
+      id: "asociativa-practice-predict",
+      type: "predict",
+      title: "Elige la agrupación",
+      question: "¿Qué agrupación hace **más fácil** $5 \\cdot 9 \\cdot 2$?",
+      mode: "choice",
+      choices: [
+        {
+          id: "5-9-first",
+          label: "Primero $(5 \\cdot 9) \\cdot 2$",
+          incorrectFeedback:
+            "Da $90$, pero $5 \\cdot 9 = 45$ cuesta más. Busca un producto intermedio redondo.",
+        },
+        { id: "5-2-first", label: "Primero $(5 \\cdot 2) \\cdot 9$" },
+        {
+          id: "9-2-first",
+          label: "Primero $5 \\cdot (9 \\cdot 2)$",
+          incorrectFeedback:
+            "También vale $90$, pero $9 \\cdot 2 = 18$ no es tan cómodo como $5 \\cdot 2 = 10$.",
+        },
+      ],
+      correctChoiceId: "5-2-first",
+      explanation: "$(5 \\cdot 2) \\cdot 9 = 10 \\cdot 9 = 90$. Multiplicar por $10$ es más rápido.",
     },
     {
       id: "distributiva-predict",

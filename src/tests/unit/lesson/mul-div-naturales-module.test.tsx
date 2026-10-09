@@ -26,6 +26,24 @@ describe("MulDivNaturalesModule", () => {
     vi.useRealTimers();
   });
 
+  it("asociativa huevos pide probar las dos agrupaciones antes de continuar", () => {
+    const onReady = vi.fn();
+    render(
+      <MulDivNaturalesModule
+        stepId="test"
+        scene="asociativa-huevos"
+        a={8}
+        b={5}
+        c={2}
+        onReadyChange={onReady}
+      />,
+    );
+    expect(onReady).not.toHaveBeenCalledWith(true);
+    fireEvent.click(screen.getByRole("button", { name: /8 · \(5 · 2\)/i }));
+    expect(onReady).toHaveBeenCalledWith(true);
+    expect(screen.getByText(/¡Mismo resultado!/i)).toBeInTheDocument();
+  });
+
   it("reparto manual avisa cuando las cajas están llenas", async () => {
     const onReady = vi.fn();
     let counts = [0, 0, 0, 0];
