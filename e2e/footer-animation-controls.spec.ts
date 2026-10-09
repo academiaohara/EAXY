@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 const LESSON_SLUG = "multiplicacion-division-naturales";
 const STORAGE_KEY = "eaxy-local-progress";
 
-function seedLessonStep(stepIndex: number, stepCount = 17) {
+function seedLessonStep(stepIndex: number, stepCount = 6) {
   const visitedSteps = Array.from({ length: stepCount }, (_, i) => i <= stepIndex);
   const completedSteps = Array.from({ length: stepCount }, () => false);
   return {
@@ -27,11 +27,22 @@ function seedLessonStep(stepIndex: number, stepCount = 17) {
 
 async function advanceFooterAnimationToEnd(page: import("@playwright/test").Page) {
   const footer = page.getByTestId("lesson-footer-dock");
+  const continueBtn = footer.getByTestId("lesson-continue-button");
   const play = footer.getByRole("button", { name: /Reproducir animación/i });
   if (await play.isVisible().catch(() => false)) {
     await play.click();
   }
-  await expect(footer.getByTestId("lesson-continue-button")).toBeVisible({ timeout: 20_000 });
+  for (let i = 0; i < 8; i++) {
+    if (await continueBtn.isVisible().catch(() => false)) {
+      return;
+    }
+    const next = footer.getByRole("button", { name: "Avanzar un paso" });
+    if (await next.evaluate((el) => (el as HTMLButtonElement).disabled)) {
+      break;
+    }
+    await next.click();
+  }
+  await expect(continueBtn).toBeVisible({ timeout: 20_000 });
 }
 
 async function expectFooterControlsBesideSkip(page: import("@playwright/test").Page) {
@@ -55,14 +66,14 @@ async function expectFooterControlsBesideSkip(page: import("@playwright/test").P
   }
 }
 
-test("multiplicación a mano — controles en el centro del pie y Continuar junto a Saltar", async ({
+test("reparto igual — controles en el centro del pie y Continuar junto a Saltar", async ({
   page,
 }) => {
   await page.addInitScript(
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
     },
-    { key: STORAGE_KEY, payload: seedLessonStep(8) },
+    { key: STORAGE_KEY, payload: seedLessonStep(3) },
   );
 
   await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
@@ -70,12 +81,11 @@ test("multiplicación a mano — controles en el centro del pie y Continuar junt
   await entryDialog.waitFor({ state: "visible", timeout: 15_000 });
   await entryDialog.getByRole("button", { name: "Continuar", exact: true }).click();
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
-  await expect(page.getByRole("button", { name: /Pizarra de multiplicación/i })).toBeVisible({
-    timeout: 30_000,
-  });
+  await expect(page.getByTestId("mul-div-reparto-igual")).toBeVisible({ timeout: 30_000 });
 
+  await advanceFooterAnimationToEnd(page);
   await expectFooterControlsBesideSkip(page);
-  await page.screenshot({ path: "/opt/cursor/artifacts/footer-mul-mano.png", fullPage: false });
+  await page.screenshot({ path: "/opt/cursor/artifacts/footer-reparto-igual.png", fullPage: false });
 });
 
 test("división a mano — controles en el pie, no sobre la pizarra", async ({ page }) => {
@@ -83,7 +93,7 @@ test("división a mano — controles en el pie, no sobre la pizarra", async ({ p
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
     },
-    { key: STORAGE_KEY, payload: seedLessonStep(11) },
+    { key: STORAGE_KEY, payload: seedLessonStep(4) },
   );
 
   await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
@@ -92,6 +102,7 @@ test("división a mano — controles en el pie, no sobre la pizarra", async ({ p
   await entryDialog.getByRole("button", { name: "Continuar", exact: true }).click();
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("lesson-narrate-step")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("division-mano-chalkboard")).toBeVisible({ timeout: 15_000 });
 
   const stage = page.locator("[data-testid='lesson-narrate-step']");
   await expect(stage.getByRole("group", { name: "Controles de animación" })).toHaveCount(0);

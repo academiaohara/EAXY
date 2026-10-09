@@ -5,6 +5,8 @@ import {
   CHALK_ACCENT,
   CHALK_INK,
   CHALK_MUTED,
+  ChalkboardCaption,
+  ChalkboardFrame,
   DrawnArrow,
   isVisibleAtSub,
   SubProgressDots,
@@ -37,9 +39,10 @@ export function DivisionManoChalkboard({
   const reduced = useChalkboardMotion();
   const board = lesson ?? divisionManoLesson(dividend, divisor);
   const activeCycle = board?.cycleBySub[subStep];
+  const liveText = board?.liveBySub[subStep] ?? "";
 
-  const notes = useMemo(
-    () => board?.notes.filter((n) => isVisibleAtSub(subStep, n.show)) ?? [],
+  const arrowNotes = useMemo(
+    () => board?.notes.filter((n) => isVisibleAtSub(subStep, n.show) && n.arrow) ?? [],
     [board, subStep],
   );
 
@@ -52,26 +55,11 @@ export function DivisionManoChalkboard({
   }
 
   return (
-    <div className="mx-auto w-full max-w-4xl" data-testid="division-mano-chalkboard">
-      <div
-        className={cn(
-          "relative w-full overflow-hidden rounded-2xl border border-[color:var(--stage-border,#334155)] bg-[#1a2332] font-[family-name:var(--font-caveat),cursive]",
-          onBoardClick && "cursor-pointer",
-        )}
-        style={{ aspectRatio: "800 / 520" }}
-        role={onBoardClick ? "button" : undefined}
-        tabIndex={onBoardClick ? 0 : undefined}
-        onClick={onBoardClick}
-        onKeyDown={(event) => {
-          if (!onBoardClick) {
-            return;
-          }
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            onBoardClick();
-          }
-        }}
-        aria-label={onBoardClick ? "Pizarra de división. Pulsa para avanzar." : undefined}
+    <div className="flex w-full flex-col gap-2" data-testid="division-mano-chalkboard">
+      <ChalkboardFrame
+        testId="division-mano-chalkboard-surface"
+        onBoardClick={onBoardClick}
+        ariaLabel={onBoardClick ? "Pizarra de división. Pulsa para avanzar." : undefined}
       >
         <div className="absolute left-4 top-4 flex flex-col gap-2 sm:left-6 sm:top-6">
           {DIVISION_CYCLE.map((chip) => {
@@ -133,37 +121,20 @@ export function DivisionManoChalkboard({
             );
           })}
 
-          {notes.map((note) => {
-            const visible = isVisibleAtSub(subStep, note.show);
-            return (
-              <g key={note.id}>
-                {note.arrow ? (
-                  <DrawnArrow coords={note.arrow} visible={visible} reduced={reduced} delayMs={300} />
-                ) : null}
-                <text
-                  x={note.x}
-                  y={note.y}
-                  fontSize={30}
-                  fontWeight={600}
-                  fill={CHALK_INK}
-                  fillOpacity={visible ? 0.95 : 0}
-                  style={{
-                    transition: reduced ? undefined : "fill-opacity 0.4s ease 500ms",
-                  }}
-                >
-                  {note.text}
-                </text>
-              </g>
-            );
-          })}
+          {arrowNotes.map((note) => (
+            <DrawnArrow
+              key={note.id}
+              coords={note.arrow!}
+              visible
+              reduced={reduced}
+              delayMs={300}
+            />
+          ))}
         </svg>
-      </div>
+      </ChalkboardFrame>
 
       {showProgress ? <SubProgressDots sub={subStep} total={subTotal} /> : null}
-
-      <p className="sr-only" aria-live="polite">
-        {board.liveBySub[subStep] ?? ""}
-      </p>
+      <ChalkboardCaption text={liveText} />
     </div>
   );
 }

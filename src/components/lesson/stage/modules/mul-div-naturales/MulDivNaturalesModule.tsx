@@ -619,10 +619,12 @@ function DistributivaBloques({
         ))}
       </div>
       {phase >= 2 ? (
-        <p className="text-center text-sm text-ink-muted">
+        <p className="min-h-[2.5rem] text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]">
           <MathRenderer text={`$${a} \\cdot (${b} + ${c}) = ${a} \\cdot ${b} + ${a} \\cdot ${c} = ${left} + ${right} = ${total}$`} />
         </p>
-      ) : null}
+      ) : (
+        <div className="min-h-[2.5rem]" aria-hidden />
+      )}
     </div>
   );
 }
@@ -656,9 +658,9 @@ function RepartoIgual({
 
   const caption =
     phase === 0
-      ? `${dividend} bombones en ${divisor} cajas iguales. ¿Cuántos en cada una? Cada caja muestra ${quotient} → ${dividend} : ${divisor} = ${quotient}.`
+      ? `${dividend} bombones repartidos en ${divisor} cajas iguales. ¿Cuántos caben en cada caja?`
       : phase === 1
-        ? `Ahora las cajas son de ${quotient} bombones. ¿Cuántas cajas se llenan con ${dividend}? → ${dividend} : ${quotient} = ${divisor}.`
+        ? `En cada caja caben ${quotient} bombones. ¿Cuántas cajas llenas formamos?`
         : "Dividir es el camino de vuelta de multiplicar.";
 
   const footerControls = useMemo(
@@ -683,15 +685,15 @@ function RepartoIgual({
         {phase === 0 ? (
           <div className="flex flex-col items-center gap-3">
             <BombonesPile label={String(dividend)} />
-            <div className="grid w-full max-w-xl grid-cols-6 gap-1">
+            <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
               {Array.from({ length: divisor }, (_, i) => (
-                <CajaBombones key={i} size="sm" count={quotient} caption={`C${i + 1}`} highlight />
+                <CajaBombones key={i} size="sm" count="?" caption={`C${i + 1}`} />
               ))}
             </div>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <div className="grid w-full max-w-xl grid-cols-6 gap-1">
+            <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
               {Array.from({ length: divisor }, (_, i) => (
                 <CajaBombones key={i} size="sm" count={quotient} caption={`C${i + 1}`} highlight />
               ))}
@@ -1050,7 +1052,7 @@ export function MulDivNaturalesModule({
   }, [onReadyChange, scene]);
 
   return (
-    <div data-testid={`mul-div-${scene}`} className="w-full max-w-full overflow-x-hidden">
+    <div data-testid={`mul-div-${scene}`} className="w-full max-w-full">
       {renderScene(scene)}
     </div>
   );

@@ -310,9 +310,6 @@ export function NarrateStepView({
     />
   );
 
-  const compactDivisionStage =
-    step.module === "mul-div-naturales" && step.scene === "division-mano";
-
   return (
     <div data-testid="lesson-narrate-step">
       {isMultiplicacionMano ? <LessonFooterCenterSlot>{footerControls}</LessonFooterCenterSlot> : null}
@@ -321,7 +318,6 @@ export function NarrateStepView({
         definitionBox={step.definitionBox}
         title={step.title}
         stage={stage}
-        stageClassName={compactDivisionStage ? "mx-auto w-fit max-w-full" : undefined}
       />
     </div>
   );
@@ -349,6 +345,10 @@ export function PredictStepView({
   const [hintVisible, setHintVisible] = useState(false);
   const isMultiplicarSextaEntrada =
     step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-sexta-entrada";
+  const isDistributivaConEscena =
+    step.module === "mul-div-naturales" &&
+    (step.mulDiv?.scene === "distributiva-bloques" || step.scene === "distributiva-bloques");
+  const predictStageAlwaysVisible = isMultiplicarSextaEntrada || isDistributivaConEscena;
 
   const isAnaLeoExploracion =
     step.module === "jerarquia-operaciones" && step.scene === "exploracion-ana-leo";
@@ -445,6 +445,83 @@ export function PredictStepView({
         }}
       />
     ) : null;
+
+  if (isDistributivaConEscena && step.mulDiv) {
+    const distributivaStage = (
+      <StageModuleRenderer
+        module="mul-div-naturales"
+        stepId={step.id}
+        scene={step.scene ?? "distributiva-bloques"}
+        mulDiv={{ ...step.mulDiv, scene: "distributiva-bloques" }}
+        autoPlay
+      />
+    );
+
+    return (
+      <div data-testid="lesson-predict-step">
+        <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={distributivaStage}>
+          <h3 className="mb-4 text-center text-base font-semibold leading-relaxed text-ink">
+            <MathRenderer text={step.question} />
+          </h3>
+          {step.hint && step.hintHiddenUntilRequested && !checked ? (
+            <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
+              {hintVisible ? (
+                <p className="max-w-lg text-center text-sm leading-relaxed text-ink-muted">
+                  <MathRenderer text={step.hint} />
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                  aria-label="Ver pista"
+                  aria-expanded={hintVisible}
+                  onClick={() => setHintVisible(true)}
+                >
+                  ?
+                </button>
+              )}
+            </div>
+          ) : null}
+          <div className="mx-auto flex max-w-md flex-col gap-2">
+            {choiceOptions.map((choice) => (
+              <button
+                key={choice.id}
+                type="button"
+                data-testid={`predict-choice-${choice.id}`}
+                disabled={disabled || checked}
+                onClick={() => setChoiceId(choice.id)}
+                className={cn(
+                  "rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
+                  choiceId === choice.id
+                    ? "border-cobalt bg-cobalt-tint"
+                    : "border-slate-200 hover:border-cobalt/30",
+                  checked && choiceId !== choice.id && "opacity-55",
+                )}
+                aria-pressed={choiceId === choice.id}
+              >
+                <LessonRichText text={choice.label} className="text-sm font-medium" />
+              </button>
+            ))}
+          </div>
+          {checked && checkFeedback ? (
+            <div className="mt-5 space-y-2" role="status">
+              <p
+                className={cn(
+                  "text-center text-sm font-medium",
+                  isCorrect ? "text-emerald-800" : "text-amber-950",
+                )}
+              >
+                {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
+              </p>
+              <p className="text-center text-sm leading-relaxed text-ink-muted">
+                <MathRenderer text={checkFeedback} />
+              </p>
+            </div>
+          ) : null}
+        </StageShell>
+      </div>
+    );
+  }
 
   if (isMultiplicarSextaEntrada && step.mulDiv) {
     const sextaStage = (
@@ -565,7 +642,7 @@ export function PredictStepView({
   const mulDivReveal = buildPredictMulDivReveal(step, checked, choiceId, isCorrect);
 
   const stageReveal =
-    reveal && step.module && step.scene
+    reveal && !predictStageAlwaysVisible && step.module && step.scene
       ? step.module === "tienda-ciclista" && step.tienda
         ? (
             <StageModuleRenderer

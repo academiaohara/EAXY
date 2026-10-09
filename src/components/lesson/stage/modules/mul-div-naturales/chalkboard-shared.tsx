@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
@@ -105,3 +106,61 @@ export function useChalkboardMotion() {
 export const CHALK_INK = "#e8edf5";
 export const CHALK_MUTED = "#94a3b8";
 export const CHALK_ACCENT = "#6ee7b7";
+
+export const CHALKBOARD_VIEWBOX = { w: 800, h: 520 } as const;
+
+/** Marco único para pizarras: ocupa todo el ancho del escenario con ratio fijo entre pasos. */
+export function ChalkboardFrame({
+  children,
+  className,
+  onBoardClick,
+  ariaLabel,
+  testId,
+}: {
+  children: ReactNode;
+  className?: string;
+  onBoardClick?: () => void;
+  ariaLabel?: string;
+  testId?: string;
+}) {
+  return (
+    <div className={cn("mx-auto w-full max-w-4xl", className)} data-testid={testId}>
+      <div
+        className={cn(
+          "relative w-full overflow-hidden rounded-2xl border border-[color:var(--stage-border,#334155)] bg-[#1a2332] font-[family-name:var(--font-caveat),cursive]",
+          onBoardClick && "cursor-pointer",
+        )}
+        style={{ aspectRatio: `${CHALKBOARD_VIEWBOX.w} / ${CHALKBOARD_VIEWBOX.h}` }}
+        role={onBoardClick ? "button" : undefined}
+        tabIndex={onBoardClick ? 0 : undefined}
+        onClick={onBoardClick}
+        onKeyDown={(event) => {
+          if (!onBoardClick) {
+            return;
+          }
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            onBoardClick();
+          }
+        }}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export function ChalkboardCaption({ text }: { text: string }) {
+  if (!text) {
+    return <div className="min-h-[3.25rem]" aria-hidden />;
+  }
+  return (
+    <p
+      className="min-h-[3.25rem] px-2 text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
+      aria-live="polite"
+    >
+      {text}
+    </p>
+  );
+}

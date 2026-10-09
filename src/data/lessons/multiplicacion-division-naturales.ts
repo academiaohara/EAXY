@@ -87,40 +87,5 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       scene: "exacta-entera",
       mulDiv: { scene: "exacta-entera" },
     },
-    {
-      id: "tipos-predict-resto",
-      type: "predict",
-      title: "Comprueba qué es un resto válido",
-      question:
-        "Si una división entre $6$ deja $5$ de resto, ¿qué interpretación es correcta en un reparto?",
-      mode: "choice",
-      shuffleChoices: true,
-      choices: [
-        { id: "valido", label: "El resto es posible porque es menor que $6$" },
-        {
-          id: "igual",
-          label: "El resto es imposible porque es igual al divisor",
-          incorrectFeedback:
-            "Si el resto fuera 6, todavía podrías formar otra parte completa; el resto final siempre es menor que el divisor.",
-        },
-        {
-          id: "mayor",
-          label: "El resto puede ser mayor que el divisor",
-          incorrectFeedback:
-            "Si el resto alcanza al divisor, aún puedes formar otra parte.",
-        },
-      ],
-      correctChoiceId: "valido",
-      explanation:
-        "El resto 5 es válido porque $5 < 6$. Si fuera 6, todavía podríamos formar una parte más.",
-      module: "mul-div-naturales",
-      scene: "cociente-resto-feedback",
-      mulDiv: {
-        scene: "cociente-resto-feedback",
-        dividend: 47,
-        divisor: 6,
-        practiceVariant: "divide",
-      },
-    },
   ],
 };

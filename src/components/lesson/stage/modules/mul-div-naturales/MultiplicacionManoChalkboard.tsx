@@ -4,6 +4,10 @@ import { useMemo } from "react";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 import {
+  ChalkboardCaption,
+  ChalkboardFrame,
+} from "@/components/lesson/stage/modules/mul-div-naturales/chalkboard-shared";
+import {
   chalkboardFor,
   isVisibleAtSub,
   type ChalkboardLesson,
@@ -146,8 +150,8 @@ export function MultiplicacionManoChalkboard({
 
   const liveText = board?.liveBySub[subStep] ?? "";
 
-  const subNotes = useMemo(
-    () => board?.notes.filter((n) => isVisibleAtSub(subStep, n.show)) ?? [],
+  const arrowNotes = useMemo(
+    () => board?.notes.filter((n) => isVisibleAtSub(subStep, n.show) && n.arrow) ?? [],
     [board, subStep],
   );
 
@@ -161,25 +165,12 @@ export function MultiplicacionManoChalkboard({
 
   return (
     <div
-      className={cn("mx-auto w-full max-w-3xl", className)}
+      className={cn("flex w-full flex-col gap-2", className)}
       data-testid="multiplicacion-mano-chalkboard"
     >
-      <div
-        className={cn(
-          "relative w-full cursor-pointer overflow-hidden rounded-2xl border border-[color:var(--stage-border,#334155)] bg-[#1a2332] shadow-inner",
-          "font-[family-name:var(--font-caveat),cursive]",
-        )}
-        style={{ aspectRatio: "800 / 520" }}
-        role="button"
-        tabIndex={0}
-        onClick={onBoardClick}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            onBoardClick?.();
-          }
-        }}
-        aria-label="Pizarra de multiplicación. Pulsa para avanzar."
+      <ChalkboardFrame
+        onBoardClick={onBoardClick}
+        ariaLabel="Pizarra de multiplicación. Pulsa para avanzar."
       >
         <svg
           viewBox="0 0 800 520"
@@ -237,38 +228,19 @@ export function MultiplicacionManoChalkboard({
             );
           })}
 
-          {subNotes.map((note) => {
-            const visible = isVisibleAtSub(subStep, note.show);
-            return (
-              <g key={note.id}>
-                {note.arrow ? (
-                  <DrawnArrow
-                    coords={note.arrow}
-                    visible={visible}
-                    reduced={reduced}
-                    delayMs={300}
-                  />
-                ) : null}
-                <text
-                  x={note.x}
-                  y={note.y}
-                  fontSize={28}
-                  fontWeight={600}
-                  fill={COLORS.ink}
-                  fillOpacity={visible ? 0.95 : 0}
-                  style={{
-                    transition: reduced ? undefined : "fill-opacity 0.4s ease 500ms",
-                  }}
-                >
-                  {note.text}
-                </text>
-              </g>
-            );
-          })}
+          {arrowNotes.map((note) => (
+            <DrawnArrow
+              key={note.id}
+              coords={note.arrow!}
+              visible
+              reduced={reduced}
+              delayMs={300}
+            />
+          ))}
         </svg>
-      </div>
+      </ChalkboardFrame>
 
-      <div className="mt-3 flex justify-center gap-2" aria-hidden>
+      <div className="flex justify-center gap-2" aria-hidden>
         {[1, 2, 3, 4].map((dot) => (
           <span
             key={dot}
@@ -280,9 +252,7 @@ export function MultiplicacionManoChalkboard({
         ))}
       </div>
 
-      <p className="sr-only" aria-live="polite">
-        {liveText}
-      </p>
+      <ChalkboardCaption text={liveText} />
     </div>
   );
 }
