@@ -80,9 +80,7 @@ export function NumberLineVisualBlock({ visual }: Props) {
                 n === 0 ? "font-bold text-ink" : "text-ink-muted",
               )}
             >
-              {n > 0 && visual.showPositiveSign !== false
-                ? `+${n.toLocaleString("es-ES")}`
-                : n.toLocaleString("es-ES")}
+              {n > 0 ? `+${n}` : n}
             </span>
           </div>
         ))}

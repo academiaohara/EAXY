@@ -29,7 +29,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
     {
       id: "restar-narrate",
       type: "narrate",
-      title: "¿Cuánto queda del presupuesto?",
+      title: "Restar",
       definitionBox:
         "Restar es **quitar**, **suprimir**, hallar lo que **falta** o lo que **sobra**; es decir, calcular la **diferencia**.",
       module: "tienda-ciclista",
@@ -60,12 +60,12 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
     {
       id: "conmutativa-reveal",
       type: "reveal",
-      title: "Dos propiedades de la suma",
+      title: "Propiedad conmutativa",
       definitionBox:
-        "En la suma podemos **cambiar el orden** de los sumandos o **agruparlos de otra forma** sin cambiar el total.",
+        "La suma **no varía** al cambiar el orden de los sumandos: $a + b = b + a$.",
       module: "bloques-numericos",
-      scene: "propiedades-suma",
-      blocks: [8, 6, 3],
+      scene: "conmutativa",
+      blocks: [8, 6],
     },
   ],
 };

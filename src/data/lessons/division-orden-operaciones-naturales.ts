@@ -10,9 +10,9 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "exploracion-quien",
       type: "predict",
-      title: "Un ticket, dos lecturas",
+      title: "¿Quién tiene razón?",
       question:
-        "Una bebida cuesta $4$ € y cada bocadillo $2$ €. Ana calcula $14$ € y Leo $10$ €. ¿Quién interpreta correctamente el ticket de una bebida y tres bocadillos?",
+        "Ana calcula $4 + 3 \\times 2$ y obtiene $14$. Leo obtiene $10$. ¿Quién aplica correctamente la prioridad de operaciones y por qué?",
       mode: "choice",
       choices: [
         { id: "a", label: "Ana" },
@@ -27,7 +27,7 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       correctChoiceId: "l",
       module: "jerarquia-operaciones",
       scene: "exploracion-ana-leo",
-      explanation: "Primero se calcula el precio de los tres bocadillos: $3 \\times 2 = 6$ €. Después se añade la bebida: $4 + 6 = 10$ €.",
+      explanation: "Primero $3 \\times 2 = 6$; luego $4 + 6 = 10$.",
     },
     {
       id: "explicacion-niveles",
