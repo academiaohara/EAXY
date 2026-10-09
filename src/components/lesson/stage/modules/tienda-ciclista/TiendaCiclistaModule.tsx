@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePersistedLessonToolState } from "@/components/lesson/LessonPersistedStateContext";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { TiendaCiclistaItem } from "@/lib/lesson/types";
@@ -24,6 +25,11 @@ const DEFAULT_ITEMS: TiendaCiclistaItem[] = [
 type TiendaMode = "sumar-cesta" | "restar-cartera" | "explorar-compra";
 
 type PricePop = { id: string; amount: number; sign: "+" | "−"; key: number };
+type TiendaCiclistaState = { tapIds: string[] };
+
+function createDefaultTiendaCiclistaState(): TiendaCiclistaState {
+  return { tapIds: [] };
+}
 
 function placeValueParts(value: number) {
   const parts = [
@@ -67,6 +73,7 @@ function ItemIcon({ id }: { id: string }) {
 }
 
 export function TiendaCiclistaModule({
+  stepId,
   mode,
   items = DEFAULT_ITEMS,
   wallet = 828,
@@ -78,7 +85,10 @@ export function TiendaCiclistaModule({
   onAnimationComplete,
 }: TiendaCiclistaModuleProps) {
   const reduced = useReducedMotion();
-  const [tapIds, setTapIds] = useState<string[]>([]);
+  const [storeState, setStoreState] = usePersistedLessonToolState(stepId, createDefaultTiendaCiclistaState);
+  // Autoplay needs the latest persisted setter without restarting its timer sequence.
+  const setStoreStateRef = useRef(setStoreState);
+  const { tapIds } = storeState;
   const [pops, setPops] = useState<PricePop[]>([]);
   const popKey = useRef(0);
   const timers = useRef<number[]>([]);
@@ -104,6 +114,10 @@ export function TiendaCiclistaModule({
     timers.current = [];
   }, []);
 
+  useEffect(() => {
+    setStoreStateRef.current = setStoreState;
+  }, [setStoreState]);
+
   useEffect(() => clearTimers, [clearTimers]);
 
   const pushPop = useCallback((id: string, amount: number, sign: "+" | "−") => {
@@ -124,13 +138,13 @@ export function TiendaCiclistaModule({
 
     if (autoPlay && mode === "sumar-cesta") {
       if (reduced) {
-        setTapIds(items.map((item) => item.id));
+        setStoreStateRef.current({ tapIds: items.map((item) => item.id) });
         onReadyChange?.(true);
         onAnimationComplete?.();
         return;
       }
       onReadyChange?.(false);
-      setTapIds([]);
+      setStoreStateRef.current({ tapIds: [] });
       let i = 0;
       const tick = () => {
         if (i >= items.length) {
@@ -139,7 +153,7 @@ export function TiendaCiclistaModule({
           return;
         }
         const item = items[i]!;
-        setTapIds((prev) => [...prev, item.id]);
+        setStoreStateRef.current((prev) => ({ tapIds: [...prev.tapIds, item.id] }));
         i += 1;
         timers.current.push(window.setTimeout(tick, 700));
       };
@@ -154,12 +168,10 @@ export function TiendaCiclistaModule({
         return;
       }
       onReadyChange?.(false);
-      let shown = 0;
       const steps = 6;
       let step = 0;
       const tick = () => {
         step += 1;
-        shown = Math.round((spendAmount * step) / steps);
         if (step >= steps) {
           onReadyChange?.(true);
           onAnimationComplete?.();
@@ -211,24 +223,22 @@ export function TiendaCiclistaModule({
     if (!item) {
       return;
     }
-    setTapIds((prev) => {
-      const has = prev.includes(id);
-      if (has) {
-        return prev.filter((x) => x !== id);
-      }
+    const has = tapIds.includes(id);
+    if (!has) {
       pushPop(id, item.price, mode === "restar-cartera" ? "−" : "+");
-      return [...prev, id];
-    });
+    }
+    setStoreState((prev) => ({
+      tapIds: prev.tapIds.includes(id)
+        ? prev.tapIds.filter((selectedId) => selectedId !== id)
+        : [...prev.tapIds, id],
+    }));
   };
 
-  const sumParts = items
-    .filter((item) => tapIds.includes(item.id))
-    .map((item) => String(item.price))
-    .join(" + ");
   const tappedItems = tapIds.flatMap((id) => {
     const item = items.find((entry) => entry.id === id);
     return item ? [item] : [];
   });
+  const sumParts = tappedItems.map((item) => String(item.price)).join(" + ");
   const subtotalRows = tappedItems.map((item, index) => ({
     item,
     subtotal: tappedItems
