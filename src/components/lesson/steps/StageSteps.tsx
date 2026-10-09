@@ -5,9 +5,11 @@ import { DefinitionBox } from "@/components/lesson/stage/DefinitionBox";
 import { StageModuleRenderer } from "@/components/lesson/stage/StageModuleRenderer";
 import { StageViewport } from "@/components/lesson/stage/StageViewport";
 import {
+  LessonFooterCenterSlot,
   useRegisterLessonStepControl,
   type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
+import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import {
@@ -139,6 +141,7 @@ export function NarrateStepView({
   );
 
   const sub = isMultiplicacionMano ? persist.sub : 1;
+  const [subPlaying, setSubPlaying] = useState(false);
 
   const didResumeFullTourRef = useRef(false);
   useEffect(() => {
@@ -160,8 +163,12 @@ export function NarrateStepView({
       const next = sub + 1;
       setPersist({ sub: next, maxSub: Math.max(persist.maxSub, next) });
       onContinue({ completed: false });
+      if (next >= 4) {
+        setSubPlaying(false);
+      }
       return;
     }
+    setSubPlaying(false);
     setPersist({ sub: 4, maxSub: 4 });
     onContinue({ completed: true });
   }, [isMultiplicacionMano, onContinue, persist.maxSub, setPersist, sub]);
@@ -180,13 +187,58 @@ export function NarrateStepView({
 
   const [ready, setReady] = useState(isMultiplicacionMano);
 
+  useEffect(() => {
+    if (!isMultiplicacionMano || !subPlaying || sub >= 4) {
+      return;
+    }
+    const timer = window.setTimeout(() => {
+      advanceSub();
+    }, 1400);
+    return () => window.clearTimeout(timer);
+  }, [advanceSub, isMultiplicacionMano, sub, subPlaying]);
+
+  const restartMultiplicacionMano = useCallback(() => {
+    setSubPlaying(false);
+    setPersist((current) => ({ ...current, sub: 1 }));
+  }, [setPersist]);
+
+  const footerControls = useMemo(() => {
+    if (!isMultiplicacionMano) {
+      return null;
+    }
+    return (
+      <StageStepControls
+        variant="footer"
+        phase={sub - 1}
+        stepCount={4}
+        playing={subPlaying}
+        onPhaseChange={(next) => {
+          setSubPlaying(false);
+          const target = next + 1;
+          if (target < sub) {
+            retreatSub();
+          } else if (target > sub) {
+            advanceSub();
+          }
+        }}
+        onPlayingChange={setSubPlaying}
+        onRestart={restartMultiplicacionMano}
+      />
+    );
+  }, [
+    advanceSub,
+    isMultiplicacionMano,
+    restartMultiplicacionMano,
+    retreatSub,
+    sub,
+    subPlaying,
+  ]);
   const control = useMemo(() => {
     if (isMultiplicacionMano) {
       return {
         label: "Continuar",
         onClick: advanceSub,
         testId: "lesson-continue-button",
-        onBack: sub > 1 ? retreatSub : undefined,
       };
     }
     if (!ready) {
@@ -197,7 +249,7 @@ export function NarrateStepView({
       onClick: () => onContinue({ completed: true }),
       testId: "lesson-continue-button",
     };
-  }, [advanceSub, isMultiplicacionMano, onContinue, ready, retreatSub, sub]);
+  }, [advanceSub, isMultiplicacionMano, onContinue, ready]);
 
   useRegisterLessonStepControl(control);
 
@@ -263,6 +315,7 @@ export function NarrateStepView({
 
   return (
     <div data-testid="lesson-narrate-step">
+      {isMultiplicacionMano ? <LessonFooterCenterSlot>{footerControls}</LessonFooterCenterSlot> : null}
       <StageShell
         theme={theme}
         definitionBox={step.definitionBox}
