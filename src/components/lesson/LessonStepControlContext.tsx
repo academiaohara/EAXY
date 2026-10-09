@@ -19,6 +19,8 @@ export type LessonStepControl = {
   onClick: (meta?: LessonContinueMeta) => void;
   disabled?: boolean;
   testId?: string;
+  /** Sustituye «Atrás» del pie cuando el paso tiene sub-navegación interna. */
+  onBack?: () => void;
 };
 
 type LessonStepControlContextValue = {
@@ -49,7 +51,7 @@ function controlSignature(control: LessonStepControl | null): string {
   if (!control) {
     return "null";
   }
-  return `${control.label}|${control.disabled ? "1" : "0"}|${control.testId ?? ""}`;
+  return `${control.label}|${control.disabled ? "1" : "0"}|${control.testId ?? ""}|${control.onBack ? "back" : ""}`;
 }
 
 export function useRegisterLessonStepControl(control: LessonStepControl | null) {

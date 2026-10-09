@@ -5,8 +5,9 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { MulDivConfig, MulDivNaturalesScene } from "@/lib/lesson/types";
+import { CocienteRestoFeedback } from "@/components/lesson/stage/modules/mul-div-naturales/CocienteRestoFeedback";
+import { ExactaEnteraInteractive } from "@/components/lesson/stage/modules/mul-div-naturales/ExactaEnteraInteractive";
 import {
-  DivisionIdentidadScene,
   DivisionManoScene,
   MultiplicacionManoScene,
 } from "@/components/lesson/stage/modules/mul-div-naturales/EscolarAlgorithmViews";
@@ -14,6 +15,7 @@ import {
   AsociativaHuevosDiscover,
   AsociativaTrucoMental,
 } from "@/components/lesson/stage/modules/mul-div-naturales/AsociativaScenes";
+import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +28,9 @@ const ASSETS = {
 export type MulDivNaturalesModuleProps = MulDivConfig & {
   stepId: string;
   autoPlay?: boolean;
+  /** Sub-pasos internos de multiplicación a mano (1–4). */
+  subStep?: number;
+  onBoardClick?: () => void;
   /** Para escena de reparto manual: fichas en cada caja (índice = caja). */
   boxCounts?: number[];
   onBoxCountsChange?: (counts: number[]) => void;
@@ -889,10 +894,16 @@ export function MulDivNaturalesModule({
   total = 150,
   boxes = 6,
   autoPlay = false,
+  subStep = 1,
+  onBoardClick,
   boxCounts = [],
   onBoxCountsChange,
   onReadyChange,
   onAnimationComplete,
+  quotient,
+  remainder,
+  feedbackCorrect,
+  practiceVariant,
 }: MulDivNaturalesModuleProps) {
   const reduced = useReducedMotion();
 
@@ -928,10 +939,8 @@ export function MulDivNaturalesModule({
           <MultiplicacionManoScene
             multiplicand={a}
             multiplier={b}
-            autoPlay={autoPlay}
-            reduced={reduced}
-            onReadyChange={onReadyChange}
-            onAnimationComplete={onAnimationComplete}
+            subStep={subStep}
+            onBoardClick={onBoardClick}
           />
         );
       case "division-mano":
@@ -1008,13 +1017,21 @@ export function MulDivNaturalesModule({
           />
         );
       case "exacta-entera":
+        return <ExactaEnteraInteractive onReadyChange={onReadyChange} />;
+      case "cociente-resto-feedback":
         return (
-          <DivisionIdentidadScene
-            autoPlay={autoPlay}
-            reduced={reduced}
+          <CocienteRestoFeedback
+            total={dividend}
+            perBox={divisor}
+            quotient={quotient ?? 0}
+            remainder={remainder ?? 0}
+            isCorrect={Boolean(feedbackCorrect)}
+            variant={practiceVariant ?? "divide"}
             onReadyChange={onReadyChange}
           />
         );
+      case "mul-div-cierre":
+        return <MulDivLessonClosing onReadyChange={onReadyChange} />;
       default:
         return <p className="text-sm text-rose-700">Escena no configurada.</p>;
     }
