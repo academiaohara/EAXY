@@ -191,8 +191,6 @@ function MultiplicarSextaEntrada({
   a,
   baseCount,
   totalCount,
-  autoPlay,
-  reduced,
   onReadyChange,
   onAnimationComplete,
 }: {
@@ -204,73 +202,20 @@ function MultiplicarSextaEntrada({
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const [fanCount, setFanCount] = useState(reduced ? totalCount : 1);
-  const { push, clear } = useTimers();
-
   useEffect(() => {
-    if (!autoPlay) {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      return;
-    }
-    if (reduced) {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
-      return;
-    }
-    onReadyChange?.(false);
-    setFanCount(1);
-    push(() => setFanCount(baseCount), 550);
-    push(() => {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
-    }, 1250);
-    return clear;
-  }, [
-    autoPlay,
-    baseCount,
-    clear,
-    onAnimationComplete,
-    onReadyChange,
-    push,
-    reduced,
-    totalCount,
-  ]);
+    onReadyChange?.(true);
+    onAnimationComplete?.();
+  }, [onAnimationComplete, onReadyChange]);
 
-  const sumParts = Array.from({ length: fanCount }, () => String(a)).join(" + ");
-  const mathText =
-    fanCount >= totalCount
-      ? `${sumParts} = ?`
-      : fanCount >= baseCount
-        ? `${sumParts} = ${a} \\cdot ${baseCount} = ${a * baseCount}`
-        : fanCount > 1
-          ? sumParts
-          : `${a}`;
-  const priceLabel =
-    fanCount >= totalCount ? "?" : fanCount >= baseCount ? `${a * baseCount}€` : `${a * fanCount}€`;
-  const fanCaption =
-    fanCount >= totalCount
-      ? `${totalCount} entradas`
-      : fanCount >= baseCount
-        ? `${baseCount} entradas`
-        : fanCount === 1
-          ? "1 entrada"
-          : `${fanCount} entradas`;
+  const sumParts = Array.from({ length: totalCount }, () => String(a)).join(" + ");
+  const mathText = `${sumParts} = ?`;
 
   return (
     <div
       className="space-y-4"
-      aria-label={
-        fanCount >= totalCount
-          ? `${totalCount} entradas de ${a} euros, total por calcular`
-          : fanCount >= baseCount
-            ? `${baseCount} entradas de ${a} euros, ${a * baseCount} euros en total`
-            : `${fanCount} entrada${fanCount === 1 ? "" : "s"} de ${a} euros`
-      }
+      aria-label={`Comparar 1, ${baseCount} y ${totalCount} entradas de ${a} euros`}
     >
-      <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
+      <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8">
         <div className="flex min-w-[7.5rem] flex-col items-center gap-2">
           <div className="flex h-[6.5rem] items-end">
             <TicketImage style={{ transform: `rotate(${TICKET_TILT_DEG}deg)` }} />
@@ -278,9 +223,14 @@ function MultiplicarSextaEntrada({
           <SlideBadge>{a}€</SlideBadge>
           <span className={STAGE_CAPTION}>1 entrada</span>
         </div>
-        <TicketFan count={fanCount} priceLabel={priceLabel} caption={fanCaption} />
+        <TicketFan
+          count={baseCount}
+          priceLabel={`${a * baseCount}€`}
+          caption={`${baseCount} entradas`}
+        />
+        <TicketFan count={totalCount} priceLabel="?" caption={`${totalCount} entradas`} />
       </div>
-      <p className={cn(STAGE_MATH, "transition-opacity duration-500")} aria-live="polite">
+      <p className={STAGE_MATH} aria-live="polite">
         <MathRenderer text={`$${mathText}$`} />
       </p>
     </div>
