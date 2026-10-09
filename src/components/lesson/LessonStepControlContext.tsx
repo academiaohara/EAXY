@@ -26,13 +26,19 @@ export type LessonStepControl = {
 type LessonStepControlContextValue = {
   control: LessonStepControl | null;
   setControl: (control: LessonStepControl | null) => void;
+  footerCenter: ReactNode | null;
+  setFooterCenter: (node: ReactNode | null) => void;
 };
 
 const LessonStepControlContext = createContext<LessonStepControlContextValue | null>(null);
 
 export function LessonStepControlProvider({ children }: { children: ReactNode }) {
   const [control, setControl] = useState<LessonStepControl | null>(null);
-  const value = useMemo(() => ({ control, setControl }), [control]);
+  const [footerCenter, setFooterCenter] = useState<ReactNode | null>(null);
+  const value = useMemo(
+    () => ({ control, setControl, footerCenter, setFooterCenter }),
+    [control, footerCenter],
+  );
 
   return (
     <LessonStepControlContext.Provider value={value}>{children}</LessonStepControlContext.Provider>
@@ -62,4 +68,20 @@ export function useRegisterLessonStepControl(control: LessonStepControl | null) 
     setControl(control);
     return () => setControl(null);
   }, [control, signature, setControl]);
+}
+
+/** Controles de animación / sub-pasos en el centro del pie (Continuar va a la derecha junto a Saltar). */
+export function useRegisterLessonFooterCenter(node: ReactNode | null) {
+  const { setFooterCenter } = useLessonStepControl();
+
+  useEffect(() => {
+    setFooterCenter(node);
+    return () => setFooterCenter(null);
+  }, [node, setFooterCenter]);
+}
+
+/** Montar solo cuando este paso aporta controles al pie (evita pisar el registro de escenas hijas). */
+export function LessonFooterCenterSlot({ children }: { children: ReactNode }) {
+  useRegisterLessonFooterCenter(children);
+  return null;
 }

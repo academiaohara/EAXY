@@ -16,7 +16,7 @@ type StageStepControlsProps = {
   onPhaseChange: (next: number) => void;
   onPlayingChange: (playing: boolean) => void;
   onRestart?: () => void;
-  variant?: "default" | "embedded";
+  variant?: "default" | "embedded" | "footer";
   className?: string;
 };
 
@@ -33,14 +33,19 @@ export function StageStepControls({
   const atStart = phase <= 0;
   const atEnd = phase >= stepCount - 1;
   const embedded = variant === "embedded";
+  const footer = variant === "footer";
 
-  const btnBase = embedded
-    ? "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-black/35 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/55 disabled:opacity-35"
-    : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/40 disabled:opacity-40";
+  const btnBase = footer
+    ? "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 disabled:opacity-40"
+    : embedded
+      ? "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-black/35 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/55 disabled:opacity-35"
+      : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] transition hover:bg-black/40 disabled:opacity-40";
 
-  const btnAccent = embedded
-    ? "inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[color:var(--stage-accent,#6ee7b7)]/90 text-slate-900 transition hover:bg-[color:var(--stage-accent,#6ee7b7)]"
-    : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-[color:var(--stage-accent,#6ee7b7)] text-slate-900 transition hover:opacity-90";
+  const btnAccent = footer
+    ? "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-cobalt text-white shadow-sm transition hover:bg-cobalt/90"
+    : embedded
+      ? "inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[color:var(--stage-accent,#6ee7b7)]/90 text-slate-900 transition hover:bg-[color:var(--stage-accent,#6ee7b7)]"
+      : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-[color:var(--stage-accent,#6ee7b7)] text-slate-900 transition hover:opacity-90";
 
   const iconClass = embedded ? "h-3.5 w-3.5" : "h-5 w-5";
 
@@ -49,6 +54,7 @@ export function StageStepControls({
       className={cn(
         "flex items-center gap-1",
         embedded ? "gap-0.5" : "flex-wrap justify-center gap-2",
+        footer && "gap-2",
         className,
       )}
       role="group"
@@ -98,7 +104,7 @@ export function StageStepControls({
       <span
         className={cn(
           "text-center font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]",
-          embedded ? "min-w-[2.25rem] pl-0.5 text-[10px]" : "min-w-[3.5rem] text-xs",
+          embedded ? "min-w-[2.25rem] pl-0.5 text-[10px]" : footer ? "min-w-[3.5rem] text-xs text-slate-500" : "min-w-[3.5rem] text-xs",
         )}
       >
         {phase + 1}/{stepCount}

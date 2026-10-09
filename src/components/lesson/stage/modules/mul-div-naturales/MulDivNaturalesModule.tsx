@@ -15,6 +15,7 @@ import {
   AsociativaHuevosDiscover,
   AsociativaTrucoMental,
 } from "@/components/lesson/stage/modules/mul-div-naturales/AsociativaScenes";
+import { useRegisterLessonFooterCenter } from "@/components/lesson/LessonStepControlContext";
 import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
@@ -660,19 +661,24 @@ function RepartoIgual({
         ? `Ahora las cajas son de ${quotient} bombones. ¿Cuántas cajas se llenan con ${dividend}? → ${dividend} : ${quotient} = ${divisor}.`
         : "Dividir es el camino de vuelta de multiplicar.";
 
+  const footerControls = useMemo(
+    () => (
+      <StageStepControls
+        variant="footer"
+        phase={phase}
+        stepCount={stepCount}
+        playing={false}
+        onPhaseChange={setPhase}
+        onPlayingChange={() => {}}
+        onRestart={handleRestart}
+      />
+    ),
+    [handleRestart, phase, stepCount],
+  );
+  useRegisterLessonFooterCenter(footerControls);
+
   return (
     <div className="space-y-3" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
-      <div className="flex justify-end">
-        <StageStepControls
-          variant="embedded"
-          phase={phase}
-          stepCount={stepCount}
-          playing={false}
-          onPhaseChange={setPhase}
-          onPlayingChange={() => {}}
-          onRestart={handleRestart}
-        />
-      </div>
       <div className="min-h-[11rem] space-y-3">
         {phase === 0 ? (
           <div className="flex flex-col items-center gap-3">

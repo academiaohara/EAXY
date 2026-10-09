@@ -8,6 +8,7 @@ import {
   buildDivisionManoGuidedSteps,
   type DivisionAlgorithmStep,
 } from "@/components/lesson/stage/modules/mul-div-naturales/escolar-algorithms";
+import { useRegisterLessonFooterCenter } from "@/components/lesson/LessonStepControlContext";
 import { MultiplicacionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/MultiplicacionManoChalkboard";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 
@@ -225,11 +226,10 @@ export function DivisionManoScene({
     onReadyChange?.(false);
   }, [onReadyChange, setPhase, setPlaying]);
 
-  return (
-    <div className="mx-auto flex w-fit max-w-full flex-col gap-2">
+  const footerControls = useMemo(
+    () => (
       <StageStepControls
-        variant="embedded"
-        className="self-end"
+        variant="footer"
         phase={phase}
         stepCount={stepCount}
         playing={playing}
@@ -237,6 +237,13 @@ export function DivisionManoScene({
         onPlayingChange={setPlaying}
         onRestart={handleRestart}
       />
+    ),
+    [handleRestart, phase, playing, setPhase, setPlaying, stepCount],
+  );
+  useRegisterLessonFooterCenter(footerControls);
+
+  return (
+    <div className="mx-auto flex w-fit max-w-full flex-col gap-2">
       <div className="min-h-[13.5rem] w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-4 py-3">
         <DivisionBracket dividend={dividend} divisor={divisor} step={step} />
       </div>

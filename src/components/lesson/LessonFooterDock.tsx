@@ -6,8 +6,10 @@ import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type LessonFooterDockProps = {
-  /** Acción principal del paso (comprobar, continuar, finalizar): va centrada. */
+  /** Acción principal del paso (comprobar, continuar, finalizar): centrada salvo que haya stageControls. */
   action: React.ReactNode;
+  /** Controles de animación / diapositiva en el centro; la acción principal pasa a la derecha. */
+  stageControls?: React.ReactNode;
   /** Atajo de ayuda, a un lado para no competir con la acción principal. */
   help?: React.ReactNode;
   /** Paso anterior (exploración libre). */
@@ -21,12 +23,14 @@ type LessonFooterDockProps = {
 /** Pie del panel de la lección; se tiñe con el color del feedback. */
 export function LessonFooterDock({
   action,
+  stageControls,
   help,
   onBack,
   canBack = false,
   onSkip,
   feedback = null,
 }: LessonFooterDockProps) {
+  const primaryOnRight = Boolean(stageControls) && Boolean(action);
   return (
     <div
       className={cn(
@@ -54,8 +58,11 @@ export function LessonFooterDock({
             </Button>
           ) : null}
         </div>
-        <div className="flex shrink-0 items-center justify-center">{action}</div>
+        <div className="flex shrink-0 items-center justify-center">
+          {stageControls ?? action}
+        </div>
         <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+          {primaryOnRight ? action : null}
           {onSkip && !feedback ? (
             <Button
               type="button"

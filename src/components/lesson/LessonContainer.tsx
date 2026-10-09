@@ -132,7 +132,7 @@ function LessonContainerBody({
   const [panelOpen, setPanelOpen] = useState(false);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
-  const { control } = useLessonStepControl();
+  const { control, footerCenter } = useLessonStepControl();
 
   useEffect(() => {
     if (!storageHydrated || !trackLocalProgress || !curriculumLessonId) {
@@ -659,6 +659,7 @@ function LessonContainerBody({
               canBack={stepIndex > 0 || Boolean(control?.onBack)}
               onBack={control?.onBack ?? goBack}
               onSkip={feedback ? undefined : handleSkip}
+              stageControls={feedback ? undefined : footerCenter}
               action={
                 feedback ? (
                   <LessonFeedbackActions
@@ -676,7 +677,7 @@ function LessonContainerBody({
                     }
                   />
                 ) : control ? (
-                  <LessonPrimaryAction control={control} />
+                  <LessonPrimaryAction control={control} compact={Boolean(footerCenter)} />
                 ) : null
               }
               help={
