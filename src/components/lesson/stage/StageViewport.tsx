@@ -37,9 +37,10 @@ export function StageViewport({
       {stage ? (
         <div
           className={cn(
-            "w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
+            "w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
+            theme === "paper" && "overflow-hidden",
             theme === "board" &&
-              "border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+              "overflow-visible border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
             stageClassName,
           )}
           data-testid="lesson-stage-surface"

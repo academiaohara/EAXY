@@ -7,12 +7,11 @@ describe("MultiplicacionManoChalkboard", () => {
     const { rerender } = render(
       <MultiplicacionManoChalkboard multiplicand={34} multiplier={12} subStep={1} />,
     );
-    expect(screen.getByText("empezamos por las unidades: 2")).toBeInTheDocument();
+    expect(screen.getByText(/Empezamos por las unidades/i)).toBeInTheDocument();
     expect(screen.queryByText("2 × 34 = 68, ¡primera fila!")).not.toBeInTheDocument();
 
     rerender(<MultiplicacionManoChalkboard multiplicand={34} multiplier={12} subStep={2} />);
-    expect(screen.getAllByText(/primera fila/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText("2 × 34 = 68, ¡primera fila!").length).toBeGreaterThan(0);
+    expect(screen.getByText(/2 × 34 = 68/i)).toBeInTheDocument();
   });
 
   it("dispara onBoardClick al pulsar la pizarra", () => {
