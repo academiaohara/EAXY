@@ -297,6 +297,9 @@ export function PredictStepView({
   const isMultiplicarSextaEntrada =
     step.module === "mul-div-naturales" && step.mulDiv?.scene === "multiplicar-sexta-entrada";
 
+  const isAnaLeoExploracion =
+    step.module === "jerarquia-operaciones" && step.scene === "exploracion-ana-leo";
+
   const runCheck = useCallback(() => {
     if (checked) {
       return;
@@ -322,8 +325,31 @@ export function PredictStepView({
     });
   }, [checked, choiceId, numericValue, onCheck, step]);
 
+  const submitAnaLeoChoice = useCallback(
+    (id: string) => {
+      if (checked || !isAnaLeoExploracion) {
+        return;
+      }
+      const correct = id === step.correctChoiceId;
+      setChoiceId(id);
+      setIsCorrect(correct);
+      setChecked(true);
+      setReveal(true);
+      onCheck({
+        correct,
+        snapshot: {
+          kind: "predict",
+          choiceId: id,
+          isCorrect: correct,
+          revealPlayed: true,
+        },
+      });
+    },
+    [checked, isAnaLeoExploracion, onCheck, step.correctChoiceId],
+  );
+
   const control = useMemo(() => {
-    if (checked) {
+    if (checked || isAnaLeoExploracion) {
       return null;
     }
     const canSubmit =
@@ -334,7 +360,7 @@ export function PredictStepView({
       disabled: !canSubmit || disabled,
       testId: "lesson-check-button",
     };
-  }, [checked, choiceId, disabled, numericValue, runCheck, step.mode]);
+  }, [checked, choiceId, disabled, isAnaLeoExploracion, numericValue, runCheck, step.mode]);
 
   useRegisterLessonStepControl(control);
 
@@ -359,7 +385,11 @@ export function PredictStepView({
         module="jerarquia-operaciones"
         stepId={reveal ? `${step.id}-reveal` : step.id}
         scene={step.scene}
-        jerarquia={{ revealPlayed: reveal }}
+        jerarquia={{
+          revealPlayed: reveal,
+          selectedChoiceId: choiceId,
+          isCorrect: checked ? isCorrect : undefined,
+        }}
       />
     ) : null;
 
@@ -423,25 +453,43 @@ export function PredictStepView({
   }
 
   if (step.module === "jerarquia-operaciones" && step.scene) {
+    const anaLeo = step.scene === "exploracion-ana-leo";
     return (
       <div data-testid="lesson-predict-step">
-        <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={jerarquiaStage}>
-          <h3 className="mb-4 text-center text-base font-semibold text-ink">
+        <StageShell
+          theme={theme}
+          definitionBox={step.definitionBox}
+          title={step.title}
+          stage={anaLeo ? undefined : jerarquiaStage}
+        >
+          <h3 className="mb-4 text-center text-lg font-semibold leading-relaxed text-ink">
             <MathRenderer text={step.question} />
           </h3>
           {step.mode === "choice" ? (
-            <div className="mx-auto flex max-w-md flex-col gap-2">
+            <div
+              className={cn(
+                "mx-auto flex gap-2",
+                anaLeo ? "max-w-xl flex-wrap justify-center" : "max-w-md flex-col",
+              )}
+            >
               {(step.choices ?? []).map((choice) => (
                 <button
                   key={choice.id}
                   type="button"
                   disabled={disabled || checked}
-                  onClick={() => setChoiceId(choice.id)}
+                  onClick={() =>
+                    anaLeo ? submitAnaLeoChoice(choice.id) : setChoiceId(choice.id)
+                  }
                   className={cn(
-                    "min-h-11 rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
-                    choiceId === choice.id
-                      ? "border-cobalt bg-cobalt-tint"
-                      : "border-slate-200 hover:border-cobalt/30",
+                    "min-h-11 rounded-xl border-2 px-4 py-3 text-sm font-bold transition",
+                    anaLeo ? "min-w-[7rem] flex-1 text-center" : "text-left font-medium",
+                    checked && choice.id === step.correctChoiceId
+                      ? "border-emerald-500 bg-emerald-500/15"
+                      : checked && choiceId === choice.id
+                        ? "border-red-400 opacity-60"
+                        : choiceId === choice.id
+                          ? "border-cobalt bg-cobalt-tint"
+                          : "border-slate-200 hover:border-cobalt/30",
                   )}
                   aria-pressed={choiceId === choice.id}
                 >
@@ -450,7 +498,8 @@ export function PredictStepView({
               ))}
             </div>
           ) : null}
-          {checked ? (
+          {anaLeo ? <div className="mt-4">{jerarquiaStage}</div> : null}
+          {checked && !anaLeo ? (
             <p className="mt-4 text-center text-sm text-ink-muted" role="status">
               {isCorrect ? "¡Bien visto!" : "Mira la animación: el orden importa."}
             </p>
@@ -583,6 +632,8 @@ type ExplorePersist = {
   closeBefore: number | null;
   tapSequence: string[];
   boxCounts: number[];
+  reduceTokens: string[];
+  reduceHistory: string[][];
 };
 
 export function ExploreStepView({
@@ -601,6 +652,8 @@ export function ExploreStepView({
   const defaultIds = step.tienda?.items.map((item) => item.id) ?? TEAM_ITEMS.map((i) => i.id);
   const defaultBoxCounts =
     step.goal.kind === "boxes-equal" ? Array.from({ length: step.goal.boxes }, () => 0) : [];
+  const defaultReduceTokens =
+    step.goal.kind === "hierarchy-reduce" ? [...step.goal.tokens] : [];
 
   const [persist, setPersist] = usePersistedLessonToolState<ExplorePersist>(step.id, () => ({
     selectedIds: defaultIds,
@@ -608,6 +661,8 @@ export function ExploreStepView({
     closeBefore: null,
     tapSequence: [],
     boxCounts: defaultBoxCounts,
+    reduceTokens: defaultReduceTokens,
+    reduceHistory: [],
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
@@ -630,6 +685,9 @@ export function ExploreStepView({
         persist.tapSequence.length === target.length &&
         persist.tapSequence.every((id, i) => id === target[i])
       );
+    }
+    if (step.goal.kind === "hierarchy-reduce") {
+      return persist.reduceTokens.length === 1;
     }
     if (step.goal.kind === "boxes-equal") {
       const goal = step.goal;
@@ -686,6 +744,9 @@ export function ExploreStepView({
     if (step.goal.kind === "hierarchy-sequence") {
       correct = placementReady;
     }
+    if (step.goal.kind === "hierarchy-reduce") {
+      correct = placementReady;
+    }
     if (step.goal.kind === "boxes-equal") {
       correct = boxesDistributionCorrect;
     }
@@ -702,7 +763,7 @@ export function ExploreStepView({
   }, [boxesDistributionCorrect, checked, evaluatedValue, onCheck, placementReady, step.goal]);
 
   const control = useMemo(() => {
-    if (checked) {
+    if (checked || step.goal.kind === "hierarchy-reduce") {
       return null;
     }
     return {
@@ -711,15 +772,26 @@ export function ExploreStepView({
       disabled: !placementReady || disabled,
       testId: "lesson-check-button",
     };
-  }, [checked, disabled, placementReady, runCheck]);
+  }, [checked, disabled, placementReady, runCheck, step.goal.kind]);
 
   useRegisterLessonStepControl(control);
+
+  const handleReduceStageReady = useCallback(
+    (ready: boolean) => {
+      if (step.goal.kind !== "hierarchy-reduce" || !ready || checked || disabled) {
+        return;
+      }
+      runCheck();
+    },
+    [checked, disabled, runCheck, step.goal.kind],
+  );
 
   const stage = (
     <StageModuleRenderer
       module={step.module}
       stepId={step.id}
       scene={step.scene}
+      onReadyChange={step.goal.kind === "hierarchy-reduce" ? handleReduceStageReady : undefined}
       tienda={
         step.tienda
           ? {
@@ -748,7 +820,20 @@ export function ExploreStepView({
               tapSequence: persist.tapSequence,
               onTapSequenceChange: (tapSequence) => setPersist((prev) => ({ ...prev, tapSequence })),
             }
-          : undefined
+          : step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-reduce"
+            ? {
+                initialTokens: step.goal.tokens,
+                reduceTokens: persist.reduceTokens,
+                reduceHistory: persist.reduceHistory,
+                onReduceTokensChange: (reduceTokens, historyRow) =>
+                  setPersist((prev) => ({
+                    ...prev,
+                    reduceTokens,
+                    reduceHistory: [...prev.reduceHistory, [...historyRow]],
+                  })),
+                reduceDisabled: checked,
+              }
+            : undefined
       }
       selectedIds={persist.selectedIds}
       onSelectedIdsChange={(ids) => setPersist((prev) => ({ ...prev, selectedIds: ids }))}
@@ -758,12 +843,20 @@ export function ExploreStepView({
     />
   );
 
+  const reducePractice = step.goal.kind === "hierarchy-reduce";
+
   return (
     <div data-testid="lesson-explore-step">
-      <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
-        <p className="text-center text-sm font-medium text-ink">
+      <StageShell
+        theme={theme}
+        definitionBox={step.definitionBox}
+        title={step.title}
+        stage={reducePractice ? undefined : stage}
+      >
+        <p className="text-center text-base font-semibold leading-relaxed text-ink">
           <MathRenderer text={step.question} />
         </p>
+        {reducePractice ? <div className="mt-4">{stage}</div> : null}
         {checked ? (
           <div
             className={cn(
@@ -780,6 +873,16 @@ export function ExploreStepView({
                   <MathRenderer text={step.explanation} />
                 ) : step.goal.kind === "boxes-equal" ? (
                   "¡Correcto! Repartiste el total en cajas iguales."
+                ) : step.goal.kind === "hierarchy-reduce" ? (
+                  <>
+                    ¡Correcto! El resultado es {persist.reduceTokens[0]}.
+                    {step.explanation ? (
+                      <>
+                        {" "}
+                        <MathRenderer text={step.explanation} />
+                      </>
+                    ) : null}
+                  </>
                 ) : (
                   `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`
                 )}

@@ -433,6 +433,11 @@ export type ExploreGoal =
       sequence: string[];
     }
   | {
+      kind: "hierarchy-reduce";
+      /** Tokens separados (p. ej. "4", "+", "3", "−", "2", "×", "3"). */
+      tokens: string[];
+    }
+  | {
       kind: "boxes-equal";
       total: number;
       boxes: number;
