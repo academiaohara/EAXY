@@ -1,10 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DefinitionBox } from "@/components/lesson/stage/DefinitionBox";
 import { StageModuleRenderer } from "@/components/lesson/stage/StageModuleRenderer";
 import { StageViewport } from "@/components/lesson/stage/StageViewport";
-import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
+import {
+  useRegisterLessonStepControl,
+  type LessonContinueMeta,
+} from "@/components/lesson/LessonStepControlContext";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import {
@@ -16,6 +19,7 @@ import { usePersistedLessonToolState } from "@/components/lesson/LessonPersisted
 import type {
   ExploreStep,
   LessonStageTheme,
+  MulDivConfig,
   NarrateStep,
   PredictStep,
   RevealStep,
@@ -23,6 +27,65 @@ import type {
 } from "@/lib/lesson/types";
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import { cn } from "@/lib/utils";
+
+function usesPlainLessonTypography(text: string): boolean {
+  return !/\$|\\/.test(text);
+}
+
+function LessonRichText({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) {
+  if (usesPlainLessonTypography(text)) {
+    return <span className={className}>{text}</span>;
+  }
+  return (
+    <span className={className}>
+      <MathRenderer text={text} />
+    </span>
+  );
+}
+
+function buildPredictMulDivReveal(
+  step: PredictStep,
+  checked: boolean,
+  choiceId: string,
+  isCorrect: boolean,
+): MulDivConfig | undefined {
+  if (!step.mulDiv) {
+    return undefined;
+  }
+  if (!checked || step.mulDiv.scene !== "cociente-resto-feedback") {
+    return step.mulDiv;
+  }
+  const base = step.mulDiv;
+  if (base.practiceVariant === "inverse") {
+    const attempt = Number(choiceId);
+    const q = base.boxes ?? 5;
+    const p = base.perBox ?? 8;
+    const r = Math.max(0, attempt - q * p);
+    return {
+      ...base,
+      dividend: base.total ?? 43,
+      divisor: p,
+      quotient: q,
+      remainder: r,
+      feedbackCorrect: isCorrect,
+    };
+  }
+  const [q, r] = choiceId.split("-").map((n) => Number(n));
+  return {
+    ...base,
+    dividend: base.dividend ?? 47,
+    divisor: base.divisor ?? 6,
+    quotient: q,
+    remainder: r,
+    feedbackCorrect: isCorrect,
+  };
+}
 
 const TEAM_ITEMS: TiendaCiclistaItem[] = [
   { id: "bici", label: "Bici", price: 583 },
@@ -54,29 +117,107 @@ function StageShell({ theme, definitionBox, title, stage, stageClassName, childr
   );
 }
 
+type MultiplicacionManoPersist = { sub: number; maxSub: number };
+
 export function NarrateStepView({
   step,
   theme,
   onContinue,
+  onPreviousStep,
 }: {
   step: NarrateStep;
   theme: LessonStageTheme;
-  onContinue: () => void;
+  onContinue: (meta?: LessonContinueMeta) => void;
+  onPreviousStep?: () => void;
 }) {
-  const [ready, setReady] = useState(false);
+  const isMultiplicacionMano =
+    step.module === "mul-div-naturales" && step.scene === "multiplicacion-mano";
 
-  const control = useMemo(
-    () =>
-      ready
-        ? {
-            label: "Continuar",
-            onClick: () => onContinue(),
-            testId: "lesson-continue-button",
-          }
-        : null,
-    [onContinue, ready],
+  const [persist, setPersist] = usePersistedLessonToolState<MultiplicacionManoPersist>(
+    step.id,
+    () => ({ sub: 1, maxSub: 1 }),
   );
+
+  const sub = isMultiplicacionMano ? persist.sub : 1;
+
+  const didResumeFullTourRef = useRef(false);
+  useEffect(() => {
+    if (!isMultiplicacionMano || didResumeFullTourRef.current || persist.maxSub < 4) {
+      return;
+    }
+    didResumeFullTourRef.current = true;
+    if (persist.sub < 4) {
+      setPersist((current) => ({ ...current, sub: 4 }));
+    }
+  }, [isMultiplicacionMano, persist.maxSub, persist.sub, setPersist]);
+
+  const advanceSub = useCallback(() => {
+    if (!isMultiplicacionMano) {
+      onContinue({ completed: true });
+      return;
+    }
+    if (sub < 4) {
+      const next = sub + 1;
+      setPersist({ sub: next, maxSub: Math.max(persist.maxSub, next) });
+      onContinue({ completed: false });
+      return;
+    }
+    setPersist({ sub: 4, maxSub: 4 });
+    onContinue({ completed: true });
+  }, [isMultiplicacionMano, onContinue, persist.maxSub, setPersist, sub]);
+
+  const retreatSub = useCallback(() => {
+    if (!isMultiplicacionMano) {
+      onPreviousStep?.();
+      return;
+    }
+    if (sub > 1) {
+      setPersist((current) => ({ ...current, sub: current.sub - 1 }));
+      return;
+    }
+    onPreviousStep?.();
+  }, [isMultiplicacionMano, onPreviousStep, setPersist, sub]);
+
+  const [ready, setReady] = useState(isMultiplicacionMano);
+
+  const control = useMemo(() => {
+    if (isMultiplicacionMano) {
+      return {
+        label: "Continuar",
+        onClick: advanceSub,
+        testId: "lesson-continue-button",
+        onBack: sub > 1 ? retreatSub : undefined,
+      };
+    }
+    if (!ready) {
+      return null;
+    }
+    return {
+      label: "Continuar",
+      onClick: () => onContinue({ completed: true }),
+      testId: "lesson-continue-button",
+    };
+  }, [advanceSub, isMultiplicacionMano, onContinue, ready, retreatSub, sub]);
+
   useRegisterLessonStepControl(control);
+
+  useEffect(() => {
+    if (!isMultiplicacionMano) {
+      return;
+    }
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        advanceSub();
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        retreatSub();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [advanceSub, isMultiplicacionMano, retreatSub]);
 
   const tienda = step.tienda;
 
@@ -103,20 +244,22 @@ export function NarrateStepView({
             : undefined
       }
       mulDiv={step.mulDiv}
+      mulDivSubStep={isMultiplicacionMano ? sub : undefined}
+      onChalkboardClick={isMultiplicacionMano ? advanceSub : undefined}
       autoPlay={
         step.module === "mul-div-naturales" &&
         step.scene !== "multiplicacion-mano" &&
         step.scene !== "division-mano" &&
         step.scene !== "reparto-igual" &&
-        step.scene !== "exacta-entera"
+        step.scene !== "exacta-entera" &&
+        step.scene !== "mul-div-cierre"
       }
       onReadyChange={setReady}
     />
   );
 
-  const compactHandAlgorithmStage =
-    step.module === "mul-div-naturales" &&
-    (step.scene === "multiplicacion-mano" || step.scene === "division-mano");
+  const compactDivisionStage =
+    step.module === "mul-div-naturales" && step.scene === "division-mano";
 
   return (
     <div data-testid="lesson-narrate-step">
@@ -125,7 +268,7 @@ export function NarrateStepView({
         definitionBox={step.definitionBox}
         title={step.title}
         stage={stage}
-        stageClassName={compactHandAlgorithmStage ? "mx-auto w-fit max-w-full" : undefined}
+        stageClassName={compactDivisionStage ? "mx-auto w-fit max-w-full" : undefined}
       />
     </div>
   );
@@ -317,6 +460,8 @@ export function PredictStepView({
     );
   }
 
+  const mulDivReveal = buildPredictMulDivReveal(step, checked, choiceId, isCorrect);
+
   const stageReveal =
     reveal && step.module && step.scene
       ? step.module === "tienda-ciclista" && step.tienda
@@ -329,13 +474,13 @@ export function PredictStepView({
               autoPlay
             />
           )
-        : step.module === "mul-div-naturales" && step.mulDiv
+        : step.module === "mul-div-naturales" && mulDivReveal
           ? (
               <StageModuleRenderer
                 module="mul-div-naturales"
                 stepId={`${step.id}-reveal`}
                 scene={step.scene}
-                mulDiv={{ ...step.mulDiv, scene: step.mulDiv.scene }}
+                mulDiv={{ ...mulDivReveal, scene: mulDivReveal.scene }}
                 autoPlay
               />
             )
@@ -349,7 +494,7 @@ export function PredictStepView({
         data-testid="lesson-predict-step"
       >
         <h3 className="mb-4 text-center text-lg font-semibold text-ink">
-          <MathRenderer text={step.question} />
+          <LessonRichText text={step.question} />
         </h3>
         {step.hint && step.hintHiddenUntilRequested && !checked ? (
           <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
@@ -397,7 +542,7 @@ export function PredictStepView({
                 )}
                 aria-pressed={choiceId === choice.id}
               >
-                <MathRenderer text={choice.label} />
+                <LessonRichText text={choice.label} className="text-sm font-medium" />
               </button>
             ))}
           </div>
@@ -710,7 +855,7 @@ export function RevealStepView({
   return (
     <div data-testid="lesson-reveal-step">
       <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
-        {equation && step.scene !== "conmutativa-producto" ? (
+        {equation && step.scene !== "conmutativa-producto" && step.scene !== "asociativa-huevos" ? (
           <p className="text-center text-base text-ink-muted">
             <MathRenderer text={equation} />
           </p>

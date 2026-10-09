@@ -6,10 +6,9 @@ import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 import {
   buildDivisionManoGuidedSteps,
-  buildMultiplicationAlgorithmSteps,
   type DivisionAlgorithmStep,
-  type MultiplicationResultRow,
 } from "@/components/lesson/stage/modules/mul-div-naturales/escolar-algorithms";
+import { MultiplicacionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/MultiplicacionManoChalkboard";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 
 const ACCENT = "var(--stage-accent, #6ee7b7)";
@@ -251,148 +250,28 @@ export function DivisionManoScene({
   );
 }
 
-function MultiplicationResultRowLine({
-  row,
-  width,
-  isTotal,
-}: {
-  row: MultiplicationResultRow;
-  width: number;
-  isTotal: boolean;
-}) {
-  const padded = row.text.padStart(width, " ");
-  const chars = padded.split("");
-
-  return (
-    <div
-      className={cn(
-        "flex h-[2.35rem] items-center justify-end gap-1 tabular-nums transition-all duration-500",
-        row.revealed
-          ? isTotal
-            ? "text-[color:var(--stage-chalk,#f8fafc)] opacity-100"
-            : "text-[color:var(--stage-accent,#6ee7b7)] opacity-100"
-          : "text-[color:var(--stage-muted,#94a3b8)] opacity-[0.14]",
-      )}
-      aria-hidden={!row.revealed && row.text.length === 0}
-    >
-      {chars.map((ch, i) => {
-        const isHighlightZero =
-          row.revealed &&
-          row.highlightTrailingZero &&
-          ch === "0" &&
-          i === chars.length - 1 &&
-          chars.slice(0, i).some((c) => c !== " ");
-        return (
-          <span
-            key={`${row.text}-${i}`}
-            className={cn(
-              "inline-block w-[1.1ch] text-right",
-              isHighlightZero &&
-                "rounded-sm bg-[color:var(--stage-accent,#6ee7b7)]/25 text-[color:var(--stage-chalk,#f8fafc)] ring-1 ring-[color:var(--stage-accent,#6ee7b7)]",
-            )}
-          >
-            {ch === " " && !row.revealed ? "\u00a0" : ch === " " ? "\u00a0" : ch}
-          </span>
-        );
-      })}
-    </div>
-  );
-}
-
 export function MultiplicacionManoScene({
   multiplicand,
   multiplier,
-  autoPlay,
-  reduced,
-  onReadyChange,
-  onAnimationComplete,
+  subStep = 1,
+  onBoardClick,
 }: {
   multiplicand: number;
   multiplier: number;
+  subStep?: number;
+  onBoardClick?: () => void;
   autoPlay?: boolean;
-  reduced: boolean;
+  reduced?: boolean;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const steps = useMemo(
-    () => buildMultiplicationAlgorithmSteps(multiplicand, multiplier),
-    [multiplicand, multiplier],
-  );
-  const { phase, setPhase, playing, setPlaying, stepCount } = useControllableStepPlayback({
-    autoPlay,
-    reduced,
-    stepCount: steps.length,
-    onReadyChange,
-    onAnimationComplete,
-    intervalMs: 1300,
-  });
-  const step = steps[phase]!;
-  const mStr = String(multiplicand);
-  const tStr = String(multiplier);
-  const width = Math.max(mStr.length, tStr.length, ...step.rows.map((r) => r.text.length)) + 1;
-
-  const handleRestart = useCallback(() => {
-    setPhase(0);
-    setPlaying(false);
-  }, [setPhase, setPlaying]);
-
   return (
-    <div className="flex w-fit max-w-full flex-col items-stretch gap-2">
-      <StageStepControls
-        variant="embedded"
-        className="self-end"
-        phase={phase}
-        stepCount={stepCount}
-        playing={playing}
-        onPhaseChange={setPhase}
-        onPlayingChange={setPlaying}
-        onRestart={handleRestart}
-      />
-      <div className="w-fit rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 px-3 pb-3 pt-2 font-mono text-2xl font-bold tracking-wider text-[color:var(--stage-ink,#e8edf5)] sm:text-3xl">
-        <div className="flex justify-end gap-1 tabular-nums">
-          {mStr.split("").map((ch, i) => (
-            <span key={`m-${i}`} className="inline-block w-[1.1ch] text-right">
-              {ch}
-            </span>
-          ))}
-        </div>
-        <div className="flex justify-end gap-1 tabular-nums text-[color:var(--stage-accent,#6ee7b7)]">
-          <span className="mr-1 text-lg">×</span>
-          {tStr.split("").map((ch, i) => (
-            <span
-              key={`t-${i}`}
-              className={cn(
-                "inline-block w-[1.1ch] text-right transition-colors duration-300",
-                step.highlightMultiplierDigitIndex === i &&
-                  "rounded-sm bg-[color:var(--stage-accent,#6ee7b7)]/25 text-[color:var(--stage-chalk,#f8fafc)] ring-1 ring-[color:var(--stage-accent,#6ee7b7)]",
-              )}
-            >
-              {ch}
-            </span>
-          ))}
-        </div>
-        <div className="my-1 border-t-2 border-[color:var(--stage-muted,#94a3b8)]" />
-        <div className="min-h-[7.05rem]">
-          {step.rows.map((row, rowIndex) => (
-            <div key={`row-${rowIndex}`}>
-              {rowIndex === 2 ? (
-                <div className="my-1 border-t-2 border-[color:var(--stage-accent,#6ee7b7)]/45" />
-              ) : null}
-              <MultiplicationResultRowLine row={row} width={width} isTotal={rowIndex === 2} />
-            </div>
-          ))}
-        </div>
-      </div>
-      <p
-        className="max-w-[min(100%,20rem)] text-center text-sm font-medium leading-relaxed text-[color:var(--stage-ink,#e8edf5)]"
-        aria-live="polite"
-      >
-        <MathRenderer text={step.caption} />
-      </p>
-      <p className="max-w-[min(100%,20rem)] text-center text-xs text-[color:var(--stage-muted,#94a3b8)]">
-        Avanza con → a tu ritmo; ▶ reproduce sola si prefieres.
-      </p>
-    </div>
+    <MultiplicacionManoChalkboard
+      multiplicand={multiplicand}
+      multiplier={multiplier}
+      subStep={subStep}
+      onBoardClick={onBoardClick}
+    />
   );
 }
 

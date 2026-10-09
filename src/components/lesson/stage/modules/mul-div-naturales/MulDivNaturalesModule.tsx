@@ -5,11 +5,17 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { MulDivConfig, MulDivNaturalesScene } from "@/lib/lesson/types";
+import { CocienteRestoFeedback } from "@/components/lesson/stage/modules/mul-div-naturales/CocienteRestoFeedback";
+import { ExactaEnteraInteractive } from "@/components/lesson/stage/modules/mul-div-naturales/ExactaEnteraInteractive";
 import {
-  DivisionIdentidadScene,
   DivisionManoScene,
   MultiplicacionManoScene,
 } from "@/components/lesson/stage/modules/mul-div-naturales/EscolarAlgorithmViews";
+import {
+  AsociativaHuevosDiscover,
+  AsociativaTrucoMental,
+} from "@/components/lesson/stage/modules/mul-div-naturales/AsociativaScenes";
+import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +28,9 @@ const ASSETS = {
 export type MulDivNaturalesModuleProps = MulDivConfig & {
   stepId: string;
   autoPlay?: boolean;
+  /** Sub-pasos internos de multiplicación a mano (1–4). */
+  subStep?: number;
+  onBoardClick?: () => void;
   /** Para escena de reparto manual: fichas en cada caja (índice = caja). */
   boxCounts?: number[];
   onBoxCountsChange?: (counts: number[]) => void;
@@ -191,8 +200,6 @@ function MultiplicarSextaEntrada({
   a,
   baseCount,
   totalCount,
-  autoPlay,
-  reduced,
   onReadyChange,
   onAnimationComplete,
 }: {
@@ -204,73 +211,20 @@ function MultiplicarSextaEntrada({
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const [fanCount, setFanCount] = useState(reduced ? totalCount : 1);
-  const { push, clear } = useTimers();
-
   useEffect(() => {
-    if (!autoPlay) {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      return;
-    }
-    if (reduced) {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
-      return;
-    }
-    onReadyChange?.(false);
-    setFanCount(1);
-    push(() => setFanCount(baseCount), 550);
-    push(() => {
-      setFanCount(totalCount);
-      onReadyChange?.(true);
-      onAnimationComplete?.();
-    }, 1250);
-    return clear;
-  }, [
-    autoPlay,
-    baseCount,
-    clear,
-    onAnimationComplete,
-    onReadyChange,
-    push,
-    reduced,
-    totalCount,
-  ]);
+    onReadyChange?.(true);
+    onAnimationComplete?.();
+  }, [onAnimationComplete, onReadyChange]);
 
-  const sumParts = Array.from({ length: fanCount }, () => String(a)).join(" + ");
-  const mathText =
-    fanCount >= totalCount
-      ? `${sumParts} = ?`
-      : fanCount >= baseCount
-        ? `${sumParts} = ${a} \\cdot ${baseCount} = ${a * baseCount}`
-        : fanCount > 1
-          ? sumParts
-          : `${a}`;
-  const priceLabel =
-    fanCount >= totalCount ? "?" : fanCount >= baseCount ? `${a * baseCount}€` : `${a * fanCount}€`;
-  const fanCaption =
-    fanCount >= totalCount
-      ? `${totalCount} entradas`
-      : fanCount >= baseCount
-        ? `${baseCount} entradas`
-        : fanCount === 1
-          ? "1 entrada"
-          : `${fanCount} entradas`;
+  const sumParts = Array.from({ length: totalCount }, () => String(a)).join(" + ");
+  const mathText = `${sumParts} = ?`;
 
   return (
     <div
       className="space-y-4"
-      aria-label={
-        fanCount >= totalCount
-          ? `${totalCount} entradas de ${a} euros, total por calcular`
-          : fanCount >= baseCount
-            ? `${baseCount} entradas de ${a} euros, ${a * baseCount} euros en total`
-            : `${fanCount} entrada${fanCount === 1 ? "" : "s"} de ${a} euros`
-      }
+      aria-label={`Comparar 1, ${baseCount} y ${totalCount} entradas de ${a} euros`}
     >
-      <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-10">
+      <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8">
         <div className="flex min-w-[7.5rem] flex-col items-center gap-2">
           <div className="flex h-[6.5rem] items-end">
             <TicketImage style={{ transform: `rotate(${TICKET_TILT_DEG}deg)` }} />
@@ -278,9 +232,14 @@ function MultiplicarSextaEntrada({
           <SlideBadge>{a}€</SlideBadge>
           <span className={STAGE_CAPTION}>1 entrada</span>
         </div>
-        <TicketFan count={fanCount} priceLabel={priceLabel} caption={fanCaption} />
+        <TicketFan
+          count={baseCount}
+          priceLabel={`${a * baseCount}€`}
+          caption={`${baseCount} entradas`}
+        />
+        <TicketFan count={totalCount} priceLabel="?" caption={`${totalCount} entradas`} />
       </div>
-      <p className={cn(STAGE_MATH, "transition-opacity duration-500")} aria-live="polite">
+      <p className={STAGE_MATH} aria-live="polite">
         <MathRenderer text={`$${mathText}$`} />
       </p>
     </div>
@@ -397,15 +356,33 @@ function MultiplicarRepetido({
 const COMMUTATIVE_CELL_REM = 2.75;
 const COMMUTATIVE_GAP_REM = 0.25;
 const COMMUTATIVE_PAD_REM = 0.5;
+/** border-2 en el bloque (2px por lado → 4px por eje). */
+const COMMUTATIVE_BORDER_REM = 0.25;
+const COMMUTATIVE_ARENA_SAFETY_REM = 0.25;
 const COMMUTATIVE_ROTATE_MS = 800;
 
-/** Cuadrado fijo que cabe el bloque en 0° y en 90° (filas × columnas = a × b). */
-function commutativeBlockArenaRem(rowCount: number, colCount: number) {
+function commutativeGridSizeRem(rowCount: number, colCount: number) {
   const gridWidthRem =
     colCount * COMMUTATIVE_CELL_REM + Math.max(0, colCount - 1) * COMMUTATIVE_GAP_REM;
   const gridHeightRem =
     rowCount * COMMUTATIVE_CELL_REM + Math.max(0, rowCount - 1) * COMMUTATIVE_GAP_REM;
-  return Math.max(gridWidthRem, gridHeightRem) + COMMUTATIVE_PAD_REM * 2;
+  return { gridWidthRem, gridHeightRem };
+}
+
+/** Tamaño exterior del bloque (rejilla + p-2 + border-2). */
+function commutativeBlockOuterRem(rowCount: number, colCount: number) {
+  const { gridWidthRem, gridHeightRem } = commutativeGridSizeRem(rowCount, colCount);
+  const chromeRem = COMMUTATIVE_PAD_REM * 2 + COMMUTATIVE_BORDER_REM;
+  return {
+    widthRem: gridWidthRem + chromeRem,
+    heightRem: gridHeightRem + chromeRem,
+  };
+}
+
+/** Cuadrado fijo que cabe el bloque en 0° y en 90° (filas × columnas = a × b). */
+function commutativeBlockArenaRem(rowCount: number, colCount: number) {
+  const { widthRem, heightRem } = commutativeBlockOuterRem(rowCount, colCount);
+  return Math.max(widthRem, heightRem) + COMMUTATIVE_ARENA_SAFETY_REM;
 }
 
 function ConmutativaProducto({
@@ -473,12 +450,12 @@ function ConmutativaProducto({
   return (
     <div className="space-y-4" aria-label="Propiedad conmutativa de la multiplicación">
       <div
-        className="mx-auto flex max-w-full items-center justify-center"
-        style={{ width: `${arenaRem}rem`, height: `${arenaRem}rem` }}
+        className="mx-auto flex max-w-full items-center justify-center overflow-visible"
+        style={{ width: `${arenaRem}rem`, height: `${arenaRem}rem`, minHeight: `${arenaRem}rem` }}
       >
         <div
           className={cn(
-            "grid gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 transition-transform ease-in-out",
+            "grid shrink-0 gap-1 rounded-lg border-2 border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] p-2 transition-transform ease-in-out",
             rotateTransition,
             swapped ? "rotate-90" : "rotate-0",
           )}
@@ -557,82 +534,6 @@ function ConmutativaProducto({
           onClick={handleRotate}
         >
           Girar el bloque
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function AsociativaProducto({
-  a,
-  b,
-  c,
-  onReadyChange,
-}: {
-  a: number;
-  b: number;
-  c: number;
-  onReadyChange?: (ready: boolean) => void;
-}) {
-  const [leftGroup, setLeftGroup] = useState(true);
-  const total = a * b * c;
-
-  const piles = useMemo(() => {
-    if (leftGroup) {
-      return [
-        { label: `${a}×${b}`, count: a * b, tone: "cobalt" as const },
-        { label: `${c}`, count: c, tone: "amber" as const },
-      ];
-    }
-    return [
-      { label: `${a}`, count: a, tone: "cobalt" as const },
-      { label: `${b}×${c}`, count: b * c, tone: "violet" as const },
-    ];
-  }, [a, b, c, leftGroup]);
-
-  return (
-    <div className="space-y-4" aria-label="Propiedad asociativa de la multiplicación">
-      <div className="flex flex-wrap items-end justify-center gap-3">
-        {piles.map((pile, index) => (
-          <div key={pile.label} className="flex items-end gap-2">
-            {index === 1 ? <span className="pb-4 text-2xl font-bold text-ink">×</span> : null}
-            <div
-              className={cn(
-                "flex flex-wrap justify-center gap-0.5 rounded-xl border-2 border-dashed px-2 py-2",
-                index === 0 && leftGroup ? "border-cobalt/40 bg-cobalt-tint/50" : "",
-                index === 1 && !leftGroup ? "border-violet/40 bg-violet-50" : "border-transparent",
-              )}
-            >
-              {Array.from({ length: Math.min(pile.count, 12) }, (_, i) => (
-                <FichaIcon key={i} tone={pile.tone} />
-              ))}
-              {pile.count > 12 ? (
-                <span className="self-center px-1 text-xs font-bold text-ink-muted">+{pile.count - 12}</span>
-              ) : null}
-            </div>
-          </div>
-        ))}
-        <span className="pb-4 font-mono text-lg font-bold text-ink">= {total}</span>
-      </div>
-      <p className="text-center text-sm text-ink-muted">
-        <MathRenderer
-          text={
-            leftGroup
-              ? `$(${a} \\cdot ${b}) \\cdot ${c} = ${a * b} \\cdot ${c} = ${total}$`
-              : `$${a} \\cdot (${b} \\cdot ${c}) = ${a} \\cdot ${b * c} = ${total}$`
-          }
-        />
-      </p>
-      <div className="flex justify-center">
-        <button
-          type="button"
-          className="min-h-[44px] rounded-xl border-2 border-cobalt/30 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:border-cobalt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-          onClick={() => {
-            setLeftGroup((g) => !g);
-            onReadyChange?.(true);
-          }}
-        >
-          Cambiar agrupación
         </button>
       </div>
     </div>
@@ -993,10 +894,16 @@ export function MulDivNaturalesModule({
   total = 150,
   boxes = 6,
   autoPlay = false,
+  subStep = 1,
+  onBoardClick,
   boxCounts = [],
   onBoxCountsChange,
   onReadyChange,
   onAnimationComplete,
+  quotient,
+  remainder,
+  feedbackCorrect,
+  practiceVariant,
 }: MulDivNaturalesModuleProps) {
   const reduced = useReducedMotion();
 
@@ -1032,10 +939,8 @@ export function MulDivNaturalesModule({
           <MultiplicacionManoScene
             multiplicand={a}
             multiplier={b}
-            autoPlay={autoPlay}
-            reduced={reduced}
-            onReadyChange={onReadyChange}
-            onAnimationComplete={onAnimationComplete}
+            subStep={subStep}
+            onBoardClick={onBoardClick}
           />
         );
       case "division-mano":
@@ -1061,8 +966,22 @@ export function MulDivNaturalesModule({
         );
       case "conmutativa-producto":
         return <ConmutativaProducto a={a} b={b} reduced={reduced} onReadyChange={onReadyChange} />;
+      case "asociativa-huevos":
+        return <AsociativaHuevosDiscover a={a} b={b} c={c ?? 2} onReadyChange={onReadyChange} />;
+      case "asociativa-truco":
+        return (
+          <AsociativaTrucoMental
+            a={a}
+            b={b}
+            c={c ?? 4}
+            autoPlay={autoPlay}
+            reduced={reduced}
+            onReadyChange={onReadyChange}
+            onAnimationComplete={onAnimationComplete}
+          />
+        );
       case "asociativa-producto":
-        return <AsociativaProducto a={a} b={b} c={c} onReadyChange={onReadyChange} />;
+        return <AsociativaHuevosDiscover a={a} b={b} c={c ?? 2} onReadyChange={onReadyChange} />;
       case "distributiva-bloques":
         return (
           <DistributivaBloques
@@ -1098,13 +1017,21 @@ export function MulDivNaturalesModule({
           />
         );
       case "exacta-entera":
+        return <ExactaEnteraInteractive onReadyChange={onReadyChange} />;
+      case "cociente-resto-feedback":
         return (
-          <DivisionIdentidadScene
-            autoPlay={autoPlay}
-            reduced={reduced}
+          <CocienteRestoFeedback
+            total={dividend}
+            perBox={divisor}
+            quotient={quotient ?? 0}
+            remainder={remainder ?? 0}
+            isCorrect={Boolean(feedbackCorrect)}
+            variant={practiceVariant ?? "divide"}
             onReadyChange={onReadyChange}
           />
         );
+      case "mul-div-cierre":
+        return <MulDivLessonClosing onReadyChange={onReadyChange} />;
       default:
         return <p className="text-sm text-rose-700">Escena no configurada.</p>;
     }

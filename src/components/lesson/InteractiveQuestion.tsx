@@ -25,6 +25,7 @@ type InteractiveQuestionProps = {
   step: LessonStep;
   onCheck: (result: StepCheckResult) => void;
   onContinue?: (meta?: LessonContinueMeta) => void;
+  onPreviousStep?: () => void;
   disabled?: boolean;
   compact?: boolean;
   savedAttempt?: PracticeStepSnapshot | null;
@@ -74,6 +75,7 @@ export function InteractiveQuestion({
   step,
   onCheck,
   onContinue,
+  onPreviousStep,
   disabled = false,
   compact = false,
   savedAttempt = null,
@@ -84,7 +86,8 @@ export function InteractiveQuestion({
       <NarrateStepView
         step={step}
         theme={stageTheme}
-        onContinue={() => onContinue?.({ completed: true })}
+        onContinue={(meta) => onContinue?.(meta)}
+        onPreviousStep={onPreviousStep}
       />
     );
   }

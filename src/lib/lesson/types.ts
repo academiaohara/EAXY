@@ -33,11 +33,15 @@ export type MulDivNaturalesScene =
   | "multiplicacion-mano"
   | "conmutativa-producto"
   | "asociativa-producto"
+  | "asociativa-huevos"
+  | "asociativa-truco"
   | "distributiva-bloques"
   | "reparto-igual"
   | "division-mano"
   | "reparto-manual"
   | "exacta-entera"
+  | "cociente-resto-feedback"
+  | "mul-div-cierre"
   | "puente-mult-div";
 
 export type MulDivConfig = {
@@ -52,6 +56,12 @@ export type MulDivConfig = {
   total?: number;
   boxes?: number;
   perBox?: number;
+  /** Feedback de práctica cociente/resto: cajas y sobrantes elegidos. */
+  quotient?: number;
+  remainder?: number;
+  feedbackCorrect?: boolean;
+  /** `inverse`: muestra cajas fijas y comprueba el total. */
+  practiceVariant?: "divide" | "inverse";
 };
 
 export type TiendaCiclistaItem = {
