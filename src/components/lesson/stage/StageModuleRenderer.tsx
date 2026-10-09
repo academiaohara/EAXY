@@ -40,6 +40,8 @@ export type StageModuleRenderProps = {
   onSelectedIdsChange?: (ids: string[]) => void;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
+  mulDivSubStep?: number;
+  onChalkboardClick?: () => void;
 };
 
 export function StageModuleRenderer(props: StageModuleRenderProps) {
@@ -78,6 +80,8 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
         stepId={stepId}
         {...props.mulDiv}
         autoPlay={props.autoPlay}
+        subStep={props.mulDivSubStep}
+        onBoardClick={props.onChalkboardClick}
         boxCounts={props.boxCounts}
         onBoxCountsChange={props.onBoxCountsChange}
         onReadyChange={onReadyChange}
