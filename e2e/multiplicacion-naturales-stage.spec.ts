@@ -24,6 +24,7 @@ test("multiplicación y división — lección unificada en catálogo", async ({
 
 test("orden de operaciones — carga la lección 5", async ({ page }) => {
   await page.goto("/aprender/leccion-interactiva/division-orden-operaciones-naturales");
-  await expect(page.getByTestId("lesson-narrate-step")).toBeVisible({ timeout: 30_000 });
-  await expect(page.locator("text=Orden fijo").first()).toBeVisible();
+  await expect(page.getByTestId("lesson-predict-step")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText("¿Quién tiene razón?").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Leo" })).toBeVisible();
 });
