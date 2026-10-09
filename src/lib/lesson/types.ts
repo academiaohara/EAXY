@@ -33,6 +33,8 @@ export type MulDivNaturalesScene =
   | "multiplicacion-mano"
   | "conmutativa-producto"
   | "asociativa-producto"
+  | "asociativa-huevos"
+  | "asociativa-truco"
   | "distributiva-bloques"
   | "reparto-igual"
   | "division-mano"
