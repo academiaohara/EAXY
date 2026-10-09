@@ -159,8 +159,6 @@ export type NumberLineVisual = {
   min: number;
   max: number;
   step?: number;
-  /** Whether positive ticks display an explicit + sign (defaults to true for signed-number lessons). */
-  showPositiveSign?: boolean;
   points?: { value: number; label?: string; tone?: VisualTone }[];
   /** Muestra |n| como distancia desde 0 hasta n. */
   absValue?: number;

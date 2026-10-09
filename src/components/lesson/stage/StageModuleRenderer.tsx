@@ -74,8 +74,7 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
   if (module === "bloques-numericos" && props.bloques) {
     return (
       <BloquesNumericosModule
-        stepId={stepId}
-        scene={scene as "conmutativa" | "asociativa" | "propiedades-suma"}
+        scene={scene as "conmutativa" | "asociativa"}
         blocks={props.bloques.blocks}
         onReadyChange={onReadyChange}
       />

@@ -66,13 +66,13 @@ export function RedondeoCorteScene({ stepId, n, orderId, onReadyChange }: Redond
       </div>
 
       {picked !== null && !success ? (
-        <p className="text-center text-sm text-amber-800" role="status" aria-live="polite">
+        <p className="text-center text-sm text-amber-800">
           Ese no es el orden pedido. Piensa qué cifra queda como última del orden «{order.label}».
         </p>
       ) : null}
 
       {success ? (
-        <div className="space-y-3 animate-in fade-in duration-300" role="status" aria-live="polite">
+        <div className="space-y-3 animate-in fade-in duration-300">
           <div className="flex items-center justify-center gap-2 text-emerald-700">
             <CheckIcon className="size-5" aria-hidden />
             <span className="font-semibold">Corte correcto</span>

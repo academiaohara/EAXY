@@ -19,9 +19,9 @@ import { cn } from "@/lib/utils";
 type TabId = SistemasHistoriaTabId;
 
 const TABS: { id: TabId; label: string; subtitle: string }[] = [
-  { id: "tally", label: "Marcas", subtitle: "Agrupar de cinco en cinco" },
-  { id: "egypt", label: "Egipcio", subtitle: "Cada símbolo suma su valor" },
-  { id: "roman", label: "Romano", subtitle: "Algunas posiciones restan" },
+  { id: "tally", label: "El hombre primitivo", subtitle: "Marcas en un hueso" },
+  { id: "egypt", label: "Los egipcios", subtitle: "Símbolos que se suman" },
+  { id: "roman", label: "Los romanos", subtitle: "Letras con reglas de resta" },
 ];
 
 const EGYPT_SYMBOLS: {
@@ -73,7 +73,6 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
   };
 
   const allDone = done.tally && done.egypt && done.roman;
-  const completedCount = Object.values(done).filter(Boolean).length;
 
   useEffect(() => {
     onReadyChange(allDone);
@@ -81,17 +80,18 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
 
   return (
     <div className="space-y-5">
-      <p className="text-sm leading-relaxed text-ink-muted">
-        El mismo reto —representar una cantidad— puede resolverse de distintas maneras: agrupar marcas, sumar símbolos o
-        usar la posición de las cifras.
+      <p className="text-sm text-ink-muted">
+        Tres sistemas <strong>aditivos</strong> (se suman signos). Más adelante verás el decimal, donde importa
+        la <strong>posición</strong> de cada cifra.
       </p>
 
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Elige un sistema de numeración">
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
         {TABS.map((item) => (
           <button
             key={item.id}
             type="button"
-            aria-pressed={tab === item.id}
+            role="tab"
+            aria-selected={tab === item.id}
             onClick={() => setState((prev) => ({ ...prev, tab: item.id }))}
             className={cn(
               "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
@@ -112,12 +112,12 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
       {tab === "tally" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Cada objeto deja una marca. Cada cinco se agrupan con una raya diagonal. Representa{" "}
+            Cada objeto deja una marca. Al quinto, se tacha en diagonal el grupo de cuatro. Llega a{" "}
             <strong className="text-ink">{TARGETS.tally}</strong> marcas.
           </p>
           <TallyMarksView count={tallyCount} />
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="text-2xl font-bold tabular-nums text-ink" aria-live="polite">{tallyCount}</span>
+            <span className="text-2xl font-bold tabular-nums text-ink">{tallyCount}</span>
             <div className="flex gap-2">
               <Button
                 type="button"
@@ -145,8 +145,8 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
       {tab === "egypt" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Forma <strong className="text-ink">{TARGETS.egypt}</strong>: usa cuatro símbolos de diez y siete de uno.
-            Cada símbolo añade su valor, así que aquí solo tienes que <strong className="text-ink">sumarlos</strong>.
+            Forma <strong className="text-ink">{TARGETS.egypt}</strong> con símbolos egipcios. Cada pulso añade un
+            signo; el número es la <strong>suma</strong> de todos (como las letras romanas, pero sin restas).
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {EGYPT_SYMBOLS.map((sym) => (
@@ -183,28 +183,17 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
             </div>
             <div className="text-center sm:text-right">
               <p className="text-xs uppercase tracking-wide text-amber-800">Valor decimal</p>
-              <p className="text-3xl font-bold tabular-nums text-amber-950" aria-live="polite">{egyptValue}</p>
+              <p className="text-3xl font-bold tabular-nums text-amber-950">{egyptValue}</p>
             </div>
-            <div className="flex justify-center gap-2 sm:col-span-2 sm:justify-self-end">
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => setState((prev) => ({ ...prev, egyptSymbols: prev.egyptSymbols.slice(0, -1) }))}
-                disabled={egyptSymbols.length === 0}
-              >
-                Deshacer
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => setState((prev) => ({ ...prev, egyptSymbols: [] }))}
-                disabled={egyptSymbols.length === 0}
-              >
-                Borrar
-              </Button>
-            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="sm:col-span-2 sm:justify-self-end"
+              onClick={() => setState((prev) => ({ ...prev, egyptSymbols: [] }))}
+            >
+              Borrar
+            </Button>
           </div>
         </div>
       ) : null}
@@ -212,8 +201,8 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
       {tab === "roman" ? (
         <div className="space-y-4">
           <p className="text-sm text-ink-muted">
-            Escribe <strong className="text-ink">{TARGETS.roman}</strong> como <strong>XIV</strong>. La I va antes de V,
-            así que resta: <strong>X + (V − I) = 10 + 4</strong>.
+            Forma <strong className="text-ink">{TARGETS.roman}</strong> con letras romanas. Si una letra pequeña
+            va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
           </p>
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
             {ROMAN_KEYS.map(({ key, value }) => (
@@ -234,40 +223,24 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
             </span>
             <div className="text-center sm:text-right">
               <p className="text-xs uppercase tracking-wide text-violet-700">Valor decimal</p>
-              <p className="text-3xl font-bold tabular-nums text-violet-900" aria-live="polite">{romanValue}</p>
+              <p className="text-3xl font-bold tabular-nums text-violet-900">{romanValue}</p>
             </div>
-            <div className="flex justify-center gap-2 sm:col-span-2 sm:justify-self-end">
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => setState((prev) => ({ ...prev, romanStr: prev.romanStr.slice(0, -1) }))}
-                disabled={romanStr.length === 0}
-              >
-                Deshacer
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() => setState((prev) => ({ ...prev, romanStr: "" }))}
-                disabled={romanStr.length === 0}
-              >
-                Borrar
-              </Button>
-            </div>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="sm:col-span-2 sm:justify-self-end"
+              onClick={() => setState((prev) => ({ ...prev, romanStr: "" }))}
+            >
+              Borrar
+            </Button>
           </div>
         </div>
       ) : null}
 
-      <div className="space-y-2" aria-label={`${completedCount} de 3 sistemas completados`}>
-        <div className="h-1.5 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label="Sistemas explorados" aria-valuemin={0} aria-valuemax={3} aria-valuenow={completedCount}>
-          <div className="h-full rounded-full bg-emerald-500" style={{ width: `${(completedCount / 3) * 100}%` }} />
-        </div>
-        <p className="text-xs text-ink-muted" aria-live="polite">
-          {allDone ? "Has probado los tres sistemas. En el decimal, en cambio, cada posición cambia el valor." : `${completedCount} de 3 sistemas explorados. Completa cada reto para continuar.`}
-        </p>
-      </div>
+      {!allDone ? (
+        <p className="text-xs text-ink-muted">Completa los tres retos (✓ en cada pestaña) para continuar.</p>
+      ) : null}
     </div>
   );
 }
