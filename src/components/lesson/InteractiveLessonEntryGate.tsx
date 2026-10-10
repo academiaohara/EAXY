@@ -1,26 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { LessonContainer } from "@/components/lesson/LessonContainer";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import {
   clearPersistedInteractiveLesson,
   readPersistedInteractiveLesson,
   shouldOfferInteractiveLessonResume,
-  summarizeInteractiveLessonProgress,
 } from "@/lib/local-progress/interactive-lesson-state";
 import { resetLocalLessonCatalogStatus } from "@/lib/local-progress/storage";
-import { APRENDER_HOME_HREF, courseHref, topicHref } from "@/lib/navigation/learning-trail";
 
 type LessonNavigationContext = {
   courseSlug: string;
@@ -34,6 +22,8 @@ type InteractiveLessonEntryGateProps = {
   navigation?: LessonNavigationContext;
   curriculumLessonId?: string;
   trackLocalProgress?: boolean;
+  /** URL con `?reiniciar=1`: borra progreso y arranca desde el paso 1. */
+  restartRequested?: boolean;
 };
 
 export function InteractiveLessonEntryGate({
@@ -41,54 +31,37 @@ export function InteractiveLessonEntryGate({
   navigation,
   curriculumLessonId,
   trackLocalProgress = false,
+  restartRequested = false,
 }: InteractiveLessonEntryGateProps) {
   const stepCount = lesson.steps.length;
-  const returnHref = navigation?.moduleSlug
-    ? topicHref(navigation.courseSlug, navigation.moduleSlug)
-    : navigation
-      ? courseHref(navigation.courseSlug)
-      : APRENDER_HOME_HREF;
-
-  const [phase, setPhase] = useState<"checking" | "prompt" | "active">("checking");
+  const [ready, setReady] = useState(false);
   const [sessionKey, setSessionKey] = useState(0);
   const [openForReview, setOpenForReview] = useState(false);
-  const [savedSnapshot, setSavedSnapshot] = useState(() =>
-    readPersistedInteractiveLesson(lesson.slug, stepCount),
-  );
-
-  const progressSummary = useMemo(
-    () => summarizeInteractiveLessonProgress(savedSnapshot, stepCount),
-    [savedSnapshot, stepCount],
-  );
 
   useEffect(() => {
-    const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
-    setSavedSnapshot(saved);
-    setPhase(shouldOfferInteractiveLessonResume(saved, stepCount) ? "prompt" : "active");
-  }, [lesson.slug, stepCount, sessionKey]);
-
-  function handleContinue() {
-    setOpenForReview(true);
-    setPhase("active");
-  }
-
-  function handleRestart() {
-    clearPersistedInteractiveLesson(lesson.slug);
-    if (trackLocalProgress && curriculumLessonId) {
-      resetLocalLessonCatalogStatus(curriculumLessonId);
+    if (restartRequested) {
+      clearPersistedInteractiveLesson(lesson.slug);
+      if (trackLocalProgress && curriculumLessonId) {
+        resetLocalLessonCatalogStatus(curriculumLessonId);
+      }
+      setOpenForReview(false);
+      setSessionKey((key) => key + 1);
+      setReady(true);
+      return;
     }
-    setOpenForReview(false);
-    setSessionKey((key) => key + 1);
-    setPhase("active");
-  }
 
-  const promptDescription = progressSummary.finished
-    ? progressSummary.fullyComplete
-      ? "Ya terminaste esta lección. Puedes repasarla o empezar de cero."
-      : `Llegaste al final, pero quedan ${progressSummary.pendingStepCount} paso(s) sin marcar como superados.`
-    : `Tienes progreso guardado (paso ${progressSummary.furthestStepIndex + 1} de ${progressSummary.stepCount}).`;
+    const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
+    setOpenForReview(shouldOfferInteractiveLessonResume(saved, stepCount));
+    setReady(true);
+  }, [
+    curriculumLessonId,
+    lesson.slug,
+    restartRequested,
+    stepCount,
+    trackLocalProgress,
+  ]);
 
-  if (phase === "checking") {
+  if (!ready) {
     return (
       <div
         className="flex min-h-0 flex-1 items-center justify-center p-8 text-sm text-ink-muted"
@@ -100,42 +73,13 @@ export function InteractiveLessonEntryGate({
   }
 
   return (
-    <>
-      <Dialog open={phase === "prompt"} onOpenChange={() => undefined}>
-        <DialogContent showCloseButton={false} className="sm:max-w-md" data-testid="interactive-lesson-entry-dialog">
-          <DialogHeader>
-            <DialogTitle>¿Cómo quieres continuar?</DialogTitle>
-            <DialogDescription>{promptDescription}</DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="flex-col gap-2 sm:flex-col">
-            <Button type="button" className="w-full rounded-full" onClick={handleContinue}>
-              {progressSummary.finished ? "Ver la lección" : "Continuar"}
-            </Button>
-            <Button type="button" variant="outline" className="w-full rounded-full" onClick={handleRestart}>
-              Empezar de cero
-            </Button>
-            <Button
-              nativeButton={false}
-              variant="ghost"
-              className="w-full rounded-full"
-              render={<Link href={returnHref} />}
-            >
-              Volver al tema
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {phase === "active" ? (
-        <LessonContainer
-          key={sessionKey}
-          lesson={lesson}
-          navigation={navigation}
-          curriculumLessonId={curriculumLessonId}
-          trackLocalProgress={trackLocalProgress}
-          openForReview={openForReview}
-        />
-      ) : null}
-    </>
+    <LessonContainer
+      key={sessionKey}
+      lesson={lesson}
+      navigation={navigation}
+      curriculumLessonId={curriculumLessonId}
+      trackLocalProgress={trackLocalProgress}
+      openForReview={openForReview}
+    />
   );
 }

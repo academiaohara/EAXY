@@ -6,10 +6,16 @@ import { interactiveLessons } from "@/data/lessons";
 
 type InteractiveLessonPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ reiniciar?: string }>;
 };
 
-export default async function InteractiveLessonPage({ params }: InteractiveLessonPageProps) {
+export default async function InteractiveLessonPage({
+  params,
+  searchParams,
+}: InteractiveLessonPageProps) {
   const { slug } = await params;
+  const { reiniciar } = await searchParams;
+  const restartRequested = reiniciar === "1" || reiniciar === "true";
   const lesson = interactiveLessons[slug as keyof typeof interactiveLessons];
 
   if (!lesson) {
@@ -34,6 +40,7 @@ export default async function InteractiveLessonPage({ params }: InteractiveLesso
         navigation={navigation}
         curriculumLessonId={context?.lesson.id}
         trackLocalProgress={!studentId}
+        restartRequested={restartRequested}
       />
     </main>
   );

@@ -8,11 +8,7 @@ test("cabecera mínima y pie flotante", async ({ page }) => {
     window.localStorage.removeItem(key);
   }, STORAGE_KEY);
 
-  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
-  const entryDialog = page.getByTestId("interactive-lesson-entry-dialog");
-  if (await entryDialog.isVisible().catch(() => false)) {
-    await entryDialog.getByRole("button", { name: "Empezar de cero", exact: true }).click();
-  }
+  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}?reiniciar=1`);
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
   await expect(page.getByTestId("lesson-progress-bar")).toBeVisible();

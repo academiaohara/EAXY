@@ -31,10 +31,18 @@ export function getCurriculumLessonMeta(lessonId: string): CurriculumLessonMeta 
   return { kind };
 }
 
+export function resolveInteractiveLessonHref(
+  interactiveSlug: string,
+  mode: "continue" | "restart" = "continue",
+): string {
+  const base = `/aprender/leccion-interactiva/${interactiveSlug}`;
+  return mode === "restart" ? `${base}?reiniciar=1` : base;
+}
+
 export function resolveLessonHref(lessonId: string): string {
   const meta = getCurriculumLessonMeta(lessonId);
   if (meta?.kind === "interactive" && meta.interactiveSlug) {
-    return `/aprender/leccion-interactiva/${meta.interactiveSlug}`;
+    return resolveInteractiveLessonHref(meta.interactiveSlug);
   }
   return `/aprender/leccion/${lessonId}`;
 }

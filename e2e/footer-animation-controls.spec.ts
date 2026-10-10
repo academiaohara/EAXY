@@ -77,9 +77,6 @@ test("reparto igual — controles en el centro del pie y Continuar junto a Salta
   );
 
   await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
-  const entryDialog = page.getByTestId("interactive-lesson-entry-dialog");
-  await entryDialog.waitFor({ state: "visible", timeout: 15_000 });
-  await entryDialog.getByRole("button", { name: "Continuar", exact: true }).click();
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("mul-div-reparto-igual")).toBeVisible({ timeout: 30_000 });
 
@@ -97,9 +94,6 @@ test("división a mano — controles en el pie, no sobre la pizarra", async ({ p
   );
 
   await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
-  const entryDialog = page.getByTestId("interactive-lesson-entry-dialog");
-  await entryDialog.waitFor({ state: "visible", timeout: 15_000 });
-  await entryDialog.getByRole("button", { name: "Continuar", exact: true }).click();
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("lesson-narrate-step")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("division-mano-chalkboard")).toBeVisible({ timeout: 15_000 });
