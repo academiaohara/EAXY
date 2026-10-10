@@ -8,7 +8,7 @@ describe("tema pizarra (Manim)", () => {
     expect(css).toContain("--stage-ink: #ffffff");
     expect(css).toContain("--stage-accent: #58c4dd");
     expect(css).toContain("--stage-highlight: #ffff00");
-    expect(css).toMatch(/\.lesson-stage-theme-board[\s\S]*--ink: var\(--stage-ink\)/);
+    expect(css).toMatch(/\.lesson-stage-theme-board\[data-testid="lesson-frame"\] \.text-ink/);
     expect(css).toMatch(/\.lesson-stage-theme-board \.katex/);
   });
 });

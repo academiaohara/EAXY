@@ -111,11 +111,37 @@
   --stage-accent-muted: #83c167;
   --stage-highlight: #ffff00;
   --stage-chalk: #58c4dd;
+}
 
-  --ink: var(--stage-ink);
-  --ink-muted: var(--stage-muted);
-  --foreground: var(--stage-ink);
-  --muted-foreground: var(--stage-muted);
+/** Copy oscuro por defecto en el marco de lección; paneles claros usan `.lesson-surface-paper`. */
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-ink {
+  color: var(--stage-ink);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-ink-muted {
+  color: var(--stage-muted);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-muted-foreground {
+  color: var(--stage-muted);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper {
+  --lesson-surface-ink: #0f172a;
+  --lesson-surface-ink-muted: #526077;
+  color: var(--lesson-surface-ink);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-ink {
+  color: var(--lesson-surface-ink);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-ink-muted {
+  color: var(--lesson-surface-ink-muted);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-muted-foreground {
+  color: var(--lesson-surface-ink-muted);
 }
 
 .lesson-stage-theme-board .katex,
