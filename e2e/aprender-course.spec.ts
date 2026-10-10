@@ -46,7 +46,9 @@ test("se puede navegar el catálogo y abrir una lección interactiva sin cuenta"
 
   await page.getByTestId(`lesson-link-${FIRST_LESSON_ID}`).click();
 
-  await expect(page).toHaveURL(/\/aprender\/leccion-interactiva\/ecuaciones-lineales-dos-incognitas$/);
+  await expect(page).toHaveURL(
+    /\/aprender\/curso\/matematicas-4-eso\/tema\/sistemas-de-ecuaciones\/leccion\/ecuaciones-lineales-dos-incognitas$/,
+  );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
   await expect(page.getByTestId("lesson-concept-step")).toBeVisible();
   await expect(

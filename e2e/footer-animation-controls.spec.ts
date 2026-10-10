@@ -53,7 +53,9 @@ test("reparto igual — controles al centro y avance con flecha derecha", async 
     { key: STORAGE_KEY, payload: seedLessonStep(3) },
   );
 
-  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
+  await page.goto(
+    `/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/${LESSON_SLUG}`,
+  );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("mul-div-reparto-igual")).toBeVisible({ timeout: 30_000 });
 
@@ -73,7 +75,9 @@ test("división a mano — controles centrados, no sobre la pizarra SVG", async 
     { key: STORAGE_KEY, payload: seedLessonStep(4) },
   );
 
-  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}`);
+  await page.goto(
+    `/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/${LESSON_SLUG}`,
+  );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("lesson-narrate-step")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("division-mano-chalkboard")).toBeVisible({ timeout: 15_000 });

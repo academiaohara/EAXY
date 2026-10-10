@@ -120,6 +120,25 @@ export function getInteractiveLessonContext(
   return undefined;
 }
 
+/** Valida curso, tema y slug interactivo antes de servir la ruta anidada. */
+export function getInteractiveLessonAtPath(
+  courseSlug: string,
+  moduleSlug: string,
+  lessonSlug: string,
+  source: Curriculum = curriculum,
+):
+  | { course: CurriculumCourse; module: CurriculumModule; lesson: CurriculumLesson }
+  | undefined {
+  const context = getInteractiveLessonContext(lessonSlug, source);
+  if (!context) {
+    return undefined;
+  }
+  if (context.course.slug !== courseSlug || context.module.slug !== moduleSlug) {
+    return undefined;
+  }
+  return context;
+}
+
 /** Lecciones en orden lineal del curso (curso → módulo → lección). */
 export function getOrderedLessons(
   source: Curriculum = curriculum,

@@ -8,7 +8,9 @@ test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => 
     window.localStorage.removeItem(key);
   }, STORAGE_KEY);
 
-  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}?reiniciar=1`);
+  await page.goto(
+    `/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/${LESSON_SLUG}?reiniciar=1`,
+  );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
   await expect(page.getByTestId("lesson-progress-bar")).toHaveCount(0);

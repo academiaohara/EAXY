@@ -3,6 +3,7 @@ import {
   buildLearningTrail,
   courseHref,
   courseShortTitle,
+  interactiveLessonHref,
   stripLessonNumber,
   topicHref,
 } from "@/lib/navigation/learning-trail";
@@ -27,6 +28,9 @@ describe("learning-trail", () => {
   it("construye las rutas de curso y tema", () => {
     expect(courseHref("c1")).toBe("/aprender/curso/c1");
     expect(topicHref("c1", "m2")).toBe("/aprender/curso/c1/tema/m2");
+    expect(interactiveLessonHref("c1", "m2", "suma")).toBe(
+      "/aprender/curso/c1/tema/m2/leccion/suma",
+    );
   });
 
   it("acorta títulos de curso y lección", () => {
