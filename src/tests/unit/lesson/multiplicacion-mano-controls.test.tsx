@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { MultiplicacionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/MultiplicacionManoChalkboard";
 
@@ -14,17 +14,8 @@ describe("MultiplicacionManoChalkboard", () => {
     expect(screen.getByText(/2 × 34 = 68/i)).toBeInTheDocument();
   });
 
-  it("dispara onBoardClick al pulsar la pizarra", () => {
-    const onBoardClick = vi.fn();
-    render(
-      <MultiplicacionManoChalkboard
-        multiplicand={34}
-        multiplier={12}
-        subStep={1}
-        onBoardClick={onBoardClick}
-      />,
-    );
-    fireEvent.click(screen.getByRole("button", { name: /Pizarra de multiplicación/i }));
-    expect(onBoardClick).toHaveBeenCalledTimes(1);
+  it("la pizarra no es botón de avance sin onBoardClick", () => {
+    render(<MultiplicacionManoChalkboard multiplicand={34} multiplier={12} subStep={1} />);
+    expect(screen.queryByRole("button", { name: /Pizarra de multiplicación/i })).not.toBeInTheDocument();
   });
 });

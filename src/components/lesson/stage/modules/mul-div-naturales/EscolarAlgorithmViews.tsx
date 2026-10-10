@@ -152,7 +152,6 @@ export function DivisionManoScene({
       onRetreat: retreatPhase,
       canAdvance: phase < stepCount - 1,
       canRetreat: phase > 0,
-      clickSurfaceToAdvance: true,
     }),
     [advancePhase, phase, retreatPhase, stepCount],
   );
@@ -181,7 +180,6 @@ export function DivisionManoScene({
       subStep={subStep}
       subTotal={subTotal}
       showProgress={false}
-      onBoardClick={advancePhase}
     />
   );
 }

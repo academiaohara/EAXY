@@ -23,14 +23,12 @@ export type LessonStepControl = {
   onBack?: () => void;
 };
 
-/** Avance/retroceso de fases de animación (flechas, clic en pizarra). */
+/** Avance/retroceso de fases de animación (flechas del teclado, botones del pie). */
 export type LessonPresenterNavigation = {
   onAdvance: () => void;
   onRetreat: () => void;
   canAdvance?: boolean;
   canRetreat?: boolean;
-  /** Si true, un clic en la pizarra llama a onAdvance (salvo elementos interactivos). */
-  clickSurfaceToAdvance?: boolean;
 };
 
 type LessonStepControlContextValue = {
@@ -103,7 +101,7 @@ function presenterNavSignature(nav: LessonPresenterNavigation | null): string {
   if (!nav) {
     return "null";
   }
-  return `${nav.clickSurfaceToAdvance ? "1" : "0"}|${nav.canAdvance ? "1" : "0"}|${nav.canRetreat ? "1" : "0"}`;
+  return `${nav.canAdvance ? "1" : "0"}|${nav.canRetreat ? "1" : "0"}`;
 }
 
 export function useRegisterLessonPresenterNavigation(nav: LessonPresenterNavigation | null) {
