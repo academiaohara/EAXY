@@ -102,7 +102,7 @@ export function SystemGraphTool({ config, compact = false }: SystemGraphToolProp
 
       <div
         className={cn(
-          "mx-auto w-full rounded-2xl border border-slate-200 bg-paper-raised p-3 shadow-sm",
+          "mx-auto w-full rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
           compact && "max-w-[min(100%,30rem)]",
         )}
       >

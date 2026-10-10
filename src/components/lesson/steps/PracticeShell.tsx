@@ -42,14 +42,14 @@ export function PracticeShell({ step, compact = false, testId, children }: Pract
 
       <section
         className={cn(
-          "lesson-idea-enter rounded-2xl border-2 border-cobalt/15 bg-white shadow-[0_8px_30px_-12px_rgba(37,99,235,0.18)]",
-          compact ? "space-y-5 p-4 sm:p-6" : "space-y-6 p-6 sm:p-8",
+          "lesson-idea-enter rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]",
+          compact ? "space-y-5 p-4 sm:p-5" : "space-y-6 p-6 sm:p-7",
         )}
         data-testid="lesson-practice"
       >
         <h3
           className={cn(
-            "text-center font-heading font-semibold leading-snug text-ink",
+            "text-center font-heading font-semibold leading-snug text-[color:var(--stage-ink,#e8edf5)]",
             compact ? "text-lg sm:text-xl" : "text-xl sm:text-2xl",
           )}
         >

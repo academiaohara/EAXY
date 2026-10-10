@@ -4,6 +4,7 @@ import Link from "next/link";
 import { StarIcon, XIcon } from "lucide-react";
 import { LessonProgressHeader } from "@/components/lesson/LessonProgressHeader";
 import { Button } from "@/components/ui/button";
+import { lessonStageSurfaceClassName } from "@/lib/lesson/stage-surface";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
@@ -108,25 +109,22 @@ export function LessonFrame({
         <span className="sr-only">{lessonTitle}</span>
       </header>
 
-      <div className="relative flex min-h-0 flex-1 flex-col px-4 pb-4 sm:px-6">
-        <div
-          className={cn(
-            "lesson-whiteboard flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border bg-paper-raised shadow-sm transition-[border-color,box-shadow] duration-300",
-            isCorrect && "lesson-panel-glow-correct border-emerald-400/80",
-            isIncorrect && "lesson-panel-glow-incorrect border-amber-400/80",
-            !feedback && "border-white/90",
-          )}
-          data-testid="lesson-step-panel"
-        >
-          <div className="lesson-whiteboard-content flex min-h-0 flex-1 flex-col overflow-hidden px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
-            {children}
-          </div>
-        </div>
+      <div
+        className={cn(
+          "lesson-stage-theme-board min-h-0",
+          lessonStageSurfaceClassName,
+          "transition-[border-color,box-shadow] duration-300",
+          isCorrect && "lesson-panel-glow-correct border-emerald-400/80",
+          isIncorrect && "lesson-panel-glow-incorrect border-amber-400/80",
+        )}
+        data-testid="lesson-step-panel"
+      >
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">{children}</div>
       </div>
 
       {footer ? (
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4 sm:px-6 sm:pb-5"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-3 pb-4 sm:px-4 sm:pb-5"
           data-testid="lesson-footer-slot"
         >
           <div className="lesson-floating-footer pointer-events-auto w-full max-w-5xl opacity-[0.52] transition-opacity duration-200 hover:opacity-100 focus-within:opacity-100">

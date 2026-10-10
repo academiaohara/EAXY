@@ -68,10 +68,7 @@ export function ConceptCard({
 
   return (
     <section
-      className={cn(
-        "lesson-theory rounded-2xl border border-slate-200/80 bg-gradient-to-b from-white to-slate-50/80 shadow-[0_1px_0_rgba(15,23,42,0.03)]",
-        compact ? "p-4 sm:p-6" : "p-6 sm:p-8",
-      )}
+      className={cn("lesson-theory", compact ? "space-y-4" : "space-y-6")}
       onClick={(event) => askFrom(event.target)}
       onKeyDown={(event) => {
         if ((event.key === "Enter" || event.key === " ") && askFrom(event.target)) {
@@ -90,7 +87,7 @@ export function ConceptCard({
         {paragraphs.length > 0 || warning || showTitle ? (
           <div className={cn("min-w-0 space-y-4", visualFirst && "order-2")}>
             {showTitle ? (
-              <h2 className="font-heading text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+              <h2 className="font-heading text-xl font-semibold tracking-tight text-[color:var(--stage-ink,#e8edf5)] sm:text-2xl">
                 {title}
               </h2>
             ) : null}
@@ -112,7 +109,7 @@ export function ConceptCard({
                   >
                     {numbered ? (
                       <span
-                        className="relative z-10 mt-0.5 flex size-[1.625rem] shrink-0 items-center justify-center rounded-full bg-white text-xs font-bold text-cobalt ring-2 ring-cobalt/25"
+                        className="relative z-10 mt-0.5 flex size-[1.625rem] shrink-0 items-center justify-center rounded-full bg-[color:var(--stage-accent,#6ee7b7)]/20 text-xs font-bold text-[color:var(--stage-accent,#6ee7b7)] ring-2 ring-[color:var(--stage-accent,#6ee7b7)]/35"
                         aria-hidden
                       >
                         {index + 1}
@@ -120,7 +117,7 @@ export function ConceptCard({
                     ) : null}
                     <p
                       className={cn(
-                        "min-w-0 text-ink",
+                        "min-w-0 text-[color:var(--stage-ink,#e8edf5)]",
                         compact
                           ? "text-[0.9375rem] leading-relaxed sm:text-base xl:text-[1.0625rem]"
                           : "text-base leading-relaxed sm:text-lg",
@@ -149,8 +146,11 @@ export function ConceptCard({
             ) : null}
 
             {showTermHint ? (
-              <p className="flex items-center gap-1.5 text-xs text-ink-muted" data-testid="lesson-theory-term-hint">
-                <SparklesIcon className="size-3.5 text-cobalt" aria-hidden />
+              <p
+                className="flex items-center gap-1.5 text-xs text-[color:var(--stage-muted,#94a3b8)]"
+                data-testid="lesson-theory-term-hint"
+              >
+                <SparklesIcon className="size-3.5 text-[color:var(--stage-accent,#6ee7b7)]" aria-hidden />
                 Pulsa las palabras resaltadas y {TUTOR_NICKNAME} te las explica.
               </p>
             ) : null}
@@ -169,7 +169,7 @@ export function ConceptCard({
               <div
                 key={`${visual.kind}-${index}`}
                 className={cn(
-                  "lesson-idea-enter rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm",
+                  "lesson-idea-enter rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 p-4",
                   visualFirst && "sm:p-6",
                 )}
                 style={{ animationDelay: `${200 + index * 180}ms` }}
@@ -179,7 +179,7 @@ export function ConceptCard({
             ))}
             {hasMath ? (
               <div className="lesson-idea-enter md:col-span-full" style={{ animationDelay: "240ms" }}>
-                <MathBlockList blocks={math ?? []} className="bg-white/80" />
+                <MathBlockList blocks={math ?? []} className="bg-black/15" />
               </div>
             ) : null}
           </div>

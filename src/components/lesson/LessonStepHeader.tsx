@@ -12,7 +12,7 @@ export function LessonStepHeader({ step }: LessonStepHeaderProps) {
     <header className="shrink-0 space-y-3" data-testid="lesson-step-header">
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
         <StepPhaseBadge step={step} className="h-6 px-2.5 text-xs" />
-        <h2 className="min-w-0 flex-1 basis-[18rem] font-heading text-2xl font-semibold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
+        <h2 className="min-w-0 flex-1 basis-[18rem] font-heading text-2xl font-semibold leading-tight tracking-tight text-[color:var(--stage-ink,#e8edf5)] sm:text-[1.75rem]">
           <MathRenderer text={step.title} />
         </h2>
       </div>

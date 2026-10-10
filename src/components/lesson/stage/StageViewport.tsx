@@ -37,11 +37,7 @@ export function StageViewport({
       {stage ? (
         <div
           className={cn(
-            "flex min-h-0 w-full flex-1 flex-col overflow-hidden",
-            theme === "paper" &&
-              "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
-            theme === "board" &&
-              "rounded-xl border border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] p-3 text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-4",
+            "flex min-h-[12rem] w-full min-h-0 flex-1 flex-col overflow-hidden",
             stageClassName,
           )}
           data-testid="lesson-stage-surface"
