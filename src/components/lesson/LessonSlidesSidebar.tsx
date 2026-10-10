@@ -34,55 +34,44 @@ function SlideDot({
   return (
     <span
       className={cn(
-        "relative z-10 block size-2.5 shrink-0 rounded-full border-2 transition-all duration-200",
-        !canNavigate && "border-slate-600/40 bg-slate-700/30",
-        canNavigate && !isCurrent && !isCompleted && "border-slate-400/70 bg-slate-500/40",
-        isCompleted && !isCurrent && "border-emerald-400/80 bg-emerald-400/90 shadow-[0_0_10px_rgba(52,211,153,0.45)]",
-        isCurrent &&
-          "size-3 border-cobalt bg-cobalt/90 shadow-[0_0_14px_rgba(59,130,246,0.55)] ring-2 ring-cobalt/35",
+        "relative z-10 block size-2 shrink-0 rounded-full transition-colors duration-200",
+        !canNavigate && "bg-slate-600/35 ring-1 ring-slate-600/50",
+        canNavigate && !isCurrent && !isCompleted && "bg-slate-400/55 ring-1 ring-slate-500/60",
+        isCompleted && !isCurrent && "bg-emerald-400/85 ring-1 ring-emerald-300/50",
+        isCurrent && "size-2.5 bg-cobalt ring-2 ring-cobalt/45 ring-offset-1 ring-offset-[#121a26]",
       )}
       aria-hidden
+    />
+  );
+}
+
+/** Etiqueta horizontal de una sola fila (solo título). */
+function SlideRowLabel({
+  title,
+  visible,
+  isCurrent,
+}: {
+  title: string;
+  visible: boolean;
+  isCurrent: boolean;
+}) {
+  return (
+    <span
+      className={cn(
+        "block min-w-0 overflow-hidden text-ellipsis whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium leading-none tracking-tight transition-[max-width,opacity,padding,border-color] duration-200 ease-out sm:text-xs",
+        visible ? "max-w-[min(13rem,calc(100vw-5rem))] opacity-100" : "max-w-0 border-transparent px-0 opacity-0",
+        isCurrent
+          ? "border-cobalt/45 bg-cobalt/15 text-[color:var(--stage-ink,#e8edf5)]"
+          : "border-[color:var(--stage-border,#334155)]/80 bg-[#121a26]/90 text-[color:var(--stage-muted,#cbd5e1)]",
+      )}
+      aria-hidden={!visible}
     >
-      {isCurrent ? (
-        <span className="absolute inset-0 animate-ping rounded-full bg-cobalt/40 opacity-60" />
-      ) : null}
+      <MathRenderer text={title} />
     </span>
   );
 }
 
-function SlideLabel({
-  index,
-  title,
-  visible,
-  side,
-}: {
-  index: number;
-  title: string;
-  visible: boolean;
-  side: "left";
-}) {
-  return (
-    <div
-      className={cn(
-        "pointer-events-none absolute top-1/2 z-20 max-w-[min(12.5rem,calc(100vw-6rem))] -translate-y-1/2 transition-[opacity,transform] duration-200 ease-out",
-        side === "left" && "right-[calc(100%+0.75rem)] origin-right",
-        visible ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0",
-      )}
-      aria-hidden={!visible}
-    >
-      <div className="rounded-lg border border-[color:var(--stage-border,#334155)] bg-[#121a26]/96 px-3 py-2 shadow-[0_8px_28px_rgba(0,0,0,0.45)] backdrop-blur-md">
-        <p className="mb-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--stage-muted,#94a3b8)]">
-          Diapositiva {index + 1}
-        </p>
-        <p className="line-clamp-3 text-xs font-medium leading-snug text-[color:var(--stage-ink,#e8edf5)]">
-          <MathRenderer text={title} />
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/** Rail vertical con puntos; al pasar el ratón o anclar (rejilla) muestra el título de cada paso. */
+/** Rail vertical: puntos + etiqueta horizontal en la misma fila al hover o anclar. */
 export function LessonSlidesSidebar({
   open,
   onOpenChange,
@@ -94,7 +83,6 @@ export function LessonSlidesSidebar({
   onRailHoverChange,
 }: LessonSlidesSidebarProps) {
   const listId = useId();
-  const [hovering, setHovering] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   const showLabel = useCallback(
@@ -107,27 +95,26 @@ export function LessonSlidesSidebar({
     [focusedIndex, open],
   );
 
+  const labelsActive = open || focusedIndex !== null;
+
   return (
     <nav
       id="lesson-slides-sidebar"
       data-testid="lesson-slides-sidebar"
-      aria-label="Diapositivas de la lección"
+      aria-label="Pasos de la lección"
       className={cn(
-        "pointer-events-auto absolute right-0 top-[3.25rem] z-[58] flex w-11 sm:top-[3.75rem] sm:w-12",
+        "pointer-events-auto absolute right-0 top-[3.25rem] z-[58] flex transition-[width] duration-200 ease-out sm:top-[3.75rem]",
         "bottom-[5.5rem] sm:bottom-[6.25rem]",
+        labelsActive ? "w-[min(15.5rem,calc(100%-1.25rem))] sm:w-[min(16.5rem,calc(100%-2rem))]" : "w-9 sm:w-10",
       )}
-      onMouseEnter={() => {
-        setHovering(true);
-        onRailHoverChange?.(true);
-      }}
+      onMouseEnter={() => onRailHoverChange?.(true)}
       onMouseLeave={() => {
-        setHovering(false);
         onRailHoverChange?.(false);
         setFocusedIndex(null);
       }}
     >
       <div
-        className="relative flex h-full w-full flex-col justify-center py-2 pr-2 sm:pr-2.5"
+        className="relative flex h-full w-full flex-col justify-center py-2 pr-1.5 sm:pr-2"
         role="tablist"
         aria-labelledby={listId}
       >
@@ -136,11 +123,11 @@ export function LessonSlidesSidebar({
         </p>
 
         <div
-          className="pointer-events-none absolute right-[0.6875rem] top-6 bottom-6 w-px bg-gradient-to-b from-transparent via-[color:var(--stage-border,#475569)] to-transparent sm:right-[0.8125rem]"
+          className="pointer-events-none absolute right-[0.5625rem] top-8 bottom-8 w-px bg-[color:var(--stage-border,#475569)]/55 sm:right-[0.625rem]"
           aria-hidden
         />
 
-        <div className="relative flex min-h-0 flex-1 flex-col justify-evenly gap-1">
+        <div className="relative flex min-h-0 flex-1 flex-col justify-evenly">
           {steps.map((step, index) => {
             const isCurrent = index === currentIndex;
             const isCompleted = completed[index];
@@ -157,17 +144,16 @@ export function LessonSlidesSidebar({
                 data-testid={`lesson-slide-thumb-${index + 1}`}
                 aria-label={
                   isCompleted
-                    ? `Diapositiva ${index + 1}, completada: ${step.title}`
+                    ? `Completado: ${step.title}`
                     : isCurrent
-                      ? `Diapositiva ${index + 1}, actual: ${step.title}`
+                      ? `Paso actual: ${step.title}`
                       : canNavigate
-                        ? `Ir a diapositiva ${index + 1}: ${step.title}`
-                        : `Diapositiva ${index + 1}, sin visitar`
+                        ? `Ir a: ${step.title}`
+                        : `Sin visitar: ${step.title}`
                 }
                 onFocus={() => setFocusedIndex(index)}
                 onBlur={() => setFocusedIndex((prev) => (prev === index ? null : prev))}
                 onMouseEnter={() => setFocusedIndex(index)}
-                onMouseLeave={() => setFocusedIndex((prev) => (prev === index ? null : prev))}
                 onClick={() => {
                   if (canNavigate) {
                     onGoToStep(index);
@@ -175,11 +161,12 @@ export function LessonSlidesSidebar({
                   }
                 }}
                 className={cn(
-                  "group relative flex w-full items-center justify-end rounded-full py-1.5 pl-2 pr-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/50",
-                  !canNavigate && "cursor-default opacity-40",
+                  "flex w-full items-center justify-end gap-2 rounded-sm py-1 pl-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/45",
+                  !canNavigate && "cursor-default opacity-35",
+                  canNavigate && "hover:bg-white/[0.03]",
                 )}
               >
-                <SlideLabel index={index} title={step.title} visible={labelVisible} side="left" />
+                <SlideRowLabel title={step.title} visible={labelVisible} isCurrent={isCurrent} />
                 <SlideDot
                   isCurrent={isCurrent}
                   isCompleted={Boolean(isCompleted)}
