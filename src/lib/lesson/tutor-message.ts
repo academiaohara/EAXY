@@ -90,12 +90,12 @@ export function tutorMoodForReaction(reaction: TutorReaction): TutorMood {
 }
 
 /**
- * Ánimo visible en la lección: neutral por defecto, reacciona al feedback y
- * se anima un poco mientras el tutor está hablando.
+ * Ánimo visible en la lección: neutral con ojos abiertos por defecto y al
+ * hablar; sólo cambia con el feedback (acierto / fallo) o la mirada pensativa.
  */
 export function tutorMoodForLessonDisplay(
   reaction: TutorReaction,
-  speaking: boolean,
+  _speaking: boolean,
 ): TutorMood {
   if (reaction === "correct") {
     return "celebrate";
@@ -106,5 +106,5 @@ export function tutorMoodForLessonDisplay(
   if (reaction === "thinking") {
     return "thinking";
   }
-  return speaking ? "happy" : "idle";
+  return "idle";
 }

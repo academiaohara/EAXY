@@ -7,7 +7,7 @@ import { TUTOR_MOODS, getTutorExpression } from "@/lib/tutor/moods";
 import type { TutorMood } from "@/lib/tutor/moods";
 
 const moodLabels: Record<TutorMood, string> = {
-  idle: "Tranquilo",
+  idle: "Normal",
   happy: "Contento",
   celebrate: "Celebrando",
   thinking: "Pensando",
