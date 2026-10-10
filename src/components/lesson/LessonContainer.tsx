@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { formatLessonStepTitle } from "@/lib/lesson/presenter-title";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { LessonTutorProvider } from "@/components/lesson/LessonTutorContext";
@@ -606,7 +607,7 @@ function LessonContainerBody({
 
         <LessonFrame
           closeHref={backHref}
-          stepTitle={<MathRenderer text={currentStep.title} />}
+          stepTitle={<MathRenderer text={formatLessonStepTitle(currentStep.title)} />}
           currentStepIndex={stepIndex}
           completedSteps={completedSteps}
           visitedSteps={visitedSteps}

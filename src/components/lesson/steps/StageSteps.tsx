@@ -11,7 +11,7 @@ import {
   type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
-import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { MathRenderer, type LessonTextEmphasis } from "@/components/lesson/MathRenderer";
 import { checkFillInBlankAnswerFlexible } from "@/lib/lesson/check-answer";
 import {
   evalWithParenthesisPlacement,
@@ -38,16 +38,18 @@ function usesPlainLessonTypography(text: string): boolean {
 function LessonRichText({
   text,
   className,
+  emphasis = "strong",
 }: {
   text: string;
   className?: string;
+  emphasis?: LessonTextEmphasis;
 }) {
   if (usesPlainLessonTypography(text)) {
     return <span className={className}>{text}</span>;
   }
   return (
     <span className={className}>
-      <MathRenderer text={text} />
+      <MathRenderer text={text} emphasis={emphasis} />
     </span>
   );
 }
@@ -456,8 +458,8 @@ export function PredictStepView({
     return (
       <div data-testid="lesson-predict-step">
         <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={distributivaStage}>
-          <h3 className="mb-4 text-center text-base font-semibold leading-relaxed text-ink">
-            <MathRenderer text={step.question} />
+          <h3 className="lesson-presentation-body mb-4 text-center font-normal text-ink">
+            <MathRenderer text={step.question} emphasis="mark-alternate" />
           </h3>
           {step.hint && step.hintHiddenUntilRequested && !checked ? (
             <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
@@ -533,8 +535,8 @@ export function PredictStepView({
     return (
       <div data-testid="lesson-predict-step">
         <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={sextaStage}>
-          <h3 className="mb-5 text-center text-base font-semibold text-ink">
-            <MathRenderer text={step.question} />
+          <h3 className="lesson-presentation-body mb-5 text-center font-normal text-ink">
+            <MathRenderer text={step.question} emphasis="mark-alternate" />
           </h3>
           <div className="mx-auto grid max-w-lg grid-cols-3 gap-3 sm:gap-4">
             {(step.choices ?? []).map((choice) => (
@@ -588,8 +590,8 @@ export function PredictStepView({
           title={step.title}
           stage={anaLeo ? undefined : jerarquiaStage}
         >
-          <h3 className="mb-4 text-center text-lg font-semibold leading-relaxed text-ink">
-            <MathRenderer text={step.question} />
+          <h3 className="lesson-presentation-body mb-4 text-center font-normal text-ink">
+            <MathRenderer text={step.question} emphasis="mark-alternate" />
           </h3>
           {step.mode === "choice" ? (
             <div
@@ -668,8 +670,8 @@ export function PredictStepView({
         className="lesson-idea-enter border border-[color:var(--stage-border,#334155)] bg-black/15 p-6 sm:p-8"
         data-testid="lesson-predict-step"
       >
-        <h3 className="mb-4 text-center text-lg font-semibold text-[color:var(--stage-ink,#e8edf5)]">
-          <LessonRichText text={step.question} />
+        <h3 className="lesson-presentation-body mb-4 text-center font-normal text-[color:var(--stage-ink,#e8edf5)]">
+          <LessonRichText text={step.question} emphasis="mark-alternate" />
         </h3>
         {step.hint && step.hintHiddenUntilRequested && !checked ? (
           <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
@@ -979,8 +981,8 @@ export function ExploreStepView({
         title={step.title}
         stage={reducePractice ? undefined : stage}
       >
-        <p className="text-center text-base font-semibold leading-relaxed text-ink">
-          <MathRenderer text={step.question} />
+        <p className="lesson-presentation-body text-center font-normal text-ink">
+          <MathRenderer text={step.question} emphasis="mark-alternate" />
         </p>
         {reducePractice ? <div className="mt-4">{stage}</div> : null}
         {checked ? (

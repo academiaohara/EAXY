@@ -53,7 +53,8 @@ const TICKET_TILT_DEG = -14;
 const TICKET_FAN_OFFSET_PX = 16;
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
-const STAGE_MATH = "text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
+const STAGE_MATH =
+  "lesson-stage-mul-equation text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
 
 function latexTealExpression(expression: string): string {
   return `\\color{${boardSemanticColors.teal}}{${expression}}`;

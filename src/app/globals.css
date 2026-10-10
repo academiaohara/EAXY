@@ -130,13 +130,15 @@
   color: var(--teal);
 }
 
-.lesson-stage-theme-board .lesson-definition-box {
+.lesson-stage-theme-board .lesson-definition-box,
+.lesson-stage-theme-board .lesson-presentation-body {
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.8;
 }
 
-.lesson-stage-theme-board .lesson-definition-box mark {
+.lesson-stage-theme-board .lesson-definition-box mark,
+.lesson-stage-theme-board .lesson-presentation-body mark {
   background: var(--amber-bg);
   color: var(--amber);
   font-weight: 700;
@@ -146,9 +148,20 @@
   -webkit-box-decoration-break: clone;
 }
 
-.lesson-stage-theme-board .lesson-definition-box mark.suma {
+.lesson-stage-theme-board .lesson-definition-box mark.suma,
+.lesson-stage-theme-board .lesson-presentation-body mark.suma {
   background: var(--teal-bg);
   color: var(--teal);
+}
+
+.lesson-stage-theme-board .lesson-presentation-body mark[data-concept] {
+  cursor: pointer;
+  text-decoration: underline dotted color-mix(in srgb, var(--amber) 55%, transparent);
+  text-underline-offset: 4px;
+}
+
+.lesson-stage-theme-board .lesson-presentation-body mark.suma[data-concept] {
+  text-decoration-color: color-mix(in srgb, var(--teal) 55%, transparent);
 }
 
 .lesson-stage-theme-board .lesson-stage-mul-equation {

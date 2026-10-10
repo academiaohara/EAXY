@@ -4,6 +4,8 @@ import katex from "katex";
 import { useMemo } from "react";
 import { cn } from "@/lib/utils";
 
+export type LessonTextEmphasis = "strong" | "mark-alternate";
+
 type MathRendererProps = {
   text: string;
   display?: boolean;
@@ -13,6 +15,8 @@ type MathRendererProps = {
    * lo tienen se marcan con `data-concept` para poder pulsarlos.
    */
   conceptLookup?: (term: string) => string | undefined;
+  /** `mark-alternate`: resaltados ámbar / turquesa (presentaciones de lección). */
+  emphasis?: LessonTextEmphasis;
 };
 
 function renderLatex(latex: string, display: boolean): string {
@@ -51,23 +55,56 @@ function restoreAllowedInlineHtml(text: string, slots: string[]): string {
   );
 }
 
-function applyBoldMarkdown(fragment: string, conceptLookup?: MathRendererProps["conceptLookup"]): string {
+function wrapEmphasisTag(
+  term: string,
+  emphasis: LessonTextEmphasis,
+  boldCounter: { n: number },
+  conceptId?: string,
+): string {
+  const interactive = conceptId
+    ? ` data-concept="${conceptId}" role="button" tabindex="0"`
+    : "";
+
+  if (emphasis === "mark-alternate") {
+    const isSecondary = boldCounter.n % 2 === 1;
+    boldCounter.n += 1;
+    const classAttr = isSecondary ? ' class="suma"' : "";
+    return `<mark${classAttr}${interactive}>${term}</mark>`;
+  }
+
+  return conceptId
+    ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
+    : `<strong>${term}</strong>`;
+}
+
+function applyBoldMarkdown(
+  fragment: string,
+  conceptLookup: MathRendererProps["conceptLookup"],
+  emphasis: LessonTextEmphasis,
+  boldCounter: { n: number },
+): string {
   const { masked, slots } = maskAllowedInlineHtml(fragment);
   const withBold = escapeHtml(masked).replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
     const conceptId = conceptLookup?.(term);
-    return conceptId
-      ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
-      : `<strong>${term}</strong>`;
+    return wrapEmphasisTag(term, emphasis, boldCounter, conceptId);
   });
   return restoreAllowedInlineHtml(withBold, slots);
 }
 
 /** Renderiza texto con LaTeX inline ($...$) y bloques display opcionales. */
-export function MathRenderer({ text, display = false, className, conceptLookup }: MathRendererProps) {
+export function MathRenderer({
+  text,
+  display = false,
+  className,
+  conceptLookup,
+  emphasis = "strong",
+}: MathRendererProps) {
   const html = useMemo(() => {
     if (display) {
       return renderLatex(text, true);
     }
+
+    const boldCounter = { n: 0 };
 
     const normalized = text.replace(
       /\*\*(\$[^$]+\$)\*\*/g,
@@ -80,16 +117,23 @@ export function MathRenderer({ text, display = false, className, conceptLookup }
         const strongMath = part.match(/^<strong-math>(\$[^$]+\$)<\/strong-math>$/);
         if (strongMath) {
           const latex = strongMath[1]!.slice(1, -1);
-          return `<strong>${renderLatex(latex, false)}</strong>`;
+          const rendered = renderLatex(latex, false);
+          if (emphasis === "mark-alternate") {
+            const isSecondary = boldCounter.n % 2 === 1;
+            boldCounter.n += 1;
+            const classAttr = isSecondary ? ' class="suma"' : "";
+            return `<mark${classAttr}>${rendered}</mark>`;
+          }
+          return `<strong>${rendered}</strong>`;
         }
         if (part.startsWith("$") && part.endsWith("$")) {
           const latex = part.slice(1, -1);
           return renderLatex(latex, false);
         }
-        return applyBoldMarkdown(part, conceptLookup);
+        return applyBoldMarkdown(part, conceptLookup, emphasis, boldCounter);
       })
       .join("");
-  }, [text, display, conceptLookup]);
+  }, [text, display, conceptLookup, emphasis]);
 
   if (display) {
     return (

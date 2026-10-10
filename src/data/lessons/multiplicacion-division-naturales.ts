@@ -10,10 +10,9 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "multiplicar-narrate",
       type: "narrate",
-      title:
-        'Multiplicar es <span class="lesson-step-title-accent">repetir grupos</span>',
+      title: "Multiplicar es repetir grupos",
       definitionBox:
-        '<mark>Multiplicar</mark> es una forma abreviada de <mark class="suma">sumar varias veces el mismo número</mark>.',
+        "**Multiplicar** es una forma abreviada de **sumar varias veces el mismo número**.",
       module: "mul-div-naturales",
       scene: "multiplicar-repetido",
       mulDiv: { scene: "multiplicar-repetido", a: 8, b: 5 },
