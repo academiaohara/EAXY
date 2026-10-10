@@ -98,15 +98,62 @@
   --chart-5: var(--cobalt-tint);
 }
 
-/** Tema de escenario «pizarra» (board). Paper reutiliza :root sin clase extra. */
+/**
+ * Tema de escenario «pizarra» (board), inspirado en la paleta Manim sobre fondo oscuro.
+ * Paper reutiliza :root sin clase extra.
+ */
 .lesson-stage-theme-board {
   --stage-surface: #1a2332;
-  --stage-ink: #e8edf5;
-  --stage-muted: #94a3b8;
-  --stage-border: #334155;
-  --stage-accent: #6ee7b7;
-  --stage-accent-muted: #34d399;
-  --stage-chalk: #f8fafc;
+  --stage-ink: #ffffff;
+  --stage-muted: #b8c2d0;
+  --stage-border: #3d4f66;
+  --stage-accent: #58c4dd;
+  --stage-accent-muted: #83c167;
+  --stage-highlight: #ffff00;
+  --stage-chalk: #58c4dd;
+}
+
+/** Copy oscuro por defecto en el marco de lección; paneles claros usan `.lesson-surface-paper`. */
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-ink {
+  color: var(--stage-ink);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-ink-muted {
+  color: var(--stage-muted);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .text-muted-foreground {
+  color: var(--stage-muted);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper {
+  --lesson-surface-ink: #0f172a;
+  --lesson-surface-ink-muted: #526077;
+  color: var(--lesson-surface-ink);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-ink {
+  color: var(--lesson-surface-ink);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-ink-muted {
+  color: var(--lesson-surface-ink-muted);
+}
+
+.lesson-stage-theme-board .lesson-surface-paper .text-muted-foreground {
+  color: var(--lesson-surface-ink-muted);
+}
+
+.lesson-stage-theme-board .katex,
+.lesson-stage-theme-board .katex-display,
+.lesson-stage-theme-board .katex .mord,
+.lesson-stage-theme-board .katex .mop,
+.lesson-stage-theme-board .katex .mbin,
+.lesson-stage-theme-board .katex .mrel,
+.lesson-stage-theme-board .katex .mopen,
+.lesson-stage-theme-board .katex .mclose,
+.lesson-stage-theme-board .katex .mpunct {
+  color: var(--stage-ink);
 }
 
 @layer base {
@@ -698,7 +745,7 @@
 
 .lesson-stage-theme-board .lesson-theory strong {
   font-weight: 650;
-  color: var(--stage-ink);
+  color: var(--stage-accent);
   background: linear-gradient(transparent 58%, color-mix(in srgb, var(--stage-accent) 28%, transparent) 58%);
   border-radius: 2px;
   padding: 0 1px;
@@ -706,15 +753,16 @@
 
 .lesson-stage-theme-board .lesson-theory strong[data-concept] {
   cursor: pointer;
-  background: linear-gradient(transparent 58%, rgba(250, 204, 21, 0.45) 58%);
-  text-decoration: underline dotted color-mix(in srgb, var(--stage-ink) 35%, transparent);
+  color: var(--stage-highlight);
+  background: linear-gradient(transparent 58%, color-mix(in srgb, var(--stage-highlight) 38%, transparent) 58%);
+  text-decoration: underline dotted color-mix(in srgb, var(--stage-highlight) 55%, transparent);
   text-underline-offset: 4px;
   transition: background 0.2s ease;
 }
 
 .lesson-stage-theme-board .lesson-theory strong[data-concept]:hover,
 .lesson-stage-theme-board .lesson-theory strong[data-concept]:focus-visible {
-  background: linear-gradient(transparent 0%, rgba(250, 204, 21, 0.55) 0%);
+  background: linear-gradient(transparent 0%, color-mix(in srgb, var(--stage-highlight) 48%, transparent) 0%);
   outline: none;
 }
 

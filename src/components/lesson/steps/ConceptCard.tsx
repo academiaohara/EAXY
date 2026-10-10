@@ -109,7 +109,7 @@ export function ConceptCard({
                   >
                     {numbered ? (
                       <span
-                        className="relative z-10 mt-0.5 flex size-[1.625rem] shrink-0 items-center justify-center rounded-full bg-[color:var(--stage-accent,#6ee7b7)]/20 text-xs font-bold text-[color:var(--stage-accent,#6ee7b7)] ring-2 ring-[color:var(--stage-accent,#6ee7b7)]/35"
+                        className="relative z-10 mt-0.5 flex size-[1.625rem] shrink-0 items-center justify-center rounded-full bg-[color:var(--stage-accent,#58c4dd)]/20 text-xs font-bold text-[color:var(--stage-accent,#58c4dd)] ring-2 ring-[color:var(--stage-accent,#58c4dd)]/35"
                         aria-hidden
                       >
                         {index + 1}
@@ -132,11 +132,11 @@ export function ConceptCard({
 
             {warning ? (
               <div
-                className="lesson-idea-enter flex gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950"
+                className="lesson-idea-enter flex gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950 lesson-stage-theme-board:border-amber-400/45 lesson-stage-theme-board:bg-amber-500/15 lesson-stage-theme-board:text-amber-100"
                 style={{ animationDelay: `${160 + paragraphs.length * 140}ms` }}
                 data-testid="lesson-theory-warning"
               >
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 lesson-stage-theme-board:bg-amber-500/25 lesson-stage-theme-board:text-amber-300">
                   <AlertTriangleIcon className="size-4" aria-hidden />
                 </span>
                 <p className="pt-1 leading-relaxed">
@@ -150,7 +150,7 @@ export function ConceptCard({
                 className="flex items-center gap-1.5 text-xs text-[color:var(--stage-muted,#94a3b8)]"
                 data-testid="lesson-theory-term-hint"
               >
-                <SparklesIcon className="size-3.5 text-[color:var(--stage-accent,#6ee7b7)]" aria-hidden />
+                <SparklesIcon className="size-3.5 text-[color:var(--stage-accent,#58c4dd)]" aria-hidden />
                 Pulsa las palabras resaltadas y {TUTOR_NICKNAME} te las explica.
               </p>
             ) : null}
