@@ -95,7 +95,8 @@ export function MathBlockList({ blocks, className }: MathBlockListProps) {
   return (
     <div
       className={cn(
-        "space-y-2 self-start rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4",
+        "space-y-2 self-start rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4 text-ink",
+        "lesson-stage-theme-board:border-[color:var(--stage-border)] lesson-stage-theme-board:bg-black/30 lesson-stage-theme-board:text-[color:var(--stage-ink)]",
         className,
       )}
     >
