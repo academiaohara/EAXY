@@ -5,13 +5,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  LayoutGridIcon,
   MessageCircleIcon,
   MoreHorizontalIcon,
   SkipForwardIcon,
   LogOutIcon,
 } from "lucide-react";
-import { LessonSlidesSidebar, type LessonSlidePreview } from "@/components/lesson/LessonSlidesSidebar";
+import {
+  LessonSlidesSidebar,
+  type LessonSlideNavItem,
+} from "@/components/lesson/lesson-slides-sidebar";
+import { furthestVisitedStepIndex } from "@/lib/local-progress/interactive-lesson-state";
 import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
 import type { LessonStepControl, LessonPresenterNavigation } from "@/components/lesson/LessonStepControlContext";
 import type { FeedbackStatus } from "@/lib/lesson/types";
@@ -20,7 +23,7 @@ import { cn } from "@/lib/utils";
 export type LessonPresenterChromeProps = {
   closeHref: string;
   stepTitle: React.ReactNode;
-  steps: LessonSlidePreview[];
+  steps: LessonSlideNavItem[];
   currentStepIndex: number;
   completedSteps: boolean[];
   visitedSteps: boolean[];
@@ -39,9 +42,6 @@ export type LessonPresenterChromeProps = {
   stepHelpAvailable: boolean;
   onOpenHelp: () => void;
   meta?: React.ReactNode;
-  slidesOpen: boolean;
-  onSlidesOpenChange: (open: boolean) => void;
-  onSlidesRailHoverChange?: (hovering: boolean) => void;
 };
 
 function PresenterCircleButton({
@@ -82,7 +82,6 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     stepTitle,
     steps,
     currentStepIndex,
-    completedSteps,
     visitedSteps,
     onGoToStep,
     canBack,
@@ -99,10 +98,9 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     stepHelpAvailable,
     onOpenHelp,
     meta,
-    slidesOpen,
-    onSlidesOpenChange,
-    onSlidesRailHoverChange,
   } = props;
+
+  const maxReached = furthestVisitedStepIndex(visitedSteps);
 
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
@@ -263,14 +261,6 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
             <MessageCircleIcon className="size-5" aria-hidden />
           </PresenterCircleButton>
         ) : null}
-        <PresenterCircleButton
-          label={slidesOpen ? "Cerrar diapositivas" : "Ver diapositivas"}
-          active={slidesOpen}
-          testId="lesson-slides-toggle"
-          onClick={() => onSlidesOpenChange(!slidesOpen)}
-        >
-          <LayoutGridIcon className="size-5" aria-hidden />
-        </PresenterCircleButton>
         <div className="relative" ref={moreRef}>
           <PresenterCircleButton
             label="Más opciones"
@@ -311,14 +301,10 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
       </div>
 
       <LessonSlidesSidebar
-        open={slidesOpen}
-        onOpenChange={onSlidesOpenChange}
-        steps={steps}
-        currentIndex={currentStepIndex}
-        completed={completedSteps}
-        visited={visitedSteps}
-        onGoToStep={onGoToStep}
-        onRailHoverChange={onSlidesRailHoverChange}
+        slides={steps}
+        current={currentStepIndex}
+        maxReached={maxReached}
+        onSelect={onGoToStep}
       />
     </>
   );

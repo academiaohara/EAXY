@@ -19,17 +19,12 @@ test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => 
   await expect(page.getByTestId("lesson-footer-dock")).toHaveCount(0);
   await expect(page.getByTestId("lesson-step-title")).toBeVisible();
   await expect(page.getByTestId("lesson-presenter-rail")).toBeVisible();
-  await expect(page.getByTestId("lesson-slides-toggle")).toBeVisible();
+  await expect(page.getByTestId("lesson-slides-toggle")).toHaveCount(0);
   await expect(page.getByTestId("lesson-step-panel")).toBeVisible();
   await expect(page.getByTestId("lesson-tutor")).toBeVisible();
 
   await expect(page.getByTestId("lesson-slides-sidebar")).toBeVisible();
   await expect(page.getByTestId("lesson-slide-thumb-1")).toBeVisible();
-  await expect(page.getByTestId("lesson-step-content-inset")).toHaveAttribute("data-slides-expanded", "false");
-  await page.getByTestId("lesson-slides-toggle").click();
-  await expect(page.getByTestId("lesson-step-content-inset")).toHaveAttribute("data-slides-expanded", "true");
-  await page.getByTestId("lesson-slides-toggle").click();
-  await expect(page.getByTestId("lesson-step-content-inset")).toHaveAttribute("data-slides-expanded", "false");
 
   const panelBox = await page.getByTestId("lesson-step-panel").boundingBox();
   const frameBox = await page.getByTestId("lesson-frame").boundingBox();
