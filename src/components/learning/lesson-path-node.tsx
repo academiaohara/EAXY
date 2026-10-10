@@ -229,7 +229,7 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
             href={resolveInteractiveLessonHref(interactiveSlug, "continue")}
             aria-label={`Continuar: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
             className={cn(
-              "absolute inset-0 z-[2] rounded-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
+              "absolute inset-y-0 left-0 z-[2] w-[78%] rounded-l-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
               CONTINUE_CLIP,
               continueHoverClass,
             )}
@@ -239,7 +239,7 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
             href={resolveInteractiveLessonHref(interactiveSlug, "restart")}
             aria-label={`Empezar de cero: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
             className={cn(
-              "absolute inset-0 z-[3] rounded-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
+              "absolute inset-y-0 right-0 z-[3] w-[32%] rounded-r-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
               RESTART_CLIP,
               restartHoverClass,
             )}
