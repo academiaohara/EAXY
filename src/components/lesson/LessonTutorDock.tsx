@@ -7,6 +7,7 @@ import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import { flattenTutorSpeech, tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
 import { tutorMoodForLessonDisplay, type TutorReaction } from "@/lib/lesson/tutor-message";
+import { useTutorHoverReaction } from "@/hooks/use-tutor-hover-reaction";
 
 type LessonTutorDockProps = {
   /** Reinicia la secuencia de frases al cambiar de paso o de feedback. */
@@ -131,7 +132,11 @@ export function LessonTutorDock({
 }: LessonTutorDockProps) {
   const anchorRight = panelOpen;
   const [speaking, setSpeaking] = useState(false);
-  const displayMood = tutorMoodForLessonDisplay(reaction, speaking);
+  const lessonMood = tutorMoodForLessonDisplay(reaction, speaking);
+  const hoverEnabled = reaction === "idle" || reaction === "thinking";
+  const { hoverMood, hovering, onPointerEnter, onPointerLeave } =
+    useTutorHoverReaction(hoverEnabled);
+  const displayMood = hoverMood ?? lessonMood;
 
   return (
     <div
@@ -147,12 +152,20 @@ export function LessonTutorDock({
         <button
           type="button"
           onClick={onOpenPanel}
+          onPointerEnter={onPointerEnter}
+          onPointerLeave={onPointerLeave}
           className="pointer-events-auto relative shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
           aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
           aria-expanded={false}
           data-testid="lesson-tutor-button"
+          data-hover-reaction={hoverMood ?? undefined}
         >
-          <TutorMascot mood={displayMood} size={76} label={null} />
+          <TutorMascot
+            mood={displayMood}
+            size={76}
+            label={null}
+            followPointer={hovering}
+          />
         </button>
       )}
 

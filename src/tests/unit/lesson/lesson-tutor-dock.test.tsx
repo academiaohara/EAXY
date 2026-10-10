@@ -1,10 +1,27 @@
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
+import { TUTOR_HOVER_DWELL_MS, TUTOR_HOVER_REACTION_MOODS } from "@/lib/tutor/hover-reaction";
 
 const SPEECH_KEY = "step-1:none";
 const MESSAGES = ["¡Muy bien!", "Lo has clavado."];
+
+function stubMatchMedia(matches: boolean) {
+  vi.stubGlobal(
+    "matchMedia",
+    vi.fn((query: string) => ({
+      matches,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  );
+}
 
 /** Avanza el reloj lo que dura la frase que el tutor tiene en pantalla. */
 async function finishLine(line: string) {
@@ -21,6 +38,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.useRealTimers();
+  vi.unstubAllGlobals();
 });
 
 describe("LessonTutorDock", () => {
@@ -139,6 +157,57 @@ describe("LessonTutorDock", () => {
     await finishLine("¡Muy bien!");
 
     expect(onSpeak).toHaveBeenLastCalledWith(1, "Lo has clavado.");
+  });
+
+  it("reacciona al quedarse encima un rato y vuelve al ánimo de lección al salir", async () => {
+    stubMatchMedia(false);
+    vi.spyOn(Math, "random").mockReturnValue(0);
+
+    render(
+      <LessonTutorDock speechKey={SPEECH_KEY} messages={[]} onOpenPanel={vi.fn()} />,
+    );
+
+    const button = screen.getByTestId("lesson-tutor-button");
+    const mascot = screen.getByTestId("tutor-mascot");
+
+    expect(mascot).toHaveAttribute("data-mood", "idle");
+
+    fireEvent.pointerEnter(button);
+
+    await act(async () => {
+      vi.advanceTimersByTime(TUTOR_HOVER_DWELL_MS);
+    });
+
+    expect(button).toHaveAttribute("data-hover-reaction", TUTOR_HOVER_REACTION_MOODS[0]);
+    expect(mascot).toHaveAttribute("data-mood", TUTOR_HOVER_REACTION_MOODS[0]);
+
+    fireEvent.pointerLeave(button);
+
+    expect(button).not.toHaveAttribute("data-hover-reaction");
+    expect(mascot).toHaveAttribute("data-mood", "idle");
+
+    vi.mocked(Math.random).mockRestore();
+  });
+
+  it("no activa reacción al hover tras un acierto", async () => {
+    render(
+      <LessonTutorDock
+        speechKey={SPEECH_KEY}
+        messages={MESSAGES}
+        reaction="correct"
+        onOpenPanel={vi.fn()}
+      />,
+    );
+
+    const button = screen.getByTestId("lesson-tutor-button");
+    fireEvent.pointerEnter(button);
+
+    await act(async () => {
+      vi.advanceTimersByTime(TUTOR_HOVER_DWELL_MS + 500);
+    });
+
+    expect(button).not.toHaveAttribute("data-hover-reaction");
+    expect(screen.getByTestId("tutor-mascot")).toHaveAttribute("data-mood", "celebrate");
   });
 
   it("no dice nada nuevo mientras el panel está abierto", () => {
