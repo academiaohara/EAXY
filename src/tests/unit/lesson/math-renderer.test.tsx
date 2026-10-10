@@ -15,6 +15,20 @@ describe("MathRenderer", () => {
     expect(screen.getByText("exacta").tagName).toBe("STRONG");
   });
 
+  it("alternates mark highlights in presentation mode", () => {
+    render(
+      <MathRenderer
+        text="**Multiplicar** es abreviada de **sumar varias veces**."
+        emphasis="mark-alternate"
+      />,
+    );
+    const marks = screen.getAllByText(/Multiplicar|sumar varias veces/);
+    expect(marks[0]?.tagName).toBe("MARK");
+    expect(marks[0]).not.toHaveClass("suma");
+    expect(marks[1]?.tagName).toBe("MARK");
+    expect(marks[1]).toHaveClass("suma");
+  });
+
   it("renders allowed title accent spans", () => {
     render(
       <MathRenderer text='Multiplicar es <span class="lesson-step-title-accent">repetir grupos</span>' />,

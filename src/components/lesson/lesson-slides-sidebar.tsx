@@ -2,6 +2,7 @@
 
 import { useCallback, useId, useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { formatLessonStepTitle } from "@/lib/lesson/presenter-title";
 import { cn } from "@/lib/utils";
 
 export type LessonSlideNavItem = {
@@ -56,7 +57,7 @@ function SlideTitleLabel({
       )}
       aria-hidden={!visible}
     >
-      <MathRenderer text={title} />
+      <MathRenderer text={formatLessonStepTitle(title)} />
     </span>
   );
 }

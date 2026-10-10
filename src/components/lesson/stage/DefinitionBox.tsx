@@ -15,7 +15,7 @@ export function DefinitionBox({ text, className }: DefinitionBoxProps) {
       )}
       data-testid="lesson-definition-box"
     >
-      <MathRenderer text={text} />
+      <MathRenderer text={text} emphasis="mark-alternate" />
     </div>
   );
 }

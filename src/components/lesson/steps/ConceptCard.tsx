@@ -58,7 +58,7 @@ export function ConceptCard({
     if (!tutor || !(target instanceof Element)) {
       return false;
     }
-    const term = target.closest<HTMLElement>("strong[data-concept]");
+    const term = target.closest<HTMLElement>("strong[data-concept], mark[data-concept]");
     if (!term?.dataset.concept) {
       return false;
     }
@@ -115,15 +115,12 @@ export function ConceptCard({
                         {index + 1}
                       </span>
                     ) : null}
-                    <p
-                      className={cn(
-                        "min-w-0 text-[color:var(--stage-ink,#e8edf5)]",
-                        compact
-                          ? "text-[0.9375rem] leading-relaxed sm:text-base xl:text-[1.0625rem]"
-                          : "text-base leading-relaxed sm:text-lg",
-                      )}
-                    >
-                      <MathRenderer text={paragraph} conceptLookup={lookup} />
+                    <p className="lesson-presentation-body min-w-0 text-[color:var(--stage-ink,#e8edf5)]">
+                      <MathRenderer
+                        text={paragraph}
+                        conceptLookup={lookup}
+                        emphasis="mark-alternate"
+                      />
                     </p>
                   </li>
                 ))}
@@ -139,8 +136,8 @@ export function ConceptCard({
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 lesson-stage-theme-board:bg-amber-500/25 lesson-stage-theme-board:text-amber-300">
                   <AlertTriangleIcon className="size-4" aria-hidden />
                 </span>
-                <p className="pt-1 leading-relaxed">
-                  <MathRenderer text={warning} conceptLookup={lookup} />
+                <p className="lesson-presentation-body pt-1">
+                  <MathRenderer text={warning} conceptLookup={lookup} emphasis="mark-alternate" />
                 </p>
               </div>
             ) : null}

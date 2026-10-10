@@ -6,7 +6,8 @@ import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
-const STAGE_MATH = "text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
+const STAGE_MATH =
+  "lesson-stage-mul-equation text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
 
 function EggDot() {
   return (
