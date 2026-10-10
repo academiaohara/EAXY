@@ -10,6 +10,13 @@ export const TUTOR_BODY_IMAGE = "/tutor/tutor-body.webp";
 
 export const TUTOR_VIEWBOX = 200;
 
+/** Pelo corporativo (alineado con `--cobalt` en `globals.css`). */
+export const TUTOR_FUR_COLORS = {
+  highlight: "#5c6bff",
+  base: "#4353ff",
+  shade: "#2f3ad4",
+} as const;
+
 export type TutorEyeAnatomy = {
   cx: number;
   cy: number;
@@ -53,6 +60,6 @@ export const TUTOR_EYE_COLORS = {
   shade: "#e6dcc8",
   outline: "#0a0a0a",
   pupil: "#101010",
-  /** Pelo que rodea la cara: párpados y cejas usan este tono. */
-  fur: "#171717",
+  /** Pelo que rodea la cara: párpados y cejas usan el tono del cuerpo. */
+  fur: TUTOR_FUR_COLORS.shade,
 } as const;
