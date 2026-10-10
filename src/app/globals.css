@@ -224,6 +224,11 @@
   overflow: visible;
 }
 
+/* Cuerpo mate (hollín Ghibli): sin brillo azul ni specular fuerte. */
+.tutor-mascot-art {
+  filter: brightness(0.92) contrast(0.96) saturate(0.85);
+}
+
 .tutor-mascot-body,
 .tutor-mascot-squash,
 .tutor-mascot-fur,

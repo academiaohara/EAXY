@@ -1,19 +1,19 @@
 /**
  * Medidas del tutor tomadas sobre la ilustración del cuerpo
- * (`public/tutor/hollin.png`, recorte cuadrado sin ojos ni cejas).
+ * (`public/tutor/tutor-body.webp`, recorte cuadrado sin ojos ni cejas).
  *
  * Todo está en unidades del `viewBox` 0 0 200 200 del componente.
  */
 
-export const TUTOR_BODY_IMAGE = "/tutor/hollin.png";
+export const TUTOR_BODY_IMAGE = "/tutor/tutor-body.webp";
 
 export const TUTOR_VIEWBOX = 200;
 
-/** Pelo corporativo (alineado con `--cobalt` en `globals.css`). */
+/** Pelo mate tipo hollín (carboncillo Ghibli, sin brillo saturado). */
 export const TUTOR_FUR_COLORS = {
-  highlight: "#5c6bff",
-  base: "#4353ff",
-  shade: "#2f3ad4",
+  highlight: "#3a3a3a",
+  base: "#1a1a1a",
+  shade: "#0d0d0d",
 } as const;
 
 export type TutorEyeAnatomy = {
