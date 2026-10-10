@@ -1,15 +1,9 @@
-import Link from "next/link";
-import { CheckIcon, ChevronRightIcon, DumbbellIcon, SparklesIcon } from "lucide-react";
-import { LessonPathCardConstellation } from "@/components/learning/lesson-path-card-constellation";
 import {
   findNextLesson,
-  getLessonProgressStatus,
   getModuleProgress,
-  type LessonProgressStatus,
 } from "@/lib/curriculum/course-progress";
-import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
-import { cn } from "@/lib/utils";
-import type { LessonSummary, ModuleSummary } from "@/lib/curriculum/types";
+import { LessonPathNode } from "@/components/learning/lesson-path-node";
+import type { ModuleSummary } from "@/lib/curriculum/types";
 
 type LearningPathProps = {
   modules: ModuleSummary[];
@@ -19,165 +13,13 @@ type LearningPathProps = {
   hideModuleHeaders?: boolean;
 };
 
-const STATUS_LABELS: Record<LessonProgressStatus, string> = {
-  completed: "Completada",
-  incomplete: "Incompleta",
-  started: "En curso",
-  available: "Disponible",
-};
-
-const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
-  completed: "bg-white/20 text-white",
-  incomplete: "bg-cobalt-tint text-cobalt",
-  started: "bg-cobalt-tint text-cobalt",
-  available: "bg-slate-100 text-slate-500",
-};
-
-function lessonMetaLabel(lesson: LessonSummary): string {
-  if (lesson.kind === "interactive") {
-    return lesson.stepCount ? `${lesson.stepCount} pasos guiados` : "Lección guiada";
-  }
-  return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
-}
-
-type PathNodeProps = {
-  lesson: LessonSummary;
-  position: number;
-  isLast: boolean;
-  isNextTarget: boolean;
-};
-
-function PathNode({ lesson, position, isLast, isNextTarget }: PathNodeProps) {
-  const status = getLessonProgressStatus(lesson);
-  const isInteractive = lesson.kind === "interactive";
-  const isInProgress = status === "started" || status === "incomplete";
-  const isCurrent = isInProgress || (isNextTarget && status !== "completed");
-  const isUpcoming = status === "available" && !isCurrent;
-  const connectorBrand = status === "completed";
-  const constellationVariant =
-    status === "completed" ? "completed" : isUpcoming ? "muted" : "active";
-
-  return (
-    <li className="relative">
-      {!isLast ? (
-        <span
-          className={cn(
-            "pointer-events-none absolute left-[2.125rem] top-[calc(100%-0.25rem)] z-0 h-[calc(0.75rem+2px)] w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
-            connectorBrand ? "bg-cobalt" : "bg-slate-300",
-          )}
-          aria-hidden
-        />
-      ) : null}
-
-      <Link
-        href={resolveLessonHref(lesson.id)}
-        data-testid={`lesson-link-${lesson.id}`}
-        className={cn(
-          "group relative flex items-center gap-4 overflow-hidden rounded-[1.35rem] border bg-paper-raised p-3.5 shadow-sm outline-none transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 sm:gap-5 sm:p-4",
-          status === "completed" &&
-            "border-cobalt bg-cobalt hover:border-cobalt/90 hover:bg-cobalt/95 focus-visible:ring-cobalt/50",
-          status !== "completed" &&
-            isCurrent &&
-            "border-slate-200 hover:border-cobalt/45 focus-visible:ring-cobalt/40",
-          status !== "completed" &&
-            !isCurrent &&
-            "border-slate-200/90 hover:border-cobalt/35 focus-visible:ring-cobalt/40",
-        )}
-      >
-        <LessonPathCardConstellation variant={constellationVariant} />
-
-        <span
-          className={cn(
-            "relative z-[1] flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
-            status === "completed" && "border-white bg-white/10 text-white",
-            status !== "completed" &&
-              isCurrent &&
-              "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(67,83,255,0.1)]",
-            status !== "completed" &&
-              !isCurrent &&
-              "border-slate-200 bg-white text-slate-300 group-hover:border-cobalt/45 group-hover:text-cobalt/80",
-          )}
-          aria-hidden
-        >
-          {status === "completed" ? (
-            <CheckIcon className="size-5" strokeWidth={3} />
-          ) : isInteractive ? (
-            <SparklesIcon className="size-5" />
-          ) : (
-            <DumbbellIcon className="size-5" />
-          )}
-        </span>
-
-        <span className="relative z-[1] min-w-0 flex-1 pr-2">
-          <span className="flex flex-wrap items-center gap-2">
-            <span
-              className={cn(
-                "text-[11px] font-semibold tabular-nums tracking-wide",
-                status === "completed" ? "text-white/75" : isUpcoming ? "text-slate-400" : "text-slate-400",
-              )}
-            >
-              {String(position).padStart(2, "0")}
-            </span>
-            {status !== "available" ? (
-              <span
-                className={cn(
-                  "inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]",
-                  STATUS_CHIP_STYLES[status],
-                )}
-              >
-                {STATUS_LABELS[status]}
-              </span>
-            ) : null}
-          </span>
-          <span
-            className={cn(
-              "mt-1 block font-heading text-base font-semibold leading-snug sm:text-[1.05rem]",
-              status === "completed"
-                ? "text-white"
-                : isUpcoming
-                  ? "text-slate-500 group-hover:text-slate-600"
-                  : "text-ink group-hover:text-cobalt",
-            )}
-          >
-            {lesson.title.replace(/^\d+\.\s*/, "")}
-          </span>
-          <span
-            className={cn(
-              "mt-0.5 block text-xs",
-              status === "completed"
-                ? "text-white/75"
-                : isUpcoming
-                  ? "text-slate-400"
-                  : "text-muted-foreground",
-            )}
-          >
-            {lessonMetaLabel(lesson)}
-          </span>
-        </span>
-
-        <ChevronRightIcon
-          className={cn(
-            "relative z-[1] size-5 shrink-0 transition-transform group-hover:translate-x-0.5",
-            status === "completed"
-              ? "text-white/70 group-hover:text-white"
-              : isUpcoming
-                ? "text-slate-300"
-                : "text-slate-300 group-hover:text-cobalt",
-          )}
-          aria-hidden
-        />
-      </Link>
-    </li>
-  );
-}
-
 function ModuleLessonList({ courseModule }: { courseModule: ModuleSummary }) {
   const nextLessonId = findNextLesson([courseModule])?.lesson.id;
 
   return (
     <ol className="relative min-w-0 space-y-3">
       {courseModule.lessons.map((lesson, index) => (
-        <PathNode
+        <LessonPathNode
           key={lesson.id}
           lesson={lesson}
           position={index + 1}
