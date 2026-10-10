@@ -261,11 +261,10 @@ export function NarrateStepView({
     return {
       onAdvance: advanceSub,
       onRetreat: retreatSub,
-      canAdvance: true,
-      canRetreat: sub > 1 || Boolean(onPreviousStep),
-      clickSurfaceToAdvance: true,
+      canAdvance: sub < 4,
+      canRetreat: sub > 1,
     };
-  }, [advanceSub, isMultiplicacionMano, onPreviousStep, retreatSub, sub]);
+  }, [advanceSub, isMultiplicacionMano, retreatSub, sub]);
   useRegisterLessonPresenterNavigation(presenterNav);
 
   const tienda = step.tienda;
@@ -294,7 +293,6 @@ export function NarrateStepView({
       }
       mulDiv={step.mulDiv}
       mulDivSubStep={isMultiplicacionMano ? sub : undefined}
-      onChalkboardClick={isMultiplicacionMano ? advanceSub : undefined}
       autoPlay={
         step.module === "mul-div-naturales" &&
         step.scene !== "multiplicacion-mano" &&

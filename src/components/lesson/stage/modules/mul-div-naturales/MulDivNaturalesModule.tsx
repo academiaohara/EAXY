@@ -673,7 +673,6 @@ function RepartoIgual({
       onRetreat: retreatPhase,
       canAdvance: phase < finalPhase,
       canRetreat: phase > 0,
-      clickSurfaceToAdvance: true,
     }),
     [advancePhase, finalPhase, phase, retreatPhase],
   );
