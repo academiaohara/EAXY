@@ -41,6 +41,7 @@ export type LessonPresenterChromeProps = {
   meta?: React.ReactNode;
   slidesOpen: boolean;
   onSlidesOpenChange: (open: boolean) => void;
+  onSlidesRailHoverChange?: (hovering: boolean) => void;
 };
 
 function PresenterCircleButton({
@@ -100,6 +101,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     meta,
     slidesOpen,
     onSlidesOpenChange,
+    onSlidesRailHoverChange,
   } = props;
 
   const [moreOpen, setMoreOpen] = useState(false);
@@ -316,6 +318,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
         completed={completedSteps}
         visited={visitedSteps}
         onGoToStep={onGoToStep}
+        onRailHoverChange={onSlidesRailHoverChange}
       />
     </>
   );

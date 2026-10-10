@@ -27,5 +27,5 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   await expect(page.getByTestId("lesson-slides-sidebar")).toBeVisible();
   await page.screenshot({ path: "/opt/cursor/artifacts/lesson-blackboard-contar-diez.png", fullPage: false });
 
-  await page.getByTestId("lesson-slides-sidebar").getByRole("button", { name: "Cerrar panel" }).click();
+  await page.getByTestId("lesson-slides-toggle").click();
 });
