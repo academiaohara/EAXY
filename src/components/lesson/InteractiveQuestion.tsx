@@ -138,7 +138,12 @@ export function InteractiveQuestion({
 
   if (step.type === "interactive_tool") {
     return (
-      <InteractiveToolStepView step={step} onContinue={onContinue ?? (() => {})} compact={compact} />
+      <InteractiveToolStepView
+        step={step}
+        onContinue={onContinue ?? (() => {})}
+        compact={compact}
+        stageTheme={stageTheme}
+      />
     );
   }
 

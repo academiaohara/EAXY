@@ -26,13 +26,10 @@ export function ContarDiezScene({ stepId, onReadyChange }: ContarDiezSceneProps)
 
   return (
     <div className="flex flex-col items-center gap-4 py-1">
-      <p className="w-full text-center text-sm text-[color:var(--stage-muted,#94a3b8)] sm:max-w-none sm:whitespace-nowrap">
-        Contar es ir sumando <strong className="text-[color:var(--stage-ink,#e8edf5)]">unidades</strong>. Cuando juntas diez, das el salto a las{" "}
-        <strong className="text-[color:var(--stage-ink,#e8edf5)]">decenas</strong>.
-      </p>
-
       <p className="text-center leading-none">
-        <span className="text-5xl font-black tabular-nums text-cobalt">{count}</span>
+        <span className="text-5xl font-black tabular-nums text-[color:var(--stage-accent,#58c4dd)]">
+          {count}
+        </span>
         <span className="mt-1 block text-[10px] font-semibold uppercase tracking-widest text-[color:var(--stage-muted,#94a3b8)]">
           pelotas
         </span>

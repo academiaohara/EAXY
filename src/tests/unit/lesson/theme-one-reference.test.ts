@@ -15,6 +15,14 @@ const THEME_ONE_LESSONS: InteractiveLesson[] = [
 ];
 
 describe("lecciones de referencia del tema 1", () => {
+  it("numeración usa pizarra y cajas de definición como la lección de multiplicación", () => {
+    expect(sistemasNumeracionNaturalesLesson.stage?.theme).toBe("board");
+    expect(multiplicacionDivisionNaturalesLesson.stage?.theme).toBe("board");
+    expect(
+      sistemasNumeracionNaturalesLesson.steps.every((step) => Boolean(step.definitionBox)),
+    ).toBe(true);
+  });
+
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
     expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
       4, 4, 4, 6, 5,

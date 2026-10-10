@@ -5,6 +5,8 @@ import {
   useRegisterLessonStepControl,
   type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
+import { DefinitionBox } from "@/components/lesson/stage/DefinitionBox";
+import { StageViewport } from "@/components/lesson/stage/StageViewport";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/scenes/ContarDiezScene";
 import { DecimalIntroScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalIntroScene";
@@ -12,15 +14,21 @@ import { OrigenContarScene } from "@/components/lesson/tools/naturales-numeracio
 import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
 import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
 import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
-import type { NaturalesNumeracionToolStep } from "@/lib/lesson/types";
+import type { LessonStageTheme, NaturalesNumeracionToolStep } from "@/lib/lesson/types";
 
 type NaturalesNumeracionToolProps = {
   step: NaturalesNumeracionToolStep;
   onContinue: (meta?: LessonContinueMeta) => void;
   compact?: boolean;
+  theme?: LessonStageTheme;
 };
 
-export function NaturalesNumeracionTool({ step, onContinue, compact = false }: NaturalesNumeracionToolProps) {
+export function NaturalesNumeracionTool({
+  step,
+  onContinue,
+  compact = false,
+  theme = "board",
+}: NaturalesNumeracionToolProps) {
   const [ready, setReady] = useState(step.scene === "origen-contar");
 
   const handleReadyChange = useCallback((value: boolean) => {
@@ -38,7 +46,7 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
 
   useRegisterLessonStepControl(control);
 
-  const hasContext = Boolean(
+  const hasExtraContext = Boolean(
     step.content?.length || step.math?.length || step.warning || step.visuals?.length,
   );
 
@@ -74,8 +82,11 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
   })();
 
   return (
-    <div className="flex w-full flex-col gap-5" data-testid={`naturales-numeracion-${step.scene}`}>
-      {hasContext ? (
+    <div
+      className="flex min-h-0 w-full flex-1 flex-col gap-4"
+      data-testid={`naturales-numeracion-${step.scene}`}
+    >
+      {hasExtraContext ? (
         <ConceptCard
           title={step.title}
           content={step.content}
@@ -88,7 +99,13 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
         />
       ) : null}
 
-      <div className="w-full min-h-0 flex-1 py-1">{scene}</div>
+      <StageViewport
+        theme={theme}
+        className="min-h-0 flex-1"
+        stageClassName="min-h-[12rem]"
+        header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}
+        stage={scene}
+      />
     </div>
   );
 }

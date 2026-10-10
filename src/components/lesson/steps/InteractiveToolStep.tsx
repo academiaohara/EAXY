@@ -6,13 +6,18 @@ import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { NaturalesNumeracionTool } from "@/components/lesson/tools/naturales-numeracion/NaturalesNumeracionTool";
 import { SystemGraphTool } from "@/components/lesson/tools/SystemGraphTool";
 import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
-import type { InteractiveToolStep as InteractiveToolStepType, SystemGraphToolStep } from "@/lib/lesson/types";
+import type {
+  InteractiveToolStep as InteractiveToolStepType,
+  LessonStageTheme,
+  SystemGraphToolStep,
+} from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
 
 type InteractiveToolStepProps = {
   step: InteractiveToolStepType;
   onContinue: (meta?: LessonContinueMeta) => void;
   compact?: boolean;
+  stageTheme?: LessonStageTheme;
 };
 
 function SystemGraphInteractiveStep({
@@ -67,9 +72,21 @@ function SystemGraphInteractiveStep({
   );
 }
 
-export function InteractiveToolStepView({ step, onContinue, compact = false }: InteractiveToolStepProps) {
+export function InteractiveToolStepView({
+  step,
+  onContinue,
+  compact = false,
+  stageTheme = "board",
+}: InteractiveToolStepProps) {
   if (step.tool === "naturales-numeracion") {
-    return <NaturalesNumeracionTool step={step} onContinue={onContinue} compact={compact} />;
+    return (
+      <NaturalesNumeracionTool
+        step={step}
+        onContinue={onContinue}
+        compact={compact}
+        theme={stageTheme}
+      />
+    );
   }
 
   return <SystemGraphInteractiveStep step={step} onContinue={onContinue} compact={compact} />;

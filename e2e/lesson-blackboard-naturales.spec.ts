@@ -13,7 +13,24 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
-  for (let i = 0; i < 3; i += 1) {
+  await expect(page.getByTestId("lesson-definition-box")).toBeVisible();
+  await expect(page.getByTestId("naturales-numeracion-origen-contar")).toBeVisible();
+
+  await page.getByTestId("lesson-continue-button").click();
+  await expect(page.getByTestId("naturales-numeracion-sistemas-historia")).toBeVisible();
+
+  const inactiveTab = page.getByRole("tab", { name: /Los egipcios/i });
+  await expect(inactiveTab).toBeVisible();
+  const tabStyles = await inactiveTab.evaluate((el) => {
+    const style = getComputedStyle(el);
+    return { color: style.color, backgroundColor: style.backgroundColor };
+  });
+  expect(tabStyles.backgroundColor).not.toBe("rgb(255, 255, 255)");
+  if (tabStyles.color === "rgb(255, 255, 255)") {
+    expect(tabStyles.backgroundColor).not.toMatch(/255,\s*255,\s*255/);
+  }
+
+  for (let i = 0; i < 2; i += 1) {
     await page.getByTestId("lesson-continue-button").click();
   }
 
