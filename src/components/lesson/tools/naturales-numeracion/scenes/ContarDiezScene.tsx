@@ -26,14 +26,14 @@ export function ContarDiezScene({ stepId, onReadyChange }: ContarDiezSceneProps)
 
   return (
     <div className="flex flex-col items-center gap-4 py-1">
-      <p className="w-full text-center text-sm text-ink-muted sm:max-w-none sm:whitespace-nowrap">
-        Contar es ir sumando <strong className="text-ink">unidades</strong>. Cuando juntas diez, das el salto a las{" "}
-        <strong className="text-ink">decenas</strong>.
+      <p className="w-full text-center text-sm text-[color:var(--stage-muted,#94a3b8)] sm:max-w-none sm:whitespace-nowrap">
+        Contar es ir sumando <strong className="text-[color:var(--stage-ink,#e8edf5)]">unidades</strong>. Cuando juntas diez, das el salto a las{" "}
+        <strong className="text-[color:var(--stage-ink,#e8edf5)]">decenas</strong>.
       </p>
 
       <p className="text-center leading-none">
         <span className="text-5xl font-black tabular-nums text-cobalt">{count}</span>
-        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-widest text-ink-muted">
+        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-widest text-[color:var(--stage-muted,#94a3b8)]">
           pelotas
         </span>
       </p>
@@ -65,7 +65,7 @@ export function ContarDiezScene({ stepId, onReadyChange }: ContarDiezSceneProps)
       </Button>
 
       {count >= TARGET ? (
-        <p className="text-center text-xs font-medium text-emerald-700">
+        <p className="text-center text-xs font-medium text-[color:var(--stage-accent,#6ee7b7)]">
           Diez unidades = una decena. Así empieza la numeración posicional.
         </p>
       ) : null}
