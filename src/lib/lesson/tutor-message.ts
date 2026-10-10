@@ -74,9 +74,6 @@ export function getTutorReaction(
   if (feedback === "incorrect") {
     return "incorrect";
   }
-  if (isQuizStep(step)) {
-    return "thinking";
-  }
   return "idle";
 }
 
@@ -90,4 +87,24 @@ const REACTION_MOODS: Record<TutorReaction, TutorMood> = {
 /** Ánimo de la mascota para una reacción de la lección. */
 export function tutorMoodForReaction(reaction: TutorReaction): TutorMood {
   return REACTION_MOODS[reaction];
+}
+
+/**
+ * Ánimo visible en la lección: neutral por defecto, reacciona al feedback y
+ * se anima un poco mientras el tutor está hablando.
+ */
+export function tutorMoodForLessonDisplay(
+  reaction: TutorReaction,
+  speaking: boolean,
+): TutorMood {
+  if (reaction === "correct") {
+    return "celebrate";
+  }
+  if (reaction === "incorrect") {
+    return "sad";
+  }
+  if (reaction === "thinking") {
+    return "thinking";
+  }
+  return speaking ? "happy" : "idle";
 }

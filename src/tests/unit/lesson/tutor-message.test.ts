@@ -5,6 +5,7 @@ import {
   getTutorMessage,
   getTutorReaction,
   getTutorSpeechQueue,
+  tutorMoodForLessonDisplay,
   tutorMoodForReaction,
 } from "@/lib/lesson/tutor-message";
 import type { LessonStep } from "@/lib/lesson/types";
@@ -85,8 +86,8 @@ describe("getTutorReaction", () => {
     expect(getTutorReaction(quizStep, "incorrect")).toBe("incorrect");
   });
 
-  it("piensa mientras el alumno responde una pregunta", () => {
-    expect(getTutorReaction(quizStep, null)).toBe("thinking");
+  it("permanece neutral mientras el alumno responde una pregunta", () => {
+    expect(getTutorReaction(quizStep, null)).toBe("idle");
   });
 
   it("permanece neutral en pasos de teoría", () => {
@@ -103,5 +104,14 @@ describe("tutorMoodForReaction", () => {
 
   it("mantiene la mirada pensativa mientras el alumno responde", () => {
     expect(tutorMoodForReaction("thinking")).toBe("thinking");
+  });
+});
+
+describe("tutorMoodForLessonDisplay", () => {
+  it("reacciona al feedback y anima mientras habla", () => {
+    expect(tutorMoodForLessonDisplay("correct", false)).toBe("celebrate");
+    expect(tutorMoodForLessonDisplay("incorrect", false)).toBe("sad");
+    expect(tutorMoodForLessonDisplay("idle", false)).toBe("idle");
+    expect(tutorMoodForLessonDisplay("idle", true)).toBe("happy");
   });
 });
