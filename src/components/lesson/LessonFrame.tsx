@@ -2,7 +2,6 @@
 
 import { StarIcon } from "lucide-react";
 import {
-  useLessonBoardClickAdvance,
   useLessonPresenterChrome,
   type LessonPresenterChromeProps,
 } from "@/components/lesson/LessonPresenterChrome";
@@ -56,11 +55,6 @@ export function LessonFrame({
   const isCorrect = feedback === "correct";
   const isIncorrect = feedback === "incorrect";
 
-  const boardClickAdvance = useLessonBoardClickAdvance(
-    Boolean(presenterNav?.clickSurfaceToAdvance && footerCenter && !feedback),
-    presenterNav?.onAdvance,
-  );
-
   return (
     <div
       className={cn(
@@ -99,7 +93,6 @@ export function LessonFrame({
             "pl-3 pr-[calc(2.75rem+56px)] pt-1 sm:pl-4 sm:pr-[calc(3rem+56px)]",
           )}
           data-testid="lesson-step-content-inset"
-          onClick={boardClickAdvance}
         >
           {children}
         </div>

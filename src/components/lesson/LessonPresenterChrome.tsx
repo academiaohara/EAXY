@@ -140,7 +140,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   }, [animationRetreat, canBack, control, feedback, hasAnimation, onBack, presenterNav?.canRetreat]);
 
   useEffect(() => {
-    if (feedback) {
+    if (feedback || !hasAnimation) {
       return;
     }
     const onKey = (event: KeyboardEvent) => {
@@ -155,17 +155,29 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
         return;
       }
       if (event.key === "ArrowRight") {
-        event.preventDefault();
-        handleForward();
+        if (animationAdvance && presenterNav?.canAdvance !== false) {
+          event.preventDefault();
+          animationAdvance();
+        }
+        return;
       }
       if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        handleBack();
+        if (animationRetreat && presenterNav?.canRetreat !== false) {
+          event.preventDefault();
+          animationRetreat();
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [feedback, handleBack, handleForward]);
+  }, [
+    animationAdvance,
+    animationRetreat,
+    feedback,
+    hasAnimation,
+    presenterNav?.canAdvance,
+    presenterNav?.canRetreat,
+  ]);
 
   useEffect(() => {
     if (!moreOpen) {
@@ -310,24 +322,4 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   );
 
   return { header, overlays };
-}
-
-/** Clic en la pizarra para avanzar animación (ignora botones e inputs). */
-export function useLessonBoardClickAdvance(enabled: boolean, onAdvance?: () => void) {
-  return useCallback(
-    (event: React.MouseEvent<HTMLElement>) => {
-      if (!enabled || !onAdvance) {
-        return;
-      }
-      const target = event.target;
-      if (!(target instanceof Element)) {
-        return;
-      }
-      if (target.closest("button, a, input, textarea, select, [role='button'], [data-no-board-advance]")) {
-        return;
-      }
-      onAdvance();
-    },
-    [enabled, onAdvance],
-  );
 }

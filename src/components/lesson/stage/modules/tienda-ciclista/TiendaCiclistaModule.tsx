@@ -245,7 +245,8 @@ export function TiendaCiclistaModule({
                   "cursor-pointer hover:border-cobalt/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
                 interactiveExplore && isSelected && "border-cobalt bg-cobalt-tint/50",
                 interactiveTap && inTap && "border-cobalt bg-cobalt-tint/40 ring-2 ring-cobalt/20",
-                !interactiveExplore && !interactiveTap && "border-slate-200 bg-slate-50/80",
+                !interactiveExplore && !interactiveTap &&
+                  "border-[color:var(--stage-border,#334155)] bg-black/25",
               )}
               aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
               aria-label={`${item.label}, ${item.price} euros`}
@@ -263,13 +264,13 @@ export function TiendaCiclistaModule({
                 ))}
               <ItemIcon id={item.id} />
               <span className="text-xs font-semibold text-ink">{item.label}</span>
-              <span className="text-sm font-bold text-cobalt">{item.price} €</span>
+              <span className="text-sm font-bold text-[color:var(--stage-accent,#58c4dd)]">{item.price} €</span>
             </button>
           );
         })}
       </div>
 
-      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/80 px-4 py-4 text-center">
+      <div className="rounded-xl border border-dashed border-[color:var(--stage-border,#334155)] bg-black/25 px-4 py-4 text-center">
         {mode === "sumar-cesta" ? (
           <>
             <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Total en la cesta</p>
@@ -284,7 +285,7 @@ export function TiendaCiclistaModule({
               <p className="mt-1 text-sm text-ink-muted">Pulsa cada artículo para sumarlo.</p>
             )}
             {runningTotal === totalAll && tapIds.length === items.length ? (
-              <p className="mt-2 text-sm font-medium text-emerald-700">¡Equipo completo!</p>
+              <p className="mt-2 text-sm font-medium text-[color:var(--stage-accent-muted,#83c167)]">¡Equipo completo!</p>
             ) : null}
           </>
         ) : null}
