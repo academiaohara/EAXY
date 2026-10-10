@@ -8,7 +8,9 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
     window.localStorage.removeItem(key);
   }, STORAGE_KEY);
 
-  await page.goto(`/aprender/leccion-interactiva/${LESSON_SLUG}?reiniciar=1`);
+  await page.goto(
+    `/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/${LESSON_SLUG}?reiniciar=1`,
+  );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
   for (let i = 0; i < 3; i += 1) {

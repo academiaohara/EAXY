@@ -6,7 +6,7 @@ import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { TUTOR_NICKNAME } from "@/lib/tutor/identity";
 import { cn } from "@/lib/utils";
 import { flattenTutorSpeech, tutorSpeechDuration } from "@/lib/lesson/tutor-speech";
-import { tutorMoodForReaction, type TutorReaction } from "@/lib/lesson/tutor-message";
+import { tutorMoodForLessonDisplay, type TutorReaction } from "@/lib/lesson/tutor-message";
 
 type LessonTutorDockProps = {
   /** Reinicia la secuencia de frases al cambiar de paso o de feedback. */
@@ -48,12 +48,14 @@ function TutorSpeechBubble({
   muted,
   anchorRight,
   onSpeak,
+  onSpeakingChange,
 }: {
   messages: readonly string[];
   reaction: TutorReaction;
   muted: boolean;
   anchorRight: boolean;
   onSpeak?: (index: number, line: string) => void;
+  onSpeakingChange?: (speaking: boolean) => void;
 }) {
   const lines = useMemo(() => flattenTutorSpeech(messages), [messages]);
   const [spoken, setSpoken] = useState(0);
@@ -78,6 +80,11 @@ function TutorSpeechBubble({
       window.clearTimeout(timer);
     };
   }, [line, muted]);
+
+  useEffect(() => {
+    onSpeakingChange?.(!muted && line !== undefined);
+    return () => onSpeakingChange?.(false);
+  }, [line, muted, onSpeakingChange]);
 
   if (muted || line === undefined) {
     return null;
@@ -123,6 +130,8 @@ export function LessonTutorDock({
   className,
 }: LessonTutorDockProps) {
   const anchorRight = panelOpen;
+  const [speaking, setSpeaking] = useState(false);
+  const displayMood = tutorMoodForLessonDisplay(reaction, speaking);
 
   return (
     <div
@@ -143,7 +152,7 @@ export function LessonTutorDock({
           aria-expanded={false}
           data-testid="lesson-tutor-button"
         >
-          <TutorMascot mood={tutorMoodForReaction(reaction)} size={76} label={null} />
+          <TutorMascot mood={displayMood} size={76} label={null} />
         </button>
       )}
 
@@ -154,6 +163,7 @@ export function LessonTutorDock({
         muted={panelOpen}
         anchorRight={anchorRight}
         onSpeak={onSpeak}
+        onSpeakingChange={setSpeaking}
       />
     </div>
   );

@@ -14,6 +14,15 @@ export function topicHref(courseSlug: string, moduleSlug: string): string {
   return `${courseHref(courseSlug)}/tema/${moduleSlug}`;
 }
 
+/** Lección interactiva dentro del curso y tema (slug del contenido interactivo). */
+export function interactiveLessonHref(
+  courseSlug: string,
+  moduleSlug: string,
+  lessonSlug: string,
+): string {
+  return `${topicHref(courseSlug, moduleSlug)}/leccion/${lessonSlug}`;
+}
+
 export function courseShortTitle(title: string): string {
   return title.replace(/^Matemáticas\s+/i, "").trim() || title;
 }

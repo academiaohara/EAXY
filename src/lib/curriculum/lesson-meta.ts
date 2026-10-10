@@ -1,6 +1,7 @@
-import { getLessonById } from "@/content";
+import { getInteractiveLessonContext, getLessonById } from "@/content";
 import { interactiveLessons } from "@/data/lessons";
 import type { LessonKind } from "@/lib/curriculum/types";
+import { interactiveLessonHref } from "@/lib/navigation/learning-trail";
 
 export type CurriculumLessonMeta = {
   kind: LessonKind;
@@ -35,7 +36,10 @@ export function resolveInteractiveLessonHref(
   interactiveSlug: string,
   mode: "continue" | "restart" = "continue",
 ): string {
-  const base = `/aprender/leccion-interactiva/${interactiveSlug}`;
+  const context = getInteractiveLessonContext(interactiveSlug);
+  const base = context
+    ? interactiveLessonHref(context.course.slug, context.module.slug, interactiveSlug)
+    : `/aprender/leccion-interactiva/${interactiveSlug}`;
   return mode === "restart" ? `${base}?reiniciar=1` : base;
 }
 

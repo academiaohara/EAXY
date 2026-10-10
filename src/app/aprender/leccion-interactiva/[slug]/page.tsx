@@ -1,47 +1,29 @@
-import { notFound } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import { getInteractiveLessonContext } from "@/content";
-import { InteractiveLessonEntryGate } from "@/components/lesson/InteractiveLessonEntryGate";
-import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
-import { interactiveLessons } from "@/data/lessons";
+import { interactiveLessonHref } from "@/lib/navigation/learning-trail";
+import { notFound } from "next/navigation";
 
-type InteractiveLessonPageProps = {
+type LegacyInteractiveLessonPageProps = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ reiniciar?: string }>;
 };
 
-export default async function InteractiveLessonPage({
+/** Redirige URLs planas antiguas a la ruta curso → tema → lección. */
+export default async function LegacyInteractiveLessonPage({
   params,
   searchParams,
-}: InteractiveLessonPageProps) {
+}: LegacyInteractiveLessonPageProps) {
   const { slug } = await params;
   const { reiniciar } = await searchParams;
-  const restartRequested = reiniciar === "1" || reiniciar === "true";
-  const lesson = interactiveLessons[slug as keyof typeof interactiveLessons];
+  const context = getInteractiveLessonContext(slug);
 
-  if (!lesson) {
+  if (!context) {
     notFound();
   }
 
-  const studentId = await getAuthenticatedUserIdOrNull();
-  const context = getInteractiveLessonContext(slug);
-  const navigation = context
-    ? {
-        courseSlug: context.course.slug,
-        courseTitle: context.course.title,
-        moduleSlug: context.module.slug,
-        moduleTitle: context.module.title,
-      }
-    : undefined;
+  const base = interactiveLessonHref(context.course.slug, context.module.slug, slug);
+  const href =
+    reiniciar === "1" || reiniciar === "true" ? `${base}?reiniciar=1` : base;
 
-  return (
-    <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
-      <InteractiveLessonEntryGate
-        lesson={lesson}
-        navigation={navigation}
-        curriculumLessonId={context?.lesson.id}
-        trackLocalProgress={!studentId}
-        restartRequested={restartRequested}
-      />
-    </main>
-  );
+  permanentRedirect(href);
 }
