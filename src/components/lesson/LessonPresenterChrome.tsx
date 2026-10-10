@@ -207,9 +207,9 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
         : !canBack && !control?.onBack;
 
   const header = (
-    <header className="relative z-50 flex shrink-0 items-start justify-between gap-4 px-4 pb-1 pt-3 sm:px-6 sm:pt-4">
+    <header className="relative z-50 flex shrink-0 items-start justify-between gap-4 px-4 pb-4 pt-5 sm:px-6 sm:pb-4 sm:pt-5">
       <div
-        className="min-w-0 max-w-[min(42rem,70vw)] font-heading text-lg font-semibold leading-snug tracking-tight text-[color:var(--stage-ink,#e8edf5)] sm:text-xl"
+        className="lesson-step-title min-w-0 max-w-[min(42rem,70vw)] font-heading text-[color:var(--stage-ink,#e8edf5)]"
         data-testid="lesson-step-title"
       >
         {stepTitle}
