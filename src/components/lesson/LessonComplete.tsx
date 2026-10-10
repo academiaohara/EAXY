@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TutorMascot } from "@/components/tutor/tutor-mascot";
 import { cn } from "@/lib/utils";
@@ -13,8 +12,6 @@ type IncompleteStep = {
 
 type LessonCompleteProps = {
   lessonTitle: string;
-  stars: number;
-  totalStars: number;
   courseHref: string;
   onRestart: () => void;
   incompleteSteps?: IncompleteStep[];
@@ -23,14 +20,11 @@ type LessonCompleteProps = {
 
 export function LessonComplete({
   lessonTitle,
-  stars,
-  totalStars,
   courseHref,
   onRestart,
   incompleteSteps = [],
   onJumpToStep,
 }: LessonCompleteProps) {
-  const starSlots = Math.max(totalStars, stars, 1);
   const allDone = incompleteSteps.length === 0;
 
   return (
@@ -91,27 +85,6 @@ export function LessonComplete({
                 </li>
               ))}
             </ul>
-          ) : null}
-
-          {totalStars > 0 ? (
-            <div className="space-y-2">
-              <div className="flex items-center justify-center gap-1.5" aria-hidden>
-                {Array.from({ length: starSlots }, (_, index) => (
-                  <StarIcon
-                    key={index}
-                    className={cn(
-                      "size-7",
-                      index < stars
-                        ? "fill-amber-400 text-amber-400"
-                        : "fill-slate-100 text-slate-300",
-                    )}
-                  />
-                ))}
-              </div>
-              <p className="text-sm font-medium text-emerald-700">
-                {stars} de {totalStars} aciertos en las prácticas (puedes repetirlas sin prisa)
-              </p>
-            </div>
           ) : null}
 
           <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">

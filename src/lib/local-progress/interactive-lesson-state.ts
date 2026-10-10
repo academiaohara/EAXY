@@ -26,7 +26,6 @@ export function createDefaultInteractiveLessonState(stepCount: number): Persiste
     completedSteps: normalizeBooleanArray(undefined, stepCount),
     visitedSteps,
     stepAttempts: {},
-    stars: 0,
     completed: false,
     toolState: {},
     updatedAt: Date.now(),
@@ -58,7 +57,6 @@ export function normalizeInteractiveLessonState(
     visitedSteps,
     stepAttempts:
       raw.stepAttempts && typeof raw.stepAttempts === "object" ? { ...raw.stepAttempts } : {},
-    stars: typeof raw.stars === "number" ? Math.max(0, raw.stars) : 0,
     completed: Boolean(raw.completed),
     toolState: raw.toolState && typeof raw.toolState === "object" ? { ...raw.toolState } : {},
     updatedAt: typeof raw.updatedAt === "number" ? raw.updatedAt : Date.now(),
@@ -141,9 +139,6 @@ export function shouldOfferInteractiveLessonResume(
     return true;
   }
   if (Object.keys(state.toolState).length > 0) {
-    return true;
-  }
-  if (state.stars > 0) {
     return true;
   }
   return false;

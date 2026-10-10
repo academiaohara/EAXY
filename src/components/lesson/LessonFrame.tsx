@@ -1,6 +1,5 @@
 "use client";
 
-import { StarIcon } from "lucide-react";
 import {
   useLessonPresenterChrome,
   type LessonPresenterChromeProps,
@@ -16,24 +15,6 @@ type LessonFrameProps = LessonPresenterChromeProps & {
   tutorPanelOpen?: boolean;
   className?: string;
 };
-
-export function LessonStarCounter({ stars, totalStars }: { stars: number; totalStars?: number }) {
-  return (
-    <div
-      className="flex shrink-0 items-center gap-1.5 bg-black/25 px-2.5 py-1 text-xs font-semibold text-amber-400 ring-1 ring-[color:var(--stage-border,#334155)]"
-      data-testid="lesson-stars"
-      aria-label={
-        totalStars ? `${stars} de ${totalStars} estrellas` : `${stars} estrellas conseguidas`
-      }
-    >
-      <StarIcon className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
-      <span className="tabular-nums">
-        {stars}
-        {totalStars ? <span className="text-amber-400/60">/{totalStars}</span> : null}
-      </span>
-    </div>
-  );
-}
 
 export function LessonFrame({
   feedback = null,
@@ -90,7 +71,7 @@ export function LessonFrame({
         <div
           className={cn(
             "flex min-h-0 flex-1 flex-col overflow-hidden",
-            "pl-3 pr-[calc(2.75rem+56px)] pt-1 sm:pl-4 sm:pr-[calc(3rem+56px)]",
+            "pl-5 pr-[calc(2.75rem+56px)] pt-4 sm:pl-6 sm:pr-[calc(3rem+56px)] sm:pt-5",
           )}
           data-testid="lesson-step-content-inset"
         >

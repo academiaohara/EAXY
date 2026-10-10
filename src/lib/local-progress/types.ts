@@ -14,7 +14,6 @@ export type PersistedInteractiveLessonState = {
   completedSteps: boolean[];
   visitedSteps: boolean[];
   stepAttempts: Record<string, StepAttemptRecord>;
-  stars: number;
   completed: boolean;
   toolState: Record<string, unknown>;
   updatedAt: number;
