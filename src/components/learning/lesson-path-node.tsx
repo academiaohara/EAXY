@@ -201,9 +201,13 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
 
       {offersResume && interactiveSlug ? (
         <div
-          className={cn(cardSurfaceClass, "hover:shadow-md")}
+          className={cn(cardSurfaceClass, "pointer-events-none hover:shadow-md")}
           data-testid={`lesson-link-${lesson.id}`}
         >
+          <div className="pointer-events-none relative flex w-full items-center gap-4 sm:gap-5">
+            {body}
+          </div>
+
           <span
             className="pointer-events-none absolute inset-y-3 right-[22%] z-[1] w-px bg-gradient-to-b from-transparent via-slate-300/80 to-transparent sm:inset-y-4"
             style={{ transform: "skewX(-12deg)" }}
@@ -229,7 +233,7 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
             href={resolveInteractiveLessonHref(interactiveSlug, "continue")}
             aria-label={`Continuar: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
             className={cn(
-              "absolute inset-y-0 left-0 z-[2] w-[78%] rounded-l-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
+              "pointer-events-auto absolute inset-y-0 left-0 z-[2] w-[78%] rounded-l-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
               CONTINUE_CLIP,
               continueHoverClass,
             )}
@@ -239,16 +243,12 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
             href={resolveInteractiveLessonHref(interactiveSlug, "restart")}
             aria-label={`Empezar de cero: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
             className={cn(
-              "absolute inset-y-0 right-0 z-[3] w-[32%] rounded-r-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
+              "pointer-events-auto absolute inset-y-0 right-0 z-[3] w-[32%] rounded-r-[1.35rem] transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:outline-none",
               RESTART_CLIP,
               restartHoverClass,
             )}
             data-testid={`lesson-link-restart-${lesson.id}`}
           />
-
-          <div className="pointer-events-none relative z-[1] flex w-full items-center gap-4 sm:gap-5">
-            {body}
-          </div>
         </div>
       ) : (
         <Link
