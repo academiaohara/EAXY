@@ -6,6 +6,7 @@ import { StageModuleRenderer } from "@/components/lesson/stage/StageModuleRender
 import { StageViewport } from "@/components/lesson/stage/StageViewport";
 import {
   LessonFooterCenterSlot,
+  useRegisterLessonPresenterNavigation,
   useRegisterLessonStepControl,
   type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
@@ -208,7 +209,7 @@ export function NarrateStepView({
     }
     return (
       <StageStepControls
-        variant="footer"
+        variant="presenter"
         phase={sub - 1}
         stepCount={4}
         playing={subPlaying}
@@ -253,23 +254,19 @@ export function NarrateStepView({
 
   useRegisterLessonStepControl(control);
 
-  useEffect(() => {
+  const presenterNav = useMemo(() => {
     if (!isMultiplicacionMano) {
-      return;
+      return null;
     }
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        advanceSub();
-      }
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        retreatSub();
-      }
+    return {
+      onAdvance: advanceSub,
+      onRetreat: retreatSub,
+      canAdvance: true,
+      canRetreat: sub > 1 || Boolean(onPreviousStep),
+      clickSurfaceToAdvance: true,
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [advanceSub, isMultiplicacionMano, retreatSub]);
+  }, [advanceSub, isMultiplicacionMano, onPreviousStep, retreatSub, sub]);
+  useRegisterLessonPresenterNavigation(presenterNav);
 
   const tienda = step.tienda;
 

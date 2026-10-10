@@ -23,11 +23,23 @@ export type LessonStepControl = {
   onBack?: () => void;
 };
 
+/** Avance/retroceso de fases de animación (flechas, clic en pizarra). */
+export type LessonPresenterNavigation = {
+  onAdvance: () => void;
+  onRetreat: () => void;
+  canAdvance?: boolean;
+  canRetreat?: boolean;
+  /** Si true, un clic en la pizarra llama a onAdvance (salvo elementos interactivos). */
+  clickSurfaceToAdvance?: boolean;
+};
+
 type LessonStepControlContextValue = {
   control: LessonStepControl | null;
   setControl: (control: LessonStepControl | null) => void;
   footerCenter: ReactNode | null;
   setFooterCenter: (node: ReactNode | null) => void;
+  presenterNav: LessonPresenterNavigation | null;
+  setPresenterNav: (nav: LessonPresenterNavigation | null) => void;
 };
 
 const LessonStepControlContext = createContext<LessonStepControlContextValue | null>(null);
@@ -35,9 +47,10 @@ const LessonStepControlContext = createContext<LessonStepControlContextValue | n
 export function LessonStepControlProvider({ children }: { children: ReactNode }) {
   const [control, setControl] = useState<LessonStepControl | null>(null);
   const [footerCenter, setFooterCenter] = useState<ReactNode | null>(null);
+  const [presenterNav, setPresenterNav] = useState<LessonPresenterNavigation | null>(null);
   const value = useMemo(
-    () => ({ control, setControl, footerCenter, setFooterCenter }),
-    [control, footerCenter],
+    () => ({ control, setControl, footerCenter, setFooterCenter, presenterNav, setPresenterNav }),
+    [control, footerCenter, presenterNav],
   );
 
   return (
@@ -84,4 +97,21 @@ export function useRegisterLessonFooterCenter(node: ReactNode | null) {
 export function LessonFooterCenterSlot({ children }: { children: ReactNode }) {
   useRegisterLessonFooterCenter(children);
   return null;
+}
+
+function presenterNavSignature(nav: LessonPresenterNavigation | null): string {
+  if (!nav) {
+    return "null";
+  }
+  return `${nav.clickSurfaceToAdvance ? "1" : "0"}|${nav.canAdvance ? "1" : "0"}|${nav.canRetreat ? "1" : "0"}`;
+}
+
+export function useRegisterLessonPresenterNavigation(nav: LessonPresenterNavigation | null) {
+  const { setPresenterNav } = useLessonStepControl();
+  const signature = presenterNavSignature(nav);
+
+  useEffect(() => {
+    setPresenterNav(nav);
+    return () => setPresenterNav(null);
+  }, [nav, signature, setPresenterNav]);
 }

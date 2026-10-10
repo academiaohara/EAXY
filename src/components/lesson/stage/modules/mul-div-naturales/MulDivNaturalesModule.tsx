@@ -15,7 +15,10 @@ import {
   AsociativaHuevosDiscover,
   AsociativaTrucoMental,
 } from "@/components/lesson/stage/modules/mul-div-naturales/AsociativaScenes";
-import { useRegisterLessonFooterCenter } from "@/components/lesson/LessonStepControlContext";
+import {
+  useRegisterLessonFooterCenter,
+  useRegisterLessonPresenterNavigation,
+} from "@/components/lesson/LessonStepControlContext";
 import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
 import { cn } from "@/lib/utils";
@@ -656,6 +659,26 @@ function RepartoIgual({
     onReadyChange?.(false);
   }, [onReadyChange]);
 
+  const advancePhase = useCallback(() => {
+    setPhase((current) => Math.min(finalPhase, current + 1));
+  }, [finalPhase]);
+
+  const retreatPhase = useCallback(() => {
+    setPhase((current) => Math.max(0, current - 1));
+  }, []);
+
+  const presenterNav = useMemo(
+    () => ({
+      onAdvance: advancePhase,
+      onRetreat: retreatPhase,
+      canAdvance: phase < finalPhase,
+      canRetreat: phase > 0,
+      clickSurfaceToAdvance: true,
+    }),
+    [advancePhase, finalPhase, phase, retreatPhase],
+  );
+  useRegisterLessonPresenterNavigation(presenterNav);
+
   const caption =
     phase === 0
       ? `${dividend} bombones repartidos en ${divisor} cajas iguales. ¿Cuántos caben en cada caja?`
@@ -666,7 +689,7 @@ function RepartoIgual({
   const footerControls = useMemo(
     () => (
       <StageStepControls
-        variant="footer"
+        variant="presenter"
         phase={phase}
         stepCount={stepCount}
         playing={false}
