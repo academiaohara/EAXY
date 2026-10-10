@@ -33,13 +33,13 @@ export const TUTOR_MOODS: readonly TutorMood[] = [
 
 export const tutorExpressions: Record<TutorMood, TutorExpression> = {
   idle: {
-    eyeScaleY: 0.94,
-    lidCoverage: 0.38,
-    pupilOffset: { x: 0, y: 1.5 },
-    pupilScale: 1.08,
-    browOffset: -4,
-    browRotation: 4,
-    browOpacity: 0.5,
+    eyeScaleY: 1,
+    lidCoverage: 0,
+    pupilOffset: { x: 0, y: 0 },
+    pupilScale: 1,
+    browOffset: 0,
+    browRotation: 0,
+    browOpacity: 0.45,
     bodyAnimation: "float",
     blink: true,
     label: "El tutor te acompaña mientras trabajas",

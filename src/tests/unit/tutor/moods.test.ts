@@ -32,6 +32,11 @@ describe("tutorExpressions", () => {
     expect(getTutorExpression("surprised").blink).toBe(false);
     expect(getTutorExpression("idle").blink).toBe(true);
   });
+
+  it("mantiene los ojos abiertos en reposo", () => {
+    expect(getTutorExpression("idle").lidCoverage).toBe(0);
+    expect(getTutorExpression("idle").eyeScaleY).toBe(1);
+  });
 });
 
 describe("tutorMoodForFeedback", () => {

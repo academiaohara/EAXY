@@ -108,10 +108,10 @@ describe("tutorMoodForReaction", () => {
 });
 
 describe("tutorMoodForLessonDisplay", () => {
-  it("reacciona al feedback y anima mientras habla", () => {
+  it("reacciona al feedback y mantiene idle neutral mientras habla", () => {
     expect(tutorMoodForLessonDisplay("correct", false)).toBe("celebrate");
     expect(tutorMoodForLessonDisplay("incorrect", false)).toBe("sad");
     expect(tutorMoodForLessonDisplay("idle", false)).toBe("idle");
-    expect(tutorMoodForLessonDisplay("idle", true)).toBe("happy");
+    expect(tutorMoodForLessonDisplay("idle", true)).toBe("idle");
   });
 });
