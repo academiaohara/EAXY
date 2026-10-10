@@ -224,9 +224,9 @@
   overflow: visible;
 }
 
-/* Cuerpo mate (hollín Ghibli): sin brillo azul ni specular fuerte. */
+/* Cuerpo mate (hollín Ghibli): el PNG ya viene apagado; solo un toque de contraste. */
 .tutor-mascot-art {
-  filter: brightness(0.92) contrast(0.96) saturate(0.85);
+  filter: contrast(0.98);
 }
 
 .tutor-mascot-body,
