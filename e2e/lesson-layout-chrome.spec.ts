@@ -12,6 +12,7 @@ test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => 
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
   await expect(page.getByTestId("lesson-progress-bar")).toHaveCount(0);
+  await expect(page.getByTestId("lesson-step-phase")).toHaveCount(0);
   await expect(page.getByTestId("lesson-close")).toHaveCount(0);
   await expect(page.getByTestId("lesson-footer-dock")).toHaveCount(0);
   await expect(page.getByTestId("lesson-step-title")).toBeVisible();
