@@ -91,7 +91,7 @@ export function LessonFrame({
         aria-hidden
       />
 
-      {presenterProps.onGoToStep ? header : null}
+      {header}
 
       <div
         className={cn(
@@ -107,7 +107,7 @@ export function LessonFrame({
         </div>
       </div>
 
-      {presenterProps.onGoToStep ? overlays : null}
+      {overlays}
 
       {overlay ? (
         <div
