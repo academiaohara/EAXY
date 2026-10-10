@@ -1,19 +1,19 @@
 /**
  * Medidas del tutor tomadas sobre la ilustración del cuerpo
- * (`public/tutor/esfera-pelaje-oscura.png`, recorte cuadrado sin ojos ni cejas).
+ * (`public/tutor/bola-peluche-azul-indigo.png`, recorte cuadrado sin ojos ni cejas).
  *
  * Todo está en unidades del `viewBox` 0 0 200 200 del componente.
  */
 
-export const TUTOR_BODY_IMAGE = "/tutor/esfera-pelaje-oscura.png";
+export const TUTOR_BODY_IMAGE = "/tutor/bola-peluche-azul-indigo.png";
 
 export const TUTOR_VIEWBOX = 200;
 
-/** Pelo mate tipo hollín (carboncillo Ghibli, sin brillo saturado). */
+/** Pelo del cuerpo (índigo / cobalt suave, para párpados). */
 export const TUTOR_FUR_COLORS = {
-  highlight: "#3a3a3a",
-  base: "#1a1a1a",
-  shade: "#0d0d0d",
+  highlight: "#4a56a8",
+  base: "#2f3678",
+  shade: "#1e2452",
 } as const;
 
 export type TutorEyeAnatomy = {
