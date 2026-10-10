@@ -84,9 +84,9 @@ describe("TutorMascot", () => {
     expect(mascot.querySelectorAll(".tutor-mascot-brow")).toHaveLength(2);
   });
 
-  it("baja el párpado al sonreír y lo sube en reposo", () => {
-    const { unmount } = render(<TutorMascot label={null} mood="idle" />);
-    const idleLid = Number(
+  it("baja el párpado al sonreír más que cuando está pensando", () => {
+    const { unmount } = render(<TutorMascot label={null} mood="thinking" />);
+    const thinkingLid = Number(
       screen
         .getByTestId("tutor-mascot")
         .querySelector(".tutor-mascot-lid")
@@ -102,7 +102,7 @@ describe("TutorMascot", () => {
         ?.getAttribute("cy"),
     );
 
-    expect(happyLid).toBeLessThan(idleLid);
+    expect(happyLid).toBeLessThan(thinkingLid);
   });
 
   it("aplica el tamaño pedido al SVG", () => {
