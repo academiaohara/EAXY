@@ -2,14 +2,8 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  DumbbellIcon,
-  PlayIcon,
-  RotateCcwIcon,
-  SparklesIcon,
-} from "lucide-react";
+import { CheckIcon, RotateCcwIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   getLessonProgressStatus,
   type LessonProgressStatus,
@@ -18,36 +12,18 @@ import { resolveInteractiveLessonHref, resolveLessonHref } from "@/lib/curriculu
 import {
   readPersistedInteractiveLesson,
   shouldOfferInteractiveLessonResume,
+  summarizeInteractiveLessonProgress,
 } from "@/lib/local-progress/interactive-lesson-state";
 import { useLocalProgress } from "@/lib/local-progress/use-local-progress";
 import { cn } from "@/lib/utils";
 import type { LessonSummary } from "@/lib/curriculum/types";
 
-const STATUS_LABELS: Record<LessonProgressStatus, string> = {
+const STATUS_TAG_LABELS: Record<LessonProgressStatus, string> = {
   completed: "Completada",
   incomplete: "Incompleta",
   started: "En curso",
-  available: "Disponible",
+  available: "Sin empezar",
 };
-
-const STATUS_CHIP_STYLES: Record<LessonProgressStatus, string> = {
-  completed: "bg-white/20 text-white",
-  incomplete: "bg-cobalt-tint text-cobalt",
-  started: "bg-cobalt-tint text-cobalt",
-  available: "bg-slate-100 text-slate-500",
-};
-
-/** Corte diagonal en el borde interior de cada mitad (~75 % / ~25 % con hueco). */
-const CONTINUE_PIECE_CLIP =
-  "[clip-path:polygon(0_0,100%_0,calc(100%-0.7rem)_100%,0_100%)]";
-const RESTART_PIECE_CLIP = "[clip-path:polygon(0.7rem_0,100%_0,100%_100%,0_100%)]";
-
-function lessonMetaLabel(lesson: LessonSummary): string {
-  if (lesson.kind === "interactive") {
-    return lesson.stepCount ? `${lesson.stepCount} pasos guiados` : "Lección guiada";
-  }
-  return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
-}
 
 type LessonPathNodeProps = {
   lesson: LessonSummary;
@@ -56,217 +32,220 @@ type LessonPathNodeProps = {
   isNextTarget: boolean;
 };
 
+function lessonStepsMeta(lesson: LessonSummary): string {
+  if (lesson.kind === "interactive") {
+    return lesson.stepCount ? `${lesson.stepCount} pasos guiados` : "Lección guiada";
+  }
+  return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
+}
+
 export function LessonPathNode({ lesson, position, isLast, isNextTarget }: LessonPathNodeProps) {
   const localStore = useLocalProgress();
 
   const status = getLessonProgressStatus(lesson);
   const isInteractive = lesson.kind === "interactive";
+  const interactiveSlug = lesson.interactiveSlug;
+  const stepCount = lesson.stepCount ?? 0;
   const isInProgress = status === "started" || status === "incomplete";
   const isCurrent = isInProgress || (isNextTarget && status !== "completed");
-  const isUpcoming = status === "available" && !isCurrent;
-  const connectorBrand = status === "completed";
+  const isCompleted = status === "completed";
+  const connectorBrand = isCompleted;
 
-  const stepCount = lesson.stepCount ?? 0;
-  const interactiveSlug = lesson.interactiveSlug;
-  const offersResume = useMemo(() => {
+  const interactiveProgress = useMemo(() => {
     if (!isInteractive || !interactiveSlug || stepCount <= 0) {
-      return false;
+      return null;
     }
-    return shouldOfferInteractiveLessonResume(
-      readPersistedInteractiveLesson(interactiveSlug, stepCount),
-      stepCount,
-    );
+    const saved = readPersistedInteractiveLesson(interactiveSlug, stepCount);
+    return {
+      saved,
+      summary: summarizeInteractiveLessonProgress(saved, stepCount),
+      offersResume: shouldOfferInteractiveLessonResume(saved, stepCount),
+    };
   }, [interactiveSlug, isInteractive, localStore, stepCount]);
 
-  const cardSurfaceClass = cn(
-    "group relative flex items-center gap-4 overflow-hidden rounded-[1.35rem] border bg-paper-raised p-3.5 shadow-sm outline-none transition-all sm:gap-5 sm:p-4",
-    status === "completed" &&
-      "border-cobalt bg-cobalt hover:border-cobalt/90 hover:bg-cobalt/95 focus-visible:ring-cobalt/50",
-    status !== "completed" &&
-      isCurrent &&
-      "border-slate-200 hover:border-cobalt/45 focus-visible:ring-cobalt/40",
-    status !== "completed" &&
-      !isCurrent &&
-      "border-slate-200/90 hover:border-cobalt/35 focus-visible:ring-cobalt/40",
-  );
+  const continueHref =
+    isInteractive && interactiveSlug
+      ? resolveInteractiveLessonHref(interactiveSlug, "continue")
+      : resolveLessonHref(lesson.id);
 
-  const splitSurfaceClass = cn(
-    "border bg-paper-raised shadow-sm outline-none transition-all focus-visible:ring-2",
-    status === "completed" &&
-      "border-cobalt bg-cobalt hover:border-cobalt/90 focus-visible:ring-cobalt/50",
-    status !== "completed" &&
-      isCurrent &&
-      "border-slate-200 hover:border-cobalt/45 focus-visible:ring-cobalt/40",
-    status !== "completed" &&
-      !isCurrent &&
-      "border-slate-200/90 hover:border-cobalt/35 focus-visible:ring-cobalt/40",
-  );
+  const restartHref =
+    isInteractive && interactiveSlug
+      ? resolveInteractiveLessonHref(interactiveSlug, "restart")
+      : null;
 
-  const continueHoverClass =
-    status === "completed"
-      ? "hover:-translate-y-0.5 hover:bg-cobalt/95 hover:shadow-md"
-      : "hover:-translate-y-0.5 hover:border-cobalt/45 hover:bg-cobalt/[0.04] hover:shadow-md";
-  const restartHoverClass =
-    status === "completed"
-      ? "hover:-translate-y-0.5 hover:bg-cobalt/95 hover:shadow-md"
-      : "hover:-translate-y-0.5 hover:border-cobalt/40 hover:bg-slate-900/[0.04] hover:shadow-md";
+  const showStepTrack =
+    isInteractive &&
+    stepCount > 0 &&
+    interactiveProgress &&
+    (isInProgress || interactiveProgress.offersResume);
 
-  const body = (
-    <>
-      <span
-        className={cn(
-          "relative z-[1] flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] transition-colors sm:size-12",
-          status === "completed" && "border-white bg-white/10 text-white",
-          status !== "completed" &&
-            isCurrent &&
-            "border-cobalt bg-white text-cobalt shadow-[0_0_0_4px_rgba(67,83,255,0.1)]",
-          status !== "completed" &&
-            !isCurrent &&
-            "border-slate-200 bg-white text-slate-300 group-hover/card:border-cobalt/45 group-hover/card:text-cobalt/80",
-        )}
-        aria-hidden
-      >
-        {status === "completed" ? (
-          <CheckIcon className="size-5" strokeWidth={3} />
-        ) : isInteractive ? (
-          <SparklesIcon className="size-5" />
-        ) : (
-          <DumbbellIcon className="size-5" />
-        )}
-      </span>
+  const primaryLabel = (() => {
+    if (isInteractive && interactiveProgress?.offersResume) {
+      return isCompleted || interactiveProgress.summary.finished ? "Ver la lección" : "Continuar";
+    }
+    if (isCompleted) {
+      return "Repasar";
+    }
+    return "Empezar";
+  })();
 
-      <span className="relative z-[1] min-w-0 flex-1 pr-2">
-        <span className="flex flex-wrap items-center gap-2">
-          <span
-            className={cn(
-              "text-[11px] font-semibold tabular-nums tracking-wide",
-              status === "completed" ? "text-white/75" : isUpcoming ? "text-slate-400" : "text-slate-400",
-            )}
-          >
-            {String(position).padStart(2, "0")}
-          </span>
-          {status !== "available" ? (
-            <span
-              className={cn(
-                "inline-flex rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]",
-                STATUS_CHIP_STYLES[status],
-              )}
-            >
-              {STATUS_LABELS[status]}
-            </span>
-          ) : null}
-        </span>
-        <span
-          className={cn(
-            "mt-1 block font-heading text-base font-semibold leading-snug sm:text-[1.05rem]",
-            status === "completed"
-              ? "text-white"
-              : isUpcoming
-                  ? "text-slate-500 group-hover/card:text-slate-600"
-                  : "text-ink group-hover/card:text-cobalt",
-          )}
-        >
-          {lesson.title.replace(/^\d+\.\s*/, "")}
-        </span>
-        <span
-          className={cn(
-            "mt-0.5 block text-xs",
-            status === "completed"
-              ? "text-white/75"
-              : isUpcoming
-                ? "text-slate-400"
-                : "text-muted-foreground",
-          )}
-        >
-          {lessonMetaLabel(lesson)}
-        </span>
-      </span>
+  const metaDetail = (() => {
+    if (showStepTrack && interactiveProgress) {
+      const { summary } = interactiveProgress;
+      const currentStep = Math.min(summary.furthestStepIndex + 1, summary.stepCount);
+      return `Paso ${currentStep} de ${summary.stepCount}`;
+    }
+    return lessonStepsMeta(lesson);
+  })();
 
-      {!offersResume ? (
-        <ChevronRightIcon
-          className={cn(
-            "relative z-[1] size-5 shrink-0 transition-transform group-hover/card:translate-x-0.5",
-            status === "completed"
-              ? "text-white/70 group-hover/card:text-white"
-              : isUpcoming
-                ? "text-slate-300"
-                : "text-slate-300 group-hover/card:text-cobalt",
-          )}
-          aria-hidden
-        />
-      ) : null}
-    </>
-  );
+  const title = lesson.title.replace(/^\d+\.\s*/, "");
 
   return (
-    <li className="relative">
+    <li
+      className={cn(
+        "relative grid grid-cols-[2.75rem_minmax(0,1fr)] items-start gap-4 pb-3.5 sm:grid-cols-[3rem_minmax(0,1fr)]",
+        isCurrent && !isCompleted && "z-[1]",
+      )}
+    >
       {!isLast ? (
         <span
           className={cn(
-            "pointer-events-none absolute left-[2.125rem] top-[calc(100%-0.25rem)] z-0 h-[calc(0.75rem+2px)] w-0.5 -translate-x-1/2 sm:left-[2.5rem]",
-            connectorBrand ? "bg-cobalt" : "bg-slate-300",
+            "pointer-events-none absolute left-[1.375rem] top-11 z-0 w-0.5 -translate-x-1/2 sm:left-6 sm:top-12",
+            connectorBrand ? "bottom-0 bg-cobalt" : "h-[calc(100%-0.5rem)] bg-slate-300",
           )}
           aria-hidden
         />
       ) : null}
 
-      {offersResume && interactiveSlug ? (
-        <div
-          className="flex min-w-0 items-stretch gap-2"
-          data-testid={`lesson-link-${lesson.id}`}
-        >
-          <Link
-            href={resolveInteractiveLessonHref(interactiveSlug, "continue")}
-            aria-label={`Continuar: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
+      <div
+        className={cn(
+          "relative z-[1] flex size-11 items-center justify-center rounded-full border-2 text-[15px] font-bold tabular-nums sm:size-12",
+          isCompleted && "border-cobalt bg-cobalt text-white",
+          !isCompleted &&
+            isCurrent &&
+            "border-cobalt bg-cobalt text-white shadow-[0_0_0_6px_rgba(67,83,255,0.12)]",
+          !isCompleted &&
+            !isCurrent &&
+            "border-slate-200 bg-paper-raised text-muted-foreground",
+        )}
+        aria-hidden
+      >
+        {isCompleted ? <CheckIcon className="size-5" strokeWidth={3} /> : position}
+      </div>
+
+      <div
+        className={cn(
+          "relative z-[1] flex min-w-0 items-center gap-3 rounded-2xl border bg-paper-raised p-4 shadow-sm",
+          isCompleted && "border-cobalt bg-cobalt text-white shadow-md",
+          !isCompleted &&
+            isCurrent &&
+            "border-cobalt shadow-[0_8px_24px_-12px_rgba(67,83,255,0.45)]",
+          !isCompleted && !isCurrent && "border-slate-200/90",
+        )}
+        data-testid={`lesson-link-${lesson.id}`}
+      >
+        <div className="min-w-0 flex-1">
+          <p
             className={cn(
-              "group/card group/continue flex min-w-0 flex-[3] items-center gap-4 rounded-l-[1.35rem] p-3.5 sm:gap-5 sm:p-4",
-              splitSurfaceClass,
-              CONTINUE_PIECE_CLIP,
-              continueHoverClass,
+              "font-heading text-base font-semibold leading-snug",
+              isCompleted ? "text-white" : "text-ink",
             )}
-            data-testid={`lesson-link-continue-${lesson.id}`}
           >
-            {body}
-            <PlayIcon
-              className={cn(
-                "size-6 shrink-0 opacity-45 transition-opacity group-hover/continue:opacity-80 sm:size-7",
-                status === "completed" ? "text-white/85" : "text-cobalt/55",
-              )}
-              aria-hidden
-            />
-          </Link>
-          <Link
-            href={resolveInteractiveLessonHref(interactiveSlug, "restart")}
-            aria-label={`Empezar de cero: ${lesson.title.replace(/^\d+\.\s*/, "")}`}
+            {title}
+          </p>
+          <div
             className={cn(
-              "group/restart flex w-[min(26%,6.75rem)] shrink-0 items-center justify-center rounded-r-[1.35rem] p-3 sm:p-4",
-              splitSurfaceClass,
-              RESTART_PIECE_CLIP,
-              restartHoverClass,
+              "mt-1 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px]",
+              isCompleted ? "text-white/80" : "text-muted-foreground",
             )}
-            data-testid={`lesson-link-restart-${lesson.id}`}
           >
-            <RotateCcwIcon
+            <span
               className={cn(
-                "size-6 opacity-55 transition-opacity group-hover/restart:opacity-90 sm:size-7",
-                status === "completed" ? "text-white/80" : "text-slate-500",
+                "inline-flex rounded-full px-2.5 py-0.5 text-xs font-semibold",
+                isCompleted && "bg-white/20 text-white",
+                !isCompleted &&
+                  isCurrent &&
+                  "bg-cobalt-tint text-cobalt",
+                !isCompleted &&
+                  !isCurrent &&
+                  "bg-slate-100 text-slate-500",
               )}
+            >
+              {STATUS_TAG_LABELS[status]}
+            </span>
+            <span>{metaDetail}</span>
+          </div>
+
+          {showStepTrack ? (
+            <div
+              className="mt-2.5 flex max-w-[16.25rem] gap-0.5"
               aria-hidden
-            />
-          </Link>
+              data-testid={`lesson-step-track-${lesson.id}`}
+            >
+              {Array.from({ length: stepCount }, (_, index) => {
+                const { completedStepCount, furthestStepIndex } = interactiveProgress!.summary;
+                const filled =
+                  index < completedStepCount ||
+                  (completedStepCount === 0 && index <= furthestStepIndex) ||
+                  (index === completedStepCount && index <= furthestStepIndex);
+                return (
+                  <span
+                    key={index}
+                    className={cn(
+                      "h-1 flex-1 rounded-full",
+                      filled
+                        ? isCompleted
+                          ? "bg-white/90"
+                          : "bg-cobalt"
+                        : isCompleted
+                          ? "bg-white/25"
+                          : "bg-slate-200",
+                    )}
+                  />
+                );
+              })}
+            </div>
+          ) : null}
         </div>
-      ) : (
-        <Link
-          href={resolveLessonHref(lesson.id)}
-          data-testid={`lesson-link-${lesson.id}`}
-          className={cn(
-            cardSurfaceClass,
-            "group/card hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2",
-          )}
-        >
-          {body}
-        </Link>
-      )}
+
+        <div className="flex shrink-0 items-center gap-2">
+          <Button
+            nativeButton={false}
+            variant={isCurrent && !isCompleted ? "default" : "outline"}
+            size="sm"
+            className={cn(
+              "rounded-[10px] px-4 font-semibold",
+              isCompleted &&
+                "border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white",
+            )}
+            render={<Link href={continueHref} data-testid={`lesson-link-continue-${lesson.id}`} />}
+          >
+            {primaryLabel}
+          </Button>
+
+          {restartHref ? (
+            <Button
+              nativeButton={false}
+              variant="ghost"
+              size="icon-sm"
+              className={cn(
+                "size-9 rounded-[10px] text-muted-foreground hover:bg-slate-100 hover:text-ink",
+                isCompleted && "text-white/75 hover:bg-white/15 hover:text-white",
+              )}
+              render={
+                <Link
+                  href={restartHref}
+                  aria-label={`Reiniciar: ${title}`}
+                  title="Reiniciar"
+                  data-testid={`lesson-link-restart-${lesson.id}`}
+                />
+              }
+            >
+              <RotateCcwIcon className="size-5" aria-hidden />
+            </Button>
+          ) : null}
+        </div>
+      </div>
     </li>
   );
 }
