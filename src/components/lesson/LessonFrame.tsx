@@ -51,6 +51,8 @@ export function LessonFrame({
   ...presenterProps
 }: LessonFrameProps) {
   const [slidesOpen, setSlidesOpen] = useState(false);
+  const [slidesRailHovered, setSlidesRailHovered] = useState(false);
+  const slidesLayoutExpanded = slidesOpen || slidesRailHovered;
 
   const { header, overlays } = useLessonPresenterChrome({
     ...presenterProps,
@@ -59,6 +61,7 @@ export function LessonFrame({
     presenterNav,
     slidesOpen,
     onSlidesOpenChange: setSlidesOpen,
+    onSlidesRailHoverChange: setSlidesRailHovered,
   });
 
   const isCorrect = feedback === "correct";
@@ -72,8 +75,7 @@ export function LessonFrame({
   return (
     <div
       className={cn(
-        "lesson-stage-theme-board relative isolate flex h-full min-h-0 w-full flex-col overflow-hidden bg-[color:var(--stage-surface,#1a2332)] transition-[padding] duration-300",
-        slidesOpen && "max-lg:pr-0 lg:pr-[17rem]",
+        "lesson-stage-theme-board relative isolate flex h-full min-h-0 w-full flex-col overflow-hidden bg-[color:var(--stage-surface,#1a2332)]",
         className,
       )}
       data-testid="lesson-frame"
@@ -102,7 +104,16 @@ export function LessonFrame({
         )}
         data-testid="lesson-step-panel"
       >
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden" onClick={boardClickAdvance}>
+        <div
+          className={cn(
+            "flex min-h-0 flex-1 flex-col overflow-hidden transition-[padding] duration-300 ease-out",
+            "pl-3 pr-[2.75rem] pt-1 sm:pl-4 sm:pr-[3rem]",
+            slidesLayoutExpanded && "pl-4 pr-[min(13.5rem,calc(100%-1.5rem))] sm:pl-5 sm:pr-[min(14rem,calc(100%-2rem))]",
+          )}
+          data-testid="lesson-step-content-inset"
+          data-slides-expanded={slidesLayoutExpanded ? "true" : "false"}
+          onClick={boardClickAdvance}
+        >
           {children}
         </div>
       </div>
