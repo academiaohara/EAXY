@@ -23,9 +23,7 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   const whiteCard = page.locator('[data-testid="naturales-numeracion-contar-diez"] .bg-white');
   await expect(whiteCard).toHaveCount(0);
 
-  await page.getByTestId("lesson-slides-toggle").click();
   await expect(page.getByTestId("lesson-slides-sidebar")).toBeVisible();
+  await page.getByTestId("lesson-slide-thumb-1").hover();
   await page.screenshot({ path: "/opt/cursor/artifacts/lesson-blackboard-contar-diez.png", fullPage: false });
-
-  await page.getByTestId("lesson-slides-toggle").click();
 });

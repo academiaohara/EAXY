@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { StarIcon } from "lucide-react";
 import {
   useLessonPresenterChrome,
@@ -10,10 +9,7 @@ import { lessonStageSurfaceClassName } from "@/lib/lesson/stage-surface";
 import { cn } from "@/lib/utils";
 import type { FeedbackStatus } from "@/lib/lesson/types";
 
-type LessonFrameProps = Omit<
-  LessonPresenterChromeProps,
-  "slidesOpen" | "onSlidesOpenChange"
-> & {
+type LessonFrameProps = LessonPresenterChromeProps & {
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
   overlay?: React.ReactNode;
@@ -49,18 +45,11 @@ export function LessonFrame({
   footerCenter,
   ...presenterProps
 }: LessonFrameProps) {
-  const [slidesOpen, setSlidesOpen] = useState(false);
-  const [slidesRailHovered, setSlidesRailHovered] = useState(false);
-  const slidesLayoutExpanded = slidesOpen || slidesRailHovered;
-
   const { header, overlays } = useLessonPresenterChrome({
     ...presenterProps,
     feedback,
     footerCenter,
     presenterNav,
-    slidesOpen,
-    onSlidesOpenChange: setSlidesOpen,
-    onSlidesRailHoverChange: setSlidesRailHovered,
   });
 
   const isCorrect = feedback === "correct";
@@ -100,12 +89,10 @@ export function LessonFrame({
       >
         <div
           className={cn(
-            "flex min-h-0 flex-1 flex-col overflow-hidden transition-[padding] duration-300 ease-out",
-            "pl-3 pr-[2.75rem] pt-1 sm:pl-4 sm:pr-[3rem]",
-            slidesLayoutExpanded && "pl-4 pr-[min(13.5rem,calc(100%-1.5rem))] sm:pl-5 sm:pr-[min(14rem,calc(100%-2rem))]",
+            "flex min-h-0 flex-1 flex-col overflow-hidden",
+            "pl-3 pr-[calc(2.75rem+56px)] pt-1 sm:pl-4 sm:pr-[calc(3rem+56px)]",
           )}
           data-testid="lesson-step-content-inset"
-          data-slides-expanded={slidesLayoutExpanded ? "true" : "false"}
         >
           {children}
         </div>
