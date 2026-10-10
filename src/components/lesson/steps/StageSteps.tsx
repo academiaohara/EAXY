@@ -311,13 +311,14 @@ export function NarrateStepView({
   );
 
   return (
-    <div data-testid="lesson-narrate-step">
+    <div className="flex min-h-0 flex-1 flex-col" data-testid="lesson-narrate-step">
       {isMultiplicacionMano ? <LessonFooterCenterSlot>{footerControls}</LessonFooterCenterSlot> : null}
       <StageShell
         theme={theme}
         definitionBox={step.definitionBox}
         title={step.title}
         stage={stage}
+        stageClassName="min-h-[12rem]"
       />
     </div>
   );

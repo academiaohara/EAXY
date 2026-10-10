@@ -27,28 +27,29 @@ export function StageViewport({
   return (
     <div
       className={cn(
-        "flex flex-col gap-5",
+        "flex min-h-0 flex-1 flex-col gap-4",
         theme === "board" && "lesson-stage-theme-board",
         className,
       )}
       data-lesson-stage-theme={theme}
     >
-      {header}
+      {header ? <div className="shrink-0">{header}</div> : null}
       {stage ? (
         <div
           className={cn(
-            "w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
-            theme === "paper" && "overflow-hidden",
+            "flex min-h-0 w-full flex-1 flex-col overflow-hidden",
+            theme === "paper" &&
+              "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6",
             theme === "board" &&
-              "overflow-visible border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
+              "rounded-xl border border-[color:var(--stage-border)] bg-[color:var(--stage-surface)] p-3 text-[color:var(--stage-ink)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-4",
             stageClassName,
           )}
           data-testid="lesson-stage-surface"
         >
-          {stage}
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden">{stage}</div>
         </div>
       ) : null}
-      {children}
+      {children ? <div className="shrink-0">{children}</div> : null}
     </div>
   );
 }

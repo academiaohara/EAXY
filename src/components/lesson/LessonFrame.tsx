@@ -21,7 +21,7 @@ type LessonFrameProps = {
   totalStars?: number;
   feedback?: FeedbackStatus | null;
   children: React.ReactNode;
-  /** Pie con las acciones del paso, dentro del panel para que el brillo lo rodee todo. */
+  /** Pie flotante con las acciones del paso. */
   footer?: React.ReactNode;
   /** Capa flotante sobre el contenido (el tutor), fuera del flujo del paso. */
   overlay?: React.ReactNode;
@@ -30,19 +30,16 @@ type LessonFrameProps = {
   className?: string;
 };
 
-/** Ancho útil compartido por cabecera, contenido y pie: casi todo el viewport. */
-export const LESSON_SHELL_WIDTH = "mx-auto w-full max-w-[112rem] px-4 sm:px-6 lg:px-10";
-
-function LessonStarCounter({ stars, totalStars }: { stars: number; totalStars?: number }) {
+export function LessonStarCounter({ stars, totalStars }: { stars: number; totalStars?: number }) {
   return (
     <div
-      className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 text-sm font-semibold text-amber-600 shadow-sm ring-1 ring-slate-200/70"
+      className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-amber-600 shadow-sm ring-1 ring-slate-200/60"
       data-testid="lesson-stars"
       aria-label={
         totalStars ? `${stars} de ${totalStars} estrellas` : `${stars} estrellas conseguidas`
       }
     >
-      <StarIcon className="size-4 fill-amber-400 text-amber-400" aria-hidden />
+      <StarIcon className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
       <span className="tabular-nums">
         {stars}
         {totalStars ? <span className="text-amber-600/60">/{totalStars}</span> : null}
@@ -60,8 +57,6 @@ export function LessonFrame({
   completedSteps,
   visitedSteps,
   onGoToStep,
-  stars = 0,
-  totalStars,
   feedback = null,
   children,
   footer,
@@ -78,75 +73,74 @@ export function LessonFrame({
       data-testid="lesson-frame"
       data-feedback={feedback ?? "none"}
     >
-      {/* Brillo de fondo alrededor del panel al acertar o fallar. */}
       <div
         className={cn("lesson-feedback-backdrop lesson-feedback-backdrop-correct", isCorrect && "is-visible")}
         aria-hidden
       />
       <div
-        className={cn("lesson-feedback-backdrop lesson-feedback-backdrop-incorrect", isIncorrect && "is-visible")}
+        className={cn(
+          "lesson-feedback-backdrop lesson-feedback-backdrop-incorrect",
+          isIncorrect && "is-visible",
+        )}
         aria-hidden
       />
 
-      <div className={cn("flex shrink-0 items-center gap-3 pb-3 pt-3 sm:gap-4", LESSON_SHELL_WIDTH)}>
+      <header className="flex shrink-0 items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6">
         <Button
           variant="ghost"
           size="icon-lg"
           nativeButton={false}
-          className="rounded-full text-ink-muted hover:bg-cobalt-tint hover:text-cobalt active:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_18%)] active:text-cobalt"
+          className="shrink-0 rounded-full text-ink-muted hover:bg-cobalt-tint hover:text-cobalt active:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_18%)] active:text-cobalt"
           aria-label="Cerrar lección"
           render={<Link href={closeHref} data-testid="lesson-close" />}
         >
           <XIcon className="size-5" />
         </Button>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-          <div className="flex items-baseline justify-between gap-3">
-            <p className="truncate text-xs font-medium text-slate-500 sm:text-sm">{lessonTitle}</p>
-            <p className="shrink-0 text-[11px] font-semibold tabular-nums text-slate-400">
-              Paso {currentStep} de {totalSteps}
-            </p>
-          </div>
-          <LessonProgressHeader
-            currentIndex={currentStepIndex ?? currentStep - 1}
-            total={totalSteps}
-            completed={completedSteps ?? []}
-            visited={visitedSteps ?? []}
-            onGoToStep={onGoToStep ?? (() => {})}
-          />
-          <p className="text-[10px] leading-snug text-slate-400">
-            Pulsa un tramo visitado para ir a ese paso. Verde = superado; ámbar = visitado sin completar.
-          </p>
-        </div>
+        <LessonProgressHeader
+          currentIndex={currentStepIndex ?? currentStep - 1}
+          total={totalSteps}
+          completed={completedSteps ?? []}
+          visited={visitedSteps ?? []}
+          onGoToStep={onGoToStep ?? (() => {})}
+        />
 
-        <LessonStarCounter stars={stars} totalStars={totalStars} />
-      </div>
+        <span className="sr-only">{lessonTitle}</span>
+      </header>
 
-      <div className={cn("flex min-h-0 flex-1 flex-col pb-4", LESSON_SHELL_WIDTH)}>
+      <div className="relative flex min-h-0 flex-1 flex-col px-4 pb-4 sm:px-6">
         <div
           className={cn(
-            "flex min-h-0 flex-1 flex-col overflow-hidden rounded-3xl border-2 bg-paper-raised shadow-sm transition-[border-color,box-shadow] duration-300",
-            isCorrect && "lesson-panel-glow-correct border-emerald-400",
-            isIncorrect && "lesson-panel-glow-incorrect border-amber-400",
-            !feedback && "border-white",
+            "lesson-whiteboard flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border bg-paper-raised shadow-sm transition-[border-color,box-shadow] duration-300",
+            isCorrect && "lesson-panel-glow-correct border-emerald-400/80",
+            isIncorrect && "lesson-panel-glow-incorrect border-amber-400/80",
+            !feedback && "border-white/90",
           )}
           data-testid="lesson-step-panel"
         >
-          <div className="scrollbar-subtle min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-6 sm:px-10 sm:py-8 lg:px-14">
+          <div className="lesson-whiteboard-content flex min-h-0 flex-1 flex-col overflow-hidden px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
             {children}
           </div>
-          {footer}
         </div>
       </div>
+
+      {footer ? (
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4 sm:px-6 sm:pb-5"
+          data-testid="lesson-footer-slot"
+        >
+          <div className="lesson-floating-footer pointer-events-auto w-full max-w-5xl opacity-[0.52] transition-opacity duration-200 hover:opacity-100 focus-within:opacity-100">
+            {footer}
+          </div>
+        </div>
+      ) : null}
 
       {overlay ? (
         <div
           className={cn(
-            "pointer-events-none absolute z-30 transition-[left,right] duration-300",
-            footer ? "bottom-[6.75rem]" : "bottom-6",
-            tutorPanelOpen
-              ? "right-4 sm:right-8 lg:right-12"
-              : "left-4 sm:left-8 lg:left-12",
+            "pointer-events-none absolute z-30 transition-[left,right,bottom] duration-300",
+            footer ? "bottom-[5.75rem] sm:bottom-[6rem]" : "bottom-6",
+            tutorPanelOpen ? "right-4 sm:right-8 lg:right-12" : "left-4 sm:left-8 lg:left-12",
           )}
         >
           {overlay}
