@@ -138,7 +138,7 @@ export function LessonTutorDock({
         <button
           type="button"
           onClick={onOpenPanel}
-          className="pointer-events-auto relative shrink-0 rounded-full drop-shadow-[0_5px_12px_rgba(0,0,0,0.28)] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+          className="pointer-events-auto relative shrink-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
           aria-label={`Ver los mensajes de ${TUTOR_NICKNAME}`}
           aria-expanded={false}
           data-testid="lesson-tutor-button"
