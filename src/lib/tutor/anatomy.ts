@@ -1,14 +1,20 @@
 /**
- * Medidas del tutor tomadas sobre la ilustración original
- * (`public/tutor/tutor-body.webp`, un recorte cuadrado sin fondo al que se le
- * han borrado ojos y cejas para poder animarlos por encima).
+ * Medidas del tutor tomadas sobre la ilustración del cuerpo
+ * (`public/tutor/furball-azul-indigo-sin-ojos.png`, recorte cuadrado sin ojos ni cejas).
  *
  * Todo está en unidades del `viewBox` 0 0 200 200 del componente.
  */
 
-export const TUTOR_BODY_IMAGE = "/tutor/tutor-body.webp";
+export const TUTOR_BODY_IMAGE = "/tutor/furball-azul-indigo-sin-ojos.png";
 
 export const TUTOR_VIEWBOX = 200;
+
+/** Pelo del cuerpo (índigo / cobalt suave, para párpados). */
+export const TUTOR_FUR_COLORS = {
+  highlight: "#4a56a8",
+  base: "#2f3678",
+  shade: "#1e2452",
+} as const;
 
 export type TutorEyeAnatomy = {
   cx: number;
@@ -26,23 +32,23 @@ export type TutorEyeAnatomy = {
 
 export const TUTOR_EYES: readonly TutorEyeAnatomy[] = [
   {
-    cx: 79.9,
-    cy: 98.8,
-    rx: 22,
-    ry: 23.3,
-    rotation: -6,
-    pupilRadius: 9.8,
-    pupilBias: { x: 4.2, y: 2.4 },
+    cx: 80,
+    cy: 103,
+    rx: 19.5,
+    ry: 21,
+    rotation: -5,
+    pupilRadius: 9.2,
+    pupilBias: { x: 3.8, y: 2.2 },
     glint: { x: -0.36, y: -0.4 },
   },
   {
-    cx: 141.6,
-    cy: 91.3,
-    rx: 19.3,
-    ry: 21.8,
+    cx: 141,
+    cy: 96,
+    rx: 17.5,
+    ry: 19.5,
     rotation: 5,
-    pupilRadius: 9.4,
-    pupilBias: { x: -3.4, y: 3.2 },
+    pupilRadius: 8.8,
+    pupilBias: { x: -3.2, y: 2.8 },
     glint: { x: -0.34, y: -0.42 },
   },
 ] as const;
@@ -53,6 +59,6 @@ export const TUTOR_EYE_COLORS = {
   shade: "#e6dcc8",
   outline: "#0a0a0a",
   pupil: "#101010",
-  /** Pelo que rodea la cara: párpados y cejas usan este tono. */
-  fur: "#171717",
+  /** Pelo que rodea la cara: párpados y cejas usan el tono del cuerpo. */
+  fur: TUTOR_FUR_COLORS.shade,
 } as const;
