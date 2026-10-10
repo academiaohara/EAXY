@@ -6,7 +6,6 @@ import {
   TUTOR_BODY_IMAGE,
   TUTOR_EYES,
   TUTOR_EYE_COLORS,
-  TUTOR_FUR_COLORS,
   TUTOR_VIEWBOX,
 } from "@/lib/tutor/anatomy";
 import { getTutorExpression } from "@/lib/tutor/moods";
@@ -125,47 +124,19 @@ export function TutorMascot({
               <ellipse rx={eye.rx} ry={eye.ry} />
             </clipPath>
           ))}
-
-          <mask id={`${uid}-body-mask`} maskUnits="userSpaceOnUse">
-            <image
-              href={TUTOR_BODY_IMAGE}
-              x={0}
-              y={0}
-              width={TUTOR_VIEWBOX}
-              height={TUTOR_VIEWBOX}
-              preserveAspectRatio="xMidYMid meet"
-            />
-          </mask>
-
-          <radialGradient id={`${uid}-body-fill`} cx="38%" cy="32%" r="72%">
-            <stop offset="0%" stopColor={TUTOR_FUR_COLORS.highlight} />
-            <stop offset="52%" stopColor={TUTOR_FUR_COLORS.base} />
-            <stop offset="100%" stopColor={TUTOR_FUR_COLORS.shade} />
-          </radialGradient>
         </defs>
 
         <g className="tutor-mascot-body">
           <g className="tutor-mascot-squash">
             <g className="tutor-mascot-fur">
-              <rect
-                className="tutor-mascot-art"
-                x={0}
-                y={0}
-                width={TUTOR_VIEWBOX}
-                height={TUTOR_VIEWBOX}
-                fill={`url(#${uid}-body-fill)`}
-                mask={`url(#${uid}-body-mask)`}
-              />
               <image
-                className="tutor-mascot-art-texture"
+                className="tutor-mascot-art"
                 href={TUTOR_BODY_IMAGE}
                 x={0}
                 y={0}
                 width={TUTOR_VIEWBOX}
                 height={TUTOR_VIEWBOX}
                 preserveAspectRatio="xMidYMid meet"
-                opacity={0.28}
-                style={{ mixBlendMode: "soft-light" }}
               />
             </g>
 
