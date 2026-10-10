@@ -31,13 +31,35 @@ function escapeHtml(text: string): string {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+const ALLOWED_INLINE_HTML =
+  /<mark class="suma">[\s\S]*?<\/mark>|<mark>[\s\S]*?<\/mark>|<span class="lesson-step-title-accent">[\s\S]*?<\/span>/g;
+
+function maskAllowedInlineHtml(fragment: string): { masked: string; slots: string[] } {
+  const slots: string[] = [];
+  const masked = fragment.replace(ALLOWED_INLINE_HTML, (match) => {
+    const index = slots.length;
+    slots.push(match);
+    return `\u0000HTML${index}\u0000`;
+  });
+  return { masked, slots };
+}
+
+function restoreAllowedInlineHtml(text: string, slots: string[]): string {
+  return slots.reduce(
+    (acc, html, index) => acc.replace(`\u0000HTML${index}\u0000`, html),
+    text,
+  );
+}
+
 function applyBoldMarkdown(fragment: string, conceptLookup?: MathRendererProps["conceptLookup"]): string {
-  return escapeHtml(fragment).replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
+  const { masked, slots } = maskAllowedInlineHtml(fragment);
+  const withBold = escapeHtml(masked).replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
     const conceptId = conceptLookup?.(term);
     return conceptId
       ? `<strong data-concept="${conceptId}" role="button" tabindex="0">${term}</strong>`
       : `<strong>${term}</strong>`;
   });
+  return restoreAllowedInlineHtml(withBold, slots);
 }
 
 /** Renderiza texto con LaTeX inline ($...$) y bloques display opcionales. */

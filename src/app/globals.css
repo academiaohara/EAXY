@@ -111,6 +111,48 @@
   --stage-accent-muted: #83c167;
   --stage-highlight: #ffff00;
   --stage-chalk: #58c4dd;
+  --amber: #ffd866;
+  --amber-bg: rgba(255, 193, 7, 0.22);
+  --teal: #5eead4;
+  --teal-bg: rgba(45, 212, 191, 0.2);
+}
+
+.lesson-stage-theme-board .lesson-step-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  border-left: 5px solid var(--teal);
+  padding-left: 14px;
+}
+
+.lesson-stage-theme-board .lesson-step-title-accent {
+  color: var(--teal);
+}
+
+.lesson-stage-theme-board .lesson-definition-box {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.lesson-stage-theme-board .lesson-definition-box mark {
+  background: var(--amber-bg);
+  color: var(--amber);
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lesson-stage-theme-board .lesson-definition-box mark.suma {
+  background: var(--teal-bg);
+  color: var(--teal);
+}
+
+.lesson-stage-theme-board .lesson-stage-mul-equation {
+  font-size: 1.5rem;
 }
 
 /** Copy oscuro por defecto en el marco de lección; paneles claros usan `.lesson-surface-paper`. */

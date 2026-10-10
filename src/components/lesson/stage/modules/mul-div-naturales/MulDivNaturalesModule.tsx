@@ -21,6 +21,7 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
+import { boardSemanticColors } from "@/lib/lesson/stage/board-semantic-colors";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
@@ -53,6 +54,24 @@ const TICKET_FAN_OFFSET_PX = 16;
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
 const STAGE_MATH = "text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
+
+function latexTealExpression(expression: string): string {
+  return `\\color{${boardSemanticColors.teal}}{${expression}}`;
+}
+
+function latexColoredRepeatedProduct(
+  sumExpression: string,
+  a: number,
+  b: number,
+  total?: number,
+): string {
+  const sum = latexTealExpression(sumExpression);
+  const product = `\\color{${boardSemanticColors.amber}}{${a} \\cdot ${b}}`;
+  if (total !== undefined) {
+    return `$${sum} = ${product} = ${total}$`;
+  }
+  return `$${sum} = ${product}$`;
+}
 
 function SlideBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
@@ -314,14 +333,13 @@ function MultiplicarRepetido({
   const mathText =
     ticketCount >= b
       ? mathPhase >= 2
-        ? `$${fullSum} = ${a} \\cdot ${b} = ${total}$`
+        ? latexColoredRepeatedProduct(fullSum, a, b, total)
         : mathPhase >= 1
-          ? `$${fullSum} = ${a} \\cdot ${b}$`
-          : `$${fullSum}$`
+          ? latexColoredRepeatedProduct(fullSum, a, b)
+          : `$${latexTealExpression(fullSum)}$`
       : ticketCount > 1
-        ? `$${sumParts}$`
+        ? `$${latexTealExpression(sumParts)}$`
         : null;
-  const mathAccent = ticketCount >= b && mathPhase >= 1;
 
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
@@ -345,8 +363,7 @@ function MultiplicarRepetido({
         <p
           className={cn(
             STAGE_MATH,
-            "transition-[color,opacity] duration-500 ease-out",
-            !mathAccent && "text-[color:var(--stage-accent,#6ee7b7)]",
+            "lesson-stage-mul-equation transition-[color,opacity] duration-500 ease-out",
           )}
           aria-live="polite"
         >
