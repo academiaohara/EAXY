@@ -14,7 +14,7 @@ import {
 export function useTutorHoverReaction(enabled: boolean) {
   const [hoverMood, setHoverMood] = useState<TutorHoverReactionMood | null>(null);
   const [hovering, setHovering] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRef = useRef<number | null>(null);
 
   const clearTimer = useCallback(() => {
     if (timerRef.current !== null) {
