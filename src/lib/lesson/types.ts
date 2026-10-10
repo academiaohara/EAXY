@@ -295,13 +295,14 @@ export type SystemGraphToolStep = LessonStepBase & {
   graph: SystemGraphConfig;
 };
 
-export type NaturalesNumeracionToolStep = LessonStepBase & {
-  type: "interactive_tool";
-  tool: "naturales-numeracion";
-  scene: NaturalesNumeracionScene;
-  /** Configuración del ejercicio de redondeo (escena `redondeo-corte`). */
-  roundingExercise?: { n: number; orderId: RoundingOrderId };
-};
+export type NaturalesNumeracionToolStep = LessonStepBase &
+  StageStepFields & {
+    type: "interactive_tool";
+    tool: "naturales-numeracion";
+    scene: NaturalesNumeracionScene;
+    /** Configuración del ejercicio de redondeo (escena `redondeo-corte`). */
+    roundingExercise?: { n: number; orderId: RoundingOrderId };
+  };
 
 export type InteractiveToolStep = SystemGraphToolStep | NaturalesNumeracionToolStep;
 

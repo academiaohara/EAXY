@@ -80,11 +80,6 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
 
   return (
     <div className="space-y-5">
-      <p className="text-sm text-ink-muted">
-        Tres sistemas <strong>aditivos</strong> (se suman signos). Más adelante verás el decimal, donde importa
-        la <strong>posición</strong> de cada cifra.
-      </p>
-
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
         {TABS.map((item) => (
           <button
@@ -97,7 +92,7 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
               "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
               tab === item.id
                 ? "border-cobalt bg-cobalt text-white shadow-sm"
-                : "border-slate-200 bg-white text-ink hover:border-cobalt/40",
+                : "border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45",
               done[item.id] && tab !== item.id && "ring-2 ring-emerald-400/60",
             )}
           >
@@ -107,17 +102,21 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
         ))}
       </div>
 
-      <p className="text-sm font-medium text-cobalt">{TABS.find((t) => t.id === tab)?.subtitle}</p>
+      <p className="text-sm font-medium text-[color:var(--stage-accent,#58c4dd)]">
+        {TABS.find((t) => t.id === tab)?.subtitle}
+      </p>
 
       {tab === "tally" ? (
         <div className="space-y-4">
-          <p className="text-sm text-ink-muted">
+          <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
             Cada objeto deja una marca. Al quinto, se tacha en diagonal el grupo de cuatro. Llega a{" "}
-            <strong className="text-ink">{TARGETS.tally}</strong> marcas.
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.tally}</strong> marcas.
           </p>
           <TallyMarksView count={tallyCount} />
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="text-2xl font-bold tabular-nums text-ink">{tallyCount}</span>
+            <span className="text-2xl font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+              {tallyCount}
+            </span>
             <div className="flex gap-2">
               <Button
                 type="button"
@@ -144,9 +143,11 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
 
       {tab === "egypt" ? (
         <div className="space-y-4">
-          <p className="text-sm text-ink-muted">
-            Forma <strong className="text-ink">{TARGETS.egypt}</strong> con símbolos egipcios. Cada pulso añade un
-            signo; el número es la <strong>suma</strong> de todos (como las letras romanas, pero sin restas).
+          <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
+            Forma{" "}
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.egypt}</strong> con símbolos
+            egipcios. Cada pulso añade un signo; el número es la <strong>suma</strong> de todos (como las letras
+            romanas, pero sin restas).
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {EGYPT_SYMBOLS.map((sym) => (
@@ -156,7 +157,7 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
                 onClick={() =>
                   setState((prev) => ({ ...prev, egyptSymbols: [...prev.egyptSymbols, sym.id] }))
                 }
-                className="flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
+                className="lesson-surface-paper flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
               >
                 <EgyptianNumeralIcon id={sym.id} className="h-12" />
                 <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-900">
@@ -168,7 +169,7 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
               </button>
             ))}
           </div>
-          <div className="grid gap-3 rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+          <div className="lesson-surface-paper grid gap-3 rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
             <div
               className="flex min-h-14 flex-wrap items-center justify-center gap-1.5 sm:justify-start"
               aria-live="polite"
@@ -200,9 +201,10 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
 
       {tab === "roman" ? (
         <div className="space-y-4">
-          <p className="text-sm text-ink-muted">
-            Forma <strong className="text-ink">{TARGETS.roman}</strong> con letras romanas. Si una letra pequeña
-            va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
+          <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
+            Forma{" "}
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.roman}</strong> con letras romanas.
+            Si una letra pequeña va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
           </p>
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
             {ROMAN_KEYS.map(({ key, value }) => (
@@ -210,14 +212,14 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
                 key={key}
                 type="button"
                 onClick={() => setState((prev) => ({ ...prev, romanStr: prev.romanStr + key }))}
-                className="flex flex-col items-center rounded-xl border border-violet-200 bg-violet-50/50 py-3 transition hover:border-violet-400 hover:bg-violet-100/70"
+                className="lesson-surface-paper flex flex-col items-center rounded-xl border border-violet-200 bg-violet-50/50 py-3 transition hover:border-violet-400 hover:bg-violet-100/70"
               >
                 <span className="font-serif text-2xl font-bold text-violet-900">{key}</span>
                 <span className="text-[10px] font-semibold tabular-nums text-violet-700">{value}</span>
               </button>
             ))}
           </div>
-          <div className="grid gap-3 rounded-xl border border-violet-200 bg-violet-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+          <div className="lesson-surface-paper grid gap-3 rounded-xl border border-violet-200 bg-violet-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
             <span className="text-center font-serif text-4xl tracking-[0.2em] text-violet-950 sm:text-left">
               {romanStr || "—"}
             </span>
@@ -239,7 +241,9 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
       ) : null}
 
       {!allDone ? (
-        <p className="text-xs text-ink-muted">Completa los tres retos (✓ en cada pestaña) para continuar.</p>
+        <p className="text-xs text-[color:var(--stage-muted,#94a3b8)]">
+          Completa los tres retos (✓ en cada pestaña) para continuar.
+        </p>
       ) : null}
     </div>
   );

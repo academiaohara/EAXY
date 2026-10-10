@@ -16,31 +16,23 @@ export function DecimalIntroScene({ onReadyChange }: DecimalIntroSceneProps) {
 
   return (
     <div className="space-y-5">
-      <p className="text-center text-sm font-semibold uppercase tracking-wider text-cobalt">
-        Sistema decimal
+      <p className="text-center text-sm font-semibold uppercase tracking-wider text-[color:var(--stage-accent,#58c4dd)]">
+        Los diez dígitos
       </p>
-      <div className="space-y-3 text-sm leading-relaxed text-ink-muted">
-        <p>
-          Usamos <strong className="text-ink">base 10</strong>: con diez símbolos escribimos cualquier cantidad.
-          Es un sistema <strong className="text-ink">posicional</strong>: el valor de una cifra depende del lugar
-          que ocupa (unidades, decenas, centenas…).
-        </p>
-        <p>
-          El <strong className="text-ink">0</strong> indica que en ese orden no hay cantidad y nos permite escribir
-          números como <strong className="text-ink tabular-nums">305</strong> o{" "}
-          <strong className="whitespace-nowrap text-ink tabular-nums">10.040</strong> (diez mil cuarenta).
-        </p>
-        <p>
-          Cada salto hacia la izquierda multiplica por diez; hacia la derecha, divides entre diez. Por eso diez
-          unidades forman una decena, diez decenas una centena, y así sucesivamente.
-        </p>
-      </div>
+      <p className="text-center text-sm leading-relaxed text-[color:var(--stage-muted,#94a3b8)]">
+        Con ellos escribimos cualquier cantidad, como{" "}
+        <strong className="text-[color:var(--stage-ink,#e8edf5)] tabular-nums">305</strong> o{" "}
+        <strong className="whitespace-nowrap text-[color:var(--stage-ink,#e8edf5)] tabular-nums">
+          10.040
+        </strong>{" "}
+        (diez mil cuarenta).
+      </p>
       <div className="flex flex-wrap justify-center gap-2">
         {DIGITS.map((digit) => (
           <span
             key={digit}
             className={cn(
-              "flex size-11 items-center justify-center rounded-xl border-2 border-cobalt/25 bg-cobalt-tint/50 text-lg font-bold tabular-nums text-cobalt sm:size-12 sm:text-xl",
+              "flex size-11 items-center justify-center rounded-xl border-2 border-[color:var(--stage-accent)]/35 bg-[color:var(--stage-accent)]/12 text-lg font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)] sm:size-12 sm:text-xl",
             )}
           >
             {digit}

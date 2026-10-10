@@ -36,7 +36,7 @@ export function TallyMarksView({ count, className }: { count: number; className?
     return (
       <div
         className={cn(
-          "flex min-h-[5rem] items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-4 py-6 text-sm text-ink-muted",
+          "lesson-surface-paper flex min-h-[5rem] items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-4 py-6 text-sm text-ink-muted",
           className,
         )}
       >
@@ -48,7 +48,7 @@ export function TallyMarksView({ count, className }: { count: number; className?
   return (
     <div
       className={cn(
-        "flex min-h-[5rem] flex-wrap items-end gap-x-8 gap-y-4 rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-5",
+        "lesson-surface-paper flex min-h-[5rem] flex-wrap items-end gap-x-8 gap-y-4 rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-5",
         className,
       )}
     >
