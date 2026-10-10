@@ -38,6 +38,11 @@ function escapeHtml(text: string): string {
 const ALLOWED_INLINE_HTML =
   /<mark class="suma">[\s\S]*?<\/mark>|<mark>[\s\S]*?<\/mark>|<span class="lesson-step-title-accent">[\s\S]*?<\/span>/g;
 
+/** Texto legible sin HTML de lección ni marcado **negrita** (p. ej. citas del tutor). */
+export function plainLessonText(text: string): string {
+  return text.replace(/<\/?[^>]+>/g, "").replace(/\*\*/g, "");
+}
+
 function maskAllowedInlineHtml(fragment: string): { masked: string; slots: string[] } {
   const slots: string[] = [];
   const masked = fragment.replace(ALLOWED_INLINE_HTML, (match) => {

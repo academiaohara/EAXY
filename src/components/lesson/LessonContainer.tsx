@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
-import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { MathRenderer, plainLessonText } from "@/components/lesson/MathRenderer";
 import { formatLessonStepTitle } from "@/lib/lesson/presenter-title";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
@@ -82,7 +82,7 @@ const STEP_HELP: HelpContext = { kind: "step" };
 
 /** Cita corta del mensaje por el que pregunta el alumno. */
 function quote(text: string): string {
-  const plain = text.replace(/\*\*/g, "");
+  const plain = plainLessonText(text);
   return plain.length > 70 ? `${plain.slice(0, 67).trimEnd()}…` : plain;
 }
 

@@ -13,6 +13,7 @@ const moodLabels: Record<TutorMood, string> = {
   thinking: "Pensando",
   sad: "Animando",
   surprised: "Sorprendido",
+  annoyed: "Enfadado",
 };
 
 export function TutorShowcase() {

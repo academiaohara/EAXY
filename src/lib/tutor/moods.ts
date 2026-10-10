@@ -1,7 +1,13 @@
 import type { TutorPoint } from "@/lib/tutor/types";
 
 export type TutorMood =
-  "idle" | "happy" | "celebrate" | "thinking" | "sad" | "surprised";
+  | "idle"
+  | "happy"
+  | "celebrate"
+  | "thinking"
+  | "sad"
+  | "surprised"
+  | "annoyed";
 
 export type TutorBodyAnimation = "float" | "bounce" | "tilt" | "droop" | "pop";
 
@@ -29,6 +35,7 @@ export const TUTOR_MOODS: readonly TutorMood[] = [
   "thinking",
   "sad",
   "surprised",
+  "annoyed",
 ] as const;
 
 export const tutorExpressions: Record<TutorMood, TutorExpression> = {
@@ -103,6 +110,18 @@ export const tutorExpressions: Record<TutorMood, TutorExpression> = {
     bodyAnimation: "pop",
     blink: false,
     label: "El tutor está sorprendido",
+  },
+  annoyed: {
+    eyeScaleY: 0.84,
+    lidCoverage: 0.12,
+    pupilOffset: { x: 0, y: 1 },
+    pupilScale: 1.06,
+    browOffset: 5,
+    browRotation: 22,
+    browOpacity: 0.72,
+    bodyAnimation: "tilt",
+    blink: true,
+    label: "El tutor se ha enfadado un poco",
   },
 };
 

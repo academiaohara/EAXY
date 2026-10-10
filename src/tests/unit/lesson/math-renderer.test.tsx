@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { MathRenderer, plainLessonText } from "@/components/lesson/MathRenderer";
 
 describe("MathRenderer", () => {
   it("renders bold around inline LaTeX", () => {
@@ -27,5 +27,24 @@ describe("MathRenderer", () => {
     expect(marks[0]).not.toHaveClass("suma");
     expect(marks[1]?.tagName).toBe("MARK");
     expect(marks[1]).toHaveClass("suma");
+  });
+
+  it("renders allowed title accent spans", () => {
+    render(
+      <MathRenderer text='Multiplicar es <span class="lesson-step-title-accent">repetir grupos</span>' />,
+    );
+    expect(screen.getByText("repetir grupos")).toBeTruthy();
+    expect(screen.queryByText(/lesson-step-title-accent/)).toBeNull();
+  });
+});
+
+describe("plainLessonText", () => {
+  it("strips inline HTML and markdown for tutor quotes", () => {
+    expect(
+      plainLessonText(
+        'Multiplicar es <span class="lesson-step-title-accent">repetir grupos</span>',
+      ),
+    ).toBe("Multiplicar es repetir grupos");
+    expect(plainLessonText("Es **exacta** cuando sobra 0.")).toBe("Es exacta cuando sobra 0.");
   });
 });

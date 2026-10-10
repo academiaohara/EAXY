@@ -74,6 +74,24 @@ function latexColoredRepeatedProduct(
   return `$${sum} = ${product}$`;
 }
 
+function latexTealExpression(expression: string): string {
+  return `\\color{${boardSemanticColors.teal}}{${expression}}`;
+}
+
+function latexColoredRepeatedProduct(
+  sumExpression: string,
+  a: number,
+  b: number,
+  total?: number,
+): string {
+  const sum = latexTealExpression(sumExpression);
+  const product = `\\color{${boardSemanticColors.amber}}{${a} \\cdot ${b}}`;
+  if (total !== undefined) {
+    return `$${sum} = ${product} = ${total}$`;
+  }
+  return `$${sum} = ${product}$`;
+}
+
 function SlideBadge({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <span
