@@ -670,10 +670,10 @@ export function PredictStepView({
   return (
     <StageViewport theme={theme} header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}>
       <section
-        className="lesson-idea-enter rounded-2xl border-2 border-cobalt/15 bg-white p-6 shadow-sm sm:p-8"
+        className="lesson-idea-enter border border-[color:var(--stage-border,#334155)] bg-black/15 p-6 sm:p-8"
         data-testid="lesson-predict-step"
       >
-        <h3 className="mb-4 text-center text-lg font-semibold text-ink">
+        <h3 className="mb-4 text-center text-lg font-semibold text-[color:var(--stage-ink,#e8edf5)]">
           <LessonRichText text={step.question} />
         </h3>
         {step.hint && step.hintHiddenUntilRequested && !checked ? (

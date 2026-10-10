@@ -1,8 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useCallback, useState } from "react";
 import { StarIcon, XIcon } from "lucide-react";
-import { LessonProgressHeader } from "@/components/lesson/LessonProgressHeader";
+import {
+  LessonSlidesSidebar,
+  LessonSlidesToggle,
+  type LessonSlidePreview,
+} from "@/components/lesson/LessonSlidesSidebar";
 import { Button } from "@/components/ui/button";
 import { lessonStageSurfaceClassName } from "@/lib/lesson/stage-surface";
 import { cn } from "@/lib/utils";
@@ -18,6 +23,7 @@ type LessonFrameProps = {
   completedSteps?: boolean[];
   visitedSteps?: boolean[];
   onGoToStep?: (index: number) => void;
+  steps?: LessonSlidePreview[];
   stars?: number;
   totalStars?: number;
   feedback?: FeedbackStatus | null;
@@ -34,7 +40,7 @@ type LessonFrameProps = {
 export function LessonStarCounter({ stars, totalStars }: { stars: number; totalStars?: number }) {
   return (
     <div
-      className="flex shrink-0 items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-amber-600 shadow-sm ring-1 ring-slate-200/60"
+      className="flex shrink-0 items-center gap-1.5 bg-black/25 px-2.5 py-1 text-xs font-semibold text-amber-400 ring-1 ring-[color:var(--stage-border,#334155)]"
       data-testid="lesson-stars"
       aria-label={
         totalStars ? `${stars} de ${totalStars} estrellas` : `${stars} estrellas conseguidas`
@@ -43,7 +49,7 @@ export function LessonStarCounter({ stars, totalStars }: { stars: number; totalS
       <StarIcon className="size-3.5 fill-amber-400 text-amber-400" aria-hidden />
       <span className="tabular-nums">
         {stars}
-        {totalStars ? <span className="text-amber-600/60">/{totalStars}</span> : null}
+        {totalStars ? <span className="text-amber-400/60">/{totalStars}</span> : null}
       </span>
     </div>
   );
@@ -58,6 +64,7 @@ export function LessonFrame({
   completedSteps,
   visitedSteps,
   onGoToStep,
+  steps = [],
   feedback = null,
   children,
   footer,
@@ -65,12 +72,20 @@ export function LessonFrame({
   tutorPanelOpen = false,
   className,
 }: LessonFrameProps) {
+  const [slidesOpen, setSlidesOpen] = useState(false);
+  const toggleSlides = useCallback(() => setSlidesOpen((open) => !open), []);
+
   const isCorrect = feedback === "correct";
   const isIncorrect = feedback === "incorrect";
+  const stepIndex = currentStepIndex ?? currentStep - 1;
 
   return (
     <div
-      className={cn("relative isolate flex h-full min-h-0 w-full flex-col overflow-hidden", className)}
+      className={cn(
+        "lesson-stage-theme-board relative isolate flex h-full min-h-0 w-full flex-col overflow-hidden bg-[color:var(--stage-surface,#1a2332)] transition-[padding] duration-300",
+        slidesOpen && "max-lg:pr-0 lg:pr-[17rem]",
+        className,
+      )}
       data-testid="lesson-frame"
       data-feedback={feedback ?? "none"}
     >
@@ -86,36 +101,29 @@ export function LessonFrame({
         aria-hidden
       />
 
-      <header className="flex shrink-0 items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6">
+      <header className="relative z-50 flex shrink-0 items-center justify-between gap-3 px-4 py-2 sm:px-6">
         <Button
           variant="ghost"
           size="icon-lg"
           nativeButton={false}
-          className="shrink-0 rounded-full text-ink-muted hover:bg-cobalt-tint hover:text-cobalt active:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_18%)] active:text-cobalt"
+          className="shrink-0 rounded-none text-[color:var(--stage-muted,#94a3b8)] hover:bg-white/5 hover:text-[color:var(--stage-ink,#e8edf5)]"
           aria-label="Cerrar lección"
           render={<Link href={closeHref} data-testid="lesson-close" />}
         >
           <XIcon className="size-5" />
         </Button>
 
-        <LessonProgressHeader
-          currentIndex={currentStepIndex ?? currentStep - 1}
-          total={totalSteps}
-          completed={completedSteps ?? []}
-          visited={visitedSteps ?? []}
-          onGoToStep={onGoToStep ?? (() => {})}
-        />
+        <LessonSlidesToggle open={slidesOpen} onToggle={toggleSlides} />
 
         <span className="sr-only">{lessonTitle}</span>
       </header>
 
       <div
         className={cn(
-          "lesson-stage-theme-board min-h-0",
+          "min-h-0 flex-1 transition-[border-color,box-shadow] duration-300",
           lessonStageSurfaceClassName,
-          "transition-[border-color,box-shadow] duration-300",
-          isCorrect && "lesson-panel-glow-correct border-emerald-400/80",
-          isIncorrect && "lesson-panel-glow-incorrect border-amber-400/80",
+          isCorrect && "lesson-panel-glow-correct",
+          isIncorrect && "lesson-panel-glow-incorrect",
         )}
         data-testid="lesson-step-panel"
       >
@@ -139,10 +147,23 @@ export function LessonFrame({
             "pointer-events-none absolute z-30 transition-[left,right,bottom] duration-300",
             footer ? "bottom-[5.75rem] sm:bottom-[6rem]" : "bottom-6",
             tutorPanelOpen ? "right-4 sm:right-8 lg:right-12" : "left-4 sm:left-8 lg:left-12",
+            slidesOpen && !tutorPanelOpen && "lg:right-[19rem]",
           )}
         >
           {overlay}
         </div>
+      ) : null}
+
+      {steps.length > 0 && onGoToStep ? (
+        <LessonSlidesSidebar
+          open={slidesOpen}
+          onOpenChange={setSlidesOpen}
+          steps={steps}
+          currentIndex={stepIndex}
+          completed={completedSteps ?? []}
+          visited={visitedSteps ?? []}
+          onGoToStep={onGoToStep}
+        />
       ) : null}
     </div>
   );

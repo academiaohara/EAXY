@@ -88,7 +88,7 @@ export function NaturalesNumeracionTool({ step, onContinue, compact = false }: N
         />
       ) : null}
 
-      <div className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">{scene}</div>
+      <div className="w-full min-h-0 flex-1 py-1">{scene}</div>
     </div>
   );
 }

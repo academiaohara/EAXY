@@ -635,6 +635,7 @@ function LessonContainerBody({
           completedSteps={completedSteps}
           visitedSteps={visitedSteps}
           onGoToStep={goToStep}
+          steps={lesson.steps.map((step) => ({ id: step.id, title: step.title }))}
           stars={stars}
           totalStars={totalStars}
           feedback={feedback}
@@ -706,7 +707,7 @@ function LessonContainerBody({
                 onPreviousStep={goBack}
                 disabled={feedback !== null}
                 savedAttempt={currentAttempt?.snapshot ?? null}
-                stageTheme={lesson.stage?.theme ?? "paper"}
+                stageTheme={lesson.stage?.theme ?? "board"}
                 compact
               />
             </div>
