@@ -3,12 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
-import { LessonFeedbackActions } from "@/components/lesson/LessonFeedbackActions";
-import { LessonFooterDock } from "@/components/lesson/LessonFooterDock";
+import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { LessonFrame, LessonStarCounter } from "@/components/lesson/LessonFrame";
-import { LessonHelpButton } from "@/components/lesson/LessonHelpButton";
-import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
-import { LessonStepHeader } from "@/components/lesson/LessonStepHeader";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { LessonTutorProvider } from "@/components/lesson/LessonTutorContext";
 import { TutorPanel } from "@/components/lesson/TutorPanel";
@@ -132,7 +128,7 @@ function LessonContainerBody({
   const [panelOpen, setPanelOpen] = useState(false);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
-  const { control, footerCenter } = useLessonStepControl();
+  const { control, footerCenter, presenterNav } = useLessonStepControl();
 
   useEffect(() => {
     if (!storageHydrated || !trackLocalProgress || !curriculumLessonId) {
@@ -628,19 +624,39 @@ function LessonContainerBody({
 
         <LessonFrame
           closeHref={backHref}
-          lessonTitle={lesson.title}
-          currentStep={stepIndex + 1}
+          stepTitle={<MathRenderer text={currentStep.title} />}
           currentStepIndex={stepIndex}
-          totalSteps={totalSteps}
           completedSteps={completedSteps}
           visitedSteps={visitedSteps}
           onGoToStep={goToStep}
           steps={lesson.steps.map((step) => ({ id: step.id, title: step.title }))}
-          stars={stars}
-          totalStars={totalStars}
           feedback={feedback}
           className="min-h-0 flex-1"
           tutorPanelOpen={panelOpen}
+          canBack={stepIndex > 0 || Boolean(control?.onBack)}
+          onBack={control?.onBack ?? goBack}
+          onSkip={feedback ? undefined : handleSkip}
+          control={feedback ? null : control}
+          footerCenter={feedback ? null : footerCenter}
+          presenterNav={feedback ? null : presenterNav}
+          isLastStep={isLastStep}
+          onNext={handleNext}
+          onReset={canResetStep ? resetCurrentStep : undefined}
+          onHelp={
+            stepHelpAvailable
+              ? () =>
+                  feedback === "correct"
+                    ? openHelp("¿Por qué?", hasWhy ? "why" : undefined)
+                    : openHelp("Ayúdame, no lo veo")
+              : undefined
+          }
+          stepHelpAvailable={stepHelpAvailable && !feedback}
+          onOpenHelp={() => openHelp("No lo entiendo")}
+          meta={
+            totalStars > 0 ? (
+              <LessonStarCounter stars={stars} totalStars={totalStars} />
+            ) : null
+          }
           overlay={
             <LessonTutorDock
               speechKey={`${currentStep.id}:${feedback ?? "none"}`}
@@ -651,54 +667,14 @@ function LessonContainerBody({
               panelOpen={panelOpen}
             />
           }
-          footer={
-            <LessonFooterDock
-              feedback={feedback}
-              meta={
-                totalStars > 0 ? (
-                  <LessonStarCounter stars={stars} totalStars={totalStars} />
-                ) : null
-              }
-              canBack={stepIndex > 0 || Boolean(control?.onBack)}
-              onBack={control?.onBack ?? goBack}
-              onSkip={feedback ? undefined : handleSkip}
-              stageControls={feedback ? undefined : footerCenter}
-              action={
-                feedback ? (
-                  <LessonFeedbackActions
-                    status={feedback}
-                    isLastStep={isLastStep}
-                    onNext={handleNext}
-                    onReset={canResetStep ? resetCurrentStep : undefined}
-                    onHelp={
-                      stepHelpAvailable
-                        ? () =>
-                            feedback === "correct"
-                              ? openHelp("¿Por qué?", hasWhy ? "why" : undefined)
-                              : openHelp("Ayúdame, no lo veo")
-                        : undefined
-                    }
-                  />
-                ) : control ? (
-                  <LessonPrimaryAction control={control} compact={Boolean(footerCenter)} />
-                ) : null
-              }
-              help={
-                stepHelpAvailable && !feedback ? (
-                  <LessonHelpButton feedback={feedback} onClick={() => openHelp("No lo entiendo")} />
-                ) : null
-              }
-            />
-          }
         >
           <div
             key={stepMountKey}
             className={cn(
-              "lesson-step-enter flex h-full min-h-0 w-full flex-col gap-4 overflow-hidden pb-[4.5rem] sm:gap-5",
+              "lesson-step-enter flex h-full min-h-0 w-full flex-col gap-4 overflow-hidden pb-16 sm:gap-5 sm:pb-[4.5rem]",
               "max-w-none",
             )}
           >
-            <LessonStepHeader step={currentStep} />
             <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
               <InteractiveQuestion
                 step={currentStep}

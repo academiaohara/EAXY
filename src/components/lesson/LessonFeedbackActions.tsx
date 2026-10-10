@@ -25,7 +25,7 @@ export function LessonFeedbackActions({
   const isCorrect = status === "correct";
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-3" role="status" data-testid="lesson-feedback-footer">
+    <div className="flex flex-wrap items-center justify-end gap-3" role="status">
       {onReset ? (
         <Button
           type="button"

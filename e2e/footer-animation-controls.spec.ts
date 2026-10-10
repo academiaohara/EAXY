@@ -25,10 +25,10 @@ function seedLessonStep(stepIndex: number, stepCount = 6) {
   };
 }
 
-async function advanceFooterAnimationToEnd(page: import("@playwright/test").Page) {
-  const footer = page.getByTestId("lesson-footer-dock");
-  const continueBtn = footer.getByTestId("lesson-continue-button");
-  const play = footer.getByRole("button", { name: /Reproducir animación/i });
+async function advanceAnimationToEnd(page: import("@playwright/test").Page) {
+  const center = page.getByTestId("lesson-presenter-center");
+  const continueBtn = page.getByTestId("lesson-continue-button");
+  const play = center.getByRole("button", { name: /Reproducir animación/i });
   if (await play.isVisible().catch(() => false)) {
     await play.click();
   }
@@ -36,7 +36,7 @@ async function advanceFooterAnimationToEnd(page: import("@playwright/test").Page
     if (await continueBtn.isVisible().catch(() => false)) {
       return;
     }
-    const next = footer.getByRole("button", { name: "Avanzar un paso" });
+    const next = center.getByRole("button", { name: "Avanzar un paso" });
     if (await next.evaluate((el) => (el as HTMLButtonElement).disabled)) {
       break;
     }
@@ -45,30 +45,7 @@ async function advanceFooterAnimationToEnd(page: import("@playwright/test").Page
   await expect(continueBtn).toBeVisible({ timeout: 20_000 });
 }
 
-async function expectFooterControlsBesideSkip(page: import("@playwright/test").Page) {
-  const footer = page.getByTestId("lesson-footer-dock");
-  await expect(footer.getByRole("group", { name: "Controles de animación" })).toBeVisible({
-    timeout: 15_000,
-  });
-
-  const continueBtn = footer.getByTestId("lesson-continue-button");
-  const skipBtn = footer.getByTestId("lesson-skip-button");
-  await expect(continueBtn).toBeVisible();
-  await expect(skipBtn).toBeVisible();
-
-  const continueBox = await continueBtn.boundingBox();
-  const skipBox = await skipBtn.boundingBox();
-  expect(continueBox).not.toBeNull();
-  expect(skipBox).not.toBeNull();
-  if (continueBox && skipBox) {
-    expect(continueBox.x).toBeLessThan(skipBox.x);
-    expect(skipBox.x - (continueBox.x + continueBox.width)).toBeLessThan(48);
-  }
-}
-
-test("reparto igual — controles en el centro del pie y Continuar junto a Saltar", async ({
-  page,
-}) => {
+test("reparto igual — controles al centro y avance con flecha derecha", async ({ page }) => {
   await page.addInitScript(
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
@@ -80,12 +57,15 @@ test("reparto igual — controles en el centro del pie y Continuar junto a Salta
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("mul-div-reparto-igual")).toBeVisible({ timeout: 30_000 });
 
-  await advanceFooterAnimationToEnd(page);
-  await expectFooterControlsBesideSkip(page);
+  await expect(page.getByTestId("lesson-presenter-center")).toBeVisible();
+  await expect(page.getByTestId("lesson-animation-controls")).toBeVisible();
+
+  await page.keyboard.press("ArrowRight");
+  await advanceAnimationToEnd(page);
   await page.screenshot({ path: "/opt/cursor/artifacts/footer-reparto-igual.png", fullPage: false });
 });
 
-test("división a mano — controles en el pie, no sobre la pizarra", async ({ page }) => {
+test("división a mano — controles centrados, no sobre la pizarra SVG", async ({ page }) => {
   await page.addInitScript(
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
@@ -99,9 +79,9 @@ test("división a mano — controles en el pie, no sobre la pizarra", async ({ p
   await expect(page.getByTestId("division-mano-chalkboard")).toBeVisible({ timeout: 15_000 });
 
   const stage = page.locator("[data-testid='lesson-narrate-step']");
-  await expect(stage.getByRole("group", { name: "Controles de animación" })).toHaveCount(0);
+  await expect(stage.getByTestId("lesson-animation-controls")).toHaveCount(0);
 
-  await advanceFooterAnimationToEnd(page);
-  await expectFooterControlsBesideSkip(page);
+  await expect(page.getByTestId("lesson-presenter-center")).toBeVisible();
+  await advanceAnimationToEnd(page);
   await page.screenshot({ path: "/opt/cursor/artifacts/footer-division-mano.png", fullPage: false });
 });

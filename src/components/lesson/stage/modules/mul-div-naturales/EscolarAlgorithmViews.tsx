@@ -1,7 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRegisterLessonFooterCenter } from "@/components/lesson/LessonStepControlContext";
+import {
+  useRegisterLessonFooterCenter,
+  useRegisterLessonPresenterNavigation,
+} from "@/components/lesson/LessonStepControlContext";
 import { DivisionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/DivisionManoChalkboard";
 import { MultiplicacionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/MultiplicacionManoChalkboard";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
@@ -135,10 +138,30 @@ export function DivisionManoScene({
     onReadyChange?.(false);
   }, [onReadyChange, setPhase, setPlaying]);
 
+  const advancePhase = useCallback(() => {
+    setPhase(Math.min(stepCount - 1, phase + 1));
+  }, [phase, setPhase, stepCount]);
+
+  const retreatPhase = useCallback(() => {
+    setPhase(Math.max(0, phase - 1));
+  }, [phase, setPhase]);
+
+  const presenterNav = useMemo(
+    () => ({
+      onAdvance: advancePhase,
+      onRetreat: retreatPhase,
+      canAdvance: phase < stepCount - 1,
+      canRetreat: phase > 0,
+      clickSurfaceToAdvance: true,
+    }),
+    [advancePhase, phase, retreatPhase, stepCount],
+  );
+  useRegisterLessonPresenterNavigation(presenterNav);
+
   const footerControls = useMemo(
     () => (
       <StageStepControls
-        variant="footer"
+        variant="presenter"
         phase={phase}
         stepCount={stepCount}
         playing={playing}
@@ -158,6 +181,7 @@ export function DivisionManoScene({
       subStep={subStep}
       subTotal={subTotal}
       showProgress={false}
+      onBoardClick={advancePhase}
     />
   );
 }
