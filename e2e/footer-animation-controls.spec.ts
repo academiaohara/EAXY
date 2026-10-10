@@ -16,7 +16,6 @@ function seedLessonStep(stepIndex: number, stepCount = 6) {
         completedSteps,
         visitedSteps,
         stepAttempts: {},
-        stars: 0,
         completed: false,
         toolState: {},
         updatedAt: Date.now(),

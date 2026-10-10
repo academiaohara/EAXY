@@ -503,13 +503,6 @@ export function isQuizStep(
   return PRACTICE_TYPES.has(step.type);
 }
 
-export function isStarStep(step: LessonStep): boolean {
-  if ("optional" in step && step.optional) {
-    return false;
-  }
-  return isQuizStep(step);
-}
-
 export function isPassiveStep(step: LessonStep): boolean {
   return !isQuizStep(step);
 }

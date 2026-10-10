@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
 import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
-import { LessonFrame, LessonStarCounter } from "@/components/lesson/LessonFrame";
+import { LessonFrame } from "@/components/lesson/LessonFrame";
 import { LessonTutorDock } from "@/components/lesson/LessonTutorDock";
 import { LessonTutorProvider } from "@/components/lesson/LessonTutorContext";
 import { TutorPanel } from "@/components/lesson/TutorPanel";
@@ -33,7 +33,6 @@ import {
 import type { StepAttemptRecord, StepCheckResult } from "@/lib/lesson/step-attempt";
 import {
   isQuizStep,
-  isStarStep,
   type FeedbackStatus,
   type InteractiveLesson,
 } from "@/lib/lesson/types";
@@ -123,7 +122,6 @@ function LessonContainerBody({
   );
   const [toolState, setToolState] = useState<Record<string, unknown>>(defaultLessonState.toolState);
   const [stepRemountKey, setStepRemountKey] = useState<Record<string, number>>({});
-  const [stars, setStars] = useState(defaultLessonState.stars);
   const [log, setLog] = useState<TutorLogEntry[]>([]);
   const [panelOpen, setPanelOpen] = useState(false);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
@@ -183,7 +181,6 @@ function LessonContainerBody({
     });
     setStepAttempts(saved.stepAttempts);
     setToolState(saved.toolState);
-    setStars(saved.stars);
     setFeedback(step ? (saved.stepAttempts[step.id]?.feedback ?? null) : null);
     /* eslint-enable react-hooks/set-state-in-effect */
     setStorageHydrated(true);
@@ -202,7 +199,6 @@ function LessonContainerBody({
       completedSteps,
       visitedSteps,
       stepAttempts,
-      stars,
       completed: persistedCompleted,
       toolState,
       updatedAt: Date.now(),
@@ -213,7 +209,6 @@ function LessonContainerBody({
     completedSteps,
     visitedSteps,
     stepAttempts,
-    stars,
     completed,
     toolState,
     storageHydrated,
@@ -238,10 +233,6 @@ function LessonContainerBody({
     : navigation.moduleSlug
       ? topicHref(navigation.courseSlug, navigation.moduleSlug)
       : courseHref(navigation.courseSlug);
-  const totalStars = useMemo(
-    () => lesson.steps.filter((step) => isStarStep(step)).length,
-    [lesson.steps],
-  );
   const stepTitles = useMemo(
     () => Object.fromEntries(lesson.steps.map((step) => [step.id, step.title])),
     [lesson.steps],
@@ -309,9 +300,6 @@ function LessonContainerBody({
       }
 
       const status: FeedbackStatus = result.correct ? "correct" : "incorrect";
-      if (result.correct) {
-        setStars((prev) => prev + 1);
-      }
       setFeedback(status);
       setStepAttempts((prev) => ({
         ...prev,
@@ -386,9 +374,6 @@ function LessonContainerBody({
     const attempt = stepAttempts[stepId];
     if (!attempt) {
       return;
-    }
-    if (attempt.feedback === "correct") {
-      setStars((prev) => Math.max(0, prev - 1));
     }
     setStepAttempts((prev) => {
       const next = { ...prev };
@@ -542,7 +527,6 @@ function LessonContainerBody({
     setStepIndex(0);
     setFeedback(null);
     setCompleted(false);
-    setStars(0);
     setLog([]);
     setHelpNodeId(null);
     setHelpContext(STEP_HELP);
@@ -581,8 +565,6 @@ function LessonContainerBody({
     return (
       <LessonComplete
         lessonTitle={lesson.title}
-        stars={stars}
-        totalStars={totalStars}
         courseHref={backHref}
         onRestart={restartLesson}
         incompleteSteps={incompleteSteps}
@@ -652,11 +634,6 @@ function LessonContainerBody({
           }
           stepHelpAvailable={stepHelpAvailable && !feedback}
           onOpenHelp={() => openHelp("No lo entiendo")}
-          meta={
-            totalStars > 0 ? (
-              <LessonStarCounter stars={stars} totalStars={totalStars} />
-            ) : null
-          }
           overlay={
             <LessonTutorDock
               speechKey={`${currentStep.id}:${feedback ?? "none"}`}
