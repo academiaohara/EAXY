@@ -42,14 +42,10 @@ function lessonStepsMeta(lesson: LessonSummary): string {
 export function LessonPathNode({ lesson, position, isLast, isNextTarget }: LessonPathNodeProps) {
   const localStore = useLocalProgress();
 
-  const status = getLessonProgressStatus(lesson);
+  const catalogStatus = getLessonProgressStatus(lesson);
   const isInteractive = lesson.kind === "interactive";
   const interactiveSlug = lesson.interactiveSlug;
   const stepCount = lesson.stepCount ?? 0;
-  const isInProgress = status === "started" || status === "incomplete";
-  const isCurrent = isInProgress || (isNextTarget && status !== "completed");
-  const isCompleted = status === "completed";
-  const connectorBrand = isCompleted;
 
   const interactiveProgress = useMemo(() => {
     if (!isInteractive || !interactiveSlug || stepCount <= 0) {
@@ -62,6 +58,16 @@ export function LessonPathNode({ lesson, position, isLast, isNextTarget }: Lesso
       offersResume: shouldOfferInteractiveLessonResume(saved, stepCount),
     };
   }, [interactiveSlug, isInteractive, localStore, stepCount]);
+
+  const status =
+    catalogStatus === "available" && interactiveProgress?.offersResume
+      ? "started"
+      : catalogStatus;
+
+  const isInProgress = status === "started" || status === "incomplete";
+  const isCurrent = isInProgress || (isNextTarget && status !== "completed");
+  const isCompleted = status === "completed";
+  const connectorBrand = isCompleted;
 
   const continueHref =
     isInteractive && interactiveSlug
