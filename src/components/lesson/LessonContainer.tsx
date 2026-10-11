@@ -1,8 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { InteractiveQuestion } from "@/components/lesson/InteractiveQuestion";
-import { LessonComplete } from "@/components/lesson/LessonComplete";
 import { MathRenderer, plainLessonText } from "@/components/lesson/MathRenderer";
 import { formatLessonStepTitle } from "@/lib/lesson/presenter-title";
 import { LessonFrame } from "@/components/lesson/LessonFrame";
@@ -43,6 +43,7 @@ import {
   createDefaultInteractiveLessonState,
   furthestVisitedStepIndex,
   readPersistedInteractiveLesson,
+  resolveInteractiveLessonCatalogStatus,
   writePersistedInteractiveLesson,
 } from "@/lib/local-progress/interactive-lesson-state";
 import {
@@ -129,14 +130,18 @@ function LessonContainerBody({
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
   const { control, footerCenter, presenterNav } = useLessonStepControl();
+  const router = useRouter();
+  const backHref = !navigation
+    ? "/aprender"
+    : navigation.moduleSlug
+      ? topicHref(navigation.courseSlug, navigation.moduleSlug)
+      : courseHref(navigation.courseSlug);
 
   useEffect(() => {
     if (!storageHydrated || !trackLocalProgress || !curriculumLessonId) {
       return;
     }
     if (completed) {
-      const allDone = completedSteps.every(Boolean);
-      setLocalLessonStatus(curriculumLessonId, allDone ? "completed" : "incomplete");
       return;
     }
     if (lessonPreviouslyFinished) {
@@ -154,10 +159,15 @@ function LessonContainerBody({
     storageHydrated,
     trackLocalProgress,
     curriculumLessonId,
-    completed,
-    completedSteps,
     lessonPreviouslyFinished,
   ]);
+
+  useEffect(() => {
+    if (!storageHydrated || !completed) {
+      return;
+    }
+    router.push(backHref);
+  }, [backHref, completed, router, storageHydrated]);
 
   useEffect(() => {
     const saved = readPersistedInteractiveLesson(lesson.slug, stepCount);
@@ -230,11 +240,6 @@ function LessonContainerBody({
   const totalSteps = lesson.steps.length;
   const currentStep = lesson.steps[stepIndex];
   const isLastStep = stepIndex === totalSteps - 1;
-  const backHref = !navigation
-    ? "/aprender"
-    : navigation.moduleSlug
-      ? topicHref(navigation.courseSlug, navigation.moduleSlug)
-      : courseHref(navigation.courseSlug);
   const stepTitles = useMemo(
     () => Object.fromEntries(lesson.steps.map((step) => [step.id, step.title])),
     [lesson.steps],
@@ -317,15 +322,17 @@ function LessonContainerBody({
   const goToNextStep = useCallback(
     (meta?: LessonContinueMeta) => {
       const markComplete = meta?.completed !== false;
-      if (markComplete) {
-        setCompletedSteps((prev) => {
-          if (prev[stepIndex]) {
-            return prev;
-          }
-          const next = [...prev];
-          next[stepIndex] = true;
-          return next;
-        });
+      const nextCompletedSteps =
+        markComplete && !completedSteps[stepIndex]
+          ? (() => {
+              const next = [...completedSteps];
+              next[stepIndex] = true;
+              return next;
+            })()
+          : completedSteps;
+
+      if (markComplete && !completedSteps[stepIndex]) {
+        setCompletedSteps(nextCompletedSteps);
       }
 
       setHelpNodeId(null);
@@ -333,6 +340,12 @@ function LessonContainerBody({
       if (!lesson.steps[stepIndex + 1]) {
         lessonFinishedPersistedRef.current = true;
         setLessonPreviouslyFinished(true);
+        if (trackLocalProgress && curriculumLessonId) {
+          setLocalLessonStatus(
+            curriculumLessonId,
+            resolveInteractiveLessonCatalogStatus(nextCompletedSteps, stepCount),
+          );
+        }
         setCompleted(true);
         return;
       }
@@ -340,7 +353,15 @@ function LessonContainerBody({
       setFeedback(nextStep ? feedbackForStep(nextStep.id) : null);
       setStepIndex(stepIndex + 1);
     },
-    [feedbackForStep, lesson.steps, stepIndex],
+    [
+      completedSteps,
+      curriculumLessonId,
+      feedbackForStep,
+      lesson.steps,
+      stepCount,
+      stepIndex,
+      trackLocalProgress,
+    ],
   );
 
   const handleNext = useCallback(() => {
@@ -544,14 +565,6 @@ function LessonContainerBody({
     });
   }
 
-  const incompleteSteps = useMemo(
-    () =>
-      lesson.steps
-        .map((step, index) => ({ index, title: step.title, done: completedSteps[index] }))
-        .filter((entry) => !entry.done),
-    [completedSteps, lesson.steps],
-  );
-
   if (!storageHydrated) {
     return (
       <div
@@ -565,23 +578,12 @@ function LessonContainerBody({
 
   if (completed) {
     return (
-      <LessonComplete
-        lessonTitle={lesson.title}
-        courseHref={backHref}
-        onRestart={restartLesson}
-        incompleteSteps={incompleteSteps}
-        onJumpToStep={(index) => {
-          setCompleted(false);
-          const target = lesson.steps[index];
-          setFeedback(target ? feedbackForStep(target.id) : null);
-          setStepIndex(index);
-          setVisitedSteps((prev) => {
-            const next = [...prev];
-            next[index] = true;
-            return next;
-          });
-        }}
-      />
+      <div
+        className="flex min-h-0 flex-1 flex-col items-center justify-center p-8"
+        data-testid="interactive-lesson"
+      >
+        <p className="text-sm text-ink-muted">Volviendo al temario…</p>
+      </div>
     );
   }
 

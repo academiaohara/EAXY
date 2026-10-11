@@ -59,7 +59,7 @@ export async function InteractiveLessonPageBody({
         lesson={lesson}
         navigation={navigation}
         curriculumLessonId={context?.lesson.id}
-        trackLocalProgress={!studentId}
+        trackLocalProgress={Boolean(context?.lesson.id)}
         restartRequested={restartRequested}
       />
     </main>

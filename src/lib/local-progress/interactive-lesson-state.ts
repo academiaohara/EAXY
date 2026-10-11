@@ -1,6 +1,6 @@
 "use client";
 
-import type { PersistedInteractiveLessonState } from "@/lib/local-progress/types";
+import type { LocalLessonStatus, PersistedInteractiveLessonState } from "@/lib/local-progress/types";
 import { readLocalProgress, writeLocalProgress } from "@/lib/local-progress/storage";
 
 export function furthestVisitedStepIndex(visitedSteps: boolean[]): number {
@@ -99,6 +99,18 @@ export type InteractiveLessonProgressSummary = {
   finished: boolean;
   fullyComplete: boolean;
 };
+
+/** Estado de catálogo al cerrar la lección según los pasos marcados en verde. */
+export function resolveInteractiveLessonCatalogStatus(
+  completedSteps: boolean[],
+  stepCount: number,
+): LocalLessonStatus {
+  if (stepCount <= 0) {
+    return "incomplete";
+  }
+  const normalized = normalizeBooleanArray(completedSteps, stepCount);
+  return normalized.every(Boolean) ? "completed" : "incomplete";
+}
 
 export function summarizeInteractiveLessonProgress(
   state: PersistedInteractiveLessonState,

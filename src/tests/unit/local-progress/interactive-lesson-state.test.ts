@@ -3,6 +3,7 @@ import {
   createDefaultInteractiveLessonState,
   furthestVisitedStepIndex,
   normalizeInteractiveLessonState,
+  resolveInteractiveLessonCatalogStatus,
 } from "@/lib/local-progress/interactive-lesson-state";
 
 describe("normalizeInteractiveLessonState", () => {
@@ -47,5 +48,13 @@ describe("normalizeInteractiveLessonState", () => {
     const defaults = createDefaultInteractiveLessonState(3);
     expect(defaults.stepIndex).toBe(0);
     expect(defaults.visitedSteps).toEqual([true, false, false]);
+  });
+});
+
+describe("resolveInteractiveLessonCatalogStatus", () => {
+  it("marca completed solo si todos los pasos están en verde", () => {
+    expect(resolveInteractiveLessonCatalogStatus([true, true, true], 3)).toBe("completed");
+    expect(resolveInteractiveLessonCatalogStatus([true, false, true], 3)).toBe("incomplete");
+    expect(resolveInteractiveLessonCatalogStatus([true, true], 3)).toBe("incomplete");
   });
 });
