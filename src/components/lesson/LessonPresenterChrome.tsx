@@ -108,12 +108,13 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   /** Flechas del rail = diapositiva (Continuar / Comprobar). Las fases van en el centro o con teclado. */
   const handleForward = useCallback(() => {
     if (feedback) {
+      onNext();
       return;
     }
     if (control && !control.disabled) {
       control.onClick();
     }
-  }, [control, feedback]);
+  }, [control, feedback, onNext]);
 
   const handleBack = useCallback(() => {
     if (feedback) {
@@ -168,7 +169,8 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     presenterNav?.canRetreat,
   ]);
 
-  const forwardDisabled = feedback !== null ? false : !control || control.disabled;
+  const forwardDisabled =
+    feedback !== null ? false : !control || control.disabled;
 
   const backDisabled = feedback !== null ? true : !canBack && !control?.onBack;
 
