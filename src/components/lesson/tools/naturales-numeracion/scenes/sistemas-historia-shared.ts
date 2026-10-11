@@ -23,7 +23,4 @@ export const STAGE_PANEL =
   "rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
 
 export const STAGE_SYMBOL_BUTTON =
-  "flex flex-col items-center rounded-xl border-2 border-[color:var(--stage-accent)]/35 bg-[color:var(--stage-accent)]/12 py-3 transition hover:border-[color:var(--stage-accent)]/55 hover:bg-[color:var(--stage-accent)]/18";
-
-export const STAGE_SYMBOL_BUTTON_EGYPT =
-  "flex flex-col items-center gap-2 rounded-xl border-2 border-amber-400/35 bg-amber-500/10 py-4 text-center transition hover:border-amber-400/55 hover:bg-amber-500/16";
+  "flex flex-col items-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 py-3 text-center transition hover:border-[color:var(--stage-accent)]/45 hover:bg-[color:var(--stage-accent)]/10";
