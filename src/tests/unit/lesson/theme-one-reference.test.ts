@@ -28,7 +28,10 @@ describe("lecciones de referencia del tema 1", () => {
 
   it("la lección 1 unifica origen, sistemas y redondeo del temario", () => {
     expect(sistemasNumeracionNaturalesLesson.steps.some(
-      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia",
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-galeria",
+    )).toBe(true);
+    expect(sistemasNumeracionNaturalesLesson.steps.some(
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-juego",
     )).toBe(true);
     expect(sistemasNumeracionNaturalesLesson.steps.some(
       (step) => step.type === "interactive_tool" && "scene" in step && step.scene.startsWith("redondeo"),
@@ -40,7 +43,7 @@ describe("lecciones de referencia del tema 1", () => {
 
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
     expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
-      6, 4, 6, 5,
+      7, 4, 6, 5,
     ]);
 
     for (const lesson of THEME_ONE_LESSONS) {

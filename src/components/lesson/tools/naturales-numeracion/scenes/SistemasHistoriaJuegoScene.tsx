@@ -8,22 +8,21 @@ import {
   egyptianSymbolsToInt,
   type EgyptianSymbolId,
 } from "@/components/lesson/tools/naturales-numeracion/EgyptianNumeralIcon";
-import { HistoriaNumeracionIllustrations } from "@/components/lesson/tools/naturales-numeracion/scenes/HistoriaNumeracionIllustrations";
 import { TallyMarksView } from "@/components/lesson/tools/naturales-numeracion/scenes/TallyMarksView";
 import { romanToInt } from "@/components/lesson/tools/naturales-numeracion/roman";
 import {
   createDefaultSistemasHistoriaState,
   type SistemasHistoriaTabId,
 } from "@/components/lesson/tools/naturales-numeracion/scenes/sistemas-historia-state";
+import {
+  SISTEMAS_HISTORIA_STATE_KEY,
+  SISTEMAS_HISTORIA_TABS,
+  SISTEMAS_HISTORIA_TARGETS,
+  STAGE_PANEL,
+  STAGE_SYMBOL_BUTTON,
+  STAGE_SYMBOL_BUTTON_EGYPT,
+} from "@/components/lesson/tools/naturales-numeracion/scenes/sistemas-historia-shared";
 import { cn } from "@/lib/utils";
-
-type TabId = SistemasHistoriaTabId;
-
-const TABS: { id: TabId; label: string; subtitle: string }[] = [
-  { id: "tally", label: "El hombre primitivo", subtitle: "Marcas en un hueso" },
-  { id: "egypt", label: "Los egipcios", subtitle: "Símbolos que se suman" },
-  { id: "roman", label: "Los romanos", subtitle: "Letras con reglas de resta" },
-];
 
 const EGYPT_SYMBOLS: {
   id: EgyptianSymbolId;
@@ -46,29 +45,13 @@ const ROMAN_KEYS: { key: string; value: number }[] = [
   { key: "I", value: 1 },
 ];
 
-const TARGETS: Record<TabId, number> = {
-  tally: 9,
-  egypt: 47,
-  roman: 14,
-};
-
-const STAGE_PANEL =
-  "rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
-
-const STAGE_SYMBOL_BUTTON =
-  "flex flex-col items-center rounded-xl border-2 border-[color:var(--stage-accent)]/35 bg-[color:var(--stage-accent)]/12 py-3 transition hover:border-[color:var(--stage-accent)]/55 hover:bg-[color:var(--stage-accent)]/18";
-
-const STAGE_SYMBOL_BUTTON_EGYPT =
-  "flex flex-col items-center gap-2 rounded-xl border-2 border-amber-400/35 bg-amber-500/10 py-4 text-center transition hover:border-amber-400/55 hover:bg-amber-500/16";
-
-type SistemasHistoriaSceneProps = {
-  stepId: string;
+type SistemasHistoriaJuegoSceneProps = {
   onReadyChange: (ready: boolean) => void;
 };
 
-export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistoriaSceneProps) {
+export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJuegoSceneProps) {
   const [state, setState] = usePersistedLessonToolState(
-    stepId,
+    SISTEMAS_HISTORIA_STATE_KEY,
     createDefaultSistemasHistoriaState,
   );
   const { tab, tallyCount, egyptSymbols, romanStr } = state;
@@ -77,9 +60,9 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
   const romanValue = useMemo(() => romanToInt(romanStr), [romanStr]);
 
   const done = {
-    tally: tallyCount >= TARGETS.tally,
-    egypt: egyptValue === TARGETS.egypt,
-    roman: romanValue === TARGETS.roman,
+    tally: tallyCount >= SISTEMAS_HISTORIA_TARGETS.tally,
+    egypt: egyptValue === SISTEMAS_HISTORIA_TARGETS.egypt,
+    roman: romanValue === SISTEMAS_HISTORIA_TARGETS.roman,
   };
 
   const allDone = done.tally && done.egypt && done.roman;
@@ -88,22 +71,20 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
     onReadyChange(allDone);
   }, [allDone, onReadyChange]);
 
+  const setTab = (nextTab: SistemasHistoriaTabId) => {
+    setState((prev) => ({ ...prev, tab: nextTab }));
+  };
+
   return (
     <div className="space-y-5">
-      <HistoriaNumeracionIllustrations
-        activeTab={tab}
-        onSelectTab={(nextTab) => setState((prev) => ({ ...prev, tab: nextTab }))}
-        completed={done}
-      />
-
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
-        {TABS.map((item) => (
+        {SISTEMAS_HISTORIA_TABS.map((item) => (
           <button
             key={item.id}
             type="button"
             role="tab"
             aria-selected={tab === item.id}
-            onClick={() => setState((prev) => ({ ...prev, tab: item.id }))}
+            onClick={() => setTab(item.id)}
             className={cn(
               "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
               tab === item.id
@@ -119,14 +100,15 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
       </div>
 
       <p className="text-sm font-medium text-[color:var(--stage-accent,#58c4dd)]">
-        {TABS.find((t) => t.id === tab)?.subtitle}
+        {SISTEMAS_HISTORIA_TABS.find((t) => t.id === tab)?.subtitle}
       </p>
 
       {tab === "tally" ? (
         <div className="space-y-4">
           <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
             Cada objeto deja una marca. Al quinto, se tacha en diagonal el grupo de cuatro. Llega a{" "}
-            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.tally}</strong> marcas.
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{SISTEMAS_HISTORIA_TARGETS.tally}</strong>{" "}
+            marcas.
           </p>
           <TallyMarksView count={tallyCount} />
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -162,9 +144,9 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
         <div className="space-y-4">
           <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
             Forma{" "}
-            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.egypt}</strong> con símbolos
-            egipcios. Cada pulso añade un signo; el número es la <strong>suma</strong> de todos (como las letras
-            romanas, pero sin restas).
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{SISTEMAS_HISTORIA_TARGETS.egypt}</strong> con
+            símbolos egipcios. Cada pulso añade un signo; el número es la <strong>suma</strong> de todos (como las
+            letras romanas, pero sin restas).
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {EGYPT_SYMBOLS.map((sym) => (
@@ -224,8 +206,8 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
         <div className="space-y-4">
           <p className="text-sm text-[color:var(--stage-muted,#94a3b8)]">
             Forma{" "}
-            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{TARGETS.roman}</strong> con letras romanas.
-            Si una letra pequeña va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
+            <strong className="text-[color:var(--stage-ink,#e8edf5)]">{SISTEMAS_HISTORIA_TARGETS.roman}</strong> con
+            letras romanas. Si una letra pequeña va a la izquierda de una mayor, resta (como en <strong>XIV</strong>).
           </p>
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
             {ROMAN_KEYS.map(({ key, value }) => (

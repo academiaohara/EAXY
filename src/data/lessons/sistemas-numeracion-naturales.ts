@@ -8,10 +8,20 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     {
-      id: "sistemas-historia",
+      id: "sistemas-historia-galeria",
       type: "interactive_tool",
       tool: "naturales-numeracion",
-      scene: "sistemas-historia",
+      scene: "sistemas-historia-galeria",
+      title: "Origen y evolución de los números",
+      definitionBox:
+        "Los números naturales surgen de la necesidad de **contar**. Cada cultura inventó **símbolos**; en sistemas **aditivos** se **suman** (egipcio, romano) y en el **decimal** importa la **posición** de cada cifra.",
+      layout: "stack",
+    },
+    {
+      id: "sistemas-historia-juego",
+      type: "interactive_tool",
+      tool: "naturales-numeracion",
+      scene: "sistemas-historia-juego",
       title: "Origen y evolución de los números",
       definitionBox:
         "Los números naturales surgen de la necesidad de **contar**. Cada cultura inventó **símbolos**; en sistemas **aditivos** se **suman** (egipcio, romano) y en el **decimal** importa la **posición** de cada cifra.",

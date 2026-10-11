@@ -77,7 +77,15 @@ export function RedondeoDemoScene({
           {formatGrouped(example.n)}
         </strong>{" "}
         —{" "}
-        <span className="text-cobalt">{orderById(example.orderId).label.toLowerCase()}</span>
+        <span
+          className={
+            onStage
+              ? "font-semibold text-[color:var(--stage-highlight,#ffff55)]"
+              : "text-cobalt"
+          }
+        >
+          {orderById(example.orderId).label.toLowerCase()}
+        </span>
       </p>
 
       <RoundingCutView n={example.n} orderId={example.orderId} variant={onStage ? "stage" : "paper"} />

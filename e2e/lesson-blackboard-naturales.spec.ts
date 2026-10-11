@@ -14,8 +14,12 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
 
   await expect(page.getByTestId("lesson-definition-box")).toBeVisible();
-  await expect(page.getByTestId("naturales-numeracion-sistemas-historia")).toBeVisible();
+  await expect(page.getByTestId("naturales-numeracion-sistemas-historia-galeria")).toBeVisible();
   await expect(page.getByRole("group", { name: /Tres sistemas históricos/i })).toBeVisible();
+  await expect(page.getByText("Hombre primitivo")).toBeVisible();
+
+  await page.getByTestId("lesson-continue-button").click();
+  await expect(page.getByTestId("naturales-numeracion-sistemas-historia-juego")).toBeVisible();
 
   const inactiveTab = page.getByRole("tab", { name: /Los egipcios/i });
   await expect(inactiveTab).toBeVisible();
