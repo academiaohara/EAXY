@@ -11,30 +11,37 @@ export type BloquesNumericosModuleProps = {
   onReadyChange?: (ready: boolean) => void;
 };
 
-/** Mismo objeto en todos los sumandos: $8 + 6$ son 8 manzanas y 6 manzanas. */
-const UNIT_EMOJI = "🍎";
-const UNIT_LABEL = "manzanas";
+const SUMAND_STYLES = [
+  "bg-sky-500/90 ring-sky-300/50",
+  "bg-amber-500/90 ring-amber-300/50",
+  "bg-emerald-500/90 ring-emerald-300/50",
+] as const;
 
-function EmojiPile({
+function ChipPile({
   count,
+  colorIndex,
   className,
 }: {
   count: number;
+  colorIndex: number;
   className?: string;
 }) {
+  const style = SUMAND_STYLES[colorIndex % SUMAND_STYLES.length]!;
   return (
-    <div className={cn("flex flex-col items-center gap-1", className)}>
+    <div className={cn("flex flex-col items-center gap-2", className)}>
       <div
-        className="flex max-w-[11rem] flex-wrap justify-center gap-0.5 rounded-xl border border-slate-200 bg-white px-2 py-2 shadow-sm"
-        aria-label={`${count} ${UNIT_LABEL}`}
+        className="flex max-w-[12rem] flex-wrap justify-center gap-1 rounded-xl border border-white/10 bg-black/30 px-3 py-3"
+        aria-label={`${count} fichas`}
       >
         {Array.from({ length: count }, (_, index) => (
-          <span key={index} className="text-xl leading-none" aria-hidden>
-            {UNIT_EMOJI}
-          </span>
+          <span
+            key={index}
+            className={cn("h-3.5 w-3.5 rounded-full ring-2", style)}
+            aria-hidden
+          />
         ))}
       </div>
-      <span className="text-xs font-semibold text-ink-muted">{count}</span>
+      <span className="font-mono text-sm font-bold text-ink-muted">{count}</span>
     </div>
   );
 }
@@ -43,6 +50,7 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
   const reduced = useReducedMotion();
   const [swapped, setSwapped] = useState(false);
   const [groupLeft, setGroupLeft] = useState(true);
+  const [animating, setAnimating] = useState(false);
   const [revealed, setRevealed] = useState(reduced);
 
   const [a, b, c] = blocks.length >= 3 ? blocks : [8, 6, 3];
@@ -60,31 +68,59 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
     onReadyChange?.(true);
   }, [onReadyChange]);
 
+  const runSwapAnimation = (action: () => void) => {
+    if (reduced) {
+      action();
+      if (!revealed) {
+        complete();
+      }
+      return;
+    }
+    setAnimating(true);
+    action();
+    window.setTimeout(() => setAnimating(false), 480);
+    if (!revealed) {
+      complete();
+    }
+  };
+
   if (scene === "conmutativa") {
-    const first = swapped ? b : a;
-    const second = swapped ? a : b;
+    const leftCount = swapped ? b : a;
+    const rightCount = swapped ? a : b;
+    const equation = swapped ? `$${b} + ${a} = ${a + b}$` : `$${a} + ${b} = ${b} + ${a}$`;
 
     return (
-      <div className="space-y-4" data-testid="bloques-numericos-conmutativa" aria-label="Propiedad conmutativa">
-        <div className="flex flex-wrap items-end justify-center gap-4 rounded-xl bg-slate-100/80 p-4">
-          <EmojiPile count={first} />
-          <span className="pb-6 text-2xl font-bold text-ink">+</span>
-          <EmojiPile count={second} />
-          <span className="pb-6 font-mono text-lg font-bold text-ink">= {a + b}</span>
+      <div
+        className="mx-auto flex w-full max-w-2xl flex-col items-center gap-6"
+        data-testid="bloques-numericos-conmutativa"
+        aria-label="Propiedad conmutativa"
+      >
+        <div
+          className={cn(
+            "flex w-full flex-wrap items-end justify-center gap-4 rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/30 px-6 py-6 transition-transform duration-500",
+            animating && "scale-[0.98]",
+          )}
+        >
+          <ChipPile
+            count={leftCount}
+            colorIndex={swapped ? 1 : 0}
+            className={cn("transition-transform duration-500", animating && swapped && "-translate-x-4")}
+          />
+          <span className="pb-8 text-3xl font-bold text-ink">+</span>
+          <ChipPile
+            count={rightCount}
+            colorIndex={swapped ? 0 : 1}
+            className={cn("transition-transform duration-500", animating && swapped && "translate-x-4")}
+          />
         </div>
-        <p className="text-center text-sm text-ink-muted">
-          <MathRenderer text={swapped ? `$${b} + ${a} = ${a + b}$` : `$${a} + ${b} = ${b} + ${a}$`} />
+        <p className="font-mono text-2xl font-bold text-ink sm:text-3xl">
+          <MathRenderer text={equation} />
         </p>
         <div className="flex justify-center">
           <button
             type="button"
-            className="rounded-lg bg-cobalt px-4 py-2 text-sm font-semibold text-white hover:bg-cobalt/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-            onClick={() => {
-              setSwapped((prev) => !prev);
-              if (!revealed) {
-                complete();
-              }
-            }}
+            className="rounded-lg bg-cobalt px-5 py-2.5 text-sm font-semibold text-white hover:bg-cobalt/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+            onClick={() => runSwapAnimation(() => setSwapped((prev) => !prev))}
           >
             Intercambiar grupos
           </button>
@@ -93,51 +129,62 @@ export function BloquesNumericosModule({ scene, blocks, onReadyChange }: Bloques
     );
   }
 
+  const equation = groupLeft
+    ? `$(${a} + ${b}) + ${c} = ${a} + (${b} + ${c}) = ${total}$`
+    : `$${a} + (${b} + ${c}) = (${a} + ${b}) + ${c} = ${total}$`;
+
   return (
-    <div className="space-y-4" data-testid="bloques-numericos-asociativa" aria-label="Propiedad asociativa">
-      <div className="flex flex-wrap items-end justify-center gap-3 rounded-xl bg-slate-100/80 p-6">
+    <div
+      className="mx-auto flex w-full max-w-2xl flex-col items-center gap-6"
+      data-testid="bloques-numericos-asociativa"
+      aria-label="Propiedad asociativa"
+    >
+      <div
+        className={cn(
+          "flex w-full flex-wrap items-end justify-center gap-3 rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/30 px-6 py-6 transition-transform duration-500",
+          animating && "scale-[0.98]",
+        )}
+      >
         {groupLeft ? (
           <>
-            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/30 bg-white/80 px-3 py-2">
-              <EmojiPile count={a} />
-              <span className="pb-6 text-xl font-bold text-ink">+</span>
-              <EmojiPile count={b} />
+            <div
+              className={cn(
+                "flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/40 bg-black/25 px-3 py-2 transition-transform duration-500",
+                animating && "-translate-x-2",
+              )}
+            >
+              <ChipPile count={a} colorIndex={0} />
+              <span className="pb-8 text-2xl font-bold text-ink">+</span>
+              <ChipPile count={b} colorIndex={1} />
             </div>
-            <span className="pb-6 text-xl font-bold text-ink">+</span>
-            <EmojiPile count={c!} />
+            <span className="pb-8 text-2xl font-bold text-ink">+</span>
+            <ChipPile count={c!} colorIndex={2} />
           </>
         ) : (
           <>
-            <EmojiPile count={a} />
-            <span className="pb-6 text-xl font-bold text-ink">+</span>
-            <div className="flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/30 bg-white/80 px-3 py-2">
-              <EmojiPile count={b} />
-              <span className="pb-6 text-xl font-bold text-ink">+</span>
-              <EmojiPile count={c!} />
+            <ChipPile count={a} colorIndex={0} />
+            <span className="pb-8 text-2xl font-bold text-ink">+</span>
+            <div
+              className={cn(
+                "flex items-end gap-2 rounded-xl border-2 border-dashed border-cobalt/40 bg-black/25 px-3 py-2 transition-transform duration-500",
+                animating && "translate-x-2",
+              )}
+            >
+              <ChipPile count={b} colorIndex={1} />
+              <span className="pb-8 text-2xl font-bold text-ink">+</span>
+              <ChipPile count={c!} colorIndex={2} />
             </div>
           </>
         )}
-        <span className="pb-6 font-mono text-lg font-bold text-ink">= {total}</span>
       </div>
-      <p className="text-center text-sm text-ink-muted">
-        <MathRenderer
-          text={
-            groupLeft
-              ? `$(${a} + ${b}) + ${c} = ${total}$`
-              : `$${a} + (${b} + ${c}) = ${total}$`
-          }
-        />
+      <p className="text-center font-mono text-xl font-bold text-ink sm:text-2xl">
+        <MathRenderer text={equation} />
       </p>
       <div className="flex justify-center">
         <button
           type="button"
-          className="rounded-lg bg-cobalt px-4 py-2 text-sm font-semibold text-white hover:bg-cobalt/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
-          onClick={() => {
-            setGroupLeft((prev) => !prev);
-            if (!revealed) {
-              complete();
-            }
-          }}
+          className="rounded-lg bg-cobalt px-5 py-2.5 text-sm font-semibold text-white hover:bg-cobalt/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+          onClick={() => runSwapAnimation(() => setGroupLeft((prev) => !prev))}
         >
           Cambiar agrupación
         </button>

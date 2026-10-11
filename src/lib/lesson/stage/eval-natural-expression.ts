@@ -140,3 +140,53 @@ export function isValidParenthesisPlacement(
 ): boolean {
   return evalWithParenthesisPlacement(tokens, openAfter, closeBefore) !== null;
 }
+
+function isNumberToken(token: string): boolean {
+  return /^\d+$/.test(token);
+}
+
+/** Posiciones donde tiene sentido abrir (`openAfter`) o cerrar (`closeBefore`) un paréntesis. */
+export function listValidParenthesisSlots(tokens: string[]): {
+  openAfter: number[];
+  closeBefore: number[];
+} {
+  const openAfter = new Set<number>();
+  const closeBefore = new Set<number>();
+
+  for (let open = -1; open < tokens.length; open += 1) {
+    const openTokenIndex = open + 1;
+    if (openTokenIndex >= 0 && openTokenIndex < tokens.length && !isNumberToken(tokens[openTokenIndex]!)) {
+      continue;
+    }
+    for (let close = 0; close < tokens.length; close += 1) {
+      if (!isNumberToken(tokens[close]!)) {
+        continue;
+      }
+      if (close < open + 1) {
+        continue;
+      }
+      if (!isValidParenthesisPlacement(tokens, open, close)) {
+        continue;
+      }
+      const spanStart = open + 1;
+      let hasOperatorInSpan = false;
+      for (let i = spanStart; i <= close; i += 1) {
+        const token = tokens[i]!;
+        if (token === "+" || token === "-") {
+          hasOperatorInSpan = true;
+          break;
+        }
+      }
+      if (!hasOperatorInSpan) {
+        continue;
+      }
+      openAfter.add(open);
+      closeBefore.add(close);
+    }
+  }
+
+  return {
+    openAfter: [...openAfter].sort((a, b) => a - b),
+    closeBefore: [...closeBefore].sort((a, b) => a - b),
+  };
+}

@@ -27,9 +27,9 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       },
     },
     {
-      id: "restar-narrate",
+      id: "restar-faltante-narrate",
       type: "narrate",
-      title: "Restar",
+      title: "Restar — lo que falta",
       definitionBox:
         "Recuerda que **restar** es **quitar**, **suprimir**, hallar lo que **falta** o lo que **sobra**; es decir, calcular la **diferencia**.",
       module: "tienda-ciclista",
@@ -38,6 +38,19 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         items: EQUIPO_CICLISTA,
         mode: "calcular-faltante",
         savedAmount: 693,
+      },
+    },
+    {
+      id: "restar-sobra-narrate",
+      type: "narrate",
+      title: "Restar — lo que sobra",
+      definitionBox: "Si disponemos de **más dinero** que el precio del equipo, la resta nos dice **cuánto sobra**.",
+      module: "tienda-ciclista",
+      scene: "calcular-sobra",
+      tienda: {
+        items: EQUIPO_CICLISTA,
+        mode: "calcular-sobra",
+        savedAmount: 1000,
       },
     },
     {
@@ -64,6 +77,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         target: 5,
       },
       hint: "¿Qué operación conviene agrupar para restar antes de sumar?",
+      hintHiddenUntilRequested: true,
       explanation:
         "Prueba $9 - (1 + 3)$: primero $1 + 3 = 4$ y luego $9 - 4 = 5$.",
     },
@@ -85,7 +99,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         "El resultado de la suma es **independiente** de cómo se **agrupen** los sumandos: $(a + b) + c = a + (b + c)$.",
       module: "bloques-numericos",
       scene: "asociativa",
-      blocks: [3, 2, 6],
+      blocks: [8, 6, 3],
     },
   ],
 };

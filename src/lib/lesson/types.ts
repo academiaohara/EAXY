@@ -380,8 +380,8 @@ export type NarrateStep = LessonStepBase &
       wallet?: number;
       /** Importe pagado en escena de resta (p. ej. $693$ € en la diapositiva). */
       spendAmount?: number;
-      mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante";
-      /** Ahorros disponibles en `calcular-faltante` (p. ej. $693$ €). */
+      mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "calcular-sobra";
+      /** Ahorros disponibles en `calcular-faltante` / `calcular-sobra` (p. ej. $693$ €). */
       savedAmount?: number;
     };
     /** Configuración para `piramide-reduccion`. */
@@ -459,6 +459,8 @@ export type ExploreStep = LessonStepBase &
       wallet: number;
     };
     mulDiv?: MulDivConfig;
+    /** La pista solo aparece al pulsar el botón «?». */
+    hintHiddenUntilRequested?: boolean;
   };
 
 export type RevealStep = LessonStepBase &

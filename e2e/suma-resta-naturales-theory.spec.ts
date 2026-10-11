@@ -15,10 +15,11 @@ test("suma y resta — teoría alineada con el temario", async ({ page }) => {
   await expect(page.getByText(/Equipo completo/i)).toBeVisible();
   await page.getByRole("button", { name: "Continuar" }).click();
 
-  await expect(page.getByText(/Disponemos de/i)).toBeVisible();
+  await expect(page.getByText(/Faltan 135/i)).toBeVisible();
   await expect(page.getByText("693 €").first()).toBeVisible();
-  await expect(page.getByText(/todavía nos faltan/i)).toBeVisible();
-  await expect(page.locator('[aria-live="polite"]').filter({ hasText: "135" })).toBeVisible();
+  await page.getByRole("button", { name: "Continuar" }).click();
+
+  await expect(page.getByText(/Sobran 172/i)).toBeVisible();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   await expect(page.getByTestId("piramide-dual-parentesis")).toBeVisible({ timeout: 15_000 });

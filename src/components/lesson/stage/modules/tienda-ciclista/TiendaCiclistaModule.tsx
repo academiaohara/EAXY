@@ -21,9 +21,12 @@ const DEFAULT_ITEMS: TiendaCiclistaItem[] = [
   { id: "culotte", label: "Culotte", price: 38 },
 ];
 
-type TiendaMode = "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "explorar-compra";
-
-type PricePop = { id: string; amount: number; sign: "+" | "−"; key: number };
+type TiendaMode =
+  | "sumar-cesta"
+  | "restar-cartera"
+  | "calcular-faltante"
+  | "calcular-sobra"
+  | "explorar-compra";
 
 export type TiendaCiclistaModuleProps = {
   stepId: string;
@@ -39,7 +42,7 @@ export type TiendaCiclistaModuleProps = {
   onAnimationComplete?: () => void;
 };
 
-function ItemIcon({ id }: { id: string }) {
+function ItemIcon({ id, large }: { id: string; large?: boolean }) {
   const src = PRODUCT_IMAGES[id];
   if (!src) {
     return null;
@@ -48,9 +51,12 @@ function ItemIcon({ id }: { id: string }) {
     <Image
       src={src}
       alt=""
-      width={96}
-      height={72}
-      className="h-14 w-auto max-w-[5.5rem] object-contain"
+      width={120}
+      height={90}
+      className={cn(
+        "w-auto object-contain",
+        large ? "h-[4.5rem] max-w-[7rem]" : "h-8 max-w-[3.5rem]",
+      )}
       aria-hidden
     />
   );
@@ -70,9 +76,9 @@ export function TiendaCiclistaModule({
 }: TiendaCiclistaModuleProps) {
   const reduced = useReducedMotion();
   const [tapIds, setTapIds] = useState<string[]>([]);
-  const [pops, setPops] = useState<PricePop[]>([]);
-  const popKey = useRef(0);
+  const [flyingId, setFlyingId] = useState<string | null>(null);
   const timers = useRef<number[]>([]);
+  const cestaRef = useRef<HTMLDivElement>(null);
 
   const totalAll = useMemo(() => items.reduce((sum, item) => sum + item.price, 0), [items]);
 
@@ -83,9 +89,14 @@ export function TiendaCiclistaModule({
   );
   const remainder = wallet - selectedTotal;
 
-  const tapTotal = useMemo(
-    () => items.filter((item) => tapIds.includes(item.id)).reduce((s, i) => s + i.price, 0),
+  const orderedTappedPrices = useMemo(
+    () => items.filter((item) => tapIds.includes(item.id)).map((item) => item.price),
     [items, tapIds],
+  );
+
+  const tapTotal = useMemo(
+    () => orderedTappedPrices.reduce((sum, price) => sum + price, 0),
+    [orderedTappedPrices],
   );
 
   const clearTimers = useCallback(() => {
@@ -96,16 +107,6 @@ export function TiendaCiclistaModule({
   }, []);
 
   useEffect(() => clearTimers, [clearTimers]);
-
-  const pushPop = useCallback((id: string, amount: number, sign: "+" | "−") => {
-    const key = popKey.current++;
-    setPops((prev) => [...prev, { id, amount, sign, key }]);
-    timers.current.push(
-      window.setTimeout(() => {
-        setPops((prev) => prev.filter((pop) => pop.key !== key));
-      }, 900),
-    );
-  }, []);
 
   useEffect(() => {
     if (mode === "explorar-compra") {
@@ -139,30 +140,17 @@ export function TiendaCiclistaModule({
     }
 
     if (autoPlay && mode === "restar-cartera" && spendAmount != null) {
-      if (reduced) {
-        onReadyChange?.(true);
-        onAnimationComplete?.();
-        return;
-      }
-      onReadyChange?.(false);
-      let shown = 0;
-      const steps = 6;
-      let step = 0;
-      const tick = () => {
-        step += 1;
-        shown = Math.round((spendAmount * step) / steps);
-        if (step >= steps) {
-          onReadyChange?.(true);
-          onAnimationComplete?.();
-          return;
-        }
-        timers.current.push(window.setTimeout(tick, 450));
-      };
-      timers.current.push(window.setTimeout(tick, 500));
+      onReadyChange?.(true);
+      onAnimationComplete?.();
       return () => clearTimers();
     }
 
-    if (mode === "sumar-cesta" || mode === "restar-cartera" || mode === "calcular-faltante") {
+    if (
+      mode === "sumar-cesta" ||
+      mode === "restar-cartera" ||
+      mode === "calcular-faltante" ||
+      mode === "calcular-sobra"
+    ) {
       onReadyChange?.(true);
     }
   }, [
@@ -180,14 +168,29 @@ export function TiendaCiclistaModule({
   const runningTotal =
     mode === "sumar-cesta"
       ? tapTotal
-      : mode === "restar-cartera" && !autoPlay
-        ? tapTotal
-        : mode === "restar-cartera" && autoPlay && spendAmount != null
-          ? spendAmount
+      : mode === "restar-cartera" && autoPlay && spendAmount != null
+        ? spendAmount
+        : mode === "restar-cartera"
+          ? tapTotal
           : selectedTotal;
 
   const walletLeft =
     mode === "restar-cartera" ? wallet - runningTotal : mode === "explorar-compra" ? remainder : null;
+
+  const equipmentComplete = tapIds.length === items.length;
+  const shortfall = Math.max(0, totalAll - savedAmount);
+  const surplus = Math.max(0, savedAmount - totalAll);
+
+  const growingExpression = useMemo(() => {
+    if (orderedTappedPrices.length === 0) {
+      return null;
+    }
+    const sumPart = orderedTappedPrices.join(" + ");
+    if (equipmentComplete) {
+      return `$${sumPart} = ${totalAll}$ €`;
+    }
+    return `$${sumPart}$`;
+  }, [equipmentComplete, orderedTappedPrices, totalAll]);
 
   const toggleExploreItem = (id: string) => {
     if (!onSelectedIdsChange) {
@@ -197,7 +200,27 @@ export function TiendaCiclistaModule({
     onSelectedIdsChange(next);
   };
 
+  const addToCesta = (id: string) => {
+    const item = items.find((entry) => entry.id === id);
+    if (!item || tapIds.includes(id)) {
+      return;
+    }
+    if (!reduced) {
+      setFlyingId(id);
+      timers.current.push(
+        window.setTimeout(() => {
+          setFlyingId(null);
+        }, 650),
+      );
+    }
+    setTapIds((prev) => [...prev, id]);
+  };
+
   const toggleTapItem = (id: string) => {
+    if (mode === "sumar-cesta") {
+      addToCesta(id);
+      return;
+    }
     const item = items.find((entry) => entry.id === id);
     if (!item) {
       return;
@@ -207,32 +230,38 @@ export function TiendaCiclistaModule({
       if (has) {
         return prev.filter((x) => x !== id);
       }
-      pushPop(id, item.price, mode === "restar-cartera" ? "−" : "+");
       return [...prev, id];
     });
   };
 
-  const sumParts = items
-    .filter((item) => tapIds.includes(item.id))
-    .map((item) => String(item.price))
-    .join(" + ");
-  const fullEquipmentSum = items.map((item) => String(item.price)).join(" + ");
-  const equipmentComplete = tapIds.length === items.length;
-  const shortfall = totalAll - savedAmount;
+  const differenceMode = mode === "calcular-faltante" || mode === "calcular-sobra";
+  const barMax = differenceMode ? Math.max(savedAmount, totalAll) : totalAll;
+  const savedBarPct = (savedAmount / barMax) * 100;
+  const targetBarPct = (totalAll / barMax) * 100;
+  const gapBarPct = Math.max(0, targetBarPct - savedBarPct);
+  const surplusBarPct = Math.max(0, savedBarPct - targetBarPct);
 
   return (
     <div
-      className="flex flex-col gap-4"
+      className="mx-auto flex w-full max-w-4xl flex-col gap-6"
       aria-label="Tienda del equipo ciclista"
       data-testid="tienda-ciclista-module"
     >
-      <div className="relative flex flex-wrap justify-center gap-3 sm:justify-start">
+      <div
+        className={cn(
+          "flex flex-wrap justify-center gap-4",
+          differenceMode && "opacity-95",
+        )}
+      >
         {items.map((item) => {
           const inTap = tapIds.includes(item.id);
           const isSelected = selected.includes(item.id);
           const interactiveExplore = mode === "explorar-compra";
           const interactiveTap = mode === "sumar-cesta" || mode === "restar-cartera";
-          const displayOnly = mode === "calcular-faltante";
+          const displayOnly = differenceMode;
+          const awaitingTap = mode === "sumar-cesta" && !inTap && !equipmentComplete;
+          const isFlying = flyingId === item.id;
+
           return (
             <button
               key={item.id}
@@ -246,97 +275,149 @@ export function TiendaCiclistaModule({
                 }
               }}
               className={cn(
-                "relative flex w-[7.25rem] flex-col items-center gap-1 rounded-xl border px-2 py-3 text-center transition",
+                "relative flex min-w-[8.5rem] max-w-[9.5rem] flex-col items-center gap-2 rounded-2xl border-2 px-3 py-4 text-center transition",
                 (interactiveExplore || interactiveTap) &&
-                  "cursor-pointer hover:border-cobalt/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
+                  "cursor-pointer hover:border-cobalt/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
                 interactiveExplore && isSelected && "border-cobalt bg-cobalt-tint/50",
-                interactiveTap && inTap && "border-cobalt bg-cobalt-tint/40 ring-2 ring-cobalt/20",
-                (displayOnly || (!interactiveExplore && !interactiveTap)) &&
-                  "border-[color:var(--stage-border,#334155)] bg-black/25",
+                interactiveTap && inTap && "border-cobalt/70 bg-cobalt-tint/30 opacity-80",
+                displayOnly && "border-[color:var(--stage-border,#334155)] bg-black/25",
+                awaitingTap && !reduced && "animate-[lesson-card-attention_2s_ease-in-out_infinite]",
+                isFlying && "animate-[lesson-fly-to-cesta_0.65s_ease-in_forwards] motion-reduce:animate-none",
               )}
               aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
               aria-label={`${item.label}, ${item.price} euros`}
             >
-              {pops
-                .filter((pop) => pop.id === item.id)
-                .map((pop) => (
-                  <span
-                    key={pop.key}
-                    className="pointer-events-none absolute -top-1 left-1/2 z-10 -translate-x-1/2 animate-[lesson-price-pop_0.85s_ease-out_forwards] font-mono text-sm font-bold text-emerald-600"
-                  >
-                    {pop.sign}
-                    {pop.amount}
-                  </span>
-                ))}
-              <ItemIcon id={item.id} />
-              <span className="text-xs font-semibold text-ink">{item.label}</span>
-              <span className="text-sm font-bold text-[color:var(--stage-accent,#58c4dd)]">{item.price} €</span>
+              <ItemIcon id={item.id} large />
+              <span className="text-sm font-semibold text-ink">{item.label}</span>
+              <span className="rounded-lg border border-cobalt/35 bg-cobalt-tint/40 px-3 py-1 font-mono text-xl font-bold tabular-nums text-[color:var(--stage-accent,#58c4dd)]">
+                {item.price} €
+              </span>
             </button>
           );
         })}
       </div>
 
-      <div className="rounded-xl border border-dashed border-[color:var(--stage-border,#334155)] bg-black/25 px-4 py-4 text-center">
-        {mode === "sumar-cesta" ? (
-          <>
-            <p className="text-sm font-medium text-ink">El equipo ciclista cuesta en total:</p>
-            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
-              {runningTotal} €
+      {mode === "sumar-cesta" ? (
+        <div className="flex flex-col items-center gap-4">
+          <div
+            ref={cestaRef}
+            className="flex min-h-[4.5rem] w-full max-w-lg flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-cobalt/35 bg-black/30 px-4 py-3"
+            aria-label="Cesta"
+          >
+            {tapIds.length === 0 ? (
+              <p className="text-base font-medium text-ink-muted">La cesta está vacía</p>
+            ) : (
+              items
+                .filter((item) => tapIds.includes(item.id))
+                .map((item) => (
+                  <span key={item.id} className="rounded-lg bg-black/40 px-2 py-1">
+                    <ItemIcon id={item.id} />
+                  </span>
+                ))
+            )}
+          </div>
+
+          <div className="w-full max-w-2xl rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5 text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
+              El equipo ciclista cuesta en total
             </p>
-            {equipmentComplete ? (
-              <p className="mt-1 text-sm text-ink-muted">
-                <MathRenderer text={`$${fullEquipmentSum} = ${totalAll}$ €`} />
-              </p>
-            ) : sumParts ? (
-              <p className="mt-1 text-sm text-ink-muted">
-                <MathRenderer text={`$${sumParts} = ${runningTotal}$ €`} />
+            {growingExpression ? (
+              <p className="mt-3 font-mono text-2xl font-bold leading-snug text-ink sm:text-3xl" aria-live="polite">
+                <MathRenderer text={growingExpression} />
               </p>
             ) : (
-              <p className="mt-1 text-sm text-ink-muted">Pulsa cada artículo para sumarlo.</p>
+              <p className="mt-3 text-lg font-medium text-ink-muted">
+                Pulsa cada artículo para ir sumando precios
+              </p>
             )}
             {equipmentComplete ? (
-              <p className="mt-2 text-sm font-medium text-[color:var(--stage-accent-muted,#83c167)]">¡Equipo completo!</p>
-            ) : null}
-          </>
-        ) : null}
-        {mode === "calcular-faltante" ? (
-          <>
-            <p className="text-sm text-ink-muted">
-              Disponemos de <span className="font-mono font-bold text-ink">{savedAmount} €</span>.
-            </p>
-            <p className="mt-2 text-sm font-medium text-ink">
-              Para comprar el equipo completo ({totalAll} €) todavía nos faltan:
-            </p>
-            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
-              {shortfall} €
-            </p>
-            <p className="mt-1 text-sm text-ink-muted">
-              <MathRenderer text={`$${totalAll} - ${savedAmount} = ${shortfall}$ €`} />
-            </p>
-          </>
-        ) : null}
-        {mode === "restar-cartera" || mode === "explorar-compra" ? (
-          <>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cartera</p>
-            <p className="text-sm text-ink-muted">Tenías {wallet} €</p>
-            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
-              Quedan {walletLeft ?? wallet} €
-            </p>
-            {mode === "restar-cartera" && tapTotal > 0 ? (
-              <p className="mt-1 text-sm text-ink-muted">
-                <MathRenderer text={`$${wallet} - ${runningTotal} = ${wallet - runningTotal}$ €`} />
-              </p>
-            ) : mode === "restar-cartera" ? (
-              <p className="mt-1 text-sm text-ink-muted">Pulsa un artículo para restar su precio.</p>
-            ) : null}
-            {mode === "explorar-compra" ? (
-              <p className="text-xs text-ink-muted">
-                Gasto: {selectedTotal} € · {wallet} − {selectedTotal} = {remainder} €
+              <p className="mt-3 text-base font-semibold text-[color:var(--stage-accent-muted,#83c167)]">
+                ¡Equipo completo!
               </p>
             ) : null}
-          </>
-        ) : null}
-      </div>
+          </div>
+        </div>
+      ) : null}
+
+      {differenceMode ? (
+        <div className="mx-auto w-full max-w-xl space-y-4 rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5">
+          <div className="flex items-center justify-between gap-4 text-sm text-ink-muted">
+            <span>
+              Cartera:{" "}
+              <strong className="font-mono text-lg text-ink">{savedAmount} €</strong>
+            </span>
+            <span>
+              Equipo:{" "}
+              <strong className="font-mono text-lg text-ink">{totalAll} €</strong>
+            </span>
+          </div>
+          <div className="relative h-10 overflow-hidden rounded-full bg-black/50">
+            <div
+              className="absolute inset-y-0 left-0 bg-cobalt/75 transition-[width] duration-500"
+              style={{ width: `${Math.min(savedBarPct, targetBarPct)}%` }}
+            />
+            {mode === "calcular-faltante" ? (
+              <>
+                <div
+                  className="absolute inset-y-0 bg-cobalt/40 transition-[width] duration-500"
+                  style={{ width: `${savedBarPct}%` }}
+                />
+                <div
+                  className="absolute inset-y-0 bg-amber-500/45 transition-[width] duration-500"
+                  style={{ left: `${savedBarPct}%`, width: `${gapBarPct}%` }}
+                />
+              </>
+            ) : (
+              <>
+                <div
+                  className="absolute inset-y-0 bg-cobalt/55 transition-[width] duration-500"
+                  style={{ width: `${targetBarPct}%` }}
+                />
+                <div
+                  className="absolute inset-y-0 bg-emerald-500/45 transition-[width] duration-500"
+                  style={{ left: `${targetBarPct}%`, width: `${surplusBarPct}%` }}
+                />
+              </>
+            )}
+            <div
+              className="absolute inset-y-0 w-0.5 bg-white/70"
+              style={{ left: `${targetBarPct}%` }}
+              aria-hidden
+            />
+          </div>
+          <p className="text-center font-mono text-3xl font-bold text-ink" aria-live="polite">
+            {mode === "calcular-faltante" ? (
+              <>Faltan {shortfall} €</>
+            ) : (
+              <>Sobran {surplus} €</>
+            )}
+          </p>
+          <p className="text-center text-lg text-ink-muted">
+            <MathRenderer
+              text={
+                mode === "calcular-faltante"
+                  ? `$${totalAll} - ${savedAmount} = ${shortfall}$ €`
+                  : `$${savedAmount} - ${totalAll} = ${surplus}$ €`
+              }
+            />
+          </p>
+        </div>
+      ) : null}
+
+      {mode === "restar-cartera" || mode === "explorar-compra" ? (
+        <div className="rounded-xl border border-dashed border-[color:var(--stage-border,#334155)] bg-black/25 px-4 py-4 text-center">
+          <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Cartera</p>
+          <p className="text-sm text-ink-muted">Tenías {wallet} €</p>
+          <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
+            Quedan {walletLeft ?? wallet} €
+          </p>
+          {mode === "explorar-compra" ? (
+            <p className="text-xs text-ink-muted">
+              Gasto: {selectedTotal} € · {wallet} − {selectedTotal} = {remainder} €
+            </p>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -15,7 +15,7 @@ export type StageModuleRenderProps = {
     items?: import("@/lib/lesson/types").TiendaCiclistaItem[];
     wallet?: number;
     spendAmount?: number;
-    mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "explorar-compra";
+    mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "calcular-sobra" | "explorar-compra";
     savedAmount?: number;
   };
   piramide?: {
@@ -25,6 +25,9 @@ export type StageModuleRenderProps = {
     closeBefore?: number | null;
     onOpenAfterChange?: (index: number | null) => void;
     onCloseBeforeChange?: (index: number | null) => void;
+    targetResult?: number | null;
+    evaluatedResult?: number | null;
+    solved?: boolean;
   };
   bloques?: { blocks: number[] };
   jerarquia?: {
@@ -108,6 +111,9 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
         closeBefore={props.piramide.closeBefore}
         onOpenAfterChange={props.piramide.onOpenAfterChange}
         onCloseBeforeChange={props.piramide.onCloseBeforeChange}
+        targetResult={props.piramide.targetResult}
+        evaluatedResult={props.piramide.evaluatedResult}
+        solved={props.piramide.solved}
         onReadyChange={onReadyChange}
       />
     );
