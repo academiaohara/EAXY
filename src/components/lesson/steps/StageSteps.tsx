@@ -675,7 +675,7 @@ export function PredictStepView({
   return (
     <StageViewport theme={theme} header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}>
       <section
-        className="lesson-idea-enter border border-[color:var(--stage-border,#334155)] bg-black/15 p-6 sm:p-8"
+        className="lesson-idea-enter p-6 sm:p-8"
         data-testid="lesson-predict-step"
       >
         <h3 className="lesson-presentation-body mb-4 text-center font-normal text-[color:var(--stage-ink,#e8edf5)]">
