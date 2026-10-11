@@ -22,7 +22,10 @@ export function EgyptianNumeralIcon({ id, className }: EgyptianNumeralIconProps)
       src={SYMBOL_SRC[id]}
       alt=""
       aria-hidden
-      className={cn("h-10 w-auto object-contain", className)}
+      className={cn(
+        "h-10 w-auto object-contain brightness-0 invert",
+        className,
+      )}
       draggable={false}
     />
   );

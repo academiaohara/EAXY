@@ -20,7 +20,6 @@ import {
   SISTEMAS_HISTORIA_TARGETS,
   STAGE_PANEL,
   STAGE_SYMBOL_BUTTON,
-  STAGE_SYMBOL_BUTTON_EGYPT,
 } from "@/components/lesson/tools/naturales-numeracion/scenes/sistemas-historia-shared";
 import { cn } from "@/lib/utils";
 
@@ -90,11 +89,9 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
               tab === item.id
                 ? "border-cobalt bg-cobalt text-white shadow-sm"
                 : "border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45",
-              done[item.id] && tab !== item.id && "ring-2 ring-emerald-400/60",
             )}
           >
             {item.label}
-            {done[item.id] ? " ✓" : null}
           </button>
         ))}
       </div>
@@ -156,13 +153,13 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
                 onClick={() =>
                   setState((prev) => ({ ...prev, egyptSymbols: [...prev.egyptSymbols, sym.id] }))
                 }
-                className={cn(STAGE_SYMBOL_BUTTON_EGYPT, "px-3")}
+                className={cn(STAGE_SYMBOL_BUTTON, "gap-2 px-3 py-4")}
               >
                 <EgyptianNumeralIcon id={sym.id} className="h-12" />
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-200/90">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
                   {sym.name}
                 </span>
-                <span className="rounded-full border border-amber-400/40 bg-amber-500/15 px-2 py-0.5 text-sm font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+                <span className="text-sm font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
                   {sym.value.toLocaleString("es-ES")}
                 </span>
               </button>
@@ -251,7 +248,7 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
 
       {!allDone ? (
         <p className="text-xs text-[color:var(--stage-muted,#94a3b8)]">
-          Completa los tres retos (✓ en cada pestaña) para continuar.
+          Completa los tres retos para continuar.
         </p>
       ) : null}
     </div>
