@@ -29,6 +29,12 @@ import type {
   TiendaCiclistaItem,
 } from "@/lib/lesson/types";
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
+import {
+  PredictCheckButton,
+  predictChoiceClassName,
+  predictFeedbackStatusClassName,
+  predictGridChoiceClassName,
+} from "@/components/lesson/steps/predict-step-ui";
 import { cn } from "@/lib/utils";
 
 function usesPlainLessonTypography(text: string): boolean {
@@ -464,7 +470,7 @@ export function PredictStepView({
           {step.hint && step.hintHiddenUntilRequested && !checked ? (
             <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
               {hintVisible ? (
-                <p className="max-w-lg text-center text-sm leading-relaxed text-ink-muted">
+                <p className="lesson-stage-hint mx-auto text-center">
                   <MathRenderer text={step.hint} />
                 </p>
               ) : (
@@ -480,7 +486,7 @@ export function PredictStepView({
               )}
             </div>
           ) : null}
-          <div className="mx-auto flex max-w-md flex-col gap-2">
+          <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
             {choiceOptions.map((choice) => (
               <button
                 key={choice.id}
@@ -488,30 +494,25 @@ export function PredictStepView({
                 data-testid={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={cn(
-                  "rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
-                  choiceId === choice.id
-                    ? "border-cobalt bg-cobalt-tint"
-                    : "border-slate-200 hover:border-cobalt/30",
-                  checked && choiceId !== choice.id && "opacity-55",
-                )}
+                className={predictChoiceClassName({
+                  selected: choiceId === choice.id,
+                  checked,
+                })}
                 aria-pressed={choiceId === choice.id}
               >
-                <LessonRichText text={choice.label} className="text-sm font-medium" />
+                <LessonRichText text={choice.label} className="text-base font-medium" />
               </button>
             ))}
           </div>
+          {!checked && control ? (
+            <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
+          ) : null}
           {checked && checkFeedback ? (
             <div className="mt-5 space-y-2" role="status">
-              <p
-                className={cn(
-                  "text-center text-sm font-medium",
-                  isCorrect ? "text-emerald-800" : "text-amber-950",
-                )}
-              >
+              <p className={predictFeedbackStatusClassName(isCorrect)}>
                 {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
               </p>
-              <p className="text-center text-sm leading-relaxed text-ink-muted">
+              <p className="lesson-stage-hint mx-auto text-center">
                 <MathRenderer text={checkFeedback} />
               </p>
             </div>
@@ -545,31 +546,29 @@ export function PredictStepView({
                 type="button"
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={cn(
-                  "group flex aspect-square min-h-[5.5rem] flex-col items-center justify-center rounded-2xl border-2 bg-white p-3 text-center shadow-sm transition duration-200",
-                  "hover:-translate-y-1 hover:border-cobalt/70 hover:shadow-lg",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-offset-2",
-                  choiceId === choice.id
-                    ? "border-cobalt bg-cobalt-tint ring-2 ring-cobalt/30 shadow-md"
-                    : "border-slate-200",
-                  checked && choiceId !== choice.id && "opacity-55",
-                )}
+                className={predictGridChoiceClassName({
+                  selected: choiceId === choice.id,
+                  checked,
+                })}
                 aria-pressed={choiceId === choice.id}
                 aria-label={`${choice.id} euros`}
               >
-                <span className="text-lg font-bold text-ink transition group-hover:text-cobalt">
+                <span className="text-xl font-bold text-ink transition group-hover:text-[color:var(--stage-accent,#58c4dd)]">
                   <MathRenderer text={choice.label} />
                 </span>
               </button>
             ))}
           </div>
+          {!checked && control ? (
+            <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
+          ) : null}
           {checked ? (
             <div className="mt-5 space-y-2" role="status">
-              <p className="text-center text-sm font-medium text-ink">
+              <p className={predictFeedbackStatusClassName(isCorrect)}>
                 {isCorrect ? "¡Correcto!" : "Casi: piensa en añadir una entrada más."}
               </p>
               {step.explanation ? (
-                <p className="text-center text-sm text-ink-muted">
+                <p className="lesson-stage-hint mx-auto text-center">
                   <MathRenderer text={step.explanation} />
                 </p>
               ) : null}
@@ -609,15 +608,13 @@ export function PredictStepView({
                     anaLeo ? submitAnaLeoChoice(choice.id) : setChoiceId(choice.id)
                   }
                   className={cn(
-                    "min-h-11 rounded-xl border-2 px-4 py-3 text-sm font-bold transition",
-                    anaLeo ? "min-w-[7rem] flex-1 text-center" : "text-left font-medium",
-                    checked && choice.id === step.correctChoiceId
-                      ? "border-emerald-500 bg-emerald-500/15"
-                      : checked && choiceId === choice.id
-                        ? "border-red-400 opacity-60"
-                        : choiceId === choice.id
-                          ? "border-cobalt bg-cobalt-tint"
-                          : "border-slate-200 hover:border-cobalt/30",
+                    predictChoiceClassName({
+                      selected: choiceId === choice.id,
+                      checked: checked && choiceId !== choice.id,
+                    }),
+                    anaLeo ? "min-h-11 min-w-[7rem] flex-1 text-center font-bold" : "",
+                    checked && choice.id === step.correctChoiceId && "is-selected border-emerald-500/80",
+                    checked && choiceId === choice.id && choice.id !== step.correctChoiceId && "opacity-60",
                   )}
                   aria-pressed={choiceId === choice.id}
                 >
@@ -626,9 +623,12 @@ export function PredictStepView({
               ))}
             </div>
           ) : null}
+          {!anaLeo && !checked && control ? (
+            <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
+          ) : null}
           {anaLeo ? <div className="mt-4">{jerarquiaStage}</div> : null}
           {checked && !anaLeo ? (
-            <p className="mt-4 text-center text-sm text-ink-muted" role="status">
+            <p className="mt-4 text-center text-base text-ink-muted" role="status">
               {isCorrect ? "¡Bien visto!" : "Mira la animación: el orden importa."}
             </p>
           ) : null}
@@ -676,7 +676,7 @@ export function PredictStepView({
         {step.hint && step.hintHiddenUntilRequested && !checked ? (
           <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
             {hintVisible ? (
-              <p className="max-w-lg text-center text-sm leading-relaxed text-ink-muted">
+              <p className="lesson-stage-hint mx-auto text-center">
                 <MathRenderer text={step.hint} />
               </p>
             ) : (
@@ -699,11 +699,11 @@ export function PredictStepView({
             value={numericValue}
             onChange={(event) => setNumericValue(event.target.value)}
             disabled={disabled || checked}
-            className="mx-auto block w-full max-w-xs rounded-xl border-2 border-slate-200 px-4 py-3 text-center text-lg font-semibold"
+            className="lesson-stage-choice mx-auto block w-full max-w-md rounded-xl border-2 px-4 py-3 text-center text-lg font-semibold"
             aria-label="Tu respuesta"
           />
         ) : (
-          <div className="mx-auto flex max-w-md flex-col gap-2">
+          <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
             {choiceOptions.map((choice) => (
               <button
                 key={choice.id}
@@ -711,30 +711,26 @@ export function PredictStepView({
                 data-testid={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={cn(
-                  "rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition",
-                  choiceId === choice.id
-                    ? "border-cobalt bg-cobalt-tint"
-                    : "border-slate-200 hover:border-cobalt/30",
-                )}
+                className={predictChoiceClassName({
+                  selected: choiceId === choice.id,
+                  checked,
+                })}
                 aria-pressed={choiceId === choice.id}
               >
-                <LessonRichText text={choice.label} className="text-sm font-medium" />
+                <LessonRichText text={choice.label} className="text-base font-medium" />
               </button>
             ))}
           </div>
         )}
+        {!checked && control ? (
+          <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
+        ) : null}
         {checked && checkFeedback ? (
           <div className="mt-5 space-y-2" role="status">
-            <p
-              className={cn(
-                "text-center text-sm font-medium",
-                isCorrect ? "text-emerald-800" : "text-amber-950",
-              )}
-            >
+            <p className={predictFeedbackStatusClassName(isCorrect)}>
               {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
             </p>
-            <p className="text-center text-sm leading-relaxed text-ink-muted">
+            <p className="lesson-stage-hint mx-auto text-center">
               <MathRenderer text={checkFeedback} />
             </p>
           </div>

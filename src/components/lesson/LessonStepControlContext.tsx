@@ -23,7 +23,7 @@ export type LessonStepControl = {
   onBack?: () => void;
 };
 
-/** Avance/retroceso de fases de animación (flechas del teclado, botones del pie). */
+/** Avance/retroceso de fases de animación (teclado ←/→ y controles del centro del pie). */
 export type LessonPresenterNavigation = {
   onAdvance: () => void;
   onRetreat: () => void;
