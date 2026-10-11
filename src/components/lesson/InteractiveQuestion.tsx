@@ -30,6 +30,8 @@ type InteractiveQuestionProps = {
   compact?: boolean;
   savedAttempt?: PracticeStepSnapshot | null;
   stageTheme?: LessonStageTheme;
+  /** Paso ya superado en la sesión: no bloquear Continuar por animaciones intro. */
+  presentationUnlocked?: boolean;
 };
 
 function ConceptStepView({
@@ -80,6 +82,7 @@ export function InteractiveQuestion({
   compact = false,
   savedAttempt = null,
   stageTheme = "paper",
+  presentationUnlocked = false,
 }: InteractiveQuestionProps) {
   if (step.type === "narrate") {
     return (
@@ -88,6 +91,7 @@ export function InteractiveQuestion({
         theme={stageTheme}
         onContinue={(meta) => onContinue?.(meta)}
         onPreviousStep={onPreviousStep}
+        presentationUnlocked={presentationUnlocked}
       />
     );
   }
@@ -122,6 +126,7 @@ export function InteractiveQuestion({
         step={step}
         theme={stageTheme}
         onContinue={() => onContinue?.({ completed: true })}
+        presentationUnlocked={presentationUnlocked}
       />
     );
   }

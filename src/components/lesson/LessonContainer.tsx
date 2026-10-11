@@ -41,6 +41,7 @@ import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersiste
 import {
   clearPersistedInteractiveLesson,
   createDefaultInteractiveLessonState,
+  furthestVisitedStepIndex,
   readPersistedInteractiveLesson,
   writePersistedInteractiveLesson,
 } from "@/lib/local-progress/interactive-lesson-state";
@@ -592,6 +593,7 @@ function LessonContainerBody({
     currentAttempt !== undefined &&
     !("optional" in currentStep && currentStep.optional);
   const stepMountKey = `${currentStep.id}:${stepRemountKey[currentStep.id] ?? 0}`;
+  const presentationUnlocked = stepIndex < furthestVisitedStepIndex(visitedSteps);
 
   return (
     <LessonPersistedStateProvider toolState={toolState} onToolStateChange={setToolState}>
@@ -662,6 +664,7 @@ function LessonContainerBody({
                 disabled={feedback !== null}
                 savedAttempt={currentAttempt?.snapshot ?? null}
                 stageTheme={lesson.stage?.theme ?? "board"}
+                presentationUnlocked={presentationUnlocked}
                 compact
               />
             </div>
