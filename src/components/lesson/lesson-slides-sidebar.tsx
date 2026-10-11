@@ -28,9 +28,9 @@ function SlideDot({
         "block size-[9px] shrink-0 rounded-full transition-colors duration-200 motion-reduce:transition-none",
         variant === "done" && "bg-emerald-400 ring-1 ring-emerald-300/55",
         variant === "current" &&
-          "bg-cobalt shadow-[0_0_0_3px_rgba(67,83,255,0.38)]",
-        variant === "pending" && "bg-slate-400/50 ring-1 ring-slate-500/45",
-        variant === "pending-locked" && "bg-slate-600/40 ring-1 ring-slate-600/55",
+          "bg-[#8b96ff] shadow-[0_0_0_3px_rgba(139,150,255,0.48)]",
+        variant === "pending" && "bg-slate-200/70 ring-1 ring-white/35",
+        variant === "pending-locked" && "bg-slate-300/45 ring-1 ring-white/25",
       )}
       aria-hidden
     />
