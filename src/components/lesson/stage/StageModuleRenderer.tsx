@@ -15,7 +15,8 @@ export type StageModuleRenderProps = {
     items?: import("@/lib/lesson/types").TiendaCiclistaItem[];
     wallet?: number;
     spendAmount?: number;
-    mode: "sumar-cesta" | "restar-cartera" | "explorar-compra";
+    mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "explorar-compra";
+    savedAmount?: number;
   };
   piramide?: {
     variant: "dual-parentesis" | "explorar-parentesis";
@@ -62,6 +63,7 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
         items={props.tienda.items}
         wallet={props.tienda.wallet}
         spendAmount={props.tienda.spendAmount}
+        savedAmount={props.tienda.savedAmount}
         autoPlay={props.autoPlay}
         selectedIds={props.selectedIds}
         onSelectedIdsChange={props.onSelectedIdsChange}

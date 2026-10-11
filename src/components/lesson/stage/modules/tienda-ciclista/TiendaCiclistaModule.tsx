@@ -21,7 +21,7 @@ const DEFAULT_ITEMS: TiendaCiclistaItem[] = [
   { id: "culotte", label: "Culotte", price: 38 },
 ];
 
-type TiendaMode = "sumar-cesta" | "restar-cartera" | "explorar-compra";
+type TiendaMode = "sumar-cesta" | "restar-cartera" | "calcular-faltante" | "explorar-compra";
 
 type PricePop = { id: string; amount: number; sign: "+" | "−"; key: number };
 
@@ -31,6 +31,7 @@ export type TiendaCiclistaModuleProps = {
   items?: TiendaCiclistaItem[];
   wallet?: number;
   spendAmount?: number;
+  savedAmount?: number;
   autoPlay?: boolean;
   selectedIds?: string[];
   onSelectedIdsChange?: (ids: string[]) => void;
@@ -60,6 +61,7 @@ export function TiendaCiclistaModule({
   items = DEFAULT_ITEMS,
   wallet = 828,
   spendAmount,
+  savedAmount = 693,
   autoPlay = false,
   selectedIds,
   onSelectedIdsChange,
@@ -160,7 +162,7 @@ export function TiendaCiclistaModule({
       return () => clearTimers();
     }
 
-    if (mode === "sumar-cesta" || mode === "restar-cartera") {
+    if (mode === "sumar-cesta" || mode === "restar-cartera" || mode === "calcular-faltante") {
       onReadyChange?.(true);
     }
   }, [
@@ -214,6 +216,9 @@ export function TiendaCiclistaModule({
     .filter((item) => tapIds.includes(item.id))
     .map((item) => String(item.price))
     .join(" + ");
+  const fullEquipmentSum = items.map((item) => String(item.price)).join(" + ");
+  const equipmentComplete = tapIds.length === items.length;
+  const shortfall = totalAll - savedAmount;
 
   return (
     <div
@@ -227,11 +232,12 @@ export function TiendaCiclistaModule({
           const isSelected = selected.includes(item.id);
           const interactiveExplore = mode === "explorar-compra";
           const interactiveTap = mode === "sumar-cesta" || mode === "restar-cartera";
+          const displayOnly = mode === "calcular-faltante";
           return (
             <button
               key={item.id}
               type="button"
-              disabled={!interactiveExplore && !interactiveTap}
+              disabled={displayOnly || (!interactiveExplore && !interactiveTap)}
               onClick={() => {
                 if (interactiveExplore) {
                   toggleExploreItem(item.id);
@@ -245,7 +251,7 @@ export function TiendaCiclistaModule({
                   "cursor-pointer hover:border-cobalt/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
                 interactiveExplore && isSelected && "border-cobalt bg-cobalt-tint/50",
                 interactiveTap && inTap && "border-cobalt bg-cobalt-tint/40 ring-2 ring-cobalt/20",
-                !interactiveExplore && !interactiveTap &&
+                (displayOnly || (!interactiveExplore && !interactiveTap)) &&
                   "border-[color:var(--stage-border,#334155)] bg-black/25",
               )}
               aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
@@ -273,20 +279,40 @@ export function TiendaCiclistaModule({
       <div className="rounded-xl border border-dashed border-[color:var(--stage-border,#334155)] bg-black/25 px-4 py-4 text-center">
         {mode === "sumar-cesta" ? (
           <>
-            <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted">Total en la cesta</p>
+            <p className="text-sm font-medium text-ink">El equipo ciclista cuesta en total:</p>
             <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
               {runningTotal} €
             </p>
-            {sumParts ? (
+            {equipmentComplete ? (
+              <p className="mt-1 text-sm text-ink-muted">
+                <MathRenderer text={`$${fullEquipmentSum} = ${totalAll}$ €`} />
+              </p>
+            ) : sumParts ? (
               <p className="mt-1 text-sm text-ink-muted">
                 <MathRenderer text={`$${sumParts} = ${runningTotal}$ €`} />
               </p>
             ) : (
               <p className="mt-1 text-sm text-ink-muted">Pulsa cada artículo para sumarlo.</p>
             )}
-            {runningTotal === totalAll && tapIds.length === items.length ? (
+            {equipmentComplete ? (
               <p className="mt-2 text-sm font-medium text-[color:var(--stage-accent-muted,#83c167)]">¡Equipo completo!</p>
             ) : null}
+          </>
+        ) : null}
+        {mode === "calcular-faltante" ? (
+          <>
+            <p className="text-sm text-ink-muted">
+              Disponemos de <span className="font-mono font-bold text-ink">{savedAmount} €</span>.
+            </p>
+            <p className="mt-2 text-sm font-medium text-ink">
+              Para comprar el equipo completo ({totalAll} €) todavía nos faltan:
+            </p>
+            <p className="font-mono text-3xl font-bold text-ink" aria-live="polite">
+              {shortfall} €
+            </p>
+            <p className="mt-1 text-sm text-ink-muted">
+              <MathRenderer text={`$${totalAll} - ${savedAmount} = ${shortfall}$ €`} />
+            </p>
           </>
         ) : null}
         {mode === "restar-cartera" || mode === "explorar-compra" ? (

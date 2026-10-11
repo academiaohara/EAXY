@@ -296,6 +296,7 @@ export function NarrateStepView({
               items: tienda.items,
               wallet: tienda.wallet,
               spendAmount: tienda.spendAmount,
+              savedAmount: tienda.savedAmount,
               mode: tienda.mode,
             }
           : undefined

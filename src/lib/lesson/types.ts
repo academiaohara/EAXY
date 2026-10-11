@@ -380,7 +380,9 @@ export type NarrateStep = LessonStepBase &
       wallet?: number;
       /** Importe pagado en escena de resta (p. ej. $693$ € en la diapositiva). */
       spendAmount?: number;
-      mode: "sumar-cesta" | "restar-cartera";
+      mode: "sumar-cesta" | "restar-cartera" | "calcular-faltante";
+      /** Ahorros disponibles en `calcular-faltante` (p. ej. $693$ €). */
+      savedAmount?: number;
     };
     /** Configuración para `piramide-reduccion`. */
     piramide?: {
