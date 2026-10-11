@@ -14,14 +14,37 @@ type LessonSlidesSidebarProps = {
   slides: LessonSlideNavItem[];
   current: number;
   maxReached: number;
+  visitedSteps: boolean[];
+  completedSteps: boolean[];
   onSelect: (index: number) => void;
 };
 
-function SlideDot({
-  variant,
-}: {
-  variant: "done" | "current" | "pending" | "pending-locked";
-}) {
+export type SlideDotVariant = "done" | "current" | "pending" | "pending-locked";
+
+/** Color del punto según visita/completado, no según índice relativo al paso actual. */
+export function resolveSlideDotVariant(
+  index: number,
+  current: number,
+  maxReached: number,
+  visitedSteps: boolean[],
+  completedSteps: boolean[],
+): SlideDotVariant {
+  const isCurrent = index === current;
+  if (isCurrent) {
+    return "current";
+  }
+  const visited = Boolean(visitedSteps[index]);
+  const completed = Boolean(completedSteps[index]);
+  if (visited || completed) {
+    return "done";
+  }
+  if (index > maxReached) {
+    return "pending-locked";
+  }
+  return "pending";
+}
+
+function SlideDot({ variant }: { variant: SlideDotVariant }) {
   return (
     <span
       className={cn(
@@ -66,6 +89,8 @@ export function LessonSlidesSidebar({
   slides,
   current,
   maxReached,
+  visitedSteps,
+  completedSteps,
   onSelect,
 }: LessonSlidesSidebarProps) {
   const listId = useId();
@@ -93,18 +118,14 @@ export function LessonSlidesSidebar({
       >
         {slides.map((slide, index) => {
           const isCurrent = index === current;
-          const isDone = index < current;
-          const isLocked = index > maxReached;
-          let variant: "done" | "current" | "pending" | "pending-locked";
-          if (isCurrent) {
-            variant = "current";
-          } else if (isDone) {
-            variant = "done";
-          } else if (isLocked) {
-            variant = "pending-locked";
-          } else {
-            variant = "pending";
-          }
+          const variant = resolveSlideDotVariant(
+            index,
+            current,
+            maxReached,
+            visitedSteps,
+            completedSteps,
+          );
+          const isLocked = variant === "pending-locked";
 
           return (
             <li key={slide.id}>
