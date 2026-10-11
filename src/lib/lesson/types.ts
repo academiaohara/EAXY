@@ -280,7 +280,8 @@ export type SystemGraphConfig = {
 
 /** Escenas de la lección 1 (1.º ESO): origen y sistemas de numeración. */
 export type NaturalesNumeracionScene =
-  | "sistemas-historia"
+  | "sistemas-historia-galeria"
+  | "sistemas-historia-juego"
   | "decimal-intro"
   | "contar-diez"
   | "redondeo-demo"

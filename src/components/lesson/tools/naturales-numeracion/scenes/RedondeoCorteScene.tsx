@@ -57,7 +57,17 @@ export function RedondeoCorteScene({
         <strong className={onStage ? "text-[color:var(--stage-ink,#e8edf5)]" : "text-ink"}>
           {formatGrouped(n)}
         </strong>{" "}
-        a las <strong className="text-cobalt">{order.label.toLowerCase()}</strong>. Pulsa el{" "}
+        a las{" "}
+        <strong
+          className={
+            onStage
+              ? "text-[color:var(--stage-highlight,#ffff55)]"
+              : "text-cobalt"
+          }
+        >
+          {order.label.toLowerCase()}
+        </strong>
+        . Pulsa el{" "}
         <strong>último dígito que se conserva</strong> (la raya cortará a su derecha).
       </p>
 
@@ -118,7 +128,14 @@ export function RedondeoCorteScene({
             )}
           >
             Resultado:{" "}
-            <strong className="text-xl tabular-nums text-cobalt">{formatGrouped(roundToOrder(n, orderId))}</strong>
+            <strong
+              className={cn(
+                "text-xl tabular-nums",
+                onStage ? "text-[color:var(--stage-accent-muted,#83c167)]" : "text-cobalt",
+              )}
+            >
+              {formatGrouped(roundToOrder(n, orderId))}
+            </strong>
           </p>
         </div>
       ) : null}

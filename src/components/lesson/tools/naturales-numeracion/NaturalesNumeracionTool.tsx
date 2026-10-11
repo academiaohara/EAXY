@@ -12,7 +12,8 @@ import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/
 import { DecimalIntroScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalIntroScene";
 import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
 import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
-import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
+import { SistemasHistoriaGaleriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaGaleriaScene";
+import { SistemasHistoriaJuegoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaJuegoScene";
 import type { LessonStageTheme, NaturalesNumeracionToolStep } from "@/lib/lesson/types";
 
 type NaturalesNumeracionToolProps = {
@@ -51,8 +52,10 @@ export function NaturalesNumeracionTool({
 
   const scene = (() => {
     switch (step.scene) {
-      case "sistemas-historia":
-        return <SistemasHistoriaScene stepId={step.id} onReadyChange={handleReadyChange} />;
+      case "sistemas-historia-galeria":
+        return <SistemasHistoriaGaleriaScene onReadyChange={handleReadyChange} />;
+      case "sistemas-historia-juego":
+        return <SistemasHistoriaJuegoScene onReadyChange={handleReadyChange} />;
       case "decimal-intro":
         return <DecimalIntroScene onReadyChange={handleReadyChange} />;
       case "contar-diez":
