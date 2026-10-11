@@ -12,13 +12,13 @@ const ILLUSTRATIONS: {
 }[] = [
   {
     tab: "tally",
-    src: "/lesson/numeracion/historia/primitivo.jpg",
+    src: "/lesson/numeracion/historia/primitivo.png",
     alt: "Ilustración del hombre primitivo contando con marcas",
     label: "Hombre primitivo",
   },
   {
     tab: "egypt",
-    src: "/lesson/numeracion/historia/egipcios.jpg",
+    src: "/lesson/numeracion/historia/egipcios.png",
     alt: "Símbolos del sistema de numeración egipcio",
     label: "Egipcios",
   },
@@ -67,7 +67,7 @@ export function HistoriaNumeracionIllustrations({
                 src={item.src}
                 alt={item.alt}
                 fill
-                className="object-cover object-center"
+                className="object-contain object-center p-1"
                 sizes="(min-width: 768px) 220px, 30vw"
               />
             </div>

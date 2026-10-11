@@ -86,7 +86,12 @@ export function RoundingCutView({
               {roundsUp ? " → sumamos 1" : " → no subimos"}
             </span>
           ) : null}
-          <span className="flex items-center gap-2 text-cobalt">
+          <span
+            className={cn(
+              "flex items-center gap-2",
+              onStage ? "text-[color:var(--stage-accent-muted,#83c167)]" : "text-cobalt",
+            )}
+          >
             <span aria-hidden>→</span>
             <strong className="text-xl tabular-nums">{formatGrouped(previewResult)}</strong>
           </span>
