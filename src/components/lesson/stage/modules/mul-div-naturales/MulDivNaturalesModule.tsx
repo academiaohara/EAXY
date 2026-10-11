@@ -75,16 +75,7 @@ function latexColoredRepeatedProduct(
 }
 
 function SlideBadge({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span
-      className={cn(
-        "rounded-md border-2 border-sky-400/90 bg-white px-3 py-1 font-mono text-base font-bold text-ink shadow-sm",
-        className,
-      )}
-    >
-      {children}
-    </span>
-  );
+  return <span className={cn("lesson-stage-chip", className)}>{children}</span>;
 }
 
 function TicketImage({
