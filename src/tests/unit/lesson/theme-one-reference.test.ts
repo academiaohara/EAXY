@@ -4,7 +4,10 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
-import type { InteractiveLesson } from "@/lib/lesson/types";
+import {
+  stepHasDefinitionBox,
+  type InteractiveLesson,
+} from "@/lib/lesson/types";
 
 const THEME_ONE_LESSONS: InteractiveLesson[] = [
   sistemasNumeracionNaturalesLesson,
@@ -19,7 +22,7 @@ describe("lecciones de referencia del tema 1", () => {
     expect(sistemasNumeracionNaturalesLesson.stage?.theme).toBe("board");
     expect(multiplicacionDivisionNaturalesLesson.stage?.theme).toBe("board");
     expect(
-      sistemasNumeracionNaturalesLesson.steps.every((step) => Boolean(step.definitionBox)),
+      sistemasNumeracionNaturalesLesson.steps.every(stepHasDefinitionBox),
     ).toBe(true);
   });
 
