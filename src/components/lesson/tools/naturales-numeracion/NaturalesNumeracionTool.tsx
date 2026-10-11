@@ -10,7 +10,6 @@ import { StageViewport } from "@/components/lesson/stage/StageViewport";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { ContarDiezScene } from "@/components/lesson/tools/naturales-numeracion/scenes/ContarDiezScene";
 import { DecimalIntroScene } from "@/components/lesson/tools/naturales-numeracion/scenes/DecimalIntroScene";
-import { OrigenContarScene } from "@/components/lesson/tools/naturales-numeracion/scenes/OrigenContarScene";
 import { RedondeoCorteScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoCorteScene";
 import { RedondeoDemoScene } from "@/components/lesson/tools/naturales-numeracion/scenes/RedondeoDemoScene";
 import { SistemasHistoriaScene } from "@/components/lesson/tools/naturales-numeracion/scenes/SistemasHistoriaScene";
@@ -29,7 +28,7 @@ export function NaturalesNumeracionTool({
   compact = false,
   theme = "board",
 }: NaturalesNumeracionToolProps) {
-  const [ready, setReady] = useState(step.scene === "origen-contar");
+  const [ready, setReady] = useState(false);
 
   const handleReadyChange = useCallback((value: boolean) => {
     setReady(value);
@@ -52,8 +51,6 @@ export function NaturalesNumeracionTool({
 
   const scene = (() => {
     switch (step.scene) {
-      case "origen-contar":
-        return <OrigenContarScene />;
       case "sistemas-historia":
         return <SistemasHistoriaScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "decimal-intro":
@@ -61,7 +58,13 @@ export function NaturalesNumeracionTool({
       case "contar-diez":
         return <ContarDiezScene stepId={step.id} onReadyChange={handleReadyChange} />;
       case "redondeo-demo":
-        return <RedondeoDemoScene stepId={step.id} onReadyChange={handleReadyChange} />;
+        return (
+          <RedondeoDemoScene
+            stepId={step.id}
+            onReadyChange={handleReadyChange}
+            theme={theme}
+          />
+        );
       case "redondeo-corte":
         if (!step.roundingExercise) {
           return (
@@ -74,6 +77,7 @@ export function NaturalesNumeracionTool({
             n={step.roundingExercise.n}
             orderId={step.roundingExercise.orderId}
             onReadyChange={handleReadyChange}
+            theme={theme}
           />
         );
       default:

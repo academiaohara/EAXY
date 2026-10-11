@@ -3,7 +3,7 @@ import { TEMA_1_SUBTITLE } from "@/data/lessons/shared";
 
 export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
   slug: "multiplicacion-division-naturales",
-  title: "4. Multiplicación y división",
+  title: "3. Multiplicación y división",
   subtitle: TEMA_1_SUBTITLE,
   stage: { theme: "board" },
   steps: [

@@ -8,6 +8,7 @@ import {
   egyptianSymbolsToInt,
   type EgyptianSymbolId,
 } from "@/components/lesson/tools/naturales-numeracion/EgyptianNumeralIcon";
+import { HistoriaNumeracionIllustrations } from "@/components/lesson/tools/naturales-numeracion/scenes/HistoriaNumeracionIllustrations";
 import { TallyMarksView } from "@/components/lesson/tools/naturales-numeracion/scenes/TallyMarksView";
 import { romanToInt } from "@/components/lesson/tools/naturales-numeracion/roman";
 import {
@@ -89,6 +90,12 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
 
   return (
     <div className="space-y-5">
+      <HistoriaNumeracionIllustrations
+        activeTab={tab}
+        onSelectTab={(nextTab) => setState((prev) => ({ ...prev, tab: nextTab }))}
+        completed={done}
+      />
+
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
         {TABS.map((item) => (
           <button

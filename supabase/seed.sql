@@ -27,11 +27,10 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
-  ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen y sistemas de numeración', 'Sistemas aditivos y posicionales: egipcio, romano y decimal.', 1, null),
-  ('a3000000-0000-4000-8000-000000000102', 'a2000000-0000-4000-8000-000000000001', '2. Aproximación por redondeo', 'Regla del redondeo y aproximaciones a distintos órdenes.', 2, null),
-  ('a3000000-0000-4000-8000-000000000103', 'a2000000-0000-4000-8000-000000000001', '3. Suma y resta', 'Paréntesis, propiedades conmutativa y asociativa, problemas.', 3, null),
-  ('a3000000-0000-4000-8000-000000000104', 'a2000000-0000-4000-8000-000000000001', '4. Multiplicación y división', 'Suma repetida, propiedades, reparto y divisiones exactas y enteras.', 4, null),
-  ('a3000000-0000-4000-8000-000000000105', 'a2000000-0000-4000-8000-000000000001', '5. Orden de operaciones', 'Paréntesis, prioridad ×÷ frente a +− y orden izquierda-derecha.', 5, null),
+  ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
+  ('a3000000-0000-4000-8000-000000000103', 'a2000000-0000-4000-8000-000000000001', '2. Suma y resta', 'Paréntesis, propiedades conmutativa y asociativa, problemas.', 2, null),
+  ('a3000000-0000-4000-8000-000000000104', 'a2000000-0000-4000-8000-000000000001', '3. Multiplicación y división', 'Suma repetida, propiedades, reparto en partes iguales y divisiones exactas y enteras.', 3, null),
+  ('a3000000-0000-4000-8000-000000000105', 'a2000000-0000-4000-8000-000000000001', '4. Orden de operaciones', 'Paréntesis, prioridad ×÷ frente a +− y orden de izquierda a derecha.', 4, null),
   ('a3000000-0000-4000-8000-000000000201', 'a2000000-0000-4000-8000-000000000002', '1. Potencias: base y exponente', 'Base, exponente, cuadrado, cubo, exponente cero y cálculo.', 1, null),
   ('a3000000-0000-4000-8000-000000000202', 'a2000000-0000-4000-8000-000000000002', '2. Potencias de base 10', 'Ceros y exponente; leer números grandes con potencias de 10.', 2, null),
   ('a3000000-0000-4000-8000-000000000203', 'a2000000-0000-4000-8000-000000000002', '3. Números grandes abreviados', 'Forma a · 10^n; ejemplo del año luz y cantidades reales.', 3, null),

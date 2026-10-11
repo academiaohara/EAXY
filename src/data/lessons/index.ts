@@ -8,7 +8,6 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/algebra-letras-numero
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/algebra-tecnicas-ecuaciones";
-import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/criterios-divisibilidad";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/cuerpos-geometricos-poliedros";
@@ -77,7 +76,6 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
-  "aproximacion-redondeo-naturales": aproximacionRedondeoNaturalesLesson,
   "areas-circulo": areasCirculoLesson,
   "areas-cuadrilateros": areasCuadrilaterosLesson,
   "areas-poligonos": areasPoligonosLesson,

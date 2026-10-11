@@ -17,6 +17,7 @@ type RoundingCutViewProps = {
   selectedLastKeptIndex?: number | null;
   showResult?: boolean;
   className?: string;
+  variant?: "paper" | "stage";
 };
 
 export function RoundingCutView({
@@ -25,6 +26,7 @@ export function RoundingCutView({
   selectedLastKeptIndex = null,
   showResult = true,
   className,
+  variant = "paper",
 }: RoundingCutViewProps) {
   const digits = digitsOf(n);
   const order = orderById(orderId);
@@ -34,6 +36,7 @@ export function RoundingCutView({
   const firstRemovedDigit = firstRemoved < digits.length ? Number(digits[firstRemoved]) : 0;
   const roundsUp = firstRemovedDigit >= 5;
   const previewResult = roundToOrder(n, orderId);
+  const onStage = variant === "stage";
 
   return (
     <div className={cn("space-y-4", className)}>
@@ -43,8 +46,17 @@ export function RoundingCutView({
             <span
               className={cn(
                 "rounded-md px-0.5",
-                index <= activeLastKept ? "text-ink" : "text-ink-muted underline decoration-rose-400 decoration-2",
-                index === activeLastKept && "bg-cobalt-tint text-cobalt ring-2 ring-cobalt/40",
+                index <= activeLastKept
+                  ? onStage
+                    ? "text-[color:var(--stage-ink,#e8edf5)]"
+                    : "text-ink"
+                  : onStage
+                    ? "text-[color:var(--stage-muted,#94a3b8)] underline decoration-rose-400/80 decoration-2"
+                    : "text-ink-muted underline decoration-rose-400 decoration-2",
+                index === activeLastKept &&
+                  (onStage
+                    ? "bg-[color:var(--stage-accent,#58c4dd)]/25 text-[color:var(--stage-accent,#58c4dd)] ring-2 ring-[color:var(--stage-accent,#58c4dd)]/40"
+                    : "bg-cobalt-tint text-cobalt ring-2 ring-cobalt/40"),
               )}
             >
               {digit}
@@ -62,7 +74,14 @@ export function RoundingCutView({
       {showResult ? (
         <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
           {firstRemoved < digits.length ? (
-            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-800">
+            <span
+              className={cn(
+                "rounded-full px-3 py-1",
+                onStage
+                  ? "bg-rose-500/15 text-rose-200"
+                  : "bg-rose-50 text-rose-800",
+              )}
+            >
               Primera cifra quitada: <strong>{digits[firstRemoved]}</strong>
               {roundsUp ? " → sumamos 1" : " → no subimos"}
             </span>

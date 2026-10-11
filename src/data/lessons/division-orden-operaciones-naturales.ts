@@ -3,7 +3,7 @@ import { TEMA_1_SUBTITLE } from "@/data/lessons/shared";
 
 export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
   slug: "division-orden-operaciones-naturales",
-  title: "5. Orden de operaciones",
+  title: "4. Orden de operaciones",
   subtitle: TEMA_1_SUBTITLE,
   stage: { theme: "paper" },
   steps: [
