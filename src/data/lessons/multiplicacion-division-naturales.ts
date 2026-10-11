@@ -31,29 +31,28 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-predict",
       type: "predict",
-      title: "La distributiva separa un grupo",
+      title: "Dos formas de calcularlo",
       question:
-        "Para calcular el precio de $8$ menús de $5$ € y $2$ € de bebida, ¿qué expresión muestra la distributiva?",
+        "Compras $8$ menús. Cada menú cuesta $5$ € el bocadillo y $2$ € la bebida. ¿Cuánto pagas en total?",
       mode: "choice",
       choices: [
         {
-          id: "solo-bocadillos",
-          label: "$8 \\cdot 5$",
-          incorrectFeedback: "Esa expresión deja fuera los $2$ € de bebida.",
+          id: "40",
+          label: "$40$ €",
+          incorrectFeedback: "Ese solo cuenta los bocadillos. Falta la bebida.",
         },
-        { id: "desarrollada", label: "$8 \\cdot 5 + 8 \\cdot 2$" },
+        { id: "56", label: "$56$ €" },
         {
-          id: "sin-repartir",
-          label: "$8 \\cdot (5 + 2)$",
+          id: "80",
+          label: "$80$ €",
           incorrectFeedback:
-            "Es una expresión equivalente, pero aquí buscamos la forma desarrollada que enseña cómo se reparte el factor.",
+            "Has multiplicado $8 \\cdot 10$; recuerda que cada menú cuesta $5 + 2 = 7$ €.",
         },
       ],
-      correctChoiceId: "desarrollada",
-      hintHiddenUntilRequested: true,
-      hint: "En la forma desarrollada, el 8 multiplica por separado al bocadillo y a la bebida.",
+      correctChoiceId: "56",
+      hint: "Suma lo que cuesta un menú completo: bocadillo más bebida.",
       explanation:
-        "La forma desarrollada es $8 \\cdot 5 + 8 \\cdot 2$. Es equivalente a $8 \\cdot (5 + 2)$ y muestra que el factor se reparte.",
+        "Puedes pensar: cada menú cuesta $5 + 2 = 7$ €, así que $8 \\cdot 7 = 56$ €. O también: $8 \\cdot 5 = 40$ € de bocadillos y $8 \\cdot 2 = 16$ € de bebidas, $40 + 16 = 56$ €. ¡Salen igual!",
       module: "mul-div-naturales",
       scene: "distributiva-bloques",
       mulDiv: { scene: "distributiva-bloques", a: 8, b: 5, c: 2 },
