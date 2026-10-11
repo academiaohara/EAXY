@@ -16,6 +16,10 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   await expect(page.getByTestId("lesson-definition-box")).toBeVisible();
   await expect(page.getByTestId("naturales-numeracion-sistemas-historia-galeria")).toBeVisible();
   await expect(page.getByRole("group", { name: /Tres sistemas históricos/i })).toBeVisible();
+  await expect(page.getByText("Hombre primitivo")).toBeVisible();
+
+  await page.getByTestId("lesson-continue-button").click();
+  await expect(page.getByTestId("naturales-numeracion-sistemas-historia-juego")).toBeVisible();
 
   const inactiveTab = page.getByRole("tab", { name: /Los egipcios/i });
   await expect(inactiveTab).toBeVisible();
@@ -28,7 +32,7 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
     expect(tabStyles.backgroundColor).not.toMatch(/255,\s*255,\s*255/);
   }
 
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 0; i < 2; i += 1) {
     await page.getByTestId("lesson-continue-button").click();
   }
 
