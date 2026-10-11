@@ -91,38 +91,30 @@ describe("PredictStepView", () => {
     );
 
     const predictPanel = screen.getByTestId("lesson-predict-step");
-    const choice = screen.getByTestId("predict-choice-solo-bocadillos");
-    fireEvent.click(choice);
+    fireEvent.click(screen.getByTestId("predict-choice-40"));
     fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
 
-    expect(screen.getByText(/deja fuera los.*bebida/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Ese solo cuenta los bocadillos/i),
+    ).toBeInTheDocument();
   });
 
-  it("muestra pista opcional y feedback al fallar reparte el factor", () => {
-    const factorStep = multiplicacionDivisionNaturalesLesson.steps.find(
+  it("muestra feedback al elegir 80 € en el menú de la distributiva", () => {
+    const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
       (s) => s.id === "distributiva-predict",
     ) as PredictStep;
     const onCheck = vi.fn();
     render(
-      wrap(
-        <PredictStepView step={factorStep} theme="paper" onCheck={onCheck} />,
-      ),
+      wrap(<PredictStepView step={menuStep} theme="paper" onCheck={onCheck} />),
       {
         container: document.body,
       },
     );
 
-    fireEvent.click(screen.getByLabelText("Ver pista"));
-    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(
-      /forma desarrollada/i,
-    );
-
     const predictPanel = screen.getByTestId("lesson-predict-step");
-    fireEvent.click(screen.getByTestId("predict-choice-sin-repartir"));
+    fireEvent.click(screen.getByTestId("predict-choice-80"));
     fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
 
-    expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(
-      /expresión equivalente/i,
-    );
+    expect(screen.getByText(/Has multiplicado/i)).toBeInTheDocument();
   });
 });
