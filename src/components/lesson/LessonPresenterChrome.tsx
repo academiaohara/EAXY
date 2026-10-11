@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   MessageCircleIcon,
-  MoreHorizontalIcon,
   SkipForwardIcon,
   LogOutIcon,
 } from "lucide-react";
@@ -102,9 +101,6 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
 
   const maxReached = furthestVisitedStepIndex(visitedSteps);
 
-  const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef<HTMLDivElement>(null);
-
   const hasAnimation = Boolean(footerCenter);
   const animationAdvance = presenterNav?.onAdvance;
   const animationRetreat = presenterNav?.onRetreat;
@@ -172,19 +168,6 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     presenterNav?.canRetreat,
   ]);
 
-  useEffect(() => {
-    if (!moreOpen) {
-      return;
-    }
-    const close = (event: MouseEvent) => {
-      if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
-        setMoreOpen(false);
-      }
-    };
-    window.addEventListener("mousedown", close);
-    return () => window.removeEventListener("mousedown", close);
-  }, [moreOpen]);
-
   const forwardDisabled = feedback !== null ? false : !control || control.disabled;
 
   const backDisabled = feedback !== null ? true : !canBack && !control?.onBack;
@@ -197,7 +180,17 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
       >
         {stepTitle}
       </div>
-      {meta ? <div className="shrink-0">{meta}</div> : null}
+      <div className="flex shrink-0 items-center gap-2">
+        {meta ? <div>{meta}</div> : null}
+        <Link
+          href={closeHref}
+          aria-label="Salir de la lección"
+          data-testid="lesson-exit-link"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-[color:var(--stage-border,#475569)] bg-[color:var(--stage-surface,#1a2332)]/90 text-[color:var(--stage-muted,#94a3b8)] shadow-sm backdrop-blur-sm transition hover:border-cobalt/45 hover:text-[color:var(--stage-ink,#e8edf5)]"
+        >
+          <LogOutIcon className="size-5" aria-hidden />
+        </Link>
+      </div>
     </header>
   );
 
@@ -256,43 +249,15 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
             <MessageCircleIcon className="size-5" aria-hidden />
           </PresenterCircleButton>
         ) : null}
-        <div className="relative" ref={moreRef}>
+        {onSkip ? (
           <PresenterCircleButton
-            label="Más opciones"
-            testId="lesson-presenter-more"
-            active={moreOpen}
-            onClick={() => setMoreOpen((open) => !open)}
+            label="Saltar paso"
+            testId="lesson-skip-button"
+            onClick={onSkip}
           >
-            <MoreHorizontalIcon className="size-5" aria-hidden />
+            <SkipForwardIcon className="size-5" aria-hidden />
           </PresenterCircleButton>
-          {moreOpen ? (
-            <div className="pointer-events-auto absolute bottom-full right-0 mb-2 min-w-[11rem] overflow-hidden rounded-md border border-[color:var(--stage-border,#334155)] bg-[#121a26] py-1 shadow-xl">
-              {onSkip ? (
-                <button
-                  type="button"
-                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-[color:var(--stage-ink,#e8edf5)] hover:bg-white/5"
-                  data-testid="lesson-skip-button"
-                  onClick={() => {
-                    setMoreOpen(false);
-                    onSkip();
-                  }}
-                >
-                  <SkipForwardIcon className="size-4 text-[color:var(--stage-muted,#94a3b8)]" aria-hidden />
-                  Saltar paso
-                </button>
-              ) : null}
-              <Link
-                href={closeHref}
-                className="flex w-full items-center gap-2 px-3 py-2 text-sm text-[color:var(--stage-ink,#e8edf5)] hover:bg-white/5"
-                data-testid="lesson-exit-link"
-                onClick={() => setMoreOpen(false)}
-              >
-                <LogOutIcon className="size-4 text-[color:var(--stage-muted,#94a3b8)]" aria-hidden />
-                Salir de la lección
-              </Link>
-            </div>
-          ) : null}
-        </div>
+        ) : null}
       </div>
 
       <LessonSlidesSidebar
