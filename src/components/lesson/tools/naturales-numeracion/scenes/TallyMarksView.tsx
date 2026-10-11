@@ -2,11 +2,18 @@
 
 import { cn } from "@/lib/utils";
 
+const STAGE_PANEL =
+  "rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
+
 function TallyGroup({ size }: { size: number }) {
   const verticalCount = size === 5 ? 4 : size;
 
   return (
-    <svg viewBox="0 0 56 48" className="h-12 w-14 shrink-0 text-slate-800" aria-hidden>
+    <svg
+      viewBox="0 0 56 48"
+      className="h-12 w-14 shrink-0 text-[color:var(--stage-ink,#e8edf5)]"
+      aria-hidden
+    >
       {Array.from({ length: verticalCount }, (_, i) => (
         <line
           key={i}
@@ -36,7 +43,8 @@ export function TallyMarksView({ count, className }: { count: number; className?
     return (
       <div
         className={cn(
-          "lesson-surface-paper flex min-h-[5rem] items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/80 px-4 py-6 text-sm text-ink-muted",
+          STAGE_PANEL,
+          "flex min-h-[5rem] items-center justify-center border-dashed px-4 py-6 text-sm text-[color:var(--stage-muted,#94a3b8)]",
           className,
         )}
       >
@@ -48,7 +56,8 @@ export function TallyMarksView({ count, className }: { count: number; className?
   return (
     <div
       className={cn(
-        "lesson-surface-paper flex min-h-[5rem] flex-wrap items-end gap-x-8 gap-y-4 rounded-xl border border-slate-200 bg-slate-50/80 px-4 py-5",
+        STAGE_PANEL,
+        "flex min-h-[5rem] flex-wrap items-end gap-x-8 gap-y-4 px-4 py-5",
         className,
       )}
     >

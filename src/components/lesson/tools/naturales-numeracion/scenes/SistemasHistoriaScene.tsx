@@ -51,6 +51,15 @@ const TARGETS: Record<TabId, number> = {
   roman: 14,
 };
 
+const STAGE_PANEL =
+  "rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]";
+
+const STAGE_SYMBOL_BUTTON =
+  "flex flex-col items-center rounded-xl border-2 border-[color:var(--stage-accent)]/35 bg-[color:var(--stage-accent)]/12 py-3 transition hover:border-[color:var(--stage-accent)]/55 hover:bg-[color:var(--stage-accent)]/18";
+
+const STAGE_SYMBOL_BUTTON_EGYPT =
+  "flex flex-col items-center gap-2 rounded-xl border-2 border-amber-400/35 bg-amber-500/10 py-4 text-center transition hover:border-amber-400/55 hover:bg-amber-500/16";
+
 type SistemasHistoriaSceneProps = {
   stepId: string;
   onReadyChange: (ready: boolean) => void;
@@ -122,6 +131,7 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
                 type="button"
                 variant="outline"
                 size="sm"
+                className="border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45"
                 onClick={() =>
                   setState((prev) => ({ ...prev, tallyCount: Math.max(0, prev.tallyCount - 1) }))
                 }
@@ -157,25 +167,25 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
                 onClick={() =>
                   setState((prev) => ({ ...prev, egyptSymbols: [...prev.egyptSymbols, sym.id] }))
                 }
-                className="lesson-surface-paper flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-gradient-to-b from-amber-50 to-white px-3 py-4 text-center shadow-sm transition hover:border-amber-400 hover:shadow-md"
+                className={cn(STAGE_SYMBOL_BUTTON_EGYPT, "px-3")}
               >
                 <EgyptianNumeralIcon id={sym.id} className="h-12" />
-                <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-900">
+                <span className="text-[10px] font-semibold uppercase tracking-wide text-amber-200/90">
                   {sym.name}
                 </span>
-                <span className="rounded-full bg-amber-100 px-2 py-0.5 text-sm font-bold tabular-nums text-amber-950">
+                <span className="rounded-full border border-amber-400/40 bg-amber-500/15 px-2 py-0.5 text-sm font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
                   {sym.value.toLocaleString("es-ES")}
                 </span>
               </button>
             ))}
           </div>
-          <div className="lesson-surface-paper grid gap-3 rounded-xl border border-amber-200 bg-amber-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
+          <div className={cn(STAGE_PANEL, "grid gap-3 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center")}>
             <div
               className="flex min-h-14 flex-wrap items-center justify-center gap-1.5 sm:justify-start"
               aria-live="polite"
             >
               {egyptSymbols.length === 0 ? (
-                <span className="text-2xl text-amber-900/40">—</span>
+                <span className="text-2xl text-[color:var(--stage-muted,#94a3b8)]/50">—</span>
               ) : (
                 egyptSymbols.map((id, index) => (
                   <EgyptianNumeralIcon key={`${id}-${index}`} id={id} className="h-11" />
@@ -183,14 +193,18 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
               )}
             </div>
             <div className="text-center sm:text-right">
-              <p className="text-xs uppercase tracking-wide text-amber-800">Valor decimal</p>
-              <p className="text-3xl font-bold tabular-nums text-amber-950">{egyptValue}</p>
+              <p className="text-xs uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
+                Valor decimal
+              </p>
+              <p className="text-3xl font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+                {egyptValue}
+              </p>
             </div>
             <Button
               type="button"
               variant="outline"
               size="sm"
-              className="sm:col-span-2 sm:justify-self-end"
+              className="border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45 sm:col-span-2 sm:justify-self-end"
               onClick={() => setState((prev) => ({ ...prev, egyptSymbols: [] }))}
             >
               Borrar
@@ -212,26 +226,32 @@ export function SistemasHistoriaScene({ stepId, onReadyChange }: SistemasHistori
                 key={key}
                 type="button"
                 onClick={() => setState((prev) => ({ ...prev, romanStr: prev.romanStr + key }))}
-                className="lesson-surface-paper flex flex-col items-center rounded-xl border border-violet-200 bg-violet-50/50 py-3 transition hover:border-violet-400 hover:bg-violet-100/70"
+                className={STAGE_SYMBOL_BUTTON}
               >
-                <span className="font-serif text-2xl font-bold text-violet-900">{key}</span>
-                <span className="text-[10px] font-semibold tabular-nums text-violet-700">{value}</span>
+                <span className="font-serif text-2xl font-bold text-[color:var(--stage-ink,#e8edf5)]">{key}</span>
+                <span className="text-[10px] font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]">
+                  {value}
+                </span>
               </button>
             ))}
           </div>
-          <div className="lesson-surface-paper grid gap-3 rounded-xl border border-violet-200 bg-violet-50/40 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center">
-            <span className="text-center font-serif text-4xl tracking-[0.2em] text-violet-950 sm:text-left">
+          <div className={cn(STAGE_PANEL, "grid gap-3 px-4 py-4 sm:grid-cols-[1fr_auto] sm:items-center")}>
+            <span className="text-center font-serif text-4xl tracking-[0.2em] text-[color:var(--stage-ink,#e8edf5)] sm:text-left">
               {romanStr || "—"}
             </span>
             <div className="text-center sm:text-right">
-              <p className="text-xs uppercase tracking-wide text-violet-700">Valor decimal</p>
-              <p className="text-3xl font-bold tabular-nums text-violet-900">{romanValue}</p>
+              <p className="text-xs uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
+                Valor decimal
+              </p>
+              <p className="text-3xl font-bold tabular-nums text-[color:var(--stage-accent,#58c4dd)]">
+                {romanValue}
+              </p>
             </div>
             <Button
               type="button"
               variant="outline"
               size="sm"
-              className="sm:col-span-2 sm:justify-self-end"
+              className="border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45 sm:col-span-2 sm:justify-self-end"
               onClick={() => setState((prev) => ({ ...prev, romanStr: "" }))}
             >
               Borrar
