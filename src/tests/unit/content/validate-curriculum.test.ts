@@ -72,17 +72,16 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("tiene las cinco lecciones de la unidad 1 en 1.º ESO", () => {
+  it("tiene las cuatro lecciones de la unidad 1 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
     expect(firstYear?.modules[0]?.title).toBe("Los números naturales");
-    expect(firstYear?.modules[0]?.lessons).toHaveLength(5);
+    expect(firstYear?.modules[0]?.lessons).toHaveLength(4);
     expect(
       firstYear?.modules[0]?.lessons.map((l) => l.interactiveSlug),
     ).toEqual([
       "sistemas-numeracion-naturales",
-      "aproximacion-redondeo-naturales",
       "suma-resta-naturales",
       "multiplicacion-division-naturales",
       "division-orden-operaciones-naturales",

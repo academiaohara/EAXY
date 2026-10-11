@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { aproximacionRedondeoNaturalesLesson } from "@/data/lessons/aproximacion-redondeo-naturales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
@@ -11,7 +10,6 @@ import {
 
 const THEME_ONE_LESSONS: InteractiveLesson[] = [
   sistemasNumeracionNaturalesLesson,
-  aproximacionRedondeoNaturalesLesson,
   sumaRestaNaturalesLesson,
   multiplicacionDivisionNaturalesLesson,
   divisionOrdenOperacionesNaturalesLesson,
@@ -22,13 +20,27 @@ describe("lecciones de referencia del tema 1", () => {
     expect(sistemasNumeracionNaturalesLesson.stage?.theme).toBe("board");
     expect(multiplicacionDivisionNaturalesLesson.stage?.theme).toBe("board");
     expect(
-      sistemasNumeracionNaturalesLesson.steps.every(stepHasDefinitionBox),
+      sistemasNumeracionNaturalesLesson.steps.filter((step) => step.type === "interactive_tool").every(
+        stepHasDefinitionBox,
+      ),
     ).toBe(true);
+  });
+
+  it("la lección 1 unifica origen, sistemas y redondeo del temario", () => {
+    expect(sistemasNumeracionNaturalesLesson.steps.some(
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia",
+    )).toBe(true);
+    expect(sistemasNumeracionNaturalesLesson.steps.some(
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene.startsWith("redondeo"),
+    )).toBe(true);
+    expect(sistemasNumeracionNaturalesLesson.steps.some((step) => step.id === "check-redondeo")).toBe(
+      true,
+    );
   });
 
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
     expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
-      4, 4, 4, 6, 5,
+      6, 4, 6, 5,
     ]);
 
     for (const lesson of THEME_ONE_LESSONS) {
@@ -48,21 +60,5 @@ describe("lecciones de referencia del tema 1", () => {
       checks.every((step) => step.choices && step.choices.length >= 2),
     ).toBe(true);
     expect(checks.every((step) => step.question.length >= 40)).toBe(true);
-  });
-
-  it("mantiene el redondeo dentro de su lección y no lo duplica en numeración", () => {
-    expect(
-      sistemasNumeracionNaturalesLesson.steps.some(
-        (step) =>
-          step.type === "interactive_tool" &&
-          "scene" in step &&
-          step.scene.startsWith("redondeo"),
-      ),
-    ).toBe(false);
-    expect(
-      aproximacionRedondeoNaturalesLesson.steps.some(
-        (step) => step.id === "293518",
-      ),
-    ).toBe(true);
   });
 });

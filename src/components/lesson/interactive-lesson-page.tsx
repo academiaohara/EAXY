@@ -1,8 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getInteractiveLessonAtPath, getInteractiveLessonContext } from "@/content";
 import { InteractiveLessonEntryGate } from "@/components/lesson/InteractiveLessonEntryGate";
 import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
 import { interactiveLessons } from "@/data/lessons";
+import { resolveInteractiveLessonSlug } from "@/data/lessons/interactive-lesson-slug-redirects";
+import { interactiveLessonHref } from "@/lib/navigation/learning-trail";
 
 type InteractiveLessonPageBodyProps = {
   lessonSlug: string;
@@ -17,7 +19,16 @@ export async function InteractiveLessonPageBody({
   moduleSlug,
   restartRequested,
 }: InteractiveLessonPageBodyProps) {
-  const lesson = interactiveLessons[lessonSlug as keyof typeof interactiveLessons];
+  const resolvedSlug = resolveInteractiveLessonSlug(lessonSlug);
+  if (resolvedSlug !== lessonSlug) {
+    const query = restartRequested ? "?reiniciar=1" : "";
+    if (courseSlug && moduleSlug) {
+      permanentRedirect(`${interactiveLessonHref(courseSlug, moduleSlug, resolvedSlug)}${query}`);
+    }
+    permanentRedirect(`/aprender/leccion-interactiva/${resolvedSlug}${query}`);
+  }
+
+  const lesson = interactiveLessons[resolvedSlug as keyof typeof interactiveLessons];
 
   if (!lesson) {
     notFound();
@@ -25,8 +36,8 @@ export async function InteractiveLessonPageBody({
 
   const context =
     courseSlug && moduleSlug
-      ? getInteractiveLessonAtPath(courseSlug, moduleSlug, lessonSlug)
-      : getInteractiveLessonContext(lessonSlug);
+      ? getInteractiveLessonAtPath(courseSlug, moduleSlug, resolvedSlug)
+      : getInteractiveLessonContext(resolvedSlug);
 
   if (courseSlug && moduleSlug && !context) {
     notFound();

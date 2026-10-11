@@ -10,7 +10,7 @@ const EQUIPO_CICLISTA: TiendaCiclistaItem[] = [
 
 export const sumaRestaNaturalesLesson: InteractiveLesson = {
   slug: "suma-resta-naturales",
-  title: "3. Suma y resta",
+  title: "2. Suma y resta",
   subtitle: TEMA_1_SUBTITLE,
   stage: { theme: "paper" },
   steps: [
