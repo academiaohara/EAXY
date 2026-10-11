@@ -241,7 +241,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
         <PresenterCircleButton
           label={control?.label ?? "Continuar"}
           disabled={forwardDisabled}
-          testId={control?.testId ?? "lesson-presenter-forward"}
+          testId="lesson-presenter-forward"
           onClick={handleForward}
         >
           <ChevronRightIcon className="size-5" aria-hidden />

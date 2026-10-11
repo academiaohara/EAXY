@@ -135,11 +135,13 @@ export function NarrateStepView({
   theme,
   onContinue,
   onPreviousStep,
+  presentationUnlocked = false,
 }: {
   step: NarrateStep;
   theme: LessonStageTheme;
   onContinue: (meta?: LessonContinueMeta) => void;
   onPreviousStep?: () => void;
+  presentationUnlocked?: boolean;
 }) {
   const isMultiplicacionMano =
     step.module === "mul-div-naturales" && step.scene === "multiplicacion-mano";
@@ -194,7 +196,13 @@ export function NarrateStepView({
     onPreviousStep?.();
   }, [isMultiplicacionMano, onPreviousStep, setPersist, sub]);
 
-  const [ready, setReady] = useState(isMultiplicacionMano);
+  const [ready, setReady] = useState(isMultiplicacionMano || presentationUnlocked);
+
+  useEffect(() => {
+    if (presentationUnlocked) {
+      setReady(true);
+    }
+  }, [presentationUnlocked]);
 
   useEffect(() => {
     if (!isMultiplicacionMano || !subPlaying || sub >= 4) {
@@ -1036,12 +1044,20 @@ export function RevealStepView({
   step,
   theme,
   onContinue,
+  presentationUnlocked = false,
 }: {
   step: RevealStep;
   theme: LessonStageTheme;
   onContinue: () => void;
+  presentationUnlocked?: boolean;
 }) {
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(presentationUnlocked);
+
+  useEffect(() => {
+    if (presentationUnlocked) {
+      setReady(true);
+    }
+  }, [presentationUnlocked]);
 
   const control = useMemo(
     () =>
