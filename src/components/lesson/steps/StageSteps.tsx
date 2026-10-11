@@ -296,6 +296,7 @@ export function NarrateStepView({
               items: tienda.items,
               wallet: tienda.wallet,
               spendAmount: tienda.spendAmount,
+              savedAmount: tienda.savedAmount,
               mode: tienda.mode,
             }
           : undefined
@@ -799,6 +800,7 @@ export function ExploreStepView({
 
   const [checked, setChecked] = useState(Boolean(saved));
   const [isCorrect, setIsCorrect] = useState(saved?.isCorrect ?? false);
+  const [hintVisible, setHintVisible] = useState(false);
 
   const placementReady = useMemo(() => {
     if (step.goal.kind === "wallet-remainder" && step.tienda) {
@@ -942,6 +944,9 @@ export function ExploreStepView({
               closeBefore: persist.closeBefore,
               onOpenAfterChange: (index) => setPersist((prev) => ({ ...prev, openAfter: index })),
               onCloseBeforeChange: (index) => setPersist((prev) => ({ ...prev, closeBefore: index })),
+              targetResult: step.goal.kind === "expression-result" ? step.goal.target : null,
+              evaluatedResult: evaluatedValue,
+              solved: checked && isCorrect,
             }
           : undefined
       }
@@ -988,6 +993,25 @@ export function ExploreStepView({
         <p className="lesson-presentation-body text-center font-normal text-ink">
           <MathRenderer text={step.question} emphasis="mark-alternate" />
         </p>
+        {step.hint && step.hintHiddenUntilRequested && !checked ? (
+          <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
+            {hintVisible ? (
+              <p className="lesson-stage-hint mx-auto text-center">
+                <MathRenderer text={step.hint} />
+              </p>
+            ) : (
+              <button
+                type="button"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                aria-label="Ver pista"
+                aria-expanded={hintVisible}
+                onClick={() => setHintVisible(true)}
+              >
+                ?
+              </button>
+            )}
+          </div>
+        ) : null}
         {reducePractice ? <div className="mt-4">{stage}</div> : null}
         {checked ? (
           <div
@@ -1098,7 +1122,10 @@ export function RevealStepView({
   return (
     <div data-testid="lesson-reveal-step">
       <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={stage}>
-        {equation && step.scene !== "conmutativa-producto" && step.scene !== "asociativa-huevos" ? (
+        {equation &&
+        step.module !== "bloques-numericos" &&
+        step.scene !== "conmutativa-producto" &&
+        step.scene !== "asociativa-huevos" ? (
           <p className="text-center text-base text-ink-muted">
             <MathRenderer text={equation} />
           </p>

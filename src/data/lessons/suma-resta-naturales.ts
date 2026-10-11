@@ -18,7 +18,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       id: "sumar-narrate",
       type: "narrate",
       title: "Sumar",
-      definitionBox: "Sumar es **unir**, **juntar**, **añadir**.",
+      definitionBox: "Recuerda que **sumar** es **unir**, **juntar**, **añadir**.",
       module: "tienda-ciclista",
       scene: "sumar-cesta",
       tienda: {
@@ -27,18 +27,41 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       },
     },
     {
-      id: "restar-narrate",
+      id: "restar-faltante-narrate",
       type: "narrate",
-      title: "Restar",
+      title: "Restar — lo que falta",
       definitionBox:
-        "Restar es **quitar**, **suprimir**, hallar lo que **falta** o lo que **sobra**; es decir, calcular la **diferencia**.",
+        "Recuerda que **restar** es **quitar**, **suprimir**, hallar lo que **falta** o lo que **sobra**; es decir, calcular la **diferencia**.",
       module: "tienda-ciclista",
-      scene: "restar-cartera",
+      scene: "calcular-faltante",
       tienda: {
         items: EQUIPO_CICLISTA,
-        wallet: 828,
-        mode: "restar-cartera",
+        mode: "calcular-faltante",
+        savedAmount: 693,
       },
+    },
+    {
+      id: "restar-sobra-narrate",
+      type: "narrate",
+      title: "Restar — lo que sobra",
+      definitionBox: "Si disponemos de **más dinero** que el precio del equipo, la resta nos dice **cuánto sobra**.",
+      module: "tienda-ciclista",
+      scene: "calcular-sobra",
+      tienda: {
+        items: EQUIPO_CICLISTA,
+        mode: "calcular-sobra",
+        savedAmount: 1000,
+      },
+    },
+    {
+      id: "parentesis-narrate",
+      type: "narrate",
+      title: "Uso del paréntesis",
+      definitionBox:
+        "En operaciones combinadas, los paréntesis **empaquetan resultados parciales**, **modificando el orden** en que han de hacerse las operaciones.",
+      module: "piramide-reduccion",
+      scene: "dual-parentesis",
+      piramide: { variant: "dual-parentesis" },
     },
     {
       id: "parentesis-explore",
@@ -54,6 +77,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         target: 5,
       },
       hint: "¿Qué operación conviene agrupar para restar antes de sumar?",
+      hintHiddenUntilRequested: true,
       explanation:
         "Prueba $9 - (1 + 3)$: primero $1 + 3 = 4$ y luego $9 - 4 = 5$.",
     },
@@ -66,6 +90,16 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       module: "bloques-numericos",
       scene: "conmutativa",
       blocks: [8, 6],
+    },
+    {
+      id: "asociativa-reveal",
+      type: "reveal",
+      title: "Propiedad asociativa",
+      definitionBox:
+        "El resultado de la suma es **independiente** de cómo se **agrupen** los sumandos: $(a + b) + c = a + (b + c)$.",
+      module: "bloques-numericos",
+      scene: "asociativa",
+      blocks: [8, 6, 3],
     },
   ],
 };
