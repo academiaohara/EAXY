@@ -1,19 +1,20 @@
 /**
  * Medidas del tutor tomadas sobre la ilustración del cuerpo
- * (`public/tutor/furball-azul-indigo-sin-ojos.png`, recorte cuadrado sin ojos ni cejas).
+ * (`public/tutor/pompon-pelo-blanco-esponjoso-sin-ojos.png`, recorte cuadrado sin ojos ni cejas).
  *
  * Todo está en unidades del `viewBox` 0 0 200 200 del componente.
  */
 
-export const TUTOR_BODY_IMAGE = "/tutor/furball-azul-indigo-sin-ojos.png";
+export const TUTOR_BODY_IMAGE =
+  "/tutor/pompon-pelo-blanco-esponjoso-sin-ojos.png";
 
 export const TUTOR_VIEWBOX = 200;
 
-/** Pelo del cuerpo (índigo / cobalt suave, para párpados). */
+/** Pelo del cuerpo (blanco esponjoso, para párpados). */
 export const TUTOR_FUR_COLORS = {
-  highlight: "#4a56a8",
-  base: "#2f3678",
-  shade: "#1e2452",
+  highlight: "#fafafa",
+  base: "#ececec",
+  shade: "#c8c8c8",
 } as const;
 
 export type TutorEyeAnatomy = {
