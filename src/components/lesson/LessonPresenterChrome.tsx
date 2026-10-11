@@ -81,6 +81,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     stepTitle,
     steps,
     currentStepIndex,
+    completedSteps,
     visitedSteps,
     onGoToStep,
     canBack,
@@ -266,6 +267,8 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
         slides={steps}
         current={currentStepIndex}
         maxReached={maxReached}
+        visitedSteps={visitedSteps}
+        completedSteps={completedSteps}
         onSelect={onGoToStep}
       />
     </>
