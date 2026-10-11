@@ -516,3 +516,9 @@ export function isStageStep(step: LessonStep): step is StageStep {
     step.type === "reveal"
   );
 }
+
+export function stepHasDefinitionBox(
+  step: LessonStep,
+): step is LessonStep & Required<Pick<StageStepFields, "definitionBox">> {
+  return "definitionBox" in step && Boolean(step.definitionBox);
+}
