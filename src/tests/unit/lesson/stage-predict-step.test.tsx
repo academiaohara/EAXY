@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { ReactNode } from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { fireEvent } from "@testing-library/react";
 import { PredictStepView } from "@/components/lesson/steps/StageSteps";
 import {
@@ -61,14 +61,15 @@ describe("PredictStepView", () => {
     expect(
       screen.queryByTestId("lesson-continue-button"),
     ).not.toBeInTheDocument();
-    expect(screen.getByTestId("lesson-check-button")).toBeDisabled();
+    const predictPanel = screen.getByTestId("lesson-predict-step");
+    expect(within(predictPanel).getByTestId("lesson-check-button")).toBeDisabled();
 
     fireEvent.change(screen.getByLabelText("Tu respuesta"), {
       target: { value: "828" },
     });
-    expect(screen.getByTestId("lesson-check-button")).toBeEnabled();
+    expect(within(predictPanel).getByTestId("lesson-check-button")).toBeEnabled();
 
-    fireEvent.click(screen.getByTestId("lesson-check-button"));
+    fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
     expect(onCheck).toHaveBeenCalledWith(
       expect.objectContaining({
         correct: true,
@@ -89,9 +90,10 @@ describe("PredictStepView", () => {
       },
     );
 
+    const predictPanel = screen.getByTestId("lesson-predict-step");
     const choice = screen.getByTestId("predict-choice-solo-bocadillos");
     fireEvent.click(choice);
-    fireEvent.click(screen.getByTestId("lesson-check-button"));
+    fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
 
     expect(screen.getByText(/deja fuera los.*bebida/i)).toBeInTheDocument();
   });
@@ -115,8 +117,9 @@ describe("PredictStepView", () => {
       /forma desarrollada/i,
     );
 
+    const predictPanel = screen.getByTestId("lesson-predict-step");
     fireEvent.click(screen.getByTestId("predict-choice-sin-repartir"));
-    fireEvent.click(screen.getByTestId("lesson-check-button"));
+    fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
 
     expect(screen.getByTestId("lesson-predict-step").textContent).toMatch(
       /expresión equivalente/i,

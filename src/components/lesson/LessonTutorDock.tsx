@@ -26,16 +26,16 @@ type LessonTutorDockProps = {
 const bubbleTone: Record<TutorReaction, string> = {
   idle: "border-slate-300 bg-white",
   thinking: "border-slate-300 bg-white",
-  correct: "border-emerald-300 bg-emerald-100 font-semibold text-emerald-950",
-  incorrect: "border-amber-300 bg-amber-100 font-semibold text-amber-950",
+  correct: "lesson-tutor-speech--correct border-emerald-300 bg-emerald-100 font-semibold text-emerald-950",
+  incorrect: "lesson-tutor-speech--incorrect border-amber-300 bg-amber-100 font-semibold text-amber-950",
 };
 
 /** Pico del globo: mismo relleno y borde que la burbuja, apuntando a la bola. */
 const tailTone: Record<TutorReaction, string> = {
-  idle: "fill-white stroke-slate-300",
-  thinking: "fill-white stroke-slate-300",
-  correct: "fill-emerald-100 stroke-emerald-300",
-  incorrect: "fill-amber-100 stroke-amber-300",
+  idle: "lesson-tutor-speech__tail fill-white stroke-slate-300",
+  thinking: "lesson-tutor-speech__tail fill-white stroke-slate-300",
+  correct: "lesson-tutor-speech__tail fill-emerald-100 stroke-emerald-300",
+  incorrect: "lesson-tutor-speech__tail fill-amber-100 stroke-amber-300",
 };
 
 /**
@@ -95,7 +95,7 @@ function TutorSpeechBubble({
     <div
       key={spoken}
       className={cn(
-        "lesson-tutor-speech pointer-events-auto relative min-w-0 max-w-[15rem] rounded-2xl border px-4 py-2.5 text-sm leading-snug text-ink shadow-lg sm:max-w-[22rem]",
+        "lesson-tutor-speech pointer-events-auto relative min-w-0 max-w-[15rem] rounded-2xl border px-4 py-3 text-sm leading-snug text-ink shadow-lg sm:max-w-[22rem]",
         bubbleTone[reaction],
       )}
       data-testid="lesson-tutor-bubble"

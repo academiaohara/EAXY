@@ -165,7 +165,48 @@
 }
 
 .lesson-stage-theme-board .lesson-stage-mul-equation {
-  font-size: 1.5rem;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.35;
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-check-button {
+  border: 2px solid color-mix(in srgb, var(--stage-accent) 65%, var(--stage-border));
+  background: color-mix(in srgb, var(--stage-accent) 22%, transparent);
+  color: var(--stage-ink);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-check-button:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--stage-accent) 32%, transparent);
+  border-color: var(--stage-accent);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-choice {
+  border-color: var(--stage-border);
+  background: rgb(0 0 0 / 0.18);
+  color: var(--stage-ink);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-choice:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--stage-accent) 55%, var(--stage-border));
+  background: rgb(0 0 0 / 0.32);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-choice.is-selected {
+  border-color: var(--stage-accent);
+  background: color-mix(in srgb, var(--stage-accent) 20%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--stage-accent) 35%, transparent);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-choice.is-selected:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--stage-accent) 28%, transparent);
+}
+
+.lesson-stage-theme-board[data-testid="lesson-frame"] .lesson-stage-hint {
+  max-width: 42rem;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--stage-muted);
 }
 
 /** Copy oscuro por defecto en el marco de lección; paneles claros usan `.lesson-surface-paper`. */
@@ -685,6 +726,33 @@
 .lesson-tutor-speech {
   animation: lesson-tutor-speech 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
   transform-origin: left center;
+}
+
+.lesson-stage-theme-board .lesson-tutor-speech {
+  max-width: min(28rem, calc(100vw - 8rem));
+  border-color: var(--stage-border);
+  background: color-mix(in srgb, var(--stage-surface) 88%, #0f1419);
+  color: var(--stage-ink);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
+}
+
+.lesson-stage-theme-board .lesson-tutor-speech__tail {
+  fill: color-mix(in srgb, var(--stage-surface) 88%, #0f1419);
+  stroke: var(--stage-border);
+}
+
+.lesson-stage-theme-board .lesson-tutor-speech--correct {
+  border-color: color-mix(in srgb, var(--stage-accent-muted) 55%, var(--stage-border));
+  background: color-mix(in srgb, var(--stage-accent-muted) 18%, var(--stage-surface));
+  color: var(--stage-ink);
+}
+
+.lesson-stage-theme-board .lesson-tutor-speech--incorrect {
+  border-color: color-mix(in srgb, var(--amber) 45%, var(--stage-border));
+  background: color-mix(in srgb, var(--amber) 14%, var(--stage-surface));
+  color: var(--stage-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

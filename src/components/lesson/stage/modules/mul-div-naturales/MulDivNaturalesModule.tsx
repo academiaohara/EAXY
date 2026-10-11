@@ -52,9 +52,11 @@ const AMBER = "#d97706";
 const TICKET_TILT_DEG = -14;
 const TICKET_FAN_OFFSET_PX = 16;
 
-const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
+const STAGE_CAPTION = "text-sm font-semibold text-[color:var(--stage-muted,#94a3b8)]";
 const STAGE_MATH =
-  "lesson-stage-mul-equation text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
+  "lesson-stage-mul-equation text-center text-xl font-semibold text-[color:var(--stage-ink,#e8edf5)] sm:text-2xl";
+const STAGE_FORMULA_LINE =
+  "text-center text-lg font-semibold text-[color:var(--stage-ink,#e8edf5)] sm:text-xl";
 
 function latexTealExpression(expression: string): string {
   return `\\color{${boardSemanticColors.teal}}{${expression}}`;
@@ -322,16 +324,13 @@ function MultiplicarRepetido({
   const total = a * b;
   const sumParts = Array.from({ length: ticketCount }, () => String(a)).join(" + ");
   const fullSum = Array.from({ length: b }, () => String(a)).join(" + ");
-  const mathText =
-    ticketCount >= b
-      ? mathPhase >= 2
-        ? latexColoredRepeatedProduct(fullSum, a, b, total)
-        : mathPhase >= 1
-          ? latexColoredRepeatedProduct(fullSum, a, b)
-          : `$${latexTealExpression(fullSum)}$`
-      : ticketCount > 1
-        ? `$${latexTealExpression(sumParts)}$`
-        : null;
+  const growingSumText =
+    ticketCount > 1 && ticketCount < b ? `$${latexTealExpression(sumParts)}$` : null;
+  const fullSumText = ticketCount >= b ? `$${latexTealExpression(fullSum)}$` : null;
+  const productEquationText =
+    ticketCount >= b && mathPhase >= 1 ? latexColoredRepeatedProduct(fullSum, a, b) : null;
+  const totalEquationText =
+    ticketCount >= b && mathPhase >= 2 ? latexColoredRepeatedProduct(fullSum, a, b, total) : null;
 
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
@@ -351,17 +350,28 @@ function MultiplicarRepetido({
           }
         />
       </div>
-      {mathText ? (
-        <p
-          className={cn(
-            STAGE_MATH,
-            "lesson-stage-mul-equation transition-[color,opacity] duration-500 ease-out",
-          )}
-          aria-live="polite"
-        >
-          <MathRenderer text={mathText} />
-        </p>
-      ) : null}
+      <div className="mx-auto flex max-w-3xl flex-col gap-2" aria-live="polite">
+        {growingSumText ? (
+          <p className={cn(STAGE_MATH, "transition-opacity duration-500")}>
+            <MathRenderer text={growingSumText} />
+          </p>
+        ) : null}
+        {fullSumText ? (
+          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
+            <MathRenderer text={fullSumText} />
+          </p>
+        ) : null}
+        {productEquationText ? (
+          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
+            <MathRenderer text={productEquationText} />
+          </p>
+        ) : null}
+        {totalEquationText ? (
+          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
+            <MathRenderer text={totalEquationText} />
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -523,10 +533,7 @@ function ConmutativaProducto({
 
       {hasSwappedOnce ? (
         <p
-          className={cn(
-            "text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]",
-            !reduced && "animate-in fade-in duration-700",
-          )}
+          className={cn(STAGE_FORMULA_LINE, !reduced && "animate-in fade-in duration-700")}
           aria-live="polite"
         >
           <span className="font-bold text-[#4353ff]">{a}</span>
@@ -712,52 +719,53 @@ function RepartoIgual({
 
   return (
     <div className="space-y-3" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
-      <div className="min-h-[11rem] space-y-3">
-        {phase === 0 ? (
-          <div className="flex flex-col items-center gap-3">
-            <BombonesPile label={String(dividend)} />
-            <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
-              {Array.from({ length: divisor }, (_, i) => (
-                <CajaBombones key={i} size="sm" count="?" caption={`C${i + 1}`} />
-              ))}
-            </div>
+      <div className="min-h-[11rem] space-y-4">
+        <div
+          className={cn(
+            "flex flex-col items-center gap-3 transition-all duration-500",
+            phase > 0 && "scale-[0.92] opacity-75",
+          )}
+        >
+          <BombonesPile label={String(dividend)} />
+        </div>
+        <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
+          {Array.from({ length: divisor }, (_, i) => (
+            <CajaBombones
+              key={i}
+              size="sm"
+              count={phase >= 1 ? quotient : "?"}
+              caption={`C${i + 1}`}
+              highlight={phase >= 1}
+            />
+          ))}
+        </div>
+        {phase >= 2 ? (
+          <div className={cn(STAGE_FORMULA_LINE, "space-y-1.5 animate-in fade-in duration-500")}>
+            <p>
+              <span className="text-[#a78bfa]">{divisor}</span>
+              <span className="text-[color:var(--stage-muted)]"> · </span>
+              <span className="text-[#7dd3fc]">{quotient}</span>
+              <span className="text-[color:var(--stage-muted)]"> = </span>
+              <span>{dividend}</span>
+            </p>
+            <p>
+              <span>{dividend}</span>
+              <span className="text-[color:var(--stage-muted)]"> : </span>
+              <span className="text-[#a78bfa]">{divisor}</span>
+              <span className="text-[color:var(--stage-muted)]"> = </span>
+              <span className="text-[#7dd3fc]">{quotient}</span>
+            </p>
+            <p>
+              <span>{dividend}</span>
+              <span className="text-[color:var(--stage-muted)]"> : </span>
+              <span className="text-[#7dd3fc]">{quotient}</span>
+              <span className="text-[color:var(--stage-muted)]"> = </span>
+              <span className="text-[#a78bfa]">{divisor}</span>
+            </p>
           </div>
-        ) : (
-          <div className="flex flex-col items-center gap-3">
-            <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
-              {Array.from({ length: divisor }, (_, i) => (
-                <CajaBombones key={i} size="sm" count={quotient} caption={`C${i + 1}`} highlight />
-              ))}
-            </div>
-            {phase >= 2 ? (
-              <div className="space-y-1 text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]">
-                <p>
-                  <span className="text-[#a78bfa]">{divisor}</span>
-                  <span className="text-[color:var(--stage-muted)]"> · </span>
-                  <span className="text-[#7dd3fc]">{quotient}</span>
-                  <span className="text-[color:var(--stage-muted)]"> = </span>
-                  <span>{dividend}</span>
-                </p>
-                <p>
-                  <span>{dividend}</span>
-                  <span className="text-[color:var(--stage-muted)]"> : </span>
-                  <span className="text-[#a78bfa]">{divisor}</span>
-                  <span className="text-[color:var(--stage-muted)]"> = </span>
-                  <span className="text-[#7dd3fc]">{quotient}</span>
-                </p>
-                <p>
-                  <span>{dividend}</span>
-                  <span className="text-[color:var(--stage-muted)]"> : </span>
-                  <span className="text-[#7dd3fc]">{quotient}</span>
-                  <span className="text-[color:var(--stage-muted)]"> = </span>
-                  <span className="text-[#a78bfa]">{divisor}</span>
-                </p>
-              </div>
-            ) : null}
-          </div>
-        )}
+        ) : null}
       </div>
-      <p className="min-h-[3.5rem] text-center text-sm leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
+      <p className="min-h-[3.5rem] text-center text-base leading-relaxed text-[color:var(--stage-ink,#e8edf5)]">
         {phase < 2 ? caption : (
           <>
             {caption}{" "}

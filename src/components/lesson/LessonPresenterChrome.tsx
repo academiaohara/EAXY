@@ -109,25 +109,18 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   const animationAdvance = presenterNav?.onAdvance;
   const animationRetreat = presenterNav?.onRetreat;
 
+  /** Flechas del rail = diapositiva (Continuar / Comprobar). Las fases van en el centro o con teclado. */
   const handleForward = useCallback(() => {
     if (feedback) {
-      return;
-    }
-    if (hasAnimation && animationAdvance && presenterNav?.canAdvance !== false) {
-      animationAdvance();
       return;
     }
     if (control && !control.disabled) {
       control.onClick();
     }
-  }, [animationAdvance, control, feedback, hasAnimation, presenterNav?.canAdvance]);
+  }, [control, feedback]);
 
   const handleBack = useCallback(() => {
     if (feedback) {
-      return;
-    }
-    if (hasAnimation && animationRetreat && presenterNav?.canRetreat !== false) {
-      animationRetreat();
       return;
     }
     if (control?.onBack) {
@@ -137,7 +130,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     if (canBack) {
       onBack();
     }
-  }, [animationRetreat, canBack, control, feedback, hasAnimation, onBack, presenterNav?.canRetreat]);
+  }, [canBack, control, feedback, onBack]);
 
   useEffect(() => {
     if (feedback || !hasAnimation) {
@@ -192,19 +185,9 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     return () => window.removeEventListener("mousedown", close);
   }, [moreOpen]);
 
-  const forwardDisabled =
-    feedback !== null
-      ? false
-      : hasAnimation
-        ? presenterNav?.canAdvance === false
-        : !control || control.disabled;
+  const forwardDisabled = feedback !== null ? false : !control || control.disabled;
 
-  const backDisabled =
-    feedback !== null
-      ? true
-      : hasAnimation
-        ? presenterNav?.canRetreat === false
-        : !canBack && !control?.onBack;
+  const backDisabled = feedback !== null ? true : !canBack && !control?.onBack;
 
   const header = (
     <header className="relative z-50 flex shrink-0 items-start justify-between gap-4 px-4 pb-4 pt-5 sm:px-6 sm:pb-4 sm:pt-5">
@@ -261,7 +244,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
           <ChevronLeftIcon className="size-5" aria-hidden />
         </PresenterCircleButton>
         <PresenterCircleButton
-          label={hasAnimation ? "Siguiente fase de la animación" : control?.label ?? "Continuar"}
+          label={control?.label ?? "Continuar"}
           disabled={forwardDisabled}
           testId={control?.testId ?? "lesson-presenter-forward"}
           onClick={handleForward}
