@@ -36,5 +36,10 @@ src/
   types/            # Tipos TypeScript
 e2e/                # Tests E2E (Playwright)
 docs/               # Documentación
+  claude/           # Instrucciones para Claude (desarrollo web)
 .cursor/rules/      # Reglas para Cursor
 ```
+
+## Claude / otros asistentes
+
+Contexto para programar en este repo: [`docs/claude/README.md`](docs/claude/README.md). En Claude Code, `CLAUDE.md` en la raíz apunta a esas guías.

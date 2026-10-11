@@ -6,6 +6,7 @@ Plan técnico de Eaxy — plataforma de aprendizaje adaptativo de matemáticas.
 
 | Documento                                    | Contenido                                      |
 | -------------------------------------------- | ---------------------------------------------- |
+| [claude/README.md](./claude/README.md)       | **Contexto e instrucciones para Claude** (desarrollo web) |
 | [product.md](./product.md)                   | Visión, modos de uso, personas, principios     |
 | [architecture.md](./architecture.md)         | Capas, flujos, estructura de carpetas, testing |
 | [database.md](./database.md)                 | Modelo de datos PostgreSQL                     |
