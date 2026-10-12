@@ -930,17 +930,6 @@
   }
 }
 
-@keyframes lesson-fly-to-cesta {
-  0% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0.35;
-    transform: translateY(28px) scale(0.88);
-  }
-}
-
 @keyframes lesson-idea-enter {
   from {
     opacity: 0;
