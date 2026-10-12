@@ -101,14 +101,15 @@ export function PracticaReducirExpresion({
 
       const isOp = !/\d|\(|\)/.test(token);
       if (isOp && isCurrent && !done) {
+        const opIndex = i;
         nodes.push(
           <button
             key={`${token}-${i}`}
             type="button"
             className="min-h-12 min-w-11 rounded-xl border-2 border-transparent px-2 transition hover:border-white/40"
-            data-testid={`jerarquia-op-${i}`}
+            data-testid={`jerarquia-op-${opIndex}`}
             aria-label={`Operación ${token}`}
-            onClick={() => handleOpClick(i)}
+            onClick={() => handleOpClick(opIndex)}
           >
             {token}
           </button>,
