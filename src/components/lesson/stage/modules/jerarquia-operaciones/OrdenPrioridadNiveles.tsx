@@ -9,6 +9,34 @@ const ITEMS = [
   { id: "sum-resta", label: "Suma y resta" },
 ] as const;
 
+type ItemId = (typeof ITEMS)[number]["id"];
+
+/** Misma paleta que `NivelesReglas`: violeta → ámbar → cian por prioridad. */
+const SLOT_ACCENTS = [
+  {
+    badge: "bg-violet-400 text-slate-900",
+    empty: "border-dashed border-violet-400/50 bg-violet-500/12",
+    filled: "border-violet-400/65 bg-violet-500/18",
+  },
+  {
+    badge: "bg-amber-400 text-slate-900",
+    empty: "border-dashed border-amber-400/50 bg-amber-500/12",
+    filled: "border-amber-400/65 bg-amber-500/18",
+  },
+  {
+    badge: "bg-cyan-400 text-slate-900",
+    empty: "border-dashed border-cyan-400/50 bg-cyan-500/12",
+    filled: "border-cyan-400/65 bg-cyan-500/18",
+  },
+] as const;
+
+const ITEM_CHIP: Record<ItemId, string> = {
+  parentesis:
+    "border-violet-400/75 bg-violet-500/28 hover:border-violet-300 hover:bg-violet-500/38",
+  "mul-div": "border-amber-400/75 bg-amber-500/28 hover:border-amber-300 hover:bg-amber-500/38",
+  "sum-resta": "border-cyan-400/75 bg-cyan-500/28 hover:border-cyan-300 hover:bg-cyan-500/38",
+};
+
 const SLOT_COUNT = 3;
 
 function normalizeSlots(tapSequence: readonly string[]): (string | null)[] {
@@ -84,6 +112,9 @@ export function OrdenPrioridadNiveles({
     }
   };
 
+  const chipBase =
+    "min-h-11 rounded-xl border-2 px-4 py-2 text-sm font-semibold text-ink shadow-[0_4px_14px_-6px_rgba(0,0,0,0.45)]";
+
   return (
     <div
       className="mx-auto w-full max-w-lg space-y-4"
@@ -94,44 +125,52 @@ export function OrdenPrioridadNiveles({
         1 se calcula antes que 2, y 2 antes que 3.
       </p>
       <div className="grid gap-3">
-        {slots.map((filledId, slotIndex) => (
-          <div
-            key={`slot-${slotIndex + 1}`}
-            className={cn(
-              "flex min-h-[3.25rem] items-center gap-3 rounded-2xl border-2 border-dashed px-3 py-2 transition",
-              filledId
-                ? "border-slate-300 bg-white/80"
-                : "border-slate-200/80 bg-slate-50/40",
-            )}
-            onDragOver={(event) => event.preventDefault()}
-            onDrop={(event) => handleDropOnSlot(event, slotIndex)}
-            data-testid={`jerarquia-priority-slot-${slotIndex + 1}`}
-          >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-900 text-sm font-extrabold text-white">
-              {slotIndex + 1}
-            </span>
-            {filledId ? (
-              <button
-                type="button"
-                draggable={!disabled}
-                disabled={disabled}
-                onDragStart={(event) => event.dataTransfer.setData("text/plain", filledId)}
-                onClick={() => returnToPool(filledId)}
+        {slots.map((filledId, slotIndex) => {
+          const accent = SLOT_ACCENTS[slotIndex];
+          return (
+            <div
+              key={`slot-${slotIndex + 1}`}
+              className={cn(
+                "flex min-h-[3.25rem] items-center gap-3 rounded-2xl border-2 px-3 py-2 transition-colors",
+                filledId ? accent.filled : accent.empty,
+              )}
+              onDragOver={(event) => event.preventDefault()}
+              onDrop={(event) => handleDropOnSlot(event, slotIndex)}
+              data-testid={`jerarquia-priority-slot-${slotIndex + 1}`}
+            >
+              <span
                 className={cn(
-                  "min-h-11 flex-1 rounded-xl border-2 border-slate-200 bg-white px-3 py-2 text-left text-sm font-semibold text-ink shadow-sm",
-                  !disabled && "cursor-grab hover:border-cobalt/40 active:cursor-grabbing",
+                  "flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-extrabold",
+                  accent.badge,
                 )}
               >
-                {ITEMS.find((item) => item.id === filledId)?.label ?? filledId}
-              </button>
-            ) : (
-              <span className="text-sm text-ink-muted">Arrastra aquí</span>
-            )}
-          </div>
-        ))}
+                {slotIndex + 1}
+              </span>
+              {filledId ? (
+                <button
+                  type="button"
+                  draggable={!disabled}
+                  disabled={disabled}
+                  onDragStart={(event) => event.dataTransfer.setData("text/plain", filledId)}
+                  onClick={() => returnToPool(filledId)}
+                  className={cn(
+                    chipBase,
+                    "flex-1 px-3 text-left",
+                    ITEM_CHIP[filledId as ItemId],
+                    !disabled && "cursor-grab active:cursor-grabbing",
+                  )}
+                >
+                  {ITEMS.find((item) => item.id === filledId)?.label ?? filledId}
+                </button>
+              ) : (
+                <span className="text-sm text-ink-muted/80">Arrastra aquí</span>
+              )}
+            </div>
+          );
+        })}
       </div>
       <div
-        className="flex min-h-[3.5rem] flex-wrap justify-center gap-2 rounded-2xl border border-slate-200/80 bg-slate-50/50 px-3 py-3"
+        className="flex min-h-[3.5rem] flex-wrap justify-center gap-2 rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
         onDragOver={(event) => event.preventDefault()}
         onDrop={(event) => {
           event.preventDefault();
@@ -152,8 +191,9 @@ export function OrdenPrioridadNiveles({
               disabled={disabled}
               onDragStart={(event) => event.dataTransfer.setData("text/plain", item.id)}
               className={cn(
-                "min-h-11 rounded-xl border-2 border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-ink shadow-sm",
-                !disabled && "cursor-grab hover:border-cobalt/40 active:cursor-grabbing",
+                chipBase,
+                ITEM_CHIP[item.id],
+                !disabled && "cursor-grab active:cursor-grabbing",
               )}
               data-testid={`jerarquia-priority-item-${item.id}`}
             >
