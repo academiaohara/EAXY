@@ -13,7 +13,8 @@ describe("jerarquía de operaciones", () => {
       ),
     ).toHaveLength(5);
     expect(steps[0]?.type).toBe("predict");
-    expect(steps.filter((step) => step.type === "explore")).toHaveLength(2);
+    expect(steps.filter((step) => step.type === "explore")).toHaveLength(3);
+    expect(steps.at(-1)?.id).toBe("practica-orden-niveles");
   });
 
   it("renderiza los tres niveles de reglas", () => {
@@ -24,6 +25,18 @@ describe("jerarquía de operaciones", () => {
     expect(screen.getByText("Paréntesis")).toBeInTheDocument();
     expect(screen.getByText("Multiplicación y división")).toBeInTheDocument();
     expect(screen.getByText("Suma y resta")).toBeInTheDocument();
+  });
+
+  it("renderiza el orden de prioridad arrastrable", () => {
+    render(
+      <JerarquiaOperacionesModule
+        scene="orden-prioridad"
+        tapSequence={["", "", ""]}
+        onTapSequenceChange={() => {}}
+      />,
+    );
+    expect(screen.getByLabelText("Ordenar niveles de prioridad")).toBeInTheDocument();
+    expect(screen.getByTestId("jerarquia-priority-slot-1")).toBeInTheDocument();
   });
 
   it("renderiza la exploración Ana / Leo", () => {

@@ -2,6 +2,7 @@
 
 import { ExploracionAnaLeo } from "@/components/lesson/stage/modules/jerarquia-operaciones/ExploracionAnaLeo";
 import { NivelesReglas } from "@/components/lesson/stage/modules/jerarquia-operaciones/NivelesReglas";
+import { OrdenPrioridadNiveles } from "@/components/lesson/stage/modules/jerarquia-operaciones/OrdenPrioridadNiveles";
 import { PracticaReducirExpresion } from "@/components/lesson/stage/modules/jerarquia-operaciones/PracticaReducirExpresion";
 
 export type JerarquiaOperacionesModuleProps = {
@@ -35,6 +36,8 @@ export function JerarquiaOperacionesModule({
   reduceHistory = [],
   onReduceTokensChange,
   reduceDisabled,
+  tapSequence,
+  onTapSequenceChange,
 }: JerarquiaOperacionesModuleProps) {
   switch (scene) {
     case "exploracion-ana-leo":
@@ -46,8 +49,16 @@ export function JerarquiaOperacionesModule({
         />
       );
     case "niveles-reglas":
-    case "resumen-niveles":
       return <NivelesReglas onReadyChange={onReadyChange} />;
+    case "orden-prioridad":
+      return (
+        <OrdenPrioridadNiveles
+          tapSequence={tapSequence}
+          onTapSequenceChange={onTapSequenceChange}
+          disabled={reduceDisabled}
+          onReadyChange={onReadyChange}
+        />
+      );
     case "practica-reducir":
       return (
         <PracticaReducirExpresion

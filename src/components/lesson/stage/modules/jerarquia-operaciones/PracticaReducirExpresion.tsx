@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import {
   applyOperationAt,
   operationHighlightLevel,
@@ -18,17 +18,14 @@ export type PracticaReducirExpresionProps = {
   disabled?: boolean;
 };
 
-function tokenClass(isHit: boolean, level: 1 | 2 | 3 | null): string {
-  if (!isHit || level === null) {
-    return "";
-  }
+function highlightGroupClass(level: 1 | 2 | 3): string {
   if (level === 1) {
-    return "bg-violet-400 text-slate-900";
+    return "border-violet-300/80 bg-violet-400/95 text-slate-900 shadow-[0_0_0_1px_rgb(167_139_250/0.5)]";
   }
   if (level === 2) {
-    return "bg-amber-400 text-slate-900";
+    return "border-amber-300/80 bg-amber-400/95 text-slate-900 shadow-[0_0_0_1px_rgb(251_191_36/0.5)]";
   }
-  return "bg-cyan-400 text-slate-900";
+  return "border-cyan-300/80 bg-cyan-400/95 text-slate-900 shadow-[0_0_0_1px_rgb(34_211_238/0.5)]";
 }
 
 export function PracticaReducirExpresion({
@@ -76,46 +73,68 @@ export function PracticaReducirExpresion({
     [disabled, done, lock, onTokensChange, tokens],
   );
 
-  const renderRow = (row: readonly string[], isCurrent: boolean) => (
-    <div
-      className={cn(
-        "flex flex-wrap items-center justify-center gap-1 font-mono font-extrabold tabular-nums",
-        isCurrent ? "min-h-14 text-3xl" : "min-h-11 text-xl opacity-40",
-        isCurrent && done && "text-emerald-300",
-      )}
-    >
-      {row.map((token, i) => {
-        const isOp = !/\d|\(|\)/.test(token);
-        const hit =
-          isCurrent &&
-          highlight &&
-          (i === highlight.m || i === highlight.m - 1 || i === highlight.m + 1);
-        const cls = tokenClass(Boolean(hit), hit ? highlight.l : null);
-        if (isOp && isCurrent && !done) {
-          return (
-            <button
-              key={`${token}-${i}`}
-              type="button"
-              className={cn(
-                "min-h-12 min-w-11 rounded-xl border-2 border-transparent px-2 transition hover:border-white/40",
-                cls,
-              )}
-              data-testid={`jerarquia-op-${i}`}
-              aria-label={`Operación ${token}`}
-              onClick={() => handleOpClick(i)}
-            >
-              {token}
-            </button>
-          );
-        }
-        return (
-          <span key={`${token}-${i}`} className={cn("rounded-xl px-2 py-1", cls)}>
-            {token}
-          </span>
+  const renderRow = (row: readonly string[], isCurrent: boolean) => {
+    const nodes: React.ReactNode[] = [];
+    let i = 0;
+    while (i < row.length) {
+      const token = row[i] ?? "";
+      if (isCurrent && highlight && i === highlight.m - 1) {
+        const left = row[i] ?? "";
+        const op = row[i + 1] ?? "";
+        const right = row[i + 2] ?? "";
+        nodes.push(
+          <span
+            key={`hl-${i}`}
+            className={cn(
+              "inline-flex items-center gap-1 rounded-xl border-2 px-2.5 py-1.5",
+              highlightGroupClass(highlight.l),
+            )}
+          >
+            <span>{left}</span>
+            <span>{op}</span>
+            <span>{right}</span>
+          </span>,
         );
-      })}
-    </div>
-  );
+        i += 3;
+        continue;
+      }
+
+      const isOp = !/\d|\(|\)/.test(token);
+      if (isOp && isCurrent && !done) {
+        nodes.push(
+          <button
+            key={`${token}-${i}`}
+            type="button"
+            className="min-h-12 min-w-11 rounded-xl border-2 border-transparent px-2 transition hover:border-white/40"
+            data-testid={`jerarquia-op-${i}`}
+            aria-label={`Operación ${token}`}
+            onClick={() => handleOpClick(i)}
+          >
+            {token}
+          </button>,
+        );
+      } else {
+        nodes.push(
+          <span key={`${token}-${i}`} className="px-1">
+            {token}
+          </span>,
+        );
+      }
+      i += 1;
+    }
+
+    return (
+      <div
+        className={cn(
+          "flex flex-wrap items-center justify-center gap-1 font-mono font-extrabold tabular-nums",
+          isCurrent ? "min-h-14 text-3xl" : "min-h-11 text-xl opacity-40",
+          isCurrent && done && "text-emerald-300",
+        )}
+      >
+        {nodes}
+      </div>
+    );
+  };
 
   return (
     <div className="space-y-2" data-testid="jerarquia-practica-reducir" aria-label="Reducir expresión paso a paso">

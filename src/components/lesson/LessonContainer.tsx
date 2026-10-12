@@ -412,6 +412,14 @@ function LessonContainerBody({
       return next;
     });
     setFeedback(null);
+    setToolState((prev) => {
+      if (!(stepId in prev)) {
+        return prev;
+      }
+      const next = { ...prev };
+      delete next[stepId];
+      return next;
+    });
     setStepRemountKey((prev) => ({ ...prev, [stepId]: (prev[stepId] ?? 0) + 1 }));
   }, [currentStep.id, stepAttempts, stepIndex]);
 
