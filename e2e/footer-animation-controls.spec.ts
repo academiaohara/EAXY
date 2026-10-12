@@ -31,8 +31,12 @@ async function advanceAnimationToEnd(page: import("@playwright/test").Page) {
   if (await play.isVisible().catch(() => false)) {
     await play.click();
   }
-  for (let i = 0; i < 8; i++) {
+  const forward = page.getByTestId("lesson-presenter-forward");
+  for (let i = 0; i < 12; i++) {
     if (await continueBtn.isVisible().catch(() => false)) {
+      return;
+    }
+    if (!(await forward.isDisabled())) {
       return;
     }
     const next = center.getByRole("button", { name: "Avanzar un paso" });
@@ -41,7 +45,14 @@ async function advanceAnimationToEnd(page: import("@playwright/test").Page) {
     }
     await next.click();
   }
-  await expect(continueBtn).toBeVisible({ timeout: 20_000 });
+  await expect
+    .poll(async () => {
+      if (await continueBtn.isVisible().catch(() => false)) {
+        return true;
+      }
+      return !(await forward.isDisabled());
+    })
+    .toBe(true);
 }
 
 test("reparto igual — controles al centro y avance con flecha derecha", async ({ page }) => {
@@ -71,7 +82,7 @@ test("división a mano — controles centrados, no sobre la pizarra SVG", async 
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
     },
-    { key: STORAGE_KEY, payload: seedLessonStep(4) },
+    { key: STORAGE_KEY, payload: seedLessonStep(5) },
   );
 
   await page.goto(

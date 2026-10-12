@@ -3,14 +3,30 @@
 import { useCallback, useMemo, useState } from "react";
 import { DivisionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/DivisionManoChalkboard";
 import {
+  buildDivisionBoard,
   DIVISION_CYCLE,
-  type CyclePhase,
-} from "@/components/lesson/stage/modules/mul-div-naturales/division-mano-chalkboard-data";
+  type DivisionPhase,
+} from "@/components/lesson/stage/modules/mul-div-naturales/division-board";
 import { cn } from "@/lib/utils";
 
 type PracticePhase = 0 | 1 | 2;
 
-const PHASE_CYCLE: CyclePhase[] = ["cuantas", "multiplica", "resta"];
+const PRACTICE_DIVIDEND = 32;
+const PRACTICE_DIVISOR = 6;
+
+/** Pasos del generador (0-based) para cuántas / multiplica / resta en 32 : 6. */
+function boardStepForPracticePhase(phase: PracticePhase): number {
+  const board = buildDivisionBoard(PRACTICE_DIVIDEND, PRACTICE_DIVISOR);
+  if (!board) {
+    return 0;
+  }
+  const targets: DivisionPhase[] = ["cuantas", "multiplica", "resta"];
+  const target = targets[phase];
+  const idx = board.steps.findIndex((s) => s.phase === target);
+  return idx >= 0 ? idx : 0;
+}
+
+const PHASE_CYCLE: DivisionPhase[] = ["cuantas", "multiplica", "resta"];
 
 type Choice = { id: string; label: string };
 
@@ -57,8 +73,7 @@ export function DivisionManoPractice({
 
   const current = PHASES[phase]!;
   const activeCycle = PHASE_CYCLE[phase];
-
-  const boardSub = phase === 0 ? 5 : phase === 1 ? 5 : 5;
+  const boardStep = boardStepForPracticePhase(phase);
 
   const handleCheck = useCallback(() => {
     if (checked || !choiceId) {
@@ -105,7 +120,12 @@ export function DivisionManoPractice({
 
   return (
     <div className="space-y-4" data-testid="division-mano-practice" aria-label="Práctica de división a mano">
-      <DivisionManoChalkboard dividend={156} divisor={6} subStep={boardSub} showProgress={false} />
+      <DivisionManoChalkboard
+        dividend={PRACTICE_DIVIDEND}
+        divisor={PRACTICE_DIVISOR}
+        step={boardStep}
+        showProgress={false}
+      />
 
       <div className="flex flex-wrap justify-center gap-2">{cycleChips}</div>
 
