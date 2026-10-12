@@ -9,9 +9,7 @@ const ITEMS = [
   { id: "sum-resta", label: "Suma y resta" },
 ] as const;
 
-type ItemId = (typeof ITEMS)[number]["id"];
-
-/** Misma paleta que `NivelesReglas`: violeta → ámbar → cian por prioridad. */
+/** Misma paleta que `NivelesReglas`: violeta → ámbar → cian por prioridad (solo puestos). */
 const SLOT_ACCENTS = [
   {
     badge: "bg-violet-400 text-slate-900",
@@ -30,12 +28,8 @@ const SLOT_ACCENTS = [
   },
 ] as const;
 
-const ITEM_CHIP: Record<ItemId, string> = {
-  parentesis:
-    "border-violet-400/75 bg-violet-500/28 hover:border-violet-300 hover:bg-violet-500/38",
-  "mul-div": "border-amber-400/75 bg-amber-500/28 hover:border-amber-300 hover:bg-amber-500/38",
-  "sum-resta": "border-cyan-400/75 bg-cyan-500/28 hover:border-cyan-300 hover:bg-cyan-500/38",
-};
+const OPTION_CHIP =
+  "border-[color:var(--stage-border,#475569)] bg-black/45 hover:border-[color:var(--stage-accent,#58c4dd)]/50 hover:bg-black/55";
 
 const SLOT_COUNT = 3;
 
@@ -156,7 +150,7 @@ export function OrdenPrioridadNiveles({
                   className={cn(
                     chipBase,
                     "flex-1 px-3 text-left",
-                    ITEM_CHIP[filledId as ItemId],
+                    OPTION_CHIP,
                     !disabled && "cursor-grab active:cursor-grabbing",
                   )}
                 >
@@ -192,7 +186,7 @@ export function OrdenPrioridadNiveles({
               onDragStart={(event) => event.dataTransfer.setData("text/plain", item.id)}
               className={cn(
                 chipBase,
-                ITEM_CHIP[item.id],
+                OPTION_CHIP,
                 !disabled && "cursor-grab active:cursor-grabbing",
               )}
               data-testid={`jerarquia-priority-item-${item.id}`}
