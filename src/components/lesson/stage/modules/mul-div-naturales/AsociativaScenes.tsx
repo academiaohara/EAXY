@@ -9,8 +9,16 @@ const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3
 const STAGE_MATH =
   "lesson-stage-mul-equation text-center text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]";
 
-/** Tamaño fijo de celda para evitar choques entre `minmax` y anchos en Tailwind. */
-const EGG_CELL_REM = 1.65;
+function eggCellRem(rows: number, cols: number) {
+  const cells = rows * cols;
+  if (cells > 35) {
+    return 1.42;
+  }
+  if (cells > 20) {
+    return 1.52;
+  }
+  return 1.65;
+}
 
 function EggDot() {
   return (
@@ -21,14 +29,14 @@ function EggDot() {
   );
 }
 
-function EggCell({ fillClass }: { fillClass: string }) {
+function EggCell({ fillClass, sizeRem }: { fillClass: string; sizeRem: number }) {
   return (
     <div
       className={cn(
         "flex flex-col items-center justify-center gap-0.5",
         fillClass,
       )}
-      style={{ width: `${EGG_CELL_REM}rem`, height: `${EGG_CELL_REM}rem` }}
+      style={{ width: `${sizeRem}rem`, height: `${sizeRem}rem` }}
     >
       <EggDot />
       <EggDot />
@@ -41,22 +49,25 @@ function EggBoxGrid({
   cols,
   dividerClass,
   cellFillClass,
+  cellRem,
 }: {
   rows: number;
   cols: number;
   dividerClass: string;
   cellFillClass: string;
+  cellRem?: number;
 }) {
+  const sizeRem = cellRem ?? eggCellRem(rows, cols);
   return (
     <div
       className={cn("grid gap-px overflow-hidden rounded-md p-px", dividerClass)}
       style={{
-        gridTemplateColumns: `repeat(${cols}, ${EGG_CELL_REM}rem)`,
-        gridTemplateRows: `repeat(${rows}, ${EGG_CELL_REM}rem)`,
+        gridTemplateColumns: `repeat(${cols}, ${sizeRem}rem)`,
+        gridTemplateRows: `repeat(${rows}, ${sizeRem}rem)`,
       }}
     >
       {Array.from({ length: rows * cols }, (_, i) => (
-        <EggCell key={i} fillClass={cellFillClass} />
+        <EggCell key={i} fillClass={cellFillClass} sizeRem={sizeRem} />
       ))}
     </div>
   );
@@ -97,6 +108,7 @@ export function AsociativaHuevosDiscover({
   const showSameResult = seenLeft && seenRight;
 
   const cellFill = "bg-[color:var(--stage-surface,#1a2332)]";
+  const cellRem = eggCellRem(a, b);
   const blockGrid =
     group === "left" ? (
       <div
@@ -110,26 +122,30 @@ export function AsociativaHuevosDiscover({
           cols={b}
           dividerClass="bg-sky-400/40"
           cellFillClass={cellFill}
+          cellRem={cellRem}
         />
         <p className={cn(STAGE_CAPTION, "mt-2.5 text-center text-[10px] uppercase tracking-wider text-sky-200/75")}>
           Un solo bloque: {a * b} cajas
         </p>
       </div>
     ) : (
-      <div className="flex max-h-[min(18rem,42vh)] flex-col gap-1.5 overflow-y-auto overscroll-contain pr-0.5 transition-all duration-700">
-        {Array.from({ length: a }, (_, row) => (
-          <div
-            key={row}
-            className="rounded-xl border border-violet-300/45 bg-violet-500/10 px-2.5 py-1.5 shadow-[inset_0_1px_0_0_rgba(196,181,253,0.08)]"
-          >
-            <EggBoxGrid
-              rows={1}
-              cols={b}
-              dividerClass="bg-violet-300/35"
-              cellFillClass={cellFill}
-            />
-          </div>
-        ))}
+      <div className="space-y-2 transition-all duration-700">
+        <div className="flex max-h-[min(16.5rem,40vh)] flex-col gap-1.5 overflow-y-auto overscroll-contain [scrollbar-color:rgba(167,139,250,0.45)_transparent] [scrollbar-width:thin]">
+          {Array.from({ length: a }, (_, row) => (
+            <div
+              key={row}
+              className="shrink-0 rounded-xl border border-violet-300/45 bg-violet-500/10 px-2.5 py-1.5 shadow-[inset_0_1px_0_0_rgba(196,181,253,0.08)]"
+            >
+              <EggBoxGrid
+                rows={1}
+                cols={b}
+                dividerClass="bg-violet-300/35"
+                cellFillClass={cellFill}
+                cellRem={cellRem}
+              />
+            </div>
+          ))}
+        </div>
         <p className={cn(STAGE_CAPTION, "text-center text-[10px] uppercase tracking-wider text-violet-200/75")}>
           {a} estantes · {b} cajas en cada uno
         </p>
