@@ -2,6 +2,47 @@
 
 import { cn } from "@/lib/utils";
 
+/** Ana / Leo: al fallar solo la respuesta elegida lleva énfasis; la correcta se insinúa sin el brillo de selección. */
+export function predictAnaLeoChoiceClassName(options: {
+  choiceId: string;
+  selectedChoiceId: string;
+  correctChoiceId: string;
+  checked: boolean;
+  answerCorrect: boolean;
+}) {
+  const base =
+    "lesson-stage-choice rounded-xl border-2 border-slate-200 bg-white px-5 py-3.5 text-center text-base font-bold text-ink transition min-h-11 min-w-[7rem] flex-1 hover:border-cobalt/35";
+
+  if (!options.checked) {
+    return cn(base, options.choiceId === options.selectedChoiceId && "is-selected");
+  }
+
+  const isPick = options.choiceId === options.selectedChoiceId;
+  const isCorrectOption = options.choiceId === options.correctChoiceId;
+
+  if (options.answerCorrect) {
+    return cn(
+      base,
+      isPick && "is-selected border-emerald-500/80",
+      !isPick && "opacity-50",
+    );
+  }
+
+  if (isPick) {
+    return cn(
+      base,
+      "border-amber-500/75 bg-amber-500/10 shadow-none",
+    );
+  }
+  if (isCorrectOption) {
+    return cn(
+      base,
+      "border-emerald-500/45 bg-emerald-500/5 opacity-100",
+    );
+  }
+  return cn(base, "opacity-45");
+}
+
 export function predictChoiceClassName(options: {
   selected: boolean;
   checked: boolean;

@@ -31,6 +31,7 @@ import type {
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import {
   PredictCheckButton,
+  predictAnaLeoChoiceClassName,
   predictChoiceClassName,
   predictInlineChoiceClassName,
   predictFeedbackStatusClassName,
@@ -616,15 +617,20 @@ export function PredictStepView({
                   onClick={() =>
                     anaLeo ? submitAnaLeoChoice(choice.id) : setChoiceId(choice.id)
                   }
-                  className={cn(
-                    predictChoiceClassName({
-                      selected: choiceId === choice.id,
-                      checked: checked && choiceId !== choice.id,
-                    }),
-                    anaLeo ? "min-h-11 min-w-[7rem] flex-1 text-center font-bold" : "",
-                    checked && choice.id === step.correctChoiceId && "is-selected border-emerald-500/80",
-                    checked && choiceId === choice.id && choice.id !== step.correctChoiceId && "opacity-60",
-                  )}
+                  className={
+                    anaLeo
+                      ? predictAnaLeoChoiceClassName({
+                          choiceId: choice.id,
+                          selectedChoiceId: choiceId,
+                          correctChoiceId: step.correctChoiceId ?? "",
+                          checked,
+                          answerCorrect: isCorrect,
+                        })
+                      : predictChoiceClassName({
+                          selected: choiceId === choice.id,
+                          checked,
+                        })
+                  }
                   aria-pressed={choiceId === choice.id}
                 >
                   <MathRenderer text={choice.label} />
@@ -814,11 +820,7 @@ export function ExploreStepView({
       return isValidParenthesisPlacement(step.goal.tokens, persist.openAfter, persist.closeBefore);
     }
     if (step.goal.kind === "hierarchy-sequence") {
-      const target = step.goal.sequence;
-      return (
-        persist.tapSequence.length === target.length &&
-        persist.tapSequence.every((id, i) => id === target[i])
-      );
+      return false;
     }
     if (step.goal.kind === "hierarchy-reduce") {
       return persist.reduceTokens.length === 1;
@@ -830,6 +832,23 @@ export function ExploreStepView({
     }
     return false;
   }, [persist, step]);
+
+  const hierarchySequenceReady = useMemo(() => {
+    if (step.goal.kind !== "hierarchy-sequence") {
+      return false;
+    }
+    return step.goal.sequence.every((_, index) => Boolean(persist.tapSequence[index]));
+  }, [persist.tapSequence, step.goal]);
+
+  const hierarchySequenceCorrect = useMemo(() => {
+    if (step.goal.kind !== "hierarchy-sequence") {
+      return false;
+    }
+    return step.goal.sequence.every((id, index) => persist.tapSequence[index] === id);
+  }, [persist.tapSequence, step.goal]);
+
+  const exploreCanSubmit =
+    step.goal.kind === "hierarchy-sequence" ? hierarchySequenceReady : placementReady;
 
   const boxesDistributionCorrect = useMemo(() => {
     if (step.goal.kind !== "boxes-equal") {
@@ -868,7 +887,7 @@ export function ExploreStepView({
   }, [persist.closeBefore, persist.openAfter, step.goal]);
 
   const runCheck = useCallback(() => {
-    if (checked || !placementReady) {
+    if (checked || !exploreCanSubmit) {
       return;
     }
     let correct = true;
@@ -876,7 +895,7 @@ export function ExploreStepView({
       correct = evaluatedValue === step.goal.target;
     }
     if (step.goal.kind === "hierarchy-sequence") {
-      correct = placementReady;
+      correct = hierarchySequenceCorrect;
     }
     if (step.goal.kind === "hierarchy-reduce") {
       correct = placementReady;
@@ -894,7 +913,16 @@ export function ExploreStepView({
         isCorrect: correct,
       },
     });
-  }, [boxesDistributionCorrect, checked, evaluatedValue, onCheck, placementReady, step.goal]);
+  }, [
+    boxesDistributionCorrect,
+    checked,
+    evaluatedValue,
+    exploreCanSubmit,
+    hierarchySequenceCorrect,
+    onCheck,
+    placementReady,
+    step.goal,
+  ]);
 
   const control = useMemo(() => {
     if (checked || step.goal.kind === "hierarchy-reduce") {
@@ -903,10 +931,10 @@ export function ExploreStepView({
     return {
       label: "Comprobar",
       onClick: runCheck,
-      disabled: !placementReady || disabled,
+      disabled: !exploreCanSubmit || disabled,
       testId: "lesson-check-button",
     };
-  }, [checked, disabled, placementReady, runCheck, step.goal.kind]);
+  }, [checked, disabled, exploreCanSubmit, runCheck, step.goal.kind]);
 
   useRegisterLessonStepControl(control);
 
@@ -951,23 +979,25 @@ export function ExploreStepView({
           : undefined
       }
       jerarquia={
-        step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-sequence"
+        step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-reduce"
           ? {
-              targetSequence: step.goal.sequence,
-              tapSequence: persist.tapSequence,
-              onTapSequenceChange: (tapSequence) => setPersist((prev) => ({ ...prev, tapSequence })),
+              initialTokens: step.goal.tokens,
+              reduceTokens: persist.reduceTokens,
+              reduceHistory: persist.reduceHistory,
+              onReduceTokensChange: (reduceTokens, historyRow) =>
+                setPersist((prev) => ({
+                  ...prev,
+                  reduceTokens,
+                  reduceHistory: [...prev.reduceHistory, [...historyRow]],
+                })),
+              reduceDisabled: checked,
             }
-          : step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-reduce"
+          : step.module === "jerarquia-operaciones" && step.goal.kind === "hierarchy-sequence"
             ? {
-                initialTokens: step.goal.tokens,
-                reduceTokens: persist.reduceTokens,
-                reduceHistory: persist.reduceHistory,
-                onReduceTokensChange: (reduceTokens, historyRow) =>
-                  setPersist((prev) => ({
-                    ...prev,
-                    reduceTokens,
-                    reduceHistory: [...prev.reduceHistory, [...historyRow]],
-                  })),
+                targetSequence: step.goal.sequence,
+                tapSequence: persist.tapSequence,
+                onTapSequenceChange: (tapSequence) =>
+                  setPersist((prev) => ({ ...prev, tapSequence })),
                 reduceDisabled: checked,
               }
             : undefined
@@ -980,7 +1010,8 @@ export function ExploreStepView({
     />
   );
 
-  const reducePractice = step.goal.kind === "hierarchy-reduce";
+  const jerarquiaBodyStage =
+    step.goal.kind === "hierarchy-reduce" || step.goal.kind === "hierarchy-sequence";
 
   return (
     <div data-testid="lesson-explore-step">
@@ -988,7 +1019,7 @@ export function ExploreStepView({
         theme={theme}
         definitionBox={step.definitionBox}
         title={step.title}
-        stage={reducePractice ? undefined : stage}
+        stage={jerarquiaBodyStage ? undefined : stage}
       >
         <p className="lesson-presentation-body text-center font-normal text-ink">
           <MathRenderer text={step.question} emphasis="mark-alternate" />
@@ -1012,7 +1043,7 @@ export function ExploreStepView({
             )}
           </div>
         ) : null}
-        {reducePractice ? <div className="mt-4">{stage}</div> : null}
+        {jerarquiaBodyStage ? <div className="mt-4">{stage}</div> : null}
         {checked ? (
           <div
             className={cn(
@@ -1040,6 +1071,12 @@ export function ExploreStepView({
                       </>
                     ) : null}
                   </>
+                ) : step.goal.kind === "hierarchy-sequence" ? (
+                  step.explanation ? (
+                    <MathRenderer text={step.explanation} />
+                  ) : (
+                    "¡Correcto! Ese es el orden de prioridad."
+                  )
                 ) : (
                   `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`
                 )}
@@ -1047,9 +1084,11 @@ export function ExploreStepView({
             ) : (
               <>
                 <p className="font-semibold">
-                  {step.goal.kind === "boxes-equal" && boxesUnequalMessage
-                    ? boxesUnequalMessage
-                    : `Tu expresión vale ${evaluatedValue ?? "?"}, no ${step.goal.kind === "expression-result" ? step.goal.target : "?"}.`}
+                  {step.goal.kind === "hierarchy-sequence"
+                    ? "Ese orden no coincide: arriba va lo que se calcula antes."
+                    : step.goal.kind === "boxes-equal" && boxesUnequalMessage
+                      ? boxesUnequalMessage
+                      : `Tu expresión vale ${evaluatedValue ?? "?"}, no ${step.goal.kind === "expression-result" ? step.goal.target : "?"}.`}
                 </p>
                 {step.explanation && step.goal.kind !== "boxes-equal" ? (
                   <p className="mt-2 text-ink-muted">

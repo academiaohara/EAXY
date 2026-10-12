@@ -16,7 +16,11 @@ export function ExploracionAnaLeo({
   const showTicket = revealPlayed && Boolean(selectedChoiceId);
 
   return (
-    <div className="space-y-3" data-testid="jerarquia-ana-leo" aria-label="Ticket de la cafetería">
+    <div
+      className="mx-auto w-full max-w-lg space-y-3"
+      data-testid="jerarquia-ana-leo"
+      aria-label="Ticket de la cafetería"
+    >
       <div className="rounded-2xl bg-slate-900 px-4 py-5 text-white">
         <p className="mb-3 text-center text-sm opacity-80">Una bebida de 4 € y 3 bocadillos de 2 €</p>
         <div
@@ -55,9 +59,7 @@ export function ExploracionAnaLeo({
         >
           {isCorrect
             ? "Leo. 3 × 2 son tres grupos de 2: se calcula antes de sumar. Hace falta un orden acordado."
-            : selectedChoiceId === "b"
-              ? "No pueden las dos: solo hay un total correcto en la caja."
-              : "Mira el ticket: ¿cuánto pagas de verdad?"}
+            : "Mira el ticket: ¿cuánto pagas de verdad?"}
         </p>
       ) : null}
     </div>

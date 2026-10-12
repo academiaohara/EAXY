@@ -17,12 +17,6 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       choices: [
         { id: "a", label: "Ana" },
         { id: "l", label: "Leo" },
-        {
-          id: "b",
-          label: "Las dos",
-          incorrectFeedback:
-            "No pueden las dos: solo hay un total correcto en la caja.",
-        },
       ],
       correctChoiceId: "l",
       module: "jerarquia-operaciones",
@@ -63,11 +57,19 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       explanation: "$(3 - 2) = 1$, luego $1 \\times 3 = 3$ y $4 + 3 = 7$.",
     },
     {
-      id: "resumen-niveles",
-      type: "narrate",
-      title: "¡Lección completada!",
+      id: "practica-orden-niveles",
+      type: "explore",
+      title: "Ordena la prioridad",
+      question:
+        "Arrastra cada nivel al puesto correcto: arriba va lo que se calcula antes.",
       module: "jerarquia-operaciones",
-      scene: "resumen-niveles",
+      scene: "orden-prioridad",
+      goal: {
+        kind: "hierarchy-sequence",
+        sequence: ["parentesis", "mul-div", "sum-resta"],
+      },
+      explanation:
+        "Primero paréntesis, luego multiplicación y división, y al final suma y resta.",
     },
   ],
 };
