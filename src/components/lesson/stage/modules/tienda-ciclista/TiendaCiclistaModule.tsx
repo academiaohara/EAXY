@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRegisterLessonStageCelebration } from "@/components/lesson/LessonStepControlContext";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { TiendaCiclistaItem } from "@/lib/lesson/types";
@@ -178,6 +179,7 @@ export function TiendaCiclistaModule({
     mode === "restar-cartera" ? wallet - runningTotal : mode === "explorar-compra" ? remainder : null;
 
   const equipmentComplete = tapIds.length === items.length;
+  useRegisterLessonStageCelebration(mode === "sumar-cesta" && equipmentComplete);
   const shortfall = Math.max(0, totalAll - savedAmount);
   const surplus = Math.max(0, savedAmount - totalAll);
 
@@ -326,22 +328,14 @@ export function TiendaCiclistaModule({
             )}
           </div>
 
-          <div className="relative isolate w-full max-w-2xl">
-            <div
-              className={cn(
-                "lesson-feedback-backdrop lesson-feedback-backdrop-correct rounded-2xl",
-                equipmentComplete && "is-visible",
-              )}
-              aria-hidden
-            />
-            <div
-              className={cn(
-                "relative rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5 text-center transition-[border-color,box-shadow] duration-300",
-                equipmentComplete && "border-emerald-500/45 lesson-panel-glow-correct",
-              )}
-              data-testid="tienda-ciclista-total-panel"
-              data-complete={equipmentComplete ? "true" : "false"}
-            >
+          <div
+            className={cn(
+              "w-full max-w-2xl rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5 text-center transition-[border-color] duration-300",
+              equipmentComplete && "border-emerald-500/40",
+            )}
+            data-testid="tienda-ciclista-total-panel"
+            data-complete={equipmentComplete ? "true" : "false"}
+          >
               <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
                 El equipo ciclista cuesta en total
               </p>
@@ -359,7 +353,6 @@ export function TiendaCiclistaModule({
                   ¡Equipo completo!
                 </p>
               ) : null}
-            </div>
           </div>
         </div>
       ) : null}

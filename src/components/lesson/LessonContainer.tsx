@@ -129,7 +129,7 @@ function LessonContainerBody({
   const [panelOpen, setPanelOpen] = useState(false);
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
-  const { control, footerCenter, presenterNav } = useLessonStepControl();
+  const { control, footerCenter, presenterNav, stageCelebration } = useLessonStepControl();
   const router = useRouter();
   const backHref = !navigation
     ? "/aprender"
@@ -618,6 +618,7 @@ function LessonContainerBody({
           onGoToStep={goToStep}
           steps={lesson.steps.map((step) => ({ id: step.id, title: step.title }))}
           feedback={feedback}
+          stageCelebration={stageCelebration}
           className="min-h-0 flex-1"
           tutorPanelOpen={panelOpen}
           canBack={stepIndex > 0 || Boolean(control?.onBack)}
