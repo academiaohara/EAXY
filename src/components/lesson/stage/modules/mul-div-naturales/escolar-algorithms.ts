@@ -72,7 +72,7 @@ export function buildDivisionAlgorithmSteps(
   steps.push({
     caption: exact
       ? `Resto **0**: división **exacta**. ${dividend} = ${divisor} · ${quotient}.`
-      : `Sobra **${remainder}**: división **entera**. ${dividend} = ${divisor} · ${quotient} + ${remainder}.`,
+      : `Sobra **${remainder}**: división **con resto**. ${dividend} = ${divisor} · ${quotient} + ${remainder}.`,
     quotientDigits: quotient,
     working: String(remainder),
   });

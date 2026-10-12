@@ -57,7 +57,7 @@ export const curriculum: Curriculum = {
               id: lessonId(104),
               title: "3. Multiplicación y división",
               summary:
-                "Suma repetida, propiedades, reparto en partes iguales y divisiones exactas y enteras.",
+                "Suma repetida, propiedades, reparto en partes iguales y divisiones exactas y con resto.",
               orderIndex: 3,
               kind: "interactive",
               interactiveSlug: "multiplicacion-division-naturales",

@@ -314,7 +314,6 @@ export function NarrateStepView({
         step.module === "mul-div-naturales" &&
         step.scene !== "multiplicacion-mano" &&
         step.scene !== "division-mano" &&
-        step.scene !== "reparto-igual" &&
         step.scene !== "exacta-entera" &&
         step.scene !== "mul-div-cierre"
       }

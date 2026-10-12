@@ -15,7 +15,7 @@ test("multiplicación y división — lección unificada en catálogo", async ({
   await page.goto("/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/multiplicacion-division-naturales");
   await expect(page.getByTestId("interactive-lesson-layout")).toBeVisible({ timeout: 30_000 });
   await expect(page.locator("text=Multiplicación y división").first()).toBeVisible();
-  await expect(page.getByText("Paso 1 de 6")).toBeVisible();
+  await expect(page.getByText("Paso 1 de 7")).toBeVisible();
 });
 
 test("orden de operaciones — carga la lección 5", async ({ page }) => {

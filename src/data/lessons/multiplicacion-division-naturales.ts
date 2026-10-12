@@ -23,15 +23,27 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       type: "reveal",
       title: "El orden de los factores",
       definitionBox:
-        "El **producto no varía** al cambiar el orden de los factores: $a \\cdot b = b \\cdot a$.",
+        "**Propiedad conmutativa:** el **producto no varía** al cambiar el orden de los factores. Ejemplo: $8 \\cdot 5 = 5 \\cdot 8 = 40$.",
       module: "mul-div-naturales",
       scene: "conmutativa-producto",
       mulDiv: { scene: "conmutativa-producto", a: 3, b: 5 },
     },
     {
+      id: "asociativa-reveal",
+      type: "reveal",
+      title: "Cómo agrupar los factores",
+      definitionBox:
+        "**Propiedad asociativa:** el resultado **no depende** de cómo agrupes los factores: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$. Ejemplo: $(8 \\cdot 5) \\cdot 2 = 8 \\cdot (5 \\cdot 2) = 80$.",
+      module: "mul-div-naturales",
+      scene: "asociativa-huevos",
+      mulDiv: { scene: "asociativa-huevos", a: 8, b: 5, c: 2 },
+    },
+    {
       id: "distributiva-predict",
       type: "predict",
       title: "Dos formas de calcularlo",
+      definitionBox:
+        "**Propiedad distributiva:** multiplicar un número por una **suma** es lo mismo que sumar los productos: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$.",
       question:
         "Compras $8$ menús. Cada menú cuesta $5$ € el bocadillo y $2$ € la bebida. ¿Cuánto pagas en total?",
       mode: "choice",
@@ -62,7 +74,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       type: "narrate",
       title: "Dividir es repartir",
       definitionBox:
-        "**Dividir** reparte un total en partes iguales; es el camino de vuelta de **multiplicar**.",
+        "**Dividir** reparte un total en partes iguales; es el camino de vuelta de **multiplicar**. Ejemplo: $150$ bombones en $6$ cajas iguales → $25$ en cada caja.",
       module: "mul-div-naturales",
       scene: "reparto-igual",
       mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
@@ -75,7 +87,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
         "En la división **cifra a cifra**: escribe el cociente, multiplica, resta y **baja** la siguiente cifra del dividendo.",
       module: "mul-div-naturales",
       scene: "division-mano",
-      mulDiv: { scene: "division-mano", dividend: 156, divisor: 6 },
+      mulDiv: { scene: "division-mano", dividend: 150, divisor: 6 },
     },
     {
       id: "tipos-narrate",

@@ -43,7 +43,7 @@ describe("lecciones de referencia del tema 1", () => {
 
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
     expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
-      7, 7, 6, 5,
+      7, 7, 7, 5,
     ]);
 
     for (const lesson of THEME_ONE_LESSONS) {
