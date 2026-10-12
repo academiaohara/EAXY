@@ -15,6 +15,8 @@ type LessonTutorDockProps = {
   /** Bloques que el tutor va leyendo en orden (título, teoría, pista…). */
   messages: readonly string[];
   reaction?: TutorReaction;
+  /** Fondo opaco del globo (p. ej. con brillo verde a pantalla completa). */
+  solidSpeechBubble?: boolean;
   /** Abre el panel con el historial de mensajes. */
   onOpenPanel: () => void;
   /** Avisa de cada frase que el tutor dice, para guardarla en el historial. */
@@ -46,6 +48,7 @@ const tailTone: Record<TutorReaction, string> = {
 function TutorSpeechBubble({
   messages,
   reaction,
+  solidSpeechBubble,
   muted,
   anchorRight,
   onSpeak,
@@ -53,6 +56,7 @@ function TutorSpeechBubble({
 }: {
   messages: readonly string[];
   reaction: TutorReaction;
+  solidSpeechBubble: boolean;
   muted: boolean;
   anchorRight: boolean;
   onSpeak?: (index: number, line: string) => void;
@@ -96,7 +100,11 @@ function TutorSpeechBubble({
       key={spoken}
       className={cn(
         "lesson-tutor-speech pointer-events-auto relative min-w-0 max-w-[15rem] rounded-2xl border px-4 py-3 text-sm leading-snug text-ink shadow-lg sm:max-w-[22rem]",
-        bubbleTone[reaction],
+        solidSpeechBubble
+          ? reaction === "correct"
+            ? "border-emerald-500/50 bg-[#152922] font-semibold text-[color:var(--stage-ink,#e8edf5)]"
+            : "border-[color:var(--stage-border,#334155)] bg-[color:var(--stage-surface,#1a2332)] text-[color:var(--stage-ink,#e8edf5)]"
+          : bubbleTone[reaction],
       )}
       data-testid="lesson-tutor-bubble"
     >
@@ -108,7 +116,18 @@ function TutorSpeechBubble({
         viewBox="0 0 16 24"
         aria-hidden
       >
-        <path d="M16 2 L1.5 12 L16 22" className={tailTone[reaction]} strokeWidth={1} />
+        <path
+          d="M16 2 L1.5 12 L16 22"
+          className={cn(
+            "lesson-tutor-speech__tail",
+            solidSpeechBubble
+              ? reaction === "correct"
+                ? "fill-[#152922] stroke-emerald-500/50"
+                : "fill-[color:var(--stage-surface,#1a2332)] stroke-[color:var(--stage-border,#334155)]"
+              : tailTone[reaction],
+          )}
+          strokeWidth={1}
+        />
       </svg>
       <p className="font-medium">
         <MathRenderer text={line} />
@@ -125,6 +144,7 @@ export function LessonTutorDock({
   speechKey,
   messages,
   reaction = "idle",
+  solidSpeechBubble = false,
   onOpenPanel,
   onSpeak,
   panelOpen = false,
@@ -173,6 +193,7 @@ export function LessonTutorDock({
         key={speechKey}
         messages={messages}
         reaction={reaction}
+        solidSpeechBubble={solidSpeechBubble}
         muted={panelOpen}
         anchorRight={anchorRight}
         onSpeak={onSpeak}

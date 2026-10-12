@@ -645,6 +645,7 @@ function LessonContainerBody({
               speechKey={`${currentStep.id}:${feedback ?? "none"}`}
               messages={getTutorSpeechQueue(currentStep, feedback)}
               reaction={reaction}
+              solidSpeechBubble={stageCelebration || feedback === "correct"}
               onOpenPanel={openPanel}
               onSpeak={handleSpeak}
               panelOpen={panelOpen}
