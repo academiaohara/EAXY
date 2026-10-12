@@ -32,6 +32,7 @@ import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import {
   PredictCheckButton,
   predictChoiceClassName,
+  predictInlineChoiceClassName,
   predictFeedbackStatusClassName,
   predictGridChoiceClassName,
 } from "@/components/lesson/steps/predict-step-ui";
@@ -494,7 +495,7 @@ export function PredictStepView({
               )}
             </div>
           ) : null}
-          <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
+          <div className="mx-auto flex w-full max-w-xl flex-wrap justify-center gap-2">
             {choiceOptions.map((choice) => (
               <button
                 key={choice.id}
@@ -502,13 +503,13 @@ export function PredictStepView({
                 data-testid={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={predictChoiceClassName({
+                className={predictInlineChoiceClassName({
                   selected: choiceId === choice.id,
                   checked,
                 })}
                 aria-pressed={choiceId === choice.id}
               >
-                <LessonRichText text={choice.label} className="text-base font-medium" />
+                <LessonRichText text={choice.label} className="text-base font-semibold" />
               </button>
             ))}
           </div>

@@ -95,7 +95,7 @@ export function ExactaEnteraInteractive({
         <span className={cn("rounded-lg border-2 px-3 py-1 text-sm font-semibold", badge.className)}>{badge.text}</span>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+      <div className="mx-auto flex max-w-2xl flex-wrap justify-center gap-0.5 sm:gap-1">
         {Array.from({ length: BOXES }, (_, i) => (
           <div key={i} className="flex justify-center" style={{ color: COLOR_BOX }}>
             <Caja each={perBox} />
@@ -106,8 +106,8 @@ export function ExactaEnteraInteractive({
       <div className="flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-8">
         <div
           className={cn(
-            "flex min-w-[7rem] flex-col items-center rounded-xl border-2 px-3 py-2 transition",
-            remainder > 0 ? "border-amber-400/50 bg-amber-500/10" : "border-white/10 bg-slate-900/20",
+            "flex min-w-[7rem] flex-col items-center px-2 py-1 transition",
+            remainder > 0 && "rounded-lg bg-amber-500/10",
           )}
           aria-label={`Bandeja con ${remainder} bombones sueltos`}
         >

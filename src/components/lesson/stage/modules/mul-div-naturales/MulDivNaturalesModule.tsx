@@ -45,8 +45,6 @@ export type MulDivNaturalesModuleProps = MulDivConfig & {
 
 const COBALT = "#4353ff";
 const COBALT_TINT = "#eceeff";
-const VIOLET = "#7c3aed";
-const AMBER = "#d97706";
 
 /** Misma inclinación y apilado para todas las entradas del abanico. */
 const TICKET_TILT_DEG = -14;
@@ -175,11 +173,7 @@ function CajaBombones({
         alt=""
         width={dim.w}
         height={dim.h}
-        className={cn(
-          "object-contain transition",
-          dim.cls,
-          highlight && "ring-2 ring-cobalt/40 ring-offset-2",
-        )}
+        className={cn("object-contain transition", dim.cls, highlight && "brightness-110")}
         aria-hidden
       />
       <SlideBadge>{count}</SlideBadge>
@@ -188,13 +182,41 @@ function CajaBombones({
   );
 }
 
-function FichaIcon({ tone = "cobalt" }: { tone?: "cobalt" | "violet" | "amber" }) {
-  const fill = tone === "violet" ? VIOLET : tone === "amber" ? AMBER : COBALT;
+/** Hueco para ilustración del menú (bocadillo / bebida); sustituir por PNG en public/lesson/mul-div-naturales/. */
+function MenuItemSlot({
+  label,
+  euros,
+  imageSrc,
+}: {
+  label: string;
+  euros: number;
+  imageSrc?: string;
+}) {
   return (
-    <svg viewBox="0 0 48 48" className="h-12 w-12 min-h-[48px] min-w-[48px]" aria-hidden>
-      <circle cx="24" cy="24" r="20" fill={fill} />
-      <circle cx="24" cy="24" r="20" fill="none" stroke="#fff" strokeWidth="2" opacity="0.35" />
-    </svg>
+    <div className="flex w-[3.25rem] flex-col items-center gap-1">
+      <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg border border-dashed border-white/25 bg-black/20">
+        {imageSrc ? (
+          <Image src={imageSrc} alt="" width={44} height={44} className="h-full w-full object-contain" aria-hidden />
+        ) : (
+          <span className="px-1 text-center text-[9px] font-bold uppercase leading-tight tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
+            {label}
+          </span>
+        )}
+      </div>
+      <span className="font-mono text-[11px] font-semibold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+        {euros} €
+      </span>
+    </div>
+  );
+}
+
+function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) {
+  return (
+    <div className="flex flex-col items-stretch gap-1 rounded-xl border border-white/15 bg-black/15 px-1.5 py-2">
+      <MenuItemSlot label="Bocadillo" euros={bocadillo} />
+      <div className="h-px bg-white/10" aria-hidden />
+      <MenuItemSlot label="Bebida" euros={bebida} />
+    </div>
   );
 }
 
@@ -606,35 +628,23 @@ function DistributivaBloques({
 
   return (
     <div className="space-y-4" aria-label="Propiedad distributiva">
-      <div className="flex flex-wrap justify-center gap-2">
+      <p className={cn(STAGE_CAPTION, "text-center")}>
+        {a} menús · {b} € bocadillo + {c} € bebida
+      </p>
+      <div
+        className={cn(
+          "mx-auto flex max-w-full flex-wrap justify-center gap-1 transition-all duration-700 sm:gap-1.5",
+        )}
+      >
         {Array.from({ length: a }, (_, col) => (
-          <div key={col} className="flex flex-col items-center gap-1">
-            <div className="flex flex-col overflow-hidden rounded-xl border-2 border-cobalt/25">
-              <div
-                className={cn(
-                  "flex justify-center gap-0.5 bg-cobalt-tint px-1 py-1 transition-all duration-700",
-                  phase >= 1 ? "opacity-100" : "opacity-90",
-                )}
-              >
-                {Array.from({ length: b }, (_, i) => (
-                  <FichaIcon key={`b-${i}`} tone="cobalt" />
-                ))}
-              </div>
-              <div
-                className={cn(
-                  "grid transition-[grid-template-rows,opacity] duration-700 ease-out",
-                  phase >= 1 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-                )}
-              >
-                <div className="overflow-hidden">
-                  <div className="flex justify-center gap-0.5 bg-amber-100 px-1 py-1">
-                    {Array.from({ length: c }, (_, i) => (
-                      <FichaIcon key={`c-${i}`} tone="amber" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div
+            key={col}
+            className={cn(
+              "transition-all duration-700",
+              phase >= 1 && col > 0 && "opacity-95",
+            )}
+          >
+            <MenuCard bocadillo={b} bebida={c} />
           </div>
         ))}
       </div>
@@ -748,24 +758,26 @@ function RepartoIgual({
   return (
     <div className="space-y-3" aria-label={`Repartir ${dividend} en ${divisor} cajas iguales`}>
       <div className="min-h-[11rem] space-y-4">
-        <div
-          className={cn(
-            "flex flex-col items-center gap-3 transition-all duration-500",
-            phase > 0 && "scale-[0.92] opacity-75",
-          )}
-        >
-          <BombonesPile label={String(dividend)} />
-        </div>
-        <div className="grid w-full max-w-2xl grid-cols-6 gap-2 px-1">
-          {Array.from({ length: divisor }, (_, i) => (
-            <CajaBombones
-              key={i}
-              size="sm"
-              count={phase >= 1 ? quotient : "?"}
-              caption={`C${i + 1}`}
-              highlight={phase >= 1}
-            />
-          ))}
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-center gap-4 sm:flex-row sm:items-end sm:gap-3">
+          <div className="flex flex-wrap justify-center gap-0.5 sm:gap-1">
+            {Array.from({ length: divisor }, (_, i) => (
+              <CajaBombones
+                key={i}
+                size="sm"
+                count={phase >= 1 ? quotient : "?"}
+                caption={`C${i + 1}`}
+                highlight={phase >= 1}
+              />
+            ))}
+          </div>
+          <div
+            className={cn(
+              "flex shrink-0 flex-col items-center transition-all duration-500",
+              phase === 0 ? "scale-100" : "scale-[0.88] opacity-90",
+            )}
+          >
+            <BombonesPile label={String(dividend)} />
+          </div>
         </div>
         {phase >= 2 ? (
           <div className={cn(STAGE_FORMULA_LINE, "space-y-1.5 animate-in fade-in duration-500")}>
