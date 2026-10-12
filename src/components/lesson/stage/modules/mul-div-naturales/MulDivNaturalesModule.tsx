@@ -324,13 +324,21 @@ function MultiplicarRepetido({
   const total = a * b;
   const sumParts = Array.from({ length: ticketCount }, () => String(a)).join(" + ");
   const fullSum = Array.from({ length: b }, () => String(a)).join(" + ");
-  const growingSumText =
-    ticketCount > 1 && ticketCount < b ? `$${latexTealExpression(sumParts)}$` : null;
-  const fullSumText = ticketCount >= b ? `$${latexTealExpression(fullSum)}$` : null;
-  const productEquationText =
-    ticketCount >= b && mathPhase >= 1 ? latexColoredRepeatedProduct(fullSum, a, b) : null;
-  const totalEquationText =
-    ticketCount >= b && mathPhase >= 2 ? latexColoredRepeatedProduct(fullSum, a, b, total) : null;
+  const equationText = useMemo(() => {
+    if (ticketCount > 1 && ticketCount < b) {
+      return `$${latexTealExpression(sumParts)}$`;
+    }
+    if (ticketCount >= b && mathPhase === 0) {
+      return `$${latexTealExpression(fullSum)}$`;
+    }
+    if (ticketCount >= b && mathPhase === 1) {
+      return latexColoredRepeatedProduct(fullSum, a, b);
+    }
+    if (ticketCount >= b && mathPhase >= 2) {
+      return latexColoredRepeatedProduct(fullSum, a, b, total);
+    }
+    return null;
+  }, [a, b, fullSum, mathPhase, sumParts, ticketCount, total]);
 
   return (
     <div className="space-y-4" aria-label={`Multiplicar ${a} por ${b} como suma repetida`}>
@@ -351,26 +359,15 @@ function MultiplicarRepetido({
         />
       </div>
       <div className="mx-auto flex max-w-3xl flex-col gap-2" aria-live="polite">
-        {growingSumText ? (
-          <p className={cn(STAGE_MATH, "transition-opacity duration-500")}>
-            <MathRenderer text={growingSumText} />
-          </p>
-        ) : null}
-        {fullSumText ? (
-          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
-            <MathRenderer text={fullSumText} />
-          </p>
-        ) : null}
-        {productEquationText ? (
-          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
-            <MathRenderer text={productEquationText} />
-          </p>
-        ) : null}
-        {totalEquationText ? (
-          <p className={cn(STAGE_MATH, "animate-in fade-in duration-500")}>
-            <MathRenderer text={totalEquationText} />
-          </p>
-        ) : null}
+        <p
+          className={cn(
+            STAGE_MATH,
+            "min-h-[2.5rem] transition-opacity duration-500",
+            equationText ? "opacity-100" : "opacity-0",
+          )}
+        >
+          {equationText ? <MathRenderer key={equationText} text={equationText} /> : null}
+        </p>
       </div>
     </div>
   );
@@ -625,13 +622,17 @@ function DistributivaBloques({
               </div>
               <div
                 className={cn(
-                  "flex justify-center gap-0.5 bg-amber-100 px-1 py-1 transition-all duration-700",
-                  phase >= 1 ? "opacity-100" : "opacity-0 max-h-0",
+                  "grid transition-[grid-template-rows,opacity] duration-700 ease-out",
+                  phase >= 1 ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
                 )}
               >
-                {phase >= 1
-                  ? Array.from({ length: c }, (_, i) => <FichaIcon key={`c-${i}`} tone="amber" />)
-                  : null}
+                <div className="overflow-hidden">
+                  <div className="flex justify-center gap-0.5 bg-amber-100 px-1 py-1">
+                    {Array.from({ length: c }, (_, i) => (
+                      <FichaIcon key={`c-${i}`} tone="amber" />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -651,8 +652,10 @@ function DistributivaBloques({
 function RepartoIgual({
   dividend,
   divisor,
+  autoPlay,
   reduced,
   onReadyChange,
+  onAnimationComplete,
 }: {
   dividend: number;
   divisor: number;
@@ -665,10 +668,35 @@ function RepartoIgual({
   const stepCount = 3;
   const finalPhase = stepCount - 1;
   const [phase, setPhase] = useState(reduced ? finalPhase : 0);
+  const { push, clear } = useTimers();
 
   useEffect(() => {
+    if (!autoPlay) {
+      return;
+    }
+    if (reduced) {
+      setPhase(finalPhase);
+      onReadyChange?.(true);
+      onAnimationComplete?.();
+      return;
+    }
+    onReadyChange?.(false);
+    setPhase(0);
+    push(() => setPhase(1), 1200);
+    push(() => {
+      setPhase(2);
+      onReadyChange?.(true);
+      onAnimationComplete?.();
+    }, 2600);
+    return clear;
+  }, [autoPlay, clear, finalPhase, onAnimationComplete, onReadyChange, push, reduced]);
+
+  useEffect(() => {
+    if (autoPlay) {
+      return;
+    }
     onReadyChange?.(phase >= finalPhase);
-  }, [finalPhase, onReadyChange, phase]);
+  }, [autoPlay, finalPhase, onReadyChange, phase]);
 
   const handleRestart = useCallback(() => {
     setPhase(0);
@@ -754,13 +782,6 @@ function RepartoIgual({
               <span className="text-[#a78bfa]">{divisor}</span>
               <span className="text-[color:var(--stage-muted)]"> = </span>
               <span className="text-[#7dd3fc]">{quotient}</span>
-            </p>
-            <p>
-              <span>{dividend}</span>
-              <span className="text-[color:var(--stage-muted)]"> : </span>
-              <span className="text-[#7dd3fc]">{quotient}</span>
-              <span className="text-[color:var(--stage-muted)]"> = </span>
-              <span className="text-[#a78bfa]">{divisor}</span>
             </p>
           </div>
         ) : null}

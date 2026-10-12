@@ -492,7 +492,7 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
     term: "División entera",
     question: "¿Qué es una división entera?",
     aliases: ["division entera", "resto", "cociente y resto", "dividir"],
-    message: "En una **división entera** el **resto** es distinto de cero (y menor que el divisor). Se cumple $D = d \\cdot c + r$.",
+    message: "La **división entera** (euclidiana) da **cociente** y **resto** con $0 \\le r < d$. Si $r = 0$ es **exacta**; si $r \\ne 0$ es **con resto**: $D = d \\cdot c + r$.",
     example: {
       message: "$43 : 8$",
       math: ["43 = 8 \\cdot 5 + 3"],
