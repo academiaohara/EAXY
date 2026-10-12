@@ -5,6 +5,7 @@ import {
   useRegisterLessonFooterCenter,
   useRegisterLessonPresenterNavigation,
 } from "@/components/lesson/LessonStepControlContext";
+import { buildDivisionBoard } from "@/components/lesson/stage/modules/mul-div-naturales/division-board";
 import { DivisionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/DivisionManoChalkboard";
 import { MultiplicacionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/MultiplicacionManoChalkboard";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
@@ -121,7 +122,7 @@ export function DivisionManoScene({
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const subTotal = 5;
+  const subTotal = buildDivisionBoard(dividend, divisor)?.steps.length ?? 1;
   const { phase, setPhase, playing, setPlaying, stepCount } = useControllableStepPlayback({
     autoPlay: false,
     reduced,
@@ -130,7 +131,10 @@ export function DivisionManoScene({
     onAnimationComplete,
     intervalMs: 1300,
   });
-  const subStep = phase + 1;
+
+  useEffect(() => {
+    onReadyChange?.(phase >= stepCount - 1);
+  }, [onReadyChange, phase, stepCount]);
 
   const handleRestart = useCallback(() => {
     setPhase(0);
@@ -174,13 +178,7 @@ export function DivisionManoScene({
   useRegisterLessonFooterCenter(footerControls);
 
   return (
-    <DivisionManoChalkboard
-      dividend={dividend}
-      divisor={divisor}
-      subStep={subStep}
-      subTotal={subTotal}
-      showProgress={false}
-    />
+    <DivisionManoChalkboard dividend={dividend} divisor={divisor} step={phase} showProgress={false} />
   );
 }
 

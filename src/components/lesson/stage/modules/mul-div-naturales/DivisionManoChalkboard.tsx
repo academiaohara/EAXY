@@ -2,49 +2,73 @@
 
 import { useMemo } from "react";
 import {
-  CHALK_ACCENT,
   CHALK_INK,
   CHALK_MUTED,
+  CHALKBOARD_VIEWBOX,
   ChalkboardCaption,
   ChalkboardFrame,
-  DrawnArrow,
-  isVisibleAtSub,
   SubProgressDots,
   useChalkboardMotion,
 } from "@/components/lesson/stage/modules/mul-div-naturales/chalkboard-shared";
 import {
+  buildDivisionBoard,
   DIVISION_CYCLE,
-  divisionManoLesson,
-  type DivisionManoLesson,
-} from "@/components/lesson/stage/modules/mul-div-naturales/division-mano-chalkboard-data";
+  isVisible,
+  type BoardItem,
+  type DivisionBoard,
+} from "@/components/lesson/stage/modules/mul-div-naturales/division-board";
 import { cn } from "@/lib/utils";
+
+const CHALK_AMBER = "#fbbf24";
+const CHALK_NEW = "#6ee7b7";
+
+function useGridTransform(board: DivisionBoard) {
+  return useMemo(() => {
+    const { minX, maxX, minY, maxY } = board.bounds;
+    const gridW = maxX - minX;
+    const gridH = maxY - minY;
+    const padX = 48;
+    const padY = 32;
+    const cell = Math.min(
+      (CHALKBOARD_VIEWBOX.w - padX * 2) / Math.max(gridW, 1),
+      (CHALKBOARD_VIEWBOX.h - padY * 2) / Math.max(gridH, 1),
+    );
+    const offsetX = (CHALKBOARD_VIEWBOX.w - gridW * cell) / 2 - minX * cell;
+    const offsetY = (CHALKBOARD_VIEWBOX.h - gridH * cell) / 2 - minY * cell;
+
+    const gx = (col: number) => col * cell + offsetX;
+    const gy = (row: number) => row * cell + offsetY;
+
+    return { cell, gx, gy };
+  }, [board.bounds]);
+}
 
 export function DivisionManoChalkboard({
   dividend,
   divisor,
-  subStep,
-  subTotal = 5,
-  lesson,
+  step,
+  board: boardProp,
   onBoardClick,
   showProgress = true,
 }: {
   dividend: number;
   divisor: number;
-  subStep: number;
-  subTotal?: number;
-  lesson?: DivisionManoLesson | null;
+  /** Paso actual (0-based), alineado con `board.steps`. */
+  step: number;
+  board?: DivisionBoard | null;
   onBoardClick?: () => void;
   showProgress?: boolean;
 }) {
   const reduced = useChalkboardMotion();
-  const board = lesson ?? divisionManoLesson(dividend, divisor);
-  const activeCycle = board?.cycleBySub[subStep];
-  const liveText = board?.liveBySub[subStep] ?? "";
+  const board = boardProp ?? buildDivisionBoard(dividend, divisor);
+  const { gx, gy, cell } = useGridTransform(board ?? { items: [], steps: [], bounds: { minX: 0, maxX: 1, minY: 0, maxY: 1 } });
 
-  const arrowNotes = useMemo(
-    () => board?.notes.filter((n) => isVisibleAtSub(subStep, n.show) && n.arrow) ?? [],
-    [board, subStep],
-  );
+  const activeStep = board?.steps[step];
+  const activeCycle = activeStep?.phase ?? null;
+  const focusSet = useMemo(() => new Set(activeStep?.focus ?? []), [activeStep?.focus]);
+  const liveText = activeStep?.caption ?? "";
+
+  const isNewThisStep = (item: BoardItem) => item.from === step;
 
   if (!board) {
     return (
@@ -53,6 +77,8 @@ export function DivisionManoChalkboard({
       </p>
     );
   }
+
+  const fontSize = Math.min(56, Math.max(36, cell * 0.72));
 
   return (
     <div className="flex w-full flex-col gap-2" data-testid="division-mano-chalkboard">
@@ -80,60 +106,56 @@ export function DivisionManoChalkboard({
           })}
         </div>
 
-        <svg viewBox="0 0 800 520" className="mx-auto h-full max-w-[640px] w-full" aria-hidden preserveAspectRatio="xMidYMid meet">
-          {board.lines.map((line) => {
-            const visible = isVisibleAtSub(subStep, line.show);
-            return (
-              <line
-                key={line.id}
-                x1={line.x1}
-                y1={line.y1}
-                x2={line.x2}
-                y2={line.y2}
-                stroke={CHALK_INK}
-                strokeWidth={2.5}
-                strokeOpacity={visible ? 0.55 : 0}
-                style={{ transition: reduced ? undefined : "stroke-opacity 0.35s ease" }}
-              />
-            );
-          })}
+        <svg
+          viewBox={`0 0 ${CHALKBOARD_VIEWBOX.w} ${CHALKBOARD_VIEWBOX.h}`}
+          className="mx-auto h-full max-w-[640px] w-full"
+          aria-hidden
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {board.items.map((item) => {
+            if (item.kind === "line") {
+              const visible = isVisible(item, step);
+              return (
+                <line
+                  key={item.id}
+                  x1={gx(item.x1)}
+                  y1={gy(item.y1)}
+                  x2={gx(item.x2)}
+                  y2={gy(item.y2)}
+                  stroke={CHALK_INK}
+                  strokeWidth={2.5}
+                  strokeOpacity={visible ? 0.55 : 0}
+                  style={{ transition: reduced ? undefined : "stroke-opacity 0.35s ease" }}
+                />
+              );
+            }
 
-          {board.digits.map((digit) => {
-            const visible = isVisibleAtSub(subStep, digit.show);
-            const isCurrent = visible && digit.show.from === subStep;
-            const fill =
-              isCurrent && digit.accent ? CHALK_ACCENT : visible ? CHALK_INK : CHALK_MUTED;
+            const visible = isVisible(item, step);
+            const focused = visible && focusSet.has(item.id);
+            const isNew = visible && isNewThisStep(item);
+            const fill = isNew ? CHALK_NEW : focused ? CHALK_AMBER : visible ? CHALK_INK : CHALK_MUTED;
+
             return (
               <text
-                key={digit.id}
-                x={digit.x}
-                y={digit.y}
+                key={item.id}
+                x={gx(item.col)}
+                y={gy(item.row)}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fontSize={48}
+                fontSize={fontSize}
                 fontWeight={700}
                 fill={fill}
                 fillOpacity={visible ? 1 : 0}
                 style={{ transition: reduced ? undefined : "fill-opacity 0.35s ease, fill 0.35s ease" }}
               >
-                {digit.char}
+                {item.char}
               </text>
             );
           })}
-
-          {arrowNotes.map((note) => (
-            <DrawnArrow
-              key={note.id}
-              coords={note.arrow!}
-              visible
-              reduced={reduced}
-              delayMs={300}
-            />
-          ))}
         </svg>
       </ChalkboardFrame>
 
-      {showProgress ? <SubProgressDots sub={subStep} total={subTotal} /> : null}
+      {showProgress ? <SubProgressDots sub={step + 1} total={board.steps.length} /> : null}
       <ChalkboardCaption text={liveText} />
     </div>
   );
