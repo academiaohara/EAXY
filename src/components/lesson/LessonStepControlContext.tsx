@@ -61,6 +61,10 @@ function removeStackEntry<T>(stack: StackEntry<T>[], id: symbol) {
   }
 }
 
+function stackAnyTrue(stack: StackEntry<boolean>[]): boolean {
+  return stack.some((entry) => entry.value);
+}
+
 type LessonStepControlContextValue = {
   control: LessonStepControl | null;
   registerControl: (ownerId: symbol, control: LessonStepControl | null) => void;
@@ -71,6 +75,10 @@ type LessonStepControlContextValue = {
   presenterNav: LessonPresenterNavigation | null;
   registerPresenterNav: (ownerId: symbol, nav: LessonPresenterNavigation | null) => void;
   unregisterPresenterNav: (ownerId: symbol) => void;
+  /** Brillo verde a pantalla completa (teoría / escenario) sin pasar por Comprobar. */
+  stageCelebration: boolean;
+  registerStageCelebration: (ownerId: symbol, active: boolean) => void;
+  unregisterStageCelebration: (ownerId: symbol) => void;
 };
 
 const LessonStepControlContext = createContext<LessonStepControlContextValue | null>(null);
@@ -79,10 +87,12 @@ export function LessonStepControlProvider({ children }: { children: ReactNode })
   const controlStackRef = useRef<StackEntry<LessonStepControl>[]>([]);
   const footerStackRef = useRef<StackEntry<ReactNode>[]>([]);
   const presenterNavStackRef = useRef<StackEntry<LessonPresenterNavigation>[]>([]);
+  const stageCelebrationStackRef = useRef<StackEntry<boolean>[]>([]);
 
   const [control, setControl] = useState<LessonStepControl | null>(null);
   const [footerCenter, setFooterCenter] = useState<ReactNode | null>(null);
   const [presenterNav, setPresenterNav] = useState<LessonPresenterNavigation | null>(null);
+  const [stageCelebration, setStageCelebration] = useState(false);
 
   const syncControl = useCallback(() => {
     setControl((prev) => {
@@ -156,6 +166,29 @@ export function LessonStepControlProvider({ children }: { children: ReactNode })
     [syncPresenterNav],
   );
 
+  const syncStageCelebration = useCallback(() => {
+    setStageCelebration((prev) => {
+      const next = stackAnyTrue(stageCelebrationStackRef.current);
+      return prev === next ? prev : next;
+    });
+  }, []);
+
+  const registerStageCelebration = useCallback(
+    (ownerId: symbol, active: boolean) => {
+      upsertStackEntry(stageCelebrationStackRef.current, ownerId, active);
+      syncStageCelebration();
+    },
+    [syncStageCelebration],
+  );
+
+  const unregisterStageCelebration = useCallback(
+    (ownerId: symbol) => {
+      removeStackEntry(stageCelebrationStackRef.current, ownerId);
+      syncStageCelebration();
+    },
+    [syncStageCelebration],
+  );
+
   const value = useMemo(
     () => ({
       control,
@@ -167,6 +200,9 @@ export function LessonStepControlProvider({ children }: { children: ReactNode })
       presenterNav,
       registerPresenterNav,
       unregisterPresenterNav,
+      stageCelebration,
+      registerStageCelebration,
+      unregisterStageCelebration,
     }),
     [
       control,
@@ -175,9 +211,12 @@ export function LessonStepControlProvider({ children }: { children: ReactNode })
       registerControl,
       registerFooterCenter,
       registerPresenterNav,
+      registerStageCelebration,
+      stageCelebration,
       unregisterControl,
       unregisterFooterCenter,
       unregisterPresenterNav,
+      unregisterStageCelebration,
     ],
   );
 
@@ -260,4 +299,17 @@ export function useRegisterLessonPresenterNavigation(nav: LessonPresenterNavigat
   useLayoutEffect(() => {
     return () => unregisterPresenterNav(ownerId);
   }, [ownerId, unregisterPresenterNav]);
+}
+
+export function useRegisterLessonStageCelebration(active: boolean) {
+  const { registerStageCelebration, unregisterStageCelebration } = useLessonStepControl();
+  const ownerId = useRegistrationOwnerId();
+
+  useLayoutEffect(() => {
+    registerStageCelebration(ownerId, active);
+  }, [active, ownerId, registerStageCelebration]);
+
+  useLayoutEffect(() => {
+    return () => unregisterStageCelebration(ownerId);
+  }, [ownerId, unregisterStageCelebration]);
 }

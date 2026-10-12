@@ -749,6 +749,25 @@
   color: var(--stage-ink);
 }
 
+/* Con brillo verde a pantalla completa, el globo del tutor debe tapar el degradado. */
+.lesson-stage-theme-board[data-stage-celebration="correct"] .lesson-tutor-speech,
+.lesson-stage-theme-board[data-feedback="correct"] .lesson-tutor-speech {
+  background: var(--stage-surface, #1a2332);
+  border-color: color-mix(in srgb, var(--stage-accent-muted, #83c167) 45%, var(--stage-border));
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.5);
+}
+
+.lesson-stage-theme-board[data-stage-celebration="correct"] .lesson-tutor-speech__tail,
+.lesson-stage-theme-board[data-feedback="correct"] .lesson-tutor-speech__tail {
+  fill: var(--stage-surface, #1a2332);
+  stroke: color-mix(in srgb, var(--stage-accent-muted, #83c167) 45%, var(--stage-border));
+}
+
+.lesson-stage-theme-board[data-feedback="correct"] .lesson-tutor-speech--correct {
+  background: #152922;
+  border-color: color-mix(in srgb, var(--stage-accent-muted, #83c167) 60%, var(--stage-border));
+}
+
 .lesson-stage-theme-board .lesson-tutor-speech--incorrect {
   border-color: color-mix(in srgb, var(--amber) 45%, var(--stage-border));
   background: color-mix(in srgb, var(--amber) 14%, var(--stage-surface));

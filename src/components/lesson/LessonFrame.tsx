@@ -10,6 +10,8 @@ import type { FeedbackStatus } from "@/lib/lesson/types";
 
 type LessonFrameProps = LessonPresenterChromeProps & {
   feedback?: FeedbackStatus | null;
+  /** Degradado verde a pantalla completa al completar un escenario (sin pie de Comprobar). */
+  stageCelebration?: boolean;
   children: React.ReactNode;
   overlay?: React.ReactNode;
   tutorPanelOpen?: boolean;
@@ -18,6 +20,7 @@ type LessonFrameProps = LessonPresenterChromeProps & {
 
 export function LessonFrame({
   feedback = null,
+  stageCelebration = false,
   children,
   overlay,
   tutorPanelOpen = false,
@@ -33,7 +36,7 @@ export function LessonFrame({
     presenterNav,
   });
 
-  const isCorrect = feedback === "correct";
+  const showCorrectGlow = feedback === "correct" || stageCelebration;
   const isIncorrect = feedback === "incorrect";
 
   return (
@@ -44,9 +47,13 @@ export function LessonFrame({
       )}
       data-testid="lesson-frame"
       data-feedback={feedback ?? "none"}
+      data-stage-celebration={stageCelebration ? "correct" : "none"}
     >
       <div
-        className={cn("lesson-feedback-backdrop lesson-feedback-backdrop-correct", isCorrect && "is-visible")}
+        className={cn(
+          "lesson-feedback-backdrop lesson-feedback-backdrop-correct",
+          showCorrectGlow && "is-visible",
+        )}
         aria-hidden
       />
       <div
@@ -63,7 +70,7 @@ export function LessonFrame({
         className={cn(
           "min-h-0 flex-1 transition-[border-color,box-shadow] duration-300",
           lessonStageSurfaceClassName,
-          isCorrect && "lesson-panel-glow-correct",
+          showCorrectGlow && "lesson-panel-glow-correct",
           isIncorrect && "lesson-panel-glow-incorrect",
         )}
         data-testid="lesson-step-panel"

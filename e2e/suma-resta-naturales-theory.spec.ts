@@ -13,6 +13,7 @@ test("suma y resta — teoría alineada con el temario", async ({ page }) => {
   }
   await expect(page.locator('[aria-live="polite"]').filter({ hasText: "828" })).toBeVisible();
   await expect(page.getByText(/Equipo completo/i)).toBeVisible();
+  await expect(page.getByTestId("lesson-frame")).toHaveAttribute("data-stage-celebration", "correct");
   await page.getByRole("button", { name: "Continuar" }).click();
 
   await expect(page.getByText(/Faltan 135/i)).toBeVisible();
