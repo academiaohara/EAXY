@@ -76,7 +76,7 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
         tokens: ["9", "-", "1", "+", "3"],
         target: 5,
       },
-      hint: "¿Qué operación conviene agrupar para restar antes de sumar?",
+      hint: "¿Qué operación conviene agrupar para sumar antes de restar?",
       hintHiddenUntilRequested: true,
       explanation:
         "Prueba $9 - (1 + 3)$: primero $1 + 3 = 4$ y luego $9 - 4 = 5$.",
