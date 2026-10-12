@@ -77,7 +77,6 @@ export function TiendaCiclistaModule({
 }: TiendaCiclistaModuleProps) {
   const reduced = useReducedMotion();
   const [tapIds, setTapIds] = useState<string[]>([]);
-  const [flyingId, setFlyingId] = useState<string | null>(null);
   const timers = useRef<number[]>([]);
   const cestaRef = useRef<HTMLDivElement>(null);
 
@@ -207,14 +206,6 @@ export function TiendaCiclistaModule({
     if (!item || tapIds.includes(id)) {
       return;
     }
-    if (!reduced) {
-      setFlyingId(id);
-      timers.current.push(
-        window.setTimeout(() => {
-          setFlyingId(null);
-        }, 650),
-      );
-    }
     setTapIds((prev) => [...prev, id]);
   };
 
@@ -262,7 +253,6 @@ export function TiendaCiclistaModule({
           const interactiveTap = mode === "sumar-cesta" || mode === "restar-cartera";
           const displayOnly = differenceMode;
           const awaitingTap = mode === "sumar-cesta" && !inTap && !equipmentComplete;
-          const isFlying = flyingId === item.id;
           const isHighlighted =
             (interactiveExplore && isSelected) || (interactiveTap && inTap);
 
@@ -286,7 +276,6 @@ export function TiendaCiclistaModule({
                   "z-[5] border-[color:var(--stage-accent,#58c4dd)] bg-black/50 shadow-[inset_0_0_0_1px_rgba(88,196,221,0.35),0_0_0_1px_rgba(88,196,221,0.2)]",
                 displayOnly && "border-[color:var(--stage-border,#334155)] bg-black/25 hover:translate-y-0 hover:shadow-none",
                 awaitingTap && !reduced && "animate-[lesson-card-attention_2s_ease-in-out_infinite]",
-                isFlying && "animate-[lesson-fly-to-cesta_0.65s_ease-in_forwards] motion-reduce:animate-none",
               )}
               aria-pressed={interactiveExplore || interactiveTap ? inTap || isSelected : undefined}
               aria-label={`${item.label}, ${item.price} euros`}

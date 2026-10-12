@@ -1016,12 +1016,13 @@ export function ExploreStepView({
         {checked ? (
           <div
             className={cn(
-              "mt-4 rounded-xl border px-4 py-3 text-center text-sm",
+              "mx-auto mt-5 max-w-xl rounded-full border px-5 py-2.5 text-center text-sm font-medium shadow-sm backdrop-blur-sm",
               isCorrect
-                ? "border-emerald-200 bg-emerald-50 text-emerald-900"
-                : "border-amber-200 bg-amber-50 text-amber-950",
+                ? "border-[color:var(--stage-accent-muted,#83c167)]/45 bg-[color:var(--stage-accent-muted,#83c167)]/12 text-[color:var(--stage-ink,#e8edf5)]"
+                : "border-amber-400/45 bg-amber-500/15 text-amber-100",
             )}
             role="status"
+            data-testid="lesson-explore-feedback"
           >
             {isCorrect ? (
               <p>
