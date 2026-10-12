@@ -249,7 +249,7 @@ export function TiendaCiclistaModule({
     >
       <div
         className={cn(
-          "flex flex-wrap justify-center gap-4",
+          "relative z-10 flex flex-wrap justify-center gap-4 px-1 pb-4 pt-3",
           differenceMode && "opacity-95",
         )}
       >
@@ -261,6 +261,8 @@ export function TiendaCiclistaModule({
           const displayOnly = differenceMode;
           const awaitingTap = mode === "sumar-cesta" && !inTap && !equipmentComplete;
           const isFlying = flyingId === item.id;
+          const isHighlighted =
+            (interactiveExplore && isSelected) || (interactiveTap && inTap);
 
           return (
             <button
@@ -275,12 +277,12 @@ export function TiendaCiclistaModule({
                 }
               }}
               className={cn(
-                "relative flex min-w-[8.5rem] max-w-[9.5rem] flex-col items-center gap-2 rounded-2xl border-2 px-3 py-4 text-center transition",
+                "relative z-0 flex min-w-[8.5rem] max-w-[9.5rem] flex-col items-center gap-2 rounded-2xl border-2 px-3 py-4 text-center transition duration-200",
                 (interactiveExplore || interactiveTap) &&
-                  "cursor-pointer hover:border-cobalt/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt",
-                interactiveExplore && isSelected && "border-cobalt bg-cobalt-tint/50",
-                interactiveTap && inTap && "border-cobalt/70 bg-cobalt-tint/30 opacity-80",
-                displayOnly && "border-[color:var(--stage-border,#334155)] bg-black/25",
+                  "cursor-pointer border-[color:var(--stage-border,#334155)] bg-black/30 hover:z-20 hover:-translate-y-1 hover:border-[color:var(--stage-accent,#58c4dd)]/55 hover:bg-black/45 hover:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.65)] focus-visible:z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--stage-accent,#58c4dd)]",
+                isHighlighted &&
+                  "z-[5] border-[color:var(--stage-accent,#58c4dd)] bg-black/50 shadow-[inset_0_0_0_1px_rgba(88,196,221,0.35),0_0_0_1px_rgba(88,196,221,0.2)]",
+                displayOnly && "border-[color:var(--stage-border,#334155)] bg-black/25 hover:translate-y-0 hover:shadow-none",
                 awaitingTap && !reduced && "animate-[lesson-card-attention_2s_ease-in-out_infinite]",
                 isFlying && "animate-[lesson-fly-to-cesta_0.65s_ease-in_forwards] motion-reduce:animate-none",
               )}
@@ -288,8 +290,15 @@ export function TiendaCiclistaModule({
               aria-label={`${item.label}, ${item.price} euros`}
             >
               <ItemIcon id={item.id} large />
-              <span className="text-sm font-semibold text-ink">{item.label}</span>
-              <span className="rounded-lg border border-cobalt/35 bg-cobalt-tint/40 px-3 py-1 font-mono text-xl font-bold tabular-nums text-[color:var(--stage-accent,#58c4dd)]">
+              <span className="text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)]">{item.label}</span>
+              <span
+                className={cn(
+                  "rounded-lg border px-3 py-1 font-mono text-xl font-bold tabular-nums",
+                  isHighlighted
+                    ? "border-white/25 bg-black/55 text-[color:var(--stage-ink,#e8edf5)]"
+                    : "border-[color:var(--stage-accent,#58c4dd)]/40 bg-black/40 text-[color:var(--stage-accent,#58c4dd)]",
+                )}
+              >
                 {item.price} €
               </span>
             </button>
@@ -298,10 +307,10 @@ export function TiendaCiclistaModule({
       </div>
 
       {mode === "sumar-cesta" ? (
-        <div className="flex flex-col items-center gap-4">
+        <div className="relative flex flex-col items-center gap-6">
           <div
             ref={cestaRef}
-            className="flex min-h-[4.5rem] w-full max-w-lg flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-cobalt/35 bg-black/30 px-4 py-3"
+            className="relative z-0 flex min-h-[4.5rem] w-full max-w-lg flex-wrap items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-cobalt/35 bg-black/30 px-4 py-3"
             aria-label="Cesta"
           >
             {tapIds.length === 0 ? (
@@ -317,24 +326,40 @@ export function TiendaCiclistaModule({
             )}
           </div>
 
-          <div className="w-full max-w-2xl rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
-              El equipo ciclista cuesta en total
-            </p>
-            {growingExpression ? (
-              <p className="mt-3 font-mono text-2xl font-bold leading-snug text-ink sm:text-3xl" aria-live="polite">
-                <MathRenderer text={growingExpression} />
+          <div className="relative isolate w-full max-w-2xl">
+            <div
+              className={cn(
+                "lesson-feedback-backdrop lesson-feedback-backdrop-correct rounded-2xl",
+                equipmentComplete && "is-visible",
+              )}
+              aria-hidden
+            />
+            <div
+              className={cn(
+                "relative rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-6 py-5 text-center transition-[border-color,box-shadow] duration-300",
+                equipmentComplete && "border-emerald-500/45 lesson-panel-glow-correct",
+              )}
+              data-testid="tienda-ciclista-total-panel"
+              data-complete={equipmentComplete ? "true" : "false"}
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
+                El equipo ciclista cuesta en total
               </p>
-            ) : (
-              <p className="mt-3 text-lg font-medium text-ink-muted">
-                Pulsa cada artículo para ir sumando precios
-              </p>
-            )}
-            {equipmentComplete ? (
-              <p className="mt-3 text-base font-semibold text-[color:var(--stage-accent-muted,#83c167)]">
-                ¡Equipo completo!
-              </p>
-            ) : null}
+              {growingExpression ? (
+                <p className="mt-3 font-mono text-2xl font-bold leading-snug text-ink sm:text-3xl" aria-live="polite">
+                  <MathRenderer text={growingExpression} />
+                </p>
+              ) : (
+                <p className="mt-3 text-lg font-medium text-ink-muted">
+                  Pulsa cada artículo para ir sumando precios
+                </p>
+              )}
+              {equipmentComplete ? (
+                <p className="mt-3 text-base font-semibold text-emerald-300">
+                  ¡Equipo completo!
+                </p>
+              ) : null}
+            </div>
           </div>
         </div>
       ) : null}
