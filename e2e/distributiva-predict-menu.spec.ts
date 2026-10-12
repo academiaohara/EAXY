@@ -18,6 +18,12 @@ test("distributiva-predict — enunciado de menús y total 56 €", async ({ pag
     timeout: 25_000,
   });
   await page.getByRole("button", { name: "Continuar" }).click();
+  await expect(page.getByText("Cómo agrupar los factores").first()).toBeVisible();
+  await page.locator('button[aria-pressed="false"]').filter({ hasText: "5" }).first().click();
+  await expect(page.getByRole("button", { name: "Continuar" })).toBeEnabled({
+    timeout: 25_000,
+  });
+  await page.getByRole("button", { name: "Continuar" }).click();
 
   await expect(page.getByTestId("lesson-predict-step")).toBeVisible();
   await expect(page.getByText("Dos formas de calcularlo").first()).toBeVisible();

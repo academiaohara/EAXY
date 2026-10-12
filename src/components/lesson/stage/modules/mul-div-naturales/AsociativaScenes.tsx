@@ -20,7 +20,7 @@ function EggDot() {
 
 function EggBox() {
   return (
-    <div className="flex h-7 w-8 flex-col items-center justify-center gap-0.5 rounded-sm border border-[color:var(--stage-border,#334155)] bg-[color-mix(in_srgb,#4353ff_10%,#1a2332)]">
+    <div className="flex h-8 w-9 flex-col items-center justify-center gap-0.5 rounded-md border border-sky-400/35 bg-sky-500/15 shadow-none">
       <EggDot />
       <EggDot />
     </div>
@@ -64,7 +64,7 @@ export function AsociativaHuevosDiscover({
   const blockGrid =
     group === "left" ? (
       <div
-        className="grid gap-1 rounded-xl border-2 border-sky-400/70 bg-sky-500/10 p-2 shadow-[0_12px_32px_rgba(0,0,0,0.35)] transition-all duration-700"
+        className="grid gap-1 rounded-xl border-2 border-sky-400/60 bg-sky-500/10 p-2 transition-all duration-700"
         style={{
           gridTemplateColumns: `repeat(${b}, minmax(0, 2rem))`,
           gridTemplateRows: `repeat(${a}, minmax(0, 1.85rem))`,
@@ -96,16 +96,8 @@ export function AsociativaHuevosDiscover({
         {a} estantes × {b} cajas × {c} huevos
       </p>
 
-      <div
-        className="mx-auto flex max-w-full justify-center"
-        style={{ perspective: reduced ? undefined : "900px" }}
-      >
-        <div
-          className={cn(
-            "transition-transform duration-700 ease-out",
-            !reduced && "origin-center [transform-style:preserve-3d] rotate-x-[52deg] rotate-z-[-38deg]",
-          )}
-        >
+      <div className="mx-auto flex max-w-full justify-center">
+        <div className={cn("transition-all duration-700 ease-out", !reduced && "scale-100")}>
           {blockGrid}
         </div>
       </div>

@@ -80,7 +80,7 @@ export function DivisionManoChalkboard({
           })}
         </div>
 
-        <svg viewBox="0 0 800 520" className="h-full w-full" aria-hidden preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 800 520" className="mx-auto h-full max-w-[640px] w-full" aria-hidden preserveAspectRatio="xMidYMid meet">
           {board.lines.map((line) => {
             const visible = isVisibleAtSub(subStep, line.show);
             return (

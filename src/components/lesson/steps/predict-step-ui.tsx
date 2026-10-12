@@ -13,6 +13,18 @@ export function predictChoiceClassName(options: {
   );
 }
 
+/** Respuestas compactas en fila (p. ej. paso distributiva con escena). */
+export function predictInlineChoiceClassName(options: {
+  selected: boolean;
+  checked: boolean;
+}) {
+  return cn(
+    "lesson-stage-choice min-h-[44px] min-w-[5.5rem] flex-1 rounded-lg border-2 px-3 py-2 text-center font-mono text-base font-semibold transition",
+    options.selected && "is-selected",
+    options.checked && !options.selected && "opacity-55",
+  );
+}
+
 export function predictGridChoiceClassName(options: {
   selected: boolean;
   checked: boolean;
