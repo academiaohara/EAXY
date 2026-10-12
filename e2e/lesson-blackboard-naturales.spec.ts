@@ -18,8 +18,28 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   await expect(page.getByRole("group", { name: /Tres sistemas históricos/i })).toBeVisible();
   await expect(page.getByText("Hombre primitivo")).toBeVisible();
 
-  await page.getByTestId("lesson-continue-button").click();
+  const forward = page.getByTestId("lesson-presenter-forward");
+  await expect(forward).toBeEnabled();
+  await forward.click();
   await expect(page.getByTestId("naturales-numeracion-sistemas-historia-juego")).toBeVisible();
+
+  const slide1Dot = page.getByTestId("lesson-slide-thumb-1").locator("span.rounded-full").first();
+  const slide2Dot = page.getByTestId("lesson-slide-thumb-2").locator("span.rounded-full").first();
+  await expect(slide1Dot).toHaveClass(/bg-emerald-400/);
+  await expect(slide2Dot).toHaveClass(/bg-cobalt/);
+
+  const contarUno = page.getByRole("button", { name: "Contar uno" });
+  for (let i = 0; i < 9; i += 1) {
+    await contarUno.click();
+  }
+  await expect(page.getByText("¡Exacto! Nueve marcas.")).toBeVisible();
+  await expect(page.getByRole("tab", { name: /El hombre primitivo/i })).toHaveClass(/bg-emerald-500/);
+  await contarUno.click();
+  await expect(page.getByText("Te has pasado: quita marcas hasta llegar a 9.")).toBeVisible();
+  await page.screenshot({
+    path: "/opt/cursor/artifacts/sistemas-historia-tally-over.png",
+    fullPage: false,
+  });
 
   const inactiveTab = page.getByRole("tab", { name: /Los egipcios/i });
   await expect(inactiveTab).toBeVisible();
@@ -32,9 +52,11 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
     expect(tabStyles.backgroundColor).not.toMatch(/255,\s*255,\s*255/);
   }
 
-  for (let i = 0; i < 2; i += 1) {
-    await page.getByTestId("lesson-continue-button").click();
-  }
+  await page.getByTestId("lesson-skip-button").click();
+  await expect(page.getByTestId("naturales-numeracion-decimal-intro")).toBeVisible();
+  await expect(forward).toBeEnabled();
+  await forward.click();
+  await expect(page.getByTestId("naturales-numeracion-contar-diez")).toBeVisible({ timeout: 15_000 });
 
   await expect(page.getByTestId("naturales-numeracion-contar-diez")).toBeVisible();
   await expect(page.getByTestId("lesson-step-phase")).toHaveCount(0);

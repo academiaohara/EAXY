@@ -39,6 +39,7 @@ export function NaturalesNumeracionTool({
     () => ({
       label: "Continuar",
       onClick: () => onContinue({ completed: ready }),
+      disabled: !ready,
       testId: "lesson-continue-button",
     }),
     [onContinue, ready],
