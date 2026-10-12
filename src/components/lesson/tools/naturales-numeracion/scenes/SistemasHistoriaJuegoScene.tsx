@@ -20,8 +20,11 @@ import {
   SISTEMAS_HISTORIA_TARGETS,
   STAGE_PANEL,
   STAGE_SYMBOL_BUTTON,
+  sistemasHistoriaChallengeStatus,
+  type SistemasHistoriaChallengeStatus,
 } from "@/components/lesson/tools/naturales-numeracion/scenes/sistemas-historia-shared";
 import { cn } from "@/lib/utils";
+import { CheckIcon } from "lucide-react";
 
 const EGYPT_SYMBOLS: {
   id: EgyptianSymbolId;
@@ -48,6 +51,37 @@ type SistemasHistoriaJuegoSceneProps = {
   onReadyChange: (ready: boolean) => void;
 };
 
+function challengeValueClass(status: SistemasHistoriaChallengeStatus) {
+  return cn(
+    status === "success" && "text-emerald-300",
+    status === "over" && "text-rose-300",
+    status === "idle" && "text-[color:var(--stage-ink,#e8edf5)]",
+  );
+}
+
+function ChallengeFeedback({
+  status,
+  successMessage,
+  overMessage,
+}: {
+  status: SistemasHistoriaChallengeStatus;
+  successMessage: string;
+  overMessage: string;
+}) {
+  if (status === "idle") {
+    return null;
+  }
+  if (status === "success") {
+    return (
+      <p className="flex items-center gap-2 text-sm font-medium text-emerald-300">
+        <CheckIcon className="size-4 shrink-0" aria-hidden />
+        {successMessage}
+      </p>
+    );
+  }
+  return <p className="text-sm font-medium text-rose-300">{overMessage}</p>;
+}
+
 export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJuegoSceneProps) {
   const [state, setState] = usePersistedLessonToolState(
     SISTEMAS_HISTORIA_STATE_KEY,
@@ -58,10 +92,14 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
   const egyptValue = useMemo(() => egyptianSymbolsToInt(egyptSymbols), [egyptSymbols]);
   const romanValue = useMemo(() => romanToInt(romanStr), [romanStr]);
 
+  const tallyStatus = sistemasHistoriaChallengeStatus(tallyCount, SISTEMAS_HISTORIA_TARGETS.tally);
+  const egyptStatus = sistemasHistoriaChallengeStatus(egyptValue, SISTEMAS_HISTORIA_TARGETS.egypt);
+  const romanStatus = sistemasHistoriaChallengeStatus(romanValue, SISTEMAS_HISTORIA_TARGETS.roman);
+
   const done = {
-    tally: tallyCount >= SISTEMAS_HISTORIA_TARGETS.tally,
-    egypt: egyptValue === SISTEMAS_HISTORIA_TARGETS.egypt,
-    roman: romanValue === SISTEMAS_HISTORIA_TARGETS.roman,
+    tally: tallyStatus === "success",
+    egypt: egyptStatus === "success",
+    roman: romanStatus === "success",
   };
 
   const allDone = done.tally && done.egypt && done.roman;
@@ -77,23 +115,29 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2" role="tablist" aria-label="Sistemas de numeración">
-        {SISTEMAS_HISTORIA_TABS.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            role="tab"
-            aria-selected={tab === item.id}
-            onClick={() => setTab(item.id)}
-            className={cn(
-              "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
-              tab === item.id
-                ? "border-cobalt bg-cobalt text-white shadow-sm"
-                : "border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45",
-            )}
-          >
-            {item.label}
-          </button>
-        ))}
+        {SISTEMAS_HISTORIA_TABS.map((item) => {
+          const tabDone = done[item.id];
+          const tabActive = tab === item.id;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              aria-selected={tabActive}
+              onClick={() => setTab(item.id)}
+              className={cn(
+                "rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors sm:px-4",
+                tabDone
+                  ? "border-emerald-400/70 bg-emerald-500/25 text-emerald-100"
+                  : tabActive
+                    ? "border-cobalt bg-cobalt text-white shadow-sm"
+                    : "border-[color:var(--stage-border,#475569)] bg-black/25 text-[color:var(--stage-ink,#e8edf5)] hover:border-cobalt/45",
+              )}
+            >
+              {item.label}
+            </button>
+          );
+        })}
       </div>
 
       <p className="text-sm font-medium text-[color:var(--stage-accent,#58c4dd)]">
@@ -107,9 +151,23 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
             <strong className="text-[color:var(--stage-ink,#e8edf5)]">{SISTEMAS_HISTORIA_TARGETS.tally}</strong>{" "}
             marcas.
           </p>
-          <TallyMarksView count={tallyCount} />
+          <div
+            className={cn(
+              "rounded-xl border px-3 py-2 transition-colors",
+              tallyStatus === "success" && "border-emerald-400/50 bg-emerald-500/10",
+              tallyStatus === "over" && "border-rose-400/45 bg-rose-500/10",
+              tallyStatus === "idle" && "border-transparent",
+            )}
+          >
+            <TallyMarksView count={tallyCount} />
+          </div>
+          <ChallengeFeedback
+            status={tallyStatus}
+            successMessage="¡Exacto! Nueve marcas."
+            overMessage="Te has pasado: quita marcas hasta llegar a 9."
+          />
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="text-2xl font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+            <span className={cn("text-2xl font-bold tabular-nums", challengeValueClass(tallyStatus))}>
               {tallyCount}
             </span>
             <div className="flex gap-2">
@@ -182,7 +240,7 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
               <p className="text-xs uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
                 Valor decimal
               </p>
-              <p className="text-3xl font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+              <p className={cn("text-3xl font-bold tabular-nums", challengeValueClass(egyptStatus))}>
                 {egyptValue}
               </p>
             </div>
@@ -196,6 +254,11 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
               Borrar
             </Button>
           </div>
+          <ChallengeFeedback
+            status={egyptStatus}
+            successMessage="¡Correcto! Has formado 47."
+            overMessage="Te has pasado de 47; quita símbolos o empieza de nuevo."
+          />
         </div>
       ) : null}
 
@@ -229,7 +292,7 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
               <p className="text-xs uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
                 Valor decimal
               </p>
-              <p className="text-3xl font-bold tabular-nums text-[color:var(--stage-accent,#58c4dd)]">
+              <p className={cn("text-3xl font-bold tabular-nums", challengeValueClass(romanStatus))}>
                 {romanValue}
               </p>
             </div>
@@ -243,6 +306,11 @@ export function SistemasHistoriaJuegoScene({ onReadyChange }: SistemasHistoriaJu
               Borrar
             </Button>
           </div>
+          <ChallengeFeedback
+            status={romanStatus}
+            successMessage="¡Correcto! XIV vale 14."
+            overMessage="El valor supera 14; borra letras hasta acertar."
+          />
         </div>
       ) : null}
 

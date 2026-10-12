@@ -24,3 +24,19 @@ export const STAGE_PANEL =
 
 export const STAGE_SYMBOL_BUTTON =
   "flex flex-col items-center rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/20 py-3 text-center transition hover:border-[color:var(--stage-accent)]/45 hover:bg-[color:var(--stage-accent)]/10";
+
+export type SistemasHistoriaChallengeStatus = "idle" | "success" | "over";
+
+/** Comparación con el objetivo: exacto, por encima o aún en progreso. */
+export function sistemasHistoriaChallengeStatus(
+  value: number,
+  target: number,
+): SistemasHistoriaChallengeStatus {
+  if (value === target) {
+    return "success";
+  }
+  if (value > target) {
+    return "over";
+  }
+  return "idle";
+}
