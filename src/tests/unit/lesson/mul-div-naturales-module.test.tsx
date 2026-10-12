@@ -39,9 +39,9 @@ describe("MulDivNaturalesModule", () => {
       />,
     );
     expect(onReady).not.toHaveBeenCalledWith(true);
-    fireEvent.click(screen.getByRole("button", { name: /8 · \(5 · 2\)/i }));
+    fireEvent.click(screen.getByRole("tab", { name: /8 · \(5 · 2\)/i }));
     expect(onReady).toHaveBeenCalledWith(true);
-    expect(screen.getByText(/¡Mismo resultado!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Mismo resultado/i)).toBeInTheDocument();
   });
 
   it("reparto manual avisa cuando las cajas están llenas", async () => {
