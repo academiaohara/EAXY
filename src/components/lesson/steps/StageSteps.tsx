@@ -31,6 +31,7 @@ import type {
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import {
   PredictCheckButton,
+  predictAnaLeoChoiceClassName,
   predictChoiceClassName,
   predictInlineChoiceClassName,
   predictFeedbackStatusClassName,
@@ -616,15 +617,20 @@ export function PredictStepView({
                   onClick={() =>
                     anaLeo ? submitAnaLeoChoice(choice.id) : setChoiceId(choice.id)
                   }
-                  className={cn(
-                    predictChoiceClassName({
-                      selected: choiceId === choice.id,
-                      checked: checked && choiceId !== choice.id,
-                    }),
-                    anaLeo ? "min-h-11 min-w-[7rem] flex-1 text-center font-bold" : "",
-                    checked && choice.id === step.correctChoiceId && "is-selected border-emerald-500/80",
-                    checked && choiceId === choice.id && choice.id !== step.correctChoiceId && "opacity-60",
-                  )}
+                  className={
+                    anaLeo
+                      ? predictAnaLeoChoiceClassName({
+                          choiceId: choice.id,
+                          selectedChoiceId: choiceId,
+                          correctChoiceId: step.correctChoiceId ?? "",
+                          checked,
+                          answerCorrect: isCorrect,
+                        })
+                      : predictChoiceClassName({
+                          selected: choiceId === choice.id,
+                          checked,
+                        })
+                  }
                   aria-pressed={choiceId === choice.id}
                 >
                   <MathRenderer text={choice.label} />

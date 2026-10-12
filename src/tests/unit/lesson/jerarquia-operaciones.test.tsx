@@ -22,6 +22,8 @@ describe("jerarquía de operaciones", () => {
       screen.getByLabelText("Niveles del orden de operaciones"),
     ).toBeInTheDocument();
     expect(screen.getByText("Paréntesis")).toBeInTheDocument();
+    expect(screen.getByText("Multiplicación y división")).toBeInTheDocument();
+    expect(screen.getByText("Suma y resta")).toBeInTheDocument();
   });
 
   it("renderiza la exploración Ana / Leo", () => {

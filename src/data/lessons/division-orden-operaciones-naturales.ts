@@ -17,12 +17,6 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
       choices: [
         { id: "a", label: "Ana" },
         { id: "l", label: "Leo" },
-        {
-          id: "b",
-          label: "Las dos",
-          incorrectFeedback:
-            "No pueden las dos: solo hay un total correcto en la caja.",
-        },
       ],
       correctChoiceId: "l",
       module: "jerarquia-operaciones",

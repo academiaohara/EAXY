@@ -14,7 +14,7 @@ const LEVELS = [
   },
   {
     n: 2,
-    title: "× y ÷",
+    title: "Multiplicación y división",
     hint: "de izquierda a derecha",
     example: "6 ÷ 3 × 2",
     tone: "border-l-amber-400 bg-amber-500/10",
@@ -22,7 +22,7 @@ const LEVELS = [
   },
   {
     n: 3,
-    title: "+ y −",
+    title: "Suma y resta",
     hint: "de izquierda a derecha",
     example: "7 − 2 + 1",
     tone: "border-l-cyan-400 bg-cyan-500/10",
@@ -36,7 +36,11 @@ export function NivelesReglas({ onReadyChange }: { onReadyChange?: (ready: boole
   }, [onReadyChange]);
 
   return (
-    <div className="space-y-3" data-testid="jerarquia-niveles" aria-label="Niveles del orden de operaciones">
+    <div
+      className="mx-auto w-full max-w-lg space-y-3"
+      data-testid="jerarquia-niveles"
+      aria-label="Niveles del orden de operaciones"
+    >
       <p className="text-center text-sm font-medium text-ink">Siempre el mismo orden. Tres niveles:</p>
       {LEVELS.map((level, index) => (
         <div
