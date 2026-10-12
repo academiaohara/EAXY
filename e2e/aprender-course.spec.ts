@@ -125,8 +125,8 @@ test("la lección se ilumina en verde al acertar y en ámbar al fallar", async (
   await page.getByRole("button", { name: "Ninguna" }).click();
   await page.getByTestId("lesson-check-button").click();
   await expect(frame).toHaveAttribute("data-feedback", "incorrect");
-  await expect(page.getByTestId("lesson-feedback-help")).toHaveText("Ayúdame");
+  await expect(page.getByRole("button", { name: "Ayúdame" })).toBeVisible();
 
-  await page.getByTestId("lesson-feedback-help").click();
+  await page.getByRole("button", { name: "Ayúdame" }).click();
   await expect(page.getByTestId("tutor-help-options")).toBeVisible();
 });
