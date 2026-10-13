@@ -466,14 +466,21 @@ export function PredictStepView({
         module="mul-div-naturales"
         stepId={step.id}
         scene={step.scene ?? "distributiva-bloques"}
-        mulDiv={{ ...step.mulDiv, scene: "distributiva-bloques" }}
-        autoPlay
+        mulDiv={{
+          ...step.mulDiv,
+          scene: "distributiva-bloques",
+          revealDistributivaFormula: checked,
+        }}
+        autoPlay={false}
       />
     );
 
     return (
       <div data-testid="lesson-predict-step">
-        <StageShell theme={theme} definitionBox={step.definitionBox} title={step.title} stage={distributivaStage}>
+        <StageViewport
+          theme={theme}
+          header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}
+        >
           <h3 className="lesson-presentation-body mb-4 text-center font-normal text-ink">
             <MathRenderer text={step.question} emphasis="mark-alternate" />
           </h3>
@@ -496,6 +503,12 @@ export function PredictStepView({
               )}
             </div>
           ) : null}
+          <div
+            className="mx-auto w-full max-w-full shrink-0"
+            data-testid="lesson-stage-surface"
+          >
+            {distributivaStage}
+          </div>
           <div className="mx-auto flex w-full max-w-xl flex-wrap justify-center gap-2">
             {choiceOptions.map((choice) => (
               <button
@@ -527,7 +540,8 @@ export function PredictStepView({
               </p>
             </div>
           ) : null}
-        </StageShell>
+          <h3 className="sr-only">{step.title}</h3>
+        </StageViewport>
       </div>
     );
   }
