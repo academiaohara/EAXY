@@ -62,6 +62,8 @@ export type MulDivConfig = {
   feedbackCorrect?: boolean;
   /** `inverse`: muestra cajas fijas y comprueba el total. */
   practiceVariant?: "divide" | "inverse";
+  /** En escena distributiva: mostrar desarrollo numérico (p. ej. tras acertar un predict). */
+  revealDistributivaFormula?: boolean;
 };
 
 export type TiendaCiclistaItem = {

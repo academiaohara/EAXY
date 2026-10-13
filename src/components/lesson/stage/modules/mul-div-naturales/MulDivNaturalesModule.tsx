@@ -585,6 +585,7 @@ function DistributivaBloques({
   b,
   c,
   autoPlay,
+  revealFormula = true,
   reduced,
   onReadyChange,
   onAnimationComplete,
@@ -593,18 +594,25 @@ function DistributivaBloques({
   b: number;
   c: number;
   autoPlay?: boolean;
+  revealFormula?: boolean;
   reduced: boolean;
   onReadyChange?: (ready: boolean) => void;
   onAnimationComplete?: () => void;
 }) {
-  const [phase, setPhase] = useState(reduced ? 2 : 0);
+  const [phase, setPhase] = useState(0);
   const { push, clear } = useTimers();
   const sum = b + c;
   const left = a * b;
   const right = a * c;
   const total = a * sum;
+  const showFormula = revealFormula && phase >= 2;
 
   useEffect(() => {
+    if (!revealFormula) {
+      setPhase(0);
+      onReadyChange?.(true);
+      return;
+    }
     if (!autoPlay) {
       setPhase(2);
       onReadyChange?.(true);
@@ -625,7 +633,7 @@ function DistributivaBloques({
       onAnimationComplete?.();
     }, 2000);
     return clear;
-  }, [autoPlay, clear, onAnimationComplete, onReadyChange, push, reduced]);
+  }, [autoPlay, clear, onAnimationComplete, onReadyChange, push, reduced, revealFormula]);
 
   return (
     <div className="space-y-4" aria-label="Propiedad distributiva">
@@ -649,8 +657,11 @@ function DistributivaBloques({
           </div>
         ))}
       </div>
-      {phase >= 2 ? (
-        <p className="min-h-[2.5rem] text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]">
+      {showFormula ? (
+        <p
+          className="min-h-[2.5rem] text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]"
+          data-testid="distributiva-formula"
+        >
           <MathRenderer text={`$${a} \\cdot (${b} + ${c}) = ${a} \\cdot ${b} + ${a} \\cdot ${c} = ${left} + ${right} = ${total}$`} />
         </p>
       ) : (
@@ -985,6 +996,7 @@ export function MulDivNaturalesModule({
   remainder,
   feedbackCorrect,
   practiceVariant,
+  revealDistributivaFormula,
 }: MulDivNaturalesModuleProps) {
   const reduced = useReducedMotion();
 
@@ -1070,6 +1082,7 @@ export function MulDivNaturalesModule({
             b={b}
             c={c}
             autoPlay={autoPlay}
+            revealFormula={revealDistributivaFormula ?? true}
             reduced={reduced}
             onReadyChange={onReadyChange}
             onAnimationComplete={onAnimationComplete}

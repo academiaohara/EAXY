@@ -78,6 +78,35 @@ describe("PredictStepView", () => {
     );
   });
 
+  it("no muestra la fórmula numérica de la distributiva antes de comprobar", () => {
+    const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
+      (s) => s.id === "distributiva-predict",
+    ) as PredictStep;
+    render(
+      wrap(<PredictStepView step={menuStep} theme="paper" onCheck={vi.fn()} />),
+      { container: document.body },
+    );
+
+    expect(screen.queryByTestId("distributiva-formula")).not.toBeInTheDocument();
+    expect(screen.getByText(/Cuánto pagas en total/i)).toBeInTheDocument();
+  });
+
+  it("muestra la fórmula tras comprobar la distributiva", () => {
+    const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
+      (s) => s.id === "distributiva-predict",
+    ) as PredictStep;
+    render(
+      wrap(<PredictStepView step={menuStep} theme="paper" onCheck={vi.fn()} />),
+      { container: document.body },
+    );
+
+    const predictPanel = screen.getByTestId("lesson-predict-step");
+    fireEvent.click(screen.getByTestId("predict-choice-56"));
+    fireEvent.click(within(predictPanel).getByTestId("lesson-check-button"));
+
+    expect(screen.getByTestId("distributiva-formula")).toBeInTheDocument();
+  });
+
   it("muestra feedback específico al fallar el menú de la distributiva", () => {
     const menuStep = multiplicacionDivisionNaturalesLesson.steps.find(
       (s) => s.id === "distributiva-predict",
