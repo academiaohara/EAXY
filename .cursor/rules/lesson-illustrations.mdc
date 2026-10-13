@@ -1,0 +1,16 @@
+---
+description: Estilo y ubicación de PNG de lecciones interactivas
+globs:
+  - Assets/**
+  - public/lesson/**
+  - src/components/lesson/stage/modules/**
+---
+
+# Ilustraciones de lecciones
+
+Al añadir o pedir imágenes para escenarios stage:
+
+- **Estilo:** dibujo 1.º ESO (libro de texto), no foto. Referencia: `public/lesson/mul-div-naturales/ticket.png`.
+- **Formato:** PNG fondo transparente; sin marcas; sin cifras del ejercicio en el dibujo (totales en UI).
+- **Rutas:** entrega en `Assets/` → copiar a `public/lesson/<carpeta>/` → cablear en `ASSETS` del módulo.
+- **Prompts, tamaños y tabla mul-div:** `docs/lesson-illustrations.md` (leer antes de generar o integrar PNG).

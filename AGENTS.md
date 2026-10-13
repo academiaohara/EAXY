@@ -28,3 +28,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - `npx supabase start` necesita Docker y no forma parte de este entorno. Con la salida del CLI, crea `.env.local` para usar Auth y aulas reales.
 - Comprobaciones: `npm run lint`, `npm run test:run`, `npm run test:e2e`, `npm run build`.
 
+# EAXY — ilustraciones de lecciones
+
+- PNG de escenarios: estilo **libro 1.º ESO** (dibujo, no foto), fondo transparente, sin números del ejercicio en la imagen.
+- Flujo: `Assets/` → `public/lesson/<carpeta>/`; detalle, prompts y tamaños en **`docs/lesson-illustrations.md`** (regla Cursor: `.cursor/rules/lesson-illustrations.mdc`).
+
