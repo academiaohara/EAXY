@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const ASSETS = {
   caja: "/lesson/mul-div-naturales/cajabombones.png",
+  huevo: "/lesson/mul-div-naturales/huevo.png",
 } as const;
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
@@ -21,8 +22,20 @@ function StageChip({ children, className }: { children: React.ReactNode; classNa
 function EggPair({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-0.5", className)} aria-hidden>
-      <span className="h-3 w-2.5 rounded-full bg-gradient-to-b from-amber-50 to-amber-400 shadow-sm ring-1 ring-amber-800/20" />
-      <span className="h-3 w-2.5 rounded-full bg-gradient-to-b from-amber-50 to-amber-400 shadow-sm ring-1 ring-amber-800/20" />
+      <Image
+        src={ASSETS.huevo}
+        alt=""
+        width={20}
+        height={16}
+        className="h-4 w-5 object-contain"
+      />
+      <Image
+        src={ASSETS.huevo}
+        alt=""
+        width={20}
+        height={16}
+        className="h-4 w-5 object-contain"
+      />
     </span>
   );
 }

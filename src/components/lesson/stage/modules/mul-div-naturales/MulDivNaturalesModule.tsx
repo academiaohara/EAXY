@@ -28,6 +28,8 @@ const ASSETS = {
   ticket: "/lesson/mul-div-naturales/ticket.png",
   bombones: "/lesson/mul-div-naturales/bombones.png",
   cajabombones: "/lesson/mul-div-naturales/cajabombones.png",
+  bocadillo: "/lesson/mul-div-naturales/bocadillo.png",
+  botella: "/lesson/mul-div-naturales/botella.png",
 } as const;
 
 export type MulDivNaturalesModuleProps = MulDivConfig & {
@@ -182,7 +184,6 @@ function CajaBombones({
   );
 }
 
-/** Hueco para ilustración del menú (bocadillo / bebida); sustituir por PNG en public/lesson/mul-div-naturales/. */
 function MenuItemSlot({
   label,
   euros,
@@ -213,9 +214,9 @@ function MenuItemSlot({
 function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) {
   return (
     <div className="flex flex-col items-stretch gap-1 rounded-xl border border-white/15 bg-black/15 px-1.5 py-2">
-      <MenuItemSlot label="Bocadillo" euros={bocadillo} />
+      <MenuItemSlot label="Bocadillo" euros={bocadillo} imageSrc={ASSETS.bocadillo} />
       <div className="h-px bg-white/10" aria-hidden />
-      <MenuItemSlot label="Bebida" euros={bebida} />
+      <MenuItemSlot label="Bebida" euros={bebida} imageSrc={ASSETS.botella} />
     </div>
   );
 }
