@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { NaturalesNumeracionTool } from "@/components/lesson/tools/naturales-numeracion/NaturalesNumeracionTool";
+import { PotenciasRaicesTool } from "@/components/lesson/tools/potencias-raices/PotenciasRaicesTool";
 import { SystemGraphTool } from "@/components/lesson/tools/SystemGraphTool";
 import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
 import type {
@@ -81,6 +82,17 @@ export function InteractiveToolStepView({
   if (step.tool === "naturales-numeracion") {
     return (
       <NaturalesNumeracionTool
+        step={step}
+        onContinue={onContinue}
+        compact={compact}
+        theme={stageTheme}
+      />
+    );
+  }
+
+  if (step.tool === "potencias-raices") {
+    return (
+      <PotenciasRaicesTool
         step={step}
         onContinue={onContinue}
         compact={compact}

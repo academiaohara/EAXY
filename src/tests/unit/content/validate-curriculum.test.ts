@@ -58,16 +58,14 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("tiene las cuatro lecciones de la unidad 2 en 1.º ESO", () => {
+  it("tiene las dos lecciones de la unidad 2 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
     const unit2 = firstYear?.modules.find((m) => m.title.includes("Potencias"));
-    expect(unit2?.lessons).toHaveLength(4);
+    expect(unit2?.lessons).toHaveLength(2);
     expect(unit2?.lessons.map((l) => l.interactiveSlug)).toEqual([
       "potencias-base-exponente",
-      "potencias-base-10",
-      "numeros-grandes-abreviados",
       "raiz-cuadrada-naturales",
     ]);
   });
@@ -89,12 +87,12 @@ describe("validateCurriculum", () => {
     expect(firstYear?.modules[0]?.topicExercises ?? []).toHaveLength(0);
   });
 
-  it("tiene las cuatro lecciones de la unidad 2 en 1.º ESO, sin ejercicios externos", () => {
+  it("tiene las dos lecciones de la unidad 2 en 1.º ESO, sin ejercicios externos", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
     expect(firstYear?.modules[1]?.title).toBe("Potencias y raíces");
-    expect(firstYear?.modules[1]?.lessons).toHaveLength(4);
+    expect(firstYear?.modules[1]?.lessons).toHaveLength(2);
     expect(firstYear?.modules[1]?.topicExercises ?? []).toHaveLength(0);
   });
 
