@@ -54,17 +54,25 @@ function tangent(s: number, length: number, depth: number): [number, number] {
   return [b[0] - a[0], b[1] - a[1]];
 }
 
+/** Misma llave que la horizontal, girada: borde en y=0 → borde en x=depth (menús); punta abajo → punta en x=0 (etiqueta). */
+function mapToVerticalCoords(x: number, y: number, depth: number): [number, number] {
+  return [depth - y, x];
+}
+
+function mapToVerticalTangent(tx: number, ty: number): [number, number] {
+  return [-ty, tx];
+}
+
 /**
- * Llave caligráfica en coords (0,0)–(length, depth): punta abajo en el centro.
- * Para `vertical`, el mismo path se rota −90° al renderizar (misma pieza girada).
- * Path cerrado rellenable (grosor variable vía doble contorno).
+ * Llave caligráfica rellena (grosor variable).
+ * - horizontal: borde superior y=0 (menús), punta abajo hacia la etiqueta.
+ * - vertical: borde derecho x=depth (menús), punta izquierda hacia la etiqueta (misma pieza, 90°).
  */
 export function buildBracePath(
   length: number,
   depth: number,
   orientation: "horizontal" | "vertical" = "horizontal",
 ): string {
-  void orientation;
   const L = Math.max(length, 24);
   const D = clampDepth(depth);
   const steps = 80;
@@ -73,8 +81,12 @@ export function buildBracePath(
 
   for (let i = 0; i <= steps; i++) {
     const s = i / steps;
-    const [x, y] = centerPoint(s, L, D);
-    const [tx, ty] = tangent(s, L, D);
+    let [x, y] = centerPoint(s, L, D);
+    let [tx, ty] = tangent(s, L, D);
+    if (orientation === "vertical") {
+      [x, y] = mapToVerticalCoords(x, y, D);
+      [tx, ty] = mapToVerticalTangent(tx, ty);
+    }
     const mag = Math.hypot(tx, ty) || 1;
     const nx = -ty / mag;
     const ny = tx / mag;
@@ -94,9 +106,16 @@ export function buildBracePath(
   return `${d} Z`;
 }
 
-export function braceViewportSize(length: number, depth: number): { width: number; height: number } {
+export function braceViewportSize(
+  length: number,
+  depth: number,
+  orientation: "horizontal" | "vertical" = "horizontal",
+): { width: number; height: number } {
   const L = Math.max(length, 24);
   const D = clampDepth(depth);
+  if (orientation === "vertical") {
+    return { width: D + 3, height: L };
+  }
   return { width: L, height: D + 3 };
 }
 

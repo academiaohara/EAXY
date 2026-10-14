@@ -8,7 +8,8 @@ describe("buildBracePath", () => {
       expect(d.startsWith("M ")).toBe(true);
       expect(d.endsWith(" Z")).toBe(true);
       const vertical = buildBracePath(length, 16, "vertical");
-      expect(vertical).toBe(d);
+      expect(vertical.startsWith("M ")).toBe(true);
+      expect(vertical).not.toBe(d);
     }
   });
 });

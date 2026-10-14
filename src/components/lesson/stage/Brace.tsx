@@ -44,7 +44,7 @@ export function Brace({ orientation, length, color, label, tone = "amber", class
   const span = Math.max(Math.round(length), 24);
   const depth = BRACE_DEPTH_PX;
   const path = buildBracePath(span, depth, orientation);
-  const { width: vbW, height: vbH } = braceViewportSize(span, depth);
+  const { width: vbW, height: vbH } = braceViewportSize(span, depth, orientation);
 
   useEffect(() => {
     if (reduced) {
@@ -99,17 +99,9 @@ export function Brace({ orientation, length, color, label, tone = "amber", class
           <BraceLabel tone={tone}>{label}</BraceLabel>
         </div>
       ) : null}
-      <div className="overflow-visible" style={{ ...clipStyle, width: vbH, height: span }}>
-        <svg
-          width={vbH}
-          height={span}
-          viewBox={`0 0 ${vbH} ${span}`}
-          style={svgStyle}
-          aria-hidden
-        >
-          <g transform={`rotate(-90) translate(${-span}, 0)`}>
-            <path d={path} fill={color} />
-          </g>
+      <div className="overflow-visible" style={{ ...clipStyle, width: vbW, height: vbH }}>
+        <svg width={vbW} height={vbH} viewBox={`0 0 ${vbW} ${vbH}`} style={svgStyle} aria-hidden>
+          <path d={path} fill={color} />
         </svg>
       </div>
     </div>
