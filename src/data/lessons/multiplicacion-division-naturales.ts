@@ -33,7 +33,7 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       type: "reveal",
       title: "Cómo agrupar los factores",
       definitionBox:
-        "**Propiedad asociativa:** el resultado **no depende** de cómo agrupes los factores: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$. Ejemplo: $(8 \\cdot 5) \\cdot 2 = 8 \\cdot (5 \\cdot 2) = 80$.",
+        "**Propiedad asociativa:** el resultado **no depende** de cómo agrupes los factores: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$. Con $8$ estantes, $5$ cajas y $2$ huevos por caja: $(8 \\cdot 5) \\cdot 2$ cuenta primero $40$ cajas y luego $80$ huevos; $8 \\cdot (5 \\cdot 2)$ cuenta $10$ huevos por fila y luego $80$ en total.",
       module: "mul-div-naturales",
       scene: "asociativa-huevos",
       mulDiv: { scene: "asociativa-huevos", a: 8, b: 5, c: 2 },
