@@ -7,9 +7,13 @@ import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
-  caja: "/lesson/mul-div-naturales/cajabombones.png",
   huevo: "/lesson/mul-div-naturales/huevo.png",
 } as const;
+
+const BOX_FRAME =
+  "rounded-md border-2 border-amber-400 bg-amber-500/30 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.4)]";
+const SHELF_FRAME =
+  "rounded-lg border-2 border-sky-400 bg-sky-500/20 shadow-[0_0_0_1px_rgba(56,189,248,0.45)]";
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
 const STAGE_MATH =
@@ -19,48 +23,64 @@ function StageChip({ children, className }: { children: React.ReactNode; classNa
   return <span className={cn("lesson-stage-chip", className)}>{children}</span>;
 }
 
-function EggPair({ className }: { className?: string }) {
+function EggRow({ count, compact }: { count: number; compact?: boolean }) {
   return (
-    <span className={cn("inline-flex items-center gap-0.5", className)} aria-hidden>
-      <Image
-        src={ASSETS.huevo}
-        alt=""
-        width={20}
-        height={16}
-        className="h-4 w-5 object-contain"
-      />
-      <Image
-        src={ASSETS.huevo}
-        alt=""
-        width={20}
-        height={16}
-        className="h-4 w-5 object-contain"
-      />
+    <span className={cn("inline-flex flex-wrap items-center justify-center gap-0.5", compact && "gap-px")} aria-hidden>
+      {Array.from({ length: count }, (_, i) => (
+        <Image
+          key={i}
+          src={ASSETS.huevo}
+          alt=""
+          width={20}
+          height={16}
+          className={cn("object-contain", compact ? "h-3 w-3.5" : "h-4 w-5")}
+        />
+      ))}
     </span>
   );
 }
 
-function CajaStack({ count, compact }: { count: number; compact?: boolean }) {
-  const shown = Math.min(count, 4);
-  const offset = compact ? 10 : 14;
-  const width = shown > 0 ? (shown - 1) * offset + (compact ? 56 : 72) : 72;
+function CajaRect({ eggsPerBox, compact, className }: { eggsPerBox: number; compact?: boolean; className?: string }) {
   return (
     <div
-      className="relative mx-auto flex items-end justify-center"
-      style={{ width: `${width}px`, height: compact ? "3.25rem" : "4.25rem" }}
+      className={cn(BOX_FRAME, compact ? "px-1.5 py-1" : "px-2 py-1.5", className)}
+      aria-hidden
     >
-      {Array.from({ length: shown }, (_, i) => (
-        <Image
-          key={i}
-          src={ASSETS.caja}
-          alt=""
-          width={compact ? 56 : 72}
-          height={compact ? 48 : 62}
-          className={cn("absolute bottom-0 object-contain drop-shadow-md", compact ? "h-12 w-14" : "h-14 w-[4.5rem]")}
-          style={{ left: i * offset, zIndex: i }}
-          aria-hidden
-        />
-      ))}
+      <EggRow count={eggsPerBox} compact={compact} />
+    </div>
+  );
+}
+
+function EstanteRect({
+  boxCount,
+  eggsPerBox,
+  compact,
+  label,
+  className,
+}: {
+  boxCount: number;
+  eggsPerBox: number;
+  compact?: boolean;
+  label?: string;
+  className?: string;
+}) {
+  const shown = Math.min(boxCount, compact ? 3 : 4);
+  const hidden = boxCount - shown;
+  return (
+    <div className={cn(SHELF_FRAME, compact ? "px-2 py-2" : "px-3 py-2.5", className)}>
+      {label ? (
+        <p className="mb-1.5 text-center text-[9px] font-bold uppercase tracking-wide text-[#7dd3fc]">{label}</p>
+      ) : null}
+      <div className={cn("flex flex-wrap items-center justify-center", compact ? "gap-1" : "gap-1.5")}>
+        {Array.from({ length: shown }, (_, i) => (
+          <CajaRect key={i} eggsPerBox={eggsPerBox} compact={compact} />
+        ))}
+        {hidden > 0 ? (
+          <span className="text-[10px] font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]">
+            +{hidden}
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 }
@@ -69,11 +89,11 @@ function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const boxes = a * b;
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="w-full rounded-xl border border-dashed border-[#4353ff]/45 bg-[#4353ff]/[0.07] px-5 py-5">
+      <div className="w-full rounded-xl border border-dashed border-[#4353ff]/50 bg-black/30 px-5 py-5">
         <p className={cn(STAGE_CAPTION, "mb-4 text-center uppercase tracking-wider text-[#7dd3fc]")}>
           Agrupa estantes y cajas
         </p>
-        <CajaStack count={b} />
+        <EstanteRect boxCount={b} eggsPerBox={c} label="Estante" />
         <p className="mt-3 text-center font-mono text-sm font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
           {a} filas × {b} cajas
         </p>
@@ -86,7 +106,7 @@ function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
           ×
         </span>
         <div className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/25 px-4 py-3">
-          <EggPair />
+          <CajaRect eggsPerBox={c} />
           <StageChip>{c} huevos por caja</StageChip>
         </div>
       </div>
@@ -96,15 +116,12 @@ function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
 
 function ShelfCard({ b, c, perShelf, label }: { b: number; c: number; perShelf: number; label: string }) {
   return (
-    <div className="flex w-[7.5rem] flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/25 px-3 py-3">
-      <span className="text-[10px] font-bold uppercase tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
-        {label}
-      </span>
-      <CajaStack count={Math.min(b, 3)} compact />
-      <div className="flex items-center gap-2 font-mono text-xs font-bold tabular-nums text-[#e9d5ff]">
+    <div className="flex w-[8.5rem] flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/25 px-2 py-3">
+      <EstanteRect boxCount={b} eggsPerBox={c} compact label={label} className="w-full" />
+      <div className="flex items-center gap-1.5 font-mono text-xs font-bold tabular-nums text-[#e9d5ff]">
         <span>{b}</span>
-        <span className="text-[color:var(--stage-muted,#94a3b8)]">·</span>
-        <EggPair />
+        <span className="text-[color:var(--stage-muted,#94a3b8)]">cajas ×</span>
+        <span>{c}</span>
         <span className="text-[color:var(--stage-muted,#94a3b8)]">=</span>
         <StageChip className="!px-2 !py-0.5 text-[11px]">{perShelf}</StageChip>
       </div>
