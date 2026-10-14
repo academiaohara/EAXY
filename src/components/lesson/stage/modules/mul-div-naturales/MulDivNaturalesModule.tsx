@@ -256,6 +256,32 @@ function MenuHorizontalBrace({ className }: { className?: string }) {
   );
 }
 
+function MenuGroupingPill({
+  tone,
+  children,
+  className,
+}: {
+  tone: "amber" | "teal";
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const toneClass =
+    tone === "amber"
+      ? "bg-[color:var(--amber-bg)] text-[color:var(--amber)]"
+      : "bg-[color:var(--teal-bg)] text-[color:var(--teal)]";
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center justify-center rounded-full px-2.5 py-0.5 text-[11px] font-bold tabular-nums tracking-tight sm:text-xs",
+        toneClass,
+        className,
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
 function useTimers() {
   const timers = useRef<number[]>([]);
   const clear = useCallback(() => {
@@ -675,36 +701,32 @@ function DistributivaBloques({
       <p className={cn(STAGE_CAPTION, "text-center")}>
         {a} menús · ({b} € bocadillo + {c} € bebida)
       </p>
-      <div
-        className="mx-auto inline-grid max-w-full grid-cols-[auto_minmax(0,1fr)] items-stretch gap-x-1 sm:gap-x-1.5"
-        data-testid="distributiva-menu-grouping"
-        aria-label={`${a} veces la suma de ${b} euros y ${c} euros por menú, es decir ${a} por ${b} más ${c}`}
-      >
-        <div className="flex items-stretch gap-1 text-[#fcd34d]">
-          <MenuVerticalBrace className="h-[7.75rem] w-3 shrink-0 self-center sm:h-[8rem] sm:w-3.5" />
-          <span className="self-center text-xs font-bold tabular-nums sm:text-sm">{sum} €</span>
-        </div>
-        <div className="min-w-0 space-y-1.5">
-          <div
-            className={cn(
-              "flex max-w-full flex-wrap justify-center gap-1 transition-all duration-700 sm:gap-1.5",
-            )}
-          >
+      <div className="flex w-full justify-center">
+        <div
+          className="inline-grid max-w-full grid-cols-[auto_auto] grid-rows-[auto_auto] items-stretch gap-x-1.5 gap-y-1 sm:gap-x-2"
+          data-testid="distributiva-menu-grouping"
+          aria-label={`${a} veces la suma de ${b} euros y ${c} euros por menú, es decir ${a} por ${b} más ${c}`}
+        >
+          <div className="flex items-stretch justify-end gap-1 text-[color:var(--amber)]">
+            <MenuGroupingPill tone="amber" className="self-center">
+              {sum} €
+            </MenuGroupingPill>
+            <MenuVerticalBrace className="h-full min-h-[7.75rem] w-3 shrink-0 sm:min-h-[8rem] sm:w-3.5" />
+          </div>
+          <div className="flex max-w-full flex-wrap items-start justify-center gap-1 transition-all duration-700 sm:gap-1.5">
             {Array.from({ length: a }, (_, col) => (
               <div
                 key={col}
-                className={cn(
-                  "transition-all duration-700",
-                  phase >= 1 && col > 0 && "opacity-95",
-                )}
+                className={cn("transition-all duration-700", phase >= 1 && col > 0 && "opacity-95")}
               >
                 <MenuCard bocadillo={b} bebida={c} />
               </div>
             ))}
           </div>
-          <div className="flex flex-col items-center gap-0.5 px-1 text-[#fb923c]">
-            <MenuHorizontalBrace className="h-2.5 w-full min-w-[12rem] max-w-full sm:h-3" />
-            <span className="text-[11px] font-semibold tracking-wide sm:text-xs">{a} menús</span>
+          <div aria-hidden />
+          <div className="flex min-w-0 flex-col items-center gap-0.5 text-[color:var(--teal)]">
+            <MenuHorizontalBrace className="h-2.5 w-full sm:h-3" />
+            <MenuGroupingPill tone="teal">{a} menús</MenuGroupingPill>
           </div>
         </div>
       </div>
