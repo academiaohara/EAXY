@@ -106,12 +106,22 @@ const pts = (points: [number, number][]) => points.map((p) => p.join(",")).join(
 function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
   const { phase, reduced } = usePotenciasPhases({ stepCount: 5, onReadyChange });
   const folded = phase >= 3;
-  const rowBase = 359;
-  const copyX = (i: number) => 250 + i * 76;
+  /** Fila del producto expandido: más arriba para no dejar hueco vacío en la pizarra. */
+  const rowY = 228;
+  const compactBaseX = 118;
+  const compactExpX = 158;
+  const equalsAfterPowX = compactExpX + 36;
+  const copyX = (i: number) => equalsAfterPowX + 44 + i * 76;
   const lastX = copyX(n - 1);
   const eqX = lastX + 62;
   const power = a ** n;
   const copyDelay = (i: number) => 350 + i * 300;
+
+  /** Potencia grande (fases 0–2): ancla común base + exponente. */
+  const baseX = 392;
+  const baseY = 196;
+  const expX = 468;
+  const expY = 112;
 
   const captions = [
     "Una potencia se escribe con dos números, uno grande y otro pequeño arriba.",
@@ -122,72 +132,98 @@ function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
   ];
 
   return (
-    <SceneShell caption={captions[phase]!} phase={phase}>
+    <SceneShell caption={captions[phase]!} phase={phase} stageAlign="start">
       <svg
-        viewBox="0 0 800 440"
+        viewBox="0 0 800 340"
         className="min-h-0 w-full max-w-4xl flex-1"
         role="img"
         aria-label={`Potencia ${a} elevado a ${n}: base ${a}, exponente ${n}`}
       >
-        <g
-          style={{
-            transform: folded ? `translate(${105 - 400}px, ${rowBase - 190}px) scale(0.42)` : "none",
-            transformOrigin: "400px 190px",
-            transition: reduced ? undefined : `transform 0.9s ${SMOOTH}`,
-          }}
-        >
-          <text
-            x={360}
-            y={235}
-            textAnchor="middle"
-            fontSize={150}
-            fontWeight={800}
-            className={cn(ENTER, "font-display duration-700")}
-            style={{ fill: phase >= 1 ? BASE_COLOR : INK, transition: "fill 0.5s" }}
-          >
-            {a}
-          </text>
-          <text
-            x={440}
-            y={150}
-            textAnchor="middle"
-            fontSize={90}
-            fontWeight={800}
-            className={cn(ENTER, "font-display duration-700")}
-            style={{ fill: phase >= 2 ? EXP_COLOR : INK, transition: "fill 0.5s", animationDelay: "150ms" }}
-          >
-            {n}
-          </text>
-        </g>
+        {!folded ? (
+          <g>
+            <text
+              x={baseX}
+              y={baseY}
+              textAnchor="middle"
+              fontSize={150}
+              fontWeight={800}
+              className={cn(ENTER, "font-display duration-700")}
+              style={{ fill: phase >= 1 ? BASE_COLOR : INK, transition: "fill 0.5s" }}
+            >
+              {a}
+            </text>
+            <text
+              x={expX}
+              y={expY}
+              textAnchor="middle"
+              fontSize={90}
+              fontWeight={800}
+              className={cn(ENTER, "font-display duration-700")}
+              style={{ fill: phase >= 2 ? EXP_COLOR : INK, transition: "fill 0.5s", animationDelay: "150ms" }}
+            >
+              {n}
+            </text>
+          </g>
+        ) : null}
 
         {phase >= 1 && !folded ? (
           <g className={cn(ENTER, "duration-500")}>
-            <text x={185} y={318} textAnchor="middle" fontSize={26} fontWeight={800} letterSpacing={2} style={{ fill: BASE_COLOR }}>
+            <text x={228} y={268} textAnchor="middle" fontSize={24} fontWeight={800} letterSpacing={2} style={{ fill: BASE_COLOR }}>
               BASE
             </text>
-            <AnimArrow coords={[228, 296, 276, 302, 324, 250]} stroke={BASE_COLOR} delayMs={150} reduced={reduced} />
+            <AnimArrow coords={[258, 252, 310, 228, 358, 208]} stroke={BASE_COLOR} delayMs={150} reduced={reduced} />
           </g>
         ) : null}
 
         {phase >= 2 && !folded ? (
           <g className={cn(ENTER, "duration-500")}>
-            <text x={618} y={104} textAnchor="middle" fontSize={26} fontWeight={800} letterSpacing={2} style={{ fill: EXP_COLOR }}>
+            <text x={548} y={58} textAnchor="middle" fontSize={24} fontWeight={800} letterSpacing={1.5} style={{ fill: EXP_COLOR }}>
               EXPONENTE
             </text>
-            <AnimArrow coords={[540, 110, 506, 92, 482, 120]} stroke={EXP_COLOR} delayMs={150} reduced={reduced} />
+            <AnimArrow coords={[508, 72, 492, 88, 478, 102]} stroke={EXP_COLOR} delayMs={150} reduced={reduced} />
           </g>
         ) : null}
 
         {folded ? (
-          <g>
-            <text x={190} y={rowBase} textAnchor="middle" fontSize={56} fontWeight={700} className={cn(ENTER, "font-display duration-500")} style={{ fill: MUTED, animationDelay: "500ms" }}>
+          <g className={cn(ENTER, "duration-700")}>
+            <text
+              x={compactBaseX}
+              y={rowY}
+              textAnchor="middle"
+              fontSize={58}
+              fontWeight={800}
+              className="font-display"
+              style={{ fill: BASE_COLOR }}
+            >
+              {a}
+            </text>
+            <text
+              x={compactExpX}
+              y={rowY - 34}
+              textAnchor="middle"
+              fontSize={34}
+              fontWeight={800}
+              className="font-display"
+              style={{ fill: EXP_COLOR }}
+            >
+              {n}
+            </text>
+            <text
+              x={equalsAfterPowX}
+              y={rowY}
+              textAnchor="middle"
+              fontSize={52}
+              fontWeight={700}
+              className={cn(ENTER, "font-display duration-500")}
+              style={{ fill: MUTED, animationDelay: "200ms" }}
+            >
               =
             </text>
             {Array.from({ length: n }, (_, i) => (
               <Fragment key={i}>
                 <text
                   x={copyX(i)}
-                  y={rowBase}
+                  y={rowY}
                   textAnchor="middle"
                   fontSize={64}
                   fontWeight={800}
@@ -199,7 +235,7 @@ function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
                 {i < n - 1 ? (
                   <text
                     x={copyX(i) + 38}
-                    y={rowBase}
+                    y={rowY}
                     textAnchor="middle"
                     fontSize={56}
                     fontWeight={700}
@@ -213,25 +249,32 @@ function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
             ))}
             <g className={cn(ENTER, "duration-700")} style={{ animationDelay: `${copyDelay(n)}ms` }}>
               <path
-                d={`M ${copyX(0) - 24} 385 v12 H ${lastX + 24} v-12 M ${(copyX(0) + lastX) / 2} 397 v8`}
+                d={`M ${copyX(0) - 24} ${rowY + 26} v10 H ${lastX + 24} v-10 M ${(copyX(0) + lastX) / 2} ${rowY + 36} v6`}
                 fill="none"
                 stroke={EXP_COLOR}
                 strokeWidth={2.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <text x={(copyX(0) + lastX) / 2} y={430} textAnchor="middle" fontSize={24} fontWeight={800} style={{ fill: EXP_COLOR }}>
+              <text
+                x={(copyX(0) + lastX) / 2}
+                y={rowY + 58}
+                textAnchor="middle"
+                fontSize={22}
+                fontWeight={800}
+                style={{ fill: EXP_COLOR }}
+              >
                 {n} veces
               </text>
             </g>
             {phase >= 4 ? (
               <g>
-                <text x={eqX} y={rowBase} textAnchor="middle" fontSize={56} fontWeight={700} className={cn(ENTER, "duration-500")} style={{ fill: MUTED }}>
+                <text x={eqX} y={rowY} textAnchor="middle" fontSize={56} fontWeight={700} className={cn(ENTER, "duration-500")} style={{ fill: MUTED }}>
                   =
                 </text>
                 <text
                   x={eqX + 38}
-                  y={rowBase}
+                  y={rowY}
                   fontSize={64}
                   fontWeight={800}
                   className={cn(ENTER, "zoom-in-75 font-display duration-700")}

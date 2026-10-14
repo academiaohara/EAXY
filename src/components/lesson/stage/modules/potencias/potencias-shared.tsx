@@ -179,14 +179,24 @@ export function SceneShell({
   caption,
   phase,
   children,
+  stageAlign = "center",
 }: {
   caption: string;
   phase: number;
   children: ReactNode;
+  /** En escenas con poco contenido vertical, `start` evita hueco vacío arriba. */
+  stageAlign?: "center" | "start";
 }) {
   return (
     <div className="flex h-full min-h-0 w-full flex-1 flex-col items-center gap-2">
-      <div className="flex min-h-0 w-full flex-1 items-center justify-center">{children}</div>
+      <div
+        className={cn(
+          "flex min-h-0 w-full flex-1 justify-center",
+          stageAlign === "start" ? "items-start pt-1" : "items-center",
+        )}
+      >
+        {children}
+      </div>
       <div className="flex min-h-[3.5rem] shrink-0 items-start justify-center px-4">
         <p
           key={phase}
