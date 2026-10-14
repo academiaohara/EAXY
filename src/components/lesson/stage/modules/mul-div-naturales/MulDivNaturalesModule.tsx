@@ -221,38 +221,50 @@ function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) 
   );
 }
 
-/** Llave vertical: agrupa bocadillo + bebida de un menú. */
+const MENU_BRACE_STROKE = {
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  vectorEffect: "nonScalingStroke" as const,
+};
+
+/** Llave vertical: agrupa bocadillo + bebida (tramo recto central elástico en altura). */
 function MenuVerticalBrace({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 14 120"
-      className={className}
-      preserveAspectRatio="none"
-      aria-hidden
-    >
+    <svg viewBox="0 0 16 100" className={className} preserveAspectRatio="none" aria-hidden>
       <path
-        d="M 12 4 C 4 4 3 10 3 18 L 3 102 C 3 110 4 116 12 116"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
+        d="M 13 2 C 8 2 7 5.5 7 10 L 7 44 Q 1.5 50 7 56 L 7 90 C 7 94.5 8 98 13 98"
+        {...MENU_BRACE_STROKE}
       />
     </svg>
   );
 }
 
-/** Llave horizontal inferior: abraza la fila de menús (punta hacia abajo). */
+/** Gancho izquierdo/derecho de la llave inferior (proporción fija, sin aplastamiento). */
+function MenuHorizontalBraceCap({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 14" className={className} aria-hidden>
+      <path d="M 2 12.5 C 2 7 5 3.5 10 3.5 H 16" {...MENU_BRACE_STROKE} />
+    </svg>
+  );
+}
+
+/** Llave horizontal inferior: extremos fijos + tramo central elástico con punta centrada. */
 function MenuHorizontalBrace({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 120 14" className={className} preserveAspectRatio="none" aria-hidden>
-      <path
-        d="M 4 2 C 4 10 10 11 18 11 L 102 11 C 110 11 116 10 116 2"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-    </svg>
+    <div className={cn("flex w-full min-w-0 items-start", className)} aria-hidden>
+      <MenuHorizontalBraceCap className="h-3.5 w-4 shrink-0" />
+      <svg viewBox="0 0 100 14" className="h-3.5 min-w-6 flex-1" preserveAspectRatio="none">
+        <path d="M 0 3.5 H 100" {...MENU_BRACE_STROKE} />
+        <path
+          d="M 50 3.5 V 8 M 46.5 10 Q 50 12.5 53.5 10"
+          {...MENU_BRACE_STROKE}
+        />
+      </svg>
+      <MenuHorizontalBraceCap className="h-3.5 w-4 shrink-0 -scale-x-100" />
+    </div>
   );
 }
 
@@ -711,7 +723,7 @@ function DistributivaBloques({
             <MenuGroupingPill tone="amber" className="self-center">
               {sum} €
             </MenuGroupingPill>
-            <MenuVerticalBrace className="h-full min-h-[7.75rem] w-3 shrink-0 sm:min-h-[8rem] sm:w-3.5" />
+            <MenuVerticalBrace className="h-full min-h-[7.75rem] w-4 shrink-0 self-stretch sm:min-h-[8rem]" />
           </div>
           <div className="flex max-w-full flex-wrap items-start justify-center gap-1 transition-all duration-700 sm:gap-1.5">
             {Array.from({ length: a }, (_, col) => (
@@ -725,7 +737,7 @@ function DistributivaBloques({
           </div>
           <div aria-hidden />
           <div className="flex min-w-0 flex-col items-center gap-0.5 text-[color:var(--teal)]">
-            <MenuHorizontalBrace className="h-2.5 w-full sm:h-3" />
+            <MenuHorizontalBrace className="w-full" />
             <MenuGroupingPill tone="teal">{a} menús</MenuGroupingPill>
           </div>
         </div>
