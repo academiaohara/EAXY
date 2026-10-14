@@ -24,7 +24,20 @@ export type StageModuleId =
   | "bloques-numericos"
   | "piramide-reduccion"
   | "mul-div-naturales"
-  | "jerarquia-operaciones";
+  | "jerarquia-operaciones"
+  | "potencias";
+
+export type PotenciasScene =
+  | "base-exponente"
+  | "cuadrado-cubo"
+  | "calcular-potencia"
+  | "calculadora";
+
+export type PotenciasConfig = {
+  scene: PotenciasScene;
+  base?: number;
+  exponent?: number;
+};
 
 export type MulDivNaturalesScene =
   | "multiplicar-repetido"
@@ -412,6 +425,7 @@ export type NarrateStep = LessonStepBase &
       variant: "dual-parentesis";
     };
     mulDiv?: MulDivConfig;
+    potencias?: PotenciasConfig;
   };
 
 export type PredictChoice = {

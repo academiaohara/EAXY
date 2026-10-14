@@ -311,6 +311,7 @@ export function NarrateStepView({
             : undefined
       }
       mulDiv={step.mulDiv}
+      potencias={step.potencias}
       mulDivSubStep={isMultiplicacionMano ? sub : undefined}
       autoPlay={
         step.module === "mul-div-naturales" &&

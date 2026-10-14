@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
-// Ajusta la URL al slug real de la lección de potencias.
-const URL = "/aprender/curso/matematicas-1-eso/tema/potencias-raices/leccion/potencias-naturales";
+const URL =
+  "/aprender/curso/matematicas-1-eso/tema/potencias-y-raices/leccion/potencias-base-exponente?reiniciar=1";
 
 test("potencias — base y exponente: sin LaTeX crudo y Continuar al final", async ({ page }) => {
   await page.goto(URL);
