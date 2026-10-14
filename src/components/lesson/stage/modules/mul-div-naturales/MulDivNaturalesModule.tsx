@@ -241,12 +241,12 @@ function MenuVerticalBrace({ className }: { className?: string }) {
   );
 }
 
-/** Llave horizontal: repite el mismo menú varias veces. */
+/** Llave horizontal inferior: abraza la fila de menús (punta hacia abajo). */
 function MenuHorizontalBrace({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 120 14" className={className} preserveAspectRatio="none" aria-hidden>
       <path
-        d="M 4 12 C 4 4 10 3 18 3 L 102 3 C 110 3 116 4 116 12"
+        d="M 4 2 C 4 10 10 11 18 11 L 102 11 C 110 11 116 10 116 2"
         fill="none"
         stroke="currentColor"
         strokeWidth="2.5"
