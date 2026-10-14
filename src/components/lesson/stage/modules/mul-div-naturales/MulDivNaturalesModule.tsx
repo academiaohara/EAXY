@@ -1,7 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
 import type { MulDivConfig, MulDivNaturalesScene } from "@/lib/lesson/types";
@@ -21,6 +29,7 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { MulDivLessonClosing } from "@/components/lesson/stage/modules/mul-div-naturales/MulDivLessonClosing";
 import { StageStepControls } from "@/components/lesson/stage/modules/mul-div-naturales/StageStepControls";
+import { Brace } from "@/components/lesson/stage/Brace";
 import { boardSemanticColors } from "@/lib/lesson/stage/board-semantic-colors";
 import { cn } from "@/lib/utils";
 
@@ -218,79 +227,6 @@ function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) 
       <div className="h-px bg-white/10" aria-hidden />
       <MenuItemSlot label="Bebida" euros={bebida} imageSrc={ASSETS.botella} />
     </div>
-  );
-}
-
-const MENU_BRACE_STROKE = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 2,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  vectorEffect: "nonScalingStroke" as const,
-};
-
-/** Llave vertical: agrupa bocadillo + bebida (tramo recto central elástico en altura). */
-function MenuVerticalBrace({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 16 100" className={className} preserveAspectRatio="none" aria-hidden>
-      <path
-        d="M 13 2 C 8 2 7 5.5 7 10 L 7 44 Q 1.5 50 7 56 L 7 90 C 7 94.5 8 98 13 98"
-        {...MENU_BRACE_STROKE}
-      />
-    </svg>
-  );
-}
-
-/** Gancho izquierdo/derecho de la llave inferior (proporción fija, sin aplastamiento). */
-function MenuHorizontalBraceCap({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 16 14" className={className} aria-hidden>
-      <path d="M 2 12.5 C 2 7 5 3.5 10 3.5 H 16" {...MENU_BRACE_STROKE} />
-    </svg>
-  );
-}
-
-/** Llave horizontal inferior: extremos fijos + tramo central elástico con punta centrada. */
-function MenuHorizontalBrace({ className }: { className?: string }) {
-  return (
-    <div className={cn("flex w-full min-w-0 items-start", className)} aria-hidden>
-      <MenuHorizontalBraceCap className="h-3.5 w-4 shrink-0" />
-      <svg viewBox="0 0 100 14" className="h-3.5 min-w-6 flex-1" preserveAspectRatio="none">
-        <path d="M 0 3.5 H 100" {...MENU_BRACE_STROKE} />
-        <path
-          d="M 50 3.5 V 8 M 46.5 10 Q 50 12.5 53.5 10"
-          {...MENU_BRACE_STROKE}
-        />
-      </svg>
-      <MenuHorizontalBraceCap className="h-3.5 w-4 shrink-0 -scale-x-100" />
-    </div>
-  );
-}
-
-function MenuGroupingPill({
-  tone,
-  children,
-  className,
-}: {
-  tone: "amber" | "teal";
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const toneClass =
-    tone === "amber"
-      ? "bg-[color:var(--amber-bg)] text-[color:var(--amber)]"
-      : "bg-[color:var(--teal-bg)] text-[color:var(--teal)]";
-  return (
-    <span
-      className={cn(
-        "inline-flex shrink-0 items-center justify-center rounded-full px-2.5 py-0.5 text-[11px] font-bold tabular-nums tracking-tight sm:text-xs",
-        toneClass,
-        className,
-      )}
-    >
-      {children}
-    </span>
   );
 }
 
@@ -674,11 +610,35 @@ function DistributivaBloques({
 }) {
   const [phase, setPhase] = useState(0);
   const { push, clear } = useTimers();
+  const menuRowRef = useRef<HTMLDivElement>(null);
+  const menuMeasureRef = useRef<HTMLDivElement>(null);
+  const [rowWidth, setRowWidth] = useState(0);
+  const [menuHeight, setMenuHeight] = useState(0);
   const sum = b + c;
   const left = a * b;
   const right = a * c;
   const total = a * sum;
   const showFormula = revealFormula && phase >= 2;
+
+  useLayoutEffect(() => {
+    const row = menuRowRef.current;
+    const card = menuMeasureRef.current;
+    if (!row || !card) {
+      return;
+    }
+    const measure = () => {
+      setRowWidth(row.getBoundingClientRect().width);
+      setMenuHeight(card.getBoundingClientRect().height);
+    };
+    measure();
+    if (typeof ResizeObserver === "undefined") {
+      return;
+    }
+    const observer = new ResizeObserver(measure);
+    observer.observe(row);
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [a, b, c]);
 
   useEffect(() => {
     if (!revealFormula) {
@@ -719,16 +679,24 @@ function DistributivaBloques({
           data-testid="distributiva-menu-grouping"
           aria-label={`${a} veces la suma de ${b} euros y ${c} euros por menú, es decir ${a} por ${b} más ${c}`}
         >
-          <div className="flex items-stretch justify-end gap-1 text-[color:var(--amber)]">
-            <MenuGroupingPill tone="amber" className="self-center">
-              {sum} €
-            </MenuGroupingPill>
-            <MenuVerticalBrace className="h-full min-h-[7.75rem] w-4 shrink-0 self-stretch sm:min-h-[8rem]" />
+          <div className="flex items-stretch justify-end self-stretch">
+            <Brace
+              orientation="vertical"
+              length={menuHeight > 0 ? menuHeight : 128}
+              color={boardSemanticColors.amber}
+              label={`${sum} €`}
+              tone="amber"
+              className="self-center"
+            />
           </div>
-          <div className="flex max-w-full flex-wrap items-start justify-center gap-1 transition-all duration-700 sm:gap-1.5">
+          <div
+            ref={menuRowRef}
+            className="flex max-w-full flex-wrap items-start justify-center gap-1 transition-all duration-700 sm:gap-1.5"
+          >
             {Array.from({ length: a }, (_, col) => (
               <div
                 key={col}
+                ref={col === 0 ? menuMeasureRef : undefined}
                 className={cn("transition-all duration-700", phase >= 1 && col > 0 && "opacity-95")}
               >
                 <MenuCard bocadillo={b} bebida={c} />
@@ -736,9 +704,14 @@ function DistributivaBloques({
             ))}
           </div>
           <div aria-hidden />
-          <div className="flex min-w-0 flex-col items-center gap-0.5 text-[color:var(--teal)]">
-            <MenuHorizontalBrace className="w-full" />
-            <MenuGroupingPill tone="teal">{a} menús</MenuGroupingPill>
+          <div className="flex min-w-0 justify-center">
+            <Brace
+              orientation="horizontal"
+              length={rowWidth > 0 ? rowWidth : Math.max(a * 56, 24)}
+              color={boardSemanticColors.teal}
+              label={`${a} menús`}
+              tone="teal"
+            />
           </div>
         </div>
       </div>
