@@ -6,13 +6,18 @@ import { stepHasDefinitionBox } from "@/lib/lesson/types";
 const THEME_TWO_LESSONS = [potenciasBaseExponenteLesson, raizCuadradaNaturalesLesson];
 
 describe("lecciones de referencia del tema 2", () => {
-  it("usa pizarra Manim y herramientas interactivas como el tema 1", () => {
+  it("usa pizarra Manim y cajas de definición en escenas y herramientas", () => {
     for (const lesson of THEME_TWO_LESSONS) {
       expect(lesson.stage?.theme).toBe("board");
       expect(
-        lesson.steps.filter((step) => step.type === "interactive_tool").every(stepHasDefinitionBox),
+        lesson.steps
+          .filter((step) => step.type === "interactive_tool" || step.type === "narrate")
+          .every(stepHasDefinitionBox),
       ).toBe(true);
     }
+    expect(
+      potenciasBaseExponenteLesson.steps.filter((step) => step.type === "narrate" && step.module === "potencias"),
+    ).toHaveLength(4);
   });
 
   it("solo incluye potencias y raíz cuadrada (dos lecciones)", () => {

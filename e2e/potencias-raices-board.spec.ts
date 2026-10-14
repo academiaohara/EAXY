@@ -25,16 +25,14 @@ test("tema 2: dos lecciones en pizarra Manim", async ({ page }) => {
   await page.goto(
     "/aprender/curso/matematicas-1-eso/tema/potencias-y-raices/leccion/potencias-base-exponente?reiniciar=1",
   );
-  await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByTestId("lesson-narrate-step")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("lesson-definition-box")).toBeVisible();
-  await expect(page.getByTestId("potencias-raices-potencia-definicion")).toBeVisible();
+  await expect(page.getByTestId("potencias-base-exponente")).toBeVisible();
 
   const frame = page.getByTestId("lesson-frame");
   await expect(frame).toHaveClass(/lesson-stage-theme-board/);
 
-  await page.getByRole("button", { name: "Ver base y exponente" }).click();
-  await page.getByRole("button", { name: "Ver el producto" }).click();
-  await expect(page.getByRole("button", { name: "Continuar" })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Continuar" })).toBeEnabled({ timeout: 25_000 });
 
   await page.screenshot({
     path: "/opt/cursor/artifacts/tema2-potencias-pizarra.png",
