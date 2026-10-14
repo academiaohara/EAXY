@@ -50,6 +50,9 @@ export function DivisionManoChalkboard({
   board: boardProp,
   onBoardClick,
   showProgress = true,
+  showPhaseChips = true,
+  showCaption = true,
+  className,
 }: {
   dividend: number;
   divisor: number;
@@ -58,6 +61,9 @@ export function DivisionManoChalkboard({
   board?: DivisionBoard | null;
   onBoardClick?: () => void;
   showProgress?: boolean;
+  showPhaseChips?: boolean;
+  showCaption?: boolean;
+  className?: string;
 }) {
   const reduced = useChalkboardMotion();
   const board = boardProp ?? buildDivisionBoard(dividend, divisor);
@@ -81,12 +87,13 @@ export function DivisionManoChalkboard({
   const fontSize = Math.min(56, Math.max(36, cell * 0.72));
 
   return (
-    <div className="flex w-full flex-col gap-2" data-testid="division-mano-chalkboard">
+    <div className={cn("flex w-full flex-col gap-2", className)} data-testid="division-mano-chalkboard">
       <ChalkboardFrame
         testId="division-mano-chalkboard-surface"
         onBoardClick={onBoardClick}
         ariaLabel={onBoardClick ? "Pizarra de división. Pulsa para avanzar." : undefined}
       >
+        {showPhaseChips ? (
         <div className="absolute left-4 top-4 flex flex-col gap-2 sm:left-6 sm:top-6">
           {DIVISION_CYCLE.map((chip) => {
             const active = chip.id === activeCycle;
@@ -105,6 +112,7 @@ export function DivisionManoChalkboard({
             );
           })}
         </div>
+        ) : null}
 
         <svg
           viewBox={`0 0 ${CHALKBOARD_VIEWBOX.w} ${CHALKBOARD_VIEWBOX.h}`}
@@ -156,7 +164,7 @@ export function DivisionManoChalkboard({
       </ChalkboardFrame>
 
       {showProgress ? <SubProgressDots sub={step + 1} total={board.steps.length} /> : null}
-      <ChalkboardCaption text={liveText} />
+      {showCaption ? <ChalkboardCaption text={liveText} /> : null}
     </div>
   );
 }

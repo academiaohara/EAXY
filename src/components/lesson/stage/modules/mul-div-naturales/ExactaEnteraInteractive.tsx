@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import { DivisionManoChalkboard } from "@/components/lesson/stage/modules/mul-div-naturales/DivisionManoChalkboard";
+import { buildDivisionBoard } from "@/components/lesson/stage/modules/mul-div-naturales/division-board";
 import { cn } from "@/lib/utils";
 
 const ASSETS = {
@@ -50,6 +52,9 @@ export function ExactaEnteraInteractive({
   const remainder = total % BOXES;
   const exact = remainder === 0;
 
+  const divisionBoard = useMemo(() => buildDivisionBoard(total, BOXES), [total]);
+  const divisionFinalStep = Math.max(0, (divisionBoard?.steps.length ?? 1) - 1);
+
   const showRoundRule = total >= 156 && exact && total === 156;
 
   useEffect(() => {
@@ -67,6 +72,8 @@ export function ExactaEnteraInteractive({
 
   return (
     <div className="space-y-4" aria-label="Cuando sobra algo en un reparto">
+      <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-6">
+        <div className="min-w-0 space-y-4">
       <div className="flex flex-wrap items-center justify-center gap-3">
         <span className="text-sm font-medium text-[color:var(--stage-muted,#94a3b8)]">Bombones en total</span>
         <div className="flex items-center gap-2 rounded-xl border-2 border-white/15 bg-slate-900/30 px-2 py-1">
@@ -152,9 +159,36 @@ export function ExactaEnteraInteractive({
         </p>
       ) : !exact ? (
         <p className="text-center text-sm text-[color:var(--stage-muted,#94a3b8)]">
-          Sube o baja el total y mira qué pasa en la bandeja.
+          Sube o baja el total y mira qué pasa en la bandeja y en el resto de la pizarra.
         </p>
       ) : null}
+        </div>
+
+        <div className="min-w-0 space-y-2 lg:sticky lg:top-2">
+          <p className="text-center text-sm font-medium text-[color:var(--stage-muted,#94a3b8)]">
+            La misma división a mano
+          </p>
+          {divisionBoard ? (
+            <DivisionManoChalkboard
+              key={total}
+              dividend={total}
+              divisor={BOXES}
+              board={divisionBoard}
+              step={divisionFinalStep}
+              showProgress={false}
+              showPhaseChips={false}
+              showCaption={false}
+              className="max-w-[22rem] lg:mx-auto"
+            />
+          ) : (
+            <p className="text-center text-sm text-rose-200">No cabe en la pizarra para este total.</p>
+          )}
+          <p className="text-center font-mono text-sm text-[color:var(--stage-muted,#94a3b8)]">
+            {total} : {BOXES} → cociente {perBox}
+            {exact ? ", resto 0" : `, resto ${remainder}`}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
