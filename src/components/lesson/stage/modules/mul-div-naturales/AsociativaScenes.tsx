@@ -105,41 +105,51 @@ function AlmacenHuevosGrid({
 
 function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const boxes = a * b;
+  const total = boxes * c;
   return (
     <div className="flex flex-col items-center gap-3">
-      <p className={cn(STAGE_CAPTION, "text-center uppercase tracking-wider text-[#7dd3fc]")}>
-        Agrupa estantes y cajas · {c} huevos por caja
+      <p className={cn(STAGE_CAPTION, "max-w-[20rem] text-center normal-case leading-snug text-[#7dd3fc]")}>
+        Primero cuentas todas las cajas: {a} estantes × {b} cajas/estante ={" "}
+        <strong className="text-[color:var(--stage-ink,#e8edf5)]">{boxes} cajas</strong> en la
+        estantería.
       </p>
       <div className="w-full rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-2 py-2.5">
         <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-2 text-center">
+      <div className="space-y-1.5 text-center">
         <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
-          {a} filas × {b} cajas
+          {a} × {b} = {boxes} cajas
         </p>
-        <StageChip className="!px-2 !py-0.5 text-[11px]">{boxes} cajas</StageChip>
-        <span className="text-[color:var(--stage-muted,#94a3b8)]" aria-hidden>
-          ×
-        </span>
-        <StageChip className="!px-2 !py-0.5 text-[11px]">{c} huevos/caja</StageChip>
+        <p className={cn(STAGE_CAPTION, "normal-case leading-snug")}>
+          Luego {boxes} cajas × {c} huevos/caja ={" "}
+          <strong className="text-[#5eead4]">{total} huevos</strong> en total.
+        </p>
       </div>
     </div>
   );
 }
 
 function VisualRightGroup({ a, b, c }: { a: number; b: number; c: number }) {
-  const perShelf = b * c;
+  const perRow = b * c;
+  const total = a * perRow;
   return (
     <div className="flex w-full flex-col items-center gap-3">
-      <p className={cn(STAGE_CAPTION, "text-center uppercase tracking-wider text-[#c4b5fd]")}>
-        {a} estantes · en cada uno: {b} cajas × {c} huevos = {perShelf}
+      <p className={cn(STAGE_CAPTION, "max-w-[20rem] text-center normal-case leading-snug text-[#c4b5fd]")}>
+        En cada fila: {b} cajas/fila × {c} huevos/caja ={" "}
+        <strong className="text-[color:var(--stage-ink,#e8edf5)]">{perRow} huevos/fila</strong>.
       </p>
       <div className="w-full rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-2 py-2.5">
         <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
       </div>
-      <p className="text-center font-mono text-xs font-semibold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
-        {a} × {perShelf} = {a * perShelf} huevos
-      </p>
+      <div className="space-y-1.5 text-center">
+        <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+          {b} × {c} = {perRow} huevos por fila
+        </p>
+        <p className={cn(STAGE_CAPTION, "normal-case leading-snug")}>
+          {a} filas × {perRow} huevos/fila ={" "}
+          <strong className="text-[#5eead4]">{total} huevos</strong> en total.
+        </p>
+      </div>
     </div>
   );
 }
