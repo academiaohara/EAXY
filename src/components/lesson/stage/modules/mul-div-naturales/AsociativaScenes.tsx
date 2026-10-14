@@ -23,64 +23,82 @@ function StageChip({ children, className }: { children: React.ReactNode; classNa
   return <span className={cn("lesson-stage-chip", className)}>{children}</span>;
 }
 
-function EggRow({ count, compact }: { count: number; compact?: boolean }) {
+type HuevosDensity = "default" | "grid";
+
+function EggRow({ count, density }: { count: number; density?: HuevosDensity }) {
+  const grid = density === "grid";
   return (
-    <span className={cn("inline-flex flex-wrap items-center justify-center gap-0.5", compact && "gap-px")} aria-hidden>
+    <span
+      className={cn("inline-flex items-center justify-center", grid ? "gap-px" : "gap-0.5")}
+      aria-hidden
+    >
       {Array.from({ length: count }, (_, i) => (
         <Image
           key={i}
           src={ASSETS.huevo}
           alt=""
-          width={20}
-          height={16}
-          className={cn("object-contain", compact ? "h-3 w-3.5" : "h-4 w-5")}
+          width={grid ? 10 : 20}
+          height={grid ? 8 : 16}
+          className={cn("object-contain", grid ? "h-[7px] w-[9px]" : "h-4 w-5")}
         />
       ))}
     </span>
   );
 }
 
-function CajaRect({ eggsPerBox, compact, className }: { eggsPerBox: number; compact?: boolean; className?: string }) {
+function CajaRect({
+  eggsPerBox,
+  density,
+  className,
+}: {
+  eggsPerBox: number;
+  density?: HuevosDensity;
+  className?: string;
+}) {
+  const grid = density === "grid";
   return (
     <div
-      className={cn(BOX_FRAME, compact ? "px-1.5 py-1" : "px-2 py-1.5", className)}
+      className={cn(
+        BOX_FRAME,
+        grid ? "rounded-sm border-[1.5px] px-[3px] py-[2px]" : "px-2 py-1.5",
+        className,
+      )}
       aria-hidden
     >
-      <EggRow count={eggsPerBox} compact={compact} />
+      <EggRow count={eggsPerBox} density={density} />
     </div>
   );
 }
 
-function EstanteRect({
-  boxCount,
-  eggsPerBox,
-  compact,
-  label,
+function AlmacenHuevosGrid({
+  filas,
+  cajasPorFila,
+  huevosPorCaja,
   className,
 }: {
-  boxCount: number;
-  eggsPerBox: number;
-  compact?: boolean;
-  label?: string;
+  filas: number;
+  cajasPorFila: number;
+  huevosPorCaja: number;
   className?: string;
 }) {
-  const shown = Math.min(boxCount, compact ? 3 : 4);
-  const hidden = boxCount - shown;
   return (
-    <div className={cn(SHELF_FRAME, compact ? "px-2 py-2" : "px-3 py-2.5", className)}>
-      {label ? (
-        <p className="mb-1.5 text-center text-[9px] font-bold uppercase tracking-wide text-[#7dd3fc]">{label}</p>
-      ) : null}
-      <div className={cn("flex flex-wrap items-center justify-center", compact ? "gap-1" : "gap-1.5")}>
-        {Array.from({ length: shown }, (_, i) => (
-          <CajaRect key={i} eggsPerBox={eggsPerBox} compact={compact} />
-        ))}
-        {hidden > 0 ? (
-          <span className="text-[10px] font-semibold tabular-nums text-[color:var(--stage-muted,#94a3b8)]">
-            +{hidden}
-          </span>
-        ) : null}
-      </div>
+    <div
+      className={cn("mx-auto flex w-full max-w-[18rem] flex-col gap-[3px]", className)}
+      aria-label={`${filas} filas, ${cajasPorFila} cajas por fila, ${huevosPorCaja} huevos en cada caja`}
+    >
+      {Array.from({ length: filas }, (_, fila) => (
+        <div
+          key={fila}
+          className={cn(SHELF_FRAME, "rounded-sm px-1 py-[2px] shadow-none")}
+          aria-hidden
+        >
+          <div className="flex flex-nowrap items-center justify-center gap-[3px]">
+            {Array.from({ length: cajasPorFila }, (_, caja) => (
+              <CajaRect key={caja} eggsPerBox={huevosPorCaja} density="grid" />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -88,42 +106,22 @@ function EstanteRect({
 function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const boxes = a * b;
   return (
-    <div className="flex flex-col items-center gap-5">
-      <div className="w-full rounded-xl border border-dashed border-[#4353ff]/50 bg-black/30 px-5 py-5">
-        <p className={cn(STAGE_CAPTION, "mb-4 text-center uppercase tracking-wider text-[#7dd3fc]")}>
-          Agrupa estantes y cajas
-        </p>
-        <EstanteRect boxCount={b} eggsPerBox={c} label="Estante" />
-        <p className="mt-3 text-center font-mono text-sm font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+    <div className="flex flex-col items-center gap-3">
+      <p className={cn(STAGE_CAPTION, "text-center uppercase tracking-wider text-[#7dd3fc]")}>
+        Agrupa estantes y cajas · {c} huevos por caja
+      </p>
+      <div className="w-full rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-2 py-2.5">
+        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-2 text-center">
+        <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
           {a} filas × {b} cajas
         </p>
-        <div className="mt-3 flex justify-center">
-          <StageChip>{boxes} cajas</StageChip>
-        </div>
-      </div>
-      <div className="flex items-center gap-4">
-        <span className="text-2xl font-light text-[color:var(--stage-muted,#94a3b8)]" aria-hidden>
+        <StageChip className="!px-2 !py-0.5 text-[11px]">{boxes} cajas</StageChip>
+        <span className="text-[color:var(--stage-muted,#94a3b8)]" aria-hidden>
           ×
         </span>
-        <div className="flex flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/25 px-4 py-3">
-          <CajaRect eggsPerBox={c} />
-          <StageChip>{c} huevos por caja</StageChip>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ShelfCard({ b, c, perShelf, label }: { b: number; c: number; perShelf: number; label: string }) {
-  return (
-    <div className="flex w-[8.5rem] flex-col items-center gap-2 rounded-xl border border-white/10 bg-black/25 px-2 py-3">
-      <EstanteRect boxCount={b} eggsPerBox={c} compact label={label} className="w-full" />
-      <div className="flex items-center gap-1.5 font-mono text-xs font-bold tabular-nums text-[#e9d5ff]">
-        <span>{b}</span>
-        <span className="text-[color:var(--stage-muted,#94a3b8)]">cajas ×</span>
-        <span>{c}</span>
-        <span className="text-[color:var(--stage-muted,#94a3b8)]">=</span>
-        <StageChip className="!px-2 !py-0.5 text-[11px]">{perShelf}</StageChip>
+        <StageChip className="!px-2 !py-0.5 text-[11px]">{c} huevos/caja</StageChip>
       </div>
     </div>
   );
@@ -132,21 +130,14 @@ function ShelfCard({ b, c, perShelf, label }: { b: number; c: number; perShelf: 
 function VisualRightGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const perShelf = b * c;
   return (
-    <div className="flex w-full flex-col items-center gap-5">
+    <div className="flex w-full flex-col items-center gap-3">
       <p className={cn(STAGE_CAPTION, "text-center uppercase tracking-wider text-[#c4b5fd]")}>
-        En cada estante: {b} cajas × {c} huevos
+        {a} estantes · en cada uno: {b} cajas × {c} huevos = {perShelf}
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <ShelfCard b={b} c={c} perShelf={perShelf} label="Estante" />
-        <span className="text-2xl font-light text-[color:var(--stage-muted,#94a3b8)]" aria-hidden>
-          ×
-        </span>
-        <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.08] px-5 py-4">
-          <span className="font-mono text-3xl font-black tabular-nums text-[#e9d5ff]">{a}</span>
-          <StageChip>estantes iguales</StageChip>
-        </div>
+      <div className="w-full rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-2 py-2.5">
+        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
       </div>
-      <p className="text-center font-mono text-sm font-semibold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+      <p className="text-center font-mono text-xs font-semibold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
         {a} × {perShelf} = {a * perShelf} huevos
       </p>
     </div>
@@ -237,7 +228,7 @@ export function AsociativaHuevosDiscover({
         role="tabpanel"
         aria-labelledby={group === "left" ? "asociativa-tab-left" : "asociativa-tab-right"}
         className={cn(
-          "min-h-[15.5rem] rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-5 py-6 transition-opacity duration-500",
+          "rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-3 py-4 transition-opacity duration-500",
           !reduced && "animate-in fade-in duration-300",
         )}
       >
