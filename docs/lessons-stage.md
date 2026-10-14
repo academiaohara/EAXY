@@ -108,6 +108,10 @@ Para añadir un módulo:
 - Hook: `usePersistedLessonToolState(stepId, createDefault)`.
 - Intentos de `predict` / `explore`: `stepAttempts` + snapshots (`predict`, `explore`).
 
+## Ilustraciones PNG
+
+Escenas que usan bitmaps (p. ej. `mul-div-naturales`, tienda ciclista): estilo, prompts, tamaños y flujo `Assets/` → `public/lesson/…` en **`docs/lesson-illustrations.md`**.
+
 ## Piloto
 
 Referencia completa: `src/data/lessons/suma-resta-naturales.ts` (Tema 1 · 1.º ESO · Suma y resta).
