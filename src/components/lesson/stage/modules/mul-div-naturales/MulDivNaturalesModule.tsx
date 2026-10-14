@@ -221,6 +221,41 @@ function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) 
   );
 }
 
+/** Llave vertical: agrupa bocadillo + bebida de un menú. */
+function MenuVerticalBrace({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 14 120"
+      className={className}
+      preserveAspectRatio="none"
+      aria-hidden
+    >
+      <path
+        d="M 12 4 C 4 4 3 10 3 18 L 3 102 C 3 110 4 116 12 116"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+/** Llave horizontal: repite el mismo menú varias veces. */
+function MenuHorizontalBrace({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 14" className={className} preserveAspectRatio="none" aria-hidden>
+      <path
+        d="M 4 12 C 4 4 10 3 18 3 L 102 3 C 110 3 116 4 116 12"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function useTimers() {
   const timers = useRef<number[]>([]);
   const clear = useCallback(() => {
@@ -638,24 +673,40 @@ function DistributivaBloques({
   return (
     <div className="space-y-4" aria-label="Propiedad distributiva">
       <p className={cn(STAGE_CAPTION, "text-center")}>
-        {a} menús · {b} € bocadillo + {c} € bebida
+        {a} menús · ({b} € bocadillo + {c} € bebida)
       </p>
       <div
-        className={cn(
-          "mx-auto flex max-w-full flex-wrap justify-center gap-1 transition-all duration-700 sm:gap-1.5",
-        )}
+        className="mx-auto inline-grid max-w-full grid-cols-[auto_minmax(0,1fr)] items-stretch gap-x-1 sm:gap-x-1.5"
+        data-testid="distributiva-menu-grouping"
+        aria-label={`${a} veces la suma de ${b} euros y ${c} euros por menú, es decir ${a} por ${b} más ${c}`}
       >
-        {Array.from({ length: a }, (_, col) => (
+        <div className="flex items-stretch gap-1 text-[#fcd34d]">
+          <MenuVerticalBrace className="h-[7.75rem] w-3 shrink-0 self-center sm:h-[8rem] sm:w-3.5" />
+          <span className="self-center text-xs font-bold tabular-nums sm:text-sm">{sum} €</span>
+        </div>
+        <div className="min-w-0 space-y-1.5">
           <div
-            key={col}
             className={cn(
-              "transition-all duration-700",
-              phase >= 1 && col > 0 && "opacity-95",
+              "flex max-w-full flex-wrap justify-center gap-1 transition-all duration-700 sm:gap-1.5",
             )}
           >
-            <MenuCard bocadillo={b} bebida={c} />
+            {Array.from({ length: a }, (_, col) => (
+              <div
+                key={col}
+                className={cn(
+                  "transition-all duration-700",
+                  phase >= 1 && col > 0 && "opacity-95",
+                )}
+              >
+                <MenuCard bocadillo={b} bebida={c} />
+              </div>
+            ))}
           </div>
-        ))}
+          <div className="flex flex-col items-center gap-0.5 px-1 text-[#fb923c]">
+            <MenuHorizontalBrace className="h-2.5 w-full min-w-[12rem] max-w-full sm:h-3" />
+            <span className="text-[11px] font-semibold tracking-wide sm:text-xs">{a} menús</span>
+          </div>
+        </div>
       </div>
       {showFormula ? (
         <p
