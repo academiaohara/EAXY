@@ -306,7 +306,28 @@ export type NaturalesNumeracionToolStep = LessonStepBase &
     roundingExercise?: { n: number; orderId: RoundingOrderId };
   };
 
-export type InteractiveToolStep = SystemGraphToolStep | NaturalesNumeracionToolStep;
+/** Escenas del tema 2 (1.º ESO): potencias y raíces cuadradas. */
+export type PotenciasRaicesScene =
+  | "potencia-definicion"
+  | "cuadrado-cubo"
+  | "calcular-potencia"
+  | "calculadora-potencia"
+  | "raiz-inversa"
+  | "cuadrados-perfectos"
+  | "raiz-entera"
+  | "calculadora-raiz";
+
+export type PotenciasRaicesToolStep = LessonStepBase &
+  StageStepFields & {
+    type: "interactive_tool";
+    tool: "potencias-raices";
+    scene: PotenciasRaicesScene;
+  };
+
+export type InteractiveToolStep =
+  | SystemGraphToolStep
+  | NaturalesNumeracionToolStep
+  | PotenciasRaicesToolStep;
 
 type PracticeFields = {
   question: string;
