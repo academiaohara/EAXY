@@ -178,15 +178,20 @@ export function usePotenciasPhases({
 export function SceneShell({
   caption,
   phase,
+  align = "center",
   children,
 }: {
   caption: string;
   phase: number;
+  /** `top`: el contenido empieza arriba, pegado al cuadro de definición. */
+  align?: "center" | "top";
   children: ReactNode;
 }) {
   return (
     <div className="flex h-full min-h-0 w-full flex-1 flex-col items-center gap-2">
-      <div className="flex min-h-0 w-full flex-1 items-center justify-center">{children}</div>
+      <div className={cn("flex min-h-0 w-full flex-1 justify-center", align === "top" ? "items-start" : "items-center")}>
+        {children}
+      </div>
       <div className="flex min-h-[3.5rem] shrink-0 items-start justify-center px-4">
         <p
           key={phase}
