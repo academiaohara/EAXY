@@ -424,7 +424,80 @@ function buildSqrtKeySequence(radicand: number): string[] {
   return ["sqrt", ...String(radicand).split(""), "eq"];
 }
 
-/** Pantalla LCD: radical con vinculum y radicando alineado (estilo fx-991). */
+/** Métricas LCD fx-991 para √x (un trazo continuo + dígitos bajo el vinculum). */
+const CASIO_LCD = {
+  ink: "#1f2937",
+  baselineY: 126,
+  vinculumY: 108,
+  /** Inicio del radicando (justo después del «codo» del radical). */
+  radicandX: 58,
+  digitAdvance: 15,
+  fontSize: 24,
+  /** Cola horizontal del símbolo en la línea base. */
+  tailLeft: 40,
+  tailRight: 48,
+  /** Codo: fin de la diagonal y inicio del vinculum. */
+  kneeX: 54,
+} as const;
+
+function casioSqrtVinculumEnd(radicandChars: number, includePlaceholder: boolean) {
+  const slots = Math.max(radicandChars + (includePlaceholder ? 1 : 0), 1);
+  return CASIO_LCD.radicandX + slots * CASIO_LCD.digitAdvance + 3;
+}
+
+/** Un solo trazo: cola → diagonal → barra (sin saltos que desconecten el radical). */
+function CasioSqrtRadicalStroke({ vinculumEnd }: { vinculumEnd: number }) {
+  const { tailLeft, tailRight, kneeX, baselineY, vinculumY, ink } = CASIO_LCD;
+  return (
+    <path
+      d={`M ${tailLeft} ${baselineY} L ${tailRight} ${baselineY} L ${kneeX} ${vinculumY} L ${vinculumEnd} ${vinculumY}`}
+      fill="none"
+      stroke={ink}
+      strokeWidth={2.4}
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      vectorEffect="non-scaling-stroke"
+      shapeRendering="geometricPrecision"
+    />
+  );
+}
+
+function CasioSqrtRadicandRow({
+  typed,
+  totalLength,
+  showPlaceholder,
+}: {
+  typed: string;
+  totalLength: number;
+  showPlaceholder: boolean;
+}) {
+  const { radicandX, baselineY, vinculumY, digitAdvance, fontSize, ink } = CASIO_LCD;
+  const vinculumEnd = casioSqrtVinculumEnd(typed.length, showPlaceholder && typed.length < totalLength);
+  const placeholderX = radicandX + typed.length * digitAdvance;
+
+  return (
+    <g className="font-mono" style={{ fill: ink }}>
+      <CasioSqrtRadicalStroke vinculumEnd={vinculumEnd} />
+      {typed.length > 0 ? (
+        <text x={radicandX} y={baselineY} fontSize={fontSize} fontWeight={700} style={{ fontFamily: "ui-monospace, monospace" }}>
+          {typed}
+        </text>
+      ) : null}
+      {showPlaceholder && typed.length < totalLength ? (
+        <rect
+          x={placeholderX}
+          y={vinculumY + 5}
+          width={12}
+          height={12}
+          fill="none"
+          stroke={ink}
+          strokeWidth={1.4}
+        />
+      ) : null}
+    </g>
+  );
+}
+
 function SqrtCasioScreen({ phase, radicand, result }: { phase: number; radicand: number; result: number }) {
   const digits = String(radicand);
   const keySequence = buildSqrtKeySequence(radicand);
@@ -432,68 +505,18 @@ function SqrtCasioScreen({ phase, radicand, result }: { phase: number; radicand:
   const showResult = phase >= keySequence.length;
   const showInput = phase >= 1 && !showResult;
 
-  const ink = "#1f2937";
-  const hookX = 44;
-  const radicandX = 62;
-  const vinculumY = 105;
-  const baselineY = 124;
-  const digitAdvance = 16;
-  const slotCount = Math.max(digitsTyped.length + (digitsTyped.length < digits.length ? 1 : 0), 1);
-  const vinculumEnd = radicandX + slotCount * digitAdvance + 2;
-
   if (phase < 1) {
     return null;
   }
 
-  const placeholderX = radicandX + digitsTyped.length * digitAdvance;
-
   return (
     <>
       {showInput ? (
-        <g className="font-mono" style={{ fill: ink }}>
-          {/* Gancho del radical + barra superior sobre el radicando */}
-          <path
-            d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${vinculumEnd} ${vinculumY}`}
-            fill="none"
-            stroke={ink}
-            strokeWidth={2.2}
-            strokeLinejoin="round"
-            strokeLinecap="round"
-          />
-          {digitsTyped.length > 0 ? (
-            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
-              {digitsTyped}
-            </text>
-          ) : null}
-          {digitsTyped.length < digits.length ? (
-            <rect
-              x={placeholderX + 1}
-              y={vinculumY + 4}
-              width={13}
-              height={14}
-              fill="none"
-              stroke={ink}
-              strokeWidth={1.5}
-              rx={0.5}
-            />
-          ) : null}
-        </g>
+        <CasioSqrtRadicandRow typed={digitsTyped} totalLength={digits.length} showPlaceholder />
       ) : null}
       {showResult ? (
         <>
-          <g className="font-mono" style={{ fill: ink }}>
-            <path
-              d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${radicandX + digits.length * digitAdvance + 2} ${vinculumY}`}
-              fill="none"
-              stroke={ink}
-              strokeWidth={2.2}
-              strokeLinejoin="round"
-              strokeLinecap="round"
-            />
-            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
-              {digits}
-            </text>
-          </g>
+          <CasioSqrtRadicandRow typed={digits} totalLength={digits.length} showPlaceholder={false} />
           <text
             x={274}
             y={164}
