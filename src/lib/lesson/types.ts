@@ -460,6 +460,8 @@ export type PredictStep = LessonStepBase &
     correctChoiceId?: string;
     /** Mezcla las opciones con orden estable según el id del paso. */
     shuffleChoices?: boolean;
+    /** Opciones en fila con casillas cuadradas (p. ej. raíz entera). Por defecto, lista vertical. */
+    choiceLayout?: "stack" | "grid";
     /** La pista solo aparece al pulsar el botón «?». */
     hintHiddenUntilRequested?: boolean;
     /** Tras responder, reproducir escena de refuerzo (p. ej. suma completa). */

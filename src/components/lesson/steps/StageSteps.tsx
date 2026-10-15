@@ -733,6 +733,27 @@ export function PredictStepView({
             className="lesson-stage-choice mx-auto block w-full max-w-md rounded-xl border-2 px-4 py-3 text-center text-lg font-semibold"
             aria-label="Tu respuesta"
           />
+        ) : step.choiceLayout === "grid" ? (
+          <div className="mx-auto grid max-w-lg grid-cols-3 gap-3 sm:gap-4">
+            {choiceOptions.map((choice) => (
+              <button
+                key={choice.id}
+                type="button"
+                data-testid={`predict-choice-${choice.id}`}
+                disabled={disabled || checked}
+                onClick={() => setChoiceId(choice.id)}
+                className={predictGridChoiceClassName({
+                  selected: choiceId === choice.id,
+                  checked,
+                })}
+                aria-pressed={choiceId === choice.id}
+              >
+                <span className="text-3xl font-bold text-[color:var(--stage-ink,#e8edf5)] transition group-hover:text-[color:var(--stage-accent,#58c4dd)]">
+                  <LessonRichText text={choice.label} />
+                </span>
+              </button>
+            ))}
+          </div>
         ) : (
           <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
             {choiceOptions.map((choice) => (
