@@ -1,22 +1,22 @@
 "use client";
 
-import { useCallback, useEffect, useState, type ReactNode } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
-import { useReducedMotion } from "@/lib/lesson/stage/use-reduced-motion";
+import { CasioFx991 } from "@/components/lesson/stage/modules/potencias/casio-fx991";
+import {
+  ENTER,
+  SceneShell,
+  Tex,
+  fmt,
+  usePotenciasPhases,
+} from "@/components/lesson/stage/modules/potencias/potencias-shared";
 import { boardSemanticColors } from "@/lib/lesson/stage/board-semantic-colors";
 import type { RaicesConfig } from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
 
 /**
  * Escenas de «Raíz cuadrada» (Tema 2, 1.º ESO).
- *
- * Código de color constante en toda la lección (como en Manim):
- *  - ámbar  = la raíz (el lado del cuadrado)
- *  - turquesa = el radicando (el área del cuadrado)
- *
- * IMPORTANTE: todo LaTeX va en strings con doble barra (`\\sqrt`). Con una sola barra
- * JavaScript se la come y KaTeX pinta «sqrt25» en cursiva (bug de la versión anterior).
+ * Controles de animación en el pie (como potencias / tema 1), vía `usePotenciasPhases`.
  */
 
 export type RaicesCuadradasModuleProps = RaicesConfig & {
@@ -29,16 +29,12 @@ const ROOT = boardSemanticColors.amber;
 const RAD = boardSemanticColors.teal;
 const CELL_REM = 2.25;
 
-/** `\color{…}{…}` para LaTeX. */
 function tex(color: string, content: string | number): string {
   return `\\color{${color}}{${content}}`;
 }
 
 const INK = "text-[color:var(--stage-ink,#e8edf5)]";
 const MUTED = "text-[color:var(--stage-muted,#94a3b8)]";
-const BORDER = "border-[color:var(--stage-border,#334155)]";
-
-/* ---------------------------------------------------------------- hooks */
 
 function useMounted() {
   const [mounted, setMounted] = useState(false);
@@ -49,125 +45,12 @@ function useMounted() {
   return mounted;
 }
 
-/** Fases de la escena: ← / → del teclado, botones y puntos. `ready` al llegar a la última. */
-function usePhases(count: number, onReadyChange?: (ready: boolean) => void) {
-  const last = count - 1;
-  const [phase, setPhase] = useState(0);
-
-  useEffect(() => {
-    onReadyChange?.(phase >= last);
-  }, [last, onReadyChange, phase]);
-
-  const next = useCallback(() => setPhase((p) => Math.min(last, p + 1)), [last]);
-  const prev = useCallback(() => setPhase((p) => Math.max(0, p - 1)), []);
-
-  useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      const target = event.target;
-      if (
-        target instanceof HTMLElement &&
-        (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
-      ) {
-        return;
-      }
-      if (event.key === "ArrowRight") {
-        next();
-      } else if (event.key === "ArrowLeft") {
-        prev();
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev]);
-
-  return { phase, setPhase, next, prev, last };
-}
-
-/* ------------------------------------------------------------- chrome */
-
 function motion(reduced: boolean, extra = "duration-700") {
   return reduced ? "" : `transition-all ease-out ${extra}`;
 }
 
 function reveal(on: boolean, reduced: boolean) {
   return cn(motion(reduced), on ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0");
-}
-
-function SceneFrame({
-  caption,
-  phase,
-  count,
-  onPrev,
-  onNext,
-  setPhase,
-  children,
-  testId,
-}: {
-  caption: string;
-  phase: number;
-  count: number;
-  onPrev: () => void;
-  onNext: () => void;
-  setPhase: (phase: number) => void;
-  children: ReactNode;
-  testId: string;
-}) {
-  return (
-    <div
-      className="flex min-h-0 w-full flex-1 flex-col items-center justify-between gap-4 py-2"
-      data-testid={testId}
-    >
-      <div className="flex w-full flex-1 flex-col items-center justify-center gap-6">{children}</div>
-
-      <p
-        className={cn("min-h-[3.5rem] max-w-3xl text-center text-lg leading-relaxed", INK)}
-        aria-live="polite"
-      >
-        <MathRenderer text={caption} />
-      </p>
-
-      <div className="flex items-center gap-3" role="group" aria-label="Pasos de la escena">
-        <button
-          type="button"
-          onClick={onPrev}
-          disabled={phase === 0}
-          aria-label="Paso anterior"
-          className={cn(
-            "inline-flex size-10 items-center justify-center rounded-full border bg-black/20 transition hover:border-cobalt/50 disabled:opacity-30",
-            BORDER,
-            INK,
-          )}
-        >
-          <ChevronLeftIcon className="size-5" aria-hidden />
-        </button>
-        <div className="flex items-center gap-2">
-          {Array.from({ length: count }, (_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setPhase(i)}
-              aria-label={`Ir al paso ${i + 1} de ${count}`}
-              aria-current={i === phase}
-              className={cn(
-                "h-2.5 rounded-full transition-all",
-                i === phase ? "w-7 bg-[color:var(--stage-accent,#6ee7b7)]" : "w-2.5 bg-slate-600 hover:bg-slate-400",
-              )}
-            />
-          ))}
-        </div>
-        <button
-          type="button"
-          onClick={onNext}
-          disabled={phase === count - 1}
-          aria-label="Paso siguiente"
-          className="inline-flex h-10 items-center gap-1 rounded-full bg-[color:var(--stage-accent,#6ee7b7)] px-4 text-sm font-semibold text-slate-900 transition hover:opacity-90 disabled:opacity-30"
-        >
-          Siguiente
-          <ChevronRightIcon className="size-4" aria-hidden />
-        </button>
-      </div>
-    </div>
-  );
 }
 
 function Formula({ text, reduced, className }: { text: string; reduced: boolean; className?: string }) {
@@ -192,7 +75,6 @@ function Tag({ color, children, on, reduced }: { color: string; children: ReactN
   );
 }
 
-/** Cuadrado hecho de celdas: el área es el radicando; el lado, la raíz. */
 function SquareGrid({
   side,
   cell = CELL_REM,
@@ -232,10 +114,7 @@ function SquareGrid({
               />
             ))}
           </div>
-          <span
-            className="absolute inset-0 flex items-center justify-center text-3xl font-bold"
-            style={{ color: RAD }}
-          >
+          <span className="absolute inset-0 flex items-center justify-center text-3xl font-bold" style={{ color: RAD }}>
             {areaLabel}
           </span>
         </div>
@@ -250,21 +129,16 @@ function SquareGrid({
   );
 }
 
-/* ------------------------------------------------- 1 · inversa del cuadrado */
-
 function InversaCuadrado({
   side = 5,
-  reduced,
   onReadyChange,
 }: {
   side?: number;
-  reduced: boolean;
   onReadyChange?: (ready: boolean) => void;
 }) {
-  const area = side * side;
-  const { phase, next, prev, setPhase } = usePhases(4, onReadyChange);
+  const { phase, reduced } = usePotenciasPhases({ stepCount: 4, onReadyChange, intervalMs: 2800 });
   const mounted = useMounted();
-
+  const area = side * side;
   const root = tex(ROOT, side);
   const rad = tex(RAD, area);
   const formulas = [
@@ -281,16 +155,8 @@ function InversaCuadrado({
   ];
 
   return (
-    <SceneFrame
-      testId="raices-inversa-cuadrado"
-      caption={captions[phase]}
-      phase={phase}
-      count={4}
-      onPrev={prev}
-      onNext={next}
-      setPhase={setPhase}
-    >
-      <div className="flex flex-wrap items-center justify-center gap-16">
+    <SceneShell caption={captions[phase]!} phase={phase}>
+      <div className="flex w-full flex-wrap items-center justify-center gap-16" data-testid="raices-inversa-cuadrado">
         <SquareGrid
           side={side}
           sideLabel={phase === 1 ? "?" : String(side)}
@@ -299,7 +165,7 @@ function InversaCuadrado({
           reduced={reduced}
         />
         <div className="flex min-w-[22rem] flex-col items-center gap-5">
-          <Formula text={formulas[phase]} reduced={reduced} />
+          <Formula text={formulas[phase]!} reduced={reduced} />
           <div className="flex min-h-[2.5rem] gap-3">
             <Tag color={ROOT} on={phase >= 3} reduced={reduced}>
               Raíz = lado
@@ -310,11 +176,9 @@ function InversaCuadrado({
           </div>
         </div>
       </div>
-    </SceneFrame>
+    </SceneShell>
   );
 }
-
-/* ----------------------------------------------- 2 · cuadrados perfectos */
 
 const PERFECT_EXAMPLES = [5, 6, 20] as const;
 const UNIT_REM = 0.6;
@@ -353,14 +217,8 @@ function PerfectSquare({ side, on, reduced }: { side: number; on: boolean; reduc
   );
 }
 
-function CuadradosPerfectos({
-  reduced,
-  onReadyChange,
-}: {
-  reduced: boolean;
-  onReadyChange?: (ready: boolean) => void;
-}) {
-  const { phase, next, prev, setPhase } = usePhases(4, onReadyChange);
+function CuadradosPerfectos({ onReadyChange }: { onReadyChange?: (ready: boolean) => void }) {
+  const { phase, reduced } = usePotenciasPhases({ stepCount: 4, onReadyChange, intervalMs: 3200 });
   const [n, setN] = useState(12);
 
   const captions = [
@@ -371,73 +229,63 @@ function CuadradosPerfectos({
   ];
 
   return (
-    <SceneFrame
-      testId="raices-cuadrados-perfectos"
-      caption={captions[phase]}
-      phase={phase}
-      count={4}
-      onPrev={prev}
-      onNext={next}
-      setPhase={setPhase}
-    >
-      {phase < 3 ? (
-        <div className="flex items-end justify-center gap-20">
-          {PERFECT_EXAMPLES.map((side, i) => (
-            <PerfectSquare key={side} side={side} on={phase >= i} reduced={reduced} />
-          ))}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center gap-5" data-testid="raices-explorador">
-          <Formula text={`$\\sqrt{${tex(RAD, n * n)}} = ${tex(ROOT, n)}$`} reduced />
-          <div
-            className="flex items-center justify-center rounded-md border-[3px]"
-            style={{
-              width: `${n * UNIT_REM}rem`,
-              height: `${n * UNIT_REM}rem`,
-              borderColor: ROOT,
-              backgroundColor: `${RAD}30`,
-              color: RAD,
-              transition: reduced ? undefined : "width .25s ease, height .25s ease",
-            }}
-          >
-            <span className="text-xl font-bold">{n * n}</span>
+    <SceneShell caption={captions[phase]!} phase={phase}>
+      <div className="flex w-full flex-col items-center justify-center" data-testid="raices-cuadrados-perfectos">
+        {phase < 3 ? (
+          <div className="flex items-end justify-center gap-20">
+            {PERFECT_EXAMPLES.map((side, i) => (
+              <PerfectSquare key={side} side={side} on={phase >= i} reduced={reduced} />
+            ))}
           </div>
-          <label className={cn("flex items-center gap-3 text-sm font-semibold", MUTED)}>
-            Lado
-            <input
-              type="range"
-              min={1}
-              max={20}
-              value={n}
-              onChange={(event) => setN(Number(event.target.value))}
-              className="w-72 accent-[#ffd866]"
-              aria-label="Lado del cuadrado"
-            />
-            <span className="w-6 text-lg font-bold" style={{ color: ROOT }}>
-              {n}
-            </span>
-          </label>
-          <p className={cn("text-base", INK)}>
-            <MathRenderer text={`$${n * n}$ es un **cuadrado perfecto** porque su raíz es exacta.`} />
-          </p>
-        </div>
-      )}
-    </SceneFrame>
+        ) : (
+          <div className="flex flex-col items-center gap-5" data-testid="raices-explorador">
+            <Formula text={`$\\sqrt{${tex(RAD, n * n)}} = ${tex(ROOT, n)}$`} reduced={reduced} />
+            <div
+              className="flex items-center justify-center rounded-md border-[3px]"
+              style={{
+                width: `${n * UNIT_REM}rem`,
+                height: `${n * UNIT_REM}rem`,
+                borderColor: ROOT,
+                backgroundColor: `${RAD}30`,
+                color: RAD,
+                transition: reduced ? undefined : "width .25s ease, height .25s ease",
+              }}
+            >
+              <span className="text-xl font-bold">{n * n}</span>
+            </div>
+            <label className={cn("flex items-center gap-3 text-sm font-semibold", MUTED)}>
+              Lado
+              <input
+                type="range"
+                min={1}
+                max={20}
+                value={n}
+                onChange={(event) => setN(Number(event.target.value))}
+                className="w-72 accent-[#ffd866]"
+                aria-label="Lado del cuadrado"
+              />
+              <span className="w-6 text-lg font-bold" style={{ color: ROOT }}>
+                {n}
+              </span>
+            </label>
+            <p className={cn("text-base", INK)}>
+              <MathRenderer text={`$${n * n}$ es un **cuadrado perfecto** porque su raíz es exacta.`} />
+            </p>
+          </div>
+        )}
+      </div>
+    </SceneShell>
   );
 }
 
-/* ------------------------------------------------------- 3 · raíz entera */
-
 function RaizEntera({
   radicand = 40,
-  reduced,
   onReadyChange,
 }: {
   radicand?: number;
-  reduced: boolean;
   onReadyChange?: (ready: boolean) => void;
 }) {
-  const { phase, next, prev, setPhase } = usePhases(4, onReadyChange);
+  const { phase, reduced } = usePotenciasPhases({ stepCount: 4, onReadyChange, intervalMs: 3000 });
   const r = Math.sqrt(radicand);
   const lo = Math.floor(r);
   const hi = lo + 1;
@@ -462,212 +310,240 @@ function RaizEntera({
   );
 
   return (
-    <SceneFrame
-      testId="raices-raiz-entera"
-      caption={captions[phase]}
-      phase={phase}
-      count={4}
-      onPrev={prev}
-      onNext={next}
-      setPhase={setPhase}
-    >
-      <div className={cn("text-3xl", INK)}>
-        <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}}$`} />
-      </div>
-
-      <div className="relative h-56 w-[min(60rem,90%)]">
-        {/* banda lo..hi */}
-        <div
-          className={cn("absolute top-1/2 h-8 -translate-y-1/2 rounded-md", motion(reduced))}
-          style={{ left: pos(lo), width: width(lo, hi), backgroundColor: `${RAD}22`, opacity: phase >= 2 ? 1 : 0 }}
-        />
-        {/* eje */}
-        <div className={cn("absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 bg-slate-500")} />
-        {Array.from({ length: 11 }, (_, k) => {
-          const x = lo + k / 10;
-          const major = k === 0 || k === 10;
-          return (
-            <span
-              key={k}
-              className={cn("absolute top-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-500", major ? "h-6 w-[3px]" : "h-3 w-px")}
-              style={{ left: pos(x) }}
-            />
-          );
-        })}
-        {/* segmento «por debajo» */}
-        <div
-          className={cn("absolute top-1/2 h-[5px] -translate-y-1/2 rounded-full", motion(reduced, "duration-1000"))}
-          style={{ left: pos(lo), width: width(lo, r), backgroundColor: ROOT, opacity: phase >= 3 ? 1 : 0 }}
-        />
-
-        {dot(pos(lo), phase >= 3 ? ROOT : RAD, true)}
-        {dot(pos(hi), RAD, phase >= 1)}
-        {dot(phase >= 2 ? pos(r) : pos(lo), phase >= 3 ? ROOT : RAD, phase >= 2, "size-6")}
-
-        {/* ecuaciones sobre los puntos */}
-        <div
-          className={cn("absolute bottom-[62%] -translate-x-1/2 whitespace-nowrap text-2xl", INK, reveal(true, reduced))}
-          style={{ left: pos(lo) }}
-        >
-          <MathRenderer text={`$${lo}^2 = ${lo * lo} < ${radicand}$`} />
-        </div>
-        <div
-          className={cn("absolute bottom-[62%] -translate-x-1/2 whitespace-nowrap text-2xl", INK, reveal(phase >= 1, reduced))}
-          style={{ left: pos(hi) }}
-        >
-          <MathRenderer text={`$${hi}^2 = ${hi * hi} > ${radicand}$`} />
+    <SceneShell caption={captions[phase]!} phase={phase}>
+      <div className="flex w-full flex-col items-center gap-6" data-testid="raices-raiz-entera">
+        <div className={cn("text-3xl", INK)}>
+          <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}}$`} />
         </div>
 
-        {/* números del eje */}
-        {[lo, hi].map((x) => (
+        <div className="relative h-56 w-[min(60rem,90%)]">
           <div
-            key={x}
-            className="absolute top-[58%] -translate-x-1/2 text-2xl font-bold"
-            style={{ left: pos(x), color: x === lo && phase >= 3 ? ROOT : "var(--stage-ink,#e8edf5)" }}
-          >
-            {x}
-          </div>
-        ))}
-
-        {/* raíz */}
-        <div
-          className={cn("absolute top-[78%] -translate-x-1/2 whitespace-nowrap text-2xl", reveal(phase >= 2, reduced))}
-          style={{ left: pos(r) }}
-        >
-          <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}} \\approx ${approx}$`} />
-        </div>
-        <div
-          className={cn("absolute top-[38%] -translate-x-1/2 whitespace-nowrap text-sm font-bold", reveal(phase >= 3, reduced))}
-          style={{ left: pos((lo + r) / 2), color: ROOT, transform: "translate(-50%, -140%)" }}
-        >
-          por debajo
-        </div>
-      </div>
-
-      <div className="min-h-[3rem]">
-        {phase >= 2 ? (
-          <Formula
-            text={
-              phase >= 3
-                ? `$${tex(ROOT, lo)} < \\sqrt{${tex(RAD, radicand)}} < ${hi} \\;\\Rightarrow\\; \\text{raíz entera} = ${tex(ROOT, lo)}$`
-                : `$${lo} < \\sqrt{${tex(RAD, radicand)}} < ${hi}$`
-            }
-            reduced={reduced}
+            className={cn("absolute top-1/2 h-8 -translate-y-1/2 rounded-md", motion(reduced))}
+            style={{ left: pos(lo), width: width(lo, hi), backgroundColor: `${RAD}22`, opacity: phase >= 2 ? 1 : 0 }}
           />
-        ) : null}
+          <div className={cn("absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 bg-slate-500")} />
+          {Array.from({ length: 11 }, (_, k) => {
+            const x = lo + k / 10;
+            const major = k === 0 || k === 10;
+            return (
+              <span
+                key={k}
+                className={cn("absolute top-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-500", major ? "h-6 w-[3px]" : "h-3 w-px")}
+                style={{ left: pos(x) }}
+              />
+            );
+          })}
+          <div
+            className={cn("absolute top-1/2 h-[5px] -translate-y-1/2 rounded-full", motion(reduced, "duration-1000"))}
+            style={{ left: pos(lo), width: width(lo, r), backgroundColor: ROOT, opacity: phase >= 3 ? 1 : 0 }}
+          />
+
+          {dot(pos(lo), phase >= 3 ? ROOT : RAD, true)}
+          {dot(pos(hi), RAD, phase >= 1)}
+          {dot(phase >= 2 ? pos(r) : pos(lo), phase >= 3 ? ROOT : RAD, phase >= 2, "size-6")}
+
+          <div
+            className={cn("absolute bottom-[62%] -translate-x-1/2 whitespace-nowrap text-2xl", INK, reveal(true, reduced))}
+            style={{ left: pos(lo) }}
+          >
+            <MathRenderer text={`$${lo}^2 = ${lo * lo} < ${radicand}$`} />
+          </div>
+          <div
+            className={cn("absolute bottom-[62%] -translate-x-1/2 whitespace-nowrap text-2xl", INK, reveal(phase >= 1, reduced))}
+            style={{ left: pos(hi) }}
+          >
+            <MathRenderer text={`$${hi}^2 = ${hi * hi} > ${radicand}$`} />
+          </div>
+
+          {[lo, hi].map((x) => (
+            <div
+              key={x}
+              className="absolute top-[58%] -translate-x-1/2 text-2xl font-bold"
+              style={{ left: pos(x), color: x === lo && phase >= 3 ? ROOT : "var(--stage-ink,#e8edf5)" }}
+            >
+              {x}
+            </div>
+          ))}
+
+          <div
+            className={cn("absolute top-[78%] -translate-x-1/2 whitespace-nowrap text-2xl", reveal(phase >= 2, reduced))}
+            style={{ left: pos(r) }}
+          >
+            <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}} \\approx ${approx}$`} />
+          </div>
+          <div
+            className={cn("absolute top-[38%] -translate-x-1/2 whitespace-nowrap text-sm font-bold", reveal(phase >= 3, reduced))}
+            style={{ left: pos((lo + r) / 2), color: ROOT, transform: "translate(-50%, -140%)" }}
+          >
+            por debajo
+          </div>
+        </div>
+
+        <div className="min-h-[3rem]">
+          {phase >= 2 ? (
+            <Formula
+              text={
+                phase >= 3
+                  ? `$${tex(ROOT, lo)} < \\sqrt{${tex(RAD, radicand)}} < ${hi} \\;\\Rightarrow\\; \\text{raíz entera} = ${tex(ROOT, lo)}$`
+                  : `$${lo} < \\sqrt{${tex(RAD, radicand)}} < ${hi}$`
+              }
+              reduced={reduced}
+            />
+          ) : null}
+        </div>
       </div>
-    </SceneFrame>
+    </SceneShell>
   );
 }
 
-/* --------------------------------------------------- 4 · calculadora */
+function SqrtKeyChip({ id }: { id: string }) {
+  if (id === "sqrt") {
+    return (
+      <span aria-label="tecla de raíz cuadrada">
+        √<span className="inline-block h-3 w-3 border border-current align-middle" aria-hidden />
+      </span>
+    );
+  }
+  if (id === "eq") {
+    return <>=</>;
+  }
+  return <>{id}</>;
+}
 
-function Key({ lit, children, reduced }: { lit: boolean; children: ReactNode; reduced: boolean }) {
+function buildSqrtKeySequence(radicand: number): string[] {
+  return ["sqrt", ...String(radicand).split(""), "eq"];
+}
+
+function SqrtCasioScreen({ phase, radicand, result }: { phase: number; radicand: number; result: number }) {
+  const digits = String(radicand);
+  const keySequence = buildSqrtKeySequence(radicand);
+  const digitsTyped =
+    phase >= 2 ? digits.slice(0, Math.min(phase - 1, digits.length)) : "";
+  const showResult = phase >= keySequence.length;
+
+  if (phase < 1) {
+    return null;
+  }
+
   return (
-    <span
-      className={cn(
-        "inline-flex min-h-[3.5rem] min-w-[4rem] items-center justify-center rounded-xl border-2 px-4 text-2xl font-semibold",
-        motion(reduced, "duration-300"),
-        lit ? "scale-110 text-[color:var(--stage-ink,#e8edf5)]" : "scale-100 text-slate-500",
-      )}
-      style={{
-        borderColor: lit ? ROOT : "#334155",
-        backgroundColor: lit ? `${ROOT}22` : "rgba(0,0,0,.2)",
-        boxShadow: lit ? `0 0 22px ${ROOT}55` : undefined,
-      }}
-    >
-      {children}
-    </span>
+    <>
+      <g style={{ fill: "#1f2937" }} className="font-mono">
+        <text x={46} y={124} fontSize={26} fontWeight={700}>
+          √
+        </text>
+        {phase === 1 ? (
+          <rect x={68} y={102} width={14} height={14} fill="none" stroke="#1f2937" strokeWidth={1.5} />
+        ) : (
+          <text x={68} y={124} fontSize={26} fontWeight={700}>
+            {digitsTyped}
+          </text>
+        )}
+        {phase >= 2 && digitsTyped.length < digits.length ? (
+          <rect x={68 + digitsTyped.length * 15 + 2} y={102} width={11} height={11} fill="none" stroke="#1f2937" strokeWidth={1.5} />
+        ) : null}
+      </g>
+      {showResult ? (
+        <text x={274} y={164} textAnchor="end" fontSize={28} fontWeight={700} className={cn(ENTER, "font-mono duration-500")} style={{ fill: "#111827" }}>
+          {result}
+        </text>
+      ) : null}
+    </>
   );
 }
 
-function RaizCalculadora({
-  radicand = 144,
-  reduced,
-  onReadyChange,
-}: {
-  radicand?: number;
-  reduced: boolean;
-  onReadyChange?: (ready: boolean) => void;
-}) {
-  const { phase, next, prev, setPhase } = usePhases(4, onReadyChange);
-  const root = Math.round(Math.sqrt(radicand));
+function RaizCalculadora({ radicand = 144, onReadyChange }: { radicand?: number; onReadyChange?: (ready: boolean) => void }) {
+  const keySequence = useMemo(() => buildSqrtKeySequence(radicand), [radicand]);
+  const stepCount = keySequence.length + 1;
+  const { phase } = usePotenciasPhases({ stepCount, onReadyChange, intervalMs: 1900 });
+  const result = Math.round(Math.sqrt(radicand));
 
   const captions = [
-    `Para calcular $\\sqrt{${radicand}}$ solo necesitas tres pulsaciones.`,
-    "Primero, la tecla de la raíz cuadrada.",
-    `Después, el radicando: $${radicand}$.`,
-    `Y para terminar, la tecla igual. Comprobamos: $${root}^2 = ${radicand}$.`,
+    "En la calculadora científica hay una tecla para la raíz cuadrada.",
+    "Primero, la tecla √.",
   ];
+  const digitChars = String(radicand).split("");
+  digitChars.forEach((digit, i) => {
+    if (digitChars.length === 1) {
+      captions.push(`Después, el radicando: $${digit}$.`);
+    } else if (i === 0) {
+      captions.push(`Escribe el radicando $${radicand}$, empezando por $${digit}$.`);
+    } else if (i === digitChars.length - 1) {
+      captions.push(`Termina con el dígito $${digit}$.`);
+    } else {
+      captions.push(`Sigue con el dígito $${digit}$.`);
+    }
+  });
+  captions.push(`Y con «=» aparece el resultado: ${fmt(result)}.`);
 
-  const expression = phase === 0 ? "" : phase === 1 ? "√ ▯" : `√${radicand}`;
+  const resultPhase = keySequence.length;
 
   return (
-    <SceneFrame
-      testId="raices-calculadora"
-      caption={captions[phase]}
-      phase={phase}
-      count={4}
-      onPrev={prev}
-      onNext={next}
-      setPhase={setPhase}
-    >
-      <div className={cn("text-3xl", INK)}>
-        <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}}$`} />
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <Key lit={phase === 1} reduced={reduced}>
-          <MathRenderer text="$\\sqrt{\\square}$" />
-        </Key>
-        <Key lit={phase === 2} reduced={reduced}>
-          {radicand}
-        </Key>
-        <Key lit={phase === 3} reduced={reduced}>
-          =
-        </Key>
-      </div>
-
+    <SceneShell caption={captions[Math.min(phase, captions.length - 1)]!} phase={phase}>
       <div
-        className={cn("flex w-[22rem] flex-col rounded-2xl border-2 bg-black/30 px-5 py-3", BORDER)}
-        aria-label="Pantalla de la calculadora"
+        className="grid h-full min-h-0 w-full max-w-5xl grid-cols-[auto_1fr] items-center gap-10"
+        data-testid="raices-calculadora"
+        aria-label="Calcular una raíz cuadrada con la calculadora"
       >
-        <span className={cn("min-h-[1.75rem] font-mono text-xl", MUTED)}>{expression}</span>
-        <span
-          className={cn("min-h-[3.25rem] text-right font-mono text-5xl font-bold", motion(reduced, "duration-500"))}
-          style={{ color: ROOT, opacity: phase >= 3 ? 1 : 0 }}
-        >
-          {root}
-        </span>
-      </div>
-
-      <div className="min-h-[3rem]">
-        {phase >= 3 ? (
-          <Formula
-            text={`$${root}^2 = ${tex(RAD, radicand)} \\;\\Rightarrow\\; \\sqrt{${tex(RAD, radicand)}} = ${tex(ROOT, root)}$`}
-            reduced={reduced}
+        <div className="flex h-full min-h-0 items-center justify-center">
+          <CasioFx991
+            phase={phase}
+            keySequence={keySequence}
+            accentColor={ROOT}
+            emphasisKeyIds={["sqrt"]}
+            ariaLabel={`Calculadora Casio fx-991ES Plus calculando raíz cuadrada de ${radicand}`}
+            screen={<SqrtCasioScreen phase={phase} radicand={radicand} result={result} />}
           />
-        ) : null}
+        </div>
+
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-3xl text-[color:var(--stage-ink,#e8edf5)]">
+            <Tex t={`\\sqrt{${tex(RAD, radicand)}}`} />
+            <span className="text-[color:var(--stage-muted,#94a3b8)]">→</span>
+            {keySequence.map((id, i) => (
+              <span
+                key={`${id}-${i}`}
+                className={cn(
+                  "flex h-12 min-w-12 items-center justify-center rounded-xl border-2 px-3 font-mono text-xl font-bold transition-all duration-300",
+                  phase > i + 1 && "border-[#ffd866]/60 text-[#ffd866]",
+                  phase === i + 1 && "scale-110 border-[#ffd866] bg-[#ffd866]/20 text-[#ffd866]",
+                  phase < i + 1 && "border-[color:var(--stage-border,#334155)] text-[color:var(--stage-muted,#94a3b8)]",
+                )}
+              >
+                <SqrtKeyChip id={id} />
+              </span>
+            ))}
+            {phase >= resultPhase ? (
+              <>
+                <span className="text-[color:var(--stage-muted,#94a3b8)]">→</span>
+                <span className={cn(ENTER, "zoom-in-75 rounded-xl border-2 border-[#5eead4] bg-[#5eead4]/15 px-4 py-2 font-mono text-2xl font-bold text-[#5eead4] duration-500")}>
+                  {result}
+                </span>
+              </>
+            ) : null}
+          </div>
+          {phase >= resultPhase ? (
+            <p className={cn(ENTER, "text-center text-base duration-700 text-[color:var(--stage-muted,#94a3b8)]")} style={{ animationDelay: "400ms" }}>
+              Comprobación:{" "}
+              <Tex t={`${result}^2 = ${tex(RAD, radicand)} \\;\\Rightarrow\\; \\sqrt{${tex(RAD, radicand)}} = ${tex(ROOT, result)}`} />
+            </p>
+          ) : null}
+        </div>
       </div>
-    </SceneFrame>
+    </SceneShell>
   );
 }
 
-/* ----------------------------------------------------------- módulo */
-
 export function RaicesCuadradasModule({ scene, radicand, root, onReadyChange }: RaicesCuadradasModuleProps) {
-  const reduced = useReducedMotion();
-
   return (
     <div className="flex min-h-0 w-full max-w-full flex-1 flex-col" data-testid={`raices-scene-${scene}`}>
       {scene === "inversa-cuadrado" ? (
-        <InversaCuadrado side={root ?? 5} reduced={reduced} onReadyChange={onReadyChange} />
+        <InversaCuadrado side={root ?? 5} onReadyChange={onReadyChange} />
       ) : scene === "cuadrados-perfectos" ? (
-        <CuadradosPerfectos reduced={reduced} onReadyChange={onReadyChange} />
+        <CuadradosPerfectos onReadyChange={onReadyChange} />
       ) : scene === "raiz-entera" ? (
-        <RaizEntera radicand={radicand ?? 40} reduced={reduced} onReadyChange={onReadyChange} />
+        <RaizEntera radicand={radicand ?? 40} onReadyChange={onReadyChange} />
       ) : scene === "raiz-calculadora" ? (
-        <RaizCalculadora radicand={radicand ?? 144} reduced={reduced} onReadyChange={onReadyChange} />
+        <RaizCalculadora radicand={radicand ?? 144} onReadyChange={onReadyChange} />
       ) : (
         <p className="text-sm text-rose-700">Escena no configurada.</p>
       )}
