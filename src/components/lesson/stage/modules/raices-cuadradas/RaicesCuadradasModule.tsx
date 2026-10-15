@@ -424,38 +424,88 @@ function buildSqrtKeySequence(radicand: number): string[] {
   return ["sqrt", ...String(radicand).split(""), "eq"];
 }
 
+/** Pantalla LCD: radical con vinculum y radicando alineado (estilo fx-991). */
 function SqrtCasioScreen({ phase, radicand, result }: { phase: number; radicand: number; result: number }) {
   const digits = String(radicand);
   const keySequence = buildSqrtKeySequence(radicand);
-  const digitsTyped =
-    phase >= 2 ? digits.slice(0, Math.min(phase - 1, digits.length)) : "";
+  const digitsTyped = phase >= 2 ? digits.slice(0, Math.min(phase - 1, digits.length)) : "";
   const showResult = phase >= keySequence.length;
+  const showInput = phase >= 1 && !showResult;
+
+  const ink = "#1f2937";
+  const hookX = 44;
+  const radicandX = 62;
+  const vinculumY = 105;
+  const baselineY = 124;
+  const digitAdvance = 16;
+  const slotCount = Math.max(digitsTyped.length + (digitsTyped.length < digits.length ? 1 : 0), 1);
+  const vinculumEnd = radicandX + slotCount * digitAdvance + 2;
 
   if (phase < 1) {
     return null;
   }
 
+  const placeholderX = radicandX + digitsTyped.length * digitAdvance;
+
   return (
     <>
-      <g style={{ fill: "#1f2937" }} className="font-mono">
-        <text x={46} y={124} fontSize={26} fontWeight={700}>
-          √
-        </text>
-        {phase === 1 ? (
-          <rect x={68} y={102} width={14} height={14} fill="none" stroke="#1f2937" strokeWidth={1.5} />
-        ) : (
-          <text x={68} y={124} fontSize={26} fontWeight={700}>
-            {digitsTyped}
-          </text>
-        )}
-        {phase >= 2 && digitsTyped.length < digits.length ? (
-          <rect x={68 + digitsTyped.length * 15 + 2} y={102} width={11} height={11} fill="none" stroke="#1f2937" strokeWidth={1.5} />
-        ) : null}
-      </g>
+      {showInput ? (
+        <g className="font-mono" style={{ fill: ink }}>
+          {/* Gancho del radical + barra superior sobre el radicando */}
+          <path
+            d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${vinculumEnd} ${vinculumY}`}
+            fill="none"
+            stroke={ink}
+            strokeWidth={2.2}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+          {digitsTyped.length > 0 ? (
+            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
+              {digitsTyped}
+            </text>
+          ) : null}
+          {digitsTyped.length < digits.length ? (
+            <rect
+              x={placeholderX + 1}
+              y={vinculumY + 4}
+              width={13}
+              height={14}
+              fill="none"
+              stroke={ink}
+              strokeWidth={1.5}
+              rx={0.5}
+            />
+          ) : null}
+        </g>
+      ) : null}
       {showResult ? (
-        <text x={274} y={164} textAnchor="end" fontSize={28} fontWeight={700} className={cn(ENTER, "font-mono duration-500")} style={{ fill: "#111827" }}>
-          {result}
-        </text>
+        <>
+          <g className="font-mono" style={{ fill: ink }}>
+            <path
+              d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${radicandX + digits.length * digitAdvance + 2} ${vinculumY}`}
+              fill="none"
+              stroke={ink}
+              strokeWidth={2.2}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+            />
+            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
+              {digits}
+            </text>
+          </g>
+          <text
+            x={274}
+            y={164}
+            textAnchor="end"
+            fontSize={28}
+            fontWeight={700}
+            className={cn(ENTER, "font-mono duration-500")}
+            style={{ fill: "#111827" }}
+          >
+            {result}
+          </text>
+        </>
       ) : null}
     </>
   );
