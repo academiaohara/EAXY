@@ -96,7 +96,7 @@ function SquareGrid({
       <div className="flex flex-col items-center gap-2">
         <div className="relative" style={{ width: `${size}rem`, height: `${size}rem` }}>
           <div
-            className="grid h-full w-full overflow-hidden rounded-md border-2"
+            className="grid h-full w-full overflow-hidden border-2"
             style={{
               gridTemplateColumns: `repeat(${side}, 1fr)`,
               gridTemplateRows: `repeat(${side}, 1fr)`,
@@ -186,6 +186,7 @@ const UNIT_REM = 0.6;
 function PerfectSquare({ side, on, reduced }: { side: number; on: boolean; reduced: boolean }) {
   const size = side * UNIT_REM;
   const area = side * side;
+  const areaOutside = side <= 2;
   return (
     <div className={cn("flex flex-col items-center gap-3", reveal(on, reduced))}>
       <div className={cn("text-2xl", INK)}>
@@ -193,17 +194,25 @@ function PerfectSquare({ side, on, reduced }: { side: number; on: boolean; reduc
       </div>
       <div className="flex items-center gap-2">
         <div className="flex flex-col items-center gap-1">
+          {areaOutside ? (
+            <span className="text-base font-bold leading-none" style={{ color: RAD }}>
+              {area}
+            </span>
+          ) : null}
           <div
-            className="flex items-center justify-center rounded-md border-[3px]"
+            className="border-[3px]"
             style={{
               width: `${size}rem`,
               height: `${size}rem`,
               borderColor: ROOT,
               backgroundColor: `${RAD}30`,
-              color: RAD,
             }}
           >
-            <span className="font-bold">{area}</span>
+            {!areaOutside ? (
+              <span className="flex h-full w-full items-center justify-center font-bold" style={{ color: RAD }}>
+                {area}
+              </span>
+            ) : null}
           </div>
           <span className="text-lg font-bold" style={{ color: ROOT }}>
             {side}
@@ -240,18 +249,25 @@ function CuadradosPerfectos({ onReadyChange }: { onReadyChange?: (ready: boolean
         ) : (
           <div className="flex flex-col items-center gap-5" data-testid="raices-explorador">
             <Formula text={`$\\sqrt{${tex(RAD, n * n)}} = ${tex(ROOT, n)}$`} reduced={reduced} />
-            <div
-              className="flex items-center justify-center rounded-md border-[3px]"
-              style={{
-                width: `${n * UNIT_REM}rem`,
-                height: `${n * UNIT_REM}rem`,
-                borderColor: ROOT,
-                backgroundColor: `${RAD}30`,
-                color: RAD,
-                transition: reduced ? undefined : "width .25s ease, height .25s ease",
-              }}
-            >
-              <span className="text-xl font-bold">{n * n}</span>
+            <div className="flex flex-col items-center gap-1">
+              {n <= 2 ? (
+                <span className="text-lg font-bold leading-none" style={{ color: RAD }}>
+                  {n * n}
+                </span>
+              ) : null}
+              <div
+                className={cn("border-[3px]", n > 2 && "flex items-center justify-center")}
+                style={{
+                  width: `${n * UNIT_REM}rem`,
+                  height: `${n * UNIT_REM}rem`,
+                  borderColor: ROOT,
+                  backgroundColor: `${RAD}30`,
+                  color: RAD,
+                  transition: reduced ? undefined : "width .25s ease, height .25s ease",
+                }}
+              >
+                {n > 2 ? <span className="text-xl font-bold">{n * n}</span> : null}
+              </div>
             </div>
             <label className={cn("flex items-center gap-3 text-sm font-semibold", MUTED)}>
               Lado
@@ -370,12 +386,6 @@ function RaizEntera({
             style={{ left: pos(r) }}
           >
             <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}} \\approx ${approx}$`} />
-          </div>
-          <div
-            className={cn("absolute top-[38%] -translate-x-1/2 whitespace-nowrap text-sm font-bold", reveal(phase >= 3, reduced))}
-            style={{ left: pos((lo + r) / 2), color: ROOT, transform: "translate(-50%, -140%)" }}
-          >
-            por debajo
           </div>
         </div>
 
