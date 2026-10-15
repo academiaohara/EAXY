@@ -96,7 +96,7 @@ function SquareGrid({
       <div className="flex flex-col items-center gap-2">
         <div className="relative" style={{ width: `${size}rem`, height: `${size}rem` }}>
           <div
-            className="grid h-full w-full overflow-hidden rounded-md border-2"
+            className="grid h-full w-full overflow-hidden border-2"
             style={{
               gridTemplateColumns: `repeat(${side}, 1fr)`,
               gridTemplateRows: `repeat(${side}, 1fr)`,
@@ -186,6 +186,7 @@ const UNIT_REM = 0.6;
 function PerfectSquare({ side, on, reduced }: { side: number; on: boolean; reduced: boolean }) {
   const size = side * UNIT_REM;
   const area = side * side;
+  const areaOutside = side <= 2;
   return (
     <div className={cn("flex flex-col items-center gap-3", reveal(on, reduced))}>
       <div className={cn("text-2xl", INK)}>
@@ -193,17 +194,25 @@ function PerfectSquare({ side, on, reduced }: { side: number; on: boolean; reduc
       </div>
       <div className="flex items-center gap-2">
         <div className="flex flex-col items-center gap-1">
+          {areaOutside ? (
+            <span className="text-base font-bold leading-none" style={{ color: RAD }}>
+              {area}
+            </span>
+          ) : null}
           <div
-            className="flex items-center justify-center rounded-md border-[3px]"
+            className="border-[3px]"
             style={{
               width: `${size}rem`,
               height: `${size}rem`,
               borderColor: ROOT,
               backgroundColor: `${RAD}30`,
-              color: RAD,
             }}
           >
-            <span className="font-bold">{area}</span>
+            {!areaOutside ? (
+              <span className="flex h-full w-full items-center justify-center font-bold" style={{ color: RAD }}>
+                {area}
+              </span>
+            ) : null}
           </div>
           <span className="text-lg font-bold" style={{ color: ROOT }}>
             {side}
@@ -240,18 +249,25 @@ function CuadradosPerfectos({ onReadyChange }: { onReadyChange?: (ready: boolean
         ) : (
           <div className="flex flex-col items-center gap-5" data-testid="raices-explorador">
             <Formula text={`$\\sqrt{${tex(RAD, n * n)}} = ${tex(ROOT, n)}$`} reduced={reduced} />
-            <div
-              className="flex items-center justify-center rounded-md border-[3px]"
-              style={{
-                width: `${n * UNIT_REM}rem`,
-                height: `${n * UNIT_REM}rem`,
-                borderColor: ROOT,
-                backgroundColor: `${RAD}30`,
-                color: RAD,
-                transition: reduced ? undefined : "width .25s ease, height .25s ease",
-              }}
-            >
-              <span className="text-xl font-bold">{n * n}</span>
+            <div className="flex flex-col items-center gap-1">
+              {n <= 2 ? (
+                <span className="text-lg font-bold leading-none" style={{ color: RAD }}>
+                  {n * n}
+                </span>
+              ) : null}
+              <div
+                className={cn("border-[3px]", n > 2 && "flex items-center justify-center")}
+                style={{
+                  width: `${n * UNIT_REM}rem`,
+                  height: `${n * UNIT_REM}rem`,
+                  borderColor: ROOT,
+                  backgroundColor: `${RAD}30`,
+                  color: RAD,
+                  transition: reduced ? undefined : "width .25s ease, height .25s ease",
+                }}
+              >
+                {n > 2 ? <span className="text-xl font-bold">{n * n}</span> : null}
+              </div>
             </div>
             <label className={cn("flex items-center gap-3 text-sm font-semibold", MUTED)}>
               Lado
@@ -371,12 +387,6 @@ function RaizEntera({
           >
             <MathRenderer text={`$\\sqrt{${tex(RAD, radicand)}} \\approx ${approx}$`} />
           </div>
-          <div
-            className={cn("absolute top-[38%] -translate-x-1/2 whitespace-nowrap text-sm font-bold", reveal(phase >= 3, reduced))}
-            style={{ left: pos((lo + r) / 2), color: ROOT, transform: "translate(-50%, -140%)" }}
-          >
-            por debajo
-          </div>
         </div>
 
         <div className="min-h-[3rem]">
@@ -414,38 +424,88 @@ function buildSqrtKeySequence(radicand: number): string[] {
   return ["sqrt", ...String(radicand).split(""), "eq"];
 }
 
+/** Pantalla LCD: radical con vinculum y radicando alineado (estilo fx-991). */
 function SqrtCasioScreen({ phase, radicand, result }: { phase: number; radicand: number; result: number }) {
   const digits = String(radicand);
   const keySequence = buildSqrtKeySequence(radicand);
-  const digitsTyped =
-    phase >= 2 ? digits.slice(0, Math.min(phase - 1, digits.length)) : "";
+  const digitsTyped = phase >= 2 ? digits.slice(0, Math.min(phase - 1, digits.length)) : "";
   const showResult = phase >= keySequence.length;
+  const showInput = phase >= 1 && !showResult;
+
+  const ink = "#1f2937";
+  const hookX = 44;
+  const radicandX = 62;
+  const vinculumY = 105;
+  const baselineY = 124;
+  const digitAdvance = 16;
+  const slotCount = Math.max(digitsTyped.length + (digitsTyped.length < digits.length ? 1 : 0), 1);
+  const vinculumEnd = radicandX + slotCount * digitAdvance + 2;
 
   if (phase < 1) {
     return null;
   }
 
+  const placeholderX = radicandX + digitsTyped.length * digitAdvance;
+
   return (
     <>
-      <g style={{ fill: "#1f2937" }} className="font-mono">
-        <text x={46} y={124} fontSize={26} fontWeight={700}>
-          √
-        </text>
-        {phase === 1 ? (
-          <rect x={68} y={102} width={14} height={14} fill="none" stroke="#1f2937" strokeWidth={1.5} />
-        ) : (
-          <text x={68} y={124} fontSize={26} fontWeight={700}>
-            {digitsTyped}
-          </text>
-        )}
-        {phase >= 2 && digitsTyped.length < digits.length ? (
-          <rect x={68 + digitsTyped.length * 15 + 2} y={102} width={11} height={11} fill="none" stroke="#1f2937" strokeWidth={1.5} />
-        ) : null}
-      </g>
+      {showInput ? (
+        <g className="font-mono" style={{ fill: ink }}>
+          {/* Gancho del radical + barra superior sobre el radicando */}
+          <path
+            d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${vinculumEnd} ${vinculumY}`}
+            fill="none"
+            stroke={ink}
+            strokeWidth={2.2}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+          {digitsTyped.length > 0 ? (
+            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
+              {digitsTyped}
+            </text>
+          ) : null}
+          {digitsTyped.length < digits.length ? (
+            <rect
+              x={placeholderX + 1}
+              y={vinculumY + 4}
+              width={13}
+              height={14}
+              fill="none"
+              stroke={ink}
+              strokeWidth={1.5}
+              rx={0.5}
+            />
+          ) : null}
+        </g>
+      ) : null}
       {showResult ? (
-        <text x={274} y={164} textAnchor="end" fontSize={28} fontWeight={700} className={cn(ENTER, "font-mono duration-500")} style={{ fill: "#111827" }}>
-          {result}
-        </text>
+        <>
+          <g className="font-mono" style={{ fill: ink }}>
+            <path
+              d={`M ${hookX} ${baselineY} L ${hookX + 7} ${baselineY} L ${hookX + 11} ${vinculumY + 10} L ${hookX + 11} ${vinculumY} L ${radicandX + digits.length * digitAdvance + 2} ${vinculumY}`}
+              fill="none"
+              stroke={ink}
+              strokeWidth={2.2}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+            />
+            <text x={radicandX} y={baselineY} fontSize={26} fontWeight={700} letterSpacing={1}>
+              {digits}
+            </text>
+          </g>
+          <text
+            x={274}
+            y={164}
+            textAnchor="end"
+            fontSize={28}
+            fontWeight={700}
+            className={cn(ENTER, "font-mono duration-500")}
+            style={{ fill: "#111827" }}
+          >
+            {result}
+          </text>
+        </>
       ) : null}
     </>
   );
