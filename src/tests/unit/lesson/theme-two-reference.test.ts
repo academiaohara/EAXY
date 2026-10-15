@@ -18,6 +18,11 @@ describe("lecciones de referencia del tema 2", () => {
     expect(
       potenciasBaseExponenteLesson.steps.filter((step) => step.type === "narrate" && step.module === "potencias"),
     ).toHaveLength(4);
+    expect(
+      raizCuadradaNaturalesLesson.steps.filter(
+        (step) => step.type === "narrate" && step.module === "raices-cuadradas",
+      ),
+    ).toHaveLength(4);
   });
 
   it("solo incluye potencias y raíz cuadrada (dos lecciones)", () => {

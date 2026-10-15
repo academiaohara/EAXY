@@ -5,8 +5,9 @@ import { MulDivNaturalesModule } from "@/components/lesson/stage/modules/mul-div
 import { PiramideReduccionModule } from "@/components/lesson/stage/modules/piramide-reduccion/PiramideReduccionModule";
 import { JerarquiaOperacionesModule } from "@/components/lesson/stage/modules/jerarquia-operaciones/JerarquiaOperacionesModule";
 import { PotenciasModule } from "@/components/lesson/stage/modules/potencias/PotenciasModule";
+import { RaicesCuadradasModule } from "@/components/lesson/stage/modules/raices-cuadradas/RaicesCuadradasModule";
 import { TiendaCiclistaModule } from "@/components/lesson/stage/modules/tienda-ciclista/TiendaCiclistaModule";
-import type { MulDivConfig, PotenciasConfig, StageModuleId } from "@/lib/lesson/types";
+import type { MulDivConfig, PotenciasConfig, RaicesConfig, StageModuleId } from "@/lib/lesson/types";
 
 export type StageModuleRenderProps = {
   module: StageModuleId;
@@ -46,6 +47,7 @@ export type StageModuleRenderProps = {
   };
   mulDiv?: MulDivConfig;
   potencias?: PotenciasConfig;
+  raices?: RaicesConfig;
   boxCounts?: number[];
   onBoxCountsChange?: (counts: number[]) => void;
   autoPlay?: boolean;
@@ -127,6 +129,12 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
     );
   }
 
+  if (module === "raices-cuadradas" && props.raices) {
+    return (
+      <RaicesCuadradasModule stepId={stepId} {...props.raices} onReadyChange={onReadyChange} />
+    );
+  }
+
   if (module === "jerarquia-operaciones") {
     return (
       <JerarquiaOperacionesModule
@@ -159,4 +167,5 @@ export const STAGE_MODULE_REGISTRY: StageModuleId[] = [
   "mul-div-naturales",
   "jerarquia-operaciones",
   "potencias",
+  "raices-cuadradas",
 ];

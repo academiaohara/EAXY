@@ -25,7 +25,21 @@ export type StageModuleId =
   | "piramide-reduccion"
   | "mul-div-naturales"
   | "jerarquia-operaciones"
-  | "potencias";
+  | "potencias"
+  | "raices-cuadradas";
+
+export type RaicesScene =
+  | "inversa-cuadrado"
+  | "cuadrados-perfectos"
+  | "raiz-entera"
+  | "raiz-calculadora";
+
+export type RaicesConfig = {
+  scene: RaicesScene;
+  /** Lado del cuadrado (raíz) en escenas que lo usan. */
+  root?: number;
+  radicand?: number;
+};
 
 export type PotenciasScene =
   | "base-exponente"
@@ -426,6 +440,7 @@ export type NarrateStep = LessonStepBase &
     };
     mulDiv?: MulDivConfig;
     potencias?: PotenciasConfig;
+    raices?: RaicesConfig;
   };
 
 export type PredictChoice = {

@@ -42,8 +42,12 @@ test("tema 2: dos lecciones en pizarra Manim", async ({ page }) => {
   await page.goto(
     "/aprender/curso/matematicas-1-eso/tema/potencias-y-raices/leccion/raiz-cuadrada-naturales?reiniciar=1",
   );
-  await expect(page.getByTestId("potencias-raices-raiz-inversa")).toBeVisible({ timeout: 20_000 });
-  await page.getByRole("button", { name: "Ver la raíz cuadrada" }).click();
+  await expect(page.getByTestId("raices-inversa-cuadrado")).toBeVisible({ timeout: 20_000 });
+  const raizNext = page.getByRole("button", { name: "Paso siguiente" });
+  for (let i = 0; i < 3; i += 1) {
+    await raizNext.click();
+  }
+  await expect(page.getByRole("button", { name: "Continuar" })).toBeEnabled();
   await page.screenshot({
     path: "/opt/cursor/artifacts/tema2-raiz-pizarra.png",
     fullPage: false,
