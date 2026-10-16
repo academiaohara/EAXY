@@ -10,6 +10,7 @@ import {
 import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersistedStateContext";
 import type { PredictStep } from "@/lib/lesson/types";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
+import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
 
 const step: PredictStep = {
   id: "test-predict",
@@ -126,6 +127,24 @@ describe("PredictStepView", () => {
     expect(
       screen.getByText(/Ese solo cuenta los bocadillos/i),
     ).toBeInTheDocument();
+  });
+
+  it("muestra opciones en rejilla para la raíz entera de 50", () => {
+    const raizStep = raizCuadradaNaturalesLesson.steps.find(
+      (s) => s.id === "raiz-exacta-entera-predict",
+    ) as PredictStep;
+    render(
+      wrap(<PredictStepView step={raizStep} theme="board" onCheck={vi.fn()} />),
+      { container: document.body },
+    );
+
+    expect(screen.getByText(/Cuál es la raíz entera/i)).toBeInTheDocument();
+    expect(
+      screen.queryByText(/el mejor entero por debajo/i),
+    ).not.toBeInTheDocument();
+
+    const grid = screen.getByTestId("predict-choice-6").parentElement;
+    expect(grid?.className).toMatch(/grid-cols-3/);
   });
 
   it("muestra feedback al elegir 80 € en el menú de la distributiva", () => {

@@ -56,8 +56,9 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
       title: "Raíz exacta o entera",
       definitionBox:
         "Compara cuadrados perfectos cercanos: $6^2 = 36$ y $7^2 = 49$ enmarcan a $\\sqrt{40}$.",
-      question: "¿Cuál es la raíz entera de $50$? (el mejor entero por debajo de $\\sqrt{50}$)",
+      question: "¿Cuál es la raíz entera de $50$?",
       mode: "choice",
+      choiceLayout: "grid",
       choices: [
         {
           id: "6",
