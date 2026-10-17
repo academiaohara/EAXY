@@ -19,7 +19,7 @@ Ilustración didáctica para libro de matemáticas de 1º ESO: dibujo digital li
 
 ## Cómo se muestran (diapositivas `slide`)
 
-- Las ilustraciones (`story`, `figure`) se pintan sobre una **tarjeta de papel claro** (`#f4efe2`), no directamente sobre la pizarra oscura: por eso el contorno oscuro del dibujo se lee bien y el fondo transparente del PNG funciona.
+- Las ilustraciones (`story`, `figure`) se pintan **directamente sobre la pizarra**, sin tarjeta: el PNG debe tener fondo transparente real, **sin halos, brillos ni sombras semitransparentes** alrededor, y recortado al contenido. Peso ≤ ~800 KB, lado mayor ≤ 1000 px.
 - `story`: dibujo pequeño al lado del enunciado (máx. ~150 px de ancho en pantalla). `figure`: dibujo principal en la columna visual (máx. ~560 px).
 - Si el PNG no existe todavía, la diapositiva sigue completa (en desarrollo se ve un aviso con el nombre del archivo que falta).
 

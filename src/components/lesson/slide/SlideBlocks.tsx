@@ -52,8 +52,8 @@ function StoryBlock({ block }: { block: Extract<SlideBlock, { kind: "story" }> }
         <Illustration
           src={block.src}
           alt={block.alt}
-          maxWidth={block.maxWidth ?? 150}
-          className="shrink-0 p-2"
+          maxWidth={block.maxWidth ?? 170}
+          className="shrink-0"
           onMissing={() => setMissing(true)}
         />
       )}

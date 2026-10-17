@@ -9,12 +9,6 @@ type SlideFigureProps = {
   className?: string;
 };
 
-/**
- * Las ilustraciones son dibujos de libro con contorno oscuro y fondo transparente:
- * sobre la pizarra oscura se pierden, así que van sobre una tarjeta de papel claro.
- */
-export const FIGURE_CARD_CLASS = "rounded-2xl bg-[#f4efe2] p-3 shadow-[0_6px_24px_rgb(0_0_0/0.3)]";
-
 type IllustrationProps = {
   src: string;
   alt: string;
@@ -24,17 +18,17 @@ type IllustrationProps = {
   onMissing?: () => void;
 };
 
-/** Imagen sobre tarjeta de papel. Avisa si no se puede cargar. */
+/** Imagen tal cual (PNG con fondo transparente, sin tarjeta). Avisa si no se puede cargar. */
 export function Illustration({ src, alt, maxWidth, className, onMissing }: IllustrationProps) {
   return (
-    <div className={cn(FIGURE_CARD_CLASS, "inline-flex", className)}>
+    <div className={cn("inline-flex", className)}>
       {/* eslint-disable-next-line @next/next/no-img-element -- PNG estático del temario */}
       <img
         src={src}
         alt={alt}
         onError={onMissing}
         draggable={false}
-        className="h-auto max-h-[22rem] w-auto max-w-full object-contain"
+        className="h-auto max-h-[22rem] w-auto max-w-full rounded-lg object-contain"
         style={maxWidth ? { maxWidth } : undefined}
       />
     </div>
