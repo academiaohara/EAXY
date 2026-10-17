@@ -13,6 +13,7 @@ import { buildValorAbsoluto } from "@/components/lesson/anim/scenes/valor-absolu
 import { buildAreaDistributiva } from "@/components/lesson/anim/scenes/area-distributiva";
 import { buildCribaEratostenes } from "@/components/lesson/anim/scenes/criba-eratostenes";
 import { buildCriterioAlternada } from "@/components/lesson/anim/scenes/criterio-alternada";
+import { buildCriterioEjemplos } from "@/components/lesson/anim/scenes/criterio-ejemplos";
 import { buildCriterioSumaCifras } from "@/components/lesson/anim/scenes/criterio-suma-cifras";
 import { buildDescomposicionPrimos } from "@/components/lesson/anim/scenes/descomposicion-primos";
 import { buildDivisibilidadGrupos } from "@/components/lesson/anim/scenes/divisibilidad-grupos";
@@ -44,6 +45,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "expr-reescritura": (p) => buildExprReescritura(p),
   "criba-eratostenes": (p) => buildCribaEratostenes(p),
   "criterio-alternada": (p) => buildCriterioAlternada(p),
+  "criterio-ejemplos": (p) => buildCriterioEjemplos(p),
   "criterio-suma-cifras": (p) => buildCriterioSumaCifras(p),
   "descomposicion-primos": (p) => buildDescomposicionPrimos(p),
   "divisibilidad-grupos": (p) => buildDivisibilidadGrupos(p),
