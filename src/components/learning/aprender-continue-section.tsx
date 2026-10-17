@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import type { AprenderContinueStudying, AprenderStudyShortcut } from "@/lib/curriculum/aprender-home";
 import type { LessonSummary } from "@/lib/curriculum/types";
 import { courseHref, courseShortTitle } from "@/lib/navigation/learning-trail";
+import { SUBJECT_THEME, getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
+import { cn } from "@/lib/utils";
 
 type AprenderContinueSectionProps = {
   data: AprenderContinueStudying;
@@ -17,9 +19,14 @@ function lessonMetaLabel(lesson: LessonSummary): string {
 }
 
 function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
+  const subjectKey = subjectOfCourse({ slug: entry.courseSlug, title: entry.courseTitle });
+  const subject = getSubject(subjectKey);
   return (
     <div
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cobalt via-indigo-600 to-violet-600 p-6 text-white shadow-lg shadow-cobalt/20 sm:p-8"
+      className={cn(
+        "relative overflow-hidden rounded-3xl bg-gradient-to-br p-6 text-white shadow-lg sm:p-8",
+        SUBJECT_THEME[subjectKey].gradient,
+      )}
       data-testid="aprender-continue-primary"
     >
       <div
@@ -30,7 +37,7 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
         className="pointer-events-none absolute -bottom-6 right-6 select-none font-mono text-[9rem] leading-none text-white/10"
         aria-hidden
       >
-        ∑
+        {subject?.glyph}
       </div>
 
       <div className="relative">
@@ -43,7 +50,7 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
             href={courseHref(entry.courseSlug)}
             className="rounded-full bg-white/15 px-2.5 py-0.5 font-medium text-white transition-colors hover:bg-white/25"
           >
-            {courseShortTitle(entry.courseTitle)}
+            {subject?.label} · {courseShortTitle(entry.courseTitle)}
           </Link>
           <span aria-hidden>›</span>
           <Link href={entry.topicHref} className="hover:text-white hover:underline underline-offset-4">
@@ -64,7 +71,7 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
           <Button
             size="lg"
             nativeButton={false}
-            className="rounded-full bg-white text-cobalt shadow-md hover:bg-white/90 sm:min-w-[11rem]"
+            className="rounded-full bg-white text-ink shadow-md hover:bg-white/90 sm:min-w-[11rem]"
             render={<Link href={entry.lessonHref} data-testid="aprender-continue-primary-cta" />}
           >
             <PlayIcon data-icon="inline-start" className="fill-current" aria-hidden />
@@ -101,7 +108,8 @@ function SecondaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
       </span>
       <div className="min-w-0 flex-1 space-y-0.5">
         <p className="text-xs font-semibold text-cobalt">
-          {entry.actionLabel} — {courseShortTitle(entry.courseTitle)}
+          {entry.actionLabel} — {getSubject(subjectOfCourse({ slug: entry.courseSlug, title: entry.courseTitle }))?.label}{" "}
+          {courseShortTitle(entry.courseTitle)}
         </p>
         <p className="truncate text-sm font-semibold text-ink">{entry.lessonTitle}</p>
         <p className="truncate text-xs text-ink-muted">

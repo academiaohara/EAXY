@@ -7,20 +7,28 @@ import {
   stripLessonNumber,
   topicHref,
 } from "@/lib/navigation/learning-trail";
-import { getActiveSection } from "@/lib/navigation/sections";
+import { getActiveSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 
-describe("getActiveSection", () => {
-  it("marca la sección por prefijo de ruta", () => {
-    expect(getActiveSection("/aprender")).toBe("aprender");
-    expect(getActiveSection("/aprender/curso/abc/tema/def")).toBe("aprender");
-    expect(getActiveSection("/practicar/ecuaciones")).toBe("practicar");
-    expect(getActiveSection("/progreso")).toBe("progreso");
+describe("getActiveSubject", () => {
+  it("marca la materia por ruta de materia o de curso", () => {
+    expect(getActiveSubject("/aprender/materia/fisica")).toBe("fisica");
+    expect(getActiveSubject("/aprender/curso/tecnologia-1-eso/tema/x")).toBe("tecnologia");
+    expect(getActiveSubject("/aprender/curso/matematicas-1-eso")).toBe("matematicas");
   });
 
-  it("no confunde prefijos parciales ni rutas ajenas", () => {
-    expect(getActiveSection("/aprenderlo")).toBeNull();
-    expect(getActiveSection("/")).toBeNull();
-    expect(getActiveSection(null)).toBeNull();
+  it("no marca materia en rutas ajenas o desconocidas", () => {
+    expect(getActiveSubject("/aprender")).toBeNull();
+    expect(getActiveSubject("/perfil")).toBeNull();
+    expect(getActiveSubject("/aprender/materia/historia")).toBeNull();
+    expect(getActiveSubject(null)).toBeNull();
+  });
+});
+
+describe("subjectOfCourse", () => {
+  it("deduce la materia del slug o del título", () => {
+    expect(subjectOfCourse({ slug: "fisica-4-eso" })).toBe("fisica");
+    expect(subjectOfCourse({ title: "Tecnología 2º ESO" })).toBe("tecnologia");
+    expect(subjectOfCourse({ slug: "matematicas-1-eso" })).toBe("matematicas");
   });
 });
 
@@ -35,6 +43,7 @@ describe("learning-trail", () => {
 
   it("acorta títulos de curso y lección", () => {
     expect(courseShortTitle("Matemáticas 4º ESO")).toBe("4º ESO");
+    expect(courseShortTitle("Física 4º ESO")).toBe("4º ESO");
     expect(courseShortTitle("Álgebra")).toBe("Álgebra");
     expect(stripLessonNumber("3. Sistemas no lineales")).toBe("Sistemas no lineales");
   });
@@ -42,6 +51,7 @@ describe("learning-trail", () => {
   it("marca el curso como página actual cuando es el último nivel", () => {
     expect(buildLearningTrail({ course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" } })).toEqual([
       { label: "Aprender", href: "/aprender" },
+      { label: "Matemáticas", href: "/aprender/materia/matematicas" },
       { label: "1º ESO" },
     ]);
   });
@@ -55,6 +65,7 @@ describe("learning-trail", () => {
       }),
     ).toEqual([
       { label: "Aprender", href: "/aprender" },
+      { label: "Matemáticas", href: "/aprender/materia/matematicas" },
       { label: "1º ESO", href: "/aprender/curso/matematicas-1-eso" },
       { label: "Tema 4: Fracciones", href: "/aprender/curso/matematicas-1-eso/tema/fracciones" },
       { label: "Fracciones equivalentes" },

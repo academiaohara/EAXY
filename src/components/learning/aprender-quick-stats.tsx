@@ -54,7 +54,7 @@ export function AprenderQuickStats({ overview }: AprenderQuickStatsProps) {
           />
         </div>
 
-        <Link href="/progreso">
+        <Link href="/perfil">
           <Button variant="outline" size="sm" className="w-full">
             Ver mapa de conceptos
           </Button>

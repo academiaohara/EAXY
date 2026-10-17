@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, UserRoundIcon } from "lucide-react";
 import { AppNav } from "@/components/layout/app-nav";
 import { BrandLogo } from "@/components/layout/brand-logo";
 import { GuestProgressBanner } from "@/components/layout/guest-progress-banner";
@@ -44,15 +44,20 @@ export async function AppShell({ children }: AppShellProps) {
             <div className="flex items-center justify-self-end gap-2 sm:gap-3">
               {user ? (
                 <>
-                  <div className="flex items-center gap-2">
+                  <Link
+                    href="/perfil"
+                    data-testid="app-profile-link"
+                    aria-label="Tu perfil y progreso"
+                    className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 outline-none transition-colors hover:bg-cobalt-tint focus-visible:ring-2 focus-visible:ring-cobalt/40 lg:pr-3"
+                  >
                     <span
                       className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-cobalt-tint to-violet-100 text-xs font-bold text-cobalt ring-1 ring-cobalt/15"
                       aria-hidden
                     >
                       {initials(user.displayName)}
                     </span>
-                    <p className="hidden text-sm font-medium text-ink lg:block">{user.displayName}</p>
-                  </div>
+                    <span className="hidden text-sm font-medium text-ink lg:block">{user.displayName}</span>
+                  </Link>
                   <form action={signOut}>
                     <Button
                       type="submit"
@@ -68,6 +73,15 @@ export async function AppShell({ children }: AppShellProps) {
                 </>
               ) : (
                 <>
+                  <Link
+                    href="/perfil"
+                    data-testid="app-profile-link"
+                    aria-label="Mi progreso"
+                    title="Mi progreso"
+                    className="flex size-8 items-center justify-center rounded-full text-ink-muted outline-none transition-colors hover:bg-cobalt-tint hover:text-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/40"
+                  >
+                    <UserRoundIcon className="size-[18px]" aria-hidden />
+                  </Link>
                   <Button
                     variant="ghost"
                     size="sm"

@@ -16,7 +16,9 @@ import { SectionDotNav } from "@/components/marketing/section-dot-nav";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 import { curriculum } from "@/content";
+import { SUBJECT_ICONS } from "@/components/layout/subject-icons";
 import { courseHref, courseShortTitle } from "@/lib/navigation/learning-trail";
+import { SUBJECTS, SUBJECT_THEME, subjectOfCourse } from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
 const features = [
@@ -111,10 +113,10 @@ export default function HomePage() {
             <div className="space-y-7">
               <p className="inline-flex items-center gap-2 rounded-full border border-cobalt/15 bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt shadow-xs">
                 <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
-                Matemáticas adaptativas, ESO y Bachillerato
+                Matemáticas, física y tecnología · ESO y Bachillerato
               </p>
               <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                Aprende matemáticas{" "}
+                Aprende ciencias{" "}
                 <span className="bg-gradient-to-r from-cobalt to-violet-500 bg-clip-text text-transparent">
                   haciendo
                 </span>
@@ -202,7 +204,7 @@ export default function HomePage() {
               <div className="max-w-2xl">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt">Cursos</p>
                 <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                  Elige tu nivel
+                  Elige tu materia y tu curso
                 </h2>
               </div>
               <Link
@@ -214,43 +216,62 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {courses.map((course) => {
-                const lessonCount = course.modules.reduce(
-                  (sum, courseModule) => sum + courseModule.lessons.length,
-                  0,
-                );
-                const available = lessonCount > 0;
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {SUBJECTS.map((subject) => {
+                const theme = SUBJECT_THEME[subject.key];
+                const Icon = SUBJECT_ICONS[subject.key];
+                const own = courses.filter((course) => subjectOfCourse(course) === subject.key);
                 return (
-                  <li key={course.id}>
+                  <div
+                    key={subject.key}
+                    className="overflow-hidden rounded-3xl border border-border bg-paper-raised shadow-xs"
+                  >
                     <Link
-                      href={courseHref(course.slug)}
+                      href={subject.href}
                       className={cn(
-                        "group flex items-center justify-between gap-3 rounded-2xl border bg-paper-raised px-5 py-4 shadow-xs transition-all",
-                        available
-                          ? "border-border hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md"
-                          : "border-dashed border-border opacity-70",
+                        "flex items-center gap-3 bg-gradient-to-br px-5 py-4 text-white",
+                        theme.gradient,
                       )}
                     >
-                      <span className="min-w-0">
-                        <span className="block font-display font-bold text-ink group-hover:text-cobalt">
-                          {courseShortTitle(course.title)}
-                        </span>
-                        <span className="block text-xs text-ink-muted">
-                          {available
-                            ? `${course.modules.length} temas, ${lessonCount} lecciones`
-                            : "Próximamente"}
-                        </span>
+                      <span className="flex size-10 items-center justify-center rounded-xl bg-white/20 ring-1 ring-white/30">
+                        <Icon className="size-5" aria-hidden />
                       </span>
-                      <ArrowRightIcon
-                        className="size-4 shrink-0 text-slate-300 transition-transform group-hover:translate-x-0.5 group-hover:text-cobalt"
-                        aria-hidden
-                      />
+                      <span className="min-w-0">
+                        <span className="block font-display text-lg font-bold">{subject.label}</span>
+                        <span className="block text-xs text-white/80">{subject.tagline}</span>
+                      </span>
                     </Link>
-                  </li>
+                    <ul className="divide-y divide-border">
+                      {own.map((course) => {
+                        const lessonCount = course.modules.reduce(
+                          (sum, courseModule) => sum + courseModule.lessons.length,
+                          0,
+                        );
+                        const available = lessonCount > 0;
+                        return (
+                          <li key={course.id}>
+                            <Link
+                              href={courseHref(course.slug)}
+                              className={cn(
+                                "group flex items-center justify-between gap-3 px-5 py-3 text-sm transition-colors hover:bg-paper",
+                                !available && "opacity-60",
+                              )}
+                            >
+                              <span className="font-semibold text-ink group-hover:text-cobalt">
+                                {courseShortTitle(course.title)}
+                              </span>
+                              <span className="text-xs text-ink-muted">
+                                {available ? `${lessonCount} lecciones` : "Próximamente"}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
           </div>
         </section>
 
@@ -350,7 +371,7 @@ export default function HomePage() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="space-y-2">
             <BrandLogo />
-            <p>© {new Date().getFullYear()} Eaxy — Matemáticas adaptativas</p>
+            <p>© {new Date().getFullYear()} Eaxy — Matemáticas, física y tecnología</p>
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Pie de página">
             <Link href="/aprender" className="transition-colors hover:text-cobalt">
@@ -359,8 +380,8 @@ export default function HomePage() {
             <Link href="/practicar" className="transition-colors hover:text-cobalt">
               Practicar
             </Link>
-            <Link href="/progreso" className="transition-colors hover:text-cobalt">
-              Progreso
+            <Link href="/perfil" className="transition-colors hover:text-cobalt">
+              Perfil
             </Link>
             <Link href="/login" className="transition-colors hover:text-cobalt">
               Iniciar sesión
