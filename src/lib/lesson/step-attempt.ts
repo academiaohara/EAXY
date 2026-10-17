@@ -27,6 +27,13 @@ export type NumberLinePickSnapshot = {
   isCorrect: boolean;
 };
 
+export type DivisibilityGridSnapshot = {
+  kind: "divisibility_grid";
+  /** Respuesta de cada casilla, con clave `${número}-${divisor}`. */
+  answers: Record<string, boolean>;
+  isCorrect: boolean;
+};
+
 export type PredictSnapshot = {
   kind: "predict";
   numericValue?: string;
@@ -47,6 +54,7 @@ export type PracticeStepSnapshot =
   | FractionPickSnapshot
   | ClassifySnapshot
   | NumberLinePickSnapshot
+  | DivisibilityGridSnapshot
   | PredictSnapshot
   | ExploreSnapshot;
 

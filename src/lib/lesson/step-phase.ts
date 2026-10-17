@@ -15,6 +15,7 @@ const PHASE_BY_STEP_TYPE: Record<LessonStep["type"], LessonStepPhase> = {
   fraction_pick: "practice",
   classify: "practice",
   number_line_pick: "practice",
+  divisibility_grid: "practice",
 };
 
 export function getLessonStepPhase(step: LessonStep): LessonStepPhase {

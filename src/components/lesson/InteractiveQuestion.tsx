@@ -7,6 +7,7 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { AnimatedSolution } from "@/components/lesson/steps/AnimatedSolution";
 import { Classify } from "@/components/lesson/steps/Classify";
+import { DivisibilityGrid } from "@/components/lesson/steps/DivisibilityGrid";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
 import { FractionPick } from "@/components/lesson/steps/FractionPick";
@@ -183,6 +184,18 @@ export function InteractiveQuestion({
         disabled={disabled}
         compact={compact}
         saved={savedAttempt?.kind === "classify" ? savedAttempt : null}
+      />
+    );
+  }
+
+  if (step.type === "divisibility_grid") {
+    return (
+      <DivisibilityGrid
+        step={step}
+        onCheck={onCheck}
+        disabled={disabled}
+        compact={compact}
+        saved={savedAttempt?.kind === "divisibility_grid" ? savedAttempt : null}
       />
     );
   }
