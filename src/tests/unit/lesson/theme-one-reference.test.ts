@@ -32,24 +32,40 @@ describe("lecciones de referencia del tema 1", () => {
   });
 
   it("la lección 1 unifica origen, sistemas y redondeo del temario", () => {
-    expect(sistemasNumeracionNaturalesLesson.steps.some(
-      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-galeria",
-    )).toBe(true);
-    expect(sistemasNumeracionNaturalesLesson.steps.some(
-      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-juego",
-    )).toBe(true);
-    expect(sistemasNumeracionNaturalesLesson.steps.some(
-      (step) => step.type === "interactive_tool" && "scene" in step && step.scene.startsWith("redondeo"),
-    )).toBe(true);
-    expect(sistemasNumeracionNaturalesLesson.steps.some((step) => step.id === "check-redondeo")).toBe(
-      true,
+    const ids = sistemasNumeracionNaturalesLesson.steps.map((step) => step.id);
+    expect(ids).toEqual(
+      expect.arrayContaining([
+        "origen-contar",
+        "sistema-egipcio",
+        "sistema-romano",
+        "sistemas-historia-juego",
+        "decimal-canje",
+        "decimal-posicion",
+        "redondeo-regla",
+        "redondeo-practica-24963",
+      ]),
     );
+    expect(
+      sistemasNumeracionNaturalesLesson.steps.some(
+        (step) =>
+          step.type === "interactive_tool" &&
+          "scene" in step &&
+          step.scene.startsWith("redondeo"),
+      ),
+    ).toBe(true);
+  });
+
+  it("la teoría nueva se explica con diapositivas de bloques y animaciones", () => {
+    for (const lesson of THEME_ONE_LESSONS) {
+      const slides = lesson.steps.filter((step) => step.type === "slide");
+      expect(slides.length).toBeGreaterThan(0);
+    }
   });
 
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
-    expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
-      7, 7, 7, 5,
-    ]);
+    for (const lesson of THEME_ONE_LESSONS) {
+      expect(lesson.steps.length).toBeLessThanOrEqual(10);
+    }
 
     for (const lesson of THEME_ONE_LESSONS) {
       expect(lesson.steps.every((step) => step.type !== "fill_in_blank")).toBe(

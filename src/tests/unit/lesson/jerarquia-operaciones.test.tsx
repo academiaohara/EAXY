@@ -9,7 +9,7 @@ const divisionOrdenOperacionesNaturalesLesson =
 describe("jerarquía de operaciones", () => {
   it("la lección sigue el flujo exploración → explicación → práctica", () => {
     const steps = divisionOrdenOperacionesNaturalesLesson.steps;
-    expect(steps).toHaveLength(5);
+    expect(steps).toHaveLength(9);
     expect(
       steps.filter(
         (step) => "module" in step && step.module === "jerarquia-operaciones",
@@ -17,7 +17,11 @@ describe("jerarquía de operaciones", () => {
     ).toHaveLength(5);
     expect(steps[0]?.type).toBe("predict");
     expect(steps.filter((step) => step.type === "explore")).toHaveLength(3);
-    expect(steps.at(-1)?.id).toBe("practica-orden-niveles");
+    expect(steps.filter((step) => step.type === "slide")).toHaveLength(2);
+    expect(steps.filter((step) => step.type === "explore").at(-1)?.id).toBe(
+      "practica-orden-niveles",
+    );
+    expect(steps.at(-1)?.id).toBe("hortelano-predict");
   });
 
   it("renderiza los tres niveles de reglas", () => {

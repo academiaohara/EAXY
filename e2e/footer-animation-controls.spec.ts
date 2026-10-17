@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 const LESSON_SLUG = "multiplicacion-division-naturales";
 const STORAGE_KEY = "eaxy-local-progress";
 
-function seedLessonStep(stepIndex: number, stepCount = 6) {
+function seedLessonStep(stepIndex: number, stepCount = 10) {
   const visitedSteps = Array.from({ length: stepCount }, (_, i) => i <= stepIndex);
   const completedSteps = Array.from({ length: stepCount }, () => false);
   return {
@@ -60,7 +60,7 @@ test("reparto igual — controles al centro y avance con flecha derecha", async 
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
     },
-    { key: STORAGE_KEY, payload: seedLessonStep(3) },
+    { key: STORAGE_KEY, payload: seedLessonStep(5) },
   );
 
   await page.goto(
@@ -82,7 +82,7 @@ test("división a mano — controles centrados, no sobre la pizarra SVG", async 
     ({ key, payload }) => {
       window.localStorage.setItem(key, JSON.stringify(payload));
     },
-    { key: STORAGE_KEY, payload: seedLessonStep(5) },
+    { key: STORAGE_KEY, payload: seedLessonStep(7) },
   );
 
   await page.goto(

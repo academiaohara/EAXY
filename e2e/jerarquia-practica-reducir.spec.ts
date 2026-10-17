@@ -12,6 +12,10 @@ test("orden de operaciones — × va antes que + y −", async ({ page }) => {
   await expect(page.getByTestId("jerarquia-niveles")).toBeVisible({ timeout: 15_000 });
   await page.getByTestId("lesson-presenter-forward").click();
 
+  await expect(page.getByTestId("lesson-slide")).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByTestId("lesson-anim")).toBeVisible();
+  await page.getByTestId("lesson-presenter-forward").click();
+
   await expect(page.getByTestId("lesson-explore-step")).toBeVisible({ timeout: 15_000 });
   await expect(page.getByTestId("jerarquia-practica-reducir")).toBeVisible();
 

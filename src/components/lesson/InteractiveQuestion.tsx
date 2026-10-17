@@ -12,6 +12,7 @@ import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
 import { FractionPick } from "@/components/lesson/steps/FractionPick";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
 import { NumberLinePick } from "@/components/lesson/steps/NumberLinePick";
+import { SlideStepView } from "@/components/lesson/slide/SlideStepView";
 import type { PracticeStepSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import {
   ExploreStepView,
@@ -92,6 +93,16 @@ export function InteractiveQuestion({
         onContinue={(meta) => onContinue?.(meta)}
         onPreviousStep={onPreviousStep}
         presentationUnlocked={presentationUnlocked}
+      />
+    );
+  }
+
+  if (step.type === "slide") {
+    return (
+      <SlideStepView
+        step={step}
+        theme={stageTheme}
+        onContinue={(meta) => onContinue?.(meta)}
       />
     );
   }
