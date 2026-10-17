@@ -118,58 +118,61 @@ function AlmacenHuevosGrid({
   );
 }
 
-function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
-  const boxes = a * b;
-  const total = boxes * c;
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#7dd3fc]")}>
-        Primero cuentas todas las cajas: {a} estantes × {b} cajas/estante ={" "}
-        <strong className="text-[color:var(--stage-ink,#e8edf5)]">{boxes} cajas</strong> en la
-        estantería.
-      </p>
-      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-3 py-2.5 pr-24">
-        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="left" rowLabel={`${b} cajas`} />
-      </div>
-      <div className="space-y-1.5 text-center">
-        <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
-          {a} × {b} = {boxes} cajas
-        </p>
-        <p className={cn(STAGE_CAPTION, "normal-case leading-snug")}>
-          Luego {boxes} cajas × {c} huevos/caja ={" "}
-          <strong className="text-[#5eead4]">{total} huevos</strong> en total.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function VisualRightGroup({ a, b, c }: { a: number; b: number; c: number }) {
-  const perRow = b * c;
-  const total = a * perRow;
-  return (
-    <div className="flex w-full flex-col items-center gap-2">
-      <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#c4b5fd]")}>
-        En cada fila: {b} cajas/fila × {c} huevos/caja ={" "}
-        <strong className="text-[color:var(--stage-ink,#e8edf5)]">{perRow} huevos/fila</strong>.
-      </p>
-      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-3 py-2.5 pr-24">
-        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="right" rowLabel={`${perRow} huevos`} />
-      </div>
-      <div className="space-y-1.5 text-center">
-        <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
-          {b} × {c} = {perRow} huevos por fila
-        </p>
-        <p className={cn(STAGE_CAPTION, "normal-case leading-snug")}>
-          {a} filas × {perRow} huevos/fila ={" "}
-          <strong className="text-[#5eead4]">{total} huevos</strong> en total.
-        </p>
-      </div>
-    </div>
-  );
-}
-
 type GroupMode = "left" | "right";
+
+function StepCard({
+  n,
+  tone,
+  children,
+  hint,
+}: {
+  n: number;
+  tone: GroupMode;
+  children: React.ReactNode;
+  hint: string;
+}) {
+  const accent = tone === "left" ? "border-sky-400/50 bg-sky-500/10" : "border-violet-400/50 bg-violet-500/10";
+  const badge = tone === "left" ? "bg-sky-400 text-slate-900" : "bg-violet-400 text-slate-900";
+  return (
+    <div className={cn("flex items-center gap-4 rounded-2xl border px-4 py-3", accent)}>
+      <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-black", badge)}>
+        {n}
+      </span>
+      <div className="min-w-0">
+        <p className="font-mono text-xl font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">{children}</p>
+        <p className={cn(STAGE_CAPTION, "normal-case leading-snug")}>{hint}</p>
+      </div>
+    </div>
+  );
+}
+
+function GroupSteps({ group, a, b, c }: { group: GroupMode; a: number; b: number; c: number }) {
+  const first = group === "left" ? a * b : b * c;
+  const total = a * b * c;
+  return (
+    <div className="flex flex-col gap-3">
+      {group === "left" ? (
+        <>
+          <StepCard n={1} tone="left" hint="Cuentas todas las cajas de la estantería.">
+            {a} × {b} = <span className="text-sky-300">{first} cajas</span>
+          </StepCard>
+          <StepCard n={2} tone="left" hint="Cada caja lleva el mismo número de huevos.">
+            {first} × {c} = <span className="text-[#5eead4]">{total} huevos</span>
+          </StepCard>
+        </>
+      ) : (
+        <>
+          <StepCard n={1} tone="right" hint="Huevos que hay en una sola fila.">
+            {b} × {c} = <span className="text-violet-300">{first} huevos por fila</span>
+          </StepCard>
+          <StepCard n={2} tone="right" hint="Todas las filas tienen los mismos huevos.">
+            {a} × {first} = <span className="text-[#5eead4]">{total} huevos</span>
+          </StepCard>
+        </>
+      )}
+    </div>
+  );
+}
 
 export function AsociativaHuevosDiscover({
   a,
@@ -202,9 +205,18 @@ export function AsociativaHuevosDiscover({
   }, [onReadyChange, seenLeft, seenRight]);
 
   const showSameResult = seenLeft && seenRight;
+  const tabClass = (active: boolean, tone: GroupMode) =>
+    cn(
+      "min-h-[44px] flex-1 rounded-lg px-3 py-2 font-mono text-sm font-bold transition",
+      active
+        ? tone === "left"
+          ? "bg-[#4353ff]/25 text-[color:var(--stage-chalk,#f8fafc)] shadow-[inset_0_0_0_1px_rgba(67,83,255,0.45)]"
+          : "bg-[#a78bfa]/20 text-[color:var(--stage-chalk,#f8fafc)] shadow-[inset_0_0_0_1px_rgba(167,139,250,0.45)]"
+        : "text-[color:var(--stage-muted,#94a3b8)] hover:bg-black/20",
+    );
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-3" aria-label="Descubrir la propiedad asociativa con huevos">
+    <div className="mx-auto w-full max-w-4xl space-y-3" aria-label="Descubrir la propiedad asociativa con huevos">
       <p className={cn(STAGE_CAPTION, "text-center")}>
         {a} estantes · {b} cajas · {c} huevos en cada caja
       </p>
@@ -212,7 +224,7 @@ export function AsociativaHuevosDiscover({
       <div
         role="tablist"
         aria-label="Forma de agrupar los factores"
-        className="flex gap-1 rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/30 p-1"
+        className="mx-auto flex max-w-xl gap-1 rounded-xl border border-[color:var(--stage-border,#334155)] bg-black/30 p-1"
       >
         <button
           type="button"
@@ -221,12 +233,7 @@ export function AsociativaHuevosDiscover({
           aria-controls="asociativa-visual-panel"
           aria-selected={group === "left"}
           onClick={() => pickGroup("left")}
-          className={cn(
-            "min-h-[44px] flex-1 rounded-lg px-3 py-2 font-mono text-sm font-bold transition",
-            group === "left"
-              ? "bg-[#4353ff]/25 text-[color:var(--stage-chalk,#f8fafc)] shadow-[inset_0_0_0_1px_rgba(67,83,255,0.45)]"
-              : "text-[color:var(--stage-muted,#94a3b8)] hover:bg-black/20",
-          )}
+          className={tabClass(group === "left", "left")}
         >
           ({a} · {b}) · {c}
         </button>
@@ -237,12 +244,7 @@ export function AsociativaHuevosDiscover({
           aria-controls="asociativa-visual-panel"
           aria-selected={group === "right"}
           onClick={() => pickGroup("right")}
-          className={cn(
-            "min-h-[44px] flex-1 rounded-lg px-3 py-2 font-mono text-sm font-bold transition",
-            group === "right"
-              ? "bg-[#a78bfa]/20 text-[color:var(--stage-chalk,#f8fafc)] shadow-[inset_0_0_0_1px_rgba(167,139,250,0.45)]"
-              : "text-[color:var(--stage-muted,#94a3b8)] hover:bg-black/20",
-          )}
+          className={tabClass(group === "right", "right")}
         >
           {a} · ({b} · {c})
         </button>
@@ -253,42 +255,48 @@ export function AsociativaHuevosDiscover({
         role="tabpanel"
         aria-labelledby={group === "left" ? "asociativa-tab-left" : "asociativa-tab-right"}
         className={cn(
-          "rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-3 py-3 transition-opacity duration-500",
+          "grid items-center gap-6 rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 p-4 md:grid-cols-[auto_minmax(0,1fr)]",
           !reduced && "animate-in fade-in duration-300",
         )}
       >
-        {group === "left" ? (
-          <VisualLeftGroup a={a} b={b} c={c} />
-        ) : (
-          <VisualRightGroup a={a} b={b} c={c} />
-        )}
-      </div>
+        <div className="overflow-x-auto rounded-xl border border-dashed border-white/15 bg-black/30 px-3 py-3 pr-24">
+          <AlmacenHuevosGrid
+            filas={a}
+            cajasPorFila={b}
+            huevosPorCaja={c}
+            variant={group}
+            rowLabel={group === "left" ? `${b} cajas` : `${b * c} huevos`}
+          />
+        </div>
 
-      <p className={STAGE_MATH} aria-live="polite">
-        <MathRenderer
-          text={
-            group === "left"
-              ? `$(${a} \\cdot ${b}) \\cdot ${c} = ${a * b} \\cdot ${c} = ${total}$`
-              : `$${a} \\cdot (${b} \\cdot ${c}) = ${a} \\cdot ${b * c} = ${total}$`
-          }
-        />
-      </p>
-
-      <div className="flex flex-col items-center gap-1 border-t border-white/5 pt-2">
-        <span className="font-mono text-3xl font-black tabular-nums tracking-tight text-[#5eead4]">{total}</span>
-        <span className={cn(STAGE_CAPTION, "normal-case")}>huevos en total</span>
-        {showSameResult ? (
-          <p
-            className={cn(
-              "pt-1 text-center text-sm font-semibold text-emerald-300",
-              !reduced && "animate-in fade-in duration-500",
-            )}
-          >
-            ¡Mismo resultado con cualquier agrupación!
+        <div className="flex flex-col gap-4">
+          <GroupSteps group={group} a={a} b={b} c={c} />
+          <p className={STAGE_MATH} aria-live="polite">
+            <MathRenderer
+              text={
+                group === "left"
+                  ? `$(${a} \\cdot ${b}) \\cdot ${c} = ${a * b} \\cdot ${c} = ${total}$`
+                  : `$${a} \\cdot (${b} \\cdot ${c}) = ${a} \\cdot ${b * c} = ${total}$`
+              }
+            />
           </p>
-        ) : (
-          <p className={cn(STAGE_CAPTION, "text-center normal-case")}>Prueba la otra agrupación arriba</p>
-        )}
+          <div className="flex items-baseline justify-center gap-2 border-t border-white/5 pt-3">
+            <span className="font-mono text-4xl font-black tabular-nums tracking-tight text-[#5eead4]">{total}</span>
+            <span className={cn(STAGE_CAPTION, "normal-case")}>huevos en total</span>
+          </div>
+          {showSameResult ? (
+            <p
+              className={cn(
+                "text-center text-sm font-semibold text-emerald-300",
+                !reduced && "animate-in fade-in duration-500",
+              )}
+            >
+              ¡Mismo resultado con cualquier agrupación!
+            </p>
+          ) : (
+            <p className={cn(STAGE_CAPTION, "text-center normal-case")}>Prueba la otra agrupación arriba</p>
+          )}
+        </div>
       </div>
     </div>
   );

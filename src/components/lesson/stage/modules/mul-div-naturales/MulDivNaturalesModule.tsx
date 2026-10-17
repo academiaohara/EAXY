@@ -205,10 +205,10 @@ function MenuItemSlot({
   tone?: "amber" | "sky";
 }) {
   return (
-    <div className="flex w-[4.25rem] flex-col items-center gap-1.5">
-      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-black/25 p-1">
+    <div className="flex flex-col items-center gap-1">
+      <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-black/25 p-1">
         {imageSrc ? (
-          <Image src={imageSrc} alt="" width={56} height={56} className="h-full w-full object-contain" aria-hidden />
+          <Image src={imageSrc} alt="" width={40} height={40} className="h-full w-full object-contain" aria-hidden />
         ) : (
           <span className="px-1 text-center text-[9px] font-bold uppercase leading-tight tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
             {label}
@@ -229,10 +229,15 @@ function MenuItemSlot({
 
 function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) {
   return (
-    <div className="flex flex-col items-stretch gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-2 py-3 shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
+    <div className="flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-3 py-2 shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
       <MenuItemSlot label="Bocadillo" euros={bocadillo} imageSrc={ASSETS.bocadillo} tone="amber" />
-      <div className="h-px bg-white/10" aria-hidden />
+      <span className="text-sm font-bold text-white/40" aria-hidden>
+        +
+      </span>
       <MenuItemSlot label="Bebida" euros={bebida} imageSrc={ASSETS.botella} tone="sky" />
+      <span className="rounded-lg border border-amber-300/40 bg-amber-400/15 px-2 py-1 font-mono text-sm font-black tabular-nums text-amber-200">
+        = {bocadillo + bebida} €
+      </span>
     </div>
   );
 }
@@ -620,7 +625,6 @@ function DistributivaBloques({
   const menuRowRef = useRef<HTMLDivElement>(null);
   const menuMeasureRef = useRef<HTMLDivElement>(null);
   const [rowWidth, setRowWidth] = useState(0);
-  const [menuHeight, setMenuHeight] = useState(0);
   const sum = b + c;
   const left = a * b;
   const right = a * c;
@@ -635,7 +639,6 @@ function DistributivaBloques({
     }
     const measure = () => {
       setRowWidth(row.getBoundingClientRect().width);
-      setMenuHeight(card.getBoundingClientRect().height);
     };
     measure();
     if (typeof ResizeObserver === "undefined") {
@@ -676,62 +679,56 @@ function DistributivaBloques({
   }, [autoPlay, clear, onAnimationComplete, onReadyChange, push, reduced, revealFormula]);
 
   return (
-    <div className="space-y-4" aria-label="Propiedad distributiva">
+    <div className="mx-auto w-full max-w-4xl space-y-4" aria-label="Propiedad distributiva">
       <p className={cn(STAGE_CAPTION, "text-center")}>
         {a} menús · ({b} € bocadillo + {c} € bebida)
       </p>
-      <div className="flex w-full justify-center">
+      <div className="flex w-full flex-col items-center">
         <div
-          className="inline-grid max-w-full grid-cols-[auto_auto] grid-rows-[auto_auto] items-stretch gap-x-1.5 gap-y-1 sm:gap-x-2"
+          ref={menuRowRef}
+          className="grid w-full gap-2 transition-all duration-700"
+          style={{
+            gridTemplateColumns: `repeat(${a <= 4 ? a : Math.ceil(a / 2)}, minmax(0, 1fr))`,
+            maxWidth: `${(a <= 4 ? a : Math.ceil(a / 2)) * 13}rem`,
+          }}
           data-testid="distributiva-menu-grouping"
           aria-label={`${a} veces la suma de ${b} euros y ${c} euros por menú, es decir ${a} por ${b} más ${c}`}
         >
-          <div className="flex items-stretch justify-end self-stretch">
-            <Brace
-              orientation="vertical"
-              length={menuHeight > 0 ? menuHeight : 128}
-              color={boardSemanticColors.amber}
-              label={`${sum} €`}
-              tone="amber"
-              className="self-center"
-            />
-          </div>
-          <div
-            ref={menuRowRef}
-            className="flex max-w-full flex-wrap items-start justify-center gap-2 transition-all duration-700"
-          >
-            {Array.from({ length: a }, (_, col) => (
-              <div
-                key={col}
-                ref={col === 0 ? menuMeasureRef : undefined}
-                className={cn("transition-all duration-700", phase >= 1 && col > 0 && "opacity-95")}
-              >
-                <MenuCard bocadillo={b} bebida={c} />
-              </div>
-            ))}
-          </div>
-          <div aria-hidden />
-          <div className="flex min-w-0 justify-center">
-            <Brace
-              orientation="horizontal"
-              length={rowWidth > 0 ? rowWidth : Math.max(a * 56, 24)}
-              color={boardSemanticColors.teal}
-              label={`${a} menús`}
-              tone="teal"
-            />
-          </div>
+          {Array.from({ length: a }, (_, col) => (
+            <div
+              key={col}
+              ref={col === 0 ? menuMeasureRef : undefined}
+              className={cn("transition-all duration-700", phase >= 1 && col > 0 && "opacity-95")}
+            >
+              <MenuCard bocadillo={b} bebida={c} />
+            </div>
+          ))}
+        </div>
+        <div className="mb-4 mt-2 flex w-full justify-center">
+          <Brace
+            orientation="horizontal"
+            length={rowWidth > 0 ? rowWidth : Math.max(a * 56, 24)}
+            color={boardSemanticColors.teal}
+            label={`${a} menús`}
+            tone="teal"
+          />
         </div>
       </div>
       {showFormula ? (
-        <p
-          className="min-h-[2.5rem] text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)]"
+        <div
+          className="mb-4 grid gap-3 text-center text-sm font-medium text-[color:var(--stage-ink,#e8edf5)] sm:grid-cols-2"
           data-testid="distributiva-formula"
         >
-          <MathRenderer text={`$${a} \\cdot (${b} + ${c}) = ${a} \\cdot ${b} + ${a} \\cdot ${c} = ${left} + ${right} = ${total}$`} />
-        </p>
-      ) : (
-        <div className="min-h-[2.5rem]" aria-hidden />
-      )}
+          <div className="rounded-xl border border-amber-300/40 bg-amber-400/10 px-3 py-2">
+            <p className={cn(STAGE_CAPTION, "mb-1 normal-case")}>Sumas primero</p>
+            <MathRenderer text={`$${a} \\cdot (${b} + ${c}) = ${a} \\cdot ${sum} = ${total}$`} />
+          </div>
+          <div className="rounded-xl border border-sky-300/40 bg-sky-400/10 px-3 py-2">
+            <p className={cn(STAGE_CAPTION, "mb-1 normal-case")}>Multiplicas por separado</p>
+            <MathRenderer text={`$${a} \\cdot ${b} + ${a} \\cdot ${c} = ${left} + ${right} = ${total}$`} />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
