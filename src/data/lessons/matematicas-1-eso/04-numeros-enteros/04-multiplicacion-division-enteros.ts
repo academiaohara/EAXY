@@ -15,8 +15,6 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "Una gestoría recibe **3 facturas** de **5 €** cada una: pierde 15 €. Pero si el proveedor **anula** esas 3 facturas, ¿gana o pierde?",
-          src: "/lesson/enteros/buzon-facturas.png",
-          alt: "Buzón lleno de sobres y facturas",
         },
         {
           kind: "text",

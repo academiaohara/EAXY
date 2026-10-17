@@ -59,16 +59,9 @@ Ilustración didáctica para libro de Matemáticas de 1º ESO, estilo editorial 
 
 Sin ilustraciones: todo lo que ayuda a entender (grupos, rectángulos, saltos, criba, cintas…) lo cubren las animaciones. Regla del tema: solo se añade una imagen si explica algo; nunca decorativa.
 
-## Tema 4 · Números enteros — ilustraciones
+## Tema 4 · Números enteros
 
-Solo cuatro, porque una imagen se añade únicamente si explica algo (nunca decorativa): las cuatro están enlazadas en `story` (≈ 150 px en pantalla). Carpeta de destino: `public/lesson/enteros/`. Lienzo 1024×1024, mismo bloque de estilo de arriba. **Sin números, cifras ni texto dentro de la imagen** (los valores los pone la diapositiva).
-
-| Archivo (`public/lesson/enteros/…`) | Dónde sale | Prompt (pegar tras el bloque de estilo) |
-|---|---|---|
-| `termometro-invierno.png` | L1 · «Cuando los naturales no bastan» | Termómetro de calle de pared, con la columna roja a media altura y la escala dibujada con rayas **sin números**, instalado en un poste de madera; a su alrededor, un poco de nieve en el suelo y una bufanda colgada del poste. Vista frontal. |
-| `buzo-y-globo.png` | L1 · «Valor absoluto: la distancia al cero» | Sección transversal del mar: arriba, un globo aerostático de colores en el cielo; en el centro, una línea de agua ondulada; abajo, un buceador con traje y botella nadando a la misma distancia bajo la línea que el globo sobre ella. Simétrico respecto de la línea del agua. Sin números ni escalas. |
-| `caja-movimientos.png` | L3 · «Con + delante, los signos se quedan» | Caja de cartón abierta de la que asoman billetes, monedas y un par de recibos en blanco (sin texto) bien visibles; una mano de oficinista la deja sobre un mostrador. Vista tres cuartos. |
-| `buzon-facturas.png` | L4 · «Multiplicar: de dónde sale el signo» | Buzón metálico de oficina rebosante de sobres y facturas en blanco (sin texto ni cifras), con uno de los sobres a punto de caerse; un sello de «recibido» **sin texto** (solo un círculo). Vista tres cuartos. |
+Sin ilustraciones: ascensor, recta, fichas, facturas y paréntesis ya los cubren las animaciones. Los enunciados `story` quedan como texto.
 
 ## Flujo en el repositorio
 
