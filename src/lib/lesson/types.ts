@@ -600,8 +600,8 @@ export type SlideBlock =
   | {
       kind: "story";
       text: string;
-      src: string;
-      alt: string;
+      src?: string;
+      alt?: string;
       side?: "left" | "right";
       /** Ancho máximo de la ilustración en px (por defecto 150). */
       maxWidth?: number;

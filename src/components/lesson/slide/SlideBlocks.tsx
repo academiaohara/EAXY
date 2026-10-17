@@ -48,15 +48,15 @@ function StoryBlock({ block }: { block: Extract<SlideBlock, { kind: "story" }> }
       <p className="min-w-0 flex-1 text-[1.05rem] leading-[1.7] text-[color:var(--stage-ink,#fff)]">
         <Rich text={block.text} />
       </p>
-      {missing ? null : (
+      {block.src && !missing ? (
         <Illustration
           src={block.src}
-          alt={block.alt}
+          alt={block.alt ?? ""}
           maxWidth={block.maxWidth ?? 170}
           className="shrink-0"
           onMissing={() => setMissing(true)}
         />
-      )}
+      ) : null}
     </div>
   );
 }

@@ -19,8 +19,6 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "Primero fueron muescas en un cayado o semillas en un collar: una marca por cada cabra del rebaño. Con el comercio llegaron las cantidades grandes y contar de uno en uno dejó de ser práctico. Había que **inventar símbolos**.",
-          src: "/lesson/numeracion/origen/pastor-cabras.png",
-          alt: "Pastor prehistórico contando sus cabras con un cayado de muescas",
         },
         {
           kind: "example",
