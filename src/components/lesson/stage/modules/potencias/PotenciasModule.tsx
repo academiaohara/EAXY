@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { CasioFx991 } from "@/components/lesson/stage/modules/potencias/casio-fx991";
 import { DrawnArrow } from "@/components/lesson/stage/modules/mul-div-naturales/chalkboard-shared";
 import {
@@ -458,25 +458,46 @@ function CalcularPotencia({ base: a, exponent: n, onReadyChange }: SceneProps) {
               >
                 <span />
                 <div className={cn("flex items-center gap-2 font-mono font-bold", k === last ? "text-5xl" : "text-3xl")}>
-                  {tokens.map((value, i) => {
-                    const merging = phase > k && i < 2;
-                    const fresh = k > 0 && i === 0 && phase === k;
-                    return (
-                      <Fragment key={i}>
-                        {i > 0 ? <span className="text-[color:var(--stage-muted,#94a3b8)]">·</span> : null}
+                  {(() => {
+                    const merging = phase > k;
+                    const dot = <span className="text-[color:var(--stage-muted,#94a3b8)]">·</span>;
+                    const nodes: ReactNode[] = [];
+                    let i = 0;
+                    while (i < tokens.length) {
+                      if (i > 0) {
+                        nodes.push(<Fragment key={`dot-${i}`}>{dot}</Fragment>);
+                      }
+                      if (merging && i === 0) {
+                        // Los dos factores que se multiplican forman UN solo bloque resaltado.
+                        nodes.push(
+                          <span
+                            key="group"
+                            className="inline-flex items-center gap-2 rounded-lg bg-[#ffd866]/25 px-2 py-0.5 text-[#ffd866] transition-colors duration-500"
+                          >
+                            {fmt(tokens[0]!)}
+                            {dot}
+                            {fmt(tokens[1]!)}
+                          </span>,
+                        );
+                        i += 2;
+                        continue;
+                      }
+                      const fresh = k > 0 && i === 0 && phase === k;
+                      nodes.push(
                         <span
+                          key={i}
                           className={cn(
                             "rounded-lg px-2 py-0.5 transition-colors duration-500",
-                            merging && "bg-[#ffd866]/25 text-[#ffd866]",
-                            fresh && "bg-[#5eead4]/20 text-[#5eead4]",
-                            !merging && !fresh && "text-[color:var(--stage-ink,#e8edf5)]",
+                            fresh ? "bg-[#5eead4]/20 text-[#5eead4]" : "text-[color:var(--stage-ink,#e8edf5)]",
                           )}
                         >
-                          {fmt(value)}
-                        </span>
-                      </Fragment>
-                    );
-                  })}
+                          {fmt(tokens[i]!)}
+                        </span>,
+                      );
+                      i += 1;
+                    }
+                    return nodes;
+                  })()}
                 </div>
                 <p className={cn(ENTER, "text-left text-base duration-500 text-[color:var(--stage-muted,#94a3b8)]")} style={{ animationDelay: "350ms" }}>
                   {k > 0 ? <Tex t={`${fmtTex(a ** k)} \\cdot ${a} = ${fmtTex(a ** (k + 1))}`} /> : null}

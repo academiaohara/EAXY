@@ -36,10 +36,39 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
       type: "narrate",
       title: "Raíz entera",
       definitionBox:
-        "Para la mayoría de los números la raíz no es natural. La **raíz entera** es el entero más cercano **por debajo**.",
+        "Para la mayoría de los números la raíz no es natural. La **raíz entera** es el mayor natural cuyo cuadrado **no se pasa** del radicando.",
       module: "raices-cuadradas",
       scene: "raiz-entera",
       raices: { scene: "raiz-entera", radicand: 40 },
+    },
+    {
+      id: "raiz-entera-resto",
+      type: "slide",
+      title: "Raíz entera y resto",
+      blocks: [
+        {
+          kind: "text",
+          text: "Lo que **sobra** al quitar el cuadrado de la raíz entera es el **resto**. Si el resto es $0$, la raíz es exacta.",
+        },
+        {
+          kind: "rule",
+          title: "Relación",
+          formula: "\\text{radicando} = (\\text{raíz entera})^2 + \\text{resto}",
+        },
+        {
+          kind: "example",
+          lines: [
+            { math: "\\sqrt{50}:\\ 50 = 7^2 + 1", note: "raíz entera $7$, resto $1$" },
+            { math: "\\sqrt{40}:\\ 40 = 6^2 + 4", note: "raíz entera $6$, resto $4$" },
+            { math: "\\sqrt{64}:\\ 64 = 8^2 + 0", note: "resto $0$: raíz exacta" },
+          ],
+        },
+        {
+          kind: "warning",
+          title: "Comprueba",
+          text: "El resto nunca llega a $2 \\cdot (\\text{raíz entera}) + 1$. Si te sale igual o mayor, la raíz entera es un número más.",
+        },
+      ],
     },
     {
       id: "raiz-calculadora-narrate",
@@ -77,6 +106,30 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
       hintHiddenUntilRequested: true,
       hint: "Busca los dos cuadrados perfectos que rodean al $50$.",
       explanation: "Como $49 < 50 < 64$, se cumple $7 < \\sqrt{50} < 8$ y la raíz entera es $7$.",
+    },
+    {
+      id: "check-lado",
+      type: "predict",
+      title: "Del área al lado",
+      question:
+        "Un terreno cuadrado tiene $81$ m² de superficie. ¿Cuánto mide cada lado?",
+      mode: "choice",
+      choices: [
+        { id: "9", label: "$9$ m" },
+        {
+          id: "40",
+          label: "$40{,}5$ m",
+          incorrectFeedback:
+            "Has dividido entre $2$. El área de un cuadrado es lado por lado, así que el lado es la raíz: $\\sqrt{81}$.",
+        },
+        {
+          id: "27",
+          label: "$27$ m",
+          incorrectFeedback: "$27 \\cdot 27 = 729$, mucho más que $81$.",
+        },
+      ],
+      correctChoiceId: "9",
+      explanation: "Lado $\\cdot$ lado $= 81$, o sea, lado $= \\sqrt{81} = 9$ m, porque $9^2 = 81$.",
     },
   ],
 };

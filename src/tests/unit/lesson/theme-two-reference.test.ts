@@ -32,7 +32,7 @@ describe("lecciones de referencia del tema 2", () => {
       "potencias-base-exponente",
       "raiz-cuadrada-naturales",
     ]);
-    expect(THEME_TWO_LESSONS.map((l) => l.steps.length)).toEqual([5, 5]);
+    expect(THEME_TWO_LESSONS.map((l) => l.steps.length)).toEqual([7, 7]);
   });
 
   it("no usa respuestas escritas como control", () => {

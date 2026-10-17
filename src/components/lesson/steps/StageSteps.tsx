@@ -499,7 +499,7 @@ export function PredictStepView({
               ) : (
                 <button
                   type="button"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                  className="lesson-hint-button"
                   aria-label="Ver pista"
                   aria-expanded={hintVisible}
                   onClick={() => setHintVisible(true)}
@@ -717,7 +717,7 @@ export function PredictStepView({
             ) : (
               <button
                 type="button"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                className="lesson-hint-button"
                 aria-label="Ver pista"
                 aria-expanded={hintVisible}
                 onClick={() => setHintVisible(true)}
@@ -738,24 +738,24 @@ export function PredictStepView({
             aria-label="Tu respuesta"
           />
         ) : step.choiceLayout === "grid" ? (
-          <div className="mx-auto grid max-w-lg grid-cols-3 gap-3 sm:gap-4">
-            {choiceOptions.map((choice) => (
-              <button
+          <div className="mx-auto grid max-w-xl grid-cols-3 gap-4" role="group" aria-label="Opciones">
+            {choiceOptions.map((choice, index) => (
+              <PredictChoiceCard
                 key={choice.id}
-                type="button"
-                data-testid={`predict-choice-${choice.id}`}
+                layout="tile"
+                letter={String.fromCharCode(65 + index)}
+                testId={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={predictGridChoiceClassName({
+                state={predictChoiceCardState({
                   selected: choiceId === choice.id,
                   checked,
+                  isCorrectOption: choice.id === step.correctChoiceId,
+                  answerCorrect: isCorrect,
                 })}
-                aria-pressed={choiceId === choice.id}
               >
-                <span className="text-3xl font-bold text-[color:var(--stage-ink,#e8edf5)] transition group-hover:text-[color:var(--stage-accent,#58c4dd)]">
-                  <LessonRichText text={choice.label} />
-                </span>
-              </button>
+                <LessonRichText text={choice.label} />
+              </PredictChoiceCard>
             ))}
           </div>
         ) : (
@@ -1080,7 +1080,7 @@ export function ExploreStepView({
             ) : (
               <button
                 type="button"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border-2 border-cobalt/35 bg-cobalt-tint/80 text-sm font-bold text-cobalt transition hover:border-cobalt hover:bg-cobalt-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt"
+                className="lesson-hint-button"
                 aria-label="Ver pista"
                 aria-expanded={hintVisible}
                 onClick={() => setHintVisible(true)}

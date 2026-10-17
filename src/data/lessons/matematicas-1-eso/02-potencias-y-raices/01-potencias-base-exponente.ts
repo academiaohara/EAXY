@@ -12,10 +12,46 @@ export const potenciasBaseExponenteLesson: InteractiveLesson = {
       type: "narrate",
       title: "Base y exponente",
       definitionBox:
-        'Una <mark>potencia</mark> es una forma abreviada de multiplicar el mismo número varias veces. El factor repetido es la <mark>base</mark> y cuántas veces se repite, el <mark class="suma">exponente</mark>.',
+        'Una <mark>potencia</mark> es una forma abreviada de multiplicar un número por sí mismo. El factor que se repite es la <mark>base</mark> y el número de factores iguales, el <mark class="suma">exponente</mark>.',
       module: "potencias",
       scene: "base-exponente",
       potencias: { scene: "base-exponente", base: 6, exponent: 4 },
+    },
+    {
+      id: "potencia-lectura",
+      type: "slide",
+      title: "Cómo se lee una potencia (y qué no es)",
+      blocks: [
+        {
+          kind: "facts",
+          items: [
+            { tex: "6^2", label: "al cuadrado" },
+            { tex: "6^3", label: "al cubo" },
+            { tex: "6^4", label: "a la cuarta" },
+            { tex: "6^5", label: "a la quinta" },
+          ],
+        },
+        {
+          kind: "compare",
+          left: {
+            title: "Potencia",
+            text: "Repite la **base** tantas veces como indique el exponente.",
+            math: ["2^5 = 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 = 32"],
+            tone: "ok",
+          },
+          right: {
+            title: "Producto",
+            text: "Multiplica dos números distintos.",
+            math: ["2 \\cdot 5 = 10"],
+            tone: "info",
+          },
+        },
+        {
+          kind: "warning",
+          title: "Error típico",
+          text: "$2^5$ **no** es $2 \\cdot 5$. El exponente dice **cuántos factores** hay, no por cuánto se multiplica la base.",
+        },
+      ],
     },
     {
       id: "cuadrado-cubo",
@@ -50,24 +86,53 @@ export const potenciasBaseExponenteLesson: InteractiveLesson = {
     {
       id: "check-potencia",
       type: "predict",
-      title: "Partes de una potencia",
-      definitionBox: "En $a^n$, la base se multiplica por sí misma $n$ veces.",
+      title: "Detecta el error",
       question:
-        "En la potencia $7^4$, ¿qué papel tiene el número $4$?",
+        "Un compañero dice que $2^5 = 10$. ¿Qué error ha cometido?",
       mode: "choice",
       choices: [
-        { id: "base", label: "Es la base (el factor que se repite)" },
-        { id: "exp", label: "Es el exponente (cuántas veces se repite la base)" },
         {
-          id: "resultado",
-          label: "Es el resultado de la potencia",
-          incorrectFeedback: "El resultado sería $7 \\cdot 7 \\cdot 7 \\cdot 7 = 2401$.",
+          id: "producto",
+          label: "Ha multiplicado la base por el exponente ($2 \\cdot 5$)",
+        },
+        {
+          id: "suma",
+          label: "Ha sumado la base y el exponente ($2 + 5$)",
+          incorrectFeedback: "$2 + 5 = 7$, no $10$. Mira de dónde sale el $10$.",
+        },
+        {
+          id: "invertido",
+          label: "Ha intercambiado base y exponente ($5^2$)",
+          incorrectFeedback: "$5^2 = 25$, no $10$.",
         },
       ],
-      correctChoiceId: "exp",
-      hint: "Piensa en «$7$ elevado a la cuarta».",
+      correctChoiceId: "producto",
       explanation:
-        "El $7$ es la **base** y el $4$ el **exponente**: hay que multiplicar siete por sí mismo cuatro veces.",
+        "$2 \\cdot 5 = 10$ es un producto. La potencia repite el $2$ cinco veces: $2^5 = 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 = 32$.",
+    },
+    {
+      id: "check-cubo",
+      type: "predict",
+      title: "Un cubo de verdad",
+      question:
+        "Una caja cúbica mide $4$ cm de arista. ¿Cuántos cubitos de $1$ cm³ caben dentro?",
+      mode: "choice",
+      choices: [
+        { id: "64", label: "$64$" },
+        {
+          id: "12",
+          label: "$12$",
+          incorrectFeedback: "$12 = 4 \\cdot 3$ multiplica base por exponente. El cubo es $4^3$.",
+        },
+        {
+          id: "81",
+          label: "$81$",
+          incorrectFeedback: "$81 = 3^4$: has intercambiado base y exponente.",
+        },
+      ],
+      correctChoiceId: "64",
+      explanation:
+        "El volumen es $4^3 = 4 \\cdot 4 \\cdot 4 = 64$: una capa de $4 \\cdot 4 = 16$ cubitos, y son $4$ capas.",
     },
   ],
 };
