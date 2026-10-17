@@ -164,7 +164,7 @@ export function TopicExercisesSection({
               <DialogHeader className="flex-row items-center justify-between gap-4 border-b border-slate-200 bg-paper-raised px-5 py-4 sm:px-8 sm:py-5">
                 <div className="min-w-0 space-y-1">
                   <DialogDescription className="text-[11px] font-semibold uppercase tracking-[0.14em] text-cobalt">
-                    Ejercicio {selectedIndex + 1} · {moduleTitle}
+                    Ejercicio {selectedIndex + 1} — {moduleTitle}
                   </DialogDescription>
                   <DialogTitle className="truncate text-xl font-semibold leading-tight sm:text-2xl">
                     {selectedExercise.title}

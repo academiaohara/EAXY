@@ -72,7 +72,7 @@ export function buildRectaEnteros(): AnimBuild {
         {/* ℕ ⊂ ℤ */}
         <Fade show={beat >= 3} dy={8}>
           <path d={`M ${sx(LO) - 6} ${Y - 56} L ${sx(LO) - 6} ${Y - 70} L ${sx(HI) + 6} ${Y - 70} L ${sx(HI) + 6} ${Y - 56}`} fill="none" stroke={MANIM.blue} strokeWidth={3} strokeLinejoin="round" />
-          <Txt x={sx(0)} y={Y - 86} size={30} color={MANIM.blue}>ℤ · los enteros</Txt>
+          <Txt x={sx(0)} y={Y - 86} size={30} color={MANIM.blue}>ℤ: los enteros</Txt>
           <path d={`M ${sx(0) - 6} ${Y - 28} L ${sx(0) - 6} ${Y - 40} L ${sx(HI) + 6} ${Y - 40} L ${sx(HI) + 6} ${Y - 28}`} fill="none" stroke={POS} strokeWidth={3} strokeLinejoin="round" />
           <Txt x={sx(3)} y={Y - 50} size={22} color={POS}>ℕ</Txt>
         </Fade>

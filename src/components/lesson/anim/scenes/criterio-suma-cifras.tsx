@@ -33,7 +33,7 @@ export function buildCriterioSumaCifras(params: { n?: number }): AnimBuild {
   const s = a + b + c;
   const by3 = s % 3 === 0;
   const by9 = s % 9 === 0;
-  const verdict = `${fmt(n)} ${by3 ? "sí" : "no"} es divisible entre 3 · ${by9 ? "sí" : "no"} entre 9`;
+  const verdict = `${fmt(n)} ${by3 ? "sí" : "no"} es divisible entre 3, ${by9 ? "sí" : "no"} entre 9`;
 
   return {
     label: `Por qué la suma de cifras decide la divisibilidad entre 3 y 9, con ${fmt(n)}`,

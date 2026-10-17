@@ -111,7 +111,7 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
                 className="min-w-0 text-sm text-ink-muted transition-colors hover:text-cobalt"
                 data-testid="course-hero-topic-link"
               >
-                <span className="font-semibold text-ink">Tema {next.moduleNumber}</span> ·{" "}
+                <span className="font-semibold text-ink">Tema {next.moduleNumber}</span> —{" "}
                 {stripLessonNumber(next.lesson.title)}
               </Link>
             </div>

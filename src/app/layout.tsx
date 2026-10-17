@@ -30,7 +30,7 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: {
     default: "Eaxy — Matemáticas adaptativas",
-    template: "%s · Eaxy",
+    template: "%s — Eaxy",
   },
   description:
     "Plataforma de aprendizaje adaptativo de matemáticas para ESO. Practica a tu ritmo o gestiona aulas con seguimiento del progreso.",

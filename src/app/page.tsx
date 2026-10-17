@@ -111,7 +111,7 @@ export default function HomePage() {
             <div className="space-y-7">
               <p className="inline-flex items-center gap-2 rounded-full border border-cobalt/15 bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt shadow-xs">
                 <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
-                Matemáticas adaptativas · ESO y Bachillerato
+                Matemáticas adaptativas, ESO y Bachillerato
               </p>
               <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
                 Aprende matemáticas{" "}
@@ -238,7 +238,7 @@ export default function HomePage() {
                         </span>
                         <span className="block text-xs text-ink-muted">
                           {available
-                            ? `${course.modules.length} temas · ${lessonCount} lecciones`
+                            ? `${course.modules.length} temas, ${lessonCount} lecciones`
                             : "Próximamente"}
                         </span>
                       </span>
@@ -350,7 +350,7 @@ export default function HomePage() {
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="space-y-2">
             <BrandLogo />
-            <p>© {new Date().getFullYear()} Eaxy · Matemáticas adaptativas</p>
+            <p>© {new Date().getFullYear()} Eaxy — Matemáticas adaptativas</p>
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Pie de página">
             <Link href="/aprender" className="transition-colors hover:text-cobalt">
