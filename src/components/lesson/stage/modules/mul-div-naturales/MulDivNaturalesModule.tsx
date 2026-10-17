@@ -197,23 +197,30 @@ function MenuItemSlot({
   label,
   euros,
   imageSrc,
+  tone = "amber",
 }: {
   label: string;
   euros: number;
   imageSrc?: string;
+  tone?: "amber" | "sky";
 }) {
   return (
-    <div className="flex w-[3.25rem] flex-col items-center gap-1">
-      <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg border border-dashed border-white/25 bg-black/20">
+    <div className="flex w-[4.25rem] flex-col items-center gap-1.5">
+      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-black/25 p-1">
         {imageSrc ? (
-          <Image src={imageSrc} alt="" width={44} height={44} className="h-full w-full object-contain" aria-hidden />
+          <Image src={imageSrc} alt="" width={56} height={56} className="h-full w-full object-contain" aria-hidden />
         ) : (
           <span className="px-1 text-center text-[9px] font-bold uppercase leading-tight tracking-wide text-[color:var(--stage-muted,#94a3b8)]">
             {label}
           </span>
         )}
       </div>
-      <span className="font-mono text-[11px] font-semibold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
+      <span
+        className={cn(
+          "rounded-full px-2 py-0.5 font-mono text-xs font-bold tabular-nums",
+          tone === "amber" ? "bg-amber-400/20 text-amber-200" : "bg-sky-400/20 text-sky-200",
+        )}
+      >
         {euros} €
       </span>
     </div>
@@ -222,10 +229,10 @@ function MenuItemSlot({
 
 function MenuCard({ bocadillo, bebida }: { bocadillo: number; bebida: number }) {
   return (
-    <div className="flex flex-col items-stretch gap-1 rounded-xl border border-white/15 bg-black/15 px-1.5 py-2">
-      <MenuItemSlot label="Bocadillo" euros={bocadillo} imageSrc={ASSETS.bocadillo} />
+    <div className="flex flex-col items-stretch gap-2 rounded-2xl border border-white/15 bg-white/[0.04] px-2 py-3 shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
+      <MenuItemSlot label="Bocadillo" euros={bocadillo} imageSrc={ASSETS.bocadillo} tone="amber" />
       <div className="h-px bg-white/10" aria-hidden />
-      <MenuItemSlot label="Bebida" euros={bebida} imageSrc={ASSETS.botella} />
+      <MenuItemSlot label="Bebida" euros={bebida} imageSrc={ASSETS.botella} tone="sky" />
     </div>
   );
 }
@@ -691,7 +698,7 @@ function DistributivaBloques({
           </div>
           <div
             ref={menuRowRef}
-            className="flex max-w-full flex-wrap items-start justify-center gap-1 transition-all duration-700 sm:gap-1.5"
+            className="flex max-w-full flex-wrap items-start justify-center gap-2 transition-all duration-700"
           >
             {Array.from({ length: a }, (_, col) => (
               <div

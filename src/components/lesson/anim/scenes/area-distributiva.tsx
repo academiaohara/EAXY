@@ -6,8 +6,10 @@ const X0 = 190;
 const Y0 = 120;
 const H = 220;
 const W_TOTAL = 420;
+/** Separación entre los dos rectángulos antes de juntarlos. */
+const GAP = 80;
 
-/** Propiedad distributiva con el modelo de áreas: a·(b+c) = a·b + a·c. */
+/** Propiedad distributiva con áreas: dos rectángulos con el mismo alto se juntan en uno. */
 export function buildAreaDistributiva(params: { a?: number; b?: number; c?: number }): AnimBuild {
   const a = params.a ?? 15;
   const b = params.b ?? 4;
@@ -17,56 +19,96 @@ export function buildAreaDistributiva(params: { a?: number; b?: number; c?: numb
   const ab = a * b;
   const ac = a * c;
 
+  const heightBrace = (x: number, key: string) => {
+    const my = Y0 + H / 2;
+    return (
+      <g key={key}>
+        <path
+          d={`M ${x + 12} ${Y0} Q ${x} ${Y0} ${x} ${Y0 + 14} L ${x} ${my - 12} Q ${x} ${my} ${x - 12} ${my} Q ${x} ${my} ${x} ${my + 12} L ${x} ${Y0 + H - 14} Q ${x} ${Y0 + H} ${x + 12} ${Y0 + H}`}
+          fill="none"
+          stroke={MANIM.orange}
+          strokeWidth={3}
+        />
+        <Txt x={x - 34} y={my + 10} size={30} color={MANIM.orange}>
+          {String(a)}
+        </Txt>
+      </g>
+    );
+  };
+
   return {
-    label: `${a} · (${b} + ${c}) = ${a} · ${b} + ${a} · ${c} = ${ab + ac}, con áreas de rectángulos`,
+    label: `${a} · ${b} y ${a} · ${c} comparten el factor ${a} y se juntan en ${a} · (${b} + ${c}) = ${ab + ac}, con áreas de rectángulos`,
     captions: [
-      `Un rectángulo de **${a}** de alto y **${b} + ${c}** de ancho. Su área es $${a} \\cdot (${b} + ${c})$.`,
-      `Lo cortamos en dos: un trozo de ancho **${b}** y otro de ancho **${c}**.`,
-      `Cada trozo tiene su área: $${a} \\cdot ${b} = ${ab}$ y $${a} \\cdot ${c} = ${ac}$.`,
-      `Es el mismo rectángulo, así que **da igual** calcularlo entero o por trozos: $${a} \\cdot (${b} + ${c}) = ${a} \\cdot ${b} + ${a} \\cdot ${c} = ${ab + ac}$.`,
+      `Dos cálculos por separado: $${a} \\cdot ${b}$ y $${a} \\cdot ${c}$. Los dos rectángulos tienen el mismo alto, **${a}**.`,
+      `Como comparten el **factor común ${a}**, podemos pegar los rectángulos en uno solo.`,
+      `El rectángulo grande mide **${a}** de alto y **${b} + ${c}** de ancho: su área es $${a} \\cdot (${b} + ${c})$.`,
+      `Es el mismo área, así que $${a} \\cdot ${b} + ${a} \\cdot ${c} = ${a} \\cdot (${b} + ${c}) = ${ab + ac}$.`,
     ],
-    render: (beat) => (
-      <Canvas>
-        {/* rectángulo completo */}
-        <rect x={X0} y={Y0} width={W_TOTAL} height={H} rx={6} fill={MANIM.blue} fillOpacity={beat === 0 ? 0.35 : 0} stroke={MANIM.ink} strokeWidth={3} className="anim-t" />
-        {/* trozos */}
-        <rect x={X0} y={Y0} width={wb} height={H} rx={6} fill={MANIM.blue} fillOpacity={beat >= 1 ? 0.45 : 0} className="anim-t" />
-        <rect x={X0 + wb} y={Y0} width={wc} height={H} rx={6} fill={MANIM.green} fillOpacity={beat >= 1 ? 0.45 : 0} className="anim-t" />
-        <WriteLine show={beat >= 1} x1={X0 + wb} y1={Y0 - 6} x2={X0 + wb} y2={Y0 + H + 6} color={MANIM.yellow} width={4} />
-        {/* altura */}
-        <Fade show dx={-6}>
-          <path d={`M ${X0 - 22} ${Y0} Q ${X0 - 34} ${Y0} ${X0 - 34} ${Y0 + 14} L ${X0 - 34} ${Y0 + H / 2 - 12} Q ${X0 - 34} ${Y0 + H / 2} ${X0 - 46} ${Y0 + H / 2} Q ${X0 - 34} ${Y0 + H / 2} ${X0 - 34} ${Y0 + H / 2 + 12} L ${X0 - 34} ${Y0 + H - 14} Q ${X0 - 34} ${Y0 + H} ${X0 - 22} ${Y0 + H}`} fill="none" stroke={MANIM.orange} strokeWidth={3} />
-          <Txt x={X0 - 70} y={Y0 + H / 2 + 10} size={30} color={MANIM.orange}>
-            {String(a)}
-          </Txt>
-        </Fade>
-        {/* anchuras */}
-        <HBrace show={beat === 0} x1={X0} x2={X0 + W_TOTAL} y={Y0 - 20} dir="up" color={MANIM.yellow} label={`${b} + ${c}`} />
-        <HBrace show={beat >= 1} x1={X0} x2={X0 + wb - 4} y={Y0 - 20} dir="up" color={MANIM.blue} label={String(b)} />
-        <HBrace show={beat >= 1} x1={X0 + wb + 4} x2={X0 + W_TOTAL} y={Y0 - 20} dir="up" color={MANIM.green} label={String(c)} delay={150} />
-        {/* áreas */}
-        <Fade show={beat >= 2} scale={0.8}>
-          <Txt x={X0 + wb / 2} y={Y0 + H / 2 - 4} size={26} color={MANIM.ink}>
-            {`${a} · ${b}`}
-          </Txt>
-          <Txt x={X0 + wb / 2} y={Y0 + H / 2 + 32} size={32} color={MANIM.blue}>
-            {String(ab)}
-          </Txt>
-        </Fade>
-        <Fade show={beat >= 2} scale={0.8} delay={200}>
-          <Txt x={X0 + wb + wc / 2} y={Y0 + H / 2 - 4} size={26} color={MANIM.ink}>
-            {`${a} · ${c}`}
-          </Txt>
-          <Txt x={X0 + wb + wc / 2} y={Y0 + H / 2 + 32} size={32} color={MANIM.green}>
-            {String(ac)}
-          </Txt>
-        </Fade>
-        <Fade show={beat >= 3} dy={10}>
-          <Txt x={400} y={398} size={30} color={MANIM.yellow}>
-            {`${a} · (${b} + ${c}) = ${ab} + ${ac} = ${ab + ac}`}
-          </Txt>
-        </Fade>
-      </Canvas>
-    ),
+    render: (beat) => {
+      const apart = beat === 0;
+      const dxL = apart ? -GAP / 2 : 0;
+      const dxR = apart ? GAP / 2 : 0;
+      return (
+        <Canvas>
+          {/* trozo izquierdo */}
+          <g className="anim-t" style={{ transform: `translate(${dxL}px, 0px)` }}>
+            <rect x={X0} y={Y0} width={wb} height={H} rx={6} fill={MANIM.blue} fillOpacity={0.45} stroke={MANIM.ink} strokeWidth={3} />
+            <Txt x={X0 + wb / 2} y={Y0 + H / 2 - 4} size={26} color={MANIM.ink}>
+              {`${a} · ${b}`}
+            </Txt>
+            <Fade show scale={0.8}>
+              <Txt x={X0 + wb / 2} y={Y0 + H / 2 + 32} size={32} color={MANIM.blue}>
+                {String(ab)}
+              </Txt>
+            </Fade>
+          </g>
+          {/* trozo derecho */}
+          <g className="anim-t" style={{ transform: `translate(${dxR}px, 0px)` }}>
+            <rect x={X0 + wb} y={Y0} width={wc} height={H} rx={6} fill={MANIM.green} fillOpacity={0.45} stroke={MANIM.ink} strokeWidth={3} />
+            <Txt x={X0 + wb + wc / 2} y={Y0 + H / 2 - 4} size={26} color={MANIM.ink}>
+              {`${a} · ${c}`}
+            </Txt>
+            <Fade show scale={0.8}>
+              <Txt x={X0 + wb + wc / 2} y={Y0 + H / 2 + 32} size={32} color={MANIM.green}>
+                {String(ac)}
+              </Txt>
+            </Fade>
+          </g>
+          {/* unión: línea amarilla que marca por dónde se pegaron */}
+          <WriteLine show={beat >= 1} x1={X0 + wb} y1={Y0 - 6} x2={X0 + wb} y2={Y0 + H + 6} color={MANIM.yellow} width={4} />
+          {/* alturas: una por rectángulo mientras están separados, una sola al juntarlos */}
+          <Fade show={apart} dx={-6}>
+            {heightBrace(X0 - 34 - GAP / 2, "hl")}
+          </Fade>
+          <Fade show={!apart} dx={-6}>
+            {heightBrace(X0 - 34, "h")}
+          </Fade>
+          {/* factor común */}
+          <Fade show={beat === 1} dy={-6}>
+            <Txt x={400} y={398} size={26} color={MANIM.orange}>
+              {`factor común: ${a}`}
+            </Txt>
+          </Fade>
+          {/* anchuras */}
+          <g className="anim-t" style={{ transform: `translate(${dxL}px, 0px)` }}>
+            <HBrace show x1={X0} x2={X0 + wb - 4} y={Y0 - 20} dir="up" color={MANIM.blue} label={String(b)} />
+          </g>
+          <g className="anim-t" style={{ transform: `translate(${dxR}px, 0px)` }}>
+            <HBrace show x1={X0 + wb + 4} x2={X0 + W_TOTAL} y={Y0 - 20} dir="up" color={MANIM.green} label={String(c)} delay={150} />
+          </g>
+          <HBrace show={beat === 2} x1={X0} x2={X0 + W_TOTAL} y={Y0 - 72} dir="up" color={MANIM.yellow} label={`${b} + ${c}`} />
+          <Fade show={beat === 2} dy={10}>
+            <Txt x={400} y={398} size={30} color={MANIM.yellow}>
+              {`${a} · (${b} + ${c})`}
+            </Txt>
+          </Fade>
+          <Fade show={beat >= 3} dy={10}>
+            <Txt x={400} y={398} size={30} color={MANIM.yellow}>
+              {`${ab} + ${ac} = ${a} · (${b} + ${c}) = ${ab + ac}`}
+            </Txt>
+          </Fade>
+        </Canvas>
+      );
+    },
   };
 }

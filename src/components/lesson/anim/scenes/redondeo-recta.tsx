@@ -74,10 +74,10 @@ export function buildRedondeoRecta(params: { n?: number; power?: number }): Anim
           </Txt>
         </Fade>
         <Fade show={beat === 1} dy={4}>
-          <Txt x={(X_L + xmid) / 2} y={Y - 40} size={22} color={MANIM.blue}>
+          <Txt x={(X_L + xmid) / 2} y={Y + 56} size={22} color={MANIM.blue}>
             ← se queda
           </Txt>
-          <Txt x={(xmid + X_R) / 2} y={Y - 40} size={22} color={MANIM.green}>
+          <Txt x={(xmid + X_R) / 2} y={Y + 56} size={22} color={MANIM.green}>
             sube →
           </Txt>
         </Fade>

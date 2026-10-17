@@ -11,9 +11,9 @@ const ASSETS = {
 } as const;
 
 const BOX_FRAME =
-  "rounded-md border-2 border-amber-400 bg-amber-500/30 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.4)]";
-const SHELF_FRAME =
-  "rounded-lg border-2 border-sky-400 bg-sky-500/20 shadow-[0_0_0_1px_rgba(56,189,248,0.45)]";
+  "rounded-md border-2 border-amber-400 bg-amber-500/25 shadow-[inset_0_0_0_1px_rgba(251,191,36,0.35)]";
+const SHELF_FRAME_LEFT = "border-sky-400/80 bg-sky-500/10";
+const SHELF_FRAME_RIGHT = "border-violet-400/80 bg-violet-500/15";
 
 const STAGE_CAPTION = "text-xs font-semibold text-[color:var(--stage-muted,#94a3b8)]";
 const STAGE_MATH =
@@ -29,7 +29,7 @@ function EggRow({ count, density }: { count: number; density?: HuevosDensity }) 
   const grid = density === "grid";
   return (
     <span
-      className={cn("inline-flex items-center justify-center", grid ? "gap-px" : "gap-0.5")}
+      className={cn("inline-flex items-center justify-center", grid ? "gap-[3px]" : "gap-0.5")}
       aria-hidden
     >
       {Array.from({ length: count }, (_, i) => (
@@ -37,9 +37,9 @@ function EggRow({ count, density }: { count: number; density?: HuevosDensity }) 
           key={i}
           src={ASSETS.huevo}
           alt=""
-          width={grid ? 10 : 20}
-          height={grid ? 8 : 16}
-          className={cn("object-contain", grid ? "h-[7px] w-[9px]" : "h-4 w-5")}
+          width={grid ? 20 : 20}
+          height={grid ? 16 : 16}
+          className={cn("object-contain", grid ? "h-[14px] w-[17px]" : "h-4 w-5")}
         />
       ))}
     </span>
@@ -60,7 +60,7 @@ function CajaRect({
     <div
       className={cn(
         BOX_FRAME,
-        grid ? "rounded-sm border-[1.5px] px-[3px] py-[2px]" : "px-2 py-1.5",
+        grid ? "rounded-md border-[1.5px] px-1.5 py-1" : "px-2 py-1.5",
         className,
       )}
       aria-hidden
@@ -74,29 +74,44 @@ function AlmacenHuevosGrid({
   filas,
   cajasPorFila,
   huevosPorCaja,
+  variant,
+  rowLabel,
   className,
 }: {
   filas: number;
   cajasPorFila: number;
   huevosPorCaja: number;
+  variant: "left" | "right";
+  rowLabel: string;
   className?: string;
 }) {
+  const shelf = variant === "left" ? SHELF_FRAME_LEFT : SHELF_FRAME_RIGHT;
+  const labelColor = variant === "left" ? "text-sky-300" : "text-violet-300";
   return (
     <div
-      className={cn("mx-auto flex w-full max-w-[18rem] flex-col gap-[3px]", className)}
+      className={cn("mx-auto flex w-fit flex-col gap-1.5", className)}
       aria-label={`${filas} filas, ${cajasPorFila} cajas por fila, ${huevosPorCaja} huevos en cada caja`}
     >
       {Array.from({ length: filas }, (_, fila) => (
-        <div
-          key={fila}
-          className={cn(SHELF_FRAME, "rounded-sm px-1 py-[2px] shadow-none")}
-          aria-hidden
-        >
-          <div className="flex flex-nowrap items-center justify-center gap-[3px]">
+        <div key={fila} className="relative" aria-hidden>
+          <div
+            className={cn(
+              "flex flex-nowrap items-center justify-center gap-1.5 rounded-lg border-2 px-2 py-1",
+              shelf,
+            )}
+          >
             {Array.from({ length: cajasPorFila }, (_, caja) => (
               <CajaRect key={caja} eggsPerBox={huevosPorCaja} density="grid" />
             ))}
           </div>
+          <span
+            className={cn(
+              "absolute left-full top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap font-mono text-[11px] font-bold tabular-nums",
+              labelColor,
+            )}
+          >
+            {rowLabel}
+          </span>
         </div>
       ))}
     </div>
@@ -108,13 +123,13 @@ function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const total = boxes * c;
   return (
     <div className="flex flex-col items-center gap-3">
-      <p className={cn(STAGE_CAPTION, "max-w-[20rem] text-center normal-case leading-snug text-[#7dd3fc]")}>
+      <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#7dd3fc]")}>
         Primero cuentas todas las cajas: {a} estantes × {b} cajas/estante ={" "}
         <strong className="text-[color:var(--stage-ink,#e8edf5)]">{boxes} cajas</strong> en la
         estantería.
       </p>
-      <div className="w-full rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-2 py-2.5">
-        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
+      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-4 py-4 pr-24">
+        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="left" rowLabel={`${b} cajas`} />
       </div>
       <div className="space-y-1.5 text-center">
         <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
@@ -134,12 +149,12 @@ function VisualRightGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const total = a * perRow;
   return (
     <div className="flex w-full flex-col items-center gap-3">
-      <p className={cn(STAGE_CAPTION, "max-w-[20rem] text-center normal-case leading-snug text-[#c4b5fd]")}>
+      <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#c4b5fd]")}>
         En cada fila: {b} cajas/fila × {c} huevos/caja ={" "}
         <strong className="text-[color:var(--stage-ink,#e8edf5)]">{perRow} huevos/fila</strong>.
       </p>
-      <div className="w-full rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-2 py-2.5">
-        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} />
+      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-4 py-4 pr-24">
+        <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="right" rowLabel={`${perRow} huevos`} />
       </div>
       <div className="space-y-1.5 text-center">
         <p className="font-mono text-xs font-bold tabular-nums text-[color:var(--stage-ink,#e8edf5)]">
@@ -189,7 +204,7 @@ export function AsociativaHuevosDiscover({
   const showSameResult = seenLeft && seenRight;
 
   return (
-    <div className="mx-auto w-full max-w-lg space-y-5" aria-label="Descubrir la propiedad asociativa con huevos">
+    <div className="mx-auto w-full max-w-2xl space-y-5" aria-label="Descubrir la propiedad asociativa con huevos">
       <p className={cn(STAGE_CAPTION, "text-center")}>
         {a} estantes · {b} cajas · {c} huevos en cada caja
       </p>
