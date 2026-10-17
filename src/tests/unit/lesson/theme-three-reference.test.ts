@@ -23,8 +23,14 @@ describe("lecciones del tema 3 (divisibilidad)", () => {
   it("explican la teoría con diapositivas y evalúan con tests de decisión, sin respuestas escritas", () => {
     for (const lesson of THEME_THREE) {
       expect(lesson.steps.filter((s) => s.type === "slide").length).toBeGreaterThanOrEqual(3);
-      expect(lesson.steps.length).toBeLessThanOrEqual(10);
-      expect(lesson.steps.every((s) => s.type === "slide" || s.type === "predict")).toBe(true);
+      // «criterios-divisibilidad» explica un criterio por número y cierra con cuadrículas.
+      const isCriteria = lesson.slug === "criterios-divisibilidad";
+      expect(lesson.steps.length).toBeLessThanOrEqual(isCriteria ? 16 : 10);
+      expect(
+        lesson.steps.every(
+          (s) => s.type === "slide" || s.type === "predict" || (isCriteria && s.type === "divisibility_grid"),
+        ),
+      ).toBe(true);
     }
   });
 

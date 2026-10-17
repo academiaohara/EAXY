@@ -12,7 +12,8 @@ export type StepType =
   | "fill_in_blank"
   | "fraction_pick"
   | "classify"
-  | "number_line_pick";
+  | "number_line_pick"
+  | "divisibility_grid";
 
 export type LessonStageTheme = "paper" | "board";
 
@@ -418,7 +419,23 @@ export type NumberLinePickStep = LessonStepBase &
     readout?: "decimal" | "fraction";
   };
 
-export type PracticeStep = FillInBlankStep | FractionPickStep | ClassifyStep | NumberLinePickStep;
+/**
+ * Cuadrícula de divisibilidad: filas = números, columnas = divisores. El alumno marca
+ * «sí» o «no» en cada casilla y ve al momento ✓ / ✗ con la explicación del criterio.
+ */
+export type DivisibilityGridStep = LessonStepBase &
+  PracticeFields & {
+    type: "divisibility_grid";
+    numbers: number[];
+    divisors: number[];
+  };
+
+export type PracticeStep =
+  | FillInBlankStep
+  | FractionPickStep
+  | ClassifyStep
+  | NumberLinePickStep
+  | DivisibilityGridStep;
 
 export type NarrateStep = LessonStepBase &
   StageStepFields & {
@@ -695,6 +712,7 @@ const PRACTICE_TYPES: ReadonlySet<StepType> = new Set([
   "fraction_pick",
   "classify",
   "number_line_pick",
+  "divisibility_grid",
   "predict",
   "explore",
 ]);

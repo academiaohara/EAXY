@@ -10,6 +10,7 @@ const QUIZ_FALLBACK_MESSAGE: Partial<Record<LessonStep["type"], string>> = {
   fraction_pick: "Toca las partes para colorearlas. Si te equivocas, vuelve a tocar.",
   classify: "Toca una tarjeta y luego el grupo donde va.",
   number_line_pick: "Toca la recta en el punto que corresponde.",
+  divisibility_grid: "En cada casilla elige «Sí» o «No» aplicando el criterio.",
   predict: "Responde y pulsa Comprobar.",
   explore: "Prueba hasta cumplir el objetivo y pulsa Comprobar.",
 };
