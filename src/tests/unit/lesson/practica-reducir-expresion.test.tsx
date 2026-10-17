@@ -2,7 +2,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { PracticaReducirExpresion } from "@/components/lesson/stage/modules/jerarquia-operaciones/PracticaReducirExpresion";
 import { pickNextOperation } from "@/lib/lesson/stage/jerarquia-reduce";
-import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
+import { interactiveLessons } from "@/data/lessons";
+
+const divisionOrdenOperacionesNaturalesLesson =
+  interactiveLessons["division-orden-operaciones-naturales"];
 
 const step = divisionOrdenOperacionesNaturalesLesson.steps.find((s) => s.id === "practica-mul-primero");
 const tokens =

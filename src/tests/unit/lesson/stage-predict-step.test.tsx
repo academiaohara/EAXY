@@ -9,8 +9,11 @@ import {
 } from "@/components/lesson/LessonStepControlContext";
 import { LessonPersistedStateProvider } from "@/components/lesson/LessonPersistedStateContext";
 import type { PredictStep } from "@/lib/lesson/types";
-import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
-import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
+import { interactiveLessons } from "@/data/lessons";
+
+const multiplicacionDivisionNaturalesLesson =
+  interactiveLessons["multiplicacion-division-naturales"];
+const raizCuadradaNaturalesLesson = interactiveLessons["raiz-cuadrada-naturales"];
 
 const step: PredictStep = {
   id: "test-predict",

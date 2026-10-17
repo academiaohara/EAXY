@@ -4,7 +4,7 @@ Las lecciones interactivas pueden declarar un **escenario** con tema visual y pa
 
 ## Activar escenario en una lección
 
-En el objeto `InteractiveLesson` (`src/data/lessons/*.ts`):
+En el objeto `InteractiveLesson` (ficheros bajo `src/data/lessons/<curso>/<tema>/NN-<slug>.ts`; ver `src/data/lessons/README.md`):
 
 ```ts
 export const miLeccion: InteractiveLesson = {
@@ -114,4 +114,4 @@ Escenas que usan bitmaps (p. ej. `mul-div-naturales`, tienda ciclista): estilo, 
 
 ## Piloto
 
-Referencia completa: `src/data/lessons/suma-resta-naturales.ts` (Tema 1 · 1.º ESO · Suma y resta).
+Referencia completa: `src/data/lessons/matematicas-1-eso/01-numeros-naturales/02-suma-resta-naturales.ts` (Tema 1 · 1.º ESO · Suma y resta).
