@@ -45,15 +45,14 @@ describe("lecciones del tema 3 (divisibilidad)", () => {
     }
   });
 
-  it("las ilustraciones apuntan a public/lesson/divisibilidad", () => {
-    const srcs = THEME_THREE.flatMap((l) =>
+  it("no lleva ilustraciones decorativas: lo visual son animaciones", () => {
+    const decorative = THEME_THREE.flatMap((l) =>
       l.steps
         .filter((s): s is SlideStep => s.type === "slide")
         .flatMap((s) => s.blocks)
-        .flatMap((b) => (b.kind === "story" || b.kind === "figure") && b.src ? [b.src] : []),
+        .filter((b) => b.kind === "story" || b.kind === "figure"),
     );
-    expect(srcs.length).toBe(5);
-    expect(srcs.every((src) => src.startsWith("/lesson/divisibilidad/") && src.endsWith(".png"))).toBe(true);
+    expect(decorative).toEqual([]);
   });
 });
 

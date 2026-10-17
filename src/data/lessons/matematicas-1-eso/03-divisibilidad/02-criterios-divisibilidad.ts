@@ -13,10 +13,8 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
       title: "Decidir sin dividir",
       blocks: [
         {
-          kind: "story",
+          kind: "text",
           text: "Hay que repartir **1 350 €** entre **5** amigos sin partir ningún euro. ¿Se puede? Sin dividir: acaba en $0$, así que sí.",
-          src: "/lesson/divisibilidad/hucha-amigos.png",
-          alt: "Hucha con monedas y un grupo de amigos",
         },
         {
           kind: "definition",

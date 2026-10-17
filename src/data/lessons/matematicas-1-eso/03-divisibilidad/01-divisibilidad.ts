@@ -13,10 +13,8 @@ export const divisibilidadLesson: InteractiveLesson = {
       title: "Divisible: la división exacta",
       blocks: [
         {
-          kind: "story",
+          kind: "text",
           text: "Una pizzería empaqueta las porciones en cajas de **6**. ¿Con cuántas porciones no sobra ninguna fuera de una caja?",
-          src: "/lesson/divisibilidad/pizzeria-cajas.png",
-          alt: "Pizzero cerrando una caja de pizza",
         },
         {
           kind: "definition",
