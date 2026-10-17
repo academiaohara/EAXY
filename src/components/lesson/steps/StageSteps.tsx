@@ -44,7 +44,7 @@ import {
 import { cn } from "@/lib/utils";
 
 function usesPlainLessonTypography(text: string): boolean {
-  return !/\$|\\/.test(text);
+  return !/\$|\\|\*\*|</.test(text);
 }
 
 function LessonRichText({

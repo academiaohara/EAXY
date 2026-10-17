@@ -82,20 +82,6 @@ function wrapEmphasisTag(
     : `<strong>${term}</strong>`;
 }
 
-function applyBoldMarkdown(
-  fragment: string,
-  conceptLookup: MathRendererProps["conceptLookup"],
-  emphasis: LessonTextEmphasis,
-  boldCounter: { n: number },
-): string {
-  const { masked, slots } = maskAllowedInlineHtml(fragment);
-  const withBold = escapeHtml(masked).replace(/\*\*([^*]+)\*\*/g, (_match, term: string) => {
-    const conceptId = conceptLookup?.(term);
-    return wrapEmphasisTag(term, emphasis, boldCounter, conceptId);
-  });
-  return restoreAllowedInlineHtml(withBold, slots);
-}
-
 /** Renderiza texto con LaTeX inline ($...$) y bloques display opcionales. */
 export function MathRenderer({
   text,
@@ -111,31 +97,27 @@ export function MathRenderer({
 
     const boldCounter = { n: 0 };
 
-    const normalized = text.replace(
-      /\*\*(\$[^$]+\$)\*\*/g,
-      (_match, latexWrapped: string) => `<strong-math>${latexWrapped}</strong-math>`,
-    );
-
-    const parts = normalized.split(/(\$[^$]+\$|<strong-math>\$[^$]+\$<\/strong-math>)/g);
-    return parts
-      .map((part) => {
-        const strongMath = part.match(/^<strong-math>(\$[^$]+\$)<\/strong-math>$/);
-        if (strongMath) {
-          const latex = strongMath[1]!.slice(1, -1);
-          const rendered = renderLatex(latex, false);
-          if (emphasis === "mark-alternate") {
-            const isSecondary = boldCounter.n % 2 === 1;
-            boldCounter.n += 1;
-            const classAttr = isSecondary ? ' class="suma"' : "";
-            return `<mark${classAttr}>${rendered}</mark>`;
+    const renderPlain = (fragment: string) =>
+      fragment
+        .split(/(\$[^$]+\$)/g)
+        .map((part) => {
+          if (part.length > 2 && part.startsWith("$") && part.endsWith("$")) {
+            return renderLatex(part.slice(1, -1), false);
           }
-          return `<strong>${rendered}</strong>`;
-        }
-        if (part.startsWith("$") && part.endsWith("$")) {
-          const latex = part.slice(1, -1);
-          return renderLatex(latex, false);
-        }
-        return applyBoldMarkdown(part, conceptLookup, emphasis, boldCounter);
+          const { masked, slots } = maskAllowedInlineHtml(part);
+          return restoreAllowedInlineHtml(escapeHtml(masked), slots);
+        })
+        .join("");
+
+    // El negrita se resuelve primero, para que pueda envolver fórmulas ($...$).
+    return text
+      .split(/(\*\*[^*]+\*\*)/g)
+      .map((segment) => {
+        const bold = segment.match(/^\*\*([^*]+)\*\*$/);
+        if (!bold) return renderPlain(segment);
+        const term = bold[1]!;
+        const conceptId = conceptLookup?.(term);
+        return wrapEmphasisTag(renderPlain(term), emphasis, boldCounter, conceptId);
       })
       .join("");
   }, [text, display, conceptLookup, emphasis]);
