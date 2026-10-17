@@ -23,6 +23,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'potencias-y-raices', 'Potencias y raíces', 2),
   ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'divisibilidad', 'Divisibilidad', 3),
   ('a2000000-0000-4000-8000-000000000004', 'a1000000-0000-4000-8000-000000000001', 'numeros-enteros', 'Los números enteros', 4),
+  ('a2000000-0000-4000-8000-000000000005', 'a1000000-0000-4000-8000-000000000001', 'numeros-decimales', 'Los números decimales', 5),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -41,6 +42,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000402', 'a2000000-0000-4000-8000-000000000004', '2. Sumas y restas de enteros', 'Mismo signo, distinto signo y expresiones con varios números.', 2, null),
   ('a3000000-0000-4000-8000-000000000403', 'a2000000-0000-4000-8000-000000000004', '3. Paréntesis en sumas y restas', 'Restar es sumar el opuesto; signo delante de un paréntesis y paréntesis anidados.', 3, null),
   ('a3000000-0000-4000-8000-000000000404', 'a2000000-0000-4000-8000-000000000004', '4. Multiplicación y división de enteros', 'Regla de los signos, división exacta y operaciones combinadas.', 4, null),
+  ('a3000000-0000-4000-8000-000000000501', 'a2000000-0000-4000-8000-000000000005', '1. Los órdenes de unidades decimales', 'Décimas, centésimas y milésimas; lectura, orden en la recta y aproximación por redondeo.', 1, null),
+  ('a3000000-0000-4000-8000-000000000502', 'a2000000-0000-4000-8000-000000000005', '2. Operaciones con números decimales', 'Suma y resta en columna, multiplicación y desplazamiento de la coma por 10, 100 y 1000.', 2, null),
+  ('a3000000-0000-4000-8000-000000000503', 'a2000000-0000-4000-8000-000000000005', '3. División de números decimales', 'Divisor natural y decimal, cocientes periódicos y división entre 10, 100 y 1000.', 3, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

@@ -29,6 +29,15 @@ import { buildRedondeoRecta } from "@/components/lesson/anim/scenes/redondeo-rec
 import { buildRepartoAgrupar } from "@/components/lesson/anim/scenes/reparto-agrupar";
 import { buildRestaDiferencia } from "@/components/lesson/anim/scenes/resta-diferencia";
 import { buildRomanoResta } from "@/components/lesson/anim/scenes/romano-resta";
+import { buildComaPotencias10 } from "@/components/lesson/anim/scenes/coma-potencias10";
+import { buildCompararDecimales } from "@/components/lesson/anim/scenes/comparar-decimales";
+import { buildDecimalColumna } from "@/components/lesson/anim/scenes/decimal-columna";
+import { buildDecimalProducto } from "@/components/lesson/anim/scenes/decimal-producto";
+import { buildDecimalZoom } from "@/components/lesson/anim/scenes/decimal-zoom";
+import { buildDivisionComaDivisor } from "@/components/lesson/anim/scenes/division-coma-divisor";
+import { buildDivisionDecimal } from "@/components/lesson/anim/scenes/division-decimal";
+import { buildRedondeoDecimal } from "@/components/lesson/anim/scenes/redondeo-decimal";
+import { buildTablaDecimal } from "@/components/lesson/anim/scenes/tabla-decimal";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -63,6 +72,15 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "parentesis-signos": (p) => buildParentesisSignos(p),
   "producto-signos": (p) => buildProductoSignos(p),
   "division-inversa": (p) => buildDivisionInversa(p),
+  "decimal-zoom": (p) => buildDecimalZoom(p),
+  "tabla-decimal": (p) => buildTablaDecimal(p),
+  "comparar-decimales": (p) => buildCompararDecimales(p),
+  "redondeo-decimal": (p) => buildRedondeoDecimal(p),
+  "decimal-columna": (p) => buildDecimalColumna(p),
+  "decimal-producto": (p) => buildDecimalProducto(p),
+  "coma-potencias10": (p) => buildComaPotencias10(p),
+  "division-decimal": (p) => buildDivisionDecimal(p),
+  "division-coma-divisor": (p) => buildDivisionComaDivisor(p),
 };
 
 export function buildSlideAnim(

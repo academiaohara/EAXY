@@ -29,16 +29,29 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone solo los temas 1, 2, 3 y 4 en 1.º ESO", () => {
+  it("expone solo los temas 1, 2, 3, 4 y 5 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(4);
+    expect(firstYear?.modules).toHaveLength(5);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
       "divisibilidad",
       "numeros-enteros",
+      "numeros-decimales",
+    ]);
+  });
+
+  it("tiene las tres lecciones de la unidad 5 (decimales) en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    const unit5 = firstYear?.modules.find((m) => m.slug === "numeros-decimales");
+    expect(unit5?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ordenes-unidades-decimales",
+      "operaciones-numeros-decimales",
+      "division-numeros-decimales",
     ]);
   });
 
