@@ -94,6 +94,7 @@ Lista canónica: `STAGE_MODULE_REGISTRY` en `src/components/lesson/stage/StageMo
 | `bloques-numericos` | `conmutativa`, `asociativa` | `stage/modules/bloques-numericos/` |
 | `piramide-reduccion` | `dual-parentesis`, `explorar-parentesis` | `stage/modules/piramide-reduccion/` |
 | `mul-div-naturales` | `multiplicar-repetido`, `multiplicar-sexta-entrada`, `multiplicar-conteo`, `multiplicacion-mano`, `conmutativa-producto`, `asociativa-producto`, `distributiva-bloques`, `puente-mult-div`, `reparto-igual`, `division-mano`, `reparto-manual`, `exacta-entera` | `stage/modules/mul-div-naturales/` |
+| `sistemas-numeracion` | `origen-contar`, `simbolos-agrupar`, `escribe-38-prehistorico`, `egipcio-aditivo`, `egipcio-orden-no-importa`, `romano-suma-resta`, `romano-construir`, `decimal-posicional`, `descomponer-numero`, `cero-guardian`, `comparar-sistemas` | `stage/modules/sistemas-numeracion/` |
 
 Para añadir un módulo:
 
