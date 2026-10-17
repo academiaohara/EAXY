@@ -146,6 +146,49 @@ type BraceProps = {
   delay?: number;
 };
 
+/** Llave curva (Béziers): `h` es el fondo del tramo recto, con signo según el lado. */
+function curlyBracePath(a1: number, a2: number, base: number, h: number, vertical = false): string {
+  const mid = (a1 + a2) / 2;
+  const pt = (along: number, across: number) => (vertical ? `${base + across} ${along}` : `${along} ${base + across}`);
+  return [
+    `M ${pt(a1, 0)}`,
+    `C ${pt(a1, h * 0.6)} ${pt(a1 + 4, h)} ${pt(a1 + 16, h)}`,
+    `L ${pt(mid - 18, h)}`,
+    `C ${pt(mid - 6, h)} ${pt(mid, h * 1.1)} ${pt(mid, h * 1.9)}`,
+    `C ${pt(mid, h * 1.1)} ${pt(mid + 6, h)} ${pt(mid + 18, h)}`,
+    `L ${pt(a2 - 16, h)}`,
+    `C ${pt(a2 - 4, h)} ${pt(a2, h * 0.6)} ${pt(a2, 0)}`,
+  ].join(" ");
+}
+
+type VBraceProps = {
+  show: boolean;
+  x: number;
+  y1: number;
+  y2: number;
+  /** `left`: la punta mira a la izquierda (llave a la izquierda de la figura). */
+  dir?: "left" | "right";
+  color?: string;
+  label?: ReactNode;
+  labelSize?: number;
+};
+
+/** Llave vertical con rótulo al lado de la punta. */
+export function VBrace({ show, x, y1, y2, dir = "left", color = MANIM.yellow, label, labelSize = 30 }: VBraceProps) {
+  const s = dir === "left" ? -1 : 1;
+  const d = curlyBracePath(y1, y2, x, 14 * s, true);
+  return (
+    <Fade show={show} dx={dir === "left" ? 6 : -6}>
+      <path d={d} fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" />
+      {label !== undefined ? (
+        <Txt x={x + 14 * 1.9 * s + 8 * s} y={(y1 + y2) / 2 + labelSize * 0.35} size={labelSize} color={color} anchor={dir === "left" ? "end" : "start"}>
+          {label}
+        </Txt>
+      ) : null}
+    </Fade>
+  );
+}
+
 /** Llave horizontal con rótulo (`Brace` + `.get_text` de Manim). */
 export function HBrace({
   show,
@@ -160,16 +203,8 @@ export function HBrace({
 }: BraceProps) {
   const s = dir === "down" ? 1 : -1;
   const mid = (x1 + x2) / 2;
-  const h = 12 * s;
-  const d = [
-    `M ${x1} ${y}`,
-    `Q ${x1} ${y + h} ${x1 + 14} ${y + h}`,
-    `L ${mid - 14} ${y + h}`,
-    `Q ${mid} ${y + h} ${mid} ${y + h * 1.9}`,
-    `Q ${mid} ${y + h} ${mid + 14} ${y + h}`,
-    `L ${x2 - 14} ${y + h}`,
-    `Q ${x2} ${y + h} ${x2} ${y}`,
-  ].join(" ");
+  const h = 14 * s;
+  const d = curlyBracePath(x1, x2, y, h);
   return (
     <Fade show={show} dy={dir === "down" ? -6 : 6} delay={delay}>
       <path d={d} fill="none" stroke={color} strokeWidth={3} strokeLinecap="round" />

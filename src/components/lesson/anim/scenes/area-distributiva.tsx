@@ -1,10 +1,10 @@
-import { Canvas, Fade, HBrace, Txt, WriteLine } from "@/components/lesson/anim/primitives";
+import { Canvas, Fade, HBrace, Txt, VBrace, WriteLine } from "@/components/lesson/anim/primitives";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 
 const X0 = 190;
-const Y0 = 120;
-const H = 220;
+const Y0 = 160;
+const H = 190;
 const W_TOTAL = 420;
 /** Separación entre los dos rectángulos antes de juntarlos. */
 const GAP = 80;
@@ -18,23 +18,6 @@ export function buildAreaDistributiva(params: { a?: number; b?: number; c?: numb
   const wc = W_TOTAL - wb;
   const ab = a * b;
   const ac = a * c;
-
-  const heightBrace = (x: number, key: string) => {
-    const my = Y0 + H / 2;
-    return (
-      <g key={key}>
-        <path
-          d={`M ${x + 12} ${Y0} Q ${x} ${Y0} ${x} ${Y0 + 14} L ${x} ${my - 12} Q ${x} ${my} ${x - 12} ${my} Q ${x} ${my} ${x} ${my + 12} L ${x} ${Y0 + H - 14} Q ${x} ${Y0 + H} ${x + 12} ${Y0 + H}`}
-          fill="none"
-          stroke={MANIM.orange}
-          strokeWidth={3}
-        />
-        <Txt x={x - 34} y={my + 10} size={30} color={MANIM.orange}>
-          {String(a)}
-        </Txt>
-      </g>
-    );
-  };
 
   return {
     label: `${a} · ${b} y ${a} · ${c} comparten el factor ${a} y se juntan en ${a} · (${b} + ${c}) = ${ab + ac}, con áreas de rectángulos`,
@@ -78,10 +61,10 @@ export function buildAreaDistributiva(params: { a?: number; b?: number; c?: numb
           <WriteLine show={beat >= 1} x1={X0 + wb} y1={Y0 - 6} x2={X0 + wb} y2={Y0 + H + 6} color={MANIM.yellow} width={4} />
           {/* alturas: una por rectángulo mientras están separados, una sola al juntarlos */}
           <Fade show={apart} dx={-6}>
-            {heightBrace(X0 - 34 - GAP / 2, "hl")}
+            <VBrace show x={X0 - 14 - GAP / 2} y1={Y0} y2={Y0 + H} dir="left" color={MANIM.orange} label={String(a)} />
           </Fade>
           <Fade show={!apart} dx={-6}>
-            {heightBrace(X0 - 34, "h")}
+            <VBrace show x={X0 - 14} y1={Y0} y2={Y0 + H} dir="left" color={MANIM.orange} label={String(a)} />
           </Fade>
           {/* factor común */}
           <Fade show={beat === 1} dy={-6}>
@@ -96,7 +79,7 @@ export function buildAreaDistributiva(params: { a?: number; b?: number; c?: numb
           <g className="anim-t" style={{ transform: `translate(${dxR}px, 0px)` }}>
             <HBrace show x1={X0 + wb + 4} x2={X0 + W_TOTAL} y={Y0 - 20} dir="up" color={MANIM.green} label={String(c)} delay={150} />
           </g>
-          <HBrace show={beat === 2} x1={X0} x2={X0 + W_TOTAL} y={Y0 - 72} dir="up" color={MANIM.yellow} label={`${b} + ${c}`} />
+          <HBrace show={beat === 2} x1={X0} x2={X0 + W_TOTAL} y={Y0 - 84} dir="up" color={MANIM.yellow} label={`${b} + ${c}`} />
           <Fade show={beat === 2} dy={10}>
             <Txt x={400} y={398} size={30} color={MANIM.yellow}>
               {`${a} · (${b} + ${c})`}
