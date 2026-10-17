@@ -38,6 +38,8 @@ Formato declarativo para **teoría nueva**: título + bloques de texto con forma
 | `warning` | Error típico, matiz | `title?` (por defecto «Ojo»), `text` |
 | `compare` | Dos lecturas lado a lado | `left`/`right`: `{ title, text?, math?[], tone? }` |
 | `steps` | Pasos numerados | `title?`, `items[]` |
+| `formula` | Igualdad destacada, centrada y sin caja grande | `tex` |
+| `relations` | Frases «A es múltiplo de B» con los números en ficha de color | `items: { left, relation, right, tone? }[]` |
 | `facts` | Fichas cortas símbolo = valor | `items: { tex, label? }[]` |
 | `story` | Enunciado con dibujo al lado | `text`, `src`, `alt`, `side?`, `maxWidth?` |
 | `figure` | Ilustración con pie | `src`, `alt`, `caption?`, `maxWidth?` |
