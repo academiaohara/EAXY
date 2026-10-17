@@ -5,6 +5,7 @@ export type StepType =
   | "animated_solution"
   | "interactive_tool"
   | "narrate"
+  | "slide"
   | "predict"
   | "explore"
   | "reveal"
@@ -529,8 +530,116 @@ export type RevealStep = LessonStepBase &
 
 export type StageStep = NarrateStep | PredictStep | ExploreStep | RevealStep;
 
+/** Identificadores de las animaciones tipo Manim registradas para diapositivas. */
+export type SlideAnimId =
+  | "egipcio-aditivo"
+  | "romano-resta"
+  | "decimal-canje"
+  | "decimal-posicion"
+  | "redondeo-recta"
+  | "resta-diferencia"
+  | "area-distributiva"
+  | "reparto-agrupar"
+  | "expr-reescritura";
+
+export type ExprStep = {
+  tokens: string[];
+  active?: [number, number];
+  fresh?: [number, number];
+  /** Frase que explica la transición hacia el paso siguiente. */
+  note?: string;
+};
+
+/** Parámetros opcionales de cada animación (cada escena lee los suyos). */
+export type SlideAnimParams = {
+  /** Número protagonista (redondeo, egipcio, posición…). */
+  n?: number;
+  /** Orden de redondeo (potencia de 10 de la cifra que se conserva). */
+  power?: number;
+  a?: number;
+  b?: number;
+  c?: number;
+  /**
+   * `expr-reescritura`: derivación paso a paso. Cada paso es la expresión completa;
+   * `active` marca lo que se calcula a continuación y `fresh` lo que acaba de salir.
+   */
+  expr?: ExprStep[];
+  /** `expr-reescritura`: segunda derivación en paralelo (para comparar dos órdenes). */
+  expr2?: ExprStep[];
+  /** `expr-reescritura`: títulos de las columnas. */
+  titles?: string[];
+  /** `romano-resta`: numerales que se desglosan. */
+  romans?: string[];
+};
+
+export type SlideTone = "info" | "key" | "ok" | "warn";
+
+/** Piezas con las que se compone una diapositiva (cada una con su forma propia). */
+export type SlideBlock =
+  /** Párrafo normal. */
+  | { kind: "text"; text: string }
+  /** Definición grande, con el término destacado. */
+  | { kind: "definition"; text: string }
+  /** Regla o fórmula que hay que retener (caja con acento + fórmula display). */
+  | { kind: "rule"; title?: string; text?: string; formula?: string }
+  /** Ejemplo resuelto: líneas de matemáticas (LaTeX sin delimitadores) con notas. */
+  | { kind: "example"; title?: string; lines: { math: string; note?: string }[] }
+  /** Aviso («ojo»): error típico o matiz. */
+  | { kind: "warning"; text: string; title?: string }
+  /** Dos formas de ver lo mismo, lado a lado. */
+  | {
+      kind: "compare";
+      left: { title: string; text?: string; math?: string[]; tone?: SlideTone };
+      right: { title: string; text?: string; math?: string[]; tone?: SlideTone };
+    }
+  /** Pasos numerados. */
+  | { kind: "steps"; title?: string; items: string[] }
+  /** Fichas cortas «símbolo = valor» (símbolos, equivalencias, órdenes…). */
+  | { kind: "facts"; items: { tex: string; label?: string }[] }
+  /** Enunciado con ilustración al lado (la ilustración se omite si el fichero aún no existe). */
+  | {
+      kind: "story";
+      text: string;
+      src: string;
+      alt: string;
+      side?: "left" | "right";
+      /** Ancho máximo de la ilustración en px (por defecto 150). */
+      maxWidth?: number;
+    }
+  /** Ilustración PNG de `public/lesson/…` (se omite si el fichero aún no existe). */
+  | { kind: "figure"; src: string; alt: string; caption?: string; maxWidth?: number }
+  /** Animación controlada (play/pausa/paso a paso) dentro de la diapositiva. */
+  | {
+      kind: "anim";
+      scene: SlideAnimId;
+      params?: SlideAnimParams;
+      /** Sustituye los textos de paso de la escena (uno por paso). */
+      captions?: string[];
+      /** Milisegundos por paso en reproducción automática. */
+      beatMs?: number;
+    };
+
+/**
+ * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento
+ * visual (animación o figura). Es el formato por defecto para teoría nueva.
+ */
+export type SlideStep = LessonStepBase &
+  StageStepFields & {
+    type: "slide";
+    /** Columna de texto (de arriba abajo). */
+    blocks: SlideBlock[];
+    /** Elemento visual principal; en pantallas anchas va al lado del texto. */
+    visual?: Extract<SlideBlock, { kind: "anim" | "figure" }>;
+    /**
+     * `split` (por defecto con visual): texto | visual. `visual-top`: visual ancho
+     * arriba y texto debajo en columnas. `stack`: todo en una columna.
+     */
+    arrange?: "split" | "visual-top" | "stack";
+  };
+
 export type LessonStep =
   | ConceptStep
+  | SlideStep
   | AnimatedSolutionStep
   | InteractiveToolStep
   | StageStep

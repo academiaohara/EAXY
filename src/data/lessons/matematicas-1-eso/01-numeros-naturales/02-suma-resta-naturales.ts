@@ -41,17 +41,40 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       },
     },
     {
-      id: "restar-sobra-narrate",
-      type: "narrate",
-      title: "Restar — lo que sobra",
-      definitionBox: "Si disponemos de **más dinero** que el precio del equipo, la resta nos dice **cuánto sobra**.",
-      module: "tienda-ciclista",
-      scene: "calcular-sobra",
-      tienda: {
-        items: EQUIPO_CICLISTA,
-        mode: "calcular-sobra",
-        savedAmount: 1000,
-      },
+      id: "resta-diferencia",
+      type: "slide",
+      title: "Restar es medir la diferencia",
+      blocks: [
+        {
+          kind: "definition",
+          text: "**Restar** es quitar, hallar lo que **falta** o lo que **sobra**: calcular la **diferencia** entre dos cantidades.",
+        },
+        {
+          kind: "compare",
+          left: {
+            title: "Quitar",
+            text: "De $828$ quito $693$.",
+            math: ["828 - 693 = 135"],
+            tone: "info",
+          },
+          right: {
+            title: "Completar",
+            text: "¿Cuánto sumo a $693$ para llegar a $828$?",
+            math: ["693 + 135 = 828"],
+            tone: "ok",
+          },
+        },
+        {
+          kind: "text",
+          text: "Si el ahorro supera el precio, la misma resta dice cuánto **sobra**. Cambia la lectura, no la cuenta.",
+        },
+        {
+          kind: "warning",
+          title: "La resta no admite cambiar el orden",
+          text: "$828 - 693 \\neq 693 - 828$. En los naturales, además, solo puedes restar un número menor o igual a otro mayor.",
+        },
+      ],
+      visual: { kind: "anim", scene: "resta-diferencia", params: { a: 693, b: 828 } },
     },
     {
       id: "parentesis-narrate",
@@ -100,6 +123,63 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
       module: "bloques-numericos",
       scene: "asociativa",
       blocks: [8, 6, 3],
+    },
+    {
+      id: "calculo-mental-suma",
+      type: "slide",
+      title: "Las propiedades, como atajos de cálculo",
+      blocks: [
+        {
+          kind: "text",
+          text: "Conmutar y asociar no son solo reglas: sirven para **calcular sin papel**. Busca siempre sumas que den **decenas o centenas redondas**.",
+        },
+        {
+          kind: "example",
+          title: "Agrupa",
+          lines: [
+            { math: "38 + 45 + 62 = (38 + 62) + 45 = 100 + 45 = 145", note: "conmutativa + asociativa" },
+          ],
+        },
+        {
+          kind: "example",
+          title: "Compensa",
+          lines: [
+            { math: "98 + 29 = 100 + 27 = 127", note: "le quito $2$ a uno y se los doy al otro" },
+          ],
+        },
+        {
+          kind: "example",
+          title: "Descompón",
+          lines: [
+            { math: "164 + 54 = 164 + 50 + 4 = 214 + 4 = 218" },
+            { math: "71 - 38 = 71 - 40 + 2 = 33", note: "paso de largo y vuelvo" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "mental-predict",
+      type: "predict",
+      title: "Elige el atajo",
+      question:
+        "Quieres calcular $47 + 58 + 53$ de cabeza. ¿Qué agrupación te ahorra más trabajo?",
+      mode: "choice",
+      choices: [
+        {
+          id: "a",
+          label: "$(47 + 58) + 53$",
+          incorrectFeedback: "Funciona, pero $47 + 58 = 105$ no es una cuenta redonda.",
+        },
+        {
+          id: "b",
+          label: "$47 + (58 + 53)$",
+          incorrectFeedback: "Funciona, pero $58 + 53 = 111$ tampoco es redonda.",
+        },
+        { id: "c", label: "$(47 + 53) + 58$" },
+      ],
+      correctChoiceId: "c",
+      explanation:
+        "Por la conmutativa y la asociativa, $47 + 53 = 100$ y solo queda $100 + 58 = 158$.",
     },
   ],
 };

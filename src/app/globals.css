@@ -1046,3 +1046,41 @@
     transition: none;
   }
 }
+
+/* Animaciones de diapositiva (estilo Manim): las transiciones hacen el movimiento. */
+.anim-t {
+  transition:
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    fill 0.45s ease,
+    stroke 0.45s ease;
+}
+
+.anim-draw {
+  transition:
+    stroke-dashoffset 0.8s ease,
+    opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-t,
+  .anim-draw {
+    transition: none;
+  }
+}
+
+/* Resaltados dentro de las diapositivas (mismo código de color que las cajas de definición). */
+.lesson-slide mark {
+  background: var(--amber-bg, rgba(255, 193, 7, 0.22));
+  color: var(--amber, #ffd866);
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lesson-slide mark.suma {
+  background: var(--teal-bg, rgba(45, 212, 191, 0.2));
+  color: var(--teal, #5eead4);
+}

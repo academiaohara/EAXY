@@ -70,6 +70,45 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       mulDiv: { scene: "distributiva-bloques", a: 8, b: 5, c: 2 },
     },
     {
+      id: "distributiva-areas",
+      type: "slide",
+      title: "La distributiva como atajo de cálculo",
+      blocks: [
+        {
+          kind: "story",
+          text: "Un fontanero trabaja **4 h** por la mañana y **3 h** por la tarde, a **15 €** la hora. ¿Cuánto gana en el día?",
+          src: "/lesson/mul-div-naturales/fontanero.png",
+          alt: "Fontanero arreglando el desagüe de un lavabo",
+        },
+        {
+          kind: "rule",
+          title: "Propiedad distributiva",
+          text: "Multiplicar por una **suma** (o una **resta**) es multiplicar por cada término y sumar (o restar).",
+          formula:
+            "\\begin{gathered} a \\cdot (b + c) = a \\cdot b + a \\cdot c \\\\ a \\cdot (b - c) = a \\cdot b - a \\cdot c \\end{gathered}",
+        },
+        {
+          kind: "example",
+          title: "Por 9 y por 11, de cabeza",
+          lines: [
+            { math: "23 \\cdot 9 = 23 \\cdot (10 - 1) = 230 - 23 = 207" },
+            { math: "23 \\cdot 11 = 23 \\cdot (10 + 1) = 230 + 23 = 253" },
+          ],
+        },
+      ],
+      visual: {
+        kind: "anim",
+        scene: "area-distributiva",
+        params: { a: 15, b: 4, c: 3 },
+        captions: [
+          "Euros del día = **15 €/h** por **(4 h + 3 h)**. El área del rectángulo es lo que gana.",
+          "Separamos la **mañana** (4 h) de la **tarde** (3 h).",
+          "Mañana: $15 \\cdot 4 = 60$ €. Tarde: $15 \\cdot 3 = 45$ €.",
+          "Las dos formas dan lo mismo: $15 \\cdot (4 + 3) = 15 \\cdot 4 + 15 \\cdot 3 = 105$ €.",
+        ],
+      },
+    },
+    {
       id: "dividir-narrate",
       type: "narrate",
       title: "Dividir es repartir",
@@ -78,6 +117,33 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       module: "mul-div-naturales",
       scene: "reparto-igual",
       mulDiv: { scene: "reparto-igual", dividend: 150, divisor: 6 },
+    },
+    {
+      id: "dividir-dos-sentidos",
+      type: "slide",
+      title: "Una cuenta, dos preguntas",
+      blocks: [
+        {
+          kind: "compare",
+          left: {
+            title: "Repartir",
+            text: "$150$ bombones en $6$ cajas iguales. ¿Cuántos en cada caja?",
+            math: ["150 : 6 = 25"],
+            tone: "info",
+          },
+          right: {
+            title: "Agrupar",
+            text: "$150$ bombones en cajas de $25$. ¿Cuántas cajas se llenan?",
+            math: ["150 : 25 = 6"],
+            tone: "ok",
+          },
+        },
+        {
+          kind: "text",
+          text: "Dividir deshace multiplicar: en los dos casos, $6 \\cdot 25 = 150$. Así **compruebas** cualquier división.",
+        },
+      ],
+      visual: { kind: "anim", scene: "reparto-agrupar", params: { a: 150, b: 6 } },
     },
     {
       id: "division-mano-narrate",
@@ -98,6 +164,30 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
       module: "mul-div-naturales",
       scene: "exacta-entera",
       mulDiv: { scene: "exacta-entera" },
+    },
+    {
+      id: "resto-predict",
+      type: "predict",
+      title: "Interpretar el resto",
+      question:
+        "Una excursión de $345$ personas se reparte en autobuses de $52$ plazas. Al dividir sale cociente $6$ y resto $33$. ¿Cuántos autobuses hacen falta?",
+      mode: "choice",
+      choices: [
+        {
+          id: "6",
+          label: "$6$ autobuses",
+          incorrectFeedback: "Con $6$ autobuses solo viajan $312$ personas; sobran $33$ en tierra.",
+        },
+        { id: "7", label: "$7$ autobuses" },
+        {
+          id: "8",
+          label: "$8$ autobuses",
+          incorrectFeedback: "Las $33$ personas que sobran caben en un solo autobús más.",
+        },
+      ],
+      correctChoiceId: "7",
+      explanation:
+        "$345 = 52 \\cdot 6 + 33$. Los $6$ autobuses llenos no bastan: las $33$ personas del resto necesitan otro. En total, $7$.",
     },
   ],
 };

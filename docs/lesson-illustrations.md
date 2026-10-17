@@ -17,6 +17,44 @@ Guía para generar y colocar imágenes de escenarios interactivos (1.º ESO, est
 Ilustración didáctica para libro de matemáticas de 1º ESO: dibujo digital limpio tipo editorial escolar, contornos finos, colores planos con sombra suave, sin fotorealismo. Fondo completamente transparente. Exportar PNG con canal alpha. Objeto centrado con margen ~15–20 % en el lienzo. Sin marcas ni texto comercial.
 ```
 
+## Cómo se muestran (diapositivas `slide`)
+
+- Las ilustraciones (`story`, `figure`) se pintan sobre una **tarjeta de papel claro** (`#f4efe2`), no directamente sobre la pizarra oscura: por eso el contorno oscuro del dibujo se lee bien y el fondo transparente del PNG funciona.
+- `story`: dibujo pequeño al lado del enunciado (máx. ~150 px de ancho en pantalla). `figure`: dibujo principal en la columna visual (máx. ~560 px).
+- Si el PNG no existe todavía, la diapositiva sigue completa (en desarrollo se ve un aviso con el nombre del archivo que falta).
+
+## Cómo pedir la imagen a la IA
+
+1. Pega el **bloque de estilo** (abajo) y, después, el **prompt concreto** de la tabla.
+2. Formato **1:1**, 1024×1024 (o el lienzo indicado). Pide siempre «fondo transparente»; si el generador no da canal alfa, genera sobre blanco liso y quita el fondo antes de guardar.
+3. Un solo sujeto centrado, margen 10–15 %. **Sin texto ni cifras** dentro de la imagen.
+4. Guarda como PNG en `Assets/` y avísame: la copio a `public/lesson/...` con el nombre exacto de la tabla (`next/image` no hace falta; se usa `<img>`). Peso objetivo ≤ 400 KB (exporta a 768×768 si pesa más).
+
+```text
+Ilustración didáctica para libro de Matemáticas de 1º ESO, estilo editorial escolar (Anaya/Santillana): dibujo digital limpio, contorno fino marrón oscuro, colores planos con una sola capa de sombreado suave, personajes expresivos con proporciones ligeramente caricaturescas, paleta cálida y equilibrada. Sin fotorrealismo, sin 3D, sin degradados dramáticos, sin texto, sin números, sin marcas comerciales. Fondo completamente transparente (PNG con canal alfa). Un solo conjunto centrado en el lienzo, con margen del 10–15 %.
+```
+
+## Tema 1 · Números naturales — ilustraciones
+
+**Necesarias ya** (están enlazadas en las diapositivas):
+
+| Archivo (`public/lesson/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `numeracion/origen/pastor-cabras.png` | L1 · «Los números nacieron para contar» (`story`, ~150 px) | 1024×1024 | Pastor prehistórico de pelo y barba alborotados, con túnica de piel de animal con manchas, sonriendo tranquilo. En una mano un cayado con muescas talladas bien visibles; en la otra un collar de semillas. A sus pies, cuatro cabras blancas con cuernos pequeños. Cuerpo entero. |
+| `numeracion/origen/casa-en-venta.png` | L1 · «Redondear» (`story`, ~150 px) | 1024×1024 | Casa de campo de una planta con porche de columnas, tejado de teja roja, pequeño jardín con arbusto. En primer plano, clavado en el césped, un cartel de «se vende» **completamente en blanco** (sin texto ni cifras). Vista tres cuartos, luz de día. |
+| `mul-div-naturales/fontanero.png` | L3 · «La distributiva como atajo» (`story`, ~150 px) | 1024×1024 | Fontanero joven con mono azul y gorra, arrodillado en el suelo, mirando con gesto concentrado el sifón de un lavabo blanco de pie mientras aprieta una tuerca con una llave inglesa. Caja de herramientas abierta a su lado. |
+
+**Reservadas** para los ejercicios del tema (siguiente fase; mismas reglas de estilo):
+
+| Archivo | Ejercicio del libro | Prompt |
+|---|---|---|
+| `ejercicios/hortelano-mercado.png` | Hortelano que vende tomates y frambuesas | Hortelano de camisa de cuadros y gorra de paja, sonriendo, junto a un carro con dos cajas de madera: una de tomates y otra de frambuesas. Sin precios ni carteles con texto. |
+| `ejercicios/autobus-excursion.png` | Autobuses de excursión (resto) | Autobús escolar amarillo en vista tres cuartos y, delante, un grupo de cinco estudiantes con mochila saludando. Sin matrícula legible. |
+| `ejercicios/granja-vacas-caballos.png` | Patas de vacas y caballos | Granja con establo de madera; en el prado, dos vacas manchadas y dos caballos marrones, bien separados y completos (se ven las cuatro patas de cada uno). |
+| `ejercicios/ocas-bascula.png` | Tres ocas de distinto tamaño | Tres ocas blancas de distinto tamaño (pequeña, mediana, grande) en fila sobre una báscula plana de suelo con pantalla en blanco. |
+| `ejercicios/colmenas-apicultor.png` | Apicultor y colmenas | Apicultor con traje blanco y careta de rejilla levantada, sonriendo, junto a tres colmenas de madera apiladas; un tarro de miel en primer plano. |
+| `ejercicios/balanza-animales.png` | Elefante pequeño en la balanza | Balanza de dos platillos en equilibrio: en uno, un elefante grande y un elefante pequeño; en el otro, dos hipopótamos. Sin cifras. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

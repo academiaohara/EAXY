@@ -20,7 +20,9 @@ test("suma y resta — teoría alineada con el temario", async ({ page }) => {
   await expect(page.getByText("693 €").first()).toBeVisible();
   await page.getByRole("button", { name: "Continuar" }).click();
 
-  await expect(page.getByText(/Sobran 172/i)).toBeVisible();
+  await expect(page.getByTestId("lesson-slide")).toBeVisible();
+  await expect(page.getByText("Restar es medir la diferencia").first()).toBeVisible();
+  await expect(page.getByTestId("lesson-anim")).toBeVisible();
   await page.getByRole("button", { name: "Continuar" }).click();
 
   await expect(page.getByTestId("piramide-dual-parentesis")).toBeVisible({ timeout: 15_000 });

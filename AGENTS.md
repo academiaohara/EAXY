@@ -33,3 +33,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - PNG de escenarios: estilo **libro 1.º ESO** (dibujo, no foto), fondo transparente, sin números del ejercicio en la imagen.
 - Flujo: `Assets/` → `public/lesson/<carpeta>/`; detalle, prompts y tamaños en **`docs/lesson-illustrations.md`** (regla Cursor: `.cursor/rules/lesson-illustrations.mdc`).
 
+
+# EAXY — diapositivas de lección
+
+- Teoría nueva = paso `type: "slide"`: bloques de texto con forma propia + animación tipo Manim o ilustración. Guía, catálogo de bloques/animaciones y tono (sin tratar al alumno como niño): **`docs/lessons-slides.md`**.
+- Animaciones nuevas: `src/components/lesson/anim/` (registro en `registry.tsx`); el test `slide-anim.test.tsx` dibuja todos sus pasos.
