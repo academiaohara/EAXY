@@ -1,6 +1,15 @@
 import type { SlideAnimId, SlideAnimParams } from "@/lib/lesson/types";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 import { buildAreaDistributiva } from "@/components/lesson/anim/scenes/area-distributiva";
+import { buildCribaEratostenes } from "@/components/lesson/anim/scenes/criba-eratostenes";
+import { buildCriterioAlternada } from "@/components/lesson/anim/scenes/criterio-alternada";
+import { buildCriterioSumaCifras } from "@/components/lesson/anim/scenes/criterio-suma-cifras";
+import { buildDescomposicionPrimos } from "@/components/lesson/anim/scenes/descomposicion-primos";
+import { buildDivisibilidadGrupos } from "@/components/lesson/anim/scenes/divisibilidad-grupos";
+import { buildDivisoresRectangulos } from "@/components/lesson/anim/scenes/divisores-rectangulos";
+import { buildMcdCortes } from "@/components/lesson/anim/scenes/mcd-cortes";
+import { buildMultiplosSaltos } from "@/components/lesson/anim/scenes/multiplos-saltos";
+import { buildTablaExponentes } from "@/components/lesson/anim/scenes/tabla-exponentes";
 import { buildDecimalCanje } from "@/components/lesson/anim/scenes/decimal-canje";
 import { buildDecimalPosicion } from "@/components/lesson/anim/scenes/decimal-posicion";
 import { buildEgipcioAditivo } from "@/components/lesson/anim/scenes/egipcio-aditivo";
@@ -23,6 +32,15 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "area-distributiva": (p) => buildAreaDistributiva(p),
   "reparto-agrupar": (p) => buildRepartoAgrupar(p),
   "expr-reescritura": (p) => buildExprReescritura(p),
+  "criba-eratostenes": (p) => buildCribaEratostenes(p),
+  "criterio-alternada": (p) => buildCriterioAlternada(p),
+  "criterio-suma-cifras": (p) => buildCriterioSumaCifras(p),
+  "descomposicion-primos": (p) => buildDescomposicionPrimos(p),
+  "divisibilidad-grupos": (p) => buildDivisibilidadGrupos(p),
+  "divisores-rectangulos": (p) => buildDivisoresRectangulos(p),
+  "mcd-cortes": (p) => buildMcdCortes(p),
+  "multiplos-saltos": (p) => buildMultiplosSaltos(p),
+  "tabla-exponentes": (p) => buildTablaExponentes(p),
 };
 
 export function buildSlideAnim(

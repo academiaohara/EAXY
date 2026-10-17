@@ -9,26 +9,28 @@ import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-ar
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
-import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-criterios-divisibilidad";
+import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/03-cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/01-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/02-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/04-cuerpos-geometricos-redondos";
+import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
 import { enterosPositivosNegativosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-enteros-positivos-negativos";
 import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-enteros-z-recta-valor-absoluto";
+import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
 import { fraccionesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/03-fracciones-decimales";
 import { fraccionesEquivalentesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/04-fracciones-equivalentes";
 import { fraccionesOperadorLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/02-fracciones-operador";
 import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/01-fracciones-parte-unidad";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
-import { mcmMcdNaturalesLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-mcm-mcd-naturales";
+import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
+import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/05-multiplicacion-division-enteros";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/03-multiplicacion-division-naturales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
-import { multiplosDivisoresNaturalesLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-multiplos-divisores-naturales";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/01-operaciones-fracciones-comun-denominador";
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/03-operaciones-fracciones-multiplicacion-division";
@@ -40,7 +42,6 @@ import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-num
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
-import { primosCompuestosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-primos-compuestos";
 import { probabilidadEspacioMuestralLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/02-probabilidad-espacio-muestral";
 import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/01-probabilidad-experimento-aleatorio-determinista";
 import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/04-probabilidad-frecuencias";
@@ -50,7 +51,6 @@ import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/01-proporcionalidad-magnitudes";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/02-raiz-cuadrada-naturales";
-import { relacionDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-relacion-divisibilidad";
 import { resolucionSistemasLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/03-resolucion-sistemas-lineales";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
 import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/02-sistema-metrico-longitud";
@@ -86,21 +86,23 @@ export const interactiveLessons = {
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
+  "divisibilidad": divisibilidadLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
   "enteros-positivos-negativos": enterosPositivosNegativosLesson,
   "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
+  "factores-primos": factoresPrimosLesson,
   "fracciones-decimales": fraccionesDecimalesLesson,
   "fracciones-equivalentes": fraccionesEquivalentesLesson,
   "fracciones-operador": fraccionesOperadorLesson,
   "fracciones-parte-unidad": fraccionesParteUnidadLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
-  "mcm-mcd-naturales": mcmMcdNaturalesLesson,
+  "maximo-comun-divisor": maximoComunDivisorLesson,
+  "minimo-comun-multiplo": minimoComunMultiploLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
-  "multiplos-divisores-naturales": multiplosDivisoresNaturalesLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
   "operaciones-fracciones-multiplicacion-division": operacionesFraccionesMultiplicacionDivisionLesson,
@@ -112,7 +114,6 @@ export const interactiveLessons = {
   "porcentajes": porcentajesLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
-  "primos-compuestos": primosCompuestosLesson,
   "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
   "probabilidad-experimento-aleatorio-determinista": probabilidadExperimentoAleatorioDeterministaLesson,
   "probabilidad-frecuencias": probabilidadFrecuenciasLesson,
@@ -122,7 +123,6 @@ export const interactiveLessons = {
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
-  "relacion-divisibilidad": relacionDivisibilidadLesson,
   "resolucion-sistemas-lineales": resolucionSistemasLinealesLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
   "sistema-metrico-longitud": sistemaMetricoLongitudLesson,
