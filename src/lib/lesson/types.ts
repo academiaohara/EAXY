@@ -26,7 +26,43 @@ export type StageModuleId =
   | "mul-div-naturales"
   | "jerarquia-operaciones"
   | "potencias"
-  | "raices-cuadradas";
+  | "raices-cuadradas"
+  | "sistemas-numeracion";
+
+export type NumeracionCalloutKind = "definicion" | "ojo" | "regla" | "pregunta";
+
+export type NumeracionCallout = {
+  id: string;
+  kind: NumeracionCalloutKind;
+  /** Máx. ~2 líneas; admite **negrita** y $LaTeX$. */
+  text: string;
+  phase: number;
+  side: "left" | "right" | "bottom";
+};
+
+export type SistemasNumeracionScene =
+  | "origen-contar"
+  | "simbolos-agrupar"
+  | "escribe-38-prehistorico"
+  | "egipcio-aditivo"
+  | "egipcio-orden-no-importa"
+  | "romano-suma-resta"
+  | "romano-construir"
+  | "decimal-posicional"
+  | "descomponer-numero"
+  | "cero-guardian"
+  | "comparar-sistemas";
+
+export type SistemasNumeracionConfig = {
+  scene: SistemasNumeracionScene;
+  phases?: number;
+  callouts?: NumeracionCallout[];
+  value?: number;
+  roman?: string;
+  romanList?: string[];
+  target?: number;
+  table?: { headers: string[]; rows: { label: string; cells: string[] }[] };
+};
 
 export type RaicesScene =
   | "inversa-cuadrado"
@@ -441,6 +477,7 @@ export type NarrateStep = LessonStepBase &
     mulDiv?: MulDivConfig;
     potencias?: PotenciasConfig;
     raices?: RaicesConfig;
+    numeracion?: SistemasNumeracionConfig;
   };
 
 export type PredictChoice = {
@@ -469,6 +506,7 @@ export type PredictStep = LessonStepBase &
     scene?: string;
     tienda?: NarrateStep["tienda"];
     mulDiv?: MulDivConfig;
+    numeracion?: SistemasNumeracionConfig;
   };
 
 export type ExploreGoal =
@@ -499,6 +537,10 @@ export type ExploreGoal =
       total: number;
       boxes: number;
       perBox: number;
+    }
+  | {
+      kind: "roman-target";
+      target: number;
     };
 
 export type ExploreStep = LessonStepBase &
@@ -513,6 +555,7 @@ export type ExploreStep = LessonStepBase &
       wallet: number;
     };
     mulDiv?: MulDivConfig;
+    numeracion?: SistemasNumeracionConfig;
     /** La pista solo aparece al pulsar el botón «?». */
     hintHiddenUntilRequested?: boolean;
   };
@@ -524,6 +567,7 @@ export type RevealStep = LessonStepBase &
     scene: string;
     blocks?: number[];
     mulDiv?: MulDivConfig;
+    numeracion?: SistemasNumeracionConfig;
     equationHighlight?: string;
   };
 
