@@ -146,7 +146,7 @@ export function PracticeSession({
               <Link href={`/practicar/${conceptSlug}`}>
                 <Button variant="outline">Repetir sesión</Button>
               </Link>
-              <Link href="/progreso">
+              <Link href="/perfil">
                 <Button variant="ghost">Ver progreso</Button>
               </Link>
             </div>

@@ -7,7 +7,16 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000003', 'matematicas-3-eso', 'Matemáticas 3º ESO', 'Tercer curso de matemáticas de la ESO.'),
   ('a1000000-0000-4000-8000-000000000004', 'matematicas-4-eso', 'Matemáticas 4º ESO', 'Cuarto curso de matemáticas de la ESO.'),
   ('a1000000-0000-4000-8000-000000000005', 'matematicas-1-bachillerato', 'Matemáticas 1º Bachillerato', 'Primer curso de matemáticas de Bachillerato.'),
-  ('a1000000-0000-4000-8000-000000000006', 'matematicas-2-bachillerato', 'Matemáticas 2º Bachillerato', 'Segundo curso de matemáticas de Bachillerato.');
+  ('a1000000-0000-4000-8000-000000000006', 'matematicas-2-bachillerato', 'Matemáticas 2º Bachillerato', 'Segundo curso de matemáticas de Bachillerato.'),
+  ('a1000000-0000-4000-8000-000000000007', 'fisica-2-eso', 'Física 2º ESO', 'Segundo curso de Física y Química de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000008', 'fisica-3-eso', 'Física 3º ESO', 'Tercer curso de Física y Química de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000009', 'fisica-4-eso', 'Física 4º ESO', 'Cuarto curso de Física y Química de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000010', 'fisica-1-bachillerato', 'Física 1º Bachillerato', 'Primer curso de Física de Bachillerato.'),
+  ('a1000000-0000-4000-8000-000000000011', 'fisica-2-bachillerato', 'Física 2º Bachillerato', 'Segundo curso de Física de Bachillerato.'),
+  ('a1000000-0000-4000-8000-000000000012', 'tecnologia-1-eso', 'Tecnología 1º ESO', 'Primer curso de Tecnología y Digitalización de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowRightIcon, LineChartIcon, TargetIcon } from "lucide-react";
+import { ArrowRightIcon, TargetIcon } from "lucide-react";
 import { AprenderContinueSection } from "@/components/learning/aprender-continue-section";
 import { AprenderQuickStats } from "@/components/learning/aprender-quick-stats";
-import { CourseCatalogView } from "@/components/learning/course-catalog";
+import { SubjectCards } from "@/components/learning/subject-cards";
 import { RecommendationCard } from "@/components/learning/recommendation-card";
 import { getSessionUser } from "@/lib/auth/session";
 import { getAprenderContinueStudying } from "@/lib/curriculum/aprender-home";
@@ -19,13 +19,6 @@ const QUICK_LINKS = [
     description: "Ejercicios del concepto que más te conviene ahora.",
     icon: TargetIcon,
     testId: "aprender-practicar-link",
-  },
-  {
-    href: "/progreso",
-    label: "Tu progreso",
-    description: "Mapa de conceptos y nivel de dominio.",
-    icon: LineChartIcon,
-    testId: "aprender-progreso-link",
   },
 ] as const;
 
@@ -64,8 +57,8 @@ export default async function AprenderPage() {
         </h1>
         <p className="max-w-2xl text-ink-muted">
           {continueStudying
-            ? "Retoma donde lo dejaste o explora otro curso."
-            : "Elige tu curso para ver el temario y empezar la primera lección."}
+            ? "Retoma donde lo dejaste o explora otra materia."
+            : "Matemáticas, física y tecnología: elige una materia y empieza tu primera lección."}
         </p>
       </header>
 
@@ -80,8 +73,8 @@ export default async function AprenderPage() {
             />
           ) : null}
 
-          <div id="todos-los-cursos" className="scroll-mt-24">
-            <CourseCatalogView courses={catalog} />
+          <div id="materias" className="scroll-mt-24">
+            <SubjectCards courses={catalog} />
           </div>
         </div>
 

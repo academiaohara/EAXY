@@ -29,11 +29,11 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Eaxy — Matemáticas adaptativas",
+    default: "Eaxy — Matemáticas, física y tecnología",
     template: "%s — Eaxy",
   },
   description:
-    "Plataforma de aprendizaje adaptativo de matemáticas para ESO. Practica a tu ritmo o gestiona aulas con seguimiento del progreso.",
+    "Plataforma de aprendizaje adaptativo de matemáticas, física y tecnología para ESO y Bachillerato. Practica a tu ritmo o gestiona aulas con seguimiento del progreso.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

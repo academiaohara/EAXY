@@ -10,9 +10,17 @@ test("la página principal carga correctamente", async ({ page }) => {
 test("la cabecera de inicio enlaza a las secciones de la app", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByTestId("app-nav-aprender")).toHaveAttribute("href", "/aprender");
-  await expect(page.getByTestId("app-nav-practicar")).toHaveAttribute("href", "/practicar");
-  await expect(page.getByTestId("app-nav-progreso")).toHaveAttribute("href", "/progreso");
+  await expect(page.getByTestId("app-nav-matematicas")).toHaveAttribute(
+    "href",
+    "/aprender/materia/matematicas",
+  );
+  await expect(page.getByTestId("app-nav-fisica")).toHaveAttribute("href", "/aprender/materia/fisica");
+  await expect(page.getByTestId("app-nav-tecnologia")).toHaveAttribute(
+    "href",
+    "/aprender/materia/tecnologia",
+  );
+  await expect(page.getByTestId("app-nav-practicar")).toHaveCount(0);
+  await expect(page.getByTestId("app-nav-progreso")).toHaveCount(0);
 });
 
 test("los puntos laterales navegan por las secciones de inicio", async ({ page }) => {

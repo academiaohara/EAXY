@@ -1,3 +1,5 @@
+import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
+
 export type BreadcrumbItem = {
   label: string;
   /** Sin `href`, el elemento es la página actual. */
@@ -24,7 +26,7 @@ export function interactiveLessonHref(
 }
 
 export function courseShortTitle(title: string): string {
-  return title.replace(/^Matemáticas\s+/i, "").trim() || title;
+  return title.replace(/^(Matemáticas|Física|Tecnología)\s+/i, "").trim() || title;
 }
 
 export function stripLessonNumber(title: string): string {
@@ -47,6 +49,10 @@ export function buildLearningTrail({
   const items: BreadcrumbItem[] = [{ label: "Aprender", href: APRENDER_HOME_HREF }];
 
   if (course) {
+    const subject = getSubject(subjectOfCourse(course));
+    if (subject) {
+      items.push({ label: subject.label, href: subject.href });
+    }
     items.push({ label: courseShortTitle(course.title), href: courseHref(course.slug) });
   }
 

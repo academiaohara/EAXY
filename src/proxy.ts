@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const LEARNING_PREFIXES = ["/aprender", "/practicar", "/progreso"];
+const LEARNING_PREFIXES = ["/aprender", "/practicar", "/progreso", "/perfil"];
 
 function isLearningPath(pathname: string): boolean {
   return LEARNING_PREFIXES.some(

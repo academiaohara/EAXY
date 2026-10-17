@@ -6,8 +6,11 @@ describe("validateCurriculum", () => {
     expect(validateCurriculum(curriculum)).toEqual([]);
   });
 
-  it("incluye los seis niveles de ESO y Bachillerato", () => {
-    expect(getAllCourses(curriculum)).toHaveLength(6);
+  it("incluye los seis niveles de matemáticas y las materias de física y tecnología", () => {
+    const titles = getAllCourses(curriculum).map((course) => course.title);
+    expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(6);
+    expect(titles.filter((title) => title.startsWith("Física"))).toHaveLength(5);
+    expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(4);
   });
 
   it("tiene las cinco lecciones interactivas del tema 7 en 4.º ESO", () => {
