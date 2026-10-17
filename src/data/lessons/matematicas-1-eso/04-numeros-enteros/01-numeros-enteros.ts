@@ -15,8 +15,6 @@ export const numerosEnterosLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "El termómetro de la calle marca **8**. ¿Ocho grados de calor o de frío? Con los naturales no se distingue: hace falta un signo.",
-          src: "/lesson/enteros/termometro-invierno.png",
-          alt: "Termómetro de calle con nieve alrededor",
         },
         {
           kind: "definition",
@@ -104,8 +102,6 @@ export const numerosEnterosLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "Un buceador a **7 m** bajo el nivel del mar y un globo a **7 m** por encima: en lados opuestos, pero igual de lejos del nivel del mar.",
-          src: "/lesson/enteros/buzo-y-globo.png",
-          alt: "Buceador bajo el agua y globo aerostático sobre ella",
         },
         {
           kind: "definition",

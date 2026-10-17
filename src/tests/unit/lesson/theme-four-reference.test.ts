@@ -84,15 +84,13 @@ describe("lecciones del tema 4 (números enteros)", () => {
     }
   });
 
-  it("las ilustraciones apuntan a public/lesson/enteros", () => {
-    const srcs = THEME_FOUR.flatMap((l) =>
+  it("no llevan ilustraciones: las animaciones cubren cada concepto", () => {
+    const blocks = THEME_FOUR.flatMap((l) =>
       l.steps
         .filter((s): s is SlideStep => s.type === "slide")
-        .flatMap((s) => s.blocks as SlideBlock[])
-        .flatMap((b) => (b.kind === "story" || b.kind === "figure") && b.src ? [b.src] : []),
+        .flatMap((s) => s.blocks as SlideBlock[]),
     );
-    expect(srcs.length).toBe(4);
-    expect(srcs.every((src) => src.startsWith("/lesson/enteros/") && src.endsWith(".png"))).toBe(true);
+    expect(blocks.some((b) => b.kind === "figure" || (b.kind === "story" && b.src))).toBe(false);
   });
 
   it("cada paso de una derivación vale lo mismo que el anterior hasta el resultado", () => {

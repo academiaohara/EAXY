@@ -75,8 +75,6 @@ export const parentesisEnterosLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "Un paquete de movimientos bancarios (**un ingreso de 3 €, un pago de 6 € y un ingreso de 5 €**) se abona a tu cuenta tal cual.",
-          src: "/lesson/enteros/caja-movimientos.png",
-          alt: "Caja de cartón con billetes y recibos asomando",
         },
         {
           kind: "definition",
