@@ -96,6 +96,45 @@ describe("buildHelpRoute", () => {
   });
 });
 
+describe("conceptos de la pregunta", () => {
+  const conceptQuiz: LessonStep = {
+    ...quizStep,
+    id: "q2",
+    question: "Despeja $x$ y comprueba la solución.",
+  };
+
+  it("ofrece explicar los conceptos que salen en la pregunta, tras los temas del paso", () => {
+    expect(rootOptionIds(conceptQuiz, null)).toEqual([
+      "restate",
+      "hint",
+      "theory",
+      "concept-despejar",
+      "concept-comprobar",
+      "clear",
+    ]);
+  });
+
+  it("no ofrece conceptos si la pregunta no los menciona", () => {
+    expect(rootOptionIds(quizStep, null).some((id) => id.startsWith("concept-"))).toBe(false);
+  });
+
+  it("todas las opciones apuntan a un nodo que existe", () => {
+    const route = buildHelpRoute(conceptQuiz, "incorrect");
+    for (const node of route.nodes) {
+      for (const option of node.options) {
+        if (option.next !== null) {
+          expect(getHelpNode(route, option.next), `${node.id} -> ${option.next}`).toBeDefined();
+        }
+      }
+    }
+  });
+
+  it("el atasco tras fallar anima a volver a la teoría", () => {
+    const stuck = getHelpNode(buildHelpRoute(conceptQuiz, "incorrect"), HELP_STUCK_ID)!;
+    expect(stuck.message).toContain("equivocarse");
+  });
+});
+
 describe("encadenado de explicaciones", () => {
   it("cada explicación pregunta si ya se ha entendido", () => {
     const route = buildHelpRoute(quizStep, null);
