@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { potenciasBaseExponenteLesson } from "@/data/lessons/potencias-base-exponente";
-import { raizCuadradaNaturalesLesson } from "@/data/lessons/raiz-cuadrada-naturales";
+import { interactiveLessons } from "@/data/lessons";
+
+const potenciasBaseExponenteLesson = interactiveLessons["potencias-base-exponente"];
+const raizCuadradaNaturalesLesson = interactiveLessons["raiz-cuadrada-naturales"];
 import { stepHasDefinitionBox } from "@/lib/lesson/types";
 
 const THEME_TWO_LESSONS = [potenciasBaseExponenteLesson, raizCuadradaNaturalesLesson];

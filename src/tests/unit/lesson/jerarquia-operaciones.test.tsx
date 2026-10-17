@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { JerarquiaOperacionesModule } from "@/components/lesson/stage/modules/jerarquia-operaciones/JerarquiaOperacionesModule";
-import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
+import { interactiveLessons } from "@/data/lessons";
+
+const divisionOrdenOperacionesNaturalesLesson =
+  interactiveLessons["division-orden-operaciones-naturales"];
 
 describe("jerarquía de operaciones", () => {
   it("la lección sigue el flujo exploración → explicación → práctica", () => {

@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/division-orden-operaciones-naturales";
-import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/multiplicacion-division-naturales";
-import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/sistemas-numeracion-naturales";
-import { sumaRestaNaturalesLesson } from "@/data/lessons/suma-resta-naturales";
+import { interactiveLessons } from "@/data/lessons";
+
+const sistemasNumeracionNaturalesLesson =
+  interactiveLessons["sistemas-numeracion-naturales"];
+const sumaRestaNaturalesLesson = interactiveLessons["suma-resta-naturales"];
+const multiplicacionDivisionNaturalesLesson =
+  interactiveLessons["multiplicacion-division-naturales"];
+const divisionOrdenOperacionesNaturalesLesson =
+  interactiveLessons["division-orden-operaciones-naturales"];
 import {
   stepHasDefinitionBox,
   type InteractiveLesson,
