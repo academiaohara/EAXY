@@ -15,8 +15,6 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
         {
           kind: "story",
           text: "Te quitan **3 €** de la cartera y, un rato después, otros **8 €**. Dos pérdidas seguidas: has perdido **11 €** en total.",
-          src: "/lesson/enteros/cartera-monedas.png",
-          alt: "Joven mostrando una cartera casi vacía",
         },
         {
           kind: "rule",

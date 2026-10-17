@@ -91,7 +91,7 @@ describe("lecciones del tema 4 (números enteros)", () => {
         .flatMap((s) => s.blocks as SlideBlock[])
         .flatMap((b) => (b.kind === "story" || b.kind === "figure") && b.src ? [b.src] : []),
     );
-    expect(srcs.length).toBe(5);
+    expect(srcs.length).toBe(4);
     expect(srcs.every((src) => src.startsWith("/lesson/enteros/") && src.endsWith(".png"))).toBe(true);
   });
 
