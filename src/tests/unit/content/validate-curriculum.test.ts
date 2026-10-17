@@ -26,14 +26,15 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone solo los temas 1 y 2 en 1.º ESO", () => {
+  it("expone solo los temas 1, 2 y 3 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(2);
+    expect(firstYear?.modules).toHaveLength(3);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
+      "divisibilidad",
     ]);
   });
 
@@ -73,5 +74,19 @@ describe("validateCurriculum", () => {
     expect(firstYear?.modules[1]?.title).toBe("Potencias y raíces");
     expect(firstYear?.modules[1]?.lessons).toHaveLength(2);
     expect(firstYear?.modules[1]?.topicExercises ?? []).toHaveLength(0);
+  });
+
+  it("tiene las cinco lecciones de la unidad 3 (divisibilidad) en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[2]?.title).toBe("Divisibilidad");
+    expect(firstYear?.modules[2]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "divisibilidad",
+      "criterios-divisibilidad",
+      "factores-primos",
+      "minimo-comun-multiplo",
+      "maximo-comun-divisor",
+    ]);
   });
 });

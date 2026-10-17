@@ -540,7 +540,16 @@ export type SlideAnimId =
   | "resta-diferencia"
   | "area-distributiva"
   | "reparto-agrupar"
-  | "expr-reescritura";
+  | "expr-reescritura"
+  | "divisibilidad-grupos"
+  | "divisores-rectangulos"
+  | "multiplos-saltos"
+  | "criterio-suma-cifras"
+  | "criterio-alternada"
+  | "criba-eratostenes"
+  | "descomposicion-primos"
+  | "tabla-exponentes"
+  | "mcd-cortes";
 
 export type ExprStep = {
   tokens: string[];
@@ -570,6 +579,12 @@ export type SlideAnimParams = {
   titles?: string[];
   /** `romano-resta`: numerales que se desglosan. */
   romans?: string[];
+  /** `divisibilidad-grupos`: objetos que se añaden al total para que el resto deje de ser 0. */
+  extra?: number;
+  /** `tabla-exponentes`: números que se descomponen en la tabla. */
+  nums?: number[];
+  /** `tabla-exponentes`: qué se elige de la tabla (m.c.m. o m.c.d.). */
+  mode?: "mcm" | "mcd";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
