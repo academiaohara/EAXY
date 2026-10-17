@@ -150,7 +150,9 @@ export function SlideBlockView({ block }: { block: SlideBlock }) {
             const tone: SlideTone = side.tone ?? (i === 0 ? "info" : "ok");
             return (
               <div key={i} className={cn("rounded-xl border-2 px-4 py-3", TONE_CLASS[tone])}>
-                <p className={cn("mb-1 text-base font-bold", TONE_TITLE[tone])}>{side.title}</p>
+                <p className={cn("mb-1 text-base font-bold", TONE_TITLE[tone])}>
+                  <MathRenderer text={side.title} />
+                </p>
                 {side.text ? (
                   <p className="text-[0.98rem] leading-[1.55] text-[color:var(--stage-ink,#fff)]">
                     <Rich text={side.text} />
@@ -165,6 +167,42 @@ export function SlideBlockView({ block }: { block: SlideBlock }) {
             );
           })}
         </div>
+      );
+
+    case "formula":
+      return (
+        <div
+          className="flex justify-center text-2xl text-[color:var(--stage-ink,#fff)]"
+          data-slide-block="formula"
+        >
+          <span className="rounded-xl border border-[#ffd866]/45 bg-[#ffd866]/10 px-6 py-1.5">
+            <MathRenderer text={block.tex} display />
+          </span>
+        </div>
+      );
+
+    case "relations":
+      return (
+        <ul className="grid grid-cols-2 gap-x-3 gap-y-2" data-slide-block="relations">
+          {block.items.map((item, i) => {
+            const tone: SlideTone = item.tone ?? "info";
+            const chip = cn(
+              "inline-flex min-w-9 items-center justify-center rounded-lg border px-2.5 py-0.5 text-lg font-bold tabular-nums",
+              TONE_CLASS[tone],
+              TONE_TITLE[tone],
+            );
+            return (
+              <li
+                key={i}
+                className="flex items-center gap-2.5 text-[1.05rem] text-[color:var(--stage-ink,#fff)]"
+              >
+                <span className={chip}>{item.left}</span>
+                <span className="text-[color:var(--stage-muted,#b8c2d0)]">{item.relation}</span>
+                <span className={chip}>{item.right}</span>
+              </li>
+            );
+          })}
+        </ul>
       );
 
     case "steps":

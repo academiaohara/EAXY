@@ -621,6 +621,13 @@ export type SlideBlock =
     }
   /** Pasos numerados. */
   | { kind: "steps"; title?: string; items: string[] }
+  /** Igualdad o fórmula destacada, sin caja, centrada. */
+  | { kind: "formula"; tex: string }
+  /** Frases «A relación B» sueltas (sin caja), con los números en ficha de color. */
+  | {
+      kind: "relations";
+      items: { left: string; relation: string; right: string; tone?: SlideTone }[];
+    }
   /** Fichas cortas «símbolo = valor» (símbolos, equivalencias, órdenes…). */
   | { kind: "facts"; items: { tex: string; label?: string }[] }
   /** Enunciado con ilustración al lado (la ilustración se omite si el fichero aún no existe). */

@@ -1,6 +1,9 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { TEMA_3_SUBTITLE } from "@/data/lessons/shared";
 
+const DIVISORES_30 =
+  "Los divisores de $30$ salen por parejas: $30 = 1 \\cdot 30 = 2 \\cdot 15 = 3 \\cdot 10 = 5 \\cdot 6$, es decir, $1, 2, 3, 5, 6, 10, 15, 30$. Quitando $1$ y $30$ quedan $2, 3, 5, 6, 10, 15$: seis tamaños de bolsa.";
+
 export const divisibilidadLesson: InteractiveLesson = {
   slug: "divisibilidad",
   title: "1. Divisibilidad: múltiplos y divisores",
@@ -24,7 +27,10 @@ export const divisibilidadLesson: InteractiveLesson = {
           kind: "example",
           lines: [
             { math: "24 : 6 = 4 \\quad (\\text{resto } 0)", note: "divisible" },
-            { math: "26 : 6 = 4 \\quad (\\text{resto } 2)", note: "no divisible" },
+            {
+              math: "26 : 6 = 4 \\quad (\\text{resto } 2)",
+              note: "no divisible",
+            },
           ],
         },
       ],
@@ -47,22 +53,29 @@ export const divisibilidadLesson: InteractiveLesson = {
         {
           kind: "rule",
           text: "Cuando $a = b \\cdot k$ (con $k$ natural), $a$ es **múltiplo** de $b$ y $b$ es **divisor** de $a$.",
-          formula: "24 = 6 \\cdot 4",
         },
+        { kind: "formula", tex: "24 = 6 \\cdot 4" },
         {
           kind: "compare",
           left: {
             title: "Múltiplo",
             text: "El número **grande**: contiene al otro un número exacto de veces.",
-            math: ["24 \\text{ es múltiplo de } 6", "24 \\text{ es múltiplo de } 4"],
             tone: "ok",
           },
           right: {
             title: "Divisor",
             text: "El factor **pequeño**: cabe en el otro un número exacto de veces.",
-            math: ["6 \\text{ es divisor de } 24", "4 \\text{ es divisor de } 24"],
             tone: "info",
           },
+        },
+        {
+          kind: "relations",
+          items: [
+            { left: "24", relation: "es múltiplo de", right: "6", tone: "ok" },
+            { left: "6", relation: "es divisor de", right: "24", tone: "info" },
+            { left: "24", relation: "es múltiplo de", right: "4", tone: "ok" },
+            { left: "4", relation: "es divisor de", right: "24", tone: "info" },
+          ],
         },
         {
           kind: "warning",
@@ -76,18 +89,21 @@ export const divisibilidadLesson: InteractiveLesson = {
       id: "check-direccion",
       type: "predict",
       title: "Quién es múltiplo de quién",
-      question: "Sabiendo que $56 = 8 \\cdot 7$, ¿cuál de estas afirmaciones es verdadera?",
+      question:
+        "Sabiendo que $56 = 8 \\cdot 7$, ¿cuál de estas afirmaciones es verdadera?",
       mode: "choice",
       choices: [
         {
           id: "56-divisor-8",
           label: "$56$ es divisor de $8$",
-          incorrectFeedback: "Un divisor no puede ser mayor que el número: $56 > 8$.",
+          incorrectFeedback:
+            "Un divisor no puede ser mayor que el número: $56 > 8$.",
         },
         {
           id: "7-multiplo-56",
           label: "$7$ es múltiplo de $56$",
-          incorrectFeedback: "Un múltiplo no puede ser menor que el número: es justo al revés, $56$ es múltiplo de $7$.",
+          incorrectFeedback:
+            "Un múltiplo no puede ser menor que el número: es justo al revés, $56$ es múltiplo de $7$.",
         },
         { id: "divisores", label: "$8$ y $7$ son divisores de $56$" },
         {
@@ -98,7 +114,8 @@ export const divisibilidadLesson: InteractiveLesson = {
       ],
       correctChoiceId: "divisores",
       shuffleChoices: true,
-      explanation: "De $56 = 8 \\cdot 7$ salen dos lecturas: $56$ es múltiplo de $8$ y de $7$; y $8$ y $7$ son divisores de $56$.",
+      explanation:
+        "De $56 = 8 \\cdot 7$ salen dos lecturas: $56$ es múltiplo de $8$ y de $7$; y $8$ y $7$ son divisores de $56$.",
     },
     {
       id: "multiplos",
@@ -153,12 +170,22 @@ export const divisibilidadLesson: InteractiveLesson = {
           kind: "example",
           title: "Divisores de 36",
           lines: [
-            { math: "36 = 1 \\cdot 36 = 2 \\cdot 18 = 3 \\cdot 12 = 4 \\cdot 9 = 6 \\cdot 6", note: "las parejas" },
-            { math: "\\{1, 2, 3, 4, 6, 9, 12, 18, 36\\}", note: "el $6$ solo cuenta una vez" },
+            {
+              math: "36 = 1 \\cdot 36 = 2 \\cdot 18 = 3 \\cdot 12 = 4 \\cdot 9 = 6 \\cdot 6",
+              note: "las parejas",
+            },
+            {
+              math: "\\{1, 2, 3, 4, 6, 9, 12, 18, 36\\}",
+              note: "el $6$ solo cuenta una vez",
+            },
           ],
         },
       ],
-      visual: { kind: "anim", scene: "divisores-rectangulos", params: { n: 24 } },
+      visual: {
+        kind: "anim",
+        scene: "divisores-rectangulos",
+        params: { n: 24 },
+      },
     },
     {
       id: "check-sillas",
@@ -171,23 +198,27 @@ export const divisibilidadLesson: InteractiveLesson = {
         {
           id: "3",
           label: "$3$ filas",
-          incorrectFeedback: "$36 : 3 = 12$ es exacta: $3$ filas de $12$ sí valen.",
+          incorrectFeedback:
+            "$36 : 3 = 12$ es exacta: $3$ filas de $12$ sí valen.",
         },
         { id: "8", label: "$8$ filas" },
         {
           id: "9",
           label: "$9$ filas",
-          incorrectFeedback: "$36 : 9 = 4$ es exacta: $9$ filas de $4$ sí valen.",
+          incorrectFeedback:
+            "$36 : 9 = 4$ es exacta: $9$ filas de $4$ sí valen.",
         },
         {
           id: "12",
           label: "$12$ filas",
-          incorrectFeedback: "$36 : 12 = 3$ es exacta: $12$ filas de $3$ sí valen.",
+          incorrectFeedback:
+            "$36 : 12 = 3$ es exacta: $12$ filas de $3$ sí valen.",
         },
       ],
       correctChoiceId: "8",
       shuffleChoices: true,
-      explanation: "$36 : 8 = 4$ con resto $4$: $8$ no es divisor de $36$, así que siempre sobrarían sillas o quedaría una fila incompleta.",
+      explanation:
+        "$36 : 8 = 4$ con resto $4$: $8$ no es divisor de $36$, así que siempre sobrarían sillas o quedaría una fila incompleta.",
     },
     {
       id: "check-bolsas",
@@ -200,24 +231,29 @@ export const divisibilidadLesson: InteractiveLesson = {
         {
           id: "8",
           label: "$8$",
-          incorrectFeedback: "Los $8$ divisores de $30$ incluyen el $1$ y el $30$, que el enunciado excluye.",
+          incorrectFeedback:
+            "Los $8$ divisores de $30$ incluyen el $1$ y el $30$, que el enunciado excluye. " +
+            DIVISORES_30,
         },
         { id: "6", label: "$6$" },
         {
           id: "5",
           label: "$5$",
-          incorrectFeedback: "Te falta una pareja: $2 \\cdot 15 = 30$, así que el $15$ también vale.",
+          incorrectFeedback:
+            "Te falta una pareja: $2 \\cdot 15 = 30$, así que el $15$ también vale. " +
+            DIVISORES_30,
         },
         {
           id: "15",
           label: "$15$",
-          incorrectFeedback: "$15$ es uno de los tamaños, pero no el número de tamaños distintos.",
+          incorrectFeedback:
+            "$15$ es uno de los tamaños, pero no el número de tamaños distintos. " +
+            DIVISORES_30,
         },
       ],
       correctChoiceId: "6",
       shuffleChoices: true,
-      explanation:
-        "$30 = 1 \\cdot 30 = 2 \\cdot 15 = 3 \\cdot 10 = 5 \\cdot 6$. Divisores: $1, 2, 3, 5, 6, 10, 15, 30$. Quitando $1$ y $30$ quedan $2, 3, 5, 6, 10, 15$: seis tamaños.",
+      explanation: DIVISORES_30,
     },
   ],
 };

@@ -18,6 +18,8 @@ const ALL_BLOCKS: SlideBlock[] = [
   },
   { kind: "steps", items: ["uno", "dos"] },
   { kind: "facts", items: [{ tex: "I", label: "uno" }] },
+  { kind: "formula", tex: "24 = 6 \\cdot 4" },
+  { kind: "relations", items: [{ left: "24", relation: "es múltiplo de", right: "6" }] },
 ];
 
 function slide(partial: Partial<SlideStep> = {}): SlideStep {
@@ -41,7 +43,7 @@ function renderSlide(step: SlideStep) {
 describe("SlideStepView", () => {
   it("pinta cada tipo de bloque con su forma propia", () => {
     const { container } = renderSlide(slide());
-    for (const kind of ["text", "definition", "rule", "example", "warning", "compare", "steps", "facts"]) {
+    for (const kind of ["text", "definition", "rule", "example", "warning", "compare", "steps", "facts", "formula", "relations"]) {
       expect(container.querySelector(`[data-slide-block="${kind}"]`), kind).not.toBeNull();
     }
   });

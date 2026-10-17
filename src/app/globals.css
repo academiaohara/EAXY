@@ -1070,7 +1070,9 @@
 }
 
 /* Resaltados dentro de las diapositivas (mismo código de color que las cajas de definición). */
-.lesson-slide mark {
+.lesson-slide mark,
+[data-testid="lesson-predict-question"] mark,
+[data-testid="lesson-predict-feedback"] mark {
   background: var(--amber-bg, rgba(255, 193, 7, 0.22));
   color: var(--amber, #ffd866);
   font-weight: 700;
@@ -1080,7 +1082,9 @@
   -webkit-box-decoration-break: clone;
 }
 
-.lesson-slide mark.suma {
+.lesson-slide mark.suma,
+[data-testid="lesson-predict-question"] mark.suma,
+[data-testid="lesson-predict-feedback"] mark.suma {
   background: var(--teal-bg, rgba(45, 212, 191, 0.2));
   color: var(--teal, #5eead4);
 }
