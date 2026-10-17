@@ -13,10 +13,8 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
       title: "Cuándo vuelven a coincidir",
       blocks: [
         {
-          kind: "story",
+          kind: "text",
           text: "Dos líneas de autobús salen a la vez de la misma parada: una cada **4** min y otra cada **6**. ¿Cuándo volverán a salir juntas?",
-          src: "/lesson/divisibilidad/autobuses-parada.png",
-          alt: "Dos autobuses urbanos en una parada",
         },
         {
           kind: "definition",

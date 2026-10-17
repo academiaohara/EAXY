@@ -13,10 +13,8 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
       title: "Trozos iguales y lo más largos posible",
       blocks: [
         {
-          kind: "story",
+          kind: "text",
           text: "Una modista tiene dos cintas, de **24 m** y de **36 m**. Quiere cortarlas en trozos **iguales**, sin sobrantes y lo más largos posible.",
-          src: "/lesson/divisibilidad/cintas-modista.png",
-          alt: "Modista con dos rollos de cinta y unas tijeras",
         },
         {
           kind: "definition",
