@@ -136,18 +136,33 @@ function rootMessage(step: LessonStep, feedback: FeedbackStatus | null): string 
     : "Dime qué parte quieres que repasemos.";
 }
 
+/** Conceptos de la pregunta que se ofrecen en la ayuda del paso. */
+const STEP_HELP_MAX_CONCEPTS = 2;
+
+function stuckMessage(feedback: FeedbackStatus | null): string {
+  return feedback === "incorrect"
+    ? "No pasa nada, equivocarse forma parte de aprender. Vuelve a la teoría del paso, léela con calma y prueba otra vez."
+    : "No pasa nada, esto se entiende mejor a la segunda. Repasa la teoría con calma y vuelve a intentarlo.";
+}
+
 /**
  * Construye la ruta de ayuda del paso: una raíz con lo que el alumno puede no
  * entender y, en cada explicación, la pregunta de si lo ha entendido ya.
  */
 export function buildHelpRoute(step: LessonStep, feedback: FeedbackStatus | null): HelpRoute {
   const topics = helpTopics(step, feedback);
+  const concepts = findConcepts(stepQuestion(step) ?? "").slice(0, STEP_HELP_MAX_CONCEPTS);
 
   const root: HelpNode = {
     id: HELP_ROOT_ID,
     message: rootMessage(step, feedback),
     options: [
       ...topics.map((topic) => ({ id: topic.id, label: topic.label, next: topic.id })),
+      ...concepts.map((concept) => ({
+        id: `concept-${concept.id}`,
+        label: concept.question,
+        next: conceptNodeId(concept.id),
+      })),
       { id: "clear", label: "Ya lo tengo", next: null },
     ],
   };
@@ -169,15 +184,17 @@ export function buildHelpRoute(step: LessonStep, feedback: FeedbackStatus | null
 
   const stuck: HelpNode = {
     id: HELP_STUCK_ID,
-    message:
-      "No pasa nada, esto se entiende mejor a la segunda. Repasa la teoría con calma y vuelve a intentarlo.",
+    message: stuckMessage(feedback),
     options: [
       { id: "restart", label: "Empezar la ayuda otra vez", next: HELP_ROOT_ID },
       { id: "close", label: "Seguir con la lección", next: null },
     ],
   };
 
-  return { rootId: HELP_ROOT_ID, nodes: [root, ...topicNodes, stuck] };
+  return {
+    rootId: HELP_ROOT_ID,
+    nodes: [root, ...topicNodes, ...concepts.flatMap(conceptNodes), stuck],
+  };
 }
 
 export function getHelpNode(route: HelpRoute, nodeId: string): HelpNode | undefined {
