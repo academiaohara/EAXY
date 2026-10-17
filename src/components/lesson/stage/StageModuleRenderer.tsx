@@ -7,7 +7,14 @@ import { JerarquiaOperacionesModule } from "@/components/lesson/stage/modules/je
 import { PotenciasModule } from "@/components/lesson/stage/modules/potencias/PotenciasModule";
 import { RaicesCuadradasModule } from "@/components/lesson/stage/modules/raices-cuadradas/RaicesCuadradasModule";
 import { TiendaCiclistaModule } from "@/components/lesson/stage/modules/tienda-ciclista/TiendaCiclistaModule";
-import type { MulDivConfig, PotenciasConfig, RaicesConfig, StageModuleId } from "@/lib/lesson/types";
+import { SistemasNumeracionModule } from "@/components/lesson/stage/modules/sistemas-numeracion/SistemasNumeracionModule";
+import type {
+  MulDivConfig,
+  PotenciasConfig,
+  RaicesConfig,
+  SistemasNumeracionConfig,
+  StageModuleId,
+} from "@/lib/lesson/types";
 
 export type StageModuleRenderProps = {
   module: StageModuleId;
@@ -48,6 +55,9 @@ export type StageModuleRenderProps = {
   mulDiv?: MulDivConfig;
   potencias?: PotenciasConfig;
   raices?: RaicesConfig;
+  numeracion?: SistemasNumeracionConfig;
+  romanString?: string;
+  onRomanStringChange?: (value: string) => void;
   boxCounts?: number[];
   onBoxCountsChange?: (counts: number[]) => void;
   autoPlay?: boolean;
@@ -135,6 +145,18 @@ export function StageModuleRenderer(props: StageModuleRenderProps) {
     );
   }
 
+  if (module === "sistemas-numeracion" && props.numeracion) {
+    return (
+      <SistemasNumeracionModule
+        stepId={stepId}
+        {...props.numeracion}
+        romanString={props.romanString}
+        onRomanStringChange={props.onRomanStringChange}
+        onReadyChange={onReadyChange}
+      />
+    );
+  }
+
   if (module === "jerarquia-operaciones") {
     return (
       <JerarquiaOperacionesModule
@@ -168,4 +190,5 @@ export const STAGE_MODULE_REGISTRY: StageModuleId[] = [
   "jerarquia-operaciones",
   "potencias",
   "raices-cuadradas",
+  "sistemas-numeracion",
 ];

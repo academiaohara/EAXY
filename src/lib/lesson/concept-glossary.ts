@@ -360,6 +360,18 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
     },
   },
   {
+    id: "sistema-numeracion",
+    term: "Sistema de numeración",
+    question: "¿Qué es un sistema de numeración?",
+    aliases: ["sistema de numeracion", "sistemas de numeracion", "sistema numeracion"],
+    message:
+      "Un **sistema de numeración** junta **símbolos** (marcas, letras o cifras) con **reglas** para escribir cantidades.",
+    example: {
+      message: "Ejemplos que verás en esta lección:",
+      math: ["\\text{Egipcio (aditivo)}, \\quad \\text{Romano}, \\quad \\text{Decimal (posicional)}"],
+    },
+  },
+  {
     id: "sistema-aditivo",
     term: "Sistema aditivo",
     question: "¿Qué es un sistema aditivo?",
@@ -416,6 +428,54 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
       operator: "+",
       result: "3531",
       caption: "La misma cifra $3$ vale distinto en cada columna.",
+    },
+  },
+  {
+    id: "orden-unidades",
+    term: "Orden de unidades",
+    question: "¿Qué es el orden de unidades?",
+    aliases: ["orden de unidades", "ordenes", "unidades decenas centenas"],
+    message:
+      "Cada cifra ocupa un **orden**: unidades, decenas, centenas, millares… Diez del mismo orden pasan al siguiente.",
+    example: {
+      message: "En $35318$:",
+      math: ["3\\cdot 10\\,000 + 5\\cdot 1\\,000 + 3\\cdot 100 + 1\\cdot 10 + 8"],
+    },
+  },
+  {
+    id: "descomponer",
+    term: "Descomponer un número",
+    question: "¿Qué es descomponer un número?",
+    aliases: ["descomponer", "descomposicion"],
+    message:
+      "**Descomponer** es escribir un número como **suma** de sus órdenes: cada cifra con los ceros que le corresponden.",
+    example: {
+      message: "Ejemplo:",
+      math: ["35\\,318 = 30\\,000 + 5\\,000 + 300 + 10 + 8"],
+    },
+  },
+  {
+    id: "cero-posicional",
+    term: "Cero posicional",
+    question: "¿Para qué sirve el cero en el sistema decimal?",
+    aliases: ["cero posicional", "el cero guarda", "cero guarda el sitio"],
+    message:
+      "El **0** no aporta unidades, pero **guarda el sitio** de un orden vacío. Si lo quitas, las cifras se desplazan y el número cambia.",
+    example: {
+      message: "$305$ sin el cero ya no son tres centenas:",
+      math: ["305 \\neq 35"],
+    },
+  },
+  {
+    id: "numero-romano",
+    term: "Número romano",
+    question: "¿Cómo se lee un número romano?",
+    aliases: ["numero romano", "numeros romanos", "romano"],
+    message:
+      "Se recorre de **izquierda a derecha**. Si una letra vale **menos** que la siguiente, **resta**; si no, **suma**.",
+    example: {
+      message: "XLIV:",
+      math: ["40 + 4 = 44"],
     },
   },
   {
