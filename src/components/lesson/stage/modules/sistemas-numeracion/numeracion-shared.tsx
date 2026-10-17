@@ -206,6 +206,7 @@ export function IdeaCard({
       />
       <foreignObject x={offset.x} y={offset.y} width={width} height={56} aria-hidden>
         <div
+          xmlns="http://www.w3.org/1999/xhtml"
           className="rounded-md border px-2 py-1.5 text-[11px] leading-snug shadow-sm backdrop-blur-sm"
           style={{
             borderColor: `${border}99`,
