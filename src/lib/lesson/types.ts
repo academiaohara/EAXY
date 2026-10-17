@@ -549,7 +549,17 @@ export type SlideAnimId =
   | "criba-eratostenes"
   | "descomposicion-primos"
   | "tabla-exponentes"
-  | "mcd-cortes";
+  | "mcd-cortes"
+  | "ascensor-enteros"
+  | "recta-enteros"
+  | "valor-absoluto"
+  | "comparar-enteros"
+  | "suma-recta"
+  | "fichas-opuestos"
+  | "resta-opuesto"
+  | "parentesis-signos"
+  | "producto-signos"
+  | "division-inversa";
 
 export type ExprStep = {
   tokens: string[];
@@ -585,6 +595,8 @@ export type SlideAnimParams = {
   nums?: number[];
   /** `tabla-exponentes`: qué se elige de la tabla (m.c.m. o m.c.d.). */
   mode?: "mcm" | "mcd";
+  /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
+  sign?: "+" | "-";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";

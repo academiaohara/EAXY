@@ -13,6 +13,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
   ('a2000000-0000-4000-8000-000000000002', 'a1000000-0000-4000-8000-000000000001', 'potencias-y-raices', 'Potencias y raíces', 2),
   ('a2000000-0000-4000-8000-000000000003', 'a1000000-0000-4000-8000-000000000001', 'divisibilidad', 'Divisibilidad', 3),
+  ('a2000000-0000-4000-8000-000000000004', 'a1000000-0000-4000-8000-000000000001', 'numeros-enteros', 'Los números enteros', 4),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -27,6 +28,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000304', 'a2000000-0000-4000-8000-000000000003', '3. Descomposición en factores primos', 'Primos y compuestos, criba de Eratóstenes y método de la línea vertical.', 3, null),
   ('a3000000-0000-4000-8000-000000000305', 'a2000000-0000-4000-8000-000000000003', '4. Mínimo común múltiplo', 'Múltiplos comunes, factores primos con mayor exponente y problemas de coincidencia.', 4, null),
   ('a3000000-0000-4000-8000-000000000306', 'a2000000-0000-4000-8000-000000000003', '5. Máximo común divisor', 'Divisores comunes, factores primos con menor exponente y problemas de reparto.', 5, null),
+  ('a3000000-0000-4000-8000-000000000401', 'a2000000-0000-4000-8000-000000000004', '1. Los números enteros', 'Positivos y negativos, opuestos, recta numérica, valor absoluto y orden.', 1, null),
+  ('a3000000-0000-4000-8000-000000000402', 'a2000000-0000-4000-8000-000000000004', '2. Sumas y restas de enteros', 'Mismo signo, distinto signo y expresiones con varios números.', 2, null),
+  ('a3000000-0000-4000-8000-000000000403', 'a2000000-0000-4000-8000-000000000004', '3. Paréntesis en sumas y restas', 'Restar es sumar el opuesto; signo delante de un paréntesis y paréntesis anidados.', 3, null),
+  ('a3000000-0000-4000-8000-000000000404', 'a2000000-0000-4000-8000-000000000004', '4. Multiplicación y división de enteros', 'Regla de los signos, división exacta y operaciones combinadas.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

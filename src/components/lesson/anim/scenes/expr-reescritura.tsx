@@ -32,11 +32,12 @@ function groupTokens(step: ExprStep, dim: boolean): Group[] {
   return groups;
 }
 
-function ExprLine({ step, dim }: { step: ExprStep; dim: boolean }) {
+function ExprLine({ step, dim, compact }: { step: ExprStep; dim: boolean; compact: boolean }) {
   return (
     <div
       className={cn(
-        "flex flex-wrap items-baseline gap-x-2.5 text-[2rem] font-semibold tabular-nums leading-tight transition-opacity duration-500 motion-reduce:transition-none",
+        "flex flex-wrap items-baseline font-semibold tabular-nums leading-tight transition-opacity duration-500 motion-reduce:transition-none",
+        compact ? "gap-x-1.5 text-[1.55rem]" : "gap-x-2.5 text-[2rem]",
         dim ? "opacity-40" : "opacity-100",
       )}
     >
@@ -44,7 +45,8 @@ function ExprLine({ step, dim }: { step: ExprStep; dim: boolean }) {
         <span
           key={group.from}
           className={cn(
-            "inline-flex items-baseline gap-x-2.5 rounded-lg px-2 transition-colors duration-500 motion-reduce:transition-none",
+            "inline-flex items-baseline rounded-lg px-2 transition-colors duration-500 motion-reduce:transition-none",
+            compact ? "gap-x-1.5" : "gap-x-2.5",
             group.kind === "active" && "bg-[#ffd866]/25 text-[#ffd866] ring-2 ring-[#ffd866]/60",
             group.kind === "fresh" && "bg-[#83c167]/25 text-[#83c167] ring-2 ring-[#83c167]/60",
             group.kind === "plain" && "px-1",
@@ -71,7 +73,7 @@ function ExprLine({ step, dim }: { step: ExprStep; dim: boolean }) {
   );
 }
 
-function Derivation({ steps, beat, title }: { steps: ExprStep[]; beat: number; title?: string }) {
+function Derivation({ steps, beat, title, compact }: { steps: ExprStep[]; beat: number; title?: string; compact: boolean }) {
   const last = Math.min(beat, steps.length - 1);
   return (
     <div className="flex min-w-0 flex-col gap-1">
@@ -83,7 +85,7 @@ function Derivation({ steps, beat, title }: { steps: ExprStep[]; beat: number; t
         const isCurrent = i === last;
         return (
           <div key={i} className="min-h-[3.4rem]">
-            <ExprLine step={step} dim={!isCurrent} />
+            <ExprLine step={step} dim={!isCurrent} compact={compact} />
             {i < steps.length - 1 && i <= last && step.note ? (
               <p
                 className={cn(
@@ -110,6 +112,9 @@ export function buildExprReescritura(params: {
   const left = params.expr ?? [];
   const right = params.expr2;
   const total = Math.max(left.length, right?.length ?? 0, 1);
+  // En dos columnas, las expresiones largas se reducen para no partirse en varias líneas.
+  const longest = Math.max(0, ...[...left, ...(right ?? [])].map((step) => step.tokens.join(" ").length));
+  const compact = Boolean(right) && longest > 14;
   const captions = Array.from({ length: total }, (_, i) => {
     const a = left[Math.min(i, left.length - 1)]?.note;
     const b = right ? right[Math.min(i, right.length - 1)]?.note : undefined;
@@ -125,11 +130,11 @@ export function buildExprReescritura(params: {
     beatMs: 3200,
     render: (beat) => (
       <div
-        className={cn("grid gap-8 px-8 py-6", right ? "grid-cols-2" : "grid-cols-1")}
+        className={cn("grid px-8 py-6", right ? "grid-cols-2" : "grid-cols-1", compact ? "gap-6" : "gap-8")}
         style={{ minHeight: 300 }}
       >
-        <Derivation steps={left} beat={beat} title={params.titles?.[0]} />
-        {right ? <Derivation steps={right} beat={beat} title={params.titles?.[1]} /> : null}
+        <Derivation steps={left} beat={beat} title={params.titles?.[0]} compact={compact} />
+        {right ? <Derivation steps={right} beat={beat} title={params.titles?.[1]} compact={compact} /> : null}
       </div>
     ),
   };
