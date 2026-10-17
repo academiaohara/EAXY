@@ -13,10 +13,13 @@ export const SISTEMAS_HISTORIA_TABS: {
   { id: "roman", label: "Los romanos", subtitle: "Letras con reglas de resta" },
 ];
 
+/** El mismo número en los tres sistemas: obliga a comparar cómo se escribe en cada uno. */
+export const SISTEMAS_HISTORIA_TARGET = 24;
+
 export const SISTEMAS_HISTORIA_TARGETS: Record<SistemasHistoriaTabId, number> = {
-  tally: 9,
-  egypt: 47,
-  roman: 14,
+  tally: SISTEMAS_HISTORIA_TARGET,
+  egypt: SISTEMAS_HISTORIA_TARGET,
+  roman: SISTEMAS_HISTORIA_TARGET,
 };
 
 export const STAGE_PANEL =

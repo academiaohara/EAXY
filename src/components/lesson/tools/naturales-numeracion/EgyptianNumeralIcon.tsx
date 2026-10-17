@@ -40,3 +40,14 @@ export function egyptianSymbolsToInt(symbols: EgyptianSymbolId[]): number {
   };
   return symbols.reduce((sum, id) => sum + values[id], 0);
 }
+
+/** Mínimo de símbolos egipcios (1, 10, 100, 1000) para escribir un natural. */
+export function minEgyptianSymbolCount(n: number): number {
+  let rest = Math.trunc(n);
+  let count = 0;
+  for (const value of [1000, 100, 10, 1]) {
+    count += Math.floor(rest / value);
+    rest %= value;
+  }
+  return count;
+}

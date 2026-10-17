@@ -26,3 +26,32 @@ export function romanToInt(raw: string): number {
   }
   return total;
 }
+
+const ROMAN_TABLE: [number, string][] = [
+  [1000, "M"],
+  [900, "CM"],
+  [500, "D"],
+  [400, "CD"],
+  [100, "C"],
+  [90, "XC"],
+  [50, "L"],
+  [40, "XL"],
+  [10, "X"],
+  [9, "IX"],
+  [5, "V"],
+  [4, "IV"],
+  [1, "I"],
+];
+
+/** Escritura romana canónica (con restas) de un natural entre 1 y 3999. */
+export function intToRoman(n: number): string {
+  let rest = Math.trunc(n);
+  let out = "";
+  for (const [value, symbol] of ROMAN_TABLE) {
+    while (rest >= value) {
+      out += symbol;
+      rest -= value;
+    }
+  }
+  return out;
+}

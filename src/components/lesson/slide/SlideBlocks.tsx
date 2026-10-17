@@ -188,11 +188,11 @@ export function SlideBlockView({ block }: { block: SlideBlock }) {
 
     case "facts":
       return (
-        <ul className="flex flex-wrap gap-2.5" data-slide-block="facts">
+        <ul className="flex flex-nowrap gap-2" data-slide-block="facts">
           {block.items.map((item, i) => (
             <li
               key={i}
-              className="flex min-w-[4.5rem] flex-col items-center rounded-xl border border-[color:var(--stage-border,#3d4f66)] bg-black/25 px-3 py-2 text-[color:var(--stage-ink,#fff)]"
+              className="flex min-w-0 flex-1 flex-col items-center rounded-xl border border-[color:var(--stage-border,#3d4f66)] bg-black/25 px-1 py-2 text-[color:var(--stage-ink,#fff)]"
             >
               <span className="text-xl font-semibold">
                 <MathRenderer text={`$${item.tex}$`} />

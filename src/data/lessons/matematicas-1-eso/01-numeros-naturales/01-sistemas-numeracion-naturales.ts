@@ -94,7 +94,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
       scene: "sistemas-historia-juego",
       title: "Escribe el mismo número de tres formas",
       definitionBox:
-        "Tres culturas, tres reglas: **marcas** que se cuentan, símbolos que se **suman** y letras que **suman o restan**. Completa los tres retos.",
+        "Mismo número, tres reglas: **marcas** que se cuentan, símbolos que se **suman** y letras que **suman o restan**.",
       layout: "stack",
     },
     {
@@ -147,9 +147,9 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
           text: "En $35\\,318$, un $3$ vale $30\\,000$ y el otro, solo $300$.",
         },
         {
-          kind: "warning",
-          title: "El cero no es «nada»",
-          text: "Marca un orden **vacío**. Sin él, $305$ y $35$ se escribirían igual.",
+          kind: "rule",
+          title: "La importancia del 0",
+          text: "El **0** es lo que hace posible el sistema posicional: ocupa los órdenes **vacíos** y mantiene cada cifra en su sitio. Sin él, $305$, $35$ y $3\\,050$ se escribirían igual: $35$.",
         },
       ],
       visual: { kind: "anim", scene: "decimal-posicion", params: { n: 35_318, a: 4, b: 2 } },

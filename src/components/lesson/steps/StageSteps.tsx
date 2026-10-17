@@ -30,6 +30,10 @@ import type {
 } from "@/lib/lesson/types";
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
 import {
+  PredictChoiceCard,
+  PredictFeedbackPanel,
+  PredictQuestionHeader,
+  predictChoiceCardState,
   PredictCheckButton,
   predictAnaLeoChoiceClassName,
   predictChoiceClassName,
@@ -445,7 +449,7 @@ export function PredictStepView({
   const checkFeedback = checked
     ? isCorrect
       ? step.explanation
-      : selectedChoice?.incorrectFeedback ?? step.hint
+      : selectedChoice?.incorrectFeedback ?? step.hint ?? step.explanation
     : null;
 
   const jerarquiaStage =
@@ -701,9 +705,9 @@ export function PredictStepView({
         className="lesson-idea-enter p-6 sm:p-8"
         data-testid="lesson-predict-step"
       >
-        <h3 className="lesson-presentation-body mb-4 text-center font-normal text-[color:var(--stage-ink,#e8edf5)]">
+        <PredictQuestionHeader>
           <LessonRichText text={step.question} emphasis="mark-alternate" />
-        </h3>
+        </PredictQuestionHeader>
         {step.hint && step.hintHiddenUntilRequested && !checked ? (
           <div className="mb-4 flex min-h-[2.75rem] flex-col items-center justify-center gap-2">
             {hintVisible ? (
@@ -755,22 +759,33 @@ export function PredictStepView({
             ))}
           </div>
         ) : (
-          <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
-            {choiceOptions.map((choice) => (
-              <button
+          <div
+            className={cn(
+              "mx-auto grid max-w-3xl gap-3",
+              choiceOptions.length > 1 &&
+                choiceOptions.length <= 3 &&
+                choiceOptions.every((choice) => choice.label.length <= 30) &&
+                (choiceOptions.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"),
+            )}
+            role="group"
+            aria-label="Opciones"
+          >
+            {choiceOptions.map((choice, index) => (
+              <PredictChoiceCard
                 key={choice.id}
-                type="button"
-                data-testid={`predict-choice-${choice.id}`}
+                letter={String.fromCharCode(65 + index)}
+                testId={`predict-choice-${choice.id}`}
                 disabled={disabled || checked}
                 onClick={() => setChoiceId(choice.id)}
-                className={predictChoiceClassName({
+                state={predictChoiceCardState({
                   selected: choiceId === choice.id,
                   checked,
+                  isCorrectOption: choice.id === step.correctChoiceId,
+                  answerCorrect: isCorrect,
                 })}
-                aria-pressed={choiceId === choice.id}
               >
-                <LessonRichText text={choice.label} className="text-base font-medium" />
-              </button>
+                <LessonRichText text={choice.label} />
+              </PredictChoiceCard>
             ))}
           </div>
         )}
@@ -778,14 +793,9 @@ export function PredictStepView({
           <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
         ) : null}
         {checked && checkFeedback ? (
-          <div className="mt-5 space-y-2" role="status">
-            <p className={predictFeedbackStatusClassName(isCorrect)}>
-              {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
-            </p>
-            <p className="lesson-stage-hint mx-auto text-center">
-              <MathRenderer text={checkFeedback} />
-            </p>
-          </div>
+          <PredictFeedbackPanel correct={isCorrect}>
+            <MathRenderer text={checkFeedback} />
+          </PredictFeedbackPanel>
         ) : null}
         {reveal ? (
           <div className="mt-6 space-y-3">
