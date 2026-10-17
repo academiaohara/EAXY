@@ -32,12 +32,12 @@ describe("lecciones de referencia del tema 1", () => {
   });
 
   it("la lección 1 unifica origen, sistemas y redondeo del temario", () => {
-    expect(sistemasNumeracionNaturalesLesson.steps.some((step) => step.id === "origen-contar")).toBe(
-      true,
-    );
-    expect(sistemasNumeracionNaturalesLesson.steps.some((step) => step.id === "comparar-sistemas")).toBe(
-      true,
-    );
+    expect(sistemasNumeracionNaturalesLesson.steps.some(
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-galeria",
+    )).toBe(true);
+    expect(sistemasNumeracionNaturalesLesson.steps.some(
+      (step) => step.type === "interactive_tool" && "scene" in step && step.scene === "sistemas-historia-juego",
+    )).toBe(true);
     expect(sistemasNumeracionNaturalesLesson.steps.some(
       (step) => step.type === "interactive_tool" && "scene" in step && step.scene.startsWith("redondeo"),
     )).toBe(true);
@@ -48,7 +48,7 @@ describe("lecciones de referencia del tema 1", () => {
 
   it("mantienen pocas diapositivas y no usan respuestas escritas como control", () => {
     expect(THEME_ONE_LESSONS.map((lesson) => lesson.steps.length)).toEqual([
-      16, 7, 7, 5,
+      7, 7, 7, 5,
     ]);
 
     for (const lesson of THEME_ONE_LESSONS) {
@@ -65,9 +65,7 @@ describe("lecciones de referencia del tema 1", () => {
 
     expect(checks.length).toBeGreaterThan(0);
     expect(
-      checks
-        .filter((step) => step.mode === "choice")
-        .every((step) => step.choices && step.choices.length >= 2),
+      checks.every((step) => step.choices && step.choices.length >= 2),
     ).toBe(true);
     expect(checks.every((step) => step.question.length >= 40)).toBe(true);
   });
