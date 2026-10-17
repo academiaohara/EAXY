@@ -7,40 +7,38 @@ function clampDepth(depth: number): number {
   return Math.min(BRACE_DEPTH_MAX, Math.max(BRACE_DEPTH_MIN, depth));
 }
 
+/** Línea central de la llave: ganchos en cuarto de elipse y punta en S suave (sin esquinas). */
 function centerPoint(s: number, length: number, depth: number): [number, number] {
   const L = length;
   const D = depth;
   const hook = Math.min(14, L * 0.07);
+  const hookDepth = D * 0.8;
   const mid = L / 2;
+  const w = Math.min(L * 0.12, 30);
+  const tipY = (u: number) => D * u * u * (2 - u);
 
   if (s < 0.11) {
-    const t = s / 0.11;
-    const ease = 1 - (1 - t) ** 2;
-    return [hook * ease, D * 0.78 * (1 - ease)];
+    const th = (s / 0.11) * (Math.PI / 2);
+    return [hook * (1 - Math.cos(th)), hookDepth * (1 - Math.sin(th))];
   }
   if (s < 0.39) {
     const t = (s - 0.11) / 0.28;
-    return [hook + t * (mid - hook * 1.35 - hook), 0];
+    return [hook + t * (mid - w - hook), 0];
   }
   if (s < 0.5) {
-    const t = (s - 0.39) / 0.11;
-    const x0 = mid - hook * 1.35;
-    const ease = t * t * (3 - 2 * t);
-    return [x0 + ease * (mid - x0), ease * D];
+    const u = (s - 0.39) / 0.11;
+    return [mid - w + u * w, tipY(u)];
   }
   if (s < 0.61) {
-    const t = (s - 0.5) / 0.11;
-    const x1 = mid + hook * 1.35;
-    const ease = t * t * (3 - 2 * t);
-    return [mid + ease * (x1 - mid), D * (1 - ease)];
+    const u = 1 - (s - 0.5) / 0.11;
+    return [mid + w - u * w, tipY(u)];
   }
   if (s < 0.89) {
     const t = (s - 0.61) / 0.28;
-    return [mid + hook * 1.35 + t * (L - hook - mid - hook * 1.35), 0];
+    return [mid + w + t * (L - hook - mid - w), 0];
   }
-  const t = (s - 0.89) / 0.11;
-  const ease = t * t;
-  return [L - hook * (1 - ease), D * 0.78 * ease];
+  const th = ((s - 0.89) / 0.11) * (Math.PI / 2);
+  return [L - hook * (1 - Math.sin(th)), hookDepth * (1 - Math.cos(th))];
 }
 
 function halfWidthAt(s: number): number {
@@ -75,7 +73,7 @@ export function buildBracePath(
 ): string {
   const L = Math.max(length, 24);
   const D = clampDepth(depth);
-  const steps = 80;
+  const steps = 160;
   const outer: [number, number][] = [];
   const inner: [number, number][] = [];
 

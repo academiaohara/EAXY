@@ -29,7 +29,7 @@ function EggRow({ count, density }: { count: number; density?: HuevosDensity }) 
   const grid = density === "grid";
   return (
     <span
-      className={cn("inline-flex items-center justify-center", grid ? "gap-[3px]" : "gap-0.5")}
+      className={cn("inline-flex items-center justify-center", grid ? "gap-[2px]" : "gap-0.5")}
       aria-hidden
     >
       {Array.from({ length: count }, (_, i) => (
@@ -39,7 +39,7 @@ function EggRow({ count, density }: { count: number; density?: HuevosDensity }) 
           alt=""
           width={grid ? 20 : 20}
           height={grid ? 16 : 16}
-          className={cn("object-contain", grid ? "h-[14px] w-[17px]" : "h-4 w-5")}
+          className={cn("object-contain", grid ? "h-[11px] w-[14px]" : "h-4 w-5")}
         />
       ))}
     </span>
@@ -60,7 +60,7 @@ function CajaRect({
     <div
       className={cn(
         BOX_FRAME,
-        grid ? "rounded-md border-[1.5px] px-1.5 py-1" : "px-2 py-1.5",
+        grid ? "rounded-md border-[1.5px] px-1 py-[2px]" : "px-2 py-1.5",
         className,
       )}
       aria-hidden
@@ -89,14 +89,14 @@ function AlmacenHuevosGrid({
   const labelColor = variant === "left" ? "text-sky-300" : "text-violet-300";
   return (
     <div
-      className={cn("mx-auto flex w-fit flex-col gap-1.5", className)}
+      className={cn("mx-auto flex w-fit flex-col gap-1", className)}
       aria-label={`${filas} filas, ${cajasPorFila} cajas por fila, ${huevosPorCaja} huevos en cada caja`}
     >
       {Array.from({ length: filas }, (_, fila) => (
         <div key={fila} className="relative" aria-hidden>
           <div
             className={cn(
-              "flex flex-nowrap items-center justify-center gap-1.5 rounded-lg border-2 px-2 py-1",
+              "flex flex-nowrap items-center justify-center gap-1.5 rounded-lg border-2 px-1.5 py-[3px]",
               shelf,
             )}
           >
@@ -122,13 +122,13 @@ function VisualLeftGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const boxes = a * b;
   const total = boxes * c;
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-2">
       <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#7dd3fc]")}>
         Primero cuentas todas las cajas: {a} estantes × {b} cajas/estante ={" "}
         <strong className="text-[color:var(--stage-ink,#e8edf5)]">{boxes} cajas</strong> en la
         estantería.
       </p>
-      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-4 py-4 pr-24">
+      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#4353ff]/55 bg-black/30 px-3 py-2.5 pr-24">
         <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="left" rowLabel={`${b} cajas`} />
       </div>
       <div className="space-y-1.5 text-center">
@@ -148,12 +148,12 @@ function VisualRightGroup({ a, b, c }: { a: number; b: number; c: number }) {
   const perRow = b * c;
   const total = a * perRow;
   return (
-    <div className="flex w-full flex-col items-center gap-3">
+    <div className="flex w-full flex-col items-center gap-2">
       <p className={cn(STAGE_CAPTION, "max-w-[28rem] text-center normal-case leading-snug text-[#c4b5fd]")}>
         En cada fila: {b} cajas/fila × {c} huevos/caja ={" "}
         <strong className="text-[color:var(--stage-ink,#e8edf5)]">{perRow} huevos/fila</strong>.
       </p>
-      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-4 py-4 pr-24">
+      <div className="w-full overflow-x-auto rounded-xl border border-dashed border-[#a78bfa]/50 bg-[#a78bfa]/[0.06] px-3 py-2.5 pr-24">
         <AlmacenHuevosGrid filas={a} cajasPorFila={b} huevosPorCaja={c} variant="right" rowLabel={`${perRow} huevos`} />
       </div>
       <div className="space-y-1.5 text-center">
@@ -204,7 +204,7 @@ export function AsociativaHuevosDiscover({
   const showSameResult = seenLeft && seenRight;
 
   return (
-    <div className="mx-auto w-full max-w-2xl space-y-5" aria-label="Descubrir la propiedad asociativa con huevos">
+    <div className="mx-auto w-full max-w-2xl space-y-3" aria-label="Descubrir la propiedad asociativa con huevos">
       <p className={cn(STAGE_CAPTION, "text-center")}>
         {a} estantes · {b} cajas · {c} huevos en cada caja
       </p>
@@ -253,7 +253,7 @@ export function AsociativaHuevosDiscover({
         role="tabpanel"
         aria-labelledby={group === "left" ? "asociativa-tab-left" : "asociativa-tab-right"}
         className={cn(
-          "rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-3 py-4 transition-opacity duration-500",
+          "rounded-2xl border border-[color:var(--stage-border,#334155)] bg-black/35 px-3 py-3 transition-opacity duration-500",
           !reduced && "animate-in fade-in duration-300",
         )}
       >
@@ -274,7 +274,7 @@ export function AsociativaHuevosDiscover({
         />
       </p>
 
-      <div className="flex flex-col items-center gap-1.5 border-t border-white/5 pt-4">
+      <div className="flex flex-col items-center gap-1 border-t border-white/5 pt-2">
         <span className="font-mono text-3xl font-black tabular-nums tracking-tight text-[#5eead4]">{total}</span>
         <span className={cn(STAGE_CAPTION, "normal-case")}>huevos en total</span>
         {showSameResult ? (
