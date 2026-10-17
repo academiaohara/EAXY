@@ -1,9 +1,35 @@
 import type { ExprStep } from "@/lib/lesson/types";
 import type { AnimBuild } from "@/components/lesson/anim/types";
+import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { cn } from "@/lib/utils";
 
-function inRange(i: number, range?: [number, number]): boolean {
-  return Boolean(range) && i >= range![0] && i <= range![1];
+type Group = { from: number; to: number; kind: "active" | "fresh" | "plain" };
+
+/** Parte la expresión en tramos: la zona activa/nueva es UN solo bloque, no un recuadro por símbolo. */
+function groupTokens(step: ExprStep, dim: boolean): Group[] {
+  const marks: Group[] = [];
+  if (!dim && step.active) {
+    marks.push({ from: step.active[0], to: step.active[1], kind: "active" });
+  }
+  const overlapsActive =
+    step.active && step.fresh && step.fresh[0] >= step.active[0] && step.fresh[1] <= step.active[1];
+  if (!dim && step.fresh && !overlapsActive) {
+    marks.push({ from: step.fresh[0], to: step.fresh[1], kind: "fresh" });
+  }
+  marks.sort((x, y) => x.from - y.from);
+  const groups: Group[] = [];
+  let i = 0;
+  while (i < step.tokens.length) {
+    const mark = marks.find((m) => m.from === i);
+    if (mark) {
+      groups.push(mark);
+      i = mark.to + 1;
+    } else {
+      groups.push({ from: i, to: i, kind: "plain" });
+      i += 1;
+    }
+  }
+  return groups;
 }
 
 function ExprLine({ step, dim }: { step: ExprStep; dim: boolean }) {
@@ -14,22 +40,33 @@ function ExprLine({ step, dim }: { step: ExprStep; dim: boolean }) {
         dim ? "opacity-40" : "opacity-100",
       )}
     >
-      {step.tokens.map((token, i) => {
-        const active = !dim && inRange(i, step.active);
-        const fresh = !dim && inRange(i, step.fresh);
-        return (
-          <span
-            key={i}
-            className={cn(
-              "rounded-md px-1 transition-colors duration-500 motion-reduce:transition-none",
-              active && "bg-[#ffd866]/25 text-[#ffd866] ring-2 ring-[#ffd866]/60",
-              fresh && "bg-[#83c167]/25 text-[#83c167] ring-2 ring-[#83c167]/60",
-            )}
-          >
-            {token}
-          </span>
-        );
-      })}
+      {groupTokens(step, dim).map((group) => (
+        <span
+          key={group.from}
+          className={cn(
+            "inline-flex items-baseline gap-x-2.5 rounded-lg px-2 transition-colors duration-500 motion-reduce:transition-none",
+            group.kind === "active" && "bg-[#ffd866]/25 text-[#ffd866] ring-2 ring-[#ffd866]/60",
+            group.kind === "fresh" && "bg-[#83c167]/25 text-[#83c167] ring-2 ring-[#83c167]/60",
+            group.kind === "plain" && "px-1",
+          )}
+          data-group={group.kind}
+        >
+          {step.tokens.slice(group.from, group.to + 1).map((token, k) => {
+            // Resultado recién calculado dentro de la parte activa: solo cambia el color del texto.
+            const fresh =
+              group.kind === "active" &&
+              !dim &&
+              step.fresh !== undefined &&
+              group.from + k >= step.fresh[0] &&
+              group.from + k <= step.fresh[1];
+            return (
+              <span key={k} className={fresh ? "text-[#83c167]" : undefined}>
+                {token}
+              </span>
+            );
+          })}
+        </span>
+      ))}
     </div>
   );
 }
@@ -54,7 +91,7 @@ function Derivation({ steps, beat, title }: { steps: ExprStep[]; beat: number; t
                   isCurrent ? "opacity-100" : "opacity-0",
                 )}
               >
-                ↓ {step.note}
+                ↓ <MathRenderer text={step.note} />
               </p>
             ) : null}
           </div>

@@ -43,7 +43,7 @@ Formato declarativo para **teoría nueva**: título + bloques de texto con forma
 | `figure` | Ilustración con pie | `src`, `alt`, `caption?`, `maxWidth?` |
 | `anim` | Animación controlada | `scene`, `params?`, `captions?`, `beatMs?` |
 
-Las ilustraciones (`story`, `figure`) van sobre una **tarjeta de papel claro** para que el contorno oscuro del dibujo se lea sobre la pizarra. Si el PNG aún no existe, `story` se queda solo con el texto y `figure` se omite en producción (en desarrollo muestra un hueco con el nombre del archivo que falta).
+Las ilustraciones (`story`, `figure`) se pintan **tal cual**, sin tarjeta ni fondo: los PNG deben venir con fondo transparente y sin halos ni sombras semitransparentes. Si el PNG aún no existe, `story` se queda solo con el texto y `figure` se omite en producción (en desarrollo muestra un hueco con el nombre del archivo que falta).
 
 ## Animaciones (`anim`)
 

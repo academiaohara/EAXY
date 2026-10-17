@@ -81,3 +81,22 @@ describe("animaciones usadas en las lecciones", () => {
     },
   );
 });
+
+describe("expr-reescritura", () => {
+  it("marca la parte activa como un único bloque, no un recuadro por símbolo", () => {
+    const built = buildSlideAnim("expr-reescritura", {
+      expr: [
+        { tokens: ["6", "+", "2", "·", "4"], active: [2, 4], note: "a" },
+        { tokens: ["6", "+", "8"], active: [0, 2], fresh: [2, 2], note: "b" },
+      ],
+    });
+    const first = renderToStaticMarkup(<>{built.render(0)}</>);
+    expect(first.match(/data-group="active"/g)).toHaveLength(1);
+    expect(first).toMatch(/data-group="active"[^>]*>(<span>2<\/span><span>·<\/span><span>4<\/span>)/);
+    const second = renderToStaticMarkup(<>{built.render(1)}</>);
+    expect(second.match(/data-group="active"/g)).toHaveLength(1);
+    // El resultado recién calculado (8) queda dentro del mismo bloque activo.
+    expect(second.match(/data-group="fresh"/g)).toBeNull();
+    expect(second).toMatch(/data-group="active"[^>]*><span>6<\/span><span>\+<\/span><span class="text-\[#83c167\]">8<\/span>/);
+  });
+});
