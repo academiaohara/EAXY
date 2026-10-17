@@ -183,7 +183,9 @@ export function PredictChoiceCard({
   testId,
   onClick,
   children,
+  layout = "row",
 }: {
+  layout?: "row" | "tile";
   letter: string;
   state: PredictChoiceCardState;
   disabled?: boolean;
@@ -200,7 +202,10 @@ export function PredictChoiceCard({
       onClick={onClick}
       aria-pressed={state === "selected" || state === "correct" || state === "wrong"}
       className={cn(
-        "group relative flex min-h-[4.5rem] items-center gap-4 rounded-2xl border-2 px-5 py-4 text-left transition-all duration-200 motion-reduce:transition-none",
+        "group relative flex rounded-2xl border-2 transition-all duration-200 motion-reduce:transition-none",
+        layout === "row"
+          ? "min-h-[4.5rem] items-center gap-4 px-5 py-4 text-left"
+          : "min-h-[7.5rem] flex-col items-center justify-center gap-2 px-3 py-5 text-center",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--stage-accent,var(--cobalt))] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a2332]",
         CARD_STATE_CLASS[state],
       )}
@@ -209,13 +214,14 @@ export function PredictChoiceCard({
       <span
         className={cn(
           "flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold transition-colors",
+          layout === "tile" && "absolute left-2.5 top-2.5 size-7 text-xs",
           BADGE_STATE_CLASS[state],
         )}
         aria-hidden
       >
         {state === "correct" ? <CheckIcon className="size-5" /> : state === "wrong" ? <XIcon className="size-5" /> : letter}
       </span>
-      <span className="min-w-0 flex-1 text-[1.15rem] font-medium leading-snug">{children}</span>
+      <span className={cn("min-w-0 font-medium leading-snug", layout === "row" ? "flex-1 text-[1.15rem]" : "text-3xl font-semibold")}>{children}</span>
     </button>
   );
 }

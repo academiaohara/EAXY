@@ -14,6 +14,10 @@ test("potencias — base y exponente: sin LaTeX crudo y Continuar al final", asy
 test("potencias — cuadrado y cubo: sin 'cdot' ni '$' literales", async ({ page }) => {
   await page.goto(URL);
   await page.getByTestId("lesson-presenter-forward").click({ timeout: 30_000 });
+  // En la diapositiva KaTeX deja el TeX en <annotation> oculta; solo comprobamos que no hay «$» visibles.
+  await expect(page.getByTestId("lesson-slide")).toBeVisible();
+  await expect(page.getByText("$")).toHaveCount(0);
+  await page.getByTestId("lesson-presenter-forward").click();
   await expect(page.getByTestId("potencias-cuadrado-cubo")).toBeVisible();
   await expect(page.getByText("cdot")).toHaveCount(0);
   await expect(page.getByText("$")).toHaveCount(0);

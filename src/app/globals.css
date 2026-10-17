@@ -1084,3 +1084,23 @@
   background: var(--teal-bg, rgba(45, 212, 191, 0.2));
   color: var(--teal, #5eead4);
 }
+
+/* Botón de pista («?») sobre la pizarra. */
+.lesson-hint-button {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid color-mix(in srgb, var(--stage-accent, var(--cobalt)) 55%, transparent);
+  background: color-mix(in srgb, var(--stage-accent, var(--cobalt)) 12%, transparent);
+  color: var(--stage-accent, var(--cobalt));
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lesson-hint-button:hover {
+  background: color-mix(in srgb, var(--stage-accent, var(--cobalt)) 25%, transparent);
+  transform: translateY(-1px);
+}
