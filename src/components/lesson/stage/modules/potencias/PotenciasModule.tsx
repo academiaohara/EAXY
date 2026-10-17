@@ -107,7 +107,7 @@ const pts = (points: [number, number][]) => points.map((p) => p.join(",")).join(
 function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
   const { phase, reduced } = usePotenciasPhases({ stepCount: 5, onReadyChange });
   const folded = phase >= 3;
-  const rowBase = 118; // fila final pegada arriba, junto al cuadro de definición
+  const rowBase = 148; // fila bajo el cuadro de definición (margen para el exponente)
   const centerY = rowBase - 19; // el centro del 6⁴ reducido deja su base alineada con la fila
   const copyX = (i: number) => 250 + i * 76;
   const lastX = copyX(n - 1);
@@ -126,8 +126,8 @@ function BaseExponente({ base: a, exponent: n, onReadyChange }: SceneProps) {
   return (
     <SceneShell caption={captions[phase]!} phase={phase} align="top">
       <svg
-        viewBox="0 60 800 270"
-        className="min-h-0 w-full max-w-4xl flex-1"
+        viewBox="0 45 800 285"
+        className="mt-2 min-h-0 w-full max-w-4xl flex-1"
         role="img"
         aria-label={`Potencia ${a} elevado a ${n}: base ${a}, exponente ${n}`}
       >
