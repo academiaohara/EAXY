@@ -45,11 +45,8 @@ export const factoresPrimosLesson: InteractiveLesson = {
       title: "Todo compuesto se construye con primos",
       blocks: [
         {
-          kind: "story",
+          kind: "text",
           text: "Los primos son las piezas que no se pueden partir. Cualquier número compuesto se **construye multiplicando primos**, y de una única manera.",
-          src: "/lesson/divisibilidad/bloques-construccion.png",
-          alt: "Torre hecha con bloques de construcción de varios tamaños",
-          maxWidth: 170,
         },
         {
           kind: "rule",

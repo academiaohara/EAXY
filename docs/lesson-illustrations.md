@@ -55,17 +55,9 @@ Ilustración didáctica para libro de Matemáticas de 1º ESO, estilo editorial 
 | `ejercicios/colmenas-apicultor.png` | Apicultor y colmenas | Apicultor con traje blanco y careta de rejilla levantada, sonriendo, junto a tres colmenas de madera apiladas; un tarro de miel en primer plano. |
 | `ejercicios/balanza-animales.png` | Elefante pequeño en la balanza | Balanza de dos platillos en equilibrio: en uno, un elefante grande y un elefante pequeño; en el otro, dos hipopótamos. Sin cifras. |
 
-## Tema 3 · Divisibilidad — ilustraciones
+## Tema 3 · Divisibilidad
 
-Las cinco están enlazadas en `story` (≈ 150 px en pantalla). Carpeta de destino: `public/lesson/divisibilidad/`. Lienzo 1024×1024, mismo bloque de estilo de arriba. **Sin números ni texto dentro de la imagen** (las cantidades las pone la diapositiva).
-
-| Archivo (`public/lesson/divisibilidad/…`) | Dónde sale | Prompt (pegar tras el bloque de estilo) |
-|---|---|---|
-| `pizzeria-cajas.png` | L1 · «Divisible: la división exacta» | Pizzero joven con gorro blanco y delantal, sonriendo mientras cierra la tapa de una caja de cartón cuadrada de pizza; a su lado, una pila de tres cajas cerradas y una pizza recién cortada en porciones iguales sobre una tabla. Vista tres cuartos. |
-| `hucha-amigos.png` | L2 · «Decidir sin dividir» | Hucha de cerdito rosa con un puñado de monedas y dos billetes asomando por la ranura; delante, cinco amigos adolescentes variados (chicas y chicos) mirándola con curiosidad, de medio cuerpo. Sin cifras ni símbolos de moneda. |
-| `bloques-construccion.png` | L3 · «Todo compuesto se construye con primos» | Torre de bloques de construcción de plástico de varios tamaños y colores lisos (rojo, azul, amarillo, verde), con algunas piezas sueltas al pie; los bloques son lisos, sin letras ni números. |
-| `autobuses-parada.png` | L4 · «Cuándo vuelven a coincidir» | Dos autobuses urbanos, uno azul y otro verde, parados uno tras otro junto a una marquesina con banco; un pasajero joven con mochila espera. Los letreros frontales y laterales en blanco, sin números de línea. |
-| `cintas-modista.png` | L5 · «Trozos iguales y lo más largos posible» | Modista sonriente con metro colgado del cuello y tijeras en la mano, sentada ante una mesa con dos rollos de cinta de distinto grosor: uno de cinta azul y otro de cinta naranja, ambos desenrollados en parte sobre la mesa. Sin marcas de medida legibles. |
+Sin ilustraciones: todo lo que ayuda a entender (grupos, rectángulos, saltos, criba, cintas…) lo cubren las animaciones. Regla del tema: solo se añade una imagen si explica algo; nunca decorativa.
 
 ## Tema 4 · Números enteros — ilustraciones
 
