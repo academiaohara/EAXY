@@ -29,8 +29,8 @@ export type NumberLinePickSnapshot = {
 
 export type DivisibilityGridSnapshot = {
   kind: "divisibility_grid";
-  /** Respuesta de cada casilla, con clave `${número}-${divisor}`. */
-  answers: Record<string, boolean>;
+  /** Casillas marcadas, con clave `${número}-${divisor}`. */
+  marked: string[];
   isCorrect: boolean;
 };
 

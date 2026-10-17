@@ -1,7 +1,8 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { DivisibilityGrid } from "@/components/lesson/steps/DivisibilityGrid";
-import { LessonStepControlProvider } from "@/components/lesson/LessonStepControlContext";
+import { LessonPrimaryAction } from "@/components/lesson/LessonPrimaryAction";
+import { LessonStepControlProvider, useLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { CRITERIA_DIVISORS, explainDivisibility, isDivisibleBy } from "@/lib/lesson/divisibility-criteria";
 import type { DivisibilityGridStep } from "@/lib/lesson/types";
 
@@ -29,6 +30,11 @@ describe("explainDivisibility", () => {
   });
 });
 
+function CheckButton() {
+  const { control } = useLessonStepControl();
+  return control ? <LessonPrimaryAction control={control} /> : null;
+}
+
 describe("DivisibilityGrid", () => {
   const step: DivisibilityGridStep = {
     id: "g",
@@ -43,19 +49,31 @@ describe("DivisibilityGrid", () => {
     render(
       <LessonStepControlProvider>
         <DivisibilityGrid step={step} onCheck={onCheck} />
+        <CheckButton />
       </LessonStepControlProvider>,
     );
     return onCheck;
   }
 
-  it("marca ✓ o ✗ y explica la casilla respondida", () => {
+  it("pone ✓ si la casilla es correcta, ✗ si no, y explica", () => {
     renderGrid();
-    fireEvent.click(screen.getByRole("button", { name: "10 entre 2: Sí" }));
-    expect(screen.getByRole("button", { name: /10 entre 2: bien/ })).toBeInTheDocument();
-    expect(screen.getByTestId("grid-explanation")).toHaveTextContent("¡Bien!");
+    fireEvent.click(screen.getByRole("button", { name: "10 entre 2" }));
+    expect(screen.getByRole("button", { name: /10 entre 2: ✓/ })).toBeInTheDocument();
+    expect(screen.getByTestId("grid-explanation")).toHaveTextContent("lleva ✓");
 
-    fireEvent.click(screen.getByRole("button", { name: "7 entre 2: Sí" }));
-    expect(screen.getByRole("button", { name: /7 entre 2: mal/ })).toBeInTheDocument();
-    expect(screen.getByTestId("grid-explanation")).toHaveTextContent("no es correcta");
+    fireEvent.click(screen.getByRole("button", { name: "7 entre 2" }));
+    expect(screen.getByRole("button", { name: /7 entre 2: ✗/ })).toBeInTheDocument();
+    expect(screen.getByTestId("grid-explanation")).toHaveTextContent("Aquí no va");
+  });
+
+  it("se completa al marcar todos los ✓ y los fallos hacen la respuesta incorrecta", () => {
+    const onCheck = vi.fn();
+    renderGrid(onCheck);
+    fireEvent.click(screen.getByRole("button", { name: "7 entre 5" }));
+    fireEvent.click(screen.getByRole("button", { name: "10 entre 2" }));
+    expect(screen.getByTestId("lesson-check-button")).toBeDisabled();
+    fireEvent.click(screen.getByRole("button", { name: "10 entre 5" }));
+    fireEvent.click(screen.getByTestId("lesson-check-button"));
+    expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });

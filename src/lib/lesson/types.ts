@@ -420,8 +420,9 @@ export type NumberLinePickStep = LessonStepBase &
   };
 
 /**
- * Cuadrícula de divisibilidad: filas = números, columnas = divisores. El alumno marca
- * «sí» o «no» en cada casilla y ve al momento ✓ / ✗ con la explicación del criterio.
+ * Cuadrícula de divisibilidad: filas = números, columnas = divisores. El alumno toca las
+ * casillas que deberían llevar ✓: si acierta aparece ✓ y si falla ✗, con la explicación
+ * del criterio. Completa cuando todos los ✓ correctos están puestos.
  */
 export type DivisibilityGridStep = LessonStepBase &
   PracticeFields & {
@@ -563,6 +564,7 @@ export type SlideAnimId =
   | "multiplos-saltos"
   | "criterio-suma-cifras"
   | "criterio-alternada"
+  | "criterio-ejemplos"
   | "criba-eratostenes"
   | "descomposicion-primos"
   | "tabla-exponentes"
@@ -595,6 +597,8 @@ export type SlideAnimParams = {
   a?: number;
   b?: number;
   c?: number;
+  /** `criterio-ejemplos`: divisor cuyo criterio se aplica a los tres números de `nums`. */
+  d?: number;
   /**
    * `expr-reescritura`: derivación paso a paso. Cada paso es la expresión completa;
    * `active` marca lo que se calcula a continuación y `fresh` lo que acaba de salir.

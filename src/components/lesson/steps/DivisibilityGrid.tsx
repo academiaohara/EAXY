@@ -30,22 +30,24 @@ export function DivisibilityGrid({
   saved = null,
 }: DivisibilityGridProps) {
   const restored = saved?.kind === "divisibility_grid" ? saved : null;
-  const [answers, setAnswers] = useState<Record<string, boolean>>(restored?.answers ?? {});
+  const [marked, setMarked] = useState<string[]>(restored?.marked ?? []);
   const [checked, setChecked] = useState(Boolean(restored));
   const [focus, setFocus] = useState<Cell | null>(null);
 
-  const total = step.numbers.length * step.divisors.length;
-  const answered = Object.keys(answers).length;
-  const complete = answered === total;
+  const ticksNeeded = step.numbers.flatMap((n) =>
+    step.divisors.filter((d) => isDivisibleBy(n, d)).map((d) => cellKey(n, d)),
+  );
+  const complete = ticksNeeded.every((key) => marked.includes(key));
+  const mistakes = marked.filter((key) => !ticksNeeded.includes(key)).length;
 
-  const answer = useCallback(
-    (cell: Cell, value: boolean) => {
+  const mark = useCallback(
+    (cell: Cell) => {
+      setFocus(cell);
       if (disabled || checked) {
         return;
       }
       const key = cellKey(cell.n, cell.d);
-      setAnswers((prev) => (key in prev ? prev : { ...prev, [key]: value }));
-      setFocus(cell);
+      setMarked((prev) => (prev.includes(key) ? prev : [...prev, key]));
     },
     [checked, disabled],
   );
@@ -54,12 +56,10 @@ export function DivisibilityGrid({
     if (checked || !complete) {
       return;
     }
-    const correct = step.numbers.every((n) =>
-      step.divisors.every((d) => answers[cellKey(n, d)] === isDivisibleBy(n, d)),
-    );
+    const correct = mistakes === 0;
     setChecked(true);
-    onCheck({ correct, snapshot: { kind: "divisibility_grid", answers, isCorrect: correct } });
-  }, [answers, checked, complete, onCheck, step]);
+    onCheck({ correct, snapshot: { kind: "divisibility_grid", marked, isCorrect: correct } });
+  }, [checked, complete, marked, mistakes, onCheck]);
 
   const control = useMemo(() => {
     if (checked) {
@@ -76,16 +76,16 @@ export function DivisibilityGrid({
   useRegisterLessonStepControl(control);
 
   const focusKey = focus ? cellKey(focus.n, focus.d) : null;
-  const focusAnswered = focus !== null && focusKey !== null && focusKey in answers;
-  const focusRight = focus !== null && focusKey !== null && answers[focusKey] === isDivisibleBy(focus.n, focus.d);
+  const focusAnswered = focus !== null && focusKey !== null && marked.includes(focusKey);
+  const focusRight = focus !== null && isDivisibleBy(focus.n, focus.d);
 
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-divisibility-grid">
       <div className="overflow-x-auto">
-        <table className="mx-auto border-separate border-spacing-2 text-center">
+        <table className="mx-auto border-separate border-spacing-1.5 text-center">
           <thead>
             <tr>
-              <th className="px-2 text-xs font-medium text-[color:var(--stage-ink-muted,#94a3b8)]">¿Divisible entre…?</th>
+              <th aria-hidden />
               {step.divisors.map((d) => (
                 <th
                   key={d}
@@ -108,53 +108,27 @@ export function DivisibilityGrid({
                 </th>
                 {step.divisors.map((d) => {
                   const key = cellKey(n, d);
-                  const value = answers[key];
-                  const isAnswered = value !== undefined;
-                  const right = isAnswered && value === isDivisibleBy(n, d);
+                  const isMarked = marked.includes(key);
+                  const right = isMarked && isDivisibleBy(n, d);
+                  const wrong = isMarked && !right;
                   const isFocus = focusKey === key;
                   return (
-                    <td
-                      key={d}
-                      className={cn(
-                        "min-w-28 rounded-xl border-2 p-2 transition-colors",
-                        !isAnswered && "border-slate-600/60 bg-black/20",
-                        right && "border-emerald-400 bg-emerald-500/15",
-                        isAnswered && !right && "border-rose-400 bg-rose-500/15",
-                        isFocus && "ring-2 ring-white/40",
-                      )}
-                      data-testid="grid-cell"
-                      data-cell={key}
-                    >
-                      {isAnswered ? (
-                        <button
-                          type="button"
-                          onClick={() => setFocus({ n, d })}
-                          aria-label={`${n} entre ${d}: ${right ? "bien" : "mal"}. Ver explicación`}
-                          className="flex min-h-10 w-full items-center justify-center gap-1.5 text-sm font-semibold"
-                        >
-                          {right ? (
-                            <CheckIcon className="size-6 text-emerald-400" strokeWidth={3} aria-hidden />
-                          ) : (
-                            <XIcon className="size-6 text-rose-400" strokeWidth={3} aria-hidden />
-                          )}
-                          <span className="text-[color:var(--stage-ink,#e8edf5)]">{value ? "Sí" : "No"}</span>
-                        </button>
-                      ) : (
-                        <div className="flex gap-1.5">
-                          {([true, false] as const).map((option) => (
-                            <button
-                              key={String(option)}
-                              type="button"
-                              disabled={disabled}
-                              onClick={() => answer({ n, d }, option)}
-                              aria-label={`${n} entre ${d}: ${option ? "Sí" : "No"}`}
-                              className="min-h-10 flex-1 rounded-lg border border-slate-500/60 bg-white/5 px-2 text-sm font-semibold text-[color:var(--stage-ink,#e8edf5)] transition-colors hover:bg-white/15"
-                            >
-                              {option ? "Sí" : "No"}
-                            </button>
-                          ))}
-                        </div>
-                      )}
+                    <td key={d} className="p-0" data-testid="grid-cell" data-cell={key}>
+                      <button
+                        type="button"
+                        onClick={() => mark({ n, d })}
+                        aria-label={`${n} entre ${d}${isMarked ? (right ? ": ✓ divisible" : ": ✗ no divisible") : ""}`}
+                        className={cn(
+                          "flex h-14 w-full min-w-16 items-center justify-center rounded-lg border-2 transition-colors",
+                          !isMarked && "border-slate-600/60 bg-black/20 hover:bg-white/10",
+                          right && "border-emerald-400 bg-emerald-500/15",
+                          wrong && "border-rose-400 bg-rose-500/15",
+                          isFocus && "ring-2 ring-white/40",
+                        )}
+                      >
+                        {right ? <CheckIcon className="size-8 text-emerald-400" strokeWidth={3} aria-hidden /> : null}
+                        {wrong ? <XIcon className="size-8 text-rose-400" strokeWidth={3} aria-hidden /> : null}
+                      </button>
                     </td>
                   );
                 })}
@@ -176,14 +150,14 @@ export function DivisibilityGrid({
       >
         {focus && focusAnswered ? (
           <>
-            <p className="mb-1 font-semibold">{focusRight ? "¡Bien!" : "Esta no es correcta."}</p>
+            <p className="mb-1 font-semibold">{focusRight ? "¡Bien, lleva ✓!" : "Aquí no va ✓."}</p>
             <MathRenderer text={explainDivisibility(focus.n, focus.d)} />
           </>
         ) : (
           <p>
-            {answered === 0
-              ? "Elige «Sí» o «No» en una casilla: verás ✓ o ✗ y por qué."
-              : "Toca una casilla ya respondida para volver a ver su explicación."}
+            {marked.length === 0
+              ? "Toca las casillas en las que el número de la fila es divisible entre el de la columna. Si aciertas verás ✓ y, si no, ✗, con su porqué."
+              : "Toca una casilla marcada para volver a ver su explicación."}
           </p>
         )}
       </div>
