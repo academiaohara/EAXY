@@ -29,7 +29,6 @@ import type {
   TiendaCiclistaItem,
 } from "@/lib/lesson/types";
 import { seededShuffle } from "@/lib/lesson/seeded-shuffle";
-import { romanToInt } from "@/lib/lesson/stage/numeracion";
 import {
   PredictCheckButton,
   predictAnaLeoChoiceClassName,
@@ -314,7 +313,6 @@ export function NarrateStepView({
       mulDiv={step.mulDiv}
       potencias={step.potencias}
       raices={step.raices}
-      numeracion={step.numeracion}
       mulDivSubStep={isMultiplicacionMano ? sub : undefined}
       autoPlay={
         step.module === "mul-div-naturales" &&
@@ -366,8 +364,7 @@ export function PredictStepView({
   const isDistributivaConEscena =
     step.module === "mul-div-naturales" &&
     (step.mulDiv?.scene === "distributiva-bloques" || step.scene === "distributiva-bloques");
-  const isNumeracionPredict = step.module === "sistemas-numeracion" && Boolean(step.numeracion);
-  const predictStageAlwaysVisible = isMultiplicarSextaEntrada || isDistributivaConEscena || isNumeracionPredict;
+  const predictStageAlwaysVisible = isMultiplicarSextaEntrada || isDistributivaConEscena;
 
   const isAnaLeoExploracion =
     step.module === "jerarquia-operaciones" && step.scene === "exploracion-ana-leo";
@@ -464,83 +461,6 @@ export function PredictStepView({
         }}
       />
     ) : null;
-
-  if (isNumeracionPredict && step.numeracion) {
-    const numeracionStage = (
-      <StageModuleRenderer
-        module="sistemas-numeracion"
-        stepId={step.id}
-        scene={step.scene ?? step.numeracion.scene}
-        numeracion={step.numeracion}
-      />
-    );
-    return (
-      <div data-testid="lesson-predict-step">
-        <StageViewport
-          theme={theme}
-          header={step.definitionBox ? <DefinitionBox text={step.definitionBox} /> : null}
-        >
-          <div className="mx-auto w-full max-w-full shrink-0" data-testid="lesson-stage-surface">
-            {numeracionStage}
-          </div>
-          <h3 className="lesson-presentation-body mb-4 mt-4 text-center font-normal text-[color:var(--stage-ink,#e8edf5)]">
-            <LessonRichText text={step.question} emphasis="mark-alternate" />
-          </h3>
-          {step.mode === "choice" ? (
-            <div className="mx-auto flex max-w-2xl flex-col gap-2.5">
-              {choiceOptions.map((choice) => (
-                <button
-                  key={choice.id}
-                  type="button"
-                  data-testid={`predict-choice-${choice.id}`}
-                  disabled={disabled || checked}
-                  onClick={() => setChoiceId(choice.id)}
-                  className={predictChoiceClassName({ selected: choiceId === choice.id, checked })}
-                  aria-pressed={choiceId === choice.id}
-                >
-                  <LessonRichText text={choice.label} className="text-base font-medium" />
-                </button>
-              ))}
-            </div>
-          ) : (
-            <input
-              type="text"
-              inputMode="numeric"
-              value={numericValue}
-              onChange={(event) => setNumericValue(event.target.value)}
-              disabled={disabled || checked}
-              className="lesson-stage-choice mx-auto block w-full max-w-md rounded-xl border-2 px-4 py-3 text-center text-lg font-semibold"
-              aria-label="Tu respuesta"
-            />
-          )}
-          {!checked && control ? (
-            <PredictCheckButton disabled={Boolean(control.disabled)} onClick={control.onClick} />
-          ) : null}
-          {checked && checkFeedback ? (
-            <div className="mt-5 space-y-2" role="status">
-              <p className={predictFeedbackStatusClassName(isCorrect)}>
-                {isCorrect ? "¡Correcto!" : "Revisa tu respuesta."}
-              </p>
-              <p className="lesson-stage-hint mx-auto text-center">
-                <MathRenderer text={checkFeedback} />
-              </p>
-            </div>
-          ) : null}
-          {reveal && step.module === "sistemas-numeracion" && step.numeracion?.roman ? (
-            <div className="mt-4">
-              <StageModuleRenderer
-                module="sistemas-numeracion"
-                stepId={`${step.id}-reveal`}
-                scene={step.scene ?? "romano-suma-resta"}
-                numeracion={{ ...step.numeracion, scene: "romano-suma-resta", roman: step.numeracion.roman }}
-              />
-            </div>
-          ) : null}
-          <h3 className="sr-only">{step.title}</h3>
-        </StageViewport>
-      </div>
-    );
-  }
 
   if (isDistributivaConEscena && step.mulDiv) {
     const distributivaStage = (
@@ -890,7 +810,6 @@ type ExplorePersist = {
   boxCounts: number[];
   reduceTokens: string[];
   reduceHistory: string[][];
-  romanString: string;
 };
 
 export function ExploreStepView({
@@ -920,7 +839,6 @@ export function ExploreStepView({
     boxCounts: defaultBoxCounts,
     reduceTokens: defaultReduceTokens,
     reduceHistory: [],
-    romanString: "",
   }));
 
   const [checked, setChecked] = useState(Boolean(saved));
@@ -948,9 +866,6 @@ export function ExploreStepView({
       const goal = step.goal;
       const sum = persist.boxCounts.reduce((s, n) => s + n, 0);
       return sum === goal.total;
-    }
-    if (step.goal.kind === "roman-target") {
-      return romanToInt(persist.romanString) === step.goal.target;
     }
     return false;
   }, [persist, step]);
@@ -1024,9 +939,6 @@ export function ExploreStepView({
     }
     if (step.goal.kind === "boxes-equal") {
       correct = boxesDistributionCorrect;
-    }
-    if (step.goal.kind === "roman-target") {
-      correct = romanToInt(persist.romanString) === step.goal.target;
     }
     setIsCorrect(correct);
     setChecked(true);
@@ -1130,9 +1042,6 @@ export function ExploreStepView({
       selectedIds={persist.selectedIds}
       onSelectedIdsChange={(ids) => setPersist((prev) => ({ ...prev, selectedIds: ids }))}
       mulDiv={step.mulDiv}
-      numeracion={step.numeracion}
-      romanString={persist.romanString}
-      onRomanStringChange={(romanString) => setPersist((prev) => ({ ...prev, romanString }))}
       boxCounts={persist.boxCounts}
       onBoxCountsChange={(boxCounts) => setPersist((prev) => ({ ...prev, boxCounts }))}
     />
@@ -1204,12 +1113,6 @@ export function ExploreStepView({
                     <MathRenderer text={step.explanation} />
                   ) : (
                     "¡Correcto! Ese es el orden de prioridad."
-                  )
-                ) : step.goal.kind === "roman-target" ? (
-                  step.explanation ? (
-                    <MathRenderer text={step.explanation} />
-                  ) : (
-                    `¡Correcto! Tu numeral vale ${step.goal.target}.`
                   )
                 ) : (
                   `¡Correcto! El resultado es ${step.goal.kind === "expression-result" ? step.goal.target : ""}.`
@@ -1289,7 +1192,6 @@ export function RevealStepView({
       scene={step.scene}
       bloques={step.blocks ? { blocks: step.blocks } : undefined}
       mulDiv={step.mulDiv}
-      numeracion={step.numeracion}
       onReadyChange={setReady}
     />
   );
