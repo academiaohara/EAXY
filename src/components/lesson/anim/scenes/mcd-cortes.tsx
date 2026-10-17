@@ -76,13 +76,13 @@ export function buildMcdCortes(params: { a?: number; b?: number }): AnimBuild {
         <Fade show={beat === 0}>
           <rect x={X0} y={YA} width={a * unit} height={BAR_H} rx={6} fill={MANIM.blue} fillOpacity={0.85} />
           <rect x={X0} y={YB} width={b * unit} height={BAR_H} rx={6} fill={MANIM.orange} fillOpacity={0.85} />
-          <Txt x={X0} y={YA - 14} size={22} color={MANIM.muted} anchor="start">{`cinta A · ${a} m`}</Txt>
-          <Txt x={X0} y={YB - 14} size={22} color={MANIM.muted} anchor="start">{`cinta B · ${b} m`}</Txt>
+          <Txt x={X0} y={YA - 14} size={22} color={MANIM.muted} anchor="start">{`cinta A: ${a} m`}</Txt>
+          <Txt x={X0} y={YB - 14} size={22} color={MANIM.muted} anchor="start">{`cinta B: ${b} m`}</Txt>
         </Fade>
         {trials.map((t, k) => (
           <Fade key={k} show={beat === k + 1}>
-            {bar(YA, a, t.size, [MANIM.blue, "#3a9ab5"], `cinta A · ${a} m`)}
-            {bar(YB, b, t.size, [MANIM.orange, "#d06a1f"], `cinta B · ${b} m`)}
+            {bar(YA, a, t.size, [MANIM.blue, "#3a9ab5"], `cinta A: ${a} m`)}
+            {bar(YB, b, t.size, [MANIM.orange, "#d06a1f"], `cinta B: ${b} m`)}
             <Txt x={400} y={360} size={30} color={t.fits ? (t.size === g ? MANIM.yellow : MANIM.green) : MANIM.red}>
               {`trozos de ${t.size} m ${t.fits ? "✓" : "✗"}`}
             </Txt>

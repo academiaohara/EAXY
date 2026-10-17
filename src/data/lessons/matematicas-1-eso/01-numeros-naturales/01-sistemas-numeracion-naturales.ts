@@ -72,7 +72,7 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
         {
           kind: "rule",
           title: "Solo restan I, X y C",
-          text: "I delante de V o X · X delante de L o C · C delante de D o M. Ningún símbolo se repite más de **tres** veces seguidas.",
+          text: "I delante de V o X; X delante de L o C; C delante de D o M. Ningún símbolo se repite más de **tres** veces seguidas.",
         },
         {
           kind: "example",

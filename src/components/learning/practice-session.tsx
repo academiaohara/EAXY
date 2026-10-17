@@ -86,7 +86,7 @@ export function PracticeSession({
 
       <header className="space-y-3">
         <p className="text-sm font-medium text-ink-muted">
-          {moduleTitle} · {lessonTitle}
+          {moduleTitle} — {lessonTitle}
         </p>
         <div className="flex flex-wrap items-center gap-3">
           <h1 className="font-display text-3xl font-bold tracking-tight text-ink">{conceptTitle}</h1>

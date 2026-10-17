@@ -70,7 +70,7 @@ export function buildRedondeoRecta(params: { n?: number; power?: number }): Anim
         <Fade show={beat >= 1} dy={-8}>
           <line x1={xmid} y1={Y - 90} x2={xmid} y2={Y + 16} stroke={MANIM.yellow} strokeWidth={3} strokeDasharray="8 6" />
           <Txt x={xmid} y={Y - 104} size={22} color={MANIM.yellow}>
-            {`punto medio · ${formatGrouped(mid)}`}
+            {`punto medio: ${formatGrouped(mid)}`}
           </Txt>
         </Fade>
         <Fade show={beat === 1} dy={4}>

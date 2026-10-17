@@ -420,7 +420,7 @@ export function TiendaCiclistaModule({
           </p>
           {mode === "explorar-compra" ? (
             <p className="text-xs text-ink-muted">
-              Gasto: {selectedTotal} € · {wallet} − {selectedTotal} = {remainder} €
+              Gasto: {selectedTotal} € — {wallet} − {selectedTotal} = {remainder} €
             </p>
           ) : null}
         </div>

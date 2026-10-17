@@ -99,7 +99,7 @@ export function CourseTopicCarousel({
           data-testid="topic-carousel-course-link"
         >
           <LayoutListIcon className="size-3.5" aria-hidden />
-          {courseTitle} · Ver temario
+          {courseTitle} — Ver temario
         </Link>
       </div>
 

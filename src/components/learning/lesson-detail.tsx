@@ -42,7 +42,7 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
           <Breadcrumbs items={trail} />
           <div className="space-y-1">
             <p className="text-sm text-muted-foreground">
-              {lesson.courseTitle} · {lesson.moduleTitle}
+              {lesson.courseTitle} — {lesson.moduleTitle}
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
           </div>
@@ -78,7 +78,7 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
         <Breadcrumbs items={trail} />
         <div className="space-y-1">
           <p className="text-sm text-muted-foreground">
-            {lesson.courseTitle} · {lesson.moduleTitle}
+            {lesson.courseTitle} — {lesson.moduleTitle}
           </p>
           <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
         </div>
@@ -97,7 +97,7 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
                 <Card key={concept.id} className="p-3">
                   <p className="font-medium">{concept.title}</p>
                   <p className="text-sm text-muted-foreground">
-                    {MASTERY_STATE_LABELS[state]} · {formatMasteryPercent(concept.mastery)}
+                    {MASTERY_STATE_LABELS[state]} — {formatMasteryPercent(concept.mastery)}
                   </p>
                 </Card>
               );

@@ -90,10 +90,10 @@ export function buildDivisibilidadGrupos(params: { a?: number; b?: number; extra
           <Txt x={400} y={64} size={30} color={MANIM.yellow}>{`${a} objetos`}</Txt>
         </Fade>
         <Fade show={beat === 1} dy={8}>
-          <Txt x={400} y={64} size={30} color={MANIM.green}>{`${a} : ${b} = ${groups} · resto 0`}</Txt>
+          <Txt x={400} y={64} size={30} color={MANIM.green}>{`${a} : ${b} = ${groups} con resto 0`}</Txt>
         </Fade>
         <Fade show={beat === 2} dy={8}>
-          <Txt x={400} y={64} size={30} color={MANIM.red}>{`${a + extra} : ${b} = ${groups} · resto ${extra}`}</Txt>
+          <Txt x={400} y={64} size={30} color={MANIM.red}>{`${a + extra} : ${b} = ${groups} con resto ${extra}`}</Txt>
         </Fade>
         <Fade show={beat === 3} dy={8}>
           <Txt x={400} y={64} size={30} color={MANIM.yellow}>{`${a} = ${b} · ${groups}`}</Txt>

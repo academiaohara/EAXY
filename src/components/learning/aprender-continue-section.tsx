@@ -101,7 +101,7 @@ function SecondaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
       </span>
       <div className="min-w-0 flex-1 space-y-0.5">
         <p className="text-xs font-semibold text-cobalt">
-          {entry.actionLabel} · {courseShortTitle(entry.courseTitle)}
+          {entry.actionLabel} — {courseShortTitle(entry.courseTitle)}
         </p>
         <p className="truncate text-sm font-semibold text-ink">{entry.lessonTitle}</p>
         <p className="truncate text-xs text-ink-muted">

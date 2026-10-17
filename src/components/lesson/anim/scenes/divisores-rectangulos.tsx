@@ -89,7 +89,7 @@ export function buildDivisoresRectangulos(params: { n?: number }): AnimBuild {
           ))}
           <Fade show={beat === pairs.length} dy={10}>
             <Txt x={400} y={385} size={28} color={MANIM.green}>
-              {all.join(" · ")}
+              {all.join(", ")}
             </Txt>
           </Fade>
           <Fade show={beat < pairs.length} dy={10}>

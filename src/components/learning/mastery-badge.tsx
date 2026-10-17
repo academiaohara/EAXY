@@ -33,7 +33,7 @@ export function MasteryBadge({
   return (
     <Badge className={cn(STATE_STYLES[state], className)} data-testid="mastery-badge">
       {MASTERY_STATE_LABELS[state]}
-      {showPercent && state !== "not_started" ? ` · ${formatMasteryPercent(mastery)}` : null}
+      {showPercent && state !== "not_started" ? ` — ${formatMasteryPercent(mastery)}` : null}
     </Badge>
   );
 }

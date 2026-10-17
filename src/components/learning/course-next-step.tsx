@@ -12,7 +12,7 @@ type CourseNextStepProps = {
 function lessonMetaLabel(next: NextLessonRef): string {
   const { lesson } = next;
   if (lesson.kind === "interactive") {
-    return lesson.stepCount ? `Lección guiada · ${lesson.stepCount} pasos` : "Lección guiada";
+    return lesson.stepCount ? `Lección guiada, ${lesson.stepCount} pasos` : "Lección guiada";
   }
   return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
 }
@@ -37,7 +37,7 @@ export function CourseNextStep({ next }: CourseNextStepProps) {
           {next.lesson.title.replace(/^\d+\.\s*/, "")}
         </h2>
         <p className="mt-1 text-xs text-muted-foreground">
-          Tema {next.moduleNumber} · {next.module.title}
+          Tema {next.moduleNumber}: {next.module.title}
         </p>
         <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-cobalt-tint/60 px-2.5 py-1 text-xs font-medium text-cobalt">
           <SparklesIcon className="size-3.5" aria-hidden />
