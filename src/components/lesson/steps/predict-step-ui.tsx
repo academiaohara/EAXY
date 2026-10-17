@@ -1,5 +1,7 @@
 "use client";
 
+import { CheckIcon, XIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /** Ana / Leo: al fallar solo la respuesta elegida lleva énfasis; la correcta se insinúa sin el brillo de selección. */
@@ -108,6 +110,148 @@ export function PredictCheckButton({
       >
         Comprobar
       </button>
+    </div>
+  );
+}
+
+const ACCENT = "var(--stage-accent, var(--cobalt))";
+const INK = "var(--stage-ink, var(--ink))";
+
+/** Cabecera de pregunta: etiqueta + enunciado grande, sin caja. */
+export function PredictQuestionHeader({ children }: { children: ReactNode }) {
+  return (
+    <div className="mx-auto mb-6 max-w-3xl text-center">
+      <span
+        className="mb-3 inline-flex items-center rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.16em]"
+        style={{ color: ACCENT, borderColor: `color-mix(in srgb, ${ACCENT} 45%, transparent)` }}
+      >
+        Pregunta
+      </span>
+      <h3
+        className="text-[1.35rem] font-medium leading-[1.55]"
+        style={{ color: INK }}
+        data-testid="lesson-predict-question"
+      >
+        {children}
+      </h3>
+    </div>
+  );
+}
+
+export type PredictChoiceCardState = "idle" | "selected" | "correct" | "wrong" | "dimmed";
+
+export function predictChoiceCardState(options: {
+  selected: boolean;
+  checked: boolean;
+  isCorrectOption: boolean;
+  answerCorrect: boolean;
+}): PredictChoiceCardState {
+  if (!options.checked) {
+    return options.selected ? "selected" : "idle";
+  }
+  if (options.isCorrectOption && (options.selected || !options.answerCorrect)) {
+    return "correct";
+  }
+  if (options.selected) {
+    return "wrong";
+  }
+  return "dimmed";
+}
+
+const CARD_STATE_CLASS: Record<PredictChoiceCardState, string> = {
+  idle: "border-white/15 bg-white/[0.04] hover:-translate-y-0.5 hover:border-[color:var(--stage-accent,var(--cobalt))] hover:bg-white/[0.08] hover:shadow-[0_8px_24px_rgb(0_0_0/0.25)]",
+  selected:
+    "-translate-y-0.5 border-[color:var(--stage-accent,var(--cobalt))] bg-[color:var(--stage-accent,var(--cobalt))]/15 shadow-[0_0_0_3px_color-mix(in_srgb,var(--stage-accent,var(--cobalt))_30%,transparent)]",
+  correct: "border-[#83c167] bg-[#83c167]/15",
+  wrong: "border-[#fc6255] bg-[#fc6255]/12",
+  dimmed: "border-white/10 bg-white/[0.02] opacity-45",
+};
+
+const BADGE_STATE_CLASS: Record<PredictChoiceCardState, string> = {
+  idle: "bg-white/10 text-[color:var(--stage-muted,var(--ink-muted))] group-hover:bg-[color:var(--stage-accent,var(--cobalt))] group-hover:text-[#1a2332]",
+  selected: "bg-[color:var(--stage-accent,var(--cobalt))] text-[#1a2332]",
+  correct: "bg-[#83c167] text-[#1a2332]",
+  wrong: "bg-[#fc6255] text-[#1a2332]",
+  dimmed: "bg-white/10 text-[color:var(--stage-muted,var(--ink-muted))]",
+};
+
+/** Opción de test en tarjeta: letra, contenido y marca de acierto/error. */
+export function PredictChoiceCard({
+  letter,
+  state,
+  disabled,
+  testId,
+  onClick,
+  children,
+}: {
+  letter: string;
+  state: PredictChoiceCardState;
+  disabled?: boolean;
+  testId?: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      data-state={state}
+      disabled={disabled}
+      onClick={onClick}
+      aria-pressed={state === "selected" || state === "correct" || state === "wrong"}
+      className={cn(
+        "group relative flex min-h-[4.5rem] items-center gap-4 rounded-2xl border-2 px-5 py-4 text-left transition-all duration-200 motion-reduce:transition-none",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--stage-accent,var(--cobalt))] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a2332]",
+        CARD_STATE_CLASS[state],
+      )}
+      style={{ color: INK }}
+    >
+      <span
+        className={cn(
+          "flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold transition-colors",
+          BADGE_STATE_CLASS[state],
+        )}
+        aria-hidden
+      >
+        {state === "correct" ? <CheckIcon className="size-5" /> : state === "wrong" ? <XIcon className="size-5" /> : letter}
+      </span>
+      <span className="min-w-0 flex-1 text-[1.15rem] font-medium leading-snug">{children}</span>
+    </button>
+  );
+}
+
+/** Resultado tras comprobar: panel con color, título y explicación. */
+export function PredictFeedbackPanel({
+  correct,
+  children,
+}: {
+  correct: boolean;
+  children?: ReactNode;
+}) {
+  const tone = correct ? "#83c167" : "#ffd866";
+  return (
+    <div
+      className="lesson-idea-enter mx-auto mt-6 flex max-w-3xl items-start gap-4 rounded-2xl border-2 px-5 py-4"
+      style={{
+        borderColor: `color-mix(in srgb, ${tone} 60%, transparent)`,
+        background: `color-mix(in srgb, ${tone} 12%, transparent)`,
+      }}
+      role="status"
+      data-testid="lesson-predict-feedback"
+    >
+      <span
+        className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full text-[#1a2332]"
+        style={{ background: tone }}
+        aria-hidden
+      >
+        {correct ? <CheckIcon className="size-5" /> : <span className="text-lg font-bold">!</span>}
+      </span>
+      <div className="text-[1.05rem] leading-[1.6]" style={{ color: INK }}>
+        <p className="mb-0.5 font-bold" style={{ color: tone }}>
+          {correct ? "¡Correcto!" : "Casi. Revisa esto:"}
+        </p>
+        {children}
+      </div>
     </div>
   );
 }

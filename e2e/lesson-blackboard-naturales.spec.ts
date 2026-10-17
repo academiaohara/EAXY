@@ -42,31 +42,48 @@ test("lección numeración en pizarra sin tarjeta blanca", async ({ page }) => {
   await expect(slide1Dot).toHaveClass(/bg-emerald-400/);
   await expect(slide2Dot).toHaveClass(/bg-cobalt/);
 
-  const contarUno = page.getByRole("button", { name: "Contar uno" });
-  for (let i = 0; i < 9; i += 1) {
-    await contarUno.click();
+  // Marcas: 24 = cuatro grupos de cinco y cuatro sueltas.
+  const marcas = page.getByTestId("reto-marcas");
+  for (let i = 0; i < 4; i += 1) {
+    await marcas.getByRole("button", { name: "Añadir un grupo de cinco marcas" }).click();
   }
-  await expect(page.getByText("¡Exacto! Nueve marcas.")).toBeVisible();
-  await expect(page.getByRole("tab", { name: /El hombre primitivo/i })).toHaveClass(/bg-emerald-500/);
-  await contarUno.click();
-  await expect(page.getByText("Te has pasado: quita marcas hasta llegar a 9.")).toBeVisible();
-  await page.screenshot({
-    path: "/opt/cursor/artifacts/sistemas-historia-tally-over.png",
-    fullPage: false,
-  });
-
-  const inactiveTab = page.getByRole("tab", { name: /Los egipcios/i });
-  await expect(inactiveTab).toBeVisible();
-  const tabStyles = await inactiveTab.evaluate((el) => {
-    const style = getComputedStyle(el);
-    return { color: style.color, backgroundColor: style.backgroundColor };
-  });
-  expect(tabStyles.backgroundColor).not.toBe("rgb(255, 255, 255)");
-  if (tabStyles.color === "rgb(255, 255, 255)") {
-    expect(tabStyles.backgroundColor).not.toMatch(/255,\s*255,\s*255/);
+  for (let i = 0; i < 5; i += 1) {
+    await marcas.getByRole("button", { name: "Añadir una marca" }).click();
   }
+  await expect(marcas.getByText("Te has pasado de 24. Quita marcas.")).toBeVisible();
+  await marcas.getByRole("button", { name: "Quitar una marca" }).click();
+  await expect(marcas).toHaveAttribute("data-done", "true");
+  await page.screenshot({ path: "/tmp/sistemas-historia-juego.png", fullPage: false });
 
-  await page.getByTestId("lesson-skip-button").click();
+  // Egipto: vale con 24 unidades, pero el reto pide el mínimo de símbolos.
+  const egipto = page.getByTestId("reto-egipcio");
+  for (let i = 0; i < 24; i += 1) {
+    await egipto.getByRole("button", { name: "Añadir uno (1)" }).click();
+  }
+  await expect(egipto.getByText(/bastan 6/)).toBeVisible();
+  await egipto.getByRole("button", { name: "Borrar todo" }).click();
+  for (let i = 0; i < 2; i += 1) {
+    await egipto.getByRole("button", { name: "Añadir diez (10)" }).click();
+  }
+  for (let i = 0; i < 4; i += 1) {
+    await egipto.getByRole("button", { name: "Añadir uno (1)" }).click();
+  }
+  await expect(egipto).toHaveAttribute("data-done", "true");
+
+  // Roma: XXIIII suma 24 pero no es la escritura correcta.
+  const roma = page.getByTestId("reto-romano");
+  for (const key of ["X", "X", "I", "I", "I", "I"]) {
+    await roma.getByRole("button", { name: new RegExp(`^Añadir ${key} `) }).click();
+  }
+  await expect(roma.getByText(/cuatro letras iguales/)).toBeVisible();
+  await roma.getByRole("button", { name: "Borrar la última letra" }).click();
+  await roma.getByRole("button", { name: "Borrar la última letra" }).click();
+  await roma.getByRole("button", { name: "Borrar la última letra" }).click();
+  await roma.getByRole("button", { name: /^Añadir V / }).click();
+  await expect(roma).toHaveAttribute("data-done", "true");
+
+  await expect(forward).toBeEnabled();
+  await forward.click();
   await expect(page.getByTestId("lesson-slide")).toBeVisible();
   await expect(page.getByText("El sistema decimal: base 10").first()).toBeVisible();
   await expect(page.getByTestId("lesson-step-phase")).toHaveCount(0);

@@ -6,7 +6,7 @@ import { fmt as formatGrouped } from "@/components/lesson/anim/format";
 const X_L = 90;
 const X_R = 710;
 const Y = 200;
-const DIGIT_GAP = 22;
+const DIGIT_GAP = 44;
 
 const ORDER_NAMES: Record<number, string> = {
   0: "unidades",
@@ -52,6 +52,7 @@ export function buildRedondeoRecta(params: { n?: number; power?: number }): Anim
     ],
     render: (beat) => (
       <Canvas>
+        <g className="anim-t" style={{ opacity: beat >= 4 ? 0 : 1 }}>
         <WriteLine show x1={X_L - 20} y1={Y} x2={X_R + 20} y2={Y} color={MANIM.muted} width={4} />
         {/* extremos */}
         {[
@@ -97,32 +98,43 @@ export function buildRedondeoRecta(params: { n?: number; power?: number }): Anim
             </Txt>
           </Fade>
         </g>
+        </g>
         <Fade show={beat >= 3} dy={10}>
           <Txt x={400} y={52} size={36} color={MANIM.yellow}>
             {`${formatGrouped(n)} ≈ ${formatGrouped(target)}`}
           </Txt>
         </Fade>
         <Fade show={beat === 4} dy={10}>
-          <g>
-            {digits.map((d, i) => {
-              const x = digitX(i);
-              const kept = i < keptCount;
-              const first = i === keptCount;
-              return (
-                <g key={i}>
-                  {first ? <rect x={x - 12} y={Y + 118} width={24} height={44} rx={6} fill="rgba(255,216,102,0.2)" stroke={MANIM.yellow} strokeWidth={2} /> : null}
-                  <Txt x={x} y={Y + 150} size={32} color={kept ? MANIM.green : first ? MANIM.yellow : MANIM.muted} mono>
-                    {d}
-                  </Txt>
-                </g>
-              );
-            })}
-          </g>
-          <Txt x={digitX(0) + ((keptCount - 1) * DIGIT_GAP) / 2} y={Y + 186} size={18} color={MANIM.green}>
-            se conservan
-          </Txt>
-          <Txt x={digitX(keptCount)} y={Y + 214} size={18} color={MANIM.yellow}>
-            ↑ la que decide
+          {digits.map((d, i) => {
+            const x = digitX(i);
+            const kept = i < keptCount;
+            const first = i === keptCount;
+            return (
+              <g key={i}>
+                {first ? <rect x={x - 22} y={134} width={44} height={84} rx={10} fill="rgba(255,216,102,0.18)" stroke={MANIM.yellow} strokeWidth={3} /> : null}
+                <Txt x={x} y={196} size={60} color={kept ? MANIM.green : first ? MANIM.yellow : MANIM.muted} mono>
+                  {d}
+                </Txt>
+              </g>
+            );
+          })}
+          <HBrace
+            show
+            x1={digitX(0) - 20}
+            x2={digitX(keptCount - 1) + 20}
+            y={232}
+            color={MANIM.green}
+            label="se conservan"
+            labelSize={22}
+          />
+          {/* flecha que sube hasta la cifra que decide */}
+          <line x1={digitX(keptCount)} y1={330} x2={digitX(keptCount)} y2={236} stroke={MANIM.yellow} strokeWidth={4} strokeLinecap="round" />
+          <polygon
+            points={`${digitX(keptCount)},224 ${digitX(keptCount) - 10},244 ${digitX(keptCount) + 10},244`}
+            fill={MANIM.yellow}
+          />
+          <Txt x={digitX(keptCount)} y={362} size={22} color={MANIM.yellow}>
+            la que decide
           </Txt>
         </Fade>
       </Canvas>

@@ -48,7 +48,7 @@ export function TallyMarksView({ count, className }: { count: number; className?
           className,
         )}
       >
-        Pulsa «Contar uno» para dejar la primera marca.
+        Añade marcas con +1 o +5.
       </div>
     );
   }
