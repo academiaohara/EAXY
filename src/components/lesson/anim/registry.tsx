@@ -1,5 +1,15 @@
 import type { SlideAnimId, SlideAnimParams } from "@/lib/lesson/types";
 import type { AnimBuild } from "@/components/lesson/anim/types";
+import { buildAscensorEnteros } from "@/components/lesson/anim/scenes/ascensor-enteros";
+import { buildCompararEnteros } from "@/components/lesson/anim/scenes/comparar-enteros";
+import { buildDivisionInversa } from "@/components/lesson/anim/scenes/division-inversa";
+import { buildFichasOpuestos } from "@/components/lesson/anim/scenes/fichas-opuestos";
+import { buildParentesisSignos } from "@/components/lesson/anim/scenes/parentesis-signos";
+import { buildProductoSignos } from "@/components/lesson/anim/scenes/producto-signos";
+import { buildRectaEnteros } from "@/components/lesson/anim/scenes/recta-enteros";
+import { buildRestaOpuesto } from "@/components/lesson/anim/scenes/resta-opuesto";
+import { buildSumaRecta } from "@/components/lesson/anim/scenes/suma-recta";
+import { buildValorAbsoluto } from "@/components/lesson/anim/scenes/valor-absoluto";
 import { buildAreaDistributiva } from "@/components/lesson/anim/scenes/area-distributiva";
 import { buildCribaEratostenes } from "@/components/lesson/anim/scenes/criba-eratostenes";
 import { buildCriterioAlternada } from "@/components/lesson/anim/scenes/criterio-alternada";
@@ -41,6 +51,16 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "mcd-cortes": (p) => buildMcdCortes(p),
   "multiplos-saltos": (p) => buildMultiplosSaltos(p),
   "tabla-exponentes": (p) => buildTablaExponentes(p),
+  "ascensor-enteros": (p) => buildAscensorEnteros(p),
+  "recta-enteros": () => buildRectaEnteros(),
+  "valor-absoluto": (p) => buildValorAbsoluto(p),
+  "comparar-enteros": (p) => buildCompararEnteros(p),
+  "suma-recta": (p) => buildSumaRecta(p),
+  "fichas-opuestos": (p) => buildFichasOpuestos(p),
+  "resta-opuesto": (p) => buildRestaOpuesto(p),
+  "parentesis-signos": (p) => buildParentesisSignos(p),
+  "producto-signos": (p) => buildProductoSignos(p),
+  "division-inversa": (p) => buildDivisionInversa(p),
 };
 
 export function buildSlideAnim(

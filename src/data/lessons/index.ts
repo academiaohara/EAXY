@@ -18,8 +18,6 @@ import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisib
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
-import { enterosPositivosNegativosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-enteros-positivos-negativos";
-import { enterosZRectaValorAbsolutoLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-enteros-z-recta-valor-absoluto";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
 import { fraccionesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/03-fracciones-decimales";
 import { fraccionesEquivalentesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/04-fracciones-equivalentes";
@@ -28,9 +26,10 @@ import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
-import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/05-multiplicacion-division-enteros";
+import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/03-multiplicacion-division-naturales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
+import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-numeros-enteros";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/01-operaciones-fracciones-comun-denominador";
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/03-operaciones-fracciones-multiplicacion-division";
@@ -38,7 +37,7 @@ import { operacionesFraccionesProblemasLesson } from "@/data/lessons/matematicas
 import { operacionesFraccionesSumaRestaLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/02-operaciones-fracciones-suma-resta";
 import { operacionesNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/02-operaciones-numeros-decimales";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
-import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-parentesis-enteros";
+import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
@@ -60,7 +59,7 @@ import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso
 import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
 import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/04-sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
-import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-suma-resta-enteros";
+import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/02-suma-resta-naturales";
 import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/01-tablas-graficas-coordenadas-cartesianas";
 import { tablasGraficasDistribucionesEstadisticasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/04-tablas-graficas-distribuciones-estadisticas";
@@ -90,8 +89,6 @@ export const interactiveLessons = {
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
-  "enteros-positivos-negativos": enterosPositivosNegativosLesson,
-  "enteros-z-recta-valor-absoluto": enterosZRectaValorAbsolutoLesson,
   "factores-primos": factoresPrimosLesson,
   "fracciones-decimales": fraccionesDecimalesLesson,
   "fracciones-equivalentes": fraccionesEquivalentesLesson,
@@ -103,6 +100,7 @@ export const interactiveLessons = {
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
+  "numeros-enteros": numerosEnterosLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
   "operaciones-fracciones-multiplicacion-division": operacionesFraccionesMultiplicacionDivisionLesson,

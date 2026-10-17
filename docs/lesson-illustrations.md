@@ -67,6 +67,18 @@ Las cinco están enlazadas en `story` (≈ 150 px en pantalla). Carpeta de desti
 | `autobuses-parada.png` | L4 · «Cuándo vuelven a coincidir» | Dos autobuses urbanos, uno azul y otro verde, parados uno tras otro junto a una marquesina con banco; un pasajero joven con mochila espera. Los letreros frontales y laterales en blanco, sin números de línea. |
 | `cintas-modista.png` | L5 · «Trozos iguales y lo más largos posible» | Modista sonriente con metro colgado del cuello y tijeras en la mano, sentada ante una mesa con dos rollos de cinta de distinto grosor: uno de cinta azul y otro de cinta naranja, ambos desenrollados en parte sobre la mesa. Sin marcas de medida legibles. |
 
+## Tema 4 · Números enteros — ilustraciones
+
+Las cinco están enlazadas en `story` (≈ 150 px en pantalla). Carpeta de destino: `public/lesson/enteros/`. Lienzo 1024×1024, mismo bloque de estilo de arriba. **Sin números, cifras ni texto dentro de la imagen** (los valores los pone la diapositiva).
+
+| Archivo (`public/lesson/enteros/…`) | Dónde sale | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|
+| `termometro-invierno.png` | L1 · «Cuando los naturales no bastan» | Termómetro de calle de pared, con la columna roja a media altura y la escala dibujada con rayas **sin números**, instalado en un poste de madera; a su alrededor, un poco de nieve en el suelo y una bufanda colgada del poste. Vista frontal. |
+| `buzo-y-globo.png` | L1 · «Valor absoluto: la distancia al cero» | Sección transversal del mar: arriba, un globo aerostático de colores en el cielo; en el centro, una línea de agua ondulada; abajo, un buceador con traje y botella nadando a la misma distancia bajo la línea que el globo sobre ella. Simétrico respecto de la línea del agua. Sin números ni escalas. |
+| `cartera-monedas.png` | L2 · «Mismo signo: las distancias se suman» | Joven de pelo corto con gesto resignado mostrando una cartera marrón abierta casi vacía, con solo dos monedas dentro; una tercera moneda cae al suelo. Medio cuerpo. Sin símbolos de moneda ni cifras. |
+| `caja-movimientos.png` | L3 · «Con + delante, los signos se quedan» | Caja de cartón abierta de la que asoman billetes, monedas y un par de recibos en blanco (sin texto) bien visibles; una mano de oficinista la deja sobre un mostrador. Vista tres cuartos. |
+| `buzon-facturas.png` | L4 · «Multiplicar: de dónde sale el signo» | Buzón metálico de oficina rebosante de sobres y facturas en blanco (sin texto ni cifras), con uno de los sobres a punto de caerse; un sello de «recibido» **sin texto** (solo un círculo). Vista tres cuartos. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

@@ -26,15 +26,16 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone solo los temas 1, 2 y 3 en 1.º ESO", () => {
+  it("expone solo los temas 1, 2, 3 y 4 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(3);
+    expect(firstYear?.modules).toHaveLength(4);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
       "divisibilidad",
+      "numeros-enteros",
     ]);
   });
 
@@ -87,6 +88,19 @@ describe("validateCurriculum", () => {
       "factores-primos",
       "minimo-comun-multiplo",
       "maximo-comun-divisor",
+    ]);
+  });
+
+  it("tiene las cuatro lecciones de la unidad 4 (números enteros) en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    expect(firstYear?.modules[3]?.title).toBe("Los números enteros");
+    expect(firstYear?.modules[3]?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "numeros-enteros",
+      "suma-resta-enteros",
+      "parentesis-enteros",
+      "multiplicacion-division-enteros",
     ]);
   });
 });
