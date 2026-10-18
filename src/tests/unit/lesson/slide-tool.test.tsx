@@ -60,3 +60,50 @@ describe("herramienta fraccion-equivalentes", () => {
     expect(slider(/Multiplicar/).value).toBe("6");
   });
 });
+
+describe("herramienta valor-numerico", () => {
+  it("calcula a·n + b para el n elegido", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "valor-numerico", params: { a: 2, b: 3, n: 5 } }} />);
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("13");
+    fireEvent.change(slider(/Número n/), { target: { value: "10" } });
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("23");
+  });
+
+  it("con valores extremos se queda dentro de 0–10 y reinicia", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "valor-numerico", params: { a: 99, b: -99, n: 99 } }} />);
+    expect(Number(slider(/Número n/).value)).toBeLessThanOrEqual(10);
+    fireEvent.change(slider(/Número n/), { target: { value: "0" } });
+    fireEvent.click(screen.getByRole("button", { name: /Reiniciar/ }));
+    expect(slider(/Número n/).value).toBe("10");
+  });
+});
+
+describe("herramienta balanza-explorador", () => {
+  it("la solución no cambia al sumar, restar o dividir en los dos platos", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "balanza-explorador", params: { a: 2, b: 3, c: 11 } }} />);
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("2x + 3 = 11");
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("x = 4");
+
+    fireEvent.click(screen.getByRole("button", { name: /Restar 1/ }));
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("2x + 2 = 10");
+    expect(screen.getByRole("button", { name: /Dividir entre 2/ })).not.toBeDisabled();
+
+    fireEvent.click(screen.getByRole("button", { name: /Restar 1/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Restar 1/ }));
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("2x = 8");
+    fireEvent.click(screen.getByRole("button", { name: /Dividir entre 2/ }));
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("x = 4");
+  });
+
+  it("no deja dividir si no sale exacto y reinicia", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "balanza-explorador", params: { a: 2, b: 3, c: 11 } }} />);
+    expect(screen.getByRole("button", { name: /Dividir entre 2/ })).toBeDisabled();
+    fireEvent.click(screen.getByRole("button", { name: /Reiniciar/ }));
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("2x + 3 = 11");
+  });
+
+  it("con valores extremos no sale nada absurdo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "balanza-explorador", params: { a: 99, b: 99, c: 99 } }} />);
+    expect(screen.getByTestId("tool-readout")).toBeInTheDocument();
+  });
+});

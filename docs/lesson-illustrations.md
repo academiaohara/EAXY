@@ -108,6 +108,15 @@ Una sola ilustración: ancla la cantidad de la división «bidón entre frascos�
 |---|---|---|---|
 | `bidon-frascos.png` | L3 · «Dividir es multiplicar por la inversa» (`story`, ~150 px) | 1024×1024 | Bidón azul de plástico con tapón y asa y, delante, cuatro frascos de perfume pequeños de cristal, redondos y **vacíos**. Sin etiquetas, sin texto, sin números. |
 
+## Tema 10 · Álgebra
+
+Solo dos ilustraciones: las que anclan la idea de incógnita y de regla general. Balanzas, máquina, fresas y manzanas las dibujan las animaciones. Ya están enlazadas en la lección 1 (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/algebra/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `papiro-monton.png` | L1 · «El montón egipcio» (`story`, ~170 px) | 1024×1024 | Escriba de la antigüedad sentado en el suelo, con túnica de lino y un papiro desplegado sobre las rodillas; a su lado, un montón de granos de trigo. Sin jeroglíficos legibles, sin cifras ni texto. |
+| `maquina-tickets.png` | L1 · «Generalizar: la regla de una máquina» (`story`, ~150 px) | 1024×1024 | Máquina expendedora de tickets de metal gris con una pantalla digital **apagada y en blanco** y una ranura de la que sale una tira de papel en blanco. Vista tres cuartos. Sin texto, sin números. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

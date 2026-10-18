@@ -627,7 +627,10 @@ export type SlideAnimId =
   | "fraccion-barras-suma"
   | "fraccion-de-fraccion"
   | "simplificar-factores"
-  | "fraccion-cabe";
+  | "fraccion-cabe"
+  | "balanza-ecuacion"
+  | "maquina-funcion"
+  | "semejantes-agrupar";
 
 export type ExprStep = {
   tokens: string[];
@@ -748,7 +751,7 @@ export type SlideBlock =
       kind: "tool";
       tool: SlideToolId;
       /** Valores iniciales (y fracción de partida en `fraccion-equivalentes`). */
-      params?: { n?: number; d?: number; k?: number };
+      params?: { n?: number; d?: number; k?: number; a?: number; b?: number; c?: number };
       /** `fraction-product`: numerador y denominador de cada fracción, `[a, b, c, d]`. */
       initial?: number[];
       /** Una línea que dice qué probar. */
@@ -756,7 +759,12 @@ export type SlideBlock =
     };
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
-export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes" | "fraction-product";
+export type SlideToolId =
+  | "fraccion-explorador"
+  | "fraccion-equivalentes"
+  | "fraction-product"
+  | "valor-numerico"
+  | "balanza-explorador";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

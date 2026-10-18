@@ -194,6 +194,138 @@ function FraccionEquivalentes({ block }: { block: ToolBlock }) {
   );
 }
 
+const MAX_N = 10;
+
+/** Máquina `a·n + b`: el alumno mueve `n` y ve la cuenta y el resultado entre todos los valores de la tabla. */
+function ValorNumerico({ block }: { block: ToolBlock }) {
+  const a = clamp(block.params?.a ?? 2, 1, 9);
+  const b = clamp(block.params?.b ?? 3, -9, 9);
+  const initN = clamp(block.params?.n ?? 5, 0, MAX_N);
+  const [n, setN] = useState(initN);
+  const out = (k: number) => a * k + b;
+  const top = Math.max(1, ...Array.from({ length: MAX_N + 1 }, (_, k) => out(k)));
+  const W = 440;
+  const H = 130;
+  const cell = W / (MAX_N + 1);
+  const sign = b < 0 ? "-" : "+";
+
+  return (
+    <Frame
+      hint={block.hint ?? "Mueve n y fíjate en que la misma regla sirve para cualquier número."}
+      onReset={() => setN(initN)}
+      controls={
+        <>
+          <MathRenderer text={`Regla: $n \\longrightarrow ${a === 1 ? "" : a}n ${sign} ${Math.abs(b)}$`} className="text-lg" />
+          <Slider label="Número n que entra" value={n} min={0} max={MAX_N} color={MANIM.orange} onChange={setN} />
+        </>
+      }
+    >
+      <div className="flex items-baseline gap-4" data-testid="tool-readout">
+        <MathRenderer text={`$${a} \\cdot ${n} ${sign} ${Math.abs(b)} = ${out(n)}$`} className="text-3xl" />
+      </div>
+      <svg viewBox={`0 0 ${W + 4} ${H + 28}`} className="block w-full" aria-hidden focusable="false">
+        {Array.from({ length: MAX_N + 1 }, (_, k) => {
+          const h = (Math.max(0, out(k)) / top) * H;
+          const active = k === n;
+          return (
+            <g key={k}>
+              <rect x={2 + k * cell + 4} y={H - h} width={cell - 8} height={Math.max(h, 2)} rx={4} fill={active ? MANIM.green : MANIM.blue} fillOpacity={active ? 0.95 : 0.45} className="anim-t" />
+              <text x={2 + k * cell + cell / 2} y={H + 18} fontSize={13} textAnchor="middle" fill={active ? MANIM.green : MANIM.muted}>
+                {k}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </Frame>
+  );
+}
+
+const BAL = { minB: -6, maxB: 9, minC: -6, maxC: 21 } as const;
+
+function eqText(a: number, b: number, c: number): string {
+  const lhs = `${a > 1 ? a : ""}x${b > 0 ? ` + ${b}` : b < 0 ? ` - ${-b}` : ""}`;
+  return `${lhs} = ${c}`;
+}
+
+function Dots({ count }: { count: number }) {
+  const neg = count < 0;
+  return (
+    <>
+      {Array.from({ length: Math.abs(count) }, (_, i) => (
+        <span
+          key={i}
+          className="inline-block size-5 rounded-full"
+          style={neg ? { border: `2.5px dashed ${MANIM.red}` } : { background: MANIM.yellow }}
+        />
+      ))}
+    </>
+  );
+}
+
+/** Balanza `a·x + b = c`: lo que se haga en los dos platos mantiene el equilibrio y la solución. */
+function BalanzaExplorador({ block }: { block: ToolBlock }) {
+  const a0 = clamp(block.params?.a ?? 2, 1, 5);
+  const b0 = clamp(block.params?.b ?? 3, BAL.minB, BAL.maxB);
+  const c0 = clamp(block.params?.c ?? 11, BAL.minC, BAL.maxC);
+  const [eq, setEq] = useState({ a: a0, b: b0, c: c0 });
+  const solution = (c0 - b0) / a0;
+  const { a, b, c } = eq;
+  const addBoth = (d: number) => setEq((e) => ({ ...e, b: e.b + d, c: e.c + d }));
+  const canAdd = (d: number) => b + d >= BAL.minB && b + d <= BAL.maxB && c + d >= BAL.minC && c + d <= BAL.maxC;
+  const canDivide = a > 1 && b % a === 0 && c % a === 0;
+  const btn =
+    "rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
+
+  return (
+    <Frame
+      hint={block.hint ?? "Haz lo mismo en los dos platos y comprueba que la solución de x no cambia."}
+      onReset={() => setEq({ a: a0, b: b0, c: c0 })}
+      controls={
+        <>
+          <button type="button" className={btn} disabled={!canAdd(1)} onClick={() => addBoth(1)}>
+            Sumar 1 a los dos platos
+          </button>
+          <button type="button" className={btn} disabled={!canAdd(-1)} onClick={() => addBoth(-1)}>
+            Restar 1 a los dos platos
+          </button>
+          <button
+            type="button"
+            className={btn}
+            disabled={!canDivide}
+            title={canDivide ? undefined : "Solo se puede dividir si el número que multiplica a x divide a todo lo demás"}
+            onClick={() => setEq({ a: 1, b: b / a, c: c / a })}
+          >
+            {a > 1 ? `Dividir entre ${a} los dos platos` : "Dividir los dos platos"}
+          </button>
+        </>
+      }
+    >
+      <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1" data-testid="tool-readout">
+        <MathRenderer text={`$${eqText(a, b, c)}$`} className="text-3xl" />
+        <span className="text-lg font-semibold" style={{ color: MANIM.green }}>
+          Solución: x = {solution}
+        </span>
+      </div>
+      <div className="flex items-end justify-center gap-3" aria-hidden>
+        <div className="flex min-h-24 flex-1 flex-wrap content-end items-end gap-1.5 rounded-b-3xl border-b-4 border-[color:var(--stage-muted,#b8c2d0)] bg-white/5 p-3">
+          {Array.from({ length: a }, (_, i) => (
+            <span key={i} className="flex size-9 items-center justify-center rounded-md text-lg font-extrabold" style={{ background: MANIM.blue, color: MANIM.surface }}>
+              x
+            </span>
+          ))}
+          <Dots count={b} />
+        </div>
+        <span className="pb-2 text-2xl font-bold text-[color:var(--stage-ink,#fff)]">=</span>
+        <div className="flex min-h-24 flex-1 flex-wrap content-end items-end gap-1.5 rounded-b-3xl border-b-4 border-[color:var(--stage-muted,#b8c2d0)] bg-white/5 p-3">
+          <Dots count={c} />
+        </div>
+      </div>
+      <p className="text-sm text-[color:var(--stage-muted,#b8c2d0)]">La balanza sigue equilibrada: hagas lo que hagas, si lo haces en los dos platos.</p>
+    </Frame>
+  );
+}
+
 /** Herramienta interactiva dentro de una diapositiva (el alumno cambia valores y ve el resultado). */
 export function SlideTool({ block }: { block: ToolBlock }) {
   switch (block.tool) {
@@ -203,6 +335,10 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FraccionEquivalentes block={block} />;
     case "fraction-product":
       return <FractionProductTool initial={block.initial} />;
+    case "valor-numerico":
+      return <ValorNumerico block={block} />;
+    case "balanza-explorador":
+      return <BalanzaExplorador block={block} />;
     default:
       return null;
   }
