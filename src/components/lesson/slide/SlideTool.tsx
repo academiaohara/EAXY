@@ -1,54 +1,24 @@
 "use client";
 
-import { RotateCcwIcon } from "lucide-react";
 import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { Frame, Slider, clamp, type ToolBlock } from "@/components/lesson/slide/tool-ui";
+import { CompasBisectriz, CompasMediatriz } from "@/components/lesson/slide/tools/CompasTools";
+import {
+  AnguloExplorador,
+  AngulosSuma,
+  BisectrizExplorador,
+  ParalelasExplorador,
+  PoligonoExplorador,
+  PuntoMediatriz,
+  RectasPosicion,
+  Transportador,
+  TrianguloExplorador,
+} from "@/components/lesson/slide/tools/GeometryTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
-import type { SlideBlock } from "@/lib/lesson/types";
 
-type ToolBlock = Extract<SlideBlock, { kind: "tool" }>;
-
-const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
-
-function Slider({
-  label,
-  value,
-  min,
-  max,
-  color,
-  onChange,
-}: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  color: string;
-  onChange: (v: number) => void;
-}) {
-  return (
-    <label className="flex flex-col gap-1.5 text-sm text-[color:var(--stage-muted,#b8c2d0)]">
-      <span className="flex items-baseline justify-between">
-        <span>{label}</span>
-        <span className="text-xl font-bold tabular-nums" style={{ color }}>
-          {value}
-        </span>
-      </span>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={1}
-        value={value}
-        aria-label={label}
-        onChange={(e) => onChange(Number(e.target.value))}
-        style={{ accentColor: color }}
-        className="w-full"
-      />
-    </label>
-  );
-}
 
 /** Barra(s) de una unidad partida en `d` trozos con `n` coloreados (puede ocupar más de una unidad). */
 function Bars({ n, d, color }: { n: number; d: number; color: string }) {
@@ -129,53 +99,6 @@ function MiniLine({ value, color }: { value: number; color: string }) {
       ))}
       <circle cx={x(clamp(value, 0, 2))} cy={30} r={8} fill={color} className="anim-t" />
     </svg>
-  );
-}
-
-function Frame({
-  hint,
-  onReset,
-  controls,
-  children,
-  stacked = false,
-}: {
-  hint: string;
-  onReset: () => void;
-  controls: React.ReactNode;
-  children: React.ReactNode;
-  /** Controles arriba y resultado debajo, en una sola columna. */
-  stacked?: boolean;
-}) {
-  return (
-    <section
-      className="flex flex-col overflow-hidden rounded-xl border border-[color:var(--stage-border,#3d4f66)] bg-[color:var(--stage-surface,#1a2332)]"
-      data-testid="lesson-tool"
-    >
-      {stacked ? (
-        <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-5">
-          <div className="flex min-w-0 flex-col gap-3">{children}</div>
-          <div className="mx-auto grid w-full max-w-xl gap-x-8 gap-y-3 border-t border-[color:var(--stage-border,#3d4f66)] pt-4 sm:grid-cols-2">
-            {controls}
-          </div>
-        </div>
-      ) : (
-        <div className="grid gap-5 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-8">
-          <div className="flex flex-col gap-4">{controls}</div>
-          <div className="flex min-w-0 flex-col gap-3">{children}</div>
-        </div>
-      )}
-      <div className="flex items-center gap-3 border-t border-[color:var(--stage-border,#3d4f66)] bg-black/20 px-4 py-2.5">
-        <p className="flex-1 text-[0.95rem] leading-snug text-[color:var(--stage-ink,#fff)]">{hint}</p>
-        <button
-          type="button"
-          onClick={onReset}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm text-[color:var(--stage-ink,#fff)] hover:bg-white/10"
-        >
-          <RotateCcwIcon className="size-4" aria-hidden />
-          Reiniciar
-        </button>
-      </div>
-    </section>
   );
 }
 
@@ -458,6 +381,28 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":
       return <PorcentajeCuadricula block={block} />;
+    case "rectas-posicion":
+      return <RectasPosicion block={block} />;
+    case "punto-mediatriz":
+      return <PuntoMediatriz block={block} />;
+    case "compas-mediatriz":
+      return <CompasMediatriz block={block} />;
+    case "compas-bisectriz":
+      return <CompasBisectriz block={block} />;
+    case "bisectriz-explorador":
+      return <BisectrizExplorador block={block} />;
+    case "angulo-explorador":
+      return <AnguloExplorador block={block} />;
+    case "angulos-suma":
+      return <AngulosSuma block={block} />;
+    case "paralelas-explorador":
+      return <ParalelasExplorador block={block} />;
+    case "transportador":
+      return <Transportador block={block} />;
+    case "triangulo-explorador":
+      return <TrianguloExplorador block={block} />;
+    case "poligono-explorador":
+      return <PoligonoExplorador block={block} />;
     default:
       return null;
   }

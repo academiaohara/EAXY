@@ -651,7 +651,20 @@ export type SlideAnimId =
   | "monomio-cociente"
   | "ecuacion-identidad"
   | "comprobar-solucion"
-  | "pasos-problema";
+  | "pasos-problema"
+  | "recta-semirrecta"
+  | "posiciones-rectas"
+  | "mediatriz-equidistan"
+  | "mediatriz-compas"
+  | "bisectriz-equidistan"
+  | "bisectriz-compas"
+  | "angulo-elementos"
+  | "angulos-opuestos"
+  | "paralelas-secante"
+  | "grado-minuto"
+  | "angulos-columna"
+  | "triangulo-180"
+  | "poligono-triangulos";
 
 export type ExprStep = {
   tokens: string[];
@@ -791,7 +804,18 @@ export type SlideToolId =
   | "fraction-product"
   | "valor-numerico"
   | "balanza-explorador"
-  | "porcentaje-cuadricula";
+  | "porcentaje-cuadricula"
+  | "rectas-posicion"
+  | "punto-mediatriz"
+  | "compas-mediatriz"
+  | "compas-bisectriz"
+  | "bisectriz-explorador"
+  | "angulo-explorador"
+  | "angulos-suma"
+  | "paralelas-explorador"
+  | "transportador"
+  | "triangulo-explorador"
+  | "poligono-explorador";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento
