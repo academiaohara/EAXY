@@ -1,13 +1,31 @@
-import { Canvas, Fade, Txt, WriteLine } from "@/components/lesson/anim/primitives";
-import { Frac } from "@/components/lesson/anim/fraction-svg";
+import { Canvas, Fade, Move, Txt, WriteLine } from "@/components/lesson/anim/primitives";
+import { Frac, Op, fracWidth, placeRow } from "@/components/lesson/anim/fraction-svg";
 import { MANIM } from "@/components/lesson/anim/palette";
 import { gcd, lcm } from "@/components/lesson/anim/number-theory";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 
 const Y = 170;
 const SIZE = 44;
-const OUT_X = 130;
-const PROD_X = OUT_X + 235;
+const OP_W = 28;
+const PAREN_W = 22;
+const GAP = 18;
+const RECT_PAD = 16;
+
+/** Paréntesis curvo que abarca el alto de una fracción apilada, centrado en `x`. */
+function Paren({ x, side }: { x: number; side: "l" | "r" }) {
+  const top = Y - 58;
+  const bottom = Y + 62;
+  const dir = side === "l" ? 1 : -1;
+  return (
+    <path
+      d={`M ${x + 5 * dir} ${top} Q ${x - 9 * dir} ${(top + bottom) / 2} ${x + 5 * dir} ${bottom}`}
+      fill="none"
+      stroke={MANIM.muted}
+      strokeWidth={4}
+      strokeLinecap="round"
+    />
+  );
+}
 
 type NumProps = { x: number; y: number; v: number; cut: boolean; to: number; above: boolean };
 
@@ -96,89 +114,108 @@ export function buildFraccionCombinada(params: {
     `Multiplicamos lo que queda: $\\dfrac{${a}}{${b}} \\cdot \\left(\\dfrac{${c}}{${d}} ${sign} \\dfrac{${e}}{${f}}\\right) = \\dfrac{${rn}}{${rd}}$.`,
   ];
 
+  const fw = (n: number, d: number, size = SIZE) => fracWidth(n, d, size);
+  const fo = fw(a, b);
+  const showSimp = p !== n || q !== m;
+  // Cada fase se coloca centrada y con los mismos huecos; la fracción de fuera y su punto se desplazan de una a otra.
+  const LA = placeRow([fo, OP_W, PAREN_W, fw(c, d), OP_W, fw(e, f), PAREN_W], GAP);
+  const LB = placeRow([fo, OP_W, PAREN_W, fw(c2, m), OP_W, fw(e2, m), PAREN_W], GAP);
+  const LC = placeRow([fo, OP_W, PAREN_W, fw(n, m), ...(showSimp ? [OP_W, fw(p, q)] : []), PAREN_W], GAP);
+  const LD = placeRow([fo, OP_W, fw(p, q)], GAP);
+  const LE = placeRow([fo, OP_W, fw(p, q), OP_W, fw(rn, rd, SIZE + 6)], GAP);
+  const rectOf = (L: number[]) => ({ x: L[2]! - PAREN_W / 2 - RECT_PAD, w: L[L.length - 1]! - L[2]! + PAREN_W + 2 * RECT_PAD });
+
   return {
     label: `Operación combinada ${a}/${b} · (${c}/${d} ${sign} ${e}/${f}): paréntesis primero, resultado ${rn}/${rd}`,
     captions,
     beatMs: 3800,
     render: (beat) => {
       const inParen = beat >= 1 && beat <= 3;
-      const open = beat <= 3;
       const simplifying = beat >= 5;
+      const L = beat <= 1 ? LA : beat === 2 ? LB : beat === 3 ? LC : beat <= 5 ? LD : LE;
+      const midB = (LB[3]! + LB[5]!) / 2;
+      const group = (Lg: number[], show: boolean, rect: boolean, children: React.ReactNode) => (
+        <Fade show={show}>
+          <Paren x={Lg[2]!} side="l" />
+          <Paren x={Lg[Lg.length - 1]!} side="r" />
+          <Fade show={rect} dy={-6}>
+            <rect x={rectOf(Lg).x} y={Y - 74} width={rectOf(Lg).w} height={150} rx={16} fill="none" stroke={MANIM.yellow} strokeWidth={2.5} strokeDasharray="6 6" />
+          </Fade>
+          {children}
+        </Fade>
+      );
       return (
         <Canvas>
           {/* fracción de fuera: se aparta mientras se resuelve el paréntesis */}
           <g className="anim-t" style={{ opacity: inParen ? 0.3 : 1 }}>
-            <Bar x={OUT_X} n={a} d={b} color={MANIM.blue} />
-            <Cut x={OUT_X} y={Y - 13} v={a} cut={simplifying && g1 > 1} to={ra} above />
-            <Cut x={OUT_X} y={Y + 42} v={b} cut={simplifying && g2 > 1} to={rb} above={false} />
-            <Txt x={OUT_X + 80} y={Y + 8} size={40}>
-              ·
-            </Txt>
+            <Move x={L[0]!} y={0}>
+              <Bar x={0} n={a} d={b} color={MANIM.blue} />
+              <Cut x={0} y={Y - 13} v={a} cut={simplifying && g1 > 1} to={ra} above />
+              <Cut x={0} y={Y + 42} v={b} cut={simplifying && g2 > 1} to={rb} above={false} />
+            </Move>
+            <Move x={L[1]!} y={0}>
+              <Op x={0} y={Y} kind="·" size={44} />
+            </Move>
           </g>
-          {/* paréntesis completo */}
-          <Fade show={open}>
-            <Txt x={OUT_X + 130} y={Y + 24} size={110} weight={300} color={MANIM.muted}>
-              (
-            </Txt>
-            <Txt x={beat <= 2 ? 620 : 520} y={Y + 24} size={110} weight={300} color={MANIM.muted}>
-              )
-            </Txt>
-          </Fade>
-          <Fade show={inParen} dy={-6}>
-            <rect
-              x={OUT_X + 105}
-              y={Y - 74}
-              width={beat <= 2 ? 540 : 440}
-              height={170}
-              rx={16}
-              fill="none"
-              stroke={MANIM.yellow}
-              strokeWidth={2.5}
-              strokeDasharray="6 6"
-            />
-          </Fade>
-          {/* contenido del paréntesis */}
-          <Fade show={beat <= 1}>
-            <Frac x={OUT_X + 210} y={Y} n={c} d={d} size={SIZE} color={MANIM.green} />
-            <Txt x={OUT_X + 310} y={Y + 8} size={40}>
-              {sym}
-            </Txt>
-            <Frac x={OUT_X + 400} y={Y} n={e} d={f} size={SIZE} color={MANIM.orange} />
-          </Fade>
-          <Fade show={beat === 2}>
-            <Frac x={OUT_X + 210} y={Y} n={c2} d={m} size={SIZE} color={MANIM.green} />
-            <Txt x={OUT_X + 310} y={Y + 8} size={40}>
-              {sym}
-            </Txt>
-            <Frac x={OUT_X + 400} y={Y} n={e2} d={m} size={SIZE} color={MANIM.orange} />
-            <Txt x={OUT_X + 210} y={Y + 118} size={24} color={MANIM.green}>
-              {`× ${kc}`}
-            </Txt>
-            <Txt x={OUT_X + 400} y={Y + 118} size={24} color={MANIM.orange}>
-              {`× ${ke}`}
-            </Txt>
-            <Txt x={OUT_X + 305} y={Y + 158} size={22} color={MANIM.yellow}>
-              {`m.c.m.(${d}, ${f}) = ${m}`}
-            </Txt>
-          </Fade>
-          <Fade show={beat === 3}>
-            <Frac x={OUT_X + 290} y={Y} n={n} d={m} size={SIZE} color={MANIM.yellow} />
-            <Txt x={OUT_X + 290} y={Y + 118} size={24} color={MANIM.muted}>
-              {`${c2} ${sym} ${e2} = ${n}`}
-            </Txt>
-          </Fade>
+          {/* paréntesis con la resta: se amplía, se resta y se simplifica */}
+          {group(
+            LA,
+            beat <= 1,
+            beat === 1,
+            <>
+              <Frac x={LA[3]!} y={Y} n={c} d={d} size={SIZE} color={MANIM.green} />
+              <Op x={LA[4]!} y={Y} kind={sign} size={44} />
+              <Frac x={LA[5]!} y={Y} n={e} d={f} size={SIZE} color={MANIM.orange} />
+            </>,
+          )}
+          {group(
+            LB,
+            beat === 2,
+            beat === 2,
+            <>
+              <Frac x={LB[3]!} y={Y} n={c2} d={m} size={SIZE} color={MANIM.green} />
+              <Op x={LB[4]!} y={Y} kind={sign} size={44} />
+              <Frac x={LB[5]!} y={Y} n={e2} d={m} size={SIZE} color={MANIM.orange} />
+              <Txt x={LB[3]!} y={Y + 112} size={24} color={MANIM.green}>
+                {`× ${kc}`}
+              </Txt>
+              <Txt x={LB[5]!} y={Y + 112} size={24} color={MANIM.orange}>
+                {`× ${ke}`}
+              </Txt>
+              <Txt x={midB} y={Y + 152} size={22} color={MANIM.yellow}>
+                {`m.c.m.(${d}, ${f}) = ${m}`}
+              </Txt>
+            </>,
+          )}
+          {group(
+            LC,
+            beat === 3,
+            beat === 3,
+            <>
+              <Frac x={LC[3]!} y={Y} n={n} d={m} size={SIZE} color={MANIM.yellow} />
+              {showSimp ? (
+                <>
+                  <Op x={LC[4]!} y={Y} kind="=" size={44} color={MANIM.muted} />
+                  <Frac x={LC[5]!} y={Y} n={p} d={q} size={SIZE} color={MANIM.yellow} />
+                </>
+              ) : null}
+              <Txt x={(LC[3]! + LC[showSimp ? 5 : 3]!) / 2} y={Y + 112} size={24} color={MANIM.muted}>
+                {`${c2} ${sym} ${e2} = ${n}`}
+              </Txt>
+            </>,
+          )}
           {/* producto sin paréntesis */}
-          <Fade show={!open}>
-            <Bar x={PROD_X} n={p} d={q} color={MANIM.yellow} />
-            <Cut x={PROD_X} y={Y - 13} v={p} cut={simplifying && g2 > 1} to={rp} above />
-            <Cut x={PROD_X} y={Y + 42} v={q} cut={simplifying && g1 > 1} to={rq} above={false} />
+          <Fade show={beat >= 4}>
+            <Move x={beat >= 6 ? LE[2]! : LD[2]!} y={0}>
+              <Bar x={0} n={p} d={q} color={MANIM.yellow} />
+              <Cut x={0} y={Y - 13} v={p} cut={simplifying && g2 > 1} to={rp} above />
+              <Cut x={0} y={Y + 42} v={q} cut={simplifying && g1 > 1} to={rq} above={false} />
+            </Move>
           </Fade>
           {/* resultado */}
           <Fade show={beat >= 6} dy={10}>
-            <Txt x={OUT_X + 340} y={Y + 8} size={44}>
-              =
-            </Txt>
-            <Frac x={OUT_X + 430} y={Y} n={rn} d={rd} size={SIZE + 6} color={MANIM.yellow} />
+            <Op x={LE[3]!} y={Y} kind="=" size={44} />
+            <Frac x={LE[4]!} y={Y} n={rn} d={rd} size={SIZE + 6} color={MANIM.yellow} />
           </Fade>
           {/* orden de las operaciones */}
           <Fade show={beat === 0} dy={8}>

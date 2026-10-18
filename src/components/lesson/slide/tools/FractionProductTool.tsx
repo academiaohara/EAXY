@@ -1,6 +1,6 @@
 "use client";
 
-import { MinusIcon, PlusIcon, RotateCcwIcon } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 
@@ -43,8 +43,7 @@ function Stepper({ label, value, min, max, color, onChange }: StepperProps) {
   const btn =
     "flex size-8 items-center justify-center rounded-md border border-[color:var(--stage-border,#3d4f66)] text-[color:var(--stage-ink,#fff)] transition-colors hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
   return (
-    <div className="flex items-center gap-2">
-      <span className="w-32 text-sm text-[color:var(--stage-muted,#b8c2d0)]">{label}</span>
+    <div className="flex items-center gap-1.5">
       <button type="button" className={btn} aria-label={`Menos ${label}`} disabled={value <= min} onClick={() => onChange(value - 1)}>
         <MinusIcon className="size-4" aria-hidden />
       </button>
@@ -99,22 +98,23 @@ export function FractionProductTool({ initial }: { initial?: number[] }) {
           ))}
           <rect x={0} y={0} width={SIZE} height={SIZE} fill="none" stroke="#fff" strokeWidth={3} rx={3} />
         </svg>
-        <div className="flex min-w-0 flex-1 flex-col gap-2">
-          <Stepper label="numerador 1" value={a} min={0} max={b} color="#58c4dd" onChange={(n) => set({ a: n })} />
-          <Stepper label="denominador 1" value={b} min={1} max={FRACTION_TOOL_MAX_DEN} color="#58c4dd" onChange={(n) => set({ b: n })} />
-          <Stepper label="numerador 2" value={c} min={0} max={d} color="#83c167" onChange={(n) => set({ c: n })} />
-          <Stepper label="denominador 2" value={d} min={1} max={FRACTION_TOOL_MAX_DEN} color="#83c167" onChange={(n) => set({ d: n })} />
-          <div className="mt-2 text-xl text-[color:var(--stage-ink,#fff)]" data-testid="fraction-tool-result">
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-5">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col items-center gap-2">
+              <Stepper label="numerador 1" value={a} min={0} max={b} color="#58c4dd" onChange={(n) => set({ a: n })} />
+              <div className="h-0.5 w-full rounded bg-[color:var(--stage-ink,#fff)]" />
+              <Stepper label="denominador 1" value={b} min={1} max={FRACTION_TOOL_MAX_DEN} color="#58c4dd" onChange={(n) => set({ b: n })} />
+            </div>
+            <span className="text-2xl text-[color:var(--stage-ink,#fff)]">·</span>
+            <div className="flex flex-col items-center gap-2">
+              <Stepper label="numerador 2" value={c} min={0} max={d} color="#83c167" onChange={(n) => set({ c: n })} />
+              <div className="h-0.5 w-full rounded bg-[color:var(--stage-ink,#fff)]" />
+              <Stepper label="denominador 2" value={d} min={1} max={FRACTION_TOOL_MAX_DEN} color="#83c167" onChange={(n) => set({ d: n })} />
+            </div>
+          </div>
+          <div className="text-xl text-[color:var(--stage-ink,#fff)]" data-testid="fraction-tool-result">
             <MathRenderer text={`$\\dfrac{${a}}{${b}} \\cdot \\dfrac{${c}}{${d}} = \\dfrac{${num}}{${den}}${g > 1 || num === 0 ? ` = ${simple}` : ""}$`} />
           </div>
-          <button
-            type="button"
-            onClick={() => setValues(fromInitial(initial))}
-            className="mt-1 inline-flex w-fit items-center gap-2 rounded-md border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm text-[color:var(--stage-muted,#b8c2d0)] hover:bg-white/10"
-          >
-            <RotateCcwIcon className="size-4" aria-hidden />
-            Reiniciar
-          </button>
         </div>
       </div>
     </div>

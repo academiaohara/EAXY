@@ -44,12 +44,14 @@ type BarProps = {
   /** Parte inicial coloreada con otro tono (p. ej. lo que se quita en una resta). */
   skip?: number;
   skipColor?: string;
+  /** Dibuja solo los trozos coloreados, sin el resto de la barra. */
+  trim?: boolean;
 };
 
 /** Barra partida en `den` partes iguales por unidad, con las primeras `shaded` coloreadas. */
-export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, skip = 0, skipColor = MANIM.red }: BarProps) {
+export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, skip = 0, skipColor = MANIM.red, trim = false }: BarProps) {
   const cell = unitW / den;
-  const total = den * units;
+  const total = trim ? shaded : den * units;
   const cells = [];
   for (let i = 0; i < total; i += 1) {
     const filled = i < shaded;
@@ -76,8 +78,8 @@ export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, ski
   return (
     <g>
       {cells}
-      <rect x={x} y={y} width={unitW * units} height={h} fill="none" stroke={MANIM.ink} strokeWidth={3} rx={3} />
-      {unitLines}
+      <rect x={x} y={y} width={trim ? cell * total : unitW * units} height={h} fill="none" stroke={MANIM.ink} strokeWidth={3} rx={3} />
+      {trim ? null : unitLines}
     </g>
   );
 }
@@ -108,4 +110,61 @@ export function Subdivision({ show, x, y, unitW, h, units = 1, parts, existing, 
     );
   }
   return <Fade show={show}>{lines}</Fade>;
+}
+
+type OpProps = {
+  /** Centro del signo. Con `y` en la ordenada de la raya de fracción queda alineado con ella. */
+  x: number;
+  y: number;
+  kind: "+" | "-" | "·" | ":" | "=";
+  size?: number;
+  color?: string;
+};
+
+/** Signo dibujado con formas (no con texto): su centro es exactamente (x, y). */
+export function Op({ x, y, kind, size = 40, color = MANIM.ink }: OpProps) {
+  const sw = Math.max(2.5, size * 0.085);
+  const r = size * 0.085;
+  const hw = size * 0.24;
+  const line = (cy: number, key: string) => <line key={key} x1={x - hw} x2={x + hw} y1={cy} y2={cy} stroke={color} strokeWidth={sw} strokeLinecap="round" />;
+  return (
+    <g>
+      {kind === "·" ? <circle cx={x} cy={y} r={r * 1.15} fill={color} /> : null}
+      {kind === ":" ? (
+        <>
+          <circle cx={x} cy={y - size * 0.2} r={r * 1.15} fill={color} />
+          <circle cx={x} cy={y + size * 0.2} r={r * 1.15} fill={color} />
+        </>
+      ) : null}
+      {kind === "-" ? line(y, "m") : null}
+      {kind === "+" ? (
+        <>
+          {line(y, "h")}
+          <line x1={x} x2={x} y1={y - hw} y2={y + hw} stroke={color} strokeWidth={sw} strokeLinecap="round" />
+        </>
+      ) : null}
+      {kind === "=" ? (
+        <>
+          {line(y - size * 0.1, "a")}
+          {line(y + size * 0.1, "b")}
+        </>
+      ) : null}
+    </g>
+  );
+}
+
+/** Ancho que ocupa una `Frac` del tamaño dado. */
+export function fracWidth(n: number | string, d: number | string, size = 32): number {
+  return (Math.max(String(n).length, String(d).length) * size * 0.34 + 8) * 2;
+}
+
+/** Centros de elementos de ancho dado, colocados de izquierda a derecha con un hueco fijo y centrados en `cx`. */
+export function placeRow(widths: number[], gap: number, cx = 400): number[] {
+  const total = widths.reduce((acc, w) => acc + w, 0) + gap * Math.max(0, widths.length - 1);
+  let at = cx - total / 2;
+  return widths.map((w) => {
+    const c = at + w / 2;
+    at += w + gap;
+    return c;
+  });
 }
