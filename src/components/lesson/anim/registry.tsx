@@ -48,6 +48,11 @@ import { buildMedirUnidad } from "@/components/lesson/anim/scenes/medir-unidad";
 import { buildMeridianoMetro } from "@/components/lesson/anim/scenes/meridiano-metro";
 import { buildTablaUnidades } from "@/components/lesson/anim/scenes/tabla-unidades";
 
+import { buildAumentoBarra } from "@/components/lesson/anim/scenes/aumento-barra";
+import { buildCuadriculaPorcentaje } from "@/components/lesson/anim/scenes/cuadricula-porcentaje";
+import { buildReduccionUnidad } from "@/components/lesson/anim/scenes/reduccion-unidad";
+import { buildTablaRazon } from "@/components/lesson/anim/scenes/tabla-razon";
+
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
 /** Lista canónica de animaciones disponibles para `{ kind: "anim", scene }`. */
@@ -98,6 +103,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "escala-longitudes": () => buildEscalaLongitudes(),
   "cuadrados-area": (p) => buildCuadradosArea(p),
   "m2-dm2": () => buildM2Dm2(),
+  "tabla-razon": (p) => buildTablaRazon(p),
+  "reduccion-unidad": (p) => buildReduccionUnidad(p),
+  "cuadricula-porcentaje": (p) => buildCuadriculaPorcentaje(p),
+  "aumento-barra": (p) => buildAumentoBarra(p),
 };
 
 export function buildSlideAnim(

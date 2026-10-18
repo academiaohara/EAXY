@@ -82,6 +82,15 @@ Una sola ilustración: la que hace entender por qué hace falta una unidad comú
 |---|---|---|---|
 | `comerciantes-codo.png` | L1 · «Del codo al metro» (`story`, ~170 px) | 1024×1024 | Dos comerciantes de la antigüedad, de pie uno frente a otro y de perfil, con túnicas de colores distintos (una ocre y otra azul). Entre los dos sostienen una pieza de tela de lino extendida. Cada uno mide la tela apoyando su propio antebrazo (el codo) sobre ella: el de la izquierda es alto y de brazo largo, el de la derecha es bajo y de brazo corto, de modo que se vea claramente que sus «codos» no coinciden. Sin texto, sin números, sin cinta métrica. |
 
+## Tema 9 · Proporcionalidad y porcentajes
+
+Dos ilustraciones, las que anclan la proporcionalidad inversa a una situación real; tablas, cuadrículas y barras las dibujan las animaciones. Ya están enlazadas en las diapositivas (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/proporcionalidad/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `caballos-heno.png` | L1 · «Proporcionalidad inversa» (`story`, ~150 px) | 1024×1024 | Dos caballos de granja, uno marrón y otro blanco, junto a un carro de madera cargado de heno. Vista tres cuartos. Sin texto ni números. |
+| `albanil-muro.png` | L2 · «Inversa: al bajar a uno, el otro valor sube» (`story`, ~150 px) | 1024×1024 | Albañil con casco amarillo y mono, levantando con una paleta un muro de ladrillo a medio construir. Sin números ni carteles. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

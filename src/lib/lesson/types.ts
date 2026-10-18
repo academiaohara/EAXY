@@ -615,7 +615,11 @@ export type SlideAnimId =
   | "tabla-unidades"
   | "escala-longitudes"
   | "cuadrados-area"
-  | "m2-dm2";
+  | "m2-dm2"
+  | "tabla-razon"
+  | "reduccion-unidad"
+  | "cuadricula-porcentaje"
+  | "aumento-barra";
 
 export type ExprStep = {
   tokens: string[];
@@ -653,6 +657,8 @@ export type SlideAnimParams = {
   nums?: number[];
   /** `tabla-exponentes`: qué se elige de la tabla (m.c.m. o m.c.d.). */
   mode?: "mcm" | "mcd";
+  /** `tabla-razon` / `reduccion-unidad`: tipo de proporcionalidad. */
+  rel?: "directa" | "inversa";
   /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
   sign?: "+" | "-";
   /** Escenas de decimales: número con coma escrito como texto («2,375»). */

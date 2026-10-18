@@ -3,132 +3,127 @@ import { TEMA_1ESO_9_SUBTITLE } from "@/data/lessons/shared";
 
 export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
   slug: "proporcionalidad-directa-problemas",
-  title: "2. Problemas de proporcionalidad directa",
+  title: "2. Problemas de proporcionalidad directa e inversa",
   subtitle: TEMA_1ESO_9_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "metodos",
-      type: "concept",
-      help: [
-        {
-          label: "Dos caminos",
-          message: "Reducción a la unidad: calcula cuánto vale $1$ y multiplica. Regla de tres: monta una proporción con tres datos y despeja el cuarto.",
-        },
-        {
-          label: "¿Cuándo uso cada uno?",
-          message: "Reducción a la unidad es más intuitiva con números pequeños. La regla de tres es más rápida si el valor unitario es incómodo.",
-        },
-      ],
-      title: "Reducción a la unidad y regla de tres",
-      content: [
-        "Para magnitudes **directamente proporcionales** usamos:",
-        "**Reducción a la unidad:** calcula el valor de la magnitud cuando la otra vale $1$.",
-        "**Regla de tres directa:** con dos pares de valores formas **fracciones equivalentes**.",
-        "$$\\frac{a}{b} = \\frac{m}{x} \\Rightarrow a \\cdot x = b \\cdot m \\Rightarrow x = \\frac{b \\cdot m}{a}$$",
-      ],
-    },
-    {
-      id: "chocolatinas-reduccion",
-      type: "animated_solution",
+      id: "reduccion-directa",
+      type: "slide",
       help: [
         {
           label: "¿Por qué divido entre $3$?",
-          message: "Porque $3$ chocolatinas pesan $60$ g. Dividiendo repartes ese peso en una chocolatina.",
+          message: "Porque $3$ chocolatinas pesan $60$ g. Al repartir ese peso entre las $3$ obtienes lo que pesa una sola.",
         },
         {
-          label: "Comprueba con el $3$",
+          label: "Compruébalo",
           message: "Tres chocolatinas de $20$ g pesan $60$ g, como dice el enunciado.",
         },
       ],
-      title: "Reducción a la unidad — chocolatinas",
-      content: [
-        "Tres chocolatinas pesan $60$ gramos. ¿Cuánto pesan cuatro chocolatinas?",
-      ],
-      frames: [
+      title: "Reducción a la unidad: primero, el valor de uno",
+      blocks: [
         {
-          caption: "Valor de una chocolatina:",
-          math: "60 : 3 = 20\\,\\mathrm{g}",
+          kind: "story",
+          text: "Tres chocolatinas pesan **60 g**. ¿Cuánto pesan **cuatro**?",
         },
         {
-          caption: "Cuatro chocolatinas:",
-          math: "20 \\cdot 4 = 80\\,\\mathrm{g}",
+          kind: "steps",
+          items: [
+            "Se baja **a la unidad**: si 3 pesan 60 g, una pesa $60 : 3 = 20$ g.",
+            "Se sube **a lo que piden**: cuatro pesan $20 \\cdot 4 = 80$ g.",
+          ],
+        },
+        {
+          kind: "text",
+          text: "En una **directa**, lo que haces a una columna (dividir, multiplicar) se hace igual a la otra.",
         },
       ],
+      visual: {
+        kind: "anim",
+        scene: "reduccion-unidad",
+        params: { rel: "directa", a: 3, b: 60, c: 4, titles: ["Chocolatinas", "Peso (g)"] },
+      },
     },
     {
-      id: "equivalentes",
-      type: "concept",
+      id: "predict-reduccion",
+      type: "predict",
+      title: "El manantial",
+      question:
+        "Un manantial arroja $6$ litros por minuto. Para saber cuánto tarda en llenar una garrafa de $20$ litros, ¿qué cálculo te da el tiempo que necesita **un** litro?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$60\\,\\text{s} : 6 = 10\\,\\text{s}$" },
+        {
+          id: "b",
+          label: "$6 : 60 = 0{,}1$",
+          incorrectFeedback:
+            "Así obtienes litros por segundo, no segundos por litro. Para la reducción a la unidad necesitas lo que cuesta **un** litro: reparte el minuto ($60$ s) entre los $6$ litros.",
+        },
+        {
+          id: "c",
+          label: "$60 \\cdot 6 = 360\\,\\text{s}$",
+          incorrectFeedback:
+            "Multiplicar daría el tiempo para $36$ litros, no para uno. Para bajar a la unidad se **divide**.",
+        },
+        {
+          id: "d",
+          label: "$20 : 6 \\approx 3{,}3\\,\\text{s}$",
+          incorrectFeedback:
+            "Mezclas litros con segundos. Primero se baja a un litro y luego se sube a $20$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
       help: [
         {
-          label: "¿Qué es la tabla?",
-          message: "Una lista de pares de valores. En una proporcionalidad directa todos los cocientes entre las dos columnas son iguales.",
+          label: "¿Qué dos datos tengo?",
+          message: "En $1$ minuto salen $6$ litros. El tiempo de un litro es lo que tarda en salir uno solo.",
         },
         {
-          label: "Tres datos, un cuarto",
-          message: "Si conoces tres valores de una proporción, la propiedad de las fracciones equivalentes te da el cuarto.",
+          label: "Unidades",
+          message: "Para no trabajar con decimales, pasa el minuto a segundos.",
         },
       ],
-      title: "Fracciones equivalentes en la tabla",
-      content: [
-        "En la tabla chocolatinas–peso: $\\frac{1}{2} = \\frac{20}{40}$, $\\frac{3}{4} = \\frac{60}{80}$…",
-        "Esa propiedad justifica la regla de tres: conoces tres valores y calculas el cuarto.",
-      ],
+      explanation:
+        "Un litro tarda $60 : 6 = 10$ s. Veinte litros: $10 \\cdot 20 = 200$ s $= 3$ min $20$ s.",
     },
     {
-      id: "regla-tres-ocho",
-      type: "animated_solution",
+      id: "regla-tres-directa",
+      type: "slide",
       help: [
         {
           label: "Cómo se monta",
-          message: "Escribe las dos fracciones iguales, con las chocolatinas arriba y los gramos abajo (o al revés, pero igual en las dos).",
+          message: "Escribe las dos fracciones iguales con las chocolatinas arriba y los gramos abajo (o al revés, pero igual en las dos).",
         },
         {
           label: "Cómo se despeja",
           message: "Multiplica en cruz y divide entre el número que acompaña a la $x$ en la diagonal.",
         },
         {
-          label: "Comprueba con la reducción",
+          label: "Compruébalo",
           message: "Si cada chocolatina pesa $20$ g, ocho pesan $160$ g: el mismo resultado.",
         },
       ],
-      title: "Regla de tres — ocho chocolatinas",
-      content: ["Tres chocolatinas pesan $60$ g. ¿Cuánto pesan ocho?"],
-      frames: [
+      title: "Regla de tres directa: una proporción con una incógnita",
+      blocks: [
         {
-          caption: "Plantilla:",
-          math: "\\frac{3}{8} = \\frac{60}{x}",
+          kind: "rule",
+          title: "Fracciones equivalentes",
+          text: "Con tres datos y la incógnita se forman dos fracciones iguales; se multiplica en cruz.",
+          formula: "\\dfrac{a}{b} = \\dfrac{m}{x} \;\\Rightarrow\; x = \\dfrac{b \\cdot m}{a}",
         },
         {
-          caption: "Despeje:",
-          math: "x = \\frac{60 \\cdot 8}{3} = 160\\,\\mathrm{g}",
-        },
-      ],
-    },
-    {
-      id: "manantial",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Directa o inversa?",
-          message: "Más litros, más tiempo: es directa.",
+          kind: "example",
+          title: "3 chocolatinas pesan 60 g; ¿y 8?",
+          lines: [
+            { math: "\\dfrac{3}{8} = \\dfrac{60}{x}", note: "chocolatinas arriba, gramos abajo… en las dos" },
+            { math: "3 \\cdot x = 8 \\cdot 60", note: "producto en cruz" },
+            { math: "x = \\dfrac{60 \\cdot 8}{3} = 160\\,\\text{g}" },
+          ],
         },
         {
-          label: "Unidades",
-          message: "El manantial da litros por minuto, pero la unidad que se calcula es el tiempo por litro: pasa los minutos a segundos.",
-        },
-      ],
-      title: "Problema resuelto — manantial",
-      content: [
-        "Un manantial arroja $6$ litros por minuto. ¿Cuánto tardará en llenar una garrafa de $20$ litros?",
-      ],
-      frames: [
-        {
-          caption: "Tiempo para $1$ litro:",
-          math: "60\\,\\mathrm{s} : 6 = 10\\,\\mathrm{s}",
-        },
-        {
-          caption: "Para $20$ litros:",
-          math: "10 \\cdot 20 = 200\\,\\mathrm{s} = 3\\,\\mathrm{min}\\ 20\\,\\mathrm{s}",
+          kind: "warning",
+          text: "Cada magnitud ocupa **el mismo lugar** en las dos fracciones: si las chocolatinas van arriba a la izquierda, también van arriba a la derecha.",
         },
       ],
     },
@@ -149,7 +144,7 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
           message: "$320$ g es menos que $400$ g, así que cuesta menos de $4{,}60$ €, pero más de la mitad.",
         },
       ],
-      title: "Regla de tres — queso (act. 6)",
+      title: "Regla de tres — queso",
       question:
         "Un trozo de $400$ g cuesta $4{,}60\\,€$. ¿Cuánto cuesta otro de $320$ g del mismo queso? (en euros, solo el número con coma decimal)",
       correctAnswers: ["3,68", "3.68", "3,68 €", "3.68 €", "3,68€", "3.68€"],
@@ -158,27 +153,206 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
         "$\\frac{400}{320} = \\frac{4{,}60}{x}$ → $x = \\frac{320 \\cdot 4{,}60}{400} = 3{,}68\\,€$.",
     },
     {
-      id: "check-fraccion",
-      type: "fill_in_blank",
+      id: "reduccion-inversa",
+      type: "slide",
       help: [
         {
-          label: "¿Qué relaciona una proporción?",
-          message: "Dos fracciones iguales: el producto cruzado es el mismo.",
-          math: ["\\frac{a}{b} = \\frac{c}{d} \\;\\Rightarrow\\; a \\cdot d = b \\cdot c"],
-        },
-        {
-          label: "¿Por cuánto se multiplica?",
-          message: "Mira por cuánto se multiplica el numerador ($4$ a $14$) y aplica lo mismo al denominador.",
+          label: "¿Por qué multiplico al bajar a uno?",
+          message: "Si una sola persona hace el trabajo, tarda **más**: tantas veces más como personas había.",
         },
         {
           label: "Compruébalo",
-          message: "Simplifica $\\frac{4}{6}$ y la fracción que te salga con $x$: tienen que dar la misma.",
+          message: "Con $4$ albañiles tardan menos que con $2$: el resultado debe ser menor que $30$ días.",
         },
       ],
-      title: "Completa la proporción (act. 4a)",
-      question: "Si $\\frac{4}{6} = \\frac{14}{x}$, halla $x$ (solo el número).",
-      correctAnswers: ["21"],
-      explanation: "$x = \\frac{6 \\cdot 14}{4} = 21$.",
+      title: "Inversa: al bajar a uno, el otro valor sube",
+      blocks: [
+        {
+          kind: "story",
+          text: "**Dos albañiles** tardan **30 días** en levantar un muro. ¿Cuánto tardarían **cuatro**?",
+          src: "/lesson/proporcionalidad/albanil-muro.png",
+          alt: "Albañil con casco levantando un muro de ladrillo",
+        },
+        {
+          kind: "steps",
+          items: [
+            "Se baja a **un albañil**: tarda el doble de tiempo, $30 \\cdot 2 = 60$ días.",
+            "Se sube a **cuatro**: el trabajo se reparte, $60 : 4 = 15$ días.",
+          ],
+        },
+        {
+          kind: "warning",
+          text: "En la inversa, al bajar a uno se **multiplica** y al subir se **divide**: al revés que en la directa.",
+        },
+      ],
+      visual: {
+        kind: "anim",
+        scene: "reduccion-unidad",
+        params: { rel: "inversa", a: 2, b: 30, c: 4, titles: ["Albañiles", "Días"] },
+      },
+    },
+    {
+      id: "regla-tres-inversa",
+      type: "slide",
+      help: [
+        {
+          label: "¿Por qué no se cruza?",
+          message: "Porque en la inversa lo que se mantiene es el **producto** de cada pareja: albañiles por días da siempre lo mismo.",
+        },
+        {
+          label: "Mismo muro, mismo trabajo",
+          message: "$2 \\cdot 30 = 60$ es «el trabajo del muro». Con $4$ albañiles, $4 \\cdot x$ tiene que ser también $60$.",
+        },
+      ],
+      title: "Regla de tres inversa: el producto no cambia",
+      blocks: [
+        {
+          kind: "compare",
+          left: {
+            title: "Directa",
+            text: "Se **cruza** (mismo cociente).",
+            math: ["\\dfrac{a}{b} = \\dfrac{m}{x}", "x = \\dfrac{b \\cdot m}{a}"],
+            tone: "ok",
+          },
+          right: {
+            title: "Inversa",
+            text: "Cada fila se multiplica (mismo producto).",
+            math: ["a \\cdot b = c \\cdot x", "x = \\dfrac{a \\cdot b}{c}"],
+            tone: "key",
+          },
+        },
+        {
+          kind: "example",
+          title: "2 albañiles tardan 30 días; ¿y 4?",
+          lines: [
+            { math: "2 \\cdot 30 = 4 \\cdot x", note: "el trabajo total es el mismo" },
+            { math: "x = \\dfrac{60}{4} = 15\\ \\text{días}" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "predict-inversa",
+      type: "predict",
+      title: "El muro de un albañil",
+      question:
+        "Un albañil tarda $60$ días en levantar un muro él solo. ¿Cuántos albañiles harán falta para terminarlo en $20$ días, trabajando todos al mismo ritmo?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$3$ albañiles" },
+        {
+          id: "b",
+          label: "$40$ albañiles",
+          incorrectFeedback:
+            "Has restado $60 - 20$. Los días no se restan: para un tiempo tres veces menor, hace falta tres veces más gente.",
+        },
+        {
+          id: "c",
+          label: "$1\\,200$ albañiles",
+          incorrectFeedback:
+            "Has multiplicado $60 \\cdot 20$. Ese producto no tiene sentido aquí: el producto que se mantiene es albañiles por días, y vale $60$.",
+        },
+        {
+          id: "d",
+          label: "$20$ albañiles",
+          incorrectFeedback:
+            "Has copiado los días como si fueran albañiles. Comprueba: $20$ albañiles tardarían $60 : 20 = 3$ días, no $20$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      help: [
+        {
+          label: "¿Qué se mantiene?",
+          message: "El trabajo del muro: albañiles por días.",
+          math: ["1 \\cdot 60 = 60"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Si quieres tardar menos días, necesitas **más** albañiles que uno. Descarta lo que no cumpla eso.",
+        },
+      ],
+      explanation: "$1 \\cdot 60 = n \\cdot 20 \\Rightarrow n = 60 : 20 = 3$ albañiles.",
+    },
+    {
+      id: "predict-decide",
+      type: "predict",
+      title: "Un grifo y un depósito",
+      question:
+        "Un grifo de $12$ litros por minuto tarda $45$ minutos en llenar un depósito. ¿Qué caudal, en litros por minuto, hace falta para llenarlo en $20$ minutos?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$27$ litros por minuto" },
+        {
+          id: "b",
+          label: "$5{,}3$ litros por minuto",
+          incorrectFeedback:
+            "Has resuelto como una directa ($12 \\cdot 20 : 45$). Pero para llenar en **menos** tiempo hace falta **más** caudal, no menos: es inversa.",
+        },
+        {
+          id: "c",
+          label: "$37$ litros por minuto",
+          incorrectFeedback:
+            "Has sumado los $25$ minutos que se ahorran a los $12$ litros. Caudal y tiempo no se suman: su producto (el volumen del depósito) es lo que se mantiene.",
+        },
+        {
+          id: "d",
+          label: "$12$ litros por minuto",
+          incorrectFeedback: "Con el mismo caudal tardaría los mismos $45$ minutos. Para ir más rápido, hay que abrir más el grifo.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      help: [
+        {
+          label: "¿Directa o inversa?",
+          message: "Quieres que tarde menos tiempo. ¿El caudal tiene que subir o bajar?",
+        },
+        {
+          label: "¿Qué se mantiene?",
+          message: "El volumen del depósito: caudal por tiempo.",
+          math: ["12 \\cdot 45 = 540\\ \\text{litros}"],
+        },
+      ],
+      explanation: "$12 \\cdot 45 = 540$ L. Para $20$ min: $540 : 20 = 27$ L/min.",
+    },
+    {
+      id: "manzanas",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué hago primero?",
+          message: "Calcula lo que cuesta $1$ kilo.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Con $4$ kg pagas más que con $3$ kg ($3{,}75\\,€$), pero no el doble.",
+        },
+      ],
+      title: "Reducción a la unidad — manzanas",
+      question: "Tres kilos de manzanas cuestan $3{,}75\\,€$. ¿Cuánto cuestan cuatro kilos? (en euros, solo el número)",
+      correctAnswers: ["5", "5,00", "5.00", "5 €", "5€"],
+      explanation: "Un kilo cuesta $3{,}75 : 3 = 1{,}25\\,€$. Cuatro kilos: $1{,}25 \\cdot 4 = 5\\,€$.",
+    },
+    {
+      id: "motorista",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Directa o inversa?",
+          message: "A velocidad constante, más tiempo significa más distancia: directa.",
+        },
+        {
+          label: "Un atajo",
+          message: "Si en $3$ minutos recorre $4{,}8$ km, ¿cuánto recorre en $1$ minuto? Multiplica por $10$.",
+        },
+      ],
+      title: "El motorista",
+      question:
+        "Un motorista recorre $4{,}8$ km en $3$ minutos a velocidad constante. ¿Cuántos kilómetros recorrerá en $10$ minutos? (solo el número)",
+      correctAnswers: ["16", "16,0", "16.0"],
+      explanation: "En $1$ minuto recorre $4{,}8 : 3 = 1{,}6$ km. En $10$ minutos: $1{,}6 \\cdot 10 = 16$ km.",
     },
   ],
 };

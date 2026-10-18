@@ -5,140 +5,230 @@ export const porcentajesLesson: InteractiveLesson = {
   slug: "porcentajes",
   title: "3. Porcentajes",
   subtitle: TEMA_1ESO_9_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "concepto",
-      type: "concept",
+      type: "slide",
       help: [
         {
-          label: "Cien partes",
-          message: "Un tanto por ciento es partir el total en cien partes iguales y tomar tantas como dice el número.",
+          label: "¿Qué significa «por ciento»?",
+          message: "Literalmente, «de cada cien». Un $20\\%$ es $20$ de cada $100$.",
         },
         {
-          label: "Con una cantidad fácil",
-          message: "El $20\\%$ de $100$ son $20$. El $20\\%$ de $300$ son tres veces eso: $60$.",
+          label: "¿Por qué siempre cien?",
+          message: "Porque así se pueden comparar cantidades de tamaños distintos con la misma vara de medir.",
+        },
+      ],
+      title: "Un porcentaje son partes de cada 100",
+      blocks: [
+        {
+          kind: "definition",
+          text: "Un **porcentaje** indica cuántas partes **de cada 100** se toman. Se escribe con el símbolo **%**, que se lee «por ciento».",
         },
         {
-          label: "Dos formas de la fórmula",
-          message: "Dividir entre $100$ y multiplicar por $a$ es lo mismo que multiplicar por $\\frac{a}{100}$.",
+          kind: "facts",
+          items: [
+            { tex: "20\\% = 20 \\text{ de cada } 100", label: "veinte por ciento" },
+            { tex: "4{,}5\\% = 4{,}5 \\text{ de cada } 100", label: "interés de un banco" },
+          ],
+        },
+        {
+          kind: "text",
+          text: "Aparece en rebajas, intereses, encuestas y notas. Sirve para comparar: «el 80 % de posibilidades» significa lo mismo con 100 o con 5 000 casos.",
         },
       ],
-      title: "Tanto por ciento",
-      content: [
-        "El símbolo **%** se lee «por ciento»: $20\\%$ = veinte por ciento.",
-        "Calcular un tanto por ciento de una cantidad equivale a partir el total en **cien partes** iguales y tomar tantas como indica el número.",
-        "**Fórmula:** $a\\% \\text{ de } N = (N : 100) \\cdot a$",
-        "También: $a\\% \\text{ de } N = \\frac{a}{100}$ de $N$.",
-      ],
+      visual: { kind: "anim", scene: "cuadricula-porcentaje", params: { a: 20, b: 100 } },
     },
     {
-      id: "aparcamiento",
-      type: "animated_solution",
+      id: "calcular",
+      type: "slide",
       help: [
         {
-          label: "Paquetes de $100$",
-          message: "Con $300$ coches hay tres paquetes de $100$. En cada uno, $20$ son rojos.",
+          label: "¿Por qué divido entre 100?",
+          message: "Porque el $1\\%$ es una de cada cien partes: dividir entre $100$ te da el valor de esa parte.",
         },
         {
-          label: "Comprueba con el atajo",
-          message: "El $20\\%$ es una quinta parte: $300 : 5$ da el mismo resultado.",
+          label: "Compruébalo",
+          message: "El $20\\%$ es menos de la mitad: el resultado debe ser menor que la mitad del total.",
         },
       ],
-      title: "Ejemplo — coches rojos en un aparcamiento",
-      content: [
-        "Hay $300$ coches. El $20\\%$ son rojos. ¿Cuántos coches rojos hay?",
-      ],
-      frames: [
+      title: "Calcular el a % de una cantidad",
+      blocks: [
         {
-          caption: "Paquetes de 100:",
-          math: "300 : 100 = 3",
+          kind: "story",
+          text: "En un aparcamiento hay **300 coches** y el **20 %** son rojos. ¿Cuántos hay?",
         },
         {
-          caption: "Veinte de cada paquete:",
-          math: "3 \\cdot 20 = 60 \\text{ coches rojos}",
+          kind: "rule",
+          title: "Se parte en cien y se toman a",
+          formula: "a\\% \\text{ de } N = (N : 100) \\cdot a",
+        },
+        {
+          kind: "example",
+          title: "65 % de 540",
+          lines: [
+            { math: "540 : 100 = 5{,}4", note: "el 1 %" },
+            { math: "5{,}4 \\cdot 65 = 351", note: "65 veces el 1 %" },
+          ],
         },
       ],
+      visual: { kind: "anim", scene: "cuadricula-porcentaje", params: { a: 20, b: 300 } },
+    },
+    {
+      id: "predict-calcular",
+      type: "predict",
+      title: "El autobús del colegio",
+      question:
+        "En un colegio de $450$ alumnos, el $40\\%$ va en autobús escolar. ¿Cuántos alumnos usan el autobús?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$180$ alumnos" },
+        {
+          id: "b",
+          label: "$18\\,000$ alumnos",
+          incorrectFeedback:
+            "Has multiplicado $450 \\cdot 40$ sin dividir entre $100$. Un porcentaje nunca puede dar más que el total: no caben $18\\,000$ alumnos entre $450$.",
+        },
+        {
+          id: "c",
+          label: "$410$ alumnos",
+          incorrectFeedback:
+            "Has restado $450 - 40$. El $40\\%$ no son $40$ alumnos: son $40$ de cada $100$.",
+        },
+        {
+          id: "d",
+          label: "$18$ alumnos",
+          incorrectFeedback:
+            "Has dividido entre $100$ pero no has multiplicado por $40$: $450 : 100 = 4{,}5$ es el $1\\%$, no el $40\\%$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      help: [
+        {
+          label: "Primero, el 1 %",
+          message: "Calcula cuántos alumnos son el $1\\%$ de $450$. Después piensa cuántos de esos trozos necesitas.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El $40\\%$ es algo menos que la mitad. La mitad de $450$ es $225$: el resultado debe quedar por debajo.",
+        },
+      ],
+      explanation: "$(450 : 100) \\cdot 40 = 4{,}5 \\cdot 40 = 180$ alumnos.",
     },
     {
       id: "fraccion",
-      type: "concept",
+      type: "slide",
       help: [
         {
-          label: "Porcentaje y fracción son lo mismo",
-          message: "$15\\%$ y $\\frac{15}{100}$ son dos formas de escribir el mismo número. La fracción se puede simplificar.",
+          label: "¿Cómo saco el % de un conjunto?",
+          message: "Escribe la fracción que representa la parte y busca una equivalente con denominador $100$.",
         },
         {
-          label: "¿Y la calculadora?",
-          message: "La tecla $\\%$ hace por ti la división entre $100$.",
+          label: "Si no puedo pasar a 100",
+          message: "Divide: $3 : 5 = 0{,}6$, y ese decimal por $100$ es el porcentaje.",
         },
       ],
-      title: "Un porcentaje es una fracción",
-      content: [
-        "$a\\%$ equivale a la fracción $\\frac{a}{100}$.",
-        "Ejemplo: $15\\%$ de $80 = \\frac{15}{100}$ de $80 = (80 : 100) \\cdot 15 = 12$.",
-        "En la calculadora puedes usar la tecla **%** (por ejemplo $240 \\times 15\\%$).",
-      ],
-    },
-    {
-      id: "especiales",
-      type: "concept",
-      help: [
+      title: "Un porcentaje es una fracción de denominador 100",
+      blocks: [
         {
-          label: "¿Por qué estos son especiales?",
-          message: "Porque son fracciones sencillas: $50\\%$ es la mitad, $25\\%$ un cuarto, $20\\%$ un quinto, $10\\%$ un décimo.",
+          kind: "rule",
+          formula: "a\\% = \\dfrac{a}{100}",
         },
         {
-          label: "Combínalos",
-          message: "El $30\\%$ es tres veces el $10\\%$. El $5\\%$ es la mitad del $10\\%$. Con estos atajos calculas casi cualquier porcentaje de cabeza.",
+          kind: "compare",
+          left: {
+            title: "Dividir y multiplicar",
+            math: ["20\\% \\text{ de } 300", "(300 : 100) \\cdot 20 = 60"],
+            tone: "key",
+          },
+          right: {
+            title: "Fracción del total",
+            math: ["\\dfrac{20}{100} \\text{ de } 300", "\\dfrac{20 \\cdot 300}{100} = 60"],
+            tone: "ok",
+          },
         },
-      ],
-      title: "Porcentajes especiales",
-      content: [
-        "$50\\% = \\frac{1}{2}$ → divide entre $2$.",
-        "$25\\% = \\frac{1}{4}$ → divide entre $4$.",
-        "$20\\% = \\frac{1}{5}$ → divide entre $5$.",
-        "$10\\% = \\frac{1}{10}$ → divide entre $10$.",
-        "A partir del $10\\%$ puedes obtener el $5\\%$ (mitad) o el $30\\%$ (triple del $10\\%$), etc.",
-      ],
-      visuals: [
         {
-          kind: "cards",
-          title: "Atajos mentales",
-          items: [
-            { title: "50%", math: "N : 2", tone: "cobalt" },
-            { title: "25%", math: "N : 4", tone: "emerald" },
-            { title: "10%", math: "N : 10", tone: "amber" },
+          kind: "example",
+          title: "5 pelotas: 3 azules, 1 roja, 1 blanca",
+          lines: [
+            { math: "\\dfrac{3}{5} = \\dfrac{60}{100}", note: "fracción equivalente con denominador 100" },
+            { math: "\\dfrac{3}{5} = 60\\%", note: "el 60 % de las pelotas son azules" },
           ],
         },
       ],
     },
     {
-      id: "ej-resuelto",
-      type: "animated_solution",
+      id: "especiales",
+      type: "slide",
       help: [
         {
-          label: "¿Por qué empiezo dividiendo entre $100$?",
-          message: "Para saber cuánto vale el $1\\%$. Después multiplicas por $45$ para tomar $45$ de esas partes.",
+          label: "¿Cómo hago el 5 %?",
+          message: "El $5\\%$ es la mitad del $10\\%$. Calcula el $10\\%$ (divides entre $10$) y luego la mitad.",
         },
         {
-          label: "Una estimación",
-          message: "El $45\\%$ es un poco menos de la mitad. La mitad de $800$ es $400$, así que el resultado debe quedar algo por debajo.",
+          label: "Y el 75 %?",
+          message: "Es tres cuartos: calcula un cuarto y multiplica por $3$.",
         },
       ],
-      title: "Ejercicio resuelto — tienda de balones",
-      content: [
-        "Una tienda vende el $45\\%$ de los $800$ balones de su almacén. ¿Cuántos ha vendido?",
-      ],
-      frames: [
+      title: "Porcentajes que se hacen de cabeza",
+      blocks: [
         {
-          caption: "Cálculo:",
-          math: "45\\% \\text{ de } 800 = (800 : 100) \\cdot 45 = 8 \\cdot 45 = 360",
+          kind: "facts",
+          items: [
+            { tex: "50\\% = \\tfrac{1}{2}", label: "se divide entre 2" },
+            { tex: "25\\% = \\tfrac{1}{4}", label: "se divide entre 4" },
+            { tex: "20\\% = \\tfrac{1}{5}", label: "se divide entre 5" },
+            { tex: "10\\% = \\tfrac{1}{10}", label: "se divide entre 10" },
+          ],
         },
         {
-          caption: "Respuesta:",
-          math: "360 \\text{ balones vendidos}",
+          kind: "example",
+          title: "Combinando se llega a casi todos",
+          lines: [
+            { math: "10\\% \\text{ de } 260 = 260 : 10 = 26" },
+            { math: "5\\% \\text{ de } 260 = 26 : 2 = 13", note: "la mitad del 10 %" },
+            { math: "75\\% \\text{ de } 84 = (84 : 4) \\cdot 3 = 63" },
+          ],
         },
       ],
+    },
+    {
+      id: "predict-especial",
+      type: "predict",
+      title: "El club de ajedrez",
+      question:
+        "Un instituto tiene $240$ alumnos y el $25\\%$ pertenece al club de ajedrez. ¿Cuántos socios tiene el club?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$60$ socios" },
+        {
+          id: "b",
+          label: "$120$ socios",
+          incorrectFeedback: "Dividir entre $2$ da el $50\\%$. El $25\\%$ es la mitad de esa mitad: hay que dividir entre $4$.",
+        },
+        {
+          id: "c",
+          label: "$24$ socios",
+          incorrectFeedback: "Dividir entre $10$ da el $10\\%$. El $25\\%$ es una cuarta parte: $240 : 4$.",
+        },
+        {
+          id: "d",
+          label: "$25$ socios",
+          incorrectFeedback: "El $25\\%$ no son $25$ alumnos, son $25$ de cada $100$: sobre $240$ alumnos salen más.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      help: [
+        {
+          label: "¿Qué fracción es el 25 %?",
+          message: "Veinticinco de cada cien. Simplifica esa fracción.",
+        },
+      ],
+      explanation: "$25\\% = \\frac{1}{4}$, así que $240 : 4 = 60$ socios.",
     },
     {
       id: "check-formula",
@@ -150,7 +240,7 @@ export const porcentajesLesson: InteractiveLesson = {
         },
         {
           label: "Descomposición mental",
-          message: "El $10\\%$ de un número se obtiene moviendo la coma un lugar. Luego añade el $1\\%$ dos veces.",
+          message: "El $10\\%$ de un número se obtiene dividiendo entre $10$. Luego añade el $1\\%$ dos veces.",
           math: ["12\\% = 10\\% + 1\\% + 1\\%"],
         },
         {
@@ -188,23 +278,42 @@ export const porcentajesLesson: InteractiveLesson = {
       explanation: "$25\\% = \\frac{25}{100} = \\frac{1}{4}$, la cuarta parte: $20 : 4 = 5$ casillas.",
     },
     {
-      id: "check-mental",
+      id: "plazos",
       type: "fill_in_blank",
       help: [
         {
-          label: "¿Cómo lo hago de cabeza?",
-          message: "El $25\\%$ es la mitad de la mitad. Parte el número por la mitad y luego otra vez por la mitad.",
+          label: "¿Qué hago primero?",
+          message: "Calcula cuánto se paga al contado (el $30\\%$) y réstalo del precio. Lo que queda se reparte.",
         },
         {
           label: "Quiero saber si es razonable",
-          message: "Un cuarto de $84$ es bastante menos que $84$, y algo más de $20$.",
+          message: "Se paga menos de la mitad al contado: queda más de la mitad por pagar. Cada plazo, un sexto de eso.",
         },
       ],
-      title: "Cálculo mental — 25%",
-      question: "¿Cuánto es el $25\\%$ de $84$? (solo el número)",
-      correctAnswers: ["21"],
-      hint: "Como en la cuadrícula, el $25\\%$ es la cuarta parte.",
-      explanation: "El $25\\%$ es la cuarta parte: $84 : 4 = 21$.",
+      title: "El frigorífico a plazos",
+      question:
+        "Una familia compra un frigorífico de $840\\,€$ pagando el $30\\%$ al contado y el resto en $6$ plazos mensuales iguales. ¿Cuánto es cada plazo? (en euros, solo el número)",
+      correctAnswers: ["98", "98 €", "98€", "98,00"],
+      explanation: "Al contado: $0{,}30 \\cdot 840 = 252\\,€$. Resto: $840 - 252 = 588\\,€$. Plazo: $588 : 6 = 98\\,€$.",
+    },
+    {
+      id: "zumos",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué me piden?",
+          message: "Solo una de las cuatro partes: la de zumo de naranja, que es el $45\\%$ de las botellas.",
+        },
+        {
+          label: "Un atajo",
+          message: "El $45\\%$ de $900$ es $45$ veces el $1\\%$, y el $1\\%$ de $900$ es $9$.",
+        },
+      ],
+      title: "Las botellas de zumo",
+      question:
+        "En el estante hay $900$ botellas: un $25\\%$ de tomate, un $45\\%$ de naranja, un $20\\%$ de pera y el resto de melocotón. ¿Cuántas botellas de naranja hay?",
+      correctAnswers: ["405"],
+      explanation: "$45\\%$ de $900 = (900 : 100) \\cdot 45 = 9 \\cdot 45 = 405$.",
     },
   ],
 };
