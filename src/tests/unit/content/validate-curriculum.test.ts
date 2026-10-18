@@ -29,17 +29,32 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone solo los temas 1, 2, 3, 4 y 5 en 1.º ESO", () => {
+  it("expone solo los temas 1, 2, 3, 4, 5 y 6 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(5);
+    expect(firstYear?.modules).toHaveLength(6);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
       "divisibilidad",
       "numeros-enteros",
       "numeros-decimales",
+      "sistema-metrico-decimal",
+    ]);
+  });
+
+  it("tiene las cinco lecciones de la unidad 6 (sistema métrico decimal) en 1.º ESO", () => {
+    const firstYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("1º ESO"),
+    );
+    const unit6 = firstYear?.modules.find((m) => m.slug === "sistema-metrico-decimal");
+    expect(unit6?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "sistema-metrico-magnitudes",
+      "sistema-metrico-longitud",
+      "sistema-metrico-capacidad",
+      "sistema-metrico-peso",
+      "sistema-metrico-superficie",
     ]);
   });
 

@@ -589,7 +589,15 @@ export type SlideAnimId =
   | "decimal-producto"
   | "coma-potencias10"
   | "division-decimal"
-  | "division-coma-divisor";
+  | "division-coma-divisor"
+  | "medir-unidad"
+  | "meridiano-metro"
+  | "cubo-agua"
+  | "escalera-unidades"
+  | "tabla-unidades"
+  | "escala-longitudes"
+  | "cuadrados-area"
+  | "m2-dm2";
 
 export type ExprStep = {
   tokens: string[];
@@ -639,6 +647,13 @@ export type SlideAnimParams = {
   places?: number;
   /** `coma-potencias10`: multiplicar o dividir por 10, 100 y 1000. */
   dir?: "mul" | "div";
+  /** Escenas del sistema métrico: familia de unidades (metro, litro, gramo, metro cuadrado). */
+  units?: "m" | "l" | "g" | "m2";
+  /** `tabla-unidades`: unidad de la que se parte («km») y a la que se llega («m»). */
+  from?: string;
+  to?: string;
+  /** `tabla-unidades`: cantidad compleja, cada parte con su unidad («3 dam», «8 m», «7 cm»). */
+  parts?: string[];
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";

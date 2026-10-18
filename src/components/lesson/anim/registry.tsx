@@ -39,6 +39,15 @@ import { buildDivisionDecimal } from "@/components/lesson/anim/scenes/division-d
 import { buildRedondeoDecimal } from "@/components/lesson/anim/scenes/redondeo-decimal";
 import { buildTablaDecimal } from "@/components/lesson/anim/scenes/tabla-decimal";
 
+import { buildCuadradosArea } from "@/components/lesson/anim/scenes/cuadrados-area";
+import { buildCuboAgua } from "@/components/lesson/anim/scenes/cubo-agua";
+import { buildEscalaLongitudes } from "@/components/lesson/anim/scenes/escala-longitudes";
+import { buildEscaleraUnidades } from "@/components/lesson/anim/scenes/escalera-unidades";
+import { buildM2Dm2 } from "@/components/lesson/anim/scenes/m2-dm2";
+import { buildMedirUnidad } from "@/components/lesson/anim/scenes/medir-unidad";
+import { buildMeridianoMetro } from "@/components/lesson/anim/scenes/meridiano-metro";
+import { buildTablaUnidades } from "@/components/lesson/anim/scenes/tabla-unidades";
+
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
 /** Lista canónica de animaciones disponibles para `{ kind: "anim", scene }`. */
@@ -81,6 +90,14 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "coma-potencias10": (p) => buildComaPotencias10(p),
   "division-decimal": (p) => buildDivisionDecimal(p),
   "division-coma-divisor": (p) => buildDivisionComaDivisor(p),
+  "medir-unidad": () => buildMedirUnidad(),
+  "meridiano-metro": () => buildMeridianoMetro(),
+  "cubo-agua": () => buildCuboAgua(),
+  "escalera-unidades": (p) => buildEscaleraUnidades(p),
+  "tabla-unidades": (p) => buildTablaUnidades(p),
+  "escala-longitudes": () => buildEscalaLongitudes(),
+  "cuadrados-area": (p) => buildCuadradosArea(p),
+  "m2-dm2": () => buildM2Dm2(),
 };
 
 export function buildSlideAnim(
