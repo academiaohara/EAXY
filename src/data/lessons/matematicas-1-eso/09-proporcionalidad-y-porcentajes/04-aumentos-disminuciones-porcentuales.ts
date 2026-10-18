@@ -114,6 +114,8 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
           text: "Subir un $20\\%$ y luego bajar un $20\\%$ **no** devuelve el precio original: el segundo porcentaje se calcula sobre una cantidad mayor.",
         },
       ],
+      arrange: "text-top",
+      visual: { kind: "anim", scene: "factor-cambio", params: { a: 460, b: 20, c: 900, d: 15 } },
     },
     {
       id: "predict-rebaja",

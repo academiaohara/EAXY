@@ -625,6 +625,8 @@ export type SlideAnimId =
   | "reduccion-unidad"
   | "regla-tres-cruz"
   | "regla-tres-producto"
+  | "porcentaje-mental"
+  | "factor-cambio"
   | "cuadricula-porcentaje"
   | "aumento-barra"
   | "fraccion-partes"
@@ -779,7 +781,8 @@ export type SlideToolId =
   | "fraccion-equivalentes"
   | "fraction-product"
   | "valor-numerico"
-  | "balanza-explorador";
+  | "balanza-explorador"
+  | "porcentaje-cuadricula";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

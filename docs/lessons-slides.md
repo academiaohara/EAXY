@@ -102,6 +102,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `reduccion-unidad` | Reducción a la unidad: de `a ↔ b` se baja a 1 y se sube a `c`; directa (`:a`, `·c`) o inversa (`·a`, `:c`) | `rel`, `a`, `b`, `c`, `titles` |
 | `regla-tres-cruz` | Regla de tres directa: filas como fracciones iguales (magnitud arriba/abajo igual en las dos), producto en cruz y despeje de la x | `a`, `b` (pareja conocida), `c` (valor por el que se pregunta), `titles`, `unit?` |
 | `regla-tres-producto` | Regla de tres inversa: el producto de cada fila es el mismo, `a·b = c·x`, y se despeja la x | `a`, `b` (pareja conocida), `c`, `titles`, `unit?` |
+| `porcentaje-mental` | Cálculo mental: barra del total partida en 10 (10 % = ÷10), mitad del 10 % = 5 % y combinar (15 %) | `a` (total, múltiplo de 20) |
+| `factor-cambio` | Aumento (100 % + a % → ×1,a) y rebaja (100 % − a % → ×0,b) con dos barras | `a`, `b` (precio y % del aumento), `c`, `d` (precio y % de la rebaja) |
 | `cuadricula-porcentaje` | Porcentaje como «a de cada 100» en una cuadrícula de 100; con total `b` ≠ 100, paquetes de 100 | `a` (%), `b` (total) |
 | `aumento-barra` | Aumento (`sign: "+"`) o rebaja (`"-"`) porcentual con barras; termina en el factor 1 ± a/100 | `a` (precio), `b` (%), `sign` |
 | `fraccion-partes` | Pizza partida en `b` porciones iguales (denominador), se toman `a` (numerador); al final, lo que queda y que suma 1 | `a`, `b` |
@@ -146,6 +148,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fraccion-equivalentes` | Fracción de partida `n`/`d` y multiplicador `k` (1–6): dos barras con el mismo trozo coloreado | `n`, `d`, `k` |
 | `fraction-product` | Producto de dos fracciones propias en un cuadrado unidad: columnas (1.ª), filas (2.ª) y zona solapada = resultado; denominadores de 1 a 8 | `initial: [a, b, c, d]` |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
+| `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `balanza-explorador` | Balanza `a·x + b = c`: sumar/restar 1 o dividir entre `a` en los dos platos; la solución no cambia (ecuaciones equivalentes) | `a`, `b`, `c` |
 
 ## Respuesta como fracción

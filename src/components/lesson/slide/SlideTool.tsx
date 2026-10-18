@@ -386,6 +386,63 @@ function BalanzaExplorador({ block }: { block: ToolBlock }) {
   );
 }
 
+/** Cuadrícula de 100 casillas: el alumno elige el porcentaje y se pintan tantas casillas como indica. */
+function PorcentajeCuadricula({ block }: { block: ToolBlock }) {
+  const init = clamp(Math.round(block.params?.a ?? 35), 0, 100);
+  const [pct, setPct] = useState(init);
+  const CELL = 38;
+  const btn =
+    "rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold tabular-nums text-[color:var(--stage-ink,#fff)] hover:bg-white/10";
+
+  return (
+    <Frame
+      hint={block.hint ?? "Mueve el porcentaje y cuenta las casillas pintadas: cada casilla es el 1 %."}
+      onReset={() => setPct(init)}
+      controls={
+        <>
+          <Slider label="Porcentaje" value={pct} min={0} max={100} color={MANIM.yellow} onChange={setPct} />
+          <div className="flex flex-wrap gap-2">
+            {[10, 25, 50, 75, 100].map((v) => (
+              <button key={v} type="button" className={btn} onClick={() => setPct(v)}>
+                {v} %
+              </button>
+            ))}
+          </div>
+        </>
+      }
+    >
+      <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1" data-testid="tool-readout">
+        <MathRenderer text={`$${pct}\\% = \\dfrac{${pct}}{100} = ${decEs(pct / 100)}$`} className="text-3xl" />
+        <span className="text-lg font-semibold" style={{ color: MANIM.yellow }}>
+          {pct} casillas de cada 100
+        </span>
+      </div>
+      <svg viewBox={`0 0 ${10 * CELL + 4} ${10 * CELL + 4}`} className="mx-auto block h-64 w-auto max-w-full" aria-hidden focusable="false" data-testid="tool-grid">
+        {Array.from({ length: 100 }, (_, i) => {
+          const r = Math.floor(i / 10);
+          const c = i % 10;
+          const on = (9 - r) * 10 + c < pct;
+          return (
+            <rect
+              key={i}
+              x={2 + c * CELL + 2}
+              y={2 + r * CELL + 2}
+              width={CELL - 4}
+              height={CELL - 4}
+              rx={4}
+              fill={on ? MANIM.yellow : "none"}
+              fillOpacity={on ? 0.9 : 0}
+              stroke={on ? MANIM.yellow : MANIM.grid}
+              strokeWidth={2}
+              className="anim-t"
+            />
+          );
+        })}
+      </svg>
+    </Frame>
+  );
+}
+
 /** Herramienta interactiva dentro de una diapositiva (el alumno cambia valores y ve el resultado). */
 export function SlideTool({ block }: { block: ToolBlock }) {
   switch (block.tool) {
@@ -399,6 +456,8 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ValorNumerico block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
+    case "porcentaje-cuadricula":
+      return <PorcentajeCuadricula block={block} />;
     default:
       return null;
   }

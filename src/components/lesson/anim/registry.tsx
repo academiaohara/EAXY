@@ -63,6 +63,8 @@ import { buildAumentoBarra } from "@/components/lesson/anim/scenes/aumento-barra
 import { buildCuadriculaPorcentaje } from "@/components/lesson/anim/scenes/cuadricula-porcentaje";
 import { buildReduccionUnidad } from "@/components/lesson/anim/scenes/reduccion-unidad";
 import { buildReglaTresProducto } from "@/components/lesson/anim/scenes/regla-tres-producto";
+import { buildPorcentajeMental } from "@/components/lesson/anim/scenes/porcentaje-mental";
+import { buildFactorCambio } from "@/components/lesson/anim/scenes/factor-cambio";
 import { buildReglaTresCruz } from "@/components/lesson/anim/scenes/regla-tres-cruz";
 import { buildTablaRazon } from "@/components/lesson/anim/scenes/tabla-razon";
 
@@ -123,6 +125,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "tabla-razon": (p) => buildTablaRazon(p),
   "reduccion-unidad": (p) => buildReduccionUnidad(p),
   "regla-tres-cruz": (p) => buildReglaTresCruz(p),
+  "porcentaje-mental": (p) => buildPorcentajeMental(p),
+  "factor-cambio": (p) => buildFactorCambio(p),
   "regla-tres-producto": (p) => buildReglaTresProducto(p),
   "cuadricula-porcentaje": (p) => buildCuadriculaPorcentaje(p),
   "aumento-barra": (p) => buildAumentoBarra(p),
