@@ -29,11 +29,11 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone solo los temas 1 a 9 en 1.º ESO", () => {
+  it("expone los temas 1 a 10 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(9);
+    expect(firstYear?.modules).toHaveLength(10);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
@@ -44,6 +44,7 @@ describe("validateCurriculum", () => {
       "fracciones",
       "operaciones-con-fracciones",
       "proporcionalidad-y-porcentajes",
+      "algebra",
     ]);
   });
 
