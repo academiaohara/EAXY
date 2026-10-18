@@ -619,7 +619,15 @@ export type SlideAnimId =
   | "tabla-razon"
   | "reduccion-unidad"
   | "cuadricula-porcentaje"
-  | "aumento-barra";
+  | "aumento-barra"
+  | "fraccion-partes"
+  | "fraccion-recta"
+  | "fraccion-operador"
+  | "fraccion-equivalente"
+  | "fraccion-barras-suma"
+  | "fraccion-de-fraccion"
+  | "simplificar-factores"
+  | "fraccion-cabe";
 
 export type ExprStep = {
   tokens: string[];
@@ -678,6 +686,8 @@ export type SlideAnimParams = {
   to?: string;
   /** `tabla-unidades`: cantidad compleja, cada parte con su unidad («3 dam», «8 m», «7 cm»). */
   parts?: string[];
+  /** `simplificar-factores`: el producto viene de una división (se da la vuelta a la segunda fracción). */
+  inv?: boolean;
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
@@ -732,7 +742,21 @@ export type SlideBlock =
       captions?: string[];
       /** Milisegundos por paso en reproducción automática. */
       beatMs?: number;
+    }
+  /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
+  | {
+      kind: "tool";
+      tool: SlideToolId;
+      /** Valores iniciales (y fracción de partida en `fraccion-equivalentes`). */
+      params?: { n?: number; d?: number; k?: number };
+      /** `fraction-product`: numerador y denominador de cada fracción, `[a, b, c, d]`. */
+      initial?: number[];
+      /** Una línea que dice qué probar. */
+      hint?: string;
     };
+
+/** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
+export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes" | "fraction-product";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento
@@ -744,7 +768,7 @@ export type SlideStep = LessonStepBase &
     /** Columna de texto (de arriba abajo). */
     blocks: SlideBlock[];
     /** Elemento visual principal; en pantallas anchas va al lado del texto. */
-    visual?: Extract<SlideBlock, { kind: "anim" | "figure" }>;
+    visual?: Extract<SlideBlock, { kind: "anim" | "figure" | "tool" }>;
     /**
      * `split` (por defecto con visual): texto | visual. `visual-top`: visual ancho
      * arriba y texto debajo en columnas. `text-top`: los bloques de texto en dos

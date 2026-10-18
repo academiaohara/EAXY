@@ -91,6 +91,23 @@ Dos ilustraciones, las que anclan la proporcionalidad inversa a una situación r
 | `caballos-heno.png` | L1 · «Proporcionalidad inversa» (`story`, ~150 px) | 1024×1024 | Dos caballos de granja, uno marrón y otro blanco, junto a un carro de madera cargado de heno. Vista tres cuartos. Sin texto ni números. |
 | `albanil-muro.png` | L2 · «Inversa: al bajar a uno, el otro valor sube» (`story`, ~150 px) | 1024×1024 | Albañil con casco amarillo y mono, levantando con una paleta un muro de ladrillo a medio construir. Sin números ni carteles. |
 
+## Tema 7 · Las fracciones
+
+Solo dos ilustraciones, las que anclan algo real; pizzas, barras, rectas y bidón de la animación los dibujan las escenas (`fraccion-*`). Ya están enlazadas en las diapositivas (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/fracciones/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `panes-egipcios.png` | L1 · «Repartir exige fracciones» (`story`, ~170 px) | 1024×1024 | Escriba egipcio sentado tras una mesa baja, con túnica blanca de lino y tocado a rayas, sosteniendo un papiro enrollado y un cálamo. Sobre la mesa, varios panes redondos y planos. Sin jeroglíficos legibles, sin cifras ni texto. |
+| `bidon.png` | L2 · «Una fracción de una cantidad» (`story`, ~150 px) | 1024×1024 | Bidón de plástico azul translúcido para agua, con asa y tapón de rosca, vista tres cuartos. **Sin marcas de graduación, sin cifras ni etiqueta.** Un nivel de agua a media altura, sin números. |
+
+## Tema 8 · Operaciones con fracciones
+
+Una sola ilustración: ancla la cantidad de la división «bidón entre frascos». Las barras, áreas y tablas de factores las dibujan las animaciones. Ya está enlazada en la diapositiva «Dividir es multiplicar por la inversa» (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/fracciones/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `bidon-frascos.png` | L3 · «Dividir es multiplicar por la inversa» (`story`, ~150 px) | 1024×1024 | Bidón azul de plástico con tapón y asa y, delante, cuatro frascos de perfume pequeños de cristal, redondos y **vacíos**. Sin etiquetas, sin texto, sin números. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).
