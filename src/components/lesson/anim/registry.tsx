@@ -51,6 +51,10 @@ import { buildFraccionEquivalente } from "@/components/lesson/anim/scenes/fracci
 import { buildFraccionOperador } from "@/components/lesson/anim/scenes/fraccion-operador";
 import { buildFraccionPartes } from "@/components/lesson/anim/scenes/fraccion-partes";
 import { buildFraccionRecta } from "@/components/lesson/anim/scenes/fraccion-recta";
+import { buildFraccionBarrasSuma } from "@/components/lesson/anim/scenes/fraccion-barras-suma";
+import { buildFraccionCabe } from "@/components/lesson/anim/scenes/fraccion-cabe";
+import { buildFraccionDeFraccion } from "@/components/lesson/anim/scenes/fraccion-de-fraccion";
+import { buildSimplificarFactores } from "@/components/lesson/anim/scenes/simplificar-factores";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -106,6 +110,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fraccion-recta": (p) => buildFraccionRecta(p),
   "fraccion-operador": (p) => buildFraccionOperador(p),
   "fraccion-equivalente": (p) => buildFraccionEquivalente(p),
+  "fraccion-barras-suma": (p) => buildFraccionBarrasSuma(p),
+  "fraccion-de-fraccion": (p) => buildFraccionDeFraccion(p),
+  "simplificar-factores": (p) => buildSimplificarFactores(p),
+  "fraccion-cabe": (p) => buildFraccionCabe(p),
 };
 
 export function buildSlideAnim(

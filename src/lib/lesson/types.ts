@@ -619,7 +619,11 @@ export type SlideAnimId =
   | "fraccion-partes"
   | "fraccion-recta"
   | "fraccion-operador"
-  | "fraccion-equivalente";
+  | "fraccion-equivalente"
+  | "fraccion-barras-suma"
+  | "fraccion-de-fraccion"
+  | "simplificar-factores"
+  | "fraccion-cabe";
 
 export type ExprStep = {
   tokens: string[];
@@ -676,6 +680,8 @@ export type SlideAnimParams = {
   to?: string;
   /** `tabla-unidades`: cantidad compleja, cada parte con su unidad («3 dam», «8 m», «7 cm»). */
   parts?: string[];
+  /** `simplificar-factores`: el producto viene de una división (se da la vuelta a la segunda fracción). */
+  inv?: boolean;
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
@@ -737,12 +743,14 @@ export type SlideBlock =
       tool: SlideToolId;
       /** Valores iniciales (y fracción de partida en `fraccion-equivalentes`). */
       params?: { n?: number; d?: number; k?: number };
+      /** `fraction-product`: numerador y denominador de cada fracción, `[a, b, c, d]`. */
+      initial?: number[];
       /** Una línea que dice qué probar. */
       hint?: string;
     };
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
-export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes";
+export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes" | "fraction-product";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

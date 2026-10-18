@@ -3,6 +3,7 @@
 import { RotateCcwIcon } from "lucide-react";
 import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { SlideBlock } from "@/lib/lesson/types";
@@ -200,6 +201,8 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FraccionExplorador block={block} />;
     case "fraccion-equivalentes":
       return <FraccionEquivalentes block={block} />;
+    case "fraction-product":
+      return <FractionProductTool initial={block.initial} />;
     default:
       return null;
   }
