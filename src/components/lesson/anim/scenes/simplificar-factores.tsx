@@ -1,5 +1,5 @@
 import { Canvas, Fade, Move, Txt, WriteLine } from "@/components/lesson/anim/primitives";
-import { Frac } from "@/components/lesson/anim/fraction-svg";
+import { Frac, Op, fracWidth, placeRow } from "@/components/lesson/anim/fraction-svg";
 import { MANIM } from "@/components/lesson/anim/palette";
 import { factorize } from "@/components/lesson/anim/number-theory";
 import type { AnimBuild } from "@/components/lesson/anim/types";
@@ -8,7 +8,9 @@ const STEP = 46;
 const NUM_Y = 176;
 const BAR_Y = 202;
 const DEN_Y = 248;
-const GAP = 80;
+const GAP = 64;
+const PAD = 28;
+const AXIS = BAR_Y;
 const PAIR_COLORS = [MANIM.red, MANIM.orange, MANIM.purple, MANIM.blue, MANIM.green];
 
 type Side = "n" | "d";
@@ -112,7 +114,7 @@ export function buildSimplificarFactores(params: {
       : `Multiplicamos lo que queda: $\\dfrac{${a}}{${b}} ${op} \\dfrac{${c}}{${d}} = \\dfrac{${restN}}{${restD}}$.`,
   ];
 
-  const mergedHalf = rowWidth(Math.max(mergedLen.n, mergedLen.d, 1)) / 2 + 30;
+  const mergedHalf = rowWidth(Math.max(mergedLen.n, mergedLen.d, 1)) / 2 + PAD;
   const rowWidthOf = (cnt: number) => rowWidth(Math.max(cnt, 1));
 
   const bB = 1 + off;
@@ -137,10 +139,17 @@ export function buildSimplificarFactores(params: {
         return decomposed(g) ? parts[f][side].length : 1;
       };
       const groupOf = (f: 0 | 1, side: Side) => GROUPS.findIndex((x) => x.f === f && x.side === side);
-      const w = (f: 0 | 1) => rowWidthOf(Math.max(count(groupOf(f, "n")), count(groupOf(f, "d")))) + 70;
-      const total = w(0) + w(1) + GAP;
-      const cx: [number, number] = [400 - total / 2 + w(0) / 2, 400 + total / 2 - w(1) / 2];
-      const signX = (cx[0] + w(0) / 2 + cx[1] - w(1) / 2) / 2;
+      const w = (f: 0 | 1) => rowWidthOf(Math.max(count(groupOf(f, "n")), count(groupOf(f, "d")))) + 2 * PAD;
+      const [cx0, signX, cx1] = placeRow([w(0), 0, w(1)], GAP / 2);
+      const cx: [number, number] = [cx0!, cx1!];
+      // Fracciones sin descomponer: mismo eje que las rayas de abajo y centradas en la pizarra.
+      const origW = (n: number, d: number) => fracWidth(n, d, 44);
+      const rowOrig = (n2: number, d2: number) => placeRow([origW(a, b), 40, origW(n2, d2)], 30);
+      const L0 = rowOrig(c, d);
+      const L1 = rowOrig(pc, pd);
+      const Lo = inv && inverted ? L1 : L0;
+      const topW = [fracWidth(a, b, 30), 20, fracWidth(pc, pd, 30)];
+      const T = placeRow(topW, 22);
       const posB = (t: Tok, i = t.i, cnt = count(t.g)) => ({ x: rowX(cx[t.f], cnt, i), y: t.side === "n" ? NUM_Y : DEN_Y });
       const posC = (t: Tok) => ({ x: rowX(400, mergedLen[t.side], t.merged), y: t.side === "n" ? NUM_Y : DEN_Y });
       const noteOf = (g: number) => {
@@ -153,39 +162,39 @@ export function buildSimplificarFactores(params: {
         <Canvas>
           {/* fracciones sin descomponer */}
           <Fade show={beat < bB}>
-            <Frac x={270} y={190} n={a} d={b} size={44} />
+            <Move x={Lo[0]!} y={0}>
+              <Frac x={0} y={AXIS} n={a} d={b} size={44} />
+            </Move>
+            <Move x={Lo[1]!} y={0}>
+              <Fade show={!inv || !inverted}>
+                <Op x={0} y={AXIS} kind={inv ? ":" : "·"} size={44} />
+              </Fade>
+              <Fade show={inv && inverted}>
+                <Op x={0} y={AXIS} kind="·" size={44} />
+              </Fade>
+            </Move>
             <Fade show={!inv || !inverted}>
-              <Txt x={340} y={196} size={40}>
-                {op}
-              </Txt>
-              <Frac x={410} y={190} n={c} d={d} size={44} />
+              <Frac x={L0[2]!} y={AXIS} n={c} d={d} size={44} />
             </Fade>
             <Fade show={inv && inverted}>
-              <Txt x={340} y={196} size={40}>
-                ·
-              </Txt>
-              <Frac x={410} y={190} n={pc} d={pd} size={44} color={MANIM.yellow} />
-              <Txt x={410} y={278} size={22} color={MANIM.yellow}>
+              <Frac x={L1[2]!} y={AXIS} n={pc} d={pd} size={44} color={MANIM.yellow} />
+              <Txt x={L1[2]!} y={AXIS + 92} size={22} color={MANIM.yellow}>
                 inversa
               </Txt>
             </Fade>
           </Fade>
           {/* la fracción original, con la que lo de abajo es igual */}
           <Fade show={beat >= bB} dy={-10}>
-            <Frac x={330} y={50} n={a} d={b} size={30} color={MANIM.muted} />
-            <Txt x={385} y={54} size={28} color={MANIM.muted}>
-              {inv ? "·" : op}
-            </Txt>
-            <Frac x={440} y={50} n={pc} d={pd} size={30} color={inv ? MANIM.yellow : MANIM.muted} />
-            <Txt x={400} y={116} size={30} color={MANIM.yellow}>
-              =
-            </Txt>
+            <Frac x={T[0]!} y={50} n={a} d={b} size={30} color={MANIM.muted} />
+            <Op x={T[1]!} y={50} kind="·" size={30} color={MANIM.muted} />
+            <Frac x={T[2]!} y={50} n={pc} d={pd} size={30} color={inv ? MANIM.yellow : MANIM.muted} />
+            <Op x={400} y={116} kind="=" size={34} color={MANIM.yellow} />
           </Fade>
           {/* dos fracciones con sus factores */}
           <Fade show={apart}>
             {([0, 1] as const).map((f) => (
               <g key={f}>
-                <line x1={cx[f] - w(f) / 2 + 10} x2={cx[f] + w(f) / 2 - 10} y1={BAR_Y} y2={BAR_Y} stroke={f === 1 && inv ? MANIM.yellow : MANIM.ink} strokeWidth={3.5} strokeLinecap="round" />
+                <line x1={cx[f] - w(f) / 2} x2={cx[f] + w(f) / 2} y1={BAR_Y} y2={BAR_Y} stroke={f === 1 && inv ? MANIM.yellow : MANIM.ink} strokeWidth={3.5} strokeLinecap="round" />
                 {(["n", "d"] as const).map((side) => {
                   const g = groupOf(f, side);
                   const cnt = count(g);
@@ -195,17 +204,13 @@ export function buildSimplificarFactores(params: {
                     </Txt>
                   ) : (
                     Array.from({ length: cnt - 1 }, (_, i) => (
-                      <Txt key={`${side}${i}`} x={rowX(cx[f], cnt, i) + STEP / 2} y={side === "n" ? NUM_Y : DEN_Y} size={28} color={MANIM.muted}>
-                        ·
-                      </Txt>
+                      <Op key={`${side}${i}`} x={rowX(cx[f], cnt, i) + STEP / 2} y={(side === "n" ? NUM_Y : DEN_Y) - 12} kind="·" size={34} color={MANIM.muted} />
                     ))
                   );
                 })}
               </g>
             ))}
-            <Txt x={signX} y={BAR_Y + 10} size={34}>
-              ·
-            </Txt>
+            <Op x={signX} y={BAR_Y} kind="·" size={40} />
           </Fade>
           {/* una sola fracción */}
           <Fade show={single}>
@@ -217,9 +222,7 @@ export function buildSimplificarFactores(params: {
                 </Txt>
               ) : (
                 Array.from({ length: mergedLen[side] - 1 }, (_, i) => (
-                  <Txt key={`${side}${i}`} x={rowX(400, mergedLen[side], i) + STEP / 2} y={side === "n" ? NUM_Y : DEN_Y} size={28} color={MANIM.muted}>
-                    ·
-                  </Txt>
+                  <Op key={`${side}${i}`} x={rowX(400, mergedLen[side], i) + STEP / 2} y={(side === "n" ? NUM_Y : DEN_Y) - 12} kind="·" size={34} color={MANIM.muted} />
                 ))
               ),
             )}
@@ -259,11 +262,9 @@ export function buildSimplificarFactores(params: {
           </Fade>
           {/* resultado */}
           <Fade show={beat >= bE} dy={10}>
-            <Txt x={400 - 70} y={366} size={36}>
-              =
-            </Txt>
+            <Op x={400 - 70} y={354} kind="=" size={40} />
             {restD === 1 ? (
-              <Txt x={400 + 10} y={366} size={48} color={MANIM.yellow}>
+              <Txt x={400 + 10} y={371} size={48} color={MANIM.yellow}>
                 {String(restN)}
               </Txt>
             ) : (
