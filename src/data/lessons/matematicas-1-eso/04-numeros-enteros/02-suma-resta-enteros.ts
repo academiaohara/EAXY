@@ -10,6 +10,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "mismo-signo",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en pérdidas seguidas",
+          message: "Si te quitan $3$ € y luego $8$ €, pierdes $11$ €. Las dos pérdidas van en el mismo sentido y se acumulan.",
+        },
+        {
+          label: "En la recta",
+          message: "Dos pasos hacia el mismo lado suman la distancia recorrida.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$4 + 3 = +7$ (dos ganancias) y $-3 - 8 = -11$ (dos pérdidas).",
+        },
+      ],
       title: "Mismo signo: las distancias se suman",
       blocks: [
         {
@@ -35,6 +49,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "distinto-signo",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ganar y perder",
+          message: "Si te dan $8$ € y te quitan $2$ €, ganas $6$ €. Lo que ganas y pierdes se compensa.",
+        },
+        {
+          label: "¿Qué signo queda?",
+          message: "El del que más pesa: tiene mayor valor absoluto, mayor «fuerza».",
+        },
+        {
+          label: "El orden no importa",
+          message: "Siempre que cada número conserve su signo, puedes cambiar el orden: $+2 - 5 = -5 + 2$.",
+        },
+      ],
       title: "Distinto signo: las distancias se restan",
       blocks: [
         {
@@ -60,6 +88,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "check-frio",
       type: "predict",
+      help: [
+        {
+          label: "¿Sube o baja?",
+          message: "Baja $7$ grados: la temperatura final es menor que $-4$, es decir, más a la izquierda en la recta.",
+        },
+        {
+          label: "Dibújalo en la recta",
+          message: "Parte de $-4$ y avanza $7$ pasos hacia la izquierda. Las dos cantidades van en el mismo sentido, por eso se suman las distancias.",
+        },
+        {
+          label: "Descarta opciones",
+          message: "Alguna opción es positiva. ¿Puede bajar la temperatura y acabar por encima de cero?",
+        },
+      ],
       title: "Dos bajadas seguidas",
       question:
         "Esta mañana el termómetro marcaba $-4$ °C y a lo largo del día ha bajado **7** grados más. ¿Qué temperatura marca ahora?",
@@ -90,6 +132,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "check-saldo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué hace un ingreso?",
+          message: "Aumenta el saldo: te acerca al cero desde la deuda.",
+        },
+        {
+          label: "¿Sales del rojo?",
+          message: "Con una deuda de $35$ € y un ingreso de $20$ €, ¿te queda deuda o ya tienes saldo a favor?",
+        },
+        {
+          label: "Signos distintos",
+          message: "Se resta la distancia menor de la mayor, y el resultado lleva el signo del número que está más lejos del cero.",
+        },
+      ],
       title: "Saldo en rojo",
       question:
         "Una cuenta tiene un saldo de $-35$ € y hoy se ingresan **20 €**. ¿Cuál es el saldo ahora?",
@@ -122,6 +178,16 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "varios-numeros",
       type: "slide",
+      help: [
+        {
+          label: "Dos caminos",
+          message: "Operar de izquierda a derecha o agrupar positivos por un lado y negativos por otro. El resultado es el mismo.",
+        },
+        {
+          label: "Cuidado al agrupar",
+          message: "El signo viaja con el número: en $3 - 8 + 6 - 4$, el $-8$ y el $-4$ son negativos y van juntos.",
+        },
+      ],
       title: "Varios números: dos caminos, mismo resultado",
       blocks: [
         {
@@ -157,6 +223,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "check-cuenta",
       type: "predict",
+      help: [
+        {
+          label: "Ordena ingresos y pagos",
+          message: "Los ingresos suman y los pagos restan. Haz una lista con los movimientos: $+7$, $-12$, $+5$, $-3$.",
+        },
+        {
+          label: "Dos caminos",
+          message: "Puedes ir de izquierda a derecha, o juntar por un lado todo lo positivo y por otro todo lo negativo, y restar los dos totales.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Entre los pagos hay $15$ € y solo tenías $7$ € más el ingreso de $5$ €. ¿Te quedas en positivo o en negativo?",
+        },
+      ],
       title: "Movimientos de una cuenta",
       question:
         "El saldo de una cuenta es $+7$ €. Pagas una factura de **12 €**, te ingresan **5 €** y pagas otra factura de **3 €**. ¿Cuál es el saldo final?",
@@ -189,6 +269,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "check-bolsa",
       type: "predict",
+      help: [
+        {
+          label: "Agrupa por signo",
+          message: "Junta las subidas ($+6$ y $+5$) y las bajadas ($-9$ y $-4$) por separado.",
+        },
+        {
+          label: "Compara los dos totales",
+          message: "¿Ganas más de lo que pierdes, o al revés? Eso decide el signo del resultado.",
+        },
+        {
+          label: "Descarta opciones",
+          message: "Ni $+24$ ni $-24$ pueden ser: eso sería sumar todos los números sin tener en cuenta los signos.",
+        },
+      ],
       title: "Variación total",
       question:
         "Una acción cambia en cuatro sesiones seguidas: $+6$, $-9$, $-4$ y $+5$ euros. ¿Cuál es la variación total?",

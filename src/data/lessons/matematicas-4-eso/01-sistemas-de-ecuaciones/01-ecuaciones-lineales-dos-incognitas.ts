@@ -9,6 +9,20 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué «lineal»?",
+          message: "Porque sus soluciones, dibujadas, forman una recta. No hay potencias ni productos de incógnitas.",
+        },
+        {
+          label: "¿Cómo compruebo una solución?",
+          message: "Sustituye $x$ e $y$ en la ecuación y mira si sale $c$.",
+        },
+        {
+          label: "¿Por qué infinitas?",
+          message: "Porque eliges $x$ libremente y $y$ se ajusta para que la igualdad se cumpla.",
+        },
+      ],
       title: "¿Qué es una ecuación lineal con dos incógnitas?",
       content: [
         "Una ecuación lineal con dos incógnitas se puede escribir como $ax + by = c$, donde $a$, $b$ y $c$ son números reales.",
@@ -47,6 +61,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "grafica-recta",
       type: "interactive_tool",
+      help: [
+        {
+          label: "¿Por qué una recta?",
+          message: "Cada solución es un punto, y juntas se alinean porque la relación entre $x$ e $y$ es siempre la misma.",
+        },
+        {
+          label: "Dos puntos bastan",
+          message: "Dos puntos determinan una recta: calcula dos soluciones, márcalas y únelas.",
+        },
+      ],
       title: "Representación gráfica",
       tool: "system-graph",
       content: [
@@ -79,6 +103,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "rectas-especiales",
       type: "concept",
+      help: [
+        {
+          label: "Horizontal frente a vertical",
+          message: "En $y = k$ la altura es siempre $k$ aunque cambie $x$: recta horizontal. En $x = k$ el lugar horizontal es siempre $k$: recta vertical.",
+        },
+        {
+          label: "Algunos puntos",
+          message: "$y = 3$ pasa por $(0, 3)$ y $(5, 3)$. $x = 2$ pasa por $(2, 0)$ y $(2, 5)$.",
+        },
+      ],
       title: "Rectas horizontales y verticales",
       content: [
         "Las ecuaciones $y = k$ se representan con rectas **horizontales**.",
@@ -123,6 +157,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "grafica-especiales",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Qué observar",
+          message: "En cada recta mira qué coordenada no cambia nunca.",
+        },
+        {
+          label: "¿Dónde se cruzan?",
+          message: "Una horizontal y una vertical siempre se cortan en un punto: sus constantes son las coordenadas.",
+        },
+      ],
       title: "Explora rectas especiales",
       tool: "system-graph",
       content: [
@@ -144,6 +188,21 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuándo es solución un par?",
+          message: "Cuando, al sustituir sus valores en la ecuación, los dos miembros quedan iguales.",
+        },
+        {
+          label: "¿Qué va en cada sitio?",
+          message: "En $(a, b)$ el primer número es $x$ y el segundo es $y$. No los cambies de orden.",
+          math: ["(2, 1) \\;\\Rightarrow\\; x = 2,\\ y = 1"],
+        },
+        {
+          label: "Cuidado con los signos",
+          message: "Haz primero el producto $2y$ y luego la suma. Con valores negativos, $-2 + 2 \\cdot 1$ no es $-2 + 2$ y luego por $1$.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Sustituye cada par en $x + 2y = 4$ y clasifícalo.",
       groups: [
@@ -166,6 +225,21 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "check-infinitas",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué hago con el $10$?",
+          message: "Sustitúyelo en la ecuación en lugar de $x$. Te queda una ecuación con una sola incógnita.",
+          math: ["10 + 2y = 4"],
+        },
+        {
+          label: "¿Cómo despejo $y$?",
+          message: "Pasa el $10$ al otro miembro y luego divide entre el coeficiente de $y$. El resultado puede salir negativo.",
+        },
+        {
+          label: "¿Por qué hay infinitas soluciones?",
+          message: "Porque para cada valor de $x$ que elijas, la ecuación te da un $y$. Prueba con otro $x$ y compruébalo.",
+        },
+      ],
       title: "Siempre hay otra solución",
       question: "Busca una solución más de $x + 2y = 4$: si $x = 10$, ¿cuánto vale $y$? (solo el número)",
       correctAnswers: ["-3"],

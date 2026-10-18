@@ -10,6 +10,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "un-numero",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ganancias y deudas",
+          message: "Sumar una deuda baja el saldo; restar una deuda lo sube. El signo del número y el de la operación se combinan.",
+        },
+        {
+          label: "Restar es sumar el opuesto",
+          message: "$a - b$ es lo mismo que $a + (-b)$. Con eso un paréntesis negativo se entiende como una suma.",
+        },
+      ],
       title: "Un número entre paréntesis: sumar o restar",
       blocks: [
         {
@@ -38,6 +48,21 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "check-resta",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa anular un cargo?",
+          message: "Un cargo es dinero que se pagó, un valor negativo. Quitarlo deja más dinero en la caja, no menos.",
+        },
+        {
+          label: "Restar un negativo",
+          message: "Restar un número negativo equivale a sumar su opuesto. Es como «quitar una deuda»: te hace más rico.",
+          math: ["a - (-b) = a + b"],
+        },
+        {
+          label: "Descarta opciones",
+          message: "Alguna opción da un saldo menor que $120$. ¿Tiene sentido que quitar una deuda baje el dinero?",
+        },
+      ],
       title: "Anular un cargo",
       question:
         "La caja de un local tiene $+120$ € y se **anula** (se resta) un cargo de $-35$ € que estaba registrado. ¿Qué operación y resultado son correctos?",
@@ -70,6 +95,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "mas-delante",
       type: "slide",
+      help: [
+        {
+          label: "El paréntesis como paquete",
+          message: "Con un $+$ delante el paquete entra tal cual: cada término conserva su signo.",
+        },
+        {
+          label: "Pruébalo con números",
+          message: "$+(+3 - 6 + 5)$ es $3 - 6 + 5$. Quitar el paréntesis no cambia nada.",
+        },
+      ],
       title: "Con + delante, los signos se quedan",
       blocks: [
         {
@@ -93,6 +128,20 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "menos-delante",
       type: "slide",
+      help: [
+        {
+          label: "El paréntesis como paquete",
+          message: "Con un $-$ delante, quitas el paquete entero: cada término de dentro se cambia por su opuesto.",
+        },
+        {
+          label: "El error típico",
+          message: "Cambiar solo el primer signo. $-(8 - 6)$ es $-8 + 6$, no $-8 - 6$.",
+        },
+        {
+          label: "Dos caminos",
+          message: "O quitas el paréntesis cambiando todos los signos, o calculas primero lo de dentro y luego aplicas el signo.",
+        },
+      ],
       title: "Con − delante, todos los signos cambian",
       blocks: [
         {
@@ -117,6 +166,21 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "check-grupo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué pasa con el menos delante del paréntesis?",
+          message: "Cambia el signo de **todo** lo que hay dentro.",
+          math: ["20 - (7 - 12) = 20 - 7\\ \\square\\ 12"],
+        },
+        {
+          label: "Otro camino",
+          message: "Calcula primero lo de dentro, $7 - 12$, y después resta ese número al $20$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El movimiento que se anula fue negativo en total, así que anularlo hace subir el saldo respecto de $20$.",
+        },
+      ],
       title: "Quitar un grupo",
       question:
         "El saldo es $20$ € y se anula un movimiento formado por un ingreso de $7$ € y un pago de $12$ €. Es decir: $20 - (7 - 12)$. ¿Cuál es el saldo?",
@@ -150,6 +214,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "anidados",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué de dentro hacia fuera?",
+          message: "Porque lo de dentro se tiene que resolver para poder tratar lo que lo envuelve.",
+        },
+        {
+          label: "¿Qué son los corchetes?",
+          message: "Paréntesis más grandes, para no confundirlos con los de dentro. Se tratan igual.",
+        },
+      ],
       title: "Paréntesis dentro de paréntesis",
       blocks: [
         {
@@ -193,6 +267,20 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "check-anidado",
       type: "predict",
+      help: [
+        {
+          label: "¿Por dónde empiezo?",
+          message: "Por el paréntesis más interno. Después vas saliendo hacia los corchetes.",
+        },
+        {
+          label: "Un menos delante cambia todo",
+          message: "Cada vez que quitas un paréntesis precedido de $-$, cambia el signo de todos sus términos.",
+        },
+        {
+          label: "Dos caminos",
+          message: "Puedes quitar paréntesis aplicando signos o calcular primero el valor de cada interior. Haz los dos y comprueba que coinciden.",
+        },
+      ],
       title: "Dos niveles",
       question:
         "Calcula $10 - [3 - (5 - 9)]$ quitando los paréntesis de dentro hacia fuera. ¿Qué resultado sale?",

@@ -10,6 +10,16 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcd-idea",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué «lo más largos posible»?",
+          message: "Porque cualquier divisor común sirve, pero queremos el mayor.",
+        },
+        {
+          label: "¿Cómo lo veo?",
+          message: "Los divisores comunes de $24$ y $36$ son $1$, $2$, $3$, $4$, $6$ y $12$. El mayor es $12$.",
+        },
+      ],
       title: "Trozos iguales y lo más largos posible",
       blocks: [
         {
@@ -34,6 +44,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcd-factores",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el menor exponente?",
+          message: "Porque un divisor común solo puede usar un primo tantas veces como aparece en **todos** los números.",
+        },
+        {
+          label: "¿Por qué solo los comunes?",
+          message: "Un primo que falta en un número no puede dividir a ese número.",
+        },
+        {
+          label: "Primos entre sí",
+          message: "Si no hay ningún primo común, el m.c.d. es $1$.",
+        },
+      ],
       title: "Con números grandes: factores primos",
       blocks: [
         {
@@ -63,6 +87,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcm-o-mcd",
       type: "slide",
+      help: [
+        {
+          label: "Una pregunta clave",
+          message: "¿Quieres saber **cuándo** coinciden (m.c.m.) o **cuánto mide** cada parte (m.c.d.)?",
+        },
+        {
+          label: "Palabras que delatan",
+          message: "«Coincidir», «volver a salir juntas»: m.c.m. «Repartir», «cortar», «lo más grandes posible»: m.c.d.",
+        },
+        {
+          label: "Comprobación rápida",
+          message: "El m.c.d. nunca supera al menor de los números y el m.c.m. nunca es menor que el mayor.",
+        },
+      ],
       title: "¿m.c.m. o m.c.d.?",
       blocks: [
         {
@@ -91,6 +129,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "check-ramos",
       type: "predict",
+      help: [
+        {
+          label: "¿Por qué m.c.d.?",
+          message: "Para que no sobre ninguna flor, el número de ramos tiene que dividir a las rosas y a los tulipanes. Y quieres el mayor posible: eso es el m.c.d.",
+        },
+        {
+          label: "¿Cómo lo calculo?",
+          message: "Descompón los dos números en factores primos y quédate con los comunes, con el menor exponente.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Tu número de ramos debe dividir a $48$ y a $36$, y no debe existir otro mayor que también lo haga.",
+        },
+      ],
       title: "Ramos de flores",
       question:
         "Una florista tiene **48** rosas y **36** tulipanes. Quiere hacer el mayor número posible de ramos iguales, sin que sobre ninguna flor. ¿Cuántos ramos hará?",
@@ -120,6 +172,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "check-barras",
       type: "predict",
+      help: [
+        {
+          label: "¿m.c.m. o m.c.d.?",
+          message: "Estás troceando barras en partes iguales y lo más largas posible: es un m.c.d. El m.c.m. aparece cuando algo se repite en el tiempo y coincide.",
+        },
+        {
+          label: "¿Cómo lo calculo?",
+          message: "Descompón $150$ y $210$ en factores primos y toma los comunes con el menor exponente.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El trozo tiene que caber un número exacto de veces en las dos barras, así que no puede medir más que la barra más corta.",
+        },
+      ],
       title: "Barras de ferretería",
       question:
         "Una ferretería corta barras de **150 cm** y de **210 cm** en trozos iguales, lo más largos posible y sin desperdicio. ¿Cuánto mide cada trozo?",
@@ -149,6 +215,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "check-socorristas",
       type: "predict",
+      help: [
+        {
+          label: "¿m.c.m. o m.c.d.?",
+          message: "Pasan «cada $15$» y «cada $25$» minutos: los instantes son múltiplos de $15$ y de $25$. La primera vez que coinciden es el menor múltiplo común.",
+        },
+        {
+          label: "Tantea con los múltiplos",
+          message: "Haz la lista de múltiplos de $25$ (el mayor) y comprueba cuál es también múltiplo de $15$.",
+        },
+        {
+          label: "Pásalo a una hora",
+          message: "El m.c.m. te da minutos después de las $10{:}00$. Conviértelo a horas y minutos antes de sumar.",
+        },
+      ],
       title: "Dos socorristas",
       question:
         "Un socorrista pasa por la torre cada **15** min y otro cada **25** min. Han coincidido a las 10:00. ¿A qué hora vuelven a coincidir?",

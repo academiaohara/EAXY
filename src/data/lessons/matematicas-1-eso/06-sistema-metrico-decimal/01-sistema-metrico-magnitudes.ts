@@ -10,6 +10,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "magnitud",
       type: "slide",
+      help: [
+        {
+          label: "Cualquier cosa medible",
+          message: "Si puedes expresarla con un número y una unidad, es una magnitud: la longitud de una mesa, lo que pesa una maleta, lo que dura una película.",
+        },
+        {
+          label: "¿Qué es medir?",
+          message: "Contar cuántas veces cabe una unidad conocida en lo que quieres medir.",
+        },
+        {
+          label: "¿Por qué convencional?",
+          message: "Porque si cada uno usa una unidad distinta, los números no se pueden comparar.",
+        },
+      ],
       title: "Medir es comparar con una unidad",
       blocks: [
         {
@@ -31,6 +45,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-magnitud",
       type: "predict",
+      help: [
+        {
+          label: "Fíjate en la unidad",
+          message: "Cada unidad pertenece a una sola magnitud: el gramo mide peso, el litro capacidad, el minuto tiempo.",
+        },
+        {
+          label: "Descarta por unidades",
+          message: "Si en una opción una unidad aparece asociada a otra magnitud (por ejemplo, el litro con una superficie), esa opción es falsa.",
+        },
+        {
+          label: "Revisa el orden",
+          message: "La pregunta pide las magnitudes «en ese orden»: el de las medidas de la libreta.",
+        },
+      ],
       title: "La libreta de la cocinera",
       question:
         "Una cocinera apunta en su libreta: «250 g de harina, 2 l de leche y 35 min de horno». ¿Qué magnitudes ha medido, en ese orden?",
@@ -64,6 +92,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "historia",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el codo no servía?",
+          message: "Cada antebrazo es distinto, así que la misma «medida» daba longitudes diferentes según quién midiese.",
+        },
+        {
+          label: "¿Por qué un sistema único?",
+          message: "Para que comerciar, construir o hacer ciencia entre países no dependiera de cada región.",
+        },
+        {
+          label: "¿Qué es el S.M.D.?",
+          message: "Un conjunto de unidades relacionadas entre sí, con el metro, el litro y el gramo como principales.",
+        },
+      ],
       title: "Del codo al metro",
       blocks: [
         {
@@ -96,6 +138,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "tres-unidades",
       type: "slide",
+      help: [
+        {
+          label: "Un hilo común: el agua",
+          message: "Un cubo de $1$ dm de arista contiene un litro de agua, y ese litro pesa un kilogramo. Así se relacionan longitud, capacidad y peso.",
+        },
+        {
+          label: "¿Y el gramo?",
+          message: "Se definió con un cubito de $1$ cm de arista lleno de agua: pesa un gramo.",
+        },
+        {
+          label: "¿Por qué usamos el kilo?",
+          message: "Porque el gramo es muy pequeño y los números serían muy grandes para pesos cotidianos.",
+        },
+      ],
       title: "Metro, litro y gramo salen de la misma idea",
       blocks: [
         {
@@ -126,6 +182,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "prefijos",
       type: "slide",
+      help: [
+        {
+          label: "Mira la tabla",
+          message: "Los prefijos mayores (kilo, hecto, deca) multiplican; los menores (deci, centi, mili) dividen entre $10$, $100$ y $1000$.",
+        },
+        {
+          label: "Un truco para recordarlos",
+          message: "Ordénalos de mayor a menor: kilo, hecto, deca, unidad, deci, centi, mili. Cada uno vale diez veces el de su derecha.",
+        },
+        {
+          label: "Valen para todo",
+          message: "Un hectómetro son $100$ m, un hectolitro $100$ l y un hectogramo $100$ g: se aprenden una vez.",
+        },
+      ],
       title: "Múltiplos y submúltiplos: los prefijos",
       blocks: [
         {
@@ -160,6 +230,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-hecto",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa «hecto»?",
+          message: "Es un prefijo de la parte mayor de la escala. Mira cuántas veces es mayor que la unidad en la tabla de prefijos.",
+        },
+        {
+          label: "Descarta por vecinos",
+          message: "Los prefijos vecinos (deca, kilo) valen diez veces menos o diez veces más. Comprueba que tu respuesta no sea la de uno de ellos.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Una recta de pista de atletismo suele medir más de diez metros y menos de un kilómetro.",
+        },
+      ],
       title: "La recta de la pista",
       question:
         "En una pista de atletismo se marca un tramo recto de «1 hectómetro». ¿Cuántos metros mide ese tramo?",
@@ -190,6 +274,20 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-mililitro",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa «mili»?",
+          message: "Una milésima parte. Entonces, ¿cuántos mililitros hay en un litro entero?",
+        },
+        {
+          label: "Cuenta los saltos",
+          message: "De $\\mathrm{ml}$ a $\\mathrm{l}$ hay tres escalones. Cada uno multiplica por $10$ el número de jeringuillas necesarias.",
+        },
+        {
+          label: "Compruébalo con otro tamaño",
+          message: "Con jeringuillas de $10$ ml (un centilitro) harían falta menos que con las de $1$ ml: el número crece al hacerse la jeringuilla más pequeña.",
+        },
+      ],
       title: "Las jeringuillas",
       question:
         "Una jeringuilla de laboratorio contiene exactamente 1 ml. ¿Cuántas jeringuillas como esa hacen falta para llenar 1 litro?",

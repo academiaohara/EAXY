@@ -10,6 +10,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "producto",
       type: "slide",
+      help: [
+        {
+          label: "Repetir o anular",
+          message: "El primer factor dice si «repites» (positivo) o «anulas» (negativo) lo que expresa el segundo.",
+        },
+        {
+          label: "Piensa en deudas",
+          message: "Tres deudas de $5$ € son $-15$. Si te quitan esas tres deudas, tu situación mejora.",
+        },
+        {
+          label: "Valores absolutos",
+          message: "La cifra sale igual que con naturales. Lo nuevo es solo el signo.",
+        },
+      ],
       title: "Multiplicar: de dónde sale el signo",
       blocks: [
         {
@@ -41,6 +55,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "regla-signos",
       type: "slide",
+      help: [
+        {
+          label: "La regla en una frase",
+          message: "Signos iguales dan positivo; signos distintos, negativo.",
+        },
+        {
+          label: "Con tres o más factores",
+          message: "Multiplica de dos en dos, o cuenta los negativos: número par, $+$; número impar, $-$.",
+        },
+        {
+          label: "Un truco para recordarlo",
+          message: "«El enemigo de mi enemigo es mi amigo»: dos negativos dan un positivo.",
+        },
+      ],
       title: "La regla de los signos",
       blocks: [
         {
@@ -84,6 +112,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "check-tiempo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa $-2$ horas?",
+          message: "Mirar hacia atrás en el tiempo. Hacia delante la temperatura baja; hacia atrás hace el camino inverso.",
+        },
+        {
+          label: "Piénsalo sin números",
+          message: "Si ahora hace $10$ °C y la temperatura baja cada hora, ¿había más o menos grados hace una hora?",
+        },
+        {
+          label: "Decide el signo antes de calcular",
+          message: "Con el sentido común sabes si hace dos horas hacía más calor o más frío. Eso te da el signo del resultado.",
+        },
+      ],
       title: "Hacia atrás en el tiempo",
       question:
         "El termómetro baja **3 °C cada hora** (variación $-3$ por hora). ¿Cuál fue la variación de temperatura respecto de ahora **hace 2 horas** (es decir, $-2$ horas)?",
@@ -115,6 +157,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "check-juego",
       type: "predict",
+      help: [
+        {
+          label: "Multiplica en cadena",
+          message: "Ve de izquierda a derecha, un factor cada vez, anotando el resultado parcial.",
+        },
+        {
+          label: "Un atajo para el signo",
+          message: "Cuenta cuántos factores son negativos: si hay un número par, el producto es positivo; si es impar, negativo.",
+        },
+        {
+          label: "Valores absolutos",
+          message: "Multiplica solo los números sin signo y pon el signo al final.",
+        },
+      ],
       title: "Factores en cadena",
       question:
         "En un juego, tu puntuación se multiplica en cada ronda por un factor: $-2$, $+3$, $-4$ y $-1$. Si empiezas con $1$ punto, ¿en cuánto acabas?",
@@ -146,6 +202,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "division",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué la misma regla?",
+          message: "Dividir deshace multiplicar: si $(-3) \\cdot (+4) = -12$, entonces $(-12) : (+4) = -3$.",
+        },
+        {
+          label: "¿Siempre hay cociente entero?",
+          message: "Solo cuando la división es exacta.",
+        },
+        {
+          label: "Cuidado con agrupar",
+          message: "La división no es asociativa: el orden de agrupar cambia el resultado. Respeta los paréntesis.",
+        },
+      ],
       title: "Dividir: la operación inversa",
       blocks: [
         {
@@ -172,6 +242,16 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "combinadas",
       type: "slide",
+      help: [
+        {
+          label: "El mismo orden de siempre",
+          message: "Paréntesis, luego productos y cocientes, luego sumas y restas. Lo único nuevo son los signos.",
+        },
+        {
+          label: "¿Qué hago con los signos de los resultados?",
+          message: "Cada resultado parcial arrastra su signo: $6 - (-3)$ pasa a ser $6 + 3$.",
+        },
+      ],
       title: "Operaciones combinadas con enteros",
       blocks: [
         {
@@ -205,6 +285,21 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "check-combinada",
       type: "predict",
+      help: [
+        {
+          label: "¿En qué orden?",
+          message: "Primero los dos productos y después la resta. Cuidado: la resta tiene delante un producto con signo.",
+        },
+        {
+          label: "Restar un negativo",
+          message: "Restar un número negativo equivale a sumar su opuesto.",
+          math: ["12 - (-5) = 12 + 5"],
+        },
+        {
+          label: "Un producto cada vez",
+          message: "Resuelve cada producto por separado con la regla de los signos antes de combinarlos.",
+        },
+      ],
       title: "Productos con resta",
       question:
         "Una aplicación calcula la diferencia entre dos balances: $(-3)\\cdot(-4) - (+2)\\cdot(-9)$. ¿Qué resultado da?",
@@ -237,6 +332,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "check-reparto",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué signo tiene lo que toca a cada uno?",
+          message: "La deuda es negativa. Si se reparte entre varias personas, cada una sigue debiendo una parte: sigue siendo una deuda.",
+        },
+        {
+          label: "¿Qué operación es?",
+          message: "Repartir a partes iguales es dividir: la deuda entre los amigos.",
+        },
+        {
+          label: "Divide y pon el signo",
+          message: "Divide los valores absolutos y decide el signo con la regla: ¿signos iguales o distintos?",
+        },
+      ],
       title: "Repartir una deuda",
       question:
         "Un grupo de **9** amigos reparte a partes iguales una deuda de **45 €**, que es $-45$ €. ¿Qué número entero expresa lo que le toca a cada uno?",

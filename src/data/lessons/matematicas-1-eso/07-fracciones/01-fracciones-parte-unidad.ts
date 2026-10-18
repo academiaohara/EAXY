@@ -9,6 +9,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Tres miradas a una fracción",
+          message: "$\\frac{3}{4}$ puede ser «tres de cuatro partes», «los tres cuartos de algo» o «$3$ dividido entre $4$».",
+        },
+        {
+          label: "¿Qué tiene que ver Egipto?",
+          message: "Solo usaban fracciones con numerador $1$. Repartir $4$ panes entre $7$ personas les obligaba a sumar varias de ellas.",
+        },
+      ],
       title: "Tres formas de ver una fracción",
       content: [
         "Una fracción puede entenderse como **parte de la unidad**, como **operador** (transforma una cantidad) o como **división indicada** ($\\frac{a}{b} = a : b$).",
@@ -39,6 +49,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "partes-iguales",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué tienen que ser iguales?",
+          message: "Si los trozos son distintos, «dos de nueve» ya no describe una cantidad concreta.",
+        },
+        {
+          label: "Cómo se lee",
+          message: "En $\\frac{2}{9}$ el $9$ dice en cuántas partes iguales se divide la unidad y el $2$ cuántas coges.",
+        },
+      ],
       title: "Parte de la unidad",
       layout: "visual-first",
       content: [
@@ -59,6 +79,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "marca-pizza",
       type: "fraction_pick",
+      help: [
+        {
+          label: "Léelo en voz alta",
+          message: "«Tres octavos» son tres porciones de tamaño un octavo. El nombre del denominador te dice cuántas porciones tiene la tarta entera.",
+        },
+        {
+          label: "¿Qué cuento y qué ignoro?",
+          message: "Solo coloreas porciones: el total de la tarta no cambia, ya está partida.",
+        },
+      ],
       title: "Colorea la fracción",
       question: "Toca las porciones de la tarta hasta colorear $\\frac{3}{8}$.",
       shape: "circle",
@@ -71,6 +101,17 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "semana",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Cuál es la unidad?",
+          message: "La semana completa: $7$ días. Ese número va abajo en la fracción.",
+        },
+        {
+          label: "¿Cómo se escribe parte entre total?",
+          message: "Arriba, los días que cumplen lo que piden; abajo, todos los días de la semana.",
+          math: ["\\frac{\\text{días hábiles}}{\\text{días de la semana}}"],
+        },
+      ],
       title: "Fracciones en la vida cotidiana",
       question:
         "Cada casilla es un día de la semana. Marca los días hábiles (de lunes a viernes): ¿qué fracción de la semana forman?",
@@ -84,6 +125,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "divide-tu",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Por qué empiezo por el denominador?",
+          message: "Sin partir la barra en partes iguales no se puede decir cuántas se colorean. El denominador marca el tamaño de cada parte.",
+        },
+        {
+          label: "¿Qué pasa si parto en otro número?",
+          message: "Si partes en otro número de trozos, la fracción coloreada sería otra. Todas las partes tienen que ser iguales.",
+        },
+      ],
       title: "Divide tú la unidad",
       question:
         "Ahora la barra está entera. Divídela en las partes que necesites y colorea $\\frac{2}{5}$.",
@@ -98,6 +149,20 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "comparar-unidad",
       type: "concept",
+      help: [
+        {
+          label: "Una regla sencilla",
+          message: "Compara los dos números: numerador menor que denominador, la fracción vale menos de $1$.",
+        },
+        {
+          label: "Si es mayor que $1$",
+          message: "$\\frac{7}{5}$ son $5$ quintos (una unidad entera) más $2$ quintos de otra.",
+        },
+        {
+          label: "¿Y si son iguales?",
+          message: "Coges todas las partes: es la unidad entera.",
+        },
+      ],
       title: "Comparar con la unidad",
       content: [
         "Si el **numerador es menor** que el denominador, la fracción es **menor que $1$** (por ejemplo $\\frac{2}{5}$).",
@@ -118,6 +183,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "check-mayor",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Se puede colorear más de una barra?",
+          message: "Sí. Cuando el numerador es mayor que el denominador, la fracción vale más que $1$ y necesitas más de una unidad.",
+        },
+        {
+          label: "Cuenta en quintos",
+          message: "Llena primero una barra entera y mira cuántos quintos has usado. Lo que falta lo coloreas en la segunda barra.",
+        },
+      ],
       title: "Más de una unidad",
       question: "Tienes dos barras partidas en quintos. Colorea $\\frac{8}{5}$.",
       shape: "bar",
@@ -131,6 +206,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "check-unidad-lote",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuándo vale una fracción exactamente $1$?",
+          message: "Cuando numerador y denominador son iguales: $\\frac{5}{5}$ es la unidad entera.",
+        },
+        {
+          label: "¿Antes o después de la unidad?",
+          message: "Si tomas menos partes de las que forman la unidad, no la completas; si tomas más, la superas.",
+        },
+      ],
       title: "Comparar con la unidad (actividad 4)",
       question: "Coloca cada fracción en su grupo.",
       groups: [
@@ -153,6 +238,12 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "check-terminos",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cuál es cuál?",
+          message: "El numerador es el de arriba (cuántas partes coges) y el denominador el de abajo (en cuántas partes iguales se divide la unidad). La «D» de denominador, de «debajo».",
+        },
+      ],
       title: "Identifica el denominador",
       question: "En $\\frac{2}{9}$, ¿cuál es el denominador? (escribe solo el número)",
       correctAnswers: ["9"],

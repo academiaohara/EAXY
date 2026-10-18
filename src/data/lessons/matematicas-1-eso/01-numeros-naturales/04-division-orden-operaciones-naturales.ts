@@ -10,6 +10,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "exploracion-quien",
       type: "predict",
+      help: [
+        {
+          label: "¿Por qué pueden salir resultados distintos?",
+          message: "Porque el orden en que se hacen las operaciones cambia el resultado. Mira en qué orden hizo cada uno la cuenta.",
+        },
+        {
+          label: "Piénsalo con una situación real",
+          message: "Tienes $4$ € y te dan $3$ monedas de $2$ €. ¿Qué cuenta describe cuánto dinero tienes ahora?",
+        },
+      ],
       title: "¿Quién tiene razón?",
       question:
         "Ana calcula $4 + 3 \\times 2$ y obtiene $14$. Leo obtiene $10$. ¿Quién aplica correctamente la prioridad de operaciones y por qué?",
@@ -26,6 +36,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "explicacion-niveles",
       type: "narrate",
+      help: [
+        {
+          label: "¿Por qué hace falta un orden?",
+          message: "Sin una norma, $6 + 2 \\cdot 4$ tendría dos resultados posibles. El orden evita esa ambigüedad.",
+        },
+        {
+          label: "Los tres niveles",
+          message: "Primero los paréntesis, luego multiplicar y dividir, y al final sumar y restar. Piensa «de lo que más une a lo que menos».",
+        },
+      ],
       title: "El orden de las operaciones",
       module: "jerarquia-operaciones",
       scene: "niveles-reglas",
@@ -33,6 +53,17 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "orden-ejemplos",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué difieren?",
+          message: "El paréntesis obliga a sumar primero. Sin él, la multiplicación manda.",
+          math: ["6 + 2 \\cdot 4 \\neq (6 + 2) \\cdot 4"],
+        },
+        {
+          label: "Reescribe en cada paso",
+          message: "Calcula una sola operación cada vez y reescribe la expresión con su resultado. Así no te pierdes.",
+        },
+      ],
       title: "Mismos números, distinto resultado",
       blocks: [
         {
@@ -70,6 +101,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "practica-mul-primero",
       type: "explore",
+      help: [
+        {
+          label: "¿Qué operación va primero?",
+          message: "Mira si hay paréntesis. Si no los hay, las multiplicaciones y divisiones se hacen antes que las sumas y las restas.",
+        },
+        {
+          label: "Ordénalas por niveles",
+          message: "Nivel 1: paréntesis. Nivel 2: $\\times$ y $:$. Nivel 3: $+$ y $-$. Busca el nivel más alto que aparezca en la expresión.",
+        },
+      ],
       title: "Pulsa lo primero",
       question: "Pulsa la operación que harías primero en $4 + 3 − 2 × 3$.",
       module: "jerarquia-operaciones",
@@ -83,6 +124,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "practica-parentesis",
       type: "explore",
+      help: [
+        {
+          label: "¿Qué cambia con los paréntesis?",
+          message: "Lo que hay dentro se calcula primero, aunque haya una multiplicación fuera.",
+        },
+        {
+          label: "Compara con el ejercicio anterior",
+          message: "Es casi la misma expresión. ¿Qué operación estaba antes agrupada y cuál ha pasado a ir dentro del paréntesis?",
+        },
+      ],
       title: "Pulsa lo primero",
       question: "Ahora con paréntesis: $4 + ( 3 − 2 ) × 3$.",
       module: "jerarquia-operaciones",
@@ -96,6 +147,12 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "practica-orden-niveles",
       type: "explore",
+      help: [
+        {
+          label: "Recuerda los ejemplos anteriores",
+          message: "Mira los dos ejercicios que acabas de hacer: ¿qué calculaste primero cuando había paréntesis? ¿Y cuando había un producto junto a una suma?",
+        },
+      ],
       title: "Ordena la prioridad",
       question:
         "Arrastra cada nivel al puesto correcto: arriba va lo que se calcula antes.",
@@ -111,6 +168,20 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "misma-prioridad",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué es un empate?",
+          message: "Dos operaciones del mismo nivel, como $:$ y $\\cdot$, o $+$ y $-$. Se hacen en orden de aparición, de izquierda a derecha.",
+        },
+        {
+          label: "El error típico",
+          message: "Pensar que multiplicar va antes que dividir: $24 : 4 \\cdot 2$ es $6 \\cdot 2$, no $24 : 8$.",
+        },
+        {
+          label: "Si quieres otra agrupación",
+          message: "Si necesitas calcular antes lo de la derecha, usa paréntesis.",
+        },
+      ],
       title: "Mismo nivel: de izquierda a derecha",
       blocks: [
         {
@@ -149,6 +220,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "izq-der-predict",
       type: "predict",
+      help: [
+        {
+          label: "¿Y si hay dos operaciones del mismo nivel?",
+          message: "Cuando $\\times$ y $:$ están juntas, no hay una más importante: se hacen en orden, de izquierda a derecha.",
+        },
+        {
+          label: "Comprueba cada versión",
+          message: "Calcula $(18 : 3) \\cdot 2$ y $18 : (3 \\cdot 2)$. ¿Cuál de las dos corresponde a la expresión escrita sin paréntesis?",
+        },
+      ],
       title: "¿Quién tiene razón?",
       question:
         "Dos compañeros calculan $18 : 3 \\cdot 2$. Uno obtiene $12$ y el otro $3$. ¿Quién lo ha hecho bien?",
@@ -168,6 +249,21 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "hortelano-predict",
       type: "predict",
+      help: [
+        {
+          label: "Divide el problema en dos",
+          message: "Calcula por separado lo que ingresa por los tomates y por las frambuesas: en cada uno, kilos por precio del kilo.",
+          math: ["\\text{ingreso} = \\text{kg} \\cdot \\text{€/kg}"],
+        },
+        {
+          label: "¿Suma o producto para juntarlos?",
+          message: "Dos ingresos de productos distintos se **suman**. Comprueba que cada precio se multiplica solo por sus kilos.",
+        },
+        {
+          label: "Descarta opciones",
+          message: "Una opción mezcla kilos de tomates con kilos de frambuesas y precios de uno con otro. ¿Tiene sentido multiplicar la suma de kilos por la suma de precios?",
+        },
+      ],
       title: "Del problema a la expresión",
       question:
         "Un hortelano lleva al mercado $85$ kg de tomates a $2$ €/kg y $35$ kg de frambuesas a $3$ €/kg. ¿Qué expresión da lo que ingresa por todo?",

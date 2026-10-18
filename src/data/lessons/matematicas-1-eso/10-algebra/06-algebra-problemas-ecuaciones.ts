@@ -9,6 +9,20 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "pasos",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué este orden?",
+          message: "Primero nombras lo desconocido, porque sin nombre no puedes escribir nada. La igualdad sale del enunciado, no de ti.",
+        },
+        {
+          label: "¿Dónde está la igualdad?",
+          message: "Busca dos cantidades que el enunciado diga que son iguales: «suman», «es el doble de», «cuesta lo mismo»…",
+        },
+        {
+          label: "¿Por qué comprobar con el enunciado?",
+          message: "Porque puedes resolver bien una ecuación mal planteada. Comprueba con el texto del problema, no solo con la ecuación.",
+        },
+      ],
       title: "Cuatro pasos habituales",
       content: [
         "**a)** Nombra lo desconocido ($x$ = el número, ancho de la parcela…).",
@@ -20,6 +34,20 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "ejemplo-numero",
       type: "animated_solution",
+      help: [
+        {
+          label: "Frase a frase",
+          message: "«Le sumas $7$» es $x + 7$. «Le restas $5$» es $x - 5$. «El triple» es $3(x - 5)$. «Obtienes» es el signo $=$.",
+        },
+        {
+          label: "¿Por qué el triple multiplica un paréntesis?",
+          message: "Porque el triple es de **todo** el resultado $x - 5$, no solo de la $x$.",
+        },
+        {
+          label: "¿Qué hace el segundo paso?",
+          message: "Quita el paréntesis con la distributiva y agrupa las $x$ a un lado y los números al otro.",
+        },
+      ],
       title: "Problema — Suma y triple",
       content: [
         "Si a un número le sumas $7$, obtienes el triple que si le restas $5$. ¿De qué número se trata?",
@@ -42,6 +70,20 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "ejemplo-parcela",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué el largo es $x + 15$?",
+          message: "Porque el enunciado dice que mide $15$ m más que el ancho: ancho más $15$.",
+        },
+        {
+          label: "¿Por qué sale cada medida dos veces?",
+          message: "El perímetro recorre dos anchos y dos largos, así que cada uno se suma dos veces.",
+        },
+        {
+          label: "Dibújalo",
+          message: "Haz un rectángulo, escribe $x$ en el ancho y $x + 15$ en el largo y recorre el contorno sumando.",
+        },
+      ],
       title: "Problema — Parcela rectangular",
       content: [
         "Ancho $= x$ m; largo $= x + 15$ m; perímetro $= 150$ m.",
@@ -52,6 +94,20 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "plantillas",
       type: "concept",
+      help: [
+        {
+          label: "La idea común",
+          message: "Todos son la misma pregunta: ¿qué dos cosas son iguales, o qué cantidades suman un total?",
+        },
+        {
+          label: "El ejemplo de las vacas",
+          message: "Si hay $x$ vacas, cada una tiene $2$ cuernos y $4$ patas. Lo que se cuenta es cuernos más patas igual a $222$.",
+        },
+        {
+          label: "El ejemplo de los precios",
+          message: "Si el yogur de frutas cuesta $5$ céntimos más, su precio es $x + 0{,}05$. Escribe siempre lo que no conoces en función de lo que has nombrado.",
+        },
+      ],
       title: "Patrones frecuentes",
       content: [
         "Un número y su **siguiente**: $x + (x + 1) = 53$.",
@@ -62,6 +118,27 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué llamo $x$?",
+          message: "Llama $x$ a lo que no conoces y te piden. Todo lo demás hay que escribirlo usando $x$.",
+          branches: [
+            {
+              label: "¿Cómo escribo «su anterior»?",
+              message: "El anterior es una unidad menos. Con un número concreto: el anterior de $10$ es $9 = 10 - 1$. Copia esa idea con $x$.",
+            },
+          ],
+        },
+        {
+          label: "¿Cómo monto la ecuación?",
+          message: "«Suman $53$» significa dos cantidades unidas con $+$ e igualadas a $53$.",
+          math: ["(\\text{el número}) + (\\text{su anterior}) = 53"],
+        },
+        {
+          label: "¿Cómo sé si mi solución vale?",
+          message: "Calcula el número y su anterior con tu resultado y súmalos. Si no da $53$, algo falló al plantear o al resolver.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "Un número y su anterior suman $53$. Plantea la ecuación y resuélvela: ¿de qué número se trata? (escribe solo el número)",

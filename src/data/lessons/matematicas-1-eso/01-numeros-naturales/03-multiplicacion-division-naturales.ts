@@ -10,6 +10,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "multiplicar-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "Una suma abreviada",
+          message: "$4 \\cdot 3$ es $3 + 3 + 3 + 3$: cuatro grupos de tres.",
+        },
+        {
+          label: "¿Qué dice cada factor?",
+          message: "Uno indica cuántos grupos hay y el otro cuántos elementos tiene cada grupo.",
+        },
+      ],
       title:
         'Multiplicar es <span class="lesson-step-title-accent">repetir grupos</span>',
       definitionBox:
@@ -21,6 +31,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "conmutativa-reveal",
       type: "reveal",
+      help: [
+        {
+          label: "Mira la cuadrícula",
+          message: "$8 \\cdot 5$ son $8$ filas de $5$. Si giras la cuadrícula, son $5$ filas de $8$: los mismos $40$ cuadraditos.",
+        },
+        {
+          label: "¿Para qué sirve?",
+          message: "Para elegir el orden más cómodo al calcular.",
+        },
+      ],
       title: "El orden de los factores",
       definitionBox:
         "**Propiedad conmutativa:** el **producto no varía** al cambiar el orden de los factores. Ejemplo: $8 \\cdot 5 = 5 \\cdot 8 = 40$.",
@@ -31,6 +51,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "asociativa-reveal",
       type: "reveal",
+      help: [
+        {
+          label: "Cuenta los mismos huevos de dos maneras",
+          message: "Primero cajas y luego huevos, o primero huevos por fila y luego filas: el total no cambia.",
+        },
+        {
+          label: "¿Para qué sirve?",
+          message: "Puedes agrupar primero lo más fácil: $5 \\cdot 2 = 10$ y luego $8 \\cdot 10$.",
+        },
+      ],
       title: "Cómo agrupar los factores",
       definitionBox:
         "**Propiedad asociativa:** el resultado **no depende** de cómo agrupes los factores: $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$. Con $8$ estantes, $5$ cajas y $2$ huevos por caja: $(8 \\cdot 5) \\cdot 2$ cuenta primero $40$ cajas y luego $80$ huevos; $8 \\cdot (5 \\cdot 2)$ cuenta $10$ huevos por fila y luego $80$ en total.",
@@ -41,6 +71,20 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-predict",
       type: "predict",
+      help: [
+        {
+          label: "Dos caminos para calcularlo",
+          message: "Puedes hallar lo que cuesta un menú y multiplicarlo por $8$, o calcular aparte todos los bocadillos y todas las bebidas. Los dos caminos tienen que dar lo mismo.",
+        },
+        {
+          label: "Ojo con qué se multiplica",
+          message: "Dentro de un menú, bocadillo y bebida se **suman**: no se multiplican entre sí. Lo que se multiplica por $8$ es el conjunto.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Si cada menú costara $10$ €, $8$ menús serían $80$ €. Como bocadillo y bebida suman menos de $10$ €, el total tiene que ser menor que eso.",
+        },
+      ],
       title: "Dos formas de calcularlo",
       definitionBox:
         "**Propiedad distributiva:** multiplicar un número por una **suma** es lo mismo que sumar los productos: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$.",
@@ -72,6 +116,20 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-areas",
       type: "slide",
+      help: [
+        {
+          label: "Dos jornadas, una tarifa",
+          message: "Calcula por separado lo de la mañana y lo de la tarde, o suma las horas y multiplica: sale igual.",
+        },
+        {
+          label: "¿Por qué ayuda?",
+          message: "Convierte una multiplicación difícil en dos fáciles: $23 \\cdot 9 = 23 \\cdot 10 - 23$.",
+        },
+        {
+          label: "Míralo como un área",
+          message: "Un rectángulo de $23 \\times 11$ se parte en uno de $23 \\times 10$ y otro de $23 \\times 1$.",
+        },
+      ],
       title: "La distributiva como atajo de cálculo",
       blocks: [
         {
@@ -111,6 +169,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "dividir-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "Piensa en cajas",
+          message: "$150$ bombones en $6$ cajas: se llenan todas por igual.",
+        },
+        {
+          label: "El camino de vuelta",
+          message: "Si $6 \\cdot 25 = 150$, entonces $150 : 6 = 25$.",
+        },
+      ],
       title: "Dividir es repartir",
       definitionBox:
         "**Dividir** reparte un total en partes iguales; es el camino de vuelta de **multiplicar**. Ejemplo: $150$ bombones en $6$ cajas iguales → $25$ en cada caja.",
@@ -121,6 +189,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "dividir-dos-sentidos",
       type: "slide",
+      help: [
+        {
+          label: "Dos preguntas distintas",
+          message: "Repartir: ¿cuántos en cada caja? Agrupar: ¿cuántas cajas salen? La cuenta es la misma, la pregunta no.",
+        },
+        {
+          label: "La comprobación",
+          message: "Multiplica cociente por divisor: tienes que recuperar el dividendo.",
+        },
+      ],
       title: "Una cuenta, dos preguntas",
       blocks: [
         {
@@ -148,6 +226,16 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "division-mano-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "Un ciclo de cuatro pasos",
+          message: "Cociente, multiplica, resta y baja: el ciclo se repite con cada cifra.",
+        },
+        {
+          label: "¿Por qué bajo una cifra?",
+          message: "Cuando el resto es menor que el divisor, necesitas más cifras para seguir repartiendo.",
+        },
+      ],
       title: "La división escrita",
       definitionBox:
         "En la división **cifra a cifra**: escribe el cociente, multiplica, resta y **baja** la siguiente cifra del dividendo.",
@@ -158,6 +246,17 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "tipos-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "¿Por qué el resto es menor que el divisor?",
+          message: "Si fuese igual o mayor, aún podrías repartir otra ronda completa.",
+        },
+        {
+          label: "Comprobación",
+          message: "El dividendo se recupera como divisor por cociente más resto.",
+          math: ["D = d \\cdot c + r"],
+        },
+      ],
       title: "Cuando sobra algo",
       definitionBox:
         "Si no sobra nada, la división es **exacta**. Si quedan elementos sueltos, es **con resto**: total = divisor · cociente + resto, y **el resto es menor que el divisor**.",
@@ -168,6 +267,20 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "resto-predict",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa el resto?",
+          message: "Son personas que no caben en los autobuses llenos. Siguen necesitando plaza.",
+        },
+        {
+          label: "¿Redondeo hacia arriba o hacia abajo?",
+          message: "Cuando nadie puede quedarse sin sitio y sobra algo, hay que contar un recipiente más: aquí el cociente no es la respuesta.",
+        },
+        {
+          label: "Con un ejemplo más pequeño",
+          message: "$10$ personas y autobuses de $4$ plazas: cociente $2$ y resto $2$. ¿Con $2$ autobuses viajan todos?",
+        },
+      ],
       title: "Interpretar el resto",
       question:
         "Una excursión de $345$ personas se reparte en autobuses de $52$ plazas. Al dividir sale cociente $6$ y resto $33$. ¿Cuántos autobuses hacen falta?",

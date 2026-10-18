@@ -130,6 +130,8 @@ export type LessonStepBase = {
   warning?: string;
   /** Ayudas visuales animadas que acompañan a la teoría. */
   visuals?: LessonVisual[];
+  /** Árbol de ayuda propio del paso; sustituye a repetir el enunciado y la teoría. */
+  help?: HelpBranch[];
 };
 
 export type VisualTone = "cobalt" | "emerald" | "amber" | "violet" | "rose";
@@ -357,6 +359,22 @@ export type InteractiveToolStep =
   | SystemGraphToolStep
   | NaturalesNumeracionToolStep
   | PotenciasRaicesToolStep;
+
+/**
+ * Una explicación del tutor escrita a propósito para el ejercicio: debe decir
+ * algo que la diapositiva no dice (otro ángulo, un caso más sencillo, una
+ * pregunta guiada). Cada rama puede abrir otras más concretas.
+ */
+export type HelpBranch = {
+  /** Texto del botón con el que el alumno la pide. */
+  label: string;
+  message: string;
+  detail?: string[];
+  math?: string[];
+  visual?: LessonVisual;
+  /** Ramas más concretas que se ofrecen tras esta explicación. */
+  branches?: HelpBranch[];
+};
 
 type PracticeFields = {
   question: string;

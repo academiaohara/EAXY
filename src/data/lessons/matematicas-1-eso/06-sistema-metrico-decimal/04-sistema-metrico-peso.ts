@@ -10,6 +10,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "gramo-cambio",
       type: "slide",
+      help: [
+        {
+          label: "¿Cuánto es un gramo?",
+          message: "Muy poco: una pequeña gominola o un clip. Por eso se usa el kilogramo para pesos cotidianos.",
+        },
+        {
+          label: "Mismo método que antes",
+          message: "La tabla de gramos va de diez en diez, igual que la de longitud y capacidad.",
+        },
+        {
+          label: "Las dos direcciones",
+          message: "De kilogramos a gramos (unidad menor) el número crece: ×$1000$. De centigramos a gramos (unidad mayor) baja: ÷$100$.",
+        },
+      ],
       title: "El gramo y sus cambios de unidad",
       blocks: [
         {
@@ -33,6 +47,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "quintal-tonelada",
       type: "slide",
+      help: [
+        {
+          label: "Dos unidades que se añaden",
+          message: "El quintal ($100$ kg) y la tonelada ($1000$ kg) son múltiplos del kilogramo para pesos grandes.",
+        },
+        {
+          label: "¿Por qué dividir?",
+          message: "La tonelada es mil veces mayor que el kilo, así que hacen falta mil veces menos toneladas que kilos.",
+        },
+        {
+          label: "Con cuentas fáciles",
+          message: "$2000\\,\\mathrm{kg}$ son $2\\,\\mathrm{t}$. Usa ese mismo razonamiento con otras cifras.",
+        },
+      ],
       title: "Para pesos grandes: quintal y tonelada",
       blocks: [
         {
@@ -53,6 +81,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "check-reparto",
       type: "predict",
+      help: [
+        {
+          label: "¿Sube o baja el número?",
+          message: "La tonelada es una unidad mayor que el kilo, así que el número de toneladas es menor que $8200$.",
+        },
+        {
+          label: "Cuántos kilos tiene una tonelada",
+          message: "Son $1000$. Divide la carga entre esa cantidad.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Una furgoneta de reparto lleva pocas toneladas. Si sale una cifra descomunal, revisa si has dividido o multiplicado.",
+        },
+      ],
       title: "La furgoneta de reparto",
       question: "Una furgoneta de reparto lleva una carga de 8 200 kg. ¿Cuántas toneladas son?",
       mode: "choice",
@@ -84,6 +126,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "slide",
+      help: [
+        {
+          label: "Una columna por unidad",
+          message: "Coloca cada parte en la columna de su unidad ($\\mathrm{kg}$, $\\mathrm{hg}$, $\\mathrm{dag}$, $\\mathrm{g}$, $\\mathrm{dg}$, $\\mathrm{cg}$, $\\mathrm{mg}$) y rellena las vacías con ceros.",
+        },
+        {
+          label: "Dónde va la coma",
+          message: "Detrás de la unidad que te piden. Todo lo que queda a su derecha es parte decimal.",
+        },
+        {
+          label: "Al separar",
+          message: "Lee cada columna con su unidad y omite las que valen $0$.",
+        },
+      ],
       title: "Forma compleja e incompleja con gramos",
       blocks: [
         {
@@ -115,6 +171,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "check-pelo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué operación es?",
+          message: "El pelo cortado es la **diferencia** entre el peso de antes y el de después: una resta.",
+        },
+        {
+          label: "Misma unidad",
+          message: "El peso de antes está en kilos y gramos, y el de después solo en gramos. Pasa los dos a gramos antes de restar.",
+        },
+        {
+          label: "Cuidado con los $50$ g",
+          message: "Los $50$ g ocupan las columnas de unidades y decenas de gramo: $4\\,\\mathrm{kg}\\ 50\\,\\mathrm{g}$ lleva un $0$ en la columna de los hectogramos.",
+        },
+      ],
       title: "La peluquería canina",
       question:
         "Un perro pesaba 4 kg 50 g. Tras cortarle el pelo pesa 3 985 g. ¿Cuántos gramos pesaba el pelo cortado?",
@@ -149,6 +219,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "check-comprimido",
       type: "predict",
+      help: [
+        {
+          label: "Busca la unidad cómoda",
+          message: "La unidad adecuada es la que da cifras manejables, como $500$ y no $0{,}0000005$.",
+        },
+        {
+          label: "Piensa en una pastilla",
+          message: "Una pastilla pesa fracciones de gramo y su principio activo, aún menos. ¿Qué unidad es más pequeña que el gramo?",
+        },
+        {
+          label: "Descarta las grandes",
+          message: "Quintal y tonelada se usan para cosechas y camiones, no para pastillas.",
+        },
+      ],
       title: "El prospecto",
       question:
         "El prospecto de un medicamento indica la cantidad de principio activo de cada comprimido. ¿Qué unidad es más adecuada?",

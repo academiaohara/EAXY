@@ -9,6 +9,20 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "variables-funcion",
       type: "concept",
+      help: [
+        {
+          label: "¿Cuál es la independiente?",
+          message: "La que tú eliges o avanza sola, como el tiempo. La otra reacciona a ella.",
+        },
+        {
+          label: "«$y$ es función de $x$»",
+          message: "Quiere decir que para cada valor de $x$ hay un único valor de $y$.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "El coste de una llamada depende de los minutos que hables: minutos es $x$, coste es $y$.",
+        },
+      ],
       title: "Variable independiente y dependiente",
       content: [
         "Las **gráficas** describen relaciones entre **dos variables**.",
@@ -31,6 +45,16 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "como-leer",
       type: "concept",
+      help: [
+        {
+          label: "De izquierda a derecha",
+          message: "Imagina el tiempo pasando: ¿la línea sube, baja o se queda plana?",
+        },
+        {
+          label: "Antes de describir",
+          message: "Fíjate en las unidades de cada eje. Una subida de «5» no significa nada hasta que sabes si son minutos o euros.",
+        },
+      ],
       title: "Cómo interpretar",
       content: [
         "Mira la gráfica **de izquierda a derecha**: observa cómo cambia **$y$** cuando **aumenta $x$**.",
@@ -41,6 +65,20 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "llamadas",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Qué es la cuota de establecimiento?",
+          message: "Un coste fijo que pagas al empezar la llamada, aunque aún no hayas hablado. Por eso la gráfica no parte de cero.",
+        },
+        {
+          label: "Cómo leer la escala",
+          message: "Mira cuánto vale un cuadrito en cada eje. Sin la escala, las alturas no significan nada.",
+        },
+        {
+          label: "Un coste fijo más uno variable",
+          message: "El precio total es la cuota inicial más lo que se suma cada minuto.",
+        },
+      ],
       title: "Ejemplo: coste de llamadas",
       content: [
         "En una gráfica tiempo–coste, la **cuota de establecimiento** aparece en $y$ aunque el tiempo sea $0$.",
@@ -67,6 +105,16 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "peso-ramon",
       type: "concept",
+      help: [
+        {
+          label: "La gráfica cuenta una historia",
+          message: "Una subida es ganar peso, una bajada es perderlo y un tramo plano es estar estable.",
+        },
+        {
+          label: "Relaciónalo con la vida real",
+          message: "Pregúntate por qué podría haber pasado: ¿una enfermedad?, ¿el crecimiento?",
+        },
+      ],
       title: "Ejemplo: peso y edad",
       content: [
         "Una gráfica edad–peso puede mostrar que Ramón **ganó peso** con la edad, **perdió** un poco entre los 7 y 8 años y **se estabilizó** antes del «estirón» adolescente.",
@@ -76,6 +124,16 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "desplazamiento",
       type: "concept",
+      help: [
+        {
+          label: "Tramos y movimiento",
+          message: "Línea que sube: te mueves. Línea plana: estás parado. Línea que baja: vuelves hacia atrás.",
+        },
+        {
+          label: "¿Qué es la pendiente?",
+          message: "Cuánto sube la distancia por cada unidad de tiempo: es la velocidad. Más inclinada, más rápido.",
+        },
+      ],
       title: "Distancia y tiempo",
       content: [
         "En gráficas **tiempo–distancia** (ir al colegio, un viaje en coche…), la pendiente indica **velocidad**.",
@@ -86,6 +144,20 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "check-independiente",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuál depende de cuál?",
+          message: "Pregúntate qué magnitud cambia cuando se mueve la otra. Esa es la dependiente.",
+        },
+        {
+          label: "Pruébalo con una frase",
+          message: "Di «el precio depende de los kilos» y «los kilos dependen del precio». ¿Cuál suena natural?",
+        },
+        {
+          label: "El tiempo",
+          message: "El tiempo suele ser la variable independiente: avanza solo, no depende de nada.",
+        },
+      ],
       title: "Variable independiente",
       question:
         "En cada gráfico, la primera magnitud va en el eje X y la segunda en el eje Y. Clasifica cada magnitud como variable independiente o dependiente.",
@@ -108,6 +180,16 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "check-parada",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Lee la gráfica",
+          message: "Avanza hacia la derecha: pasa el tiempo. Si la línea no sube ni baja, la distancia no cambia.",
+        },
+        {
+          label: "Imagínalo",
+          message: "Si te mueves, tu distancia al punto de partida cambia. Si no cambia mientras pasa el tiempo, ¿qué estás haciendo?",
+        },
+      ],
       title: "Tramo horizontal",
       question:
         "En una gráfica distancia–tiempo, un tramo **horizontal** significa que la distancia no cambia: ¿qué está ocurriendo? (una palabra: parado / acelerando / retrocediendo)",

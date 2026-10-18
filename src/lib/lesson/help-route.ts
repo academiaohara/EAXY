@@ -1,5 +1,11 @@
 import { findConcepts, type LessonConcept } from "@/lib/lesson/concept-glossary";
-import { isQuizStep, type FeedbackStatus, type LessonStep, type LessonVisual } from "@/lib/lesson/types";
+import {
+  isQuizStep,
+  type FeedbackStatus,
+  type HelpBranch,
+  type LessonStep,
+  type LessonVisual,
+} from "@/lib/lesson/types";
 
 export type HelpOption = {
   id: string;
@@ -39,6 +45,38 @@ type HelpTopic = {
   math?: string[];
 };
 
+function splitSentences(text: string): string[] {
+  return text
+    .split(/(?<=[.?!])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+}
+
+/**
+ * Sin ayuda escrita a mano, separa el enunciado en lo que se da y lo que se
+ * pide, en vez de repetirlo tal cual.
+ */
+function restateTopic(question: string): HelpTopic {
+  const sentences = splitSentences(question);
+  const asked = sentences.filter((sentence) => sentence.includes("?"));
+  const given = sentences.filter((sentence) => !sentence.includes("?"));
+  const detail: string[] = [];
+  if (given.length) detail.push(`**Lo que te dan:** ${given.join(" ")}`);
+  if (asked.length) detail.push(`**Lo que te piden:** ${asked.join(" ")}`);
+  if (!detail.length) detail.push(question);
+  detail.push("Fíjate en qué dato es nuevo para ti y en qué necesitas averiguar: la operación sale de unir las dos cosas.");
+  return {
+    id: "restate",
+    label: "No entiendo qué me piden",
+    message: "Lo separo en dos partes:",
+    detail,
+  };
+}
+
+function stepHelp(step: LessonStep): HelpBranch[] | undefined {
+  return step.help?.length ? step.help : undefined;
+}
+
 function stepQuestion(step: LessonStep): string | undefined {
   return isQuizStep(step) ? step.question : undefined;
 }
@@ -62,13 +100,16 @@ function helpTopics(step: LessonStep, feedback: FeedbackStatus | null): HelpTopi
   const hint = stepHint(step);
   const explanation = stepExplanation(step);
 
+  // Con ayuda escrita a mano sólo queda lo que depende de haber respondido.
+  if (stepHelp(step)) {
+    if (explanation && feedback !== null) {
+      topics.push(whyTopic(feedback, explanation));
+    }
+    return topics;
+  }
+
   if (question) {
-    topics.push({
-      id: "restate",
-      label: "No entiendo qué me piden",
-      message: "Te lo replanteo:",
-      detail: [question],
-    });
+    topics.push(restateTopic(question));
   }
 
   if (hint) {
@@ -113,15 +154,56 @@ function helpTopics(step: LessonStep, feedback: FeedbackStatus | null): HelpTopi
 
   // La solución sólo después de responder: antes sería saltarse el ejercicio.
   if (explanation && feedback !== null) {
-    topics.push({
-      id: "why",
-      label: feedback === "incorrect" ? "No entiendo por qué está mal" : "¿Por qué es esta?",
-      message: "Mira:",
-      detail: [explanation],
-    });
+    topics.push(whyTopic(feedback, explanation));
   }
 
   return topics;
+}
+
+function whyTopic(feedback: FeedbackStatus, explanation: string): HelpTopic {
+  return {
+    id: "why",
+    label: feedback === "incorrect" ? "No entiendo por qué está mal" : "¿Por qué es esta?",
+    message: "Mira:",
+    detail: [explanation],
+  };
+}
+
+function branchId(path: number[]): string {
+  return `help:${path.join(".")}`;
+}
+
+/**
+ * Convierte el árbol escrito a mano en nodos. Cada nodo ofrece sus ramas más
+ * concretas y, si no basta, pasa a la siguiente hermana (y al final al atasco).
+ */
+function branchNodes(
+  branches: HelpBranch[],
+  parent: number[],
+  fallbackNext: string,
+): HelpNode[] {
+  return branches.flatMap((branch, index) => {
+    const path = [...parent, index];
+    const sibling = branches[index + 1] ? branchId([...parent, index + 1]) : fallbackNext;
+    const children = branch.branches ?? [];
+    const node: HelpNode = {
+      id: branchId(path),
+      message: branch.message,
+      detail: branch.detail,
+      math: branch.math,
+      visual: branch.visual,
+      options: [
+        ...children.map((child, childIndex) => ({
+          id: `sub-${childIndex}`,
+          label: child.label,
+          next: branchId([...path, childIndex]),
+        })),
+        { id: "got-it", label: "Ahora sí, sigo", next: null },
+        { id: "more", label: "Sigo sin verlo", next: sibling },
+      ],
+    };
+    return [node, ...branchNodes(children, path, sibling)];
+  });
 }
 
 function rootMessage(step: LessonStep, feedback: FeedbackStatus | null): string {
@@ -151,12 +233,18 @@ function stuckMessage(feedback: FeedbackStatus | null): string {
  */
 export function buildHelpRoute(step: LessonStep, feedback: FeedbackStatus | null): HelpRoute {
   const topics = helpTopics(step, feedback);
+  const authored = stepHelp(step) ?? [];
   const concepts = findConcepts(stepQuestion(step) ?? "").slice(0, STEP_HELP_MAX_CONCEPTS);
 
   const root: HelpNode = {
     id: HELP_ROOT_ID,
     message: rootMessage(step, feedback),
     options: [
+      ...authored.map((branch, index) => ({
+        id: `branch-${index}`,
+        label: branch.label,
+        next: branchId([index]),
+      })),
       ...topics.map((topic) => ({ id: topic.id, label: topic.label, next: topic.id })),
       ...concepts.map((concept) => ({
         id: `concept-${concept.id}`,
@@ -193,7 +281,13 @@ export function buildHelpRoute(step: LessonStep, feedback: FeedbackStatus | null
 
   return {
     rootId: HELP_ROOT_ID,
-    nodes: [root, ...topicNodes, ...concepts.flatMap(conceptNodes), stuck],
+    nodes: [
+      root,
+      ...branchNodes(authored, [], HELP_STUCK_ID),
+      ...topicNodes,
+      ...concepts.flatMap(conceptNodes),
+      stuck,
+    ],
   };
 }
 
@@ -263,7 +357,8 @@ export function buildMessageHelpRoute(
     .filter((concept, index, all) => all.findIndex((other) => other.id === concept.id) === index)
     .slice(0, Math.max(MESSAGE_HELP_MAX_CONCEPTS, extraConcepts.length));
   const topics = helpTopics(step, feedback);
-  const hasSomething = concepts.length > 0 || topics.length > 0;
+  const authored = stepHelp(step) ?? [];
+  const hasSomething = concepts.length > 0 || topics.length > 0 || authored.length > 0;
 
   const root: HelpNode = {
     id: HELP_ROOT_ID,
@@ -275,6 +370,11 @@ export function buildMessageHelpRoute(
         id: `concept-${concept.id}`,
         label: concept.question,
         next: conceptNodeId(concept.id),
+      })),
+      ...authored.map((branch, index) => ({
+        id: `branch-${index}`,
+        label: branch.label,
+        next: branchId([index]),
       })),
       ...topics.map((topic) => ({ id: topic.id, label: topic.label, next: topic.id })),
       { id: "clear", label: "Nada, ya lo tengo", next: null },
@@ -291,7 +391,12 @@ export function buildMessageHelpRoute(
 
   return {
     rootId: HELP_ROOT_ID,
-    nodes: [root, ...concepts.flatMap(conceptNodes), ...topicNodes],
+    nodes: [
+      root,
+      ...concepts.flatMap(conceptNodes),
+      ...branchNodes(authored, [], HELP_ROOT_ID),
+      ...topicNodes,
+    ],
   };
 }
 

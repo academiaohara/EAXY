@@ -9,6 +9,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Curvo frente a plano",
+          message: "Un cuerpo redondo tiene al menos una superficie curva: una lata, un cucurucho, una pelota.",
+        },
+        {
+          label: "Cuerpo de revolución",
+          message: "Se genera girando una figura plana alrededor de una recta, el eje.",
+        },
+      ],
       title: "Cuerpos redondos",
       content: [
         "Los **cuerpos redondos** tienen superficies **curvas** (a diferencia de los poliedros).",
@@ -19,6 +29,20 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "cilindro-cono",
       type: "concept",
+      help: [
+        {
+          label: "Dos objetos de referencia",
+          message: "Cilindro: una lata. Cono: un cucurucho de helado.",
+        },
+        {
+          label: "¿Cómo se generan?",
+          message: "Un rectángulo girando sobre un lado forma un cilindro. Un triángulo rectángulo girando sobre un cateto forma un cono.",
+        },
+        {
+          label: "Los desarrollos",
+          message: "Cilindro: dos círculos y un rectángulo. Cono: un círculo y un sector circular.",
+        },
+      ],
       title: "Cilindro y cono",
       content: [
         "**Cilindro**: $2$ bases circulares iguales y paralelas; superficie lateral curva. Se obtiene girando un **rectángulo** sobre un eje.",
@@ -39,6 +63,20 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "esfera",
       type: "concept",
+      help: [
+        {
+          label: "Una sola superficie",
+          message: "Piensa en una pelota: no tiene caras planas ni aristas.",
+        },
+        {
+          label: "¿Por qué no tiene desarrollo?",
+          message: "Una superficie esférica no se puede aplanar sin estirarla. Por eso los mapas del mundo deforman.",
+        },
+        {
+          label: "La circunferencia máxima",
+          message: "Es el corte por el centro, como partir una naranja por la mitad: la mayor circunferencia que cabe en la esfera.",
+        },
+      ],
       title: "Esfera",
       content: [
         "La **esfera** es un cuerpo redondo con una única **superficie curva**; no tiene caras planas ni aristas.",
@@ -50,6 +88,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-cilindro",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una base?",
+          message: "Una cara plana sobre la que el cuerpo puede apoyarse, igual y paralela a otra. Fíjate en cuántas hay.",
+        },
+        {
+          label: "Piénsalo como un cuerpo de revolución",
+          message: "Un cilindro sale de girar un rectángulo sobre uno de sus lados. Los lados perpendiculares al eje dibujan círculos: ¿cuántos hay?",
+        },
+      ],
       title: "El cilindro",
       question: "¿Cuántas bases tiene un cilindro? (solo el número)",
       correctAnswers: ["2", "dos"],
@@ -59,6 +107,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-revolucion",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué silueta dibuja?",
+          message: "Cada punto de la figura que está lejos del eje dibuja un círculo al girar. La figura entera genera una superficie.",
+        },
+        {
+          label: "Mira figura y eje a la vez",
+          message: "Los lados paralelos al eje forman las paredes; los perpendiculares forman bases circulares. Cuenta cuántos hay de cada tipo.",
+        },
+      ],
       title: "Cuerpos de revolución (act. 4)",
       question: "¿Qué cuerpo se obtiene al hacer girar cada figura plana alrededor del eje indicado?",
       groups: [
@@ -80,6 +138,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-esfera-desarrollo",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué es un desarrollo?",
+          message: "Lo que sale al cortar el cuerpo y aplastarlo sobre una mesa sin estirar ni romper. Piensa en las piezas planas que lo forman.",
+        },
+        {
+          label: "Hazte dos preguntas",
+          message: "Para cada cuerpo: ¿tiene caras planas? ¿Tiene una punta? Las respuestas separan al cilindro, al cono y a la esfera.",
+        },
+      ],
       title: "Bases y desarrollo",
       question: "¿A qué cuerpo redondo corresponde cada característica?",
       groups: [

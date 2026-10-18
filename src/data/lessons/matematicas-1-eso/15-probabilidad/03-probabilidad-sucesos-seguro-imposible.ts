@@ -9,6 +9,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "suceso",
       type: "concept",
+      help: [
+        {
+          label: "Un suceso es un grupo de resultados",
+          message: "Puede ser uno solo («sacar un $5$») o varios («sacar un número par»).",
+        },
+        {
+          label: "Lista los elementales",
+          message: "Para cualquier suceso, escribe qué resultados concretos lo cumplen. Esa lista lo define.",
+        },
+      ],
       title: "¿Qué es un suceso?",
       content: [
         "Un **suceso** está formado por **uno o varios sucesos elementales** del experimento.",
@@ -19,6 +29,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "seguro-imposible",
       type: "concept",
+      help: [
+        {
+          label: "Todo o nada",
+          message: "El seguro contiene todos los resultados. El imposible, ninguno.",
+        },
+        {
+          label: "Con un dado",
+          message: "«Menor que $7$» lo cumplen las seis caras: seguro. «Sacar $30$» no lo cumple ninguna: imposible.",
+        },
+      ],
       title: "Suceso seguro e imposible",
       content: [
         "El **suceso seguro** contiene **todos** los sucesos elementales de $E$. **Siempre** ocurre.",
@@ -49,6 +69,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "cartas",
       type: "animated_solution",
+      help: [
+        {
+          label: "Cómo procedo",
+          message: "Recorre las cartas del $1$ al $8$ y anota cuáles cumplen la condición. Esa lista es el suceso.",
+        },
+        {
+          label: "Comprueba con otra condición",
+          message: "«Menor que $3$» sería $\\{1, 2\\}$. Prueba tú con «impar».",
+        },
+      ],
       title: "Sucesos en cartas del 1 al 8",
       content: [
         "Tenemos ocho cartas numeradas del $1$ al $8$. Sacamos una carta al azar. Escribimos los sucesos elementales de cada suceso.",
@@ -71,6 +101,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "baraja",
       type: "concept",
+      help: [
+        {
+          label: "Palos y números",
+          message: "La baraja española tiene $4$ palos de $10$ cartas cada uno: oros, copas, espadas y bastos.",
+        },
+        {
+          label: "Un suceso, una lista",
+          message: "«Sacar figura» agrupa sotas, caballos y reyes de los cuatro palos.",
+        },
+      ],
       title: "Baraja española (40 cartas)",
       content: [
         "En una baraja española de $40$ cartas, ejemplos de sucesos:",
@@ -83,6 +123,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Seguro, imposible o posible?",
+          message: "Seguro: ocurre siempre, salga lo que salga. Imposible: no ocurre en ningún resultado. Posible: ocurre en unos sí y en otros no.",
+        },
+        {
+          label: "Mira qué hay en la bolsa",
+          message: "Antes de clasificar, repasa qué colores hay en la bolsa. Un suceso con un color que no existe nunca ocurre.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "En una bolsa hay $2$ bolas rojas y $3$ verdes. Sacamos una bola al azar. Clasifica cada suceso.",

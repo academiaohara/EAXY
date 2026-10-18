@@ -10,6 +10,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "cambio-unidad",
       type: "slide",
+      help: [
+        {
+          label: "Un salto, un lugar",
+          message: "Cada salto entre unidades vecinas mueve la coma un lugar. Cuenta los saltos y mueve la coma esos lugares.",
+        },
+        {
+          label: "¿Por qué hacia la derecha?",
+          message: "Si pasas a una unidad menor, caben más: el número crece y la coma va a la derecha. Si pasas a una mayor, el número baja.",
+        },
+        {
+          label: "Los ceros",
+          message: "Cuando faltan cifras para mover la coma, se rellenan con ceros: $0{,}062$ sigue valiendo lo mismo que $0{,}0620$.",
+        },
+      ],
       title: "Cambiar de unidad es mover la coma por la tabla",
       blocks: [
         {
@@ -47,6 +61,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-liston",
       type: "predict",
+      help: [
+        {
+          label: "¿Crece o decrece?",
+          message: "El metro es mayor que el centímetro, así que el número de metros es menor que $243$.",
+        },
+        {
+          label: "Cuenta los saltos",
+          message: "De $\\mathrm{cm}$ a $\\mathrm{m}$ pasas por $\\mathrm{dm}$. Mueve la coma ese número de lugares a la izquierda.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un listón de carpintería mide unos pocos metros. Si te sale muy largo, la coma está mal.",
+        },
+      ],
       title: "El listón de madera",
       question: "En la carpintería, un listón mide 243 cm de largo. ¿Cuántos metros mide?",
       mode: "choice",
@@ -79,6 +107,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "juntar",
       type: "slide",
+      help: [
+        {
+          label: "Forma compleja frente a incompleja",
+          message: "Compleja: varias unidades juntas. Incompleja: una sola, con decimales.",
+        },
+        {
+          label: "Coloca cada parte en su columna",
+          message: "$2\\,\\mathrm{m}\\ 5\\,\\mathrm{dm}$: el $2$ en la columna del metro y el $5$ en la del decímetro. La coma va tras los metros.",
+        },
+        {
+          label: "Si falta una unidad",
+          message: "Una columna vacía vale $0$. Por ejemplo $3\\,\\mathrm{m}\\ 4\\,\\mathrm{cm}$ lleva un $0$ en la columna de los decímetros.",
+        },
+      ],
       title: "Juntar: de forma compleja a incompleja",
       blocks: [
         {
@@ -107,6 +149,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "separar",
       type: "slide",
+      help: [
+        {
+          label: "Lee columna a columna",
+          message: "Coloca el número con la coma bajo su unidad y lee cada cifra con el nombre de su columna.",
+        },
+        {
+          label: "Las columnas con cero",
+          message: "Si una columna vale $0$, no se escribe en la forma compleja. Por eso falta el $\\mathrm{dam}$ en el ejemplo.",
+        },
+        {
+          label: "Comprueba",
+          message: "Pasa tu forma compleja otra vez a una sola unidad: tiene que dar el número de partida.",
+        },
+      ],
       title: "Separar: de forma incompleja a compleja",
       blocks: [
         {
@@ -123,6 +179,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-camion",
       type: "predict",
+      help: [
+        {
+          label: "Misma unidad antes de comparar",
+          message: "El camión está en forma compleja y el hueco en metros. Pasa el camión a metros antes de restar.",
+        },
+        {
+          label: "¿Qué son $5$ dm?",
+          message: "Un decímetro es una décima de metro, así que $5\\,\\mathrm{dm}$ son cinco décimas: $0{,}5\\,\\mathrm{m}$.",
+        },
+        {
+          label: "El margen",
+          message: "Resta la longitud del camión al hueco y, si quieres, pasa el resultado a centímetros.",
+        },
+      ],
       title: "El camión y el hueco",
       question:
         "Un camión mide 2 m 5 dm de largo y hay que aparcarlo en un hueco de 2,6 m. ¿Cabe, y con cuánto margen?",
@@ -156,6 +226,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "extremos",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué más unidades?",
+          message: "Porque el metro no es cómodo para un átomo ni para la distancia a una estrella: se necesitan unidades a otra escala.",
+        },
+        {
+          label: "Referencias",
+          message: "La micra es una milésima de milímetro (una bacteria). La UA es la distancia Tierra–Sol. El año luz es lo que recorre la luz en un año.",
+        },
+        {
+          label: "Cuidado con el año luz",
+          message: "No mide tiempo, mide distancia. «Año» es parte del nombre, no de lo que mide.",
+        },
+      ],
       title: "Más pequeño que el milímetro, más grande que el kilómetro",
       blocks: [
         {
@@ -191,6 +275,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-neptuno",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué hace cómoda a una unidad?",
+          message: "Que el número no tenga demasiadas cifras ni sea un decimal minúsculo.",
+        },
+        {
+          label: "Piensa en la escala",
+          message: "Entre planetas del sistema solar se usan unidades del tamaño de la distancia Tierra–Sol. Las estrellas están mucho más lejos.",
+        },
+        {
+          label: "Descarta por extremos",
+          message: "Una unidad microscópica daría un número enorme y una unidad para galaxias daría un decimal diminuto.",
+        },
+      ],
       title: "El viaje a Neptuno",
       question:
         "Una sonda viaja del Sol a Neptuno, a unos 4 500 millones de km. ¿Con qué unidad es más cómodo expresar esa distancia?",
@@ -224,6 +322,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-campo",
       type: "predict",
+      help: [
+        {
+          label: "¿Crece o decrece?",
+          message: "El metro es menor que el kilómetro, así que en metros el número tiene que ser mayor que $0{,}105$.",
+        },
+        {
+          label: "Cuenta los saltos",
+          message: "De $\\mathrm{km}$ a $\\mathrm{m}$ pasas por $\\mathrm{hm}$ y $\\mathrm{dam}$. Mueve la coma ese número de lugares a la derecha.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un campo de fútbol mide cerca de cien metros. Si te sale mucho mayor o menor, revisa la coma.",
+        },
+      ],
       title: "El campo de fútbol",
       question: "Un campo de fútbol mide 0,105 km de largo. ¿Cuántos metros son?",
       mode: "choice",

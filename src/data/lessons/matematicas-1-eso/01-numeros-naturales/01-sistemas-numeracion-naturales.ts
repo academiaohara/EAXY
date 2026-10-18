@@ -10,6 +10,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "origen-contar",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué hacían falta símbolos?",
+          message: "Contar de uno en uno con muescas es lento y propenso a errores cuando las cantidades son grandes.",
+        },
+        {
+          label: "Un sistema inventado",
+          message: "Si una mano vale $5$ y una persona $20$, $47$ se escribe sumando: dos personas, una mano y dos muescas.",
+        },
+      ],
       title: "Los números nacieron para contar",
       blocks: [
         {
@@ -42,6 +52,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "sistema-egipcio",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué es aditivo?",
+          message: "Que el número se obtiene sumando el valor de cada símbolo, sin importar el orden en que estén.",
+        },
+        {
+          label: "¿Por qué hacen falta tantos símbolos?",
+          message: "Porque no hay posiciones: para $999$ repites cada símbolo nueve veces.",
+        },
+      ],
       title: "Egipto: un sistema aditivo",
       blocks: [
         {
@@ -63,6 +83,20 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "sistema-romano",
       type: "slide",
+      help: [
+        {
+          label: "Cuándo resta una letra",
+          message: "Solo cuando una letra menor (I, X o C) va **delante** de una mayor. En cualquier otro caso, suma.",
+        },
+        {
+          label: "Un truco de lectura",
+          message: "Léelo de izquierda a derecha: si la letra siguiente es mayor, resta la actual; si no, suma.",
+        },
+        {
+          label: "Regla de las repeticiones",
+          message: "Ningún símbolo se repite más de tres veces seguidas: por eso el $4$ es IV y no IIII.",
+        },
+      ],
       title: "Roma: sumar… y a veces restar",
       blocks: [
         {
@@ -88,6 +122,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "sistemas-historia-juego",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Tres reglas, un mismo número",
+          message: "Marcas: contar. Egipcio: sumar símbolos. Romano: sumar y restar letras.",
+        },
+        {
+          label: "¿Cuál es más cómoda?",
+          message: "Compara cuántos símbolos necesita cada sistema para un número grande.",
+        },
+      ],
       tool: "naturales-numeracion",
       scene: "sistemas-historia-juego",
       title: "Escribe el mismo número de tres formas",
@@ -98,6 +142,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "decimal-canje",
       type: "slide",
+      help: [
+        {
+          label: "Diez cifras bastan",
+          message: "Con el $0$ al $9$ y la regla del canje, cualquier cantidad se escribe.",
+        },
+        {
+          label: "La regla del canje",
+          message: "Diez unidades se cambian por una decena, diez decenas por una centena… como cambiar diez monedas de un euro por un billete de diez.",
+        },
+      ],
       title: "El sistema decimal: base 10",
       blocks: [
         {
@@ -123,6 +177,20 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "decimal-posicion",
       type: "slide",
+      help: [
+        {
+          label: "El valor lo da el lugar",
+          message: "En $333$, cada $3$ vale distinto: tres centenas, tres decenas y tres unidades.",
+        },
+        {
+          label: "El papel del cero",
+          message: "Ocupa los órdenes vacíos. Sin cero, $305$ y $35$ se confundirían.",
+        },
+        {
+          label: "Aditivo frente a posicional",
+          message: "En el romano, $\\mathrm{X}$ vale diez siempre. En el decimal, el $3$ vale $30\\,000$ o $300$ según dónde esté.",
+        },
+      ],
       title: "Sistema posicional: el valor lo da el lugar",
       blocks: [
         {
@@ -155,6 +223,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "check-millares",
       type: "predict",
+      help: [
+        {
+          label: "Calcula primero el total",
+          message: "Ve cuántos folios hay en total y después cuántos grupos de $1\\,000$ caben.",
+        },
+        {
+          label: "Diez de un orden hacen uno del siguiente",
+          message: "Diez centenas forman un millar. Agrupa los $40$ paquetes de diez en diez.",
+        },
+      ],
       title: "Cambiar de orden",
       question:
         "Una papelería tiene $40$ paquetes de $100$ folios. Si los reagrupa en cajas de $1\\,000$ folios, ¿cuántas cajas completa?",
@@ -181,6 +259,20 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "redondeo-regla",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué redondear?",
+          message: "Un número terminado en ceros se dice, se recuerda y se compara más fácilmente.",
+        },
+        {
+          label: "¿Qué cifra miro?",
+          message: "La primera que sustituyes por cero. Si es $5$ o más, la anterior sube; si no, se queda.",
+        },
+        {
+          label: "Según el orden",
+          message: "El mismo número se redondea distinto según el orden: las decenas de millar dan $290\\,000$ y las centenas de millar, $300\\,000$.",
+        },
+      ],
       title: "Redondear: ganar claridad, perder precisión",
       blocks: [
         {
@@ -212,6 +304,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "redondeo-practica-24963",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Localiza el último dígito que conservas",
+          message: "Para redondear a millares es el de los millares. Todo lo que queda a su derecha pasa a ser ceros.",
+        },
+        {
+          label: "¿Sube o no?",
+          message: "Mira la primera cifra que sustituyes. Si es $5$ o más, la última que conservas sube una unidad.",
+        },
+      ],
       tool: "naturales-numeracion",
       scene: "redondeo-corte",
       title: "Practica el corte",
@@ -223,6 +325,21 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "check-acarreo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué cifra miro?",
+          message: "Para redondear a millares mira la primera cifra que se suprime: la de las centenas.",
+        },
+        {
+          label: "¿Qué pasa si la cifra que sube es un $9$?",
+          message: "Al sumar $1$ a $9$ hay llevada: esa cifra pasa a $0$ y sube la de la izquierda.",
+          math: ["39 + 1 = \\;?"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un redondeo a millares tiene que ser un múltiplo de $1\\,000$ y estar cerca de $39\\,785$.",
+        },
+      ],
       title: "Cuando el redondeo «se lleva una»",
       question:
         "Una web registra $39\\,785$ visitas y quieres ponerlo en un titular redondeado a los millares. ¿Qué cifra escribes?",

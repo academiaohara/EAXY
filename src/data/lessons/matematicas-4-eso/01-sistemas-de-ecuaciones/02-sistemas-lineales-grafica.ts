@@ -9,6 +9,16 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué es un sistema?",
+          message: "Varias condiciones a la vez. Buscas valores de $x$ e $y$ que cumplan **todas** las ecuaciones.",
+        },
+        {
+          label: "¿Por qué un punto de corte?",
+          message: "Cada ecuación es una recta de soluciones. Un punto que cumple las dos está en las dos rectas: en su cruce.",
+        },
+      ],
       title: "¿Qué es un sistema de ecuaciones?",
       content: [
         "Varias ecuaciones forman un **sistema** cuando buscamos las soluciones **comunes** a todas ellas.",
@@ -41,6 +51,16 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "grafica-sistema",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Cómo leerlo",
+          message: "Dibuja las dos rectas en los mismos ejes y busca dónde se cruzan. Lee las coordenadas de ese punto.",
+        },
+        {
+          label: "Comprueba",
+          message: "Sustituye el punto en las dos ecuaciones: tienen que cumplirse las dos.",
+        },
+      ],
       title: "Solución gráfica",
       tool: "system-graph",
       content: [
@@ -61,6 +81,20 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "tipos",
       type: "concept",
+      help: [
+        {
+          label: "Tres posibilidades",
+          message: "Las rectas se cortan (una solución), son paralelas (ninguna) o coinciden (infinitas).",
+        },
+        {
+          label: "Nombres",
+          message: "Compatible: tiene solución. Incompatible: no tiene. Determinado: una sola. Indeterminado: infinitas.",
+        },
+        {
+          label: "¿Cómo lo sé sin dibujar?",
+          message: "Si los coeficientes de $x$ e $y$ son proporcionales, son paralelas o coincidentes. Si además el término independiente es proporcional, coinciden.",
+        },
+      ],
       title: "Tipos de sistemas lineales",
       content: [
         "**Compatible determinado**: las rectas se cortan en un punto → **una solución**.",
@@ -122,6 +156,16 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "paralelas",
       type: "interactive_tool",
+      help: [
+        {
+          label: "¿Por qué no hay solución?",
+          message: "Rectas paralelas no se cortan: no hay un punto que esté en las dos.",
+        },
+        {
+          label: "Fíjate en las ecuaciones",
+          message: "La segunda es la primera con el doble en $x$ e $y$ pero con un término independiente que no es el doble.",
+        },
+      ],
       title: "Sistema incompatible (rectas paralelas)",
       tool: "system-graph",
       content: [
@@ -141,6 +185,20 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuántos puntos comparten?",
+          message: "Dos rectas pueden cortarse en un punto, no cortarse nunca (paralelas) o ser la misma recta. De ahí salen $1$, $0$ o infinitas soluciones.",
+        },
+        {
+          label: "¿Cómo lo veo sin dibujar?",
+          message: "Compara las ecuaciones: si una es la otra multiplicada por un número, son la misma recta. Si los coeficientes de $x$ e $y$ son proporcionales pero el término independiente no, son paralelas. Si no son proporcionales, se cortan.",
+        },
+        {
+          label: "Un par de ejemplos",
+          message: "$x + y = 3$ y $2x + 2y = 6$ son la misma recta. $x + y = 3$ y $x + y = 5$ son paralelas.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "La solución de un sistema son los puntos comunes a las dos rectas. Clasifica cada caso según cuántas soluciones tiene.",

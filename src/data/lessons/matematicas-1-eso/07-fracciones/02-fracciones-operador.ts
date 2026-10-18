@@ -9,6 +9,20 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "regla",
       type: "concept",
+      help: [
+        {
+          label: "En dos tiempos",
+          message: "Primero repartes en $d$ partes iguales (divides) y luego coges $n$ de ellas (multiplicas).",
+        },
+        {
+          label: "Con bombones",
+          message: "$\\frac{2}{5}$ de $20$ bombones: $5$ filas de $4$, y coges $2$ filas.",
+        },
+        {
+          label: "¿Importa el orden?",
+          message: "Dividir y multiplicar da lo mismo en cualquier orden, pero dividir primero suele dar números más manejables.",
+        },
+      ],
       title: "Calcular una fracción de un número",
       content: [
         "Una fracción **opera** sobre una cantidad: la divide y toma partes.",
@@ -30,6 +44,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "mental",
       type: "concept",
+      help: [
+        {
+          label: "Parte de una parte conocida",
+          message: "Si sabes lo que vale una parte ($\\frac{1}{4}$ de $8$), las demás son múltiplos de ella.",
+        },
+        {
+          label: "Haz tu propio ejemplo",
+          message: "$\\frac{1}{5}$ de $10$ es $2$. ¿Cuánto es $\\frac{3}{5}$ de $10$?",
+        },
+      ],
       title: "Cálculo mental",
       content: [
         "Si conoces $\\frac{1}{4}$ de $8$ ($2$), entonces $\\frac{3}{4}$ de $8$ es $3 \\cdot 2 = 6$.",
@@ -50,6 +74,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "marca-canicas",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué significa «$\\frac{2}{3}$ de»?",
+          message: "El denominador dice en cuántos grupos iguales reparto las canicas; el numerador, cuántos grupos cojo.",
+        },
+        {
+          label: "Imagínalo con cajas",
+          message: "Piensa en $3$ cajas con las mismas canicas cada una y $12$ en total. Marcas las de dos cajas.",
+        },
+      ],
       title: "Marca la fracción de un conjunto",
       question: "Tienes $12$ canicas. Marca $\\frac{2}{3}$ de ellas.",
       shape: "set",
@@ -65,6 +99,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "bombones",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué resto?",
+          message: "Lo que queda es el total menos lo consumido.",
+        },
+        {
+          label: "Otra forma",
+          message: "Si se ha comido $\\frac{1}{6}$, quedan $\\frac{5}{6}$. Puedes calcular directamente $\\frac{5}{6}$ de $24$.",
+        },
+      ],
       title: "Problema — caja de bombones",
       content: [
         "De una caja de $24$ bombones se ha consumido $\\frac{1}{6}$. ¿Cuántos se han comido? ¿Cuántos quedan?",
@@ -83,6 +127,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "clase",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué resto al final?",
+          message: "Los chicos son el resto del total: no hace falta calcular otra fracción.",
+        },
+        {
+          label: "Comprueba",
+          message: "Chicas más chicos tiene que dar $27$.",
+        },
+      ],
       title: "Problema — chicos y chicas",
       content: [
         "En una clase hay $27$ alumnos. Las chicas son $\\frac{4}{9}$ del total. ¿Cuántas chicas y cuántos chicos hay?",
@@ -101,6 +155,17 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "check-calculo",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo se calcula la fracción de un número?",
+          message: "Divide el número entre el denominador (para tener una parte) y multiplica por el numerador (para coger las que piden).",
+          math: ["\\frac{2}{5} \\text{ de } 20 = (20 : 5) \\cdot 2"],
+        },
+        {
+          label: "Hazlo en filas",
+          message: "Imagina $12$ objetos en $4$ filas iguales. ¿Cuántos hay en cada fila? Coges $3$ filas.",
+        },
+      ],
       title: "Practica la regla",
       question: "Calcula $\\frac{3}{4}$ de $12$ (solo el resultado).",
       correctAnswers: ["9"],
@@ -109,6 +174,20 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "check-precio",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué operación hay?",
+          message: "Es una fracción de un número, aunque sea decimal: se divide entre el denominador y se multiplica por el numerador.",
+        },
+        {
+          label: "La división con decimales",
+          message: "En $5{,}4 : 4$, al bajar la primera cifra decimal pones la coma en el cociente. Añade ceros hasta que el resto sea $0$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{3}{4}$ de kilo es menos de un kilo, así que cuesta menos de $5{,}4$ €, pero más que la mitad ($2{,}7$ €).",
+        },
+      ],
       title: "Fracción de un precio",
       question:
         "Boquerones a $5{,}4\\,€/\\mathrm{kg}$. ¿Cuánto cuestan $\\frac{3}{4}\\,\\mathrm{kg}$? (escribe solo el número, en euros)",

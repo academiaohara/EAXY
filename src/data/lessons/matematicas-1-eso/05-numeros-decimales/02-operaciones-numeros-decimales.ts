@@ -10,6 +10,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "suma",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué coma bajo coma?",
+          message: "Porque así se juntan cifras del mismo orden: unidades con unidades, décimas con décimas.",
+        },
+        {
+          label: "¿Por qué añado ceros?",
+          message: "$3{,}1$ y $3{,}10$ valen lo mismo. Con el cero la columna de las centésimas queda completa y no te confundes.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Redondea cada número al entero: $4 + 3 + 6 + 5$. El resultado debe quedar cerca de esa cifra.",
+        },
+      ],
       title: "Sumar: coma bajo coma",
       blocks: [
         {
@@ -38,6 +52,16 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "resta",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué los ceros ya no son opcionales?",
+          message: "Para restar columna a columna, el minuendo necesita tener cifra en cada columna. Sin el cero, no sabrías de dónde pedir prestado.",
+        },
+        {
+          label: "Comprueba con una estimación",
+          message: "Redondea los dos números al entero y resta: el resultado exacto debe quedar cerca.",
+        },
+      ],
       title: "Restar: igual que sumar, y los ceros ya no son opcionales",
       blocks: [
         {
@@ -87,6 +111,39 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
         },
       ],
       correctChoiceId: "a",
+      help: [
+        {
+          label: "¿Qué operación hago?",
+          message: "Piensa en tu cartera: cada cosa que coges es dinero que sale, y «el total» es todo lo que sale junto.",
+          detail: ["Juntar cantidades de dinero es sumar. Aquí no hay nada que repartir ni que comparar: solo tres precios que se acumulan."],
+          branches: [
+            {
+              label: "¿Cómo coloco los números?",
+              message: "Escribe $2{,}5$ como $2{,}50$ para que los tres precios tengan dos decimales, y pon las comas en vertical:",
+              visual: { kind: "stack", rows: ["1{,}20", "0{,}95", "2{,}50"], operator: "+", result: "?" },
+            },
+          ],
+        },
+        {
+          label: "Quiero saber si mi resultado es razonable",
+          message: "Antes de sumar, redondea cada precio al euro más cercano: $1 + 1 + 3$.",
+          detail: [
+            "Eso te da una referencia: el total real tiene que andar cerca de esa cifra. Compara con las opciones y desconfía de las que se alejen mucho.",
+          ],
+        },
+        {
+          label: "Me lío con las comas",
+          message: "La coma solo separa los **euros** de los **céntimos**: $0{,}95$ son $95$ céntimos y $2{,}5$ son $2$ euros y $50$ céntimos.",
+          branches: [
+            {
+              label: "¿Y si lo hago todo en céntimos?",
+              message: "Pasa cada precio a céntimos y suma números enteros, sin comas:",
+              math: ["120 + 95 + 250 = \;?\\text{ céntimos}"],
+              detail: ["Cuando tengas el total, conviértelo a euros dividiendo entre $100$: la coma vuelve a dejar dos decimales."],
+            },
+          ],
+        },
+      ],
       shuffleChoices: true,
       explanation:
         "$1{,}20 + 0{,}95 + 2{,}50 = 4{,}65$: con las comas alineadas, centésimas con centésimas y décimas con décimas.",
@@ -121,6 +178,32 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
         },
       ],
       correctChoiceId: "a",
+      help: [
+        {
+          label: "¿Suma o resta?",
+          message: "El cambio es lo que **te falta** para llegar a lo que has dado.",
+          detail: [
+            "Se cumple siempre que *cambio + precio = billete*. Si despejas el cambio, queda una resta: el billete menos el precio.",
+          ],
+        },
+        {
+          label: "Quiero saber si mi resultado es razonable",
+          message: "Redondea la compra: $13{,}85$ es casi $14$ €, y de $14$ a $20$ hay una distancia fácil de calcular de cabeza.",
+          detail: ["El cambio real será un poco mayor que esa estimación, porque has redondeado la compra hacia arriba."],
+        },
+        {
+          label: "Restar con tantos decimales me cuesta",
+          message: "Puedes evitar la resta en columna contando **hacia arriba**, como hace un cajero.",
+          detail: ["Primero lo que falta para llegar a un número redondo; después, el resto hasta el billete."],
+          branches: [
+            {
+              label: "¿Cómo se hace?",
+              message: "De $13{,}85$ a $14$ faltan $0{,}15$. Ahora cuenta de $14$ a $20$ y junta los dos trozos.",
+              math: ["13{,}85 \\xrightarrow{+\\,0{,}15} 14 \\xrightarrow{+\\,?} 20"],
+            },
+          ],
+        },
+      ],
       shuffleChoices: true,
       explanation:
         "$20{,}00 - 13{,}85 = 6{,}15$. Se pide prestado en cadena: $10 - 5 = 5$ centésimas, $9 - 8 = 1$ décima y $19 - 13 = 6$ unidades.",
@@ -128,6 +211,16 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "hucha",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué reglas valen?",
+          message: "Las mismas que con enteros: los ingresos suman y los gastos restan.",
+        },
+        {
+          label: "Dos caminos",
+          message: "Puedes ir operando en orden, o sumar por un lado todos los ingresos, por otro todos los gastos, y restar.",
+        },
+      ],
       title: "Ingresos y gastos: valen las reglas de los enteros",
       arrange: "text-top",
       blocks: [
@@ -164,6 +257,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "multiplicacion",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué sin comas?",
+          message: "Multiplicar por $10$ o $100$ para quitar comas se compensa después: los decimales de los factores indican cuánto hay que deshacer.",
+        },
+        {
+          label: "Cuenta bien los decimales",
+          message: "Suma las cifras decimales de **cada factor**: ese número de cifras debe tener el producto.",
+        },
+        {
+          label: "Con dinero",
+          message: "Si el resultado tiene más de dos decimales, redondea a céntimos mirando la tercera cifra.",
+        },
+      ],
       title: "Multiplicar: sin comas, y se cuentan los decimales",
       blocks: [
         {
@@ -218,6 +325,28 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
         },
       ],
       correctChoiceId: "a",
+      help: [
+        {
+          label: "¿Qué operación me piden?",
+          message: "La superficie de un rectángulo es **ancho × largo**, igual que con números enteros: que sean decimales no cambia la fórmula.",
+          detail: ["Sumar los lados daría el recorrido alrededor de la baldosa, no lo que ocupa."],
+        },
+        {
+          label: "¿Dónde pongo la coma?",
+          message: "Olvídate de las comas, multiplica como si fueran naturales y coloca la coma al final.",
+          detail: [
+            "Cuenta los decimales de **cada factor** y súmalos: ese es el número de cifras decimales que debe tener el producto.",
+          ],
+          math: ["0{,}4 \\cdot 0{,}3 \;\\to\; 4 \\cdot 3 = ?\;\;\\text{y}\;\;1+1\\text{ decimales}"],
+          branches: [
+            {
+              label: "¿Cómo sé si he acertado con la coma?",
+              message: "Mira el tamaño: $0{,}4$ es menos de medio metro y $0{,}3$ también, así que la baldosa es **más pequeña** que cualquiera de sus lados expresado en metros.",
+              detail: ["Multiplicar por un número menor que $1$ hace el resultado más pequeño. Si te sale mayor que $0{,}4$, la coma está mal."],
+            },
+          ],
+        },
+      ],
       shuffleChoices: true,
       explanation:
         "$4 \\cdot 3 = 12$, con $1 + 1 = 2$ cifras decimales: $0{,}12\\ \\mathrm{m}^2$. Es menor que $0{,}3$: multiplicar por un número menor que $1$ reduce.",
@@ -225,6 +354,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "potencias-10",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué se desplaza la coma?",
+          message: "Multiplicar por $10$ hace que cada cifra valga diez veces más: pasa a la columna de la izquierda, y por eso la coma queda un lugar más a la derecha.",
+        },
+        {
+          label: "¿Y si faltan cifras?",
+          message: "Se añaden ceros. $2{,}45 \\cdot 1000 = 2450$ porque la coma sobrepasa la última cifra.",
+        },
+        {
+          label: "Naturales acabados en ceros",
+          message: "Separa los ceros y multiplica primero por el resto: $3{,}52 \\cdot 500$ es $(3{,}52 \\cdot 5) \\cdot 100$.",
+        },
+      ],
       title: "Por 10, 100, 1000…: la coma se desplaza",
       blocks: [
         {
@@ -273,6 +416,19 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
         },
       ],
       correctChoiceId: "a",
+      help: [
+        {
+          label: "¿Multiplico o divido?",
+          message: "Un gramo es una cantidad muy pequeña: en un kilo caben mil. Por tanto, la misma harina se expresa con un número **mucho mayor** en gramos.",
+          detail: ["Si la unidad es más pequeña, el número crece: se multiplica."],
+        },
+        {
+          label: "¿Cuántos lugares muevo la coma?",
+          message: "Tantos como ceros tiene lo que multiplicas, hacia la derecha. Un ejemplo con otro número:",
+          math: ["0{,}4 \\cdot 100 = 40 \\qquad (\\text{dos ceros} \\Rightarrow \\text{dos lugares})"],
+          detail: ["Si te quedas sin cifras, se añaden ceros. Ahora cuenta los ceros de $1000$."],
+        },
+      ],
       shuffleChoices: true,
       explanation:
         "$0{,}125 \\cdot 1000 = 125$: la coma se desplaza tres lugares a la derecha.",
@@ -306,6 +462,29 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
         },
       ],
       correctChoiceId: "a",
+      help: [
+        {
+          label: "¿Qué operación hago?",
+          message: "Si un litro cuesta $3{,}15$ €, tres cuartos de litro cuestan **menos** que eso. Lo que pagas es *precio del litro × litros*.",
+          detail: ["Sumar no tiene sentido: no estás juntando dos precios, estás calculando una parte del precio de un litro."],
+        },
+        {
+          label: "Quiero saber si mi resultado es razonable",
+          message: "Como $0{,}75$ es casi un litro, el precio tiene que ser **algo menor que $3{,}15$**.",
+          detail: ["Cualquier opción mayor que el precio del litro queda descartada sin hacer ninguna cuenta."],
+        },
+        {
+          label: "Hay demasiadas cifras",
+          message: "Hazlo en dos fases: primero la multiplicación sin comas, después la coma.",
+          math: ["315 \\cdot 75 = ?", "2 + 2 = 4 \\text{ decimales}"],
+          branches: [
+            {
+              label: "¿Cómo redondeo a céntimos?",
+              message: "Céntimos son **dos decimales**. Mira la tercera cifra decimal: si es $5$ o más, la centésima sube; si es menor, se queda igual.",
+            },
+          ],
+        },
+      ],
       shuffleChoices: true,
       explanation:
         "$315 \\cdot 75 = 23\\,625$, con $4$ cifras decimales: $2{,}3625\\,€ \\approx 2{,}36\\,€$.",

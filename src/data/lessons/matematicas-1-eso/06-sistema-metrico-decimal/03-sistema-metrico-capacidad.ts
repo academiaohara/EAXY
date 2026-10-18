@@ -10,6 +10,23 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "litro-cambio",
       type: "slide",
+      help: [
+        {
+          label: "¿Cuánto es un litro?",
+          message: "Lo que cabe en un cubo de $10$ cm de arista: una botella grande de agua. Esa es la referencia para saber si un resultado es razonable.",
+        },
+        {
+          label: "La escalera",
+          message: "De diez en diez: bajar un escalón (de $\\mathrm{l}$ a $\\mathrm{dl}$) multiplica por $10$ y subirlo divide entre $10$.",
+          math: [
+            "\\mathrm{kl} \\to \\mathrm{hl} \\to \\mathrm{dal} \\to \\mathrm{l} \\to \\mathrm{dl} \\to \\mathrm{cl} \\to \\mathrm{ml}",
+          ],
+        },
+        {
+          label: "¿Hacia dónde muevo la coma?",
+          message: "A una unidad menor el número crece (coma a la derecha); a una mayor, decrece (a la izquierda). Cuenta los saltos para saber cuántos lugares.",
+        },
+      ],
       title: "El litro y sus cambios de unidad",
       blocks: [
         {
@@ -34,6 +51,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-cisterna",
       type: "predict",
+      help: [
+        {
+          label: "¿Crece o decrece?",
+          message: "El litro es mucho menor que el kilolitro, así que en litros el número tiene que ser mayor.",
+        },
+        {
+          label: "Cuenta los escalones",
+          message: "Del kilolitro al litro hay que bajar por $\\mathrm{hl}$ y $\\mathrm{dal}$. Ese número de saltos es cuántos lugares mueves la coma.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un camión cisterna lleva miles de litros. Descarta lo que sea de cientos o de unidades.",
+        },
+      ],
       title: "El camión cisterna",
       question: "Un camión cisterna transporta 2,73 kl de agua. ¿Cuántos litros son?",
       mode: "choice",
@@ -65,6 +96,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-aceite",
       type: "predict",
+      help: [
+        {
+          label: "¿Crece o decrece?",
+          message: "El litro es mayor que el mililitro, así que el número de litros tiene que ser menor que $750$.",
+        },
+        {
+          label: "Cuenta los escalones",
+          message: "De $\\mathrm{ml}$ a $\\mathrm{l}$ subes por $\\mathrm{cl}$ y $\\mathrm{dl}$. Mueve la coma ese número de lugares a la izquierda.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Una botella de aceite suele ser de un litro o menos. Un resultado de varios litros no encaja.",
+        },
+      ],
       title: "La botella de aceite",
       question: "Una botella de aceite tiene 750 ml. ¿Cuántos litros de aceite contiene?",
       mode: "choice",
@@ -95,6 +140,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "slide",
+      help: [
+        {
+          label: "Una columna por unidad",
+          message: "Escribe las unidades en columnas ($\\mathrm{kl}$, $\\mathrm{hl}$, $\\mathrm{dal}$, $\\mathrm{l}$, $\\mathrm{dl}$, $\\mathrm{cl}$, $\\mathrm{ml}$) y pon cada cifra en la suya.",
+        },
+        {
+          label: "¿Por qué ceros?",
+          message: "Una columna vacía vale $0$ y hay que escribirlo para que cada cifra quede en su sitio.",
+        },
+        {
+          label: "Un ejemplo pequeño",
+          message: "$2\\,\\mathrm{l}\\ 3\\,\\mathrm{cl}$ en litros: $2$ unidades, $0$ decilitros y $3$ centilitros, es decir, $2{,}03\\,\\mathrm{l}$.",
+        },
+      ],
       title: "Forma compleja e incompleja con litros",
       blocks: [
         {
@@ -126,6 +185,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-jarabe",
       type: "predict",
+      help: [
+        {
+          label: "Una cifra por columna",
+          message: "Tras la coma, cada unidad (dl, cl, ml) ocupa **una sola** cifra, una detrás de otra.",
+        },
+        {
+          label: "Pon la coma tras los litros",
+          message: "Los $4$ litros van delante de la coma. Después, las cifras de $\\mathrm{dl}$, $\\mathrm{cl}$ y $\\mathrm{ml}$ en ese orden.",
+        },
+        {
+          label: "Comprueba con una suma",
+          message: "Pasa cada parte a litros ($0{,}2$, $0{,}05$, $0{,}007$) y súmalas: tiene que coincidir con tu número.",
+        },
+      ],
       title: "El jarabe de la farmacia",
       question:
         "Una farmacia prepara un jarabe con 4 l, 2 dl, 5 cl y 7 ml de líquido. ¿Cuántos litros hay en total?",
@@ -160,6 +233,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-perfume",
       type: "predict",
+      help: [
+        {
+          label: "Busca números cómodos",
+          message: "La unidad adecuada es la que da cifras de pocos dígitos, ni decimales minúsculos ni números enormes.",
+        },
+        {
+          label: "Imagina el frasco",
+          message: "Un frasco de perfume cabe en la palma de la mano. ¿Es más parecido a una botella, a un cubo o a una cucharilla?",
+        },
+        {
+          label: "Compara con un litro",
+          message: "Si el frasco es mucho menor que un litro, necesitas una unidad menor que el litro.",
+        },
+      ],
       title: "El frasco de perfume",
       question:
         "En la etiqueta de un frasco de perfume hay que indicar su capacidad. ¿Qué unidad resulta más adecuada?",

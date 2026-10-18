@@ -9,6 +9,16 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "definiciones",
       type: "concept",
+      help: [
+        {
+          label: "Absoluta frente a relativa",
+          message: "La absoluta cuenta **cuántas veces**. La relativa dice **qué proporción** del total.",
+        },
+        {
+          label: "Dos comprobaciones",
+          message: "Las absolutas suman $n$. Las relativas suman $1$. Si no ocurre, hay un error.",
+        },
+      ],
       title: "Frecuencias",
       content: [
         "Repetimos un experimento aleatorio $n$ veces y anotamos cuántas veces ocurre cada suceso.",
@@ -20,6 +30,16 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "ejemplo-dado",
       type: "animated_solution",
+      help: [
+        {
+          label: "Cómo leer la tabla",
+          message: "Cada fila es un resultado del dado y cuántas veces salió. La suma de todas es $50$.",
+        },
+        {
+          label: "¿Por qué $h_3 = 0{,}28$?",
+          message: "Porque $14$ de $50$ lanzamientos fueron un $3$: $14 : 50$.",
+        },
+      ],
       title: "Roberto lanza un dado 50 veces",
       content: ["Completamos la tabla del temario y leemos las frecuencias."],
       frames: [
@@ -44,6 +64,16 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "probabilidad-frecuencia",
       type: "concept",
+      help: [
+        {
+          label: "Una idea clave",
+          message: "Con pocos lanzamientos las frecuencias bailan. Con muchos, se estabilizan alrededor de un valor: la probabilidad.",
+        },
+        {
+          label: "Con la moneda",
+          message: "En $10$ lanzamientos puede salir $7$ veces cara. En $10\\,000$, lo normal es acercarse a la mitad.",
+        },
+      ],
       title: "Puente hacia la probabilidad",
       content: [
         "La **probabilidad** de un suceso es el número al que se **aproxima** su frecuencia relativa cuando $n$ es muy grande.",
@@ -54,6 +84,16 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "bombo",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué es el reemplazo?",
+          message: "Que la bola vuelve al bombo tras cada extracción, así que las condiciones no cambian.",
+        },
+        {
+          label: "Sucesos compuestos",
+          message: "Para «múltiplo de $3$» sumas las frecuencias de $3$, $6$ y $9$: es la suma de sus partes.",
+        },
+      ],
       title: "Bombo del 0 al 9",
       content: [
         "En un bombo con bolas $0$–$9$ se repite $100$ veces la extracción (con reemplazo).",
@@ -65,6 +105,21 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Absoluta o relativa?",
+          message: "La absoluta es **cuántas veces** sale. La relativa es la **proporción** que supone del total de repeticiones.",
+        },
+        {
+          label: "¿Cómo la calculo?",
+          message: "Divide lo que ha ocurrido entre el número total de pruebas.",
+          math: ["h = \\frac{f}{n}"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "La frecuencia relativa siempre está entre $0$ y $1$. Si te sale mayor que $1$, has dividido al revés.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "En $50$ lanzamientos de un dado sale la cara $3$ exactamente $14$ veces. ¿Cuál es la frecuencia relativa $h_3$? (en decimal, con coma)",

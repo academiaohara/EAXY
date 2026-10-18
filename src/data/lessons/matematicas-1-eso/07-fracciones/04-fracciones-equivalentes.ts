@@ -9,6 +9,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "mismo-valor",
       type: "concept",
+      help: [
+        {
+          label: "Una misma tarta",
+          message: "Parte una tarta en $4$ y toma una porción; parte otra igual en $12$ y toma $3$: comes lo mismo.",
+        },
+        {
+          label: "¿Cómo lo compruebo?",
+          message: "Pasa las dos a decimal: si dan el mismo número, son equivalentes.",
+        },
+      ],
       title: "Misma porción, distinta escritura",
       content: [
         "Dos fracciones son **equivalentes** si representan la **misma porción** de la unidad (mismo valor numérico).",
@@ -38,6 +48,17 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "marca-equivalente",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué quiere decir «equivalente»?",
+          message: "Que representa la misma porción de la barra, aunque se escriba con otros números.",
+        },
+        {
+          label: "Cambia de denominador",
+          message: "La barra tiene $8$ partes. Multiplica numerador y denominador por el mismo número hasta que el denominador sea $8$.",
+          math: ["\\frac{3}{4} = \\frac{3 \\cdot ?}{4 \\cdot ?}"],
+        },
+      ],
       title: "Colorea una fracción equivalente",
       question:
         "La barra está partida en $8$ partes iguales. Colorea $\\frac{3}{4}$ de la barra.",
@@ -52,6 +73,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "propiedad",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué no cambia el valor?",
+          message: "Multiplicar numerador y denominador por $5$ es partir cada trozo en $5$: hay $5$ veces más trozos, pero $5$ veces más pequeños.",
+        },
+        {
+          label: "¿Y por qué dividir?",
+          message: "Es lo mismo al revés: agrupas trozos y la porción no cambia.",
+        },
+        {
+          label: "Cuidado",
+          message: "Solo vale multiplicar o dividir **los dos** números por lo mismo. Sumarles el mismo número no mantiene el valor.",
+        },
+      ],
       title: "Propiedad fundamental",
       content: [
         "Si **multiplicas o divides** numerador y denominador por el **mismo número** (distinto de cero), obtienes una fracción equivalente.",
@@ -72,6 +107,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "simplificar",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué busco?",
+          message: "Una fracción con números más pequeños que valga lo mismo.",
+        },
+        {
+          label: "¿Cómo no equivocarme?",
+          message: "Divide por un divisor común y repite hasta que no quede ninguno (salvo el $1$). Los criterios de divisibilidad ayudan.",
+        },
+        {
+          label: "Un atajo",
+          message: "Si divides entre el m.c.d. llegas a la irreducible en un solo paso.",
+        },
+      ],
       title: "Simplificación",
       content: [
         "**Simplificar** es buscar una fracción equivalente con términos más pequeños, dividiendo por divisores comunes.",
@@ -92,6 +141,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "chocolate",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Para qué simplificar?",
+          message: "Para comparar: dos fracciones equivalentes son la misma cantidad.",
+        },
+        {
+          label: "Otra forma de verlo",
+          message: "En lugar de simplificar la de Carmen, puedes ampliar la de Francisco: $\\frac{1}{4} = \\frac{2}{8}$.",
+        },
+      ],
       title: "Problema — ¿quién comió más?",
       content: [
         "Francisco come $\\frac{1}{4}$ de una tableta y Carmen $\\frac{2}{8}$ de otra igual. ¿Quién comió un trozo mayor?",
@@ -110,6 +169,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "anim-biblio",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué tantos pasos?",
+          message: "Cada paso divide entre un divisor común distinto. Podrías ir más rápido dividiendo entre el m.c.d.",
+        },
+        {
+          label: "¿Cómo sé que ya está simplificada?",
+          message: "Cuando $2$ y $5$ no tienen más divisor común que el $1$.",
+        },
+      ],
       title: "Ejemplo — fracción de libros prestados",
       content: [
         "De $1575$ libros, $630$ están prestados. ¿Qué fracción está prestada? (simplifica).",
@@ -122,6 +191,19 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "check-equiv",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuándo son equivalentes dos fracciones?",
+          message: "Cuando valen lo mismo. Puedes pasarlas a decimal o ampliar y simplificar para compararlas.",
+        },
+        {
+          label: "Producto cruzado",
+          message: "$\\frac{a}{b} = \\frac{c}{d}$ si $a \\cdot d = b \\cdot c$. Pruébalo con cada tarjeta.",
+          math: [
+            "\\frac{3}{5} \\overset{?}{=} \\frac{6}{10}: \\quad 3 \\cdot 10 \\ \\text{y}\\ 5 \\cdot 6",
+          ],
+        },
+      ],
       title: "¿Equivalentes?",
       question: "Clasifica cada fracción según sea o no equivalente a $\\frac{3}{5}$.",
       groups: [
@@ -143,6 +225,17 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "divide-equivalente",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿En cuántas partes divido?",
+          message: "Cualquier múltiplo de $5$ sirve ($5$, $10$, $15$…), porque así cada quinto se reparte en partes enteras.",
+        },
+        {
+          label: "¿Cuántas coloreo?",
+          message: "Si divides cada quinto en $k$ partes, $\\frac{2}{5}$ son $2k$ partes de las $5k$ que hay.",
+          math: ["\\frac{2}{5} = \\frac{2k}{5k}"],
+        },
+      ],
       title: "Elige tú la división",
       question:
         "Divide la barra en el número de partes que quieras (por ejemplo $10$) y colorea una fracción equivalente a $\\frac{2}{5}$.",
@@ -157,6 +250,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "check-simpl",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una fracción irreducible?",
+          message: "La que ya no se puede simplificar: numerador y denominador no tienen más divisor común que el $1$.",
+        },
+        {
+          label: "No veo el divisor común mayor",
+          message: "Divide entre cualquier divisor común, aunque no sea el mayor, y repite hasta que no puedas más.",
+        },
+        {
+          label: "¿Cómo sé que ya he terminado?",
+          message: "Mira si el numerador y el denominador comparten algún divisor distinto de $1$. Si no, es irreducible.",
+        },
+      ],
       title: "Simplifica",
       question: "La fracción irreducible equivalente a $\\frac{15}{20}$ es $\\frac{?}{?}$. Escribe solo el numerador.",
       correctAnswers: ["3"],

@@ -9,6 +9,20 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "igual-denominador",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué solo sumo arriba?",
+          message: "Porque los trozos son del mismo tamaño: sumas cuántos hay, no cambias su tamaño.",
+        },
+        {
+          label: "Con otro ejemplo",
+          message: "$3$ novenos más $4$ novenos son $7$ novenos, igual que $3$ manzanas más $4$ manzanas son $7$ manzanas.",
+        },
+        {
+          label: "No olvides simplificar",
+          message: "Si el resultado se puede simplificar, hazlo para dar la fracción irreducible.",
+        },
+      ],
       title: "Mismo denominador",
       content: [
         "Suma o resta los **numeradores** y deja el **mismo denominador**.",
@@ -19,6 +33,16 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "distinto-denominador",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué hace falta igualar?",
+          message: "No puedes sumar medios con quintos, igual que no sumas metros con kilos: primero hay que expresarlos con el mismo tipo de trozo.",
+        },
+        {
+          label: "¿Qué denominador elijo?",
+          message: "El m.c.m. de los denominadores. Con otro múltiplo común también funciona, pero salen cifras mayores.",
+        },
+      ],
       title: "Distinto denominador",
       content: [
         "Primero **reduce a común denominador** (MCM de los denominadores).",
@@ -28,6 +52,16 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "ejemplo-mixto",
       type: "animated_solution",
+      help: [
+        {
+          label: "Orden de los pasos",
+          message: "Primero m.c.m., luego fracciones equivalentes, después operas numeradores y por último simplificas.",
+        },
+        {
+          label: "Con tres fracciones",
+          message: "El m.c.m. se calcula con los tres denominadores a la vez.",
+        },
+      ],
       title: "Ejercicio resuelto — tres fracciones",
       content: ["Calcula $\\dfrac{1}{4} + \\dfrac{3}{5} - \\dfrac{1}{10}$."],
       frames: [
@@ -43,6 +77,16 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "enteros",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué $2 = \\frac{2}{1}$?",
+          message: "Porque dividir entre $1$ no cambia nada. Así el entero se puede igualar con las demás fracciones.",
+        },
+        {
+          label: "Atajo mental",
+          message: "Para pasar $2$ a sextos, multiplica $2 \\cdot 6$: $\\frac{12}{6}$.",
+        },
+      ],
       title: "Números enteros en la suma",
       content: [
         "Un entero se escribe como fracción con denominador $1$: $2 = \\dfrac{2}{1}$.",
@@ -53,6 +97,16 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "mental",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Cuánto es la unidad en cuartos?",
+          message: "La barra entera son $4$ cuartos. Escribe el $1$ como una fracción con ese denominador.",
+        },
+        {
+          label: "Piénsalo como quitar un trozo",
+          message: "Imagina una tableta de chocolate partida en $4$. Te comes un trozo: ¿cuántos quedan?",
+        },
+      ],
       title: "Cálculo mental",
       question:
         "La barra entera es $1$. Le quitamos $\\frac{1}{4}$: colorea lo que queda, $1 - \\frac{1}{4}$.",
@@ -65,6 +119,20 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "check-suma",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Por qué no sumo directamente?",
+          message: "Medios y quintos son trozos de tamaños distintos. Antes de sumar hay que expresarlos con el mismo denominador.",
+        },
+        {
+          label: "¿Qué denominador común uso?",
+          message: "Uno que sea múltiplo de $2$ y de $5$. El más pequeño es el m.c.m.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{1}{2} + \\frac{1}{5}$ es más que $\\frac{1}{2}$ y menos que $1$: el resultado queda entre medio y uno.",
+        },
+      ],
       title: "Suma con distinto denominador",
       question: "Calcula $\\dfrac{1}{2} + \\dfrac{1}{5}$ (numerador del resultado, ya simplificado).",
       correctAnswers: ["7"],

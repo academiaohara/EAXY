@@ -9,6 +9,20 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "multiplicacion",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué significa multiplicar fracciones?",
+          message: "Tomar una fracción de otra: $\\frac{3}{4}$ de $\\frac{2}{5}$ es repartir ese $\\frac{2}{5}$ en cuatro y quedarte con tres.",
+        },
+        {
+          label: "¿Por qué no hace falta común denominador?",
+          message: "Porque no estás juntando trozos del mismo tamaño: estás partiendo un trozo en otros más pequeños.",
+        },
+        {
+          label: "Simplificar antes",
+          message: "Si un numerador y un denominador (de fracciones distintas) tienen un factor común, puedes simplificarlos antes de multiplicar.",
+        },
+      ],
       title: "Multiplicar fracciones",
       content: [
         "Multiplica **numerador por numerador** y **denominador por denominador**:",
@@ -20,6 +34,16 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "ejemplo-fraccion-fraccion",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué sale algo más pequeño?",
+          message: "Porque tomas una parte de una parte. Ni $\\frac{3}{4}$ ni $\\frac{2}{5}$ llegan a $1$, así que el producto es menor que ambos.",
+        },
+        {
+          label: "Dibujo mental",
+          message: "Parte una barra en $5$ y coge $2$. Parte esos $2$ trozos en $4$ y quédate con $3$ de esos pedacitos.",
+        },
+      ],
       title: "Fracción de otra fracción",
       content: ["Calcula $\\dfrac{3}{4}$ de $\\dfrac{2}{5}$."],
       frames: [
@@ -30,6 +54,20 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "division",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué significa dividir fracciones?",
+          message: "Preguntar cuántas veces cabe la segunda en la primera. Por eso suele salir un número mayor que $1$ si divides entre algo pequeño.",
+        },
+        {
+          label: "Multiplicar en cruz",
+          message: "El numerador de la primera se multiplica por el denominador de la segunda y al revés. Es lo mismo que voltear la segunda y multiplicar.",
+        },
+        {
+          label: "Cuidado",
+          message: "Solo se voltea la fracción por la que divides, la segunda.",
+        },
+      ],
       title: "Dividir fracciones",
       content: [
         "Para $\\dfrac{a}{b} : \\dfrac{c}{d}$, multiplica en **cruz** (términos cruzados):",
@@ -40,6 +78,17 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "ejemplo-division",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué sale mayor que $1$?",
+          message: "Porque $\\frac{3}{10}$ es más pequeño que $\\frac{2}{5}$ y cabe más de una vez.",
+        },
+        {
+          label: "Compruébalo",
+          message: "El cociente multiplicado por la segunda fracción debe devolver la primera.",
+          math: ["\\frac{4}{3} \\cdot \\frac{3}{10} = \\frac{12}{30} = \\frac{2}{5}"],
+        },
+      ],
       title: "Ejemplo de división",
       content: ["Calcula $\\dfrac{2}{5} : \\dfrac{3}{10}$."],
       frames: [
@@ -50,6 +99,16 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "combinadas-intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Por dónde empiezo?",
+          message: "Por el paréntesis. Resuelve la resta de dentro con común denominador y luego multiplica.",
+        },
+        {
+          label: "Simplifica por el camino",
+          message: "Antes de multiplicar, mira si un numerador y un denominador cruzados se pueden simplificar. Aquí se simplifica el $11$.",
+        },
+      ],
       title: "Operaciones combinadas",
       content: [
         "Respeta **paréntesis** y la prioridad: primero paréntesis, luego multiplicaciones y divisiones, después sumas y restas.",
@@ -59,6 +118,23 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "check-mult",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Simplifica antes de multiplicar",
+          message: "Busca un factor común entre un numerador y un denominador (en cruz). Simplificar antes ahorra cuentas con números grandes.",
+          math: [
+            "\\frac{2}{3} \\cdot \\frac{9}{8}:\\ \\ 9\\ \\text{y}\\ 3\\ \\text{comparten un factor}",
+          ],
+        },
+        {
+          label: "¿Cómo sé que está simplificado?",
+          message: "Comprueba que numerador y denominador no tengan ningún divisor común distinto de $1$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Multiplicar por $\\frac{2}{3}$, que es menor que $1$, reduce: el resultado tiene que ser menor que $\\frac{9}{8}$.",
+        },
+      ],
       title: "Multiplicación rápida",
       question:
         "Calcula $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ y escribe el resultado **simplificado** (por ejemplo, 5/7).",

@@ -9,6 +9,16 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué dos incógnitas?",
+          message: "Porque el problema habla de dos cantidades desconocidas. Cada dato aporta una ecuación.",
+        },
+        {
+          label: "Un buen orden",
+          message: "Nombra las incógnitas, escribe una ecuación por cada dato y resuelve el sistema.",
+        },
+      ],
       title: "Del enunciado al sistema",
       content: [
         "Muchos problemas se resuelven traduciendo el enunciado al lenguaje algebraico.",
@@ -30,6 +40,16 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     {
       id: "bocadillos",
       type: "animated_solution",
+      help: [
+        {
+          label: "Cada persona, una ecuación",
+          message: "Lo que pagó Elvira da una ecuación y lo que pagó Lorena, otra. Los precios son los mismos en las dos.",
+        },
+        {
+          label: "Comprueba con los datos",
+          message: "Con $x = 2$ y $y = 1{,}20$: $4 \\cdot 2 + 5 \\cdot 1{,}20 = 14$ y $3 \\cdot 2 + 2 \\cdot 1{,}20 = 8{,}40$.",
+        },
+      ],
       title: "Problema resuelto — Bocadillos y refrescos",
       content: [
         "Elvira pagó 14 € por 4 bocadillos y 5 refrescos. Lorena pagó 8,40 € por 3 bocadillos y 2 refrescos. Vamos paso a paso.",
@@ -56,6 +76,16 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     {
       id: "inversion",
       type: "concept",
+      help: [
+        {
+          label: "Dos ecuaciones, dos ideas",
+          message: "Una habla de **cuánto dinero** hay en total y la otra de **cuánto ganan** los intereses.",
+        },
+        {
+          label: "¿Por qué $0{,}04x$?",
+          message: "El $4\\%$ de $x$ se escribe como $0{,}04x$: es el porcentaje pasado a decimal por la cantidad.",
+        },
+      ],
       title: "Otro tipo de problemas: porcentajes",
       content: [
         "En problemas de inversión repartimos un capital entre dos opciones con distinto interés.",
@@ -77,6 +107,23 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "Traduce frase a frase",
+          message: "Cada frase del enunciado da una ecuación. Empieza por la de la suma y después busca la otra relación.",
+        },
+        {
+          label: "Mira «el doble del menor»",
+          message: "El doble de $y$ es $2y$. «Al mayor le sumamos $1$» es $x + 1$. «Obtenemos» es el signo igual.",
+          math: [
+            "\\underbrace{x + 1}_{\\text{al mayor le sumamos 1}} = \\underbrace{\\;?\\;}_{\\text{el doble del menor}}",
+          ],
+        },
+        {
+          label: "Pon a prueba una ecuación",
+          message: "Prueba con dos números que sumen $14$, por ejemplo $10$ y $4$: ¿cumplen la segunda condición? Así ves si una ecuación está mal planteada.",
+        },
+      ],
       title: "Practica",
       question:
         "La suma de dos números es 14. Si al mayor le sumamos 1 obtenemos el doble del menor. Llamamos $x$ al mayor e $y$ al menor: ¿qué ecuaciones traducen el enunciado?",

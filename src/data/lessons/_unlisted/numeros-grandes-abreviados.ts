@@ -9,6 +9,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "idea",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué abreviar?",
+          message: "Contar ceros a ojo es fácil de equivocar. $10^{14}$ dice cuántos hay sin contarlos.",
+        },
+        {
+          label: "Separar un factor",
+          message: "En $240\\,000 = 24 \\cdot 10^4$ dejas las cifras con significado y mandas los ceros a la potencia.",
+        },
+      ],
       title: "Forma abreviada",
       content: [
         "Un número con muchos ceros se entiende mejor como **potencia de base 10**: $100\\,000\\,000\\,000\\,000 = 10^{14}$.",
@@ -19,6 +29,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "ano-luz",
       type: "animated_solution",
+      help: [
+        {
+          label: "Paso a paso",
+          message: "Separas las cifras sin ceros finales, cuentas los ceros que quedan y los escribes como potencia de $10$.",
+        },
+        {
+          label: "¿Cuál es el exponente?",
+          message: "Cuenta los ceros que hay detrás de $95$ en el segundo paso: ese número es el exponente.",
+        },
+      ],
       title: "Ejemplo — Un año luz",
       content: [
         "Un año luz son unos $9\\,500\\,000\\,000\\,000$ km. Vamos a dejarlo en forma manejable.",
@@ -45,6 +65,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "transformar",
       type: "concept",
+      help: [
+        {
+          label: "De ida y de vuelta",
+          message: "Para volver al número, escribe el factor y añade tantos ceros como indica el exponente.",
+        },
+        {
+          label: "Un ejemplo real",
+          message: "«Veinticinco mil millones» es $25 \\cdot 10^9$: «mil millones» tiene nueve ceros.",
+        },
+      ],
       title: "Transformar como en el libro",
       content: [
         "Para pasar de $240\\,000$ a forma abreviada: $240\\,000 = 24 \\cdot 10\\,000 = 24 \\cdot 10^4$.",
@@ -66,6 +96,20 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué indica el exponente de $10$?",
+          message: "Cuántos ceros van detrás del $1$. Se trata de separar el número en un factor «corto» por una unidad seguida de ceros.",
+        },
+        {
+          label: "Separa los ceros",
+          message: "Tapa las cifras significativas ($45$) y cuenta cuántos ceros quedan detrás.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Multiplica $a$ por $10^n$ y verifica que recuperas el número original.",
+        },
+      ],
       title: "Practica",
       question: "Escribe $45\\,000\\,000$ como $a \\cdot 10^n$ con $a$ entero pequeño: ¿cuál es $n$? (solo el exponente)",
       correctAnswers: ["7"],
@@ -75,6 +119,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "check-mc",
       type: "classify",
+      help: [
+        {
+          label: "De potencia a número",
+          message: "$a \\cdot 10^n$ es $a$ seguido de $n$ ceros. Por ejemplo, $7 \\cdot 10^3$ es $7$ con tres ceros: $7000$.",
+        },
+        {
+          label: "Un mismo número, varias formas",
+          message: "$46 \\cdot 10^4$ y $460 \\cdot 10^3$ valen lo mismo: cada cero que pasa al factor, el exponente baja una unidad.",
+        },
+      ],
       title: "¿Qué número es?",
       question: "Coloca cada expresión debajo del número que representa.",
       groups: [

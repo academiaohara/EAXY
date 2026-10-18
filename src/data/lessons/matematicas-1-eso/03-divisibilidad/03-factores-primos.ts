@@ -10,6 +10,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "primos-compuestos",
       type: "slide",
+      help: [
+        {
+          label: "¿Cómo distingo primo de compuesto?",
+          message: "Busca si tiene algún divisor aparte del $1$ y de sí mismo. Con uno solo ya es compuesto.",
+        },
+        {
+          label: "¿Por qué el $1$ no es primo?",
+          message: "Porque tiene un solo divisor. Para ser primo hacen falta exactamente dos.",
+        },
+        {
+          label: "¿Y el $2$?",
+          message: "Es primo, y es el único par: cualquier otro par es divisible entre $2$.",
+        },
+      ],
       title: "Primos y compuestos",
       blocks: [
         {
@@ -42,6 +56,16 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "factores-idea",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ladrillos",
+          message: "Los primos son los ladrillos básicos: todo compuesto se construye con ellos, y la receta es única.",
+        },
+        {
+          label: "¿Por qué potencias?",
+          message: "Para abreviar los factores repetidos: $2 \\cdot 2 \\cdot 2 = 2^3$.",
+        },
+      ],
       title: "Todo compuesto se construye con primos",
       blocks: [
         {
@@ -64,6 +88,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "metodo-division",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el primo más pequeño?",
+          message: "Para ir en orden y no olvidar ningún factor. Los criterios de divisibilidad te dicen cuál probar.",
+        },
+        {
+          label: "¿Cuándo paro?",
+          message: "Cuando el cociente llega a $1$. Todos los primos usados forman la descomposición.",
+        },
+        {
+          label: "¿Por qué no dividir entre $4$?",
+          message: "Funciona, pero deja un $4$ sin descomponer: no es un factor primo.",
+        },
+      ],
       title: "Método: dividir entre el primo más pequeño",
       blocks: [
         {
@@ -89,6 +127,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "check-sesenta",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué es un número primo?",
+          message: "Uno que solo tiene dos divisores: el $1$ y él mismo. Mira si $4$ y $15$ lo son.",
+        },
+        {
+          label: "¿Cuándo termina una descomposición?",
+          message: "Cuando todos los factores son primos. Si queda alguno compuesto, hay que seguir descomponiéndolo.",
+        },
+        {
+          label: "Comprueba cada afirmación",
+          message: "Multiplica los factores de la propuesta: ¿salen $60$? Después pregunta si alguno se puede descomponer más.",
+        },
+      ],
       title: "¿Está completa la descomposición?",
       question:
         "Un compañero descompone $60 = 4 \\cdot 15$ y dice que ya ha terminado. ¿Qué le falta?",
@@ -118,6 +170,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "check-ochenta-y-cuatro",
       type: "predict",
+      help: [
+        {
+          label: "¿Por dónde empiezo?",
+          message: "Divide entre el primo más pequeño que pueda (el $2$) mientras la división sea exacta. Después pasa al siguiente primo.",
+        },
+        {
+          label: "Descarta opciones",
+          message: "En la descomposición correcta todos los factores son primos. Tacha las opciones que contengan $4$, $14$ o $21$.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Multiplica los factores de la opción que elijas: tiene que dar $84$.",
+        },
+      ],
       title: "Las butacas del cine",
       question:
         "Un cine tiene **84** butacas. Al descomponer 84 en factores primos, ¿qué resultado es correcto?",
@@ -147,6 +213,22 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "check-divisores-de-potencias",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué puede tener un divisor?",
+          message: "Los divisores de $n$ se construyen solo con los primos de $n$. Pregúntate si alguna opción usa un primo que $n$ no tiene.",
+          branches: [
+            {
+              label: "¿Y los exponentes?",
+              message: "Aunque use los mismos primos, un divisor no puede repetir un primo más veces que $n$: $2^4$ no cabe en $2^3 \\cdot 5$.",
+            },
+          ],
+        },
+        {
+          label: "Descompón las opciones",
+          message: "Escribe cada opción como producto de primos y compárala con $2^3 \\cdot 5$ primo a primo.",
+        },
+      ],
       title: "Divisores desde la descomposición",
       question:
         "Un número se descompone en $n = 2^3 \\cdot 5$. Sin calcular $n$, ¿cuál de estos números es divisor suyo?",

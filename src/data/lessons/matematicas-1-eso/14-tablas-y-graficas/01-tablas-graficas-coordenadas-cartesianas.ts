@@ -9,6 +9,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "intro-descartes",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en un tablero",
+          message: "En los barquitos, «B4» da un lugar con una letra y un número. Las coordenadas son lo mismo con dos números.",
+        },
+        {
+          label: "¿Por qué fue importante?",
+          message: "Porque permitió convertir un dibujo en números: una recta, un círculo, se pueden estudiar con ecuaciones.",
+        },
+      ],
       title: "Descartes y el plano",
       content: [
         "Como en el ajedrez o en un tablero de barquitos, cada posición se puede designar con **fila y columna**.",
@@ -19,6 +29,20 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "ejes",
       type: "concept",
+      help: [
+        {
+          label: "Un truco para el orden",
+          message: "Primero se anda por el suelo ($x$) y luego se sube ($y$): primero la abscisa, luego la ordenada.",
+        },
+        {
+          label: "El origen",
+          message: "Es el punto de partida: ni a la derecha ni arriba, $(0, 0)$.",
+        },
+        {
+          label: "Cómo se lee un punto",
+          message: "$P(3, 5)$: tres a la derecha del origen y cinco hacia arriba.",
+        },
+      ],
       title: "Ejes y origen",
       content: [
         "En un sistema de ejes cartesianos:",
@@ -43,6 +67,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "signos",
       type: "concept",
+      help: [
+        {
+          label: "Los cuatro cuadrantes",
+          message: "Derecha y arriba: $(+, +)$. Izquierda y arriba: $(-, +)$. Izquierda y abajo: $(-, -)$. Derecha y abajo: $(+, -)$.",
+        },
+        {
+          label: "Los ejes",
+          message: "En el eje $Y$ la abscisa es $0$. En el eje $X$ la ordenada es $0$.",
+        },
+      ],
       title: "Signos de las coordenadas",
       content: [
         "En el eje **Y**, la abscisa es $0$: por ejemplo $A(0, 3)$.",
@@ -54,6 +88,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "plano-ejemplo",
       type: "interactive_tool",
+      help: [
+        {
+          label: "¿Por qué son puntos distintos?",
+          message: "$P(3, 5)$ y $Q(5, 3)$ están en sitios diferentes: el orden de las coordenadas importa.",
+        },
+        {
+          label: "Cómo localizarlos",
+          message: "Empieza siempre en el origen. Muévete en horizontal según la abscisa y luego en vertical según la ordenada.",
+        },
+      ],
       title: "Representar puntos",
       tool: "system-graph",
       content: [
@@ -76,6 +120,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "check-q",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cuál es la abscisa y cuál la ordenada?",
+          message: "La primera coordenada es la abscisa ($x$, horizontal) y la segunda la ordenada ($y$, vertical).",
+        },
+        {
+          label: "¿Qué es «cambiar de orden»?",
+          message: "Que la primera coordenada pase a ser la segunda y la segunda la primera. No cambia ningún valor, solo su sitio.",
+        },
+      ],
       title: "Intercambiar coordenadas",
       question:
         "El punto $Q$ tiene la abscisa y la ordenada de $P(3, 5)$ pero **cambiadas de orden**. Escribe las coordenadas de $Q$ en la forma $(x, y)$.",
@@ -86,6 +140,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "check-eje-y",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Dónde está el eje Y?",
+          message: "Es la línea vertical que pasa por el origen. ¿Cuánto te tienes que desplazar en horizontal para estar sobre ella?",
+        },
+        {
+          label: "Prueba con puntos",
+          message: "Sitúa $(2, 3)$, $(0, 3)$ y $(-2, 3)$. ¿Cuál de ellos está sobre el eje vertical?",
+        },
+      ],
       title: "Puntos sobre el eje Y",
       question: "¿Qué valor tiene la **abscisa** de cualquier punto del eje Y? (solo el número)",
       correctAnswers: ["0"],

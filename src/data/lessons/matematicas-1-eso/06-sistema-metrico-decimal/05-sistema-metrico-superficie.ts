@@ -10,6 +10,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "contar",
       type: "slide",
+      help: [
+        {
+          label: "Contar cuadrados",
+          message: "Una superficie se mide contando cuántos cuadrados de un tamaño fijo caben. Por eso la unidad es un cuadrado.",
+        },
+        {
+          label: "Rectángulos por filas",
+          message: "Si hay $3$ filas de $4$ cuadrados, caben $3 \\cdot 4 = 12$. Es el área del rectángulo.",
+        },
+        {
+          label: "Triángulos",
+          message: "Un triángulo rectángulo es la mitad del rectángulo que forma con otro triángulo igual.",
+        },
+      ],
       title: "Medir una superficie es contar cuadrados",
       blocks: [
         {
@@ -26,6 +40,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "metro-cuadrado",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué $100$ y no $10$?",
+          message: "Si el lado es $10$ veces menor, caben $10$ filas de $10$ cuadrados: $10 \\cdot 10 = 100$.",
+        },
+        {
+          label: "Dibújalo",
+          message: "Un cuadrado de $1$ m de lado, dividido en cuadraditos de $1$ dm de lado, queda en una cuadrícula de $10 \\times 10$.",
+        },
+        {
+          label: "El error típico",
+          message: "Pensar que superficie va de $10$ en $10$ como la longitud. Cada unidad de superficie vale cien veces la anterior.",
+        },
+      ],
       title: "El metro cuadrado: 1 m² = 100 dm²",
       blocks: [
         {
@@ -47,6 +75,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "tabla",
       type: "slide",
+      help: [
+        {
+          label: "Dos cifras por columna",
+          message: "Como cada salto multiplica por $100$, cada columna de la tabla necesita dos cifras.",
+        },
+        {
+          label: "Unidades agrarias",
+          message: "Coinciden con tres de la tabla: la hectárea es $\\mathrm{hm}^2$, el área es $\\mathrm{dam}^2$ y la centiárea es $\\mathrm{m}^2$.",
+        },
+        {
+          label: "¿Para qué sirven?",
+          message: "Para medir campos: cifras como «tres hectáreas» son más cómodas que «treinta mil metros cuadrados».",
+        },
+      ],
       title: "La tabla de superficie y las unidades agrarias",
       blocks: [
         {
@@ -71,6 +113,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "check-peninsula",
       type: "predict",
+      help: [
+        {
+          label: "Busca la unidad cómoda",
+          message: "La unidad adecuada es la que da una cifra de pocos dígitos para un territorio enorme.",
+        },
+        {
+          label: "Compara escalas",
+          message: "Un metro cuadrado es del tamaño de una baldosa grande; un kilómetro cuadrado, de un barrio. ¿Qué escala corresponde a una península?",
+        },
+        {
+          label: "Descarta las pequeñas",
+          message: "Metros, decímetros y milímetros cuadrados darían números gigantescos para un territorio.",
+        },
+      ],
       title: "El mapa de la península",
       question:
         "Un atlas indica la superficie de la Península Ibérica. ¿Qué unidad es la más adecuada para expresar ese territorio?",
@@ -104,6 +160,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "cambios",
       type: "slide",
+      help: [
+        {
+          label: "Dos lugares por salto",
+          message: "Cada salto entre unidades de superficie mueve la coma dos lugares, no uno.",
+        },
+        {
+          label: "Cuenta los saltos y multiplica por dos",
+          message: "De $\\mathrm{m}^2$ a $\\mathrm{hm}^2$ son dos saltos, es decir, cuatro lugares.",
+        },
+        {
+          label: "No lo mezcles con la longitud",
+          message: "En longitud un salto es un lugar. Aquí es el doble: es el error más habitual.",
+        },
+      ],
       title: "Cambios de unidad: dos lugares por salto",
       blocks: [
         {
@@ -128,6 +198,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "check-finca",
       type: "predict",
+      help: [
+        {
+          label: "¿Crece o decrece?",
+          message: "El metro cuadrado es menor que el hectómetro cuadrado, así que en $\\mathrm{m}^2$ el número tiene que ser mayor que $3{,}5$.",
+        },
+        {
+          label: "Cuenta saltos y lugares",
+          message: "De $\\mathrm{hm}^2$ a $\\mathrm{m}^2$ hay dos saltos, y cada uno mueve la coma dos lugares.",
+        },
+        {
+          label: "Comprueba con hectáreas",
+          message: "Como una hectárea son $10\\,000\\,\\mathrm{m}^2$, $3{,}5$ hectáreas son $3{,}5$ veces eso.",
+        },
+      ],
       title: "La finca",
       question: "Una finca mide 3,5 hm². ¿Cuántos metros cuadrados son?",
       mode: "choice",
@@ -160,6 +244,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "slide",
+      help: [
+        {
+          label: "Dos cifras por unidad",
+          message: "En superficies, cada columna lleva dos cifras: $8\\,\\mathrm{dam}^2$ se escribe $08$ si hay otra unidad menor a su derecha.",
+        },
+        {
+          label: "Dónde va la coma",
+          message: "A la derecha de la unidad que te piden. Todo lo que queda a su derecha es parte decimal.",
+        },
+        {
+          label: "Al separar",
+          message: "Lee las cifras de dos en dos desde la coma hacia fuera, cada pareja con su unidad.",
+        },
+      ],
       title: "Forma compleja con superficies: dos cifras por unidad",
       blocks: [
         {
@@ -186,6 +284,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "check-parcela",
       type: "predict",
+      help: [
+        {
+          label: "Dos cifras por columna",
+          message: "Cada unidad de superficie ocupa dos cifras: los $6\\,\\mathrm{dam}^2$ se escriben $06$, y los $46\\,\\mathrm{dm}^2$ ocupan la columna siguiente a los $\\mathrm{m}^2$.",
+        },
+        {
+          label: "Pasa cada parte a $\\mathrm{m}^2$",
+          message: "$6\\,\\mathrm{dam}^2$, $58\\,\\mathrm{m}^2$ y $46\\,\\mathrm{dm}^2$ por separado, y suma.",
+        },
+        {
+          label: "Dónde va la coma",
+          message: "Tras la columna de los $\\mathrm{m}^2$. Los $\\mathrm{dm}^2$ quedan a su derecha, como decimales.",
+        },
+      ],
       title: "La parcela del registro",
       question:
         "El registro de la propiedad anota una parcela de 6 dam² 58 m² 46 dm². ¿Cuántos metros cuadrados son?",

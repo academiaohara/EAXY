@@ -9,6 +9,20 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "dos-tipos",
       type: "concept",
+      help: [
+        {
+          label: "La pregunta clave",
+          message: "¿La segunda fracción se aplica al total inicial o a lo que quedaba tras la primera? Eso decide si sumas o multiplicas.",
+        },
+        {
+          label: "Una imagen",
+          message: "Si gastas $\\frac{1}{3}$ **de lo que queda**, el $\\frac{1}{3}$ es de un trozo más pequeño que el total, así que es menos que $\\frac{1}{3}$ del dinero.",
+        },
+        {
+          label: "¿Cómo lo detecto en el enunciado?",
+          message: "Busca expresiones como «de lo que quedaba», «del resto» o «de esos»: señalan multiplicación.",
+        },
+      ],
       title: "Dos situaciones distintas",
       content: [
         "**Suma de fracciones del total**: gasto $\\dfrac{1}{2}$ y $\\dfrac{1}{3}$ de **todo** el dinero → sumo $\\dfrac{1}{2} + \\dfrac{1}{3}$.",
@@ -19,6 +33,16 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "manuel",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué sumo?",
+          message: "Las dos fracciones se refieren al mismo total (todo el dinero), así que se juntan.",
+        },
+        {
+          label: "¿Qué le queda?",
+          message: "Lo que no ha gastado: la unidad menos lo gastado.",
+        },
+      ],
       title: "Problema 1 — Manuel (suma sobre el total)",
       content: [
         "Manuel gasta la mitad en el cine y un tercio en una hamburguesa. ¿Qué fracción ha gastado? ¿Qué le queda?",
@@ -31,6 +55,20 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "marta",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué multiplico?",
+          message: "Porque la segunda fracción es de lo que le quedaba, no del total.",
+        },
+        {
+          label: "¿Cuánto es la revista respecto al total?",
+          message: "Es un tercio de la mitad, es decir, una sexta parte del dinero inicial.",
+        },
+        {
+          label: "Comprueba el total",
+          message: "Concierto más revista más lo que queda debe dar la unidad.",
+        },
+      ],
       title: "Problema 2 — Marta (fracción del resto)",
       content: [
         "Marta gasta $\\dfrac{1}{2}$ en un concierto y $\\dfrac{1}{3}$ de lo que le quedaba en una revista.",
@@ -45,6 +83,16 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "queso",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Qué operación es?",
+          message: "Lo que se queda es lo que compró menos lo que regaló: una resta con común denominador.",
+        },
+        {
+          label: "Mismo denominador",
+          message: "Antes de restar, escribe $\\frac{1}{2}$ como cuartos: así los trozos son del mismo tamaño.",
+        },
+      ],
       title: "Problema resuelto — queso de Rosa",
       content: ["Rosa compra $\\dfrac{3}{4}$ kg de queso y regala $\\dfrac{1}{2}$ kg a su hija."],
       frames: [
@@ -55,6 +103,16 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "check-tipo",
       type: "classify",
+      help: [
+        {
+          label: "¿Mismo total o «de lo que queda»?",
+          message: "Si las dos fracciones se refieren al mismo total, se suman. Si una se aplica a lo que queda tras la otra, se multiplican.",
+        },
+        {
+          label: "Pregunta de control",
+          message: "Pregúntate: ¿esa fracción es «del total» o «de esos, de lo que sobra»? Lo primero es suma; lo segundo, producto.",
+        },
+      ],
       title: "¿Suma o producto?",
       question:
         "Lee cada situación y decide qué operación hay que hacer para responderla.",

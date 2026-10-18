@@ -250,3 +250,58 @@ describe("buildMessageHelpRoute", () => {
     }
   });
 });
+
+describe("ayuda escrita a mano", () => {
+  const authoredStep: LessonStep = {
+    ...quizStep,
+    id: "q3",
+    help: [
+      {
+        label: "¿Qué operación hago?",
+        message: "Piensa en juntar cantidades.",
+        branches: [{ label: "¿Cómo lo coloco?", message: "En columna." }],
+      },
+      { label: "Quiero estimar", message: "Redondea primero." },
+    ],
+  };
+
+  it("sustituye a repetir enunciado, pista y teoría", () => {
+    expect(rootOptionIds(authoredStep, null)).toEqual(["branch-0", "branch-1", "clear"]);
+  });
+
+  it("abre ramas más concretas y encadena hermanas hasta el atasco", () => {
+    const route = buildHelpRoute(authoredStep, null);
+    const first = getHelpNode(route, "help:0")!;
+    expect(first.options.map((option) => option.label)).toEqual([
+      "¿Cómo lo coloco?",
+      "Ahora sí, sigo",
+      "Sigo sin verlo",
+    ]);
+    expect(getHelpNode(route, "help:0.0")!.message).toBe("En columna.");
+    expect(first.options.at(-1)!.next).toBe("help:1");
+    expect(getHelpNode(route, "help:1")!.options.at(-1)!.next).toBe(HELP_STUCK_ID);
+  });
+
+  it("todas las opciones apuntan a un nodo que existe", () => {
+    for (const route of [
+      buildHelpRoute(authoredStep, "incorrect"),
+      buildMessageHelpRoute(authoredStep, null, "algo"),
+    ]) {
+      for (const node of route.nodes) {
+        for (const option of node.options) {
+          if (option.next !== null) expect(getHelpNode(route, option.next)).toBeDefined();
+        }
+      }
+    }
+  });
+
+  it("sin ayuda propia, separa lo que se da de lo que se pide", () => {
+    const step: LessonStep = {
+      ...quizStep,
+      question: "Compras pan por 1,20 €. ¿Cuánto pagas?",
+    };
+    const detail = getHelpNode(buildHelpRoute(step, null), "restate")!.detail!;
+    expect(detail[0]).toContain("Lo que te dan");
+    expect(detail[1]).toContain("Lo que te piden");
+  });
+});

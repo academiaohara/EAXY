@@ -9,6 +9,20 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "concepto",
       type: "concept",
+      help: [
+        {
+          label: "Imagina una caja de zapatos",
+          message: "Dos bases iguales (tapa y fondo) y paredes que son paralelogramos.",
+        },
+        {
+          label: "Cómo se nombran",
+          message: "Por la forma de la base: triangular, cuadrangular, pentagonal…",
+        },
+        {
+          label: "El desarrollo",
+          message: "Las dos bases más un «cinturón» de rectángulos o paralelogramos unidos.",
+        },
+      ],
       title: "Concepto de prisma",
       content: [
         "Un **prisma** es un poliedro con **dos bases** paralelas e **iguales** y caras laterales que son **paralelogramos**.",
@@ -30,6 +44,17 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "tipos",
       type: "concept",
+      help: [
+        {
+          label: "De dónde salen las fórmulas",
+          message: "Caras: $n$ laterales más $2$ bases. Vértices: $n$ arriba y $n$ abajo. Aristas: $n$ arriba, $n$ abajo y $n$ verticales.",
+        },
+        {
+          label: "Compruébalo con el cubo",
+          message: "Con $n = 4$: $6$ caras, $8$ vértices y $12$ aristas.",
+          math: ["n + 2 = 6 \\qquad 2n = 8 \\qquad 3n = 12"],
+        },
+      ],
       title: "Tipos de prismas",
       content: [
         "Si la base es un **triángulo**, es un **prisma triangular** ($5$ caras: $2$ triángulos + $3$ paralelogramos).",
@@ -40,6 +65,16 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "check-es-prisma",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué define a un prisma?",
+          message: "Dos bases iguales y paralelas, unidas por caras laterales que son paralelogramos. Si no hay dos bases, no es prisma.",
+        },
+        {
+          label: "¿Y la pirámide?",
+          message: "Tiene una sola base y caras triangulares que se juntan en un vértice. Compara una caja de zapatos con una tienda de campaña.",
+        },
+      ],
       title: "¿Es un prisma?",
       question: "Clasifica cada descripción u objeto: ¿es un prisma o una pirámide?",
       groups: [
@@ -61,6 +96,22 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "check-pentagonal",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Imagínate el prisma",
+          message: "Un pentágono arriba, otro abajo y, alrededor, un rectángulo por cada lado del pentágono.",
+          branches: [
+            {
+              label: "¿Cuántos lados tiene un pentágono?",
+              message: "Cinco, como indica «penta». Ese es el número de caras laterales.",
+            },
+          ],
+        },
+        {
+          label: "Con uno más sencillo",
+          message: "Prisma triangular: $2$ triángulos y $3$ rectángulos, $5$ caras. Repite el razonamiento con la base pentagonal.",
+        },
+      ],
       title: "Prisma pentagonal",
       question:
         "Un prisma pentagonal tiene base pentagonal. ¿Cuántas caras tiene en total? (solo el número)",
@@ -71,6 +122,17 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "aristas-triangular",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Agrúpalas",
+          message: "Las del triángulo de arriba, las del de abajo y las verticales que los unen.",
+          math: ["\\text{arriba} + \\text{abajo} + \\text{verticales}"],
+        },
+        {
+          label: "Compruébalo con el cubo",
+          message: "El cubo es un prisma de base cuadrada y tiene $4 + 4 + 4 = 12$ aristas. ¿Qué regla sale para $n$ lados?",
+        },
+      ],
       title: "Conteo en el prisma triangular",
       question: "¿Cuántas aristas tiene un prisma triangular? (solo el número)",
       correctAnswers: ["9"],
@@ -79,6 +141,16 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "vertices-hexagonal",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Dónde están los vértices?",
+          message: "En las esquinas de las dos bases. En las caras laterales no hay vértices extra.",
+        },
+        {
+          label: "Con un prisma conocido",
+          message: "El cubo tiene $8$ vértices: $4$ arriba y $4$ abajo. Aplica la misma idea a una base hexagonal.",
+        },
+      ],
       title: "Vértices del prisma hexagonal",
       question: "¿Cuántos vértices tiene un prisma hexagonal? (solo el número)",
       correctAnswers: ["12"],

@@ -10,6 +10,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "divisor-natural",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en el reparto de la paga",
+          message: "Reparte primero los euros enteros. Lo que sobra se convierte en décimas y se sigue repartiendo.",
+        },
+        {
+          label: "¿Cuándo pongo la coma?",
+          message: "En cuanto bajes la primera cifra decimal (o un cero). Antes de eso no hay decimales en el cociente.",
+        },
+        {
+          label: "Dividendo menor que divisor",
+          message: "En $1 : 4$ no cabe ni una unidad entera, así que el cociente empieza por $0{,}$ y se baja un cero.",
+        },
+      ],
       title: "Dividir entre un natural: la coma sube al cociente",
       blocks: [
         {
@@ -37,6 +51,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-botes",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué operación hago?",
+          message: "Repartir en partes iguales es dividir: el peso total entre el número de botes.",
+        },
+        {
+          label: "¿Dónde pongo la coma?",
+          message: "En cuanto bajes la primera cifra decimal del dividendo, pones la coma en el cociente. Antes de eso, el cociente lleva un $0$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Si cada bote pesara $1\\,\\mathrm{kg}$, los seis pesarían $6\\,\\mathrm{kg}$. Compara con $2{,}07$: ¿cada bote pesa más o menos de un kilo?",
+        },
+      ],
       title: "Seis botes de refresco",
       question:
         "Seis botes iguales de refresco pesan en total 2,07 kg. ¿Cuánto pesa cada bote?",
@@ -71,6 +99,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "periodico",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué no termina?",
+          message: "Si en algún momento el resto se repite, las cifras siguientes se repetirán igual para siempre.",
+        },
+        {
+          label: "¿Aproximación o igualdad?",
+          message: "Al cortar el cociente ya no es el resultado exacto: $3 \\cdot 2{,}43 = 7{,}29$, no $7{,}3$. Por eso se escribe $\\approx$.",
+        },
+        {
+          label: "¿Cuántas cifras corto?",
+          message: "Las que pida el enunciado. Calcula una cifra más y redondea.",
+        },
+      ],
       title: "Cuando la división no termina: cociente periódico",
       blocks: [
         {
@@ -91,6 +133,21 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-cronometro",
       type: "predict",
+      help: [
+        {
+          label: "¿Cuántos decimales calculo?",
+          message: "Redondear a céntimos es dejar dos decimales, así que necesitas calcular una cifra más para decidir si la segunda sube.",
+          math: ["30 : 7 = 4{,}\\_\\_\\_\\dots"],
+        },
+        {
+          label: "¿Cuándo sube la centésima?",
+          message: "Mira la tercera cifra decimal: si es $5$ o más, la segunda sube una unidad; si es menor, se queda igual.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$7 \\cdot 4 = 28$ y $7 \\cdot 5 = 35$, así que $30 : 7$ está entre $4$ y $5$.",
+        },
+      ],
       title: "Un regalo entre siete",
       question:
         "Siete atletas se reparten el coste de un cronómetro de 30 €. ¿Cuánto paga cada uno si se redondea a céntimos?",
@@ -125,6 +182,21 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "divisor-decimal",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué no cambia el cociente?",
+          message: "Multiplicar dividendo y divisor por lo mismo no altera el resultado, igual que $\\frac{1}{2} = \\frac{10}{20}$.",
+          math: ["7{,}5 : 0{,}25 = 750 : 25"],
+        },
+        {
+          label: "¿Cuántos lugares muevo la coma?",
+          message: "Tantos como cifras decimales tenga el **divisor**, y en los dos números.",
+        },
+        {
+          label: "Si el dividendo no tiene decimales",
+          message: "Añade ceros: $90 : 2{,}5$ pasa a ser $900 : 25$.",
+        },
+      ],
       title: "Divisor decimal: se multiplica todo hasta que sea natural",
       blocks: [
         {
@@ -154,6 +226,21 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-cinta",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué operación es?",
+          message: "«Cuántos trozos salen» es ver cuántas veces cabe $0{,}15$ en $4{,}5$: una división.",
+        },
+        {
+          label: "El divisor decimal me estorba",
+          message: "Multiplica dividendo y divisor por la misma potencia de $10$ hasta que el divisor sea natural. El cociente no cambia.",
+          math: ["4{,}5 : 0{,}15 = \\;?\\; : \\;?"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Con trozos de $0{,}1$ m saldrían $45$; con trozos de $0{,}2$ m, unos $22$. La respuesta está entre esas dos cifras.",
+        },
+      ],
       title: "Trozos de cinta",
       question:
         "Un rollo de 4,5 m de cinta se corta en trozos de 0,15 m. ¿Cuántos trozos salen?",
@@ -188,6 +275,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "potencias-10",
       type: "slide",
+      help: [
+        {
+          label: "Es el espejo de la multiplicación",
+          message: "Al multiplicar por $10$, $100$… la coma va a la derecha. Al dividir, a la izquierda. Se mueve tantos lugares como ceros.",
+        },
+        {
+          label: "¿Y cuando faltan cifras?",
+          message: "Rellena con ceros entre la coma y la primera cifra: $15{,}3 : 1000 = 0{,}0153$.",
+        },
+        {
+          label: "Piénsalo con dinero",
+          message: "De euros a céntimos se multiplica por $100$ (coma a la derecha). De céntimos a euros, se divide entre $100$ (coma a la izquierda).",
+        },
+      ],
       title: "Entre 10, 100, 1000…: la coma va hacia la izquierda",
       blocks: [
         {
@@ -216,6 +317,21 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-clips",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué operación hago?",
+          message: "El precio de uno se obtiene repartiendo el precio total entre las unidades: una división.",
+        },
+        {
+          label: "¿Cómo se divide entre $100$?",
+          message: "La coma se desplaza hacia la izquierda tantos lugares como ceros tiene el divisor. Si faltan cifras, se añaden ceros.",
+          math: ["3{,}7 : 10 = 0{,}37 \\qquad 3{,}7 : 100 = ?"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un clip es solo una pieza de cien: tiene que costar muchísimo menos que $1$ €.",
+        },
+      ],
       title: "El precio de un clip",
       question:
         "Una caja de 100 clips cuesta 2,5 €. ¿Cuánto cuesta cada clip?",
@@ -250,6 +366,24 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-media",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué es la media?",
+          message: "Se suman todos los valores y el resultado se divide entre cuántos son. Aquí son tres notas.",
+        },
+        {
+          label: "Suma con decimales distintos",
+          message: "Escribe $7$ como $7{,}00$ y $5{,}5$ como $5{,}50$ para alinear las comas antes de sumar.",
+        },
+        {
+          label: "¿Cuántos decimales calculo?",
+          message: "Te piden dos. Calcula una cifra más y mira si la segunda sube.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "La media siempre queda entre la nota más baja y la más alta, y aquí hay una nota muy baja que tira de ella.",
+        },
+      ],
       title: "La nota media",
       question:
         "Raquel ha sacado un 5,5, un 7 y un 2,40 en tres exámenes. ¿Cuál es su nota media, con dos cifras decimales?",
@@ -284,6 +418,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "check-lazos",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué se divide entre qué?",
+          message: "Los metros de cinta se reparten entre el número de lazos: $20$ entre $25$, no al revés.",
+        },
+        {
+          label: "El dividendo es menor que el divisor",
+          message: "No se puede repartir $20$ en $25$ partes enteras, así que el cociente empieza por $0$. Pon la coma y baja un cero para seguir.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Con menos de un metro de cinta por lazo no salen $25$ lazos de $20$ m: cada uno debe medir menos de $1$ m.",
+        },
+      ],
       title: "Lazos de cinta",
       question:
         "Con una cinta de 20 m se hacen 25 lazos iguales. ¿Cuánto mide el trozo de cinta de cada lazo?",

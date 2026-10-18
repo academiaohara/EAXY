@@ -9,6 +9,20 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "concepto",
       type: "concept",
+      help: [
+        {
+          label: "Cien partes",
+          message: "Un tanto por ciento es partir el total en cien partes iguales y tomar tantas como dice el número.",
+        },
+        {
+          label: "Con una cantidad fácil",
+          message: "El $20\\%$ de $100$ son $20$. El $20\\%$ de $300$ son tres veces eso: $60$.",
+        },
+        {
+          label: "Dos formas de la fórmula",
+          message: "Dividir entre $100$ y multiplicar por $a$ es lo mismo que multiplicar por $\\frac{a}{100}$.",
+        },
+      ],
       title: "Tanto por ciento",
       content: [
         "El símbolo **%** se lee «por ciento»: $20\\%$ = veinte por ciento.",
@@ -20,6 +34,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "aparcamiento",
       type: "animated_solution",
+      help: [
+        {
+          label: "Paquetes de $100$",
+          message: "Con $300$ coches hay tres paquetes de $100$. En cada uno, $20$ son rojos.",
+        },
+        {
+          label: "Comprueba con el atajo",
+          message: "El $20\\%$ es una quinta parte: $300 : 5$ da el mismo resultado.",
+        },
+      ],
       title: "Ejemplo — coches rojos en un aparcamiento",
       content: [
         "Hay $300$ coches. El $20\\%$ son rojos. ¿Cuántos coches rojos hay?",
@@ -38,6 +62,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "fraccion",
       type: "concept",
+      help: [
+        {
+          label: "Porcentaje y fracción son lo mismo",
+          message: "$15\\%$ y $\\frac{15}{100}$ son dos formas de escribir el mismo número. La fracción se puede simplificar.",
+        },
+        {
+          label: "¿Y la calculadora?",
+          message: "La tecla $\\%$ hace por ti la división entre $100$.",
+        },
+      ],
       title: "Un porcentaje es una fracción",
       content: [
         "$a\\%$ equivale a la fracción $\\frac{a}{100}$.",
@@ -48,6 +82,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "especiales",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué estos son especiales?",
+          message: "Porque son fracciones sencillas: $50\\%$ es la mitad, $25\\%$ un cuarto, $20\\%$ un quinto, $10\\%$ un décimo.",
+        },
+        {
+          label: "Combínalos",
+          message: "El $30\\%$ es tres veces el $10\\%$. El $5\\%$ es la mitad del $10\\%$. Con estos atajos calculas casi cualquier porcentaje de cabeza.",
+        },
+      ],
       title: "Porcentajes especiales",
       content: [
         "$50\\% = \\frac{1}{2}$ → divide entre $2$.",
@@ -71,6 +115,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "ej-resuelto",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué empiezo dividiendo entre $100$?",
+          message: "Para saber cuánto vale el $1\\%$. Después multiplicas por $45$ para tomar $45$ de esas partes.",
+        },
+        {
+          label: "Una estimación",
+          message: "El $45\\%$ es un poco menos de la mitad. La mitad de $800$ es $400$, así que el resultado debe quedar algo por debajo.",
+        },
+      ],
       title: "Ejercicio resuelto — tienda de balones",
       content: [
         "Una tienda vende el $45\\%$ de los $800$ balones de su almacén. ¿Cuántos ha vendido?",
@@ -89,6 +143,21 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-formula",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es un $12\\%$?",
+          message: "Doce de cada cien. Calcula cuánto es el $1\\%$ de $380$ y toma doce de esos trozos.",
+        },
+        {
+          label: "Descomposición mental",
+          message: "El $10\\%$ de un número se obtiene moviendo la coma un lugar. Luego añade el $1\\%$ dos veces.",
+          math: ["12\\% = 10\\% + 1\\% + 1\\%"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El $12\\%$ es algo más que el $10\\%$, y el $10\\%$ de $380$ se calcula en un segundo. Tu resultado debe pasar un poco de esa cifra.",
+        },
+      ],
       title: "Practica la fórmula",
       question: "Calcula el $12\\%$ de $380$ (usa coma decimal si hace falta).",
       correctAnswers: ["45,6", "45.6"],
@@ -97,6 +166,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-cuadricula",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué fracción es el $25\\%$?",
+          message: "Veinticinco de cada cien. Simplifica esa fracción: ¿qué parte del total es?",
+        },
+        {
+          label: "Con porcentajes que ya conoces",
+          message: "El $50\\%$ es la mitad. El $25\\%$ es la mitad de la mitad.",
+        },
+      ],
       title: "El 25 % en una cuadrícula",
       question: "La cuadrícula tiene $20$ casillas. Colorea el $25\\%$ de ella.",
       shape: "grid",
@@ -111,6 +190,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-mental",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo lo hago de cabeza?",
+          message: "El $25\\%$ es la mitad de la mitad. Parte el número por la mitad y luego otra vez por la mitad.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un cuarto de $84$ es bastante menos que $84$, y algo más de $20$.",
+        },
+      ],
       title: "Cálculo mental — 25%",
       question: "¿Cuánto es el $25\\%$ de $84$? (solo el número)",
       correctAnswers: ["21"],

@@ -9,6 +9,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "contexto-real",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué representa un punto?",
+          message: "Un individuo con dos medidas a la vez: su edad y su estatura, por ejemplo.",
+        },
+        {
+          label: "No basta mirar la forma",
+          message: "Antes de interpretar, lee qué magnitud va en cada eje.",
+        },
+      ],
       title: "Dos variables en un diagrama",
       content: [
         "En un diagrama cartesiano de una **situación real**, cada punto representa un dato.",
@@ -19,6 +29,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "familia",
       type: "concept",
+      help: [
+        {
+          label: "Comparar puntos",
+          message: "Más alto es más arriba. Mayor es más a la derecha.",
+        },
+        {
+          label: "Dos puntos a la misma altura",
+          message: "Si están a la misma altura tienen la misma estatura. Se diferencian por la edad.",
+        },
+      ],
       title: "Ejemplo: edad y estatura",
       content: [
         "**Bernardo** (el hijo mayor) es el más alto: su punto tiene la **mayor ordenada** (estatura).",
@@ -41,6 +61,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "vehiculos",
       type: "concept",
+      help: [
+        {
+          label: "Leer una esquina",
+          message: "Arriba a la derecha: caro y rápido. Abajo a la izquierda: barato y lento.",
+        },
+        {
+          label: "Colocar un punto nuevo",
+          message: "Compáralo con los que ya están: ¿más caro?, ¿más rápido? Eso decide hacia dónde moverlo.",
+        },
+      ],
       title: "Precio y velocidad",
       content: [
         "Otro diagrama puede tener **precio** en un eje y **velocidad máxima** en el otro.",
@@ -51,6 +81,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "check-ordenada",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué va en cada eje?",
+          message: "Lee los ejes del enunciado: la edad en el eje X (horizontal) y la estatura en el eje Y (vertical).",
+        },
+        {
+          label: "Una pregunta, una coordenada",
+          message: "Si preguntan por la altura de alguien, mira cuán arriba está su punto. Si preguntan por la edad, mira cuán a la derecha.",
+        },
+      ],
       title: "Interpretar la ordenada",
       question:
         "En el gráfico de la familia, la **edad** va en el eje X y la **estatura** en el eje Y. ¿Qué coordenada hay que mirar para responder a cada pregunta?",
@@ -73,6 +113,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "check-misma-estatura",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Misma estatura, misma altura en el gráfico",
+          message: "Dos puntos que representan la misma estatura están al mismo nivel vertical. ¿Qué coordenada mide la altura de un punto?",
+        },
+        {
+          label: "Nombres de las coordenadas",
+          message: "A la horizontal se le llama abscisa. La vertical tiene otro nombre distinto.",
+        },
+      ],
       title: "Misma estatura",
       question:
         "Dos personas con la **misma estatura** tienen la misma coordenada en el eje vertical. ¿Cómo se llama esa coordenada? (una palabra)",
