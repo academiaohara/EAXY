@@ -734,8 +734,14 @@ export function PredictStepView({
             value={numericValue}
             onChange={(event) => setNumericValue(event.target.value)}
             disabled={disabled || checked}
-            className="lesson-stage-choice mx-auto block w-full max-w-md rounded-xl border-2 px-4 py-3 text-center text-lg font-semibold"
+            className={cn(
+              "lesson-stage-answer mx-auto block w-full max-w-xs",
+              checked && (isCorrect ? "is-correct" : "is-wrong"),
+            )}
+            placeholder="Tu respuesta"
+            autoComplete="off"
             aria-label="Tu respuesta"
+            aria-invalid={checked && !isCorrect ? true : undefined}
           />
         ) : step.choiceLayout === "grid" ? (
           <div className="mx-auto grid max-w-xl grid-cols-3 gap-4" role="group" aria-label="Opciones">
