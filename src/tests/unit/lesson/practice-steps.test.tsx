@@ -50,10 +50,11 @@ describe("FractionPick", () => {
 
     [0, 1, 2, 3].forEach((index) => fireEvent.click(pieces()[index]));
     fireEvent.click(pieces()[3]);
-    expect(screen.getByTestId("fraction-readout")).toHaveTextContent("3 partes");
+    expect(screen.queryByTestId("fraction-readout")).toBeNull();
 
     fireEvent.click(screen.getByTestId("lesson-check-button"));
     expect(onCheck).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
+    expect(screen.getByTestId("fraction-readout")).toHaveTextContent("3 partes");
   });
 
   it("deja que el alumno divida la unidad antes de colorear", () => {

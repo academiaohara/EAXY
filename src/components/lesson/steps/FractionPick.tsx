@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { MinusIcon, PlusIcon, RotateCcwIcon } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { useRegisterLessonStepControl } from "@/components/lesson/LessonStepControlContext";
 import { PracticeShell } from "@/components/lesson/steps/PracticeShell";
@@ -14,7 +14,6 @@ import {
   initialFractionParts,
   isFractionPickCorrect,
 } from "@/lib/lesson/practice-check";
-import { cn } from "@/lib/utils";
 import type { FractionPickSnapshot, StepCheckResult } from "@/lib/lesson/step-attempt";
 import type { FractionPickStep } from "@/lib/lesson/types";
 
@@ -151,44 +150,31 @@ export function FractionPick({
         status={checked ? (isCorrect ? "correct" : "incorrect") : null}
       />
 
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <div
-          className={cn(
-            "flex items-center gap-3 rounded-2xl border px-4 py-2 transition-colors",
-            "border-[color:var(--stage-border,#e2e8f0)] bg-[color:var(--frac-pill,rgb(0_0_0/0.18))]",
-            markedCount > 0 && "border-[color:var(--stage-accent,#4353ff)]",
-          )}
-          aria-live="polite"
-          data-testid="fraction-readout"
-        >
-          <span className="text-base text-[color:var(--stage-muted,#526077)]">
-            {step.shape === "set"
-              ? `Has marcado ${markedCount} de ${parts * wholes}`
-              : `Has coloreado ${markedCount} ${markedCount === 1 ? "parte" : "partes"}`}
-          </span>
-          <span className="text-2xl text-[color:var(--stage-ink,#0f172a)]">
-            <MathRenderer text={`$${readoutTex}$`} />
-          </span>
-          {checked && isCorrect && reading.simplified ? (
-            <span className="text-2xl text-[color:var(--stage-accent-muted,#047857)]">
-              <MathRenderer
-                text={`$= \\dfrac{${reading.simplified.numerator}}{${reading.simplified.denominator}}$`}
-              />
-            </span>
-          ) : null}
-        </div>
-        {!locked && markedCount > 0 ? (
-          <button
-            type="button"
-            onClick={() => setMarked((prev) => prev.map(() => false))}
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-[color:var(--stage-muted,#526077)] transition hover:bg-white/10 hover:text-[color:var(--stage-ink,#0f172a)]"
-            data-testid="fraction-clear"
+      {checked ? (
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <div
+            className="flex items-center gap-3 rounded-2xl border border-[color:var(--stage-border,#e2e8f0)] bg-[color:var(--frac-pill,rgb(0_0_0/0.18))] px-4 py-2"
+            aria-live="polite"
+            data-testid="fraction-readout"
           >
-            <RotateCcwIcon className="size-3.5" aria-hidden />
-            Borrar
-          </button>
-        ) : null}
-      </div>
+            <span className="text-base text-[color:var(--stage-muted,#526077)]">
+              {step.shape === "set"
+                ? `Has marcado ${markedCount} de ${parts * wholes}`
+                : `Has coloreado ${markedCount} ${markedCount === 1 ? "parte" : "partes"}`}
+            </span>
+            <span className="text-2xl text-[color:var(--stage-ink,#0f172a)]">
+              <MathRenderer text={`$${readoutTex}$`} />
+            </span>
+            {isCorrect && reading.simplified ? (
+              <span className="text-2xl text-[color:var(--stage-accent-muted,#047857)]">
+                <MathRenderer
+                  text={`$= \\dfrac{${reading.simplified.numerator}}{${reading.simplified.denominator}}$`}
+                />
+              </span>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </PracticeShell>
   );
 }
