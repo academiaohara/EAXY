@@ -5,141 +5,193 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
   slug: "aumentos-disminuciones-porcentuales",
   title: "4. Aumentos y disminuciones porcentuales",
   subtitle: TEMA_1ESO_9_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "intro",
-      type: "concept",
+      id: "aumento",
+      type: "slide",
       help: [
         {
-          label: "Siempre desde el principio",
-          message: "El porcentaje se calcula sobre la cantidad **inicial**, no sobre la final.",
+          label: "¿Qué calculo primero?",
+          message: "El aumento: el porcentaje de subida aplicado al precio **antiguo**. Después se suma a ese precio.",
         },
         {
-          label: "Aumento o rebaja",
-          message: "En un aumento sumas el porcentaje a la cantidad inicial. En una rebaja lo restas.",
-        },
-        {
-          label: "Un atajo",
-          message: "Subir un $20\\%$ es quedarse con el $120\\%$ del original. Bajar un $20\\%$ es quedarse con el $80\\%$.",
+          label: "Compruébalo",
+          message: "Si el precio sube, el resultado debe ser mayor que el original.",
         },
       ],
-      title: "Subidas y rebajas",
-      content: [
-        "En la vida real aparecen **aumentos** (subidas de precio, intereses…) y **disminuciones** (rebajas, pérdida de población…).",
-        "Siempre partimos del **precio o cantidad antigua**, calculamos el **porcentaje** correspondiente y lo **sumamos** (aumento) o **restamos** (disminución).",
+      title: "Aumento porcentual: sumar el incremento",
+      blocks: [
+        {
+          kind: "story",
+          text: "El billete de avión a París costaba **460 €** y ha subido un **20 %**. ¿Cuánto cuesta ahora?",
+        },
+        {
+          kind: "steps",
+          items: [
+            "Se calcula el aumento: $20\\%$ de $460 = 92$ €.",
+            "Se **suma** al precio antiguo: $460 + 92 = 552$ €.",
+          ],
+        },
+        {
+          kind: "rule",
+          formula: "\\text{precio nuevo} = \\text{precio antiguo} + \\text{aumento}",
+        },
+      ],
+      visual: { kind: "anim", scene: "aumento-barra", params: { a: 460, b: 20, sign: "+" } },
+    },
+    {
+      id: "disminucion",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué es lo que pago?",
+          message: "El precio antiguo menos el descuento. El descuento es solo lo que te quitan.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Si hay una rebaja, el resultado debe ser menor que el precio original.",
+        },
+      ],
+      title: "Disminución porcentual: restar la rebaja",
+      blocks: [
+        {
+          kind: "story",
+          text: "Un televisor costaba **900 €** y está rebajado un **15 %**. ¿Cuánto cuesta ahora?",
+        },
+        {
+          kind: "steps",
+          items: [
+            "Se calcula la rebaja: $15\\%$ de $900 = 135$ €.",
+            "Se **resta** al precio antiguo: $900 - 135 = 765$ €.",
+          ],
+        },
+        {
+          kind: "warning",
+          text: "$135$ € es lo que te **descuentan**, no lo que pagas.",
+        },
+      ],
+      visual: { kind: "anim", scene: "aumento-barra", params: { a: 900, b: 15, sign: "-" } },
+    },
+    {
+      id: "atajo",
+      type: "slide",
+      help: [
+        {
+          label: "¿De dónde sale el 1,20?",
+          message: "Precio antiguo ($100\\%$) más el aumento ($20\\%$) es el $120\\%$ del antiguo: $1{,}20$.",
+        },
+        {
+          label: "¿Y el 0,85?",
+          message: "Si te rebajan el $15\\%$ pagas el $85\\%$ del precio: $0{,}85$.",
+        },
+      ],
+      title: "Un atajo: multiplicar de una vez",
+      blocks: [
+        {
+          kind: "compare",
+          left: {
+            title: "Aumento del 20 %",
+            text: "Pasas a pagar el $120\\%$.",
+            math: ["460 \\cdot 1{,}20 = 552"],
+            tone: "key",
+          },
+          right: {
+            title: "Rebaja del 15 %",
+            text: "Pasas a pagar el $85\\%$.",
+            math: ["900 \\cdot 0{,}85 = 765"],
+            tone: "ok",
+          },
+        },
+        {
+          kind: "rule",
+          title: "Factor de cambio",
+          formula: "\\text{precio nuevo} = \\text{precio antiguo} \\cdot \\left(1 \\pm \\dfrac{a}{100}\\right)",
+        },
+        {
+          kind: "warning",
+          title: "No se deshace",
+          text: "Subir un $20\\%$ y luego bajar un $20\\%$ **no** devuelve el precio original: el segundo porcentaje se calcula sobre una cantidad mayor.",
+        },
       ],
     },
     {
-      id: "aumento-billete",
-      type: "animated_solution",
+      id: "predict-rebaja",
+      type: "predict",
+      title: "La chaqueta en rebajas",
+      question:
+        "Una chaqueta de $80\\,€$ está rebajada un $25\\%$. ¿Cuánto hay que pagar por ella?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$60\\,€$" },
+        {
+          id: "b",
+          label: "$20\\,€$",
+          incorrectFeedback: "$20\\,€$ es lo que te descuentan ($25\\%$ de $80$), no lo que pagas. Falta restarlo al precio.",
+        },
+        {
+          id: "c",
+          label: "$105\\,€$",
+          incorrectFeedback: "Has sumado el descuento. En una rebaja el precio **baja**, así que se resta.",
+        },
+        {
+          id: "d",
+          label: "$55\\,€$",
+          incorrectFeedback: "Has restado $25$ euros directamente: $80 - 25$. El $25\\%$ de $80$ no son $25$ euros, son $20$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
       help: [
         {
-          label: "¿Por qué sumo?",
-          message: "El billete sube, así que el precio nuevo es el antiguo más el aumento.",
+          label: "¿Qué hago primero?",
+          message: "Calcula el $25\\%$ de $80$ (la cuarta parte). Después decide si se suma o se resta.",
         },
         {
-          label: "Con un solo cálculo",
-          message: "Subir un $20\\%$ equivale a multiplicar por $1{,}20$: $460 \\cdot 1{,}20$.",
+          label: "Quiero saber si es razonable",
+          message: "Una rebaja del $25\\%$ deja el precio por encima de la mitad ($40\\,€$) y por debajo de los $80\\,€$.",
         },
       ],
-      title: "Aumento porcentual — billete a París",
-      content: [
-        "Un billete costaba $460\\,€$ y ha subido un $20\\%$. ¿Cuál es el precio actual?",
-      ],
-      frames: [
-        {
-          caption: "Aumento:",
-          math: "20\\% \\text{ de } 460 = \\frac{20 \\cdot 460}{100} = 92\\,€",
-        },
-        {
-          caption: "Precio nuevo:",
-          math: "460 + 92 = 552\\,€",
-        },
-      ],
-    },
-    {
-      id: "rebaja-tv",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué resto?",
-          message: "Es una rebaja, así que el precio nuevo es el antiguo menos el descuento.",
-        },
-        {
-          label: "Con un solo cálculo",
-          message: "Bajar un $15\\%$ equivale a pagar el $85\\%$: multiplicar por $0{,}85$.",
-        },
-      ],
-      title: "Disminución porcentual — televisor",
-      content: [
-        "Un televisor costaba $900\\,€$ y tiene una rebaja del $15\\%$. ¿Cuánto cuesta ahora?",
-      ],
-      frames: [
-        {
-          caption: "Rebaja:",
-          math: "15\\% \\text{ de } 900 = \\frac{15 \\cdot 900}{100} = 135\\,€",
-        },
-        {
-          caption: "Precio final:",
-          math: "900 - 135 = 765\\,€",
-        },
-      ],
+      explanation: "$25\\%$ de $80 = 20$. Precio final: $80 - 20 = 60\\,€$ (o $80 \\cdot 0{,}75 = 60$).",
     },
     {
       id: "prestamo",
-      type: "animated_solution",
+      type: "fill_in_blank",
       help: [
         {
-          label: "¿Qué son los intereses?",
-          message: "El dinero extra que se paga por usar un dinero prestado. Se calcula como un porcentaje del capital.",
+          label: "¿Qué tengo que devolver?",
+          message: "Lo que pidió prestado **más** los intereses. Calcula primero los intereses.",
         },
         {
-          label: "Capital más intereses",
-          message: "Lo que devuelve es lo que le prestaron más los intereses de ese año.",
+          label: "Atajo",
+          message: "Con un interés del $5\\%$ devuelve el $105\\%$ de la cantidad.",
         },
       ],
-      title: "Intereses — préstamo (act. 1)",
-      content: [
-        "Rosa pide un préstamo de $4000\\,€$ al $5\\%$ de interés anual. ¿Qué cantidad devolverá al cabo de un año (capital + intereses)?",
-      ],
-      frames: [
-        {
-          caption: "Intereses:",
-          math: "5\\% \\text{ de } 4000 = 200\\,€",
-        },
-        {
-          caption: "Devolución:",
-          math: "4000 + 200 = 4200\\,€",
-        },
-      ],
+      title: "El préstamo",
+      question:
+        "Rosa pide un préstamo de $4\\,000\\,€$ y el banco le cobra un $5\\%$ de interés. ¿Cuántos euros tendrá que devolver en total? (solo el número)",
+      correctAnswers: ["4200", "4 200", "4.200", "4200 €", "4200€"],
+      explanation: "Interés: $5\\%$ de $4\\,000 = 200$. A devolver: $4\\,000 + 200 = 4\\,200\\,€$.",
     },
     {
       id: "poblacion",
-      type: "animated_solution",
+      type: "fill_in_blank",
       help: [
         {
-          label: "Pérdida no es resultado",
-          message: "El $8\\%$ de $250$ es lo que se pierde, no la población que queda.",
+          label: "¿Sube o baja?",
+          message: "La población **disminuye**, así que al final habrá menos habitantes que antes.",
         },
         {
-          label: "Con un solo cálculo",
-          message: "Perder el $8\\%$ es quedarse con el $92\\%$: $250 \\cdot 0{,}92$.",
+          label: "Un atajo",
+          message: "Si baja un $8\\%$, queda el $92\\%$.",
         },
       ],
-      title: "Población — disminución (act. 2)",
-      content: [
-        "Una aldea tenía $250$ habitantes y la población ha disminuido un $8\\%$. ¿Cuál es la población actual?",
-      ],
-      frames: [
-        {
-          caption: "Pérdida:",
-          math: "8\\% \\text{ de } 250 = 20 \\text{ habitantes}",
-        },
-        {
-          caption: "Población actual:",
-          math: "250 - 20 = 230",
-        },
-      ],
+      title: "La aldea",
+      question:
+        "Una aldea tenía $250$ habitantes en el último censo y su población ha disminuido un $8\\%$. ¿Cuántos habitantes tiene ahora? (solo el número)",
+      correctAnswers: ["230"],
+      explanation: "$8\\%$ de $250 = 20$. Población actual: $250 - 20 = 230$ habitantes.",
     },
     {
       id: "blusa",
@@ -164,39 +216,13 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
           message: "Si le rebajan el $20\\%$, paga el $80\\%$ del precio. Puedes calcular directamente ese porcentaje.",
         },
       ],
-      title: "Rebaja en una blusa (autoevaluación)",
+      title: "Rebaja en una blusa",
       question:
         "Marta compra una blusa de $35\\,€$ con un $20\\%$ de rebaja. ¿Cuánto paga, en euros? (solo el número)",
       correctAnswers: ["28", "28 €", "28€", "28,00", "28.00"],
       hint: "Calcula primero cuánto le descuentan y réstalo del precio. O bien: paga el $80\\%$.",
       explanation:
         "Rebaja: $20\\%$ de $35 = 7\\,€$. Paga $35 - 7 = 28\\,€$ (equivale a $0{,}80 \\cdot 35 = 28$). Ojo: $7\\,€$ es el descuento, no lo que paga.",
-    },
-    {
-      id: "comedor",
-      type: "fill_in_blank",
-      help: [
-        {
-          label: "¿Qué significa el $60\\%$?",
-          message: "Sesenta de cada cien, o sea, $60$ centésimas del total.",
-          branches: [
-            {
-              label: "Descomponlo en partes fáciles",
-              message: "El $50\\%$ es la mitad y el $10\\%$ es la décima parte. El $60\\%$ es la suma de las dos.",
-              math: ["60\\% = 50\\% + 10\\%"],
-            },
-          ],
-        },
-        {
-          label: "Quiero saber si es razonable",
-          message: "El $60\\%$ es algo más de la mitad. La mitad de $585$ ronda $300$, así que el resultado debe quedar por encima de esa cifra.",
-        },
-      ],
-      title: "Comedor escolar (autoevaluación)",
-      question:
-        "Un colegio tiene $585$ estudiantes; el $60\\%$ usa el comedor. ¿Cuántos alumnos? (solo el número)",
-      correctAnswers: ["351"],
-      explanation: "$60\\%$ de $585 = (585 : 100) \\cdot 60 = 351$.",
     },
   ],
 };

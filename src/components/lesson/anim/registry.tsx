@@ -56,6 +56,11 @@ import { buildFraccionCabe } from "@/components/lesson/anim/scenes/fraccion-cabe
 import { buildFraccionDeFraccion } from "@/components/lesson/anim/scenes/fraccion-de-fraccion";
 import { buildSimplificarFactores } from "@/components/lesson/anim/scenes/simplificar-factores";
 
+import { buildAumentoBarra } from "@/components/lesson/anim/scenes/aumento-barra";
+import { buildCuadriculaPorcentaje } from "@/components/lesson/anim/scenes/cuadricula-porcentaje";
+import { buildReduccionUnidad } from "@/components/lesson/anim/scenes/reduccion-unidad";
+import { buildTablaRazon } from "@/components/lesson/anim/scenes/tabla-razon";
+
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
 /** Lista canónica de animaciones disponibles para `{ kind: "anim", scene }`. */
@@ -106,6 +111,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "escala-longitudes": () => buildEscalaLongitudes(),
   "cuadrados-area": (p) => buildCuadradosArea(p),
   "m2-dm2": () => buildM2Dm2(),
+  "tabla-razon": (p) => buildTablaRazon(p),
+  "reduccion-unidad": (p) => buildReduccionUnidad(p),
+  "cuadricula-porcentaje": (p) => buildCuadriculaPorcentaje(p),
+  "aumento-barra": (p) => buildAumentoBarra(p),
   "fraccion-partes": (p) => buildFraccionPartes(p),
   "fraccion-recta": (p) => buildFraccionRecta(p),
   "fraccion-operador": (p) => buildFraccionOperador(p),
