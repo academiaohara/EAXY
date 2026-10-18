@@ -5,63 +5,187 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
   slug: "sistema-metrico-capacidad",
   title: "3. Medida de la capacidad",
   subtitle: TEMA_6_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "litro",
-      type: "concept",
-      title: "El litro",
-      content: [
-        "La unidad de **capacidad** es el **litro**: volumen de un cubo de $1\\,\\mathrm{dm}$ de arista ($1\\,\\mathrm{l} = 1\\,\\mathrm{dm}^3$).",
-        "Escala (de diez en diez): $\\mathrm{kl}$, $\\mathrm{hl}$, $\\mathrm{dal}$, $\\mathrm{l}$, $\\mathrm{dl}$, $\\mathrm{cl}$, $\\mathrm{ml}$.",
-        "$1\\,\\mathrm{kl} = 1000\\,\\mathrm{l}$, $1\\,\\mathrm{l} = 10\\,\\mathrm{dl} = 100\\,\\mathrm{cl} = 1000\\,\\mathrm{ml}$.",
-      ],
-    },
-    {
-      id: "cambios",
-      type: "concept",
-      title: "Cambios de unidad",
-      content: [
-        "Usa la misma tabla que en longitud: coloca la coma y desplázala según los saltos entre unidades.",
-        "Ejemplos: $2{,}73\\,\\mathrm{kl} = 2730\\,\\mathrm{l}$; $560\\,\\mathrm{l} = 5{,}6\\,\\mathrm{hl}$; $60\\,\\mathrm{cl} = 0{,}6\\,\\mathrm{l}$; $0{,}0268\\,\\mathrm{l} = 26{,}8\\,\\mathrm{ml}$.",
-      ],
-    },
-    {
-      id: "resuelto",
-      type: "animated_solution",
-      title: "Ejercicios resueltos del temario",
-      content: ["Paso a paso: forma compleja ↔ litros."],
-      frames: [
+      id: "litro-cambio",
+      type: "slide",
+      title: "El litro y sus cambios de unidad",
+      blocks: [
         {
-          caption: "a) $3\\,\\mathrm{kl}\\ 2\\,\\mathrm{dal}\\ 6\\,\\mathrm{l}\\ 5\\,\\mathrm{dl}$ → litros:",
-          math: "3000 + 20 + 6 + 0{,}5 = 3026{,}5\\,\\mathrm{l}",
+          kind: "definition",
+          text: "El **litro** ($\\mathrm{l}$) es la unidad de capacidad: lo que cabe en un recipiente cúbico de **1 dm de arista**.",
         },
         {
-          caption: "b) $807{,}4\\,\\mathrm{l}$ → forma compleja:",
-          math: "807{,}4\\,\\mathrm{l} = 8\\,\\mathrm{hl}\\ 7\\,\\mathrm{l}\\ 4\\,\\mathrm{dl}",
+          kind: "text",
+          text: "Sus múltiplos son $\\mathrm{kl}$, $\\mathrm{hl}$ y $\\mathrm{dal}$; sus submúltiplos, $\\mathrm{dl}$, $\\mathrm{cl}$ y $\\mathrm{ml}$. Van **de 10 en 10** y se cambian de unidad **igual que en longitud**: la coma se mueve tantos lugares como saltos.",
         },
         {
-          caption: "Comprobación rápida (tabla en litros):",
-          math: "8\\,\\mathrm{hl} = 800\\,\\mathrm{l};\\ +7\\,\\mathrm{l};\\ +4\\,\\mathrm{dl} = 0{,}4\\,\\mathrm{l}",
+          kind: "example",
+          lines: [
+            { math: "560\\ \\mathrm{l} = 5{,}6\\ \\mathrm{hl}", note: "2 saltos a la izquierda" },
+            { math: "0{,}0268\\ \\mathrm{l} = 26{,}8\\ \\mathrm{ml}", note: "3 saltos a la derecha" },
+            { math: "60\\ \\mathrm{cl} = 0{,}6\\ \\mathrm{l}", note: "2 saltos a la izquierda" },
+          ],
         },
       ],
+      visual: { kind: "anim", scene: "tabla-unidades", params: { units: "l", dec: "2,73", from: "kl", to: "l" } },
     },
     {
-      id: "check-hl",
-      type: "fill_in_blank",
-      title: "Decilitros en un litro",
-      question: "¿Cuántos decilitros hay en $1{,}3\\,\\mathrm{l}$? (solo el número)",
-      correctAnswers: ["13", "13 dl"],
-      hint: "Del litro al decilitro bajas un escalón: multiplica por $10$.",
-      explanation: "$1\\,\\mathrm{l} = 10\\,\\mathrm{dl}$, así $1{,}3\\,\\mathrm{l} = 13\\,\\mathrm{dl}$.",
+      id: "check-cisterna",
+      type: "predict",
+      title: "El camión cisterna",
+      question: "Un camión cisterna transporta 2,73 kl de agua. ¿Cuántos litros son?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$2\\,730\\ \\mathrm{l}$" },
+        {
+          id: "b",
+          label: "$273\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "Has movido la coma dos lugares: eso serían hectolitros. Del kilolitro al litro hay **tres** saltos.",
+        },
+        {
+          id: "c",
+          label: "$27\\,300\\ \\mathrm{l}$",
+          incorrectFeedback: "Has movido la coma cuatro lugares. Son tres saltos: $\\mathrm{kl} \\to \\mathrm{hl} \\to \\mathrm{dal} \\to \\mathrm{l}$.",
+        },
+        {
+          id: "d",
+          label: "$0{,}00273\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "Has movido la coma a la izquierda. El litro es menor que el kilolitro: el número tiene que **crecer**.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "Tres saltos a la derecha: $2{,}73\\ \\mathrm{kl} = 2\\,730\\ \\mathrm{l}$. Un camión cisterna lleva miles de litros: tiene sentido.",
     },
     {
-      id: "check-ml",
-      type: "fill_in_blank",
-      title: "Mililitros",
-      question: "Expresa $580\\,\\mathrm{ml}$ en litros (coma decimal).",
-      correctAnswers: ["0,58", "0.58"],
-      hint: "Divide entre $1000$ o mueve la coma tres lugares a la izquierda desde ml.",
-      explanation: "$580\\,\\mathrm{ml} = 0{,}58\\,\\mathrm{l}$.",
+      id: "check-aceite",
+      type: "predict",
+      title: "La botella de aceite",
+      question: "Una botella de aceite tiene 750 ml. ¿Cuántos litros de aceite contiene?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$0{,}75\\ \\mathrm{l}$" },
+        {
+          id: "b",
+          label: "$7{,}5\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "Has movido la coma dos lugares. De $\\mathrm{ml}$ a $\\mathrm{l}$ hay tres saltos: $\\mathrm{ml} \\to \\mathrm{cl} \\to \\mathrm{dl} \\to \\mathrm{l}$.",
+        },
+        {
+          id: "c",
+          label: "$75\\ \\mathrm{l}$",
+          incorrectFeedback: "Has movido la coma un solo lugar: eso son centilitros. Falta dar dos saltos más.",
+        },
+        {
+          id: "d",
+          label: "$0{,}075\\ \\mathrm{l}$",
+          incorrectFeedback: "Has movido la coma cuatro lugares: te has pasado un salto más allá del litro.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "Tres saltos a la izquierda: $750\\ \\mathrm{ml} = 0{,}75\\ \\mathrm{l}$, tres cuartos de litro.",
+    },
+    {
+      id: "compleja",
+      type: "slide",
+      title: "Forma compleja e incompleja con litros",
+      blocks: [
+        {
+          kind: "rule",
+          text: "Mismo método que con la longitud: cada parte en la columna de su unidad, **ceros** en las vacías y la coma tras la unidad pedida.",
+        },
+        {
+          kind: "example",
+          title: "Juntar (en la animación)",
+          lines: [{ math: "3\\ \\mathrm{kl}\\ 2\\ \\mathrm{dal}\\ 6\\ \\mathrm{l}\\ 5\\ \\mathrm{dl} = 3\\,026{,}5\\ \\mathrm{l}" }],
+        },
+        {
+          kind: "example",
+          title: "Separar",
+          lines: [
+            {
+              math: "807{,}4\\ \\mathrm{l} = 8\\ \\mathrm{hl}\\ 7\\ \\mathrm{l}\\ 4\\ \\mathrm{dl}",
+              note: "la columna de los dal vale 0 y no se escribe",
+            },
+          ],
+        },
+      ],
+      visual: {
+        kind: "anim",
+        scene: "tabla-unidades",
+        params: { units: "l", parts: ["3 kl", "2 dal", "6 l", "5 dl"], to: "l" },
+      },
+    },
+    {
+      id: "check-jarabe",
+      type: "predict",
+      title: "El jarabe de la farmacia",
+      question:
+        "Una farmacia prepara un jarabe con 4 l, 2 dl, 5 cl y 7 ml de líquido. ¿Cuántos litros hay en total?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$4{,}257\\ \\mathrm{l}$" },
+        {
+          id: "b",
+          label: "$4{,}2057\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "Has dejado un hueco de más: cada columna ($\\mathrm{dl}$, $\\mathrm{cl}$, $\\mathrm{ml}$) lleva **una sola** cifra, una detrás de otra.",
+        },
+        {
+          id: "c",
+          label: "$4{,}27\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "Falta una cifra: has escrito $2\\ \\mathrm{dl}$ y $7\\ \\mathrm{ml}$ pero te has saltado la columna de los centilitros ($5\\ \\mathrm{cl}$).",
+        },
+        {
+          id: "d",
+          label: "$42{,}57\\ \\mathrm{l}$",
+          incorrectFeedback:
+            "El $4$ son $4$ litros, en la columna de los litros, justo a la izquierda de la coma: el resto va detrás.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "$4\\ \\mathrm{l} + 0{,}2\\ \\mathrm{l} + 0{,}05\\ \\mathrm{l} + 0{,}007\\ \\mathrm{l} = 4{,}257\\ \\mathrm{l}$: dl, cl y ml ocupan cada uno una cifra tras la coma.",
+    },
+    {
+      id: "check-perfume",
+      type: "predict",
+      title: "El frasco de perfume",
+      question:
+        "En la etiqueta de un frasco de perfume hay que indicar su capacidad. ¿Qué unidad resulta más adecuada?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "El mililitro ($\\mathrm{ml}$)" },
+        {
+          id: "b",
+          label: "El hectolitro ($\\mathrm{hl}$)",
+          incorrectFeedback: "Un hectolitro son $100$ litros: el frasco sería mil veces más pequeño y saldría un decimal minúsculo.",
+        },
+        {
+          id: "c",
+          label: "El kilolitro ($\\mathrm{kl}$)",
+          incorrectFeedback: "Un kilolitro son $1\\,000$ litros: sirve para depósitos de agua, no para un frasco.",
+        },
+        {
+          id: "d",
+          label: "El decalitro ($\\mathrm{dal}$)",
+          incorrectFeedback: "Un decalitro son $10$ litros, el contenido de un cubo: demasiado grande para un perfume.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "Conviene la unidad que dé números cómodos: un frasco de perfume tiene decenas o pocas centenas de mililitros.",
     },
   ],
 };

@@ -74,6 +74,14 @@ Solo dos ilustraciones, las que anclan una cantidad al mundo real; el resto (rec
 
 Los tres temas anteriores sin ilustración (divisibilidad, enteros…) se mantienen igual; aquí se añaden solo porque la báscula (milésimas = gramos) y la tela (precio por metro) hacen concreta una cantidad con decimales.
 
+## Tema 6 · Sistema métrico decimal
+
+Una sola ilustración: la que hace entender por qué hace falta una unidad común (el codo cambia con cada antebrazo). El resto (jarra y vasos, meridiano, cubo de agua, tablas, cuadrículas) lo dibujan las animaciones. Ya está enlazada en la diapositiva «Del codo al metro» (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/sistema-metrico/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `comerciantes-codo.png` | L1 · «Del codo al metro» (`story`, ~170 px) | 1024×1024 | Dos comerciantes de la antigüedad, de pie uno frente a otro y de perfil, con túnicas de colores distintos (una ocre y otra azul). Entre los dos sostienen una pieza de tela de lino extendida. Cada uno mide la tela apoyando su propio antebrazo (el codo) sobre ella: el de la izquierda es alto y de brazo largo, el de la derecha es bajo y de brazo corto, de modo que se vea claramente que sus «codos» no coinciden. Sin texto, sin números, sin cinta métrica. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).
