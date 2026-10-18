@@ -76,7 +76,29 @@ describe("lecciones del tema 10 (álgebra)", () => {
         }
       }
     }
-    expect(count).toBeGreaterThanOrEqual(10);
+    expect(count).toBeGreaterThanOrEqual(19);
+  });
+
+  it("la teoría que antes era solo texto también lleva animación", () => {
+    const scenes = new Set(
+      THEME_TEN.flatMap((l) => l.steps)
+        .filter((s): s is SlideStep => s.type === "slide")
+        .flatMap(visualsOf)
+        .flatMap((b) => (b.kind === "anim" ? [b.scene] : [])),
+    );
+    for (const scene of [
+      "letras-valores",
+      "enunciado-expresion",
+      "campo-perimetro-area",
+      "monomio-partes",
+      "monomio-producto",
+      "monomio-cociente",
+      "ecuacion-identidad",
+      "comprobar-solucion",
+      "pasos-problema",
+    ]) {
+      expect(scenes.has(scene as never), scene).toBe(true);
+    }
   });
 
   it("incluye las dos herramientas interactivas del tema", () => {

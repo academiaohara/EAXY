@@ -36,6 +36,7 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
           text: "La solución de la ecuación no siempre responde al problema: pregúntate si el resultado tiene sentido (edades, medidas, personas…).",
         },
       ],
+      visual: { kind: "anim", scene: "pasos-problema" },
     },
     {
       id: "ejemplo-numero",

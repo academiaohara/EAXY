@@ -114,6 +114,7 @@ export const algebraResolucionPrimerGradoLesson: InteractiveLesson = {
           text: "Comprueba siempre en la ecuación **original**, no en una reducida: así detectas también los errores de los pasos intermedios.",
         },
       ],
+      visual: { kind: "anim", scene: "comprobar-solucion" },
     },
     {
       id: "gimnasios",

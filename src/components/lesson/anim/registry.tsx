@@ -71,6 +71,15 @@ import { buildTablaRazon } from "@/components/lesson/anim/scenes/tabla-razon";
 import { buildBalanzaEcuacion } from "@/components/lesson/anim/scenes/balanza-ecuacion";
 import { buildMaquinaFuncion } from "@/components/lesson/anim/scenes/maquina-funcion";
 import { buildSemejantesAgrupar } from "@/components/lesson/anim/scenes/semejantes-agrupar";
+import { buildLetrasValores } from "@/components/lesson/anim/scenes/letras-valores";
+import { buildEnunciadoExpresion } from "@/components/lesson/anim/scenes/enunciado-expresion";
+import { buildCampoPerimetroArea } from "@/components/lesson/anim/scenes/campo-perimetro-area";
+import { buildMonomioPartes } from "@/components/lesson/anim/scenes/monomio-partes";
+import { buildMonomioProducto } from "@/components/lesson/anim/scenes/monomio-producto";
+import { buildMonomioCociente } from "@/components/lesson/anim/scenes/monomio-cociente";
+import { buildEcuacionIdentidad } from "@/components/lesson/anim/scenes/ecuacion-identidad";
+import { buildComprobarSolucion } from "@/components/lesson/anim/scenes/comprobar-solucion";
+import { buildPasosProblema } from "@/components/lesson/anim/scenes/pasos-problema";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -144,6 +153,15 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "balanza-ecuacion": (p) => buildBalanzaEcuacion(p),
   "maquina-funcion": (p) => buildMaquinaFuncion(p),
   "semejantes-agrupar": (p) => buildSemejantesAgrupar(p),
+  "letras-valores": () => buildLetrasValores(),
+  "enunciado-expresion": () => buildEnunciadoExpresion(),
+  "campo-perimetro-area": () => buildCampoPerimetroArea(),
+  "monomio-partes": () => buildMonomioPartes(),
+  "monomio-producto": (p) => buildMonomioProducto(p),
+  "monomio-cociente": (p) => buildMonomioCociente(p),
+  "ecuacion-identidad": () => buildEcuacionIdentidad(),
+  "comprobar-solucion": () => buildComprobarSolucion(),
+  "pasos-problema": () => buildPasosProblema(),
 };
 
 export function buildSlideAnim(
