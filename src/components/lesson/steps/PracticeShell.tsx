@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
+import { useLessonStepControl } from "@/components/lesson/LessonStepControlContext";
+import { PredictCheckButton } from "@/components/lesson/steps/predict-step-ui";
 import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { cn } from "@/lib/utils";
 import type { PracticeStep } from "@/lib/lesson/types";
@@ -21,6 +23,7 @@ export function tallFractions(text: string): string {
  * actividad debajo, centrada y a todo el ancho para que tenga protagonismo.
  */
 export function PracticeShell({ step, compact = false, testId, children }: PracticeShellProps) {
+  const { control } = useLessonStepControl();
   const showContext = Boolean(
     step.content?.length || step.math?.length || step.warning || step.visuals?.length,
   );
@@ -56,6 +59,9 @@ export function PracticeShell({ step, compact = false, testId, children }: Pract
           <MathRenderer text={tallFractions(step.question)} />
         </h3>
         {children}
+        {control?.testId === "lesson-check-button" ? (
+          <PredictCheckButton disabled={Boolean(control.disabled)} onClick={() => control.onClick()} testId="lesson-practice-check" />
+        ) : null}
       </section>
     </div>
   );

@@ -83,7 +83,7 @@ function Pizzas({ n, d, color }: { n: number; d: number; color: string }) {
   const gap = 28;
   const W = wholes * 2 * R + (wholes - 1) * gap + 8;
   return (
-    <svg viewBox={`0 0 ${W} ${2 * R + 8}`} className="mx-auto block h-44 w-auto max-w-full" aria-hidden focusable="false" data-testid="tool-pizzas">
+    <svg viewBox={`0 0 ${W} ${2 * R + 8}`} className="mx-auto block h-48 w-auto max-w-full" aria-hidden focusable="false" data-testid="tool-pizzas">
       {Array.from({ length: wholes }, (_, w) => {
         const filled = clamp(n - w * d, 0, d);
         const cx = 4 + R + w * (2 * R + gap);
@@ -117,7 +117,7 @@ function Pizzas({ n, d, color }: { n: number; d: number; color: string }) {
 function MiniLine({ value, color }: { value: number; color: string }) {
   const x = (v: number) => 20 + v * 200;
   return (
-    <svg viewBox="0 0 440 56" className="block w-full" aria-hidden focusable="false">
+    <svg viewBox="0 0 440 56" className="mx-auto block w-full max-w-md" aria-hidden focusable="false">
       <line x1={10} y1={30} x2={430} y2={30} stroke={MANIM.ink} strokeWidth={2.5} strokeLinecap="round" />
       {[0, 1, 2].map((v) => (
         <g key={v}>
@@ -151,10 +151,19 @@ function Frame({
       className="flex flex-col overflow-hidden rounded-xl border border-[color:var(--stage-border,#3d4f66)] bg-[color:var(--stage-surface,#1a2332)]"
       data-testid="lesson-tool"
     >
-      <div className={stacked ? "flex flex-col gap-5 p-4" : "grid gap-5 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-8"}>
-        <div className={stacked ? "grid gap-4 sm:grid-cols-2 sm:gap-8" : "flex flex-col gap-4"}>{controls}</div>
-        <div className="flex min-w-0 flex-col gap-3">{children}</div>
-      </div>
+      {stacked ? (
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-5">
+          <div className="flex min-w-0 flex-col gap-3">{children}</div>
+          <div className="mx-auto grid w-full max-w-xl gap-x-8 gap-y-3 border-t border-[color:var(--stage-border,#3d4f66)] pt-4 sm:grid-cols-2">
+            {controls}
+          </div>
+        </div>
+      ) : (
+        <div className="grid gap-5 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-8">
+          <div className="flex flex-col gap-4">{controls}</div>
+          <div className="flex min-w-0 flex-col gap-3">{children}</div>
+        </div>
+      )}
       <div className="flex items-center gap-3 border-t border-[color:var(--stage-border,#3d4f66)] bg-black/20 px-4 py-2.5">
         <p className="flex-1 text-[0.95rem] leading-snug text-[color:var(--stage-ink,#fff)]">{hint}</p>
         <button
@@ -200,12 +209,12 @@ function FraccionExplorador({ block }: { block: ToolBlock }) {
         </>
       }
     >
-      <div className="flex items-baseline gap-4" data-testid="tool-readout">
-        <MathRenderer text={`$\\dfrac{${n}}{${d}}$`} className="text-3xl" />
-        <span className="text-lg font-semibold" style={{ color }}>
+      <div className="flex items-center justify-center gap-6" data-testid="tool-readout">
+        <MathRenderer text={`$\\dfrac{${n}}{${d}}$`} className="text-4xl" />
+        <span className="text-xl font-semibold" style={{ color }}>
           {kind}
         </span>
-        <span className="ml-auto text-lg tabular-nums text-[color:var(--stage-ink,#fff)]">
+        <span className="text-xl tabular-nums text-[color:var(--stage-ink,#fff)]">
           {exact ? "=" : "≈"} {decEs(value)}
         </span>
       </div>

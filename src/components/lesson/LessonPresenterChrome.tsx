@@ -118,9 +118,6 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   }, [control, feedback, onNext]);
 
   const handleBack = useCallback(() => {
-    if (feedback) {
-      return;
-    }
     if (control?.onBack) {
       control.onBack();
       return;
@@ -128,7 +125,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
     if (canBack) {
       onBack();
     }
-  }, [canBack, control, feedback, onBack]);
+  }, [canBack, control, onBack]);
 
   useEffect(() => {
     if (feedback || !hasAnimation) {
@@ -173,7 +170,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   const forwardDisabled =
     feedback !== null ? false : !control || control.disabled;
 
-  const backDisabled = feedback !== null ? true : !canBack && !control?.onBack;
+  const backDisabled = !canBack && !control?.onBack;
 
   const header = (
     <header className="relative z-50 flex shrink-0 items-start justify-between gap-4 px-4 pb-4 pt-5 sm:px-6 sm:pb-4 sm:pt-5">

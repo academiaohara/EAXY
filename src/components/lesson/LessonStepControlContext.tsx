@@ -256,7 +256,17 @@ export function useRegisterLessonStepControl(control: LessonStepControl | null) 
   controlRef.current = control;
 
   useLayoutEffect(() => {
-    registerControl(ownerId, controlRef.current);
+    // El registro solo se renueva si cambia la firma; el manejador se lee siempre del último render
+    // para que no use un estado antiguo (p. ej. las partes coloreadas hasta ese momento).
+    const current = controlRef.current;
+    registerControl(
+      ownerId,
+      current && {
+        ...current,
+        onClick: (meta) => controlRef.current?.onClick(meta),
+        onBack: current.onBack ? () => controlRef.current?.onBack?.() : undefined,
+      },
+    );
   }, [ownerId, registerControl, signature]);
 
   useLayoutEffect(() => {

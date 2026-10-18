@@ -93,15 +93,17 @@ export function predictFeedbackStatusClassName(isCorrect: boolean) {
 export function PredictCheckButton({
   disabled,
   onClick,
+  testId = "lesson-check-button",
 }: {
   disabled: boolean;
   onClick: () => void;
+  testId?: string;
 }) {
   return (
     <div className="mt-5 flex justify-center">
       <button
         type="button"
-        data-testid="lesson-check-button"
+        data-testid={testId}
         disabled={disabled}
         onClick={onClick}
         className={cn(
