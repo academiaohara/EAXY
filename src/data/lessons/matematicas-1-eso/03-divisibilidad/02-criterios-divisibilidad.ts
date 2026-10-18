@@ -10,6 +10,16 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "idea-criterios",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué sirve un criterio?",
+          message: "Dividir números grandes lleva tiempo. Mirar las cifras es instantáneo y te da la misma respuesta.",
+        },
+        {
+          label: "Cómo ordenar lo que viene",
+          message: "Los criterios se agrupan: los de la última(s) cifra(s) ($2$, $4$, $5$, $10$), los de la suma de cifras ($3$, $9$), los que combinan otros ($6$, $12$) y el especial del $11$.",
+        },
+      ],
       title: "Decidir sin dividir",
       blocks: [
         {
@@ -30,6 +40,17 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-2",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué solo la última cifra?",
+          message: "Porque $10$ es múltiplo de $2$: todo lo que hay antes de las unidades ya lo es. Solo falta mirar las unidades.",
+          math: ["1\\,236 = 1\\,230 + 6"],
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$348$ acaba en $8$ (par): divisible. $215$ acaba en $5$ (impar): no.",
+        },
+      ],
       title: "Entre 2: la última cifra",
       blocks: [
         {
@@ -47,6 +68,20 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-3",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué suman las cifras?",
+          message: "Porque $10$, $100$, $1000$… dejan resto $1$ al dividir entre $3$. Así cada cifra «pesa» lo mismo que ella misma y solo importa su suma.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$462$: $4 + 6 + 2 = 12$, múltiplo de $3$, así que es divisible. $463$: la suma es $13$, no lo es.",
+        },
+        {
+          label: "Un truco",
+          message: "Si la suma tiene dos cifras, súmalas otra vez: $12 \\to 1 + 2 = 3$.",
+        },
+      ],
       title: "Entre 3: la suma de las cifras",
       blocks: [
         {
@@ -64,6 +99,16 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-4",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué dos cifras?",
+          message: "Porque $100$ es múltiplo de $4$: todo lo anterior a las dos últimas cifras ya lo es.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$1\\,324$: $24$ es múltiplo de $4$, así que sí. $1\\,326$: $26$ no lo es, así que no.",
+        },
+      ],
       title: "Entre 4: las dos últimas cifras",
       blocks: [
         {
@@ -81,6 +126,16 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-5",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué $0$ o $5$?",
+          message: "Porque $10$ es múltiplo de $5$: solo importa la última cifra, y los múltiplos de $5$ acaban siempre en $0$ o en $5$.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$470$ y $485$ son múltiplos de $5$; $482$ no lo es.",
+        },
+      ],
       title: "Entre 5: acaba en 0 o en 5",
       blocks: [
         {
@@ -98,6 +153,20 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-6",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el $2$ y el $3$ a la vez?",
+          message: "Porque $6 = 2 \\cdot 3$ y el $2$ y el $3$ no comparten factores, así que ser divisible entre los dos asegura serlo entre $6$.",
+        },
+        {
+          label: "Cuidado",
+          message: "No basta con ser par: $8$ es par pero no es múltiplo de $6$.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "$54$: es par y $5 + 4 = 9$ es múltiplo de $3$. Divisible entre $6$.",
+        },
+      ],
       title: "Entre 6: criterio del 2 y del 3",
       blocks: [
         {
@@ -115,6 +184,20 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-9",
       type: "slide",
+      help: [
+        {
+          label: "Como el del $3$",
+          message: "Misma idea: $10$, $100$… dejan resto $1$ al dividir entre $9$, así que cuenta la suma de las cifras.",
+        },
+        {
+          label: "Ojo con el $3$ y el $9$",
+          message: "Todo múltiplo de $9$ lo es de $3$, pero no al revés: $12$ suma $3$ (múltiplo de $3$) y no es múltiplo de $9$.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "$738$: $7 + 3 + 8 = 18$, múltiplo de $9$. Es divisible.",
+        },
+      ],
       title: "Entre 9: la suma de las cifras",
       blocks: [
         {
@@ -176,6 +259,16 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-10",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué acaba en $0$?",
+          message: "Un múltiplo de $10$ es lo que resulta de añadir un $0$ al final de otro número.",
+        },
+        {
+          label: "Relación con el $2$ y el $5$",
+          message: "Si un número acaba en $0$, es divisible entre $2$, entre $5$ y entre $10$ a la vez.",
+        },
+      ],
       title: "Entre 10: acaba en 0",
       blocks: [
         {
@@ -193,6 +286,21 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-11",
       type: "slide",
+      help: [
+        {
+          label: "Numera las cifras",
+          message: "La primera es la de las unidades, la segunda la de las decenas… siempre de derecha a izquierda.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "En $2\\,849$: posiciones impares $9 + 8 = 17$; pares $4 + 2 = 6$. $17 - 6 = 11$: divisible.",
+          math: ["(9 + 8) - (4 + 2) = 11"],
+        },
+        {
+          label: "¿Y si sale negativo?",
+          message: "Da igual: lo que importa es que sea $0$ o un múltiplo de $11$, también $-11$, $-22$…",
+        },
+      ],
       title: "Entre 11: suma alterna de cifras",
       blocks: [
         {
@@ -256,6 +364,20 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "criterio-12",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el $3$ y el $4$?",
+          message: "Porque $12 = 3 \\cdot 4$ y el $3$ y el $4$ no comparten factores.",
+        },
+        {
+          label: "Por qué no el $2$ y el $6$",
+          message: "Comparten el factor $2$. Un contraejemplo: $18$ es divisible entre $2$ y entre $6$, pero no entre $12$.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "$132$: $1 + 3 + 2 = 6$ (múltiplo de $3$) y $32$ es múltiplo de $4$. Divisible.",
+        },
+      ],
       title: "Entre 12: criterio del 3 y del 4",
       blocks: [
         {

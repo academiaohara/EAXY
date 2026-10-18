@@ -9,6 +9,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "mismo-valor",
       type: "concept",
+      help: [
+        {
+          label: "Una misma tarta",
+          message: "Parte una tarta en $4$ y toma una porción; parte otra igual en $12$ y toma $3$: comes lo mismo.",
+        },
+        {
+          label: "¿Cómo lo compruebo?",
+          message: "Pasa las dos a decimal: si dan el mismo número, son equivalentes.",
+        },
+      ],
       title: "Misma porción, distinta escritura",
       content: [
         "Dos fracciones son **equivalentes** si representan la **misma porción** de la unidad (mismo valor numérico).",
@@ -63,6 +73,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "propiedad",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué no cambia el valor?",
+          message: "Multiplicar numerador y denominador por $5$ es partir cada trozo en $5$: hay $5$ veces más trozos, pero $5$ veces más pequeños.",
+        },
+        {
+          label: "¿Y por qué dividir?",
+          message: "Es lo mismo al revés: agrupas trozos y la porción no cambia.",
+        },
+        {
+          label: "Cuidado",
+          message: "Solo vale multiplicar o dividir **los dos** números por lo mismo. Sumarles el mismo número no mantiene el valor.",
+        },
+      ],
       title: "Propiedad fundamental",
       content: [
         "Si **multiplicas o divides** numerador y denominador por el **mismo número** (distinto de cero), obtienes una fracción equivalente.",
@@ -83,6 +107,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "simplificar",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué busco?",
+          message: "Una fracción con números más pequeños que valga lo mismo.",
+        },
+        {
+          label: "¿Cómo no equivocarme?",
+          message: "Divide por un divisor común y repite hasta que no quede ninguno (salvo el $1$). Los criterios de divisibilidad ayudan.",
+        },
+        {
+          label: "Un atajo",
+          message: "Si divides entre el m.c.d. llegas a la irreducible en un solo paso.",
+        },
+      ],
       title: "Simplificación",
       content: [
         "**Simplificar** es buscar una fracción equivalente con términos más pequeños, dividiendo por divisores comunes.",
@@ -103,6 +141,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "chocolate",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Para qué simplificar?",
+          message: "Para comparar: dos fracciones equivalentes son la misma cantidad.",
+        },
+        {
+          label: "Otra forma de verlo",
+          message: "En lugar de simplificar la de Carmen, puedes ampliar la de Francisco: $\\frac{1}{4} = \\frac{2}{8}$.",
+        },
+      ],
       title: "Problema — ¿quién comió más?",
       content: [
         "Francisco come $\\frac{1}{4}$ de una tableta y Carmen $\\frac{2}{8}$ de otra igual. ¿Quién comió un trozo mayor?",
@@ -121,6 +169,16 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "anim-biblio",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué tantos pasos?",
+          message: "Cada paso divide entre un divisor común distinto. Podrías ir más rápido dividiendo entre el m.c.d.",
+        },
+        {
+          label: "¿Cómo sé que ya está simplificada?",
+          message: "Cuando $2$ y $5$ no tienen más divisor común que el $1$.",
+        },
+      ],
       title: "Ejemplo — fracción de libros prestados",
       content: [
         "De $1575$ libros, $630$ están prestados. ¿Qué fracción está prestada? (simplifica).",

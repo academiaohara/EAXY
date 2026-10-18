@@ -10,6 +10,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "un-numero",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ganancias y deudas",
+          message: "Sumar una deuda baja el saldo; restar una deuda lo sube. El signo del número y el de la operación se combinan.",
+        },
+        {
+          label: "Restar es sumar el opuesto",
+          message: "$a - b$ es lo mismo que $a + (-b)$. Con eso un paréntesis negativo se entiende como una suma.",
+        },
+      ],
       title: "Un número entre paréntesis: sumar o restar",
       blocks: [
         {
@@ -85,6 +95,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "mas-delante",
       type: "slide",
+      help: [
+        {
+          label: "El paréntesis como paquete",
+          message: "Con un $+$ delante el paquete entra tal cual: cada término conserva su signo.",
+        },
+        {
+          label: "Pruébalo con números",
+          message: "$+(+3 - 6 + 5)$ es $3 - 6 + 5$. Quitar el paréntesis no cambia nada.",
+        },
+      ],
       title: "Con + delante, los signos se quedan",
       blocks: [
         {
@@ -108,6 +128,20 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "menos-delante",
       type: "slide",
+      help: [
+        {
+          label: "El paréntesis como paquete",
+          message: "Con un $-$ delante, quitas el paquete entero: cada término de dentro se cambia por su opuesto.",
+        },
+        {
+          label: "El error típico",
+          message: "Cambiar solo el primer signo. $-(8 - 6)$ es $-8 + 6$, no $-8 - 6$.",
+        },
+        {
+          label: "Dos caminos",
+          message: "O quitas el paréntesis cambiando todos los signos, o calculas primero lo de dentro y luego aplicas el signo.",
+        },
+      ],
       title: "Con − delante, todos los signos cambian",
       blocks: [
         {
@@ -180,6 +214,16 @@ export const parentesisEnterosLesson: InteractiveLesson = {
     {
       id: "anidados",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué de dentro hacia fuera?",
+          message: "Porque lo de dentro se tiene que resolver para poder tratar lo que lo envuelve.",
+        },
+        {
+          label: "¿Qué son los corchetes?",
+          message: "Paréntesis más grandes, para no confundirlos con los de dentro. Se tratan igual.",
+        },
+      ],
       title: "Paréntesis dentro de paréntesis",
       blocks: [
         {

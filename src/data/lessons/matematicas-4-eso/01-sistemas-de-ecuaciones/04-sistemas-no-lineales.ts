@@ -9,6 +9,20 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué lo hace no lineal?",
+          message: "Que alguna ecuación no sea de primer grado: $x^2$, $y^2$, $xy$, raíces o incógnitas en el denominador.",
+        },
+        {
+          label: "¿Por qué hay que comprobar?",
+          message: "Al elevar al cuadrado o quitar denominadores pueden aparecer valores que no cumplen el sistema original.",
+        },
+        {
+          label: "Mismos métodos",
+          message: "Sustitución o reducción siguen valiendo; solo cambia que a veces sale una ecuación de segundo grado.",
+        },
+      ],
       title: "¿Qué es un sistema no lineal?",
       content: [
         "Un sistema es **no lineal** cuando al menos una ecuación no es de primer grado: contiene $x^2$, $y^2$, $x \\cdot y$, raíces o incógnitas en el denominador.",
@@ -31,6 +45,20 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "ejemplo-animado",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué despejo en la lineal?",
+          message: "Porque es la más fácil de despejar y no genera una ecuación más complicada.",
+        },
+        {
+          label: "¿Por qué salen dos soluciones?",
+          message: "Una ecuación de segundo grado puede tener dos raíces. Cada una da una $x$ y, con ella, una $y$.",
+        },
+        {
+          label: "Cuidado al desarrollar",
+          message: "$(1 + x)^2$ no es $1 + x^2$: es $1 + 2x + x^2$.",
+        },
+      ],
       title: "Ejemplo resuelto del libro",
       content: [
         "Resolvemos el sistema del ejercicio resuelto. Avanza paso a paso:",
@@ -70,6 +98,16 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "grafica-parcial",
       type: "interactive_tool",
+      help: [
+        {
+          label: "¿Qué muestra la recta?",
+          message: "Todos los puntos que cumplen $y - x = 1$. Las soluciones del sistema tienen que estar sobre ella.",
+        },
+        {
+          label: "¿Y la circunferencia?",
+          message: "$x^2 + y^2 = 5$ es una circunferencia con centro en el origen. Los puntos de corte con la recta son las soluciones.",
+        },
+      ],
       title: "La parte lineal del sistema",
       tool: "system-graph",
       content: [

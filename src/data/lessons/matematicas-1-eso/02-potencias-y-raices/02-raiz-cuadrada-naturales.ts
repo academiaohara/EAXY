@@ -14,6 +14,16 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "inversa-cuadrado-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "Deshacer un cuadrado",
+          message: "Si $5^2 = 25$, la raíz cuadrada de $25$ es $5$: vuelve al número original.",
+        },
+        {
+          label: "Un nombre para cada pieza",
+          message: "En $\\sqrt{25}$, el $25$ es el radicando y el resultado, $5$, es la raíz.",
+        },
+      ],
       title: "Inversa del cuadrado",
       definitionBox:
         "Calcular la **raíz cuadrada** es deshacer un cuadrado: si $a^2 = b$, entonces $\\sqrt{b} = a$. En $\\sqrt{b}$, el $b$ es el **radicando**.",
@@ -24,6 +34,16 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "cuadrados-perfectos-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "¿Por qué «perfectos»?",
+          message: "Porque su raíz es un número natural exacto, sin decimales.",
+        },
+        {
+          label: "Una lista que conviene saber",
+          message: "$1, 4, 9, 16, 25, 36, 49, 64, 81, 100$: son los cuadrados de $1$ a $10$.",
+        },
+      ],
       title: "Cuadrados perfectos",
       definitionBox:
         "Los números cuya raíz es exacta se llaman **cuadrados perfectos** ($25$, $36$, $400$…).",
@@ -34,6 +54,16 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "raiz-entera-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "Si no es perfecto",
+          message: "Atrapa el número entre dos cuadrados perfectos: la raíz entera es la menor de las dos raíces.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "$40$ está entre $36$ y $49$, así que $6 < \\sqrt{40} < 7$: la raíz entera es $6$.",
+        },
+      ],
       title: "Raíz entera",
       definitionBox:
         "Para la mayoría de los números la raíz no es natural. La **raíz entera** es el mayor natural cuyo cuadrado **no se pasa** del radicando.",
@@ -44,6 +74,16 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "raiz-entera-resto",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué es el resto?",
+          message: "Lo que sobra del radicando al restarle el cuadrado de la raíz entera.",
+        },
+        {
+          label: "Dos comprobaciones",
+          message: "Si el resto es $0$, la raíz es exacta. Y el resto nunca llega a $2 \\cdot \\text{raíz} + 1$.",
+        },
+      ],
       title: "Raíz entera y resto",
       blocks: [
         {
@@ -73,6 +113,16 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "raiz-calculadora-narrate",
       type: "narrate",
+      help: [
+        {
+          label: "¿Cómo uso la calculadora?",
+          message: "Pulsa la tecla de raíz, escribe el radicando y pulsa igual.",
+        },
+        {
+          label: "Comprueba el resultado",
+          message: "Eleva el resultado al cuadrado: debe volver a dar el radicando (o muy cerca si es decimal).",
+        },
+      ],
       title: "Raíz en la calculadora",
       definitionBox: "En la calculadora: tecla $\\sqrt{\\square}$, el radicando y $=$.",
       module: "raices-cuadradas",

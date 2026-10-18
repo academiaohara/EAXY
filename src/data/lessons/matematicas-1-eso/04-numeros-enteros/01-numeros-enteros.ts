@@ -10,6 +10,20 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "cuando-no-bastan",
       type: "slide",
+      help: [
+        {
+          label: "El signo marca el sentido",
+          message: "El signo $-$ dice «por debajo de cero»: frío, deuda, sótano.",
+        },
+        {
+          label: "Posición frente a variación",
+          message: "Posición: dónde estás ($-85$ € es deber $85$). Variación: cuánto cambia algo (bajar $5$ plantas es $-5$).",
+        },
+        {
+          label: "¿Por qué importa distinguirlo?",
+          message: "Porque con el mismo número puedes estar hablando de cosas distintas.",
+        },
+      ],
       title: "Cuando los naturales no bastan",
       blocks: [
         {
@@ -41,6 +55,16 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "conjunto-z",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué es el opuesto?",
+          message: "Pon un espejo en el cero: el opuesto de un número es su reflejo.",
+        },
+        {
+          label: "¿Para qué los paréntesis?",
+          message: "Para no confundir el signo del número con el de la operación: $5 + (-2)$.",
+        },
+      ],
       title: "Los enteros: naturales, opuestos y el cero",
       blocks: [
         {
@@ -111,6 +135,16 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "valor-absoluto",
       type: "slide",
+      help: [
+        {
+          label: "Es una distancia",
+          message: "El valor absoluto es la distancia al cero, y una distancia nunca es negativa.",
+        },
+        {
+          label: "Dos lados, mismo número",
+          message: "Dos opuestos distan lo mismo del cero, por eso tienen el mismo valor absoluto.",
+        },
+      ],
       title: "Valor absoluto: la distancia al cero",
       blocks: [
         {
@@ -189,6 +223,20 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "comparar",
       type: "slide",
+      help: [
+        {
+          label: "Imagina la recta",
+          message: "En la recta numérica, lo que queda más a la derecha es mayor.",
+        },
+        {
+          label: "¿Por qué se invierte con negativos?",
+          message: "Estar más lejos del cero hacia la izquierda es ser más pequeño: $-20$ está más a la izquierda que $-8$.",
+        },
+        {
+          label: "Tres casos",
+          message: "Positivo mayor que $0$ mayor que negativo. Entre positivos, el mayor. Entre negativos, el que está más cerca del $0$.",
+        },
+      ],
       title: "Comparar: el de más a la derecha es el mayor",
       blocks: [
         {

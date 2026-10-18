@@ -10,6 +10,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "primos-compuestos",
       type: "slide",
+      help: [
+        {
+          label: "¿Cómo distingo primo de compuesto?",
+          message: "Busca si tiene algún divisor aparte del $1$ y de sí mismo. Con uno solo ya es compuesto.",
+        },
+        {
+          label: "¿Por qué el $1$ no es primo?",
+          message: "Porque tiene un solo divisor. Para ser primo hacen falta exactamente dos.",
+        },
+        {
+          label: "¿Y el $2$?",
+          message: "Es primo, y es el único par: cualquier otro par es divisible entre $2$.",
+        },
+      ],
       title: "Primos y compuestos",
       blocks: [
         {
@@ -42,6 +56,16 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "factores-idea",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ladrillos",
+          message: "Los primos son los ladrillos básicos: todo compuesto se construye con ellos, y la receta es única.",
+        },
+        {
+          label: "¿Por qué potencias?",
+          message: "Para abreviar los factores repetidos: $2 \\cdot 2 \\cdot 2 = 2^3$.",
+        },
+      ],
       title: "Todo compuesto se construye con primos",
       blocks: [
         {
@@ -64,6 +88,20 @@ export const factoresPrimosLesson: InteractiveLesson = {
     {
       id: "metodo-division",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el primo más pequeño?",
+          message: "Para ir en orden y no olvidar ningún factor. Los criterios de divisibilidad te dicen cuál probar.",
+        },
+        {
+          label: "¿Cuándo paro?",
+          message: "Cuando el cociente llega a $1$. Todos los primos usados forman la descomposición.",
+        },
+        {
+          label: "¿Por qué no dividir entre $4$?",
+          message: "Funciona, pero deja un $4$ sin descomponer: no es un factor primo.",
+        },
+      ],
       title: "Método: dividir entre el primo más pequeño",
       blocks: [
         {

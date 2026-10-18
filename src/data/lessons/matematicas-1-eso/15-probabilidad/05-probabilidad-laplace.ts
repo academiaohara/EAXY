@@ -9,6 +9,16 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     {
       id: "definicion",
       type: "concept",
+      help: [
+        {
+          label: "Probabilidad como destino",
+          message: "Si repites muchas veces, la frecuencia relativa se acerca a un número. Ese número es la probabilidad.",
+        },
+        {
+          label: "Siempre entre $0$ y $1$",
+          message: "$0$ si nunca ocurre y $1$ si siempre ocurre. Si te sale algo fuera de ese rango, hay un error.",
+        },
+      ],
       title: "Probabilidad de un suceso",
       content: [
         "La **probabilidad** de un suceso es el número al que tiende su **frecuencia relativa** cuando repetimos el experimento muchas veces.",
@@ -19,6 +29,20 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     {
       id: "laplace",
       type: "concept",
+      help: [
+        {
+          label: "¿Cuándo vale la regla?",
+          message: "Solo si todos los resultados elementales tienen la misma posibilidad. Con un dado trucado no se puede aplicar.",
+        },
+        {
+          label: "Cuenta primero",
+          message: "Lista el espacio muestral y marca los casos favorables. La probabilidad es la proporción de favorables.",
+        },
+        {
+          label: "Un ejemplo",
+          message: "En una bolsa con $3$ bolas rojas y $1$ azul, la probabilidad de sacar azul es $\\frac{1}{4}$.",
+        },
+      ],
       title: "Regla de Laplace",
       content: [
         "Si todos los sucesos elementales son **equiprobables** (misma «facilidad» de salir), usamos la **regla de Laplace**:",
@@ -40,6 +64,16 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     {
       id: "ejemplos-dado",
       type: "animated_solution",
+      help: [
+        {
+          label: "Cuenta favorables y posibles",
+          message: "Siempre hay seis casos posibles. Los favorables dependen del suceso.",
+        },
+        {
+          label: "Unión frente a intersección",
+          message: "«O» pide cumplir al menos una condición. «Y» pide cumplir las dos a la vez: son menos casos.",
+        },
+      ],
       title: "Probabilidades con un dado",
       content: ["$E = \\{1,2,3,4,5,6\\}$. Calculamos probabilidades con Laplace."],
       frames: [
@@ -60,6 +94,16 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     {
       id: "o-y",
       type: "concept",
+      help: [
+        {
+          label: "Un truco con los conjuntos",
+          message: "«O» une las dos listas de resultados, sin repetir ninguno. «Y» se queda solo con los que están en las dos.",
+        },
+        {
+          label: "Antes de contar",
+          message: "Escribe el espacio muestral completo y marca cada condición. Así no te saltas ni repites resultados.",
+        },
+      ],
       title: "«O» frente a «y»",
       content: [
         "**«O»** (o): basta con que se cumpla **una** de las condiciones → cuentas la **unión** de sucesos elementales (sin repetir).",

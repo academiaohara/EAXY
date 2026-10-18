@@ -9,6 +9,16 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "proceso-estadistico",
       type: "concept",
+      help: [
+        {
+          label: "Tres pasos",
+          message: "Recoger datos, organizarlos y sacar conclusiones.",
+        },
+        {
+          label: "¿Qué es una distribución?",
+          message: "La lista de todos los valores observados, sin resumir todavía.",
+        },
+      ],
       title: "Del dato a la tabla",
       content: [
         "El **proceso estadístico** recoge datos (encuesta, medición…) y los organiza para sacar conclusiones.",
@@ -19,6 +29,16 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "tipos-variable",
       type: "concept",
+      help: [
+        {
+          label: "Un test rápido",
+          message: "Si tiene sentido calcular la media, es cuantitativa. Si la respuesta es una etiqueta, cualitativa.",
+        },
+        {
+          label: "Ejemplos de cada una",
+          message: "Número de hermanos (cuantitativa) y estación del cumpleaños (cualitativa).",
+        },
+      ],
       title: "Cualitativa y cuantitativa",
       content: [
         "Variable **cuantitativa**: toma **valores numéricos** (número de hermanos: 0, 1, 2…).",
@@ -42,6 +62,20 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "tabla-frecuencias",
       type: "concept",
+      help: [
+        {
+          label: "Cómo se lee una tabla",
+          message: "Cada fila es un valor con cuántas veces apareció. Es contar y apuntar.",
+        },
+        {
+          label: "Absoluta frente a relativa",
+          message: "$f(3) = 6$ dice «seis veces». $fr(3) = \\frac{6}{N}$ dice «qué proporción del total».",
+        },
+        {
+          label: "Una comprobación",
+          message: "Todas las absolutas deben sumar $N$ y todas las relativas, $1$.",
+        },
+      ],
       title: "Tablas de frecuencias",
       content: [
         "En una tabla de frecuencias cada **valor** (o modalidad) va con su **frecuencia absoluta**: cuántas veces aparece.",
@@ -54,6 +88,16 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "ejemplo-hermanos",
       type: "animated_solution",
+      help: [
+        {
+          label: "Qué muestra la tabla",
+          message: "Cuántos alumnos tienen $0$, $1$, $2$… hermanos.",
+        },
+        {
+          label: "Comprobación",
+          message: "La suma de las frecuencias absolutas debe dar los $36$ alumnos.",
+        },
+      ],
       title: "Ejemplo: hermanos en una clase",
       frames: [
         {

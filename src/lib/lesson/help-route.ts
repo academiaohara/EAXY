@@ -74,7 +74,7 @@ function restateTopic(question: string): HelpTopic {
 }
 
 function stepHelp(step: LessonStep): HelpBranch[] | undefined {
-  return isQuizStep(step) && step.help?.length ? step.help : undefined;
+  return step.help?.length ? step.help : undefined;
 }
 
 function stepQuestion(step: LessonStep): string | undefined {

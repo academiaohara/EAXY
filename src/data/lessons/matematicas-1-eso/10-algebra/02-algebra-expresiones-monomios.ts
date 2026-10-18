@@ -9,6 +9,23 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
     {
       id: "expresiones",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué letras?",
+          message: "Cuando no conoces un número, la letra guarda su sitio: la operación queda «indicada» hasta que sepas el valor.",
+        },
+        {
+          label: "Traducir paso a paso",
+          message: "En «el doble de su siguiente», cada palabra añade una operación a la anterior.",
+          math: [
+            "\\text{número} \\to x \\quad \\text{siguiente} \\to x + 1 \\quad \\text{doble} \\to 2(x + 1)",
+          ],
+        },
+        {
+          label: "Comprueba con un número",
+          message: "Pon $x = 5$: el siguiente es $6$ y su doble $12$. Si tu expresión da $12$ con $x = 5$, está bien traducida.",
+        },
+      ],
       title: "Expresiones algebraicas",
       content: [
         "Surgen al traducir situaciones con datos desconocidos: $3x - 5$, $x^2 + 1$, $(a + 1) \\cdot b$, $\\frac{a + b}{a}$…",
@@ -19,6 +36,20 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
     {
       id: "monomios",
       type: "concept",
+      help: [
+        {
+          label: "Las dos piezas",
+          message: "El coeficiente dice cuántas veces; la parte literal, de qué. En $-4x$: $-4$ veces $x$.",
+        },
+        {
+          label: "¿Por qué no se escribe el $\\times$?",
+          message: "Para ahorrar: $5xy^3$ ya significa $5 \\cdot x \\cdot y \\cdot y \\cdot y$. Un número pegado a una letra es un producto.",
+        },
+        {
+          label: "¿Qué no es un monomio?",
+          message: "Una suma como $x + 1$ son dos términos distintos, no un solo monomio.",
+        },
+      ],
       title: "Monomios",
       content: [
         "Un **monomio** es producto de un **coeficiente** (número conocido) por una **parte literal** (letras). Ej.: $-4x$, $\\frac{2}{3}a^2b$.",
@@ -39,6 +70,20 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
     {
       id: "suma-monomios",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en frutas",
+          message: "$4x + 2x$ es como $4$ manzanas más $2$ manzanas: $6$ manzanas. $3a + 2b$ son manzanas y peras: no se mezclan.",
+        },
+        {
+          label: "¿Qué es «semejante»?",
+          message: "Misma letra con el mismo exponente. $x^2$ y $x$ no son semejantes: no se pueden sumar en uno solo.",
+        },
+        {
+          label: "Paréntesis con resta",
+          message: "En $7x - (2x + x)$ calcula primero lo de dentro y luego resta. Si lo de dentro es negativo, restarlo equivale a sumar.",
+        },
+      ],
       title: "Suma y resta de monomios",
       content: [
         "Solo se pueden sumar o restar monomios **semejantes** (misma parte literal): $4x + 2x = 6x$, $a^2 + a^2 = 2a^2$.",
@@ -49,6 +94,23 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
     {
       id: "multiplicacion",
       type: "concept",
+      help: [
+        {
+          label: "Multiplica por separado",
+          message: "Coeficientes con coeficientes y letras con letras.",
+          math: ["(2x)(4y) = (2 \\cdot 4)(x \\cdot y) = 8xy"],
+        },
+        {
+          label: "¿Por qué se suman los exponentes?",
+          message: "$x^3 \\cdot x^2$ es $x$ multiplicada cinco veces: tres más dos.",
+          math: ["x^3 \\cdot x^2 = (x \\cdot x \\cdot x)(x \\cdot x) = x^5"],
+        },
+        {
+          label: "La distributiva",
+          message: "El de fuera multiplica a **cada** término del paréntesis. No te dejes ninguno.",
+          math: ["5(2a + 3b) = 5 \\cdot 2a + 5 \\cdot 3b"],
+        },
+      ],
       title: "Multiplicar monomios",
       content: [
         "El producto de dos monomios es otro monomio: $(2x) \\cdot (4y) = 8xy$; $(-2a) \\cdot 5a = -10a^2$.",

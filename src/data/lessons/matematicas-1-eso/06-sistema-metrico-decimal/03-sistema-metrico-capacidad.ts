@@ -9,6 +9,23 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "litro",
       type: "concept",
+      help: [
+        {
+          label: "¿Cuánto es un litro?",
+          message: "Lo que cabe en un cubo de $10$ cm de arista: una botella grande de agua. De ahí viene la relación con el decímetro cúbico.",
+        },
+        {
+          label: "La escalera",
+          message: "De diez en diez: cada escalón hacia abajo (de $\\mathrm{l}$ a $\\mathrm{dl}$, de $\\mathrm{dl}$ a $\\mathrm{cl}$…) multiplica por $10$ y hacia arriba divide.",
+          math: [
+            "\\mathrm{kl} \\to \\mathrm{hl} \\to \\mathrm{dal} \\to \\mathrm{l} \\to \\mathrm{dl} \\to \\mathrm{cl} \\to \\mathrm{ml}",
+          ],
+        },
+        {
+          label: "Referencias reales",
+          message: "Una lata de refresco son unos $33$ cl, una cucharilla unos $5$ ml. Te ayudan a saber si un resultado es razonable.",
+        },
+      ],
       title: "El litro",
       content: [
         "La unidad de **capacidad** es el **litro**: volumen de un cubo de $1\\,\\mathrm{dm}$ de arista ($1\\,\\mathrm{l} = 1\\,\\mathrm{dm}^3$).",
@@ -19,6 +36,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "cambios",
       type: "concept",
+      help: [
+        {
+          label: "¿Cuántos saltos hay?",
+          message: "Cuenta los escalones entre las dos unidades. Ese número es cuántos lugares mueves la coma.",
+        },
+        {
+          label: "¿Hacia dónde muevo la coma?",
+          message: "Si pasas a una unidad **más pequeña**, el número crece: la coma va a la derecha. A una **más grande**, el número baja: la coma va a la izquierda.",
+        },
+        {
+          label: "Comprueba el sentido",
+          message: "Si $60\\,\\mathrm{cl}$ son menos de un litro, el resultado en litros tiene que ser menor que $1$.",
+        },
+      ],
       title: "Cambios de unidad",
       content: [
         "Usa la misma tabla que en longitud: coloca la coma y desplázala según los saltos entre unidades.",
@@ -28,6 +59,16 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "resuelto",
       type: "animated_solution",
+      help: [
+        {
+          label: "Forma compleja a litros",
+          message: "Convierte cada término a litros por separado y suma: $3\\,\\mathrm{kl} = 3000\\,\\mathrm{l}$, $2\\,\\mathrm{dal} = 20\\,\\mathrm{l}$, y así.",
+        },
+        {
+          label: "De litros a forma compleja",
+          message: "Reparte las cifras por columnas desde el hectolitro hasta el decilitro y lee cada una con su unidad.",
+        },
+      ],
       title: "Ejercicios resueltos del temario",
       content: ["Paso a paso: forma compleja ↔ litros."],
       frames: [

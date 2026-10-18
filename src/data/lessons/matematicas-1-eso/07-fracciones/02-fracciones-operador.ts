@@ -9,6 +9,20 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "regla",
       type: "concept",
+      help: [
+        {
+          label: "En dos tiempos",
+          message: "Primero repartes en $d$ partes iguales (divides) y luego coges $n$ de ellas (multiplicas).",
+        },
+        {
+          label: "Con bombones",
+          message: "$\\frac{2}{5}$ de $20$ bombones: $5$ filas de $4$, y coges $2$ filas.",
+        },
+        {
+          label: "¿Importa el orden?",
+          message: "Dividir y multiplicar da lo mismo en cualquier orden, pero dividir primero suele dar números más manejables.",
+        },
+      ],
       title: "Calcular una fracción de un número",
       content: [
         "Una fracción **opera** sobre una cantidad: la divide y toma partes.",
@@ -30,6 +44,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "mental",
       type: "concept",
+      help: [
+        {
+          label: "Parte de una parte conocida",
+          message: "Si sabes lo que vale una parte ($\\frac{1}{4}$ de $8$), las demás son múltiplos de ella.",
+        },
+        {
+          label: "Haz tu propio ejemplo",
+          message: "$\\frac{1}{5}$ de $10$ es $2$. ¿Cuánto es $\\frac{3}{5}$ de $10$?",
+        },
+      ],
       title: "Cálculo mental",
       content: [
         "Si conoces $\\frac{1}{4}$ de $8$ ($2$), entonces $\\frac{3}{4}$ de $8$ es $3 \\cdot 2 = 6$.",
@@ -75,6 +99,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "bombones",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué resto?",
+          message: "Lo que queda es el total menos lo consumido.",
+        },
+        {
+          label: "Otra forma",
+          message: "Si se ha comido $\\frac{1}{6}$, quedan $\\frac{5}{6}$. Puedes calcular directamente $\\frac{5}{6}$ de $24$.",
+        },
+      ],
       title: "Problema — caja de bombones",
       content: [
         "De una caja de $24$ bombones se ha consumido $\\frac{1}{6}$. ¿Cuántos se han comido? ¿Cuántos quedan?",
@@ -93,6 +127,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "clase",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué resto al final?",
+          message: "Los chicos son el resto del total: no hace falta calcular otra fracción.",
+        },
+        {
+          label: "Comprueba",
+          message: "Chicas más chicos tiene que dar $27$.",
+        },
+      ],
       title: "Problema — chicos y chicas",
       content: [
         "En una clase hay $27$ alumnos. Las chicas son $\\frac{4}{9}$ del total. ¿Cuántas chicas y cuántos chicos hay?",

@@ -13,6 +13,16 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "divisible",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en cajas",
+          message: "Divisible: llenas cajas completas sin que sobre nada. Con $24$ porciones y cajas de $6$, salen $4$ cajas exactas.",
+        },
+        {
+          label: "El resto como sobrante",
+          message: "El resto es lo que queda fuera de las cajas completas. Si es $0$, no sobra nada.",
+        },
+      ],
       title: "Divisible: la división exacta",
       blocks: [
         {
@@ -48,6 +58,20 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "multiplo-divisor",
       type: "slide",
+      help: [
+        {
+          label: "Un hecho, dos lecturas",
+          message: "$24 = 6 \\cdot 4$ habla de tres números: el $24$ es el grande y el $6$ y el $4$ son factores.",
+        },
+        {
+          label: "Cómo no confundirlos",
+          message: "El múltiplo «crece» y el divisor «cabe». Un divisor nunca es mayor que el número, y un múltiplo nunca es menor.",
+        },
+        {
+          label: "Dos divisores que siempre están",
+          message: "El $1$ y el propio número dividen a cualquier número.",
+        },
+      ],
       title: "Múltiplo y divisor: una misma igualdad",
       blocks: [
         {
@@ -130,6 +154,16 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "multiplos",
       type: "slide",
+      help: [
+        {
+          label: "Cuenta de $n$ en $n$",
+          message: "Los múltiplos de $7$ son contar de $7$ en $7$: $7$, $14$, $21$…",
+        },
+        {
+          label: "Infinitos frente a finitos",
+          message: "Siempre puedes seguir multiplicando, así que hay infinitos múltiplos. Un divisor no puede pasar del número, así que hay pocos.",
+        },
+      ],
       title: "Los múltiplos: la tabla del número, sin final",
       blocks: [
         {
@@ -165,6 +199,20 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "divisores",
       type: "slide",
+      help: [
+        {
+          label: "Por parejas",
+          message: "Cada divisor pequeño tiene su pareja grande: si el $2$ divide a $36$, la pareja es $36 : 2 = 18$.",
+        },
+        {
+          label: "¿Cuándo paro?",
+          message: "Cuando el divisor que pruebas alcanza a su pareja. Aquí el $6$ es pareja de sí mismo.",
+        },
+        {
+          label: "Llévalo en una tabla",
+          message: "Apunta los divisores pequeños a la izquierda y sus parejas a la derecha: no se te escapa ninguno.",
+        },
+      ],
       title: "Los divisores van por parejas",
       blocks: [
         {

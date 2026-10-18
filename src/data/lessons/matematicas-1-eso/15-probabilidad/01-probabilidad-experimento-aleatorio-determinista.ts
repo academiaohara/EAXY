@@ -9,6 +9,16 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Para qué sirve?",
+          message: "Para medir cuánta confianza podemos tener en que ocurra algo cuando no podemos estar seguros.",
+        },
+        {
+          label: "¿De dónde viene?",
+          message: "De los juegos de azar, pero se usa en seguros, medicina o fábricas para decidir con incertidumbre.",
+        },
+      ],
       title: "¿Qué es la probabilidad?",
       content: [
         "El estudio matemático de la **probabilidad** nació ligado a los juegos de azar, pero hoy se usa en seguros, control de calidad industrial, medicina y muchas otras áreas junto con la Estadística.",
@@ -18,6 +28,16 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     {
       id: "determinista",
       type: "concept",
+      help: [
+        {
+          label: "Un test mental",
+          message: "Si repites el experimento con las mismas condiciones, ¿saldrá siempre lo mismo? Entonces es determinista.",
+        },
+        {
+          label: "Frases típicas",
+          message: "«Es seguro que…»: la fórmula del determinista. Si no puedes decirla, no lo es.",
+        },
+      ],
       title: "Experimento determinista",
       content: [
         "Un **experimento determinista** es aquel cuyo resultado podemos **predecir** antes de realizarlo, una vez conocidas las condiciones.",
@@ -40,6 +60,16 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     {
       id: "aleatorio",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué es aleatorio?",
+          message: "Porque aunque lo repitas en las mismas condiciones, el resultado cambia y no se puede predecir.",
+        },
+        {
+          label: "Lenguaje de la incertidumbre",
+          message: "«Es más probable», «es poco probable»… son frases propias de lo aleatorio.",
+        },
+      ],
       title: "Experimento aleatorio",
       content: [
         "Un **experimento aleatorio** es aquel cuyo resultado **no se puede predecir**, aunque repitamos el experimento en las mismas condiciones.",
@@ -60,6 +90,16 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     {
       id: "ejemplo-clasificar",
       type: "animated_solution",
+      help: [
+        {
+          label: "El método",
+          message: "Pregúntate si puedes saber el resultado antes de hacerlo. Si no, es aleatorio.",
+        },
+        {
+          label: "Con la moneda",
+          message: "Sabes que saldrá cara o cruz, pero no cuál. Conocer las opciones no es lo mismo que predecir.",
+        },
+      ],
       title: "Clasificar experimentos",
       content: ["Decidimos si «lanzar una moneda» es determinista o aleatorio."],
       frames: [

@@ -9,6 +9,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "gramo",
       type: "concept",
+      help: [
+        {
+          label: "¿Cuánto es un gramo?",
+          message: "Muy poco: una pequeña gominola. Por eso en la vida diaria usamos más el kilogramo.",
+        },
+        {
+          label: "Peso y masa",
+          message: "En la escuela se usa «peso» para lo que mide la balanza; en física se llama masa.",
+        },
+        {
+          label: "Unidades grandes",
+          message: "El quintal son $100$ kg y la tonelada $1000$ kg.",
+        },
+      ],
       title: "El gramo y sus múltiplos",
       content: [
         "La unidad de **peso** (masa) es el **gramo**: peso del agua que cabe en $1\\,\\mathrm{cm}^3$.",
@@ -20,6 +34,16 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "cambios",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Cuántos saltos?",
+          message: "Cuenta los escalones entre las dos unidades: son los lugares que mueves la coma.",
+        },
+        {
+          label: "Unidades fuera de la escalera",
+          message: "La tonelada no está entre las siete de la escalera: $1\\,\\mathrm{t} = 1000\\,\\mathrm{kg}$, así que de kg a t divides entre $1000$.",
+        },
+      ],
       title: "Cambios de unidad (ejercicios resueltos)",
       content: ["Misma idea que longitud y capacidad: tabla y coma decimal."],
       frames: [
@@ -40,6 +64,16 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "animated_solution",
+      help: [
+        {
+          label: "Compleja a gramos",
+          message: "Convierte cada unidad a gramos y suma. Cada parte menor que el gramo se escribe como decimal.",
+        },
+        {
+          label: "Un problema con restas",
+          message: "Pasa los dos pesos a la misma unidad (gramos) antes de restar.",
+        },
+      ],
       title: "Forma compleja",
       content: ["Ejemplos del libro con varias unidades."],
       frames: [

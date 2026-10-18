@@ -9,6 +9,16 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "por-que-graficos",
       type: "concept",
+      help: [
+        {
+          label: "Antes de concluir",
+          message: "Lee títulos y ejes. Un gráfico puede engañar si no sabes qué mide cada eje.",
+        },
+        {
+          label: "¿Cómo elijo?",
+          message: "Según el tipo de variable y cuántos valores hay: pocos, barras; muchos agrupados en intervalos, histograma; reparto de un total, sectores.",
+        },
+      ],
       title: "Tablas y gráficos",
       content: [
         "Las **tablas** y **gráficos** son formas muy eficaces de comunicar datos: «entran por los ojos».",
@@ -19,6 +29,16 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "barras",
       type: "concept",
+      help: [
+        {
+          label: "Barras finas y separadas",
+          message: "Cada barra es un valor o categoría; hay huecos entre ellas.",
+        },
+        {
+          label: "¿Qué indica la altura?",
+          message: "La frecuencia: cuántas veces ocurre cada valor.",
+        },
+      ],
       title: "Diagrama de barras",
       content: [
         "Formado por **barras finas** (una por valor o categoría).",
@@ -29,6 +49,16 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "histograma",
       type: "concept",
+      help: [
+        {
+          label: "Barras pegadas",
+          message: "No hay huecos porque los intervalos son continuos: $155$–$160$, $160$–$165$…",
+        },
+        {
+          label: "¿Cuándo sirve?",
+          message: "Cuando hay muchos valores numéricos que conviene agrupar en intervalos.",
+        },
+      ],
       title: "Histograma",
       content: [
         "Rectángulos **anchos adosados** (sin huecos entre clases).",
@@ -39,6 +69,20 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "poligono-sectores",
       type: "concept",
+      help: [
+        {
+          label: "Polígono de frecuencias",
+          message: "Une los puntos medios de las barras del histograma: muestra la forma de la distribución.",
+        },
+        {
+          label: "Diagrama de sectores",
+          message: "Cada valor ocupa un trozo del círculo, proporcional a su frecuencia.",
+        },
+        {
+          label: "¿Para qué sirve?",
+          message: "Para ver qué parte del total es cada valor.",
+        },
+      ],
       title: "Polígono y diagrama de sectores",
       content: [
         "**Polígono de frecuencias**: une los extremos superiores de barras o los **puntos medios** de clases de un histograma. Solo para variables cuantitativas.",
@@ -60,6 +104,20 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "sectores-ejemplo",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué $9°$ por persona?",
+          message: "El círculo tiene $360°$ y hay $40$ personas: $360 : 40 = 9$.",
+        },
+        {
+          label: "Del ángulo a la frecuencia",
+          message: "Si un sector mide $180°$, son $180 : 9 = 20$ personas.",
+        },
+        {
+          label: "Comprobación",
+          message: "Todos los ángulos juntos deben sumar $360°$.",
+        },
+      ],
       title: "Ángulos en un diagrama de sectores",
       content: ["Con 40 entrevistados repartimos $360°$ entre 40: a cada uno le corresponden $9°$."],
       frames: [

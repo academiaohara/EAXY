@@ -9,6 +9,16 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "idea",
       type: "concept",
+      help: [
+        {
+          label: "Contar cuadrados",
+          message: "Medir una superficie es ver cuántos cuadrados de lado fijo caben. Por eso la unidad es un cuadrado.",
+        },
+        {
+          label: "¿Por qué $100$ y no $10$?",
+          message: "Un metro cuadrado tiene $10$ filas de $10$ decímetros cuadrados: $10 \\cdot 10 = 100$.",
+        },
+      ],
       title: "Unidades cuadradas",
       content: [
         "Medir una **superficie** es contar cuántos **cuadrados** de lado fijo ($1\\,\\mathrm{u.c.}$) caben en ella.",
@@ -19,6 +29,16 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "escala",
       type: "concept",
+      help: [
+        {
+          label: "Dos escaleras",
+          message: "En longitud cada escalón es $10$. En superficie, $100$: el cuadrado de $10$.",
+        },
+        {
+          label: "Unidades agrarias",
+          message: "La hectárea ($\\mathrm{hm}^2$), el área ($\\mathrm{dam}^2$) y la centiárea ($\\mathrm{m}^2$) tienen nombres propios para medir terrenos.",
+        },
+      ],
       title: "Múltiplos y submúltiplos",
       content: [
         "$\\mathrm{km}^2$, $\\mathrm{hm}^2$, $\\mathrm{dam}^2$, $\\mathrm{m}^2$, $\\mathrm{dm}^2$, $\\mathrm{cm}^2$, $\\mathrm{mm}^2$.",
@@ -29,6 +49,16 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "cambio",
       type: "animated_solution",
+      help: [
+        {
+          label: "Dos lugares por salto",
+          message: "Cada escalón mueve la coma dos lugares. Dos escalones, cuatro lugares.",
+        },
+        {
+          label: "Comprueba el sentido",
+          message: "Si pasas de $\\mathrm{m}^2$ a $\\mathrm{hm}^2$ (más grande), el número tiene que bajar mucho.",
+        },
+      ],
       title: "Cambios de unidad (de 100 en 100)",
       content: [
         "En la tabla, **cada salto desplaza la coma dos lugares** (dos saltos = cuatro lugares si vas de m² a hm²).",
@@ -55,6 +85,16 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "concept",
+      help: [
+        {
+          label: "Mismo método, otro factor",
+          message: "Convierte cada parte a la unidad pedida y suma, pero entre columnas se multiplica por $100$.",
+        },
+        {
+          label: "Un ejemplo pequeño",
+          message: "$2\\,\\mathrm{m}^2\\ 30\\,\\mathrm{dm}^2$ son $200\\,\\mathrm{dm}^2 + 30\\,\\mathrm{dm}^2 = 230\\,\\mathrm{dm}^2$.",
+        },
+      ],
       title: "Forma compleja en superficie",
       content: [
         "Puedes expresar $587{,}24\\,\\mathrm{hm}^2$ en km², hm², dam²… igual que con longitud, pero recuerda el factor **100** entre columnas.",

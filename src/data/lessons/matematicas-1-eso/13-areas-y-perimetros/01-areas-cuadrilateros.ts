@@ -9,6 +9,21 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "contexto",
       type: "concept",
+      help: [
+        {
+          label: "Dos preguntas distintas",
+          message: "Perímetro: ¿cuánta valla necesito? Área: ¿cuánto césped cubre?",
+        },
+        {
+          label: "Mismo perímetro, distinta área",
+          message: "Un rectángulo de $5 \\times 1$ y un cuadrado de $3 \\times 3$ tienen el mismo perímetro y áreas muy distintas.",
+          math: ["5 \\times 1:\\ P = 12,\\ A = 5 \\qquad 3 \\times 3:\\ P = 12,\\ A = 9"],
+        },
+        {
+          label: "Directa o indirecta",
+          message: "Medir con regla es medición directa. Calcular con una fórmula a partir de otras medidas es indirecta.",
+        },
+      ],
       title: "Área y perímetro",
       content: [
         "El **área** mide la superficie que ocupa una figura plana; el **perímetro** es la longitud de su contorno.",
@@ -19,6 +34,20 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "rectangulo",
       type: "concept",
+      help: [
+        {
+          label: "Cuenta cuadraditos",
+          message: "El área de un rectángulo es cuántos cuadraditos de $1$ caben: filas por columnas.",
+        },
+        {
+          label: "El cuadrado como caso particular",
+          message: "Es un rectángulo con base y altura iguales: $l \\cdot l = l^2$.",
+        },
+        {
+          label: "De área a lado",
+          message: "Si conoces el área y buscas el lado, deshaces el cuadrado con la raíz.",
+        },
+      ],
       title: "Rectángulo y cuadrado",
       content: [
         "Rectángulo de base $a$ y altura $b$: $A = a \\cdot b$ y $P = 2a + 2b$.",
@@ -39,6 +68,20 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "paralelogramo",
       type: "concept",
+      help: [
+        {
+          label: "Corta y pega",
+          message: "Corta un triángulo de un lado y pégalo en el otro: el paralelogramo se convierte en un rectángulo con la misma base y altura.",
+        },
+        {
+          label: "¿Por qué no basta el perímetro?",
+          message: "Dos paralelogramos con los mismos lados pueden estar más o menos inclinados, y tener alturas distintas.",
+        },
+        {
+          label: "El rombo con diagonales",
+          message: "Las dos diagonales lo parten en cuatro triángulos iguales. El rombo es la mitad del rectángulo $D \\times d$ que lo envuelve.",
+        },
+      ],
       title: "Paralelogramo y rombo",
       content: [
         "Todo paralelogramo se puede transformar en un rectángulo de base $b$ y altura $a$ (distancia entre lados opuestos). Entonces $A = a \\cdot b$.",
@@ -49,6 +92,16 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "trapecio",
       type: "concept",
+      help: [
+        {
+          label: "Duplica el trapecio",
+          message: "Pega una copia girada junto al original: sale un paralelogramo de base $b + b'$. El trapecio es su mitad.",
+        },
+        {
+          label: "Cuidado con la altura",
+          message: "La altura es la distancia perpendicular entre las bases, no el lado inclinado.",
+        },
+      ],
       title: "Trapecio",
       content: [
         "En un trapecio, los lados paralelos son las **bases** $b$ (mayor) y $b'$ (menor); $a$ es la **altura** (distancia entre bases).",
@@ -59,6 +112,16 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "ejemplo-habitacion",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué dos cuentas?",
+          message: "El perímetro sirve para el zócalo y el área para el suelo. Son preguntas distintas con unidades distintas.",
+        },
+        {
+          label: "Unidades",
+          message: "El perímetro se mide en metros; el área, en metros cuadrados.",
+        },
+      ],
       title: "Ejemplo — habitación rectangular",
       content: ["Calculamos perímetro y área con las dimensiones del temario."],
       frames: [

@@ -9,6 +9,20 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "metodos",
       type: "concept",
+      help: [
+        {
+          label: "Una misma idea",
+          message: "Los tres métodos eliminan una incógnita para quedarte con una ecuación fácil. Cambia la forma de eliminarla.",
+        },
+        {
+          label: "¿Cuál elijo?",
+          message: "Sustitución si una incógnita tiene coeficiente $1$ o $-1$. Reducción si los coeficientes se pueden igualar fácilmente.",
+        },
+        {
+          label: "Igualación",
+          message: "Despeja la misma incógnita en las dos ecuaciones y iguala los resultados.",
+        },
+      ],
       title: "Tres métodos algebraicos",
       content: [
         "Cuando la solución gráfica no es evidente, usamos métodos algebraicos:",
@@ -48,6 +62,20 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "sustitucion-animada",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué despejo $x$ en la segunda?",
+          message: "Porque tiene coeficiente $1$: despejar no genera fracciones.",
+        },
+        {
+          label: "Cuidado al sustituir",
+          message: "El despeje es una expresión entera: ponla entre paréntesis para que multiplique a todo.",
+        },
+        {
+          label: "Comprobación",
+          message: "Sustituye en las dos ecuaciones originales. Si una falla, hay un error.",
+        },
+      ],
       title: "Ejemplo resuelto — Método de sustitución",
       content: [
         "Resolvemos el sistema del libro de texto. Pulsa **Ver siguiente paso** para seguir el razonamiento.",
@@ -83,6 +111,16 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "reduccion-concepto",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué signo opuesto?",
+          message: "Para que al sumar se cancelen y quede una sola incógnita.",
+        },
+        {
+          label: "Preparar las ecuaciones",
+          message: "Multiplica una (o las dos) por un número elegido para igualar los coeficientes de una incógnita.",
+        },
+      ],
       title: "Método de reducción (idea clave)",
       content: [
         "Multiplicamos una o ambas ecuaciones para que una incógnita tenga el mismo coeficiente con signo opuesto.",
@@ -102,6 +140,16 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "reduccion-animada",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué multiplico por $-3$?",
+          message: "Para que el $-3x$ de la segunda cancele el $3x$ de la primera al sumarlas.",
+        },
+        {
+          label: "Después de sumar",
+          message: "Queda una sola incógnita: se despeja y se sustituye en una ecuación original.",
+        },
+      ],
       title: "Ejemplo — Método de reducción",
       math: ["\\begin{cases} 3x - 5y = 1 \\\\ x + 2y = 15 \\end{cases}"],
       frames: [
@@ -122,6 +170,16 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "grafica-comprobacion",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Dos caminos al mismo punto",
+          message: "El método algebraico da un par de números. La gráfica lo muestra como el punto donde se cruzan las rectas.",
+        },
+        {
+          label: "Úsalo como comprobación",
+          message: "Si tu solución no coincide con el cruce, revisa el cálculo.",
+        },
+      ],
       title: "Comprobación gráfica",
       tool: "system-graph",
       content: [

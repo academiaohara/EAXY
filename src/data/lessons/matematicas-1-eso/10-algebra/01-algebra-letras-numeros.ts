@@ -9,6 +9,16 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
     {
       id: "historia",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué tiene que ver Egipto?",
+          message: "Hace unos $3600$ años ya se planteaban problemas con una cantidad desconocida («el montón»). Tu $x$ es ese mismo «montón» con otro nombre.",
+        },
+        {
+          label: "¿Por qué letras y no números?",
+          message: "Con una letra resuelves de golpe todos los casos parecidos: un método que sirve para cualquier montón.",
+        },
+      ],
       title: "Del montón egipcio al álgebra",
       content: [
         "Problemas como «el montón más un séptimo del montón es $24$» aparecen en papiros egipcios (hacia $1650$ a.C.). La incógnita era «el montón»; hoy escribimos $x + \\frac{x}{7} = 24$.",
@@ -19,6 +29,21 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
     {
       id: "generalizar",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en una máquina",
+          message: "Entra un número y sale otro siguiendo siempre la misma regla. La expresión algebraica es esa regla escrita.",
+          math: ["2 \\mapsto 2 \\cdot 2 + 3 = 7"],
+        },
+        {
+          label: "Comprueba la regla",
+          message: "Prueba la fórmula con otro número de la tabla, como $5 \\mapsto 13$. Si la reproduce, la regla es correcta.",
+        },
+        {
+          label: "¿Para qué sirve $n$?",
+          message: "Para decir «cualquier número»: así afirmas algo que vale para todos a la vez.",
+        },
+      ],
       title: "Generalizar relaciones",
       content: [
         "Una máquina asocia a cada número su **doble más tres**: $2 \\mapsto 7$, $5 \\mapsto 13$…",
@@ -42,6 +67,20 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
     {
       id: "codificar",
       type: "concept",
+      help: [
+        {
+          label: "Del texto a la ecuación",
+          message: "Cada frase es una pieza: «dentro de $15$ años» es $x + 15$, «el año pasado» es $x - 1$ y «es el doble» es $= 2(\\cdots)$.",
+        },
+        {
+          label: "¿Dónde se suele fallar?",
+          message: "En el paréntesis: el doble de $x - 1$ es $2(x - 1)$, no $2x - 1$.",
+        },
+        {
+          label: "Comprueba el resultado",
+          message: "Con $17$ años: dentro de $15$ tendrá $32$; el año pasado tenía $16$ y su doble es $32$. Encaja.",
+        },
+      ],
       title: "Codificar un problema",
       content: [
         "Cuando las letras representan números, las tratamos como tales: sumamos, restamos y usamos propiedades.",

@@ -9,6 +9,20 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "concepto",
       type: "concept",
+      help: [
+        {
+          label: "Imagina una tienda de campaña",
+          message: "Una base en el suelo y lonas triangulares que suben hasta un único punto.",
+        },
+        {
+          label: "Cómo se nombran",
+          message: "Por el polígono de la base: base de cinco lados, pirámide pentagonal.",
+        },
+        {
+          label: "El desarrollo",
+          message: "Piensa en abrir la pirámide sobre una mesa: la base en el centro y los triángulos alrededor, como pétalos.",
+        },
+      ],
       title: "Concepto de pirámide",
       content: [
         "Una **pirámide** es un poliedro con **una base** (cualquier polígono) y caras laterales que son **triángulos** con un vértice común, la **cúspide**.",
@@ -30,6 +44,20 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "conteo",
       type: "concept",
+      help: [
+        {
+          label: "¿De dónde salen los números?",
+          message: "Caras: la base más un triángulo por cada lado. Vértices: los de la base más la cúspide. Aristas: las de la base más las que suben.",
+        },
+        {
+          label: "Pruébalo con la triangular",
+          message: "Base de $3$ lados: $4$ caras, $4$ vértices y $6$ aristas. ¿Coinciden con las fórmulas con $n = 3$?",
+        },
+        {
+          label: "Comprueba con Euler",
+          message: "Con las fórmulas del cuadro, $C + V = (n + 1) + (n + 1) = 2n + 2$, que es $A + 2$.",
+        },
+      ],
       title: "Caras, vértices y aristas",
       content: [
         "Si la base es un polígono de $n$ lados: **caras** $= n + 1$ (base + $n$ triángulos).",

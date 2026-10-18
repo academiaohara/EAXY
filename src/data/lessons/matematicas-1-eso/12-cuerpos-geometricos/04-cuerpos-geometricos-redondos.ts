@@ -9,6 +9,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Curvo frente a plano",
+          message: "Un cuerpo redondo tiene al menos una superficie curva: una lata, un cucurucho, una pelota.",
+        },
+        {
+          label: "Cuerpo de revolución",
+          message: "Se genera girando una figura plana alrededor de una recta, el eje.",
+        },
+      ],
       title: "Cuerpos redondos",
       content: [
         "Los **cuerpos redondos** tienen superficies **curvas** (a diferencia de los poliedros).",
@@ -19,6 +29,20 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "cilindro-cono",
       type: "concept",
+      help: [
+        {
+          label: "Dos objetos de referencia",
+          message: "Cilindro: una lata. Cono: un cucurucho de helado.",
+        },
+        {
+          label: "¿Cómo se generan?",
+          message: "Un rectángulo girando sobre un lado forma un cilindro. Un triángulo rectángulo girando sobre un cateto forma un cono.",
+        },
+        {
+          label: "Los desarrollos",
+          message: "Cilindro: dos círculos y un rectángulo. Cono: un círculo y un sector circular.",
+        },
+      ],
       title: "Cilindro y cono",
       content: [
         "**Cilindro**: $2$ bases circulares iguales y paralelas; superficie lateral curva. Se obtiene girando un **rectángulo** sobre un eje.",
@@ -39,6 +63,20 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "esfera",
       type: "concept",
+      help: [
+        {
+          label: "Una sola superficie",
+          message: "Piensa en una pelota: no tiene caras planas ni aristas.",
+        },
+        {
+          label: "¿Por qué no tiene desarrollo?",
+          message: "Una superficie esférica no se puede aplanar sin estirarla. Por eso los mapas del mundo deforman.",
+        },
+        {
+          label: "La circunferencia máxima",
+          message: "Es el corte por el centro, como partir una naranja por la mitad: la mayor circunferencia que cabe en la esfera.",
+        },
+      ],
       title: "Esfera",
       content: [
         "La **esfera** es un cuerpo redondo con una única **superficie curva**; no tiene caras planas ni aristas.",

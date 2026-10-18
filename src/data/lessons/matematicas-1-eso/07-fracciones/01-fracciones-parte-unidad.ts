@@ -9,6 +9,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Tres miradas a una fracción",
+          message: "$\\frac{3}{4}$ puede ser «tres de cuatro partes», «los tres cuartos de algo» o «$3$ dividido entre $4$».",
+        },
+        {
+          label: "¿Qué tiene que ver Egipto?",
+          message: "Solo usaban fracciones con numerador $1$. Repartir $4$ panes entre $7$ personas les obligaba a sumar varias de ellas.",
+        },
+      ],
       title: "Tres formas de ver una fracción",
       content: [
         "Una fracción puede entenderse como **parte de la unidad**, como **operador** (transforma una cantidad) o como **división indicada** ($\\frac{a}{b} = a : b$).",
@@ -39,6 +49,16 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "partes-iguales",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué tienen que ser iguales?",
+          message: "Si los trozos son distintos, «dos de nueve» ya no describe una cantidad concreta.",
+        },
+        {
+          label: "Cómo se lee",
+          message: "En $\\frac{2}{9}$ el $9$ dice en cuántas partes iguales se divide la unidad y el $2$ cuántas coges.",
+        },
+      ],
       title: "Parte de la unidad",
       layout: "visual-first",
       content: [
@@ -129,6 +149,20 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
     {
       id: "comparar-unidad",
       type: "concept",
+      help: [
+        {
+          label: "Una regla sencilla",
+          message: "Compara los dos números: numerador menor que denominador, la fracción vale menos de $1$.",
+        },
+        {
+          label: "Si es mayor que $1$",
+          message: "$\\frac{7}{5}$ son $5$ quintos (una unidad entera) más $2$ quintos de otra.",
+        },
+        {
+          label: "¿Y si son iguales?",
+          message: "Coges todas las partes: es la unidad entera.",
+        },
+      ],
       title: "Comparar con la unidad",
       content: [
         "Si el **numerador es menor** que el denominador, la fracción es **menor que $1$** (por ejemplo $\\frac{2}{5}$).",

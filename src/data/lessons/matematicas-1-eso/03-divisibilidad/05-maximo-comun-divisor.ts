@@ -10,6 +10,16 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcd-idea",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué «lo más largos posible»?",
+          message: "Porque cualquier divisor común sirve, pero queremos el mayor.",
+        },
+        {
+          label: "¿Cómo lo veo?",
+          message: "Los divisores comunes de $24$ y $36$ son $1$, $2$, $3$, $4$, $6$ y $12$. El mayor es $12$.",
+        },
+      ],
       title: "Trozos iguales y lo más largos posible",
       blocks: [
         {
@@ -34,6 +44,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcd-factores",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el menor exponente?",
+          message: "Porque un divisor común solo puede usar un primo tantas veces como aparece en **todos** los números.",
+        },
+        {
+          label: "¿Por qué solo los comunes?",
+          message: "Un primo que falta en un número no puede dividir a ese número.",
+        },
+        {
+          label: "Primos entre sí",
+          message: "Si no hay ningún primo común, el m.c.d. es $1$.",
+        },
+      ],
       title: "Con números grandes: factores primos",
       blocks: [
         {
@@ -63,6 +87,20 @@ export const maximoComunDivisorLesson: InteractiveLesson = {
     {
       id: "mcm-o-mcd",
       type: "slide",
+      help: [
+        {
+          label: "Una pregunta clave",
+          message: "¿Quieres saber **cuándo** coinciden (m.c.m.) o **cuánto mide** cada parte (m.c.d.)?",
+        },
+        {
+          label: "Palabras que delatan",
+          message: "«Coincidir», «volver a salir juntas»: m.c.m. «Repartir», «cortar», «lo más grandes posible»: m.c.d.",
+        },
+        {
+          label: "Comprobación rápida",
+          message: "El m.c.d. nunca supera al menor de los números y el m.c.m. nunca es menor que el mayor.",
+        },
+      ],
       title: "¿m.c.m. o m.c.d.?",
       blocks: [
         {

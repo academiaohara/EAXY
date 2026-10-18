@@ -10,6 +10,20 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
     {
       id: "mcm-idea",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué «mínimo»?",
+          message: "Hay infinitos múltiplos comunes, pero la primera coincidencia es el menor de ellos.",
+        },
+        {
+          label: "¿Cómo lo veo?",
+          message: "Escribe los múltiplos de los dos números hasta que encuentres el primero que se repite.",
+        },
+        {
+          label: "¿Y los demás múltiplos comunes?",
+          message: "Todos son múltiplos del m.c.m.",
+        },
+      ],
       title: "Cuándo vuelven a coincidir",
       blocks: [
         {
@@ -38,6 +52,16 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
     {
       id: "mcm-factores",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué el mayor exponente?",
+          message: "El m.c.m. tiene que contener a cada número: necesita cada primo tantas veces como el que más lo tenga.",
+        },
+        {
+          label: "¿Por qué también los no comunes?",
+          message: "Si dejaras uno fuera, no sería múltiplo del número que lo tiene.",
+        },
+      ],
       title: "Con números grandes: factores primos",
       blocks: [
         {
@@ -67,6 +91,20 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
     {
       id: "mcm-atajos",
       type: "slide",
+      help: [
+        {
+          label: "Uno es múltiplo del otro",
+          message: "Si el mayor ya contiene al menor, el m.c.m. es el mayor. No hay que calcular nada.",
+        },
+        {
+          label: "Sin primos comunes",
+          message: "Si no comparten ningún primo, el menor múltiplo común es su producto.",
+        },
+        {
+          label: "Comprobación",
+          message: "El m.c.m. nunca puede ser menor que el mayor de los números.",
+        },
+      ],
       title: "Dos casos que no necesitan cuentas",
       blocks: [
         {

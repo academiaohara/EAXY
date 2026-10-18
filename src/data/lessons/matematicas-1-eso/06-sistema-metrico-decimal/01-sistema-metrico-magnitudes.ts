@@ -9,6 +9,16 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "magnitudes",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué es medir?",
+          message: "Comparar una cantidad con otra fija que todos aceptamos, la unidad.",
+        },
+        {
+          label: "Un ejemplo que falla",
+          message: "Si dices que tu jarra mide «5 vasos» sin decir qué vaso, nadie puede comparar contigo.",
+        },
+      ],
       title: "Qué es medir una magnitud",
       content: [
         "Para describir objetos usamos **magnitudes** medibles: longitud, peso, capacidad, superficie, temperatura…",
@@ -30,6 +40,16 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "historia",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué hacía falta?",
+          message: "Cada región tenía sus medidas. Comerciar o construir juntos se complicaba mucho.",
+        },
+        {
+          label: "¿Por qué decimal?",
+          message: "Porque cada unidad se relaciona con la siguiente multiplicando o dividiendo por $10$, como en nuestro sistema de numeración.",
+        },
+      ],
       title: "Por qué existe el S.M.D.",
       content: [
         "Antes cada región usaba unidades distintas (codos, fanegas, yugadas…). El **Sistema Métrico Decimal** se propuso en **1792** en Francia.",
@@ -40,6 +60,16 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "prefijos",
       type: "concept",
+      help: [
+        {
+          label: "Los prefijos",
+          message: "Kilo, hecto y deca multiplican por $1000$, $100$ y $10$. Deci, centi y mili dividen entre $10$, $100$ y $1000$.",
+        },
+        {
+          label: "Valen para todo",
+          message: "El mismo prefijo significa lo mismo con metros, gramos o litros: un kilómetro, un kilogramo, un kilolitro.",
+        },
+      ],
       title: "Múltiplos y submúltiplos",
       content: [
         "Cada unidad tiene **múltiplos** (kilo, hecto, deca) y **submúltiplos** (deci, centi, mili).",

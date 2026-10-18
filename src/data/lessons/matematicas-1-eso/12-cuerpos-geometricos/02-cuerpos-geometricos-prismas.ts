@@ -9,6 +9,20 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "concepto",
       type: "concept",
+      help: [
+        {
+          label: "Imagina una caja de zapatos",
+          message: "Dos bases iguales (tapa y fondo) y paredes que son paralelogramos.",
+        },
+        {
+          label: "Cómo se nombran",
+          message: "Por la forma de la base: triangular, cuadrangular, pentagonal…",
+        },
+        {
+          label: "El desarrollo",
+          message: "Las dos bases más un «cinturón» de rectángulos o paralelogramos unidos.",
+        },
+      ],
       title: "Concepto de prisma",
       content: [
         "Un **prisma** es un poliedro con **dos bases** paralelas e **iguales** y caras laterales que son **paralelogramos**.",
@@ -30,6 +44,17 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
     {
       id: "tipos",
       type: "concept",
+      help: [
+        {
+          label: "De dónde salen las fórmulas",
+          message: "Caras: $n$ laterales más $2$ bases. Vértices: $n$ arriba y $n$ abajo. Aristas: $n$ arriba, $n$ abajo y $n$ verticales.",
+        },
+        {
+          label: "Compruébalo con el cubo",
+          message: "Con $n = 4$: $6$ caras, $8$ vértices y $12$ aristas.",
+          math: ["n + 2 = 6 \\qquad 2n = 8 \\qquad 3n = 12"],
+        },
+      ],
       title: "Tipos de prismas",
       content: [
         "Si la base es un **triángulo**, es un **prisma triangular** ($5$ caras: $2$ triángulos + $3$ paralelogramos).",

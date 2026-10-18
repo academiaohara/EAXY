@@ -10,6 +10,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "subdivision",
       type: "slide",
+      help: [
+        {
+          label: "Mira lo que ya usas",
+          message: "Los céntimos son centésimas de euro y los gramos, milésimas de kilo. Los decimales siempre estuvieron en tu bolsillo.",
+        },
+        {
+          label: "¿Por qué diez?",
+          message: "Nuestro sistema agrupa de diez en diez: cada orden vale diez veces el siguiente.",
+        },
+      ],
       title: "Décimas, centésimas, milésimas: dividir en diez, y otra vez en diez",
       blocks: [
         {
@@ -38,6 +48,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "lectura",
       type: "slide",
+      help: [
+        {
+          label: "Un truco de lectura",
+          message: "Lee la parte decimal como si fuera un número entero y añade el nombre del último orden.",
+        },
+        {
+          label: "Ceros que importan y ceros que no",
+          message: "Un cero **a la derecha** de la última cifra no cambia nada. Un cero **entre** la coma y otra cifra sí: $0{,}05$ no es $0{,}5$.",
+        },
+      ],
       title: "Leer un decimal: la última cifra da nombre a la parte decimal",
       blocks: [
         {
@@ -112,6 +132,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "comparar",
       type: "slide",
+      help: [
+        {
+          label: "Igualar con ceros",
+          message: "Escribe los dos números con las mismas cifras decimales. Después compáralos como si fueran enteros.",
+        },
+        {
+          label: "Más cifras no es más valor",
+          message: "$5{,}04$ es más largo que $5{,}4$ pero vale menos: $5{,}40 > 5{,}04$.",
+        },
+      ],
       title: "Comparar decimales: primero la parte entera, luego cifra a cifra",
       blocks: [
         {
@@ -186,6 +216,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "entre-dos",
       type: "slide",
+      help: [
+        {
+          label: "Naturales frente a decimales",
+          message: "Entre dos naturales consecutivos no hay nada. Entre dos decimales siempre hay más.",
+        },
+        {
+          label: "Cómo encontrar uno",
+          message: "Añade una cifra decimal más a los dos números: $5{,}2 = 5{,}20$ y $5{,}3 = 5{,}30$. Ya caben $5{,}21$, $5{,}22$…",
+        },
+      ],
       title: "Entre dos decimales siempre hay otro",
       blocks: [
         {
@@ -263,6 +303,20 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "redondeo",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué cifra miro?",
+          message: "La primera que se suprime. Es la que decide si la última que conservas sube o no.",
+        },
+        {
+          label: "¿Por qué no se redondea en cadena?",
+          message: "Cada redondeo pierde información. Siempre desde el número original.",
+        },
+        {
+          label: "Con dinero",
+          message: "Se redondea a centésimas: dos cifras decimales.",
+        },
+      ],
       title: "Aproximar por redondeo: el extremo más cercano",
       blocks: [
         {

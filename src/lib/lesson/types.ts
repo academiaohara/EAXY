@@ -130,6 +130,8 @@ export type LessonStepBase = {
   warning?: string;
   /** Ayudas visuales animadas que acompañan a la teoría. */
   visuals?: LessonVisual[];
+  /** Árbol de ayuda propio del paso; sustituye a repetir el enunciado y la teoría. */
+  help?: HelpBranch[];
 };
 
 export type VisualTone = "cobalt" | "emerald" | "amber" | "violet" | "rose";
@@ -378,8 +380,6 @@ type PracticeFields = {
   question: string;
   hint?: string;
   explanation?: string;
-  /** Árbol de ayuda propio del ejercicio; sustituye a repetir el enunciado y la teoría. */
-  help?: HelpBranch[];
 };
 
 export type FillInBlankStep = LessonStepBase &

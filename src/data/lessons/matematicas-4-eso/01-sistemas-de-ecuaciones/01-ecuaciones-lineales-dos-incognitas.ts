@@ -9,6 +9,20 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué «lineal»?",
+          message: "Porque sus soluciones, dibujadas, forman una recta. No hay potencias ni productos de incógnitas.",
+        },
+        {
+          label: "¿Cómo compruebo una solución?",
+          message: "Sustituye $x$ e $y$ en la ecuación y mira si sale $c$.",
+        },
+        {
+          label: "¿Por qué infinitas?",
+          message: "Porque eliges $x$ libremente y $y$ se ajusta para que la igualdad se cumpla.",
+        },
+      ],
       title: "¿Qué es una ecuación lineal con dos incógnitas?",
       content: [
         "Una ecuación lineal con dos incógnitas se puede escribir como $ax + by = c$, donde $a$, $b$ y $c$ son números reales.",
@@ -47,6 +61,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "grafica-recta",
       type: "interactive_tool",
+      help: [
+        {
+          label: "¿Por qué una recta?",
+          message: "Cada solución es un punto, y juntas se alinean porque la relación entre $x$ e $y$ es siempre la misma.",
+        },
+        {
+          label: "Dos puntos bastan",
+          message: "Dos puntos determinan una recta: calcula dos soluciones, márcalas y únelas.",
+        },
+      ],
       title: "Representación gráfica",
       tool: "system-graph",
       content: [
@@ -79,6 +103,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "rectas-especiales",
       type: "concept",
+      help: [
+        {
+          label: "Horizontal frente a vertical",
+          message: "En $y = k$ la altura es siempre $k$ aunque cambie $x$: recta horizontal. En $x = k$ el lugar horizontal es siempre $k$: recta vertical.",
+        },
+        {
+          label: "Algunos puntos",
+          message: "$y = 3$ pasa por $(0, 3)$ y $(5, 3)$. $x = 2$ pasa por $(2, 0)$ y $(2, 5)$.",
+        },
+      ],
       title: "Rectas horizontales y verticales",
       content: [
         "Las ecuaciones $y = k$ se representan con rectas **horizontales**.",
@@ -123,6 +157,16 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "grafica-especiales",
       type: "interactive_tool",
+      help: [
+        {
+          label: "Qué observar",
+          message: "En cada recta mira qué coordenada no cambia nunca.",
+        },
+        {
+          label: "¿Dónde se cruzan?",
+          message: "Una horizontal y una vertical siempre se cortan en un punto: sus constantes son las coordenadas.",
+        },
+      ],
       title: "Explora rectas especiales",
       tool: "system-graph",
       content: [

@@ -10,6 +10,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "mismo-signo",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en pérdidas seguidas",
+          message: "Si te quitan $3$ € y luego $8$ €, pierdes $11$ €. Las dos pérdidas van en el mismo sentido y se acumulan.",
+        },
+        {
+          label: "En la recta",
+          message: "Dos pasos hacia el mismo lado suman la distancia recorrida.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "$4 + 3 = +7$ (dos ganancias) y $-3 - 8 = -11$ (dos pérdidas).",
+        },
+      ],
       title: "Mismo signo: las distancias se suman",
       blocks: [
         {
@@ -35,6 +49,20 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "distinto-signo",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en ganar y perder",
+          message: "Si te dan $8$ € y te quitan $2$ €, ganas $6$ €. Lo que ganas y pierdes se compensa.",
+        },
+        {
+          label: "¿Qué signo queda?",
+          message: "El del que más pesa: tiene mayor valor absoluto, mayor «fuerza».",
+        },
+        {
+          label: "El orden no importa",
+          message: "Siempre que cada número conserve su signo, puedes cambiar el orden: $+2 - 5 = -5 + 2$.",
+        },
+      ],
       title: "Distinto signo: las distancias se restan",
       blocks: [
         {
@@ -150,6 +178,16 @@ export const sumaRestaEnterosLesson: InteractiveLesson = {
     {
       id: "varios-numeros",
       type: "slide",
+      help: [
+        {
+          label: "Dos caminos",
+          message: "Operar de izquierda a derecha o agrupar positivos por un lado y negativos por otro. El resultado es el mismo.",
+        },
+        {
+          label: "Cuidado al agrupar",
+          message: "El signo viaja con el número: en $3 - 8 + 6 - 4$, el $-8$ y el $-4$ son negativos y van juntos.",
+        },
+      ],
       title: "Varios números: dos caminos, mismo resultado",
       blocks: [
         {

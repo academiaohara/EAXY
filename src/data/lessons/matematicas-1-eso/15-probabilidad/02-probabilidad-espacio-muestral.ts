@@ -9,6 +9,20 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     {
       id: "definicion",
       type: "concept",
+      help: [
+        {
+          label: "Una lista de todo lo que puede pasar",
+          message: "El espacio muestral es esa lista completa, sin repetir ni olvidar nada.",
+        },
+        {
+          label: "Resultado frente a suceso",
+          message: "Un suceso elemental es un solo resultado. Un suceso puede agrupar varios, como «par» en un dado.",
+        },
+        {
+          label: "Dos ejemplos",
+          message: "Moneda: dos resultados, cara y cruz. Dado: seis resultados, del $1$ al $6$.",
+        },
+      ],
       title: "Espacio muestral",
       content: [
         "El **espacio muestral** $E$ es el conjunto de **todos los resultados posibles** de un experimento aleatorio.",
@@ -31,6 +45,16 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     {
       id: "tetraedro",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué $8$ resultados?",
+          message: "Porque el dado tiene $8$ caras y cada una puede quedar arriba.",
+        },
+        {
+          label: "Equiprobables",
+          message: "Si el dado está equilibrado, todas las caras tienen la misma posibilidad de salir.",
+        },
+      ],
       title: "Dado de ocho caras",
       content: [
         "Tenemos un dado en forma de octaedro con caras numeradas del $1$ al $8$. Lo lanzamos una vez.",
@@ -53,6 +77,16 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     {
       id: "urna-tres",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué importa el orden?",
+          message: "Porque $(1,2,3)$ y $(3,2,1)$ son resultados distintos si distinguimos las extracciones.",
+        },
+        {
+          label: "¿Por qué crece tan rápido?",
+          message: "Cada bola extra multiplica las posibilidades: por eso el espacio muestral se hace enorme enseguida.",
+        },
+      ],
       title: "Sacar bolas de una urna",
       content: [
         "Sacamos **tres bolas**, sin volver a meter la bola extraída, de una urna con bolas $1$, $2$ y $3$.",
@@ -63,6 +97,20 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     {
       id: "suma-dados",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué empieza en $2$?",
+          message: "Porque cada dado da al menos $1$, así que la suma mínima es $1 + 1$.",
+        },
+        {
+          label: "¿Cuántos valores?",
+          message: "Desde el menor hasta el mayor, de uno en uno: $11$ sumas posibles.",
+        },
+        {
+          label: "Ojo",
+          message: "Hay $11$ **sumas** distintas, pero no son igual de probables: unas se consiguen de más formas que otras.",
+        },
+      ],
       title: "Sumar dos dados",
       content: ["Lanzamos dos dados y **sumamos** los puntos. ¿Cuántos resultados distintos hay?"],
       frames: [

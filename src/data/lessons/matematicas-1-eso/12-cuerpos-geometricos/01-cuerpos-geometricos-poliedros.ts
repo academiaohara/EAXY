@@ -9,6 +9,20 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Poliedro frente a cuerpo redondo",
+          message: "Si todas sus superficies son planas y poligonales, es un poliedro. Si alguna es curva, no.",
+        },
+        {
+          label: "Cara, arista y vértice",
+          message: "Cara: una superficie plana. Arista: donde se juntan dos caras. Vértice: una esquina.",
+        },
+        {
+          label: "¿Para qué el desarrollo?",
+          message: "Es el dibujo plano que, recortado y plegado, forma el cuerpo.",
+        },
+      ],
       title: "Qué es un poliedro",
       content: [
         "Un **poliedro** es un cuerpo geométrico limitado por **caras** en forma de polígonos.",
@@ -30,6 +44,20 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
     {
       id: "regulares",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué es «regular»?",
+          message: "Todas las caras son polígonos regulares iguales y en cada vértice se juntan el mismo número de caras.",
+        },
+        {
+          label: "¿Por qué solo cinco?",
+          message: "Con polígonos regulares iguales solo hay cinco formas de cerrar el espacio sin huecos ni solapes.",
+        },
+        {
+          label: "Un ejemplo cotidiano",
+          message: "Un dado normal es el hexaedro regular: seis caras cuadradas iguales.",
+        },
+      ],
       title: "Poliedros regulares",
       content: [
         "Un **poliedro regular** tiene caras que son **polígonos regulares iguales** y el mismo número de aristas en cada vértice.",
@@ -53,6 +81,24 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
     {
       id: "euler",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué dice?",
+          message: "Si cuentas caras más vértices, siempre sale $2$ más que las aristas.",
+        },
+        {
+          label: "Compruébalo con el tetraedro",
+          message: "Tiene $4$ caras, $4$ vértices y $6$ aristas: $4 + 4 = 6 + 2$.",
+        },
+        {
+          label: "¿Para qué sirve?",
+          message: "Para comprobar un conteo, o para hallar un dato que falta, por ejemplo las aristas si conoces caras y vértices.",
+        },
+        {
+          label: "¿Cuándo no vale?",
+          message: "En poliedros con agujero, como un donut, la fórmula cambia.",
+        },
+      ],
       title: "Fórmula de Euler",
       content: [
         "En la mayoría de los poliedros (sin agujeros) se cumple la **fórmula de Euler**:",

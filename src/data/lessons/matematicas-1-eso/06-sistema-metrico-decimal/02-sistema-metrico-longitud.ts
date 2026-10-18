@@ -9,6 +9,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "tabla",
       type: "concept",
+      help: [
+        {
+          label: "La misma escalera",
+          message: "Las unidades bajan de $10$ en $10$ desde el kilómetro hasta el milímetro. Aprende el orden y el resto sale.",
+        },
+        {
+          label: "Referencias reales",
+          message: "Un paso largo es casi un metro; el grosor de tu uña, un centímetro; el de la mina de un lápiz, un milímetro.",
+        },
+        {
+          label: "Un truco para el orden",
+          message: "Los prefijos están en orden alfabético inverso respecto a la escalera: kilo, hecto, deca… (de mayor a menor).",
+        },
+      ],
       title: "Unidades de longitud",
       content: [
         "La unidad base es el **metro**. Recuerda la escala (de diez en diez):",
@@ -19,6 +33,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "cambio-coma",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué la coma bajo la unidad?",
+          message: "Porque marca dónde están las unidades enteras. Los saltos se cuentan desde ahí.",
+        },
+        {
+          label: "Dirección",
+          message: "Hacia una unidad más pequeña, el número crece (coma a la derecha). Hacia una más grande, decrece (a la izquierda).",
+        },
+        {
+          label: "Un ejemplo con otra cantidad",
+          message: "$3\\,\\mathrm{m}$ a $\\mathrm{cm}$: dos saltos hacia abajo, la coma se mueve dos lugares a la derecha: $300\\,\\mathrm{cm}$.",
+        },
+      ],
       title: "Cambios de unidad con la tabla",
       content: [
         "1. Escribe la cantidad en la columna de su unidad (pon la coma bajo la letra de la unidad).",
@@ -29,6 +57,20 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "compleja",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Qué es compleja e incompleja?",
+          message: "Compleja: varias unidades juntas ($2\\,\\mathrm{m}\\ 5\\,\\mathrm{dm}$). Incompleja: una sola ($2{,}5\\,\\mathrm{m}$).",
+        },
+        {
+          label: "De compleja a incompleja",
+          message: "Convierte cada parte a la unidad pedida y suma.",
+        },
+        {
+          label: "De incompleja a compleja",
+          message: "Coloca el número en la tabla y lee cada columna con su unidad, de mayor a menor.",
+        },
+      ],
       title: "Forma compleja e incompleja",
       content: [
         "**Compleja**: varias unidades ($2\\,\\mathrm{m}\\ 5\\,\\mathrm{dm}$). **Incompleja**: una sola ($2{,}5\\,\\mathrm{m}$ o $250\\,\\mathrm{cm}$).",
@@ -56,6 +98,16 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "grandes-pequenas",
       type: "concept",
+      help: [
+        {
+          label: "¿Para qué más unidades?",
+          message: "Porque el metro no sirve igual de bien para medir un átomo o la distancia a una galaxia.",
+        },
+        {
+          label: "Referencias",
+          message: "La micra es una milésima de milímetro (el tamaño de una bacteria). El año luz es lo que recorre la luz en un año.",
+        },
+      ],
       title: "Longitudes muy pequeñas y muy grandes",
       content: [
         "Más pequeñas que el milímetro: **micra** ($1\\,\\mu\\mathrm{m} = 0{,}001\\,\\mathrm{mm}$), **nanómetro**, **ángstrom** (distancias atómicas).",

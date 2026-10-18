@@ -9,6 +9,16 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en trozos del mismo tamaño",
+          message: "Comparar $\\frac{1}{7}$ con $\\frac{2}{7}$ es contar trozos iguales. Con tamaños distintos hay que igualarlos antes.",
+        },
+        {
+          label: "¿Qué significa «reducir»?",
+          message: "Cambiar la forma de escribir cada fracción sin cambiar su valor, hasta que compartan denominador.",
+        },
+      ],
       title: "¿Por qué un mismo denominador?",
       content: [
         "Comparar, ordenar o sumar fracciones es más sencillo cuando comparten **denominador**.",
@@ -19,6 +29,20 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     {
       id: "metodo",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué el m.c.m.?",
+          message: "Porque es el menor número que todos los denominadores dividen. Usar un múltiplo mayor también vale, pero genera números más grandes.",
+        },
+        {
+          label: "¿Por cuánto multiplico cada fracción?",
+          message: "Por lo que le falta al denominador para llegar al común: el cociente entre el m.c.m. y ese denominador. Lo mismo arriba y abajo.",
+        },
+        {
+          label: "¿Por qué no cambia el valor?",
+          message: "Porque multiplicar numerador y denominador por el mismo número da una fracción equivalente.",
+        },
+      ],
       title: "Método (MCM de los denominadores)",
       content: [
         "Calcula el **mínimo común múltiplo** $m$ de los denominadores.",
@@ -29,6 +53,16 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     {
       id: "ejemplo-12",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué $12$?",
+          message: "Es múltiplo de $4$ y de $6$. Además es el menor: es su m.c.m.",
+        },
+        {
+          label: "Fíjate en el cociente",
+          message: "$12 : 4 = 3$ dice por cuánto multiplicar la primera. $12 : 6 = 2$, la segunda.",
+        },
+      ],
       title: "Ejercicio resuelto — denominador común $12$",
       content: ["Reduce $\\dfrac{1}{4}$ y $\\dfrac{1}{6}$ tomando $12$ como denominador común."],
       frames: [
@@ -39,6 +73,16 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     {
       id: "ejemplo-24",
       type: "animated_solution",
+      help: [
+        {
+          label: "Con tres fracciones",
+          message: "Se hace igual: un único común denominador para las tres y el cociente de cada una.",
+        },
+        {
+          label: "Comprueba el valor",
+          message: "$\\frac{5}{8}$ y $\\frac{15}{24}$ valen lo mismo: dividiendo $15 : 24$ y $5 : 8$ sale el mismo decimal.",
+        },
+      ],
       title: "Ejemplo — $\\frac{5}{8}$, $\\frac{3}{4}$ y $\\frac{7}{12}$",
       content: ["m.c.m.$(8, 4, 12) = 24$."],
       frames: [

@@ -9,6 +9,20 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "intro",
       type: "concept",
+      help: [
+        {
+          label: "Siempre desde el principio",
+          message: "El porcentaje se calcula sobre la cantidad **inicial**, no sobre la final.",
+        },
+        {
+          label: "Aumento o rebaja",
+          message: "En un aumento sumas el porcentaje a la cantidad inicial. En una rebaja lo restas.",
+        },
+        {
+          label: "Un atajo",
+          message: "Subir un $20\\%$ es quedarse con el $120\\%$ del original. Bajar un $20\\%$ es quedarse con el $80\\%$.",
+        },
+      ],
       title: "Subidas y rebajas",
       content: [
         "En la vida real aparecen **aumentos** (subidas de precio, intereses…) y **disminuciones** (rebajas, pérdida de población…).",
@@ -18,6 +32,16 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "aumento-billete",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué sumo?",
+          message: "El billete sube, así que el precio nuevo es el antiguo más el aumento.",
+        },
+        {
+          label: "Con un solo cálculo",
+          message: "Subir un $20\\%$ equivale a multiplicar por $1{,}20$: $460 \\cdot 1{,}20$.",
+        },
+      ],
       title: "Aumento porcentual — billete a París",
       content: [
         "Un billete costaba $460\\,€$ y ha subido un $20\\%$. ¿Cuál es el precio actual?",
@@ -36,6 +60,16 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "rebaja-tv",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Por qué resto?",
+          message: "Es una rebaja, así que el precio nuevo es el antiguo menos el descuento.",
+        },
+        {
+          label: "Con un solo cálculo",
+          message: "Bajar un $15\\%$ equivale a pagar el $85\\%$: multiplicar por $0{,}85$.",
+        },
+      ],
       title: "Disminución porcentual — televisor",
       content: [
         "Un televisor costaba $900\\,€$ y tiene una rebaja del $15\\%$. ¿Cuánto cuesta ahora?",
@@ -54,6 +88,16 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "prestamo",
       type: "animated_solution",
+      help: [
+        {
+          label: "¿Qué son los intereses?",
+          message: "El dinero extra que se paga por usar un dinero prestado. Se calcula como un porcentaje del capital.",
+        },
+        {
+          label: "Capital más intereses",
+          message: "Lo que devuelve es lo que le prestaron más los intereses de ese año.",
+        },
+      ],
       title: "Intereses — préstamo (act. 1)",
       content: [
         "Rosa pide un préstamo de $4000\\,€$ al $5\\%$ de interés anual. ¿Qué cantidad devolverá al cabo de un año (capital + intereses)?",
@@ -72,6 +116,16 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "poblacion",
       type: "animated_solution",
+      help: [
+        {
+          label: "Pérdida no es resultado",
+          message: "El $8\\%$ de $250$ es lo que se pierde, no la población que queda.",
+        },
+        {
+          label: "Con un solo cálculo",
+          message: "Perder el $8\\%$ es quedarse con el $92\\%$: $250 \\cdot 0{,}92$.",
+        },
+      ],
       title: "Población — disminución (act. 2)",
       content: [
         "Una aldea tenía $250$ habitantes y la población ha disminuido un $8\\%$. ¿Cuál es la población actual?",

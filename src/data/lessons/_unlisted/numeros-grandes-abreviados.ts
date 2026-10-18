@@ -9,6 +9,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "idea",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué abreviar?",
+          message: "Contar ceros a ojo es fácil de equivocar. $10^{14}$ dice cuántos hay sin contarlos.",
+        },
+        {
+          label: "Separar un factor",
+          message: "En $240\\,000 = 24 \\cdot 10^4$ dejas las cifras con significado y mandas los ceros a la potencia.",
+        },
+      ],
       title: "Forma abreviada",
       content: [
         "Un número con muchos ceros se entiende mejor como **potencia de base 10**: $100\\,000\\,000\\,000\\,000 = 10^{14}$.",
@@ -19,6 +29,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "ano-luz",
       type: "animated_solution",
+      help: [
+        {
+          label: "Paso a paso",
+          message: "Separas las cifras sin ceros finales, cuentas los ceros que quedan y los escribes como potencia de $10$.",
+        },
+        {
+          label: "¿Cuál es el exponente?",
+          message: "Cuenta los ceros que hay detrás de $95$ en el segundo paso: ese número es el exponente.",
+        },
+      ],
       title: "Ejemplo — Un año luz",
       content: [
         "Un año luz son unos $9\\,500\\,000\\,000\\,000$ km. Vamos a dejarlo en forma manejable.",
@@ -45,6 +65,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "transformar",
       type: "concept",
+      help: [
+        {
+          label: "De ida y de vuelta",
+          message: "Para volver al número, escribe el factor y añade tantos ceros como indica el exponente.",
+        },
+        {
+          label: "Un ejemplo real",
+          message: "«Veinticinco mil millones» es $25 \\cdot 10^9$: «mil millones» tiene nueve ceros.",
+        },
+      ],
       title: "Transformar como en el libro",
       content: [
         "Para pasar de $240\\,000$ a forma abreviada: $240\\,000 = 24 \\cdot 10\\,000 = 24 \\cdot 10^4$.",

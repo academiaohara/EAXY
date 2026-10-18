@@ -36,6 +36,16 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "explicacion-niveles",
       type: "narrate",
+      help: [
+        {
+          label: "¿Por qué hace falta un orden?",
+          message: "Sin una norma, $6 + 2 \\cdot 4$ tendría dos resultados posibles. El orden evita esa ambigüedad.",
+        },
+        {
+          label: "Los tres niveles",
+          message: "Primero los paréntesis, luego multiplicar y dividir, y al final sumar y restar. Piensa «de lo que más une a lo que menos».",
+        },
+      ],
       title: "El orden de las operaciones",
       module: "jerarquia-operaciones",
       scene: "niveles-reglas",
@@ -43,6 +53,17 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "orden-ejemplos",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué difieren?",
+          message: "El paréntesis obliga a sumar primero. Sin él, la multiplicación manda.",
+          math: ["6 + 2 \\cdot 4 \\neq (6 + 2) \\cdot 4"],
+        },
+        {
+          label: "Reescribe en cada paso",
+          message: "Calcula una sola operación cada vez y reescribe la expresión con su resultado. Así no te pierdes.",
+        },
+      ],
       title: "Mismos números, distinto resultado",
       blocks: [
         {
@@ -147,6 +168,20 @@ export const divisionOrdenOperacionesNaturalesLesson: InteractiveLesson = {
     {
       id: "misma-prioridad",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué es un empate?",
+          message: "Dos operaciones del mismo nivel, como $:$ y $\\cdot$, o $+$ y $-$. Se hacen en orden de aparición, de izquierda a derecha.",
+        },
+        {
+          label: "El error típico",
+          message: "Pensar que multiplicar va antes que dividir: $24 : 4 \\cdot 2$ es $6 \\cdot 2$, no $24 : 8$.",
+        },
+        {
+          label: "Si quieres otra agrupación",
+          message: "Si necesitas calcular antes lo de la derecha, usa paréntesis.",
+        },
+      ],
       title: "Mismo nivel: de izquierda a derecha",
       blocks: [
         {

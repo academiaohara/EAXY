@@ -9,6 +9,16 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     {
       id: "suma",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en una balanza",
+          message: "Si $x$ más $4$ pesa $7$, entonces $x$ pesa $7$ menos $4$.",
+        },
+        {
+          label: "¿Por qué «pasa restando»?",
+          message: "Es un atajo de «resto $4$ en los dos lados»: el $4$ desaparece de la izquierda y aparece restando a la derecha.",
+        },
+      ],
       title: "Ecuación $x + a = b$",
       content: [
         "Ejemplo: $x + 4 = 7$. Restamos $4$ en ambos miembros: $x = 7 - 4 = 3$.",
@@ -19,6 +29,16 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     {
       id: "resta",
       type: "concept",
+      help: [
+        {
+          label: "Piensa al revés",
+          message: "Si a $x$ le quitas $2$ y queda $6$, antes tenías $6$ más $2$.",
+        },
+        {
+          label: "El caso $5 - x = 2$",
+          message: "Aquí es la $x$ la que se resta. Aísla $x$ sumándola a los dos lados y restando $2$.",
+        },
+      ],
       title: "Ecuación $x - a = b$",
       content: [
         "Ejemplo: $x - 2 = 6$. Sumamos $2$: $x = 6 + 2 = 8$.",
@@ -29,6 +49,16 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     {
       id: "producto",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en repartos",
+          message: "Si tres veces $x$ valen $15$, una vez $x$ vale la tercera parte.",
+        },
+        {
+          label: "Los casos especiales",
+          message: "$0 \\cdot x = 6$ es imposible: nada multiplicado por cero da $6$. $0 \\cdot x = 0$ lo cumple cualquier $x$.",
+        },
+      ],
       title: "Ecuación $a \\cdot x = b$",
       content: [
         "Ejemplo: $3x = 15$. Dividimos entre $3$: $x = \\frac{15}{3} = 5$.",
@@ -39,6 +69,16 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     {
       id: "cociente",
       type: "concept",
+      help: [
+        {
+          label: "Piensa en trozos",
+          message: "Si $x$ partido en $4$ da $3$, entonces $x$ son $4$ trozos de $3$.",
+        },
+        {
+          label: "Con varias técnicas a la vez",
+          message: "Primero quita lo que suma o resta ($-2$, $+5$) y después lo que multiplica a $x$.",
+        },
+      ],
       title: "Ecuación $\\frac{x}{a} = b$",
       content: [
         "Ejemplo: $\\frac{x}{4} = 3$. Multiplicamos por $4$: $x = 3 \\cdot 4 = 12$.",

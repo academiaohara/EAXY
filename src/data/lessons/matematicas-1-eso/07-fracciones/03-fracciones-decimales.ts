@@ -9,6 +9,20 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "division",
       type: "concept",
+      help: [
+        {
+          label: "Una fracción es una cuenta",
+          message: "La raya de fracción significa «dividido entre»: $\\frac{2}{5}$ es $2 : 5$.",
+        },
+        {
+          label: "Si el numerador es menor",
+          message: "El resultado es menor que $1$: empieza por $0{,}$ y añades ceros al numerador para seguir dividiendo.",
+        },
+        {
+          label: "Casos que ya conoces",
+          message: "$\\frac{1}{2} = 0{,}5$ y $\\frac{1}{4} = 0{,}25$ son divisiones que se saben de memoria.",
+        },
+      ],
       title: "Fracción = división",
       content: [
         "Toda fracción equivale al **cociente** del numerador entre el denominador.",
@@ -64,6 +78,20 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "periodicos",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué el decimal no es exacto?",
+          message: "Porque nunca acaba: al cortarlo pierdes lo que viene después.",
+        },
+        {
+          label: "¿Cuándo uso la fracción?",
+          message: "Cuando necesitas el valor exacto. El decimal se usa si una aproximación basta.",
+        },
+        {
+          label: "¿Qué significa el arco?",
+          message: "Que esas cifras se repiten sin fin: $0{,}\\overline{3} = 0{,}333\\ldots$",
+        },
+      ],
       title: "Decimales periódicos",
       content: [
         "Algunas divisiones **no terminan**: $\\frac{1}{3} = 0{,}333\\ldots = 0{,}\\overline{3}$.",
@@ -76,6 +104,16 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "anim-25",
       type: "animated_solution",
+      help: [
+        {
+          label: "Dos caminos al mismo número",
+          message: "Dividir $2 : 5$ y ampliar $\\frac{2}{5}$ a décimas dan el mismo resultado.",
+        },
+        {
+          label: "¿Por qué décimas?",
+          message: "Porque $5 \\cdot 2 = 10$: multiplicando por $2$ llegas a denominador $10$, y con denominador $10$ el decimal se lee directamente.",
+        },
+      ],
       title: "Ejemplo — $\\frac{2}{5}$ en la recta",
       content: ["Representa $\\frac{2}{5}$ como decimal y compáralo con $\\frac{4}{10}$."],
       frames: [

@@ -10,6 +10,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "divisor-natural",
       type: "slide",
+      help: [
+        {
+          label: "Piensa en el reparto de la paga",
+          message: "Reparte primero los euros enteros. Lo que sobra se convierte en décimas y se sigue repartiendo.",
+        },
+        {
+          label: "¿Cuándo pongo la coma?",
+          message: "En cuanto bajes la primera cifra decimal (o un cero). Antes de eso no hay decimales en el cociente.",
+        },
+        {
+          label: "Dividendo menor que divisor",
+          message: "En $1 : 4$ no cabe ni una unidad entera, así que el cociente empieza por $0{,}$ y se baja un cero.",
+        },
+      ],
       title: "Dividir entre un natural: la coma sube al cociente",
       blocks: [
         {
@@ -85,6 +99,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "periodico",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué no termina?",
+          message: "Si en algún momento el resto se repite, las cifras siguientes se repetirán igual para siempre.",
+        },
+        {
+          label: "¿Aproximación o igualdad?",
+          message: "Al cortar el cociente ya no es el resultado exacto: $3 \\cdot 2{,}43 = 7{,}29$, no $7{,}3$. Por eso se escribe $\\approx$.",
+        },
+        {
+          label: "¿Cuántas cifras corto?",
+          message: "Las que pida el enunciado. Calcula una cifra más y redondea.",
+        },
+      ],
       title: "Cuando la división no termina: cociente periódico",
       blocks: [
         {
@@ -154,6 +182,21 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "divisor-decimal",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué no cambia el cociente?",
+          message: "Multiplicar dividendo y divisor por lo mismo no altera el resultado, igual que $\\frac{1}{2} = \\frac{10}{20}$.",
+          math: ["7{,}5 : 0{,}25 = 750 : 25"],
+        },
+        {
+          label: "¿Cuántos lugares muevo la coma?",
+          message: "Tantos como cifras decimales tenga el **divisor**, y en los dos números.",
+        },
+        {
+          label: "Si el dividendo no tiene decimales",
+          message: "Añade ceros: $90 : 2{,}5$ pasa a ser $900 : 25$.",
+        },
+      ],
       title: "Divisor decimal: se multiplica todo hasta que sea natural",
       blocks: [
         {
@@ -232,6 +275,20 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "potencias-10",
       type: "slide",
+      help: [
+        {
+          label: "Es el espejo de la multiplicación",
+          message: "Al multiplicar por $10$, $100$… la coma va a la derecha. Al dividir, a la izquierda. Se mueve tantos lugares como ceros.",
+        },
+        {
+          label: "¿Y cuando faltan cifras?",
+          message: "Rellena con ceros entre la coma y la primera cifra: $15{,}3 : 1000 = 0{,}0153$.",
+        },
+        {
+          label: "Piénsalo con dinero",
+          message: "De euros a céntimos se multiplica por $100$ (coma a la derecha). De céntimos a euros, se divide entre $100$ (coma a la izquierda).",
+        },
+      ],
       title: "Entre 10, 100, 1000…: la coma va hacia la izquierda",
       blocks: [
         {

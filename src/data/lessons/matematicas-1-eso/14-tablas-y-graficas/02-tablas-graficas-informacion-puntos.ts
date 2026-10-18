@@ -9,6 +9,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "contexto-real",
       type: "concept",
+      help: [
+        {
+          label: "¿Qué representa un punto?",
+          message: "Un individuo con dos medidas a la vez: su edad y su estatura, por ejemplo.",
+        },
+        {
+          label: "No basta mirar la forma",
+          message: "Antes de interpretar, lee qué magnitud va en cada eje.",
+        },
+      ],
       title: "Dos variables en un diagrama",
       content: [
         "En un diagrama cartesiano de una **situación real**, cada punto representa un dato.",
@@ -19,6 +29,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "familia",
       type: "concept",
+      help: [
+        {
+          label: "Comparar puntos",
+          message: "Más alto es más arriba. Mayor es más a la derecha.",
+        },
+        {
+          label: "Dos puntos a la misma altura",
+          message: "Si están a la misma altura tienen la misma estatura. Se diferencian por la edad.",
+        },
+      ],
       title: "Ejemplo: edad y estatura",
       content: [
         "**Bernardo** (el hijo mayor) es el más alto: su punto tiene la **mayor ordenada** (estatura).",
@@ -41,6 +61,16 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
     {
       id: "vehiculos",
       type: "concept",
+      help: [
+        {
+          label: "Leer una esquina",
+          message: "Arriba a la derecha: caro y rápido. Abajo a la izquierda: barato y lento.",
+        },
+        {
+          label: "Colocar un punto nuevo",
+          message: "Compáralo con los que ya están: ¿más caro?, ¿más rápido? Eso decide hacia dónde moverlo.",
+        },
+      ],
       title: "Precio y velocidad",
       content: [
         "Otro diagrama puede tener **precio** en un eje y **velocidad máxima** en el otro.",

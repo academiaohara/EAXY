@@ -9,6 +9,16 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     {
       id: "regla",
       type: "concept",
+      help: [
+        {
+          label: "Multiplicar por $10$ añade un cero",
+          message: "Por $100$ añade dos, por $1000$ tres… Una potencia de $10$ resume cuántos ceros añades.",
+        },
+        {
+          label: "Un patrón",
+          message: "$10^1 = 10$, $10^2 = 100$, $10^3 = 1000$: cada vez un cero más, igual que el exponente.",
+        },
+      ],
       title: "Potencias de 10",
       content: [
         "Como ya sabes, multiplicar por $10$ añade un cero. Las **potencias de base 10** son aún más rápidas de calcular.",
@@ -29,6 +39,16 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     {
       id: "interpretar",
       type: "concept",
+      help: [
+        {
+          label: "Orden de magnitud",
+          message: "Con el exponente ves de un vistazo si un número es de millares, millones o billones, sin contar cifras.",
+        },
+        {
+          label: "Un ejemplo para sentir la escala",
+          message: "$10^3$ es mil; $10^6$ es un millón; $10^{12}$ es un billón. Cada $10^3$ más es mil veces más grande.",
+        },
+      ],
       title: "Leer números grandes",
       content: [
         "Escribir cantidades con potencias de $10$ facilita ver su orden de magnitud sin contar cifras.",
@@ -50,6 +70,16 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     {
       id: "atomos",
       type: "concept",
+      help: [
+        {
+          label: "¿Por qué se escribe $56 \\cdot 10^{20}$?",
+          message: "Porque separas las cifras con significado ($56$) y los ceros se resumen en la potencia.",
+        },
+        {
+          label: "¿Qué indica el exponente?",
+          message: "Cuántos ceros siguen a $56$. Con $20$ ceros, el número es descomunal.",
+        },
+      ],
       title: "Aplicación: átomos en un gramo",
       content: [
         "En un gramo de plata hay unos $5\\,600\\,000\\,000\\,000\\,000\\,000\\,000$ átomos (20 cifras).",

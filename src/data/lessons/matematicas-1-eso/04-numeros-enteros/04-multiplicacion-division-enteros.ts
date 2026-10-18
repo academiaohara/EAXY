@@ -10,6 +10,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "producto",
       type: "slide",
+      help: [
+        {
+          label: "Repetir o anular",
+          message: "El primer factor dice si «repites» (positivo) o «anulas» (negativo) lo que expresa el segundo.",
+        },
+        {
+          label: "Piensa en deudas",
+          message: "Tres deudas de $5$ € son $-15$. Si te quitan esas tres deudas, tu situación mejora.",
+        },
+        {
+          label: "Valores absolutos",
+          message: "La cifra sale igual que con naturales. Lo nuevo es solo el signo.",
+        },
+      ],
       title: "Multiplicar: de dónde sale el signo",
       blocks: [
         {
@@ -41,6 +55,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "regla-signos",
       type: "slide",
+      help: [
+        {
+          label: "La regla en una frase",
+          message: "Signos iguales dan positivo; signos distintos, negativo.",
+        },
+        {
+          label: "Con tres o más factores",
+          message: "Multiplica de dos en dos, o cuenta los negativos: número par, $+$; número impar, $-$.",
+        },
+        {
+          label: "Un truco para recordarlo",
+          message: "«El enemigo de mi enemigo es mi amigo»: dos negativos dan un positivo.",
+        },
+      ],
       title: "La regla de los signos",
       blocks: [
         {
@@ -174,6 +202,20 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "division",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué la misma regla?",
+          message: "Dividir deshace multiplicar: si $(-3) \\cdot (+4) = -12$, entonces $(-12) : (+4) = -3$.",
+        },
+        {
+          label: "¿Siempre hay cociente entero?",
+          message: "Solo cuando la división es exacta.",
+        },
+        {
+          label: "Cuidado con agrupar",
+          message: "La división no es asociativa: el orden de agrupar cambia el resultado. Respeta los paréntesis.",
+        },
+      ],
       title: "Dividir: la operación inversa",
       blocks: [
         {
@@ -200,6 +242,16 @@ export const multiplicacionDivisionEnterosLesson: InteractiveLesson = {
     {
       id: "combinadas",
       type: "slide",
+      help: [
+        {
+          label: "El mismo orden de siempre",
+          message: "Paréntesis, luego productos y cocientes, luego sumas y restas. Lo único nuevo son los signos.",
+        },
+        {
+          label: "¿Qué hago con los signos de los resultados?",
+          message: "Cada resultado parcial arrastra su signo: $6 - (-3)$ pasa a ser $6 + 3$.",
+        },
+      ],
       title: "Operaciones combinadas con enteros",
       blocks: [
         {

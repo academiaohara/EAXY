@@ -10,6 +10,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "suma",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué coma bajo coma?",
+          message: "Porque así se juntan cifras del mismo orden: unidades con unidades, décimas con décimas.",
+        },
+        {
+          label: "¿Por qué añado ceros?",
+          message: "$3{,}1$ y $3{,}10$ valen lo mismo. Con el cero la columna de las centésimas queda completa y no te confundes.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Redondea cada número al entero: $4 + 3 + 6 + 5$. El resultado debe quedar cerca de esa cifra.",
+        },
+      ],
       title: "Sumar: coma bajo coma",
       blocks: [
         {
@@ -38,6 +52,16 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "resta",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué los ceros ya no son opcionales?",
+          message: "Para restar columna a columna, el minuendo necesita tener cifra en cada columna. Sin el cero, no sabrías de dónde pedir prestado.",
+        },
+        {
+          label: "Comprueba con una estimación",
+          message: "Redondea los dos números al entero y resta: el resultado exacto debe quedar cerca.",
+        },
+      ],
       title: "Restar: igual que sumar, y los ceros ya no son opcionales",
       blocks: [
         {
@@ -187,6 +211,16 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "hucha",
       type: "slide",
+      help: [
+        {
+          label: "¿Qué reglas valen?",
+          message: "Las mismas que con enteros: los ingresos suman y los gastos restan.",
+        },
+        {
+          label: "Dos caminos",
+          message: "Puedes ir operando en orden, o sumar por un lado todos los ingresos, por otro todos los gastos, y restar.",
+        },
+      ],
       title: "Ingresos y gastos: valen las reglas de los enteros",
       arrange: "text-top",
       blocks: [
@@ -223,6 +257,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "multiplicacion",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué sin comas?",
+          message: "Multiplicar por $10$ o $100$ para quitar comas se compensa después: los decimales de los factores indican cuánto hay que deshacer.",
+        },
+        {
+          label: "Cuenta bien los decimales",
+          message: "Suma las cifras decimales de **cada factor**: ese número de cifras debe tener el producto.",
+        },
+        {
+          label: "Con dinero",
+          message: "Si el resultado tiene más de dos decimales, redondea a céntimos mirando la tercera cifra.",
+        },
+      ],
       title: "Multiplicar: sin comas, y se cuentan los decimales",
       blocks: [
         {
@@ -306,6 +354,20 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
     {
       id: "potencias-10",
       type: "slide",
+      help: [
+        {
+          label: "¿Por qué se desplaza la coma?",
+          message: "Multiplicar por $10$ hace que cada cifra valga diez veces más: pasa a la columna de la izquierda, y por eso la coma queda un lugar más a la derecha.",
+        },
+        {
+          label: "¿Y si faltan cifras?",
+          message: "Se añaden ceros. $2{,}45 \\cdot 1000 = 2450$ porque la coma sobrepasa la última cifra.",
+        },
+        {
+          label: "Naturales acabados en ceros",
+          message: "Separa los ceros y multiplica primero por el resto: $3{,}52 \\cdot 500$ es $(3{,}52 \\cdot 5) \\cdot 100$.",
+        },
+      ],
       title: "Por 10, 100, 1000…: la coma se desplaza",
       blocks: [
         {
