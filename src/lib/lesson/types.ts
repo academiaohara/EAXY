@@ -358,10 +358,28 @@ export type InteractiveToolStep =
   | NaturalesNumeracionToolStep
   | PotenciasRaicesToolStep;
 
+/**
+ * Una explicación del tutor escrita a propósito para el ejercicio: debe decir
+ * algo que la diapositiva no dice (otro ángulo, un caso más sencillo, una
+ * pregunta guiada). Cada rama puede abrir otras más concretas.
+ */
+export type HelpBranch = {
+  /** Texto del botón con el que el alumno la pide. */
+  label: string;
+  message: string;
+  detail?: string[];
+  math?: string[];
+  visual?: LessonVisual;
+  /** Ramas más concretas que se ofrecen tras esta explicación. */
+  branches?: HelpBranch[];
+};
+
 type PracticeFields = {
   question: string;
   hint?: string;
   explanation?: string;
+  /** Árbol de ayuda propio del ejercicio; sustituye a repetir el enunciado y la teoría. */
+  help?: HelpBranch[];
 };
 
 export type FillInBlankStep = LessonStepBase &
