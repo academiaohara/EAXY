@@ -38,3 +38,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Teoría nueva = paso `type: "slide"`: bloques de texto con forma propia + animación tipo Manim o ilustración. Guía, catálogo de bloques/animaciones y tono (sin tratar al alumno como niño): **`docs/lessons-slides.md`**.
 - Animaciones nuevas: `src/components/lesson/anim/` (registro en `registry.tsx`); el test `slide-anim.test.tsx` dibuja todos sus pasos.
+
+# EAXY — al añadir lecciones nuevas
+
+- Antes de escribir la lección, valora si algún concepto de teoría gana con una **herramienta interactiva** dentro de la diapositiva: un manipulable que muestra lo que se enseña y donde el alumno cambia los valores (deslizadores, campos numéricos, botones +/−) y ve el resultado al instante.
+- Es **opcional**: solo cuando explorar valores ayude a entender (relaciones, proporciones, signos, escalas, fórmulas con parámetros). No se fuerza en cada diapositiva ni sustituye a la animación ni a los ejercicios.
+- Criterios y límites: **`docs/lessons-slides.md`** (sección «Herramienta interactiva en la diapositiva»; regla Cursor: `.cursor/rules/new-lessons.mdc`).
+

@@ -1,0 +1,12 @@
+---
+description: Checklist al añadir lecciones nuevas
+globs:
+  - src/lib/lesson/**
+  - src/components/lesson/**
+  - docs/lessons-slides.md
+---
+
+# Lecciones nuevas
+
+- Teoría = `type: "slide"` (ver `docs/lessons-slides.md`).
+- **Herramienta interactiva (opcional):** valora si algún concepto gana con un manipulable donde el alumno cambie valores y vea el resultado al instante. Solo si aporta; no se fuerza. Criterios en `docs/lessons-slides.md` → «Herramienta interactiva en la diapositiva».
