@@ -615,7 +615,11 @@ export type SlideAnimId =
   | "tabla-unidades"
   | "escala-longitudes"
   | "cuadrados-area"
-  | "m2-dm2";
+  | "m2-dm2"
+  | "fraccion-partes"
+  | "fraccion-recta"
+  | "fraccion-operador"
+  | "fraccion-equivalente";
 
 export type ExprStep = {
   tokens: string[];
@@ -726,7 +730,19 @@ export type SlideBlock =
       captions?: string[];
       /** Milisegundos por paso en reproducción automática. */
       beatMs?: number;
+    }
+  /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
+  | {
+      kind: "tool";
+      tool: SlideToolId;
+      /** Valores iniciales (y fracción de partida en `fraccion-equivalentes`). */
+      params?: { n?: number; d?: number; k?: number };
+      /** Una línea que dice qué probar. */
+      hint?: string;
     };
+
+/** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
+export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento
@@ -738,7 +754,7 @@ export type SlideStep = LessonStepBase &
     /** Columna de texto (de arriba abajo). */
     blocks: SlideBlock[];
     /** Elemento visual principal; en pantallas anchas va al lado del texto. */
-    visual?: Extract<SlideBlock, { kind: "anim" | "figure" }>;
+    visual?: Extract<SlideBlock, { kind: "anim" | "figure" | "tool" }>;
     /**
      * `split` (por defecto con visual): texto | visual. `visual-top`: visual ancho
      * arriba y texto debajo en columnas. `text-top`: los bloques de texto en dos
