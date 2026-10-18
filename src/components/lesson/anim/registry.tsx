@@ -47,6 +47,10 @@ import { buildM2Dm2 } from "@/components/lesson/anim/scenes/m2-dm2";
 import { buildMedirUnidad } from "@/components/lesson/anim/scenes/medir-unidad";
 import { buildMeridianoMetro } from "@/components/lesson/anim/scenes/meridiano-metro";
 import { buildTablaUnidades } from "@/components/lesson/anim/scenes/tabla-unidades";
+import { buildFraccionEquivalente } from "@/components/lesson/anim/scenes/fraccion-equivalente";
+import { buildFraccionOperador } from "@/components/lesson/anim/scenes/fraccion-operador";
+import { buildFraccionPartes } from "@/components/lesson/anim/scenes/fraccion-partes";
+import { buildFraccionRecta } from "@/components/lesson/anim/scenes/fraccion-recta";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -98,6 +102,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "escala-longitudes": () => buildEscalaLongitudes(),
   "cuadrados-area": (p) => buildCuadradosArea(p),
   "m2-dm2": () => buildM2Dm2(),
+  "fraccion-partes": (p) => buildFraccionPartes(p),
+  "fraccion-recta": (p) => buildFraccionRecta(p),
+  "fraccion-operador": (p) => buildFraccionOperador(p),
+  "fraccion-equivalente": (p) => buildFraccionEquivalente(p),
 };
 
 export function buildSlideAnim(

@@ -5,10 +5,11 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
   slug: "fracciones-equivalentes",
   title: "4. Fracciones equivalentes",
   subtitle: TEMA_1ESO_7_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "mismo-valor",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Una misma tarta",
@@ -20,30 +21,21 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
         },
       ],
       title: "Misma porción, distinta escritura",
-      content: [
-        "Dos fracciones son **equivalentes** si representan la **misma porción** de la unidad (mismo valor numérico).",
-        "Por ejemplo $\\frac{1}{4}$ y $\\frac{3}{12}$ valen lo mismo: $1 : 4 = 0{,}25$ y $3 : 12 = 0{,}25$.",
-        "Fíjate en las dos barras: son iguales y la parte coloreada ocupa lo mismo, aunque una esté partida en $4$ y la otra en $12$.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "fraction-figure",
-          title: "$\\frac{1}{4}$",
-          shape: "bar",
-          parts: 4,
-          shaded: 1,
-          tone: "cobalt",
+          kind: "definition",
+          text: "Dos fracciones son **equivalentes** si representan la **misma porción** de la unidad, es decir, si tienen el mismo valor.",
         },
         {
-          kind: "fraction-figure",
-          title: "$\\frac{3}{12}$",
-          shape: "bar",
-          parts: 12,
-          shaded: 3,
-          tone: "emerald",
-          caption: "Misma porción de la unidad.",
+          kind: "example",
+          title: "Comprobación con decimales",
+          lines: [
+            { math: "\\frac{1}{4} = 1 : 4 = 0{,}25" },
+            { math: "\\frac{3}{12} = 3 : 12 = 0{,}25", note: "mismo valor: $\\frac{1}{4} = \\frac{3}{12}$" },
+          ],
         },
       ],
+      visual: { kind: "anim", scene: "fraccion-equivalente", params: { a: 1, b: 2, c: 3 } },
     },
     {
       id: "marca-equivalente",
@@ -72,7 +64,7 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     },
     {
       id: "propiedad",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Por qué no cambia el valor?",
@@ -87,26 +79,67 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
           message: "Solo vale multiplicar o dividir **los dos** números por lo mismo. Sumarles el mismo número no mantiene el valor.",
         },
       ],
-      title: "Propiedad fundamental",
-      content: [
-        "Si **multiplicas o divides** numerador y denominador por el **mismo número** (distinto de cero), obtienes una fracción equivalente.",
-        "$$\\frac{3}{4} = \\frac{3 \\cdot 5}{4 \\cdot 5} = \\frac{15}{20}$$",
-        "$$\\frac{12}{18} = \\frac{12 : 6}{18 : 6} = \\frac{2}{3}$$",
-      ],
-      visuals: [
+      title: "Propiedad fundamental: multiplicar o dividir los dos términos",
+      blocks: [
         {
-          kind: "cards",
-          title: "Cadena de equivalencias",
-          items: [
-            { title: "Amplificar", math: "\\frac{1}{2} = \\frac{6}{12}", tone: "cobalt" },
-            { title: "Simplificar", math: "\\frac{3}{6} = \\frac{1}{2}", tone: "emerald" },
-          ],
+          kind: "rule",
+          title: "Propiedad fundamental",
+          text: "Si multiplicas o divides numerador y denominador por el **mismo número** (distinto de $0$), obtienes una fracción equivalente.",
+          formula: "\\frac{3}{4} = \\frac{3\\cdot 5}{4\\cdot 5} = \\frac{15}{20} \\qquad \\frac{12}{18} = \\frac{12 : 6}{18 : 6} = \\frac{2}{3}",
+        },
+        {
+          kind: "warning",
+          text: "Tiene que ser **multiplicar o dividir**, y en los **dos** términos. Sumar el mismo número no vale: $\\frac{1}{2} \\neq \\frac{1+2}{2+2} = \\frac{3}{4}$.",
         },
       ],
+      visual: { kind: "tool", tool: "fraccion-equivalentes", params: { n: 2, d: 5, k: 2 } },
+    },
+    {
+      id: "check-chocolate",
+      type: "predict",
+      help: [
+        {
+          label: "¿Qué comparo?",
+          message: "Cada uno come una parte de una tableta idéntica. Si las dos partes son la misma cantidad de tableta, comen igual.",
+        },
+        {
+          label: "Una forma de comprobarlo",
+          message: "Simplifica la fracción de Carmen, o amplía la de Francisco, hasta que tengan el mismo denominador.",
+        },
+      ],
+      title: "¿Quién comió más?",
+      question:
+        "Francisco y Carmen compran una tableta de chocolate cada uno. Francisco come $\\frac{1}{4}$ de la suya y Carmen $\\frac{2}{8}$ de la suya. ¿Quién ha comido más chocolate?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "Los dos lo mismo: $\\frac{2}{8} = \\frac{1}{4}$" },
+        {
+          id: "b",
+          label: "Carmen, porque $\\frac{2}{8}$ tiene números más grandes",
+          incorrectFeedback:
+            "Los números más grandes no dan una fracción mayor: Carmen tiene el doble de trozos, pero cada uno es la mitad de grande.",
+        },
+        {
+          id: "c",
+          label: "Francisco, porque $4$ es menor que $8$ y sus trozos son más grandes",
+          incorrectFeedback:
+            "Sus trozos son mayores, sí, pero Carmen coge $2$. Dos octavos juntos hacen justo un cuarto.",
+        },
+        {
+          id: "d",
+          label: "No se puede saber sin conocer el peso de las tabletas",
+          incorrectFeedback:
+            "Las tabletas son iguales: la fracción compara partes de una misma unidad, y dos fracciones equivalentes son la misma parte.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "$\\frac{2}{8} = \\frac{2 : 2}{8 : 2} = \\frac{1}{4}$: han comido la misma cantidad.",
     },
     {
       id: "simplificar",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Qué busco?",
@@ -121,72 +154,71 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
           message: "Si divides entre el m.c.d. llegas a la irreducible en un solo paso.",
         },
       ],
-      title: "Simplificación",
-      content: [
-        "**Simplificar** es buscar una fracción equivalente con términos más pequeños, dividiendo por divisores comunes.",
-        "Ejemplo: $\\frac{12}{30} = \\frac{6}{15} = \\frac{2}{5}$.",
-        "Si no puedes simplificar más, la fracción es **irreducible** (como $\\frac{2}{5}$).",
-      ],
-      visuals: [
+      title: "Simplificar hasta la fracción irreducible",
+      arrange: "stack",
+      blocks: [
         {
-          kind: "stack",
+          kind: "definition",
+          text: "**Simplificar** es sustituir una fracción por otra equivalente con términos más pequeños, dividiendo numerador y denominador entre un divisor común. Si ya no se puede simplificar más, es **irreducible**.",
+        },
+        {
+          kind: "example",
           title: "Simplificar $\\frac{12}{30}$",
-          rows: ["12 : 2", "30 : 2", "→ 6 : 3", "15 : 3"],
-          operator: "",
-          result: "\\frac{2}{5}",
-          caption: "También puedes dividir directamente entre $6$.",
+          lines: [
+            { math: "\\frac{12}{30} = \\frac{12 : 2}{30 : 2} = \\frac{6}{15}", note: "entre $2$" },
+            { math: "\\frac{6}{15} = \\frac{6 : 3}{15 : 3} = \\frac{2}{5}", note: "entre $3$; $2$ y $5$ ya no comparten divisores: irreducible" },
+            { math: "\\frac{12}{30} = \\frac{12 : 6}{30 : 6} = \\frac{2}{5}", note: "o directamente entre el m.c.d., $6$" },
+          ],
+        },
+        {
+          kind: "warning",
+          text: "Hay que dividir **los dos** términos por el mismo número. Y la fracción no cambia de valor: $\\frac{12}{30}$ y $\\frac{2}{5}$ son la misma cantidad.",
         },
       ],
     },
     {
-      id: "chocolate",
-      type: "animated_solution",
+      id: "check-simpl",
+      type: "predict",
       help: [
         {
-          label: "¿Para qué simplificar?",
-          message: "Para comparar: dos fracciones equivalentes son la misma cantidad.",
+          label: "¿Qué es una fracción irreducible?",
+          message: "La que ya no se puede simplificar: numerador y denominador no tienen más divisor común que el $1$.",
         },
         {
-          label: "Otra forma de verlo",
-          message: "En lugar de simplificar la de Carmen, puedes ampliar la de Francisco: $\\frac{1}{4} = \\frac{2}{8}$.",
+          label: "No veo el divisor común mayor",
+          message: "Divide entre cualquier divisor común, aunque no sea el mayor, y repite hasta que no puedas más.",
         },
       ],
-      title: "Problema — ¿quién comió más?",
-      content: [
-        "Francisco come $\\frac{1}{4}$ de una tableta y Carmen $\\frac{2}{8}$ de otra igual. ¿Quién comió un trozo mayor?",
-      ],
-      frames: [
+      title: "Fracción simplificada",
+      question:
+        "En una biblioteca hay 1 575 libros y 630 están prestados. La fracción prestada es $\\frac{630}{1575}$. ¿Cuál es su forma irreducible?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$\\frac{2}{5}$" },
         {
-          caption: "Simplifica la fracción de Carmen:",
-          math: "\\frac{2}{8} = \\frac{2 : 2}{8 : 2} = \\frac{1}{4}",
-        },
-        {
-          caption: "Conclusión:",
-          math: "\\frac{1}{4} = \\frac{2}{8} \\Rightarrow \\text{ comieron la misma cantidad}",
-        },
-      ],
-    },
-    {
-      id: "anim-biblio",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué tantos pasos?",
-          message: "Cada paso divide entre un divisor común distinto. Podrías ir más rápido dividiendo entre el m.c.d.",
+          id: "b",
+          label: "$\\frac{14}{35}$",
+          incorrectFeedback:
+            "Esa fracción es equivalente, pero todavía se puede simplificar: $14$ y $35$ son múltiplos de $7$.",
         },
         {
-          label: "¿Cómo sé que ya está simplificada?",
-          message: "Cuando $2$ y $5$ no tienen más divisor común que el $1$.",
+          id: "c",
+          label: "$\\frac{210}{525}$",
+          incorrectFeedback:
+            "Solo has dividido entre $3$ una vez. Ambos términos siguen teniendo divisores comunes ($3$, $5$, $7$…).",
+        },
+        {
+          id: "d",
+          label: "$\\frac{5}{2}$",
+          incorrectFeedback:
+            "Has dado la vuelta a la fracción: no es equivalente (vale más que $1$), y los libros prestados son menos de la mitad.",
         },
       ],
-      title: "Ejemplo — fracción de libros prestados",
-      content: [
-        "De $1575$ libros, $630$ están prestados. ¿Qué fracción está prestada? (simplifica).",
-      ],
-      frames: [
-        { caption: "Fracción:", math: "\\frac{630}{1575}" },
-        { caption: "Simplificando:", math: "\\frac{630}{1575} = \\frac{210}{525} = \\frac{70}{175} = \\frac{14}{35} = \\frac{2}{5}" },
-      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "$\\frac{630}{1575} = \\frac{210}{525} = \\frac{70}{175} = \\frac{14}{35} = \\frac{2}{5}$ (dividiendo entre $3$, $3$, $5$ y $7$; o entre $315$ de golpe).",
     },
     {
       id: "check-equiv",
@@ -248,27 +280,46 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
         "Vale cualquier marcado equivalente: $\\frac{2}{5} = \\frac{4}{10} = \\frac{6}{15} = \\frac{8}{20}$.",
     },
     {
-      id: "check-simpl",
-      type: "fill_in_blank",
+      id: "check-completa",
+      type: "predict",
       help: [
         {
-          label: "¿Qué es una fracción irreducible?",
-          message: "La que ya no se puede simplificar: numerador y denominador no tienen más divisor común que el $1$.",
+          label: "¿Por cuánto se ha multiplicado?",
+          message: "Mira los dos denominadores: ¿por qué número hay que multiplicar $4$ para llegar a $20$?",
         },
         {
-          label: "No veo el divisor común mayor",
-          message: "Divide entre cualquier divisor común, aunque no sea el mayor, y repite hasta que no puedas más.",
-        },
-        {
-          label: "¿Cómo sé que ya he terminado?",
-          message: "Mira si el numerador y el denominador comparten algún divisor distinto de $1$. Si no, es irreducible.",
+          label: "Y el numerador",
+          message: "Lo que hagas abajo hay que hacerlo también arriba, con el mismo número.",
         },
       ],
-      title: "Simplifica",
-      question: "La fracción irreducible equivalente a $\\frac{15}{20}$ es $\\frac{?}{?}$. Escribe solo el numerador.",
-      correctAnswers: ["3"],
-      hint: "Divide numerador y denominador entre $5$.",
-      explanation: "$\\frac{15}{20} = \\frac{3}{4}$.",
+      title: "Completar una equivalencia",
+      question:
+        "Un tablero de 4 filas iguales tiene 3 pintadas, o sea, $\\frac{3}{4}$. Se vuelve a dividir en 20 filas más estrechas, todas iguales. ¿Cuántas hay que pintar para cubrir la misma parte?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$15$ filas" },
+        {
+          id: "b",
+          label: "$7$ filas",
+          incorrectFeedback:
+            "Has sumado: de $4$ a $20$ hay $16$ más, y $3 + 16$ no da $7$. Para mantener la parte hay que **multiplicar** por $5$ en los dos términos.",
+        },
+        {
+          id: "c",
+          label: "$19$ filas",
+          incorrectFeedback:
+            "Has hecho $20 - 1$ (porque en $\\frac{3}{4}$ falta una fila). Pintar casi todo es otra parte, mucho mayor que tres cuartos.",
+        },
+        {
+          id: "d",
+          label: "$3$ filas",
+          incorrectFeedback:
+            "Con $20$ filas, cada una es mucho más estrecha. Tres filas serían solo $\\frac{3}{20}$ del tablero.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\frac{3}{4} = \\frac{3\\cdot 5}{4\\cdot 5} = \\frac{15}{20}$: hay que pintar $15$ filas.",
     },
   ],
 };
