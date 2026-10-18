@@ -67,6 +67,12 @@ import { tablasGraficasGraficosEstadisticosLesson } from "@/data/lessons/matemat
 import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/02-tablas-graficas-informacion-puntos";
 import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/03-tablas-graficas-interpretacion-graficas";
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
+import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
+import { rectasYAngulosMediatrizBisectrizLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/02-rectas-y-angulos-mediatriz-bisectriz";
+import { rectasYAngulosAngulosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/03-rectas-y-angulos-angulos";
+import { rectasYAngulosParalelasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/04-rectas-y-angulos-paralelas";
+import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/05-rectas-y-angulos-medida";
+import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/06-rectas-y-angulos-poligonos";
 
 export const interactiveLessons = {
   "algebra-ecuaciones": algebraEcuacionesLesson,
@@ -75,6 +81,12 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
+  "rectas-y-angulos-mediatriz-bisectriz": rectasYAngulosMediatrizBisectrizLesson,
+  "rectas-y-angulos-angulos": rectasYAngulosAngulosLesson,
+  "rectas-y-angulos-paralelas": rectasYAngulosParalelasLesson,
+  "rectas-y-angulos-medida": rectasYAngulosMedidaLesson,
+  "rectas-y-angulos-poligonos": rectasYAngulosPoligonosLesson,
   "areas-circulo": areasCirculoLesson,
   "areas-cuadrilateros": areasCuadrilaterosLesson,
   "areas-poligonos": areasPoligonosLesson,

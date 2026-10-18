@@ -128,6 +128,19 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `ecuacion-identidad` | Se prueban `x = 1…5`: `3x − 4 = 8` solo se cumple con `x = 4`; `6x − 4x = 2x` con todos | — |
 | `comprobar-solucion` | Comprobar `x = 3` en `7x − 2x + 4 = 8 + 3x + 2` (19 = 19) y ver cómo se delata un valor erróneo (`x = 2`) | — |
 | `pasos-problema` | Los cuatro pasos (nombrar, relacionar, resolver, interpretar) con barras: Pablo `x`, Lucía `x + 6`, suman 30 | — |
+| `recta-semirrecta` | Recta (sin principio ni fin), semirrecta (un punto la parte en dos) y segmento (dos puntos la acotan) | — |
+| `posiciones-rectas` | Paralelas (misma distancia), secantes (un punto) y perpendiculares (90°): la recta `s` gira en torno a un punto | — |
+| `mediatriz-equidistan` | Mediatriz = perpendicular por el punto medio; sus puntos equidistan de los extremos (`PA = PB`, `QA = QB`) | — |
+| `mediatriz-compas` | Construcción con **compás y regla**: arcos desde A y desde B con la misma abertura, la regla une los cortes | — |
+| `bisectriz-equidistan` | Bisectriz de un ángulo de 60°: dos mitades de 30° y distancias iguales a los lados | — |
+| `bisectriz-compas` | Construcción con compás y regla: arco en el vértice, dos arcos iguales desde R y S, regla por el corte T | — |
+| `angulo-elementos` | Ángulo = región entre dos semirrectas con el mismo origen: vértice, lados y amplitud | — |
+| `angulos-opuestos` | Dos rectas que se cortan: los opuestos por el vértice son iguales y los consecutivos suman 180° | — |
+| `paralelas-secante` | Secante y dos paralelas: los ocho ángulos, opuestos, correspondientes (se trasladan) y alternos | — |
+| `grado-minuto` | Un recto = 90 grados; 1° = 60′ y 1′ = 60″ (zoom de barras); 37° 40′ = 37° + 40/60 | — |
+| `angulos-columna` | Suma (llevada de 60′ a 1°) o resta (préstamo de 1° = 60′) de ángulos en grados y minutos, en columna | `op` (`+`/`-`), `a`, `b` (grados y minutos del 1.º), `c`, `d` (del 2.º) |
+| `triangulo-180` | Los ángulos de un triángulo suman 180°: la paralela por un vértice copia a y b junto a c | — |
+| `poligono-triangulos` | Cuadrilátero, pentágono y hexágono partidos en triángulos: suma `(n − 2)·180°` y ángulo del regular | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -158,6 +171,17 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fraction-product` | Producto de dos fracciones propias en un cuadrado unidad: columnas (1.ª), filas (2.ª) y zona solapada = resultado; denominadores de 1 a 8 | `initial: [a, b, c, d]` |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
+| `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |
+| `punto-mediatriz` | Se mueve un punto `P` (altura y desplazamiento lateral): `PA = PB` solo si está en la mediatriz de `AB` | `a` (desplazamiento), `b` (altura) |
+| `compas-mediatriz` | **Compás y regla interactivos**: abertura (se bloquea al empezar), giro del compás que traza cada arco, paso a B y regla; con abertura ≤ mitad de `AB` los arcos no se cortan | `a` (abertura inicial, mm) |
+| `compas-bisectriz` | Compás y regla: amplitud del ángulo, arco en el vértice, arcos desde R y S (abertura propia) y regla | `a` (amplitud), `b` (abertura de los arcos, mm) |
+| `bisectriz-explorador` | Amplitud del ángulo y posición de `P` en la bisectriz: dos mitades iguales y `PR = PS` | `a` (amplitud), `b` (distancia de P, cm) |
+| `angulo-explorador` | Amplitud 0–360°: nombre del ángulo (agudo, recto, obtuso, llano, cóncavo, completo) con atajos 90/180/360 | `a` |
+| `angulos-suma` | Complementarios (90°) o suplementarios (180°): al cambiar `α` se ajusta `β` | `a` (α), `b` (`90` o `180`) |
+| `paralelas-explorador` | Inclinación de la secante (30–150°) y tipo de pareja (opuestos, correspondientes, alternos, consecutivos) con sus valores | `a` (inclinación) |
+| `transportador` | Transportador con las dos escalas: la lectura sigue a la abertura del ángulo | `a` |
+| `triangulo-explorador` | Ángulos `a` y `b` libres (el tercero se ajusta): triángulo y barra que suma 180° | `a`, `b` |
+| `poligono-explorador` | Número de lados 3–12: triángulos en que se parte, suma `(n − 2)·180°` y ángulo del regular | `n` |
 | `balanza-explorador` | Balanza `a·x + b = c`: sumar/restar 1 o dividir entre `a` en los dos platos; la solución no cambia (ecuaciones equivalentes) | `a`, `b`, `c` |
 
 ## Respuesta como fracción

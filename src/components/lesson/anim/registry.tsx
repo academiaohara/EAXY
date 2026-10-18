@@ -81,6 +81,20 @@ import { buildEcuacionIdentidad } from "@/components/lesson/anim/scenes/ecuacion
 import { buildComprobarSolucion } from "@/components/lesson/anim/scenes/comprobar-solucion";
 import { buildPasosProblema } from "@/components/lesson/anim/scenes/pasos-problema";
 
+import { buildRectaSemirrecta } from "@/components/lesson/anim/scenes/recta-semirrecta";
+import { buildPosicionesRectas } from "@/components/lesson/anim/scenes/posiciones-rectas";
+import { buildMediatrizEquidistan } from "@/components/lesson/anim/scenes/mediatriz-equidistan";
+import { buildMediatrizCompas } from "@/components/lesson/anim/scenes/mediatriz-compas";
+import { buildBisectrizEquidistan } from "@/components/lesson/anim/scenes/bisectriz-equidistan";
+import { buildBisectrizCompas } from "@/components/lesson/anim/scenes/bisectriz-compas";
+import { buildAnguloElementos } from "@/components/lesson/anim/scenes/angulo-elementos";
+import { buildAngulosOpuestos } from "@/components/lesson/anim/scenes/angulos-opuestos";
+import { buildParalelasSecante } from "@/components/lesson/anim/scenes/paralelas-secante";
+import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
+import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
+import { buildTriangulo180 } from "@/components/lesson/anim/scenes/triangulo-180";
+import { buildPoligonoTriangulos } from "@/components/lesson/anim/scenes/poligono-triangulos";
+
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
 /** Lista canónica de animaciones disponibles para `{ kind: "anim", scene }`. */
@@ -162,6 +176,19 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "ecuacion-identidad": () => buildEcuacionIdentidad(),
   "comprobar-solucion": () => buildComprobarSolucion(),
   "pasos-problema": () => buildPasosProblema(),
+  "recta-semirrecta": () => buildRectaSemirrecta(),
+  "posiciones-rectas": () => buildPosicionesRectas(),
+  "mediatriz-equidistan": () => buildMediatrizEquidistan(),
+  "mediatriz-compas": () => buildMediatrizCompas(),
+  "bisectriz-equidistan": () => buildBisectrizEquidistan(),
+  "bisectriz-compas": () => buildBisectrizCompas(),
+  "angulo-elementos": () => buildAnguloElementos(),
+  "angulos-opuestos": () => buildAngulosOpuestos(),
+  "paralelas-secante": () => buildParalelasSecante(),
+  "grado-minuto": () => buildGradoMinuto(),
+  "angulos-columna": (p) => buildAngulosColumna(p),
+  "triangulo-180": () => buildTriangulo180(),
+  "poligono-triangulos": () => buildPoligonoTriangulos(),
 };
 
 export function buildSlideAnim(
