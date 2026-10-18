@@ -42,15 +42,13 @@ describe("FractionProductTool", () => {
     expect(value("numerador 1")).toBe(1);
   });
 
-  it("con un numerador 0 el producto es 0 y se puede reiniciar", () => {
+  it("con un numerador 0 el producto es 0", () => {
     render(<FractionProductTool initial={[3, 4, 2, 5]} />);
     for (let i = 0; i < 5; i += 1) {
       fireEvent.click(screen.getByLabelText("Menos numerador 1"));
     }
     expect(value("numerador 1")).toBe(0);
     expect(screen.getByTestId("fraction-tool-result").textContent).toContain("0");
-    fireEvent.click(screen.getByRole("button", { name: /reiniciar/i }));
-    expect(value("numerador 1")).toBe(3);
-    expect(value("denominador 2")).toBe(5);
+    expect(screen.queryByRole("button", { name: /reiniciar/i })).toBeNull();
   });
 });
