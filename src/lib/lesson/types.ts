@@ -642,7 +642,16 @@ export type SlideAnimId =
   | "fraccion-gasto-resto"
   | "balanza-ecuacion"
   | "maquina-funcion"
-  | "semejantes-agrupar";
+  | "semejantes-agrupar"
+  | "letras-valores"
+  | "enunciado-expresion"
+  | "campo-perimetro-area"
+  | "monomio-partes"
+  | "monomio-producto"
+  | "monomio-cociente"
+  | "ecuacion-identidad"
+  | "comprobar-solucion"
+  | "pasos-problema";
 
 export type ExprStep = {
   tokens: string[];

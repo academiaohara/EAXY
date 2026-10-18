@@ -81,6 +81,7 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
           text: "Se opera con las **mismas leyes** que con números: la letra solo espera a que le pongas valor.",
         },
       ],
+      visual: { kind: "anim", scene: "letras-valores" },
     },
     {
       id: "campo-formula",
@@ -116,6 +117,7 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
           text: "$2x + 2y$ no es lo mismo que $2xy$: el perímetro **suma** los lados; el área los **multiplica**.",
         },
       ],
+      visual: { kind: "anim", scene: "campo-perimetro-area" },
     },
     {
       id: "cancha",
@@ -251,6 +253,7 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
           text: "El doble de $x - 1$ es $2(x - 1)$, **no** $2x - 1$: el doble afecta a todo el resultado, y por eso va el paréntesis.",
         },
       ],
+      visual: { kind: "anim", scene: "enunciado-expresion" },
     },
     {
       id: "abuelo",

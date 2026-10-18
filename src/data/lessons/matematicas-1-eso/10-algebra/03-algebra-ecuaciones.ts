@@ -42,6 +42,7 @@ export const algebraEcuacionesLesson: InteractiveLesson = {
           text: "Toda ecuación es una igualdad, pero no toda igualdad algebraica es una ecuación: las identidades no tienen nada que «resolver».",
         },
       ],
+      visual: { kind: "anim", scene: "ecuacion-identidad" },
     },
     {
       id: "elementos",

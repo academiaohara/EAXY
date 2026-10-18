@@ -119,6 +119,15 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `balanza-ecuacion` | Balanza en equilibrio: `a·x + b = c` (`sign: "+"`) o `x − b = c` (`sign: "-"`); se hace lo mismo en los dos platos hasta dejar la caja x sola (la solución debe ser entera) | `a`, `b`, `c`, `sign` |
 | `maquina-funcion` | Máquina que asocia a cada `n` el valor `a·n + b`: dos casos concretos y la regla general | `a`, `b`, `nums` (dos entradas) |
 | `semejantes-agrupar` | `a·x + b·x + c·y`: las x se agrupan, las y no se mezclan («queda indicada») | `a`, `b`, `c` |
+| `letras-valores` | Monedas en clave: cada letra vale un número, se sustituye y se suma (`a + a + b + c + c = 47`) | — |
+| `enunciado-expresion` | Traducir «el doble de la edad del año pasado» por trozos: `x`, `x − 1`, `2(x − 1)` frente al error `2x − 1` | — |
+| `campo-perimetro-area` | Campo de largo `x` y ancho `y`: perímetro `2x + 2y` (suma de lados) y área `x·y` (cuadrícula) | — |
+| `monomio-partes` | `−3x²y` separado en coeficiente y parte literal, y leído como producto `−3·x·x·y` | — |
+| `monomio-producto` | `(a·xᶜ)·(b·xᵈ)`: se desarrollan las potencias, se reordenan y se cuentan las letras (exponentes que se suman) | `a`, `b`, `c`, `d` (exponentes ≤ 4) |
+| `monomio-cociente` | `(a·xᶜ):(b·xᵈ)` como fracción: se tachan letras por parejas y se dividen los coeficientes | `a` (múltiplo de `b`), `b`, `c`, `d` (`c ≥ d`) |
+| `ecuacion-identidad` | Se prueban `x = 1…5`: `3x − 4 = 8` solo se cumple con `x = 4`; `6x − 4x = 2x` con todos | — |
+| `comprobar-solucion` | Comprobar `x = 3` en `7x − 2x + 4 = 8 + 3x + 2` (19 = 19) y ver cómo se delata un valor erróneo (`x = 2`) | — |
+| `pasos-problema` | Los cuatro pasos (nombrar, relacionar, resolver, interpretar) con barras: Pablo `x`, Lucía `x + 6`, suman 30 | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

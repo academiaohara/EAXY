@@ -72,6 +72,7 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
           text: "Es la expresión algebraica más sencilla: solo hay **productos** de letras y números.",
         },
       ],
+      visual: { kind: "anim", scene: "monomio-partes" },
     },
     {
       id: "escritura",
@@ -279,6 +280,7 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
           text: "Los exponentes se suman al **multiplicar** potencias de la misma base, no al sumar monomios.",
         },
       ],
+      visual: { kind: "anim", scene: "monomio-producto", params: { a: 2, b: 3, c: 2, d: 3 } },
     },
     {
       id: "dividir",
@@ -310,6 +312,7 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
           ],
         },
       ],
+      visual: { kind: "anim", scene: "monomio-cociente", params: { a: 6, b: 2, c: 3, d: 1 } },
     },
     {
       id: "check-producto",
