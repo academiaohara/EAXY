@@ -616,6 +616,9 @@ export type SlideAnimId =
   | "escala-longitudes"
   | "cuadrados-area"
   | "m2-dm2"
+  | "fraccion-partes"
+  | "fraccion-recta"
+  | "fraccion-operador"
   | "fraccion-equivalente"
   | "fraccion-barras-suma"
   | "fraccion-de-fraccion"
@@ -681,9 +684,6 @@ export type SlideAnimParams = {
   inv?: boolean;
 };
 
-/** Herramientas interactivas disponibles dentro de una diapositiva. */
-export type SlideToolId = "fraction-product";
-
 export type SlideTone = "info" | "key" | "ok" | "warn";
 
 /** Piezas con las que se compone una diapositiva (cada una con su forma propia). */
@@ -727,13 +727,6 @@ export type SlideBlock =
     }
   /** Ilustración PNG de `public/lesson/…` (se omite si el fichero aún no existe). */
   | { kind: "figure"; src: string; alt: string; caption?: string; maxWidth?: number }
-  /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
-  | {
-      kind: "tool";
-      tool: SlideToolId;
-      /** Valores de partida (`fraction-product`: numerador y denominador de cada fracción). */
-      initial?: number[];
-    }
   /** Animación controlada (play/pausa/paso a paso) dentro de la diapositiva. */
   | {
       kind: "anim";
@@ -743,7 +736,21 @@ export type SlideBlock =
       captions?: string[];
       /** Milisegundos por paso en reproducción automática. */
       beatMs?: number;
+    }
+  /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
+  | {
+      kind: "tool";
+      tool: SlideToolId;
+      /** Valores iniciales (y fracción de partida en `fraccion-equivalentes`). */
+      params?: { n?: number; d?: number; k?: number };
+      /** `fraction-product`: numerador y denominador de cada fracción, `[a, b, c, d]`. */
+      initial?: number[];
+      /** Una línea que dice qué probar. */
+      hint?: string;
     };
+
+/** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
+export type SlideToolId = "fraccion-explorador" | "fraccion-equivalentes" | "fraction-product";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

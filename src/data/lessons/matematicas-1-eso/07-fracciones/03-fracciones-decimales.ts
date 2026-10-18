@@ -5,10 +5,11 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
   slug: "fracciones-decimales",
   title: "3. Fracciones y números decimales",
   subtitle: TEMA_1ESO_7_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "division",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Una fracción es una cuenta",
@@ -23,33 +24,31 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
           message: "$\\frac{1}{2} = 0{,}5$ y $\\frac{1}{4} = 0{,}25$ son divisiones que se saben de memoria.",
         },
       ],
-      title: "Fracción = división",
-      content: [
-        "Toda fracción equivale al **cociente** del numerador entre el denominador.",
-        "$\\frac{2}{5} = 2 : 5 = 0{,}4$ (cuatro décimas).",
-        "Para pasar una fracción a decimal, **divide** numerador entre denominador.",
-      ],
-      visuals: [
+      title: "Una fracción es una división",
+      blocks: [
         {
-          kind: "equation-anatomy",
-          title: "Equivalencia",
-          parts: [
-            { tex: "\\frac{2}{5}", label: "Fracción", tone: "cobalt" },
-            { tex: "=", label: "" },
-            { tex: "2 : 5", label: "División", tone: "emerald" },
-            { tex: "= 0{,}4", label: "Decimal", tone: "amber" },
-          ],
+          kind: "definition",
+          text: "Toda fracción equivale al **cociente** de su numerador entre su denominador: $\\frac{a}{b} = a : b$.",
         },
         {
-          kind: "number-line",
-          title: "En la recta entre $0$ y $1$",
-          min: 0,
-          max: 1,
-          step: 0.1,
-          points: [{ value: 0.4, label: "\\frac{2}{5}", tone: "cobalt" }],
-          caption: "Cuatro décimas = dos quintos del segmento unidad.",
+          kind: "compare",
+          left: {
+            title: "Dividiendo",
+            math: ["\\frac{2}{5} = 2 : 5 = 0{,}4"],
+            tone: "info",
+          },
+          right: {
+            title: "Ampliando a décimas",
+            math: ["\\frac{2}{5} = \\frac{4}{10} = 0{,}4"],
+            tone: "key",
+          },
+        },
+        {
+          kind: "text",
+          text: "Para pasar una fracción a decimal, **divide el numerador entre el denominador**. El resultado se lee como siempre: $0{,}4$ son cuatro décimas.",
         },
       ],
+      visual: { kind: "anim", scene: "division-decimal", params: { terms: ["2", "5"], places: 1 } },
     },
     {
       id: "marca-decimas",
@@ -77,7 +76,7 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     },
     {
       id: "periodicos",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Por qué el decimal no es exacto?",
@@ -92,38 +91,147 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
           message: "Que esas cifras se repiten sin fin: $0{,}\\overline{3} = 0{,}333\\ldots$",
         },
       ],
-      title: "Decimales periódicos",
-      content: [
-        "Algunas divisiones **no terminan**: $\\frac{1}{3} = 0{,}333\\ldots = 0{,}\\overline{3}$.",
-        "En esos casos la **fracción es más exacta** que el decimal truncado.",
-        "$\\frac{5}{12} = 0{,}416666\\ldots$; si pides dos decimales, aproximas.",
+      title: "Cuando la división no termina",
+      blocks: [
+        {
+          kind: "definition",
+          text: "Algunas divisiones **no terminan nunca**: el mismo resto vuelve a aparecer y las cifras se repiten. Es un decimal **periódico**: $\\frac{1}{3} = 0{,}333\\ldots = 0{,}\\overline{3}$.",
+        },
+        {
+          kind: "example",
+          lines: [
+            { math: "\\frac{1}{3} = 0{,}\\overline{3}", note: "se repite el 3" },
+            { math: "\\frac{5}{12} = 0{,}41\\overline{6}", note: "se repite el 6" },
+          ],
+        },
+        {
+          kind: "warning",
+          title: "Exacta o aproximada",
+          text: "Si el decimal es infinito, la **fracción es el valor exacto** y el decimal solo una aproximación: $0{,}33$ no es $\\frac{1}{3}$, se le parece.",
+        },
       ],
-      warning:
-        "No confundas fracción exacta con decimal aproximado cuando el cociente es infinito.",
+      visual: { kind: "anim", scene: "division-decimal", params: { terms: ["1", "3"], places: 3 } },
     },
     {
-      id: "anim-25",
-      type: "animated_solution",
+      id: "check-leche",
+      type: "predict",
       help: [
         {
-          label: "Dos caminos al mismo número",
-          message: "Dividir $2 : 5$ y ampliar $\\frac{2}{5}$ a décimas dan el mismo resultado.",
+          label: "Pasa las dos cantidades a la misma forma",
+          message: "Para comparar una fracción con un decimal conviene escribir las dos igual. Divide el numerador entre el denominador.",
         },
         {
-          label: "¿Por qué décimas?",
-          message: "Porque $5 \\cdot 2 = 10$: multiplicando por $2$ llegas a denominador $10$, y con denominador $10$ el decimal se lee directamente.",
+          label: "¿Qué comparación hago?",
+          message: "Lo que necesita la receta es una cantidad; lo que hay en la nevera, otra. Basta si lo que hay es mayor o igual que lo que hace falta.",
         },
       ],
-      title: "Ejemplo — $\\frac{2}{5}$ en la recta",
-      content: ["Representa $\\frac{2}{5}$ como decimal y compáralo con $\\frac{4}{10}$."],
-      frames: [
-        { caption: "División:", math: "2 : 5 = 0{,}4" },
-        { caption: "Fracción equivalente:", math: "\\frac{2}{5} = \\frac{4}{10} = 0{,}4" },
+      title: "¿Llega la leche?",
+      question:
+        "Una receta necesita $\\frac{3}{8}$ de litro de leche y en la nevera quedan 0,4 litros. ¿Hay leche suficiente?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "Sí: $\\frac{3}{8} = 0{,}375$ y $0{,}375 < 0{,}4$" },
+        {
+          id: "b",
+          label: "No: $\\frac{3}{8} = 0{,}38$ y $0{,}38$ es mayor que $0{,}4$ porque tiene más cifras",
+          incorrectFeedback:
+            "Tener más cifras no hace mayor a un decimal: $0{,}38 < 0{,}40$. (Y además $3 : 8$ es $0{,}375$.)",
+        },
+        {
+          id: "c",
+          label: "No: $\\frac{3}{8}$ es mayor porque $8$ es mayor que $4$",
+          incorrectFeedback:
+            "Comparas el denominador de una fracción con la cifra de un decimal, que no son lo mismo. Hay que pasar $\\frac{3}{8}$ a decimal, $3 : 8$.",
+        },
+        {
+          id: "d",
+          label: "No se puede saber: una es una fracción y la otra un decimal",
+          incorrectFeedback:
+            "Se puede: toda fracción es una división, y al hacerla sale un decimal comparable.",
+        },
       ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$3 : 8 = 0{,}375$, que es menor que $0{,}4$: sobran $0{,}025$ litros.",
+    },
+    {
+      id: "check-calculadora",
+      type: "predict",
+      help: [
+        {
+          label: "Mira la cuenta",
+          message: "Divide $1$ entre $3$ a mano: ¿qué resto aparece una y otra vez?",
+        },
+        {
+          label: "¿Qué es más exacto?",
+          message: "Un valor que no se recorta, o uno cortado tras unas pocas cifras.",
+        },
+      ],
+      title: "Lo que muestra la calculadora",
+      question:
+        "Al dividir 1 entre 3 con la calculadora aparece 0,3333333, y al multiplicar ese resultado por 3 sale 0,9999999. ¿Qué explica que no salga 1?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "El decimal es periódico y la calculadora lo corta: $\\frac{1}{3}$ exacto, multiplicado por $3$, sí da $1$" },
+        {
+          id: "b",
+          label: "$\\frac{1}{3}$ no puede multiplicarse por $3$",
+          incorrectFeedback: "Sí puede: $\\frac{1}{3}\\cdot 3 = \\frac{3}{3} = 1$. El fallo está en el decimal, no en la operación.",
+        },
+        {
+          id: "c",
+          label: "La calculadora se ha equivocado al dividir",
+          incorrectFeedback:
+            "La división está bien hecha; lo que ocurre es que $0{,}\\overline{3}$ tiene infinitas cifras y la pantalla solo muestra unas pocas.",
+        },
+        {
+          id: "d",
+          label: "$0{,}3333333$ es mayor que $\\frac{1}{3}$",
+          incorrectFeedback:
+            "Es **menor**: le faltan todas las cifras $3$ que vienen después. Por eso al triplicarlo no llega a $1$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation:
+        "$0{,}3333333$ es solo una aproximación de $\\frac{1}{3}$. La fracción exacta, multiplicada por $3$, es $\\frac{3}{3} = 1$.",
+    },
+    {
+      id: "check-euros",
+      type: "classify",
+      help: [
+        {
+          label: "Un euro es la unidad",
+          message: "«La cuarta parte de un euro» es $\\frac{1}{4}$ de $1$ €. Pásalo a decimal dividiendo.",
+        },
+        {
+          label: "Empieza por los fáciles",
+          message: "«Un céntimo» y «la mitad de un euro» salen sin hacer cuentas; con los demás, divide el denominador entre $100$ o usa monedas.",
+        },
+      ],
+      title: "Fracciones de euro",
+      question: "Asocia cada fracción de euro con su cantidad en euros.",
+      groups: [
+        { id: "075", label: "$0{,}75$ €", tone: "cobalt" },
+        { id: "025", label: "$0{,}25$ €", tone: "emerald" },
+        { id: "020", label: "$0{,}20$ €", tone: "amber" },
+        { id: "005", label: "$0{,}05$ €", tone: "violet" },
+        { id: "001", label: "$0{,}01$ €", tone: "rose" },
+      ],
+      items: [
+        { id: "a", text: "Tres cuartos de euro", group: "075" },
+        { id: "b", text: "La cuarta parte de un euro", group: "025" },
+        { id: "c", text: "La quinta parte de un euro", group: "020" },
+        { id: "d", text: "Un veinteavo de euro", group: "005" },
+        { id: "e", text: "Un céntimo de euro", group: "001" },
+      ],
+      hint: "Divide $1$ € entre el denominador: $1 : 4$, $1 : 5$, $1 : 20$…",
+      explanation:
+        "$\\frac{3}{4} = 0{,}75$, $\\frac{1}{4} = 0{,}25$, $\\frac{1}{5} = 0{,}20$, $\\frac{1}{20} = 0{,}05$ y $\\frac{1}{100} = 0{,}01$.",
     },
     {
       id: "check-decimal",
-      type: "fill_in_blank",
+      type: "predict",
       help: [
         {
           label: "¿Qué es una fracción?",
@@ -139,10 +247,35 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
           message: "$\\frac{3}{8}$ es menos que la mitad ($\\frac{4}{8}$) y más que un cuarto ($\\frac{2}{8}$): el decimal queda entre $0{,}25$ y $0{,}5$.",
         },
       ],
-      title: "Pasa a decimal",
-      question: "Expresa $\\frac{3}{8}$ como número decimal (usa coma).",
-      correctAnswers: ["0,375", "0.375"],
-      explanation: "$3 : 8 = 0{,}375$.",
+      title: "Repartir bizcochos",
+      question:
+        "Se reparten 3 bizcochos iguales entre 8 personas, y cada una recibe $\\frac{3}{8}$ de bizcocho. ¿Cuántos bizcochos recibe cada persona, en forma decimal?",
+      mode: "choice",
+      calculator: true,
+      choices: [
+        { id: "a", label: "$0{,}375$" },
+        {
+          id: "b",
+          label: "$2{,}666\\ldots$",
+          incorrectFeedback:
+            "Has dividido $8 : 3$, al revés. Se divide el numerador entre el denominador, y debe salir menos que $1$.",
+        },
+        {
+          label: "$0{,}38$",
+          id: "c",
+          incorrectFeedback:
+            "Es una aproximación a las centésimas, no el valor exacto: $3 : 8$ termina en las milésimas, $0{,}375$.",
+        },
+        {
+          label: "$0{,}\\overline{3}$",
+          id: "d",
+          incorrectFeedback:
+            "Eso es $\\frac{1}{3}$. En $\\frac{3}{8}$ el resto llega a $0$ y la división termina.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$3 : 8 = 0{,}375$: trescientas setenta y cinco milésimas.",
     },
     {
       id: "check-13",
