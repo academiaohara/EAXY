@@ -1,4 +1,4 @@
-import { Canvas, Fade, Move, Txt } from "@/components/lesson/anim/primitives";
+import { Canvas, Fade, Move, Txt, quadArrowHead } from "@/components/lesson/anim/primitives";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 import { parseDec } from "@/components/lesson/anim/decimal";
@@ -259,10 +259,7 @@ export function buildTablaUnidades(params: TablaUnidadesParams): AnimBuild {
             return (
               <Fade key={i} show={arcsShown} dy={6} delay={i * 220}>
                 <path d={`M ${x1} ${HEAD_Y - 46} Q ${mid} ${HEAD_Y - 94} ${x2} ${HEAD_Y - 46}`} fill="none" stroke={MANIM.yellow} strokeWidth={3} strokeLinecap="round" />
-                <polygon
-                  points={`${x2},${HEAD_Y - 44} ${x2 + (goRight ? -11 : 11)},${HEAD_Y - 58} ${x2 + (goRight ? -2 : 2)},${HEAD_Y - 60}`}
-                  fill={MANIM.yellow}
-                />
+                <polygon points={quadArrowHead(mid, HEAD_Y - 94, x2, HEAD_Y - 46)} fill={MANIM.yellow} strokeLinejoin="round" />
               </Fade>
             );
           })}

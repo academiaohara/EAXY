@@ -217,6 +217,22 @@ export function HBrace({
   );
 }
 
+/**
+ * Punta de flecha rellena para una curva cuadrática `M x1 y1 Q cx cy x2 y2`:
+ * el vértice cae en (x2, y2) y se orienta según la tangente final (control → fin).
+ */
+export function quadArrowHead(cx: number, cy: number, x2: number, y2: number, size = 14): string {
+  const tx = x2 - cx;
+  const ty = y2 - cy;
+  const len = Math.hypot(tx, ty) || 1;
+  const ux = tx / len;
+  const uy = ty / len;
+  const bx = x2 - ux * size;
+  const by = y2 - uy * size;
+  const w = size * 0.5;
+  return `${x2},${y2} ${bx - uy * w},${by + ux * w} ${bx + uy * w},${by - ux * w}`;
+}
+
 export const CANVAS_W = 800;
 export const CANVAS_H = 420;
 

@@ -1,4 +1,4 @@
-import { Canvas, Fade, Txt } from "@/components/lesson/anim/primitives";
+import { Canvas, Fade, Txt, quadArrowHead } from "@/components/lesson/anim/primitives";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 import { PREFIX_NAMES, UNIT_COLS, type UnitFamily } from "@/components/lesson/anim/units";
@@ -78,14 +78,14 @@ export function buildEscaleraUnidades(params: { units?: UnitFamily }): AnimBuild
             <g key={i}>
               <Fade show={beat >= 3} dy={6} delay={i * 120}>
                 <path d={`M ${x1 + 14} 108 Q ${m} 58 ${x2 - 14} 108`} fill="none" stroke={MANIM.green} strokeWidth={3} strokeLinecap="round" />
-                <polygon points={`${x2 - 14},110 ${x2 - 26},96 ${x2 - 16},94`} fill={MANIM.green} />
+                <polygon points={quadArrowHead(m, 58, x2 - 14, 108)} fill={MANIM.green} strokeLinejoin="round" />
                 <Txt x={m} y={64} size={20} color={MANIM.green}>
                   {`×${factor}`}
                 </Txt>
               </Fade>
               <Fade show={beat >= 3} dy={-6} delay={i * 120}>
                 <path d={`M ${x2 - 14} 258 Q ${m} 308 ${x1 + 14} 258`} fill="none" stroke={MANIM.red} strokeWidth={3} strokeLinecap="round" />
-                <polygon points={`${x1 + 14},256 ${x1 + 26},270 ${x1 + 16},272`} fill={MANIM.red} />
+                <polygon points={quadArrowHead(m, 308, x1 + 14, 258)} fill={MANIM.red} strokeLinejoin="round" />
                 <Txt x={m} y={332} size={20} color={MANIM.red}>
                   {`:${factor}`}
                 </Txt>
