@@ -87,30 +87,8 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
       visual: { kind: "anim", scene: "fraccion-partes", params: { a: 6, b: 8 } },
     },
     {
-      id: "marca-pizza",
-      type: "fraction_pick",
-      help: [
-        {
-          label: "Léelo en voz alta",
-          message: "«Tres octavos» son tres porciones de tamaño un octavo. El nombre del denominador te dice cuántas porciones tiene la tarta entera.",
-        },
-        {
-          label: "¿Qué cuento y qué ignoro?",
-          message: "Solo coloreas porciones: el total de la tarta no cambia, ya está partida.",
-        },
-      ],
-      title: "Colorea la fracción",
-      question: "Toca las porciones de la tarta hasta colorear $\\frac{3}{8}$.",
-      shape: "circle",
-      numerator: 3,
-      denominator: 8,
-      itemLabel: "porción",
-      hint: "La tarta ya está partida en $8$ porciones iguales: el denominador. Colorea tantas como dice el numerador.",
-      explanation: "$\\frac{3}{8}$ son $3$ porciones de las $8$ iguales en que se ha partido la tarta.",
-    },
-    {
       id: "check-reparto",
-      type: "predict",
+      type: "fraction_pick",
       help: [
         {
           label: "¿Cuál es el total?",
@@ -118,37 +96,19 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
         },
         {
           label: "Primero cuenta lo que queda",
-          message: "Resta de las $8$ porciones las que se han comido entre los dos. Después decide qué número va arriba y cuál abajo.",
+          message: "Resta de las $8$ porciones las que se han comido entre los dos. Después colorea solo las que quedan.",
         },
       ],
       title: "Lo que queda de la pizza",
       question:
-        "Una pizza está partida en 8 porciones iguales. Marta se come 3 y Pablo se come 2. ¿Qué fracción de la pizza queda en la caja?",
-      mode: "choice",
-      choices: [
-        { id: "a", label: "$\\frac{3}{8}$" },
-        {
-          id: "b",
-          label: "$\\frac{5}{8}$",
-          incorrectFeedback:
-            "$\\frac{5}{8}$ es lo que **se han comido** entre los dos ($3 + 2 = 5$ porciones). La pregunta es por lo que queda.",
-        },
-        {
-          id: "c",
-          label: "$\\frac{3}{5}$",
-          incorrectFeedback:
-            "El denominador no cambia: la unidad sigue siendo la pizza entera, partida en $8$. No se cuentan solo las porciones comidas.",
-        },
-        {
-          id: "d",
-          label: "$\\frac{3}{2}$",
-          incorrectFeedback:
-            "Eso mezcla datos sueltos del enunciado. Una fracción de la pizza lleva abajo las porciones **totales**, $8$.",
-        },
-      ],
-      correctChoiceId: "a",
-      shuffleChoices: true,
-      explanation: "Se han comido $3 + 2 = 5$ de las $8$ porciones; quedan $8 - 5 = 3$: $\\frac{3}{8}$ de la pizza.",
+        "Una pizza está partida en 8 porciones iguales. Marta se come 3 y Pablo se come 2. Colorea la fracción de la pizza que queda en la caja.",
+      shape: "circle",
+      numerator: 3,
+      denominator: 8,
+      itemLabel: "porción",
+      hint: "Entre Marta y Pablo se han comido $3 + 2 = 5$ porciones. Colorea las que quedan: el denominador sigue siendo $8$, la pizza entera.",
+      explanation:
+        "Se han comido $3 + 2 = 5$ de las $8$ porciones; quedan $8 - 5 = 3$: $\\frac{3}{8}$ de la pizza.",
     },
     {
       id: "recta",
@@ -195,10 +155,11 @@ export const fraccionesParteUnidadLesson: InteractiveLesson = {
         },
       ],
       title: "Pruébalo tú: ¿cuándo pasa de 1?",
+      arrange: "stack",
       blocks: [
         {
           kind: "text",
-          text: "Cambia el **numerador** y el **denominador** y observa la barra, el punto en la recta y el valor decimal.",
+          text: "Cambia el **numerador** y el **denominador** y observa la pizza, el punto en la recta y el valor decimal. Si pasa de $1$, aparece una segunda pizza.",
         },
         {
           kind: "warning",

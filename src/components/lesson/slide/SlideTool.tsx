@@ -4,7 +4,7 @@ import { RotateCcwIcon } from "lucide-react";
 import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
-import { decEs } from "@/components/lesson/anim/fraction";
+import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { SlideBlock } from "@/lib/lesson/types";
 
@@ -76,6 +76,43 @@ function Bars({ n, d, color }: { n: number; d: number; color: string }) {
   );
 }
 
+/** Una pizza partida en `d` porciones con `filled` coloreadas; con más de una unidad se dibujan varias. */
+function Pizzas({ n, d, color }: { n: number; d: number; color: string }) {
+  const wholes = Math.max(1, Math.ceil(n / d));
+  const R = 84;
+  const gap = 28;
+  const W = wholes * 2 * R + (wholes - 1) * gap + 8;
+  return (
+    <svg viewBox={`0 0 ${W} ${2 * R + 8}`} className="mx-auto block h-44 w-auto max-w-full" aria-hidden focusable="false" data-testid="tool-pizzas">
+      {Array.from({ length: wholes }, (_, w) => {
+        const filled = clamp(n - w * d, 0, d);
+        const cx = 4 + R + w * (2 * R + gap);
+        const cy = 4 + R;
+        return (
+          <g key={w}>
+            {Array.from({ length: d }, (_, i) => {
+              const props = {
+                fill: i < filled ? color : MANIM.panel,
+                fillOpacity: i < filled ? 0.9 : 1,
+                stroke: MANIM.yellow,
+                strokeWidth: 2,
+                strokeLinejoin: "round" as const,
+                className: "anim-t",
+              };
+              return d === 1 ? (
+                <circle key={i} cx={cx} cy={cy} r={R} {...props} />
+              ) : (
+                <path key={i} d={sectorPath(cx, cy, R, i, d)} {...props} />
+              );
+            })}
+            <circle cx={cx} cy={cy} r={R} fill="none" stroke={MANIM.yellow} strokeWidth={3.5} />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 /** Recta de 0 a 2 con la fracción marcada. */
 function MiniLine({ value, color }: { value: number; color: string }) {
   const x = (v: number) => 20 + v * 200;
@@ -95,14 +132,27 @@ function MiniLine({ value, color }: { value: number; color: string }) {
   );
 }
 
-function Frame({ hint, onReset, controls, children }: { hint: string; onReset: () => void; controls: React.ReactNode; children: React.ReactNode }) {
+function Frame({
+  hint,
+  onReset,
+  controls,
+  children,
+  stacked = false,
+}: {
+  hint: string;
+  onReset: () => void;
+  controls: React.ReactNode;
+  children: React.ReactNode;
+  /** Controles arriba y resultado debajo, en una sola columna. */
+  stacked?: boolean;
+}) {
   return (
     <section
       className="flex flex-col overflow-hidden rounded-xl border border-[color:var(--stage-border,#3d4f66)] bg-[color:var(--stage-surface,#1a2332)]"
       data-testid="lesson-tool"
     >
-      <div className="grid gap-5 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-8">
-        <div className="flex flex-col gap-4">{controls}</div>
+      <div className={stacked ? "flex flex-col gap-5 p-4" : "grid gap-5 p-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)] lg:gap-8"}>
+        <div className={stacked ? "grid gap-4 sm:grid-cols-2 sm:gap-8" : "flex flex-col gap-4"}>{controls}</div>
         <div className="flex min-w-0 flex-col gap-3">{children}</div>
       </div>
       <div className="flex items-center gap-3 border-t border-[color:var(--stage-border,#3d4f66)] bg-black/20 px-4 py-2.5">
@@ -137,6 +187,7 @@ function FraccionExplorador({ block }: { block: ToolBlock }) {
 
   return (
     <Frame
+      stacked
       hint={block.hint ?? "Mueve el numerador y el denominador y fíjate cuándo la fracción cruza el 1."}
       onReset={() => {
         setN(clamp(init.n, 0, 2 * init.d));
@@ -158,7 +209,7 @@ function FraccionExplorador({ block }: { block: ToolBlock }) {
           {exact ? "=" : "≈"} {decEs(value)}
         </span>
       </div>
-      <Bars n={n} d={d} color={color} />
+      <Pizzas n={n} d={d} color={color} />
       <MiniLine value={value} color={color} />
     </Frame>
   );

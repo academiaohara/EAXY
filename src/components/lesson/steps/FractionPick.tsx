@@ -102,21 +102,21 @@ export function FractionPick({
   return (
     <PracticeShell step={step} compact={compact} testId="lesson-fraction-pick">
       {step.adjustableParts ? (
-        <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-ink sm:text-base">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-base text-[color:var(--stage-ink,#0f172a)]">
           <span>Divide {UNIT_NAME[step.shape]} en</span>
-          <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 p-1">
+          <div className="flex items-center gap-1 rounded-full border border-[color:var(--stage-border,#e2e8f0)] bg-[color:var(--frac-pill,rgb(0_0_0/0.18))] p-1">
             <button
               type="button"
               onClick={() => changeParts(parts - 1)}
               disabled={locked || parts <= FRACTION_PARTS_MIN}
-              className="flex size-9 items-center justify-center rounded-full bg-white text-ink shadow-sm transition hover:bg-cobalt-tint disabled:opacity-40"
+              className="flex size-9 items-center justify-center rounded-full border border-[color:var(--stage-border,#e2e8f0)] bg-white/10 text-[color:var(--stage-ink,#0f172a)] transition hover:bg-white/20 disabled:opacity-40"
               aria-label="Menos partes"
               data-testid="fraction-parts-minus"
             >
               <MinusIcon className="size-4" />
             </button>
             <span
-              className="min-w-10 text-center font-heading text-xl font-semibold tabular-nums"
+              className="min-w-10 text-center font-heading text-xl font-semibold tabular-nums text-[color:var(--stage-ink,#0f172a)]"
               aria-live="polite"
               data-testid="fraction-parts-value"
             >
@@ -126,7 +126,7 @@ export function FractionPick({
               type="button"
               onClick={() => changeParts(parts + 1)}
               disabled={locked || parts >= FRACTION_PARTS_MAX}
-              className="flex size-9 items-center justify-center rounded-full bg-white text-ink shadow-sm transition hover:bg-cobalt-tint disabled:opacity-40"
+              className="flex size-9 items-center justify-center rounded-full border border-[color:var(--stage-border,#e2e8f0)] bg-white/10 text-[color:var(--stage-ink,#0f172a)] transition hover:bg-white/20 disabled:opacity-40"
               aria-label="Más partes"
               data-testid="fraction-parts-plus"
             >
@@ -155,21 +155,22 @@ export function FractionPick({
         <div
           className={cn(
             "flex items-center gap-3 rounded-2xl border px-4 py-2 transition-colors",
-            markedCount > 0 ? "border-cobalt/25 bg-cobalt-tint/40" : "border-slate-200 bg-slate-50",
+            "border-[color:var(--stage-border,#e2e8f0)] bg-[color:var(--frac-pill,rgb(0_0_0/0.18))]",
+            markedCount > 0 && "border-[color:var(--stage-accent,#4353ff)]",
           )}
           aria-live="polite"
           data-testid="fraction-readout"
         >
-          <span className="text-sm text-ink-muted">
+          <span className="text-base text-[color:var(--stage-muted,#526077)]">
             {step.shape === "set"
               ? `Has marcado ${markedCount} de ${parts * wholes}`
               : `Has coloreado ${markedCount} ${markedCount === 1 ? "parte" : "partes"}`}
           </span>
-          <span className="text-xl">
+          <span className="text-2xl text-[color:var(--stage-ink,#0f172a)]">
             <MathRenderer text={`$${readoutTex}$`} />
           </span>
           {checked && isCorrect && reading.simplified ? (
-            <span className="text-xl text-emerald-700">
+            <span className="text-2xl text-[color:var(--stage-accent-muted,#047857)]">
               <MathRenderer
                 text={`$= \\dfrac{${reading.simplified.numerator}}{${reading.simplified.denominator}}$`}
               />
@@ -180,7 +181,7 @@ export function FractionPick({
           <button
             type="button"
             onClick={() => setMarked((prev) => prev.map(() => false))}
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted transition hover:bg-slate-100 hover:text-ink"
+            className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium text-[color:var(--stage-muted,#526077)] transition hover:bg-white/10 hover:text-[color:var(--stage-ink,#0f172a)]"
             data-testid="fraction-clear"
           >
             <RotateCcwIcon className="size-3.5" aria-hidden />
