@@ -61,6 +61,10 @@ import { buildCuadriculaPorcentaje } from "@/components/lesson/anim/scenes/cuadr
 import { buildReduccionUnidad } from "@/components/lesson/anim/scenes/reduccion-unidad";
 import { buildTablaRazon } from "@/components/lesson/anim/scenes/tabla-razon";
 
+import { buildBalanzaEcuacion } from "@/components/lesson/anim/scenes/balanza-ecuacion";
+import { buildMaquinaFuncion } from "@/components/lesson/anim/scenes/maquina-funcion";
+import { buildSemejantesAgrupar } from "@/components/lesson/anim/scenes/semejantes-agrupar";
+
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
 /** Lista canónica de animaciones disponibles para `{ kind: "anim", scene }`. */
@@ -123,6 +127,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fraccion-de-fraccion": (p) => buildFraccionDeFraccion(p),
   "simplificar-factores": (p) => buildSimplificarFactores(p),
   "fraccion-cabe": (p) => buildFraccionCabe(p),
+  "balanza-ecuacion": (p) => buildBalanzaEcuacion(p),
+  "maquina-funcion": (p) => buildMaquinaFuncion(p),
+  "semejantes-agrupar": (p) => buildSemejantesAgrupar(p),
 };
 
 export function buildSlideAnim(
