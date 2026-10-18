@@ -110,22 +110,19 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
           kind: "rule",
           title: "Fracciones equivalentes",
           text: "Con tres datos y la incógnita se forman dos fracciones iguales; se multiplica en cruz.",
-          formula: "\\dfrac{a}{b} = \\dfrac{m}{x} \;\\Rightarrow\; x = \\dfrac{b \\cdot m}{a}",
-        },
-        {
-          kind: "example",
-          title: "3 chocolatinas pesan 60 g; ¿y 8?",
-          lines: [
-            { math: "\\dfrac{3}{8} = \\dfrac{60}{x}", note: "chocolatinas arriba, gramos abajo… en las dos" },
-            { math: "3 \\cdot x = 8 \\cdot 60", note: "producto en cruz" },
-            { math: "x = \\dfrac{60 \\cdot 8}{3} = 160\\,\\text{g}" },
-          ],
+          formula: "\\dfrac{a}{b} = \\dfrac{m}{x} \\;\\Rightarrow\\; x = \\dfrac{b \\cdot m}{a}",
         },
         {
           kind: "warning",
           text: "Cada magnitud ocupa **el mismo lugar** en las dos fracciones: si las chocolatinas van arriba a la izquierda, también van arriba a la derecha.",
         },
       ],
+      arrange: "text-top",
+      visual: {
+        kind: "anim",
+        scene: "regla-tres-cruz",
+        params: { a: 3, b: 60, c: 8, titles: ["Chocolatinas", "Peso (g)"], unit: "g" },
+      },
     },
     {
       id: "queso-regla",
@@ -221,15 +218,13 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
             tone: "key",
           },
         },
-        {
-          kind: "example",
-          title: "2 albañiles tardan 30 días; ¿y 4?",
-          lines: [
-            { math: "2 \\cdot 30 = 4 \\cdot x", note: "el trabajo total es el mismo" },
-            { math: "x = \\dfrac{60}{4} = 15\\ \\text{días}" },
-          ],
-        },
       ],
+      arrange: "text-top",
+      visual: {
+        kind: "anim",
+        scene: "regla-tres-producto",
+        params: { a: 2, b: 30, c: 4, titles: ["Albañiles", "Días"], unit: "días" },
+      },
     },
     {
       id: "predict-inversa",

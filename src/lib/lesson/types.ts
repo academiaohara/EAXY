@@ -623,6 +623,8 @@ export type SlideAnimId =
   | "m2-dm2"
   | "tabla-razon"
   | "reduccion-unidad"
+  | "regla-tres-cruz"
+  | "regla-tres-producto"
   | "cuadricula-porcentaje"
   | "aumento-barra"
   | "fraccion-partes"
@@ -681,6 +683,8 @@ export type SlideAnimParams = {
   mode?: "mcm" | "mcd";
   /** `tabla-razon` / `reduccion-unidad`: tipo de proporcionalidad. */
   rel?: "directa" | "inversa";
+  /** `regla-tres-cruz` / `regla-tres-producto`: unidad de la magnitud que se pide («g»). */
+  unit?: string;
   /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
   sign?: "+" | "-";
   /** Escenas de decimales: número con coma escrito como texto («2,375»). */
