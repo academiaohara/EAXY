@@ -34,7 +34,13 @@ export function SlideStepView({ step, theme, onContinue }: SlideStepViewProps) {
   const arrange = step.arrange ?? (step.visual ? "split" : "stack");
 
   const text = (
-    <div className="flex min-w-0 flex-col gap-4" data-testid="lesson-slide-text">
+    <div
+      className={cn(
+        "min-w-0 gap-4",
+        arrange === "text-top" ? "grid lg:grid-cols-2 lg:items-start" : "flex flex-col",
+      )}
+      data-testid="lesson-slide-text"
+    >
       {step.blocks.map((block, i) => (
         <SlideBlockView key={i} block={block} />
       ))}
@@ -55,7 +61,7 @@ export function SlideStepView({ step, theme, onContinue }: SlideStepViewProps) {
           className={cn(
             "lesson-slide grid min-h-0 w-full gap-6 overflow-y-auto pb-4 pr-1",
             arrange === "split" && visual && "lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-8",
-            arrange === "visual-top" && "grid-cols-1",
+            (arrange === "visual-top" || arrange === "text-top") && "grid-cols-1",
           )}
           data-testid="lesson-slide"
           data-arrange={arrange}
