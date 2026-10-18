@@ -182,7 +182,7 @@ export function TutorPanel({
 
       <aside
         className={cn(
-          "tutor-panel-slide-in fixed inset-y-0 left-0 z-50 flex w-full max-w-[26rem] flex-col border-r border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-xl lg:w-[24rem]",
+          "tutor-panel-slide-in fixed inset-y-0 left-0 z-50 flex w-full max-w-[26rem] flex-col text-ink [--stage-border:#cbd5e1] [--stage-ink:#0f172a] [--stage-muted:#475569] [--stage-surface:#ffffff] border-r border-slate-200 bg-gradient-to-b from-white to-slate-50 shadow-xl lg:w-[24rem]",
         )}
         role="dialog"
         aria-modal="false"

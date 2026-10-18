@@ -18,7 +18,7 @@ type FillInBlankProps = {
 };
 
 const fractionInputClass =
-  "w-24 rounded-xl border-2 border-slate-200 bg-white px-3 py-2 text-center font-mono text-xl outline-none transition-colors focus-visible:border-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/20";
+  "w-24 rounded-xl border-2 border-slate-200 bg-white px-3 py-2 text-center font-mono text-xl text-slate-900 placeholder:text-slate-400 disabled:opacity-100 outline-none transition-colors focus-visible:border-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/20";
 
 export function FillInBlank({
   step,
@@ -71,8 +71,8 @@ export function FillInBlank({
   useRegisterLessonStepControl(control);
 
   const stateClass = cn(
-    checked && isCorrect && "border-emerald-500 bg-emerald-50",
-    checked && !isCorrect && "border-amber-400 bg-amber-50 animate-shake",
+    checked && isCorrect && "border-emerald-500 bg-emerald-50 text-emerald-900",
+    checked && !isCorrect && "border-amber-400 bg-amber-50 text-amber-900 animate-shake",
   );
 
   return (
@@ -129,9 +129,9 @@ export function FillInBlank({
             aria-label="Respuesta"
             autoComplete="off"
             className={cn(
-              "w-full max-w-xs rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-center font-mono text-lg outline-none transition-colors focus-visible:border-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/20",
-              checked && isCorrect && "border-emerald-500 bg-emerald-50",
-              checked && !isCorrect && "border-amber-400 bg-amber-50 animate-shake",
+              "w-full max-w-xs rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-center font-mono text-lg text-slate-900 placeholder:text-slate-400 disabled:opacity-100 outline-none transition-colors focus-visible:border-cobalt focus-visible:ring-2 focus-visible:ring-cobalt/20",
+              checked && isCorrect && "border-emerald-500 bg-emerald-50 text-emerald-900",
+              checked && !isCorrect && "border-amber-400 bg-amber-50 text-amber-900 animate-shake",
             )}
             data-testid="lesson-fill-input"
           />

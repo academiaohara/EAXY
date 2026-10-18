@@ -1089,6 +1089,22 @@
   color: var(--teal, #5eead4);
 }
 
+/* Resaltados en el panel claro del tutor: tono oscuro que destaca sobre blanco. */
+.tutor-panel-slide-in mark {
+  background: rgba(245, 158, 11, 0.2);
+  color: #92400e;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tutor-panel-slide-in mark.suma {
+  background: rgba(20, 184, 166, 0.18);
+  color: #0f766e;
+}
+
 /* Botón de pista («?») sobre la pizarra. */
 .lesson-hint-button {
   display: inline-flex;
