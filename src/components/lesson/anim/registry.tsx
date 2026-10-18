@@ -54,6 +54,7 @@ import { buildFraccionRecta } from "@/components/lesson/anim/scenes/fraccion-rec
 import { buildFraccionBarrasSuma } from "@/components/lesson/anim/scenes/fraccion-barras-suma";
 import { buildFraccionCabe } from "@/components/lesson/anim/scenes/fraccion-cabe";
 import { buildFraccionDeFraccion } from "@/components/lesson/anim/scenes/fraccion-de-fraccion";
+import { buildSimplificarIrreducible } from "@/components/lesson/anim/scenes/simplificar-irreducible";
 import { buildSimplificarFactores } from "@/components/lesson/anim/scenes/simplificar-factores";
 
 import { buildAumentoBarra } from "@/components/lesson/anim/scenes/aumento-barra";
@@ -126,6 +127,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fraccion-barras-suma": (p) => buildFraccionBarrasSuma(p),
   "fraccion-de-fraccion": (p) => buildFraccionDeFraccion(p),
   "simplificar-factores": (p) => buildSimplificarFactores(p),
+  "simplificar-irreducible": (p) => buildSimplificarIrreducible(p),
   "fraccion-cabe": (p) => buildFraccionCabe(p),
   "balanza-ecuacion": (p) => buildBalanzaEcuacion(p),
   "maquina-funcion": (p) => buildMaquinaFuncion(p),

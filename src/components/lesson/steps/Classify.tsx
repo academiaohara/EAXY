@@ -24,13 +24,18 @@ type ClassifyProps = {
 
 const DEFAULT_TONES: VisualTone[] = ["cobalt", "violet", "emerald", "rose"];
 
-const toneBin: Record<VisualTone, { bin: string; title: string; active: string }> = {
-  cobalt: { bin: "border-cobalt/25 bg-cobalt-tint/25", title: "text-cobalt", active: "border-cobalt bg-cobalt-tint/60" },
-  violet: { bin: "border-violet-200 bg-violet-50/50", title: "text-violet-700", active: "border-violet-500 bg-violet-100/70" },
-  emerald: { bin: "border-emerald-200 bg-emerald-50/50", title: "text-emerald-700", active: "border-emerald-500 bg-emerald-100/70" },
-  amber: { bin: "border-amber-200 bg-amber-50/50", title: "text-amber-700", active: "border-amber-400 bg-amber-100/70" },
-  rose: { bin: "border-rose-200 bg-rose-50/50", title: "text-rose-700", active: "border-rose-400 bg-rose-100/70" },
+/** Colores de grupo (paleta de pizarra): el tono se usa en borde, fondo suave y rótulo. */
+const TONE_COLOR: Record<VisualTone, string> = {
+  cobalt: "#58c4dd",
+  violet: "#c59bd6",
+  emerald: "#83c167",
+  amber: "#ffd866",
+  rose: "#fc6255",
 };
+
+function mix(color: string, pct: number): string {
+  return `color-mix(in srgb, ${color} ${pct}%, transparent)`;
+}
 
 const GRID_COLS: Record<number, string> = {
   2: "sm:grid-cols-2",
@@ -50,6 +55,9 @@ export function Classify({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [checked, setChecked] = useState(Boolean(restored));
   const [mistakes, setMistakes] = useState<string[]>(restored?.mistakes ?? []);
+
+  const groupColor = (index: number) =>
+    TONE_COLOR[step.groups[index]?.tone ?? DEFAULT_TONES[index % DEFAULT_TONES.length]!];
 
   const locked = disabled || checked;
   const complete = classifyIsComplete(step, assignments);
@@ -113,6 +121,8 @@ export function Classify({
     const wrong = checked && mistakes.includes(item.id);
     const right = checked && !wrong;
     const correctGroup = step.groups.find((group) => group.id === item.group);
+    const groupIndex = step.groups.findIndex((group) => group.id === assignments[item.id]);
+    const tint = groupIndex >= 0 ? groupColor(groupIndex) : null;
 
     return (
       <button
@@ -137,20 +147,26 @@ export function Classify({
         }}
         disabled={locked}
         aria-pressed={isSelected}
+        style={
+          !isSelected && !wrong && !right && tint
+            ? { borderColor: mix(tint, 70), backgroundColor: mix(tint, 14) }
+            : undefined
+        }
         className={cn(
-          "lesson-idea-enter relative inline-flex min-h-11 items-center gap-2 rounded-xl border-2 bg-white px-3.5 py-2 text-sm font-medium text-ink shadow-sm transition-all sm:text-base",
-          !locked && "cursor-grab hover:-translate-y-0.5 hover:shadow-md active:cursor-grabbing",
-          isSelected ? "-translate-y-0.5 border-cobalt ring-4 ring-cobalt/15" : "border-slate-200",
-          right && "border-emerald-400 bg-emerald-50 text-emerald-900",
-          wrong && "border-amber-400 bg-amber-50 text-amber-950 animate-shake",
+          "lesson-idea-enter relative inline-flex min-h-12 items-center gap-2 rounded-xl border-2 px-4 py-2 text-base font-semibold text-[color:var(--stage-ink,#fff)] shadow-[0_2px_0_rgba(0,0,0,0.35)] transition-all sm:text-lg",
+          "border-[#3d4f66] bg-[#222f43]",
+          !locked && "cursor-grab hover:-translate-y-0.5 hover:border-[#58c4dd]/70 active:cursor-grabbing",
+          isSelected && "-translate-y-1 border-[#58c4dd] bg-[#58c4dd]/15 ring-4 ring-[#58c4dd]/25",
+          right && "border-[#83c167] bg-[#83c167]/15",
+          wrong && "border-[#ffd866] bg-[#ffd866]/15 animate-shake",
         )}
         data-testid="classify-item"
         data-item-id={item.id}
       >
         <MathRenderer text={tallFractions(item.text)} />
-        {right ? <CheckIcon className="size-4 text-emerald-600" strokeWidth={3} aria-label="Bien" /> : null}
+        {right ? <CheckIcon className="size-4 text-[#83c167]" strokeWidth={3} aria-label="Bien" /> : null}
         {wrong ? (
-          <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-800">
+          <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#ffd866]">
             <XIcon className="size-3.5" strokeWidth={3} aria-hidden />
             va en «{correctGroup?.label}»
           </span>
@@ -163,9 +179,9 @@ export function Classify({
     <PracticeShell step={step} compact={compact} testId="lesson-classify">
       <div
         className={cn(
-          "flex min-h-16 flex-wrap items-center justify-center gap-2.5 rounded-2xl border-2 border-dashed px-3 py-3 transition-colors",
-          pool.length > 0 ? "border-slate-200 bg-slate-50/70" : "border-transparent",
-          selectedId && assignments[selectedId] && "border-cobalt/40 bg-cobalt-tint/20",
+          "flex min-h-[4.5rem] flex-wrap items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-4 py-4 transition-colors",
+          pool.length > 0 ? "border-[#3d4f66] bg-[#1a2332]/70" : "border-transparent",
+          selectedId && assignments[selectedId] && "border-[#58c4dd]/60 bg-[#58c4dd]/10",
         )}
         onClick={() => selectedId && assignments[selectedId] && place(selectedId, undefined)}
         onDragOver={(event) => event.preventDefault()}
@@ -175,11 +191,11 @@ export function Classify({
         {pool.length > 0 ? (
           pool.map(renderChip)
         ) : checked ? null : (
-          <span className="text-sm text-ink-muted">Todas colocadas. ¡Comprueba!</span>
+          <span className="text-sm text-[color:var(--stage-muted,#b8c2d0)]">Todas colocadas. ¡Comprueba!</span>
         )}
       </div>
 
-      <p className="text-center text-xs text-ink-muted">
+      <p className="text-center text-sm text-[color:var(--stage-muted,#b8c2d0)]">
         {selectedId
           ? "Ahora toca el grupo donde va."
           : "Toca una tarjeta (o arrástrala) y luego el grupo donde va."}
@@ -187,7 +203,7 @@ export function Classify({
 
       <div className={cn("grid gap-3", GRID_COLS[step.groups.length] ?? "sm:grid-cols-2")}>
         {step.groups.map((group, index) => {
-          const tone = toneBin[group.tone ?? DEFAULT_TONES[index % DEFAULT_TONES.length]];
+          const color = groupColor(index);
           const members = step.items.filter((item) => assignments[item.id] === group.id);
           const target = Boolean(selectedId) && !locked;
 
@@ -206,18 +222,32 @@ export function Classify({
               }}
               onDragOver={(event) => event.preventDefault()}
               onDrop={(event) => dropOn(event, group.id)}
+              style={{
+                borderColor: mix(color, target ? 90 : 55),
+                backgroundColor: mix(color, target ? 16 : 8),
+              }}
               className={cn(
-                "flex min-h-36 flex-col gap-3 rounded-2xl border-2 p-3 transition-all sm:p-4",
-                tone.bin,
-                target && cn("cursor-pointer hover:scale-[1.01]", tone.active),
+                "flex min-h-36 flex-col gap-3 overflow-hidden rounded-2xl border-2 pb-3 transition-all",
+                target && "cursor-pointer hover:scale-[1.01]",
               )}
               data-testid="classify-group"
               data-group-id={group.id}
             >
-              <p className={cn("text-center font-heading text-sm font-semibold uppercase tracking-wide", tone.title)}>
+              <p
+                className="px-4 py-2.5 text-center font-heading text-base font-bold tracking-wide sm:text-lg"
+                style={{ color, backgroundColor: mix(color, 16), borderBottom: `1px solid ${mix(color, 35)}` }}
+              >
                 <MathRenderer text={tallFractions(group.label)} />
               </p>
-              <div className="flex flex-wrap justify-center gap-2">{members.map(renderChip)}</div>
+              <div className="flex flex-1 flex-wrap content-start justify-center gap-2.5 px-3">
+                {members.length > 0 ? (
+                  members.map(renderChip)
+                ) : (
+                  <span className="m-auto text-sm font-medium" style={{ color: mix(color, 55) }}>
+                    {target ? "Toca para colocar aquí" : "Suelta aquí"}
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}

@@ -155,26 +155,18 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
         },
       ],
       title: "Simplificar hasta la fracción irreducible",
-      arrange: "stack",
+      arrange: "split",
       blocks: [
         {
           kind: "definition",
           text: "**Simplificar** es sustituir una fracción por otra equivalente con términos más pequeños, dividiendo numerador y denominador entre un divisor común. Si ya no se puede simplificar más, es **irreducible**.",
         },
         {
-          kind: "example",
-          title: "Simplificar $\\frac{12}{30}$",
-          lines: [
-            { math: "\\frac{12}{30} = \\frac{12 : 2}{30 : 2} = \\frac{6}{15}", note: "entre $2$" },
-            { math: "\\frac{6}{15} = \\frac{6 : 3}{15 : 3} = \\frac{2}{5}", note: "entre $3$; $2$ y $5$ ya no comparten divisores: irreducible" },
-            { math: "\\frac{12}{30} = \\frac{12 : 6}{30 : 6} = \\frac{2}{5}", note: "o directamente entre el m.c.d., $6$" },
-          ],
-        },
-        {
           kind: "warning",
           text: "Hay que dividir **los dos** términos por el mismo número. Y la fracción no cambia de valor: $\\frac{12}{30}$ y $\\frac{2}{5}$ son la misma cantidad.",
         },
       ],
+      visual: { kind: "anim", scene: "simplificar-irreducible", params: { a: 12, b: 30 } },
     },
     {
       id: "check-simpl",

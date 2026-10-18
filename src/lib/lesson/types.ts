@@ -627,6 +627,7 @@ export type SlideAnimId =
   | "fraccion-barras-suma"
   | "fraccion-de-fraccion"
   | "simplificar-factores"
+  | "simplificar-irreducible"
   | "fraccion-cabe"
   | "balanza-ecuacion"
   | "maquina-funcion"
