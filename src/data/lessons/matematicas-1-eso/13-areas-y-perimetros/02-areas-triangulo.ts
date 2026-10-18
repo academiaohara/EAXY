@@ -54,6 +54,22 @@ export const areasTrianguloLesson: InteractiveLesson = {
     {
       id: "check-parcela",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué lado uso?",
+          message: "Base y altura tienen que ser perpendiculares. El enunciado dice que la altura es «sobre ese lado», así que ya son la pareja correcta.",
+        },
+        {
+          label: "¿Por qué se divide entre $2$?",
+          message: "Todo triángulo es la mitad de un paralelogramo con su misma base y altura.",
+          branches: [
+            {
+              label: "Compruébalo con uno sencillo",
+              message: "Un rectángulo de $4 \\times 3$ tiene área $12$. Su diagonal lo corta en dos triángulos iguales: cada uno vale la mitad.",
+            },
+          ],
+        },
+      ],
       title: "Parcela triangular",
       question:
         "Una parcela tiene un lado de $20\\,\\mathrm{m}$ y altura $13\\,\\mathrm{m}$ sobre ese lado. ¿Cuál es su área en $\\mathrm{m}^2$?",
@@ -63,6 +79,16 @@ export const areasTrianguloLesson: InteractiveLesson = {
     {
       id: "check-catetos",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cuál es la base y cuál la altura?",
+          message: "En un triángulo rectángulo los dos catetos son perpendiculares entre sí: uno hace de base y el otro de altura. Da igual cuál elijas.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Redondea los catetos a $20$ y $20$. El rectángulo sería $400$ y el triángulo, la mitad. Tu resultado debería rondar esa cifra.",
+        },
+      ],
       title: "Área con catetos",
       question:
         "Triángulo rectángulo con catetos $18\\,\\mathrm{cm}$ y $24\\,\\mathrm{cm}$. ¿Cuál es su área en $\\mathrm{cm}^2$? (escribe solo el número)",

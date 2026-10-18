@@ -95,6 +95,20 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
     {
       id: "check-faros",
       type: "predict",
+      help: [
+        {
+          label: "¿Por qué m.c.m.?",
+          message: "Los destellos coinciden cuando pasa un tiempo que es múltiplo de $12$ y de $18$ a la vez. La próxima coincidencia es el menor de esos tiempos.",
+        },
+        {
+          label: "¿Cómo lo calculo?",
+          message: "Descompón en factores primos y toma todos los primos que aparezcan, con el mayor exponente.",
+        },
+        {
+          label: "Descarta opciones",
+          message: "Un múltiplo de $18$ no puede ser menor que $18$, y $6$ es divisor de ambos, no múltiplo.",
+        },
+      ],
       title: "Dos faros",
       question:
         "Un faro da un destello cada **12** s y otro cada **18** s. Acaban de coincidir. ¿Cuántos segundos pasan hasta la próxima vez que coinciden?",
@@ -124,6 +138,16 @@ export const minimoComunMultiploLesson: InteractiveLesson = {
     {
       id: "check-entrenos",
       type: "predict",
+      help: [
+        {
+          label: "¿Y con tres números?",
+          message: "Se calcula igual: todos los primos que aparezcan en alguno de ellos, con el mayor exponente.",
+        },
+        {
+          label: "Tantea con los múltiplos",
+          message: "Prueba los múltiplos de $6$ (el mayor de los tres): ¿cuál es también múltiplo de $3$ y de $4$?",
+        },
+      ],
       title: "Tres entrenamientos",
       question:
         "Ana entrena cada **3** días, Bea cada **4** y Carla cada **6**. Hoy han coincidido las tres. ¿Dentro de cuántos días volverán a coincidir?",

@@ -63,6 +63,22 @@ export const algebraLetrasNumerosLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cómo traduzco una frase?",
+          message: "Primero fija qué representa la letra (tu edad). Después mira qué hace la frase con ella: ¿añade, quita o repite?",
+        },
+        {
+          label: "Pruébalo con una edad concreta",
+          message: "Imagina que tienes $15$ años y calcula con ese número lo que dice la frase. Fíjate en la cuenta que has hecho y escríbela cambiando el $15$ por $x$.",
+          branches: [
+            {
+              label: "¿Qué pasa con «el doble»?",
+              message: "Es repetir la cantidad dos veces: se puede escribir como una suma o como un producto. Las dos formas valen.",
+            },
+          ],
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "$x$ es tu edad actual. Lleva cada frase a la expresión que la representa.",
       groups: [

@@ -53,6 +53,16 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "mental",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Cuánto es la unidad en cuartos?",
+          message: "La barra entera son $4$ cuartos. Escribe el $1$ como una fracción con ese denominador.",
+        },
+        {
+          label: "Piénsalo como quitar un trozo",
+          message: "Imagina una tableta de chocolate partida en $4$. Te comes un trozo: ¿cuántos quedan?",
+        },
+      ],
       title: "Cálculo mental",
       question:
         "La barra entera es $1$. Le quitamos $\\frac{1}{4}$: colorea lo que queda, $1 - \\frac{1}{4}$.",
@@ -65,6 +75,20 @@ export const operacionesFraccionesSumaRestaLesson: InteractiveLesson = {
     {
       id: "check-suma",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Por qué no sumo directamente?",
+          message: "Medios y quintos son trozos de tamaños distintos. Antes de sumar hay que expresarlos con el mismo denominador.",
+        },
+        {
+          label: "¿Qué denominador común uso?",
+          message: "Uno que sea múltiplo de $2$ y de $5$. El más pequeño es el m.c.m.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{1}{2} + \\frac{1}{5}$ es más que $\\frac{1}{2}$ y menos que $1$: el resultado queda entre medio y uno.",
+        },
+      ],
       title: "Suma con distinto denominador",
       question: "Calcula $\\dfrac{1}{2} + \\dfrac{1}{5}$ (numerador del resultado, ya simplificado).",
       correctAnswers: ["7"],

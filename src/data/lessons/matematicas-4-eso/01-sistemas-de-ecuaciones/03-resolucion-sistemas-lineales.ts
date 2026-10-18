@@ -142,6 +142,20 @@ export const resolucionSistemasLinealesLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué significa despejar?",
+          message: "Dejar la incógnita sola en un miembro de la igualdad, haciendo siempre lo mismo en los dos lados.",
+        },
+        {
+          label: "¿Qué le hace el $2y$ a la $x$?",
+          message: "Se está sumando a $x$. La operación inversa de sumar es restar: pasa el término al otro miembro cambiado de signo.",
+        },
+        {
+          label: "¿Cómo compruebo mi despeje?",
+          message: "Sustituye tu expresión en lugar de $x$ en $x + 2y$: tiene que volver a salir $15$, sea cual sea $y$.",
+        },
+      ],
       title: "Practica",
       question: "En $x + 2y = 15$, si despejamos $x$ obtenemos: $x =$",
       correctAnswers: ["15 - 2y", "15-2y", "-2y + 15"],

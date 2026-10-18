@@ -76,6 +76,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "check-q",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cuál es la abscisa y cuál la ordenada?",
+          message: "La primera coordenada es la abscisa ($x$, horizontal) y la segunda la ordenada ($y$, vertical).",
+        },
+        {
+          label: "¿Qué es «cambiar de orden»?",
+          message: "Que la primera coordenada pase a ser la segunda y la segunda la primera. No cambia ningún valor, solo su sitio.",
+        },
+      ],
       title: "Intercambiar coordenadas",
       question:
         "El punto $Q$ tiene la abscisa y la ordenada de $P(3, 5)$ pero **cambiadas de orden**. Escribe las coordenadas de $Q$ en la forma $(x, y)$.",
@@ -86,6 +96,16 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
     {
       id: "check-eje-y",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Dónde está el eje Y?",
+          message: "Es la línea vertical que pasa por el origen. ¿Cuánto te tienes que desplazar en horizontal para estar sobre ella?",
+        },
+        {
+          label: "Prueba con puntos",
+          message: "Sitúa $(2, 3)$, $(0, 3)$ y $(-2, 3)$. ¿Cuál de ellos está sobre el eje vertical?",
+        },
+      ],
       title: "Puntos sobre el eje Y",
       question: "¿Qué valor tiene la **abscisa** de cualquier punto del eje Y? (solo el número)",
       correctAnswers: ["0"],

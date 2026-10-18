@@ -50,6 +50,21 @@ export const operacionesFraccionesComunDenominadorLesson: InteractiveLesson = {
     {
       id: "check-mcm",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué estamos haciendo?",
+          message: "Cambiar la forma de escribir $\\frac{1}{2}$ sin cambiar su valor: sextos en lugar de medios.",
+        },
+        {
+          label: "¿Por cuánto multiplico?",
+          message: "El denominador pasa de $2$ a $6$. Multiplica el numerador por el mismo número para no cambiar el valor.",
+          math: ["\\frac{1}{2} = \\frac{1 \\cdot ?}{2 \\cdot ?}"],
+        },
+        {
+          label: "Visualízalo",
+          message: "Cada mitad de la barra se corta en tantos trozos como sextos caben en un medio.",
+        },
+      ],
       title: "Comprueba el método",
       question:
         "Reducimos $\\frac{1}{2}$ y $\\frac{1}{3}$ a denominador común $6$: la barra ya está partida en sextos. Colorea $\\frac{1}{2}$ de la barra.",

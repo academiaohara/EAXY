@@ -65,6 +65,21 @@ export const probabilidadFrecuenciasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Absoluta o relativa?",
+          message: "La absoluta es **cuántas veces** sale. La relativa es la **proporción** que supone del total de repeticiones.",
+        },
+        {
+          label: "¿Cómo la calculo?",
+          message: "Divide lo que ha ocurrido entre el número total de pruebas.",
+          math: ["h = \\frac{f}{n}"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "La frecuencia relativa siempre está entre $0$ y $1$. Si te sale mayor que $1$, has dividido al revés.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "En $50$ lanzamientos de un dado sale la cara $3$ exactamente $14$ veces. ¿Cuál es la frecuencia relativa $h_3$? (en decimal, con coma)",

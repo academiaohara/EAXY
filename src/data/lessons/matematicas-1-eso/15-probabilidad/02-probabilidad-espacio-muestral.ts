@@ -83,6 +83,20 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué es el espacio muestral?",
+          message: "El conjunto de todos los resultados posibles del experimento, uno por uno.",
+        },
+        {
+          label: "Resultado frente a suceso",
+          message: "Un resultado es una sola cara. Un suceso puede agrupar varias («par»). Solo los resultados individuales forman el espacio muestral.",
+        },
+        {
+          label: "¿Qué hay en un dado?",
+          message: "Las caras llevan números del $1$ al $6$. Si una tarjeta no puede salir en una tirada, queda fuera.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "Lanzamos un dado estándar de seis caras. ¿Qué elementos forman parte de su espacio muestral $E$?",

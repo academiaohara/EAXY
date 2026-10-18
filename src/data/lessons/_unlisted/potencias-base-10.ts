@@ -70,6 +70,16 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "Mira la secuencia",
+          message: "$10^1 = 10$ (un cero), $10^2 = 100$ (dos ceros), $10^3 = 1000$ (tres)… El exponente y los ceros van a la par.",
+        },
+        {
+          label: "Con un factor delante",
+          message: "En $3 \\cdot 10^6$ se escribe el $3$ y detrás van $6$ ceros. El factor no cambia cuántos ceros hay.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Empareja cada potencia con su número de ceros al escribirla con todas sus cifras.",
       groups: [
@@ -92,6 +102,16 @@ export const potenciasBase10Lesson: InteractiveLesson = {
     {
       id: "check-millones",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Cuenta los ceros",
+          message: "Un millón es un $1$ seguido de ceros. Escríbelo, $1\\,000\\,000$, y cuenta cuántos hay.",
+        },
+        {
+          label: "Compara con otras potencias",
+          message: "$10^3$ es mil (tres ceros). Un millón tiene el doble de ceros que mil.",
+        },
+      ],
       title: "Escribe la potencia",
       question: "Un millón se escribe $10$ elevado a ¿qué exponente? (solo el número)",
       correctAnswers: ["6"],

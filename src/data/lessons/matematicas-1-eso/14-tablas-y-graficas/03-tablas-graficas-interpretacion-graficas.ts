@@ -86,6 +86,20 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "check-independiente",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuál depende de cuál?",
+          message: "Pregúntate qué magnitud cambia cuando se mueve la otra. Esa es la dependiente.",
+        },
+        {
+          label: "Pruébalo con una frase",
+          message: "Di «el precio depende de los kilos» y «los kilos dependen del precio». ¿Cuál suena natural?",
+        },
+        {
+          label: "El tiempo",
+          message: "El tiempo suele ser la variable independiente: avanza solo, no depende de nada.",
+        },
+      ],
       title: "Variable independiente",
       question:
         "En cada gráfico, la primera magnitud va en el eje X y la segunda en el eje Y. Clasifica cada magnitud como variable independiente o dependiente.",
@@ -108,6 +122,16 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
     {
       id: "check-parada",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Lee la gráfica",
+          message: "Avanza hacia la derecha: pasa el tiempo. Si la línea no sube ni baja, la distancia no cambia.",
+        },
+        {
+          label: "Imagínalo",
+          message: "Si te mueves, tu distancia al punto de partida cambia. Si no cambia mientras pasa el tiempo, ¿qué estás haciendo?",
+        },
+      ],
       title: "Tramo horizontal",
       question:
         "En una gráfica distancia–tiempo, un tramo **horizontal** significa que la distancia no cambia: ¿qué está ocurriendo? (una palabra: parado / acelerando / retrocediendo)",

@@ -50,6 +50,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-cilindro",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una base?",
+          message: "Una cara plana sobre la que el cuerpo puede apoyarse, igual y paralela a otra. Fíjate en cuántas hay.",
+        },
+        {
+          label: "Piénsalo como un cuerpo de revolución",
+          message: "Un cilindro sale de girar un rectángulo sobre uno de sus lados. Los lados perpendiculares al eje dibujan círculos: ¿cuántos hay?",
+        },
+      ],
       title: "El cilindro",
       question: "¿Cuántas bases tiene un cilindro? (solo el número)",
       correctAnswers: ["2", "dos"],
@@ -59,6 +69,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-revolucion",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué silueta dibuja?",
+          message: "Cada punto de la figura que está lejos del eje dibuja un círculo al girar. La figura entera genera una superficie.",
+        },
+        {
+          label: "Mira figura y eje a la vez",
+          message: "Los lados paralelos al eje forman las paredes; los perpendiculares forman bases circulares. Cuenta cuántos hay de cada tipo.",
+        },
+      ],
       title: "Cuerpos de revolución (act. 4)",
       question: "¿Qué cuerpo se obtiene al hacer girar cada figura plana alrededor del eje indicado?",
       groups: [
@@ -80,6 +100,16 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
     {
       id: "check-esfera-desarrollo",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué es un desarrollo?",
+          message: "Lo que sale al cortar el cuerpo y aplastarlo sobre una mesa sin estirar ni romper. Piensa en las piezas planas que lo forman.",
+        },
+        {
+          label: "Hazte dos preguntas",
+          message: "Para cada cuerpo: ¿tiene caras planas? ¿Tiene una punta? Las respuestas separan al cilindro, al cono y a la esfera.",
+        },
+      ],
       title: "Bases y desarrollo",
       question: "¿A qué cuerpo redondo corresponde cada característica?",
       groups: [

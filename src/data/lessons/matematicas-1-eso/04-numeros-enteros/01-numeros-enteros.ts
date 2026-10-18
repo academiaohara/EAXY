@@ -64,6 +64,20 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "check-signo",
       type: "predict",
+      help: [
+        {
+          label: "¿Posición o movimiento?",
+          message: "La **posición** dice dónde estás respecto al nivel del mar. El **movimiento** dice cuánto y en qué sentido te desplazas. La pregunta pide lo segundo.",
+        },
+        {
+          label: "¿Qué signo tiene subir?",
+          message: "Ascender es ir hacia arriba, hacia números mayores. ¿Qué signo le damos a una variación hacia arriba?",
+        },
+        {
+          label: "Descarta opciones",
+          message: "Algunas opciones son coordenadas: dicen dónde está el buceador, no cuánto ha cambiado.",
+        },
+      ],
       title: "Posición o variación",
       question:
         "Un buceador está a **12 m** bajo el nivel del mar y asciende **5 m**. ¿Qué número entero expresa su **movimiento** (no dónde queda)?",
@@ -125,6 +139,22 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "check-absoluto",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué mide el valor absoluto?",
+          message: "La distancia al cero, y las distancias nunca son negativas.",
+          branches: [
+            {
+              label: "Aplícalo",
+              message: "¿A cuántas unidades del $0$ está $-9$? ¿Y $+9$?",
+            },
+          ],
+        },
+        {
+          label: "¿Mismo valor absoluto significa mismo número?",
+          message: "No. Dos números con el mismo valor absoluto pueden estar a lados opuestos del cero. Piensa: ¿hace el mismo frío a $-9$ °C que a $+9$ °C?",
+        },
+      ],
       title: "Mismo valor absoluto",
       question:
         "Una estación meteorológica anota $-9$ °C por la mañana y $+9$ °C a mediodía. ¿Cuál de estas afirmaciones es correcta?",
@@ -184,6 +214,20 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "check-ordenar",
       type: "predict",
+      help: [
+        {
+          label: "¿Cómo ordeno negativos?",
+          message: "Imagina la recta numérica: el menor es el que está más a la izquierda. Cuanto más lejos del cero hacia la izquierda, menor es el número.",
+        },
+        {
+          label: "No te fijes solo en la cifra",
+          message: "Con negativos se invierte el orden: $12 > 7$ pero $-12 < -7$. Para temperaturas, $-12$ °C es más frío que $-7$ °C.",
+        },
+        {
+          label: "Separa primero por signo",
+          message: "Todo negativo es menor que cualquier positivo. Coloca primero el $+2$ y ordena después los negativos entre sí.",
+        },
+      ],
       title: "Ordenar temperaturas",
       question:
         "Las mínimas de una noche de invierno fueron: Burgos $-7$ °C, Soria $-12$ °C, Teruel $-3$ °C y León $+2$ °C. ¿Cómo quedan ordenadas de la **más fría a la menos fría**?",
@@ -214,6 +258,20 @@ export const numerosEnterosLesson: InteractiveLesson = {
     {
       id: "check-saldos",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa estar mejor?",
+          message: "Tener un saldo mayor, es decir, más a la derecha en la recta numérica.",
+        },
+        {
+          label: "Cuidado con «debe menos»",
+          message: "Un saldo negativo es una deuda: $-85$ es deber $85$ €. ¿Quién debe menos, el que debe $85$ € o el que debe $120$ €?",
+        },
+        {
+          label: "Valor absoluto y valor",
+          message: "El valor absoluto dice cuánto dinero hay en juego, pero no si es a favor o en contra. Para comparar saldos hay que mirar el signo.",
+        },
+      ],
       title: "Quién está mejor",
       question:
         "El saldo de Ana es $-120$ €, el de Luis $-85$ € y el de Marta $+40$ €. ¿Cuál de estas afirmaciones es verdadera?",

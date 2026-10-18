@@ -62,6 +62,27 @@ export const algebraProblemasEcuacionesLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué llamo $x$?",
+          message: "Llama $x$ a lo que no conoces y te piden. Todo lo demás hay que escribirlo usando $x$.",
+          branches: [
+            {
+              label: "¿Cómo escribo «su anterior»?",
+              message: "El anterior es una unidad menos. Con un número concreto: el anterior de $10$ es $9 = 10 - 1$. Copia esa idea con $x$.",
+            },
+          ],
+        },
+        {
+          label: "¿Cómo monto la ecuación?",
+          message: "«Suman $53$» significa dos cantidades unidas con $+$ e igualadas a $53$.",
+          math: ["(\\text{el número}) + (\\text{su anterior}) = 53"],
+        },
+        {
+          label: "¿Cómo sé si mi solución vale?",
+          message: "Calcula el número y su anterior con tu resultado y súmalos. Si no da $53$, algo falló al plantear o al resolver.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "Un número y su anterior suman $53$. Plantea la ecuación y resuélvela: ¿de qué número se trata? (escribe solo el número)",

@@ -141,6 +141,20 @@ export const sistemasLinealesGraficaLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuántos puntos comparten?",
+          message: "Dos rectas pueden cortarse en un punto, no cortarse nunca (paralelas) o ser la misma recta. De ahí salen $1$, $0$ o infinitas soluciones.",
+        },
+        {
+          label: "¿Cómo lo veo sin dibujar?",
+          message: "Compara las ecuaciones: si una es la otra multiplicada por un número, son la misma recta. Si los coeficientes de $x$ e $y$ son proporcionales pero el término independiente no, son paralelas. Si no son proporcionales, se cortan.",
+        },
+        {
+          label: "Un par de ejemplos",
+          message: "$x + y = 3$ y $2x + 2y = 6$ son la misma recta. $x + y = 3$ y $x + y = 5$ son paralelas.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "La solución de un sistema son los puntos comunes a las dos rectas. Clasifica cada caso según cuántas soluciones tiene.",

@@ -92,6 +92,17 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "check-tipo",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué hace lineal a un sistema?",
+          message: "Que todas sus ecuaciones sean de primer grado: las incógnitas con exponente $1$ y sin multiplicarse entre sí.",
+        },
+        {
+          label: "Detectores rápidos",
+          message: "$x^2$, $y^2$ o $xy$ delatan una ecuación no lineal. Basta una de ellas para que el sistema entero deje de ser lineal.",
+          math: ["x^2 \\quad y^2 \\quad xy \\quad \\text{(no lineales)}"],
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Clasifica cada sistema como lineal o no lineal.",
       groups: [
@@ -113,6 +124,16 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "despejar",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué quiero conseguir?",
+          message: "Dejar $y$ sola en un miembro de la igualdad.",
+        },
+        {
+          label: "¿Qué le hace la $x$ a la $y$?",
+          message: "Le está restando. Para quitarla, haz la operación inversa en los dos miembros y fíjate bien en el signo.",
+        },
+      ],
       title: "Practica — Despejar",
       question: "Si despejamos $y$ en $y - x = 1$, obtenemos: $y =$",
       correctAnswers: ["1 + x", "x + 1", "1+x", "x+1"],
@@ -122,6 +143,21 @@ export const sistemasNoLinealesLesson: InteractiveLesson = {
     {
       id: "soluciones",
       type: "classify",
+      help: [
+        {
+          label: "Un par solo vale si cumple las dos",
+          message: "Sustituye el par en cada ecuación. Es solución del sistema únicamente si salen dos igualdades verdaderas.",
+        },
+        {
+          label: "Una estrategia ordenada",
+          message: "Prueba primero con la ecuación más sencilla. Si el par la incumple, ya puedes descartarlo sin mirar la otra.",
+        },
+        {
+          label: "Ojo con el orden y los signos",
+          message: "En $(x, y)$ el primer número es $x$. Y cuidado: $(-2)^2 = 4$, no $-4$.",
+          math: ["(-2)^2 = (-2)(-2) = 4"],
+        },
+      ],
       title: "Practica — Soluciones completas",
       question:
         "Sustituye cada par $(x, y)$ en el sistema $\\begin{cases} y - x = 1 \\\\ x^2 + y^2 = 5 \\end{cases}$ y clasifícalo.",

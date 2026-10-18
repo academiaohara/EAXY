@@ -50,6 +50,16 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "marca-canicas",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué significa «$\\frac{2}{3}$ de»?",
+          message: "El denominador dice en cuántos grupos iguales reparto las canicas; el numerador, cuántos grupos cojo.",
+        },
+        {
+          label: "Imagínalo con cajas",
+          message: "Piensa en $3$ cajas con las mismas canicas cada una y $12$ en total. Marcas las de dos cajas.",
+        },
+      ],
       title: "Marca la fracción de un conjunto",
       question: "Tienes $12$ canicas. Marca $\\frac{2}{3}$ de ellas.",
       shape: "set",
@@ -101,6 +111,17 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "check-calculo",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo se calcula la fracción de un número?",
+          message: "Divide el número entre el denominador (para tener una parte) y multiplica por el numerador (para coger las que piden).",
+          math: ["\\frac{2}{5} \\text{ de } 20 = (20 : 5) \\cdot 2"],
+        },
+        {
+          label: "Hazlo en filas",
+          message: "Imagina $12$ objetos en $4$ filas iguales. ¿Cuántos hay en cada fila? Coges $3$ filas.",
+        },
+      ],
       title: "Practica la regla",
       question: "Calcula $\\frac{3}{4}$ de $12$ (solo el resultado).",
       correctAnswers: ["9"],
@@ -109,6 +130,20 @@ export const fraccionesOperadorLesson: InteractiveLesson = {
     {
       id: "check-precio",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué operación hay?",
+          message: "Es una fracción de un número, aunque sea decimal: se divide entre el denominador y se multiplica por el numerador.",
+        },
+        {
+          label: "La división con decimales",
+          message: "En $5{,}4 : 4$, al bajar la primera cifra decimal pones la coma en el cociente. Añade ceros hasta que el resto sea $0$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{3}{4}$ de kilo es menos de un kilo, así que cuesta menos de $5{,}4$ €, pero más que la mitad ($2{,}7$ €).",
+        },
+      ],
       title: "Fracción de un precio",
       question:
         "Boquerones a $5{,}4\\,€/\\mathrm{kg}$. ¿Cuánto cuestan $\\frac{3}{4}\\,\\mathrm{kg}$? (escribe solo el número, en euros)",

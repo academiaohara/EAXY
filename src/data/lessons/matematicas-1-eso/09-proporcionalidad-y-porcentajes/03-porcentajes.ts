@@ -89,6 +89,21 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-formula",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es un $12\\%$?",
+          message: "Doce de cada cien. Calcula cuánto es el $1\\%$ de $380$ y toma doce de esos trozos.",
+        },
+        {
+          label: "Descomposición mental",
+          message: "El $10\\%$ de un número se obtiene moviendo la coma un lugar. Luego añade el $1\\%$ dos veces.",
+          math: ["12\\% = 10\\% + 1\\% + 1\\%"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El $12\\%$ es algo más que el $10\\%$, y el $10\\%$ de $380$ se calcula en un segundo. Tu resultado debe pasar un poco de esa cifra.",
+        },
+      ],
       title: "Practica la fórmula",
       question: "Calcula el $12\\%$ de $380$ (usa coma decimal si hace falta).",
       correctAnswers: ["45,6", "45.6"],
@@ -97,6 +112,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-cuadricula",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué fracción es el $25\\%$?",
+          message: "Veinticinco de cada cien. Simplifica esa fracción: ¿qué parte del total es?",
+        },
+        {
+          label: "Con porcentajes que ya conoces",
+          message: "El $50\\%$ es la mitad. El $25\\%$ es la mitad de la mitad.",
+        },
+      ],
       title: "El 25 % en una cuadrícula",
       question: "La cuadrícula tiene $20$ casillas. Colorea el $25\\%$ de ella.",
       shape: "grid",
@@ -111,6 +136,16 @@ export const porcentajesLesson: InteractiveLesson = {
     {
       id: "check-mental",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo lo hago de cabeza?",
+          message: "El $25\\%$ es la mitad de la mitad. Parte el número por la mitad y luego otra vez por la mitad.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un cuarto de $84$ es bastante menos que $84$, y algo más de $20$.",
+        },
+      ],
       title: "Cálculo mental — 25%",
       question: "¿Cuánto es el $25\\%$ de $84$? (solo el número)",
       correctAnswers: ["21"],

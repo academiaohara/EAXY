@@ -89,6 +89,16 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
     {
       id: "parentesis-explore",
       type: "explore",
+      help: [
+        {
+          label: "¿Qué cambia un paréntesis?",
+          message: "Lo que hay dentro se calcula primero. Pregúntate qué cálculo haría que el $9$ baje hasta $5$.",
+        },
+        {
+          label: "Prueba las dos agrupaciones",
+          message: "Solo hay dos sitios razonables: $(9 - 1) + 3$ y $9 - (1 + 3)$. Calcula las dos y compara con el $5$.",
+        },
+      ],
       title: "Coloca el paréntesis",
       question:
         "En $9 - 1 + 3$, coloca un paréntesis para que el resultado sea $5$.",
@@ -160,6 +170,20 @@ export const sumaRestaNaturalesLesson: InteractiveLesson = {
     {
       id: "mental-predict",
       type: "predict",
+      help: [
+        {
+          label: "Busca números amigos",
+          message: "Mira qué dos números suman una decena o una centena redonda. ¿Con quién se completa el $47$?",
+        },
+        {
+          label: "Puedes reordenar",
+          message: "En una suma puedes cambiar el orden y agrupar como quieras sin que cambie el resultado.",
+        },
+        {
+          label: "¿Qué opciones no ayudan?",
+          message: "Las otras agrupaciones te obligan a sumar primero números que no son redondos.",
+        },
+      ],
       title: "Elige el atajo",
       question:
         "Quieres calcular $47 + 58 + 53$ de cabeza. ¿Qué agrupación te ahorra más trabajo?",

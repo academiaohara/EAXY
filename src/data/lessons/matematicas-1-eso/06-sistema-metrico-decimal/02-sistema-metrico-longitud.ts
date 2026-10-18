@@ -65,6 +65,16 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-dm",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Crece o decrece el número?",
+          message: "El centímetro es más pequeño que el metro: en un metro caben muchos. El número aumenta.",
+        },
+        {
+          label: "Descomponlo",
+          message: "$1{,}28\\,\\mathrm{m} = 1\\,\\mathrm{m} + 0{,}28\\,\\mathrm{m}$. Pasa cada parte a centímetros y suma.",
+        },
+      ],
       title: "Centímetros en un metro",
       question: "¿Cuántos centímetros hay en $1{,}28\\,\\mathrm{m}$? (solo el número)",
       correctAnswers: ["128", "128 cm"],
@@ -74,6 +84,26 @@ export const sistemaMetricoLongitudLesson: InteractiveLesson = {
     {
       id: "check-metros",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Pasa cada término a metros",
+          message: "Convierte por separado kilómetros, hectómetros y decámetros a metros, y suma los tres resultados.",
+        },
+        {
+          label: "Usa columnas",
+          message: "Escribe una cifra por unidad ($\\mathrm{km}$, $\\mathrm{hm}$, $\\mathrm{dam}$, $\\mathrm{m}$) y lee el número de seguido.",
+          branches: [
+            {
+              label: "Un ejemplo",
+              message: "$2\\,\\mathrm{km}\\ 3\\,\\mathrm{hm}$ en metros: columnas $2 \\mid 3 \\mid 0 \\mid 0$, es decir, $2300\\,\\mathrm{m}$.",
+            },
+          ],
+        },
+        {
+          label: "Si falta una unidad",
+          message: "Si una unidad no aparece, su columna vale $0$. Aquí no hay metros sueltos.",
+        },
+      ],
       title: "Suma en metros",
       question:
         "Expresa en metros: $6\\,\\mathrm{km}\\ 4\\,\\mathrm{hm}\\ 8\\,\\mathrm{dam}$ (usa coma decimal, sin unidad).",

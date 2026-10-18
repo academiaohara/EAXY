@@ -132,6 +132,21 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "check-nueve",
       type: "predict",
+      help: [
+        {
+          label: "¿Cuál era el criterio del $9$?",
+          message: "Un número es divisible entre $9$ si la suma de sus cifras también lo es. Es la misma idea que con el $3$.",
+        },
+        {
+          label: "¿Cómo sumo las cifras rápido?",
+          message: "Agrupa las que sumen $9$ o $10$. Y ten a mano los múltiplos de $9$ para comparar.",
+          math: ["9,\\ 18,\\ 27,\\ 36,\\ \\dots"],
+        },
+        {
+          label: "Tengo que revisarlas todas",
+          message: "Prueba cada tirada por separado: solo una tiene la suma de cifras en esa lista.",
+        },
+      ],
       title: "Folletos en paquetes de 9",
       question:
         "Una imprenta empaqueta folletos en paquetes de **9**. ¿Cuál de estas tiradas se puede empaquetar sin que sobre ninguno?",
@@ -195,6 +210,23 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "check-once",
       type: "predict",
+      help: [
+        {
+          label: "¿Cómo funciona la suma alterna?",
+          message: "Numera las cifras de derecha a izquierda. Suma las de posición impar por un lado y las de posición par por otro, y resta los dos totales.",
+          branches: [
+            {
+              label: "Un ejemplo con otro número",
+              message: "Para $2\\,849$: las cifras desde la derecha son $9, 4, 8, 2$. Impares: $9 + 8$; pares: $4 + 2$.",
+              math: ["(9 + 8) - (4 + 2) = 11 \\;\\Rightarrow\\; \\text{divisible entre } 11"],
+            },
+          ],
+        },
+        {
+          label: "¿Qué resultados valen?",
+          message: "Vale que la resta dé $0$, o un múltiplo de $11$, positivo o negativo: $\\pm 11,\\ \\pm 22\\dots$",
+        },
+      ],
       title: "El candado de 11",
       question:
         "La clave de un candado tiene 4 cifras y se sabe que es divisible entre **11**. ¿Cuál de estas puede ser?",
@@ -241,6 +273,22 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "check-doce",
       type: "predict",
+      help: [
+        {
+          label: "¿Cómo se combinan los criterios?",
+          message: "$12 = 3 \\cdot 4$ y el $3$ y el $4$ no comparten factores. Por eso un número es divisible entre $12$ si lo es entre $3$ y entre $4$ a la vez.",
+          branches: [
+            {
+              label: "¿Por qué no basta con el $2$ y el $6$?",
+              message: "Porque comparten el factor $2$. Un contraejemplo: $18$ es divisible entre $2$ y entre $6$, pero no entre $12$.",
+            },
+          ],
+        },
+        {
+          label: "Quiero descartar opciones",
+          message: "Para cada afirmación pregúntate si su razón es suficiente para asegurar la divisibilidad entre $12$. Busca un número pequeño que cumpla la razón y no sea múltiplo de $12$.",
+        },
+      ],
       title: "Lápices en cajas de 12",
       question:
         "Una fábrica tiene **5 148** lápices y quiere guardarlos en cajas de **12** sin que sobre ninguno. ¿Es posible?",
@@ -270,6 +318,16 @@ export const criteriosDivisibilidadLesson: InteractiveLesson = {
     {
       id: "cuadricula",
       type: "divisibility_grid",
+      help: [
+        {
+          label: "¿Cómo trabajo con la cuadrícula?",
+          message: "Cada casilla pregunta si el número de la fila es múltiplo del de la columna. Ve columna por columna aplicando un solo criterio cada vez.",
+        },
+        {
+          label: "La columna del $6$",
+          message: "Un número es divisible entre $6$ si lo es entre $2$ y entre $3$. Marca el $6$ solo en las filas que tengan ✓ en esas dos columnas.",
+        },
+      ],
       title: "Cuadrícula de criterios",
       question:
         "Toca las casillas en las que el número de la fila es divisible entre el de la columna. Los ✓ del $2$ y del $3$ te ayudan con el $6$.",

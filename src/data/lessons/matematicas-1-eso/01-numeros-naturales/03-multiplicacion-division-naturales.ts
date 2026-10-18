@@ -41,6 +41,20 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "distributiva-predict",
       type: "predict",
+      help: [
+        {
+          label: "Dos caminos para calcularlo",
+          message: "Puedes hallar lo que cuesta un menú y multiplicarlo por $8$, o calcular aparte todos los bocadillos y todas las bebidas. Los dos caminos tienen que dar lo mismo.",
+        },
+        {
+          label: "Ojo con qué se multiplica",
+          message: "Dentro de un menú, bocadillo y bebida se **suman**: no se multiplican entre sí. Lo que se multiplica por $8$ es el conjunto.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Si cada menú costara $10$ €, $8$ menús serían $80$ €. Como bocadillo y bebida suman menos de $10$ €, el total tiene que ser menor que eso.",
+        },
+      ],
       title: "Dos formas de calcularlo",
       definitionBox:
         "**Propiedad distributiva:** multiplicar un número por una **suma** es lo mismo que sumar los productos: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$.",
@@ -168,6 +182,20 @@ export const multiplicacionDivisionNaturalesLesson: InteractiveLesson = {
     {
       id: "resto-predict",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa el resto?",
+          message: "Son personas que no caben en los autobuses llenos. Siguen necesitando plaza.",
+        },
+        {
+          label: "¿Redondeo hacia arriba o hacia abajo?",
+          message: "Cuando nadie puede quedarse sin sitio y sobra algo, hay que contar un recipiente más: aquí el cociente no es la respuesta.",
+        },
+        {
+          label: "Con un ejemplo más pequeño",
+          message: "$10$ personas y autobuses de $4$ plazas: cociente $2$ y resto $2$. ¿Con $2$ autobuses viajan todos?",
+        },
+      ],
       title: "Interpretar el resto",
       question:
         "Una excursión de $345$ personas se reparte en autobuses de $52$ plazas. Al dividir sale cociente $6$ y resto $33$. ¿Cuántos autobuses hacen falta?",

@@ -82,6 +82,20 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "raiz-exacta-entera-predict",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué es la raíz entera?",
+          message: "El mayor número entero cuyo cuadrado no pasa del radicando.",
+        },
+        {
+          label: "Tantea con cuadrados",
+          message: "Escribe los cuadrados de los números del $5$ al $9$ y coloca el $50$ entre dos de ellos.",
+        },
+        {
+          label: "¿Por qué no redondeo?",
+          message: "La raíz entera no se redondea al más cercano: es el mayor cuadrado que no se pasa. Aunque el $50$ esté pegado a otro cuadrado perfecto.",
+        },
+      ],
       title: "Raíz exacta o entera",
       definitionBox:
         "Compara cuadrados perfectos cercanos: $6^2 = 36$ y $7^2 = 49$ enmarcan a $\\sqrt{40}$.",
@@ -110,6 +124,20 @@ export const raizCuadradaNaturalesLesson: InteractiveLesson = {
     {
       id: "check-lado",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué relación hay entre lado y superficie?",
+          message: "El área de un cuadrado es lado por lado. Te dan el área y buscas el lado: la operación inversa.",
+        },
+        {
+          label: "Tantea",
+          message: "Busca un número que multiplicado por sí mismo dé $81$. Recorre la tabla de cuadrados.",
+        },
+        {
+          label: "¿Y si divido entre $2$?",
+          message: "Dividir entre $2$ deshace «el doble», no «multiplicar por sí mismo». Comprueba si tu lado, multiplicado por sí mismo, da el área.",
+        },
+      ],
       title: "Del área al lado",
       question:
         "Un terreno cuadrado tiene $81$ m² de superficie. ¿Cuánto mide cada lado?",

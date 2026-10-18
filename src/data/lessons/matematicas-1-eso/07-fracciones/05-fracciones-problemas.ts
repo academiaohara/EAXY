@@ -97,6 +97,20 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "bidon-capacidad",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué sé y qué busco?",
+          message: "Conoces una parte ($8$ litros) y qué fracción del total es. Buscas el total: es un problema inverso.",
+        },
+        {
+          label: "Empieza por un quinto",
+          message: "Si dos quintos son $8$ litros, ¿cuántos litros es un quinto? Después, ¿cuántos quintos hacen falta para llenar el bidón?",
+        },
+        {
+          label: "Comprueba el resultado",
+          message: "Calcula $\\frac{2}{5}$ de tu resultado: tiene que dar $8$.",
+        },
+      ],
       title: "Problema inverso — bidón de agua",
       question:
         "En un bidón hay $8$ litros, que son $\\frac{2}{5}$ de su capacidad total. ¿Cuántos litros caben en total? (solo el número)",
@@ -106,6 +120,20 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "check-directo",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Problema directo o inverso?",
+          message: "Aquí conoces el total ($280$) y buscas una parte: se calcula la fracción del número.",
+        },
+        {
+          label: "Un séptimo primero",
+          message: "Reparte $280$ en $7$ grupos iguales y quédate con $3$ de ellos.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{3}{7}$ es algo menos de la mitad, así que el resultado debe quedar por debajo de $140$.",
+        },
+      ],
       title: "Campamento",
       question:
         "En un campamento hay $280$ campistas; $\\frac{3}{7}$ son españoles. ¿Cuántos españoles? (solo el número)",
@@ -115,6 +143,16 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "reloj-minutos",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué representa cada porción?",
+          message: "La esfera es una hora, es decir, $60$ minutos, partida en $20$ porciones iguales. Cada porción vale un tiempo fijo.",
+        },
+        {
+          label: "De minutos a porciones",
+          message: "Divide los minutos que piden entre lo que vale cada porción: te dice cuántas marcar.",
+        },
+      ],
       title: "Minutos en el reloj",
       question:
         "La esfera representa una hora y está dividida en $20$ porciones iguales de $3$ minutos. Marca $12$ minutos.",
@@ -130,6 +168,21 @@ export const fraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "check-fraccion",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo escribo «parte del total»?",
+          message: "Parte entre total: los minutos que te dan sobre los minutos que tiene la hora.",
+          math: ["\\frac{\\text{parte}}{\\text{total}}"],
+        },
+        {
+          label: "Simplifica",
+          message: "Divide numerador y denominador entre un divisor común hasta que la fracción sea irreducible. El $12$ y el $60$ comparten un divisor grande.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Calcula tu fracción de $60$ minutos: tiene que dar $12$.",
+        },
+      ],
       title: "Minutos en una hora",
       question:
         "¿Qué fracción de hora son $12$ minutos? Escríbela irreducible (por ejemplo, 2/3).",

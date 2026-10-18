@@ -63,6 +63,20 @@ export const proporcionalidadMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-directa",
       type: "classify",
+      help: [
+        {
+          label: "Prueba de la mitad y el doble",
+          message: "Duplica una magnitud mentalmente: si la otra se duplica es directa; si se reduce a la mitad, inversa; si no hay regla fija, ninguna.",
+        },
+        {
+          label: "Cociente o producto constante",
+          message: "En la directa, el **cociente** entre las dos no cambia. En la inversa, el **producto**. Si ninguno se mantiene, no son proporcionales.",
+        },
+        {
+          label: "Cuidado con las que «van juntas»",
+          message: "Que dos cosas crezcan a la vez (edad y altura) no basta: tiene que haber una razón fija entre ellas.",
+        },
+      ],
       title: "Directa, inversa o ninguna (act. 3 y 4)",
       question: "Clasifica cada par de magnitudes según el tipo de proporcionalidad.",
       groups: [
@@ -105,6 +119,21 @@ export const proporcionalidadMagnitudesLesson: InteractiveLesson = {
     {
       id: "caballos",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Directa o inversa?",
+          message: "Con más caballos el heno se acaba antes: al subir los caballos bajan los días. Es inversa.",
+        },
+        {
+          label: "¿Qué permanece constante?",
+          message: "La cantidad total de heno: caballos por días no cambia.",
+          math: ["\\text{caballos} \\cdot \\text{días} = \\text{constante}"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Con más caballos durará **menos** de $15$ días.",
+        },
+      ],
       title: "Caballos y heno",
       question:
         "Con $4$ caballos el heno dura $15$ días. ¿Cuántos días durará con $6$ caballos? (solo el número)",

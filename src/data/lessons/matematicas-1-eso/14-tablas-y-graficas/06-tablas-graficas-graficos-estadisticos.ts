@@ -76,6 +76,16 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "check-histograma",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué quiero mostrar?",
+          message: "¿Comparar categorías? ¿Mostrar cómo se reparten muchos valores numéricos en intervalos? ¿Mostrar partes de un todo? Cada objetivo tiene su gráfico.",
+        },
+        {
+          label: "Tipo de dato y gráfico",
+          message: "Barras: categorías o pocos valores. Histograma: números agrupados en intervalos. Sectores: reparto de un total.",
+        },
+      ],
       title: "Elegir el gráfico",
       question: "¿Qué gráfico conviene para cada conjunto de datos de una clase?",
       groups: [
@@ -98,6 +108,16 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
     {
       id: "check-sectores",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué representa todo el diagrama?",
+          message: "Un círculo completo, que es el total de los datos. ¿Cuántos grados tiene una vuelta entera?",
+        },
+        {
+          label: "Compruébalo con fracciones",
+          message: "Medio círculo son $180°$ y un cuarto son $90°$. ¿Cuántos grados tienen todos los cuartos juntos?",
+        },
+      ],
       title: "Grados totales",
       question: "En un diagrama de sectores, ¿cuántos grados suman todos los sectores? (solo el número)",
       correctAnswers: ["360"],

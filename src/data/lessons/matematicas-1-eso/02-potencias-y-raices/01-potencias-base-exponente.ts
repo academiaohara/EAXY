@@ -86,6 +86,22 @@ export const potenciasBaseExponenteLesson: InteractiveLesson = {
     {
       id: "check-potencia",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué hace el exponente?",
+          message: "Dice cuántas veces se multiplica la base por sí misma, no por cuánto se multiplica.",
+          branches: [
+            {
+              label: "¿Qué cuenta da $10$?",
+              message: "Prueba $2 \\cdot 5$ y $2 + 5$: la que da $10$ es lo que hizo el compañero.",
+            },
+          ],
+        },
+        {
+          label: "Calcúlalo tú",
+          message: "Escribe $2^5$ como un producto de cinco factores iguales y ve multiplicando paso a paso.",
+        },
+      ],
       title: "Detecta el error",
       question:
         "Un compañero dice que $2^5 = 10$. ¿Qué error ha cometido?",
@@ -113,6 +129,20 @@ export const potenciasBaseExponenteLesson: InteractiveLesson = {
     {
       id: "check-cubo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué es un cm³?",
+          message: "Un cubito de $1$ cm de arista. El volumen es cuántos cubitos caben.",
+        },
+        {
+          label: "Cuenta por capas",
+          message: "El fondo de la caja es un cuadrado de $4 \\times 4$. ¿Cuántas capas iguales hay hasta llegar a $4$ cm de altura?",
+        },
+        {
+          label: "¿Por qué no $4 \\cdot 3$?",
+          message: "Elevar al cubo es multiplicar la base **tres veces** por sí misma, no multiplicarla por $3$.",
+        },
+      ],
       title: "Un cubo de verdad",
       question:
         "Una caja cúbica mide $4$ cm de arista. ¿Cuántos cubitos de $1$ cm³ caben dentro?",

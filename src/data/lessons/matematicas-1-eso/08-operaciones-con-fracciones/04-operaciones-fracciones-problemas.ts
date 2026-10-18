@@ -55,6 +55,16 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
     {
       id: "check-tipo",
       type: "classify",
+      help: [
+        {
+          label: "¿Mismo total o «de lo que queda»?",
+          message: "Si las dos fracciones se refieren al mismo total, se suman. Si una se aplica a lo que queda tras la otra, se multiplican.",
+        },
+        {
+          label: "Pregunta de control",
+          message: "Pregúntate: ¿esa fracción es «del total» o «de esos, de lo que sobra»? Lo primero es suma; lo segundo, producto.",
+        },
+      ],
       title: "¿Suma o producto?",
       question:
         "Lee cada situación y decide qué operación hay que hacer para responderla.",

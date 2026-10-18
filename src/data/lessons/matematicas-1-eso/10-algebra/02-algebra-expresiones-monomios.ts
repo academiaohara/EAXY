@@ -59,6 +59,27 @@ export const algebraExpresionesMonomiosLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Por dónde empiezo?",
+          message: "Primero lo de dentro del paréntesis y después la resta, como siempre con la jerarquía de operaciones.",
+          branches: [
+            {
+              label: "¿Qué son monomios semejantes?",
+              message: "Los que tienen la misma parte literal. Se suman o restan sus coeficientes y la letra se queda igual.",
+              math: ["3x + 4x = 7x \\qquad 3x + 4y\\ \\text{no se reduce}"],
+            },
+          ],
+        },
+        {
+          label: "Me lío con el menos delante del paréntesis",
+          message: "Trata el paréntesis como un solo número. Con cifras: $10 - (2 + 1)$ es $10 - 3$, no $10 - 2 + 1$.",
+        },
+        {
+          label: "¿Cómo compruebo mi resultado?",
+          message: "Da a $x$ un valor, por ejemplo $x = 1$. Calcula la expresión original y tu resultado: tienen que coincidir.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Reduce $5x - (2x + x)$. Escribe el monomio resultante (por ejemplo, $7x$).",
       correctAnswers: ["2x", "2·x", "2*x", "2 x"],

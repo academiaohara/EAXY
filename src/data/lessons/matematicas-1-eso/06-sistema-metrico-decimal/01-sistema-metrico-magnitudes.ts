@@ -64,6 +64,16 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-magnitud",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué mide cada una?",
+          message: "Longitud: distancias. Peso (masa): cuánto pesa algo. Capacidad: cuánto cabe en un recipiente. Piensa qué medirías con esa unidad.",
+        },
+        {
+          label: "Los prefijos no cambian la magnitud",
+          message: "$\\mathrm{km}$, $\\mathrm{cm}$ y $\\mathrm{mm}$ miden lo mismo que el metro. Fíjate en la unidad base que queda al quitar el prefijo.",
+        },
+      ],
       title: "Unidades y magnitudes",
       question: "Coloca cada unidad junto a la magnitud que mide.",
       groups: [
@@ -87,6 +97,16 @@ export const sistemaMetricoMagnitudesLesson: InteractiveLesson = {
     {
       id: "check-kilo",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Mira otros casos",
+          message: "En «kilogramo» y «kilolitro» el prefijo significa lo mismo. ¿Cuántos gramos tiene un kilogramo?",
+        },
+        {
+          label: "Aplícalo al metro",
+          message: "Si «kilo» es el mismo número delante de cualquier unidad, ¿cuántas unidades base hay en un kilómetro?",
+        },
+      ],
       title: "Equivalencia",
       question: "¿Cuántos metros hay en un kilómetro? (solo el número)",
       correctAnswers: ["1000", "1.000"],

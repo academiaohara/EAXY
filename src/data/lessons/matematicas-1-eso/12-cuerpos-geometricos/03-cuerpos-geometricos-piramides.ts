@@ -40,6 +40,23 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "check-cuadrangular",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo me imagino la pirámide?",
+          message: "Una base en el suelo y una punta arriba. De cada lado de la base sube una cara hasta la punta.",
+          branches: [
+            {
+              label: "¿Qué forma tienen esas caras?",
+              message: "Son triángulos, uno por cada lado de la base. ¿Cuántos lados tiene un cuadrado?",
+            },
+          ],
+        },
+        {
+          label: "Generalízalo",
+          message: "Con base triangular (tetraedro): $3$ laterales y la base. ¿Qué regla sale para $n$ lados?",
+          math: ["n \\text{ lados} \\;\\Rightarrow\\; ?\\ \\text{caras}"],
+        },
+      ],
       title: "Pirámide cuadrangular",
       question: "¿Cuántas caras tiene en total una pirámide cuadrangular? (solo el número)",
       correctAnswers: ["5"],
@@ -49,6 +66,16 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "check-vs-prisma",
       type: "classify",
+      help: [
+        {
+          label: "¿Cómo los distingo?",
+          message: "Hazte tres preguntas: ¿cuántas bases tiene? ¿Las caras laterales son triángulos o paralelogramos? ¿Hay un punto donde todas se juntan?",
+        },
+        {
+          label: "Mira el conteo",
+          message: "Con base de $n$ lados: la pirámide tiene $n + 1$ caras y $2n$ aristas; el prisma, $n + 2$ caras y $3n$ aristas. Si una tarjeta da un número, prueba con $n = 3$.",
+        },
+      ],
       title: "Diferencia con el prisma",
       question: "¿Cada característica es de la pirámide o del prisma?",
       groups: [
@@ -70,6 +97,17 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "aristas-hexagonal",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué aristas hay?",
+          message: "Las de la base y las que suben hasta la punta: dos grupos.",
+          math: ["\\text{aristas de la base} + \\text{aristas laterales}"],
+        },
+        {
+          label: "Hazlo primero con una cuadrangular",
+          message: "Base cuadrada: $4$ aristas en la base y $4$ que suben. ¿Qué cambia si la base tiene $6$ lados?",
+        },
+      ],
       title: "Pirámide hexagonal",
       question: "¿Cuántas aristas tiene una pirámide hexagonal? (solo el número)",
       correctAnswers: ["12"],
@@ -78,6 +116,17 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
     {
       id: "vertices-pentagonal",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Dónde están los vértices?",
+          message: "En cada esquina de la base, más uno más en la punta.",
+        },
+        {
+          label: "Compruébalo con Euler",
+          message: "Si conoces las caras ($n + 1$) y las aristas ($2n$), la fórmula de Euler te da los vértices.",
+          math: ["C + V = A + 2"],
+        },
+      ],
       title: "Vértices",
       question: "¿Cuántos vértices tiene una pirámide pentagonal? (solo el número)",
       correctAnswers: ["6"],

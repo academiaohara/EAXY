@@ -38,6 +38,17 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "marca-equivalente",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué quiere decir «equivalente»?",
+          message: "Que representa la misma porción de la barra, aunque se escriba con otros números.",
+        },
+        {
+          label: "Cambia de denominador",
+          message: "La barra tiene $8$ partes. Multiplica numerador y denominador por el mismo número hasta que el denominador sea $8$.",
+          math: ["\\frac{3}{4} = \\frac{3 \\cdot ?}{4 \\cdot ?}"],
+        },
+      ],
       title: "Colorea una fracción equivalente",
       question:
         "La barra está partida en $8$ partes iguales. Colorea $\\frac{3}{4}$ de la barra.",
@@ -122,6 +133,19 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "check-equiv",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuándo son equivalentes dos fracciones?",
+          message: "Cuando valen lo mismo. Puedes pasarlas a decimal o ampliar y simplificar para compararlas.",
+        },
+        {
+          label: "Producto cruzado",
+          message: "$\\frac{a}{b} = \\frac{c}{d}$ si $a \\cdot d = b \\cdot c$. Pruébalo con cada tarjeta.",
+          math: [
+            "\\frac{3}{5} \\overset{?}{=} \\frac{6}{10}: \\quad 3 \\cdot 10 \\ \\text{y}\\ 5 \\cdot 6",
+          ],
+        },
+      ],
       title: "¿Equivalentes?",
       question: "Clasifica cada fracción según sea o no equivalente a $\\frac{3}{5}$.",
       groups: [
@@ -143,6 +167,17 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "divide-equivalente",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿En cuántas partes divido?",
+          message: "Cualquier múltiplo de $5$ sirve ($5$, $10$, $15$…), porque así cada quinto se reparte en partes enteras.",
+        },
+        {
+          label: "¿Cuántas coloreo?",
+          message: "Si divides cada quinto en $k$ partes, $\\frac{2}{5}$ son $2k$ partes de las $5k$ que hay.",
+          math: ["\\frac{2}{5} = \\frac{2k}{5k}"],
+        },
+      ],
       title: "Elige tú la división",
       question:
         "Divide la barra en el número de partes que quieras (por ejemplo $10$) y colorea una fracción equivalente a $\\frac{2}{5}$.",
@@ -157,6 +192,20 @@ export const fraccionesEquivalentesLesson: InteractiveLesson = {
     {
       id: "check-simpl",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una fracción irreducible?",
+          message: "La que ya no se puede simplificar: numerador y denominador no tienen más divisor común que el $1$.",
+        },
+        {
+          label: "No veo el divisor común mayor",
+          message: "Divide entre cualquier divisor común, aunque no sea el mayor, y repite hasta que no puedas más.",
+        },
+        {
+          label: "¿Cómo sé que ya he terminado?",
+          message: "Mira si el numerador y el denominador comparten algún divisor distinto de $1$. Si no, es irreducible.",
+        },
+      ],
       title: "Simplifica",
       question: "La fracción irreducible equivalente a $\\frac{15}{20}$ es $\\frac{?}{?}$. Escribe solo el numerador.",
       correctAnswers: ["3"],

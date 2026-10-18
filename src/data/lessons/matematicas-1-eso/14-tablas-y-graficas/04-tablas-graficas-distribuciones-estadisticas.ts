@@ -73,6 +73,16 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "check-cualitativa",
       type: "classify",
+      help: [
+        {
+          label: "¿Número o categoría?",
+          message: "Si la respuesta es un número que se mide o cuenta, la variable es cuantitativa. Si es una cualidad con nombre, cualitativa.",
+        },
+        {
+          label: "Un test rápido",
+          message: "Si tiene sentido calcular la **media** de los valores, es cuantitativa. No tiene sentido hacer la media de colores o de deportes.",
+        },
+      ],
       title: "Tipo de variable",
       question: "Clasifica cada variable estadística según el tipo de valores que toma.",
       groups: [
@@ -96,6 +106,17 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
     {
       id: "check-fr",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es la frecuencia relativa?",
+          message: "La parte del total que supone un valor: su frecuencia entre el número de datos.",
+        },
+        {
+          label: "¿Qué va arriba y qué abajo?",
+          message: "Arriba la frecuencia absoluta del valor; abajo, el total de datos.",
+          math: ["fr = \\frac{f}{N}"],
+        },
+      ],
       title: "Frecuencia relativa",
       question:
         "Si $f(2) = 9$ y hay $N = 36$ datos, ¿cuánto vale $fr(2)$ como fracción? Escribe solo la fracción (ejemplo: 9/36)",

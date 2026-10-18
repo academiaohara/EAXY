@@ -64,6 +64,16 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
     {
       id: "check-moda-dado",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es la moda?",
+          message: "El valor que más veces aparece. No es el mayor, ni el del medio.",
+        },
+        {
+          label: "Cuenta con orden",
+          message: "Haz una tabla con las seis caras del dado y apunta cuántas veces sale cada una.",
+        },
+      ],
       title: "Moda del dado",
       question: "Al tirar un dado 10 veces: $1, 5, 3, 1, 2, 6, 4, 1, 4, 3$. ¿Cuál es la moda? (solo el número)",
       correctAnswers: ["1"],
@@ -73,6 +83,16 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
     {
       id: "check-media",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cómo se calcula la media?",
+          message: "Se suman los datos y se divide entre cuántos son. Aquí son tres.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "La media siempre queda entre el dato menor y el mayor.",
+        },
+      ],
       title: "Media simple",
       question: "Media de $2, 4, 6$ (escribe solo el número)",
       correctAnswers: ["4"],

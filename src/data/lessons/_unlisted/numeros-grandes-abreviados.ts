@@ -66,6 +66,20 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué indica el exponente de $10$?",
+          message: "Cuántos ceros van detrás del $1$. Se trata de separar el número en un factor «corto» por una unidad seguida de ceros.",
+        },
+        {
+          label: "Separa los ceros",
+          message: "Tapa las cifras significativas ($45$) y cuenta cuántos ceros quedan detrás.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Multiplica $a$ por $10^n$ y verifica que recuperas el número original.",
+        },
+      ],
       title: "Practica",
       question: "Escribe $45\\,000\\,000$ como $a \\cdot 10^n$ con $a$ entero pequeño: ¿cuál es $n$? (solo el exponente)",
       correctAnswers: ["7"],
@@ -75,6 +89,16 @@ export const numerosGrandesAbreviadosLesson: InteractiveLesson = {
     {
       id: "check-mc",
       type: "classify",
+      help: [
+        {
+          label: "De potencia a número",
+          message: "$a \\cdot 10^n$ es $a$ seguido de $n$ ceros. Por ejemplo, $7 \\cdot 10^3$ es $7$ con tres ceros: $7000$.",
+        },
+        {
+          label: "Un mismo número, varias formas",
+          message: "$46 \\cdot 10^4$ y $460 \\cdot 10^3$ valen lo mismo: cada cero que pasa al factor, el exponente baja una unidad.",
+        },
+      ],
       title: "¿Qué número es?",
       question: "Coloca cada expresión debajo del número que representa.",
       groups: [

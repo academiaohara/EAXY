@@ -59,6 +59,23 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
     {
       id: "check-mult",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Simplifica antes de multiplicar",
+          message: "Busca un factor común entre un numerador y un denominador (en cruz). Simplificar antes ahorra cuentas con números grandes.",
+          math: [
+            "\\frac{2}{3} \\cdot \\frac{9}{8}:\\ \\ 9\\ \\text{y}\\ 3\\ \\text{comparten un factor}",
+          ],
+        },
+        {
+          label: "¿Cómo sé que está simplificado?",
+          message: "Comprueba que numerador y denominador no tengan ningún divisor común distinto de $1$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Multiplicar por $\\frac{2}{3}$, que es menor que $1$, reduce: el resultado tiene que ser menor que $\\frac{9}{8}$.",
+        },
+      ],
       title: "Multiplicación rápida",
       question:
         "Calcula $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ y escribe el resultado **simplificado** (por ejemplo, 5/7).",

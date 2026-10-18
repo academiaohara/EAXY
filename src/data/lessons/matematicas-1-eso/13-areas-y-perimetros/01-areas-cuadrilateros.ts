@@ -75,6 +75,22 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "check-cuadrado",
       type: "number_line_pick",
+      help: [
+        {
+          label: "¿Qué relación hay entre lado y área?",
+          message: "El área de un cuadrado es lado por lado. Aquí te dan el resultado y buscas el lado: el camino inverso.",
+          branches: [
+            {
+              label: "¿Cómo encuentro ese número?",
+              message: "Tantea con cuadrados que conozcas: $10^2 = 100$ y $20^2 = 400$. El lado está entre $10$ y $20$. ¿En qué cifra tiene que acabar para que el cuadrado acabe en $5$?",
+            },
+          ],
+        },
+        {
+          label: "¿Por qué no es la mitad?",
+          message: "Dividir entre $2$ deshace «el doble», no «multiplicar por sí mismo». Comprueba: $112 \\cdot 112$ es muchísimo más que $225$.",
+        },
+      ],
       title: "Lado de un cuadrado",
       question:
         "Un cuadrado tiene $225\\,\\mathrm{cm}^2$ de área. Marca en la regla (en $\\mathrm{cm}$) cuánto mide su lado.",
@@ -87,6 +103,25 @@ export const areasCuadrilaterosLesson: InteractiveLesson = {
     {
       id: "check-rombo",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué son las diagonales?",
+          message: "Los segmentos que unen vértices opuestos. En el rombo se cruzan en perpendicular y lo dividen en cuatro triángulos iguales.",
+          branches: [
+            {
+              label: "¿Por qué hay que dividir entre $2$?",
+              message: "El rombo cabe justo en un rectángulo cuyos lados son sus dos diagonales, y ocupa la mitad de ese rectángulo.",
+              math: [
+                "\\text{rectángulo} = D \\cdot d \\;\\Rightarrow\\; \\text{rombo} = \\tfrac{1}{2}\\, D \\cdot d",
+              ],
+            },
+          ],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El rectángulo de $6 \\times 10$ que envuelve al rombo tiene un área mayor que la del rombo. Tu resultado tiene que ser menor que ese rectángulo.",
+        },
+      ],
       title: "Área de un rombo",
       question: "Las diagonales de un rombo miden $6\\,\\mathrm{cm}$ y $10\\,\\mathrm{cm}$. ¿Cuál es su área en $\\mathrm{cm}^2$?",
       correctAnswers: ["30", "30,0", "30.0"],

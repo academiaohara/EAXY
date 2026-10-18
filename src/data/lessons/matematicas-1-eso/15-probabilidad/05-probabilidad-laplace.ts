@@ -70,6 +70,20 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Qué son los casos favorables?",
+          message: "Los resultados que cumplen lo que pide el suceso. Cuéntalos, no los inventes.",
+        },
+        {
+          label: "¿Por qué el $4$ no cuenta?",
+          message: "«Mayor que $4$» empieza en el $5$. El $4$ es igual, no mayor.",
+        },
+        {
+          label: "Recuerda la regla",
+          message: "$P = \\dfrac{\\text{casos favorables}}{\\text{casos posibles}}$. Aquí marcas los favorables sobre las $6$ caras.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "Lanzamos un dado equilibrado. Cada ficha es una de sus $6$ caras (casos posibles). Marca los casos favorables a «obtener un número mayor que $4$»: lo marcado será la probabilidad.",

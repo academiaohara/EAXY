@@ -67,6 +67,19 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-escribir",
       type: "predict",
+      help: [
+        {
+          label: "¿Cuántas cifras decimales necesito?",
+          message: "El nombre del último orden lo dice: milésimas son tres cifras decimales.",
+          math: [
+            "\\text{décimas} = 1 \\quad \\text{centésimas} = 2 \\quad \\text{milésimas} = 3",
+          ],
+        },
+        {
+          label: "¿Y si el número tiene menos cifras?",
+          message: "Se rellena con ceros a la izquierda de la parte decimal, para que la última cifra caiga en su orden.",
+        },
+      ],
       title: "De palabras a cifras",
       question:
         "Una balanza digital indica «dos unidades y trece milésimas» de kilo. ¿Qué número aparece en la pantalla?",
@@ -126,6 +139,20 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-comparar",
       type: "predict",
+      help: [
+        {
+          label: "¿Cómo comparo decimales?",
+          message: "Primero la parte entera; si coinciden, cifra a cifra empezando por las décimas.",
+        },
+        {
+          label: "Iguala las cifras",
+          message: "Añade ceros para que tengan las mismas cifras decimales: $9{,}9 = 9{,}90$. Ahora compara como si fueran enteros, $985$ y $990$.",
+        },
+        {
+          label: "¿Quién gana?",
+          message: "En una carrera gana el menor tiempo: el que llega antes ha tardado menos.",
+        },
+      ],
       title: "Quién llega antes",
       question:
         "En una final de 100 m, dos corredores marcan 9,85 s y 9,9 s. ¿Quién ha llegado antes a la meta?",
@@ -195,6 +222,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-entre",
       type: "predict",
+      help: [
+        {
+          label: "¿Cómo busco uno entre dos?",
+          message: "Añade una cifra decimal más: $3{,}4 = 3{,}40$ y $3{,}5 = 3{,}50$. Entre $40$ y $50$ centésimas hay muchos números.",
+        },
+        {
+          label: "Descarta",
+          message: "Un número entre dos marcas es mayor que la menor y menor que la mayor. Compara cada opción con $3{,}4$ y con $3{,}5$.",
+        },
+      ],
       title: "Entre dos marcas",
       question:
         "Una regla graduada en décimas tiene dos marcas consecutivas en 3,4 cm y 3,5 cm. ¿Cuál de estos números queda entre ellas?",
@@ -247,6 +284,20 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-redondeo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué cifra miro?",
+          message: "La primera que se suprime, la que queda justo a la derecha del lugar al que redondeas.",
+        },
+        {
+          label: "¿Cuándo sube la última cifra?",
+          message: "Si la cifra suprimida es $5$ o más, la anterior sube una unidad. Si es menor, se queda igual.",
+        },
+        {
+          label: "¿Cuántos decimales dejo?",
+          message: "Redondear a centésimas es dejar dos cifras decimales.",
+        },
+      ],
       title: "El recibo del taxi",
       question:
         "El taxímetro marca 12,745 €. El recibo se redondea a céntimos (centésimas). ¿Qué importe se imprime?",
@@ -279,6 +330,16 @@ export const ordenesUnidadesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-cadena",
       type: "predict",
+      help: [
+        {
+          label: "¿Por qué falla redondear por partes?",
+          message: "Cada redondeo arrastra el error del anterior: $4{,}449 \\to 4{,}45$ sube un poco de más y el segundo redondeo lo sube otra vez. Se redondea siempre desde el número original.",
+        },
+        {
+          label: "¿Qué cifra miro?",
+          message: "Para dejar una cifra decimal (décimas), mira solo la **segunda** cifra decimal del número original.",
+        },
+      ],
       title: "Redondear por partes",
       question:
         "Un laboratorio mide 4,449 g y debe anotarlo con una sola cifra decimal. Un ayudante redondea por partes: 4,449 → 4,45 → 4,5. ¿Cuál es el valor correcto?",

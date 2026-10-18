@@ -39,6 +39,23 @@ export const algebraEcuacionesLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Qué diferencia hay?",
+          message: "Una ecuación es como una pregunta («¿para qué valor se cumple?»). Una identidad ya es una afirmación cierta siempre.",
+          branches: [
+            {
+              label: "¿Cómo lo compruebo?",
+              message: "Sustituye la $x$ por un valor y mira si los dos lados dan lo mismo. Repite con otro valor: si con alguno falla, es una ecuación.",
+              math: ["x = 0:\\ \\text{¿igual?} \\qquad x = 1:\\ \\text{¿igual?}"],
+            },
+          ],
+        },
+        {
+          label: "Me da pereza probar números",
+          message: "Simplifica un lado: si al reducir queda exactamente lo mismo que en el otro, es una identidad. Si queda algo como $x = \\text{número}$, es una ecuación.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "¿Ecuación o identidad? Coloca cada igualdad en su grupo.",
       groups: [

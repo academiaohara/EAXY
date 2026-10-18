@@ -81,6 +81,20 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
     {
       id: "queso-regla",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Directa o inversa?",
+          message: "Más queso cuesta más dinero: es directa. En la inversa, más cantidad costaría menos.",
+        },
+        {
+          label: "Reducción a la unidad",
+          message: "Calcula cuánto cuesta una cantidad pequeña, por ejemplo $100$ g, y multiplica.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$320$ g es menos que $400$ g, así que cuesta menos de $4{,}60$ €, pero más de la mitad.",
+        },
+      ],
       title: "Regla de tres — queso (act. 6)",
       question:
         "Un trozo de $400$ g cuesta $4{,}60\\,€$. ¿Cuánto cuesta otro de $320$ g del mismo queso? (en euros, solo el número con coma decimal)",
@@ -92,6 +106,21 @@ export const proporcionalidadDirectaProblemasLesson: InteractiveLesson = {
     {
       id: "check-fraccion",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué relaciona una proporción?",
+          message: "Dos fracciones iguales: el producto cruzado es el mismo.",
+          math: ["\\frac{a}{b} = \\frac{c}{d} \\;\\Rightarrow\\; a \\cdot d = b \\cdot c"],
+        },
+        {
+          label: "¿Por cuánto se multiplica?",
+          message: "Mira por cuánto se multiplica el numerador ($4$ a $14$) y aplica lo mismo al denominador.",
+        },
+        {
+          label: "Compruébalo",
+          message: "Simplifica $\\frac{4}{6}$ y la fracción que te salga con $x$: tienen que dar la misma.",
+        },
+      ],
       title: "Completa la proporción (act. 4a)",
       question: "Si $\\frac{4}{6} = \\frac{14}{x}$, halla $x$ (solo el número).",
       correctAnswers: ["21"],

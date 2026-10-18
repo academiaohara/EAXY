@@ -64,6 +64,16 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "check-dm2",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Por qué no es $10$?",
+          message: "En superficies hay que contar en dos direcciones: el largo y el ancho se multiplican por $10$ cada uno.",
+        },
+        {
+          label: "Con la escalera de superficie",
+          message: "En superficie, cada escalón de unidad multiplica por $100$, no por $10$. ¿Cuántos escalones hay de $\\mathrm{m}^2$ a $\\mathrm{dm}^2$?",
+        },
+      ],
       title: "Decímetros cuadrados en un metro cuadrado",
       question: "¿Cuántos $\\mathrm{dm}^2$ hay en $1\\,\\mathrm{m}^2$? (solo el número)",
       correctAnswers: ["100", "100 dm2"],
@@ -73,6 +83,20 @@ export const sistemaMetricoSuperficieLesson: InteractiveLesson = {
     {
       id: "check-ha",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una hectárea?",
+          message: "Una hectárea es $1\\,\\mathrm{hm}^2$: un cuadrado de $100\\,\\mathrm{m}$ de lado, es decir, $10\\,000\\,\\mathrm{m}^2$.",
+        },
+        {
+          label: "¿Más grande o más pequeña?",
+          message: "La hectárea es mucho mayor que el metro cuadrado, así que el número de hectáreas es menor que $50\\,700$.",
+        },
+        {
+          label: "Mueve la coma",
+          message: "Como cada escalón de superficie son dos lugares, de $\\mathrm{m}^2$ a $\\mathrm{hm}^2$ la coma se desplaza cuatro lugares a la izquierda.",
+        },
+      ],
       title: "Hectáreas",
       question: "Expresa $50\\,700\\,\\mathrm{m}^2$ en hectáreas (coma decimal).",
       correctAnswers: ["5,07", "5.07"],

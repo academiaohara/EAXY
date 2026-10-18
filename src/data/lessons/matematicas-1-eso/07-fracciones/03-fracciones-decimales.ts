@@ -40,6 +40,16 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "marca-decimas",
       type: "fraction_pick",
+      help: [
+        {
+          label: "¿Cuánto vale cada casilla?",
+          message: "La unidad está dividida en $10$ casillas iguales, así que cada una vale una décima.",
+        },
+        {
+          label: "De decimal a fracción",
+          message: "Lee el número en voz alta: «cero coma tres» son «tres décimas». La lectura te da la fracción.",
+        },
+      ],
       title: "Décimas en la cuadrícula",
       question:
         "La cuadrícula es la unidad, dividida en $10$ casillas iguales. Colorea $0{,}3$ de la unidad.",
@@ -76,6 +86,21 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-decimal",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es una fracción?",
+          message: "Una división: el numerador entre el denominador.",
+          math: ["\\frac{3}{8} = 3 : 8"],
+        },
+        {
+          label: "Si el numerador es menor, ¿cómo divido?",
+          message: "Pon $0$ en el cociente y la coma, y añade un cero al $3$ para dividir $30$ entre $8$. Sigue añadiendo ceros hasta que el resto sea $0$.",
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "$\\frac{3}{8}$ es menos que la mitad ($\\frac{4}{8}$) y más que un cuarto ($\\frac{2}{8}$): el decimal queda entre $0{,}25$ y $0{,}5$.",
+        },
+      ],
       title: "Pasa a decimal",
       question: "Expresa $\\frac{3}{8}$ como número decimal (usa coma).",
       correctAnswers: ["0,375", "0.375"],
@@ -84,6 +109,22 @@ export const fraccionesDecimalesLesson: InteractiveLesson = {
     {
       id: "check-13",
       type: "classify",
+      help: [
+        {
+          label: "¿Cómo sé si una división termina?",
+          message: "Haz la división: si el resto llega a $0$, es exacta. Si un resto se repite, las cifras se repiten sin fin.",
+        },
+        {
+          label: "Un truco con el denominador",
+          message: "Simplifica la fracción y mira el denominador: si solo tiene factores $2$ y $5$, el decimal termina. Si tiene otro primo ($3$, $7$…), es periódico.",
+          branches: [
+            {
+              label: "Ejemplos",
+              message: "$\\frac{1}{4}$: $4 = 2^2$ → termina. $\\frac{1}{6}$: $6 = 2 \\cdot 3$ → periódico. Ojo: $\\frac{3}{6}$ se simplifica a $\\frac{1}{2}$ y termina.",
+            },
+          ],
+        },
+      ],
       title: "¿Exacto o periódico?",
       question:
         "Haz mentalmente (o en papel) cada división y clasifica la fracción según su expresión decimal.",

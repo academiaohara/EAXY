@@ -77,6 +77,23 @@ export const problemasConSistemasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "Traduce frase a frase",
+          message: "Cada frase del enunciado da una ecuación. Empieza por la de la suma y después busca la otra relación.",
+        },
+        {
+          label: "Mira «el doble del menor»",
+          message: "El doble de $y$ es $2y$. «Al mayor le sumamos $1$» es $x + 1$. «Obtenemos» es el signo igual.",
+          math: [
+            "\\underbrace{x + 1}_{\\text{al mayor le sumamos 1}} = \\underbrace{\\;?\\;}_{\\text{el doble del menor}}",
+          ],
+        },
+        {
+          label: "Pon a prueba una ecuación",
+          message: "Prueba con dos números que sumen $14$, por ejemplo $10$ y $4$: ¿cumplen la segunda condición? Así ves si una ecuación está mal planteada.",
+        },
+      ],
       title: "Practica",
       question:
         "La suma de dos números es 14. Si al mayor le sumamos 1 obtenemos el doble del menor. Llamamos $x$ al mayor e $y$ al menor: ¿qué ecuaciones traducen el enunciado?",

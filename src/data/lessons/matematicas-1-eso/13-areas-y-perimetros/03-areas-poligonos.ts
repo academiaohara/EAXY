@@ -67,6 +67,27 @@ export const areasPoligonosLesson: InteractiveLesson = {
     {
       id: "check-formula",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es la altura del trapecio?",
+          message: "La distancia perpendicular entre las dos bases, no la longitud del lado inclinado.",
+        },
+        {
+          label: "¿Por qué se suman las bases?",
+          message: "Si pegas dos trapecios iguales, uno girado, se forma un paralelogramo de base $B + b$ y la misma altura. El trapecio es la mitad.",
+          branches: [
+            {
+              label: "Un ejemplo pequeño",
+              message: "Bases $3$ y $1$, altura $2$: el paralelogramo mide $(3 + 1) \\cdot 2 = 8$ y el trapecio es la mitad.",
+              math: ["\\frac{(3 + 1) \\cdot 2}{2} = 4"],
+            },
+          ],
+        },
+        {
+          label: "¿En qué orden hago la cuenta?",
+          message: "Primero la suma del paréntesis, luego multiplicas por la altura y al final divides entre $2$.",
+        },
+      ],
       title: "Trapecio y polígono regular",
       question:
         "Las bases de un trapecio miden $13\\,\\mathrm{cm}$ y $7\\,\\mathrm{cm}$, con altura $10\\,\\mathrm{cm}$. ¿Cuál es su área en $\\mathrm{cm}^2$? (escribe solo el número)",

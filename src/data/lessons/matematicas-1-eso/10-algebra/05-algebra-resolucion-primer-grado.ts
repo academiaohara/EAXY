@@ -59,6 +59,26 @@ export const algebraResolucionPrimerGradoLesson: InteractiveLesson = {
     {
       id: "check",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es transponer?",
+          message: "Pasar un término al otro lado cambiándole el signo. Piensa en una balanza: lo que haces en un platillo, lo haces en el otro.",
+          branches: [
+            {
+              label: "¿Qué muevo primero?",
+              message: "Reúne las $x$ en un lado. Si mueves la que tiene menor coeficiente evitas trabajar con números negativos.",
+            },
+          ],
+        },
+        {
+          label: "Quiero un orden claro",
+          message: "Tres pasos: (1) las $x$ juntas en un miembro, (2) los números en el otro, (3) dividir entre el coeficiente de $x$.",
+        },
+        {
+          label: "¿Cómo compruebo?",
+          message: "Sustituye tu valor en los dos miembros de la ecuación original: tienen que dar lo mismo.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Resuelve $6x + 5 = 21 + 2x$. ¿Cuánto vale $x$? (escribe solo el número)",
       correctAnswers: ["4", "x=4"],

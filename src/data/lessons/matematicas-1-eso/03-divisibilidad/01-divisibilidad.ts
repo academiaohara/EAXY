@@ -88,6 +88,16 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "check-direccion",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué dice la igualdad?",
+          message: "Si $a = b \\cdot c$, entonces $a$ es múltiplo de $b$ y de $c$, y $b$ y $c$ son divisores de $a$. El resultado del producto es siempre el «grande».",
+        },
+        {
+          label: "Pruébalo con números pequeños",
+          message: "$12 = 3 \\cdot 4$: $12$ es múltiplo de $3$, pero $3$ no puede ser múltiplo de $12$, porque un múltiplo nunca es menor que el número del que viene.",
+        },
+      ],
       title: "Quién es múltiplo de quién",
       question:
         "Sabiendo que $56 = 8 \\cdot 7$, ¿cuál de estas afirmaciones es verdadera?",
@@ -190,6 +200,22 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "check-sillas",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué significa «sin que sobre ninguna»?",
+          message: "Que la división $36 : \\text{filas}$ sea exacta, con resto $0$. Es decir, el número de filas tiene que ser divisor de $36$.",
+          branches: [
+            {
+              label: "¿Cómo busco la que falla?",
+              message: "Para cada opción, pregúntate: ¿qué número multiplicado por ella da $36$? Si no existe, esa es la respuesta.",
+            },
+          ],
+        },
+        {
+          label: "Quiero un método ordenado",
+          message: "Haz las cuatro divisiones una a una y fíjate solo en el resto: hay una que no sale exacta.",
+        },
+      ],
       title: "Sillas en filas iguales",
       question:
         "En un salón de actos hay **36** sillas y se quieren colocar en filas iguales, sin que sobre ninguna. ¿Con cuál de estos números de filas **no** se puede?",
@@ -223,6 +249,17 @@ export const divisibilidadLesson: InteractiveLesson = {
     {
       id: "check-bolsas",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué me piden contar?",
+          message: "Los tamaños de bolsa posibles son los divisores de $30$, pero el enunciado excluye el $1$ y el $30$.",
+        },
+        {
+          label: "Cómo no dejarme ninguno",
+          message: "Busca los divisores por parejas, de menor a mayor, y para cuando las parejas se crucen.",
+          math: ["30 = 1 \\cdot 30 = 2 \\cdot ? = 3 \\cdot ? = \\dots"],
+        },
+      ],
       title: "Bolsas de roscones",
       question:
         "Un panadero tiene **30** roscones y quiere empaquetarlos en bolsas iguales, de más de $1$ y de menos de $30$ roscones, sin que sobre ninguno. ¿Cuántos tamaños de bolsa distintos puede usar?",

@@ -49,6 +49,21 @@ export const algebraTecnicasEcuacionesLesson: InteractiveLesson = {
     {
       id: "check",
       type: "number_line_pick",
+      help: [
+        {
+          label: "¿Qué le hace el $5$ a la $x$?",
+          message: "$\\frac{x}{5}$ es $x$ repartido en $5$ partes. Para recuperar $x$ hay que deshacer esa operación: ¿cuál es la inversa de dividir?",
+        },
+        {
+          label: "Pruébalo con una más fácil",
+          message: "Si $\\frac{x}{2} = 3$, ¿qué número partido en $2$ da $3$? Usa exactamente la misma idea con el $5$.",
+          math: ["\\frac{x}{2} = 3 \\;\\Rightarrow\\; x = \\;?"],
+        },
+        {
+          label: "¿Cómo lo marco en la recta?",
+          message: "Calcula primero el valor y luego busca su marca en la regla. Si no estás seguro de la posición, comprueba sustituyendo en la ecuación.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Resuelve $\\frac{x}{5} = 2$ y marca la solución en la recta.",
       min: 0,

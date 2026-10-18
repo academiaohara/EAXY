@@ -60,6 +60,20 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "check-kg",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Crece o decrece el número?",
+          message: "El gramo es más pequeño que el kilogramo: en cada kilo caben muchos gramos. El número crece.",
+        },
+        {
+          label: "Descomponlo",
+          message: "$4{,}08\\,\\mathrm{kg} = 4\\,\\mathrm{kg} + 0{,}08\\,\\mathrm{kg}$. Pasa cada parte a gramos.",
+        },
+        {
+          label: "Cuidado con los ceros",
+          message: "Al mover la coma tres lugares, a $4{,}08$ solo le quedan dos cifras decimales: tendrás que añadir un cero.",
+        },
+      ],
       title: "Kilogramos y gramos",
       question: "¿Cuántos gramos hay en $4{,}08\\,\\mathrm{kg}$? (solo el número)",
       correctAnswers: ["4080", "4.080", "4080 g"],
@@ -69,6 +83,22 @@ export const sistemaMetricoPesoLesson: InteractiveLesson = {
     {
       id: "check-suma",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "Usa columnas",
+          message: "Una cifra por unidad ($\\mathrm{kg}$, $\\mathrm{hg}$, $\\mathrm{dag}$, $\\mathrm{g}$) y lee el número de seguido.",
+          branches: [
+            {
+              label: "Un ejemplo",
+              message: "$3\\,\\mathrm{kg}\\ 2\\,\\mathrm{hg}\\ 5\\,\\mathrm{g}$: columnas $3 \\mid 2 \\mid 0 \\mid 5$, es decir, $3205\\,\\mathrm{g}$. El $0$ marca la unidad que no aparece.",
+            },
+          ],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El resultado en gramos tiene que quedar un poco por encima de $5000$, que son los $5\\,\\mathrm{kg}$.",
+        },
+      ],
       title: "Expresar en gramos",
       question: "Expresa en gramos: $5\\,\\mathrm{kg}\\ 3\\,\\mathrm{hg}\\ 7\\,\\mathrm{dag}\\ 8\\,\\mathrm{g}$ (solo número).",
       correctAnswers: ["5378", "5378,0", "5378.0"],

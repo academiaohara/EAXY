@@ -90,6 +90,26 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "blusa",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué es un $20\\%$?",
+          message: "Veinte de cada cien, es decir, una quinta parte del total.",
+          branches: [
+            {
+              label: "¿Cómo calculo una quinta parte?",
+              message: "Divide el precio entre $5$. Ese número es el descuento, no lo que paga.",
+            },
+          ],
+        },
+        {
+          label: "¿Qué me piden: el descuento o el precio?",
+          message: "Lo que paga es el precio inicial menos el descuento. Al terminar comprueba: ¿tu resultado es menor que $35$?",
+        },
+        {
+          label: "Hay un atajo",
+          message: "Si le rebajan el $20\\%$, paga el $80\\%$ del precio. Puedes calcular directamente ese porcentaje.",
+        },
+      ],
       title: "Rebaja en una blusa (autoevaluación)",
       question:
         "Marta compra una blusa de $35\\,€$ con un $20\\%$ de rebaja. ¿Cuánto paga, en euros? (solo el número)",
@@ -101,6 +121,23 @@ export const aumentosDisminucionesPorcentualesLesson: InteractiveLesson = {
     {
       id: "comedor",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué significa el $60\\%$?",
+          message: "Sesenta de cada cien, o sea, $60$ centésimas del total.",
+          branches: [
+            {
+              label: "Descomponlo en partes fáciles",
+              message: "El $50\\%$ es la mitad y el $10\\%$ es la décima parte. El $60\\%$ es la suma de las dos.",
+              math: ["60\\% = 50\\% + 10\\%"],
+            },
+          ],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El $60\\%$ es algo más de la mitad. La mitad de $585$ ronda $300$, así que el resultado debe quedar por encima de esa cifra.",
+        },
+      ],
       title: "Comedor escolar (autoevaluación)",
       question:
         "Un colegio tiene $585$ estudiantes; el $60\\%$ usa el comedor. ¿Cuántos alumnos? (solo el número)",

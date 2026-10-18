@@ -80,6 +80,16 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cómo los distingo?",
+          message: "Repite el experimento en las mismas condiciones. Si siempre sale lo mismo, es determinista; si el resultado cambia, es aleatorio.",
+        },
+        {
+          label: "Aleatorio no es «raro»",
+          message: "Aleatorio significa que no puedes saber el resultado antes de hacerlo, aunque conozcas todas las posibilidades.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Clasifica cada experimento como aleatorio o determinista.",
       groups: [

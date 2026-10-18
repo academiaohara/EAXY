@@ -48,6 +48,23 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-hl",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿La unidad nueva es mayor o menor?",
+          message: "El decilitro es más pequeño que el litro: caben más en lo mismo. Por eso el número tiene que crecer.",
+        },
+        {
+          label: "Ordena la escalera",
+          message: "Las unidades bajan de $10$ en $10$ en este orden; cada escalón hacia abajo multiplica por $10$.",
+          math: [
+            "\\mathrm{kl} \\to \\mathrm{hl} \\to \\mathrm{dal} \\to \\mathrm{l} \\to \\mathrm{dl} \\to \\mathrm{cl} \\to \\mathrm{ml}",
+          ],
+        },
+        {
+          label: "Mueve la coma",
+          message: "Cada escalón desplaza la coma un lugar. Si te faltan cifras, añade ceros.",
+        },
+      ],
       title: "Decilitros en un litro",
       question: "¿Cuántos decilitros hay en $1{,}3\\,\\mathrm{l}$? (solo el número)",
       correctAnswers: ["13", "13 dl"],
@@ -57,6 +74,20 @@ export const sistemaMetricoCapacidadLesson: InteractiveLesson = {
     {
       id: "check-ml",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Más grande o más pequeña?",
+          message: "El litro es mayor que el mililitro, así que el número en litros tiene que ser menor que $580$.",
+        },
+        {
+          label: "¿Cuántos escalones subo?",
+          message: "De ml a l son tres escalones hacia arriba. Cada uno divide entre $10$.",
+        },
+        {
+          label: "Comprueba el sentido",
+          message: "Un litro son $1000$ ml. $580$ ml son menos que eso: ¿tu resultado es menos de un litro?",
+        },
+      ],
       title: "Mililitros",
       question: "Expresa $580\\,\\mathrm{ml}$ en litros (coma decimal).",
       correctAnswers: ["0,58", "0.58"],

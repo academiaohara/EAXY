@@ -65,6 +65,21 @@ export const areasCirculoLesson: InteractiveLesson = {
     {
       id: "check-area",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Área o longitud?",
+          message: "El área es la superficie que ocupa el círculo y se mide en unidades cuadradas; la longitud es el contorno. Te piden $\\mathrm{dm}^2$: es una superficie.",
+        },
+        {
+          label: "¿Qué es $r^2$?",
+          message: "Es $r \\cdot r$, no $2 \\cdot r$. Con $r = 3$: $r^2 = 9$, no $6$.",
+          math: ["3^2 = 3 \\cdot 3"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "El círculo cabe en un cuadrado de lado $8\\,\\mathrm{dm}$ (área $64$) y contiene un cuadrado de lado $4\\,\\mathrm{dm}$ (área $16$). Tu resultado debe quedar entre esos dos.",
+        },
+      ],
       title: "Área con el radio",
       question:
         "Un círculo tiene radio $4\\,\\mathrm{dm}$. Usando $\\pi \\approx 3{,}14$, ¿cuál es su área aproximada en $\\mathrm{dm}^2$?",
@@ -74,6 +89,17 @@ export const areasCirculoLesson: InteractiveLesson = {
     {
       id: "check-longitud",
       type: "classify",
+      help: [
+        {
+          label: "¿Cómo distingo longitud y área?",
+          message: "Mira las unidades: metros es contorno y metros cuadrados es superficie. Y la fórmula: si lleva $r^2$ es área; si lleva solo $r$ o $d$, es longitud.",
+        },
+        {
+          label: "Tengo el diámetro, no el radio",
+          message: "El radio es la mitad del diámetro. La longitud puede calcularse con cualquiera de los dos; el área necesita el radio.",
+          math: ["r = \\frac{d}{2}"],
+        },
+      ],
       title: "Longitud o área",
       question:
         "Un círculo tiene diámetro $10\\,\\mathrm{m}$ (radio $5\\,\\mathrm{m}$). ¿Cada tarjeta corresponde a su longitud o a su área? Usa $\\pi \\approx 3{,}14$.",

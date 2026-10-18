@@ -155,6 +155,16 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "check-millares",
       type: "predict",
+      help: [
+        {
+          label: "Calcula primero el total",
+          message: "Ve cuántos folios hay en total y después cuántos grupos de $1\\,000$ caben.",
+        },
+        {
+          label: "Diez de un orden hacen uno del siguiente",
+          message: "Diez centenas forman un millar. Agrupa los $40$ paquetes de diez en diez.",
+        },
+      ],
       title: "Cambiar de orden",
       question:
         "Una papelería tiene $40$ paquetes de $100$ folios. Si los reagrupa en cajas de $1\\,000$ folios, ¿cuántas cajas completa?",
@@ -223,6 +233,21 @@ export const sistemasNumeracionNaturalesLesson: InteractiveLesson = {
     {
       id: "check-acarreo",
       type: "predict",
+      help: [
+        {
+          label: "¿Qué cifra miro?",
+          message: "Para redondear a millares mira la primera cifra que se suprime: la de las centenas.",
+        },
+        {
+          label: "¿Qué pasa si la cifra que sube es un $9$?",
+          message: "Al sumar $1$ a $9$ hay llevada: esa cifra pasa a $0$ y sube la de la izquierda.",
+          math: ["39 + 1 = \\;?"],
+        },
+        {
+          label: "Quiero saber si es razonable",
+          message: "Un redondeo a millares tiene que ser un múltiplo de $1\\,000$ y estar cerca de $39\\,785$.",
+        },
+      ],
       title: "Cuando el redondeo «se lleva una»",
       question:
         "Una web registra $39\\,785$ visitas y quieres ponerlo en un titular redondeado a los millares. ¿Qué cifra escribes?",

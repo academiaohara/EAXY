@@ -83,6 +83,16 @@ export const probabilidadSucesosSeguroImposibleLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Seguro, imposible o posible?",
+          message: "Seguro: ocurre siempre, salga lo que salga. Imposible: no ocurre en ningún resultado. Posible: ocurre en unos sí y en otros no.",
+        },
+        {
+          label: "Mira qué hay en la bolsa",
+          message: "Antes de clasificar, repasa qué colores hay en la bolsa. Un suceso con un color que no existe nunca ocurre.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question:
         "En una bolsa hay $2$ bolas rojas y $3$ verdes. Sacamos una bola al azar. Clasifica cada suceso.",

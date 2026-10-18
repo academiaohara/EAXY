@@ -144,6 +144,21 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "check",
       type: "classify",
+      help: [
+        {
+          label: "¿Cuándo es solución un par?",
+          message: "Cuando, al sustituir sus valores en la ecuación, los dos miembros quedan iguales.",
+        },
+        {
+          label: "¿Qué va en cada sitio?",
+          message: "En $(a, b)$ el primer número es $x$ y el segundo es $y$. No los cambies de orden.",
+          math: ["(2, 1) \\;\\Rightarrow\\; x = 2,\\ y = 1"],
+        },
+        {
+          label: "Cuidado con los signos",
+          message: "Haz primero el producto $2y$ y luego la suma. Con valores negativos, $-2 + 2 \\cdot 1$ no es $-2 + 2$ y luego por $1$.",
+        },
+      ],
       title: "Comprueba lo aprendido",
       question: "Sustituye cada par en $x + 2y = 4$ y clasifícalo.",
       groups: [
@@ -166,6 +181,21 @@ export const ecuacionesLinealesDosIncognitasLesson: InteractiveLesson = {
     {
       id: "check-infinitas",
       type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Qué hago con el $10$?",
+          message: "Sustitúyelo en la ecuación en lugar de $x$. Te queda una ecuación con una sola incógnita.",
+          math: ["10 + 2y = 4"],
+        },
+        {
+          label: "¿Cómo despejo $y$?",
+          message: "Pasa el $10$ al otro miembro y luego divide entre el coeficiente de $y$. El resultado puede salir negativo.",
+        },
+        {
+          label: "¿Por qué hay infinitas soluciones?",
+          message: "Porque para cada valor de $x$ que elijas, la ecuación te da un $y$. Prueba con otro $x$ y compruébalo.",
+        },
+      ],
       title: "Siempre hay otra solución",
       question: "Busca una solución más de $x + 2y = 4$: si $x = 10$, ¿cuánto vale $y$? (solo el número)",
       correctAnswers: ["-3"],
