@@ -705,7 +705,7 @@ export function PredictStepView({
         className="lesson-idea-enter p-6 sm:p-8"
         data-testid="lesson-predict-step"
       >
-        <PredictQuestionHeader>
+        <PredictQuestionHeader calculator={step.calculator}>
           <LessonRichText text={step.question} emphasis="mark-alternate" />
         </PredictQuestionHeader>
         {step.hint && step.hintHiddenUntilRequested && !checked ? (

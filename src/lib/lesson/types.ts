@@ -474,6 +474,8 @@ export type PredictStep = LessonStepBase &
   PracticeFields & {
     type: "predict";
     mode: "numeric" | "choice";
+    /** Muestra un botón de calculadora junto a la pregunta (para problemas con cuentas). */
+    calculator?: boolean;
     correctAnswers?: string[];
     choices?: PredictChoice[];
     correctChoiceId?: string;

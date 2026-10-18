@@ -2,6 +2,7 @@
 
 import { CheckIcon, XIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { CalculatorPopover } from "@/components/lesson/CalculatorPopover";
 import { cn } from "@/lib/utils";
 
 /** Ana / Leo: al fallar solo la respuesta elegida lleva énfasis; la correcta se insinúa sin el brillo de selección. */
@@ -118,9 +119,10 @@ const ACCENT = "var(--stage-accent, var(--cobalt))";
 const INK = "var(--stage-ink, var(--ink))";
 
 /** Cabecera de pregunta: etiqueta + enunciado grande, sin caja. */
-export function PredictQuestionHeader({ children }: { children: ReactNode }) {
+export function PredictQuestionHeader({ children, calculator }: { children: ReactNode; calculator?: boolean }) {
   return (
-    <div className="mx-auto mb-6 max-w-3xl text-center">
+    <div className="relative mx-auto mb-6 max-w-3xl text-center">
+      {calculator ? <CalculatorPopover className="absolute -right-16 top-0" /> : null}
       <span
         className="mb-3 inline-flex items-center rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.16em]"
         style={{ color: ACCENT, borderColor: `color-mix(in srgb, ${ACCENT} 45%, transparent)` }}

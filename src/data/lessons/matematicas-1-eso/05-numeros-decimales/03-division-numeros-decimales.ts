@@ -41,6 +41,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Seis botes iguales de refresco pesan en total 2,07 kg. ¿Cuánto pesa cada bote?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$0{,}345$ kg" },
         {
@@ -94,6 +95,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Siete atletas se reparten el coste de un cronómetro de 30 €. ¿Cuánto paga cada uno si se redondea a céntimos?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$4{,}29\\,€$" },
         {
@@ -156,6 +158,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Un rollo de 4,5 m de cinta se corta en trozos de 0,15 m. ¿Cuántos trozos salen?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$30$ trozos" },
         {
@@ -217,6 +220,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Una caja de 100 clips cuesta 2,5 €. ¿Cuánto cuesta cada clip?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$0{,}025\\,€$" },
         {
@@ -250,6 +254,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Raquel ha sacado un 5,5, un 7 y un 2,40 en tres exámenes. ¿Cuál es su nota media, con dos cifras decimales?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$4{,}97$" },
         {
@@ -283,6 +288,7 @@ export const divisionNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Con una cinta de 20 m se hacen 25 lazos iguales. ¿Cuánto mide el trozo de cinta de cada lazo?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$0{,}8$ m" },
         {

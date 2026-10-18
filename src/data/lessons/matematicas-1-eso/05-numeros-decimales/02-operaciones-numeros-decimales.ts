@@ -64,6 +64,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "En la panadería pagas el pan por 1,20 €, la leche por 0,95 € y la fruta por 2,5 €. ¿Cuánto es el total de la compra?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$4{,}65\\,€$" },
         {
@@ -97,6 +98,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Pagas con un billete de 20 € una compra de 13,85 €. ¿Cuánto dinero te tienen que devolver?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$6{,}15\\,€$" },
         {
@@ -194,6 +196,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Una baldosa rectangular mide 0,4 m de ancho y 0,3 m de largo. ¿Cuál es su superficie en metros cuadrados?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$0{,}12\\ \\mathrm{m}^2$" },
         {
@@ -247,6 +250,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "Una receta pide 0,125 kg de harina. Sabiendo que 1 kg son 1000 g, ¿cuántos gramos hay que echar?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$125$ g" },
         {
@@ -280,6 +284,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       question:
         "El aceite cuesta 3,15 € el litro. ¿Cuánto cuesta una botella de 0,75 l, redondeando a céntimos?",
       mode: "choice",
+      calculator: true,
       choices: [
         { id: "a", label: "$2{,}36\\,€$" },
         {
