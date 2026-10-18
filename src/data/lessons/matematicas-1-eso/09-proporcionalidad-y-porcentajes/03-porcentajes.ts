@@ -38,7 +38,7 @@ export const porcentajesLesson: InteractiveLesson = {
           text: "Aparece en rebajas, intereses, encuestas y notas. Sirve para comparar: «el 80 % de posibilidades» significa lo mismo con 100 o con 5 000 casos.",
         },
       ],
-      visual: { kind: "anim", scene: "cuadricula-porcentaje", params: { a: 20, b: 100 } },
+      visual: { kind: "tool", tool: "porcentaje-cuadricula", params: { a: 35 } },
     },
     {
       id: "calcular",
@@ -186,14 +186,12 @@ export const porcentajesLesson: InteractiveLesson = {
         },
         {
           kind: "example",
-          title: "Combinando se llega a casi todos",
-          lines: [
-            { math: "10\\% \\text{ de } 260 = 260 : 10 = 26" },
-            { math: "5\\% \\text{ de } 260 = 26 : 2 = 13", note: "la mitad del 10 %" },
-            { math: "75\\% \\text{ de } 84 = (84 : 4) \\cdot 3 = 63" },
-          ],
+          title: "Con fracciones más grandes",
+          lines: [{ math: "75\\% \\text{ de } 84 = (84 : 4) \\cdot 3 = 63", note: "tres cuartos" }],
         },
       ],
+      arrange: "text-top",
+      visual: { kind: "anim", scene: "porcentaje-mental", params: { a: 260 } },
     },
     {
       id: "predict-especial",

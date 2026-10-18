@@ -107,3 +107,27 @@ describe("herramienta balanza-explorador", () => {
     expect(screen.getByTestId("tool-readout")).toBeInTheDocument();
   });
 });
+
+describe("herramienta porcentaje-cuadricula", () => {
+  const filled = () => document.querySelectorAll('[data-testid="tool-grid"] rect[fill="#ffd866"]').length;
+
+  it("pinta tantas casillas como el porcentaje", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "porcentaje-cuadricula", params: { a: 35 } }} />);
+    expect(slider(/Porcentaje/).value).toBe("35");
+    expect(filled()).toBe(35);
+    expect(screen.getByTestId("tool-readout")).toHaveTextContent("35 casillas de cada 100");
+
+    fireEvent.click(screen.getByRole("button", { name: "75 %" }));
+    expect(filled()).toBe(75);
+  });
+
+  it("con valores extremos se queda entre 0 y 100 y reinicia", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "porcentaje-cuadricula", params: { a: 500 } }} />);
+    expect(slider(/Porcentaje/).value).toBe("100");
+    expect(filled()).toBe(100);
+    fireEvent.change(slider(/Porcentaje/), { target: { value: "0" } });
+    expect(filled()).toBe(0);
+    fireEvent.click(screen.getByRole("button", { name: /Reiniciar/ }));
+    expect(slider(/Porcentaje/).value).toBe("100");
+  });
+});
