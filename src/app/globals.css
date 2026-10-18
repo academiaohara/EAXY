@@ -1108,3 +1108,64 @@
   background: color-mix(in srgb, var(--stage-accent, var(--cobalt)) 25%, transparent);
   transform: translateY(-1px);
 }
+
+/* Figuras de fracciones (tartas, barras, cuadrículas): claras en papel, oscuras sobre la pizarra. */
+.frac-fig {
+  --frac-off: #f1f5f9;
+  --frac-edge: #ffffff;
+  --frac-outline: #cbd5e1;
+  --frac-ink: #0f172a;
+  --frac-on: var(--cobalt);
+  --frac-on-ink: #ffffff;
+  --frac-hover: rgb(67 83 255 / 0.12);
+}
+
+.frac-fig[data-tone="emerald"] { --frac-on: #10b981; }
+.frac-fig[data-tone="amber"] { --frac-on: #fbbf24; }
+.frac-fig[data-tone="violet"] { --frac-on: #8b5cf6; }
+.frac-fig[data-tone="rose"] { --frac-on: #fb7185; }
+
+.lesson-stage-theme-board .frac-fig {
+  --frac-off: #2a3a52;
+  --frac-edge: #1a2332;
+  --frac-outline: #b8c2d0;
+  --frac-ink: #ffffff;
+  --frac-on: #58c4dd;
+  --frac-on-ink: #10202e;
+  --frac-hover: rgb(88 196 221 / 0.22);
+}
+
+.lesson-stage-theme-board .frac-fig[data-tone="emerald"] { --frac-on: #83c167; }
+.lesson-stage-theme-board .frac-fig[data-tone="amber"] { --frac-on: #ffd866; }
+.lesson-stage-theme-board .frac-fig[data-tone="violet"] { --frac-on: #c59bd6; }
+.lesson-stage-theme-board .frac-fig[data-tone="rose"] { --frac-on: #fc6255; }
+
+.frac-fig .frac-piece {
+  fill: var(--frac-off);
+  stroke: var(--frac-edge);
+}
+
+.frac-fig .frac-piece[data-on="true"] {
+  fill: var(--frac-on);
+}
+
+.frac-fig .frac-cell {
+  background: var(--frac-off);
+  color: var(--frac-ink);
+  border-color: var(--frac-outline);
+}
+
+.frac-fig .frac-cell[data-on="true"] {
+  background: var(--frac-on);
+  color: var(--frac-on-ink);
+}
+
+.frac-fig button.frac-cell:not(:disabled):hover[data-on="false"],
+.frac-fig .frac-piece[data-on="false"]:hover {
+  background: color-mix(in srgb, var(--frac-on) 28%, var(--frac-off));
+  fill: color-mix(in srgb, var(--frac-on) 28%, var(--frac-off));
+}
+
+.frac-fig .frac-frame {
+  border-color: var(--frac-outline);
+}

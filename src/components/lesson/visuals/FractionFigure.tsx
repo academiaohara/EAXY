@@ -5,14 +5,6 @@ import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { cn } from "@/lib/utils";
 import type { FractionFigureVisual, FractionShape, VisualTone } from "@/lib/lesson/types";
 
-const toneFill: Record<VisualTone, { fill: string; border: string; svg: string }> = {
-  cobalt: { fill: "bg-cobalt", border: "border-cobalt", svg: "fill-cobalt" },
-  emerald: { fill: "bg-emerald-500", border: "border-emerald-500", svg: "fill-emerald-500" },
-  amber: { fill: "bg-amber-400", border: "border-amber-400", svg: "fill-amber-400" },
-  violet: { fill: "bg-violet-500", border: "border-violet-500", svg: "fill-violet-500" },
-  rose: { fill: "bg-rose-400", border: "border-rose-400", svg: "fill-rose-400" },
-};
-
 type FractionFigureProps = {
   shape: FractionShape;
   parts: number;
@@ -75,7 +67,6 @@ export function FractionFigure({
   className,
 }: FractionFigureProps) {
   const interactive = Boolean(onToggle) && !disabled;
-  const colors = toneFill[tone];
   const frame = cn(
     "transition-colors",
     status === "correct" && "ring-4 ring-emerald-300/70",
@@ -87,7 +78,8 @@ export function FractionFigure({
 
   return (
     <div
-      className={cn("flex flex-wrap items-center justify-center gap-4 sm:gap-6", className)}
+      className={cn("frac-fig flex flex-wrap items-center justify-center gap-4 sm:gap-6", className)}
+      data-tone={tone}
       data-testid="fraction-figure"
     >
       {Array.from({ length: wholes }, (_, whole) => {
@@ -110,8 +102,7 @@ export function FractionFigure({
             >
               {pieces.map((piece, part) => {
                 const pieceClass = cn(
-                  "stroke-white stroke-[1.5] transition-[fill]",
-                  piece.on ? colors.svg : "fill-slate-100",
+                  "frac-piece stroke-[1.5] transition-[fill]",
                   interactive && "cursor-pointer hover:opacity-85 focus:outline-none focus-visible:opacity-70",
                 );
                 const pieceProps = {
@@ -135,7 +126,7 @@ export function FractionFigure({
                   <path key={piece.index} d={piePath(part, parts)} {...pieceProps} />
                 );
               })}
-              <circle cx="50" cy="50" r="48" className="pointer-events-none fill-none stroke-slate-300" />
+              <circle cx="50" cy="50" r="48" fill="none" stroke="var(--frac-outline)" strokeWidth="1.6" className="pointer-events-none" />
             </svg>
           );
         }
@@ -150,27 +141,20 @@ export function FractionFigure({
             aria-label={wholes > 1 ? `Unidad ${whole + 1}` : "Unidad"}
             className={cn(
               "grid w-full",
-              shape === "bar" && cn("h-16 overflow-hidden rounded-xl border-2 border-slate-300 sm:h-20", sliceMaxSize(parts)),
-              shape === "grid" && "max-w-[16rem] gap-1 rounded-xl border-2 border-slate-300 bg-slate-300 p-1",
-              shape === "set" && "max-w-[22rem] gap-2.5 rounded-2xl border-2 border-dashed border-slate-300 p-3 sm:gap-3",
+              shape === "bar" && cn("frac-frame h-16 overflow-hidden rounded-xl border-2 sm:h-20", sliceMaxSize(parts)),
+              shape === "grid" && "frac-frame max-w-[16rem] gap-1 rounded-xl border-2 p-1",
+              shape === "set" && "frac-frame max-w-[22rem] gap-2.5 rounded-2xl border-2 border-dashed p-3 sm:gap-3",
               frame,
             )}
             style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
           >
             {pieces.map((piece, part) => {
               const common = cn(
-                "flex items-center justify-center font-heading text-lg font-semibold transition-all",
-                piece.on ? "text-white" : "text-ink",
-                interactive && "cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/50",
-                shape === "bar" && cn("h-full", part > 0 && "border-l-2", piece.on ? "border-white/70" : "border-slate-300"),
+                "frac-cell flex items-center justify-center font-heading text-lg font-semibold transition-all",
+                interactive && "cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--frac-on)]",
+                shape === "bar" && cn("h-full", part > 0 && "border-l-2"),
                 shape === "grid" && "aspect-square rounded-[3px]",
                 shape === "set" && "aspect-square rounded-full border-2",
-                piece.on
-                  ? cn(colors.fill, shape === "set" && colors.border)
-                  : cn(
-                      shape === "set" ? "border-slate-300 bg-white" : "bg-slate-50",
-                      interactive && "hover:bg-cobalt-tint/60",
-                    ),
                 piece.on && shape === "set" && "scale-105 shadow-sm",
               );
 
