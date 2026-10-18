@@ -75,9 +75,10 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
         {
           kind: "steps",
           items: [
-            "Tras el concierto le queda $\\frac{1}{2}$ del dinero.",
-            "La revista es $\\frac{1}{3}$ **de** $\\frac{1}{2}$: se multiplica.",
+            "Tras el concierto le queda $1 - \\frac{1}{2} = \\frac{1}{2}$ del dinero.",
+            "La revista es $\\frac{1}{3}$ **de** ese $\\frac{1}{2}$, no del total: se multiplica.",
             "En total se suman las dos compras, con común denominador.",
+            "Lo que no se ha gastado es lo que le queda: se resta de la unidad.",
           ],
         },
         {
@@ -89,61 +90,7 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
           ],
         },
       ],
-    },
-    {
-      id: "check-tipo",
-      type: "classify",
-      help: [
-        {
-          label: "¿Mismo total o «de lo que queda»?",
-          message: "Si las dos fracciones se refieren al mismo total, se suman. Si una se aplica a lo que queda tras la otra, se multiplican.",
-        },
-        {
-          label: "Pregunta de control",
-          message: "Pregúntate: ¿esa fracción es «del total» o «de esos, de lo que sobra»? Lo primero es suma; lo segundo, producto.",
-        },
-      ],
-      title: "¿Suma o producto?",
-      question: "Lee cada situación y decide qué operación hay que hacer para responderla.",
-      groups: [
-        { id: "suma", label: "Sumar fracciones", tone: "cobalt" },
-        { id: "producto", label: "Multiplicar (fracción de una fracción)", tone: "violet" },
-      ],
-      items: [
-        {
-          id: "a",
-          text: "Iván gasta $\\frac{2}{3}$ del dinero en una camisa y $\\frac{1}{5}$ **de lo que le quedaba** en una corbata. ¿Qué fracción gasta en la corbata?",
-          group: "producto",
-        },
-        {
-          id: "b",
-          text: "Ana lee $\\frac{1}{4}$ del libro el lunes y $\\frac{1}{3}$ del libro el martes. ¿Qué fracción ha leído?",
-          group: "suma",
-        },
-        {
-          id: "c",
-          text: "La mitad de la clase va en autobús y, de esos, $\\frac{2}{5}$ son chicas. ¿Qué fracción de la clase son chicas que van en autobús?",
-          group: "producto",
-        },
-        {
-          id: "d",
-          text: "Pinta $\\frac{2}{7}$ de la valla por la mañana y $\\frac{3}{7}$ por la tarde. ¿Qué fracción lleva pintada?",
-          group: "suma",
-        },
-        {
-          id: "e",
-          text: "Tiene $\\frac{3}{4}$ de una pizza y se come $\\frac{1}{3}$ **de lo que tiene**. ¿Qué fracción de pizza se come?",
-          group: "producto",
-        },
-        {
-          id: "f",
-          text: "Un grifo llena $\\frac{1}{2}$ del depósito y otro $\\frac{1}{6}$. ¿Qué fracción del depósito está llena?",
-          group: "suma",
-        },
-      ],
-      hint: "Busca la expresión «de lo que…» o «de esos»: si la fracción se aplica a **otra parte**, no al total, se multiplica.",
-      explanation:
-        "Si las dos partes se refieren al mismo total, se suman. Si una es parte **de otra parte**, se multiplica. Por ejemplo, tras la camisa a Iván le queda $1 - \\frac{2}{3} = \\frac{1}{3}$, y la corbata es $\\frac{1}{5} \\cdot \\frac{1}{3} = \\frac{1}{15}$ del dinero.",
+      visual: { kind: "anim", scene: "fraccion-gasto-resto", params: { a: 1, b: 2, c: 1, d: 3 } },
     },
     {
       id: "ivan-dinero",
@@ -209,7 +156,8 @@ export const operacionesFraccionesProblemasLesson: InteractiveLesson = {
       ],
       title: "El queso de Rosa",
       question:
-        "Rosa compra $\\frac{3}{4}$ kg de queso y regala $\\frac{1}{2}$ kg a su hija. ¿Qué fracción de kilo le queda? (escríbela, por ejemplo, 5/7)",
+        "Rosa compra $\\frac{3}{4}$ kg de queso y regala $\\frac{1}{2}$ kg a su hija. ¿Qué fracción de kilo le queda?",
+      answerFormat: "fraction",
       correctAnswers: ["1/4"],
       hint: "$\\frac{1}{2}$ son $\\frac{2}{4}$. Resta los cuartos.",
       explanation: "$\\frac{3}{4} - \\frac{1}{2} = \\frac{3}{4} - \\frac{2}{4} = \\frac{1}{4}$ kg.",

@@ -53,6 +53,8 @@ import { buildFraccionPartes } from "@/components/lesson/anim/scenes/fraccion-pa
 import { buildFraccionRecta } from "@/components/lesson/anim/scenes/fraccion-recta";
 import { buildFraccionBarrasSuma } from "@/components/lesson/anim/scenes/fraccion-barras-suma";
 import { buildFraccionCabe } from "@/components/lesson/anim/scenes/fraccion-cabe";
+import { buildFraccionCombinada } from "@/components/lesson/anim/scenes/fraccion-combinada";
+import { buildFraccionGastoResto } from "@/components/lesson/anim/scenes/fraccion-gasto-resto";
 import { buildFraccionDeFraccion } from "@/components/lesson/anim/scenes/fraccion-de-fraccion";
 import { buildSimplificarIrreducible } from "@/components/lesson/anim/scenes/simplificar-irreducible";
 import { buildSimplificarFactores } from "@/components/lesson/anim/scenes/simplificar-factores";
@@ -129,6 +131,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "simplificar-factores": (p) => buildSimplificarFactores(p),
   "simplificar-irreducible": (p) => buildSimplificarIrreducible(p),
   "fraccion-cabe": (p) => buildFraccionCabe(p),
+  "fraccion-combinada": (p) => buildFraccionCombinada(p),
+  "fraccion-gasto-resto": (p) => buildFraccionGastoResto(p),
   "balanza-ecuacion": (p) => buildBalanzaEcuacion(p),
   "maquina-funcion": (p) => buildMaquinaFuncion(p),
   "semejantes-agrupar": (p) => buildSemejantesAgrupar(p),

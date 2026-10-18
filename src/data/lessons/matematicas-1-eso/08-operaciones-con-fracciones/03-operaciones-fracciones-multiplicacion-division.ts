@@ -97,8 +97,9 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
         {
           kind: "steps",
           items: [
-            "Descompón en **factores primos** todos los numeradores y denominadores.",
-            "Tacha cada factor que aparezca **arriba y abajo**.",
+            "Descompón en **factores primos** cada numerador y cada denominador. Cada factor se queda en su fracción.",
+            "Junta todo en **una sola fracción**: los factores de arriba, arriba; los de abajo, abajo. Aún no se multiplica.",
+            "**Tacha parejas**: un factor de arriba con otro igual de abajo, aunque vinieran de fracciones distintas.",
             "Multiplica lo que queda: el resultado sale ya simplificado.",
           ],
         },
@@ -106,14 +107,22 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
           kind: "example",
           lines: [
             {
-              math: "\\frac{4}{8} \\cdot \\frac{3}{4} = \\frac{2 \\cdot 2}{2 \\cdot 2 \\cdot 2} \\cdot \\frac{3}{2 \\cdot 2} = \\frac{3}{2 \\cdot 2 \\cdot 2} = \\frac{3}{8}",
-              note: "se tachan dos $2$",
+              math: "\\frac{4}{8} \\cdot \\frac{3}{4} = \\frac{2 \\cdot 2}{2 \\cdot 2 \\cdot 2} \\cdot \\frac{3}{2 \\cdot 2}",
+              note: "factores primos",
+            },
+            {
+              math: "= \\frac{2 \\cdot 2 \\cdot 3}{2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2}",
+              note: "una sola fracción",
+            },
+            {
+              math: "= \\frac{3}{2 \\cdot 2 \\cdot 2} = \\frac{3}{8}",
+              note: "se tachan dos parejas de $2$",
             },
           ],
         },
         {
           kind: "warning",
-          text: "Solo se tacha **un factor de arriba contra uno de abajo**. Dos factores del numerador no se simplifican entre sí.",
+          text: "Tachar un factor arriba y otro igual abajo es dividir numerador y denominador entre lo mismo: la fracción no cambia. Pero **dos factores del numerador** no se tachan entre sí.",
         },
       ],
       visual: { kind: "anim", scene: "simplificar-factores", params: { a: 4, b: 8, c: 3, d: 4 } },
@@ -225,6 +234,14 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
           alt: "Un bidón junto a unos frascos pequeños de perfume vacíos",
         },
         {
+          kind: "steps",
+          items: [
+            "**Da la vuelta** solo a la segunda fracción (la que está tras los dos puntos): $\\frac{3}{20}$ pasa a $\\frac{20}{3}$.",
+            "Cambia los dos puntos por un **producto**: $\\frac{9}{2} \\cdot \\frac{20}{3}$.",
+            "Ya es un producto: factores primos, una sola fracción y se tachan parejas, como en la diapositiva anterior.",
+          ],
+        },
+        {
           kind: "compare",
           left: {
             title: "En cruz",
@@ -239,7 +256,7 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
         },
         {
           kind: "warning",
-          text: "Solo se da la vuelta a la fracción **por la que divides**. Y se puede simplificar antes con factores.",
+          text: "Solo se da la vuelta a la fracción **por la que divides**. La primera se queda igual.",
         },
       ],
       visual: { kind: "anim", scene: "simplificar-factores", params: { a: 9, b: 2, c: 3, d: 20, inv: true } },
@@ -313,11 +330,12 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
           text: "Primero **paréntesis**, luego **multiplicaciones y divisiones**, después sumas y restas.",
         },
         {
-          kind: "example",
+          kind: "steps",
           title: "$\\frac{5}{11} \\cdot \\left(\\frac{3}{2} - \\frac{2}{5}\\right)$",
-          lines: [
-            { math: "\\frac{3}{2} - \\frac{2}{5} = \\frac{15}{10} - \\frac{4}{10} = \\frac{11}{10}", note: "paréntesis, con m.c.m. $10$" },
-            { math: "\\frac{5}{11} \\cdot \\frac{11}{10} = \\frac{1}{2}", note: "se tachan el $11$ y el $5$ con el $10$" },
+          items: [
+            "**Paréntesis**: común denominador (m.c.m. $10$) y se resta: $\\frac{15}{10} - \\frac{4}{10} = \\frac{11}{10}$.",
+            "Queda un **producto**: $\\frac{5}{11} \\cdot \\frac{11}{10}$.",
+            "Se **simplifica en cruz** (el $11$ con el $11$, el $5$ con el $10$) y se multiplica: $\\frac{1}{2}$.",
           ],
         },
         {
@@ -325,6 +343,7 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
           text: "Si multiplicas el $\\frac{5}{11}$ solo por la primera fracción del paréntesis, el resultado cambia. El paréntesis se resuelve **entero** antes.",
         },
       ],
+      visual: { kind: "anim", scene: "fraccion-combinada", params: { a: 5, b: 11, c: 3, d: 2, e: 2, f: 5, op: "-" } },
     },
     {
       id: "check-combinada",
@@ -392,8 +411,9 @@ export const operacionesFraccionesMultiplicacionDivisionLesson: InteractiveLesso
       ],
       title: "Multiplicación rápida",
       question:
-        "Calcula $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ y escribe el resultado **simplificado** (por ejemplo, 5/7).",
-      correctAnswers: ["3/4", "0,75", "0.75"],
+        "Calcula $\\dfrac{2}{3} \\cdot \\dfrac{9}{8}$ y escribe el resultado **simplificado**.",
+      answerFormat: "fraction",
+      correctAnswers: ["3/4"],
       hint: "Numerador por numerador y denominador por denominador; después divide ambos por su m.c.d.",
       explanation:
         "$\\dfrac{2 \\cdot 9}{3 \\cdot 8} = \\dfrac{18}{24} = \\dfrac{3}{4}$ (divide numerador y denominador por $6$).",

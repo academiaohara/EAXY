@@ -1,4 +1,4 @@
-import { Canvas, Fade, Txt } from "@/components/lesson/anim/primitives";
+import { Canvas, Fade, Move, Txt } from "@/components/lesson/anim/primitives";
 import { Frac, FractionBar, Subdivision } from "@/components/lesson/anim/fraction-svg";
 import { MANIM } from "@/components/lesson/anim/palette";
 import { gcd, lcm } from "@/components/lesson/anim/number-theory";
@@ -46,15 +46,19 @@ export function buildFraccionBarrasSuma(params: {
         `Cada fracción se reescribe con esos trozos: $\\dfrac{${a}}{${b}} = \\dfrac{${x}}{${m}}$ y $\\dfrac{${c}}{${d}} = \\dfrac{${y}}{${m}}$.`,
         `Ahora sí: ${op === "+" ? "se juntan" : "se quitan"} trozos del mismo tamaño. $${x} ${sign} ${y} = ${res}$ trozos: $\\dfrac{${res}}{${m}}$${simple ? ` $=$ ${simple}` : ""}.`,
       ];
+  const finalCaption = `Nos quedamos solo con el resultado: $\\dfrac{${res}}{${m}}$${simple ? ` $=$ ${simple}` : ""}.`;
+  captions.push(finalCaption);
   const showSub = (beat: number) => (sameDen ? false : beat >= 1);
   const rewritten = (beat: number) => (sameDen ? true : beat >= 2);
   const resultBeat = (beat: number) => (sameDen ? beat >= 2 : beat >= 3);
+  const focusBeat = (beat: number) => beat >= captions.length - 1;
 
   return {
     label: `${a}/${b} ${sign} ${c}/${d} con barras: común denominador ${m} y resultado ${res}/${m}`,
     captions,
     render: (beat) => (
       <Canvas>
+        <Fade show={!focusBeat(beat)} dy={-14}>
         {/* fila 1 */}
         <FractionBar x={X0} y={70} unitW={unitW} h={H} units={units} den={b} shaded={a} color={MANIM.blue} />
         <Subdivision show={showSub(beat)} x={X0} y={70} unitW={unitW} h={H} units={units} parts={m} existing={b} />
@@ -76,7 +80,9 @@ export function buildFraccionBarrasSuma(params: {
         <Fade show={rewritten(beat)}>
           <Frac x={110} y={218} n={y} d={m} size={30} color={MANIM.green} />
         </Fade>
+        </Fade>
         {/* resultado */}
+        <Move x={0} y={focusBeat(beat) ? -190 : 0}>
         <Fade show={resultBeat(beat)} dy={10}>
           <FractionBar
             x={X0}
@@ -89,15 +95,29 @@ export function buildFraccionBarrasSuma(params: {
             color={MANIM.yellow}
             skip={op === "+" ? 0 : y}
           />
-          <Txt x={110} y={338} size={30} color={MANIM.muted}>
-            =
-          </Txt>
-          <Frac x={160 - 6} y={338} n={res} d={m} size={26} color={MANIM.yellow} />
+          <Fade show={!focusBeat(beat)}>
+            <Txt x={110} y={338} size={30} color={MANIM.muted}>
+              =
+            </Txt>
+            <Frac x={160 - 6} y={338} n={res} d={m} size={26} color={MANIM.yellow} />
+          </Fade>
         </Fade>
-        <Fade show={resultBeat(beat) && op === "-"} dy={6}>
+        <Fade show={resultBeat(beat) && op === "-" && !focusBeat(beat)} dy={6}>
           <Txt x={X0 + (x - y / 2) * (unitW / m)} y={392} size={20} color={MANIM.red}>
             se quitan
           </Txt>
+        </Fade>
+        </Move>
+        <Fade show={focusBeat(beat)} dy={14} delay={250}>
+          <Frac x={g > 1 ? 330 : 400} y={310} n={res} d={m} size={72} color={MANIM.yellow} />
+          {g > 1 ? (
+            <>
+              <Txt x={430} y={318} size={60} color={MANIM.muted}>
+                =
+              </Txt>
+              <Frac x={520} y={310} n={res / g} d={m / g} size={72} color={MANIM.yellow} />
+            </>
+          ) : null}
         </Fade>
       </Canvas>
     ),

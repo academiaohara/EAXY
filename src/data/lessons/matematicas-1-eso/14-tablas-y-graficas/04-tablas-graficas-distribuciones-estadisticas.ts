@@ -163,7 +163,8 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
       ],
       title: "Frecuencia relativa",
       question:
-        "Si $f(2) = 9$ y hay $N = 36$ datos, ¿cuánto vale $fr(2)$ como fracción? Escribe solo la fracción (ejemplo: 9/36)",
+        "Si $f(2) = 9$ y hay $N = 36$ datos, ¿cuánto vale $fr(2)$ como fracción?",
+      answerFormat: "fraction",
       correctAnswers: ["9/36", "1/4"],
       explanation: "$fr(2) = \\dfrac{9}{36} = \\dfrac{1}{4}$.",
     },
