@@ -44,12 +44,14 @@ type BarProps = {
   /** Parte inicial coloreada con otro tono (p. ej. lo que se quita en una resta). */
   skip?: number;
   skipColor?: string;
+  /** Dibuja solo los trozos coloreados, sin el resto de la barra. */
+  trim?: boolean;
 };
 
 /** Barra partida en `den` partes iguales por unidad, con las primeras `shaded` coloreadas. */
-export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, skip = 0, skipColor = MANIM.red }: BarProps) {
+export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, skip = 0, skipColor = MANIM.red, trim = false }: BarProps) {
   const cell = unitW / den;
-  const total = den * units;
+  const total = trim ? shaded : den * units;
   const cells = [];
   for (let i = 0; i < total; i += 1) {
     const filled = i < shaded;
@@ -76,8 +78,8 @@ export function FractionBar({ x, y, unitW, h, units = 1, den, shaded, color, ski
   return (
     <g>
       {cells}
-      <rect x={x} y={y} width={unitW * units} height={h} fill="none" stroke={MANIM.ink} strokeWidth={3} rx={3} />
-      {unitLines}
+      <rect x={x} y={y} width={trim ? cell * total : unitW * units} height={h} fill="none" stroke={MANIM.ink} strokeWidth={3} rx={3} />
+      {trim ? null : unitLines}
     </g>
   );
 }

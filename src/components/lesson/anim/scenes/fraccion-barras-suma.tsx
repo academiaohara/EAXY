@@ -91,9 +91,10 @@ export function buildFraccionBarrasSuma(params: {
             h={H}
             units={units}
             den={m}
-            shaded={op === "+" ? res : x}
+            shaded={op === "+" || focusBeat(beat) ? res : x}
             color={MANIM.yellow}
-            skip={op === "+" ? 0 : y}
+            skip={op === "+" || focusBeat(beat) ? 0 : y}
+            trim={focusBeat(beat)}
           />
           <Fade show={!focusBeat(beat)}>
             <Txt x={110} y={338} size={30} color={MANIM.muted}>
