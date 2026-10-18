@@ -98,6 +98,11 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `escala-longitudes` | Eje en escala de potencias de 10: Å, nm, µm, mm, m, km, UA y año luz | — |
 | `cuadrados-area` | Superficie como conteo de cuadrados: rectángulo (filas × columnas) y triángulo (mitad) | `a` (base), `b` (alto) |
 | `m2-dm2` | 1 m² = 10 × 10 dm² = 100 dm², y 1 dm² = 100 cm²: de 100 en 100 | — |
+| `fraccion-equivalente` | Cortar cada parte de la barra en `c` trozos: misma longitud, fracción equivalente | `a`, `b` (fracción), `c` (factor) |
+| `fraccion-barras-suma` | Suma/resta con barras: con mismo denominador se cuenta; con distinto se corta hasta el m.c.m. y se cuenta (en la resta, lo que se quita va en rojo) | `a`, `b`, `c`, `d` (`a/b` y `c/d`), `op` |
+| `fraccion-de-fraccion` | Producto como área: `a/b` del ancho por `c/d` del alto; el solape son `a·c` de `b·d` cuadraditos | `a`, `b`, `c`, `d` |
+| `simplificar-factores` | Factorizar y tachar arriba/abajo antes de multiplicar; con `inv` parte de una división (se da la vuelta a la segunda) | `a`, `b`, `c`, `d`, `inv?` |
+| `fraccion-cabe` | Dividir = cuántas veces cabe: con trozos del m.c.m. basta contar | `a`, `b`, `c`, `d` |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -119,7 +124,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 - **Texto:** una línea que diga qué probar («Mueve la base y observa qué pasa con el área»), sin tono infantil.
 - **Estilo:** tema `board` y paleta de `anim/palette.ts`; solo escritorio (≥ 768 px).
 - **Relación con el resto:** la `anim` muestra un proceso fijo; la herramienta interactiva deja explorar. Si lo que se pide es una decisión evaluable, va en `predict` / `explore` / `interactive_tool`, no aquí.
-- **Estado técnico:** hoy `SlideStep.visual` admite `anim` y `figure`. Para usar una herramienta interactiva hay que añadir un tipo de visual nuevo en `src/lib/lesson/types.ts` (`SlideBlock`), su componente en `src/components/lesson/slide/` y un test que lo monte con valores extremos.
+- **Estado técnico:** `SlideStep.visual` admite `anim`, `figure` y `tool`. Una herramienta nueva = un id en `SlideToolId` (`src/lib/lesson/types.ts`), su componente en `src/components/lesson/slide/tools/`, un `case` en `SlideTool.tsx` y un test que la monte con valores extremos.
+
+| `tool` | Qué deja explorar | `initial` |
+|--------|-------------------|-----------|
+| `fraction-product` | Producto de dos fracciones propias en un cuadrado unidad: columnas (1.ª), filas (2.ª) y zona solapada = resultado; denominadores de 1 a 8 | `[a, b, c, d]` |
 
 ## Qué se conserva de las escenas anteriores
 

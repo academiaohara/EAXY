@@ -82,6 +82,14 @@ Una sola ilustración: la que hace entender por qué hace falta una unidad comú
 |---|---|---|---|
 | `comerciantes-codo.png` | L1 · «Del codo al metro» (`story`, ~170 px) | 1024×1024 | Dos comerciantes de la antigüedad, de pie uno frente a otro y de perfil, con túnicas de colores distintos (una ocre y otra azul). Entre los dos sostienen una pieza de tela de lino extendida. Cada uno mide la tela apoyando su propio antebrazo (el codo) sobre ella: el de la izquierda es alto y de brazo largo, el de la derecha es bajo y de brazo corto, de modo que se vea claramente que sus «codos» no coinciden. Sin texto, sin números, sin cinta métrica. |
 
+## Tema 8 · Operaciones con fracciones
+
+Una sola ilustración: ancla la cantidad de la división «bidón entre frascos». Las barras, áreas y tablas de factores las dibujan las animaciones. Ya está enlazada en la diapositiva «Dividir es multiplicar por la inversa» (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/fracciones/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `bidon-frascos.png` | L3 · «Dividir es multiplicar por la inversa» (`story`, ~150 px) | 1024×1024 | Bidón azul de plástico con tapón y asa y, delante, cuatro frascos de perfume pequeños de cristal, redondos y **vacíos**. Sin etiquetas, sin texto, sin números. |
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

@@ -615,7 +615,12 @@ export type SlideAnimId =
   | "tabla-unidades"
   | "escala-longitudes"
   | "cuadrados-area"
-  | "m2-dm2";
+  | "m2-dm2"
+  | "fraccion-equivalente"
+  | "fraccion-barras-suma"
+  | "fraccion-de-fraccion"
+  | "simplificar-factores"
+  | "fraccion-cabe";
 
 export type ExprStep = {
   tokens: string[];
@@ -672,7 +677,12 @@ export type SlideAnimParams = {
   to?: string;
   /** `tabla-unidades`: cantidad compleja, cada parte con su unidad («3 dam», «8 m», «7 cm»). */
   parts?: string[];
+  /** `simplificar-factores`: el producto viene de una división (se da la vuelta a la segunda fracción). */
+  inv?: boolean;
 };
+
+/** Herramientas interactivas disponibles dentro de una diapositiva. */
+export type SlideToolId = "fraction-product";
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
 
@@ -717,6 +727,13 @@ export type SlideBlock =
     }
   /** Ilustración PNG de `public/lesson/…` (se omite si el fichero aún no existe). */
   | { kind: "figure"; src: string; alt: string; caption?: string; maxWidth?: number }
+  /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
+  | {
+      kind: "tool";
+      tool: SlideToolId;
+      /** Valores de partida (`fraction-product`: numerador y denominador de cada fracción). */
+      initial?: number[];
+    }
   /** Animación controlada (play/pausa/paso a paso) dentro de la diapositiva. */
   | {
       kind: "anim";
@@ -738,7 +755,7 @@ export type SlideStep = LessonStepBase &
     /** Columna de texto (de arriba abajo). */
     blocks: SlideBlock[];
     /** Elemento visual principal; en pantallas anchas va al lado del texto. */
-    visual?: Extract<SlideBlock, { kind: "anim" | "figure" }>;
+    visual?: Extract<SlideBlock, { kind: "anim" | "figure" | "tool" }>;
     /**
      * `split` (por defecto con visual): texto | visual. `visual-top`: visual ancho
      * arriba y texto debajo en columnas. `text-top`: los bloques de texto en dos

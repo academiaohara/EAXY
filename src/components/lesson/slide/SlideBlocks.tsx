@@ -5,6 +5,7 @@ import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { SlideAnim } from "@/components/lesson/slide/SlideAnim";
 import { Illustration, SlideFigure } from "@/components/lesson/slide/SlideFigure";
+import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import type { SlideBlock, SlideTone } from "@/lib/lesson/types";
 import { cn } from "@/lib/utils";
 
@@ -248,6 +249,9 @@ export function SlideBlockView({ block }: { block: SlideBlock }) {
 
     case "anim":
       return <SlideAnim block={block} />;
+
+    case "tool":
+      return <SlideTool block={block} />;
 
     default:
       return null;
