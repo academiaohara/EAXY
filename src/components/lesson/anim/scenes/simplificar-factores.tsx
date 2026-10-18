@@ -1,53 +1,41 @@
-import { Canvas, Fade, Txt, WriteLine } from "@/components/lesson/anim/primitives";
+import { Canvas, Fade, Move, Txt, WriteLine } from "@/components/lesson/anim/primitives";
 import { Frac } from "@/components/lesson/anim/fraction-svg";
 import { MANIM } from "@/components/lesson/anim/palette";
 import { factorize } from "@/components/lesson/anim/number-theory";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 
 const STEP = 46;
+const NUM_Y = 150;
+const BAR_Y = 176;
+const DEN_Y = 222;
+const GAP = 80;
+const PAIR_COLORS = [MANIM.red, MANIM.orange, MANIM.purple, MANIM.blue, MANIM.green];
 
-type Tok = { v: number; cancelled: boolean };
+type Side = "n" | "d";
+type Tok = {
+  v: number;
+  /** Fracción de la que viene (0: primera, 1: segunda). */
+  f: 0 | 1;
+  side: Side;
+  /** Posición dentro de su lado en su fracción. */
+  i: number;
+  /** Posición dentro de su lado en la fracción única. */
+  merged: number;
+  /** Pareja arriba/abajo que se tacha (−1: se queda). */
+  pair: number;
+};
 
 function expand(n: number): number[] {
   return n === 1 ? [] : factorize(n).flatMap(([p, e]) => Array<number>(e).fill(p));
 }
 
-/** Fila de factores (con puntos entre ellos) centrada en `cx`. */
-function FactorRow({ toks, cx, y, strike, color }: { toks: Tok[]; cx: number; y: number; strike: boolean; color: string }) {
-  const start = cx - ((toks.length - 1) * STEP) / 2;
-  if (toks.length === 0) {
-    return (
-      <Txt x={cx} y={y} size={34} color={color}>
-        1
-      </Txt>
-    );
-  }
-  return (
-    <g>
-      {toks.map((t, i) => {
-        const x = start + i * STEP;
-        const dead = strike && t.cancelled;
-        return (
-          <g key={i}>
-            <Txt x={x} y={y} size={34} color={dead ? MANIM.red : color}>
-              {String(t.v)}
-            </Txt>
-            {i < toks.length - 1 ? (
-              <Txt x={x + STEP / 2} y={y} size={28} color={MANIM.muted}>
-                ·
-              </Txt>
-            ) : null}
-            <WriteLine show={dead} x1={x - 14} y1={y + 6} x2={x + 14} y2={y - 26} color={MANIM.red} width={4} />
-          </g>
-        );
-      })}
-    </g>
-  );
-}
+const rowWidth = (count: number) => Math.max(0, count - 1) * STEP;
+const rowX = (cx: number, count: number, i: number) => cx - rowWidth(count) / 2 + i * STEP;
 
 /**
- * Simplificar un producto de fracciones descomponiendo en factores y tachando los que
- * se repiten arriba y abajo. Con `inv` parte de una división (se da la vuelta a la segunda).
+ * Simplificar un producto de fracciones con factores primos: cada factor se queda en su fracción,
+ * todos pasan a una sola fracción y se tachan las parejas arriba/abajo (cada pareja, de su color).
+ * Con `inv` parte de una división (se da la vuelta a la segunda fracción).
  */
 export function buildSimplificarFactores(params: {
   a?: number;
@@ -64,50 +52,80 @@ export function buildSimplificarFactores(params: {
   const pc = inv ? d : c;
   const pd = inv ? c : d;
 
-  const numToks: Tok[] = [...expand(a), ...expand(pc)].map((v) => ({ v, cancelled: false }));
-  const denToks: Tok[] = [...expand(b), ...expand(pd)].map((v) => ({ v, cancelled: false }));
-  for (const nt of numToks) {
-    const mate = denToks.find((t) => !t.cancelled && t.v === nt.v);
-    if (mate) {
-      nt.cancelled = true;
-      mate.cancelled = true;
+  const parts: [Record<Side, number[]>, Record<Side, number[]>] = [
+    { n: expand(a), d: expand(b) },
+    { n: expand(pc), d: expand(pd) },
+  ];
+  const mergedLen: Record<Side, number> = { n: parts[0].n.length + parts[1].n.length, d: parts[0].d.length + parts[1].d.length };
+  const toks: Tok[] = [];
+  for (const f of [0, 1] as const) {
+    for (const side of ["n", "d"] as const) {
+      parts[f][side].forEach((v, i) => {
+        toks.push({ v, f, side, i, merged: (f === 1 ? parts[0][side].length : 0) + i, pair: -1 });
+      });
     }
   }
-  const restN = numToks.filter((t) => !t.cancelled).reduce((acc, t) => acc * t.v, 1);
-  const restD = denToks.filter((t) => !t.cancelled).reduce((acc, t) => acc * t.v, 1);
-  const cancelledCount = numToks.filter((t) => t.cancelled).length;
+  let pairs = 0;
+  for (const nt of toks.filter((t) => t.side === "n")) {
+    const mate = toks.find((t) => t.side === "d" && t.pair < 0 && t.v === nt.v);
+    if (mate) {
+      nt.pair = pairs;
+      mate.pair = pairs;
+      pairs += 1;
+    }
+  }
+  const rest = (side: Side) => toks.filter((t) => t.side === side && t.pair < 0).reduce((acc, t) => acc * t.v, 1);
+  const restN = rest("n");
+  const restD = rest("d");
   const op = inv ? ":" : "·";
   const off = inv ? 1 : 0;
+  const factorsTex = (side: Side) => {
+    const vs = [...parts[0][side], ...parts[1][side]];
+    return vs.length ? vs.join(" \\cdot ") : "1";
+  };
 
   const captions = [
     inv
       ? `Dividir $\\dfrac{${a}}{${b}} : \\dfrac{${c}}{${d}}$ es lo mismo que multiplicar por la **inversa** de la segunda.`
       : `Queremos $\\dfrac{${a}}{${b}} \\cdot \\dfrac{${c}}{${d}}$ y que el resultado salga **ya simplificado**.`,
     ...(inv ? [`Se da la vuelta solo a la fracción por la que dividimos: $\\dfrac{${a}}{${b}} \\cdot \\dfrac{${pc}}{${pd}}$.`] : []),
-    `Descomponemos en **factores primos** todos los números, antes de multiplicar nada.`,
-    cancelledCount
-      ? `Cada factor que está **arriba y abajo** se tacha: dividir arriba y abajo entre lo mismo no cambia la fracción.`
-      : `No hay factores iguales arriba y abajo: el producto ya está simplificado.`,
+    `Descomponemos en **factores primos** cada número. Cada factor se queda en su sitio: numeradores arriba, denominadores abajo.`,
+    `Un producto de fracciones es **una sola fracción**: todos los factores de arriba juntos y todos los de abajo juntos, sin multiplicarlos todavía: $\\dfrac{${factorsTex("n")}}{${factorsTex("d")}}$.`,
+    pairs
+      ? `Cada factor de arriba que tiene **su pareja abajo** se tacha (cada pareja, de un color): dividir arriba y abajo entre lo mismo no cambia la fracción.`
+      : `No hay ningún factor repetido arriba y abajo: no se puede tachar nada y el producto ya está simplificado.`,
     restD === 1
-      ? `Abajo no queda nada más que un $1$: el resultado es el número entero **${restN}**.`
-      : `Multiplicamos lo que queda: $\\dfrac{${restN}}{${restD}}$.`,
+      ? `Abajo solo queda un $1$: $\\dfrac{${a}}{${b}} ${op} \\dfrac{${c}}{${d}} = ${restN}$.`
+      : `Multiplicamos lo que queda: $\\dfrac{${a}}{${b}} ${op} \\dfrac{${c}}{${d}} = \\dfrac{${restN}}{${restD}}$.`,
   ];
 
-  const totalW = (n: number) => Math.max(0, n - 1) * STEP;
-  const cxNum = 400;
+  // Posiciones de las dos fracciones por separado.
+  const w = (f: 0 | 1) => rowWidth(Math.max(parts[f].n.length, parts[f].d.length, 1)) + 70;
+  const total = w(0) + w(1) + GAP;
+  const cx: [number, number] = [400 - total / 2 + w(0) / 2, 400 + total / 2 - w(1) / 2];
+  const signX = (cx[0] + w(0) / 2 + cx[1] - w(1) / 2) / 2;
+  const mergedHalf = rowWidth(Math.max(mergedLen.n, mergedLen.d, 1)) / 2 + 30;
+
+  const posB = (t: Tok) => ({ x: rowX(cx[t.f], parts[t.f][t.side].length, t.i), y: t.side === "n" ? NUM_Y : DEN_Y });
+  const posC = (t: Tok) => ({ x: rowX(400, mergedLen[t.side], t.merged), y: t.side === "n" ? NUM_Y : DEN_Y });
+
+  const bB = 1 + off;
+  const bC = 2 + off;
+  const bD = 3 + off;
+  const bE = 4 + off;
 
   return {
     label: `Simplificar ${a}/${b} ${op} ${c}/${d} con factores primos: queda ${restD === 1 ? restN : `${restN}/${restD}`}`,
     captions,
     render: (beat) => {
-      const factored = beat >= 1 + off;
-      const struck = beat >= 2 + off;
-      const done = beat >= 3 + off;
       const inverted = beat >= 1;
+      const single = beat >= bC;
+      const struck = beat >= bD;
+      const apart = beat >= bB && !single;
       return (
         <Canvas>
-          {/* fracciones */}
-          <Fade show={!factored}>
+          {/* fracciones sin descomponer */}
+          <Fade show={beat < bB}>
             <Frac x={270} y={190} n={a} d={b} size={44} />
             <Fade show={!inv || !inverted}>
               <Txt x={340} y={196} size={40}>
@@ -120,33 +138,78 @@ export function buildSimplificarFactores(params: {
                 ·
               </Txt>
               <Frac x={410} y={190} n={pc} d={pd} size={44} color={MANIM.yellow} />
+              <Txt x={410} y={278} size={22} color={MANIM.yellow}>
+                inversa
+              </Txt>
             </Fade>
           </Fade>
-          {/* factores */}
-          <Fade show={factored}>
-            <FactorRow toks={numToks} cx={cxNum} y={150} strike={struck} color={MANIM.ink} />
-            <line
-              x1={cxNum - Math.max(totalW(numToks.length), totalW(denToks.length)) / 2 - 30}
-              x2={cxNum + Math.max(totalW(numToks.length), totalW(denToks.length)) / 2 + 30}
-              y1={176}
-              y2={176}
-              stroke={MANIM.ink}
-              strokeWidth={3.5}
-              strokeLinecap="round"
-            />
-            <FactorRow toks={denToks} cx={cxNum} y={222} strike={struck} color={MANIM.ink} />
+          {/* dos fracciones con sus factores */}
+          <Fade show={apart}>
+            {([0, 1] as const).map((f) => (
+              <g key={f}>
+                <line x1={cx[f] - w(f) / 2 + 10} x2={cx[f] + w(f) / 2 - 10} y1={BAR_Y} y2={BAR_Y} stroke={f === 1 && inv ? MANIM.yellow : MANIM.ink} strokeWidth={3.5} strokeLinecap="round" />
+                {(["n", "d"] as const).map((side) =>
+                  parts[f][side].length === 0 ? (
+                    <Txt key={side} x={cx[f]} y={side === "n" ? NUM_Y : DEN_Y} size={34}>
+                      1
+                    </Txt>
+                  ) : (
+                    parts[f][side].slice(1).map((_, i) => (
+                      <Txt key={`${side}${i}`} x={rowX(cx[f], parts[f][side].length, i) + STEP / 2} y={side === "n" ? NUM_Y : DEN_Y} size={28} color={MANIM.muted}>
+                        ·
+                      </Txt>
+                    ))
+                  ),
+                )}
+              </g>
+            ))}
+            <Txt x={signX} y={BAR_Y + 10} size={34}>
+              ·
+            </Txt>
+          </Fade>
+          {/* una sola fracción */}
+          <Fade show={single}>
+            <line x1={400 - mergedHalf} x2={400 + mergedHalf} y1={BAR_Y} y2={BAR_Y} stroke={MANIM.ink} strokeWidth={3.5} strokeLinecap="round" />
+            {(["n", "d"] as const).map((side) =>
+              mergedLen[side] === 0 ? (
+                <Txt key={side} x={400} y={side === "n" ? NUM_Y : DEN_Y} size={34}>
+                  1
+                </Txt>
+              ) : (
+                Array.from({ length: mergedLen[side] - 1 }, (_, i) => (
+                  <Txt key={`${side}${i}`} x={rowX(400, mergedLen[side], i) + STEP / 2} y={side === "n" ? NUM_Y : DEN_Y} size={28} color={MANIM.muted}>
+                    ·
+                  </Txt>
+                ))
+              ),
+            )}
+          </Fade>
+          {/* factores: viajan de su fracción a la fracción única */}
+          <Fade show={beat >= bB}>
+            {toks.map((t, k) => {
+              const p = single ? posC(t) : posB(t);
+              const color = struck && t.pair >= 0 ? PAIR_COLORS[t.pair % PAIR_COLORS.length]! : MANIM.ink;
+              return (
+                <Move key={k} x={p.x} y={p.y}>
+                  <Txt x={0} y={0} size={34} color={color}>
+                    {String(t.v)}
+                  </Txt>
+                  <WriteLine show={struck && t.pair >= 0} x1={-14} y1={6} x2={14} y2={-26} color={color} width={4} />
+                </Move>
+              );
+            })}
           </Fade>
           {/* resultado */}
-          <Fade show={done} dy={10}>
-            <Txt x={cxNum - 70} y={344} size={36}>
+          <Fade show={beat >= bE} dy={10}>
+            <Txt x={400 - 70} y={344} size={36}>
               =
             </Txt>
             {restD === 1 ? (
-              <Txt x={cxNum + 10} y={344} size={48} color={MANIM.yellow}>
+              <Txt x={400 + 10} y={344} size={48} color={MANIM.yellow}>
                 {String(restN)}
               </Txt>
             ) : (
-              <Frac x={cxNum} y={332} n={restN} d={restD} size={44} color={MANIM.yellow} />
+              <Frac x={400} y={332} n={restN} d={restD} size={44} color={MANIM.yellow} />
             )}
           </Fade>
         </Canvas>

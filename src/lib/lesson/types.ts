@@ -386,6 +386,11 @@ export type FillInBlankStep = LessonStepBase &
   PracticeFields & {
     type: "fill_in_blank";
     correctAnswers: string[];
+    /**
+     * `fraction`: la respuesta se escribe en dos casillas (numerador sobre la raya,
+     * denominador debajo). Las respuestas válidas siguen escribiéndose como «n/d».
+     */
+    answerFormat?: "fraction";
   };
 
 /**
@@ -629,6 +634,8 @@ export type SlideAnimId =
   | "simplificar-factores"
   | "simplificar-irreducible"
   | "fraccion-cabe"
+  | "fraccion-combinada"
+  | "fraccion-gasto-resto"
   | "balanza-ecuacion"
   | "maquina-funcion"
   | "semejantes-agrupar";
@@ -652,6 +659,9 @@ export type SlideAnimParams = {
   c?: number;
   /** `criterio-ejemplos`: divisor cuyo criterio se aplica a los tres números de `nums`. */
   d?: number;
+  /** `fraccion-combinada`: segunda fracción del paréntesis (`a/b · (c/d ∓ e/f)`). */
+  e?: number;
+  f?: number;
   /**
    * `expr-reescritura`: derivación paso a paso. Cada paso es la expresión completa;
    * `active` marca lo que se calcula a continuación y `fresh` lo que acaba de salir.
