@@ -35,10 +35,7 @@ export function SlideStepView({ step, theme, onContinue }: SlideStepViewProps) {
 
   const text = (
     <div
-      className={cn(
-        "min-w-0 gap-4",
-        arrange === "text-top" ? "grid lg:grid-cols-2 lg:items-start" : "flex flex-col",
-      )}
+      className="min-w-0 flex flex-col gap-4"
       data-testid="lesson-slide-text"
     >
       {step.blocks.map((block, i) => (

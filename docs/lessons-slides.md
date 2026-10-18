@@ -15,7 +15,7 @@ Formato declarativo para **teoría nueva**: título + bloques de texto con forma
 - Componente: `src/components/lesson/slide/` (`SlideStepView`, `SlideBlocks`, `SlideFigure`).
 - Tipos: `SlideStep`, `SlideBlock`, `SlideAnimId` en `src/lib/lesson/types.ts`.
 - Siempre se puede **Continuar**: la animación ayuda, no bloquea.
-- Colocación: con `visual`, texto | visual en dos columnas (`arrange: "split"`, por defecto). `visual-top` pone la visual ancha arriba; `text-top` pone los bloques de texto en dos columnas arriba y la visual a todo el ancho debajo (animaciones con expresiones largas); `stack` todo en una columna.
+- Colocación: con `visual`, texto | visual en dos columnas (`arrange: "split"`, por defecto). `visual-top` pone la visual ancha arriba; `text-top` apila los bloques de texto arriba y la visual a todo el ancho debajo (animaciones con expresiones largas); `stack` todo en una columna.
 - Pensada para el tema `board` (pizarra oscura, paleta Manim).
 
 ## Criterio de redacción

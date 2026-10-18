@@ -708,8 +708,8 @@ export type SlideStep = LessonStepBase &
     visual?: Extract<SlideBlock, { kind: "anim" | "figure" }>;
     /**
      * `split` (por defecto con visual): texto | visual. `visual-top`: visual ancho
-     * arriba y texto debajo en columnas. `text-top`: los bloques de texto en dos
-     * columnas arriba y la visual a todo el ancho debajo (para animaciones anchas).
+     * arriba y texto debajo en columnas. `text-top`: bloques de texto apilados
+     * arriba y la visual a todo el ancho debajo (para animaciones anchas).
      * `stack`: todo en una columna.
      */
     arrange?: "split" | "visual-top" | "text-top" | "stack";

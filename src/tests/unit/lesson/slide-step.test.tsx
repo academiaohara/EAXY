@@ -64,6 +64,25 @@ describe("SlideStepView", () => {
     renderSlide(slide());
     expect(screen.getByTestId("lesson-slide")).toHaveAttribute("data-arrange", "stack");
   });
+
+  it("text-top apila los bloques de texto y pone la visual debajo", () => {
+    renderSlide(
+      slide({
+        arrange: "text-top",
+        blocks: [
+          { kind: "story", text: "problema" },
+          { kind: "rule", text: "regla" },
+        ],
+        visual: { kind: "anim", scene: "romano-resta" },
+      }),
+    );
+    expect(screen.getByTestId("lesson-slide")).toHaveAttribute("data-arrange", "text-top");
+    const column = screen.getByTestId("lesson-slide-text");
+    expect(column.className).not.toMatch(/grid-cols-2/);
+    const blocks = column.querySelectorAll("[data-slide-block]");
+    expect(blocks[0]).toHaveAttribute("data-slide-block", "story");
+    expect(blocks[1]).toHaveAttribute("data-slide-block", "rule");
+  });
 });
 
 describe("AnimPlayer", () => {
