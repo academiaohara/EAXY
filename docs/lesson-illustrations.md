@@ -63,6 +63,17 @@ Sin ilustraciones: todo lo que ayuda a entender (grupos, rectángulos, saltos, c
 
 Sin ilustraciones: ascensor, recta, fichas, facturas y paréntesis ya los cubren las animaciones. Los enunciados `story` quedan como texto.
 
+## Tema 5 · Números decimales
+
+Solo dos ilustraciones, las que anclan una cantidad al mundo real; el resto (rectas, tablas, columnas, divisiones) lo dibujan las animaciones. Ya están enlazadas en las diapositivas (hasta que llegue el PNG, la diapositiva se ve completa solo con el texto).
+
+| Archivo (`public/lesson/decimales/…`) | Dónde sale | Lienzo | Prompt (pegar tras el bloque de estilo) |
+|---|---|---|---|
+| `bascula.png` | L1 · «Décimas, centésimas, milésimas» (`story`, ~150 px) | 1024×1024 | Báscula de cocina digital cuadrada, de plástico blanco con plataforma de acero, vista tres cuartos. Sobre la plataforma, un cuenco de acero con tres tomates rojos. La pantalla de la báscula **apagada y en blanco** (sin cifras ni texto). |
+| `rollo-tela.png` | L2 · «Multiplicar: sin comas y se cuentan los decimales» (`story`, ~150 px) | 1024×1024 | Rollo de tela estampada de cuadros azules y blancos sobre un tubo de cartón, con un metro de costura amarillo medio desenrollado por delante. En el metro, **solo las marcas** (rayitas), **sin números**. Vista tres cuartos. |
+
+Los tres temas anteriores sin ilustración (divisibilidad, enteros…) se mantienen igual; aquí se añaden solo porque la báscula (milésimas = gramos) y la tela (precio por metro) hacen concreta una cantidad con decimales.
+
 ## Flujo en el repositorio
 
 1. Entrega del diseñador o generación → carpeta **`Assets/`** en la raíz (convención del equipo).

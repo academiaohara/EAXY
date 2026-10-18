@@ -578,7 +578,16 @@ export type SlideAnimId =
   | "resta-opuesto"
   | "parentesis-signos"
   | "producto-signos"
-  | "division-inversa";
+  | "division-inversa"
+  | "decimal-zoom"
+  | "tabla-decimal"
+  | "comparar-decimales"
+  | "redondeo-decimal"
+  | "decimal-columna"
+  | "decimal-producto"
+  | "coma-potencias10"
+  | "division-decimal"
+  | "division-coma-divisor";
 
 export type ExprStep = {
   tokens: string[];
@@ -618,6 +627,16 @@ export type SlideAnimParams = {
   mode?: "mcm" | "mcd";
   /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
   sign?: "+" | "-";
+  /** Escenas de decimales: número con coma escrito como texto («2,375»). */
+  dec?: string;
+  /** Escenas de decimales: operandos con coma («12,85», «3,5»). */
+  terms?: string[];
+  /** `decimal-columna`: suma o resta en columna. */
+  op?: "+" | "-";
+  /** Cifras decimales que se calculan o a las que se aproxima el resultado. */
+  places?: number;
+  /** `coma-potencias10`: multiplicar o dividir por 10, 100 y 1000. */
+  dir?: "mul" | "div";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
