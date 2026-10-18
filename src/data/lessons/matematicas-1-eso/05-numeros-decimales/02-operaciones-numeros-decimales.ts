@@ -127,6 +127,7 @@ export const operacionesNumerosDecimalesLesson: InteractiveLesson = {
       id: "hucha",
       type: "slide",
       title: "Ingresos y gastos: valen las reglas de los enteros",
+      arrange: "text-top",
       blocks: [
         {
           kind: "story",
