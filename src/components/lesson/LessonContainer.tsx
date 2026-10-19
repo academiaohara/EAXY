@@ -52,6 +52,7 @@ import {
   setLocalLessonStatus,
 } from "@/lib/local-progress/storage";
 import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
+import { useLessonFitZoom } from "@/lib/layout/lesson-fit-zoom";
 import { cn } from "@/lib/utils";
 
 type LessonNavigationContext = {
@@ -130,6 +131,7 @@ function LessonContainerBody({
   const [helpNodeId, setHelpNodeId] = useState<string | null>(null);
   const [helpContext, setHelpContext] = useState<HelpContext>(STEP_HELP);
   const { control, footerCenter, presenterNav, stageCelebration } = useLessonStepControl();
+  const fitZoom = useLessonFitZoom();
   const router = useRouter();
   const backHref = !navigation
     ? "/aprender"
@@ -614,6 +616,7 @@ function LessonContainerBody({
           panelOpen && "lg:pl-[24rem]",
         )}
         data-testid="interactive-lesson"
+        style={fitZoom < 1 ? { zoom: fitZoom } : undefined}
       >
         <h1 className="sr-only">{lesson.title}</h1>
 
