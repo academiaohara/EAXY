@@ -5,10 +5,11 @@ export const areasCirculoLesson: InteractiveLesson = {
   slug: "areas-circulo",
   title: "4. Medidas en el círculo",
   subtitle: TEMA_1ESO_13_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "pi",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Qué es $\\pi$?",
@@ -24,93 +25,66 @@ export const areasCirculoLesson: InteractiveLesson = {
         },
       ],
       title: "El número $\\pi$",
-      content: [
-        "La longitud de una circunferencia es algo más de **tres veces** su diámetro: $l = \\pi d = 2\\pi r$.",
-        "Los egipcios usaron $\\pi \\approx 3{,}16$; Arquímedes lo acotó cerca de $3{,}141$. Hoy usamos $\\pi \\approx 3{,}14$ o $3{,}1416$.",
-        "La letra $\\pi$ viene de *perifereia* (circunferencia en griego).",
+      blocks: [
+        {
+          kind: "definition",
+          text: "El **perímetro** de un círculo es la longitud de su circunferencia: algo más de **tres veces** su diámetro.",
+        },
+        {
+          kind: "rule",
+          formula: "l = \\pi d = 2\\pi r \\qquad \\pi \\approx 3{,}14",
+        },
+        {
+          kind: "text",
+          text: "Los egipcios usaron $3{,}16$, los babilonios $3{,}125$ y Arquímedes lo acotó cerca de $3{,}141$. La letra $\\pi$ viene de *perifereia*, «circunferencia» en griego.",
+        },
       ],
+      visual: { kind: "anim", scene: "longitud-pi", beatMs: 3200 },
     },
     {
-      id: "perimetro",
-      type: "concept",
+      id: "explora-circulo",
+      type: "slide",
       help: [
         {
-          label: "¿Radio o diámetro?",
-          message: "El diámetro son dos radios, por eso $2\\pi r$ y $\\pi d$ son la misma fórmula.",
+          label: "¿Qué debo observar?",
+          message: "Al duplicar el radio, la longitud se multiplica por $2$, pero el área se multiplica por $4$: lleva $r^2$.",
         },
+      ],
+      title: "Explora: radio, longitud y área",
+      blocks: [
         {
-          label: "Contornos compuestos",
-          message: "Si la figura mezcla arcos y tramos rectos, suma solo lo que forma el borde exterior.",
+          kind: "text",
+          text: "Cambia el radio. Si lo duplicas, ¿cuánto se multiplica la longitud? ¿Y el área?",
         },
       ],
-      title: "Perímetro (longitud) del círculo",
-      content: [
-        "Al **perímetro** de un círculo también se le llama **longitud de la circunferencia**.",
-        "$P = 2\\pi r = \\pi d$, con $r$ radio y $d$ diámetro.",
-        "En problemas compuestos, suma los arcos y tramos rectos que formen el contorno.",
-      ],
+      visual: { kind: "tool", tool: "circulo-explorador", params: { a: 4 } },
     },
     {
       id: "area",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿De dónde sale $\\pi r^2$?",
-          message: "Si cortas el círculo en muchos sectores finos y los colocas alternados, forman casi un rectángulo de altura $r$ y base media circunferencia.",
-          math: ["A \\approx \\pi r \\cdot r = \\pi r^2"],
+          message: "Si cortas el círculo en muchos sectores finos, son casi triángulos de altura $r$ y la suma de sus bases es la circunferencia $2\\pi r$.",
+          math: ["A = \\dfrac{2\\pi r \\cdot r}{2} = \\pi r^2"],
         },
         {
-          label: "Corona circular",
-          message: "Es el círculo grande al que le quitas el hueco: restas **áreas**, no radios.",
+          label: "¿Qué es $r^2$?",
+          message: "Es $r \\cdot r$, no $2 \\cdot r$. Con $r = 3$: $r^2 = 9$, no $6$.",
         },
       ],
       title: "Área del círculo",
-      content: [
-        "Partiendo el círculo en sectores muy finos (casi triángulos de altura $r$), la suma de las bases es $2\\pi r$.",
-        "El área resulta $A = \\pi r^2$.",
-        "Para una **corona circular** (dos circunferencias concéntricas), resta áreas: $A = \\pi R^2 - \\pi r^2$.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Círculo",
-          items: [
-            { title: "Longitud", math: "l = 2\\pi r", tone: "cobalt" },
-            { title: "Área", math: "A = \\pi r^2", tone: "emerald" },
-          ],
+          kind: "definition",
+          text: "Descomponemos el círculo en **muchos triángulos** muy finos, como un polígono regular de muchos lados: su altura es $r$ y sus bases suman $2\\pi r$.",
+        },
+        {
+          kind: "rule",
+          formula: "A = \\pi r^2",
         },
       ],
-    },
-    {
-      id: "corona",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué resto áreas?",
-          message: "El círculo grande incluye el hueco, así que le quitas el área del círculo pequeño.",
-        },
-        {
-          label: "¿Y el perímetro?",
-          message: "La corona tiene dos bordes, el exterior y el interior, así que se suman las dos circunferencias.",
-        },
-        {
-          label: "Un atajo",
-          message: "Saca $\\pi$ factor común antes de aproximar.",
-          math: ["25\\pi - 9\\pi = 16\\pi"],
-        },
-      ],
-      title: "Ejercicio resuelto — corona circular",
-      content: ["Radios $5\\,\\mathrm{cm}$ y $3\\,\\mathrm{cm}$ (circunferencias concéntricas)."],
-      frames: [
-        {
-          caption: "Área de la corona:",
-          math: "A = \\pi \\cdot 5^2 - \\pi \\cdot 3^2 = 16\\pi \\approx 50{,}26\\,\\mathrm{cm}^2",
-        },
-        {
-          caption: "Perímetro del recinto (las dos circunferencias):",
-          math: "P = 2\\pi \\cdot 5 + 2\\pi \\cdot 3 = 16\\pi \\approx 50{,}26\\,\\mathrm{cm}",
-        },
-      ],
+      visual: { kind: "anim", scene: "area-circulo", beatMs: 3500 },
     },
     {
       id: "check-area",
@@ -168,6 +142,96 @@ export const areasCirculoLesson: InteractiveLesson = {
       hint: "La longitud es un contorno (se mide en metros); el área es una superficie (en metros cuadrados) y lleva $r^2$.",
       explanation:
         "Longitud: $l = \\pi d = 2\\pi r = 3{,}14 \\cdot 10 = 31{,}4\\,\\mathrm{m}$. Área: $A = \\pi r^2 = 3{,}14 \\cdot 25 = 78{,}5\\,\\mathrm{m}^2$.",
+    },
+    {
+      id: "pizza",
+      type: "predict",
+      help: [
+        {
+          label: "¿Qué cambia al duplicar?",
+          message: "Prueba con números: un radio $r = 1$ y otro $r = 2$. Calcula $\\pi r^2$ en cada caso y compara.",
+        },
+        {
+          label: "Recuerda el exponente",
+          message: "El área lleva $r^2$: si $r$ se multiplica por $2$, $r^2$ se multiplica por $2^2$.",
+        },
+      ],
+      title: "Dos pizzas",
+      question:
+        "Una pizzería vende una pizza de 15 cm de radio y otra de 30 cm de radio. ¿Cuántas veces más pizza (superficie) hay en la grande que en la pequeña?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$4$ veces más" },
+        {
+          id: "b",
+          label: "$2$ veces más",
+          incorrectFeedback: "El radio se duplica, pero el área lleva $r^2$: se multiplica por $2 \\cdot 2 = 4$, no por $2$.",
+        },
+        {
+          id: "c",
+          label: "$3{,}14$ veces más",
+          incorrectFeedback: "$\\pi$ aparece en las dos pizzas y se cancela al compararlas. Fíjate solo en cómo cambia $r^2$.",
+        },
+        {
+          id: "d",
+          label: "$8$ veces más",
+          incorrectFeedback: "$8$ sería si el área llevara $r^3$ (como un volumen). El área lleva $r^2$: $2^2 = 4$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\dfrac{\\pi \\cdot 30^2}{\\pi \\cdot 15^2} = \\dfrac{900}{225} = 4$: al duplicar el radio, el área se cuadruplica.",
+    },
+    {
+      id: "corona",
+      type: "slide",
+      help: [
+        {
+          label: "¿Por qué resto áreas?",
+          message: "El círculo grande incluye el hueco, así que le quitas el área del círculo pequeño.",
+        },
+        {
+          label: "¿Y el perímetro?",
+          message: "La corona tiene dos bordes, el exterior y el interior, así que se suman las dos circunferencias.",
+        },
+        {
+          label: "Un atajo",
+          message: "Saca $\\pi$ factor común antes de aproximar.",
+          math: ["25\\pi - 9\\pi = 16\\pi"],
+        },
+      ],
+      title: "Corona circular",
+      blocks: [
+        {
+          kind: "definition",
+          text: "Dos circunferencias **concéntricas** (con el mismo centro) limitan una **corona circular**. Su área es la diferencia de las áreas de los dos círculos.",
+        },
+        {
+          kind: "rule",
+          formula: "A = \\pi R^2 - \\pi r^2",
+        },
+      ],
+      visual: { kind: "anim", scene: "corona-circular", beatMs: 3500 },
+    },
+    {
+      id: "check-corona",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "Resta de áreas",
+          message: "Calcula el área del círculo de radio $6$ y réstale la del círculo de radio $4$.",
+        },
+        {
+          label: "Saca factor común",
+          message: "$\\pi \\cdot 36 - \\pi \\cdot 16 = \\pi \\cdot 20$. Después aproxima con $3{,}14$.",
+        },
+      ],
+      title: "Una corona",
+      question:
+        "Una corona circular está limitada por dos circunferencias concéntricas de radios 6 cm y 4 cm. Usando $\\pi \\approx 3{,}14$, ¿cuál es su área en cm²? (escribe solo el número)",
+      correctAnswers: ["62,8", "62.8", "62,80"],
+      hint: "$A = \\pi \\cdot 6^2 - \\pi \\cdot 4^2$.",
+      explanation: "$A = \\pi \\cdot (36 - 16) = 20\\pi \\approx 20 \\cdot 3{,}14 = 62{,}8\\,\\mathrm{cm}^2$.",
     },
   ],
 };

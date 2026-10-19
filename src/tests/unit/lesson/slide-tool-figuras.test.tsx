@@ -17,6 +17,12 @@ describe("herramientas de figuras: valores extremos", () => {
     "circ-recta-explorador",
     "circ-circ-explorador",
     "poliedro-explorador",
+    "rectangulo-explorador",
+    "paralelogramo-area",
+    "trapecio-area",
+    "triangulo-area",
+    "poligono-regular-area",
+    "circulo-explorador",
   ];
 
   it.each(tools)("%s se monta con parámetros absurdos sin fallar", (tool) => {
@@ -143,5 +149,59 @@ describe("poliedro-explorador", () => {
     change(/Lados de la base/, 8);
     expect(readout()).toHaveTextContent("Vértices: 9");
     expect(screen.getByText(/9 \+ 9 = 18 y A \+ 2 = 16 \+ 2 = 18/)).toBeInTheDocument();
+  });
+});
+
+describe("herramientas de áreas", () => {
+  it("rectángulo: área y perímetro, y con perímetro fijo gana el cuadrado", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "rectangulo-explorador", params: { a: 6, b: 4 } }} />);
+    expect(readout()).toHaveTextContent("A = 6 · 4 = 24 cm²");
+    expect(readout()).toHaveTextContent("P = 2·6 + 2·4 = 20 cm");
+    press(/Perímetro fijo/);
+    expect(readout()).toHaveTextContent("A = 6 · 6 = 36 cm²");
+    change(/Base a/, 2);
+    expect(readout()).toHaveTextContent("A = 2 · 10 = 20 cm²");
+    expect(readout()).toHaveTextContent("= 24 cm");
+  });
+
+  it("paralelogramo: la inclinación no cambia el área", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "paralelogramo-area", params: { a: 6, b: 4, c: 0 } }} />);
+    expect(readout()).toHaveTextContent("A = 6 · 4 = 24 cm²");
+    expect(readout()).toHaveTextContent("P = 2·6 + 2·4 = 20 cm");
+    change(/Desplazamiento/, 3);
+    expect(readout()).toHaveTextContent("A = 6 · 4 = 24 cm²");
+    expect(readout()).toHaveTextContent("P = 2·6 + 2·5 = 22 cm");
+  });
+
+  it("trapecio: media suma de bases por altura; la base menor no supera a la mayor", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "trapecio-area", params: { a: 8, b: 4, c: 4 } }} />);
+    expect(readout()).toHaveTextContent("A = (8 + 4) · 4 / 2 = 24 cm²");
+    change(/Base mayor/, 3);
+    expect(Number(slider(/Base menor/).value)).toBeLessThanOrEqual(3);
+  });
+
+  it("triángulo: el vértice no cambia el área; la altura sí", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "triangulo-area", params: { a: 6, b: 4, c: 2 } }} />);
+    expect(readout()).toHaveTextContent("A = 6 · 4 / 2 = 12 cm²");
+    change(/Posición del vértice/, 8);
+    expect(readout()).toHaveTextContent("= 12 cm²");
+    change(/Altura/, 6);
+    expect(readout()).toHaveTextContent("A = 6 · 6 / 2 = 18 cm²");
+  });
+
+  it("polígono regular: hexágono de lado 4 ≈ 41,6 cm²", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "poligono-regular-area", params: { n: 6, a: 4 } }} />);
+    expect(readout()).toHaveTextContent("P = 6·4 = 24 cm");
+    expect(readout()).toHaveTextContent("a ≈ 3,46 cm");
+    expect(readout()).toHaveTextContent("≈ 41,6 cm²");
+  });
+
+  it("círculo: duplicar el radio duplica la longitud y cuadruplica el área", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "circulo-explorador", params: { a: 4 } }} />);
+    expect(readout()).toHaveTextContent("25,12 cm");
+    expect(readout()).toHaveTextContent("50,24 cm²");
+    change(/Radio r/, 8);
+    expect(readout()).toHaveTextContent("50,24 cm");
+    expect(readout()).toHaveTextContent("200,96 cm²");
   });
 });

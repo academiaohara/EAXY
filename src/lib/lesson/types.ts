@@ -679,7 +679,19 @@ export type SlideAnimId =
   | "poliedro-elementos"
   | "poliedros-regulares"
   | "prisma-elementos"
-  | "piramide-elementos";
+  | "piramide-elementos"
+  | "area-perimetro"
+  | "area-rectangulo"
+  | "area-paralelogramo"
+  | "area-rombo"
+  | "area-trapecio"
+  | "area-triangulo"
+  | "area-triangulo-rectangulo"
+  | "area-poligono-triangulos"
+  | "area-poligono-regular"
+  | "longitud-pi"
+  | "area-circulo"
+  | "corona-circular";
 
 export type ExprStep = {
   tokens: string[];
@@ -837,7 +849,13 @@ export type SlideToolId =
   | "poligono-regular-explorador"
   | "circ-recta-explorador"
   | "circ-circ-explorador"
-  | "poliedro-explorador";
+  | "poliedro-explorador"
+  | "rectangulo-explorador"
+  | "paralelogramo-area"
+  | "trapecio-area"
+  | "triangulo-area"
+  | "poligono-regular-area"
+  | "circulo-explorador";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento
