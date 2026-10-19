@@ -1,0 +1,130 @@
+import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { SlideTool } from "@/components/lesson/slide/SlideTool";
+import type { SlideToolId } from "@/lib/lesson/types";
+
+const slider = (label: RegExp) => screen.getByLabelText(label) as HTMLInputElement;
+const readout = () => screen.getByTestId("tool-readout");
+const change = (label: RegExp, value: number) => fireEvent.change(slider(label), { target: { value: String(value) } });
+const press = (name: string | RegExp) => fireEvent.click(screen.getByRole("button", { name }));
+
+describe("herramientas de figuras: valores extremos", () => {
+  const tools: SlideToolId[] = [
+    "triangulo-clasificador",
+    "triangulo-centros",
+    "paralelogramo-explorador",
+    "poligono-regular-explorador",
+    "circ-recta-explorador",
+    "circ-circ-explorador",
+  ];
+
+  it.each(tools)("%s se monta con parámetros absurdos sin fallar", (tool) => {
+    expect(() =>
+      render(<SlideTool block={{ kind: "tool", tool, params: { a: 9999, b: -9999, n: 500, c: 77 } }} />),
+    ).not.toThrow();
+    expect(screen.getByTestId("lesson-tool")).toBeInTheDocument();
+  });
+
+  it.each(tools)("%s se monta sin parámetros", (tool) => {
+    expect(() => render(<SlideTool block={{ kind: "tool", tool }} />)).not.toThrow();
+  });
+});
+
+describe("triangulo-clasificador", () => {
+  it("reconoce el equilátero, el isósceles rectángulo y el obtusángulo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "triangulo-clasificador", params: { a: 3, b: 4 } }} />);
+    expect(readout()).toHaveTextContent("isósceles");
+    expect(readout()).toHaveTextContent("acutángulo");
+    press("Equilátero");
+    expect(readout()).toHaveTextContent("equilátero");
+    press("Rectángulo");
+    expect(readout()).toHaveTextContent("rectángulo");
+    press("Obtusángulo");
+    expect(readout()).toHaveTextContent("obtusángulo");
+  });
+
+  it("con C encima de la mediatriz y altura 3 es isósceles rectángulo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "triangulo-clasificador", params: { a: 3, b: 3 } }} />);
+    expect(readout()).toHaveTextContent("isósceles");
+    expect(readout()).toHaveTextContent("rectángulo");
+  });
+});
+
+describe("triangulo-centros", () => {
+  it("el ortocentro queda dentro, en el vértice o fuera según el triángulo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "triangulo-centros", params: { a: 2, b: 4 } }} />);
+    expect(readout()).toHaveTextContent("Baricentro");
+    press("Alturas y ortocentro");
+    expect(readout()).toHaveTextContent("acutángulo: H queda dentro");
+    change(/Posición horizontal/, 0);
+    expect(readout()).toHaveTextContent("vértice del ángulo recto");
+    change(/Posición horizontal/, 3);
+    change(/Altura de C/, 1.5);
+    expect(readout()).toHaveTextContent("obtusángulo: H queda fuera");
+  });
+});
+
+describe("paralelogramo-explorador", () => {
+  it("nombra romboide, rombo, rectángulo y cuadrado", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "paralelogramo-explorador", params: { a: 5, b: 3, c: 70 } }} />);
+    expect(readout()).toHaveTextContent("romboide");
+    press("Rombo");
+    expect(readout()).toHaveTextContent("rombo");
+    press("Rectángulo");
+    expect(readout()).toHaveTextContent("rectángulo");
+    press("Cuadrado");
+    expect(readout()).toHaveTextContent("cuadrado");
+    expect(readout()).toHaveTextContent("90° y 90°");
+  });
+});
+
+describe("poligono-regular-explorador", () => {
+  it("en el hexágono el lado coincide con el radio", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "poligono-regular-explorador", params: { n: 6, a: 6 } }} />);
+    expect(readout()).toHaveTextContent("l ≈ 6 cm");
+    expect(readout()).toHaveTextContent("a ≈ 5,2 cm");
+    change(/Número de lados/, 4);
+    expect(readout()).toHaveTextContent("l ≈ 8,5 cm");
+  });
+});
+
+describe("circ-recta-explorador", () => {
+  it("compara la distancia con el radio", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "circ-recta-explorador", params: { a: 6, b: 3 } }} />);
+    expect(readout()).toHaveTextContent("exteriores");
+    change(/Distancia d/, 3);
+    expect(readout()).toHaveTextContent("tangentes");
+    expect(readout()).toHaveTextContent("1 punto común");
+    change(/Distancia d/, 1.5);
+    expect(readout()).toHaveTextContent("secantes");
+    expect(readout()).toHaveTextContent("2 puntos comunes");
+  });
+});
+
+describe("circ-circ-explorador", () => {
+  it("recorre las seis posiciones relativas", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "circ-circ-explorador", params: { a: 4, b: 2, c: 5 } }} />);
+    expect(readout()).toHaveTextContent("secantes");
+    change(/Distancia d entre centros/, 8);
+    expect(readout()).toHaveTextContent("exteriores");
+    change(/Distancia d entre centros/, 6);
+    expect(readout()).toHaveTextContent("tangentes exteriores");
+    change(/Distancia d entre centros/, 2);
+    expect(readout()).toHaveTextContent("tangentes interiores");
+    change(/Distancia d entre centros/, 1);
+    expect(readout()).toHaveTextContent("interiores");
+    change(/Distancia d entre centros/, 0);
+    expect(readout()).toHaveTextContent("concéntricas");
+  });
+
+  it("dos circunferencias iguales con el mismo centro coinciden", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "circ-circ-explorador", params: { a: 3, b: 3, c: 0 } }} />);
+    expect(readout()).toHaveTextContent("coincidentes");
+  });
+
+  it("al bajar R el radio r se ajusta para no superarlo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "circ-circ-explorador", params: { a: 5, b: 5, c: 1 } }} />);
+    change(/Radio R/, 2);
+    expect(Number(slider(/Radio r/).value)).toBeLessThanOrEqual(2);
+  });
+});

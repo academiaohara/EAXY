@@ -3,7 +3,7 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-poliedros",
-  title: "1. Elementos del poliedro y poliedros regulares",
+  title: "5. Poliedros y poliedros regulares",
   subtitle: TEMA_1ESO_12_SUBTITLE,
   steps: [
     {

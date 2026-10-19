@@ -3,7 +3,7 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-piramides",
-  title: "3. Pirámides",
+  title: "7. Pirámides",
   subtitle: TEMA_1ESO_12_SUBTITLE,
   steps: [
     {

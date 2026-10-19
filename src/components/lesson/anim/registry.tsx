@@ -94,6 +94,11 @@ import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
 import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
 import { buildTriangulo180 } from "@/components/lesson/anim/scenes/triangulo-180";
 import { buildPoligonoTriangulos } from "@/components/lesson/anim/scenes/poligono-triangulos";
+import { buildTrianguloAltura, buildTrianguloMediana, buildTriangulosClasificacion } from "@/components/lesson/anim/scenes/triangulos";
+import { buildCuadrilaterosFamilia, buildTrapecioTipos } from "@/components/lesson/anim/scenes/cuadrilateros";
+import { buildPoligonoApotema, buildPoligonoRegularCircunscrito } from "@/components/lesson/anim/scenes/poligono-regular";
+import { buildCircunferenciaElementos, buildCircunferenciaRecta, buildCircunferenciasPosiciones } from "@/components/lesson/anim/scenes/circunferencia";
+import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -189,6 +194,17 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "angulos-columna": (p) => buildAngulosColumna(p),
   "triangulo-180": () => buildTriangulo180(),
   "poligono-triangulos": () => buildPoligonoTriangulos(),
+  "triangulos-clasificacion": () => buildTriangulosClasificacion(),
+  "triangulo-mediana": () => buildTrianguloMediana(),
+  "triangulo-altura": () => buildTrianguloAltura(),
+  "cuadrilateros-familia": () => buildCuadrilaterosFamilia(),
+  "trapecio-tipos": () => buildTrapecioTipos(),
+  "poligono-regular-circunscrito": () => buildPoligonoRegularCircunscrito(),
+  "poligono-apotema": () => buildPoligonoApotema(),
+  "circunferencia-elementos": () => buildCircunferenciaElementos(),
+  "circunferencia-recta": () => buildCircunferenciaRecta(),
+  "circunferencias-posiciones": () => buildCircunferenciasPosiciones(),
+  "revolucion-giro": () => buildRevolucionGiro(),
 };
 
 export function buildSlideAnim(

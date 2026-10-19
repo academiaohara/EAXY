@@ -22,6 +22,7 @@ export function Slider({
   unit = "",
   step = 1,
   disabled = false,
+  format,
 }: {
   label: string;
   value: number;
@@ -33,13 +34,15 @@ export function Slider({
   unit?: string;
   step?: number;
   disabled?: boolean;
+  /** Cómo se escribe el valor (coma decimal, por ejemplo). */
+  format?: (v: number) => string;
 }) {
   return (
     <label className="flex flex-col gap-1.5 text-sm text-[color:var(--stage-muted,#b8c2d0)]">
       <span className="flex items-baseline justify-between">
         <span>{label}</span>
         <span className="text-xl font-bold tabular-nums" style={{ color }}>
-          {value}
+          {format ? format(value) : value}
           {unit}
         </span>
       </span>

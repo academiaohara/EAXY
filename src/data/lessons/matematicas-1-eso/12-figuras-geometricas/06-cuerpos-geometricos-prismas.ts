@@ -3,7 +3,7 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-prismas",
-  title: "2. Prismas",
+  title: "6. Prismas",
   subtitle: TEMA_1ESO_12_SUBTITLE,
   steps: [
     {
