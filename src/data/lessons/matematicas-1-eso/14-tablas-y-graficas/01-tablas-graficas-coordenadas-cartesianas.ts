@@ -5,10 +5,11 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
   slug: "tablas-graficas-coordenadas-cartesianas",
   title: "1. Coordenadas cartesianas",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "intro-descartes",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Piensa en un tablero",
@@ -20,15 +21,24 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
         },
       ],
       title: "Descartes y el plano",
-      content: [
-        "Como en el ajedrez o en un tablero de barquitos, cada posición se puede designar con **fila y columna**.",
-        "En el siglo XVII, **Descartes** (Cartesius en latín) propuso describir cada punto del plano con **dos números**: las **coordenadas cartesianas**.",
-        "Eso permitió tratar la geometría con herramientas del álgebra y la aritmética.",
+      blocks: [
+        {
+          kind: "text",
+          text: "Como en el ajedrez o en un tablero de barquitos, cada posición se puede designar con **fila y columna**.",
+        },
+        {
+          kind: "definition",
+          text: "En el siglo XVII, **Descartes** propuso describir cada punto del plano con **dos números**: sus **coordenadas cartesianas**.",
+        },
+        {
+          kind: "text",
+          text: "Así la geometría se pudo tratar con las herramientas del álgebra y la aritmética.",
+        },
       ],
     },
     {
       id: "ejes",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Un truco para el orden",
@@ -38,35 +48,29 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
           label: "El origen",
           message: "Es el punto de partida: ni a la derecha ni arriba, $(0, 0)$.",
         },
-        {
-          label: "Cómo se lee un punto",
-          message: "$P(3, 5)$: tres a la derecha del origen y cinco hacia arriba.",
-        },
       ],
       title: "Ejes y origen",
-      content: [
-        "En un sistema de ejes cartesianos:",
-        "• El eje horizontal es el eje **X** (eje de **abscisas**).",
-        "• El eje vertical es el eje **Y** (eje de **ordenadas**).",
-        "• El punto **O**, donde se cortan, es el **origen** de coordenadas $(0, 0)$.",
-        "Cada punto $P$ se escribe **$P(x, y)$**: la primera coordenada es la **abscisa** ($x$); la segunda, la **ordenada** ($y$).",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Cuadrantes del plano",
+          kind: "facts",
           items: [
-            { title: "I", caption: "$x > 0$, $y > 0$", tone: "cobalt" },
-            { title: "II", caption: "$x < 0$, $y > 0$", tone: "emerald" },
-            { title: "III", caption: "$x < 0$, $y < 0$", tone: "amber" },
-            { title: "IV", caption: "$x > 0$, $y < 0$", tone: "violet" },
+            { tex: "X", label: "eje horizontal: abscisas" },
+            { tex: "Y", label: "eje vertical: ordenadas" },
+            { tex: "O(0, 0)", label: "origen de coordenadas" },
           ],
         },
+        {
+          kind: "rule",
+          title: "Un punto se escribe con dos coordenadas",
+          formula: "P(x,\\, y)",
+          text: "La primera es la abscisa o «x del punto»; la segunda, la ordenada o «y del punto».",
+        },
       ],
+      visual: { kind: "anim", scene: "plano-cartesiano", beatMs: 3200 },
     },
     {
       id: "signos",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Los cuatro cuadrantes",
@@ -77,45 +81,19 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
           message: "En el eje $Y$ la abscisa es $0$. En el eje $X$ la ordenada es $0$.",
         },
       ],
-      title: "Signos de las coordenadas",
-      content: [
-        "En el eje **Y**, la abscisa es $0$: por ejemplo $A(0, 3)$.",
-        "A la **derecha** del eje Y la abscisa es **positiva** ($B(3, 2)$); a la **izquierda**, **negativa** ($C(-3, 2)$).",
-        "En el eje **X**, la ordenada es $0$: $D(-2, 0)$, $E(3, 0)$.",
-        "Por **encima** del eje X la ordenada es positiva; **debajo**, negativa: $F(-2, -4)$, $G(4, -2)$.",
-      ],
-    },
-    {
-      id: "plano-ejemplo",
-      type: "interactive_tool",
-      help: [
+      title: "Cuadrantes y signos",
+      blocks: [
         {
-          label: "¿Por qué son puntos distintos?",
-          message: "$P(3, 5)$ y $Q(5, 3)$ están en sitios diferentes: el orden de las coordenadas importa.",
+          kind: "text",
+          text: "Los ejes dividen el plano en **cuatro cuadrantes**. El signo de las coordenadas indica en cuál está el punto.",
         },
         {
-          label: "Cómo localizarlos",
-          message: "Empieza siempre en el origen. Muévete en horizontal según la abscisa y luego en vertical según la ordenada.",
+          kind: "warning",
+          title: "Sobre los ejes",
+          text: "Los puntos del eje $Y$ tienen $x = 0$ y los del eje $X$ tienen $y = 0$. No pertenecen a ningún cuadrante.",
         },
       ],
-      title: "Representar puntos",
-      tool: "system-graph",
-      content: [
-        "Observa el punto **$P(3, 5)$**: tres unidades a la derecha del origen y cinco hacia arriba.",
-        "Si **intercambias** abscisa y ordenada obtienes **$Q(5, 3)$** — otro punto distinto.",
-      ],
-      graph: {
-        lines: [],
-        highlightPoints: [
-          { x: 3, y: 5, label: "P(3, 5)" },
-          { x: 5, y: 3, label: "Q(5, 3)" },
-          { x: 0, y: 0, label: "O" },
-        ],
-        xMin: -1,
-        xMax: 7,
-        yMin: -1,
-        yMax: 7,
-      },
+      visual: { kind: "anim", scene: "cuadrantes-signos", beatMs: 3500 },
     },
     {
       id: "check-q",
@@ -138,6 +116,24 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
       explanation: "Se intercambian $x$ e $y$: de $(3, 5)$ pasamos a $(5, 3)$.",
     },
     {
+      id: "explora-plano",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué debo observar?",
+          message: "Cuando $x$ e $y$ son distintos, $(x, y)$ e $(y, x)$ son puntos distintos. Solo coinciden cuando $x = y$.",
+        },
+      ],
+      title: "Explora: coloca un punto",
+      blocks: [
+        {
+          kind: "text",
+          text: "Mueve la abscisa y la ordenada, y pulsa **Intercambiar**. ¿Para qué puntos no cambia nada al intercambiar?",
+        },
+      ],
+      visual: { kind: "tool", tool: "plano-explorador", params: { a: 3, b: 5 } },
+    },
+    {
       id: "check-eje-y",
       type: "fill_in_blank",
       help: [
@@ -154,6 +150,45 @@ export const tablasGraficasCoordenadasCartesianasLesson: InteractiveLesson = {
       question: "¿Qué valor tiene la **abscisa** de cualquier punto del eje Y? (solo el número)",
       correctAnswers: ["0"],
       explanation: "En el eje Y, $x = 0$: por ejemplo $(0, 3)$.",
+    },
+    {
+      id: "cuadrante-dron",
+      type: "predict",
+      help: [
+        {
+          label: "Mira los signos",
+          message: "Una abscisa negativa está a la izquierda del eje Y; una ordenada positiva, por encima del eje X.",
+        },
+        {
+          label: "Los cuadrantes",
+          message: "Izquierda y arriba es el cuadrante II; izquierda y abajo, el III.",
+        },
+      ],
+      title: "Un dron en el mapa",
+      question:
+        "En el mapa de un parque, el origen es la entrada. Un dron está en el punto (−4, 2), con las unidades en cientos de metros. ¿Dónde está respecto de la entrada?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "A la izquierda y al norte: cuadrante II" },
+        {
+          id: "b",
+          label: "A la derecha y al norte: cuadrante I",
+          incorrectFeedback: "Una abscisa negativa ($-4$) significa a la **izquierda** del eje Y, no a la derecha.",
+        },
+        {
+          id: "c",
+          label: "A la izquierda y al sur: cuadrante III",
+          incorrectFeedback: "La ordenada es $2$, positiva: está **por encima** del eje X (al norte), no por debajo.",
+        },
+        {
+          id: "d",
+          label: "A $2$ unidades a la izquierda y $4$ al norte",
+          incorrectFeedback: "Has invertido el orden: la primera coordenada ($-4$) es la abscisa, el desplazamiento horizontal.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x = -4$ (a la izquierda) e $y = 2$ (arriba): está en el cuadrante II, a $400$ m al oeste y $200$ m al norte de la entrada.",
     },
   ],
 };

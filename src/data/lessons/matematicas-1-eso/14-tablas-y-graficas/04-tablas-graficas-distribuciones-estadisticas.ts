@@ -5,10 +5,11 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
   slug: "tablas-graficas-distribuciones-estadisticas",
   title: "4. Distribuciones estadísticas",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "proceso-estadistico",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Tres pasos",
@@ -20,15 +21,21 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
         },
       ],
       title: "Del dato a la tabla",
-      content: [
-        "El **proceso estadístico** recoge datos (encuesta, medición…) y los organiza para sacar conclusiones.",
-        "Las respuestas a una pregunta forman una **distribución estadística**: lista de valores observados.",
-        "Luego puedes resumirlos en **tablas de frecuencias** y **gráficos**.",
+      blocks: [
+        {
+          kind: "steps",
+          title: "El proceso estadístico",
+          items: ["**Recoger** datos (encuesta, medición…).", "**Organizarlos** en una tabla de frecuencias.", "**Resumirlos** con gráficos y parámetros para sacar conclusiones."],
+        },
+        {
+          kind: "text",
+          text: "Las respuestas a una pregunta forman una **distribución estadística**: la lista de valores observados.",
+        },
       ],
     },
     {
       id: "tipos-variable",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Un test rápido",
@@ -40,77 +47,15 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
         },
       ],
       title: "Cualitativa y cuantitativa",
-      content: [
-        "Variable **cuantitativa**: toma **valores numéricos** (número de hermanos: 0, 1, 2…).",
-        "Variable **cualitativa**: toma **valores no numéricos** (estación del cumpleaños: primavera, verano…).",
-        "Ejemplos cuantitativos: estatura, nota de un examen, número de calzado.",
-        "Ejemplos cualitativos: deporte preferido, color favorito, tipo de carrera.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Clasifica",
-          items: [
-            { title: "Deporte preferido", caption: "Cualitativa", tone: "violet" },
-            { title: "N.º de hermanos", caption: "Cuantitativa", tone: "cobalt" },
-            { title: "Estatura (cm)", caption: "Cuantitativa", tone: "emerald" },
-            { title: "Estación cumpleaños", caption: "Cualitativa", tone: "amber" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "tabla-frecuencias",
-      type: "concept",
-      help: [
-        {
-          label: "Cómo se lee una tabla",
-          message: "Cada fila es un valor con cuántas veces apareció. Es contar y apuntar.",
+          kind: "compare",
+          left: { title: "Cuantitativa", text: "Valores numéricos: número de hermanos, estatura, nota de un examen.", tone: "info" },
+          right: { title: "Cualitativa", text: "Valores no numéricos: estación del cumpleaños, deporte favorito, color.", tone: "ok" },
         },
         {
-          label: "Absoluta frente a relativa",
-          message: "$f(3) = 6$ dice «seis veces». $fr(3) = \\frac{6}{N}$ dice «qué proporción del total».",
-        },
-        {
-          label: "Una comprobación",
-          message: "Todas las absolutas deben sumar $N$ y todas las relativas, $1$.",
-        },
-      ],
-      title: "Tablas de frecuencias",
-      content: [
-        "En una tabla de frecuencias cada **valor** (o modalidad) va con su **frecuencia absoluta**: cuántas veces aparece.",
-        "Notación: **$f(3) = 6$** se lee «la frecuencia del 3 es 6».",
-        "**Frecuencia relativa** $fr(x)$: cociente $\\dfrac{f(x)}{N}$, donde $N$ es el total de datos (proporción entre 0 y 1).",
-        "Ejemplo: si $f(0) = 4$ en una clase de $36$ alumnos, $fr(0) = \\dfrac{4}{36}$.",
-      ],
-      math: ["fr(x) = \\dfrac{f(x)}{N}"],
-    },
-    {
-      id: "ejemplo-hermanos",
-      type: "animated_solution",
-      help: [
-        {
-          label: "Qué muestra la tabla",
-          message: "Cuántos alumnos tienen $0$, $1$, $2$… hermanos.",
-        },
-        {
-          label: "Comprobación",
-          message: "La suma de las frecuencias absolutas debe dar los $36$ alumnos.",
-        },
-      ],
-      title: "Ejemplo: hermanos en una clase",
-      frames: [
-        {
-          math: "f(0)=4,\\ f(1)=16,\\ f(2)=9,\\ f(3)=6,\\ f(4)=1,\\ f(5)=0",
-          caption: "Frecuencias absolutas (36 alumnos en total).",
-        },
-        {
-          math: "fr(0) = \\dfrac{4}{36},\\quad fr(1) = \\dfrac{16}{36}",
-          caption: "4 hijos únicos; 16 con un solo hermano o hermana.",
-        },
-        {
-          math: "4 + 16 + 9 + 6 + 1 + 0 = 36 = N",
-          caption: "La suma de frecuencias absolutas es el número de individuos.",
+          kind: "warning",
+          text: "Una variable cualitativa no tiene media ni mediana: no se puede sumar «primavera» y «verano».",
         },
       ],
     },
@@ -148,6 +93,38 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
         "Deportes, colores, meses y medios de transporte son categorías, no números: cualitativas. Calzado, nota, peso y mascotas toman valores numéricos: cuantitativas.",
     },
     {
+      id: "tabla-frecuencias",
+      type: "slide",
+      help: [
+        {
+          label: "Cómo se lee una tabla",
+          message: "Cada columna es un valor con cuántas veces apareció. Es contar y apuntar.",
+        },
+        {
+          label: "Absoluta frente a relativa",
+          message: "$f(3) = 6$ dice «seis veces». $fr(3) = \\frac{6}{N}$ dice «qué proporción del total».",
+        },
+        {
+          label: "Una comprobación",
+          message: "Todas las absolutas deben sumar $N$ y todas las relativas, $1$.",
+        },
+      ],
+      title: "Tablas de frecuencias",
+      blocks: [
+        {
+          kind: "definition",
+          text: "La **frecuencia absoluta** de un valor es cuántas veces aparece. Se escribe $f(3) = 6$: «el $3$ aparece $6$ veces».",
+        },
+        {
+          kind: "rule",
+          title: "Frecuencia relativa",
+          formula: "fr(x) = \\dfrac{f(x)}{N}",
+          text: "$N$ es el total de datos. Las frecuencias relativas suman $1$.",
+        },
+      ],
+      visual: { kind: "anim", scene: "tabla-frecuencias", beatMs: 3500 },
+    },
+    {
       id: "check-fr",
       type: "fill_in_blank",
       help: [
@@ -162,11 +139,49 @@ export const tablasGraficasDistribucionesEstadisticasLesson: InteractiveLesson =
         },
       ],
       title: "Frecuencia relativa",
-      question:
-        "Si $f(2) = 9$ y hay $N = 36$ datos, ¿cuánto vale $fr(2)$ como fracción?",
+      question: "Si $f(2) = 9$ y hay $N = 36$ datos, ¿cuánto vale $fr(2)$ como fracción?",
       answerFormat: "fraction",
       correctAnswers: ["9/36", "1/4"],
       explanation: "$fr(2) = \\dfrac{9}{36} = \\dfrac{1}{4}$.",
+    },
+    {
+      id: "encuesta-mascotas",
+      type: "predict",
+      help: [
+        {
+          label: "Qué suman las relativas",
+          message: "Todas las frecuencias relativas de una distribución suman $1$, porque entre todas reparten el total.",
+        },
+        {
+          label: "Falta una",
+          message: "Suma las que te dan y resta el resultado a $1$.",
+        },
+      ],
+      title: "Mascotas en casa",
+      question:
+        "En una encuesta sobre cuántas mascotas tiene cada alumno, las frecuencias relativas de $0$, $1$ y $2$ mascotas son $0{,}40$, $0{,}35$ y $0{,}20$. Nadie tiene más de $3$. ¿Qué frecuencia relativa tiene el valor $3$?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$0{,}05$" },
+        {
+          id: "b",
+          label: "$0{,}95$",
+          incorrectFeedback: "$0{,}95$ es lo que suman las otras tres. Para que el total sea $1$ falta lo que queda: $1 - 0{,}95$.",
+        },
+        {
+          id: "c",
+          label: "$0{,}50$",
+          incorrectFeedback: "Con $0{,}50$ el total sería $1{,}45$, y las frecuencias relativas siempre suman exactamente $1$.",
+        },
+        {
+          id: "d",
+          label: "$5$",
+          incorrectFeedback: "Una frecuencia relativa nunca pasa de $1$. Ese $5$ parece la cifra de $0{,}05$ sin la coma.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$0{,}40 + 0{,}35 + 0{,}20 = 0{,}95$ y $1 - 0{,}95 = 0{,}05$.",
     },
   ],
 };

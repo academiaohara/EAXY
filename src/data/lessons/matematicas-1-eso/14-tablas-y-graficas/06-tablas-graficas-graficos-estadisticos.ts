@@ -5,131 +5,38 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
   slug: "tablas-graficas-graficos-estadisticos",
   title: "6. Gráficos estadísticos",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "por-que-graficos",
-      type: "concept",
+      id: "barras-histograma",
+      type: "slide",
       help: [
         {
           label: "Antes de concluir",
           message: "Lee títulos y ejes. Un gráfico puede engañar si no sabes qué mide cada eje.",
         },
         {
-          label: "¿Cómo elijo?",
-          message: "Según el tipo de variable y cuántos valores hay: pocos, barras; muchos agrupados en intervalos, histograma; reparto de un total, sectores.",
-        },
-      ],
-      title: "Tablas y gráficos",
-      content: [
-        "Las **tablas** y **gráficos** son formas muy eficaces de comunicar datos: «entran por los ojos».",
-        "Elige el gráfico según el **tipo de variable** y cuántos **valores distintos** hay.",
-        "Siempre mira con atención **títulos y ejes** antes de sacar conclusiones.",
-      ],
-    },
-    {
-      id: "barras",
-      type: "concept",
-      help: [
-        {
-          label: "Barras finas y separadas",
-          message: "Cada barra es un valor o categoría; hay huecos entre ellas.",
+          label: "Barras pegadas",
+          message: "No hay huecos porque los intervalos son continuos: $155$–$160$, $160$–$165$…",
         },
         {
           label: "¿Qué indica la altura?",
           message: "La frecuencia: cuántas veces ocurre cada valor.",
         },
       ],
-      title: "Diagrama de barras",
-      content: [
-        "Formado por **barras finas** (una por valor o categoría).",
-        "Sirve para variables **cualitativas** o cuantitativas con **pocos** valores (número de hermanos, marcas de coches…).",
-        "La **altura** de cada barra es proporcional a la **frecuencia absoluta**.",
-      ],
-    },
-    {
-      id: "histograma",
-      type: "concept",
-      help: [
+      title: "Diagrama de barras e histograma",
+      blocks: [
         {
-          label: "Barras pegadas",
-          message: "No hay huecos porque los intervalos son continuos: $155$–$160$, $160$–$165$…",
+          kind: "compare",
+          left: { title: "Diagrama de barras", text: "Barras finas y separadas. Variables cualitativas o con pocos valores.", tone: "info" },
+          right: { title: "Histograma", text: "Rectángulos pegados. Muchos valores numéricos agrupados en intervalos.", tone: "ok" },
         },
         {
-          label: "¿Cuándo sirve?",
-          message: "Cuando hay muchos valores numéricos que conviene agrupar en intervalos.",
+          kind: "text",
+          text: "En ambos, la altura es proporcional a la **frecuencia**. Uniendo los puntos medios del histograma se obtiene el **polígono de frecuencias**.",
         },
       ],
-      title: "Histograma",
-      content: [
-        "Rectángulos **anchos adosados** (sin huecos entre clases).",
-        "Para variables **cuantitativas** con **muchos** valores o **intervalos** (estaturas 155–160 cm, 160–165 cm…).",
-        "El **área** de cada barra es proporcional a la frecuencia (todos los alumnos entre 155 y 160 cm, por ejemplo).",
-      ],
-    },
-    {
-      id: "poligono-sectores",
-      type: "concept",
-      help: [
-        {
-          label: "Polígono de frecuencias",
-          message: "Une los puntos medios de las barras del histograma: muestra la forma de la distribución.",
-        },
-        {
-          label: "Diagrama de sectores",
-          message: "Cada valor ocupa un trozo del círculo, proporcional a su frecuencia.",
-        },
-        {
-          label: "¿Para qué sirve?",
-          message: "Para ver qué parte del total es cada valor.",
-        },
-      ],
-      title: "Polígono y diagrama de sectores",
-      content: [
-        "**Polígono de frecuencias**: une los extremos superiores de barras o los **puntos medios** de clases de un histograma. Solo para variables cuantitativas.",
-        "**Diagrama de sectores** (circular): cada sector es un valor; el **ángulo** es proporcional a la frecuencia ($360°$ repartidos según $N$).",
-        "Los sectores ayudan a ver **evolución** o comparar partes de un todo (notas por evaluación, deportes preferidos…).",
-      ],
-      visuals: [
-        {
-          kind: "cards",
-          title: "Resumen rápido",
-          items: [
-            { title: "Barras", caption: "Pocos valores / cualitativas", tone: "cobalt" },
-            { title: "Histograma", caption: "Intervalos, muchos datos", tone: "emerald" },
-            { title: "Sectores", caption: "Partes de un total (360°)", tone: "violet" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "sectores-ejemplo",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué $9°$ por persona?",
-          message: "El círculo tiene $360°$ y hay $40$ personas: $360 : 40 = 9$.",
-        },
-        {
-          label: "Del ángulo a la frecuencia",
-          message: "Si un sector mide $180°$, son $180 : 9 = 20$ personas.",
-        },
-        {
-          label: "Comprobación",
-          message: "Todos los ángulos juntos deben sumar $360°$.",
-        },
-      ],
-      title: "Ángulos en un diagrama de sectores",
-      content: ["Con 40 entrevistados repartimos $360°$ entre 40: a cada uno le corresponden $9°$."],
-      frames: [
-        {
-          math: "360° : 40 = 9°\\ \\text{por persona}",
-          caption: "Fútbol: 20 → $20 \\cdot 9° = 180°$.",
-        },
-        {
-          math: "10 \\cdot 9° = 90°\\ \\text{(baloncesto)}",
-          caption: "Cada frecuencia × 9° da el ángulo del sector.",
-        },
-      ],
+      visual: { kind: "anim", scene: "grafico-barras-histograma", beatMs: 3500 },
     },
     {
       id: "check-histograma",
@@ -164,6 +71,52 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
         "Muchos valores numéricos en clases → histograma (rectángulos adosados). Pocos valores o categorías → barras. Para comparar partes de un total ($360°$) → sectores.",
     },
     {
+      id: "sectores",
+      type: "slide",
+      help: [
+        {
+          label: "¿Por qué $9°$ por persona?",
+          message: "El círculo tiene $360°$ y hay $40$ personas: $360 : 40 = 9$.",
+        },
+        {
+          label: "Del ángulo a la frecuencia",
+          message: "Si un sector mide $180°$, son $180 : 9 = 20$ personas.",
+        },
+      ],
+      title: "Diagrama de sectores",
+      blocks: [
+        {
+          kind: "definition",
+          text: "En un **diagrama de sectores** cada valor ocupa un trozo del círculo, con un **ángulo proporcional a su frecuencia**.",
+        },
+        {
+          kind: "rule",
+          title: "Ángulo de un sector",
+          formula: "\\text{ángulo} = f \\cdot \\dfrac{360^\\circ}{N}",
+          text: "Los ángulos de todos los sectores suman $360^\\circ$.",
+        },
+      ],
+      visual: { kind: "anim", scene: "diagrama-sectores", beatMs: 3500 },
+    },
+    {
+      id: "explora-sectores",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué debo observar?",
+          message: "Al aumentar el total, cada persona «vale» menos grados. Lo que importa es la proporción de cada categoría.",
+        },
+      ],
+      title: "Explora: ángulos de un diagrama",
+      blocks: [
+        {
+          kind: "text",
+          text: "Cambia las frecuencias. ¿Qué ocurre con los grados por persona cuando aumenta el total? ¿Y con la suma de los ángulos?",
+        },
+      ],
+      visual: { kind: "tool", tool: "sectores-explorador" },
+    },
+    {
       id: "check-sectores",
       type: "fill_in_blank",
       help: [
@@ -180,6 +133,26 @@ export const tablasGraficasGraficosEstadisticosLesson: InteractiveLesson = {
       question: "En un diagrama de sectores, ¿cuántos grados suman todos los sectores? (solo el número)",
       correctAnswers: ["360"],
       explanation: "Un círculo completo son $360°$.",
+    },
+    {
+      id: "angulo-tenis",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "Grados por persona",
+          message: "Con $40$ personas, cada una ocupa $360 : 40 = 9$ grados.",
+        },
+        {
+          label: "Del ángulo a las personas",
+          message: "Divide el ángulo del sector entre los grados que corresponden a cada persona.",
+        },
+      ],
+      title: "Del sector a las personas",
+      question:
+        "En un diagrama de sectores de 40 personas, el sector de tenis mide 54°. ¿Cuántas personas prefieren el tenis? (solo el número)",
+      correctAnswers: ["6"],
+      hint: "Cada persona son $9^\\circ$.",
+      explanation: "$54^\\circ : 9^\\circ = 6$ personas.",
     },
   ],
 };

@@ -168,6 +168,23 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `longitud-pi` | Circunferencia desenrollada: tres diámetros y 0,14 más; `l = πd = 2πr` | — |
 | `area-circulo` | Círculo en triángulos finos de altura `r` y bases `2πr`: `A = πr²` | — |
 | `corona-circular` | Corona circular: `πR² − πr²` y perímetro de las dos circunferencias | — |
+| `plano-cartesiano` | Ejes, origen, abscisa y ordenada: `P(3, 5)` frente a `Q(5, 3)` | — |
+| `cuadrantes-signos` | Los cuatro cuadrantes, signos de las coordenadas y puntos sobre los ejes | — |
+| `diagrama-puntos` | Edad y estatura de cuatro hermanos: leer ordenadas y abscisas | — |
+| `grafica-tramos` | Distancia–tiempo por tramos: sube, horizontal (parado), más inclinada y baja | — |
+| `grafica-llamadas` | Coste de una llamada: cuota fija de 0,40 € y 0,20 € por minuto | — |
+| `tabla-frecuencias` | Frecuencias absolutas y relativas del número de hermanos de 36 alumnos | — |
+| `media-mediana-moda` | Media, mediana y moda de 1, 3, 2, 0, 1, 3, 4, 2, 2 | — |
+| `mediana-par` | Media, mediana (dos centrales) y moda de ocho datos | — |
+| `grafico-barras-histograma` | Barras separadas frente a histograma de intervalos y polígono de frecuencias | — |
+| `diagrama-sectores` | 40 personas: 9° por persona y ángulos que suman 360° | — |
+| `exp-determinista-aleatorio` | Agua a 100 °C (siempre hierve) frente a lanzar un dado (cambia) | — |
+| `espacio-muestral` | Espacio muestral de moneda, dado, dado de ocho caras y suma de dos dados | — |
+| `sucesos-conjuntos` | Sucesos de un dado: par, un 5, suceso seguro e imposible | — |
+| `frecuencias-dado` | 50 lanzamientos: frecuencias absolutas y relativas, suma 1 | — |
+| `grandes-numeros` | La frecuencia relativa de cara se estabiliza cerca de 0,5 | — |
+| `laplace-dado` | Regla de Laplace con un dado: par, un 2 y mayor que 4 | — |
+| `suceso-union-interseccion` | «Par o múltiplo de 3» (unión) y «par y múltiplo de 3» (intersección) | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -223,6 +240,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `triangulo-area` | Base, altura y posición del vértice: el área solo depende de base y altura | `a`, `b`, `c` |
 | `poligono-regular-area` | Lados (3–12) y lado: apotema, perímetro y área con `n` triángulos | `n`, `a` (lado) |
 | `circulo-explorador` | Radio: longitud, área y 3,14 cuadrados de lado `r` | `a` (radio) |
+| `plano-explorador` | Abscisa y ordenada (−6 a 6): cuadrante o eje, e intercambio de coordenadas | `a` (x), `b` (y) |
+| `datos-explorador` | Datos editables con + y −: media, mediana y moda al instante | — |
+| `sectores-explorador` | Frecuencias de cuatro categorías: grados por persona y ángulo de cada sector | — |
+| `dado-simulador` | Lanza un dado o una moneda ×1, ×10, ×100, ×1000: frecuencias absolutas y relativas | `a` (`2` = moneda) |
+| `laplace-explorador` | Marca caras de un dado o cambia bolas rojas y verdes: casos favorables, posibles y P | `a` (`1` = bolsa), `b`, `c` (bolas) |
 
 ## Respuesta como fracción
 

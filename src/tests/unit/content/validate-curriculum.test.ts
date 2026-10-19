@@ -29,11 +29,11 @@ describe("validateCurriculum", () => {
     ]);
   });
 
-  it("expone los temas 1 a 13 en 1.º ESO", () => {
+  it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
     );
-    expect(firstYear?.modules).toHaveLength(13);
+    expect(firstYear?.modules).toHaveLength(15);
     expect(firstYear?.modules.map((m) => m.slug)).toEqual([
       "numeros-naturales",
       "potencias-y-raices",
@@ -48,6 +48,8 @@ describe("validateCurriculum", () => {
       "rectas-y-angulos",
       "figuras-geometricas",
       "areas-y-perimetros",
+      "tablas-y-graficas",
+      "probabilidad",
     ]);
   });
 
