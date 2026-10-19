@@ -5,10 +5,11 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
   slug: "probabilidad-espacio-muestral",
   title: "2. Espacio muestral y sucesos elementales",
   subtitle: TEMA_15_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "definicion",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Una lista de todo lo que puede pasar",
@@ -18,115 +19,22 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
           label: "Resultado frente a suceso",
           message: "Un suceso elemental es un solo resultado. Un suceso puede agrupar varios, como «par» en un dado.",
         },
-        {
-          label: "Dos ejemplos",
-          message: "Moneda: dos resultados, cara y cruz. Dado: seis resultados, del $1$ al $6$.",
-        },
       ],
       title: "Espacio muestral",
-      content: [
-        "El **espacio muestral** $E$ es el conjunto de **todos los resultados posibles** de un experimento aleatorio.",
-        "Cada resultado individual se llama **suceso elemental**.",
-        "Ejemplos clásicos del temario:",
-        "— Moneda: $E = \\{\\text{cara},\\ \\text{cruz}\\}$; sucesos elementales: cara ($c$) y cruz ($x$).",
-        "— Dado de seis caras: $E = \\{1, 2, 3, 4, 5, 6\\}$; cada número es un suceso elemental.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "stack",
-          title: "Moneda",
-          rows: ["E = \\{\\text{cara},\\ \\text{cruz}\\}"],
-          operator: "\\Rightarrow",
-          result: "2\\ \\text{sucesos elementales}",
-          caption: "Todos los resultados posibles del experimento.",
+          kind: "definition",
+          text: "El **espacio muestral** $E$ es el conjunto de **todos los resultados posibles** de un experimento aleatorio. Cada resultado es un **suceso elemental**.",
+        },
+        {
+          kind: "facts",
+          items: [
+            { tex: "E = \\{c, x\\}", label: "moneda: 2 elementales" },
+            { tex: "E = \\{1, \\ldots, 6\\}", label: "dado: 6 elementales" },
+          ],
         },
       ],
-    },
-    {
-      id: "tetraedro",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué $8$ resultados?",
-          message: "Porque el dado tiene $8$ caras y cada una puede quedar arriba.",
-        },
-        {
-          label: "Equiprobables",
-          message: "Si el dado está equilibrado, todas las caras tienen la misma posibilidad de salir.",
-        },
-      ],
-      title: "Dado de ocho caras",
-      content: [
-        "Tenemos un dado en forma de octaedro con caras numeradas del $1$ al $8$. Lo lanzamos una vez.",
-      ],
-      frames: [
-        {
-          caption: "a) Espacio muestral:",
-          math: "E = \\{1, 2, 3, 4, 5, 6, 7, 8\\}",
-        },
-        {
-          caption: "b) Sucesos elementales:",
-          math: "1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6,\\ 7\\ \\text{y}\\ 8",
-        },
-        {
-          caption: "Hay $8$ resultados equiprobables (una cara por resultado).",
-          math: "|E| = 8",
-        },
-      ],
-    },
-    {
-      id: "urna-tres",
-      type: "concept",
-      help: [
-        {
-          label: "¿Por qué importa el orden?",
-          message: "Porque $(1,2,3)$ y $(3,2,1)$ son resultados distintos si distinguimos las extracciones.",
-        },
-        {
-          label: "¿Por qué crece tan rápido?",
-          message: "Cada bola extra multiplica las posibilidades: por eso el espacio muestral se hace enorme enseguida.",
-        },
-      ],
-      title: "Sacar bolas de una urna",
-      content: [
-        "Sacamos **tres bolas**, sin volver a meter la bola extraída, de una urna con bolas $1$, $2$ y $3$.",
-        "El orden importa si distinguimos extracciones: por ejemplo $(1,2,3)$ es distinto de $(3,2,1)$.",
-        "En el temario se listan todas las ternas posibles sin repetición; el número de resultados crece rápido cuando aumentan las bolas o extracciones.",
-      ],
-    },
-    {
-      id: "suma-dados",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Por qué empieza en $2$?",
-          message: "Porque cada dado da al menos $1$, así que la suma mínima es $1 + 1$.",
-        },
-        {
-          label: "¿Cuántos valores?",
-          message: "Desde el menor hasta el mayor, de uno en uno: $11$ sumas posibles.",
-        },
-        {
-          label: "Ojo",
-          message: "Hay $11$ **sumas** distintas, pero no son igual de probables: unas se consiguen de más formas que otras.",
-        },
-      ],
-      title: "Sumar dos dados",
-      content: ["Lanzamos dos dados y **sumamos** los puntos. ¿Cuántos resultados distintos hay?"],
-      frames: [
-        {
-          caption: "La suma mínima es $1+1=2$ y la máxima $6+6=12$.",
-          math: "2 \\leq \\text{suma} \\leq 12",
-        },
-        {
-          caption: "Valores posibles de la suma:",
-          math: "E = \\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\\}",
-        },
-        {
-          caption: "Número de resultados distintos:",
-          math: "|E| = 11",
-        },
-      ],
+      visual: { kind: "anim", scene: "espacio-muestral", beatMs: 3200 },
     },
     {
       id: "check",
@@ -139,10 +47,6 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
         {
           label: "Resultado frente a suceso",
           message: "Un resultado es una sola cara. Un suceso puede agrupar varias («par»). Solo los resultados individuales forman el espacio muestral.",
-        },
-        {
-          label: "¿Qué hay en un dado?",
-          message: "Las caras llevan números del $1$ al $6$. Si una tarjeta no puede salir en una tirada, queda fuera.",
         },
       ],
       title: "Comprueba lo aprendido",
@@ -163,6 +67,79 @@ export const probabilidadEspacioMuestralLesson: InteractiveLesson = {
       hint: "Los elementos de $E$ son los resultados que puedes ver en la cara superior del dado, uno a uno.",
       explanation:
         "$E = \\{1, 2, 3, 4, 5, 6\\}$: cada cara es un suceso elemental. No incluye el $0$ ni el $7$, y «par» agrupa varios resultados ($\\{2, 4, 6\\}$), así que es un suceso, no un elemento de $E$.",
+    },
+    {
+      id: "urna-tres",
+      type: "slide",
+      help: [
+        {
+          label: "¿Por qué importa el orden?",
+          message: "Porque $(1,2,3)$ y $(3,2,1)$ son resultados distintos si distinguimos las extracciones.",
+        },
+        {
+          label: "¿Por qué crece tan rápido?",
+          message: "Cada bola extra multiplica las posibilidades: por eso el espacio muestral se hace enorme enseguida.",
+        },
+      ],
+      title: "Sacar bolas de una urna",
+      blocks: [
+        {
+          kind: "text",
+          text: "Sacamos **tres bolas**, sin devolverlas, de una urna con las bolas $1$, $2$ y $3$. Si distinguimos el orden de extracción, $(1, 2, 3)$ y $(3, 2, 1)$ son resultados distintos.",
+        },
+        {
+          kind: "example",
+          title: "Espacio muestral",
+          lines: [
+            { math: "E = \\{(1,2,3),\\ (1,3,2),\\ (2,1,3),\\ (2,3,1),\\ (3,1,2),\\ (3,2,1)\\}" },
+            { math: "|E| = 3 \\cdot 2 \\cdot 1 = 6", note: "tres opciones para la primera, dos para la segunda y una para la tercera" },
+          ],
+        },
+        {
+          kind: "warning",
+          text: "El número de resultados crece muy rápido al añadir bolas o extracciones.",
+        },
+      ],
+    },
+    {
+      id: "check-octaedro",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "Una cara, un resultado",
+          message: "Cada cara que puede quedar arriba es un resultado distinto.",
+        },
+        {
+          label: "Cuenta las caras",
+          message: "Un octaedro tiene tantas caras como indica «octa».",
+        },
+      ],
+      title: "Un dado de ocho caras",
+      question:
+        "Lanzamos un dado en forma de octaedro, con las caras numeradas del 1 al 8. ¿Cuántos sucesos elementales tiene su espacio muestral? (solo el número)",
+      correctAnswers: ["8", "ocho"],
+      hint: "Cada cara es un suceso elemental.",
+      explanation: "$E = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$: hay $8$ sucesos elementales, equiprobables si el dado está equilibrado.",
+    },
+    {
+      id: "check-suma",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "¿Cuál es la suma menor?",
+          message: "Cada dado da al menos $1$, así que la suma mínima es $1 + 1$.",
+        },
+        {
+          label: "Desde el menor hasta el mayor",
+          message: "Las sumas posibles van de $2$ a $12$, de uno en uno. Cuéntalas.",
+        },
+      ],
+      title: "Sumar dos dados",
+      question:
+        "Lanzamos dos dados y sumamos los puntos. ¿Cuántos resultados distintos puede tener la suma? (solo el número)",
+      correctAnswers: ["11", "once"],
+      hint: "Las sumas van de $2$ a $12$.",
+      explanation: "$E = \\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\\}$: $11$ sumas posibles. Ojo: no todas son igual de probables.",
     },
   ],
 };

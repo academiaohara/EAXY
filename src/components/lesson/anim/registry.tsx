@@ -100,6 +100,8 @@ import { buildPoligonoApotema, buildPoligonoRegularCircunscrito } from "@/compon
 import { buildCircunferenciaElementos, buildCircunferenciaRecta, buildCircunferenciasPosiciones } from "@/components/lesson/anim/scenes/circunferencia";
 import { buildPiramideElementos, buildPoliedroElementos, buildPoliedrosRegulares, buildPrismaElementos } from "@/components/lesson/anim/scenes/solidos";
 import { buildAreaCirculo, buildAreaParalelogramo, buildAreaPerimetro, buildAreaPoligonoRegular, buildAreaPoligonoTriangulos, buildAreaRectangulo, buildAreaRombo, buildAreaTrapecio, buildAreaTriangulo, buildAreaTrianguloRectangulo, buildCoronaCircular, buildLongitudPi } from "@/components/lesson/anim/scenes/areas";
+import { buildCuadrantesSignos, buildDiagramaPuntos, buildDiagramaSectores, buildGraficaLlamadas, buildGraficaTramos, buildGraficoBarrasHistograma, buildMediaMedianaModa, buildMedianaPar, buildPlanoCartesiano, buildTablaFrecuencias } from "@/components/lesson/anim/scenes/estadistica";
+import { buildEspacioMuestral, buildExpDeterministaAleatorio, buildFrecuenciasDado, buildGrandesNumeros, buildLaplaceDado, buildSucesoUnionInterseccion, buildSucesosConjuntos } from "@/components/lesson/anim/scenes/probabilidad";
 import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
@@ -223,6 +225,23 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "longitud-pi": () => buildLongitudPi(),
   "area-circulo": () => buildAreaCirculo(),
   "corona-circular": () => buildCoronaCircular(),
+  "plano-cartesiano": () => buildPlanoCartesiano(),
+  "cuadrantes-signos": () => buildCuadrantesSignos(),
+  "diagrama-puntos": () => buildDiagramaPuntos(),
+  "grafica-tramos": () => buildGraficaTramos(),
+  "grafica-llamadas": () => buildGraficaLlamadas(),
+  "tabla-frecuencias": () => buildTablaFrecuencias(),
+  "media-mediana-moda": () => buildMediaMedianaModa(),
+  "mediana-par": () => buildMedianaPar(),
+  "grafico-barras-histograma": () => buildGraficoBarrasHistograma(),
+  "diagrama-sectores": () => buildDiagramaSectores(),
+  "exp-determinista-aleatorio": () => buildExpDeterministaAleatorio(),
+  "espacio-muestral": () => buildEspacioMuestral(),
+  "sucesos-conjuntos": () => buildSucesosConjuntos(),
+  "frecuencias-dado": () => buildFrecuenciasDado(),
+  "grandes-numeros": () => buildGrandesNumeros(),
+  "laplace-dado": () => buildLaplaceDado(),
+  "suceso-union-interseccion": () => buildSucesoUnionInterseccion(),
 };
 
 export function buildSlideAnim(

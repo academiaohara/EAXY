@@ -5,10 +5,11 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
   slug: "tablas-graficas-informacion-puntos",
   title: "2. Información mediante puntos",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "contexto-real",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Qué representa un punto?",
@@ -20,15 +21,20 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
         },
       ],
       title: "Dos variables en un diagrama",
-      content: [
-        "En un diagrama cartesiano de una **situación real**, cada punto representa un dato.",
-        "Las coordenadas son dos **magnitudes** relacionadas: por ejemplo **edad** (eje X) y **estatura** (eje Y) de los miembros de una familia.",
-        "Para interpretar el gráfico hay que saber **qué significa cada eje** — no basta con mirar la forma del dibujo.",
+      blocks: [
+        {
+          kind: "definition",
+          text: "En un diagrama cartesiano de una **situación real**, cada punto representa un dato y sus coordenadas son dos **magnitudes** relacionadas.",
+        },
+        {
+          kind: "warning",
+          text: "Para interpretar el gráfico hay que saber **qué mide cada eje**: no basta con mirar la forma del dibujo.",
+        },
       ],
     },
     {
       id: "familia",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Comparar puntos",
@@ -40,43 +46,22 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
         },
       ],
       title: "Ejemplo: edad y estatura",
-      content: [
-        "**Bernardo** (el hijo mayor) es el más alto: su punto tiene la **mayor ordenada** (estatura).",
-        "**Cristina** y **Flora** miden lo mismo: sus puntos comparten **ordenada**, pero Flora es mayor (mayor **abscisa**).",
-        "**David**, el pequeño, tiene la menor estatura y la menor edad: su punto está **más cerca del origen**.",
-        "Comparar puntos = comparar las dos magnitudes que representan.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Qué mirar en el gráfico",
+          kind: "steps",
+          title: "Qué mirar",
           items: [
-            { title: "Ordenada", caption: "Mayor → más alto en este ejemplo.", tone: "emerald" },
-            { title: "Abscisa", caption: "Mayor → mayor edad.", tone: "cobalt" },
-            { title: "Cerca de O", caption: "Valores pequeños en ambos ejes.", tone: "amber" },
+            "**Ordenada** (vertical): la estatura. Más arriba, más alto.",
+            "**Abscisa** (horizontal): la edad. Más a la derecha, mayor.",
+            "Cerca del origen: valores pequeños en los dos ejes.",
           ],
         },
-      ],
-    },
-    {
-      id: "vehiculos",
-      type: "concept",
-      help: [
         {
-          label: "Leer una esquina",
-          message: "Arriba a la derecha: caro y rápido. Abajo a la izquierda: barato y lento.",
-        },
-        {
-          label: "Colocar un punto nuevo",
-          message: "Compáralo con los que ya están: ¿más caro?, ¿más rápido? Eso decide hacia dónde moverlo.",
+          kind: "text",
+          text: "Comparar puntos es comparar las dos magnitudes que representan.",
         },
       ],
-      title: "Precio y velocidad",
-      content: [
-        "Otro diagrama puede tener **precio** en un eje y **velocidad máxima** en el otro.",
-        "Un coche **caro y rápido** queda arriba a la derecha; uno **barato y lento**, abajo a la izquierda.",
-        "Puedes **situar** un punto nuevo si conoces cómo se compara con los demás (más caro, menos veloz…).",
-      ],
+      visual: { kind: "anim", scene: "diagrama-puntos", beatMs: 3500 },
     },
     {
       id: "check-ordenada",
@@ -111,6 +96,32 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
         "La ordenada corresponde a la estatura en ese diagrama: la mayor ordenada es la persona más alta. Las preguntas sobre la edad se responden con la abscisa.",
     },
     {
+      id: "vehiculos",
+      type: "slide",
+      help: [
+        {
+          label: "Leer una esquina",
+          message: "Arriba a la derecha: caro y rápido. Abajo a la izquierda: barato y lento.",
+        },
+        {
+          label: "Colocar un punto nuevo",
+          message: "Compáralo con los que ya están: ¿más caro?, ¿más rápido? Eso decide hacia dónde moverlo.",
+        },
+      ],
+      title: "Precio y velocidad",
+      blocks: [
+        {
+          kind: "compare",
+          left: { title: "Arriba a la derecha", text: "Caro y rápido: precio alto y velocidad máxima alta.", tone: "info" },
+          right: { title: "Abajo a la izquierda", text: "Barato y lento: precio bajo y velocidad máxima baja.", tone: "ok" },
+        },
+        {
+          kind: "text",
+          text: "Con **precio** en el eje X y **velocidad máxima** en el eje Y, puedes **situar** un punto nuevo si sabes cómo se compara con los demás.",
+        },
+      ],
+    },
+    {
       id: "check-misma-estatura",
       type: "fill_in_blank",
       help: [
@@ -129,6 +140,45 @@ export const tablasGraficasInformacionPuntosLesson: InteractiveLesson = {
       correctAnswers: ["ordenada", "y"],
       hint: "La coordenada vertical del punto.",
       explanation: "La estatura se representa en el eje Y: comparten **ordenada**.",
+    },
+    {
+      id: "moto-nueva",
+      type: "predict",
+      help: [
+        {
+          label: "Compara con los demás",
+          message: "Un punto más a la derecha es más caro; uno más arriba es más rápido.",
+        },
+        {
+          label: "Un eje cada vez",
+          message: "Decide primero hacia dónde se mueve en horizontal (precio) y luego en vertical (velocidad).",
+        },
+      ],
+      title: "Una moto nueva",
+      question:
+        "En un diagrama con el precio en el eje horizontal y la velocidad máxima en el vertical, se quiere marcar una moto más barata que todas las demás, pero más rápida que la mayoría. ¿Dónde irá su punto?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "A la izquierda de todos los puntos y bastante alto" },
+        {
+          id: "b",
+          label: "A la derecha de todos los puntos y bastante alto",
+          incorrectFeedback: "A la derecha están los más **caros**. La moto es la más barata: su punto va a la izquierda.",
+        },
+        {
+          id: "c",
+          label: "A la izquierda de todos los puntos y bastante bajo",
+          incorrectFeedback: "Bajo significa poca velocidad. La moto es más rápida que la mayoría, así que va **alta**.",
+        },
+        {
+          id: "d",
+          label: "Justo en el origen",
+          incorrectFeedback: "El origen sería precio $0$ y velocidad $0$: ni cuesta nada ni se mueve. No tiene sentido para una moto.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Barata → pequeña abscisa (a la izquierda); rápida → gran ordenada (arriba).",
     },
   ],
 };

@@ -5,10 +5,11 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
   slug: "probabilidad-experimento-aleatorio-determinista",
   title: "1. Experimento aleatorio y determinista",
   subtitle: TEMA_15_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "intro",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Para qué sirve?",
@@ -20,102 +21,43 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
         },
       ],
       title: "¿Qué es la probabilidad?",
-      content: [
-        "El estudio matemático de la **probabilidad** nació ligado a los juegos de azar, pero hoy se usa en seguros, control de calidad industrial, medicina y muchas otras áreas junto con la Estadística.",
-        "En esta unidad los cálculos son sencillos; lo importante es entender bien los conceptos: experimento, espacio muestral, suceso, frecuencias y **regla de Laplace**.",
+      blocks: [
+        {
+          kind: "definition",
+          text: "La **probabilidad** mide la confianza que podemos tener en que ocurra algo cuando no podemos estar seguros del resultado.",
+        },
+        {
+          kind: "text",
+          text: "Nació ligada a los juegos de azar, pero hoy se usa en seguros, control de calidad, medicina… En esta unidad veremos experimento, espacio muestral, suceso, frecuencias y la **regla de Laplace**.",
+        },
       ],
     },
     {
-      id: "determinista",
-      type: "concept",
+      id: "determinista-aleatorio",
+      type: "slide",
       help: [
         {
           label: "Un test mental",
           message: "Si repites el experimento con las mismas condiciones, ¿saldrá siempre lo mismo? Entonces es determinista.",
         },
         {
-          label: "Frases típicas",
-          message: "«Es seguro que…»: la fórmula del determinista. Si no puedes decirla, no lo es.",
+          label: "Aleatorio no es «raro»",
+          message: "Aleatorio significa que no puedes saber el resultado antes de hacerlo, aunque conozcas todas las posibilidades.",
         },
       ],
-      title: "Experimento determinista",
-      content: [
-        "Un **experimento determinista** es aquel cuyo resultado podemos **predecir** antes de realizarlo, una vez conocidas las condiciones.",
-        "Ejemplos del temario:",
-        "— Calentar agua: a $100\\,°\\text{C}$ el agua hierve.",
-        "— Un coche a $100\\ \\text{km/h}$ durante $2$ horas recorre $200\\ \\text{km}$.",
-        "Suele expresarse con frases del tipo: «Es seguro que…».",
-      ],
-      visuals: [
+      title: "Determinista o aleatorio",
+      blocks: [
         {
-          kind: "cards",
-          title: "Determinista",
-          items: [
-            { title: "División exacta", math: "10 : 2 = 5", caption: "Siempre el mismo resultado", tone: "emerald" },
-            { title: "Cuadrado", math: "7^2 = 49", caption: "Predecible", tone: "emerald" },
-          ],
+          kind: "compare",
+          left: { title: "Determinista", text: "Se puede predecir el resultado antes de hacerlo: «es seguro que…». Calentar agua a 100 °C.", tone: "ok" },
+          right: { title: "Aleatorio", text: "No se puede predecir aunque se repita en las mismas condiciones. Lanzar un dado.", tone: "key" },
+        },
+        {
+          kind: "text",
+          text: "El lenguaje de lo aleatorio habla de incertidumbre: «es más probable», «es poco probable», «es imposible».",
         },
       ],
-    },
-    {
-      id: "aleatorio",
-      type: "concept",
-      help: [
-        {
-          label: "¿Por qué es aleatorio?",
-          message: "Porque aunque lo repitas en las mismas condiciones, el resultado cambia y no se puede predecir.",
-        },
-        {
-          label: "Lenguaje de la incertidumbre",
-          message: "«Es más probable», «es poco probable»… son frases propias de lo aleatorio.",
-        },
-      ],
-      title: "Experimento aleatorio",
-      content: [
-        "Un **experimento aleatorio** es aquel cuyo resultado **no se puede predecir**, aunque repitamos el experimento en las mismas condiciones.",
-        "El lenguaje habitual habla de incertidumbre: «es más probable», «es imposible», «es casi seguro», «es poco probable»…",
-        "Ejemplos: lanzar un dado, sacar una carta de una baraja o una bola de una urna con varios colores.",
-      ],
-      visuals: [
-        {
-          kind: "cards",
-          title: "Aleatorio",
-          items: [
-            { title: "Dado", math: "E = \\{1,2,3,4,5,6\\}", caption: "No sabemos la cara", tone: "cobalt" },
-            { title: "Moneda", math: "E = \\{\\text{cara},\\text{ cruz}\\}", caption: "Azar", tone: "cobalt" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "ejemplo-clasificar",
-      type: "animated_solution",
-      help: [
-        {
-          label: "El método",
-          message: "Pregúntate si puedes saber el resultado antes de hacerlo. Si no, es aleatorio.",
-        },
-        {
-          label: "Con la moneda",
-          message: "Sabes que saldrá cara o cruz, pero no cuál. Conocer las opciones no es lo mismo que predecir.",
-        },
-      ],
-      title: "Clasificar experimentos",
-      content: ["Decidimos si «lanzar una moneda» es determinista o aleatorio."],
-      frames: [
-        {
-          caption: "¿Podemos saber de antemano si saldrá cara o cruz?",
-          math: "\\text{No, aunque repitamos el lanzamiento}",
-        },
-        {
-          caption: "Conclusión:",
-          math: "\\text{Lanzar una moneda es un experimento aleatorio}",
-        },
-        {
-          caption: "Posible resultado (ejemplo):",
-          math: "\\text{cara}",
-        },
-      ],
+      visual: { kind: "anim", scene: "exp-determinista-aleatorio", beatMs: 3500 },
     },
     {
       id: "check",
@@ -126,8 +68,8 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
           message: "Repite el experimento en las mismas condiciones. Si siempre sale lo mismo, es determinista; si el resultado cambia, es aleatorio.",
         },
         {
-          label: "Aleatorio no es «raro»",
-          message: "Aleatorio significa que no puedes saber el resultado antes de hacerlo, aunque conozcas todas las posibilidades.",
+          label: "Conocer las opciones no basta",
+          message: "En una moneda sabes que saldrá cara o cruz, pero no cuál. Conocer las opciones no es predecir.",
         },
       ],
       title: "Comprueba lo aprendido",
@@ -147,6 +89,45 @@ export const probabilidadExperimentoAleatorioDeterministaLesson: InteractiveLess
       hint: "Pregúntate: ¿puedo saber el resultado **antes** de hacerlo?",
       explanation:
         "Son deterministas los que siempre dan lo mismo: $10 : 2 = 5$, el agua hierve a $100\\,°\\text{C}$ y el coche recorre $180\\ \\text{km}$. El dado, la carta y la bola dependen del azar.",
+    },
+    {
+      id: "pronostico",
+      type: "predict",
+      help: [
+        {
+          label: "Mira el verbo",
+          message: "«Es seguro que…» es lenguaje determinista. «Es probable que…» es lenguaje aleatorio.",
+        },
+        {
+          label: "¿Se puede asegurar?",
+          message: "Si hay alguna posibilidad de que no ocurra, no es seguro: es aleatorio.",
+        },
+      ],
+      title: "El pronóstico del tiempo",
+      question:
+        "La previsión dice: «mañana la probabilidad de lluvia es del 70 %». ¿Qué tipo de experimento describe el tiempo de mañana?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "Aleatorio: no se puede asegurar si lloverá" },
+        {
+          id: "b",
+          label: "Determinista: sabemos con certeza lo que pasará",
+          incorrectFeedback: "Si fuese determinista, la previsión diría «lloverá» o «no lloverá». Hablar de probabilidad indica incertidumbre.",
+        },
+        {
+          id: "c",
+          label: "Ninguno: el tiempo no se puede estudiar",
+          incorrectFeedback: "Sí se puede estudiar: la probabilidad sirve precisamente para medir la incertidumbre de fenómenos así.",
+        },
+        {
+          id: "d",
+          label: "Determinista, porque el $70\\,\\%$ es casi seguro",
+          incorrectFeedback: "El $70\\,\\%$ no es $100\\,\\%$: aún puede no llover. Casi seguro no es seguro.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Que se hable de probabilidad ($70\\,\\%$) indica que el resultado no se puede predecir con certeza: es un experimento aleatorio.",
     },
   ],
 };

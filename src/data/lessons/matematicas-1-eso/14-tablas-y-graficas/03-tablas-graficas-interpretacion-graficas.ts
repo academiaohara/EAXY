@@ -5,10 +5,11 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
   slug: "tablas-graficas-interpretacion-graficas",
   title: "3. Interpretación de gráficas",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "variables-funcion",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Cuál es la independiente?",
@@ -24,122 +25,24 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
         },
       ],
       title: "Variable independiente y dependiente",
-      content: [
-        "Las **gráficas** describen relaciones entre **dos variables**.",
-        "En el eje horizontal va la **variable $x$** o **independiente** (tú la «fijas»: tiempo, edad…).",
-        "En el eje vertical va la **variable $y$** o **dependiente** (cambia en función de $x$): coste, distancia, peso…",
-        "Decimos que **$y$ es función de $x$**.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "translate",
-          title: "Lenguaje del gráfico",
-          rows: [
-            { text: "Eje horizontal", math: "x\\ \\text{(independiente)}" },
-            { text: "Eje vertical", math: "y\\ \\text{(dependiente)}" },
-            { text: "Lectura habitual", math: "\\text{de izquierda a derecha}" },
+          kind: "definition",
+          text: "Las **gráficas** describen relaciones entre **dos variables**. La variable $y$ es **función** de la variable $x$.",
+        },
+        {
+          kind: "facts",
+          items: [
+            { tex: "x", label: "eje horizontal: variable independiente" },
+            { tex: "y", label: "eje vertical: variable dependiente" },
           ],
         },
-      ],
-    },
-    {
-      id: "como-leer",
-      type: "concept",
-      help: [
         {
-          label: "De izquierda a derecha",
-          message: "Imagina el tiempo pasando: ¿la línea sube, baja o se queda plana?",
-        },
-        {
-          label: "Antes de describir",
-          message: "Fíjate en las unidades de cada eje. Una subida de «5» no significa nada hasta que sabes si son minutos o euros.",
+          kind: "text",
+          text: "Se interpreta **de izquierda a derecha**: ¿cómo varía $y$ cuando aumenta $x$?",
         },
       ],
-      title: "Cómo interpretar",
-      content: [
-        "Mira la gráfica **de izquierda a derecha**: observa cómo cambia **$y$** cuando **aumenta $x$**.",
-        "Sube → la magnitud dependiente **aumenta**; baja → **disminuye**; tramo horizontal → **se mantiene** (parada, meseta…).",
-        "Antes de describir, identifica **unidades** en cada eje (minutos, euros, km, kg…).",
-      ],
-    },
-    {
-      id: "llamadas",
-      type: "animated_solution",
-      help: [
-        {
-          label: "¿Qué es la cuota de establecimiento?",
-          message: "Un coste fijo que pagas al empezar la llamada, aunque aún no hayas hablado. Por eso la gráfica no parte de cero.",
-        },
-        {
-          label: "Cómo leer la escala",
-          message: "Mira cuánto vale un cuadrito en cada eje. Sin la escala, las alturas no significan nada.",
-        },
-        {
-          label: "Un coste fijo más uno variable",
-          message: "El precio total es la cuota inicial más lo que se suma cada minuto.",
-        },
-      ],
-      title: "Ejemplo: coste de llamadas",
-      content: [
-        "En una gráfica tiempo–coste, la **cuota de establecimiento** aparece en $y$ aunque el tiempo sea $0$.",
-      ],
-      frames: [
-        {
-          math: "\\text{Eje } x:\\ \\text{tiempo (min)}",
-          caption: "Cada 2 cuadritos = 1 minuto (según la escala del dibujo).",
-        },
-        {
-          math: "\\text{Eje } y:\\ \\text{coste (€)}",
-          caption: "Si 5 cuadritos = 1 €, 1 cuadrito = 0,20 €.",
-        },
-        {
-          math: "y(0) = 0{,}40\\,€",
-          caption: "Cuota fija al descolgar (dos cuadritos en el eje Y).",
-        },
-        {
-          math: "+\\,0{,}20\\,€\\ \\text{por minuto}",
-          caption: "Cada minuto de conexión suma un cuadrito más en vertical.",
-        },
-      ],
-    },
-    {
-      id: "peso-ramon",
-      type: "concept",
-      help: [
-        {
-          label: "La gráfica cuenta una historia",
-          message: "Una subida es ganar peso, una bajada es perderlo y un tramo plano es estar estable.",
-        },
-        {
-          label: "Relaciónalo con la vida real",
-          message: "Pregúntate por qué podría haber pasado: ¿una enfermedad?, ¿el crecimiento?",
-        },
-      ],
-      title: "Ejemplo: peso y edad",
-      content: [
-        "Una gráfica edad–peso puede mostrar que Ramón **ganó peso** con la edad, **perdió** un poco entre los 7 y 8 años y **se estabilizó** antes del «estirón» adolescente.",
-        "Los **tramos** del dibujo cuentan la historia: subidas, bajadas y tramos planos tienen sentido en el contexto.",
-      ],
-    },
-    {
-      id: "desplazamiento",
-      type: "concept",
-      help: [
-        {
-          label: "Tramos y movimiento",
-          message: "Línea que sube: te mueves. Línea plana: estás parado. Línea que baja: vuelves hacia atrás.",
-        },
-        {
-          label: "¿Qué es la pendiente?",
-          message: "Cuánto sube la distancia por cada unidad de tiempo: es la velocidad. Más inclinada, más rápido.",
-        },
-      ],
-      title: "Distancia y tiempo",
-      content: [
-        "En gráficas **tiempo–distancia** (ir al colegio, un viaje en coche…), la pendiente indica **velocidad**.",
-        "Tramo horizontal: **parado** (distancia constante). Tramo oblicuo hacia arriba: **en movimiento**.",
-        "Compara recorridos leyendo distancia inicial, tiempo total y tramos de parada.",
-      ],
+      visual: { kind: "anim", scene: "grafica-tramos", beatMs: 3500 },
     },
     {
       id: "check-independiente",
@@ -178,6 +81,66 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
         "Suele tomarse el tiempo como $x$ y la distancia como $y$ dependiente del tiempo transcurrido. Igual ocurre con la estatura (depende de la edad) y el precio (depende de los kilos).",
     },
     {
+      id: "llamadas",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué es la cuota de establecimiento?",
+          message: "Un coste fijo que pagas al empezar la llamada, aunque aún no hayas hablado. Por eso la gráfica no parte de cero.",
+        },
+        {
+          label: "Cómo leer la escala",
+          message: "Mira cuánto vale un cuadrito en cada eje. Sin la escala, las alturas no significan nada.",
+        },
+      ],
+      title: "Ejemplo: coste de una llamada",
+      blocks: [
+        {
+          kind: "text",
+          text: "Antes de describir una gráfica, identifica las **unidades** y la **escala** de cada eje.",
+        },
+        {
+          kind: "example",
+          title: "Coste de una llamada",
+          lines: [
+            { math: "y(0) = 0{,}40\\ €", note: "cuota fija al descolgar" },
+            { math: "y(4) = 0{,}40 + 4 \\cdot 0{,}20 = 1{,}20\\ €", note: "0,20 € más por minuto" },
+          ],
+        },
+      ],
+      visual: { kind: "anim", scene: "grafica-llamadas", beatMs: 3500 },
+    },
+    {
+      id: "historia-graficas",
+      type: "slide",
+      help: [
+        {
+          label: "La gráfica cuenta una historia",
+          message: "Una subida es ganar peso, una bajada es perderlo y un tramo plano es estar estable.",
+        },
+        {
+          label: "¿Qué es la pendiente?",
+          message: "Cuánto sube la distancia por cada unidad de tiempo: es la velocidad. Más inclinada, más rápido.",
+        },
+      ],
+      title: "Los tramos cuentan una historia",
+      blocks: [
+        {
+          kind: "steps",
+          title: "En una gráfica tiempo–distancia",
+          items: [
+            "Tramo **oblicuo hacia arriba**: te estás moviendo; cuanto más inclinado, más deprisa.",
+            "Tramo **horizontal**: la distancia no cambia, estás parado.",
+            "Tramo **hacia abajo**: vuelves hacia atrás.",
+          ],
+        },
+        {
+          kind: "text",
+          text: "En una gráfica edad–peso, las subidas son ganar peso, las bajadas perderlo y los tramos planos, estabilidad. Interpreta cada tramo en su contexto.",
+        },
+      ],
+    },
+    {
       id: "check-parada",
       type: "fill_in_blank",
       help: [
@@ -195,6 +158,45 @@ export const tablasGraficasInterpretacionGraficasLesson: InteractiveLesson = {
         "En una gráfica distancia–tiempo, un tramo **horizontal** significa que la distancia no cambia: ¿qué está ocurriendo? (una palabra: parado / acelerando / retrocediendo)",
       correctAnswers: ["parado", "parada", "detenido"],
       explanation: "Distancia constante → no hay avance: está parado.",
+    },
+    {
+      id: "ciclista",
+      type: "predict",
+      help: [
+        {
+          label: "Mira la inclinación",
+          message: "Cuanto más empinado el tramo, más distancia se recorre en el mismo tiempo.",
+        },
+        {
+          label: "Compara dos tramos",
+          message: "Si dos tramos duran lo mismo, gana el que sube más en el eje vertical.",
+        },
+      ],
+      title: "Una ruta en bici",
+      question:
+        "En la gráfica distancia–tiempo de una ruta en bici hay un primer tramo que sube poco a poco y un segundo tramo, de la misma duración, mucho más empinado. ¿Qué ocurrió?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "En el segundo tramo fue más deprisa que en el primero" },
+        {
+          id: "b",
+          label: "En el segundo tramo estuvo parado",
+          incorrectFeedback: "Estar parado se ve como un tramo **horizontal**. Aquí el tramo sube, y muy deprisa.",
+        },
+        {
+          id: "c",
+          label: "En el segundo tramo volvió hacia el punto de partida",
+          incorrectFeedback: "Volver al inicio se ve como un tramo que **baja**. Este tramo sube: se sigue alejando.",
+        },
+        {
+          id: "d",
+          label: "En los dos tramos fue a la misma velocidad",
+          incorrectFeedback: "Con la misma duración, un tramo más empinado cubre más distancia: la velocidad es mayor.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "La pendiente indica la velocidad: en el mismo tiempo, el tramo más empinado recorre más distancia.",
     },
   ],
 };

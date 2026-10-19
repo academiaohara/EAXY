@@ -691,7 +691,24 @@ export type SlideAnimId =
   | "area-poligono-regular"
   | "longitud-pi"
   | "area-circulo"
-  | "corona-circular";
+  | "corona-circular"
+  | "plano-cartesiano"
+  | "cuadrantes-signos"
+  | "diagrama-puntos"
+  | "grafica-tramos"
+  | "grafica-llamadas"
+  | "tabla-frecuencias"
+  | "media-mediana-moda"
+  | "mediana-par"
+  | "grafico-barras-histograma"
+  | "diagrama-sectores"
+  | "exp-determinista-aleatorio"
+  | "espacio-muestral"
+  | "sucesos-conjuntos"
+  | "frecuencias-dado"
+  | "grandes-numeros"
+  | "laplace-dado"
+  | "suceso-union-interseccion";
 
 export type ExprStep = {
   tokens: string[];
@@ -855,7 +872,12 @@ export type SlideToolId =
   | "trapecio-area"
   | "triangulo-area"
   | "poligono-regular-area"
-  | "circulo-explorador";
+  | "circulo-explorador"
+  | "plano-explorador"
+  | "datos-explorador"
+  | "sectores-explorador"
+  | "dado-simulador"
+  | "laplace-explorador";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

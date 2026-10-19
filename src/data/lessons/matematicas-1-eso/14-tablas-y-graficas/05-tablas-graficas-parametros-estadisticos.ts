@@ -5,85 +5,45 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
   slug: "tablas-graficas-parametros-estadisticos",
   title: "5. Media, mediana y moda",
   subtitle: TEMA_14_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "media",
-      type: "concept",
+      id: "media-mediana-moda",
+      type: "slide",
       help: [
         {
           label: "El reparto equitativo",
           message: "La media es lo que le tocaría a cada uno si repartieras el total a partes iguales.",
         },
         {
-          label: "Cómo se calcula",
-          message: "Suma todos los valores y divide entre cuántos son. Es la misma cuenta que «repartir».",
-          math: ["1 + 3 + 2 = 6 \\;\\to\\; 6 : 3 = 2"],
-        },
-        {
-          label: "Quiero saber si es razonable",
-          message: "La media siempre queda entre el valor más pequeño y el más grande.",
-        },
-      ],
-      title: "Media (promedio)",
-      content: [
-        "La **media** resume un conjunto de datos **numéricos**.",
-        "Se calcula **sumando** todos los valores y **dividiendo** entre cuántos hay.",
-        "Ejemplo (9 amigos): hermanos $1, 3, 2, 0, 1, 3, 4, 2, 3$ → media $= \\dfrac{19}{9} \\approx 2{,}11$.",
-      ],
-      math: ["\\text{media} = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}"],
-    },
-    {
-      id: "mediana",
-      type: "concept",
-      help: [
-        {
           label: "El que queda en medio",
           message: "Ordena los datos y busca el central. Mitad de los datos son menores y mitad mayores.",
         },
         {
-          label: "Número par de datos",
-          message: "No hay uno solo en medio: toma los dos centrales y calcula su promedio.",
-        },
-        {
-          label: "¿Por qué ordenar?",
-          message: "Porque «central» depende del orden. Sin ordenar, el dato del medio no significa nada.",
-        },
-      ],
-      title: "Mediana",
-      content: [
-        "Ordena los datos de **menor a mayor**. La **mediana** es el valor **central**.",
-        "Si hay **número impar** de datos, es el del medio: $0, 1, 1, 2, 2, 3, 3, 3, 4$ → mediana $= 2$.",
-        "Si hay **número par**, es el **promedio de los dos centrales**: $4, 6, 8, 8, 9, 10, 10, 10$ → centrales 8 y 9 → mediana $= 8{,}5$.",
-      ],
-    },
-    {
-      id: "moda",
-      type: "concept",
-      help: [
-        {
           label: "El más popular",
           message: "La moda es lo que más se repite, como el sabor de helado más pedido.",
         },
+      ],
+      title: "Media, mediana y moda",
+      blocks: [
         {
-          label: "Con variables cualitativas",
-          message: "Es lo único que se puede calcular: no hay media de «primavera» y «verano».",
+          kind: "definition",
+          text: "La **media** es la suma de todos los valores dividida entre el número de ellos.",
         },
         {
-          label: "Puede haber más de una",
-          message: "Si dos valores empatan en frecuencia, hay dos modas.",
+          kind: "definition",
+          text: "La **mediana** es el valor central de los datos **ordenados**. Con un número par de datos, el promedio de los dos centrales.",
+        },
+        {
+          kind: "definition",
+          text: "La **moda** es el dato con mayor frecuencia: el que más se repite.",
         },
       ],
-      title: "Moda",
-      content: [
-        "La **moda** es el valor con **mayor frecuencia** (el que más se repite).",
-        "En $1, 3, 2, 0, 1, 3, 4, 2, 3$ la moda es **3** (tres veces).",
-        "Con variables **cualitativas** solo tiene sentido la moda: en P, V, V, I, V, P, O, I, O la moda es **V** (verano).",
-        "Una distribución **cualitativa** no tiene media ni mediana (no puedes sumar «primavera» y «verano»).",
-      ],
+      visual: { kind: "anim", scene: "media-mediana-moda", beatMs: 3500 },
     },
     {
       id: "ejemplo-resuelto",
-      type: "animated_solution",
+      type: "slide",
       help: [
         {
           label: "Tres resúmenes distintos",
@@ -94,25 +54,41 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
           message: "Con ocho datos hay dos centrales (el cuarto y el quinto): $8$ y $9$.",
         },
       ],
-      title: "Ejemplo resuelto",
-      frames: [
+      title: "Con un número par de datos",
+      blocks: [
         {
-          math: "4,\\ 6,\\ 8,\\ 8,\\ 9,\\ 10,\\ 10,\\ 10",
-          caption: "Ocho datos numéricos.",
+          kind: "example",
+          title: "Ocho datos: 4, 6, 8, 8, 9, 10, 10, 10",
+          lines: [
+            { math: "\\text{media} = \\dfrac{65}{8} = 8{,}125" },
+            { math: "\\text{mediana} = \\dfrac{8 + 9}{2} = 8{,}5", note: "los dos centrales" },
+            { math: "\\text{moda} = 10", note: "aparece tres veces" },
+          ],
         },
         {
-          math: "\\text{media} = \\dfrac{65}{8} = 8{,}125",
-          caption: "Suma 65, dividimos entre 8.",
-        },
-        {
-          math: "\\text{mediana} = \\dfrac{8 + 9}{2} = 8{,}5",
-          caption: "Dos centrales: 8 y 9.",
-        },
-        {
-          math: "\\text{moda} = 10",
-          caption: "El 10 aparece tres veces.",
+          kind: "warning",
+          text: "Con variables **cualitativas** solo tiene sentido la moda.",
         },
       ],
+      visual: { kind: "anim", scene: "mediana-par", beatMs: 3500 },
+    },
+    {
+      id: "explora-datos",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué debo observar?",
+          message: "Un dato muy alto sube mucho la media, pero apenas mueve la mediana. Por eso la mediana resiste mejor los valores extremos.",
+        },
+      ],
+      title: "Explora: modifica los datos",
+      blocks: [
+        {
+          kind: "text",
+          text: "Sube un dato hasta $10$. ¿Cuál de los tres parámetros cambia más? ¿Puedes hacer que haya **dos modas**?",
+        },
+      ],
+      visual: { kind: "tool", tool: "datos-explorador" },
     },
     {
       id: "check-moda-dado",
@@ -150,6 +126,64 @@ export const tablasGraficasParametrosEstadisticosLesson: InteractiveLesson = {
       question: "Media de $2, 4, 6$ (escribe solo el número)",
       correctAnswers: ["4"],
       explanation: "$(2 + 4 + 6) / 3 = 4$.",
+    },
+    {
+      id: "check-mediana",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "Primero, ordena",
+          message: "La mediana se busca en los datos ordenados de menor a mayor.",
+        },
+        {
+          label: "Siete datos",
+          message: "Con siete datos el central es el cuarto: tres a cada lado.",
+        },
+      ],
+      title: "Mediana de siete datos",
+      question: "Mediana de los siete datos $9, 3, 7, 1, 5, 8, 2$ (escribe solo el número)",
+      correctAnswers: ["5"],
+      hint: "Ordénalos: $1, 2, 3, 5, 7, 8, 9$.",
+      explanation: "Ordenados son $1, 2, 3, \\mathbf{5}, 7, 8, 9$: el cuarto, con tres datos a cada lado, es el $5$.",
+    },
+    {
+      id: "sueldos",
+      type: "predict",
+      help: [
+        {
+          label: "Mira el dato raro",
+          message: "Hay un sueldo mucho mayor que los demás. ¿Qué parámetro se deja arrastrar por un valor así?",
+        },
+        {
+          label: "Calcula los dos",
+          message: "Calcula la media sumando todo y la mediana ordenando. Compara con lo que gana la mayoría.",
+        },
+      ],
+      title: "Los sueldos de una tienda",
+      question:
+        "En una tienda de 5 empleados los sueldos mensuales son 1 200, 1 250, 1 300, 1 350 y 6 000 euros. ¿Qué parámetro describe mejor lo que cobra una persona típica de la tienda?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "La mediana, $1\\,300$ €" },
+        {
+          id: "b",
+          label: "La media, $2\\,220$ €",
+          incorrectFeedback: "La media ($2\\,220$) la sube un único sueldo muy alto: cuatro de los cinco empleados cobran menos de $1\\,400$.",
+        },
+        {
+          id: "c",
+          label: "La moda, porque es la más importante",
+          incorrectFeedback: "Aquí todos los sueldos son distintos: ninguno se repite, así que no hay moda.",
+        },
+        {
+          id: "d",
+          label: "Ninguno sirve",
+          incorrectFeedback: "La mediana sí sirve: no se deja arrastrar por el sueldo extremo y refleja lo que cobra la mayoría.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "La media es $\\dfrac{11\\,100}{5} = 2\\,220$ €, inflada por el $6\\,000$. La mediana es el tercer dato, $1\\,300$ €, más representativa.",
     },
   ],
 };

@@ -24,6 +24,8 @@ import {
   TrianguloClasificador,
 } from "@/components/lesson/slide/tools/FigurasTools";
 import { CirculoExplorador, ParalelogramoArea, PoligonoRegularArea, RectanguloExplorador, TrapecioArea, TrianguloArea } from "@/components/lesson/slide/tools/AreaTools";
+import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/components/lesson/slide/tools/DatosTools";
+import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
@@ -439,6 +441,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PoligonoRegularArea block={block} />;
     case "circulo-explorador":
       return <CirculoExplorador block={block} />;
+    case "plano-explorador":
+      return <PlanoExplorador block={block} />;
+    case "datos-explorador":
+      return <DatosExplorador block={block} />;
+    case "sectores-explorador":
+      return <SectoresExplorador block={block} />;
+    case "dado-simulador":
+      return <DadoSimulador block={block} />;
+    case "laplace-explorador":
+      return <LaplaceExplorador block={block} />;
     default:
       return null;
   }

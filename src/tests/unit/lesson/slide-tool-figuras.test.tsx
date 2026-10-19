@@ -23,6 +23,11 @@ describe("herramientas de figuras: valores extremos", () => {
     "triangulo-area",
     "poligono-regular-area",
     "circulo-explorador",
+    "plano-explorador",
+    "datos-explorador",
+    "sectores-explorador",
+    "dado-simulador",
+    "laplace-explorador",
   ];
 
   it.each(tools)("%s se monta con parámetros absurdos sin fallar", (tool) => {
@@ -203,5 +208,79 @@ describe("herramientas de áreas", () => {
     change(/Radio r/, 8);
     expect(readout()).toHaveTextContent("50,24 cm");
     expect(readout()).toHaveTextContent("200,96 cm²");
+  });
+});
+
+describe("herramientas de estadística y probabilidad", () => {
+  it("plano: cuadrante, ejes e intercambio de coordenadas", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "plano-explorador", params: { a: 3, b: 5 } }} />);
+    expect(readout()).toHaveTextContent("P(3, 5)");
+    expect(readout()).toHaveTextContent("cuadrante I");
+    press("Intercambiar x e y");
+    expect(readout()).toHaveTextContent("P(5, 3)");
+    press("Intercambiar x e y");
+    change(/Abscisa/, -2);
+    expect(readout()).toHaveTextContent("cuadrante II");
+    change(/Ordenada/, 0);
+    expect(readout()).toHaveTextContent("eje X");
+    change(/Abscisa/, 0);
+    expect(readout()).toHaveTextContent("origen");
+  });
+
+  it("datos: media, mediana y moda de los nueve amigos y con un dato extremo", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "datos-explorador" }} />);
+    expect(readout()).toHaveTextContent("Media = 2");
+    expect(readout()).toHaveTextContent("Mediana = 2");
+    expect(readout()).toHaveTextContent("Moda = 2");
+    press("Quitar un dato");
+    expect(screen.getAllByRole("button", { name: /Subir dato/ })).toHaveLength(8);
+    expect(readout()).toHaveTextContent("Mediana = 2");
+    expect(readout()).toHaveTextContent("Moda = 1 y 2 y 3");
+  });
+
+  it("sectores: 40 personas son 9° cada una y los grados suman 360°", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sectores-explorador" }} />);
+    expect(readout()).toHaveTextContent("N = 40");
+    expect(readout()).toHaveTextContent("9° por persona");
+    expect(screen.getByText(/Fútbol: 20 → 180°/)).toBeInTheDocument();
+    change(/Fútbol/, 0);
+    expect(readout()).toHaveTextContent("N = 20");
+    expect(readout()).toHaveTextContent("18° por persona");
+  });
+
+  it("simulador: los lanzamientos suman n y es determinista", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "dado-simulador", params: { a: 6 } }} />);
+    expect(readout()).toHaveTextContent("n = 0");
+    press("Lanzar ×100");
+    expect(readout()).toHaveTextContent("n = 100");
+    const total = screen
+      .getAllByText(/f = \d+/)
+      .map((n) => Number(/f = (\d+)/.exec(n.textContent ?? "")?.[1]))
+      .reduce((a, b) => a + b, 0);
+    expect(total).toBe(100);
+    press("Lanzar ×1000");
+    expect(readout()).toHaveTextContent("n = 1100");
+    press(/Reiniciar/);
+    expect(readout()).toHaveTextContent("n = 0");
+  });
+
+  it("laplace: dado y bolsa", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "laplace-explorador", params: { a: 0, b: 2, c: 3 } }} />);
+    expect(readout()).toHaveTextContent("3/6 = 1/2");
+    press("Cara 2");
+    expect(readout()).toHaveTextContent("2/6 = 1/3");
+    for (const f of [4, 6]) {
+      press(`Cara ${f}`);
+    }
+    expect(readout()).toHaveTextContent("0/6");
+    expect(readout()).toHaveTextContent("imposible");
+    for (const f of [1, 2, 3, 4, 5, 6]) {
+      press(`Cara ${f}`);
+    }
+    expect(readout()).toHaveTextContent("seguro");
+    press("Cambiar a bolsa de bolas");
+    expect(readout()).toHaveTextContent("2/5");
+    change(/Bolas verdes/, 0);
+    expect(readout()).toHaveTextContent("seguro");
   });
 });

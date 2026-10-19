@@ -5,30 +5,11 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
   slug: "probabilidad-laplace",
   title: "5. Probabilidad y regla de Laplace",
   subtitle: TEMA_15_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "definicion",
-      type: "concept",
-      help: [
-        {
-          label: "Probabilidad como destino",
-          message: "Si repites muchas veces, la frecuencia relativa se acerca a un número. Ese número es la probabilidad.",
-        },
-        {
-          label: "Siempre entre $0$ y $1$",
-          message: "$0$ si nunca ocurre y $1$ si siempre ocurre. Si te sale algo fuera de ese rango, hay un error.",
-        },
-      ],
-      title: "Probabilidad de un suceso",
-      content: [
-        "La **probabilidad** de un suceso es el número al que tiende su **frecuencia relativa** cuando repetimos el experimento muchas veces.",
-        "Observa un dado de cuatro caras: al aumentar los lanzamientos, $h_{\\text{cara }1}$ se acerca a $0{,}25$. Entonces $P(\\text{cara }1) = 0{,}25$.",
-        "Toda probabilidad cumple $0 \\leq P(A) \\leq 1$.",
-      ],
-    },
-    {
-      id: "laplace",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Cuándo vale la regla?",
@@ -39,61 +20,28 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
           message: "Lista el espacio muestral y marca los casos favorables. La probabilidad es la proporción de favorables.",
         },
         {
-          label: "Un ejemplo",
-          message: "En una bolsa con $3$ bolas rojas y $1$ azul, la probabilidad de sacar azul es $\\frac{1}{4}$.",
+          label: "Siempre entre $0$ y $1$",
+          message: "$0$ si nunca ocurre y $1$ si siempre ocurre. Si te sale algo fuera de ese rango, hay un error.",
         },
       ],
       title: "Regla de Laplace",
-      content: [
-        "Si todos los sucesos elementales son **equiprobables** (misma «facilidad» de salir), usamos la **regla de Laplace**:",
-        "$$P(A) = \\dfrac{\\text{número de casos favorables a } A}{\\text{número de casos posibles}}$$",
-        "Casos posibles = cardinal del espacio muestral $|E|$.",
-        "Casos favorables = sucesos elementales que cumplen el suceso $A$.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "stack",
-          title: "Dado de seis caras",
-          rows: ["\\text{Par: } \\{2,4,6\\} \\Rightarrow 3 \\text{ favorables}"],
-          operator: "\\Rightarrow",
-          result: "P(\\text{par}) = \\dfrac{3}{6} = \\dfrac{1}{2}",
-          caption: "$6$ casos posibles en $E$.",
+          kind: "text",
+          text: "Si todos los sucesos elementales son **equiprobables**, la probabilidad de un suceso $A$ es el cociente entre los casos favorables y los casos posibles.",
+        },
+        {
+          kind: "rule",
+          title: "Regla de Laplace",
+          formula: "P(A) = \\dfrac{\\text{casos favorables a } A}{\\text{casos posibles}}",
+          text: "Se cumple siempre $0 \\leq P(A) \\leq 1$.",
         },
       ],
-    },
-    {
-      id: "ejemplos-dado",
-      type: "animated_solution",
-      help: [
-        {
-          label: "Cuenta favorables y posibles",
-          message: "Siempre hay seis casos posibles. Los favorables dependen del suceso.",
-        },
-        {
-          label: "Unión frente a intersección",
-          message: "«O» pide cumplir al menos una condición. «Y» pide cumplir las dos a la vez: son menos casos.",
-        },
-      ],
-      title: "Probabilidades con un dado",
-      content: ["$E = \\{1,2,3,4,5,6\\}$. Calculamos probabilidades con Laplace."],
-      frames: [
-        {
-          caption: "Salir número par $\\{2,4,6\\}$:",
-          math: "P = \\dfrac{3}{6} = \\dfrac{1}{2}",
-        },
-        {
-          caption: "Par **o** menor que $5$ $\\{1,2,3,4\\}$ (unión):",
-          math: "P = \\dfrac{4}{6} = \\dfrac{2}{3}",
-        },
-        {
-          caption: "Par **y** $4$ (intersección, solo $\\{4\\}$):",
-          math: "P = \\dfrac{1}{6}",
-        },
-      ],
+      visual: { kind: "anim", scene: "laplace-dado", beatMs: 3500 },
     },
     {
       id: "o-y",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Un truco con los conjuntos",
@@ -105,11 +53,36 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
         },
       ],
       title: "«O» frente a «y»",
-      content: [
-        "**«O»** (o): basta con que se cumpla **una** de las condiciones → cuentas la **unión** de sucesos elementales (sin repetir).",
-        "**«Y»** (y): deben cumplirse **las dos** a la vez → cuentas la **intersección**.",
-        "En problemas de baraja o urna, lista siempre $E$ antes de contar favorables.",
+      blocks: [
+        {
+          kind: "compare",
+          left: { title: "«A o B»: unión", text: "Basta cumplir **una** de las condiciones. Cada resultado se cuenta **una sola vez**.", tone: "info" },
+          right: { title: "«A y B»: intersección", text: "Deben cumplirse **las dos** a la vez: solo cuentan los resultados comunes.", tone: "ok" },
+        },
+        {
+          kind: "warning",
+          text: "Si un resultado está en los dos sucesos, en la unión no se cuenta dos veces.",
+        },
       ],
+      visual: { kind: "anim", scene: "suceso-union-interseccion", beatMs: 3500 },
+    },
+    {
+      id: "explora-laplace",
+      type: "slide",
+      help: [
+        {
+          label: "¿Qué debo observar?",
+          message: "Marcando todas las caras la probabilidad es $1$ (suceso seguro); sin marcar ninguna, $0$ (imposible).",
+        },
+      ],
+      title: "Explora: casos favorables y posibles",
+      blocks: [
+        {
+          kind: "text",
+          text: "Marca y desmarca caras, y prueba la bolsa. ¿Qué pasa con $P$ si añades bolas de otro color?",
+        },
+      ],
+      visual: { kind: "tool", tool: "laplace-explorador", params: { a: 0, b: 2, c: 3 } },
     },
     {
       id: "check",
@@ -140,6 +113,65 @@ export const probabilidadLaplaceLesson: InteractiveLesson = {
       correctPieces: [4, 5],
       hint: "Escribe $E = \\{1, 2, 3, 4, 5, 6\\}$ y señala qué resultados son **mayores** que $4$ (el $4$ no cuenta).",
       explanation: "Favorables: $\\{5, 6\\}$ → $2$ casos de $6$: $P = \\dfrac{2}{6} = \\dfrac{1}{3}$.",
+    },
+    {
+      id: "bolsa-roja",
+      type: "fill_in_blank",
+      help: [
+        {
+          label: "Casos posibles",
+          message: "Son todas las bolas de la bolsa, de cualquier color.",
+        },
+        {
+          label: "Casos favorables",
+          message: "Solo cuentan las bolas del color pedido.",
+        },
+      ],
+      title: "Bola roja",
+      question:
+        "Una bolsa tiene 2 bolas rojas y 3 verdes. Sacamos una al azar. ¿Cuál es la probabilidad de que sea roja? Escríbela como fracción.",
+      answerFormat: "fraction",
+      correctAnswers: ["2/5"],
+      explanation: "$2$ casos favorables (bolas rojas) entre $5$ posibles (todas las bolas): $P = \\dfrac{2}{5} = 0{,}4 = 40\\,\\%$.",
+    },
+    {
+      id: "par-o-tres",
+      type: "predict",
+      help: [
+        {
+          label: "Lista los dos sucesos",
+          message: "«Par» es $\\{2, 4, 6\\}$ y «múltiplo de $3$» es $\\{3, 6\\}$. ¿Qué resultados cumplen al menos una?",
+        },
+        {
+          label: "No cuentes dos veces",
+          message: "El $6$ está en las dos listas, pero es un único resultado del dado.",
+        },
+      ],
+      title: "Par o múltiplo de 3",
+      question:
+        "Al lanzar un dado de seis caras, ¿cuál es la probabilidad de obtener un número par o un múltiplo de 3?",
+      mode: "choice",
+      choices: [
+        { id: "a", label: "$\\dfrac{4}{6} = \\dfrac{2}{3}$" },
+        {
+          id: "b",
+          label: "$\\dfrac{5}{6}$",
+          incorrectFeedback: "Has contado el $6$ dos veces ($3$ pares $+$ $2$ múltiplos de $3$). En la unión cada resultado cuenta una sola vez: $\\{2, 3, 4, 6\\}$ son $4$.",
+        },
+        {
+          id: "c",
+          label: "$\\dfrac{1}{6}$",
+          incorrectFeedback: "$\\dfrac{1}{6}$ sería «par **y** múltiplo de $3$» (solo el $6$). Con «o» basta cumplir una condición.",
+        },
+        {
+          id: "d",
+          label: "$\\dfrac{3}{6} = \\dfrac{1}{2}$",
+          incorrectFeedback: "$\\dfrac{3}{6}$ es solo «par». Faltan los múltiplos de $3$ que no son pares: el $3$.",
+        },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "La unión es $\\{2, 3, 4, 6\\}$: $4$ casos favorables de $6$ posibles, $P = \\dfrac{4}{6} = \\dfrac{2}{3}$.",
     },
   ],
 };
