@@ -16,6 +16,7 @@ describe("herramientas de figuras: valores extremos", () => {
     "poligono-regular-explorador",
     "circ-recta-explorador",
     "circ-circ-explorador",
+    "poliedro-explorador",
   ];
 
   it.each(tools)("%s se monta con parámetros absurdos sin fallar", (tool) => {
@@ -126,5 +127,21 @@ describe("circ-circ-explorador", () => {
     render(<SlideTool block={{ kind: "tool", tool: "circ-circ-explorador", params: { a: 5, b: 5, c: 1 } }} />);
     change(/Radio R/, 2);
     expect(Number(slider(/Radio r/).value)).toBeLessThanOrEqual(2);
+  });
+});
+
+describe("poliedro-explorador", () => {
+  it("cuenta caras, vértices y aristas y cumple Euler", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "poliedro-explorador", params: { n: 5, a: 0 } }} />);
+    expect(readout()).toHaveTextContent("Caras: 7");
+    expect(readout()).toHaveTextContent("Vértices: 10");
+    expect(readout()).toHaveTextContent("Aristas: 15");
+    press("Pirámide");
+    expect(readout()).toHaveTextContent("Pirámide pentagonal");
+    expect(readout()).toHaveTextContent("Caras: 6");
+    expect(readout()).toHaveTextContent("Aristas: 10");
+    change(/Lados de la base/, 8);
+    expect(readout()).toHaveTextContent("Vértices: 9");
+    expect(screen.getByText(/9 \+ 9 = 18 y A \+ 2 = 16 \+ 2 = 18/)).toBeInTheDocument();
   });
 });

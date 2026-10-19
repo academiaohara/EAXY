@@ -152,6 +152,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `circunferencia-recta` | Recta exterior, tangente y secante según `d` y `r` | — |
 | `circunferencias-posiciones` | Dos circunferencias: exteriores, tangentes, secantes, interiores y concéntricas | — |
 | `revolucion-giro` | Rectángulo que gira → cilindro; triángulo rectángulo que gira → cono | — |
+| `poliedro-elementos` | Cubo: caras, aristas, vértices y desarrollo | — |
+| `poliedros-regulares` | Tabla de los cinco sólidos platónicos (caras, vértices, aristas) y comprobación de Euler | — |
+| `prisma-elementos` | Prisma pentagonal: bases, caras laterales y recuento `n + 2`, `2n`, `3n` | — |
+| `piramide-elementos` | Pirámide pentagonal: base, caras laterales, cúspide y recuento `n + 1`, `n + 1`, `2n` | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -200,6 +204,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `poligono-regular-explorador` | Lados (3–12) y radio: apotema y lado | `n`, `a` (radio) |
 | `circ-recta-explorador` | Distancia `d` y radio `r`: exteriores, tangentes o secantes | `a` (`d`), `b` (`r`) |
 | `circ-circ-explorador` | `R`, `r` y distancia entre centros: seis posiciones relativas | `a`, `b`, `c` |
+| `poliedro-explorador` | Prisma o pirámide de base con `n` lados (3–10): caras, vértices, aristas y Euler | `n`, `a` (`1` = pirámide) |
 
 ## Respuesta como fracción
 

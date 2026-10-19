@@ -5,10 +5,11 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-prismas",
   title: "6. Prismas",
   subtitle: TEMA_1ESO_12_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "concepto",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Imagina una caja de zapatos",
@@ -24,26 +25,21 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
         },
       ],
       title: "Concepto de prisma",
-      content: [
-        "Un **prisma** es un poliedro con **dos bases** paralelas e **iguales** y caras laterales que son **paralelogramos**.",
-        "Se **nombran** según el polígono de la base: prisma triangular, cuadrangular, pentagonal, hexagonal…",
-        "Su **desarrollo** está formado por las dos bases y un «cinturón» de paralelogramos.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Elementos principales",
-          items: [
-            { title: "Bases", caption: "Dos caras iguales y paralelas.", tone: "cobalt" },
-            { title: "Caras laterales", caption: "Paralelogramos entre las bases.", tone: "emerald" },
-            { title: "Aristas", caption: "Unen vértices de una base con la otra.", tone: "violet" },
-          ],
+          kind: "definition",
+          text: "Un **prisma** es un poliedro limitado por dos polígonos iguales y paralelos, las **bases**, y varios paralelogramos, las **caras laterales**.",
+        },
+        {
+          kind: "text",
+          text: "Se nombra por el polígono de la base: prisma triangular, cuadrangular, pentagonal… Su **desarrollo** son las dos bases y un «cinturón» de paralelogramos.",
         },
       ],
+      visual: { kind: "anim", scene: "prisma-elementos", beatMs: 3200 },
     },
     {
       id: "tipos",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "De dónde salen las fórmulas",
@@ -55,12 +51,22 @@ export const cuerposGeometricosPrismasLesson: InteractiveLesson = {
           math: ["n + 2 = 6 \\qquad 2n = 8 \\qquad 3n = 12"],
         },
       ],
-      title: "Tipos de prismas",
-      content: [
-        "Si la base es un **triángulo**, es un **prisma triangular** ($5$ caras: $2$ triángulos + $3$ paralelogramos).",
-        "Si la base es un **cuadrado**, es un **prisma cuadrangular** (como una caja de zapatos).",
-        "En un prisma de base $n$-ágona: **caras** $= n + 2$, **vértices** $= 2n$, **aristas** $= 3n$.",
+      title: "Tipos de prismas y su recuento",
+      blocks: [
+        {
+          kind: "text",
+          text: "Los prismas cuyas caras son todas **rectángulos** se llaman **ortoedros** (como una caja de zapatos). Si las bases son polígonos regulares y las caras laterales rectángulos, el prisma es **regular**.",
+        },
+        {
+          kind: "facts",
+          items: [
+            { tex: "C = n + 2", label: "caras" },
+            { tex: "V = 2n", label: "vértices" },
+            { tex: "A = 3n", label: "aristas" },
+          ],
+        },
       ],
+      visual: { kind: "tool", tool: "poliedro-explorador", params: { n: 5, a: 0 } },
     },
     {
       id: "check-es-prisma",

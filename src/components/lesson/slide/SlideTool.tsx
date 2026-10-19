@@ -23,6 +23,7 @@ import {
   TrianguloCentros,
   TrianguloClasificador,
 } from "@/components/lesson/slide/tools/FigurasTools";
+import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
@@ -423,6 +424,8 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CircRectaExplorador block={block} />;
     case "circ-circ-explorador":
       return <CircCircExplorador block={block} />;
+    case "poliedro-explorador":
+      return <PoliedroExplorador block={block} />;
     default:
       return null;
   }

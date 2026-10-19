@@ -675,7 +675,11 @@ export type SlideAnimId =
   | "circunferencia-elementos"
   | "circunferencia-recta"
   | "circunferencias-posiciones"
-  | "revolucion-giro";
+  | "revolucion-giro"
+  | "poliedro-elementos"
+  | "poliedros-regulares"
+  | "prisma-elementos"
+  | "piramide-elementos";
 
 export type ExprStep = {
   tokens: string[];
@@ -832,7 +836,8 @@ export type SlideToolId =
   | "paralelogramo-explorador"
   | "poligono-regular-explorador"
   | "circ-recta-explorador"
-  | "circ-circ-explorador";
+  | "circ-circ-explorador"
+  | "poliedro-explorador";
 
 /**
  * Diapositiva declarativa: título + bloques de texto con forma propia + un elemento

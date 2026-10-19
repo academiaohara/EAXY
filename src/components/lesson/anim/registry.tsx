@@ -98,6 +98,7 @@ import { buildTrianguloAltura, buildTrianguloMediana, buildTriangulosClasificaci
 import { buildCuadrilaterosFamilia, buildTrapecioTipos } from "@/components/lesson/anim/scenes/cuadrilateros";
 import { buildPoligonoApotema, buildPoligonoRegularCircunscrito } from "@/components/lesson/anim/scenes/poligono-regular";
 import { buildCircunferenciaElementos, buildCircunferenciaRecta, buildCircunferenciasPosiciones } from "@/components/lesson/anim/scenes/circunferencia";
+import { buildPiramideElementos, buildPoliedroElementos, buildPoliedrosRegulares, buildPrismaElementos } from "@/components/lesson/anim/scenes/solidos";
 import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
@@ -205,6 +206,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "circunferencia-recta": () => buildCircunferenciaRecta(),
   "circunferencias-posiciones": () => buildCircunferenciasPosiciones(),
   "revolucion-giro": () => buildRevolucionGiro(),
+  "poliedro-elementos": () => buildPoliedroElementos(),
+  "poliedros-regulares": () => buildPoliedrosRegulares(),
+  "prisma-elementos": () => buildPrismaElementos(),
+  "piramide-elementos": () => buildPiramideElementos(),
 };
 
 export function buildSlideAnim(

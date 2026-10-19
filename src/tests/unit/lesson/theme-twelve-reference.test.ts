@@ -91,6 +91,15 @@ describe("lecciones de sólidos del tema 12", () => {
     expect(titles).toEqual(["5", "6", "7", "8"]);
   });
 
+  it("poliedros, prismas y pirámides se explican con diapositivas y sin pasos `concept`", () => {
+    for (const slug of ["cuerpos-geometricos-poliedros", "cuerpos-geometricos-prismas", "cuerpos-geometricos-piramides", "cuerpos-geometricos-redondos"] as const) {
+      const lesson = interactiveLessons[slug];
+      expect(lesson.stage?.theme, slug).toBe("board");
+      expect(lesson.steps.some((st) => st.type === "concept"), slug).toBe(false);
+      expect(slidesOf(lesson).flatMap(visualsOf).some((b) => b.kind === "anim" || b.kind === "tool"), slug).toBe(true);
+    }
+  });
+
   it("los cuerpos de revolución se explican con la animación del giro", () => {
     const scenes = slidesOf(interactiveLessons["cuerpos-geometricos-redondos"])
       .flatMap(visualsOf)
