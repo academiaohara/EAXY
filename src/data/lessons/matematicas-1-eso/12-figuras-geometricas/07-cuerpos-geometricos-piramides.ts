@@ -3,12 +3,13 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-piramides",
-  title: "3. Pirámides",
+  title: "7. Pirámides",
   subtitle: TEMA_1ESO_12_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "concepto",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Imagina una tienda de campaña",
@@ -24,26 +25,21 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
         },
       ],
       title: "Concepto de pirámide",
-      content: [
-        "Una **pirámide** es un poliedro con **una base** (cualquier polígono) y caras laterales que son **triángulos** con un vértice común, la **cúspide**.",
-        "Se nombran por la base: pirámide triangular, cuadrangular, pentagonal…",
-        "El **desarrollo** muestra la base y los triángulos laterales dispuestos alrededor.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Elementos",
-          items: [
-            { title: "Base", caption: "Polígono inferior.", tone: "cobalt" },
-            { title: "Caras laterales", caption: "Triángulos que llegan a la cúspide.", tone: "emerald" },
-            { title: "Cúspide", caption: "Vértice donde concurren los triángulos.", tone: "amber" },
-          ],
+          kind: "definition",
+          text: "Una **pirámide** es un poliedro con **una base** (un polígono) y caras laterales que son **triángulos** con un vértice común, la **cúspide**.",
+        },
+        {
+          kind: "text",
+          text: "Es **regular** si la base es un polígono regular y la cúspide se proyecta sobre el centro de la base. Su **desarrollo** es la base con los triángulos alrededor.",
         },
       ],
+      visual: { kind: "anim", scene: "piramide-elementos", beatMs: 3200 },
     },
     {
       id: "conteo",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿De dónde salen los números?",
@@ -59,11 +55,21 @@ export const cuerposGeometricosPiramidesLesson: InteractiveLesson = {
         },
       ],
       title: "Caras, vértices y aristas",
-      content: [
-        "Si la base es un polígono de $n$ lados: **caras** $= n + 1$ (base + $n$ triángulos).",
-        "**Vértices** $= n + 1$ ($n$ en la base + la cúspide).",
-        "**Aristas** $= 2n$ ($n$ en la base + $n$ que suben a la cúspide).",
+      blocks: [
+        {
+          kind: "facts",
+          items: [
+            { tex: "C = n + 1", label: "caras: base + n triángulos" },
+            { tex: "V = n + 1", label: "vértices: n de la base + cúspide" },
+            { tex: "A = 2n", label: "aristas: n de la base + n que suben" },
+          ],
+        },
+        {
+          kind: "text",
+          text: "Pasa a pirámide y cambia $n$: ¿cuándo coinciden el número de caras y el de vértices?",
+        },
       ],
+      visual: { kind: "tool", tool: "poliedro-explorador", params: { n: 5, a: 1 } },
     },
     {
       id: "check-cuadrangular",

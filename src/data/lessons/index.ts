@@ -10,10 +10,14 @@ import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
-import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/03-cuerpos-geometricos-piramides";
-import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/01-cuerpos-geometricos-poliedros";
-import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/02-cuerpos-geometricos-prismas";
-import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-cuerpos-geometricos/04-cuerpos-geometricos-redondos";
+import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
+import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/02-figuras-geometricas-cuadrilateros";
+import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
+import { figurasGeometricasCircunferenciaLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/04-figuras-geometricas-circunferencia";
+import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
+import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
+import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
+import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
@@ -93,6 +97,10 @@ export const interactiveLessons = {
   "areas-triangulo": areasTrianguloLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
+  "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
+  "figuras-geometricas-cuadrilateros": figurasGeometricasCuadrilaterosLesson,
+  "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
+  "figuras-geometricas-circunferencia": figurasGeometricasCircunferenciaLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,

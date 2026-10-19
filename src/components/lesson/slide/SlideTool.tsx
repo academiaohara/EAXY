@@ -15,6 +15,15 @@ import {
   Transportador,
   TrianguloExplorador,
 } from "@/components/lesson/slide/tools/GeometryTools";
+import {
+  CircCircExplorador,
+  CircRectaExplorador,
+  ParalelogramoExplorador,
+  PoligonoRegularExplorador,
+  TrianguloCentros,
+  TrianguloClasificador,
+} from "@/components/lesson/slide/tools/FigurasTools";
+import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
@@ -403,6 +412,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TrianguloExplorador block={block} />;
     case "poligono-explorador":
       return <PoligonoExplorador block={block} />;
+    case "triangulo-clasificador":
+      return <TrianguloClasificador block={block} />;
+    case "triangulo-centros":
+      return <TrianguloCentros block={block} />;
+    case "paralelogramo-explorador":
+      return <ParalelogramoExplorador block={block} />;
+    case "poligono-regular-explorador":
+      return <PoligonoRegularExplorador block={block} />;
+    case "circ-recta-explorador":
+      return <CircRectaExplorador block={block} />;
+    case "circ-circ-explorador":
+      return <CircCircExplorador block={block} />;
+    case "poliedro-explorador":
+      return <PoliedroExplorador block={block} />;
     default:
       return null;
   }

@@ -24,7 +24,7 @@ import { Frame, Slider, TOOL_BTN, clamp, type ToolBlock } from "@/components/les
 
 const SVG_CLASS = "mx-auto block h-auto w-full max-w-2xl";
 
-function Svg({ w = 520, h = 300, children, testId }: { w?: number; h?: number; children: ReactNode; testId?: string }) {
+export function Svg({ w = 520, h = 300, children, testId }: { w?: number; h?: number; children: ReactNode; testId?: string }) {
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className={SVG_CLASS} aria-hidden focusable="false" data-testid={testId}>
       {children}
@@ -32,7 +32,7 @@ function Svg({ w = 520, h = 300, children, testId }: { w?: number; h?: number; c
   );
 }
 
-function Readout({ children }: { children: ReactNode }) {
+export function Readout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1" data-testid="tool-readout">
       {children}
@@ -40,7 +40,7 @@ function Readout({ children }: { children: ReactNode }) {
   );
 }
 
-const cm = (v: number) => decEs(Math.round(v * 10) / 10);
+export const cm = (v: number) => decEs(Math.round(v * 10) / 10);
 
 /* ───────────── Rectas: paralelas, secantes y perpendiculares ───────────── */
 

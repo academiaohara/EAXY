@@ -141,6 +141,21 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `angulos-columna` | Suma (llevada de 60′ a 1°) o resta (préstamo de 1° = 60′) de ángulos en grados y minutos, en columna | `op` (`+`/`-`), `a`, `b` (grados y minutos del 1.º), `c`, `d` (del 2.º) |
 | `triangulo-180` | Los ángulos de un triángulo suman 180°: la paralela por un vértice copia a y b junto a c | — |
 | `poligono-triangulos` | Cuadrilátero, pentágono y hexágono partidos en triángulos: suma `(n − 2)·180°` y ángulo del regular | — |
+| `triangulos-clasificacion` | Triángulos según ángulos (acutángulo, rectángulo, obtusángulo) y lados (equilátero, isósceles, escaleno) | — |
+| `triangulo-mediana` | Las tres medianas, el baricentro y su reparto 2 : 1 | — |
+| `triangulo-altura` | Las tres alturas y el ortocentro, dentro (acutángulo) y fuera (obtusángulo, con prolongación) | — |
+| `cuadrilateros-familia` | Cuadrilátero → romboide, rombo, rectángulo, cuadrado, trapecio y trapezoide | — |
+| `trapecio-tipos` | Trapecio: bases y altura, rectángulo e isósceles | — |
+| `poligono-regular-circunscrito` | Polígono regular y circunferencia circunscrita con centro y radio | — |
+| `poligono-apotema` | Apotema en un hexágono: punto medio, triángulo rectángulo y `r² = a² + (l/2)²` | — |
+| `circunferencia-elementos` | Circunferencia frente a círculo; radio, diámetro, cuerda y arco | — |
+| `circunferencia-recta` | Recta exterior, tangente y secante según `d` y `r` | — |
+| `circunferencias-posiciones` | Dos circunferencias: exteriores, tangentes, secantes, interiores y concéntricas | — |
+| `revolucion-giro` | Rectángulo que gira → cilindro; triángulo rectángulo que gira → cono | — |
+| `poliedro-elementos` | Cubo: caras, aristas, vértices y desarrollo | — |
+| `poliedros-regulares` | Tabla de los cinco sólidos platónicos (caras, vértices, aristas) y comprobación de Euler | — |
+| `prisma-elementos` | Prisma pentagonal: bases, caras laterales y recuento `n + 2`, `2n`, `3n` | — |
+| `piramide-elementos` | Pirámide pentagonal: base, caras laterales, cúspide y recuento `n + 1`, `n + 1`, `2n` | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -183,6 +198,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `triangulo-explorador` | Ángulos `a` y `b` libres (el tercero se ajusta): triángulo y barra que suma 180° | `a`, `b` |
 | `poligono-explorador` | Número de lados 3–12: triángulos en que se parte, suma `(n − 2)·180°` y ángulo del regular | `n` |
 | `balanza-explorador` | Balanza `a·x + b = c`: sumar/restar 1 o dividir entre `a` en los dos platos; la solución no cambia (ecuaciones equivalentes) | `a`, `b`, `c` |
+| `triangulo-clasificador` | Se mueve el vértice `C`: nombre según lados y según ángulos | `a`, `b` (posición de `C`) |
+| `triangulo-centros` | Medianas y baricentro o alturas y ortocentro (dentro, en el vértice o fuera) | `a`, `b`, `c` (`1` = alturas) |
+| `paralelogramo-explorador` | Lados y ángulo: romboide, rombo, rectángulo o cuadrado | `a`, `b`, `c` (ángulo) |
+| `poligono-regular-explorador` | Lados (3–12) y radio: apotema y lado | `n`, `a` (radio) |
+| `circ-recta-explorador` | Distancia `d` y radio `r`: exteriores, tangentes o secantes | `a` (`d`), `b` (`r`) |
+| `circ-circ-explorador` | `R`, `r` y distancia entre centros: seis posiciones relativas | `a`, `b`, `c` |
+| `poliedro-explorador` | Prisma o pirámide de base con `n` lados (3–10): caras, vértices, aristas y Euler | `n`, `a` (`1` = pirámide) |
 
 ## Respuesta como fracción
 

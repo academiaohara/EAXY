@@ -3,40 +3,46 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-redondos",
-  title: "4. Cuerpos redondos",
+  title: "8. Cuerpos de revolución",
   subtitle: TEMA_1ESO_12_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
-      id: "intro",
-      type: "concept",
+      id: "revolucion",
+      type: "slide",
       help: [
         {
           label: "Curvo frente a plano",
           message: "Un cuerpo redondo tiene al menos una superficie curva: una lata, un cucurucho, una pelota.",
         },
         {
-          label: "Cuerpo de revolución",
-          message: "Se genera girando una figura plana alrededor de una recta, el eje.",
+          label: "¿Qué es el eje?",
+          message: "Es la recta alrededor de la cual gira la figura. La figura tiene que apoyar un lado en él para que no queden huecos.",
         },
       ],
-      title: "Cuerpos redondos",
-      content: [
-        "Los **cuerpos redondos** tienen superficies **curvas** (a diferencia de los poliedros).",
-        "Estudiaremos el **cilindro**, el **cono** y la **esfera**.",
-        "También son **cuerpos de revolución**: se obtienen girando una figura plana alrededor de un eje.",
+      title: "Cuerpos de revolución",
+      blocks: [
+        {
+          kind: "definition",
+          text: "Los **cuerpos de revolución** se originan haciendo **girar una figura plana alrededor de un eje**.",
+        },
+        {
+          kind: "facts",
+          items: [
+            { tex: "\\text{rectángulo}", label: "gira sobre un lado → cilindro" },
+            { tex: "\\text{triángulo rectángulo}", label: "gira sobre un cateto → cono" },
+          ],
+        },
       ],
+      visual: { kind: "anim", scene: "revolucion-giro", beatMs: 3500 },
     },
     {
       id: "cilindro-cono",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Dos objetos de referencia",
           message: "Cilindro: una lata. Cono: un cucurucho de helado.",
-        },
-        {
-          label: "¿Cómo se generan?",
-          message: "Un rectángulo girando sobre un lado forma un cilindro. Un triángulo rectángulo girando sobre un cateto forma un cono.",
         },
         {
           label: "Los desarrollos",
@@ -44,25 +50,29 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
         },
       ],
       title: "Cilindro y cono",
-      content: [
-        "**Cilindro**: $2$ bases circulares iguales y paralelas; superficie lateral curva. Se obtiene girando un **rectángulo** sobre un eje.",
-        "**Cono**: $1$ base circular; superficie lateral curva que termina en un **vértice**. Se obtiene girando un **triángulo rectángulo** sobre un cateto.",
-        "Ambos admiten **desarrollo**: dos círculos (cilindro) o un círculo y un sector circular (cono).",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Elementos",
-          items: [
-            { title: "Cilindro", caption: "Bases, eje, superficie lateral.", tone: "cobalt" },
-            { title: "Cono", caption: "Base, vértice, generatrices.", tone: "emerald" },
-          ],
+          kind: "compare",
+          left: {
+            title: "Cilindro",
+            text: "$2$ bases circulares iguales y paralelas; superficie lateral curva.",
+            tone: "info",
+          },
+          right: {
+            title: "Cono",
+            text: "$1$ base circular; superficie lateral curva que termina en un **vértice**.",
+            tone: "ok",
+          },
+        },
+        {
+          kind: "text",
+          text: "Ambos admiten **desarrollo plano**: dos círculos y un rectángulo (cilindro), o un círculo y un sector circular (cono).",
         },
       ],
     },
     {
       id: "esfera",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Una sola superficie",
@@ -78,11 +88,20 @@ export const cuerposGeometricosRedondosLesson: InteractiveLesson = {
         },
       ],
       title: "Esfera",
-      content: [
-        "La **esfera** es un cuerpo redondo con una única **superficie curva**; no tiene caras planas ni aristas.",
-        "Se obtiene girando un **semicírculo** alrededor de su **diámetro**.",
-        "Elementos: **centro**, **radio**, **diámetro** y **circunferencia máxima** (corte por un plano que pasa por el centro).",
-        "A diferencia del cilindro y el cono, **no tiene desarrollo plano** que permita reconstruirla sin deformar.",
+      blocks: [
+        {
+          kind: "definition",
+          text: "La **esfera** es un cuerpo redondo con una única **superficie curva**: no tiene caras planas ni aristas. Se obtiene girando un **semicírculo** alrededor de su **diámetro**.",
+        },
+        {
+          kind: "text",
+          text: "Elementos: **centro**, **radio**, **diámetro** y **circunferencia máxima** (el corte por un plano que pasa por el centro).",
+        },
+        {
+          kind: "warning",
+          title: "Sin desarrollo",
+          text: "A diferencia del cilindro y el cono, la esfera **no tiene desarrollo plano** que permita reconstruirla sin deformar.",
+        },
       ],
     },
     {

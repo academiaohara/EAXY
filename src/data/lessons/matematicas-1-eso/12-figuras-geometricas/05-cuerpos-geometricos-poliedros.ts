@@ -3,12 +3,13 @@ import { TEMA_1ESO_12_SUBTITLE } from "@/data/lessons/shared";
 
 export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
   slug: "cuerpos-geometricos-poliedros",
-  title: "1. Elementos del poliedro y poliedros regulares",
+  title: "5. Poliedros y poliedros regulares",
   subtitle: TEMA_1ESO_12_SUBTITLE,
+  stage: { theme: "board" },
   steps: [
     {
       id: "intro",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "Poliedro frente a cuerpo redondo",
@@ -24,26 +25,25 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
         },
       ],
       title: "Qué es un poliedro",
-      content: [
-        "Un **poliedro** es un cuerpo geométrico limitado por **caras** en forma de polígonos.",
-        "Sus **elementos** son: **caras** (polígonos que lo limitan), **aristas** (lados comunes a dos caras) y **vértices** (puntos donde se unen tres o más caras).",
-        "Si **desplegamos** la superficie sobre un plano obtenemos el **desarrollo** del poliedro, útil para construirlo con cartón.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Ejemplo: cubo",
+          kind: "definition",
+          text: "Un **poliedro** es un cuerpo geométrico limitado por **polígonos**, que son sus caras.",
+        },
+        {
+          kind: "facts",
           items: [
-            { title: "Caras", math: "6", caption: "Cuadrados.", tone: "cobalt" },
-            { title: "Aristas", math: "12", caption: "Segmentos entre vértices.", tone: "emerald" },
-            { title: "Vértices", math: "8", caption: "Esquinas del cubo.", tone: "violet" },
+            { tex: "C = 6", label: "caras (polígonos)" },
+            { tex: "A = 12", label: "aristas (lado común a dos caras)" },
+            { tex: "V = 8", label: "vértices (donde se unen 3 o más caras)" },
           ],
         },
       ],
+      visual: { kind: "anim", scene: "poliedro-elementos", beatMs: 3200 },
     },
     {
       id: "regulares",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Qué es «regular»?",
@@ -59,28 +59,21 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
         },
       ],
       title: "Poliedros regulares",
-      content: [
-        "Un **poliedro regular** tiene caras que son **polígonos regulares iguales** y el mismo número de aristas en cada vértice.",
-        "Solo existen **cinco** poliedros regulares (los sólidos platónicos).",
-        "Un **dado de parchís** es un hexaedro regular (cubo): seis caras cuadradas iguales.",
-      ],
-      visuals: [
+      blocks: [
         {
-          kind: "cards",
-          title: "Los cinco poliedros regulares",
-          items: [
-            { title: "Tetraedro", math: "4", caption: "Triángulos equiláteros.", tone: "cobalt" },
-            { title: "Hexaedro (cubo)", math: "6", caption: "Cuadrados.", tone: "emerald" },
-            { title: "Octaedro", math: "8", caption: "Triángulos equiláteros.", tone: "violet" },
-            { title: "Dodecaedro", math: "12", caption: "Pentágonos regulares.", tone: "amber" },
-            { title: "Icosaedro", math: "20", caption: "Triángulos equiláteros.", tone: "rose" },
-          ],
+          kind: "definition",
+          text: "Un poliedro es **regular** si todas sus caras son **polígonos regulares idénticos** y en cada vértice concurre el mismo número de caras. Son los **sólidos platónicos**: solo existen cinco.",
+        },
+        {
+          kind: "text",
+          text: "El nombre indica el número de caras: tetra ($4$), hexa ($6$), octa ($8$), dodeca ($12$), icosa ($20$).",
         },
       ],
+      visual: { kind: "anim", scene: "poliedros-regulares", beatMs: 3200 },
     },
     {
       id: "euler",
-      type: "concept",
+      type: "slide",
       help: [
         {
           label: "¿Qué dice?",
@@ -100,12 +93,19 @@ export const cuerposGeometricosPoliedrosLesson: InteractiveLesson = {
         },
       ],
       title: "Fórmula de Euler",
-      content: [
-        "En la mayoría de los poliedros (sin agujeros) se cumple la **fórmula de Euler**:",
-        "Si $C$ es el número de caras, $V$ el de vértices y $A$ el de aristas, entonces $C + V = A + 2$.",
-        "Por ejemplo, en el cubo: $6 + 8 = 12 + 2 = 14$.",
+      blocks: [
+        {
+          kind: "rule",
+          title: "Fórmula de Euler",
+          text: "En los poliedros sin agujeros, con $C$ caras, $V$ vértices y $A$ aristas:",
+          formula: "C + V = A + 2",
+        },
+        {
+          kind: "text",
+          text: "Cambia la base y el tipo de cuerpo: la igualdad se cumple siempre.",
+        },
       ],
-      math: ["C + V = A + 2"],
+      visual: { kind: "tool", tool: "poliedro-explorador", params: { n: 4, a: 0 } },
     },
     {
       id: "check-cubo",
