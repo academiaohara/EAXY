@@ -99,6 +99,7 @@ import { buildCuadrilaterosFamilia, buildTrapecioTipos } from "@/components/less
 import { buildPoligonoApotema, buildPoligonoRegularCircunscrito } from "@/components/lesson/anim/scenes/poligono-regular";
 import { buildCircunferenciaElementos, buildCircunferenciaRecta, buildCircunferenciasPosiciones } from "@/components/lesson/anim/scenes/circunferencia";
 import { buildPiramideElementos, buildPoliedroElementos, buildPoliedrosRegulares, buildPrismaElementos } from "@/components/lesson/anim/scenes/solidos";
+import { buildAreaCirculo, buildAreaParalelogramo, buildAreaPerimetro, buildAreaPoligonoRegular, buildAreaPoligonoTriangulos, buildAreaRectangulo, buildAreaRombo, buildAreaTrapecio, buildAreaTriangulo, buildAreaTrianguloRectangulo, buildCoronaCircular, buildLongitudPi } from "@/components/lesson/anim/scenes/areas";
 import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
@@ -210,6 +211,18 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "poliedros-regulares": () => buildPoliedrosRegulares(),
   "prisma-elementos": () => buildPrismaElementos(),
   "piramide-elementos": () => buildPiramideElementos(),
+  "area-perimetro": () => buildAreaPerimetro(),
+  "area-rectangulo": (p) => buildAreaRectangulo(p),
+  "area-paralelogramo": () => buildAreaParalelogramo(),
+  "area-rombo": () => buildAreaRombo(),
+  "area-trapecio": () => buildAreaTrapecio(),
+  "area-triangulo": () => buildAreaTriangulo(),
+  "area-triangulo-rectangulo": () => buildAreaTrianguloRectangulo(),
+  "area-poligono-triangulos": () => buildAreaPoligonoTriangulos(),
+  "area-poligono-regular": () => buildAreaPoligonoRegular(),
+  "longitud-pi": () => buildLongitudPi(),
+  "area-circulo": () => buildAreaCirculo(),
+  "corona-circular": () => buildCoronaCircular(),
 };
 
 export function buildSlideAnim(

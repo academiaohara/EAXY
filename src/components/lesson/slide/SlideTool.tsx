@@ -23,6 +23,7 @@ import {
   TrianguloCentros,
   TrianguloClasificador,
 } from "@/components/lesson/slide/tools/FigurasTools";
+import { CirculoExplorador, ParalelogramoArea, PoligonoRegularArea, RectanguloExplorador, TrapecioArea, TrianguloArea } from "@/components/lesson/slide/tools/AreaTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
@@ -426,6 +427,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CircCircExplorador block={block} />;
     case "poliedro-explorador":
       return <PoliedroExplorador block={block} />;
+    case "rectangulo-explorador":
+      return <RectanguloExplorador block={block} />;
+    case "paralelogramo-area":
+      return <ParalelogramoArea block={block} />;
+    case "trapecio-area":
+      return <TrapecioArea block={block} />;
+    case "triangulo-area":
+      return <TrianguloArea block={block} />;
+    case "poligono-regular-area":
+      return <PoligonoRegularArea block={block} />;
+    case "circulo-explorador":
+      return <CirculoExplorador block={block} />;
     default:
       return null;
   }

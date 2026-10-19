@@ -156,6 +156,18 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `poliedros-regulares` | Tabla de los cinco sólidos platónicos (caras, vértices, aristas) y comprobación de Euler | — |
 | `prisma-elementos` | Prisma pentagonal: bases, caras laterales y recuento `n + 2`, `2n`, `3n` | — |
 | `piramide-elementos` | Pirámide pentagonal: base, caras laterales, cúspide y recuento `n + 1`, `n + 1`, `2n` | — |
+| `area-perimetro` | Rectángulo 5×1 y cuadrado 3×3: mismo perímetro (12), distinta área (5 y 9) | — |
+| `area-rectangulo` | Rectángulo `a × b` contando cuadrados: `A = a·b`, `P = 2a + 2b`; cuadrado y raíz | `a` (≤ 8), `b` (≤ 6) |
+| `area-paralelogramo` | Paralelogramo → rectángulo moviendo un triángulo: `A = b·a`; el perímetro no basta | — |
+| `area-rombo` | Rombo dentro del rectángulo `d × d'`: `A = d·d'/2` | — |
+| `area-trapecio` | Dos trapecios forman un paralelogramo de base `b + b'`: `A = (b + b')·a/2` | — |
+| `area-triangulo` | Dos triángulos forman un paralelogramo: `A = b·a/2`; el área no cambia al mover el vértice | — |
+| `area-triangulo-rectangulo` | Catetos como base y altura; altura sobre la hipotenusa igualando áreas | — |
+| `area-poligono-triangulos` | Polígono irregular descompuesto en triángulos desde un vértice | — |
+| `area-poligono-regular` | Polígono regular en `n` triángulos iguales: `A = P·a/2` | — |
+| `longitud-pi` | Circunferencia desenrollada: tres diámetros y 0,14 más; `l = πd = 2πr` | — |
+| `area-circulo` | Círculo en triángulos finos de altura `r` y bases `2πr`: `A = πr²` | — |
+| `corona-circular` | Corona circular: `πR² − πr²` y perímetro de las dos circunferencias | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -205,6 +217,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `circ-recta-explorador` | Distancia `d` y radio `r`: exteriores, tangentes o secantes | `a` (`d`), `b` (`r`) |
 | `circ-circ-explorador` | `R`, `r` y distancia entre centros: seis posiciones relativas | `a`, `b`, `c` |
 | `poliedro-explorador` | Prisma o pirámide de base con `n` lados (3–10): caras, vértices, aristas y Euler | `n`, `a` (`1` = pirámide) |
+| `rectangulo-explorador` | Base y altura: área y perímetro; con «Perímetro fijo» el cuadrado da el área máxima | `a`, `b`, `c` (`1` = perímetro fijo) |
+| `paralelogramo-area` | Base, altura e inclinación: el área no cambia, el perímetro sí | `a`, `b`, `c` (desplazamiento) |
+| `trapecio-area` | Bases y altura: `A = (B + b)·a/2` | `a` (B), `b`, `c` (altura) |
+| `triangulo-area` | Base, altura y posición del vértice: el área solo depende de base y altura | `a`, `b`, `c` |
+| `poligono-regular-area` | Lados (3–12) y lado: apotema, perímetro y área con `n` triángulos | `n`, `a` (lado) |
+| `circulo-explorador` | Radio: longitud, área y 3,14 cuadrados de lado `r` | `a` (radio) |
 
 ## Respuesta como fracción
 
