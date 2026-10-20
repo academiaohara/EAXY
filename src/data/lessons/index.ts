@@ -17,6 +17,7 @@ import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-es
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/01-divisibilidad-2eso";
+import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/04-division-fracciones-2eso";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
@@ -28,8 +29,10 @@ import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matem
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { fraccionesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/03-fracciones-decimales";
 import { fraccionesEquivalentesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/04-fracciones-equivalentes";
+import { fraccionesEquivalentes2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/01-fracciones-equivalentes-2eso";
 import { fraccionesOperadorLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/02-fracciones-operador";
 import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/01-fracciones-parte-unidad";
+import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-fracciones-potencias-2eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
 import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/05-maximo-comun-divisor-2eso";
@@ -38,6 +41,7 @@ import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/03-multiplicacion-division-naturales";
+import { multiplicacionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/03-multiplicacion-fracciones-2eso";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
 import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
 import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-numeros-enteros";
@@ -81,6 +85,7 @@ import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-si
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
 import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-suma-resta-decimales-2eso";
 import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
+import { sumaRestaFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/02-suma-resta-fracciones-2eso";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/02-suma-resta-naturales";
 import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/01-tablas-graficas-coordenadas-cartesianas";
 import { tablasGraficasDistribucionesEstadisticasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/04-tablas-graficas-distribuciones-estadisticas";
@@ -109,6 +114,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "divisibilidad": divisibilidadLesson,
   "divisibilidad-2eso": divisibilidad2esoLesson,
+  "division-fracciones-2eso": divisionFracciones2esoLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
@@ -120,8 +126,10 @@ export const interactiveLessons = {
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "fracciones-decimales": fraccionesDecimalesLesson,
   "fracciones-equivalentes": fraccionesEquivalentesLesson,
+  "fracciones-equivalentes-2eso": fraccionesEquivalentes2esoLesson,
   "fracciones-operador": fraccionesOperadorLesson,
   "fracciones-parte-unidad": fraccionesParteUnidadLesson,
+  "fracciones-potencias-2eso": fraccionesPotencias2esoLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
   "maximo-comun-divisor": maximoComunDivisorLesson,
   "maximo-comun-divisor-2eso": maximoComunDivisor2esoLesson,
@@ -130,6 +138,7 @@ export const interactiveLessons = {
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
+  "multiplicacion-fracciones-2eso": multiplicacionFracciones2esoLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
   "numeros-decimales-2eso": numerosDecimales2esoLesson,
   "numeros-enteros": numerosEnterosLesson,
@@ -173,6 +182,7 @@ export const interactiveLessons = {
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
   "suma-resta-decimales-2eso": sumaRestaDecimales2esoLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
+  "suma-resta-fracciones-2eso": sumaRestaFracciones2esoLesson,
   "suma-resta-naturales": sumaRestaNaturalesLesson,
   "tablas-graficas-coordenadas-cartesianas": tablasGraficasCoordenadasCartesianasLesson,
   "tablas-graficas-distribuciones-estadisticas": tablasGraficasDistribucionesEstadisticasLesson,
