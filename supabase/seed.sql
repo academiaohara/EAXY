@@ -37,6 +37,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000026', 'a1000000-0000-4000-8000-000000000002', 'divisibilidad-y-numeros-enteros', 'Divisibilidad y números enteros', 1),
   ('a2000000-0000-4000-8000-000000000027', 'a1000000-0000-4000-8000-000000000002', 'sistema-decimal-y-sexagesimal', 'Sistema de numeración decimal y sistema sexagesimal', 2),
   ('a2000000-0000-4000-8000-000000000028', 'a1000000-0000-4000-8000-000000000002', 'las-fracciones', 'Las fracciones', 3),
+  ('a2000000-0000-4000-8000-000000000029', 'a1000000-0000-4000-8000-000000000002', 'proporcionalidad-y-porcentajes', 'Proporcionalidad y porcentajes', 4),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -127,6 +128,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000002803', 'a2000000-0000-4000-8000-000000000028', '3. Multiplicación de fracciones', 'Producto de fracciones y simplificación con factores primos.', 3, null),
   ('a3000000-0000-4000-8000-000000002804', 'a2000000-0000-4000-8000-000000000028', '4. División de fracciones', 'Cuántas veces cabe, producto en cruz y problemas.', 4, null),
   ('a3000000-0000-4000-8000-000000002805', 'a2000000-0000-4000-8000-000000000028', '5. Fracciones con potencias', 'Potencia de una fracción, de un producto, de un cociente y misma base.', 5, null),
+  ('a3000000-0000-4000-8000-000000002901', 'a2000000-0000-4000-8000-000000000029', '1. Proporcionalidad directa', 'Razón y proporción, reducción a la unidad y regla de tres directa.', 1, null),
+  ('a3000000-0000-4000-8000-000000002902', 'a2000000-0000-4000-8000-000000000029', '2. Proporcionalidad inversa', 'Producto constante, reducción a la unidad y regla de tres inversa.', 2, null),
+  ('a3000000-0000-4000-8000-000000002903', 'a2000000-0000-4000-8000-000000000029', '3. Porcentajes', 'Porcentaje como fracción, porcentaje de una cantidad y cálculo mental.', 3, null),
+  ('a3000000-0000-4000-8000-000000002904', 'a2000000-0000-4000-8000-000000000029', '4. Aumentos y disminuciones porcentuales', 'Aumentos, rebajas y factor de cambio.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

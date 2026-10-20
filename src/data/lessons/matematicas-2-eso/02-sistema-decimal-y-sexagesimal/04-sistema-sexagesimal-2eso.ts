@@ -263,7 +263,7 @@ export const sistemaSexagesimal2esoLesson: InteractiveLesson = {
           kind: "example",
           lines: [
             { math: "36^\\circ\\,45' + 82^\\circ\\,56' = 118^\\circ\\,101'" },
-            { math: "101' = 1^\\circ\\,41' \;\\Rightarrow\; 119^\\circ\\,41'" },
+            { math: "101' = 1^\\circ\\,41' \\ \\Rightarrow\\  119^\\circ\\,41'" },
           ],
         },
       ],

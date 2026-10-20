@@ -33,7 +33,7 @@ export const multiplicacionDivisionDecimales2esoLesson: InteractiveLesson = {
           kind: "example",
           lines: [
             { math: "3{,}52 \\cdot 5{,}1", note: "$2 + 1 = 3$ cifras decimales" },
-            { math: "352 \\cdot 51 = 17\\,952 \;\\to\; 17{,}952" },
+            { math: "352 \\cdot 51 = 17\\,952 \\ \\to\\  17{,}952" },
           ],
         },
       ],
@@ -125,7 +125,7 @@ export const multiplicacionDivisionDecimales2esoLesson: InteractiveLesson = {
           right: {
             title: "No exacta",
             text: "El resto es distinto de $0$ y menor que el divisor.",
-            math: ["162 : 5 = 32 \;\\text{(resto } 2)"],
+            math: ["162 : 5 = 32 \\ \\text{(resto } 2)"],
             tone: "info",
           },
         },

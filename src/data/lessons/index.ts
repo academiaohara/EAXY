@@ -8,6 +8,7 @@ import { areasCirculoLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-
 import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/01-areas-cuadrilateros";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
+import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
@@ -55,6 +56,7 @@ import { operacionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
+import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
 import { probabilidadEspacioMuestralLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/02-probabilidad-espacio-muestral";
@@ -63,7 +65,9 @@ import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/
 import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/05-probabilidad-laplace";
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
+import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
+import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
 import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/01-proporcionalidad-magnitudes";
 import { raicesCuadradas2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/07-raices-cuadradas-2eso";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/02-raiz-cuadrada-naturales";
@@ -105,6 +109,7 @@ export const interactiveLessons = {
   "areas-cuadrilateros": areasCuadrilaterosLesson,
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
+  "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
@@ -152,6 +157,7 @@ export const interactiveLessons = {
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "parentesis-enteros": parentesisEnterosLesson,
   "porcentajes": porcentajesLesson,
+  "porcentajes-2eso": porcentajes2esoLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
   "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
@@ -160,7 +166,9 @@ export const interactiveLessons = {
   "probabilidad-laplace": probabilidadLaplaceLesson,
   "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
+  "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
+  "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
   "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "raices-cuadradas-2eso": raicesCuadradas2esoLesson,
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
