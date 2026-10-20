@@ -36,8 +36,13 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matemati
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
+import { ecuacionesDenominadores3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/03-ecuaciones-denominadores-3eso";
 import { ecuacionesDosIncognitas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-2eso";
+import { ecuacionesIncompletas3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/05-ecuaciones-incompletas-3eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
+import { ecuacionesPrimerGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/02-ecuaciones-primer-grado-3eso";
+import { ecuacionesSegundoGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/04-ecuaciones-segundo-grado-3eso";
+import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/01-ecuaciones-soluciones-3eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factorComun3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/05-factor-comun-3eso";
@@ -116,6 +121,7 @@ import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-p
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
+import { problemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/06-problemas-ecuaciones-3eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
@@ -211,8 +217,13 @@ export const interactiveLessons = {
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-denominadores-2eso": ecuacionesDenominadores2esoLesson,
+  "ecuaciones-denominadores-3eso": ecuacionesDenominadores3esoLesson,
   "ecuaciones-dos-incognitas-2eso": ecuacionesDosIncognitas2esoLesson,
+  "ecuaciones-incompletas-3eso": ecuacionesIncompletas3esoLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
+  "ecuaciones-primer-grado-3eso": ecuacionesPrimerGrado3esoLesson,
+  "ecuaciones-segundo-grado-3eso": ecuacionesSegundoGrado3esoLesson,
+  "ecuaciones-soluciones-3eso": ecuacionesSoluciones3esoLesson,
   "esferas-2eso": esferas2esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factor-comun-3eso": factorComun3esoLesson,
@@ -291,6 +302,7 @@ export const interactiveLessons = {
   "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
+  "problemas-ecuaciones-3eso": problemasEcuaciones3esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,

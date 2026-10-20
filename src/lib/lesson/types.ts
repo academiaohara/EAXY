@@ -729,7 +729,8 @@ export type SlideAnimId =
   | "progresion-pasos"
   | "suma-gauss"
   | "cuadrado-suma"
-  | "suma-por-diferencia";
+  | "suma-por-diferencia"
+  | "parabola-raices";
 
 export type ExprStep = {
   tokens: string[];

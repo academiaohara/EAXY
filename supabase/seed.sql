@@ -50,6 +50,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000039', 'a1000000-0000-4000-8000-000000000003', 'potencias-y-raices', 'Potencias y raíces. Números aproximados', 2),
   ('a2000000-0000-4000-8000-000000000040', 'a1000000-0000-4000-8000-000000000003', 'progresiones', 'Progresiones', 3),
   ('a2000000-0000-4000-8000-000000000041', 'a1000000-0000-4000-8000-000000000003', 'lenguaje-algebraico', 'El lenguaje algebraico', 4),
+  ('a2000000-0000-4000-8000-000000000042', 'a1000000-0000-4000-8000-000000000003', 'ecuaciones', 'Ecuaciones', 5),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -218,6 +219,12 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000004104', 'a2000000-0000-4000-8000-000000000041', '4. Operar con polinomios', 'Suma, resta y producto de polinomios.', 4, null),
   ('a3000000-0000-4000-8000-000000004105', 'a2000000-0000-4000-8000-000000000041', '5. Extracción de factor común', 'Sacar factor común en expresiones con números y letras.', 5, null),
   ('a3000000-0000-4000-8000-000000004106', 'a2000000-0000-4000-8000-000000000041', '6. Identidades notables', 'Cuadrado de una suma y de una diferencia, y suma por diferencia.', 6, null),
+  ('a3000000-0000-4000-8000-000000004201', 'a2000000-0000-4000-8000-000000000042', '1. Ecuaciones y soluciones', 'Identidades, ecuaciones, solución y resolución por tanteo.', 1, null),
+  ('a3000000-0000-4000-8000-000000004202', 'a2000000-0000-4000-8000-000000000042', '2. Ecuaciones de primer grado', 'Ecuaciones equivalentes, pasos de resolución y casos sin solución o con infinitas.', 2, null),
+  ('a3000000-0000-4000-8000-000000004203', 'a2000000-0000-4000-8000-000000000042', '3. Ecuaciones con denominadores', 'Eliminar denominadores multiplicando por el m.c.m.', 3, null),
+  ('a3000000-0000-4000-8000-000000004204', 'a2000000-0000-4000-8000-000000000042', '4. Ecuaciones de segundo grado', 'Fórmula general y discriminante.', 4, null),
+  ('a3000000-0000-4000-8000-000000004205', 'a2000000-0000-4000-8000-000000000042', '5. Ecuaciones de segundo grado incompletas', 'Sin término en x y sin término independiente.', 5, null),
+  ('a3000000-0000-4000-8000-000000004206', 'a2000000-0000-4000-8000-000000000042', '6. Problemas con ecuaciones', 'Plantear y resolver problemas con ecuaciones de primer y segundo grado.', 6, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

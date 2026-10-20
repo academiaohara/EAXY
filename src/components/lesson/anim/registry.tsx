@@ -124,6 +124,7 @@ import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
+import { buildParabolaRaices } from "@/components/lesson/anim/scenes/parabola-raices";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -284,6 +285,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "suma-gauss": (p) => buildSumaGauss(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),
   "suma-por-diferencia": (p) => buildSumaPorDiferencia(p),
+  "parabola-raices": (p) => buildParabolaRaices(p),
 };
 
 export function buildSlideAnim(
