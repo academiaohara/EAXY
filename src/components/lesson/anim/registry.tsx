@@ -92,6 +92,10 @@ import { buildAngulosOpuestos } from "@/components/lesson/anim/scenes/angulos-op
 import { buildParalelasSecante } from "@/components/lesson/anim/scenes/paralelas-secante";
 import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
 import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
+import { buildFuncionEsNoEs } from "@/components/lesson/anim/scenes/funcion-es-no-es";
+import { buildFuncionTemperatura } from "@/components/lesson/anim/scenes/funcion-temperatura";
+import { buildFuncionTramosExtremos } from "@/components/lesson/anim/scenes/funcion-tramos-extremos";
+import { buildRectaPendiente } from "@/components/lesson/anim/scenes/recta-pendiente";
 import { buildArquimedesVolumenes } from "@/components/lesson/anim/scenes/arquimedes-volumenes";
 import { buildCuboDm3 } from "@/components/lesson/anim/scenes/cubo-dm3";
 import { buildDesarrolloCilindro } from "@/components/lesson/anim/scenes/desarrollo-cilindro";
@@ -260,6 +264,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "esfera-cilindro": () => buildEsferaCilindro(),
   "cubo-dm3": () => buildCuboDm3(),
   "arquimedes-volumenes": () => buildArquimedesVolumenes(),
+  "funcion-temperatura": () => buildFuncionTemperatura(),
+  "funcion-tramos-extremos": () => buildFuncionTramosExtremos(),
+  "funcion-es-no-es": () => buildFuncionEsNoEs(),
+  "recta-pendiente": (p) => buildRectaPendiente(p),
 };
 
 export function buildSlideAnim(

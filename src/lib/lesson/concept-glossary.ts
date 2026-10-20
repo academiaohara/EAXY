@@ -1164,6 +1164,24 @@ export const LESSON_CONCEPTS: LessonConcept[] = [
     aliases: ["ano luz"],
     message: "Un **año luz** es la distancia que recorre la luz en un año; sirve para galaxias y estrellas lejanas.",
   },
+  {
+    id: "pendiente-recta",
+    term: "Pendiente",
+    question: "¿Qué es la pendiente?",
+    aliases: ["pendiente", "misma pendiente"],
+    message: "La **pendiente** $m$ de una recta mide su inclinación: cuánto cambia $y$ por cada unidad que avanza $x$.",
+    detail: [
+      "Con $m > 0$ la recta sube de izquierda a derecha (función creciente); con $m < 0$ baja (decreciente).",
+      "Entre dos puntos, $m = \\dfrac{y_2 - y_1}{x_2 - x_1}$.",
+    ],
+  },
+  {
+    id: "ordenada-origen",
+    term: "Ordenada en el origen",
+    question: "¿Qué es la ordenada en el origen?",
+    aliases: ["ordenada en el origen"],
+    message: "La **ordenada en el origen** $n$ es el valor de $y$ cuando $x = 0$: el punto donde la recta corta al eje vertical, $(0, n)$.",
+  },
 ];
 
 /** Minúsculas, sin tildes ni marcas de formato, para comparar texto libre. */

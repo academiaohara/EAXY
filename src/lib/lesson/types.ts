@@ -717,7 +717,11 @@ export type SlideAnimId =
   | "desarrollo-cono"
   | "esfera-cilindro"
   | "cubo-dm3"
-  | "arquimedes-volumenes";
+  | "arquimedes-volumenes"
+  | "funcion-temperatura"
+  | "funcion-tramos-extremos"
+  | "funcion-es-no-es"
+  | "recta-pendiente";
 
 export type ExprStep = {
   tokens: string[];
