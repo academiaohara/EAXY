@@ -733,7 +733,11 @@ export type SlideAnimId =
   | "parabola-raices"
   | "sistema-rectas"
   | "funcion-continuidad"
-  | "funcion-tendencia-periodo";
+  | "funcion-tendencia-periodo"
+  | "pendiente-dos-puntos"
+  | "rectas-encuentro"
+  | "conica-lugar"
+  | "sector-circular";
 
 export type ExprStep = {
   tokens: string[];
@@ -803,6 +807,8 @@ export type SlideAnimParams = {
   prog?: "aritmetica" | "geometrica";
   /** `sistema-rectas`: caso del sistema lineal. */
   sys?: "unica" | "incompatible" | "indeterminado";
+  /** `conica-lugar`: curva que se define como lugar geométrico. */
+  conica?: "elipse" | "parabola" | "hiperbola";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";

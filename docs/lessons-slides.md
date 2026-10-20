@@ -210,6 +210,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `sistema-rectas` | Sistema lineal como dos rectas: se cortan (una solución), son paralelas (incompatible) o coinciden (indeterminado) | `sys` (`unica`/`incompatible`/`indeterminado`) |
 | `funcion-continuidad` | Tres funciones: puntos aislados (aparatos vendidos), saltos bruscos (llamada) y trazo continuo (estatura) | — |
 | `funcion-tendencia-periodo` | Tendencia (el agua se enfría hacia 20 °C) y función periódica con su periodo | — |
+| `pendiente-dos-puntos` | Pendiente de la recta por dos puntos: variación de y entre variación de x | `a`, `b` (x₁, y₁), `c`, `d` (x₂, y₂) |
+| `rectas-encuentro` | Peatón (4 km/h) y ciclista (10 km/h, media hora después): el encuentro es el punto de corte de dos rectas | — |
+| `conica-lugar` | Elipse (suma de distancias a dos focos), parábola (foco y directriz) e hipérbola (diferencia de distancias) como lugares geométricos | `conica` (`elipse`/`parabola`/`hiperbola`) |
+| `sector-circular` | Sector circular: fracción a/360 del área del círculo | `a` (ángulo en grados), `b` (radio) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

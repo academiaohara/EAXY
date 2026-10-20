@@ -128,6 +128,10 @@ import { buildParabolaRaices } from "@/components/lesson/anim/scenes/parabola-ra
 import { buildSistemaRectas } from "@/components/lesson/anim/scenes/sistema-rectas";
 import { buildFuncionContinuidad } from "@/components/lesson/anim/scenes/funcion-continuidad";
 import { buildFuncionTendenciaPeriodo } from "@/components/lesson/anim/scenes/funcion-tendencia-periodo";
+import { buildPendienteDosPuntos } from "@/components/lesson/anim/scenes/pendiente-dos-puntos";
+import { buildRectasEncuentro } from "@/components/lesson/anim/scenes/rectas-encuentro";
+import { buildConicaLugar } from "@/components/lesson/anim/scenes/conica-lugar";
+import { buildSectorCircular } from "@/components/lesson/anim/scenes/sector-circular";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -292,6 +296,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "sistema-rectas": (p) => buildSistemaRectas(p),
   "funcion-continuidad": () => buildFuncionContinuidad(),
   "funcion-tendencia-periodo": () => buildFuncionTendenciaPeriodo(),
+  "pendiente-dos-puntos": (p) => buildPendienteDosPuntos(p),
+  "rectas-encuentro": () => buildRectasEncuentro(),
+  "conica-lugar": (p) => buildConicaLugar(p),
+  "sector-circular": (p) => buildSectorCircular(p),
 };
 
 export function buildSlideAnim(
