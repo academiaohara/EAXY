@@ -21,6 +21,8 @@ import { divisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-div
 import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/04-division-fracciones-2eso";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
+import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
+import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/04-factor-comun-2eso";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
@@ -69,6 +71,7 @@ import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/
 import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/05-probabilidad-laplace";
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
+import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
@@ -81,6 +84,7 @@ import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-
 import { rectasYAngulosParalelasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/04-rectas-y-angulos-paralelas";
 import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/06-rectas-y-angulos-poligonos";
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
+import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionSistemasLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/03-resolucion-sistemas-lineales";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
 import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/02-sistema-metrico-longitud";
@@ -126,6 +130,8 @@ export const interactiveLessons = {
   "division-fracciones-2eso": divisionFracciones2esoLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
+  "ecuaciones-2eso": ecuaciones2esoLesson,
+  "ecuaciones-denominadores-2eso": ecuacionesDenominadores2esoLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factores-primos": factoresPrimosLesson,
@@ -174,6 +180,7 @@ export const interactiveLessons = {
   "probabilidad-laplace": probabilidadLaplaceLesson,
   "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
+  "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
@@ -186,6 +193,7 @@ export const interactiveLessons = {
   "rectas-y-angulos-paralelas": rectasYAngulosParalelasLesson,
   "rectas-y-angulos-poligonos": rectasYAngulosPoligonosLesson,
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
+  "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-sistemas-lineales": resolucionSistemasLinealesLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
   "sistema-metrico-longitud": sistemaMetricoLongitudLesson,

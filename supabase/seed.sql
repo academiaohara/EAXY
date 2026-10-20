@@ -39,6 +39,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000028', 'a1000000-0000-4000-8000-000000000002', 'las-fracciones', 'Las fracciones', 3),
   ('a2000000-0000-4000-8000-000000000029', 'a1000000-0000-4000-8000-000000000002', 'proporcionalidad-y-porcentajes', 'Proporcionalidad y porcentajes', 4),
   ('a2000000-0000-4000-8000-000000000030', 'a1000000-0000-4000-8000-000000000002', 'algebra', 'Álgebra', 5),
+  ('a2000000-0000-4000-8000-000000000031', 'a1000000-0000-4000-8000-000000000002', 'ecuaciones', 'Ecuaciones', 6),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -137,6 +138,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003002', 'a2000000-0000-4000-8000-000000000030', '2. Monomios', 'Partes, grado, monomios semejantes y operaciones: suma, producto y cociente.', 2, null),
   ('a3000000-0000-4000-8000-000000003003', 'a2000000-0000-4000-8000-000000000030', '3. Polinomios', 'Términos, grado, término independiente, valor numérico, suma y resta.', 3, null),
   ('a3000000-0000-4000-8000-000000003004', 'a2000000-0000-4000-8000-000000000030', '4. Extracción de factor común', 'Propiedad distributiva y extracción de factor común.', 4, null),
+  ('a3000000-0000-4000-8000-000000003101', 'a2000000-0000-4000-8000-000000000031', '1. Ecuaciones', 'Identidad y ecuación, elementos, solución y ecuaciones de un paso.', 1, null),
+  ('a3000000-0000-4000-8000-000000003102', 'a2000000-0000-4000-8000-000000000031', '2. Resolución de ecuaciones', 'Reducir y transponer, incógnita en los dos miembros, paréntesis y casos especiales.', 2, null),
+  ('a3000000-0000-4000-8000-000000003103', 'a2000000-0000-4000-8000-000000000031', '3. Ecuaciones con denominadores', 'Eliminar denominadores con el m.c.m.', 3, null),
+  ('a3000000-0000-4000-8000-000000003104', 'a2000000-0000-4000-8000-000000000031', '4. Problemas con ecuaciones', 'Los cuatro pasos y problemas de números, edades y geometría.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
