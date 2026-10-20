@@ -107,7 +107,7 @@ export const raices3esoLesson: InteractiveLesson = {
           kind: "rule",
           title: "Raíz entera",
           text: "Es el mayor número natural cuyo cuadrado no supera al radicando.",
-          formula: "6^2 = 36 \\le 40 < 49 = 7^2 \;\\Rightarrow\; \\text{raíz entera de } 40 = 6",
+          formula: "6^2 = 36 \\le 40 < 49 = 7^2 \\ \\Rightarrow\\  \\text{raíz entera de } 40 = 6",
         },
         {
           kind: "text",

@@ -737,7 +737,8 @@ export type SlideAnimId =
   | "pendiente-dos-puntos"
   | "rectas-encuentro"
   | "conica-lugar"
-  | "sector-circular";
+  | "sector-circular"
+  | "husos-horarios";
 
 export type ExprStep = {
   tokens: string[];

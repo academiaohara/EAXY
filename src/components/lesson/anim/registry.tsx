@@ -132,6 +132,7 @@ import { buildPendienteDosPuntos } from "@/components/lesson/anim/scenes/pendien
 import { buildRectasEncuentro } from "@/components/lesson/anim/scenes/rectas-encuentro";
 import { buildConicaLugar } from "@/components/lesson/anim/scenes/conica-lugar";
 import { buildSectorCircular } from "@/components/lesson/anim/scenes/sector-circular";
+import { buildHusosHorarios } from "@/components/lesson/anim/scenes/husos-horarios";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -300,6 +301,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "rectas-encuentro": () => buildRectasEncuentro(),
   "conica-lugar": (p) => buildConicaLugar(p),
   "sector-circular": (p) => buildSectorCircular(p),
+  "husos-horarios": () => buildHusosHorarios(),
 };
 
 export function buildSlideAnim(

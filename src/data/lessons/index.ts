@@ -9,7 +9,10 @@ import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-es
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
 import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
 import { aproximacionesErrores3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/04-aproximaciones-errores-3eso";
+import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
 import { areaCuadrilateros3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/05-area-cuadrilateros-3eso";
+import { areaEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/05-area-esfera-3eso";
+import { areaPoliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/03-area-poliedros-3eso";
 import { areaPoligonos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/07-area-poligonos-3eso";
 import { areaTriangulos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/06-area-triangulos-3eso";
 import { areasCirculoLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/04-areas-circulo";
@@ -26,6 +29,7 @@ import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-f
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
+import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
 import { crecimientoExtremos2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/02-crecimiento-extremos-2eso";
 import { crecimientoExtremos3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/02-crecimiento-extremos-3eso";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
@@ -123,6 +127,8 @@ import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-num
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
+import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
+import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
 import { polinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/03-polinomios-3eso";
@@ -201,7 +207,10 @@ import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpo
 import { unidadesVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/01-unidades-volumen-2eso";
 import { variacionesPorcentuales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/09-variaciones-porcentuales-3eso";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
+import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
+import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/07-volumen-piramide-cono-3eso";
 import { volumenPiramidesConos2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/03-volumen-piramides-conos-2eso";
+import { volumenPrismaCilindro3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/06-volumen-prisma-cilindro-3eso";
 import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/02-volumen-prismas-cilindros-2eso";
 
 export const interactiveLessons = {
@@ -216,7 +225,10 @@ export const interactiveLessons = {
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
   "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
   "aproximaciones-errores-3eso": aproximacionesErrores3esoLesson,
+  "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
   "area-cuadrilateros-3eso": areaCuadrilateros3esoLesson,
+  "area-esfera-3eso": areaEsfera3esoLesson,
+  "area-poliedros-3eso": areaPoliedros3esoLesson,
   "area-poligonos-3eso": areaPoligonos3esoLesson,
   "area-triangulos-3eso": areaTriangulos3esoLesson,
   "areas-circulo": areasCirculoLesson,
@@ -233,6 +245,7 @@ export const interactiveLessons = {
   "conicas-3eso": conicas3esoLesson,
   "conos-2eso": conos2esoLesson,
   "continuidad-3eso": continuidad3esoLesson,
+  "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
   "crecimiento-extremos-2eso": crecimientoExtremos2esoLesson,
   "crecimiento-extremos-3eso": crecimientoExtremos3esoLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
@@ -330,6 +343,8 @@ export const interactiveLessons = {
   "piramides-2eso": piramides2esoLesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poliedros-2eso": poliedros2esoLesson,
+  "poliedros-3eso": poliedros3esoLesson,
+  "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
   "polinomios-2eso": polinomios2esoLesson,
   "polinomios-3eso": polinomios3esoLesson,
@@ -408,7 +423,10 @@ export const interactiveLessons = {
   "unidades-volumen-2eso": unidadesVolumen2esoLesson,
   "variaciones-porcentuales-3eso": variacionesPorcentuales3esoLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
+  "volumen-esfera-3eso": volumenEsfera3esoLesson,
+  "volumen-piramide-cono-3eso": volumenPiramideCono3esoLesson,
   "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
+  "volumen-prisma-cilindro-3eso": volumenPrismaCilindro3esoLesson,
   "volumen-prismas-cilindros-2eso": volumenPrismasCilindros2esoLesson,
 } as const;
 

@@ -91,7 +91,7 @@ export const progresionesGeometricas3esoLesson: InteractiveLesson = {
           kind: "example",
           title: "a₁ = 250 y a₂ = 300",
           lines: [
-            { math: "a_2 = a_1 \\cdot r \;\\Rightarrow\; r = \\dfrac{300}{250} = 1{,}2" },
+            { math: "a_2 = a_1 \\cdot r \\ \\Rightarrow\\  r = \\dfrac{300}{250} = 1{,}2" },
             { math: "a_n = 250 \\cdot 1{,}2^{\\,n-1}" },
             { math: "a_6 = 250 \\cdot 1{,}2^{5} = 622{,}08" },
           ],

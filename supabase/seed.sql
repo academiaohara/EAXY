@@ -55,6 +55,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000044', 'a1000000-0000-4000-8000-000000000003', 'funciones-y-graficas', 'Funciones y gráficas', 7),
   ('a2000000-0000-4000-8000-000000000045', 'a1000000-0000-4000-8000-000000000003', 'funciones-lineales', 'Funciones lineales', 8),
   ('a2000000-0000-4000-8000-000000000046', 'a1000000-0000-4000-8000-000000000003', 'problemas-metricos-en-el-plano', 'Problemas métricos en el plano', 9),
+  ('a2000000-0000-4000-8000-000000000047', 'a1000000-0000-4000-8000-000000000003', 'cuerpos-geometricos', 'Cuerpos geométricos', 10),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -255,6 +256,15 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000004607', 'a2000000-0000-4000-8000-000000000046', '7. Área de los polígonos', 'Polígonos irregulares y regulares con apotema.', 7, null),
   ('a3000000-0000-4000-8000-000000004608', 'a2000000-0000-4000-8000-000000000046', '8. Longitud de la circunferencia y área del círculo', 'Longitud 2πr y área πr².', 8, null),
   ('a3000000-0000-4000-8000-000000004609', 'a2000000-0000-4000-8000-000000000046', '9. Áreas de figuras curvas', 'Sector circular, corona, elipse y segmento de parábola.', 9, null),
+  ('a3000000-0000-4000-8000-000000004701', 'a2000000-0000-4000-8000-000000000047', '1. Poliedros: prismas, pirámides y poliedros regulares', 'Elementos, sólidos platónicos, duales y fórmula de Euler.', 1, null),
+  ('a3000000-0000-4000-8000-000000004702', 'a2000000-0000-4000-8000-000000000047', '2. Poliedros semirregulares y truncamientos', 'Sólidos arquimedianos y poliedros truncados.', 2, null),
+  ('a3000000-0000-4000-8000-000000004703', 'a2000000-0000-4000-8000-000000000047', '3. Superficie de prismas y pirámides', 'Desarrollo, apotema de la pirámide y área total.', 3, null),
+  ('a3000000-0000-4000-8000-000000004704', 'a2000000-0000-4000-8000-000000000047', '4. Superficie de cilindros, conos y troncos de cono', 'Área lateral y total de cuerpos de revolución.', 4, null),
+  ('a3000000-0000-4000-8000-000000004705', 'a2000000-0000-4000-8000-000000000047', '5. Superficie de la esfera', 'Esfera, casquete y zona esférica.', 5, null),
+  ('a3000000-0000-4000-8000-000000004706', 'a2000000-0000-4000-8000-000000000047', '6. Volumen del prisma y del cilindro', 'Área de la base por la altura.', 6, null),
+  ('a3000000-0000-4000-8000-000000004707', 'a2000000-0000-4000-8000-000000000047', '7. Volumen de la pirámide, del cono y de sus troncos', 'Un tercio del prisma o cilindro y volumen del tronco.', 7, null),
+  ('a3000000-0000-4000-8000-000000004708', 'a2000000-0000-4000-8000-000000000047', '8. Volumen de la esfera y de la zona esférica', 'Dos tercios del cilindro envolvente y zonas esféricas.', 8, null),
+  ('a3000000-0000-4000-8000-000000004709', 'a2000000-0000-4000-8000-000000000047', '9. Coordenadas geográficas y husos horarios', 'Latitud, longitud, antípodas y husos horarios.', 9, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

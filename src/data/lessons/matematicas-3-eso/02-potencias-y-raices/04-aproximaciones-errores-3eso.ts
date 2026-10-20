@@ -91,7 +91,7 @@ export const aproximacionesErrores3esoLesson: InteractiveLesson = {
         {
           kind: "rule",
           text: "Al aproximar por redondeo hasta un orden, el error absoluto es **menor o igual que la mitad** de una unidad de ese orden.",
-          formula: "9{,}2\\ \\text{km} \;\\Rightarrow\; E_a < 0{,}05\\ \\text{km} = 50\\ \\text{m}",
+          formula: "9{,}2\\ \\text{km} \\ \\Rightarrow\\  E_a < 0{,}05\\ \\text{km} = 50\\ \\text{m}",
         },
         {
           kind: "example",
