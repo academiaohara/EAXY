@@ -46,6 +46,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000035', 'a1000000-0000-4000-8000-000000000002', 'medida-del-volumen', 'Medida del volumen', 10),
   ('a2000000-0000-4000-8000-000000000036', 'a1000000-0000-4000-8000-000000000002', 'funciones', 'Funciones', 11),
   ('a2000000-0000-4000-8000-000000000037', 'a1000000-0000-4000-8000-000000000002', 'estadistica', 'Estadística', 12),
+  ('a2000000-0000-4000-8000-000000000038', 'a1000000-0000-4000-8000-000000000003', 'fracciones-y-decimales', 'Fracciones y decimales', 1),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -190,6 +191,15 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003703', 'a2000000-0000-4000-8000-000000000037', '3. Media, mediana y moda', 'Parámetros de centralización, con y sin tabla de frecuencias.', 3, null),
   ('a3000000-0000-4000-8000-000000003704', 'a2000000-0000-4000-8000-000000000037', '4. Parámetros de dispersión', 'Recorrido y desviación media.', 4, null),
   ('a3000000-0000-4000-8000-000000003705', 'a2000000-0000-4000-8000-000000000037', '5. Cuartiles y diagrama de caja', 'Cuartiles y diagrama de caja y bigotes.', 5, null),
+  ('a3000000-0000-4000-8000-000000003801', 'a2000000-0000-4000-8000-000000000038', '1. Números racionales y fracciones equivalentes', 'Fracciones y racionales, simplificación, equivalencia y comparación.', 1, null),
+  ('a3000000-0000-4000-8000-000000003802', 'a2000000-0000-4000-8000-000000000038', '2. Suma y resta de fracciones', 'Mismo denominador, m.c.m. y sumas con varios términos.', 2, null),
+  ('a3000000-0000-4000-8000-000000003803', 'a2000000-0000-4000-8000-000000000038', '3. Multiplicación de fracciones', 'Producto de fracciones, simplificación previa y signos.', 3, null),
+  ('a3000000-0000-4000-8000-000000003804', 'a2000000-0000-4000-8000-000000000038', '4. División de fracciones', 'Fracción inversa y problemas de reparto.', 4, null),
+  ('a3000000-0000-4000-8000-000000003805', 'a2000000-0000-4000-8000-000000000038', '5. Fracciones con potencias', 'Potencia de una fracción y propiedades de las potencias.', 5, null),
+  ('a3000000-0000-4000-8000-000000003806', 'a2000000-0000-4000-8000-000000000038', '6. La fracción como operador', 'Fracción de una cantidad, cantidad total y fracción de fracción.', 6, null),
+  ('a3000000-0000-4000-8000-000000003807', 'a2000000-0000-4000-8000-000000000038', '7. Números decimales y fracciones', 'Decimales exactos y periódicos, paso de fracción a decimal y viceversa.', 7, null),
+  ('a3000000-0000-4000-8000-000000003808', 'a2000000-0000-4000-8000-000000000038', '8. Porcentajes', 'Tanto por ciento de una cantidad y porcentaje de una proporción.', 8, null),
+  ('a3000000-0000-4000-8000-000000003809', 'a2000000-0000-4000-8000-000000000038', '9. Aumentos y disminuciones porcentuales', 'Índice de variación y cantidad inicial.', 9, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
