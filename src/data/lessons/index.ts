@@ -24,6 +24,7 @@ import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
+import { ecuacionesDosIncognitas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-2eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
@@ -42,6 +43,7 @@ import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-f
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
 import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/05-maximo-comun-divisor-2eso";
+import { metodoSustitucion2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/03-metodo-sustitucion-2eso";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
@@ -78,6 +80,7 @@ import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matemat
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
+import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
@@ -99,6 +102,7 @@ import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
+import { sistemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/02-sistemas-ecuaciones-2eso";
 import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
 import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/04-sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
@@ -141,6 +145,7 @@ export const interactiveLessons = {
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-denominadores-2eso": ecuacionesDenominadores2esoLesson,
+  "ecuaciones-dos-incognitas-2eso": ecuacionesDosIncognitas2esoLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factores-primos": factoresPrimosLesson,
@@ -159,6 +164,7 @@ export const interactiveLessons = {
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "maximo-comun-divisor": maximoComunDivisorLesson,
   "maximo-comun-divisor-2eso": maximoComunDivisor2esoLesson,
+  "metodo-sustitucion-2eso": metodoSustitucion2esoLesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
   "monomios-2eso": monomios2esoLesson,
@@ -195,6 +201,7 @@ export const interactiveLessons = {
   "problemas-con-sistemas": problemasConSistemasLesson,
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
+  "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
@@ -216,6 +223,7 @@ export const interactiveLessons = {
   "sistema-metrico-peso": sistemaMetricoPesoLesson,
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
   "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
+  "sistemas-ecuaciones-2eso": sistemasEcuaciones2esoLesson,
   "sistemas-lineales-grafica": sistemasLinealesGraficaLesson,
   "sistemas-no-lineales": sistemasNoLinealesLesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,

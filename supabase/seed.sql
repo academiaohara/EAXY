@@ -40,6 +40,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000029', 'a1000000-0000-4000-8000-000000000002', 'proporcionalidad-y-porcentajes', 'Proporcionalidad y porcentajes', 4),
   ('a2000000-0000-4000-8000-000000000030', 'a1000000-0000-4000-8000-000000000002', 'algebra', 'Álgebra', 5),
   ('a2000000-0000-4000-8000-000000000031', 'a1000000-0000-4000-8000-000000000002', 'ecuaciones', 'Ecuaciones', 6),
+  ('a2000000-0000-4000-8000-000000000032', 'a1000000-0000-4000-8000-000000000002', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 7),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -150,6 +151,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003102', 'a2000000-0000-4000-8000-000000000031', '2. Resolución de ecuaciones', 'Reducir y transponer, incógnita en los dos miembros, paréntesis y casos especiales.', 2, null),
   ('a3000000-0000-4000-8000-000000003103', 'a2000000-0000-4000-8000-000000000031', '3. Ecuaciones con denominadores', 'Eliminar denominadores con el m.c.m.', 3, null),
   ('a3000000-0000-4000-8000-000000003104', 'a2000000-0000-4000-8000-000000000031', '4. Problemas con ecuaciones', 'Los cuatro pasos y problemas de números, edades y geometría.', 4, null),
+  ('a3000000-0000-4000-8000-000000003201', 'a2000000-0000-4000-8000-000000000032', '1. Ecuaciones con dos incógnitas', 'Ecuación lineal, soluciones como parejas y recta asociada.', 1, null),
+  ('a3000000-0000-4000-8000-000000003202', 'a2000000-0000-4000-8000-000000000032', '2. Sistemas de ecuaciones', 'Solución común, solución gráfica y tipos de sistemas.', 2, null),
+  ('a3000000-0000-4000-8000-000000003203', 'a2000000-0000-4000-8000-000000000032', '3. Método de sustitución', 'Despejar, sustituir, resolver y comprobar.', 3, null),
+  ('a3000000-0000-4000-8000-000000003204', 'a2000000-0000-4000-8000-000000000032', '4. Problemas con sistemas de ecuaciones', 'Plantear y resolver problemas de edades, números y precios.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
