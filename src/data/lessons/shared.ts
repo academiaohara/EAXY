@@ -17,3 +17,4 @@ export const TEMA_14_SUBTITLE = TEMA_1ESO_14_SUBTITLE;
 export const TEMA_15_SUBTITLE = TEMA_1ESO_15_SUBTITLE;
 export const TEMA_7_SUBTITLE = "4.º ESO A, Tema 7 — Sistemas de ecuaciones";
 export const TEMA_2ESO_1_SUBTITLE = "2.º ESO, Unidad 1 — Divisibilidad y números enteros";
+export const TEMA_2ESO_2_SUBTITLE = "2.º ESO, Unidad 2 — Sistema de numeración decimal y sistema sexagesimal";

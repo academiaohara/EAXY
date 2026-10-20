@@ -35,6 +35,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000024', 'a1000000-0000-4000-8000-000000000001', 'tablas-y-graficas', 'Tablas y gráficas', 14),
   ('a2000000-0000-4000-8000-000000000025', 'a1000000-0000-4000-8000-000000000001', 'probabilidad', 'Probabilidad', 15),
   ('a2000000-0000-4000-8000-000000000026', 'a1000000-0000-4000-8000-000000000002', 'divisibilidad-y-numeros-enteros', 'Divisibilidad y números enteros', 1),
+  ('a2000000-0000-4000-8000-000000000027', 'a1000000-0000-4000-8000-000000000002', 'sistema-decimal-y-sexagesimal', 'Sistema de numeración decimal y sistema sexagesimal', 2),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -116,6 +117,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000002605', 'a2000000-0000-4000-8000-000000000026', '5. Máximo común divisor', 'Divisores comunes, método de factores primos y problemas de reparto.', 5, null),
   ('a3000000-0000-4000-8000-000000002606', 'a2000000-0000-4000-8000-000000000026', '6. Operaciones con potencias', 'Signo de la potencia, producto y cociente, misma base y potencia de potencia.', 6, null),
   ('a3000000-0000-4000-8000-000000002607', 'a2000000-0000-4000-8000-000000000026', '7. Las raíces', 'Raíz cuadrada, cuadrados perfectos, dos raíces, raíz entera y calculadora.', 7, null),
+  ('a3000000-0000-4000-8000-000000002701', 'a2000000-0000-4000-8000-000000000027', '1. Números decimales', 'Órdenes de unidades, clases de decimales, paso a fracción y ordenación.', 1, null),
+  ('a3000000-0000-4000-8000-000000002702', 'a2000000-0000-4000-8000-000000000027', '2. Sumas y restas de números decimales', 'Suma y resta en columna con coma bajo coma y ceros de relleno.', 2, null),
+  ('a3000000-0000-4000-8000-000000002703', 'a2000000-0000-4000-8000-000000000027', '3. Multiplicación y división', 'Producto con recuento de decimales y los tres casos de la división.', 3, null),
+  ('a3000000-0000-4000-8000-000000002704', 'a2000000-0000-4000-8000-000000000027', '4. Sistema sexagesimal', 'Tiempo y ángulos, formas compleja e incompleja y suma en forma compleja.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

@@ -35,9 +35,11 @@ import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-di
 import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/05-maximo-comun-divisor-2eso";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
+import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/03-multiplicacion-division-naturales";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
+import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
 import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-numeros-enteros";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/01-operaciones-fracciones-comun-denominador";
@@ -73,9 +75,11 @@ import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/0
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
+import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-sistema-sexagesimal-2eso";
 import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
 import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/04-sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
+import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-suma-resta-decimales-2eso";
 import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/02-suma-resta-naturales";
 import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/01-tablas-graficas-coordenadas-cartesianas";
@@ -123,9 +127,11 @@ export const interactiveLessons = {
   "maximo-comun-divisor-2eso": maximoComunDivisor2esoLesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
+  "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
+  "numeros-decimales-2eso": numerosDecimales2esoLesson,
   "numeros-enteros": numerosEnterosLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
@@ -161,9 +167,11 @@ export const interactiveLessons = {
   "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
   "sistema-metrico-peso": sistemaMetricoPesoLesson,
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
+  "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
   "sistemas-lineales-grafica": sistemasLinealesGraficaLesson,
   "sistemas-no-lineales": sistemasNoLinealesLesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
+  "suma-resta-decimales-2eso": sumaRestaDecimales2esoLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
   "suma-resta-naturales": sumaRestaNaturalesLesson,
   "tablas-graficas-coordenadas-cartesianas": tablasGraficasCoordenadasCartesianasLesson,
