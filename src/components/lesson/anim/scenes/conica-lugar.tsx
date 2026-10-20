@@ -93,10 +93,10 @@ export function buildConicaLugar(params: { conica?: "elipse" | "parabola" | "hip
   const F2: [number, number] = [c, 0];
   const branch = (s: number) => {
     const out: string[] = [];
-    for (let t = -1.6; t <= 1.6; t += 0.05) out.push(`${px([s * a * Math.cosh(t), b * Math.sinh(t)])},${py([s * a * Math.cosh(t), b * Math.sinh(t)])}`);
+    for (let t = -1.05; t <= 1.05; t += 0.05) out.push(`${px([s * a * Math.cosh(t), b * Math.sinh(t)])},${py([s * a * Math.cosh(t), b * Math.sinh(t)])}`);
     return out.join(" ");
   };
-  const P: [number, number] = [a * Math.cosh(1.1), b * Math.sinh(1.1)];
+  const P: [number, number] = [a * Math.cosh(0.75), b * Math.sinh(0.75)];
   const diff = Math.abs(dist(P, F) - dist(P, F2));
   return {
     label: "Hipérbola: la diferencia de distancias a los dos focos es constante",
@@ -122,7 +122,7 @@ export function buildConicaLugar(params: { conica?: "elipse" | "parabola" | "hip
           <Txt x={px(P) + 14} y={py(P) - 12} size={22} color={MANIM.ink} anchor="start">P</Txt>
         </Fade>
         <Fade show={beat >= 2} dy={8}>
-          <Txt x={400} y={392} size={26} color={MANIM.yellow}>{`|PF − PF'| = |${dist(P, F).toFixed(1).replace(".", ",")} − ${dist(P, F2).toFixed(1).replace(".", ",")}| = ${diff.toFixed(0)}`}</Txt>
+          <Txt x={400} y={408} size={26} color={MANIM.yellow}>{`|PF − PF'| = |${dist(P, F).toFixed(1).replace(".", ",")} − ${dist(P, F2).toFixed(1).replace(".", ",")}| = ${diff.toFixed(0)}`}</Txt>
         </Fade>
       </Canvas>
     ),
