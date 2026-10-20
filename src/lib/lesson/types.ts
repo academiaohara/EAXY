@@ -723,7 +723,13 @@ export type SlideAnimId =
   | "funcion-es-no-es"
   | "recta-pendiente"
   | "dispersion-puntos"
-  | "caja-bigotes";
+  | "caja-bigotes"
+  | "error-aproximacion"
+  | "notacion-cientifica"
+  | "progresion-pasos"
+  | "suma-gauss"
+  | "cuadrado-suma"
+  | "suma-por-diferencia";
 
 export type ExprStep = {
   tokens: string[];
@@ -789,6 +795,8 @@ export type SlideAnimParams = {
   parts?: string[];
   /** `simplificar-factores`: el producto viene de una división (se da la vuelta a la segunda fracción). */
   inv?: boolean;
+  /** `progresion-pasos`: tipo de progresión. */
+  prog?: "aritmetica" | "geometrica";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";

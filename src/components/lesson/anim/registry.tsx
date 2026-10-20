@@ -118,6 +118,12 @@ import { buildAreaCirculo, buildAreaParalelogramo, buildAreaPerimetro, buildArea
 import { buildCuadrantesSignos, buildDiagramaPuntos, buildDiagramaSectores, buildGraficaLlamadas, buildGraficaTramos, buildGraficoBarrasHistograma, buildMediaMedianaModa, buildMedianaPar, buildPlanoCartesiano, buildTablaFrecuencias } from "@/components/lesson/anim/scenes/estadistica";
 import { buildEspacioMuestral, buildExpDeterministaAleatorio, buildFrecuenciasDado, buildGrandesNumeros, buildLaplaceDado, buildSucesoUnionInterseccion, buildSucesosConjuntos } from "@/components/lesson/anim/scenes/probabilidad";
 import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
+import { buildErrorAproximacion } from "@/components/lesson/anim/scenes/error-aproximacion";
+import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacion-cientifica";
+import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
+import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
+import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
+import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -272,6 +278,12 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "recta-pendiente": (p) => buildRectaPendiente(p),
   "dispersion-puntos": () => buildDispersionPuntos(),
   "caja-bigotes": () => buildCajaBigotes(),
+  "error-aproximacion": (p) => buildErrorAproximacion(p),
+  "notacion-cientifica": (p) => buildNotacionCientifica(p),
+  "progresion-pasos": (p) => buildProgresionPasos(p),
+  "suma-gauss": (p) => buildSumaGauss(p),
+  "cuadrado-suma": (p) => buildCuadradoSuma(p),
+  "suma-por-diferencia": (p) => buildSumaPorDiferencia(p),
 };
 
 export function buildSlideAnim(
