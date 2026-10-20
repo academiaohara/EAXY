@@ -92,6 +92,9 @@ import { buildAngulosOpuestos } from "@/components/lesson/anim/scenes/angulos-op
 import { buildParalelasSecante } from "@/components/lesson/anim/scenes/paralelas-secante";
 import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
 import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
+import { buildPitagorasCuadrados } from "@/components/lesson/anim/scenes/pitagoras-cuadrados";
+import { buildSemejanzaFiguras } from "@/components/lesson/anim/scenes/semejanza-figuras";
+import { buildTalesSombras } from "@/components/lesson/anim/scenes/tales-sombras";
 import { buildTriangulo180 } from "@/components/lesson/anim/scenes/triangulo-180";
 import { buildPoligonoTriangulos } from "@/components/lesson/anim/scenes/poligono-triangulos";
 import { buildTrianguloAltura, buildTrianguloMediana, buildTriangulosClasificacion } from "@/components/lesson/anim/scenes/triangulos";
@@ -242,6 +245,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "grandes-numeros": () => buildGrandesNumeros(),
   "laplace-dado": () => buildLaplaceDado(),
   "suceso-union-interseccion": () => buildSucesoUnionInterseccion(),
+  "pitagoras-cuadrados": (p) => buildPitagorasCuadrados(p),
+  "semejanza-figuras": (p) => buildSemejanzaFiguras(p),
+  "tales-sombras": (p) => buildTalesSombras(p),
 };
 
 export function buildSlideAnim(

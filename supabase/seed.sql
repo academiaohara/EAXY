@@ -41,6 +41,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000030', 'a1000000-0000-4000-8000-000000000002', 'algebra', 'Álgebra', 5),
   ('a2000000-0000-4000-8000-000000000031', 'a1000000-0000-4000-8000-000000000002', 'ecuaciones', 'Ecuaciones', 6),
   ('a2000000-0000-4000-8000-000000000032', 'a1000000-0000-4000-8000-000000000002', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 7),
+  ('a2000000-0000-4000-8000-000000000033', 'a1000000-0000-4000-8000-000000000002', 'teorema-de-pitagoras-y-semejanza', 'Teorema de Pitágoras. Semejanza', 8),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -155,6 +156,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003202', 'a2000000-0000-4000-8000-000000000032', '2. Sistemas de ecuaciones', 'Solución común, solución gráfica y tipos de sistemas.', 2, null),
   ('a3000000-0000-4000-8000-000000003203', 'a2000000-0000-4000-8000-000000000032', '3. Método de sustitución', 'Despejar, sustituir, resolver y comprobar.', 3, null),
   ('a3000000-0000-4000-8000-000000003204', 'a2000000-0000-4000-8000-000000000032', '4. Problemas con sistemas de ecuaciones', 'Plantear y resolver problemas de edades, números y precios.', 4, null),
+  ('a3000000-0000-4000-8000-000000003301', 'a2000000-0000-4000-8000-000000000033', '1. Teorema de Pitágoras', 'Catetos, hipotenusa, cálculo de lados y recíproco.', 1, null),
+  ('a3000000-0000-4000-8000-000000003302', 'a2000000-0000-4000-8000-000000000033', '2. Aplicaciones del teorema de Pitágoras', 'Diagonales, lados de un rombo, alturas y apotemas.', 2, null),
+  ('a3000000-0000-4000-8000-000000003303', 'a2000000-0000-4000-8000-000000000033', '3. Figuras semejantes', 'Razón de semejanza, escalas y proporciones.', 3, null),
+  ('a3000000-0000-4000-8000-000000003304', 'a2000000-0000-4000-8000-000000000033', '4. Teorema de Tales', 'Semejanza de triángulos rectángulos y alturas con sombras.', 4, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

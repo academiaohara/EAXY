@@ -708,7 +708,10 @@ export type SlideAnimId =
   | "frecuencias-dado"
   | "grandes-numeros"
   | "laplace-dado"
-  | "suceso-union-interseccion";
+  | "suceso-union-interseccion"
+  | "pitagoras-cuadrados"
+  | "semejanza-figuras"
+  | "tales-sombras";
 
 export type ExprStep = {
   tokens: string[];
