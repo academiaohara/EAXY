@@ -20,3 +20,4 @@ export const TEMA_2ESO_1_SUBTITLE = "2.º ESO, Unidad 1 — Divisibilidad y núm
 export const TEMA_2ESO_2_SUBTITLE = "2.º ESO, Unidad 2 — Sistema de numeración decimal y sistema sexagesimal";
 export const TEMA_2ESO_3_SUBTITLE = "2.º ESO, Unidad 3 — Las fracciones";
 export const TEMA_2ESO_4_SUBTITLE = "2.º ESO, Unidad 4 — Proporcionalidad y porcentajes";
+export const TEMA_2ESO_5_SUBTITLE = "2.º ESO, Unidad 5 — Álgebra";
