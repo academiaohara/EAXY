@@ -51,6 +51,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000040', 'a1000000-0000-4000-8000-000000000003', 'progresiones', 'Progresiones', 3),
   ('a2000000-0000-4000-8000-000000000041', 'a1000000-0000-4000-8000-000000000003', 'lenguaje-algebraico', 'El lenguaje algebraico', 4),
   ('a2000000-0000-4000-8000-000000000042', 'a1000000-0000-4000-8000-000000000003', 'ecuaciones', 'Ecuaciones', 5),
+  ('a2000000-0000-4000-8000-000000000043', 'a1000000-0000-4000-8000-000000000003', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 6),
+  ('a2000000-0000-4000-8000-000000000044', 'a1000000-0000-4000-8000-000000000003', 'funciones-y-graficas', 'Funciones y gráficas', 7),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -225,6 +227,16 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000004204', 'a2000000-0000-4000-8000-000000000042', '4. Ecuaciones de segundo grado', 'Fórmula general y discriminante.', 4, null),
   ('a3000000-0000-4000-8000-000000004205', 'a2000000-0000-4000-8000-000000000042', '5. Ecuaciones de segundo grado incompletas', 'Sin término en x y sin término independiente.', 5, null),
   ('a3000000-0000-4000-8000-000000004206', 'a2000000-0000-4000-8000-000000000042', '6. Problemas con ecuaciones', 'Plantear y resolver problemas con ecuaciones de primer y segundo grado.', 6, null),
+  ('a3000000-0000-4000-8000-000000004301', 'a2000000-0000-4000-8000-000000000043', '1. Ecuaciones con dos incógnitas', 'Soluciones de una ecuación lineal y su representación como recta.', 1, null),
+  ('a3000000-0000-4000-8000-000000004302', 'a2000000-0000-4000-8000-000000000043', '2. Sistemas de ecuaciones', 'Solución común y comprobación de pares.', 2, null),
+  ('a3000000-0000-4000-8000-000000004303', 'a2000000-0000-4000-8000-000000000043', '3. Número de soluciones de un sistema', 'Sistemas compatibles, incompatibles e indeterminados.', 3, null),
+  ('a3000000-0000-4000-8000-000000004304', 'a2000000-0000-4000-8000-000000000043', '4. Método de sustitución', 'Despejar, sustituir y comprobar.', 4, null),
+  ('a3000000-0000-4000-8000-000000004305', 'a2000000-0000-4000-8000-000000000043', '5. Problemas con sistemas de ecuaciones', 'Plantear sistemas con edades, precios, porcentajes y tests.', 5, null),
+  ('a3000000-0000-4000-8000-000000004401', 'a2000000-0000-4000-8000-000000000044', '1. Las funciones y sus gráficas', 'Variables, ejes, escalas, dominio y recorrido.', 1, null),
+  ('a3000000-0000-4000-8000-000000004402', 'a2000000-0000-4000-8000-000000000044', '2. Crecimiento, decrecimiento, máximos y mínimos', 'Tramos de una función y extremos.', 2, null),
+  ('a3000000-0000-4000-8000-000000004403', 'a2000000-0000-4000-8000-000000000044', '3. Continuidad y discontinuidades', 'Funciones continuas, saltos y puntos aislados.', 3, null),
+  ('a3000000-0000-4000-8000-000000004404', 'a2000000-0000-4000-8000-000000000044', '4. Tendencias y periodicidad', 'Comportamiento a largo plazo y funciones periódicas.', 4, null),
+  ('a3000000-0000-4000-8000-000000004405', 'a2000000-0000-4000-8000-000000000044', '5. Expresión analítica de una función', 'De la tabla a la fórmula y uso de la fórmula.', 5, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

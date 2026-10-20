@@ -207,6 +207,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `cuadrado-suma` | Cuadrado de una suma: cuadrado de lado a + b partido en a², b² y dos rectángulos ab | `a`, `b` (lados, por defecto 5 y 3) |
 | `suma-por-diferencia` | Suma por diferencia: a² − b² se corta y se recoloca en un rectángulo (a + b)·(a − b) | `a`, `b` (por defecto 7 y 3, con b < a) |
 | `parabola-raices` | Parábola y = ax² + bx + c: las soluciones son los cortes con el eje X y el signo del discriminante decide cuántos hay | `a`, `b`, `c` (por defecto 1, −2, −3) |
+| `sistema-rectas` | Sistema lineal como dos rectas: se cortan (una solución), son paralelas (incompatible) o coinciden (indeterminado) | `sys` (`unica`/`incompatible`/`indeterminado`) |
+| `funcion-continuidad` | Tres funciones: puntos aislados (aparatos vendidos), saltos bruscos (llamada) y trazo continuo (estatura) | — |
+| `funcion-tendencia-periodo` | Tendencia (el agua se enfría hacia 20 °C) y función periódica con su periodo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

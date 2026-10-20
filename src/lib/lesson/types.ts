@@ -730,7 +730,10 @@ export type SlideAnimId =
   | "suma-gauss"
   | "cuadrado-suma"
   | "suma-por-diferencia"
-  | "parabola-raices";
+  | "parabola-raices"
+  | "sistema-rectas"
+  | "funcion-continuidad"
+  | "funcion-tendencia-periodo";
 
 export type ExprStep = {
   tokens: string[];
@@ -798,6 +801,8 @@ export type SlideAnimParams = {
   inv?: boolean;
   /** `progresion-pasos`: tipo de progresión. */
   prog?: "aritmetica" | "geometrica";
+  /** `sistema-rectas`: caso del sistema lineal. */
+  sys?: "unica" | "incompatible" | "indeterminado";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";
