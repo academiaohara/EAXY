@@ -3,7 +3,7 @@ import { TEMA_2ESO_2_SUBTITLE } from "@/data/lessons/shared";
 
 export const multiplicacionDivisionDecimales2esoLesson: InteractiveLesson = {
   slug: "multiplicacion-division-decimales-2eso",
-  title: "3. Multiplicación y división de números decimales",
+  title: "4. Multiplicación y división",
   subtitle: TEMA_2ESO_2_SUBTITLE,
   stage: { theme: "board" },
   steps: [

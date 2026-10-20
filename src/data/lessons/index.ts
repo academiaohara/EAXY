@@ -4,6 +4,7 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/06-algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/05-algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
+import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
 import { areasCirculoLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/04-areas-circulo";
 import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/01-areas-cuadrilateros";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
@@ -24,7 +25,7 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matemati
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
-import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/04-factor-comun-2eso";
+import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
 import { factoresPrimos2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/03-factores-primos-2eso";
 import { figurasGeometricasCircunferenciaLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/04-figuras-geometricas-circunferencia";
@@ -36,7 +37,7 @@ import { fraccionesEquivalentesLesson } from "@/data/lessons/matematicas-1-eso/0
 import { fraccionesEquivalentes2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/01-fracciones-equivalentes-2eso";
 import { fraccionesOperadorLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/02-fracciones-operador";
 import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/01-fracciones-parte-unidad";
-import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-fracciones-potencias-2eso";
+import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/07-fracciones-potencias-2eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
@@ -44,20 +45,24 @@ import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
-import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-multiplicacion-division-decimales-2eso";
+import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
+import { multiplicacionDivisionEnteros2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/07-multiplicacion-division-enteros-2eso";
 import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/03-multiplicacion-division-naturales";
 import { multiplicacionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/03-multiplicacion-fracciones-2eso";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
 import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
 import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-numeros-enteros";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
+import { operacionesCombinadasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-operaciones-combinadas-fracciones-2eso";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/01-operaciones-fracciones-comun-denominador";
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/03-operaciones-fracciones-multiplicacion-division";
 import { operacionesFraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/04-operaciones-fracciones-problemas";
 import { operacionesFraccionesSumaRestaLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/02-operaciones-fracciones-suma-resta";
 import { operacionesNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/02-operaciones-numeros-decimales";
-import { operacionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/06-operaciones-potencias-2eso";
+import { operacionesPolinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/04-operaciones-polinomios-2eso";
+import { operacionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/08-operaciones-potencias-2eso";
+import { operacionesSexagesimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/07-operaciones-sexagesimales-2eso";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
@@ -72,12 +77,14 @@ import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-p
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
+import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
 import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/01-proporcionalidad-magnitudes";
-import { raicesCuadradas2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/07-raices-cuadradas-2eso";
+import { raicesCuadradas2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/09-raices-cuadradas-2eso";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/02-raiz-cuadrada-naturales";
+import { raizDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/05-raiz-decimales-2eso";
 import { rectasYAngulosAngulosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/03-rectas-y-angulos-angulos";
 import { rectasYAngulosMediatrizBisectrizLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/02-rectas-y-angulos-mediatriz-bisectriz";
 import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/05-rectas-y-angulos-medida";
@@ -91,12 +98,13 @@ import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/0
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
-import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-sistema-sexagesimal-2eso";
+import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
 import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
 import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/04-sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
-import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-suma-resta-decimales-2eso";
+import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-suma-resta-decimales-2eso";
 import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
+import { sumaRestaEnteros2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/06-suma-resta-enteros-2eso";
 import { sumaRestaFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/02-suma-resta-fracciones-2eso";
 import { sumaRestaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/02-suma-resta-naturales";
 import { tablasGraficasCoordenadasCartesianasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/01-tablas-graficas-coordenadas-cartesianas";
@@ -113,6 +121,7 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
   "areas-circulo": areasCirculoLesson,
   "areas-cuadrilateros": areasCuadrilaterosLesson,
   "areas-poligonos": areasPoligonosLesson,
@@ -155,18 +164,22 @@ export const interactiveLessons = {
   "monomios-2eso": monomios2esoLesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
+  "multiplicacion-division-enteros-2eso": multiplicacionDivisionEnteros2esoLesson,
   "multiplicacion-division-naturales": multiplicacionDivisionNaturalesLesson,
   "multiplicacion-fracciones-2eso": multiplicacionFracciones2esoLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
   "numeros-decimales-2eso": numerosDecimales2esoLesson,
   "numeros-enteros": numerosEnterosLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
+  "operaciones-combinadas-fracciones-2eso": operacionesCombinadasFracciones2esoLesson,
   "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
   "operaciones-fracciones-multiplicacion-division": operacionesFraccionesMultiplicacionDivisionLesson,
   "operaciones-fracciones-problemas": operacionesFraccionesProblemasLesson,
   "operaciones-fracciones-suma-resta": operacionesFraccionesSumaRestaLesson,
   "operaciones-numeros-decimales": operacionesNumerosDecimalesLesson,
+  "operaciones-polinomios-2eso": operacionesPolinomios2esoLesson,
   "operaciones-potencias-2eso": operacionesPotencias2esoLesson,
+  "operaciones-sexagesimales-2eso": operacionesSexagesimales2esoLesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "parentesis-enteros": parentesisEnterosLesson,
   "polinomios-2eso": polinomios2esoLesson,
@@ -181,12 +194,14 @@ export const interactiveLessons = {
   "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
+  "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
   "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "raices-cuadradas-2eso": raicesCuadradas2esoLesson,
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
+  "raiz-decimales-2eso": raizDecimales2esoLesson,
   "rectas-y-angulos-angulos": rectasYAngulosAngulosLesson,
   "rectas-y-angulos-mediatriz-bisectriz": rectasYAngulosMediatrizBisectrizLesson,
   "rectas-y-angulos-medida": rectasYAngulosMedidaLesson,
@@ -206,6 +221,7 @@ export const interactiveLessons = {
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
   "suma-resta-decimales-2eso": sumaRestaDecimales2esoLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
+  "suma-resta-enteros-2eso": sumaRestaEnteros2esoLesson,
   "suma-resta-fracciones-2eso": sumaRestaFracciones2esoLesson,
   "suma-resta-naturales": sumaRestaNaturalesLesson,
   "tablas-graficas-coordenadas-cartesianas": tablasGraficasCoordenadasCartesianasLesson,

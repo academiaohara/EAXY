@@ -3,7 +3,7 @@ import { TEMA_2ESO_2_SUBTITLE } from "@/data/lessons/shared";
 
 export const sumaRestaDecimales2esoLesson: InteractiveLesson = {
   slug: "suma-resta-decimales-2eso",
-  title: "2. Sumas y restas de números decimales",
+  title: "3. Sumas y restas de números decimales",
   subtitle: TEMA_2ESO_2_SUBTITLE,
   stage: { theme: "board" },
   steps: [

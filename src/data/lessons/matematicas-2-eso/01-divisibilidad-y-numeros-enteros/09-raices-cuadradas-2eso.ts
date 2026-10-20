@@ -6,7 +6,7 @@ import { TEMA_2ESO_1_SUBTITLE } from "@/data/lessons/shared";
  */
 export const raicesCuadradas2esoLesson: InteractiveLesson = {
   slug: "raices-cuadradas-2eso",
-  title: "7. Las raíces",
+  title: "9. Las raíces",
   subtitle: TEMA_2ESO_1_SUBTITLE,
   stage: { theme: "board" },
   steps: [

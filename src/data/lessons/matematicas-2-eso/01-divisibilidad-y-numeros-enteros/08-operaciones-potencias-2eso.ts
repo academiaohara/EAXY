@@ -3,7 +3,7 @@ import { TEMA_2ESO_1_SUBTITLE } from "@/data/lessons/shared";
 
 export const operacionesPotencias2esoLesson: InteractiveLesson = {
   slug: "operaciones-potencias-2eso",
-  title: "6. Operaciones con potencias",
+  title: "8. Operaciones con potencias",
   subtitle: TEMA_2ESO_1_SUBTITLE,
   stage: { theme: "board" },
   steps: [

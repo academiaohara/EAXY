@@ -3,7 +3,7 @@ import { TEMA_2ESO_5_SUBTITLE } from "@/data/lessons/shared";
 
 export const factorComun2esoLesson: InteractiveLesson = {
   slug: "factor-comun-2eso",
-  title: "4. Extracción de factor común",
+  title: "5. Extracción de factor común",
   subtitle: TEMA_2ESO_5_SUBTITLE,
   stage: { theme: "board" },
   steps: [

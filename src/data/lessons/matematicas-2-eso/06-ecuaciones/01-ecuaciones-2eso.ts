@@ -58,7 +58,7 @@ export const ecuaciones2esoLesson: InteractiveLesson = {
         {
           kind: "facts",
           items: [
-            { tex: "7x - 2x + 4 \;=\; 8 + 3x + 2", label: "primer miembro = segundo miembro" },
+            { tex: "7x - 2x + 4 \\ =\\  8 + 3x + 2", label: "primer miembro = segundo miembro" },
           ],
         },
         {

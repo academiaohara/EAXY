@@ -3,7 +3,7 @@ import { TEMA_2ESO_3_SUBTITLE } from "@/data/lessons/shared";
 
 export const fraccionesPotencias2esoLesson: InteractiveLesson = {
   slug: "fracciones-potencias-2eso",
-  title: "5. Fracciones con potencias",
+  title: "7. Fracciones con potencias",
   subtitle: TEMA_2ESO_3_SUBTITLE,
   stage: { theme: "board" },
   steps: [

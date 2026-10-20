@@ -3,7 +3,7 @@ import { TEMA_2ESO_2_SUBTITLE } from "@/data/lessons/shared";
 
 export const sistemaSexagesimal2esoLesson: InteractiveLesson = {
   slug: "sistema-sexagesimal-2eso",
-  title: "4. Sistema sexagesimal",
+  title: "6. Sistema sexagesimal",
   subtitle: TEMA_2ESO_2_SUBTITLE,
   stage: { theme: "board" },
   steps: [
