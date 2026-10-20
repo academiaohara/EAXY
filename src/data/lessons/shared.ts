@@ -25,3 +25,4 @@ export const TEMA_2ESO_6_SUBTITLE = "2.º ESO, Unidad 6 — Ecuaciones";
 export const TEMA_2ESO_7_SUBTITLE = "2.º ESO, Unidad 7 — Sistemas de ecuaciones";
 export const TEMA_2ESO_8_SUBTITLE = "2.º ESO, Unidad 8 — Teorema de Pitágoras. Semejanza";
 export const TEMA_2ESO_9_SUBTITLE = "2.º ESO, Unidad 9 — Cuerpos geométricos";
+export const TEMA_2ESO_10_SUBTITLE = "2.º ESO, Unidad 10 — Medida del volumen";

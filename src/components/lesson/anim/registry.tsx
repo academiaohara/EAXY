@@ -92,6 +92,8 @@ import { buildAngulosOpuestos } from "@/components/lesson/anim/scenes/angulos-op
 import { buildParalelasSecante } from "@/components/lesson/anim/scenes/paralelas-secante";
 import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
 import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
+import { buildArquimedesVolumenes } from "@/components/lesson/anim/scenes/arquimedes-volumenes";
+import { buildCuboDm3 } from "@/components/lesson/anim/scenes/cubo-dm3";
 import { buildDesarrolloCilindro } from "@/components/lesson/anim/scenes/desarrollo-cilindro";
 import { buildDesarrolloCono } from "@/components/lesson/anim/scenes/desarrollo-cono";
 import { buildDesarrolloOrtoedro } from "@/components/lesson/anim/scenes/desarrollo-ortoedro";
@@ -256,6 +258,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "desarrollo-cilindro": (p) => buildDesarrolloCilindro(p),
   "desarrollo-cono": (p) => buildDesarrolloCono(p),
   "esfera-cilindro": () => buildEsferaCilindro(),
+  "cubo-dm3": () => buildCuboDm3(),
+  "arquimedes-volumenes": () => buildArquimedesVolumenes(),
 };
 
 export function buildSlideAnim(

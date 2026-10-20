@@ -192,6 +192,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `desarrollo-cilindro` | Desarrollo de un cilindro: rectángulo `2πr × h` y dos círculos (con π ≈ 3,14) | `a` (radio), `b` (altura) |
 | `desarrollo-cono` | Desarrollo de un cono: sector de radio `g` con arco `2πr` y círculo de la base (π ≈ 3,14) | `a` (radio `r`), `b` (generatriz `g`) |
 | `esfera-cilindro` | La superficie de la esfera coincide con la lateral del cilindro que la envuelve: `4πR²` | — |
+| `cubo-dm3` | Cubo de 1 dm de arista: 10 × 10 cubitos por nivel y 10 niveles, 1 dm³ = 1 000 cm³ | — |
+| `arquimedes-volumenes` | Cono, esfera y cilindro de igual radio y altura 2r: volúmenes en proporción 1 : 2 : 3 | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

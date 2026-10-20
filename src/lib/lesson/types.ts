@@ -715,7 +715,9 @@ export type SlideAnimId =
   | "desarrollo-ortoedro"
   | "desarrollo-cilindro"
   | "desarrollo-cono"
-  | "esfera-cilindro";
+  | "esfera-cilindro"
+  | "cubo-dm3"
+  | "arquimedes-volumenes";
 
 export type ExprStep = {
   tokens: string[];

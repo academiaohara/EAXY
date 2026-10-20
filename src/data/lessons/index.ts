@@ -92,6 +92,7 @@ import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
+import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
@@ -131,6 +132,10 @@ import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matem
 import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/01-teorema-pitagoras-2eso";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
+import { unidadesVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/01-unidades-volumen-2eso";
+import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
+import { volumenPiramidesConos2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/03-volumen-piramides-conos-2eso";
+import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/02-volumen-prismas-cilindros-2eso";
 
 export const interactiveLessons = {
   "algebra-ecuaciones": algebraEcuacionesLesson,
@@ -227,6 +232,7 @@ export const interactiveLessons = {
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
+  "problemas-volumen-2eso": problemasVolumen2esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
@@ -266,6 +272,10 @@ export const interactiveLessons = {
   "teorema-pitagoras-2eso": teoremaPitagoras2esoLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "triangulos-2eso": triangulos2esoLesson,
+  "unidades-volumen-2eso": unidadesVolumen2esoLesson,
+  "volumen-esfera-2eso": volumenEsfera2esoLesson,
+  "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
+  "volumen-prismas-cilindros-2eso": volumenPrismasCilindros2esoLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;
