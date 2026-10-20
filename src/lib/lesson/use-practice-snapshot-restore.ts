@@ -8,7 +8,10 @@ export function usePracticeSnapshotRestore<T>(
   apply: (value: T) => void,
 ): void {
   const applyRef = useRef(apply);
-  applyRef.current = apply;
+
+  useEffect(() => {
+    applyRef.current = apply;
+  });
 
   useEffect(() => {
     if (snapshot == null) {

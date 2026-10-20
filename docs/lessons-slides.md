@@ -185,6 +185,21 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `grandes-numeros` | La frecuencia relativa de cara se estabiliza cerca de 0,5 | — |
 | `laplace-dado` | Regla de Laplace con un dado: par, un 2 y mayor que 4 | — |
 | `suceso-union-interseccion` | «Par o múltiplo de 3» (unión) y «par y múltiplo de 3» (intersección) | — |
+| `pitagoras-cuadrados` | Cuadrados sobre los lados de un triángulo rectángulo: `a² + b² = c²` con las áreas | `a`, `b` (catetos, por defecto 3 y 4) |
+| `semejanza-figuras` | Dos triángulos rectángulos semejantes: lados correspondientes proporcionales y razón de semejanza | `a`, `b` (catetos del pequeño), `c` (razón `k`) |
+| `tales-sombras` | Altura de un objeto con su sombra y la de una estaca: triángulos semejantes y proporción | `a` (altura de la estaca), `b` (su sombra), `c` (sombra del objeto) |
+| `desarrollo-ortoedro` | Desarrollo de un ortoedro: seis rectángulos iguales de dos en dos y `A = 2(ab + ac + bc)` | `a`, `b`, `c` (aristas) |
+| `desarrollo-cilindro` | Desarrollo de un cilindro: rectángulo `2πr × h` y dos círculos (con π ≈ 3,14) | `a` (radio), `b` (altura) |
+| `desarrollo-cono` | Desarrollo de un cono: sector de radio `g` con arco `2πr` y círculo de la base (π ≈ 3,14) | `a` (radio `r`), `b` (generatriz `g`) |
+| `esfera-cilindro` | La superficie de la esfera coincide con la lateral del cilindro que la envuelve: `4πR²` | — |
+| `cubo-dm3` | Cubo de 1 dm de arista: 10 × 10 cubitos por nivel y 10 niveles, 1 dm³ = 1 000 cm³ | — |
+| `arquimedes-volumenes` | Cono, esfera y cilindro de igual radio y altura 2r: volúmenes en proporción 1 : 2 : 3 | — |
+| `funcion-temperatura` | Gráfica de la temperatura de un día: lectura de un punto, variable independiente y dependiente | — |
+| `funcion-tramos-extremos` | La misma gráfica leída de izquierda a derecha: tramos crecientes, decrecientes, constantes, máximo y mínimo | — |
+| `funcion-es-no-es` | Criterio de la recta vertical: una gráfica es función si cada vertical la corta una sola vez | — |
+| `recta-pendiente` | La recta `y = mx + n`: ordenada en el origen y pendiente con dos escalones | `a` (pendiente `m`), `b` (ordenada `n`) |
+| `dispersion-puntos` | Diagrama de puntos de 12 edades: recorrido, media y desviación media (distancias a la media) | — |
+| `caja-bigotes` | Mediana, cuartiles `Q1` y `Q3` de 14 datos y diagrama de caja y bigotes | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

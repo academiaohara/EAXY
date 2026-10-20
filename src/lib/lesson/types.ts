@@ -708,7 +708,22 @@ export type SlideAnimId =
   | "frecuencias-dado"
   | "grandes-numeros"
   | "laplace-dado"
-  | "suceso-union-interseccion";
+  | "suceso-union-interseccion"
+  | "pitagoras-cuadrados"
+  | "semejanza-figuras"
+  | "tales-sombras"
+  | "desarrollo-ortoedro"
+  | "desarrollo-cilindro"
+  | "desarrollo-cono"
+  | "esfera-cilindro"
+  | "cubo-dm3"
+  | "arquimedes-volumenes"
+  | "funcion-temperatura"
+  | "funcion-tramos-extremos"
+  | "funcion-es-no-es"
+  | "recta-pendiente"
+  | "dispersion-puntos"
+  | "caja-bigotes";
 
 export type ExprStep = {
   tokens: string[];
