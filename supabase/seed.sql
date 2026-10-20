@@ -42,6 +42,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000031', 'a1000000-0000-4000-8000-000000000002', 'ecuaciones', 'Ecuaciones', 6),
   ('a2000000-0000-4000-8000-000000000032', 'a1000000-0000-4000-8000-000000000002', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 7),
   ('a2000000-0000-4000-8000-000000000033', 'a1000000-0000-4000-8000-000000000002', 'teorema-de-pitagoras-y-semejanza', 'Teorema de Pitágoras. Semejanza', 8),
+  ('a2000000-0000-4000-8000-000000000034', 'a1000000-0000-4000-8000-000000000002', 'cuerpos-geometricos', 'Cuerpos geométricos', 9),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -160,6 +161,16 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003302', 'a2000000-0000-4000-8000-000000000033', '2. Aplicaciones del teorema de Pitágoras', 'Diagonales, lados de un rombo, alturas y apotemas.', 2, null),
   ('a3000000-0000-4000-8000-000000003303', 'a2000000-0000-4000-8000-000000000033', '3. Figuras semejantes', 'Razón de semejanza, escalas y proporciones.', 3, null),
   ('a3000000-0000-4000-8000-000000003304', 'a2000000-0000-4000-8000-000000000033', '4. Teorema de Tales', 'Semejanza de triángulos rectángulos y alturas con sombras.', 4, null),
+  ('a3000000-0000-4000-8000-000000003401', 'a2000000-0000-4000-8000-000000000034', '1. Triángulos', 'Clasificación, medianas, alturas, baricentro y ortocentro.', 1, null),
+  ('a3000000-0000-4000-8000-000000003402', 'a2000000-0000-4000-8000-000000000034', '2. Cuadriláteros', 'Paralelogramos, trapecios y trapezoides.', 2, null),
+  ('a3000000-0000-4000-8000-000000003403', 'a2000000-0000-4000-8000-000000000034', '3. Polígonos regulares', 'Centro, radio y apotema de un polígono regular.', 3, null),
+  ('a3000000-0000-4000-8000-000000003404', 'a2000000-0000-4000-8000-000000000034', '4. Circunferencias', 'Elementos y posiciones relativas.', 4, null),
+  ('a3000000-0000-4000-8000-000000003405', 'a2000000-0000-4000-8000-000000000034', '5. Poliedros', 'Prismas, pirámides, poliedros regulares y fórmula de Euler.', 5, null),
+  ('a3000000-0000-4000-8000-000000003406', 'a2000000-0000-4000-8000-000000000034', '6. Área de prismas', 'Área lateral y total, ortoedro y cubo.', 6, null),
+  ('a3000000-0000-4000-8000-000000003407', 'a2000000-0000-4000-8000-000000000034', '7. Área de pirámides', 'Altura y apotema, área lateral y total.', 7, null),
+  ('a3000000-0000-4000-8000-000000003408', 'a2000000-0000-4000-8000-000000000034', '8. Cilindros', 'Cuerpo de revolución, desarrollo y superficie.', 8, null),
+  ('a3000000-0000-4000-8000-000000003409', 'a2000000-0000-4000-8000-000000000034', '9. Conos', 'Generatriz, desarrollo y superficie.', 9, null),
+  ('a3000000-0000-4000-8000-000000003410', 'a2000000-0000-4000-8000-000000000034', '10. Esferas', 'Superficie esférica, casquetes y zonas.', 10, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),

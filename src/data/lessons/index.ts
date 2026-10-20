@@ -12,8 +12,12 @@ import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
+import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
+import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
+import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
+import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
@@ -27,6 +31,7 @@ import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaci
 import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
 import { ecuacionesDosIncognitas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-2eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
+import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
 import { factoresPrimos2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/03-factores-primos-2eso";
@@ -69,11 +74,15 @@ import { operacionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { operacionesSexagesimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/07-operaciones-sexagesimales-2eso";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
+import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
+import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
+import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
 import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
+import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
 import { probabilidadEspacioMuestralLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/02-probabilidad-espacio-muestral";
 import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/01-probabilidad-experimento-aleatorio-determinista";
 import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/04-probabilidad-frecuencias";
@@ -121,6 +130,7 @@ import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matem
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
 import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/01-teorema-pitagoras-2eso";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
+import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
 
 export const interactiveLessons = {
   "algebra-ecuaciones": algebraEcuacionesLesson,
@@ -137,8 +147,12 @@ export const interactiveLessons = {
   "areas-triangulo": areasTrianguloLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
+  "cilindros-2eso": cilindros2esoLesson,
+  "circunferencias-2eso": circunferencias2esoLesson,
+  "conos-2eso": conos2esoLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
+  "cuadrilateros-2eso": cuadrilateros2esoLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
@@ -152,6 +166,7 @@ export const interactiveLessons = {
   "ecuaciones-denominadores-2eso": ecuacionesDenominadores2esoLesson,
   "ecuaciones-dos-incognitas-2eso": ecuacionesDosIncognitas2esoLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
+  "esferas-2eso": esferas2esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factores-primos": factoresPrimosLesson,
   "factores-primos-2eso": factoresPrimos2esoLesson,
@@ -194,11 +209,15 @@ export const interactiveLessons = {
   "operaciones-sexagesimales-2eso": operacionesSexagesimales2esoLesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "parentesis-enteros": parentesisEnterosLesson,
+  "piramides-2eso": piramides2esoLesson,
+  "poliedros-2eso": poliedros2esoLesson,
+  "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
   "polinomios-2eso": polinomios2esoLesson,
   "porcentajes": porcentajesLesson,
   "porcentajes-2eso": porcentajes2esoLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
+  "prismas-2eso": prismas2esoLesson,
   "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
   "probabilidad-experimento-aleatorio-determinista": probabilidadExperimentoAleatorioDeterministaLesson,
   "probabilidad-frecuencias": probabilidadFrecuenciasLesson,
@@ -246,6 +265,7 @@ export const interactiveLessons = {
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
   "teorema-pitagoras-2eso": teoremaPitagoras2esoLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
+  "triangulos-2eso": triangulos2esoLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;

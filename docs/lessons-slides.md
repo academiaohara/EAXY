@@ -188,6 +188,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `pitagoras-cuadrados` | Cuadrados sobre los lados de un triángulo rectángulo: `a² + b² = c²` con las áreas | `a`, `b` (catetos, por defecto 3 y 4) |
 | `semejanza-figuras` | Dos triángulos rectángulos semejantes: lados correspondientes proporcionales y razón de semejanza | `a`, `b` (catetos del pequeño), `c` (razón `k`) |
 | `tales-sombras` | Altura de un objeto con su sombra y la de una estaca: triángulos semejantes y proporción | `a` (altura de la estaca), `b` (su sombra), `c` (sombra del objeto) |
+| `desarrollo-ortoedro` | Desarrollo de un ortoedro: seis rectángulos iguales de dos en dos y `A = 2(ab + ac + bc)` | `a`, `b`, `c` (aristas) |
+| `desarrollo-cilindro` | Desarrollo de un cilindro: rectángulo `2πr × h` y dos círculos (con π ≈ 3,14) | `a` (radio), `b` (altura) |
+| `desarrollo-cono` | Desarrollo de un cono: sector de radio `g` con arco `2πr` y círculo de la base (π ≈ 3,14) | `a` (radio `r`), `b` (generatriz `g`) |
+| `esfera-cilindro` | La superficie de la esfera coincide con la lateral del cilindro que la envuelve: `4πR²` | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

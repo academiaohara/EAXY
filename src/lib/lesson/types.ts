@@ -711,7 +711,11 @@ export type SlideAnimId =
   | "suceso-union-interseccion"
   | "pitagoras-cuadrados"
   | "semejanza-figuras"
-  | "tales-sombras";
+  | "tales-sombras"
+  | "desarrollo-ortoedro"
+  | "desarrollo-cilindro"
+  | "desarrollo-cono"
+  | "esfera-cilindro";
 
 export type ExprStep = {
   tokens: string[];
