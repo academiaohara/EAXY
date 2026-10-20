@@ -27,3 +27,4 @@ export const TEMA_2ESO_8_SUBTITLE = "2.º ESO, Unidad 8 — Teorema de Pitágora
 export const TEMA_2ESO_9_SUBTITLE = "2.º ESO, Unidad 9 — Cuerpos geométricos";
 export const TEMA_2ESO_10_SUBTITLE = "2.º ESO, Unidad 10 — Medida del volumen";
 export const TEMA_2ESO_11_SUBTITLE = "2.º ESO, Unidad 11 — Funciones";
+export const TEMA_2ESO_12_SUBTITLE = "2.º ESO, Unidad 12 — Estadística";

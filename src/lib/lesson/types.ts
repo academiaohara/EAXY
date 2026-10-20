@@ -721,7 +721,9 @@ export type SlideAnimId =
   | "funcion-temperatura"
   | "funcion-tramos-extremos"
   | "funcion-es-no-es"
-  | "recta-pendiente";
+  | "recta-pendiente"
+  | "dispersion-puntos"
+  | "caja-bigotes";
 
 export type ExprStep = {
   tokens: string[];

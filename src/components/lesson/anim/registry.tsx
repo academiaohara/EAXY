@@ -92,6 +92,8 @@ import { buildAngulosOpuestos } from "@/components/lesson/anim/scenes/angulos-op
 import { buildParalelasSecante } from "@/components/lesson/anim/scenes/paralelas-secante";
 import { buildGradoMinuto } from "@/components/lesson/anim/scenes/grado-minuto";
 import { buildAngulosColumna } from "@/components/lesson/anim/scenes/angulos-columna";
+import { buildCajaBigotes } from "@/components/lesson/anim/scenes/caja-bigotes";
+import { buildDispersionPuntos } from "@/components/lesson/anim/scenes/dispersion-puntos";
 import { buildFuncionEsNoEs } from "@/components/lesson/anim/scenes/funcion-es-no-es";
 import { buildFuncionTemperatura } from "@/components/lesson/anim/scenes/funcion-temperatura";
 import { buildFuncionTramosExtremos } from "@/components/lesson/anim/scenes/funcion-tramos-extremos";
@@ -268,6 +270,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "funcion-tramos-extremos": () => buildFuncionTramosExtremos(),
   "funcion-es-no-es": () => buildFuncionEsNoEs(),
   "recta-pendiente": (p) => buildRectaPendiente(p),
+  "dispersion-puntos": () => buildDispersionPuntos(),
+  "caja-bigotes": () => buildCajaBigotes(),
 };
 
 export function buildSlideAnim(

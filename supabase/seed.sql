@@ -45,6 +45,7 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000034', 'a1000000-0000-4000-8000-000000000002', 'cuerpos-geometricos', 'Cuerpos geométricos', 9),
   ('a2000000-0000-4000-8000-000000000035', 'a1000000-0000-4000-8000-000000000002', 'medida-del-volumen', 'Medida del volumen', 10),
   ('a2000000-0000-4000-8000-000000000036', 'a1000000-0000-4000-8000-000000000002', 'funciones', 'Funciones', 11),
+  ('a2000000-0000-4000-8000-000000000037', 'a1000000-0000-4000-8000-000000000002', 'estadistica', 'Estadística', 12),
   ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
@@ -184,6 +185,11 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000003604', 'a2000000-0000-4000-8000-000000000036', '4. Funciones lineales: y = mx + n', 'Pendiente, ordenada en el origen y rectas paralelas.', 4, null),
   ('a3000000-0000-4000-8000-000000003605', 'a2000000-0000-4000-8000-000000000036', '5. Funciones constantes: y = k', 'Rectas paralelas al eje X.', 5, null),
   ('a3000000-0000-4000-8000-000000003606', 'a2000000-0000-4000-8000-000000000036', '6. Representar y escribir la ecuación de una recta', 'Tabla de valores, pendiente entre dos puntos y tarifas.', 6, null),
+  ('a3000000-0000-4000-8000-000000003701', 'a2000000-0000-4000-8000-000000000037', '1. Población, muestra y variables estadísticas', 'Población y muestra, tipos de variables y tablas de frecuencias.', 1, null),
+  ('a3000000-0000-4000-8000-000000003702', 'a2000000-0000-4000-8000-000000000037', '2. Gráficas estadísticas', 'Diagramas de barras, histogramas y diagramas de sectores.', 2, null),
+  ('a3000000-0000-4000-8000-000000003703', 'a2000000-0000-4000-8000-000000000037', '3. Media, mediana y moda', 'Parámetros de centralización, con y sin tabla de frecuencias.', 3, null),
+  ('a3000000-0000-4000-8000-000000003704', 'a2000000-0000-4000-8000-000000000037', '4. Parámetros de dispersión', 'Recorrido y desviación media.', 4, null),
+  ('a3000000-0000-4000-8000-000000003705', 'a2000000-0000-4000-8000-000000000037', '5. Cuartiles y diagrama de caja', 'Cuartiles y diagrama de caja y bigotes.', 5, null),
   ('a3000000-0000-4000-8000-000000000701', 'a2000000-0000-4000-8000-000000000007', '1. Ecuaciones lineales con dos incógnitas', 'Soluciones, representación gráfica y rectas horizontales/verticales.', 1, null),
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
