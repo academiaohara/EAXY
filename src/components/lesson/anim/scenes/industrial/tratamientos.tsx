@@ -289,10 +289,10 @@ export function buildTttLectura(): AnimBuild {
           <Txt x={TX(1.2)} y={TY(620)} size={18} color={MANIM.red}>
             Ps
           </Txt>
-          <Txt x={TX(4.1)} y={TY(630)} size={18} color="#3bb8a6">
+          <Txt x={TX(5.1)} y={TY(655)} size={18} color="#3bb8a6">
             Pf
           </Txt>
-          <Txt x={TX(3.6)} y={TY(648)} size={17} color={MANIM.muted} weight={600}>
+          <Txt x={TX(2.2)} y={TY(700)} size={17} color={MANIM.muted} weight={600}>
             Perlita
           </Txt>
         </Fade>
@@ -330,7 +330,7 @@ export function buildTttLectura(): AnimBuild {
             <g key={c.m}>
               <DrawPath show={beat >= 4} d={tttCoolingPath(c.m)} color={c.color} width={3} delay={i * 350} />
               <Fade show={beat >= 4} delay={i * 350 + 400}>
-                <Txt x={i === 0 ? ex - 6 : ex + 10} y={i === 0 ? ey + 28 : i === 1 ? ey + 4 : ey - 8} size={16} color={c.color} anchor={i === 0 ? "end" : "start"}>
+                <Txt x={i === 0 ? ex - 6 : i === 1 ? ex - 8 : ex + 10} y={i === 0 ? ey + 28 : i === 1 ? ey - 12 : ey - 8} size={16} color={c.color} anchor={i === 0 ? "end" : i === 1 ? "end" : "start"}>
                   {c.label}: {tttResult(c.m).name}
                 </Txt>
               </Fade>

@@ -491,8 +491,6 @@ export function PilaElectroquimica({ block }: { block: ToolBlock }) {
             <text x={355} y={18} fill={MANIM.yellow} fontSize={13} textAnchor="start">e⁻</text>
             <text x={161} y={225} fill={MANIM.red} fontSize={15} textAnchor="middle" fontWeight={700}>{an.sym} (ánodo)</text>
             <text x={391} y={225} fill={MANIM.green} fontSize={15} textAnchor="middle" fontWeight={700}>{ca.sym} (cátodo)</text>
-            <text x={165} y={130} fill={MANIM.blue} fontSize={12} textAnchor="middle">{ion(an)} →</text>
-            <text x={378} y={130} fill={MANIM.orange} fontSize={12} textAnchor="middle">← {ion(ca)}</text>
           </Svg>
           <MathRenderer
             text={`$${nA > 1 ? nA : ""}${an.sym} \\rightarrow ${nA > 1 ? nA : ""}${an.sym}^{${sup(an)}} + ${n}e^-\\qquad ${nC > 1 ? nC : ""}${ca.sym}^{${sup(ca)}} + ${n}e^- \\rightarrow ${nC > 1 ? nC : ""}${ca.sym}$`}
