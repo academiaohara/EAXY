@@ -225,6 +225,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
+### Animaciones a todo el ancho
+
+El lienzo estándar es 800 × 420, pensado para la columna derecha. Si la escena necesita ancho (líneas de tiempo, tablas largas, muchas barras), usa `<Canvas width={1200}>` y coloca la diapositiva con `arrange: "text-top"` (texto en dos columnas arriba, animación a todo el ancho debajo) o `"visual-top"`. El lienzo se acota a ~58 % de la altura de la ventana. Ejemplo: `progresion-comparar`.
+
 ### Añadir una animación nueva
 
 1. Crear `src/components/lesson/anim/scenes/<nombre>.tsx` con una función `buildX(params): AnimBuild` (`{ label, captions, render(beat) }`).

@@ -2,9 +2,9 @@ import { Canvas, Fade, Txt } from "@/components/lesson/anim/primitives";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 
-const N = 7;
-const BASE = 360;
-const SLOT = 52;
+const N = 10;
+const BASE = 270;
+const SLOT = 90;
 
 /** Aritmética (+d) frente a geométrica (·r): una crece por escalones iguales, la otra se dispara. */
 export function buildProgresionComparar(params: { a?: number; b?: number; c?: number }): AnimBuild {
@@ -13,8 +13,8 @@ export function buildProgresionComparar(params: { a?: number; b?: number; c?: nu
   const r = Math.min(Math.max(params.c ?? 2, 2), 3);
   const ar = Array.from({ length: N }, (_, i) => a1 + d * i);
   const ge = Array.from({ length: N }, (_, i) => a1 * r ** i);
-  const scale = 250 / Math.max(...ge);
-  const x0 = 400 - (N * SLOT) / 2;
+  const scale = 200 / Math.max(...ge);
+  const x0 = 600 - (N * SLOT) / 2;
 
   return {
     label: `Progresión aritmética (+${d}) frente a geométrica (·${r}) desde ${a1}`,
@@ -25,7 +25,7 @@ export function buildProgresionComparar(params: { a?: number; b?: number; c?: nu
       `Al principio van parecidas, pero la geométrica se dispara: en el término ${N}, ${ge[N - 1]} frente a ${ar[N - 1]}. Por eso $a_n = a_1 \\cdot r^{n-1}$ crece (o decrece) tan deprisa.`,
     ],
     render: (beat) => (
-      <Canvas>
+      <Canvas width={1200} height={320}>
         <line x1={x0 - 10} y1={BASE} x2={x0 + N * SLOT + 10} y2={BASE} stroke={MANIM.grid} strokeWidth={2} />
         {Array.from({ length: N }, (_, i) => {
           const cx = x0 + i * SLOT + SLOT / 2;
@@ -36,22 +36,22 @@ export function buildProgresionComparar(params: { a?: number; b?: number; c?: nu
           return (
             <g key={i}>
               <Fade show={i === 0 || showA} dy={10}>
-                <rect x={cx - 20} y={BASE - hA} width={18} height={hA} fill={MANIM.blue} />
+                <rect x={cx - 30} y={BASE - hA} width={28} height={hA} fill={MANIM.blue} />
               </Fade>
               <Fade show={i === 0 || showG} dy={10}>
-                <rect x={cx + 2} y={BASE - hG} width={18} height={hG} fill={MANIM.orange} />
+                <rect x={cx + 2} y={BASE - hG} width={28} height={hG} fill={MANIM.orange} />
               </Fade>
               <Txt x={cx} y={BASE + 26} size={18} color={MANIM.muted}>{`a${i + 1}`}</Txt>
             </g>
           );
         })}
         <Fade show={beat >= 1} dy={6}>
-          <rect x={90} y={40} width={16} height={16} fill={MANIM.blue} />
-          <Txt x={116} y={54} size={20} color={MANIM.blue} anchor="start">{`aritmética: +${d}`}</Txt>
+          <rect x={150} y={40} width={16} height={16} fill={MANIM.blue} />
+          <Txt x={176} y={54} size={20} color={MANIM.blue} anchor="start">{`aritmética: +${d}`}</Txt>
         </Fade>
         <Fade show={beat >= 2} dy={6}>
-          <rect x={90} y={70} width={16} height={16} fill={MANIM.orange} />
-          <Txt x={116} y={84} size={20} color={MANIM.orange} anchor="start">{`geométrica: ·${r}`}</Txt>
+          <rect x={150} y={70} width={16} height={16} fill={MANIM.orange} />
+          <Txt x={176} y={84} size={20} color={MANIM.orange} anchor="start">{`geométrica: ·${r}`}</Txt>
         </Fade>
       </Canvas>
     ),

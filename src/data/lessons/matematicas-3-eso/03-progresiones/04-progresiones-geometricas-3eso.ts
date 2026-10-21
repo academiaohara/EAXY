@@ -70,6 +70,7 @@ export const progresionesGeometricas3esoLesson: InteractiveLesson = {
           text: "En $a_1 \\cdot r^{n-1}$ el exponente es $n-1$ y la potencia se calcula **antes** de multiplicar por $a_1$.",
         },
       ],
+      arrange: "text-top",
       visual: { kind: "anim", scene: "progresion-comparar", params: { a: 3, b: 3, c: 2 } },
     },
     {
