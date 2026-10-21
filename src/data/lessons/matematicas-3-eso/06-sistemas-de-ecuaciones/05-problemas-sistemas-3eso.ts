@@ -41,7 +41,7 @@ export const problemasSistemas3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "sistema-test" },
     },
     {
       id: "porcentajes",

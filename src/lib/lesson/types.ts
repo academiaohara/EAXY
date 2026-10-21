@@ -742,7 +742,10 @@ export type SlideAnimId =
   | "potencias-factores"
   | "potencias-exp-negativo"
   | "raiz-cuadrado"
-  | "raiz-entre-cuadrados";
+  | "raiz-entre-cuadrados"
+  | "sustitucion-sistema"
+  | "sistema-test"
+  | "progresion-comparar";
 
 export type ExprStep = {
   tokens: string[];

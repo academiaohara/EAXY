@@ -62,7 +62,7 @@ export const metodoSustitucion3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "sustitucion-sistema" },
     },
     {
       id: "check-despejar",
