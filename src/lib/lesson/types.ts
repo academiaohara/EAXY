@@ -723,7 +723,22 @@ export type SlideAnimId =
   | "funcion-es-no-es"
   | "recta-pendiente"
   | "dispersion-puntos"
-  | "caja-bigotes";
+  | "caja-bigotes"
+  | "error-aproximacion"
+  | "notacion-cientifica"
+  | "progresion-pasos"
+  | "suma-gauss"
+  | "cuadrado-suma"
+  | "suma-por-diferencia"
+  | "parabola-raices"
+  | "sistema-rectas"
+  | "funcion-continuidad"
+  | "funcion-tendencia-periodo"
+  | "pendiente-dos-puntos"
+  | "rectas-encuentro"
+  | "conica-lugar"
+  | "sector-circular"
+  | "husos-horarios";
 
 export type ExprStep = {
   tokens: string[];
@@ -789,6 +804,12 @@ export type SlideAnimParams = {
   parts?: string[];
   /** `simplificar-factores`: el producto viene de una división (se da la vuelta a la segunda fracción). */
   inv?: boolean;
+  /** `progresion-pasos`: tipo de progresión. */
+  prog?: "aritmetica" | "geometrica";
+  /** `sistema-rectas`: caso del sistema lineal. */
+  sys?: "unica" | "incompatible" | "indeterminado";
+  /** `conica-lugar`: curva que se define como lugar geométrico. */
+  conica?: "elipse" | "parabola" | "hiperbola";
 };
 
 export type SlideTone = "info" | "key" | "ok" | "warn";

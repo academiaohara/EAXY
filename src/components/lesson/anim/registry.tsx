@@ -118,6 +118,21 @@ import { buildAreaCirculo, buildAreaParalelogramo, buildAreaPerimetro, buildArea
 import { buildCuadrantesSignos, buildDiagramaPuntos, buildDiagramaSectores, buildGraficaLlamadas, buildGraficaTramos, buildGraficoBarrasHistograma, buildMediaMedianaModa, buildMedianaPar, buildPlanoCartesiano, buildTablaFrecuencias } from "@/components/lesson/anim/scenes/estadistica";
 import { buildEspacioMuestral, buildExpDeterministaAleatorio, buildFrecuenciasDado, buildGrandesNumeros, buildLaplaceDado, buildSucesoUnionInterseccion, buildSucesosConjuntos } from "@/components/lesson/anim/scenes/probabilidad";
 import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-giro";
+import { buildErrorAproximacion } from "@/components/lesson/anim/scenes/error-aproximacion";
+import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacion-cientifica";
+import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
+import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
+import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
+import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
+import { buildParabolaRaices } from "@/components/lesson/anim/scenes/parabola-raices";
+import { buildSistemaRectas } from "@/components/lesson/anim/scenes/sistema-rectas";
+import { buildFuncionContinuidad } from "@/components/lesson/anim/scenes/funcion-continuidad";
+import { buildFuncionTendenciaPeriodo } from "@/components/lesson/anim/scenes/funcion-tendencia-periodo";
+import { buildPendienteDosPuntos } from "@/components/lesson/anim/scenes/pendiente-dos-puntos";
+import { buildRectasEncuentro } from "@/components/lesson/anim/scenes/rectas-encuentro";
+import { buildConicaLugar } from "@/components/lesson/anim/scenes/conica-lugar";
+import { buildSectorCircular } from "@/components/lesson/anim/scenes/sector-circular";
+import { buildHusosHorarios } from "@/components/lesson/anim/scenes/husos-horarios";
 
 type Builder = (params: SlideAnimParams) => AnimBuild;
 
@@ -272,6 +287,21 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "recta-pendiente": (p) => buildRectaPendiente(p),
   "dispersion-puntos": () => buildDispersionPuntos(),
   "caja-bigotes": () => buildCajaBigotes(),
+  "error-aproximacion": (p) => buildErrorAproximacion(p),
+  "notacion-cientifica": (p) => buildNotacionCientifica(p),
+  "progresion-pasos": (p) => buildProgresionPasos(p),
+  "suma-gauss": (p) => buildSumaGauss(p),
+  "cuadrado-suma": (p) => buildCuadradoSuma(p),
+  "suma-por-diferencia": (p) => buildSumaPorDiferencia(p),
+  "parabola-raices": (p) => buildParabolaRaices(p),
+  "sistema-rectas": (p) => buildSistemaRectas(p),
+  "funcion-continuidad": () => buildFuncionContinuidad(),
+  "funcion-tendencia-periodo": () => buildFuncionTendenciaPeriodo(),
+  "pendiente-dos-puntos": (p) => buildPendienteDosPuntos(p),
+  "rectas-encuentro": () => buildRectasEncuentro(),
+  "conica-lugar": (p) => buildConicaLugar(p),
+  "sector-circular": (p) => buildSectorCircular(p),
+  "husos-horarios": () => buildHusosHorarios(),
 };
 
 export function buildSlideAnim(
