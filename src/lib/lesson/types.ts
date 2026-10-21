@@ -738,7 +738,11 @@ export type SlideAnimId =
   | "rectas-encuentro"
   | "conica-lugar"
   | "sector-circular"
-  | "husos-horarios";
+  | "husos-horarios"
+  | "potencias-factores"
+  | "potencias-exp-negativo"
+  | "raiz-cuadrado"
+  | "raiz-entre-cuadrados";
 
 export type ExprStep = {
   tokens: string[];

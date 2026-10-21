@@ -121,6 +121,10 @@ import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-
 import { buildErrorAproximacion } from "@/components/lesson/anim/scenes/error-aproximacion";
 import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacion-cientifica";
 import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
+import { buildPotenciasFactores } from "@/components/lesson/anim/scenes/potencias-factores";
+import { buildPotenciasExpNegativo } from "@/components/lesson/anim/scenes/potencias-exp-negativo";
+import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
+import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-entre-cuadrados";
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
@@ -291,6 +295,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "notacion-cientifica": (p) => buildNotacionCientifica(p),
   "progresion-pasos": (p) => buildProgresionPasos(p),
   "suma-gauss": (p) => buildSumaGauss(p),
+  "potencias-factores": (p) => buildPotenciasFactores(p),
+  "potencias-exp-negativo": (p) => buildPotenciasExpNegativo(p),
+  "raiz-cuadrado": (p) => buildRaizCuadrado(p),
+  "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),
   "suma-por-diferencia": (p) => buildSumaPorDiferencia(p),
   "parabola-raices": (p) => buildParabolaRaices(p),

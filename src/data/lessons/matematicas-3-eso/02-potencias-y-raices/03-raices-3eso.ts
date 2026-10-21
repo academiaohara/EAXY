@@ -40,7 +40,7 @@ export const raices3esoLesson: InteractiveLesson = {
           text: "$9$ tiene **dos** raíces cuadradas, $3$ y $-3$, pero el símbolo $\\sqrt{9}$ designa solo la positiva: $\\sqrt{9} = 3$. Las raíces cuadradas de números negativos no existen.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "raiz-cuadrado", params: { a: 5 } },
     },
     {
       id: "exactas",
@@ -114,7 +114,7 @@ export const raices3esoLesson: InteractiveLesson = {
           text: "Con calculadora, $\\sqrt{40} = 6{,}32455\\dots$ es un número con infinitas cifras decimales sin periodo, es decir, **no es racional**.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "raiz-entre-cuadrados", params: { a: 40 } },
     },
     {
       id: "check-exacta",
