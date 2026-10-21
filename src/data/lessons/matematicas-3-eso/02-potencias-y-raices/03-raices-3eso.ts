@@ -31,8 +31,6 @@ export const raices3esoLesson: InteractiveLesson = {
           items: [
             { tex: "\\sqrt{25} = 5 \\ \\text{porque}\\ 5^2 = 25" },
             { tex: "\\sqrt[3]{8} = 2 \\ \\text{porque}\\ 2^3 = 8" },
-            { tex: "\\sqrt[4]{10\\,000} = 10 \\ \\text{porque}\\ 10^4 = 10\\,000" },
-            { tex: "\\sqrt[5]{32} = 2 \\ \\text{porque}\\ 2^5 = 32" },
           ],
         },
         {

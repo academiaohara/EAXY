@@ -31,8 +31,8 @@ export function buildPotenciasExpNegativo(params: { a?: number }): AnimBuild {
               <Txt x={350} y={Y0 + i * ROW + 10} size={30} color={MANIM.ink} anchor="start">{value(e)}</Txt>
               {i > 0 && beat >= 1 && (
                 <g>
-                  <path d={`M 520 ${Y0 + (i - 1) * ROW + 24} L 520 ${Y0 + i * ROW - 8}`} stroke={MANIM.green} strokeWidth={3} fill="none" />
-                  <Txt x={600} y={Y0 + i * ROW - 12} size={22} color={MANIM.green}>{`: ${base}`}</Txt>
+                  <path d={`M 480 ${Y0 + (i - 1) * ROW + 24} L 480 ${Y0 + i * ROW - 8}`} stroke={MANIM.green} strokeWidth={3} fill="none" />
+                  <Txt x={520} y={Y0 + i * ROW - 6} size={22} color={MANIM.green}>{`: ${base}`}</Txt>
                 </g>
               )}
             </Fade>
