@@ -24,9 +24,9 @@ import { Frame, Slider, TOOL_BTN, clamp, type ToolBlock } from "@/components/les
 
 const SVG_CLASS = "mx-auto block h-auto w-full max-w-2xl";
 
-export function Svg({ w = 520, h = 300, children, testId }: { w?: number; h?: number; children: ReactNode; testId?: string }) {
+export function Svg({ w = 520, h = 300, children, testId, maxH }: { w?: number; h?: number; children: ReactNode; testId?: string; maxH?: number }) {
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} className={SVG_CLASS} aria-hidden focusable="false" data-testid={testId}>
+    <svg viewBox={`0 0 ${w} ${h}`} className={SVG_CLASS} style={maxH ? { maxHeight: maxH } : undefined} aria-hidden focusable="false" data-testid={testId}>
       {children}
     </svg>
   );

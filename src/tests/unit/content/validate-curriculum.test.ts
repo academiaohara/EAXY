@@ -10,7 +10,7 @@ describe("validateCurriculum", () => {
     const titles = getAllCourses(curriculum).map((course) => course.title);
     expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(6);
     expect(titles.filter((title) => title.startsWith("Física"))).toHaveLength(5);
-    expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(4);
+    expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(5);
   });
 
   it("tiene las cinco lecciones interactivas del tema 7 en 4.º ESO", () => {

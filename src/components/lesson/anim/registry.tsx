@@ -1,3 +1,8 @@
+// industrial-imports
+import { buildPlanoInclinado, buildTrabajoAreaCurva, buildResorteTrabajo, buildRodaduraCarrera, buildPrimerPrincipio, buildParTrabajo, buildPistonTrabajo, buildPresaTurbina } from "@/components/lesson/anim/scenes/industrial/maquinas";
+import { buildAustenitaMartensita, buildJominyEnsayo, buildTttLectura, buildCiclosTratamiento, buildCementacionDifusion, buildPilaCorrosion, buildAireacionDiferencial, buildProteccionCatodica, buildDesgasteAsperezas, buildCavitacion } from "@/components/lesson/anim/scenes/industrial/tratamientos";
+import { buildVidrioRed, buildPrensadoSinterizado, buildBarbotina, buildPolimerizacionAdicion, buildPolimerizacionCondensacion, buildPolimerosCalor, buildExtrusionTornillo, buildDepositoSeguridad } from "@/components/lesson/anim/scenes/industrial/materiales";
+import { buildRedSolucionSolida, buildCurvaEnfriamiento, buildSolidificacionEtapas, buildReglaPalanca, buildEutecticoEnfriamiento, buildFeCEnfriamiento, buildGrafitoFundiciones } from "@/components/lesson/anim/scenes/industrial/aleaciones";
 import type { SlideAnimId, SlideAnimParams } from "@/lib/lesson/types";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 import { buildAscensorEnteros } from "@/components/lesson/anim/scenes/ascensor-enteros";
@@ -342,6 +347,40 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "conica-lugar": (p) => buildConicaLugar(p),
   "sector-circular": (p) => buildSectorCircular(p),
   "husos-horarios": () => buildHusosHorarios(),
+  "red-solucion-solida": () => buildRedSolucionSolida(),
+  "curva-enfriamiento": () => buildCurvaEnfriamiento(),
+  "solidificacion-etapas": () => buildSolidificacionEtapas(),
+  "regla-palanca": () => buildReglaPalanca(),
+  "eutectico-enfriamiento": () => buildEutecticoEnfriamiento(),
+  "fec-enfriamiento": (p) => buildFeCEnfriamiento(p),
+  "grafito-fundiciones": () => buildGrafitoFundiciones(),
+  "vidrio-red": () => buildVidrioRed(),
+  "prensado-sinterizado": () => buildPrensadoSinterizado(),
+  "barbotina": () => buildBarbotina(),
+  "polimerizacion-adicion": () => buildPolimerizacionAdicion(),
+  "polimerizacion-condensacion": () => buildPolimerizacionCondensacion(),
+  "polimeros-calor": () => buildPolimerosCalor(),
+  "extrusion-tornillo": () => buildExtrusionTornillo(),
+  "deposito-seguridad": () => buildDepositoSeguridad(),
+  "austenita-martensita": () => buildAustenitaMartensita(),
+  "jominy-ensayo": () => buildJominyEnsayo(),
+  "ttt-lectura": () => buildTttLectura(),
+  "ciclos-tratamiento": () => buildCiclosTratamiento(),
+  "cementacion-difusion": () => buildCementacionDifusion(),
+  "pila-corrosion": () => buildPilaCorrosion(),
+  "aireacion-diferencial": () => buildAireacionDiferencial(),
+  "proteccion-catodica": () => buildProteccionCatodica(),
+  "desgaste-asperezas": () => buildDesgasteAsperezas(),
+  "cavitacion": () => buildCavitacion(),
+  "plano-inclinado": () => buildPlanoInclinado(),
+  "trabajo-area-curva": () => buildTrabajoAreaCurva(),
+  "resorte-trabajo": () => buildResorteTrabajo(),
+  "rodadura-carrera": () => buildRodaduraCarrera(),
+  "primer-principio-flujos": () => buildPrimerPrincipio(),
+  "par-trabajo": () => buildParTrabajo(),
+  "piston-trabajo": () => buildPistonTrabajo(),
+  "presa-turbina": () => buildPresaTurbina(),
+  /* industrial-end */
 };
 
 export function buildSlideAnim(

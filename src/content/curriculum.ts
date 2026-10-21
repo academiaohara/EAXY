@@ -2350,6 +2350,367 @@ export const curriculum: Curriculum = {
       orderIndex: 15,
       modules: [],
     },
+    {
+      id: courseId(16),
+      slug: "tecnologia-industrial-2-bachillerato",
+      title: "Tecnología Industrial II 2º Bachillerato",
+      description: "Materiales, tratamientos térmicos, corrosión y principios de las máquinas.",
+      orderIndex: 16,
+      modules: [
+        {
+          id: moduleId(48),
+          slug: "aleaciones-diagramas-equilibrio",
+          title: "Aleaciones. Diagramas de equilibrio",
+          orderIndex: 2,
+          lessons: [
+            {
+              id: lessonId(4801),
+              title: "1. Aleaciones y disoluciones sólidas",
+              summary:
+                "Disolvente y soluto, concentración en masa y soluciones por sustitución o inserción.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "aleaciones-solucion-solida",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4802),
+              title: "2. Solidificación de metales y aleaciones",
+              summary:
+                "Curvas de enfriamiento, subfusión, energía para fundir y etapas de la cristalización.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "solidificacion-metales",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4803),
+              title: "3. Regla de las fases de Gibbs",
+              summary:
+                "Componentes, fases y grados de libertad: F + N = C + 2.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "regla-fases-gibbs",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4804),
+              title: "4. Diagramas de fases y regla de la palanca",
+              summary:
+                "Rectas de reparto, líneas de liquidus y solidus y fracción de cada fase.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "diagramas-regla-palanca",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4805),
+              title: "5. Aleaciones isomorfas: Cu-Ni",
+              summary:
+                "Lectura completa del diagrama Cu-Ni: fases, composiciones y porcentajes.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "diagrama-isomorfo-cu-ni",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4806),
+              title: "6. Aleaciones eutécticas",
+              summary:
+                "Insolubilidad en estado sólido, punto eutéctico, hipoeutécticas e hipereutécticas.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "diagrama-eutectico",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4807),
+              title: "7. El diagrama hierro-carbono",
+              summary:
+                "Constituyentes de los aceros, eutectoide y enfriamiento de aleaciones tipo.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "diagrama-hierro-carbono",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4808),
+              title: "8. Aceros y fundiciones",
+              summary:
+                "Clasificación de los aceros y tipos de fundición: gris, esferoidal, blanca y maleable.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "aceros-fundiciones",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(49),
+          slug: "materiales-no-ferreos-reciclaje",
+          title: "Materiales no férreos y ciclo de utilización",
+          orderIndex: 3,
+          lessons: [
+            {
+              id: lessonId(4901),
+              title: "1. Metales no férreos y resistencia específica",
+              summary:
+                "Por qué se usan aleaciones no férreas y cómo se compara su resistencia con la densidad.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "no-ferreos-resistencia-especifica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4902),
+              title: "2. Cobre, aluminio, magnesio y titanio",
+              summary:
+                "Latón, bronce y las aleaciones ligeras: propiedades y aplicaciones.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "cobre-aluminio-magnesio-titanio",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4903),
+              title: "3. Materiales cerámicos",
+              summary:
+                "Vidrios, diagramas de fases cerámicos, conformado, sinterizado y rotura frágil.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "materiales-ceramicos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4904),
+              title: "4. Polímeros y polimerización",
+              summary:
+                "Monómeros, adición y condensación, y grado de polimerización.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "polimerizacion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4905),
+              title: "5. Termoplásticos, termoestables y elastómeros",
+              summary:
+                "Comportamiento ante el calor, técnicas de conformado y plásticos más usados.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "plasticos-elastomeros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(4906),
+              title: "6. Residuos y reciclaje",
+              summary:
+                "RSU y RTP, vertederos, incineración, depósitos de seguridad y recuperación.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "residuos-reciclaje",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(50),
+          slug: "tratamientos-termicos-corrosion",
+          title: "Tratamientos térmicos y superficiales. Corrosión",
+          orderIndex: 4,
+          lessons: [
+            {
+              id: lessonId(5001),
+              title: "1. Temple y martensita",
+              summary:
+                "Austenización, red FCC frente a BCC y por qué aparece la martensita.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "temple-martensita",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5002),
+              title: "2. Curvas TTT y templabilidad",
+              summary:
+                "Ensayo Jominy, velocidad de enfriamiento y estructura final del acero.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "curvas-ttt-templabilidad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5003),
+              title: "3. Recocido, normalizado y revenido",
+              summary:
+                "Temperaturas de cada tratamiento según el porcentaje de carbono.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "recocido-normalizado-revenido",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5004),
+              title: "4. Tratamientos termoquímicos",
+              summary:
+                "Cementación, carbonitruración y nitruración: endurecer solo la superficie.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "tratamientos-termoquimicos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5005),
+              title: "5. Corrosión y pila electroquímica",
+              summary:
+                "Ánodo, cátodo, serie electroquímica y diferencia de potencial.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "corrosion-pila-electroquimica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5006),
+              title: "6. Ley de Nernst y ley de Faraday",
+              summary:
+                "Efecto de la concentración y masa depositada o corroída.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "nernst-faraday-corrosion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5007),
+              title: "7. Tipos de corrosión y protección",
+              summary:
+                "Corrosión galvánica, picaduras, intergranular; recubrimientos y protección catódica.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "tipos-corrosion-proteccion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5008),
+              title: "8. Oxidación, degradación y desgaste",
+              summary:
+                "Capa de óxido protectora, degradación de polímeros, desgaste y cavitación.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "oxidacion-degradacion-desgaste",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(51),
+          slug: "principios-generales-maquinas",
+          title: "Principios generales de las máquinas",
+          orderIndex: 5,
+          lessons: [
+            {
+              id: lessonId(5101),
+              title: "1. Concepto de máquina y Sistema Internacional",
+              summary:
+                "Máquinas y mecanismos, magnitudes, unidades y cambios de unidades.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "maquina-sistema-internacional",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5102),
+              title: "2. Trabajo y plano inclinado",
+              summary:
+                "W = F·e, componentes del peso y ventaja mecánica.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "trabajo-plano-inclinado",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5103),
+              title: "3. Trabajo de una fuerza variable",
+              summary:
+                "El trabajo como área bajo la curva F-x y el resorte.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "trabajo-fuerza-variable",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5104),
+              title: "4. Energía cinética, potencial y conservación",
+              summary:
+                "W = ΔEp + ΔEc y transformaciones entre formas de energía.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "energia-cinetica-potencial",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5105),
+              title: "5. Energía de rotación y momento de inercia",
+              summary:
+                "Distribución de la masa, radio de giro y energía cinética total.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "energia-rotacion-inercia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5106),
+              title: "6. Calor y primer principio de la termodinámica",
+              summary:
+                "Q = m·c·ΔT, equilibrio térmico, motores térmicos y máquinas frigoríficas.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "calor-primer-principio",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5107),
+              title: "7. Potencia, resistencias pasivas y rendimiento",
+              summary:
+                "P = F·v, rozamiento y rendimiento de conjuntos de máquinas.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "potencia-rendimiento",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5108),
+              title: "8. Trabajo de rotación y par",
+              summary:
+                "Momento de un par de fuerzas y trabajo W = M·θ.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "trabajo-rotacion-par",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5109),
+              title: "9. Transformaciones de un gas en un cilindro",
+              summary:
+                "Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p-V.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "transformaciones-gas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(5110),
+              title: "10. Potencia eléctrica e hidráulica",
+              summary:
+                "P = U·I y P = p·Q aplicadas a circuitos y presas.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "potencia-electrica-hidraulica",
+              conceptSlugs: [],
+            },
+          ],
+        },
+      ],
+    },
   ],
 
   concepts: [],

@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+// industrial-imports
+import { ConversorIndustrial, PlanoInclinadoTrabajo, ResorteExplorador, EnergiaRampa, MomentoInercia, EquilibrioTermico, PrimerPrincipio, RendimientoCadena, PotenciaVehiculo, ParTrabajo, DiagramaPV, PotenciaElectricaHidraulica } from "@/components/lesson/slide/tools/MaquinasTools";
+import { IntersticioRed, DurezaMartensita, TttExplorador, JominyExplorador, TemperaturasTratamiento, PerfilDureza, PilaElectroquimica, NernstExplorador, FaradayExplorador, RecubrimientoRayado, PillingBedworth } from "@/components/lesson/slide/tools/TratamientosTools";
+import { ResistenciaEspecifica, PiezaPesoMinimo, AleacionesFiltro, GrietaGriffith, GradoPolimerizacion, RtpComunidades } from "@/components/lesson/slide/tools/MaterialesTools";
+import { AleacionConcentracion, EnergiaFusion, GibbsExplorador, DiagramaBinario, DiagramaEutectico, FeCExplorador, AceroClasificador } from "@/components/lesson/slide/tools/AleacionesTools";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { Frame, Slider, clamp, type ToolBlock } from "@/components/lesson/slide/tool-ui";
 import { CompasBisectriz, CompasMediatriz } from "@/components/lesson/slide/tools/CompasTools";
@@ -451,6 +456,79 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DadoSimulador block={block} />;
     case "laplace-explorador":
       return <LaplaceExplorador block={block} />;
+    case "aleacion-concentracion":
+      return <AleacionConcentracion block={block} />;
+    case "energia-fusion":
+      return <EnergiaFusion block={block} />;
+    case "gibbs-explorador":
+      return <GibbsExplorador block={block} />;
+    case "diagrama-binario":
+      return <DiagramaBinario block={block} />;
+    case "diagrama-eutectico":
+      return <DiagramaEutectico block={block} />;
+    case "fe-c-explorador":
+      return <FeCExplorador block={block} />;
+    case "acero-clasificador":
+      return <AceroClasificador block={block} />;
+    case "resistencia-especifica":
+      return <ResistenciaEspecifica block={block} />;
+    case "pieza-peso-minimo":
+      return <PiezaPesoMinimo block={block} />;
+    case "aleaciones-filtro":
+      return <AleacionesFiltro block={block} />;
+    case "grieta-griffith":
+      return <GrietaGriffith block={block} />;
+    case "grado-polimerizacion":
+      return <GradoPolimerizacion block={block} />;
+    case "rtp-comunidades":
+      return <RtpComunidades block={block} />;
+    case "intersticio-red":
+      return <IntersticioRed block={block} />;
+    case "dureza-martensita":
+      return <DurezaMartensita block={block} />;
+    case "ttt-explorador":
+      return <TttExplorador block={block} />;
+    case "jominy-explorador":
+      return <JominyExplorador block={block} />;
+    case "temperaturas-tratamiento":
+      return <TemperaturasTratamiento block={block} />;
+    case "perfil-dureza":
+      return <PerfilDureza block={block} />;
+    case "pila-electroquimica":
+      return <PilaElectroquimica block={block} />;
+    case "nernst-explorador":
+      return <NernstExplorador block={block} />;
+    case "faraday-explorador":
+      return <FaradayExplorador block={block} />;
+    case "recubrimiento-rayado":
+      return <RecubrimientoRayado block={block} />;
+    case "pilling-bedworth":
+      return <PillingBedworth block={block} />;
+    case "conversor-industrial":
+      return <ConversorIndustrial block={block} />;
+    case "plano-inclinado-trabajo":
+      return <PlanoInclinadoTrabajo block={block} />;
+    case "resorte-explorador":
+      return <ResorteExplorador block={block} />;
+    case "energia-rampa":
+      return <EnergiaRampa block={block} />;
+    case "momento-inercia":
+      return <MomentoInercia block={block} />;
+    case "equilibrio-termico":
+      return <EquilibrioTermico block={block} />;
+    case "primer-principio-explorador":
+      return <PrimerPrincipio block={block} />;
+    case "rendimiento-cadena":
+      return <RendimientoCadena block={block} />;
+    case "potencia-vehiculo":
+      return <PotenciaVehiculo block={block} />;
+    case "par-trabajo-explorador":
+      return <ParTrabajo block={block} />;
+    case "diagrama-pv":
+      return <DiagramaPV block={block} />;
+    case "potencia-electrica-hidraulica":
+      return <PotenciaElectricaHidraulica block={block} />;
+    /* industrial-tools */
     default:
       return null;
   }

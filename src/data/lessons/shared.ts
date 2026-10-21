@@ -38,3 +38,7 @@ export const TEMA_3ESO_7_SUBTITLE = "3.º ESO, Unidad 7 — Funciones y gráfica
 export const TEMA_3ESO_8_SUBTITLE = "3.º ESO, Unidad 8 — Funciones lineales";
 export const TEMA_3ESO_9_SUBTITLE = "3.º ESO, Unidad 9 — Problemas métricos en el plano";
 export const TEMA_3ESO_10_SUBTITLE = "3.º ESO, Unidad 10 — Cuerpos geométricos";
+export const TEMA_TI2_2_SUBTITLE = "Tecnología Industrial II, Unidad 2 — Aleaciones. Diagramas de equilibrio";
+export const TEMA_TI2_3_SUBTITLE = "Tecnología Industrial II, Unidad 3 — Materiales no férreos y ciclo de utilización";
+export const TEMA_TI2_4_SUBTITLE = "Tecnología Industrial II, Unidad 4 — Tratamientos térmicos y superficiales. Corrosión";
+export const TEMA_TI2_5_SUBTITLE = "Tecnología Industrial II, Unidad 5 — Principios generales de las máquinas";
