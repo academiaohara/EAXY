@@ -750,7 +750,10 @@ export type SlideAnimId =
   | "recta-constante"
   | "dominio-recorrido"
   | "tabla-formula"
-  | "tarifas-escalones";
+  | "tarifas-escalones"
+  | "cuadrado-diferencia"
+  | "polinomio-tabla"
+  | "factor-comun-area";
 
 export type ExprStep = {
   tokens: string[];

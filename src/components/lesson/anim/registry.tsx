@@ -133,6 +133,9 @@ import { buildRectaConstante } from "@/components/lesson/anim/scenes/recta-const
 import { buildDominioRecorrido } from "@/components/lesson/anim/scenes/dominio-recorrido";
 import { buildTablaFormula } from "@/components/lesson/anim/scenes/tabla-formula";
 import { buildTarifasEscalones } from "@/components/lesson/anim/scenes/tarifas-escalones";
+import { buildCuadradoDiferencia } from "@/components/lesson/anim/scenes/cuadrado-diferencia";
+import { buildPolinomioTabla } from "@/components/lesson/anim/scenes/polinomio-tabla";
+import { buildFactorComunArea } from "@/components/lesson/anim/scenes/factor-comun-area";
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
@@ -303,6 +306,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "notacion-cientifica": (p) => buildNotacionCientifica(p),
   "progresion-pasos": (p) => buildProgresionPasos(p),
   "suma-gauss": (p) => buildSumaGauss(p),
+  "cuadrado-diferencia": (p) => buildCuadradoDiferencia(p),
+  "polinomio-tabla": () => buildPolinomioTabla(),
+  "factor-comun-area": (p) => buildFactorComunArea(p),
   "recta-tabla-puntos": (p) => buildRectaTablaPuntos(p),
   "recta-constante": (p) => buildRectaConstante(p),
   "dominio-recorrido": () => buildDominioRecorrido(),
