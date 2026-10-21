@@ -236,12 +236,24 @@ export function quadArrowHead(cx: number, cy: number, x2: number, y2: number, si
 export const CANVAS_W = 800;
 export const CANVAS_H = 420;
 
-/** Lienzo SVG estándar de las animaciones (800 × 420). */
-export function Canvas({ children, height = CANVAS_H }: { children: ReactNode; height?: number }) {
+/**
+ * Lienzo SVG de las animaciones (800 × 420 por defecto). Con `width` mayor (p. ej. 1200)
+ * la escena es apaisada: úsalo con `arrange: "text-top"` o `"visual-top"`, que dan a la
+ * animación todo el ancho de la diapositiva. La altura se acota para que quepa sin scroll.
+ */
+export function Canvas({
+  children,
+  height = CANVAS_H,
+  width = CANVAS_W,
+}: {
+  children: ReactNode;
+  height?: number;
+  width?: number;
+}) {
   return (
     <svg
-      viewBox={`0 0 ${CANVAS_W} ${height}`}
-      className="block h-auto w-full"
+      viewBox={`0 0 ${width} ${height}`}
+      className="mx-auto block h-auto max-h-[40vh] w-full"
       aria-hidden
       focusable="false"
     >

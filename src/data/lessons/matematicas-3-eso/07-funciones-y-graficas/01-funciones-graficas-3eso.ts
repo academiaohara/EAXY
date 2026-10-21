@@ -89,7 +89,7 @@ export const funcionesGraficas3esoLesson: InteractiveLesson = {
           text: "Antes de leer un valor, mira la escala de cada eje: un cuadrito puede valer $1$ minuto en un eje y $10$ metros en el otro.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "dominio-recorrido" },
     },
     {
       id: "check-variables",

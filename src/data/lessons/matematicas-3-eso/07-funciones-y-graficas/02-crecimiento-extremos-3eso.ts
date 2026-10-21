@@ -66,7 +66,7 @@ export const crecimientoExtremos3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "funcion-tramos-extremos" },
     },
     {
       id: "check-tramo",

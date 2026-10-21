@@ -738,7 +738,27 @@ export type SlideAnimId =
   | "rectas-encuentro"
   | "conica-lugar"
   | "sector-circular"
-  | "husos-horarios";
+  | "husos-horarios"
+  | "potencias-factores"
+  | "potencias-exp-negativo"
+  | "raiz-cuadrado"
+  | "raiz-entre-cuadrados"
+  | "sustitucion-sistema"
+  | "sistema-test"
+  | "progresion-comparar"
+  | "recta-tabla-puntos"
+  | "recta-constante"
+  | "dominio-recorrido"
+  | "tabla-formula"
+  | "tarifas-escalones"
+  | "fracciones-orden"
+  | "fraccion-total"
+  | "cantidad-inicial"
+  | "pitagoras-demostracion"
+  | "coordenadas-geograficas"
+  | "cuadrado-diferencia"
+  | "polinomio-tabla"
+  | "factor-comun-area";
 
 export type ExprStep = {
   tokens: string[];

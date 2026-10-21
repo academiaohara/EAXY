@@ -112,7 +112,7 @@ export const operarPolinomios3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "polinomio-tabla" },
     },
     {
       id: "check-suma",

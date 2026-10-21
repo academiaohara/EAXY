@@ -63,7 +63,7 @@ export const coordenadasGeograficas3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "coordenadas-geograficas" },
     },
     {
       id: "husos",

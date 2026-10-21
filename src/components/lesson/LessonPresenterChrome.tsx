@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   MessageCircleIcon,
   SkipForwardIcon,
   LogOutIcon,
+  MaximizeIcon,
+  MinimizeIcon,
 } from "lucide-react";
 import {
   LessonSlidesSidebar,
@@ -42,6 +44,38 @@ export type LessonPresenterChromeProps = {
   onOpenHelp: () => void;
   meta?: React.ReactNode;
 };
+
+/** Pantalla completa del navegador para presentar la lección (tecla F o botón). */
+function useFullscreenToggle() {
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const sync = () => setActive(document.fullscreenElement != null);
+    document.addEventListener("fullscreenchange", sync);
+    return () => document.removeEventListener("fullscreenchange", sync);
+  }, []);
+
+  const toggle = useCallback(() => {
+    if (document.fullscreenElement) {
+      void document.exitFullscreen?.();
+    } else {
+      void document.documentElement.requestFullscreen?.().catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() !== "f" || e.ctrlKey || e.metaKey || e.altKey) return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.isContentEditable || /^(input|textarea|select)$/i.test(t.tagName))) return;
+      toggle();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [toggle]);
+
+  return { active, toggle };
+}
 
 function PresenterCircleButton({
   label,
@@ -170,6 +204,8 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   const forwardDisabled =
     feedback !== null ? false : !control || control.disabled;
 
+  const fullscreen = useFullscreenToggle();
+
   const backDisabled = !canBack && !control?.onBack;
 
   const header = (
@@ -182,6 +218,15 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
       </div>
       <div className="flex shrink-0 items-center gap-2">
         {meta ? <div>{meta}</div> : null}
+        <button
+          type="button"
+          onClick={fullscreen.toggle}
+          aria-label={fullscreen.active ? "Salir de pantalla completa" : "Pantalla completa (F)"}
+          data-testid="lesson-fullscreen-toggle"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-[color:var(--stage-border,#475569)] bg-[color:var(--stage-surface,#1a2332)]/90 text-[color:var(--stage-muted,#94a3b8)] shadow-sm backdrop-blur-sm transition hover:border-cobalt/45 hover:text-[color:var(--stage-ink,#e8edf5)]"
+        >
+          {fullscreen.active ? <MinimizeIcon className="size-5" aria-hidden /> : <MaximizeIcon className="size-5" aria-hidden />}
+        </button>
         <Link
           href={closeHref}
           aria-label="Salir de la lección"

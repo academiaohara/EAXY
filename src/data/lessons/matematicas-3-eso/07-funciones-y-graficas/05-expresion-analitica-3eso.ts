@@ -38,7 +38,7 @@ export const expresionAnalitica3esoLesson: InteractiveLesson = {
           text: "La **expresión analítica** de una función es una ecuación que relaciona **algebraicamente** las dos variables.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "tabla-formula", params: { a: -1, b: 40, c: 5, d: 5 } },
     },
     {
       id: "usos",

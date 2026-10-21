@@ -71,7 +71,7 @@ export const identidadesNotables3esoLesson: InteractiveLesson = {
           text: "El último término de un cuadrado es **siempre positivo**: $(x - 7)^2$ termina en $+49$, no en $-49$.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "cuadrado-diferencia", params: { a: 7, b: 3 } },
     },
     {
       id: "suma-por-diferencia",

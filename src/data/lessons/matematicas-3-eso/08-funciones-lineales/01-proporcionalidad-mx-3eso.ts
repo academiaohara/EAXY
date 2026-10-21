@@ -73,7 +73,7 @@ export const proporcionalidadMx3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "recta-tabla-puntos", params: { a: 2, b: 0 } },
     },
     {
       id: "pendiente",

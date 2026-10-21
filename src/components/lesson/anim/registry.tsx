@@ -121,6 +121,26 @@ import { buildRevolucionGiro } from "@/components/lesson/anim/scenes/revolucion-
 import { buildErrorAproximacion } from "@/components/lesson/anim/scenes/error-aproximacion";
 import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacion-cientifica";
 import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
+import { buildPotenciasFactores } from "@/components/lesson/anim/scenes/potencias-factores";
+import { buildPotenciasExpNegativo } from "@/components/lesson/anim/scenes/potencias-exp-negativo";
+import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
+import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-entre-cuadrados";
+import { buildSustitucionSistema } from "@/components/lesson/anim/scenes/sustitucion-sistema";
+import { buildSistemaTest } from "@/components/lesson/anim/scenes/sistema-test";
+import { buildProgresionComparar } from "@/components/lesson/anim/scenes/progresion-comparar";
+import { buildRectaTablaPuntos } from "@/components/lesson/anim/scenes/recta-tabla-puntos";
+import { buildRectaConstante } from "@/components/lesson/anim/scenes/recta-constante";
+import { buildDominioRecorrido } from "@/components/lesson/anim/scenes/dominio-recorrido";
+import { buildTablaFormula } from "@/components/lesson/anim/scenes/tabla-formula";
+import { buildTarifasEscalones } from "@/components/lesson/anim/scenes/tarifas-escalones";
+import { buildCuadradoDiferencia } from "@/components/lesson/anim/scenes/cuadrado-diferencia";
+import { buildPolinomioTabla } from "@/components/lesson/anim/scenes/polinomio-tabla";
+import { buildFactorComunArea } from "@/components/lesson/anim/scenes/factor-comun-area";
+import { buildFraccionesOrden } from "@/components/lesson/anim/scenes/fracciones-orden";
+import { buildFraccionTotal } from "@/components/lesson/anim/scenes/fraccion-total";
+import { buildCantidadInicial } from "@/components/lesson/anim/scenes/cantidad-inicial";
+import { buildPitagorasDemostracion } from "@/components/lesson/anim/scenes/pitagoras-demostracion";
+import { buildCoordenadasGeograficas } from "@/components/lesson/anim/scenes/coordenadas-geograficas";
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
@@ -291,6 +311,26 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "notacion-cientifica": (p) => buildNotacionCientifica(p),
   "progresion-pasos": (p) => buildProgresionPasos(p),
   "suma-gauss": (p) => buildSumaGauss(p),
+  "fracciones-orden": () => buildFraccionesOrden(),
+  "fraccion-total": (p) => buildFraccionTotal(p),
+  "cantidad-inicial": (p) => buildCantidadInicial(p),
+  "pitagoras-demostracion": (p) => buildPitagorasDemostracion(p),
+  "coordenadas-geograficas": () => buildCoordenadasGeograficas(),
+  "cuadrado-diferencia": (p) => buildCuadradoDiferencia(p),
+  "polinomio-tabla": () => buildPolinomioTabla(),
+  "factor-comun-area": (p) => buildFactorComunArea(p),
+  "recta-tabla-puntos": (p) => buildRectaTablaPuntos(p),
+  "recta-constante": (p) => buildRectaConstante(p),
+  "dominio-recorrido": () => buildDominioRecorrido(),
+  "tabla-formula": (p) => buildTablaFormula(p),
+  "tarifas-escalones": (p) => buildTarifasEscalones(p),
+  "sustitucion-sistema": () => buildSustitucionSistema(),
+  "sistema-test": () => buildSistemaTest(),
+  "progresion-comparar": (p) => buildProgresionComparar(p),
+  "potencias-factores": (p) => buildPotenciasFactores(p),
+  "potencias-exp-negativo": (p) => buildPotenciasExpNegativo(p),
+  "raiz-cuadrado": (p) => buildRaizCuadrado(p),
+  "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),
   "suma-por-diferencia": (p) => buildSumaPorDiferencia(p),
   "parabola-raices": (p) => buildParabolaRaices(p),

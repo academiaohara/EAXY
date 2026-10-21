@@ -65,7 +65,7 @@ export const tendenciasPeriodicidad3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "funcion-tendencia-periodo" },
     },
     {
       id: "check-tendencia",

@@ -70,7 +70,7 @@ export const fraccionOperador3esoLesson: InteractiveLesson = {
           text: "Aquí se multiplica por la fracción **inversa**. Las partes de un todo siempre suman $1$.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "fraccion-total", params: { a: 7, b: 20, c: 37800 } },
     },
     {
       id: "fraccion-de-fraccion",

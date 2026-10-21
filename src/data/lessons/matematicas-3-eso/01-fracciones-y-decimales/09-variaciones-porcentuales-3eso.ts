@@ -114,7 +114,7 @@ export const variacionesPorcentuales3esoLesson: InteractiveLesson = {
           text: "Quitar un $35\\,\\%$ al precio final **no** devuelve el precio inicial: $783 \\cdot 0{,}65 = 508{,}95$.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "cantidad-inicial", params: { a: 783, b: 35 } },
     },
     {
       id: "check-aumento",

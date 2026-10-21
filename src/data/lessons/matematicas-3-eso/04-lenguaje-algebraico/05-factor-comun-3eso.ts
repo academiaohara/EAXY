@@ -70,7 +70,7 @@ export const factorComun3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "factor-comun-area", params: { a: 3, b: 2, c: 3 } },
     },
     {
       id: "check-numero",

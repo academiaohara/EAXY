@@ -83,7 +83,7 @@ export const potenciasExponenteNegativo3esoLesson: InteractiveLesson = {
           text: "$2^{-3}$ **no** es $-8$ ni $-\\frac{1}{8}$: el signo del exponente invierte, no cambia el signo del número.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "potencias-exp-negativo", params: { a: 2 } },
     },
     {
       id: "propiedades",

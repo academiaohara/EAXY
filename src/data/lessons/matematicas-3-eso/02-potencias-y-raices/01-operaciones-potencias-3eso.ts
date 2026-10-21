@@ -43,7 +43,7 @@ export const operacionesPotencias3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "potencias-factores", params: { a: 4, b: 2 } },
     },
     {
       id: "mismo-exponente",

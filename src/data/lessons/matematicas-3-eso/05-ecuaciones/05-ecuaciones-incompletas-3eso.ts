@@ -40,7 +40,16 @@ export const ecuacionesIncompletas3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: {
+        kind: "anim",
+        scene: "parabola-raices",
+        params: { a: 1, b: 0, c: -4 },
+        captions: [
+          "La gráfica de $y = x^2 - 4$ es una parábola; resolver $x^2 - 4 = 0$ es buscar dónde $y = 0$.",
+          "Corta al eje $X$ en **dos puntos simétricos**: $x = -2$ y $x = 2$. Al despejar, $x^2 = 4$ y $x = \\pm 2$.",
+          "Como falta el término en $x$, la parábola es simétrica respecto del eje $Y$: las soluciones son opuestas (o no existen).",
+        ],
+      },
     },
     {
       id: "sin-independiente",
@@ -76,7 +85,16 @@ export const ecuacionesIncompletas3esoLesson: InteractiveLesson = {
           text: "Una ecuación $ax^2 + bx = 0$ siempre tiene la solución $x = 0$.",
         },
       ],
-      arrange: "stack",
+      visual: {
+        kind: "anim",
+        scene: "parabola-raices",
+        params: { a: 1, b: 2, c: 0 },
+        captions: [
+          "La gráfica de $y = x^2 + 2x$ es una parábola; resolver $x^2 + 2x = 0$ es buscar dónde $y = 0$.",
+          "Pasa por el **origen** y corta al eje $X$ en otro punto: $x = 0$ y $x = -2$. Se factoriza: $x(x + 2) = 0$.",
+          "Sin término independiente, $x = 0$ siempre es solución: la parábola siempre pasa por $(0, 0)$.",
+        ],
+      },
     },
     {
       id: "check-sin-x",

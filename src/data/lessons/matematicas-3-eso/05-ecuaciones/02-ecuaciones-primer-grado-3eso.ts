@@ -70,7 +70,7 @@ export const ecuacionesPrimerGrado3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "balanza-ecuacion", params: { a: 3, b: 4, c: 19, sign: "+" } },
     },
     {
       id: "anomalas",

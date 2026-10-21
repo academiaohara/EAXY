@@ -31,8 +31,6 @@ export const raices3esoLesson: InteractiveLesson = {
           items: [
             { tex: "\\sqrt{25} = 5 \\ \\text{porque}\\ 5^2 = 25" },
             { tex: "\\sqrt[3]{8} = 2 \\ \\text{porque}\\ 2^3 = 8" },
-            { tex: "\\sqrt[4]{10\\,000} = 10 \\ \\text{porque}\\ 10^4 = 10\\,000" },
-            { tex: "\\sqrt[5]{32} = 2 \\ \\text{porque}\\ 2^5 = 32" },
           ],
         },
         {
@@ -40,7 +38,7 @@ export const raices3esoLesson: InteractiveLesson = {
           text: "$9$ tiene **dos** raíces cuadradas, $3$ y $-3$, pero el símbolo $\\sqrt{9}$ designa solo la positiva: $\\sqrt{9} = 3$. Las raíces cuadradas de números negativos no existen.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "raiz-cuadrado", params: { a: 5 } },
     },
     {
       id: "exactas",
@@ -114,7 +112,7 @@ export const raices3esoLesson: InteractiveLesson = {
           text: "Con calculadora, $\\sqrt{40} = 6{,}32455\\dots$ es un número con infinitas cifras decimales sin periodo, es decir, **no es racional**.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "raiz-entre-cuadrados", params: { a: 40 } },
     },
     {
       id: "check-exacta",

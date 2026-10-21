@@ -215,8 +215,32 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `conica-lugar` | Elipse (suma de distancias a dos focos), parábola (foco y directriz) e hipérbola (diferencia de distancias) como lugares geométricos | `conica` (`elipse`/`parabola`/`hiperbola`) |
 | `sector-circular` | Sector circular: fracción a/360 del área del círculo | `a` (ángulo en grados), `b` (radio) |
 | `husos-horarios` | Husos horarios: 15° de longitud equivalen a una hora (Bilbao 12 h → Estambul 14 h, Monterrey 5 h) | — |
+| `potencias-factores` | Producto y cociente de potencias de la misma base contando factores (se suman / se restan los exponentes) | `a` (m), `b` (n < m) |
+| `potencias-exp-negativo` | Al bajar el exponente se divide entre la base: llega a `b⁰ = 1` y a `b⁻ⁿ = 1/bⁿ` | `a` (base) |
+| `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
+| `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
+| `sustitucion-sistema` | Método de sustitución en `3x + 2y = 18` y `x − 3y = −5`: despejar, sustituir, resolver, calcular y comprobar | — |
+| `sistema-test` | Problema del test de 50 preguntas: barra aciertos/fallos, dos ecuaciones e interpretación | — |
+| `progresion-comparar` | Barras de una progresión aritmética (+d) frente a una geométrica (·r) desde `a₁` | `a` (a₁), `b` (d), `c` (r) |
+| `recta-tabla-puntos` | Representar `y = mx + n`: tabla con `x = 0, 1, 2`, puntos y recta | `a` (m), `b` (n) |
+| `recta-constante` | `y = k` (recta horizontal, función) frente a `x = k` (vertical, no es función) | `a` (k) |
+| `dominio-recorrido` | Gráfica proyectada sobre el eje X (dominio) y sobre el eje Y (recorrido) | — |
+| `tabla-formula` | De la tabla a la fórmula: variación constante = pendiente, valor en `x = 0` = ordenada | `a` (m), `b` (n), `c` (primer x), `d` (paso de x) |
+| `tarifas-escalones` | Tarifa por hora o fracción: gráfica en escalones con punto lleno/vacío; no se unen los puntos | `a` (precio por hora) |
+| `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
+| `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
+| `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
+| `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
+| `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
+| `cantidad-inicial` | Cantidad inicial tras una variación: índice de variación, división y el error de «quitar el mismo %» | `a` (final), `b` (% de subida) |
+| `pitagoras-demostracion` | Cuadrado de lado `b + c` llenado de dos maneras con cuatro triángulos: `b² + c² = a²` (hipotenusa `a`) | `a`, `b` (catetos) |
+| `coordenadas-geograficas` | Planisferio: latitud y longitud de Jerez y de Auckland (antípodas) | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
+
+### Animaciones a todo el ancho
+
+El lienzo estándar es 800 × 420, pensado para la columna derecha. Si la escena necesita ancho (líneas de tiempo, tablas largas, muchas barras), usa `<Canvas width={1200}>` y coloca la diapositiva con `arrange: "text-top"` (texto en dos columnas arriba, animación a todo el ancho debajo) o `"visual-top"`. El lienzo se acota a ~58 % de la altura de la ventana. Ejemplo: `progresion-comparar`.
 
 ### Añadir una animación nueva
 

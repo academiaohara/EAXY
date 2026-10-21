@@ -36,6 +36,17 @@ export const fraccionesPotencias3esoLesson: InteractiveLesson = {
           ],
         },
       ],
+      visual: {
+        kind: "anim",
+        scene: "fraccion-de-fraccion",
+        params: { a: 2, b: 3, c: 2, d: 3 },
+        captions: [
+          "El cuadrado es la **unidad**. Elevar al cuadrado es multiplicar la fracción por sí misma.",
+          "Partimos en **3** columnas y coloreamos **2**: $\\dfrac{2}{3}$ del cuadrado.",
+          "Ahora **3** filas y nos quedamos con **2**: otra vez $\\dfrac{2}{3}$, de lo que ya teníamos.",
+          "El cruce tiene $2 \\cdot 2 = 4$ cuadraditos de $3 \\cdot 3 = 9$: $\\left(\\dfrac{2}{3}\\right)^2 = \\dfrac{2^2}{3^2} = \\dfrac{4}{9}$. Numerador y denominador se elevan al exponente.",
+        ],
+      },
     },
     {
       id: "producto-cociente",

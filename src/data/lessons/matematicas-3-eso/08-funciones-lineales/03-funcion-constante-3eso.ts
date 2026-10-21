@@ -35,7 +35,7 @@ export const funcionConstante3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "recta-constante", params: { a: 3 } },
     },
     {
       id: "no-funcion",
