@@ -1,14 +1,16 @@
-# Pack temporal — lección Multiplicación y división
+# Recursos temporales (local)
 
-Archivo para subir a Claude u otras herramientas:
+Material de apoyo por asignatura. No forma parte del build de la app.
 
-- **`multiplicacion-division-naturales-claude-pack.zip`** — código de la lección, módulo visual, rutas y assets PNG.
+## Estructura
 
-Descomprime y lee **`00-LEEME-CLAUDE.md`** dentro del zip.
+- **`mates/`** — Matemáticas por curso (`1 ESO`, `2ESO`, `3 ESO`) y packs de desarrollo en `_packs-claude/`.
+- **`fisica-y-quimica/`** — Física y química (añade aquí tus PDFs, PPTs, etc.).
+- **`tecnologia/`** — Tecnología (añade aquí tus recursos).
 
-## Pack calculadora Casio (tema 2)
+## Packs Claude (mates)
 
-- **`calculadora-casio-claude-pack.zip`** — teclado SVG, LCD √, escenas potencia/raíz, paso de catálogo.
-- Fuentes sueltas en **`files/`**: lee **`files/00-LEEME-CLAUDE-CASIO.md`**.
+En **`mates/_packs-claude/`**:
 
-Esta carpeta es de uso local/temporal; no forma parte del build de la app.
+- **`multiplicacion-division-naturales-claude-pack.zip`** — lección multiplicación/división; descomprime y lee `00-LEEME-CLAUDE.md`.
+- **`calculadora-casio-claude-pack.zip`** — teclado Casio, potencias/raíces; lee **`files/00-LEEME-CLAUDE-CASIO.md`**.
