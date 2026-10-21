@@ -222,6 +222,11 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `sustitucion-sistema` | Método de sustitución en `3x + 2y = 18` y `x − 3y = −5`: despejar, sustituir, resolver, calcular y comprobar | — |
 | `sistema-test` | Problema del test de 50 preguntas: barra aciertos/fallos, dos ecuaciones e interpretación | — |
 | `progresion-comparar` | Barras de una progresión aritmética (+d) frente a una geométrica (·r) desde `a₁` | `a` (a₁), `b` (d), `c` (r) |
+| `recta-tabla-puntos` | Representar `y = mx + n`: tabla con `x = 0, 1, 2`, puntos y recta | `a` (m), `b` (n) |
+| `recta-constante` | `y = k` (recta horizontal, función) frente a `x = k` (vertical, no es función) | `a` (k) |
+| `dominio-recorrido` | Gráfica proyectada sobre el eje X (dominio) y sobre el eje Y (recorrido) | — |
+| `tabla-formula` | De la tabla a la fórmula: variación constante = pendiente, valor en `x = 0` = ordenada | `a` (m), `b` (n), `c` (primer x), `d` (paso de x) |
+| `tarifas-escalones` | Tarifa por hora o fracción: gráfica en escalones con punto lleno/vacío; no se unen los puntos | `a` (precio por hora) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

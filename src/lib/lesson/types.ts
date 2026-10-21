@@ -745,7 +745,12 @@ export type SlideAnimId =
   | "raiz-entre-cuadrados"
   | "sustitucion-sistema"
   | "sistema-test"
-  | "progresion-comparar";
+  | "progresion-comparar"
+  | "recta-tabla-puntos"
+  | "recta-constante"
+  | "dominio-recorrido"
+  | "tabla-formula"
+  | "tarifas-escalones";
 
 export type ExprStep = {
   tokens: string[];

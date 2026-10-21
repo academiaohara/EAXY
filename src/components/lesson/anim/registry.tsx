@@ -128,6 +128,11 @@ import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-en
 import { buildSustitucionSistema } from "@/components/lesson/anim/scenes/sustitucion-sistema";
 import { buildSistemaTest } from "@/components/lesson/anim/scenes/sistema-test";
 import { buildProgresionComparar } from "@/components/lesson/anim/scenes/progresion-comparar";
+import { buildRectaTablaPuntos } from "@/components/lesson/anim/scenes/recta-tabla-puntos";
+import { buildRectaConstante } from "@/components/lesson/anim/scenes/recta-constante";
+import { buildDominioRecorrido } from "@/components/lesson/anim/scenes/dominio-recorrido";
+import { buildTablaFormula } from "@/components/lesson/anim/scenes/tabla-formula";
+import { buildTarifasEscalones } from "@/components/lesson/anim/scenes/tarifas-escalones";
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
@@ -298,6 +303,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "notacion-cientifica": (p) => buildNotacionCientifica(p),
   "progresion-pasos": (p) => buildProgresionPasos(p),
   "suma-gauss": (p) => buildSumaGauss(p),
+  "recta-tabla-puntos": (p) => buildRectaTablaPuntos(p),
+  "recta-constante": (p) => buildRectaConstante(p),
+  "dominio-recorrido": () => buildDominioRecorrido(),
+  "tabla-formula": (p) => buildTablaFormula(p),
+  "tarifas-escalones": (p) => buildTarifasEscalones(p),
   "sustitucion-sistema": () => buildSustitucionSistema(),
   "sistema-test": () => buildSistemaTest(),
   "progresion-comparar": (p) => buildProgresionComparar(p),

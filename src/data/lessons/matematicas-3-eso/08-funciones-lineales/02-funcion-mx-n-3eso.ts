@@ -75,7 +75,7 @@ export const funcionMxN3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "recta-tabla-puntos", params: { a: 2, b: -3 } },
     },
     {
       id: "check-identificar",

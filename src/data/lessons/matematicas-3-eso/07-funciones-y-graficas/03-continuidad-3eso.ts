@@ -65,7 +65,7 @@ export const continuidad3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "tarifas-escalones", params: { a: 1.5 } },
     },
     {
       id: "check-continua",
