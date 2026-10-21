@@ -109,7 +109,7 @@ export const racionalesEquivalentes3esoLesson: InteractiveLesson = {
           text: "Más denominador no significa más grande: $\\frac{1}{8}$ es menor que $\\frac{1}{3}$ porque las partes son más pequeñas.",
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "fracciones-orden" },
     },
     {
       id: "check-equivalente",

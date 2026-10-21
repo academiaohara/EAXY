@@ -59,7 +59,7 @@ export const teoremaPitagoras3esoLesson: InteractiveLesson = {
           ],
         },
       ],
-      arrange: "stack",
+      visual: { kind: "anim", scene: "pitagoras-demostracion", params: { a: 3, b: 4 } },
     },
     {
       id: "lado-desconocido",

@@ -136,6 +136,11 @@ import { buildTarifasEscalones } from "@/components/lesson/anim/scenes/tarifas-e
 import { buildCuadradoDiferencia } from "@/components/lesson/anim/scenes/cuadrado-diferencia";
 import { buildPolinomioTabla } from "@/components/lesson/anim/scenes/polinomio-tabla";
 import { buildFactorComunArea } from "@/components/lesson/anim/scenes/factor-comun-area";
+import { buildFraccionesOrden } from "@/components/lesson/anim/scenes/fracciones-orden";
+import { buildFraccionTotal } from "@/components/lesson/anim/scenes/fraccion-total";
+import { buildCantidadInicial } from "@/components/lesson/anim/scenes/cantidad-inicial";
+import { buildPitagorasDemostracion } from "@/components/lesson/anim/scenes/pitagoras-demostracion";
+import { buildCoordenadasGeograficas } from "@/components/lesson/anim/scenes/coordenadas-geograficas";
 import { buildSumaGauss } from "@/components/lesson/anim/scenes/suma-gauss";
 import { buildCuadradoSuma } from "@/components/lesson/anim/scenes/cuadrado-suma";
 import { buildSumaPorDiferencia } from "@/components/lesson/anim/scenes/suma-por-diferencia";
@@ -306,6 +311,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "notacion-cientifica": (p) => buildNotacionCientifica(p),
   "progresion-pasos": (p) => buildProgresionPasos(p),
   "suma-gauss": (p) => buildSumaGauss(p),
+  "fracciones-orden": () => buildFraccionesOrden(),
+  "fraccion-total": (p) => buildFraccionTotal(p),
+  "cantidad-inicial": (p) => buildCantidadInicial(p),
+  "pitagoras-demostracion": (p) => buildPitagorasDemostracion(p),
+  "coordenadas-geograficas": () => buildCoordenadasGeograficas(),
   "cuadrado-diferencia": (p) => buildCuadradoDiferencia(p),
   "polinomio-tabla": () => buildPolinomioTabla(),
   "factor-comun-area": (p) => buildFactorComunArea(p),

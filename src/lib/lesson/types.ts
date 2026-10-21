@@ -751,6 +751,11 @@ export type SlideAnimId =
   | "dominio-recorrido"
   | "tabla-formula"
   | "tarifas-escalones"
+  | "fracciones-orden"
+  | "fraccion-total"
+  | "cantidad-inicial"
+  | "pitagoras-demostracion"
+  | "coordenadas-geograficas"
   | "cuadrado-diferencia"
   | "polinomio-tabla"
   | "factor-comun-area";
