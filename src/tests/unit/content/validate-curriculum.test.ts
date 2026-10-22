@@ -230,6 +230,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 13 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema13 = fourthYear?.modules.find((m) => m.slug === "estadistica");
+    expect(tema13?.orderIndex).toBe(13);
+    expect(tema13?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "estadistica-ramas-4eso",
+      "estadistica-tablas-4eso",
+      "estadistica-media-4eso",
+      "estadistica-dispersion-4eso",
+      "estadistica-cv-4eso",
+      "estadistica-posicion-4eso",
+      "estadistica-caja-4eso",
+      "estadistica-repaso-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

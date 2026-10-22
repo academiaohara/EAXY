@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { AgruparExplorador, CuartilesExplorador, DispersionExplorador, TablaParametrosExplorador } from "@/components/lesson/slide/tools/EstadisticaTools";
 import { PuntoMedioExplorador, RectasAnaliticaExplorador, VectorExplorador, VectoresOperacionesExplorador } from "@/components/lesson/slide/tools/AnaliticaTools";
 import { EscalaExplorador, HomoteciaExplorador, SemejanzaRazonExplorador, SombraExplorador, TalesExplorador } from "@/components/lesson/slide/tools/SemejanzaTools";
 import { CompuestoExplorador, ExponencialExplorador, HiperbolaExplorador, ParabolaExplorador, RadicalExplorador } from "@/components/lesson/slide/tools/FamiliasTools";
@@ -498,6 +499,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SombraExplorador block={block} />;
     case "homotecia-explorador":
       return <HomoteciaExplorador block={block} />;
+    case "tabla-parametros-explorador":
+      return <TablaParametrosExplorador block={block} />;
+    case "agrupar-explorador":
+      return <AgruparExplorador block={block} />;
+    case "cuartiles-explorador":
+      return <CuartilesExplorador block={block} />;
+    case "dispersion-explorador":
+      return <DispersionExplorador block={block} />;
     case "vector-explorador":
       return <VectorExplorador block={block} />;
     case "vectores-operaciones-explorador":

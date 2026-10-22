@@ -257,6 +257,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `suma-vectores` | Suma de vectores: v a continuación de u, resultante y paralelogramo | `nums` (`[ux, uy, vx, vy]`) |
 | `punto-medio-distancia` | Punto medio (semisuma) y distancia (Pitágoras) entre dos puntos | `nums` (`[x1, y1, x2, y2]`) |
 | `perpendicular-giro` | Vector perpendicular (a, b) → (−b, a), triángulos iguales y m₁·m₂ = −1 | `nums` (`[a, b]`) |
+| `varianza-desviaciones` | Desviaciones a la media, cuadrados, varianza y desviación típica de unos datos | `nums` (datos, 3 a 8) |
+| `caja-atipico` | Diagrama de caja de las 40 estaturas: caja, límite de 1,5 veces su longitud, bigotes y el 189 como atípico | — |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -400,6 +402,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `vectores-operaciones-explorador` | k·u + m·v con u, v, k y m ajustables; también u + v y u − v | `initial` (`[ux, uy, vx, vy, k, m]`) |
 | `punto-medio-explorador` | Punto medio y distancia entre A y B con el triángulo rectángulo | `initial` (`[ax, ay, bx, by]`) |
 | `rectas-analitica-explorador` | Recta por A y B, paralela y perpendicular por T con sus ecuaciones | `initial` (`[ax, ay, bx, by, tx, ty]`) |
+| `tabla-parametros-explorador` | Tabla de frecuencias editable (test, pesos agrupados, estaturas): Σf, Σfx, Σfx², media, varianza, σ y C.V. | `a` (tabla 0–2) |
+| `agrupar-explorador` | Las 40 estaturas en 6, 8 o 10 intervalos: recorrido, r′, longitud, marcas de clase, frecuencias e histograma | `a` (6, 8 o 10) |
+| `cuartiles-explorador` | Cuartiles y diagrama de caja con el criterio del libro en 4 distribuciones; el mayor valor de las estaturas se puede mover para ver cuándo es atípico | `a` (distribución 0–3) |
+| `dispersion-explorador` | Compara C.V. de dos grupos con media y σ ajustables | `initial` (`[mediaA, 2σA, mediaB, 2σB]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

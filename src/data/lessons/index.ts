@@ -91,6 +91,14 @@ import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industri
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
+import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
+import { estadisticaCv4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/05-estadistica-cv-4eso";
+import { estadisticaDispersion4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/04-estadistica-dispersion-4eso";
+import { estadisticaMedia4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/03-estadistica-media-4eso";
+import { estadisticaPosicion4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/06-estadistica-posicion-4eso";
+import { estadisticaRamas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/01-estadistica-ramas-4eso";
+import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/08-estadistica-repaso-4eso";
+import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { exponencialCrecimiento4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/08-exponencial-crecimiento-4eso";
 import { exponencialFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/07-exponencial-funcion-4eso";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
@@ -430,6 +438,14 @@ export const interactiveLessons = {
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "esferas-2eso": esferas2esoLesson,
+  "estadistica-caja-4eso": estadisticaCaja4esoLesson,
+  "estadistica-cv-4eso": estadisticaCv4esoLesson,
+  "estadistica-dispersion-4eso": estadisticaDispersion4esoLesson,
+  "estadistica-media-4eso": estadisticaMedia4esoLesson,
+  "estadistica-posicion-4eso": estadisticaPosicion4esoLesson,
+  "estadistica-ramas-4eso": estadisticaRamas4esoLesson,
+  "estadistica-repaso-4eso": estadisticaRepaso4esoLesson,
+  "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "exponencial-crecimiento-4eso": exponencialCrecimiento4esoLesson,
   "exponencial-funcion-4eso": exponencialFuncion4esoLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
