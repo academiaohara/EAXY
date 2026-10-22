@@ -101,6 +101,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 5 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema5 = fourthYear?.modules.find((m) => m.slug === "expresiones-algebraicas");
+    expect(tema5?.orderIndex).toBe(5);
+    expect(tema5?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "monomios-4eso",
+      "operaciones-monomios-4eso",
+      "polinomios-4eso",
+      "suma-resta-polinomios-4eso",
+      "producto-polinomios-4eso",
+      "factor-comun-4eso",
+      "expresiones-primer-grado-4eso",
+      "expresiones-segundo-grado-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

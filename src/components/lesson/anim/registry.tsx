@@ -150,6 +150,9 @@ import { buildRepartoPartes } from "@/components/lesson/anim/scenes/reparto-part
 import { buildMezclaTabla } from "@/components/lesson/anim/scenes/mezcla-tabla";
 import { buildMovilEncuentro } from "@/components/lesson/anim/scenes/movil-encuentro";
 import { buildInteresProporcional } from "@/components/lesson/anim/scenes/interes-proporcional";
+import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomios-columna";
+import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
+import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
@@ -382,6 +385,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "mezcla-tabla": (p) => buildMezclaTabla(p),
   "movil-encuentro": (p) => buildMovilEncuentro(p),
   "interes-proporcional": (p) => buildInteresProporcional(p),
+  "polinomios-columna": (p) => buildPolinomiosColumna(p),
+  "producto-area": (p) => buildProductoArea(p),
+  "denominadores-mcm": (p) => buildDenominadoresMcm(p),
+
 
 
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),

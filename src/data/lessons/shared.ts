@@ -46,3 +46,4 @@ export const TEMA_4ESO_1_SUBTITLE = "4.º ESO A, Tema 1 — Números enteros y r
 export const TEMA_4ESO_2_SUBTITLE = "4.º ESO A, Tema 2 — Números decimales";
 export const TEMA_4ESO_3_SUBTITLE = "4.º ESO A, Tema 3 — Números reales";
 export const TEMA_4ESO_4_SUBTITLE = "4.º ESO A, Tema 4 — Problemas aritméticos";
+export const TEMA_4ESO_5_SUBTITLE = "4.º ESO A, Tema 5 — Expresiones algebraicas";

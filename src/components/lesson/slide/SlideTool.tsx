@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { FactorComunExplorador, McmExplorador, MonomioExplorador, MonomiosOperador, PolinomioExplorador, PolinomiosOperador, ProductoPolinomiosExplorador } from "@/components/lesson/slide/tools/AlgebraTools";
 import { CompuestaExplorador, IndiceVariacionExplorador, InteresExplorador, MezclaExplorador, MovilesExplorador, ProporcionExplorador, RepartoExplorador } from "@/components/lesson/slide/tools/ProblemasTools";
 import { ConjuntosExplorador, RacionalizarExplorador, RadicalExponencialExplorador, RadicalSimplificador, RaizAproxExplorador, RaizIndiceExplorador } from "@/components/lesson/slide/tools/RealesTools";
 import { AproximacionExplorador, DecimalExplorador, GeneratrizExplorador, NotacionExplorador } from "@/components/lesson/slide/tools/DecimalesTools";
@@ -440,6 +441,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <IndiceVariacionExplorador block={block} />;
     case "interes-explorador":
       return <InteresExplorador block={block} />;
+    case "monomio-explorador":
+      return <MonomioExplorador block={block} />;
+    case "monomios-operador":
+      return <MonomiosOperador block={block} />;
+    case "polinomio-explorador":
+      return <PolinomioExplorador block={block} />;
+    case "polinomios-operador":
+      return <PolinomiosOperador block={block} />;
+    case "producto-polinomios-explorador":
+      return <ProductoPolinomiosExplorador block={block} />;
+    case "factor-comun-explorador":
+      return <FactorComunExplorador block={block} />;
+    case "mcm-explorador":
+      return <McmExplorador block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":
