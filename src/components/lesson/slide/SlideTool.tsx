@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { ConjuntosExplorador, RacionalizarExplorador, RadicalExponencialExplorador, RadicalSimplificador, RaizAproxExplorador, RaizIndiceExplorador } from "@/components/lesson/slide/tools/RealesTools";
 import { AproximacionExplorador, DecimalExplorador, GeneratrizExplorador, NotacionExplorador } from "@/components/lesson/slide/tools/DecimalesTools";
 import { EnterosExplorador, GastoRestoExplorador, PotenciaExplorador, RacionalExplorador } from "@/components/lesson/slide/tools/NumerosTools";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
@@ -412,6 +413,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AproximacionExplorador block={block} />;
     case "notacion-explorador":
       return <NotacionExplorador block={block} />;
+    case "raiz-aprox-explorador":
+      return <RaizAproxExplorador block={block} />;
+    case "conjuntos-explorador":
+      return <ConjuntosExplorador block={block} />;
+    case "raiz-indice-explorador":
+      return <RaizIndiceExplorador block={block} />;
+    case "radical-exponencial-explorador":
+      return <RadicalExponencialExplorador block={block} />;
+    case "radical-simplificador":
+      return <RadicalSimplificador block={block} />;
+    case "racionalizar-explorador":
+      return <RacionalizarExplorador block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":

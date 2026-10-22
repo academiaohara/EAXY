@@ -65,6 +65,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 3 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema3 = fourthYear?.modules.find((m) => m.slug === "numeros-reales");
+    expect(tema3?.orderIndex).toBe(3);
+    expect(tema3?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "numeros-irracionales-4eso",
+      "numeros-reales-recta-4eso",
+      "raices-radicales-4eso",
+      "forma-exponencial-radicales-4eso",
+      "simplificar-extraer-factores-4eso",
+      "operaciones-radicales-4eso",
+      "racionalizar-4eso",
+      "problemas-numeros-reales-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

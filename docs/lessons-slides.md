@@ -226,6 +226,15 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `generatriz-periodico` | Fracción generatriz de un periódico puro o mixto: multiplicar por potencias de 10, restar y cancelar la cola | `dec` (parte entera y no periódica, «1,2»), `per` (periodo, «34») |
 | `error-relativo-comparar` | Mismo error absoluto, distinto error relativo: dos barras con la franja del error | `a`, `b` (medidas), `c` (cota), `titles`, `unit` (`"km\|m"`) |
 | `notacion-operacion` | Operar con notación científica: producto, cociente, potencia y suma (igualar exponentes) | `nop` (`mul`/`div`/`pow`/`sum`), `terms` (mantisas), `a`, `b` (exponentes), `c` (potencia) |
+| `aproximacion-raiz` | `√n` atrapada entre decimales cada vez más próximos (cuadrados de las cotas): irracional si no es exacta | `a` (radicando 2–30) |
+| `numero-oro-construccion` | Construcción de Φ = (1+√5)/2 con un cuadrado unidad y compás | — |
+| `pi-circunferencia` | π: la circunferencia desenrollada mide 3 diámetros y un poco más | — |
+| `conjuntos-numericos` | ℕ ⊂ ℤ ⊂ ℚ, los irracionales y ℝ como unión | — |
+| `raiz-en-recta` | √a como hipotenusa de un triángulo rectángulo llevada a la recta con el compás | `a` (2, 5, 8, 10, 13) |
+| `radical-potencia` | ⁿ√(aᵐ) = a^(m/n) y simplificación de la fracción | `a` (índice), `b` (exponente) |
+| `radical-extraer` | Extraer factores: descomposición, grupos de «índice» factores iguales y resultado `k·ⁿ√m` | `a` (radicando), `b` (índice 2–4) |
+| `radicales-semejantes` | Sumar radicales: idénticos se unen, distintos no, y semejanzas ocultas al extraer factores | — |
+| `racionalizar` | `a/√b = a√b/b`: multiplicar por 1 arriba y abajo, con comprobación decimal | `a`, `b` |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -318,6 +327,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `generatriz-explorador` | Parte entera, cifras sin repetir y periodo: pasos de la generatriz y fracción irreducible | `a` (entera), `b` (sin repetir), `c` (periodo), `initial: [cifras sin repetir, cifras del periodo]` |
 | `aproximacion-explorador` | Una cantidad y el orden de redondeo: aproximación, cifras significativas, error absoluto, cota y cota del error relativo | `a` (índice de la cantidad), `b` (orden 10^k) |
 | `notacion-explorador` | Mantisa (1–9,99) y exponente (−12 a 15): todas las cifras, prefijo y posición en la escala de potencias de 10 | `a` (mantisa ×100), `b` (exponente) |
+| `raiz-aprox-explorador` | √n (2–50) y cifras decimales (0–6): cotas, sus cuadrados y si la raíz es exacta o irracional | `a` (radicando), `b` (cifras) |
+| `conjuntos-explorador` | Doce números (24, −5, 28/7, 0,\overline{71}, √7, π−1…) y los conjuntos a los que pertenecen | `a` (índice) |
+| `raiz-indice-explorador` | Índice (2–7) y radicando (−128 a 256): existencia, valor exacto o aproximado | `a` (índice), `b` (radicando) |
+| `radical-exponencial-explorador` | ⁿ√(aᵐ) = a^(m/n): fracción simplificada y cuándo desaparece el radical | `a` (índice), `b` (exponente) |
+| `radical-simplificador` | Radicando (2–1000) e índice (2–4): descomposición y `k·ⁿ√m` | `a` (radicando), `b` (índice) |
+| `racionalizar-explorador` | `a/√b` y su forma racionalizada simplificada, con el mismo valor decimal | `a`, `b` |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

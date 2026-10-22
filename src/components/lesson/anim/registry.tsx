@@ -136,6 +136,15 @@ import { buildFraccionMixta } from "@/components/lesson/anim/scenes/fraccion-mix
 import { buildDecimalPeriodicoRestos } from "@/components/lesson/anim/scenes/decimal-periodico-restos";
 import { buildGeneratrizPeriodico } from "@/components/lesson/anim/scenes/generatriz-periodico";
 import { buildErrorRelativoComparar } from "@/components/lesson/anim/scenes/error-relativo-comparar";
+import { buildAproximacionRaiz } from "@/components/lesson/anim/scenes/aproximacion-raiz";
+import { buildNumeroOroConstruccion } from "@/components/lesson/anim/scenes/numero-oro-construccion";
+import { buildPiCircunferencia } from "@/components/lesson/anim/scenes/pi-circunferencia";
+import { buildConjuntosNumericos } from "@/components/lesson/anim/scenes/conjuntos-numericos";
+import { buildRaizEnRecta } from "@/components/lesson/anim/scenes/raiz-en-recta";
+import { buildRadicalPotencia } from "@/components/lesson/anim/scenes/radical-potencia";
+import { buildRadicalExtraer } from "@/components/lesson/anim/scenes/radical-extraer";
+import { buildRadicalesSemejantes } from "@/components/lesson/anim/scenes/radicales-semejantes";
+import { buildRacionalizar } from "@/components/lesson/anim/scenes/racionalizar";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
@@ -354,6 +363,16 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "generatriz-periodico": (p) => buildGeneratrizPeriodico(p),
   "error-relativo-comparar": (p) => buildErrorRelativoComparar(p),
   "notacion-operacion": (p) => buildNotacionOperacion(p),
+  "aproximacion-raiz": (p) => buildAproximacionRaiz(p),
+  "numero-oro-construccion": () => buildNumeroOroConstruccion(),
+  "pi-circunferencia": () => buildPiCircunferencia(),
+  "conjuntos-numericos": () => buildConjuntosNumericos(),
+  "raiz-en-recta": (p) => buildRaizEnRecta(p),
+  "radical-potencia": (p) => buildRadicalPotencia(p),
+  "radical-extraer": (p) => buildRadicalExtraer(p),
+  "radicales-semejantes": () => buildRadicalesSemejantes(),
+  "racionalizar": (p) => buildRacionalizar(p),
+
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),
   "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),
