@@ -1,0 +1,862 @@
+1.º de ESO — Matemáticas
+Tema 1. Números naturales
+- Lectura, escritura y ordenación de números naturales.
+- Sistema de numeración decimal.
+- Operaciones con números naturales.
+- Jerarquía de las operaciones.
+- Uso de paréntesis.
+- Potencias de exponente natural.
+- Cuadrados y cubos perfectos.
+- Raíces cuadradas exactas.
+- Resolución de problemas aritméticos.
+Tema 2. Divisibilidad
+- Múltiplos y divisores.
+- Criterios de divisibilidad.
+- Números primos y compuestos.
+- Descomposición en factores primos.
+- Máximo común divisor (MCD).
+- Mínimo común múltiplo (mcm).
+- Problemas de divisibilidad.
+Tema 3. Números enteros
+- Números positivos y negativos.
+- Representación en la recta numérica.
+- Valor absoluto y números opuestos.
+- Comparación y ordenación.
+- Suma y resta.
+- Multiplicación y división.
+- Operaciones combinadas.
+- Potencias de base entera.
+- Aplicaciones a situaciones cotidianas.
+Tema 4. Fracciones
+- Concepto y representación de una fracción.
+- Fracciones propias, impropias y aparentes.
+- Fracciones equivalentes.
+- Simplificación y amplificación.
+- Comparación y ordenación.
+- Fracción irreducible.
+- Suma y resta de fracciones.
+- Multiplicación y división.
+- Operaciones combinadas.
+- Fracción de una cantidad.
+- Resolución de problemas.
+Tema 5. Números decimales
+- Lectura y escritura de números decimales.
+- Ordenación y comparación.
+- Redondeo y aproximación.
+- Suma, resta, multiplicación y división.
+- Conversión entre fracciones y decimales.
+- Expresión decimal exacta y periódica, como introducción.
+- Operaciones con dinero y medidas.
+- Estimación de resultados.
+Tema 6. Proporcionalidad y porcentajes
+- Razones y proporciones.
+- Magnitudes directamente proporcionales.
+- Tablas de proporcionalidad.
+- Regla de tres simple directa.
+- Porcentajes.
+- Cálculo de una parte y de un porcentaje.
+- Aumentos y disminuciones porcentuales sencillos.
+- Escalas y aplicaciones cotidianas.
+Tema 7. Álgebra
+- Expresiones algebraicas.
+- Uso de letras para representar cantidades.
+- Valor numérico de una expresión.
+- Monomios sencillos.
+- Suma y resta de términos semejantes.
+- Igualdades y ecuaciones.
+- Ecuaciones de primer grado sencillas.
+- Resolución de problemas mediante ecuaciones.
+Tema 8. Magnitudes y unidades
+- Magnitudes y unidades de medida.
+- Sistema Internacional de Unidades.
+- Unidades de longitud, masa, capacidad y superficie.
+- Unidades de volumen.
+- Transformación de unidades.
+- Medidas de tiempo.
+- Estimación de medidas.
+- Error y precisión de una medida.
+- Resolución de problemas con unidades.
+Tema 9. Geometría plana
+- Elementos básicos del plano.
+- Puntos, rectas y segmentos.
+- Ángulos y sus tipos.
+- Medida y operaciones con ángulos.
+- Rectas paralelas y perpendiculares.
+- Triángulos y su clasificación.
+- Cuadriláteros y otros polígonos.
+- Circunferencia y círculo.
+- Perímetros.
+- Áreas de figuras planas.
+- Simetrías y movimientos sencillos.
+Tema 10. Cuerpos geométricos
+- Poliedros y cuerpos redondos.
+- Prismas y pirámides.
+- Cilindros, conos y esferas.
+- Elementos de los cuerpos geométricos.
+- Desarrollo plano de prismas y cilindros sencillos.
+- Volumen de cubos y prismas rectos.
+- Unidades de volumen y capacidad.
+- Representación de objetos tridimensionales.
+Tema 11. Funciones y gráficas
+- Coordenadas cartesianas.
+- Ejes y cuadrantes.
+- Representación de puntos.
+- Interpretación de tablas.
+- Elaboración de gráficas.
+- Variables dependientes e independientes.
+- Lectura de gráficas de situaciones cotidianas.
+- Interpretación de tendencias sencillas.
+Tema 12. Estadística y probabilidad
+- Población y muestra.
+- Variables cualitativas y cuantitativas.
+- Recogida y organización de datos.
+- Tablas de frecuencias.
+- Gráficos de barras, sectores y líneas.
+- Media aritmética.
+- Moda y mediana.
+- Experimentos aleatorios.
+- Sucesos y espacio muestral.
+- Noción de probabilidad.
+- Frecuencia relativa.
+Tema 13. Resolución de problemas y pensamiento matemático
+- Comprensión del enunciado.
+- Identificación de datos e incógnitas.
+- Selección de estrategias.
+- Estimación y comprobación de resultados.
+- Uso de calculadora y herramientas digitales.
+- Comunicación del razonamiento matemático.
+- Perseverancia, autocontrol y trabajo cooperativo.
+
+2.º de ESO — Matemáticas
+Tema 1. Números enteros y racionales
+- Operaciones combinadas con enteros.
+- Potencias de base entera.
+- Propiedades de las potencias.
+- Fracciones positivas y negativas.
+- Fracciones equivalentes.
+- Operaciones con números racionales.
+- Números decimales exactos y periódicos.
+- Aproximaciones y redondeos.
+- Notación científica, como iniciación.
+Tema 2. Proporcionalidad numérica
+- Razones y proporciones.
+- Magnitudes directamente proporcionales.
+- Magnitudes inversamente proporcionales.
+- Regla de tres simple.
+- Repartos proporcionales.
+- Porcentajes.
+- Aumentos y disminuciones porcentuales.
+- Descuentos comerciales.
+- Interés simple.
+- Escalas y mapas.
+- Problemas de proporcionalidad.
+Tema 3. Potencias y raíces
+- Potencias de exponente entero.
+- Producto y cociente de potencias.
+- Potencia de una potencia.
+- Potencias de productos y cocientes.
+- Notación científica.
+- Raíz cuadrada y aproximaciones.
+- Raíces exactas e inexactas.
+- Estimación de resultados.
+Tema 4. Expresiones algebraicas
+- Lenguaje algebraico.
+- Monomios.
+- Coeficiente y parte literal.
+- Términos semejantes.
+- Suma y resta de polinomios sencillos.
+- Multiplicación de expresiones algebraicas.
+- Identidades algebraicas básicas.
+- Valor numérico.
+- Uso del álgebra en problemas.
+Tema 5. Ecuaciones de primer grado
+- Igualdades y ecuaciones.
+- Elementos de una ecuación.
+- Ecuaciones equivalentes.
+- Resolución por transformaciones.
+- Ecuaciones con paréntesis.
+- Ecuaciones con denominadores sencillos.
+- Comprobación de soluciones.
+- Planteamiento de problemas mediante ecuaciones.
+Tema 6. Sistemas de ecuaciones
+- Ecuaciones con dos incógnitas.
+- Sistemas de dos ecuaciones lineales.
+- Interpretación gráfica.
+- Métodos de sustitución, igualación y reducción.
+- Clasificación de sistemas sencillos.
+- Resolución de problemas mediante sistemas.
+Tema 7. Funciones
+- Concepto de función.
+- Variable independiente y dependiente.
+- Tablas de valores.
+- Coordenadas y representación gráfica.
+- Dominio y recorrido, de forma introductoria.
+- Crecimiento y decrecimiento.
+- Máximos y mínimos.
+- Continuidad en gráficas sencillas.
+- Interpretación de fenómenos cotidianos.
+Tema 8. Funciones lineales
+- Proporcionalidad directa.
+- Funciones de la forma \(y=mx\).
+- Funciones afines \(y=mx+n\).
+- Pendiente y ordenada en el origen.
+- Representación de rectas.
+- Obtención de una función a partir de una tabla.
+- Interpretación de gráficas.
+- Problemas de movimiento, tarifas y costes.
+Tema 9. Geometría plana
+- Teorema de Pitágoras.
+- Aplicaciones del teorema de Pitágoras.
+- Triángulos y cuadriláteros.
+- Polígonos regulares.
+- Circunferencia y círculo.
+- Longitud de la circunferencia.
+- Áreas de figuras planas.
+- Semejanza de figuras.
+- Escalas y razones de semejanza.
+Tema 10. Cuerpos geométricos
+- Prismas y pirámides.
+- Cilindros, conos y esferas.
+- Áreas laterales y totales.
+- Volúmenes.
+- Desarrollo plano de cuerpos.
+- Unidades de superficie y volumen.
+- Problemas geométricos aplicados.
+Tema 11. Estadística
+- Población y muestra.
+- Tipos de variables.
+- Tablas de frecuencias.
+- Frecuencias absolutas y relativas.
+- Gráficos estadísticos.
+- Media, mediana y moda.
+- Rango y dispersión.
+- Interpretación crítica de datos.
+- Uso de hojas de cálculo.
+Tema 12. Probabilidad
+- Experimentos aleatorios.
+- Espacio muestral.
+- Sucesos simples y compuestos.
+- Frecuencia relativa.
+- Regla de Laplace en casos equiprobables.
+- Diagramas de árbol sencillos.
+- Cálculo e interpretación de probabilidades.
+Tema 13. Pensamiento computacional
+- Secuencias de instrucciones.
+- Descomposición de problemas.
+- Patrones y regularidades.
+- Algoritmos sencillos.
+- Hojas de cálculo y herramientas digitales.
+- Verificación y explicación de resultados.
+
+3.º de ESO — Matemáticas
+Tema 1. Números racionales e irracionales
+- Conjuntos numéricos.
+- Números naturales, enteros y racionales.
+- Números irracionales.
+- Números reales.
+- Representación en la recta real.
+- Intervalos y semirrectas.
+- Valor absoluto.
+- Aproximaciones y errores.
+- Notación científica.
+- Operaciones con números reales.
+Tema 2. Potencias y radicales
+- Potencias de exponente entero.
+- Propiedades de las potencias.
+- Potencias de exponente fraccionario, como introducción.
+- Raíces cuadradas y cúbicas.
+- Simplificación de radicales sencillos.
+- Operaciones con radicales.
+- Racionalización sencilla, si corresponde a la programación.
+- Notación científica y cálculo aproximado.
+Tema 3. Proporcionalidad y porcentajes
+- Proporcionalidad directa e inversa.
+- Repartos proporcionales.
+- Porcentajes encadenados.
+- Aumentos y disminuciones sucesivos.
+- Interés simple y compuesto, según programación.
+- Problemas financieros cotidianos.
+- Escalas y semejanza.
+- Interpretación de tasas y razones.
+Tema 4. Polinomios
+- Monomios y polinomios.
+- Grado y coeficientes.
+- Valor numérico.
+- Suma y resta de polinomios.
+- Multiplicación de polinomios.
+- Productos notables.
+- Identidades algebraicas.
+- Extracción de factor común.
+- Factorización de expresiones sencillas.
+- Uso de software algebraico.
+Tema 5. Ecuaciones
+- Ecuaciones de primer grado.
+- Ecuaciones de segundo grado.
+- Resolución por factorización.
+- Fórmula general.
+- Discriminante e interpretación de soluciones.
+- Ecuaciones con fracciones.
+- Ecuaciones reducibles a segundo grado, en casos sencillos.
+- Problemas algebraicos.
+Tema 6. Sistemas de ecuaciones
+- Sistemas lineales de dos incógnitas.
+- Métodos gráfico, sustitución, igualación y reducción.
+- Interpretación geométrica.
+- Sistemas compatibles e incompatibles.
+- Sistemas con infinitas soluciones.
+- Planteamiento de problemas.
+- Sistemas sencillos no lineales, según programación.
+Tema 7. Sucesiones y progresiones
+- Patrones numéricos.
+- Sucesiones y término general.
+- Progresiones aritméticas.
+- Progresiones geométricas.
+- Cálculo de términos.
+- Suma de términos en progresiones sencillas.
+- Aplicaciones a fenómenos reales.
+Tema 8. Funciones
+- Concepto y notación funcional.
+- Dominio y recorrido.
+- Tablas y gráficas.
+- Continuidad y discontinuidad.
+- Crecimiento y decrecimiento.
+- Máximos y mínimos.
+- Simetría.
+- Periodicidad.
+- Tasa de variación.
+- Interpretación de fenómenos.
+Tema 9. Funciones lineales y cuadráticas
+- Funciones de proporcionalidad directa.
+- Funciones afines.
+- Pendiente y ordenada en el origen.
+- Ecuación de la recta.
+- Sistemas de representación.
+- Función cuadrática.
+- Parábola, vértice y eje de simetría.
+- Concavidad y raíces.
+- Resolución gráfica y algebraica de problemas.
+Tema 10. Geometría y semejanza
+- Teorema de Tales.
+- Semejanza de triángulos.
+- Razones de semejanza.
+- Escalas.
+- Aplicaciones indirectas de la medida.
+- Teorema de Pitágoras.
+- Trigonometría básica en triángulos rectángulos, según programación.
+- Áreas y volúmenes.
+- Geometría analítica elemental.
+Tema 11. Geometría en el plano cartesiano
+- Coordenadas cartesianas.
+- Distancia entre dos puntos.
+- Punto medio de un segmento.
+- Pendiente de una recta.
+- Ecuación de la recta.
+- Interpretación geométrica de sistemas.
+- Aplicaciones en problemas.
+Tema 12. Estadística
+- Estudios estadísticos.
+- Población, muestra y muestreo.
+- Variables estadísticas.
+- Tablas y gráficos.
+- Medidas de centralización.
+- Cuartiles y percentiles.
+- Medidas de dispersión.
+- Diagramas de caja.
+- Comparación de distribuciones.
+- Interpretación crítica de resultados.
+Tema 13. Probabilidad
+- Experimentos aleatorios.
+- Sucesos y operaciones con sucesos.
+- Regla de Laplace.
+- Diagramas de árbol.
+- Experimentos compuestos.
+- Frecuencia relativa.
+- Cálculo de probabilidades.
+- Simulación mediante herramientas digitales.
+
+4.º de ESO — Matemáticas
+En este curso conviene diferenciar las dos materias posibles: Matemáticas A y Matemáticas B. La distribución de los temas varía según la opción, y Matemáticas B suele profundizar más en el álgebra, las funciones y la geometría analítica.
+Matemáticas A
+Tema 1. Números reales
+- Números racionales e irracionales.
+- Intervalos y representación en la recta real.
+- Valor absoluto.
+- Aproximaciones y errores.
+- Notación científica.
+- Potencias y radicales.
+- Operaciones y cálculo aproximado.
+Tema 2. Proporcionalidad y matemática financiera
+- Proporcionalidad directa e inversa.
+- Porcentajes sucesivos.
+- Interés simple y compuesto.
+- Descuentos y recargos.
+- Impuestos y gastos.
+- Préstamos y ahorro.
+- Presupuestos personales.
+- Comparación de ofertas y costes.
+Tema 3. Álgebra
+- Expresiones algebraicas.
+- Polinomios y operaciones.
+- Productos notables.
+- Factorización.
+- Ecuaciones de primer y segundo grado.
+- Sistemas de ecuaciones.
+- Inecuaciones sencillas.
+- Modelización de problemas cotidianos.
+Tema 4. Funciones
+- Concepto de función.
+- Dominio y recorrido.
+- Tablas y gráficas.
+- Funciones lineales y afines.
+- Funciones cuadráticas.
+- Crecimiento y decrecimiento.
+- Máximos y mínimos.
+- Interpretación de gráficas reales.
+Tema 5. Geometría
+- Semejanza.
+- Teorema de Tales.
+- Teorema de Pitágoras.
+- Trigonometría básica.
+- Perímetros y áreas.
+- Cuerpos geométricos.
+- Áreas y volúmenes.
+- Escalas y medidas indirectas.
+Tema 6. Estadística
+- Organización y representación de datos.
+- Tablas de frecuencias.
+- Medidas de centralización.
+- Medidas de dispersión.
+- Cuartiles y diagramas de caja.
+- Comparación de conjuntos de datos.
+- Interpretación de estudios estadísticos.
+Tema 7. Probabilidad
+- Experimentos aleatorios.
+- Espacio muestral y sucesos.
+- Regla de Laplace.
+- Diagramas de árbol.
+- Experimentos compuestos.
+- Frecuencias relativas.
+- Estimación de probabilidades.
+- Aplicaciones a decisiones cotidianas.
+Matemáticas B
+Tema 1. Números reales y cálculo
+- Conjuntos numéricos.
+- Intervalos y desigualdades.
+- Valor absoluto.
+- Aproximaciones y errores.
+- Notación científica.
+- Potencias y radicales.
+- Logaritmos, como iniciación o ampliación según programación.
+Tema 2. Polinomios y fracciones algebraicas
+- Operaciones con polinomios.
+- Productos notables.
+- Identidades algebraicas.
+- Factorización.
+- Regla de Ruffini.
+- Teorema del resto.
+- Fracciones algebraicas.
+- Simplificación y operaciones.
+Tema 3. Ecuaciones, sistemas e inecuaciones
+- Ecuaciones de primer grado.
+- Ecuaciones de segundo grado.
+- Ecuaciones polinómicas.
+- Ecuaciones racionales e irracionales sencillas.
+- Sistemas lineales.
+- Sistemas no lineales sencillos.
+- Inecuaciones de primer grado.
+- Sistemas de inecuaciones.
+- Problemas de modelización.
+Tema 4. Funciones
+- Dominio y recorrido.
+- Representación gráfica.
+- Funciones polinómicas.
+- Funciones racionales.
+- Funciones radicales.
+- Funciones exponenciales y logarítmicas.
+- Funciones definidas a trozos.
+- Simetría y periodicidad.
+- Crecimiento, decrecimiento y extremos.
+- Transformaciones de gráficas.
+Tema 5. Geometría analítica
+- Vectores en el plano.
+- Coordenadas y operaciones con vectores.
+- Módulo de un vector.
+- Producto escalar.
+- Distancia entre puntos.
+- Ecuaciones de la recta.
+- Paralelismo y perpendicularidad.
+- Posición relativa de rectas.
+- Resolución analítica de problemas geométricos.
+Tema 6. Trigonometría
+- Razones trigonométricas.
+- Seno, coseno y tangente.
+- Resolución de triángulos rectángulos.
+- Relaciones trigonométricas fundamentales.
+- Resolución de problemas geométricos.
+- Aplicaciones de la trigonometría.
+Tema 7. Estadística y probabilidad
+- Organización de datos.
+- Medidas de centralización y dispersión.
+- Cuartiles y percentiles.
+- Probabilidad de sucesos.
+- Regla de Laplace.
+- Experimentos compuestos.
+- Diagramas de árbol.
+- Interpretación de datos y simulaciones.
+Estos temarios de ESO son una guía de organización de libros; los saberes básicos y su distribución deben comprobarse en el currículo oficial asturiano. 
+
+miPrincipado
++1
+
+
+
+
+2. Bachillerato
+En Bachillerato hay varias materias de Matemáticas, dependiendo de la modalidad y del itinerario. La relación siguiente las separa para que puedas comparar libros de texto de cada curso.
+1.º de Bachillerato — Matemáticas I
+Orientada principalmente al itinerario de Ciencias y Tecnología.
+Tema 1. Números reales
+- Conjuntos numéricos.
+- Números racionales e irracionales.
+- Intervalos y desigualdades.
+- Valor absoluto.
+- Aproximaciones y errores.
+- Notación científica.
+- Potencias y radicales.
+- Logaritmos y propiedades.
+Tema 2. Álgebra
+- Polinomios.
+- Operaciones algebraicas.
+- Identidades notables.
+- Factorización.
+- Regla de Ruffini.
+- Teorema del resto.
+- Fracciones algebraicas.
+- Ecuaciones polinómicas.
+- Ecuaciones racionales e irracionales.
+- Ecuaciones exponenciales y logarítmicas sencillas.
+Tema 3. Ecuaciones y sistemas
+- Sistemas lineales.
+- Sistemas de ecuaciones no lineales.
+- Métodos de sustitución, igualación y reducción.
+- Sistemas de tres incógnitas.
+- Método de Gauss, según programación.
+- Inecuaciones.
+- Sistemas de inecuaciones.
+- Aplicaciones a problemas.
+Tema 4. Trigonometría
+- Medida de ángulos en grados y radianes.
+- Razones trigonométricas.
+- Circunferencia goniométrica.
+- Relaciones trigonométricas fundamentales.
+- Fórmulas de suma y diferencia de ángulos.
+- Fórmulas de ángulo doble.
+- Ecuaciones trigonométricas sencillas.
+- Resolución de triángulos.
+- Teoremas del seno y del coseno.
+Tema 5. Números complejos
+- Unidad imaginaria.
+- Forma binómica.
+- Operaciones con números complejos.
+- Representación en el plano complejo.
+- Módulo y argumento.
+- Forma polar y trigonométrica.
+- Potencias de números complejos, según programación.
+Tema 6. Geometría analítica
+- Vectores en el plano.
+- Operaciones con vectores.
+- Dependencia e independencia lineal.
+- Producto escalar.
+- Módulo y ángulo entre vectores.
+- Ecuaciones de la recta.
+- Posición relativa de rectas.
+- Distancias y ángulos.
+- Problemas geométricos.
+Tema 7. Funciones
+- Concepto de función.
+- Dominio y recorrido.
+- Composición de funciones.
+- Función inversa.
+- Simetría y periodicidad.
+- Funciones polinómicas y racionales.
+- Funciones exponenciales y logarítmicas.
+- Funciones trigonométricas.
+- Límites y continuidad, como introducción.
+Tema 8. Límites y continuidad
+- Idea intuitiva de límite.
+- Límites laterales.
+- Límites en un punto y en el infinito.
+- Operaciones con límites.
+- Indeterminaciones sencillas.
+- Continuidad de funciones.
+- Tipos de discontinuidad.
+- Interpretación gráfica.
+Tema 9. Derivadas
+- Tasa de variación media.
+- Tasa de variación instantánea.
+- Derivada de una función.
+- Interpretación geométrica.
+- Ecuación de la recta tangente.
+- Reglas de derivación básicas.
+- Derivadas de funciones elementales.
+- Aplicaciones a la variación de funciones.
+Tema 10. Estadística y probabilidad
+- Variables estadísticas.
+- Organización y representación de datos.
+- Medidas de centralización y dispersión.
+- Experimentos aleatorios.
+- Sucesos y operaciones con sucesos.
+- Probabilidad condicionada.
+- Independencia de sucesos.
+- Diagramas de árbol.
+- Distribuciones de probabilidad sencillas.
+
+1.º de Bachillerato — Matemáticas Aplicadas a las Ciencias Sociales I
+Tema 1. Números reales y aritmética
+- Números racionales e irracionales.
+- Intervalos.
+- Potencias y radicales.
+- Notación científica.
+- Logaritmos.
+- Aproximaciones y errores.
+- Aplicaciones financieras.
+Tema 2. Matemática financiera
+- Porcentajes.
+- Aumentos y disminuciones porcentuales.
+- Interés simple.
+- Interés compuesto.
+- Capitalización.
+- Tasas de variación.
+- Préstamos y ahorro.
+- Comparación de productos financieros.
+Tema 3. Álgebra
+- Expresiones algebraicas.
+- Polinomios.
+- Factorización.
+- Ecuaciones.
+- Sistemas de ecuaciones.
+- Inecuaciones.
+- Sistemas de inecuaciones.
+- Problemas económicos y sociales.
+Tema 4. Matrices
+- Concepto y orden de una matriz.
+- Tipos de matrices.
+- Igualdad de matrices.
+- Suma y resta.
+- Multiplicación por escalares.
+- Producto de matrices, según programación.
+- Aplicaciones a la organización de datos.
+Tema 5. Sistemas de ecuaciones lineales
+- Sistemas de dos y tres incógnitas.
+- Métodos de resolución.
+- Interpretación de soluciones.
+- Sistemas compatibles e incompatibles.
+- Aplicaciones a problemas económicos.
+Tema 6. Funciones
+- Dominio y recorrido.
+- Representación gráfica.
+- Funciones lineales y cuadráticas.
+- Funciones polinómicas y racionales.
+- Funciones exponenciales y logarítmicas.
+- Funciones definidas a trozos.
+- Crecimiento y decrecimiento.
+- Interpretación de gráficas económicas.
+Tema 7. Límites y derivadas
+- Idea intuitiva de límite.
+- Límites sencillos.
+- Continuidad.
+- Tasa de variación media.
+- Derivada como tasa de variación instantánea.
+- Interpretación de la pendiente.
+- Aplicaciones básicas a fenómenos económicos.
+Tema 8. Estadística unidimensional
+- Población y muestra.
+- Variables estadísticas.
+- Tablas de frecuencias.
+- Gráficos estadísticos.
+- Media, mediana y moda.
+- Cuartiles y percentiles.
+- Varianza y desviación típica.
+- Interpretación de datos.
+Tema 9. Estadística bidimensional
+- Variables estadísticas bidimensionales.
+- Tablas de doble entrada.
+- Diagramas de dispersión.
+- Covarianza.
+- Correlación lineal.
+- Recta de regresión.
+- Interpretación y limitaciones de la correlación.
+Tema 10. Probabilidad
+- Experimentos aleatorios.
+- Espacio muestral.
+- Sucesos.
+- Probabilidad condicionada.
+- Independencia.
+- Diagramas de árbol.
+- Teoremas de la probabilidad total y de Bayes, cuando corresponda.
+
+2.º de Bachillerato — Matemáticas II
+Tema 1. Matrices y determinantes
+- Tipos de matrices.
+- Operaciones con matrices.
+- Producto de matrices.
+- Matriz identidad.
+- Matriz inversa.
+- Determinantes.
+- Propiedades de los determinantes.
+- Cálculo de determinantes.
+- Rango de una matriz.
+- Aplicaciones a sistemas de ecuaciones.
+Tema 2. Sistemas de ecuaciones
+- Sistemas lineales.
+- Sistemas con parámetros.
+- Discusión de sistemas.
+- Teorema de Rouché-Frobenius.
+- Regla de Cramer.
+- Método de Gauss.
+- Aplicaciones.
+Tema 3. Geometría vectorial
+- Vectores en el espacio.
+- Operaciones con vectores.
+- Dependencia e independencia lineal.
+- Producto escalar.
+- Producto vectorial.
+- Producto mixto.
+- Interpretación geométrica.
+- Ángulos y distancias.
+Tema 4. Geometría analítica en el espacio
+- Puntos y coordenadas.
+- Ecuaciones de la recta.
+- Ecuaciones del plano.
+- Posición relativa de rectas y planos.
+- Paralelismo y perpendicularidad.
+- Intersecciones.
+- Ángulos entre rectas y planos.
+- Distancias entre puntos, rectas y planos.
+- Problemas geométricos tridimensionales.
+Tema 5. Límites y continuidad
+- Límites de funciones.
+- Límites laterales.
+- Límites en el infinito.
+- Indeterminaciones.
+- Asíntotas.
+- Continuidad.
+- Tipos de discontinuidad.
+- Teoremas fundamentales de continuidad.
+Tema 6. Derivadas
+- Definición de derivada.
+- Interpretación geométrica.
+- Reglas de derivación.
+- Derivadas de funciones elementales.
+- Regla de la cadena.
+- Derivación logarítmica, cuando corresponda.
+- Derivadas de orden superior.
+- Recta tangente y normal.
+Tema 7. Aplicaciones de las derivadas
+- Crecimiento y decrecimiento.
+- Máximos y mínimos.
+- Extremos relativos y absolutos.
+- Concavidad y convexidad.
+- Puntos de inflexión.
+- Representación gráfica de funciones.
+- Optimización.
+- Problemas de aplicación.
+Tema 8. Integrales
+- Primitiva de una función.
+- Integrales inmediatas.
+- Métodos elementales de integración.
+- Integral definida.
+- Regla de Barrow.
+- Teorema fundamental del cálculo.
+- Cálculo de áreas bajo curvas.
+- Área entre curvas sencillas.
+Tema 9. Probabilidad y estadística
+- Experimentos aleatorios.
+- Probabilidad condicionada.
+- Independencia de sucesos.
+- Probabilidad total.
+- Teorema de Bayes.
+- Variables aleatorias.
+- Distribuciones de probabilidad.
+- Distribución binomial.
+- Distribución normal.
+- Aplicaciones estadísticas.
+
+2.º de Bachillerato — Matemáticas Aplicadas a las Ciencias Sociales II
+Tema 1. Matrices
+- Concepto y tipos de matrices.
+- Operaciones con matrices.
+- Producto matricial.
+- Matriz inversa.
+- Determinantes y propiedades.
+- Rango de una matriz.
+- Aplicaciones a problemas económicos y sociales.
+Tema 2. Sistemas de ecuaciones lineales
+- Sistemas de ecuaciones.
+- Método de Gauss.
+- Sistemas con parámetros.
+- Discusión de soluciones.
+- Aplicación a problemas contextualizados.
+Tema 3. Programación lineal
+- Inecuaciones lineales.
+- Sistemas de restricciones.
+- Región factible.
+- Vértices de la región factible.
+- Función objetivo.
+- Maximización y minimización.
+- Resolución gráfica.
+- Aplicaciones a costes, producción y beneficios.
+Tema 4. Límites y continuidad
+- Límites de funciones.
+- Límites laterales.
+- Límites en el infinito.
+- Indeterminaciones.
+- Continuidad.
+- Asíntotas.
+- Interpretación de gráficas.
+Tema 5. Derivadas
+- Definición e interpretación.
+- Reglas de derivación.
+- Derivadas de funciones elementales.
+- Regla de la cadena.
+- Recta tangente.
+- Aplicaciones de la derivada.
+Tema 6. Aplicaciones de las derivadas
+- Crecimiento y decrecimiento.
+- Máximos y mínimos.
+- Extremos relativos.
+- Optimización.
+- Representación de funciones.
+- Costes, ingresos y beneficios.
+- Interpretación de tasas de variación.
+Tema 7. Integrales
+- Primitivas.
+- Integrales inmediatas.
+- Integral definida.
+- Regla de Barrow.
+- Cálculo de áreas.
+- Aplicaciones económicas y sociales.
+Tema 8. Probabilidad
+- Sucesos y operaciones.
+- Probabilidad condicionada.
+- Independencia.
+- Probabilidad total.
+- Teorema de Bayes.
+- Diagramas de árbol.
+- Resolución de problemas.
+Tema 9. Distribuciones de probabilidad
+- Variables aleatorias discretas y continuas.
+- Distribución binomial.
+- Distribución normal.
+- Media y desviación típica.
+- Aproximación normal a la binomial, cuando proceda.
+- Aplicaciones a situaciones reales.
+Tema 10. Inferencia estadística
+- Población y muestra.
+- Muestreo.
+- Distribución de las medias muestrales.
+- Estimación de parámetros.
+- Intervalos de confianza.
+- Margen de error.
+- Tamaño muestral.
+- Interpretación de resultados estadísticos.
