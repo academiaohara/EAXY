@@ -269,6 +269,14 @@ import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-ba
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
+import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
+import { semejanzaFiguras4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/01-semejanza-figuras-4eso";
+import { semejanzaHomotecia4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/08-semejanza-homotecia-4eso";
+import { semejanzaRazones4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/03-semejanza-razones-4eso";
+import { semejanzaRectangulos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/06-semejanza-rectangulos-4eso";
+import { semejanzaTales4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/04-semejanza-tales-4eso";
+import { semejanzaTriangulos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/05-semejanza-triangulos-4eso";
+import { semejanzaTroncos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/07-semejanza-troncos-4eso";
 import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/05-simplificar-equivalentes-operador-4eso";
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
@@ -592,6 +600,14 @@ export const interactiveLessons = {
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
+  "semejanza-escala-4eso": semejanzaEscala4esoLesson,
+  "semejanza-figuras-4eso": semejanzaFiguras4esoLesson,
+  "semejanza-homotecia-4eso": semejanzaHomotecia4esoLesson,
+  "semejanza-razones-4eso": semejanzaRazones4esoLesson,
+  "semejanza-rectangulos-4eso": semejanzaRectangulos4esoLesson,
+  "semejanza-tales-4eso": semejanzaTales4esoLesson,
+  "semejanza-triangulos-4eso": semejanzaTriangulos4esoLesson,
+  "semejanza-troncos-4eso": semejanzaTroncos4esoLesson,
   "simplificar-equivalentes-operador-4eso": simplificarEquivalentesOperador4esoLesson,
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,

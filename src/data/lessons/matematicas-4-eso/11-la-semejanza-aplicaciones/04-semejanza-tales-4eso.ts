@@ -1,0 +1,91 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_11_SUBTITLE } from "@/data/lessons/shared";
+
+export const semejanzaTales4esoLesson: InteractiveLesson = {
+  slug: "semejanza-tales-4eso",
+  title: "4. Teorema de Tales",
+  subtitle: TEMA_4ESO_11_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tales",
+      type: "slide",
+      help: [
+        { label: "Recíproco", message: "También ocurre al revés: si los segmentos $AB$ y $BC$ son proporcionales a $A'B'$ y $B'C'$ y dos de las rectas son paralelas, la tercera también lo es." },
+        { label: "Una de las proporciones", message: "Además de $\\frac{AB}{A'B'} = \\frac{BC}{B'C'}$, se cumple $\\frac{AB}{BC} = \\frac{A'B'}{B'C'}$ y $\\frac{OA}{OA'} = \\frac{AB}{A'B'}$." },
+      ],
+      title: "Paralelas que cortan a dos rectas",
+      blocks: [
+        { kind: "rule", title: "Teorema de Tales", text: "Si tres **rectas paralelas** cortan a dos rectas $r$ y $s$, los segmentos que determinan en ellas son **proporcionales**: $\\dfrac{AB}{A'B'} = \\dfrac{BC}{B'C'}$." },
+      ],
+      visual: { kind: "anim", scene: "tales-paralelas", params: { nums: [2, 3, 4.5, 2] } },
+    },
+    {
+      id: "check-prop",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Proporción", message: "$\\frac{AB}{A'B'} = \\frac{BC}{B'C'}$: $\\frac{6}{4} = \\frac{9}{x}$." }],
+      title: "Una proporción de Tales",
+      question: "Tres paralelas cortan a dos rectas: $AB = 6$, $A'B' = 4$ y $BC = 9$. ¿Cuánto mide $B'C'$?",
+      correctAnswers: ["6"],
+      explanation: "$\\frac{6}{4} = \\frac{9}{x} \\Rightarrow x = \\frac{4\\cdot9}{6} = 6$.",
+    },
+    {
+      id: "posicion",
+      type: "slide",
+      help: [{ label: "Encajados", message: "Los triángulos están en posición de Tales cuando comparten un ángulo y los lados opuestos a él son paralelos: uno cabe dentro del otro." }],
+      title: "Triángulos en posición de Tales",
+      blocks: [
+        { kind: "definition", text: "Dos triángulos $ABC$ y $ADE$ con **un ángulo común** $\\hat{A}$ y $DE \\parallel BC$ están en **posición de Tales**: el pequeño está encajado en el grande y son **semejantes**." },
+        { kind: "text", text: "Los lados son proporcionales: $\\dfrac{AD}{AB} = \\dfrac{AE}{AC} = \\dfrac{DE}{BC}$." },
+      ],
+      visual: { kind: "tool", tool: "tales-explorador", initial: [12, 15, 18, 8], hint: "Mueve AD: la razón AD/AB es la de todos los lados." },
+    },
+    {
+      id: "check-ae",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Razón", message: "$\\frac{AD}{AB} = \\frac{8}{12} = \\frac{2}{3}$, luego $AE = \\frac{2}{3}\\cdot15$." }],
+      title: "El lado AE",
+      question: "En el triángulo $ABC$ con $AB = 12$, $AC = 15$ y $BC = 18$, una paralela $DE$ a $BC$ con $AD = 8$ determina $AE = \\dots$",
+      correctAnswers: ["10"],
+      explanation: "La razón es $\\frac{8}{12} = \\frac{2}{3}$. $AE = \\frac{2}{3}\\cdot15 = 10$.",
+    },
+    {
+      id: "check-de",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Misma razón", message: "$DE = \\frac{2}{3}\\cdot BC$." }],
+      title: "El lado DE",
+      question: "En ese mismo triángulo, ¿cuánto mide $DE$?",
+      correctAnswers: ["12"],
+      explanation: "$DE = \\frac{2}{3}\\cdot18 = 12$.",
+    },
+    {
+      id: "check-ec",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Tales", message: "$\\frac{AD}{DB} = \\frac{AE}{EC}$: $\\frac{6}{4} = \\frac{9}{x}$." }],
+      title: "Segmentos del mismo lado",
+      question: "En un triángulo, $DE \\parallel BC$ con $D$ en $AB$ y $E$ en $AC$. Si $AD = 6$, $DB = 4$ y $AE = 9$, ¿cuánto mide $EC$?",
+      correctAnswers: ["6"],
+      explanation: "$\\frac{AD}{DB} = \\frac{AE}{EC} \\Rightarrow \\frac{6}{4} = \\frac{9}{EC} \\Rightarrow EC = 6$.",
+    },
+    {
+      id: "check-area",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "k²", message: "La razón de semejanza es $\\frac{2}{3}$, y las áreas se relacionan con su cuadrado." }],
+      title: "Áreas en Tales",
+      question: "En el triángulo anterior ($AD = 8$, $AB = 12$), ¿qué fracción del área de $ABC$ es el área de $ADE$?",
+      choices: [
+        { id: "49", label: "$\\dfrac{4}{9}$" },
+        { id: "23", label: "$\\dfrac{2}{3}$", incorrectFeedback: "$\\frac{2}{3}$ es la razón de las **longitudes**. Las áreas se multiplican por $k^2$." },
+        { id: "13", label: "$\\dfrac{1}{3}$", incorrectFeedback: "El área del pequeño es $\\left(\\frac{2}{3}\\right)^2$ del grande, no $\\frac{1}{3}$." },
+      ],
+      correctChoiceId: "49",
+      shuffleChoices: true,
+      explanation: "$\\left(\\frac{2}{3}\\right)^2 = \\frac{4}{9}$.",
+    },
+  ],
+};

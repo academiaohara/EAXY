@@ -194,6 +194,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 11 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema11 = fourthYear?.modules.find((m) => m.slug === "la-semejanza-aplicaciones");
+    expect(tema11?.orderIndex).toBe(11);
+    expect(tema11?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "semejanza-figuras-4eso",
+      "semejanza-escala-4eso",
+      "semejanza-razones-4eso",
+      "semejanza-tales-4eso",
+      "semejanza-triangulos-4eso",
+      "semejanza-rectangulos-4eso",
+      "semejanza-troncos-4eso",
+      "semejanza-homotecia-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

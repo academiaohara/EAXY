@@ -154,6 +154,9 @@ import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomi
 import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
 import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
 import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildHomoteciaProyeccion } from "@/components/lesson/anim/scenes/homotecia-proyeccion";
+import { buildTalesParalelas } from "@/components/lesson/anim/scenes/tales-paralelas";
+import { buildTroncoSemejanza } from "@/components/lesson/anim/scenes/tronco-semejanza";
 import { buildParabolaVertice } from "@/components/lesson/anim/scenes/parabola-vertice";
 import { buildHiperbolaAsintotas } from "@/components/lesson/anim/scenes/hiperbola-asintotas";
 import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
@@ -400,6 +403,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "reduccion-suma": (p) => buildReduccionSuma(p),
   "punto-pendiente": (p) => buildPuntoPendiente(p),
   "parabola-vertice": (p) => buildParabolaVertice(p),
+  "homotecia-proyeccion": (p) => buildHomoteciaProyeccion(p),
+  "tales-paralelas": (p) => buildTalesParalelas(p),
+  "tronco-semejanza": (p) => buildTroncoSemejanza(p),
   "hiperbola-asintotas": (p) => buildHiperbolaAsintotas(p),
   "funcion-trozos": () => buildFuncionTrozos(),
 

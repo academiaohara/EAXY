@@ -250,6 +250,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `funcion-trozos` | Función a trozos del libro (x+4, −2x+13, 1) construida tramo a tramo con su fórmula final | — |
 | `parabola-vertice` | Parábola `y = ax²+bx+c`: vértice x = −b/2a, tabla simétrica y curva | `a`, `b`, `c` |
 | `hiperbola-asintotas` | Hipérbola `y = k/x`: tabla, dos ramas y asíntotas (los ejes) | `a` (k) |
+| `homotecia-proyeccion` | Método de la proyección: rayos desde O, puntos a k veces la distancia y figura semejante homotética | `a` (k = 2 o 3) |
+| `tales-paralelas` | Teorema de Tales: tres paralelas cortan a dos rectas y los segmentos son proporcionales | `nums` (`[oa, ab, bc, k]`) |
+| `tronco-semejanza` | Tronco de cono completado hasta el cono: semejanza de triángulos para hallar x y volumen por diferencia de conos | `nums` (`[R, r, h]`) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -384,6 +387,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `radical-explorador` | `y = a√(x−h)+k` con reflejo: dominio y recorrido | `initial` (`[a, h, k, reflejada 0/1]`) |
 | `exponencial-explorador` | `y = C·aˣ` con bases 0,4–3: creciente/decreciente, puntos (0, C) y (1, Ca), asíntota | `a` (base), `b` (C) |
 | `compuesto-explorador` | Variación porcentual anual repetida `C·(1+r/100)ˣ`: valor, años para duplicarse o reducirse a la mitad y gráfica | `initial` (`[C, r %, años]`) |
+| `escala-explorador` | Escala 1:N (de 1:50 a 1:20 000 000) y medida del plano → distancia real, con razones de áreas N² y volúmenes N³ | `a` (N), `b` (cm) |
+| `semejanza-razon-explorador` | Razón k de 0,5 a 4: lados ×k, área ×k², volumen ×k³ con cuadrícula comparativa | `a` (2k), `b` (lado) |
+| `tales-explorador` | Triángulo en posición de Tales (AB, AC, BC y AD): lados proporcionales, AE, DE y razón de áreas | `initial` (`[AB, AC, BC, AD]`) |
+| `sombra-explorador` | Alturas con sombras: vara y árbol en el mismo instante, H = h·S/s | `initial` (`[10h, 10s, 10S]`) |
+| `homotecia-explorador` | Homotecia de centro O y razón k (−3 a 3): figura imagen, razón de longitudes y áreas | `a` (2k) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |
