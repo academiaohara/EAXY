@@ -212,6 +212,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 12 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema12 = fourthYear?.modules.find((m) => m.slug === "geometria-analitica");
+    expect(tema12?.orderIndex).toBe(12);
+    expect(tema12?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "analitica-vectores-4eso",
+      "analitica-modulo-4eso",
+      "analitica-operaciones-4eso",
+      "analitica-punto-medio-4eso",
+      "analitica-distancia-4eso",
+      "analitica-recta-vector-4eso",
+      "analitica-paralelas-4eso",
+      "analitica-perpendiculares-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

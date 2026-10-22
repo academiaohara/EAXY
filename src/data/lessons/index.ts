@@ -6,6 +6,14 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/06-algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/05-algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
+import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
+import { analiticaModulo4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/02-analitica-modulo-4eso";
+import { analiticaOperaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/03-analitica-operaciones-4eso";
+import { analiticaParalelas4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/07-analitica-paralelas-4eso";
+import { analiticaPerpendiculares4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/08-analitica-perpendiculares-4eso";
+import { analiticaPuntoMedio4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/04-analitica-punto-medio-4eso";
+import { analiticaRectaVector4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/06-analitica-recta-vector-4eso";
+import { analiticaVectores4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/01-analitica-vectores-4eso";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
@@ -337,6 +345,14 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "analitica-distancia-4eso": analiticaDistancia4esoLesson,
+  "analitica-modulo-4eso": analiticaModulo4esoLesson,
+  "analitica-operaciones-4eso": analiticaOperaciones4esoLesson,
+  "analitica-paralelas-4eso": analiticaParalelas4esoLesson,
+  "analitica-perpendiculares-4eso": analiticaPerpendiculares4esoLesson,
+  "analitica-punto-medio-4eso": analiticaPuntoMedio4esoLesson,
+  "analitica-recta-vector-4eso": analiticaRectaVector4esoLesson,
+  "analitica-vectores-4eso": analiticaVectores4esoLesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,

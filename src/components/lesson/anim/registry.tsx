@@ -157,6 +157,10 @@ import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-ba
 import { buildHomoteciaProyeccion } from "@/components/lesson/anim/scenes/homotecia-proyeccion";
 import { buildTalesParalelas } from "@/components/lesson/anim/scenes/tales-paralelas";
 import { buildTroncoSemejanza } from "@/components/lesson/anim/scenes/tronco-semejanza";
+import { buildVectorCoordenadas } from "@/components/lesson/anim/scenes/vector-coordenadas";
+import { buildSumaVectores } from "@/components/lesson/anim/scenes/suma-vectores";
+import { buildPuntoMedioDistancia } from "@/components/lesson/anim/scenes/punto-medio-distancia";
+import { buildPerpendicularGiro } from "@/components/lesson/anim/scenes/perpendicular-giro";
 import { buildParabolaVertice } from "@/components/lesson/anim/scenes/parabola-vertice";
 import { buildHiperbolaAsintotas } from "@/components/lesson/anim/scenes/hiperbola-asintotas";
 import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
@@ -403,6 +407,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "reduccion-suma": (p) => buildReduccionSuma(p),
   "punto-pendiente": (p) => buildPuntoPendiente(p),
   "parabola-vertice": (p) => buildParabolaVertice(p),
+  "vector-coordenadas": (p) => buildVectorCoordenadas(p),
+  "suma-vectores": (p) => buildSumaVectores(p),
+  "punto-medio-distancia": (p) => buildPuntoMedioDistancia(p),
+  "perpendicular-giro": (p) => buildPerpendicularGiro(p),
   "homotecia-proyeccion": (p) => buildHomoteciaProyeccion(p),
   "tales-paralelas": (p) => buildTalesParalelas(p),
   "tronco-semejanza": (p) => buildTroncoSemejanza(p),

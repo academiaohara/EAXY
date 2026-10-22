@@ -253,6 +253,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `homotecia-proyeccion` | Método de la proyección: rayos desde O, puntos a k veces la distancia y figura semejante homotética | `a` (k = 2 o 3) |
 | `tales-paralelas` | Teorema de Tales: tres paralelas cortan a dos rectas y los segmentos son proporcionales | `nums` (`[oa, ab, bc, k]`) |
 | `tronco-semejanza` | Tronco de cono completado hasta el cono: semejanza de triángulos para hallar x y volumen por diferencia de conos | `nums` (`[R, r, h]`) |
+| `vector-coordenadas` | Vector AB: flecha entre dos puntos, avance en X e Y y coordenadas = extremo − origen con módulo | `nums` (`[ax, ay, bx, by]`) |
+| `suma-vectores` | Suma de vectores: v a continuación de u, resultante y paralelogramo | `nums` (`[ux, uy, vx, vy]`) |
+| `punto-medio-distancia` | Punto medio (semisuma) y distancia (Pitágoras) entre dos puntos | `nums` (`[x1, y1, x2, y2]`) |
+| `perpendicular-giro` | Vector perpendicular (a, b) → (−b, a), triángulos iguales y m₁·m₂ = −1 | `nums` (`[a, b]`) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -392,6 +396,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `tales-explorador` | Triángulo en posición de Tales (AB, AC, BC y AD): lados proporcionales, AE, DE y razón de áreas | `initial` (`[AB, AC, BC, AD]`) |
 | `sombra-explorador` | Alturas con sombras: vara y árbol en el mismo instante, H = h·S/s | `initial` (`[10h, 10s, 10S]`) |
 | `homotecia-explorador` | Homotecia de centro O y razón k (−3 a 3): figura imagen, razón de longitudes y áreas | `a` (2k) |
+| `vector-explorador` | Vector AB con A y B móviles: coordenadas, módulo exacto y decimal, sentido | `initial` (`[ax, ay, bx, by]`) |
+| `vectores-operaciones-explorador` | k·u + m·v con u, v, k y m ajustables; también u + v y u − v | `initial` (`[ux, uy, vx, vy, k, m]`) |
+| `punto-medio-explorador` | Punto medio y distancia entre A y B con el triángulo rectángulo | `initial` (`[ax, ay, bx, by]`) |
+| `rectas-analitica-explorador` | Recta por A y B, paralela y perpendicular por T con sus ecuaciones | `initial` (`[ax, ay, bx, by, tx, ty]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

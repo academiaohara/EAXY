@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { PuntoMedioExplorador, RectasAnaliticaExplorador, VectorExplorador, VectoresOperacionesExplorador } from "@/components/lesson/slide/tools/AnaliticaTools";
 import { EscalaExplorador, HomoteciaExplorador, SemejanzaRazonExplorador, SombraExplorador, TalesExplorador } from "@/components/lesson/slide/tools/SemejanzaTools";
 import { CompuestoExplorador, ExponencialExplorador, HiperbolaExplorador, ParabolaExplorador, RadicalExplorador } from "@/components/lesson/slide/tools/FamiliasTools";
 import { PendientePuntosExplorador, RectaMnExplorador, TrozosExplorador } from "@/components/lesson/slide/tools/LinealesTools";
@@ -497,6 +498,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SombraExplorador block={block} />;
     case "homotecia-explorador":
       return <HomoteciaExplorador block={block} />;
+    case "vector-explorador":
+      return <VectorExplorador block={block} />;
+    case "vectores-operaciones-explorador":
+      return <VectoresOperacionesExplorador block={block} />;
+    case "punto-medio-explorador":
+      return <PuntoMedioExplorador block={block} />;
+    case "rectas-analitica-explorador":
+      return <RectasAnaliticaExplorador block={block} />;
     case "parabola-explorador":
       return <ParabolaExplorador block={block} />;
     case "hiperbola-explorador":
