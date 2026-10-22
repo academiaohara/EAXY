@@ -50,7 +50,6 @@ test("se puede navegar el catálogo y abrir una lección interactiva sin cuenta"
     /\/aprender\/curso\/matematicas-4-eso\/tema\/sistemas-de-ecuaciones\/leccion\/ecuaciones-lineales-dos-incognitas$/,
   );
   await expect(page.getByTestId("interactive-lesson")).toBeVisible();
-  await expect(page.getByTestId("lesson-concept-step")).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "¿Qué es una ecuación lineal con dos incógnitas?" }),
   ).toBeVisible();

@@ -128,6 +128,50 @@ import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacio
 import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
 import { buildPotenciasFactores } from "@/components/lesson/anim/scenes/potencias-factores";
 import { buildPotenciasExpNegativo } from "@/components/lesson/anim/scenes/potencias-exp-negativo";
+import { buildPotenciaSigno } from "@/components/lesson/anim/scenes/potencia-signo";
+import { buildPotenciaDePotencia } from "@/components/lesson/anim/scenes/potencia-de-potencia";
+import { buildPotenciaDeProducto } from "@/components/lesson/anim/scenes/potencia-de-producto";
+import { buildPotenciaFraccionInversa } from "@/components/lesson/anim/scenes/potencia-fraccion-inversa";
+import { buildFraccionMixta } from "@/components/lesson/anim/scenes/fraccion-mixta";
+import { buildDecimalPeriodicoRestos } from "@/components/lesson/anim/scenes/decimal-periodico-restos";
+import { buildGeneratrizPeriodico } from "@/components/lesson/anim/scenes/generatriz-periodico";
+import { buildErrorRelativoComparar } from "@/components/lesson/anim/scenes/error-relativo-comparar";
+import { buildAproximacionRaiz } from "@/components/lesson/anim/scenes/aproximacion-raiz";
+import { buildNumeroOroConstruccion } from "@/components/lesson/anim/scenes/numero-oro-construccion";
+import { buildPiCircunferencia } from "@/components/lesson/anim/scenes/pi-circunferencia";
+import { buildConjuntosNumericos } from "@/components/lesson/anim/scenes/conjuntos-numericos";
+import { buildRaizEnRecta } from "@/components/lesson/anim/scenes/raiz-en-recta";
+import { buildRadicalPotencia } from "@/components/lesson/anim/scenes/radical-potencia";
+import { buildRadicalExtraer } from "@/components/lesson/anim/scenes/radical-extraer";
+import { buildRadicalesSemejantes } from "@/components/lesson/anim/scenes/radicales-semejantes";
+import { buildRacionalizar } from "@/components/lesson/anim/scenes/racionalizar";
+import { buildProporcionCompuesta } from "@/components/lesson/anim/scenes/proporcion-compuesta";
+import { buildRepartoPartes } from "@/components/lesson/anim/scenes/reparto-partes";
+import { buildMezclaTabla } from "@/components/lesson/anim/scenes/mezcla-tabla";
+import { buildMovilEncuentro } from "@/components/lesson/anim/scenes/movil-encuentro";
+import { buildInteresProporcional } from "@/components/lesson/anim/scenes/interes-proporcional";
+import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomios-columna";
+import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
+import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
+import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildHomoteciaProyeccion } from "@/components/lesson/anim/scenes/homotecia-proyeccion";
+import { buildTalesParalelas } from "@/components/lesson/anim/scenes/tales-paralelas";
+import { buildTroncoSemejanza } from "@/components/lesson/anim/scenes/tronco-semejanza";
+import { buildVectorCoordenadas } from "@/components/lesson/anim/scenes/vector-coordenadas";
+import { buildSumaVectores } from "@/components/lesson/anim/scenes/suma-vectores";
+import { buildPuntoMedioDistancia } from "@/components/lesson/anim/scenes/punto-medio-distancia";
+import { buildPerpendicularGiro } from "@/components/lesson/anim/scenes/perpendicular-giro";
+import { buildVarianzaDesviaciones } from "@/components/lesson/anim/scenes/varianza-desviaciones";
+import { buildCajaAtipico } from "@/components/lesson/anim/scenes/caja-atipico";
+import { buildArbolUrna } from "@/components/lesson/anim/scenes/arbol-urna";
+import { buildParabolaVertice } from "@/components/lesson/anim/scenes/parabola-vertice";
+import { buildHiperbolaAsintotas } from "@/components/lesson/anim/scenes/hiperbola-asintotas";
+import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
+import { buildFuncionTrozos } from "@/components/lesson/anim/scenes/funcion-trozos";
+import { buildReduccionSuma } from "@/components/lesson/anim/scenes/reduccion-suma";
+import { buildInecuacionSigno } from "@/components/lesson/anim/scenes/inecuacion-signo";
+import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
+import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
 import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-entre-cuadrados";
 import { buildSustitucionSistema } from "@/components/lesson/anim/scenes/sustitucion-sistema";
@@ -334,6 +378,53 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "progresion-comparar": (p) => buildProgresionComparar(p),
   "potencias-factores": (p) => buildPotenciasFactores(p),
   "potencias-exp-negativo": (p) => buildPotenciasExpNegativo(p),
+  "potencia-signo": (p) => buildPotenciaSigno(p),
+  "potencia-de-potencia": (p) => buildPotenciaDePotencia(p),
+  "potencia-de-producto": (p) => buildPotenciaDeProducto(p),
+  "potencia-fraccion-inversa": (p) => buildPotenciaFraccionInversa(p),
+  "fraccion-mixta": (p) => buildFraccionMixta(p),
+  "racionales-zoom": () => buildRacionalesZoom(),
+  "decimal-periodico-restos": (p) => buildDecimalPeriodicoRestos(p),
+  "generatriz-periodico": (p) => buildGeneratrizPeriodico(p),
+  "error-relativo-comparar": (p) => buildErrorRelativoComparar(p),
+  "notacion-operacion": (p) => buildNotacionOperacion(p),
+  "aproximacion-raiz": (p) => buildAproximacionRaiz(p),
+  "numero-oro-construccion": () => buildNumeroOroConstruccion(),
+  "pi-circunferencia": () => buildPiCircunferencia(),
+  "conjuntos-numericos": () => buildConjuntosNumericos(),
+  "raiz-en-recta": (p) => buildRaizEnRecta(p),
+  "radical-potencia": (p) => buildRadicalPotencia(p),
+  "radical-extraer": (p) => buildRadicalExtraer(p),
+  "radicales-semejantes": () => buildRadicalesSemejantes(),
+  "racionalizar": (p) => buildRacionalizar(p),
+  "proporcion-compuesta": (p) => buildProporcionCompuesta(p),
+  "reparto-partes": (p) => buildRepartoPartes(p),
+  "mezcla-tabla": (p) => buildMezclaTabla(p),
+  "movil-encuentro": (p) => buildMovilEncuentro(p),
+  "interes-proporcional": (p) => buildInteresProporcional(p),
+  "polinomios-columna": (p) => buildPolinomiosColumna(p),
+  "producto-area": (p) => buildProductoArea(p),
+  "denominadores-mcm": (p) => buildDenominadoresMcm(p),
+  "problema-barras": (p) => buildProblemaBarras(p),
+  "inecuacion-signo": (p) => buildInecuacionSigno(p),
+  "reduccion-suma": (p) => buildReduccionSuma(p),
+  "punto-pendiente": (p) => buildPuntoPendiente(p),
+  "parabola-vertice": (p) => buildParabolaVertice(p),
+  "arbol-urna": (p) => buildArbolUrna(p),
+  "varianza-desviaciones": (p) => buildVarianzaDesviaciones(p),
+  "caja-atipico": () => buildCajaAtipico(),
+  "vector-coordenadas": (p) => buildVectorCoordenadas(p),
+  "suma-vectores": (p) => buildSumaVectores(p),
+  "punto-medio-distancia": (p) => buildPuntoMedioDistancia(p),
+  "perpendicular-giro": (p) => buildPerpendicularGiro(p),
+  "homotecia-proyeccion": (p) => buildHomoteciaProyeccion(p),
+  "tales-paralelas": (p) => buildTalesParalelas(p),
+  "tronco-semejanza": (p) => buildTroncoSemejanza(p),
+  "hiperbola-asintotas": (p) => buildHiperbolaAsintotas(p),
+  "funcion-trozos": () => buildFuncionTrozos(),
+
+
+
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),
   "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),

@@ -217,6 +217,50 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `husos-horarios` | Husos horarios: 15° de longitud equivalen a una hora (Bilbao 12 h → Estambul 14 h, Monterrey 5 h) | — |
 | `potencias-factores` | Producto y cociente de potencias de la misma base contando factores (se suman / se restan los exponentes) | `a` (m), `b` (n < m) |
 | `potencias-exp-negativo` | Al bajar el exponente se divide entre la base: llega a `b⁰ = 1` y a `b⁻ⁿ = 1/bⁿ` | `a` (base) |
+| `potencia-signo` | Signo de las potencias de base negativa: exponente par → positivo, impar → negativo; `(−2)⁴` frente a `−2⁴` | `a` (base negativa, −2 a −4) |
+| `potencia-de-potencia` | `(aᵐ)ⁿ`: n grupos de m factores = m·n factores | `a` (m), `b` (n) |
+| `potencia-de-producto` | `(a·b)ⁿ = aⁿ·bⁿ`: se reordenan los factores en dos filas | `a` (n, 2–4) |
+| `potencia-fraccion-inversa` | `(a/b)⁻ⁿ`: inverso de la potencia positiva y `(b/a)ⁿ` | `a`, `b`, `c` (n) |
+| `fraccion-mixta` | Fracción impropia → número mixto con barras: unidades completas, resto y `D = d·c + r` | `a` (numerador), `b` (denominador) |
+| `decimal-periodico-restos` | Fracción → decimal: cadena de restos, se repite uno (periódico) o llega a 0 (exacto), con el periodo marcado | `a` (numerador), `b` (denominador) |
+| `generatriz-periodico` | Fracción generatriz de un periódico puro o mixto: multiplicar por potencias de 10, restar y cancelar la cola | `dec` (parte entera y no periódica, «1,2»), `per` (periodo, «34») |
+| `error-relativo-comparar` | Mismo error absoluto, distinto error relativo: dos barras con la franja del error | `a`, `b` (medidas), `c` (cota), `titles`, `unit` (`"km\|m"`) |
+| `notacion-operacion` | Operar con notación científica: producto, cociente, potencia y suma (igualar exponentes) | `nop` (`mul`/`div`/`pow`/`sum`), `terms` (mantisas), `a`, `b` (exponentes), `c` (potencia) |
+| `aproximacion-raiz` | `√n` atrapada entre decimales cada vez más próximos (cuadrados de las cotas): irracional si no es exacta | `a` (radicando 2–30) |
+| `numero-oro-construccion` | Construcción de Φ = (1+√5)/2 con un cuadrado unidad y compás | — |
+| `pi-circunferencia` | π: la circunferencia desenrollada mide 3 diámetros y un poco más | — |
+| `conjuntos-numericos` | ℕ ⊂ ℤ ⊂ ℚ, los irracionales y ℝ como unión | — |
+| `raiz-en-recta` | √a como hipotenusa de un triángulo rectángulo llevada a la recta con el compás | `a` (2, 5, 8, 10, 13) |
+| `radical-potencia` | ⁿ√(aᵐ) = a^(m/n) y simplificación de la fracción | `a` (índice), `b` (exponente) |
+| `radical-extraer` | Extraer factores: descomposición, grupos de «índice» factores iguales y resultado `k·ⁿ√m` | `a` (radicando), `b` (índice 2–4) |
+| `radicales-semejantes` | Sumar radicales: idénticos se unen, distintos no, y semejanzas ocultas al extraer factores | — |
+| `racionalizar` | `a/√b = a√b/b`: multiplicar por 1 arriba y abajo, con comprobación decimal | `a`, `b` |
+| `proporcion-compuesta` | Proporcionalidad compuesta con dos magnitudes: etiquetas directa/inversa y fórmula con una razón por magnitud | `nums` (`[k1, k2, resultado, n1, n2]`), `rels` (`["d","i"]`), `titles` |
+| `reparto-partes` | Reparto proporcional: barra del total en partes iguales y lo que se lleva cada uno | `nums` (valores), `a` (total), `titles`, `unit` |
+| `mezcla-tabla` | Mezcla: tabla cantidad–precio–coste, totales y precio de la mezcla en la recta | `nums` (`[q1, p1, q2, p2]`), `titles`, `unit` (`"kg\|€"`) |
+| `movil-encuentro` | Dos móviles en sentidos opuestos (velocidades se suman) o en el mismo sentido (se restan) | `mov` (`opuesto`/`alcance`), `nums` (`[v1, v2, d, retraso min]`) |
+| `interes-proporcional` | Interés simple como proporcionalidad compuesta: capital, tiempo e interés | `a` (capital), `b` (rédito %), `c` (años) |
+| `polinomios-columna` | Suma o resta de polinomios en columnas por grado (en la resta, se cambia el signo del sustraendo) | `nums` (`[a3,a2,a1,a0,b3,b2,b1,b0]`), `op` (`+`/`-`) |
+| `producto-area` | `(ax + b)(cx + d)` como áreas de un rectángulo partido en cuatro | `a`, `b`, `c`, `d` |
+| `denominadores-mcm` | Quitar denominadores multiplicando por el m.c.m.: cada término se simplifica | `nums` (ternas `[coef, denominador, lleva x]`) |
+| `problema-barras` | Modelo de barras de «un número más su k-ésima parte es N»: k+1 partes iguales y x = k·(N/(k+1)) | `nums` (`[k, N]`) |
+| `inecuacion-signo` | Inecuación `a·x rel c`: valores de prueba, semirrecta solución y por qué se invierte el signo al dividir entre un negativo | `nums` (`[a, c]`), `ine` (`<`, `<=`, `>`, `>=`) |
+| `reduccion-suma` | Método de reducción: multiplicar, sumar para eliminar una incógnita, despejar y volver a sustituir (elige solo la incógnita más barata de eliminar) | `nums` (`[a1,b1,c1,a2,b2,c2]`) |
+| `punto-pendiente` | Recta por un punto con pendiente `mn/md`: escalón Δx, Δy, recta y ecuación punto-pendiente y simplificada | `nums` (`[x0, y0, mn, md]`) |
+| `funcion-trozos` | Función a trozos del libro (x+4, −2x+13, 1) construida tramo a tramo con su fórmula final | — |
+| `parabola-vertice` | Parábola `y = ax²+bx+c`: vértice x = −b/2a, tabla simétrica y curva | `a`, `b`, `c` |
+| `hiperbola-asintotas` | Hipérbola `y = k/x`: tabla, dos ramas y asíntotas (los ejes) | `a` (k) |
+| `homotecia-proyeccion` | Método de la proyección: rayos desde O, puntos a k veces la distancia y figura semejante homotética | `a` (k = 2 o 3) |
+| `tales-paralelas` | Teorema de Tales: tres paralelas cortan a dos rectas y los segmentos son proporcionales | `nums` (`[oa, ab, bc, k]`) |
+| `tronco-semejanza` | Tronco de cono completado hasta el cono: semejanza de triángulos para hallar x y volumen por diferencia de conos | `nums` (`[R, r, h]`) |
+| `vector-coordenadas` | Vector AB: flecha entre dos puntos, avance en X e Y y coordenadas = extremo − origen con módulo | `nums` (`[ax, ay, bx, by]`) |
+| `suma-vectores` | Suma de vectores: v a continuación de u, resultante y paralelogramo | `nums` (`[ux, uy, vx, vy]`) |
+| `punto-medio-distancia` | Punto medio (semisuma) y distancia (Pitágoras) entre dos puntos | `nums` (`[x1, y1, x2, y2]`) |
+| `perpendicular-giro` | Vector perpendicular (a, b) → (−b, a), triángulos iguales y m₁·m₂ = −1 | `nums` (`[a, b]`) |
+| `varianza-desviaciones` | Desviaciones a la media, cuadrados, varianza y desviación típica de unos datos | `nums` (datos, 3 a 8) |
+| `caja-atipico` | Diagrama de caja de las 40 estaturas: caja, límite de 1,5 veces su longitud, bigotes y el 189 como atípico | — |
+| `arbol-urna` | Diagrama en árbol de dos extracciones de una urna con o sin reemplazamiento: ramas, probabilidades condicionadas y productos | `nums` (`[verdes, rojas, reemplazamiento 0/1]`) |
+| `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
 | `sustitucion-sistema` | Método de sustitución en `3x + 2y = 18` y `x − 3y = −5`: despejar, sustituir, resolver, calcular y comprobar | — |
@@ -300,6 +344,72 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fraccion-explorador` | Numerador (0–2·d) y denominador (1–12) libres: barra, punto en la recta y decimal (`=`/`≈`); dice si es menor, igual o mayor que 1 | `n`, `d` iniciales |
 | `fraccion-equivalentes` | Fracción de partida `n`/`d` y multiplicador `k` (1–6): dos barras con el mismo trozo coloreado | `n`, `d`, `k` |
 | `fraction-product` | Producto de dos fracciones propias en un cuadrado unidad: columnas (1.ª), filas (2.ª) y zona solapada = resultado; denominadores de 1 a 8 | `initial: [a, b, c, d]` |
+| `enteros-explorador` | Dos enteros (−10 a 10) en la recta: orden, opuestos, valor absoluto y distancia `\|a − b\|` | `a`, `b` |
+| `potencia-explorador` | Base (−5 a 5) y exponente (−4 a 6): factores, signo y valor, también con exponente cero o negativo; la base 0 no está definida | `a` (base), `b` (exponente) |
+| `racional-explorador` | Numerador (−24 a 24) y denominador (1–8): posición en la recta, forma mixta, irreducible y decimal (`=`/`≈`) | `n`, `d` |
+| `gasto-resto-explorador` | «Gasta `a/b` y después `c/d` de lo que queda»: barra, fracciones del total y cantidades; la 2.ª fracción actúa sobre el resto | `initial: [a, b, c, d, total]` |
+| `decimal-explorador` | Fracción n/d (n 1–99, d 2–40): decimal con arco en el periodo, tipo, longitud del periodo, factores del denominador y restos | `n`, `d` |
+| `generatriz-explorador` | Parte entera, cifras sin repetir y periodo: pasos de la generatriz y fracción irreducible | `a` (entera), `b` (sin repetir), `c` (periodo), `initial: [cifras sin repetir, cifras del periodo]` |
+| `aproximacion-explorador` | Una cantidad y el orden de redondeo: aproximación, cifras significativas, error absoluto, cota y cota del error relativo | `a` (índice de la cantidad), `b` (orden 10^k) |
+| `notacion-explorador` | Mantisa (1–9,99) y exponente (−12 a 15): todas las cifras, prefijo y posición en la escala de potencias de 10 | `a` (mantisa ×100), `b` (exponente) |
+| `raiz-aprox-explorador` | √n (2–50) y cifras decimales (0–6): cotas, sus cuadrados y si la raíz es exacta o irracional | `a` (radicando), `b` (cifras) |
+| `conjuntos-explorador` | Doce números (24, −5, 28/7, 0,\overline{71}, √7, π−1…) y los conjuntos a los que pertenecen | `a` (índice) |
+| `raiz-indice-explorador` | Índice (2–7) y radicando (−128 a 256): existencia, valor exacto o aproximado | `a` (índice), `b` (radicando) |
+| `radical-exponencial-explorador` | ⁿ√(aᵐ) = a^(m/n): fracción simplificada y cuándo desaparece el radical | `a` (índice), `b` (exponente) |
+| `radical-simplificador` | Radicando (2–1000) e índice (2–4): descomposición y `k·ⁿ√m` | `a` (radicando), `b` (índice) |
+| `racionalizar-explorador` | `a/√b` y su forma racionalizada simplificada, con el mismo valor decimal | `a`, `b` |
+| `proporcion-explorador` | Regla de tres directa/inversa: fórmula, tipo y gráfica (recta o hipérbola) | `a`, `b`, `c`, `n` (`1` = inversa) |
+| `compuesta-explorador` | Compuesta con dos magnitudes: nuevo valor y relación directa/inversa de cada una | `a`, `b`, `c` (datos), `initial: [n1, n2, inversa1, inversa2]` |
+| `reparto-explorador` | Reparto proporcional entre tres: importes, fracciones y barra | `initial: [a, b, c, total]` |
+| `mezcla-explorador` | Mezcla de dos productos: precio medio y posición entre los dos precios | `initial: [q1, p1 (céntimos), q2, p2]` |
+| `moviles-explorador` | Cruce (suma) o alcance (resta, con retraso): tiempo y si hay alcance | `n` (`1` = alcance), `initial: [v1, v2, d, retraso min]` |
+| `indice-variacion-explorador` | Una o dos variaciones porcentuales: índice, cantidad final y variación total (≠ suma) | `a` (cantidad), `b`, `c` (%) |
+| `interes-explorador` | Interés simple: capital, rédito y meses; interés, capital final y barras anuales | `a` (capital), `b` (rédito), `c` (meses) |
+| `monomio-explorador` | Monomio `c·xᵖ·y^q`: coeficiente, parte literal, grado, valor numérico y semejanza | `a` (coef.), `b` (exp. x), `c` (exp. y) |
+| `monomios-operador` | Suma, resta, producto y cociente de dos monomios; avisa si no son semejantes o el cociente no es monomio | `initial: [coefA, expA, coefB, expB, 0, 0, op (0 +, 1 −, 2 ·, 3 :)]` |
+| `polinomio-explorador` | Polinomio de grado ≤ 3 con deslizadores: grado, P(x) y gráfica | `initial: [c3, c2, c1, c0]`, `a` (x) |
+| `polinomios-operador` | A ± B con coeficientes por grado: resultado y grado | `initial: [A3..A0, B3..B0, resta (1)]` |
+| `producto-polinomios-explorador` | `(ax+b)(cx+d)` desarrollado y comprobación con un valor de x | `initial: [a, b, c, d]`, `a` (x) |
+| `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
+| `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
+| `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |
+| `ecuacion-lineal-explorador` | `ax+b=cx+d` con deslizadores: una solución, ninguna o identidad | `initial` (`[a,b,c,d]`) |
+| `cuadratica-explorador` | `ax²+bx+c=0`: parábola, discriminante, número de soluciones y raíces | `a`, `b`, `c` |
+| `raices-factores-explorador` | Producto cero: 2 o 3 factores `(x−r)` y sus raíces en la parábola/curva | `initial` (`[r1,r2,r3,tres]`) |
+| `reparto-ecuacion-explorador` | Reparto con renuncias: total, renuncias y recargo → ecuación de 2.º grado y n | `initial` (`[total,q,delta]`) |
+| `inecuacion-explorador` | `ax+b rel c`: semirrecta solución y aviso de inversión del signo | `initial` (`[a,b,c,relIndex]`) |
+| `recta-dos-incognitas-explorador` | `ax+by=c` con deslizadores: recta, tabla de soluciones y casos horizontal, vertical o sin recta | `initial` (`[a,b,c]`) |
+| `sistema-grafico-explorador` | Dos rectas `a₁x+b₁y=c₁`, `a₂x+b₂y=c₂`: punto de corte, paralelas o coincidentes | `initial` (`[a1,b1,c1,a2,b2,c2]`) |
+| `reduccion-explorador` | Método de reducción: elegir los multiplicadores y ver cuándo se cancela x o y (con botón de multiplicadores mínimos) | `initial` (`[a1,b1,c1,a2,b2,c2]`) |
+| `sistema-no-lineal-explorador` | Recta `y=mx+n` frente a círculo, parábola o hipérbola: ecuación de 2.º grado al sustituir y puntos de corte | `initial` (`[curva 0–2, m, n]`) |
+| `capitales-sistema-explorador` | Capital repartido en dos inversiones: `x+y=T`, `r₁x+r₂y=G` con barra del reparto | `initial` (`[T, r1, r2, G]`) |
+| `funcion-explorador` | Función con deslizador de x: punto de la gráfica, dominio, recorrido, tramos de crecimiento y extremos relativos (5 funciones: x³−3x+2, x²−4x, x³−12x, sueldo, bola) | `a` (índice de función) |
+| `periodica-explorador` | Noria: función periódica con periodo y t ajustables; instantes equivalentes marcados y resto de t entre T | `initial` (`[T, t]`) |
+| `aparcamiento-explorador` | Tres tarifas de aparcamiento (por horas empezadas, exacta, entrada + exacta): coste según el tiempo y gráfica con saltos | `a` (minutos) |
+| `recta-mn-explorador` | `y = mx + n` con deslizadores (m en pasos de 0,5): escalón de pendiente, ordenada en el origen y tipo (proporcionalidad, constante, afín) | `initial` (`[2m, n]`) |
+| `pendiente-puntos-explorador` | Dos puntos con deslizadores: pendiente (Δy/Δx), caso vertical y ecuación punto-pendiente y simplificada | `initial` (`[x1,y1,x2,y2]`) |
+| `trozos-explorador` | Cuatro funciones a trozos: tramo usado en cada x, extremos abiertos/cerrados y si los tramos empalman o saltan | `a` (función), `b` (x) |
+| `parabola-explorador` | Parábola con deslizadores a, b, c: vértice exacto, máximo/mínimo, anchura y cortes con los ejes | `a`, `b`, `c` |
+| `hiperbola-explorador` | `y = k/(x−h)+v`: asíntotas vertical y horizontal, ramas y valores | `initial` (`[k, h, v]`) |
+| `radical-explorador` | `y = a√(x−h)+k` con reflejo: dominio y recorrido | `initial` (`[a, h, k, reflejada 0/1]`) |
+| `exponencial-explorador` | `y = C·aˣ` con bases 0,4–3: creciente/decreciente, puntos (0, C) y (1, Ca), asíntota | `a` (base), `b` (C) |
+| `compuesto-explorador` | Variación porcentual anual repetida `C·(1+r/100)ˣ`: valor, años para duplicarse o reducirse a la mitad y gráfica | `initial` (`[C, r %, años]`) |
+| `escala-explorador` | Escala 1:N (de 1:50 a 1:20 000 000) y medida del plano → distancia real, con razones de áreas N² y volúmenes N³ | `a` (N), `b` (cm) |
+| `semejanza-razon-explorador` | Razón k de 0,5 a 4: lados ×k, área ×k², volumen ×k³ con cuadrícula comparativa | `a` (2k), `b` (lado) |
+| `tales-explorador` | Triángulo en posición de Tales (AB, AC, BC y AD): lados proporcionales, AE, DE y razón de áreas | `initial` (`[AB, AC, BC, AD]`) |
+| `sombra-explorador` | Alturas con sombras: vara y árbol en el mismo instante, H = h·S/s | `initial` (`[10h, 10s, 10S]`) |
+| `homotecia-explorador` | Homotecia de centro O y razón k (−3 a 3): figura imagen, razón de longitudes y áreas | `a` (2k) |
+| `vector-explorador` | Vector AB con A y B móviles: coordenadas, módulo exacto y decimal, sentido | `initial` (`[ax, ay, bx, by]`) |
+| `vectores-operaciones-explorador` | k·u + m·v con u, v, k y m ajustables; también u + v y u − v | `initial` (`[ux, uy, vx, vy, k, m]`) |
+| `punto-medio-explorador` | Punto medio y distancia entre A y B con el triángulo rectángulo | `initial` (`[ax, ay, bx, by]`) |
+| `rectas-analitica-explorador` | Recta por A y B, paralela y perpendicular por T con sus ecuaciones | `initial` (`[ax, ay, bx, by, tx, ty]`) |
+| `tabla-parametros-explorador` | Tabla de frecuencias editable (test, pesos agrupados, estaturas): Σf, Σfx, Σfx², media, varianza, σ y C.V. | `a` (tabla 0–2) |
+| `agrupar-explorador` | Las 40 estaturas en 6, 8 o 10 intervalos: recorrido, r′, longitud, marcas de clase, frecuencias e histograma | `a` (6, 8 o 10) |
+| `cuartiles-explorador` | Cuartiles y diagrama de caja con el criterio del libro en 4 distribuciones; el mayor valor de las estaturas se puede mover para ver cuándo es atípico | `a` (distribución 0–3) |
+| `dispersion-explorador` | Compara C.V. de dos grupos con media y σ ajustables | `initial` (`[mediaA, 2σA, mediaB, 2σB]`) |
+| `urna-arbol-explorador` | Urna con bolas verdes y rojas, con/sin reemplazamiento: P(VV), P(RR), una de cada color y ramas condicionadas | `initial` (`[verdes, rojas, reemplazamiento 0/1]`) |
+| `dos-dados-explorador` | Tabla 6×6 de dos dados con operación (suma, diferencia, mayor, menor, producto), condición y probabilidad en 36avos | `a` (operación 0–4), `b` (k) |
+| `independientes-explorador` | n pruebas independientes con probabilidad p: P(todas), P(ninguna) y P(alguna) | `initial` (`[p %, n]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

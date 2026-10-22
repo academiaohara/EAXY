@@ -33,6 +33,20 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { DosDadosExplorador, IndependientesExplorador, UrnaArbolExplorador } from "@/components/lesson/slide/tools/ProbabilidadTools";
+import { AgruparExplorador, CuartilesExplorador, DispersionExplorador, TablaParametrosExplorador } from "@/components/lesson/slide/tools/EstadisticaTools";
+import { PuntoMedioExplorador, RectasAnaliticaExplorador, VectorExplorador, VectoresOperacionesExplorador } from "@/components/lesson/slide/tools/AnaliticaTools";
+import { EscalaExplorador, HomoteciaExplorador, SemejanzaRazonExplorador, SombraExplorador, TalesExplorador } from "@/components/lesson/slide/tools/SemejanzaTools";
+import { CompuestoExplorador, ExponencialExplorador, HiperbolaExplorador, ParabolaExplorador, RadicalExplorador } from "@/components/lesson/slide/tools/FamiliasTools";
+import { PendientePuntosExplorador, RectaMnExplorador, TrozosExplorador } from "@/components/lesson/slide/tools/LinealesTools";
+import { AparcamientoExplorador, FuncionExplorador, PeriodicaExplorador } from "@/components/lesson/slide/tools/FuncionesTools";
+import { CapitalesSistemaExplorador, RectaDosIncognitasExplorador, ReduccionExplorador, SistemaGraficoExplorador, SistemaNoLinealExplorador } from "@/components/lesson/slide/tools/SistemasTools";
+import { CuadraticaExplorador, EcuacionLinealExplorador, InecuacionExplorador, RaicesFactoresExplorador, RepartoEcuacionExplorador, TanteoExplorador } from "@/components/lesson/slide/tools/EcuacionesTools";
+import { FactorComunExplorador, McmExplorador, MonomioExplorador, MonomiosOperador, PolinomioExplorador, PolinomiosOperador, ProductoPolinomiosExplorador } from "@/components/lesson/slide/tools/AlgebraTools";
+import { CompuestaExplorador, IndiceVariacionExplorador, InteresExplorador, MezclaExplorador, MovilesExplorador, ProporcionExplorador, RepartoExplorador } from "@/components/lesson/slide/tools/ProblemasTools";
+import { ConjuntosExplorador, RacionalizarExplorador, RadicalExponencialExplorador, RadicalSimplificador, RaizAproxExplorador, RaizIndiceExplorador } from "@/components/lesson/slide/tools/RealesTools";
+import { AproximacionExplorador, DecimalExplorador, GeneratrizExplorador, NotacionExplorador } from "@/components/lesson/slide/tools/DecimalesTools";
+import { EnterosExplorador, GastoRestoExplorador, PotenciaExplorador, RacionalExplorador } from "@/components/lesson/slide/tools/NumerosTools";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
 
@@ -394,6 +408,138 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FractionProductTool initial={block.initial} />;
     case "valor-numerico":
       return <ValorNumerico block={block} />;
+    case "enteros-explorador":
+      return <EnterosExplorador block={block} />;
+    case "potencia-explorador":
+      return <PotenciaExplorador block={block} />;
+    case "racional-explorador":
+      return <RacionalExplorador block={block} />;
+    case "gasto-resto-explorador":
+      return <GastoRestoExplorador block={block} />;
+    case "decimal-explorador":
+      return <DecimalExplorador block={block} />;
+    case "generatriz-explorador":
+      return <GeneratrizExplorador block={block} />;
+    case "aproximacion-explorador":
+      return <AproximacionExplorador block={block} />;
+    case "notacion-explorador":
+      return <NotacionExplorador block={block} />;
+    case "raiz-aprox-explorador":
+      return <RaizAproxExplorador block={block} />;
+    case "conjuntos-explorador":
+      return <ConjuntosExplorador block={block} />;
+    case "raiz-indice-explorador":
+      return <RaizIndiceExplorador block={block} />;
+    case "radical-exponencial-explorador":
+      return <RadicalExponencialExplorador block={block} />;
+    case "radical-simplificador":
+      return <RadicalSimplificador block={block} />;
+    case "racionalizar-explorador":
+      return <RacionalizarExplorador block={block} />;
+    case "proporcion-explorador":
+      return <ProporcionExplorador block={block} />;
+    case "compuesta-explorador":
+      return <CompuestaExplorador block={block} />;
+    case "reparto-explorador":
+      return <RepartoExplorador block={block} />;
+    case "mezcla-explorador":
+      return <MezclaExplorador block={block} />;
+    case "moviles-explorador":
+      return <MovilesExplorador block={block} />;
+    case "indice-variacion-explorador":
+      return <IndiceVariacionExplorador block={block} />;
+    case "interes-explorador":
+      return <InteresExplorador block={block} />;
+    case "monomio-explorador":
+      return <MonomioExplorador block={block} />;
+    case "monomios-operador":
+      return <MonomiosOperador block={block} />;
+    case "polinomio-explorador":
+      return <PolinomioExplorador block={block} />;
+    case "polinomios-operador":
+      return <PolinomiosOperador block={block} />;
+    case "producto-polinomios-explorador":
+      return <ProductoPolinomiosExplorador block={block} />;
+    case "factor-comun-explorador":
+      return <FactorComunExplorador block={block} />;
+    case "mcm-explorador":
+      return <McmExplorador block={block} />;
+    case "tanteo-explorador":
+      return <TanteoExplorador block={block} />;
+    case "ecuacion-lineal-explorador":
+      return <EcuacionLinealExplorador block={block} />;
+    case "cuadratica-explorador":
+      return <CuadraticaExplorador block={block} />;
+    case "raices-factores-explorador":
+      return <RaicesFactoresExplorador block={block} />;
+    case "reparto-ecuacion-explorador":
+      return <RepartoEcuacionExplorador block={block} />;
+    case "recta-dos-incognitas-explorador":
+      return <RectaDosIncognitasExplorador block={block} />;
+    case "sistema-grafico-explorador":
+      return <SistemaGraficoExplorador block={block} />;
+    case "reduccion-explorador":
+      return <ReduccionExplorador block={block} />;
+    case "sistema-no-lineal-explorador":
+      return <SistemaNoLinealExplorador block={block} />;
+    case "capitales-sistema-explorador":
+      return <CapitalesSistemaExplorador block={block} />;
+    case "recta-mn-explorador":
+      return <RectaMnExplorador block={block} />;
+    case "pendiente-puntos-explorador":
+      return <PendientePuntosExplorador block={block} />;
+    case "trozos-explorador":
+      return <TrozosExplorador block={block} />;
+    case "escala-explorador":
+      return <EscalaExplorador block={block} />;
+    case "semejanza-razon-explorador":
+      return <SemejanzaRazonExplorador block={block} />;
+    case "tales-explorador":
+      return <TalesExplorador block={block} />;
+    case "sombra-explorador":
+      return <SombraExplorador block={block} />;
+    case "homotecia-explorador":
+      return <HomoteciaExplorador block={block} />;
+    case "urna-arbol-explorador":
+      return <UrnaArbolExplorador block={block} />;
+    case "dos-dados-explorador":
+      return <DosDadosExplorador block={block} />;
+    case "independientes-explorador":
+      return <IndependientesExplorador block={block} />;
+    case "tabla-parametros-explorador":
+      return <TablaParametrosExplorador block={block} />;
+    case "agrupar-explorador":
+      return <AgruparExplorador block={block} />;
+    case "cuartiles-explorador":
+      return <CuartilesExplorador block={block} />;
+    case "dispersion-explorador":
+      return <DispersionExplorador block={block} />;
+    case "vector-explorador":
+      return <VectorExplorador block={block} />;
+    case "vectores-operaciones-explorador":
+      return <VectoresOperacionesExplorador block={block} />;
+    case "punto-medio-explorador":
+      return <PuntoMedioExplorador block={block} />;
+    case "rectas-analitica-explorador":
+      return <RectasAnaliticaExplorador block={block} />;
+    case "parabola-explorador":
+      return <ParabolaExplorador block={block} />;
+    case "hiperbola-explorador":
+      return <HiperbolaExplorador block={block} />;
+    case "radical-explorador":
+      return <RadicalExplorador block={block} />;
+    case "exponencial-explorador":
+      return <ExponencialExplorador block={block} />;
+    case "compuesto-explorador":
+      return <CompuestoExplorador block={block} />;
+    case "funcion-explorador":
+      return <FuncionExplorador block={block} />;
+    case "periodica-explorador":
+      return <PeriodicaExplorador block={block} />;
+    case "aparcamiento-explorador":
+      return <AparcamientoExplorador block={block} />;
+    case "inecuacion-explorador":
+      return <InecuacionExplorador block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":

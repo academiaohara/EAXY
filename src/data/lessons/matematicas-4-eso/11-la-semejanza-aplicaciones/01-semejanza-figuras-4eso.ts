@@ -1,0 +1,91 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_11_SUBTITLE } from "@/data/lessons/shared";
+
+export const semejanzaFiguras4esoLesson: InteractiveLesson = {
+  slug: "semejanza-figuras-4eso",
+  title: "1. Figuras semejantes",
+  subtitle: TEMA_4ESO_11_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "idea",
+      type: "slide",
+      help: [
+        { label: "Misma forma", message: "Dos figuras semejantes tienen la **misma forma**, aunque distinto tamaño: una es una ampliación o reducción de la otra." },
+        { label: "Razón", message: "$k = \\frac{\\text{longitud en la figura 2}}{\\text{longitud correspondiente en la figura 1}}$. Es la **misma** para todos los segmentos correspondientes." },
+      ],
+      title: "Misma forma, distinto tamaño",
+      blocks: [
+        { kind: "facts", items: [{ tex: "\\hat{A} = \\hat{A}'", label: "los **ángulos** correspondientes son **iguales**" }, { tex: "\\dfrac{a'}{a} = \\dfrac{b'}{b} = k", label: "los **lados** correspondientes son **proporcionales**; $k$ es la razón de semejanza" }] },
+      ],
+      visual: { kind: "anim", scene: "semejanza-figuras", params: { a: 3, b: 4, c: 2 } },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pregúntate", message: "Al ampliar una foto, ¿cambia la forma? ¿Cambian los ángulos? ¿Cambian las longitudes?" }],
+      title: "¿Se conserva o cambia?",
+      question: "Al pasar de una figura a otra semejante, clasifica cada característica.",
+      groups: [
+        { id: "conserva", label: "Se conserva", tone: "emerald" },
+        { id: "cambia", label: "Cambia (se multiplica por k)", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "Los ángulos", group: "conserva" },
+        { id: "b", text: "La longitud de cada lado", group: "cambia" },
+        { id: "c", text: "La forma", group: "conserva" },
+        { id: "d", text: "El perímetro", group: "cambia" },
+        { id: "e", text: "Las proporciones entre lados", group: "conserva" },
+        { id: "f", text: "El área", group: "cambia" },
+      ],
+      hint: "Los ángulos y las proporciones no cambian; las longitudes, sí.",
+    },
+    {
+      id: "check-foto",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Proporción", message: "En la foto, Alberto mide $8$ cm (real $1{,}76$ m) e Iván $7{,}5$ cm. $\\frac{8}{1{,}76} = \\frac{7{,}5}{x}$." }],
+      title: "Una fotografía",
+      question: "En una foto, Alberto mide $8$ cm e Iván $7{,}5$ cm. Si Alberto mide en realidad $1{,}76$ m, ¿cuánto mide Iván? (en m, con coma)",
+      correctAnswers: ["1,65", "1.65"],
+      explanation: "$x = 1{,}76\\cdot\\frac{7{,}5}{8} = 1{,}65$ m. La razón entre foto y realidad es la misma para los dos.",
+    },
+    {
+      id: "check-rect",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Compara razones", message: "$\\frac{6}{4} = 1{,}5$ pero $\\frac{8}{6} \\approx 1{,}33$: los lados no son proporcionales." }],
+      title: "¿Son semejantes?",
+      question: "Un rectángulo de $4\\times6$ y otro de $6\\times8$, ¿son semejantes?",
+      choices: [
+        { id: "no", label: "No: $\\frac{6}{4} \\neq \\frac{8}{6}$" },
+        { id: "si", label: "Sí, porque los dos son rectángulos", incorrectFeedback: "Tener los mismos ángulos (rectos) no basta: para figuras con más de tres lados, **además** los lados deben ser proporcionales." },
+        { id: "si2", label: "Sí, con razón $1{,}5$", incorrectFeedback: "Solo un par de lados cumple $k = 1{,}5$; el otro par da $\\frac{8}{6} \\approx 1{,}33$." },
+      ],
+      correctChoiceId: "no",
+      shuffleChoices: true,
+      explanation: "Para que fueran semejantes, $\\frac{6}{4}$ debería ser igual a $\\frac{8}{6}$, y no lo es.",
+    },
+    {
+      id: "check-razon",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Lado a lado", message: "$k = \\frac{15}{5}$." }],
+      title: "Hallar la razón",
+      question: "Un lado de $5$ cm se corresponde con otro de $15$ cm en una figura semejante. ¿Cuál es la razón de semejanza?",
+      correctAnswers: ["3"],
+      explanation: "$k = \\frac{15}{5} = 3$: la segunda figura es el triple de grande.",
+    },
+    {
+      id: "check-lado",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Multiplica por k", message: "Si $k = 2$, un lado de $7$ cm pasa a $14$ cm." }],
+      title: "Un lado ampliado",
+      question: "Con razón de semejanza $2{,}5$, ¿cuánto mide el lado que en la figura original medía $8$ cm?",
+      correctAnswers: ["20"],
+      explanation: "$8\\cdot2{,}5 = 20$ cm.",
+    },
+  ],
+};

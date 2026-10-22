@@ -1,0 +1,115 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_7_SUBTITLE } from "@/data/lessons/shared";
+
+export const sistemasLinealesGrafica4esoLesson: InteractiveLesson = {
+  slug: "sistemas-lineales-grafica-4eso",
+  title: "2. Sistemas de ecuaciones lineales",
+  subtitle: TEMA_4ESO_7_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "que-es",
+      type: "slide",
+      help: [{ label: "Qué buscamos", message: "Una ecuación sola tiene infinitas soluciones. Un sistema pide las que cumplen **las dos a la vez**." }],
+      title: "Soluciones comunes",
+      blocks: [
+        { kind: "definition", text: "Un **sistema** de dos ecuaciones lineales con dos incógnitas busca los pares $(x, y)$ que verifican **las dos** ecuaciones." },
+        { kind: "text", text: "Cada ecuación es una recta. La solución del sistema es el **punto de corte** de las dos rectas." },
+      ],
+      visual: { kind: "anim", scene: "sistema-rectas", params: { sys: "unica" } },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Tres casos", message: "Dos rectas del plano solo pueden **cortarse** en un punto, ser **paralelas** (sin puntos comunes) o **coincidir** (todos los puntos en común)." }],
+      title: "Explora: mueve las rectas",
+      blocks: [
+        { kind: "text", text: "Cambia los coeficientes y observa los **tres casos** posibles. Fíjate en cuándo las dos rectas son paralelas." },
+      ],
+      visual: { kind: "tool", tool: "sistema-grafico-explorador", initial: [1, 2, 4, 1, 1, 3], hint: "Haz a₂ = 2, b₂ = 4 y c₂ = 2 (paralelas); luego c₂ = 8 (misma recta)." },
+    },
+    {
+      id: "incompatible",
+      type: "slide",
+      help: [{ label: "Contradicción", message: "Si $x + 2y = 4$, entonces $2x + 4y$ vale $8$. Pero la segunda dice que vale $2$: las ecuaciones se contradicen." }],
+      title: "Sistemas incompatibles",
+      blocks: [
+        { kind: "rule", title: "Incompatible", text: "Las rectas son **paralelas**: no se cortan. El sistema **no tiene solución**." },
+        { kind: "text", text: "Pasa cuando las ecuaciones se contradicen: por ejemplo $x + 2y = 4$ y $2x + 4y = 2$." },
+      ],
+      visual: { kind: "anim", scene: "sistema-rectas", params: { sys: "incompatible" } },
+    },
+    {
+      id: "indeterminado",
+      type: "slide",
+      help: [{ label: "Misma información", message: "La segunda ecuación es el doble de la primera: no aporta nada nuevo." }],
+      title: "Sistemas indeterminados",
+      blocks: [
+        { kind: "rule", title: "Indeterminado", text: "Las dos ecuaciones son la **misma recta**: tiene **infinitas soluciones** (cualquier punto de la recta)." },
+        { kind: "text", text: "Pasa con $x + 2y = 4$ y $2x + 4y = 8$: la segunda es el doble de la primera." },
+      ],
+      visual: { kind: "anim", scene: "sistema-rectas", params: { sys: "indeterminado" } },
+    },
+    {
+      id: "check-a",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Resta", message: "Restando las dos ecuaciones: $(2x + y) - (x + y) = 5 - 4$, es decir $x = 1$." }],
+      title: "Un sistema",
+      question: "Sistema: $2x + y = 5$ y $x + y = 4$. ¿Qué ocurre?",
+      choices: [
+        { id: "unica", label: "Una solución: $x = 1$, $y = 3$" },
+        { id: "ninguna", label: "No tiene solución", incorrectFeedback: "Los coeficientes de $x$ e $y$ no son proporcionales: las rectas no son paralelas, se cortan." },
+        { id: "infinitas", label: "Infinitas soluciones", incorrectFeedback: "Serían la misma recta, y no lo son: $2x + y = 5$ no es un múltiplo de $x + y = 4$." },
+      ],
+      correctChoiceId: "unica",
+      shuffleChoices: true,
+      explanation: "Restando: $x = 1$, y de $x + y = 4$ sale $y = 3$. Se cortan en $(1, 3)$.",
+    },
+    {
+      id: "check-b",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Compara", message: "$4x + 2y = 8$ es el doble de $2x + y = 4$, no de $2x + y = 5$." }],
+      title: "Paralelas",
+      question: "Sistema: $2x + y = 5$ y $4x + 2y = 8$. ¿Qué ocurre?",
+      choices: [
+        { id: "ninguna", label: "No tiene solución" },
+        { id: "unica", label: "Una solución", incorrectFeedback: "Los coeficientes son proporcionales ($4x + 2y$ es el doble de $2x + y$), así que las rectas son paralelas." },
+        { id: "infinitas", label: "Infinitas soluciones", incorrectFeedback: "Para eso el término independiente también tendría que duplicarse: $2\\cdot5 = 10 \\neq 8$." },
+      ],
+      correctChoiceId: "ninguna",
+      shuffleChoices: true,
+      explanation: "Si $2x + y = 5$, entonces $4x + 2y = 10$, no $8$: contradicción.",
+    },
+    {
+      id: "check-c",
+      type: "classify",
+      help: [{ label: "Método", message: "Compara las ecuaciones: ¿una es múltiplo de la otra? Si lo es y también el término independiente, es indeterminado; si solo lo son los coeficientes, es incompatible." }],
+      title: "Clasifica el sistema",
+      question: "Clasifica cada sistema.",
+      groups: [
+        { id: "unica", label: "Una solución", tone: "emerald" },
+        { id: "incompatible", label: "Incompatible", tone: "rose" },
+        { id: "indeterminado", label: "Indeterminado", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$2x + y = 5$ y $x + y = 4$", group: "unica" },
+        { id: "b", text: "$2x + y = 5$ y $4x + 2y = 8$", group: "incompatible" },
+        { id: "c", text: "$2x + y = 5$ y $4x + 2y = 10$", group: "indeterminado" },
+        { id: "d", text: "$-x + y = 2$ y $3x + y = 2$", group: "unica" },
+      ],
+      hint: "Busca si una ecuación es múltiplo de la otra.",
+    },
+    {
+      id: "check-d",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Resta", message: "$(3x + y) - (-x + y) = 2 - 2 \\Rightarrow 4x = 0$." }],
+      title: "El punto de corte",
+      question: "Resuelve $-x + y = 2$, $3x + y = 2$. ¿Cuánto vale $y$?",
+      correctAnswers: ["2"],
+      explanation: "$4x = 0 \\Rightarrow x = 0$, y entonces $y = 2$. Las rectas se cortan en $(0, 2)$.",
+    },
+  ],
+};

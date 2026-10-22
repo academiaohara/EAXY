@@ -74,6 +74,6 @@ describe("glosario", () => {
       ),
     );
     const unexplained = terms.filter((term) => !findConceptForTerm(term));
-    expect(unexplained).toEqual(["Ver siguiente paso"]);
+    expect(unexplained).toEqual([]);
   });
 });

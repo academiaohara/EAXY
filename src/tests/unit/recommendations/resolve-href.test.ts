@@ -35,7 +35,7 @@ describe("resolveRecommendationHref", () => {
         baseRecommendation({ lessonId: "a3000000-0000-4000-8000-000000000701" }),
       ),
     ).toBe(
-      "/aprender/curso/matematicas-4-eso/tema/sistemas-de-ecuaciones/leccion/ecuaciones-lineales-dos-incognitas",
+      "/aprender/curso/matematicas-4-eso/tema/sistemas-de-ecuaciones/leccion/ecuaciones-lineales-dos-incognitas-4eso",
     );
   });
 

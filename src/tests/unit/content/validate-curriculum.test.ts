@@ -13,19 +13,256 @@ describe("validateCurriculum", () => {
     expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(5);
   });
 
-  it("tiene las cinco lecciones interactivas del tema 7 en 4.º ESO", () => {
+  it("tiene las ocho lecciones interactivas del tema 7 en 4.º ESO", () => {
     const fourthYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("4º ESO"),
     );
-    expect(fourthYear?.modules[0]?.lessons).toHaveLength(5);
-    expect(
-      fourthYear?.modules[0]?.lessons.map((l) => l.interactiveSlug),
-    ).toEqual([
-      "ecuaciones-lineales-dos-incognitas",
-      "sistemas-lineales-grafica",
-      "resolucion-sistemas-lineales",
-      "sistemas-no-lineales",
-      "problemas-con-sistemas",
+    const sistemas = fourthYear?.modules.find((m) => m.slug === "sistemas-de-ecuaciones");
+    expect(sistemas?.orderIndex).toBe(7);
+    expect(sistemas?.lessons).toHaveLength(8);
+    expect(sistemas?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ecuaciones-lineales-dos-incognitas-4eso",
+      "sistemas-lineales-grafica-4eso",
+      "metodo-sustitucion-4eso",
+      "metodo-igualacion-4eso",
+      "metodo-reduccion-4eso",
+      "sistemas-no-lineales-4eso",
+      "problemas-sistemas-compras-4eso",
+      "problemas-sistemas-capitales-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 1 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema1 = fourthYear?.modules.find((m) => m.slug === "numeros-enteros-y-racionales");
+    expect(tema1?.orderIndex).toBe(1);
+    expect(tema1?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "enteros-recta-valor-absoluto-4eso",
+      "operaciones-enteros-4eso",
+      "potencias-base-entera-4eso",
+      "numeros-racionales-4eso",
+      "simplificar-equivalentes-operador-4eso",
+      "operaciones-fracciones-4eso",
+      "potencias-exponente-entero-4eso",
+      "problemas-fracciones-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 2 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema2 = fourthYear?.modules.find((m) => m.slug === "numeros-decimales");
+    expect(tema2?.orderIndex).toBe(2);
+    expect(tema2?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "fraccion-a-decimal-4eso",
+      "decimal-a-fraccion-4eso",
+      "periodicos-mixtos-racionales-4eso",
+      "aproximaciones-cifras-significativas-4eso",
+      "errores-absoluto-relativo-4eso",
+      "notacion-cientifica-4eso",
+      "operaciones-notacion-cientifica-4eso",
+      "problemas-decimales-notacion-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 3 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema3 = fourthYear?.modules.find((m) => m.slug === "numeros-reales");
+    expect(tema3?.orderIndex).toBe(3);
+    expect(tema3?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "numeros-irracionales-4eso",
+      "numeros-reales-recta-4eso",
+      "raices-radicales-4eso",
+      "forma-exponencial-radicales-4eso",
+      "simplificar-extraer-factores-4eso",
+      "operaciones-radicales-4eso",
+      "racionalizar-4eso",
+      "problemas-numeros-reales-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 4 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema4 = fourthYear?.modules.find((m) => m.slug === "problemas-aritmeticos");
+    expect(tema4?.orderIndex).toBe(4);
+    expect(tema4?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "proporcionalidad-simple-4eso",
+      "proporcionalidad-compuesta-4eso",
+      "repartos-proporcionales-4eso",
+      "mezclas-promedios-4eso",
+      "problemas-moviles-4eso",
+      "calculos-porcentajes-4eso",
+      "variaciones-porcentuales-4eso",
+      "interes-bancario-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 5 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema5 = fourthYear?.modules.find((m) => m.slug === "expresiones-algebraicas");
+    expect(tema5?.orderIndex).toBe(5);
+    expect(tema5?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "monomios-4eso",
+      "operaciones-monomios-4eso",
+      "polinomios-4eso",
+      "suma-resta-polinomios-4eso",
+      "producto-polinomios-4eso",
+      "factor-comun-4eso",
+      "expresiones-primer-grado-4eso",
+      "expresiones-segundo-grado-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 6 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema6 = fourthYear?.modules.find((m) => m.slug === "ecuaciones-e-inecuaciones");
+    expect(tema6?.orderIndex).toBe(6);
+    expect(tema6?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ecuaciones-soluciones-4eso",
+      "ecuaciones-primer-grado-4eso",
+      "problemas-primer-grado-4eso",
+      "ecuaciones-segundo-grado-completas-4eso",
+      "ecuaciones-incompletas-producto-cero-4eso",
+      "problemas-segundo-grado-4eso",
+      "otras-ecuaciones-4eso",
+      "inecuaciones-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 8 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema8 = fourthYear?.modules.find((m) => m.slug === "funciones-caracteristicas");
+    expect(tema8?.orderIndex).toBe(8);
+    expect(tema8?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "funcion-concepto-4eso",
+      "funcion-formas-4eso",
+      "funcion-tabla-grafica-4eso",
+      "funcion-continuidad-4eso",
+      "funcion-crecimiento-extremos-4eso",
+      "funcion-tendencia-periodicidad-4eso",
+      "funcion-interpretar-graficas-4eso",
+      "funcion-repaso-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 9 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema9 = fourthYear?.modules.find((m) => m.slug === "las-funciones-lineales");
+    expect(tema9?.orderIndex).toBe(9);
+    expect(tema9?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "lineal-idea-4eso",
+      "lineal-tipos-4eso",
+      "lineal-pendiente-grafica-4eso",
+      "lineal-pendiente-puntos-4eso",
+      "lineal-punto-pendiente-4eso",
+      "lineal-problemas-4eso",
+      "lineal-trozos-4eso",
+      "lineal-repaso-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 10 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema10 = fourthYear?.modules.find((m) => m.slug === "otras-funciones-elementales");
+    expect(tema10?.orderIndex).toBe(10);
+    expect(tema10?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "cuad-parabola-4eso",
+      "cuad-general-4eso",
+      "cuad-aplicaciones-4eso",
+      "inversa-hiperbola-4eso",
+      "inversa-aplicaciones-4eso",
+      "radicales-funcion-4eso",
+      "exponencial-funcion-4eso",
+      "exponencial-crecimiento-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 11 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema11 = fourthYear?.modules.find((m) => m.slug === "la-semejanza-aplicaciones");
+    expect(tema11?.orderIndex).toBe(11);
+    expect(tema11?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "semejanza-figuras-4eso",
+      "semejanza-escala-4eso",
+      "semejanza-razones-4eso",
+      "semejanza-tales-4eso",
+      "semejanza-triangulos-4eso",
+      "semejanza-rectangulos-4eso",
+      "semejanza-troncos-4eso",
+      "semejanza-homotecia-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 12 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema12 = fourthYear?.modules.find((m) => m.slug === "geometria-analitica");
+    expect(tema12?.orderIndex).toBe(12);
+    expect(tema12?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "analitica-vectores-4eso",
+      "analitica-modulo-4eso",
+      "analitica-operaciones-4eso",
+      "analitica-punto-medio-4eso",
+      "analitica-distancia-4eso",
+      "analitica-recta-vector-4eso",
+      "analitica-paralelas-4eso",
+      "analitica-perpendiculares-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 13 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema13 = fourthYear?.modules.find((m) => m.slug === "estadistica");
+    expect(tema13?.orderIndex).toBe(13);
+    expect(tema13?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "estadistica-ramas-4eso",
+      "estadistica-tablas-4eso",
+      "estadistica-media-4eso",
+      "estadistica-dispersion-4eso",
+      "estadistica-cv-4eso",
+      "estadistica-posicion-4eso",
+      "estadistica-caja-4eso",
+      "estadistica-repaso-4eso",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 14 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema14 = fourthYear?.modules.find((m) => m.slug === "calculo-de-probabilidades");
+    expect(tema14?.orderIndex).toBe(14);
+    expect(tema14?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "prob-experiencias-4eso",
+      "prob-laplace-4eso",
+      "prob-dos-dados-4eso",
+      "prob-compuestas-4eso",
+      "prob-independientes-4eso",
+      "prob-dependientes-4eso",
+      "prob-arbol-4eso",
+      "prob-repaso-4eso",
     ]);
   });
 
