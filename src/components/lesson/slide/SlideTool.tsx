@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { CuadraticaExplorador, EcuacionLinealExplorador, InecuacionExplorador, RaicesFactoresExplorador, RepartoEcuacionExplorador, TanteoExplorador } from "@/components/lesson/slide/tools/EcuacionesTools";
 import { FactorComunExplorador, McmExplorador, MonomioExplorador, MonomiosOperador, PolinomioExplorador, PolinomiosOperador, ProductoPolinomiosExplorador } from "@/components/lesson/slide/tools/AlgebraTools";
 import { CompuestaExplorador, IndiceVariacionExplorador, InteresExplorador, MezclaExplorador, MovilesExplorador, ProporcionExplorador, RepartoExplorador } from "@/components/lesson/slide/tools/ProblemasTools";
 import { ConjuntosExplorador, RacionalizarExplorador, RadicalExponencialExplorador, RadicalSimplificador, RaizAproxExplorador, RaizIndiceExplorador } from "@/components/lesson/slide/tools/RealesTools";
@@ -455,6 +456,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FactorComunExplorador block={block} />;
     case "mcm-explorador":
       return <McmExplorador block={block} />;
+    case "tanteo-explorador":
+      return <TanteoExplorador block={block} />;
+    case "ecuacion-lineal-explorador":
+      return <EcuacionLinealExplorador block={block} />;
+    case "cuadratica-explorador":
+      return <CuadraticaExplorador block={block} />;
+    case "raices-factores-explorador":
+      return <RaicesFactoresExplorador block={block} />;
+    case "reparto-ecuacion-explorador":
+      return <RepartoEcuacionExplorador block={block} />;
+    case "inecuacion-explorador":
+      return <InecuacionExplorador block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":

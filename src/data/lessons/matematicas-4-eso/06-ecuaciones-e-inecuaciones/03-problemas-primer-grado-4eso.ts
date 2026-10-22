@@ -1,0 +1,108 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_6_SUBTITLE } from "@/data/lessons/shared";
+
+export const problemasPrimerGrado4esoLesson: InteractiveLesson = {
+  slug: "problemas-primer-grado-4eso",
+  title: "3. Problemas de primer grado",
+  subtitle: TEMA_4ESO_6_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "pasos",
+      type: "slide",
+      help: [{ label: "Lo más difícil", message: "Casi siempre es **traducir** el enunciado. Escribe qué representa la $x$ antes de nada." }],
+      title: "Del enunciado a la ecuación",
+      blocks: [
+        {
+          kind: "steps",
+          title: "Método",
+          items: [
+            "**Lee** y decide qué es la incógnita $x$.",
+            "Expresa las demás cantidades **en función de $x$**.",
+            "**Plantea** la ecuación con la igualdad que da el enunciado.",
+            "**Resuelve** y **comprueba** que tiene sentido en el problema.",
+          ],
+        },
+      ],
+      visual: { kind: "anim", scene: "pasos-problema" },
+    },
+    {
+      id: "barras",
+      type: "slide",
+      help: [{ label: "Idea", message: "Un dibujo de barras convierte «un número más su tercera parte» en 4 partes iguales." }],
+      title: "Un modelo de barras",
+      blocks: [
+        { kind: "text", text: "«Un número más su **tercera parte** suma $48$». Dibuja la cantidad como barra y verás la ecuación $x + \\dfrac{x}{3} = 48$." },
+      ],
+      visual: { kind: "anim", scene: "problema-barras", params: { nums: [3, 48] } },
+    },
+    {
+      id: "check-barras",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Partes", message: "$x + \\frac{x}{4}$ son $5$ cuartos de $x$: $\\frac{5x}{4} = 60$." }],
+      title: "Un número y su cuarta parte",
+      question: "Un número más su cuarta parte suman $60$. ¿Qué número es?",
+      correctAnswers: ["48"],
+      explanation: "$x + \\frac{x}{4} = 60 \\Rightarrow 5x = 240 \\Rightarrow x = 48$. Comprobación: $48 + 12 = 60$.",
+    },
+    {
+      id: "check-consecutivos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Plantea", message: "Tres consecutivos: $x$, $x+1$, $x+2$. Suma: $3x + 3 = 75$." }],
+      title: "Consecutivos",
+      question: "La suma de tres números naturales consecutivos es $75$. ¿Cuál es el menor?",
+      correctAnswers: ["24"],
+      explanation: "$x + (x+1) + (x+2) = 75 \\Rightarrow 3x = 72 \\Rightarrow x = 24$ (24, 25, 26).",
+    },
+    {
+      id: "check-edades",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Plantea", message: "Hijo: $x$. Padre: $3x$. Dentro de 10 años: $3x + 10 = 2(x + 10)$." }],
+      title: "Edades",
+      question: "Un padre tiene el triple de edad que su hijo. Dentro de $10$ años tendrá el doble. ¿Qué edad tiene hoy el hijo?",
+      correctAnswers: ["10"],
+      explanation: "$3x + 10 = 2x + 20 \\Rightarrow x = 10$. Hijo $10$, padre $30$; en 10 años, $20$ y $40$.",
+    },
+    {
+      id: "movil",
+      type: "slide",
+      help: [{ label: "Fórmula", message: "$e = v \\cdot t$. Si se acercan, se suman las velocidades; si uno alcanza al otro, se restan." }],
+      title: "Móviles que se encuentran",
+      blocks: [
+        { kind: "text", text: "Dos móviles salen a la vez y se acercan: la distancia que recorren **suma** el total. Con $e = v\\cdot t$ queda una ecuación en $t$." },
+      ],
+      visual: { kind: "anim", scene: "movil-encuentro" },
+    },
+    {
+      id: "check-movil",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Suma", message: "Se acercan a $60 + 40 = 100$ km/h. Tiempo = $300 : 100$." }],
+      title: "Encuentro",
+      question: "Dos ciudades distan $300$ km. Dos coches salen a la vez, uno hacia el otro, a $60$ y $40$ km/h. ¿Cuántas horas tardan en cruzarse?",
+      correctAnswers: ["3"],
+      explanation: "$60t + 40t = 300 \\Rightarrow t = 3$ horas.",
+    },
+    {
+      id: "reparto",
+      type: "slide",
+      help: [{ label: "Reparto desigual", message: "Si cada amigo paga una parte distinta, la suma de todas las partes debe dar el total." }],
+      title: "Un reparto con ecuación",
+      blocks: [{ kind: "text", text: "Reparte $x$ euros: el primero recibe $x$, el segundo el doble, el tercero $x$ menos 5. La suma da el total." }],
+      visual: { kind: "anim", scene: "reparto-partes" },
+    },
+    {
+      id: "check-mezcla",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Dinero", message: "Entradas de 8 €: $x$. De 5 €: $50 - x$. Total: $8x + 5(50 - x) = 340$." }],
+      title: "Entradas",
+      question: "Se venden $50$ entradas, unas a $8$ € y otras a $5$ €, y se recaudan $340$ €. ¿Cuántas eran de $8$ €?",
+      correctAnswers: ["30"],
+      explanation: "$8x + 250 - 5x = 340 \\Rightarrow 3x = 90 \\Rightarrow x = 30$.",
+    },
+  ],
+};

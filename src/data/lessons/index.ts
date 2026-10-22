@@ -67,10 +67,14 @@ import { ecuacionesDenominadores3esoLesson } from "@/data/lessons/matematicas-3-
 import { ecuacionesDosIncognitas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-2eso";
 import { ecuacionesDosIncognitas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-3eso";
 import { ecuacionesIncompletas3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/05-ecuaciones-incompletas-3eso";
+import { ecuacionesIncompletasProductoCero4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/05-ecuaciones-incompletas-producto-cero-4eso";
 import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
 import { ecuacionesPrimerGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/02-ecuaciones-primer-grado-3eso";
+import { ecuacionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/02-ecuaciones-primer-grado-4eso";
 import { ecuacionesSegundoGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/04-ecuaciones-segundo-grado-3eso";
+import { ecuacionesSegundoGradoCompletas4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/04-ecuaciones-segundo-grado-completas-4eso";
 import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/01-ecuaciones-soluciones-3eso";
+import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
@@ -108,6 +112,7 @@ import { funcionMxN3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funcio
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
+import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
@@ -161,6 +166,7 @@ import { operacionesRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso
 import { operacionesSexagesimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/07-operaciones-sexagesimales-2eso";
 import { operarPolinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/04-operar-polinomios-3eso";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
+import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
@@ -199,6 +205,8 @@ import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
+import { problemasPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/03-problemas-primer-grado-4eso";
+import { problemasSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/06-problemas-segundo-grado-4eso";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasSistemas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/05-problemas-sistemas-3eso";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
@@ -355,10 +363,14 @@ export const interactiveLessons = {
   "ecuaciones-dos-incognitas-2eso": ecuacionesDosIncognitas2esoLesson,
   "ecuaciones-dos-incognitas-3eso": ecuacionesDosIncognitas3esoLesson,
   "ecuaciones-incompletas-3eso": ecuacionesIncompletas3esoLesson,
+  "ecuaciones-incompletas-producto-cero-4eso": ecuacionesIncompletasProductoCero4esoLesson,
   "ecuaciones-lineales-dos-incognitas": ecuacionesLinealesDosIncognitasLesson,
   "ecuaciones-primer-grado-3eso": ecuacionesPrimerGrado3esoLesson,
+  "ecuaciones-primer-grado-4eso": ecuacionesPrimerGrado4esoLesson,
   "ecuaciones-segundo-grado-3eso": ecuacionesSegundoGrado3esoLesson,
+  "ecuaciones-segundo-grado-completas-4eso": ecuacionesSegundoGradoCompletas4esoLesson,
   "ecuaciones-soluciones-3eso": ecuacionesSoluciones3esoLesson,
+  "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
@@ -396,6 +408,7 @@ export const interactiveLessons = {
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
+  "inecuaciones-4eso": inecuaciones4esoLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
@@ -449,6 +462,7 @@ export const interactiveLessons = {
   "operaciones-sexagesimales-2eso": operacionesSexagesimales2esoLesson,
   "operar-polinomios-3eso": operarPolinomios3esoLesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
+  "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "parentesis-enteros": parentesisEnterosLesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
@@ -487,6 +501,8 @@ export const interactiveLessons = {
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
+  "problemas-primer-grado-4eso": problemasPrimerGrado4esoLesson,
+  "problemas-segundo-grado-4eso": problemasSegundoGrado4esoLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-sistemas-3eso": problemasSistemas3esoLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,

@@ -243,6 +243,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `polinomios-columna` | Suma o resta de polinomios en columnas por grado (en la resta, se cambia el signo del sustraendo) | `nums` (`[a3,a2,a1,a0,b3,b2,b1,b0]`), `op` (`+`/`-`) |
 | `producto-area` | `(ax + b)(cx + d)` como áreas de un rectángulo partido en cuatro | `a`, `b`, `c`, `d` |
 | `denominadores-mcm` | Quitar denominadores multiplicando por el m.c.m.: cada término se simplifica | `nums` (ternas `[coef, denominador, lleva x]`) |
+| `problema-barras` | Modelo de barras de «un número más su k-ésima parte es N»: k+1 partes iguales y x = k·(N/(k+1)) | `nums` (`[k, N]`) |
+| `inecuacion-signo` | Inecuación `a·x rel c`: valores de prueba, semirrecta solución y por qué se invierte el signo al dividir entre un negativo | `nums` (`[a, c]`), `ine` (`<`, `<=`, `>`, `>=`) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -355,6 +357,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `producto-polinomios-explorador` | `(ax+b)(cx+d)` desarrollado y comprobación con un valor de x | `initial: [a, b, c, d]`, `a` (x) |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
+| `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |
+| `ecuacion-lineal-explorador` | `ax+b=cx+d` con deslizadores: una solución, ninguna o identidad | `initial` (`[a,b,c,d]`) |
+| `cuadratica-explorador` | `ax²+bx+c=0`: parábola, discriminante, número de soluciones y raíces | `a`, `b`, `c` |
+| `raices-factores-explorador` | Producto cero: 2 o 3 factores `(x−r)` y sus raíces en la parábola/curva | `initial` (`[r1,r2,r3,tres]`) |
+| `reparto-ecuacion-explorador` | Reparto con renuncias: total, renuncias y recargo → ecuación de 2.º grado y n | `initial` (`[total,q,delta]`) |
+| `inecuacion-explorador` | `ax+b rel c`: semirrecta solución y aviso de inversión del signo | `initial` (`[a,b,c,relIndex]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

@@ -119,6 +119,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 6 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema6 = fourthYear?.modules.find((m) => m.slug === "ecuaciones-e-inecuaciones");
+    expect(tema6?.orderIndex).toBe(6);
+    expect(tema6?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "ecuaciones-soluciones-4eso",
+      "ecuaciones-primer-grado-4eso",
+      "problemas-primer-grado-4eso",
+      "ecuaciones-segundo-grado-completas-4eso",
+      "ecuaciones-incompletas-producto-cero-4eso",
+      "problemas-segundo-grado-4eso",
+      "otras-ecuaciones-4eso",
+      "inecuaciones-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

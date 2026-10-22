@@ -768,6 +768,8 @@ export type SlideAnimId =
   | "polinomios-columna"
   | "producto-area"
   | "denominadores-mcm"
+  | "problema-barras"
+  | "inecuacion-signo"
   | "raiz-cuadrado"
   | "raiz-entre-cuadrados"
   | "sustitucion-sistema"
@@ -866,6 +868,8 @@ export type SlideAnimParams = {
   unit?: string;
   /** `generatriz-periodico`: cifras del periodo («84»); la parte entera y no periódica va en `dec`. */
   per?: string;
+  /** `inecuacion-signo`: sentido de la desigualdad. */
+  ine?: "<" | "<=" | ">" | ">=";
   /** `proporcion-compuesta`: relación (directa/inversa) de cada magnitud con la incógnita. */
   rels?: ("d" | "i")[];
   /** `movil-encuentro`: móviles en sentidos opuestos (encuentro) o en el mismo sentido (alcance). */
@@ -999,6 +1003,12 @@ export type SlideToolId =
   | "producto-polinomios-explorador"
   | "factor-comun-explorador"
   | "mcm-explorador"
+  | "tanteo-explorador"
+  | "ecuacion-lineal-explorador"
+  | "cuadratica-explorador"
+  | "raices-factores-explorador"
+  | "reparto-ecuacion-explorador"
+  | "inecuacion-explorador"
   | "valor-numerico"
   | "balanza-explorador"
   | "porcentaje-cuadricula"

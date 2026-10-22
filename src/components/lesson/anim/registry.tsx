@@ -153,6 +153,8 @@ import { buildInteresProporcional } from "@/components/lesson/anim/scenes/intere
 import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomios-columna";
 import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
 import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
+import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildInecuacionSigno } from "@/components/lesson/anim/scenes/inecuacion-signo";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
@@ -388,6 +390,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "polinomios-columna": (p) => buildPolinomiosColumna(p),
   "producto-area": (p) => buildProductoArea(p),
   "denominadores-mcm": (p) => buildDenominadoresMcm(p),
+  "problema-barras": (p) => buildProblemaBarras(p),
+  "inecuacion-signo": (p) => buildInecuacionSigno(p),
 
 
 
