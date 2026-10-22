@@ -13,19 +13,22 @@ describe("validateCurriculum", () => {
     expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(5);
   });
 
-  it("tiene las cinco lecciones interactivas del tema 7 en 4.º ESO", () => {
+  it("tiene las ocho lecciones interactivas del tema 7 en 4.º ESO", () => {
     const fourthYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("4º ESO"),
     );
     const sistemas = fourthYear?.modules.find((m) => m.slug === "sistemas-de-ecuaciones");
     expect(sistemas?.orderIndex).toBe(7);
-    expect(sistemas?.lessons).toHaveLength(5);
+    expect(sistemas?.lessons).toHaveLength(8);
     expect(sistemas?.lessons.map((l) => l.interactiveSlug)).toEqual([
-      "ecuaciones-lineales-dos-incognitas",
-      "sistemas-lineales-grafica",
-      "resolucion-sistemas-lineales",
-      "sistemas-no-lineales",
-      "problemas-con-sistemas",
+      "ecuaciones-lineales-dos-incognitas-4eso",
+      "sistemas-lineales-grafica-4eso",
+      "metodo-sustitucion-4eso",
+      "metodo-igualacion-4eso",
+      "metodo-reduccion-4eso",
+      "sistemas-no-lineales-4eso",
+      "problemas-sistemas-compras-4eso",
+      "problemas-sistemas-capitales-4eso",
     ]);
   });
 

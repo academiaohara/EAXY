@@ -154,6 +154,7 @@ import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomi
 import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
 import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
 import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildReduccionSuma } from "@/components/lesson/anim/scenes/reduccion-suma";
 import { buildInecuacionSigno } from "@/components/lesson/anim/scenes/inecuacion-signo";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
@@ -392,6 +393,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "denominadores-mcm": (p) => buildDenominadoresMcm(p),
   "problema-barras": (p) => buildProblemaBarras(p),
   "inecuacion-signo": (p) => buildInecuacionSigno(p),
+  "reduccion-suma": (p) => buildReduccionSuma(p),
 
 
 

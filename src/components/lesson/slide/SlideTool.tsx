@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { CapitalesSistemaExplorador, RectaDosIncognitasExplorador, ReduccionExplorador, SistemaGraficoExplorador, SistemaNoLinealExplorador } from "@/components/lesson/slide/tools/SistemasTools";
 import { CuadraticaExplorador, EcuacionLinealExplorador, InecuacionExplorador, RaicesFactoresExplorador, RepartoEcuacionExplorador, TanteoExplorador } from "@/components/lesson/slide/tools/EcuacionesTools";
 import { FactorComunExplorador, McmExplorador, MonomioExplorador, MonomiosOperador, PolinomioExplorador, PolinomiosOperador, ProductoPolinomiosExplorador } from "@/components/lesson/slide/tools/AlgebraTools";
 import { CompuestaExplorador, IndiceVariacionExplorador, InteresExplorador, MezclaExplorador, MovilesExplorador, ProporcionExplorador, RepartoExplorador } from "@/components/lesson/slide/tools/ProblemasTools";
@@ -466,6 +467,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RaicesFactoresExplorador block={block} />;
     case "reparto-ecuacion-explorador":
       return <RepartoEcuacionExplorador block={block} />;
+    case "recta-dos-incognitas-explorador":
+      return <RectaDosIncognitasExplorador block={block} />;
+    case "sistema-grafico-explorador":
+      return <SistemaGraficoExplorador block={block} />;
+    case "reduccion-explorador":
+      return <ReduccionExplorador block={block} />;
+    case "sistema-no-lineal-explorador":
+      return <SistemaNoLinealExplorador block={block} />;
+    case "capitales-sistema-explorador":
+      return <CapitalesSistemaExplorador block={block} />;
     case "inecuacion-explorador":
       return <InecuacionExplorador block={block} />;
     case "balanza-explorador":
