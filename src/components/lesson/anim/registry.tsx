@@ -163,6 +163,7 @@ import { buildPuntoMedioDistancia } from "@/components/lesson/anim/scenes/punto-
 import { buildPerpendicularGiro } from "@/components/lesson/anim/scenes/perpendicular-giro";
 import { buildVarianzaDesviaciones } from "@/components/lesson/anim/scenes/varianza-desviaciones";
 import { buildCajaAtipico } from "@/components/lesson/anim/scenes/caja-atipico";
+import { buildArbolUrna } from "@/components/lesson/anim/scenes/arbol-urna";
 import { buildParabolaVertice } from "@/components/lesson/anim/scenes/parabola-vertice";
 import { buildHiperbolaAsintotas } from "@/components/lesson/anim/scenes/hiperbola-asintotas";
 import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
@@ -409,6 +410,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "reduccion-suma": (p) => buildReduccionSuma(p),
   "punto-pendiente": (p) => buildPuntoPendiente(p),
   "parabola-vertice": (p) => buildParabolaVertice(p),
+  "arbol-urna": (p) => buildArbolUrna(p),
   "varianza-desviaciones": (p) => buildVarianzaDesviaciones(p),
   "caja-atipico": () => buildCajaAtipico(),
   "vector-coordenadas": (p) => buildVectorCoordenadas(p),

@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { DosDadosExplorador, IndependientesExplorador, UrnaArbolExplorador } from "@/components/lesson/slide/tools/ProbabilidadTools";
 import { AgruparExplorador, CuartilesExplorador, DispersionExplorador, TablaParametrosExplorador } from "@/components/lesson/slide/tools/EstadisticaTools";
 import { PuntoMedioExplorador, RectasAnaliticaExplorador, VectorExplorador, VectoresOperacionesExplorador } from "@/components/lesson/slide/tools/AnaliticaTools";
 import { EscalaExplorador, HomoteciaExplorador, SemejanzaRazonExplorador, SombraExplorador, TalesExplorador } from "@/components/lesson/slide/tools/SemejanzaTools";
@@ -499,6 +500,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SombraExplorador block={block} />;
     case "homotecia-explorador":
       return <HomoteciaExplorador block={block} />;
+    case "urna-arbol-explorador":
+      return <UrnaArbolExplorador block={block} />;
+    case "dos-dados-explorador":
+      return <DosDadosExplorador block={block} />;
+    case "independientes-explorador":
+      return <IndependientesExplorador block={block} />;
     case "tabla-parametros-explorador":
       return <TablaParametrosExplorador block={block} />;
     case "agrupar-explorador":

@@ -248,6 +248,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 14 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema14 = fourthYear?.modules.find((m) => m.slug === "calculo-de-probabilidades");
+    expect(tema14?.orderIndex).toBe(14);
+    expect(tema14?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "prob-experiencias-4eso",
+      "prob-laplace-4eso",
+      "prob-dos-dados-4eso",
+      "prob-compuestas-4eso",
+      "prob-independientes-4eso",
+      "prob-dependientes-4eso",
+      "prob-arbol-4eso",
+      "prob-repaso-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

@@ -55,3 +55,4 @@ export const TEMA_4ESO_10_SUBTITLE = "4.º ESO A, Tema 10 — Otras funciones el
 export const TEMA_4ESO_11_SUBTITLE = "4.º ESO A, Tema 11 — La semejanza. Aplicaciones";
 export const TEMA_4ESO_12_SUBTITLE = "4.º ESO A, Tema 12 — Geometría analítica";
 export const TEMA_4ESO_13_SUBTITLE = "4.º ESO A, Tema 13 — Estadística";
+export const TEMA_4ESO_14_SUBTITLE = "4.º ESO A, Tema 14 — Cálculo de probabilidades";

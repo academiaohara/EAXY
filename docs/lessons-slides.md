@@ -259,6 +259,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `perpendicular-giro` | Vector perpendicular (a, b) → (−b, a), triángulos iguales y m₁·m₂ = −1 | `nums` (`[a, b]`) |
 | `varianza-desviaciones` | Desviaciones a la media, cuadrados, varianza y desviación típica de unos datos | `nums` (datos, 3 a 8) |
 | `caja-atipico` | Diagrama de caja de las 40 estaturas: caja, límite de 1,5 veces su longitud, bigotes y el 189 como atípico | — |
+| `arbol-urna` | Diagrama en árbol de dos extracciones de una urna con o sin reemplazamiento: ramas, probabilidades condicionadas y productos | `nums` (`[verdes, rojas, reemplazamiento 0/1]`) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -406,6 +407,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `agrupar-explorador` | Las 40 estaturas en 6, 8 o 10 intervalos: recorrido, r′, longitud, marcas de clase, frecuencias e histograma | `a` (6, 8 o 10) |
 | `cuartiles-explorador` | Cuartiles y diagrama de caja con el criterio del libro en 4 distribuciones; el mayor valor de las estaturas se puede mover para ver cuándo es atípico | `a` (distribución 0–3) |
 | `dispersion-explorador` | Compara C.V. de dos grupos con media y σ ajustables | `initial` (`[mediaA, 2σA, mediaB, 2σB]`) |
+| `urna-arbol-explorador` | Urna con bolas verdes y rojas, con/sin reemplazamiento: P(VV), P(RR), una de cada color y ramas condicionadas | `initial` (`[verdes, rojas, reemplazamiento 0/1]`) |
+| `dos-dados-explorador` | Tabla 6×6 de dos dados con operación (suma, diferencia, mayor, menor, producto), condición y probabilidad en 36avos | `a` (operación 0–4), `b` (k) |
+| `independientes-explorador` | n pruebas independientes con probabilidad p: P(todas), P(ninguna) y P(alguna) | `initial` (`[p %, n]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

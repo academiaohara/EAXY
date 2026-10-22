@@ -234,6 +234,14 @@ import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/0
 import { potenciasExponenteEntero4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/07-potencias-exponente-entero-4eso";
 import { potenciasExponenteNegativo3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/02-potencias-exponente-negativo-3eso";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
+import { probArbol4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/07-prob-arbol-4eso";
+import { probCompuestas4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/04-prob-compuestas-4eso";
+import { probDependientes4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/06-prob-dependientes-4eso";
+import { probDosDados4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/03-prob-dos-dados-4eso";
+import { probExperiencias4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/01-prob-experiencias-4eso";
+import { probIndependientes4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/05-prob-independientes-4eso";
+import { probLaplace4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/02-prob-laplace-4eso";
+import { probRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/08-prob-repaso-4eso";
 import { probabilidadEspacioMuestralLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/02-probabilidad-espacio-muestral";
 import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/01-probabilidad-experimento-aleatorio-determinista";
 import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/04-probabilidad-frecuencias";
@@ -581,6 +589,14 @@ export const interactiveLessons = {
   "potencias-exponente-entero-4eso": potenciasExponenteEntero4esoLesson,
   "potencias-exponente-negativo-3eso": potenciasExponenteNegativo3esoLesson,
   "prismas-2eso": prismas2esoLesson,
+  "prob-arbol-4eso": probArbol4esoLesson,
+  "prob-compuestas-4eso": probCompuestas4esoLesson,
+  "prob-dependientes-4eso": probDependientes4esoLesson,
+  "prob-dos-dados-4eso": probDosDados4esoLesson,
+  "prob-experiencias-4eso": probExperiencias4esoLesson,
+  "prob-independientes-4eso": probIndependientes4esoLesson,
+  "prob-laplace-4eso": probLaplace4esoLesson,
+  "prob-repaso-4eso": probRepaso4esoLesson,
   "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
   "probabilidad-experimento-aleatorio-determinista": probabilidadExperimentoAleatorioDeterministaLesson,
   "probabilidad-frecuencias": probabilidadFrecuenciasLesson,
