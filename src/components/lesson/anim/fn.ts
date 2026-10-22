@@ -8,6 +8,8 @@ export const FUNCS: FnDef[] = [
   { id: "cubica2", tex: "y = x^3 - 12x", name: "y = x³ − 12x", xVar: "x", f: (x) => x ** 3 - 12 * x, a: -4, b: 4 },
   { id: "sueldo", tex: "S = (2100 + 25x)\\cdot 0{,}85", name: "S = (2100 + 25x)·0,85", xVar: "x", f: (x) => (2100 + 25 * x) * 0.85, a: 0, b: 10 },
   { id: "bola", tex: "e = 0{,}1\\,t^2", name: "e = 0,1·t²", xVar: "t", f: (t) => 0.1 * t * t, a: 0, b: 10 },
+  { id: "muelle", tex: "y = 30 + 15x", name: "y = 30 + 15x", xVar: "x", f: (x) => 30 + 15 * x, a: 0, b: 6 },
+  { id: "fontanero", tex: "y = 18 + 15t", name: "y = 18 + 15t", xVar: "t", f: (t) => 18 + 15 * t, a: 0, b: 6 },
 ];
 
 export type Extremo = { x: number; y: number; tipo: "max" | "min" };

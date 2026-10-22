@@ -124,6 +124,14 @@ import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecua
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
+import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
+import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
+import { linealPendientePuntos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/04-lineal-pendiente-puntos-4eso";
+import { linealProblemas4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/06-lineal-problemas-4eso";
+import { linealPuntoPendiente4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/05-lineal-punto-pendiente-4eso";
+import { linealRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/08-lineal-repaso-4eso";
+import { linealTipos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/02-lineal-tipos-4eso";
+import { linealTrozos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/07-lineal-trozos-4eso";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
@@ -431,6 +439,14 @@ export const interactiveLessons = {
   "interes-bancario-4eso": interesBancario4esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
+  "lineal-idea-4eso": linealIdea4esoLesson,
+  "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
+  "lineal-pendiente-puntos-4eso": linealPendientePuntos4esoLesson,
+  "lineal-problemas-4eso": linealProblemas4esoLesson,
+  "lineal-punto-pendiente-4eso": linealPuntoPendiente4esoLesson,
+  "lineal-repaso-4eso": linealRepaso4esoLesson,
+  "lineal-tipos-4eso": linealTipos4esoLesson,
+  "lineal-trozos-4eso": linealTrozos4esoLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
   "materiales-ceramicos": materialesCeramicosLesson,

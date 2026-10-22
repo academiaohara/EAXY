@@ -154,6 +154,8 @@ import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomi
 import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
 import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
 import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
+import { buildFuncionTrozos } from "@/components/lesson/anim/scenes/funcion-trozos";
 import { buildReduccionSuma } from "@/components/lesson/anim/scenes/reduccion-suma";
 import { buildInecuacionSigno } from "@/components/lesson/anim/scenes/inecuacion-signo";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
@@ -394,6 +396,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "problema-barras": (p) => buildProblemaBarras(p),
   "inecuacion-signo": (p) => buildInecuacionSigno(p),
   "reduccion-suma": (p) => buildReduccionSuma(p),
+  "punto-pendiente": (p) => buildPuntoPendiente(p),
+  "funcion-trozos": () => buildFuncionTrozos(),
 
 
 

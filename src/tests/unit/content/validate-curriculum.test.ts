@@ -158,6 +158,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 9 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema9 = fourthYear?.modules.find((m) => m.slug === "las-funciones-lineales");
+    expect(tema9?.orderIndex).toBe(9);
+    expect(tema9?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "lineal-idea-4eso",
+      "lineal-tipos-4eso",
+      "lineal-pendiente-grafica-4eso",
+      "lineal-pendiente-puntos-4eso",
+      "lineal-punto-pendiente-4eso",
+      "lineal-problemas-4eso",
+      "lineal-trozos-4eso",
+      "lineal-repaso-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
