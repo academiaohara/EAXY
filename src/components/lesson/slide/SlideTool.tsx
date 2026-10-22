@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { AproximacionExplorador, DecimalExplorador, GeneratrizExplorador, NotacionExplorador } from "@/components/lesson/slide/tools/DecimalesTools";
 import { EnterosExplorador, GastoRestoExplorador, PotenciaExplorador, RacionalExplorador } from "@/components/lesson/slide/tools/NumerosTools";
 import { decEs, sectorPath } from "@/components/lesson/anim/fraction";
 import { MANIM } from "@/components/lesson/anim/palette";
@@ -403,6 +404,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RacionalExplorador block={block} />;
     case "gasto-resto-explorador":
       return <GastoRestoExplorador block={block} />;
+    case "decimal-explorador":
+      return <DecimalExplorador block={block} />;
+    case "generatriz-explorador":
+      return <GeneratrizExplorador block={block} />;
+    case "aproximacion-explorador":
+      return <AproximacionExplorador block={block} />;
+    case "notacion-explorador":
+      return <NotacionExplorador block={block} />;
     case "balanza-explorador":
       return <BalanzaExplorador block={block} />;
     case "porcentaje-cuadricula":

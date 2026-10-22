@@ -222,6 +222,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `potencia-de-producto` | `(a·b)ⁿ = aⁿ·bⁿ`: se reordenan los factores en dos filas | `a` (n, 2–4) |
 | `potencia-fraccion-inversa` | `(a/b)⁻ⁿ`: inverso de la potencia positiva y `(b/a)ⁿ` | `a`, `b`, `c` (n) |
 | `fraccion-mixta` | Fracción impropia → número mixto con barras: unidades completas, resto y `D = d·c + r` | `a` (numerador), `b` (denominador) |
+| `decimal-periodico-restos` | Fracción → decimal: cadena de restos, se repite uno (periódico) o llega a 0 (exacto), con el periodo marcado | `a` (numerador), `b` (denominador) |
+| `generatriz-periodico` | Fracción generatriz de un periódico puro o mixto: multiplicar por potencias de 10, restar y cancelar la cola | `dec` (parte entera y no periódica, «1,2»), `per` (periodo, «34») |
+| `error-relativo-comparar` | Mismo error absoluto, distinto error relativo: dos barras con la franja del error | `a`, `b` (medidas), `c` (cota), `titles`, `unit` (`"km\|m"`) |
+| `notacion-operacion` | Operar con notación científica: producto, cociente, potencia y suma (igualar exponentes) | `nop` (`mul`/`div`/`pow`/`sum`), `terms` (mantisas), `a`, `b` (exponentes), `c` (potencia) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -310,6 +314,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `potencia-explorador` | Base (−5 a 5) y exponente (−4 a 6): factores, signo y valor, también con exponente cero o negativo; la base 0 no está definida | `a` (base), `b` (exponente) |
 | `racional-explorador` | Numerador (−24 a 24) y denominador (1–8): posición en la recta, forma mixta, irreducible y decimal (`=`/`≈`) | `n`, `d` |
 | `gasto-resto-explorador` | «Gasta `a/b` y después `c/d` de lo que queda»: barra, fracciones del total y cantidades; la 2.ª fracción actúa sobre el resto | `initial: [a, b, c, d, total]` |
+| `decimal-explorador` | Fracción n/d (n 1–99, d 2–40): decimal con arco en el periodo, tipo, longitud del periodo, factores del denominador y restos | `n`, `d` |
+| `generatriz-explorador` | Parte entera, cifras sin repetir y periodo: pasos de la generatriz y fracción irreducible | `a` (entera), `b` (sin repetir), `c` (periodo), `initial: [cifras sin repetir, cifras del periodo]` |
+| `aproximacion-explorador` | Una cantidad y el orden de redondeo: aproximación, cifras significativas, error absoluto, cota y cota del error relativo | `a` (índice de la cantidad), `b` (orden 10^k) |
+| `notacion-explorador` | Mantisa (1–9,99) y exponente (−12 a 15): todas las cifras, prefijo y posición en la escala de potencias de 10 | `a` (mantisa ×100), `b` (exponente) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

@@ -43,3 +43,4 @@ export const TEMA_TI2_3_SUBTITLE = "Tecnología Industrial II, Unidad 3 — Mate
 export const TEMA_TI2_4_SUBTITLE = "Tecnología Industrial II, Unidad 4 — Tratamientos térmicos y superficiales. Corrosión";
 export const TEMA_TI2_5_SUBTITLE = "Tecnología Industrial II, Unidad 5 — Principios generales de las máquinas";
 export const TEMA_4ESO_1_SUBTITLE = "4.º ESO A, Tema 1 — Números enteros y racionales";
+export const TEMA_4ESO_2_SUBTITLE = "4.º ESO A, Tema 2 — Números decimales";

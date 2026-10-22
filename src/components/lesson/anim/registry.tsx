@@ -133,6 +133,10 @@ import { buildPotenciaDePotencia } from "@/components/lesson/anim/scenes/potenci
 import { buildPotenciaDeProducto } from "@/components/lesson/anim/scenes/potencia-de-producto";
 import { buildPotenciaFraccionInversa } from "@/components/lesson/anim/scenes/potencia-fraccion-inversa";
 import { buildFraccionMixta } from "@/components/lesson/anim/scenes/fraccion-mixta";
+import { buildDecimalPeriodicoRestos } from "@/components/lesson/anim/scenes/decimal-periodico-restos";
+import { buildGeneratrizPeriodico } from "@/components/lesson/anim/scenes/generatriz-periodico";
+import { buildErrorRelativoComparar } from "@/components/lesson/anim/scenes/error-relativo-comparar";
+import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
 import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-entre-cuadrados";
@@ -346,6 +350,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "potencia-fraccion-inversa": (p) => buildPotenciaFraccionInversa(p),
   "fraccion-mixta": (p) => buildFraccionMixta(p),
   "racionales-zoom": () => buildRacionalesZoom(),
+  "decimal-periodico-restos": (p) => buildDecimalPeriodicoRestos(p),
+  "generatriz-periodico": (p) => buildGeneratrizPeriodico(p),
+  "error-relativo-comparar": (p) => buildErrorRelativoComparar(p),
+  "notacion-operacion": (p) => buildNotacionOperacion(p),
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),
   "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),

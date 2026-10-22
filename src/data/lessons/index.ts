@@ -10,6 +10,7 @@ import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
 import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
+import { aproximacionesCifrasSignificativas4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/04-aproximaciones-cifras-significativas-4eso";
 import { aproximacionesErrores3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/04-aproximaciones-errores-3eso";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
 import { areaCuadrilateros3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/05-area-cuadrilateros-3eso";
@@ -46,6 +47,7 @@ import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
+import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
 import { diagramaEutecticoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/06-diagrama-eutectico";
 import { diagramaHierroCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/07-diagrama-hierro-carbono";
 import { diagramaIsomorfoCuNiLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/05-diagrama-isomorfo-cu-ni";
@@ -71,6 +73,7 @@ import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
+import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
@@ -83,6 +86,7 @@ import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matem
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { figurasSemejantes2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/03-figuras-semejantes-2eso";
 import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/06-forma-general-recta-3eso";
+import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
 import { fraccionesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/03-fracciones-decimales";
 import { fraccionesEquivalentesLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/04-fracciones-equivalentes";
@@ -123,6 +127,7 @@ import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multipli
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
 import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/05-notacion-cientifica-3eso";
+import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
 import { numeroSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/03-numero-soluciones-3eso";
 import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
 import { numerosDecimales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/07-numeros-decimales-3eso";
@@ -136,6 +141,7 @@ import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/mate
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/03-operaciones-fracciones-multiplicacion-division";
 import { operacionesFraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/04-operaciones-fracciones-problemas";
 import { operacionesFraccionesSumaRestaLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/02-operaciones-fracciones-suma-resta";
+import { operacionesNotacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/07-operaciones-notacion-cientifica-4eso";
 import { operacionesNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/02-operaciones-numeros-decimales";
 import { operacionesPolinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/04-operaciones-polinomios-2eso";
 import { operacionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/08-operaciones-potencias-2eso";
@@ -145,6 +151,7 @@ import { operarPolinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
+import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
@@ -172,6 +179,7 @@ import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/
 import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/05-probabilidad-laplace";
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
 import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/05-problemas-con-sistemas";
+import { problemasDecimalesNotacion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/08-problemas-decimales-notacion-4eso";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { problemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/06-problemas-ecuaciones-3eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
@@ -266,6 +274,7 @@ export const interactiveLessons = {
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
   "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
+  "aproximaciones-cifras-significativas-4eso": aproximacionesCifrasSignificativas4esoLesson,
   "aproximaciones-errores-3eso": aproximacionesErrores3esoLesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
   "area-cuadrilateros-3eso": areaCuadrilateros3esoLesson,
@@ -302,6 +311,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
+  "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
   "diagrama-eutectico": diagramaEutecticoLesson,
   "diagrama-hierro-carbono": diagramaHierroCarbonoLesson,
   "diagrama-isomorfo-cu-ni": diagramaIsomorfoCuNiLesson,
@@ -327,6 +337,7 @@ export const interactiveLessons = {
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
+  "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "esferas-2eso": esferas2esoLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
@@ -339,6 +350,7 @@ export const interactiveLessons = {
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "figuras-semejantes-2eso": figurasSemejantes2esoLesson,
   "forma-general-recta-3eso": formaGeneralRecta3esoLesson,
+  "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
   "fracciones-decimales": fraccionesDecimalesLesson,
   "fracciones-equivalentes": fraccionesEquivalentesLesson,
@@ -379,6 +391,7 @@ export const interactiveLessons = {
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
   "notacion-cientifica-3eso": notacionCientifica3esoLesson,
+  "notacion-cientifica-4eso": notacionCientifica4esoLesson,
   "numero-soluciones-3eso": numeroSoluciones3esoLesson,
   "numeros-decimales-2eso": numerosDecimales2esoLesson,
   "numeros-decimales-3eso": numerosDecimales3esoLesson,
@@ -392,6 +405,7 @@ export const interactiveLessons = {
   "operaciones-fracciones-multiplicacion-division": operacionesFraccionesMultiplicacionDivisionLesson,
   "operaciones-fracciones-problemas": operacionesFraccionesProblemasLesson,
   "operaciones-fracciones-suma-resta": operacionesFraccionesSumaRestaLesson,
+  "operaciones-notacion-cientifica-4eso": operacionesNotacionCientifica4esoLesson,
   "operaciones-numeros-decimales": operacionesNumerosDecimalesLesson,
   "operaciones-polinomios-2eso": operacionesPolinomios2esoLesson,
   "operaciones-potencias-2eso": operacionesPotencias2esoLesson,
@@ -401,6 +415,7 @@ export const interactiveLessons = {
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "parentesis-enteros": parentesisEnterosLesson,
+  "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "piramides-2eso": piramides2esoLesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
@@ -428,6 +443,7 @@ export const interactiveLessons = {
   "probabilidad-laplace": probabilidadLaplaceLesson,
   "probabilidad-sucesos-seguro-imposible": probabilidadSucesosSeguroImposibleLesson,
   "problemas-con-sistemas": problemasConSistemasLesson,
+  "problemas-decimales-notacion-4eso": problemasDecimalesNotacion4esoLesson,
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "problemas-ecuaciones-3eso": problemasEcuaciones3esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,

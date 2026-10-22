@@ -47,6 +47,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 2 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema2 = fourthYear?.modules.find((m) => m.slug === "numeros-decimales");
+    expect(tema2?.orderIndex).toBe(2);
+    expect(tema2?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "fraccion-a-decimal-4eso",
+      "decimal-a-fraccion-4eso",
+      "periodicos-mixtos-racionales-4eso",
+      "aproximaciones-cifras-significativas-4eso",
+      "errores-absoluto-relativo-4eso",
+      "notacion-cientifica-4eso",
+      "operaciones-notacion-cientifica-4eso",
+      "problemas-decimales-notacion-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

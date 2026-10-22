@@ -747,6 +747,10 @@ export type SlideAnimId =
   | "potencia-fraccion-inversa"
   | "fraccion-mixta"
   | "racionales-zoom"
+  | "decimal-periodico-restos"
+  | "generatriz-periodico"
+  | "error-relativo-comparar"
+  | "notacion-operacion"
   | "raiz-cuadrado"
   | "raiz-entre-cuadrados"
   | "sustitucion-sistema"
@@ -843,6 +847,10 @@ export type SlideAnimParams = {
   rel?: "directa" | "inversa";
   /** `regla-tres-cruz` / `regla-tres-producto`: unidad de la magnitud que se pide («g»). */
   unit?: string;
+  /** `generatriz-periodico`: cifras del periodo («84»); la parte entera y no periódica va en `dec`. */
+  per?: string;
+  /** `notacion-operacion`: operación con notación científica. */
+  nop?: "mul" | "div" | "sum" | "pow";
   /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
   sign?: "+" | "-";
   /** Escenas de decimales: número con coma escrito como texto («2,375»). */
@@ -946,6 +954,10 @@ export type SlideToolId =
   | "potencia-explorador"
   | "racional-explorador"
   | "gasto-resto-explorador"
+  | "decimal-explorador"
+  | "generatriz-explorador"
+  | "aproximacion-explorador"
+  | "notacion-explorador"
   | "valor-numerico"
   | "balanza-explorador"
   | "porcentaje-cuadricula"
