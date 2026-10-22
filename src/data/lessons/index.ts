@@ -41,6 +41,9 @@ import { crecimientoExtremos2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { crecimientoExtremos3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/02-crecimiento-extremos-3eso";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
+import { cuadAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/03-cuad-aplicaciones-4eso";
+import { cuadGeneral4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/02-cuad-general-4eso";
+import { cuadParabola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/01-cuad-parabola-4eso";
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
@@ -80,6 +83,8 @@ import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industri
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
+import { exponencialCrecimiento4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/08-exponencial-crecimiento-4eso";
+import { exponencialFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/07-exponencial-funcion-4eso";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
 import { expresionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/07-expresiones-primer-grado-4eso";
 import { expresionesSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/08-expresiones-segundo-grado-4eso";
@@ -122,6 +127,8 @@ import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
+import { inversaAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/05-inversa-aplicaciones-4eso";
+import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
@@ -243,6 +250,7 @@ import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalizar4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/07-racionalizar-4eso";
+import { radicalesFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/06-radicales-funcion-4eso";
 import { raices3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/03-raices-3eso";
 import { raicesCuadradas2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/09-raices-cuadradas-2eso";
 import { raicesRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/03-raices-radicales-4eso";
@@ -356,6 +364,9 @@ export const interactiveLessons = {
   "crecimiento-extremos-3eso": crecimientoExtremos3esoLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
+  "cuad-aplicaciones-4eso": cuadAplicaciones4esoLesson,
+  "cuad-general-4eso": cuadGeneral4esoLesson,
+  "cuad-parabola-4eso": cuadParabola4esoLesson,
   "cuadrilateros-2eso": cuadrilateros2esoLesson,
   "cuartiles-2eso": cuartiles2esoLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
@@ -395,6 +406,8 @@ export const interactiveLessons = {
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "esferas-2eso": esferas2esoLesson,
+  "exponencial-crecimiento-4eso": exponencialCrecimiento4esoLesson,
+  "exponencial-funcion-4eso": exponencialFuncion4esoLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
   "expresiones-primer-grado-4eso": expresionesPrimerGrado4esoLesson,
   "expresiones-segundo-grado-4eso": expresionesSegundoGrado4esoLesson,
@@ -437,6 +450,8 @@ export const interactiveLessons = {
   "identidades-notables-3eso": identidadesNotables3esoLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
+  "inversa-aplicaciones-4eso": inversaAplicaciones4esoLesson,
+  "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
@@ -558,6 +573,7 @@ export const interactiveLessons = {
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionalizar-4eso": racionalizar4esoLesson,
+  "radicales-funcion-4eso": radicalesFuncion4esoLesson,
   "raices-3eso": raices3esoLesson,
   "raices-cuadradas-2eso": raicesCuadradas2esoLesson,
   "raices-radicales-4eso": raicesRadicales4esoLesson,

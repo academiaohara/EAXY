@@ -176,6 +176,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 10 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema10 = fourthYear?.modules.find((m) => m.slug === "otras-funciones-elementales");
+    expect(tema10?.orderIndex).toBe(10);
+    expect(tema10?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "cuad-parabola-4eso",
+      "cuad-general-4eso",
+      "cuad-aplicaciones-4eso",
+      "inversa-hiperbola-4eso",
+      "inversa-aplicaciones-4eso",
+      "radicales-funcion-4eso",
+      "exponencial-funcion-4eso",
+      "exponencial-crecimiento-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),

@@ -154,6 +154,8 @@ import { buildPolinomiosColumna } from "@/components/lesson/anim/scenes/polinomi
 import { buildProductoArea } from "@/components/lesson/anim/scenes/producto-area";
 import { buildDenominadoresMcm } from "@/components/lesson/anim/scenes/denominadores-mcm";
 import { buildProblemaBarras } from "@/components/lesson/anim/scenes/problema-barras";
+import { buildParabolaVertice } from "@/components/lesson/anim/scenes/parabola-vertice";
+import { buildHiperbolaAsintotas } from "@/components/lesson/anim/scenes/hiperbola-asintotas";
 import { buildPuntoPendiente } from "@/components/lesson/anim/scenes/punto-pendiente";
 import { buildFuncionTrozos } from "@/components/lesson/anim/scenes/funcion-trozos";
 import { buildReduccionSuma } from "@/components/lesson/anim/scenes/reduccion-suma";
@@ -397,6 +399,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "inecuacion-signo": (p) => buildInecuacionSigno(p),
   "reduccion-suma": (p) => buildReduccionSuma(p),
   "punto-pendiente": (p) => buildPuntoPendiente(p),
+  "parabola-vertice": (p) => buildParabolaVertice(p),
+  "hiperbola-asintotas": (p) => buildHiperbolaAsintotas(p),
   "funcion-trozos": () => buildFuncionTrozos(),
 
 

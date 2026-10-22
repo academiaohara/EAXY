@@ -51,3 +51,4 @@ export const TEMA_4ESO_6_SUBTITLE = "4.º ESO A, Tema 6 — Ecuaciones e inecuac
 export const TEMA_4ESO_7_SUBTITLE = "4.º ESO A, Tema 7 — Sistemas de ecuaciones";
 export const TEMA_4ESO_8_SUBTITLE = "4.º ESO A, Tema 8 — Funciones. Características";
 export const TEMA_4ESO_9_SUBTITLE = "4.º ESO A, Tema 9 — Las funciones lineales";
+export const TEMA_4ESO_10_SUBTITLE = "4.º ESO A, Tema 10 — Otras funciones elementales";

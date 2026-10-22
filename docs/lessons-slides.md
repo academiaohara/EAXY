@@ -248,6 +248,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `reduccion-suma` | Método de reducción: multiplicar, sumar para eliminar una incógnita, despejar y volver a sustituir (elige solo la incógnita más barata de eliminar) | `nums` (`[a1,b1,c1,a2,b2,c2]`) |
 | `punto-pendiente` | Recta por un punto con pendiente `mn/md`: escalón Δx, Δy, recta y ecuación punto-pendiente y simplificada | `nums` (`[x0, y0, mn, md]`) |
 | `funcion-trozos` | Función a trozos del libro (x+4, −2x+13, 1) construida tramo a tramo con su fórmula final | — |
+| `parabola-vertice` | Parábola `y = ax²+bx+c`: vértice x = −b/2a, tabla simétrica y curva | `a`, `b`, `c` |
+| `hiperbola-asintotas` | Hipérbola `y = k/x`: tabla, dos ramas y asíntotas (los ejes) | `a` (k) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -377,6 +379,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `recta-mn-explorador` | `y = mx + n` con deslizadores (m en pasos de 0,5): escalón de pendiente, ordenada en el origen y tipo (proporcionalidad, constante, afín) | `initial` (`[2m, n]`) |
 | `pendiente-puntos-explorador` | Dos puntos con deslizadores: pendiente (Δy/Δx), caso vertical y ecuación punto-pendiente y simplificada | `initial` (`[x1,y1,x2,y2]`) |
 | `trozos-explorador` | Cuatro funciones a trozos: tramo usado en cada x, extremos abiertos/cerrados y si los tramos empalman o saltan | `a` (función), `b` (x) |
+| `parabola-explorador` | Parábola con deslizadores a, b, c: vértice exacto, máximo/mínimo, anchura y cortes con los ejes | `a`, `b`, `c` |
+| `hiperbola-explorador` | `y = k/(x−h)+v`: asíntotas vertical y horizontal, ramas y valores | `initial` (`[k, h, v]`) |
+| `radical-explorador` | `y = a√(x−h)+k` con reflejo: dominio y recorrido | `initial` (`[a, h, k, reflejada 0/1]`) |
+| `exponencial-explorador` | `y = C·aˣ` con bases 0,4–3: creciente/decreciente, puntos (0, C) y (1, Ca), asíntota | `a` (base), `b` (C) |
+| `compuesto-explorador` | Variación porcentual anual repetida `C·(1+r/100)ˣ`: valor, años para duplicarse o reducirse a la mitad y gráfica | `initial` (`[C, r %, años]`) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { CompuestoExplorador, ExponencialExplorador, HiperbolaExplorador, ParabolaExplorador, RadicalExplorador } from "@/components/lesson/slide/tools/FamiliasTools";
 import { PendientePuntosExplorador, RectaMnExplorador, TrozosExplorador } from "@/components/lesson/slide/tools/LinealesTools";
 import { AparcamientoExplorador, FuncionExplorador, PeriodicaExplorador } from "@/components/lesson/slide/tools/FuncionesTools";
 import { CapitalesSistemaExplorador, RectaDosIncognitasExplorador, ReduccionExplorador, SistemaGraficoExplorador, SistemaNoLinealExplorador } from "@/components/lesson/slide/tools/SistemasTools";
@@ -485,6 +486,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PendientePuntosExplorador block={block} />;
     case "trozos-explorador":
       return <TrozosExplorador block={block} />;
+    case "parabola-explorador":
+      return <ParabolaExplorador block={block} />;
+    case "hiperbola-explorador":
+      return <HiperbolaExplorador block={block} />;
+    case "radical-explorador":
+      return <RadicalExplorador block={block} />;
+    case "exponencial-explorador":
+      return <ExponencialExplorador block={block} />;
+    case "compuesto-explorador":
+      return <CompuestoExplorador block={block} />;
     case "funcion-explorador":
       return <FuncionExplorador block={block} />;
     case "periodica-explorador":
