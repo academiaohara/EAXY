@@ -33,6 +33,7 @@ import { DatosExplorador, PlanoExplorador, SectoresExplorador } from "@/componen
 import { DadoSimulador, LaplaceExplorador } from "@/components/lesson/slide/tools/ProbTools";
 import { PoliedroExplorador } from "@/components/lesson/slide/tools/SolidTools";
 import { FractionProductTool } from "@/components/lesson/slide/tools/FractionProductTool";
+import { AparcamientoExplorador, FuncionExplorador, PeriodicaExplorador } from "@/components/lesson/slide/tools/FuncionesTools";
 import { CapitalesSistemaExplorador, RectaDosIncognitasExplorador, ReduccionExplorador, SistemaGraficoExplorador, SistemaNoLinealExplorador } from "@/components/lesson/slide/tools/SistemasTools";
 import { CuadraticaExplorador, EcuacionLinealExplorador, InecuacionExplorador, RaicesFactoresExplorador, RepartoEcuacionExplorador, TanteoExplorador } from "@/components/lesson/slide/tools/EcuacionesTools";
 import { FactorComunExplorador, McmExplorador, MonomioExplorador, MonomiosOperador, PolinomioExplorador, PolinomiosOperador, ProductoPolinomiosExplorador } from "@/components/lesson/slide/tools/AlgebraTools";
@@ -477,6 +478,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SistemaNoLinealExplorador block={block} />;
     case "capitales-sistema-explorador":
       return <CapitalesSistemaExplorador block={block} />;
+    case "funcion-explorador":
+      return <FuncionExplorador block={block} />;
+    case "periodica-explorador":
+      return <PeriodicaExplorador block={block} />;
+    case "aparcamiento-explorador":
+      return <AparcamientoExplorador block={block} />;
     case "inecuacion-explorador":
       return <InecuacionExplorador block={block} />;
     case "balanza-explorador":

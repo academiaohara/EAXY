@@ -105,10 +105,18 @@ import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07
 import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/07-fracciones-potencias-2eso";
 import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/05-fracciones-potencias-3eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
+import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConstante2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/05-funcion-constante-2eso";
 import { funcionConstante3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/03-funcion-constante-3eso";
+import { funcionContinuidad4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/04-funcion-continuidad-4eso";
+import { funcionCrecimientoExtremos4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/05-funcion-crecimiento-extremos-4eso";
+import { funcionFormas4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/02-funcion-formas-4eso";
+import { funcionInterpretarGraficas4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/07-funcion-interpretar-graficas-4eso";
 import { funcionLineal2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/04-funcion-lineal-2eso";
 import { funcionMxN3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/02-funcion-mx-n-3eso";
+import { funcionRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/08-funcion-repaso-4eso";
+import { funcionTablaGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/03-funcion-tabla-grafica-4eso";
+import { funcionTendenciaPeriodicidad4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/06-funcion-tendencia-periodicidad-4eso";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
@@ -404,10 +412,18 @@ export const interactiveLessons = {
   "fracciones-potencias-2eso": fraccionesPotencias2esoLesson,
   "fracciones-potencias-3eso": fraccionesPotencias3esoLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
+  "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-constante-2eso": funcionConstante2esoLesson,
   "funcion-constante-3eso": funcionConstante3esoLesson,
+  "funcion-continuidad-4eso": funcionContinuidad4esoLesson,
+  "funcion-crecimiento-extremos-4eso": funcionCrecimientoExtremos4esoLesson,
+  "funcion-formas-4eso": funcionFormas4esoLesson,
+  "funcion-interpretar-graficas-4eso": funcionInterpretarGraficas4esoLesson,
   "funcion-lineal-2eso": funcionLineal2esoLesson,
   "funcion-mx-n-3eso": funcionMxN3esoLesson,
+  "funcion-repaso-4eso": funcionRepaso4esoLesson,
+  "funcion-tabla-grafica-4eso": funcionTablaGrafica4esoLesson,
+  "funcion-tendencia-periodicidad-4eso": funcionTendenciaPeriodicidad4esoLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,

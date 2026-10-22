@@ -49,3 +49,4 @@ export const TEMA_4ESO_4_SUBTITLE = "4.º ESO A, Tema 4 — Problemas aritmétic
 export const TEMA_4ESO_5_SUBTITLE = "4.º ESO A, Tema 5 — Expresiones algebraicas";
 export const TEMA_4ESO_6_SUBTITLE = "4.º ESO A, Tema 6 — Ecuaciones e inecuaciones";
 export const TEMA_4ESO_7_SUBTITLE = "4.º ESO A, Tema 7 — Sistemas de ecuaciones";
+export const TEMA_4ESO_8_SUBTITLE = "4.º ESO A, Tema 8 — Funciones. Características";

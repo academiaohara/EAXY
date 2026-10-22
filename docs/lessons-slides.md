@@ -369,6 +369,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `reduccion-explorador` | Método de reducción: elegir los multiplicadores y ver cuándo se cancela x o y (con botón de multiplicadores mínimos) | `initial` (`[a1,b1,c1,a2,b2,c2]`) |
 | `sistema-no-lineal-explorador` | Recta `y=mx+n` frente a círculo, parábola o hipérbola: ecuación de 2.º grado al sustituir y puntos de corte | `initial` (`[curva 0–2, m, n]`) |
 | `capitales-sistema-explorador` | Capital repartido en dos inversiones: `x+y=T`, `r₁x+r₂y=G` con barra del reparto | `initial` (`[T, r1, r2, G]`) |
+| `funcion-explorador` | Función con deslizador de x: punto de la gráfica, dominio, recorrido, tramos de crecimiento y extremos relativos (5 funciones: x³−3x+2, x²−4x, x³−12x, sueldo, bola) | `a` (índice de función) |
+| `periodica-explorador` | Noria: función periódica con periodo y t ajustables; instantes equivalentes marcados y resto de t entre T | `initial` (`[T, t]`) |
+| `aparcamiento-explorador` | Tres tarifas de aparcamiento (por horas empezadas, exacta, entrada + exacta): coste según el tiempo y gráfica con saltos | `a` (minutos) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

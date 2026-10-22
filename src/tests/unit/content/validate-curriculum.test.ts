@@ -140,6 +140,24 @@ describe("validateCurriculum", () => {
     ]);
   });
 
+  it("tiene las ocho lecciones interactivas del tema 8 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema8 = fourthYear?.modules.find((m) => m.slug === "funciones-caracteristicas");
+    expect(tema8?.orderIndex).toBe(8);
+    expect(tema8?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "funcion-concepto-4eso",
+      "funcion-formas-4eso",
+      "funcion-tabla-grafica-4eso",
+      "funcion-continuidad-4eso",
+      "funcion-crecimiento-extremos-4eso",
+      "funcion-tendencia-periodicidad-4eso",
+      "funcion-interpretar-graficas-4eso",
+      "funcion-repaso-4eso",
+    ]);
+  });
+
   it("expone los temas 1 a 15 en 1.º ESO", () => {
     const firstYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("1º ESO"),
