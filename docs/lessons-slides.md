@@ -235,6 +235,11 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `radical-extraer` | Extraer factores: descomposición, grupos de «índice» factores iguales y resultado `k·ⁿ√m` | `a` (radicando), `b` (índice 2–4) |
 | `radicales-semejantes` | Sumar radicales: idénticos se unen, distintos no, y semejanzas ocultas al extraer factores | — |
 | `racionalizar` | `a/√b = a√b/b`: multiplicar por 1 arriba y abajo, con comprobación decimal | `a`, `b` |
+| `proporcion-compuesta` | Proporcionalidad compuesta con dos magnitudes: etiquetas directa/inversa y fórmula con una razón por magnitud | `nums` (`[k1, k2, resultado, n1, n2]`), `rels` (`["d","i"]`), `titles` |
+| `reparto-partes` | Reparto proporcional: barra del total en partes iguales y lo que se lleva cada uno | `nums` (valores), `a` (total), `titles`, `unit` |
+| `mezcla-tabla` | Mezcla: tabla cantidad–precio–coste, totales y precio de la mezcla en la recta | `nums` (`[q1, p1, q2, p2]`), `titles`, `unit` (`"kg\|€"`) |
+| `movil-encuentro` | Dos móviles en sentidos opuestos (velocidades se suman) o en el mismo sentido (se restan) | `mov` (`opuesto`/`alcance`), `nums` (`[v1, v2, d, retraso min]`) |
+| `interes-proporcional` | Interés simple como proporcionalidad compuesta: capital, tiempo e interés | `a` (capital), `b` (rédito %), `c` (años) |
 | `racionales-zoom` | Entre dos racionales siempre hay otro: 1/2, 1/4, 3/8, 7/16… ampliando | — |
 | `raiz-cuadrado` | Cuadrado de lado `a`: área `a²` y raíz como operación inversa (y el caso del cubo) | `a` (lado) |
 | `raiz-entre-cuadrados` | Raíz entera en la recta: el radicando queda entre dos cuadrados perfectos consecutivos; resto | `a` (radicando) |
@@ -333,6 +338,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `radical-exponencial-explorador` | ⁿ√(aᵐ) = a^(m/n): fracción simplificada y cuándo desaparece el radical | `a` (índice), `b` (exponente) |
 | `radical-simplificador` | Radicando (2–1000) e índice (2–4): descomposición y `k·ⁿ√m` | `a` (radicando), `b` (índice) |
 | `racionalizar-explorador` | `a/√b` y su forma racionalizada simplificada, con el mismo valor decimal | `a`, `b` |
+| `proporcion-explorador` | Regla de tres directa/inversa: fórmula, tipo y gráfica (recta o hipérbola) | `a`, `b`, `c`, `n` (`1` = inversa) |
+| `compuesta-explorador` | Compuesta con dos magnitudes: nuevo valor y relación directa/inversa de cada una | `a`, `b`, `c` (datos), `initial: [n1, n2, inversa1, inversa2]` |
+| `reparto-explorador` | Reparto proporcional entre tres: importes, fracciones y barra | `initial: [a, b, c, total]` |
+| `mezcla-explorador` | Mezcla de dos productos: precio medio y posición entre los dos precios | `initial: [q1, p1 (céntimos), q2, p2]` |
+| `moviles-explorador` | Cruce (suma) o alcance (resta, con retraso): tiempo y si hay alcance | `n` (`1` = alcance), `initial: [v1, v2, d, retraso min]` |
+| `indice-variacion-explorador` | Una o dos variaciones porcentuales: índice, cantidad final y variación total (≠ suma) | `a` (cantidad), `b`, `c` (%) |
+| `interes-explorador` | Interés simple: capital, rédito y meses; interés, capital final y barras anuales | `a` (capital), `b` (rédito), `c` (meses) |
 | `valor-numerico` | Máquina `a·n + b`: deslizador de `n` (0–10), cuenta y gráfico de barras con todos los valores | `a`, `b`, `n` |
 | `porcentaje-cuadricula` | Cuadrícula de 100 casillas: el alumno mueve el porcentaje (0–100, con atajos 10/25/50/75/100) y se pintan las casillas; lectura `p % = p/100 = decimal` | `a` (porcentaje inicial) |
 | `rectas-posicion` | La recta `s` gira alrededor de un punto fijo (0–180°): paralelas, secantes (con su ángulo) o perpendiculares | `a` (giro inicial) |

@@ -145,6 +145,11 @@ import { buildRadicalPotencia } from "@/components/lesson/anim/scenes/radical-po
 import { buildRadicalExtraer } from "@/components/lesson/anim/scenes/radical-extraer";
 import { buildRadicalesSemejantes } from "@/components/lesson/anim/scenes/radicales-semejantes";
 import { buildRacionalizar } from "@/components/lesson/anim/scenes/racionalizar";
+import { buildProporcionCompuesta } from "@/components/lesson/anim/scenes/proporcion-compuesta";
+import { buildRepartoPartes } from "@/components/lesson/anim/scenes/reparto-partes";
+import { buildMezclaTabla } from "@/components/lesson/anim/scenes/mezcla-tabla";
+import { buildMovilEncuentro } from "@/components/lesson/anim/scenes/movil-encuentro";
+import { buildInteresProporcional } from "@/components/lesson/anim/scenes/interes-proporcional";
 import { buildNotacionOperacion } from "@/components/lesson/anim/scenes/notacion-operacion";
 import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
@@ -372,6 +377,12 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "radical-extraer": (p) => buildRadicalExtraer(p),
   "radicales-semejantes": () => buildRadicalesSemejantes(),
   "racionalizar": (p) => buildRacionalizar(p),
+  "proporcion-compuesta": (p) => buildProporcionCompuesta(p),
+  "reparto-partes": (p) => buildRepartoPartes(p),
+  "mezcla-tabla": (p) => buildMezclaTabla(p),
+  "movil-encuentro": (p) => buildMovilEncuentro(p),
+  "interes-proporcional": (p) => buildInteresProporcional(p),
+
 
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),
   "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),

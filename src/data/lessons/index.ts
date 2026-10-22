@@ -25,6 +25,7 @@ import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
+import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
@@ -104,6 +105,7 @@ import { funcionMxN3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funcio
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
+import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
@@ -114,6 +116,7 @@ import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { mediaMedianaModa2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/03-media-mediana-moda-2eso";
 import { metodoSustitucion2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/03-metodo-sustitucion-2eso";
 import { metodoSustitucion3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/04-metodo-sustitucion-3eso";
+import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
@@ -188,18 +191,21 @@ import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { problemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/06-problemas-ecuaciones-3eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
+import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasSistemas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/05-problemas-sistemas-3eso";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
+import { proporcionalidadCompuesta4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/02-proporcionalidad-compuesta-4eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
 import { proporcionalidadInversa2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/02-proporcionalidad-inversa-2eso";
 import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/01-proporcionalidad-magnitudes";
 import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/03-proporcionalidad-mx-2eso";
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
+import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalizar4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/07-racionalizar-4eso";
 import { raices3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/03-raices-3eso";
@@ -217,6 +223,7 @@ import { rectasYAngulosParalelasLesson } from "@/data/lessons/matematicas-1-eso/
 import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/06-rectas-y-angulos-poligonos";
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
+import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionSistemasLinealesLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/03-resolucion-sistemas-lineales";
@@ -262,6 +269,7 @@ import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-indus
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
 import { unidadesVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/01-unidades-volumen-2eso";
 import { variacionesPorcentuales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/09-variaciones-porcentuales-3eso";
+import { variacionesPorcentuales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/07-variaciones-porcentuales-4eso";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/07-volumen-piramide-cono-3eso";
@@ -297,6 +305,7 @@ export const interactiveLessons = {
   "areas-triangulo": areasTrianguloLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
+  "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "cilindros-2eso": cilindros2esoLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
@@ -376,6 +385,7 @@ export const interactiveLessons = {
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
+  "interes-bancario-4eso": interesBancario4esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
@@ -386,6 +396,7 @@ export const interactiveLessons = {
   "media-mediana-moda-2eso": mediaMedianaModa2esoLesson,
   "metodo-sustitucion-2eso": metodoSustitucion2esoLesson,
   "metodo-sustitucion-3eso": metodoSustitucion3esoLesson,
+  "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
   "monomios-2eso": monomios2esoLesson,
@@ -460,18 +471,21 @@ export const interactiveLessons = {
   "problemas-ecuaciones-3eso": problemasEcuaciones3esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
+  "problemas-moviles-4eso": problemasMoviles4esoLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-sistemas-3eso": problemasSistemas3esoLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
+  "proporcionalidad-compuesta-4eso": proporcionalidadCompuesta4esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
   "proporcionalidad-inversa-2eso": proporcionalidadInversa2esoLesson,
   "proporcionalidad-magnitudes": proporcionalidadMagnitudesLesson,
   "proporcionalidad-mx-2eso": proporcionalidadMx2esoLesson,
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
+  "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionalizar-4eso": racionalizar4esoLesson,
   "raices-3eso": raices3esoLesson,
@@ -489,6 +503,7 @@ export const interactiveLessons = {
   "rectas-y-angulos-poligonos": rectasYAngulosPoligonosLesson,
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
   "regla-fases-gibbs": reglaFasesGibbsLesson,
+  "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-sistemas-lineales": resolucionSistemasLinealesLesson,
@@ -534,6 +549,7 @@ export const interactiveLessons = {
   "triangulos-2eso": triangulos2esoLesson,
   "unidades-volumen-2eso": unidadesVolumen2esoLesson,
   "variaciones-porcentuales-3eso": variacionesPorcentuales3esoLesson,
+  "variaciones-porcentuales-4eso": variacionesPorcentuales4esoLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
   "volumen-piramide-cono-3eso": volumenPiramideCono3esoLesson,

@@ -760,6 +760,11 @@ export type SlideAnimId =
   | "radical-extraer"
   | "radicales-semejantes"
   | "racionalizar"
+  | "proporcion-compuesta"
+  | "reparto-partes"
+  | "mezcla-tabla"
+  | "movil-encuentro"
+  | "interes-proporcional"
   | "raiz-cuadrado"
   | "raiz-entre-cuadrados"
   | "sustitucion-sistema"
@@ -858,6 +863,10 @@ export type SlideAnimParams = {
   unit?: string;
   /** `generatriz-periodico`: cifras del periodo («84»); la parte entera y no periódica va en `dec`. */
   per?: string;
+  /** `proporcion-compuesta`: relación (directa/inversa) de cada magnitud con la incógnita. */
+  rels?: ("d" | "i")[];
+  /** `movil-encuentro`: móviles en sentidos opuestos (encuentro) o en el mismo sentido (alcance). */
+  mov?: "opuesto" | "alcance";
   /** `notacion-operacion`: operación con notación científica. */
   nop?: "mul" | "div" | "sum" | "pow";
   /** `parentesis-signos`: signo que va delante del paréntesis (`nums` son los términos de dentro, con signo). */
@@ -973,6 +982,13 @@ export type SlideToolId =
   | "radical-exponencial-explorador"
   | "radical-simplificador"
   | "racionalizar-explorador"
+  | "proporcion-explorador"
+  | "compuesta-explorador"
+  | "reparto-explorador"
+  | "mezcla-explorador"
+  | "moviles-explorador"
+  | "indice-variacion-explorador"
+  | "interes-explorador"
   | "valor-numerico"
   | "balanza-explorador"
   | "porcentaje-cuadricula"
