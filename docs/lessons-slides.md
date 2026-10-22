@@ -227,6 +227,39 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dominio-recorrido` | Gráfica proyectada sobre el eje X (dominio) y sobre el eje Y (recorrido) | — |
 | `tabla-formula` | De la tabla a la fórmula: variación constante = pendiente, valor en `x = 0` = ordenada | `a` (m), `b` (n), `c` (primer x), `d` (paso de x) |
 | `tarifas-escalones` | Tarifa por hora o fracción: gráfica en escalones con punto lleno/vacío; no se unen los puntos | `a` (precio por hora) |
+| `red-solucion-solida` | Disolución sólida por sustitución e inserción y deformación de la red (Tecnología Industrial II) | — |
+| `curva-enfriamiento` | Curvas de enfriamiento: metal puro (T constante), subfusión, aleación y eutéctica | — |
+| `solidificacion-etapas` | Nucleación, dendritas y granos; afinadores de grano | — |
+| `regla-palanca` | Regla de la palanca en un diagrama binario (isoterma, segmentos y fracciones) | — |
+| `eutectico-enfriamiento` | Enfriamiento de una hipoeutéctica A-B hasta el eutéctico y su microestructura | — |
+| `fec-enfriamiento` | Enfriamiento de un acero Fe-C hasta perlita + ferrita o cementita | `a` (% de C, 0,1–1,7) |
+| `grafito-fundiciones` | Fundición gris, esferoidal, blanca y maleable según la forma del carbono | — |
+| `vidrio-red` | Sílice cristalina, vidrio y vidrio modificado con Na₂O | — |
+| `prensado-sinterizado` | Prensado en seco de un polvo cerámico y sinterización | — |
+| `barbotina` | Moldeo en barbotina por escurrido | — |
+| `polimerizacion-adicion` | Polimerización por adición del etileno | — |
+| `polimerizacion-condensacion` | Polimerización por condensación del PET con subproducto | — |
+| `polimeros-calor` | Termoplástico, termoestable y elastómero frente al calor y al esfuerzo | — |
+| `extrusion-tornillo` | Extrusión de un termoplástico con husillo | — |
+| `deposito-seguridad` | Capas de un depósito de seguridad para RTP | — |
+| `austenita-martensita` | Red FCC → BCC (lento) o BCT (martensita, rápido) con el carbono atrapado | — |
+| `jominy-ensayo` | Ensayo Jominy y curvas de templabilidad | — |
+| `ttt-lectura` | Lectura de las curvas TTT y enfriamientos v₁, v₂, v₃ | — |
+| `ciclos-tratamiento` | Ciclos T–t de normalizado, temple, martempering, austempering y revenido | — |
+| `cementacion-difusion` | Difusión de carbono en la superficie y perfil de dureza | — |
+| `pila-corrosion` | Pila Fe-Cu: ánodo, cátodo, electrones y ΔU = 0,78 V | — |
+| `aireacion-diferencial` | Corrosión por aireación diferencial en una rendija | — |
+| `proteccion-catodica` | Ánodo de sacrificio y corriente impuesta | — |
+| `desgaste-asperezas` | Desgaste: encaje de crestas y partículas abrasivas | — |
+| `cavitacion` | Colapso de burbujas y picadura de la pared | — |
+| `plano-inclinado` | Mismo trabajo (mgh) con rampas de distinta inclinación | — |
+| `trabajo-area-curva` | Trabajo de fuerza variable como área bajo F(x) con 4, 8 y 16 tramos | — |
+| `resorte-trabajo` | Resorte: ley de Hooke y W = ½ k x² como área de un triángulo | — |
+| `rodadura-carrera` | Carrera por un plano de bloque, esfera, cilindro y aro | — |
+| `primer-principio-flujos` | Motor térmico (Q = ΔU + W) y máquina frigorífica (W = ΔU + Q) | — |
+| `par-trabajo` | Par de fuerzas, momento M = d·F y trabajo W = M·θ | — |
+| `piston-trabajo` | Expansión isobárica en un cilindro: W = p·ΔV | — |
+| `presa-turbina` | Cadena de energía en una central hidroeléctrica | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -299,6 +332,42 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `sectores-explorador` | Frecuencias de cuatro categorías: grados por persona y ángulo de cada sector | — |
 | `dado-simulador` | Lanza un dado o una moneda ×1, ×10, ×100, ×1000: frecuencias absolutas y relativas | `a` (`2` = moneda) |
 | `laplace-explorador` | Marca caras de un dado o cambia bolas rojas y verdes: casos favorables, posibles y P | `a` (`1` = bolsa), `b`, `c` (bolas) |
+| `aleacion-concentracion` | Concentración en masa de una aleación o soluto que hay que añadir | `a` (m_s), `b` (m_D), `c` (`1` = modo objetivo) |
+| `energia-fusion` | Energía para fundir un metal: calentar hasta T_s + calor latente | `a` (índice del metal), `b` (kg) |
+| `gibbs-explorador` | Regla de las fases F + N = C + 2 con el agua como ejemplo | `a` (C), `b` (F) |
+| `diagrama-binario` | Diagrama isomorfo Cu-Ni: zona, composiciones y regla de la palanca | `a` (% Ni), `b` (°C) |
+| `diagrama-eutectico` | Diagrama eutéctico A-B: estado, reparto y constituyentes | `a` (% B), `b` (°C) |
+| `fe-c-explorador` | Diagrama Fe-C: región y reparto entre perlita y proeutectoide | `a` (% C), `b` (°C) |
+| `acero-clasificador` | Hierro, acero y fundición según el carbono | `a` (% C) |
+| `resistencia-especifica` | Metales de la tabla 3.1 ordenados por propiedad y frente al hierro | `a` (metal) |
+| `pieza-peso-minimo` | Latón, acero o aluminio: masa de la pieza para una carga | `a` (kN), `b` (mm) |
+| `aleaciones-filtro` | Aleaciones de Al, Mg y Ti según resistencia mínima y densidad máxima | `a` (MPa), `b` (g/cm³) |
+| `grieta-griffith` | σmáx = 2σ√(a/r) en un cerámico con grieta | `a` (mm), `b` (n de r = 10⁻ⁿ mm) |
+| `grado-polimerizacion` | Masa molecular del polímero (con y sin subproducto) | `a` (monómero), `b` (n) |
+| `rtp-comunidades` | Reparto de los RTP por comunidad y método de gestión | `a` (comunidad) |
+| `intersticio-red` | Huecos de la FCC y la BCC frente al átomo de carbono; % de C en la celda | `a` (R en pm), `b` (átomos de C), `c` (`1` = BCC) |
+| `dureza-martensita` | Dureza de la martensita según el % de C | `a` (% C) |
+| `ttt-explorador` | Velocidad de enfriamiento sobre las curvas TTT y estructura resultante | `a` (0–100) |
+| `jominy-explorador` | Curvas de templabilidad de tres aceros y dureza a una distancia | `a` (acero), `b` (mm) |
+| `temperaturas-tratamiento` | Temperaturas de temple, recocido, normalizado, globulización y revenido según el % de C | `a` (% C) |
+| `perfil-dureza` | Dureza según la profundidad: cementado frente a temple total | `a` (mm), `c` (`1` = temple total) |
+| `pila-electroquimica` | Pila de dos metales de la serie fem: ánodo, cátodo, ΔU y semirreacciones | `a`, `b` (índices) |
+| `nernst-explorador` | Ley de Nernst: efecto de la concentración en ΔU | `a`, `b` (metales), `c` (log₁₀ [M₁]) |
+| `faraday-explorador` | Ley de Faraday: masa depositada, espesor y tiempo de recubrimiento | `a` (metal), `b` (A), `c` (min) |
+| `recubrimiento-rayado` | Recubrimiento metálico rayado sobre acero: ¿quién se corroe? | `a` (metal) |
+| `pilling-bedworth` | Relación de volúmenes óxido/metal y tipo de capa | `a` (metal) |
+| `conversor-industrial` | Conversión de presión, potencia, energía y fuerza | `a` (magnitud) |
+| `plano-inclinado-trabajo` | Fuerza, recorrido y trabajo en una rampa, con rozamiento | `a` (kg), `b` (m), `c` (m) |
+| `resorte-explorador` | Resorte: F = k·x y W = ½ k x² | `a` (k), `b` (x) |
+| `energia-rampa` | Ep, Ec y trabajo de rozamiento a lo largo de una rampa | `a` (h₀), `b` (°), `c` (μ) |
+| `momento-inercia` | Momento de inercia, radio de giro y energía de rotación | `a` (forma), `b` (kg), `c` (m) |
+| `equilibrio-termico` | Mezcla de un cuerpo caliente con agua: temperatura final | `a` (material), `b` (kg), `c` (°C) |
+| `primer-principio-explorador` | Q = ΔU + W (motor) o W = ΔU + Q (frigorífica) | `a` (Q), `b` (W), `c` (`1` = frigorífica) |
+| `rendimiento-cadena` | Rendimiento total de varias máquinas en serie | `a` (kW útiles) |
+| `potencia-vehiculo` | Potencia de un coche a velocidad constante (aire y rodadura) | `a` (km/h), `b` (Cx) |
+| `par-trabajo-explorador` | Par, ángulo girado y trabajo de rotación de una rueda | `a` (N·m), `b` (m), `c` (m) |
+| `diagrama-pv` | Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p–V | `a` (bar), `b` (L), `c` (V₂/V₁) |
+| `potencia-electrica-hidraulica` | P = U·I con coste en kWh y P = p·Q de una presa | `a` (V), `b` (A), `c` (`1` = hidráulica) |
 
 ## Respuesta como fracción
 

@@ -16,7 +16,8 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000012', 'tecnologia-1-eso', 'Tecnología 1º ESO', 'Primer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.');
+  ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Materiales, tratamientos térmicos, corrosión y principios de las máquinas.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -56,7 +57,11 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000045', 'a1000000-0000-4000-8000-000000000003', 'funciones-lineales', 'Funciones lineales', 8),
   ('a2000000-0000-4000-8000-000000000046', 'a1000000-0000-4000-8000-000000000003', 'problemas-metricos-en-el-plano', 'Problemas métricos en el plano', 9),
   ('a2000000-0000-4000-8000-000000000047', 'a1000000-0000-4000-8000-000000000003', 'cuerpos-geometricos', 'Cuerpos geométricos', 10),
-  ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1);
+  ('a2000000-0000-4000-8000-000000000007', 'a1000000-0000-4000-8000-000000000004', 'sistemas-de-ecuaciones', 'Sistemas de ecuaciones', 1),
+  ('a2000000-0000-4000-8000-000000000048', 'a1000000-0000-4000-8000-000000000016', 'aleaciones-diagramas-equilibrio', 'Aleaciones. Diagramas de equilibrio', 2),
+  ('a2000000-0000-4000-8000-000000000049', 'a1000000-0000-4000-8000-000000000016', 'materiales-no-ferreos-reciclaje', 'Materiales no férreos y ciclo de utilización', 3),
+  ('a2000000-0000-4000-8000-000000000050', 'a1000000-0000-4000-8000-000000000016', 'tratamientos-termicos-corrosion', 'Tratamientos térmicos y superficiales. Corrosión', 4),
+  ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -269,4 +274,36 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000000702', 'a2000000-0000-4000-8000-000000000007', '2. Sistemas de ecuaciones lineales', 'Solución gráfica, sistemas compatibles, incompatibles e indeterminados.', 2, null),
   ('a3000000-0000-4000-8000-000000000703', 'a2000000-0000-4000-8000-000000000007', '3. Resolución de sistemas lineales', 'Métodos de sustitución, igualación y reducción con ejemplos animados.', 3, null),
   ('a3000000-0000-4000-8000-000000000704', 'a2000000-0000-4000-8000-000000000007', '4. Sistemas no lineales', 'Identificación, sustitución paso a paso y comprobación de soluciones.', 4, null),
-  ('a3000000-0000-4000-8000-000000000705', 'a2000000-0000-4000-8000-000000000007', '5. Problemas con sistemas de ecuaciones', 'Traducir enunciados a sistemas y resolver problemas contextualizados.', 5, null);
+  ('a3000000-0000-4000-8000-000000000705', 'a2000000-0000-4000-8000-000000000007', '5. Problemas con sistemas de ecuaciones', 'Traducir enunciados a sistemas y resolver problemas contextualizados.', 5, null),
+  ('a3000000-0000-4000-8000-000000004801', 'a2000000-0000-4000-8000-000000000048', '1. Aleaciones y disoluciones sólidas', 'Disolvente y soluto, concentración en masa y soluciones por sustitución o inserción.', 1, null),
+  ('a3000000-0000-4000-8000-000000004802', 'a2000000-0000-4000-8000-000000000048', '2. Solidificación de metales y aleaciones', 'Curvas de enfriamiento, subfusión, energía para fundir y etapas de la cristalización.', 2, null),
+  ('a3000000-0000-4000-8000-000000004803', 'a2000000-0000-4000-8000-000000000048', '3. Regla de las fases de Gibbs', 'Componentes, fases y grados de libertad: F + N = C + 2.', 3, null),
+  ('a3000000-0000-4000-8000-000000004804', 'a2000000-0000-4000-8000-000000000048', '4. Diagramas de fases y regla de la palanca', 'Rectas de reparto, líneas de liquidus y solidus y fracción de cada fase.', 4, null),
+  ('a3000000-0000-4000-8000-000000004805', 'a2000000-0000-4000-8000-000000000048', '5. Aleaciones isomorfas: Cu-Ni', 'Lectura completa del diagrama Cu-Ni: fases, composiciones y porcentajes.', 5, null),
+  ('a3000000-0000-4000-8000-000000004806', 'a2000000-0000-4000-8000-000000000048', '6. Aleaciones eutécticas', 'Insolubilidad en estado sólido, punto eutéctico, hipoeutécticas e hipereutécticas.', 6, null),
+  ('a3000000-0000-4000-8000-000000004807', 'a2000000-0000-4000-8000-000000000048', '7. El diagrama hierro-carbono', 'Constituyentes de los aceros, eutectoide y enfriamiento de aleaciones tipo.', 7, null),
+  ('a3000000-0000-4000-8000-000000004808', 'a2000000-0000-4000-8000-000000000048', '8. Aceros y fundiciones', 'Clasificación de los aceros y tipos de fundición: gris, esferoidal, blanca y maleable.', 8, null),
+  ('a3000000-0000-4000-8000-000000004901', 'a2000000-0000-4000-8000-000000000049', '1. Metales no férreos y resistencia específica', 'Por qué se usan aleaciones no férreas y cómo se compara su resistencia con la densidad.', 1, null),
+  ('a3000000-0000-4000-8000-000000004902', 'a2000000-0000-4000-8000-000000000049', '2. Cobre, aluminio, magnesio y titanio', 'Latón, bronce y las aleaciones ligeras: propiedades y aplicaciones.', 2, null),
+  ('a3000000-0000-4000-8000-000000004903', 'a2000000-0000-4000-8000-000000000049', '3. Materiales cerámicos', 'Vidrios, diagramas de fases cerámicos, conformado, sinterizado y rotura frágil.', 3, null),
+  ('a3000000-0000-4000-8000-000000004904', 'a2000000-0000-4000-8000-000000000049', '4. Polímeros y polimerización', 'Monómeros, adición y condensación, y grado de polimerización.', 4, null),
+  ('a3000000-0000-4000-8000-000000004905', 'a2000000-0000-4000-8000-000000000049', '5. Termoplásticos, termoestables y elastómeros', 'Comportamiento ante el calor, técnicas de conformado y plásticos más usados.', 5, null),
+  ('a3000000-0000-4000-8000-000000004906', 'a2000000-0000-4000-8000-000000000049', '6. Residuos y reciclaje', 'RSU y RTP, vertederos, incineración, depósitos de seguridad y recuperación.', 6, null),
+  ('a3000000-0000-4000-8000-000000005001', 'a2000000-0000-4000-8000-000000000050', '1. Temple y martensita', 'Austenización, red FCC frente a BCC y por qué aparece la martensita.', 1, null),
+  ('a3000000-0000-4000-8000-000000005002', 'a2000000-0000-4000-8000-000000000050', '2. Curvas TTT y templabilidad', 'Ensayo Jominy, velocidad de enfriamiento y estructura final del acero.', 2, null),
+  ('a3000000-0000-4000-8000-000000005003', 'a2000000-0000-4000-8000-000000000050', '3. Recocido, normalizado y revenido', 'Temperaturas de cada tratamiento según el porcentaje de carbono.', 3, null),
+  ('a3000000-0000-4000-8000-000000005004', 'a2000000-0000-4000-8000-000000000050', '4. Tratamientos termoquímicos', 'Cementación, carbonitruración y nitruración: endurecer solo la superficie.', 4, null),
+  ('a3000000-0000-4000-8000-000000005005', 'a2000000-0000-4000-8000-000000000050', '5. Corrosión y pila electroquímica', 'Ánodo, cátodo, serie electroquímica y diferencia de potencial.', 5, null),
+  ('a3000000-0000-4000-8000-000000005006', 'a2000000-0000-4000-8000-000000000050', '6. Ley de Nernst y ley de Faraday', 'Efecto de la concentración y masa depositada o corroída.', 6, null),
+  ('a3000000-0000-4000-8000-000000005007', 'a2000000-0000-4000-8000-000000000050', '7. Tipos de corrosión y protección', 'Corrosión galvánica, picaduras, intergranular; recubrimientos y protección catódica.', 7, null),
+  ('a3000000-0000-4000-8000-000000005008', 'a2000000-0000-4000-8000-000000000050', '8. Oxidación, degradación y desgaste', 'Capa de óxido protectora, degradación de polímeros, desgaste y cavitación.', 8, null),
+  ('a3000000-0000-4000-8000-000000005101', 'a2000000-0000-4000-8000-000000000051', '1. Concepto de máquina y Sistema Internacional', 'Máquinas y mecanismos, magnitudes, unidades y cambios de unidades.', 1, null),
+  ('a3000000-0000-4000-8000-000000005102', 'a2000000-0000-4000-8000-000000000051', '2. Trabajo y plano inclinado', 'W = F·e, componentes del peso y ventaja mecánica.', 2, null),
+  ('a3000000-0000-4000-8000-000000005103', 'a2000000-0000-4000-8000-000000000051', '3. Trabajo de una fuerza variable', 'El trabajo como área bajo la curva F-x y el resorte.', 3, null),
+  ('a3000000-0000-4000-8000-000000005104', 'a2000000-0000-4000-8000-000000000051', '4. Energía cinética, potencial y conservación', 'W = ΔEp + ΔEc y transformaciones entre formas de energía.', 4, null),
+  ('a3000000-0000-4000-8000-000000005105', 'a2000000-0000-4000-8000-000000000051', '5. Energía de rotación y momento de inercia', 'Distribución de la masa, radio de giro y energía cinética total.', 5, null),
+  ('a3000000-0000-4000-8000-000000005106', 'a2000000-0000-4000-8000-000000000051', '6. Calor y primer principio de la termodinámica', 'Q = m·c·ΔT, equilibrio térmico, motores térmicos y máquinas frigoríficas.', 6, null),
+  ('a3000000-0000-4000-8000-000000005107', 'a2000000-0000-4000-8000-000000000051', '7. Potencia, resistencias pasivas y rendimiento', 'P = F·v, rozamiento y rendimiento de conjuntos de máquinas.', 7, null),
+  ('a3000000-0000-4000-8000-000000005108', 'a2000000-0000-4000-8000-000000000051', '8. Trabajo de rotación y par', 'Momento de un par de fuerzas y trabajo W = M·θ.', 8, null),
+  ('a3000000-0000-4000-8000-000000005109', 'a2000000-0000-4000-8000-000000000051', '9. Transformaciones de un gas en un cilindro', 'Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p-V.', 9, null),
+  ('a3000000-0000-4000-8000-000000005110', 'a2000000-0000-4000-8000-000000000051', '10. Potencia eléctrica e hidráulica', 'P = U·I y P = p·Q aplicadas a circuitos y presas.', 10, null);
