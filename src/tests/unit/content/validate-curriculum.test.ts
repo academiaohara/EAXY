@@ -17,15 +17,33 @@ describe("validateCurriculum", () => {
     const fourthYear = getAllCourses(curriculum).find((course) =>
       course.title.includes("4º ESO"),
     );
-    expect(fourthYear?.modules[0]?.lessons).toHaveLength(5);
-    expect(
-      fourthYear?.modules[0]?.lessons.map((l) => l.interactiveSlug),
-    ).toEqual([
+    const sistemas = fourthYear?.modules.find((m) => m.slug === "sistemas-de-ecuaciones");
+    expect(sistemas?.orderIndex).toBe(7);
+    expect(sistemas?.lessons).toHaveLength(5);
+    expect(sistemas?.lessons.map((l) => l.interactiveSlug)).toEqual([
       "ecuaciones-lineales-dos-incognitas",
       "sistemas-lineales-grafica",
       "resolucion-sistemas-lineales",
       "sistemas-no-lineales",
       "problemas-con-sistemas",
+    ]);
+  });
+
+  it("tiene las ocho lecciones interactivas del tema 1 en 4.º ESO", () => {
+    const fourthYear = getAllCourses(curriculum).find((course) =>
+      course.title.includes("4º ESO"),
+    );
+    const tema1 = fourthYear?.modules.find((m) => m.slug === "numeros-enteros-y-racionales");
+    expect(tema1?.orderIndex).toBe(1);
+    expect(tema1?.lessons.map((l) => l.interactiveSlug)).toEqual([
+      "enteros-recta-valor-absoluto-4eso",
+      "operaciones-enteros-4eso",
+      "potencias-base-entera-4eso",
+      "numeros-racionales-4eso",
+      "simplificar-equivalentes-operador-4eso",
+      "operaciones-fracciones-4eso",
+      "potencias-exponente-entero-4eso",
+      "problemas-fracciones-4eso",
     ]);
   });
 

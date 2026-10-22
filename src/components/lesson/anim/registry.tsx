@@ -128,6 +128,12 @@ import { buildNotacionCientifica } from "@/components/lesson/anim/scenes/notacio
 import { buildProgresionPasos } from "@/components/lesson/anim/scenes/progresion-pasos";
 import { buildPotenciasFactores } from "@/components/lesson/anim/scenes/potencias-factores";
 import { buildPotenciasExpNegativo } from "@/components/lesson/anim/scenes/potencias-exp-negativo";
+import { buildPotenciaSigno } from "@/components/lesson/anim/scenes/potencia-signo";
+import { buildPotenciaDePotencia } from "@/components/lesson/anim/scenes/potencia-de-potencia";
+import { buildPotenciaDeProducto } from "@/components/lesson/anim/scenes/potencia-de-producto";
+import { buildPotenciaFraccionInversa } from "@/components/lesson/anim/scenes/potencia-fraccion-inversa";
+import { buildFraccionMixta } from "@/components/lesson/anim/scenes/fraccion-mixta";
+import { buildRacionalesZoom } from "@/components/lesson/anim/scenes/racionales-zoom";
 import { buildRaizCuadrado } from "@/components/lesson/anim/scenes/raiz-cuadrado";
 import { buildRaizEntreCuadrados } from "@/components/lesson/anim/scenes/raiz-entre-cuadrados";
 import { buildSustitucionSistema } from "@/components/lesson/anim/scenes/sustitucion-sistema";
@@ -334,6 +340,12 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "progresion-comparar": (p) => buildProgresionComparar(p),
   "potencias-factores": (p) => buildPotenciasFactores(p),
   "potencias-exp-negativo": (p) => buildPotenciasExpNegativo(p),
+  "potencia-signo": (p) => buildPotenciaSigno(p),
+  "potencia-de-potencia": (p) => buildPotenciaDePotencia(p),
+  "potencia-de-producto": (p) => buildPotenciaDeProducto(p),
+  "potencia-fraccion-inversa": (p) => buildPotenciaFraccionInversa(p),
+  "fraccion-mixta": (p) => buildFraccionMixta(p),
+  "racionales-zoom": () => buildRacionalesZoom(),
   "raiz-cuadrado": (p) => buildRaizCuadrado(p),
   "raiz-entre-cuadrados": (p) => buildRaizEntreCuadrados(p),
   "cuadrado-suma": (p) => buildCuadradoSuma(p),

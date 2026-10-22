@@ -64,12 +64,13 @@ import { ecuacionesDenominadores3esoLesson } from "@/data/lessons/matematicas-3-
 import { ecuacionesDosIncognitas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-2eso";
 import { ecuacionesDosIncognitas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/01-ecuaciones-dos-incognitas-3eso";
 import { ecuacionesIncompletas3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/05-ecuaciones-incompletas-3eso";
-import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
+import { ecuacionesLinealesDosIncognitasLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas";
 import { ecuacionesPrimerGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/02-ecuaciones-primer-grado-3eso";
 import { ecuacionesSegundoGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/04-ecuaciones-segundo-grado-3eso";
 import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/01-ecuaciones-soluciones-3eso";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
+import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
@@ -127,7 +128,10 @@ import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-
 import { numerosDecimales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/07-numeros-decimales-3eso";
 import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/01-numeros-enteros";
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
+import { numerosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/04-numeros-racionales-4eso";
 import { operacionesCombinadasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-operaciones-combinadas-fracciones-2eso";
+import { operacionesEnteros4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/02-operaciones-enteros-4eso";
+import { operacionesFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/06-operaciones-fracciones-4eso";
 import { operacionesFraccionesComunDenominadorLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/01-operaciones-fracciones-comun-denominador";
 import { operacionesFraccionesMultiplicacionDivisionLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/03-operaciones-fracciones-multiplicacion-division";
 import { operacionesFraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/08-operaciones-con-fracciones/04-operaciones-fracciones-problemas";
@@ -157,7 +161,9 @@ import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracc
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
+import { potenciasBaseEntera4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/03-potencias-base-entera-4eso";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
+import { potenciasExponenteEntero4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/07-potencias-exponente-entero-4eso";
 import { potenciasExponenteNegativo3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/02-potencias-exponente-negativo-3eso";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
 import { probabilidadEspacioMuestralLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/02-probabilidad-espacio-muestral";
@@ -165,10 +171,11 @@ import { probabilidadExperimentoAleatorioDeterministaLesson } from "@/data/lesso
 import { probabilidadFrecuenciasLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/04-probabilidad-frecuencias";
 import { probabilidadLaplaceLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/05-probabilidad-laplace";
 import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matematicas-1-eso/15-probabilidad/03-probabilidad-sucesos-seguro-imposible";
-import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/05-problemas-con-sistemas";
+import { problemasConSistemasLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/05-problemas-con-sistemas";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { problemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/06-problemas-ecuaciones-3eso";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
+import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasSistemas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/05-problemas-sistemas-3eso";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
@@ -197,7 +204,8 @@ import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
-import { resolucionSistemasLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/03-resolucion-sistemas-lineales";
+import { resolucionSistemasLinealesLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/03-resolucion-sistemas-lineales";
+import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/05-simplificar-equivalentes-operador-4eso";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
 import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/02-sistema-metrico-longitud";
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
@@ -206,8 +214,8 @@ import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
 import { sistemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/02-sistemas-ecuaciones-2eso";
 import { sistemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/02-sistemas-ecuaciones-3eso";
-import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
-import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/01-sistemas-de-ecuaciones/04-sistemas-no-lineales";
+import { sistemasLinealesGraficaLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/02-sistemas-lineales-grafica";
+import { sistemasNoLinealesLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/04-sistemas-no-lineales";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
@@ -318,6 +326,7 @@ export const interactiveLessons = {
   "ecuaciones-soluciones-3eso": ecuacionesSoluciones3esoLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
+  "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "esferas-2eso": esferas2esoLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
@@ -375,7 +384,10 @@ export const interactiveLessons = {
   "numeros-decimales-3eso": numerosDecimales3esoLesson,
   "numeros-enteros": numerosEnterosLesson,
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
+  "numeros-racionales-4eso": numerosRacionales4esoLesson,
   "operaciones-combinadas-fracciones-2eso": operacionesCombinadasFracciones2esoLesson,
+  "operaciones-enteros-4eso": operacionesEnteros4esoLesson,
+  "operaciones-fracciones-4eso": operacionesFracciones4esoLesson,
   "operaciones-fracciones-comun-denominador": operacionesFraccionesComunDenominadorLesson,
   "operaciones-fracciones-multiplicacion-division": operacionesFraccionesMultiplicacionDivisionLesson,
   "operaciones-fracciones-problemas": operacionesFraccionesProblemasLesson,
@@ -405,7 +417,9 @@ export const interactiveLessons = {
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencias-base-10": potenciasBase10Lesson,
+  "potencias-base-entera-4eso": potenciasBaseEntera4esoLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
+  "potencias-exponente-entero-4eso": potenciasExponenteEntero4esoLesson,
   "potencias-exponente-negativo-3eso": potenciasExponenteNegativo3esoLesson,
   "prismas-2eso": prismas2esoLesson,
   "probabilidad-espacio-muestral": probabilidadEspacioMuestralLesson,
@@ -417,6 +431,7 @@ export const interactiveLessons = {
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "problemas-ecuaciones-3eso": problemasEcuaciones3esoLesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
+  "problemas-fracciones-4eso": problemasFracciones4esoLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-sistemas-3eso": problemasSistemas3esoLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,
@@ -446,6 +461,7 @@ export const interactiveLessons = {
   "residuos-reciclaje": residuosReciclajeLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-sistemas-lineales": resolucionSistemasLinealesLesson,
+  "simplificar-equivalentes-operador-4eso": simplificarEquivalentesOperador4esoLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
   "sistema-metrico-longitud": sistemaMetricoLongitudLesson,
   "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
