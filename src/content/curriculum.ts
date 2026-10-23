@@ -3421,9 +3421,167 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Materiales, tratamientos térmicos, corrosión y principios de las máquinas.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión y principios de las máquinas.",
       orderIndex: 16,
       modules: [
+        {
+          id: moduleId(66),
+          slug: "estructura-materiales-ensayos",
+          title: "Estructura de los materiales. Propiedades y ensayos de medida",
+          orderIndex: 1,
+          lessons: [
+            {
+              id: lessonId(6601),
+              title: "1. El átomo: núcleo, corteza e isótopos",
+              summary:
+                "Núcleo, corteza, número atómico y másico; isótopos, isótonos e isóbaros.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "atomo-nucleo-corteza",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6602),
+              title: "2. Fuerzas y energía de enlace",
+              summary:
+                "Atracción y repulsión entre átomos, distancia de equilibrio y energía de enlace.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "fuerzas-energia-enlace",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6603),
+              title: "3. Estructura electrónica y electronegatividad",
+              summary:
+                "Gases nobles, elementos electropositivos y electronegativos y escala de electronegatividad.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "electronegatividad-reactividad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6604),
+              title: "4. Enlace iónico",
+              summary:
+                "Transferencia de electrones, tamaño de los iones y propiedades de los cristales iónicos.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "enlace-ionico",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6605),
+              title: "5. Enlace covalente y el carbono",
+              summary:
+                "Pares compartidos, enlaces múltiples e hibridación sp³ del carbono.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "enlace-covalente-carbono",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6606),
+              title: "6. Enlace metálico y enlaces secundarios",
+              summary:
+                "Nube electrónica, fuerzas de Van der Waals, puente de hidrógeno y energía de enlace.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "enlace-metalico-secundario",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6607),
+              title: "7. Estructura cristalina y celdas unitarias",
+              summary:
+                "Celda unitaria, redes de Bravais y estructuras BCC, FCC y HCP.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "estructura-cristalina",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6608),
+              title: "8. Alotropía y materiales amorfos",
+              summary:
+                "Cambios de estructura con la temperatura y sólidos sin orden de largo alcance.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "alotropia-amorfos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6609),
+              title: "9. Propiedades mecánicas y tipos de ensayos",
+              summary:
+                "Deformación elástica y plástica, propiedades mecánicas y clasificación de los ensayos.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "propiedades-mecanicas-ensayos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6610),
+              title: "10. Tensión, deformación y ensayo de tracción",
+              summary:
+                "Tensión σ = F/A₀, deformación ε = Δl/l₀, probetas normalizadas y máquina de tracción.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "tension-deformacion-traccion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6611),
+              title: "11. El diagrama de tracción",
+              summary:
+                "Zonas elástica y plástica, límite elástico, fluencia, tensión de rotura y comparación de materiales.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "diagrama-traccion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6612),
+              title: "12. Ley de Hooke y tensión de trabajo",
+              summary:
+                "Módulo elástico, alargamiento, coeficiente de seguridad y tensión máxima de trabajo.",
+              orderIndex: 12,
+              kind: "interactive",
+              interactiveSlug: "ley-hooke-tension-trabajo",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6613),
+              title: "13. Ensayo de dureza Brinell",
+              summary:
+                "Bola, huella, superficie del casquete, dureza HB y cargas recomendadas.",
+              orderIndex: 13,
+              kind: "interactive",
+              interactiveSlug: "dureza-brinell",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6614),
+              title: "14. Dureza Vickers y Rockwell",
+              summary:
+                "Pirámide de diamante, HV, profundidad permanente y escalas HRB y HRC.",
+              orderIndex: 14,
+              kind: "interactive",
+              interactiveSlug: "dureza-vickers-rockwell",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6615),
+              title: "15. Resiliencia, fatiga y ensayos tecnológicos",
+              summary:
+                "Péndulo de Charpy, límite de fatiga, plegado, embutición y ensayos no destructivos.",
+              orderIndex: 15,
+              kind: "interactive",
+              interactiveSlug: "resiliencia-fatiga-tecnologicos",
+              conceptSlugs: [],
+            },
+          ],
+        },
         {
           id: moduleId(48),
           slug: "aleaciones-diagramas-equilibrio",

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 // industrial-imports
+import { IsotoposExplorador, CurvaEnlaceExplorador, ElectronegatividadExplorador, CovalenteExplorador, EnlaceFusionGrafica, CeldaExplorador, AlotropiaExplorador } from "@/components/lesson/slide/tools/EstructuraTools";
+import { TensionDeformacionExplorador, DiagramaTraccionExplorador, HookeExplorador, TensionTrabajoExplorador, BrinellExplorador, VickersExplorador, RockwellExplorador, CharpyExplorador, FatigaExplorador } from "@/components/lesson/slide/tools/EnsayosTools";
 import { ConversorIndustrial, PlanoInclinadoTrabajo, ResorteExplorador, EnergiaRampa, MomentoInercia, EquilibrioTermico, PrimerPrincipio, RendimientoCadena, PotenciaVehiculo, ParTrabajo, DiagramaPV, PotenciaElectricaHidraulica } from "@/components/lesson/slide/tools/MaquinasTools";
 import { IntersticioRed, DurezaMartensita, TttExplorador, JominyExplorador, TemperaturasTratamiento, PerfilDureza, PilaElectroquimica, NernstExplorador, FaradayExplorador, RecubrimientoRayado, PillingBedworth } from "@/components/lesson/slide/tools/TratamientosTools";
 import { ResistenciaEspecifica, PiezaPesoMinimo, AleacionesFiltro, GrietaGriffith, GradoPolimerizacion, RtpComunidades } from "@/components/lesson/slide/tools/MaterialesTools";
@@ -674,6 +676,38 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DiagramaPV block={block} />;
     case "potencia-electrica-hidraulica":
       return <PotenciaElectricaHidraulica block={block} />;
+    case "isotopos-explorador":
+      return <IsotoposExplorador block={block} />;
+    case "curva-enlace-explorador":
+      return <CurvaEnlaceExplorador block={block} />;
+    case "electronegatividad-explorador":
+      return <ElectronegatividadExplorador block={block} />;
+    case "covalente-explorador":
+      return <CovalenteExplorador block={block} />;
+    case "enlace-fusion-grafica":
+      return <EnlaceFusionGrafica block={block} />;
+    case "celda-explorador":
+      return <CeldaExplorador block={block} />;
+    case "alotropia-explorador":
+      return <AlotropiaExplorador block={block} />;
+    case "tension-deformacion-explorador":
+      return <TensionDeformacionExplorador block={block} />;
+    case "diagrama-traccion-explorador":
+      return <DiagramaTraccionExplorador block={block} />;
+    case "hooke-explorador":
+      return <HookeExplorador block={block} />;
+    case "tension-trabajo-explorador":
+      return <TensionTrabajoExplorador block={block} />;
+    case "brinell-explorador":
+      return <BrinellExplorador block={block} />;
+    case "vickers-explorador":
+      return <VickersExplorador block={block} />;
+    case "rockwell-explorador":
+      return <RockwellExplorador block={block} />;
+    case "charpy-explorador":
+      return <CharpyExplorador block={block} />;
+    case "fatiga-explorador":
+      return <FatigaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

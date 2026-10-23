@@ -1,4 +1,6 @@
 // industrial-imports
+import { buildAtomoIsotopos, buildEnlaceCurvaEnergia, buildIonNaCl, buildCovalenteMultiple, buildHibridacionSp3, buildMetalicoNube, buildAguaPuenteH, buildCristalAmorfo } from "@/components/lesson/anim/scenes/industrial/estructura";
+import { buildElasticoPlastico, buildVarillaTraccion, buildDiagramaTraccion, buildBrinellHuella, buildRockwellProfundidad, buildPenduloCharpy, buildFatigaCiclos } from "@/components/lesson/anim/scenes/industrial/ensayos";
 import { buildPlanoInclinado, buildTrabajoAreaCurva, buildResorteTrabajo, buildRodaduraCarrera, buildPrimerPrincipio, buildParTrabajo, buildPistonTrabajo, buildPresaTurbina } from "@/components/lesson/anim/scenes/industrial/maquinas";
 import { buildAustenitaMartensita, buildJominyEnsayo, buildTttLectura, buildCiclosTratamiento, buildCementacionDifusion, buildPilaCorrosion, buildAireacionDiferencial, buildProteccionCatodica, buildDesgasteAsperezas, buildCavitacion } from "@/components/lesson/anim/scenes/industrial/tratamientos";
 import { buildVidrioRed, buildPrensadoSinterizado, buildBarbotina, buildPolimerizacionAdicion, buildPolimerizacionCondensacion, buildPolimerosCalor, buildExtrusionTornillo, buildDepositoSeguridad } from "@/components/lesson/anim/scenes/industrial/materiales";
@@ -471,6 +473,21 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "par-trabajo": () => buildParTrabajo(),
   "piston-trabajo": () => buildPistonTrabajo(),
   "presa-turbina": () => buildPresaTurbina(),
+  "atomo-isotopos": () => buildAtomoIsotopos(),
+  "enlace-curva-energia": () => buildEnlaceCurvaEnergia(),
+  "ion-nacl": () => buildIonNaCl(),
+  "covalente-multiple": () => buildCovalenteMultiple(),
+  "hibridacion-sp3": () => buildHibridacionSp3(),
+  "metalico-nube": () => buildMetalicoNube(),
+  "agua-puente-h": () => buildAguaPuenteH(),
+  "cristal-amorfo": () => buildCristalAmorfo(),
+  "elastico-plastico": () => buildElasticoPlastico(),
+  "varilla-traccion": () => buildVarillaTraccion(),
+  "diagrama-traccion": () => buildDiagramaTraccion(),
+  "brinell-huella": () => buildBrinellHuella(),
+  "rockwell-profundidad": () => buildRockwellProfundidad(),
+  "pendulo-charpy": () => buildPenduloCharpy(),
+  "fatiga-ciclos": () => buildFatigaCiclos(),
   /* industrial-end */
 };
 

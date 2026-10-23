@@ -304,6 +304,21 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `par-trabajo` | Par de fuerzas, momento M = d·F y trabajo W = M·θ | — |
 | `piston-trabajo` | Expansión isobárica en un cilindro: W = p·ΔV | — |
 | `presa-turbina` | Cadena de energía en una central hidroeléctrica | — |
+| `atomo-isotopos` | Átomo (núcleo y corteza, escala 10 m → 1 mm), núcleo con protones y neutrones, y isótopos / isóbaros / isótonos a partir del C-14 (Tecnología Industrial II, unidad 1) | — |
+| `enlace-curva-energia` | Energía de atracción, de repulsión y neta frente a la distancia: mínimo en a₀ y energía de enlace | — |
+| `ion-nacl` | Formación de NaCl: transferencia de un electrón, Na⁺ más pequeño y Cl⁻ más grande, red cristalina | — |
+| `covalente-multiple` | Enlace covalente simple, doble y triple en F₂, O₂ y N₂ con pares compartidos y no enlazantes | — |
+| `hibridacion-sp3` | Carbono: promoción 2s → 2p, cuatro orbitales sp³ y tetraedro del diamante (109,5°) | — |
+| `metalico-nube` | Cationes en una nube de electrones: conducción y deslizamiento de capas sin romper el enlace | — |
+| `agua-puente-h` | Dipolo permanente del agua (105°) y puentes de hidrógeno entre moléculas | — |
+| `cristal-amorfo` | Sólido cristalino con celda unitaria que se repite frente a sólido amorfo | — |
+| `elastico-plastico` | Planos de átomos con carga pequeña (elástica) y grande (deslizamiento, deformación permanente) con σ–ε en miniatura | — |
+| `varilla-traccion` | Probeta en tracción: σ = F/A₀ = 200 MPa y ε = Δl/l₀ = 0,001 | — |
+| `diagrama-traccion` | Diagrama σ–ε de un acero: OP, PE, límite elástico, fluencia, tensión de rotura y rotura | — |
+| `brinell-huella` | Ensayo Brinell: bola, huella (d, f), S = π·D·f y HB = F/S (500 kp, 5 mm, 2,3 mm → 114 HB) | — |
+| `rockwell-profundidad` | Rockwell: precarga, carga total, deformación permanente e y HRC = 100 − e | — |
+| `pendulo-charpy` | Péndulo de Charpy: energía absorbida E₀ − E₁ y resiliencia ρ = Eₚ/S | — |
+| `fatiga-ciclos` | Fatiga: tracción y compresión alternas, tres fases de rotura y curva de Wöhler con límite de fatiga | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -478,6 +493,22 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `par-trabajo-explorador` | Par, ángulo girado y trabajo de rotación de una rueda | `a` (N·m), `b` (m), `c` (m) |
 | `diagrama-pv` | Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p–V | `a` (bar), `b` (L), `c` (V₂/V₁) |
 | `potencia-electrica-hidraulica` | P = U·I con coste en kWh y P = p·Q de una presa | `a` (V), `b` (A), `c` (`1` = hidráulica) |
+| `isotopos-explorador` | Protones y neutrones de un átomo frente a uno de referencia (C-14): A, símbolo y relación (isótopo, isóbaro, isótono) | `a` (Z de referencia), `b` (N de referencia) |
+| `curva-enlace-explorador` | Distancia entre núcleos y energía de enlace: energía neta, dominio de atracción o repulsión y mínimo en a₀ = 0,3 nm | `a` (r en centésimas de nm), `b` (E₀ en kcal/mol) |
+| `electronegatividad-explorador` | Dos elementos de la Tabla 1.1: ΔEN y tipo de enlace (metálico, iónico, covalente polar o apolar) | `a`, `b` (índices de los elementos) |
+| `covalente-explorador` | Molécula X₂ (H, F, Cl, O, N): electrones de valencia, pares compartidos y tipo de enlace | `a` (índice del elemento) |
+| `enlace-fusion-grafica` | Tabla 1.4: energía de enlace frente a temperatura de fusión por tipo de enlace y estimación de la energía de un metal | `a` (T de fusión inicial, °C) |
+| `celda-explorador` | Celdas BCC, FCC y HCP en 3D que se giran: átomos por celda, vecinos y ejemplos | `a` (0 BCC, 1 FCC, 2 HCP) |
+| `alotropia-explorador` | Estructura de un metal (Fe, Ca, Ti, Na, Al, Cu, Cr) según la temperatura, con sus transformaciones | `a` (metal), `b` (T inicial, °C) |
+| `tension-deformacion-explorador` | Fuerza, diámetro, longitud inicial y alargamiento de una probeta: A₀, σ en MPa y ε | `a` (kN), `b` (mm), `c` (Δl en mm) |
+| `diagrama-traccion-explorador` | Seis curvas σ–ε (acero con fluencia, fundido, bronce, Al-Cu, deformado en frío, templado): zona, tensión y deformación permanente al soltar | `a` (material) |
+| `hooke-explorador` | Ley de Hooke con materiales de la Tabla 1.6: E, σ = F/A₀ y Δl = F·l₀/(A₀·E), con aviso al pasar el límite elástico | `a` (material), `b` (kN), `c` (mm²) |
+| `tension-trabajo-explorador` | Tensión de trabajo σt = σF/n o σR/n y fuerza máxima para un material de la Tabla 1.6 | `a` (material), `b` (n) |
+| `brinell-explorador` | Bola, carga y huella del ensayo Brinell: f, S, HB, huella válida (D/4 < d < D/2) y carga recomendada P = K·D² | `a` (kp), `b` (mm) |
+| `vickers-explorador` | Carga y diagonal de la huella: HV = 1,8543·F/d² | `a` (kp), `b` (mm) |
+| `rockwell-explorador` | Deformación permanente e (unidades de 0,002 mm): HRC = 100 − e y HRB = 130 − e | `a` (e) |
+| `charpy-explorador` | Ángulos inicial y final del péndulo de Charpy: E₀, E₁, energía absorbida y resiliencia | `a` (° inicial), `b` (° final) |
+| `fatiga-explorador` | Tensión alterna (% de σ_R) y vida en ciclos con límite de fatiga (curva esquemática) | `a` (%) |
 
 ## Respuesta como fracción
 

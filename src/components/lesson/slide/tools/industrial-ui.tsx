@@ -20,11 +20,13 @@ export function fmtEs(value: number, max = 2): string {
   return dec ? `${grouped},${dec}` : grouped;
 }
 
-/** Cifra destacada con color. */
-export function Stat({ color, children, label }: { color: string; children: ReactNode; label?: string }) {
+/** Cifra destacada con color. `plain` deja la etiqueta tal cual (sin mayúsculas): úsalo si lleva símbolos como σ, ε o d². */
+export function Stat({ color, children, label, plain = false }: { color: string; children: ReactNode; label?: string; plain?: boolean }) {
   return (
     <span className="inline-flex flex-col">
-      {label ? <span className="text-xs uppercase tracking-wide text-[color:var(--stage-muted,#b8c2d0)]">{label}</span> : null}
+      {label ? (
+        <span className={`text-xs tracking-wide text-[color:var(--stage-muted,#b8c2d0)] ${plain ? "" : "uppercase"}`}>{label}</span>
+      ) : null}
       <span className="text-xl font-bold tabular-nums" style={{ color }}>
         {children}
       </span>
