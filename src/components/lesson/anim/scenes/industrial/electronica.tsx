@@ -3,6 +3,10 @@ import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
 import { Axes, DrawPath } from "@/components/lesson/anim/scenes/industrial/common";
 
+/** Polilínea en coordenadas de lienzo a partir de (magnitud 0..60, tensión 0..12 V). */
+const toD = (pts: readonly (readonly [number, number])[]) =>
+  pts.map(([x, y], i) => `${i ? "L" : "M"} ${(80 + (520 * x) / 60).toFixed(1)} ${(320 - (220 * y) / 12).toFixed(1)}`).join(" ");
+
 /* ───────────── Señal analógica → digital ───────────── */
 
 export function buildSenalAnalogicaDigital(): AnimBuild {
@@ -31,10 +35,10 @@ export function buildSenalAnalogicaDigital(): AnimBuild {
       }
       return (
         <Canvas>
-          <Axes x0={80} y0={320} w={520} h={220} xLabel="Magnitud" yLabel="Tensión (V)" xMax={60} yMax={12} />
-          <DrawPath points={pts.map(([x, y]) => [80 + (520 * x) / 60, 320 - (220 * y) / 12])} color={MANIM.blue} width={4} show={beat >= 0} />
+          <Axes x0={80} y0={320} x1={620} y1={90} xLabel="Magnitud" yLabel="Tensión (V)" />
+          <DrawPath d={toD(pts)} color={MANIM.blue} width={4} show />
           <Fade show={beat >= 2}>
-            <DrawPath points={quant.map(([x, y]) => [80 + (520 * x) / 60, 320 - (220 * y) / 12])} color={MANIM.orange} width={5} show />
+            <DrawPath d={toD(quant)} color={MANIM.orange} width={5} show />
           </Fade>
           <Txt x={640} y={80} size={20} color={MANIM.ink} anchor="start">
             {bits} bit{bits > 1 ? "s" : ""} → {steps} niveles

@@ -37,7 +37,7 @@ export function buildOpticaSensor(): AnimBuild {
           )}
           {mode === 1 && (
             <>
-              <Box x={480} y={180} w={90} h={44} color={MANIM.violet} label="Reflector" size={14} />
+              <Box x={480} y={180} w={90} h={44} color={MANIM.purple} label="Reflector" size={14} />
               <Arrow x1={150} y1={202} x2={480} y2={202} color={MANIM.yellow} width={3} />
               <Arrow x1={480} y1={202} x2={150} y2={202} color={MANIM.yellow} width={3} />
             </>
@@ -307,7 +307,7 @@ export function buildPuertasUniversales(): AnimBuild {
     ],
     render: (beat) => (
       <Canvas>
-        <Box x={120 + beat * 15} y={190} w={110} h={56} color={MANIM.violet} label={beat === 2 ? "XOR" : beat === 1 ? "NOR" : "NAND"} size={18} />
+        <Box x={120 + beat * 15} y={190} w={110} h={56} color={MANIM.purple} label={beat === 2 ? "XOR" : beat === 1 ? "NOR" : "NAND"} size={18} />
         <Txt x={360} y={300} size={18} color={MANIM.muted}>
           CI 74xx
         </Txt>
@@ -406,7 +406,7 @@ export function buildSecuencialIntro(): AnimBuild {
       <Canvas>
         <Box x={120} y={190} w={100} h={56} color={MANIM.orange} label="Entrada" size={16} />
         <Fade show={beat >= 1}>
-          <Box x={280} y={190} w={120} h={56} color={MANIM.violet} label="Memoria" size={16} />
+          <Box x={280} y={190} w={120} h={56} color={MANIM.purple} label="Memoria" size={16} />
         </Fade>
         <Fade show={beat >= 2}>
           <Box x={460} y={190} w={100} h={56} color={MANIM.green} label="Salida" size={16} />
