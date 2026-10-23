@@ -1,6 +1,25 @@
 // industrial-imports
 import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
 import { buildSenalAnalogicaDigital, buildPuertasLogicasBasicas, buildKarnaughDosVariables, buildBiestableRs, buildSensorInductivo } from "@/components/lesson/anim/scenes/industrial/electronica";
+import {
+  buildOpticaSensor,
+  buildGalgaPotenciometro,
+  buildEncoderTacometro,
+  buildPresionTemperaturaCapt,
+  buildLdrOperacional,
+  buildBinarioSistemas,
+  buildConversionBases,
+  buildLogicaNiveles,
+  buildPuertasUniversales,
+  buildNandImplementacion,
+  buildMuxDecoder,
+  buildSumadorBinario,
+  buildSecuencialIntro,
+  buildBiestableJkDT,
+  buildCableadoLadder,
+  buildGrafoBimodal,
+  buildSecuenciaRelesPlc,
+} from "@/components/lesson/anim/scenes/industrial/electronica-ext";
 import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
 import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
@@ -541,6 +560,23 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "karnaugh-dos-variables": () => buildKarnaughDosVariables(),
   "biestable-rs": () => buildBiestableRs(),
   "sensor-inductivo": () => buildSensorInductivo(),
+  "optica-sensor": () => buildOpticaSensor(),
+  "galga-potenciometro": () => buildGalgaPotenciometro(),
+  "encoder-tacometro": () => buildEncoderTacometro(),
+  "presion-temperatura-capt": () => buildPresionTemperaturaCapt(),
+  "ldr-operacional": () => buildLdrOperacional(),
+  "binario-sistemas": () => buildBinarioSistemas(),
+  "conversion-bases": () => buildConversionBases(),
+  "logica-niveles": () => buildLogicaNiveles(),
+  "puertas-universales": () => buildPuertasUniversales(),
+  "nand-implementacion": () => buildNandImplementacion(),
+  "mux-decoder": () => buildMuxDecoder(),
+  "sumador-binario": () => buildSumadorBinario(),
+  "secuencial-intro": () => buildSecuencialIntro(),
+  "biestable-jk-d-t": () => buildBiestableJkDT(),
+  "cableado-ladder": () => buildCableadoLadder(),
+  "grafo-bimodal": () => buildGrafoBimodal(),
+  "secuencia-reles-plc": () => buildSecuenciaRelesPlc(),
   /* industrial-end */
 };
 

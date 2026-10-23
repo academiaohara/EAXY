@@ -231,33 +231,44 @@ export function buildBiestableRs(): AnimBuild {
 export function buildSensorInductivo(): AnimBuild {
   return {
     label: "Detector inductivo: campo magnético y corrientes de Foucault",
-    beatMs: 4800,
+    beatMs: 5200,
     captions: [
-      "El **detector inductivo** genera un campo magnético alterno con un **oscilador LC**.",
-      "Si se acerca un **metal**, aparecen **corrientes de Foucault** que amortiguan la oscilación.",
-      "La etapa de **conmutación** detecta el cambio y activa la salida (PNP, NPN o 2 hilos).",
-      "La **distancia de detección** $S_n$ depende del tamaño del objeto, del material y del montaje enrasado o no.",
+      "La **bobina** del sensor forma un **oscilador LC** que genera un campo magnético alterno.",
+      "Sin metal, la oscilación es **fuerte** y la etapa de conmutación mantiene la salida en reposo.",
+      "Al acercar **acero**, las **corrientes de Foucault** disipan energía y **amortiguan** la oscilación.",
+      "El detector compara el nivel y **conmuta** la salida (PNP, NPN o 2 hilos) dentro de la distancia $S_n$.",
     ],
     render: (beat) => {
       const near = beat >= 2;
+      const amp = near ? 8 : 22;
       return (
         <Canvas>
-          <rect x={120} y={160} width={140} height={90} rx={10} fill={MANIM.panel} stroke={MANIM.blue} strokeWidth={3} />
-          <Txt x={190} y={210} size={18} color={MANIM.ink}>
-            Oscilador LC
+          <rect x={100} y={150} width={160} height={100} rx={10} fill={MANIM.panel} stroke={MANIM.blue} strokeWidth={3} />
+          <Txt x={180} y={195} size={17} color={MANIM.blue}>
+            Bobina + oscilador
           </Txt>
-          <rect x={300} y={175} width={110} height={60} rx={8} fill={MANIM.surface} stroke={MANIM.ink} strokeWidth={2} />
-          <Txt x={355} y={210} size={17} color={MANIM.ink}>
-            Salida
-          </Txt>
+          {Array.from({ length: 5 }, (_, i) => (
+            <line
+              key={i}
+              x1={260}
+              y1={200}
+              x2={260 + amp + i * 6}
+              y2={200 - 20 + i * 10}
+              stroke={MANIM.yellow}
+              strokeWidth={2}
+              opacity={near ? 0.35 : 0.9}
+            />
+          ))}
           <Fade show={near}>
-            <rect x={480} y={170} width={80} height={70} fill={MANIM.panel} stroke={MANIM.orange} strokeWidth={3} />
-            <Txt x={520} y={210} size={17} color={MANIM.ink}>
-              Pieza Fe
+            <path d="M 480 210 Q 520 180 560 210 Q 520 240 480 210" fill="none" stroke={MANIM.orange} strokeWidth={3} />
+            <Txt x={520} y={260} size={16} color={MANIM.orange}>
+              Foucault
             </Txt>
+            <rect x={440} y={170} width={70} height={50} fill={MANIM.panel} stroke={MANIM.orange} strokeWidth={2} />
           </Fade>
-          <Txt x={360} y={320} size={19} color={near ? MANIM.green : MANIM.muted}>
-            {near ? "Objeto detectado ✓" : "Sin objeto metálico"}
+          <rect x={300} y={175} width={100} height={56} rx={8} fill={near ? MANIM.panel : MANIM.surface} stroke={near ? MANIM.green : MANIM.muted} strokeWidth={3} />
+          <Txt x={350} y={208} size={16} color={near ? MANIM.green : MANIM.muted}>
+            {near ? "ON" : "OFF"}
           </Txt>
         </Canvas>
       );
