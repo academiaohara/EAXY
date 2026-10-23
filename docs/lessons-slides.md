@@ -339,6 +339,14 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `campo-giratorio` | Estator trifásico con tres corrientes a 120°: campo de módulo constante que gira 60° por instante | — |
 | `arranque-estrella-triangulo` | Corriente y par de arranque en estrella y en triángulo (relación 3) | — |
 | `monofasico-arranque` | Campo alternativo = dos campos giratorios opuestos; devanado auxiliar y condensador con diagrama vectorial | — |
+| `humedad-compresion` | Al comprimir el aire sube la humedad relativa hasta el 100 % y el vapor sobrante condensa (Tecnología Industrial II, unidad 8) | — |
+| `compresor-embolo` | Compresor de émbolo: aspiración, cierre, compresión y descarga | — |
+| `red-distribucion-aire` | Compresor, depósito, filtro, línea principal inclinada 1–3°, bajantes y purgadores | — |
+| `cilindros-efecto` | Cilindro de simple efecto (muelle) y de doble efecto (dos tomas) en avance y retroceso | — |
+| `valvula-32-conmutacion` | Válvula 3/2 normalmente cerrada con pulsador y muelle gobernando un cilindro de simple efecto | — |
+| `estrangulacion-velocidad` | Regulación de velocidad estrangulando la entrada o el escape, y dos unidireccionales | — |
+| `espacio-fase-secuencia` | Diagrama espacio-fase de A+ B+ A− B− | — |
+| `mando-doble-efecto` | Válvula 4/2 monoestable y cilindro de doble efecto: mando directo e indirecto por pilotaje | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -547,6 +555,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `velocidad-trifasico-explorador` | n₁ = 60·f/p, deslizamiento y velocidad del rotor | `a` (pares de polos), `b` (S, %) |
 | `trifasico-conexion-explorador` | Placa 230/400 o 400/690 V y red: estrella o triángulo, U_f e I_f | `a` (I_L, A) |
 | `curva-par-asincrono-explorador` | Característica mecánica de un asíncrono con la carga y la tensión: punto de funcionamiento, calado y arranque | `a` (carga, %), `b` (U, %) |
+| `presion-neumatica-explorador` | Presión manométrica, absoluta y depresión; fuerza de las semiesferas de Magdeburgo | `a` (bar manométricos) |
+| `caudal-cilindro-explorador` | Sección, presión necesaria, caudal Q = S·v y caudal atmosférico (ejemplo 1 del libro) | `a` (D, mm), `b` (v, m/s), `c` (kg) |
+| `relacion-compresion-explorador` | Relación de compresión, volumen comprimido (Boyle) y número de etapas del compresor | `a` (bar) |
+| `fuerza-cilindro-explorador` | Fuerza teórica y real (rozamiento 10 %, muelle 6 %) en simple efecto, avance y retroceso | `a` (D), `b` (d), `c` (bar) |
+| `consumo-aire-explorador` | Volumen del cilindro, aire libre por ciclo y consumo en l/min | `a` (D, mm), `b` (carrera, mm) |
+| `valvula-nomenclatura-explorador` | Nombre «vías/posiciones», símbolo, códigos ISO y CETOP y uso típico | `a` (vías), `b` (posiciones) |
+| `logica-neumatica-explorador` | Válvula selectora (O) y de simultaneidad (Y) con dos pulsadores y tabla de verdad | `a` (0 O, 1 Y) |
+| `ventosa-vacio-explorador` | Masa que sujeta una ventosa según la altitud, el vacío y la superficie | `a` (altitud, m) |
+| `numeracion-neumatica-explorador` | Numeración 1.0, 1.1, 1.2…, 1.02 y 0.1 de los elementos de un circuito | `a` (grupo), `b` (segunda cifra) |
 
 ## Respuesta como fracción
 

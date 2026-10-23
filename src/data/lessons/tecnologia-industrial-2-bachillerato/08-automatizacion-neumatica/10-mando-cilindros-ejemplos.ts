@@ -1,0 +1,116 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_8_SUBTITLE } from "@/data/lessons/shared";
+
+export const mandoCilindrosEjemplosLesson: InteractiveLesson = {
+  slug: "mando-cilindros-ejemplos",
+  title: "10. Mando de cilindros y ejemplos prácticos",
+  subtitle: TEMA_TI2_8_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "mando-directo",
+      type: "slide",
+      help: [{ label: "¿Qué es una válvula monoestable?", message: "La que tiene una posición estable (la de reposo, por muelle) y vuelve a ella al dejar de actuar. La biestable mantiene la posición hasta que recibe la otra señal." }],
+      title: "Mando directo",
+      blocks: [
+        { kind: "text", text: "Una **válvula distribuidora** gobierna directamente el actuador (manual o eléctrica). Reúne las funciones de regulación, mando y emisión de señales." },
+        { kind: "compare",
+          left: { title: "Simple efecto", text: "Válvula **3/2 monoestable** normalmente cerrada: al activarla, el cilindro sale; en cuanto se desactiva, vuelve el émbolo.", tone: "info" },
+          right: { title: "Doble efecto", text: "Válvula **4/2 o 5/2**: mientras se activa, sale el émbolo; al desactivar, regresa. El avance es más lento (mayor volumen) pero con **más fuerza** (mayor sección).", tone: "key" } },
+      ],
+      visual: { kind: "anim", scene: "mando-doble-efecto", beatMs: 5800 },
+    },
+    {
+      id: "check-avance-lento",
+      type: "predict",
+      help: [{ label: "Pista", message: "Compara la cámara trasera con la delantera." }],
+      title: "Avance y retroceso",
+      question: "En un cilindro de doble efecto, comparado con el avance, el retroceso es:",
+      mode: "choice",
+      choices: [
+        { id: "rapido", label: "Más rápido y con menos fuerza (cámara anular de menor volumen y superficie)" },
+        { id: "lento", label: "Más lento y con más fuerza", incorrectFeedback: "Eso describe el avance." },
+        { id: "igual", label: "Igual en velocidad y fuerza", incorrectFeedback: "La superficie útil del vástago cambia ambas." },
+      ],
+      correctChoiceId: "rapido",
+      shuffleChoices: true,
+      explanation: "El avance llena la cámara completa (mayor volumen y superficie): más fuerza y más lento. En el retroceso la superficie es la corona $\\pi(R^2 - r^2)$.",
+    },
+    {
+      id: "mando-indirecto",
+      type: "slide",
+      help: [{ label: "¿Por qué ahorra dinero?", message: "La parte de mando (información) trabaja a baja presión y con componentes pequeños; solo la parte de potencia (cilindro y válvula distribuidora) usa la presión de trabajo." }],
+      title: "Mando indirecto y control de velocidad",
+      blocks: [
+        { kind: "text", text: "Con cilindros grandes hacen falta fuerzas altas para conmutar la válvula. Se separa la parte de **información** de la de **trabajo**: una válvula pequeña **pilota** (señal neumática) a la de gobierno. Normalmente 3/2 normalmente cerradas." },
+        { kind: "steps", title: "Control de velocidad", items: [
+          "**Aumentarla**: válvula de **escape rápido** en la salida del cilindro: evita que el aire pase por el distribuidor.",
+          "**Reducirla**: válvulas reguladoras de caudal; lo habitual, unidireccionales actuando sobre el **aire de escape**.",
+          "Misma velocidad en ambos sentidos: una estranguladora bidireccional o dos unidireccionales con el mismo valor.",
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "clasifica-mando",
+      type: "classify",
+      help: [{ label: "Pista", message: "Directo: la válvula manual o eléctrica actúa sobre el cilindro. Indirecto: una válvula pequeña pilota a otra." }],
+      title: "Directo o indirecto",
+      question: "Reparte las situaciones.",
+      groups: [
+        { id: "directo", label: "Mando directo", tone: "cobalt" },
+        { id: "indirecto", label: "Mando indirecto", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "Un pulsador 3/2 alimenta el cilindro de simple efecto", group: "directo" },
+        { id: "b", text: "Una 3/2 pequeña pilota a una 4/2 que gobierna un cilindro grande", group: "indirecto" },
+        { id: "c", text: "La parte de mando trabaja a baja presión para ahorrar aire", group: "indirecto" },
+        { id: "d", text: "Una 4/2 monoestable manual gobierna un cilindro pequeño de doble efecto", group: "directo" },
+      ],
+      hint: "¿Hay pilotaje entre dos válvulas?",
+      explanation: "El pilotaje neumático permite que una señal débil gobierne una potencia grande.",
+    },
+    {
+      id: "ejemplos",
+      type: "slide",
+      help: [{ label: "¿Cómo se lee un circuito grande?", message: "Primero identifica los cilindros (x.0), luego sus válvulas de gobierno (x.1) y por último los captadores (x.2, x.3…). Sigue la secuencia fase a fase." }],
+      title: "Aplicaciones reales",
+      blocks: [
+        { kind: "text", text: "En el libro, los esquemas se acompañan de un **plano de situación**:" },
+        { kind: "steps", items: [
+          "**Taladrado de piezas de madera**: avance intermitente en mando secuencial; sujeción durante el taladrado y durante el transporte.",
+          "**Máquina para fresar una ranura**: un cilindro sujeta, otro hace el avance de la fresa y otro la sitúa.",
+          "**Prensa moldeadora de bloques de hormigón**: transporte, prensado y desmoldeo, cada uno con su cilindro.",
+        ] },
+        { kind: "text", text: "En todos, la secuencia se detalla con el diagrama de movimientos y se numeran los elementos por grupos." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-final-vastago",
+      type: "predict",
+      help: [{ label: "Pista", message: "Solo las válvulas distribuidoras forman la lógica de mando, no el cilindro." }],
+      title: "Orden de los elementos",
+      question: "En un esquema neumático, ¿cuál es la correcta relación entre elementos de trabajo y órganos de gobierno?",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "El cilindro 1.0 se gobierna con el distribuidor 1.1; los captadores son 1.2, 1.3…" },
+        { id: "inv", label: "El cilindro es 1.1 y el distribuidor 1.0", incorrectFeedback: "Se numera al revés: 0 para trabajo, 1 para gobierno." },
+        { id: "auxi", label: "Los captadores son 0.1 y 0.2", incorrectFeedback: "0.1, 0.2… son elementos auxiliares comunes." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Grupo 1: 1.0 trabajo, 1.1 gobierno, 1.2/1.3… captadores; 0.x auxiliares.",
+    },
+    {
+      id: "check-ciclo-vastago",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Datos", message: "Cada ciclo (avance y retroceso) es una carrera de ida y otra de vuelta." }],
+      title: "Fases de la secuencia",
+      question: "En la secuencia $A^+\\,B^+\\,A^-\\,B^-$, ¿cuántas fases hay hasta volver a la posición inicial (la fase 5 coincide con la 1)?",
+      correctAnswers: ["4", "cuatro"],
+      explanation: "Cuatro cambios de estado ($A^+$, $B^+$, $A^-$, $B^-$) y la quinta fase es de nuevo la primera.",
+    },
+  ],
+};

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
 import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
 import { CarnotExplorador, BraytonExplorador, OttoDieselExplorador, PotenciaMotorExplorador, CilindradaExplorador, FrigorificaExplorador, MotorTiemposExplorador } from "@/components/lesson/slide/tools/TermicosTools";
 import { IsotoposExplorador, CurvaEnlaceExplorador, ElectronegatividadExplorador, CovalenteExplorador, EnlaceFusionGrafica, CeldaExplorador, AlotropiaExplorador } from "@/components/lesson/slide/tools/EstructuraTools";
@@ -746,6 +747,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TrifasicoConexionExplorador block={block} />;
     case "curva-par-asincrono-explorador":
       return <CurvaParAsincronoExplorador block={block} />;
+    case "presion-neumatica-explorador":
+      return <PresionNeumaticaExplorador block={block} />;
+    case "caudal-cilindro-explorador":
+      return <CaudalCilindroExplorador block={block} />;
+    case "relacion-compresion-explorador":
+      return <RelacionCompresionExplorador block={block} />;
+    case "fuerza-cilindro-explorador":
+      return <FuerzaCilindroExplorador block={block} />;
+    case "consumo-aire-explorador":
+      return <ConsumoAireExplorador block={block} />;
+    case "valvula-nomenclatura-explorador":
+      return <ValvulaNomenclaturaExplorador block={block} />;
+    case "logica-neumatica-explorador":
+      return <LogicaNeumaticaExplorador block={block} />;
+    case "ventosa-vacio-explorador":
+      return <VentosaVacioExplorador block={block} />;
+    case "numeracion-neumatica-explorador":
+      return <NumeracionNeumaticaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -871,6 +871,14 @@ export type SlideAnimId =
   | "campo-giratorio"
   | "arranque-estrella-triangulo"
   | "monofasico-arranque"
+  | "humedad-compresion"
+  | "compresor-embolo"
+  | "red-distribucion-aire"
+  | "cilindros-efecto"
+  | "valvula-32-conmutacion"
+  | "estrangulacion-velocidad"
+  | "espacio-fase-secuencia"
+  | "mando-doble-efecto"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1193,6 +1201,15 @@ export type SlideToolId =
   | "velocidad-trifasico-explorador"
   | "trifasico-conexion-explorador"
   | "curva-par-asincrono-explorador"
+  | "presion-neumatica-explorador"
+  | "caudal-cilindro-explorador"
+  | "relacion-compresion-explorador"
+  | "fuerza-cilindro-explorador"
+  | "consumo-aire-explorador"
+  | "valvula-nomenclatura-explorador"
+  | "logica-neumatica-explorador"
+  | "ventosa-vacio-explorador"
+  | "numeracion-neumatica-explorador"
   /* industrial-tool-end */;
 
 /**

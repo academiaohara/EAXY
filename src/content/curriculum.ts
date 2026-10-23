@@ -3421,7 +3421,7 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo y motores eléctricos.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos y automatización neumática.",
       orderIndex: 16,
       modules: [
         {
@@ -4176,6 +4176,114 @@ export const curriculum: Curriculum = {
               orderIndex: 12,
               kind: "interactive",
               interactiveSlug: "motor-trifasico-arranque-monofasico",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(69),
+          slug: "automatizacion-neumatica",
+          title: "Automatización neumática",
+          orderIndex: 8,
+          lessons: [
+            {
+              id: lessonId(6901),
+              title: "1. Presión relativa y absoluta",
+              summary:
+                "Presión manométrica y absoluta, fuerza de una presión y técnica del vacío (ventosas).",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "presion-neumatica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6902),
+              title: "2. Caudal y humedad del aire",
+              summary:
+                "Caudal de un cilindro, aire libre y humedad absoluta, relativa y específica.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "caudal-humedad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6903),
+              title: "3. Producción de aire comprimido: compresores",
+              summary:
+                "Relación de compresión y compresores de émbolo, de paletas y de tornillo.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "compresores",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6904),
+              title: "4. Red de distribución y tratamiento del aire",
+              summary:
+                "Tuberías, depósitos, acumuladores, filtros, separadores y purgadores.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "red-distribucion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6905),
+              title: "5. Simbología y cilindros neumáticos",
+              summary:
+                "Símbolos normalizados, cilindros de simple y doble efecto y pandeo del vástago.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "simbologia-cilindros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6906),
+              title: "6. Fuerza y consumo de aire de un cilindro",
+              summary:
+                "F = S·p con rozamiento y muelle, y consumo en condiciones normales.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "fuerza-consumo-cilindro",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6907),
+              title: "7. Válvulas distribuidoras: símbolo y nombre",
+              summary:
+                "Vías y posiciones, nomenclatura 3/2, 4/2, 5/2 y 4/3, códigos de los conductos.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "valvulas-distribuidoras",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6908),
+              title: "8. Accionamientos, válvulas de bloqueo y regulación",
+              summary:
+                "Mandos, antirretorno, selectora (O), simultaneidad (Y), estranguladoras y de presión.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "mandos-bloqueo-regulacion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6909),
+              title: "9. Detectores y diseño de circuitos",
+              summary:
+                "Captadores, diseño, diagrama espacio-fase y numeración de elementos.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "detectores-diseno",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6910),
+              title: "10. Mando de cilindros y ejemplos prácticos",
+              summary:
+                "Mando directo e indirecto, control de velocidad y aplicaciones industriales.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "mando-cilindros-ejemplos",
               conceptSlugs: [],
             },
           ],

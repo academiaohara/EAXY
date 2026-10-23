@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
 import { buildProcesosCamino, buildMotorFrigorificaFocos, buildCarnotCiclo, buildCarnotFrigorifico, buildRankineCircuito, buildBraytonCircuito, buildMotor4Tiempos, buildOttoDieselPV, buildTurbocompresorFlujo, buildFrigorificoCircuito, buildBombaCalorInversion } from "@/components/lesson/anim/scenes/industrial/termicos";
 import { buildAtomoIsotopos, buildEnlaceCurvaEnergia, buildIonNaCl, buildCovalenteMultiple, buildHibridacionSp3, buildMetalicoNube, buildAguaPuenteH, buildCristalAmorfo } from "@/components/lesson/anim/scenes/industrial/estructura";
@@ -510,6 +511,14 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "campo-giratorio": () => buildCampoGiratorio(),
   "arranque-estrella-triangulo": () => buildEstrellaTriangulo(),
   "monofasico-arranque": () => buildMonofasicoArranque(),
+  "humedad-compresion": () => buildHumedadCompresion(),
+  "compresor-embolo": () => buildCompresorEmbolo(),
+  "red-distribucion-aire": () => buildRedDistribucion(),
+  "cilindros-efecto": () => buildCilindrosEfecto(),
+  "valvula-32-conmutacion": () => buildValvula32(),
+  "estrangulacion-velocidad": () => buildEstrangulacion(),
+  "espacio-fase-secuencia": () => buildEspacioFase(),
+  "mando-doble-efecto": () => buildMandoDoble(),
   /* industrial-end */
 };
 

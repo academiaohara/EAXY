@@ -17,7 +17,7 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo y motores eléctricos.');
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos y automatización neumática.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -77,7 +77,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000050', 'a1000000-0000-4000-8000-000000000016', 'tratamientos-termicos-corrosion', 'Tratamientos térmicos y superficiales. Corrosión', 4),
   ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5),
   ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6),
-  ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7);
+  ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7),
+  ('a2000000-0000-4000-8000-000000000069', 'a1000000-0000-4000-8000-000000000016', 'automatizacion-neumatica', 'Automatización neumática', 8);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -467,4 +468,14 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000006809', 'a2000000-0000-4000-8000-000000000068', '9. Arranque, regulación, inversión y frenado (CC)', 'Reóstato de arranque, regulación de velocidad, cambio de giro y frenado eléctrico.', 9, null),
   ('a3000000-0000-4000-8000-000000006810', 'a2000000-0000-4000-8000-000000000068', '10. Motor trifásico: campo giratorio y deslizamiento', 'Estator y rotor, campo giratorio, velocidad de sincronismo y deslizamiento.', 10, null),
   ('a3000000-0000-4000-8000-000000006811', 'a2000000-0000-4000-8000-000000000068', '11. Conexión, curvas y balance del motor trifásico', 'Estrella y triángulo, placa de características, potencias, rendimiento y característica mecánica.', 11, null),
-  ('a3000000-0000-4000-8000-000000006812', 'a2000000-0000-4000-8000-000000000068', '12. Arranque y regulación (CA) y motores monofásicos', 'Estrella-triángulo y otros arranques, regulación de velocidad, frenado y motores monofásicos.', 12, null);
+  ('a3000000-0000-4000-8000-000000006812', 'a2000000-0000-4000-8000-000000000068', '12. Arranque y regulación (CA) y motores monofásicos', 'Estrella-triángulo y otros arranques, regulación de velocidad, frenado y motores monofásicos.', 12, null),
+  ('a3000000-0000-4000-8000-000000006901', 'a2000000-0000-4000-8000-000000000069', '1. Presión relativa y absoluta', 'Presión manométrica y absoluta, fuerza de una presión y técnica del vacío (ventosas).', 1, null),
+  ('a3000000-0000-4000-8000-000000006902', 'a2000000-0000-4000-8000-000000000069', '2. Caudal y humedad del aire', 'Caudal de un cilindro, aire libre y humedad absoluta, relativa y específica.', 2, null),
+  ('a3000000-0000-4000-8000-000000006903', 'a2000000-0000-4000-8000-000000000069', '3. Producción de aire comprimido: compresores', 'Relación de compresión y compresores de émbolo, de paletas y de tornillo.', 3, null),
+  ('a3000000-0000-4000-8000-000000006904', 'a2000000-0000-4000-8000-000000000069', '4. Red de distribución y tratamiento del aire', 'Tuberías, depósitos, acumuladores, filtros, separadores y purgadores.', 4, null),
+  ('a3000000-0000-4000-8000-000000006905', 'a2000000-0000-4000-8000-000000000069', '5. Simbología y cilindros neumáticos', 'Símbolos normalizados, cilindros de simple y doble efecto y pandeo del vástago.', 5, null),
+  ('a3000000-0000-4000-8000-000000006906', 'a2000000-0000-4000-8000-000000000069', '6. Fuerza y consumo de aire de un cilindro', 'F = S·p con rozamiento y muelle, y consumo en condiciones normales.', 6, null),
+  ('a3000000-0000-4000-8000-000000006907', 'a2000000-0000-4000-8000-000000000069', '7. Válvulas distribuidoras: símbolo y nombre', 'Vías y posiciones, nomenclatura 3/2, 4/2, 5/2 y 4/3, códigos de los conductos.', 7, null),
+  ('a3000000-0000-4000-8000-000000006908', 'a2000000-0000-4000-8000-000000000069', '8. Accionamientos, válvulas de bloqueo y regulación', 'Mandos, antirretorno, selectora (O), simultaneidad (Y), estranguladoras y de presión.', 8, null),
+  ('a3000000-0000-4000-8000-000000006909', 'a2000000-0000-4000-8000-000000000069', '9. Detectores y diseño de circuitos', 'Captadores, diseño, diagrama espacio-fase y numeración de elementos.', 9, null),
+  ('a3000000-0000-4000-8000-000000006910', 'a2000000-0000-4000-8000-000000000069', '10. Mando de cilindros y ejemplos prácticos', 'Mando directo e indirecto, control de velocidad y aplicaciones industriales.', 10, null);
