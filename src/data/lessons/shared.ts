@@ -62,3 +62,6 @@ export const TEMA_4ESO_11_SUBTITLE = "4.º ESO A, Tema 11 — La semejanza. Apli
 export const TEMA_4ESO_12_SUBTITLE = "4.º ESO A, Tema 12 — Geometría analítica";
 export const TEMA_4ESO_13_SUBTITLE = "4.º ESO A, Tema 13 — Estadística";
 export const TEMA_4ESO_14_SUBTITLE = "4.º ESO A, Tema 14 — Cálculo de probabilidades";
+export const TEMA_TI2_11_SUBTITLE = "Tecnología Industrial II, Unidad 11 — Componentes de un sistema de control";
+export const TEMA_TI2_12_SUBTITLE = "Tecnología Industrial II, Unidad 12 — Circuitos combinacionales. Álgebra de Boole";
+export const TEMA_TI2_13_SUBTITLE = "Tecnología Industrial II, Unidad 13 — Circuitos secuenciales. Introducción al control cableado";

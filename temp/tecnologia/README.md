@@ -17,6 +17,9 @@ Carpeta `2-bachillerato-industrial-II/`: capítulos del libro de McGraw-Hill (PD
 | `Unidad 7 - Magnetismo y electricidad. Motores eléctricos.pdf` | Imanes y Oersted, campo e inducción magnética, fuerza de Lorentz, espira y motor, Faraday y Lenz, motores de corriente continua y trifásicos (arranque, regulación, frenado), motores monofásicos | `…/07-magnetismo-motores-electricos/` |
 | `Unidad 8 - Automatización neumática.pdf` | Presión, caudal y humedad, compresores, red y tratamiento del aire, cilindros, fuerza y consumo, válvulas, detectores, diseño de circuitos y mandos | `…/08-automatizacion-neumatica/` |
 | `Unidad 9 - Automatismos oleohidráulicos.pdf` | Propiedades del aceite, viscosidad, Pascal, continuidad y Bernoulli, potencia y pérdida de carga, bombas, válvulas, cilindros, motores y circuitos | `…/09-automatismos-oleohidraulicos/` |
+| `Unidad 11 - Componentes de un sistema de control.pdf` | Captadores, señales analógicas/digitales, sensores de proximidad, transductores y operacional | `…/11-componentes-sistema-control/` |
+| `Unidad 12 - Circuitos combinacionales. Álgebra de Boole.pdf` | Binario, álgebra de Boole, puertas, Karnaugh, multiplexores | `…/12-circuitos-combinacionales-boole/` |
+| `Unidad 13 - Circuitos secuenciales. Introducción al control cableado.pdf` | Biestables, relés, grafos bimodales (extracto del capítulo 13) | `…/13-circuitos-secuenciales-control-cableado/` |
 | `Unidad 10 - Sistemas automáticos.pdf` | Lazo abierto y cerrado, respuesta transitoria, transformada de Laplace, función de transferencia, diagramas de bloques, criterio de Routh y controladores P, PI, PD y PID | `…/10-sistemas-automaticos/` |
 
-Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (10 temas, 101 lecciones).
+Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (13 temas, 124 lecciones).

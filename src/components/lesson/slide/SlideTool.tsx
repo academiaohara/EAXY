@@ -3,6 +3,30 @@
 import { useState } from "react";
 // industrial-imports
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
+import {
+  BinarioByteExplorador,
+  BiestableJkExplorador,
+  BiestableRsExplorador,
+  CableadoElementosExplorador,
+  CaptadorPresionTempExplorador,
+  ConversionDecimalBinarioExplorador,
+  CuantizacionAdExplorador,
+  DeMorganNandExplorador,
+  EncoderRpmExplorador,
+  GalgaDeformacionExplorador,
+  GrafoBimodalExplorador,
+  InductivoSnExplorador,
+  Karnaugh2Explorador,
+  LogicaNivelesExplorador,
+  MuxDecoderExplorador,
+  OperacionalInversorExplorador,
+  OpticaModosExplorador,
+  PuertaLogicaExplorador,
+  PuertaUniversalExplorador,
+  SecuenciaRelesExplorador,
+  SecuencialMemoriaExplorador,
+  SumadorBinarioExplorador,
+} from "@/components/lesson/slide/tools/ElectronicaTools";
 import { PascalPrensaExplorador, ContinuidadBernoulliExplorador, ViscosidadFuerzaExplorador, EnergiaBernoulliExplorador, PotenciaHidraulicaExplorador, PerdidaCargaExplorador, BombaCaudalExplorador, CilindroHidraulicoExplorador, LimitadoraExplorador } from "@/components/lesson/slide/tools/HidraulicaTools";
 import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
 import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
@@ -795,6 +819,50 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RouthExplorador block={block} />;
     case "pid-explorador":
       return <PidExplorador block={block} />;
+    case "cuantizacion-ad-explorador":
+      return <CuantizacionAdExplorador block={block} />;
+    case "inductivo-sn-explorador":
+      return <InductivoSnExplorador block={block} />;
+    case "optica-modos-explorador":
+      return <OpticaModosExplorador block={block} />;
+    case "galga-deformacion-explorador":
+      return <GalgaDeformacionExplorador block={block} />;
+    case "encoder-rpm-explorador":
+      return <EncoderRpmExplorador block={block} />;
+    case "captador-presion-temp-explorador":
+      return <CaptadorPresionTempExplorador block={block} />;
+    case "operacional-inversor-explorador":
+      return <OperacionalInversorExplorador block={block} />;
+    case "binario-byte-explorador":
+      return <BinarioByteExplorador block={block} />;
+    case "conversion-decimal-binario-explorador":
+      return <ConversionDecimalBinarioExplorador block={block} />;
+    case "logica-niveles-explorador":
+      return <LogicaNivelesExplorador block={block} />;
+    case "puerta-logica-explorador":
+      return <PuertaLogicaExplorador block={block} />;
+    case "puerta-universal-explorador":
+      return <PuertaUniversalExplorador block={block} />;
+    case "karnaugh-2-explorador":
+      return <Karnaugh2Explorador block={block} />;
+    case "de-morgan-nand-explorador":
+      return <DeMorganNandExplorador block={block} />;
+    case "mux-decoder-explorador":
+      return <MuxDecoderExplorador block={block} />;
+    case "sumador-binario-explorador":
+      return <SumadorBinarioExplorador block={block} />;
+    case "secuencial-memoria-explorador":
+      return <SecuencialMemoriaExplorador block={block} />;
+    case "biestable-rs-explorador":
+      return <BiestableRsExplorador block={block} />;
+    case "biestable-jk-explorador":
+      return <BiestableJkExplorador block={block} />;
+    case "cableado-elementos-explorador":
+      return <CableadoElementosExplorador block={block} />;
+    case "grafo-bimodal-explorador":
+      return <GrafoBimodalExplorador block={block} />;
+    case "secuencia-reles-explorador":
+      return <SecuenciaRelesExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
