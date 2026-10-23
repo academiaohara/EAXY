@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
 import { buildProcesosCamino, buildMotorFrigorificaFocos, buildCarnotCiclo, buildCarnotFrigorifico, buildRankineCircuito, buildBraytonCircuito, buildMotor4Tiempos, buildOttoDieselPV, buildTurbocompresorFlujo, buildFrigorificoCircuito, buildBombaCalorInversion } from "@/components/lesson/anim/scenes/industrial/termicos";
 import { buildAtomoIsotopos, buildEnlaceCurvaEnergia, buildIonNaCl, buildCovalenteMultiple, buildHibridacionSp3, buildMetalicoNube, buildAguaPuenteH, buildCristalAmorfo } from "@/components/lesson/anim/scenes/industrial/estructura";
 import { buildElasticoPlastico, buildVarillaTraccion, buildDiagramaTraccion, buildBrinellHuella, buildRockwellProfundidad, buildPenduloCharpy, buildFatigaCiclos } from "@/components/lesson/anim/scenes/industrial/ensayos";
@@ -500,6 +501,15 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "turbocompresor-flujo": () => buildTurbocompresorFlujo(),
   "frigorifico-circuito": () => buildFrigorificoCircuito(),
   "bomba-calor-inversion": () => buildBombaCalorInversion(),
+  "oersted-aguja": () => buildOersted(),
+  "hilos-paralelos-fuerza": () => buildHilosParalelos(),
+  "lorentz-carga": () => buildLorentzCarga(),
+  "espira-momento": () => buildEspiraMomento(),
+  "faraday-varilla": () => buildFaradayVarilla(),
+  "motor-cc-bloques": () => buildMotorCcBloques(),
+  "campo-giratorio": () => buildCampoGiratorio(),
+  "arranque-estrella-triangulo": () => buildEstrellaTriangulo(),
+  "monofasico-arranque": () => buildMonofasicoArranque(),
   /* industrial-end */
 };
 

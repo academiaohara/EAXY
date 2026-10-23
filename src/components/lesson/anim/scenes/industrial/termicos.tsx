@@ -7,7 +7,7 @@ import { Axes, DrawPath } from "@/components/lesson/anim/scenes/industrial/commo
 const f1 = (v: number, d = 1) => v.toFixed(d).replace(".", ",");
 const GAMMA = 1.4;
 
-function Arrow({ x1, y1, x2, y2, color, width = 4, head = 12 }: { x1: number; y1: number; x2: number; y2: number; color: string; width?: number; head?: number }) {
+export function Arrow({ x1, y1, x2, y2, color, width = 4, head = 12 }: { x1: number; y1: number; x2: number; y2: number; color: string; width?: number; head?: number }) {
   const a = Math.atan2(y2 - y1, x2 - x1);
   const hx = x2 - Math.cos(a) * head;
   const hy = y2 - Math.sin(a) * head;
@@ -21,7 +21,7 @@ function Arrow({ x1, y1, x2, y2, color, width = 4, head = 12 }: { x1: number; y1
 }
 
 /** Caja con rótulo (elementos de una instalación). */
-function Box({ x, y, w, h, color, label, active = true, size = 19 }: { x: number; y: number; w: number; h: number; color: string; label: ReactNode; active?: boolean; size?: number }) {
+export function Box({ x, y, w, h, color, label, active = true, size = 19 }: { x: number; y: number; w: number; h: number; color: string; label: ReactNode; active?: boolean; size?: number }) {
   return (
     <g className="anim-t" style={{ opacity: active ? 1 : 0.45 }}>
       <rect x={x - w / 2} y={y - h / 2} width={w} height={h} rx={12} fill={MANIM.surface} />

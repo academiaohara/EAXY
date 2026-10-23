@@ -19,7 +19,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 describe("curso Tecnología Industrial II (2.º Bachillerato)", () => {
-  it("tiene los seis temas del libro y 58 lecciones con fichero y registro", () => {
+  it("tiene los siete temas del libro y 70 lecciones con fichero y registro", () => {
     expect(course.modules.map((m) => m.slug)).toEqual([
       "estructura-materiales-ensayos",
       "aleaciones-diagramas-equilibrio",
@@ -27,8 +27,9 @@ describe("curso Tecnología Industrial II (2.º Bachillerato)", () => {
       "tratamientos-termicos-corrosion",
       "principios-generales-maquinas",
       "motores-termicos-circuitos-frigorificos",
+      "magnetismo-motores-electricos",
     ]);
-    expect(lessons).toHaveLength(58);
+    expect(lessons).toHaveLength(70);
     for (const { lesson, data } of lessons) {
       expect(data?.slug, lesson.interactiveSlug).toBe(lesson.interactiveSlug);
     }

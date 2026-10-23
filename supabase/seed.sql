@@ -17,7 +17,7 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos y circuitos frigoríficos.');
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo y motores eléctricos.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -76,7 +76,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000049', 'a1000000-0000-4000-8000-000000000016', 'materiales-no-ferreos-reciclaje', 'Materiales no férreos y ciclo de utilización', 3),
   ('a2000000-0000-4000-8000-000000000050', 'a1000000-0000-4000-8000-000000000016', 'tratamientos-termicos-corrosion', 'Tratamientos térmicos y superficiales. Corrosión', 4),
   ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5),
-  ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6);
+  ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6),
+  ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -454,4 +455,16 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000006708', 'a2000000-0000-4000-8000-000000000067', '8. Sobrealimentación y turbocompresor', 'Más aire en el cilindro: turbocompresor e intercooler.', 8, null),
   ('a3000000-0000-4000-8000-000000006709', 'a2000000-0000-4000-8000-000000000067', '9. Refrigeración: ciclo de Carnot y eficiencia', 'Ciclo de Carnot inverso, eficiencia o COP y cálculo del trabajo de una máquina frigorífica.', 9, null),
   ('a3000000-0000-4000-8000-000000006710', 'a2000000-0000-4000-8000-000000000067', '10. La instalación frigorífica', 'Compresor, condensador, válvula de expansión y evaporador; sistemas de gas y de vapor; refrigerantes.', 10, null),
-  ('a3000000-0000-4000-8000-000000006711', 'a2000000-0000-4000-8000-000000000067', '11. La bomba de calor', 'Eficiencia ε = Q_c/W, ventaja frente a la resistencia y válvula de cuatro vías.', 11, null);
+  ('a3000000-0000-4000-8000-000000006711', 'a2000000-0000-4000-8000-000000000067', '11. La bomba de calor', 'Eficiencia ε = Q_c/W, ventaja frente a la resistencia y válvula de cuatro vías.', 11, null),
+  ('a3000000-0000-4000-8000-000000006801', 'a2000000-0000-4000-8000-000000000068', '1. Imanes y experiencia de Oersted', 'Polos, campo de un imán y la relación entre corriente y magnetismo.', 1, null),
+  ('a3000000-0000-4000-8000-000000006802', 'a2000000-0000-4000-8000-000000000068', '2. Inducción magnética y fuerza entre corrientes', 'Fuerza entre hilos paralelos, campo de un hilo (Biot y Savart) y el tesla.', 2, null),
+  ('a3000000-0000-4000-8000-000000006803', 'a2000000-0000-4000-8000-000000000068', '3. Fuerza sobre una carga y sobre un conductor', 'F = I·l·B·sen θ, ley de Lorentz y trayectorias circulares.', 3, null),
+  ('a3000000-0000-4000-8000-000000006804', 'a2000000-0000-4000-8000-000000000068', '4. Momento sobre una espira: el principio del motor', 'M = N·I·S·B·sen φ, equilibrio y paso de la espira al motor.', 4, null),
+  ('a3000000-0000-4000-8000-000000006805', 'a2000000-0000-4000-8000-000000000068', '5. Fuerza electromotriz inducida: Faraday y Lenz', 'Flujo magnético, ε = −ΔΦ/Δt y sentido de la corriente inducida.', 5, null),
+  ('a3000000-0000-4000-8000-000000006806', 'a2000000-0000-4000-8000-000000000068', '6. Motor de corriente continua: partes y magnitudes', 'Inductor e inducido, par interno, fuerza contraelectromotriz y circuito equivalente.', 6, null),
+  ('a3000000-0000-4000-8000-000000006807', 'a2000000-0000-4000-8000-000000000068', '7. Tipos de motores de corriente continua', 'Excitación independiente, derivación y serie: corrientes en cada circuito.', 7, null),
+  ('a3000000-0000-4000-8000-000000006808', 'a2000000-0000-4000-8000-000000000068', '8. Curvas características y balance de potencias', 'Velocidad y par de los motores derivación y serie; pérdidas y rendimiento.', 8, null),
+  ('a3000000-0000-4000-8000-000000006809', 'a2000000-0000-4000-8000-000000000068', '9. Arranque, regulación, inversión y frenado (CC)', 'Reóstato de arranque, regulación de velocidad, cambio de giro y frenado eléctrico.', 9, null),
+  ('a3000000-0000-4000-8000-000000006810', 'a2000000-0000-4000-8000-000000000068', '10. Motor trifásico: campo giratorio y deslizamiento', 'Estator y rotor, campo giratorio, velocidad de sincronismo y deslizamiento.', 10, null),
+  ('a3000000-0000-4000-8000-000000006811', 'a2000000-0000-4000-8000-000000000068', '11. Conexión, curvas y balance del motor trifásico', 'Estrella y triángulo, placa de características, potencias, rendimiento y característica mecánica.', 11, null),
+  ('a3000000-0000-4000-8000-000000006812', 'a2000000-0000-4000-8000-000000000068', '12. Arranque y regulación (CA) y motores monofásicos', 'Estrella-triángulo y otros arranques, regulación de velocidad, frenado y motores monofásicos.', 12, null);

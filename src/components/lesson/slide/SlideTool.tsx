@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
 import { CarnotExplorador, BraytonExplorador, OttoDieselExplorador, PotenciaMotorExplorador, CilindradaExplorador, FrigorificaExplorador, MotorTiemposExplorador } from "@/components/lesson/slide/tools/TermicosTools";
 import { IsotoposExplorador, CurvaEnlaceExplorador, ElectronegatividadExplorador, CovalenteExplorador, EnlaceFusionGrafica, CeldaExplorador, AlotropiaExplorador } from "@/components/lesson/slide/tools/EstructuraTools";
 import { TensionDeformacionExplorador, DiagramaTraccionExplorador, HookeExplorador, TensionTrabajoExplorador, BrinellExplorador, VickersExplorador, RockwellExplorador, CharpyExplorador, FatigaExplorador } from "@/components/lesson/slide/tools/EnsayosTools";
@@ -723,6 +724,28 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FrigorificaExplorador block={block} />;
     case "motor-tiempos-explorador":
       return <MotorTiemposExplorador block={block} />;
+    case "campo-hilo-explorador":
+      return <CampoHiloExplorador block={block} />;
+    case "lorentz-explorador":
+      return <LorentzExplorador block={block} />;
+    case "espira-par-explorador":
+      return <EspiraParExplorador block={block} />;
+    case "fem-induccion-explorador":
+      return <FemInduccionExplorador block={block} />;
+    case "motor-cc-explorador":
+      return <MotorCcExplorador block={block} />;
+    case "curvas-cc-explorador":
+      return <CurvasCcExplorador block={block} />;
+    case "balance-cc-explorador":
+      return <BalanceCcExplorador block={block} />;
+    case "arranque-cc-explorador":
+      return <ArranqueCcExplorador block={block} />;
+    case "velocidad-trifasico-explorador":
+      return <VelocidadTrifasicoExplorador block={block} />;
+    case "trifasico-conexion-explorador":
+      return <TrifasicoConexionExplorador block={block} />;
+    case "curva-par-asincrono-explorador":
+      return <CurvaParAsincronoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

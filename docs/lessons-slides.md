@@ -330,6 +330,15 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `turbocompresor-flujo` | Gases de escape → turbina → compresor → intercooler → motor | — |
 | `frigorifico-circuito` | Compresor, condensador, válvula de expansión y evaporador, y COP = Q_f/W | — |
 | `bomba-calor-inversion` | Bomba de calor en invierno y en verano (válvula de cuatro vías) y ε > 1 | — |
+| `oersted-aguja` | Aguja imantada junto a un hilo: sin corriente paralela, con corriente perpendicular, sentido invertido y campo en círculos (Tecnología Industrial II, unidad 7) | — |
+| `hilos-paralelos-fuerza` | Dos hilos paralelos: atracción (mismo sentido), repulsión, doble intensidad y doble distancia; F/l = μ₀·I₁·I₂/(2π·a) | — |
+| `lorentz-carga` | Carga + y − en un campo B entrante: F = q·v·B, trayectoria circular de radio m·v/(q·B) | — |
+| `espira-momento` | Espira de perfil en un campo: par de fuerzas, M = I·S·B·sen φ, equilibrio y necesidad del colector | — |
+| `faraday-varilla` | Barra móvil sobre un conductor en U: separación de cargas, corriente, fuerza de frenado y ε = B·l·v = ΔΦ/Δt | — |
+| `motor-cc-bloques` | Motor de CC del arranque (125 A) al equilibrio (10 A) con E' creciente | — |
+| `campo-giratorio` | Estator trifásico con tres corrientes a 120°: campo de módulo constante que gira 60° por instante | — |
+| `arranque-estrella-triangulo` | Corriente y par de arranque en estrella y en triángulo (relación 3) | — |
+| `monofasico-arranque` | Campo alternativo = dos campos giratorios opuestos; devanado auxiliar y condensador con diagrama vectorial | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -527,6 +536,17 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `cilindrada-explorador` | Diámetro, carrera, relación de compresión y cilindros: cilindrada, cámara de combustión y η Otto | `a` (mm), `b` (mm), `c` (r) |
 | `frigorifica-explorador` | Eficiencia de Carnot y real de una máquina frigorífica: W, Q_c y ε de la bomba de calor | `a` (T_f, °C), `b` (T_c, °C) |
 | `motor-tiempos-explorador` | Cigüeñal de 0° a 720°: pistón, válvulas, tiempo activo y cuándo hay trabajo | `a` (ángulo) |
+| `campo-hilo-explorador` | Campo de un hilo B = μ₀I/(2πa) y fuerza entre dos hilos paralelos (atracción o repulsión) | `a` (I₁, A), `b` (I₂, A), `c` (a, mm) |
+| `lorentz-explorador` | Protón, electrón o partícula α en un campo B: fuerza, radio y periodo | `a` (v, 10⁶ m/s), `b` (B, T) |
+| `espira-par-explorador` | M = N·I·S·B·sen φ con N, I, S, B y φ, y curva del momento | `a` (N), `b` (I), `c` (φ) |
+| `fem-induccion-explorador` | fem de una barra móvil (B·l·v) o de una bobina con flujo variable (N·ΔΦ/Δt) | `a` (B, T), `b` (v, m/s) |
+| `motor-cc-explorador` | Motor independiente, derivación o serie: Iᵢ, I_ex, I y corriente de arranque | `a` (U), `b` (E') |
+| `curvas-cc-explorador` | Curvas n(Iᵢ) y M(n) de un motor derivación (ejemplo del libro) y de uno serie | `a` (Iᵢ) |
+| `balance-cc-explorador` | Balance de potencias de un motor derivación: pérdidas en cobre, hierro y mecánicas, P_u y rendimiento | `a` (U), `b` (I) |
+| `arranque-cc-explorador` | Intensidad nominal, de arranque directo y resistencia del reóstato de arranque | `a` (U), `b` (E') |
+| `velocidad-trifasico-explorador` | n₁ = 60·f/p, deslizamiento y velocidad del rotor | `a` (pares de polos), `b` (S, %) |
+| `trifasico-conexion-explorador` | Placa 230/400 o 400/690 V y red: estrella o triángulo, U_f e I_f | `a` (I_L, A) |
+| `curva-par-asincrono-explorador` | Característica mecánica de un asíncrono con la carga y la tensión: punto de funcionamiento, calado y arranque | `a` (carga, %), `b` (U, %) |
 
 ## Respuesta como fracción
 

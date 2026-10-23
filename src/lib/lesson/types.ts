@@ -862,6 +862,15 @@ export type SlideAnimId =
   | "turbocompresor-flujo"
   | "frigorifico-circuito"
   | "bomba-calor-inversion"
+  | "oersted-aguja"
+  | "hilos-paralelos-fuerza"
+  | "lorentz-carga"
+  | "espira-momento"
+  | "faraday-varilla"
+  | "motor-cc-bloques"
+  | "campo-giratorio"
+  | "arranque-estrella-triangulo"
+  | "monofasico-arranque"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1173,6 +1182,17 @@ export type SlideToolId =
   | "cilindrada-explorador"
   | "frigorifica-explorador"
   | "motor-tiempos-explorador"
+  | "campo-hilo-explorador"
+  | "lorentz-explorador"
+  | "espira-par-explorador"
+  | "fem-induccion-explorador"
+  | "motor-cc-explorador"
+  | "curvas-cc-explorador"
+  | "balance-cc-explorador"
+  | "arranque-cc-explorador"
+  | "velocidad-trifasico-explorador"
+  | "trifasico-conexion-explorador"
+  | "curva-par-asincrono-explorador"
   /* industrial-tool-end */;
 
 /**

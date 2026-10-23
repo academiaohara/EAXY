@@ -3421,7 +3421,7 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos y circuitos frigoríficos.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo y motores eléctricos.",
       orderIndex: 16,
       modules: [
         {
@@ -4048,6 +4048,134 @@ export const curriculum: Curriculum = {
               orderIndex: 11,
               kind: "interactive",
               interactiveSlug: "bomba-calor",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(68),
+          slug: "magnetismo-motores-electricos",
+          title: "Magnetismo y electricidad. Motores eléctricos",
+          orderIndex: 7,
+          lessons: [
+            {
+              id: lessonId(6801),
+              title: "1. Imanes y experiencia de Oersted",
+              summary:
+                "Polos, campo de un imán y la relación entre corriente y magnetismo.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "magnetismo-imanes-oersted",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6802),
+              title: "2. Inducción magnética y fuerza entre corrientes",
+              summary:
+                "Fuerza entre hilos paralelos, campo de un hilo (Biot y Savart) y el tesla.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "campo-induccion-biot-savart",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6803),
+              title: "3. Fuerza sobre una carga y sobre un conductor",
+              summary:
+                "F = I·l·B·sen θ, ley de Lorentz y trayectorias circulares.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "fuerza-lorentz-conductor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6804),
+              title: "4. Momento sobre una espira: el principio del motor",
+              summary:
+                "M = N·I·S·B·sen φ, equilibrio y paso de la espira al motor.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "espira-momento-motor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6805),
+              title: "5. Fuerza electromotriz inducida: Faraday y Lenz",
+              summary:
+                "Flujo magnético, ε = −ΔΦ/Δt y sentido de la corriente inducida.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "induccion-faraday-lenz",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6806),
+              title: "6. Motor de corriente continua: partes y magnitudes",
+              summary:
+                "Inductor e inducido, par interno, fuerza contraelectromotriz y circuito equivalente.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-constitucion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6807),
+              title: "7. Tipos de motores de corriente continua",
+              summary:
+                "Excitación independiente, derivación y serie: corrientes en cada circuito.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-tipos-conexion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6808),
+              title: "8. Curvas características y balance de potencias",
+              summary:
+                "Velocidad y par de los motores derivación y serie; pérdidas y rendimiento.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-curvas-balance",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6809),
+              title: "9. Arranque, regulación, inversión y frenado (CC)",
+              summary:
+                "Reóstato de arranque, regulación de velocidad, cambio de giro y frenado eléctrico.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-arranque-regulacion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6810),
+              title: "10. Motor trifásico: campo giratorio y deslizamiento",
+              summary:
+                "Estator y rotor, campo giratorio, velocidad de sincronismo y deslizamiento.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-campo-giratorio",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6811),
+              title: "11. Conexión, curvas y balance del motor trifásico",
+              summary:
+                "Estrella y triángulo, placa de características, potencias, rendimiento y característica mecánica.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-conexion-balance",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6812),
+              title: "12. Arranque y regulación (CA) y motores monofásicos",
+              summary:
+                "Estrella-triángulo y otros arranques, regulación de velocidad, frenado y motores monofásicos.",
+              orderIndex: 12,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-arranque-monofasico",
               conceptSlugs: [],
             },
           ],
