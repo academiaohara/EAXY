@@ -1,0 +1,105 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const diagramasBloquesLesson: InteractiveLesson = {
+  slug: "diagramas-bloques",
+  title: "7. Diagramas de bloques y su álgebra",
+  subtitle: TEMA_TI2_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "bloque",
+      type: "slide",
+      help: [{ label: "¿Por qué de la causa al efecto?", message: "Un bloque $G(s)$ multiplica la entrada por su FDT. Si lo dibujas al revés, el bloque sería $m\\,s$ (derivador) en lugar de $1/(m\\,s)$ (integrador): el modelo físico sería erróneo." }],
+      title: "Un bloque, una función de transferencia",
+      blocks: [
+        { kind: "text", text: "Cada componente se representa con un **bloque** caracterizado por su FDT, y los bloques se unen con **flechas** que indican el sentido del flujo de señal. Así la FDT del conjunto se deduce a partir de FDT parciales, más sencillas." },
+        { kind: "formula", tex: "C(s) = G(s)\\,R(s)" },
+        { kind: "example", title: "Segunda ley de Newton como bloque", lines: [
+          { math: "F = m\\,\\dfrac{dv}{dt}\\ \\Rightarrow\\ F(s) = m\\,s\\,v(s)" },
+          { math: "\\dfrac{v(s)}{F(s)} = \\dfrac{1}{m\\,s}", note: "causa: fuerza → efecto: velocidad" },
+        ] },
+        { kind: "warning", text: "Los diagramas se dibujan en el **orden correcto**: de la entrada (causa) a la salida (efecto). El bloque $m\\,s$ de fuerza a velocidad no respeta la relación causa-efecto." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "comparador",
+      type: "slide",
+      help: [{ label: "¿Cómo es físicamente?", message: "Un amplificador diferencial, un potenciómetro… cualquier cosa que sume o reste señales." }],
+      title: "Comparadores y líneas de actuación",
+      blocks: [
+        { kind: "text", text: "El **comparador o detector de error** (símbolo ⊗) suma o resta señales según el signo que lleve cada entrada. Además hay otras combinaciones de líneas de actuación:" },
+        { kind: "steps", items: [
+          "**Ramificación**: una línea se divide en dos con la misma señal.",
+          "**Suma / resta** de dos variables.",
+          "**Multiplicación / división** de dos variables.",
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "algebra",
+      type: "slide",
+      help: [{ label: "Dedúcelo", message: "Anillo: $V = G\\,(U-V)\\Rightarrow V(1+G)=G\\,U$. Con $H$: $X = H\\,V$, $V = G\\,(U - H\\,V)$." }],
+      title: "Combinaciones básicas",
+      blocks: [
+        { kind: "relations", items: [
+          { left: "Serie", relation: "→", right: "$G = G_1\\,G_2$" },
+          { left: "Paralelo (suma)", relation: "→", right: "$G = G_1 + G_2$" },
+          { left: "Anillo, realimentación directa", relation: "→", right: "$\\dfrac{V}{U} = \\dfrac{G}{1+G}$" },
+          { left: "Anillo, realimentación con $H$", relation: "→", right: "$\\dfrac{V}{U} = \\dfrac{G}{1+G\\,H}$" },
+        ] },
+        { kind: "text", text: "En serie el **orden de los factores no altera** el producto: se pueden intercambiar los bloques." },
+      ],
+      visual: { kind: "anim", scene: "reduccion-bloques", beatMs: 5600 },
+    },
+    {
+      id: "explora-bloques",
+      type: "slide",
+      help: [{ label: "Prueba un caso límite", message: "Con $G_1$ muy grande y $H=1$, $G/(1+G)\\to 1$: la salida sigue a la entrada." }],
+      title: "Combina bloques",
+      blocks: [{ kind: "text", text: "Elige el tipo de conexión y los valores de los bloques; la herramienta calcula la función de transferencia equivalente." }],
+      visual: { kind: "tool", tool: "bloques-explorador", params: { a: 2, b: 3, c: 0.5 } },
+    },
+    {
+      id: "check-serie",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "En serie las funciones se multiplican." }],
+      title: "Dos bloques en serie",
+      question: "Dos bloques en serie tienen $G_1 = 4$ y $G_2 = 2{,}5$. ¿Cuánto vale la ganancia total?",
+      correctAnswers: ["10"],
+      explanation: "$G = G_1 G_2 = 4\\cdot 2{,}5 = 10$.",
+    },
+    {
+      id: "check-anillo",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "$\\dfrac{G}{1+G\\,H}$." }],
+      title: "Anillo con realimentación",
+      question: "Un lazo cerrado tiene $G = 4$ y $H = 0{,}5$ (realimentación negativa). ¿Cuánto vale $V/U$? (dos decimales)",
+      correctAnswers: ["1.33", "1,33", "1.3333", "4/3"],
+      explanation: "$\\dfrac{V}{U} = \\dfrac{4}{1+4\\cdot 0{,}5} = \\dfrac{4}{3} = 1{,}33$.",
+    },
+    {
+      id: "check-paralelo",
+      type: "predict",
+      help: [{ label: "Pista", message: "Los dos reciben la misma entrada y un sumador junta las salidas." }],
+      title: "Paralelo",
+      question: "Dos bloques $G_1$ y $G_2$ conectados en paralelo con un sumador a la salida equivalen a un único bloque de función:",
+      mode: "choice",
+      choices: [
+        { id: "suma", label: "$G_1 + G_2$" },
+        { id: "prod", label: "$G_1\\,G_2$", incorrectFeedback: "Eso es la conexión en serie." },
+        { id: "div", label: "$\\dfrac{G_1}{1+G_2}$", incorrectFeedback: "Eso mezcla realimentación." },
+        { id: "dif", label: "$G_1 - G_2$", incorrectFeedback: "Solo si el sumador resta una de las ramas." },
+      ],
+      correctChoiceId: "suma",
+      shuffleChoices: true,
+      explanation: "$V = G_1 U + G_2 U = (G_1+G_2)U$.",
+    },
+  ],
+};

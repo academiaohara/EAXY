@@ -46,6 +46,7 @@ export const TEMA_TI2_6_SUBTITLE = "Tecnología Industrial II, Unidad 6 — Moto
 export const TEMA_TI2_7_SUBTITLE = "Tecnología Industrial II, Unidad 7 — Magnetismo y electricidad. Motores eléctricos";
 export const TEMA_TI2_8_SUBTITLE = "Tecnología Industrial II, Unidad 8 — Automatización neumática";
 export const TEMA_TI2_9_SUBTITLE = "Tecnología Industrial II, Unidad 9 — Automatismos oleohidráulicos";
+export const TEMA_TI2_10_SUBTITLE = "Tecnología Industrial II, Unidad 10 — Sistemas automáticos";
 export const TEMA_TI2_5_SUBTITLE = "Tecnología Industrial II, Unidad 5 — Principios generales de las máquinas";
 export const TEMA_4ESO_1_SUBTITLE = "4.º ESO A, Tema 1 — Números enteros y racionales";
 export const TEMA_4ESO_2_SUBTITLE = "4.º ESO A, Tema 2 — Números decimales";

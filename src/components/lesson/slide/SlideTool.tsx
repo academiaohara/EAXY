@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
 import { PascalPrensaExplorador, ContinuidadBernoulliExplorador, ViscosidadFuerzaExplorador, EnergiaBernoulliExplorador, PotenciaHidraulicaExplorador, PerdidaCargaExplorador, BombaCaudalExplorador, CilindroHidraulicoExplorador, LimitadoraExplorador } from "@/components/lesson/slide/tools/HidraulicaTools";
 import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
 import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
@@ -784,6 +785,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CilindroHidraulicoExplorador block={block} />;
     case "limitadora-explorador":
       return <LimitadoraExplorador block={block} />;
+    case "lazo-perturbacion-explorador":
+      return <LazoPerturbacionExplorador block={block} />;
+    case "segundo-orden-explorador":
+      return <SegundoOrdenExplorador block={block} />;
+    case "bloques-explorador":
+      return <BloquesExplorador block={block} />;
+    case "routh-explorador":
+      return <RouthExplorador block={block} />;
+    case "pid-explorador":
+      return <PidExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -3421,7 +3421,7 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática y oleohidráulica.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.",
       orderIndex: 16,
       modules: [
         {
@@ -4392,6 +4392,124 @@ export const curriculum: Curriculum = {
               orderIndex: 10,
               kind: "interactive",
               interactiveSlug: "circuitos-aplicaciones",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(71),
+          slug: "sistemas-automaticos",
+          title: "Sistemas automáticos",
+          orderIndex: 10,
+          lessons: [
+            {
+              id: lessonId(7101),
+              title: "1. La automática: definiciones",
+              summary:
+                "Control automático, sectores, señal, planta y proceso.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "automatica-definiciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7102),
+              title: "2. Elementos de un sistema de control",
+              summary:
+                "Mando, captador, comparador, amplificador, actuador y perturbaciones.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "elementos-sistema-control",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7103),
+              title: "3. Control en lazo abierto y en lazo cerrado",
+              summary:
+                "Control en lazo abierto y cerrado, realimentación y señales normalizadas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "lazo-abierto-cerrado",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7104),
+              title: "4. Criterios de diseño y respuesta transitoria",
+              summary:
+                "Estabilidad, señal escalón, sobreoscilación y tiempos de la respuesta.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "criterios-diseno-respuesta",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7105),
+              title: "5. La transformada de Laplace",
+              summary:
+                "Transformada de Laplace, tabla de funciones y propiedades.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "transformada-laplace",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7106),
+              title: "6. Función de transferencia, polos y estabilidad",
+              summary:
+                "Función de transferencia, ecuación característica, polos y estabilidad.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "funcion-transferencia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7107),
+              title: "7. Diagramas de bloques y su álgebra",
+              summary:
+                "Bloques, comparadores y combinación en serie, paralelo y anillo.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "diagramas-bloques",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7108),
+              title: "8. Simplificar un diagrama de bloques",
+              summary:
+                "Transposición de sumadores y bifurcaciones y reducción de diagramas.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "simplificar-diagramas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7109),
+              title: "9. Estabilidad: el criterio de Routh",
+              summary:
+                "Criterio de Routh, casos especiales y rango de K estable.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "estabilidad-routh",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7110),
+              title: "10. El controlador y la acción proporcional",
+              summary:
+                "El controlador, banda proporcional, ganancia y offset.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "controlador-proporcional",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7111),
+              title: "11. Acciones integral, derivativa y PID",
+              summary:
+                "Acciones integral y derivativa, controlador PID y su ajuste.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "integral-derivativa-pid",
               conceptSlugs: [],
             },
           ],

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
 import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
 import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
@@ -528,6 +529,12 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "limitadora-descarga": () => buildLimitadoraDescarga(),
   "valvula-43-cilindro": () => buildValvula43Cilindro(),
   "regulacion-caudal-hid": () => buildRegulacionCaudalHid(),
+  "lazo-abierto-cerrado": () => buildLazoAbiertoCerrado(),
+  "respuesta-escalon": () => buildRespuestaEscalon(),
+  "polos-plano-s": () => buildPolosPlanoS(),
+  "reduccion-bloques": () => buildReduccionBloques(),
+  "offset-proporcional": () => buildOffsetProporcional(),
+  "laplace-dominios": () => buildLaplaceDominios(),
   /* industrial-end */
 };
 

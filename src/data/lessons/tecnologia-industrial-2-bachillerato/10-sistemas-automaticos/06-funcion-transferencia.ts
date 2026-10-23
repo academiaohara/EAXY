@@ -1,0 +1,123 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const funcionTransferenciaLesson: InteractiveLesson = {
+  slug: "funcion-transferencia",
+  title: "6. Función de transferencia, polos y estabilidad",
+  subtitle: TEMA_TI2_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "¿Cuándo es válida?", message: "Para sistemas lineales de una entrada y una salida, con condiciones iniciales nulas." }],
+      title: "La función de transferencia (FDT)",
+      blocks: [
+        { kind: "definition", text: "La **función de transferencia** $G(s)$ de un sistema es el cociente entre la transformada de Laplace de la **señal de salida** $C(s)$ y la de la **señal de entrada** $R(s)$." },
+        { kind: "formula", tex: "G(s) = \\dfrac{\\mathcal{L}[c(t)]}{\\mathcal{L}[r(t)]} = \\dfrac{C(s)}{R(s)} = \\dfrac{b_0 s^m + \\dots + b_m}{a_0 s^n + \\dots + a_n}\\quad (n>m)" },
+        { kind: "text", text: "Sistemas de naturaleza distinta (mecánicos, eléctricos, biológicos…) pueden tener la **misma FDT**. Conocida, se puede obtener la respuesta a cualquier entrada: $C(s) = G(s)\\,R(s)$, y se vuelve al tiempo con la transformada inversa." },
+        { kind: "definition", text: "El denominador es la **ecuación característica**: $a_0 s^n + a_1 s^{n-1} + \\dots + a_n = 0$. Contiene todas las características físicas del sistema." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "ej-bobina",
+      type: "slide",
+      help: [{ label: "Paso clave", message: "$u_L = L\\,\\dfrac{dI}{dt}$ y derivar es multiplicar por $s$." }],
+      title: "Ejemplo 1: la bobina",
+      blocks: [
+        { kind: "example", title: "Tensión en una bobina con intensidad variable", lines: [
+          { math: "U_L = L\\,\\dfrac{dI}{dt}\\ \\Rightarrow\\ U_L = L\\,s\\,I" },
+          { math: "G(s) = \\dfrac{U_L}{I} = L\\,s", note: "la bobina «deriva»" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "ej-rc",
+      type: "slide",
+      help: [{ label: "¿Qué es τ?", message: "La constante de tiempo $\\tau = RC$. En $t=\\tau$ el condensador alcanza el 63 % de su valor final." }],
+      title: "Ejemplo 2: el circuito RC",
+      blocks: [
+        { kind: "example", title: "Tensión de salida en el condensador", lines: [
+          { math: "U_e = R\\,I + \\dfrac{1}{C\\,s}I\\qquad U_s = \\dfrac{1}{C\\,s}I" },
+          { math: "G(s) = \\dfrac{U_s}{U_e} = \\dfrac{\\dfrac{1}{Cs}}{R + \\dfrac{1}{Cs}} = \\dfrac{1}{RC\\,s + 1}" },
+          { math: "\\tau = RC\\ \\Rightarrow\\ G(s) = \\dfrac{1}{\\tau\\,s + 1}" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-rc",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "$\\tau = R\\,C$ (en segundos si $R$ en Ω y $C$ en F)." }],
+      title: "Constante de tiempo",
+      question: "Un circuito RC tiene $R = 10\\ \\text{k}\\Omega$ y $C = 100\\ \\mu\\text{F}$. ¿Cuánto vale $\\tau$, en segundos?",
+      correctAnswers: ["1"],
+      explanation: "$\\tau = 10^4\\cdot 10^{-4} = 1$ s. La FDT es $G(s)=1/(s+1)$.",
+    },
+    {
+      id: "polos",
+      type: "slide",
+      help: [{ label: "¿Polos o raíces?", message: "Las raíces de la ecuación característica son los polos de la FDT (donde $G(s)\\to\\infty$)." }],
+      title: "Polos y estabilidad",
+      blocks: [
+        { kind: "rule", title: "Criterio de estabilidad", text: "Un sistema lineal es **estable** si su respuesta a una entrada tiene un valor finito cuando $t\\to\\infty$. Para ello los **polos** (raíces de la ecuación característica) deben estar en el **semiplano izquierdo** del plano complejo: parte real **negativa**." },
+        { kind: "warning", text: "Si los polos tienen parte real **nula** (sobre el eje imaginario) el sistema está en el **límite de estabilidad**, que también se considera inestable." },
+      ],
+      visual: { kind: "anim", scene: "polos-plano-s", beatMs: 5600 },
+    },
+    {
+      id: "check-polos",
+      type: "predict",
+      help: [{ label: "Pista", message: "Mira la parte real de cada raíz." }],
+      title: "¿Qué sistema es estable?",
+      question: "Un sistema regulador es estable cuando las raíces de su ecuación característica:",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Están en el semiplano de parte real negativa" },
+        { id: "nulas", label: "Son nulas", incorrectFeedback: "Una raíz nula está sobre el eje imaginario: límite de estabilidad." },
+        { id: "cuarto", label: "Están en el cuarto cuadrante", incorrectFeedback: "El cuarto cuadrante tiene parte real positiva." },
+        { id: "pos", label: "Están en el semiplano de parte real positiva", incorrectFeedback: "Ahí la respuesta crece: inestable." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "$\\mathrm{Re}(s_i)<0$ para todas las raíces.",
+    },
+    {
+      id: "check-denominador",
+      type: "predict",
+      help: [{ label: "Pista", message: "Es un polinomio en $s$." }],
+      title: "El denominador de la FDT",
+      question: "Al denominador de la función de transferencia se le denomina:",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Ecuación característica" },
+        { id: "laplace", label: "Ecuación de Laplace", incorrectFeedback: "La de Laplace es otra ecuación distinta." },
+        { id: "dif", label: "Ecuación diferencial", incorrectFeedback: "La FDT precisamente la convierte en algebraica." },
+        { id: "pol", label: "Polinomio a secas", incorrectFeedback: "Lo es, pero su nombre técnico es otro." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Igualado a cero, da los polos del sistema.",
+    },
+    {
+      id: "check-cociente",
+      type: "predict",
+      help: [{ label: "Pista", message: "Salida entre entrada, ambas transformadas." }],
+      title: "Definición",
+      question: "La función de transferencia de un elemento es:",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "El cociente entre la transformada de la señal de salida y la de la señal de entrada" },
+        { id: "inv", label: "El cociente entre la transformada de la señal de entrada y la de la salida", incorrectFeedback: "Está al revés: es salida / entrada." },
+        { id: "prod", label: "El producto de la salida por la transformada de la entrada", incorrectFeedback: "Es un cociente, no un producto." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "$G(s) = C(s)/R(s)$.",
+    },
+  ],
+};

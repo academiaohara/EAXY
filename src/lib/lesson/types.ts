@@ -887,6 +887,12 @@ export type SlideAnimId =
   | "limitadora-descarga"
   | "valvula-43-cilindro"
   | "regulacion-caudal-hid"
+  | "lazo-abierto-cerrado"
+  | "respuesta-escalon"
+  | "polos-plano-s"
+  | "reduccion-bloques"
+  | "offset-proporcional"
+  | "laplace-dominios"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1227,6 +1233,11 @@ export type SlideToolId =
   | "bomba-caudal-explorador"
   | "cilindro-hidraulico-explorador"
   | "limitadora-explorador"
+  | "lazo-perturbacion-explorador"
+  | "segundo-orden-explorador"
+  | "bloques-explorador"
+  | "routh-explorador"
+  | "pid-explorador"
   /* industrial-tool-end */;
 
 /**

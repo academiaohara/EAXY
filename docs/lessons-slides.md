@@ -355,6 +355,12 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `limitadora-descarga` | Válvula limitadora que descarga al superar la presión de tarado y centro abierto en la 4/3 | — |
 | `valvula-43-cilindro` | Cilindro de doble efecto con válvula 4/3: centro, avance, retroceso y parada | — |
 | `regulacion-caudal-hid` | Orificio fijo, variable y con compensación de presión (Δp = F_m/S constante) | — |
+| `lazo-abierto-cerrado` | Lazo abierto sin corrección frente a lazo cerrado con captador, comparador y realimentación | — |
+| `respuesta-escalon` | Respuesta a un escalón: K, sobreoscilación M_P, t_p, t_d, t_r y banda de establecimiento t_s | — |
+| `polos-plano-s` | Polos en el plano de Laplace: semiplano izquierdo (se apaga), eje imaginario (se mantiene) y derecho (crece) | — |
+| `reduccion-bloques` | Serie (G₁G₂), paralelo (G₁+G₂) y anillo (G/(1+G), G/(1+GH)) como bloque equivalente | — |
+| `laplace-dominios` | Ecuación diferencial en t → transformada de Laplace → álgebra en s → transformada inversa | — |
+| `offset-proporcional` | Depósito con control P: offset tras un aumento de consumo y su eliminación con acción integral | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -581,6 +587,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `bomba-caudal-explorador` | Caudal teórico y real de bombas de engranajes, paletas, pistones radiales y tornillo | `a` (0 a 3: tipo) |
 | `cilindro-hidraulico-explorador` | Fuerza y velocidad de avance y retroceso de un cilindro de doble efecto con D, d, p y Q | `a` (D, mm), `b` (d, mm), `c` (p, bar) |
 | `limitadora-explorador` | Presión de tarado frente a la que exige la carga: abre y descarga o no | `a` (tarado, bar), `b` (carga, bar) |
+| `lazo-perturbacion-explorador` | Salida en lazo abierto y cerrado ante una perturbación; error = (r − d)/(1 + Kp·G) | `a` (r, %), `b` (d, %), `c` (Kp) |
+| `segundo-orden-explorador` | Sistema de 2.º orden: M_P, t_p, t_r y t_s al variar ζ y ωn, con curva de respuesta | `a` (ζ), `b` (ωn, rad/s) |
+| `bloques-explorador` | Serie, paralelo y anillo (directo o con H): FDT equivalente | `a` (G₁), `b` (G₂), `c` (H) |
+| `routh-explorador` | Tabla de Routh de s⁴ + a₁s³ + a₂s² + a₃s + a₄ con cambios de signo y veredicto | `a`, `b`, `c` (a₁–a₃), `n` (a₄) |
+| `pid-explorador` | Regulador P, PI, PD o PID sobre un proceso de dos retardos: error, sobreoscilación y establecimiento | `a` (Kp), `b` (ti, s), `c` (td, s) |
 
 ## Respuesta como fracción
 

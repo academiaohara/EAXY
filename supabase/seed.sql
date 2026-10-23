@@ -79,7 +79,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6),
   ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7),
   ('a2000000-0000-4000-8000-000000000069', 'a1000000-0000-4000-8000-000000000016', 'automatizacion-neumatica', 'Automatización neumática', 8),
-  ('a2000000-0000-4000-8000-000000000070', 'a1000000-0000-4000-8000-000000000016', 'automatismos-oleohidraulicos', 'Automatismos oleohidráulicos', 9);
+  ('a2000000-0000-4000-8000-000000000070', 'a1000000-0000-4000-8000-000000000016', 'automatismos-oleohidraulicos', 'Automatismos oleohidráulicos', 9),
+  ('a2000000-0000-4000-8000-000000000071', 'a1000000-0000-4000-8000-000000000016', 'sistemas-automaticos', 'Sistemas automáticos', 10);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -489,4 +490,15 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000007007', 'a2000000-0000-4000-8000-000000000070', '7. Instalaciones hidráulicas y bombas', 'Ventajas, estructura de la instalación y caudal de bombas de engranajes, paletas, pistones y tornillo.', 7, null),
   ('a3000000-0000-4000-8000-000000007008', 'a2000000-0000-4000-8000-000000000070', '8. La unidad hidráulica y las válvulas', 'Depósito, filtro, limitadora, distribuidoras, válvulas de caudal y de presión.', 8, null),
   ('a3000000-0000-4000-8000-000000007009', 'a2000000-0000-4000-8000-000000000070', '9. Cilindros, motores hidráulicos y simbología', 'Cilindros, fuerza y velocidad, motores hidráulicos y símbolos normalizados.', 9, null),
-  ('a3000000-0000-4000-8000-000000007010', 'a2000000-0000-4000-8000-000000000070', '10. Circuitos oleohidráulicos de aplicación', 'Cilindros de simple y doble efecto, válvula 4/3, regulación de velocidad y de presión.', 10, null);
+  ('a3000000-0000-4000-8000-000000007010', 'a2000000-0000-4000-8000-000000000070', '10. Circuitos oleohidráulicos de aplicación', 'Cilindros de simple y doble efecto, válvula 4/3, regulación de velocidad y de presión.', 10, null),
+  ('a3000000-0000-4000-8000-000000007101', 'a2000000-0000-4000-8000-000000000071', '1. La automática: definiciones', 'Control automático, sectores, señal, planta y proceso.', 1, null),
+  ('a3000000-0000-4000-8000-000000007102', 'a2000000-0000-4000-8000-000000000071', '2. Elementos de un sistema de control', 'Mando, captador, comparador, amplificador, actuador y perturbaciones.', 2, null),
+  ('a3000000-0000-4000-8000-000000007103', 'a2000000-0000-4000-8000-000000000071', '3. Control en lazo abierto y en lazo cerrado', 'Control en lazo abierto y cerrado, realimentación y señales normalizadas.', 3, null),
+  ('a3000000-0000-4000-8000-000000007104', 'a2000000-0000-4000-8000-000000000071', '4. Criterios de diseño y respuesta transitoria', 'Estabilidad, señal escalón, sobreoscilación y tiempos de la respuesta.', 4, null),
+  ('a3000000-0000-4000-8000-000000007105', 'a2000000-0000-4000-8000-000000000071', '5. La transformada de Laplace', 'Transformada de Laplace, tabla de funciones y propiedades.', 5, null),
+  ('a3000000-0000-4000-8000-000000007106', 'a2000000-0000-4000-8000-000000000071', '6. Función de transferencia, polos y estabilidad', 'Función de transferencia, ecuación característica, polos y estabilidad.', 6, null),
+  ('a3000000-0000-4000-8000-000000007107', 'a2000000-0000-4000-8000-000000000071', '7. Diagramas de bloques y su álgebra', 'Bloques, comparadores y combinación en serie, paralelo y anillo.', 7, null),
+  ('a3000000-0000-4000-8000-000000007108', 'a2000000-0000-4000-8000-000000000071', '8. Simplificar un diagrama de bloques', 'Transposición de sumadores y bifurcaciones y reducción de diagramas.', 8, null),
+  ('a3000000-0000-4000-8000-000000007109', 'a2000000-0000-4000-8000-000000000071', '9. Estabilidad: el criterio de Routh', 'Criterio de Routh, casos especiales y rango de K estable.', 9, null),
+  ('a3000000-0000-4000-8000-000000007110', 'a2000000-0000-4000-8000-000000000071', '10. El controlador y la acción proporcional', 'El controlador, banda proporcional, ganancia y offset.', 10, null),
+  ('a3000000-0000-4000-8000-000000007111', 'a2000000-0000-4000-8000-000000000071', '11. Acciones integral, derivativa y PID', 'Acciones integral y derivativa, controlador PID y su ajuste.', 11, null);

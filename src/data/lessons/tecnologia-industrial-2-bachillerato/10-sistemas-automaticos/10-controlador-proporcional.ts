@@ -1,0 +1,93 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const controladorProporcionalLesson: InteractiveLesson = {
+  slug: "controlador-proporcional",
+  title: "10. El controlador y la acción proporcional",
+  subtitle: TEMA_TI2_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "controlador",
+      type: "slide",
+      help: [{ label: "El regulador de Watt", message: "Un regulador centrífugo de bolas giratorias (siglo XVIII) que mantenía constante la velocidad de la máquina de vapor: el primer gran controlador industrial." }],
+      title: "El cerebro del lazo",
+      blocks: [
+        { kind: "text", text: "En un lazo cerrado hay transductores y captadores, comparadores de error, **elementos de control y regulación** y actuadores. Este tema se centra en el **controlador** (regulador)." },
+        { kind: "definition", text: "El **controlador** compara el valor deseado con el real, interpreta el error o desviación y actúa para anularlo. Mientras la variable esté en el valor previsto, no actúa sobre los elementos finales." },
+        { kind: "text", text: "Los controladores elaboran la señal de mando tratando la **señal de error**: amplificándola (acción **P**roporcional), derivándola respecto al tiempo (**D**erivativa) o integrándola (**I**ntegral). En la práctica se usan **P**, combinaciones de dos (**PI** o **PD**) o las tres (**PID**)." },
+        { kind: "text", text: "Hasta los cincuenta fueron neumáticos, hidráulicos o electromagnéticos; luego, **analógicos electrónicos** con amplificadores operacionales; y desde los setenta, **digitales** con ordenador (microprocesador, memorias, convertidores A/D y D/A)." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "proporcional",
+      type: "slide",
+      help: [{ label: "¿Banda proporcional?", message: "El porcentaje que tiene que variar la entrada para que la salida varíe el 100 %. BP grande = poca ganancia." }],
+      title: "Acción proporcional (P)",
+      blocks: [
+        { kind: "text", text: "La salida varía **proporcionalmente** al error: error pequeño, cambio pequeño; error grande, cambio grande." },
+        { kind: "formula", tex: "G(s) = K_p\\qquad K_p = \\dfrac{100}{BP}" },
+        { kind: "formula", tex: "S_P = K_p\\,E + K'\\ (\\%)\\qquad E = M - PC" },
+        { kind: "steps", items: [
+          "$BP$: **banda proporcional**, % que debe variar la entrada para variar el $100\\,\\%$ la salida.",
+          "$K'$: salida con error nulo (normalmente $50\\,\\%$).",
+          "$M$: medición. $PC$: punto de consigna. $E$: error.",
+        ] },
+        { kind: "warning", text: "**BP grande ⇒ poca ganancia ⇒ poca acción proporcional** (y viceversa)." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-bp",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "$K_p = 100/BP$." }],
+      title: "De la banda a la ganancia",
+      question: "Un regulador proporcional tiene una banda proporcional $BP = 25\\,\\%$. ¿Cuánto vale la ganancia $K_p$?",
+      correctAnswers: ["4"],
+      explanation: "$K_p = 100/25 = 4$.",
+    },
+    {
+      id: "check-salida",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "$S_P = \\dfrac{100}{BP}E + 50$." }],
+      title: "Salida del regulador",
+      question: "Con $BP = 50\\,\\%$ ($K' = 50\\,\\%$), el error es $E = +10\\,\\%$. ¿Qué salida tiene el regulador, en %?",
+      correctAnswers: ["70"],
+      explanation: "$S_P = \\dfrac{100}{50}\\cdot 10 + 50 = 70\\,\\%$.",
+    },
+    {
+      id: "offset",
+      type: "slide",
+      help: [{ label: "¿Cómo se corrige a mano?", message: "Subiendo el punto de consigna (el tornillo A): el nivel sube y se compensa. Pero entonces el offset cambia con cada nuevo consumo." }],
+      title: "El defecto del control P: el offset",
+      blocks: [
+        { kind: "text", text: "En el **depósito con flotador** la válvula $V$ mantiene el caudal de entrada igual al de salida; el tornillo $A$ fija el punto de ajuste. Si aumenta el consumo, el nivel baja, el flotador abre más la válvula, y el nivel se **estabiliza más bajo que el PC**." },
+        { kind: "definition", text: "A esa desviación permanente se le llama **offset**. Su valor cambia cuando cambia la curva del proceso (el consumo)." },
+        { kind: "text", text: "Es tolerable en muchas aplicaciones, y el regulador P «responde bien a las necesidades operativas». Pero si hace falta eliminarlo hay que añadir acción **integral**." },
+      ],
+      visual: { kind: "anim", scene: "offset-proporcional", beatMs: 5600 },
+    },
+    {
+      id: "check-offset",
+      type: "predict",
+      help: [{ label: "Pista", message: "Es lo que queda después de un cambio de carga." }],
+      title: "El principal inconveniente",
+      question: "El principal inconveniente de un controlador proporcional es:",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Que trabaja con una desviación permanente (offset)" },
+        { id: "lento", label: "Que es muy lento al empezar", incorrectFeedback: "Al contrario: actúa de forma instantánea." },
+        { id: "osc", label: "Que genera siempre oscilaciones de amplitud creciente", incorrectFeedback: "Solo con ganancias excesivas." },
+        { id: "ruido", label: "Que amplifica el ruido por derivar", incorrectFeedback: "Eso es de la acción derivativa." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Para mantener la válvula abierta hace falta un error; por eso queda el offset.",
+    },
+  ],
+};
