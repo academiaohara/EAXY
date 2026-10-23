@@ -319,6 +319,17 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `rockwell-profundidad` | Rockwell: precarga, carga total, deformación permanente e y HRC = 100 − e | — |
 | `pendulo-charpy` | Péndulo de Charpy: energía absorbida E₀ − E₁ y resiliencia ρ = Eₚ/S | — |
 | `fatiga-ciclos` | Fatiga: tracción y compresión alternas, tres fases de rotura y curva de Wöhler con límite de fatiga | — |
+| `procesos-camino-pv` | Gas de i a f por tres caminos: el trabajo (área bajo la curva) cambia; ciclo cerrado y trabajo neto (Tecnología Industrial II, unidad 6) | — |
+| `motor-frigorifica-focos` | Motor térmico (Q_c → W + Q_f, η = 40 %) y máquina frigorífica entre dos focos | — |
+| `carnot-ciclo` | Ciclo de Carnot en el diagrama pV: dos isotermas y dos adiabáticas, trabajo neto y η = 1 − T_f/T_c | — |
+| `carnot-frigorifico` | El mismo ciclo recorrido al revés: compresión adiabática, cesión de Q_c, expansión adiabática y absorción de Q_f | — |
+| `rankine-circuito` | Circuito de vapor: bomba, caldera, turbina y condensador, con las mejoras (recalentamiento y regeneración) | — |
+| `brayton-circuito` | Turbina de gas: compresor, cámara de combustión y turbina, q₁, q₂ y η = 0,48 con r_p = 10 | — |
+| `motor-4-tiempos` | Pistón, válvulas y cigüeñal en admisión, compresión, expansión y escape | — |
+| `otto-diesel-pv` | Ciclos Otto (calor a V constante) y Diesel (a p constante) con sus rendimientos | — |
+| `turbocompresor-flujo` | Gases de escape → turbina → compresor → intercooler → motor | — |
+| `frigorifico-circuito` | Compresor, condensador, válvula de expansión y evaporador, y COP = Q_f/W | — |
+| `bomba-calor-inversion` | Bomba de calor en invierno y en verano (válvula de cuatro vías) y ε > 1 | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -509,6 +520,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `rockwell-explorador` | Deformación permanente e (unidades de 0,002 mm): HRC = 100 − e y HRB = 130 − e | `a` (e) |
 | `charpy-explorador` | Ángulos inicial y final del péndulo de Charpy: E₀, E₁, energía absorbida y resiliencia | `a` (° inicial), `b` (° final) |
 | `fatiga-explorador` | Tensión alterna (% de σ_R) y vida en ciclos con límite de fatiga (curva esquemática) | `a` (%) |
+| `carnot-explorador` | Rendimiento de Carnot de un motor o eficiencia de una máquina frigorífica según T_c y T_f (con kelvin) | `a` (T_c, °C), `b` (T_f, °C) |
+| `brayton-explorador` | Rendimiento del ciclo Brayton frente a la relación de presiones r_p | `a` (r_p) |
+| `otto-diesel-explorador` | Rendimientos Otto y Diesel con r y r_c, y aviso de detonación | `a` (r), `b` (r_c) |
+| `potencia-motor-explorador` | P = (N/2)·V_T·d_a·δ·Q_c·η con gasolina o gasóleo, en kW y CV | `a` (rpm), `b` (l) |
+| `cilindrada-explorador` | Diámetro, carrera, relación de compresión y cilindros: cilindrada, cámara de combustión y η Otto | `a` (mm), `b` (mm), `c` (r) |
+| `frigorifica-explorador` | Eficiencia de Carnot y real de una máquina frigorífica: W, Q_c y ε de la bomba de calor | `a` (T_f, °C), `b` (T_c, °C) |
+| `motor-tiempos-explorador` | Cigüeñal de 0° a 720°: pistón, válvulas, tiempo activo y cuándo hay trabajo | `a` (ángulo) |
 
 ## Respuesta como fracción
 

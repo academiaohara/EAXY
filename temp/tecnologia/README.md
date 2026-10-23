@@ -13,5 +13,6 @@ Carpeta `2-bachillerato-industrial-II/`: capítulos del libro de McGraw-Hill (PD
 | `Unidad 3 - Materiales no férreos y ciclo de utilización.pdf` | Cu, Al, Mg, Ti, cerámicos, polímeros, elastómeros, residuos y reciclaje | `…/03-materiales-no-ferreos-reciclaje/` |
 | `Unidad 4 - Tratamientos térmicos y superficiales. Corrosión.pdf` | Temple, TTT, recocido, termoquímicos, corrosión, protección, oxidación, degradación y desgaste | `…/04-tratamientos-termicos-corrosion/` |
 | `Unidad 5 - Principios generales de las máquinas.pdf` | SI, trabajo, energía, calor, potencia, rendimiento, par, gases y potencia eléctrica e hidráulica | `…/05-principios-generales-maquinas/` |
+| `Unidad 6 - Motores térmicos. Circuitos frigoríficos.pdf` | Ciclos y ciclo de Carnot, máquinas de vapor y turbinas, turbina de gas (Brayton), motores alternativos (Otto y Diesel), potencia, sobrealimentación, circuitos frigoríficos y bomba de calor | `…/06-motores-termicos-circuitos-frigorificos/` |
 
-Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (5 temas, 47 lecciones).
+Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (6 temas, 58 lecciones).

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CarnotExplorador, BraytonExplorador, OttoDieselExplorador, PotenciaMotorExplorador, CilindradaExplorador, FrigorificaExplorador, MotorTiemposExplorador } from "@/components/lesson/slide/tools/TermicosTools";
 import { IsotoposExplorador, CurvaEnlaceExplorador, ElectronegatividadExplorador, CovalenteExplorador, EnlaceFusionGrafica, CeldaExplorador, AlotropiaExplorador } from "@/components/lesson/slide/tools/EstructuraTools";
 import { TensionDeformacionExplorador, DiagramaTraccionExplorador, HookeExplorador, TensionTrabajoExplorador, BrinellExplorador, VickersExplorador, RockwellExplorador, CharpyExplorador, FatigaExplorador } from "@/components/lesson/slide/tools/EnsayosTools";
 import { ConversorIndustrial, PlanoInclinadoTrabajo, ResorteExplorador, EnergiaRampa, MomentoInercia, EquilibrioTermico, PrimerPrincipio, RendimientoCadena, PotenciaVehiculo, ParTrabajo, DiagramaPV, PotenciaElectricaHidraulica } from "@/components/lesson/slide/tools/MaquinasTools";
@@ -708,6 +709,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CharpyExplorador block={block} />;
     case "fatiga-explorador":
       return <FatigaExplorador block={block} />;
+    case "carnot-explorador":
+      return <CarnotExplorador block={block} />;
+    case "brayton-explorador":
+      return <BraytonExplorador block={block} />;
+    case "otto-diesel-explorador":
+      return <OttoDieselExplorador block={block} />;
+    case "potencia-motor-explorador":
+      return <PotenciaMotorExplorador block={block} />;
+    case "cilindrada-explorador":
+      return <CilindradaExplorador block={block} />;
+    case "frigorifica-explorador":
+      return <FrigorificaExplorador block={block} />;
+    case "motor-tiempos-explorador":
+      return <MotorTiemposExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

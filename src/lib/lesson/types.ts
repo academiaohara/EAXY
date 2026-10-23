@@ -851,6 +851,17 @@ export type SlideAnimId =
   | "rockwell-profundidad"
   | "pendulo-charpy"
   | "fatiga-ciclos"
+  | "procesos-camino-pv"
+  | "motor-frigorifica-focos"
+  | "carnot-ciclo"
+  | "carnot-frigorifico"
+  | "rankine-circuito"
+  | "brayton-circuito"
+  | "motor-4-tiempos"
+  | "otto-diesel-pv"
+  | "turbocompresor-flujo"
+  | "frigorifico-circuito"
+  | "bomba-calor-inversion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1155,6 +1166,13 @@ export type SlideToolId =
   | "rockwell-explorador"
   | "charpy-explorador"
   | "fatiga-explorador"
+  | "carnot-explorador"
+  | "brayton-explorador"
+  | "otto-diesel-explorador"
+  | "potencia-motor-explorador"
+  | "cilindrada-explorador"
+  | "frigorifica-explorador"
+  | "motor-tiempos-explorador"
   /* industrial-tool-end */;
 
 /**

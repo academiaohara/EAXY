@@ -17,7 +17,7 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión y principios de las máquinas.');
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos y circuitos frigoríficos.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -75,7 +75,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000048', 'a1000000-0000-4000-8000-000000000016', 'aleaciones-diagramas-equilibrio', 'Aleaciones. Diagramas de equilibrio', 2),
   ('a2000000-0000-4000-8000-000000000049', 'a1000000-0000-4000-8000-000000000016', 'materiales-no-ferreos-reciclaje', 'Materiales no férreos y ciclo de utilización', 3),
   ('a2000000-0000-4000-8000-000000000050', 'a1000000-0000-4000-8000-000000000016', 'tratamientos-termicos-corrosion', 'Tratamientos térmicos y superficiales. Corrosión', 4),
-  ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5);
+  ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5),
+  ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -442,4 +443,15 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000005107', 'a2000000-0000-4000-8000-000000000051', '7. Potencia, resistencias pasivas y rendimiento', 'P = F·v, rozamiento y rendimiento de conjuntos de máquinas.', 7, null),
   ('a3000000-0000-4000-8000-000000005108', 'a2000000-0000-4000-8000-000000000051', '8. Trabajo de rotación y par', 'Momento de un par de fuerzas y trabajo W = M·θ.', 8, null),
   ('a3000000-0000-4000-8000-000000005109', 'a2000000-0000-4000-8000-000000000051', '9. Transformaciones de un gas en un cilindro', 'Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p-V.', 9, null),
-  ('a3000000-0000-4000-8000-000000005110', 'a2000000-0000-4000-8000-000000000051', '10. Potencia eléctrica e hidráulica', 'P = U·I y P = p·Q aplicadas a circuitos y presas.', 10, null);
+  ('a3000000-0000-4000-8000-000000005110', 'a2000000-0000-4000-8000-000000000051', '10. Potencia eléctrica e hidráulica', 'P = U·I y P = p·Q aplicadas a circuitos y presas.', 10, null),
+  ('a3000000-0000-4000-8000-000000006701', 'a2000000-0000-4000-8000-000000000067', '1. Procesos, ciclos y máquinas entre dos focos', 'Procesos reversibles, el trabajo según el camino, motor térmico y máquina frigorífica entre dos focos.', 1, null),
+  ('a3000000-0000-4000-8000-000000006702', 'a2000000-0000-4000-8000-000000000067', '2. El ciclo de Carnot', 'Isotermas y adiabáticas, rendimiento η = 1 − T_f/T_c y límite de cualquier motor.', 2, null),
+  ('a3000000-0000-4000-8000-000000006703', 'a2000000-0000-4000-8000-000000000067', '3. Clasificación de motores y combustión externa', 'Combustión externa e interna, máquina de vapor, turbina y ciclo Rankine.', 3, null),
+  ('a3000000-0000-4000-8000-000000006704', 'a2000000-0000-4000-8000-000000000067', '4. Turbina de gas: el ciclo Brayton', 'Compresor, cámara de combustión y turbina; rendimiento según la relación de presiones.', 4, null),
+  ('a3000000-0000-4000-8000-000000006705', 'a2000000-0000-4000-8000-000000000067', '5. Motor alternativo: cuatro y dos tiempos', 'Partes del motor, los cuatro tiempos, el motor de dos tiempos, encendido y refrigeración.', 5, null),
+  ('a3000000-0000-4000-8000-000000006706', 'a2000000-0000-4000-8000-000000000067', '6. Ciclos Otto y Diesel', 'Calor a volumen o a presión constante, rendimiento y relación de compresión.', 6, null),
+  ('a3000000-0000-4000-8000-000000006707', 'a2000000-0000-4000-8000-000000000067', '7. Potencia y rendimiento de un motor', 'P = N/2 · V_T · d_a · δ · Q_c · η, cilindrada, cámara y potencia indicada y efectiva.', 7, null),
+  ('a3000000-0000-4000-8000-000000006708', 'a2000000-0000-4000-8000-000000000067', '8. Sobrealimentación y turbocompresor', 'Más aire en el cilindro: turbocompresor e intercooler.', 8, null),
+  ('a3000000-0000-4000-8000-000000006709', 'a2000000-0000-4000-8000-000000000067', '9. Refrigeración: ciclo de Carnot y eficiencia', 'Ciclo de Carnot inverso, eficiencia o COP y cálculo del trabajo de una máquina frigorífica.', 9, null),
+  ('a3000000-0000-4000-8000-000000006710', 'a2000000-0000-4000-8000-000000000067', '10. La instalación frigorífica', 'Compresor, condensador, válvula de expansión y evaporador; sistemas de gas y de vapor; refrigerantes.', 10, null),
+  ('a3000000-0000-4000-8000-000000006711', 'a2000000-0000-4000-8000-000000000067', '11. La bomba de calor', 'Eficiencia ε = Q_c/W, ventaja frente a la resistencia y válvula de cuatro vías.', 11, null);

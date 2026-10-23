@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildProcesosCamino, buildMotorFrigorificaFocos, buildCarnotCiclo, buildCarnotFrigorifico, buildRankineCircuito, buildBraytonCircuito, buildMotor4Tiempos, buildOttoDieselPV, buildTurbocompresorFlujo, buildFrigorificoCircuito, buildBombaCalorInversion } from "@/components/lesson/anim/scenes/industrial/termicos";
 import { buildAtomoIsotopos, buildEnlaceCurvaEnergia, buildIonNaCl, buildCovalenteMultiple, buildHibridacionSp3, buildMetalicoNube, buildAguaPuenteH, buildCristalAmorfo } from "@/components/lesson/anim/scenes/industrial/estructura";
 import { buildElasticoPlastico, buildVarillaTraccion, buildDiagramaTraccion, buildBrinellHuella, buildRockwellProfundidad, buildPenduloCharpy, buildFatigaCiclos } from "@/components/lesson/anim/scenes/industrial/ensayos";
 import { buildPlanoInclinado, buildTrabajoAreaCurva, buildResorteTrabajo, buildRodaduraCarrera, buildPrimerPrincipio, buildParTrabajo, buildPistonTrabajo, buildPresaTurbina } from "@/components/lesson/anim/scenes/industrial/maquinas";
@@ -488,6 +489,17 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "rockwell-profundidad": () => buildRockwellProfundidad(),
   "pendulo-charpy": () => buildPenduloCharpy(),
   "fatiga-ciclos": () => buildFatigaCiclos(),
+  "procesos-camino-pv": () => buildProcesosCamino(),
+  "motor-frigorifica-focos": () => buildMotorFrigorificaFocos(),
+  "carnot-ciclo": () => buildCarnotCiclo(),
+  "carnot-frigorifico": () => buildCarnotFrigorifico(),
+  "rankine-circuito": () => buildRankineCircuito(),
+  "brayton-circuito": () => buildBraytonCircuito(),
+  "motor-4-tiempos": () => buildMotor4Tiempos(),
+  "otto-diesel-pv": () => buildOttoDieselPV(),
+  "turbocompresor-flujo": () => buildTurbocompresorFlujo(),
+  "frigorifico-circuito": () => buildFrigorificoCircuito(),
+  "bomba-calor-inversion": () => buildBombaCalorInversion(),
   /* industrial-end */
 };
 

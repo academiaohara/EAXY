@@ -3421,7 +3421,7 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión y principios de las máquinas.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos y circuitos frigoríficos.",
       orderIndex: 16,
       modules: [
         {
@@ -3930,6 +3930,124 @@ export const curriculum: Curriculum = {
               orderIndex: 10,
               kind: "interactive",
               interactiveSlug: "potencia-electrica-hidraulica",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(67),
+          slug: "motores-termicos-circuitos-frigorificos",
+          title: "Motores térmicos. Circuitos frigoríficos",
+          orderIndex: 6,
+          lessons: [
+            {
+              id: lessonId(6701),
+              title: "1. Procesos, ciclos y máquinas entre dos focos",
+              summary:
+                "Procesos reversibles, el trabajo según el camino, motor térmico y máquina frigorífica entre dos focos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "ciclos-reversibles-focos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6702),
+              title: "2. El ciclo de Carnot",
+              summary:
+                "Isotermas y adiabáticas, rendimiento η = 1 − T_f/T_c y límite de cualquier motor.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "ciclo-carnot",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6703),
+              title: "3. Clasificación de motores y combustión externa",
+              summary:
+                "Combustión externa e interna, máquina de vapor, turbina y ciclo Rankine.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "motores-combustion-externa",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6704),
+              title: "4. Turbina de gas: el ciclo Brayton",
+              summary:
+                "Compresor, cámara de combustión y turbina; rendimiento según la relación de presiones.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "turbina-gas-brayton",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6705),
+              title: "5. Motor alternativo: cuatro y dos tiempos",
+              summary:
+                "Partes del motor, los cuatro tiempos, el motor de dos tiempos, encendido y refrigeración.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "motor-alternativo-tiempos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6706),
+              title: "6. Ciclos Otto y Diesel",
+              summary:
+                "Calor a volumen o a presión constante, rendimiento y relación de compresión.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "ciclos-otto-diesel",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6707),
+              title: "7. Potencia y rendimiento de un motor",
+              summary:
+                "P = N/2 · V_T · d_a · δ · Q_c · η, cilindrada, cámara y potencia indicada y efectiva.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "potencia-rendimiento-motor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6708),
+              title: "8. Sobrealimentación y turbocompresor",
+              summary:
+                "Más aire en el cilindro: turbocompresor e intercooler.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "sobrealimentacion-turbocompresor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6709),
+              title: "9. Refrigeración: ciclo de Carnot y eficiencia",
+              summary:
+                "Ciclo de Carnot inverso, eficiencia o COP y cálculo del trabajo de una máquina frigorífica.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "refrigeracion-carnot-eficiencia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6710),
+              title: "10. La instalación frigorífica",
+              summary:
+                "Compresor, condensador, válvula de expansión y evaporador; sistemas de gas y de vapor; refrigerantes.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "instalacion-frigorifica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6711),
+              title: "11. La bomba de calor",
+              summary:
+                "Eficiencia ε = Q_c/W, ventaja frente a la resistencia y válvula de cuatro vías.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "bomba-calor",
               conceptSlugs: [],
             },
           ],
