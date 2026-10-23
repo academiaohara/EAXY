@@ -1,5 +1,6 @@
 // industrial-imports
 import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
+import { buildSenalAnalogicaDigital, buildPuertasLogicasBasicas, buildKarnaughDosVariables, buildBiestableRs, buildSensorInductivo } from "@/components/lesson/anim/scenes/industrial/electronica";
 import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
 import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
@@ -535,6 +536,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "reduccion-bloques": () => buildReduccionBloques(),
   "offset-proporcional": () => buildOffsetProporcional(),
   "laplace-dominios": () => buildLaplaceDominios(),
+  "senal-analogica-digital": () => buildSenalAnalogicaDigital(),
+  "puertas-logicas-basicas": () => buildPuertasLogicasBasicas(),
+  "karnaugh-dos-variables": () => buildKarnaughDosVariables(),
+  "biestable-rs": () => buildBiestableRs(),
+  "sensor-inductivo": () => buildSensorInductivo(),
   /* industrial-end */
 };
 

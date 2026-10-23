@@ -1,3 +1,26 @@
+import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/05-transductores-velocidad";
+import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-teoria-bimodal-grafos";
+import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-sumadores-binarios";
+import { sistemasDigitalesBinarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/01-sistemas-digitales-binario";
+import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/03-sensores-capacitivos-opticos";
+import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
+import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-puertas-or-and-not";
+import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-nor-nand-xor";
+import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-presion-temperatura";
+import { memoriaSecuencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/01-memoria-secuencial";
+import { luzAmplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/07-luz-amplificador-operacional";
+import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-karnaugh-simplificacion";
+import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-implementacion-nand-nor";
+import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/04-elementos-control-cableado";
+import { disenoSecuenciasPlcLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-diseno-secuencias-plc";
+import { detectoresInductivosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/02-detectores-inductivos";
+import { desplazamientoGalgasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-desplazamiento-galgas";
+import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
+import { codificadoresMultiplexoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-codificadores-multiplexores";
+import { biestablesJkDTLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/03-biestables-jk-d-t";
+import { biestableRsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/02-biestable-rs";
+import { aplicacionesAutomocionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-aplicaciones-automocion";
+import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-algebra-boole-tablas";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
@@ -844,6 +867,29 @@ export const interactiveLessons = {
   "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
   "volumen-prisma-cilindro-3eso": volumenPrismaCilindro3esoLesson,
   "volumen-prismas-cilindros-2eso": volumenPrismasCilindros2esoLesson,
+  "algebra-boole-tablas": algebraBooleTablasLesson,
+  "aplicaciones-automocion": aplicacionesAutomocionLesson,
+  "biestable-rs": biestableRsLesson,
+  "biestables-jk-d-t": biestablesJkDTLesson,
+  "codificadores-multiplexores": codificadoresMultiplexoresLesson,
+  "conversiones-bases": conversionesBasesLesson,
+  "desplazamiento-galgas": desplazamientoGalgasLesson,
+  "detectores-inductivos": detectoresInductivosLesson,
+  "diseno-secuencias-plc": disenoSecuenciasPlcLesson,
+  "elementos-control-cableado": elementosControlCableadoLesson,
+  "implementacion-nand-nor": implementacionNandNorLesson,
+  "karnaugh-simplificacion": karnaughSimplificacionLesson,
+  "luz-amplificador-operacional": luzAmplificadorOperacionalLesson,
+  "memoria-secuencial": memoriaSecuencialLesson,
+  "presion-temperatura": presionTemperaturaLesson,
+  "puertas-nor-nand-xor": puertasNorNandXorLesson,
+  "puertas-or-and-not": puertasOrAndNotLesson,
+  "senal-analogica-digital": senalAnalogicaDigitalLesson,
+  "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
+  "sistemas-digitales-binario": sistemasDigitalesBinarioLesson,
+  "sumadores-binarios": sumadoresBinariosLesson,
+  "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
+  "transductores-velocidad": transductoresVelocidadLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;

@@ -893,6 +893,11 @@ export type SlideAnimId =
   | "reduccion-bloques"
   | "offset-proporcional"
   | "laplace-dominios"
+  | "senal-analogica-digital"
+  | "puertas-logicas-basicas"
+  | "karnaugh-dos-variables"
+  | "biestable-rs"
+  | "sensor-inductivo"
   /* industrial-anim-end */;
 
 export type ExprStep = {
