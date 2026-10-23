@@ -16,5 +16,6 @@ Carpeta `2-bachillerato-industrial-II/`: capítulos del libro de McGraw-Hill (PD
 | `Unidad 6 - Motores térmicos. Circuitos frigoríficos.pdf` | Ciclos y ciclo de Carnot, máquinas de vapor y turbinas, turbina de gas (Brayton), motores alternativos (Otto y Diesel), potencia, sobrealimentación, circuitos frigoríficos y bomba de calor | `…/06-motores-termicos-circuitos-frigorificos/` |
 | `Unidad 7 - Magnetismo y electricidad. Motores eléctricos.pdf` | Imanes y Oersted, campo e inducción magnética, fuerza de Lorentz, espira y motor, Faraday y Lenz, motores de corriente continua y trifásicos (arranque, regulación, frenado), motores monofásicos | `…/07-magnetismo-motores-electricos/` |
 | `Unidad 8 - Automatización neumática.pdf` | Presión, caudal y humedad, compresores, red y tratamiento del aire, cilindros, fuerza y consumo, válvulas, detectores, diseño de circuitos y mandos | `…/08-automatizacion-neumatica/` |
+| `Unidad 9 - Automatismos oleohidráulicos.pdf` | Propiedades del aceite, viscosidad, Pascal, continuidad y Bernoulli, potencia y pérdida de carga, bombas, válvulas, cilindros, motores y circuitos | `…/09-automatismos-oleohidraulicos/` |
 
-Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (8 temas, 80 lecciones).
+Catálogo: curso `tecnologia-industrial-2-bachillerato` en `src/content/curriculum.ts` (9 temas, 90 lecciones).

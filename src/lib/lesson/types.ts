@@ -879,6 +879,14 @@ export type SlideAnimId =
   | "estrangulacion-velocidad"
   | "espacio-fase-secuencia"
   | "mando-doble-efecto"
+  | "viscosidad-placas"
+  | "flujo-laminar-turbulento"
+  | "prensa-hidraulica"
+  | "continuidad-bernoulli"
+  | "bomba-engranajes"
+  | "limitadora-descarga"
+  | "valvula-43-cilindro"
+  | "regulacion-caudal-hid"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1210,6 +1218,15 @@ export type SlideToolId =
   | "logica-neumatica-explorador"
   | "ventosa-vacio-explorador"
   | "numeracion-neumatica-explorador"
+  | "pascal-prensa-explorador"
+  | "continuidad-bernoulli-explorador"
+  | "viscosidad-fuerza-explorador"
+  | "energia-bernoulli-explorador"
+  | "potencia-hidraulica-explorador"
+  | "perdida-carga-explorador"
+  | "bomba-caudal-explorador"
+  | "cilindro-hidraulico-explorador"
+  | "limitadora-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -3421,7 +3421,7 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos y automatización neumática.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática y oleohidráulica.",
       orderIndex: 16,
       modules: [
         {
@@ -4284,6 +4284,114 @@ export const curriculum: Curriculum = {
               orderIndex: 10,
               kind: "interactive",
               interactiveSlug: "mando-cilindros-ejemplos",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(70),
+          slug: "automatismos-oleohidraulicos",
+          title: "Automatismos oleohidráulicos",
+          orderIndex: 9,
+          lessons: [
+            {
+              id: lessonId(7001),
+              title: "1. Fluidos hidráulicos: densidad y presión de vapor",
+              summary:
+                "Aceite incompresible, densidad, presión de vapor, cavitación y golpe de ariete.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "fluidos-densidad-vapor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7002),
+              title: "2. Viscosidad e índice de viscosidad",
+              summary:
+                "Ley de Newton, poise y stoke, grados Engler y Saybolt e índice de viscosidad.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "viscosidad-indice",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7003),
+              title: "3. Propiedades del aceite y tipos de flujo",
+              summary:
+                "Punto de fluidez, lubricación, oxidación y régimen laminar o turbulento.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "aceite-propiedades-flujo",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7004),
+              title: "4. Principio de Pascal y prensa hidráulica",
+              summary:
+                "Presión en un fluido confinado, multiplicación de la fuerza y emboladas.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "pascal-prensa",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7005),
+              title: "5. Continuidad y teorema de Bernoulli",
+              summary:
+                "S₁v₁ = S₂v₂, balance de energía, medida de caudal y alturas de energía.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "continuidad-bernoulli",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7006),
+              title: "6. Potencia hidráulica y pérdida de carga",
+              summary:
+                "P = p·Q/η en kW y CV, sistemas hidrostático e hidrodinámico y pérdida h_f.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "potencia-perdida-carga",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7007),
+              title: "7. Instalaciones hidráulicas y bombas",
+              summary:
+                "Ventajas, estructura de la instalación y caudal de bombas de engranajes, paletas, pistones y tornillo.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "instalacion-bombas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7008),
+              title: "8. La unidad hidráulica y las válvulas",
+              summary:
+                "Depósito, filtro, limitadora, distribuidoras, válvulas de caudal y de presión.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "unidad-valvulas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7009),
+              title: "9. Cilindros, motores hidráulicos y simbología",
+              summary:
+                "Cilindros, fuerza y velocidad, motores hidráulicos y símbolos normalizados.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "cilindros-motores-simbologia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7010),
+              title: "10. Circuitos oleohidráulicos de aplicación",
+              summary:
+                "Cilindros de simple y doble efecto, válvula 4/3, regulación de velocidad y de presión.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "circuitos-aplicaciones",
               conceptSlugs: [],
             },
           ],

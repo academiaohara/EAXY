@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
 import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
 import { buildProcesosCamino, buildMotorFrigorificaFocos, buildCarnotCiclo, buildCarnotFrigorifico, buildRankineCircuito, buildBraytonCircuito, buildMotor4Tiempos, buildOttoDieselPV, buildTurbocompresorFlujo, buildFrigorificoCircuito, buildBombaCalorInversion } from "@/components/lesson/anim/scenes/industrial/termicos";
@@ -519,6 +520,14 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "estrangulacion-velocidad": () => buildEstrangulacion(),
   "espacio-fase-secuencia": () => buildEspacioFase(),
   "mando-doble-efecto": () => buildMandoDoble(),
+  "viscosidad-placas": () => buildViscosidadPlacas(),
+  "flujo-laminar-turbulento": () => buildFlujoLaminarTurbulento(),
+  "prensa-hidraulica": () => buildPrensaHidraulica(),
+  "continuidad-bernoulli": () => buildContinuidadBernoulli(),
+  "bomba-engranajes": () => buildBombaEngranajes(),
+  "limitadora-descarga": () => buildLimitadoraDescarga(),
+  "valvula-43-cilindro": () => buildValvula43Cilindro(),
+  "regulacion-caudal-hid": () => buildRegulacionCaudalHid(),
   /* industrial-end */
 };
 

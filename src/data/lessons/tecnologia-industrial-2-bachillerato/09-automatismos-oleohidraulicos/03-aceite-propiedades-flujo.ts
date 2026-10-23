@@ -1,0 +1,100 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_9_SUBTITLE } from "@/data/lessons/shared";
+
+export const aceitePropiedadesFlujoLesson: InteractiveLesson = {
+  slug: "aceite-propiedades-flujo",
+  title: "3. Propiedades del aceite y tipos de flujo",
+  subtitle: TEMA_TI2_9_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "propiedades",
+      type: "slide",
+      help: [{ label: "¿Qué es un aditivo?", message: "Una sustancia que se añade al aceite para mejorar propiedades: antioxidantes, antidesgaste, mejoradores del índice de viscosidad… Los aceites actuales son una mezcla de base mineral y aditivos." }],
+      title: "Qué más se le pide a un aceite hidráulico",
+      blocks: [
+        { kind: "steps", items: [
+          "**Punto de fluidez**: la temperatura más baja a la que aún fluye. Debe estar unos **10 °C por debajo** de la temperatura mínima de trabajo.",
+          "**Capacidad de lubricación**: debe formar una película que evite el contacto metal-metal; a presiones y velocidades altas hacen falta aditivos.",
+          "**Resistencia a la oxidación**: el oxígeno disuelto lo oxida. Los productos solubles forman gomas, lodos y ácidos; los insolubles taponan y abrasan.",
+        ] },
+        { kind: "warning", title: "La temperatura manda", text: "Cada aumento de **10 °C duplica** la velocidad de oxidación (por debajo de 57 °C apenas influye). Los fabricantes añaden antioxidantes." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-fluidez",
+      type: "predict",
+      help: [{ label: "Pista", message: "Una instalación al aire libre en invierno." }],
+      title: "Aceite para el invierno",
+      question: "Una instalación funciona al aire libre con una temperatura mínima de $-5$ °C. El punto de fluidez del aceite debería ser, como regla, de:",
+      mode: "choice",
+      choices: [
+        { id: "-15", label: "Unos −15 °C (10 °C por debajo de la mínima)" },
+        { id: "0", label: "0 °C", incorrectFeedback: "A −5 °C ya estaría casi sin fluir." },
+        { id: "5", label: "+5 °C", incorrectFeedback: "El aceite no fluiría en el arranque." },
+      ],
+      correctChoiceId: "-15",
+      shuffleChoices: true,
+      explanation: "El punto de fluidez suele estar 10 °C por debajo de la temperatura mínima de utilización.",
+    },
+    {
+      id: "oxidacion",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Duplica cada 10 °C", message: "De 60 a 80 °C hay dos saltos de 10 °C: ×2 ×2." }],
+      title: "Oxidación y temperatura",
+      question: "Por encima de $57$ °C, cada $10$ °C más duplica la velocidad de oxidación. ¿Cuántas veces más rápido se oxida el aceite a $80$ °C que a $60$ °C?",
+      correctAnswers: ["4"],
+      explanation: "$20$ °C más son dos saltos de $10$ °C: $2\\cdot 2 = 4$ veces más rápido.",
+    },
+    {
+      id: "flujo",
+      type: "slide",
+      help: [{ label: "¿Quién domina: viscosidad o inercia?", message: "En régimen laminar domina la viscosidad, que amortigua cualquier turbulencia. Al aumentar la velocidad o con obstáculos domina la inercia y aparece la turbulencia." }],
+      title: "Flujo laminar y turbulento",
+      blocks: [
+        { kind: "text", text: "Como un canal de agua tranquila frente a un barranco: en régimen **laminar** cada partícula sigue una **línea de corriente** y las capas deslizan sin mezclarse; en el **turbulento** hay remolinos y mezcla." },
+        { kind: "text", text: "En un tubo, la velocidad no es uniforme: es **máxima en el centro** y casi nula junto a la pared, por efecto de la viscosidad." },
+      ],
+      visual: { kind: "anim", scene: "flujo-laminar-turbulento", beatMs: 5800 },
+    },
+    {
+      id: "clasifica-flujo",
+      type: "classify",
+      help: [{ label: "Pista", message: "Laminar: ordenado, capas. Turbulento: remolinos." }],
+      title: "¿Laminar o turbulento?",
+      question: "Asigna cada descripción.",
+      groups: [
+        { id: "laminar", label: "Flujo laminar", tone: "cobalt" },
+        { id: "turbulento", label: "Flujo turbulento", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "Las capas deslizan unas sobre otras sin mezclarse", group: "laminar" },
+        { id: "b", text: "Hay remolinos y cambios continuos de dirección", group: "turbulento" },
+        { id: "c", text: "Cada partícula sigue la trayectoria de las anteriores (líneas de corriente)", group: "laminar" },
+        { id: "d", text: "La viscosidad amortigua las perturbaciones", group: "laminar" },
+        { id: "e", text: "Un barranco con obstáculos y espuma", group: "turbulento" },
+      ],
+      hint: "El laminar es el flujo «ordenado».",
+      explanation: "La viscosidad favorece el régimen laminar; los obstáculos y la velocidad, el turbulento.",
+    },
+    {
+      id: "check-energia",
+      type: "predict",
+      help: [{ label: "Pista", message: "En hidráulica de potencia, ¿qué es lo que realmente transporta la energía?" }],
+      title: "¿De dónde viene la energía?",
+      question: "La energía puesta en juego en una instalación oleohidráulica proviene fundamentalmente de:",
+      mode: "choice",
+      choices: [
+        { id: "presion", label: "La presión que suministra el grupo hidráulico" },
+        { id: "altura", label: "La altura desde la que cae el aceite", incorrectFeedback: "La energía potencial es despreciable en estos circuitos." },
+        { id: "vel", label: "La velocidad con la que circula el aceite", incorrectFeedback: "La cinética también es muy pequeña: el aceite tiene poca masa y los tubos son estrechos." },
+        { id: "igual", label: "En realidad, de todas igualmente", incorrectFeedback: "Casi toda es energía de presión." },
+      ],
+      correctChoiceId: "presion",
+      shuffleChoices: true,
+      explanation: "En oleohidráulica la energía se transporta por la presión del aceite (más del 99 % en el ejemplo del libro).",
+    },
+  ],
+};

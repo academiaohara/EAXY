@@ -17,7 +17,7 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos y automatización neumática.');
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática y oleohidráulica.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -78,7 +78,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000051', 'a1000000-0000-4000-8000-000000000016', 'principios-generales-maquinas', 'Principios generales de las máquinas', 5),
   ('a2000000-0000-4000-8000-000000000067', 'a1000000-0000-4000-8000-000000000016', 'motores-termicos-circuitos-frigorificos', 'Motores térmicos. Circuitos frigoríficos', 6),
   ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7),
-  ('a2000000-0000-4000-8000-000000000069', 'a1000000-0000-4000-8000-000000000016', 'automatizacion-neumatica', 'Automatización neumática', 8);
+  ('a2000000-0000-4000-8000-000000000069', 'a1000000-0000-4000-8000-000000000016', 'automatizacion-neumatica', 'Automatización neumática', 8),
+  ('a2000000-0000-4000-8000-000000000070', 'a1000000-0000-4000-8000-000000000016', 'automatismos-oleohidraulicos', 'Automatismos oleohidráulicos', 9);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -478,4 +479,14 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000006907', 'a2000000-0000-4000-8000-000000000069', '7. Válvulas distribuidoras: símbolo y nombre', 'Vías y posiciones, nomenclatura 3/2, 4/2, 5/2 y 4/3, códigos de los conductos.', 7, null),
   ('a3000000-0000-4000-8000-000000006908', 'a2000000-0000-4000-8000-000000000069', '8. Accionamientos, válvulas de bloqueo y regulación', 'Mandos, antirretorno, selectora (O), simultaneidad (Y), estranguladoras y de presión.', 8, null),
   ('a3000000-0000-4000-8000-000000006909', 'a2000000-0000-4000-8000-000000000069', '9. Detectores y diseño de circuitos', 'Captadores, diseño, diagrama espacio-fase y numeración de elementos.', 9, null),
-  ('a3000000-0000-4000-8000-000000006910', 'a2000000-0000-4000-8000-000000000069', '10. Mando de cilindros y ejemplos prácticos', 'Mando directo e indirecto, control de velocidad y aplicaciones industriales.', 10, null);
+  ('a3000000-0000-4000-8000-000000006910', 'a2000000-0000-4000-8000-000000000069', '10. Mando de cilindros y ejemplos prácticos', 'Mando directo e indirecto, control de velocidad y aplicaciones industriales.', 10, null),
+  ('a3000000-0000-4000-8000-000000007001', 'a2000000-0000-4000-8000-000000000070', '1. Fluidos hidráulicos: densidad y presión de vapor', 'Aceite incompresible, densidad, presión de vapor, cavitación y golpe de ariete.', 1, null),
+  ('a3000000-0000-4000-8000-000000007002', 'a2000000-0000-4000-8000-000000000070', '2. Viscosidad e índice de viscosidad', 'Ley de Newton, poise y stoke, grados Engler y Saybolt e índice de viscosidad.', 2, null),
+  ('a3000000-0000-4000-8000-000000007003', 'a2000000-0000-4000-8000-000000000070', '3. Propiedades del aceite y tipos de flujo', 'Punto de fluidez, lubricación, oxidación y régimen laminar o turbulento.', 3, null),
+  ('a3000000-0000-4000-8000-000000007004', 'a2000000-0000-4000-8000-000000000070', '4. Principio de Pascal y prensa hidráulica', 'Presión en un fluido confinado, multiplicación de la fuerza y emboladas.', 4, null),
+  ('a3000000-0000-4000-8000-000000007005', 'a2000000-0000-4000-8000-000000000070', '5. Continuidad y teorema de Bernoulli', 'S₁v₁ = S₂v₂, balance de energía, medida de caudal y alturas de energía.', 5, null),
+  ('a3000000-0000-4000-8000-000000007006', 'a2000000-0000-4000-8000-000000000070', '6. Potencia hidráulica y pérdida de carga', 'P = p·Q/η en kW y CV, sistemas hidrostático e hidrodinámico y pérdida h_f.', 6, null),
+  ('a3000000-0000-4000-8000-000000007007', 'a2000000-0000-4000-8000-000000000070', '7. Instalaciones hidráulicas y bombas', 'Ventajas, estructura de la instalación y caudal de bombas de engranajes, paletas, pistones y tornillo.', 7, null),
+  ('a3000000-0000-4000-8000-000000007008', 'a2000000-0000-4000-8000-000000000070', '8. La unidad hidráulica y las válvulas', 'Depósito, filtro, limitadora, distribuidoras, válvulas de caudal y de presión.', 8, null),
+  ('a3000000-0000-4000-8000-000000007009', 'a2000000-0000-4000-8000-000000000070', '9. Cilindros, motores hidráulicos y simbología', 'Cilindros, fuerza y velocidad, motores hidráulicos y símbolos normalizados.', 9, null),
+  ('a3000000-0000-4000-8000-000000007010', 'a2000000-0000-4000-8000-000000000070', '10. Circuitos oleohidráulicos de aplicación', 'Cilindros de simple y doble efecto, válvula 4/3, regulación de velocidad y de presión.', 10, null);

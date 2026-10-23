@@ -347,6 +347,14 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `estrangulacion-velocidad` | Regulación de velocidad estrangulando la entrada o el escape, y dos unidireccionales | — |
 | `espacio-fase-secuencia` | Diagrama espacio-fase de A+ B+ A− B− | — |
 | `mando-doble-efecto` | Válvula 4/2 monoestable y cilindro de doble efecto: mando directo e indirecto por pilotaje | — |
+| `viscosidad-placas` | Placa móvil y placa fija con aceite: capas con velocidad lineal y ley de Newton τ = μ·Δv/Δy (Tecnología Industrial II, unidad 9) | — |
+| `flujo-laminar-turbulento` | Líneas de corriente, perfil de velocidades en un tubo y turbulencia | — |
+| `prensa-hidraulica` | Prensa de émbolos de 2,5 y 150 cm²: Pascal, F₂ = 3 000 N y recorrido (86 emboladas) | — |
+| `continuidad-bernoulli` | Estrechamiento: S₁v₁ = S₂v₂, presión menor donde la velocidad es mayor y medida del caudal | — |
+| `bomba-engranajes` | Bomba de engranajes: aspiración, arrastre por la pared e impulsión | — |
+| `limitadora-descarga` | Válvula limitadora que descarga al superar la presión de tarado y centro abierto en la 4/3 | — |
+| `valvula-43-cilindro` | Cilindro de doble efecto con válvula 4/3: centro, avance, retroceso y parada | — |
+| `regulacion-caudal-hid` | Orificio fijo, variable y con compensación de presión (Δp = F_m/S constante) | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -564,6 +572,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `logica-neumatica-explorador` | Válvula selectora (O) y de simultaneidad (Y) con dos pulsadores y tabla de verdad | `a` (0 O, 1 Y) |
 | `ventosa-vacio-explorador` | Masa que sujeta una ventosa según la altitud, el vacío y la superficie | `a` (altitud, m) |
 | `numeracion-neumatica-explorador` | Numeración 1.0, 1.1, 1.2…, 1.02 y 0.1 de los elementos de un circuito | `a` (grupo), `b` (segunda cifra) |
+| `pascal-prensa-explorador` | Prensa hidráulica: presión, fuerza F₂ y número de emboladas con S₁, S₂, l₁, l₂ | `a` (F₁, N), `b` (S₁, cm²), `c` (S₂, cm²) |
+| `continuidad-bernoulli-explorador` | Velocidades por continuidad y presión en el estrechamiento por Bernoulli, con aviso de cavitación | `a` (D₁, mm), `b` (D₂, mm), `c` (Q, l/min) |
+| `viscosidad-fuerza-explorador` | Fuerza de rozamiento viscoso en un pistón (ejemplo 1): μ = ν·d, S y Δv/Δy | `a` (ν, cm²/s), `b` (v, m/min) |
+| `energia-bernoulli-explorador` | Alturas geométrica, piezométrica y cinética y su porcentaje (ejemplo 5) | `a` (h, m), `b` (p, kp/cm²), `c` (v, m/s) |
+| `potencia-hidraulica-explorador` | P = p·Q/(612η) en kW y p·Q/(450η) en CV, con la parte útil y las pérdidas | `a` (p), `b` (Q, l/min) |
+| `perdida-carga-explorador` | Pérdida de carga h_f = ψ·(l/D)·v²/2g y caída de presión | `a` (ψ), `b` (l, m), `c` (v, m/s) |
+| `bomba-caudal-explorador` | Caudal teórico y real de bombas de engranajes, paletas, pistones radiales y tornillo | `a` (0 a 3: tipo) |
+| `cilindro-hidraulico-explorador` | Fuerza y velocidad de avance y retroceso de un cilindro de doble efecto con D, d, p y Q | `a` (D, mm), `b` (d, mm), `c` (p, bar) |
+| `limitadora-explorador` | Presión de tarado frente a la que exige la carga: abre y descarga o no | `a` (tarado, bar), `b` (carga, bar) |
 
 ## Respuesta como fracción
 

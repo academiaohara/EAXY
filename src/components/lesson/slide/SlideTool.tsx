@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PascalPrensaExplorador, ContinuidadBernoulliExplorador, ViscosidadFuerzaExplorador, EnergiaBernoulliExplorador, PotenciaHidraulicaExplorador, PerdidaCargaExplorador, BombaCaudalExplorador, CilindroHidraulicoExplorador, LimitadoraExplorador } from "@/components/lesson/slide/tools/HidraulicaTools";
 import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
 import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
 import { CarnotExplorador, BraytonExplorador, OttoDieselExplorador, PotenciaMotorExplorador, CilindradaExplorador, FrigorificaExplorador, MotorTiemposExplorador } from "@/components/lesson/slide/tools/TermicosTools";
@@ -765,6 +766,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <VentosaVacioExplorador block={block} />;
     case "numeracion-neumatica-explorador":
       return <NumeracionNeumaticaExplorador block={block} />;
+    case "pascal-prensa-explorador":
+      return <PascalPrensaExplorador block={block} />;
+    case "continuidad-bernoulli-explorador":
+      return <ContinuidadBernoulliExplorador block={block} />;
+    case "viscosidad-fuerza-explorador":
+      return <ViscosidadFuerzaExplorador block={block} />;
+    case "energia-bernoulli-explorador":
+      return <EnergiaBernoulliExplorador block={block} />;
+    case "potencia-hidraulica-explorador":
+      return <PotenciaHidraulicaExplorador block={block} />;
+    case "perdida-carga-explorador":
+      return <PerdidaCargaExplorador block={block} />;
+    case "bomba-caudal-explorador":
+      return <BombaCaudalExplorador block={block} />;
+    case "cilindro-hidraulico-explorador":
+      return <CilindroHidraulicoExplorador block={block} />;
+    case "limitadora-explorador":
+      return <LimitadoraExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
