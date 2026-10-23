@@ -52,3 +52,5 @@ Errores típicos: `<` literal en JSX (usa `&lt;`), `'` sin escapar (`&apos;`), v
 
 ## 7. Cierre
 Commit con mensaje descriptivo y push a la rama indicada. En la respuesta final: qué se ha creado (lecciones, animaciones, herramientas), qué se ha omitido y las discrepancias del libro detectadas.
+
+Antes del commit, pasa también `npx tsx scripts/review-tema.ts <curso> <tema>` (coherencia de registros, docs, seed y tests). La revisión posterior de otro agente sigue `docs/revision-tema.md`.

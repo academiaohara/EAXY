@@ -48,3 +48,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 # EAXY — convertir un PDF de libro en un tema
 
 - Receta completa y ejemplo de referencia (unidad 10 de Tecnología Industrial II): **`docs/pdf-a-tema.md`** (regla Cursor: `.cursor/rules/pdf-a-tema.mdc`).
+- Revisar un tema hecho por otro agente: **`docs/revision-tema.md`** (`scripts/review-tema.ts` y `scripts/review-visual.mjs`).
