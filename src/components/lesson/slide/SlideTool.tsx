@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 // industrial-imports
+import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
+import { PascalPrensaExplorador, ContinuidadBernoulliExplorador, ViscosidadFuerzaExplorador, EnergiaBernoulliExplorador, PotenciaHidraulicaExplorador, PerdidaCargaExplorador, BombaCaudalExplorador, CilindroHidraulicoExplorador, LimitadoraExplorador } from "@/components/lesson/slide/tools/HidraulicaTools";
+import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
+import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
+import { CarnotExplorador, BraytonExplorador, OttoDieselExplorador, PotenciaMotorExplorador, CilindradaExplorador, FrigorificaExplorador, MotorTiemposExplorador } from "@/components/lesson/slide/tools/TermicosTools";
+import { IsotoposExplorador, CurvaEnlaceExplorador, ElectronegatividadExplorador, CovalenteExplorador, EnlaceFusionGrafica, CeldaExplorador, AlotropiaExplorador } from "@/components/lesson/slide/tools/EstructuraTools";
+import { TensionDeformacionExplorador, DiagramaTraccionExplorador, HookeExplorador, TensionTrabajoExplorador, BrinellExplorador, VickersExplorador, RockwellExplorador, CharpyExplorador, FatigaExplorador } from "@/components/lesson/slide/tools/EnsayosTools";
 import { ConversorIndustrial, PlanoInclinadoTrabajo, ResorteExplorador, EnergiaRampa, MomentoInercia, EquilibrioTermico, PrimerPrincipio, RendimientoCadena, PotenciaVehiculo, ParTrabajo, DiagramaPV, PotenciaElectricaHidraulica } from "@/components/lesson/slide/tools/MaquinasTools";
 import { IntersticioRed, DurezaMartensita, TttExplorador, JominyExplorador, TemperaturasTratamiento, PerfilDureza, PilaElectroquimica, NernstExplorador, FaradayExplorador, RecubrimientoRayado, PillingBedworth } from "@/components/lesson/slide/tools/TratamientosTools";
 import { ResistenciaEspecifica, PiezaPesoMinimo, AleacionesFiltro, GrietaGriffith, GradoPolimerizacion, RtpComunidades } from "@/components/lesson/slide/tools/MaterialesTools";
@@ -674,6 +681,120 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DiagramaPV block={block} />;
     case "potencia-electrica-hidraulica":
       return <PotenciaElectricaHidraulica block={block} />;
+    case "isotopos-explorador":
+      return <IsotoposExplorador block={block} />;
+    case "curva-enlace-explorador":
+      return <CurvaEnlaceExplorador block={block} />;
+    case "electronegatividad-explorador":
+      return <ElectronegatividadExplorador block={block} />;
+    case "covalente-explorador":
+      return <CovalenteExplorador block={block} />;
+    case "enlace-fusion-grafica":
+      return <EnlaceFusionGrafica block={block} />;
+    case "celda-explorador":
+      return <CeldaExplorador block={block} />;
+    case "alotropia-explorador":
+      return <AlotropiaExplorador block={block} />;
+    case "tension-deformacion-explorador":
+      return <TensionDeformacionExplorador block={block} />;
+    case "diagrama-traccion-explorador":
+      return <DiagramaTraccionExplorador block={block} />;
+    case "hooke-explorador":
+      return <HookeExplorador block={block} />;
+    case "tension-trabajo-explorador":
+      return <TensionTrabajoExplorador block={block} />;
+    case "brinell-explorador":
+      return <BrinellExplorador block={block} />;
+    case "vickers-explorador":
+      return <VickersExplorador block={block} />;
+    case "rockwell-explorador":
+      return <RockwellExplorador block={block} />;
+    case "charpy-explorador":
+      return <CharpyExplorador block={block} />;
+    case "fatiga-explorador":
+      return <FatigaExplorador block={block} />;
+    case "carnot-explorador":
+      return <CarnotExplorador block={block} />;
+    case "brayton-explorador":
+      return <BraytonExplorador block={block} />;
+    case "otto-diesel-explorador":
+      return <OttoDieselExplorador block={block} />;
+    case "potencia-motor-explorador":
+      return <PotenciaMotorExplorador block={block} />;
+    case "cilindrada-explorador":
+      return <CilindradaExplorador block={block} />;
+    case "frigorifica-explorador":
+      return <FrigorificaExplorador block={block} />;
+    case "motor-tiempos-explorador":
+      return <MotorTiemposExplorador block={block} />;
+    case "campo-hilo-explorador":
+      return <CampoHiloExplorador block={block} />;
+    case "lorentz-explorador":
+      return <LorentzExplorador block={block} />;
+    case "espira-par-explorador":
+      return <EspiraParExplorador block={block} />;
+    case "fem-induccion-explorador":
+      return <FemInduccionExplorador block={block} />;
+    case "motor-cc-explorador":
+      return <MotorCcExplorador block={block} />;
+    case "curvas-cc-explorador":
+      return <CurvasCcExplorador block={block} />;
+    case "balance-cc-explorador":
+      return <BalanceCcExplorador block={block} />;
+    case "arranque-cc-explorador":
+      return <ArranqueCcExplorador block={block} />;
+    case "velocidad-trifasico-explorador":
+      return <VelocidadTrifasicoExplorador block={block} />;
+    case "trifasico-conexion-explorador":
+      return <TrifasicoConexionExplorador block={block} />;
+    case "curva-par-asincrono-explorador":
+      return <CurvaParAsincronoExplorador block={block} />;
+    case "presion-neumatica-explorador":
+      return <PresionNeumaticaExplorador block={block} />;
+    case "caudal-cilindro-explorador":
+      return <CaudalCilindroExplorador block={block} />;
+    case "relacion-compresion-explorador":
+      return <RelacionCompresionExplorador block={block} />;
+    case "fuerza-cilindro-explorador":
+      return <FuerzaCilindroExplorador block={block} />;
+    case "consumo-aire-explorador":
+      return <ConsumoAireExplorador block={block} />;
+    case "valvula-nomenclatura-explorador":
+      return <ValvulaNomenclaturaExplorador block={block} />;
+    case "logica-neumatica-explorador":
+      return <LogicaNeumaticaExplorador block={block} />;
+    case "ventosa-vacio-explorador":
+      return <VentosaVacioExplorador block={block} />;
+    case "numeracion-neumatica-explorador":
+      return <NumeracionNeumaticaExplorador block={block} />;
+    case "pascal-prensa-explorador":
+      return <PascalPrensaExplorador block={block} />;
+    case "continuidad-bernoulli-explorador":
+      return <ContinuidadBernoulliExplorador block={block} />;
+    case "viscosidad-fuerza-explorador":
+      return <ViscosidadFuerzaExplorador block={block} />;
+    case "energia-bernoulli-explorador":
+      return <EnergiaBernoulliExplorador block={block} />;
+    case "potencia-hidraulica-explorador":
+      return <PotenciaHidraulicaExplorador block={block} />;
+    case "perdida-carga-explorador":
+      return <PerdidaCargaExplorador block={block} />;
+    case "bomba-caudal-explorador":
+      return <BombaCaudalExplorador block={block} />;
+    case "cilindro-hidraulico-explorador":
+      return <CilindroHidraulicoExplorador block={block} />;
+    case "limitadora-explorador":
+      return <LimitadoraExplorador block={block} />;
+    case "lazo-perturbacion-explorador":
+      return <LazoPerturbacionExplorador block={block} />;
+    case "segundo-orden-explorador":
+      return <SegundoOrdenExplorador block={block} />;
+    case "bloques-explorador":
+      return <BloquesExplorador block={block} />;
+    case "routh-explorador":
+      return <RouthExplorador block={block} />;
+    case "pid-explorador":
+      return <PidExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

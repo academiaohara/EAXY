@@ -1,3 +1,4 @@
+import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/03-algebra-ecuaciones";
@@ -6,6 +7,7 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/06-algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/05-algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
+import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
 import { analiticaModulo4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/02-analitica-modulo-4eso";
 import { analiticaOperaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/03-analitica-operaciones-4eso";
@@ -31,22 +33,36 @@ import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-ar
 import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/09-areas-figuras-curvas-3eso";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
+import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/01-atomo-nucleo-corteza";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
+import { automaticaDefinicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/01-automatica-definiciones";
+import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
+import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
+import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
+import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
+import { ciclosOttoDieselLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/06-ciclos-otto-diesel";
+import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/01-ciclos-reversibles-focos";
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
+import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
+import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
 import { cobreAluminioMagnesioTitanioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/02-cobre-aluminio-magnesio-titanio";
+import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
+import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
+import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
 import { crecimientoExtremos2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/02-crecimiento-extremos-2eso";
 import { crecimientoExtremos3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/02-crecimiento-extremos-3eso";
+import { criteriosDisenoRespuestaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/04-criterios-diseno-respuesta";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
 import { cuadAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/03-cuad-aplicaciones-4eso";
@@ -60,9 +76,12 @@ import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-es
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
+import { detectoresDisenoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/09-detectores-diseno";
 import { diagramaEutecticoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/06-diagrama-eutectico";
 import { diagramaHierroCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/07-diagrama-hierro-carbono";
 import { diagramaIsomorfoCuNiLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/05-diagrama-isomorfo-cu-ni";
+import { diagramaTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/11-diagrama-traccion";
+import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
@@ -71,6 +90,8 @@ import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { divisionFracciones3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/04-division-fracciones-3eso";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
+import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/13-dureza-brinell";
+import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesDenominadores2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/03-ecuaciones-denominadores-2eso";
@@ -86,11 +107,18 @@ import { ecuacionesSegundoGrado3esoLesson } from "@/data/lessons/matematicas-3-e
 import { ecuacionesSegundoGradoCompletas4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/04-ecuaciones-segundo-grado-completas-4eso";
 import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/01-ecuaciones-soluciones-3eso";
 import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
+import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
+import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
+import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
+import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
+import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
+import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
+import { estabilidadRouthLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/09-estabilidad-routh";
 import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
 import { estadisticaCv4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/05-estadistica-cv-4eso";
 import { estadisticaDispersion4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/04-estadistica-dispersion-4eso";
@@ -99,6 +127,7 @@ import { estadisticaPosicion4esoLesson } from "@/data/lessons/matematicas-4-eso/
 import { estadisticaRamas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/01-estadistica-ramas-4eso";
 import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/08-estadistica-repaso-4eso";
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
+import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { exponencialCrecimiento4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/08-exponencial-crecimiento-4eso";
 import { exponencialFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/07-exponencial-funcion-4eso";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
@@ -114,6 +143,7 @@ import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematica
 import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { figurasSemejantes2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/03-figuras-semejantes-2eso";
+import { fluidosDensidadVaporLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/01-fluidos-densidad-vapor";
 import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/04-forma-exponencial-radicales-4eso";
 import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/06-forma-general-recta-3eso";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
@@ -126,6 +156,9 @@ import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07
 import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/07-fracciones-potencias-2eso";
 import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/05-fracciones-potencias-3eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
+import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
+import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
+import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConstante2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/05-funcion-constante-2eso";
 import { funcionConstante3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/03-funcion-constante-3eso";
@@ -138,15 +171,22 @@ import { funcionMxN3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funcio
 import { funcionRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/08-funcion-repaso-4eso";
 import { funcionTablaGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/03-funcion-tabla-grafica-4eso";
 import { funcionTendenciaPeriodicidad4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/06-funcion-tendencia-periodicidad-4eso";
+import { funcionTransferenciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/06-funcion-transferencia";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
+import { induccionFaradayLenzLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/05-induccion-faraday-lenz";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
+import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
+import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
+import { integralDerivativaPidLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/11-integral-derivativa-pid";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { inversaAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/05-inversa-aplicaciones-4eso";
 import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
+import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/03-lazo-abierto-cerrado";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
+import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
 import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
 import { linealPendientePuntos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/04-lineal-pendiente-puntos-4eso";
@@ -156,6 +196,9 @@ import { linealRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-
 import { linealTipos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/02-lineal-tipos-4eso";
 import { linealTrozos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/07-lineal-trozos-4eso";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
+import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
+import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
+import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
@@ -172,6 +215,15 @@ import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
+import { motorAlternativoTiemposLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/05-motor-alternativo-tiempos";
+import { motorCcArranqueRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/09-motor-cc-arranque-regulacion";
+import { motorCcConstitucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/06-motor-cc-constitucion";
+import { motorCcCurvasBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/08-motor-cc-curvas-balance";
+import { motorCcTiposConexionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/07-motor-cc-tipos-conexion";
+import { motorTrifasicoArranqueMonofasicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/12-motor-trifasico-arranque-monofasico";
+import { motorTrifasicoCampoGiratorioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/10-motor-trifasico-campo-giratorio";
+import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/11-motor-trifasico-conexion-balance";
+import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
 import { multiplicacionDivisionEnteros2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/07-multiplicacion-division-enteros-2eso";
@@ -211,6 +263,7 @@ import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
+import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/04-pascal-prensa";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
@@ -227,12 +280,15 @@ import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcio
 import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/08-porcentajes-3eso";
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
+import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
+import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseEntera4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/03-potencias-base-entera-4eso";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
 import { potenciasExponenteEntero4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/07-potencias-exponente-entero-4eso";
 import { potenciasExponenteNegativo3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/02-potencias-exponente-negativo-3eso";
+import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
 import { probArbol4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/07-prob-arbol-4eso";
 import { probCompuestas4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/04-prob-compuestas-4eso";
@@ -264,6 +320,7 @@ import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
+import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
 import { proporcionalidadCompuesta4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/02-proporcionalidad-compuesta-4eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
 import { proporcionalidadDirectaProblemasLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/02-proporcionalidad-directa-problemas";
@@ -289,9 +346,12 @@ import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-
 import { rectasYAngulosParalelasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/04-rectas-y-angulos-paralelas";
 import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/06-rectas-y-angulos-poligonos";
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
+import { redDistribucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/04-red-distribucion";
+import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/09-refrigeracion-carnot-eficiencia";
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
+import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
 import { semejanzaFiguras4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/01-semejanza-figuras-4eso";
@@ -301,6 +361,8 @@ import { semejanzaRectangulos4esoLesson } from "@/data/lessons/matematicas-4-eso
 import { semejanzaTales4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/04-semejanza-tales-4eso";
 import { semejanzaTriangulos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/05-semejanza-triangulos-4eso";
 import { semejanzaTroncos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/07-semejanza-troncos-4eso";
+import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
+import { simplificarDiagramasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/08-simplificar-diagramas";
 import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/05-simplificar-equivalentes-operador-4eso";
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
@@ -314,6 +376,7 @@ import { sistemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { sistemasLinealesGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/02-sistemas-lineales-grafica-4eso";
 import { sistemasNoLineales4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/06-sistemas-no-lineales-4eso";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
+import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
 import { sumaProgresionAritmetica3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/03-suma-progresion-aritmetica-3eso";
@@ -332,6 +395,7 @@ import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matem
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
+import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
 import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/01-teorema-pitagoras-2eso";
 import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/01-teorema-pitagoras-3eso";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
@@ -340,11 +404,16 @@ import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industria
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
+import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
+import { turbinaGasBraytonLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/04-turbina-gas-brayton";
+import { unidadValvulasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/08-unidad-valvulas";
 import { unidadesVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/01-unidades-volumen-2eso";
+import { valvulasDistribuidorasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/07-valvulas-distribuidoras";
 import { variacionesPorcentuales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/09-variaciones-porcentuales-3eso";
 import { variacionesPorcentuales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/07-variaciones-porcentuales-4eso";
+import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/07-volumen-piramide-cono-3eso";
@@ -353,6 +422,7 @@ import { volumenPrismaCilindro3esoLesson } from "@/data/lessons/matematicas-3-es
 import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/02-volumen-prismas-cilindros-2eso";
 
 export const interactiveLessons = {
+  "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-ecuaciones": algebraEcuacionesLesson,
@@ -361,6 +431,7 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "alotropia-amorfos": alotropiaAmorfosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
   "analitica-modulo-4eso": analiticaModulo4esoLesson,
   "analitica-operaciones-4eso": analiticaOperaciones4esoLesson,
@@ -386,22 +457,36 @@ export const interactiveLessons = {
   "areas-figuras-curvas-3eso": areasFigurasCurvas3esoLesson,
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
+  "atomo-nucleo-corteza": atomoNucleoCortezaLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
+  "automatica-definiciones": automaticaDefinicionesLesson,
+  "bomba-calor": bombaCalorLesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
+  "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
+  "caudal-humedad": caudalHumedadLesson,
+  "ciclo-carnot": cicloCarnotLesson,
+  "ciclos-otto-diesel": ciclosOttoDieselLesson,
+  "ciclos-reversibles-focos": ciclosReversiblesFocosLesson,
   "cilindros-2eso": cilindros2esoLesson,
+  "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
+  "circuitos-aplicaciones": circuitosAplicacionesLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
   "circunferencias-2eso": circunferencias2esoLesson,
   "cobre-aluminio-magnesio-titanio": cobreAluminioMagnesioTitanioLesson,
+  "compresores": compresoresLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
   "conicas-3eso": conicas3esoLesson,
   "conos-2eso": conos2esoLesson,
   "continuidad-3eso": continuidad3esoLesson,
+  "continuidad-bernoulli": continuidadBernoulliLesson,
+  "controlador-proporcional": controladorProporcionalLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
   "crecimiento-extremos-2eso": crecimientoExtremos2esoLesson,
   "crecimiento-extremos-3eso": crecimientoExtremos3esoLesson,
+  "criterios-diseno-respuesta": criteriosDisenoRespuestaLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
   "cuad-aplicaciones-4eso": cuadAplicaciones4esoLesson,
@@ -415,9 +500,12 @@ export const interactiveLessons = {
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
   "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
+  "detectores-diseno": detectoresDisenoLesson,
   "diagrama-eutectico": diagramaEutecticoLesson,
   "diagrama-hierro-carbono": diagramaHierroCarbonoLesson,
   "diagrama-isomorfo-cu-ni": diagramaIsomorfoCuNiLesson,
+  "diagrama-traccion": diagramaTraccionLesson,
+  "diagramas-bloques": diagramasBloquesLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "divisibilidad": divisibilidadLesson,
@@ -426,6 +514,8 @@ export const interactiveLessons = {
   "division-fracciones-3eso": divisionFracciones3esoLesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
+  "dureza-brinell": durezaBrinellLesson,
+  "dureza-vickers-rockwell": durezaVickersRockwellLesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-denominadores-2eso": ecuacionesDenominadores2esoLesson,
@@ -441,11 +531,18 @@ export const interactiveLessons = {
   "ecuaciones-segundo-grado-completas-4eso": ecuacionesSegundoGradoCompletas4esoLesson,
   "ecuaciones-soluciones-3eso": ecuacionesSoluciones3esoLesson,
   "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
+  "electronegatividad-reactividad": electronegatividadReactividadLesson,
+  "elementos-sistema-control": elementosSistemaControlLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
+  "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
+  "enlace-ionico": enlaceIonicoLesson,
+  "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "esferas-2eso": esferas2esoLesson,
+  "espira-momento-motor": espiraMomentoMotorLesson,
+  "estabilidad-routh": estabilidadRouthLesson,
   "estadistica-caja-4eso": estadisticaCaja4esoLesson,
   "estadistica-cv-4eso": estadisticaCv4esoLesson,
   "estadistica-dispersion-4eso": estadisticaDispersion4esoLesson,
@@ -454,6 +551,7 @@ export const interactiveLessons = {
   "estadistica-ramas-4eso": estadisticaRamas4esoLesson,
   "estadistica-repaso-4eso": estadisticaRepaso4esoLesson,
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
+  "estructura-cristalina": estructuraCristalinaLesson,
   "exponencial-crecimiento-4eso": exponencialCrecimiento4esoLesson,
   "exponencial-funcion-4eso": exponencialFuncion4esoLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
@@ -469,6 +567,7 @@ export const interactiveLessons = {
   "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "figuras-semejantes-2eso": figurasSemejantes2esoLesson,
+  "fluidos-densidad-vapor": fluidosDensidadVaporLesson,
   "forma-exponencial-radicales-4eso": formaExponencialRadicales4esoLesson,
   "forma-general-recta-3eso": formaGeneralRecta3esoLesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
@@ -481,6 +580,9 @@ export const interactiveLessons = {
   "fracciones-potencias-2eso": fraccionesPotencias2esoLesson,
   "fracciones-potencias-3eso": fraccionesPotencias3esoLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
+  "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
+  "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
+  "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-constante-2eso": funcionConstante2esoLesson,
   "funcion-constante-3eso": funcionConstante3esoLesson,
@@ -493,15 +595,22 @@ export const interactiveLessons = {
   "funcion-repaso-4eso": funcionRepaso4esoLesson,
   "funcion-tabla-grafica-4eso": funcionTablaGrafica4esoLesson,
   "funcion-tendencia-periodicidad-4eso": funcionTendenciaPeriodicidad4esoLesson,
+  "funcion-transferencia": funcionTransferenciaLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
+  "induccion-faraday-lenz": induccionFaradayLenzLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
+  "instalacion-bombas": instalacionBombasLesson,
+  "instalacion-frigorifica": instalacionFrigorificaLesson,
+  "integral-derivativa-pid": integralDerivativaPidLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "inversa-aplicaciones-4eso": inversaAplicaciones4esoLesson,
   "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
+  "lazo-abierto-cerrado": lazoAbiertoCerradoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
+  "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
   "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
   "lineal-pendiente-puntos-4eso": linealPendientePuntos4esoLesson,
@@ -511,6 +620,9 @@ export const interactiveLessons = {
   "lineal-tipos-4eso": linealTipos4esoLesson,
   "lineal-trozos-4eso": linealTrozos4esoLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
+  "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
+  "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
+  "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "maximo-comun-divisor": maximoComunDivisorLesson,
@@ -527,6 +639,15 @@ export const interactiveLessons = {
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
+  "motor-alternativo-tiempos": motorAlternativoTiemposLesson,
+  "motor-cc-arranque-regulacion": motorCcArranqueRegulacionLesson,
+  "motor-cc-constitucion": motorCcConstitucionLesson,
+  "motor-cc-curvas-balance": motorCcCurvasBalanceLesson,
+  "motor-cc-tipos-conexion": motorCcTiposConexionLesson,
+  "motor-trifasico-arranque-monofasico": motorTrifasicoArranqueMonofasicoLesson,
+  "motor-trifasico-campo-giratorio": motorTrifasicoCampoGiratorioLesson,
+  "motor-trifasico-conexion-balance": motorTrifasicoConexionBalanceLesson,
+  "motores-combustion-externa": motoresCombustionExternaLesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
   "multiplicacion-division-enteros-2eso": multiplicacionDivisionEnteros2esoLesson,
@@ -566,6 +687,7 @@ export const interactiveLessons = {
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "parentesis-enteros": parentesisEnterosLesson,
+  "pascal-prensa": pascalPrensaLesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "piramides-2eso": piramides2esoLesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
@@ -582,12 +704,15 @@ export const interactiveLessons = {
   "porcentajes-2eso": porcentajes2esoLesson,
   "porcentajes-3eso": porcentajes3esoLesson,
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
+  "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
+  "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-entera-4eso": potenciasBaseEntera4esoLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
   "potencias-exponente-entero-4eso": potenciasExponenteEntero4esoLesson,
   "potencias-exponente-negativo-3eso": potenciasExponenteNegativo3esoLesson,
+  "presion-neumatica": presionNeumaticaLesson,
   "prismas-2eso": prismas2esoLesson,
   "prob-arbol-4eso": probArbol4esoLesson,
   "prob-compuestas-4eso": probCompuestas4esoLesson,
@@ -619,6 +744,7 @@ export const interactiveLessons = {
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
+  "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
   "proporcionalidad-compuesta-4eso": proporcionalidadCompuesta4esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
   "proporcionalidad-directa-problemas": proporcionalidadDirectaProblemasLesson,
@@ -644,9 +770,12 @@ export const interactiveLessons = {
   "rectas-y-angulos-paralelas": rectasYAngulosParalelasLesson,
   "rectas-y-angulos-poligonos": rectasYAngulosPoligonosLesson,
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
+  "red-distribucion": redDistribucionLesson,
+  "refrigeracion-carnot-eficiencia": refrigeracionCarnotEficienciaLesson,
   "regla-fases-gibbs": reglaFasesGibbsLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
+  "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
   "semejanza-figuras-4eso": semejanzaFiguras4esoLesson,
@@ -656,6 +785,8 @@ export const interactiveLessons = {
   "semejanza-tales-4eso": semejanzaTales4esoLesson,
   "semejanza-triangulos-4eso": semejanzaTriangulos4esoLesson,
   "semejanza-troncos-4eso": semejanzaTroncos4esoLesson,
+  "simbologia-cilindros": simbologiaCilindrosLesson,
+  "simplificar-diagramas": simplificarDiagramasLesson,
   "simplificar-equivalentes-operador-4eso": simplificarEquivalentesOperador4esoLesson,
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
@@ -669,6 +800,7 @@ export const interactiveLessons = {
   "sistemas-lineales-grafica-4eso": sistemasLinealesGrafica4esoLesson,
   "sistemas-no-lineales-4eso": sistemasNoLineales4esoLesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
+  "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
   "sucesiones-3eso": sucesiones3esoLesson,
   "suma-progresion-aritmetica-3eso": sumaProgresionAritmetica3esoLesson,
@@ -687,6 +819,7 @@ export const interactiveLessons = {
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
+  "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
   "teorema-pitagoras-2eso": teoremaPitagoras2esoLesson,
   "teorema-pitagoras-3eso": teoremaPitagoras3esoLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
@@ -695,11 +828,16 @@ export const interactiveLessons = {
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
   "transformaciones-gas": transformacionesGasLesson,
+  "transformada-laplace": transformadaLaplaceLesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
   "triangulos-2eso": triangulos2esoLesson,
+  "turbina-gas-brayton": turbinaGasBraytonLesson,
+  "unidad-valvulas": unidadValvulasLesson,
   "unidades-volumen-2eso": unidadesVolumen2esoLesson,
+  "valvulas-distribuidoras": valvulasDistribuidorasLesson,
   "variaciones-porcentuales-3eso": variacionesPorcentuales3esoLesson,
   "variaciones-porcentuales-4eso": variacionesPorcentuales4esoLesson,
+  "viscosidad-indice": viscosidadIndiceLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
   "volumen-piramide-cono-3eso": volumenPiramideCono3esoLesson,

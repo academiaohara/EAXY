@@ -1,0 +1,8 @@
+---
+description: Revisar un tema de lecciones creado por otro agente
+alwaysApply: false
+---
+
+# Revisión de un tema nuevo
+
+Al revisar lecciones, animaciones o herramientas añadidas por otro agente, sigue **`docs/revision-tema.md`**: `npx tsx scripts/review-tema.ts <curso> <tema>` (coherencia), tsc/eslint/vitest/build, contraste de fórmulas y ejemplos con el PDF, y capturas con `scripts/review-visual.mjs`.

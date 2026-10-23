@@ -45,3 +45,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Es **opcional**: solo cuando explorar valores ayude a entender (relaciones, proporciones, signos, escalas, fórmulas con parámetros). No se fuerza en cada diapositiva ni sustituye a la animación ni a los ejercicios.
 - Criterios y límites: **`docs/lessons-slides.md`** (sección «Herramienta interactiva en la diapositiva»; regla Cursor: `.cursor/rules/new-lessons.mdc`).
 
+# EAXY — convertir un PDF de libro en un tema
+
+- Receta completa y ejemplo de referencia (unidad 10 de Tecnología Industrial II): **`docs/pdf-a-tema.md`** (regla Cursor: `.cursor/rules/pdf-a-tema.mdc`).
+- Revisar un tema hecho por otro agente: **`docs/revision-tema.md`** (`scripts/review-tema.ts` y `scripts/review-visual.mjs`).

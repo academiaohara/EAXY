@@ -1,4 +1,11 @@
 // industrial-imports
+import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
+import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
+import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
+import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
+import { buildProcesosCamino, buildMotorFrigorificaFocos, buildCarnotCiclo, buildCarnotFrigorifico, buildRankineCircuito, buildBraytonCircuito, buildMotor4Tiempos, buildOttoDieselPV, buildTurbocompresorFlujo, buildFrigorificoCircuito, buildBombaCalorInversion } from "@/components/lesson/anim/scenes/industrial/termicos";
+import { buildAtomoIsotopos, buildEnlaceCurvaEnergia, buildIonNaCl, buildCovalenteMultiple, buildHibridacionSp3, buildMetalicoNube, buildAguaPuenteH, buildCristalAmorfo } from "@/components/lesson/anim/scenes/industrial/estructura";
+import { buildElasticoPlastico, buildVarillaTraccion, buildDiagramaTraccion, buildBrinellHuella, buildRockwellProfundidad, buildPenduloCharpy, buildFatigaCiclos } from "@/components/lesson/anim/scenes/industrial/ensayos";
 import { buildPlanoInclinado, buildTrabajoAreaCurva, buildResorteTrabajo, buildRodaduraCarrera, buildPrimerPrincipio, buildParTrabajo, buildPistonTrabajo, buildPresaTurbina } from "@/components/lesson/anim/scenes/industrial/maquinas";
 import { buildAustenitaMartensita, buildJominyEnsayo, buildTttLectura, buildCiclosTratamiento, buildCementacionDifusion, buildPilaCorrosion, buildAireacionDiferencial, buildProteccionCatodica, buildDesgasteAsperezas, buildCavitacion } from "@/components/lesson/anim/scenes/industrial/tratamientos";
 import { buildVidrioRed, buildPrensadoSinterizado, buildBarbotina, buildPolimerizacionAdicion, buildPolimerizacionCondensacion, buildPolimerosCalor, buildExtrusionTornillo, buildDepositoSeguridad } from "@/components/lesson/anim/scenes/industrial/materiales";
@@ -471,6 +478,63 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "par-trabajo": () => buildParTrabajo(),
   "piston-trabajo": () => buildPistonTrabajo(),
   "presa-turbina": () => buildPresaTurbina(),
+  "atomo-isotopos": () => buildAtomoIsotopos(),
+  "enlace-curva-energia": () => buildEnlaceCurvaEnergia(),
+  "ion-nacl": () => buildIonNaCl(),
+  "covalente-multiple": () => buildCovalenteMultiple(),
+  "hibridacion-sp3": () => buildHibridacionSp3(),
+  "metalico-nube": () => buildMetalicoNube(),
+  "agua-puente-h": () => buildAguaPuenteH(),
+  "cristal-amorfo": () => buildCristalAmorfo(),
+  "elastico-plastico": () => buildElasticoPlastico(),
+  "varilla-traccion": () => buildVarillaTraccion(),
+  "diagrama-traccion": () => buildDiagramaTraccion(),
+  "brinell-huella": () => buildBrinellHuella(),
+  "rockwell-profundidad": () => buildRockwellProfundidad(),
+  "pendulo-charpy": () => buildPenduloCharpy(),
+  "fatiga-ciclos": () => buildFatigaCiclos(),
+  "procesos-camino-pv": () => buildProcesosCamino(),
+  "motor-frigorifica-focos": () => buildMotorFrigorificaFocos(),
+  "carnot-ciclo": () => buildCarnotCiclo(),
+  "carnot-frigorifico": () => buildCarnotFrigorifico(),
+  "rankine-circuito": () => buildRankineCircuito(),
+  "brayton-circuito": () => buildBraytonCircuito(),
+  "motor-4-tiempos": () => buildMotor4Tiempos(),
+  "otto-diesel-pv": () => buildOttoDieselPV(),
+  "turbocompresor-flujo": () => buildTurbocompresorFlujo(),
+  "frigorifico-circuito": () => buildFrigorificoCircuito(),
+  "bomba-calor-inversion": () => buildBombaCalorInversion(),
+  "oersted-aguja": () => buildOersted(),
+  "hilos-paralelos-fuerza": () => buildHilosParalelos(),
+  "lorentz-carga": () => buildLorentzCarga(),
+  "espira-momento": () => buildEspiraMomento(),
+  "faraday-varilla": () => buildFaradayVarilla(),
+  "motor-cc-bloques": () => buildMotorCcBloques(),
+  "campo-giratorio": () => buildCampoGiratorio(),
+  "arranque-estrella-triangulo": () => buildEstrellaTriangulo(),
+  "monofasico-arranque": () => buildMonofasicoArranque(),
+  "humedad-compresion": () => buildHumedadCompresion(),
+  "compresor-embolo": () => buildCompresorEmbolo(),
+  "red-distribucion-aire": () => buildRedDistribucion(),
+  "cilindros-efecto": () => buildCilindrosEfecto(),
+  "valvula-32-conmutacion": () => buildValvula32(),
+  "estrangulacion-velocidad": () => buildEstrangulacion(),
+  "espacio-fase-secuencia": () => buildEspacioFase(),
+  "mando-doble-efecto": () => buildMandoDoble(),
+  "viscosidad-placas": () => buildViscosidadPlacas(),
+  "flujo-laminar-turbulento": () => buildFlujoLaminarTurbulento(),
+  "prensa-hidraulica": () => buildPrensaHidraulica(),
+  "continuidad-bernoulli": () => buildContinuidadBernoulli(),
+  "bomba-engranajes": () => buildBombaEngranajes(),
+  "limitadora-descarga": () => buildLimitadoraDescarga(),
+  "valvula-43-cilindro": () => buildValvula43Cilindro(),
+  "regulacion-caudal-hid": () => buildRegulacionCaudalHid(),
+  "lazo-abierto-cerrado": () => buildLazoAbiertoCerrado(),
+  "respuesta-escalon": () => buildRespuestaEscalon(),
+  "polos-plano-s": () => buildPolosPlanoS(),
+  "reduccion-bloques": () => buildReduccionBloques(),
+  "offset-proporcional": () => buildOffsetProporcional(),
+  "laplace-dominios": () => buildLaplaceDominios(),
   /* industrial-end */
 };
 

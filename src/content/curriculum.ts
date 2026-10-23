@@ -3421,9 +3421,167 @@ export const curriculum: Curriculum = {
       id: courseId(16),
       slug: "tecnologia-industrial-2-bachillerato",
       title: "Tecnología Industrial II 2º Bachillerato",
-      description: "Materiales, tratamientos térmicos, corrosión y principios de las máquinas.",
+      description: "Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.",
       orderIndex: 16,
       modules: [
+        {
+          id: moduleId(66),
+          slug: "estructura-materiales-ensayos",
+          title: "Estructura de los materiales. Propiedades y ensayos de medida",
+          orderIndex: 1,
+          lessons: [
+            {
+              id: lessonId(6601),
+              title: "1. El átomo: núcleo, corteza e isótopos",
+              summary:
+                "Núcleo, corteza, número atómico y másico; isótopos, isótonos e isóbaros.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "atomo-nucleo-corteza",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6602),
+              title: "2. Fuerzas y energía de enlace",
+              summary:
+                "Atracción y repulsión entre átomos, distancia de equilibrio y energía de enlace.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "fuerzas-energia-enlace",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6603),
+              title: "3. Estructura electrónica y electronegatividad",
+              summary:
+                "Gases nobles, elementos electropositivos y electronegativos y escala de electronegatividad.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "electronegatividad-reactividad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6604),
+              title: "4. Enlace iónico",
+              summary:
+                "Transferencia de electrones, tamaño de los iones y propiedades de los cristales iónicos.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "enlace-ionico",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6605),
+              title: "5. Enlace covalente y el carbono",
+              summary:
+                "Pares compartidos, enlaces múltiples e hibridación sp³ del carbono.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "enlace-covalente-carbono",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6606),
+              title: "6. Enlace metálico y enlaces secundarios",
+              summary:
+                "Nube electrónica, fuerzas de Van der Waals, puente de hidrógeno y energía de enlace.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "enlace-metalico-secundario",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6607),
+              title: "7. Estructura cristalina y celdas unitarias",
+              summary:
+                "Celda unitaria, redes de Bravais y estructuras BCC, FCC y HCP.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "estructura-cristalina",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6608),
+              title: "8. Alotropía y materiales amorfos",
+              summary:
+                "Cambios de estructura con la temperatura y sólidos sin orden de largo alcance.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "alotropia-amorfos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6609),
+              title: "9. Propiedades mecánicas y tipos de ensayos",
+              summary:
+                "Deformación elástica y plástica, propiedades mecánicas y clasificación de los ensayos.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "propiedades-mecanicas-ensayos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6610),
+              title: "10. Tensión, deformación y ensayo de tracción",
+              summary:
+                "Tensión σ = F/A₀, deformación ε = Δl/l₀, probetas normalizadas y máquina de tracción.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "tension-deformacion-traccion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6611),
+              title: "11. El diagrama de tracción",
+              summary:
+                "Zonas elástica y plástica, límite elástico, fluencia, tensión de rotura y comparación de materiales.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "diagrama-traccion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6612),
+              title: "12. Ley de Hooke y tensión de trabajo",
+              summary:
+                "Módulo elástico, alargamiento, coeficiente de seguridad y tensión máxima de trabajo.",
+              orderIndex: 12,
+              kind: "interactive",
+              interactiveSlug: "ley-hooke-tension-trabajo",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6613),
+              title: "13. Ensayo de dureza Brinell",
+              summary:
+                "Bola, huella, superficie del casquete, dureza HB y cargas recomendadas.",
+              orderIndex: 13,
+              kind: "interactive",
+              interactiveSlug: "dureza-brinell",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6614),
+              title: "14. Dureza Vickers y Rockwell",
+              summary:
+                "Pirámide de diamante, HV, profundidad permanente y escalas HRB y HRC.",
+              orderIndex: 14,
+              kind: "interactive",
+              interactiveSlug: "dureza-vickers-rockwell",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6615),
+              title: "15. Resiliencia, fatiga y ensayos tecnológicos",
+              summary:
+                "Péndulo de Charpy, límite de fatiga, plegado, embutición y ensayos no destructivos.",
+              orderIndex: 15,
+              kind: "interactive",
+              interactiveSlug: "resiliencia-fatiga-tecnologicos",
+              conceptSlugs: [],
+            },
+          ],
+        },
         {
           id: moduleId(48),
           slug: "aleaciones-diagramas-equilibrio",
@@ -3772,6 +3930,586 @@ export const curriculum: Curriculum = {
               orderIndex: 10,
               kind: "interactive",
               interactiveSlug: "potencia-electrica-hidraulica",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(67),
+          slug: "motores-termicos-circuitos-frigorificos",
+          title: "Motores térmicos. Circuitos frigoríficos",
+          orderIndex: 6,
+          lessons: [
+            {
+              id: lessonId(6701),
+              title: "1. Procesos, ciclos y máquinas entre dos focos",
+              summary:
+                "Procesos reversibles, el trabajo según el camino, motor térmico y máquina frigorífica entre dos focos.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "ciclos-reversibles-focos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6702),
+              title: "2. El ciclo de Carnot",
+              summary:
+                "Isotermas y adiabáticas, rendimiento η = 1 − T_f/T_c y límite de cualquier motor.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "ciclo-carnot",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6703),
+              title: "3. Clasificación de motores y combustión externa",
+              summary:
+                "Combustión externa e interna, máquina de vapor, turbina y ciclo Rankine.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "motores-combustion-externa",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6704),
+              title: "4. Turbina de gas: el ciclo Brayton",
+              summary:
+                "Compresor, cámara de combustión y turbina; rendimiento según la relación de presiones.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "turbina-gas-brayton",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6705),
+              title: "5. Motor alternativo: cuatro y dos tiempos",
+              summary:
+                "Partes del motor, los cuatro tiempos, el motor de dos tiempos, encendido y refrigeración.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "motor-alternativo-tiempos",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6706),
+              title: "6. Ciclos Otto y Diesel",
+              summary:
+                "Calor a volumen o a presión constante, rendimiento y relación de compresión.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "ciclos-otto-diesel",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6707),
+              title: "7. Potencia y rendimiento de un motor",
+              summary:
+                "P = N/2 · V_T · d_a · δ · Q_c · η, cilindrada, cámara y potencia indicada y efectiva.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "potencia-rendimiento-motor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6708),
+              title: "8. Sobrealimentación y turbocompresor",
+              summary:
+                "Más aire en el cilindro: turbocompresor e intercooler.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "sobrealimentacion-turbocompresor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6709),
+              title: "9. Refrigeración: ciclo de Carnot y eficiencia",
+              summary:
+                "Ciclo de Carnot inverso, eficiencia o COP y cálculo del trabajo de una máquina frigorífica.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "refrigeracion-carnot-eficiencia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6710),
+              title: "10. La instalación frigorífica",
+              summary:
+                "Compresor, condensador, válvula de expansión y evaporador; sistemas de gas y de vapor; refrigerantes.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "instalacion-frigorifica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6711),
+              title: "11. La bomba de calor",
+              summary:
+                "Eficiencia ε = Q_c/W, ventaja frente a la resistencia y válvula de cuatro vías.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "bomba-calor",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(68),
+          slug: "magnetismo-motores-electricos",
+          title: "Magnetismo y electricidad. Motores eléctricos",
+          orderIndex: 7,
+          lessons: [
+            {
+              id: lessonId(6801),
+              title: "1. Imanes y experiencia de Oersted",
+              summary:
+                "Polos, campo de un imán y la relación entre corriente y magnetismo.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "magnetismo-imanes-oersted",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6802),
+              title: "2. Inducción magnética y fuerza entre corrientes",
+              summary:
+                "Fuerza entre hilos paralelos, campo de un hilo (Biot y Savart) y el tesla.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "campo-induccion-biot-savart",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6803),
+              title: "3. Fuerza sobre una carga y sobre un conductor",
+              summary:
+                "F = I·l·B·sen θ, ley de Lorentz y trayectorias circulares.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "fuerza-lorentz-conductor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6804),
+              title: "4. Momento sobre una espira: el principio del motor",
+              summary:
+                "M = N·I·S·B·sen φ, equilibrio y paso de la espira al motor.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "espira-momento-motor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6805),
+              title: "5. Fuerza electromotriz inducida: Faraday y Lenz",
+              summary:
+                "Flujo magnético, ε = −ΔΦ/Δt y sentido de la corriente inducida.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "induccion-faraday-lenz",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6806),
+              title: "6. Motor de corriente continua: partes y magnitudes",
+              summary:
+                "Inductor e inducido, par interno, fuerza contraelectromotriz y circuito equivalente.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-constitucion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6807),
+              title: "7. Tipos de motores de corriente continua",
+              summary:
+                "Excitación independiente, derivación y serie: corrientes en cada circuito.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-tipos-conexion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6808),
+              title: "8. Curvas características y balance de potencias",
+              summary:
+                "Velocidad y par de los motores derivación y serie; pérdidas y rendimiento.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-curvas-balance",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6809),
+              title: "9. Arranque, regulación, inversión y frenado (CC)",
+              summary:
+                "Reóstato de arranque, regulación de velocidad, cambio de giro y frenado eléctrico.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "motor-cc-arranque-regulacion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6810),
+              title: "10. Motor trifásico: campo giratorio y deslizamiento",
+              summary:
+                "Estator y rotor, campo giratorio, velocidad de sincronismo y deslizamiento.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-campo-giratorio",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6811),
+              title: "11. Conexión, curvas y balance del motor trifásico",
+              summary:
+                "Estrella y triángulo, placa de características, potencias, rendimiento y característica mecánica.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-conexion-balance",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6812),
+              title: "12. Arranque y regulación (CA) y motores monofásicos",
+              summary:
+                "Estrella-triángulo y otros arranques, regulación de velocidad, frenado y motores monofásicos.",
+              orderIndex: 12,
+              kind: "interactive",
+              interactiveSlug: "motor-trifasico-arranque-monofasico",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(69),
+          slug: "automatizacion-neumatica",
+          title: "Automatización neumática",
+          orderIndex: 8,
+          lessons: [
+            {
+              id: lessonId(6901),
+              title: "1. Presión relativa y absoluta",
+              summary:
+                "Presión manométrica y absoluta, fuerza de una presión y técnica del vacío (ventosas).",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "presion-neumatica",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6902),
+              title: "2. Caudal y humedad del aire",
+              summary:
+                "Caudal de un cilindro, aire libre y humedad absoluta, relativa y específica.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "caudal-humedad",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6903),
+              title: "3. Producción de aire comprimido: compresores",
+              summary:
+                "Relación de compresión y compresores de émbolo, de paletas y de tornillo.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "compresores",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6904),
+              title: "4. Red de distribución y tratamiento del aire",
+              summary:
+                "Tuberías, depósitos, acumuladores, filtros, separadores y purgadores.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "red-distribucion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6905),
+              title: "5. Simbología y cilindros neumáticos",
+              summary:
+                "Símbolos normalizados, cilindros de simple y doble efecto y pandeo del vástago.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "simbologia-cilindros",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6906),
+              title: "6. Fuerza y consumo de aire de un cilindro",
+              summary:
+                "F = S·p con rozamiento y muelle, y consumo en condiciones normales.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "fuerza-consumo-cilindro",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6907),
+              title: "7. Válvulas distribuidoras: símbolo y nombre",
+              summary:
+                "Vías y posiciones, nomenclatura 3/2, 4/2, 5/2 y 4/3, códigos de los conductos.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "valvulas-distribuidoras",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6908),
+              title: "8. Accionamientos, válvulas de bloqueo y regulación",
+              summary:
+                "Mandos, antirretorno, selectora (O), simultaneidad (Y), estranguladoras y de presión.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "mandos-bloqueo-regulacion",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6909),
+              title: "9. Detectores y diseño de circuitos",
+              summary:
+                "Captadores, diseño, diagrama espacio-fase y numeración de elementos.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "detectores-diseno",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(6910),
+              title: "10. Mando de cilindros y ejemplos prácticos",
+              summary:
+                "Mando directo e indirecto, control de velocidad y aplicaciones industriales.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "mando-cilindros-ejemplos",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(70),
+          slug: "automatismos-oleohidraulicos",
+          title: "Automatismos oleohidráulicos",
+          orderIndex: 9,
+          lessons: [
+            {
+              id: lessonId(7001),
+              title: "1. Fluidos hidráulicos: densidad y presión de vapor",
+              summary:
+                "Aceite incompresible, densidad, presión de vapor, cavitación y golpe de ariete.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "fluidos-densidad-vapor",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7002),
+              title: "2. Viscosidad e índice de viscosidad",
+              summary:
+                "Ley de Newton, poise y stoke, grados Engler y Saybolt e índice de viscosidad.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "viscosidad-indice",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7003),
+              title: "3. Propiedades del aceite y tipos de flujo",
+              summary:
+                "Punto de fluidez, lubricación, oxidación y régimen laminar o turbulento.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "aceite-propiedades-flujo",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7004),
+              title: "4. Principio de Pascal y prensa hidráulica",
+              summary:
+                "Presión en un fluido confinado, multiplicación de la fuerza y emboladas.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "pascal-prensa",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7005),
+              title: "5. Continuidad y teorema de Bernoulli",
+              summary:
+                "S₁v₁ = S₂v₂, balance de energía, medida de caudal y alturas de energía.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "continuidad-bernoulli",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7006),
+              title: "6. Potencia hidráulica y pérdida de carga",
+              summary:
+                "P = p·Q/η en kW y CV, sistemas hidrostático e hidrodinámico y pérdida h_f.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "potencia-perdida-carga",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7007),
+              title: "7. Instalaciones hidráulicas y bombas",
+              summary:
+                "Ventajas, estructura de la instalación y caudal de bombas de engranajes, paletas, pistones y tornillo.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "instalacion-bombas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7008),
+              title: "8. La unidad hidráulica y las válvulas",
+              summary:
+                "Depósito, filtro, limitadora, distribuidoras, válvulas de caudal y de presión.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "unidad-valvulas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7009),
+              title: "9. Cilindros, motores hidráulicos y simbología",
+              summary:
+                "Cilindros, fuerza y velocidad, motores hidráulicos y símbolos normalizados.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "cilindros-motores-simbologia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7010),
+              title: "10. Circuitos oleohidráulicos de aplicación",
+              summary:
+                "Cilindros de simple y doble efecto, válvula 4/3, regulación de velocidad y de presión.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "circuitos-aplicaciones",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
+          id: moduleId(71),
+          slug: "sistemas-automaticos",
+          title: "Sistemas automáticos",
+          orderIndex: 10,
+          lessons: [
+            {
+              id: lessonId(7101),
+              title: "1. La automática: definiciones",
+              summary:
+                "Control automático, sectores, señal, planta y proceso.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "automatica-definiciones",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7102),
+              title: "2. Elementos de un sistema de control",
+              summary:
+                "Mando, captador, comparador, amplificador, actuador y perturbaciones.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "elementos-sistema-control",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7103),
+              title: "3. Control en lazo abierto y en lazo cerrado",
+              summary:
+                "Control en lazo abierto y cerrado, realimentación y señales normalizadas.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "lazo-abierto-cerrado",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7104),
+              title: "4. Criterios de diseño y respuesta transitoria",
+              summary:
+                "Estabilidad, señal escalón, sobreoscilación y tiempos de la respuesta.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "criterios-diseno-respuesta",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7105),
+              title: "5. La transformada de Laplace",
+              summary:
+                "Transformada de Laplace, tabla de funciones y propiedades.",
+              orderIndex: 5,
+              kind: "interactive",
+              interactiveSlug: "transformada-laplace",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7106),
+              title: "6. Función de transferencia, polos y estabilidad",
+              summary:
+                "Función de transferencia, ecuación característica, polos y estabilidad.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "funcion-transferencia",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7107),
+              title: "7. Diagramas de bloques y su álgebra",
+              summary:
+                "Bloques, comparadores y combinación en serie, paralelo y anillo.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "diagramas-bloques",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7108),
+              title: "8. Simplificar un diagrama de bloques",
+              summary:
+                "Transposición de sumadores y bifurcaciones y reducción de diagramas.",
+              orderIndex: 8,
+              kind: "interactive",
+              interactiveSlug: "simplificar-diagramas",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7109),
+              title: "9. Estabilidad: el criterio de Routh",
+              summary:
+                "Criterio de Routh, casos especiales y rango de K estable.",
+              orderIndex: 9,
+              kind: "interactive",
+              interactiveSlug: "estabilidad-routh",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7110),
+              title: "10. El controlador y la acción proporcional",
+              summary:
+                "El controlador, banda proporcional, ganancia y offset.",
+              orderIndex: 10,
+              kind: "interactive",
+              interactiveSlug: "controlador-proporcional",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(7111),
+              title: "11. Acciones integral, derivativa y PID",
+              summary:
+                "Acciones integral y derivativa, controlador PID y su ajuste.",
+              orderIndex: 11,
+              kind: "interactive",
+              interactiveSlug: "integral-derivativa-pid",
               conceptSlugs: [],
             },
           ],

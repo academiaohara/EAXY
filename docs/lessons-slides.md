@@ -304,6 +304,63 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `par-trabajo` | Par de fuerzas, momento M = d·F y trabajo W = M·θ | — |
 | `piston-trabajo` | Expansión isobárica en un cilindro: W = p·ΔV | — |
 | `presa-turbina` | Cadena de energía en una central hidroeléctrica | — |
+| `atomo-isotopos` | Átomo (núcleo y corteza, escala 10 m → 1 mm), núcleo con protones y neutrones, y isótopos / isóbaros / isótonos a partir del C-14 (Tecnología Industrial II, unidad 1) | — |
+| `enlace-curva-energia` | Energía de atracción, de repulsión y neta frente a la distancia: mínimo en a₀ y energía de enlace | — |
+| `ion-nacl` | Formación de NaCl: transferencia de un electrón, Na⁺ más pequeño y Cl⁻ más grande, red cristalina | — |
+| `covalente-multiple` | Enlace covalente simple, doble y triple en F₂, O₂ y N₂ con pares compartidos y no enlazantes | — |
+| `hibridacion-sp3` | Carbono: promoción 2s → 2p, cuatro orbitales sp³ y tetraedro del diamante (109,5°) | — |
+| `metalico-nube` | Cationes en una nube de electrones: conducción y deslizamiento de capas sin romper el enlace | — |
+| `agua-puente-h` | Dipolo permanente del agua (105°) y puentes de hidrógeno entre moléculas | — |
+| `cristal-amorfo` | Sólido cristalino con celda unitaria que se repite frente a sólido amorfo | — |
+| `elastico-plastico` | Planos de átomos con carga pequeña (elástica) y grande (deslizamiento, deformación permanente) con σ–ε en miniatura | — |
+| `varilla-traccion` | Probeta en tracción: σ = F/A₀ = 200 MPa y ε = Δl/l₀ = 0,001 | — |
+| `diagrama-traccion` | Diagrama σ–ε de un acero: OP, PE, límite elástico, fluencia, tensión de rotura y rotura | — |
+| `brinell-huella` | Ensayo Brinell: bola, huella (d, f), S = π·D·f y HB = F/S (500 kp, 5 mm, 2,3 mm → 114 HB) | — |
+| `rockwell-profundidad` | Rockwell: precarga, carga total, deformación permanente e y HRC = 100 − e | — |
+| `pendulo-charpy` | Péndulo de Charpy: energía absorbida E₀ − E₁ y resiliencia ρ = Eₚ/S | — |
+| `fatiga-ciclos` | Fatiga: tracción y compresión alternas, tres fases de rotura y curva de Wöhler con límite de fatiga | — |
+| `procesos-camino-pv` | Gas de i a f por tres caminos: el trabajo (área bajo la curva) cambia; ciclo cerrado y trabajo neto (Tecnología Industrial II, unidad 6) | — |
+| `motor-frigorifica-focos` | Motor térmico (Q_c → W + Q_f, η = 40 %) y máquina frigorífica entre dos focos | — |
+| `carnot-ciclo` | Ciclo de Carnot en el diagrama pV: dos isotermas y dos adiabáticas, trabajo neto y η = 1 − T_f/T_c | — |
+| `carnot-frigorifico` | El mismo ciclo recorrido al revés: compresión adiabática, cesión de Q_c, expansión adiabática y absorción de Q_f | — |
+| `rankine-circuito` | Circuito de vapor: bomba, caldera, turbina y condensador, con las mejoras (recalentamiento y regeneración) | — |
+| `brayton-circuito` | Turbina de gas: compresor, cámara de combustión y turbina, q₁, q₂ y η = 0,48 con r_p = 10 | — |
+| `motor-4-tiempos` | Pistón, válvulas y cigüeñal en admisión, compresión, expansión y escape | — |
+| `otto-diesel-pv` | Ciclos Otto (calor a V constante) y Diesel (a p constante) con sus rendimientos | — |
+| `turbocompresor-flujo` | Gases de escape → turbina → compresor → intercooler → motor | — |
+| `frigorifico-circuito` | Compresor, condensador, válvula de expansión y evaporador, y COP = Q_f/W | — |
+| `bomba-calor-inversion` | Bomba de calor en invierno y en verano (válvula de cuatro vías) y ε > 1 | — |
+| `oersted-aguja` | Aguja imantada junto a un hilo: sin corriente paralela, con corriente perpendicular, sentido invertido y campo en círculos (Tecnología Industrial II, unidad 7) | — |
+| `hilos-paralelos-fuerza` | Dos hilos paralelos: atracción (mismo sentido), repulsión, doble intensidad y doble distancia; F/l = μ₀·I₁·I₂/(2π·a) | — |
+| `lorentz-carga` | Carga + y − en un campo B entrante: F = q·v·B, trayectoria circular de radio m·v/(q·B) | — |
+| `espira-momento` | Espira de perfil en un campo: par de fuerzas, M = I·S·B·sen φ, equilibrio y necesidad del colector | — |
+| `faraday-varilla` | Barra móvil sobre un conductor en U: separación de cargas, corriente, fuerza de frenado y ε = B·l·v = ΔΦ/Δt | — |
+| `motor-cc-bloques` | Motor de CC del arranque (125 A) al equilibrio (10 A) con E' creciente | — |
+| `campo-giratorio` | Estator trifásico con tres corrientes a 120°: campo de módulo constante que gira 60° por instante | — |
+| `arranque-estrella-triangulo` | Corriente y par de arranque en estrella y en triángulo (relación 3) | — |
+| `monofasico-arranque` | Campo alternativo = dos campos giratorios opuestos; devanado auxiliar y condensador con diagrama vectorial | — |
+| `humedad-compresion` | Al comprimir el aire sube la humedad relativa hasta el 100 % y el vapor sobrante condensa (Tecnología Industrial II, unidad 8) | — |
+| `compresor-embolo` | Compresor de émbolo: aspiración, cierre, compresión y descarga | — |
+| `red-distribucion-aire` | Compresor, depósito, filtro, línea principal inclinada 1–3°, bajantes y purgadores | — |
+| `cilindros-efecto` | Cilindro de simple efecto (muelle) y de doble efecto (dos tomas) en avance y retroceso | — |
+| `valvula-32-conmutacion` | Válvula 3/2 normalmente cerrada con pulsador y muelle gobernando un cilindro de simple efecto | — |
+| `estrangulacion-velocidad` | Regulación de velocidad estrangulando la entrada o el escape, y dos unidireccionales | — |
+| `espacio-fase-secuencia` | Diagrama espacio-fase de A+ B+ A− B− | — |
+| `mando-doble-efecto` | Válvula 4/2 monoestable y cilindro de doble efecto: mando directo e indirecto por pilotaje | — |
+| `viscosidad-placas` | Placa móvil y placa fija con aceite: capas con velocidad lineal y ley de Newton τ = μ·Δv/Δy (Tecnología Industrial II, unidad 9) | — |
+| `flujo-laminar-turbulento` | Líneas de corriente, perfil de velocidades en un tubo y turbulencia | — |
+| `prensa-hidraulica` | Prensa de émbolos de 2,5 y 150 cm²: Pascal, F₂ = 3 000 N y recorrido (86 emboladas) | — |
+| `continuidad-bernoulli` | Estrechamiento: S₁v₁ = S₂v₂, presión menor donde la velocidad es mayor y medida del caudal | — |
+| `bomba-engranajes` | Bomba de engranajes: aspiración, arrastre por la pared e impulsión | — |
+| `limitadora-descarga` | Válvula limitadora que descarga al superar la presión de tarado y centro abierto en la 4/3 | — |
+| `valvula-43-cilindro` | Cilindro de doble efecto con válvula 4/3: centro, avance, retroceso y parada | — |
+| `regulacion-caudal-hid` | Orificio fijo, variable y con compensación de presión (Δp = F_m/S constante) | — |
+| `lazo-abierto-cerrado` | Lazo abierto sin corrección frente a lazo cerrado con captador, comparador y realimentación | — |
+| `respuesta-escalon` | Respuesta a un escalón: K, sobreoscilación M_P, t_p, t_d, t_r y banda de establecimiento t_s | — |
+| `polos-plano-s` | Polos en el plano de Laplace: semiplano izquierdo (se apaga), eje imaginario (se mantiene) y derecho (crece) | — |
+| `reduccion-bloques` | Serie (G₁G₂), paralelo (G₁+G₂) y anillo (G/(1+G), G/(1+GH)) como bloque equivalente | — |
+| `laplace-dominios` | Ecuación diferencial en t → transformada de Laplace → álgebra en s → transformada inversa | — |
+| `offset-proporcional` | Depósito con control P: offset tras un aumento de consumo y su eliminación con acción integral | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -478,6 +535,63 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `par-trabajo-explorador` | Par, ángulo girado y trabajo de rotación de una rueda | `a` (N·m), `b` (m), `c` (m) |
 | `diagrama-pv` | Isobárica, isoterma, isocora, adiabática y politrópica en el diagrama p–V | `a` (bar), `b` (L), `c` (V₂/V₁) |
 | `potencia-electrica-hidraulica` | P = U·I con coste en kWh y P = p·Q de una presa | `a` (V), `b` (A), `c` (`1` = hidráulica) |
+| `isotopos-explorador` | Protones y neutrones de un átomo frente a uno de referencia (C-14): A, símbolo y relación (isótopo, isóbaro, isótono) | `a` (Z de referencia), `b` (N de referencia) |
+| `curva-enlace-explorador` | Distancia entre núcleos y energía de enlace: energía neta, dominio de atracción o repulsión y mínimo en a₀ = 0,3 nm | `a` (r en centésimas de nm), `b` (E₀ en kcal/mol) |
+| `electronegatividad-explorador` | Dos elementos de la Tabla 1.1: ΔEN y tipo de enlace (metálico, iónico, covalente polar o apolar) | `a`, `b` (índices de los elementos) |
+| `covalente-explorador` | Molécula X₂ (H, F, Cl, O, N): electrones de valencia, pares compartidos y tipo de enlace | `a` (índice del elemento) |
+| `enlace-fusion-grafica` | Tabla 1.4: energía de enlace frente a temperatura de fusión por tipo de enlace y estimación de la energía de un metal | `a` (T de fusión inicial, °C) |
+| `celda-explorador` | Celdas BCC, FCC y HCP en 3D que se giran: átomos por celda, vecinos y ejemplos | `a` (0 BCC, 1 FCC, 2 HCP) |
+| `alotropia-explorador` | Estructura de un metal (Fe, Ca, Ti, Na, Al, Cu, Cr) según la temperatura, con sus transformaciones | `a` (metal), `b` (T inicial, °C) |
+| `tension-deformacion-explorador` | Fuerza, diámetro, longitud inicial y alargamiento de una probeta: A₀, σ en MPa y ε | `a` (kN), `b` (mm), `c` (Δl en mm) |
+| `diagrama-traccion-explorador` | Seis curvas σ–ε (acero con fluencia, fundido, bronce, Al-Cu, deformado en frío, templado): zona, tensión y deformación permanente al soltar | `a` (material) |
+| `hooke-explorador` | Ley de Hooke con materiales de la Tabla 1.6: E, σ = F/A₀ y Δl = F·l₀/(A₀·E), con aviso al pasar el límite elástico | `a` (material), `b` (kN), `c` (mm²) |
+| `tension-trabajo-explorador` | Tensión de trabajo σt = σF/n o σR/n y fuerza máxima para un material de la Tabla 1.6 | `a` (material), `b` (n) |
+| `brinell-explorador` | Bola, carga y huella del ensayo Brinell: f, S, HB, huella válida (D/4 < d < D/2) y carga recomendada P = K·D² | `a` (kp), `b` (mm) |
+| `vickers-explorador` | Carga y diagonal de la huella: HV = 1,8543·F/d² | `a` (kp), `b` (mm) |
+| `rockwell-explorador` | Deformación permanente e (unidades de 0,002 mm): HRC = 100 − e y HRB = 130 − e | `a` (e) |
+| `charpy-explorador` | Ángulos inicial y final del péndulo de Charpy: E₀, E₁, energía absorbida y resiliencia | `a` (° inicial), `b` (° final) |
+| `fatiga-explorador` | Tensión alterna (% de σ_R) y vida en ciclos con límite de fatiga (curva esquemática) | `a` (%) |
+| `carnot-explorador` | Rendimiento de Carnot de un motor o eficiencia de una máquina frigorífica según T_c y T_f (con kelvin) | `a` (T_c, °C), `b` (T_f, °C) |
+| `brayton-explorador` | Rendimiento del ciclo Brayton frente a la relación de presiones r_p | `a` (r_p) |
+| `otto-diesel-explorador` | Rendimientos Otto y Diesel con r y r_c, y aviso de detonación | `a` (r), `b` (r_c) |
+| `potencia-motor-explorador` | P = (N/2)·V_T·d_a·δ·Q_c·η con gasolina o gasóleo, en kW y CV | `a` (rpm), `b` (l) |
+| `cilindrada-explorador` | Diámetro, carrera, relación de compresión y cilindros: cilindrada, cámara de combustión y η Otto | `a` (mm), `b` (mm), `c` (r) |
+| `frigorifica-explorador` | Eficiencia de Carnot y real de una máquina frigorífica: W, Q_c y ε de la bomba de calor | `a` (T_f, °C), `b` (T_c, °C) |
+| `motor-tiempos-explorador` | Cigüeñal de 0° a 720°: pistón, válvulas, tiempo activo y cuándo hay trabajo | `a` (ángulo) |
+| `campo-hilo-explorador` | Campo de un hilo B = μ₀I/(2πa) y fuerza entre dos hilos paralelos (atracción o repulsión) | `a` (I₁, A), `b` (I₂, A), `c` (a, mm) |
+| `lorentz-explorador` | Protón, electrón o partícula α en un campo B: fuerza, radio y periodo | `a` (v, 10⁶ m/s), `b` (B, T) |
+| `espira-par-explorador` | M = N·I·S·B·sen φ con N, I, S, B y φ, y curva del momento | `a` (N), `b` (I), `c` (φ) |
+| `fem-induccion-explorador` | fem de una barra móvil (B·l·v) o de una bobina con flujo variable (N·ΔΦ/Δt) | `a` (B, T), `b` (v, m/s) |
+| `motor-cc-explorador` | Motor independiente, derivación o serie: Iᵢ, I_ex, I y corriente de arranque | `a` (U), `b` (E') |
+| `curvas-cc-explorador` | Curvas n(Iᵢ) y M(n) de un motor derivación (ejemplo del libro) y de uno serie | `a` (Iᵢ) |
+| `balance-cc-explorador` | Balance de potencias de un motor derivación: pérdidas en cobre, hierro y mecánicas, P_u y rendimiento | `a` (U), `b` (I) |
+| `arranque-cc-explorador` | Intensidad nominal, de arranque directo y resistencia del reóstato de arranque | `a` (U), `b` (E') |
+| `velocidad-trifasico-explorador` | n₁ = 60·f/p, deslizamiento y velocidad del rotor | `a` (pares de polos), `b` (S, %) |
+| `trifasico-conexion-explorador` | Placa 230/400 o 400/690 V y red: estrella o triángulo, U_f e I_f | `a` (I_L, A) |
+| `curva-par-asincrono-explorador` | Característica mecánica de un asíncrono con la carga y la tensión: punto de funcionamiento, calado y arranque | `a` (carga, %), `b` (U, %) |
+| `presion-neumatica-explorador` | Presión manométrica, absoluta y depresión; fuerza de las semiesferas de Magdeburgo | `a` (bar manométricos) |
+| `caudal-cilindro-explorador` | Sección, presión necesaria, caudal Q = S·v y caudal atmosférico (ejemplo 1 del libro) | `a` (D, mm), `b` (v, m/s), `c` (kg) |
+| `relacion-compresion-explorador` | Relación de compresión, volumen comprimido (Boyle) y número de etapas del compresor | `a` (bar) |
+| `fuerza-cilindro-explorador` | Fuerza teórica y real (rozamiento 10 %, muelle 6 %) en simple efecto, avance y retroceso | `a` (D), `b` (d), `c` (bar) |
+| `consumo-aire-explorador` | Volumen del cilindro, aire libre por ciclo y consumo en l/min | `a` (D, mm), `b` (carrera, mm) |
+| `valvula-nomenclatura-explorador` | Nombre «vías/posiciones», símbolo, códigos ISO y CETOP y uso típico | `a` (vías), `b` (posiciones) |
+| `logica-neumatica-explorador` | Válvula selectora (O) y de simultaneidad (Y) con dos pulsadores y tabla de verdad | `a` (0 O, 1 Y) |
+| `ventosa-vacio-explorador` | Masa que sujeta una ventosa según la altitud, el vacío y la superficie | `a` (altitud, m) |
+| `numeracion-neumatica-explorador` | Numeración 1.0, 1.1, 1.2…, 1.02 y 0.1 de los elementos de un circuito | `a` (grupo), `b` (segunda cifra) |
+| `pascal-prensa-explorador` | Prensa hidráulica: presión, fuerza F₂ y número de emboladas con S₁, S₂, l₁, l₂ | `a` (F₁, N), `b` (S₁, cm²), `c` (S₂, cm²) |
+| `continuidad-bernoulli-explorador` | Velocidades por continuidad y presión en el estrechamiento por Bernoulli, con aviso de cavitación | `a` (D₁, mm), `b` (D₂, mm), `c` (Q, l/min) |
+| `viscosidad-fuerza-explorador` | Fuerza de rozamiento viscoso en un pistón (ejemplo 1): μ = ν·d, S y Δv/Δy | `a` (ν, cm²/s), `b` (v, m/min) |
+| `energia-bernoulli-explorador` | Alturas geométrica, piezométrica y cinética y su porcentaje (ejemplo 5) | `a` (h, m), `b` (p, kp/cm²), `c` (v, m/s) |
+| `potencia-hidraulica-explorador` | P = p·Q/(612η) en kW y p·Q/(450η) en CV, con la parte útil y las pérdidas | `a` (p), `b` (Q, l/min) |
+| `perdida-carga-explorador` | Pérdida de carga h_f = ψ·(l/D)·v²/2g y caída de presión | `a` (ψ), `b` (l, m), `c` (v, m/s) |
+| `bomba-caudal-explorador` | Caudal teórico y real de bombas de engranajes, paletas, pistones radiales y tornillo | `a` (0 a 3: tipo) |
+| `cilindro-hidraulico-explorador` | Fuerza y velocidad de avance y retroceso de un cilindro de doble efecto con D, d, p y Q | `a` (D, mm), `b` (d, mm), `c` (p, bar) |
+| `limitadora-explorador` | Presión de tarado frente a la que exige la carga: abre y descarga o no | `a` (tarado, bar), `b` (carga, bar) |
+| `lazo-perturbacion-explorador` | Salida en lazo abierto y cerrado ante una perturbación; error = (r − d)/(1 + Kp·G) | `a` (r, %), `b` (d, %), `c` (Kp) |
+| `segundo-orden-explorador` | Sistema de 2.º orden: M_P, t_p, t_r y t_s al variar ζ y ωn, con curva de respuesta | `a` (ζ), `b` (ωn, rad/s) |
+| `bloques-explorador` | Serie, paralelo y anillo (directo o con H): FDT equivalente | `a` (G₁), `b` (G₂), `c` (H) |
+| `routh-explorador` | Tabla de Routh de s⁴ + a₁s³ + a₂s² + a₃s + a₄ con cambios de signo y veredicto | `a`, `b`, `c` (a₁–a₃), `n` (a₄) |
+| `pid-explorador` | Regulador P, PI, PD o PID sobre un proceso de dos retardos: error, sobreoscilación y establecimiento | `a` (Kp), `b` (ti, s), `c` (td, s) |
 
 ## Respuesta como fracción
 

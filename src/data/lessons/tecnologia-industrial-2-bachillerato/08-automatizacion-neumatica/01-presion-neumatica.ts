@@ -1,0 +1,98 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_8_SUBTITLE } from "@/data/lessons/shared";
+
+export const presionNeumaticaLesson: InteractiveLesson = {
+  slug: "presion-neumatica",
+  title: "1. Presión relativa y absoluta",
+  subtitle: TEMA_TI2_8_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "magdeburgo",
+      type: "slide",
+      help: [{ label: "¿Por qué no se separaban?", message: "Dentro había casi vacío y fuera, la presión atmosférica: el aire exterior apretaba las semiesferas con una fuerza enorme, de ≈ 6 575 N con solo 0,9 bar de diferencia." }],
+      title: "Magdeburgo, 1654: la fuerza de unos 0,9 bar",
+      blocks: [
+        { kind: "text", text: "Otto von Guericke hizo el vacío (≈ 90 %) en dos semiesferas de latón de unos $30{,}5$ cm de diámetro. Dos tiros de ocho caballos no pudieron separarlas. La presión que las sujetaba era solo de unos $0{,}9$ bar." },
+        { kind: "rule", title: "Fuerza producida por una presión", formula: "F = p\\,S = p\\,\\dfrac{\\pi D^2}{4} = 0{,}9\\cdot 10^5\\cdot\\dfrac{\\pi\\,(0{,}305)^2}{4} \\approx 6\\,575\\ \\text{N} \\approx 671\\ \\text{kp}", text: "Con poca presión se consiguen fuerzas enormes si hay superficie suficiente: es la base de la neumática." },
+      ],
+      visual: { kind: "tool", tool: "presion-neumatica-explorador", params: { a: -0.9 } },
+    },
+    {
+      id: "relativa",
+      type: "slide",
+      help: [{ label: "¿Qué mide el manómetro?", message: "La presión **relativa** o manométrica: lo que supera a la atmosférica. Un manómetro abierto al aire marca cero." }],
+      title: "Presión relativa y presión absoluta",
+      blocks: [
+        { kind: "definition", text: "**Presión relativa (o manométrica)**: la referida a la atmosférica ($\\approx 1$ bar). **Presión absoluta**: la referida al cero absoluto (vacío total)." },
+        { kind: "rule", title: "Relación", formula: "p_{abs} = p_{man} + p_{atm}", text: "Una **depresión** (vacío) es una presión relativa negativa; la presión absoluta nunca es negativa. En neumática, salvo que se diga lo contrario, «presión» es presión **relativa**; en las leyes de los gases hay que usar la **absoluta**." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-manometro",
+      type: "predict",
+      help: [{ label: "Pista", message: "El manómetro mide sobre la presión atmosférica." }],
+      title: "Lectura de un manómetro",
+      question: "Un manómetro indica $7$ bar. ¿A qué presión absoluta aproximada se encuentra el aire del recinto?",
+      mode: "choice",
+      choices: [
+        { id: "8", label: "7 bar más 1, es decir, 8 bar" },
+        { id: "6", label: "7 bar menos 1, es decir, 6 bar", incorrectFeedback: "Se resta solo para pasar de absoluta a relativa." },
+        { id: "7", label: "La indicada, 7 bar", incorrectFeedback: "El manómetro da la presión relativa; falta sumar la atmosférica." },
+        { id: "no", label: "Ninguna, pues un manómetro no mide presiones", incorrectFeedback: "Sí las mide: la relativa." },
+      ],
+      correctChoiceId: "8",
+      shuffleChoices: true,
+      explanation: "$p_{abs} = 7 + 1 = 8$ bar.",
+    },
+    {
+      id: "check-vacio",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Suma", message: "$p_{abs} = p_{man} + p_{atm}$ con $p_{man} = -0{,}6$." }],
+      title: "Un vacío de 0,6 bar",
+      question: "Un recipiente tiene una presión relativa de $-0{,}6$ bar (vacío de $0{,}6$ bar). ¿Cuál es su presión absoluta, en bar? (con $p_{atm} = 1$ bar)",
+      correctAnswers: ["0,4", "0.4"],
+      explanation: "$p_{abs} = -0{,}6 + 1 = 0{,}4$ bar, como en la figura 8.3 del libro.",
+    },
+    {
+      id: "check-semiesferas",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Fórmula", message: "$F = p\\,\\pi D^2/4$ con $p = 0{,}9\\cdot 10^5$ Pa y $D = 0{,}305$ m." }],
+      title: "La fuerza de Magdeburgo",
+      question: "¿Qué fuerza sujetaba unas semiesferas de $30{,}5$ cm de diámetro con una diferencia de presión de $0{,}9$ bar? (en N, redondea a la centena)",
+      correctAnswers: ["6600", "6 600", "6575", "6 575"],
+      explanation: "$F = 0{,}9\\cdot 10^5\\cdot\\pi\\cdot 0{,}305^2/4 \\approx 6\\,575$ N.",
+    },
+    {
+      id: "vacio",
+      type: "slide",
+      help: [{ label: "¿Por qué baja con la altitud?", message: "La presión atmosférica disminuye cerca de un 1 % cada 100 m de altura. La diferencia útil para la ventosa baja con ella." }],
+      title: "La técnica del vacío: una ventosa no «aspira»",
+      blocks: [
+        { kind: "text", text: "Si se elimina aire de un recipiente cerrado, el aire de fuera, a mayor presión, **empuja hacia dentro**. Un aspirador o una ventosa no aspiran: crean una presión interior **inferior a la atmosférica**, y es la atmósfera la que empuja." },
+        { kind: "warning", title: "Límite del vacío", text: "La diferencia máxima es 1 atmósfera. En sistemas industriales **nunca se pasa del 80 %** de la presión atmosférica *local*, que baja con la altitud: un sistema pensado para 50 kg a nivel del mar levanta unos 45 kg a 1 000 m." },
+      ],
+      visual: { kind: "tool", tool: "ventosa-vacio-explorador", params: { a: 0 } },
+    },
+    {
+      id: "check-ventosa",
+      type: "predict",
+      help: [{ label: "Pista", message: "La fuerza depende de la presión atmosférica local." }],
+      title: "Una ventosa en la montaña",
+      question: "Una ventosa levanta $50$ kg al nivel del mar. Instalada en una fábrica a $1\\,000$ m de altura, la misma ventosa levantará:",
+      mode: "choice",
+      choices: [
+        { id: "menos", label: "Unos 45 kg: la presión atmosférica local es un 10 % menor" },
+        { id: "igual", label: "Los mismos 50 kg", incorrectFeedback: "La atmósfera empuja menos a esa altura." },
+        { id: "mas", label: "Más, porque hay menos aire", incorrectFeedback: "Con menos aire exterior, el empuje es menor, no mayor." },
+      ],
+      correctChoiceId: "menos",
+      shuffleChoices: true,
+      explanation: "Un 1 % menos de presión por cada 100 m: unos 10 % menos a 1 000 m.",
+    },
+  ],
+};
