@@ -128,3 +128,67 @@ describe("log-propiedades-explorador", () => {
     expect(screen.getByTestId("tool-lp-producto")).toBeInTheDocument();
   });
 });
+
+describe("sistema-parametro-explorador", () => {
+  it("m = 2, k = 3: compatible determinado con solución", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sistema-parametro-explorador", initial: [2, 3] }} />);
+    expect(screen.getByTestId("tool-sp-tipo")).toHaveTextContent("compatible determinado");
+    expect(screen.getByTestId("tool-sp-solucion")).toHaveTextContent("x =");
+  });
+
+  it("m = 5 depende de k: indeterminado con k = 3 e incompatible con otro", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sistema-parametro-explorador", initial: [5, 3] }} />);
+    expect(screen.getByTestId("tool-sp-tipo")).toHaveTextContent("compatible indeterminado");
+    fireEvent.change(slider("Término independiente k"), { target: { value: "4" } });
+    expect(screen.getByTestId("tool-sp-tipo")).toHaveTextContent("incompatible");
+    expect(screen.getByTestId("tool-sp-ultima")).toHaveTextContent("0 = ");
+  });
+
+  it("aguanta parámetros fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sistema-parametro-explorador", initial: [99, -99] }} />);
+    expect(screen.getByTestId("tool-sp-tipo")).toBeInTheDocument();
+  });
+});
+
+describe("inecuacion-cuadratica-explorador", () => {
+  it("x² − 2x − 3 > 0 → fuera de las raíces", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "inecuacion-cuadratica-explorador", initial: [1, -2, -3, 2] }} />);
+    expect(screen.getByTestId("tool-iq-sol")).toHaveTextContent("(−∞, −1) ∪ (3, +∞)");
+  });
+
+  it("x² − 5x + 6 ≤ 0 → [2, 3]", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "inecuacion-cuadratica-explorador", initial: [1, -5, 6, 1] }} />);
+    expect(screen.getByTestId("tool-iq-sol")).toHaveTextContent("[2, 3]");
+  });
+
+  it("sin raíces reales: ℝ o ∅ según la relación", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "inecuacion-cuadratica-explorador", initial: [1, 0, 1, 0] }} />);
+    expect(screen.getByTestId("tool-iq-sol")).toHaveTextContent("∅");
+    fireEvent.click(screen.getByRole("button", { name: "P(x) > 0" }));
+    expect(screen.getByTestId("tool-iq-sol")).toHaveTextContent("ℝ");
+  });
+
+  it("aguanta parámetros fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "inecuacion-cuadratica-explorador", initial: [-5, 99, -99, 9] }} />);
+    expect(screen.getByTestId("tool-iq-grafica")).toBeInTheDocument();
+  });
+});
+
+describe("region-inecuaciones-explorador", () => {
+  it("x + y ≤ 4 y x − y ≥ 1: hay región y vértice (2,5; 1,5)", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "region-inecuaciones-explorador", initial: [1, 1, 4, 0, 1, -1, 1, 1] }} />);
+    expect(screen.getByTestId("tool-ri-estado")).toHaveTextContent("Hay región solución");
+    expect(screen.getByTestId("tool-ri-corte")).toHaveTextContent("(2,5, 1,5)");
+  });
+
+  it("x + y ≤ 1 y x + y ≥ 3: sin solución y rectas paralelas", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "region-inecuaciones-explorador", initial: [1, 1, 1, 0, 1, 1, 3, 1] }} />);
+    expect(screen.getByTestId("tool-ri-estado")).toHaveTextContent("Sin solución");
+    expect(screen.getByTestId("tool-ri-corte")).toHaveTextContent("paralelas");
+  });
+
+  it("aguanta parámetros fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "region-inecuaciones-explorador", initial: [99, 99, 99, 9, 0, 0, 0, 9] }} />);
+    expect(screen.getByTestId("tool-ri-plano")).toBeInTheDocument();
+  });
+});

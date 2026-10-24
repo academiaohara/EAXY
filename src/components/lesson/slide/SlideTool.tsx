@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
-import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
+import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador, SistemaParametroExplorador, InecuacionCuadraticaExplorador, RegionInecuacionesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
 import { IntervaloExplorador, SistemaInecuacionesExplorador, RuffiniExplorador, FraccionAlgExplorador, TrigExplorador, TrigResolverExplorador, CombinatoriaExplorador } from "@/components/lesson/slide/tools/Eso4bTools";
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
 import {
@@ -915,6 +915,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LogaritmoExplorador block={block} />;
     case "log-propiedades-explorador":
       return <LogPropiedadesExplorador block={block} />;
+    case "sistema-parametro-explorador":
+      return <SistemaParametroExplorador block={block} />;
+    case "inecuacion-cuadratica-explorador":
+      return <InecuacionCuadraticaExplorador block={block} />;
+    case "region-inecuaciones-explorador":
+      return <RegionInecuacionesExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

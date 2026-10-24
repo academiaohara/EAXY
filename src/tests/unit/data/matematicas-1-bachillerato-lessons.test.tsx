@@ -8,6 +8,15 @@ const interactiveLessons = allLessons as Record<string, InteractiveLesson>;
 const course = curriculum.courses.find((c) => c.slug === "matematicas-1-bachillerato")!;
 
 describe("Matemáticas 1.º Bachillerato", () => {
+  it("el tema 2 (Álgebra) tiene 15 lecciones interactivas", () => {
+    const mod = course.modules.find((m) => m.slug === "algebra")!;
+    expect(mod.orderIndex).toBe(2);
+    expect(mod.lessons).toHaveLength(15);
+    for (const lesson of mod.lessons) {
+      expect(interactiveLessons[lesson.interactiveSlug!]).toBeDefined();
+    }
+  });
+
   it("el tema 1 tiene 15 lecciones interactivas", () => {
     const mod = course.modules.find((m) => m.slug === "numeros-reales-y-complejos")!;
     expect(mod.orderIndex).toBe(1);
@@ -19,8 +28,7 @@ describe("Matemáticas 1.º Bachillerato", () => {
   });
 
   it("cada lección tiene al menos 5 pasos y alguna comprobación", () => {
-    const mod = course.modules[0]!;
-    for (const lesson of mod.lessons) {
+    for (const lesson of course.modules.flatMap((m) => m.lessons)) {
       const steps = interactiveLessons[lesson.interactiveSlug!]!.steps;
       expect(steps.length, lesson.interactiveSlug).toBeGreaterThanOrEqual(5);
       expect(steps.some((s) => s.type === "predict" || s.type === "classify"), lesson.interactiveSlug).toBe(true);
@@ -28,8 +36,7 @@ describe("Matemáticas 1.º Bachillerato", () => {
   });
 
   it("las preguntas de opción tienen una respuesta correcta que existe", () => {
-    const mod = course.modules[0]!;
-    for (const lesson of mod.lessons) {
+    for (const lesson of course.modules.flatMap((m) => m.lessons)) {
       for (const step of interactiveLessons[lesson.interactiveSlug!]!.steps) {
         if (step.type === "predict" && step.mode === "choice") {
           expect(step.choices?.map((c) => c.id), `${lesson.interactiveSlug}/${step.id}`).toContain(step.correctChoiceId);

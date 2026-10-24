@@ -936,6 +936,7 @@ export type SlideAnimId =
   | "complejo-raices"
   | "logaritmo-exponente"
   | "logaritmo-producto"
+  | "gauss-eliminacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1326,6 +1327,9 @@ export type SlideToolId =
   | "raices-complejas-explorador"
   | "logaritmo-explorador"
   | "log-propiedades-explorador"
+  | "sistema-parametro-explorador"
+  | "inecuacion-cuadratica-explorador"
+  | "region-inecuaciones-explorador"
   /* industrial-tool-end */;
 
 /**

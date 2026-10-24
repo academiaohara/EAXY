@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildGaussEliminacion } from "@/components/lesson/anim/scenes/bach1-sistemas";
 import { buildComplejoSumaVectores, buildComplejoGiroI, buildComplejoPolar, buildComplejoProductoPolar, buildComplejoRaices } from "@/components/lesson/anim/scenes/bach1-complejos";
 import { buildLogaritmoExponente, buildLogaritmoProducto } from "@/components/lesson/anim/scenes/bach1-logaritmos";
 import { buildArbolConteo, buildPermutacionesArbol, buildCombinacionesDividir } from "@/components/lesson/anim/scenes/eso4b-comb";
@@ -587,6 +588,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "complejo-raices": (p) => buildComplejoRaices(p),
   "logaritmo-exponente": (p) => buildLogaritmoExponente(p),
   "logaritmo-producto": (p) => buildLogaritmoProducto(p),
+  "gauss-eliminacion": (p) => buildGaussEliminacion(p),
   /* industrial-end */
 };
 

@@ -398,6 +398,13 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
       14: "logaritmos", 15: "logaritmos",
     },
   },
+  "matematicas-1-bachillerato/algebra": {
+    default: "lenguaje-algebraico",
+    lessons: {
+      7: "ecuaciones", 8: "ecuaciones", 9: "ecuaciones", 10: "ecuaciones", 11: "ecuaciones",
+      12: "sistemas-de-ecuaciones", 13: "sistemas-de-ecuaciones", 14: "sistemas-de-ecuaciones", 15: "sistemas-de-ecuaciones",
+    },
+  },
 
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",

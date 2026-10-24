@@ -6,6 +6,8 @@ import { fmtEs } from "@/components/lesson/anim/arith";
 import {
   add, argDeg, binomText, conj, degText, div, fromPolar, modulus, mul, sub, wrapDeg, type Cx,
 } from "@/components/lesson/anim/complex";
+import { gauss3, eqText, KIND_TEXT, type Row } from "@/components/lesson/anim/gauss";
+import { RELS, REL_TEXT, solveQuadIneq } from "@/components/lesson/anim/quad-ineq";
 import { Svg } from "@/components/lesson/slide/tools/GeometryTools";
 import { NumberLine, notation, type Interval } from "@/components/lesson/slide/tools/Eso4bTools";
 import { Choice } from "@/components/lesson/slide/tools/industrial-ui";
@@ -331,6 +333,185 @@ export function LogPropiedadesExplorador({ block }: { block: ToolBlock }) {
           {`Pero log${sub10(v.b)}(${v.x} + ${v.y}) = ${g(L(v.x + v.y))}  ≠  log ${v.x} + log ${v.y} = ${g(L(v.x) + L(v.y))}`}
         </p>
       </div>
+    </Frame>
+  );
+}
+
+/* ───────────── Sistemas lineales con parámetro ───────────── */
+
+/** Sistema x+y+z=1, x+2y+3z=2, x+3y+mz=k: Gauss y discusión según m y k. */
+export function SistemaParametroExplorador({ block }: { block: ToolBlock }) {
+  const ini = block.initial ?? [];
+  const init = { m: int(ini[0], 2, -3, 8), k: int(ini[1], 3, -2, 6) };
+  const [v, setV] = useState(init);
+  const rows: [Row, Row, Row] = [[1, 1, 1, 1], [1, 2, 3, 2], [1, 3, v.m, v.k]];
+  const g = gauss3(rows);
+  const last = g.steps[2]![2]!;
+  const color = g.kind === "determinado" ? MANIM.green : g.kind === "indeterminado" ? MANIM.yellow : MANIM.red;
+  return (
+    <Frame
+      hint={block.hint ?? "Busca el valor de m que impide la solución única y, con él, cambia k: ¿cuándo hay infinitas soluciones y cuándo ninguna?"}
+      onReset={() => setV(init)}
+      controls={
+        <>
+          <Slider label="Parámetro m" value={v.m} min={-3} max={8} color={MANIM.blue} onChange={(m) => setV((p) => ({ ...p, m }))} format={f} />
+          <Slider label="Término independiente k" value={v.k} min={-2} max={6} color={MANIM.orange} onChange={(k) => setV((p) => ({ ...p, k }))} format={f} />
+        </>
+      }
+    >
+      <div className={`flex flex-col gap-1 ${ink}`} data-testid="tool-readout">
+        <div className="text-lg">{rows.map((r, i) => <p key={i}>{eqText(r)}</p>)}</div>
+        <p className="text-lg" data-testid="tool-sp-ultima">{`Tras Gauss, la última ecuación es: ${eqText(last)}`}</p>
+        <p className="text-2xl font-bold" style={{ color }} data-testid="tool-sp-tipo">{`Sistema ${KIND_TEXT[g.kind]}`}</p>
+        <p className="text-lg" data-testid="tool-sp-solucion">
+          {g.kind === "determinado" && g.solution
+            ? `Solución: x = ${fmtEs(g.solution[0], 3)}, y = ${fmtEs(g.solution[1], 3)}, z = ${fmtEs(g.solution[2], 3)}`
+            : g.kind === "indeterminado"
+              ? "Infinitas soluciones: dependen de un parámetro (z = t)."
+              : "No hay ninguna solución: la última ecuación es un absurdo."}
+        </p>
+      </div>
+    </Frame>
+  );
+}
+
+/* ───────────── Inecuaciones de segundo grado ───────────── */
+
+const QW = 520;
+const QH = 300;
+
+/** ax² + bx + c ▢ 0: parábola, raíces y conjunto solución como intervalos. */
+export function InecuacionCuadraticaExplorador({ block }: { block: ToolBlock }) {
+  const ini = block.initial ?? [];
+  const init = { a: ini[0] !== undefined && ini[0] < 0 ? -1 : 1, b: int(ini[1], -2, -8, 8), c: int(ini[2], -3, -10, 10), rel: int(ini[3], 2, 0, 3) };
+  const [v, setV] = useState(init);
+  const rel = RELS[v.rel]!;
+  const sol = solveQuadIneq(v.a, v.b, v.c, rel);
+  const X = 8;
+  const px = (x: number) => 20 + ((x + X) / (2 * X)) * (QW - 40);
+  const Y = 14;
+  const py = (y: number) => QH / 2 - (clamp(y, -Y, Y) / Y) * (QH / 2 - 14);
+  const pts = Array.from({ length: 161 }, (_, i) => {
+    const x = -X + (i * 2 * X) / 160;
+    return `${px(x)},${py(v.a * x * x + v.b * x + v.c)}`;
+  }).join(" ");
+  return (
+    <Frame
+      hint={block.hint ?? "Mueve b y c hasta que la parábola deje de cortar el eje: ¿cómo cambia el conjunto solución? Cambia el signo de a y la relación."}
+      onReset={() => setV(init)}
+      controls={
+        <>
+          <Choice label="Coeficiente a" items={[{ value: -1, label: "a = −1" }, { value: 1, label: "a = 1" }]} value={v.a} onChange={(a) => setV((p) => ({ ...p, a }))} />
+          <Slider label="Coeficiente b" value={v.b} min={-8} max={8} color={MANIM.blue} onChange={(b) => setV((p) => ({ ...p, b }))} format={f} />
+          <Slider label="Término c" value={v.c} min={-10} max={10} color={MANIM.orange} onChange={(c) => setV((p) => ({ ...p, c }))} format={f} />
+          <Choice label="Relación" items={RELS.map((r, i) => ({ value: i, label: `P(x) ${REL_TEXT[r]} 0` }))} value={v.rel} onChange={(r) => setV((p) => ({ ...p, rel: r }))} />
+        </>
+      }
+    >
+      <div className={`flex flex-col gap-1 ${ink}`} data-testid="tool-readout">
+        <p className="text-lg" data-testid="tool-iq-poly">{`P(x) = ${v.a === -1 ? "−" : ""}x² ${v.b < 0 ? "−" : "+"} ${Math.abs(v.b)}x ${v.c < 0 ? "−" : "+"} ${Math.abs(v.c)}`}</p>
+        <p className="text-lg" data-testid="tool-iq-disc">{`Δ = ${f(sol.disc)}${sol.roots.length ? `   raíces: ${sol.roots.map((r) => fmtEs(r, 3)).join(" y ")}` : "   sin raíces reales"}`}</p>
+        <p className="text-2xl font-bold" style={{ color: MANIM.green }} data-testid="tool-iq-sol">{`Solución: ${sol.text}`}</p>
+      </div>
+      <Svg w={QW} h={QH} testId="tool-iq-grafica">
+        <line x1={10} y1={QH / 2} x2={QW - 10} y2={QH / 2} stroke={MANIM.ink} strokeWidth={2} />
+        {sol.segs.map((s, i) => (
+          <rect key={i} x={px(clamp(s.lo, -X, X))} y={QH / 2 - 7} width={Math.max(2, px(clamp(s.hi, -X, X)) - px(clamp(s.lo, -X, X)))} height={14} fill={MANIM.green} opacity={0.75} />
+        ))}
+        <polyline points={pts} fill="none" stroke={MANIM.blue} strokeWidth={3} />
+        {sol.roots.map((r, i) => (
+          <circle key={i} cx={px(r)} cy={QH / 2} r={6} fill={rel === "<=" || rel === ">=" ? MANIM.yellow : MANIM.surface} stroke={MANIM.yellow} strokeWidth={3} />
+        ))}
+      </Svg>
+    </Frame>
+  );
+}
+
+/* ───────────── Sistemas de inecuaciones con dos incógnitas ───────────── */
+
+const RW = 520;
+const RH = 360;
+const RX = 6;
+const RGY = 6;
+
+/** Dos inecuaciones lineales en el plano: semiplanos y región solución. */
+export function RegionInecuacionesExplorador({ block }: { block: ToolBlock }) {
+  const ini = block.initial ?? [];
+  const init = {
+    a1: int(ini[0], 1, -5, 5), b1: int(ini[1], 1, -5, 5), c1: int(ini[2], 4, -10, 10), r1: int(ini[3], 0, 0, 1),
+    a2: int(ini[4], 1, -5, 5), b2: int(ini[5], -1, -5, 5), c2: int(ini[6], 1, -10, 10), r2: int(ini[7], 1, 0, 1),
+  };
+  const [v, setV] = useState(init);
+  const ok = (a: number, b: number, c: number, r: number, x: number, y: number) => (r === 0 ? a * x + b * y <= c + 1e-9 : a * x + b * y >= c - 1e-9);
+  const N = 48;
+  const cw = RW / N;
+  const ch = RH / N;
+  let both = 0;
+  const cells: { x: number; y: number; k: number }[] = [];
+  for (let i = 0; i < N; i += 1) {
+    for (let j = 0; j < N; j += 1) {
+      const x = -RX + ((i + 0.5) / N) * 2 * RX;
+      const y = RGY - ((j + 0.5) / N) * 2 * RGY;
+      const p1 = ok(v.a1, v.b1, v.c1, v.r1, x, y);
+      const p2 = ok(v.a2, v.b2, v.c2, v.r2, x, y);
+      const k = (p1 ? 1 : 0) + (p2 ? 2 : 0);
+      if (k === 3) both += 1;
+      if (k > 0) cells.push({ x: i * cw, y: j * ch, k });
+    }
+  }
+  const det = v.a1 * v.b2 - v.a2 * v.b1;
+  const corte = det !== 0 ? { x: (v.c1 * v.b2 - v.c2 * v.b1) / det, y: (v.a1 * v.c2 - v.a2 * v.c1) / det } : null;
+  const X0 = (x: number) => ((x + RX) / (2 * RX)) * RW;
+  const Y0 = (y: number) => ((RGY - y) / (2 * RGY)) * RH;
+  const line = (a: number, b: number, c: number, color: string) => {
+    if (b !== 0) return <line x1={X0(-RX)} y1={Y0((c - a * -RX) / b)} x2={X0(RX)} y2={Y0((c - a * RX) / b)} stroke={color} strokeWidth={2.5} />;
+    if (a !== 0) return <line x1={X0(c / a)} y1={0} x2={X0(c / a)} y2={RH} stroke={color} strokeWidth={2.5} />;
+    return null;
+  };
+  const rel = (r: number) => (r === 0 ? "≤" : "≥");
+  const coef = (n: number) => (Math.abs(n) === 1 ? "" : String(Math.abs(n)));
+  const eq = (a: number, b: number, c: number, r: number) => {
+    const t1 = a === 0 ? "" : `${a < 0 ? "−" : ""}${coef(a)}x`;
+    const t2 = b === 0 ? "" : `${t1 ? (b < 0 ? " − " : " + ") : b < 0 ? "−" : ""}${coef(b)}y`;
+    return `${t1}${t2 || (t1 ? "" : "0")} ${rel(r)} ${f(c)}`;
+  };
+  const sw = (key: string, label: string, min: number, max: number, color: string) => (
+    <Slider key={key} label={label} value={v[key as keyof typeof v]} min={min} max={max} color={color} onChange={(n) => setV((p) => ({ ...p, [key]: n }))} format={f} />
+  );
+  return (
+    <Frame
+      stacked
+      hint={block.hint ?? "Verde: puntos que cumplen las dos inecuaciones. Haz las rectas paralelas y cambia los signos: ¿puede quedar la región vacía?"}
+      onReset={() => setV(init)}
+      controls={
+        <>
+          {sw("a1", "a₁", -5, 5, MANIM.blue)}
+          {sw("b1", "b₁", -5, 5, MANIM.blue)}
+          {sw("c1", "c₁", -10, 10, MANIM.blue)}
+          <Choice label="1.ª inecuación" items={[{ value: 0, label: "≤" }, { value: 1, label: "≥" }]} value={v.r1} onChange={(r1) => setV((p) => ({ ...p, r1 }))} />
+          {sw("a2", "a₂", -5, 5, MANIM.orange)}
+          {sw("b2", "b₂", -5, 5, MANIM.orange)}
+          {sw("c2", "c₂", -10, 10, MANIM.orange)}
+          <Choice label="2.ª inecuación" items={[{ value: 0, label: "≤" }, { value: 1, label: "≥" }]} value={v.r2} onChange={(r2) => setV((p) => ({ ...p, r2 }))} />
+        </>
+      }
+    >
+      <div className={`flex flex-col gap-1 ${ink}`} data-testid="tool-readout">
+        <p className="text-lg">{`${eq(v.a1, v.b1, v.c1, v.r1)}      ${eq(v.a2, v.b2, v.c2, v.r2)}`}</p>
+        <p className="text-xl font-bold" style={{ color: both > 0 ? MANIM.green : MANIM.red }} data-testid="tool-ri-estado">
+          {both > 0 ? "Hay región solución" : "Sin solución en la ventana (−6 a 6)"}
+        </p>
+        <p className="text-lg" data-testid="tool-ri-corte">{corte ? `Las rectas se cortan en (${fmtEs(corte.x, 2)}, ${fmtEs(corte.y, 2)})` : "Las rectas son paralelas o coinciden"}</p>
+      </div>
+      <Svg w={RW} h={RH} testId="tool-ri-plano">
+        {cells.map((c, i) => (
+          <rect key={i} x={c.x} y={c.y} width={cw + 0.5} height={ch + 0.5} fill={c.k === 3 ? MANIM.green : c.k === 1 ? MANIM.blue : MANIM.orange} opacity={c.k === 3 ? 0.8 : 0.22} />
+        ))}
+        <line x1={0} y1={RH / 2} x2={RW} y2={RH / 2} stroke={MANIM.ink} strokeWidth={1.5} />
+        <line x1={RW / 2} y1={0} x2={RW / 2} y2={RH} stroke={MANIM.ink} strokeWidth={1.5} />
+        {line(v.a1, v.b1, v.c1, MANIM.blue)}
+        {line(v.a2, v.b2, v.c2, MANIM.orange)}
+      </Svg>
     </Frame>
   );
 }
