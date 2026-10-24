@@ -1,0 +1,107 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_12_SUBTITLE } from "@/data/lessons/shared";
+
+export const implementacionNandNorLesson: InteractiveLesson = {
+  slug: "implementacion-nand-nor",
+  title: "11. Implementación con puertas NAND y NOR",
+  subtitle: TEMA_TI2_12_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "basicas",
+      type: "slide",
+      help: [{ label: "Inversor", message: "Con las dos entradas unidas, NAND(a, a) = ā y NOR(a, a) = ā: es un inversor." }],
+      title: "NOT, AND y OR con una sola clase de puerta",
+      blocks: [
+        { kind: "text", text: "Las puertas NAND y NOR se pueden usar solas para fabricar cualquier circuito digital. Para ello se aplican los **teoremas de Morgan** tantas veces como haga falta, hasta que la función quede como **producto o suma negados**." },
+        { kind: "compare", left: { title: "Solo NAND", math: ["\\text{NOT: } \\overline{a\\cdot a} = \\bar a", "\\text{AND: } a\\cdot b = \\overline{\\overline{a\\cdot b}}", "\\text{OR: } a + b = \\overline{\\bar a\\cdot\\bar b}"], tone: "info" }, right: { title: "Solo NOR", math: ["\\text{NOT: } \\overline{a + a} = \\bar a", "\\text{OR: } a + b = \\overline{\\overline{a + b}}", "\\text{AND: } a\\cdot b = \\overline{\\bar a + \\bar b}"], tone: "key" } },
+      ],
+      visual: { kind: "anim", scene: "nand-implementacion", beatMs: 6000 },
+    },
+    {
+      id: "check-not",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Una NAND con las entradas unidas hace de inversor (1 puerta). La AND necesita la NAND y además invertir su salida." }],
+      title: "AND con NAND",
+      question: "¿Cuántas puertas NAND de dos entradas hacen falta para construir una puerta **AND**?",
+      correctAnswers: ["2"],
+      explanation: "Una NAND da $\\overline{a\\cdot b}$ y una segunda NAND con las entradas unidas la invierte: $a\\cdot b$. Son **2** puertas.",
+    },
+    {
+      id: "check-or",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "a + b = NAND(ā, b̄): hay que invertir cada una de las dos entradas." }],
+      title: "OR con NAND",
+      question: "¿Cuántas puertas NAND de dos entradas hacen falta para construir una puerta **OR**?",
+      correctAnswers: ["3"],
+      explanation: "$a + b = \\overline{\\bar a\\cdot\\bar b}$: dos NAND como inversores de $a$ y de $b$, y una tercera NAND que las combina. En total **3**.",
+    },
+    {
+      id: "ejemplo16",
+      type: "slide",
+      help: [{ label: "Doble inversión", message: "Negar dos veces no cambia nada. Se niega una vez por fuera para aplicar Morgan a la suma y queda un producto de negados." }],
+      title: "Ejemplo 16: una función solo con NAND",
+      blocks: [
+        { kind: "text", text: "Se simplifica por Karnaugh la función $S = \\sum(1,2,4,5,6,7)$: tres grupos, que dan $S = c + b\\,\\bar a + \\bar b\\,a$. Para hacerla con NAND se da a la función una **doble inversión**:" },
+        { kind: "example", lines: [
+          { math: "S = \\overline{\\overline{c + b\\,\\bar a + \\bar b\\,a}}", note: "doble inversión" },
+          { math: "S = \\overline{\\bar c\\cdot\\overline{b\\,\\bar a}\\cdot\\overline{\\bar b\\,a}}", note: "Morgan en la inversión interior" },
+        ] },
+        { kind: "text", text: "Cada $\\overline{b\\bar a}$ y $\\overline{\\bar b a}$ es una **NAND**; $\\bar c$, $\\bar a$ y $\\bar b$ se obtienen con NAND de entradas unidas; y la salida es una NAND de tres entradas." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "explora-nand",
+      type: "slide",
+      help: [{ label: "Explorador", message: "Cambia entre NAND y NOR. Con NAND se parte de la suma de productos; con NOR, del producto de sumas." }],
+      title: "Cuántas puertas necesito",
+      blocks: [{ kind: "text", text: "Elige una función y la tecnología. La herramienta simplifica y cuenta los **inversores** y las puertas de cada nivel." }],
+      visual: { kind: "tool", tool: "nand-nor-explorador", params: { a: 2 } },
+    },
+    {
+      id: "check-total",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "3 inversores (para c, a y b) + 2 NAND de dos entradas (b·ā y b̄·a) + 1 NAND final de tres entradas." }],
+      title: "Contar las puertas",
+      question: "En el ejemplo 16, $S = \\overline{\\bar c\\cdot\\overline{b\\bar a}\\cdot\\overline{\\bar b a}}$. Contando los inversores (NAND con las entradas unidas), las dos NAND de los productos y la NAND de salida, ¿cuántas puertas NAND hay en total?",
+      correctAnswers: ["6"],
+      explanation: "Inversores: $\\bar c$, $\\bar a$ y $\\bar b$ (3). NAND de producto: $\\overline{b\\bar a}$ y $\\overline{\\bar b a}$ (2). NAND de salida: 1. Total **6**.",
+    },
+    {
+      id: "nor",
+      type: "slide",
+      help: [{ label: "Dualidad", message: "NOR es a la suma lo que NAND es al producto. Por eso, con NOR se parte del producto de sumas." }],
+      title: "Con NOR: producto de sumas",
+      blocks: [
+        { kind: "text", text: "Para construir un circuito solo con puertas **NOR** se resuelve por la **segunda forma canónica** (producto de sumas) y se aplica la doble inversión. El **ejemplo 17** tiene salida 0 en las filas 0, 2, 4, 6, 10, 12 y 13, y X en 14 y 15:" },
+        { kind: "example", lines: [
+          { math: "S = (\\bar d + \\bar c)(\\bar b + a)(d + a)", note: "por Karnaugh agrupando ceros" },
+          { math: "S = \\overline{\\overline{(\\bar d + \\bar c)(\\bar b + a)(d + a)}} = \\overline{\\overline{\\bar d + \\bar c} + \\overline{\\bar b + a} + \\overline{d + a}}", note: "doble inversión y Morgan" },
+        ] },
+        { kind: "text", text: "Cada $\\overline{\\,\\cdot\\,}$ interior es una **NOR**; la salida es una NOR de tres entradas y las variables negadas necesitan inversores (NOR con las entradas unidas)." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-nor",
+      type: "predict",
+      help: [{ label: "Pista", message: "Recuerda: NOR trabaja con productos de sumas." }],
+      title: "Qué forma conviene",
+      question: "Quieres construir una función solo con puertas NOR. ¿De qué forma de la función conviene partir?",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Del producto de sumas, agrupando los ceros del mapa" },
+        { id: "suma", label: "De la suma de productos, agrupando los unos", incorrectFeedback: "Esa es la forma natural para las puertas NAND." },
+        { id: "da", label: "Da igual: las dos valen igual de bien", incorrectFeedback: "Con otra forma saldrían más puertas o más niveles." },
+        { id: "nada", label: "De ninguna: la NOR no es universal", incorrectFeedback: "NAND y NOR son universales, ambas." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Con la doble inversión, un producto de sumas se convierte en una NOR de NOR: cada suma es una NOR, y la salida es otra NOR.",
+    },
+  ],
+};

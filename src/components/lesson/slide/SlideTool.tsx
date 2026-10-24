@@ -4,29 +4,39 @@ import { useState } from "react";
 // industrial-imports
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
 import {
-  BinarioByteExplorador,
   BiestableJkExplorador,
   BiestableRsExplorador,
   CableadoElementosExplorador,
-  CaptadorPresionTempExplorador,
-  ConversionDecimalBinarioExplorador,
-  CuantizacionAdExplorador,
-  DeMorganNandExplorador,
-  EncoderRpmExplorador,
-  GalgaDeformacionExplorador,
   GrafoBimodalExplorador,
-  InductivoSnExplorador,
-  Karnaugh2Explorador,
-  LogicaNivelesExplorador,
-  MuxDecoderExplorador,
-  OperacionalInversorExplorador,
-  OpticaModosExplorador,
-  PuertaLogicaExplorador,
-  PuertaUniversalExplorador,
+  MotorEnclavamientoExplorador,
+  RegistroContadorExplorador,
   SecuenciaRelesExplorador,
   SecuencialMemoriaExplorador,
+} from "@/components/lesson/slide/tools/SecuencialTools";
+import {
+  CuantizacionAdExplorador,
+  EncoderRpmExplorador,
+  GalgaDeformacionExplorador,
+  OperacionalInversorExplorador,
+  PotenciometroDivisorExplorador,
+  PuentePotenciometrosExplorador,
+  SensorCurvaExplorador,
+  SensorProximidadExplorador,
+  TermorresistenciaPuenteExplorador,
+} from "@/components/lesson/slide/tools/SensoresTools";
+import {
+  BinarioByteExplorador,
+  ConversionDecimalBinarioExplorador,
+  FormasCanonicasExplorador,
+  HexBcdExplorador,
+  KarnaughExplorador,
+  LogicaNivelesExplorador,
+  MorganExplorador,
+  MuxDecoderExplorador,
+  NandNorExplorador,
+  PuertaLogicaExplorador,
   SumadorBinarioExplorador,
-} from "@/components/lesson/slide/tools/ElectronicaTools";
+} from "@/components/lesson/slide/tools/LogicaTools";
 import { PascalPrensaExplorador, ContinuidadBernoulliExplorador, ViscosidadFuerzaExplorador, EnergiaBernoulliExplorador, PotenciaHidraulicaExplorador, PerdidaCargaExplorador, BombaCaudalExplorador, CilindroHidraulicoExplorador, LimitadoraExplorador } from "@/components/lesson/slide/tools/HidraulicaTools";
 import { PresionNeumaticaExplorador, CaudalCilindroExplorador, RelacionCompresionExplorador, FuerzaCilindroExplorador, ConsumoAireExplorador, ValvulaNomenclaturaExplorador, LogicaNeumaticaExplorador, VentosaVacioExplorador, NumeracionNeumaticaExplorador } from "@/components/lesson/slide/tools/NeumaticaTools";
 import { CampoHiloExplorador, LorentzExplorador, EspiraParExplorador, FemInduccionExplorador, MotorCcExplorador, CurvasCcExplorador, BalanceCcExplorador, ArranqueCcExplorador, VelocidadTrifasicoExplorador, TrifasicoConexionExplorador, CurvaParAsincronoExplorador } from "@/components/lesson/slide/tools/ElectricosTools";
@@ -821,16 +831,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PidExplorador block={block} />;
     case "cuantizacion-ad-explorador":
       return <CuantizacionAdExplorador block={block} />;
-    case "inductivo-sn-explorador":
-      return <InductivoSnExplorador block={block} />;
-    case "optica-modos-explorador":
-      return <OpticaModosExplorador block={block} />;
+    case "sensor-curva-explorador":
+      return <SensorCurvaExplorador block={block} />;
+    case "sensor-proximidad-explorador":
+      return <SensorProximidadExplorador block={block} />;
+    case "potenciometro-divisor-explorador":
+      return <PotenciometroDivisorExplorador block={block} />;
+    case "puente-potenciometros-explorador":
+      return <PuentePotenciometrosExplorador block={block} />;
     case "galga-deformacion-explorador":
       return <GalgaDeformacionExplorador block={block} />;
     case "encoder-rpm-explorador":
       return <EncoderRpmExplorador block={block} />;
-    case "captador-presion-temp-explorador":
-      return <CaptadorPresionTempExplorador block={block} />;
+    case "termorresistencia-puente-explorador":
+      return <TermorresistenciaPuenteExplorador block={block} />;
     case "operacional-inversor-explorador":
       return <OperacionalInversorExplorador block={block} />;
     case "binario-byte-explorador":
@@ -841,12 +855,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LogicaNivelesExplorador block={block} />;
     case "puerta-logica-explorador":
       return <PuertaLogicaExplorador block={block} />;
-    case "puerta-universal-explorador":
-      return <PuertaUniversalExplorador block={block} />;
-    case "karnaugh-2-explorador":
-      return <Karnaugh2Explorador block={block} />;
-    case "de-morgan-nand-explorador":
-      return <DeMorganNandExplorador block={block} />;
+    case "hex-bcd-explorador":
+      return <HexBcdExplorador block={block} />;
+    case "morgan-explorador":
+      return <MorganExplorador block={block} />;
+    case "formas-canonicas-explorador":
+      return <FormasCanonicasExplorador block={block} />;
+    case "karnaugh-explorador":
+      return <KarnaughExplorador block={block} />;
+    case "nand-nor-explorador":
+      return <NandNorExplorador block={block} />;
     case "mux-decoder-explorador":
       return <MuxDecoderExplorador block={block} />;
     case "sumador-binario-explorador":
@@ -863,6 +881,10 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <GrafoBimodalExplorador block={block} />;
     case "secuencia-reles-explorador":
       return <SecuenciaRelesExplorador block={block} />;
+    case "registro-contador-explorador":
+      return <RegistroContadorExplorador block={block} />;
+    case "motor-enclavamiento-explorador":
+      return <MotorEnclavamientoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

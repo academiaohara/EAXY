@@ -17,7 +17,7 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000013', 'tecnologia-2-eso', 'Tecnología 2º ESO', 'Segundo curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización de la ESO.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología de la ESO.'),
-  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática y oleohidráulica.');
+  ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -80,7 +80,10 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000068', 'a1000000-0000-4000-8000-000000000016', 'magnetismo-motores-electricos', 'Magnetismo y electricidad. Motores eléctricos', 7),
   ('a2000000-0000-4000-8000-000000000069', 'a1000000-0000-4000-8000-000000000016', 'automatizacion-neumatica', 'Automatización neumática', 8),
   ('a2000000-0000-4000-8000-000000000070', 'a1000000-0000-4000-8000-000000000016', 'automatismos-oleohidraulicos', 'Automatismos oleohidráulicos', 9),
-  ('a2000000-0000-4000-8000-000000000071', 'a1000000-0000-4000-8000-000000000016', 'sistemas-automaticos', 'Sistemas automáticos', 10);
+  ('a2000000-0000-4000-8000-000000000071', 'a1000000-0000-4000-8000-000000000016', 'sistemas-automaticos', 'Sistemas automáticos', 10),
+  ('a2000000-0000-4000-8000-000000000072', 'a1000000-0000-4000-8000-000000000016', 'componentes-sistema-control', 'Componentes de un sistema de control', 11),
+  ('a2000000-0000-4000-8000-000000000073', 'a1000000-0000-4000-8000-000000000016', 'circuitos-combinacionales-boole', 'Circuitos combinacionales. Álgebra de Boole', 12),
+  ('a2000000-0000-4000-8000-000000000074', 'a1000000-0000-4000-8000-000000000016', 'circuitos-secuenciales-control-cableado', 'Circuitos secuenciales. Introducción al control cableado', 13);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -501,4 +504,36 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000007108', 'a2000000-0000-4000-8000-000000000071', '8. Simplificar un diagrama de bloques', 'Transposición de sumadores y bifurcaciones y reducción de diagramas.', 8, null),
   ('a3000000-0000-4000-8000-000000007109', 'a2000000-0000-4000-8000-000000000071', '9. Estabilidad: el criterio de Routh', 'Criterio de Routh, casos especiales y rango de K estable.', 9, null),
   ('a3000000-0000-4000-8000-000000007110', 'a2000000-0000-4000-8000-000000000071', '10. El controlador y la acción proporcional', 'El controlador, banda proporcional, ganancia y offset.', 10, null),
-  ('a3000000-0000-4000-8000-000000007111', 'a2000000-0000-4000-8000-000000000071', '11. Acciones integral, derivativa y PID', 'Acciones integral y derivativa, controlador PID y su ajuste.', 11, null);
+  ('a3000000-0000-4000-8000-000000007111', 'a2000000-0000-4000-8000-000000000071', '11. Acciones integral, derivativa y PID', 'Acciones integral y derivativa, controlador PID y su ajuste.', 11, null),
+  ('a3000000-0000-4000-8000-000000007201', 'a2000000-0000-4000-8000-000000000072', '1. Señales y transductores', 'Señales analógica, digital y binaria; sensor, transductor y captador; conversión A/D.', 1, null),
+  ('a3000000-0000-4000-8000-000000007202', 'a2000000-0000-4000-8000-000000000072', '2. Propiedades de los sensores', 'Rango, sensibilidad, resolución, no linealidad, histéresis y repetibilidad.', 2, null),
+  ('a3000000-0000-4000-8000-000000007203', 'a2000000-0000-4000-8000-000000000072', '3. Finales de carrera y detectores inductivos', 'Finales mecánicos, corrientes de Foucault, oscilador LC y datos de catálogo.', 3, null),
+  ('a3000000-0000-4000-8000-000000007204', 'a2000000-0000-4000-8000-000000000072', '4. Detectores capacitivos y ópticos', 'Campo eléctrico, sensores ópticos y células de barrera, reflexión y proximidad.', 4, null),
+  ('a3000000-0000-4000-8000-000000007205', 'a2000000-0000-4000-8000-000000000072', '5. Medida de distancias y ángulos', 'Radar, ultrasonidos, potenciómetros, reglas, syncro y encoders.', 5, null),
+  ('a3000000-0000-4000-8000-000000007206', 'a2000000-0000-4000-8000-000000000072', '6. Galgas extensométricas', 'Ley de Hooke, deformación unitaria y variación de resistencia.', 6, null),
+  ('a3000000-0000-4000-8000-000000007207', 'a2000000-0000-4000-8000-000000000072', '7. Transductores de velocidad', 'Tacómetros, medida por impulsos y encoders.', 7, null),
+  ('a3000000-0000-4000-8000-000000007208', 'a2000000-0000-4000-8000-000000000072', '8. Transductores de presión y temperatura', 'Bourdon, diafragma, termorresistencias, termopares y puente de Wheatstone.', 8, null),
+  ('a3000000-0000-4000-8000-000000007209', 'a2000000-0000-4000-8000-000000000072', '9. Transductores de luz y detectores de error', 'LDR, fotodiodos y comparadores con potenciómetros.', 9, null),
+  ('a3000000-0000-4000-8000-000000007210', 'a2000000-0000-4000-8000-000000000072', '10. El amplificador operacional', 'Operacional ideal, inversor y comparador.', 10, null),
+  ('a3000000-0000-4000-8000-000000007211', 'a2000000-0000-4000-8000-000000000072', '11. Actuadores y control del acelerador', 'Relés, servomotores, par del motor de continua y ASR.', 11, null),
+  ('a3000000-0000-4000-8000-000000007301', 'a2000000-0000-4000-8000-000000000073', '1. Sistemas de numeración y código binario', 'Circuitos combinacionales y secuenciales, bit, pesos y paso de binario a decimal.', 1, null),
+  ('a3000000-0000-4000-8000-000000007302', 'a2000000-0000-4000-8000-000000000073', '2. De decimal a binario', 'Divisiones sucesivas, parte decimal y aproximación.', 2, null),
+  ('a3000000-0000-4000-8000-000000007303', 'a2000000-0000-4000-8000-000000000073', '3. Hexadecimal y códigos BCD', 'Base 16, agrupar bits y códigos BCD natural, Aiken y exceso 3.', 3, null),
+  ('a3000000-0000-4000-8000-000000007304', 'a2000000-0000-4000-8000-000000000073', '4. Álgebra de Boole: niveles y tablas de verdad', 'Variables lógicas, lógica positiva y negativa, funciones y tablas.', 4, null),
+  ('a3000000-0000-4000-8000-000000007305', 'a2000000-0000-4000-8000-000000000073', '5. Puertas OR, AND y NOT', 'Suma lógica, producto lógico y complementación con sus integrados.', 5, null),
+  ('a3000000-0000-4000-8000-000000007306', 'a2000000-0000-4000-8000-000000000073', '6. Postulados, teoremas y leyes de Morgan', 'Propiedades, postulados, absorción y simplificación algebraica.', 6, null),
+  ('a3000000-0000-4000-8000-000000007307', 'a2000000-0000-4000-8000-000000000073', '7. Puertas NOR, NAND y XOR', 'Puertas con la salida invertida, universales y O exclusiva.', 7, null),
+  ('a3000000-0000-4000-8000-000000007308', 'a2000000-0000-4000-8000-000000000073', '8. De la tabla de verdad a la función', 'Primera forma canónica (minterms) y segunda (maxterms).', 8, null),
+  ('a3000000-0000-4000-8000-000000007309', 'a2000000-0000-4000-8000-000000000073', '9. Simplificación: álgebra y mapas de Karnaugh', 'Métodos de simplificación, mapa de tres variables y grupos.', 9, null),
+  ('a3000000-0000-4000-8000-000000007310', 'a2000000-0000-4000-8000-000000000073', '10. Karnaugh con cuatro variables, indiferentes y ceros', 'Mapa de cuatro variables, producto de sumas y términos indiferentes.', 10, null),
+  ('a3000000-0000-4000-8000-000000007311', 'a2000000-0000-4000-8000-000000000073', '11. Implementación con puertas NAND y NOR', 'Doble inversión, NOT, AND y OR con una sola clase de puerta.', 11, null),
+  ('a3000000-0000-4000-8000-000000007312', 'a2000000-0000-4000-8000-000000000073', '12. Circuitos combinacionales integrados', 'Codificadores, decodificadores, multiplexores y comparadores.', 12, null),
+  ('a3000000-0000-4000-8000-000000007313', 'a2000000-0000-4000-8000-000000000073', '13. Sumadores binarios', 'Suma en binario, medio sumador y sumador completo.', 13, null),
+  ('a3000000-0000-4000-8000-000000007401', 'a2000000-0000-4000-8000-000000000074', '1. Circuitos secuenciales y memoria', 'Combinacional frente a secuencial, biestables y su clasificación.', 1, null),
+  ('a3000000-0000-4000-8000-000000007402', 'a2000000-0000-4000-8000-000000000074', '2. Biestable R-S', 'Dos puertas NOR realimentadas, Set, Reset y combinación prohibida.', 2, null),
+  ('a3000000-0000-4000-8000-000000007403', 'a2000000-0000-4000-8000-000000000074', '3. Biestables J-K, T y D', 'J-K sin indeterminación, T, D, disparo por nivel y por flanco.', 3, null),
+  ('a3000000-0000-4000-8000-000000007404', 'a2000000-0000-4000-8000-000000000074', '4. Registros de desplazamiento y contadores', 'Biestables D en serie, contadores ascendentes y asíncronos.', 4, null),
+  ('a3000000-0000-4000-8000-000000007405', 'a2000000-0000-4000-8000-000000000074', '5. Elementos del control cableado', 'Interruptores, pulsadores NA y NC, contactores y temporizadores.', 5, null),
+  ('a3000000-0000-4000-8000-000000007406', 'a2000000-0000-4000-8000-000000000074', '6. Teoría bimodal: grafos y ecuaciones', 'Grafos, realimentación, condiciones «y» y «o» y ecuación de salida.', 6, null),
+  ('a3000000-0000-4000-8000-000000007407', 'a2000000-0000-4000-8000-000000000074', '7. Circuitos secuenciales con temporizadores', 'Grafos con temporizador, lámparas encadenadas y cronogramas.', 7, null),
+  ('a3000000-0000-4000-8000-000000007408', 'a2000000-0000-4000-8000-000000000074', '8. Control de motores: inversión de giro y estrella-triángulo', 'Enclavamiento eléctrico, relé térmico y arranque estrella-triángulo.', 8, null);

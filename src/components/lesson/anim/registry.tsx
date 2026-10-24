@@ -1,25 +1,8 @@
 // industrial-imports
 import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
-import { buildSenalAnalogicaDigital, buildPuertasLogicasBasicas, buildKarnaughDosVariables, buildBiestableRs, buildSensorInductivo } from "@/components/lesson/anim/scenes/industrial/electronica";
-import {
-  buildOpticaSensor,
-  buildGalgaPotenciometro,
-  buildEncoderTacometro,
-  buildPresionTemperaturaCapt,
-  buildLdrOperacional,
-  buildBinarioSistemas,
-  buildConversionBases,
-  buildLogicaNiveles,
-  buildPuertasUniversales,
-  buildNandImplementacion,
-  buildMuxDecoder,
-  buildSumadorBinario,
-  buildSecuencialIntro,
-  buildBiestableJkDT,
-  buildCableadoLadder,
-  buildGrafoBimodal,
-  buildSecuenciaRelesPlc,
-} from "@/components/lesson/anim/scenes/industrial/electronica-ext";
+import { buildConversionBases, buildLogicaNiveles, buildPuertasLogicasBasicas, buildPuertasUniversales, buildKarnaughAgrupar, buildNandImplementacion, buildMuxDecoder, buildSumadorBinario } from "@/components/lesson/anim/scenes/industrial/logica";
+import { buildSenalAnalogicaDigital, buildSensorInductivo, buildOpticaSensor, buildGalgaDeformacion, buildEncoderTacometro, buildPresionManometros, buildTemperaturaCaptadores, buildOperacionalInversor, buildAceleradorAsr } from "@/components/lesson/anim/scenes/industrial/sensores";
+import { buildSecuencialIntro, buildBiestableRs, buildBiestableJkDT, buildRegistroDesplazamiento, buildCableadoLadder, buildGrafoBimodal, buildTemporizadoresCronograma, buildEstrellaTrianguloControl } from "@/components/lesson/anim/scenes/industrial/secuencial";
 import { buildViscosidadPlacas, buildFlujoLaminarTurbulento, buildPrensaHidraulica, buildContinuidadBernoulli, buildBombaEngranajes, buildLimitadoraDescarga, buildValvula43Cilindro, buildRegulacionCaudalHid } from "@/components/lesson/anim/scenes/industrial/hidraulica";
 import { buildHumedadCompresion, buildCompresorEmbolo, buildRedDistribucion, buildCilindrosEfecto, buildValvula32, buildEstrangulacion, buildEspacioFase, buildMandoDoble } from "@/components/lesson/anim/scenes/industrial/neumatica";
 import { buildOersted, buildHilosParalelos, buildLorentzCarga, buildEspiraMomento, buildFaradayVarilla, buildMotorCcBloques, buildCampoGiratorio, buildEstrellaTriangulo, buildMonofasicoArranque } from "@/components/lesson/anim/scenes/industrial/electricos";
@@ -557,15 +540,16 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "laplace-dominios": () => buildLaplaceDominios(),
   "senal-analogica-digital": () => buildSenalAnalogicaDigital(),
   "puertas-logicas-basicas": () => buildPuertasLogicasBasicas(),
-  "karnaugh-dos-variables": () => buildKarnaughDosVariables(),
+  "karnaugh-agrupar": () => buildKarnaughAgrupar(),
   "biestable-rs": () => buildBiestableRs(),
   "sensor-inductivo": () => buildSensorInductivo(),
   "optica-sensor": () => buildOpticaSensor(),
-  "galga-potenciometro": () => buildGalgaPotenciometro(),
+  "galga-deformacion": () => buildGalgaDeformacion(),
   "encoder-tacometro": () => buildEncoderTacometro(),
-  "presion-temperatura-capt": () => buildPresionTemperaturaCapt(),
-  "ldr-operacional": () => buildLdrOperacional(),
-  "binario-sistemas": () => buildBinarioSistemas(),
+  "presion-manometros": () => buildPresionManometros(),
+  "temperatura-captadores": () => buildTemperaturaCaptadores(),
+  "operacional-inversor": () => buildOperacionalInversor(),
+  "acelerador-asr": () => buildAceleradorAsr(),
   "conversion-bases": () => buildConversionBases(),
   "logica-niveles": () => buildLogicaNiveles(),
   "puertas-universales": () => buildPuertasUniversales(),
@@ -573,10 +557,12 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "mux-decoder": () => buildMuxDecoder(),
   "sumador-binario": () => buildSumadorBinario(),
   "secuencial-intro": () => buildSecuencialIntro(),
+  "registro-desplazamiento": () => buildRegistroDesplazamiento(),
   "biestable-jk-d-t": () => buildBiestableJkDT(),
   "cableado-ladder": () => buildCableadoLadder(),
   "grafo-bimodal": () => buildGrafoBimodal(),
-  "secuencia-reles-plc": () => buildSecuenciaRelesPlc(),
+  "temporizadores-cronograma": () => buildTemporizadoresCronograma(),
+  "estrella-triangulo-control": () => buildEstrellaTrianguloControl(),
   /* industrial-end */
 };
 
