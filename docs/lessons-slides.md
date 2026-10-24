@@ -399,6 +399,13 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `arbol-conteo` | Diagrama en árbol de 2 o 3 pasos: ramas que se multiplican y número de resultados | `a`, `b`, `c?` (ramas por paso, ≤ 24 hojas), `titles` |
 | `permutaciones-arbol` | Ordenaciones de A, B y C: 3 · 2 · 1 = 6 y 3! | — |
 | `combinaciones-dividir` | Cuatro amigos todos contra todos: 12 parejas ordenadas, cada partido contado dos veces → 6 | — |
+| `complejo-suma-vectores` | Suma de complejos como suma de vectores: dos vectores, paralelogramo y diagonal | `a`, `b` (z₁ = a+bi), `c`, `d` (z₂ = c+di), enteros en [−4, 4] |
+| `complejo-giro-i` | Multiplicar por i gira 90°: i·z, i²·z = −z, i³·z y vuelta a z | `a`, `b` (z = a+bi) |
+| `complejo-polar` | Módulo (Pitágoras), argumento (ángulo con el eje real) y paso a forma trigonométrica | `a`, `b` (z = a+bi), enteros en [−5, 5] |
+| `complejo-producto-polar` | Producto en forma polar: módulos que se multiplican y argumentos que se suman | `a`, `b` (r₁, θ₁°), `c`, `d` (r₂, θ₂°) |
+| `complejo-raices` | Raíces n-ésimas de r con argumento θ: misma circunferencia, ángulos separados 360°/n, polígono regular | `a` (r), `b` (θ°), `c` (n, 2–8) |
+| `logaritmo-exponente` | Escalera de potencias de la base: el logaritmo es el exponente buscado, log_a m = z ⇔ aᶻ = m | `a` (base 2–10), `b` (exponente) |
+| `logaritmo-producto` | El logaritmo de un producto suma exponentes (barras una tras otra) y el de un cociente los resta | `a` (base), `b` (m ≥ 2), `c` (k < m) |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -470,6 +477,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `trig-explorador` | Triángulo rectángulo con ángulo α e hipotenusa variables: lados y razones (que no cambian con el tamaño) | `a` (ángulo), `b` (hipotenusa) |
 | `trig-resolver-explorador` | Resolver un triángulo rectángulo: con ángulo + hipotenusa (`n: 0`) o con dos catetos (`n: 1`, `c` opuesto, `d` contiguo); ángulos en °′″ | `n`, `a`, `b`, `c`, `d` |
 | `combinatoria-explorador` | VR, V, P y C de `m` elementos tomados de `n` en `n`, y por qué C = V/n! | `a` (m ≤ 10), `b` (n ≤ m) |
+| `entorno-explorador` | Entorno E(a, r) = (a−r, a+r) y número de prueba: pertenece si su distancia al centro es menor que r | `initial`: `[a, 2r, 2x]` (centro, doble del radio, doble del número de prueba) |
+| `complejo-explorador` | Complejo z = x+yi en el plano: conjugado, módulo y argumento principal | `initial`: `[x, y]` en [−5, 5] |
+| `complejos-operaciones-explorador` | Suma, resta, producto y cociente de dos complejos, con el resultado en binómica, polar y en el plano | `initial`: `[a, b, c, d, op]` (z₁ = a+bi, z₂ = c+di; op 0 +, 1 −, 2 ·, 3 :) |
+| `potencia-compleja-explorador` | Moivre: z = r_θ elevado a n tiene módulo rⁿ y argumento nθ | `initial`: `[10r, θ°, n]` (r entre 0,5 y 1,5; n ≤ 12) |
+| `raices-complejas-explorador` | Raíces n-ésimas de un complejo en polar: lista en binómica y polígono regular | `initial`: `[r, θ°, n]` (r ≤ 64, n 2–8) |
+| `logaritmo-explorador` | log_b N exacto o entre dos potencias consecutivas, y comprobación con el cambio de base | `initial`: `[base 2–10, N ≤ 1000]` |
+| `log-propiedades-explorador` | Producto, cociente y potencia con números concretos, y por qué log(x+y) ≠ log x + log y | `initial`: `[base, x, y, n]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

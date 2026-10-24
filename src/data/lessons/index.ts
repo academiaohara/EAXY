@@ -33,6 +33,7 @@ import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-es
 import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
 import { aproximacionesCifrasSignificativas4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/04-aproximaciones-cifras-significativas-4eso";
 import { aproximacionesCifrasSignificativas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/10-aproximaciones-cifras-significativas-4esob";
+import { aproximacionesErrores1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/06-aproximaciones-errores-1bach";
 import { aproximacionesErrores3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/04-aproximaciones-errores-3eso";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
 import { areaCuadrilateros3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/05-area-cuadrilateros-3eso";
@@ -75,6 +76,11 @@ import { combQueEs4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-comb
 import { combSinOrden4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-combinatoria/06-comb-sin-orden-4esob";
 import { combVariaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-combinatoria/04-comb-variaciones-4esob";
 import { combVariacionesRepeticion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-combinatoria/03-comb-variaciones-repeticion-4esob";
+import { complejosBinomicaOperaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/09-complejos-binomica-operaciones-1bach";
+import { complejosModuloArgumento1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/11-complejos-modulo-argumento-1bach";
+import { complejosPlano1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/10-complejos-plano-1bach";
+import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/12-complejos-producto-moivre-1bach";
+import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
@@ -104,6 +110,7 @@ import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-es
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
+import { desigualdadesInecuaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/04-desigualdades-inecuaciones-1bach";
 import { detectoresDisenoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/09-detectores-diseno";
 import { detectoresInductivosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/03-detectores-inductivos";
 import { diagramaEutecticoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/06-diagrama-eutectico";
@@ -249,6 +256,7 @@ import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industri
 import { integralDerivativaPidLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/11-integral-derivativa-pid";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { intervalosAcotados4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/03-intervalos-acotados-4esob";
+import { intervalosEntornos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/05-intervalos-entornos-1bach";
 import { inversaAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/05-inversa-aplicaciones-4eso";
 import { inversaAplicaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/13-inversa-aplicaciones-4esob";
 import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
@@ -275,6 +283,8 @@ import { linealTipos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-f
 import { linealTipos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/02-lineal-tipos-4esob";
 import { linealTrozos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/07-lineal-trozos-4eso";
 import { linealTrozos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/07-lineal-trozos-4esob";
+import { logaritmosDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/14-logaritmos-definicion-1bach";
+import { logaritmosPropiedades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/15-logaritmos-propiedades-1bach";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
@@ -320,9 +330,11 @@ import { multiplicacionFracciones3esoLesson } from "@/data/lessons/matematicas-3
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
+import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
 import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/05-notacion-cientifica-3eso";
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
 import { notacionCientifica4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/12-notacion-cientifica-4esob";
+import { numeroIComplejos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/08-numero-i-complejos-1bach";
 import { numeroSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/03-numero-soluciones-3eso";
 import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
 import { numerosDecimales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/07-numeros-decimales-3eso";
@@ -442,6 +454,7 @@ import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-e
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
+import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
 import { racionalizar4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/07-racionalizar-4eso";
 import { racionalizar4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/09-racionalizar-4esob";
 import { radicalesFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/06-radicales-funcion-4eso";
@@ -456,6 +469,7 @@ import { raizDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sis
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { rectaDosPuntos3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/05-recta-dos-puntos-3eso";
 import { rectaPuntoPendiente3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/04-recta-punto-pendiente-3eso";
+import { rectaRealDensidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/02-recta-real-densidad-1bach";
 import { rectasYAngulosAngulosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/03-rectas-y-angulos-angulos";
 import { rectasYAngulosMediatrizBisectrizLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/02-rectas-y-angulos-mediatriz-bisectriz";
 import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/05-rectas-y-angulos-medida";
@@ -557,6 +571,7 @@ import { trigTrianguloLadoAngulo4esobLesson } from "@/data/lessons/matematicas-4
 import { turbinaGasBraytonLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/04-turbina-gas-brayton";
 import { unidadValvulasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/08-unidad-valvulas";
 import { unidadesVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/01-unidades-volumen-2eso";
+import { valorAbsolutoDistancia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/03-valor-absoluto-distancia-1bach";
 import { valvulasDistribuidorasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/07-valvulas-distribuidoras";
 import { variacionesPorcentuales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/09-variaciones-porcentuales-3eso";
 import { variacionesPorcentuales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/07-variaciones-porcentuales-4eso";
@@ -604,6 +619,7 @@ export const interactiveLessons = {
   "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
   "aproximaciones-cifras-significativas-4eso": aproximacionesCifrasSignificativas4esoLesson,
   "aproximaciones-cifras-significativas-4esob": aproximacionesCifrasSignificativas4esobLesson,
+  "aproximaciones-errores-1bach": aproximacionesErrores1bachLesson,
   "aproximaciones-errores-3eso": aproximacionesErrores3esoLesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
   "area-cuadrilateros-3eso": areaCuadrilateros3esoLesson,
@@ -646,6 +662,11 @@ export const interactiveLessons = {
   "comb-sin-orden-4esob": combSinOrden4esobLesson,
   "comb-variaciones-4esob": combVariaciones4esobLesson,
   "comb-variaciones-repeticion-4esob": combVariacionesRepeticion4esobLesson,
+  "complejos-binomica-operaciones-1bach": complejosBinomicaOperaciones1bachLesson,
+  "complejos-modulo-argumento-1bach": complejosModuloArgumento1bachLesson,
+  "complejos-plano-1bach": complejosPlano1bachLesson,
+  "complejos-producto-moivre-1bach": complejosProductoMoivre1bachLesson,
+  "complejos-raices-1bach": complejosRaices1bachLesson,
   "compresores": compresoresLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
   "conicas-3eso": conicas3esoLesson,
@@ -675,6 +696,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
   "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
+  "desigualdades-inecuaciones-1bach": desigualdadesInecuaciones1bachLesson,
   "detectores-diseno": detectoresDisenoLesson,
   "detectores-inductivos": detectoresInductivosLesson,
   "diagrama-eutectico": diagramaEutecticoLesson,
@@ -820,6 +842,7 @@ export const interactiveLessons = {
   "integral-derivativa-pid": integralDerivativaPidLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "intervalos-acotados-4esob": intervalosAcotados4esobLesson,
+  "intervalos-entornos-1bach": intervalosEntornos1bachLesson,
   "inversa-aplicaciones-4eso": inversaAplicaciones4esoLesson,
   "inversa-aplicaciones-4esob": inversaAplicaciones4esobLesson,
   "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
@@ -846,6 +869,8 @@ export const interactiveLessons = {
   "lineal-tipos-4esob": linealTipos4esobLesson,
   "lineal-trozos-4eso": linealTrozos4esoLesson,
   "lineal-trozos-4esob": linealTrozos4esobLesson,
+  "logaritmos-definicion-1bach": logaritmosDefinicion1bachLesson,
+  "logaritmos-propiedades-1bach": logaritmosPropiedades1bachLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "luz-detector-error": luzDetectorErrorLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
@@ -891,9 +916,11 @@ export const interactiveLessons = {
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
+  "notacion-cientifica-1bach": notacionCientifica1bachLesson,
   "notacion-cientifica-3eso": notacionCientifica3esoLesson,
   "notacion-cientifica-4eso": notacionCientifica4esoLesson,
   "notacion-cientifica-4esob": notacionCientifica4esobLesson,
+  "numero-i-complejos-1bach": numeroIComplejos1bachLesson,
   "numero-soluciones-3eso": numeroSoluciones3esoLesson,
   "numeros-decimales-2eso": numerosDecimales2esoLesson,
   "numeros-decimales-3eso": numerosDecimales3esoLesson,
@@ -1013,6 +1040,7 @@ export const interactiveLessons = {
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
+  "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
   "racionalizar-4eso": racionalizar4esoLesson,
   "racionalizar-4esob": racionalizar4esobLesson,
   "radicales-funcion-4eso": radicalesFuncion4esoLesson,
@@ -1027,6 +1055,7 @@ export const interactiveLessons = {
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recta-dos-puntos-3eso": rectaDosPuntos3esoLesson,
   "recta-punto-pendiente-3eso": rectaPuntoPendiente3esoLesson,
+  "recta-real-densidad-1bach": rectaRealDensidad1bachLesson,
   "rectas-y-angulos-angulos": rectasYAngulosAngulosLesson,
   "rectas-y-angulos-mediatriz-bisectriz": rectasYAngulosMediatrizBisectrizLesson,
   "rectas-y-angulos-medida": rectasYAngulosMedidaLesson,
@@ -1128,6 +1157,7 @@ export const interactiveLessons = {
   "turbina-gas-brayton": turbinaGasBraytonLesson,
   "unidad-valvulas": unidadValvulasLesson,
   "unidades-volumen-2eso": unidadesVolumen2esoLesson,
+  "valor-absoluto-distancia-1bach": valorAbsolutoDistancia1bachLesson,
   "valvulas-distribuidoras": valvulasDistribuidorasLesson,
   "variaciones-porcentuales-3eso": variacionesPorcentuales3esoLesson,
   "variaciones-porcentuales-4eso": variacionesPorcentuales4esoLesson,

@@ -1,4 +1,6 @@
 // industrial-imports
+import { buildComplejoSumaVectores, buildComplejoGiroI, buildComplejoPolar, buildComplejoProductoPolar, buildComplejoRaices } from "@/components/lesson/anim/scenes/bach1-complejos";
+import { buildLogaritmoExponente, buildLogaritmoProducto } from "@/components/lesson/anim/scenes/bach1-logaritmos";
 import { buildArbolConteo, buildPermutacionesArbol, buildCombinacionesDividir } from "@/components/lesson/anim/scenes/eso4b-comb";
 import { buildTrigTrianguloRazones, buildTrigSemejantes, buildTrigNotables, buildTrigAlturaArbol } from "@/components/lesson/anim/scenes/eso4b-trig";
 import { buildDivisionPolinomios, buildRuffiniTabla } from "@/components/lesson/anim/scenes/eso4b-polinomios";
@@ -578,6 +580,13 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "arbol-conteo": (p) => buildArbolConteo(p),
   "permutaciones-arbol": () => buildPermutacionesArbol(),
   "combinaciones-dividir": () => buildCombinacionesDividir(),
+  "complejo-suma-vectores": (p) => buildComplejoSumaVectores(p),
+  "complejo-giro-i": (p) => buildComplejoGiroI(p),
+  "complejo-polar": (p) => buildComplejoPolar(p),
+  "complejo-producto-polar": (p) => buildComplejoProductoPolar(p),
+  "complejo-raices": (p) => buildComplejoRaices(p),
+  "logaritmo-exponente": (p) => buildLogaritmoExponente(p),
+  "logaritmo-producto": (p) => buildLogaritmoProducto(p),
   /* industrial-end */
 };
 

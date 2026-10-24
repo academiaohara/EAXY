@@ -929,6 +929,13 @@ export type SlideAnimId =
   | "arbol-conteo"
   | "permutaciones-arbol"
   | "combinaciones-dividir"
+  | "complejo-suma-vectores"
+  | "complejo-giro-i"
+  | "complejo-polar"
+  | "complejo-producto-polar"
+  | "complejo-raices"
+  | "logaritmo-exponente"
+  | "logaritmo-producto"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1312,6 +1319,13 @@ export type SlideToolId =
   | "trig-explorador"
   | "trig-resolver-explorador"
   | "combinatoria-explorador"
+  | "entorno-explorador"
+  | "complejo-explorador"
+  | "complejos-operaciones-explorador"
+  | "potencia-compleja-explorador"
+  | "raices-complejas-explorador"
+  | "logaritmo-explorador"
+  | "log-propiedades-explorador"
   /* industrial-tool-end */;
 
 /**

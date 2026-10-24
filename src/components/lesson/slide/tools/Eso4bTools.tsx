@@ -14,11 +14,11 @@ const ink = "text-[color:var(--stage-ink,#fff)]";
 
 /* ───────────── Rectas con intervalos ───────────── */
 
-type Interval = { lo: number; loIncl: boolean; hi: number; hiIncl: boolean };
+export type Interval = { lo: number; loIncl: boolean; hi: number; hiIncl: boolean };
 
 const numTxt = (v: number) => (v === Infinity ? "+∞" : v === -Infinity ? "−∞" : f(v));
 
-function notation(i: Interval): string {
+export function notation(i: Interval): string {
   return `${i.loIncl ? "[" : "("}${numTxt(i.lo)}, ${numTxt(i.hi)}${i.hiIncl ? "]" : ")"}`;
 }
 
@@ -51,7 +51,7 @@ const LW = 520;
 const LH = 90;
 const lx = (v: number) => 30 + ((v + LR) / (2 * LR)) * (LW - 60);
 
-function NumberLine({ sets, probe, testId }: { sets: { i: Interval; color: string; y: number }[]; probe?: number; testId: string }) {
+export function NumberLine({ sets, probe, testId }: { sets: { i: Interval; color: string; y: number }[]; probe?: number; testId: string }) {
   const ticks = Array.from({ length: 2 * LR + 1 }, (_, k) => k - LR);
   const clampX = (v: number) => lx(clamp(v, -LR - 0.6, LR + 0.6));
   return (

@@ -191,6 +191,20 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 23,
   },
   {
+    slug: "numeros-complejos",
+    subject: "matematicas",
+    title: "Números complejos",
+    description: "Unidad imaginaria, forma binómica, plano complejo, forma polar, Moivre y raíces.",
+    orderIndex: 24,
+  },
+  {
+    slug: "logaritmos",
+    subject: "matematicas",
+    title: "Logaritmos",
+    description: "Definición, propiedades, cambio de base y escalas logarítmicas.",
+    orderIndex: 25,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -374,6 +388,16 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-4-eso-b/estadistica": "estadistica",
   "matematicas-4-eso-b/calculo-de-probabilidades": "probabilidad",
   "matematicas-4-eso-b/combinatoria": "combinatoria",
+
+  // ── Matemáticas 1.º Bachillerato ───────────────────────────────────────
+  "matematicas-1-bachillerato/numeros-reales-y-complejos": {
+    default: "potencias-y-raices",
+    lessons: {
+      6: "numeros-decimales", 7: "numeros-decimales",
+      8: "numeros-complejos", 9: "numeros-complejos", 10: "numeros-complejos", 11: "numeros-complejos", 12: "numeros-complejos", 13: "numeros-complejos",
+      14: "logaritmos", 15: "logaritmos",
+    },
+  },
 
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",

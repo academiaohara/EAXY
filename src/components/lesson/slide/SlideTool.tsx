@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
 import { IntervaloExplorador, SistemaInecuacionesExplorador, RuffiniExplorador, FraccionAlgExplorador, TrigExplorador, TrigResolverExplorador, CombinatoriaExplorador } from "@/components/lesson/slide/tools/Eso4bTools";
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
 import {
@@ -900,6 +901,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TrigResolverExplorador block={block} />;
     case "combinatoria-explorador":
       return <CombinatoriaExplorador block={block} />;
+    case "entorno-explorador":
+      return <EntornoExplorador block={block} />;
+    case "complejo-explorador":
+      return <ComplejoExplorador block={block} />;
+    case "complejos-operaciones-explorador":
+      return <ComplejosOperacionesExplorador block={block} />;
+    case "potencia-compleja-explorador":
+      return <PotenciaComplejaExplorador block={block} />;
+    case "raices-complejas-explorador":
+      return <RaicesComplejasExplorador block={block} />;
+    case "logaritmo-explorador":
+      return <LogaritmoExplorador block={block} />;
+    case "log-propiedades-explorador":
+      return <LogPropiedadesExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
