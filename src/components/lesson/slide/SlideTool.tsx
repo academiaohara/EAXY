@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ProductoEscalarExplorador, RectaFormasExplorador, RectasAnguloExplorador, DistanciaPuntoRectaExplorador, MediatrizExplorador, ConicaExplorador } from "@/components/lesson/slide/tools/Bach1GeoTools";
 import { RadianesExplorador, CirculoTrigExplorador, AngulosRelacionadosExplorador, SumaAngulosExplorador, DobleMitadExplorador, SumaProductoExplorador, EcuacionTrigExplorador, TrianguloGeneralExplorador } from "@/components/lesson/slide/tools/Bach1TrigTools";
 import { SucesionExplorador, ProgresionExplorador, LimiteEpsilonExplorador, LimiteRacionalExplorador, NumeroEExplorador } from "@/components/lesson/slide/tools/Bach1SucesionesTools";
 import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador, SistemaParametroExplorador, InecuacionCuadraticaExplorador, RegionInecuacionesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
@@ -949,6 +950,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <EcuacionTrigExplorador block={block} />;
     case "triangulo-general-explorador":
       return <TrianguloGeneralExplorador block={block} />;
+    case "producto-escalar-explorador":
+      return <ProductoEscalarExplorador block={block} />;
+    case "recta-formas-explorador":
+      return <RectaFormasExplorador block={block} />;
+    case "rectas-angulo-explorador":
+      return <RectasAnguloExplorador block={block} />;
+    case "distancia-punto-recta-explorador":
+      return <DistanciaPuntoRectaExplorador block={block} />;
+    case "mediatriz-explorador":
+      return <MediatrizExplorador block={block} />;
+    case "conica-explorador":
+      return <ConicaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

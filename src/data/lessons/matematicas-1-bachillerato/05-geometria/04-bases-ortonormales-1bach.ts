@@ -1,0 +1,105 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const basesOrtonormales1bachLesson: InteractiveLesson = {
+  slug: "bases-ortonormales-1bach",
+  title: "4. Bases ortogonales y ortonormales",
+  subtitle: TEMA_1BACH_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "unitario",
+      type: "slide",
+      help: [{ label: "Normalizar", message: "Dividir un vector entre su módulo da un vector de la misma dirección y sentido con módulo 1: se dice que se ha **normalizado**." }],
+      title: "Vectores unitarios y perpendiculares",
+      blocks: [
+        { kind: "rule", title: "Vector unitario", formula: "\\hat{u} = \\dfrac{\\vec{u}}{|\\vec{u}|}" },
+        { kind: "rule", title: "Perpendicular a (a, b)", formula: "\\vec{u} = (a, b)\\ \\Rightarrow\\ \\vec{u}^{\\perp} = (-b,\\ a)\\quad\\text{(giro de } 90^\\circ)" },
+        { kind: "example", lines: [
+          { math: "\\vec{u} = (3, 4),\\ |\\vec{u}| = 5:\\quad \\hat{u} = \\left(\\tfrac{3}{5}, \\tfrac{4}{5}\\right)" },
+          { math: "\\vec{u}\\cdot\\vec{u}^{\\perp} = 3\\cdot(-4) + 4\\cdot 3 = 0" },
+        ] },
+      ],
+      visual: { kind: "anim", scene: "perpendicular-giro", params: { nums: [3, 4] } },
+    },
+    {
+      id: "check-unitario",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "El módulo de $(6, 8)$ es $10$. Divide cada componente entre $10$." }],
+      title: "Normalizar",
+      question: "¿Cuál es el vector unitario con la misma dirección y sentido que $(6, 8)$?",
+      choices: [
+        { id: "a", label: "$\\left(\\tfrac{3}{5},\\ \\tfrac{4}{5}\\right)$" },
+        { id: "b", label: "$\\left(\\tfrac{6}{14},\\ \\tfrac{8}{14}\\right)$", incorrectFeedback: "Has dividido entre la suma de componentes ($14$). Hay que dividir entre el **módulo**, $\\sqrt{36 + 64} = 10$." },
+        { id: "c", label: "$(1,\\ 1)$", incorrectFeedback: "$|(1, 1)| = \\sqrt{2} \\neq 1$ y además tiene otra dirección." },
+        { id: "d", label: "$\\left(\\tfrac{4}{5},\\ \\tfrac{3}{5}\\right)$", incorrectFeedback: "Tiene módulo $1$ pero otra dirección: las componentes están intercambiadas." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$|(6, 8)| = 10$ y $\\frac{(6, 8)}{10} = \\left(\\frac{3}{5}, \\frac{4}{5}\\right)$.",
+    },
+    {
+      id: "bases",
+      type: "slide",
+      help: [{ label: "Por qué interesa", message: "En una base ortonormal las coordenadas de un vector se obtienen con un **producto escalar**, sin resolver ningún sistema: $a = \\vec{w}\\cdot\\vec{e}_1$, $b = \\vec{w}\\cdot\\vec{e}_2$." }],
+      title: "Bases ortogonales y ortonormales",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\vec{e}_1\\cdot\\vec{e}_2 = 0", label: "base ortogonal: perpendiculares" },
+          { tex: "|\\vec{e}_1| = |\\vec{e}_2| = 1", label: "base normada: unitarios" },
+          { tex: "\\text{ortogonal} + \\text{unitarios}", label: "base ortonormal" },
+        ] },
+        { kind: "example", title: "Base e₁ = (3/5, 4/5), e₂ = (−4/5, 3/5)", lines: [
+          { math: "\\vec{w} = (5, 0):\\quad a = \\vec{w}\\cdot\\vec{e}_1 = 3,\\quad b = \\vec{w}\\cdot\\vec{e}_2 = -4" },
+          { math: "\\vec{w} = 3\\vec{e}_1 - 4\\vec{e}_2" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-ortonormal",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una base ortonormal exige producto escalar 0 y módulos 1." }],
+      title: "¿Cuál es ortonormal?",
+      question: "¿Cuál de estas bases del plano es **ortonormal**?",
+      choices: [
+        { id: "a", label: "$\\left(\\tfrac{3}{5}, \\tfrac{4}{5}\\right)$ y $\\left(-\\tfrac{4}{5}, \\tfrac{3}{5}\\right)$" },
+        { id: "b", label: "$(1, 1)$ y $(1, -1)$", incorrectFeedback: "Son perpendiculares (producto $0$) pero miden $\\sqrt{2}$: es ortogonal, no ortonormal." },
+        { id: "c", label: "$(1, 0)$ y $(1, 1)$", incorrectFeedback: "No son perpendiculares: $(1, 0)\\cdot(1, 1) = 1$." },
+        { id: "d", label: "$(2, 0)$ y $(0, 2)$", incorrectFeedback: "Son perpendiculares pero miden $2$: ortogonal, no ortonormal." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Los dos tienen módulo $1$ y su producto escalar es $-\\frac{12}{25} + \\frac{12}{25} = 0$.",
+    },
+    {
+      id: "check-coordenada",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "En una base ortonormal, $b = \\vec{w}\\cdot\\vec{e}_2$ con $\\vec{e}_2 = \\left(-\\frac{4}{5}, \\frac{3}{5}\\right)$ y $\\vec{w} = (5, 0)$." }],
+      title: "Coordenada con un producto escalar",
+      question: "En la base ortonormal $\\vec{e}_1 = \\left(\\tfrac{3}{5}, \\tfrac{4}{5}\\right)$, $\\vec{e}_2 = \\left(-\\tfrac{4}{5}, \\tfrac{3}{5}\\right)$, ¿cuál es la segunda coordenada de $\\vec{w} = (5, 0)$? (solo el número)",
+      correctAnswers: ["-4", "−4"],
+      explanation: "$b = \\vec{w}\\cdot\\vec{e}_2 = 5\\cdot\\left(-\\frac{4}{5}\\right) + 0 = -4$.",
+    },
+    {
+      id: "check-perp",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$(a, b) \\to (-b, a)$: gira $90^\\circ$ en sentido antihorario." }],
+      title: "Un perpendicular",
+      question: "¿Cuál de estos vectores es perpendicular a $(2, 5)$?",
+      choices: [
+        { id: "a", label: "$(-5,\\ 2)$" },
+        { id: "b", label: "$(5,\\ 2)$", incorrectFeedback: "$(2, 5)\\cdot(5, 2) = 20 \\neq 0$." },
+        { id: "c", label: "$(2,\\ -5)$", incorrectFeedback: "$(2, 5)\\cdot(2, -5) = 4 - 25 = -21 \\neq 0$." },
+        { id: "d", label: "$(-2,\\ -5)$", incorrectFeedback: "Es el opuesto de $(2, 5)$: paralelo, no perpendicular." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(2, 5)\\cdot(-5, 2) = -10 + 10 = 0$.",
+    },
+  ],
+};

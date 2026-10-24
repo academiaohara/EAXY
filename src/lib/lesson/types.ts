@@ -940,6 +940,7 @@ export type SlideAnimId =
   | "serie-geometrica-saltos"
   | "radian-arco"
   | "circulo-goniometrico"
+  | "proyeccion-vector"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1346,6 +1347,12 @@ export type SlideToolId =
   | "suma-producto-explorador"
   | "ecuacion-trig-explorador"
   | "triangulo-general-explorador"
+  | "producto-escalar-explorador"
+  | "recta-formas-explorador"
+  | "rectas-angulo-explorador"
+  | "distancia-punto-recta-explorador"
+  | "mediatriz-explorador"
+  | "conica-explorador"
   /* industrial-tool-end */;
 
 /**

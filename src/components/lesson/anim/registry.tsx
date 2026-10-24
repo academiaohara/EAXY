@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildProyeccionVector } from "@/components/lesson/anim/scenes/bach1-geo";
 import { buildRadianArco, buildCirculoGoniometrico } from "@/components/lesson/anim/scenes/bach1-trig";
 import { buildSerieGeometricaSaltos } from "@/components/lesson/anim/scenes/bach1-sucesiones";
 import { buildGaussEliminacion } from "@/components/lesson/anim/scenes/bach1-sistemas";
@@ -594,6 +595,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "serie-geometrica-saltos": (p) => buildSerieGeometricaSaltos(p),
   "radian-arco": (p) => buildRadianArco(p),
   "circulo-goniometrico": (p) => buildCirculoGoniometrico(p),
+  "proyeccion-vector": (p) => buildProyeccionVector(p),
   /* industrial-end */
 };
 

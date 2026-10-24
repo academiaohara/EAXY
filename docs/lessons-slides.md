@@ -410,6 +410,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `serie-geometrica-saltos` | Suma infinita de una progresión geométrica como saltos decrecientes sobre la recta: sumas parciales y límite a₁/(1 − r) | `a` (a₁, 1–12), `b`, `c` (r = b/c con 0 < b < c ≤ 10) |
 | `radian-arco` | El radián: un arco igual al radio, arcos de varios radianes y 180° = π rad | `a` (radianes destacados, 1–6) |
 | `circulo-goniometrico` | Circunferencia de radio 1: P = (cos θ, sen θ), signo por cuadrantes, ángulo de referencia y tangente sobre x = 1 | `a` (ángulo en grados, 0–359) |
+| `proyeccion-vector` | Producto escalar como proyección: u y v desde el origen, sombra de u sobre v, u·v y ángulo | `nums`: `[ux, uy, vx, vy]` (enteros en [−6, 6]) |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -504,6 +505,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `suma-producto-explorador` | Las cuatro fórmulas de suma de razones a producto, con valores | `initial`: `[A, B]` |
 | `ecuacion-trig-explorador` | sen x = a, cos x = a o tg x = a: soluciones en [0°, 360°) y en la gráfica | `initial`: `[función (0 sen, 1 cos, 2 tg), 2a]` |
 | `triangulo-general-explorador` | Triángulo por LAL, LLL, AAL o LLA (caso ambiguo con 0, 1 o 2 soluciones): lados, ángulos, área y dibujo | `initial`: `[caso (0–3), dato1, dato2, dato3]` |
+| `producto-escalar-explorador` | u·v, módulos, ángulo (agudo, recto u obtuso) y proyección de u sobre v | `initial`: `[ux, uy, vx, vy]` |
+| `recta-formas-explorador` | Recta por un punto y un vector director en forma vectorial, paramétricas, continua, general y explícita | `initial`: `[x₀, y₀, dx, dy]` |
+| `rectas-angulo-explorador` | Dos rectas Ax+By=C: posición relativa, punto de corte y ángulo | `initial`: `[A₁, B₁, C₁, A₂, B₂, C₂]` |
+| `distancia-punto-recta-explorador` | Distancia de un punto a la recta Ax+By+C=0 con el pie de la perpendicular | `initial`: `[A, B, C, x₀, y₀]` |
+| `mediatriz-explorador` | Mediatriz del segmento AB y distancias de un punto T a A y B | `initial`: `[ax, ay, bx, by, tx, ty]` |
+| `conica-explorador` | Circunferencia, elipse, hipérbola o parábola con centro o vértice en (h, k): ecuación, focos, excentricidad, asíntotas o directriz | `initial`: `[tipo (0 circ., 1 elipse, 2 hipérbola, 3 parábola), a, b, h, k]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

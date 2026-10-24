@@ -1,0 +1,92 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const productoEscalar1bachLesson: InteractiveLesson = {
+  slug: "producto-escalar-1bach",
+  title: "3. El producto escalar",
+  subtitle: TEMA_1BACH_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "Resultado: un número", message: "El producto escalar de dos vectores es un **escalar** (un número), no un vector. De ahí su nombre." }],
+      title: "Dos fórmulas para el mismo número",
+      blocks: [
+        { kind: "rule", title: "Con coordenadas", formula: "\\vec{u}\\cdot\\vec{v} = u_1 v_1 + u_2 v_2" },
+        { kind: "rule", title: "Con módulos y ángulo", formula: "\\vec{u}\\cdot\\vec{v} = |\\vec{u}|\\,|\\vec{v}|\\cos\\theta" },
+        { kind: "text", text: "Geométricamente, $\\vec{u}\\cdot\\vec{v}$ es el módulo de $\\vec{v}$ por la longitud de la **proyección** de $\\vec{u}$ sobre $\\vec{v}$." },
+      ],
+      visual: { kind: "anim", scene: "proyeccion-vector", params: { nums: [4, 3, 5, 0] } },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Signo", message: "Si $\\vec{u}\\cdot\\vec{v} > 0$ el ángulo es agudo; si es $0$, recto; si es negativo, obtuso." }],
+      title: "Prueba con tus vectores",
+      blocks: [{ kind: "text", text: "Mueve las componentes y observa el producto, el ángulo y la proyección. Busca valores para los que el producto sea $0$." }],
+      visual: { kind: "tool", tool: "producto-escalar-explorador", initial: [3, 2, 1, 4], hint: "Con u = (3, 2) y v = (−2, 3) el producto es 0: son perpendiculares." },
+    },
+    {
+      id: "check-producto",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$2\\cdot(-1) + 3\\cdot 4$." }],
+      title: "Calcular un producto escalar",
+      question: "Calcula $\\vec{u}\\cdot\\vec{v}$ con $\\vec{u} = (2, 3)$ y $\\vec{v} = (-1, 4)$. (solo el número)",
+      correctAnswers: ["10"],
+      explanation: "$2\\cdot(-1) + 3\\cdot 4 = -2 + 12 = 10$.",
+    },
+    {
+      id: "angulo",
+      type: "slide",
+      help: [{ label: "Ángulo entre 0° y 180°", message: "El coseno determina el ángulo sin ambigüedad en $[0^\\circ, 180^\\circ]$. Si hace falta el ángulo **agudo** entre dos rectas, se toma el menor de $\\theta$ y $180^\\circ - \\theta$." }],
+      title: "Calcular el ángulo entre dos vectores",
+      blocks: [
+        { kind: "rule", title: "Despejando el coseno", formula: "\\cos\\theta = \\dfrac{\\vec{u}\\cdot\\vec{v}}{|\\vec{u}|\\,|\\vec{v}|}" },
+        { kind: "example", title: "u = (2, 3), v = (−1, 4)", lines: [
+          { math: "\\vec{u}\\cdot\\vec{v} = 10,\\quad |\\vec{u}| = \\sqrt{13},\\quad |\\vec{v}| = \\sqrt{17}" },
+          { math: "\\cos\\theta = \\dfrac{10}{\\sqrt{221}} \\approx 0{,}6727 \\Rightarrow \\theta \\approx 47{,}7^\\circ" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-angulo",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\cos\\theta = \\frac{2\\cdot 0 + 0\\cdot 3}{\\ldots}$: el producto es $0$." }],
+      title: "Un ángulo recto",
+      question: "¿Cuántos grados forman $\\vec{u} = (2, 0)$ y $\\vec{v} = (0, 3)$? (solo el número)",
+      correctAnswers: ["90"],
+      explanation: "$\\vec{u}\\cdot\\vec{v} = 0$, luego $\\cos\\theta = 0$ y $\\theta = 90^\\circ$.",
+    },
+    {
+      id: "check-perpendicular",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Perpendiculares: $\\vec{u}\\cdot\\vec{v} = 0$, es decir, $3k + 2\\cdot(-6) = 0$." }],
+      title: "Un parámetro",
+      question: "¿Qué valor de $k$ hace perpendiculares a $\\vec{u} = (k, 2)$ y $\\vec{v} = (3, -6)$? (solo el número)",
+      correctAnswers: ["4"],
+      explanation: "$\\vec{u}\\cdot\\vec{v} = 3k - 12 = 0 \\Rightarrow k = 4$.",
+    },
+    {
+      id: "check-signo",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "El signo del producto escalar es el del coseno." }],
+      title: "El signo del producto",
+      question: "Si $\\vec{u}\\cdot\\vec{v} < 0$, el ángulo que forman los vectores es…",
+      choices: [
+        { id: "a", label: "obtuso (mayor que $90^\\circ$)" },
+        { id: "b", label: "agudo", incorrectFeedback: "Con ángulo agudo el coseno, y el producto, son positivos." },
+        { id: "c", label: "recto", incorrectFeedback: "Con ángulo recto el producto vale exactamente $0$." },
+        { id: "d", label: "nulo", incorrectFeedback: "Con ángulo $0^\\circ$ el producto es $|\\vec{u}||\\vec{v}| > 0$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\cos\\theta < 0$ solo para $\\theta \\in (90^\\circ, 180^\\circ]$.",
+    },
+  ],
+};
