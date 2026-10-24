@@ -79,3 +79,4 @@ export const TEMA_4ESOB_11_SUBTITLE = "4.º ESO B, Tema 11 — Combinatoria";
 export const TEMA_1BACH_1_SUBTITLE = "1.º Bachillerato, Tema 1 — Números reales y complejos. Logaritmos";
 export const TEMA_1BACH_2_SUBTITLE = "1.º Bachillerato, Tema 2 — Álgebra";
 export const TEMA_1BACH_3_SUBTITLE = "1.º Bachillerato, Tema 3 — Sucesiones";
+export const TEMA_1BACH_4_SUBTITLE = "1.º Bachillerato, Tema 4 — Trigonometría";

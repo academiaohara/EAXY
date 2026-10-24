@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { RadianesExplorador, CirculoTrigExplorador, AngulosRelacionadosExplorador, SumaAngulosExplorador, DobleMitadExplorador, SumaProductoExplorador, EcuacionTrigExplorador, TrianguloGeneralExplorador } from "@/components/lesson/slide/tools/Bach1TrigTools";
 import { SucesionExplorador, ProgresionExplorador, LimiteEpsilonExplorador, LimiteRacionalExplorador, NumeroEExplorador } from "@/components/lesson/slide/tools/Bach1SucesionesTools";
 import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador, SistemaParametroExplorador, InecuacionCuadraticaExplorador, RegionInecuacionesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
 import { IntervaloExplorador, SistemaInecuacionesExplorador, RuffiniExplorador, FraccionAlgExplorador, TrigExplorador, TrigResolverExplorador, CombinatoriaExplorador } from "@/components/lesson/slide/tools/Eso4bTools";
@@ -932,6 +933,22 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LimiteRacionalExplorador block={block} />;
     case "numero-e-explorador":
       return <NumeroEExplorador block={block} />;
+    case "radianes-explorador":
+      return <RadianesExplorador block={block} />;
+    case "circulo-trig-explorador":
+      return <CirculoTrigExplorador block={block} />;
+    case "angulos-relacionados-explorador":
+      return <AngulosRelacionadosExplorador block={block} />;
+    case "suma-angulos-explorador":
+      return <SumaAngulosExplorador block={block} />;
+    case "doble-mitad-explorador":
+      return <DobleMitadExplorador block={block} />;
+    case "suma-producto-explorador":
+      return <SumaProductoExplorador block={block} />;
+    case "ecuacion-trig-explorador":
+      return <EcuacionTrigExplorador block={block} />;
+    case "triangulo-general-explorador":
+      return <TrianguloGeneralExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

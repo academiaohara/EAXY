@@ -27,6 +27,8 @@ import { analiticaRectaVector4esoLesson } from "@/data/lessons/matematicas-4-eso
 import { analiticaRectaVector4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/06-analitica-recta-vector-4esob";
 import { analiticaVectores4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/01-analitica-vectores-4eso";
 import { analiticaVectores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/01-analitica-vectores-4esob";
+import { anguloDobleMitad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/06-angulo-doble-mitad-1bach";
+import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/04-angulos-relacionados-1bach";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
@@ -66,6 +68,7 @@ import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-indu
 import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
 import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/07-circuitos-temporizadores";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
+import { circunferenciaGoniometrica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/03-circunferencia-goniometrica-1bach";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
 import { cobreAluminioMagnesioTitanioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/02-cobre-aluminio-magnesio-titanio";
 import { codificadoresMultiplexoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/12-codificadores-multiplexores";
@@ -153,6 +156,8 @@ import { ecuacionesSegundoGradoCompletas4esoLesson } from "@/data/lessons/matema
 import { ecuacionesSegundoGradoCompletas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/01-ecuaciones-segundo-grado-completas-4esob";
 import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/01-ecuaciones-soluciones-3eso";
 import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
+import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/09-ecuaciones-trig-metodos-1bach";
+import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
@@ -255,6 +260,7 @@ import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
 import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/08-identidades-notables-4esob";
+import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { induccionFaradayLenzLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/05-induccion-faraday-lenz";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
@@ -452,6 +458,7 @@ import { problemasSistemasCapitales4esoLesson } from "@/data/lessons/matematicas
 import { problemasSistemasCapitales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/13-problemas-sistemas-capitales-4esob";
 import { problemasSistemasCompras4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/07-problemas-sistemas-compras-4eso";
 import { problemasSistemasCompras4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/12-problemas-sistemas-compras-4esob";
+import { problemasTrigonometria1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/13-problemas-trigonometria-1bach";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
@@ -475,6 +482,7 @@ import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-e
 import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
 import { racionalizar4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/07-racionalizar-4eso";
 import { racionalizar4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/09-racionalizar-4esob";
+import { radianes1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/01-radianes-1bach";
 import { radicalesFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/06-radicales-funcion-4eso";
 import { radicalesFuncion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/14-radicales-funcion-4esob";
 import { raices3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/03-raices-3eso";
@@ -485,6 +493,7 @@ import { raicesRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-n
 import { raicesRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/05-raices-radicales-4esob";
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/02-raiz-cuadrada-naturales";
 import { raizDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/05-raiz-decimales-2eso";
+import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { rectaDosPuntos3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/05-recta-dos-puntos-3eso";
 import { rectaPuntoPendiente3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/04-recta-punto-pendiente-3eso";
@@ -504,6 +513,7 @@ import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-e
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
+import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
 import { semejanzaEscala4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/02-semejanza-escala-4esob";
@@ -553,6 +563,7 @@ import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { sucesionesTipos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/04-sucesiones-tipos-1bach";
 import { sumaInfinita1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/05-suma-infinita-1bach";
 import { sumaProgresionAritmetica3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/03-suma-progresion-aritmetica-3eso";
+import { sumaRestaAngulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/05-suma-resta-angulos-1bach";
 import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-suma-resta-decimales-2eso";
 import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
 import { sumaRestaEnteros2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/06-suma-resta-enteros-2eso";
@@ -571,8 +582,10 @@ import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matem
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
+import { teoremaCoseno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/10-teorema-coseno-1bach";
 import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/01-teorema-pitagoras-2eso";
 import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/01-teorema-pitagoras-3eso";
+import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { tiposCorrosionProteccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/07-tipos-corrosion-proteccion";
@@ -638,6 +651,8 @@ export const interactiveLessons = {
   "analitica-recta-vector-4esob": analiticaRectaVector4esobLesson,
   "analitica-vectores-4eso": analiticaVectores4esoLesson,
   "analitica-vectores-4esob": analiticaVectores4esobLesson,
+  "angulo-doble-mitad-1bach": anguloDobleMitad1bachLesson,
+  "angulos-relacionados-1bach": angulosRelacionados1bachLesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
@@ -677,6 +692,7 @@ export const interactiveLessons = {
   "circuitos-aplicaciones": circuitosAplicacionesLesson,
   "circuitos-temporizadores": circuitosTemporizadoresLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
+  "circunferencia-goniometrica-1bach": circunferenciaGoniometrica1bachLesson,
   "circunferencias-2eso": circunferencias2esoLesson,
   "cobre-aluminio-magnesio-titanio": cobreAluminioMagnesioTitanioLesson,
   "codificadores-multiplexores": codificadoresMultiplexoresLesson,
@@ -764,6 +780,8 @@ export const interactiveLessons = {
   "ecuaciones-segundo-grado-completas-4esob": ecuacionesSegundoGradoCompletas4esobLesson,
   "ecuaciones-soluciones-3eso": ecuacionesSoluciones3esoLesson,
   "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
+  "ecuaciones-trig-metodos-1bach": ecuacionesTrigMetodos1bachLesson,
+  "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
@@ -866,6 +884,7 @@ export const interactiveLessons = {
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
   "identidades-notables-4esob": identidadesNotables4esobLesson,
+  "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "induccion-faraday-lenz": induccionFaradayLenzLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
@@ -1063,6 +1082,7 @@ export const interactiveLessons = {
   "problemas-sistemas-capitales-4esob": problemasSistemasCapitales4esobLesson,
   "problemas-sistemas-compras-4eso": problemasSistemasCompras4esoLesson,
   "problemas-sistemas-compras-4esob": problemasSistemasCompras4esobLesson,
+  "problemas-trigonometria-1bach": problemasTrigonometria1bachLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
@@ -1086,6 +1106,7 @@ export const interactiveLessons = {
   "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
   "racionalizar-4eso": racionalizar4esoLesson,
   "racionalizar-4esob": racionalizar4esobLesson,
+  "radianes-1bach": radianes1bachLesson,
   "radicales-funcion-4eso": radicalesFuncion4esoLesson,
   "radicales-funcion-4esob": radicalesFuncion4esobLesson,
   "raices-3eso": raices3esoLesson,
@@ -1096,6 +1117,7 @@ export const interactiveLessons = {
   "raices-radicales-4esob": raicesRadicales4esobLesson,
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
   "raiz-decimales-2eso": raizDecimales2esoLesson,
+  "razones-agudas-1bach": razonesAgudas1bachLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recta-dos-puntos-3eso": rectaDosPuntos3esoLesson,
   "recta-punto-pendiente-3eso": rectaPuntoPendiente3esoLesson,
@@ -1115,6 +1137,7 @@ export const interactiveLessons = {
   "residuos-reciclaje": residuosReciclajeLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
+  "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
   "semejanza-escala-4esob": semejanzaEscala4esobLesson,
@@ -1164,6 +1187,7 @@ export const interactiveLessons = {
   "sucesiones-tipos-1bach": sucesionesTipos1bachLesson,
   "suma-infinita-1bach": sumaInfinita1bachLesson,
   "suma-progresion-aritmetica-3eso": sumaProgresionAritmetica3esoLesson,
+  "suma-resta-angulos-1bach": sumaRestaAngulos1bachLesson,
   "suma-resta-decimales-2eso": sumaRestaDecimales2esoLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,
   "suma-resta-enteros-2eso": sumaRestaEnteros2esoLesson,
@@ -1182,8 +1206,10 @@ export const interactiveLessons = {
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
+  "teorema-coseno-1bach": teoremaCoseno1bachLesson,
   "teorema-pitagoras-2eso": teoremaPitagoras2esoLesson,
   "teorema-pitagoras-3eso": teoremaPitagoras3esoLesson,
+  "teorema-seno-1bach": teoremaSeno1bachLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "tipos-corrosion-proteccion": tiposCorrosionProteccionLesson,

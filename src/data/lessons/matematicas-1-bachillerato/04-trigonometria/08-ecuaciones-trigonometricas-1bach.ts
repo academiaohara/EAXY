@@ -1,0 +1,105 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const ecuacionesTrigonometricas1bachLesson: InteractiveLesson = {
+  slug: "ecuaciones-trigonometricas-1bach",
+  title: "8. Ecuaciones trigonométricas sencillas",
+  subtitle: TEMA_1BACH_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "idea",
+      type: "slide",
+      help: [{ label: "Periodicidad", message: "Seno y coseno se repiten cada $360^\\circ$ ($2\\pi$) y la tangente cada $180^\\circ$ ($\\pi$): por eso cada solución genera infinitas más." }],
+      title: "Infinitas soluciones por periodicidad",
+      blocks: [
+        { kind: "text", text: "Una **ecuación trigonométrica** tiene la incógnita dentro de una razón trigonométrica. Como estas funciones son periódicas, suele haber **infinitas soluciones**: primero se hallan las de $[0^\\circ, 360^\\circ)$ y luego se suman vueltas completas." },
+        { kind: "example", title: "sen x = 1/2", lines: [
+          { math: "x = 30^\\circ + 360^\\circ k\\qquad x = 150^\\circ + 360^\\circ k,\\ k \\in \\mathbb{Z}" },
+          { math: "x = \\dfrac{\\pi}{6} + 2k\\pi\\qquad x = \\dfrac{5\\pi}{6} + 2k\\pi" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "ecuacion-trig-explorador", initial: [0, 1], hint: "Con sen x = 0,5 la recta horizontal corta la curva en 30° y 150°. Prueba valores mayores que 1." },
+    },
+    {
+      id: "check-cos",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\cos x = -\\frac{1}{2}$ en el cuadrante II ($180^\\circ - 60^\\circ$) y en el III ($180^\\circ + 60^\\circ$)." }],
+      title: "cos x = −1/2",
+      question: "¿Cuáles son las soluciones de $\\cos x = -\\dfrac{1}{2}$ entre $0^\\circ$ y $360^\\circ$?",
+      choices: [
+        { id: "a", label: "$120^\\circ$ y $240^\\circ$" },
+        { id: "b", label: "$60^\\circ$ y $300^\\circ$", incorrectFeedback: "Son las soluciones de $\\cos x = +\\frac{1}{2}$." },
+        { id: "c", label: "$150^\\circ$ y $210^\\circ$", incorrectFeedback: "Son las de $\\cos x = -\\frac{\\sqrt{3}}{2}$." },
+        { id: "d", label: "$120^\\circ$ y $300^\\circ$", incorrectFeedback: "El coseno es negativo en los cuadrantes II y III: $120^\\circ$ y $240^\\circ$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "El ángulo de referencia es $60^\\circ$ y el coseno es negativo en II y III: $180^\\circ - 60^\\circ = 120^\\circ$ y $180^\\circ + 60^\\circ = 240^\\circ$.",
+    },
+    {
+      id: "casos",
+      type: "slide",
+      help: [{ label: "En el recorrido", message: "Seno y coseno solo toman valores en $[-1, 1]$; la tangente, en todos los reales." }],
+      title: "Cuántas soluciones hay",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\sin x = a,\\ \\cos x = a\\ (|a| < 1)", label: "dos soluciones por vuelta" },
+          { tex: "\\sin x = \\pm 1,\\ \\cos x = \\pm 1", label: "una solución por vuelta" },
+          { tex: "|a| > 1", label: "sin solución (seno y coseno)" },
+          { tex: "\\tan x = a", label: "una solución cada 180° (siempre)" },
+        ] },
+        { kind: "example", lines: [
+          { math: "\\tan x = 1 \\Rightarrow x = 45^\\circ + 180^\\circ k" },
+          { math: "\\sin x = 1{,}5:\\ \\text{sin solución}" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-sin-sol",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Recuerda el recorrido del coseno." }],
+      title: "¿Tiene solución?",
+      question: "La ecuación $\\cos x = 2$ …",
+      choices: [
+        { id: "a", label: "no tiene solución real" },
+        { id: "b", label: "tiene una solución en $[0^\\circ, 360^\\circ)$", incorrectFeedback: "El coseno nunca supera $1$." },
+        { id: "c", label: "tiene dos soluciones en $[0^\\circ, 360^\\circ)$", incorrectFeedback: "Dos soluciones por vuelta solo si $|a| < 1$." },
+        { id: "d", label: "tiene infinitas soluciones, como $x = 0^\\circ + 360^\\circ k$", incorrectFeedback: "Esas valen para $\\cos x = 1$, no para $\\cos x = 2$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$-1 \\leq \\cos x \\leq 1$ siempre, así que $\\cos x = 2$ no tiene solución.",
+    },
+    {
+      id: "check-tg",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\tan x = 1$ para $x = 45^\\circ$ y $x = 45^\\circ + 180^\\circ$." }],
+      title: "tg x = 1",
+      question: "La ecuación $\\tan x = 1$ tiene dos soluciones en $[0^\\circ, 360^\\circ)$: $45^\\circ$ y otra. ¿Cuál es la otra? (solo el número, en grados)",
+      correctAnswers: ["225"],
+      explanation: "La tangente tiene periodo $180^\\circ$, así que la otra solución es $45^\\circ + 180^\\circ = 225^\\circ$.",
+    },
+    {
+      id: "check-pi",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Pasa $30^\\circ$ y $150^\\circ$ a radianes: $\\frac{\\pi}{6}$ y $\\frac{5\\pi}{6}$." }],
+      title: "En radianes",
+      question: "La solución general de $\\sin x = \\dfrac{1}{2}$ en radianes es…",
+      choices: [
+        { id: "a", label: "$x = \\dfrac{\\pi}{6} + 2k\\pi$ y $x = \\dfrac{5\\pi}{6} + 2k\\pi$" },
+        { id: "b", label: "$x = \\dfrac{\\pi}{6} + k\\pi$ únicamente", incorrectFeedback: "Dejaría fuera $\\frac{5\\pi}{6}$, y con $+k\\pi$ se incluirían valores que no son solución, como $\\frac{7\\pi}{6}$." },
+        { id: "c", label: "$x = \\dfrac{\\pi}{3} + 2k\\pi$ y $x = \\dfrac{2\\pi}{3} + 2k\\pi$", incorrectFeedback: "Esas son las soluciones de $\\sin x = \\frac{\\sqrt{3}}{2}$." },
+        { id: "d", label: "$x = \\dfrac{\\pi}{6}$ únicamente", incorrectFeedback: "Hay otra solución en cada vuelta y infinitas vueltas." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$30^\\circ = \\frac{\\pi}{6}$ y $150^\\circ = \\frac{5\\pi}{6}$, más cualquier número de vueltas completas ($2k\\pi$).",
+    },
+  ],
+};

@@ -938,6 +938,8 @@ export type SlideAnimId =
   | "logaritmo-producto"
   | "gauss-eliminacion"
   | "serie-geometrica-saltos"
+  | "radian-arco"
+  | "circulo-goniometrico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1336,6 +1338,14 @@ export type SlideToolId =
   | "limite-epsilon-explorador"
   | "limite-racional-explorador"
   | "numero-e-explorador"
+  | "radianes-explorador"
+  | "circulo-trig-explorador"
+  | "angulos-relacionados-explorador"
+  | "suma-angulos-explorador"
+  | "doble-mitad-explorador"
+  | "suma-producto-explorador"
+  | "ecuacion-trig-explorador"
+  | "triangulo-general-explorador"
   /* industrial-tool-end */;
 
 /**

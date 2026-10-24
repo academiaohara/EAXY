@@ -1,0 +1,106 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const angulosRelacionados1bachLesson: InteractiveLesson = {
+  slug: "angulos-relacionados-1bach",
+  title: "4. Reducción al primer cuadrante",
+  subtitle: TEMA_1BACH_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tabla",
+      type: "slide",
+      help: [{ label: "Por simetría", message: "Los puntos de la circunferencia asociados a $\\alpha$, $180^\\circ - \\alpha$, $180^\\circ + \\alpha$ y $360^\\circ - \\alpha$ son simétricos respecto de los ejes y del origen: repiten ordenadas o abscisas, con signos cambiados." }],
+      title: "Ángulos relacionados con α",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\sin(180^\\circ - \\alpha) = \\sin\\alpha", label: "suplementarios" },
+          { tex: "\\cos(180^\\circ - \\alpha) = -\\cos\\alpha", label: "" },
+          { tex: "\\sin(180^\\circ + \\alpha) = -\\sin\\alpha", label: "difieren 180°" },
+          { tex: "\\cos(180^\\circ + \\alpha) = -\\cos\\alpha", label: "" },
+          { tex: "\\sin(-\\alpha) = -\\sin\\alpha,\\ \\cos(-\\alpha) = \\cos\\alpha", label: "opuestos" },
+          { tex: "\\sin(90^\\circ - \\alpha) = \\cos\\alpha,\\ \\cos(90^\\circ - \\alpha) = \\sin\\alpha", label: "complementarios" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "angulos-relacionados-explorador", initial: [30], hint: "Compara cada fila con la de α: ¿qué columnas cambian de signo y cuáles no?" },
+    },
+    {
+      id: "check-120",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$120^\\circ = 180^\\circ - 60^\\circ$: usa $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$." }],
+      title: "cos 120°",
+      question: "¿Cuánto vale $\\cos 120^\\circ$?",
+      choices: [
+        { id: "a", label: "$-\\dfrac{1}{2}$" },
+        { id: "b", label: "$\\dfrac{1}{2}$", incorrectFeedback: "Es el coseno de $60^\\circ$. En el cuadrante II el coseno es negativo." },
+        { id: "c", label: "$-\\dfrac{\\sqrt{3}}{2}$", incorrectFeedback: "Es el coseno de $150^\\circ$. La referencia de $120^\\circ$ es $60^\\circ$." },
+        { id: "d", label: "$\\dfrac{\\sqrt{3}}{2}$", incorrectFeedback: "Es el seno de $120^\\circ$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = -\\cos 60^\\circ = -\\frac{1}{2}$.",
+    },
+    {
+      id: "problema",
+      type: "slide",
+      help: [{ label: "El cuadrante manda", message: "Al hallar la otra razón con $\\sin^2 + \\cos^2 = 1$ sale $\\pm$; el cuadrante decide el signo." }],
+      title: "Hallar todas las razones",
+      blocks: [
+        { kind: "example", title: "sen α = 3/5 y α está en el cuadrante II", lines: [
+          { math: "\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25} \\Rightarrow \\cos\\alpha = \\pm\\dfrac{4}{5}" },
+          { math: "\\text{Cuadrante II: coseno negativo} \\Rightarrow \\cos\\alpha = -\\dfrac{4}{5}" },
+          { math: "\\tan\\alpha = \\dfrac{3/5}{-4/5} = -\\dfrac{3}{4}" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-tg",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$135^\\circ = 180^\\circ - 45^\\circ$: $\\tan 135^\\circ = -\\tan 45^\\circ$." }],
+      title: "tg 135°",
+      question: "¿Cuánto vale $\\tan 135^\\circ$? (solo el número)",
+      correctAnswers: ["-1", "−1"],
+      explanation: "$\\tan 135^\\circ = \\frac{\\sin 135^\\circ}{\\cos 135^\\circ} = \\frac{\\sqrt{2}/2}{-\\sqrt{2}/2} = -1$.",
+    },
+    {
+      id: "check-cos",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\sin 120^\\circ = \\sin(180^\\circ - 60^\\circ)$ y $\\cos(90^\\circ - \\alpha) = \\sin\\alpha$." }],
+      title: "Cuál no es igual",
+      question: "Sea $\\alpha = 20^\\circ$. ¿Cuál de estas igualdades es **falsa**?",
+      choices: [
+        { id: "a", label: "$\\sin 160^\\circ = -\\sin 20^\\circ$" },
+        { id: "b", label: "$\\cos 340^\\circ = \\cos 20^\\circ$", incorrectFeedback: "Es cierta: $340^\\circ = 360^\\circ - 20^\\circ$ y el coseno no cambia." },
+        { id: "c", label: "$\\sin 70^\\circ = \\cos 20^\\circ$", incorrectFeedback: "Es cierta: $70^\\circ = 90^\\circ - 20^\\circ$ (complementarios)." },
+        { id: "d", label: "$\\cos 200^\\circ = -\\cos 20^\\circ$", incorrectFeedback: "Es cierta: $200^\\circ = 180^\\circ + 20^\\circ$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\sin 160^\\circ = \\sin(180^\\circ - 20^\\circ) = +\\sin 20^\\circ$: **no** cambia de signo.",
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Mira qué relación liga cada ángulo con $\\alpha = 40^\\circ$: suplementario ($180^\\circ - \\alpha$), que difiere $180^\\circ$, opuesto o complementario." }],
+      title: "Mismo seno o signo contrario",
+      question: "Para $\\alpha = 40^\\circ$ (con $\\sin 40^\\circ \\approx 0{,}64$), clasifica cada ángulo por su seno.",
+      groups: [
+        { id: "igual", label: "Seno = sen 40°", tone: "emerald" },
+        { id: "op", label: "Seno = −sen 40°", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$140^\\circ$", group: "igual" },
+        { id: "b", text: "$220^\\circ$", group: "op" },
+        { id: "c", text: "$320^\\circ$", group: "op" },
+        { id: "d", text: "$-40^\\circ$", group: "op" },
+        { id: "e", text: "$400^\\circ$", group: "igual" },
+        { id: "f", text: "$\\dfrac{7\\pi}{9}$ rad", group: "igual" },
+      ],
+      hint: "$400^\\circ = 360^\\circ + 40^\\circ$ y $\\frac{7\\pi}{9}$ rad $= 140^\\circ = 180^\\circ - 40^\\circ$.",
+    },
+  ],
+};
