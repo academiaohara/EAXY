@@ -1,0 +1,112 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESOB_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const intervalosAcotados4esobLesson: InteractiveLesson = {
+  slug: "intervalos-acotados-4esob",
+  title: "3. Intervalos",
+  subtitle: TEMA_4ESOB_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "idea",
+      type: "slide",
+      help: [
+        { label: "Todos los números", message: "En un intervalo entran también los decimales y los irracionales: entre $-2$ y $1$ hay infinitos números reales, no solo los enteros." },
+        { label: "Nombre del conjunto", message: "$\\{x / -2 < x < 1\\}$ se lee «conjunto de los números $x$ tales que $x$ es mayor que $-2$ y menor que $1$»." },
+      ],
+      title: "Un tramo de la recta real",
+      blocks: [
+        { kind: "definition", text: "El **intervalo abierto** $(a, b)$ es el conjunto de **todos** los números reales comprendidos entre $a$ y $b$, sin incluir ni $a$ ni $b$." },
+        { kind: "formula", tex: "(a, b) = \\{x \\mid a < x < b\\}" },
+        { kind: "example", lines: [{ math: "(-2, 1) = \\{x \\mid -2 < x < 1\\}", note: "el $-2$ y el $1$ quedan fuera" }] },
+      ],
+      visual: { kind: "anim", scene: "intervalo-recta", params: { a: -2, b: 1, c: 0 } },
+    },
+    {
+      id: "cerrado-semiabierto",
+      type: "slide",
+      help: [
+        { label: "Corchete o paréntesis", message: "El corchete «se agarra» al número: lo incluye. El paréntesis lo deja fuera. En la recta: punto relleno = entra, punto vacío = no entra." },
+      ],
+      title: "Cerrado y semiabierto",
+      blocks: [
+        { kind: "compare", left: { title: "Cerrado $[a, b]$", text: "Entran **los dos** extremos: $a \\leq x \\leq b$.", tone: "ok" }, right: { title: "Semiabierto", text: "Entra **uno** solo: $(a, b]$ incluye $b$; $[a, b)$ incluye $a$.", tone: "warn" } },
+        { kind: "example", lines: [{ math: "[-2, 1] \\to -2 \\leq x \\leq 1" }, { math: "(3, 4] \\to 3 < x \\leq 4" }, { math: "[3, 4) \\to 3 \\leq x < 4" }] },
+      ],
+      visual: { kind: "anim", scene: "intervalo-recta", params: { a: 3, b: 6, c: 2 } },
+    },
+    {
+      id: "check-notacion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Lee los signos", message: "Corchete a la izquierda: entra el $3$ ($\\leq$). Paréntesis a la derecha: no entra el $4$ ($<$)." }],
+      title: "De intervalo a desigualdad",
+      question: "¿Qué desigualdad describe el intervalo $[3, 4)$?",
+      choices: [
+        { id: "a", label: "$3 \\leq x < 4$" },
+        { id: "b", label: "$3 < x \\leq 4$", incorrectFeedback: "Esa es la de $(3, 4]$: el corchete está al otro lado." },
+        { id: "c", label: "$3 < x < 4$", incorrectFeedback: "Esa es la del intervalo abierto $(3, 4)$." },
+        { id: "d", label: "$3 \\leq x \\leq 4$", incorrectFeedback: "Esa es la del cerrado $[3, 4]$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "El corchete en el $3$ lo incluye ($\\leq$) y el paréntesis en el $4$ lo excluye ($<$): $3 \\leq x < 4$.",
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Extremos", message: "Un número de prueba justo en un extremo es la forma más rápida de ver si el intervalo lo incluye." }],
+      title: "Explora: extremos y pertenencia",
+      blocks: [{ kind: "text", text: "Cambia el tipo de intervalo y coloca el número de prueba **en un extremo**. Comprueba cuándo pertenece y cuándo no." }],
+      visual: { kind: "tool", tool: "intervalo-explorador", initial: [-2, 3, 0, 3], hint: "Pon x = 3 y alterna ( ) con [ ]: el resultado cambia solo en el extremo." },
+    },
+    {
+      id: "check-tipo",
+      type: "classify",
+      help: [{ label: "Cuenta los corchetes", message: "Dos paréntesis: abierto. Dos corchetes: cerrado. Uno de cada: semiabierto." }],
+      title: "¿Qué tipo de intervalo es?",
+      question: "Clasifica cada intervalo.",
+      groups: [
+        { id: "abierto", label: "Abierto", tone: "cobalt" },
+        { id: "cerrado", label: "Cerrado", tone: "emerald" },
+        { id: "semi", label: "Semiabierto", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$(-1, 4)$", group: "abierto" },
+        { id: "b", text: "$[0, 6]$", group: "cerrado" },
+        { id: "c", text: "$(3, 4]$", group: "semi" },
+        { id: "d", text: "$[-3, 2]$", group: "cerrado" },
+        { id: "e", text: "$[1, 3)$", group: "semi" },
+        { id: "f", text: "$(0, 1)$", group: "abierto" },
+      ],
+      hint: "Mira solo los símbolos de los extremos.",
+    },
+    {
+      id: "check-pertenece",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "El 7", message: "En $[-3, 7)$ el extremo derecho tiene paréntesis: el $7$ no entra." }],
+      title: "¿Quién queda fuera?",
+      question: "Sea $A = [-3, 7)$. ¿Cuál de estos números **no** pertenece a $A$?",
+      choices: [
+        { id: "a", label: "$-3$", incorrectFeedback: "El corchete en $-3$ lo incluye: sí pertenece." },
+        { id: "b", label: "$0{,}5$", incorrectFeedback: "Está entre $-3$ y $7$: pertenece." },
+        { id: "c", label: "$7$" },
+        { id: "d", label: "$\\sqrt{5}$", incorrectFeedback: "$\\sqrt{5} \\approx 2{,}24$ está dentro: los irracionales también cuentan." },
+      ],
+      correctChoiceId: "c",
+      shuffleChoices: true,
+      explanation: "El intervalo es $-3 \\leq x < 7$: el $7$ queda fuera por el paréntesis.",
+    },
+    {
+      id: "check-enteros",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Enumera", message: "En $[-2, 3)$ entran los enteros $-2, -1, 0, 1, 2$. El $3$ no entra." }],
+      title: "Contar enteros",
+      question: "¿Cuántos números **enteros** pertenecen al intervalo $[-2, 3)$? (solo el número)",
+      correctAnswers: ["5"],
+      explanation: "Son $-2, -1, 0, 1, 2$: cinco. El $3$ queda fuera, pero el $-2$ entra.",
+    },
+  ],
+};

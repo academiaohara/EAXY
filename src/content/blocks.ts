@@ -156,25 +156,39 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 18,
   },
   {
+    slug: "trigonometria",
+    subject: "matematicas",
+    title: "Trigonometría",
+    description: "Razones trigonométricas, relaciones fundamentales y resolución de triángulos rectángulos.",
+    orderIndex: 19,
+  },
+  {
     slug: "geometria-analitica",
     subject: "matematicas",
     title: "Geometría analítica",
     description: "Vectores, distancias, punto medio y ecuaciones de rectas.",
-    orderIndex: 19,
+    orderIndex: 20,
   },
   {
     slug: "estadistica",
     subject: "matematicas",
     title: "Estadística",
     description: "Variables, tablas y gráficos, medidas de centralización y de dispersión.",
-    orderIndex: 20,
+    orderIndex: 21,
   },
   {
     slug: "probabilidad",
     subject: "matematicas",
     title: "Probabilidad",
     description: "Experimentos aleatorios, regla de Laplace y experiencias compuestas.",
-    orderIndex: 21,
+    orderIndex: 22,
+  },
+  {
+    slug: "combinatoria",
+    subject: "matematicas",
+    title: "Combinatoria",
+    description: "Diagrama en árbol, variaciones, permutaciones y combinaciones.",
+    orderIndex: 23,
   },
   {
     slug: "materiales",
@@ -329,6 +343,37 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-4-eso/geometria-analitica": "geometria-analitica",
   "matematicas-4-eso/estadistica": "estadistica",
   "matematicas-4-eso/calculo-de-probabilidades": "probabilidad",
+
+  // ── Matemáticas 4.º ESO (B) ────────────────────────────────────────────
+  "matematicas-4-eso-b/numeros-reales": {
+    default: "potencias-y-raices",
+    lessons: { 10: "numeros-decimales", 11: "numeros-decimales" },
+  },
+  "matematicas-4-eso-b/polinomios-y-fracciones-algebraicas": "lenguaje-algebraico",
+  "matematicas-4-eso-b/ecuaciones-inecuaciones-y-sistemas": {
+    default: "ecuaciones",
+    lessons: {
+      6: "sistemas-de-ecuaciones",
+      7: "sistemas-de-ecuaciones",
+      8: "sistemas-de-ecuaciones",
+      9: "sistemas-de-ecuaciones",
+      10: "sistemas-de-ecuaciones",
+      11: "sistemas-de-ecuaciones",
+      12: "sistemas-de-ecuaciones",
+      13: "sistemas-de-ecuaciones",
+    },
+  },
+  "matematicas-4-eso-b/funciones-caracteristicas": "funciones-y-graficas",
+  "matematicas-4-eso-b/funciones-elementales": {
+    default: "funciones-elementales",
+    lessons: { 1: "funciones-lineales", 2: "funciones-lineales", 3: "funciones-lineales", 4: "funciones-lineales", 5: "funciones-lineales", 6: "funciones-lineales", 7: "funciones-lineales", 8: "funciones-lineales" },
+  },
+  "matematicas-4-eso-b/la-semejanza-aplicaciones": "pitagoras-y-semejanza",
+  "matematicas-4-eso-b/trigonometria": "trigonometria",
+  "matematicas-4-eso-b/geometria-analitica": "geometria-analitica",
+  "matematicas-4-eso-b/estadistica": "estadistica",
+  "matematicas-4-eso-b/calculo-de-probabilidades": "probabilidad",
+  "matematicas-4-eso-b/combinatoria": "combinatoria",
 
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",

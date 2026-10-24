@@ -1,0 +1,103 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_6_SUBTITLE } from "@/data/lessons/shared";
+
+export const otrasEcuaciones4esobLesson: InteractiveLesson = {
+  slug: "otras-ecuaciones-4esob",
+  title: "4. Otras ecuaciones",
+  subtitle: TEMA_4ESO_6_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "bicuadradas",
+      type: "slide",
+      help: [{ label: "Cambio", message: "Con $t = x^2$, la ecuación bicuadrada $x^4 - 5x^2 + 4 = 0$ pasa a ser $t^2 - 5t + 4 = 0$." }],
+      title: "Cambio de variable",
+      blocks: [
+        { kind: "steps", title: "Ecuación bicuadrada", items: ["Llama $t = x^2$.", "Resuelve la ecuación de segundo grado en $t$.", "Deshaz el cambio: $x = \\pm\\sqrt{t}$ (solo si $t \\geq 0$)."] },
+      ],
+      visual: { kind: "anim", scene: "expr-reescritura", params: { expr: [
+        { tokens: ["x⁴", "−", "5x²", "+", "4", "=", "0"], active: [0, 2], note: "ecuación bicuadrada." },
+        { tokens: ["t²", "−", "5t", "+", "4", "=", "0"], active: [0, 2], note: "con $t = x^2$." },
+        { tokens: ["t", "=", "1", "o", "t", "=", "4"], fresh: [2, 6], note: "resolvemos en $t$." },
+        { tokens: ["x", "=", "±1", "o", "x", "=", "±2"], fresh: [2, 6], note: "deshacemos: cuatro soluciones." },
+      ] } },
+      arrange: "text-top",
+    },
+    {
+      id: "check-bicuadrada",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "t", message: "$t^2 - 13t + 36 = 0 \\Rightarrow t = 4$ ó $t = 9$." }],
+      title: "Una bicuadrada",
+      question: "Resuelve $x^4 - 13x^2 + 36 = 0$. ¿Cuál es la solución positiva **mayor**?",
+      correctAnswers: ["3"],
+      explanation: "$t = 4, 9 \\Rightarrow x = \\pm2, \\pm3$.",
+    },
+    {
+      id: "racionales",
+      type: "slide",
+      help: [{ label: "Denominadores", message: "Multiplicar por el m.c.m. solo es válido si no es $0$: excluye los valores que anulan un denominador." }],
+      title: "Con $x$ en el denominador",
+      blocks: [
+        { kind: "text", text: "Multiplica por el m.c.m. para quitar denominadores. Después de resolver, **comprueba** que la solución no anula ningún denominador." },
+      ],
+      visual: { kind: "anim", scene: "expr-reescritura", params: { expr: [
+        { tokens: ["1/x", "+", "1/(x+1)", "=", "3/2"], active: [0, 4], note: "m.c.m. = $2x(x+1)$." },
+        { tokens: ["2(x+1)", "+", "2x", "=", "3x(x+1)"], active: [0, 4], note: "quitamos denominadores." },
+        { tokens: ["3x²", "−", "x", "−", "2", "=", "0"], active: [0, 2], note: "ecuación de segundo grado." },
+        { tokens: ["x", "=", "1", "o", "x", "=", "−2/3"], fresh: [2, 6], note: "ninguna anula un denominador: ambas valen." },
+      ] } },
+      arrange: "text-top",
+    },
+    {
+      id: "check-racional",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Multiplica", message: "Por $x$: $x^2 + 6 = 5x$, es decir $x^2 - 5x + 6 = 0$." }],
+      title: "Con fracción",
+      question: "Resuelve $x + \\dfrac{6}{x} = 5$ y da la solución **menor**.",
+      correctAnswers: ["2"],
+      explanation: "$x^2 - 5x + 6 = 0 \\Rightarrow x = 2$ ó $3$.",
+    },
+    {
+      id: "irracionales",
+      type: "slide",
+      help: [{ label: "Falsas", message: "Elevar al cuadrado puede introducir soluciones que no lo eran. Por eso hay que comprobar." }],
+      title: "Con raíces: ojo a las falsas",
+      blocks: [
+        { kind: "steps", title: "Ecuación irracional", items: ["Aísla la raíz.", "Eleva al cuadrado los dos miembros.", "Resuelve.", "**Comprueba** en la ecuación original."] },
+        { kind: "warning", text: "Al elevar al cuadrado pueden aparecer soluciones falsas. Descarta las que no cumplan la ecuación inicial." },
+      ],
+    },
+    {
+      id: "check-irracional",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Aísla", message: "$\\sqrt{x+2} = x$. Al cuadrado: $x + 2 = x^2$." }],
+      title: "Una raíz",
+      question: "Resuelve $\\sqrt{x + 2} = x$. (solo la solución válida)",
+      correctAnswers: ["2"],
+      explanation: "$x^2 - x - 2 = 0 \\Rightarrow x = 2$ ó $x = -1$. Con $-1$: $\\sqrt{1} = 1 \\neq -1$: es **falsa**. Vale $2$.",
+    },
+    {
+      id: "tanteo-exp",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Potencias de 2", message: "$2^5 = 32$." }],
+      title: "Exponencial sencilla",
+      question: "Resuelve $2^{x-1} = 16$.",
+      correctAnswers: ["5"],
+      explanation: "$16 = 2^4$, luego $x - 1 = 4$ y $x = 5$.",
+    },
+    {
+      id: "check-cubica",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Factor común", message: "$x^3 = 9x \\to x(x^2 - 9) = 0$." }],
+      title: "Cúbica sin término independiente",
+      question: "Resuelve $x^3 = 9x$ y da la solución positiva.",
+      correctAnswers: ["3"],
+      explanation: "$x(x-3)(x+3)=0$: $x = 0, 3, -3$. (No dividas por $x$: perderías la solución $0$.)",
+    },
+  ],
+};

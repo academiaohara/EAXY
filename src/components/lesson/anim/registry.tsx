@@ -1,4 +1,8 @@
 // industrial-imports
+import { buildArbolConteo, buildPermutacionesArbol, buildCombinacionesDividir } from "@/components/lesson/anim/scenes/eso4b-comb";
+import { buildTrigTrianguloRazones, buildTrigSemejantes, buildTrigNotables, buildTrigAlturaArbol } from "@/components/lesson/anim/scenes/eso4b-trig";
+import { buildDivisionPolinomios, buildRuffiniTabla } from "@/components/lesson/anim/scenes/eso4b-polinomios";
+import { buildIntervaloRecta, buildSemirrectaRecta } from "@/components/lesson/anim/scenes/eso4b-reales";
 import { buildLazoAbiertoCerrado, buildRespuestaEscalon, buildPolosPlanoS, buildReduccionBloques, buildOffsetProporcional, buildLaplaceDominios } from "@/components/lesson/anim/scenes/industrial/control";
 import { buildConversionBases, buildLogicaNiveles, buildPuertasLogicasBasicas, buildPuertasUniversales, buildKarnaughAgrupar, buildNandImplementacion, buildMuxDecoder, buildSumadorBinario } from "@/components/lesson/anim/scenes/industrial/logica";
 import { buildSenalAnalogicaDigital, buildSensorInductivo, buildOpticaSensor, buildGalgaDeformacion, buildEncoderTacometro, buildPresionManometros, buildTemperaturaCaptadores, buildOperacionalInversor, buildAceleradorAsr } from "@/components/lesson/anim/scenes/industrial/sensores";
@@ -563,6 +567,17 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "grafo-bimodal": () => buildGrafoBimodal(),
   "temporizadores-cronograma": () => buildTemporizadoresCronograma(),
   "estrella-triangulo-control": () => buildEstrellaTrianguloControl(),
+  "intervalo-recta": (p) => buildIntervaloRecta(p),
+  "semirrecta-recta": (p) => buildSemirrectaRecta(p),
+  "division-polinomios": (p) => buildDivisionPolinomios(p),
+  "ruffini-tabla": (p) => buildRuffiniTabla(p),
+  "trig-triangulo-razones": (p) => buildTrigTrianguloRazones(p),
+  "trig-semejantes": () => buildTrigSemejantes(),
+  "trig-notables": (p) => buildTrigNotables(p),
+  "trig-altura-arbol": (p) => buildTrigAlturaArbol(p),
+  "arbol-conteo": (p) => buildArbolConteo(p),
+  "permutaciones-arbol": () => buildPermutacionesArbol(),
+  "combinaciones-dividir": () => buildCombinacionesDividir(),
   /* industrial-end */
 };
 

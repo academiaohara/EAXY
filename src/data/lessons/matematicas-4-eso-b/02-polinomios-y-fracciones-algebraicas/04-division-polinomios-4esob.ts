@@ -1,0 +1,85 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESOB_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const divisionPolinomios4esobLesson: InteractiveLesson = {
+  slug: "division-polinomios-4esob",
+  title: "4. División de polinomios",
+  subtitle: TEMA_4ESOB_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "algoritmo",
+      type: "slide",
+      help: [
+        { label: "Como con números", message: "Es la misma idea que dividir $2\\,347 : 12$: se divide el primer término, se multiplica por el divisor, se resta y se baja lo que queda." },
+        { label: "Cociente", message: "En cada paso divides **solo el término de mayor grado** del resto entre el de mayor grado del divisor." },
+      ],
+      title: "Dividir polinomios paso a paso",
+      blocks: [
+        { kind: "rule", title: "Prueba de la división", formula: "\\text{dividendo} = \\text{divisor} \\cdot \\text{cociente} + \\text{resto}" },
+        { kind: "steps", items: ["Divide el término de mayor grado del dividendo entre el del divisor: es el siguiente término del cociente.", "Multiplica ese término por todo el divisor y **resta** el resultado.", "Repite con el resto parcial hasta que su grado sea menor que el del divisor."] },
+      ],
+      visual: { kind: "anim", scene: "division-polinomios", params: { p: [2, -7, -11, 13], q: [2, 3] } },
+      arrange: "text-top",
+    },
+    {
+      id: "check-resto",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Dos pasos", message: "$x^2 : x = x$; $x(x - 2) = x^2 - 2x$. Resta: queda $-3x + 7$. Luego $-3x : x = -3$." }],
+      title: "El resto de una división",
+      question: "Divide $x^2 - 5x + 7$ entre $x - 2$. ¿Cuánto vale el **resto**? (solo el número)",
+      correctAnswers: ["1", "+1"],
+      explanation: "Cociente $x - 3$: $(x - 3)(x - 2) = x^2 - 5x + 6$, y $x^2 - 5x + 7 = (x - 2)(x - 3) + 1$. El resto es $1$.",
+    },
+    {
+      id: "huecos",
+      type: "slide",
+      help: [{ label: "Los ceros", message: "Si un término falta, se escribe con coeficiente $0$ para que cada columna corresponda a un grado." }],
+      title: "Términos que faltan",
+      blocks: [
+        { kind: "text", text: "Antes de dividir, **ordena** los polinomios de mayor a menor grado y deja un hueco (un $0$) donde falte un término." },
+        { kind: "example", lines: [{ math: "x^3 - 1 = x^3 + 0x^2 + 0x - 1" }, { math: "(x^3 - 1) : (x - 1) = x^2 + x + 1", note: "resto $0$" }] },
+        { kind: "warning", text: "El resto siempre tiene **grado menor** que el divisor. Si no es así, la división no ha terminado." },
+      ],
+      visual: { kind: "anim", scene: "division-polinomios", params: { p: [1, 0, 0, -1], q: [1, -1] } },
+    },
+    {
+      id: "check-grado",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Resta de grados", message: "El grado del cociente es el grado del dividendo menos el del divisor." }],
+      title: "Grado del cociente",
+      question: "Al dividir un polinomio de grado $5$ entre uno de grado $2$, ¿de qué grado es el **cociente**? (solo el número)",
+      correctAnswers: ["3"],
+      explanation: "$5 - 2 = 3$. El cociente es de grado $3$ y el resto, de grado $0$ o $1$.",
+    },
+    {
+      id: "check-divisor-cuadratico",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Un solo paso", message: "$7x^2 : x^2 = 7$. Resta $7(x^2 - 2x + 1) = 7x^2 - 14x + 7$ del dividendo." }],
+      title: "Divisor de segundo grado",
+      question: "Divide $7x^2 - 5x + 3$ entre $x^2 - 2x + 1$. El cociente es $7$. En el resto $ax + b$, ¿cuánto vale $a$? (escribe el número con su signo)",
+      correctAnswers: ["9", "+9"],
+      explanation: "$7x^2 - 5x + 3 - 7(x^2 - 2x + 1) = 9x - 4$. El resto es $9x - 4$, de grado menor que el divisor.",
+    },
+    {
+      id: "check-prueba",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Reconstruye", message: "Dividendo = divisor · cociente + resto. Multiplica y suma el resto al final." }],
+      title: "Hacia atrás: reconstruir el dividendo",
+      question: "Una división tiene divisor $x + 1$, cociente $x - 3$ y resto $2$. ¿Cuál es el **dividendo**?",
+      choices: [
+        { id: "a", label: "$x^2 - 2x - 1$" },
+        { id: "b", label: "$x^2 - 2x - 3$", incorrectFeedback: "Ese es solo $(x + 1)(x - 3)$: falta sumar el resto $2$." },
+        { id: "c", label: "$x^2 - 2x + 1$", incorrectFeedback: "$(x + 1)(x - 3) = x^2 - 2x - 3$; sumando $2$ sale $-1$, no $+1$." },
+        { id: "d", label: "$x^2 - 4x - 1$", incorrectFeedback: "Revisa el producto: $x \\cdot (-3) + 1 \\cdot x = -2x$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(x + 1)(x - 3) + 2 = x^2 - 2x - 3 + 2 = x^2 - 2x - 1$.",
+    },
+  ],
+};

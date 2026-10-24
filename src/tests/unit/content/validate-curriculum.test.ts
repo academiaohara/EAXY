@@ -6,9 +6,9 @@ describe("validateCurriculum", () => {
     expect(validateCurriculum(curriculum)).toEqual([]);
   });
 
-  it("incluye los seis niveles de matemáticas y las materias de física y tecnología", () => {
+  it("incluye los siete cursos de matemáticas y las materias de física y tecnología", () => {
     const titles = getAllCourses(curriculum).map((course) => course.title);
-    expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(6);
+    expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(7);
     expect(titles.filter((title) => title.startsWith("Física"))).toHaveLength(5);
     expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(5);
   });
@@ -379,5 +379,32 @@ describe("validateCurriculum", () => {
       "parentesis-enteros",
       "multiplicacion-division-enteros",
     ]);
+  });
+  it("4.º ESO B: once temas en el orden del Temario, con lecciones nuevas donde no coincide con 4.º A", () => {
+    const b = getAllCourses(curriculum).find((course) => course.slug === "matematicas-4-eso-b");
+    expect(b?.title).toBe("Matemáticas 4º ESO (B)");
+    expect(b?.modules.map((m) => m.slug)).toEqual([
+      "numeros-reales",
+      "polinomios-y-fracciones-algebraicas",
+      "ecuaciones-inecuaciones-y-sistemas",
+      "funciones-caracteristicas",
+      "funciones-elementales",
+      "la-semejanza-aplicaciones",
+      "trigonometria",
+      "geometria-analitica",
+      "estadistica",
+      "calculo-de-probabilidades",
+      "combinatoria",
+    ]);
+    const lessons = (slug: string) => b?.modules.find((m) => m.slug === slug)?.lessons.map((l) => l.interactiveSlug);
+    expect(lessons("trigonometria")).toHaveLength(9);
+    expect(lessons("combinatoria")).toHaveLength(8);
+    expect(lessons("polinomios-y-fracciones-algebraicas")).toContain("regla-ruffini-4esob");
+    expect(lessons("numeros-reales")).toContain("intervalos-acotados-4esob");
+    // Todas las lecciones de 4.º B tienen identificador propio (no comparten slug con 4.º A).
+    const a = getAllCourses(curriculum).find((course) => course.slug === "matematicas-4-eso");
+    const slugsA = new Set(a?.modules.flatMap((m) => m.lessons.map((l) => l.interactiveSlug)));
+    const slugsB = b?.modules.flatMap((m) => m.lessons.map((l) => l.interactiveSlug)) ?? [];
+    expect(slugsB.filter((slug) => slugsA.has(slug))).toEqual([]);
   });
 });
