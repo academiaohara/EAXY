@@ -407,6 +407,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `logaritmo-exponente` | Escalera de potencias de la base: el logaritmo es el exponente buscado, log_a m = z ⇔ aᶻ = m | `a` (base 2–10), `b` (exponente) |
 | `logaritmo-producto` | El logaritmo de un producto suma exponentes (barras una tras otra) y el de un cociente los resta | `a` (base), `b` (m ≥ 2), `c` (k < m) |
 | `gauss-eliminacion` | Método de Gauss 3×3: sistema inicial, eliminar x, eliminar y y resultado (determinado, indeterminado o incompatible) | `nums`: `[a₁,b₁,c₁,d₁, a₂,b₂,c₂,d₂, a₃,b₃,c₃,d₃]` (enteros en [−9, 9]) |
+| `serie-geometrica-saltos` | Suma infinita de una progresión geométrica como saltos decrecientes sobre la recta: sumas parciales y límite a₁/(1 − r) | `a` (a₁, 1–12), `b`, `c` (r = b/c con 0 < b < c ≤ 10) |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -488,6 +489,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `sistema-parametro-explorador` | Sistema x+y+z=1, x+2y+3z=2, x+3y+mz=k: última ecuación tras Gauss, tipo (determinado/indeterminado/incompatible) y solución | `initial`: `[m, k]` |
 | `inecuacion-cuadratica-explorador` | `ax²+bx+c ▢ 0` con a = ±1: parábola, discriminante, raíces y conjunto solución como unión de intervalos | `initial`: `[a, b, c, rel]` (rel 0 <, 1 ≤, 2 >, 3 ≥) |
 | `region-inecuaciones-explorador` | Dos inecuaciones lineales `ax+by ≤/≥ c`: semiplanos, región solución, punto de corte de las rectas | `initial`: `[a₁,b₁,c₁,rel₁, a₂,b₂,c₂,rel₂]` (rel 0 ≤, 1 ≥) |
+| `sucesion-explorador` | Sucesión de un catálogo (2n, 1/n, (−1)ⁿ, (2n+1)/(n+1)…): término n-ésimo, gráfica de puntos, tipo (convergente/divergente/oscilante), monotonía y acotación | `initial`: `[sucesión 0–8, n]` |
+| `progresion-explorador` | Progresión aritmética (+d) o geométrica (·r): término general, suma de n términos y suma infinita si |r| < 1 | `initial`: `[tipo (0 aritmética, 1 geométrica), a₁, d o 2r, n]` |
+| `limite-epsilon-explorador` | Definición de límite: dada una distancia ε, desde qué lugar n₀ todos los términos quedan a menos de ε del límite | `initial`: `[sucesión 0–3, ε índice 0–6]` |
+| `limite-racional-explorador` | aₙ = (a·nᵖ + 3)/(c·nᵠ + 5): tabla con n grande y límite por comparación de grados | `initial`: `[p, a, q, c]` |
+| `numero-e-explorador` | (1 + 1/n)ⁿ al crecer n y capital con n abonos al año frente a 1000·eʳ | `initial`: `[índice de n 0–8, rédito %]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

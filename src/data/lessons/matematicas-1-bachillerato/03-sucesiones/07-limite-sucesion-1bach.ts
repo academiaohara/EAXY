@@ -1,0 +1,92 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_3_SUBTITLE } from "@/data/lessons/shared";
+
+export const limiteSucesion1bachLesson: InteractiveLesson = {
+  slug: "limite-sucesion-1bach",
+  title: "7. Límite de una sucesión",
+  subtitle: TEMA_1BACH_3_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "idea",
+      type: "slide",
+      help: [{ label: "Sin alcanzarlo", message: "Una sucesión puede **no llegar nunca** a su límite (como $\\frac{1}{n}$ y el $0$) o incluso tomarlo muchas veces (como $3 + \\frac{(-1)^n}{n}$ y el $3$ cuando n crece). El límite es hacia dónde se dirige." }],
+      title: "Acercarse tanto como se quiera",
+      blocks: [
+        { kind: "definition", text: "El **límite** de la sucesión $a_n$ es $L$ si los términos se acercan a $L$ **tanto como se quiera** a partir de un cierto lugar: para cualquier distancia $\\varepsilon > 0$ existe un $n_0$ tal que $|a_n - L| < \\varepsilon$ para todo $n \\geq n_0$." },
+        { kind: "formula", tex: "\\lim_{n\\to\\infty} a_n = L" },
+        { kind: "text", text: "Prueba con la herramienta: fija una distancia $\\varepsilon$ y mira desde qué lugar $n_0$ **todos** los términos quedan dentro de esa distancia de $L$." },
+      ],
+      visual: { kind: "tool", tool: "limite-epsilon-explorador", initial: [1, 2], hint: "Reduce ε: siempre hay un n₀, pero cada vez más lejano. Con (2n+1)/(n+1) y ε = 0,1 sale n₀ = 10." },
+    },
+    {
+      id: "check-n0",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\frac{1}{n} < 0{,}1 \\iff n > 10$." }],
+      title: "Desde qué lugar",
+      question: "Para la sucesión $a_n = \\dfrac{1}{n}$ (límite $0$) y $\\varepsilon = 0{,}1$, ¿cuál es el menor $n_0$ tal que $|a_n| < 0{,}1$ para todo $n \\geq n_0$? (solo el número)",
+      correctAnswers: ["11"],
+      explanation: "$\\frac{1}{n} < 0{,}1 \\iff n > 10$. El primer entero es $n_0 = 11$ (con $n = 10$ da exactamente $0{,}1$, que no es menor).",
+    },
+    {
+      id: "check-significa",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "El límite habla del comportamiento «al final», no de los primeros términos." }],
+      title: "¿Qué significa?",
+      question: "Si $\\lim_{n\\to\\infty} a_n = 3$, entonces…",
+      choices: [
+        { id: "a", label: "a partir de cierto lugar, todos los términos están tan cerca de $3$ como se quiera" },
+        { id: "b", label: "algún término vale exactamente $3$", incorrectFeedback: "No hace falta: $\\frac{n+1}{n}\\to 1$ y ningún término vale $1$." },
+        { id: "c", label: "todos los términos son menores que $3$", incorrectFeedback: "Pueden estar por encima (como $3 + \\frac{1}{n}$) o por ambos lados." },
+        { id: "d", label: "el primer término es $3$", incorrectFeedback: "El límite no depende de los primeros términos, solo del comportamiento final." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "El límite describe **a dónde se dirigen** los términos: a partir de un $n_0$ quedan dentro de cualquier banda alrededor de $3$.",
+    },
+    {
+      id: "infinito",
+      type: "slide",
+      help: [{ label: "El hotel infinito", message: "Con infinitas habitaciones, $\\infty + 1 = \\infty$ y hasta $\\infty + \\infty = \\infty$. Por eso el infinito **no es un número** y no se opera como los demás." }],
+      title: "Límites infinitos",
+      blocks: [
+        { kind: "definition", text: "La sucesión $a_n$ **tiende a $+\\infty$** si sus términos superan cualquier número fijado a partir de un cierto lugar. Entonces $\\lim a_n = +\\infty$ y la sucesión es **divergente**." },
+        { kind: "example", lines: [
+          { math: "\\lim_{n\\to\\infty} 2^n = +\\infty\\qquad \\lim_{n\\to\\infty} n^2 = +\\infty\\qquad \\lim_{n\\to\\infty} \\sqrt{n^2 + 1} = +\\infty" },
+          { math: "\\lim_{n\\to\\infty} \\dfrac{1}{n} = 0\\qquad \\lim_{n\\to\\infty} \\left(5 + \\dfrac{2}{n}\\right) = 5" },
+        ] },
+        { kind: "warning", text: "$+\\infty$ no es un número real: decir «el límite es $+\\infty$» describe cómo crece la sucesión, no un valor al que llegue." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-limite",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "El sumando $\\frac{2}{n}$ tiende a $0$." }],
+      title: "Un límite sencillo",
+      question: "Calcula $\\lim_{n\\to\\infty}\\left(5 + \\dfrac{2}{n}\\right)$. (solo el número)",
+      correctAnswers: ["5"],
+      explanation: "$\\frac{2}{n} \\to 0$, luego el límite es $5 + 0 = 5$.",
+    },
+    {
+      id: "check-tipo",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Calcula algunos términos: $\\sqrt{2}, \\sqrt{5}, \\sqrt{10}, \\sqrt{17}, \\ldots$" }],
+      title: "Una raíz",
+      question: "La sucesión $a_n = \\sqrt{n^2 + 1}$ ($\\sqrt{2}, \\sqrt{5}, \\sqrt{10}, \\sqrt{17}, \\ldots$)…",
+      choices: [
+        { id: "a", label: "tiende a $+\\infty$" },
+        { id: "b", label: "converge a $1$", incorrectFeedback: "Los términos crecen: $\\sqrt{17} > \\sqrt{2}$. Solo el radicando $1$ queda fijo; $n^2$ crece sin límite." },
+        { id: "c", label: "converge a $0$", incorrectFeedback: "Los términos son siempre mayores que $1$ y crecen." },
+        { id: "d", label: "es oscilante", incorrectFeedback: "Los términos son crecientes, no saltan entre valores." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\sqrt{n^2 + 1} > n$, que crece sin límite: la sucesión tiende a $+\\infty$.",
+    },
+  ],
+};

@@ -1,0 +1,95 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_3_SUBTITLE } from "@/data/lessons/shared";
+
+export const sumaInfinita1bachLesson: InteractiveLesson = {
+  slug: "suma-infinita-1bach",
+  title: "5. Suma de infinitos términos",
+  subtitle: TEMA_1BACH_3_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "paradoja",
+      type: "slide",
+      help: [{ label: "Aquiles y la tortuga", message: "Zenón razonaba que Aquiles nunca alcanzaría a la tortuga porque siempre le quedaría un trozo por recorrer, y esos trozos son infinitos. Pero los trozos forman una progresión geométrica de razón menor que 1, y su suma es finita." }],
+      title: "¿Puede una suma infinita ser finita?",
+      blocks: [
+        { kind: "text", text: "Dejas sobre la mesa la mitad de un papel, luego la mitad de lo que queda, y así siempre: $\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$ Nunca tendrás más de $1$ ni llegarás a tener exactamente $1$, pero te acercas todo lo que quieras." },
+        { kind: "formula", tex: "\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots + \\frac{1}{2^n} + \\cdots = 1" },
+        { kind: "text", text: "Quiere decir que las **sumas parciales** $S_n$ convergen a $1$: $\\lim_{n\\to\\infty} S_n = 1$." },
+      ],
+      visual: { kind: "anim", scene: "serie-geometrica-saltos", params: { a: 4, b: 1, c: 2 } },
+    },
+    {
+      id: "formula",
+      type: "slide",
+      help: [{ label: "De dónde sale", message: "$S_n = a_1\\frac{1 - r^n}{1 - r}$. Si $|r| < 1$, $r^n \\to 0$ y queda $\\frac{a_1}{1 - r}$." }],
+      title: "La fórmula de la suma",
+      blocks: [
+        { kind: "rule", title: "Si |r| < 1", formula: "S = a_1 + a_2 + a_3 + \\cdots = \\dfrac{a_1}{1 - r}" },
+        { kind: "facts", items: [
+          { tex: "r \\geq 1", label: "la suma diverge (a +∞ si a₁ > 0)" },
+          { tex: "r \\leq -1", label: "las sumas parciales oscilan: no hay suma" },
+          { tex: "|r| < 1", label: "la suma es finita" },
+        ] },
+        { kind: "example", lines: [
+          { math: "a_1 = 4,\\ r = \\tfrac{1}{2}:\\quad S = \\dfrac{4}{1 - \\frac{1}{2}} = 8" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "progresion-explorador", initial: [1, 4, 1, 8], hint: "Con a₁ = 4 y r = 0,5 la suma infinita es 8. Sube r hasta 1: ¿qué pasa con la suma?" },
+    },
+    {
+      id: "check-suma",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La razón es $3 : 6 = \\frac{1}{2}$ y $a_1 = 6$." }],
+      title: "Suma de infinitos términos",
+      question: "Calcula $6 + 3 + \\frac{3}{2} + \\frac{3}{4} + \\cdots$ (solo el número)",
+      correctAnswers: ["12"],
+      explanation: "$S = \\frac{6}{1 - \\frac{1}{2}} = 12$.",
+    },
+    {
+      id: "check-primer",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Despeja $a_1$ en $S = \\frac{a_1}{1 - r}$: $a_1 = S(1 - r)$." }],
+      title: "El primer término",
+      question: "En una progresión geométrica la razón es $\\frac{1}{4}$ y la suma de todos sus términos es $8$. ¿Cuánto vale $a_1$? (solo el número)",
+      correctAnswers: ["6"],
+      explanation: "$a_1 = S\\,(1 - r) = 8\\cdot\\frac{3}{4} = 6$.",
+    },
+    {
+      id: "check-existe",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Solo existe una suma finita cuando $|r| < 1$." }],
+      title: "¿Tiene suma finita?",
+      question: "¿Cuál de estas progresiones geométricas tiene una suma de infinitos términos **finita**?",
+      choices: [
+        { id: "a", label: "$a_1 = 5,\\ r = -\\dfrac{1}{3}$" },
+        { id: "b", label: "$a_1 = 1,\\ r = 2$", incorrectFeedback: "Con $r = 2$ los términos crecen sin límite: la suma diverge." },
+        { id: "c", label: "$a_1 = 3,\\ r = 1$", incorrectFeedback: "Con $r = 1$ se suma $3$ infinitas veces: diverge." },
+        { id: "d", label: "$a_1 = 2,\\ r = -1$", incorrectFeedback: "Con $r = -1$ las sumas parciales valen $2, 0, 2, 0\\ldots$: oscilan, no hay suma." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$|r| = \\frac{1}{3} < 1$. La suma es $\\frac{5}{1 + \\frac{1}{3}} = \\frac{15}{4}$.",
+    },
+    {
+      id: "check-divergente",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Es una progresión geométrica de razón $2$." }],
+      title: "1 + 2 + 4 + 8 + …",
+      question: "La suma $1 + 2 + 4 + 8 + \\cdots$ de infinitos términos…",
+      choices: [
+        { id: "a", label: "diverge: crece sin límite" },
+        { id: "b", label: "vale $-1$", incorrectFeedback: "Aplicar $\\frac{a_1}{1 - r}$ con $r = 2$ daría $-1$, pero la fórmula **solo vale si $|r| < 1$**." },
+        { id: "c", label: "vale $0$", incorrectFeedback: "Todos los sumandos son positivos: la suma no puede ser $0$." },
+        { id: "d", label: "oscila entre dos valores", incorrectFeedback: "Las sumas parciales son $1, 3, 7, 15, \\ldots$, siempre crecientes." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$S_n = 2^n - 1$ crece sin límite. La razón $2$ no cumple $|r| < 1$, así que no existe una suma finita.",
+    },
+  ],
+};

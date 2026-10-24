@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildSerieGeometricaSaltos } from "@/components/lesson/anim/scenes/bach1-sucesiones";
 import { buildGaussEliminacion } from "@/components/lesson/anim/scenes/bach1-sistemas";
 import { buildComplejoSumaVectores, buildComplejoGiroI, buildComplejoPolar, buildComplejoProductoPolar, buildComplejoRaices } from "@/components/lesson/anim/scenes/bach1-complejos";
 import { buildLogaritmoExponente, buildLogaritmoProducto } from "@/components/lesson/anim/scenes/bach1-logaritmos";
@@ -589,6 +590,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "logaritmo-exponente": (p) => buildLogaritmoExponente(p),
   "logaritmo-producto": (p) => buildLogaritmoProducto(p),
   "gauss-eliminacion": (p) => buildGaussEliminacion(p),
+  "serie-geometrica-saltos": (p) => buildSerieGeometricaSaltos(p),
   /* industrial-end */
 };
 

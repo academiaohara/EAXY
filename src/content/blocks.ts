@@ -398,6 +398,10 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
       14: "logaritmos", 15: "logaritmos",
     },
   },
+  "matematicas-1-bachillerato/sucesiones": {
+    default: "progresiones",
+    lessons: { 10: "funciones-elementales" },
+  },
   "matematicas-1-bachillerato/algebra": {
     default: "lenguaje-algebraico",
     lessons: {

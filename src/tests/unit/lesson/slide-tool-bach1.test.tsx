@@ -192,3 +192,94 @@ describe("region-inecuaciones-explorador", () => {
     expect(screen.getByTestId("tool-ri-plano")).toBeInTheDocument();
   });
 });
+
+describe("sucesion-explorador", () => {
+  it("1/n es convergente a 0, decreciente y acotada", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sucesion-explorador", initial: [1, 4] }} />);
+    expect(screen.getByTestId("tool-su-tipo")).toHaveTextContent("Convergente: límite 0");
+    expect(screen.getByTestId("tool-su-mono")).toHaveTextContent("decreciente · acotada");
+    expect(screen.getByTestId("tool-su-termino")).toHaveTextContent("a4 = 0,25");
+  });
+
+  it("(−2)ⁿ es oscilante y no acotada; 2n es divergente", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sucesion-explorador", initial: [6, 3] }} />);
+    expect(screen.getByTestId("tool-su-tipo")).toHaveTextContent("Oscilante");
+    expect(screen.getByTestId("tool-su-mono")).toHaveTextContent("no acotada");
+  });
+
+  it("aguanta parámetros fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "sucesion-explorador", initial: [99, 99] }} />);
+    expect(screen.getByTestId("tool-su-grafica")).toBeInTheDocument();
+  });
+});
+
+describe("progresion-explorador", () => {
+  it("aritmética a₁ = 7, d = 3, n = 5: a₅ = 19 y S₅ = 65", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "progresion-explorador", initial: [0, 7, 3, 5] }} />);
+    expect(screen.getByTestId("tool-pg-an")).toHaveTextContent("a5 = 19");
+    expect(screen.getByTestId("tool-pg-sn")).toHaveTextContent("S5 = 65");
+  });
+
+  it("geométrica a₁ = 1, r = 2, n = 6: S₆ = 63 y sin suma infinita", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "progresion-explorador", initial: [1, 1, 4, 6] }} />);
+    expect(screen.getByTestId("tool-pg-sn")).toHaveTextContent("S6 = 63");
+    expect(screen.getByTestId("tool-pg-infinito")).toHaveTextContent("no es finita");
+  });
+
+  it("geométrica a₁ = 4, r = 0,5: la suma infinita vale 8", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "progresion-explorador", initial: [1, 4, 1, 8] }} />);
+    expect(screen.getByTestId("tool-pg-infinito")).toHaveTextContent("8");
+  });
+
+  it("aguanta parámetros fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "progresion-explorador", initial: [9, 99, 99, 99] }} />);
+    expect(screen.getByTestId("tool-pg-barras")).toBeInTheDocument();
+  });
+});
+
+describe("limite-epsilon-explorador", () => {
+  it("(2n+1)/(n+1) con ε = 0,1: n₀ = 10", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "limite-epsilon-explorador", initial: [1, 2] }} />);
+    expect(screen.getByTestId("tool-le-n0")).toHaveTextContent("n₀ = 10");
+    expect(screen.getByTestId("tool-le-limite")).toHaveTextContent("límite L = 2");
+  });
+
+  it("1/n con ε = 0,1: n₀ = 11", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "limite-epsilon-explorador", initial: [0, 2] }} />);
+    expect(screen.getByTestId("tool-le-n0")).toHaveTextContent("n₀ = 11");
+  });
+});
+
+describe("limite-racional-explorador", () => {
+  it("(3n+3)/(2n+5): límite 1,5", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "limite-racional-explorador", initial: [1, 3, 1, 2] }} />);
+    expect(screen.getByTestId("tool-lr-limite")).toHaveTextContent("1,5");
+    expect(screen.getByTestId("tool-lr-regla")).toHaveTextContent("mismo grado");
+  });
+
+  it("mayor grado abajo: 0; mayor arriba con signo negativo: −∞", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "limite-racional-explorador", initial: [1, 3, 2, 2] }} />);
+    expect(screen.getByTestId("tool-lr-limite")).toHaveTextContent("= 0");
+    render(<SlideTool block={{ kind: "tool", tool: "limite-racional-explorador", initial: [3, -2, 1, 2] }} />);
+    expect(screen.getAllByTestId("tool-lr-limite")[1]).toHaveTextContent("−∞");
+  });
+
+  it("aguanta coeficientes nulos o fuera de rango", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "limite-racional-explorador", initial: [9, 0, 9, 0] }} />);
+    expect(screen.getByTestId("tool-lr-limite")).toBeInTheDocument();
+  });
+});
+
+describe("numero-e-explorador", () => {
+  it("n = 1000: (1 + 1/1000)^1000 ≈ 2,7169", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "numero-e-explorador", initial: [5, 100] }} />);
+    expect(screen.getByTestId("tool-e-valor")).toHaveTextContent("2,716924");
+    expect(screen.getByTestId("tool-e-continuo")).toHaveTextContent("2718,28");
+  });
+
+  it("n = 1: vale 2 y el capital se duplica", () => {
+    render(<SlideTool block={{ kind: "tool", tool: "numero-e-explorador", initial: [0, 100] }} />);
+    expect(screen.getByTestId("tool-e-valor")).toHaveTextContent("= 2");
+    expect(screen.getByTestId("tool-e-capital")).toHaveTextContent("2000");
+  });
+});

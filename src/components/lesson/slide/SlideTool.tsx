@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SucesionExplorador, ProgresionExplorador, LimiteEpsilonExplorador, LimiteRacionalExplorador, NumeroEExplorador } from "@/components/lesson/slide/tools/Bach1SucesionesTools";
 import { EntornoExplorador, ComplejoExplorador, ComplejosOperacionesExplorador, PotenciaComplejaExplorador, RaicesComplejasExplorador, LogaritmoExplorador, LogPropiedadesExplorador, SistemaParametroExplorador, InecuacionCuadraticaExplorador, RegionInecuacionesExplorador } from "@/components/lesson/slide/tools/Bach1Tools";
 import { IntervaloExplorador, SistemaInecuacionesExplorador, RuffiniExplorador, FraccionAlgExplorador, TrigExplorador, TrigResolverExplorador, CombinatoriaExplorador } from "@/components/lesson/slide/tools/Eso4bTools";
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
@@ -921,6 +922,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <InecuacionCuadraticaExplorador block={block} />;
     case "region-inecuaciones-explorador":
       return <RegionInecuacionesExplorador block={block} />;
+    case "sucesion-explorador":
+      return <SucesionExplorador block={block} />;
+    case "progresion-explorador":
+      return <ProgresionExplorador block={block} />;
+    case "limite-epsilon-explorador":
+      return <LimiteEpsilonExplorador block={block} />;
+    case "limite-racional-explorador":
+      return <LimiteRacionalExplorador block={block} />;
+    case "numero-e-explorador":
+      return <NumeroEExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

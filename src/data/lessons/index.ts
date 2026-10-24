@@ -30,6 +30,7 @@ import { analiticaVectores4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
+import { aplicacionesProgresiones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/06-aplicaciones-progresiones-1bach";
 import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
 import { aproximacionesCifrasSignificativas4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/04-aproximaciones-cifras-significativas-4eso";
 import { aproximacionesCifrasSignificativas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/10-aproximaciones-cifras-significativas-4esob";
@@ -187,6 +188,7 @@ import { exponencialCrecimiento4esoLesson } from "@/data/lessons/matematicas-4-e
 import { exponencialCrecimiento4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/16-exponencial-crecimiento-4esob";
 import { exponencialFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/07-exponencial-funcion-4eso";
 import { exponencialFuncion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/15-exponencial-funcion-4esob";
+import { exponencialLogaritmo1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/10-exponencial-logaritmo-1bach";
 import { expresionAnalitica3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/05-expresion-analitica-3eso";
 import { expresionesAlgebraicasProblemas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/13-expresiones-algebraicas-problemas-4esob";
 import { expresionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/07-expresiones-primer-grado-4eso";
@@ -275,6 +277,8 @@ import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
+import { limiteSucesion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/07-limite-sucesion-1bach";
+import { limitesCalculo1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/08-limites-calculo-1bach";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
 import { linealIdea4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/01-lineal-idea-4esob";
 import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
@@ -342,6 +346,7 @@ import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bach
 import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/05-notacion-cientifica-3eso";
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
 import { notacionCientifica4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/12-notacion-cientifica-4esob";
+import { numeroE1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/09-numero-e-1bach";
 import { numeroIComplejos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/08-numero-i-complejos-1bach";
 import { numeroSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/03-numero-soluciones-3eso";
 import { numerosDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/01-numeros-decimales-2eso";
@@ -450,7 +455,9 @@ import { problemasSistemasCompras4esobLesson } from "@/data/lessons/matematicas-
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
+import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
+import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
 import { propiedadesSensoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/02-propiedades-sensores";
@@ -542,6 +549,9 @@ import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
+import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
+import { sucesionesTipos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/04-sucesiones-tipos-1bach";
+import { sumaInfinita1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/05-suma-infinita-1bach";
 import { sumaProgresionAritmetica3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/03-suma-progresion-aritmetica-3eso";
 import { sumaRestaDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/03-suma-resta-decimales-2eso";
 import { sumaRestaEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/02-suma-resta-enteros";
@@ -631,6 +641,7 @@ export const interactiveLessons = {
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
+  "aplicaciones-progresiones-1bach": aplicacionesProgresiones1bachLesson,
   "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
   "aproximaciones-cifras-significativas-4eso": aproximacionesCifrasSignificativas4esoLesson,
   "aproximaciones-cifras-significativas-4esob": aproximacionesCifrasSignificativas4esobLesson,
@@ -788,6 +799,7 @@ export const interactiveLessons = {
   "exponencial-crecimiento-4esob": exponencialCrecimiento4esobLesson,
   "exponencial-funcion-4eso": exponencialFuncion4esoLesson,
   "exponencial-funcion-4esob": exponencialFuncion4esobLesson,
+  "exponencial-logaritmo-1bach": exponencialLogaritmo1bachLesson,
   "expresion-analitica-3eso": expresionAnalitica3esoLesson,
   "expresiones-algebraicas-problemas-4esob": expresionesAlgebraicasProblemas4esobLesson,
   "expresiones-primer-grado-4eso": expresionesPrimerGrado4esoLesson,
@@ -876,6 +888,8 @@ export const interactiveLessons = {
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
+  "limite-sucesion-1bach": limiteSucesion1bachLesson,
+  "limites-calculo-1bach": limitesCalculo1bachLesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
   "lineal-idea-4esob": linealIdea4esobLesson,
   "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
@@ -943,6 +957,7 @@ export const interactiveLessons = {
   "notacion-cientifica-3eso": notacionCientifica3esoLesson,
   "notacion-cientifica-4eso": notacionCientifica4esoLesson,
   "notacion-cientifica-4esob": notacionCientifica4esobLesson,
+  "numero-e-1bach": numeroE1bachLesson,
   "numero-i-complejos-1bach": numeroIComplejos1bachLesson,
   "numero-soluciones-3eso": numeroSoluciones3esoLesson,
   "numeros-decimales-2eso": numerosDecimales2esoLesson,
@@ -1051,7 +1066,9 @@ export const interactiveLessons = {
   "problemas-volumen-2eso": problemasVolumen2esoLesson,
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
+  "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
+  "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
   "propiedades-sensores": propiedadesSensoresLesson,
@@ -1143,6 +1160,9 @@ export const interactiveLessons = {
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
   "sucesiones-3eso": sucesiones3esoLesson,
+  "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,
+  "sucesiones-tipos-1bach": sucesionesTipos1bachLesson,
+  "suma-infinita-1bach": sumaInfinita1bachLesson,
   "suma-progresion-aritmetica-3eso": sumaProgresionAritmetica3esoLesson,
   "suma-resta-decimales-2eso": sumaRestaDecimales2esoLesson,
   "suma-resta-enteros": sumaRestaEnterosLesson,

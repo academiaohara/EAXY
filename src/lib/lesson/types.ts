@@ -937,6 +937,7 @@ export type SlideAnimId =
   | "logaritmo-exponente"
   | "logaritmo-producto"
   | "gauss-eliminacion"
+  | "serie-geometrica-saltos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1330,6 +1331,11 @@ export type SlideToolId =
   | "sistema-parametro-explorador"
   | "inecuacion-cuadratica-explorador"
   | "region-inecuaciones-explorador"
+  | "sucesion-explorador"
+  | "progresion-explorador"
+  | "limite-epsilon-explorador"
+  | "limite-racional-explorador"
+  | "numero-e-explorador"
   /* industrial-tool-end */;
 
 /**
