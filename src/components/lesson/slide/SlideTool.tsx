@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DominioExplorador, SimetriaExplorador, SignoExplorador, FuncionRaizExplorador, ExpLogExplorador, TrigFuncionExplorador, AbsFuncionExplorador, OfertaDemandaExplorador, ComposicionExplorador, InversaExplorador } from "@/components/lesson/slide/tools/Bach1FuncTools";
 import { ProductoEscalarExplorador, RectaFormasExplorador, RectasAnguloExplorador, DistanciaPuntoRectaExplorador, MediatrizExplorador, ConicaExplorador } from "@/components/lesson/slide/tools/Bach1GeoTools";
 import { RadianesExplorador, CirculoTrigExplorador, AngulosRelacionadosExplorador, SumaAngulosExplorador, DobleMitadExplorador, SumaProductoExplorador, EcuacionTrigExplorador, TrianguloGeneralExplorador } from "@/components/lesson/slide/tools/Bach1TrigTools";
 import { SucesionExplorador, ProgresionExplorador, LimiteEpsilonExplorador, LimiteRacionalExplorador, NumeroEExplorador } from "@/components/lesson/slide/tools/Bach1SucesionesTools";
@@ -962,6 +963,26 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MediatrizExplorador block={block} />;
     case "conica-explorador":
       return <ConicaExplorador block={block} />;
+    case "dominio-explorador":
+      return <DominioExplorador block={block} />;
+    case "simetria-explorador":
+      return <SimetriaExplorador block={block} />;
+    case "signo-explorador":
+      return <SignoExplorador block={block} />;
+    case "funcion-raiz-explorador":
+      return <FuncionRaizExplorador block={block} />;
+    case "exp-log-explorador":
+      return <ExpLogExplorador block={block} />;
+    case "trig-funcion-explorador":
+      return <TrigFuncionExplorador block={block} />;
+    case "abs-funcion-explorador":
+      return <AbsFuncionExplorador block={block} />;
+    case "oferta-demanda-explorador":
+      return <OfertaDemandaExplorador block={block} />;
+    case "composicion-explorador":
+      return <ComposicionExplorador block={block} />;
+    case "inversa-explorador":
+      return <InversaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

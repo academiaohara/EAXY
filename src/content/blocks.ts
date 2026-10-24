@@ -400,6 +400,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   },
   "matematicas-1-bachillerato/geometria": "geometria-analitica",
   "matematicas-1-bachillerato/trigonometria": "trigonometria",
+  "matematicas-1-bachillerato/funciones": "funciones-elementales",
   "matematicas-1-bachillerato/sucesiones": {
     default: "progresiones",
     lessons: { 10: "funciones-elementales" },

@@ -511,6 +511,16 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `distancia-punto-recta-explorador` | Distancia de un punto a la recta Ax+By+C=0 con el pie de la perpendicular | `initial`: `[A, B, C, x₀, y₀]` |
 | `mediatriz-explorador` | Mediatriz del segmento AB y distancias de un punto T a A y B | `initial`: `[ax, ay, bx, by, tx, ty]` |
 | `conica-explorador` | Circunferencia, elipse, hipérbola o parábola con centro o vértice en (h, k): ecuación, focos, excentricidad, asíntotas o directriz | `initial`: `[tipo (0 circ., 1 elipse, 2 hipérbola, 3 parábola), a, b, h, k]` |
+| `dominio-explorador` | Dominio de una función polinómica, racional, con raíz, logaritmo o √(x² − q), con la gráfica solo donde hay valor | `initial`: `[tipo (0–4), p, q]` |
+| `simetria-explorador` | Paridad de una función (par, impar o ninguna) comparando f(x) y f(−x) | `initial`: `[función (índice), 2·x₀]` |
+| `signo-explorador` | Cortes con los ejes y tabla de signo de un polinomio factorizado | `initial`: `[r₁, r₂, r₃, tercer factor (0/1), signo (±1)]` |
+| `funcion-raiz-explorador` | y = a·√(x − h) + k (o raíz cúbica): dominio y recorrido | `initial`: `[índice (2 o 3), a, h, k]` |
+| `exp-log-explorador` | Exponencial y logaritmo de la misma base como inversas, con la recta y = x | `initial`: `[base]` |
+| `trig-funcion-explorador` | y = A·f(Bx + C) + D con seno, coseno o tangente: periodo, amplitud y recorrido | `initial`: `[función (0 sen, 1 cos, 2 tg), A, B, C°, D]` |
+| `abs-funcion-explorador` | Valor absoluto de f con f lineal o cuadrática: reflejo de la parte negativa y expresión a trozos | `initial`: `[tipo, a, b, c]` |
+| `oferta-demanda-explorador` | Rectas de oferta y demanda, precio de mercado, excedente o escasez y punto de equilibrio | `initial`: `[ordenada oferta, pendiente oferta, ordenada demanda, pendiente demanda, precio]` |
+| `composicion-explorador` | f∘g y g∘f para pares de funciones elementales, con valores en un punto | `initial`: `[f (índice), g (índice), 2·x]` |
+| `inversa-explorador` | Función, inversa y simetría respecto de y = x; señala las no inyectivas | `initial`: `[función (índice), 2·x₀]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

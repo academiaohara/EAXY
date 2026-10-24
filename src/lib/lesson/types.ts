@@ -1353,6 +1353,16 @@ export type SlideToolId =
   | "distancia-punto-recta-explorador"
   | "mediatriz-explorador"
   | "conica-explorador"
+  | "dominio-explorador"
+  | "simetria-explorador"
+  | "signo-explorador"
+  | "funcion-raiz-explorador"
+  | "exp-log-explorador"
+  | "trig-funcion-explorador"
+  | "abs-funcion-explorador"
+  | "oferta-demanda-explorador"
+  | "composicion-explorador"
+  | "inversa-explorador"
   /* industrial-tool-end */;
 
 /**
