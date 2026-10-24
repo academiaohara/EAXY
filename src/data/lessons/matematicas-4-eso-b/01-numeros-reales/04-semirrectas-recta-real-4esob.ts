@@ -1,0 +1,115 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESOB_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const semirrectasRectaReal4esobLesson: InteractiveLesson = {
+  slug: "semirrectas-recta-real-4esob",
+  title: "4. Semirrectas y recta real",
+  subtitle: TEMA_4ESOB_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "semirrectas",
+      type: "slide",
+      help: [
+        { label: "Infinito", message: "$+\\infty$ y $-\\infty$ no son números: indican que el tramo no termina. Por eso nunca llevan corchete." },
+      ],
+      title: "Tramos sin final: las semirrectas",
+      blocks: [
+        {
+          kind: "facts",
+          items: [
+            { tex: "(-\\infty, a) = \\{x \\mid x < a\\}", label: "menores que $a$" },
+            { tex: "(-\\infty, a] = \\{x \\mid x \\leq a\\}", label: "menores o iguales que $a$" },
+            { tex: "(a, +\\infty) = \\{x \\mid x > a\\}", label: "mayores que $a$" },
+            { tex: "[a, +\\infty) = \\{x \\mid x \\geq a\\}", label: "mayores o iguales que $a$" },
+          ],
+        },
+        { kind: "warning", text: "El infinito siempre va con **paréntesis**: $[2, +\\infty)$ es correcto; $[2, +\\infty]$ no." },
+      ],
+      visual: { kind: "anim", scene: "semirrecta-recta", params: { a: 2, c: 3 } },
+    },
+    {
+      id: "hacia-el-otro-lado",
+      type: "slide",
+      help: [{ label: "El signo manda", message: "$x <$ o $x \\leq$ → la flecha apunta a la izquierda. $x >$ o $x \\geq$ → apunta a la derecha." }],
+      title: "Hacia dónde apunta la flecha",
+      blocks: [
+        { kind: "text", text: "Una semirrecta es un intervalo con un extremo en el infinito. Lee el signo de la desigualdad para saber hacia dónde se abre." },
+        { kind: "example", lines: [{ math: "x \\leq 1 \\to (-\\infty, 1]" }, { math: "x > 0 \\to (0, +\\infty)" }, { math: "\\mathbb{R} = (-\\infty, +\\infty)", note: "la recta real entera" }] },
+      ],
+      visual: { kind: "anim", scene: "semirrecta-recta", params: { a: 1, c: 1 } },
+    },
+    {
+      id: "check-semirrecta",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Mayor o igual", message: "$x \\geq -1$ incluye el $-1$ (corchete) y se abre hacia la derecha ($+\\infty$)." }],
+      title: "De desigualdad a intervalo",
+      question: "¿Qué intervalo representa $x \\geq -1$?",
+      choices: [
+        { id: "a", label: "$[-1, +\\infty)$" },
+        { id: "b", label: "$(-1, +\\infty)$", incorrectFeedback: "Ese deja fuera el $-1$, pero $\\geq$ lo incluye." },
+        { id: "c", label: "$(-\\infty, -1]$", incorrectFeedback: "Esa semirrecta va hacia la izquierda: son los menores o iguales." },
+        { id: "d", label: "$[-1, +\\infty]$", incorrectFeedback: "El infinito nunca lleva corchete." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x \\geq -1$ son el $-1$ y todo lo que está a su derecha: $[-1, +\\infty)$.",
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Dos inecuaciones a la vez", message: "Cuando una condición exige dos cosas a la vez, la solución es la parte de la recta que cumple las dos." }],
+      title: "Dos semirrectas a la vez",
+      blocks: [{ kind: "text", text: "Esta herramienta dibuja dos semirrectas y su parte común. Busca combinaciones que dejen un **intervalo**, y otras que no dejen **nada**." }],
+      visual: { kind: "tool", tool: "sistema-inecuaciones-explorador", initial: [5, 1, 1, 2], hint: "Prueba x < 1 junto con x > 4: ¿qué números cumplen las dos?" },
+    },
+    {
+      id: "check-recta",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Lee la gráfica", message: "Punto vacío en $0$, relleno en $4$ y tramo entre ellos: el $4$ entra y el $0$ no." }],
+      title: "Del dibujo a la notación",
+      question: "En la recta, un tramo sombreado va de $0$ a $4$ con punto **vacío** en el $0$ y punto **relleno** en el $4$. ¿Qué intervalo es?",
+      choices: [
+        { id: "a", label: "$(0, 4]$" },
+        { id: "b", label: "$[0, 4)$", incorrectFeedback: "Al revés: el relleno (el $4$) corresponde al corchete." },
+        { id: "c", label: "$(0, 4)$", incorrectFeedback: "Falta incluir el $4$, que tiene el punto relleno." },
+        { id: "d", label: "$[0, 4]$", incorrectFeedback: "El $0$ tiene punto vacío: no entra." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Vacío = paréntesis (el $0$ no entra); relleno = corchete (el $4$ entra): $(0, 4]$.",
+    },
+    {
+      id: "check-conversion",
+      type: "classify",
+      help: [{ label: "Uno de cada", message: "Mira primero si es acotado (dos números) o semirrecta (un $\\infty$)." }],
+      title: "¿Acotado o semirrecta?",
+      question: "Clasifica cada conjunto de números.",
+      groups: [
+        { id: "acotado", label: "Intervalo acotado", tone: "cobalt" },
+        { id: "semirrecta", label: "Semirrecta", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$-5 \\leq x \\leq 5$", group: "acotado" },
+        { id: "b", text: "$x > -5$", group: "semirrecta" },
+        { id: "c", text: "$(-\\infty, 8)$", group: "semirrecta" },
+        { id: "d", text: "$0 < x < 1$", group: "acotado" },
+        { id: "e", text: "$[9, +\\infty)$", group: "semirrecta" },
+        { id: "f", text: "$(2, 2{,}5]$", group: "acotado" },
+      ],
+      hint: "Si aparece ∞ (o solo una desigualdad), es semirrecta.",
+    },
+    {
+      id: "check-contar",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Recuerda", message: "El paréntesis en $-1$ deja fuera ese extremo y el corchete en $5$ lo deja dentro: entran $0, 1, 2, 3, 4, 5$." }],
+      title: "Un recuento",
+      question: "¿Cuántos números **naturales** (contando el $0$) pertenecen a $(-1, 5]$? (solo el número)",
+      correctAnswers: ["6"],
+      explanation: "$(-1, 5]$ incluye $0, 1, 2, 3, 4, 5$: seis números. El $-1$ no entra (y ni siquiera es natural).",
+    },
+  ],
+};

@@ -1,0 +1,81 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESOB_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const reglaRuffini4esobLesson: InteractiveLesson = {
+  slug: "regla-ruffini-4esob",
+  title: "5. Regla de Ruffini",
+  subtitle: TEMA_4ESOB_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "idea",
+      type: "slide",
+      help: [
+        { label: "Solo coeficientes", message: "En la división larga, lo único que importa son los coeficientes. Ruffini los coloca en una tabla y evita escribir las $x$." },
+        { label: "Signo de a", message: "Dividir entre $x - 3$ usa $a = 3$. Dividir entre $x + 3 = x - (-3)$ usa $a = -3$." },
+      ],
+      title: "Dividir por x − a, sin escribir las x",
+      blocks: [
+        { kind: "definition", text: "La **regla de Ruffini** divide un polinomio entre un binomio $x - a$ trabajando solo con los coeficientes." },
+        { kind: "steps", items: ["Escribe los coeficientes (con $0$ en los términos que faltan) y el valor $a$ a la izquierda.", "Baja el primer coeficiente.", "Multiplica por $a$, escribe el producto bajo el siguiente coeficiente y suma. Repite.", "La última cifra es el **resto**; las demás, los coeficientes del **cociente**."] },
+      ],
+      visual: { kind: "anim", scene: "ruffini-tabla", params: { p: [7, -11, 0, -94, 7], a: 3 } },
+      arrange: "text-top",
+    },
+    {
+      id: "check-a",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Reescribe el divisor", message: "$x + 4 = x - (-4)$, así que $a = -4$." }],
+      title: "¿Qué valor de a?",
+      question: "Vas a dividir un polinomio entre $x + 4$ con Ruffini. ¿Qué valor pones a la izquierda de la tabla?",
+      choices: [
+        { id: "a", label: "$a = -4$" },
+        { id: "b", label: "$a = 4$", incorrectFeedback: "Con $a = 4$ dividirías entre $x - 4$. El divisor es $x + 4 = x - (-4)$." },
+        { id: "c", label: "$a = 1/4$", incorrectFeedback: "Ruffini usa el número que se resta a $x$, no su inverso." },
+        { id: "d", label: "$a = 0$", incorrectFeedback: "$a = 0$ correspondería a dividir entre $x$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x + 4 = x - (-4)$: el valor que se coloca es $a = -4$.",
+    },
+    {
+      id: "check-resto",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Coeficientes", message: "$2x^3 + 3x + 1$ tiene un término en $x^2$ que falta: $2, 0, 3, 1$. Con $a = 1$ baja el $2$ y ve multiplicando por $1$ y sumando." }],
+      title: "Un resto con Ruffini",
+      question: "Divide $2x^3 + 3x + 1$ entre $x - 1$ con Ruffini. ¿Cuánto vale el **resto**? (solo el número)",
+      correctAnswers: ["6"],
+      explanation: "Coeficientes $2, 0, 3, 1$ y $a = 1$: baja $2$; $0 + 2 = 2$; $3 + 2 = 5$; $1 + 5 = 6$. Cociente $2x^2 + 2x + 5$ y resto $6$.",
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Resto cero", message: "Cuando el resto es $0$, la división es exacta: $x - a$ es un factor del polinomio." }],
+      title: "Explora la tabla de Ruffini",
+      blocks: [{ kind: "text", text: "Cambia los coeficientes y el valor $a$. Observa cómo se rellenan las dos filas de abajo y **cuándo el resto se hace cero**." }],
+      visual: { kind: "tool", tool: "ruffini-explorador", initial: [1, -2, -5, 6, 1], hint: "Con este polinomio hay tres valores de a que dan resto 0: busca el 1, el 3 y otro negativo." },
+    },
+    {
+      id: "check-cociente",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Coeficientes de x^4", message: "$x^4 - 3x^3 + 2x + 8$ → $1, -3, 0, 2, 8$. Con $a = 2$: $1;\\ -3 + 2 = -1;\\ 0 - 2 = -2;\\ 2 - 4 = -2;\\ 8 - 4 = 4$." }],
+      title: "El resto de un cuártico",
+      question: "Divide $x^4 - 3x^3 + 2x + 8$ entre $x - 2$. ¿Cuánto vale el **resto**? (escribe el número con su signo)",
+      correctAnswers: ["4", "+4"],
+      explanation: "Fila inferior: $1, -1, -2, -2, 4$. Cociente $x^3 - x^2 - 2x - 2$ y resto $4$.",
+    },
+    {
+      id: "check-coeficiente",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Falta un término", message: "$5x^4 + 6x^2 - 11x + 13$ → $5, 0, 6, -11, 13$." }],
+      title: "Un coeficiente del cociente",
+      question: "Divide $5x^4 + 6x^2 - 11x + 13$ entre $x - 2$. En el cociente, ¿cuánto vale el coeficiente de $x^2$?",
+      correctAnswers: ["10"],
+      explanation: "Con $a = 2$: $5;\\ 0 + 10 = 10;\\ 6 + 20 = 26;\\ -11 + 52 = 41;\\ 13 + 82 = 95$. Cociente $5x^3 + 10x^2 + 26x + 41$ y resto $95$.",
+    },
+  ],
+};

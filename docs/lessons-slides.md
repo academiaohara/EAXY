@@ -388,6 +388,17 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `estrella-triangulo-control` | Circuito de potencia del arranque estrella-triángulo: KM₁, KM₃, KM₂, KT₁ y enclavamiento | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
+| `intervalo-recta` | Intervalo acotado en la recta (desigualdad, sombreado, extremos que entran o no, notación); `c`: 0 abierto, 1 cerrado, 2 `(a, b]`, 3 `[a, b)` | `a`, `b` (a < b), `c` |
+| `semirrecta-recta` | Semirrecta con punto relleno o vacío, flecha y notación con ∞; `c`: 0 `(−∞, a)`, 1 `(−∞, a]`, 2 `(a, +∞)`, 3 `[a, +∞)` | `a`, `c` |
+| `division-polinomios` | División larga de polinomios: un término del cociente por paso, producto restado, resto y prueba dividendo = divisor·cociente + resto | `p`, `q` (coeficientes de mayor a menor grado) |
+| `ruffini-tabla` | Regla de Ruffini: coeficientes, bajar el primero, multiplicar por `a` y sumar columna a columna; cociente y resto | `p` (coeficientes), `a` |
+| `trig-triangulo-razones` | Hipotenusa, cateto opuesto y contiguo a un ángulo agudo, y seno, coseno y tangente | `a` (ángulo, 20–65) |
+| `trig-semejantes` | Dos triángulos con 34°: lados distintos (41, 28, 50 mm y el doble), mismas razones | — |
+| `trig-notables` | Razones exactas: 45° (mitad de un cuadrado de lado 1) o 30° y 60° (mitad de un equilátero) | `a` (45 o 30) |
+| `trig-altura-arbol` | Altura de un árbol: distancia a la base y ángulo de elevación; `tg α = h/d` | `a` (ángulo), `b` (distancia) |
+| `arbol-conteo` | Diagrama en árbol de 2 o 3 pasos: ramas que se multiplican y número de resultados | `a`, `b`, `c?` (ramas por paso, ≤ 24 hojas), `titles` |
+| `permutaciones-arbol` | Ordenaciones de A, B y C: 3 · 2 · 1 = 6 y 3! | — |
+| `combinaciones-dividir` | Cuatro amigos todos contra todos: 12 parejas ordenadas, cada partido contado dos veces → 6 | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -452,6 +463,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `polinomio-explorador` | Polinomio de grado ≤ 3 con deslizadores: grado, P(x) y gráfica | `initial: [c3, c2, c1, c0]`, `a` (x) |
 | `polinomios-operador` | A ± B con coeficientes por grado: resultado y grado | `initial: [A3..A0, B3..B0, resta (1)]` |
 | `producto-polinomios-explorador` | `(ax+b)(cx+d)` desarrollado y comprobación con un valor de x | `initial: [a, b, c, d]`, `a` (x) |
+| `intervalo-explorador` | Intervalo `(a, b)`, `[a, b]`, `(a, b]` o `[a, b)`: notación, desigualdad, recta y si un número de prueba pertenece | `initial: [a, b, tipo (0–3), x]` |
+| `sistema-inecuaciones-explorador` | Dos semirrectas `x < a`, `x ≤ a`, `x > a`, `x ≥ a`: intersección como intervalo, punto o sin solución | `initial: [a, sentido1 (0–3), b, sentido2 (0–3)]` |
+| `ruffini-explorador` | Tabla de Ruffini de un cúbico: cociente, resto = P(a) y si `a` es raíz | `initial: [c3, c2, c1, c0, a]` |
+| `fraccion-alg-explorador` | Fracción algebraica y su simplificada (3 casos): mismo valor salvo en los valores excluidos | `a` (caso 0–2), `b` (x) |
+| `trig-explorador` | Triángulo rectángulo con ángulo α e hipotenusa variables: lados y razones (que no cambian con el tamaño) | `a` (ángulo), `b` (hipotenusa) |
+| `trig-resolver-explorador` | Resolver un triángulo rectángulo: con ángulo + hipotenusa (`n: 0`) o con dos catetos (`n: 1`, `c` opuesto, `d` contiguo); ángulos en °′″ | `n`, `a`, `b`, `c`, `d` |
+| `combinatoria-explorador` | VR, V, P y C de `m` elementos tomados de `n` en `n`, y por qué C = V/n! | `a` (m ≤ 10), `b` (n ≤ m) |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

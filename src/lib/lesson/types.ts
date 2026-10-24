@@ -918,6 +918,17 @@ export type SlideAnimId =
   | "grafo-bimodal"
   | "temporizadores-cronograma"
   | "estrella-triangulo-control"
+  | "intervalo-recta"
+  | "semirrecta-recta"
+  | "division-polinomios"
+  | "ruffini-tabla"
+  | "trig-triangulo-razones"
+  | "trig-semejantes"
+  | "trig-notables"
+  | "trig-altura-arbol"
+  | "arbol-conteo"
+  | "permutaciones-arbol"
+  | "combinaciones-dividir"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -951,6 +962,9 @@ export type SlideAnimParams = {
   expr2?: ExprStep[];
   /** `expr-reescritura`: títulos de las columnas. */
   titles?: string[];
+  /** `division-polinomios` / `ruffini-tabla`: coeficientes de mayor a menor grado del dividendo y del divisor. */
+  p?: number[];
+  q?: number[];
   /** `romano-resta`: numerales que se desglosan. */
   romans?: string[];
   /** `divisibilidad-grupos`: objetos que se añaden al total para que el resto deje de ser 0. */
@@ -1291,6 +1305,13 @@ export type SlideToolId =
   | "secuencia-reles-explorador"
   | "registro-contador-explorador"
   | "motor-enclavamiento-explorador"
+  | "intervalo-explorador"
+  | "sistema-inecuaciones-explorador"
+  | "ruffini-explorador"
+  | "fraccion-alg-explorador"
+  | "trig-explorador"
+  | "trig-resolver-explorador"
+  | "combinatoria-explorador"
   /* industrial-tool-end */;
 
 /**

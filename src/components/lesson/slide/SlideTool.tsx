@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { IntervaloExplorador, SistemaInecuacionesExplorador, RuffiniExplorador, FraccionAlgExplorador, TrigExplorador, TrigResolverExplorador, CombinatoriaExplorador } from "@/components/lesson/slide/tools/Eso4bTools";
 import { LazoPerturbacionExplorador, SegundoOrdenExplorador, BloquesExplorador, RouthExplorador, PidExplorador } from "@/components/lesson/slide/tools/ControlTools";
 import {
   BiestableJkExplorador,
@@ -885,6 +886,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RegistroContadorExplorador block={block} />;
     case "motor-enclavamiento-explorador":
       return <MotorEnclavamientoExplorador block={block} />;
+    case "intervalo-explorador":
+      return <IntervaloExplorador block={block} />;
+    case "sistema-inecuaciones-explorador":
+      return <SistemaInecuacionesExplorador block={block} />;
+    case "ruffini-explorador":
+      return <RuffiniExplorador block={block} />;
+    case "fraccion-alg-explorador":
+      return <FraccionAlgExplorador block={block} />;
+    case "trig-explorador":
+      return <TrigExplorador block={block} />;
+    case "trig-resolver-explorador":
+      return <TrigResolverExplorador block={block} />;
+    case "combinatoria-explorador":
+      return <CombinatoriaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
