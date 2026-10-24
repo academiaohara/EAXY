@@ -1,0 +1,122 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_12_SUBTITLE } from "@/data/lessons/shared";
+
+export const karnaughCuatroVariablesLesson: InteractiveLesson = {
+  slug: "karnaugh-cuatro-variables",
+  title: "10. Karnaugh con cuatro variables, indiferentes y ceros",
+  subtitle: TEMA_TI2_12_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "cuatro",
+      type: "slide",
+      help: [{ label: "Bordes", message: "La tabla es cerrada: una celda del borde izquierdo es vecina de la del borde derecho en la misma fila, y lo mismo arriba con abajo. Por eso las cuatro esquinas forman un grupo." }],
+      title: "El mapa de cuatro variables",
+      blocks: [
+        { kind: "text", text: "Tiene 16 celdas, numeradas del 0 al 15 con $d$ como variable de más peso. Las columnas son las combinaciones de $ab$ y las filas, las de $cd$, siempre en orden **00, 01, 11, 10**." },
+        { kind: "steps", title: "Cómo agrupar", items: [
+          "Se toman primero los **unos aislados**, que no pueden formar grupo con ningún otro.",
+          "Se forman los **grupos de dos** que no pueden formar parte de uno de cuatro.",
+          "Se toman los **grupos de cuatro** que no pueden formar parte de uno de ocho.",
+          "Cuando todos los unos están cubiertos, el proceso termina. Un 1 puede estar en **tantos grupos como sea necesario**.",
+        ] },
+        { kind: "rule", title: "Un grupo de 2ᵏ celdas elimina k variables", text: "Con cuatro variables: pareja → 3 variables; cuarteto → 2; octeto → 1." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-esquinas",
+      type: "predict",
+      help: [{ label: "Pista", message: "Las cuatro esquinas son las celdas 0, 1, 4 y 5." }],
+      title: "Las cuatro esquinas",
+      question: "Los unos de una función ocupan las celdas 0, 1, 4 y 5, que son las cuatro esquinas del mapa. ¿Cuántas variables quedan en el término simplificado?",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Dos: es un grupo de cuatro celdas" },
+        { id: "cuatro", label: "Cuatro: son cuatro productos distintos", incorrectFeedback: "Al ser celdas contiguas (el mapa es cerrado), se agrupan." },
+        { id: "tres", label: "Tres", incorrectFeedback: "Tres variables quedarían con un grupo de dos celdas." },
+        { id: "una", label: "Una", incorrectFeedback: "Una sola variable quedaría con un grupo de ocho celdas." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "El mapa es cerrado y las cuatro esquinas son vecinas: forman un grupo de cuatro y quedan $4 - 2 = 2$ variables ($\\bar b\\,\\bar d$).",
+    },
+    {
+      id: "explora-k4",
+      type: "slide",
+      help: [{ label: "Explorador", message: "Selecciona «Cuatro esquinas» entre los ejemplos para ver el grupo que atraviesa los bordes." }],
+      title: "Prueba con cuatro variables",
+      blocks: [{ kind: "text", text: "Cambia celdas, elige un ejemplo y comprueba cómo los grupos **atraviesan los bordes** del mapa." }],
+      visual: { kind: "tool", tool: "karnaugh-explorador", params: { a: 4, b: 1 } },
+    },
+    {
+      id: "ceros-indiferentes",
+      type: "slide",
+      help: [{ label: "Indiferente", message: "Un término indiferente es una combinación de entradas que nunca ocurre en la práctica o cuya salida no importa. Se puede tomar como 1 o como 0, lo que más convenga." }],
+      title: "Agrupar ceros y términos indiferentes",
+      blocks: [
+        { kind: "definition", text: "Para obtener un **producto de sumas** se agrupan los **ceros** del mapa. En cada grupo, las variables que valen 0 aparecen **directas** y las que valen 1, **negadas**; el resultado es el **producto** de las sumas de todos los grupos." },
+        { kind: "definition", text: "**Términos indiferentes (X)**: combinaciones cuya salida no importa. Se representan con una X y se agrupan **solo si agrandan el grupo**; así se toman como 1 o como 0 según convenga." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "ejemplo17",
+      type: "slide",
+      help: [{ label: "Resultado", message: "Tres sumas: (d+a), (b̄+a) y (d̄+c̄). Cada una cubre sus ceros y aprovecha las celdas 14 y 15, que son indiferentes." }],
+      title: "Ejemplo 17: una función con indiferentes",
+      blocks: [
+        { kind: "text", text: "La tabla del ejemplo 17 tiene salida 1 en las filas 1, 3, 5, 7, 8, 9 y 11; salida 0 en 0, 2, 4, 6, 10, 12 y 13; y **X** en 14 y 15. Se agrupan los ceros aprovechando las X:" },
+        { kind: "steps", items: [
+          "Celdas 0, 2, 4, 6 → $d = 0$ y $a = 0$ → $(d + a)$.",
+          "Celdas 2, 6, 10 (y 14) → $b = 1$ y $a = 0$ → $(\\bar b + a)$.",
+          "Celdas 12, 13 (con 14 y 15) → $d = 1$ y $c = 1$ → $(\\bar d + \\bar c)$.",
+        ] },
+        { kind: "formula", tex: "S = (d + a)\\,(\\bar b + a)\\,(\\bar d + \\bar c)" },
+      ],
+      visual: { kind: "tool", tool: "karnaugh-explorador", params: { a: 4, b: 0 } },
+    },
+    {
+      id: "check-indiferente",
+      type: "predict",
+      help: [{ label: "Pista", message: "Una X se usa solo cuando ayuda a hacer un grupo mayor." }],
+      title: "Cuándo se usa una X",
+      question: "¿Cuándo conviene agrupar un término indiferente?",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "Solo cuando permite formar un grupo mayor" },
+        { id: "siempre", label: "Siempre: hay que cubrirlos todos", incorrectFeedback: "No hace falta cubrirlos: si no agrandan un grupo, se dejan fuera." },
+        { id: "nunca", label: "Nunca: se descartan siempre", incorrectFeedback: "Se descartan solo si no ayudan; si agrandan un grupo, simplifican." },
+        { id: "uno", label: "Solo si se toman como 0", incorrectFeedback: "Se toman como 1 o como 0 según convenga para el grupo." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Las X son comodines: se aprovechan para hacer grupos más grandes y se ignoran cuando no aportan nada.",
+    },
+    {
+      id: "ascensor",
+      type: "slide",
+      help: [{ label: "Planteamiento", message: "El número de planta se codifica en 4 bits (d c b a). Las plantas 4, 6, 7, 8 y 12 son los unos de la función." }],
+      title: "El ascensor (ejercicio 8)",
+      blocks: [
+        { kind: "text", text: "Un ascensor muestra la planta en binario de 4 dígitos ($d\\,c\\,b\\,a$). Se desea un sistema que **avise** cuando esté en las plantas 4, 6, 7, 8 y 12: $S = \\sum(4,6,7,8,12)$." },
+        { kind: "steps", items: [
+          "El 7 (0111) solo se agrupa con el 6 (0110): grupo $\\bar d\\,c\\,b$.",
+          "El 8 (1000) solo se agrupa con el 12 (1100): grupo $d\\,\\bar b\\,\\bar a$.",
+          "El 4 (0100) queda por cubrir: se agrupa con el 6 → $\\bar d\\,c\\,\\bar a$, o con el 12 → $c\\,\\bar b\\,\\bar a$.",
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-ascensor",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Cada grupo de dos celdas da un término. Cuenta los grupos necesarios para cubrir 4, 6, 7, 8 y 12." }],
+      title: "Términos del ascensor",
+      question: "¿Cuántos productos tiene la expresión simplificada de $S = \\sum(4,6,7,8,12)$?",
+      correctAnswers: ["3"],
+      explanation: "Hacen falta tres grupos de dos celdas: (6, 7), (8, 12) y uno más que cubra el 4 (con el 6 o con el 12). Son tres términos de tres variables cada uno.",
+    },
+  ],
+};

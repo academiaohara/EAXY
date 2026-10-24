@@ -1,0 +1,125 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_TI2_12_SUBTITLE } from "@/data/lessons/shared";
+
+export const formasCanonicasLesson: InteractiveLesson = {
+  slug: "formas-canonicas",
+  title: "8. De la tabla de verdad a la función",
+  subtitle: TEMA_TI2_12_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "proceso",
+      type: "slide",
+      help: [{ label: "Canónica", message: "Una forma canónica es una suma de productos o un producto de sumas en las que aparecen todas las variables, directas o negadas." }],
+      title: "Resolver un circuito combinacional",
+      blocks: [
+        { kind: "text", text: "Para resolver un circuito combinacional se sigue siempre el mismo proceso:" },
+        { kind: "steps", items: [
+          "Hacer la **tabla de verdad**: todas las combinaciones de entrada y la salida que se pide en cada una.",
+          "Obtener la **función lógica** (en forma canónica) a partir de la tabla.",
+          "**Simplificarla** hasta donde se pueda.",
+          "Dibujarla con **contactos** o con **puertas lógicas**.",
+        ] },
+        { kind: "definition", text: "**Forma canónica**: toda suma de productos, o todo producto de sumas, en las que aparecen **todas las variables**, bien directas o bien negadas. Hay dos: la primera (**minterms**) y la segunda (**maxterms**)." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "primera",
+      type: "slide",
+      help: [{ label: "Minterm", message: "Un minterm es un producto que vale 1 solo en una combinación de entradas concreta. Se suman los de las filas con salida 1." }],
+      title: "Primera forma canónica: suma de productos",
+      blocks: [
+        { kind: "rule", title: "Regla", text: "Se **suman** todos los productos lógicos de las combinaciones que dan salida **1**. En cada producto, la variable que vale 0 va **negada** y la que vale 1, **directa**." },
+        { kind: "example", title: "Tabla 12.15 (tres variables: c, b, a)", lines: [
+          { math: "S = \\sum(1,3,4,6,7)", note: "filas con salida 1" },
+          { math: "S = \\bar c\\,\\bar b\\,a + \\bar c\\,b\\,a + c\\,\\bar b\\,\\bar a + c\\,b\\,\\bar a + c\\,b\\,a" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-minterm",
+      type: "predict",
+      help: [{ label: "Regla", message: "Un 0 se escribe negado; un 1, directo. La fila 010 corresponde a c = 0, b = 1, a = 0." }],
+      title: "El término de una fila",
+      question: "En la primera forma canónica, la fila con $c = 0$, $b = 1$, $a = 0$ y salida 1 produce el término:",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "$\\bar c\\cdot b\\cdot\\bar a$" },
+        { id: "inv", label: "$c\\cdot\\bar b\\cdot a$", incorrectFeedback: "Está al revés: los ceros van negados y el uno, directo." },
+        { id: "directo", label: "$c\\cdot b\\cdot a$", incorrectFeedback: "Los ceros deben ir negados." },
+        { id: "suma", label: "$\\bar c + b + \\bar a$", incorrectFeedback: "Eso es una suma; en la primera forma canónica cada fila es un producto." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "El producto debe valer 1 solo en esa combinación: $c = 0 \\to \\bar c$, $b = 1 \\to b$, $a = 0 \\to \\bar a$.",
+    },
+    {
+      id: "segunda",
+      type: "slide",
+      help: [{ label: "Numeración", message: "El libro numera los términos de la segunda forma con la regla 2ⁿ − 1 − i; basta con escribir cada suma mirando las filas que valen 0." }],
+      title: "Segunda forma canónica: producto de sumas",
+      blocks: [
+        { kind: "rule", title: "Regla", text: "Se **multiplican** las sumas de las combinaciones que dan salida **0**. En cada suma, la variable que vale 0 va **directa** y la que vale 1, **negada**." },
+        { kind: "example", title: "Misma tabla 12.15", lines: [
+          { math: "\\text{Salida 0 en las filas } 0, 2, 5", note: "$S = \\prod(2,5,7)$ con la numeración del libro ($2^n - 1 - i$)" },
+          { math: "S = (c + b + a)\\,(c + \\bar b + a)\\,(\\bar c + b + \\bar a)" },
+        ] },
+        { kind: "warning", title: "Cuidado con la numeración", text: "En el libro, los índices de $\\prod$ están contados con la regla $i \\to 2^n - 1 - i$. Si escribes cada suma directamente desde las filas con salida 0, no necesitas esa regla." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "explora-canonicas",
+      type: "slide",
+      help: [{ label: "Explorador", message: "Pulsa la salida de una fila para cambiarla. Observa cómo aparece o desaparece un término en cada forma." }],
+      title: "Las dos formas a la vez",
+      blocks: [{ kind: "text", text: "Cambia las salidas de la tabla. Los **unos** alimentan la primera forma y los **ceros**, la segunda." }],
+      visual: { kind: "tool", tool: "formas-canonicas-explorador" },
+    },
+    {
+      id: "check-cuenta",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Cuenta los unos de la tabla 12.15: filas 1, 3, 4, 6 y 7." }],
+      title: "Cuántos términos",
+      question: "En la tabla 12.15 (tres variables) hay 5 filas con salida 1. ¿Cuántas sumas tendrá la **segunda** forma canónica?",
+      correctAnswers: ["3"],
+      explanation: "La segunda forma tiene un término por cada fila con salida 0: $8 - 5 = 3$ (las filas 0, 2 y 5).",
+    },
+    {
+      id: "ejemplo13",
+      type: "slide",
+      help: [{ label: "Planteamiento", message: "«Un solo pulsador» son las combinaciones con un único 1: 001, 010 y 100. «Dos que no sean a y b»: las parejas (c, b) y (c, a)." }],
+      title: "Ejemplo 13: tres pulsadores y una lámpara",
+      blocks: [
+        { kind: "text", text: "Una lámpara debe encenderse con la combinación de tres pulsadores ($c$, $b$ y $a$) cuando se cumpla: **1.** se acciona un solo pulsador, o **2.** se accionan dos pulsadores a la vez que no sean $a$ y $b$." },
+        { kind: "steps", items: [
+          "Un solo pulsador: 001, 010 y 100 → filas 1, 2 y 4.",
+          "Dos pulsadores que no sean $a$ y $b$: $c$ con $b$ (110) y $c$ con $a$ (101) → filas 6 y 5.",
+          "La fila 3 (011, pulsan $b$ y $a$) y la 7 (los tres) no encienden la lámpara. La 0 tampoco.",
+        ] },
+        { kind: "formula", tex: "S = \\sum(1,2,4,5,6)" },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-mayoria",
+      type: "predict",
+      help: [{ label: "Pista", message: "La mayoría de tres es 1 cuando hay dos o más unos: filas 3 (011), 5 (101), 6 (110) y 7 (111)." }],
+      title: "Mayoría de tres",
+      question: "Una función de tres variables vale 1 cuando **al menos dos** entradas valen 1. ¿Cuántos términos tiene su primera forma canónica?",
+      mode: "choice",
+      choices: [
+        { id: "ok", label: "4: las filas 011, 101, 110 y 111" },
+        { id: "tres", label: "3: las que tienen exactamente dos unos", incorrectFeedback: "Falta la fila 111, que también tiene al menos dos unos." },
+        { id: "cinco", label: "5", incorrectFeedback: "Cuenta solo las filas con dos o tres unos." },
+        { id: "uno", label: "1", incorrectFeedback: "Hay varias combinaciones con al menos dos unos." },
+      ],
+      correctChoiceId: "ok",
+      shuffleChoices: true,
+      explanation: "Con dos unos hay $\\binom{3}{2} = 3$ combinaciones y con tres unos hay 1: en total 4 términos, $S = \\sum(3,5,6,7)$.",
+    },
+  ],
+};

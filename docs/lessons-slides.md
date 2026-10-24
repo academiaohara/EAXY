@@ -361,6 +361,31 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `reduccion-bloques` | Serie (G₁G₂), paralelo (G₁+G₂) y anillo (G/(1+G), G/(1+GH)) como bloque equivalente | — |
 | `laplace-dominios` | Ecuación diferencial en t → transformada de Laplace → álgebra en s → transformada inversa | — |
 | `offset-proporcional` | Depósito con control P: offset tras un aumento de consumo y su eliminación con acción integral | — |
+| `senal-analogica-digital` | Señal analógica lineal de un depósito (0,2 V/L) y su cuantización con 1, 2 y 8 bits | — |
+| `sensor-inductivo` | Detector inductivo: oscilador LC, corrientes de Foucault, caída de amplitud y conmutación; el plástico no reacciona | — |
+| `optica-sensor` | Sensores ópticos: barrera, reflexión y proximidad con sus alcances (200 m, 10 m, 15 m) | — |
+| `galga-deformacion` | Galga pegada a una pletina: ε = σ/E y R = R₀(1 + Kε) con el ejemplo del libro (5018,9 Ω) | — |
+| `encoder-tacometro` | Disco ranurado, impulsos y f = N·n/60; tacómetro con e = K·B·ω | — |
+| `presion-manometros` | Manómetro de columna (p = ρ·g·h) y tubo Bourdon que se endereza al subir la presión | — |
+| `temperatura-captadores` | Curvas R(T) de Pt, NTC y PTC, puente de Wheatstone equilibrado y termopar | — |
+| `operacional-inversor` | Operacional ideal: masa virtual, V₀ = −(R₂/R₁)·V₁ (ejemplo 150 k / 0,5 k) y comparador | — |
+| `acelerador-asr` | Pedal con potenciómetros, módulo de control, motor de la mariposa, ASR y avería con muelle | — |
+| `conversion-bases` | 45 → 101101 por divisiones sucesivas, lectura de restos y 0,36 ≈ 0,0101 por multiplicaciones | — |
+| `logica-niveles` | La misma señal de +5 V / 0 V leída en lógica positiva y negativa | — |
+| `puertas-logicas-basicas` | OR (paralelo), AND (serie) y NOT (contacto complementario) con lámpara y tabla de verdad | — |
+| `puertas-universales` | NOR y NAND como OR y AND con círculo de inversión, XOR y puertas universales | — |
+| `karnaugh-agrupar` | Mapa de tres variables del ejemplo 13: Σ(1,2,4,5,6) = c·ā + b·ā + b̄·a | — |
+| `nand-implementacion` | NOT, AND y OR con puertas NAND y doble inversión de una suma de productos | — |
+| `mux-decoder` | Multiplexor 4→1 con selección, decodificador 2→4 y comparador de 4 bits | — |
+| `sumador-binario` | Suma 1011 + 0110 columna a columna con acarreos | — |
+| `secuencial-intro` | Circuito combinacional frente a circuito con memoria ante el mismo pulsador | — |
+| `biestable-rs` | Dos NOR realimentadas: mantiene, Set, memoria, Reset y estado prohibido R = S = 1 | — |
+| `biestable-jk-d-t` | Cronograma de un J-K por flanco: Set, mantiene, Reset y conmuta (T) | — |
+| `registro-desplazamiento` | Cuatro biestables D que desplazan la palabra serie 1011 en cuatro flancos | — |
+| `cableado-ladder` | Pulsadores NA y NC, bobina y contactos de un contactor, temporizadores a la conexión y a la desconexión | — |
+| `grafo-bimodal` | Grafo del ejemplo 1, ecuación KM₁ = SB̄₂·(SB₁ + KM₁), esquema de contactos y autorretención | — |
+| `temporizadores-cronograma` | Cronograma del ejemplo 5: KA₁, KT₁ (20 s), KA₂, KT₂ (30 s) y apagado a los 50 s | — |
+| `estrella-triangulo-control` | Circuito de potencia del arranque estrella-triángulo: KM₁, KM₃, KM₂, KT₁ y enclavamiento | — |
 | `cuadrado-diferencia` | `(a − b)²`: a² menos dos franjas `ab`; el cuadradito `b²` se quita dos veces y se devuelve una | `a`, `b` (b < a) |
 | `polinomio-tabla` | `(2x² − 1)(3x + 4)` en una tabla de dobles productos y suma de los cuatro | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
@@ -592,6 +617,34 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `bloques-explorador` | Serie, paralelo y anillo (directo o con H): FDT equivalente | `a` (G₁), `b` (G₂), `c` (H) |
 | `routh-explorador` | Tabla de Routh de s⁴ + a₁s³ + a₂s² + a₃s + a₄ con cambios de signo y veredicto | `a`, `b`, `c` (a₁–a₃), `n` (a₄) |
 | `pid-explorador` | Regulador P, PI, PD o PID sobre un proceso de dos retardos: error, sobreoscilación y establecimiento | `a` (Kp), `b` (ti, s), `c` (td, s) |
+| `cuantizacion-ad-explorador` | Volumen (0–60 L) y bits (1–8) de un conversor A/D de 0–12 V: intervalo, código y resolución | `a` (volumen, L), `b` (bits) |
+| `sensor-curva-explorador` | No linealidad e histéresis de un sensor lineal de 60 L: curvas de subida y bajada y lecturas | `a` (desviación, L), `b` (histéresis, L), `c` (volumen, L) |
+| `sensor-proximidad-explorador` | Material y distancia: qué detector (inductivo, capacitivo, óptico, fotoeléctrico) lo detecta y por qué | `a` (índice del material), `b` (distancia, mm) |
+| `potenciometro-divisor-explorador` | Reóstato de nivel en un depósito de Ø 3 m y 6 m: tensión (12 V) y volumen | `a` (altura, m) |
+| `galga-deformacion-explorador` | σ, ε y R de una galga de 5000 Ω según fuerza, sección y factor de galga | `a` (F, N), `b` (S, mm²), `c` (K) |
+| `encoder-rpm-explorador` | Frecuencia de impulsos N·n/60, grados por impulso y tensión del tacómetro | `a` (ranuras), `b` (rpm) |
+| `termorresistencia-puente-explorador` | R_T = R₀(1 + αT) de platino, níquel o cobre y R₁ que equilibra el puente de Wheatstone | `a` (T, °C) |
+| `puente-potenciometros-explorador` | Señal de error de un puente de potenciómetros lineales o circulares | `a` (X₁, %), `b` (X₂, %) |
+| `operacional-inversor-explorador` | Inversor o comparador ideal: ganancia, salida y saturación a ±15 V | `a` (R₁, kΩ), `b` (R₂, kΩ), `c` (V₁, mV) |
+| `binario-byte-explorador` | Byte con ocho bits activables: pesos, decimal y hexadecimal | `a` (valor) |
+| `conversion-decimal-binario-explorador` | Divisiones y multiplicaciones por 2 de un número con parte entera y decimal | `a` (entera), `b` (centésimas) |
+| `hex-bcd-explorador` | Un decimal en binario, octal, hexadecimal y BCD natural, Aiken y exceso 3 | `a` (número) |
+| `logica-niveles-explorador` | Señal de tensión leída en lógica positiva o negativa | `a` (1 positiva) |
+| `puerta-logica-explorador` | NOT/OR/AND (`a` = 0) o NOR/NAND/XOR (`a` = 1) con entradas pulsables y tabla de verdad | `a` (0 básicas, 1 invertidas) |
+| `morgan-explorador` | Comprobación de las dos leyes de Morgan con sus tablas de verdad | `a` (1 o 2) |
+| `formas-canonicas-explorador` | Tabla de tres variables editable: Σ de unos (minterms) y Π de ceros (maxterms) | `a` (índice del ejemplo) |
+| `karnaugh-explorador` | Mapa de 2, 3 o 4 variables editable (0, 1, X): grupos y expresión mínima en suma de productos o producto de sumas | `a` (variables), `b` (índice del ejemplo) |
+| `nand-nor-explorador` | Función de tres variables con solo NAND (suma de productos) o solo NOR (producto de sumas): inversores y puertas | `a` (índice del ejemplo) |
+| `mux-decoder-explorador` | Multiplexor 8→1, decodificador 3→8, codificador con prioridad y comparador de 4 bits | `a` (0 a 3: circuito) |
+| `sumador-binario-explorador` | Medio sumador, sumador completo y suma de 4 bits con acarreos | `a` (0 medio, 1 completo, 2 de 4 bits) |
+| `secuencial-memoria-explorador` | Pulsador y reset: lámpara sin memoria frente a lámpara con memoria | — |
+| `biestable-rs-explorador` | Biestable R-S con NOR: Set, Reset, mantenimiento, combinación prohibida e indeterminación | — |
+| `biestable-jk-explorador` | J-K, T o D con flancos de reloj y el historial de Q | — |
+| `registro-contador-explorador` | Registro de desplazamiento de 4 bits o contador binario de 4 bits con pulsos de reloj | `a` (0 registro, 1 contador) |
+| `cableado-elementos-explorador` | Temporizador a la conexión o a la desconexión: cronograma según t y la duración de la orden | `a` (t, s), `b` (duración, s) |
+| `grafo-bimodal-explorador` | Ecuaciones de los ejemplos 1 a 3 con pulsadores NA y NC: marcha, autorretención y paro | `a` (ejemplo) |
+| `secuencia-reles-explorador` | Lámparas H₁ y H₂ de los ejemplos 5 y 6 con dos temporizadores y un cursor de tiempo | `a` (5 o 6), `b` (KT₁, s), `c` (KT₂, s) |
+| `motor-enclavamiento-explorador` | Inversión de giro con KM₁ y KM₂ enclavados, paro SB₀ y relé térmico FT₁ | — |
 
 ## Respuesta como fracción
 
