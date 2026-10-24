@@ -69,3 +69,11 @@ export function buildLearningTrail({
 
   return items;
 }
+
+export function subjectBlocksHref(subjectKey: string): string {
+  return `/aprender/materia/${subjectKey}/contenido`;
+}
+
+export function blockHref(subjectKey: string, blockSlug: string): string {
+  return `${subjectBlocksHref(subjectKey)}/${blockSlug}`;
+}
