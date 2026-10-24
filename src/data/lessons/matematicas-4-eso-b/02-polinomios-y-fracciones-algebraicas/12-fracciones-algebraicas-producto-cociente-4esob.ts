@@ -25,8 +25,8 @@ export const fraccionesAlgebraicasProductoCociente4esobLesson: InteractiveLesson
         params: {
           expr: [
             { tokens: ["2x / (x − 3)", "·", "(5x + 1) / x²"], active: [0, 2], note: "numerador por numerador y denominador por denominador." },
-            { tokens: ["2x(5x + 1) / (x − 3)x²"], active: [0, 0], note: "se tacha una $x$ del numerador con una del denominador." },
-            { tokens: ["2(5x + 1) / x(x − 3)"], fresh: [0, 0], note: "expresión simplificada." },
+            { tokens: ["(2x(5x + 1)) / ((x − 3)x²)"], active: [0, 0], note: "se tacha una $x$ del numerador con una del denominador." },
+            { tokens: ["(2(5x + 1)) / (x(x − 3))"], fresh: [0, 0], note: "expresión simplificada." },
           ],
         },
       },

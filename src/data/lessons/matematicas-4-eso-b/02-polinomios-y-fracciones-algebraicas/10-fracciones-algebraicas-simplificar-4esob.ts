@@ -24,9 +24,9 @@ export const fraccionesAlgebraicasSimplificar4esobLesson: InteractiveLesson = {
         scene: "expr-reescritura",
         params: {
           expr: [
-            { tokens: ["3x²(x + 1) / 6x(x + 1)²"], active: [0, 0], note: "se descompone cada parte en factores." },
-            { tokens: ["3 · x · x · (x + 1) / 3 · 2 · x · (x + 1) · (x + 1)"], active: [0, 0], note: "se tachan los factores comunes: $3$, $x$ y $(x + 1)$." },
-            { tokens: ["x / 2(x + 1)"], fresh: [0, 0], note: "fracción simplificada: $\\dfrac{x}{2(x+1)}$." },
+            { tokens: ["(3x²(x + 1)) / (6x(x + 1)²)"], active: [0, 0], note: "se descompone cada parte en factores." },
+            { tokens: ["(3 · x · x · (x + 1)) / (3 · 2 · x · (x + 1) · (x + 1))"], active: [0, 0], note: "se tachan los factores comunes: $3$, $x$ y $(x + 1)$." },
+            { tokens: ["x / (2(x + 1))"], fresh: [0, 0], note: "fracción simplificada: $\\dfrac{x}{2(x+1)}$." },
           ],
         },
       },

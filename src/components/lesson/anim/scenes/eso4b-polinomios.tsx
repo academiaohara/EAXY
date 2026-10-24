@@ -4,6 +4,7 @@ import type { AnimBuild } from "@/components/lesson/anim/types";
 
 const SUP = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"];
 const sg = (n: number) => String(n).replace("-", "−");
+const par = (n: number) => (n < 0 ? `(${n})` : String(n));
 
 /** `c·x^d` en texto plano (sin signo si es el primero de la fila). */
 function term(c: number, d: number, first: boolean): string {
@@ -165,7 +166,7 @@ export function buildRuffiniTabla(params: { p?: number[]; a?: number }): AnimBui
   ];
   for (let i = 1; i < n; i += 1) {
     captions.push(
-      `$${a} \\cdot ${bottom[i - 1]} = ${prods[i]}$ se escribe debajo del siguiente coeficiente y se suma: $${p[i]} ${prods[i]! < 0 ? "-" : "+"} ${Math.abs(prods[i]!)} = ${bottom[i]}$.`,
+      `$${par(a)} \\cdot ${par(bottom[i - 1]!)} = ${prods[i]}$ se escribe debajo del siguiente coeficiente y se suma: $${p[i]} ${prods[i]! < 0 ? "-" : "+"} ${Math.abs(prods[i]!)} = ${bottom[i]}$.`,
     );
   }
   captions.push(

@@ -26,7 +26,7 @@ export function buildArbolConteo(params: { a?: number; b?: number; c?: number; t
   const leafY = (i: number) => top + ((i + 0.5) * (bottom - top)) / total;
   // Posición vertical de cada nodo: media de las hojas que cuelgan de él.
   const nodeY = (level: number, idx: number) => {
-    const per = sizes.slice(level).reduce((x, y) => x * y, 1);
+    const per = sizes.slice(level + 1).reduce((x, y) => x * y, 1);
     return (leafY(idx * per) + leafY(idx * per + per - 1)) / 2;
   };
   const counts = sizes.map((_, l) => sizes.slice(0, l + 1).reduce((x, y) => x * y, 1));
@@ -88,7 +88,7 @@ export function buildPermutacionesArbol(): AnimBuild {
   const bottom = 390;
   const leafY = (i: number) => top + ((i + 0.5) * (bottom - top)) / 6;
   const x0 = 90;
-  const colW = 150;
+  const colW = 130;
   // Nivel 1: 3 nodos (cada 2 hojas), nivel 2: 6 nodos, nivel 3: 6 hojas (un solo hijo cada uno).
   const y1 = (i: number) => (leafY(i * 2) + leafY(i * 2 + 1)) / 2;
   const y2 = (i: number) => leafY(i);
@@ -133,8 +133,8 @@ export function buildPermutacionesArbol(): AnimBuild {
           ))}
         </Fade>
         <Fade show={beat >= 3} dx={20}>
-          <Txt x={x0 + 3 * colW + 140} y={190} size={44} color={MANIM.yellow} anchor="start">3 · 2 · 1</Txt>
-          <Txt x={x0 + 3 * colW + 140} y={250} size={52} color={MANIM.green} anchor="start">= 6</Txt>
+          <Txt x={x0 + 3 * colW + 130} y={190} size={34} color={MANIM.yellow} anchor="start">3 · 2 · 1</Txt>
+          <Txt x={x0 + 3 * colW + 130} y={250} size={48} color={MANIM.green} anchor="start">= 6</Txt>
         </Fade>
       </Canvas>
     ),

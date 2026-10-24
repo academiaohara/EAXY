@@ -55,7 +55,7 @@ function Base({ t }: { t: Tri }) {
  */
 export function buildTrigTrianguloRazones(params: { a?: number }): AnimBuild {
   const alpha = clampN(params.a, 35, 20, 65);
-  const t = triangle(alpha, 330, 90, 350);
+  const t = triangle(alpha, 300, 90, 350);
   const mid = (p: [number, number], q: [number, number]): [number, number] => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
   const mh = mid(t.A, t.B);
   const mo = mid(t.C, t.B);
@@ -88,9 +88,9 @@ export function buildTrigTrianguloRazones(params: { a?: number }): AnimBuild {
           <Txt x={mc[0]} y={mc[1] + 38} size={24} color={MANIM.green}>contiguo</Txt>
         </Fade>
         <Fade show={beat >= 4} dx={20}>
-          <Txt x={470} y={110} size={34} color={MANIM.ink} anchor="start">{"sen α = opuesto / hipotenusa"}</Txt>
-          <Txt x={470} y={165} size={34} color={MANIM.ink} anchor="start">{"cos α = contiguo / hipotenusa"}</Txt>
-          <Txt x={470} y={220} size={34} color={MANIM.ink} anchor="start">{"tg α = opuesto / contiguo"}</Txt>
+          <Txt x={395} y={110} size={26} color={MANIM.ink} anchor="start">{"sen α = opuesto/hipotenusa"}</Txt>
+          <Txt x={395} y={160} size={26} color={MANIM.ink} anchor="start">{"cos α = contiguo/hipotenusa"}</Txt>
+          <Txt x={395} y={210} size={26} color={MANIM.ink} anchor="start">{"tg α = opuesto/contiguo"}</Txt>
         </Fade>
       </Canvas>
     ),
@@ -124,14 +124,14 @@ export function buildTrigSemejantes(): AnimBuild {
         <Txt x={small.C[0] + 12} y={small.C[1] - 50} size={22} color={MANIM.orange} anchor="start">{beat >= 2 ? "28 · 56" : "28 mm"}</Txt>
         <Txt x={small.A[0] + 70} y={small.A[1] - 88} size={22} color={MANIM.blue}>{beat >= 2 ? "50 · 100" : "50 mm"}</Txt>
         <Fade show={beat >= 1 && beat < 2} dx={20}>
-          <Txt x={560} y={140} size={30} color={MANIM.ink} anchor="start">{"sen α = 28/50 = 0,56"}</Txt>
-          <Txt x={560} y={190} size={30} color={MANIM.ink} anchor="start">{"cos α = 41/50 = 0,82"}</Txt>
-          <Txt x={560} y={240} size={30} color={MANIM.ink} anchor="start">{"tg α = 28/41 ≈ 0,68"}</Txt>
+          <Txt x={420} y={140} size={26} color={MANIM.ink} anchor="start">{"sen α = 28/50 = 0,56"}</Txt>
+          <Txt x={420} y={190} size={26} color={MANIM.ink} anchor="start">{"cos α = 41/50 = 0,82"}</Txt>
+          <Txt x={420} y={240} size={26} color={MANIM.ink} anchor="start">{"tg α = 28/41 ≈ 0,68"}</Txt>
         </Fade>
         <Fade show={beat >= 3} dx={20}>
-          <Txt x={560} y={140} size={30} color={MANIM.yellow} anchor="start">{"sen α = 56/100 = 0,56"}</Txt>
-          <Txt x={560} y={190} size={30} color={MANIM.yellow} anchor="start">{"cos α = 82/100 = 0,82"}</Txt>
-          <Txt x={560} y={240} size={30} color={MANIM.yellow} anchor="start">{"tg α = 56/82 ≈ 0,68"}</Txt>
+          <Txt x={420} y={140} size={26} color={MANIM.yellow} anchor="start">{"sen α = 56/100 = 0,56"}</Txt>
+          <Txt x={420} y={190} size={26} color={MANIM.yellow} anchor="start">{"cos α = 82/100 = 0,82"}</Txt>
+          <Txt x={420} y={240} size={26} color={MANIM.yellow} anchor="start">{"tg α = 56/82 ≈ 0,68"}</Txt>
         </Fade>
       </Canvas>
     ),
@@ -198,7 +198,7 @@ export function buildTrigNotables(params: { a?: number }): AnimBuild {
         <Fade show={beat >= 1}>
           <line x1={top[0]} y1={top[1]} x2={foot[0]} y2={foot[1]} stroke={MANIM.blue} strokeWidth={5} />
           <Txt x={x0 + side / 4 + 4} y={y0 + 34} size={24} color={MANIM.green}>1/2</Txt>
-          <Txt x={x0 + side / 2 + 70} y={y0 - 20} size={22} color={MANIM.muted}>1/2</Txt>
+          <Txt x={x0 + (3 * side) / 4} y={y0 + 34} size={24} color={MANIM.green}>1/2</Txt>
           <Txt x={top[0] - 36} y={top[1] + 90} size={22} color={MANIM.yellow}>30°</Txt>
           <Txt x={x0 + 60} y={y0 - 12} size={22} color={MANIM.yellow}>60°</Txt>
         </Fade>
@@ -226,9 +226,10 @@ export function buildTrigAlturaArbol(params: { a?: number; b?: number }): AnimBu
   const alpha = clampN(params.a, 50, 15, 75);
   const dist = clampN(params.b, 20, 5, 60);
   const h = dist * Math.tan(rad(alpha));
-  const px = 440;
   const ground = 340;
-  const treeH = Math.min(240, (px - 90) * Math.tan(rad(alpha)));
+  const distPx = Math.min(480, 240 / Math.tan(rad(alpha)));
+  const px = 90 + distPx;
+  const treeH = distPx * Math.tan(rad(alpha));
   const eye: [number, number] = [90, ground];
   const top: [number, number] = [px, ground - treeH];
   return {
@@ -237,7 +238,7 @@ export function buildTrigAlturaArbol(params: { a?: number; b?: number }): AnimBu
       `Desde el suelo, a $${dist}$ m de la base del árbol, se ve la copa bajo un ángulo de $${alpha}°$.`,
       "Se forma un triángulo rectángulo: el cateto **contiguo** es la distancia ($" + dist + "$ m) y el **opuesto**, la altura $h$.",
       `Sabemos contiguo y queremos el opuesto: la razón que los relaciona es la tangente. $\\operatorname{tg} ${alpha}° = \\dfrac{h}{${dist}}$.`,
-      `Se despeja: $h = ${dist} \\cdot \\operatorname{tg} ${alpha}° \\approx ${fmtEs(h, 2)}$ m.`,
+      `Se despeja: $h = ${dist} \\cdot \\operatorname{tg} ${alpha}° \\approx ${fmtEs(h, 2).replace(",", "{,}")}$ m.`,
     ],
     beatMs: 4000,
     render: (beat) => (
@@ -257,10 +258,10 @@ export function buildTrigAlturaArbol(params: { a?: number; b?: number }): AnimBu
           <Txt x={px + 26} y={ground - treeH / 2 + 8} size={26} color={MANIM.orange} anchor="start">h</Txt>
         </Fade>
         <Fade show={beat >= 2} dx={20}>
-          <Txt x={60} y={70} size={34} color={MANIM.ink} anchor="start">{`tg ${alpha}° = h / ${dist}`}</Txt>
+          <Txt x={440} y={90} size={30} color={MANIM.ink} anchor="start">{`tg ${alpha}° = h / ${dist}`}</Txt>
         </Fade>
         <Fade show={beat >= 3} dx={20}>
-          <Txt x={60} y={120} size={34} color={MANIM.yellow} anchor="start">{`h = ${dist} · tg ${alpha}° ≈ ${fmtEs(h, 2)} m`}</Txt>
+          <Txt x={440} y={140} size={26} color={MANIM.yellow} anchor="start">{`h = ${dist} · tg ${alpha}° ≈ ${fmtEs(h, 2)} m`}</Txt>
         </Fade>
       </Canvas>
     ),

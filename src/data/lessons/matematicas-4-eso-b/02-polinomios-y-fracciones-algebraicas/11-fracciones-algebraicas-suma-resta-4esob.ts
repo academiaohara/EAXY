@@ -47,9 +47,9 @@ export const fraccionesAlgebraicasSumaResta4esobLesson: InteractiveLesson = {
         params: {
           expr: [
             { tokens: ["3 / x", "+", "5 / (x − 2)"], active: [0, 2], note: "denominadores $x$ y $x - 2$: común $x(x - 2)$." },
-            { tokens: ["3(x − 2) / x(x − 2)", "+", "5x / x(x − 2)"], active: [0, 2], note: "cada fracción recibe el factor que le faltaba." },
-            { tokens: ["(3x − 6 + 5x) / x(x − 2)"], active: [0, 0], note: "se suman los numeradores." },
-            { tokens: ["(8x − 6) / x(x − 2)"], fresh: [0, 0], note: "resultado: $\\dfrac{8x - 6}{x(x - 2)}$." },
+            { tokens: ["3(x − 2) / (x(x − 2))", "+", "5x / (x(x − 2))"], active: [0, 2], note: "cada fracción recibe el factor que le faltaba." },
+            { tokens: ["(3x − 6 + 5x) / (x(x − 2))"], active: [0, 0], note: "se suman los numeradores." },
+            { tokens: ["(8x − 6) / (x(x − 2))"], fresh: [0, 0], note: "resultado: $\\dfrac{8x - 6}{x(x - 2)}$." },
           ],
         },
       },
