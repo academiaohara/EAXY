@@ -1,0 +1,385 @@
+import type { SubjectKey } from "@/lib/navigation/subjects";
+
+/**
+ * Bloques de contenido: una segunda forma de recorrer el currículo, transversal a los cursos.
+ * Un bloque agrupa las lecciones de un mismo contenido («Fracciones») de todos los cursos
+ * de una asignatura, para verlas ordenadas de 1.º ESO a Bachillerato.
+ *
+ * - El tema (módulo) es la unidad de asignación por defecto.
+ * - Cuando un tema mezcla contenidos, `lessons` reasigna lecciones concretas (por `orderIndex`).
+ * - Los ejercicios de tema (`topicExercises`) pertenecen al bloque por defecto de su tema.
+ */
+
+export type CurriculumBlock = {
+  slug: string;
+  subject: SubjectKey;
+  title: string;
+  description: string;
+  /** Orden dentro de la asignatura (de lo más básico a lo más avanzado). */
+  orderIndex: number;
+};
+
+export type ModuleBlockPlan =
+  | string
+  | {
+      /** Bloque del tema y de sus ejercicios de tema. */
+      default: string;
+      /** `orderIndex` de lección → bloque, para las que no encajan en el bloque del tema. */
+      lessons: Record<number, string>;
+    };
+
+export const BLOCKS: readonly CurriculumBlock[] = [
+  {
+    slug: "numeros-naturales-y-enteros",
+    subject: "matematicas",
+    title: "Números naturales y enteros",
+    description: "Sistemas de numeración, operaciones, orden de operaciones y números con signo.",
+    orderIndex: 1,
+  },
+  {
+    slug: "divisibilidad",
+    subject: "matematicas",
+    title: "Divisibilidad",
+    description: "Múltiplos y divisores, criterios, números primos, m.c.m. y m.c.d.",
+    orderIndex: 2,
+  },
+  {
+    slug: "fracciones",
+    subject: "matematicas",
+    title: "Fracciones",
+    description: "De la parte de la unidad a las operaciones, la fracción como operador y los racionales.",
+    orderIndex: 3,
+  },
+  {
+    slug: "numeros-decimales",
+    subject: "matematicas",
+    title: "Números decimales y aproximación",
+    description: "Órdenes decimales, operaciones, periódicos, redondeo, cifras significativas y errores.",
+    orderIndex: 4,
+  },
+  {
+    slug: "potencias-y-raices",
+    subject: "matematicas",
+    title: "Potencias, raíces y números reales",
+    description: "Potencias, raíces, notación científica, radicales y números irracionales.",
+    orderIndex: 5,
+  },
+  {
+    slug: "proporcionalidad-y-porcentajes",
+    subject: "matematicas",
+    title: "Proporcionalidad y porcentajes",
+    description: "Magnitudes proporcionales, repartos, porcentajes y variaciones porcentuales.",
+    orderIndex: 6,
+  },
+  {
+    slug: "medida-y-magnitudes",
+    subject: "matematicas",
+    title: "Medida y magnitudes",
+    description: "Sistema métrico decimal y sistema sexagesimal.",
+    orderIndex: 7,
+  },
+  {
+    slug: "lenguaje-algebraico",
+    subject: "matematicas",
+    title: "Lenguaje algebraico y polinomios",
+    description: "Expresiones algebraicas, monomios, polinomios, factor común e identidades notables.",
+    orderIndex: 8,
+  },
+  {
+    slug: "ecuaciones",
+    subject: "matematicas",
+    title: "Ecuaciones e inecuaciones",
+    description: "Ecuaciones de primer y segundo grado, problemas e inecuaciones.",
+    orderIndex: 9,
+  },
+  {
+    slug: "sistemas-de-ecuaciones",
+    subject: "matematicas",
+    title: "Sistemas de ecuaciones",
+    description: "Ecuaciones con dos incógnitas, métodos de resolución y problemas.",
+    orderIndex: 10,
+  },
+  {
+    slug: "progresiones",
+    subject: "matematicas",
+    title: "Sucesiones y progresiones",
+    description: "Término general, progresiones aritméticas y geométricas.",
+    orderIndex: 11,
+  },
+  {
+    slug: "funciones-y-graficas",
+    subject: "matematicas",
+    title: "Funciones y gráficas",
+    description: "Coordenadas, concepto de función y características: crecimiento, continuidad y periodicidad.",
+    orderIndex: 12,
+  },
+  {
+    slug: "funciones-lineales",
+    subject: "matematicas",
+    title: "Funciones lineales y rectas",
+    description: "Proporcionalidad, función afín, pendiente y ecuaciones de la recta.",
+    orderIndex: 13,
+  },
+  {
+    slug: "funciones-elementales",
+    subject: "matematicas",
+    title: "Parábolas, hipérbolas y exponenciales",
+    description: "Funciones cuadráticas, de proporcionalidad inversa, radicales y exponenciales.",
+    orderIndex: 14,
+  },
+  {
+    slug: "geometria-plana",
+    subject: "matematicas",
+    title: "Rectas, ángulos y figuras planas",
+    description: "Rectas, ángulos, triángulos, cuadriláteros, polígonos, circunferencia y lugares geométricos.",
+    orderIndex: 15,
+  },
+  {
+    slug: "areas-y-perimetros",
+    subject: "matematicas",
+    title: "Áreas y perímetros",
+    description: "Medidas de cuadriláteros, triángulos, polígonos, círculo y figuras curvas.",
+    orderIndex: 16,
+  },
+  {
+    slug: "pitagoras-y-semejanza",
+    subject: "matematicas",
+    title: "Pitágoras y semejanza",
+    description: "Teorema de Pitágoras, Tales, figuras semejantes, escalas y homotecia.",
+    orderIndex: 17,
+  },
+  {
+    slug: "cuerpos-y-volumenes",
+    subject: "matematicas",
+    title: "Cuerpos geométricos y volúmenes",
+    description: "Poliedros, cuerpos de revolución, superficies y volúmenes.",
+    orderIndex: 18,
+  },
+  {
+    slug: "geometria-analitica",
+    subject: "matematicas",
+    title: "Geometría analítica",
+    description: "Vectores, distancias, punto medio y ecuaciones de rectas.",
+    orderIndex: 19,
+  },
+  {
+    slug: "estadistica",
+    subject: "matematicas",
+    title: "Estadística",
+    description: "Variables, tablas y gráficos, medidas de centralización y de dispersión.",
+    orderIndex: 20,
+  },
+  {
+    slug: "probabilidad",
+    subject: "matematicas",
+    title: "Probabilidad",
+    description: "Experimentos aleatorios, regla de Laplace y experiencias compuestas.",
+    orderIndex: 21,
+  },
+  {
+    slug: "materiales",
+    subject: "tecnologia",
+    title: "Materiales",
+    description: "Estructura, propiedades y ensayos; aleaciones, no férreos, tratamientos y corrosión.",
+    orderIndex: 1,
+  },
+  {
+    slug: "maquinas-y-motores",
+    subject: "tecnologia",
+    title: "Máquinas y motores",
+    description: "Principios generales de las máquinas, motores térmicos y motores eléctricos.",
+    orderIndex: 2,
+  },
+  {
+    slug: "neumatica-e-hidraulica",
+    subject: "tecnologia",
+    title: "Neumática e hidráulica",
+    description: "Automatismos neumáticos y oleohidráulicos.",
+    orderIndex: 3,
+  },
+  {
+    slug: "sistemas-de-control",
+    subject: "tecnologia",
+    title: "Sistemas de control",
+    description: "Sistemas automáticos, componentes de un sistema de control y su respuesta.",
+    orderIndex: 4,
+  },
+  {
+    slug: "electronica-digital",
+    subject: "tecnologia",
+    title: "Electrónica digital",
+    description: "Álgebra de Boole, circuitos combinacionales y secuenciales.",
+    orderIndex: 5,
+  },
+];
+
+/** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
+export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
+  // ── Matemáticas 1.º ESO ────────────────────────────────────────────────
+  "matematicas-1-eso/numeros-naturales": "numeros-naturales-y-enteros",
+  "matematicas-1-eso/potencias-y-raices": "potencias-y-raices",
+  "matematicas-1-eso/divisibilidad": "divisibilidad",
+  "matematicas-1-eso/numeros-enteros": "numeros-naturales-y-enteros",
+  "matematicas-1-eso/numeros-decimales": "numeros-decimales",
+  "matematicas-1-eso/sistema-metrico-decimal": "medida-y-magnitudes",
+  "matematicas-1-eso/fracciones": "fracciones",
+  "matematicas-1-eso/operaciones-con-fracciones": "fracciones",
+  "matematicas-1-eso/proporcionalidad-y-porcentajes": "proporcionalidad-y-porcentajes",
+  "matematicas-1-eso/algebra": {
+    default: "lenguaje-algebraico",
+    lessons: { 3: "ecuaciones", 4: "ecuaciones", 5: "ecuaciones", 6: "ecuaciones" },
+  },
+  "matematicas-1-eso/rectas-y-angulos": "geometria-plana",
+  "matematicas-1-eso/figuras-geometricas": {
+    default: "geometria-plana",
+    lessons: {
+      5: "cuerpos-y-volumenes",
+      6: "cuerpos-y-volumenes",
+      7: "cuerpos-y-volumenes",
+      8: "cuerpos-y-volumenes",
+    },
+  },
+  "matematicas-1-eso/areas-y-perimetros": "areas-y-perimetros",
+  "matematicas-1-eso/tablas-y-graficas": {
+    default: "funciones-y-graficas",
+    lessons: { 4: "estadistica", 5: "estadistica", 6: "estadistica" },
+  },
+  "matematicas-1-eso/probabilidad": "probabilidad",
+
+  // ── Matemáticas 2.º ESO ────────────────────────────────────────────────
+  "matematicas-2-eso/divisibilidad-y-numeros-enteros": {
+    default: "divisibilidad",
+    lessons: {
+      6: "numeros-naturales-y-enteros",
+      7: "numeros-naturales-y-enteros",
+      8: "potencias-y-raices",
+      9: "potencias-y-raices",
+    },
+  },
+  "matematicas-2-eso/sistema-decimal-y-sexagesimal": {
+    default: "numeros-decimales",
+    lessons: { 5: "potencias-y-raices", 6: "medida-y-magnitudes", 7: "medida-y-magnitudes" },
+  },
+  "matematicas-2-eso/las-fracciones": "fracciones",
+  "matematicas-2-eso/proporcionalidad-y-porcentajes": "proporcionalidad-y-porcentajes",
+  "matematicas-2-eso/algebra": "lenguaje-algebraico",
+  "matematicas-2-eso/ecuaciones": "ecuaciones",
+  "matematicas-2-eso/sistemas-de-ecuaciones": "sistemas-de-ecuaciones",
+  "matematicas-2-eso/teorema-de-pitagoras-y-semejanza": "pitagoras-y-semejanza",
+  "matematicas-2-eso/cuerpos-geometricos": {
+    default: "cuerpos-y-volumenes",
+    lessons: { 1: "geometria-plana", 2: "geometria-plana", 3: "geometria-plana", 4: "geometria-plana" },
+  },
+  "matematicas-2-eso/medida-del-volumen": "cuerpos-y-volumenes",
+  "matematicas-2-eso/funciones": {
+    default: "funciones-y-graficas",
+    lessons: { 3: "funciones-lineales", 4: "funciones-lineales", 5: "funciones-lineales", 6: "funciones-lineales" },
+  },
+  "matematicas-2-eso/estadistica": "estadistica",
+
+  // ── Matemáticas 3.º ESO ────────────────────────────────────────────────
+  "matematicas-3-eso/fracciones-y-decimales": {
+    default: "fracciones",
+    lessons: { 8: "proporcionalidad-y-porcentajes", 9: "proporcionalidad-y-porcentajes" },
+  },
+  "matematicas-3-eso/potencias-y-raices": {
+    default: "potencias-y-raices",
+    lessons: { 4: "numeros-decimales" },
+  },
+  "matematicas-3-eso/progresiones": "progresiones",
+  "matematicas-3-eso/lenguaje-algebraico": "lenguaje-algebraico",
+  "matematicas-3-eso/ecuaciones": "ecuaciones",
+  "matematicas-3-eso/sistemas-de-ecuaciones": "sistemas-de-ecuaciones",
+  "matematicas-3-eso/funciones-y-graficas": "funciones-y-graficas",
+  "matematicas-3-eso/funciones-lineales": "funciones-lineales",
+  "matematicas-3-eso/problemas-metricos-en-el-plano": {
+    default: "areas-y-perimetros",
+    lessons: {
+      1: "pitagoras-y-semejanza",
+      2: "pitagoras-y-semejanza",
+      3: "geometria-plana",
+      4: "geometria-plana",
+    },
+  },
+  "matematicas-3-eso/cuerpos-geometricos": "cuerpos-y-volumenes",
+
+  // ── Matemáticas 4.º ESO ────────────────────────────────────────────────
+  "matematicas-4-eso/numeros-enteros-y-racionales": {
+    default: "fracciones",
+    lessons: {
+      1: "numeros-naturales-y-enteros",
+      2: "numeros-naturales-y-enteros",
+      3: "potencias-y-raices",
+      7: "potencias-y-raices",
+    },
+  },
+  "matematicas-4-eso/numeros-decimales": {
+    default: "numeros-decimales",
+    lessons: { 6: "potencias-y-raices", 7: "potencias-y-raices" },
+  },
+  "matematicas-4-eso/numeros-reales": "potencias-y-raices",
+  "matematicas-4-eso/problemas-aritmeticos": "proporcionalidad-y-porcentajes",
+  "matematicas-4-eso/expresiones-algebraicas": "lenguaje-algebraico",
+  "matematicas-4-eso/ecuaciones-e-inecuaciones": "ecuaciones",
+  "matematicas-4-eso/sistemas-de-ecuaciones": "sistemas-de-ecuaciones",
+  "matematicas-4-eso/funciones-caracteristicas": "funciones-y-graficas",
+  "matematicas-4-eso/las-funciones-lineales": "funciones-lineales",
+  "matematicas-4-eso/otras-funciones-elementales": "funciones-elementales",
+  "matematicas-4-eso/la-semejanza-aplicaciones": "pitagoras-y-semejanza",
+  "matematicas-4-eso/geometria-analitica": "geometria-analitica",
+  "matematicas-4-eso/estadistica": "estadistica",
+  "matematicas-4-eso/calculo-de-probabilidades": "probabilidad",
+
+  // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
+  "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",
+  "tecnologia-industrial-2-bachillerato/aleaciones-diagramas-equilibrio": "materiales",
+  "tecnologia-industrial-2-bachillerato/materiales-no-ferreos-reciclaje": "materiales",
+  "tecnologia-industrial-2-bachillerato/tratamientos-termicos-corrosion": "materiales",
+  "tecnologia-industrial-2-bachillerato/principios-generales-maquinas": "maquinas-y-motores",
+  "tecnologia-industrial-2-bachillerato/motores-termicos-circuitos-frigorificos": "maquinas-y-motores",
+  "tecnologia-industrial-2-bachillerato/magnetismo-motores-electricos": "maquinas-y-motores",
+  "tecnologia-industrial-2-bachillerato/automatizacion-neumatica": "neumatica-e-hidraulica",
+  "tecnologia-industrial-2-bachillerato/automatismos-oleohidraulicos": "neumatica-e-hidraulica",
+  "tecnologia-industrial-2-bachillerato/sistemas-automaticos": "sistemas-de-control",
+  "tecnologia-industrial-2-bachillerato/componentes-sistema-control": "sistemas-de-control",
+  "tecnologia-industrial-2-bachillerato/circuitos-combinacionales-boole": "electronica-digital",
+  "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
+};
+
+export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {
+  return `${courseSlug}/${moduleSlug}`;
+}
+
+export function getBlocksForSubject(subject: SubjectKey): CurriculumBlock[] {
+  return BLOCKS.filter((block) => block.subject === subject).sort(
+    (a, b) => a.orderIndex - b.orderIndex,
+  );
+}
+
+export function getBlock(subject: SubjectKey, slug: string): CurriculumBlock | undefined {
+  return BLOCKS.find((block) => block.subject === subject && block.slug === slug);
+}
+
+/** Bloque por defecto de un tema; también es el bloque de sus ejercicios de tema. */
+export function getModuleBlockSlug(courseSlug: string, moduleSlug: string): string | undefined {
+  const plan = MODULE_BLOCK_PLAN[moduleBlockKey(courseSlug, moduleSlug)];
+  if (!plan) {
+    return undefined;
+  }
+  return typeof plan === "string" ? plan : plan.default;
+}
+
+export function getLessonBlockSlug(
+  courseSlug: string,
+  moduleSlug: string,
+  lessonOrderIndex: number,
+): string | undefined {
+  const plan = MODULE_BLOCK_PLAN[moduleBlockKey(courseSlug, moduleSlug)];
+  if (!plan) {
+    return undefined;
+  }
+  if (typeof plan === "string") {
+    return plan;
+  }
+  return plan.lessons[lessonOrderIndex] ?? plan.default;
+}

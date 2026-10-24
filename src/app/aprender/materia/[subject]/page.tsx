@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CourseCatalogView } from "@/components/learning/course-catalog";
 import { SubjectHero } from "@/components/learning/subject-hero";
+import { SubjectViewTabs } from "@/components/learning/subject-view-tabs";
 import { getCourseCatalog } from "@/lib/curriculum/queries";
 import { SUBJECTS, getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 
@@ -32,6 +33,7 @@ export default async function SubjectPage({ params }: SubjectPageProps) {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6 sm:py-10">
       <SubjectHero subject={subject} courseCount={available.length} lessonCount={lessonCount} />
+      <SubjectViewTabs subject={subject} active="cursos" />
       <CourseCatalogView courses={courses} subject={subject.key} />
     </div>
   );
