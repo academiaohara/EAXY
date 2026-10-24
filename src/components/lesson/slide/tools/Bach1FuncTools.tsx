@@ -20,11 +20,11 @@ const sgn = (n: number) => (n < 0 ? `− ${-n}` : `+ ${n}`);
 const W = 520;
 const H = 320;
 
-type Curve = { fn: Fn; color: string; dashed?: boolean; ok?: (x: number) => boolean; width?: number };
-type Mark = { x: number; y: number; color: string; r?: number };
+export type Curve = { fn: Fn; color: string; dashed?: boolean; ok?: (x: number) => boolean; width?: number };
+export type Mark = { x: number; y: number; color: string; r?: number; open?: boolean };
 
 /** Gráfica de funciones con ejes, asíntotas y puntos; corta el trazo donde no hay valor o hay saltos. */
-function FnPlot({ curves, xr, yr, marks = [], vlines = [], hlines = [], xTicks, testId }: {
+export function FnPlot({ curves, xr, yr, marks = [], vlines = [], hlines = [], xTicks, testId }: {
   curves: Curve[]; xr: [number, number]; yr: [number, number]; marks?: Mark[]; vlines?: number[]; hlines?: number[]; xTicks?: { x: number; label: string }[]; testId: string;
 }) {
   const px = (x: number) => 20 + ((x - xr[0]) / (xr[1] - xr[0])) * (W - 40);
@@ -70,7 +70,7 @@ function FnPlot({ curves, xr, yr, marks = [], vlines = [], hlines = [], xTicks, 
       {vlines.map((x) => <line key={`v${x}`} x1={px(x)} y1={8} x2={px(x)} y2={H - 8} stroke={MANIM.red} strokeWidth={1.8} strokeDasharray="6 5" />)}
       {hlines.map((y) => <line key={`h${y}`} x1={10} y1={py(y)} x2={W - 10} y2={py(y)} stroke={MANIM.red} strokeWidth={1.8} strokeDasharray="6 5" />)}
       {paths.map((p) => <polyline key={p.key} points={p.pts} fill="none" stroke={p.c.color} strokeWidth={p.c.width ?? 3} strokeDasharray={p.c.dashed ? "6 5" : undefined} />)}
-      {marks.map((m, i) => <circle key={i} cx={px(m.x)} cy={py(m.y)} r={m.r ?? 5.5} fill={m.color} />)}
+      {marks.map((m, i) => <circle key={i} cx={px(m.x)} cy={py(m.y)} r={m.r ?? 5.5} fill={m.open ? MANIM.surface : m.color} stroke={m.color} strokeWidth={2.2} />)}
     </Svg>
   );
 }

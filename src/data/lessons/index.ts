@@ -49,6 +49,8 @@ import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-ar
 import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/09-areas-figuras-curvas-3eso";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
+import { asintotasOblicuas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/05-asintotas-oblicuas-1bach";
+import { asintotasVerticalesHorizontales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/04-asintotas-verticales-horizontales-1bach";
 import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/01-atomo-nucleo-corteza";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
@@ -57,6 +59,7 @@ import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachi
 import { biestableRsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/02-biestable-rs";
 import { biestablesJkDTLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/03-biestables-jk-d-t";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
+import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
@@ -94,6 +97,7 @@ import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachil
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
+import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
@@ -272,10 +276,15 @@ import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industria
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
+import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
 import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/08-identidades-notables-4esob";
 import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
+import { indeterminacionCeroCero1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/09-indeterminacion-cero-cero-1bach";
+import { indeterminacionInfInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/10-indeterminacion-inf-inf-1bach";
+import { indeterminacionInfMenosInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/08-indeterminacion-inf-menos-inf-1bach";
+import { indeterminacionUnoInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/11-indeterminacion-uno-infinito-1bach";
 import { induccionFaradayLenzLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/05-induccion-faraday-lenz";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
 import { inecuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/14-inecuaciones-4esob";
@@ -299,6 +308,8 @@ import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { limiteSucesion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/07-limite-sucesion-1bach";
 import { limitesCalculo1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/08-limites-calculo-1bach";
+import { limitesInfinitos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/03-limites-infinitos-1bach";
+import { limitesLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/02-limites-laterales-1bach";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
 import { linealIdea4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/01-lineal-idea-4esob";
 import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
@@ -487,6 +498,7 @@ import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
+import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/06-propiedades-limites-infinito-1bach";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
 import { propiedadesSensoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/02-propiedades-sensores";
 import { proporcionalidadCompuesta4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/02-proporcionalidad-compuesta-4eso";
@@ -611,6 +623,7 @@ import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerat
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { tiposCorrosionProteccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/07-tipos-corrosion-proteccion";
+import { tiposDiscontinuidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/13-tipos-discontinuidad-1bach";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
@@ -697,6 +710,8 @@ export const interactiveLessons = {
   "areas-figuras-curvas-3eso": areasFigurasCurvas3esoLesson,
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
+  "asintotas-oblicuas-1bach": asintotasOblicuas1bachLesson,
+  "asintotas-verticales-horizontales-1bach": asintotasVerticalesHorizontales1bachLesson,
   "atomo-nucleo-corteza": atomoNucleoCortezaLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
@@ -705,6 +720,7 @@ export const interactiveLessons = {
   "biestable-rs": biestableRsLesson,
   "biestables-jk-d-t": biestablesJkDTLesson,
   "bomba-calor": bombaCalorLesson,
+  "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
@@ -742,6 +758,7 @@ export const interactiveLessons = {
   "conos-2eso": conos2esoLesson,
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
+  "continuidad-punto-1bach": continuidadPunto1bachLesson,
   "controlador-proporcional": controladorProporcionalLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
@@ -920,10 +937,15 @@ export const interactiveLessons = {
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
+  "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
   "identidades-notables-4esob": identidadesNotables4esobLesson,
   "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
+  "indeterminacion-cero-cero-1bach": indeterminacionCeroCero1bachLesson,
+  "indeterminacion-inf-inf-1bach": indeterminacionInfInf1bachLesson,
+  "indeterminacion-inf-menos-inf-1bach": indeterminacionInfMenosInf1bachLesson,
+  "indeterminacion-uno-infinito-1bach": indeterminacionUnoInfinito1bachLesson,
   "induccion-faraday-lenz": induccionFaradayLenzLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
   "inecuaciones-4esob": inecuaciones4esobLesson,
@@ -947,6 +969,8 @@ export const interactiveLessons = {
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "limite-sucesion-1bach": limiteSucesion1bachLesson,
   "limites-calculo-1bach": limitesCalculo1bachLesson,
+  "limites-infinitos-1bach": limitesInfinitos1bachLesson,
+  "limites-laterales-1bach": limitesLaterales1bachLesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
   "lineal-idea-4esob": linealIdea4esobLesson,
   "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
@@ -1135,6 +1159,7 @@ export const interactiveLessons = {
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
+  "propiedades-limites-infinito-1bach": propiedadesLimitesInfinito1bachLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
   "propiedades-sensores": propiedadesSensoresLesson,
   "proporcionalidad-compuesta-4eso": proporcionalidadCompuesta4esoLesson,
@@ -1259,6 +1284,7 @@ export const interactiveLessons = {
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "tipos-corrosion-proteccion": tiposCorrosionProteccionLesson,
+  "tipos-discontinuidad-1bach": tiposDiscontinuidad1bachLesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,

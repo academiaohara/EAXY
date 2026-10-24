@@ -941,6 +941,8 @@ export type SlideAnimId =
   | "radian-arco"
   | "circulo-goniometrico"
   | "proyeccion-vector"
+  | "limite-aproximacion"
+  | "asintotas-tipos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1363,6 +1365,15 @@ export type SlideToolId =
   | "oferta-demanda-explorador"
   | "composicion-explorador"
   | "inversa-explorador"
+  | "limite-tabla-explorador"
+  | "limite-lateral-explorador"
+  | "limite-infinito-explorador"
+  | "asintotas-explorador"
+  | "cero-cero-explorador"
+  | "limite-grados-explorador"
+  | "continuidad-k-explorador"
+  | "operaciones-limite-explorador"
+  | "resta-fracciones-explorador"
   /* industrial-tool-end */;
 
 /**

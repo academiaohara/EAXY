@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildLimiteAproximacion, buildAsintotasTipos } from "@/components/lesson/anim/scenes/bach1-limites";
 import { buildProyeccionVector } from "@/components/lesson/anim/scenes/bach1-geo";
 import { buildRadianArco, buildCirculoGoniometrico } from "@/components/lesson/anim/scenes/bach1-trig";
 import { buildSerieGeometricaSaltos } from "@/components/lesson/anim/scenes/bach1-sucesiones";
@@ -596,6 +597,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "radian-arco": (p) => buildRadianArco(p),
   "circulo-goniometrico": (p) => buildCirculoGoniometrico(p),
   "proyeccion-vector": (p) => buildProyeccionVector(p),
+  "limite-aproximacion": () => buildLimiteAproximacion(),
+  "asintotas-tipos": (p) => buildAsintotasTipos(p),
   /* industrial-end */
 };
 

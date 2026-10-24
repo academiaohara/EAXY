@@ -411,6 +411,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `radian-arco` | El radián: un arco igual al radio, arcos de varios radianes y 180° = π rad | `a` (radianes destacados, 1–6) |
 | `circulo-goniometrico` | Circunferencia de radio 1: P = (cos θ, sen θ), signo por cuadrantes, ángulo de referencia y tangente sobre x = 1 | `a` (ángulo en grados, 0–359) |
 | `proyeccion-vector` | Producto escalar como proyección: u y v desde el origen, sombra de u sobre v, u·v y ángulo | `nums`: `[ux, uy, vx, vy]` (enteros en [−6, 6]) |
+| `limite-aproximacion` | Límite en un punto: (x² − 1)/(x − 1) sin imagen en x = 1; aproximación por la izquierda y la derecha hacia 2 | — |
+| `asintotas-tipos` | Asíntotas: vertical y horizontal de (2x + 1)/(x − 1) (`a: 1`); oblicua y = x + 3 y rama parabólica (`a: 2`) | `a` (1 o 2) |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -521,6 +523,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `oferta-demanda-explorador` | Rectas de oferta y demanda, precio de mercado, excedente o escasez y punto de equilibrio | `initial`: `[ordenada oferta, pendiente oferta, ordenada demanda, pendiente demanda, precio]` |
 | `composicion-explorador` | f∘g y g∘f para pares de funciones elementales, con valores en un punto | `initial`: `[f (índice), g (índice), 2·x]` |
 | `inversa-explorador` | Función, inversa y simetría respecto de y = x; señala las no inyectivas | `initial`: `[función (índice), 2·x₀]` |
+| `limite-tabla-explorador` | Tabla de valores al acercarse a a por un lado: cuatro funciones, límite lateral e imagen | `initial`: `[función (0–3), lado (0 izq., 1 der.), pasos (0–5)]` |
+| `limite-lateral-explorador` | Seis funciones a trozos: límites laterales, f(a), existencia del límite y tipo de discontinuidad | `initial`: `[función (0–5), distancia k (0–4)]` |
+| `limite-infinito-explorador` | Siete funciones y cuatro destinos (0⁺, 0⁻, +∞, −∞): tabla de valores, límite y tipo | `initial`: `[función (0–6), destino (0–3)]` |
+| `asintotas-explorador` | f(x) = (ax² + bx + c)/(x − r): vertical, horizontal u oblicua (m, n) o hueco | `initial`: `[a, b, c, r]` |
+| `cero-cero-explorador` | 0/0 factorizando o con el conjugado de una raíz: pasos, gráfica con hueco y límite | `initial`: `[0, a, b, c]` o `[1, s, k]` |
+| `limite-grados-explorador` | (a·xᵖ + 3)/(c·xᵠ + 5) en ±∞: tabla, regla de grados y límite | `initial`: `[p, a, q, c, signo (0 +∞, 1 −∞)]` |
+| `continuidad-k-explorador` | f(x) = x² si x < a; x + k si x ≥ a: laterales, salto y valor de k para que sea continua | `initial`: `[a, k]` |
+| `operaciones-limite-explorador` | Límite de f ± g, f·g o f/g para funciones sencillas en +∞ o 0⁺: forma resultante, si es indeterminada y valor real | `initial`: `[f (0–5), g (0–5), operación (0 +, 1 −, 2 ·, 3 /), destino (0 +∞, 1 0⁺)]` |
+| `resta-fracciones-explorador` | 1/(x − r) − k/(x² − r²) cuando x → r: común denominador, laterales y límite (finito solo si k = 2r) | `initial`: `[k, r]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

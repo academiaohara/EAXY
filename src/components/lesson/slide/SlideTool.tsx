@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { LimiteTablaExplorador, LimiteLateralExplorador, LimiteInfinitoExplorador, AsintotasExplorador, CeroCeroExplorador, LimiteGradosExplorador, ContinuidadKExplorador, OperacionesLimiteExplorador, RestaFraccionesExplorador } from "@/components/lesson/slide/tools/Bach1LimTools";
 import { DominioExplorador, SimetriaExplorador, SignoExplorador, FuncionRaizExplorador, ExpLogExplorador, TrigFuncionExplorador, AbsFuncionExplorador, OfertaDemandaExplorador, ComposicionExplorador, InversaExplorador } from "@/components/lesson/slide/tools/Bach1FuncTools";
 import { ProductoEscalarExplorador, RectaFormasExplorador, RectasAnguloExplorador, DistanciaPuntoRectaExplorador, MediatrizExplorador, ConicaExplorador } from "@/components/lesson/slide/tools/Bach1GeoTools";
 import { RadianesExplorador, CirculoTrigExplorador, AngulosRelacionadosExplorador, SumaAngulosExplorador, DobleMitadExplorador, SumaProductoExplorador, EcuacionTrigExplorador, TrianguloGeneralExplorador } from "@/components/lesson/slide/tools/Bach1TrigTools";
@@ -983,6 +984,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ComposicionExplorador block={block} />;
     case "inversa-explorador":
       return <InversaExplorador block={block} />;
+    case "limite-tabla-explorador":
+      return <LimiteTablaExplorador block={block} />;
+    case "limite-lateral-explorador":
+      return <LimiteLateralExplorador block={block} />;
+    case "limite-infinito-explorador":
+      return <LimiteInfinitoExplorador block={block} />;
+    case "asintotas-explorador":
+      return <AsintotasExplorador block={block} />;
+    case "cero-cero-explorador":
+      return <CeroCeroExplorador block={block} />;
+    case "limite-grados-explorador":
+      return <LimiteGradosExplorador block={block} />;
+    case "continuidad-k-explorador":
+      return <ContinuidadKExplorador block={block} />;
+    case "operaciones-limite-explorador":
+      return <OperacionesLimiteExplorador block={block} />;
+    case "resta-fracciones-explorador":
+      return <RestaFraccionesExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
