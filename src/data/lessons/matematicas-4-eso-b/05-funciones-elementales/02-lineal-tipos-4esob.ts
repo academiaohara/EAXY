@@ -1,0 +1,97 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_9_SUBTITLE } from "@/data/lessons/shared";
+
+export const linealTipos4esobLesson: InteractiveLesson = {
+  slug: "lineal-tipos-4esob",
+  title: "2. Tipos de funciones lineales",
+  subtitle: TEMA_4ESO_9_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tres",
+      type: "slide",
+      help: [
+        { label: "Caso general", message: "$y = mx + n$ incluye a los otros dos: con $n = 0$ es proporcionalidad; con $m = 0$, constante." },
+        { label: "Ejemplo", message: "$e = v\\cdot t$: el espacio recorrido con velocidad constante es proporcional al tiempo; la pendiente es la velocidad." },
+      ],
+      title: "Tres tipos",
+      blocks: [
+        { kind: "facts", items: [{ tex: "y = mx", label: "proporcionalidad: recta por el origen; $m$ es la pendiente" }, { tex: "y = n", label: "constante: recta horizontal, pendiente $0$" }, { tex: "y = mx + n", label: "general: pendiente $m$, corta al eje $Y$ en $(0, n)$" }] },
+      ],
+      visual: { kind: "tool", tool: "recta-mn-explorador", initial: [4, 1], hint: "Pon n = 0 (proporcionalidad), luego m = 0 (constante)." },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Mira m y n", message: "Si no hay término independiente, pasa por el origen. Si no hay $x$, es horizontal." }],
+      title: "¿Qué tipo es?",
+      question: "Clasifica cada función.",
+      groups: [
+        { id: "prop", label: "Proporcionalidad", tone: "emerald" },
+        { id: "cte", label: "Constante", tone: "amber" },
+        { id: "gen", label: "General", tone: "cobalt" },
+      ],
+      items: [
+        { id: "a", text: "$y = 3x$", group: "prop" },
+        { id: "b", text: "$y = 5$", group: "cte" },
+        { id: "c", text: "$y = -2x + 1$", group: "gen" },
+        { id: "d", text: "$y = -\\dfrac{3}{2}x$", group: "prop" },
+        { id: "e", text: "$y = 0$", group: "cte" },
+        { id: "f", text: "$y = 30 + 15x$", group: "gen" },
+      ],
+      hint: "Fíjate en si hay término independiente y en si hay término en $x$.",
+    },
+    {
+      id: "check-origen",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "x = 0", message: "Si $x = 0$, $y = n$: la recta corta al eje $Y$ en $(0, n)$." }],
+      title: "¿Dónde corta al eje Y?",
+      question: "La recta $y = 2x - 3$ corta al eje $Y$ en el punto...",
+      choices: [
+        { id: "m3", label: "$(0, -3)$" },
+        { id: "2", label: "$(0, 2)$", incorrectFeedback: "El $2$ es la pendiente. La ordenada en el origen es el término independiente, $-3$." },
+        { id: "3", label: "$(-3, 0)$", incorrectFeedback: "Ese punto corta al eje $X$ en el sentido contrario. Con $x = 0$ tenemos $y = -3$: $(0, -3)$." },
+      ],
+      correctChoiceId: "m3",
+      shuffleChoices: true,
+      explanation: "Con $x = 0$: $y = -3$. Punto $(0, -3)$.",
+    },
+    {
+      id: "check-puntos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Misma ordenada", message: "En $y = 5$ todos los puntos tienen $y = 5$, sea cual sea $x$." }],
+      title: "Una recta horizontal",
+      question: "¿Cuál es la ordenada de cualquier punto de la recta $y = 5$ con abscisa $11$?",
+      correctAnswers: ["5"],
+      explanation: "$(2, 5)$, $(6, 5)$, $(11, 5)$: todos tienen ordenada $5$.",
+    },
+    {
+      id: "check-mov",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pendiente = velocidad", message: "$e = v\\cdot t$ con $v = 12$ m/s da $e = 12t$." }],
+      title: "Movimiento uniforme",
+      question: "Un ciclista va a velocidad constante y recorre $e = 12t$ (metros, $t$ en segundos). ¿Cuál es la pendiente de la recta?",
+      correctAnswers: ["12"],
+      explanation: "La pendiente es la velocidad: $12$ m/s. Es una función de proporcionalidad, $y = mx$.",
+    },
+    {
+      id: "check-restaurante",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "No depende", message: "Si el precio no depende de la cantidad, $y$ no varía con $x$." }],
+      title: "Un menú con precio fijo",
+      question: "En un buffet libre se paga $14$ € sea cual sea la cantidad que comas. ¿Qué tipo de función es «precio según lo comido»?",
+      choices: [
+        { id: "cte", label: "Constante: $y = 14$" },
+        { id: "prop", label: "De proporcionalidad", incorrectFeedback: "Entonces el precio crecería con la cantidad, y aquí no cambia." },
+        { id: "gen", label: "General con $m \\neq 0$", incorrectFeedback: "$m \\neq 0$ significaría que el precio varía con la cantidad." },
+      ],
+      correctChoiceId: "cte",
+      shuffleChoices: true,
+      explanation: "Pendiente $0$: $y = 14$, recta horizontal.",
+    },
+  ],
+};

@@ -6,9 +6,9 @@ describe("validateCurriculum", () => {
     expect(validateCurriculum(curriculum)).toEqual([]);
   });
 
-  it("incluye los seis niveles de matemáticas y las materias de física y tecnología", () => {
+  it("incluye los siete cursos de matemáticas y las materias de física y tecnología", () => {
     const titles = getAllCourses(curriculum).map((course) => course.title);
-    expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(6);
+    expect(titles.filter((title) => title.startsWith("Matemáticas"))).toHaveLength(7);
     expect(titles.filter((title) => title.startsWith("Física"))).toHaveLength(5);
     expect(titles.filter((title) => title.startsWith("Tecnología"))).toHaveLength(5);
   });

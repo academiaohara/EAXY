@@ -1,0 +1,116 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_4ESO_8_SUBTITLE } from "@/data/lessons/shared";
+
+export const funcionConcepto4esobLesson: InteractiveLesson = {
+  slug: "funcion-concepto-4esob",
+  title: "1. Concepto de función",
+  subtitle: TEMA_4ESO_8_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "variables",
+      type: "slide",
+      help: [
+        { label: "Quién depende de quién", message: "La **independiente** es la que tú eliges o controlas (el tiempo, la altura…). La **dependiente** es la que sale como resultado." },
+        { label: "Notación", message: "$y = f(x)$ se lee «$y$ es función de $x$»: $f$ es la regla que a cada $x$ le asigna su $y$." },
+      ],
+      title: "Una función liga dos variables",
+      blocks: [
+        { kind: "definition", text: "Una **función** $y = f(x)$ asocia a cada valor de $x$ **un único** valor de $y$." },
+        { kind: "facts", items: [{ tex: "x", label: "variable independiente (eje horizontal, abscisas)" }, { tex: "y", label: "variable dependiente (eje vertical, ordenadas)" }] },
+      ],
+      visual: { kind: "tool", tool: "funcion-explorador", params: { a: 3 }, hint: "Es el sueldo S en función de las horas extra x: mueve x y mira cómo depende S de x." },
+    },
+    {
+      id: "check-variables",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pregúntate", message: "¿Qué valor eliges tú y cuál se calcula a partir de él?" }],
+      title: "¿Cuál es la independiente?",
+      question: "En el sueldo $S = (2100 + 25x)\\cdot0{,}85$, donde $x$ son las horas extraordinarias, ¿cuál es la variable independiente?",
+      choices: [
+        { id: "x", label: "$x$, las horas extra" },
+        { id: "S", label: "$S$, el sueldo", incorrectFeedback: "El sueldo se calcula a partir de las horas: es la **dependiente**." },
+        { id: "ambas", label: "Las dos por igual", incorrectFeedback: "En una función, una variable depende de la otra: no son intercambiables." },
+      ],
+      correctChoiceId: "x",
+      shuffleChoices: true,
+      explanation: "Eliges $x$ (horas) y calculas $S$: $S = f(x)$.",
+    },
+    {
+      id: "unico",
+      type: "slide",
+      help: [{ label: "Test de la vertical", message: "Traza una recta vertical por cualquier $x$ del dominio: si corta a la gráfica en **más de un punto**, no es función." }],
+      title: "Un único valor para cada x",
+      blocks: [
+        { kind: "rule", title: "Test de la recta vertical", text: "Una gráfica es una función si **toda recta vertical** la corta, como mucho, en **un punto**." },
+      ],
+      visual: { kind: "anim", scene: "funcion-es-no-es" },
+    },
+    {
+      id: "check-no-funcion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Una circunferencia", message: "Para casi cada $x$ de una circunferencia hay dos valores de $y$ (uno arriba y otro abajo)." }],
+      title: "¿Es función?",
+      question: "Una circunferencia dibujada en el plano, ¿es la gráfica de una función $y = f(x)$?",
+      choices: [
+        { id: "no", label: "No: una vertical la corta en dos puntos" },
+        { id: "si", label: "Sí", incorrectFeedback: "Para un mismo $x$ hay dos valores de $y$, y la función exige uno solo." },
+        { id: "depende", label: "Solo si es pequeña", incorrectFeedback: "El tamaño no cambia nada: sigue habiendo dos $y$ para un mismo $x$." },
+      ],
+      correctChoiceId: "no",
+      shuffleChoices: true,
+      explanation: "A un mismo $x$ le corresponden dos valores de $y$: no es función.",
+    },
+    {
+      id: "dominio-recorrido",
+      type: "slide",
+      help: [{ label: "Dominio y recorrido", message: "Dominio = lo que puede valer $x$ (proyección sobre el eje horizontal). Recorrido = lo que llega a valer $y$ (proyección sobre el vertical)." }],
+      title: "Dominio y recorrido",
+      blocks: [
+        { kind: "definition", text: "**Dominio** de $f$: valores de $x$ para los que existe la función. **Recorrido**: valores que toma $y$." },
+        { kind: "text", text: "En la función de las plantas por hectárea, el dominio es $[400, 1700]$ m y el recorrido $[0, 260]$ ejemplares." },
+      ],
+      visual: { kind: "anim", scene: "dominio-recorrido" },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Proyecta", message: "Los valores de la variable independiente forman el dominio; los de la dependiente, el recorrido." }],
+      title: "¿Dominio o recorrido?",
+      question: "En la gráfica de las plantas (altura → ejemplares por hectárea) y en la del grifo (tiempo → temperatura), clasifica cada conjunto.",
+      groups: [
+        { id: "dominio", label: "Dominio", tone: "cobalt" },
+        { id: "recorrido", label: "Recorrido", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "Alturas entre 400 y 1 700 m", group: "dominio" },
+        { id: "b", text: "Entre 0 y 260 ejemplares por ha", group: "recorrido" },
+        { id: "c", text: "Tiempo de 0 a 6 minutos", group: "dominio" },
+        { id: "d", text: "Temperatura del agua de 10 °C a 60 °C", group: "recorrido" },
+      ],
+      hint: "El dominio es la variable del eje horizontal.",
+    },
+    {
+      id: "check-max",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Extremo", message: "El recorrido $[0, 260]$ llega hasta su valor máximo." }],
+      title: "El recorrido",
+      question: "Si el recorrido es $[0, 260]$ ejemplares por hectárea, ¿cuál es el mayor número de ejemplares que se alcanza?",
+      correctAnswers: ["260"],
+      explanation: "El extremo derecho del recorrido, $260$, es el máximo valor que toma la función.",
+    },
+    {
+      id: "check-dom-calc",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Prueba con el explorador", message: "Mira el dominio y el recorrido en el explorador de funciones." }],
+      title: "Dominio de una fórmula",
+      question: "La función $e = 0{,}1\\,t^2$ se estudia para $t \\in [0, 10]$ s. ¿Cuál es el valor **máximo** del recorrido (en metros)?",
+      correctAnswers: ["10"],
+      explanation: "$e(10) = 0{,}1\\cdot100 = 10$ m. El recorrido es $[0, 10]$.",
+    },
+  ],
+};
