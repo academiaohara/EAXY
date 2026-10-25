@@ -1,0 +1,815 @@
+1. Educación Secundaria Obligatoria (ESO)
+En Asturias, Física y Química se cursa como materia común en 2.º y 3.º de ESO y como materia de opción en 4.º. En 1.º de ESO se estudian contenidos científicos principalmente en Biología y Geología, pero no hay una asignatura independiente de Física y Química. 
+
+Plan de estudios
++1
+
+
+
+
+Los siguientes índices son una guía amplia para comparar libros. El currículo oficial no impone necesariamente que todos los centros ordenen cada tema de la misma manera.
+2.º de ESO — Física y Química
+Tema 1. La actividad científica
+- La ciencia y el método científico.
+- Observación, hipótesis, experimentación y conclusiones.
+- Identificación de problemas científicos.
+- Diseño de experimentos sencillos.
+- Variables independientes, dependientes y controladas.
+- Uso de instrumentos de laboratorio.
+- Medición de magnitudes físicas.
+- Unidades del Sistema Internacional.
+- Múltiplos y submúltiplos.
+- Notación científica.
+- Cifras significativas y redondeo.
+- Tablas, gráficas y presentación de resultados.
+- Normas de seguridad y trabajo en el laboratorio.
+Tema 2. La materia y sus propiedades
+- Concepto de materia.
+- Masa, volumen y densidad.
+- Propiedades generales y características.
+- Estados de agregación.
+- Sólidos, líquidos y gases.
+- Modelo cinético-molecular.
+- Cambios de estado.
+- Temperatura y presión.
+- Explicación microscópica de los estados de la materia.
+- Interpretación de gráficas de calentamiento y enfriamiento.
+- Propiedades de los materiales y sus aplicaciones.
+Tema 3. Sustancias puras y mezclas
+- Sustancias puras.
+- Elementos y compuestos.
+- Mezclas homogéneas y heterogéneas.
+- Disoluciones.
+- Soluto y disolvente.
+- Concentración de una disolución.
+- Solubilidad.
+- Factores que afectan a la disolución.
+- Técnicas de separación de mezclas.
+- Filtración, decantación, evaporación, cristalización y destilación.
+- Aplicaciones en la vida cotidiana y en la industria.
+Tema 4. Estructura de la materia
+- El átomo y su evolución histórica.
+- Partículas subatómicas.
+- Protones, neutrones y electrones.
+- Número atómico y número másico.
+- Elementos químicos.
+- Isótopos, como introducción.
+- Iones.
+- Tabla periódica.
+- Símbolos de los elementos.
+- Organización de los elementos en grupos y períodos.
+- Diferencias entre átomos, moléculas e iones.
+Tema 5. Cambios físicos y químicos
+- Transformaciones físicas.
+- Transformaciones químicas.
+- Diferencias entre cambios físicos y químicos.
+- Evidencias de una reacción química.
+- Reactivos y productos.
+- Conservación de la masa.
+- Representación sencilla de reacciones químicas.
+- Reacciones químicas en el entorno.
+- Combustión, oxidación y otras transformaciones habituales.
+- Impacto de las reacciones químicas en la vida cotidiana.
+Tema 6. El movimiento
+- Sistema de referencia.
+- Posición y trayectoria.
+- Distancia recorrida y desplazamiento.
+- Tiempo y unidades.
+- Rapidez y velocidad media.
+- Movimiento rectilíneo uniforme.
+- Tablas y gráficas posición-tiempo.
+- Interpretación de movimientos cotidianos.
+- Resolución de problemas sencillos.
+Tema 7. Las fuerzas
+- Concepto de fuerza.
+- Fuerzas de contacto y a distancia.
+- Representación vectorial de fuerzas.
+- Efectos de las fuerzas sobre los cuerpos.
+- Deformaciones y cambios de movimiento.
+- Peso y masa.
+- Fuerza gravitatoria.
+- Fuerza elástica y rozamiento, como introducción.
+- Equilibrio de fuerzas sencillas.
+- Aplicaciones de las fuerzas en situaciones cotidianas.
+Tema 8. La energía
+- Concepto de energía.
+- Formas de energía.
+- Energía cinética y potencial.
+- Energía térmica.
+- Energía eléctrica, química y luminosa.
+- Transformaciones energéticas.
+- Conservación y transferencia de la energía.
+- Calor y temperatura.
+- Fuentes de energía renovables y no renovables.
+- Consumo energético.
+- Eficiencia y ahorro de energía.
+- Impacto ambiental del uso de la energía.
+Tema 9. La luz y el sonido
+- Naturaleza y propagación de la luz.
+- Fuentes luminosas.
+- Reflexión y refracción.
+- Formación de sombras.
+- Propagación del sonido.
+- Vibraciones y ondas sonoras.
+- Tono, intensidad y timbre.
+- Velocidad del sonido.
+- Contaminación acústica.
+- Aplicaciones tecnológicas de la luz y el sonido.
+Estos apartados son orientativos: la profundidad de cada bloque y su distribución deben comprobarse con la programación de cada centro.
+
+3.º de ESO — Física y Química
+Tema 1. El trabajo científico
+- Método científico.
+- Diseño de investigaciones.
+- Identificación y control de variables.
+- Medición de magnitudes.
+- Sistema Internacional.
+- Notación científica.
+- Cálculos con unidades.
+- Tratamiento de datos experimentales.
+- Tablas y gráficas.
+- Interpretación de resultados.
+- Elaboración de informes.
+- Seguridad en el laboratorio.
+- Uso responsable de herramientas digitales.
+Tema 2. El átomo y el sistema periódico
+- Modelos atómicos.
+- Estructura del átomo.
+- Protones, neutrones y electrones.
+- Número atómico y número másico.
+- Isótopos.
+- Iones y formación de iones.
+- Distribución electrónica, a nivel introductorio.
+- Tabla periódica.
+- Grupos y períodos.
+- Propiedades periódicas básicas.
+- Metales, no metales y gases nobles.
+Tema 3. Elementos y compuestos químicos
+- Elementos químicos y símbolos.
+- Átomos, moléculas e iones.
+- Sustancias simples y compuestos.
+- Enlace químico: introducción.
+- Enlace iónico, covalente y metálico, de forma básica.
+- Fórmulas químicas.
+- Interpretación de fórmulas.
+- Masa atómica y masa molecular.
+- Concepto de mol, como introducción según la programación.
+- Nomenclatura de compuestos sencillos.
+Tema 4. La reacción química
+- Cambios físicos y químicos.
+- Reactivos y productos.
+- Ecuaciones químicas.
+- Ajuste de ecuaciones sencillas.
+- Ley de conservación de la masa.
+- Interpretación de ecuaciones químicas.
+- Cálculos elementales con masas.
+- Velocidad de reacción.
+- Factores que afectan a la velocidad.
+- Reacciones de combustión.
+- Oxidación y otras reacciones del entorno.
+- Aplicaciones industriales y ambientales.
+Tema 5. Disoluciones
+- Disoluciones y mezclas.
+- Soluto y disolvente.
+- Concentración.
+- Porcentaje en masa y en volumen.
+- Concentración en masa por volumen.
+- Solubilidad.
+- Preparación de disoluciones.
+- Diluciones sencillas.
+- Técnicas de separación.
+- Aplicaciones de las disoluciones en el laboratorio y en la vida cotidiana.
+Tema 6. El movimiento
+- Sistema de referencia.
+- Posición, trayectoria y desplazamiento.
+- Distancia y tiempo.
+- Rapidez y velocidad.
+- Velocidad media.
+- Movimiento rectilíneo uniforme.
+- Movimiento rectilíneo uniformemente acelerado, como ampliación según programación.
+- Aceleración.
+- Gráficas posición-tiempo y velocidad-tiempo.
+- Resolución de problemas de cinemática.
+- Interpretación de situaciones reales.
+Tema 7. Las fuerzas y sus efectos
+- Fuerzas como interacciones.
+- Magnitudes vectoriales.
+- Composición de fuerzas sencillas.
+- Fuerza resultante.
+- Ley de Hooke.
+- Peso y masa.
+- Fuerza gravitatoria.
+- Rozamiento.
+- Fuerza normal y tensión, como introducción.
+- Leyes de Newton, según la profundidad de la programación.
+- Aplicaciones a movimientos cotidianos.
+- Presión y fuerzas en fluidos, como ampliación.
+Tema 8. Energía y calor
+- Formas de energía.
+- Energía cinética y potencial.
+- Trabajo mecánico.
+- Potencia.
+- Conservación y transformación de la energía.
+- Calor y temperatura.
+- Transferencia de energía térmica.
+- Conducción, convección y radiación.
+- Cambios de temperatura y de estado.
+- Aislamiento térmico.
+- Rendimiento energético.
+- Ahorro y sostenibilidad.
+Tema 9. Electricidad
+- Carga eléctrica.
+- Conductores y aislantes.
+- Corriente eléctrica.
+- Tensión e intensidad.
+- Resistencia eléctrica.
+- Ley de Ohm.
+- Circuitos en serie y en paralelo.
+- Potencia y energía eléctrica.
+- Efectos de la corriente eléctrica.
+- Consumo eléctrico.
+- Seguridad y prevención de accidentes.
+- Uso responsable de la electricidad.
+Tema 10. Química y sociedad
+- Productos químicos de uso cotidiano.
+- Reacciones químicas en el hogar y la industria.
+- Combustibles.
+- Contaminación atmosférica.
+- Efecto invernadero y cambio climático.
+- Lluvia ácida.
+- Residuos químicos.
+- Uso sostenible de materias primas.
+- Beneficios y riesgos de la química.
+- Seguridad y etiquetado de productos.
+
+4.º de ESO — Física y Química
+En este curso se profundiza en los modelos físicos y químicos, con más cálculo, interpretación de gráficas y resolución de problemas.
+Tema 1. Actividad científica y magnitudes
+- Método científico y diseño experimental.
+- Magnitudes escalares y vectoriales.
+- Sistema Internacional.
+- Conversión de unidades.
+- Notación científica.
+- Errores e incertidumbre de medida.
+- Tratamiento de datos.
+- Tablas, gráficas y ajuste de resultados.
+- Uso de instrumentos y simuladores.
+- Comunicación científica.
+Tema 2. El átomo y la tabla periódica
+- Modelos atómicos.
+- Estructura electrónica.
+- Número atómico y número másico.
+- Isótopos.
+- Iones.
+- Configuración electrónica.
+- Tabla periódica.
+- Propiedades periódicas.
+- Relación entre estructura electrónica y propiedades.
+- Metales, no metales y gases nobles.
+Tema 3. Enlace químico
+- Estabilidad de los átomos.
+- Electrones de valencia.
+- Regla del octeto, como modelo introductorio.
+- Enlace iónico.
+- Enlace covalente.
+- Enlace metálico.
+- Formación de moléculas y redes cristalinas.
+- Propiedades de las sustancias según su enlace.
+- Conductividad, dureza, solubilidad y puntos de fusión.
+- Relación entre estructura y propiedades.
+Tema 4. Formulación y nomenclatura
+- Símbolos químicos.
+- Números de oxidación.
+- Compuestos binarios.
+- Óxidos.
+- Hidruros.
+- Sales binarias.
+- Hidróxidos.
+- Ácidos y oxoácidos, según el alcance de la programación.
+- Oxisales.
+- Nomenclatura de composición y de Stock.
+- Escritura e interpretación de fórmulas.
+Tema 5. Reacciones químicas
+- Concepto de reacción química.
+- Ecuaciones químicas.
+- Ajuste de ecuaciones.
+- Conservación de la masa.
+- Cálculos estequiométricos sencillos.
+- Mol y masa molar.
+- Reactivo limitante, si se aborda en el curso.
+- Reacciones de síntesis, descomposición y sustitución.
+- Combustión.
+- Ácidos y bases.
+- Neutralización.
+- Oxidación y reducción, como introducción.
+- Velocidad de reacción.
+- Factores que influyen en las reacciones.
+- Química industrial y ambiental.
+Tema 6. Química del carbono
+- El carbono y sus enlaces.
+- Cadenas carbonadas.
+- Hidrocarburos.
+- Alcanos, alquenos y alquinos.
+- Compuestos orgánicos sencillos.
+- Grupos funcionales básicos.
+- Formulación y nomenclatura orgánica elemental.
+- Combustibles fósiles.
+- Plásticos y polímeros.
+- Biomoléculas, como contexto.
+- Aplicaciones y repercusiones ambientales de la química orgánica.
+Tema 7. Cinemática
+- Sistema de referencia.
+- Posición y desplazamiento.
+- Velocidad media e instantánea.
+- Aceleración.
+- Movimiento rectilíneo uniforme.
+- Movimiento rectilíneo uniformemente acelerado.
+- Caída libre.
+- Interpretación de gráficas.
+- Ecuaciones del movimiento.
+- Resolución de problemas.
+- Movimientos cotidianos y seguridad vial.
+Tema 8. Dinámica
+- Concepto de fuerza.
+- Leyes de Newton.
+- Principio de inercia.
+- Relación entre fuerza y aceleración.
+- Acción y reacción.
+- Peso y fuerza gravitatoria.
+- Rozamiento.
+- Fuerza normal y tensión.
+- Fuerza elástica.
+- Diagramas de fuerzas.
+- Resolución de problemas dinámicos.
+- Aplicaciones al movimiento de cuerpos.
+Tema 9. Fuerzas gravitatorias
+- Gravitación universal.
+- Masa y peso.
+- Campo gravitatorio, como introducción.
+- Movimiento de planetas y satélites.
+- Peso en distintos cuerpos celestes.
+- Órbitas y fenómenos astronómicos.
+- Aplicaciones de la gravitación.
+Tema 10. Trabajo, energía y potencia
+- Trabajo mecánico.
+- Potencia.
+- Energía cinética.
+- Energía potencial gravitatoria y elástica.
+- Teorema del trabajo y la energía.
+- Conservación de la energía mecánica.
+- Transformaciones energéticas.
+- Rendimiento.
+- Resolución de problemas.
+- Aplicaciones tecnológicas y cotidianas.
+Tema 11. Calor y energía térmica
+- Temperatura y equilibrio térmico.
+- Calor como transferencia de energía.
+- Capacidad calorífica y calor específico, según programación.
+- Cambios de temperatura.
+- Cambios de estado.
+- Calor latente, como ampliación.
+- Conducción, convección y radiación.
+- Dilatación térmica.
+- Máquinas térmicas, como introducción.
+- Eficiencia y ahorro energético.
+Tema 12. Ondas
+- Movimiento ondulatorio.
+- Ondas mecánicas y electromagnéticas.
+- Amplitud, frecuencia, período y longitud de onda.
+- Velocidad de propagación.
+- Sonido.
+- Luz.
+- Reflexión y refracción.
+- Aplicaciones tecnológicas de las ondas.
+- Contaminación acústica y uso responsable de la tecnología.
+Estos temas se deben contrastar con la programación del centro: el currículo oficial define los saberes básicos, pero no obliga a que cada editorial los convierta en unidades con estos mismos títulos. 
+
+miPrincipado
++1
+
+
+
+2. Bachillerato
+En Asturias, en 1.º de Bachillerato se cursa Física y Química como una única materia. En 2.º de Bachillerato se separan en Física y Química, dos asignaturas diferentes de la modalidad de Ciencias y Tecnología. 
+
+miPrincipado
++1
+
+
+
+1.º de Bachillerato — Física y Química
+A. Química
+Tema 1. Estructura atómica
+- Evolución de los modelos atómicos.
+- Partículas subatómicas.
+- Número atómico y número másico.
+- Isótopos e iones.
+- Espectros atómicos.
+- Modelo atómico de Bohr.
+- Modelo mecánico-cuántico.
+- Números cuánticos, según el alcance de la programación.
+- Orbitales atómicos.
+- Configuración electrónica.
+- Relación entre configuración electrónica y propiedades periódicas.
+Tema 2. Sistema periódico
+- Organización de los elementos.
+- Grupos y períodos.
+- Configuración electrónica y posición en la tabla.
+- Radio atómico e iónico.
+- Energía de ionización.
+- Afinidad electrónica.
+- Electronegatividad.
+- Carácter metálico y no metálico.
+- Tendencias periódicas.
+- Relación entre estructura electrónica y reactividad.
+Tema 3. Enlace químico
+- Estabilidad electrónica.
+- Enlace iónico.
+- Redes cristalinas iónicas.
+- Enlace covalente.
+- Estructuras de Lewis.
+- Geometría molecular.
+- Polaridad de los enlaces y moléculas.
+- Fuerzas intermoleculares.
+- Enlace metálico.
+- Propiedades de sustancias iónicas, covalentes y metálicas.
+- Relación entre enlace y propiedades macroscópicas.
+Tema 4. Formulación y nomenclatura inorgánica
+- Número de oxidación.
+- Compuestos binarios.
+- Óxidos.
+- Hidruros.
+- Sales binarias.
+- Hidróxidos.
+- Ácidos oxácidos.
+- Oxisales.
+- Nomenclatura de composición.
+- Nomenclatura de Stock.
+- Interpretación de fórmulas.
+- Escritura de fórmulas a partir de nombres.
+Tema 5. Cantidad de sustancia
+- Masa atómica y masa molecular.
+- Concepto de mol.
+- Constante de Avogadro.
+- Masa molar.
+- Conversión entre masa, moles y número de partículas.
+- Composición centesimal.
+- Fórmula empírica y molecular.
+- Resolución de problemas estequiométricos.
+Tema 6. Gases y disoluciones
+- Variables de estado de un gas.
+- Presión, volumen, temperatura y cantidad de sustancia.
+- Leyes de los gases.
+- Ecuación de los gases ideales.
+- Mezclas gaseosas, según programación.
+- Disoluciones.
+- Concentración molar.
+- Concentración en masa.
+- Porcentaje en masa y volumen.
+- Preparación y dilución de disoluciones.
+- Propiedades de las disoluciones.
+Tema 7. Reacciones químicas
+- Transformaciones químicas.
+- Ecuaciones químicas.
+- Ajuste de ecuaciones.
+- Estequiometría.
+- Reactivo limitante y reactivo en exceso.
+- Rendimiento de una reacción.
+- Reacciones en disolución.
+- Reacciones con gases.
+- Ácidos y bases.
+- Oxidación-reducción.
+- Aplicaciones industriales y ambientales.
+Tema 8. Química orgánica
+- El átomo de carbono y sus enlaces.
+- Cadenas carbonadas.
+- Hidrocarburos.
+- Alcanos, alquenos y alquinos.
+- Hidrocarburos cíclicos y aromáticos.
+- Grupos funcionales.
+- Alcoholes, aldehídos y cetonas.
+- Ácidos carboxílicos y ésteres.
+- Aminas y amidas.
+- Formulación y nomenclatura.
+- Isomería estructural básica.
+- Polímeros y combustibles.
+- Aplicaciones industriales y ambientales.
+B. Física
+Tema 9. Cinemática
+- Sistemas de referencia.
+- Posición y desplazamiento.
+- Magnitudes escalares y vectoriales.
+- Vectores de posición y velocidad.
+- Velocidad media e instantánea.
+- Aceleración.
+- Movimiento rectilíneo uniforme.
+- Movimiento rectilíneo uniformemente acelerado.
+- Caída libre.
+- Movimiento circular.
+- Velocidad angular y aceleración centrípeta.
+- Composición de movimientos.
+- Movimiento parabólico.
+- Interpretación de gráficas.
+- Resolución de problemas mediante ecuaciones del movimiento.
+Tema 10. Estática y dinámica
+- Fuerza como interacción.
+- Leyes de Newton.
+- Diagramas de fuerzas.
+- Fuerza normal y tensión.
+- Rozamiento.
+- Peso y fuerza gravitatoria.
+- Movimiento sobre planos horizontales e inclinados.
+- Sistemas de cuerpos.
+- Fuerza elástica.
+- Equilibrio de fuerzas.
+- Aplicaciones a problemas reales.
+Tema 11. Trabajo, energía y potencia
+- Trabajo realizado por una fuerza.
+- Energía cinética.
+- Energía potencial.
+- Energía mecánica.
+- Teorema del trabajo y la energía.
+- Conservación de la energía mecánica.
+- Fuerzas conservativas y no conservativas.
+- Potencia.
+- Rendimiento.
+- Transformaciones energéticas.
+- Resolución de problemas.
+Tema 12. Fuerzas gravitatorias
+- Ley de gravitación universal.
+- Campo gravitatorio.
+- Intensidad del campo gravitatorio.
+- Peso y masa.
+- Energía potencial gravitatoria.
+- Movimiento orbital.
+- Satélites y planetas.
+- Aplicaciones de la gravitación.
+La estructura oficial de Física y Química de 1.º de Bachillerato incluye, entre otros, los bloques de estructura de la materia y enlace químico, reacciones químicas, química orgánica, cinemática, estática y dinámica, y energía. 
+
+miPrincipado
++1
+
+
+
+
+2.º de Bachillerato — Física
+En este curso se estudian con mayor profundidad los campos, las ondas, el electromagnetismo y la física moderna.
+Tema 1. Campo gravitatorio
+- Concepto de campo.
+- Campo gravitatorio creado por una masa.
+- Ley de gravitación universal.
+- Intensidad del campo gravitatorio.
+- Principio de superposición.
+- Potencial gravitatorio.
+- Energía potencial gravitatoria.
+- Relación entre campo y potencial.
+- Trabajo realizado por el campo gravitatorio.
+- Movimiento de planetas y satélites.
+- Leyes de Kepler.
+- Velocidad orbital.
+- Energía de satélites.
+- Velocidad de escape.
+- Aplicaciones astronómicas.
+Tema 2. Campo eléctrico
+- Carga eléctrica.
+- Ley de Coulomb.
+- Campo eléctrico.
+- Intensidad del campo.
+- Principio de superposición.
+- Líneas de campo.
+- Campo creado por cargas puntuales.
+- Energía potencial eléctrica.
+- Potencial eléctrico.
+- Diferencia de potencial.
+- Trabajo del campo eléctrico.
+- Superficies equipotenciales.
+- Movimiento de cargas en campos eléctricos.
+- Aplicaciones tecnológicas.
+Tema 3. Campo magnético
+- Imanes y magnetismo.
+- Campo magnético.
+- Líneas de campo magnético.
+- Fuerza magnética sobre una carga.
+- Fuerza de Lorentz.
+- Movimiento de partículas cargadas.
+- Fuerza sobre conductores con corriente.
+- Campo magnético creado por corrientes.
+- Interacción entre corrientes eléctricas.
+- Aplicaciones de los campos magnéticos.
+Tema 4. Inducción electromagnética
+- Flujo magnético.
+- Experimentos de Faraday.
+- Ley de Faraday.
+- Ley de Lenz.
+- Fuerza electromotriz inducida.
+- Corrientes inducidas.
+- Generadores eléctricos.
+- Transformadores.
+- Producción y transporte de energía eléctrica.
+- Aplicaciones del electromagnetismo.
+Tema 5. Movimiento ondulatorio
+- Movimiento armónico simple.
+- Oscilaciones.
+- Amplitud, período y frecuencia.
+- Velocidad y aceleración en el movimiento armónico.
+- Energía del oscilador.
+- Ondas y propagación.
+- Ondas longitudinales y transversales.
+- Amplitud, frecuencia, período y longitud de onda.
+- Velocidad de propagación.
+- Ecuación de una onda.
+- Principio de superposición.
+- Interferencia.
+- Difracción.
+- Ondas estacionarias.
+- Aplicaciones del movimiento ondulatorio.
+Tema 6. El sonido
+- Naturaleza de las ondas sonoras.
+- Propagación del sonido.
+- Velocidad del sonido.
+- Intensidad y nivel sonoro.
+- Tono y timbre.
+- Fenómenos de interferencia.
+- Efecto Doppler.
+- Aplicaciones acústicas.
+- Contaminación acústica.
+Tema 7. Óptica
+- Naturaleza ondulatoria de la luz.
+- Propagación rectilínea.
+- Reflexión.
+- Refracción.
+- Ley de Snell.
+- Reflexión total.
+- Dispersión.
+- Interferencia y difracción de la luz.
+- Polarización.
+- Espejos planos y esféricos.
+- Lentes convergentes y divergentes.
+- Formación de imágenes.
+- Instrumentos ópticos.
+- Aplicaciones tecnológicas.
+Tema 8. Relatividad
+- Límites de la mecánica clásica.
+- Postulados de la relatividad especial.
+- Relatividad de la simultaneidad.
+- Dilatación temporal.
+- Contracción de longitudes.
+- Equivalencia entre masa y energía.
+- Expresión \(E=mc^2\).
+- Aplicaciones y consecuencias físicas.
+Tema 9. Física cuántica
+- Origen de la física cuántica.
+- Radiación térmica.
+- Efecto fotoeléctrico.
+- Cuantización de la energía.
+- Dualidad onda-partícula.
+- Hipótesis de De Broglie.
+- Principio de incertidumbre.
+- Modelos cuánticos del átomo.
+- Aplicaciones de la física cuántica.
+Tema 10. Física nuclear
+- Estructura del núcleo atómico.
+- Isótopos.
+- Defecto de masa.
+- Energía de enlace.
+- Radiactividad.
+- Desintegración nuclear.
+- Ley de desintegración radiactiva.
+- Período de semidesintegración.
+- Fisión nuclear.
+- Fusión nuclear.
+- Aplicaciones médicas e industriales.
+- Riesgos y protección radiológica.
+Estos temas son una guía de unidades para un libro de Física de 2.º de Bachillerato; su orden y profundidad deben contrastarse con los saberes básicos del currículo asturiano y con las orientaciones de la PAU del curso correspondiente.
+
+2.º de Bachillerato — Química
+Tema 1. Estructura atómica
+- Modelos atómicos.
+- Partículas subatómicas.
+- Espectros atómicos.
+- Cuantización de la energía.
+- Modelo mecánico-cuántico.
+- Números cuánticos.
+- Orbitales atómicos.
+- Configuración electrónica.
+- Principio de exclusión de Pauli.
+- Regla de Hund.
+- Principio de Aufbau.
+- Relación entre estructura electrónica y propiedades periódicas.
+Tema 2. Sistema periódico
+- Organización de la tabla periódica.
+- Configuración electrónica y posición.
+- Radio atómico e iónico.
+- Energía de ionización.
+- Afinidad electrónica.
+- Electronegatividad.
+- Carácter metálico.
+- Variación de las propiedades periódicas.
+- Relación entre propiedades y reactividad.
+Tema 3. Enlace químico
+- Enlace iónico.
+- Redes cristalinas.
+- Energía reticular.
+- Enlace covalente.
+- Estructuras de Lewis.
+- Geometría molecular.
+- Modelo de repulsión de pares electrónicos.
+- Polaridad de enlaces y moléculas.
+- Teoría del enlace de valencia, según programación.
+- Hibridación, según programación.
+- Fuerzas intermoleculares.
+- Enlace metálico.
+- Propiedades físicas y químicas de las sustancias.
+Tema 4. Termodinámica química
+- Sistemas y entorno.
+- Variables termodinámicas.
+- Energía interna.
+- Calor y trabajo.
+- Entalpía.
+- Reacciones exotérmicas y endotérmicas.
+- Ecuaciones termoquímicas.
+- Entalpía de formación.
+- Entalpía de combustión.
+- Ley de Hess.
+- Entropía.
+- Espontaneidad de las reacciones.
+- Energía libre de Gibbs.
+- Aplicaciones a procesos industriales y energéticos.
+Tema 5. Cinética química
+- Velocidad de reacción.
+- Factores que afectan a la velocidad.
+- Concentración y velocidad.
+- Temperatura.
+- Superficie de contacto.
+- Catalizadores.
+- Teoría de colisiones.
+- Energía de activación.
+- Complejo activado.
+- Mecanismos de reacción.
+- Aplicaciones industriales de la cinética.
+Tema 6. Equilibrio químico
+- Reacciones reversibles.
+- Equilibrio dinámico.
+- Constante de equilibrio.
+- Expresiones de \(K_c\) y \(K_p\).
+- Relación entre las constantes.
+- Cociente de reacción.
+- Cálculos de concentraciones en el equilibrio.
+- Principio de Le Châtelier.
+- Efectos de concentración, presión y temperatura.
+- Aplicaciones industriales del equilibrio químico.
+Tema 7. Ácidos y bases
+- Teorías ácido-base.
+- Ácidos y bases fuertes y débiles.
+- Autoionización del agua.
+- Producto iónico del agua.
+- Concepto de pH y pOH.
+- Cálculo del pH.
+- Constantes de acidez y basicidad.
+- Hidrólisis de sales, según programación.
+- Indicadores ácido-base.
+- Neutralización.
+- Valoraciones ácido-base.
+- Aplicaciones ambientales e industriales.
+Tema 8. Oxidación-reducción
+- Número de oxidación.
+- Oxidación y reducción.
+- Agentes oxidantes y reductores.
+- Ajuste de reacciones redox.
+- Método del ion-electrón.
+- Pilas electroquímicas.
+- Potencial de electrodo.
+- Fuerza electromotriz.
+- Espontaneidad de reacciones redox.
+- Electrólisis.
+- Leyes de Faraday, según programación.
+- Corrosión y protección de metales.
+- Aplicaciones industriales.
+Tema 9. Química orgánica
+- Estructura del carbono.
+- Enlaces y geometría molecular.
+- Hidrocarburos.
+- Alcanos, alquenos y alquinos.
+- Hidrocarburos aromáticos.
+- Isomería estructural y espacial.
+- Grupos funcionales.
+- Alcoholes y éteres.
+- Aldehídos y cetonas.
+- Ácidos carboxílicos y ésteres.
+- Aminas y amidas.
+- Nomenclatura de compuestos orgánicos.
+- Propiedades físicas y químicas.
+- Reactividad de compuestos orgánicos.
+- Polímeros y macromoléculas.
+- Aplicaciones farmacéuticas, industriales y ambientales.
+Tema 10. Química aplicada y sostenibilidad
+- Química industrial.
+- Producción de sustancias de interés.
+- Catálisis industrial.
+- Aprovechamiento de materias primas.
+- Eficiencia energética.
+- Química verde.
+- Gestión de residuos.
+- Contaminación química.
+- Desarrollo de materiales.
+- Impacto social y ambiental de los procesos químicos.
