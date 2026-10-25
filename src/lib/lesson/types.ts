@@ -1016,6 +1016,9 @@ export type SlideAnimId =
   | "sensor-divisor-tension"
   | "histeresis-comparador"
   | "secuencia-clasificacion"
+  | "triple-sostenibilidad"
+  | "ciclo-vida-fases"
+  | "economia-lineal-circular"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1592,6 +1595,14 @@ export type SlideToolId =
   | "termostato-lazo-explorador"
   | "linea-clasificacion-explorador"
   | "robot-cuadricula-explorador"
+  | "indicadores-decision-explorador"
+  | "mapa-recursos-explorador"
+  | "edificio-eficiencia-explorador"
+  | "producto-impacto-explorador"
+  | "economia-circular-explorador"
+  | "parque-renovable-explorador"
+  | "acv-explorador"
+  | "grupos-afectados-explorador"
   /* industrial-tool-end */;
 
 /**

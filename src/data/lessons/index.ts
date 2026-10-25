@@ -15,6 +15,7 @@ import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-es
 import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/04-algoritmos-diagramas-flujo";
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
+import { analisisCicloVidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/08-analisis-ciclo-vida";
 import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
 import { analiticaDistancia4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/05-analitica-distancia-4esob";
@@ -275,6 +276,8 @@ import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { dosRectasPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/09-dos-rectas-posicion-2bach";
 import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/13-dureza-brinell";
 import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
+import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/07-ecodiseno-fabricacion-sostenible";
+import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesBicuadradas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/09-ecuaciones-bicuadradas-1bach";
@@ -308,12 +311,14 @@ import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso
 import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
 import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/09-ecuaciones-trig-metodos-1bach";
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
+import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
+import { energiasRenovablesSistemasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/06-energias-renovables-sistemas";
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
@@ -350,6 +355,7 @@ import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { estructuraSistemaControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/02-estructura-sistema-control";
+import { evaluacionSolucionesSosteniblesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/10-evaluacion-soluciones-sostenibles";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
 import { experimentosSucesosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/01-experimentos-sucesos-ccss1";
@@ -466,6 +472,8 @@ import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
 import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/08-identidades-notables-4esob";
 import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
+import { impactoAmbientalProductosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/04-impacto-ambiental-productos";
+import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
 import { independenciaNubeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/10-independencia-nube-ccss1";
@@ -904,6 +912,7 @@ import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-
 import { rectasYAngulosParalelasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/04-rectas-y-angulos-paralelas";
 import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/06-rectas-y-angulos-poligonos";
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
+import { recursosNaturalesConsumoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/02-recursos-naturales-consumo";
 import { redDistribucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/04-red-distribucion";
 import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/09-refrigeracion-carnot-eficiencia";
 import { regionFactibleVerticesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/03-region-factible-vertices-ccss2";
@@ -1041,6 +1050,7 @@ import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bach
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
+import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
@@ -1139,6 +1149,7 @@ export const interactiveLessons = {
   "algoritmos-diagramas-flujo": algoritmosDiagramasFlujoLesson,
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
+  "analisis-ciclo-vida": analisisCicloVidaLesson,
   "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
   "analitica-distancia-4esob": analiticaDistancia4esobLesson,
@@ -1399,6 +1410,8 @@ export const interactiveLessons = {
   "dos-rectas-posicion-2bach": dosRectasPosicion2bachLesson,
   "dureza-brinell": durezaBrinellLesson,
   "dureza-vickers-rockwell": durezaVickersRockwellLesson,
+  "ecodiseno-fabricacion-sostenible": ecodisenoFabricacionSostenibleLesson,
+  "economia-circular-residuos": economiaCircularResiduosLesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-bicuadradas-1bach": ecuacionesBicuadradas1bachLesson,
@@ -1432,12 +1445,14 @@ export const interactiveLessons = {
   "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
   "ecuaciones-trig-metodos-1bach": ecuacionesTrigMetodos1bachLesson,
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
+  "eficiencia-energetica": eficienciaEnergeticaLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
+  "energias-renovables-sistemas": energiasRenovablesSistemasLesson,
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-ionico": enlaceIonicoLesson,
@@ -1474,6 +1489,7 @@ export const interactiveLessons = {
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
   "estructura-cristalina": estructuraCristalinaLesson,
   "estructura-sistema-control": estructuraSistemaControlLesson,
+  "evaluacion-soluciones-sostenibles": evaluacionSolucionesSosteniblesLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
   "experimentos-sucesos-ccss1": experimentosSucesosCcss1Lesson,
@@ -1590,6 +1606,8 @@ export const interactiveLessons = {
   "identidades-notables-3eso": identidadesNotables3esoLesson,
   "identidades-notables-4esob": identidadesNotables4esobLesson,
   "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
+  "impacto-ambiental-productos": impactoAmbientalProductosLesson,
+  "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
   "independencia-nube-ccss1": independenciaNubeCcss1Lesson,
@@ -2028,6 +2046,7 @@ export const interactiveLessons = {
   "rectas-y-angulos-paralelas": rectasYAngulosParalelasLesson,
   "rectas-y-angulos-poligonos": rectasYAngulosPoligonosLesson,
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
+  "recursos-naturales-consumo": recursosNaturalesConsumoLesson,
   "red-distribucion": redDistribucionLesson,
   "refrigeracion-carnot-eficiencia": refrigeracionCarnotEficienciaLesson,
   "region-factible-vertices-ccss2": regionFactibleVerticesCcss2Lesson,
@@ -2165,6 +2184,7 @@ export const interactiveLessons = {
   "tasa-variacion-media-ccss1": tasaVariacionMediaCcss1Lesson,
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
+  "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,

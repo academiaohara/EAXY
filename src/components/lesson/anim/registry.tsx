@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
 import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
 import { buildCicloInstruccion, buildBucleIteraciones } from "@/components/lesson/anim/scenes/industrial/tec1-programacion";
 import { buildCargaMovilCircuito, buildSerieParaleloReparto, buildKirchhoffNodoMalla } from "@/components/lesson/anim/scenes/industrial/tec1-circuitos";
@@ -695,6 +696,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "sensor-divisor-tension": () => buildSensorDivisorTension(),
   "histeresis-comparador": () => buildHisteresisComparador(),
   "secuencia-clasificacion": () => buildSecuenciaClasificacion(),
+  "triple-sostenibilidad": () => buildTripleSostenibilidad(),
+  "ciclo-vida-fases": () => buildCicloVidaFases(),
+  "economia-lineal-circular": () => buildEconomiaLinealCircular(),
   /* industrial-end */
 };
 

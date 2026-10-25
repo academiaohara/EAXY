@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
 import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
 import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
 import { CargaCorrienteExplorador, OhmExplorador, CircuitoBasicoExplorador, ResistenciasExplorador, KirchhoffExplorador, ConsumoEnergiaExplorador, SobrecargaCircuitoExplorador, MultimetroExplorador, DiagnosticoCircuitoExplorador, DiodoLedExplorador, TransistorConmutadorExplorador, CondensadorCargaExplorador, RetoLedExplorador } from "@/components/lesson/slide/tools/Tec1CircuitosTools";
@@ -1318,6 +1319,22 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LineaClasificacionExplorador block={block} />;
     case "robot-cuadricula-explorador":
       return <RobotCuadriculaExplorador block={block} />;
+    case "indicadores-decision-explorador":
+      return <IndicadoresDecisionExplorador block={block} />;
+    case "mapa-recursos-explorador":
+      return <MapaRecursosExplorador block={block} />;
+    case "edificio-eficiencia-explorador":
+      return <EdificioEficienciaExplorador block={block} />;
+    case "producto-impacto-explorador":
+      return <ProductoImpactoExplorador block={block} />;
+    case "economia-circular-explorador":
+      return <EconomiaCircularExplorador block={block} />;
+    case "parque-renovable-explorador":
+      return <ParqueRenovableExplorador block={block} />;
+    case "acv-explorador":
+      return <AcvExplorador block={block} />;
+    case "grupos-afectados-explorador":
+      return <GruposAfectadosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
