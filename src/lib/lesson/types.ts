@@ -977,6 +977,9 @@ export type SlideAnimId =
   | "producto-escalar-proyeccion"
   | "producto-vectorial-3d"
   | "paralelepipedo-volumen"
+  | "recta-espacio-3d"
+  | "plano-tres-puntos-3d"
+  | "rectas-posiciones-3d"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1463,6 +1466,11 @@ export type SlideToolId =
   | "producto-vectorial-explorador"
   | "producto-mixto-explorador"
   | "producto-escalar-3d-explorador"
+  | "recta-espacio-explorador"
+  | "plano-espacio-explorador"
+  | "posicion-rectas-explorador"
+  | "posicion-recta-plano-explorador"
+  | "posicion-planos-explorador"
   /* industrial-tool-end */;
 
 /**

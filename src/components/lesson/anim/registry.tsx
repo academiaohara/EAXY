@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildRectaEspacio3d, buildPlanoTresPuntos3d, buildRectasPosiciones3d } from "@/components/lesson/anim/scenes/bach2-rectas-planos";
 import { buildVectorComponentes3d, buildVectoresSuma3d, buildProductoEscalarProyeccion, buildProductoVectorial3d, buildParalelepipedoVolumen } from "@/components/lesson/anim/scenes/bach2-vectores";
 import { buildSistemaFormaMatricial, buildSistemaGaussAmpliada, buildRoucheCasos } from "@/components/lesson/anim/scenes/bach2-sistemas";
 import { buildDeterminanteSarrus, buildMatrizMenorAdjunto, buildDeterminanteAdjuntos, buildDeterminanteGauss } from "@/components/lesson/anim/scenes/bach2-determinantes";
@@ -643,6 +644,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "producto-escalar-proyeccion": (p) => buildProductoEscalarProyeccion(p),
   "producto-vectorial-3d": (p) => buildProductoVectorial3d(p),
   "paralelepipedo-volumen": (p) => buildParalelepipedoVolumen(p),
+  "recta-espacio-3d": (p) => buildRectaEspacio3d(p),
+  "plano-tres-puntos-3d": (p) => buildPlanoTresPuntos3d(p),
+  "rectas-posiciones-3d": () => buildRectasPosiciones3d(),
   /* industrial-end */
 };
 

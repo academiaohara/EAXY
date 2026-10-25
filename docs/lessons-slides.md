@@ -453,6 +453,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `producto-escalar-proyeccion` | Producto escalar con la proyección de v sobre u y el signo según el ángulo | `a`: ángulo en grados (0–180) |
 | `producto-vectorial-3d` | Producto vectorial: paralelogramo, vector perpendicular y módulo como área | `nums`: `[ux,uy,uz,vx,vy,vz]` |
 | `paralelepipedo-volumen` | Paralelepípedo de tres vectores: base, altura, producto mixto y volumen del tetraedro | `nums`: 9 componentes por filas |
+| `recta-espacio-3d` | Recta de punto P y vector director v: puntos con t = 1, 2, −1 y ecuaciones paramétricas | `nums`: `[Px,Py,Pz,vx,vy,vz]` (−5 a 5) |
+| `plano-tres-puntos-3d` | Plano por tres puntos: dos vectores, normal (producto vectorial) y ecuación general | `nums`: `[Ax,Ay,Az,Bx,By,Bz,Cx,Cy,Cz]` |
+| `rectas-posiciones-3d` | Las cuatro posiciones relativas de dos rectas con los rangos de {u, v} y {u, v, PQ} | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -814,6 +817,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `producto-escalar-3d-explorador` | u·v, módulos, ángulo, proyección y cosenos directores de u | `initial`: 6 componentes (u y v) |
 | `producto-vectorial-explorador` | u×v con su dibujo, perpendicularidad y áreas del paralelogramo y del triángulo | `initial`: 6 componentes (u y v) |
 | `producto-mixto-explorador` | Producto mixto, volumen del paralelepípedo y del tetraedro, coplanaridad | `initial`: 9 componentes por filas |
+| `recta-espacio-explorador` | Recta P + t·v en 3D: paramétricas y punto para cada t | `initial`: `[Px,Py,Pz,vx,vy,vz,t]` |
+| `plano-espacio-explorador` | Plano por tres puntos A, B, C: dibujo, normal y ecuación general | `initial`: 9 coordenadas (−5 a 5) |
+| `posicion-rectas-explorador` | Dos rectas (P, u) y (Q, v): posición, rangos y punto de corte | `initial`: 12 valores (P, u, Q, v por filas) |
+| `posicion-recta-plano-explorador` | Recta y plano: contenida, paralela o secante y punto de corte | `initial`: `[Px,Py,Pz,vx,vy,vz,A,B,C,D]` |
+| `posicion-planos-explorador` | Tres planos: rangos, posición (punto, recta, prisma…) y posición de cada pareja | `initial`: 12 valores (A, B, C, D por plano) |
 
 ## Respuesta como fracción
 

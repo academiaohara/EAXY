@@ -202,6 +202,8 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matemati
 import { divisionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/04-division-polinomios-4esob";
 import { dobleEntrada1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/09-doble-entrada-1bach";
 import { dobleEntradaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/09-doble-entrada-ccss1";
+import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/06-dos-planos-posicion-2bach";
+import { dosRectasPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/09-dos-rectas-posicion-2bach";
 import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/13-dureza-brinell";
 import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
@@ -361,6 +363,7 @@ import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
+import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
@@ -549,6 +552,9 @@ import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
+import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
+import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
+import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
@@ -620,6 +626,8 @@ import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
 import { problemasNumerosReales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/14-problemas-numeros-reales-4esob";
 import { problemasPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/03-problemas-primer-grado-4eso";
+import { problemasRectasPlanos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/11-problemas-rectas-planos-1-2bach";
+import { problemasRectasPlanos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/12-problemas-rectas-planos-2-2bach";
 import { problemasSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/06-problemas-segundo-grado-4eso";
 import { problemasSegundoGrado4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/03-problemas-segundo-grado-4esob";
 import { problemasSistemas12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/11-problemas-sistemas-1-2bach";
@@ -694,12 +702,15 @@ import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
 import { recorridoSimetriasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/02-recorrido-simetrias-ccss1";
+import { rectaContinuaImplicitas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/02-recta-continua-implicitas-2bach";
 import { rectaDosPuntos3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/05-recta-dos-puntos-3eso";
+import { rectaPlanoPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/08-recta-plano-posicion-2bach";
 import { rectaPuntoPendiente3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/04-recta-punto-pendiente-3eso";
 import { rectaRealDensidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/02-recta-real-densidad-1bach";
 import { rectaRealDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/02-recta-real-densidad-ccss1";
 import { rectaTangente1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/11-recta-tangente-1bach";
 import { rectaTangenteCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/08-recta-tangente-ccss1";
+import { rectaVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/01-recta-vectorial-parametricas-2bach";
 import { rectasYAngulosAngulosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/03-rectas-y-angulos-angulos";
 import { rectasYAngulosMediatrizBisectrizLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/02-rectas-y-angulos-mediatriz-bisectriz";
 import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/05-rectas-y-angulos-medida";
@@ -833,6 +844,7 @@ import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
+import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
 import { trigAngulosNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/05-trig-angulos-notables-4esob";
 import { trigCalculadora4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/06-trig-calculadora-4esob";
@@ -1077,6 +1089,8 @@ export const interactiveLessons = {
   "division-polinomios-4esob": divisionPolinomios4esobLesson,
   "doble-entrada-1bach": dobleEntrada1bachLesson,
   "doble-entrada-ccss1": dobleEntradaCcss1Lesson,
+  "dos-planos-posicion-2bach": dosPlanosPosicion2bachLesson,
+  "dos-rectas-posicion-2bach": dosRectasPosicion2bachLesson,
   "dureza-brinell": durezaBrinellLesson,
   "dureza-vickers-rockwell": durezaVickersRockwellLesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
@@ -1236,6 +1250,7 @@ export const interactiveLessons = {
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
+  "haces-planos-2bach": hacesPlanos2bachLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
@@ -1424,6 +1439,9 @@ export const interactiveLessons = {
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "piramides-2eso": piramides2esoLesson,
+  "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
+  "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
+  "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poliedros-2eso": poliedros2esoLesson,
@@ -1495,6 +1513,8 @@ export const interactiveLessons = {
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
   "problemas-numeros-reales-4esob": problemasNumerosReales4esobLesson,
   "problemas-primer-grado-4eso": problemasPrimerGrado4esoLesson,
+  "problemas-rectas-planos-1-2bach": problemasRectasPlanos12bachLesson,
+  "problemas-rectas-planos-2-2bach": problemasRectasPlanos22bachLesson,
   "problemas-segundo-grado-4eso": problemasSegundoGrado4esoLesson,
   "problemas-segundo-grado-4esob": problemasSegundoGrado4esobLesson,
   "problemas-sistemas-1-2bach": problemasSistemas12bachLesson,
@@ -1569,12 +1589,15 @@ export const interactiveLessons = {
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,
   "recorrido-simetrias-ccss1": recorridoSimetriasCcss1Lesson,
+  "recta-continua-implicitas-2bach": rectaContinuaImplicitas2bachLesson,
   "recta-dos-puntos-3eso": rectaDosPuntos3esoLesson,
+  "recta-plano-posicion-2bach": rectaPlanoPosicion2bachLesson,
   "recta-punto-pendiente-3eso": rectaPuntoPendiente3esoLesson,
   "recta-real-densidad-1bach": rectaRealDensidad1bachLesson,
   "recta-real-densidad-ccss1": rectaRealDensidadCcss1Lesson,
   "recta-tangente-1bach": rectaTangente1bachLesson,
   "recta-tangente-ccss1": rectaTangenteCcss1Lesson,
+  "recta-vectorial-parametricas-2bach": rectaVectorialParametricas2bachLesson,
   "rectas-y-angulos-angulos": rectasYAngulosAngulosLesson,
   "rectas-y-angulos-mediatriz-bisectriz": rectasYAngulosMediatrizBisectrizLesson,
   "rectas-y-angulos-medida": rectasYAngulosMedidaLesson,
@@ -1708,6 +1731,7 @@ export const interactiveLessons = {
   "transformada-laplace": transformadaLaplaceLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
+  "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
   "triangulos-2eso": triangulos2esoLesson,
   "trig-angulos-notables-4esob": trigAngulosNotables4esobLesson,
   "trig-calculadora-4esob": trigCalculadora4esobLesson,

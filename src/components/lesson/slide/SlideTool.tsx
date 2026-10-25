@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { RectaEspacioExplorador, PlanoEspacioExplorador, PosicionRectasExplorador, PosicionRectaPlanoExplorador, PosicionPlanosExplorador } from "@/components/lesson/slide/tools/Bach2RectasPlanosTools";
 import { VectoresPuntosExplorador, VectoresDependenciaExplorador, ProductoEscalar3dExplorador, ProductoVectorialExplorador, ProductoMixtoExplorador } from "@/components/lesson/slide/tools/Bach2VectoresTools";
 import { SistemaRoucheExplorador, CramerExplorador, SistemaFamiliaExplorador } from "@/components/lesson/slide/tools/Bach2SistemasTools";
 import { DeterminanteAreaExplorador, DeterminantePropiedadesExplorador, DeterminanteProductoExplorador, DeterminanteParametroExplorador, AdjuntaExplorador, RangoMenoresExplorador } from "@/components/lesson/slide/tools/Bach2DeterminantesTools";
@@ -1125,6 +1126,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ProductoMixtoExplorador block={block} />;
     case "producto-escalar-3d-explorador":
       return <ProductoEscalar3dExplorador block={block} />;
+    case "recta-espacio-explorador":
+      return <RectaEspacioExplorador block={block} />;
+    case "plano-espacio-explorador":
+      return <PlanoEspacioExplorador block={block} />;
+    case "posicion-rectas-explorador":
+      return <PosicionRectasExplorador block={block} />;
+    case "posicion-recta-plano-explorador":
+      return <PosicionRectaPlanoExplorador block={block} />;
+    case "posicion-planos-explorador":
+      return <PosicionPlanosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
