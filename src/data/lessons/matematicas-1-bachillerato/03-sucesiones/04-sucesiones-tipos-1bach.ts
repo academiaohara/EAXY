@@ -1,0 +1,110 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_3_SUBTITLE } from "@/data/lessons/shared";
+
+export const sucesionesTipos1bachLesson: InteractiveLesson = {
+  slug: "sucesiones-tipos-1bach",
+  title: "4. Convergentes, divergentes y oscilantes",
+  subtitle: TEMA_1BACH_3_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tipos",
+      type: "slide",
+      help: [{ label: "Papel y tijeras", message: "Si en la mano tienes un papel de área 1 y cortas siempre la mitad, tienes $1, \\frac{1}{2}, \\frac{1}{4}, \\ldots$: nunca llegas a $0$, pero te acercas todo lo que quieras." }],
+      title: "¿Qué hacen los términos al avanzar?",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\lim_{n\\to\\infty} a_n = L", label: "convergente: se acerca a un número L" },
+          { tex: "\\lim_{n\\to\\infty} a_n = \\pm\\infty", label: "divergente: crece (o decrece) sin límite" },
+          { tex: "\\text{no se acerca a un único valor}", label: "oscilante: no tiene límite" },
+        ] },
+        { kind: "example", lines: [
+          { math: "a_n = \\left(\\tfrac{1}{2}\\right)^{n-1} \\to 0\\ \\text{(convergente)}\\qquad a_n = 2^n \\to +\\infty\\ \\text{(divergente)}" },
+          { math: "a_n = 2(-1)^n + 1:\\ 1, 3, 1, 3, \\ldots\\ \\text{oscila entre dos valores}" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "sucesion-explorador", initial: [3, 12], hint: "Recorre las sucesiones: ¿cuáles se acercan a un número, cuáles se disparan y cuáles saltan sin asentarse?" },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Calcula varios términos y mira adónde van: si se acercan a un número, convergen; si crecen sin parar, divergen; si saltan entre valores, oscilan." }],
+      title: "Convergente, divergente u oscilante",
+      question: "Clasifica cada sucesión según su comportamiento.",
+      groups: [
+        { id: "conv", label: "Convergente", tone: "emerald" },
+        { id: "div", label: "Divergente", tone: "amber" },
+        { id: "osc", label: "Oscilante", tone: "cobalt" },
+      ],
+      items: [
+        { id: "a", text: "$a_n = \\dfrac{1}{n}$", group: "conv" },
+        { id: "b", text: "$a_n = 2n$", group: "div" },
+        { id: "c", text: "$a_n = (-1)^n$", group: "osc" },
+        { id: "d", text: "$a_n = \\left(\\tfrac{1}{2}\\right)^{n-1}$", group: "conv" },
+        { id: "e", text: "$a_n = n^2$", group: "div" },
+        { id: "f", text: "$a_n = (-2)^n$", group: "osc" },
+      ],
+      hint: "$(-2)^n$ salta entre positivos y negativos cada vez más grandes: no tiende a $+\\infty$ ni a $-\\infty$, así que es oscilante.",
+    },
+    {
+      id: "monotonia",
+      type: "slide",
+      help: [{ label: "Acotada", message: "Con una sola cota superior se habla de «acotada superiormente»; con una inferior, «inferiormente». Acotada a secas significa que hay una cota para el valor absoluto." }],
+      title: "Monotonía y acotación",
+      blocks: [
+        { kind: "definition", text: "Una sucesión es **estrictamente creciente** si $a_n < a_{n+1}$ para todo $n$ y **estrictamente decreciente** si $a_n > a_{n+1}$. Está **acotada** si existe un número $k$ tal que $|a_n| < k$ para todo $n$." },
+        { kind: "example", lines: [
+          { math: "2, 4, 8, 16, \\ldots\\ \\text{creciente, no acotada}" },
+          { math: "1, \\tfrac{1}{2}, \\tfrac{1}{4}, \\ldots\\ \\text{decreciente y acotada}" },
+          { math: "2, 0, 2, 0, \\ldots\\ \\text{ni creciente ni decreciente, pero acotada}" },
+        ] },
+        { kind: "rule", title: "Teorema", text: "Toda sucesión **monótona y acotada** es **convergente**." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-teorema",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Las sumas $\\frac{1}{2}$, $\\frac{1}{2} + \\frac{1}{4}$, … no paran de crecer, pero nunca pasan de $1$." }],
+      title: "Creciente y acotada",
+      question: "Una sucesión es estrictamente creciente y todos sus términos son menores que $10$. ¿Qué podemos asegurar?",
+      choices: [
+        { id: "a", label: "Que es convergente" },
+        { id: "b", label: "Que tiende a $+\\infty$", incorrectFeedback: "Si tendiera a $+\\infty$ superaría cualquier número, incluido $10$: contradice que esté acotada." },
+        { id: "c", label: "Que es oscilante", incorrectFeedback: "Una sucesión creciente nunca «da saltos de ida y vuelta»." },
+        { id: "d", label: "Que su límite es $10$", incorrectFeedback: "Converge, pero su límite puede ser cualquier número $\\leq 10$ (por ejemplo $9$ o $3$)." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Es monótona y acotada, luego converge. No se sabe a qué valor: solo que es menor o igual que $10$.",
+    },
+    {
+      id: "check-acotada",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Los términos son siempre $1$ o $-1$." }],
+      title: "(−1)ⁿ",
+      question: "La sucesión $a_n = (-1)^n$ es…",
+      choices: [
+        { id: "a", label: "acotada, no monótona y oscilante" },
+        { id: "b", label: "convergente a $0$", incorrectFeedback: "Los términos valen $\\pm 1$ siempre: nunca se acercan a $0$." },
+        { id: "c", label: "creciente y acotada", incorrectFeedback: "Pasa de $-1$ a $1$ y vuelve a $-1$: no es monótona." },
+        { id: "d", label: "divergente", incorrectFeedback: "No crece sin límite: se queda entre $-1$ y $1$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Vale $-1, 1, -1, 1, \\ldots$: acotada ($|a_n| = 1$), no monótona y sin límite (oscilante).",
+    },
+    {
+      id: "check-limite",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$a_n = 2 - \\frac{1}{n+1}$: al crecer $n$ se resta algo cada vez más pequeño." }],
+      title: "Límite de una convergente",
+      question: "La sucesión $a_n = \\dfrac{2n + 1}{n + 1}$ es creciente y acotada. ¿A qué número converge? (solo el número)",
+      correctAnswers: ["2"],
+      explanation: "$a_n = \\frac{2(n+1) - 1}{n+1} = 2 - \\frac{1}{n+1}$, que se acerca a $2$ por debajo sin alcanzarlo.",
+    },
+  ],
+};

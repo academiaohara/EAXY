@@ -1,0 +1,100 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const inecuacionesSegundoGrado1bachLesson: InteractiveLesson = {
+  slug: "inecuaciones-segundo-grado-1bach",
+  title: "11. Inecuaciones de segundo grado",
+  subtitle: TEMA_1BACH_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "metodo",
+      type: "slide",
+      help: [{ label: "Valores de prueba", message: "Otra forma de saber el signo en cada tramo es probar un número de cada uno: el polinomio solo cambia de signo en sus raíces." }],
+      title: "El signo de la parábola",
+      blocks: [
+        { kind: "steps", items: [
+          "Se pasa todo a un miembro: $P(x) = ax^2 + bx + c$ frente a $0$.",
+          "Se hallan las **raíces** de $P(x) = 0$: dividen la recta en tramos.",
+          "Se estudia el **signo de $P$ en cada tramo**: es el de $a$ fuera de las raíces y el contrario entre ellas.",
+          "Se eligen los tramos que cumplen la desigualdad (con extremos solo si es $\\leq$ o $\\geq$).",
+        ] },
+        { kind: "example", title: "x² − 5x + 6 ≤ 0", lines: [
+          { math: "x^2 - 5x + 6 = (x - 2)(x - 3) \\Rightarrow \\text{raíces } 2 \\text{ y } 3" },
+          { math: "a > 0 \\Rightarrow P \\leq 0 \\text{ entre las raíces:}\\ x \\in [2, 3]" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "inecuacion-cuadratica-explorador", initial: [1, -2, -3, 2], hint: "Cambia la relación y el signo de a: la solución pasa de «fuera de las raíces» a «entre las raíces»." },
+    },
+    {
+      id: "check-entre",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$x^2 - 4$ se anula en $\\pm 2$ y la parábola es positiva fuera de las raíces." }],
+      title: "x² − 4 < 0",
+      question: "Resuelve $x^2 - 4 < 0$.",
+      choices: [
+        { id: "a", label: "$(-2, 2)$" },
+        { id: "b", label: "$(-\\infty, -2) \\cup (2, +\\infty)$", incorrectFeedback: "Esos tramos hacen $x^2 - 4 > 0$. Aquí se busca el signo negativo." },
+        { id: "c", label: "$(-\\infty, 2)$", incorrectFeedback: "$x = -3$ no cumple: $9 - 4 = 5 > 0$." },
+        { id: "d", label: "$[-2, 2]$", incorrectFeedback: "La desigualdad es estricta: en $\\pm 2$ el polinomio vale $0$, que no es menor que $0$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x^2 - 4 < 0 \\iff x^2 < 4 \\iff -2 < x < 2$.",
+    },
+    {
+      id: "check-enteros",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$x^2 - x - 6 = (x - 3)(x + 2)$. La solución es $(-2, 3)$." }],
+      title: "Soluciones enteras",
+      question: "¿Cuántos números **enteros** cumplen $x^2 - x - 6 < 0$? (solo el número)",
+      correctAnswers: ["4"],
+      explanation: "$x^2 - x - 6 = (x-3)(x+2) < 0$ en $(-2, 3)$. Los enteros son $-1, 0, 1, 2$: cuatro.",
+    },
+    {
+      id: "especiales",
+      type: "slide",
+      help: [{ label: "Discriminante", message: "Si $\\Delta < 0$ la parábola no corta el eje: tiene siempre el signo de $a$. Si $\\Delta = 0$ lo toca en un punto." }],
+      title: "Cuando no hay dos raíces",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "x^2 + 1 > 0", label: "Δ < 0: se cumple siempre (ℝ)" },
+          { tex: "x^2 + x + 1 < 0", label: "Δ < 0: nunca (∅)" },
+          { tex: "x^2 + 2x + 1 \\leq 0", label: "Δ = 0: solo x = −1" },
+          { tex: "(x - 3)^2 > 0", label: "Δ = 0: todo x salvo 3" },
+        ] },
+        { kind: "text", text: "Ten en cuenta el **signo de $a$**: en $-x^2 + 4x - 3 \\geq 0$ las raíces son $1$ y $3$ y, como $a < 0$, la parábola es positiva **entre** ellas: $[1, 3]$." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-vacio",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$x^2 + 1 \\geq 1 > 0$ para todo $x$." }],
+      title: "x² + 1 < 0",
+      question: "¿Cuál es la solución de $x^2 + 1 < 0$?",
+      choices: [
+        { id: "a", label: "Ninguna: es el conjunto vacío" },
+        { id: "b", label: "$(-1, 1)$", incorrectFeedback: "$x^2 + 1$ no se anula nunca: esa sería la solución de $x^2 - 1 < 0$." },
+        { id: "c", label: "Todos los reales", incorrectFeedback: "Todos los reales cumplen $x^2 + 1 > 0$, no $< 0$." },
+        { id: "d", label: "$x = 0$", incorrectFeedback: "En $x = 0$ vale $1$, que no es menor que $0$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Un cuadrado nunca es negativo, así que $x^2 + 1 \\geq 1$ y no puede ser menor que $0$.",
+    },
+    {
+      id: "check-negativo",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La solución es el intervalo $[1, 3]$ (entre las raíces porque $a < 0$). ¿Cuántos enteros hay?" }],
+      title: "Coeficiente negativo",
+      question: "¿Cuántos números **enteros** cumplen $-x^2 + 4x - 3 \\geq 0$? (solo el número)",
+      correctAnswers: ["3"],
+      explanation: "$-x^2 + 4x - 3 = -(x-1)(x-3) \\geq 0$ en $[1, 3]$: los enteros son $1$, $2$ y $3$.",
+    },
+  ],
+};

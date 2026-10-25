@@ -399,6 +399,25 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `arbol-conteo` | Diagrama en árbol de 2 o 3 pasos: ramas que se multiplican y número de resultados | `a`, `b`, `c?` (ramas por paso, ≤ 24 hojas), `titles` |
 | `permutaciones-arbol` | Ordenaciones de A, B y C: 3 · 2 · 1 = 6 y 3! | — |
 | `combinaciones-dividir` | Cuatro amigos todos contra todos: 12 parejas ordenadas, cada partido contado dos veces → 6 | — |
+| `complejo-suma-vectores` | Suma de complejos como suma de vectores: dos vectores, paralelogramo y diagonal | `a`, `b` (z₁ = a+bi), `c`, `d` (z₂ = c+di), enteros en [−4, 4] |
+| `complejo-giro-i` | Multiplicar por i gira 90°: i·z, i²·z = −z, i³·z y vuelta a z | `a`, `b` (z = a+bi) |
+| `complejo-polar` | Módulo (Pitágoras), argumento (ángulo con el eje real) y paso a forma trigonométrica | `a`, `b` (z = a+bi), enteros en [−5, 5] |
+| `complejo-producto-polar` | Producto en forma polar: módulos que se multiplican y argumentos que se suman | `a`, `b` (r₁, θ₁°), `c`, `d` (r₂, θ₂°) |
+| `complejo-raices` | Raíces n-ésimas de r con argumento θ: misma circunferencia, ángulos separados 360°/n, polígono regular | `a` (r), `b` (θ°), `c` (n, 2–8) |
+| `logaritmo-exponente` | Escalera de potencias de la base: el logaritmo es el exponente buscado, log_a m = z ⇔ aᶻ = m | `a` (base 2–10), `b` (exponente) |
+| `logaritmo-producto` | El logaritmo de un producto suma exponentes (barras una tras otra) y el de un cociente los resta | `a` (base), `b` (m ≥ 2), `c` (k < m) |
+| `gauss-eliminacion` | Método de Gauss 3×3: sistema inicial, eliminar x, eliminar y y resultado (determinado, indeterminado o incompatible) | `nums`: `[a₁,b₁,c₁,d₁, a₂,b₂,c₂,d₂, a₃,b₃,c₃,d₃]` (enteros en [−9, 9]) |
+| `serie-geometrica-saltos` | Suma infinita de una progresión geométrica como saltos decrecientes sobre la recta: sumas parciales y límite a₁/(1 − r) | `a` (a₁, 1–12), `b`, `c` (r = b/c con 0 < b < c ≤ 10) |
+| `radian-arco` | El radián: un arco igual al radio, arcos de varios radianes y 180° = π rad | `a` (radianes destacados, 1–6) |
+| `circulo-goniometrico` | Circunferencia de radio 1: P = (cos θ, sen θ), signo por cuadrantes, ángulo de referencia y tangente sobre x = 1 | `a` (ángulo en grados, 0–359) |
+| `proyeccion-vector` | Producto escalar como proyección: u y v desde el origen, sombra de u sobre v, u·v y ángulo | `nums`: `[ux, uy, vx, vy]` (enteros en [−6, 6]) |
+| `limite-aproximacion` | Límite en un punto: (x² − 1)/(x − 1) sin imagen en x = 1; aproximación por la izquierda y la derecha hacia 2 | — |
+| `asintotas-tipos` | Asíntotas: vertical y horizontal de (2x + 1)/(x − 1) (`a: 1`); oblicua y = x + 3 y rama parabólica (`a: 2`) | `a` (1 o 2) |
+| `secante-tangente` | De las secantes a la tangente: f(x) = x² en P(1, 1), Q en x = 3, 2, 1,5 (pendientes 4, 3, 2,5) y tangente de pendiente 2 | — |
+| `derivada-signo` | f(x) = 2x − 0,1x²: tangente creciente en x = 5, horizontal en 10 y decreciente en 15 | — |
+| `extremos-criterios` | f(x) = x³ − 3x: puntos críticos ±1, signo de f′ y criterio de la segunda derivada | — |
+| `bayes-frecuencias` | Bayes con frecuencias naturales: 10 000 móviles, 200 defectuosos, detector con 90 % de aciertos y 1 % de falsas alarmas; entre 278 marcados, 180 son defectuosos (64,7 %) | — |
+| `estadistica-conceptos` | Población (72 familias), muestra de 12 resaltada, variable «número de hijos» con sus datos y tamaño muestral n = 12 | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -470,6 +489,72 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `trig-explorador` | Triángulo rectángulo con ángulo α e hipotenusa variables: lados y razones (que no cambian con el tamaño) | `a` (ángulo), `b` (hipotenusa) |
 | `trig-resolver-explorador` | Resolver un triángulo rectángulo: con ángulo + hipotenusa (`n: 0`) o con dos catetos (`n: 1`, `c` opuesto, `d` contiguo); ángulos en °′″ | `n`, `a`, `b`, `c`, `d` |
 | `combinatoria-explorador` | VR, V, P y C de `m` elementos tomados de `n` en `n`, y por qué C = V/n! | `a` (m ≤ 10), `b` (n ≤ m) |
+| `entorno-explorador` | Entorno E(a, r) = (a−r, a+r) y número de prueba: pertenece si su distancia al centro es menor que r | `initial`: `[a, 2r, 2x]` (centro, doble del radio, doble del número de prueba) |
+| `complejo-explorador` | Complejo z = x+yi en el plano: conjugado, módulo y argumento principal | `initial`: `[x, y]` en [−5, 5] |
+| `complejos-operaciones-explorador` | Suma, resta, producto y cociente de dos complejos, con el resultado en binómica, polar y en el plano | `initial`: `[a, b, c, d, op]` (z₁ = a+bi, z₂ = c+di; op 0 +, 1 −, 2 ·, 3 :) |
+| `potencia-compleja-explorador` | Moivre: z = r_θ elevado a n tiene módulo rⁿ y argumento nθ | `initial`: `[10r, θ°, n]` (r entre 0,5 y 1,5; n ≤ 12) |
+| `raices-complejas-explorador` | Raíces n-ésimas de un complejo en polar: lista en binómica y polígono regular | `initial`: `[r, θ°, n]` (r ≤ 64, n 2–8) |
+| `logaritmo-explorador` | log_b N exacto o entre dos potencias consecutivas, y comprobación con el cambio de base | `initial`: `[base 2–10, N ≤ 1000]` |
+| `log-propiedades-explorador` | Producto, cociente y potencia con números concretos, y por qué log(x+y) ≠ log x + log y | `initial`: `[base, x, y, n]` |
+| `sistema-parametro-explorador` | Sistema x+y+z=1, x+2y+3z=2, x+3y+mz=k: última ecuación tras Gauss, tipo (determinado/indeterminado/incompatible) y solución | `initial`: `[m, k]` |
+| `inecuacion-cuadratica-explorador` | `ax²+bx+c ▢ 0` con a = ±1: parábola, discriminante, raíces y conjunto solución como unión de intervalos | `initial`: `[a, b, c, rel]` (rel 0 <, 1 ≤, 2 >, 3 ≥) |
+| `region-inecuaciones-explorador` | Dos inecuaciones lineales `ax+by ≤/≥ c`: semiplanos, región solución, punto de corte de las rectas | `initial`: `[a₁,b₁,c₁,rel₁, a₂,b₂,c₂,rel₂]` (rel 0 ≤, 1 ≥) |
+| `sucesion-explorador` | Sucesión de un catálogo (2n, 1/n, (−1)ⁿ, (2n+1)/(n+1)…): término n-ésimo, gráfica de puntos, tipo (convergente/divergente/oscilante), monotonía y acotación | `initial`: `[sucesión 0–8, n]` |
+| `progresion-explorador` | Progresión aritmética (+d) o geométrica (·r): término general, suma de n términos y suma infinita si |r| < 1 | `initial`: `[tipo (0 aritmética, 1 geométrica), a₁, d o 2r, n]` |
+| `limite-epsilon-explorador` | Definición de límite: dada una distancia ε, desde qué lugar n₀ todos los términos quedan a menos de ε del límite | `initial`: `[sucesión 0–3, ε índice 0–6]` |
+| `limite-racional-explorador` | aₙ = (a·nᵖ + 3)/(c·nᵠ + 5): tabla con n grande y límite por comparación de grados | `initial`: `[p, a, q, c]` |
+| `numero-e-explorador` | (1 + 1/n)ⁿ al crecer n y capital con n abonos al año frente a 1000·eʳ | `initial`: `[índice de n 0–8, rédito %]` |
+| `radianes-explorador` | Grados ↔ radianes (fracción de π) y longitud de arco s = θ·r | `initial`: `[grados (0–720), radio]` |
+| `circulo-trig-explorador` | Seno, coseno y tangente de un ángulo cualquiera sobre la circunferencia unidad, con cuadrante, referencia y valores exactos | `initial`: `[grados]` |
+| `angulos-relacionados-explorador` | Tabla de razones de α, 180°−α, 180°+α, 360°−α, −α y 90°−α | `initial`: `[α agudo]` |
+| `suma-angulos-explorador` | sen y cos de a ± b con las fórmulas frente al valor directo y al error típico sen a + sen b | `initial`: `[a, b, 0 suma/1 resta]` |
+| `doble-mitad-explorador` | sen 2α, cos 2α y razones del ángulo mitad con sus fórmulas y el signo por cuadrante | `initial`: `[α (15–360)]` |
+| `suma-producto-explorador` | Las cuatro fórmulas de suma de razones a producto, con valores | `initial`: `[A, B]` |
+| `ecuacion-trig-explorador` | sen x = a, cos x = a o tg x = a: soluciones en [0°, 360°) y en la gráfica | `initial`: `[función (0 sen, 1 cos, 2 tg), 2a]` |
+| `triangulo-general-explorador` | Triángulo por LAL, LLL, AAL o LLA (caso ambiguo con 0, 1 o 2 soluciones): lados, ángulos, área y dibujo | `initial`: `[caso (0–3), dato1, dato2, dato3]` |
+| `producto-escalar-explorador` | u·v, módulos, ángulo (agudo, recto u obtuso) y proyección de u sobre v | `initial`: `[ux, uy, vx, vy]` |
+| `recta-formas-explorador` | Recta por un punto y un vector director en forma vectorial, paramétricas, continua, general y explícita | `initial`: `[x₀, y₀, dx, dy]` |
+| `rectas-angulo-explorador` | Dos rectas Ax+By=C: posición relativa, punto de corte y ángulo | `initial`: `[A₁, B₁, C₁, A₂, B₂, C₂]` |
+| `distancia-punto-recta-explorador` | Distancia de un punto a la recta Ax+By+C=0 con el pie de la perpendicular | `initial`: `[A, B, C, x₀, y₀]` |
+| `mediatriz-explorador` | Mediatriz del segmento AB y distancias de un punto T a A y B | `initial`: `[ax, ay, bx, by, tx, ty]` |
+| `conica-explorador` | Circunferencia, elipse, hipérbola o parábola con centro o vértice en (h, k): ecuación, focos, excentricidad, asíntotas o directriz | `initial`: `[tipo (0 circ., 1 elipse, 2 hipérbola, 3 parábola), a, b, h, k]` |
+| `dominio-explorador` | Dominio de una función polinómica, racional, con raíz, logaritmo o √(x² − q), con la gráfica solo donde hay valor | `initial`: `[tipo (0–4), p, q]` |
+| `simetria-explorador` | Paridad de una función (par, impar o ninguna) comparando f(x) y f(−x) | `initial`: `[función (índice), 2·x₀]` |
+| `signo-explorador` | Cortes con los ejes y tabla de signo de un polinomio factorizado | `initial`: `[r₁, r₂, r₃, tercer factor (0/1), signo (±1)]` |
+| `funcion-raiz-explorador` | y = a·√(x − h) + k (o raíz cúbica): dominio y recorrido | `initial`: `[índice (2 o 3), a, h, k]` |
+| `exp-log-explorador` | Exponencial y logaritmo de la misma base como inversas, con la recta y = x | `initial`: `[base]` |
+| `trig-funcion-explorador` | y = A·f(Bx + C) + D con seno, coseno o tangente: periodo, amplitud y recorrido | `initial`: `[función (0 sen, 1 cos, 2 tg), A, B, C°, D]` |
+| `abs-funcion-explorador` | Valor absoluto de f con f lineal o cuadrática: reflejo de la parte negativa y expresión a trozos | `initial`: `[tipo, a, b, c]` |
+| `oferta-demanda-explorador` | Rectas de oferta y demanda, precio de mercado, excedente o escasez y punto de equilibrio | `initial`: `[ordenada oferta, pendiente oferta, ordenada demanda, pendiente demanda, precio]` |
+| `composicion-explorador` | f∘g y g∘f para pares de funciones elementales, con valores en un punto | `initial`: `[f (índice), g (índice), 2·x]` |
+| `inversa-explorador` | Función, inversa y simetría respecto de y = x; señala las no inyectivas | `initial`: `[función (índice), 2·x₀]` |
+| `limite-tabla-explorador` | Tabla de valores al acercarse a a por un lado: cuatro funciones, límite lateral e imagen | `initial`: `[función (0–3), lado (0 izq., 1 der.), pasos (0–5)]` |
+| `limite-lateral-explorador` | Seis funciones a trozos: límites laterales, f(a), existencia del límite y tipo de discontinuidad | `initial`: `[función (0–5), distancia k (0–4)]` |
+| `limite-infinito-explorador` | Siete funciones y cuatro destinos (0⁺, 0⁻, +∞, −∞): tabla de valores, límite y tipo | `initial`: `[función (0–6), destino (0–3)]` |
+| `asintotas-explorador` | f(x) = (ax² + bx + c)/(x − r): vertical, horizontal u oblicua (m, n) o hueco | `initial`: `[a, b, c, r]` |
+| `cero-cero-explorador` | 0/0 factorizando o con el conjugado de una raíz: pasos, gráfica con hueco y límite | `initial`: `[0, a, b, c]` o `[1, s, k]` |
+| `limite-grados-explorador` | (a·xᵖ + 3)/(c·xᵠ + 5) en ±∞: tabla, regla de grados y límite | `initial`: `[p, a, q, c, signo (0 +∞, 1 −∞)]` |
+| `continuidad-k-explorador` | f(x) = x² si x < a; x + k si x ≥ a: laterales, salto y valor de k para que sea continua | `initial`: `[a, k]` |
+| `operaciones-limite-explorador` | Límite de f ± g, f·g o f/g para funciones sencillas en +∞ o 0⁺: forma resultante, si es indeterminada y valor real | `initial`: `[f (0–5), g (0–5), operación (0 +, 1 −, 2 ·, 3 /), destino (0 +∞, 1 0⁺)]` |
+| `resta-fracciones-explorador` | 1/(x − r) − k/(x² − r²) cuando x → r: común denominador, laterales y límite (finito solo si k = 2r) | `initial`: `[k, r]` |
+| `secante-explorador` | Secante entre a y a + h para 11 funciones: puntos P y Q, TVM y pendiente de la tangente | `initial`: `[función (0–10), 2·a, tamaño de h (0–5), lado (0 der., 1 izq.)]` |
+| `derivabilidad-explorador` | Seis casos (|x|, empalme suave, esquina, salto, ∛x, x·|x|): derivadas laterales, secantes y veredicto | `initial`: `[caso (0–5), distancia k (0–4)]` |
+| `funcion-derivada-explorador` | f, f′ y la tangente en un punto móvil: valor, signo de f′ y ecuación de la tangente | `initial`: `[función (0–10), 10·a]` |
+| `producto-cociente-explorador` | (f·g)′ o (f/g)′ con ocho funciones: regla aplicada, valor y comprobación con cocientes incrementales | `initial`: `[f, g (0–7), operación (0 ·, 1 /), 2·x]` |
+| `cadena-explorador` | Derivada de f(g(x)) con seis exteriores y cuatro interiores, con comprobación numérica | `initial`: `[exterior (0–5), interior (0–3), 2·x]` |
+| `derivada-inversa-explorador` | f, f⁻¹ y sus tangentes simétricas: (f⁻¹)′(b) = 1/f′(f⁻¹(b)); incluye arcsen y arctg | `initial`: `[función (0–5), 10·b]` |
+| `velocidad-aceleracion-explorador` | Posición, velocidad y aceleración de cuatro movimientos en un instante t | `initial`: `[movimiento (0–3), t (0–40, fracción de tmax)]` |
+| `extremos-explorador` | Puntos críticos, criterio de f″, inflexión y extremos absolutos en [p, q] | `initial`: `[función (0–5), p, q, absolutos (0/1)]` |
+| `optimizacion-explorador` | Cuatro problemas del libro: función a optimizar, derivada, dominio y extremo | `initial`: `[problema (0–3), posición (0–100 %)]` |
+| `sucesos-venn-explorador` | Dos sucesos de un dado en un diagrama de Venn: unión, intersección, diferencia, contrario y las dos leyes de De Morgan, con P por Laplace | `initial`: `[A (0–5), B (0–5), operación (0–5)]` |
+| `prob-union-explorador` | Mosaico de A y B con P(A), P(B) y P(A∩B): unión, contrarios, condicionadas, incompatibilidad e independencia | `initial`: `[P(A) %, P(B) %, P(A∩B) %]` |
+| `tabla-contingencia-explorador` | Tabla 2×2 con conteos (hígado, medicamento o genérico): marginales, los dos árboles y si son independientes | `initial`: `[datos (0–2)]` o `[datos, A∩B, noA∩B, A∩noB, noA∩noB]` |
+| `arbol-tabla-explorador` | De P(A), P(B/A) y P(B/noA) a la tabla de contingencia y al árbol que empieza en B | `initial`: `[P(A) %, P(B/A) %, P(B/noA) %]` |
+| `prob-total-explorador` | Probabilidad total y Bayes en cinco situaciones (urnas, cajas, móviles, sastres, tornillos), con suceso contrario y barra de posteriores | `initial`: `[situación (0–4), contrario (0/1), % defectuosos]` |
+| `azar-famoso-explorador` | Cumpleaños, Caballero de la Meré y Galileo con tres dados | `initial`: `[problema (0–2), n, apuesta (0/1), suma 3–18]` |
+| `percentiles-explorador` | Percentil p (posición n·p/100, por exceso si no es entera), cuartiles, mediana, rango intercuartílico y diagrama de caja en cuatro conjuntos de datos | `initial`: `[datos (0–3), p (1–99)]` |
+| `doble-entrada-explorador` | Tablas de doble entrada (impresoras, fármacos, terapia, ganado): marginales, condicionadas a una fila o columna y test de independencia | `initial`: `[tabla (0–3), fila, columna]` |
+| `nube-regresion-explorador` | Nube de puntos con seis conjuntos de datos o una nube sintética con r ajustable: medias, covarianza, r, rectas de regresión Y/X y X/Y, predicción y dato atípico | `initial`: `[datos (0–6), r·100, atípico (0/1), x atípico %, y atípico %, x₀ %]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

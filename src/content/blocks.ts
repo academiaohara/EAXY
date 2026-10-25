@@ -191,6 +191,20 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 23,
   },
   {
+    slug: "numeros-complejos",
+    subject: "matematicas",
+    title: "Números complejos",
+    description: "Unidad imaginaria, forma binómica, plano complejo, forma polar, Moivre y raíces.",
+    orderIndex: 24,
+  },
+  {
+    slug: "logaritmos",
+    subject: "matematicas",
+    title: "Logaritmos",
+    description: "Definición, propiedades, cambio de base y escalas logarítmicas.",
+    orderIndex: 25,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -374,6 +388,34 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-4-eso-b/estadistica": "estadistica",
   "matematicas-4-eso-b/calculo-de-probabilidades": "probabilidad",
   "matematicas-4-eso-b/combinatoria": "combinatoria",
+
+  // ── Matemáticas 1.º Bachillerato ───────────────────────────────────────
+  "matematicas-1-bachillerato/numeros-reales-y-complejos": {
+    default: "potencias-y-raices",
+    lessons: {
+      6: "numeros-decimales", 7: "numeros-decimales",
+      8: "numeros-complejos", 9: "numeros-complejos", 10: "numeros-complejos", 11: "numeros-complejos", 12: "numeros-complejos", 13: "numeros-complejos",
+      14: "logaritmos", 15: "logaritmos",
+    },
+  },
+  "matematicas-1-bachillerato/geometria": "geometria-analitica",
+  "matematicas-1-bachillerato/trigonometria": "trigonometria",
+  "matematicas-1-bachillerato/funciones": "funciones-elementales",
+  "matematicas-1-bachillerato/limites-y-continuidad": "funciones-elementales",
+  "matematicas-1-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-1-bachillerato/probabilidad": "probabilidad",
+  "matematicas-1-bachillerato/estadistica": "estadistica",
+  "matematicas-1-bachillerato/sucesiones": {
+    default: "progresiones",
+    lessons: { 10: "funciones-elementales" },
+  },
+  "matematicas-1-bachillerato/algebra": {
+    default: "lenguaje-algebraico",
+    lessons: {
+      7: "ecuaciones", 8: "ecuaciones", 9: "ecuaciones", 10: "ecuaciones", 11: "ecuaciones",
+      12: "sistemas-de-ecuaciones", 13: "sistemas-de-ecuaciones", 14: "sistemas-de-ecuaciones", 15: "sistemas-de-ecuaciones",
+    },
+  },
 
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",

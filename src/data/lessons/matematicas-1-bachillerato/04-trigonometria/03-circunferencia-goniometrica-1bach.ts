@@ -1,0 +1,113 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const circunferenciaGoniometrica1bachLesson: InteractiveLesson = {
+  slug: "circunferencia-goniometrica-1bach",
+  title: "3. Razones de un ángulo cualquiera",
+  subtitle: TEMA_1BACH_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "circulo",
+      type: "slide",
+      help: [{ label: "Por qué radio 1", message: "Con radio 1 la hipotenusa vale 1, así que seno y coseno son directamente las coordenadas del punto: $\\sin\\theta = y$, $\\cos\\theta = x$." }],
+      title: "La circunferencia goniométrica",
+      blocks: [
+        { kind: "definition", text: "La **circunferencia goniométrica** tiene radio $1$ y centro en el origen. El ángulo $\\theta$ se mide desde el semieje positivo, en sentido **antihorario** (negativo, si es horario). El extremo del radio es $P = (\\cos\\theta,\\ \\sin\\theta)$." },
+        { kind: "text", text: "Así, seno y coseno se definen para **cualquier** ángulo, no solo agudos; y la tangente es $\\frac{\\sin\\theta}{\\cos\\theta}$." },
+      ],
+      visual: { kind: "anim", scene: "circulo-goniometrico", params: { a: 150 } },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Qué mirar", message: "El seno y el coseno están siempre entre $-1$ y $1$. La tangente no existe en $90^\\circ$ ni en $270^\\circ$." }],
+      title: "Recorre la circunferencia",
+      blocks: [{ kind: "text", text: "Mueve el ángulo y observa los **signos** en cada cuadrante, los valores en los ejes y los exactos de los ángulos notables." }],
+      visual: { kind: "tool", tool: "circulo-trig-explorador", initial: [150], hint: "Fíjate en que 150° y 30° dan el mismo seno, y en los signos de cada cuadrante." },
+    },
+    {
+      id: "check-signos",
+      type: "classify",
+      help: [{ label: "Pista", message: "Seno = ordenada ($y$), coseno = abscisa ($x$). Mira en qué cuadrante cae el ángulo." }],
+      title: "Signo del coseno",
+      question: "Clasifica cada ángulo según el signo de su **coseno**.",
+      groups: [
+        { id: "pos", label: "Coseno positivo", tone: "emerald" },
+        { id: "neg", label: "Coseno negativo", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$30^\\circ$", group: "pos" },
+        { id: "b", text: "$120^\\circ$", group: "neg" },
+        { id: "c", text: "$200^\\circ$", group: "neg" },
+        { id: "d", text: "$300^\\circ$", group: "pos" },
+        { id: "e", text: "$-45^\\circ$", group: "pos" },
+        { id: "f", text: "$\\dfrac{5\\pi}{6}$ rad", group: "neg" },
+      ],
+      hint: "El coseno es positivo en los cuadrantes I y IV (a la derecha del eje vertical).",
+    },
+    {
+      id: "referencia",
+      type: "slide",
+      help: [{ label: "Ángulo de referencia", message: "Es el ángulo agudo que forma el radio con el **eje horizontal**. Sus razones dan los valores absolutos; el cuadrante pone el signo." }],
+      title: "Del ángulo cualquiera al agudo",
+      blocks: [
+        { kind: "steps", items: [
+          "Se reduce el ángulo a $[0^\\circ, 360^\\circ)$ restando vueltas completas.",
+          "Se busca su **cuadrante** y el **ángulo agudo de referencia**.",
+          "Se calcula la razón del ángulo agudo y se pone el signo del cuadrante.",
+        ] },
+        { kind: "example", lines: [
+          { math: "\\sin 150^\\circ:\\ \\text{referencia } 30^\\circ,\\ \\text{cuadrante II (seno +)} \\Rightarrow \\tfrac{1}{2}" },
+          { math: "\\cos 210^\\circ:\\ \\text{referencia } 30^\\circ,\\ \\text{cuadrante III (coseno −)} \\Rightarrow -\\tfrac{\\sqrt{3}}{2}" },
+          { math: "\\tan 315^\\circ:\\ \\text{referencia } 45^\\circ,\\ \\text{cuadrante IV (tg −)} \\Rightarrow -1" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-210",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$225^\\circ$ está en el cuadrante III y su ángulo de referencia es $45^\\circ$." }],
+      title: "sen 225°",
+      question: "¿Cuánto vale $\\sin 225^\\circ$?",
+      choices: [
+        { id: "a", label: "$-\\dfrac{\\sqrt{2}}{2}$" },
+        { id: "b", label: "$\\dfrac{\\sqrt{2}}{2}$", incorrectFeedback: "El valor absoluto es correcto, pero en el cuadrante III el seno es **negativo**." },
+        { id: "c", label: "$-\\dfrac{1}{2}$", incorrectFeedback: "$\\frac{1}{2}$ es el seno de $30^\\circ$; la referencia de $225^\\circ$ es $45^\\circ$." },
+        { id: "d", label: "$-1$", incorrectFeedback: "$\\sin\\theta = -1$ solo en $270^\\circ$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$225^\\circ = 180^\\circ + 45^\\circ$: cuadrante III (seno −) y referencia $45^\\circ$, luego $\\sin 225^\\circ = -\\frac{\\sqrt{2}}{2}$.",
+    },
+    {
+      id: "check-ejes",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "En $270^\\circ$ el punto es $(0, -1)$." }],
+      title: "En un eje",
+      question: "¿Cuánto vale $\\sin 270^\\circ$? (solo el número)",
+      correctAnswers: ["-1", "−1"],
+      explanation: "En $270^\\circ$ el punto de la circunferencia es $(0, -1)$, y el seno es su ordenada: $-1$.",
+    },
+    {
+      id: "check-tg",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}$ y $\\cos 90^\\circ = 0$." }],
+      title: "tg 90°",
+      question: "¿Qué ocurre con $\\tan 90^\\circ$?",
+      choices: [
+        { id: "a", label: "No existe: el coseno vale $0$ y no se puede dividir entre $0$" },
+        { id: "b", label: "Vale $0$", incorrectFeedback: "Valdría $0$ si el **seno** fuera $0$ (en $0^\\circ$ o $180^\\circ$)." },
+        { id: "c", label: "Vale $1$", incorrectFeedback: "$\\tan 45^\\circ = 1$. En $90^\\circ$, $\\sin = 1$ y $\\cos = 0$." },
+        { id: "d", label: "Vale $\\infty$ y es un número", incorrectFeedback: "$\\infty$ no es un número: la tangente simplemente no está definida en $90^\\circ$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\tan 90^\\circ = \\frac{1}{0}$, que no está definida (al acercarse a $90^\\circ$ la tangente crece sin límite).",
+    },
+  ],
+};

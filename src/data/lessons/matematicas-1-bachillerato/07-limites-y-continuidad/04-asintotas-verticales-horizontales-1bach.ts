@@ -1,0 +1,86 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_7_SUBTITLE } from "@/data/lessons/shared";
+
+export const asintotasVerticalesHorizontales1bachLesson: InteractiveLesson = {
+  slug: "asintotas-verticales-horizontales-1bach",
+  title: "4. Asíntotas verticales y horizontales",
+  subtitle: TEMA_1BACH_7_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definiciones",
+      type: "slide",
+      help: [{ label: "Dónde buscar", message: "Las verticales están en los puntos que **no** pertenecen al dominio. Las horizontales, en el comportamiento cuando $x \\to \\pm\\infty$." }],
+      title: "Rectas a las que se pega la gráfica",
+      blocks: [
+        { kind: "rule", title: "Asíntota vertical x = a", formula: "\\lim_{x\\to a^-} f(x) = \\pm\\infty\\quad\\text{o}\\quad \\lim_{x\\to a^+} f(x) = \\pm\\infty" },
+        { kind: "rule", title: "Asíntota horizontal y = K", formula: "\\lim_{x\\to +\\infty} f(x) = K\\quad\\text{o}\\quad \\lim_{x\\to -\\infty} f(x) = K" },
+      ],
+      visual: { kind: "anim", scene: "asintotas-tipos", params: { a: 1 } },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Hueco", message: "Si el numerador también se anula en $x = r$, el factor $(x - r)$ se simplifica y queda un hueco, no una asíntota." }],
+      title: "Explora funciones racionales",
+      blocks: [
+        { kind: "text", text: "En $f(x) = \\dfrac{ax^2 + bx + c}{x - r}$, con $a = 0$ el numerador tiene grado $\\leq 1$ y aparece una **asíntota horizontal** $y = b$. Con $a \\neq 0$, una **oblicua** (próxima lección)." },
+      ],
+      visual: { kind: "tool", tool: "asintotas-explorador", initial: [0, 3, 1, 2], hint: "Con a = 0: horizontal y = b. Haz que el numerador valga 0 en x = r (por ejemplo a = 1, b = 0, c = −4, r = 2) y la vertical desaparece: queda un hueco." },
+    },
+    {
+      id: "check-horizontal",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Cuando $x$ es enorme, $\\frac{3x + 1}{x - 2} \\approx \\frac{3x}{x} = 3$." }],
+      title: "Asíntota horizontal",
+      question: "La función $f(x) = \\dfrac{3x + 1}{x - 2}$ tiene asíntota horizontal $y = K$. ¿Cuánto vale $K$?",
+      correctAnswers: ["3"],
+      explanation: "$\\displaystyle\\lim_{x\\to\\pm\\infty}\\frac{3x + 1}{x - 2} = 3$ (mismo grado: cociente de coeficientes principales).",
+    },
+    {
+      id: "check-vertical",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Busca dónde se anula el denominador: $x^2 - 4 = 0$." }],
+      title: "Verticales de 1/(x² − 4)",
+      question: "¿Cuáles son las asíntotas verticales de $f(x) = \\dfrac{1}{x^2 - 4}$?",
+      choices: [
+        { id: "a", label: "$x = 2$ y $x = -2$" },
+        { id: "b", label: "Solo $x = 2$", incorrectFeedback: "$x^2 - 4 = (x - 2)(x + 2)$ se anula también en $x = -2$." },
+        { id: "c", label: "$x = 4$", incorrectFeedback: "El denominador es $x^2 - 4$, no $x - 4$." },
+        { id: "d", label: "No tiene", incorrectFeedback: "El numerador $1$ nunca se anula, así que cada raíz del denominador da una vertical." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "En $x = \\pm 2$ el denominador se anula y el numerador no: el cociente se dispara a $\\pm\\infty$.",
+    },
+    {
+      id: "check-hueco",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Simplifica: $\\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x - 2}$." }],
+      title: "¿Vertical o hueco?",
+      question: "La función $f(x) = \\dfrac{x^2 - 4}{x - 2}$ no está definida en $x = 2$. ¿Tiene asíntota vertical ahí?",
+      choices: [
+        { id: "a", label: "No: se simplifica a $x + 2$ y hay un hueco en $x = 2$" },
+        { id: "b", label: "Sí, $x = 2$", incorrectFeedback: "Cerca de $2$ la función vale $x + 2 \\to 4$: no se dispara." },
+        { id: "c", label: "Sí, $x = -2$", incorrectFeedback: "En $x = -2$ la función vale $0$." },
+        { id: "d", label: "Sí, $y = 2$", incorrectFeedback: "$y = 2$ sería horizontal y la función no la tiene." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\displaystyle\\lim_{x\\to 2} f = 4$ es finito: **no hay asíntota**, solo un hueco en $(2, 4)$.",
+    },
+    {
+      id: "check-grado",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Mismo grado en numerador y denominador: divide los coeficientes principales." }],
+      title: "Otra horizontal",
+      question: "¿Cuál es la asíntota horizontal $y = K$ de $f(x) = \\dfrac{5x^2 - 1}{x^2 + 3}$? (solo $K$)",
+      correctAnswers: ["5"],
+      explanation: "$\\displaystyle\\lim_{x\\to\\pm\\infty}\\frac{5x^2 - 1}{x^2 + 3} = \\frac{5}{1} = 5$.",
+    },
+  ],
+};

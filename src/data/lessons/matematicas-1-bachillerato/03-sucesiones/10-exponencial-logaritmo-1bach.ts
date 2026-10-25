@@ -1,0 +1,116 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_3_SUBTITLE } from "@/data/lessons/shared";
+
+export const exponencialLogaritmo1bachLesson: InteractiveLesson = {
+  slug: "exponencial-logaritmo-1bach",
+  title: "10. Función exponencial y logaritmo neperiano",
+  subtitle: TEMA_1BACH_3_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "exponencial",
+      type: "slide",
+      help: [{ label: "Entre 2 y 3", message: "$e \\approx 2{,}718$ está entre $2$ y $3$, así que $e^x$ crece más deprisa que $2^x$ y más despacio que $3^x$." }],
+      title: "La función exponencial eˣ",
+      blocks: [
+        { kind: "rule", title: "f(x) = eˣ", text: "Es la función exponencial de base $e$. Sus propiedades:", formula: "e^0 = 1,\\quad e^x > 0,\\quad e^{a+b} = e^a e^b,\\quad e^{-x} = \\dfrac{1}{e^x}" },
+        { kind: "text", text: "Es **creciente**, está siempre por encima del eje $x$ (tiene como asíntota el eje $x$ cuando $x \\to -\\infty$) y pasa por $(0, 1)$." },
+      ],
+      visual: { kind: "tool", tool: "exponencial-explorador", params: { a: 3, b: 1 }, hint: "Compara bases 2 y 3: e ≈ 2,718 cae entre ellas. Todas pasan por (0, 1) y nunca tocan el eje x." },
+    },
+    {
+      id: "logaritmo",
+      type: "slide",
+      help: [{ label: "Inversas", message: "Dos funciones son inversas si una deshace a la otra. Sus gráficas son simétricas respecto de la recta $y = x$." }],
+      title: "El logaritmo neperiano, inversa de eˣ",
+      blocks: [
+        { kind: "definition", text: "El **logaritmo neperiano** $\\ln x = \\log_e x$ es la función **inversa** de $e^x$: $\\ln x = y \\iff e^y = x$. Solo está definido para $x > 0$." },
+        { kind: "facts", items: [
+          { tex: "\\ln(e^x) = x", label: "" },
+          { tex: "e^{\\ln x} = x\\ (x > 0)", label: "" },
+          { tex: "\\ln 1 = 0,\\quad \\ln e = 1", label: "" },
+        ] },
+        { kind: "text", text: "Tiene las mismas propiedades que cualquier logaritmo: $\\ln(ab) = \\ln a + \\ln b$, $\\ln\\frac{a}{b} = \\ln a - \\ln b$, $\\ln a^k = k\\ln a$." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-ln",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$e^0 = 1$, luego $\\ln 1 = 0$. Pero la pregunta es el $x$ con $\\ln x = 0$." }],
+      title: "ln x = 0",
+      question: "¿Para qué valor de $x$ se cumple $\\ln x = 0$? (solo el número)",
+      correctAnswers: ["1"],
+      explanation: "$\\ln x = 0 \\iff e^0 = x \\iff x = 1$.",
+    },
+    {
+      id: "check-inversa",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una función y su inversa se deshacen: $\\ln(e^x) = x$." }],
+      title: "ln(e³)",
+      question: "¿Cuánto vale $\\ln(e^{3})$?",
+      choices: [
+        { id: "a", label: "$3$" },
+        { id: "b", label: "$e^3$", incorrectFeedback: "El logaritmo neperiano **deshace** la exponencial: el resultado es el exponente." },
+        { id: "c", label: "$1$", incorrectFeedback: "Eso sería $\\ln e$. Aquí el exponente es $3$." },
+        { id: "d", label: "$\\frac{1}{3}$", incorrectFeedback: "No hay ninguna fracción: $\\ln e^3 = 3\\ln e = 3$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\ln(e^3) = 3\\,\\ln e = 3\\cdot 1 = 3$.",
+    },
+    {
+      id: "ecuaciones",
+      type: "slide",
+      help: [{ label: "Calculadora", message: "La tecla «ln» da el logaritmo neperiano y «eˣ» (segunda función de «ln») la exponencial. $\\ln 5 \\approx 1{,}6094$." }],
+      title: "Resolver ecuaciones exponenciales y logarítmicas",
+      blocks: [
+        { kind: "example", title: "Con la exponencial", lines: [
+          { math: "e^x = 5 \\Rightarrow x = \\ln 5 \\approx 1{,}609" },
+          { math: "e^{2x} = 7 \\Rightarrow 2x = \\ln 7 \\Rightarrow x = \\dfrac{\\ln 7}{2} \\approx 0{,}973" },
+        ] },
+        { kind: "example", title: "Con el logaritmo", lines: [
+          { math: "\\ln x = 2 \\Rightarrow x = e^2 \\approx 7{,}389" },
+        ] },
+        { kind: "text", text: "Se aplica **la función inversa** a los dos miembros: el logaritmo para quitar una exponencial y la exponencial para quitar un logaritmo." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-ecuacion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Aplica $\\ln$ a los dos lados: $2x = \\ln 7$." }],
+      title: "e^(2x) = 7",
+      question: "Resuelve $e^{2x} = 7$.",
+      choices: [
+        { id: "a", label: "$x = \\dfrac{\\ln 7}{2}$" },
+        { id: "b", label: "$x = \\ln 7 - 2$", incorrectFeedback: "El $2$ **multiplica** a $x$ en el exponente: hay que dividir por $2$, no restar." },
+        { id: "c", label: "$x = 2\\ln 7$", incorrectFeedback: "$2x = \\ln 7$, luego $x$ es la **mitad** de $\\ln 7$." },
+        { id: "d", label: "$x = \\dfrac{7}{2}$", incorrectFeedback: "Hay que aplicar el logaritmo; $\\frac{7}{2}$ saldría de $2x = 7$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\ln e^{2x} = \\ln 7 \\Rightarrow 2x = \\ln 7 \\Rightarrow x = \\frac{\\ln 7}{2} \\approx 0{,}973$.",
+    },
+    {
+      id: "check-propiedad",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Resta de logaritmos = logaritmo del cociente." }],
+      title: "Propiedades de ln",
+      question: "¿A qué es igual $\\ln 6 - \\ln 2$?",
+      choices: [
+        { id: "a", label: "$\\ln 3$" },
+        { id: "b", label: "$\\ln 4$", incorrectFeedback: "$\\ln 6 - \\ln 2 = \\ln(6 - 2)$ **no** es cierto: la resta de logaritmos es el logaritmo del **cociente**." },
+        { id: "c", label: "$\\dfrac{\\ln 6}{\\ln 2}$", incorrectFeedback: "El cociente de logaritmos es otra cosa (cambio de base)." },
+        { id: "d", label: "$\\ln 12$", incorrectFeedback: "$\\ln 12 = \\ln 6 + \\ln 2$, que es la **suma**." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\ln 6 - \\ln 2 = \\ln\\frac{6}{2} = \\ln 3$.",
+    },
+  ],
+};

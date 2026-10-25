@@ -1,0 +1,100 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const razonesAgudas1bachLesson: InteractiveLesson = {
+  slug: "razones-agudas-1bach",
+  title: "2. Razones trigonométricas y relaciones fundamentales",
+  subtitle: TEMA_1BACH_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "razones",
+      type: "slide",
+      help: [{ label: "Semejanza", message: "Las razones no dependen del tamaño del triángulo, solo del ángulo: dos triángulos rectángulos con el mismo ángulo agudo son semejantes." }],
+      title: "Seno, coseno y tangente",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\sin\\alpha = \\dfrac{\\text{cateto opuesto}}{\\text{hipotenusa}}", label: "seno" },
+          { tex: "\\cos\\alpha = \\dfrac{\\text{cateto contiguo}}{\\text{hipotenusa}}", label: "coseno" },
+          { tex: "\\tan\\alpha = \\dfrac{\\text{cateto opuesto}}{\\text{cateto contiguo}}", label: "tangente" },
+        ] },
+      ],
+      visual: { kind: "anim", scene: "trig-triangulo-razones", params: { a: 35 } },
+    },
+    {
+      id: "fundamentales",
+      type: "slide",
+      help: [{ label: "Demostración", message: "Con catetos $a$, $b$ e hipotenusa $c$: $\\sin^2\\alpha + \\cos^2\\alpha = \\frac{a^2 + b^2}{c^2} = 1$ por Pitágoras." }],
+      title: "Las relaciones fundamentales",
+      blocks: [
+        { kind: "rule", title: "Primera y segunda", formula: "\\sin^2\\alpha + \\cos^2\\alpha = 1\\qquad \\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}" },
+        { kind: "rule", title: "Consecuencia", formula: "1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}" },
+        { kind: "text", text: "Conocida **una** razón y el cuadrante, se pueden hallar todas las demás sin calculadora." },
+      ],
+      visual: { kind: "tool", tool: "trig-explorador", params: { a: 35, b: 6 }, hint: "Mueve el ángulo y comprueba que sen² + cos² vale siempre 1." },
+    },
+    {
+      id: "check-sen",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\sin^2\\alpha = 1 - \\cos^2\\alpha = 1 - \\frac{9}{25}$." }],
+      title: "De coseno a seno",
+      question: "Si $\\cos\\alpha = \\dfrac{3}{5}$ y $\\alpha$ es agudo, ¿cuánto vale $\\sin\\alpha$? (con coma decimal)",
+      correctAnswers: ["0,8", "0.8", "4/5"],
+      explanation: "$\\sin\\alpha = \\sqrt{1 - \\frac{9}{25}} = \\sqrt{\\frac{16}{25}} = \\frac{4}{5} = 0{,}8$, y entonces $\\tan\\alpha = \\frac{4}{3}$.",
+    },
+    {
+      id: "notables",
+      type: "slide",
+      help: [{ label: "De dónde salen", message: "$45^\\circ$: la diagonal de un cuadrado de lado 1 mide $\\sqrt{2}$. $30^\\circ$ y $60^\\circ$: la altura de un triángulo equilátero de lado 2 mide $\\sqrt{3}$." }],
+      title: "Los ángulos notables",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\sin 30^\\circ = \\tfrac{1}{2}", label: "" },
+          { tex: "\\cos 30^\\circ = \\tfrac{\\sqrt{3}}{2}", label: "" },
+          { tex: "\\tan 30^\\circ = \\tfrac{\\sqrt{3}}{3}", label: "" },
+          { tex: "\\sin 45^\\circ = \\cos 45^\\circ = \\tfrac{\\sqrt{2}}{2}", label: "" },
+          { tex: "\\tan 45^\\circ = 1", label: "" },
+          { tex: "\\sin 60^\\circ = \\tfrac{\\sqrt{3}}{2}", label: "" },
+          { tex: "\\cos 60^\\circ = \\tfrac{1}{2}", label: "" },
+          { tex: "\\tan 60^\\circ = \\sqrt{3}", label: "" },
+        ] },
+      ],
+      visual: { kind: "anim", scene: "trig-notables", params: { a: 30 } },
+    },
+    {
+      id: "check-tg",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\tan\\alpha = \\frac{\\sin\\alpha}{\\cos\\alpha}$." }],
+      title: "tg 60°",
+      question: "¿Cuánto vale $\\tan 60^\\circ$?",
+      choices: [
+        { id: "a", label: "$\\sqrt{3}$" },
+        { id: "b", label: "$\\dfrac{\\sqrt{3}}{3}$", incorrectFeedback: "Es la tangente de $30^\\circ$. Para $60^\\circ$: $\\frac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$." },
+        { id: "c", label: "$1$", incorrectFeedback: "Es la tangente de $45^\\circ$." },
+        { id: "d", label: "$\\dfrac{\\sqrt{3}}{2}$", incorrectFeedback: "Es el seno de $60^\\circ$, no la tangente." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\tan 60^\\circ = \\dfrac{\\sin 60^\\circ}{\\cos 60^\\circ} = \\dfrac{\\sqrt{3}/2}{1/2} = \\sqrt{3}$.",
+    },
+    {
+      id: "check-identidad",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ entre $\\cos^2\\alpha$." }],
+      title: "Una consecuencia",
+      question: "¿A qué es igual $1 + \\tan^2\\alpha$?",
+      choices: [
+        { id: "a", label: "$\\dfrac{1}{\\cos^2\\alpha}$" },
+        { id: "b", label: "$\\dfrac{1}{\\sin^2\\alpha}$", incorrectFeedback: "Esa es $1 + \\frac{\\cos^2\\alpha}{\\sin^2\\alpha}$, la cotangente." },
+        { id: "c", label: "$\\sin^2\\alpha$", incorrectFeedback: "No tiene sentido: $1 + \\tan^2\\alpha \\geq 1$ y $\\sin^2\\alpha \\leq 1$." },
+        { id: "d", label: "$\\cos^2\\alpha$", incorrectFeedback: "$1 + \\tan^2\\alpha \\geq 1$, mientras que $\\cos^2\\alpha \\leq 1$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$1 + \\frac{\\sin^2\\alpha}{\\cos^2\\alpha} = \\frac{\\cos^2\\alpha + \\sin^2\\alpha}{\\cos^2\\alpha} = \\frac{1}{\\cos^2\\alpha}$.",
+    },
+  ],
+};

@@ -1,0 +1,92 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const percentilesCuartiles1bachLesson: InteractiveLesson = {
+  slug: "percentiles-cuartiles-1bach",
+  title: "6. Percentiles, cuartiles y diagrama de caja",
+  subtitle: TEMA_1BACH_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "Posición", message: "Para el percentil $p$ se calcula $n\\cdot p/100$: si sale entero se toma ese lugar; si no, se toma el lugar siguiente (aproximación por exceso)." }],
+      title: "El percentil p",
+      blocks: [
+        { kind: "definition", text: "El **percentil $p$** es un valor tal que el $p\\,\\%$ de los datos es menor o igual que él. Los percentiles $25$, $50$ y $75$ son los **cuartiles** $Q_1$, $Q_2$ y $Q_3$; el segundo coincide con la **mediana**." },
+        { kind: "example", title: "30 pesos ordenados", lines: [
+          { math: "P_{30}:\\ 30\\cdot 0{,}30 = 9\\ \\Rightarrow\\ \\text{dato del lugar 9} = 57{,}29" },
+          { math: "P_{15}:\\ 30\\cdot 0{,}15 = 4{,}5\\ \\Rightarrow\\ \\text{lugar 5} = 52{,}35" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "percentiles-explorador", initial: [0, 30], hint: "Mueve el percentil: la herramienta calcula la posición n·p/100 y el valor. Con p = 15 la posición es 4,5 y se toma el lugar 5." },
+    },
+    {
+      id: "caja",
+      type: "slide",
+      help: [{ label: "Resumen de cinco números", message: "Mínimo, $Q_1$, mediana, $Q_3$ y máximo resumen la distribución. El rango intercuartílico $Q_3 - Q_1$ mide la dispersión del 50 % central." }],
+      title: "Diagrama de caja y rango intercuartílico",
+      blocks: [
+        { kind: "rule", title: "Rango intercuartílico", formula: "RIC = Q_3 - Q_1\\qquad\\text{(contiene el 50 \\% central de los datos)}" },
+      ],
+      visual: { kind: "anim", scene: "caja-bigotes" },
+    },
+    {
+      id: "check-p30",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$30\\cdot 0{,}30 = 9$: lugar $9$ de los datos ordenados." }],
+      title: "Percentil 30",
+      question: "Con los $30$ pesos ordenados, el dato del lugar $9$ es $57{,}29$. ¿Cuánto vale el percentil $30$? (decimal)",
+      correctAnswers: ["57,29", "57.29"],
+      explanation: "$30\\cdot 30/100 = 9$: el percentil $30$ es el noveno dato, $57{,}29$ kg.",
+    },
+    {
+      id: "check-lugar",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$30\\cdot 15/100 = 4{,}5$, que no es entero: se toma por exceso." }],
+      title: "Posición no entera",
+      question: "Para el percentil $15$ de $30$ datos sale la posición $4{,}5$. ¿Qué lugar de los datos ordenados se toma? (solo el número)",
+      correctAnswers: ["5"],
+      explanation: "Al no ser entera, se toma el lugar siguiente: el $5.º$ ($52{,}35$ kg).",
+    },
+    {
+      id: "check-cuartiles",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$n = 20$: $Q_3$ es el percentil $75$, lugar $20\\cdot 0{,}75 = 15$. Cuenta con las frecuencias acumuladas: $3, 10, 15, 18, 20$." }],
+      title: "Tercer cuartil",
+      question: "Distribución $x_i = 5, 10, 15, 20, 25$ con $n_i = 3, 7, 5, 3, 2$ ($n = 20$). ¿Cuánto vale $Q_3$? (solo el número)",
+      correctAnswers: ["15"],
+      explanation: "Acumuladas $N_i = 3, 10, 15, 18, 20$. $Q_3$ ocupa el lugar $15$, que es un $15$. Además $Q_1 = 10$ (lugar $5$) y la mediana es $\\frac{10 + 15}{2} = 12{,}5$.",
+    },
+    {
+      id: "check-ric",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$RIC = Q_3 - Q_1 = 15 - 10$." }],
+      title: "Rango intercuartílico",
+      question: "Con $Q_1 = 10$ y $Q_3 = 15$, ¿cuánto vale el rango intercuartílico? (solo el número)",
+      correctAnswers: ["5"],
+      explanation: "$RIC = 15 - 10 = 5$: la caja contiene el $50\\,\\%$ de los datos.",
+    },
+    {
+      id: "check-significado",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Entre $Q_1$ y $Q_3$ hay desde el $25\\,\\%$ hasta el $75\\,\\%$ de los datos ordenados." }],
+      title: "¿Qué dice Q₃?",
+      question: "Si $Q_3 = 81$ kg en un grupo de estudiantes, significa que…",
+      choices: [
+        { id: "a", label: "el $75\\,\\%$ de los estudiantes pesa $81$ kg o menos" },
+        { id: "b", label: "el $75\\,\\%$ pesa exactamente $81$ kg", incorrectFeedback: "Un percentil es un valor umbral, no un valor que tengan todos." },
+        { id: "c", label: "el $25\\,\\%$ pesa $81$ kg o menos", incorrectFeedback: "Eso diría que $81$ es el primer cuartil." },
+        { id: "d", label: "la media es $81$ kg", incorrectFeedback: "El tercer cuartil no es la media." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$Q_3$ es el percentil $75$: deja por debajo (o igual) el $75\\,\\%$ de los datos.",
+    },
+  ],
+};

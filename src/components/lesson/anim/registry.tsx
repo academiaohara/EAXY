@@ -1,4 +1,14 @@
 // industrial-imports
+import { buildEstadisticaConceptos } from "@/components/lesson/anim/scenes/bach1-estadistica";
+import { buildBayesFrecuencias } from "@/components/lesson/anim/scenes/bach1-probabilidad";
+import { buildSecanteTangente, buildDerivadaSigno, buildExtremosCriterios } from "@/components/lesson/anim/scenes/bach1-derivadas";
+import { buildLimiteAproximacion, buildAsintotasTipos } from "@/components/lesson/anim/scenes/bach1-limites";
+import { buildProyeccionVector } from "@/components/lesson/anim/scenes/bach1-geo";
+import { buildRadianArco, buildCirculoGoniometrico } from "@/components/lesson/anim/scenes/bach1-trig";
+import { buildSerieGeometricaSaltos } from "@/components/lesson/anim/scenes/bach1-sucesiones";
+import { buildGaussEliminacion } from "@/components/lesson/anim/scenes/bach1-sistemas";
+import { buildComplejoSumaVectores, buildComplejoGiroI, buildComplejoPolar, buildComplejoProductoPolar, buildComplejoRaices } from "@/components/lesson/anim/scenes/bach1-complejos";
+import { buildLogaritmoExponente, buildLogaritmoProducto } from "@/components/lesson/anim/scenes/bach1-logaritmos";
 import { buildArbolConteo, buildPermutacionesArbol, buildCombinacionesDividir } from "@/components/lesson/anim/scenes/eso4b-comb";
 import { buildTrigTrianguloRazones, buildTrigSemejantes, buildTrigNotables, buildTrigAlturaArbol } from "@/components/lesson/anim/scenes/eso4b-trig";
 import { buildDivisionPolinomios, buildRuffiniTabla } from "@/components/lesson/anim/scenes/eso4b-polinomios";
@@ -578,6 +588,25 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "arbol-conteo": (p) => buildArbolConteo(p),
   "permutaciones-arbol": () => buildPermutacionesArbol(),
   "combinaciones-dividir": () => buildCombinacionesDividir(),
+  "complejo-suma-vectores": (p) => buildComplejoSumaVectores(p),
+  "complejo-giro-i": (p) => buildComplejoGiroI(p),
+  "complejo-polar": (p) => buildComplejoPolar(p),
+  "complejo-producto-polar": (p) => buildComplejoProductoPolar(p),
+  "complejo-raices": (p) => buildComplejoRaices(p),
+  "logaritmo-exponente": (p) => buildLogaritmoExponente(p),
+  "logaritmo-producto": (p) => buildLogaritmoProducto(p),
+  "gauss-eliminacion": (p) => buildGaussEliminacion(p),
+  "serie-geometrica-saltos": (p) => buildSerieGeometricaSaltos(p),
+  "radian-arco": (p) => buildRadianArco(p),
+  "circulo-goniometrico": (p) => buildCirculoGoniometrico(p),
+  "proyeccion-vector": (p) => buildProyeccionVector(p),
+  "limite-aproximacion": () => buildLimiteAproximacion(),
+  "asintotas-tipos": (p) => buildAsintotasTipos(p),
+  "secante-tangente": () => buildSecanteTangente(),
+  "derivada-signo": () => buildDerivadaSigno(),
+  "extremos-criterios": () => buildExtremosCriterios(),
+  "bayes-frecuencias": () => buildBayesFrecuencias(),
+  "estadistica-conceptos": () => buildEstadisticaConceptos(),
   /* industrial-end */
 };
 
