@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildEscalaMaterialZoom, buildPolimeroCadenas, buildConformadoProcesos } from "@/components/lesson/anim/scenes/industrial/tec1-materiales";
 import { buildProcesoDisenoCiclo, buildGanttCaminoCritico } from "@/components/lesson/anim/scenes/industrial/tec1-proyectos";
 import { buildPoblacionMuestra, buildTiposMuestreo, buildTclMedias, buildContrasteRegion } from "@/components/lesson/anim/scenes/ccss2-estimacion";
 import { buildSemiplanoPrueba, buildRectasNivel } from "@/components/lesson/anim/scenes/ccss2-programacion";
@@ -673,6 +674,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "contraste-region": () => buildContrasteRegion(),
   "proceso-diseno-ciclo": () => buildProcesoDisenoCiclo(),
   "gantt-camino-critico": () => buildGanttCaminoCritico(),
+  "escala-material-zoom": () => buildEscalaMaterialZoom(),
+  "polimero-cadenas": () => buildPolimeroCadenas(),
+  "conformado-procesos": () => buildConformadoProcesos(),
   /* industrial-end */
 };
 

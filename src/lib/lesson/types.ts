@@ -999,6 +999,9 @@ export type SlideAnimId =
   | "contraste-region"
   | "proceso-diseno-ciclo"
   | "gantt-camino-critico"
+  | "escala-material-zoom"
+  | "polimero-cadenas"
+  | "conformado-procesos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1518,6 +1521,18 @@ export type SlideToolId =
   | "roles-equipo-explorador"
   | "prototipo-ensayo-explorador"
   | "memoria-tecnica-explorador"
+  | "mesa-muestras-explorador"
+  | "estructura-atomica-explorador"
+  | "propiedades-comparador-explorador"
+  | "carbono-hierro-explorador"
+  | "polimero-temperatura-explorador"
+  | "compuesto-mezclas-explorador"
+  | "tratamiento-curva-explorador"
+  | "proceso-coste-explorador"
+  | "impresion-3d-explorador"
+  | "tolerancia-calidad-explorador"
+  | "fabrica-riesgos-explorador"
+  | "reciclaje-energia-explorador"
   /* industrial-tool-end */;
 
 /**

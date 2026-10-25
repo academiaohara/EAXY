@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MesaMuestrasExplorador, EstructuraAtomicaExplorador, PropiedadesComparadorExplorador, CarbonoHierroExplorador, PolimeroTemperaturaExplorador, CompuestoMezclasExplorador, TratamientoCurvaExplorador, ProcesoCosteExplorador, Impresion3dExplorador, ToleranciaCalidadExplorador, FabricaRiesgosExplorador, ReciclajeEnergiaExplorador } from "@/components/lesson/slide/tools/Tec1MaterialesTools";
 import { ObjetoProblemaExplorador, MatrizDecisionExplorador, RequisitosExplorador, GanttExplorador, RolesEquipoExplorador, PrototipoEnsayoExplorador, MemoriaTecnicaExplorador } from "@/components/lesson/slide/tools/Tec1ProyectosTools";
 import { MediaMuestralExplorador, ProporcionMuestralExplorador, ContrasteMediaExplorador, ContrasteProporcionExplorador } from "@/components/lesson/slide/tools/Ccss2EstimacionTools";
 import { ProgramacionLinealExplorador } from "@/components/lesson/slide/tools/CcssProgramacionTools";
@@ -1199,6 +1200,30 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PrototipoEnsayoExplorador block={block} />;
     case "memoria-tecnica-explorador":
       return <MemoriaTecnicaExplorador block={block} />;
+    case "mesa-muestras-explorador":
+      return <MesaMuestrasExplorador block={block} />;
+    case "estructura-atomica-explorador":
+      return <EstructuraAtomicaExplorador block={block} />;
+    case "propiedades-comparador-explorador":
+      return <PropiedadesComparadorExplorador block={block} />;
+    case "carbono-hierro-explorador":
+      return <CarbonoHierroExplorador block={block} />;
+    case "polimero-temperatura-explorador":
+      return <PolimeroTemperaturaExplorador block={block} />;
+    case "compuesto-mezclas-explorador":
+      return <CompuestoMezclasExplorador block={block} />;
+    case "tratamiento-curva-explorador":
+      return <TratamientoCurvaExplorador block={block} />;
+    case "proceso-coste-explorador":
+      return <ProcesoCosteExplorador block={block} />;
+    case "impresion-3d-explorador":
+      return <Impresion3dExplorador block={block} />;
+    case "tolerancia-calidad-explorador":
+      return <ToleranciaCalidadExplorador block={block} />;
+    case "fabrica-riesgos-explorador":
+      return <FabricaRiesgosExplorador block={block} />;
+    case "reciclaje-energia-explorador":
+      return <ReciclajeEnergiaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
