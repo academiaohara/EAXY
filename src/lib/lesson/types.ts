@@ -990,6 +990,7 @@ export type SlideAnimId =
   | "teorema-fundamental"
   | "area-entre-curvas"
   | "solido-revolucion"
+  | "pascal-binomio"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1493,6 +1494,10 @@ export type SlideToolId =
   | "area-curvas-explorador"
   | "volumen-revolucion-explorador"
   | "integral-metodos-explorador"
+  | "distribucion-discreta-explorador"
+  | "chebychev-explorador"
+  | "densidad-explorador"
+  | "intervalo-media-explorador"
   /* industrial-tool-end */;
 
 /**

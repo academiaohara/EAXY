@@ -472,6 +472,8 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/derivadas": "funciones-elementales",
   "matematicas-2-bachillerato/representacion-de-funciones": "funciones-elementales",
   "matematicas-2-bachillerato/integrales": "calculo-integral",
+  "matematicas-2-bachillerato/probabilidad-y-combinatoria": "probabilidad",
+  "matematicas-2-bachillerato/distribuciones-de-probabilidad": "probabilidad",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

@@ -466,6 +466,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `teorema-fundamental` | La función área A(x) = ∫₀ˣ t dt: el incremento de área entre h tiende a la altura f(x) |  |
 | `area-entre-curvas` | Área entre y = 2x e y = x² en [0, 2] con una franja vertical |  |
 | `solido-revolucion` | Sólido de revolución de y = √x en [0, 4]: discos y volumen 8π |  |
+| `pascal-binomio` | Triángulo de Pascal: cada número es la suma de los dos de encima, C(5, 2) = 10 y la fila de (a + b)⁴ |  |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -844,6 +845,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `area-curvas-explorador` | Área entre y = m·x e y = x² (m³/6) | `initial`: `[m (1–5)]` |
 | `volumen-revolucion-explorador` | Volumen de cono, paraboloide y esfera por discos | `initial`: `[perfil 0–2, b 1–5]` |
 | `integral-metodos-explorador` | Nueve integrales resueltas paso a paso (potencia, exponencial, casi inmediata, cambio, partes, racional) con la comprobación F′ = f en un punto | `initial`: `[integral 0–8, pasos 0–3]` |
+| `distribucion-discreta-explorador` | Juego con n monedas: tabla de ganancias y probabilidades, media, varianza y desviación típica | `initial`: `[monedas 1–6, premio por cara 0–5, precio 0–6]` |
+| `chebychev-explorador` | B(20; 0,5): probabilidad exacta dentro de k desviaciones frente a la cota 1 − 1/k² | `initial`: `[k·10 (10–40)]` |
+| `densidad-explorador` | Densidad f(x) = x/50 en [0, 10]: probabilidad de un intervalo como área y media | `initial`: `[c, d (0–10)]` |
+| `intervalo-media-explorador` | Intervalo de confianza para la media: x̄ ± z·σ/√n según σ, n y nivel de confianza | `initial`: `[x̄, σ (1–30), índice de n (0–10), nivel 0–2]` |
 
 ## Respuesta como fracción
 

@@ -19,6 +19,8 @@ const TEMAS: [number, string, number][] = [
   [8, "derivadas", 12],
   [9, "representacion-de-funciones", 12],
   [10, "integrales", 12],
+  [11, "probabilidad-y-combinatoria", 12],
+  [12, "distribuciones-de-probabilidad", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildPascalBinomio } from "@/components/lesson/anim/scenes/bach2-prob";
 import { buildPrimitivaFamilia, buildRiemannSumas, buildTeoremaFundamental, buildAreaEntreCurvas, buildSolidoRevolucion } from "@/components/lesson/anim/scenes/bach2-integrales";
 import { buildBolzanoBiseccion, buildRolleLagrange } from "@/components/lesson/anim/scenes/bach2-analisis";
 import { buildProyeccionPuntoPlano3d, buildDistanciaPuntoRecta3d, buildDistanciaRectasCruzan3d } from "@/components/lesson/anim/scenes/bach2-metrica";
@@ -660,6 +661,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "teorema-fundamental": () => buildTeoremaFundamental(),
   "area-entre-curvas": () => buildAreaEntreCurvas(),
   "solido-revolucion": () => buildSolidoRevolucion(),
+  "pascal-binomio": () => buildPascalBinomio(),
   /* industrial-end */
 };
 

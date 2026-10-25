@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DistribucionDiscretaExplorador, ChebychevExplorador, DensidadExplorador, IntervaloMediaExplorador } from "@/components/lesson/slide/tools/Bach2ProbTools";
 import { IntegralPolinomioExplorador, RiemannExplorador, BarrowExplorador, AreaCurvasExplorador, VolumenRevolucionExplorador, IntegralMetodosExplorador } from "@/components/lesson/slide/tools/Bach2IntegralesTools";
 import { UnoInfinitoExplorador, LHopitalExplorador, EstudioFuncionExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
 import { AngulosEspacioExplorador, ProyeccionSimetricoExplorador, DistanciasEspacioExplorador } from "@/components/lesson/slide/tools/Bach2MetricaTools";
@@ -1163,6 +1164,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <VolumenRevolucionExplorador block={block} />;
     case "integral-metodos-explorador":
       return <IntegralMetodosExplorador block={block} />;
+    case "distribucion-discreta-explorador":
+      return <DistribucionDiscretaExplorador block={block} />;
+    case "chebychev-explorador":
+      return <ChebychevExplorador block={block} />;
+    case "densidad-explorador":
+      return <DensidadExplorador block={block} />;
+    case "intervalo-media-explorador":
+      return <IntervaloMediaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
