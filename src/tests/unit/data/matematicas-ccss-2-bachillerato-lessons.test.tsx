@@ -15,6 +15,7 @@ const TEMAS: [number, string, number][] = [
   [4, "limites-y-continuidad", 12],
   [5, "derivadas", 12],
   [6, "integrales", 12],
+  [7, "probabilidad", 10],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);
