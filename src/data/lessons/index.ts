@@ -11,6 +11,7 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/06-algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/05-algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
+import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/04-algoritmos-diagramas-flujo";
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
 import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
@@ -68,6 +69,7 @@ import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { areasYVolumenes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/12-areas-y-volumenes-2bach";
+import { arquitecturaSistemasInformaticosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/01-arquitectura-sistemas-informaticos";
 import { asignacionProbabilidades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/03-asignacion-probabilidades-1bach";
 import { asignacionProbabilidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/03-asignacion-probabilidades-2bach";
 import { asignacionProbabilidadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/03-asignacion-probabilidades-ccss1";
@@ -97,6 +99,7 @@ import { binomialParametrosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { binomioDeNewton2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/11-binomio-de-newton-2bach";
 import { binomioNewtonCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/08-binomio-newton-ccss1";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
+import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
@@ -157,6 +160,7 @@ import { condicionadaIndependencia1bachLesson } from "@/data/lessons/matematicas
 import { condicionadaIndependencia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/05-condicionada-independencia-2bach";
 import { condicionadaIndependenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/06-condicionada-independencia-ccss1";
 import { condicionadaIndependenciaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/05-condicionada-independencia-ccss2";
+import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/06-condicionales-python";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
@@ -428,6 +432,7 @@ import { funcionTendenciaPeriodicidad4esobLesson } from "@/data/lessons/matemati
 import { funcionTransferenciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/06-funcion-transferencia";
 import { funcionesExponencialesLogaritmicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/10-funciones-exponenciales-logaritmicas-2bach";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
+import { funcionesModularidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/08-funciones-modularidad";
 import { funcionesPolinomicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/07-funciones-polinomicas-2bach";
 import { funcionesPolinomicasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/10-funciones-polinomicas-ccss2";
 import { funcionesRacionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/04-funciones-racionales-1bach";
@@ -734,6 +739,7 @@ import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
+import { primerosPasosPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/05-primeros-pasos-python";
 import { primitivaIntegralIndefinida2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/01-primitiva-integral-indefinida-2bach";
 import { primitivaIntegralIndefinidaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/01-primitiva-integral-indefinida-ccss2";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
@@ -844,6 +850,7 @@ import { prototiposEnsayoMejoraLesson } from "@/data/lessons/tecnologia-ingenier
 import { proyeccionOrtogonalidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/06-proyeccion-ortogonalidad-2bach";
 import { proyeccionPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/03-proyeccion-punto-2bach";
 import { proyeccionRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/04-proyeccion-recta-plano-2bach";
+import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/09-pruebas-depuracion-codigo";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
@@ -911,9 +918,11 @@ import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
+import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
+import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
@@ -981,6 +990,7 @@ import { sistemasNoLineales4esobLesson } from "@/data/lessons/matematicas-4-eso-
 import { sistemasNoLinealesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/19-sistemas-no-lineales-ccss1";
 import { sistemasNoLinealesGraficaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/20-sistemas-no-lineales-grafica-ccss1";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
+import { sistemasOperativosRecursosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/02-sistemas-operativos-recursos";
 import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
 import { sistemasParametro1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/10-sistemas-parametro-1-ccss2";
 import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
@@ -1115,6 +1125,7 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "algoritmos-diagramas-flujo": algoritmosDiagramasFlujoLesson,
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
   "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
@@ -1172,6 +1183,7 @@ export const interactiveLessons = {
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
   "areas-y-volumenes-2bach": areasYVolumenes2bachLesson,
+  "arquitectura-sistemas-informaticos": arquitecturaSistemasInformaticosLesson,
   "asignacion-probabilidades-1bach": asignacionProbabilidades1bachLesson,
   "asignacion-probabilidades-2bach": asignacionProbabilidades2bachLesson,
   "asignacion-probabilidades-ccss1": asignacionProbabilidadesCcss1Lesson,
@@ -1201,6 +1213,7 @@ export const interactiveLessons = {
   "binomio-de-newton-2bach": binomioDeNewton2bachLesson,
   "binomio-newton-ccss1": binomioNewtonCcss1Lesson,
   "bomba-calor": bombaCalorLesson,
+  "bucles-for-while": buclesForWhileLesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
@@ -1261,6 +1274,7 @@ export const interactiveLessons = {
   "condicionada-independencia-2bach": condicionadaIndependencia2bachLesson,
   "condicionada-independencia-ccss1": condicionadaIndependenciaCcss1Lesson,
   "condicionada-independencia-ccss2": condicionadaIndependenciaCcss2Lesson,
+  "condicionales-python": condicionalesPythonLesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
@@ -1532,6 +1546,7 @@ export const interactiveLessons = {
   "funcion-transferencia": funcionTransferenciaLesson,
   "funciones-exponenciales-logaritmicas-2bach": funcionesExponencialesLogaritmicas2bachLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
+  "funciones-modularidad": funcionesModularidadLesson,
   "funciones-polinomicas-2bach": funcionesPolinomicas2bachLesson,
   "funciones-polinomicas-ccss2": funcionesPolinomicasCcss2Lesson,
   "funciones-racionales-1bach": funcionesRacionales1bachLesson,
@@ -1838,6 +1853,7 @@ export const interactiveLessons = {
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
+  "primeros-pasos-python": primerosPasosPythonLesson,
   "primitiva-integral-indefinida-2bach": primitivaIntegralIndefinida2bachLesson,
   "primitiva-integral-indefinida-ccss2": primitivaIntegralIndefinidaCcss2Lesson,
   "prismas-2eso": prismas2esoLesson,
@@ -1948,6 +1964,7 @@ export const interactiveLessons = {
   "proyeccion-ortogonalidad-2bach": proyeccionOrtogonalidad2bachLesson,
   "proyeccion-punto-2bach": proyeccionPunto2bachLesson,
   "proyeccion-recta-plano-2bach": proyeccionRectaPlano2bachLesson,
+  "pruebas-depuracion-codigo": pruebasDepuracionCodigoLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
@@ -2015,9 +2032,11 @@ export const interactiveLessons = {
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
+  "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
+  "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
@@ -2085,6 +2104,7 @@ export const interactiveLessons = {
   "sistemas-no-lineales-ccss1": sistemasNoLinealesCcss1Lesson,
   "sistemas-no-lineales-grafica-ccss1": sistemasNoLinealesGraficaCcss1Lesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
+  "sistemas-operativos-recursos": sistemasOperativosRecursosLesson,
   "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
   "sistemas-parametro-1-ccss2": sistemasParametro1Ccss2Lesson,
   "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,

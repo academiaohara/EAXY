@@ -72,9 +72,7 @@ export function buildCargaMovilCircuito(): AnimBuild {
         <Canvas>
           <path d="M 130 90 L 670 90 L 670 300 L 130 300 Z" fill="none" stroke={MANIM.muted} strokeWidth={4} />
           <rect x={95} y={160} width={70} height={80} fill={MANIM.surface} />
-          <g transform="translate(130 200) rotate(90) translate(-130 -200)">
-            <Pila x={130} y={200} />
-          </g>
+          <Pila x={130} y={200} />
           <Fade show={beat >= 1}>
             <Txt x={130} y={265} size={20} color={MANIM.yellow} anchor="middle">
               V
@@ -133,9 +131,7 @@ export function buildSerieParaleloReparto(): AnimBuild {
               <Res x={340} y={100} w={110} color={MANIM.blue} label="R₁ = 2 Ω" />
               <Res x={590} y={100} w={110} color={MANIM.orange} label="R₂ = 4 Ω" />
               <rect x={100} y={170} width={80} height={60} fill={MANIM.surface} />
-              <g transform="translate(140 200) rotate(90) translate(-140 -200)">
-                <Pila x={140} y={200} />
-              </g>
+              <Pila x={140} y={200} />
               <Txt x={90} y={205} size={20} color={MANIM.yellow} anchor="end">
                 12 V
               </Txt>
@@ -168,9 +164,7 @@ export function buildSerieParaleloReparto(): AnimBuild {
                 R₂ = 3 Ω
               </Txt>
               <rect x={100} y={170} width={80} height={60} fill={MANIM.surface} />
-              <g transform="translate(140 200) rotate(90) translate(-140 -200)">
-                <Pila x={140} y={200} />
-              </g>
+              <Pila x={140} y={200} />
               <Txt x={90} y={205} size={20} color={MANIM.yellow} anchor="end">
                 12 V
               </Txt>
@@ -238,9 +232,7 @@ export function buildKirchhoffNodoMalla(): AnimBuild {
           <g>
             <path d="M 140 100 L 660 100 L 660 320 L 140 320 Z" fill="none" stroke={MANIM.muted} strokeWidth={4} />
             <rect x={100} y={170} width={80} height={80} fill={MANIM.surface} />
-            <g transform="translate(140 210) rotate(90) translate(-140 -210)">
-              <Pila x={140} y={210} />
-            </g>
+            <Pila x={140} y={210} />
             <Txt x={90} y={215} size={22} color={MANIM.yellow} anchor="end">
               +12 V
             </Txt>

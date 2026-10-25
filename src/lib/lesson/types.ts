@@ -1010,6 +1010,8 @@ export type SlideAnimId =
   | "carga-movil-circuito"
   | "serie-paralelo-reparto"
   | "kirchhoff-nodo-malla"
+  | "ciclo-instruccion"
+  | "bucle-iteraciones"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1568,6 +1570,14 @@ export type SlideToolId =
   | "transistor-conmutador-explorador"
   | "condensador-carga-explorador"
   | "reto-led-explorador"
+  | "ordenador-componentes-explorador"
+  | "procesos-memoria-explorador"
+  | "permisos-archivos-explorador"
+  | "texto-binario-explorador"
+  | "tamano-archivo-explorador"
+  | "diagrama-flujo-explorador"
+  | "python-traza-explorador"
+  | "tests-automaticos-explorador"
   /* industrial-tool-end */;
 
 /**

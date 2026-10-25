@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
 import { CargaCorrienteExplorador, OhmExplorador, CircuitoBasicoExplorador, ResistenciasExplorador, KirchhoffExplorador, ConsumoEnergiaExplorador, SobrecargaCircuitoExplorador, MultimetroExplorador, DiagnosticoCircuitoExplorador, DiodoLedExplorador, TransistorConmutadorExplorador, CondensadorCargaExplorador, RetoLedExplorador } from "@/components/lesson/slide/tools/Tec1CircuitosTools";
 import { MaquinaDesmontajeExplorador, PoleasCorreasExplorador, EngranajesExplorador, BicicletaExplorador, SinFinExplorador, BielaManivelaExplorador, LevaSeguidorExplorador, CremalleraTornilloExplorador, PalancaExplorador, PolipastoExplorador, DiscoGiratorioExplorador, MotorVirtualExplorador, ReductorRendimientoExplorador, TransmisionEditorExplorador } from "@/components/lesson/slide/tools/Tec1MecanismosTools";
 import { MesaMuestrasExplorador, EstructuraAtomicaExplorador, PropiedadesComparadorExplorador, CarbonoHierroExplorador, PolimeroTemperaturaExplorador, CompuestoMezclasExplorador, TratamientoCurvaExplorador, ProcesoCosteExplorador, Impresion3dExplorador, ToleranciaCalidadExplorador, FabricaRiesgosExplorador, ReciclajeEnergiaExplorador } from "@/components/lesson/slide/tools/Tec1MaterialesTools";
@@ -1280,6 +1281,22 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CondensadorCargaExplorador block={block} />;
     case "reto-led-explorador":
       return <RetoLedExplorador block={block} />;
+    case "ordenador-componentes-explorador":
+      return <OrdenadorComponentesExplorador block={block} />;
+    case "procesos-memoria-explorador":
+      return <ProcesosMemoriaExplorador block={block} />;
+    case "permisos-archivos-explorador":
+      return <PermisosArchivosExplorador block={block} />;
+    case "texto-binario-explorador":
+      return <TextoBinarioExplorador block={block} />;
+    case "tamano-archivo-explorador":
+      return <TamanoArchivoExplorador block={block} />;
+    case "diagrama-flujo-explorador":
+      return <DiagramaFlujoExplorador block={block} />;
+    case "python-traza-explorador":
+      return <PythonTrazaExplorador block={block} />;
+    case "tests-automaticos-explorador":
+      return <TestsAutomaticosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
