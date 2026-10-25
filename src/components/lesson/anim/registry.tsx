@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildVectorComponentes3d, buildVectoresSuma3d, buildProductoEscalarProyeccion, buildProductoVectorial3d, buildParalelepipedoVolumen } from "@/components/lesson/anim/scenes/bach2-vectores";
 import { buildSistemaFormaMatricial, buildSistemaGaussAmpliada, buildRoucheCasos } from "@/components/lesson/anim/scenes/bach2-sistemas";
 import { buildDeterminanteSarrus, buildMatrizMenorAdjunto, buildDeterminanteAdjuntos, buildDeterminanteGauss } from "@/components/lesson/anim/scenes/bach2-determinantes";
 import { buildMatrizProducto, buildMatrizGaussJordan, buildMatrizRangoGauss, buildMatrizTraspuesta, buildGrafoAdyacencia, buildMatrizElementos, buildMatrizTipos } from "@/components/lesson/anim/scenes/bach2-matrices";
@@ -637,6 +638,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "sistema-forma-matricial": () => buildSistemaFormaMatricial(),
   "sistema-gauss-ampliada": (p) => buildSistemaGaussAmpliada(p),
   "rouche-casos": () => buildRoucheCasos(),
+  "vector-componentes-3d": (p) => buildVectorComponentes3d(p),
+  "vectores-suma-3d": (p) => buildVectoresSuma3d(p),
+  "producto-escalar-proyeccion": (p) => buildProductoEscalarProyeccion(p),
+  "producto-vectorial-3d": (p) => buildProductoVectorial3d(p),
+  "paralelepipedo-volumen": (p) => buildParalelepipedoVolumen(p),
   /* industrial-end */
 };
 

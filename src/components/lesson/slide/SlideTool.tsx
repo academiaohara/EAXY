@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { VectoresPuntosExplorador, VectoresDependenciaExplorador, ProductoEscalar3dExplorador, ProductoVectorialExplorador, ProductoMixtoExplorador } from "@/components/lesson/slide/tools/Bach2VectoresTools";
 import { SistemaRoucheExplorador, CramerExplorador, SistemaFamiliaExplorador } from "@/components/lesson/slide/tools/Bach2SistemasTools";
 import { DeterminanteAreaExplorador, DeterminantePropiedadesExplorador, DeterminanteProductoExplorador, DeterminanteParametroExplorador, AdjuntaExplorador, RangoMenoresExplorador } from "@/components/lesson/slide/tools/Bach2DeterminantesTools";
 import { MatrizOperacionesExplorador, MatrizProductoExplorador, MatrizInversaExplorador, MatrizPotenciasExplorador, GrafoCaminosExplorador, MatrizConmutaExplorador, EcuacionMatricialExplorador } from "@/components/lesson/slide/tools/Bach2MatricesTools";
@@ -1114,6 +1115,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CramerExplorador block={block} />;
     case "sistema-familia-explorador":
       return <SistemaFamiliaExplorador block={block} />;
+    case "vectores-puntos-explorador":
+      return <VectoresPuntosExplorador block={block} />;
+    case "vectores-dependencia-explorador":
+      return <VectoresDependenciaExplorador block={block} />;
+    case "producto-vectorial-explorador":
+      return <ProductoVectorialExplorador block={block} />;
+    case "producto-mixto-explorador":
+      return <ProductoMixtoExplorador block={block} />;
+    case "producto-escalar-3d-explorador":
+      return <ProductoEscalar3dExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

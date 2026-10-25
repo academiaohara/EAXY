@@ -99,3 +99,4 @@ export const TEMA_CCSS1_10_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 10 — D
 export const TEMA_2BACH_1_SUBTITLE = "2.º Bachillerato, Tema 1 — Matrices";
 export const TEMA_2BACH_2_SUBTITLE = "2.º Bachillerato, Tema 2 — Determinantes";
 export const TEMA_2BACH_3_SUBTITLE = "2.º Bachillerato, Tema 3 — Sistemas de ecuaciones lineales";
+export const TEMA_2BACH_4_SUBTITLE = "2.º Bachillerato, Tema 4 — Vectores en el espacio";

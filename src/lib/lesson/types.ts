@@ -972,6 +972,11 @@ export type SlideAnimId =
   | "sistema-forma-matricial"
   | "sistema-gauss-ampliada"
   | "rouche-casos"
+  | "vector-componentes-3d"
+  | "vectores-suma-3d"
+  | "producto-escalar-proyeccion"
+  | "producto-vectorial-3d"
+  | "paralelepipedo-volumen"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1453,6 +1458,11 @@ export type SlideToolId =
   | "sistema-rouche-explorador"
   | "cramer-explorador"
   | "sistema-familia-explorador"
+  | "vectores-puntos-explorador"
+  | "vectores-dependencia-explorador"
+  | "producto-vectorial-explorador"
+  | "producto-mixto-explorador"
+  | "producto-escalar-3d-explorador"
   /* industrial-tool-end */;
 
 /**

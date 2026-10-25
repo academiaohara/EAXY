@@ -448,6 +448,11 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `sistema-forma-matricial` | De las ecuaciones a A·X = B: matriz de coeficientes, columnas X y B y matriz ampliada | — |
 | `sistema-gauss-ampliada` | Gauss sobre la matriz ampliada (A | B): cada operación, matriz escalonada y lectura (S.C.D., S.C.I. o S.I.) | `nums`: `[a₁,b₁,c₁,d₁, a₂,b₂,c₂,d₂, a₃,b₃,c₃,d₃]` (enteros en [−9, 9]) |
 | `rouche-casos` | Rouché–Frobenius: tabla con los tres casos según rg(A), rg(A*) y n | — |
+| `vector-componentes-3d` | Vector en el espacio: punto, flecha desde el origen, componentes sobre los ejes y módulo | `a`, `b`, `c` (coordenadas del punto, 0–5) |
+| `vectores-suma-3d` | Suma de vectores del espacio: poligonal y regla del paralelogramo | `nums`: `[ux,uy,uz,vx,vy,vz]` (−5 a 5) |
+| `producto-escalar-proyeccion` | Producto escalar con la proyección de v sobre u y el signo según el ángulo | `a`: ángulo en grados (0–180) |
+| `producto-vectorial-3d` | Producto vectorial: paralelogramo, vector perpendicular y módulo como área | `nums`: `[ux,uy,uz,vx,vy,vz]` |
+| `paralelepipedo-volumen` | Paralelepípedo de tres vectores: base, altura, producto mixto y volumen del tetraedro | `nums`: 9 componentes por filas |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -804,6 +809,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `sistema-rouche-explorador` | Sistema 3×3 editable (o homogéneo): ecuaciones, matriz ampliada, rg(A), rg(A*), tipo y solución única o general | `initial`: 12 valores `[a, b, c, d]` por ecuación y un 13.º (1 = homogéneo) |
 | `cramer-explorador` | Regla de Cramer 2×2 o 3×3: |A|, |Aₓ|, |A_y|, |A_z| y cada incógnita como cociente | `initial`: `[tamaño (2 o 3)]`, 9 coeficientes y 3 términos independientes |
 | `sistema-familia-explorador` | Tres sistemas con parámetro a: |A|, tipo, solución y curva de |A(a)| | `initial`: `[sistema (0–2), a (−5 a 5)]` |
+| `vectores-puntos-explorador` | Dos puntos A y B en 3D: vector AB, módulo y punto medio | `initial`: `[Ax, Ay, Az, Bx, By, Bz]` (−4 a 4) |
+| `vectores-dependencia-explorador` | Tres vectores en filas: determinante, rango y si forman base o son coplanares | `initial`: 9 componentes por filas |
+| `producto-escalar-3d-explorador` | u·v, módulos, ángulo, proyección y cosenos directores de u | `initial`: 6 componentes (u y v) |
+| `producto-vectorial-explorador` | u×v con su dibujo, perpendicularidad y áreas del paralelogramo y del triángulo | `initial`: 6 componentes (u y v) |
+| `producto-mixto-explorador` | Producto mixto, volumen del paralelepípedo y del tetraedro, coplanaridad | `initial`: 9 componentes por filas |
 
 ## Respuesta como fracción
 

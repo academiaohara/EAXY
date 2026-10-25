@@ -212,6 +212,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 26,
   },
   {
+    slug: "geometria-del-espacio",
+    subject: "matematicas",
+    title: "Geometría del espacio",
+    description: "Vectores, rectas, planos y problemas métricos en el espacio.",
+    orderIndex: 27,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -451,6 +458,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
+  "matematicas-2-bachillerato/vectores-en-el-espacio": "geometria-del-espacio",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

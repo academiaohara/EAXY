@@ -28,6 +28,7 @@ import { analiticaRectaVector4esobLesson } from "@/data/lessons/matematicas-4-es
 import { analiticaVectores4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/01-analitica-vectores-4eso";
 import { analiticaVectores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/01-analitica-vectores-4esob";
 import { anguloDobleMitad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/06-angulo-doble-mitad-1bach";
+import { angulosCosenos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/05-angulos-cosenos-2bach";
 import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/04-angulos-relacionados-1bach";
 import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/06-anualidades-amortizacion-ccss1";
 import { anualidadesCapitalizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/04-anualidades-capitalizacion-ccss1";
@@ -35,6 +36,7 @@ import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-cc
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
+import { aplicacionesProductoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/08-aplicaciones-producto-vectorial-2bach";
 import { aplicacionesProgresiones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/06-aplicaciones-progresiones-1bach";
 import { aproximacionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/02-aproximacion-decimales-2eso";
 import { aproximacionesCifrasSignificativas4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/04-aproximaciones-cifras-significativas-4eso";
@@ -160,6 +162,7 @@ import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industri
 import { datosAgrupados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/03-datos-agrupados-1bach";
 import { datosAgrupadosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/03-datos-agrupados-ccss1";
 import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
+import { dependenciaBaseEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/03-dependencia-base-espacio-2bach";
 import { derivabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/04-derivabilidad-1bach";
 import { derivabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/04-derivabilidad-ccss1";
 import { derivadaDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/03-derivada-definicion-1bach";
@@ -530,6 +533,7 @@ import { operacionesSexagesimales2esoLesson } from "@/data/lessons/matematicas-2
 import { operacionesSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/02-operaciones-sucesos-1bach";
 import { operacionesSucesosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/02-operaciones-sucesos-ccss1";
 import { operacionesVectores1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/02-operaciones-vectores-1bach";
+import { operacionesVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/02-operaciones-vectores-espacio-2bach";
 import { operarPolinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/04-operar-polinomios-3eso";
 import { optimizacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/15-optimizacion-1bach";
 import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/12-optimizacion-ccss1";
@@ -629,13 +633,18 @@ import { problemasSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { problemasSistemasCompras4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/07-problemas-sistemas-compras-4eso";
 import { problemasSistemasCompras4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/12-problemas-sistemas-compras-4esob";
 import { problemasTrigonometria1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/13-problemas-trigonometria-1bach";
+import { problemasVectores12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/11-problemas-vectores-1-2bach";
+import { problemasVectores22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/12-problemas-vectores-2-2bach";
 import { problemasVolumen2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/05-problemas-volumen-2eso";
 import { productoCociente1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/06-producto-cociente-1bach";
 import { productoCocienteCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/06-producto-cociente-ccss1";
 import { productoEscalar1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/03-producto-escalar-1bach";
+import { productoEscalarEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/04-producto-escalar-espacio-2bach";
 import { productoMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/04-producto-matrices-2bach";
+import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/09-producto-mixto-2bach";
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
+import { productoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/07-producto-vectorial-2bach";
 import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
@@ -655,8 +664,10 @@ import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-e
 import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/03-proporcionalidad-mx-2eso";
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
+import { proyeccionOrtogonalidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/06-proyeccion-ortogonalidad-2bach";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
+import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
 import { racionalesIrracionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/01-racionales-irracionales-ccss1";
@@ -855,6 +866,7 @@ import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
+import { volumenParalelepipedoTetraedro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/10-volumen-paralelepipedo-tetraedro-2bach";
 import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/07-volumen-piramide-cono-3eso";
 import { volumenPiramidesConos2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/03-volumen-piramides-conos-2eso";
 import { volumenPrismaCilindro3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/06-volumen-prisma-cilindro-3eso";
@@ -891,6 +903,7 @@ export const interactiveLessons = {
   "analitica-vectores-4eso": analiticaVectores4esoLesson,
   "analitica-vectores-4esob": analiticaVectores4esobLesson,
   "angulo-doble-mitad-1bach": anguloDobleMitad1bachLesson,
+  "angulos-cosenos-2bach": angulosCosenos2bachLesson,
   "angulos-relacionados-1bach": angulosRelacionados1bachLesson,
   "anualidades-amortizacion-ccss1": anualidadesAmortizacionCcss1Lesson,
   "anualidades-capitalizacion-ccss1": anualidadesCapitalizacionCcss1Lesson,
@@ -898,6 +911,7 @@ export const interactiveLessons = {
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
+  "aplicaciones-producto-vectorial-2bach": aplicacionesProductoVectorial2bachLesson,
   "aplicaciones-progresiones-1bach": aplicacionesProgresiones1bachLesson,
   "aproximacion-decimales-2eso": aproximacionDecimales2esoLesson,
   "aproximaciones-cifras-significativas-4eso": aproximacionesCifrasSignificativas4esoLesson,
@@ -1023,6 +1037,7 @@ export const interactiveLessons = {
   "datos-agrupados-1bach": datosAgrupados1bachLesson,
   "datos-agrupados-ccss1": datosAgrupadosCcss1Lesson,
   "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
+  "dependencia-base-espacio-2bach": dependenciaBaseEspacio2bachLesson,
   "derivabilidad-1bach": derivabilidad1bachLesson,
   "derivabilidad-ccss1": derivabilidadCcss1Lesson,
   "derivada-definicion-1bach": derivadaDefinicion1bachLesson,
@@ -1393,6 +1408,7 @@ export const interactiveLessons = {
   "operaciones-sucesos-1bach": operacionesSucesos1bachLesson,
   "operaciones-sucesos-ccss1": operacionesSucesosCcss1Lesson,
   "operaciones-vectores-1bach": operacionesVectores1bachLesson,
+  "operaciones-vectores-espacio-2bach": operacionesVectoresEspacio2bachLesson,
   "operar-polinomios-3eso": operarPolinomios3esoLesson,
   "optimizacion-1bach": optimizacion1bachLesson,
   "optimizacion-ccss1": optimizacionCcss1Lesson,
@@ -1492,13 +1508,18 @@ export const interactiveLessons = {
   "problemas-sistemas-compras-4eso": problemasSistemasCompras4esoLesson,
   "problemas-sistemas-compras-4esob": problemasSistemasCompras4esobLesson,
   "problemas-trigonometria-1bach": problemasTrigonometria1bachLesson,
+  "problemas-vectores-1-2bach": problemasVectores12bachLesson,
+  "problemas-vectores-2-2bach": problemasVectores22bachLesson,
   "problemas-volumen-2eso": problemasVolumen2esoLesson,
   "producto-cociente-1bach": productoCociente1bachLesson,
   "producto-cociente-ccss1": productoCocienteCcss1Lesson,
   "producto-escalar-1bach": productoEscalar1bachLesson,
+  "producto-escalar-espacio-2bach": productoEscalarEspacio2bachLesson,
   "producto-matrices-2bach": productoMatrices2bachLesson,
+  "producto-mixto-2bach": productoMixto2bachLesson,
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
+  "producto-vectorial-2bach": productoVectorial2bachLesson,
   "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
@@ -1518,8 +1539,10 @@ export const interactiveLessons = {
   "proporcionalidad-mx-2eso": proporcionalidadMx2esoLesson,
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
+  "proyeccion-ortogonalidad-2bach": proyeccionOrtogonalidad2bachLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
+  "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
   "racionales-irracionales-ccss1": racionalesIrracionalesCcss1Lesson,
@@ -1718,6 +1741,7 @@ export const interactiveLessons = {
   "viscosidad-indice": viscosidadIndiceLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
+  "volumen-paralelepipedo-tetraedro-2bach": volumenParalelepipedoTetraedro2bachLesson,
   "volumen-piramide-cono-3eso": volumenPiramideCono3esoLesson,
   "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
   "volumen-prisma-cilindro-3eso": volumenPrismaCilindro3esoLesson,

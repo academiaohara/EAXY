@@ -12,6 +12,7 @@ const TEMAS: [number, string, number][] = [
   [1, "matrices", 12],
   [2, "determinantes", 12],
   [3, "sistemas-de-ecuaciones", 12],
+  [4, "vectores-en-el-espacio", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);
