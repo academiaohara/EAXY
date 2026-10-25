@@ -226,6 +226,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 28,
   },
   {
+    slug: "programacion-lineal",
+    subject: "matematicas",
+    title: "Programación lineal",
+    description: "Inecuaciones con dos incógnitas, región factible, rectas de nivel y problemas de optimización.",
+    orderIndex: 29,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -476,6 +483,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/distribuciones-de-probabilidad": "probabilidad",
   "matematicas-ccss-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-ccss-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
+  "matematicas-ccss-2-bachillerato/programacion-lineal": "programacion-lineal",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

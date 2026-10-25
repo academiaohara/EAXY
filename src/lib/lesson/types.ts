@@ -991,6 +991,8 @@ export type SlideAnimId =
   | "area-entre-curvas"
   | "solido-revolucion"
   | "pascal-binomio"
+  | "semiplano-prueba"
+  | "rectas-nivel"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1498,6 +1500,7 @@ export type SlideToolId =
   | "chebychev-explorador"
   | "densidad-explorador"
   | "intervalo-media-explorador"
+  | "programacion-lineal-explorador"
   /* industrial-tool-end */;
 
 /**

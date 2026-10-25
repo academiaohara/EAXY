@@ -11,6 +11,7 @@ const course = curriculum.courses.find((c) => c.slug === "matematicas-ccss-2-bac
 const TEMAS: [number, string, number][] = [
   [1, "matrices", 12],
   [2, "sistemas-de-ecuaciones", 12],
+  [3, "programacion-lineal", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);

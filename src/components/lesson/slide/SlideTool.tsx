@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ProgramacionLinealExplorador } from "@/components/lesson/slide/tools/CcssProgramacionTools";
 import { DistribucionDiscretaExplorador, ChebychevExplorador, DensidadExplorador, IntervaloMediaExplorador } from "@/components/lesson/slide/tools/Bach2ProbTools";
 import { IntegralPolinomioExplorador, RiemannExplorador, BarrowExplorador, AreaCurvasExplorador, VolumenRevolucionExplorador, IntegralMetodosExplorador } from "@/components/lesson/slide/tools/Bach2IntegralesTools";
 import { UnoInfinitoExplorador, LHopitalExplorador, EstudioFuncionExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
@@ -1172,6 +1173,8 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DensidadExplorador block={block} />;
     case "intervalo-media-explorador":
       return <IntervaloMediaExplorador block={block} />;
+    case "programacion-lineal-explorador":
+      return <ProgramacionLinealExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

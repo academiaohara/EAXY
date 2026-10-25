@@ -467,6 +467,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `area-entre-curvas` | Área entre y = 2x e y = x² en [0, 2] con una franja vertical |  |
 | `solido-revolucion` | Sólido de revolución de y = √x en [0, 4]: discos y volumen 8π |  |
 | `pascal-binomio` | Triángulo de Pascal: cada número es la suma de los dos de encima, C(5, 2) = 10 y la fila de (a + b)⁴ |  |
+| `semiplano-prueba` | Inecuación 2x + y ≤ 8: la recta, el punto de prueba (0, 0) ✓, (5, 3) ✗ y el trazo discontinuo de la desigualdad estricta |  |
+| `rectas-nivel` | Rectas de nivel de Z = 30x + 20y sobre la región de las mesas y las sillas: Z = 60, 120 y el máximo 140 en (2, 4) |  |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -849,6 +851,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `chebychev-explorador` | B(20; 0,5): probabilidad exacta dentro de k desviaciones frente a la cota 1 − 1/k² | `initial`: `[k·10 (10–40)]` |
 | `densidad-explorador` | Densidad f(x) = x/50 en [0, 10]: probabilidad de un intervalo como área y media | `initial`: `[c, d (0–10)]` |
 | `intervalo-media-explorador` | Intervalo de confianza para la media: x̄ ± z·σ/√n según σ, n y nivel de confianza | `initial`: `[x̄, σ (1–30), índice de n (0–10), nivel 0–2]` |
+| `programacion-lineal-explorador` | Siete problemas (producción, dieta, solución múltiple, no acotada, vacía, transporte, mezcla): región factible, vértices con su Z, recta de nivel móvil y óptimo | `initial`: `[problema 0–6, valor de Z]` |
 
 ## Respuesta como fracción
 
