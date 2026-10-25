@@ -1,0 +1,90 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_2BACH_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const productoMatrices2bachLesson: InteractiveLesson = {
+  slug: "producto-matrices-2bach",
+  title: "4. Producto de matrices",
+  subtitle: TEMA_2BACH_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "Condición", message: "Para multiplicar $A\\cdot B$, las **columnas de $A$** deben ser tantas como las **filas de $B$**. Si no, el producto no existe." }],
+      title: "Cada elemento es fila por columna",
+      blocks: [
+        { kind: "rule", title: "Producto $A\\cdot B$", text: "Si $A$ es $m\\times n$ y $B$ es $n\\times p$, entonces $C = A\\cdot B$ es $m\\times p$ y", formula: "c_{ij} = \\sum_{k=1}^{n} a_{ik}\\,b_{kj}" },
+        { kind: "text", text: "En palabras: $c_{ij}$ se obtiene multiplicando **por parejas** los elementos de la **fila $i$ de $A$** por los de la **columna $j$ de $B$** y sumando." },
+      ],
+      visual: { kind: "anim", scene: "matriz-producto" },
+    },
+    {
+      id: "check-dimension",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$(m\\times n)\\cdot(n\\times p)$ da $m\\times p$: se «cancelan» los números del medio." }],
+      title: "Dimensión del producto",
+      question: "$A$ es de dimensión $2\\times 3$ y $B$ de dimensión $3\\times 4$. ¿Qué dimensión tiene $A\\cdot B$?",
+      choices: [
+        { id: "a", label: "$2\\times 4$" },
+        { id: "b", label: "$3\\times 3$", incorrectFeedback: "Esos son los números que coinciden y se «cancelan». El resultado tiene las filas de $A$ y las columnas de $B$." },
+        { id: "c", label: "$4\\times 2$", incorrectFeedback: "Las filas son las de la primera matriz ($2$) y las columnas las de la segunda ($4$)." },
+        { id: "d", label: "No está definido", incorrectFeedback: "Las columnas de $A$ (3) coinciden con las filas de $B$ (3): sí se puede." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(2\\times 3)\\cdot(3\\times 4) = 2\\times 4$.",
+    },
+    {
+      id: "check-elemento",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$c_{21}$: fila $2$ de $A$, columna $1$ de $B$: $4\\cdot 2 + 5\\cdot 3 + 6\\cdot 4$." }],
+      title: "Calcular un elemento",
+      question: "Con $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}$ y $B = \\begin{pmatrix} 2 & 1 \\\\ 3 & 2 \\\\ 4 & 1 \\end{pmatrix}$, ¿cuánto vale el elemento $c_{21}$ de $A\\cdot B$? (solo el número)",
+      correctAnswers: ["47"],
+      explanation: "$c_{21} = 4\\cdot 2 + 5\\cdot 3 + 6\\cdot 4 = 8 + 15 + 24 = 47$.",
+    },
+    {
+      id: "explorar",
+      type: "slide",
+      help: [{ label: "Explora", message: "Cambia las dimensiones de A y de B: el producto solo aparece cuando las columnas de A son las filas de B." }],
+      title: "Prueba con tus propias matrices",
+      blocks: [
+        { kind: "text", text: "Que $A\\cdot B$ exista **no** implica que exista $B\\cdot A$. Para que existan los dos hace falta que $A$ sea $m\\times n$ y $B$ sea $n\\times m$; entonces $A\\cdot B$ es $m\\times m$ y $B\\cdot A$ es $n\\times n$." },
+        { kind: "warning", text: "Aunque los dos productos existan, **casi nunca coinciden**: el producto de matrices no es conmutativo (se verá en la siguiente lección)." },
+      ],
+      visual: { kind: "tool", tool: "matriz-producto-explorador", hint: "Fíjate en la frase de arriba: dice si A·B y B·A están definidos y qué dimensión tienen." },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Sean $A$ de $3\\times 3$, $B$ de $3\\times 1$ y $C$ de $2\\times 3$. Compara las columnas de la primera con las filas de la segunda." }],
+      title: "¿Está definido el producto?",
+      question: "Con $A$ de $3\\times 3$, $B$ de $3\\times 1$ y $C$ de $2\\times 3$, clasifica cada producto.",
+      groups: [
+        { id: "si", label: "Definido", tone: "emerald" },
+        { id: "no", label: "No definido", tone: "rose" },
+      ],
+      items: [
+        { id: "a", text: "$A\\cdot B$", group: "si" },
+        { id: "b", text: "$B\\cdot A$", group: "no" },
+        { id: "c", text: "$C\\cdot A$", group: "si" },
+        { id: "d", text: "$A\\cdot C$", group: "no" },
+        { id: "e", text: "$C\\cdot B$", group: "si" },
+        { id: "f", text: "$B\\cdot C$", group: "no" },
+      ],
+      hint: "$A\\cdot B$: $(3\\times 3)(3\\times 1)$ ✓. $C\\cdot A$: $(2\\times 3)(3\\times 3)$ ✓. $C\\cdot B$: $(2\\times 3)(3\\times 1)$ ✓. En los otros, las columnas de la primera no coinciden con las filas de la segunda.",
+    },
+    {
+      id: "check-columna",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La fila $1$ de $A$ es $(1\\ 2\\ 3)$ y $B$ es la columna $(1\\ 2\\ 1)$." }],
+      title: "Matriz por columna",
+      question: "Con $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\\\ 0 & 1 & -1 \\end{pmatrix}$ y $B = \\begin{pmatrix} 1 \\\\ 2 \\\\ 1 \\end{pmatrix}$, ¿cuánto vale el elemento $(1, 1)$ de $A\\cdot B$? (solo el número)",
+      correctAnswers: ["8"],
+      explanation: "$1\\cdot 1 + 2\\cdot 2 + 3\\cdot 1 = 8$. El resultado completo es la columna $(8,\\ 4,\\ 1)$.",
+    },
+  ],
+};

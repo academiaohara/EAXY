@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 // industrial-imports
+import { UnoInfinitoExplorador, LHopitalExplorador, EstudioFuncionExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
+import { AngulosEspacioExplorador, ProyeccionSimetricoExplorador, DistanciasEspacioExplorador } from "@/components/lesson/slide/tools/Bach2MetricaTools";
+import { RectaEspacioExplorador, PlanoEspacioExplorador, PosicionRectasExplorador, PosicionRectaPlanoExplorador, PosicionPlanosExplorador } from "@/components/lesson/slide/tools/Bach2RectasPlanosTools";
+import { VectoresPuntosExplorador, VectoresDependenciaExplorador, ProductoEscalar3dExplorador, ProductoVectorialExplorador, ProductoMixtoExplorador } from "@/components/lesson/slide/tools/Bach2VectoresTools";
+import { SistemaRoucheExplorador, CramerExplorador, SistemaFamiliaExplorador } from "@/components/lesson/slide/tools/Bach2SistemasTools";
+import { DeterminanteAreaExplorador, DeterminantePropiedadesExplorador, DeterminanteProductoExplorador, DeterminanteParametroExplorador, AdjuntaExplorador, RangoMenoresExplorador } from "@/components/lesson/slide/tools/Bach2DeterminantesTools";
+import { MatrizOperacionesExplorador, MatrizProductoExplorador, MatrizInversaExplorador, MatrizPotenciasExplorador, GrafoCaminosExplorador, MatrizConmutaExplorador, EcuacionMatricialExplorador } from "@/components/lesson/slide/tools/Bach2MatricesTools";
 import { CuantiaExplorador, BinomialExplorador, NormalExplorador, TablaNormalExplorador, BinomialNormalExplorador, IntervaloConfianzaExplorador } from "@/components/lesson/slide/tools/Ccss1DistribTools";
 import { PascalExplorador, BinomioExplorador } from "@/components/lesson/slide/tools/Ccss1CombTools";
 import { RegresionCuadraticaExplorador } from "@/components/lesson/slide/tools/Ccss1EstadTools";
@@ -1079,6 +1086,70 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <BinomialNormalExplorador block={block} />;
     case "intervalo-confianza-explorador":
       return <IntervaloConfianzaExplorador block={block} />;
+    case "matriz-operaciones-explorador":
+      return <MatrizOperacionesExplorador block={block} />;
+    case "matriz-producto-explorador":
+      return <MatrizProductoExplorador block={block} />;
+    case "matriz-inversa-explorador":
+      return <MatrizInversaExplorador block={block} />;
+    case "matriz-potencias-explorador":
+      return <MatrizPotenciasExplorador block={block} />;
+    case "grafo-caminos-explorador":
+      return <GrafoCaminosExplorador block={block} />;
+    case "matriz-conmuta-explorador":
+      return <MatrizConmutaExplorador block={block} />;
+    case "ecuacion-matricial-explorador":
+      return <EcuacionMatricialExplorador block={block} />;
+    case "determinante-area-explorador":
+      return <DeterminanteAreaExplorador block={block} />;
+    case "determinante-propiedades-explorador":
+      return <DeterminantePropiedadesExplorador block={block} />;
+    case "determinante-producto-explorador":
+      return <DeterminanteProductoExplorador block={block} />;
+    case "determinante-parametro-explorador":
+      return <DeterminanteParametroExplorador block={block} />;
+    case "adjunta-explorador":
+      return <AdjuntaExplorador block={block} />;
+    case "rango-menores-explorador":
+      return <RangoMenoresExplorador block={block} />;
+    case "sistema-rouche-explorador":
+      return <SistemaRoucheExplorador block={block} />;
+    case "cramer-explorador":
+      return <CramerExplorador block={block} />;
+    case "sistema-familia-explorador":
+      return <SistemaFamiliaExplorador block={block} />;
+    case "vectores-puntos-explorador":
+      return <VectoresPuntosExplorador block={block} />;
+    case "vectores-dependencia-explorador":
+      return <VectoresDependenciaExplorador block={block} />;
+    case "producto-vectorial-explorador":
+      return <ProductoVectorialExplorador block={block} />;
+    case "producto-mixto-explorador":
+      return <ProductoMixtoExplorador block={block} />;
+    case "producto-escalar-3d-explorador":
+      return <ProductoEscalar3dExplorador block={block} />;
+    case "recta-espacio-explorador":
+      return <RectaEspacioExplorador block={block} />;
+    case "plano-espacio-explorador":
+      return <PlanoEspacioExplorador block={block} />;
+    case "posicion-rectas-explorador":
+      return <PosicionRectasExplorador block={block} />;
+    case "posicion-recta-plano-explorador":
+      return <PosicionRectaPlanoExplorador block={block} />;
+    case "posicion-planos-explorador":
+      return <PosicionPlanosExplorador block={block} />;
+    case "angulos-espacio-explorador":
+      return <AngulosEspacioExplorador block={block} />;
+    case "proyeccion-simetrico-explorador":
+      return <ProyeccionSimetricoExplorador block={block} />;
+    case "distancias-espacio-explorador":
+      return <DistanciasEspacioExplorador block={block} />;
+    case "uno-infinito-explorador":
+      return <UnoInfinitoExplorador block={block} />;
+    case "lhopital-explorador":
+      return <LHopitalExplorador block={block} />;
+    case "estudio-funcion-explorador":
+      return <EstudioFuncionExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

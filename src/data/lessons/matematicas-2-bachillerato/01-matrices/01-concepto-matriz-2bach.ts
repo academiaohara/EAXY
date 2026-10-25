@@ -1,0 +1,91 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_2BACH_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const conceptoMatriz2bachLesson: InteractiveLesson = {
+  slug: "concepto-matriz-2bach",
+  title: "1. Qué es una matriz",
+  subtitle: TEMA_2BACH_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tabla-datos",
+      type: "slide",
+      help: [{ label: "Idea", message: "Una matriz es una tabla de números en la que importa **dónde** está cada número: la fila y la columna." }],
+      title: "Ordenar datos en una tabla",
+      blocks: [
+        { kind: "text", text: "Un instituto recoge juguetes: la 1.ª semana llegan $35$ tradicionales, $24$ de mesa y $33$ electrónicos; la 2.ª semana, $28$, $18$ y $37$. Si se escriben **solo los números**, respetando el orden de filas (semanas) y columnas (tipos), queda una tabla." },
+        { kind: "definition", text: "Una **matriz de orden $m\\times n$** es un conjunto de números reales dispuestos en $m$ **filas** y $n$ **columnas**. Se nombra con una letra mayúscula y sus elementos con $a_{ij}$: $i$ es la fila y $j$ la columna." },
+        { kind: "formula", tex: "A = \\begin{pmatrix} 35 & 24 & 33 \\\\ 28 & 18 & 37 \\end{pmatrix}\\qquad a_{13} = 33,\\ a_{21} = 28" },
+      ],
+      visual: { kind: "anim", scene: "matriz-elementos" },
+    },
+    {
+      id: "check-dimension",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Primero cuentan las **filas** y después las **columnas**." }],
+      title: "Dimensión de una matriz",
+      question: "La matriz $A$ de los juguetes tiene $2$ semanas (filas) y $3$ tipos (columnas). ¿Cuál es su dimensión?",
+      choices: [
+        { id: "a", label: "$2\\times 3$" },
+        { id: "b", label: "$3\\times 2$", incorrectFeedback: "Se escribe primero el número de filas: hay 2 filas y 3 columnas." },
+        { id: "c", label: "$6$", incorrectFeedback: "El 6 es el número de elementos, no la dimensión." },
+        { id: "d", label: "$5$", incorrectFeedback: "La dimensión son dos números, filas y columnas, no su suma." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$2$ filas y $3$ columnas: dimensión $2\\times 3$. Tiene $2\\cdot 3 = 6$ elementos.",
+    },
+    {
+      id: "elemento",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$a_{ij}$: fila $i$, columna $j$. Para $a_{23}$: fila 2, columna 3." }],
+      title: "Un elemento concreto",
+      question: "En $A = \\begin{pmatrix} 3 & -1 & 4 \\\\ 1 & 5 & -9 \\end{pmatrix}$, ¿cuánto vale $a_{23}$? (solo el número)",
+      correctAnswers: ["-9", "−9"],
+      explanation: "$a_{23}$ está en la fila $2$ y la columna $3$: vale $-9$.",
+    },
+    {
+      id: "igualdad",
+      type: "slide",
+      help: [{ label: "Igualdad", message: "Para que dos matrices sean iguales, el orden importa: ni filas por columnas intercambiadas, ni un elemento distinto." }],
+      title: "Cuándo dos matrices son iguales",
+      blocks: [
+        { kind: "rule", title: "Igualdad de matrices", text: "$A = B$ si tienen **la misma dimensión** y los elementos que ocupan la misma posición coinciden:", formula: "a_{ij} = b_{ij}\\quad \\text{para todo } i, j" },
+        { kind: "example", title: "Plantear las incógnitas", lines: [
+          { math: "\\begin{pmatrix} a & -1 & 4 \\\\ 1 & y & -9 \\end{pmatrix} = \\begin{pmatrix} 3 & b & 4 \\\\ x & 5 & z \\end{pmatrix}" },
+          { math: "a = 3,\\quad b = -1,\\quad x = 1,\\quad y = 5,\\quad z = -9", note: "Se igualan posición a posición." },
+        ] },
+        { kind: "warning", text: "Una matriz de dimensión $2\\times 3$ **nunca** es igual a una de $3\\times 2$, aunque tengan los mismos números." },
+      ],
+    },
+    {
+      id: "check-igualdad",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Las dos matrices son de dimensión $1\\times 4$. La incógnita $y$ ocupa el **tercer** lugar de la segunda; ¿qué número hay en el tercer lugar de la primera?" }],
+      title: "Hallar valores para que sean iguales",
+      question: "Si $\\begin{pmatrix} 3 & a & -6 & b \\end{pmatrix} = \\begin{pmatrix} x & 2 & y & 0 \\end{pmatrix}$, ¿cuánto vale $y$? (solo el número)",
+      correctAnswers: ["-6", "−6"],
+      explanation: "Posición a posición: $x = 3$, $a = 2$, $y = -6$ y $b = 0$.",
+    },
+    {
+      id: "check-cuando-no",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Mira primero la dimensión de cada una." }],
+      title: "¿Son iguales?",
+      question: "Sean $A = \\begin{pmatrix} 1 & 2 & 3 \\end{pmatrix}$ y $B = \\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}$. ¿Es $A = B$?",
+      choices: [
+        { id: "a", label: "No: $A$ es $1\\times 3$ y $B$ es $3\\times 1$" },
+        { id: "b", label: "Sí: tienen los mismos números", incorrectFeedback: "No basta con los mismos números: la dimensión también debe coincidir." },
+        { id: "c", label: "Sí: una es la traspuesta de la otra, luego son iguales", incorrectFeedback: "La traspuesta es otra matriz (de dimensión distinta), no la misma." },
+        { id: "d", label: "No se puede decir", incorrectFeedback: "Sí se puede: las dimensiones ya son distintas." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Una es una fila ($1\\times 3$) y la otra una columna ($3\\times 1$): dimensiones distintas, matrices distintas.",
+    },
+  ],
+};

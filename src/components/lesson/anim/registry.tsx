@@ -1,4 +1,11 @@
 // industrial-imports
+import { buildBolzanoBiseccion, buildRolleLagrange } from "@/components/lesson/anim/scenes/bach2-analisis";
+import { buildProyeccionPuntoPlano3d, buildDistanciaPuntoRecta3d, buildDistanciaRectasCruzan3d } from "@/components/lesson/anim/scenes/bach2-metrica";
+import { buildRectaEspacio3d, buildPlanoTresPuntos3d, buildRectasPosiciones3d } from "@/components/lesson/anim/scenes/bach2-rectas-planos";
+import { buildVectorComponentes3d, buildVectoresSuma3d, buildProductoEscalarProyeccion, buildProductoVectorial3d, buildParalelepipedoVolumen } from "@/components/lesson/anim/scenes/bach2-vectores";
+import { buildSistemaFormaMatricial, buildSistemaGaussAmpliada, buildRoucheCasos } from "@/components/lesson/anim/scenes/bach2-sistemas";
+import { buildDeterminanteSarrus, buildMatrizMenorAdjunto, buildDeterminanteAdjuntos, buildDeterminanteGauss } from "@/components/lesson/anim/scenes/bach2-determinantes";
+import { buildMatrizProducto, buildMatrizGaussJordan, buildMatrizRangoGauss, buildMatrizTraspuesta, buildGrafoAdyacencia, buildMatrizElementos, buildMatrizTipos } from "@/components/lesson/anim/scenes/bach2-matrices";
 import { buildCuantiaMonedas, buildEsperanzaJuego, buildBinomialForma, buildCampanaNormal, buildTipificacionNormal, buildIntervaloConfianza } from "@/components/lesson/anim/scenes/ccss1-distribuciones";
 import { buildTrianguloPascal } from "@/components/lesson/anim/scenes/ccss1-combinatoria";
 import { buildInteresCompuestoBarras, buildAnualidadCapitalizacion, buildAnualidadAmortizacion } from "@/components/lesson/anim/scenes/ccss1-finanzas";
@@ -620,6 +627,33 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "campana-normal": () => buildCampanaNormal(),
   "tipificacion-normal": () => buildTipificacionNormal(),
   "intervalo-confianza-construccion": () => buildIntervaloConfianza(),
+  "matriz-producto": () => buildMatrizProducto(),
+  "matriz-gauss-jordan": (p) => buildMatrizGaussJordan(p),
+  "matriz-rango-gauss": (p) => buildMatrizRangoGauss(p),
+  "matriz-traspuesta": () => buildMatrizTraspuesta(),
+  "grafo-adyacencia": () => buildGrafoAdyacencia(),
+  "matriz-elementos": () => buildMatrizElementos(),
+  "matriz-tipos": () => buildMatrizTipos(),
+  "determinante-sarrus": (p) => buildDeterminanteSarrus(p),
+  "matriz-menor-adjunto": (p) => buildMatrizMenorAdjunto(p),
+  "determinante-adjuntos": (p) => buildDeterminanteAdjuntos(p),
+  "determinante-gauss": (p) => buildDeterminanteGauss(p),
+  "sistema-forma-matricial": () => buildSistemaFormaMatricial(),
+  "sistema-gauss-ampliada": (p) => buildSistemaGaussAmpliada(p),
+  "rouche-casos": () => buildRoucheCasos(),
+  "vector-componentes-3d": (p) => buildVectorComponentes3d(p),
+  "vectores-suma-3d": (p) => buildVectoresSuma3d(p),
+  "producto-escalar-proyeccion": (p) => buildProductoEscalarProyeccion(p),
+  "producto-vectorial-3d": (p) => buildProductoVectorial3d(p),
+  "paralelepipedo-volumen": (p) => buildParalelepipedoVolumen(p),
+  "recta-espacio-3d": (p) => buildRectaEspacio3d(p),
+  "plano-tres-puntos-3d": (p) => buildPlanoTresPuntos3d(p),
+  "rectas-posiciones-3d": () => buildRectasPosiciones3d(),
+  "proyeccion-punto-plano-3d": (p) => buildProyeccionPuntoPlano3d(p),
+  "distancia-punto-recta-3d": (p) => buildDistanciaPuntoRecta3d(p),
+  "distancia-rectas-cruzan-3d": (p) => buildDistanciaRectasCruzan3d(p),
+  "bolzano-biseccion": () => buildBolzanoBiseccion(),
+  "rolle-lagrange": (p) => buildRolleLagrange(p),
   /* industrial-end */
 };
 

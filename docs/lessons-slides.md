@@ -434,6 +434,33 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `cantidad-inicial` | Cantidad inicial tras una variación: índice de variación, división y el error de «quitar el mismo %» | `a` (final), `b` (% de subida) |
 | `pitagoras-demostracion` | Cuadrado de lado `b + c` llenado de dos maneras con cuatro triángulos: `b² + c² = a²` (hipotenusa `a`) | `a`, `b` (catetos) |
 | `coordenadas-geograficas` | Planisferio: latitud y longitud de Jerez y de Auckland (antípodas) | — |
+| `matriz-producto` | Producto A·B de 2×3 por 3×2: se resalta la fila de A y la columna de B de cada elemento y se calcula su producto escalar | — |
+| `matriz-gauss-jordan` | Inversa por Gauss–Jordan: se parte de (A | I), cada operación elemental se aplica a la fila entera y a la derecha queda A⁻¹ (o aparece una fila de ceros si es singular) | `nums` (4 o 9 elementos de A por filas) |
+| `matriz-rango-gauss` | Rango escalonando: operaciones elementales hasta una fila de ceros; rango = filas no nulas | `nums` (9 elementos de una matriz 3×3) |
+| `matriz-traspuesta` | Traspuesta: las filas de A (por colores) pasan a ser las columnas de Aᵗ y 2×3 → 3×2 | — |
+| `grafo-adyacencia` | Grafo dirigido de cuatro nodos y su matriz de adyacencia; al elevar al cuadrado, el elemento (A, C) cuenta el camino A→B→C | — |
+| `matriz-elementos` | Tabla de juguetes como matriz 2×3: filas, columnas, dimensión y elementos a₁₃ y a₂₁ | — |
+| `matriz-tipos` | Triangular superior e inferior, diagonal, escalar e identidad con los ceros y la diagonal marcados | — |
+| `determinante-sarrus` | Regla de Sarrus: se repiten dos columnas, las diagonales que bajan suman y las que suben restan | `nums` (9 elementos por filas) |
+| `matriz-menor-adjunto` | Menor complementario y adjunto: se tachan fila y columna, se calcula el menor 2×2, se aplica el signo y aparece el tablero de signos | `a`, `b` (fila y columna, desde 1) |
+| `determinante-adjuntos` | Desarrollo por los adjuntos de una fila de un determinante 3×3 con los signos y cada término | `nums` (9 elementos), `a` (fila, desde 1) |
+| `determinante-gauss` | Determinante haciendo ceros: cada operación y si cambia o no el valor; al final producto de la diagonal | `nums` (9 o 16 elementos) |
+| `sistema-forma-matricial` | De las ecuaciones a A·X = B: matriz de coeficientes, columnas X y B y matriz ampliada | — |
+| `sistema-gauss-ampliada` | Gauss sobre la matriz ampliada (A | B): cada operación, matriz escalonada y lectura (S.C.D., S.C.I. o S.I.) | `nums`: `[a₁,b₁,c₁,d₁, a₂,b₂,c₂,d₂, a₃,b₃,c₃,d₃]` (enteros en [−9, 9]) |
+| `rouche-casos` | Rouché–Frobenius: tabla con los tres casos según rg(A), rg(A*) y n | — |
+| `vector-componentes-3d` | Vector en el espacio: punto, flecha desde el origen, componentes sobre los ejes y módulo | `a`, `b`, `c` (coordenadas del punto, 0–5) |
+| `vectores-suma-3d` | Suma de vectores del espacio: poligonal y regla del paralelogramo | `nums`: `[ux,uy,uz,vx,vy,vz]` (−5 a 5) |
+| `producto-escalar-proyeccion` | Producto escalar con la proyección de v sobre u y el signo según el ángulo | `a`: ángulo en grados (0–180) |
+| `producto-vectorial-3d` | Producto vectorial: paralelogramo, vector perpendicular y módulo como área | `nums`: `[ux,uy,uz,vx,vy,vz]` |
+| `paralelepipedo-volumen` | Paralelepípedo de tres vectores: base, altura, producto mixto y volumen del tetraedro | `nums`: 9 componentes por filas |
+| `recta-espacio-3d` | Recta de punto P y vector director v: puntos con t = 1, 2, −1 y ecuaciones paramétricas | `nums`: `[Px,Py,Pz,vx,vy,vz]` (−5 a 5) |
+| `plano-tres-puntos-3d` | Plano por tres puntos: dos vectores, normal (producto vectorial) y ecuación general | `nums`: `[Ax,Ay,Az,Bx,By,Bz,Cx,Cy,Cz]` |
+| `rectas-posiciones-3d` | Las cuatro posiciones relativas de dos rectas con los rangos de {u, v} y {u, v, PQ} | — |
+| `proyeccion-punto-plano-3d` | Recta perpendicular por P, pie F, distancia y simétrico respecto de un plano | `nums`: `[Px,Py,Pz, A,B,C, D]` |
+| `distancia-punto-recta-3d` | Distancia de un punto a una recta: paralelogramo de AP y v, área entre base y pie de la perpendicular | `nums`: `[P, A, v]` (9 valores) |
+| `distancia-rectas-cruzan-3d` | Distancia entre dos rectas que se cruzan: paralelepípedo de u, v y PQ, volumen entre área de la base | `nums`: `[P, u, Q, v]` (12 valores) |
+| `bolzano-biseccion` | Bolzano con f(x) = x³ − x − 1: cambio de signo en [1, 2] y bisección del intervalo | — |
+| `rolle-lagrange` | Teorema de Rolle (a = 0, x² − 4x + 3 en [1, 3]) y de Lagrange (a = 1, x² en [0, 3]): tangente paralela a la secante | `a` (0 Rolle, 1 Lagrange) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -774,6 +801,38 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `grafo-bimodal-explorador` | Ecuaciones de los ejemplos 1 a 3 con pulsadores NA y NC: marcha, autorretención y paro | `a` (ejemplo) |
 | `secuencia-reles-explorador` | Lámparas H₁ y H₂ de los ejemplos 5 y 6 con dos temporizadores y un cursor de tiempo | `a` (5 o 6), `b` (KT₁, s), `c` (KT₂, s) |
 | `motor-enclavamiento-explorador` | Inversión de giro con KM₁ y KM₂ enclavados, paro SB₀ y relé térmico FT₁ | — |
+| `matriz-operaciones-explorador` | Suma, resta y producto por un número de dos matrices 2×2 editables; elemento (1, 1) y suma de elementos del resultado | `initial`: `[a11, a12, a21, a22, b11, b12, b21, b22, k (−5–5), operación (0 suma, 1 resta, 2 k·A)]` |
+| `matriz-producto-explorador` | A (m×n) por B (r×p) con dimensiones de 1 a 3: dice si A·B y B·A existen, y desglosa el elemento (i, j) como fila por columna | `initial`: `[m, n, r, p]` y luego 9 elementos de A y 9 de B por filas |
+| `matriz-inversa-explorador` | Inversa 2×2 o 3×3 con determinante, comprobación A·A⁻¹ = I y aviso si es singular | `initial`: `[tamaño (2 o 3)]` y 9 elementos por filas |
+| `matriz-potencias-explorador` | Aⁿ para cinco matrices 2×2 (giro de 90°, cizalla, todo unos, diagonal y Fibonacci) con la regla que se cumple | `initial`: `[matriz (0–4), n (0–12)]` |
+| `grafo-caminos-explorador` | Matriz de adyacencia 4×4 editable (se pulsa cada casilla), grafo dibujado y Aᵏ con los caminos de longitud k entre dos nodos | `initial`: `[k (1–5), origen (0–3), destino (0–3)]` y 16 elementos de la matriz |
+| `matriz-conmuta-explorador` | A·B y B·A de dos matrices 2×2 editables y si coinciden | `initial`: 4 elementos de A y 4 de B |
+| `ecuacion-matricial-explorador` | Resuelve A·X = B o X·A = B con A⁻¹ por el lado correcto y comprueba la solución | `initial`: `[tipo (0: A·X, 1: X·A)]`, 4 elementos de A y 4 de B |
+| `determinante-area-explorador` | Determinante 2×2 como área con signo del paralelogramo que forman las dos columnas | `initial`: `[a, b, c, d]` (−4 a 4) |
+| `determinante-propiedades-explorador` | Aplica una operación (multiplicar fila, intercambiar, sumar múltiplo, trasponer, fila dependiente) a una 3×3 y compara el determinante con el que predice la propiedad | `initial`: `[operación (0–4), k (−3 a 3)]` y 9 elementos |
+| `determinante-producto-explorador` | |A|, |B|, |A·B|, |A|·|B|, |k·A|, k²|A|, |A⁻¹| y 1/|A| con A y B de orden 2 | `initial`: 4 de A, 4 de B y k |
+| `determinante-parametro-explorador` | Familias de matrices 3×3 con parámetro: determinante, rango y curva de |A(a)| | `initial`: `[familia (0–2), a (−5 a 5)]` |
+| `adjunta-explorador` | Matriz adjunta, su traspuesta, A·Adj(A)ᵗ = |A|·I e inversa 2×2 o 3×3 | `initial`: `[tamaño (2 o 3)]` y 9 elementos |
+| `rango-menores-explorador` | Rango de una 3×4 y cuántos menores de cada orden son no nulos | `initial`: 12 elementos por filas |
+| `sistema-rouche-explorador` | Sistema 3×3 editable (o homogéneo): ecuaciones, matriz ampliada, rg(A), rg(A*), tipo y solución única o general | `initial`: 12 valores `[a, b, c, d]` por ecuación y un 13.º (1 = homogéneo) |
+| `cramer-explorador` | Regla de Cramer 2×2 o 3×3: |A|, |Aₓ|, |A_y|, |A_z| y cada incógnita como cociente | `initial`: `[tamaño (2 o 3)]`, 9 coeficientes y 3 términos independientes |
+| `sistema-familia-explorador` | Tres sistemas con parámetro a: |A|, tipo, solución y curva de |A(a)| | `initial`: `[sistema (0–2), a (−5 a 5)]` |
+| `vectores-puntos-explorador` | Dos puntos A y B en 3D: vector AB, módulo y punto medio | `initial`: `[Ax, Ay, Az, Bx, By, Bz]` (−4 a 4) |
+| `vectores-dependencia-explorador` | Tres vectores en filas: determinante, rango y si forman base o son coplanares | `initial`: 9 componentes por filas |
+| `producto-escalar-3d-explorador` | u·v, módulos, ángulo, proyección y cosenos directores de u | `initial`: 6 componentes (u y v) |
+| `producto-vectorial-explorador` | u×v con su dibujo, perpendicularidad y áreas del paralelogramo y del triángulo | `initial`: 6 componentes (u y v) |
+| `producto-mixto-explorador` | Producto mixto, volumen del paralelepípedo y del tetraedro, coplanaridad | `initial`: 9 componentes por filas |
+| `recta-espacio-explorador` | Recta P + t·v en 3D: paramétricas y punto para cada t | `initial`: `[Px,Py,Pz,vx,vy,vz,t]` |
+| `plano-espacio-explorador` | Plano por tres puntos A, B, C: dibujo, normal y ecuación general | `initial`: 9 coordenadas (−5 a 5) |
+| `posicion-rectas-explorador` | Dos rectas (P, u) y (Q, v): posición, rangos y punto de corte | `initial`: 12 valores (P, u, Q, v por filas) |
+| `posicion-recta-plano-explorador` | Recta y plano: contenida, paralela o secante y punto de corte | `initial`: `[Px,Py,Pz,vx,vy,vz,A,B,C,D]` |
+| `posicion-planos-explorador` | Tres planos: rangos, posición (punto, recta, prisma…) y posición de cada pareja | `initial`: 12 valores (A, B, C, D por plano) |
+| `angulos-espacio-explorador` | Ángulo entre dos rectas, recta y plano o dos planos a partir de dos vectores | `initial`: `[modo (0–2)]` y 6 componentes |
+| `proyeccion-simetrico-explorador` | Proyección ortogonal y simétrico de un punto respecto de un plano, una recta o un punto | `initial`: `[modo (0–2), P(3), …]` (plano: 4 valores; recta: A y v; punto: M) |
+| `distancias-espacio-explorador` | Distancia exacta y aproximada punto-plano, punto-recta y entre dos rectas | `initial`: `[modo (0–2)]` y los datos de cada caso |
+| `uno-infinito-explorador` | Límite de (1 + a/n)^(b·n) cuando n crece: valor con n = 10^k frente al límite e^(a·b) | `initial`: `[a (−3 a 3), b (1 a 3), k (0 a 7)]` |
+| `lhopital-explorador` | Seis límites resueltos con L'Hôpital (0/0 y ∞/∞, con una o varias aplicaciones) y tabla numérica de comprobación | `initial`: `[caso (0–5), valores de la tabla (0–5)]` |
+| `estudio-funcion-explorador` | Estudio completo en seis pasos (dominio, cortes, simetría, asíntotas, monotonía, curvatura) de siete funciones; cada paso añade sus puntos a la gráfica | `initial`: `[función (0–6), pasos mostrados (0–6)]` |
 
 ## Respuesta como fracción
 

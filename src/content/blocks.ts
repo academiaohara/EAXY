@@ -205,6 +205,20 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 25,
   },
   {
+    slug: "algebra-lineal",
+    subject: "matematicas",
+    title: "Álgebra lineal",
+    description: "Matrices, determinantes y sistemas de ecuaciones lineales.",
+    orderIndex: 26,
+  },
+  {
+    slug: "geometria-del-espacio",
+    subject: "matematicas",
+    title: "Geometría del espacio",
+    description: "Vectores, rectas, planos y problemas métricos en el espacio.",
+    orderIndex: 27,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -441,6 +455,15 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/componentes-sistema-control": "sistemas-de-control",
   "tecnologia-industrial-2-bachillerato/circuitos-combinacionales-boole": "electronica-digital",
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
+  "matematicas-2-bachillerato/matrices": "algebra-lineal",
+  "matematicas-2-bachillerato/determinantes": "algebra-lineal",
+  "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
+  "matematicas-2-bachillerato/vectores-en-el-espacio": "geometria-del-espacio",
+  "matematicas-2-bachillerato/rectas-y-planos": "geometria-del-espacio",
+  "matematicas-2-bachillerato/geometria-metrica": "geometria-del-espacio",
+  "matematicas-2-bachillerato/limites-y-continuidad": "funciones-elementales",
+  "matematicas-2-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-2-bachillerato/representacion-de-funciones": "funciones-elementales",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

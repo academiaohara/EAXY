@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_2BACH_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const inversaGaussJordan2bachLesson: InteractiveLesson = {
+  slug: "inversa-gauss-jordan-2bach",
+  title: "9. Inversa por Gauss–Jordan",
+  subtitle: TEMA_2BACH_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "metodo",
+      type: "slide",
+      help: [{ label: "Idea", message: "Las operaciones elementales equivalen a multiplicar por matrices regulares; hacerlas sobre $A$ y sobre $I$ a la vez deja en $I$ la matriz $A^{-1}$." }],
+      title: "Convertir A en la identidad",
+      blocks: [
+        { kind: "steps", title: "Método de Gauss–Jordan", items: [
+          "Escribe la **matriz ampliada** $(A\\,|\\,I)$.",
+          "Con **operaciones elementales por filas**, transforma la parte izquierda en $I$.",
+          "La parte derecha, que ha sufrido las mismas operaciones, es $A^{-1}$: $(I\\,|\\,A^{-1})$.",
+        ] },
+        { kind: "text", text: "Operaciones permitidas: **intercambiar** dos filas ($F_i \\leftrightarrow F_j$), **multiplicar** una fila por un número $a \\neq 0$, y **sumar** a una fila un múltiplo de otra ($F_i \\to F_i + b\\,F_j$)." },
+      ],
+      visual: { kind: "anim", scene: "matriz-gauss-jordan", params: { nums: [1, 2, 3, 4] } },
+    },
+    {
+      id: "check-operacion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Para el $0$ de la fila 2 hay que quitar $3$ veces la fila 1: $3 - 3\\cdot 1 = 0$." }],
+      title: "Hacer un cero",
+      question: "En $\\left(\\begin{array}{cc|cc} 1 & 2 & 1 & 0 \\\\ 3 & 4 & 0 & 1 \\end{array}\\right)$, ¿qué operación consigue un $0$ en la posición $(2, 1)$?",
+      choices: [
+        { id: "a", label: "$F_2 \\to F_2 - 3F_1$" },
+        { id: "b", label: "$F_2 \\to F_2 + 3F_1$", incorrectFeedback: "Daría $3 + 3 = 6$. Hay que **restar** $3F_1$." },
+        { id: "c", label: "$F_1 \\to F_1 - 3F_2$", incorrectFeedback: "Eso modifica la fila 1 y no toca la posición $(2,1)$." },
+        { id: "d", label: "$F_2 \\to 3F_2$", incorrectFeedback: "Multiplicar una fila por $3$ no anula ningún elemento." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$F_2 - 3F_1 = (3 - 3,\\ 4 - 6,\\ 0 - 3,\\ 1 - 0) = (0,\\ -2,\\ -3,\\ 1)$.",
+    },
+    {
+      id: "check-inversa",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Tras $F_2 \\to -\\tfrac12F_2$ queda $(0\\ 1\\ \\tfrac32\\ -\\tfrac12)$ y después $F_1 \\to F_1 - 2F_2$ da $(1\\ 0\\ -2\\ 1)$." }],
+      title: "Leer la inversa",
+      question: "Para $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, ¿cuánto vale el elemento $(1, 1)$ de $A^{-1}$? (solo el número)",
+      correctAnswers: ["-2", "−2"],
+      explanation: "$A^{-1} = \\begin{pmatrix} -2 & 1 \\\\ \\tfrac32 & -\\tfrac12 \\end{pmatrix}$. Comprobación: $1\\cdot(-2) + 2\\cdot\\tfrac32 = 1$.",
+    },
+    {
+      id: "tres-por-tres",
+      type: "slide",
+      help: [{ label: "Orden", message: "Se trabaja columna a columna: primero la columna 1 (pivote en $a_{11}$), luego la 2, luego la 3." }],
+      title: "El mismo método con una 3 × 3",
+      blocks: [
+        { kind: "example", title: "$A = \\begin{pmatrix} -1 & 1 & 2 \\\\ 1 & 0 & 3 \\\\ 4 & 1 & 1 \\end{pmatrix}$", lines: [
+          { math: "F_2 \\to F_2 + F_1,\\quad F_3 \\to F_3 + 4F_1", note: "ceros bajo el primer pivote" },
+          { math: "F_3 \\to F_3 - 5F_2", note: "cero bajo el segundo pivote; el tercer pivote es $-16$" },
+          { math: "\\text{se normalizan los pivotes y se hacen ceros hacia arriba}" },
+          { math: "A^{-1} = \\dfrac{1}{16}\\begin{pmatrix} -3 & 1 & 3 \\\\ 11 & -9 & 5 \\\\ 1 & 5 & -1 \\end{pmatrix}" },
+        ] },
+        { kind: "text", text: "Si en algún momento sale una **fila de ceros** a la izquierda, la matriz es **singular** y no hay inversa: no hace falta seguir." },
+      ],
+      visual: { kind: "tool", tool: "matriz-inversa-explorador", initial: [3, -1, 1, 2, 1, 0, 3, 4, 1, 1], hint: "Comprueba que el producto A · A⁻¹ da la identidad y cambia algún elemento para ver cuándo deja de existir la inversa." },
+    },
+    {
+      id: "check-3x3",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La inversa es $\\frac{1}{16}\\begin{pmatrix} -3 & 1 & 3 \\\\ 11 & -9 & 5 \\\\ 1 & 5 & -1 \\end{pmatrix}$. Multiplica el elemento por $16$." }],
+      title: "Un elemento de la inversa 3×3",
+      question: "En la inversa de la matriz de la diapositiva anterior, el elemento $(2, 1)$ vale $\\frac{x}{16}$. ¿Cuánto vale $x$? (solo el número)",
+      correctAnswers: ["11"],
+      explanation: "$A^{-1}$ tiene como segunda fila $\\frac{1}{16}(11,\\ -9,\\ 5)$: $x = 11$.",
+    },
+    {
+      id: "check-singular",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Aplica $F_2 \\to F_2 - 3F_1$ a la primera matriz de cada opción y mira si aparece una fila de ceros." }],
+      title: "¿Cuál no tiene inversa?",
+      question: "Al aplicar Gauss–Jordan, ¿qué matriz acabará con una fila de ceros a la izquierda?",
+      choices: [
+        { id: "a", label: "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 6 \\end{pmatrix}$" },
+        { id: "b", label: "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$", incorrectFeedback: "Esta sí llega a la identidad: es la del ejemplo." },
+        { id: "c", label: "$\\begin{pmatrix} 0 & 1 \\\\ 2 & 0 \\end{pmatrix}$", incorrectFeedback: "Basta con intercambiar filas y dividir: tiene inversa." },
+        { id: "d", label: "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$", incorrectFeedback: "Es diagonal con elementos no nulos: su inversa es $\\mathrm{diag}(\\tfrac12, \\tfrac15)$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "En $\\begin{pmatrix} 1 & 2 \\\\ 3 & 6 \\end{pmatrix}$, $F_2 \\to F_2 - 3F_1$ da $(0,\\ 0)$: fila nula, matriz singular.",
+    },
+  ],
+};
