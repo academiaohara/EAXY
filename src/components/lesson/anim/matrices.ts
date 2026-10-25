@@ -226,3 +226,50 @@ export function caminos(adj: number[][], k: number): number[][] {
   const r = mPow(mat(adj), k);
   return r.map((f) => f.map((x) => x.n / x.d));
 }
+
+/** Submatriz que queda al quitar la fila `i` y la columna `j` (índices desde 0). */
+export const sinFilaColumna = (a: Mat, i: number, j: number): Mat =>
+  a.filter((_, r) => r !== i).map((r) => r.filter((_, c) => c !== j));
+
+/** Menor complementario αij: determinante de la submatriz sin la fila i ni la columna j. */
+export const menorComplementario = (a: Mat, i: number, j: number): Q => det(sinFilaColumna(a, i, j));
+
+/** Adjunto Aij = (−1)^(i+j)·αij. */
+export const adjuntoElemento = (a: Mat, i: number, j: number): Q => {
+  const m = menorComplementario(a, i, j);
+  return (i + j) % 2 === 0 ? m : qNeg(m);
+};
+
+/** Matriz adjunta: formada por los adjuntos de cada elemento. */
+export const adjunta = (a: Mat): Mat => a.map((r, i) => r.map((_, j) => adjuntoElemento(a, i, j)));
+
+/** Desarrollo por los adjuntos de una fila (índice desde 0): términos aij·Aij y suma. */
+export function desarrolloFila(a: Mat, i: number): { terminos: Q[]; total: Q } {
+  const terminos = a[i]!.map((x, j) => qMul(x, adjuntoElemento(a, i, j)));
+  return { terminos, total: terminos.reduce((s, t) => qAdd(s, t), q(0)) };
+}
+
+/** Número de menores de orden `k` y cuántos son distintos de cero. */
+export function contarMenores(a: Mat, k: number): { total: number; noNulos: number } {
+  const comb = (n: number, m: number): number[][] => {
+    if (m === 0) return [[]];
+    const out: number[][] = [];
+    for (let s = 0; s <= n - m; s++) {
+      for (const rest of comb(n - s - 1, m - 1)) {
+        out.push([s, ...rest.map((x) => x + s + 1)]);
+      }
+    }
+    return out;
+  };
+  const fs = comb(rows(a), k);
+  const cs = comb(cols(a), k);
+  let noNulos = 0;
+  for (const f of fs) {
+    for (const c of cs) {
+      if (!qIsZero(det(f.map((i) => c.map((j) => a[i]![j]!))))) {
+        noNulos++;
+      }
+    }
+  }
+  return { total: fs.length * cs.length, noNulos };
+}

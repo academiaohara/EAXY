@@ -59,10 +59,10 @@ export function buildMatrizProducto(): AnimBuild {
   };
 }
 
-type PasosOpts = { label: string; mat: Mat; pasos: PasoGauss[]; split?: number; intro: string; finalCaption: string; stepCaption: (op: string, k: number) => string; header: (beat: number) => string; marcaCero?: boolean };
+export type PasosOpts = { label: string; mat: Mat; pasos: PasoGauss[]; split?: number; intro: string; finalCaption: string; stepCaption: (op: string, k: number) => string; header: (beat: number) => string; marcaCero?: boolean; finalText?: string };
 
 /** Escena genérica de operaciones elementales: una matriz que cambia paso a paso. */
-function buildPasosFilas(o: PasosOpts): AnimBuild {
+export function buildPasosFilas(o: PasosOpts): AnimBuild {
   const total = o.pasos.length;
   const cols = o.pasos[0]!.m[0]!.length;
   const cw = cols > 5 ? 62 : 78;
@@ -99,7 +99,7 @@ function buildPasosFilas(o: PasosOpts): AnimBuild {
           ))}
           <Fade show={fin} dy={10}>
             <Txt x={400} y={y + nRows(p.m) * ch + 60} size={32} color={MANIM.yellow}>
-              {o.marcaCero ? `rango = ${rango(o.pasos[0]!.m)}` : "A⁻¹ a la derecha"}
+              {o.finalText ?? (o.marcaCero ? `rango = ${rango(o.pasos[0]!.m)}` : "A⁻¹ a la derecha")}
             </Txt>
           </Fade>
         </Canvas>

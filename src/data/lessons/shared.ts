@@ -97,3 +97,4 @@ export const TEMA_CCSS1_8_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 8 — Pro
 export const TEMA_CCSS1_9_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 9 — Combinatoria";
 export const TEMA_CCSS1_10_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 10 — Distribuciones binomial y normal";
 export const TEMA_2BACH_1_SUBTITLE = "2.º Bachillerato, Tema 1 — Matrices";
+export const TEMA_2BACH_2_SUBTITLE = "2.º Bachillerato, Tema 2 — Determinantes";

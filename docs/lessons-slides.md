@@ -441,6 +441,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `grafo-adyacencia` | Grafo dirigido de cuatro nodos y su matriz de adyacencia; al elevar al cuadrado, el elemento (A, C) cuenta el camino A→B→C | — |
 | `matriz-elementos` | Tabla de juguetes como matriz 2×3: filas, columnas, dimensión y elementos a₁₃ y a₂₁ | — |
 | `matriz-tipos` | Triangular superior e inferior, diagonal, escalar e identidad con los ceros y la diagonal marcados | — |
+| `determinante-sarrus` | Regla de Sarrus: se repiten dos columnas, las diagonales que bajan suman y las que suben restan | `nums` (9 elementos por filas) |
+| `matriz-menor-adjunto` | Menor complementario y adjunto: se tachan fila y columna, se calcula el menor 2×2, se aplica el signo y aparece el tablero de signos | `a`, `b` (fila y columna, desde 1) |
+| `determinante-adjuntos` | Desarrollo por los adjuntos de una fila de un determinante 3×3 con los signos y cada término | `nums` (9 elementos), `a` (fila, desde 1) |
+| `determinante-gauss` | Determinante haciendo ceros: cada operación y si cambia o no el valor; al final producto de la diagonal | `nums` (9 o 16 elementos) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -788,6 +792,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `grafo-caminos-explorador` | Matriz de adyacencia 4×4 editable (se pulsa cada casilla), grafo dibujado y Aᵏ con los caminos de longitud k entre dos nodos | `initial`: `[k (1–5), origen (0–3), destino (0–3)]` y 16 elementos de la matriz |
 | `matriz-conmuta-explorador` | A·B y B·A de dos matrices 2×2 editables y si coinciden | `initial`: 4 elementos de A y 4 de B |
 | `ecuacion-matricial-explorador` | Resuelve A·X = B o X·A = B con A⁻¹ por el lado correcto y comprueba la solución | `initial`: `[tipo (0: A·X, 1: X·A)]`, 4 elementos de A y 4 de B |
+| `determinante-area-explorador` | Determinante 2×2 como área con signo del paralelogramo que forman las dos columnas | `initial`: `[a, b, c, d]` (−4 a 4) |
+| `determinante-propiedades-explorador` | Aplica una operación (multiplicar fila, intercambiar, sumar múltiplo, trasponer, fila dependiente) a una 3×3 y compara el determinante con el que predice la propiedad | `initial`: `[operación (0–4), k (−3 a 3)]` y 9 elementos |
+| `determinante-producto-explorador` | |A|, |B|, |A·B|, |A|·|B|, |k·A|, k²|A|, |A⁻¹| y 1/|A| con A y B de orden 2 | `initial`: 4 de A, 4 de B y k |
+| `determinante-parametro-explorador` | Familias de matrices 3×3 con parámetro: determinante, rango y curva de |A(a)| | `initial`: `[familia (0–2), a (−5 a 5)]` |
+| `adjunta-explorador` | Matriz adjunta, su traspuesta, A·Adj(A)ᵗ = |A|·I e inversa 2×2 o 3×3 | `initial`: `[tamaño (2 o 3)]` y 9 elementos |
+| `rango-menores-explorador` | Rango de una 3×4 y cuántos menores de cada orden son no nulos | `initial`: 12 elementos por filas |
 
 ## Respuesta como fracción
 

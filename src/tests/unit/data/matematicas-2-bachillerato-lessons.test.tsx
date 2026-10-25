@@ -10,6 +10,7 @@ const course = curriculum.courses.find((c) => c.slug === "matematicas-2-bachille
 /** [orden, slug del tema, nº de lecciones] */
 const TEMAS: [number, string, number][] = [
   [1, "matrices", 12],
+  [2, "determinantes", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);

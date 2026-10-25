@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildDeterminanteSarrus, buildMatrizMenorAdjunto, buildDeterminanteAdjuntos, buildDeterminanteGauss } from "@/components/lesson/anim/scenes/bach2-determinantes";
 import { buildMatrizProducto, buildMatrizGaussJordan, buildMatrizRangoGauss, buildMatrizTraspuesta, buildGrafoAdyacencia, buildMatrizElementos, buildMatrizTipos } from "@/components/lesson/anim/scenes/bach2-matrices";
 import { buildCuantiaMonedas, buildEsperanzaJuego, buildBinomialForma, buildCampanaNormal, buildTipificacionNormal, buildIntervaloConfianza } from "@/components/lesson/anim/scenes/ccss1-distribuciones";
 import { buildTrianguloPascal } from "@/components/lesson/anim/scenes/ccss1-combinatoria";
@@ -628,6 +629,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "grafo-adyacencia": () => buildGrafoAdyacencia(),
   "matriz-elementos": () => buildMatrizElementos(),
   "matriz-tipos": () => buildMatrizTipos(),
+  "determinante-sarrus": (p) => buildDeterminanteSarrus(p),
+  "matriz-menor-adjunto": (p) => buildMatrizMenorAdjunto(p),
+  "determinante-adjuntos": (p) => buildDeterminanteAdjuntos(p),
+  "determinante-gauss": (p) => buildDeterminanteGauss(p),
   /* industrial-end */
 };
 

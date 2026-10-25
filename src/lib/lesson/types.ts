@@ -965,6 +965,10 @@ export type SlideAnimId =
   | "grafo-adyacencia"
   | "matriz-elementos"
   | "matriz-tipos"
+  | "determinante-sarrus"
+  | "matriz-menor-adjunto"
+  | "determinante-adjuntos"
+  | "determinante-gauss"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1437,6 +1441,12 @@ export type SlideToolId =
   | "grafo-caminos-explorador"
   | "matriz-conmuta-explorador"
   | "ecuacion-matricial-explorador"
+  | "determinante-area-explorador"
+  | "determinante-propiedades-explorador"
+  | "determinante-producto-explorador"
+  | "determinante-parametro-explorador"
+  | "adjunta-explorador"
+  | "rango-menores-explorador"
   /* industrial-tool-end */;
 
 /**

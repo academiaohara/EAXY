@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DeterminanteAreaExplorador, DeterminantePropiedadesExplorador, DeterminanteProductoExplorador, DeterminanteParametroExplorador, AdjuntaExplorador, RangoMenoresExplorador } from "@/components/lesson/slide/tools/Bach2DeterminantesTools";
 import { MatrizOperacionesExplorador, MatrizProductoExplorador, MatrizInversaExplorador, MatrizPotenciasExplorador, GrafoCaminosExplorador, MatrizConmutaExplorador, EcuacionMatricialExplorador } from "@/components/lesson/slide/tools/Bach2MatricesTools";
 import { CuantiaExplorador, BinomialExplorador, NormalExplorador, TablaNormalExplorador, BinomialNormalExplorador, IntervaloConfianzaExplorador } from "@/components/lesson/slide/tools/Ccss1DistribTools";
 import { PascalExplorador, BinomioExplorador } from "@/components/lesson/slide/tools/Ccss1CombTools";
@@ -1094,6 +1095,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MatrizConmutaExplorador block={block} />;
     case "ecuacion-matricial-explorador":
       return <EcuacionMatricialExplorador block={block} />;
+    case "determinante-area-explorador":
+      return <DeterminanteAreaExplorador block={block} />;
+    case "determinante-propiedades-explorador":
+      return <DeterminantePropiedadesExplorador block={block} />;
+    case "determinante-producto-explorador":
+      return <DeterminanteProductoExplorador block={block} />;
+    case "determinante-parametro-explorador":
+      return <DeterminanteParametroExplorador block={block} />;
+    case "adjunta-explorador":
+      return <AdjuntaExplorador block={block} />;
+    case "rango-menores-explorador":
+      return <RangoMenoresExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
