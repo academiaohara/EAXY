@@ -515,6 +515,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `movimientos-tipos` | Tres movimientos básicos: lineal, circular y alternativo con su trayectoria | — |
 | `palanca-ley` | Ley de la palanca con números: R = 60 N a 1 m, F a 3 m (20 N) y a 1 m (60 N) | — |
 | `polea-fija-movil` | Sin polea, polea fija (cambia la dirección) y polea móvil (mitad de fuerza y doble recorrido) | — |
+| `electrones-corriente` | Electrones libres de un metal: movimiento desordenado, corriente al conectar la pila e intensidad; el aislante no conduce | — |
+| `circuito-componentes` | Generador, conductores, elemento de control y receptor en un circuito, con su transformación de energía | — |
+| `serie-paralelo-camino` | Dos lámparas en serie (un camino) y en paralelo (dos ramas): qué pasa al quitar una | — |
+| `cortocircuito-fusible` | Cortocircuito: corriente enorme, calentamiento y fusible que abre el circuito | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1004,6 +1008,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `engranajes-eso-explorador` | Dos ruedas dentadas o dos poleas con correa animadas: relación de transmisión, rpm y sentido | `n` sistema (0 engranajes, 1 correa), `a` z₁, `b` z₂ |
 | `tren-engranajes-explorador` | Tren de dos etapas: relaciones parciales y total, velocidad intermedia y de salida | `a` velocidad de entrada (rpm) |
 | `bici-marchas-explorador` | Plato y piñón de una bicicleta: vueltas de rueda, avance por pedalada y velocidad | `n` plato (0–2), `a` piñón (0–7) |
+| `conductores-aislantes-explorador` | Diez objetos en el hueco de un circuito con pila y bombilla: conductores frente a aislantes | `n` objeto (0–9) |
+| `circuito-simple-explorador` | Circuito con pila, interruptor, cable y bombilla: cada avería interrumpe el paso, con corriente animada | — |
+| `simbolos-electricos-explorador` | Ocho símbolos eléctricos con nombre, función y ejemplo, con modo de repaso | `n` símbolo (0–7) |
+| `control-luz-explorador` | Interruptor, pulsador y dos conmutadores controlando una lámpara | `n` control (0–2) |
+| `serie-paralelo-explorador` | Lámparas en serie o en paralelo (1–4), quitar una y ver tensión y corriente | `n` montaje (0 serie, 1 paralelo), `a` número de lámparas |
+| `montaje-circuito-explorador` | Conectar con cables los terminales de pila, interruptor y lámpara; detecta circuito abierto y cortocircuito | — |
+| `seguridad-electrica-explorador` | Ocho situaciones domésticas: ¿peligrosa o segura? con su explicación | — |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildElectronesCorriente, buildCircuitoComponentes, buildSerieParaleloCamino, buildCortocircuitoFusible } from "@/components/lesson/anim/scenes/industrial/teceso1-electricidad";
 import { buildMovimientosTipos, buildPalancaLey, buildPoleaFijaMovil } from "@/components/lesson/anim/scenes/industrial/teceso1-mecanismos";
 import { buildEsfuerzosTipos, buildTrianguloRigido, buildArcoDescarga, buildCaminoCargas } from "@/components/lesson/anim/scenes/industrial/teceso1-estructuras";
 import { buildMateriasPrimasProceso, buildContrachapadoCapas, buildAleacionMezcla, buildCicloReciclaje } from "@/components/lesson/anim/scenes/industrial/teceso1-materiales";
@@ -724,6 +725,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "movimientos-tipos": () => buildMovimientosTipos(),
   "palanca-ley": () => buildPalancaLey(),
   "polea-fija-movil": () => buildPoleaFijaMovil(),
+  "electrones-corriente": () => buildElectronesCorriente(),
+  "circuito-componentes": () => buildCircuitoComponentes(),
+  "serie-paralelo-camino": () => buildSerieParaleloCamino(),
+  "cortocircuito-fusible": () => buildCortocircuitoFusible(),
   /* industrial-end */
 };
 

@@ -370,8 +370,8 @@ export function TallerPeligrosExplorador({ block }: { block: ToolBlock }) {
       onReset={() => setS(init)}
       controls={<span className="text-sm text-[color:var(--stage-muted,#b8c2d0)] sm:col-span-2">Pulsa los círculos para revisarlos. Un círculo verde es un peligro ya localizado.</span>}
     >
-      <div className="relative mx-auto w-full max-w-2xl">
-      <Svg w={520} h={300} testId="taller" maxH={310}>
+      <div className="relative mx-auto w-full max-w-xl">
+      <Svg w={520} h={300} testId="taller">
         <rect x={0} y={0} width={520} height={300} fill={MANIM.panel} />
         <rect x={0} y={230} width={520} height={70} fill={MANIM.surface} />
         <rect x={100} y={150} width={330} height={16} fill={MANIM.orange} fillOpacity={0.5} stroke={MANIM.orange} strokeWidth={3} />

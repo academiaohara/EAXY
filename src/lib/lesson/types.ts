@@ -1039,6 +1039,10 @@ export type SlideAnimId =
   | "movimientos-tipos"
   | "palanca-ley"
   | "polea-fija-movil"
+  | "electrones-corriente"
+  | "circuito-componentes"
+  | "serie-paralelo-camino"
+  | "cortocircuito-fusible"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1654,6 +1658,13 @@ export type SlideToolId =
   | "engranajes-eso-explorador"
   | "tren-engranajes-explorador"
   | "bici-marchas-explorador"
+  | "conductores-aislantes-explorador"
+  | "circuito-simple-explorador"
+  | "simbolos-electricos-explorador"
+  | "control-luz-explorador"
+  | "serie-paralelo-explorador"
+  | "montaje-circuito-explorador"
+  | "seguridad-electrica-explorador"
   /* industrial-tool-end */;
 
 /**

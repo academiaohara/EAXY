@@ -121,7 +121,9 @@ import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industri
 import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/03-ciencia-tecnica-tecnologia-ingenieria";
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
 import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
+import { circuitoElectricoComponentesLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/02-circuito-electrico-componentes";
 import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
+import { circuitosSerieParaleloEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/05-circuitos-serie-paralelo-eso";
 import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/07-circuitos-temporizadores";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
 import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/09-circunferencia-1bach";
@@ -187,6 +189,7 @@ import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-e
 import { correlacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/11-correlacion-1bach";
 import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/11-correlacion-ccss1";
 import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
+import { corrienteElectricaBasicaLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/01-corriente-electrica-basica";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
 import { cortesSignoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/03-cortes-signo-ccss1";
@@ -533,6 +536,7 @@ import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/02-interes-simple-ccss1";
 import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/10-interpolacion-extrapolacion-ccss1";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
+import { interruptoresPulsadoresLamparasLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/04-interruptores-pulsadores-lamparas";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
 import { intervaloConfianzaMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/08-intervalo-confianza-media-ccss2";
 import { intervaloConfianzaProporcion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/11-intervalo-confianza-proporcion-2bach";
@@ -641,6 +645,7 @@ import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
 import { monotoniaExtremos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/04-monotonia-extremos-2bach";
+import { montajeCircuitosSencillosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/06-montaje-circuitos-sencillos";
 import { montajeSimulacionSeguridadElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/09-montaje-simulacion-seguridad-electrica";
 import { motorAlternativoTiemposLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/05-motor-alternativo-tiempos";
 import { motorCcArranqueRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/09-motor-cc-arranque-regulacion";
@@ -979,6 +984,7 @@ import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-ba
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
+import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
 import { seleccionMaterialesCriteriosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/05-seleccion-materiales-criterios";
@@ -1004,6 +1010,7 @@ import { senalesAnalogicasDigitalesLesson } from "@/data/lessons/tecnologia-inge
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
+import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
 import { simetricoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/06-simetrico-recta-2bach";
@@ -1292,7 +1299,9 @@ export const interactiveLessons = {
   "ciencia-tecnica-tecnologia-ingenieria": cienciaTecnicaTecnologiaIngenieriaLesson,
   "cilindros-2eso": cilindros2esoLesson,
   "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
+  "circuito-electrico-componentes": circuitoElectricoComponentesLesson,
   "circuitos-aplicaciones": circuitosAplicacionesLesson,
+  "circuitos-serie-paralelo-eso": circuitosSerieParaleloEsoLesson,
   "circuitos-temporizadores": circuitosTemporizadoresLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
   "circunferencia-1bach": circunferencia1bachLesson,
@@ -1358,6 +1367,7 @@ export const interactiveLessons = {
   "correlacion-1bach": correlacion1bachLesson,
   "correlacion-ccss1": correlacionCcss1Lesson,
   "corriente-continua-elementos": corrienteContinuaElementosLesson,
+  "corriente-electrica-basica": corrienteElectricaBasicaLesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
   "cortes-signo-ccss1": cortesSignoCcss1Lesson,
@@ -1704,6 +1714,7 @@ export const interactiveLessons = {
   "interes-simple-ccss1": interesSimpleCcss1Lesson,
   "interpolacion-extrapolacion-ccss1": interpolacionExtrapolacionCcss1Lesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
+  "interruptores-pulsadores-lamparas": interruptoresPulsadoresLamparasLesson,
   "intervalo-confianza-media-2bach": intervaloConfianzaMedia2bachLesson,
   "intervalo-confianza-media-ccss2": intervaloConfianzaMediaCcss2Lesson,
   "intervalo-confianza-proporcion-2bach": intervaloConfianzaProporcion2bachLesson,
@@ -1812,6 +1823,7 @@ export const interactiveLessons = {
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
   "monotonia-extremos-2bach": monotoniaExtremos2bachLesson,
+  "montaje-circuitos-sencillos": montajeCircuitosSencillosLesson,
   "montaje-simulacion-seguridad-electrica": montajeSimulacionSeguridadElectricaLesson,
   "motor-alternativo-tiempos": motorAlternativoTiemposLesson,
   "motor-cc-arranque-regulacion": motorCcArranqueRegulacionLesson,
@@ -2150,6 +2162,7 @@ export const interactiveLessons = {
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
+  "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
   "seleccion-materiales-criterios": seleccionMaterialesCriteriosLesson,
@@ -2175,6 +2188,7 @@ export const interactiveLessons = {
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
   "sensores-transductores": sensoresTransductoresLesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
+  "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,
   "simetrico-recta-2bach": simetricoRecta2bachLesson,

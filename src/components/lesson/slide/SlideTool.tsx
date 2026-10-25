@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ConductoresAislantesExplorador, CircuitoSimpleExplorador, SimbolosElectricosExplorador, ControlLuzExplorador, SerieParaleloExplorador, MontajeCircuitoExplorador, SeguridadElectricaExplorador } from "@/components/lesson/slide/tools/TecEso1ElectricidadTools";
 import { MovimientosExplorador, PalancaEquilibrioExplorador, PoleasAparejoExplorador, RuedaEjeExplorador, EngranajesEsoExplorador, TrenEngranajesExplorador, BiciMarchasExplorador } from "@/components/lesson/slide/tools/TecEso1MecanismosTools";
 import { EsfuerzosBarraExplorador, VigaFlexionExplorador, EstabilidadExplorador, TriangulacionExplorador, PuentesTiposExplorador, EnsayoPuenteExplorador } from "@/components/lesson/slide/tools/TecEso1EstructurasTools";
 import { EnsayoMaterialExplorador, PropiedadesBarrasExplorador, MaderaDerivadosExplorador, MetalesPruebaExplorador, PlasticoCalorExplorador, SeleccionMaterialEsoExplorador, TallerPeligrosExplorador, ContenedoresReciclajeExplorador } from "@/components/lesson/slide/tools/TecEso1MaterialesTools";
@@ -1402,6 +1403,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TrenEngranajesExplorador block={block} />;
     case "bici-marchas-explorador":
       return <BiciMarchasExplorador block={block} />;
+    case "conductores-aislantes-explorador":
+      return <ConductoresAislantesExplorador block={block} />;
+    case "circuito-simple-explorador":
+      return <CircuitoSimpleExplorador block={block} />;
+    case "simbolos-electricos-explorador":
+      return <SimbolosElectricosExplorador block={block} />;
+    case "control-luz-explorador":
+      return <ControlLuzExplorador block={block} />;
+    case "serie-paralelo-explorador":
+      return <SerieParaleloExplorador block={block} />;
+    case "montaje-circuito-explorador":
+      return <MontajeCircuitoExplorador block={block} />;
+    case "seguridad-electrica-explorador":
+      return <SeguridadElectricaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
