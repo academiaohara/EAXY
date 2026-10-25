@@ -1,6 +1,7 @@
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
+import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
@@ -86,6 +87,7 @@ import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
 import { automaticaDefinicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/01-automatica-definiciones";
+import { automatizacionProcesosSecuenciasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/09-automatizacion-procesos-secuencias";
 import { axiomasKolmogorov2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/04-axiomas-kolmogorov-2bach";
 import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/04-axiomas-kolmogorov-ccss2";
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
@@ -173,6 +175,7 @@ import { continuidadPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { contrasteHipotesisMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/11-contraste-hipotesis-media-ccss2";
 import { contrasteProporcionErroresCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/12-contraste-proporcion-errores-ccss2";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
+import { controladoresProgramablesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/05-controladores-programables";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
 import { correlacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/11-correlacion-1bach";
@@ -346,6 +349,7 @@ import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
+import { estructuraSistemaControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/02-estructura-sistema-control";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
 import { experimentosSucesosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/01-experimentos-sucesos-ccss1";
@@ -443,6 +447,7 @@ import { funcionesRadicalesValorAbsoluto2bachLesson } from "@/data/lessons/matem
 import { funcionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/07-funciones-trigonometricas-1bach";
 import { funcionesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/11-funciones-trigonometricas-2bach";
 import { funcionesTrigonometricasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/09-funciones-trigonometricas-ccss1";
+import { fundamentosAutomatizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/01-fundamentos-automatizacion";
 import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-galgas-extensometricas";
 import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/04-gauss-ampliada-2bach";
 import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/07-gauss-ampliada-ccss2";
@@ -525,6 +530,7 @@ import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industr
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
 import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/05-kirchhoff-mallas-nudos";
 import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/03-lazo-abierto-cerrado";
+import { lazoAbiertoCerradoControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/08-lazo-abierto-cerrado-control";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
@@ -565,6 +571,7 @@ import { logaritmosDefinicion1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { logaritmosDefinicionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/14-logaritmos-definicion-ccss1";
 import { logaritmosPropiedades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/15-logaritmos-propiedades-1bach";
 import { logaritmosPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/15-logaritmos-propiedades-ccss1";
+import { logicaControlAutomatismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/07-logica-control-automatismos";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
@@ -924,6 +931,7 @@ import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-i
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
+import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
@@ -949,7 +957,9 @@ import { semejanzaTroncos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-
 import { semejanzaTroncos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/07-semejanza-troncos-4esob";
 import { semirrectasRectaReal4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/04-semirrectas-recta-real-4esob";
 import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
+import { senalesAnalogicasDigitalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/06-senales-analogicas-digitales";
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
+import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
@@ -1115,6 +1125,7 @@ export const interactiveLessons = {
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
+  "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
@@ -1200,6 +1211,7 @@ export const interactiveLessons = {
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "automatica-definiciones": automaticaDefinicionesLesson,
+  "automatizacion-procesos-secuencias": automatizacionProcesosSecuenciasLesson,
   "axiomas-kolmogorov-2bach": axiomasKolmogorov2bachLesson,
   "axiomas-kolmogorov-ccss2": axiomasKolmogorovCcss2Lesson,
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
@@ -1287,6 +1299,7 @@ export const interactiveLessons = {
   "contraste-hipotesis-media-ccss2": contrasteHipotesisMediaCcss2Lesson,
   "contraste-proporcion-errores-ccss2": contrasteProporcionErroresCcss2Lesson,
   "controlador-proporcional": controladorProporcionalLesson,
+  "controladores-programables": controladoresProgramablesLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
   "correlacion-1bach": correlacion1bachLesson,
@@ -1460,6 +1473,7 @@ export const interactiveLessons = {
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
   "estructura-cristalina": estructuraCristalinaLesson,
+  "estructura-sistema-control": estructuraSistemaControlLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
   "experimentos-sucesos-ccss1": experimentosSucesosCcss1Lesson,
@@ -1557,6 +1571,7 @@ export const interactiveLessons = {
   "funciones-trigonometricas-1bach": funcionesTrigonometricas1bachLesson,
   "funciones-trigonometricas-2bach": funcionesTrigonometricas2bachLesson,
   "funciones-trigonometricas-ccss1": funcionesTrigonometricasCcss1Lesson,
+  "fundamentos-automatizacion": fundamentosAutomatizacionLesson,
   "galgas-extensometricas": galgasExtensometricasLesson,
   "gauss-ampliada-2bach": gaussAmpliada2bachLesson,
   "gauss-ampliada-ccss2": gaussAmpliadaCcss2Lesson,
@@ -1639,6 +1654,7 @@ export const interactiveLessons = {
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
   "kirchhoff-mallas-nudos": kirchhoffMallasNudosLesson,
   "lazo-abierto-cerrado": lazoAbiertoCerradoLesson,
+  "lazo-abierto-cerrado-control": lazoAbiertoCerradoControlLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
@@ -1679,6 +1695,7 @@ export const interactiveLessons = {
   "logaritmos-definicion-ccss1": logaritmosDefinicionCcss1Lesson,
   "logaritmos-propiedades-1bach": logaritmosPropiedades1bachLesson,
   "logaritmos-propiedades-ccss1": logaritmosPropiedadesCcss1Lesson,
+  "logica-control-automatismos": logicaControlAutomatismosLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "luz-detector-error": luzDetectorErrorLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
@@ -2038,6 +2055,7 @@ export const interactiveLessons = {
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
+  "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
@@ -2063,7 +2081,9 @@ export const interactiveLessons = {
   "semejanza-troncos-4esob": semejanzaTroncos4esobLesson,
   "semirrectas-recta-real-4esob": semirrectasRectaReal4esobLesson,
   "senal-analogica-digital": senalAnalogicaDigitalLesson,
+  "senales-analogicas-digitales": senalesAnalogicasDigitalesLesson,
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
+  "sensores-transductores": sensoresTransductoresLesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,

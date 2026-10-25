@@ -1012,6 +1012,10 @@ export type SlideAnimId =
   | "kirchhoff-nodo-malla"
   | "ciclo-instruccion"
   | "bucle-iteraciones"
+  | "sistema-control-termostato"
+  | "sensor-divisor-tension"
+  | "histeresis-comparador"
+  | "secuencia-clasificacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1578,6 +1582,16 @@ export type SlideToolId =
   | "diagrama-flujo-explorador"
   | "python-traza-explorador"
   | "tests-automaticos-explorador"
+  | "fabrica-modos-explorador"
+  | "bloques-control-explorador"
+  | "sensores-habitacion-explorador"
+  | "actuadores-explorador"
+  | "placa-virtual-explorador"
+  | "senal-umbral-explorador"
+  | "compuertas-alarma-explorador"
+  | "termostato-lazo-explorador"
+  | "linea-clasificacion-explorador"
+  | "robot-cuadricula-explorador"
   /* industrial-tool-end */;
 
 /**

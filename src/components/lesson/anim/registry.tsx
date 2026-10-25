@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
 import { buildCicloInstruccion, buildBucleIteraciones } from "@/components/lesson/anim/scenes/industrial/tec1-programacion";
 import { buildCargaMovilCircuito, buildSerieParaleloReparto, buildKirchhoffNodoMalla } from "@/components/lesson/anim/scenes/industrial/tec1-circuitos";
 import { buildTransmisionFlujo, buildCorreaAbiertaCruzada, buildEngranajesGiro, buildBielaManivelaCiclo, buildPalancaGeneros } from "@/components/lesson/anim/scenes/industrial/tec1-mecanismos";
@@ -690,6 +691,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "kirchhoff-nodo-malla": () => buildKirchhoffNodoMalla(),
   "ciclo-instruccion": () => buildCicloInstruccion(),
   "bucle-iteraciones": () => buildBucleIteraciones(),
+  "sistema-control-termostato": () => buildSistemaControlTermostato(),
+  "sensor-divisor-tension": () => buildSensorDivisorTension(),
+  "histeresis-comparador": () => buildHisteresisComparador(),
+  "secuencia-clasificacion": () => buildSecuenciaClasificacion(),
   /* industrial-end */
 };
 

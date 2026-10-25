@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
 import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
 import { CargaCorrienteExplorador, OhmExplorador, CircuitoBasicoExplorador, ResistenciasExplorador, KirchhoffExplorador, ConsumoEnergiaExplorador, SobrecargaCircuitoExplorador, MultimetroExplorador, DiagnosticoCircuitoExplorador, DiodoLedExplorador, TransistorConmutadorExplorador, CondensadorCargaExplorador, RetoLedExplorador } from "@/components/lesson/slide/tools/Tec1CircuitosTools";
 import { MaquinaDesmontajeExplorador, PoleasCorreasExplorador, EngranajesExplorador, BicicletaExplorador, SinFinExplorador, BielaManivelaExplorador, LevaSeguidorExplorador, CremalleraTornilloExplorador, PalancaExplorador, PolipastoExplorador, DiscoGiratorioExplorador, MotorVirtualExplorador, ReductorRendimientoExplorador, TransmisionEditorExplorador } from "@/components/lesson/slide/tools/Tec1MecanismosTools";
@@ -1297,6 +1298,26 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PythonTrazaExplorador block={block} />;
     case "tests-automaticos-explorador":
       return <TestsAutomaticosExplorador block={block} />;
+    case "fabrica-modos-explorador":
+      return <FabricaModosExplorador block={block} />;
+    case "bloques-control-explorador":
+      return <BloquesControlExplorador block={block} />;
+    case "sensores-habitacion-explorador":
+      return <SensoresHabitacionExplorador block={block} />;
+    case "actuadores-explorador":
+      return <ActuadoresExplorador block={block} />;
+    case "placa-virtual-explorador":
+      return <PlacaVirtualExplorador block={block} />;
+    case "senal-umbral-explorador":
+      return <SenalUmbralExplorador block={block} />;
+    case "compuertas-alarma-explorador":
+      return <CompuertasAlarmaExplorador block={block} />;
+    case "termostato-lazo-explorador":
+      return <TermostatoLazoExplorador block={block} />;
+    case "linea-clasificacion-explorador":
+      return <LineaClasificacionExplorador block={block} />;
+    case "robot-cuadricula-explorador":
+      return <RobotCuadriculaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
