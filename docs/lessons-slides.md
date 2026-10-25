@@ -495,6 +495,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `triple-sostenibilidad` | Dimensiones ambiental, social y económica y su intersección | — |
 | `ciclo-vida-fases` | Ciclo de vida de un producto: extracción, fabricación, transporte, uso y fin de vida | — |
 | `economia-lineal-circular` | Economía lineal frente a circular y las «R» | — |
+| `fases-proyecto-eso` | Las siete fases del proyecto tecnológico (problema, información, diseño, planificación, construcción, evaluación, mejora) y la vuelta atrás | — |
+| `ciencia-tecnica-tecnologia` | Ciencia, técnica, tecnología e ingeniería repartidas en un mismo proyecto (un puente) | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -953,6 +955,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `economia-circular-explorador` | Material nuevo por año según vida, reparabilidad y reciclaje | `a` vida, `b` reparación, `c` reciclaje |
 | `parque-renovable-explorador` | Parque solar y eólico con demanda, nubes y almacenamiento | `a` solar, `b` eólica, `c` viento |
 | `acv-explorador` | ACV de tres bombillas por unidad funcional, con incertidumbre | `a` horas, `b` mix, `c` incertidumbre |
+| `analisis-objeto-explorador` | Análisis de un objeto en cinco capas: necesidad, función, forma, material y mejora | `n` objeto (0 tijeras, 1 bolígrafo, 2 botella, 3 silla) |
+| `linea-tiempo-explorador` | Línea del tiempo con siete épocas de la tecnología, sus inventos y el cambio que trajeron | `n` época inicial (0–6) |
+| `presupuesto-explorador` | Presupuesto de un proyecto: cantidad × precio, total, imprevistos del 10 % y comparación con el presupuesto disponible | `a` presupuesto disponible (€) |
+| `reparto-tareas-explorador` | Reparto de seis tareas entre tres personas: carga de cada una y duración del proyecto | — |
+| `fuente-fiable-explorador` | Evaluación de cuatro fuentes con cinco criterios (autor, fecha, datos, intención, experiencia) y contraste con una segunda fuente | `n` fuente inicial (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

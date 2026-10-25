@@ -497,6 +497,8 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/componentes-sistema-control": "sistemas-de-control",
   "tecnologia-industrial-2-bachillerato/circuitos-combinacionales-boole": "electronica-digital",
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
+  // ── Tecnología 1.º ESO ──
+  "tecnologia-1-eso/tecnologia-proceso-tecnologico": "proyectos-tecnologicos",
   // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
   "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
   "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",

@@ -116,6 +116,7 @@ import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-inge
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
 import { ciclosOttoDieselLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/06-ciclos-otto-diesel";
 import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/01-ciclos-reversibles-focos";
+import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/03-ciencia-tecnica-tecnologia-ingenieria";
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
 import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
 import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
@@ -382,6 +383,7 @@ import { factoresPrimos2esoLesson } from "@/data/lessons/matematicas-2-eso/01-di
 import { factorizacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/05-factorizacion-1bach";
 import { factorizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/05-factorizacion-ccss1";
 import { factorizacionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/09-factorizacion-polinomios-4esob";
+import { fasesProyectoTecnologicoLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/05-fases-proyecto-tecnologico";
 import { figurasGeometricasCircunferenciaLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/04-figuras-geometricas-circunferencia";
 import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/02-figuras-geometricas-cuadrilateros";
 import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
@@ -467,6 +469,7 @@ import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bac
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
+import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
@@ -709,6 +712,7 @@ import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
+import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
@@ -754,6 +758,7 @@ import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
+import { presupuestoEvaluacionMejoraLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/07-presupuesto-evaluacion-mejora";
 import { primerosPasosPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/05-primeros-pasos-python";
 import { primitivaIntegralIndefinida2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/01-primitiva-integral-indefinida-2bach";
 import { primitivaIntegralIndefinidaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/01-primitiva-integral-indefinida-ccss2";
@@ -801,6 +806,7 @@ import { problemasLimitesContinuidadCcss2Lesson } from "@/data/lessons/matematic
 import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
 import { problemasMetricos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/12-problemas-metricos-2-2bach";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
+import { problemasNecesidadesInformacionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/04-problemas-necesidades-informacion";
 import { problemasNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/09-problemas-normal-2bach";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
 import { problemasNumerosReales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/14-problemas-numeros-reales-4esob";
@@ -869,6 +875,7 @@ import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenie
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
+import { queEsTecnologiaNecesidadesLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/01-que-es-tecnologia-necesidades";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
 import { racionalesIrracionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/01-racionales-irracionales-ccss1";
@@ -1250,6 +1257,7 @@ export const interactiveLessons = {
   "ciclo-carnot": cicloCarnotLesson,
   "ciclos-otto-diesel": ciclosOttoDieselLesson,
   "ciclos-reversibles-focos": ciclosReversiblesFocosLesson,
+  "ciencia-tecnica-tecnologia-ingenieria": cienciaTecnicaTecnologiaIngenieriaLesson,
   "cilindros-2eso": cilindros2esoLesson,
   "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
   "circuitos-aplicaciones": circuitosAplicacionesLesson,
@@ -1516,6 +1524,7 @@ export const interactiveLessons = {
   "factorizacion-1bach": factorizacion1bachLesson,
   "factorizacion-ccss1": factorizacionCcss1Lesson,
   "factorizacion-polinomios-4esob": factorizacionPolinomios4esobLesson,
+  "fases-proyecto-tecnologico": fasesProyectoTecnologicoLesson,
   "figuras-geometricas-circunferencia": figurasGeometricasCircunferenciaLesson,
   "figuras-geometricas-cuadrilateros": figurasGeometricasCuadrilaterosLesson,
   "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
@@ -1601,6 +1610,7 @@ export const interactiveLessons = {
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
+  "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "idea-limite-funcion-ccss1": ideaLimiteFuncionCcss1Lesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
@@ -1843,6 +1853,7 @@ export const interactiveLessons = {
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
+  "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
@@ -1888,6 +1899,7 @@ export const interactiveLessons = {
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
+  "presupuesto-evaluacion-mejora": presupuestoEvaluacionMejoraLesson,
   "primeros-pasos-python": primerosPasosPythonLesson,
   "primitiva-integral-indefinida-2bach": primitivaIntegralIndefinida2bachLesson,
   "primitiva-integral-indefinida-ccss2": primitivaIntegralIndefinidaCcss2Lesson,
@@ -1935,6 +1947,7 @@ export const interactiveLessons = {
   "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
   "problemas-metricos-2-2bach": problemasMetricos22bachLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
+  "problemas-necesidades-informacion": problemasNecesidadesInformacionLesson,
   "problemas-normal-2bach": problemasNormal2bachLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
   "problemas-numeros-reales-4esob": problemasNumerosReales4esobLesson,
@@ -2003,6 +2016,7 @@ export const interactiveLessons = {
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
+  "que-es-tecnologia-necesidades": queEsTecnologiaNecesidadesLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
   "racionales-irracionales-ccss1": racionalesIrracionalesCcss1Lesson,

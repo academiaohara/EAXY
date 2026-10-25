@@ -127,3 +127,15 @@ export const TEC1_SUBTITLES = {
   6: "Tecnología e Ingeniería I, Tema 6 — Sistemas automáticos",
   7: "Tecnología e Ingeniería I, Tema 7 — Tecnología sostenible",
 } as const;
+
+/** Tecnología 1.º ESO (Introducción a la Tecnología): subtítulo de cada tema. */
+export const TECESO1_SUBTITLES = {
+  1: "Tecnología 1.º ESO, Tema 1 — La tecnología y el proceso tecnológico",
+  2: "Tecnología 1.º ESO, Tema 2 — Expresión y comunicación gráfica",
+  3: "Tecnología 1.º ESO, Tema 3 — Materiales de uso técnico",
+  4: "Tecnología 1.º ESO, Tema 4 — Estructuras",
+  5: "Tecnología 1.º ESO, Tema 5 — Mecanismos básicos",
+  6: "Tecnología 1.º ESO, Tema 6 — Iniciación a la electricidad",
+  7: "Tecnología 1.º ESO, Tema 7 — Pensamiento computacional",
+  8: "Tecnología 1.º ESO, Tema 8 — Tecnología sostenible",
+} as const;

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildFasesProyectoEso, buildCienciaTecnicaTecnologia } from "@/components/lesson/anim/scenes/industrial/teceso1-proceso";
 import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
 import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
 import { buildCicloInstruccion, buildBucleIteraciones } from "@/components/lesson/anim/scenes/industrial/tec1-programacion";
@@ -699,6 +700,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "triple-sostenibilidad": () => buildTripleSostenibilidad(),
   "ciclo-vida-fases": () => buildCicloVidaFases(),
   "economia-lineal-circular": () => buildEconomiaLinealCircular(),
+  "fases-proyecto-eso": () => buildFasesProyectoEso(),
+  "ciencia-tecnica-tecnologia": () => buildCienciaTecnicaTecnologia(),
   /* industrial-end */
 };
 

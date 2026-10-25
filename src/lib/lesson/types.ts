@@ -1019,6 +1019,8 @@ export type SlideAnimId =
   | "triple-sostenibilidad"
   | "ciclo-vida-fases"
   | "economia-lineal-circular"
+  | "fases-proyecto-eso"
+  | "ciencia-tecnica-tecnologia"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1603,6 +1605,11 @@ export type SlideToolId =
   | "parque-renovable-explorador"
   | "acv-explorador"
   | "grupos-afectados-explorador"
+  | "analisis-objeto-explorador"
+  | "linea-tiempo-explorador"
+  | "presupuesto-explorador"
+  | "reparto-tareas-explorador"
+  | "fuente-fiable-explorador"
   /* industrial-tool-end */;
 
 /**

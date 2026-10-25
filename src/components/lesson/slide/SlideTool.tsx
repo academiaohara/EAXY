@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AnalisisObjetoExplorador, LineaTiempoExplorador, PresupuestoExplorador, RepartoTareasExplorador, FuenteFiableExplorador } from "@/components/lesson/slide/tools/TecEso1ProcesoTools";
 import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
 import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
 import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
@@ -1335,6 +1336,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AcvExplorador block={block} />;
     case "grupos-afectados-explorador":
       return <GruposAfectadosExplorador block={block} />;
+    case "analisis-objeto-explorador":
+      return <AnalisisObjetoExplorador block={block} />;
+    case "linea-tiempo-explorador":
+      return <LineaTiempoExplorador block={block} />;
+    case "presupuesto-explorador":
+      return <PresupuestoExplorador block={block} />;
+    case "reparto-tareas-explorador":
+      return <RepartoTareasExplorador block={block} />;
+    case "fuente-fiable-explorador":
+      return <FuenteFiableExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
