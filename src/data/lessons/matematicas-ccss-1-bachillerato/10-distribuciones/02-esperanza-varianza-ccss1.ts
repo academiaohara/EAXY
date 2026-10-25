@@ -1,0 +1,83 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const esperanzaVarianzaCcss1Lesson: InteractiveLesson = {
+  slug: "esperanza-varianza-ccss1",
+  title: "2. Esperanza, varianza y desviación típica",
+  subtitle: TEMA_CCSS1_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "esperanza",
+      type: "slide",
+      help: [{ label: "Idea", message: "La esperanza es la media teórica: cada valor ponderado por su probabilidad. Si repites el experimento muchas veces, la media de lo que obtienes se acerca a ella." }],
+      title: "Esperanza matemática",
+      blocks: [
+        { kind: "rule", title: "Media o esperanza de una variable discreta", formula: "\\mu = E(X) = \\sum x\\cdot p(x)" },
+        { kind: "text", text: "Es una **media teórica**: si se repite el experimento muchas veces, la media de los resultados se aproxima a $\\mu$. Si $X$ es la ganancia de un juego, el juego es **equitativo** si $E(X) = 0$, **ventajoso** si $E(X) > 0$ y **desventajoso** si $E(X) < 0$." },
+      ],
+      visual: { kind: "anim", scene: "esperanza-juego" },
+    },
+    {
+      id: "dispersion",
+      type: "slide",
+      help: [{ label: "Idea", message: "Igual que en estadística descriptiva, la varianza mide cuánto se alejan los valores de la media, pero ponderando por probabilidades." }],
+      title: "Varianza y desviación típica",
+      blocks: [
+        { kind: "rule", title: "Varianza y desviación típica", formula: "\\sigma^2 = \\sum (x - \\mu)^2\\,p(x) = E(X^2) - \\mu^2 \\qquad \\sigma = \\sqrt{\\sigma^2}" },
+        { kind: "text", text: "Para las distribuciones de probabilidad se usan las letras griegas $\\mu$ y $\\sigma$ (parámetros teóricos); para los datos de una muestra, $\\bar x$ y $s$." },
+      ],
+      visual: { kind: "tool", tool: "cuantia-explorador", initial: [1], hint: "Para tres monedas: μ = 1,5 y σ² = 3·(1/2)·(1/2) = 0,75. Cambia de variable y compara la dispersión." },
+    },
+    {
+      id: "check-media",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$E(X) = 0\\cdot\\tfrac14 + 1\\cdot\\tfrac12 + 2\\cdot\\tfrac14$." }],
+      title: "Calcular la esperanza",
+      question: "Se lanzan dos monedas y $X$ es el número de caras. ¿Cuánto vale $E(X)$? (solo el número)",
+      correctAnswers: ["1"],
+      explanation: "$E(X) = 0\\cdot\\tfrac14 + 1\\cdot\\tfrac12 + 2\\cdot\\tfrac14 = 1$. En promedio sale una cara.",
+    },
+    {
+      id: "check-juego",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La ganancia es $X - 1$ (se cobra $1$ € por jugar), luego $E = E(X) - 1$ con $E(X) = 1{,}5$." }],
+      title: "Un juego con tres monedas",
+      question: "Por jugar se pagan $1$ € y se lanzan tres monedas; se cobra $1$ € por cada cara. ¿Cuál es la ganancia esperada por partida, en euros? (como decimal)",
+      correctAnswers: ["0,5", "0.5"],
+      explanation: "Caras esperadas: $E(X) = 3\\cdot\\tfrac12 = 1{,}5$. Ganancia esperada $= 1{,}5 - 1 = 0{,}5$ € por partida: el juego es ventajoso.",
+    },
+    {
+      id: "check-cien",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Multiplica la ganancia esperada por el número de partidas." }],
+      title: "En muchas partidas",
+      question: "Con ese juego, ¿cuántos euros se espera ganar en $100$ partidas? (solo el número)",
+      correctAnswers: ["50"],
+      explanation: "$100\\cdot 0{,}5 = 50$ €. La esperanza no asegura el resultado de cada partida, pero sí lo que se espera a la larga.",
+    },
+    {
+      id: "check-ruleta",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Hay $18$ números impares de $37$: se gana $10$ € con $\\tfrac{18}{37}$ y se pierden $10$ € con $\\tfrac{19}{37}$." }],
+      title: "La ruleta",
+      question: "En una ruleta de $37$ números (del $0$ al $36$) se apuestan $10$ € a impar, y se cobran $20$ € si sale impar (ganancia neta de $10$ €). ¿Cuál es la ganancia esperada por apuesta, en euros? (con dos decimales; usa signo si es pérdida)",
+      correctAnswers: ["-0,27", "−0,27", "-0.27", "−0.27"],
+      explanation: "$E = 10\\cdot\\tfrac{18}{37} - 10\\cdot\\tfrac{19}{37} = -\\tfrac{10}{37} \\approx -0{,}27$ €. El juego es desventajoso: la ventaja del casino es el cero.",
+    },
+    {
+      id: "check-desv",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$E(X^2) = 0 + \\tfrac38 + 4\\cdot\\tfrac38 + 9\\cdot\\tfrac18 = 3$ y $\\mu = 1{,}5$." }],
+      title: "Desviación típica",
+      question: "Para el número de caras en tres monedas ($\\mu = 1{,}5$ y $E(X^2) = 3$), ¿cuánto vale la desviación típica $\\sigma$? (con dos decimales)",
+      correctAnswers: ["0,87", "0.87"],
+      explanation: "$\\sigma^2 = E(X^2) - \\mu^2 = 3 - 2{,}25 = 0{,}75$ y $\\sigma = \\sqrt{0{,}75} \\approx 0{,}87$.",
+    },
+  ],
+};

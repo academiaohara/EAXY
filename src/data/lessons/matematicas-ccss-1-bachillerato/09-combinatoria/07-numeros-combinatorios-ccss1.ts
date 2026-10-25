@@ -1,0 +1,82 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_9_SUBTITLE } from "@/data/lessons/shared";
+
+export const numerosCombinatoriosCcss1Lesson: InteractiveLesson = {
+  slug: "numeros-combinatorios-ccss1",
+  title: "7. Números combinatorios y triángulo de Pascal",
+  subtitle: TEMA_CCSS1_9_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "Idea", message: "El número combinatorio C(m, n) cuenta las formas de elegir n elementos de m sin importar el orden; se calcula con factoriales." }],
+      title: "El número combinatorio",
+      blocks: [
+        { kind: "definition", text: "El **número combinatorio** $\\binom{m}{n}$ («$m$ sobre $n$») es el número de combinaciones de $m$ elementos tomados de $n$ en $n$." },
+        { kind: "rule", formula: "\\binom{m}{n} = C_{m,n} = \\dfrac{m!}{n!\\,(m - n)!}" },
+        { kind: "text", text: "Se calcula con la tecla $nCr$ de la calculadora. Recuerda que $0! = 1$. Por ejemplo, $\\binom{7}{3} = \\dfrac{7\\cdot 6\\cdot 5}{3\\cdot 2\\cdot 1} = 35$." },
+      ],
+      visual: { kind: "tool", tool: "pascal-explorador", initial: [7, 3], hint: "Cambia n y k: el valor sale con factoriales y coincide con el número del triángulo en la fila n, lugar k." },
+    },
+    {
+      id: "propiedades",
+      type: "slide",
+      help: [{ label: "Idea", message: "Elegir los n que entran es lo mismo que elegir los m − n que se quedan fuera: por eso C(m, n) = C(m, m − n)." }],
+      title: "Propiedades y triángulo de Pascal",
+      blocks: [
+        { kind: "facts", items: [{ tex: "\\binom{m}{0} = \\binom{m}{m} = 1" }, { tex: "\\binom{m}{1} = m" }, { tex: "\\binom{m}{n} = \\binom{m}{m - n}" }] },
+        { kind: "rule", title: "Regla de Pascal", formula: "\\binom{m}{n} = \\binom{m-1}{n-1} + \\binom{m-1}{n}" },
+        { kind: "text", text: "Colocando los combinatorios por filas ($m = 0, 1, 2, \\dots$) sale el **triángulo de Pascal**: cada número es la suma de los dos que tiene encima." },
+      ],
+      visual: { kind: "anim", scene: "triangulo-pascal" },
+    },
+    {
+      id: "check-calculo",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\binom{10}{8} = \\binom{10}{2} = \\dfrac{10\\cdot 9}{2}$." }],
+      title: "Usar la simetría",
+      question: "Calcula $\\dbinom{10}{8}$. (solo el número)",
+      correctAnswers: ["45"],
+      explanation: "$\\binom{10}{8} = \\binom{10}{2} = \\dfrac{10\\cdot 9}{2} = 45$: es más fácil elegir los $2$ que se quedan fuera.",
+    },
+    {
+      id: "check-pascal",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Regla de Pascal: $\\binom{5}{2} + \\binom{5}{3} = \\binom{6}{3}$." }],
+      title: "Regla de Pascal",
+      question: "Sabiendo que $\\dbinom{5}{2} = 10$ y $\\dbinom{5}{3} = 10$, ¿cuánto vale $\\dbinom{6}{3}$? (solo el número)",
+      correctAnswers: ["20"],
+      explanation: "$\\binom{6}{3} = \\binom{5}{2} + \\binom{5}{3} = 10 + 10 = 20$.",
+    },
+    {
+      id: "check-ecuacion",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\binom{x}{2} = \\dfrac{x(x - 1)}{2} = 21$, es decir, $x(x - 1) = 42$." }],
+      title: "Una ecuación con combinatorios",
+      question: "Halla $x$ sabiendo que $\\dbinom{x}{2} = 21$. (solo el valor positivo)",
+      correctAnswers: ["7"],
+      explanation: "$x(x - 1) = 42 \\Rightarrow x^2 - x - 42 = 0 \\Rightarrow x = 7$ (la otra solución, $x = -6$, no vale). Comprobación: $\\binom{7}{2} = 21$.",
+    },
+    {
+      id: "check-suma-fila",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Mira la fila 4: $1, 4, 6, 4, 1$, que suma $16$." }],
+      title: "Suma de una fila",
+      question: "¿Cuánto suman todos los números de la fila $n$ del triángulo de Pascal, $\\binom{n}{0} + \\binom{n}{1} + \\dots + \\binom{n}{n}$?",
+      choices: [
+        { id: "a", label: "$2^n$" },
+        { id: "b", label: "$n^2$", incorrectFeedback: "Para $n = 4$ sería $16$ y coincide, pero para $n = 5$ da $25$, no $32$." },
+        { id: "c", label: "$2n$", incorrectFeedback: "Para $n = 4$ la fila suma $16$, no $8$." },
+        { id: "d", label: "$n!$", incorrectFeedback: "Para $n = 4$, $4! = 24 \\neq 16$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Cada elemento está o no está en un subconjunto: $2^n$ subconjuntos en total, que se reparten según su tamaño $0, 1, \\dots, n$.",
+    },
+  ],
+};

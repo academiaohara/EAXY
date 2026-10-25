@@ -948,6 +948,16 @@ export type SlideAnimId =
   | "extremos-criterios"
   | "bayes-frecuencias"
   | "estadistica-conceptos"
+  | "interes-compuesto-barras"
+  | "anualidad-capitalizacion"
+  | "anualidad-amortizacion"
+  | "triangulo-pascal"
+  | "cuantia-monedas"
+  | "esperanza-juego"
+  | "binomial-forma"
+  | "campana-normal"
+  | "tipificacion-normal"
+  | "intervalo-confianza-construccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1397,6 +1407,22 @@ export type SlideToolId =
   | "percentiles-explorador"
   | "doble-entrada-explorador"
   | "nube-regresion-explorador"
+  | "capitalizacion-explorador"
+  | "prestamo-explorador"
+  | "tae-explorador"
+  | "interpolacion-explorador"
+  | "diferencias-explorador"
+  | "parte-entera-explorador"
+  | "beneficio-explorador"
+  | "regresion-cuadratica-explorador"
+  | "pascal-explorador"
+  | "binomio-explorador"
+  | "cuantia-explorador"
+  | "binomial-explorador"
+  | "normal-explorador"
+  | "tabla-normal-explorador"
+  | "binomial-normal-explorador"
+  | "intervalo-confianza-explorador"
   /* industrial-tool-end */;
 
 /**

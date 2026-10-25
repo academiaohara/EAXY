@@ -1,0 +1,88 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const taeCcss1Lesson: InteractiveLesson = {
+  slug: "tae-ccss1",
+  title: "5. Tasa anual equivalente (TAE)",
+  subtitle: TEMA_CCSS1_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "que-es-tae",
+      type: "slide",
+      help: [{ label: "Idea", message: "La TAE es el rédito anual que daría el mismo montante cobrando una sola vez al año. Permite comparar productos con distinta frecuencia de capitalización." }],
+      title: "El rédito nominal engaña",
+      blocks: [
+        { kind: "text", text: "Si se capitaliza varias veces al año, el dinero crece más que con el rédito nominal: los intereses del primer trimestre ya producen intereses en el segundo. Ejemplo: $600$ € al $2\\,\\%$ nominal con capitalización trimestral." },
+        {
+          kind: "example",
+          title: "Un año con capitalización trimestral",
+          lines: [
+            { math: "M = 600\\left(1 + \\dfrac{0{,}02}{4}\\right)^{4} = 612{,}09", note: "montante tras un año" },
+            { math: "612{,}09 = 600\\left(1 + \\dfrac{\\text{TAE}}{100}\\right)", note: "mismo montante con un solo pago anual" },
+            { math: "\\text{TAE} = 2{,}015\\,\\%", note: "mayor que el 2 % nominal" },
+          ],
+        },
+        { kind: "rule", title: "TAE", formula: "1 + \\dfrac{\\text{TAE}}{100} = \\left(1 + \\dfrac{r}{n}\\right)^{n}" },
+      ],
+      visual: { kind: "tool", tool: "tae-explorador", initial: [2, 4], hint: "Con el mismo rédito nominal, cuantas más capitalizaciones al año, mayor es la TAE. Con una sola al año, TAE = rédito." },
+    },
+    {
+      id: "check-montante",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Pista", message: "$600\\cdot 1{,}005^4$." }],
+      title: "Montante en un año",
+      question: "Se colocan $600$ € al $2\\,\\%$ nominal con capitalización trimestral. ¿Cuántos euros hay al cabo de un año? (con dos decimales; solo el número)",
+      correctAnswers: ["612,09", "612.09"],
+      explanation: "$600\\cdot 1{,}005^4 \\approx 612{,}09$ €: $12{,}09$ € de intereses, algo más que los $12$ € del $2\\,\\%$ anual.",
+    },
+    {
+      id: "check-tae-mensual",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Pista", message: "$(1 + 0{,}04/12)^{12} - 1$." }],
+      title: "TAE con capitalización mensual",
+      question: "¿Cuál es la TAE (en %) de un depósito al $4\\,\\%$ nominal con capitalización mensual? (redondea a dos decimales; solo el número)",
+      correctAnswers: ["4,07", "4.07"],
+      explanation: "$\\left(1 + \\dfrac{0{,}04}{12}\\right)^{12} \\approx 1{,}0407$, así que TAE $\\approx 4{,}07\\,\\%$.",
+    },
+    {
+      id: "check-comparar",
+      type: "predict",
+      mode: "choice",
+      calculator: true,
+      help: [{ label: "Pista", message: "Calcula la TAE de la cuenta B: $(1 + 0{,}0295/12)^{12} - 1$." }],
+      title: "Comparar dos cuentas",
+      question: "La cuenta A paga un $3\\,\\%$ anual (un solo pago al año). La cuenta B paga un $2{,}95\\,\\%$ nominal con capitalización mensual. ¿Cuál conviene más?",
+      choices: [
+        { id: "a", label: "La A: su TAE es $3\\,\\%$ y la de B es $2{,}99\\,\\%$" },
+        { id: "b", label: "La B: capitaliza cada mes", incorrectFeedback: "Capitalizar más veces ayuda, pero no compensa $0{,}05$ puntos de rédito: la TAE de B es solo $2{,}99\\,\\%$." },
+        { id: "c", label: "Son iguales", incorrectFeedback: "Al calcular las TAE salen valores distintos: $3\\,\\%$ frente a $2{,}99\\,\\%$." },
+        { id: "d", label: "Depende de cuánto se ingrese", incorrectFeedback: "Las dos TAE son tasas relativas: la mejor lo es para cualquier capital." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "TAE de B: $\\left(1 + \\dfrac{0{,}0295}{12}\\right)^{12} - 1 \\approx 2{,}99\\,\\%$ $<$ $3\\,\\%$. La TAE es lo que permite comparar productos con distinta periodicidad.",
+    },
+    {
+      id: "check-relacion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Piensa en $n = 1$: un solo pago al año." }],
+      title: "TAE y rédito nominal",
+      question: "Para un mismo depósito, ¿qué relación hay entre la TAE y el rédito nominal anual?",
+      choices: [
+        { id: "a", label: "La TAE es igual si se capitaliza una vez al año, y mayor si se capitaliza más veces" },
+        { id: "b", label: "La TAE es siempre igual al nominal", incorrectFeedback: "Solo coincide con una capitalización anual." },
+        { id: "c", label: "La TAE es siempre menor que el nominal", incorrectFeedback: "Los intereses capitalizados producen más intereses: la TAE no puede ser menor." },
+        { id: "d", label: "La TAE no depende de cuántas veces se capitalice", incorrectFeedback: "De eso depende precisamente: $(1 + r/n)^n$ aumenta con $n$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(1 + r/n)^n$ crece con $n$: con $n = 1$ vale $1 + r$ (TAE $=$ nominal) y con $n > 1$ es mayor.",
+    },
+  ],
+};

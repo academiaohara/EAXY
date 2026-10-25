@@ -418,6 +418,16 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `extremos-criterios` | f(x) = x³ − 3x: puntos críticos ±1, signo de f′ y criterio de la segunda derivada | — |
 | `bayes-frecuencias` | Bayes con frecuencias naturales: 10 000 móviles, 200 defectuosos, detector con 90 % de aciertos y 1 % de falsas alarmas; entre 278 marcados, 180 son defectuosos (64,7 %) | — |
 | `estadistica-conceptos` | Población (72 familias), muestra de 12 resaltada, variable «número de hijos» con sus datos y tamaño muestral n = 12 | — |
+| `interes-compuesto-barras` | Interés compuesto frente a simple: tres años con barras, `M = C(1+r)ᵗ` (CCSS I, tema 2) | `a` (capital), `b` (rédito %) |
+| `anualidad-capitalizacion` | Anualidades de capitalización: cada aportación al inicio de año se capitaliza hasta el final y los montantes suman una progresión geométrica | `a` (aportación), `b` (rédito %), `c` (años 3–5) |
+| `anualidad-amortizacion` | Anualidades de amortización: la deuda capitalizada iguala a las cuotas capitalizadas y de ahí sale la cuota | `a` (cuota), `b` (rédito %), `c` (años 3–5) |
+| `triangulo-pascal` | Triángulo de Pascal: cada número es la suma de los dos de arriba y es C(n, k); regla de Pascal con C(5,2) = 4 + 6 | — |
+| `cuantia-monedas` | Variable aleatoria «caras en 3 monedas»: 8 resultados agrupados, función de cuantía y de distribución | — |
+| `esperanza-juego` | Esperanza del juego de los dos dados (25 casos −10 €, 10 casos +20 €, 1 caso +40 €): E = −10/36 € | — |
+| `binomial-forma` | Histogramas de B(n, 1/2) para n = 1, 3, 5, 10 y 20: de las barras a la campana | — |
+| `campana-normal` | Campana N(μ, σ): simetría, puntos de inflexión y áreas 68,3 %, 95,4 % y 99,7 % | — |
+| `tipificacion-normal` | De N(5,7; 1,1) a N(0, 1): restar la media, dividir por σ y leer P(5 < X < 6) = 0,3453 | — |
+| `intervalo-confianza-construccion` | Intervalo de confianza para una proporción: p̂ = 0,35, n = 2 000, z = 1,96 y el intervalo (0,329; 0,371) | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -555,6 +565,22 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `percentiles-explorador` | Percentil p (posición n·p/100, por exceso si no es entera), cuartiles, mediana, rango intercuartílico y diagrama de caja en cuatro conjuntos de datos | `initial`: `[datos (0–3), p (1–99)]` |
 | `doble-entrada-explorador` | Tablas de doble entrada (impresoras, fármacos, terapia, ganado): marginales, condicionadas a una fila o columna y test de independencia | `initial`: `[tabla (0–3), fila, columna]` |
 | `nube-regresion-explorador` | Nube de puntos con seis conjuntos de datos o una nube sintética con r ajustable: medias, covarianza, r, rectas de regresión Y/X y X/Y, predicción y dato atípico | `initial`: `[datos (0–6), r·100, atípico (0/1), x atípico %, y atípico %, x₀ %]` |
+| `capitalizacion-explorador` | Anualidades de capitalización: aportación, rédito, años y nº de pagos al año → capital final, aportado e intereses (CCSS I) | `initial`: `[aportación €, rédito %, años, pagos/año (1, 2, 4, 12)]` |
+| `prestamo-explorador` | Anualidades de amortización de un préstamo: cuota, total pagado, intereses y deuda pendiente | `initial`: `[deuda €, rédito %, años, cuotas/año (1, 2, 4, 12)]` |
+| `tae-explorador` | TAE: con el mismo rédito nominal, cuantas más capitalizaciones al año, mayor la TAE | `initial`: `[rédito nominal %, capitalizaciones/año (1, 2, 4, 12)]` |
+| `interpolacion-explorador` | Interpolación y extrapolación lineal y cuadrática con los datos dosis–curaciones del libro | `initial`: `[dosis x (0–12), primer punto usado k (1–8)]` |
+| `diferencias-explorador` | Diferencias sucesivas de cuatro series: detecta si los datos son lineales, cuadráticos, cúbicos o no polinómicos | `initial`: `[serie (0–3)]` |
+| `parte-entera-explorador` | Parte entera [x], techo ⌈x⌉ y parte decimal, con la gráfica escalonada | `initial`: `[x·10 (−40 a 40)]` |
+| `beneficio-explorador` | Ingresos (p = a − bx), costes (cx + F) y beneficio B(x); máximo donde B′(x) = 0 | `initial`: `[a, b·10, c, F, x]` |
+| `regresion-cuadratica-explorador` | Recta frente a parábola de regresión (estatura y notas de Física): R² de cada una y predicción | `initial`: `[datos (0–1), x₀ (0–12)]` |
+| `pascal-explorador` | C(n, k) con factoriales, fila del triángulo de Pascal resaltada, regla de Pascal y suma 2ⁿ | `initial`: `[n (0–10), k (0–10)]` |
+| `binomio-explorador` | Desarrollo de (ax + b)ⁿ, término k+1 y suma de coeficientes | `initial`: `[n (1–8), a (1–3), b (−3 a 3), k]` |
+| `cuantia-explorador` | Tabla de p(x) y F(x), media, varianza y desviación de cinco variables discretas (incluye un juego con signo de la esperanza) | `initial`: `[variable (0–4)]` |
+| `binomial-explorador` | B(n, p): histograma, P(X = k), P(X ≤ k) y P(X ≥ k), media y desviación típica | `initial`: `[n (1–40), p % (1–99), k, modo (0 =, 1 ≤, 2 ≥)]` |
+| `normal-explorador` | N(μ, σ): área sombreada entre a y b o en una cola, z de los extremos y regla 68–95–99,7 | `initial`: `[μ, σ, a, b, modo (0 entre, 1 menor, 2 mayor)]` |
+| `tabla-normal-explorador` | Tabla de N(0, 1) con la celda de z resaltada, cola derecha, intervalo simétrico y simetría para z < 0 | `initial`: `[z·100 (−400 a 400)]` |
+| `binomial-normal-explorador` | Probabilidad exacta de B(n, p) frente a la normal con y sin corrección de continuidad; criterio npq ≥ 9 | `initial`: `[n, p %, a, b]` |
+| `intervalo-confianza-explorador` | Intervalo de confianza para una proporción y simulación de 20 muestras (cuántos intervalos contienen la proporción real) | `initial`: `[p̂‰, n, nivel (0 90 %, 1 95 %, 2 99 %), simulación (0/1)]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

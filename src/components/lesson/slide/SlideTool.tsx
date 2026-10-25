@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CuantiaExplorador, BinomialExplorador, NormalExplorador, TablaNormalExplorador, BinomialNormalExplorador, IntervaloConfianzaExplorador } from "@/components/lesson/slide/tools/Ccss1DistribTools";
+import { PascalExplorador, BinomioExplorador } from "@/components/lesson/slide/tools/Ccss1CombTools";
+import { RegresionCuadraticaExplorador } from "@/components/lesson/slide/tools/Ccss1EstadTools";
+import { BeneficioExplorador } from "@/components/lesson/slide/tools/Ccss1AnalisisTools";
+import { InterpolacionExplorador, DiferenciasExplorador, ParteEnteraExplorador } from "@/components/lesson/slide/tools/Ccss1FuncTools";
+import { CapitalizacionExplorador, PrestamoExplorador, TaeExplorador } from "@/components/lesson/slide/tools/Ccss1FinanzasTools";
 import { PercentilesExplorador, DobleEntradaExplorador, NubeRegresionExplorador } from "@/components/lesson/slide/tools/Bach1EstadTools";
 import { SucesosVennExplorador, ProbUnionExplorador, TablaContingenciaExplorador, ArbolTablaExplorador, ProbTotalExplorador, AzarFamosoExplorador } from "@/components/lesson/slide/tools/Bach1ProbTools";
 import { SecanteExplorador, DerivabilidadExplorador, FuncionDerivadaExplorador, ProductoCocienteExplorador, CadenaExplorador, DerivadaInversaExplorador, VelocidadAceleracionExplorador, ExtremosExplorador, OptimizacionExplorador } from "@/components/lesson/slide/tools/Bach1DerivTools";
@@ -1041,6 +1047,38 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DobleEntradaExplorador block={block} />;
     case "nube-regresion-explorador":
       return <NubeRegresionExplorador block={block} />;
+    case "capitalizacion-explorador":
+      return <CapitalizacionExplorador block={block} />;
+    case "prestamo-explorador":
+      return <PrestamoExplorador block={block} />;
+    case "tae-explorador":
+      return <TaeExplorador block={block} />;
+    case "interpolacion-explorador":
+      return <InterpolacionExplorador block={block} />;
+    case "diferencias-explorador":
+      return <DiferenciasExplorador block={block} />;
+    case "parte-entera-explorador":
+      return <ParteEnteraExplorador block={block} />;
+    case "beneficio-explorador":
+      return <BeneficioExplorador block={block} />;
+    case "regresion-cuadratica-explorador":
+      return <RegresionCuadraticaExplorador block={block} />;
+    case "pascal-explorador":
+      return <PascalExplorador block={block} />;
+    case "binomio-explorador":
+      return <BinomioExplorador block={block} />;
+    case "cuantia-explorador":
+      return <CuantiaExplorador block={block} />;
+    case "binomial-explorador":
+      return <BinomialExplorador block={block} />;
+    case "normal-explorador":
+      return <NormalExplorador block={block} />;
+    case "tabla-normal-explorador":
+      return <TablaNormalExplorador block={block} />;
+    case "binomial-normal-explorador":
+      return <BinomialNormalExplorador block={block} />;
+    case "intervalo-confianza-explorador":
+      return <IntervaloConfianzaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

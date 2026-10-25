@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const propiedadesLimitesInfinitoCcss1Lesson: InteractiveLesson = {
+  slug: "propiedades-limites-infinito-ccss1",
+  title: "6. Propiedades de los límites y operaciones con ∞",
+  subtitle: TEMA_CCSS1_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "propiedades",
+      type: "slide",
+      help: [{ label: "Condición", message: "Estas propiedades valen **siempre que los límites existan** y que la operación entre ellos esté definida." }],
+      title: "Los límites respetan las operaciones",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\lim (f \\pm g) = \\lim f \\pm \\lim g", label: "suma y resta" },
+          { tex: "\\lim (f\\cdot g) = \\lim f\\cdot\\lim g", label: "producto" },
+          { tex: "\\lim \\dfrac{f}{g} = \\dfrac{\\lim f}{\\lim g}", label: "cociente (si lím g ≠ 0)" },
+          { tex: "\\lim f^{\\,g} = (\\lim f)^{\\lim g}", label: "potencia" },
+        ] },
+        { kind: "text", text: "Con la **composición**: $\\lim g\\big(f(x)\\big) = g\\big(\\lim f(x)\\big)$ si $g$ es continua." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-prop",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Aplica la propiedad de la suma y de la constante: $3\\cdot\\lim x^2 - \\lim x$." }],
+      title: "Aplicar las propiedades",
+      question: "Calcula $\\displaystyle\\lim_{x\\to 2}(3x^2 - x)$. (solo el número)",
+      correctAnswers: ["10"],
+      explanation: "$3\\cdot 2^2 - 2 = 12 - 2 = 10$.",
+    },
+    {
+      id: "tabla-infinito",
+      type: "slide",
+      help: [{ label: "Indeterminado", message: "«Indeterminado» no significa que el límite no exista: significa que el resultado depende de las funciones y hay que trabajar más para saberlo." }],
+      title: "Operar con ∞ y con 0",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "K + \\infty = \\infty\\quad \\infty + \\infty = \\infty", label: "suma: determinada" },
+          { tex: "\\infty - \\infty\\ \\ ?", label: "indeterminada" },
+          { tex: "K\\cdot\\infty = \\infty\\ (K\\neq 0)\\quad \\infty\\cdot\\infty = \\infty", label: "producto: determinado" },
+          { tex: "0\\cdot\\infty\\ \\ ?", label: "indeterminada" },
+          { tex: "\\dfrac{K}{\\infty} = 0\\qquad \\dfrac{K}{0} = \\infty\\ (K\\neq 0)", label: "cociente: determinado" },
+          { tex: "\\dfrac{0}{0}\\ \\ ?\\qquad \\dfrac{\\infty}{\\infty}\\ \\ ?", label: "indeterminados" },
+          { tex: "1^{\\infty}\\ ?\\qquad 0^0\\ ?\\qquad \\infty^0\\ ?", label: "potencias indeterminadas" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "operaciones-limite-explorador", initial: [1, 0, 1, 0], hint: "Prueba x − x (da 0) y x² − x (da +∞): las dos son de la forma ∞ − ∞, pero el resultado cambia." },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Las siete indeterminaciones son: $\\infty - \\infty$, $0\\cdot\\infty$, $\\frac{0}{0}$, $\\frac{\\infty}{\\infty}$, $1^\\infty$, $0^0$ y $\\infty^0$." }],
+      title: "¿Determinado o indeterminado?",
+      question: "Clasifica cada expresión.",
+      groups: [
+        { id: "det", label: "Determinado", tone: "emerald" },
+        { id: "ind", label: "Indeterminación", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$\\infty + \\infty$", group: "det" },
+        { id: "b", text: "$\\infty - \\infty$", group: "ind" },
+        { id: "c", text: "$0\\cdot\\infty$", group: "ind" },
+        { id: "d", text: "$\\dfrac{5}{0}$", group: "det" },
+        { id: "e", text: "$\\dfrac{0}{0}$", group: "ind" },
+        { id: "f", text: "$\\dfrac{\\infty}{\\infty}$", group: "ind" },
+        { id: "g", text: "$\\dfrac{7}{\\infty}$", group: "det" },
+        { id: "h", text: "$1^\\infty$", group: "ind" },
+        { id: "i", text: "$\\infty\\cdot\\infty$", group: "det" },
+        { id: "j", text: "$3^{\\infty}$", group: "det" },
+      ],
+      hint: "$5/0$ es ∞ (no es indeterminado porque el numerador no es 0); $3^\\infty = +\\infty$ porque la base es mayor que 1.",
+    },
+    {
+      id: "check-sentido",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Piensa en $\\frac{x^2}{x}$ y en $\\frac{x}{x^2}$ cuando $x \\to \\infty$: ambos son «$\\frac{\\infty}{\\infty}$»." }],
+      title: "Qué significa «indeterminado»",
+      question: "Si al sustituir sale una indeterminación, el límite…",
+      choices: [
+        { id: "a", label: "puede existir o no, y habrá que transformar la expresión para averiguarlo" },
+        { id: "b", label: "no existe", incorrectFeedback: "A menudo existe: $\\lim_{x\\to\\infty}\\frac{2x}{x} = 2$ es de tipo $\\frac{\\infty}{\\infty}$." },
+        { id: "c", label: "vale $0$", incorrectFeedback: "Puede valer cualquier cosa, según las funciones." },
+        { id: "d", label: "vale $\\infty$", incorrectFeedback: "Puede valer cualquier cosa, según las funciones." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Es como un «no sé todavía»: $\\frac{x^2}{x} \\to \\infty$, $\\frac{2x}{x} \\to 2$ y $\\frac{x}{x^2} \\to 0$ son los tres de tipo $\\frac{\\infty}{\\infty}$.",
+    },
+  ],
+};

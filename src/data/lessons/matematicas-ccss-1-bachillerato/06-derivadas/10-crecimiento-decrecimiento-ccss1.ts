@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_6_SUBTITLE } from "@/data/lessons/shared";
+
+export const crecimientoDecrecimientoCcss1Lesson: InteractiveLesson = {
+  slug: "crecimiento-decrecimiento-ccss1",
+  title: "10. Crecimiento y decrecimiento",
+  subtitle: TEMA_CCSS1_6_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "signo",
+      type: "slide",
+      help: [{ label: "Por qué", message: "Si $f'(a) > 0$, el cociente $\\frac{f(a+h) - f(a)}{h}$ es positivo para $h$ pequeño: numerador y denominador tienen el mismo signo, así que $f$ sube al avanzar." }],
+      title: "El signo de la derivada",
+      blocks: [
+        { kind: "rule", title: "Criterio", text: "Si $f'(a) > 0$, $f$ es **creciente** en $x = a$. Si $f'(a) < 0$, es **decreciente**. Si $f'(a) = 0$, la tangente es horizontal y hay que estudiar más." },
+        { kind: "text", text: "Para $f(x) = 2x - 0{,}1x^2$: $f'(x) = 2 - 0{,}2x$. En $x = 5$ vale $1 > 0$ (sube), en $x = 10$ vale $0$ (cima) y en $x = 15$ vale $-1 < 0$ (baja)." },
+      ],
+      visual: { kind: "anim", scene: "derivada-signo" },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Intervalos", message: "Se resuelve $f'(x) = 0$ para hallar dónde puede cambiar el signo y se estudia el signo de $f'$ en cada intervalo." }],
+      title: "Crecimiento por intervalos",
+      blocks: [
+        { kind: "text", text: "Mueve el punto por $f(x) = x^3 - 3x$: su derivada $f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$ cambia de signo en $x = -1$ y en $x = 1$." },
+      ],
+      visual: { kind: "tool", tool: "funcion-derivada-explorador", initial: [1, -20], hint: "Cuando la curva naranja (f′) está por encima del eje, la azul crece; cuando está por debajo, decrece." },
+    },
+    {
+      id: "check-cero",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$f'(0) = 3\\cdot 0 - 3 = -3$." }],
+      title: "x³ − 3x en x = 0",
+      question: "La función $f(x) = x^3 - 3x$, ¿es creciente o decreciente en $x = 0$?",
+      choices: [
+        { id: "a", label: "Decreciente: $f'(0) = -3 < 0$" },
+        { id: "b", label: "Creciente: $f'(0) = 3 > 0$", incorrectFeedback: "$f'(x) = 3x^2 - 3$ y $f'(0) = -3$." },
+        { id: "c", label: "Ni una ni otra: tiene un máximo en $0$", incorrectFeedback: "Los puntos críticos son $x = \\pm 1$, no $x = 0$." },
+        { id: "d", label: "No se puede saber", incorrectFeedback: "El signo de $f'(0)$ lo decide." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$f'(0) = -3 < 0$: la función **decrece** en $x = 0$ (decrece en todo $(-1, 1)$).",
+    },
+    {
+      id: "check-menos2",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$f'(x) = 3x^2 - 3$ en $x = -2$." }],
+      title: "Derivada en x = −2",
+      question: "Para $f(x) = x^3 - 3x$, calcula $f'(-2)$. (solo el número)",
+      correctAnswers: ["9"],
+      explanation: "$f'(-2) = 3\\cdot 4 - 3 = 9 > 0$: la función es creciente en $x = -2$.",
+    },
+    {
+      id: "check-siempre",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$f'(x) = 3x^2 + 3$ y un cuadrado nunca es negativo." }],
+      title: "x³ + 3x",
+      question: "¿Cómo es $f(x) = x^3 + 3x$ en todo $\\mathbb{R}$?",
+      choices: [
+        { id: "a", label: "Siempre creciente, porque $f'(x) = 3x^2 + 3 > 0$" },
+        { id: "b", label: "Creciente para $x > 0$ y decreciente para $x < 0$", incorrectFeedback: "$f'(x) = 3x^2 + 3 \\geq 3$ para todo $x$: nunca es negativa." },
+        { id: "c", label: "Siempre decreciente", incorrectFeedback: "$f'(x) > 0$ siempre." },
+        { id: "d", label: "Tiene un máximo en $x = 0$", incorrectFeedback: "$f'(0) = 3 \\neq 0$: no es un punto crítico." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$3x^2 + 3 \\geq 3 > 0$: la derivada es siempre positiva y $f$ es creciente en todo $\\mathbb{R}$.",
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Calcula $f'(x) = 2x - 4$ y sustituye cada punto." }],
+      title: "Crecimiento de x² − 4x + 3",
+      question: "Para $f(x) = x^2 - 4x + 3$, clasifica el comportamiento en cada punto.",
+      groups: [
+        { id: "cr", label: "Creciente", tone: "emerald" },
+        { id: "de", label: "Decreciente", tone: "amber" },
+        { id: "ho", label: "Tangente horizontal", tone: "cobalt" },
+      ],
+      items: [
+        { id: "a", text: "$x = 0$ ($f' = -4$)", group: "de" },
+        { id: "b", text: "$x = 3$ ($f' = 2$)", group: "cr" },
+        { id: "c", text: "$x = 2$ ($f' = 0$)", group: "ho" },
+        { id: "d", text: "$x = 1$ ($f' = -2$)", group: "de" },
+        { id: "e", text: "$x = 5$ ($f' = 6$)", group: "cr" },
+      ],
+      hint: "f′(x) = 2x − 4: negativa a la izquierda de 2, positiva a la derecha y cero en 2 (el vértice).",
+    },
+  ],
+};

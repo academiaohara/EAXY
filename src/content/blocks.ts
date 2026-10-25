@@ -417,6 +417,16 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
     },
   },
 
+  "matematicas-ccss-1-bachillerato/numeros-reales": { default: "potencias-y-raices", lessons: { 5: "numeros-decimales", 13: "numeros-decimales", 14: "logaritmos", 15: "logaritmos" } },
+  "matematicas-ccss-1-bachillerato/matematica-financiera": "proporcionalidad-y-porcentajes",
+  "matematicas-ccss-1-bachillerato/algebra": { default: "lenguaje-algebraico", lessons: { 7: "ecuaciones", 8: "ecuaciones", 9: "ecuaciones", 10: "ecuaciones", 11: "ecuaciones", 12: "ecuaciones", 13: "ecuaciones", 14: "ecuaciones", 15: "sistemas-de-ecuaciones", 16: "sistemas-de-ecuaciones", 17: "sistemas-de-ecuaciones", 18: "sistemas-de-ecuaciones", 19: "sistemas-de-ecuaciones", 20: "sistemas-de-ecuaciones" } },
+  "matematicas-ccss-1-bachillerato/funciones": "funciones-elementales",
+  "matematicas-ccss-1-bachillerato/limites-y-continuidad": "funciones-elementales",
+  "matematicas-ccss-1-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-ccss-1-bachillerato/estadistica": "estadistica",
+  "matematicas-ccss-1-bachillerato/probabilidad": "probabilidad",
+  "matematicas-ccss-1-bachillerato/combinatoria": "combinatoria",
+  "matematicas-ccss-1-bachillerato/distribuciones": "probabilidad",
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",
   "tecnologia-industrial-2-bachillerato/aleaciones-diagramas-equilibrio": "materiales",

@@ -1,0 +1,81 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const problemasFinancierosCcss1Lesson: InteractiveLesson = {
+  slug: "problemas-financieros-ccss1",
+  title: "7. Problemas de matemática financiera",
+  subtitle: TEMA_CCSS1_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "que-modelo",
+      type: "slide",
+      help: [{ label: "Idea", message: "Primero decide qué ocurre con los intereses y cuándo se paga: eso fija la fórmula." }],
+      title: "¿Qué fórmula uso?",
+      blocks: [
+        {
+          kind: "compare",
+          left: { title: "Un solo capital", text: "Se coloca una vez y no se toca.", math: ["I = C\\,r\\,t \\ (\\text{simple})", "M = C(1 + r)^t \\ (\\text{compuesto})"] },
+          right: { title: "Pagos iguales", text: "Aportaciones o cuotas repetidas.", math: ["C = \\dfrac{a(1+r)[(1+r)^t - 1]}{r}", "a = \\dfrac{D\\,r(1+r)^t}{(1+r)^t - 1}"] },
+        },
+        { kind: "steps", title: "Método", items: ["¿Los intereses se cobran (simple) o se reinvierten (compuesto)?", "¿Hay un único ingreso o pagos periódicos?", "Si son pagos: ¿al principio del periodo (capitalización) o al final (amortización)?", "Pasa el rédito y el tiempo al mismo periodo: $r/n$ y $T = n\\,t$."] },
+      ],
+      visual: { kind: "tool", tool: "capitalizacion-explorador", initial: [100, 3, 15, 12], hint: "Compara lo aportado con el capital final y comprueba cómo el tiempo pesa más que la cantidad." },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Fíjate en quién recibe los pagos y cuándo se cobran los intereses." }],
+      title: "Elige el modelo",
+      question: "Clasifica cada situación según el modelo que la resuelve.",
+      groups: [
+        { id: "simple", label: "Interés simple", tone: "cobalt" },
+        { id: "compuesto", label: "Interés compuesto", tone: "emerald" },
+        { id: "cap", label: "Anualidad de capitalización", tone: "amber" },
+        { id: "amo", label: "Anualidad de amortización", tone: "rose" },
+      ],
+      items: [
+        { id: "a", text: "Depósito del que se cobran los intereses cada año", group: "simple" },
+        { id: "b", text: "Ingreso único que no se toca durante $25$ años", group: "compuesto" },
+        { id: "c", text: "Ahorrar $60$ € al principio de cada mes para un viaje", group: "cap" },
+        { id: "d", text: "Pagar una hipoteca con cuotas mensuales iguales", group: "amo" },
+        { id: "e", text: "El precio de un producto que sube un $5\\,\\%$ cada año", group: "compuesto" },
+        { id: "f", text: "Financiar un coche a $24$ cuotas", group: "amo" },
+      ],
+      hint: "Un solo capital → simple o compuesto. Pagos iguales: al principio → capitalización; al final → amortización.",
+    },
+    {
+      id: "check-duplicar-2",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Pista", message: "$2 = 1{,}02^t$, luego $t = \\dfrac{\\log 2}{\\log 1{,}02}$." }],
+      title: "Duplicar un capital",
+      question: "¿Cuántos años han de pasar para que $4\\,500$ € al $2\\,\\%$ de interés compuesto anual se conviertan en $9\\,000$ €? (redondea a años; solo el número)",
+      correctAnswers: ["35"],
+      explanation: "$t = \\dfrac{\\log 2}{\\log 1{,}02} \\approx 35{,}0$ años. Observa que no depende del capital, sino solo del rédito.",
+    },
+    {
+      id: "check-triplicar",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Pista", message: "Se triplica cuando $1{,}03^t = 3$." }],
+      title: "Triplicar un capital",
+      question: "Al $3\\,\\%$ de interés compuesto anual, ¿cuántos años tarda un capital en triplicarse? (redondea a años; solo el número)",
+      correctAnswers: ["37"],
+      explanation: "$t = \\dfrac{\\log 3}{\\log 1{,}03} \\approx 37{,}2$ años. Para duplicarlo bastan unos $23{,}4$ años.",
+    },
+    {
+      id: "check-hipoteca-intereses",
+      type: "predict",
+      mode: "numeric",
+      calculator: true,
+      help: [{ label: "Pista", message: "Total pagado $= 240\\cdot$ cuota, menos la deuda de $72\\,000$ €." }],
+      title: "Coste de los intereses",
+      question: "Una hipoteca de $72\\,000$ € al $2\\,\\%$ con $240$ cuotas mensuales de $364{,}24$ € se termina de pagar. ¿Cuántos euros, aproximadamente, se han pagado en intereses? (redondea a miles de euros; solo el número)",
+      correctAnswers: ["15000"],
+      explanation: "$240\\cdot 364{,}24 = 87\\,417{,}6$ €; menos $72\\,000$ € quedan unos $15\\,418$ € de intereses, que redondeados a miles son **15 000 €**.",
+    },
+  ],
+};

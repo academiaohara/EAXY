@@ -1,0 +1,70 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_9_SUBTITLE } from "@/data/lessons/shared";
+
+export const binomioNewtonCcss1Lesson: InteractiveLesson = {
+  slug: "binomio-newton-ccss1",
+  title: "8. Binomio de Newton",
+  subtitle: TEMA_CCSS1_9_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "formula",
+      type: "slide",
+      help: [{ label: "Idea", message: "Al desarrollar (a + b)ⁿ, los coeficientes de cada término son los números de la fila n del triángulo de Pascal." }],
+      title: "Potencias de un binomio",
+      blocks: [
+        { kind: "text", text: "Conocemos $(a + b)^2 = a^2 + 2ab + b^2$. Los coeficientes $1, 2, 1$ son la fila $2$ del triángulo de Pascal. Con $(a + b)^3$ salen $1, 3, 3, 1$; con $(a + b)^4$, $1, 4, 6, 4, 1$." },
+        { kind: "rule", title: "Binomio de Newton", formula: "(a + b)^n = \\binom{n}{0}a^n + \\binom{n}{1}a^{n-1}b + \\dots + \\binom{n}{n-1}ab^{n-1} + \\binom{n}{n}b^n" },
+        { kind: "text", text: "El **término $k + 1$** es $\\binom{n}{k}\\,a^{n-k}\\,b^k$: los exponentes de $a$ bajan y los de $b$ suben, y siempre suman $n$." },
+      ],
+      visual: { kind: "tool", tool: "binomio-explorador", initial: [4, 1, 2, 1], hint: "(x + 2)⁴ = x⁴ + 8x³ + 24x² + 32x + 16. Cambia el signo de b: los coeficientes se alternan en signo." },
+    },
+    {
+      id: "check-desarrollo",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Fila 4: $1, 4, 6, 4, 1$. El segundo término es $4\\cdot x^3\\cdot 2$." }],
+      title: "Un coeficiente del desarrollo",
+      question: "En el desarrollo de $(x + 2)^4$, ¿cuál es el coeficiente de $x^3$? (solo el número)",
+      correctAnswers: ["8"],
+      explanation: "$\\binom{4}{1}\\,x^3\\cdot 2 = 4\\cdot 2\\,x^3 = 8x^3$. El desarrollo completo es $x^4 + 8x^3 + 24x^2 + 32x + 16$.",
+    },
+    {
+      id: "check-signos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$x^3$ corresponde a $k = 2$: $\\binom{5}{2}\\,(2x)^3\\,(-1)^2$." }],
+      title: "Con coeficientes y signos",
+      question: "Halla el coeficiente de $x^3$ en el desarrollo de $(2x - 1)^5$. (solo el número)",
+      correctAnswers: ["80"],
+      explanation: "$k = 2$: $\\binom{5}{2}\\,(2x)^3\\,(-1)^2 = 10\\cdot 8x^3\\cdot 1 = 80x^3$.",
+    },
+    {
+      id: "check-suma",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Sustituye $x = 1$: la suma de coeficientes de $(1 + x)^6$ es $(1 + 1)^6$." }],
+      title: "Suma de coeficientes",
+      question: "¿Cuánto suman todos los coeficientes del desarrollo de $(x + 1)^6$? (solo el número)",
+      correctAnswers: ["64"],
+      explanation: "Con $x = 1$: $(1 + 1)^6 = 64$. Son los números de la fila $6$: $1, 6, 15, 20, 15, 6, 1$.",
+    },
+    {
+      id: "check-signo",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "En $(x - 3)^4$ el segundo sumando es $-3$: sus potencias impares son negativas." }],
+      title: "Signos alternados",
+      question: "En el desarrollo de $(x - 3)^4$, ¿cómo son los signos de los términos?",
+      choices: [
+        { id: "a", label: "Alternan: $+,\\ -,\\ +,\\ -,\\ +$" },
+        { id: "b", label: "Todos positivos", incorrectFeedback: "$(-3)^1$ y $(-3)^3$ son negativos, así que esos términos llevan signo menos." },
+        { id: "c", label: "Todos negativos salvo el primero", incorrectFeedback: "$(-3)^2$ y $(-3)^4$ son positivos: los términos pares son positivos." },
+        { id: "d", label: "No se puede saber", incorrectFeedback: "Se sabe: el signo del término $k + 1$ es el de $(-3)^k$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(x - 3)^4 = x^4 - 12x^3 + 54x^2 - 108x + 81$. Los signos alternan porque $(-3)^k$ es positivo si $k$ es par y negativo si $k$ es impar.",
+    },
+  ],
+};
