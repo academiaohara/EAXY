@@ -117,12 +117,12 @@ export const dominioCortesSigno2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$(1, +\\\\infty)$",
+          "label": "$(1, +\\infty)$",
           "incorrectFeedback": "Falta la rama $x < -1$: $x^2 - 1 > 0$ también se cumple ahí."
         },
         {
           "id": "c",
-          "label": "$\\\\mathbb{R}$",
+          "label": "$\\mathbb{R}$",
           "incorrectFeedback": "Para $|x| \\leq 1$ el argumento no es positivo."
         },
         {

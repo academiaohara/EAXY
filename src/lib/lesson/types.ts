@@ -985,6 +985,12 @@ export type SlideAnimId =
   | "distancia-rectas-cruzan-3d"
   | "bolzano-biseccion"
   | "rolle-lagrange"
+  | "primitiva-familia"
+  | "riemann-sumas"
+  | "teorema-fundamental"
+  | "area-entre-curvas"
+  | "solido-revolucion"
+  | "pascal-binomio"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1482,6 +1488,16 @@ export type SlideToolId =
   | "uno-infinito-explorador"
   | "lhopital-explorador"
   | "estudio-funcion-explorador"
+  | "integral-polinomio-explorador"
+  | "riemann-explorador"
+  | "barrow-explorador"
+  | "area-curvas-explorador"
+  | "volumen-revolucion-explorador"
+  | "integral-metodos-explorador"
+  | "distribucion-discreta-explorador"
+  | "chebychev-explorador"
+  | "densidad-explorador"
+  | "intervalo-media-explorador"
   /* industrial-tool-end */;
 
 /**

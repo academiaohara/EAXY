@@ -114,7 +114,7 @@ export const problemasVectores12bachLesson: InteractiveLesson = {
       ],
       "correctChoiceId": "a",
       "shuffleChoices": true,
-      "explanation": "$\\\\overrightarrow{AB} = \\\\overrightarrow{DC}$ da $B - A = C - D$, es decir, $D = A + C - B$."
+      "explanation": "$\\overrightarrow{AB} = \\overrightarrow{DC}$ da $B - A = C - D$, es decir, $D = A + C - B$."
     },
     {
       "id": "check-alin",

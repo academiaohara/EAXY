@@ -122,12 +122,12 @@ export const funcionesPolinomicas2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$-\\\\infty$ en los dos lados",
+          "label": "$-\\infty$ en los dos lados",
           "incorrectFeedback": "Eso ocurre con coeficiente principal negativo."
         },
         {
           "id": "c",
-          "label": "$+\\\\infty$ en un lado y $-\\\\infty$ en el otro",
+          "label": "$+\\infty$ en un lado y $-\\infty$ en el otro",
           "incorrectFeedback": "Eso es propio del grado impar."
         },
         {

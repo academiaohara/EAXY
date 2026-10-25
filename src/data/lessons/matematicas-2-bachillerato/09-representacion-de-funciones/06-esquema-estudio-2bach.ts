@@ -104,7 +104,7 @@ export const esquemaEstudio2bachLesson: InteractiveLesson = {
         },
         {
           "id": "d",
-          "label": "el límite en $+\\\\infty$ solo",
+          "label": "el límite en $+\\infty$ solo",
           "incorrectFeedback": "Hay que mirar también $-\\infty$ y los puntos excluidos."
         }
       ],

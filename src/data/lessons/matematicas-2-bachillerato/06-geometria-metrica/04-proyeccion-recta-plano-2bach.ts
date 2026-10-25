@@ -113,7 +113,7 @@ export const proyeccionRectaPlano2bachLesson: InteractiveLesson = {
         },
         {
           "id": "c",
-          "label": "siempre $90^\\\\circ$",
+          "label": "siempre $90^\\circ$",
           "incorrectFeedback": "Solo si es perpendicular."
         },
         {

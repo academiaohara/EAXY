@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DistribucionDiscretaExplorador, ChebychevExplorador, DensidadExplorador, IntervaloMediaExplorador } from "@/components/lesson/slide/tools/Bach2ProbTools";
+import { IntegralPolinomioExplorador, RiemannExplorador, BarrowExplorador, AreaCurvasExplorador, VolumenRevolucionExplorador, IntegralMetodosExplorador } from "@/components/lesson/slide/tools/Bach2IntegralesTools";
 import { UnoInfinitoExplorador, LHopitalExplorador, EstudioFuncionExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
 import { AngulosEspacioExplorador, ProyeccionSimetricoExplorador, DistanciasEspacioExplorador } from "@/components/lesson/slide/tools/Bach2MetricaTools";
 import { RectaEspacioExplorador, PlanoEspacioExplorador, PosicionRectasExplorador, PosicionRectaPlanoExplorador, PosicionPlanosExplorador } from "@/components/lesson/slide/tools/Bach2RectasPlanosTools";
@@ -1150,6 +1152,26 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LHopitalExplorador block={block} />;
     case "estudio-funcion-explorador":
       return <EstudioFuncionExplorador block={block} />;
+    case "integral-polinomio-explorador":
+      return <IntegralPolinomioExplorador block={block} />;
+    case "riemann-explorador":
+      return <RiemannExplorador block={block} />;
+    case "barrow-explorador":
+      return <BarrowExplorador block={block} />;
+    case "area-curvas-explorador":
+      return <AreaCurvasExplorador block={block} />;
+    case "volumen-revolucion-explorador":
+      return <VolumenRevolucionExplorador block={block} />;
+    case "integral-metodos-explorador":
+      return <IntegralMetodosExplorador block={block} />;
+    case "distribucion-discreta-explorador":
+      return <DistribucionDiscretaExplorador block={block} />;
+    case "chebychev-explorador":
+      return <ChebychevExplorador block={block} />;
+    case "densidad-explorador":
+      return <DensidadExplorador block={block} />;
+    case "intervalo-media-explorador":
+      return <IntervaloMediaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

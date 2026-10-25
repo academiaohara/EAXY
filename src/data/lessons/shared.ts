@@ -105,3 +105,6 @@ export const TEMA_2BACH_6_SUBTITLE = "2.º Bachillerato, Tema 6 — Geometría m
 export const TEMA_2BACH_7_SUBTITLE = "2.º Bachillerato, Tema 7 — Límites y continuidad";
 export const TEMA_2BACH_8_SUBTITLE = "2.º Bachillerato, Tema 8 — Derivadas";
 export const TEMA_2BACH_9_SUBTITLE = "2.º Bachillerato, Tema 9 — Representación de funciones";
+export const TEMA_2BACH_10_SUBTITLE = "2.º Bachillerato, Tema 10 — Integrales";
+export const TEMA_2BACH_11_SUBTITLE = "2.º Bachillerato, Tema 11 — Probabilidad y combinatoria";
+export const TEMA_2BACH_12_SUBTITLE = "2.º Bachillerato, Tema 12 — Distribuciones de probabilidad";

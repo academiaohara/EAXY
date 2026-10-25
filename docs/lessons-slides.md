@@ -461,6 +461,12 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `distancia-rectas-cruzan-3d` | Distancia entre dos rectas que se cruzan: paralelepípedo de u, v y PQ, volumen entre área de la base | `nums`: `[P, u, Q, v]` (12 valores) |
 | `bolzano-biseccion` | Bolzano con f(x) = x³ − x − 1: cambio de signo en [1, 2] y bisección del intervalo | — |
 | `rolle-lagrange` | Teorema de Rolle (a = 0, x² − 4x + 3 en [1, 3]) y de Lagrange (a = 1, x² en [0, 3]): tangente paralela a la secante | `a` (0 Rolle, 1 Lagrange) |
+| `primitiva-familia` | La familia de primitivas F(x) + C de f(x) = x: curvas trasladadas con tangentes paralelas |  |
+| `riemann-sumas` | Sumas de Riemann inferior y superior de x² en [0, 3] con 3, 6, 12 y 48 rectángulos |  |
+| `teorema-fundamental` | La función área A(x) = ∫₀ˣ t dt: el incremento de área entre h tiende a la altura f(x) |  |
+| `area-entre-curvas` | Área entre y = 2x e y = x² en [0, 2] con una franja vertical |  |
+| `solido-revolucion` | Sólido de revolución de y = √x en [0, 4]: discos y volumen 8π |  |
+| `pascal-binomio` | Triángulo de Pascal: cada número es la suma de los dos de encima, C(5, 2) = 10 y la fila de (a + b)⁴ |  |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -833,6 +839,16 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `uno-infinito-explorador` | Límite de (1 + a/n)^(b·n) cuando n crece: valor con n = 10^k frente al límite e^(a·b) | `initial`: `[a (−3 a 3), b (1 a 3), k (0 a 7)]` |
 | `lhopital-explorador` | Seis límites resueltos con L'Hôpital (0/0 y ∞/∞, con una o varias aplicaciones) y tabla numérica de comprobación | `initial`: `[caso (0–5), valores de la tabla (0–5)]` |
 | `estudio-funcion-explorador` | Estudio completo en seis pasos (dominio, cortes, simetría, asíntotas, monotonía, curvatura) de siete funciones; cada paso añade sus puntos a la gráfica | `initial`: `[función (0–6), pasos mostrados (0–6)]` |
+| `integral-polinomio-explorador` | f(x) = ax² + bx + c y su primitiva F(x) = (a/3)x³ + (b/2)x² + cx + C, con gráficas | `initial`: `[a, b, c (−3–3), C (−5–5)]` |
+| `riemann-explorador` | Sumas de Riemann (izquierda, derecha, punto medio) de cuatro funciones frente a la integral exacta | `initial`: `[función 0–3, rectángulos 1–60, método 0–2]` |
+| `barrow-explorador` | Regla de Barrow para f(x) = x² − 4: integral con signo frente a área geométrica | `initial`: `[a, b (−3–3)]` |
+| `area-curvas-explorador` | Área entre y = m·x e y = x² (m³/6) | `initial`: `[m (1–5)]` |
+| `volumen-revolucion-explorador` | Volumen de cono, paraboloide y esfera por discos | `initial`: `[perfil 0–2, b 1–5]` |
+| `integral-metodos-explorador` | Nueve integrales resueltas paso a paso (potencia, exponencial, casi inmediata, cambio, partes, racional) con la comprobación F′ = f en un punto | `initial`: `[integral 0–8, pasos 0–3]` |
+| `distribucion-discreta-explorador` | Juego con n monedas: tabla de ganancias y probabilidades, media, varianza y desviación típica | `initial`: `[monedas 1–6, premio por cara 0–5, precio 0–6]` |
+| `chebychev-explorador` | B(20; 0,5): probabilidad exacta dentro de k desviaciones frente a la cota 1 − 1/k² | `initial`: `[k·10 (10–40)]` |
+| `densidad-explorador` | Densidad f(x) = x/50 en [0, 10]: probabilidad de un intervalo como área y media | `initial`: `[c, d (0–10)]` |
+| `intervalo-media-explorador` | Intervalo de confianza para la media: x̄ ± z·σ/√n según σ, n y nivel de confianza | `initial`: `[x̄, σ (1–30), índice de n (0–10), nivel 0–2]` |
 
 ## Respuesta como fracción
 

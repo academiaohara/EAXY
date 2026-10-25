@@ -119,7 +119,7 @@ export const lhopital2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$+\\\\infty$",
+          "label": "$+\\infty$",
           "incorrectFeedback": "El denominador crece más rápido."
         },
         {
