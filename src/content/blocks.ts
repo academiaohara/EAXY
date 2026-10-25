@@ -475,6 +475,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/probabilidad-y-combinatoria": "probabilidad",
   "matematicas-2-bachillerato/distribuciones-de-probabilidad": "probabilidad",
   "matematicas-ccss-2-bachillerato/matrices": "algebra-lineal",
+  "matematicas-ccss-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {
