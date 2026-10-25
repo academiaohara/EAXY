@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildSistemaFormaMatricial, buildSistemaGaussAmpliada, buildRoucheCasos } from "@/components/lesson/anim/scenes/bach2-sistemas";
 import { buildDeterminanteSarrus, buildMatrizMenorAdjunto, buildDeterminanteAdjuntos, buildDeterminanteGauss } from "@/components/lesson/anim/scenes/bach2-determinantes";
 import { buildMatrizProducto, buildMatrizGaussJordan, buildMatrizRangoGauss, buildMatrizTraspuesta, buildGrafoAdyacencia, buildMatrizElementos, buildMatrizTipos } from "@/components/lesson/anim/scenes/bach2-matrices";
 import { buildCuantiaMonedas, buildEsperanzaJuego, buildBinomialForma, buildCampanaNormal, buildTipificacionNormal, buildIntervaloConfianza } from "@/components/lesson/anim/scenes/ccss1-distribuciones";
@@ -633,6 +634,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "matriz-menor-adjunto": (p) => buildMatrizMenorAdjunto(p),
   "determinante-adjuntos": (p) => buildDeterminanteAdjuntos(p),
   "determinante-gauss": (p) => buildDeterminanteGauss(p),
+  "sistema-forma-matricial": () => buildSistemaFormaMatricial(),
+  "sistema-gauss-ampliada": (p) => buildSistemaGaussAmpliada(p),
+  "rouche-casos": () => buildRoucheCasos(),
   /* industrial-end */
 };
 

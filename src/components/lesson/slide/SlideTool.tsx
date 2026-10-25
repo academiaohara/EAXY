@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SistemaRoucheExplorador, CramerExplorador, SistemaFamiliaExplorador } from "@/components/lesson/slide/tools/Bach2SistemasTools";
 import { DeterminanteAreaExplorador, DeterminantePropiedadesExplorador, DeterminanteProductoExplorador, DeterminanteParametroExplorador, AdjuntaExplorador, RangoMenoresExplorador } from "@/components/lesson/slide/tools/Bach2DeterminantesTools";
 import { MatrizOperacionesExplorador, MatrizProductoExplorador, MatrizInversaExplorador, MatrizPotenciasExplorador, GrafoCaminosExplorador, MatrizConmutaExplorador, EcuacionMatricialExplorador } from "@/components/lesson/slide/tools/Bach2MatricesTools";
 import { CuantiaExplorador, BinomialExplorador, NormalExplorador, TablaNormalExplorador, BinomialNormalExplorador, IntervaloConfianzaExplorador } from "@/components/lesson/slide/tools/Ccss1DistribTools";
@@ -1107,6 +1108,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AdjuntaExplorador block={block} />;
     case "rango-menores-explorador":
       return <RangoMenoresExplorador block={block} />;
+    case "sistema-rouche-explorador":
+      return <SistemaRoucheExplorador block={block} />;
+    case "cramer-explorador":
+      return <CramerExplorador block={block} />;
+    case "sistema-familia-explorador":
+      return <SistemaFamiliaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

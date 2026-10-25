@@ -352,6 +352,8 @@ import { funcionesRacionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { funcionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/07-funciones-trigonometricas-1bach";
 import { funcionesTrigonometricasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/09-funciones-trigonometricas-ccss1";
 import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-galgas-extensometricas";
+import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/04-gauss-ampliada-2bach";
+import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -616,7 +618,9 @@ import { problemasNumerosReales4esobLesson } from "@/data/lessons/matematicas-4-
 import { problemasPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/03-problemas-primer-grado-4eso";
 import { problemasSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/06-problemas-segundo-grado-4eso";
 import { problemasSegundoGrado4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/03-problemas-segundo-grado-4esob";
+import { problemasSistemas12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/11-problemas-sistemas-1-2bach";
 import { problemasSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/14-problemas-sistemas-1bach";
+import { problemasSistemas22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/12-problemas-sistemas-2-2bach";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasSistemas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/05-problemas-sistemas-3eso";
 import { problemasSistemasCapitales4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/08-problemas-sistemas-capitales-4eso";
@@ -696,6 +700,7 @@ import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-i
 import { registrosContadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/04-registros-contadores";
 import { reglaCadena1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/07-regla-cadena-1bach";
 import { reglaCadenaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/07-regla-cadena-ccss1";
+import { reglaCramer2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/07-regla-cramer-2bach";
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
 import { reglaRuffini4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/05-regla-ruffini-4esob";
 import { regresionCuadraticaDeterminacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/13-regresion-cuadratica-determinacion-ccss1";
@@ -706,6 +711,7 @@ import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
+import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
@@ -733,17 +739,21 @@ import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matema
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
 import { simplificarExtraerFactores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/07-simplificar-extraer-factores-4esob";
 import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/10-simplificar-radicales-ccss1";
+import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
+import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
 import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/02-sistema-metrico-longitud";
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
+import { sistemasClasificacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/01-sistemas-clasificacion-2bach";
 import { sistemasDigitalesBinarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/01-sistemas-digitales-binario";
 import { sistemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/02-sistemas-ecuaciones-2eso";
 import { sistemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/02-sistemas-ecuaciones-3eso";
 import { sistemasGauss1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/12-sistemas-gauss-1bach";
 import { sistemasGaussCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/15-sistemas-gauss-ccss1";
+import { sistemasHomogeneos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/10-sistemas-homogeneos-2bach";
 import { sistemasInecuaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/15-sistemas-inecuaciones-1bach";
 import { sistemasInecuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/15-sistemas-inecuaciones-4esob";
 import { sistemasInecuacionesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/18-sistemas-inecuaciones-ccss1";
@@ -754,6 +764,8 @@ import { sistemasNoLineales4esobLesson } from "@/data/lessons/matematicas-4-eso-
 import { sistemasNoLinealesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/19-sistemas-no-lineales-ccss1";
 import { sistemasNoLinealesGraficaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/20-sistemas-no-lineales-grafica-ccss1";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
+import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
+import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
@@ -1203,6 +1215,8 @@ export const interactiveLessons = {
   "funciones-trigonometricas-1bach": funcionesTrigonometricas1bachLesson,
   "funciones-trigonometricas-ccss1": funcionesTrigonometricasCcss1Lesson,
   "galgas-extensometricas": galgasExtensometricasLesson,
+  "gauss-ampliada-2bach": gaussAmpliada2bachLesson,
+  "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -1467,7 +1481,9 @@ export const interactiveLessons = {
   "problemas-primer-grado-4eso": problemasPrimerGrado4esoLesson,
   "problemas-segundo-grado-4eso": problemasSegundoGrado4esoLesson,
   "problemas-segundo-grado-4esob": problemasSegundoGrado4esobLesson,
+  "problemas-sistemas-1-2bach": problemasSistemas12bachLesson,
   "problemas-sistemas-1bach": problemasSistemas1bachLesson,
+  "problemas-sistemas-2-2bach": problemasSistemas22bachLesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-sistemas-3eso": problemasSistemas3esoLesson,
   "problemas-sistemas-capitales-4eso": problemasSistemasCapitales4esoLesson,
@@ -1547,6 +1563,7 @@ export const interactiveLessons = {
   "registros-contadores": registrosContadoresLesson,
   "regla-cadena-1bach": reglaCadena1bachLesson,
   "regla-cadena-ccss1": reglaCadenaCcss1Lesson,
+  "regla-cramer-2bach": reglaCramer2bachLesson,
   "regla-fases-gibbs": reglaFasesGibbsLesson,
   "regla-ruffini-4esob": reglaRuffini4esobLesson,
   "regresion-cuadratica-determinacion-ccss1": regresionCuadraticaDeterminacionCcss1Lesson,
@@ -1557,6 +1574,7 @@ export const interactiveLessons = {
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
+  "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
@@ -1584,17 +1602,21 @@ export const interactiveLessons = {
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,
   "simplificar-extraer-factores-4esob": simplificarExtraerFactores4esobLesson,
   "simplificar-radicales-ccss1": simplificarRadicalesCcss1Lesson,
+  "sistema-inversa-2bach": sistemaInversa2bachLesson,
+  "sistema-matricial-2bach": sistemaMatricial2bachLesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
   "sistema-metrico-longitud": sistemaMetricoLongitudLesson,
   "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
   "sistema-metrico-peso": sistemaMetricoPesoLesson,
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
   "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
+  "sistemas-clasificacion-2bach": sistemasClasificacion2bachLesson,
   "sistemas-digitales-binario": sistemasDigitalesBinarioLesson,
   "sistemas-ecuaciones-2eso": sistemasEcuaciones2esoLesson,
   "sistemas-ecuaciones-3eso": sistemasEcuaciones3esoLesson,
   "sistemas-gauss-1bach": sistemasGauss1bachLesson,
   "sistemas-gauss-ccss1": sistemasGaussCcss1Lesson,
+  "sistemas-homogeneos-2bach": sistemasHomogeneos2bachLesson,
   "sistemas-inecuaciones-1bach": sistemasInecuaciones1bachLesson,
   "sistemas-inecuaciones-4esob": sistemasInecuaciones4esobLesson,
   "sistemas-inecuaciones-ccss1": sistemasInecuacionesCcss1Lesson,
@@ -1605,6 +1627,8 @@ export const interactiveLessons = {
   "sistemas-no-lineales-ccss1": sistemasNoLinealesCcss1Lesson,
   "sistemas-no-lineales-grafica-ccss1": sistemasNoLinealesGraficaCcss1Lesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
+  "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
+  "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
   "sucesiones-3eso": sucesiones3esoLesson,

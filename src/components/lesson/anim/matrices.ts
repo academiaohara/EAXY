@@ -273,3 +273,64 @@ export function contarMenores(a: Mat, k: number): { total: number; noNulos: numb
   }
   return { total: fs.length * cs.length, noNulos };
 }
+
+export type TipoSistema = "determinado" | "indeterminado" | "incompatible";
+export type AnalisisSistema = {
+  rA: number;
+  rAmp: number;
+  n: number;
+  tipo: TipoSistema;
+  /** Solución única (sólo si es compatible determinado). */
+  solucion?: Q[];
+  /** Solución general con parámetros λ, μ… (sólo si es compatible indeterminado). */
+  general?: string[];
+};
+
+const PARAMS = ["λ", "μ", "ν"];
+
+/** Texto de `c·param` con signo para sumar a una expresión (`+ 2λ`, `− λ`). */
+const termino = (c: Q, p: string) => {
+  const abs = c.n < 0 ? qNeg(c) : c;
+  const k = qEq(abs, q(1)) ? "" : abs.d === 1 ? String(abs.n) : `(${qText(abs)})`;
+  return `${c.n < 0 ? "−" : "+"} ${k}${p}`;
+};
+
+/** Discusión por Rouché–Frobenius y solución (única o general) con Gauss–Jordan. */
+export function analizarSistema(A: Mat, b: Mat): AnalisisSistema {
+  const n = cols(A);
+  const amp = A.map((r, i) => [...r, b[i]![0]!]);
+  const rA = rango(A);
+  const rAmp = rango(amp);
+  if (rA < rAmp) {
+    return { rA, rAmp, n, tipo: "incompatible" };
+  }
+  const red = gaussJordan(amp, n).at(-1)!.m;
+  if (rA === n) {
+    return { rA, rAmp, n, tipo: "determinado", solucion: Array.from({ length: n }, (_, j) => red[j]![n]!) };
+  }
+  const pivotes: number[] = [];
+  red.forEach((r) => {
+    const j = r.slice(0, n).findIndex((x) => !qIsZero(x));
+    if (j >= 0) pivotes.push(j);
+  });
+  const libres = Array.from({ length: n }, (_, j) => j).filter((j) => !pivotes.includes(j));
+  const nombres = ["x", "y", "z", "t", "u"];
+  const general = Array.from({ length: n }, (_, j) => {
+    const li = libres.indexOf(j);
+    if (li >= 0) return `${nombres[j]} = ${PARAMS[li]}`;
+    const fila = red.find((r) => r.slice(0, n).findIndex((x) => !qIsZero(x)) === j)!;
+    const indep = fila[n]!;
+    const partes = libres.map((l, k) => (qIsZero(fila[l]!) ? "" : ` ${termino(qNeg(fila[l]!), PARAMS[k]!)}`)).join("");
+    const base = qIsZero(indep) ? "" : qText(indep).replace("-", "−");
+    const texto = base ? base + partes : partes.trim().replace(/^\+ /, "").replace(/^− /, "−") || "0";
+    return `${nombres[j]} = ${texto}`;
+  });
+  return { rA, rAmp, n, tipo: "indeterminado", general };
+}
+
+/** Regla de Cramer: |A|, los determinantes con la columna sustituida y la solución si |A| ≠ 0. */
+export function cramer(A: Mat, b: Mat): { detA: Q; dets: Q[]; solucion?: Q[] } {
+  const detA = det(A);
+  const dets = Array.from({ length: cols(A) }, (_, j) => det(A.map((r, i) => r.map((x, k) => (k === j ? b[i]![0]! : x)))));
+  return { detA, dets, solucion: qIsZero(detA) ? undefined : dets.map((d) => qDiv(d, detA)) };
+}

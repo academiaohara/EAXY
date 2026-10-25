@@ -208,7 +208,7 @@ export function DeterminanteParametroExplorador({ block }: { block: ToolBlock })
         <Stat color={MANIM.yellow} label={`|A| = ${F.formula}`} plain><span data-testid="tool-dpa-det">{qShow(d)}</span></Stat>
         <Stat color={rg === 3 ? MANIM.green : MANIM.red} label="Rango" plain><span data-testid="tool-dpa-rango">{String(rg)}</span></Stat>
       </Readout>
-      <Svg w={320} h={140} maxH={150}>
+      <Svg w={320} h={140}>
         <line x1={20} y1={Y(0)} x2={300} y2={Y(0)} stroke={MANIM.grid} strokeWidth={1.5} />
         <polyline points={ys.map((p) => `${X(p.x)},${Y(p.y)}`).join(" ")} fill="none" stroke={MANIM.blue} strokeWidth={2.5} />
         <circle cx={X(v.a)} cy={Y(Number(d.n) / Number(d.d))} r={6} fill={MANIM.yellow} />

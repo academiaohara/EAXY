@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { adjuntoElemento, adjunta, caminos, contarMenores, desarrolloFila, det, escalonar, gaussJordan, inversa, mat, mEq, menorComplementario, mMul, mPow, mT, q, qText, rango } from "@/components/lesson/anim/matrices";
+import { adjuntoElemento, adjunta, analizarSistema, caminos, contarMenores, cramer, desarrolloFila, det, escalonar, gaussJordan, inversa, mat, mEq, menorComplementario, mMul, mPow, mT, q, qText, rango } from "@/components/lesson/anim/matrices";
 
 describe("álgebra de matrices exacta (2.º Bachillerato)", () => {
   it("multiplica A (2×3) por B (3×2) como en el libro", () => {
@@ -63,5 +63,45 @@ describe("determinantes, adjuntos y menores", () => {
     }
     expect(contarMenores(mat([[1, 3, 1, -2], [1, 4, 3, -1], [2, 3, -4, -7]]), 3)).toEqual({ total: 4, noNulos: 0 });
     expect(contarMenores(mat([[1, 0], [0, 1]]), 2)).toEqual({ total: 1, noNulos: 1 });
+  });
+});
+
+describe("sistemas lineales: discusión y solución", () => {
+  const resolver = (A: number[][], b: number[]) => analizarSistema(mat(A), mat(b.map((x) => [x])));
+  const sol = (A: number[][], b: number[]) => resolver(A, b).solucion?.map(qText);
+
+  it("resuelve los problemas del tema con solución única", () => {
+    expect(sol([[1, 1, 1], [50, 20, 10], [1, -2, 1]], [225, 7000, 0])).toEqual(["100", "75", "50"]);
+    expect(sol([[1, 1, 1], [1, 0, -7], [1, 1, -4]], [70, -24, 30])).toEqual(["32", "30", "8"]);
+    expect(sol([[1, 1, 1], [6, 8, 10], [1, -2, -1]], [80, 560, 0])).toEqual(["50", "20", "10"]);
+    expect(sol([[1, 1, 1], [-3, 1, -3], [10, 8, 5]], [72000, 0, 552000])).toEqual(["6000", "54000", "12000"]);
+    expect(sol([[1, 2, 1], [2, -1, 1], [1, 1, -1]], [8, 3, 0])).toEqual(["1", "2", "3"]);
+  });
+
+  it("clasifica por Rouché–Frobenius y da la solución general", () => {
+    expect(resolver([[1, 1, 1], [2, -1, 1], [1, 1, 1]], [3, 2, 4]).tipo).toBe("incompatible");
+    const sci = resolver([[1, 1, 1], [2, -1, 1], [3, 0, 2]], [3, 2, 5]);
+    expect(sci.tipo).toBe("indeterminado");
+    expect(sci.general).toEqual(["x = 5/3 − (2/3)λ", "y = 4/3 − (1/3)λ", "z = λ"]);
+    expect(resolver([[1, -1, 0], [0, 1, -1], [1, 0, -1]], [0, 0, 0]).general).toEqual(["x = λ", "y = λ", "z = λ"]);
+  });
+
+  it("estudia las familias con parámetro", () => {
+    const f0 = (a: number) => resolver([[1, 1, 1], [2, 3, a], [1, a, 3]], [1, 3, 3]);
+    expect(f0(0).tipo).toBe("incompatible");
+    expect(f0(3).tipo).toBe("indeterminado");
+    expect(f0(1).solucion?.map(qText)).toEqual(["-2", "2", "1"]);
+    const f1 = (a: number) => resolver([[a, 1, 1], [1, a, 1], [1, 1, a]], [1, a, a * a]);
+    expect(f1(1).tipo).toBe("indeterminado");
+    expect(f1(-2).tipo).toBe("incompatible");
+    expect(f1(-1).solucion?.map(qText)).toEqual(["0", "1", "0"]);
+  });
+
+  it("aplica la regla de Cramer", () => {
+    const c = cramer(mat([[2, 3, -1], [3, -1, 5], [1, 2, 4]]), mat([[-2], [22], [12]]));
+    expect(qText(c.detA)).toBe("-56");
+    expect(qText(c.dets[0]!)).toBe("-112");
+    expect(c.solucion?.map(qText)).toEqual(["2", "-1", "3"]);
+    expect(cramer(mat([[1, 2], [2, 4]]), mat([[1], [2]])).solucion).toBeUndefined();
   });
 });

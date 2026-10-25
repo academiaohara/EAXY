@@ -450,6 +450,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
+  "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

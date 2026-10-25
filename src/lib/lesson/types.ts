@@ -969,6 +969,9 @@ export type SlideAnimId =
   | "matriz-menor-adjunto"
   | "determinante-adjuntos"
   | "determinante-gauss"
+  | "sistema-forma-matricial"
+  | "sistema-gauss-ampliada"
+  | "rouche-casos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1447,6 +1450,9 @@ export type SlideToolId =
   | "determinante-parametro-explorador"
   | "adjunta-explorador"
   | "rango-menores-explorador"
+  | "sistema-rouche-explorador"
+  | "cramer-explorador"
+  | "sistema-familia-explorador"
   /* industrial-tool-end */;
 
 /**
