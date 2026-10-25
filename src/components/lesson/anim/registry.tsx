@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildProcesoDisenoCiclo, buildGanttCaminoCritico } from "@/components/lesson/anim/scenes/industrial/tec1-proyectos";
 import { buildPoblacionMuestra, buildTiposMuestreo, buildTclMedias, buildContrasteRegion } from "@/components/lesson/anim/scenes/ccss2-estimacion";
 import { buildSemiplanoPrueba, buildRectasNivel } from "@/components/lesson/anim/scenes/ccss2-programacion";
 import { buildPascalBinomio } from "@/components/lesson/anim/scenes/bach2-prob";
@@ -670,6 +671,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "tipos-muestreo": () => buildTiposMuestreo(),
   "tcl-medias": () => buildTclMedias(),
   "contraste-region": () => buildContrasteRegion(),
+  "proceso-diseno-ciclo": () => buildProcesoDisenoCiclo(),
+  "gantt-camino-critico": () => buildGanttCaminoCritico(),
   /* industrial-end */
 };
 

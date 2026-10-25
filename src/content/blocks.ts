@@ -267,6 +267,34 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Álgebra de Boole, circuitos combinacionales y secuenciales.",
     orderIndex: 5,
   },
+  {
+    slug: "proyectos-tecnologicos",
+    subject: "tecnologia",
+    title: "Proyectos tecnológicos",
+    description: "Investigar, diseñar, planificar, construir, ensayar y documentar una solución técnica.",
+    orderIndex: 6,
+  },
+  {
+    slug: "circuitos-electricos-electronicos",
+    subject: "tecnologia",
+    title: "Circuitos eléctricos y electrónicos",
+    description: "Magnitudes eléctricas, ley de Ohm, asociaciones, Kirchhoff, potencia y componentes.",
+    orderIndex: 7,
+  },
+  {
+    slug: "programacion",
+    subject: "tecnologia",
+    title: "Informática y programación",
+    description: "Arquitectura, sistemas operativos, datos, algoritmos y programación en Python.",
+    orderIndex: 8,
+  },
+  {
+    slug: "tecnologia-sostenible",
+    subject: "tecnologia",
+    title: "Tecnología sostenible",
+    description: "Recursos, eficiencia energética, ciclo de vida, economía circular y renovables.",
+    orderIndex: 9,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -469,6 +497,14 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/componentes-sistema-control": "sistemas-de-control",
   "tecnologia-industrial-2-bachillerato/circuitos-combinacionales-boole": "electronica-digital",
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
+  // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
+  "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
+  "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",
+  "tecnologia-ingenieria-1-bachillerato/sistemas-mecanicos": "maquinas-y-motores",
+  "tecnologia-ingenieria-1-bachillerato/sistemas-electricos-electronicos": "circuitos-electricos-electronicos",
+  "tecnologia-ingenieria-1-bachillerato/sistemas-informaticos-programacion": "programacion",
+  "tecnologia-ingenieria-1-bachillerato/sistemas-automaticos-control": "sistemas-de-control",
+  "tecnologia-ingenieria-1-bachillerato/tecnologia-sostenible": "tecnologia-sostenible",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ObjetoProblemaExplorador, MatrizDecisionExplorador, RequisitosExplorador, GanttExplorador, RolesEquipoExplorador, PrototipoEnsayoExplorador, MemoriaTecnicaExplorador } from "@/components/lesson/slide/tools/Tec1ProyectosTools";
 import { MediaMuestralExplorador, ProporcionMuestralExplorador, ContrasteMediaExplorador, ContrasteProporcionExplorador } from "@/components/lesson/slide/tools/Ccss2EstimacionTools";
 import { ProgramacionLinealExplorador } from "@/components/lesson/slide/tools/CcssProgramacionTools";
 import { DistribucionDiscretaExplorador, ChebychevExplorador, DensidadExplorador, IntervaloMediaExplorador } from "@/components/lesson/slide/tools/Bach2ProbTools";
@@ -1184,6 +1185,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ContrasteMediaExplorador block={block} />;
     case "contraste-proporcion-explorador":
       return <ContrasteProporcionExplorador block={block} />;
+    case "objeto-problema-explorador":
+      return <ObjetoProblemaExplorador block={block} />;
+    case "matriz-decision-explorador":
+      return <MatrizDecisionExplorador block={block} />;
+    case "requisitos-verificables-explorador":
+      return <RequisitosExplorador block={block} />;
+    case "gantt-explorador":
+      return <GanttExplorador block={block} />;
+    case "roles-equipo-explorador":
+      return <RolesEquipoExplorador block={block} />;
+    case "prototipo-ensayo-explorador":
+      return <PrototipoEnsayoExplorador block={block} />;
+    case "memoria-tecnica-explorador":
+      return <MemoriaTecnicaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

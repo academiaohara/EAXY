@@ -997,6 +997,8 @@ export type SlideAnimId =
   | "tipos-muestreo"
   | "tcl-medias"
   | "contraste-region"
+  | "proceso-diseno-ciclo"
+  | "gantt-camino-critico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1509,6 +1511,13 @@ export type SlideToolId =
   | "proporcion-muestral-explorador"
   | "contraste-media-explorador"
   | "contraste-proporcion-explorador"
+  | "objeto-problema-explorador"
+  | "matriz-decision-explorador"
+  | "requisitos-verificables-explorador"
+  | "gantt-explorador"
+  | "roles-equipo-explorador"
+  | "prototipo-ensayo-explorador"
+  | "memoria-tecnica-explorador"
   /* industrial-tool-end */;
 
 /**
