@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildPoblacionMuestra, buildTiposMuestreo, buildTclMedias, buildContrasteRegion } from "@/components/lesson/anim/scenes/ccss2-estimacion";
 import { buildSemiplanoPrueba, buildRectasNivel } from "@/components/lesson/anim/scenes/ccss2-programacion";
 import { buildPascalBinomio } from "@/components/lesson/anim/scenes/bach2-prob";
 import { buildPrimitivaFamilia, buildRiemannSumas, buildTeoremaFundamental, buildAreaEntreCurvas, buildSolidoRevolucion } from "@/components/lesson/anim/scenes/bach2-integrales";
@@ -665,6 +666,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "pascal-binomio": () => buildPascalBinomio(),
   "semiplano-prueba": () => buildSemiplanoPrueba(),
   "rectas-nivel": () => buildRectasNivel(),
+  "poblacion-muestra": () => buildPoblacionMuestra(),
+  "tipos-muestreo": () => buildTiposMuestreo(),
+  "tcl-medias": () => buildTclMedias(),
+  "contraste-region": () => buildContrasteRegion(),
   /* industrial-end */
 };
 

@@ -469,6 +469,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `pascal-binomio` | Triángulo de Pascal: cada número es la suma de los dos de encima, C(5, 2) = 10 y la fila de (a + b)⁴ |  |
 | `semiplano-prueba` | Inecuación 2x + y ≤ 8: la recta, el punto de prueba (0, 0) ✓, (5, 3) ✗ y el trazo discontinuo de la desigualdad estricta |  |
 | `rectas-nivel` | Rectas de nivel de Z = 30x + 20y sobre la región de las mesas y las sillas: Z = 60, 120 y el máximo 140 en (2, 4) |  |
+| `poblacion-muestra` | Población de 60 individuos, muestra de 10, parámetro μ frente a estadístico x̄ e inferencia |  |
+| `tipos-muestreo` | Muestreo aleatorio simple, sistemático (1 de cada 5), estratificado (2 por estrato) y por conglomerados sobre 40 individuos |  |
+| `tcl-medias` | Teorema central del límite: media de 1, 2, 4 y 10 dados frente a la normal N(3,5; σ/√n) |  |
+| `contraste-region` | Contraste H₀: μ = 2 (σ = 0,4, n = 100): zona de aceptación (1,9216; 2,0784), x̄ = 1,8 y contraste unilateral |  |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -852,6 +856,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `densidad-explorador` | Densidad f(x) = x/50 en [0, 10]: probabilidad de un intervalo como área y media | `initial`: `[c, d (0–10)]` |
 | `intervalo-media-explorador` | Intervalo de confianza para la media: x̄ ± z·σ/√n según σ, n y nivel de confianza | `initial`: `[x̄, σ (1–30), índice de n (0–10), nivel 0–2]` |
 | `programacion-lineal-explorador` | Siete problemas (producción, dieta, solución múltiple, no acotada, vacía, transporte, mezcla): región factible, vértices con su Z, recta de nivel móvil y óptimo | `initial`: `[problema 0–6, valor de Z]` |
+| `media-muestral-explorador` | Distribución N(μ, σ/√n) de la media muestral con probabilidad entre a y b (tabla y valor exacto) | `initial`: `[μ 0–200, σ 1–30, n 1–400, a, b]` |
+| `proporcion-muestral-explorador` | Distribución N(p, √(pq/n)) de la proporción muestral, probabilidad entre a % y b % y condición np, nq ≥ 5 | `initial`: `[p %, n 10–400, a %, b %]` |
+| `contraste-media-explorador` | Contraste de la media bilateral o unilateral: zona de aceptación, x̄ y decisión a α = 10, 5 o 1 % | `initial`: `[modo 0–2, μ₀·10, σ·10, n, x̄·10, nivel 0–2]` |
+| `contraste-proporcion-explorador` | Contraste de una proporción (p₀, n, éxitos observados): zona de aceptación y decisión | `initial`: `[modo 0–2, p₀ %, n, éxitos, nivel 0–2]` |
 
 ## Respuesta como fracción
 

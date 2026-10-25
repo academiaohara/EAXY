@@ -160,6 +160,8 @@ import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachil
 import { continuidadPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/09-continuidad-punto-2bach";
 import { continuidadPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/12-continuidad-punto-ccss1";
 import { continuidadPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/10-continuidad-punto-ccss2";
+import { contrasteHipotesisMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/11-contraste-hipotesis-media-ccss2";
+import { contrasteProporcionErroresCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/12-contraste-proporcion-errores-ccss2";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
@@ -240,8 +242,10 @@ import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bac
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
+import { distribucionMediaMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/05-distribucion-media-muestral-ccss2";
 import { distribucionNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/07-distribucion-normal-2bach";
 import { distribucionNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/06-distribucion-normal-ccss1";
+import { distribucionProporcionMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/06-distribucion-proporcion-muestral-ccss2";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/01-divisibilidad-2eso";
 import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/04-division-fracciones-2eso";
@@ -299,6 +303,7 @@ import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industri
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
+import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
@@ -323,6 +328,7 @@ import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13
 import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/08-estadistica-repaso-4esob";
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
+import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
@@ -480,7 +486,9 @@ import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bach
 import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/10-interpolacion-extrapolacion-ccss1";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
+import { intervaloConfianzaMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/08-intervalo-confianza-media-ccss2";
 import { intervaloConfianzaProporcion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/11-intervalo-confianza-proporcion-2bach";
+import { intervaloConfianzaProporcionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/10-intervalo-confianza-proporcion-ccss2";
 import { intervalosAcotados4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/03-intervalos-acotados-4esob";
 import { intervalosConfianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/10-intervalos-confianza-ccss1";
 import { intervalosEntornos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/05-intervalos-entornos-1bach";
@@ -662,6 +670,7 @@ import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematica
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
+import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
@@ -971,6 +980,7 @@ import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/matematica
 import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/03-tablas-graficas-interpretacion-graficas";
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
 import { taeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/05-tae-ccss1";
+import { tamanoRepresentatividadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/03-tamano-representatividad-ccss2";
 import { tangenteNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/07-tangente-normal-2bach";
 import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/05-tangente-normal-ccss2";
 import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/01-tasa-variacion-media-1bach";
@@ -981,6 +991,7 @@ import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-e
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
 import { teoremaBayes1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/11-teorema-bayes-1bach";
 import { teoremaBayesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/11-teorema-bayes-ccss1";
+import { teoremaCentralLimiteCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/04-teorema-central-limite-ccss2";
 import { teoremaCoseno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/10-teorema-coseno-1bach";
 import { teoremaDeBayes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/08-teorema-de-bayes-2bach";
 import { teoremaDeBayesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/08-teorema-de-bayes-ccss2";
@@ -998,6 +1009,7 @@ import { tiposDiscontinuidad1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { tiposDiscontinuidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/13-tipos-discontinuidad-ccss1";
 import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/02-tipos-matrices-2bach";
 import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
+import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
@@ -1213,6 +1225,8 @@ export const interactiveLessons = {
   "continuidad-punto-2bach": continuidadPunto2bachLesson,
   "continuidad-punto-ccss1": continuidadPuntoCcss1Lesson,
   "continuidad-punto-ccss2": continuidadPuntoCcss2Lesson,
+  "contraste-hipotesis-media-ccss2": contrasteHipotesisMediaCcss2Lesson,
+  "contraste-proporcion-errores-ccss2": contrasteProporcionErroresCcss2Lesson,
   "controlador-proporcional": controladorProporcionalLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
@@ -1293,8 +1307,10 @@ export const interactiveLessons = {
   "distancia-rectas-2bach": distanciaRectas2bachLesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
+  "distribucion-media-muestral-ccss2": distribucionMediaMuestralCcss2Lesson,
   "distribucion-normal-2bach": distribucionNormal2bachLesson,
   "distribucion-normal-ccss1": distribucionNormalCcss1Lesson,
+  "distribucion-proporcion-muestral-ccss2": distribucionProporcionMuestralCcss2Lesson,
   "divisibilidad": divisibilidadLesson,
   "divisibilidad-2eso": divisibilidad2esoLesson,
   "division-fracciones-2eso": divisionFracciones2esoLesson,
@@ -1352,6 +1368,7 @@ export const interactiveLessons = {
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
+  "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "esferas-2eso": esferas2esoLesson,
@@ -1376,6 +1393,7 @@ export const interactiveLessons = {
   "estadistica-repaso-4esob": estadisticaRepaso4esobLesson,
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
+  "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-cristalina": estructuraCristalinaLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
@@ -1533,7 +1551,9 @@ export const interactiveLessons = {
   "interpolacion-extrapolacion-ccss1": interpolacionExtrapolacionCcss1Lesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
   "intervalo-confianza-media-2bach": intervaloConfianzaMedia2bachLesson,
+  "intervalo-confianza-media-ccss2": intervaloConfianzaMediaCcss2Lesson,
   "intervalo-confianza-proporcion-2bach": intervaloConfianzaProporcion2bachLesson,
+  "intervalo-confianza-proporcion-ccss2": intervaloConfianzaProporcionCcss2Lesson,
   "intervalos-acotados-4esob": intervalosAcotados4esobLesson,
   "intervalos-confianza-ccss1": intervalosConfianzaCcss1Lesson,
   "intervalos-entornos-1bach": intervalosEntornos1bachLesson,
@@ -1715,6 +1735,7 @@ export const interactiveLessons = {
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
+  "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
@@ -2024,6 +2045,7 @@ export const interactiveLessons = {
   "tablas-graficas-interpretacion-graficas": tablasGraficasInterpretacionGraficasLesson,
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
   "tae-ccss1": taeCcss1Lesson,
+  "tamano-representatividad-ccss2": tamanoRepresentatividadCcss2Lesson,
   "tangente-normal-2bach": tangenteNormal2bachLesson,
   "tangente-normal-ccss2": tangenteNormalCcss2Lesson,
   "tasa-variacion-media-1bach": tasaVariacionMedia1bachLesson,
@@ -2034,6 +2056,7 @@ export const interactiveLessons = {
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
   "teorema-bayes-1bach": teoremaBayes1bachLesson,
   "teorema-bayes-ccss1": teoremaBayesCcss1Lesson,
+  "teorema-central-limite-ccss2": teoremaCentralLimiteCcss2Lesson,
   "teorema-coseno-1bach": teoremaCoseno1bachLesson,
   "teorema-de-bayes-2bach": teoremaDeBayes2bachLesson,
   "teorema-de-bayes-ccss2": teoremaDeBayesCcss2Lesson,
@@ -2051,6 +2074,7 @@ export const interactiveLessons = {
   "tipos-discontinuidad-ccss1": tiposDiscontinuidadCcss1Lesson,
   "tipos-matrices-2bach": tiposMatrices2bachLesson,
   "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
+  "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
