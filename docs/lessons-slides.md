@@ -417,6 +417,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `derivada-signo` | f(x) = 2x − 0,1x²: tangente creciente en x = 5, horizontal en 10 y decreciente en 15 | — |
 | `extremos-criterios` | f(x) = x³ − 3x: puntos críticos ±1, signo de f′ y criterio de la segunda derivada | — |
 | `bayes-frecuencias` | Bayes con frecuencias naturales: 10 000 móviles, 200 defectuosos, detector con 90 % de aciertos y 1 % de falsas alarmas; entre 278 marcados, 180 son defectuosos (64,7 %) | — |
+| `estadistica-conceptos` | Población (72 familias), muestra de 12 resaltada, variable «número de hijos» con sus datos y tamaño muestral n = 12 | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -551,6 +552,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `arbol-tabla-explorador` | De P(A), P(B/A) y P(B/noA) a la tabla de contingencia y al árbol que empieza en B | `initial`: `[P(A) %, P(B/A) %, P(B/noA) %]` |
 | `prob-total-explorador` | Probabilidad total y Bayes en cinco situaciones (urnas, cajas, móviles, sastres, tornillos), con suceso contrario y barra de posteriores | `initial`: `[situación (0–4), contrario (0/1), % defectuosos]` |
 | `azar-famoso-explorador` | Cumpleaños, Caballero de la Meré y Galileo con tres dados | `initial`: `[problema (0–2), n, apuesta (0/1), suma 3–18]` |
+| `percentiles-explorador` | Percentil p (posición n·p/100, por exceso si no es entera), cuartiles, mediana, rango intercuartílico y diagrama de caja en cuatro conjuntos de datos | `initial`: `[datos (0–3), p (1–99)]` |
+| `doble-entrada-explorador` | Tablas de doble entrada (impresoras, fármacos, terapia, ganado): marginales, condicionadas a una fila o columna y test de independencia | `initial`: `[tabla (0–3), fila, columna]` |
+| `nube-regresion-explorador` | Nube de puntos con seis conjuntos de datos o una nube sintética con r ajustable: medias, covarianza, r, rectas de regresión Y/X y X/Y, predicción y dato atípico | `initial`: `[datos (0–6), r·100, atípico (0/1), x atípico %, y atípico %, x₀ %]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

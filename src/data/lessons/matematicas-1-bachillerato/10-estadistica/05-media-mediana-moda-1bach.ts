@@ -1,0 +1,93 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const mediaMedianaModa1bachLesson: InteractiveLesson = {
+  slug: "media-mediana-moda-1bach",
+  title: "5. Media, mediana y moda",
+  subtitle: TEMA_1BACH_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "parametros",
+      type: "slide",
+      help: [{ label: "Datos agrupados", message: "Con datos agrupados se usan las marcas de clase $c_i$ en lugar de $x_i$ (el resultado es aproximado)." }],
+      title: "Tres medidas de centralización",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\bar{x} = \\dfrac{\\sum x_i n_i}{n} = \\sum x_i f_i", label: "media aritmética" },
+          { tex: "Me", label: "mediana: valor central de los datos ordenados (media de los dos centrales si n es par)" },
+          { tex: "Mo", label: "moda: valor con mayor frecuencia" },
+        ] },
+        { kind: "rule", title: "Propiedades de la media", text: "Si $y_i = a + b\\,x_i$, entonces $\\bar{y} = a + b\\,\\bar{x}$. Además, $\\sum (x_i - \\bar{x}) = 0$." },
+      ],
+      visual: { kind: "anim", scene: "media-mediana-moda" },
+    },
+    {
+      id: "explora",
+      type: "slide",
+      help: [{ label: "Sensible", message: "La media se ve afectada por los valores extremos; la mediana no." }],
+      title: "Cambia un dato y mira qué ocurre",
+      blocks: [
+        { kind: "text", text: "Añade o quita datos: la **media** cambia con cada valor, la **mediana** solo depende del orden y la **moda** del que más se repite. Un valor muy extremo arrastra la media pero apenas mueve la mediana." },
+      ],
+      visual: { kind: "tool", tool: "datos-explorador", hint: "Añade un dato muy grande y observa cuánto se mueve la media frente a la mediana." },
+    },
+    {
+      id: "check-media-hijos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\sum x_i n_i = 0\\cdot 2 + 1\\cdot 4 + 2\\cdot 21 + 3\\cdot 15 + 4\\cdot 6 + 5\\cdot 1 + 6\\cdot 1 = 126$." }],
+      title: "Media del número de hijos",
+      question: "Con la tabla ($x_i$ de $0$ a $6$; $n_i = 2, 4, 21, 15, 6, 1, 1$), ¿cuál es el número medio de hijos? (decimal)",
+      correctAnswers: ["2,52", "2.52"],
+      explanation: "$\\bar{x} = \\dfrac{126}{50} = 2{,}52$ hijos por familia. La moda es $2$ (la fila con $21$ familias).",
+    },
+    {
+      id: "check-media-agrupada",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\frac{35\\cdot 3 + 40\\cdot 8 + 45\\cdot 14 + 50\\cdot 6 + 55\\cdot 4 + 60\\cdot 5}{40}$." }],
+      title: "Media con datos agrupados",
+      question: "Con las marcas de clase $35, 40, 45, 50, 55, 60$ y frecuencias $3, 8, 14, 6, 4, 5$, ¿cuál es el precio medio de la habitación? (decimal)",
+      correctAnswers: ["46,875", "46.875", "46,88", "46.88"],
+      explanation: "$\\bar{x} = \\dfrac{1875}{40} = 46{,}875$ €. La clase modal es $[42{,}5;\\ 47{,}5[$ ($14$ hoteles).",
+    },
+    {
+      id: "check-mediana",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$n = 30$ es par: la mediana es la media de los datos de los lugares $15$ y $16$ ($68{,}26$ y $68{,}34$)." }],
+      title: "Mediana de 30 pesos",
+      question: "Los datos ordenados de $30$ pesos tienen en los lugares $15$ y $16$ los valores $68{,}26$ y $68{,}34$. ¿Cuál es la mediana (kg)? (decimal)",
+      correctAnswers: ["68,3", "68.3"],
+      explanation: "$Me = \\dfrac{68{,}26 + 68{,}34}{2} = 68{,}3$ kg.",
+    },
+    {
+      id: "check-transformacion",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\bar{y} = 3 + 2\\,\\bar{x}$." }],
+      title: "Cambio de variable",
+      question: "Unos datos $x_i$ tienen media $4$. Se define $y_i = 3 + 2x_i$. ¿Cuánto vale $\\bar{y}$? (solo el número)",
+      correctAnswers: ["11"],
+      explanation: "$\\bar{y} = a + b\\,\\bar{x} = 3 + 2\\cdot 4 = 11$.",
+    },
+    {
+      id: "check-robusta",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Un salario enorme sube la media pero no cambia qué dato queda en el centro." }],
+      title: "¿Qué medida usar?",
+      question: "En una empresa casi todos ganan entre $1\\,200$ y $1\\,800$ € y el director gana $90\\,000$ €. ¿Qué medida describe mejor el salario «típico»?",
+      choices: [
+        { id: "a", label: "La mediana, porque no se deja arrastrar por el valor extremo" },
+        { id: "b", label: "La media, porque usa todos los datos", incorrectFeedback: "Precisamente por usar todos los datos, el salario del director la dispara y no representa a nadie." },
+        { id: "c", label: "El rango", incorrectFeedback: "El rango mide dispersión, no un valor típico." },
+        { id: "d", label: "La suma de los salarios", incorrectFeedback: "No es una medida de centralización." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "La mediana resiste a los valores atípicos; la media no. Por eso suele usarse la mediana para salarios o precios de vivienda.",
+    },
+  ],
+};

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildEstadisticaConceptos } from "@/components/lesson/anim/scenes/bach1-estadistica";
 import { buildBayesFrecuencias } from "@/components/lesson/anim/scenes/bach1-probabilidad";
 import { buildSecanteTangente, buildDerivadaSigno, buildExtremosCriterios } from "@/components/lesson/anim/scenes/bach1-derivadas";
 import { buildLimiteAproximacion, buildAsintotasTipos } from "@/components/lesson/anim/scenes/bach1-limites";
@@ -605,6 +606,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "derivada-signo": () => buildDerivadaSigno(),
   "extremos-criterios": () => buildExtremosCriterios(),
   "bayes-frecuencias": () => buildBayesFrecuencias(),
+  "estadistica-conceptos": () => buildEstadisticaConceptos(),
   /* industrial-end */
 };
 

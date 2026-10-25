@@ -1,0 +1,83 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_1BACH_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const dobleEntrada1bachLesson: InteractiveLesson = {
+  slug: "doble-entrada-1bach",
+  title: "9. Dos variables: frecuencias conjuntas, marginales y condicionadas",
+  subtitle: TEMA_1BACH_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "conjuntas",
+      type: "slide",
+      help: [{ label: "Pares de datos", message: "Cada observación es un par $(x, y)$. La tabla de doble entrada cuenta cuántas veces aparece cada par." }],
+      title: "Tres distribuciones a partir de una tabla",
+      blocks: [
+        { kind: "text", text: "Se anotan las ventas diarias de dos modelos de impresora en $25$ días: $X$ (modelo A) e $Y$ (modelo B). La tabla de **doble entrada** da la frecuencia $n_{ij}$ de cada par." },
+        { kind: "facts", items: [
+          { tex: "f_{ij} = \\dfrac{n_{ij}}{n}", label: "conjunta (suma 1)" },
+          { tex: "n_{i\\cdot} = \\sum_j n_{ij},\\quad n_{\\cdot j} = \\sum_i n_{ij}", label: "marginales: totales de filas y columnas" },
+          { tex: "f_{i(j)} = \\dfrac{n_{ij}}{n_{\\cdot j}},\\quad f_{(i)j} = \\dfrac{n_{ij}}{n_{i\\cdot}}", label: "condicionadas" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "doble-entrada-explorador", initial: [0, 3, 1], hint: "Elige una fila y una columna: se resaltan su casilla, sus marginales y las dos distribuciones condicionadas." },
+    },
+    {
+      id: "check-conjunta",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Entre los $25$ días, el par $(x = 1, y = 3)$ aparece una sola vez." }],
+      title: "Una frecuencia conjunta",
+      question: "En $25$ días hubo un día con $1$ impresora del modelo A y $3$ del modelo B. ¿Qué porcentaje de días representa? (solo el número, en %)",
+      correctAnswers: ["4"],
+      explanation: "$f = \\dfrac{1}{25} = 0{,}04$: el $4\\,\\%$ de los días.",
+    },
+    {
+      id: "check-mas-B",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Casillas con $y > x$: $(0, 2)$ y $(1, 3)$, un día cada una." }],
+      title: "Más impresoras B que A",
+      question: "¿En qué porcentaje de días se vendieron más impresoras del modelo B que del A? (solo el número, en %)",
+      correctAnswers: ["8"],
+      explanation: "Solo ocurre en los pares $(0, 2)$ y $(1, 3)$: $\\dfrac{1 + 1}{25} = 0{,}08$, el $8\\,\\%$.",
+    },
+    {
+      id: "check-marginal",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Suma la columna $y = 1$: $0 + 0 + 3 + 8 + 2$." }],
+      title: "Frecuencia marginal",
+      question: "¿En cuántos días se vendió exactamente $1$ impresora del modelo B (sin mirar el modelo A)? (solo el número)",
+      correctAnswers: ["13"],
+      explanation: "$n_{\\cdot 2} = 3 + 8 + 2 = 13$ días: es la frecuencia marginal de $y = 1$.",
+    },
+    {
+      id: "check-condicionada",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Entre los $13$ días con $y = 1$, en $8$ se vendieron $3$ del modelo A." }],
+      title: "Frecuencia condicionada",
+      question: "De los días en que se vendió $1$ impresora del modelo B, ¿qué proporción vendió $3$ del modelo A? (decimal con 2 cifras)",
+      correctAnswers: ["0,62", "0.62", "0,61", "0.61", "8/13"],
+      explanation: "$f_{(3)\\,|\\,y=1} = \\dfrac{8}{13} \\approx 0{,}615$. (Con las tres frecuencias: $0{,}23$; $0{,}62$; $0{,}15$ para $x = 2, 3, 4$.)",
+    },
+    {
+      id: "check-concepto",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una distribución condicionada «fija» el valor de la otra variable." }],
+      title: "Marginal o condicionada",
+      question: "«Distribución de las ventas del modelo A **solo en los días en que se vendieron $2$ del modelo B**» es una distribución…",
+      choices: [
+        { id: "a", label: "condicionada" },
+        { id: "b", label: "marginal", incorrectFeedback: "La marginal ignora la otra variable (se suma por filas o columnas)." },
+        { id: "c", label: "conjunta", incorrectFeedback: "La conjunta recoge los pares $(x, y)$ a la vez." },
+        { id: "d", label: "acumulada", incorrectFeedback: "La acumulada suma frecuencias de valores consecutivos de una sola variable." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Se fija $Y = 2$ y se mira cómo se distribuye $X$ entre esos días: es la distribución de $X$ condicionada a $Y = 2$.",
+    },
+  ],
+};

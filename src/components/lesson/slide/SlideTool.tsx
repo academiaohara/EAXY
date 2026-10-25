@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PercentilesExplorador, DobleEntradaExplorador, NubeRegresionExplorador } from "@/components/lesson/slide/tools/Bach1EstadTools";
 import { SucesosVennExplorador, ProbUnionExplorador, TablaContingenciaExplorador, ArbolTablaExplorador, ProbTotalExplorador, AzarFamosoExplorador } from "@/components/lesson/slide/tools/Bach1ProbTools";
 import { SecanteExplorador, DerivabilidadExplorador, FuncionDerivadaExplorador, ProductoCocienteExplorador, CadenaExplorador, DerivadaInversaExplorador, VelocidadAceleracionExplorador, ExtremosExplorador, OptimizacionExplorador } from "@/components/lesson/slide/tools/Bach1DerivTools";
 import { LimiteTablaExplorador, LimiteLateralExplorador, LimiteInfinitoExplorador, AsintotasExplorador, CeroCeroExplorador, LimiteGradosExplorador, ContinuidadKExplorador, OperacionesLimiteExplorador, RestaFraccionesExplorador } from "@/components/lesson/slide/tools/Bach1LimTools";
@@ -1034,6 +1035,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ProbTotalExplorador block={block} />;
     case "azar-famoso-explorador":
       return <AzarFamosoExplorador block={block} />;
+    case "percentiles-explorador":
+      return <PercentilesExplorador block={block} />;
+    case "doble-entrada-explorador":
+      return <DobleEntradaExplorador block={block} />;
+    case "nube-regresion-explorador":
+      return <NubeRegresionExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -8,6 +8,15 @@ const interactiveLessons = allLessons as Record<string, InteractiveLesson>;
 const course = curriculum.courses.find((c) => c.slug === "matematicas-1-bachillerato")!;
 
 describe("Matemáticas 1.º Bachillerato", () => {
+  it("el tema 10 (Estadística) tiene 12 lecciones interactivas", () => {
+    const mod = course.modules.find((m) => m.slug === "estadistica")!;
+    expect(mod.orderIndex).toBe(10);
+    expect(mod.lessons).toHaveLength(12);
+    for (const lesson of mod.lessons) {
+      expect(interactiveLessons[lesson.interactiveSlug!]).toBeDefined();
+    }
+  });
+
   it("el tema 9 (Probabilidad) tiene 12 lecciones interactivas", () => {
     const mod = course.modules.find((m) => m.slug === "probabilidad")!;
     expect(mod.orderIndex).toBe(9);

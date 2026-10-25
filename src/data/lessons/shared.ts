@@ -85,3 +85,4 @@ export const TEMA_1BACH_6_SUBTITLE = "1.º Bachillerato, Tema 6 — Funciones";
 export const TEMA_1BACH_7_SUBTITLE = "1.º Bachillerato, Tema 7 — Límites y continuidad";
 export const TEMA_1BACH_8_SUBTITLE = "1.º Bachillerato, Tema 8 — Derivadas";
 export const TEMA_1BACH_9_SUBTITLE = "1.º Bachillerato, Tema 9 — Probabilidad";
+export const TEMA_1BACH_10_SUBTITLE = "1.º Bachillerato, Tema 10 — Estadística";

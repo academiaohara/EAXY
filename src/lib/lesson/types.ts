@@ -947,6 +947,7 @@ export type SlideAnimId =
   | "derivada-signo"
   | "extremos-criterios"
   | "bayes-frecuencias"
+  | "estadistica-conceptos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1393,6 +1394,9 @@ export type SlideToolId =
   | "arbol-tabla-explorador"
   | "prob-total-explorador"
   | "azar-famoso-explorador"
+  | "percentiles-explorador"
+  | "doble-entrada-explorador"
+  | "nube-regresion-explorador"
   /* industrial-tool-end */;
 
 /**
