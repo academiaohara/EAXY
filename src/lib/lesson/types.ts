@@ -1047,6 +1047,8 @@ export type SlideAnimId =
   | "diagrama-flujo-simbolos"
   | "bucle-repeticion-simple"
   | "variable-caja"
+  | "ciclo-vida-producto-eso"
+  | "jerarquia-residuos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1675,6 +1677,12 @@ export type SlideToolId =
   | "variables-cajas-explorador"
   | "condiciones-explorador"
   | "depura-programa-explorador"
+  | "huella-producto-explorador"
+  | "consumo-habitos-explorador"
+  | "ahorro-energia-explorador"
+  | "tiempo-descomposicion-explorador"
+  | "lineal-circular-eso-explorador"
+  | "rampa-accesibilidad-explorador"
   /* industrial-tool-end */;
 
 /**

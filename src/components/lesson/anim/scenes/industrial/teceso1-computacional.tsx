@@ -1,7 +1,7 @@
 import { Canvas, Fade, Txt } from "@/components/lesson/anim/primitives";
 import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
-import { Arrow, Box } from "@/components/lesson/anim/scenes/industrial/termicos";
+import { Arrow } from "@/components/lesson/anim/scenes/industrial/termicos";
 
 /* ───────────── Un algoritmo: pasos ordenados, precisos y finitos ───────────── */
 

@@ -523,6 +523,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `diagrama-flujo-simbolos` | Óvalo, rectángulo, rombo y paralelogramo: significado de cada figura de un diagrama de flujo | — |
 | `bucle-repeticion-simple` | Cuatro instrucciones «avanzar» copiadas frente a un bucle «repetir 4 veces» con un robot que avanza | — |
 | `variable-caja` | Variable como caja con nombre: asignar, cambiar (edad = edad + 1), texto y tipos de datos | — |
+| `ciclo-vida-producto-eso` | Ciclo de vida de un producto (móvil): extraer, fabricar, transportar, usar y fin de vida, con el ciclo cerrado por el reciclaje | — |
+| `jerarquia-residuos` | Jerarquía de residuos: reducir, reutilizar, reciclar, valorizar y eliminar | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1025,6 +1027,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `variables-cajas-explorador` | Tres programas de asignaciones ejecutados línea a línea con las variables como cajas | `n` programa (0–2) |
 | `condiciones-explorador` | Programa si/si no/si no con lluvia y temperatura: qué rama se ejecuta | `a` temperatura (°C) |
 | `depura-programa-explorador` | Cuatro programas con un error: encontrar la línea incorrecta y entender por qué | `n` programa (0–3) |
+| `huella-producto-explorador` | Reparto de la huella de cuatro productos por fases (valores orientativos) y efecto de los años de uso | `n` producto (0–3) |
+| `consumo-habitos-explorador` | Ocho hábitos de consumo responsable y su ahorro mensual estimado en CO₂, residuos y agua | — |
+| `ahorro-energia-explorador` | Consumo anual de un aparato antiguo frente a uno eficiente: energía, dinero y CO₂ (E = P·t) | `n` pareja de aparatos (0–2) |
+| `tiempo-descomposicion-explorador` | Siete residuos y su tiempo de descomposición en escala logarítmica | `n` paso de tiempo (0–7) |
+| `lineal-circular-eso-explorador` | Materia prima nueva y residuos finales al aumentar la reutilización y el reciclaje | `a` reutilización (%), `b` reciclaje (%) |
+| `rampa-accesibilidad-explorador` | Pendiente de una rampa según desnivel y longitud, límite accesible (10, 8 o 6 %) y longitud mínima | `a` desnivel (cm), `b` longitud (m) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { HuellaProductoExplorador, ConsumoHabitosExplorador, AhorroEnergiaExplorador, TiempoDescomposicionExplorador, LinealCircularEsoExplorador, RampaAccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso1SostenibleTools";
 import { AlgoritmoOrdenaExplorador, ProgramaBloquesExplorador, FlujoSencilloExplorador, VariablesCajasExplorador, CondicionesExplorador, DepuraProgramaExplorador } from "@/components/lesson/slide/tools/TecEso1ComputacionalTools";
 import { ConductoresAislantesExplorador, CircuitoSimpleExplorador, SimbolosElectricosExplorador, ControlLuzExplorador, SerieParaleloExplorador, MontajeCircuitoExplorador, SeguridadElectricaExplorador } from "@/components/lesson/slide/tools/TecEso1ElectricidadTools";
 import { MovimientosExplorador, PalancaEquilibrioExplorador, PoleasAparejoExplorador, RuedaEjeExplorador, EngranajesEsoExplorador, TrenEngranajesExplorador, BiciMarchasExplorador } from "@/components/lesson/slide/tools/TecEso1MecanismosTools";
@@ -1430,6 +1431,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CondicionesExplorador block={block} />;
     case "depura-programa-explorador":
       return <DepuraProgramaExplorador block={block} />;
+    case "huella-producto-explorador":
+      return <HuellaProductoExplorador block={block} />;
+    case "consumo-habitos-explorador":
+      return <ConsumoHabitosExplorador block={block} />;
+    case "ahorro-energia-explorador":
+      return <AhorroEnergiaExplorador block={block} />;
+    case "tiempo-descomposicion-explorador":
+      return <TiempoDescomposicionExplorador block={block} />;
+    case "lineal-circular-eso-explorador":
+      return <LinealCircularEsoExplorador block={block} />;
+    case "rampa-accesibilidad-explorador":
+      return <RampaAccesibilidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCicloVidaProductoEso, buildJerarquiaResiduos } from "@/components/lesson/anim/scenes/industrial/teceso1-sostenible";
 import { buildAlgoritmoReceta, buildDiagramaFlujoSimbolos, buildBucleRepeticionSimple, buildVariableCaja } from "@/components/lesson/anim/scenes/industrial/teceso1-computacional";
 import { buildElectronesCorriente, buildCircuitoComponentes, buildSerieParaleloCamino, buildCortocircuitoFusible } from "@/components/lesson/anim/scenes/industrial/teceso1-electricidad";
 import { buildMovimientosTipos, buildPalancaLey, buildPoleaFijaMovil } from "@/components/lesson/anim/scenes/industrial/teceso1-mecanismos";
@@ -734,6 +735,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "diagrama-flujo-simbolos": () => buildDiagramaFlujoSimbolos(),
   "bucle-repeticion-simple": () => buildBucleRepeticionSimple(),
   "variable-caja": () => buildVariableCaja(),
+  "ciclo-vida-producto-eso": () => buildCicloVidaProductoEso(),
+  "jerarquia-residuos": () => buildJerarquiaResiduos(),
   /* industrial-end */
 };
 

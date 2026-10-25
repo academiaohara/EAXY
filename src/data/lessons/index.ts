@@ -3,6 +3,7 @@ import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
+import { ahorroMaterialesEnergiaEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/03-ahorro-materiales-energia-eso";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
@@ -177,6 +178,7 @@ import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
+import { consumoResponsableEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/02-consumo-responsable-eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
 import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
@@ -494,6 +496,7 @@ import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/08-identidades-notables-4esob";
 import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
 import { impactoAmbientalProductosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/04-impacto-ambiental-productos";
+import { impactoAmbientalProductosEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/01-impacto-ambiental-productos-eso";
 import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
@@ -978,10 +981,12 @@ import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/06-repeticiones-bucles-eso";
 import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
+import { residuosReduccionClasificacionLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/04-residuos-reduccion-clasificacion";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
+import { reutilizacionEconomiaCircularEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/05-reutilizacion-economia-circular-eso";
 import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
@@ -992,6 +997,7 @@ import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachi
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
+import { seguridadSaludAccesibilidadDisenoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/06-seguridad-salud-accesibilidad-diseno";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
 import { seleccionMaterialesCriteriosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/05-seleccion-materiales-criterios";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
@@ -1188,6 +1194,7 @@ export const interactiveLessons = {
   "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
+  "ahorro-materiales-energia-eso": ahorroMaterialesEnergiaEsoLesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
@@ -1362,6 +1369,7 @@ export const interactiveLessons = {
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
+  "consumo-responsable-eso": consumoResponsableEsoLesson,
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
   "continuidad-punto-1bach": continuidadPunto1bachLesson,
@@ -1679,6 +1687,7 @@ export const interactiveLessons = {
   "identidades-notables-4esob": identidadesNotables4esobLesson,
   "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
   "impacto-ambiental-productos": impactoAmbientalProductosLesson,
+  "impacto-ambiental-productos-eso": impactoAmbientalProductosEsoLesson,
   "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
@@ -2163,10 +2172,12 @@ export const interactiveLessons = {
   "repeticiones-bucles-eso": repeticionesBuclesEsoLesson,
   "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
+  "residuos-reduccion-clasificacion": residuosReduccionClasificacionLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
+  "reutilizacion-economia-circular-eso": reutilizacionEconomiaCircularEsoLesson,
   "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
@@ -2177,6 +2188,7 @@ export const interactiveLessons = {
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
+  "seguridad-salud-accesibilidad-diseno": seguridadSaludAccesibilidadDisenoLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
   "seleccion-materiales-criterios": seleccionMaterialesCriteriosLesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
