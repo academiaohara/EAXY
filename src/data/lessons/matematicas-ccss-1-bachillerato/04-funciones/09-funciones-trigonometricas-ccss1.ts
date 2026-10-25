@@ -1,0 +1,97 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const funcionesTrigonometricasCcss1Lesson: InteractiveLesson = {
+  slug: "funciones-trigonometricas-ccss1",
+  title: "9. Funciones trigonométricas",
+  subtitle: TEMA_CCSS1_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "basicas",
+      type: "slide",
+      help: [{ label: "En radianes", message: "En análisis la variable $x$ se mide en radianes. Una vuelta completa son $2\\pi \\approx 6{,}28$ unidades del eje horizontal." }],
+      title: "Seno, coseno y tangente como funciones",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\sin x,\\ \\cos x:\\ \\text{Dom} = \\mathbb{R},\\ \\text{Im} = [-1, 1]", label: "periodo 2π" },
+          { tex: "\\tan x:\\ \\text{Dom} = \\mathbb{R} - \\{\\tfrac{\\pi}{2} + k\\pi\\},\\ \\text{Im} = \\mathbb{R}", label: "periodo π" },
+        ] },
+        { kind: "text", text: "$\\sin x$ es **impar** y $\\cos x$ es **par**. La gráfica del coseno es la del seno desplazada $\\frac{\\pi}{2}$ a la izquierda. La tangente tiene **asíntotas verticales** en $x = \\frac{\\pi}{2} + k\\pi$." },
+      ],
+      visual: { kind: "tool", tool: "trig-funcion-explorador", initial: [0, 1, 1, 0, 0], hint: "Cambia entre seno, coseno y tangente. Con C = 90° el seno se convierte en coseno." },
+    },
+    {
+      id: "transformada",
+      type: "slide",
+      help: [{ label: "Cada parámetro", message: "$A$ estira o comprime en vertical; $B$ comprime en horizontal; $C$ desplaza en horizontal (hacia la izquierda si $C > 0$) y $D$ en vertical." }],
+      title: "y = A·sen(Bx + C) + D",
+      blocks: [
+        { kind: "rule", title: "Amplitud, periodo y recorrido", formula: "\\text{amplitud} = |A|\\qquad \\text{periodo} = \\dfrac{2\\pi}{B}\\qquad \\text{Im} = [D - |A|,\\ D + |A|]" },
+        { kind: "text", text: "El desfase es $-\\dfrac{C}{B}$: el punto de la gráfica que antes estaba en $x = 0$ pasa a estar en $x = -\\dfrac{C}{B}$." },
+      ],
+      visual: { kind: "tool", tool: "trig-funcion-explorador", initial: [0, 2, 2, 0, 1], hint: "Con A = 2, B = 2 y D = 1 el recorrido es [−1, 3] y el periodo es π." },
+    },
+    {
+      id: "check-periodo",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Periodo $= \\frac{2\\pi}{B}$ con $B = 2$." }],
+      title: "Periodo de sen 2x",
+      question: "¿Cuál es el periodo de $f(x) = \\sin 2x$?",
+      choices: [
+        { id: "a", label: "$\\pi$" },
+        { id: "b", label: "$2\\pi$", incorrectFeedback: "Es el de $\\sin x$. Con $B = 2$ la gráfica se comprime a la mitad: $\\frac{2\\pi}{2} = \\pi$." },
+        { id: "c", label: "$4\\pi$", incorrectFeedback: "Multiplicar por $2$ dentro comprime (no estira) la gráfica." },
+        { id: "d", label: "$\\dfrac{\\pi}{2}$", incorrectFeedback: "Sería el periodo de $\\sin 4x$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$T = \\frac{2\\pi}{B} = \\frac{2\\pi}{2} = \\pi$: en $[0, 2\\pi]$ la gráfica de $\\sin 2x$ hace dos ondas.",
+    },
+    {
+      id: "check-recorrido",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\sin \\in [-1, 1]$; multiplica por $2$ y suma $1$." }],
+      title: "Recorrido de 2 sen x + 1",
+      question: "¿Cuál es el recorrido de $f(x) = 2\\sin x + 1$?",
+      choices: [
+        { id: "a", label: "$[-1,\\ 3]$" },
+        { id: "b", label: "$[-2,\\ 2]$", incorrectFeedback: "Eso sería $2\\sin x$ sin el $+1$." },
+        { id: "c", label: "$[0,\\ 2]$", incorrectFeedback: "El factor $2$ estira la oscilación a $[-2, 2]$ antes de sumar $1$." },
+        { id: "d", label: "$[1,\\ 3]$", incorrectFeedback: "El seno también toma valores negativos: el mínimo es $2\\cdot(-1) + 1 = -1$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$2\\sin x \\in [-2, 2]$ y sumar $1$ da $[-1, 3]$.",
+    },
+    {
+      id: "check-asintota",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\tan x = \\frac{\\sin x}{\\cos x}$ y $\\cos x = 0$ en $\\frac{\\pi}{2}$." }],
+      title: "Asíntotas de la tangente",
+      question: "La tangente tiene una asíntota vertical en…",
+      choices: [
+        { id: "a", label: "$x = \\dfrac{\\pi}{2}$" },
+        { id: "b", label: "$x = \\pi$", incorrectFeedback: "En $x = \\pi$ vale $\\tan\\pi = 0$: ahí corta el eje." },
+        { id: "c", label: "$x = 0$", incorrectFeedback: "En $x = 0$ vale $0$: corta el eje." },
+        { id: "d", label: "$x = 2\\pi$", incorrectFeedback: "En $x = 2\\pi$ vale $0$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\cos\\frac{\\pi}{2} = 0$, así que $\\tan x = \\frac{\\sin x}{\\cos x}$ no existe en $\\frac{\\pi}{2}$ y la gráfica tiene una asíntota vertical (y otra cada $\\pi$).",
+    },
+    {
+      id: "check-amplitud",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "La amplitud es el valor absoluto del coeficiente que multiplica a la función." }],
+      title: "Amplitud",
+      question: "¿Cuál es la amplitud de $f(x) = 3\\cos x$? (solo el número)",
+      correctAnswers: ["3"],
+      explanation: "La gráfica oscila entre $-3$ y $3$: amplitud $3$.",
+    },
+  ],
+};

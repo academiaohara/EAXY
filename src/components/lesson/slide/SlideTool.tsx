@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 // industrial-imports
+import { BeneficioExplorador } from "@/components/lesson/slide/tools/Ccss1AnalisisTools";
+import { InterpolacionExplorador, DiferenciasExplorador, ParteEnteraExplorador } from "@/components/lesson/slide/tools/Ccss1FuncTools";
 import { CapitalizacionExplorador, PrestamoExplorador, TaeExplorador } from "@/components/lesson/slide/tools/Ccss1FinanzasTools";
 import { PercentilesExplorador, DobleEntradaExplorador, NubeRegresionExplorador } from "@/components/lesson/slide/tools/Bach1EstadTools";
 import { SucesosVennExplorador, ProbUnionExplorador, TablaContingenciaExplorador, ArbolTablaExplorador, ProbTotalExplorador, AzarFamosoExplorador } from "@/components/lesson/slide/tools/Bach1ProbTools";
@@ -1048,6 +1050,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PrestamoExplorador block={block} />;
     case "tae-explorador":
       return <TaeExplorador block={block} />;
+    case "interpolacion-explorador":
+      return <InterpolacionExplorador block={block} />;
+    case "diferencias-explorador":
+      return <DiferenciasExplorador block={block} />;
+    case "parte-entera-explorador":
+      return <ParteEnteraExplorador block={block} />;
+    case "beneficio-explorador":
+      return <BeneficioExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

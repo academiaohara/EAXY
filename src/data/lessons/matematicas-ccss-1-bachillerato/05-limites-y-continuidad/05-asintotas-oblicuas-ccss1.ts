@@ -1,0 +1,90 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const asintotasOblicuasCcss1Lesson: InteractiveLesson = {
+  slug: "asintotas-oblicuas-ccss1",
+  title: "5. Asíntotas oblicuas y ramas parabólicas",
+  subtitle: TEMA_CCSS1_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "oblicua",
+      type: "slide",
+      help: [{ label: "Una por lado", message: "En cada lado del infinito una función tiene, como mucho, **una** asíntota horizontal **o** una oblicua, no ambas." }],
+      title: "Asíntota oblicua y = mx + n",
+      blocks: [
+        { kind: "rule", title: "Pendiente y ordenada", formula: "m = \\lim_{x\\to\\infty}\\dfrac{f(x)}{x}\\qquad n = \\lim_{x\\to\\infty}\\big(f(x) - mx\\big)" },
+        { kind: "text", text: "Existe asíntota oblicua cuando $m$ y $n$ son **números reales** y $m \\neq 0$. Si no, la gráfica puede tener una **rama parabólica**: crece sin acercarse a ninguna recta." },
+      ],
+      visual: { kind: "anim", scene: "asintotas-tipos", params: { a: 2 } },
+    },
+    {
+      id: "ejemplo",
+      type: "slide",
+      help: [{ label: "Truco", message: "En una función racional con el numerador un grado por encima del denominador, $mx + n$ es el **cociente** de la división de polinomios." }],
+      title: "Un ejemplo completo",
+      blocks: [
+        { kind: "example", title: "f(x) = (x² + 2x − 8)/(x − 1)", lines: [
+          { math: "m = \\lim_{x\\to\\infty}\\dfrac{x^2 + 2x - 8}{x^2 - x} = 1" },
+          { math: "n = \\lim_{x\\to\\infty}\\left(\\dfrac{x^2 + 2x - 8}{x - 1} - x\\right) = \\lim_{x\\to\\infty}\\dfrac{3x - 8}{x - 1} = 3" },
+          { math: "\\text{Asíntota oblicua: } y = x + 3" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "asintotas-explorador", initial: [1, 2, -8, 1], hint: "La línea discontinua naranja es la asíntota oblicua. Cambia a, b, c y r y comprueba m = a y n = b + a·r." },
+    },
+    {
+      id: "check-n",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Divide: $x^2 + x + 1 = (x - 1)(x + 2) + 3$, así que el cociente es $x + 2$." }],
+      title: "Ordenada de la oblicua",
+      question: "$f(x) = \\dfrac{x^2 + x + 1}{x - 1}$ tiene la asíntota $y = mx + n$ con $m = 1$. ¿Cuánto vale $n$?",
+      correctAnswers: ["2"],
+      explanation: "$f(x) - x = \\dfrac{2x + 1}{x - 1} \\to 2$. La asíntota es $y = x + 2$.",
+    },
+    {
+      id: "check-m",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\dfrac{f(x)}{x} = \\dfrac{2x^2 + 1}{x^2 + 3x}$." }],
+      title: "Pendiente de la oblicua",
+      question: "Para $f(x) = \\dfrac{2x^2 + 1}{x + 3}$, ¿cuánto vale $m = \\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{x}$?",
+      correctAnswers: ["2"],
+      explanation: "$\\dfrac{f(x)}{x} = \\dfrac{2x^2 + 1}{x^2 + 3x} \\to 2$.",
+    },
+    {
+      id: "check-grados",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Compara los grados: el del numerador es una unidad mayor que el del denominador." }],
+      title: "¿Qué asíntota?",
+      question: "Una función racional con numerador de grado $2$ y denominador de grado $1$ tiene, además de posibles verticales…",
+      choices: [
+        { id: "a", label: "una asíntota oblicua" },
+        { id: "b", label: "una asíntota horizontal", incorrectFeedback: "La horizontal aparece cuando el grado del numerador es **menor o igual** que el del denominador." },
+        { id: "c", label: "ninguna asíntota más", incorrectFeedback: "Con un grado de diferencia, $f(x)$ se comporta como una recta en el infinito." },
+        { id: "d", label: "una horizontal y una oblicua a la vez", incorrectFeedback: "No pueden coexistir en el mismo lado del infinito." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Numerador de grado $n+1$ y denominador de grado $n$: $f(x) \\approx mx + n$ en el infinito.",
+    },
+    {
+      id: "check-parabolica",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Calcula $m = \\lim \\frac{x^3}{x} = \\lim x^2$." }],
+      title: "Rama parabólica",
+      question: "¿Qué comportamiento tiene $f(x) = x^3$ en $+\\infty$?",
+      choices: [
+        { id: "a", label: "Una rama parabólica: crece sin acercarse a ninguna recta" },
+        { id: "b", label: "Asíntota horizontal $y = 0$", incorrectFeedback: "$x^3$ tiende a $+\\infty$, no a $0$." },
+        { id: "c", label: "Asíntota oblicua $y = x$", incorrectFeedback: "$m = \\lim x^2 = +\\infty$ no es finito." },
+        { id: "d", label: "Asíntota vertical", incorrectFeedback: "Las verticales están en puntos finitos, y $x^3$ está definida en todo $\\mathbb{R}$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Como $m = \\displaystyle\\lim\\frac{x^3}{x} = +\\infty$, no hay oblicua: es una **rama parabólica**.",
+    },
+  ],
+};

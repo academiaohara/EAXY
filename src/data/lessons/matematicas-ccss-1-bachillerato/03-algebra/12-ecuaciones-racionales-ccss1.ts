@@ -1,0 +1,98 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_3_SUBTITLE } from "@/data/lessons/shared";
+
+export const ecuacionesRacionalesCcss1Lesson: InteractiveLesson = {
+  slug: "ecuaciones-racionales-ccss1",
+  title: "12. Ecuaciones racionales",
+  subtitle: TEMA_CCSS1_3_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "metodo",
+      type: "slide",
+      help: [{ label: "Idea", message: "Una ecuación racional tiene la incógnita en algún denominador. Se multiplica toda la ecuación por el m.c.m. de los denominadores para quitarlos." }],
+      title: "Quitar denominadores con el m.c.m.",
+      blocks: [
+        { kind: "definition", text: "Una **ecuación racional** tiene la incógnita en algún **denominador**. Se resuelve multiplicando los dos miembros por el **m.c.m. de los denominadores**." },
+        { kind: "steps", title: "Método", items: ["Factoriza los denominadores y calcula su m.c.m.", "Multiplica **todos** los términos por el m.c.m. y simplifica.", "Resuelve la ecuación que queda (primer o segundo grado).", "**Comprueba** que ninguna solución anula un denominador."] },
+      ],
+      visual: {
+        kind: "anim",
+        scene: "expr-reescritura",
+        params: {
+          expr: [
+            { tokens: ["1/(x−2)", "+", "1/(x+2)", "=", "1/(x²−4)"], active: [0, 4], note: "como $x^2 - 4 = (x-2)(x+2)$, el m.c.m. es $(x-2)(x+2)$." },
+            { tokens: ["(x+2)", "+", "(x−2)", "=", "1"], active: [0, 4], note: "multiplicamos todo por el m.c.m. y simplificamos." },
+            { tokens: ["2x", "=", "1"], active: [0, 2], note: "reducimos: $x + 2 + x - 2 = 2x$." },
+            { tokens: ["x", "=", "1/2"], fresh: [2, 2], note: "$x = \\tfrac12$ no anula ningún denominador: es válida." },
+          ],
+        },
+      },
+      arrange: "text-top",
+    },
+    {
+      id: "check-simple",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Producto en cruz: $5(x + 1) = 3(x - 1)$." }],
+      title: "Dos fracciones iguales",
+      question: "Resuelve $\\dfrac{5}{x - 1} = \\dfrac{3}{x + 1}$. (solo el valor de $x$)",
+      correctAnswers: ["-4", "−4"],
+      explanation: "$5x + 5 = 3x - 3 \\Rightarrow 2x = -8 \\Rightarrow x = -4$. Comprobación: $\\dfrac{5}{-5} = -1 = \\dfrac{3}{-3}$.",
+    },
+    {
+      id: "check-falsa",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Multiplica por $x - 3$: queda $x^2 = 9$. Descarta la que anula el denominador." }],
+      title: "Una solución que sobra",
+      question: "Resuelve $\\dfrac{x^2}{x - 3} = \\dfrac{9}{x - 3}$. (solo la solución válida)",
+      correctAnswers: ["-3", "−3"],
+      explanation: "$x^2 = 9 \\Rightarrow x = \\pm 3$. Pero $x = 3$ anula el denominador, así que no vale. La única solución es $x = -3$.",
+    },
+    {
+      id: "check-sin-solucion",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Multiplica por $x(x + 1)$ y simplifica: $x^2 + x + 1 = x^2 + x$." }],
+      title: "¿Cuántas soluciones?",
+      question: "Al resolver $\\dfrac{x}{x + 1} + \\dfrac{1}{x} = 1$ se llega a $x^2 + x + 1 = x^2 + x$, es decir, $1 = 0$. La ecuación…",
+      choices: [
+        { id: "a", label: "no tiene solución" },
+        { id: "b", label: "tiene infinitas soluciones", incorrectFeedback: "Eso pasaría con una identidad como $0 = 0$; aquí queda $1 = 0$, que es falso siempre." },
+        { id: "c", label: "tiene la solución $x = 0$", incorrectFeedback: "$x = 0$ anula el denominador de $\\frac1x$, así que ni siquiera se puede probar." },
+        { id: "d", label: "tiene la solución $x = 1$", incorrectFeedback: "Al sustituir no se cumple: la ecuación reducida no depende de $x$ y es falsa." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Una contradicción ($1 = 0$) significa que ningún valor de $x$ cumple la ecuación: no tiene solución.",
+    },
+    {
+      id: "check-grifos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "En una hora, el primero llena $\\frac1x$ del depósito y el segundo $\\frac1{x+3}$; juntos llenan $\\frac12$." }],
+      title: "Dos grifos",
+      question: "Un grifo llena un depósito en $x$ horas y otro en $x + 3$ horas. Juntos lo llenan en $2$ horas. ¿Cuánto tarda el primero solo? (en horas)",
+      correctAnswers: ["3"],
+      explanation: "$\\dfrac1x + \\dfrac1{x+3} = \\dfrac12 \\Rightarrow 2(x + 3) + 2x = x(x + 3) \\Rightarrow x^2 - x - 6 = 0$, con $x = 3$ ó $x = -2$. El tiempo no puede ser negativo: $x = 3$ h (el otro tarda $6$ h).",
+    },
+    {
+      id: "check-mcm",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Factoriza: $x^2 - 9 = (x - 3)(x + 3)$." }],
+      title: "El m.c.m. de los denominadores",
+      question: "En $\\dfrac{1}{x - 3} + \\dfrac{2}{x + 3} = \\dfrac{4}{x^2 - 9}$, ¿por qué expresión conviene multiplicar toda la ecuación?",
+      choices: [
+        { id: "a", label: "$(x - 3)(x + 3)$" },
+        { id: "b", label: "$(x - 3)(x + 3)(x^2 - 9)$", incorrectFeedback: "Funcionaría, pero deja factores de más: $x^2 - 9$ ya es el producto de los otros dos." },
+        { id: "c", label: "$x^2 - 9$ y también $x - 3$", incorrectFeedback: "Con $(x-3)(x+3)$ basta; hay que multiplicar por un único m.c.m." },
+        { id: "d", label: "$x - 3$", incorrectFeedback: "Con eso no se quitan los denominadores $x + 3$ ni $x^2 - 9$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x^2 - 9 = (x - 3)(x + 3)$, así que el m.c.m. es $(x - 3)(x + 3)$. Queda $(x + 3) + 2(x - 3) = 4$, luego $3x = 7$ y $x = \\tfrac73$.",
+    },
+  ],
+};

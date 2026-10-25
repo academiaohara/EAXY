@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_6_SUBTITLE } from "@/data/lessons/shared";
+
+export const funcionDerivadaPotenciasCcss1Lesson: InteractiveLesson = {
+  slug: "funcion-derivada-potencias-ccss1",
+  title: "5. Función derivada: potencias, sumas y constantes",
+  subtitle: TEMA_CCSS1_6_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "funcion-derivada",
+      type: "slide",
+      help: [{ label: "Una función nueva", message: "A cada $x$ le asignamos la pendiente de la tangente en ese punto: eso define $f'$. Si $f'$ se puede derivar, se obtiene la segunda derivada $f''$." }],
+      title: "De derivadas en puntos a una función",
+      blocks: [
+        { kind: "text", text: "En lugar de repetir el límite en cada punto, lo calculamos en un punto genérico $x$ y obtenemos la **función derivada** $f'(x)$. Por ejemplo, si $f(x) = x^3$, entonces $f'(x) = 3x^2$." },
+      ],
+      visual: { kind: "tool", tool: "funcion-derivada-explorador", initial: [1, 20], hint: "Mueve x: la altura de la curva naranja es la pendiente de la tangente (amarilla) en ese punto." },
+    },
+    {
+      id: "reglas",
+      type: "slide",
+      help: [{ label: "Linealidad", message: "Por cumplir estas dos propiedades, se dice que **derivar es una operación lineal**." }],
+      title: "Reglas básicas",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "(k)' = 0", label: "constante" },
+          { tex: "(x^n)' = n\\,x^{n-1}", label: "potencia (n real)" },
+          { tex: "(f + g)' = f' + g'", label: "suma" },
+          { tex: "(c\\cdot f)' = c\\cdot f'", label: "constante por función" },
+        ] },
+        { kind: "example", title: "Ejemplos", lines: [
+          { math: "(3x^5 + x^3)' = 15x^4 + 3x^2" },
+          { math: "(8x^4)' = 32x^3" },
+          { math: "(\\sqrt{x})' = (x^{1/2})' = \\tfrac{1}{2}x^{-1/2} = \\dfrac{1}{2\\sqrt{x}}" },
+          { math: "\\left(\\dfrac{1}{x}\\right)' = (x^{-1})' = -x^{-2} = -\\dfrac{1}{x^2}" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-polinomio",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$f'(x) = 12x^3 - 10x$." }],
+      title: "Derivar un polinomio",
+      question: "Si $f(x) = 3x^4 - 5x^2 + 7$, ¿cuánto vale $f'(1)$? (solo el número)",
+      correctAnswers: ["2"],
+      explanation: "$f'(x) = 12x^3 - 10x$, así que $f'(1) = 12 - 10 = 2$. La constante $7$ desaparece.",
+    },
+    {
+      id: "check-potencia",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Escribe $6x^{10}$ y baja el exponente multiplicando." }],
+      title: "Derivar 6x¹⁰",
+      question: "La derivada de $g(x) = 6x^{10}$ es…",
+      choices: [
+        { id: "a", label: "$60x^9$" },
+        { id: "b", label: "$6x^9$", incorrectFeedback: "Falta multiplicar por el exponente $10$." },
+        { id: "c", label: "$60x^{10}$", incorrectFeedback: "El exponente debe bajar una unidad: $10 - 1 = 9$." },
+        { id: "d", label: "$10x^9$", incorrectFeedback: "El coeficiente $6$ se conserva: $6\\cdot 10 = 60$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(6x^{10})' = 6\\cdot 10x^{9} = 60x^9$.",
+    },
+    {
+      id: "check-raiz",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\sqrt{x} = x^{1/2}$, y $\\frac{1}{2} - 1 = -\\frac{1}{2}$." }],
+      title: "Derivar una raíz",
+      question: "La derivada de $f(x) = \\sqrt{x}$ es…",
+      choices: [
+        { id: "a", label: "$\\dfrac{1}{2\\sqrt{x}}$" },
+        { id: "b", label: "$\\dfrac{1}{\\sqrt{x}}$", incorrectFeedback: "Falta el factor $\\frac{1}{2}$ que baja del exponente." },
+        { id: "c", label: "$2\\sqrt{x}$", incorrectFeedback: "El exponente baja multiplicando ($\\frac{1}{2}$) y se resta una unidad." },
+        { id: "d", label: "$\\dfrac{1}{2}\\sqrt{x}$", incorrectFeedback: "El nuevo exponente es $-\\frac{1}{2}$: la raíz queda en el denominador." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(x^{1/2})' = \\frac{1}{2}x^{-1/2} = \\dfrac{1}{2\\sqrt{x}}$. No existe en $x = 0$ (tangente vertical).",
+    },
+    {
+      id: "check-boyle",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$V(P) = 10P^{-1}$, así que $V'(P) = -10P^{-2}$." }],
+      title: "Ley de Boyle",
+      question: "El volumen de un gas es $V = \\dfrac{10}{P}$. ¿Cuánto vale la tasa de variación instantánea $V'(P)$ cuando $P = 10$? (decimal)",
+      correctAnswers: ["-0,1", "−0,1", "-0.1", "−0.1"],
+      explanation: "$V'(P) = -\\dfrac{10}{P^2} = -\\dfrac{10}{100} = -0{,}1$. Para $P = 20$ vale $-0{,}025$, que no es la mitad sino la cuarta parte.",
+    },
+  ],
+};

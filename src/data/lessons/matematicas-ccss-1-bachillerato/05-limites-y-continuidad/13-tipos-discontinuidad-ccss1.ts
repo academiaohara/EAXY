@@ -1,0 +1,108 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const tiposDiscontinuidadCcss1Lesson: InteractiveLesson = {
+  slug: "tipos-discontinuidad-ccss1",
+  title: "13. Tipos de discontinuidad",
+  subtitle: TEMA_CCSS1_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "clasificacion",
+      type: "slide",
+      help: [{ label: "Evitable", message: "Se llama **evitable** porque basta **redefinir** la función en el punto, dándole el valor del límite, para que pase a ser continua." }],
+      title: "Cuando falla una de las tres condiciones",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "\\lim_{a^-} = \\lim_{a^+} \\in \\mathbb{R}\\ \\ (\\neq f(a)\\ \\text{o}\\ f(a)\\ \\text{no existe})", label: "Evitable" },
+          { tex: "\\lim_{a^-},\\ \\lim_{a^+}\\in\\mathbb{R},\\ \\text{distintos}", label: "1.ª especie, salto finito" },
+          { tex: "\\text{algún lateral es } \\pm\\infty", label: "1.ª especie, salto infinito" },
+          { tex: "\\text{no existe algún lateral}", label: "2.ª especie" },
+        ] },
+        { kind: "text", text: "Las tres últimas son **inevitables**: ninguna redefinición en un punto arregla el problema." },
+      ],
+      visual: { kind: "tool", tool: "limite-lateral-explorador", initial: [2, 2], hint: "Recorre las seis funciones: la herramienta calcula los laterales, la imagen y clasifica la discontinuidad." },
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Mira primero los laterales: ¿existen? ¿son finitos? ¿coinciden?" }],
+      title: "Clasifica la discontinuidad",
+      question: "Clasifica cada situación en $x = a$.",
+      groups: [
+        { id: "ev", label: "Evitable", tone: "emerald" },
+        { id: "sf", label: "Salto finito", tone: "cobalt" },
+        { id: "si", label: "Salto infinito", tone: "amber" },
+        { id: "se", label: "2.ª especie", tone: "violet" },
+      ],
+      items: [
+        { id: "a", text: "Laterales $2$ y $2$; $f(a)$ no existe", group: "ev" },
+        { id: "b", text: "Laterales $2$ y $2$; $f(a) = 5$", group: "ev" },
+        { id: "c", text: "Laterales $1$ y $3$", group: "sf" },
+        { id: "d", text: "Lateral derecho $+\\infty$; izquierdo $0$", group: "si" },
+        { id: "e", text: "$\\sin\\dfrac{1}{x}$ en $a = 0$ (oscila sin acercarse a nada)", group: "se" },
+        { id: "f", text: "$\\dfrac{1}{x - 3}$ en $a = 3$", group: "si" },
+      ],
+      hint: "Los laterales iguales y finitos dan evitable (aunque f(a) falle); si difieren, salto finito; si alguno es ∞, salto infinito; si no existe, 2.ª especie.",
+    },
+    {
+      id: "check-evitable",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Simplifica $\\frac{x^2 - 1}{x - 1} = x + 1$ para $x \\neq 1$." }],
+      title: "Un hueco",
+      question: "$f(x) = \\dfrac{x^2 - 1}{x - 1}$ no está definida en $x = 1$ y su límite allí es $2$. ¿Qué tipo de discontinuidad tiene?",
+      choices: [
+        { id: "a", label: "Evitable: basta definir $f(1) = 2$" },
+        { id: "b", label: "De salto finito", incorrectFeedback: "Los dos laterales valen $2$: no hay salto." },
+        { id: "c", label: "De salto infinito", incorrectFeedback: "Los laterales son finitos ($2$)." },
+        { id: "d", label: "De 2.ª especie", incorrectFeedback: "Los dos laterales existen." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Con $f(1) = 2$ la función pasa a ser continua: la discontinuidad es **evitable**.",
+    },
+    {
+      id: "check-salto",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "El salto es la diferencia entre los laterales: $\\lim_{1^+} - \\lim_{1^-}$." }],
+      title: "Medir el salto",
+      question: "Sea $f(x) = x^3$ si $x < 1$ y $f(x) = x + 2$ si $x \\geq 1$. ¿Cuánto vale el salto en $x = 1$? (solo el número)",
+      correctAnswers: ["2"],
+      explanation: "Por la izquierda el límite es $1$ y por la derecha es $1 + 2 = 3$. El salto es $3 - 1 = 2$.",
+    },
+    {
+      id: "check-segunda",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Cuando $x \\to 0^+$, $\\frac{1}{x}$ crece sin tope y $\\sin\\frac{1}{x}$ oscila cada vez más deprisa entre $-1$ y $1$." }],
+      title: "2.ª especie",
+      question: "¿Por qué $f(x) = \\sin\\dfrac{1}{x}$ (con $f(0) = 0$) tiene una discontinuidad de 2.ª especie en $x = 0$?",
+      choices: [
+        { id: "a", label: "Porque no existe el límite lateral: oscila entre $-1$ y $1$ sin acercarse a ningún valor" },
+        { id: "b", label: "Porque el límite vale $\\infty$", incorrectFeedback: "El seno está acotado entre $-1$ y $1$, nunca crece sin tope." },
+        { id: "c", label: "Porque $f(0) \\neq$ límite", incorrectFeedback: "Eso daría una evitable, pero aquí el límite ni siquiera existe." },
+        { id: "d", label: "Porque los laterales valen $1$ y $-1$", incorrectFeedback: "No tiende a $1$ ni a $-1$: pasa infinitas veces por todos los valores intermedios." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Al acercarse a $0$ el argumento $\\frac{1}{x}$ da infinitas vueltas: los valores oscilan sin estabilizarse y **no existe** el límite lateral.",
+    },
+    {
+      id: "resumen",
+      type: "slide",
+      help: [{ label: "Método", message: "Para estudiar la continuidad: 1) dominio; 2) puntos dudosos (ceros del denominador, cambios de rama…); 3) laterales y valor en cada uno; 4) clasificar." }],
+      title: "Estudiar la continuidad de una función",
+      blocks: [
+        { kind: "steps", items: [
+          "Se halla el **dominio** y se descartan los puntos donde no existe.",
+          "Se marcan los **puntos dudosos**: ceros del denominador, logaritmos y raíces en el borde del dominio y puntos donde cambia la fórmula.",
+          "En cada uno se calculan los **límites laterales** y el valor de $f$.",
+          "Se **clasifica**: continua, evitable, salto finito, salto infinito o 2.ª especie.",
+        ] },
+      ],
+      arrange: "stack",
+    },
+  ],
+};

@@ -1,0 +1,95 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_6_SUBTITLE } from "@/data/lessons/shared";
+
+export const derivadaPuntoCcss1Lesson: InteractiveLesson = {
+  slug: "derivada-punto-ccss1",
+  title: "2. Derivada en un punto: velocidad instantánea",
+  subtitle: TEMA_CCSS1_6_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "secante-tangente",
+      type: "slide",
+      help: [{ label: "Idea", message: "La policía mide la velocidad con una foto: calcula la velocidad media en un intervalo **muy pequeño**. La derivada es lo que sale cuando ese intervalo se hace tan pequeño como queramos." }],
+      title: "De la secante a la tangente",
+      blocks: [
+        { kind: "text", text: "Si acercamos el punto $Q$ al punto $P$, las rectas secantes se aproximan a una recta: la **tangente** a la gráfica en $P$. Su pendiente es la **tasa de variación instantánea**." },
+      ],
+      visual: { kind: "anim", scene: "secante-tangente" },
+    },
+    {
+      id: "definicion",
+      type: "slide",
+      help: [{ label: "Dos formas", message: "Con $x = a + h$, cuando $x \\to a$ se tiene $h \\to 0$: las dos expresiones son la misma." }],
+      title: "Definición de derivada",
+      blocks: [
+        { kind: "definition", text: "La **derivada** de $f$ en $x = a$ es el límite, **si existe y es finito**, de las tasas de variación media cuando el intervalo se reduce a cero." },
+        { kind: "formula", tex: "f'(a) = \\lim_{x\\to a}\\dfrac{f(x) - f(a)}{x - a} = \\lim_{h\\to 0}\\dfrac{f(a + h) - f(a)}{h}" },
+        { kind: "text", text: "Se escribe $f'(a)$, $Df(a)$ o $\\dfrac{df}{dx}(a)$. Es la **pendiente de la tangente** y la **velocidad instantánea** si $f$ es espacio–tiempo." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "ejemplo-viaje",
+      type: "slide",
+      help: [{ label: "Ruffini", message: "$0{,}1x^2 + 118x - 473{,}6$ se anula en $x = 4$, así que es divisible entre $x - 4$." }],
+      title: "La velocidad a las 4 horas",
+      blocks: [
+        { kind: "text", text: "En un tramo del viaje, la distancia es $f(x) = 0{,}1x^2 + 118x - 146{,}3$ (km). Las velocidades medias en $[4;\\ 4{,}1]$, $[4;\\ 4{,}01]$… son $118{,}81;\\ 118{,}801;\\ \\ldots$" },
+        { kind: "example", title: "f′(4) por la definición", lines: [
+          { math: "f(4) = 0{,}1\\cdot 16 + 118\\cdot 4 - 146{,}3 = 327{,}3" },
+          { math: "\\dfrac{f(x) - f(4)}{x - 4} = \\dfrac{0{,}1x^2 + 118x - 473{,}6}{x - 4} = 0{,}1x + 118{,}4" },
+          { math: "f'(4) = \\lim_{x\\to 4}(0{,}1x + 118{,}4) = 118{,}8\\ \\text{km/h}" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "secante-explorador", initial: [0, 2, 3, 0], hint: "Con otra función, pero la misma idea: baja el tamaño de h y mira cómo la pendiente de la secante se estabiliza en f′(a)." },
+    },
+    {
+      id: "check-4",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Tras simplificar queda $0{,}1x + 118{,}4$." }],
+      title: "El límite resuelto",
+      question: "¿Cuánto vale $\\displaystyle\\lim_{x\\to 4}(0{,}1x + 118{,}4)$, la velocidad instantánea a las $4$ h? (decimal)",
+      correctAnswers: ["118,8", "118.8"],
+      explanation: "$0{,}1\\cdot 4 + 118{,}4 = 118{,}8$ km/h: por debajo de $120$, pero muy cerca.",
+    },
+    {
+      id: "check-5",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Repite el cálculo en $x = 5$: $f(5) = 446{,}2$ y el cociente simplifica a $0{,}1x + 118{,}5$." }],
+      title: "A las 5 horas",
+      question: "Con la misma función, ¿cuál es la velocidad instantánea a las $5$ h? (decimal)",
+      correctAnswers: ["119"],
+      explanation: "$\\dfrac{f(x) - f(5)}{x - 5} = 0{,}1x + 118{,}5 \\to 0{,}5 + 118{,}5 = 119$ km/h. (El libro da $120$ en este punto, pero $0{,}1\\cdot 5 + 118{,}5 = 119$.)",
+    },
+    {
+      id: "check-x2",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\dfrac{x^2 - 9}{x - 3} = x + 3$ para $x \\neq 3$." }],
+      title: "Derivada de x² en 3",
+      question: "Calcula $f'(3)$ para $f(x) = x^2$ con la definición. (solo el número)",
+      correctAnswers: ["6"],
+      explanation: "$f'(3) = \\displaystyle\\lim_{x\\to 3}\\dfrac{x^2 - 9}{x - 3} = \\lim_{x\\to 3}(x + 3) = 6$.",
+    },
+    {
+      id: "check-significado",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "La derivada resume lo que pasa en el punto de forma geométrica y física." }],
+      title: "Qué mide la derivada",
+      question: "$f'(a)$ es, a la vez…",
+      choices: [
+        { id: "a", label: "la pendiente de la tangente y el ritmo de cambio instantáneo de $f$ en $a$" },
+        { id: "b", label: "el valor de $f$ en $a$", incorrectFeedback: "El valor de $f$ en $a$ es $f(a)$, no su derivada." },
+        { id: "c", label: "la pendiente de la secante entre $a$ y $a + 1$", incorrectFeedback: "Esa es una TVM. La derivada es el **límite** de las TVM cuando el intervalo se reduce a cero." },
+        { id: "d", label: "el área bajo la curva hasta $a$", incorrectFeedback: "Eso es la integral, que se estudia más adelante." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Dos problemas distintos —el ritmo de variación y la tangente— tienen la misma respuesta: la derivada.",
+    },
+  ],
+};

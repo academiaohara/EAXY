@@ -1403,6 +1403,10 @@ export type SlideToolId =
   | "capitalizacion-explorador"
   | "prestamo-explorador"
   | "tae-explorador"
+  | "interpolacion-explorador"
+  | "diferencias-explorador"
+  | "parte-entera-explorador"
+  | "beneficio-explorador"
   /* industrial-tool-end */;
 
 /**

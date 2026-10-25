@@ -1,0 +1,103 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_4_SUBTITLE } from "@/data/lessons/shared";
+
+export const funcionDominioCcss1Lesson: InteractiveLesson = {
+  slug: "funcion-dominio-ccss1",
+  title: "1. Concepto de función y dominio",
+  subtitle: TEMA_CCSS1_4_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "concepto",
+      type: "slide",
+      help: [{ label: "Imagen y antiimagen", message: "Si $f(a) = b$, se dice que $b$ es la **imagen** de $a$ y que $a$ es una **antiimagen** de $b$. Un valor puede tener varias antiimágenes, pero cada $x$ tiene una sola imagen." }],
+      title: "A cada x, un solo y",
+      blocks: [
+        { kind: "definition", text: "Una **función** $f$ asigna a cada valor $x$ de la **variable independiente** **un único** valor $y = f(x)$ de la **variable dependiente**. El conjunto de los $x$ para los que existe $f(x)$ es el **dominio**; el de los $y$ que se obtienen, el **recorrido** o imagen." },
+        { kind: "text", text: "**Criterio de la recta vertical:** una gráfica es una función si **toda vertical** la corta **como mucho una vez**." },
+      ],
+      visual: { kind: "anim", scene: "funcion-es-no-es" },
+    },
+    {
+      id: "tipos",
+      type: "slide",
+      help: [{ label: "Por qué estas restricciones", message: "No se puede dividir entre $0$, no existe la raíz (real) de índice par de un negativo, y los logaritmos solo están definidos para números positivos." }],
+      title: "Dominio: lo que no se puede hacer",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "P(x)", label: "polinomio: Dom = ℝ" },
+          { tex: "\\dfrac{P(x)}{Q(x)}", label: "racional: Q(x) ≠ 0" },
+          { tex: "\\sqrt[n]{g(x)}\\ (n\\ \\text{par})", label: "g(x) ≥ 0" },
+          { tex: "\\ln g(x)\\ \\text{o}\\ \\log_a g(x)", label: "g(x) > 0" },
+        ] },
+        { kind: "text", text: "Para hallar el dominio se **buscan las restricciones** y se **quitan** de $\\mathbb{R}$: ¿se anula algún denominador? ¿puede ser negativo algún radicando de índice par? ¿puede ser $\\leq 0$ el argumento de un logaritmo?" },
+      ],
+      visual: { kind: "tool", tool: "dominio-explorador", initial: [1, 2, 3], hint: "Recorre los cinco tipos y mueve p y q: el trazo desaparece justo donde la expresión pierde sentido." },
+    },
+    {
+      id: "check-racional",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Resuelve $x^2 - 4 = 0$ y excluye esos valores." }],
+      title: "Dominio de una fracción",
+      question: "¿Cuál es el dominio de $f(x) = \\dfrac{1}{x^2 - 4}$?",
+      choices: [
+        { id: "a", label: "$\\mathbb{R} - \\{-2,\\ 2\\}$" },
+        { id: "b", label: "$\\mathbb{R} - \\{2\\}$", incorrectFeedback: "También se anula en $x = -2$: $(-2)^2 - 4 = 0$." },
+        { id: "c", label: "$\\mathbb{R} - \\{4\\}$", incorrectFeedback: "El denominador se anula cuando $x^2 = 4$, es decir $x = \\pm 2$, no cuando $x = 4$." },
+        { id: "d", label: "$\\mathbb{R}$", incorrectFeedback: "El denominador se anula en $x = \\pm 2$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x^2 - 4 = (x - 2)(x + 2) = 0$ en $x = 2$ y $x = -2$: hay que excluirlos.",
+    },
+    {
+      id: "check-raiz",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$2x - 6 \\geq 0 \\iff x \\geq 3$." }],
+      title: "Dominio de una raíz",
+      question: "El dominio de $f(x) = \\sqrt{2x - 6}$ es $[a, +\\infty)$. ¿Cuánto vale $a$? (solo el número)",
+      correctAnswers: ["3"],
+      explanation: "$2x - 6 \\geq 0 \\Rightarrow x \\geq 3$: Dom $f = [3, +\\infty)$.",
+    },
+    {
+      id: "check-log",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "El argumento debe ser **estrictamente positivo**: $x + 1 > 0$." }],
+      title: "Dominio de un logaritmo",
+      question: "¿Cuál es el dominio de $f(x) = \\ln(x + 1)$?",
+      choices: [
+        { id: "a", label: "$(-1,\\ +\\infty)$" },
+        { id: "b", label: "$[-1,\\ +\\infty)$", incorrectFeedback: "En $x = -1$ el argumento vale $0$ y $\\ln 0$ no existe: el extremo no entra." },
+        { id: "c", label: "$(1,\\ +\\infty)$", incorrectFeedback: "$x + 1 > 0$ da $x > -1$, no $x > 1$." },
+        { id: "d", label: "$\\mathbb{R}$", incorrectFeedback: "Para $x \\leq -1$ el argumento no es positivo." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$x + 1 > 0 \\iff x > -1$: Dom $f = (-1, +\\infty)$ (el $-1$ no entra).",
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Busca denominadores que se anulen, radicandos que puedan ser negativos o argumentos de logaritmo que puedan ser no positivos. Ojo: $x^2 + 1$ nunca vale $0$." }],
+      title: "¿Qué restringe el dominio?",
+      question: "Clasifica cada función según lo que restringe su dominio.",
+      groups: [
+        { id: "todo", label: "Dom = ℝ", tone: "emerald" },
+        { id: "den", label: "Denominador", tone: "amber" },
+        { id: "rad", label: "Radicando o logaritmo", tone: "cobalt" },
+      ],
+      items: [
+        { id: "a", text: "$x^2 + 3$", group: "todo" },
+        { id: "b", text: "$\\dfrac{5}{x + 2}$", group: "den" },
+        { id: "c", text: "$\\sqrt{x - 1}$", group: "rad" },
+        { id: "d", text: "$\\ln x$", group: "rad" },
+        { id: "e", text: "$\\dfrac{1}{x^2 + 1}$", group: "todo" },
+        { id: "f", text: "$\\dfrac{x + 1}{x^2 - 9}$", group: "den" },
+      ],
+      hint: "$x^2 + 1 \\geq 1$ para todo $x$, así que $\\frac{1}{x^2 + 1}$ está definida siempre.",
+    },
+  ],
+};

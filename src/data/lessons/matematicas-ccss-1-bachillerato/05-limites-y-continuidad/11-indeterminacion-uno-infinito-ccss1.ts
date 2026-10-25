@@ -1,0 +1,98 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_5_SUBTITLE } from "@/data/lessons/shared";
+
+export const indeterminacionUnoInfinitoCcss1Lesson: InteractiveLesson = {
+  slug: "indeterminacion-uno-infinito-ccss1",
+  title: "11. Indeterminación 1^∞ y el número e",
+  subtitle: TEMA_CCSS1_5_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "numero-e",
+      type: "slide",
+      help: [{ label: "Bernoulli", message: "Jacob Bernoulli llegó a $e$ estudiando el interés compuesto: un capital al $100\\,\\%$ anual con pagos cada vez más frecuentes se acerca a $e$ veces el capital." }],
+      title: "El número e como límite",
+      blocks: [
+        { kind: "formula", tex: "e = \\lim_{n\\to\\infty}\\left(1 + \\dfrac{1}{n}\\right)^n = 2{,}71828\\ldots" },
+        { kind: "text", text: "La base tiende a $1$ y el exponente a $\\infty$: es una indeterminación **$1^\\infty$**, y su valor no es $1$ sino $e$. Con pagos semestrales sale $2{,}25$; trimestrales, $2{,}44$; mensuales, $2{,}61$; diarios, $2{,}71$." },
+      ],
+      visual: { kind: "tool", tool: "numero-e-explorador", initial: [3, 100], hint: "Sube n: el valor se estabiliza en e ≈ 2,71828. El capital con pagos continuos es 1000·e^r." },
+    },
+    {
+      id: "check-mensual",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Calcula $\\left(1 + \\frac{1}{12}\\right)^{12}$ con la calculadora." }],
+      title: "Pagos mensuales",
+      question: "Con pagos mensuales, un capital al $100\\,\\%$ anual se multiplica por $\\left(1 + \\frac{1}{12}\\right)^{12}$. ¿Cuánto vale, redondeado a las centésimas?",
+      correctAnswers: ["2,61", "2.61"],
+      explanation: "$\\left(\\frac{13}{12}\\right)^{12} \\approx 2{,}6130$. Con más pagos se acerca a $e \\approx 2{,}7183$.",
+    },
+    {
+      id: "formula",
+      type: "slide",
+      help: [{ label: "Cuándo usarla", message: "Solo cuando la base tiende a $1$ y el exponente a $\\pm\\infty$. Si la base tiende a otro número, se resuelve con las propiedades de las potencias." }],
+      title: "Resolver límites 1^∞",
+      blocks: [
+        { kind: "rule", title: "Fórmula del tipo e", formula: "\\lim f(x)^{g(x)} = e^{\\,\\lim g(x)\\,\\big(f(x) - 1\\big)}\\quad\\text{si } f \\to 1,\\ g \\to \\infty" },
+        { kind: "example", title: "lím x→∞ de ((2x + 1)/(2x − 2))^(2x + 1)", lines: [
+          { math: "\\dfrac{2x + 1}{2x - 2} - 1 = \\dfrac{3}{2x - 2}" },
+          { math: "\\lim (2x + 1)\\cdot\\dfrac{3}{2x - 2} = \\lim\\dfrac{3(2x + 1)}{2x - 2} = 3" },
+          { math: "\\lim\\left(\\dfrac{2x + 1}{2x - 2}\\right)^{2x + 1} = e^3 \\approx 20{,}09" },
+        ] },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-e2",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$g\\,(f - 1) = x\\cdot\\frac{2}{x} = 2$." }],
+      title: "El exponente de e",
+      question: "¿Cuánto vale $\\displaystyle\\lim_{x\\to\\infty}\\left(1 + \\dfrac{2}{x}\\right)^x$?",
+      choices: [
+        { id: "a", label: "$e^2$" },
+        { id: "b", label: "$e$", incorrectFeedback: "Sería con $\\frac{1}{x}$. Aquí $g\\,(f - 1) = x\\cdot\\frac{2}{x} = 2$." },
+        { id: "c", label: "$2e$", incorrectFeedback: "El $2$ entra en el **exponente**: $e^{2}$." },
+        { id: "d", label: "$1$", incorrectFeedback: "Es la indeterminación $1^\\infty$: no vale $1$ automáticamente." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\lim x\\cdot\\frac{2}{x} = 2$, así que el límite es $e^2 \\approx 7{,}389$.",
+    },
+    {
+      id: "check-negativo",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "$\\frac{x + 1}{x + 3} - 1 = \\frac{-2}{x + 3}$ y $x\\cdot\\frac{-2}{x + 3} \\to -2$." }],
+      title: "Exponente negativo",
+      question: "¿Cuánto vale $\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac{x + 1}{x + 3}\\right)^x$?",
+      choices: [
+        { id: "a", label: "$e^{-2}$" },
+        { id: "b", label: "$e^{2}$", incorrectFeedback: "La base es menor que $1$ ($f - 1 < 0$): el exponente de $e$ sale negativo." },
+        { id: "c", label: "$0$", incorrectFeedback: "La base tiende a $1$, no a un número menor que $1$: no es como $(2/3)^x$." },
+        { id: "d", label: "$1$", incorrectFeedback: "Es $1^\\infty$: no vale $1$ sin más." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$f - 1 = \\frac{-2}{x + 3}$ y $\\lim x\\cdot\\frac{-2}{x + 3} = -2$. El límite es $e^{-2} \\approx 0{,}135$.",
+    },
+    {
+      id: "check-no-e",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una base entre $0$ y $1$ elevada a un exponente enorme se hace diminuta." }],
+      title: "No es de tipo e",
+      question: "¿Cuánto vale $\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac{2x + 1}{3x + 2}\\right)^{2x - 1}$?",
+      choices: [
+        { id: "a", label: "$0$: la base tiende a $\\frac{2}{3} < 1$" },
+        { id: "b", label: "$e^{-1/3}$", incorrectFeedback: "La base no tiende a $1$ (tiende a $\\frac{2}{3}$), luego no es de tipo $e$." },
+        { id: "c", label: "$1$", incorrectFeedback: "$\\left(\\frac{2}{3}\\right)^{\\infty}$ no es $1$." },
+        { id: "d", label: "$+\\infty$", incorrectFeedback: "Una base menor que $1$ elevada a $\\infty$ da $0$, no $\\infty$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$\\lim\\frac{2x + 1}{3x + 2} = \\frac{2}{3}$, y $\\left(\\frac{2}{3}\\right)^{\\infty} = 0$.",
+    },
+  ],
+};
