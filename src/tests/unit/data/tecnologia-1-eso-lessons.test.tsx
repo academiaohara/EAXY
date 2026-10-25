@@ -23,6 +23,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["expresion-comunicacion-grafica", 7],
   ["materiales-uso-tecnico", 9],
   ["estructuras", 7],
+  ["mecanismos-basicos", 7],
 ];
 
 describe("curso Tecnología 1.º ESO (Introducción a la Tecnología)", () => {

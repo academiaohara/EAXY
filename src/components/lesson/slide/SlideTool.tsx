@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MovimientosExplorador, PalancaEquilibrioExplorador, PoleasAparejoExplorador, RuedaEjeExplorador, EngranajesEsoExplorador, TrenEngranajesExplorador, BiciMarchasExplorador } from "@/components/lesson/slide/tools/TecEso1MecanismosTools";
 import { EsfuerzosBarraExplorador, VigaFlexionExplorador, EstabilidadExplorador, TriangulacionExplorador, PuentesTiposExplorador, EnsayoPuenteExplorador } from "@/components/lesson/slide/tools/TecEso1EstructurasTools";
 import { EnsayoMaterialExplorador, PropiedadesBarrasExplorador, MaderaDerivadosExplorador, MetalesPruebaExplorador, PlasticoCalorExplorador, SeleccionMaterialEsoExplorador, TallerPeligrosExplorador, ContenedoresReciclajeExplorador } from "@/components/lesson/slide/tools/TecEso1MaterialesTools";
 import { TrazadosBasicosExplorador, AcotacionExplorador, EscalaDibujoExplorador, VistasPiezaExplorador, PerspectivaExplorador } from "@/components/lesson/slide/tools/TecEso1GraficaTools";
@@ -1387,6 +1388,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PuentesTiposExplorador block={block} />;
     case "ensayo-puente-explorador":
       return <EnsayoPuenteExplorador block={block} />;
+    case "movimientos-explorador":
+      return <MovimientosExplorador block={block} />;
+    case "palanca-equilibrio-explorador":
+      return <PalancaEquilibrioExplorador block={block} />;
+    case "poleas-aparejo-explorador":
+      return <PoleasAparejoExplorador block={block} />;
+    case "rueda-eje-explorador":
+      return <RuedaEjeExplorador block={block} />;
+    case "engranajes-eso-explorador":
+      return <EngranajesEsoExplorador block={block} />;
+    case "tren-engranajes-explorador":
+      return <TrenEngranajesExplorador block={block} />;
+    case "bici-marchas-explorador":
+      return <BiciMarchasExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

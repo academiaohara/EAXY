@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildMovimientosTipos, buildPalancaLey, buildPoleaFijaMovil } from "@/components/lesson/anim/scenes/industrial/teceso1-mecanismos";
 import { buildEsfuerzosTipos, buildTrianguloRigido, buildArcoDescarga, buildCaminoCargas } from "@/components/lesson/anim/scenes/industrial/teceso1-estructuras";
 import { buildMateriasPrimasProceso, buildContrachapadoCapas, buildAleacionMezcla, buildCicloReciclaje } from "@/components/lesson/anim/scenes/industrial/teceso1-materiales";
 import { buildTrazoParalelaEscuadra, buildAcotarPiezaPasos, buildVistasProyeccion, buildCaballeraPasos, buildIsometricaPasos, buildBocetoCroquisPlano, buildEscalaReduccion } from "@/components/lesson/anim/scenes/industrial/teceso1-grafica";
@@ -720,6 +721,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "triangulo-rigido": () => buildTrianguloRigido(),
   "arco-descarga": () => buildArcoDescarga(),
   "camino-cargas": () => buildCaminoCargas(),
+  "movimientos-tipos": () => buildMovimientosTipos(),
+  "palanca-ley": () => buildPalancaLey(),
+  "polea-fija-movil": () => buildPoleaFijaMovil(),
   /* industrial-end */
 };
 

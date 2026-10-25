@@ -512,6 +512,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `triangulo-rigido` | Un marco cuadrilátero se deforma con una fuerza lateral; un triángulo (o un cuadrilátero con diagonal) no | — |
 | `arco-descarga` | Viga que se flexiona frente a un arco que lleva la carga por compresión a los estribos | — |
 | `camino-cargas` | El camino de las cargas en un edificio: cubierta, vigas, pilares, cimientos y terreno | — |
+| `movimientos-tipos` | Tres movimientos básicos: lineal, circular y alternativo con su trayectoria | — |
+| `palanca-ley` | Ley de la palanca con números: R = 60 N a 1 m, F a 3 m (20 N) y a 1 m (60 N) | — |
+| `polea-fija-movil` | Sin polea, polea fija (cambia la dirección) y polea móvil (mitad de fuerza y doble recorrido) | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -994,6 +997,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `triangulacion-explorador` | Marco articulado sin diagonal, con una o con dos, bajo una fuerza lateral | `n` modo (0–2), `a` fuerza (N) |
 | `puentes-tipos-explorador` | Puentes de vigas, de arco, colgante y atirantado con sus esfuerzos en rojo (tracción) y azul (compresión) | `n` puente (0–3) |
 | `ensayo-puente-explorador` | Puente de papel: forma, triangulación y luz; carga máxima y rotura | `n` forma (0–2), `a` luz (cm) |
+| `movimientos-explorador` | Objeto con movimiento lineal, circular o alternativo animado y su trayectoria | `n` movimiento (0–2), `a` velocidad (1–10) |
+| `palanca-equilibrio-explorador` | Palanca de primer género: cargas, fuerzas y brazos con inclinación y fuerza de equilibrio | `a` resistencia (kg), `b` brazo de la resistencia (cm) |
+| `poleas-aparejo-explorador` | Polea fija, móvil y polipasto: fuerza = carga ÷ n y cuerda recogida | `n` cuerdas (1–6), `a` carga (kg) |
+| `rueda-eje-explorador` | Rueda, eje y carga colgada: ventaja mecánica R ÷ r y fuerza en el borde | `a` radio de la rueda (cm), `b` radio del eje (cm) |
+| `engranajes-eso-explorador` | Dos ruedas dentadas o dos poleas con correa animadas: relación de transmisión, rpm y sentido | `n` sistema (0 engranajes, 1 correa), `a` z₁, `b` z₂ |
+| `tren-engranajes-explorador` | Tren de dos etapas: relaciones parciales y total, velocidad intermedia y de salida | `a` velocidad de entrada (rpm) |
+| `bici-marchas-explorador` | Plato y piñón de una bicicleta: vueltas de rueda, avance por pedalada y velocidad | `n` plato (0–2), `a` piñón (0–7) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

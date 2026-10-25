@@ -326,6 +326,7 @@ import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiasRenovablesSistemasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/06-energias-renovables-sistemas";
+import { engranajesTransmisionGiroLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/05-engranajes-transmision-giro";
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
@@ -603,6 +604,7 @@ import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industri
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
 import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/01-maquinas-mecanismos-elementos";
+import { maquinasMecanismosMovimientosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/01-maquinas-mecanismos-movimientos";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { materiasPrimasMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/01-materias-primas-materiales";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
@@ -612,6 +614,7 @@ import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-di
 import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/05-maximo-comun-divisor-2eso";
 import { maximosMinimos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/14-maximos-minimos-1bach";
 import { maximosMinimosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/11-maximos-minimos-ccss1";
+import { mecanismosCotidianosBicicletaLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/07-mecanismos-cotidianos-bicicleta";
 import { mediaMedianaModa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/05-media-mediana-moda-1bach";
 import { mediaMedianaModa2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/03-media-mediana-moda-2eso";
 import { mediaMedianaModaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/05-media-mediana-moda-ccss1";
@@ -715,6 +718,7 @@ import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/0
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
@@ -739,6 +743,7 @@ import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial
 import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poleasCorreasFriccionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/02-poleas-correas-friccion";
+import { poleasPolipastoBasicoLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/03-poleas-polipasto-basico";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
 import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
@@ -957,6 +962,7 @@ import { reglasDerivacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { regresionCuadraticaDeterminacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/13-regresion-cuadratica-determinacion-ccss1";
 import { regresionPrediccion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/12-regresion-prediccion-1bach";
 import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/12-regresion-prediccion-ccss1";
+import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
@@ -970,6 +976,7 @@ import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
+import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
@@ -1490,6 +1497,7 @@ export const interactiveLessons = {
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energias-renovables-sistemas": energiasRenovablesSistemasLesson,
+  "engranajes-transmision-giro": engranajesTransmisionGiroLesson,
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-ionico": enlaceIonicoLesson,
@@ -1767,6 +1775,7 @@ export const interactiveLessons = {
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
   "maquinas-mecanismos-elementos": maquinasMecanismosElementosLesson,
+  "maquinas-mecanismos-movimientos": maquinasMecanismosMovimientosLesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "materias-primas-materiales": materiasPrimasMaterialesLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
@@ -1776,6 +1785,7 @@ export const interactiveLessons = {
   "maximo-comun-divisor-2eso": maximoComunDivisor2esoLesson,
   "maximos-minimos-1bach": maximosMinimos1bachLesson,
   "maximos-minimos-ccss1": maximosMinimosCcss1Lesson,
+  "mecanismos-cotidianos-bicicleta": mecanismosCotidianosBicicletaLesson,
   "media-mediana-moda-1bach": mediaMedianaModa1bachLesson,
   "media-mediana-moda-2eso": mediaMedianaModa2esoLesson,
   "media-mediana-moda-ccss1": mediaMedianaModaCcss1Lesson,
@@ -1879,6 +1889,7 @@ export const interactiveLessons = {
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
   "parabola-1bach": parabola1bachLesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
@@ -1903,6 +1914,7 @@ export const interactiveLessons = {
   "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poleas-correas-friccion": poleasCorreasFriccionLesson,
+  "poleas-polipasto-basico": poleasPolipastoBasicoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
   "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
@@ -2121,6 +2133,7 @@ export const interactiveLessons = {
   "regresion-cuadratica-determinacion-ccss1": regresionCuadraticaDeterminacionCcss1Lesson,
   "regresion-prediccion-1bach": regresionPrediccion1bachLesson,
   "regresion-prediccion-ccss1": regresionPrediccionCcss1Lesson,
+  "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
@@ -2134,6 +2147,7 @@ export const interactiveLessons = {
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
+  "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,

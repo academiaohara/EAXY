@@ -1036,6 +1036,9 @@ export type SlideAnimId =
   | "triangulo-rigido"
   | "arco-descarga"
   | "camino-cargas"
+  | "movimientos-tipos"
+  | "palanca-ley"
+  | "polea-fija-movil"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1644,6 +1647,13 @@ export type SlideToolId =
   | "triangulacion-explorador"
   | "puentes-tipos-explorador"
   | "ensayo-puente-explorador"
+  | "movimientos-explorador"
+  | "palanca-equilibrio-explorador"
+  | "poleas-aparejo-explorador"
+  | "rueda-eje-explorador"
+  | "engranajes-eso-explorador"
+  | "tren-engranajes-explorador"
+  | "bici-marchas-explorador"
   /* industrial-tool-end */;
 
 /**
