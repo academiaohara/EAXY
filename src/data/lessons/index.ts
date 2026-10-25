@@ -13,6 +13,7 @@ import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-
 import { algebraProblemasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/06-algebra-problemas-ecuaciones";
 import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/05-algebra-resolucion-primer-grado";
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
+import { algoritmosConceptoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/01-algoritmos-concepto";
 import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/04-algoritmos-diagramas-flujo";
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
@@ -102,6 +103,7 @@ import { binomialNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bac
 import { binomialParametrosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/04-binomial-parametros-ccss1";
 import { binomioDeNewton2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/11-binomio-de-newton-2bach";
 import { binomioNewtonCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/08-binomio-newton-ccss1";
+import { bloquesCreacionDepuracionLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/07-bloques-creacion-depuracion";
 import { bocetosCroquisLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/02-bocetos-croquis";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
@@ -170,6 +172,7 @@ import { condicionadaIndependencia2bachLesson } from "@/data/lessons/matematicas
 import { condicionadaIndependenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/06-condicionada-independencia-ccss1";
 import { condicionadaIndependenciaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/05-condicionada-independencia-ccss2";
 import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/06-condicionales-python";
+import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
@@ -250,6 +253,7 @@ import { diagramaTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { diagramasArbol1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/07-diagramas-arbol-1bach";
 import { diagramasArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/07-diagramas-arbol-ccss1";
 import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
+import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
 import { discontinuidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/11-discontinuidades-ccss2";
@@ -971,6 +975,7 @@ import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
+import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/06-repeticiones-bucles-eso";
 import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
@@ -984,6 +989,7 @@ import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-ba
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
+import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
@@ -1157,6 +1163,7 @@ import { variableAleatoriaDiscreta2bachLesson } from "@/data/lessons/matematicas
 import { variableAleatoriaDiscretaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/01-variable-aleatoria-discreta-ccss1";
 import { variableContinuaDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/05-variable-continua-densidad-ccss1";
 import { variablesContinuasDensidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/06-variables-continuas-densidad-2bach";
+import { variablesDatosIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/04-variables-datos-iniciacion";
 import { variacionRelativa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/08-variacion-relativa-1bach";
 import { variacionRelativaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/08-variacion-relativa-ccss1";
 import { variacionesPorcentuales3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/09-variaciones-porcentuales-3eso";
@@ -1191,6 +1198,7 @@ export const interactiveLessons = {
   "algebra-problemas-ecuaciones": algebraProblemasEcuacionesLesson,
   "algebra-resolucion-primer-grado": algebraResolucionPrimerGradoLesson,
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
+  "algoritmos-concepto": algoritmosConceptoLesson,
   "algoritmos-diagramas-flujo": algoritmosDiagramasFlujoLesson,
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
@@ -1280,6 +1288,7 @@ export const interactiveLessons = {
   "binomial-parametros-ccss1": binomialParametrosCcss1Lesson,
   "binomio-de-newton-2bach": binomioDeNewton2bachLesson,
   "binomio-newton-ccss1": binomioNewtonCcss1Lesson,
+  "bloques-creacion-depuracion": bloquesCreacionDepuracionLesson,
   "bocetos-croquis": bocetosCroquisLesson,
   "bomba-calor": bombaCalorLesson,
   "bucles-for-while": buclesForWhileLesson,
@@ -1348,6 +1357,7 @@ export const interactiveLessons = {
   "condicionada-independencia-ccss1": condicionadaIndependenciaCcss1Lesson,
   "condicionada-independencia-ccss2": condicionadaIndependenciaCcss2Lesson,
   "condicionales-python": condicionalesPythonLesson,
+  "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
@@ -1428,6 +1438,7 @@ export const interactiveLessons = {
   "diagramas-arbol-1bach": diagramasArbol1bachLesson,
   "diagramas-arbol-ccss1": diagramasArbolCcss1Lesson,
   "diagramas-bloques": diagramasBloquesLesson,
+  "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
   "discontinuidades-ccss2": discontinuidadesCcss2Lesson,
@@ -2149,6 +2160,7 @@ export const interactiveLessons = {
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
+  "repeticiones-bucles-eso": repeticionesBuclesEsoLesson,
   "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
@@ -2162,6 +2174,7 @@ export const interactiveLessons = {
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
+  "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
@@ -2335,6 +2348,7 @@ export const interactiveLessons = {
   "variable-aleatoria-discreta-ccss1": variableAleatoriaDiscretaCcss1Lesson,
   "variable-continua-densidad-ccss1": variableContinuaDensidadCcss1Lesson,
   "variables-continuas-densidad-2bach": variablesContinuasDensidad2bachLesson,
+  "variables-datos-iniciacion": variablesDatosIniciacionLesson,
   "variacion-relativa-1bach": variacionRelativa1bachLesson,
   "variacion-relativa-ccss1": variacionRelativaCcss1Lesson,
   "variaciones-porcentuales-3eso": variacionesPorcentuales3esoLesson,

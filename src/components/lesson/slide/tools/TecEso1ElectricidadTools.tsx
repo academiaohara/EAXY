@@ -7,7 +7,6 @@ import { Choice, Note, Stat as StatBase, fmtEs, num } from "@/components/lesson/
 import { TOOL_BTN, Frame, Slider, type ToolBlock } from "@/components/lesson/slide/tool-ui";
 
 const Stat = (props: Parameters<typeof StatBase>[0]) => <StatBase plain {...props} />;
-const f0 = (v: number) => fmtEs(v, 0);
 
 /* ───────────── Piezas de dibujo comunes ───────────── */
 

@@ -519,6 +519,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `circuito-componentes` | Generador, conductores, elemento de control y receptor en un circuito, con su transformación de energía | — |
 | `serie-paralelo-camino` | Dos lámparas en serie (un camino) y en paralelo (dos ramas): qué pasa al quitar una | — |
 | `cortocircuito-fusible` | Cortocircuito: corriente enorme, calentamiento y fusible que abre el circuito | — |
+| `algoritmo-receta` | Un algoritmo (hacer una tostada): ordenado, preciso y finito, y qué pasa si se cambia el orden | — |
+| `diagrama-flujo-simbolos` | Óvalo, rectángulo, rombo y paralelogramo: significado de cada figura de un diagrama de flujo | — |
+| `bucle-repeticion-simple` | Cuatro instrucciones «avanzar» copiadas frente a un bucle «repetir 4 veces» con un robot que avanza | — |
+| `variable-caja` | Variable como caja con nombre: asignar, cambiar (edad = edad + 1), texto y tipos de datos | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1015,6 +1019,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `serie-paralelo-explorador` | Lámparas en serie o en paralelo (1–4), quitar una y ver tensión y corriente | `n` montaje (0 serie, 1 paralelo), `a` número de lámparas |
 | `montaje-circuito-explorador` | Conectar con cables los terminales de pila, interruptor y lámpara; detecta circuito abierto y cortocircuito | — |
 | `seguridad-electrica-explorador` | Ocho situaciones domésticas: ¿peligrosa o segura? con su explicación | — |
+| `algoritmo-ordena-explorador` | Cuatro algoritmos cotidianos con pasos desordenados que se reordenan y comprueban | `n` algoritmo (0–3) |
+| `programa-bloques-explorador` | Robot en una cuadrícula programable con bloques (avanzar, girar, repetir, si hay pared) en cuatro retos | `n` reto (0–3) |
+| `flujo-sencillo-explorador` | Tres diagramas de flujo que se recorren paso a paso (¿llueve?, par o impar, contar hasta 3) | `n` diagrama (0–2) |
+| `variables-cajas-explorador` | Tres programas de asignaciones ejecutados línea a línea con las variables como cajas | `n` programa (0–2) |
+| `condiciones-explorador` | Programa si/si no/si no con lluvia y temperatura: qué rama se ejecuta | `a` temperatura (°C) |
+| `depura-programa-explorador` | Cuatro programas con un error: encontrar la línea incorrecta y entender por qué | `n` programa (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

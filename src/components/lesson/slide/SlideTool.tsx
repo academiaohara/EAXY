@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AlgoritmoOrdenaExplorador, ProgramaBloquesExplorador, FlujoSencilloExplorador, VariablesCajasExplorador, CondicionesExplorador, DepuraProgramaExplorador } from "@/components/lesson/slide/tools/TecEso1ComputacionalTools";
 import { ConductoresAislantesExplorador, CircuitoSimpleExplorador, SimbolosElectricosExplorador, ControlLuzExplorador, SerieParaleloExplorador, MontajeCircuitoExplorador, SeguridadElectricaExplorador } from "@/components/lesson/slide/tools/TecEso1ElectricidadTools";
 import { MovimientosExplorador, PalancaEquilibrioExplorador, PoleasAparejoExplorador, RuedaEjeExplorador, EngranajesEsoExplorador, TrenEngranajesExplorador, BiciMarchasExplorador } from "@/components/lesson/slide/tools/TecEso1MecanismosTools";
 import { EsfuerzosBarraExplorador, VigaFlexionExplorador, EstabilidadExplorador, TriangulacionExplorador, PuentesTiposExplorador, EnsayoPuenteExplorador } from "@/components/lesson/slide/tools/TecEso1EstructurasTools";
@@ -1417,6 +1418,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MontajeCircuitoExplorador block={block} />;
     case "seguridad-electrica-explorador":
       return <SeguridadElectricaExplorador block={block} />;
+    case "algoritmo-ordena-explorador":
+      return <AlgoritmoOrdenaExplorador block={block} />;
+    case "programa-bloques-explorador":
+      return <ProgramaBloquesExplorador block={block} />;
+    case "flujo-sencillo-explorador":
+      return <FlujoSencilloExplorador block={block} />;
+    case "variables-cajas-explorador":
+      return <VariablesCajasExplorador block={block} />;
+    case "condiciones-explorador":
+      return <CondicionesExplorador block={block} />;
+    case "depura-programa-explorador":
+      return <DepuraProgramaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

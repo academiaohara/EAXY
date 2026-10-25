@@ -1043,6 +1043,10 @@ export type SlideAnimId =
   | "circuito-componentes"
   | "serie-paralelo-camino"
   | "cortocircuito-fusible"
+  | "algoritmo-receta"
+  | "diagrama-flujo-simbolos"
+  | "bucle-repeticion-simple"
+  | "variable-caja"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1665,6 +1669,12 @@ export type SlideToolId =
   | "serie-paralelo-explorador"
   | "montaje-circuito-explorador"
   | "seguridad-electrica-explorador"
+  | "algoritmo-ordena-explorador"
+  | "programa-bloques-explorador"
+  | "flujo-sencillo-explorador"
+  | "variables-cajas-explorador"
+  | "condiciones-explorador"
+  | "depura-programa-explorador"
   /* industrial-tool-end */;
 
 /**
