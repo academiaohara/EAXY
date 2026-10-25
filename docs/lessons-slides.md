@@ -459,6 +459,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `proyeccion-punto-plano-3d` | Recta perpendicular por P, pie F, distancia y simétrico respecto de un plano | `nums`: `[Px,Py,Pz, A,B,C, D]` |
 | `distancia-punto-recta-3d` | Distancia de un punto a una recta: paralelogramo de AP y v, área entre base y pie de la perpendicular | `nums`: `[P, A, v]` (9 valores) |
 | `distancia-rectas-cruzan-3d` | Distancia entre dos rectas que se cruzan: paralelepípedo de u, v y PQ, volumen entre área de la base | `nums`: `[P, u, Q, v]` (12 valores) |
+| `bolzano-biseccion` | Bolzano con f(x) = x³ − x − 1: cambio de signo en [1, 2] y bisección del intervalo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -828,6 +829,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `angulos-espacio-explorador` | Ángulo entre dos rectas, recta y plano o dos planos a partir de dos vectores | `initial`: `[modo (0–2)]` y 6 componentes |
 | `proyeccion-simetrico-explorador` | Proyección ortogonal y simétrico de un punto respecto de un plano, una recta o un punto | `initial`: `[modo (0–2), P(3), …]` (plano: 4 valores; recta: A y v; punto: M) |
 | `distancias-espacio-explorador` | Distancia exacta y aproximada punto-plano, punto-recta y entre dos rectas | `initial`: `[modo (0–2)]` y los datos de cada caso |
+| `uno-infinito-explorador` | Límite de (1 + a/n)^(b·n) cuando n crece: valor con n = 10^k frente al límite e^(a·b) | `initial`: `[a (−3 a 3), b (1 a 3), k (0 a 7)]` |
 
 ## Respuesta como fracción
 

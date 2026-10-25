@@ -983,6 +983,7 @@ export type SlideAnimId =
   | "proyeccion-punto-plano-3d"
   | "distancia-punto-recta-3d"
   | "distancia-rectas-cruzan-3d"
+  | "bolzano-biseccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1477,6 +1478,7 @@ export type SlideToolId =
   | "angulos-espacio-explorador"
   | "proyeccion-simetrico-explorador"
   | "distancias-espacio-explorador"
+  | "uno-infinito-explorador"
   /* industrial-tool-end */;
 
 /**

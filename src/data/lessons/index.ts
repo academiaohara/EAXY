@@ -132,6 +132,7 @@ import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geo
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
 import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
+import { continuidadPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/09-continuidad-punto-2bach";
 import { continuidadPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/12-continuidad-punto-ccss1";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
@@ -187,6 +188,7 @@ import { diagramasArbol1bachLesson } from "@/data/lessons/matematicas-1-bachille
 import { diagramasArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/07-diagramas-arbol-ccss1";
 import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
+import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
 import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/13-discusion-sistemas-1bach";
 import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/16-discusion-sistemas-ccss1";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
@@ -381,12 +383,15 @@ import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industria
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
 import { independenciaNubeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/10-independencia-nube-ccss1";
 import { indeterminacionCeroCero1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/09-indeterminacion-cero-cero-1bach";
+import { indeterminacionCeroCero2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/05-indeterminacion-cero-cero-2bach";
 import { indeterminacionCeroCeroCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/09-indeterminacion-cero-cero-ccss1";
 import { indeterminacionInfInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/10-indeterminacion-inf-inf-1bach";
 import { indeterminacionInfInfCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/10-indeterminacion-inf-inf-ccss1";
 import { indeterminacionInfMenosInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/08-indeterminacion-inf-menos-inf-1bach";
 import { indeterminacionInfMenosInfCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/08-indeterminacion-inf-menos-inf-ccss1";
+import { indeterminacionInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/06-indeterminacion-infinito-2bach";
 import { indeterminacionUnoInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/11-indeterminacion-uno-infinito-1bach";
+import { indeterminacionUnoInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/07-indeterminacion-uno-infinito-2bach";
 import { indeterminacionUnoInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/11-indeterminacion-uno-infinito-ccss1";
 import { induccionFaradayLenzLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/05-induccion-faraday-lenz";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
@@ -418,12 +423,16 @@ import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
+import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
 import { limiteSucesion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/07-limite-sucesion-1bach";
 import { limitesCalculo1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/08-limites-calculo-1bach";
+import { limitesInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/04-limites-infinito-2bach";
 import { limitesInfinitos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/03-limites-infinitos-1bach";
 import { limitesInfinitosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/03-limites-infinitos-ccss1";
+import { limitesInfinitosPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/03-limites-infinitos-punto-2bach";
 import { limitesLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/02-limites-laterales-1bach";
 import { limitesLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/02-limites-laterales-ccss1";
+import { limitesOperaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/02-limites-operaciones-2bach";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
 import { linealIdea4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/01-lineal-idea-4esob";
 import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
@@ -549,6 +558,7 @@ import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachi
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
+import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
@@ -628,6 +638,7 @@ import { problemasFamososCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { problemasFinancierosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/07-problemas-financieros-ccss1";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
+import { problemasLimitesContinuidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/12-problemas-limites-continuidad-2bach";
 import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
 import { problemasMetricos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/12-problemas-metricos-2-2bach";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
@@ -842,6 +853,7 @@ import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-
 import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/01-teorema-pitagoras-3eso";
 import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
+import { teoremasContinuas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/11-teoremas-continuas-2bach";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { tipificacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/08-tipificacion-ccss1";
 import { tiposCorrosionProteccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/07-tipos-corrosion-proteccion";
@@ -1031,6 +1043,7 @@ export const interactiveLessons = {
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
   "continuidad-punto-1bach": continuidadPunto1bachLesson,
+  "continuidad-punto-2bach": continuidadPunto2bachLesson,
   "continuidad-punto-ccss1": continuidadPuntoCcss1Lesson,
   "controlador-proporcional": controladorProporcionalLesson,
   "conversiones-bases": conversionesBasesLesson,
@@ -1086,6 +1099,7 @@ export const interactiveLessons = {
   "diagramas-arbol-ccss1": diagramasArbolCcss1Lesson,
   "diagramas-bloques": diagramasBloquesLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
+  "discontinuidades-2bach": discontinuidades2bachLesson,
   "discusion-sistemas-1bach": discusionSistemas1bachLesson,
   "discusion-sistemas-ccss1": discusionSistemasCcss1Lesson,
   "dispersion-1bach": dispersion1bachLesson,
@@ -1280,12 +1294,15 @@ export const interactiveLessons = {
   "independencia-nube-1bach": independenciaNube1bachLesson,
   "independencia-nube-ccss1": independenciaNubeCcss1Lesson,
   "indeterminacion-cero-cero-1bach": indeterminacionCeroCero1bachLesson,
+  "indeterminacion-cero-cero-2bach": indeterminacionCeroCero2bachLesson,
   "indeterminacion-cero-cero-ccss1": indeterminacionCeroCeroCcss1Lesson,
   "indeterminacion-inf-inf-1bach": indeterminacionInfInf1bachLesson,
   "indeterminacion-inf-inf-ccss1": indeterminacionInfInfCcss1Lesson,
   "indeterminacion-inf-menos-inf-1bach": indeterminacionInfMenosInf1bachLesson,
   "indeterminacion-inf-menos-inf-ccss1": indeterminacionInfMenosInfCcss1Lesson,
+  "indeterminacion-infinito-2bach": indeterminacionInfinito2bachLesson,
   "indeterminacion-uno-infinito-1bach": indeterminacionUnoInfinito1bachLesson,
+  "indeterminacion-uno-infinito-2bach": indeterminacionUnoInfinito2bachLesson,
   "indeterminacion-uno-infinito-ccss1": indeterminacionUnoInfinitoCcss1Lesson,
   "induccion-faraday-lenz": induccionFaradayLenzLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
@@ -1317,12 +1334,16 @@ export const interactiveLessons = {
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
+  "limite-definicion-2bach": limiteDefinicion2bachLesson,
   "limite-sucesion-1bach": limiteSucesion1bachLesson,
   "limites-calculo-1bach": limitesCalculo1bachLesson,
+  "limites-infinito-2bach": limitesInfinito2bachLesson,
   "limites-infinitos-1bach": limitesInfinitos1bachLesson,
   "limites-infinitos-ccss1": limitesInfinitosCcss1Lesson,
+  "limites-infinitos-punto-2bach": limitesInfinitosPunto2bachLesson,
   "limites-laterales-1bach": limitesLaterales1bachLesson,
   "limites-laterales-ccss1": limitesLateralesCcss1Lesson,
+  "limites-operaciones-2bach": limitesOperaciones2bachLesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
   "lineal-idea-4esob": linealIdea4esobLesson,
   "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
@@ -1448,6 +1469,7 @@ export const interactiveLessons = {
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
+  "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "parabola-1bach": parabola1bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
@@ -1527,6 +1549,7 @@ export const interactiveLessons = {
   "problemas-financieros-ccss1": problemasFinancierosCcss1Lesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
+  "problemas-limites-continuidad-2bach": problemasLimitesContinuidad2bachLesson,
   "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
   "problemas-metricos-2-2bach": problemasMetricos22bachLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
@@ -1741,6 +1764,7 @@ export const interactiveLessons = {
   "teorema-pitagoras-3eso": teoremaPitagoras3esoLesson,
   "teorema-seno-1bach": teoremaSeno1bachLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
+  "teoremas-continuas-2bach": teoremasContinuas2bachLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "tipificacion-ccss1": tipificacionCcss1Lesson,
   "tipos-corrosion-proteccion": tiposCorrosionProteccionLesson,
