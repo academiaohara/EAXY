@@ -224,15 +224,12 @@ export function ProgramaBloquesExplorador({ block }: { block: ToolBlock }) {
   const fin = res.trace.length - 1;
   const e = res.trace[Math.min(s.paso, fin)]!;
   const bloquesUsados = cuentaBloques(s.prog);
+  const corriendo = s.anima && s.paso < fin;
   useEffect(() => {
-    if (!s.anima) return;
-    if (s.paso >= fin) {
-      setS((x) => ({ ...x, anima: false }));
-      return;
-    }
+    if (!corriendo) return;
     const t = setTimeout(() => setS((x) => ({ ...x, paso: x.paso + 1 })), 350);
     return () => clearTimeout(t);
-  }, [s.anima, s.paso, fin]);
+  }, [corriendo, s.paso]);
   const objetivoRuta: Ruta = JSON.parse(s.objetivo) as Ruta;
   const anade = (ins: Instr) => setS((x) => ({ ...x, prog: modifica(x.prog, JSON.parse(x.objetivo) as Ruta, (l) => [...l, ins]), paso: 0, anima: false }));
   const quita = (ruta: Ruta, i: number) => setS((x) => ({ ...x, prog: modifica(x.prog, ruta, (l) => l.filter((_, k) => k !== i)), objetivo: "[]", paso: 0, anima: false }));
