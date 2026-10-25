@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildBayesFrecuencias } from "@/components/lesson/anim/scenes/bach1-probabilidad";
 import { buildSecanteTangente, buildDerivadaSigno, buildExtremosCriterios } from "@/components/lesson/anim/scenes/bach1-derivadas";
 import { buildLimiteAproximacion, buildAsintotasTipos } from "@/components/lesson/anim/scenes/bach1-limites";
 import { buildProyeccionVector } from "@/components/lesson/anim/scenes/bach1-geo";
@@ -603,6 +604,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "secante-tangente": () => buildSecanteTangente(),
   "derivada-signo": () => buildDerivadaSigno(),
   "extremos-criterios": () => buildExtremosCriterios(),
+  "bayes-frecuencias": () => buildBayesFrecuencias(),
   /* industrial-end */
 };
 

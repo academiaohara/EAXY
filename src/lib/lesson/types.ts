@@ -946,6 +946,7 @@ export type SlideAnimId =
   | "secante-tangente"
   | "derivada-signo"
   | "extremos-criterios"
+  | "bayes-frecuencias"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1386,6 +1387,12 @@ export type SlideToolId =
   | "velocidad-aceleracion-explorador"
   | "extremos-explorador"
   | "optimizacion-explorador"
+  | "sucesos-venn-explorador"
+  | "prob-union-explorador"
+  | "tabla-contingencia-explorador"
+  | "arbol-tabla-explorador"
+  | "prob-total-explorador"
+  | "azar-famoso-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SucesosVennExplorador, ProbUnionExplorador, TablaContingenciaExplorador, ArbolTablaExplorador, ProbTotalExplorador, AzarFamosoExplorador } from "@/components/lesson/slide/tools/Bach1ProbTools";
 import { SecanteExplorador, DerivabilidadExplorador, FuncionDerivadaExplorador, ProductoCocienteExplorador, CadenaExplorador, DerivadaInversaExplorador, VelocidadAceleracionExplorador, ExtremosExplorador, OptimizacionExplorador } from "@/components/lesson/slide/tools/Bach1DerivTools";
 import { LimiteTablaExplorador, LimiteLateralExplorador, LimiteInfinitoExplorador, AsintotasExplorador, CeroCeroExplorador, LimiteGradosExplorador, ContinuidadKExplorador, OperacionesLimiteExplorador, RestaFraccionesExplorador } from "@/components/lesson/slide/tools/Bach1LimTools";
 import { DominioExplorador, SimetriaExplorador, SignoExplorador, FuncionRaizExplorador, ExpLogExplorador, TrigFuncionExplorador, AbsFuncionExplorador, OfertaDemandaExplorador, ComposicionExplorador, InversaExplorador } from "@/components/lesson/slide/tools/Bach1FuncTools";
@@ -1021,6 +1022,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ExtremosExplorador block={block} />;
     case "optimizacion-explorador":
       return <OptimizacionExplorador block={block} />;
+    case "sucesos-venn-explorador":
+      return <SucesosVennExplorador block={block} />;
+    case "prob-union-explorador":
+      return <ProbUnionExplorador block={block} />;
+    case "tabla-contingencia-explorador":
+      return <TablaContingenciaExplorador block={block} />;
+    case "arbol-tabla-explorador":
+      return <ArbolTablaExplorador block={block} />;
+    case "prob-total-explorador":
+      return <ProbTotalExplorador block={block} />;
+    case "azar-famoso-explorador":
+      return <AzarFamosoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
