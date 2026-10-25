@@ -473,6 +473,28 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `tipos-muestreo` | Muestreo aleatorio simple, sistemático (1 de cada 5), estratificado (2 por estrato) y por conglomerados sobre 40 individuos |  |
 | `tcl-medias` | Teorema central del límite: media de 1, 2, 4 y 10 dados frente a la normal N(3,5; σ/√n) |  |
 | `contraste-region` | Contraste H₀: μ = 2 (σ = 0,4, n = 100): zona de aceptación (1,9216; 2,0784), x̄ = 1,8 y contraste unilateral |  |
+| `proceso-diseno-ciclo` | Proceso de diseño como ciclo: necesidad, investigación, ideas, requisitos, prototipo, ensayo y vuelta atrás si no cumple | — |
+| `gantt-camino-critico` | Diagrama de Gantt con dependencias, camino crítico A→B→D→E (15 días) y holguras de C y F | — |
+| `escala-material-zoom` | De la pieza a los granos y a los átomos (×1 000 y ×100 000) | — |
+| `polimero-cadenas` | Termoplástico (cadenas que deslizan al calentar) frente a termoestable (enlaces cruzados, no funde) | — |
+| `conformado-procesos` | Fundición, forja, laminación y extrusión | — |
+| `transmision-flujo` | Entrada, transmisión, transformación y salida en un limpiaparabrisas | — |
+| `correa-abierta-cruzada` | Correa abierta (mismo sentido) y cruzada (contrario); n₂ = n₁·d₁/d₂ | — |
+| `engranajes-giro` | Engranajes de 10 y 20 dientes: la grande gira la mitad y al contrario | — |
+| `biela-manivela-ciclo` | Biela-manivela a 0°, 90°, 180° y 270°: puntos muertos y carrera 2R | — |
+| `palanca-generos` | Los tres géneros de palanca | — |
+| `carga-movil-circuito` | Cargas, tensión (pila), intensidad y resistencia en un circuito | — |
+| `serie-paralelo-reparto` | Serie (misma I, V se reparte) y paralelo (misma V, I se reparte) con 12 V | — |
+| `kirchhoff-nodo-malla` | Ley de nudos (5 + 3 = 8 A) y de mallas (12 − 4 − 3 − 5 = 0) | — |
+| `ciclo-instruccion` | Ciclo de instrucción de la CPU: captar, decodificar y ejecutar | — |
+| `bucle-iteraciones` | Bucle for sobre range(1, 4): variables y salida en cada iteración | — |
+| `sistema-control-termostato` | Bloques de un sistema de control con un termostato (referencia, comparador, controlador, actuador, planta, sensor) | — |
+| `sensor-divisor-tension` | LDR en un divisor de tensión: oscuridad, luz media y mucha luz | — |
+| `histeresis-comparador` | Umbral simple con rebotes frente a histéresis con dos umbrales | — |
+| `secuencia-clasificacion` | Secuencia de una línea de clasificación: sensor, controlador, pistón y reposo | — |
+| `triple-sostenibilidad` | Dimensiones ambiental, social y económica y su intersección | — |
+| `ciclo-vida-fases` | Ciclo de vida de un producto: extracción, fabricación, transporte, uso y fin de vida | — |
+| `economia-lineal-circular` | Economía lineal frente a circular y las «R» | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -860,6 +882,78 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `proporcion-muestral-explorador` | Distribución N(p, √(pq/n)) de la proporción muestral, probabilidad entre a % y b % y condición np, nq ≥ 5 | `initial`: `[p %, n 10–400, a %, b %]` |
 | `contraste-media-explorador` | Contraste de la media bilateral o unilateral: zona de aceptación, x̄ y decisión a α = 10, 5 o 1 % | `initial`: `[modo 0–2, μ₀·10, σ·10, n, x̄·10, nivel 0–2]` |
 | `contraste-proporcion-explorador` | Contraste de una proporción (p₀, n, éxitos observados): zona de aceptación y decisión | `initial`: `[modo 0–2, p₀ %, n, éxitos, nivel 0–2]` |
+| `objeto-problema-explorador` | Objetos cotidianos: necesidad, problema y solución, filtrados por tipo de necesidad | `a`: objeto inicial |
+| `matriz-decision-explorador` | Matriz de decisión ponderada con pesos ajustables (varios presets) | `n`: preset (0 alumbrado bici, 1 soporte de móvil, 2 material de cuadro, 3 movilidad, 4 rediseño de móvil) |
+| `requisitos-verificables-explorador` | Ficha de requisitos con indicadores de cumplimiento (masa, carga, coste) y una preferencia no verificable | `a` masa, `b` carga, `c` coste |
+| `gantt-explorador` | Diagrama de Gantt editable con camino crítico, plazo y coste de mano de obra | `a`: plazo (d), `b`: tarifa (€/d) |
+| `roles-equipo-explorador` | Reparto de cinco tareas entre tres personas con factores de habilidad y capacidad | `a`: capacidad (h) |
+| `prototipo-ensayo-explorador` | Ensayo virtual de una tabla (viga biapoyada): flecha ≤ L/300 y tensión admisible | `a` carga (kg), `b` espesor (mm), `c` distancia (mm), `n` material |
+| `memoria-tecnica-explorador` | Editor de memoria técnica con vista previa y lista de materiales con coste | — |
+| `mesa-muestras-explorador` | Mesa de 12 muestras de materiales por familia, subclase, usos y rasgos | `a`: muestra inicial |
+| `estructura-atomica-explorador` | Red cristalina, amorfa, aleación sustitucional e intersticial | `n` modo (0–3), `a` % de átomos añadidos |
+| `propiedades-comparador-explorador` | Comparación de dos materiales: densidad, E, resistencia, conductividad y σ/ρ | `a`, `b`: materiales |
+| `carbono-hierro-explorador` | Contenido de carbono del hierro: clase (hierro, aceros, fundición) y tendencias | `a`: % de C |
+| `polimero-temperatura-explorador` | Termoplástico, termoestable y elastómero frente a la temperatura | `n` tipo (0–2), `a` temperatura (°C) |
+| `compuesto-mezclas-explorador` | Regla de mezclas de un laminado fibra/epoxi y vista de capas | `n` fibra (0 vidrio, 1 carbono), `a` Vf (%) |
+| `tratamiento-curva-explorador` | Curva T–t y propiedades de recocido, normalizado, temple y revenido | `n` tratamiento (0–3), `a` temperatura de revenido |
+| `proceso-coste-explorador` | Coste por pieza de cuatro procesos según la tirada (escala logarítmica) | `a`: log₁₀ de las piezas (0–5) |
+| `impresion-3d-explorador` | Material, tiempo y coste estimados de una pieza impresa | `a` lado (mm), `b` altura (mm), `c` relleno (%) |
+| `tolerancia-calidad-explorador` | Control de calidad: 40 piezas simuladas, tolerancia, descentrado, dispersión y Cp | `a` tolerancia, `b` descentrado, `c` σ (mm) |
+| `fabrica-riesgos-explorador` | Fábrica virtual con ocho riesgos de seguridad y ambientales y su medida | — |
+| `reciclaje-energia-explorador` | Energía de producción con contenido reciclado de aluminio, acero, cobre, vidrio o PET | `n` material, `a` % reciclado, `b` kg |
+| `maquina-desmontaje-explorador` | Cadena cinemática de bicicleta, taladro y limpiaparabrisas: entrada, transmisión, transformación y salida | `n`: máquina |
+| `poleas-correas-explorador` | Banco de poleas: diámetros, rpm, correa abierta o cruzada y deslizamiento | `a` d₁, `b` d₂ (mm), `c` n₁ (rpm) |
+| `engranajes-explorador` | Tren simple o compuesto de engranajes: relación, velocidad y sentido | `a` z₁, `b` z₂, `c` n₁, `n` 1 = compuesto |
+| `bicicleta-explorador` | Plato, piñón y cadencia: desarrollo y velocidad | `a` plato, `b` piñón, `c` cadencia |
+| `sin-fin-explorador` | Tornillo sin fin y corona: relación y velocidad | `a` rpm, `b` dientes, `c` entradas |
+| `biela-manivela-explorador` | Posición del émbolo según ángulo, radio de manivela y longitud de biela | `a` θ (°), `b` R (mm), `c` L (mm) |
+| `leva-seguidor-explorador` | Leva circular excéntrica: elevación del seguidor frente al ángulo | `a` θ (°), `b` excentricidad (mm) |
+| `cremallera-tornillo-explorador` | Piñón-cremallera y tornillo-tuerca: avance por vuelta y velocidad lineal | `n` modo, `a` radio, `b` paso, `c` rpm |
+| `palanca-explorador` | Palanca con apoyo, carga y fuerza móviles: momentos, equilibrio, género y ventaja mecánica | `a` apoyo, `b` carga (kg), `c` posición de la carga (cm) |
+| `polipasto-explorador` | Fuerza de tiro y cuerda recogida según el número de cuerdas y el rendimiento | `a` cuerdas, `b` carga (kg), `c` η (%) |
+| `disco-giratorio-explorador` | Disco con radio y rpm: ω, f, T, velocidad tangencial y aceleración centrípeta | `a` rpm, `b` radio (cm) |
+| `motor-virtual-explorador` | Motor con par y velocidad: potencia P = M·ω y límite de potencia nominal | `a` par (N·m), `b` rpm, `c` potencia nominal (W) |
+| `reductor-rendimiento-explorador` | Reductor con rendimiento: velocidad, par y pérdidas | `a` P (W), `b` rpm, `c` reducción |
+| `transmision-editor-explorador` | Reto: tres etapas de transmisión para una velocidad de salida de 150–250 rpm | `a`: rpm del motor |
+| `carga-corriente-explorador` | Circuito con cargas en movimiento: I = V/R y Q = I·t | `a` V, `b` R (Ω), `c` t (s) |
+| `ohm-explorador` | Ley de Ohm con gráfica V–I y modelo de bombilla no óhmica | `a` V, `b` R (Ω), `n` 1 = bombilla |
+| `circuito-basico-explorador` | Interruptor, polaridad, LED, cortocircuito y fusible | `n` 1 = receptor LED |
+| `resistencias-explorador` | Serie, paralelo y mixto: resistencia equivalente y tabla de V, I y P | `n` modo (0–2), `a`, `b`, `c` resistencias (Ω) |
+| `kirchhoff-explorador` | Dos fuentes y tres ramas: corrientes y comprobación de las leyes | `a` V₁, `b` V₂ |
+| `consumo-energia-explorador` | Consumo mensual de seis aparatos con coste | `a` precio (€/kWh) |
+| `sobrecarga-circuito-explorador` | Intensidad de varios aparatos frente al magnetotérmico | `a` límite (A) |
+| `multimetro-explorador` | Multímetro virtual: función, conexión, rango y errores de uso | — |
+| `diagnostico-circuito-explorador` | Medidas para diagnosticar una avería en un circuito en serie | `n` fallo (0–3) |
+| `diodo-led-explorador` | Diodo y LED con resistencia serie: punto de trabajo con modelo exponencial | `a` V, `b` R (Ω), `n` componente |
+| `transistor-conmutador-explorador` | Transistor en corte, activa y saturación | `a` V_in, `b` R_B (kΩ) |
+| `condensador-carga-explorador` | Carga y descarga de un condensador con τ = R·C | `a` V, `b` R (kΩ), `c` C (µF) |
+| `reto-led-explorador` | Reto: LED en serie con resistencia normalizada y tres criterios | `a` V, `b` nº de LED |
+| `ordenador-componentes-explorador` | Componentes de un ordenador y recorrido de un dato | `n` 1 = recorrido |
+| `procesos-memoria-explorador` | Procesos, CPU y RAM con memoria virtual | `a` RAM (GB), `b` pestañas |
+| `permisos-archivos-explorador` | Permisos rwx de archivo o carpeta y su notación numérica | `n` 1 = carpeta |
+| `texto-binario-explorador` | Texto codificado en bytes UTF-8 | — |
+| `tamano-archivo-explorador` | Tamaño de imagen o audio con compresión | `n` 1 = audio |
+| `diagrama-flujo-explorador` | Diagramas de flujo ejecutables paso a paso | `n` diagrama (0 decisión, 1 bucle, 2 mayor de tres) |
+| `python-traza-explorador` | Editor de Python con traza de líneas, variables, salida, errores y puntos de interrupción (intérprete propio `mini-python`) | `n` programa (0–7) |
+| `tests-automaticos-explorador` | Editor de funciones con pruebas automáticas | `n` ejercicio (0–3) |
+| `fabrica-modos-explorador` | Fábrica manual, semiautomática y automática: producción, defectos y coste | `n` modo, `a` operarios, `b` demanda |
+| `bloques-control-explorador` | Bloques de cuatro sistemas de control | `n` sistema |
+| `sensores-habitacion-explorador` | LDR, NTC y ultrasonidos de una habitación con lectura ADC | `a` lux, `b` °C, `c` cm |
+| `actuadores-explorador` | Motor de CC, servo y relé | `n` actuador, `a` V, `b` pulso (ms) |
+| `placa-virtual-explorador` | Placa programable virtual: lectura analógica, umbral y PWM | `a` lux, `b` umbral, `n` modo |
+| `senal-umbral-explorador` | Señal con ruido, umbral e histéresis | `a` amplitud, `b` frecuencia, `c` ruido |
+| `compuertas-alarma-explorador` | Lógica de una alarma con tabla de verdad | `n` regla (0 correcta) |
+| `termostato-lazo-explorador` | Lazo abierto frente a cerrado con ventana abierta | `a` T deseada, `b` T exterior, `n` 1 = ventana |
+| `linea-clasificacion-explorador` | Línea de clasificación: umbral, velocidad y tiempos | `a` umbral (cm), `b` v (m/s) |
+| `robot-cuadricula-explorador` | Robot programable en una cuadrícula con obstáculos | `n` mapa |
+| `indicadores-decision-explorador` | Decisiones y indicadores ambiental, social y económico | — |
+| `mapa-recursos-explorador` | Recursos por fase del ciclo de vida de un producto | `n` producto |
+| `edificio-eficiencia-explorador` | Calefacción e iluminación de un edificio según aislamiento, ventanas, T y LED | `a` aislante (cm), `b` U, `c` T |
+| `producto-impacto-explorador` | Botella reutilizable frente a desechable según el número de usos | `a` usos |
+| `economia-circular-explorador` | Material nuevo por año según vida, reparabilidad y reciclaje | `a` vida, `b` reparación, `c` reciclaje |
+| `parque-renovable-explorador` | Parque solar y eólico con demanda, nubes y almacenamiento | `a` solar, `b` eólica, `c` viento |
+| `acv-explorador` | ACV de tres bombillas por unidad funcional, con incertidumbre | `a` horas, `b` mix, `c` incertidumbre |
+| `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
 

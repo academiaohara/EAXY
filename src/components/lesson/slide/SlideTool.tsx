@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 // industrial-imports
+import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
+import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
+import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
+import { CargaCorrienteExplorador, OhmExplorador, CircuitoBasicoExplorador, ResistenciasExplorador, KirchhoffExplorador, ConsumoEnergiaExplorador, SobrecargaCircuitoExplorador, MultimetroExplorador, DiagnosticoCircuitoExplorador, DiodoLedExplorador, TransistorConmutadorExplorador, CondensadorCargaExplorador, RetoLedExplorador } from "@/components/lesson/slide/tools/Tec1CircuitosTools";
+import { MaquinaDesmontajeExplorador, PoleasCorreasExplorador, EngranajesExplorador, BicicletaExplorador, SinFinExplorador, BielaManivelaExplorador, LevaSeguidorExplorador, CremalleraTornilloExplorador, PalancaExplorador, PolipastoExplorador, DiscoGiratorioExplorador, MotorVirtualExplorador, ReductorRendimientoExplorador, TransmisionEditorExplorador } from "@/components/lesson/slide/tools/Tec1MecanismosTools";
+import { MesaMuestrasExplorador, EstructuraAtomicaExplorador, PropiedadesComparadorExplorador, CarbonoHierroExplorador, PolimeroTemperaturaExplorador, CompuestoMezclasExplorador, TratamientoCurvaExplorador, ProcesoCosteExplorador, Impresion3dExplorador, ToleranciaCalidadExplorador, FabricaRiesgosExplorador, ReciclajeEnergiaExplorador } from "@/components/lesson/slide/tools/Tec1MaterialesTools";
+import { ObjetoProblemaExplorador, MatrizDecisionExplorador, RequisitosExplorador, GanttExplorador, RolesEquipoExplorador, PrototipoEnsayoExplorador, MemoriaTecnicaExplorador } from "@/components/lesson/slide/tools/Tec1ProyectosTools";
 import { MediaMuestralExplorador, ProporcionMuestralExplorador, ContrasteMediaExplorador, ContrasteProporcionExplorador } from "@/components/lesson/slide/tools/Ccss2EstimacionTools";
 import { ProgramacionLinealExplorador } from "@/components/lesson/slide/tools/CcssProgramacionTools";
 import { DistribucionDiscretaExplorador, ChebychevExplorador, DensidadExplorador, IntervaloMediaExplorador } from "@/components/lesson/slide/tools/Bach2ProbTools";
@@ -1184,6 +1191,150 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ContrasteMediaExplorador block={block} />;
     case "contraste-proporcion-explorador":
       return <ContrasteProporcionExplorador block={block} />;
+    case "objeto-problema-explorador":
+      return <ObjetoProblemaExplorador block={block} />;
+    case "matriz-decision-explorador":
+      return <MatrizDecisionExplorador block={block} />;
+    case "requisitos-verificables-explorador":
+      return <RequisitosExplorador block={block} />;
+    case "gantt-explorador":
+      return <GanttExplorador block={block} />;
+    case "roles-equipo-explorador":
+      return <RolesEquipoExplorador block={block} />;
+    case "prototipo-ensayo-explorador":
+      return <PrototipoEnsayoExplorador block={block} />;
+    case "memoria-tecnica-explorador":
+      return <MemoriaTecnicaExplorador block={block} />;
+    case "mesa-muestras-explorador":
+      return <MesaMuestrasExplorador block={block} />;
+    case "estructura-atomica-explorador":
+      return <EstructuraAtomicaExplorador block={block} />;
+    case "propiedades-comparador-explorador":
+      return <PropiedadesComparadorExplorador block={block} />;
+    case "carbono-hierro-explorador":
+      return <CarbonoHierroExplorador block={block} />;
+    case "polimero-temperatura-explorador":
+      return <PolimeroTemperaturaExplorador block={block} />;
+    case "compuesto-mezclas-explorador":
+      return <CompuestoMezclasExplorador block={block} />;
+    case "tratamiento-curva-explorador":
+      return <TratamientoCurvaExplorador block={block} />;
+    case "proceso-coste-explorador":
+      return <ProcesoCosteExplorador block={block} />;
+    case "impresion-3d-explorador":
+      return <Impresion3dExplorador block={block} />;
+    case "tolerancia-calidad-explorador":
+      return <ToleranciaCalidadExplorador block={block} />;
+    case "fabrica-riesgos-explorador":
+      return <FabricaRiesgosExplorador block={block} />;
+    case "reciclaje-energia-explorador":
+      return <ReciclajeEnergiaExplorador block={block} />;
+    case "maquina-desmontaje-explorador":
+      return <MaquinaDesmontajeExplorador block={block} />;
+    case "poleas-correas-explorador":
+      return <PoleasCorreasExplorador block={block} />;
+    case "engranajes-explorador":
+      return <EngranajesExplorador block={block} />;
+    case "bicicleta-explorador":
+      return <BicicletaExplorador block={block} />;
+    case "sin-fin-explorador":
+      return <SinFinExplorador block={block} />;
+    case "biela-manivela-explorador":
+      return <BielaManivelaExplorador block={block} />;
+    case "leva-seguidor-explorador":
+      return <LevaSeguidorExplorador block={block} />;
+    case "cremallera-tornillo-explorador":
+      return <CremalleraTornilloExplorador block={block} />;
+    case "palanca-explorador":
+      return <PalancaExplorador block={block} />;
+    case "polipasto-explorador":
+      return <PolipastoExplorador block={block} />;
+    case "disco-giratorio-explorador":
+      return <DiscoGiratorioExplorador block={block} />;
+    case "motor-virtual-explorador":
+      return <MotorVirtualExplorador block={block} />;
+    case "reductor-rendimiento-explorador":
+      return <ReductorRendimientoExplorador block={block} />;
+    case "transmision-editor-explorador":
+      return <TransmisionEditorExplorador block={block} />;
+    case "carga-corriente-explorador":
+      return <CargaCorrienteExplorador block={block} />;
+    case "ohm-explorador":
+      return <OhmExplorador block={block} />;
+    case "circuito-basico-explorador":
+      return <CircuitoBasicoExplorador block={block} />;
+    case "resistencias-explorador":
+      return <ResistenciasExplorador block={block} />;
+    case "kirchhoff-explorador":
+      return <KirchhoffExplorador block={block} />;
+    case "consumo-energia-explorador":
+      return <ConsumoEnergiaExplorador block={block} />;
+    case "sobrecarga-circuito-explorador":
+      return <SobrecargaCircuitoExplorador block={block} />;
+    case "multimetro-explorador":
+      return <MultimetroExplorador block={block} />;
+    case "diagnostico-circuito-explorador":
+      return <DiagnosticoCircuitoExplorador block={block} />;
+    case "diodo-led-explorador":
+      return <DiodoLedExplorador block={block} />;
+    case "transistor-conmutador-explorador":
+      return <TransistorConmutadorExplorador block={block} />;
+    case "condensador-carga-explorador":
+      return <CondensadorCargaExplorador block={block} />;
+    case "reto-led-explorador":
+      return <RetoLedExplorador block={block} />;
+    case "ordenador-componentes-explorador":
+      return <OrdenadorComponentesExplorador block={block} />;
+    case "procesos-memoria-explorador":
+      return <ProcesosMemoriaExplorador block={block} />;
+    case "permisos-archivos-explorador":
+      return <PermisosArchivosExplorador block={block} />;
+    case "texto-binario-explorador":
+      return <TextoBinarioExplorador block={block} />;
+    case "tamano-archivo-explorador":
+      return <TamanoArchivoExplorador block={block} />;
+    case "diagrama-flujo-explorador":
+      return <DiagramaFlujoExplorador block={block} />;
+    case "python-traza-explorador":
+      return <PythonTrazaExplorador block={block} />;
+    case "tests-automaticos-explorador":
+      return <TestsAutomaticosExplorador block={block} />;
+    case "fabrica-modos-explorador":
+      return <FabricaModosExplorador block={block} />;
+    case "bloques-control-explorador":
+      return <BloquesControlExplorador block={block} />;
+    case "sensores-habitacion-explorador":
+      return <SensoresHabitacionExplorador block={block} />;
+    case "actuadores-explorador":
+      return <ActuadoresExplorador block={block} />;
+    case "placa-virtual-explorador":
+      return <PlacaVirtualExplorador block={block} />;
+    case "senal-umbral-explorador":
+      return <SenalUmbralExplorador block={block} />;
+    case "compuertas-alarma-explorador":
+      return <CompuertasAlarmaExplorador block={block} />;
+    case "termostato-lazo-explorador":
+      return <TermostatoLazoExplorador block={block} />;
+    case "linea-clasificacion-explorador":
+      return <LineaClasificacionExplorador block={block} />;
+    case "robot-cuadricula-explorador":
+      return <RobotCuadriculaExplorador block={block} />;
+    case "indicadores-decision-explorador":
+      return <IndicadoresDecisionExplorador block={block} />;
+    case "mapa-recursos-explorador":
+      return <MapaRecursosExplorador block={block} />;
+    case "edificio-eficiencia-explorador":
+      return <EdificioEficienciaExplorador block={block} />;
+    case "producto-impacto-explorador":
+      return <ProductoImpactoExplorador block={block} />;
+    case "economia-circular-explorador":
+      return <EconomiaCircularExplorador block={block} />;
+    case "parque-renovable-explorador":
+      return <ParqueRenovableExplorador block={block} />;
+    case "acv-explorador":
+      return <AcvExplorador block={block} />;
+    case "grupos-afectados-explorador":
+      return <GruposAfectadosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1,4 +1,11 @@
 // industrial-imports
+import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
+import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
+import { buildCicloInstruccion, buildBucleIteraciones } from "@/components/lesson/anim/scenes/industrial/tec1-programacion";
+import { buildCargaMovilCircuito, buildSerieParaleloReparto, buildKirchhoffNodoMalla } from "@/components/lesson/anim/scenes/industrial/tec1-circuitos";
+import { buildTransmisionFlujo, buildCorreaAbiertaCruzada, buildEngranajesGiro, buildBielaManivelaCiclo, buildPalancaGeneros } from "@/components/lesson/anim/scenes/industrial/tec1-mecanismos";
+import { buildEscalaMaterialZoom, buildPolimeroCadenas, buildConformadoProcesos } from "@/components/lesson/anim/scenes/industrial/tec1-materiales";
+import { buildProcesoDisenoCiclo, buildGanttCaminoCritico } from "@/components/lesson/anim/scenes/industrial/tec1-proyectos";
 import { buildPoblacionMuestra, buildTiposMuestreo, buildTclMedias, buildContrasteRegion } from "@/components/lesson/anim/scenes/ccss2-estimacion";
 import { buildSemiplanoPrueba, buildRectasNivel } from "@/components/lesson/anim/scenes/ccss2-programacion";
 import { buildPascalBinomio } from "@/components/lesson/anim/scenes/bach2-prob";
@@ -670,6 +677,28 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "tipos-muestreo": () => buildTiposMuestreo(),
   "tcl-medias": () => buildTclMedias(),
   "contraste-region": () => buildContrasteRegion(),
+  "proceso-diseno-ciclo": () => buildProcesoDisenoCiclo(),
+  "gantt-camino-critico": () => buildGanttCaminoCritico(),
+  "escala-material-zoom": () => buildEscalaMaterialZoom(),
+  "polimero-cadenas": () => buildPolimeroCadenas(),
+  "conformado-procesos": () => buildConformadoProcesos(),
+  "transmision-flujo": () => buildTransmisionFlujo(),
+  "correa-abierta-cruzada": () => buildCorreaAbiertaCruzada(),
+  "engranajes-giro": () => buildEngranajesGiro(),
+  "biela-manivela-ciclo": () => buildBielaManivelaCiclo(),
+  "palanca-generos": () => buildPalancaGeneros(),
+  "carga-movil-circuito": () => buildCargaMovilCircuito(),
+  "serie-paralelo-reparto": () => buildSerieParaleloReparto(),
+  "kirchhoff-nodo-malla": () => buildKirchhoffNodoMalla(),
+  "ciclo-instruccion": () => buildCicloInstruccion(),
+  "bucle-iteraciones": () => buildBucleIteraciones(),
+  "sistema-control-termostato": () => buildSistemaControlTermostato(),
+  "sensor-divisor-tension": () => buildSensorDivisorTension(),
+  "histeresis-comparador": () => buildHisteresisComparador(),
+  "secuencia-clasificacion": () => buildSecuenciaClasificacion(),
+  "triple-sostenibilidad": () => buildTripleSostenibilidad(),
+  "ciclo-vida-fases": () => buildCicloVidaFases(),
+  "economia-lineal-circular": () => buildEconomiaLinealCircular(),
   /* industrial-end */
 };
 

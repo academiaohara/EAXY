@@ -116,3 +116,14 @@ export const TEMA_CCSS2_5_SUBTITLE = "CCSS II (2.º Bachillerato), Tema 5 — De
 export const TEMA_CCSS2_6_SUBTITLE = "CCSS II (2.º Bachillerato), Tema 6 — Integrales";
 export const TEMA_CCSS2_7_SUBTITLE = "CCSS II (2.º Bachillerato), Tema 7 — Probabilidad";
 export const TEMA_CCSS2_8_SUBTITLE = "CCSS II (2.º Bachillerato), Tema 8 — Estimación y contraste de hipótesis";
+
+/** Tecnología e Ingeniería I (1.º Bachillerato): subtítulo de cada tema. */
+export const TEC1_SUBTITLES = {
+  1: "Tecnología e Ingeniería I, Tema 1 — Proyectos de investigación y desarrollo",
+  2: "Tecnología e Ingeniería I, Tema 2 — Materiales y fabricación",
+  3: "Tecnología e Ingeniería I, Tema 3 — Sistemas mecánicos",
+  4: "Tecnología e Ingeniería I, Tema 4 — Sistemas eléctricos y electrónicos",
+  5: "Tecnología e Ingeniería I, Tema 5 — Sistemas informáticos y programación",
+  6: "Tecnología e Ingeniería I, Tema 6 — Sistemas automáticos",
+  7: "Tecnología e Ingeniería I, Tema 7 — Tecnología sostenible",
+} as const;
