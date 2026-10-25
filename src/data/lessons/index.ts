@@ -4,6 +4,7 @@ import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
+import { algebraDeSucesosCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/02-algebra-de-sucesos-ccss2";
 import { algebraEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/03-algebra-ecuaciones";
 import { algebraExpresionesMonomiosLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/02-algebra-expresiones-monomios";
 import { algebraLetrasNumerosLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/01-algebra-letras-numeros";
@@ -50,7 +51,9 @@ import { aproximacionesErroresCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { arbolTabla1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/09-arbol-tabla-1bach";
 import { arbolTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/09-arbol-tabla-ccss1";
 import { arbolesTablas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/06-arboles-tablas-2bach";
+import { arbolesTablasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/06-arboles-tablas-ccss2";
 import { areaBajoCurvaRiemann2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/09-area-bajo-curva-riemann-2bach";
+import { areaBajoCurvaRiemannCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/08-area-bajo-curva-riemann-ccss2";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
 import { areaCuadrilateros3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/05-area-cuadrilateros-3eso";
 import { areaEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/05-area-esfera-3eso";
@@ -59,6 +62,7 @@ import { areaPoligonos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-pro
 import { areaTriangulos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/06-area-triangulos-3eso";
 import { areasCirculoLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/04-areas-circulo";
 import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/01-areas-cuadrilateros";
+import { areasEntreCurvasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/11-areas-entre-curvas-ccss2";
 import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/09-areas-figuras-curvas-3eso";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
@@ -66,16 +70,20 @@ import { areasYVolumenes2bachLesson } from "@/data/lessons/matematicas-2-bachill
 import { asignacionProbabilidades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/03-asignacion-probabilidades-1bach";
 import { asignacionProbabilidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/03-asignacion-probabilidades-2bach";
 import { asignacionProbabilidadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/03-asignacion-probabilidades-ccss1";
+import { asignacionProbabilidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/03-asignacion-probabilidades-ccss2";
 import { asintotas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/03-asintotas-2bach";
+import { asintotasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/08-asintotas-ccss2";
 import { asintotasOblicuas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/05-asintotas-oblicuas-1bach";
 import { asintotasOblicuasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/05-asintotas-oblicuas-ccss1";
 import { asintotasVerticalesHorizontales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/04-asintotas-verticales-horizontales-1bach";
 import { asintotasVerticalesHorizontalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/04-asintotas-verticales-horizontales-ccss1";
+import { asintotasVerticalesHorizontalesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/06-asintotas-verticales-horizontales-ccss2";
 import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/01-atomo-nucleo-corteza";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
 import { automaticaDefinicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/01-automatica-definiciones";
 import { axiomasKolmogorov2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/04-axiomas-kolmogorov-2bach";
+import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/04-axiomas-kolmogorov-ccss2";
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
@@ -92,6 +100,7 @@ import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematic
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
+import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
@@ -135,11 +144,13 @@ import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachil
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
 import { conceptoMatriz2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/01-concepto-matriz-2bach";
+import { conceptoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/01-concepto-matriz-ccss2";
 import { conceptosEstadistica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/01-conceptos-estadistica-1bach";
 import { conceptosEstadisticaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/01-conceptos-estadistica-ccss1";
 import { condicionadaIndependencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/06-condicionada-independencia-1bach";
 import { condicionadaIndependencia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/05-condicionada-independencia-2bach";
 import { condicionadaIndependenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/06-condicionada-independencia-ccss1";
+import { condicionadaIndependenciaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/05-condicionada-independencia-ccss2";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
@@ -148,6 +159,9 @@ import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial
 import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
 import { continuidadPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/09-continuidad-punto-2bach";
 import { continuidadPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/12-continuidad-punto-ccss1";
+import { continuidadPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/10-continuidad-punto-ccss2";
+import { contrasteHipotesisMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/11-contraste-hipotesis-media-ccss2";
+import { contrasteProporcionErroresCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/12-contraste-proporcion-errores-ccss2";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
@@ -161,6 +175,7 @@ import { crecimientoDecrecimientoCcss1Lesson } from "@/data/lessons/matematicas-
 import { crecimientoExtremos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/10-crecimiento-extremos-2bach";
 import { crecimientoExtremos2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/02-crecimiento-extremos-2eso";
 import { crecimientoExtremos3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/02-crecimiento-extremos-3eso";
+import { crecimientoExtremosCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/06-crecimiento-extremos-ccss2";
 import { criteriosDisenoRespuestaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/04-criterios-diseno-respuesta";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
@@ -178,6 +193,7 @@ import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-es
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { curvaturaInflexion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/11-curvatura-inflexion-2bach";
+import { curvaturaInflexionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/07-curvatura-inflexion-ccss2";
 import { curvaturaInflexionRep2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/05-curvatura-inflexion-rep-2bach";
 import { datosAgrupados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/03-datos-agrupados-1bach";
 import { datosAgrupadosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/03-datos-agrupados-ccss1";
@@ -186,10 +202,12 @@ import { dependenciaBaseEspacio2bachLesson } from "@/data/lessons/matematicas-2-
 import { derivabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/04-derivabilidad-1bach";
 import { derivabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/02-derivabilidad-2bach";
 import { derivabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/04-derivabilidad-ccss1";
+import { derivabilidadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/02-derivabilidad-ccss2";
 import { derivacionLogaritmicaImplicita2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/06-derivacion-logaritmica-implicita-2bach";
 import { derivadaDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/03-derivada-definicion-1bach";
 import { derivadaDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/01-derivada-definicion-2bach";
 import { derivadaDefinicionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/03-derivada-definicion-ccss1";
+import { derivadaDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/01-derivada-definicion-ccss2";
 import { derivadaInversaArcos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/10-derivada-inversa-arcos-1bach";
 import { derivadaPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/02-derivada-punto-1bach";
 import { derivadaPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/02-derivada-punto-ccss1";
@@ -211,6 +229,7 @@ import { diagramasArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bac
 import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
+import { discontinuidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/11-discontinuidades-ccss2";
 import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/13-discusion-sistemas-1bach";
 import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/16-discusion-sistemas-ccss1";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
@@ -223,8 +242,10 @@ import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bac
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
+import { distribucionMediaMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/05-distribucion-media-muestral-ccss2";
 import { distribucionNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/07-distribucion-normal-2bach";
 import { distribucionNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/06-distribucion-normal-ccss1";
+import { distribucionProporcionMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/06-distribucion-proporcion-muestral-ccss2";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/01-divisibilidad-2eso";
 import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/04-division-fracciones-2eso";
@@ -255,6 +276,7 @@ import { ecuacionesIncompletasProductoCero4esobLesson } from "@/data/lessons/mat
 import { ecuacionesLinealesDosIncognitas4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/01-ecuaciones-lineales-dos-incognitas-4eso";
 import { ecuacionesLinealesDosIncognitas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/06-ecuaciones-lineales-dos-incognitas-4esob";
 import { ecuacionesMatriciales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/10-ecuaciones-matriciales-2bach";
+import { ecuacionesMatricialesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/10-ecuaciones-matriciales-ccss2";
 import { ecuacionesPrimerGrado1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/07-ecuaciones-primer-grado-1bach";
 import { ecuacionesPrimerGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/02-ecuaciones-primer-grado-3eso";
 import { ecuacionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/02-ecuaciones-primer-grado-4eso";
@@ -281,12 +303,14 @@ import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industri
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
+import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
+import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
 import { estabilidadRouthLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/09-estabilidad-routh";
 import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
 import { estadisticaCaja4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/07-estadistica-caja-4esob";
@@ -304,10 +328,12 @@ import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13
 import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/08-estadistica-repaso-4esob";
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
+import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
 import { experimentosSucesosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/01-experimentos-sucesos-ccss1";
+import { experimentosSucesosCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/01-experimentos-sucesos-ccss2";
 import { exponencialCrecimiento4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/08-exponencial-crecimiento-4eso";
 import { exponencialCrecimiento4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/16-exponencial-crecimiento-4esob";
 import { exponencialFuncion4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/07-exponencial-funcion-4eso";
@@ -389,20 +415,25 @@ import { funcionTransferenciaLesson } from "@/data/lessons/tecnologia-industrial
 import { funcionesExponencialesLogaritmicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/10-funciones-exponenciales-logaritmicas-2bach";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { funcionesPolinomicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/07-funciones-polinomicas-2bach";
+import { funcionesPolinomicasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/10-funciones-polinomicas-ccss2";
 import { funcionesRacionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/04-funciones-racionales-1bach";
 import { funcionesRacionales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/08-funciones-racionales-2bach";
 import { funcionesRacionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/04-funciones-racionales-ccss1";
+import { funcionesRacionalesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/11-funciones-racionales-ccss2";
 import { funcionesRadicalesValorAbsoluto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/09-funciones-radicales-valor-absoluto-2bach";
 import { funcionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/07-funciones-trigonometricas-1bach";
 import { funcionesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/11-funciones-trigonometricas-2bach";
 import { funcionesTrigonometricasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/09-funciones-trigonometricas-ccss1";
 import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-galgas-extensometricas";
 import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/04-gauss-ampliada-2bach";
+import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/07-gauss-ampliada-ccss2";
 import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
+import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
+import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
@@ -417,17 +448,20 @@ import { independenciaNubeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { indeterminacionCeroCero1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/09-indeterminacion-cero-cero-1bach";
 import { indeterminacionCeroCero2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/05-indeterminacion-cero-cero-2bach";
 import { indeterminacionCeroCeroCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/09-indeterminacion-cero-cero-ccss1";
+import { indeterminacionCeroCeroCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/07-indeterminacion-cero-cero-ccss2";
 import { indeterminacionInfInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/10-indeterminacion-inf-inf-1bach";
 import { indeterminacionInfInfCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/10-indeterminacion-inf-inf-ccss1";
 import { indeterminacionInfMenosInf1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/08-indeterminacion-inf-menos-inf-1bach";
 import { indeterminacionInfMenosInfCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/08-indeterminacion-inf-menos-inf-ccss1";
 import { indeterminacionInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/06-indeterminacion-infinito-2bach";
+import { indeterminacionInfinitoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/08-indeterminacion-infinito-ccss2";
 import { indeterminacionUnoInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/11-indeterminacion-uno-infinito-1bach";
 import { indeterminacionUnoInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/07-indeterminacion-uno-infinito-2bach";
 import { indeterminacionUnoInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/11-indeterminacion-uno-infinito-ccss1";
 import { induccionFaradayLenzLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/05-induccion-faraday-lenz";
 import { inecuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/08-inecuaciones-4eso";
 import { inecuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/14-inecuaciones-4esob";
+import { inecuacionesDosIncognitasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/01-inecuaciones-dos-incognitas-ccss2";
 import { inecuacionesPrimerGrado1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/10-inecuaciones-primer-grado-1bach";
 import { inecuacionesPrimerGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/09-inecuaciones-primer-grado-ccss1";
 import { inecuacionesSegundoGrado1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/11-inecuaciones-segundo-grado-1bach";
@@ -435,11 +469,16 @@ import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
 import { integracionPorPartes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/07-integracion-por-partes-2bach";
+import { integracionPorPartesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/07-integracion-por-partes-ccss2";
 import { integralDefinidaTfc2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/10-integral-definida-tfc-2bach";
+import { integralDefinidaTfcCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/09-integral-definida-tfc-ccss2";
 import { integralDerivativaPidLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/11-integral-derivativa-pid";
 import { integralesCadena2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/05-integrales-cadena-2bach";
+import { integralesCadenaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/05-integrales-cadena-ccss2";
 import { integralesExponencialesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/04-integrales-exponenciales-trigonometricas-2bach";
+import { integralesExponencialesTrigonometricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/04-integrales-exponenciales-trigonometricas-ccss2";
 import { integralesInmediatasPotencias2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/03-integrales-inmediatas-potencias-2bach";
+import { integralesInmediatasPotenciasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/03-integrales-inmediatas-potencias-ccss2";
 import { integralesRacionales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/08-integrales-racionales-2bach";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/03-interes-compuesto-ccss1";
@@ -447,7 +486,9 @@ import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bach
 import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/10-interpolacion-extrapolacion-ccss1";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
+import { intervaloConfianzaMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/08-intervalo-confianza-media-ccss2";
 import { intervaloConfianzaProporcion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/11-intervalo-confianza-proporcion-2bach";
+import { intervaloConfianzaProporcionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/10-intervalo-confianza-proporcion-ccss2";
 import { intervalosAcotados4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/03-intervalos-acotados-4esob";
 import { intervalosConfianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/10-intervalos-confianza-ccss1";
 import { intervalosEntornos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/05-intervalos-entornos-1bach";
@@ -456,6 +497,7 @@ import { inversaAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/
 import { inversaAplicaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/13-inversa-aplicaciones-4esob";
 import { inversaDeterminantes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/10-inversa-determinantes-2bach";
 import { inversaGaussJordan2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/09-inversa-gauss-jordan-2bach";
+import { inversaGaussJordanCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/09-inversa-gauss-jordan-ccss2";
 import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
 import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/12-inversa-hiperbola-4esob";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
@@ -466,15 +508,20 @@ import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
+import { limiteDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/01-limite-definicion-ccss2";
 import { limiteSucesion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/07-limite-sucesion-1bach";
 import { limitesCalculo1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/08-limites-calculo-1bach";
 import { limitesInfinito2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/04-limites-infinito-2bach";
+import { limitesInfinitoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/05-limites-infinito-ccss2";
 import { limitesInfinitos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/03-limites-infinitos-1bach";
 import { limitesInfinitosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/03-limites-infinitos-ccss1";
 import { limitesInfinitosPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/03-limites-infinitos-punto-2bach";
+import { limitesInfinitosPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/04-limites-infinitos-punto-ccss2";
 import { limitesLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/02-limites-laterales-1bach";
 import { limitesLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/02-limites-laterales-ccss1";
+import { limitesLateralesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/02-limites-laterales-ccss2";
 import { limitesOperaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/02-limites-operaciones-2bach";
+import { limitesOperacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/03-limites-operaciones-ccss2";
 import { linealIdea4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/01-lineal-idea-4eso";
 import { linealIdea4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/01-lineal-idea-4esob";
 import { linealPendienteGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/03-lineal-pendiente-grafica-4eso";
@@ -504,6 +551,7 @@ import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-ind
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
 import { matrizInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/08-matriz-inversa-2bach";
+import { matrizInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/08-matriz-inversa-ccss2";
 import { maximoComunDivisorLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/05-maximo-comun-divisor";
 import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/05-maximo-comun-divisor-2eso";
 import { maximosMinimos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/14-maximos-minimos-1bach";
@@ -600,10 +648,12 @@ import { operarPolinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-
 import { optimizacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/15-optimizacion-1bach";
 import { optimizacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/12-optimizacion-2bach";
 import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/12-optimizacion-ccss1";
+import { optimizacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/12-optimizacion-ccss2";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
+import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
@@ -617,7 +667,10 @@ import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
+import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
+import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
+import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
@@ -649,10 +702,12 @@ import { potenciasExponenteNegativo3esoLesson } from "@/data/lessons/matematicas
 import { potenciasExponenteNegativoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/07-potencias-exponente-negativo-ccss1";
 import { potenciasExponenteRacionalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/09-potencias-exponente-racional-ccss1";
 import { potenciasMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/06-potencias-matrices-2bach";
+import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/06-potencias-matrices-ccss2";
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
 import { primitivaIntegralIndefinida2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/01-primitiva-integral-indefinida-2bach";
+import { primitivaIntegralIndefinidaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/01-primitiva-integral-indefinida-ccss2";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
 import { probArbol4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/07-prob-arbol-4eso";
 import { probArbol4esobLesson } from "@/data/lessons/matematicas-4-eso-b/10-calculo-de-probabilidades/07-prob-arbol-4esob";
@@ -678,6 +733,11 @@ import { probabilidadSucesosSeguroImposibleLesson } from "@/data/lessons/matemat
 import { probabilidadTotal1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/10-probabilidad-total-1bach";
 import { probabilidadTotal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/07-probabilidad-total-2bach";
 import { probabilidadTotalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/10-probabilidad-total-ccss1";
+import { probabilidadTotalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/07-probabilidad-total-ccss2";
+import { problemaDietasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/09-problema-dietas-ccss2";
+import { problemaProduccionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/08-problema-produccion-ccss2";
+import { problemaTransporteCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/10-problema-transporte-ccss2";
+import { problemasBayesDiagnosticoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/10-problemas-bayes-diagnostico-ccss2";
 import { problemasDecimalesNotacion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/08-problemas-decimales-notacion-4eso";
 import { problemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/04-problemas-ecuaciones-2eso";
 import { problemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/06-problemas-ecuaciones-3eso";
@@ -686,21 +746,26 @@ import { problemasFamososCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { problemasFinancierosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/07-problemas-financieros-ccss1";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
+import { problemasIntegralesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/12-problemas-integrales-ccss2";
 import { problemasLimitesContinuidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/12-problemas-limites-continuidad-2bach";
+import { problemasLimitesContinuidadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/12-problemas-limites-continuidad-ccss2";
 import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
 import { problemasMetricos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/12-problemas-metricos-2-2bach";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
 import { problemasNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/09-problemas-normal-2bach";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
 import { problemasNumerosReales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/14-problemas-numeros-reales-4esob";
+import { problemasPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/12-problemas-pl-ccss2";
 import { problemasPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/03-problemas-primer-grado-4eso";
 import { problemasRectasPlanos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/11-problemas-rectas-planos-1-2bach";
 import { problemasRectasPlanos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/12-problemas-rectas-planos-2-2bach";
 import { problemasSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/06-problemas-segundo-grado-4eso";
 import { problemasSegundoGrado4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/03-problemas-segundo-grado-4esob";
 import { problemasSistemas12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/11-problemas-sistemas-1-2bach";
+import { problemasSistemas1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/11-problemas-sistemas-1-ccss2";
 import { problemasSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/14-problemas-sistemas-1bach";
 import { problemasSistemas22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/12-problemas-sistemas-2-2bach";
+import { problemasSistemas2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/12-problemas-sistemas-2-ccss2";
 import { problemasSistemas2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/04-problemas-sistemas-2eso";
 import { problemasSistemas3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/05-problemas-sistemas-3eso";
 import { problemasSistemasCapitales4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/08-problemas-sistemas-capitales-4eso";
@@ -708,6 +773,7 @@ import { problemasSistemasCapitales4esobLesson } from "@/data/lessons/matematica
 import { problemasSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/17-problemas-sistemas-ccss1";
 import { problemasSistemasCompras4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/07-problemas-sistemas-compras-4eso";
 import { problemasSistemasCompras4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/12-problemas-sistemas-compras-4esob";
+import { problemasTablasProbabilidadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/09-problemas-tablas-probabilidad-ccss2";
 import { problemasTrigonometria1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/13-problemas-trigonometria-1bach";
 import { problemasVectores12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/11-problemas-vectores-1-2bach";
 import { problemasVectores22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/12-problemas-vectores-2-2bach";
@@ -717,6 +783,7 @@ import { productoCocienteCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { productoEscalar1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/03-producto-escalar-1bach";
 import { productoEscalarEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/04-producto-escalar-espacio-2bach";
 import { productoMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/04-producto-matrices-2bach";
+import { productoMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/04-producto-matrices-ccss2";
 import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/09-producto-mixto-2bach";
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
@@ -726,12 +793,14 @@ import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
 import { propiedadesCondicionInicial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/02-propiedades-condicion-inicial-2bach";
+import { propiedadesCondicionInicialCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/02-propiedades-condicion-inicial-ccss2";
 import { propiedadesDet12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/02-propiedades-det-1-2bach";
 import { propiedadesDet22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/03-propiedades-det-2-2bach";
 import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/06-propiedades-limites-infinito-1bach";
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
+import { propiedadesProductoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/05-propiedades-producto-ccss2";
 import { propiedadesSensoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/02-propiedades-sensores";
 import { proporcionalidadCompuesta4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/02-proporcionalidad-compuesta-4eso";
 import { proporcionalidadDirecta2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/01-proporcionalidad-directa-2eso";
@@ -767,6 +836,7 @@ import { raicesRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-ba
 import { raizCuadradaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/02-raiz-cuadrada-naturales";
 import { raizDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/05-raiz-decimales-2eso";
 import { rangoMatriz2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/11-rango-matriz-2bach";
+import { rangoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/11-rango-matriz-ccss2";
 import { rangoMenores2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/11-rango-menores-2bach";
 import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/12-rango-parametro-2bach";
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
@@ -782,6 +852,7 @@ import { rectaRealDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { rectaTangente1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/11-recta-tangente-1bach";
 import { rectaTangenteCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/08-recta-tangente-ccss1";
 import { rectaVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/01-recta-vectorial-parametricas-2bach";
+import { rectasNivelCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/06-rectas-nivel-ccss2";
 import { rectasYAngulosAngulosLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/03-rectas-y-angulos-angulos";
 import { rectasYAngulosMediatrizBisectrizLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/02-rectas-y-angulos-mediatriz-bisectriz";
 import { rectasYAngulosMedidaLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/05-rectas-y-angulos-medida";
@@ -790,25 +861,31 @@ import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
 import { redDistribucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/04-red-distribucion";
 import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/09-refrigeracion-carnot-eficiencia";
+import { regionFactibleVerticesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/03-region-factible-vertices-ccss2";
 import { registrosContadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/04-registros-contadores";
 import { reglaCadena1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/07-regla-cadena-1bach";
 import { reglaCadena2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/04-regla-cadena-2bach";
 import { reglaCadenaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/07-regla-cadena-ccss1";
+import { reglaCadenaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/04-regla-cadena-ccss2";
 import { reglaCramer2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/07-regla-cramer-2bach";
 import { reglaDeBarrow2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/11-regla-de-barrow-2bach";
+import { reglaDeBarrowCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/10-regla-de-barrow-ccss2";
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
 import { reglaRuffini4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/05-regla-ruffini-4esob";
 import { reglasDerivacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/03-reglas-derivacion-2bach";
+import { reglasDerivacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/03-reglas-derivacion-ccss2";
 import { regresionCuadraticaDeterminacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/13-regresion-cuadratica-determinacion-ccss1";
 import { regresionPrediccion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/12-regresion-prediccion-1bach";
 import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/12-regresion-prediccion-ccss1";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
+import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
+import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
@@ -840,7 +917,9 @@ import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas
 import { simplificarExtraerFactores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/07-simplificar-extraer-factores-4esob";
 import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/10-simplificar-radicales-ccss1";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
+import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
 import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
+import { sistemaMatricialCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/06-sistema-matricial-ccss2";
 import { sistemaMetricoCapacidadLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/03-sistema-metrico-capacidad";
 import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/02-sistema-metrico-longitud";
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
@@ -848,15 +927,19 @@ import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-si
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
 import { sistemasClasificacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/01-sistemas-clasificacion-2bach";
+import { sistemasClasificacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/02-sistemas-clasificacion-ccss2";
 import { sistemasDigitalesBinarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/01-sistemas-digitales-binario";
 import { sistemasEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/07-sistemas-de-ecuaciones/02-sistemas-ecuaciones-2eso";
 import { sistemasEcuaciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/02-sistemas-ecuaciones-3eso";
+import { sistemasEquivalentesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/04-sistemas-equivalentes-ccss2";
 import { sistemasGauss1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/12-sistemas-gauss-1bach";
 import { sistemasGaussCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/15-sistemas-gauss-ccss1";
 import { sistemasHomogeneos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/10-sistemas-homogeneos-2bach";
+import { sistemasHomogeneosCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/03-sistemas-homogeneos-ccss2";
 import { sistemasInecuaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/15-sistemas-inecuaciones-1bach";
 import { sistemasInecuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/15-sistemas-inecuaciones-4esob";
 import { sistemasInecuacionesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/18-sistemas-inecuaciones-ccss1";
+import { sistemasInecuacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/02-sistemas-inecuaciones-ccss2";
 import { sistemasLinealesGrafica4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/02-sistemas-lineales-grafica-4eso";
 import { sistemasLinealesGrafica4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/07-sistemas-lineales-grafica-4esob";
 import { sistemasNoLineales4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/06-sistemas-no-lineales-4eso";
@@ -865,6 +948,7 @@ import { sistemasNoLinealesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { sistemasNoLinealesGraficaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/20-sistemas-no-lineales-grafica-ccss1";
 import { sistemasNumeracionNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/01-sistemas-numeracion-naturales";
 import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
+import { sistemasParametro1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/10-sistemas-parametro-1-ccss2";
 import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
@@ -872,6 +956,7 @@ import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progre
 import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
 import { sucesionesTipos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/04-sucesiones-tipos-1bach";
 import { sumaEscalar2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/03-suma-escalar-2bach";
+import { sumaEscalarCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/03-suma-escalar-ccss2";
 import { sumaInfinita1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/05-suma-infinita-1bach";
 import { sumaProgresionAritmetica3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/03-suma-progresion-aritmetica-3eso";
 import { sumaRestaAngulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/05-suma-resta-angulos-1bach";
@@ -895,7 +980,9 @@ import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/matematica
 import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/03-tablas-graficas-interpretacion-graficas";
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
 import { taeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/05-tae-ccss1";
+import { tamanoRepresentatividadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/03-tamano-representatividad-ccss2";
 import { tangenteNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/07-tangente-normal-2bach";
+import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/05-tangente-normal-ccss2";
 import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/01-tasa-variacion-media-1bach";
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
@@ -904,8 +991,11 @@ import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-e
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
 import { teoremaBayes1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/11-teorema-bayes-1bach";
 import { teoremaBayesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/11-teorema-bayes-ccss1";
+import { teoremaCentralLimiteCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/04-teorema-central-limite-ccss2";
 import { teoremaCoseno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/10-teorema-coseno-1bach";
 import { teoremaDeBayes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/08-teorema-de-bayes-2bach";
+import { teoremaDeBayesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/08-teorema-de-bayes-ccss2";
+import { teoremaFundamentalPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/05-teorema-fundamental-pl-ccss2";
 import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/01-teorema-pitagoras-2eso";
 import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/01-teorema-pitagoras-3eso";
 import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
@@ -918,6 +1008,9 @@ import { tiposCorrosionProteccionLesson } from "@/data/lessons/tecnologia-indust
 import { tiposDiscontinuidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/13-tipos-discontinuidad-1bach";
 import { tiposDiscontinuidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/13-tipos-discontinuidad-ccss1";
 import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/02-tipos-matrices-2bach";
+import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
+import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
+import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
@@ -925,6 +1018,7 @@ import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industri
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
+import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
 import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
@@ -975,6 +1069,7 @@ export const interactiveLessons = {
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
+  "algebra-de-sucesos-ccss2": algebraDeSucesosCcss2Lesson,
   "algebra-ecuaciones": algebraEcuacionesLesson,
   "algebra-expresiones-monomios": algebraExpresionesMonomiosLesson,
   "algebra-letras-numeros": algebraLetrasNumerosLesson,
@@ -1021,7 +1116,9 @@ export const interactiveLessons = {
   "arbol-tabla-1bach": arbolTabla1bachLesson,
   "arbol-tabla-ccss1": arbolTablaCcss1Lesson,
   "arboles-tablas-2bach": arbolesTablas2bachLesson,
+  "arboles-tablas-ccss2": arbolesTablasCcss2Lesson,
   "area-bajo-curva-riemann-2bach": areaBajoCurvaRiemann2bachLesson,
+  "area-bajo-curva-riemann-ccss2": areaBajoCurvaRiemannCcss2Lesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
   "area-cuadrilateros-3eso": areaCuadrilateros3esoLesson,
   "area-esfera-3eso": areaEsfera3esoLesson,
@@ -1030,6 +1127,7 @@ export const interactiveLessons = {
   "area-triangulos-3eso": areaTriangulos3esoLesson,
   "areas-circulo": areasCirculoLesson,
   "areas-cuadrilateros": areasCuadrilaterosLesson,
+  "areas-entre-curvas-ccss2": areasEntreCurvasCcss2Lesson,
   "areas-figuras-curvas-3eso": areasFigurasCurvas3esoLesson,
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
@@ -1037,16 +1135,20 @@ export const interactiveLessons = {
   "asignacion-probabilidades-1bach": asignacionProbabilidades1bachLesson,
   "asignacion-probabilidades-2bach": asignacionProbabilidades2bachLesson,
   "asignacion-probabilidades-ccss1": asignacionProbabilidadesCcss1Lesson,
+  "asignacion-probabilidades-ccss2": asignacionProbabilidadesCcss2Lesson,
   "asintotas-2bach": asintotas2bachLesson,
+  "asintotas-ccss2": asintotasCcss2Lesson,
   "asintotas-oblicuas-1bach": asintotasOblicuas1bachLesson,
   "asintotas-oblicuas-ccss1": asintotasOblicuasCcss1Lesson,
   "asintotas-verticales-horizontales-1bach": asintotasVerticalesHorizontales1bachLesson,
   "asintotas-verticales-horizontales-ccss1": asintotasVerticalesHorizontalesCcss1Lesson,
+  "asintotas-verticales-horizontales-ccss2": asintotasVerticalesHorizontalesCcss2Lesson,
   "atomo-nucleo-corteza": atomoNucleoCortezaLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "automatica-definiciones": automaticaDefinicionesLesson,
   "axiomas-kolmogorov-2bach": axiomasKolmogorov2bachLesson,
+  "axiomas-kolmogorov-ccss2": axiomasKolmogorovCcss2Lesson,
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
@@ -1063,6 +1165,7 @@ export const interactiveLessons = {
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
+  "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
   "caudal-humedad": caudalHumedadLesson,
   "ciclo-carnot": cicloCarnotLesson,
@@ -1106,11 +1209,13 @@ export const interactiveLessons = {
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
   "concepto-matriz-2bach": conceptoMatriz2bachLesson,
+  "concepto-matriz-ccss2": conceptoMatrizCcss2Lesson,
   "conceptos-estadistica-1bach": conceptosEstadistica1bachLesson,
   "conceptos-estadistica-ccss1": conceptosEstadisticaCcss1Lesson,
   "condicionada-independencia-1bach": condicionadaIndependencia1bachLesson,
   "condicionada-independencia-2bach": condicionadaIndependencia2bachLesson,
   "condicionada-independencia-ccss1": condicionadaIndependenciaCcss1Lesson,
+  "condicionada-independencia-ccss2": condicionadaIndependenciaCcss2Lesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
@@ -1119,6 +1224,9 @@ export const interactiveLessons = {
   "continuidad-punto-1bach": continuidadPunto1bachLesson,
   "continuidad-punto-2bach": continuidadPunto2bachLesson,
   "continuidad-punto-ccss1": continuidadPuntoCcss1Lesson,
+  "continuidad-punto-ccss2": continuidadPuntoCcss2Lesson,
+  "contraste-hipotesis-media-ccss2": contrasteHipotesisMediaCcss2Lesson,
+  "contraste-proporcion-errores-ccss2": contrasteProporcionErroresCcss2Lesson,
   "controlador-proporcional": controladorProporcionalLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
@@ -1132,6 +1240,7 @@ export const interactiveLessons = {
   "crecimiento-extremos-2bach": crecimientoExtremos2bachLesson,
   "crecimiento-extremos-2eso": crecimientoExtremos2esoLesson,
   "crecimiento-extremos-3eso": crecimientoExtremos3esoLesson,
+  "crecimiento-extremos-ccss2": crecimientoExtremosCcss2Lesson,
   "criterios-diseno-respuesta": criteriosDisenoRespuestaLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
@@ -1149,6 +1258,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
   "curvatura-inflexion-2bach": curvaturaInflexion2bachLesson,
+  "curvatura-inflexion-ccss2": curvaturaInflexionCcss2Lesson,
   "curvatura-inflexion-rep-2bach": curvaturaInflexionRep2bachLesson,
   "datos-agrupados-1bach": datosAgrupados1bachLesson,
   "datos-agrupados-ccss1": datosAgrupadosCcss1Lesson,
@@ -1157,10 +1267,12 @@ export const interactiveLessons = {
   "derivabilidad-1bach": derivabilidad1bachLesson,
   "derivabilidad-2bach": derivabilidad2bachLesson,
   "derivabilidad-ccss1": derivabilidadCcss1Lesson,
+  "derivabilidad-ccss2": derivabilidadCcss2Lesson,
   "derivacion-logaritmica-implicita-2bach": derivacionLogaritmicaImplicita2bachLesson,
   "derivada-definicion-1bach": derivadaDefinicion1bachLesson,
   "derivada-definicion-2bach": derivadaDefinicion2bachLesson,
   "derivada-definicion-ccss1": derivadaDefinicionCcss1Lesson,
+  "derivada-definicion-ccss2": derivadaDefinicionCcss2Lesson,
   "derivada-inversa-arcos-1bach": derivadaInversaArcos1bachLesson,
   "derivada-punto-1bach": derivadaPunto1bachLesson,
   "derivada-punto-ccss1": derivadaPuntoCcss1Lesson,
@@ -1182,6 +1294,7 @@ export const interactiveLessons = {
   "diagramas-bloques": diagramasBloquesLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
+  "discontinuidades-ccss2": discontinuidadesCcss2Lesson,
   "discusion-sistemas-1bach": discusionSistemas1bachLesson,
   "discusion-sistemas-ccss1": discusionSistemasCcss1Lesson,
   "dispersion-1bach": dispersion1bachLesson,
@@ -1194,8 +1307,10 @@ export const interactiveLessons = {
   "distancia-rectas-2bach": distanciaRectas2bachLesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
+  "distribucion-media-muestral-ccss2": distribucionMediaMuestralCcss2Lesson,
   "distribucion-normal-2bach": distribucionNormal2bachLesson,
   "distribucion-normal-ccss1": distribucionNormalCcss1Lesson,
+  "distribucion-proporcion-muestral-ccss2": distribucionProporcionMuestralCcss2Lesson,
   "divisibilidad": divisibilidadLesson,
   "divisibilidad-2eso": divisibilidad2esoLesson,
   "division-fracciones-2eso": divisionFracciones2esoLesson,
@@ -1226,6 +1341,7 @@ export const interactiveLessons = {
   "ecuaciones-lineales-dos-incognitas-4eso": ecuacionesLinealesDosIncognitas4esoLesson,
   "ecuaciones-lineales-dos-incognitas-4esob": ecuacionesLinealesDosIncognitas4esobLesson,
   "ecuaciones-matriciales-2bach": ecuacionesMatriciales2bachLesson,
+  "ecuaciones-matriciales-ccss2": ecuacionesMatricialesCcss2Lesson,
   "ecuaciones-primer-grado-1bach": ecuacionesPrimerGrado1bachLesson,
   "ecuaciones-primer-grado-3eso": ecuacionesPrimerGrado3esoLesson,
   "ecuaciones-primer-grado-4eso": ecuacionesPrimerGrado4esoLesson,
@@ -1252,12 +1368,14 @@ export const interactiveLessons = {
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
+  "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "esferas-2eso": esferas2esoLesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
   "esquema-estudio-2bach": esquemaEstudio2bachLesson,
+  "esquema-estudio-ccss2": esquemaEstudioCcss2Lesson,
   "estabilidad-routh": estabilidadRouthLesson,
   "estadistica-caja-4eso": estadisticaCaja4esoLesson,
   "estadistica-caja-4esob": estadisticaCaja4esobLesson,
@@ -1275,10 +1393,12 @@ export const interactiveLessons = {
   "estadistica-repaso-4esob": estadisticaRepaso4esobLesson,
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
+  "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-cristalina": estructuraCristalinaLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
   "experimentos-sucesos-ccss1": experimentosSucesosCcss1Lesson,
+  "experimentos-sucesos-ccss2": experimentosSucesosCcss2Lesson,
   "exponencial-crecimiento-4eso": exponencialCrecimiento4esoLesson,
   "exponencial-crecimiento-4esob": exponencialCrecimiento4esobLesson,
   "exponencial-funcion-4eso": exponencialFuncion4esoLesson,
@@ -1360,20 +1480,25 @@ export const interactiveLessons = {
   "funciones-exponenciales-logaritmicas-2bach": funcionesExponencialesLogaritmicas2bachLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "funciones-polinomicas-2bach": funcionesPolinomicas2bachLesson,
+  "funciones-polinomicas-ccss2": funcionesPolinomicasCcss2Lesson,
   "funciones-racionales-1bach": funcionesRacionales1bachLesson,
   "funciones-racionales-2bach": funcionesRacionales2bachLesson,
   "funciones-racionales-ccss1": funcionesRacionalesCcss1Lesson,
+  "funciones-racionales-ccss2": funcionesRacionalesCcss2Lesson,
   "funciones-radicales-valor-absoluto-2bach": funcionesRadicalesValorAbsoluto2bachLesson,
   "funciones-trigonometricas-1bach": funcionesTrigonometricas1bachLesson,
   "funciones-trigonometricas-2bach": funcionesTrigonometricas2bachLesson,
   "funciones-trigonometricas-ccss1": funcionesTrigonometricasCcss1Lesson,
   "galgas-extensometricas": galgasExtensometricasLesson,
   "gauss-ampliada-2bach": gaussAmpliada2bachLesson,
+  "gauss-ampliada-ccss2": gaussAmpliadaCcss2Lesson,
   "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
+  "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
+  "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
@@ -1388,17 +1513,20 @@ export const interactiveLessons = {
   "indeterminacion-cero-cero-1bach": indeterminacionCeroCero1bachLesson,
   "indeterminacion-cero-cero-2bach": indeterminacionCeroCero2bachLesson,
   "indeterminacion-cero-cero-ccss1": indeterminacionCeroCeroCcss1Lesson,
+  "indeterminacion-cero-cero-ccss2": indeterminacionCeroCeroCcss2Lesson,
   "indeterminacion-inf-inf-1bach": indeterminacionInfInf1bachLesson,
   "indeterminacion-inf-inf-ccss1": indeterminacionInfInfCcss1Lesson,
   "indeterminacion-inf-menos-inf-1bach": indeterminacionInfMenosInf1bachLesson,
   "indeterminacion-inf-menos-inf-ccss1": indeterminacionInfMenosInfCcss1Lesson,
   "indeterminacion-infinito-2bach": indeterminacionInfinito2bachLesson,
+  "indeterminacion-infinito-ccss2": indeterminacionInfinitoCcss2Lesson,
   "indeterminacion-uno-infinito-1bach": indeterminacionUnoInfinito1bachLesson,
   "indeterminacion-uno-infinito-2bach": indeterminacionUnoInfinito2bachLesson,
   "indeterminacion-uno-infinito-ccss1": indeterminacionUnoInfinitoCcss1Lesson,
   "induccion-faraday-lenz": induccionFaradayLenzLesson,
   "inecuaciones-4eso": inecuaciones4esoLesson,
   "inecuaciones-4esob": inecuaciones4esobLesson,
+  "inecuaciones-dos-incognitas-ccss2": inecuacionesDosIncognitasCcss2Lesson,
   "inecuaciones-primer-grado-1bach": inecuacionesPrimerGrado1bachLesson,
   "inecuaciones-primer-grado-ccss1": inecuacionesPrimerGradoCcss1Lesson,
   "inecuaciones-segundo-grado-1bach": inecuacionesSegundoGrado1bachLesson,
@@ -1406,11 +1534,16 @@ export const interactiveLessons = {
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
   "integracion-por-partes-2bach": integracionPorPartes2bachLesson,
+  "integracion-por-partes-ccss2": integracionPorPartesCcss2Lesson,
   "integral-definida-tfc-2bach": integralDefinidaTfc2bachLesson,
+  "integral-definida-tfc-ccss2": integralDefinidaTfcCcss2Lesson,
   "integral-derivativa-pid": integralDerivativaPidLesson,
   "integrales-cadena-2bach": integralesCadena2bachLesson,
+  "integrales-cadena-ccss2": integralesCadenaCcss2Lesson,
   "integrales-exponenciales-trigonometricas-2bach": integralesExponencialesTrigonometricas2bachLesson,
+  "integrales-exponenciales-trigonometricas-ccss2": integralesExponencialesTrigonometricasCcss2Lesson,
   "integrales-inmediatas-potencias-2bach": integralesInmediatasPotencias2bachLesson,
+  "integrales-inmediatas-potencias-ccss2": integralesInmediatasPotenciasCcss2Lesson,
   "integrales-racionales-2bach": integralesRacionales2bachLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "interes-compuesto-ccss1": interesCompuestoCcss1Lesson,
@@ -1418,7 +1551,9 @@ export const interactiveLessons = {
   "interpolacion-extrapolacion-ccss1": interpolacionExtrapolacionCcss1Lesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
   "intervalo-confianza-media-2bach": intervaloConfianzaMedia2bachLesson,
+  "intervalo-confianza-media-ccss2": intervaloConfianzaMediaCcss2Lesson,
   "intervalo-confianza-proporcion-2bach": intervaloConfianzaProporcion2bachLesson,
+  "intervalo-confianza-proporcion-ccss2": intervaloConfianzaProporcionCcss2Lesson,
   "intervalos-acotados-4esob": intervalosAcotados4esobLesson,
   "intervalos-confianza-ccss1": intervalosConfianzaCcss1Lesson,
   "intervalos-entornos-1bach": intervalosEntornos1bachLesson,
@@ -1427,6 +1562,7 @@ export const interactiveLessons = {
   "inversa-aplicaciones-4esob": inversaAplicaciones4esobLesson,
   "inversa-determinantes-2bach": inversaDeterminantes2bachLesson,
   "inversa-gauss-jordan-2bach": inversaGaussJordan2bachLesson,
+  "inversa-gauss-jordan-ccss2": inversaGaussJordanCcss2Lesson,
   "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
   "inversa-hiperbola-4esob": inversaHiperbola4esobLesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
@@ -1437,15 +1573,20 @@ export const interactiveLessons = {
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
+  "limite-definicion-ccss2": limiteDefinicionCcss2Lesson,
   "limite-sucesion-1bach": limiteSucesion1bachLesson,
   "limites-calculo-1bach": limitesCalculo1bachLesson,
   "limites-infinito-2bach": limitesInfinito2bachLesson,
+  "limites-infinito-ccss2": limitesInfinitoCcss2Lesson,
   "limites-infinitos-1bach": limitesInfinitos1bachLesson,
   "limites-infinitos-ccss1": limitesInfinitosCcss1Lesson,
   "limites-infinitos-punto-2bach": limitesInfinitosPunto2bachLesson,
+  "limites-infinitos-punto-ccss2": limitesInfinitosPuntoCcss2Lesson,
   "limites-laterales-1bach": limitesLaterales1bachLesson,
   "limites-laterales-ccss1": limitesLateralesCcss1Lesson,
+  "limites-laterales-ccss2": limitesLateralesCcss2Lesson,
   "limites-operaciones-2bach": limitesOperaciones2bachLesson,
+  "limites-operaciones-ccss2": limitesOperacionesCcss2Lesson,
   "lineal-idea-4eso": linealIdea4esoLesson,
   "lineal-idea-4esob": linealIdea4esobLesson,
   "lineal-pendiente-grafica-4eso": linealPendienteGrafica4esoLesson,
@@ -1475,6 +1616,7 @@ export const interactiveLessons = {
   "materiales-ceramicos": materialesCeramicosLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
   "matriz-inversa-2bach": matrizInversa2bachLesson,
+  "matriz-inversa-ccss2": matrizInversaCcss2Lesson,
   "maximo-comun-divisor": maximoComunDivisorLesson,
   "maximo-comun-divisor-2eso": maximoComunDivisor2esoLesson,
   "maximos-minimos-1bach": maximosMinimos1bachLesson,
@@ -1571,10 +1713,12 @@ export const interactiveLessons = {
   "optimizacion-1bach": optimizacion1bachLesson,
   "optimizacion-2bach": optimizacion2bachLesson,
   "optimizacion-ccss1": optimizacionCcss1Lesson,
+  "optimizacion-ccss2": optimizacionCcss2Lesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
+  "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "parabola-1bach": parabola1bachLesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
@@ -1588,7 +1732,10 @@ export const interactiveLessons = {
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
+  "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
+  "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
+  "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
@@ -1620,10 +1767,12 @@ export const interactiveLessons = {
   "potencias-exponente-negativo-ccss1": potenciasExponenteNegativoCcss1Lesson,
   "potencias-exponente-racional-ccss1": potenciasExponenteRacionalCcss1Lesson,
   "potencias-matrices-2bach": potenciasMatrices2bachLesson,
+  "potencias-matrices-ccss2": potenciasMatricesCcss2Lesson,
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
   "primitiva-integral-indefinida-2bach": primitivaIntegralIndefinida2bachLesson,
+  "primitiva-integral-indefinida-ccss2": primitivaIntegralIndefinidaCcss2Lesson,
   "prismas-2eso": prismas2esoLesson,
   "prob-arbol-4eso": probArbol4esoLesson,
   "prob-arbol-4esob": probArbol4esobLesson,
@@ -1649,6 +1798,11 @@ export const interactiveLessons = {
   "probabilidad-total-1bach": probabilidadTotal1bachLesson,
   "probabilidad-total-2bach": probabilidadTotal2bachLesson,
   "probabilidad-total-ccss1": probabilidadTotalCcss1Lesson,
+  "probabilidad-total-ccss2": probabilidadTotalCcss2Lesson,
+  "problema-dietas-ccss2": problemaDietasCcss2Lesson,
+  "problema-produccion-ccss2": problemaProduccionCcss2Lesson,
+  "problema-transporte-ccss2": problemaTransporteCcss2Lesson,
+  "problemas-bayes-diagnostico-ccss2": problemasBayesDiagnosticoCcss2Lesson,
   "problemas-decimales-notacion-4eso": problemasDecimalesNotacion4esoLesson,
   "problemas-ecuaciones-2eso": problemasEcuaciones2esoLesson,
   "problemas-ecuaciones-3eso": problemasEcuaciones3esoLesson,
@@ -1657,21 +1811,26 @@ export const interactiveLessons = {
   "problemas-financieros-ccss1": problemasFinancierosCcss1Lesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
+  "problemas-integrales-ccss2": problemasIntegralesCcss2Lesson,
   "problemas-limites-continuidad-2bach": problemasLimitesContinuidad2bachLesson,
+  "problemas-limites-continuidad-ccss2": problemasLimitesContinuidadCcss2Lesson,
   "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
   "problemas-metricos-2-2bach": problemasMetricos22bachLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
   "problemas-normal-2bach": problemasNormal2bachLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
   "problemas-numeros-reales-4esob": problemasNumerosReales4esobLesson,
+  "problemas-pl-ccss2": problemasPlCcss2Lesson,
   "problemas-primer-grado-4eso": problemasPrimerGrado4esoLesson,
   "problemas-rectas-planos-1-2bach": problemasRectasPlanos12bachLesson,
   "problemas-rectas-planos-2-2bach": problemasRectasPlanos22bachLesson,
   "problemas-segundo-grado-4eso": problemasSegundoGrado4esoLesson,
   "problemas-segundo-grado-4esob": problemasSegundoGrado4esobLesson,
   "problemas-sistemas-1-2bach": problemasSistemas12bachLesson,
+  "problemas-sistemas-1-ccss2": problemasSistemas1Ccss2Lesson,
   "problemas-sistemas-1bach": problemasSistemas1bachLesson,
   "problemas-sistemas-2-2bach": problemasSistemas22bachLesson,
+  "problemas-sistemas-2-ccss2": problemasSistemas2Ccss2Lesson,
   "problemas-sistemas-2eso": problemasSistemas2esoLesson,
   "problemas-sistemas-3eso": problemasSistemas3esoLesson,
   "problemas-sistemas-capitales-4eso": problemasSistemasCapitales4esoLesson,
@@ -1679,6 +1838,7 @@ export const interactiveLessons = {
   "problemas-sistemas-ccss1": problemasSistemasCcss1Lesson,
   "problemas-sistemas-compras-4eso": problemasSistemasCompras4esoLesson,
   "problemas-sistemas-compras-4esob": problemasSistemasCompras4esobLesson,
+  "problemas-tablas-probabilidad-ccss2": problemasTablasProbabilidadCcss2Lesson,
   "problemas-trigonometria-1bach": problemasTrigonometria1bachLesson,
   "problemas-vectores-1-2bach": problemasVectores12bachLesson,
   "problemas-vectores-2-2bach": problemasVectores22bachLesson,
@@ -1688,6 +1848,7 @@ export const interactiveLessons = {
   "producto-escalar-1bach": productoEscalar1bachLesson,
   "producto-escalar-espacio-2bach": productoEscalarEspacio2bachLesson,
   "producto-matrices-2bach": productoMatrices2bachLesson,
+  "producto-matrices-ccss2": productoMatricesCcss2Lesson,
   "producto-mixto-2bach": productoMixto2bachLesson,
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
@@ -1697,12 +1858,14 @@ export const interactiveLessons = {
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
   "propiedades-condicion-inicial-2bach": propiedadesCondicionInicial2bachLesson,
+  "propiedades-condicion-inicial-ccss2": propiedadesCondicionInicialCcss2Lesson,
   "propiedades-det-1-2bach": propiedadesDet12bachLesson,
   "propiedades-det-2-2bach": propiedadesDet22bachLesson,
   "propiedades-limites-infinito-1bach": propiedadesLimitesInfinito1bachLesson,
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
+  "propiedades-producto-ccss2": propiedadesProductoCcss2Lesson,
   "propiedades-sensores": propiedadesSensoresLesson,
   "proporcionalidad-compuesta-4eso": proporcionalidadCompuesta4esoLesson,
   "proporcionalidad-directa-2eso": proporcionalidadDirecta2esoLesson,
@@ -1738,6 +1901,7 @@ export const interactiveLessons = {
   "raiz-cuadrada-naturales": raizCuadradaNaturalesLesson,
   "raiz-decimales-2eso": raizDecimales2esoLesson,
   "rango-matriz-2bach": rangoMatriz2bachLesson,
+  "rango-matriz-ccss2": rangoMatrizCcss2Lesson,
   "rango-menores-2bach": rangoMenores2bachLesson,
   "rango-parametro-2bach": rangoParametro2bachLesson,
   "razones-agudas-1bach": razonesAgudas1bachLesson,
@@ -1753,6 +1917,7 @@ export const interactiveLessons = {
   "recta-tangente-1bach": rectaTangente1bachLesson,
   "recta-tangente-ccss1": rectaTangenteCcss1Lesson,
   "recta-vectorial-parametricas-2bach": rectaVectorialParametricas2bachLesson,
+  "rectas-nivel-ccss2": rectasNivelCcss2Lesson,
   "rectas-y-angulos-angulos": rectasYAngulosAngulosLesson,
   "rectas-y-angulos-mediatriz-bisectriz": rectasYAngulosMediatrizBisectrizLesson,
   "rectas-y-angulos-medida": rectasYAngulosMedidaLesson,
@@ -1761,25 +1926,31 @@ export const interactiveLessons = {
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
   "red-distribucion": redDistribucionLesson,
   "refrigeracion-carnot-eficiencia": refrigeracionCarnotEficienciaLesson,
+  "region-factible-vertices-ccss2": regionFactibleVerticesCcss2Lesson,
   "registros-contadores": registrosContadoresLesson,
   "regla-cadena-1bach": reglaCadena1bachLesson,
   "regla-cadena-2bach": reglaCadena2bachLesson,
   "regla-cadena-ccss1": reglaCadenaCcss1Lesson,
+  "regla-cadena-ccss2": reglaCadenaCcss2Lesson,
   "regla-cramer-2bach": reglaCramer2bachLesson,
   "regla-de-barrow-2bach": reglaDeBarrow2bachLesson,
+  "regla-de-barrow-ccss2": reglaDeBarrowCcss2Lesson,
   "regla-fases-gibbs": reglaFasesGibbsLesson,
   "regla-ruffini-4esob": reglaRuffini4esobLesson,
   "reglas-derivacion-2bach": reglasDerivacion2bachLesson,
+  "reglas-derivacion-ccss2": reglasDerivacionCcss2Lesson,
   "regresion-cuadratica-determinacion-ccss1": regresionCuadraticaDeterminacionCcss1Lesson,
   "regresion-prediccion-1bach": regresionPrediccion1bachLesson,
   "regresion-prediccion-ccss1": regresionPrediccionCcss1Lesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
+  "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
+  "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
@@ -1811,7 +1982,9 @@ export const interactiveLessons = {
   "simplificar-extraer-factores-4esob": simplificarExtraerFactores4esobLesson,
   "simplificar-radicales-ccss1": simplificarRadicalesCcss1Lesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
+  "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
   "sistema-matricial-2bach": sistemaMatricial2bachLesson,
+  "sistema-matricial-ccss2": sistemaMatricialCcss2Lesson,
   "sistema-metrico-capacidad": sistemaMetricoCapacidadLesson,
   "sistema-metrico-longitud": sistemaMetricoLongitudLesson,
   "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
@@ -1819,15 +1992,19 @@ export const interactiveLessons = {
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
   "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
   "sistemas-clasificacion-2bach": sistemasClasificacion2bachLesson,
+  "sistemas-clasificacion-ccss2": sistemasClasificacionCcss2Lesson,
   "sistemas-digitales-binario": sistemasDigitalesBinarioLesson,
   "sistemas-ecuaciones-2eso": sistemasEcuaciones2esoLesson,
   "sistemas-ecuaciones-3eso": sistemasEcuaciones3esoLesson,
+  "sistemas-equivalentes-ccss2": sistemasEquivalentesCcss2Lesson,
   "sistemas-gauss-1bach": sistemasGauss1bachLesson,
   "sistemas-gauss-ccss1": sistemasGaussCcss1Lesson,
   "sistemas-homogeneos-2bach": sistemasHomogeneos2bachLesson,
+  "sistemas-homogeneos-ccss2": sistemasHomogeneosCcss2Lesson,
   "sistemas-inecuaciones-1bach": sistemasInecuaciones1bachLesson,
   "sistemas-inecuaciones-4esob": sistemasInecuaciones4esobLesson,
   "sistemas-inecuaciones-ccss1": sistemasInecuacionesCcss1Lesson,
+  "sistemas-inecuaciones-ccss2": sistemasInecuacionesCcss2Lesson,
   "sistemas-lineales-grafica-4eso": sistemasLinealesGrafica4esoLesson,
   "sistemas-lineales-grafica-4esob": sistemasLinealesGrafica4esobLesson,
   "sistemas-no-lineales-4eso": sistemasNoLineales4esoLesson,
@@ -1836,6 +2013,7 @@ export const interactiveLessons = {
   "sistemas-no-lineales-grafica-ccss1": sistemasNoLinealesGraficaCcss1Lesson,
   "sistemas-numeracion-naturales": sistemasNumeracionNaturalesLesson,
   "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
+  "sistemas-parametro-1-ccss2": sistemasParametro1Ccss2Lesson,
   "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
@@ -1843,6 +2021,7 @@ export const interactiveLessons = {
   "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,
   "sucesiones-tipos-1bach": sucesionesTipos1bachLesson,
   "suma-escalar-2bach": sumaEscalar2bachLesson,
+  "suma-escalar-ccss2": sumaEscalarCcss2Lesson,
   "suma-infinita-1bach": sumaInfinita1bachLesson,
   "suma-progresion-aritmetica-3eso": sumaProgresionAritmetica3esoLesson,
   "suma-resta-angulos-1bach": sumaRestaAngulos1bachLesson,
@@ -1866,7 +2045,9 @@ export const interactiveLessons = {
   "tablas-graficas-interpretacion-graficas": tablasGraficasInterpretacionGraficasLesson,
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
   "tae-ccss1": taeCcss1Lesson,
+  "tamano-representatividad-ccss2": tamanoRepresentatividadCcss2Lesson,
   "tangente-normal-2bach": tangenteNormal2bachLesson,
+  "tangente-normal-ccss2": tangenteNormalCcss2Lesson,
   "tasa-variacion-media-1bach": tasaVariacionMedia1bachLesson,
   "tasa-variacion-media-ccss1": tasaVariacionMediaCcss1Lesson,
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
@@ -1875,8 +2056,11 @@ export const interactiveLessons = {
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
   "teorema-bayes-1bach": teoremaBayes1bachLesson,
   "teorema-bayes-ccss1": teoremaBayesCcss1Lesson,
+  "teorema-central-limite-ccss2": teoremaCentralLimiteCcss2Lesson,
   "teorema-coseno-1bach": teoremaCoseno1bachLesson,
   "teorema-de-bayes-2bach": teoremaDeBayes2bachLesson,
+  "teorema-de-bayes-ccss2": teoremaDeBayesCcss2Lesson,
+  "teorema-fundamental-pl-ccss2": teoremaFundamentalPlCcss2Lesson,
   "teorema-pitagoras-2eso": teoremaPitagoras2esoLesson,
   "teorema-pitagoras-3eso": teoremaPitagoras3esoLesson,
   "teorema-seno-1bach": teoremaSeno1bachLesson,
@@ -1889,6 +2073,9 @@ export const interactiveLessons = {
   "tipos-discontinuidad-1bach": tiposDiscontinuidad1bachLesson,
   "tipos-discontinuidad-ccss1": tiposDiscontinuidadCcss1Lesson,
   "tipos-matrices-2bach": tiposMatrices2bachLesson,
+  "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
+  "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
+  "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
@@ -1896,6 +2083,7 @@ export const interactiveLessons = {
   "transformaciones-gas": transformacionesGasLesson,
   "transformada-laplace": transformadaLaplaceLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
+  "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
   "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
   "triangulos-2eso": triangulos2esoLesson,

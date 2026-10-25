@@ -991,6 +991,12 @@ export type SlideAnimId =
   | "area-entre-curvas"
   | "solido-revolucion"
   | "pascal-binomio"
+  | "semiplano-prueba"
+  | "rectas-nivel"
+  | "poblacion-muestra"
+  | "tipos-muestreo"
+  | "tcl-medias"
+  | "contraste-region"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1498,6 +1504,11 @@ export type SlideToolId =
   | "chebychev-explorador"
   | "densidad-explorador"
   | "intervalo-media-explorador"
+  | "programacion-lineal-explorador"
+  | "media-muestral-explorador"
+  | "proporcion-muestral-explorador"
+  | "contraste-media-explorador"
+  | "contraste-proporcion-explorador"
   /* industrial-tool-end */;
 
 /**
