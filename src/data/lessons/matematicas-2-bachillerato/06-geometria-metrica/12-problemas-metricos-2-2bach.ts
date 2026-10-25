@@ -140,7 +140,7 @@ export const problemasMetricos22bachLesson: InteractiveLesson = {
         },
         {
           "id": "d",
-          "label": "el producto escalar $\\\\overrightarrow{AP}\\\\cdot\\\\vec{v}$",
+          "label": "el producto escalar $\\overrightarrow{AP}\\cdot\\vec{v}$",
           "incorrectFeedback": "Eso da la proyección, no la distancia."
         }
       ],

@@ -95,7 +95,7 @@ export const teoremasContinuas2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$f(x) = \\\\dfrac{1}{x}$ en $[-1, 1]$",
+          "label": "$f(x) = \\dfrac{1}{x}$ en $[-1, 1]$",
           "incorrectFeedback": "No es continua en $0$."
         },
         {
@@ -105,7 +105,7 @@ export const teoremasContinuas2bachLesson: InteractiveLesson = {
         },
         {
           "id": "d",
-          "label": "$f(x) = \\\\operatorname{sgn}(x)$ en $[-1, 1]$",
+          "label": "$f(x) = \\operatorname{sgn}(x)$ en $[-1, 1]$",
           "incorrectFeedback": "No es continua en $0$."
         }
       ],

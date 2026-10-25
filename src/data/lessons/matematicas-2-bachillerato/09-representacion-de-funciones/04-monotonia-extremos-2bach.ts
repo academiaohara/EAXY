@@ -104,17 +104,17 @@ export const monotoniaExtremos2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$(-\\\\infty, 1)$",
+          "label": "$(-\\infty, 1)$",
           "incorrectFeedback": "Ahí $f' > 0$: es creciente."
         },
         {
           "id": "c",
-          "label": "$(2, +\\\\infty)$",
+          "label": "$(2, +\\infty)$",
           "incorrectFeedback": "Ahí también crece."
         },
         {
           "id": "d",
-          "label": "todo $\\\\mathbb{R}$",
+          "label": "todo $\\mathbb{R}$",
           "incorrectFeedback": "Tiene extremos relativos, luego no es monótona."
         }
       ],

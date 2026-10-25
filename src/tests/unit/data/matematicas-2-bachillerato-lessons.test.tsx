@@ -18,6 +18,7 @@ const TEMAS: [number, string, number][] = [
   [7, "limites-y-continuidad", 12],
   [8, "derivadas", 12],
   [9, "representacion-de-funciones", 12],
+  [10, "integrales", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);

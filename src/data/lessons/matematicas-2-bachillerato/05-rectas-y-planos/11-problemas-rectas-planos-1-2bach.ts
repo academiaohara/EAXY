@@ -130,12 +130,12 @@ export const problemasRectasPlanos12bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "un vector perpendicular a $\\\\vec{v}$",
+          "label": "un vector perpendicular a $\\vec{v}$",
           "incorrectFeedback": "Eso daría un plano que contiene a la dirección de la recta."
         },
         {
           "id": "c",
-          "label": "el vector $\\\\overrightarrow{OP}$",
+          "label": "el vector $\\overrightarrow{OP}$",
           "incorrectFeedback": "Depende del punto, no de la recta."
         },
         {

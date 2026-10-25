@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildPrimitivaFamilia, buildRiemannSumas, buildTeoremaFundamental, buildAreaEntreCurvas, buildSolidoRevolucion } from "@/components/lesson/anim/scenes/bach2-integrales";
 import { buildBolzanoBiseccion, buildRolleLagrange } from "@/components/lesson/anim/scenes/bach2-analisis";
 import { buildProyeccionPuntoPlano3d, buildDistanciaPuntoRecta3d, buildDistanciaRectasCruzan3d } from "@/components/lesson/anim/scenes/bach2-metrica";
 import { buildRectaEspacio3d, buildPlanoTresPuntos3d, buildRectasPosiciones3d } from "@/components/lesson/anim/scenes/bach2-rectas-planos";
@@ -654,6 +655,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "distancia-rectas-cruzan-3d": (p) => buildDistanciaRectasCruzan3d(p),
   "bolzano-biseccion": () => buildBolzanoBiseccion(),
   "rolle-lagrange": (p) => buildRolleLagrange(p),
+  "primitiva-familia": () => buildPrimitivaFamilia(),
+  "riemann-sumas": () => buildRiemannSumas(),
+  "teorema-fundamental": () => buildTeoremaFundamental(),
+  "area-entre-curvas": () => buildAreaEntreCurvas(),
+  "solido-revolucion": () => buildSolidoRevolucion(),
   /* industrial-end */
 };
 

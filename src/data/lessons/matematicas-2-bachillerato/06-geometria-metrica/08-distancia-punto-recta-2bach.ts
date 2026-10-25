@@ -104,7 +104,7 @@ export const distanciaPuntoRecta2bachLesson: InteractiveLesson = {
         },
         {
           "id": "c",
-          "label": "sumando los módulos de $\\\\vec{v}$ y $\\\\overrightarrow{AP}$",
+          "label": "sumando los módulos de $\\vec{v}$ y $\\overrightarrow{AP}$",
           "incorrectFeedback": "No es una distancia."
         },
         {

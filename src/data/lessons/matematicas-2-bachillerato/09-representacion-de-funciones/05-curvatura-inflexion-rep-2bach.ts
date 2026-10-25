@@ -114,7 +114,7 @@ export const curvaturaInflexionRep2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "$x < \\\\tfrac32$",
+          "label": "$x < \\tfrac32$",
           "incorrectFeedback": "Ahí $f'' < 0$: cóncava."
         },
         {

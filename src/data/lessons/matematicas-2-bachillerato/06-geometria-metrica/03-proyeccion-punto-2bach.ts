@@ -139,7 +139,7 @@ export const proyeccionPunto2bachLesson: InteractiveLesson = {
         },
         {
           "id": "c",
-          "label": "igual al vector $\\\\overrightarrow{OP}$",
+          "label": "igual al vector $\\overrightarrow{OP}$",
           "incorrectFeedback": "No tiene relación."
         },
         {

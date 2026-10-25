@@ -117,17 +117,17 @@ export const funcionesTrigonometricas2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "amplitud $1$ y periodo $6\\\\pi$",
+          "label": "amplitud $1$ y periodo $6\\pi$",
           "incorrectFeedback": "El factor $3$ multiplica la función, no el ángulo."
         },
         {
           "id": "c",
-          "label": "amplitud $3$ y periodo $\\\\tfrac{2\\\\pi}{3}$",
+          "label": "amplitud $3$ y periodo $\\tfrac{2\\pi}{3}$",
           "incorrectFeedback": "El periodo solo cambia si se multiplica la variable."
         },
         {
           "id": "d",
-          "label": "amplitud $\\\\tfrac13$",
+          "label": "amplitud $\\tfrac13$",
           "incorrectFeedback": "La amplitud es $|A| = 3$."
         }
       ],

@@ -91,7 +91,7 @@ export const continuidadPunto2bachLesson: InteractiveLesson = {
         },
         {
           "id": "b",
-          "label": "en todo $\\\\mathbb{R}$",
+          "label": "en todo $\\mathbb{R}$",
           "incorrectFeedback": "No está definida en $0$."
         },
         {
