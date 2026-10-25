@@ -1032,6 +1032,10 @@ export type SlideAnimId =
   | "contrachapado-capas"
   | "aleacion-mezcla"
   | "ciclo-reciclaje-material"
+  | "esfuerzos-tipos"
+  | "triangulo-rigido"
+  | "arco-descarga"
+  | "camino-cargas"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1634,6 +1638,12 @@ export type SlideToolId =
   | "seleccion-material-eso-explorador"
   | "taller-peligros-explorador"
   | "contenedores-reciclaje-explorador"
+  | "esfuerzos-barra-explorador"
+  | "viga-flexion-explorador"
+  | "estabilidad-explorador"
+  | "triangulacion-explorador"
+  | "puentes-tipos-explorador"
+  | "ensayo-puente-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -508,6 +508,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `contrachapado-capas` | Por qué el contrachapado es estable: láminas finas con las fibras cruzadas | — |
 | `aleacion-mezcla` | Aleación: átomos de cobre y estaño mezclados forman bronce, más duro que sus componentes | — |
 | `ciclo-reciclaje-material` | Ciclo del reciclaje: uso, recogida, planta, material reciclado y nuevo producto | — |
+| `esfuerzos-tipos` | Los cinco esfuerzos (tracción, compresión, flexión, torsión y cortadura) con una barra y un ejemplo cotidiano | — |
+| `triangulo-rigido` | Un marco cuadrilátero se deforma con una fuerza lateral; un triángulo (o un cuadrilátero con diagonal) no | — |
+| `arco-descarga` | Viga que se flexiona frente a un arco que lleva la carga por compresión a los estribos | — |
+| `camino-cargas` | El camino de las cargas en un edificio: cubierta, vigas, pilares, cimientos y terreno | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -984,6 +988,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `seleccion-material-eso-explorador` | Ranking de seis materiales según la importancia de cuatro criterios para cuatro objetos | `n` objeto (0–3) |
 | `taller-peligros-explorador` | Escena de taller con seis situaciones peligrosas que se localizan pulsando | — |
 | `contenedores-reciclaje-explorador` | Diez residuos y seis contenedores, con aciertos, fallos y explicación | — |
+| `esfuerzos-barra-explorador` | Una barra sometida a tracción, compresión, flexión, torsión o cortadura con carga variable | `n` esfuerzo (0–4), `a` carga (%) |
+| `viga-flexion-explorador` | Flecha de un listón de madera biapoyado según carga, luz y colocación (de canto o plano) | `a` carga (kg), `b` luz (m) |
+| `estabilidad-explorador` | Vuelco de un bloque: base, altura, inclinación y lastre; ángulo crítico | `a` base (cm), `b` altura (cm) |
+| `triangulacion-explorador` | Marco articulado sin diagonal, con una o con dos, bajo una fuerza lateral | `n` modo (0–2), `a` fuerza (N) |
+| `puentes-tipos-explorador` | Puentes de vigas, de arco, colgante y atirantado con sus esfuerzos en rojo (tracción) y azul (compresión) | `n` puente (0–3) |
+| `ensayo-puente-explorador` | Puente de papel: forma, triangulación y luz; carga máxima y rotura | `n` forma (0–2), `a` luz (cm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

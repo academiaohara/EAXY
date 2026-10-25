@@ -296,6 +296,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 10,
   },
   {
+    slug: "estructuras",
+    subject: "tecnologia",
+    title: "Estructuras",
+    description: "Elementos estructurales, esfuerzos, estabilidad, triangulación y estructuras de edificios y puentes.",
+    orderIndex: 11,
+  },
+  {
     slug: "tecnologia-sostenible",
     subject: "tecnologia",
     title: "Tecnología sostenible",
@@ -508,6 +515,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-1-eso/tecnologia-proceso-tecnologico": "proyectos-tecnologicos",
   "tecnologia-1-eso/expresion-comunicacion-grafica": "expresion-grafica",
   "tecnologia-1-eso/materiales-uso-tecnico": "materiales",
+  "tecnologia-1-eso/estructuras": "estructuras",
   // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
   "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
   "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",

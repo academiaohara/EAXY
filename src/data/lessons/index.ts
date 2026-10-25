@@ -157,6 +157,7 @@ import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachill
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
+import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
 import { conceptoMatriz2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/01-concepto-matriz-2bach";
 import { conceptoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/01-concepto-matriz-ccss2";
@@ -170,6 +171,7 @@ import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
+import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
 import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
@@ -314,9 +316,11 @@ import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso
 import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
 import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/09-ecuaciones-trig-metodos-1bach";
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
+import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
+import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
@@ -333,11 +337,13 @@ import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
+import { esfuerzosEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/03-esfuerzos-estructuras";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
 import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
+import { estabilidadResistenciaLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/04-estabilidad-resistencia";
 import { estabilidadRouthLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/09-estabilidad-routh";
 import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
 import { estadisticaCaja4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/07-estadistica-caja-4esob";
@@ -1111,6 +1117,7 @@ import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss
 import { tratamientosPropiedadesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/09-tratamientos-propiedades";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
 import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
+import { triangulacionEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/05-triangulacion-estructuras";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
 import { trigAngulosNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/05-trig-angulos-notables-4esob";
 import { trigCalculadora4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/06-trig-calculadora-4esob";
@@ -1314,6 +1321,7 @@ export const interactiveLessons = {
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "compresores": compresoresLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
+  "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
   "concepto-matriz-2bach": conceptoMatriz2bachLesson,
   "concepto-matriz-ccss2": conceptoMatrizCcss2Lesson,
@@ -1327,6 +1335,7 @@ export const interactiveLessons = {
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
+  "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
   "continuidad-punto-1bach": continuidadPunto1bachLesson,
@@ -1471,9 +1480,11 @@ export const interactiveLessons = {
   "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
   "ecuaciones-trig-metodos-1bach": ecuacionesTrigMetodos1bachLesson,
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
+  "edificios-puentes-torres": edificiosPuentesTorresLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
+  "elementos-estructurales": elementosEstructuralesLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
@@ -1490,11 +1501,13 @@ export const interactiveLessons = {
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "escalas-dibujo": escalasDibujoLesson,
   "esferas-2eso": esferas2esoLesson,
+  "esfuerzos-estructuras": esfuerzosEstructurasLesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
   "esquema-estudio-2bach": esquemaEstudio2bachLesson,
   "esquema-estudio-ccss2": esquemaEstudioCcss2Lesson,
+  "estabilidad-resistencia": estabilidadResistenciaLesson,
   "estabilidad-routh": estabilidadRouthLesson,
   "estadistica-caja-4eso": estadisticaCaja4esoLesson,
   "estadistica-caja-4esob": estadisticaCaja4esobLesson,
@@ -2268,6 +2281,7 @@ export const interactiveLessons = {
   "tratamientos-propiedades": tratamientosPropiedadesLesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
   "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
+  "triangulacion-estructuras": triangulacionEstructurasLesson,
   "triangulos-2eso": triangulos2esoLesson,
   "trig-angulos-notables-4esob": trigAngulosNotables4esobLesson,
   "trig-calculadora-4esob": trigCalculadora4esobLesson,

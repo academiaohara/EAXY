@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EsfuerzosBarraExplorador, VigaFlexionExplorador, EstabilidadExplorador, TriangulacionExplorador, PuentesTiposExplorador, EnsayoPuenteExplorador } from "@/components/lesson/slide/tools/TecEso1EstructurasTools";
 import { EnsayoMaterialExplorador, PropiedadesBarrasExplorador, MaderaDerivadosExplorador, MetalesPruebaExplorador, PlasticoCalorExplorador, SeleccionMaterialEsoExplorador, TallerPeligrosExplorador, ContenedoresReciclajeExplorador } from "@/components/lesson/slide/tools/TecEso1MaterialesTools";
 import { TrazadosBasicosExplorador, AcotacionExplorador, EscalaDibujoExplorador, VistasPiezaExplorador, PerspectivaExplorador } from "@/components/lesson/slide/tools/TecEso1GraficaTools";
 import { AnalisisObjetoExplorador, LineaTiempoExplorador, PresupuestoExplorador, RepartoTareasExplorador, FuenteFiableExplorador } from "@/components/lesson/slide/tools/TecEso1ProcesoTools";
@@ -1374,6 +1375,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TallerPeligrosExplorador block={block} />;
     case "contenedores-reciclaje-explorador":
       return <ContenedoresReciclajeExplorador block={block} />;
+    case "esfuerzos-barra-explorador":
+      return <EsfuerzosBarraExplorador block={block} />;
+    case "viga-flexion-explorador":
+      return <VigaFlexionExplorador block={block} />;
+    case "estabilidad-explorador":
+      return <EstabilidadExplorador block={block} />;
+    case "triangulacion-explorador":
+      return <TriangulacionExplorador block={block} />;
+    case "puentes-tipos-explorador":
+      return <PuentesTiposExplorador block={block} />;
+    case "ensayo-puente-explorador":
+      return <EnsayoPuenteExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

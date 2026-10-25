@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildEsfuerzosTipos, buildTrianguloRigido, buildArcoDescarga, buildCaminoCargas } from "@/components/lesson/anim/scenes/industrial/teceso1-estructuras";
 import { buildMateriasPrimasProceso, buildContrachapadoCapas, buildAleacionMezcla, buildCicloReciclaje } from "@/components/lesson/anim/scenes/industrial/teceso1-materiales";
 import { buildTrazoParalelaEscuadra, buildAcotarPiezaPasos, buildVistasProyeccion, buildCaballeraPasos, buildIsometricaPasos, buildBocetoCroquisPlano, buildEscalaReduccion } from "@/components/lesson/anim/scenes/industrial/teceso1-grafica";
 import { buildFasesProyectoEso, buildCienciaTecnicaTecnologia } from "@/components/lesson/anim/scenes/industrial/teceso1-proceso";
@@ -715,6 +716,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "contrachapado-capas": () => buildContrachapadoCapas(),
   "aleacion-mezcla": () => buildAleacionMezcla(),
   "ciclo-reciclaje-material": () => buildCicloReciclaje(),
+  "esfuerzos-tipos": () => buildEsfuerzosTipos(),
+  "triangulo-rigido": () => buildTrianguloRigido(),
+  "arco-descarga": () => buildArcoDescarga(),
+  "camino-cargas": () => buildCaminoCargas(),
   /* industrial-end */
 };
 
