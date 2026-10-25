@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AngulosEspacioExplorador, ProyeccionSimetricoExplorador, DistanciasEspacioExplorador } from "@/components/lesson/slide/tools/Bach2MetricaTools";
 import { RectaEspacioExplorador, PlanoEspacioExplorador, PosicionRectasExplorador, PosicionRectaPlanoExplorador, PosicionPlanosExplorador } from "@/components/lesson/slide/tools/Bach2RectasPlanosTools";
 import { VectoresPuntosExplorador, VectoresDependenciaExplorador, ProductoEscalar3dExplorador, ProductoVectorialExplorador, ProductoMixtoExplorador } from "@/components/lesson/slide/tools/Bach2VectoresTools";
 import { SistemaRoucheExplorador, CramerExplorador, SistemaFamiliaExplorador } from "@/components/lesson/slide/tools/Bach2SistemasTools";
@@ -1136,6 +1137,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PosicionRectaPlanoExplorador block={block} />;
     case "posicion-planos-explorador":
       return <PosicionPlanosExplorador block={block} />;
+    case "angulos-espacio-explorador":
+      return <AngulosEspacioExplorador block={block} />;
+    case "proyeccion-simetrico-explorador":
+      return <ProyeccionSimetricoExplorador block={block} />;
+    case "distancias-espacio-explorador":
+      return <DistanciasEspacioExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

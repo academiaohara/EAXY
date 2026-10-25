@@ -460,6 +460,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
   "matematicas-2-bachillerato/vectores-en-el-espacio": "geometria-del-espacio",
   "matematicas-2-bachillerato/rectas-y-planos": "geometria-del-espacio",
+  "matematicas-2-bachillerato/geometria-metrica": "geometria-del-espacio",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

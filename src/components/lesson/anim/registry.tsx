@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildProyeccionPuntoPlano3d, buildDistanciaPuntoRecta3d, buildDistanciaRectasCruzan3d } from "@/components/lesson/anim/scenes/bach2-metrica";
 import { buildRectaEspacio3d, buildPlanoTresPuntos3d, buildRectasPosiciones3d } from "@/components/lesson/anim/scenes/bach2-rectas-planos";
 import { buildVectorComponentes3d, buildVectoresSuma3d, buildProductoEscalarProyeccion, buildProductoVectorial3d, buildParalelepipedoVolumen } from "@/components/lesson/anim/scenes/bach2-vectores";
 import { buildSistemaFormaMatricial, buildSistemaGaussAmpliada, buildRoucheCasos } from "@/components/lesson/anim/scenes/bach2-sistemas";
@@ -647,6 +648,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "recta-espacio-3d": (p) => buildRectaEspacio3d(p),
   "plano-tres-puntos-3d": (p) => buildPlanoTresPuntos3d(p),
   "rectas-posiciones-3d": () => buildRectasPosiciones3d(),
+  "proyeccion-punto-plano-3d": (p) => buildProyeccionPuntoPlano3d(p),
+  "distancia-punto-recta-3d": (p) => buildDistanciaPuntoRecta3d(p),
+  "distancia-rectas-cruzan-3d": (p) => buildDistanciaRectasCruzan3d(p),
   /* industrial-end */
 };
 

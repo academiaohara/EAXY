@@ -1,6 +1,6 @@
 /** Rectas y planos del espacio con enteros: ecuaciones y posiciones relativas por rangos. */
-import { analizarSistema, mat, qShow, rango, type AnalisisSistema, type Q } from "@/components/lesson/anim/matrices";
-import { cross, dot, restaV, type V3 } from "@/components/lesson/anim/vec3";
+import { analizarSistema, mat, q, qAdd, qDiv, qMul, qShow, qSub, rango, type AnalisisSistema, type Q } from "@/components/lesson/anim/matrices";
+import { cross, dot, norma2, raizTxt, restaV, type V3 } from "@/components/lesson/anim/vec3";
 
 export type Plano = [number, number, number, number];
 
@@ -121,3 +121,69 @@ export function posTresPlanos(p1: Plano, p2: Plano, p3: Plano): PosTres {
 }
 
 export const puntoTxt = (p: Q[]) => `(${p.map(qShow).join(", ")})`;
+
+/* ───────────── Geometría métrica: proyecciones, simétricos, distancias y ángulos ───────────── */
+
+
+/** Proyección ortogonal de un punto sobre un plano (coordenadas racionales). */
+export function proyeccionPuntoPlano(P: V3, p: Plano): Q[] {
+  const n = normalPlano(p);
+  const t = qDiv(q(-evaluaPlano(p, P)), q(norma2(n)));
+  return P.map((x, i) => qAdd(q(x), qMul(t, q(n[i]!))));
+}
+
+/** Proyección ortogonal de un punto sobre la recta `A + λ·v`. */
+export function proyeccionPuntoRecta(P: V3, A: V3, v: V3): Q[] {
+  const l = qDiv(q(dot(restaV(P, A), v)), q(norma2(v)));
+  return A.map((x, i) => qAdd(q(x), qMul(l, q(v[i]!))));
+}
+
+/** Simétrico de `P` respecto de un punto `M` (o de una proyección): `2M − P`. */
+export const simetrico = (P: V3, M: Q[]): Q[] => M.map((m, i) => qSub(qMul(q(2), m), q(P[i]!)));
+
+/** Raíz de un racional no negativo escrita como `a√b/c`. */
+export function raizRacional(x: Q): string {
+  if (x.n === 0) return "0";
+  const nd = x.n * x.d;
+  const base = raizTxt(nd);
+  if (x.d === 1) return base;
+  return `${base}/${x.d}`;
+}
+
+/** Valor decimal con coma, para acompañar a una distancia exacta. */
+export const decEs = (x: number, d = 3) => x.toFixed(d).replace(".", ",").replace(/,?0+$/, "");
+
+const abs2 = (x: Q): Q => qMul(x, x);
+
+/** Distancia (cuadrado exacto) de un punto a un plano. */
+export function dist2PuntoPlano(P: V3, p: Plano): Q {
+  return qDiv(abs2(q(evaluaPlano(p, P))), q(norma2(normalPlano(p))));
+}
+
+/** Distancia (cuadrado exacto) de un punto a la recta `A + t·v`. */
+export function dist2PuntoRecta(P: V3, A: V3, v: V3): Q {
+  return qDiv(q(norma2(cross(restaV(P, A), v))), q(norma2(v)));
+}
+
+/** Distancia (cuadrado exacto) entre dos rectas que se cruzan o son paralelas. */
+export function dist2Rectas(P: V3, u: V3, Q0: V3, v: V3): Q {
+  const w = cross(u, v);
+  if (norma2(w) === 0) return dist2PuntoRecta(Q0, P, u);
+  const m = dot(restaV(Q0, P), w);
+  return qDiv(q(m * m), q(norma2(w)));
+}
+
+/** Ángulo agudo (grados) entre dos rectas por sus vectores directores. */
+export function anguloRectas(u: V3, v: V3): number {
+  const c = Math.abs(dot(u, v)) / Math.sqrt(norma2(u) * norma2(v));
+  return (Math.acos(Math.min(1, c)) * 180) / Math.PI;
+}
+
+/** Ángulo (grados) entre recta (dirección `v`) y plano (normal `n`). */
+export function anguloRectaPlano(v: V3, n: V3): number {
+  const s = Math.abs(dot(v, n)) / Math.sqrt(norma2(v) * norma2(n));
+  return (Math.asin(Math.min(1, s)) * 180) / Math.PI;
+}
+
+/** Ángulo agudo entre dos planos por sus normales. */
+export const anguloPlanos = anguloRectas;

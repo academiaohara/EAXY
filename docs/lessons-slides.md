@@ -456,6 +456,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `recta-espacio-3d` | Recta de punto P y vector director v: puntos con t = 1, 2, −1 y ecuaciones paramétricas | `nums`: `[Px,Py,Pz,vx,vy,vz]` (−5 a 5) |
 | `plano-tres-puntos-3d` | Plano por tres puntos: dos vectores, normal (producto vectorial) y ecuación general | `nums`: `[Ax,Ay,Az,Bx,By,Bz,Cx,Cy,Cz]` |
 | `rectas-posiciones-3d` | Las cuatro posiciones relativas de dos rectas con los rangos de {u, v} y {u, v, PQ} | — |
+| `proyeccion-punto-plano-3d` | Recta perpendicular por P, pie F, distancia y simétrico respecto de un plano | `nums`: `[Px,Py,Pz, A,B,C, D]` |
+| `distancia-punto-recta-3d` | Distancia de un punto a una recta: paralelogramo de AP y v, área entre base y pie de la perpendicular | `nums`: `[P, A, v]` (9 valores) |
+| `distancia-rectas-cruzan-3d` | Distancia entre dos rectas que se cruzan: paralelepípedo de u, v y PQ, volumen entre área de la base | `nums`: `[P, u, Q, v]` (12 valores) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -822,6 +825,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `posicion-rectas-explorador` | Dos rectas (P, u) y (Q, v): posición, rangos y punto de corte | `initial`: 12 valores (P, u, Q, v por filas) |
 | `posicion-recta-plano-explorador` | Recta y plano: contenida, paralela o secante y punto de corte | `initial`: `[Px,Py,Pz,vx,vy,vz,A,B,C,D]` |
 | `posicion-planos-explorador` | Tres planos: rangos, posición (punto, recta, prisma…) y posición de cada pareja | `initial`: 12 valores (A, B, C, D por plano) |
+| `angulos-espacio-explorador` | Ángulo entre dos rectas, recta y plano o dos planos a partir de dos vectores | `initial`: `[modo (0–2)]` y 6 componentes |
+| `proyeccion-simetrico-explorador` | Proyección ortogonal y simétrico de un punto respecto de un plano, una recta o un punto | `initial`: `[modo (0–2), P(3), …]` (plano: 4 valores; recta: A y v; punto: M) |
+| `distancias-espacio-explorador` | Distancia exacta y aproximada punto-plano, punto-recta y entre dos rectas | `initial`: `[modo (0–2)]` y los datos de cada caso |
 
 ## Respuesta como fracción
 

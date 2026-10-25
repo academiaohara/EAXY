@@ -101,3 +101,4 @@ export const TEMA_2BACH_2_SUBTITLE = "2.º Bachillerato, Tema 2 — Determinante
 export const TEMA_2BACH_3_SUBTITLE = "2.º Bachillerato, Tema 3 — Sistemas de ecuaciones lineales";
 export const TEMA_2BACH_4_SUBTITLE = "2.º Bachillerato, Tema 4 — Vectores en el espacio";
 export const TEMA_2BACH_5_SUBTITLE = "2.º Bachillerato, Tema 5 — Rectas y planos en el espacio";
+export const TEMA_2BACH_6_SUBTITLE = "2.º Bachillerato, Tema 6 — Geometría métrica en el espacio";

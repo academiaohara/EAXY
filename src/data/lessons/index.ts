@@ -28,6 +28,8 @@ import { analiticaRectaVector4esobLesson } from "@/data/lessons/matematicas-4-es
 import { analiticaVectores4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/01-analitica-vectores-4eso";
 import { analiticaVectores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/01-analitica-vectores-4esob";
 import { anguloDobleMitad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/06-angulo-doble-mitad-1bach";
+import { anguloPlanosPerpendicularidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/02-angulo-planos-perpendicularidad-2bach";
+import { anguloRectasRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/01-angulo-rectas-recta-plano-2bach";
 import { angulosCosenos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/05-angulos-cosenos-2bach";
 import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/04-angulos-relacionados-1bach";
 import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/06-anualidades-amortizacion-ccss1";
@@ -190,7 +192,11 @@ import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { dispersionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/07-dispersion-ccss1";
+import { distanciaPlanosRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/09-distancia-planos-recta-plano-2bach";
+import { distanciaPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/07-distancia-punto-plano-2bach";
 import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/07-distancia-punto-recta-1bach";
+import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/08-distancia-punto-recta-2bach";
+import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
 import { distribucionNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/06-distribucion-normal-ccss1";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
@@ -622,6 +628,8 @@ import { problemasFamososCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { problemasFinancierosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/07-problemas-financieros-ccss1";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
+import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
+import { problemasMetricos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/12-problemas-metricos-2-2bach";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
 import { problemasNumerosReales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/14-problemas-numeros-reales-4esob";
@@ -673,6 +681,8 @@ import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/1
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
 import { proyeccionOrtogonalidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/06-proyeccion-ortogonalidad-2bach";
+import { proyeccionPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/03-proyeccion-punto-2bach";
+import { proyeccionRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/04-proyeccion-recta-plano-2bach";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
@@ -756,6 +766,8 @@ import { semirrectasRectaReal4esobLesson } from "@/data/lessons/matematicas-4-es
 import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
+import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
+import { simetricoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/06-simetrico-recta-2bach";
 import { simplificarDiagramasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/08-simplificar-diagramas";
 import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/05-simplificar-equivalentes-operador-4eso";
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
@@ -915,6 +927,8 @@ export const interactiveLessons = {
   "analitica-vectores-4eso": analiticaVectores4esoLesson,
   "analitica-vectores-4esob": analiticaVectores4esobLesson,
   "angulo-doble-mitad-1bach": anguloDobleMitad1bachLesson,
+  "angulo-planos-perpendicularidad-2bach": anguloPlanosPerpendicularidad2bachLesson,
+  "angulo-rectas-recta-plano-2bach": anguloRectasRectaPlano2bachLesson,
   "angulos-cosenos-2bach": angulosCosenos2bachLesson,
   "angulos-relacionados-1bach": angulosRelacionados1bachLesson,
   "anualidades-amortizacion-ccss1": anualidadesAmortizacionCcss1Lesson,
@@ -1077,7 +1091,11 @@ export const interactiveLessons = {
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "dispersion-ccss1": dispersionCcss1Lesson,
+  "distancia-planos-recta-plano-2bach": distanciaPlanosRectaPlano2bachLesson,
+  "distancia-punto-plano-2bach": distanciaPuntoPlano2bachLesson,
   "distancia-punto-recta-1bach": distanciaPuntoRecta1bachLesson,
+  "distancia-punto-recta-2bach": distanciaPuntoRecta2bachLesson,
+  "distancia-rectas-2bach": distanciaRectas2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
   "distribucion-normal-ccss1": distribucionNormalCcss1Lesson,
   "divisibilidad": divisibilidadLesson,
@@ -1509,6 +1527,8 @@ export const interactiveLessons = {
   "problemas-financieros-ccss1": problemasFinancierosCcss1Lesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
+  "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
+  "problemas-metricos-2-2bach": problemasMetricos22bachLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
   "problemas-numeros-reales-4esob": problemasNumerosReales4esobLesson,
@@ -1560,6 +1580,8 @@ export const interactiveLessons = {
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
   "proyeccion-ortogonalidad-2bach": proyeccionOrtogonalidad2bachLesson,
+  "proyeccion-punto-2bach": proyeccionPunto2bachLesson,
+  "proyeccion-recta-plano-2bach": proyeccionRectaPlano2bachLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
@@ -1643,6 +1665,8 @@ export const interactiveLessons = {
   "senal-analogica-digital": senalAnalogicaDigitalLesson,
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
+  "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,
+  "simetrico-recta-2bach": simetricoRecta2bachLesson,
   "simplificar-diagramas": simplificarDiagramasLesson,
   "simplificar-equivalentes-operador-4eso": simplificarEquivalentesOperador4esoLesson,
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,

@@ -980,6 +980,9 @@ export type SlideAnimId =
   | "recta-espacio-3d"
   | "plano-tres-puntos-3d"
   | "rectas-posiciones-3d"
+  | "proyeccion-punto-plano-3d"
+  | "distancia-punto-recta-3d"
+  | "distancia-rectas-cruzan-3d"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1471,6 +1474,9 @@ export type SlideToolId =
   | "posicion-rectas-explorador"
   | "posicion-recta-plano-explorador"
   | "posicion-planos-explorador"
+  | "angulos-espacio-explorador"
+  | "proyeccion-simetrico-explorador"
+  | "distancias-espacio-explorador"
   /* industrial-tool-end */;
 
 /**

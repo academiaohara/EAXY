@@ -102,13 +102,14 @@ export function buildProductoEscalarProyeccion(params: { a?: number }): AnimBuil
   const proy = V * Math.cos(rad);
   const px = O[0] + k * proy;
   const prod = U * proy;
-  const fmt = (x: number) => x.toFixed(2).replace(".", ",").replace(/,?0+$/, "");
+  const fmt = (x: number) => x.toFixed(2).replace(/\.?0+$/, "").replace(".", ",");
+  const fmtT = (x: number) => fmt(x).replace(",", "{,}");
   return {
     label: "Producto escalar y proyección",
     captions: [
       `Dos vectores con el mismo origen forman un ángulo $\\alpha = ${alfa}^\\circ$. Sus módulos son $|\\vec{u}| = ${U}$ y $|\\vec{v}| = ${V}$.`,
-      `La **proyección** de $\\vec{v}$ sobre $\\vec{u}$ mide $|\\vec{v}|\\cos\\alpha = ${fmt(proy)}$ (negativa si el ángulo es obtuso).`,
-      `El **producto escalar** es el módulo de $\\vec{u}$ por esa proyección: $\\vec{u}\\cdot\\vec{v} = |\\vec{u}||\\vec{v}|\\cos\\alpha = ${U}\\cdot ${fmt(proy)} = ${fmt(prod)}$. Es un **número**, no un vector.`,
+      `La **proyección** de $\\vec{v}$ sobre $\\vec{u}$ mide $|\\vec{v}|\\cos\\alpha = ${fmtT(proy)}$ (negativa si el ángulo es obtuso).`,
+      `El **producto escalar** es el módulo de $\\vec{u}$ por esa proyección: $\\vec{u}\\cdot\\vec{v} = |\\vec{u}||\\vec{v}|\\cos\\alpha = ${U}\\cdot ${fmtT(proy)} = ${fmtT(prod)}$. Es un **número**, no un vector.`,
       "El signo depende del ángulo: **positivo** si es agudo, **negativo** si es obtuso y **cero** si los vectores son perpendiculares ($\\alpha = 90^\\circ$).",
     ],
     beatMs: 5200,
@@ -198,13 +199,14 @@ export function buildParalelepipedoVolumen(params: { nums?: number[] }): AnimBui
   const top = base.map((p) => A(p, w));
   const tri = Math.abs(m) / 6;
   const fmt = (x: number) => (Number.isInteger(x) ? String(x) : x.toFixed(2).replace(".", ","));
+  const fmtT = (x: number) => fmt(x).replace(",", "{,}");
   return {
     label: "Producto mixto y volumen",
     captions: [
       `Tres vectores con el mismo origen: $\\vec{u} = ${vtex(u)}$, $\\vec{v} = ${vtex(v)}$ y $\\vec{w} = ${vtex(w)}$.`,
       "$\\vec{u}$ y $\\vec{v}$ forman la **base**: un paralelogramo de área $|\\vec{u}\\times\\vec{v}|$.",
       "$\\vec{w}$ marca la **altura** (inclinada): el paralelepípedo es el cuerpo que generan los tres vectores.",
-      `El **producto mixto** $[\\vec{u}, \\vec{v}, \\vec{w}] = \\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) = ${m}$ es el determinante de las tres filas. Su valor absoluto es el volumen: $V = ${Math.abs(m)}$. El tetraedro correspondiente ocupa la sexta parte: $${fmt(tri)}$.`,
+      `El **producto mixto** $[\\vec{u}, \\vec{v}, \\vec{w}] = \\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) = ${m}$ es el determinante de las tres filas. Su valor absoluto es el volumen: $V = ${Math.abs(m)}$. El tetraedro correspondiente ocupa la sexta parte: $${fmtT(tri)}$.`,
     ],
     beatMs: 5400,
     render: (beat) => (

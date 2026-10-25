@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { planoTresPuntos, planoTxt, posPlanos, posRectaPlano, posRectas, posTresPlanos, puntoTxt, rectaDeDosPlanos } from "@/components/lesson/anim/geo3d";
+import { anguloPlanos, anguloRectaPlano, anguloRectas, dist2PuntoPlano, dist2PuntoRecta, dist2Rectas, planoTresPuntos, planoTxt, posPlanos, posRectaPlano, posRectas, posTresPlanos, proyeccionPuntoPlano, proyeccionPuntoRecta, puntoTxt, raizRacional, rectaDeDosPlanos, simetrico } from "@/components/lesson/anim/geo3d";
 
 describe("rectas y planos en el espacio", () => {
   it("halla el plano por tres puntos", () => {
@@ -50,5 +50,28 @@ describe("datos de las lecciones de rectas y planos", () => {
     expect(6 * 1 + 3 * 2 + 2 * -3 - 6).toBe(0);
     expect(posTresPlanos([1, 1, 0, 0], [0, 1, 1, 0], [1, 2, 1, -1]).caso).toBe("prisma");
     expect(posTresPlanos([1, 1, 1, -1], [1, -1, 0, 0], [0, 1, -1, 0]).an.solucion?.map((x) => `${x.n}/${x.d}`)).toEqual(["1/3", "1/3", "1/3"]);
+  });
+});
+
+describe("geometría métrica", () => {
+  const pt = (p: { n: number; d: number }[]) => puntoTxt(p);
+  it("proyecta y simetriza", () => {
+    const f = proyeccionPuntoPlano([5, 2, 3], [2, -1, 2, -4]);
+    expect(pt(f)).toBe("(25/9, 28/9, 7/9)");
+    expect(pt(simetrico([5, 2, 3], f))).toBe("(5/9, 38/9, −13/9)");
+    const r = proyeccionPuntoRecta([0, 0, -1], [2, 2, 1], [3, 1, 2]);
+    expect(pt(r)).toBe("(−4/7, 8/7, −5/7)");
+  });
+  it("calcula distancias exactas", () => {
+    expect(raizRacional(dist2PuntoPlano([1, 1, 3], [2, -1, 1, 3]))).toBe("7√6/6");
+    expect(raizRacional(dist2PuntoPlano([0, 0, 0], [1, 2, 2, -6]))).toBe("2");
+    expect(raizRacional(dist2PuntoRecta([0, 0, 0], [0, 0, 3], [1, 0, 0]))).toBe("3");
+    expect(raizRacional(dist2Rectas([0, 0, 0], [1, 0, 0], [0, 0, 5], [0, 1, 0]))).toBe("5");
+    expect(raizRacional(dist2Rectas([0, 0, 0], [1, 0, 0], [0, 3, 4], [1, 0, 0]))).toBe("5");
+  });
+  it("calcula ángulos", () => {
+    expect(Math.round(anguloRectas([1, 1, 0], [1, 0, 0]))).toBe(45);
+    expect(Math.round(anguloRectaPlano([0, 0, 1], [0, 0, 1]))).toBe(90);
+    expect(Math.round(anguloPlanos([1, 0, 0], [1, 1, 0]))).toBe(45);
   });
 });
