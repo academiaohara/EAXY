@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildTransmisionFlujo, buildCorreaAbiertaCruzada, buildEngranajesGiro, buildBielaManivelaCiclo, buildPalancaGeneros } from "@/components/lesson/anim/scenes/industrial/tec1-mecanismos";
 import { buildEscalaMaterialZoom, buildPolimeroCadenas, buildConformadoProcesos } from "@/components/lesson/anim/scenes/industrial/tec1-materiales";
 import { buildProcesoDisenoCiclo, buildGanttCaminoCritico } from "@/components/lesson/anim/scenes/industrial/tec1-proyectos";
 import { buildPoblacionMuestra, buildTiposMuestreo, buildTclMedias, buildContrasteRegion } from "@/components/lesson/anim/scenes/ccss2-estimacion";
@@ -677,6 +678,11 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "escala-material-zoom": () => buildEscalaMaterialZoom(),
   "polimero-cadenas": () => buildPolimeroCadenas(),
   "conformado-procesos": () => buildConformadoProcesos(),
+  "transmision-flujo": () => buildTransmisionFlujo(),
+  "correa-abierta-cruzada": () => buildCorreaAbiertaCruzada(),
+  "engranajes-giro": () => buildEngranajesGiro(),
+  "biela-manivela-ciclo": () => buildBielaManivelaCiclo(),
+  "palanca-generos": () => buildPalancaGeneros(),
   /* industrial-end */
 };
 

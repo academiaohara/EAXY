@@ -1002,6 +1002,11 @@ export type SlideAnimId =
   | "escala-material-zoom"
   | "polimero-cadenas"
   | "conformado-procesos"
+  | "transmision-flujo"
+  | "correa-abierta-cruzada"
+  | "engranajes-giro"
+  | "biela-manivela-ciclo"
+  | "palanca-generos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1533,6 +1538,20 @@ export type SlideToolId =
   | "tolerancia-calidad-explorador"
   | "fabrica-riesgos-explorador"
   | "reciclaje-energia-explorador"
+  | "maquina-desmontaje-explorador"
+  | "poleas-correas-explorador"
+  | "engranajes-explorador"
+  | "bicicleta-explorador"
+  | "sin-fin-explorador"
+  | "biela-manivela-explorador"
+  | "leva-seguidor-explorador"
+  | "cremallera-tornillo-explorador"
+  | "palanca-explorador"
+  | "polipasto-explorador"
+  | "disco-giratorio-explorador"
+  | "motor-virtual-explorador"
+  | "reductor-rendimiento-explorador"
+  | "transmision-editor-explorador"
   /* industrial-tool-end */;
 
 /**

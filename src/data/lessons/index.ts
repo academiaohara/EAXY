@@ -13,6 +13,7 @@ import { algebraResolucionPrimerGradoLesson } from "@/data/lessons/matematicas-1
 import { algebraTecnicasEcuacionesLesson } from "@/data/lessons/matematicas-1-eso/10-algebra/04-algebra-tecnicas-ecuaciones";
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
+import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
 import { analiticaDistancia4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/05-analitica-distancia-4esob";
 import { analiticaModulo4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/02-analitica-modulo-4eso";
@@ -95,6 +96,7 @@ import { binomialParametrosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { binomioDeNewton2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/11-binomio-de-newton-2bach";
 import { binomioNewtonCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/08-binomio-newton-ccss1";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
+import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
@@ -302,6 +304,7 @@ import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industr
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
+import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
@@ -389,6 +392,7 @@ import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
+import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConcepto4esobLesson } from "@/data/lessons/matematicas-4-eso-b/04-funciones-caracteristicas/01-funcion-concepto-4esob";
@@ -556,6 +560,7 @@ import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industr
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
+import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/01-maquinas-mecanismos-elementos";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
 import { matrizInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/08-matriz-inversa-2bach";
@@ -665,6 +670,7 @@ import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/0
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
@@ -683,6 +689,7 @@ import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccs
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
 import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
+import { poleasCorreasFriccionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/02-poleas-correas-friccion";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
 import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
@@ -892,6 +899,7 @@ import { reglasDerivacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { regresionCuadraticaDeterminacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/13-regresion-cuadratica-determinacion-ccss1";
 import { regresionPrediccion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/12-regresion-prediccion-1bach";
 import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/12-regresion-prediccion-ccss1";
+import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
@@ -1034,6 +1042,7 @@ import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industria
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
 import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/07-transductores-velocidad";
+import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/05-transformacion-movimiento";
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
@@ -1073,6 +1082,7 @@ import { variacionesPorcentuales4esoLesson } from "@/data/lessons/matematicas-4-
 import { vectoresPlano1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/01-vectores-plano-1bach";
 import { velocidadAceleracion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/12-velocidad-aceleracion-1bach";
 import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/09-velocidad-aceleracion-ccss1";
+import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
@@ -1098,6 +1108,7 @@ export const interactiveLessons = {
   "algebra-tecnicas-ecuaciones": algebraTecnicasEcuacionesLesson,
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
+  "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
   "analitica-distancia-4esob": analiticaDistancia4esobLesson,
   "analitica-modulo-4eso": analiticaModulo4esoLesson,
@@ -1180,6 +1191,7 @@ export const interactiveLessons = {
   "binomio-de-newton-2bach": binomioDeNewton2bachLesson,
   "binomio-newton-ccss1": binomioNewtonCcss1Lesson,
   "bomba-calor": bombaCalorLesson,
+  "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
@@ -1387,6 +1399,7 @@ export const interactiveLessons = {
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
+  "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
@@ -1474,6 +1487,7 @@ export const interactiveLessons = {
   "fracciones-problemas": fraccionesProblemasLesson,
   "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
+  "fuerza-par-potencia": fuerzaParPotenciaLesson,
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-concepto-4esob": funcionConcepto4esobLesson,
@@ -1641,6 +1655,7 @@ export const interactiveLessons = {
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
+  "maquinas-mecanismos-elementos": maquinasMecanismosElementosLesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
   "matriz-inversa-2bach": matrizInversa2bachLesson,
@@ -1750,6 +1765,7 @@ export const interactiveLessons = {
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
   "parabola-1bach": parabola1bachLesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
@@ -1768,6 +1784,7 @@ export const interactiveLessons = {
   "plasticos-elastomeros": plasticosElastomerosLesson,
   "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
+  "poleas-correas-friccion": poleasCorreasFriccionLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
   "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
@@ -1977,6 +1994,7 @@ export const interactiveLessons = {
   "regresion-cuadratica-determinacion-ccss1": regresionCuadraticaDeterminacionCcss1Lesson,
   "regresion-prediccion-1bach": regresionPrediccion1bachLesson,
   "regresion-prediccion-ccss1": regresionPrediccionCcss1Lesson,
+  "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
   "residuos-reciclaje": residuosReciclajeLesson,
@@ -2119,6 +2137,7 @@ export const interactiveLessons = {
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
   "transductores-velocidad": transductoresVelocidadLesson,
+  "transformacion-movimiento": transformacionMovimientoLesson,
   "transformaciones-gas": transformacionesGasLesson,
   "transformada-laplace": transformadaLaplaceLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
@@ -2158,6 +2177,7 @@ export const interactiveLessons = {
   "vectores-plano-1bach": vectoresPlano1bachLesson,
   "velocidad-aceleracion-1bach": velocidadAceleracion1bachLesson,
   "velocidad-aceleracion-ccss1": velocidadAceleracionCcss1Lesson,
+  "velocidad-lineal-angular": velocidadLinealAngularLesson,
   "viscosidad-indice": viscosidadIndiceLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,

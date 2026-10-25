@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MaquinaDesmontajeExplorador, PoleasCorreasExplorador, EngranajesExplorador, BicicletaExplorador, SinFinExplorador, BielaManivelaExplorador, LevaSeguidorExplorador, CremalleraTornilloExplorador, PalancaExplorador, PolipastoExplorador, DiscoGiratorioExplorador, MotorVirtualExplorador, ReductorRendimientoExplorador, TransmisionEditorExplorador } from "@/components/lesson/slide/tools/Tec1MecanismosTools";
 import { MesaMuestrasExplorador, EstructuraAtomicaExplorador, PropiedadesComparadorExplorador, CarbonoHierroExplorador, PolimeroTemperaturaExplorador, CompuestoMezclasExplorador, TratamientoCurvaExplorador, ProcesoCosteExplorador, Impresion3dExplorador, ToleranciaCalidadExplorador, FabricaRiesgosExplorador, ReciclajeEnergiaExplorador } from "@/components/lesson/slide/tools/Tec1MaterialesTools";
 import { ObjetoProblemaExplorador, MatrizDecisionExplorador, RequisitosExplorador, GanttExplorador, RolesEquipoExplorador, PrototipoEnsayoExplorador, MemoriaTecnicaExplorador } from "@/components/lesson/slide/tools/Tec1ProyectosTools";
 import { MediaMuestralExplorador, ProporcionMuestralExplorador, ContrasteMediaExplorador, ContrasteProporcionExplorador } from "@/components/lesson/slide/tools/Ccss2EstimacionTools";
@@ -1224,6 +1225,34 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FabricaRiesgosExplorador block={block} />;
     case "reciclaje-energia-explorador":
       return <ReciclajeEnergiaExplorador block={block} />;
+    case "maquina-desmontaje-explorador":
+      return <MaquinaDesmontajeExplorador block={block} />;
+    case "poleas-correas-explorador":
+      return <PoleasCorreasExplorador block={block} />;
+    case "engranajes-explorador":
+      return <EngranajesExplorador block={block} />;
+    case "bicicleta-explorador":
+      return <BicicletaExplorador block={block} />;
+    case "sin-fin-explorador":
+      return <SinFinExplorador block={block} />;
+    case "biela-manivela-explorador":
+      return <BielaManivelaExplorador block={block} />;
+    case "leva-seguidor-explorador":
+      return <LevaSeguidorExplorador block={block} />;
+    case "cremallera-tornillo-explorador":
+      return <CremalleraTornilloExplorador block={block} />;
+    case "palanca-explorador":
+      return <PalancaExplorador block={block} />;
+    case "polipasto-explorador":
+      return <PolipastoExplorador block={block} />;
+    case "disco-giratorio-explorador":
+      return <DiscoGiratorioExplorador block={block} />;
+    case "motor-virtual-explorador":
+      return <MotorVirtualExplorador block={block} />;
+    case "reductor-rendimiento-explorador":
+      return <ReductorRendimientoExplorador block={block} />;
+    case "transmision-editor-explorador":
+      return <TransmisionEditorExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
