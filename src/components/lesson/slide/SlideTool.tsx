@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SecanteExplorador, DerivabilidadExplorador, FuncionDerivadaExplorador, ProductoCocienteExplorador, CadenaExplorador, DerivadaInversaExplorador, VelocidadAceleracionExplorador, ExtremosExplorador, OptimizacionExplorador } from "@/components/lesson/slide/tools/Bach1DerivTools";
 import { LimiteTablaExplorador, LimiteLateralExplorador, LimiteInfinitoExplorador, AsintotasExplorador, CeroCeroExplorador, LimiteGradosExplorador, ContinuidadKExplorador, OperacionesLimiteExplorador, RestaFraccionesExplorador } from "@/components/lesson/slide/tools/Bach1LimTools";
 import { DominioExplorador, SimetriaExplorador, SignoExplorador, FuncionRaizExplorador, ExpLogExplorador, TrigFuncionExplorador, AbsFuncionExplorador, OfertaDemandaExplorador, ComposicionExplorador, InversaExplorador } from "@/components/lesson/slide/tools/Bach1FuncTools";
 import { ProductoEscalarExplorador, RectaFormasExplorador, RectasAnguloExplorador, DistanciaPuntoRectaExplorador, MediatrizExplorador, ConicaExplorador } from "@/components/lesson/slide/tools/Bach1GeoTools";
@@ -1002,6 +1003,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OperacionesLimiteExplorador block={block} />;
     case "resta-fracciones-explorador":
       return <RestaFraccionesExplorador block={block} />;
+    case "secante-explorador":
+      return <SecanteExplorador block={block} />;
+    case "derivabilidad-explorador":
+      return <DerivabilidadExplorador block={block} />;
+    case "funcion-derivada-explorador":
+      return <FuncionDerivadaExplorador block={block} />;
+    case "producto-cociente-explorador":
+      return <ProductoCocienteExplorador block={block} />;
+    case "cadena-explorador":
+      return <CadenaExplorador block={block} />;
+    case "derivada-inversa-explorador":
+      return <DerivadaInversaExplorador block={block} />;
+    case "velocidad-aceleracion-explorador":
+      return <VelocidadAceleracionExplorador block={block} />;
+    case "extremos-explorador":
+      return <ExtremosExplorador block={block} />;
+    case "optimizacion-explorador":
+      return <OptimizacionExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

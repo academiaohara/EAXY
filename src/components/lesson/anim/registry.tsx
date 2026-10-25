@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildSecanteTangente, buildDerivadaSigno, buildExtremosCriterios } from "@/components/lesson/anim/scenes/bach1-derivadas";
 import { buildLimiteAproximacion, buildAsintotasTipos } from "@/components/lesson/anim/scenes/bach1-limites";
 import { buildProyeccionVector } from "@/components/lesson/anim/scenes/bach1-geo";
 import { buildRadianArco, buildCirculoGoniometrico } from "@/components/lesson/anim/scenes/bach1-trig";
@@ -599,6 +600,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "proyeccion-vector": (p) => buildProyeccionVector(p),
   "limite-aproximacion": () => buildLimiteAproximacion(),
   "asintotas-tipos": (p) => buildAsintotasTipos(p),
+  "secante-tangente": () => buildSecanteTangente(),
+  "derivada-signo": () => buildDerivadaSigno(),
+  "extremos-criterios": () => buildExtremosCriterios(),
   /* industrial-end */
 };
 

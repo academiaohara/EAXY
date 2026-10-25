@@ -413,6 +413,9 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `proyeccion-vector` | Producto escalar como proyección: u y v desde el origen, sombra de u sobre v, u·v y ángulo | `nums`: `[ux, uy, vx, vy]` (enteros en [−6, 6]) |
 | `limite-aproximacion` | Límite en un punto: (x² − 1)/(x − 1) sin imagen en x = 1; aproximación por la izquierda y la derecha hacia 2 | — |
 | `asintotas-tipos` | Asíntotas: vertical y horizontal de (2x + 1)/(x − 1) (`a: 1`); oblicua y = x + 3 y rama parabólica (`a: 2`) | `a` (1 o 2) |
+| `secante-tangente` | De las secantes a la tangente: f(x) = x² en P(1, 1), Q en x = 3, 2, 1,5 (pendientes 4, 3, 2,5) y tangente de pendiente 2 | — |
+| `derivada-signo` | f(x) = 2x − 0,1x²: tangente creciente en x = 5, horizontal en 10 y decreciente en 15 | — |
+| `extremos-criterios` | f(x) = x³ − 3x: puntos críticos ±1, signo de f′ y criterio de la segunda derivada | — |
 | `factor-comun-area` | Extraer factor común como altura compartida de dos áreas: `g·b·x + g·c = g(bx + c)` | `a` (g), `b`, `c` |
 | `fracciones-orden` | Ordenar 7/12, 5/8 y 9/16 con barras: común denominador (48) y comparación de numeradores | — |
 | `fraccion-total` | Conocida la parte `a/b` (valor `c`), una parte = `c : a` y el total son `b` partes (fracción inversa) | `a`, `b`, `c` |
@@ -532,6 +535,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `continuidad-k-explorador` | f(x) = x² si x < a; x + k si x ≥ a: laterales, salto y valor de k para que sea continua | `initial`: `[a, k]` |
 | `operaciones-limite-explorador` | Límite de f ± g, f·g o f/g para funciones sencillas en +∞ o 0⁺: forma resultante, si es indeterminada y valor real | `initial`: `[f (0–5), g (0–5), operación (0 +, 1 −, 2 ·, 3 /), destino (0 +∞, 1 0⁺)]` |
 | `resta-fracciones-explorador` | 1/(x − r) − k/(x² − r²) cuando x → r: común denominador, laterales y límite (finito solo si k = 2r) | `initial`: `[k, r]` |
+| `secante-explorador` | Secante entre a y a + h para 11 funciones: puntos P y Q, TVM y pendiente de la tangente | `initial`: `[función (0–10), 2·a, tamaño de h (0–5), lado (0 der., 1 izq.)]` |
+| `derivabilidad-explorador` | Seis casos (|x|, empalme suave, esquina, salto, ∛x, x·|x|): derivadas laterales, secantes y veredicto | `initial`: `[caso (0–5), distancia k (0–4)]` |
+| `funcion-derivada-explorador` | f, f′ y la tangente en un punto móvil: valor, signo de f′ y ecuación de la tangente | `initial`: `[función (0–10), 10·a]` |
+| `producto-cociente-explorador` | (f·g)′ o (f/g)′ con ocho funciones: regla aplicada, valor y comprobación con cocientes incrementales | `initial`: `[f, g (0–7), operación (0 ·, 1 /), 2·x]` |
+| `cadena-explorador` | Derivada de f(g(x)) con seis exteriores y cuatro interiores, con comprobación numérica | `initial`: `[exterior (0–5), interior (0–3), 2·x]` |
+| `derivada-inversa-explorador` | f, f⁻¹ y sus tangentes simétricas: (f⁻¹)′(b) = 1/f′(f⁻¹(b)); incluye arcsen y arctg | `initial`: `[función (0–5), 10·b]` |
+| `velocidad-aceleracion-explorador` | Posición, velocidad y aceleración de cuatro movimientos en un instante t | `initial`: `[movimiento (0–3), t (0–40, fracción de tmax)]` |
+| `extremos-explorador` | Puntos críticos, criterio de f″, inflexión y extremos absolutos en [p, q] | `initial`: `[función (0–5), p, q, absolutos (0/1)]` |
+| `optimizacion-explorador` | Cuatro problemas del libro: función a optimizar, derivada, dominio y extremo | `initial`: `[problema (0–3), posición (0–100 %)]` |
 | `factor-comun-explorador` | Construye `k·xᵐ·(…)` y la herramienta detecta el factor común y comprueba | `initial: [k, m, c2, c1, c0]` |
 | `mcm-explorador` | m.c.m. de tres denominadores y por cuánto se multiplica cada término | `initial: [d1, d2, d3]` |
 | `tanteo-explorador` | Tanteo de ecuaciones sin método (x³+5=69, x^x=3125, 3^x=81…): elegir ecuación y x con décimas, ver si se queda corto o se pasa | `a` (índice), `b` (x·10) |

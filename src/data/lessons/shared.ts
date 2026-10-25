@@ -83,3 +83,4 @@ export const TEMA_1BACH_4_SUBTITLE = "1.º Bachillerato, Tema 4 — Trigonometr�
 export const TEMA_1BACH_5_SUBTITLE = "1.º Bachillerato, Tema 5 — Geometría";
 export const TEMA_1BACH_6_SUBTITLE = "1.º Bachillerato, Tema 6 — Funciones";
 export const TEMA_1BACH_7_SUBTITLE = "1.º Bachillerato, Tema 7 — Límites y continuidad";
+export const TEMA_1BACH_8_SUBTITLE = "1.º Bachillerato, Tema 8 — Derivadas";

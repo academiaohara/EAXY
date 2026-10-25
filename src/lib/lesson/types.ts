@@ -943,6 +943,9 @@ export type SlideAnimId =
   | "proyeccion-vector"
   | "limite-aproximacion"
   | "asintotas-tipos"
+  | "secante-tangente"
+  | "derivada-signo"
+  | "extremos-criterios"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1374,6 +1377,15 @@ export type SlideToolId =
   | "continuidad-k-explorador"
   | "operaciones-limite-explorador"
   | "resta-fracciones-explorador"
+  | "secante-explorador"
+  | "derivabilidad-explorador"
+  | "funcion-derivada-explorador"
+  | "producto-cociente-explorador"
+  | "cadena-explorador"
+  | "derivada-inversa-explorador"
+  | "velocidad-aceleracion-explorador"
+  | "extremos-explorador"
+  | "optimizacion-explorador"
   /* industrial-tool-end */;
 
 /**

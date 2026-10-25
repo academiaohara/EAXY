@@ -34,7 +34,8 @@ export function limitOneSided(f: Fn, at: Pt, side: Side): Lim {
   const v = raw.map((y) => (y === Infinity ? BIG : y === -Infinity ? -BIG : y));
   const [v1, v2, v3] = v as [number, number, number];
   if (Math.abs(v3) >= BIG) return { kind: "inf", sign: v3 > 0 ? 1 : -1 };
-  if (Math.abs(v3 - v2) <= 1e-3 * (1 + Math.abs(v3)) && Math.abs(v2 - v1) >= Math.abs(v3 - v2)) {
+  const d32 = Math.abs(v3 - v2);
+  if (d32 <= 1e-8 * (1 + Math.abs(v3)) || (d32 <= 1e-3 * (1 + Math.abs(v3)) && Math.abs(v2 - v1) >= d32)) {
     return { kind: "finite", value: clean(v3) };
   }
   const grows = Math.abs(v1) <= Math.abs(v2) && Math.abs(v2) <= Math.abs(v3) && Math.abs(v3) > Math.abs(v1) && Math.abs(v3) >= 10;

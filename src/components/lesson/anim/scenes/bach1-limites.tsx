@@ -5,20 +5,20 @@ import type { AnimBuild } from "@/components/lesson/anim/types";
 import type { SlideAnimParams } from "@/lib/lesson/types";
 import { fmtEs } from "@/components/lesson/anim/arith";
 
-type Fn = (x: number) => number;
-type View = { x0: number; x1: number; y0: number; y1: number };
-const L = 50;
-const R = 750;
-const T = 30;
-const B = 390;
+export type Fn = (x: number) => number;
+export type View = { x0: number; x1: number; y0: number; y1: number };
+export const L = 50;
+export const R = 750;
+export const T = 30;
+export const B = 390;
 
-const mapper = (v: View) => ({
+export const mapper = (v: View) => ({
   px: (x: number) => L + ((x - v.x0) / (v.x1 - v.x0)) * (R - L),
   py: (y: number) => B - ((y - v.y0) / (v.y1 - v.y0)) * (B - T),
 });
 
 /** Trazo de f partido donde no hay valor, hay saltos grandes o se sale de la ventana. */
-function Curve({ f, v, color, skip, width = 4 }: { f: Fn; v: View; color: string; skip?: (x: number) => boolean; width?: number }) {
+export function Curve({ f, v, color, skip, width = 4 }: { f: Fn; v: View; color: string; skip?: (x: number) => boolean; width?: number }) {
   const { px, py } = mapper(v);
   const span = v.y1 - v.y0;
   const paths: string[][] = [[]];
@@ -45,7 +45,7 @@ function Curve({ f, v, color, skip, width = 4 }: { f: Fn; v: View; color: string
   );
 }
 
-function Axes({ v, children }: { v: View; children?: ReactNode }) {
+export function Axes({ v, children }: { v: View; children?: ReactNode }) {
   const { px, py } = mapper(v);
   return (
     <g>
@@ -61,7 +61,7 @@ function Axes({ v, children }: { v: View; children?: ReactNode }) {
   );
 }
 
-const Dot = ({ x, y, color, r = 8, open = false }: { x: number; y: number; color: string; r?: number; open?: boolean }) => (
+export const Dot = ({ x, y, color, r = 8, open = false }: { x: number; y: number; color: string; r?: number; open?: boolean }) => (
   <circle cx={x} cy={y} r={r} fill={open ? MANIM.surface : color} stroke={color} strokeWidth={3} />
 );
 
