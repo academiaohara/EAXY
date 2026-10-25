@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CargaCorrienteExplorador, OhmExplorador, CircuitoBasicoExplorador, ResistenciasExplorador, KirchhoffExplorador, ConsumoEnergiaExplorador, SobrecargaCircuitoExplorador, MultimetroExplorador, DiagnosticoCircuitoExplorador, DiodoLedExplorador, TransistorConmutadorExplorador, CondensadorCargaExplorador, RetoLedExplorador } from "@/components/lesson/slide/tools/Tec1CircuitosTools";
 import { MaquinaDesmontajeExplorador, PoleasCorreasExplorador, EngranajesExplorador, BicicletaExplorador, SinFinExplorador, BielaManivelaExplorador, LevaSeguidorExplorador, CremalleraTornilloExplorador, PalancaExplorador, PolipastoExplorador, DiscoGiratorioExplorador, MotorVirtualExplorador, ReductorRendimientoExplorador, TransmisionEditorExplorador } from "@/components/lesson/slide/tools/Tec1MecanismosTools";
 import { MesaMuestrasExplorador, EstructuraAtomicaExplorador, PropiedadesComparadorExplorador, CarbonoHierroExplorador, PolimeroTemperaturaExplorador, CompuestoMezclasExplorador, TratamientoCurvaExplorador, ProcesoCosteExplorador, Impresion3dExplorador, ToleranciaCalidadExplorador, FabricaRiesgosExplorador, ReciclajeEnergiaExplorador } from "@/components/lesson/slide/tools/Tec1MaterialesTools";
 import { ObjetoProblemaExplorador, MatrizDecisionExplorador, RequisitosExplorador, GanttExplorador, RolesEquipoExplorador, PrototipoEnsayoExplorador, MemoriaTecnicaExplorador } from "@/components/lesson/slide/tools/Tec1ProyectosTools";
@@ -1253,6 +1254,32 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ReductorRendimientoExplorador block={block} />;
     case "transmision-editor-explorador":
       return <TransmisionEditorExplorador block={block} />;
+    case "carga-corriente-explorador":
+      return <CargaCorrienteExplorador block={block} />;
+    case "ohm-explorador":
+      return <OhmExplorador block={block} />;
+    case "circuito-basico-explorador":
+      return <CircuitoBasicoExplorador block={block} />;
+    case "resistencias-explorador":
+      return <ResistenciasExplorador block={block} />;
+    case "kirchhoff-explorador":
+      return <KirchhoffExplorador block={block} />;
+    case "consumo-energia-explorador":
+      return <ConsumoEnergiaExplorador block={block} />;
+    case "sobrecarga-circuito-explorador":
+      return <SobrecargaCircuitoExplorador block={block} />;
+    case "multimetro-explorador":
+      return <MultimetroExplorador block={block} />;
+    case "diagnostico-circuito-explorador":
+      return <DiagnosticoCircuitoExplorador block={block} />;
+    case "diodo-led-explorador":
+      return <DiodoLedExplorador block={block} />;
+    case "transistor-conmutador-explorador":
+      return <TransistorConmutadorExplorador block={block} />;
+    case "condensador-carga-explorador":
+      return <CondensadorCargaExplorador block={block} />;
+    case "reto-led-explorador":
+      return <RetoLedExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

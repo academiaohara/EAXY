@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCargaMovilCircuito, buildSerieParaleloReparto, buildKirchhoffNodoMalla } from "@/components/lesson/anim/scenes/industrial/tec1-circuitos";
 import { buildTransmisionFlujo, buildCorreaAbiertaCruzada, buildEngranajesGiro, buildBielaManivelaCiclo, buildPalancaGeneros } from "@/components/lesson/anim/scenes/industrial/tec1-mecanismos";
 import { buildEscalaMaterialZoom, buildPolimeroCadenas, buildConformadoProcesos } from "@/components/lesson/anim/scenes/industrial/tec1-materiales";
 import { buildProcesoDisenoCiclo, buildGanttCaminoCritico } from "@/components/lesson/anim/scenes/industrial/tec1-proyectos";
@@ -683,6 +684,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "engranajes-giro": () => buildEngranajesGiro(),
   "biela-manivela-ciclo": () => buildBielaManivelaCiclo(),
   "palanca-generos": () => buildPalancaGeneros(),
+  "carga-movil-circuito": () => buildCargaMovilCircuito(),
+  "serie-paralelo-reparto": () => buildSerieParaleloReparto(),
+  "kirchhoff-nodo-malla": () => buildKirchhoffNodoMalla(),
   /* industrial-end */
 };
 

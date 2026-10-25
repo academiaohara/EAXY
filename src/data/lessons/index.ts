@@ -79,6 +79,7 @@ import { asintotasOblicuasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { asintotasVerticalesHorizontales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/04-asintotas-verticales-horizontales-1bach";
 import { asintotasVerticalesHorizontalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/04-asintotas-verticales-horizontales-ccss1";
 import { asintotasVerticalesHorizontalesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/06-asintotas-verticales-horizontales-ccss2";
+import { asociacionResistenciasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/04-asociacion-resistencias";
 import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/01-atomo-nucleo-corteza";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
@@ -144,6 +145,7 @@ import { complejosModuloArgumento1bachLesson } from "@/data/lessons/matematicas-
 import { complejosPlano1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/10-complejos-plano-1bach";
 import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/12-complejos-producto-moivre-1bach";
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
+import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
@@ -171,6 +173,7 @@ import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
 import { correlacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/11-correlacion-1bach";
 import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/11-correlacion-ccss1";
+import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
 import { cortesSignoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/03-cortes-signo-ccss1";
@@ -479,6 +482,7 @@ import { inecuacionesSegundoGrado1bachLesson } from "@/data/lessons/matematicas-
 import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/10-inecuaciones-segundo-grado-ccss1";
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
+import { instrumentosMedidaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/07-instrumentos-medida-electrica";
 import { integracionPorPartes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/07-integracion-por-partes-2bach";
 import { integracionPorPartesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/07-integracion-por-partes-ccss2";
 import { integralDefinidaTfc2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/10-integral-definida-tfc-2bach";
@@ -514,9 +518,11 @@ import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
+import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/05-kirchhoff-mallas-nudos";
 import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/03-lazo-abierto-cerrado";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
+import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
@@ -557,6 +563,7 @@ import { logaritmosPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
+import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
@@ -594,6 +601,7 @@ import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
 import { monotoniaExtremos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/04-monotonia-extremos-2bach";
+import { montajeSimulacionSeguridadElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/09-montaje-simulacion-seguridad-electrica";
 import { motorAlternativoTiemposLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/05-motor-alternativo-tiempos";
 import { motorCcArranqueRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/09-motor-cc-arranque-regulacion";
 import { motorCcConstitucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/06-motor-cc-constitucion";
@@ -710,6 +718,7 @@ import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracc
 import { posicionesRelativas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/06-posiciones-relativas-1bach";
 import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-postulados-morgan";
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
+import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
@@ -1174,6 +1183,7 @@ export const interactiveLessons = {
   "asintotas-verticales-horizontales-1bach": asintotasVerticalesHorizontales1bachLesson,
   "asintotas-verticales-horizontales-ccss1": asintotasVerticalesHorizontalesCcss1Lesson,
   "asintotas-verticales-horizontales-ccss2": asintotasVerticalesHorizontalesCcss2Lesson,
+  "asociacion-resistencias": asociacionResistenciasLesson,
   "atomo-nucleo-corteza": atomoNucleoCortezaLesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
@@ -1239,6 +1249,7 @@ export const interactiveLessons = {
   "complejos-plano-1bach": complejosPlano1bachLesson,
   "complejos-producto-moivre-1bach": complejosProductoMoivre1bachLesson,
   "complejos-raices-1bach": complejosRaices1bachLesson,
+  "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "compresores": compresoresLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
@@ -1266,6 +1277,7 @@ export const interactiveLessons = {
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
   "correlacion-1bach": correlacion1bachLesson,
   "correlacion-ccss1": correlacionCcss1Lesson,
+  "corriente-continua-elementos": corrienteContinuaElementosLesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
   "cortes-signo-ccss1": cortesSignoCcss1Lesson,
@@ -1574,6 +1586,7 @@ export const interactiveLessons = {
   "inecuaciones-segundo-grado-ccss1": inecuacionesSegundoGradoCcss1Lesson,
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
+  "instrumentos-medida-electrica": instrumentosMedidaElectricaLesson,
   "integracion-por-partes-2bach": integracionPorPartes2bachLesson,
   "integracion-por-partes-ccss2": integracionPorPartesCcss2Lesson,
   "integral-definida-tfc-2bach": integralDefinidaTfc2bachLesson,
@@ -1609,9 +1622,11 @@ export const interactiveLessons = {
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
+  "kirchhoff-mallas-nudos": kirchhoffMallasNudosLesson,
   "lazo-abierto-cerrado": lazoAbiertoCerradoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
+  "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
@@ -1652,6 +1667,7 @@ export const interactiveLessons = {
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "luz-detector-error": luzDetectorErrorLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
+  "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
@@ -1689,6 +1705,7 @@ export const interactiveLessons = {
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
   "monotonia-extremos-2bach": monotoniaExtremos2bachLesson,
+  "montaje-simulacion-seguridad-electrica": montajeSimulacionSeguridadElectricaLesson,
   "motor-alternativo-tiempos": motorAlternativoTiemposLesson,
   "motor-cc-arranque-regulacion": motorCcArranqueRegulacionLesson,
   "motor-cc-constitucion": motorCcConstitucionLesson,
@@ -1805,6 +1822,7 @@ export const interactiveLessons = {
   "posiciones-relativas-1bach": posicionesRelativas1bachLesson,
   "postulados-morgan": postuladosMorganLesson,
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
+  "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
