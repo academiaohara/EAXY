@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_8_SUBTITLE } from "@/data/lessons/shared";
+
+export const axiomasProbabilidadCcss1Lesson: InteractiveLesson = {
+  slug: "axiomas-probabilidad-ccss1",
+  title: "4. Axiomas de Kolmogorov y suceso contrario",
+  subtitle: TEMA_CCSS1_8_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "axiomas",
+      type: "slide",
+      help: [{ label: "Una medida", message: "Los axiomas 2 y 3 los cumplen todas las medidas (longitud, área, masa…). La probabilidad es una medida cuyo total vale 1." }],
+      title: "Los tres axiomas",
+      blocks: [
+        { kind: "rule", title: "Probabilidad", text: "Asigna a cada suceso $A$ un número real $P(A)$ tal que: **1)** $P(E) = 1$; **2)** $P(A) \\geq 0$ para todo $A$; **3)** si $A \\cap B = \\varnothing$, entonces $P(A \\cup B) = P(A) + P(B)$." },
+        { kind: "facts", items: [
+          { tex: "P(A^c) = 1 - P(A)", label: "suceso contrario" },
+          { tex: "P(\\varnothing) = 0", label: "suceso imposible" },
+          { tex: "P(A) = P(a_1) + \\cdots + P(a_n)", label: "suma de elementales" },
+        ] },
+        { kind: "example", title: "Por qué P(Aᶜ) = 1 − P(A)", lines: [
+          { math: "A\\ \\text{y}\\ A^c\\ \\text{son incompatibles y}\\ A\\cup A^c = E:\\quad 1 = P(E) = P(A) + P(A^c)" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "prob-union-explorador", initial: [40, 25, 10], hint: "Las columnas A y no A suman siempre 100 %: P(A) + P(Aᶜ) = 1. Lo mismo ocurre con B y Bᶜ." },
+    },
+    {
+      id: "check-as",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$P(\\text{as}) = \\frac{4}{40}$ y $P(\\text{no as}) = 1 - P(\\text{as})$." }],
+      title: "No sacar un as",
+      question: "¿Cuál es la probabilidad de **no** sacar un as al coger una carta de la baraja de $40$? (fracción simplificada)",
+      correctAnswers: ["9/10", "0,9", "0.9", "36/40"],
+      explanation: "$P(\\text{no as}) = 1 - \\dfrac{4}{40} = \\dfrac{36}{40} = \\dfrac{9}{10}$.",
+    },
+    {
+      id: "check-multiplo",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Los múltiplos de $3$ son $3$ y $6$: $P = \\frac{2}{6}$." }],
+      title: "No sacar múltiplo de 3",
+      question: "Al lanzar un dado, ¿cuál es la probabilidad de **no** sacar un múltiplo de $3$? (fracción simplificada)",
+      correctAnswers: ["2/3", "4/6"],
+      explanation: "$P(\\text{múltiplo de } 3) = \\dfrac{2}{6} = \\dfrac{1}{3}$, luego $P(\\text{no múltiplo}) = 1 - \\dfrac{1}{3} = \\dfrac{2}{3}$.",
+    },
+    {
+      id: "check-alguna-cara",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "«Al menos una cara» es el contrario de «ninguna cara», que es $(+,+)$." }],
+      title: "Al menos una cara",
+      question: "Se lanza una moneda dos veces. ¿Cuál es la probabilidad de sacar **al menos una cara**? (fracción)",
+      correctAnswers: ["3/4", "0,75", "0.75"],
+      explanation: "$P(\\text{ninguna cara}) = \\dfrac{1}{4}$, así que $P(\\text{al menos una}) = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}$. Pasar al contrario simplifica mucho el cálculo.",
+    },
+    {
+      id: "check-axiomas",
+      type: "classify",
+      help: [{ label: "Pista", message: "Una probabilidad debe estar entre $0$ y $1$, y las de los sucesos elementales deben sumar $1$." }],
+      title: "¿Puede ser una probabilidad?",
+      question: "Clasifica cada afirmación.",
+      groups: [
+        { id: "ok", label: "Posible", tone: "emerald" },
+        { id: "ko", label: "Imposible", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$P(A) = 0{,}35$", group: "ok" },
+        { id: "b", text: "$P(A) = -0{,}2$", group: "ko" },
+        { id: "c", text: "$P(A) = 1{,}4$", group: "ko" },
+        { id: "d", text: "$P(A) = \\frac{2}{3}$ y $P(A^c) = \\frac{1}{3}$", group: "ok" },
+        { id: "e", text: "$P(A) = 0{,}7$ y $P(A^c) = 0{,}4$", group: "ko" },
+        { id: "f", text: "$P(\\varnothing) = 0$", group: "ok" },
+      ],
+      hint: "Hay que cumplir P(A) ≥ 0, P(E) = 1 y P(A) + P(Aᶜ) = 1 (luego P(A) ≤ 1).",
+    },
+    {
+      id: "check-imposible",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "El suceso imposible es el contrario del suceso seguro." }],
+      title: "El suceso imposible",
+      question: "¿Cuánto vale $P(\\varnothing)$ y por qué?",
+      choices: [
+        { id: "a", label: "$0$, porque $\\varnothing = E^c$ y $P(E^c) = 1 - P(E) = 0$" },
+        { id: "b", label: "$1$, porque es el suceso seguro", incorrectFeedback: "El suceso seguro es $E$, no el vacío." },
+        { id: "c", label: "No tiene probabilidad", incorrectFeedback: "El vacío es un suceso y su probabilidad es $0$." },
+        { id: "d", label: "$\\frac{1}{2}$, porque ocurre la mitad de las veces", incorrectFeedback: "No ocurre nunca." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$P(\\varnothing) = P(E^c) = 1 - P(E) = 1 - 1 = 0$.",
+    },
+  ],
+};

@@ -7,7 +7,6 @@ import { cuotaAmortizacion, deudaDeCuota, round } from "@/components/lesson/anim
 const clampInt = (v: number | undefined, d: number, lo: number, hi: number) =>
   Math.max(lo, Math.min(hi, Math.round(Number.isFinite(v) ? (v as number) : d)));
 const tex = (x: number, d = 2) => fmtEs(round(x, d), d).replace(",", "{,}").replace(/ /g, "\\,");
-const eur = (x: number) => `${fmtEs(round(x, 2), 2)} €`;
 
 /** Interés simple frente a compuesto: los intereses también producen intereses. */
 export function buildInteresCompuestoBarras(params: { a?: number; b?: number }): AnimBuild {
@@ -19,7 +18,7 @@ export function buildInteresCompuestoBarras(params: { a?: number; b?: number }):
   const simp = Array.from({ length: years + 1 }, (_, k) => c0 * (1 + (r / 100) * k));
   const top = comp[years]! * 1.1;
   const X = (k: number) => 130 + k * 150;
-  const H = (v: number) => (v / top) * 260;
+  const H = (v: number) => (v / top) * 215;
   const base = 340;
   return {
     label: "Interés compuesto: el capital crece con sus propios intereses",
@@ -50,20 +49,23 @@ export function buildInteresCompuestoBarras(params: { a?: number; b?: number }):
             );
           })}
           <Fade show={beat >= 1}>
-            <rect x={560} y={46} width={22} height={14} fill={MANIM.blue} />
-            <Txt x={680} y={59} size={20} color={MANIM.blue}>compuesto</Txt>
-            <rect x={560} y={74} width={22} height={14} fill={MANIM.muted} />
-            <Txt x={670} y={87} size={20} color={MANIM.muted}>simple</Txt>
+            <rect x={560} y={20} width={22} height={14} fill={MANIM.blue} />
+            <Txt x={680} y={33} size={20} color={MANIM.blue}>compuesto</Txt>
+            <rect x={560} y={46} width={22} height={14} fill={MANIM.muted} />
+            <Txt x={670} y={59} size={20} color={MANIM.muted}>simple</Txt>
           </Fade>
           <Fade show={beat >= 4}>
-            <rect x={120} y={36} width={330} height={56} rx={12} fill={MANIM.surface} stroke={MANIM.green} strokeWidth={3} />
-            <Txt x={285} y={74} size={30} color={MANIM.green}>M = C·(1 + r)ᵗ</Txt>
+            <rect x={120} y={20} width={330} height={52} rx={12} fill={MANIM.surface} stroke={MANIM.green} strokeWidth={3} />
+            <Txt x={285} y={56} size={30} color={MANIM.green}>M = C·(1 + r)ᵗ</Txt>
           </Fade>
         </Canvas>
       );
     },
   };
 }
+
+const SUP = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶"];
+const pot = (e: number) => (e === 1 ? "" : (SUP[e] ?? `^${e}`));
 
 type Pago = { k: number; from: number; to: number };
 
@@ -131,16 +133,16 @@ export function buildAnualidadCapitalizacion(params: { a?: number; b?: number; c
           ))}
           {pagos.slice(0, arcs).map((p, i) => (
             <Fade key={p.k} show>
-              <Salto x1={X(p.from)} x2={X(p.to) - 4} y={y - 12} h={50 + (t - 1 - i) * 30} color={i % 2 ? MANIM.blue : MANIM.green} />
-              <Txt x={X(p.from) + 26} y={y - 70 - (t - 1 - i) * 36} size={18} color={i % 2 ? MANIM.blue : MANIM.green}>{`a(1+r)^${t - p.from} = ${tex(monto(p), 0)}`}</Txt>
+              <Salto x1={X(p.from)} x2={X(p.to) - 4} y={y - 12} h={34 + (t - 1 - i) * 26} color={i % 2 ? MANIM.blue : MANIM.green} />
+              <Txt x={650} y={70 + i * 34} size={22} color={i % 2 ? MANIM.blue : MANIM.green}>{`a(1+r)${pot(t - p.from)} = ${tex(monto(p))}`}</Txt>
             </Fade>
           ))}
           <Fade show={beat >= 3}>
-            <rect x={X(t) - 6} y={y - 60} width={150} height={40} rx={10} fill={MANIM.surface} stroke={MANIM.yellow} strokeWidth={3} />
-            <Txt x={X(t) + 69} y={y - 32} size={24} color={MANIM.yellow}>{`C = ${tex(total, 0)}`}</Txt>
+            <rect x={X(t) / 2 + 130} y={y + 56} width={230} height={44} rx={10} fill={MANIM.surface} stroke={MANIM.yellow} strokeWidth={3} />
+            <Txt x={X(t) / 2 + 245} y={y + 88} size={26} color={MANIM.yellow}>{`C = ${tex(total)} €`}</Txt>
           </Fade>
           <Fade show={beat >= 4}>
-            <Txt x={400} y={44} size={24} color={MANIM.green}>suma de t términos de razón (1 + r)</Txt>
+            <Txt x={330} y={44} size={24} color={MANIM.green}>suma de t términos de razón (1 + r)</Txt>
           </Fade>
         </Canvas>
       );
@@ -181,19 +183,19 @@ export function buildAnualidadAmortizacion(params: { a?: number; b?: number; c?:
           <Txt x={X(0)} y={y - 28} size={20} color={MANIM.red}>D</Txt>
           <Fade show={beat >= 1}>
             <Salto x1={X(0) + 6} x2={X(t) - 4} y={y - 14} h={170} color={MANIM.red} />
-            <Txt x={(X(0) + X(t)) / 2} y={y - 280} size={22} color={MANIM.red}>{`D(1+r)^${t}`}</Txt>
+            <Txt x={(X(0) + X(t)) / 2} y={y - 170} size={22} color={MANIM.red}>{`D(1+r)${pot(t)}`}</Txt>
           </Fade>
           {cuotas.slice(0, cuotasVis).map((c, i) => (
             <Fade key={c.k} show>
               <circle cx={X(c.k)} cy={y} r={12} fill={MANIM.green} />
               {c.k < t ? <Salto x1={X(c.k) + 4} x2={X(t) - 6} y={y - 12} h={34 + (t - 1 - c.k) * 22} color={MANIM.green} /> : null}
-              <Txt x={X(c.k)} y={y - 28 - (c.k < t ? 0 : 0)} size={16} color={MANIM.green}>{c.k < t ? `a(1+r)^${t - c.k}`.replace("^1", "") : "a"}</Txt>
+              <Txt x={X(c.k)} y={y - 28} size={16} color={MANIM.green}>{c.k < t ? `a(1+r)${pot(t - c.k)}` : "a"}</Txt>
               <Txt x={X(c.k)} y={y + 64} size={16} color={MANIM.green}>{i < t ? tex(c.valor, 0) : ""}</Txt>
             </Fade>
           ))}
           <Fade show={beat >= 4}>
             <rect x={150} y={36} width={500} height={56} rx={12} fill={MANIM.surface} stroke={MANIM.yellow} strokeWidth={3} />
-            <Txt x={400} y={74} size={26} color={MANIM.yellow}>deuda capitalizada = cuotas capitalizadas</Txt>
+            <Txt x={400} y={74} size={23} color={MANIM.yellow}>deuda capitalizada = cuotas capitalizadas</Txt>
           </Fade>
         </Canvas>
       );

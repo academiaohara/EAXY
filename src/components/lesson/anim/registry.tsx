@@ -1,4 +1,6 @@
 // industrial-imports
+import { buildCuantiaMonedas, buildEsperanzaJuego, buildBinomialForma, buildCampanaNormal, buildTipificacionNormal, buildIntervaloConfianza } from "@/components/lesson/anim/scenes/ccss1-distribuciones";
+import { buildTrianguloPascal } from "@/components/lesson/anim/scenes/ccss1-combinatoria";
 import { buildInteresCompuestoBarras, buildAnualidadCapitalizacion, buildAnualidadAmortizacion } from "@/components/lesson/anim/scenes/ccss1-finanzas";
 import { buildEstadisticaConceptos } from "@/components/lesson/anim/scenes/bach1-estadistica";
 import { buildBayesFrecuencias } from "@/components/lesson/anim/scenes/bach1-probabilidad";
@@ -611,6 +613,13 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "interes-compuesto-barras": (p) => buildInteresCompuestoBarras(p),
   "anualidad-capitalizacion": (p) => buildAnualidadCapitalizacion(p),
   "anualidad-amortizacion": (p) => buildAnualidadAmortizacion(p),
+  "triangulo-pascal": () => buildTrianguloPascal(),
+  "cuantia-monedas": () => buildCuantiaMonedas(),
+  "esperanza-juego": () => buildEsperanzaJuego(),
+  "binomial-forma": () => buildBinomialForma(),
+  "campana-normal": () => buildCampanaNormal(),
+  "tipificacion-normal": () => buildTipificacionNormal(),
+  "intervalo-confianza-construccion": () => buildIntervaloConfianza(),
   /* industrial-end */
 };
 

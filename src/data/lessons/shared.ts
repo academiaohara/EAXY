@@ -92,3 +92,7 @@ export const TEMA_CCSS1_3_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 3 — Ál
 export const TEMA_CCSS1_4_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 4 — Funciones";
 export const TEMA_CCSS1_5_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 5 — Límites y continuidad";
 export const TEMA_CCSS1_6_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 6 — Derivadas";
+export const TEMA_CCSS1_7_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 7 — Estadística";
+export const TEMA_CCSS1_8_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 8 — Probabilidad";
+export const TEMA_CCSS1_9_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 9 — Combinatoria";
+export const TEMA_CCSS1_10_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 10 — Distribuciones binomial y normal";

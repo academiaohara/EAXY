@@ -95,7 +95,7 @@ export function DiferenciasExplorador({ block }: { block: ToolBlock }) {
   const S = SERIES[v.t]!;
   const grado = gradoPorDiferencias(S.ys, 3, 1e-6);
   const rows = [S.ys, diferencias(S.ys, 1), diferencias(S.ys, 2), diferencias(S.ys, 3)];
-  const cell = "border border-[color:var(--stage-border,#3d4f66)] px-2 py-1 text-center tabular-nums text-sm";
+  const cell = "border border-[color:var(--stage-border,#3d4f66)] px-1 py-1 text-center tabular-nums text-xs";
   return (
     <Frame
       hint={block.hint ?? "Si las diferencias de orden n salen todas iguales, los datos se ajustan a un polinomio de grado n. En una exponencial nunca se estabilizan."}
@@ -148,7 +148,7 @@ export function ParteEnteraExplorador({ block }: { block: ToolBlock }) {
   const W = 420;
   const H = 190;
   const X = (t: number) => 210 + t * 44;
-  const Y = (t: number) => 100 - t * 22;
+  const Y = (t: number) => 96 - t * 18;
   return (
     <Frame
       hint={block.hint ?? "La parte entera [x] es el mayor entero que no supera a x: en los negativos «baja» (−1,3 → −2). Es una función escalonada, con saltos en los enteros."}

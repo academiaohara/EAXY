@@ -4,7 +4,7 @@ Material de apoyo por asignatura. No forma parte del build de la app.
 
 ## Estructura
 
-- **`mates/`** — Matemáticas por curso (`1 ESO`, `2ESO`, `3 ESO`) y packs de desarrollo en `_packs-claude/`.
+- **`mates/`** — Matemáticas por curso (`1 ESO`, `2ESO`, `3 ESO`, `1BACHA`, `1BACHB`…) y packs de desarrollo en `_packs-claude/`. `1BACHB/Sociales I.pdf` es el libro de Matemáticas Aplicadas a las CCSS I, base del curso `matematicas-ccss-1-bachillerato` (10 temas, 127 lecciones).
 - **`fisica-y-quimica/`** — Física y química (añade aquí tus PDFs, PPTs, etc.).
 - **`tecnologia/`** — Tecnología (añade aquí tus recursos).
 

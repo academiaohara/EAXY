@@ -1,0 +1,96 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_7_SUBTITLE } from "@/data/lessons/shared";
+
+export const correlacionCcss1Lesson: InteractiveLesson = {
+  slug: "correlacion-ccss1",
+  title: "11. Covarianza y coeficiente de correlación",
+  subtitle: TEMA_CCSS1_7_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "covarianza",
+      type: "slide",
+      help: [{ label: "Interpretación", message: "Si $S_{xy} > 0$, los valores grandes de $X$ van con valores grandes de $Y$; si $S_{xy} < 0$, con valores pequeños." }],
+      title: "Covarianza",
+      blocks: [
+        { kind: "rule", title: "Covarianza", formula: "S_{xy} = \\dfrac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{n} = \\dfrac{\\sum x_i y_i}{n} - \\bar{x}\\,\\bar{y}" },
+        { kind: "text", text: "Positiva: tendencia **directa**. Negativa: tendencia **inversa**. Pero su valor depende de las unidades de $X$ e $Y$." },
+      ],
+      visual: { kind: "tool", tool: "nube-regresion-explorador", initial: [2, 0], hint: "Notas de teoría y práctica de nueve alumnos: la covarianza es positiva y la nube sube." },
+    },
+    {
+      id: "r",
+      type: "slide",
+      help: [{ label: "Propiedades", message: "$-1 \\leq r \\leq 1$; $r = \\pm 1$ solo si los puntos están exactamente alineados; independientes ⇒ $r = 0$, pero $r = 0$ no implica independencia." }],
+      title: "Coeficiente de correlación lineal",
+      blocks: [
+        { kind: "rule", title: "Definición", formula: "r = \\dfrac{S_{xy}}{s_x\\,s_y}" },
+        { kind: "facts", items: [
+          { tex: "-1 \\le r \\le 1", label: "adimensional" },
+          { tex: "r \\approx 1", label: "relación lineal directa fuerte" },
+          { tex: "r \\approx -1", label: "relación lineal inversa fuerte" },
+          { tex: "r \\approx 0", label: "sin relación lineal" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "nube-regresion-explorador", initial: [6, 40], hint: "Prueba r = 1, 0,4, 0 y −0,9 y compara cuánto se parece la nube a una recta." },
+    },
+    {
+      id: "check-cov",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Notas teoría $5, 7, 6, 9, 3, 1, 2, 4, 6$ y práctica $6, 5, 8, 6, 4, 2, 1, 3, 7$: $\\bar{x} = 4{,}78$, $\\bar{y} = 4{,}67$." }],
+      title: "Covarianza de las notas",
+      question: "Con las notas de teoría y práctica de nueve alumnos ($\\bar{x} \\approx 4{,}78$, $\\bar{y} \\approx 4{,}67$, $\\sum x_i y_i = 237$), ¿cuánto vale $S_{xy}$? (decimal con 2 cifras)",
+      correctAnswers: ["4,04", "4.04", "4,037", "4.037"],
+      explanation: "$S_{xy} = \\dfrac{237}{9} - 4{,}778\\cdot 4{,}667 \\approx 26{,}33 - 22{,}30 \\approx 4{,}04$. Positiva: tendencia directa.",
+    },
+    {
+      id: "check-r",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$r = \\dfrac{S_{xy}}{s_x\\,s_y} = \\dfrac{4{,}04}{2{,}39\\cdot 2{,}21}$." }],
+      title: "Coeficiente de correlación",
+      question: "Con $S_{xy} = 4{,}04$, $s_x = 2{,}39$ y $s_y = 2{,}21$, ¿cuánto vale $r$? (decimal con 2 cifras)",
+      correctAnswers: ["0,76", "0.76", "0,763", "0.763"],
+      explanation: "$r = \\dfrac{4{,}04}{2{,}39\\cdot 2{,}21} \\approx 0{,}763$: correlación positiva fuerte (pero no perfecta).",
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "El signo da la dirección; el valor absoluto, la fuerza." }],
+      title: "Interpretar r",
+      question: "Clasifica cada valor del coeficiente de correlación.",
+      groups: [
+        { id: "fp", label: "Fuerte y positiva", tone: "emerald" },
+        { id: "fn", label: "Fuerte y negativa", tone: "amber" },
+        { id: "no", label: "Muy débil o nula", tone: "cobalt" },
+      ],
+      items: [
+        { id: "a", text: "$r = 0{,}95$", group: "fp" },
+        { id: "b", text: "$r = -0{,}9965$ (depósito que se vacía)", group: "fn" },
+        { id: "c", text: "$r = 0{,}03$", group: "no" },
+        { id: "d", text: "$r = 0{,}85$", group: "fp" },
+        { id: "e", text: "$r = -0{,}88$", group: "fn" },
+        { id: "f", text: "$r = -0{,}05$", group: "no" },
+      ],
+      hint: "Fuerte: |r| cerca de 1. Débil: |r| cerca de 0.",
+    },
+    {
+      id: "check-independiente",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Puede haber una relación clara pero no lineal: la correlación lineal no la detecta." }],
+      title: "r = 0 e independencia",
+      question: "Si $X$ e $Y$ son independientes, $r = 0$. Pero si $r = 0$…",
+      choices: [
+        { id: "a", label: "no se puede asegurar que sean independientes (puede haber relación no lineal)" },
+        { id: "b", label: "las variables son independientes", incorrectFeedback: "El recíproco es falso: $y = x^2$ con $x$ simétrico respecto de $0$ tiene $r = 0$ y dependencia total." },
+        { id: "c", label: "las variables son iguales", incorrectFeedback: "Iguales darían $r = 1$." },
+        { id: "d", label: "la covarianza es infinita", incorrectFeedback: "$r = 0$ equivale a $S_{xy} = 0$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Independientes ⇒ $r = 0$, pero no al revés: $r$ solo mide la relación **lineal**.",
+    },
+  ],
+};

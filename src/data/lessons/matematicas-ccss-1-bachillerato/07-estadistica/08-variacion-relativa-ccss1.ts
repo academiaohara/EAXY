@@ -1,0 +1,103 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_7_SUBTITLE } from "@/data/lessons/shared";
+
+export const variacionRelativaCcss1Lesson: InteractiveLesson = {
+  slug: "variacion-relativa-ccss1",
+  title: "8. Coeficiente de variación y regla 68-95-99",
+  subtitle: TEMA_CCSS1_7_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "cv",
+      type: "slide",
+      help: [{ label: "Sin unidades", message: "El coeficiente de variación es adimensional: sirve para comparar grupos con medias o unidades distintas." }],
+      title: "Comparar la dispersión de dos grupos",
+      blocks: [
+        { kind: "rule", title: "Coeficiente de variación", formula: "CV = \\dfrac{s}{|\\bar{x}|}\\cdot 100\\ (\\%)" },
+        { kind: "example", title: "Notas de las clases A y B", lines: [
+          { math: "CV_A = \\dfrac{1{,}10}{5}\\cdot 100 \\approx 21{,}9\\ \\%\\qquad CV_B = \\dfrac{2{,}45}{5}\\cdot 100 \\approx 49{,}0\\ \\%" },
+        ] },
+      ],
+      visual: { kind: "tool", tool: "dispersion-explorador", initial: [100, 25, 15, 5], hint: "Dos empresas: A con media 100 y σ = 12,5; B con media 15 y σ = 2,5. ¿Cuál varía más en proporción?" },
+    },
+    {
+      id: "regla",
+      type: "slide",
+      help: [{ label: "Distribuciones campaniformes", message: "Estos porcentajes son aproximados y valen para distribuciones con forma de campana (simétricas, con la mayoría de los datos en el centro)." }],
+      title: "Cuántos datos hay cerca de la media",
+      blocks: [
+        { kind: "facts", items: [
+          { tex: "[\\bar{x} - s,\\ \\bar{x} + s]", label: "≈ 68 % de los datos" },
+          { tex: "[\\bar{x} - 2s,\\ \\bar{x} + 2s]", label: "≈ 95 % de los datos" },
+          { tex: "[\\bar{x} - 3s,\\ \\bar{x} + 3s]", label: "> 99 % de los datos" },
+        ] },
+        { kind: "rule", title: "Cambio de variable", text: "Si $y_i = a + b\\,x_i$, entonces $\\bar{y} = a + b\\,\\bar{x}$ y $s_y = |b|\\,s_x$ (sumar $a$ no cambia la dispersión)." },
+      ],
+      arrange: "stack",
+    },
+    {
+      id: "check-cv-clases",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Mayor CV significa mayor dispersión relativa." }],
+      title: "¿Qué clase varía más?",
+      question: "Con $CV_A \\approx 21{,}9\\,\\%$ y $CV_B \\approx 49{,}0\\,\\%$ para las notas de dos clases con la misma media, ¿en cuál hay más dispersión?",
+      choices: [
+        { id: "a", label: "En la clase B" },
+        { id: "b", label: "En la clase A", incorrectFeedback: "El coeficiente de variación mayor es el de B." },
+        { id: "c", label: "En las dos igual", incorrectFeedback: "Los coeficientes son distintos." },
+        { id: "d", label: "No se puede comparar", incorrectFeedback: "Justo para eso sirve el coeficiente de variación." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Con la misma media, mayor $CV$ significa notas más repartidas: la clase B.",
+    },
+    {
+      id: "check-cv-valor",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$CV = \\frac{s}{\\bar{x}}\\cdot 100 = \\frac{5}{50}\\cdot 100$." }],
+      title: "Calcular un CV",
+      question: "Unos datos tienen media $50$ y desviación típica $5$. ¿Cuánto vale el coeficiente de variación (en %)? (solo el número)",
+      correctAnswers: ["10"],
+      explanation: "$CV = \\dfrac{5}{50}\\cdot 100 = 10\\,\\%$.",
+    },
+    {
+      id: "check-unidades",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una desviación en kg y otra en cm no se pueden comparar directamente." }],
+      title: "Distintas unidades",
+      question: "Quieres saber si hay más dispersión en el peso (kg) o en la estatura (cm) de un grupo. Conviene comparar…",
+      choices: [
+        { id: "a", label: "los coeficientes de variación, porque no tienen unidades" },
+        { id: "b", label: "las desviaciones típicas directamente", incorrectFeedback: "Una está en kg y la otra en cm: no son comparables." },
+        { id: "c", label: "las medias", incorrectFeedback: "La media no mide dispersión." },
+        { id: "d", label: "los rangos", incorrectFeedback: "También dependen de las unidades." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$CV$ divide la desviación por la media y queda un porcentaje sin unidades, comparable entre variables distintas.",
+    },
+    {
+      id: "check-regla",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Extremo superior: $\\bar{x} + s = 100 + 15$." }],
+      title: "Intervalo del 68 %",
+      question: "Una distribución campaniforme tiene media $100$ y $s = 15$. Aproximadamente el $68\\,\\%$ de los datos está en $[85,\\ ?]$. ¿Cuál es el extremo superior? (solo el número)",
+      correctAnswers: ["115"],
+      explanation: "$[\\bar{x} - s,\\ \\bar{x} + s] = [100 - 15,\\ 100 + 15] = [85,\\ 115]$.",
+    },
+    {
+      id: "check-escala",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$s_y = |b|\\,s_x$ con $b = 2$." }],
+      title: "Cambio de escala",
+      question: "Unos datos $x_i$ tienen $s = 3$. Se define $y_i = 5 + 2x_i$. ¿Cuánto vale la desviación típica de $y$? (solo el número)",
+      correctAnswers: ["6"],
+      explanation: "Sumar $5$ no cambia la dispersión y multiplicar por $2$ la duplica: $s_y = 2\\cdot 3 = 6$.",
+    },
+  ],
+};

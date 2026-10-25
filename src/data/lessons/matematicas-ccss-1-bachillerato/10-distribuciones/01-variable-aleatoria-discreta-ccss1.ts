@@ -1,0 +1,80 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const variableAleatoriaDiscretaCcss1Lesson: InteractiveLesson = {
+  slug: "variable-aleatoria-discreta-ccss1",
+  title: "1. Variables aleatorias discretas",
+  subtitle: TEMA_CCSS1_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "concepto",
+      type: "slide",
+      help: [{ label: "Idea", message: "Una variable aleatoria convierte cada resultado de un experimento en un número. Es discreta si solo toma valores sueltos (0, 1, 2…)." }],
+      title: "De los resultados a los números",
+      blocks: [
+        { kind: "definition", text: "Una **variable aleatoria** $X$ es una función que asigna un número real a cada resultado del espacio muestral. Es **discreta** si toma un número finito (o infinito numerable) de valores, y **continua** si puede tomar cualquier valor de un intervalo." },
+        { kind: "text", text: "Para describirla hay que conocer su **distribución de probabilidad**: la probabilidad $P(X = x)$ de cada valor posible." },
+      ],
+      visual: { kind: "anim", scene: "cuantia-monedas" },
+    },
+    {
+      id: "funciones",
+      type: "slide",
+      help: [{ label: "Idea", message: "p(x) da la probabilidad de cada valor; F(x) es la probabilidad acumulada hasta x." }],
+      title: "Función de cuantía y de distribución",
+      blocks: [
+        { kind: "rule", title: "Función de cuantía (o de probabilidad)", formula: "p(x) = P(X = x) \\qquad p(x) \\geq 0 \\qquad \\sum p(x) = 1" },
+        { kind: "rule", title: "Función de distribución", formula: "F(x) = P(X \\leq x)", text: "Es creciente, $0 \\leq F(x) \\leq 1$ y vale $1$ en el mayor valor de $X$." },
+      ],
+      visual: { kind: "tool", tool: "cuantia-explorador", initial: [1], hint: "Cambia de variable: la tabla muestra p(x) y F(x). En todas las filas de p(x) la suma es 1 y F termina en 1." },
+    },
+    {
+      id: "check-cuantia",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "De los $8$ resultados de tres lanzamientos, $3$ tienen exactamente $2$ caras." }],
+      title: "Leer la función de cuantía",
+      question: "Sea $X$ el número de caras al lanzar tres monedas. ¿Cuánto vale $p(2) = P(X = 2)$? (como decimal)",
+      correctAnswers: ["0,375", "0.375", "3/8"],
+      explanation: "Hay $3$ resultados con dos caras ($CC+$, $C+C$, $+CC$) entre $8$: $p(2) = \\tfrac38 = 0{,}375$.",
+    },
+    {
+      id: "check-distribucion",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$F(2) = p(0) + p(1) + p(2)$, o bien $1 - p(3)$." }],
+      title: "Leer la función de distribución",
+      question: "Con la misma variable $X$ (caras en tres monedas), ¿cuánto vale $F(2) = P(X \\leq 2)$? (como decimal)",
+      correctAnswers: ["0,875", "0.875", "7/8"],
+      explanation: "$F(2) = \\tfrac18 + \\tfrac38 + \\tfrac38 = \\tfrac78 = 0{,}875$. Es lo mismo que $1 - p(3) = 1 - \\tfrac18$.",
+    },
+    {
+      id: "check-valida",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Una función de cuantía válida tiene probabilidades no negativas que suman exactamente $1$." }],
+      title: "¿Es una distribución de probabilidad?",
+      question: "¿Cuál de estas tablas define una distribución de probabilidad para $X \\in \\{1, 2, 3\\}$?",
+      choices: [
+        { id: "a", label: "$p(1) = 0{,}2;\\ p(2) = 0{,}5;\\ p(3) = 0{,}3$" },
+        { id: "b", label: "$p(1) = 0{,}2;\\ p(2) = 0{,}5;\\ p(3) = 0{,}4$", incorrectFeedback: "Suman $1{,}1$: se pasan de $1$." },
+        { id: "c", label: "$p(1) = 0{,}6;\\ p(2) = 0{,}6;\\ p(3) = -0{,}2$", incorrectFeedback: "Una probabilidad no puede ser negativa, aunque la suma dé $1$." },
+        { id: "d", label: "$p(1) = 0{,}1;\\ p(2) = 0{,}3;\\ p(3) = 0{,}3$", incorrectFeedback: "Suman $0{,}7$: faltan $0{,}3$ de probabilidad." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Hay dos condiciones: $p(x) \\geq 0$ y $\\sum p(x) = 1$. Solo la opción A las cumple ($0{,}2 + 0{,}5 + 0{,}3 = 1$).",
+    },
+    {
+      id: "check-dados",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Un solo cinco: sale en el primer dado y no en el segundo, o al revés. $2\\cdot\\tfrac16\\cdot\\tfrac56$." }],
+      title: "Cincos en dos dados",
+      question: "Se lanzan dos dados y $X$ cuenta cuántos cincos salen. ¿Cuánto vale $P(X = 1)$? (fracción o decimal con tres cifras)",
+      correctAnswers: ["10/36", "5/18", "0,278", "0.278"],
+      explanation: "$P(X = 1) = 2\\cdot\\dfrac16\\cdot\\dfrac56 = \\dfrac{10}{36} = \\dfrac{5}{18} \\approx 0{,}278$. Además $P(X = 0) = \\tfrac{25}{36}$ y $P(X = 2) = \\tfrac1{36}$.",
+    },
+  ],
+};

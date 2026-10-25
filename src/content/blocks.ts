@@ -423,6 +423,10 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-ccss-1-bachillerato/funciones": "funciones-elementales",
   "matematicas-ccss-1-bachillerato/limites-y-continuidad": "funciones-elementales",
   "matematicas-ccss-1-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-ccss-1-bachillerato/estadistica": "estadistica",
+  "matematicas-ccss-1-bachillerato/probabilidad": "probabilidad",
+  "matematicas-ccss-1-bachillerato/combinatoria": "combinatoria",
+  "matematicas-ccss-1-bachillerato/distribuciones": "probabilidad",
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",
   "tecnologia-industrial-2-bachillerato/aleaciones-diagramas-equilibrio": "materiales",

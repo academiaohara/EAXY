@@ -38,15 +38,17 @@ export function BeneficioExplorador({ block }: { block: ToolBlock }) {
   const xMax = v.a / b;
   const cur = f(v.x);
   const top = Math.max(f(xOpt).ingresos, v.F + v.c * xMax * 0.5, 1);
+  const yMin = -0.35 * top;
+  const yMax = top * 1.05;
   const W = 420;
   const H = 190;
   const X = (x: number) => 24 + (x / xMax) * (W - 44);
-  const Y = (y: number) => H - 24 - (y / top) * (H - 44);
+  const Y = (y: number) => H - 10 - ((y - yMin) / (yMax - yMin)) * (H - 20);
   const path = (g: (x: number) => number) =>
-    Array.from({ length: 61 }, (_, i) => {
-      const x = (i / 60) * xMax;
-      return `${X(x)},${Math.min(H - 4, Math.max(4, Y(g(x))))}`;
-    }).join(" ");
+    Array.from({ length: 61 }, (_, i) => (i / 60) * xMax)
+      .filter((x) => g(x) >= yMin)
+      .map((x) => `${X(x)},${Math.min(H - 4, Math.max(4, Y(g(x))))}`)
+      .join(" ");
   const valida = xOpt > 0 && xOpt < xMax;
   return (
     <Frame
@@ -80,12 +82,12 @@ export function BeneficioExplorador({ block }: { block: ToolBlock }) {
         {valida ? `Máximo en x = ${m(xOpt, 1)} unidades, con beneficio ${m(f(xOpt).beneficio)} €` : "Con estos datos no hay beneficio máximo con producción positiva"}
       </p>
       <Svg w={W} h={H} testId="tool-ben-grafica">
-        <line x1={24} y1={H - 24} x2={W - 20} y2={H - 24} stroke={MANIM.grid} strokeWidth={2} />
+        <line x1={24} y1={Y(0)} x2={W - 20} y2={Y(0)} stroke={MANIM.grid} strokeWidth={2} />
         <polyline points={path((x) => f(x).ingresos)} fill="none" stroke={MANIM.blue} strokeWidth={2.5} />
         <polyline points={path((x) => f(x).costes)} fill="none" stroke={MANIM.red} strokeWidth={2.5} />
         <polyline points={path((x) => f(x).beneficio)} fill="none" stroke={MANIM.green} strokeWidth={3.5} />
         {valida ? <circle cx={X(xOpt)} cy={Y(f(xOpt).beneficio)} r={6} fill={MANIM.yellow} stroke={MANIM.ink} strokeWidth={1.5} /> : null}
-        <line x1={X(v.x)} y1={H - 24} x2={X(v.x)} y2={Math.min(H - 4, Math.max(4, Y(cur.beneficio)))} stroke={MANIM.yellow} strokeWidth={1.5} strokeDasharray="4 4" />
+        <line x1={X(v.x)} y1={Y(0)} x2={X(v.x)} y2={Math.min(H - 4, Math.max(4, Y(cur.beneficio)))} stroke={MANIM.yellow} strokeWidth={1.5} strokeDasharray="4 4" />
       </Svg>
     </Frame>
   );

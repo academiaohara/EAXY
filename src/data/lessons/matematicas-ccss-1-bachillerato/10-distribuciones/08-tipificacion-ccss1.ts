@@ -1,0 +1,88 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_10_SUBTITLE } from "@/data/lessons/shared";
+
+export const tipificacionCcss1Lesson: InteractiveLesson = {
+  slug: "tipificacion-ccss1",
+  title: "8. Tipificación: probabilidades en cualquier normal",
+  subtitle: TEMA_CCSS1_10_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tipificar",
+      type: "slide",
+      help: [{ label: "Idea", message: "Restar la media traslada la campana al 0; dividir por σ la ajusta a desviación 1. El área entre los extremos no cambia." }],
+      title: "De N(μ, σ) a N(0, 1)",
+      blocks: [
+        { kind: "rule", title: "Variable tipificada", formula: "Z = \\dfrac{X - \\mu}{\\sigma} \\sim N(0, 1)" },
+        { kind: "text", text: "Tipificar es trasladar y reescalar: las áreas se conservan. Así, **cualquier** probabilidad de una normal se calcula con la tabla de la $N(0, 1)$. Además, $Z$ no tiene unidades, lo que permite comparar estaturas con pesos." },
+      ],
+      visual: { kind: "anim", scene: "tipificacion-normal" },
+    },
+    {
+      id: "check-z",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$z = \\dfrac{x - \\mu}{\\sigma} = \\dfrac{6 - 5{,}7}{1{,}1}$." }],
+      title: "Calcular z",
+      question: "El consumo de electricidad sigue una $N(5{,}7;\\ 1{,}1)$ kW. ¿Qué valor de $z$ corresponde a $x = 6$ kW? (con dos decimales)",
+      correctAnswers: ["0,27", "0.27"],
+      explanation: "$z = \\dfrac{6 - 5{,}7}{1{,}1} = \\dfrac{0{,}3}{1{,}1} \\approx 0{,}27$.",
+    },
+    {
+      id: "check-cola",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$z = \\dfrac{190 - 180}{15} = 0{,}67$ y $P(Z > 0{,}67) = 1 - \\Phi(0{,}67)$ con $\\Phi(0{,}67) = 0{,}7486$." }],
+      title: "Una cola",
+      question: "Las estaturas de una población siguen una $N(180;\\ 15)$ cm. ¿Qué probabilidad hay de medir más de $190$ cm? (tipifica a dos decimales y da cuatro decimales)",
+      correctAnswers: ["0,2514", "0.2514"],
+      explanation: "$P(X > 190) = P\\left(Z > \\tfrac{190 - 180}{15}\\right) = P(Z > 0{,}67) = 1 - 0{,}7486 = 0{,}2514$: aproximadamente un $25\\,\\%$.",
+    },
+    {
+      id: "check-entre",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Tipifica los dos extremos: $z_1 = \\tfrac{5 - 5{,}7}{1{,}1} = -0{,}64$ y $z_2 = \\tfrac{6 - 5{,}7}{1{,}1} = 0{,}27$." }],
+      title: "Un intervalo",
+      question: "En la $N(5{,}7;\\ 1{,}1)$, calcula $P(5 < X < 6)$. (con cuatro decimales; usa $\\Phi(0{,}27) = 0{,}6064$ y $\\Phi(0{,}64) = 0{,}7389$)",
+      correctAnswers: ["0,3453", "0.3453"],
+      explanation: "$P(-0{,}64 < Z < 0{,}27) = \\Phi(0{,}27) - \\left(1 - \\Phi(0{,}64)\\right) = 0{,}6064 - 0{,}2611 = 0{,}3453$.",
+    },
+    {
+      id: "inverso",
+      type: "slide",
+      help: [{ label: "Idea", message: "Se busca en el interior de la tabla la probabilidad dada y se lee el valor z; después se deshace la tipificación: x = μ + z·σ." }],
+      title: "El problema inverso: de la probabilidad al valor",
+      blocks: [
+        { kind: "steps", title: "Hallar el valor x con una probabilidad dada", items: ["Escribe la condición en términos de $Z$, por ejemplo $P(Z > z_0) = 0{,}20$, o sea $\\Phi(z_0) = 0{,}80$.", "Busca $0{,}80$ **dentro** de la tabla: se lee $z_0 \\approx 0{,}84$.", "Destipifica: $x = \\mu + z_0\\,\\sigma$."] },
+      ],
+    },
+    {
+      id: "check-oposiciones",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Aprueban el $20\\,\\%$ mejor: $\\Phi(z_0) = 0{,}80 \\Rightarrow z_0 \\approx 0{,}84$. Entonces $x = 100 + 0{,}84\\cdot 10$." }],
+      title: "El 20 % mejor",
+      question: "En unas oposiciones los puntos siguen una $N(100;\\ 10)$ y solo aprueba el $20\\,\\%$ con mejor puntuación. ¿Cuántos puntos hay que sacar como mínimo? (redondea a entero)",
+      correctAnswers: ["108"],
+      explanation: "Con $\\Phi(z_0) = 0{,}80$ se obtiene $z_0 \\approx 0{,}84$, luego $x = 100 + 0{,}84\\cdot 10 = 108{,}4$: hacen falta unos **108** puntos.",
+    },
+    {
+      id: "check-menor-cero",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Al tipificar se resta la media: el signo de $z$ indica si el valor está por encima o por debajo." }],
+      title: "El signo de z",
+      question: "Un estudiante tiene un $z = -1{,}5$ en un examen. ¿Qué significa?",
+      choices: [
+        { id: "a", label: "Su nota está $1{,}5$ desviaciones típicas por debajo de la media" },
+        { id: "b", label: "Su nota es $-1{,}5$", incorrectFeedback: "$z$ no es la nota: indica cuántas desviaciones típicas se aparta de la media." },
+        { id: "c", label: "Su nota está $1{,}5$ puntos por debajo de la media", incorrectFeedback: "No son puntos, sino **desviaciones típicas**: la distancia en puntos es $1{,}5\\sigma$." },
+        { id: "d", label: "Ha aprobado, porque $z$ es pequeño", incorrectFeedback: "Un $z$ negativo indica estar por debajo de la media." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$z = \\dfrac{x - \\mu}{\\sigma} = -1{,}5$ significa $x = \\mu - 1{,}5\\sigma$.",
+    },
+  ],
+};

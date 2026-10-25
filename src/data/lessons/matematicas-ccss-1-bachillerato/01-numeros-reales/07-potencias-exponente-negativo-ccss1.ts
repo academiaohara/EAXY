@@ -174,5 +174,15 @@ export const potenciasExponenteNegativoCcss1Lesson: InteractiveLesson = {
       correctAnswers: ["-4"],
       explanation: "$2 + (-6) = -4$, es decir, $a^{-4} = \\frac{1}{a^4}$.",
     },
+    {
+      id: "check-inversa",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "$\\left(\\tfrac13\\right)^{-2} = 3^{2}$: el exponente negativo invierte la base." }],
+      title: "Invertir la base",
+      question: "Calcula $\\left(\\dfrac13\\right)^{-2}$. (solo el número)",
+      correctAnswers: ["9"],
+      explanation: "$\\left(\\dfrac13\\right)^{-2} = \\left(\\dfrac31\\right)^{2} = 3^2 = 9$.",
+    },
   ],
 };

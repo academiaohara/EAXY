@@ -150,5 +150,15 @@ export const potenciasPropiedadesCcss1Lesson: InteractiveLesson = {
       correctAnswers: ["27"],
       explanation: "$15^3 : 5^3 = (15 : 5)^3 = 3^3 = 27$.",
     },
+    {
+      id: "check-combinado",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Misma base: suma los exponentes del producto y resta el del cociente." }],
+      title: "Varias propiedades a la vez",
+      question: "Calcula $\\dfrac{2^3\\cdot 2^5}{2^6}$. (solo el número)",
+      correctAnswers: ["4"],
+      explanation: "$\\dfrac{2^{3+5}}{2^6} = 2^{8-6} = 2^2 = 4$.",
+    },
   ],
 };

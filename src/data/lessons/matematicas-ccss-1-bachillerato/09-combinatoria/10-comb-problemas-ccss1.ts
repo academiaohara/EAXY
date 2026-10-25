@@ -1,0 +1,101 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_9_SUBTITLE } from "@/data/lessons/shared";
+
+export const combProblemasCcss1Lesson: InteractiveLesson = {
+  slug: "comb-problemas-ccss1",
+  title: "10. ¿Qué modelo uso?",
+  subtitle: TEMA_CCSS1_9_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "decidir",
+      type: "slide",
+      help: [
+        { label: "Tres preguntas", message: "1) ¿Se toman todos los elementos? 2) ¿Importa el orden? 3) ¿Se pueden repetir? Con eso decides entre $VR$, $V$, $P$ y $C$." },
+        { label: "Dibuja el árbol", message: "Si dudas, imagina un árbol con pocos elementos: verás si hay que dividir o si se repiten ramas." },
+      ],
+      title: "Cómo elegir el modelo",
+      blocks: [
+        {
+          kind: "facts",
+          items: [
+            { tex: "VR_{m,n} = m^n", label: "importa el orden; se repite" },
+            { tex: "V_{m,n} = m(m-1)\\cdots(m-n+1)", label: "importa el orden; no se repite" },
+            { tex: "P_m = m!", label: "se toman todos; importa el orden" },
+            { tex: "C_{m,n} = \\dfrac{V_{m,n}}{n!}", label: "no importa el orden; no se repite" },
+          ],
+        },
+      ],
+      visual: { kind: "tool", tool: "combinatoria-explorador", params: { a: 8, b: 2 }, hint: "Con m = 8 y n = 2 aparecen los resultados de los problemas del ajedrez, los números de dos cifras y los premios." },
+    },
+    {
+      id: "check-modelo",
+      type: "classify",
+      help: [{ label: "Pregúntate", message: "Palabras clave: «ordenar todos» → permutaciones; «elegir un grupo» → combinaciones; «cargos o puestos distintos» → variaciones; «puede repetirse» → con repetición." }],
+      title: "Reconoce el modelo",
+      question: "Clasifica cada problema.",
+      groups: [
+        { id: "vr", label: "Variaciones con repetición", tone: "cobalt" },
+        { id: "v", label: "Variaciones", tone: "emerald" },
+        { id: "p", label: "Permutaciones", tone: "amber" },
+        { id: "c", label: "Combinaciones", tone: "rose" },
+      ],
+      items: [
+        { id: "a", text: "Palabras de 8 letras que se hacen reordenando las de «pelícano»", group: "p" },
+        { id: "b", text: "Parejas para un torneo de ajedrez entre 8 personas", group: "c" },
+        { id: "c", text: "Números de dos cifras con los dígitos 1 a 8 (con repetición)", group: "vr" },
+        { id: "d", text: "Primer y segundo premio de un concurso con 8 participantes", group: "v" },
+        { id: "e", text: "Elegir 5 jugadores para un equipo entre 10 disponibles", group: "c" },
+        { id: "f", text: "Cubrir presidente, secretario y tesorero entre 8 candidatos", group: "v" },
+      ],
+      hint: "Fíjate en si importa el orden y en si se repiten los elementos.",
+    },
+    {
+      id: "check-polos",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Cada chico, un polo", message: "Cada uno de los $3$ chicos elige entre $6$ clases de polos, y pueden coincidir." }],
+      title: "Polos en la heladería",
+      question: "Tres chicos se compran un polo cada uno en una heladería con $6$ clases de polos (pueden coincidir). ¿De cuántas formas pueden hacerlo? (solo el número)",
+      correctAnswers: ["216"],
+      explanation: "$VR_{6,3} = 6^3 = 216$.",
+    },
+    {
+      id: "check-regalos",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Regalos distintos", message: "Con regalos distintos importa qué regalo recibe cada persona, y a nadie le tocan dos." }],
+      title: "Repartir regalos",
+      question: "Se reparten tres regalos **distintos** (bicicleta, patines y chándal) entre seis personas, y a nadie le puede tocar más de uno. ¿De cuántas formas?",
+      choices: [
+        { id: "a", label: "$V_{6,3} = 120$" },
+        { id: "b", label: "$C_{6,3} = 20$", incorrectFeedback: "$C_{6,3}$ sirve si los regalos fueran **iguales**: aquí importa quién recibe cuál." },
+        { id: "c", label: "$VR_{6,3} = 216$", incorrectFeedback: "$VR$ permitiría que a una persona le toquen varios regalos, pero aquí no puede ser." },
+        { id: "d", label: "$P_6 = 720$", incorrectFeedback: "No se reparten seis cosas: son solo tres regalos." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "La bicicleta tiene $6$ posibles destinatarios; los patines, $5$; el chándal, $4$: $6\\cdot5\\cdot4 = 120$.",
+    },
+    {
+      id: "check-entradas",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Entradas iguales", message: "Tres entradas idénticas entre seis amigos, sin que ninguno lleve más de una: solo importa quiénes van." }],
+      title: "Entradas para un concierto",
+      question: "Se reparten $3$ entradas **iguales** para un concierto entre $6$ amigos, sin que ninguno pueda llevarse más de una. ¿De cuántas formas? (solo el número)",
+      correctAnswers: ["20"],
+      explanation: "No importa el orden: $C_{6,3} = \\dfrac{6\\cdot5\\cdot4}{3\\cdot2\\cdot1} = 20$.",
+    },
+    {
+      id: "check-baloncesto",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Dos fijos", message: "Si el entrenador deja fijos a 2 jugadores, solo tiene que elegir a los otros 3 de entre los 8 restantes." }],
+      title: "Un equipo de baloncesto",
+      question: "El entrenador tiene $10$ jugadores y forma equipos de $5$. Si mantiene fijos a $2$ de ellos, ¿cuántos equipos distintos puede hacer con los $8$ que le quedan? (solo el número)",
+      correctAnswers: ["56"],
+      explanation: "Faltan $3$ jugadores por elegir entre $8$: $C_{8,3} = 56$. (Sin jugadores fijos serían $C_{10,5} = 252$.)",
+    },
+  ],
+};
