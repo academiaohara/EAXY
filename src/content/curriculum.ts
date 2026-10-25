@@ -6950,7 +6950,7 @@ export const curriculum: Curriculum = {
       id: courseId(6),
       slug: "matematicas-2-bachillerato",
       title: "Matemáticas 2º Bachillerato",
-      description: "Segundo curso de matemáticas de Bachillerato.",
+      description: "Matemáticas II, 2º de Bachillerato (12 temas, 144 lecciones): matrices, determinantes, sistemas de ecuaciones, vectores, rectas y planos, geometría métrica, límites y continuidad, derivadas, representación de funciones, integrales, probabilidad y combinatoria, y distribuciones de probabilidad.",
       orderIndex: 8,
       modules: [
         {
@@ -8351,7 +8351,7 @@ export const curriculum: Curriculum = {
       id: courseId(19),
       slug: "matematicas-ccss-2-bachillerato",
       title: "Matemáticas Aplicadas a las CCSS II (2º Bachillerato)",
-      description: "Matemáticas Aplicadas a las Ciencias Sociales II, 2º de Bachillerato: matrices, sistemas de ecuaciones, programación lineal, límites y continuidad, derivadas, integrales, probabilidad y estimación.",
+      description: "Matemáticas Aplicadas a las Ciencias Sociales II, 2º de Bachillerato (8 temas, 94 lecciones): matrices, sistemas de ecuaciones, programación lineal, límites y continuidad, derivadas y representación de funciones, integrales, probabilidad, y estimación con contraste de hipótesis.",
       orderIndex: 9,
       modules: [
         {
