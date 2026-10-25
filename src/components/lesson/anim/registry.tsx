@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildMatrizProducto, buildMatrizGaussJordan, buildMatrizRangoGauss, buildMatrizTraspuesta, buildGrafoAdyacencia, buildMatrizElementos, buildMatrizTipos } from "@/components/lesson/anim/scenes/bach2-matrices";
 import { buildCuantiaMonedas, buildEsperanzaJuego, buildBinomialForma, buildCampanaNormal, buildTipificacionNormal, buildIntervaloConfianza } from "@/components/lesson/anim/scenes/ccss1-distribuciones";
 import { buildTrianguloPascal } from "@/components/lesson/anim/scenes/ccss1-combinatoria";
 import { buildInteresCompuestoBarras, buildAnualidadCapitalizacion, buildAnualidadAmortizacion } from "@/components/lesson/anim/scenes/ccss1-finanzas";
@@ -620,6 +621,13 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "campana-normal": () => buildCampanaNormal(),
   "tipificacion-normal": () => buildTipificacionNormal(),
   "intervalo-confianza-construccion": () => buildIntervaloConfianza(),
+  "matriz-producto": () => buildMatrizProducto(),
+  "matriz-gauss-jordan": (p) => buildMatrizGaussJordan(p),
+  "matriz-rango-gauss": (p) => buildMatrizRangoGauss(p),
+  "matriz-traspuesta": () => buildMatrizTraspuesta(),
+  "grafo-adyacencia": () => buildGrafoAdyacencia(),
+  "matriz-elementos": () => buildMatrizElementos(),
+  "matriz-tipos": () => buildMatrizTipos(),
   /* industrial-end */
 };
 

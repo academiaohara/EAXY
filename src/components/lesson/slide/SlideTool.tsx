@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MatrizOperacionesExplorador, MatrizProductoExplorador, MatrizInversaExplorador, MatrizPotenciasExplorador, GrafoCaminosExplorador, MatrizConmutaExplorador, EcuacionMatricialExplorador } from "@/components/lesson/slide/tools/Bach2MatricesTools";
 import { CuantiaExplorador, BinomialExplorador, NormalExplorador, TablaNormalExplorador, BinomialNormalExplorador, IntervaloConfianzaExplorador } from "@/components/lesson/slide/tools/Ccss1DistribTools";
 import { PascalExplorador, BinomioExplorador } from "@/components/lesson/slide/tools/Ccss1CombTools";
 import { RegresionCuadraticaExplorador } from "@/components/lesson/slide/tools/Ccss1EstadTools";
@@ -1079,6 +1080,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <BinomialNormalExplorador block={block} />;
     case "intervalo-confianza-explorador":
       return <IntervaloConfianzaExplorador block={block} />;
+    case "matriz-operaciones-explorador":
+      return <MatrizOperacionesExplorador block={block} />;
+    case "matriz-producto-explorador":
+      return <MatrizProductoExplorador block={block} />;
+    case "matriz-inversa-explorador":
+      return <MatrizInversaExplorador block={block} />;
+    case "matriz-potencias-explorador":
+      return <MatrizPotenciasExplorador block={block} />;
+    case "grafo-caminos-explorador":
+      return <GrafoCaminosExplorador block={block} />;
+    case "matriz-conmuta-explorador":
+      return <MatrizConmutaExplorador block={block} />;
+    case "ecuacion-matricial-explorador":
+      return <EcuacionMatricialExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1,0 +1,115 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_2BACH_1_SUBTITLE } from "@/data/lessons/shared";
+
+export const traspuestaSimetricas2bachLesson: InteractiveLesson = {
+  slug: "traspuesta-simetricas-2bach",
+  title: "7. Matriz traspuesta, simétricas y antisimétricas",
+  subtitle: TEMA_2BACH_1_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "traspuesta",
+      type: "slide",
+      help: [{ label: "Notación", message: "$A^t$ se lee «A traspuesta». El elemento $a_{ij}$ de $A$ es el elemento $(A^t)_{ji}$." }],
+      title: "Cambiar filas por columnas",
+      blocks: [
+        { kind: "definition", text: "La **traspuesta** $A^t$ de una matriz $A$ de dimensión $m\\times n$ es la matriz $n\\times m$ que se obtiene **cambiando filas por columnas**: $(A^t)_{ij} = a_{ji}$." },
+        { kind: "facts", items: [
+          { tex: "(A + B)^t = A^t + B^t" },
+          { tex: "(A\\cdot B)^t = B^t\\cdot A^t", label: "¡se invierte el orden!" },
+          { tex: "(A^t)^t = A" },
+        ] },
+      ],
+      visual: { kind: "anim", scene: "matriz-traspuesta" },
+    },
+    {
+      id: "check-traspuesta",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Si $A$ es $2\\times 3$, al cambiar filas por columnas queda con $3$ filas y $2$ columnas." }],
+      title: "Dimensión de la traspuesta",
+      question: "Si $A$ es una matriz de dimensión $2\\times 5$, ¿qué dimensión tiene $A^t$?",
+      choices: [
+        { id: "a", label: "$5\\times 2$" },
+        { id: "b", label: "$2\\times 5$", incorrectFeedback: "Esa es la de $A$. Al trasponer, filas y columnas se intercambian." },
+        { id: "c", label: "$2\\times 2$", incorrectFeedback: "$A^t$ tiene tantas filas como columnas tenía $A$, y viceversa." },
+        { id: "d", label: "$10\\times 1$", incorrectFeedback: "Trasponer no cambia el número de elementos ni los apila en una columna." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "Las $5$ columnas de $A$ pasan a ser las $5$ filas de $A^t$: dimensión $5\\times 2$.",
+    },
+    {
+      id: "producto-traspuesta",
+      type: "slide",
+      help: [{ label: "Comprobación", message: "Puede comprobarse con un ejemplo pequeño: calcula $(AD)^t$ y $D^tA^t$ y verás que coinciden." }],
+      title: "La traspuesta de un producto",
+      blocks: [
+        { kind: "example", title: "$A = \\begin{pmatrix} 1 & -1 & 2 \\\\ 4 & 0 & -3 \\end{pmatrix}$ y $D = \\begin{pmatrix} 2 \\\\ 1 \\\\ 3 \\end{pmatrix}$", lines: [
+          { math: "A\\cdot D = \\begin{pmatrix} 2 - 1 + 6 \\\\ 8 + 0 - 9 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ -1 \\end{pmatrix}" },
+          { math: "(AD)^t = \\begin{pmatrix} 7 & -1 \\end{pmatrix} = D^t\\cdot A^t", note: "$D^t$ es $1\\times 3$ y $A^t$ es $3\\times 2$: el producto es $1\\times 2$" },
+        ] },
+        { kind: "warning", text: "Si se escribiera $A^t\\cdot D^t$ ni siquiera estaría definido: $A^t$ es $3\\times 2$ y $D^t$ es $1\\times 3$." },
+      ],
+    },
+    {
+      id: "check-producto",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "La traspuesta de un producto invierte el orden de los factores." }],
+      title: "(A·B)ᵗ",
+      question: "Para dos matrices $A$ y $B$ cuyo producto está definido, $(A\\cdot B)^t$ es igual a…",
+      choices: [
+        { id: "a", label: "$B^t\\cdot A^t$" },
+        { id: "b", label: "$A^t\\cdot B^t$", incorrectFeedback: "Hay que invertir el orden. Con las dimensiones: $A$ de $2\\times 3$ y $B$ de $3\\times 4$ da $A^t\\cdot B^t$ no definido ($3\\times 2$ por $4\\times 3$)." },
+        { id: "c", label: "$A\\cdot B^t$", incorrectFeedback: "Las dos matrices se trasponen y además se invierte el orden." },
+        { id: "d", label: "$(A\\cdot B)^{-1}$", incorrectFeedback: "La inversa y la traspuesta son operaciones distintas." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$(A\\cdot B)^t = B^t\\cdot A^t$. Es la misma regla que con la inversa: se «da la vuelta» al orden.",
+    },
+    {
+      id: "simetrica",
+      type: "slide",
+      help: [{ label: "Diagonal", message: "En una antisimétrica la diagonal es nula: $a_{ii} = -a_{ii}$ obliga a $a_{ii} = 0$." }],
+      title: "Simétricas y antisimétricas",
+      blocks: [
+        { kind: "compare",
+          left: { title: "Simétrica", text: "$A = A^t$: los elementos simétricos respecto de la diagonal principal son **iguales**.", math: ["\\begin{pmatrix} 1 & 1 & 3 \\\\ 1 & 2 & 4 \\\\ 3 & 4 & 5 \\end{pmatrix}"] },
+          right: { title: "Antisimétrica", text: "$A = -A^t$: son **opuestos** y la diagonal principal es nula.", math: ["\\begin{pmatrix} 0 & 1 & -3 \\\\ -1 & 0 & -4 \\\\ 3 & 4 & 0 \\end{pmatrix}"] } },
+      ],
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Compara cada $a_{ij}$ con $a_{ji}$: iguales (simétrica), opuestos y diagonal nula (antisimétrica), o ninguna de las dos." }],
+      title: "¿Simétrica, antisimétrica o ninguna?",
+      question: "Clasifica cada matriz cuadrada.",
+      groups: [
+        { id: "sim", label: "Simétrica", tone: "emerald" },
+        { id: "ant", label: "Antisimétrica", tone: "violet" },
+        { id: "nin", label: "Ninguna", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "$\\begin{pmatrix} 1 & 2 \\\\ 2 & 5 \\end{pmatrix}$", group: "sim" },
+        { id: "b", text: "$\\begin{pmatrix} 0 & 2 \\\\ -2 & 0 \\end{pmatrix}$", group: "ant" },
+        { id: "c", text: "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$", group: "nin" },
+        { id: "d", text: "$\\begin{pmatrix} 5 & 0 \\\\ 0 & 5 \\end{pmatrix}$", group: "sim" },
+        { id: "e", text: "$\\begin{pmatrix} 1 & 2 \\\\ -2 & 1 \\end{pmatrix}$", group: "nin" },
+        { id: "f", text: "$\\begin{pmatrix} 0 & 1 & -3 \\\\ -1 & 0 & -4 \\\\ 3 & 4 & 0 \\end{pmatrix}$", group: "ant" },
+      ],
+      hint: "La matriz $\\begin{pmatrix} 1 & 2 \\\\ -2 & 1 \\end{pmatrix}$ tiene opuestos fuera de la diagonal, pero la diagonal no es nula: no es antisimétrica.",
+    },
+    {
+      id: "check-antisimetrica",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "En una antisimétrica, $a_{21} = -a_{12}$." }],
+      title: "Completar una antisimétrica",
+      question: "Una matriz antisimétrica de orden $3$ cumple $a_{12} = 2$ y $a_{13} = -5$. ¿Cuánto vale $a_{21}$? (solo el número)",
+      correctAnswers: ["-2", "−2"],
+      explanation: "Antisimétrica: $a_{ji} = -a_{ij}$. Luego $a_{21} = -a_{12} = -2$ (y $a_{31} = 5$).",
+    },
+  ],
+};

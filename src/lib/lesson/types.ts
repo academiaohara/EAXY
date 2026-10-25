@@ -958,6 +958,13 @@ export type SlideAnimId =
   | "campana-normal"
   | "tipificacion-normal"
   | "intervalo-confianza-construccion"
+  | "matriz-producto"
+  | "matriz-gauss-jordan"
+  | "matriz-rango-gauss"
+  | "matriz-traspuesta"
+  | "grafo-adyacencia"
+  | "matriz-elementos"
+  | "matriz-tipos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1423,6 +1430,13 @@ export type SlideToolId =
   | "tabla-normal-explorador"
   | "binomial-normal-explorador"
   | "intervalo-confianza-explorador"
+  | "matriz-operaciones-explorador"
+  | "matriz-producto-explorador"
+  | "matriz-inversa-explorador"
+  | "matriz-potencias-explorador"
+  | "grafo-caminos-explorador"
+  | "matriz-conmuta-explorador"
+  | "ecuacion-matricial-explorador"
   /* industrial-tool-end */;
 
 /**

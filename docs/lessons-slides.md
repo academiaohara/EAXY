@@ -434,6 +434,13 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `cantidad-inicial` | Cantidad inicial tras una variación: índice de variación, división y el error de «quitar el mismo %» | `a` (final), `b` (% de subida) |
 | `pitagoras-demostracion` | Cuadrado de lado `b + c` llenado de dos maneras con cuatro triángulos: `b² + c² = a²` (hipotenusa `a`) | `a`, `b` (catetos) |
 | `coordenadas-geograficas` | Planisferio: latitud y longitud de Jerez y de Auckland (antípodas) | — |
+| `matriz-producto` | Producto A·B de 2×3 por 3×2: se resalta la fila de A y la columna de B de cada elemento y se calcula su producto escalar | — |
+| `matriz-gauss-jordan` | Inversa por Gauss–Jordan: se parte de (A | I), cada operación elemental se aplica a la fila entera y a la derecha queda A⁻¹ (o aparece una fila de ceros si es singular) | `nums` (4 o 9 elementos de A por filas) |
+| `matriz-rango-gauss` | Rango escalonando: operaciones elementales hasta una fila de ceros; rango = filas no nulas | `nums` (9 elementos de una matriz 3×3) |
+| `matriz-traspuesta` | Traspuesta: las filas de A (por colores) pasan a ser las columnas de Aᵗ y 2×3 → 3×2 | — |
+| `grafo-adyacencia` | Grafo dirigido de cuatro nodos y su matriz de adyacencia; al elevar al cuadrado, el elemento (A, C) cuenta el camino A→B→C | — |
+| `matriz-elementos` | Tabla de juguetes como matriz 2×3: filas, columnas, dimensión y elementos a₁₃ y a₂₁ | — |
+| `matriz-tipos` | Triangular superior e inferior, diagonal, escalar e identidad con los ceros y la diagonal marcados | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -774,6 +781,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `grafo-bimodal-explorador` | Ecuaciones de los ejemplos 1 a 3 con pulsadores NA y NC: marcha, autorretención y paro | `a` (ejemplo) |
 | `secuencia-reles-explorador` | Lámparas H₁ y H₂ de los ejemplos 5 y 6 con dos temporizadores y un cursor de tiempo | `a` (5 o 6), `b` (KT₁, s), `c` (KT₂, s) |
 | `motor-enclavamiento-explorador` | Inversión de giro con KM₁ y KM₂ enclavados, paro SB₀ y relé térmico FT₁ | — |
+| `matriz-operaciones-explorador` | Suma, resta y producto por un número de dos matrices 2×2 editables; elemento (1, 1) y suma de elementos del resultado | `initial`: `[a11, a12, a21, a22, b11, b12, b21, b22, k (−5–5), operación (0 suma, 1 resta, 2 k·A)]` |
+| `matriz-producto-explorador` | A (m×n) por B (r×p) con dimensiones de 1 a 3: dice si A·B y B·A existen, y desglosa el elemento (i, j) como fila por columna | `initial`: `[m, n, r, p]` y luego 9 elementos de A y 9 de B por filas |
+| `matriz-inversa-explorador` | Inversa 2×2 o 3×3 con determinante, comprobación A·A⁻¹ = I y aviso si es singular | `initial`: `[tamaño (2 o 3)]` y 9 elementos por filas |
+| `matriz-potencias-explorador` | Aⁿ para cinco matrices 2×2 (giro de 90°, cizalla, todo unos, diagonal y Fibonacci) con la regla que se cumple | `initial`: `[matriz (0–4), n (0–12)]` |
+| `grafo-caminos-explorador` | Matriz de adyacencia 4×4 editable (se pulsa cada casilla), grafo dibujado y Aᵏ con los caminos de longitud k entre dos nodos | `initial`: `[k (1–5), origen (0–3), destino (0–3)]` y 16 elementos de la matriz |
+| `matriz-conmuta-explorador` | A·B y B·A de dos matrices 2×2 editables y si coinciden | `initial`: 4 elementos de A y 4 de B |
+| `ecuacion-matricial-explorador` | Resuelve A·X = B o X·A = B con A⁻¹ por el lado correcto y comprueba la solución | `initial`: `[tipo (0: A·X, 1: X·A)]`, 4 elementos de A y 4 de B |
 
 ## Respuesta como fracción
 

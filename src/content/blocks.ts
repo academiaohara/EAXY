@@ -205,6 +205,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 25,
   },
   {
+    slug: "algebra-lineal",
+    subject: "matematicas",
+    title: "Álgebra lineal",
+    description: "Matrices, determinantes y sistemas de ecuaciones lineales.",
+    orderIndex: 26,
+  },
+  {
     slug: "materiales",
     subject: "tecnologia",
     title: "Materiales",
@@ -441,6 +448,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/componentes-sistema-control": "sistemas-de-control",
   "tecnologia-industrial-2-bachillerato/circuitos-combinacionales-boole": "electronica-digital",
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
+  "matematicas-2-bachillerato/matrices": "algebra-lineal",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {
