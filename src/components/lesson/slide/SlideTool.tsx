@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TrazadosBasicosExplorador, AcotacionExplorador, EscalaDibujoExplorador, VistasPiezaExplorador, PerspectivaExplorador } from "@/components/lesson/slide/tools/TecEso1GraficaTools";
 import { AnalisisObjetoExplorador, LineaTiempoExplorador, PresupuestoExplorador, RepartoTareasExplorador, FuenteFiableExplorador } from "@/components/lesson/slide/tools/TecEso1ProcesoTools";
 import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
 import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
@@ -1346,6 +1347,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RepartoTareasExplorador block={block} />;
     case "fuente-fiable-explorador":
       return <FuenteFiableExplorador block={block} />;
+    case "trazados-basicos-explorador":
+      return <TrazadosBasicosExplorador block={block} />;
+    case "acotacion-explorador":
+      return <AcotacionExplorador block={block} />;
+    case "escala-dibujo-explorador":
+      return <EscalaDibujoExplorador block={block} />;
+    case "vistas-pieza-explorador":
+      return <VistasPiezaExplorador block={block} />;
+    case "perspectiva-explorador":
+      return <PerspectivaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

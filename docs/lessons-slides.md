@@ -497,6 +497,13 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `economia-lineal-circular` | Economía lineal frente a circular y las «R» | — |
 | `fases-proyecto-eso` | Las siete fases del proyecto tecnológico (problema, información, diseño, planificación, construcción, evaluación, mejora) y la vuelta atrás | — |
 | `ciencia-tecnica-tecnologia` | Ciencia, técnica, tecnología e ingeniería repartidas en un mismo proyecto (un puente) | — |
+| `trazo-paralela-escuadra` | Paralela por un punto con escuadra y cartabón: apoyar, fijar la escuadra, deslizar y trazar | — |
+| `acotar-pieza-pasos` | Acotar una pieza: líneas auxiliares, línea de cota con flechas, cifra, diámetro y cotas repetidas | — |
+| `vistas-proyeccion` | Una pieza de cubos y sus tres vistas (alzado, planta y perfil) alineadas | — |
+| `caballera-pasos` | Perspectiva caballera: cara frontal real, rectas a 45°, fondo reducido a la mitad y aristas ocultas | — |
+| `isometrica-pasos` | Perspectiva isométrica: tres ejes a 120°, medidas iguales, paralelas y caras | — |
+| `boceto-croquis-plano` | Boceto, croquis y plano de una misma pieza: finalidad de cada uno | — |
+| `escala-reduccion` | Escala de reducción 1:50: dividir para dibujar y multiplicar para leer un plano | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -960,6 +967,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `presupuesto-explorador` | Presupuesto de un proyecto: cantidad × precio, total, imprevistos del 10 % y comparación con el presupuesto disponible | `a` presupuesto disponible (€) |
 | `reparto-tareas-explorador` | Reparto de seis tareas entre tres personas: carga de cada una y duración del proyecto | — |
 | `fuente-fiable-explorador` | Evaluación de cuatro fuentes con cinco criterios (autor, fecha, datos, intención, experiencia) y contraste con una segunda fuente | `n` fuente inicial (0–3) |
+| `trazados-basicos-explorador` | Paralela, perpendicular y mediatriz sobre una recta inclinable | `n` trazado (0 paralela, 1 perpendicular, 2 mediatriz), `a` inclinación (°), `b` longitud del segmento |
+| `acotacion-explorador` | Pieza con agujero sin acotar, bien acotada y mal acotada (cotas repetidas) | `a` largo, `b` ancho, `c` diámetro (mm) |
+| `escala-dibujo-explorador` | Medida real × escala = dibujo, y si cabe en un A4 | `n` escala (0–7: 1:1, 1:2, 1:5, 1:10, 1:50, 1:100, 2:1, 5:1), `a` medida real (mm) |
+| `vistas-pieza-explorador` | Pieza de cubos 3×3 editable con su isométrica y sus tres vistas | `n` pieza inicial (0 L, 1 escalera, 2 torre) |
+| `perspectiva-explorador` | Prisma en perspectiva caballera o isométrica: fondo real y dibujado | `n` modo (0 caballera, 1 isométrica), `a` largo, `b` alto, `c` fondo (mm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

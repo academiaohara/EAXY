@@ -1,5 +1,6 @@
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
+import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
@@ -101,6 +102,7 @@ import { binomialNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bac
 import { binomialParametrosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/04-binomial-parametros-ccss1";
 import { binomioDeNewton2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/11-binomio-de-newton-2bach";
 import { binomioNewtonCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/08-binomio-newton-ccss1";
+import { bocetosCroquisLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/02-bocetos-croquis";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
@@ -329,6 +331,7 @@ import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
+import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
@@ -503,6 +506,7 @@ import { inecuacionesSegundoGrado1bachLesson } from "@/data/lessons/matematicas-
 import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/10-inecuaciones-segundo-grado-ccss1";
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
+import { instrumentosDibujoTrazadosLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/01-instrumentos-dibujo-trazados";
 import { instrumentosMedidaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/07-instrumentos-medida-electrica";
 import { integracionPorPartes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/07-integracion-por-partes-2bach";
 import { integracionPorPartesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/07-integracion-por-partes-ccss2";
@@ -710,6 +714,8 @@ import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachi
 import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/06-percentiles-cuartiles-1bach";
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
+import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
+import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
@@ -1130,6 +1136,7 @@ import { velocidadAceleracion1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/09-velocidad-aceleracion-ccss1";
 import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
+import { vistasAlzadoPlantaPerfilLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/05-vistas-alzado-planta-perfil";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenParalelepipedoTetraedro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/10-volumen-paralelepipedo-tetraedro-2bach";
@@ -1141,6 +1148,7 @@ import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-
 export const interactiveLessons = {
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
+  "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
@@ -1242,6 +1250,7 @@ export const interactiveLessons = {
   "binomial-parametros-ccss1": binomialParametrosCcss1Lesson,
   "binomio-de-newton-2bach": binomioDeNewton2bachLesson,
   "binomio-newton-ccss1": binomioNewtonCcss1Lesson,
+  "bocetos-croquis": bocetosCroquisLesson,
   "bomba-calor": bombaCalorLesson,
   "bucles-for-while": buclesForWhileLesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
@@ -1470,6 +1479,7 @@ export const interactiveLessons = {
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
+  "escalas-dibujo": escalasDibujoLesson,
   "esferas-2eso": esferas2esoLesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
@@ -1644,6 +1654,7 @@ export const interactiveLessons = {
   "inecuaciones-segundo-grado-ccss1": inecuacionesSegundoGradoCcss1Lesson,
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
+  "instrumentos-dibujo-trazados": instrumentosDibujoTrazadosLesson,
   "instrumentos-medida-electrica": instrumentosMedidaElectricaLesson,
   "integracion-por-partes-2bach": integracionPorPartes2bachLesson,
   "integracion-por-partes-ccss2": integracionPorPartesCcss2Lesson,
@@ -1851,6 +1862,8 @@ export const interactiveLessons = {
   "percentiles-cuartiles-1bach": percentilesCuartiles1bachLesson,
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
+  "perspectiva-caballera": perspectivaCaballeraLesson,
+  "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
   "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
@@ -2271,6 +2284,7 @@ export const interactiveLessons = {
   "velocidad-aceleracion-ccss1": velocidadAceleracionCcss1Lesson,
   "velocidad-lineal-angular": velocidadLinealAngularLesson,
   "viscosidad-indice": viscosidadIndiceLesson,
+  "vistas-alzado-planta-perfil": vistasAlzadoPlantaPerfilLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
   "volumen-paralelepipedo-tetraedro-2bach": volumenParalelepipedoTetraedro2bachLesson,

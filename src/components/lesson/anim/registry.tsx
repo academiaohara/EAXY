@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildTrazoParalelaEscuadra, buildAcotarPiezaPasos, buildVistasProyeccion, buildCaballeraPasos, buildIsometricaPasos, buildBocetoCroquisPlano, buildEscalaReduccion } from "@/components/lesson/anim/scenes/industrial/teceso1-grafica";
 import { buildFasesProyectoEso, buildCienciaTecnicaTecnologia } from "@/components/lesson/anim/scenes/industrial/teceso1-proceso";
 import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
 import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
@@ -702,6 +703,13 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "economia-lineal-circular": () => buildEconomiaLinealCircular(),
   "fases-proyecto-eso": () => buildFasesProyectoEso(),
   "ciencia-tecnica-tecnologia": () => buildCienciaTecnicaTecnologia(),
+  "trazo-paralela-escuadra": () => buildTrazoParalelaEscuadra(),
+  "acotar-pieza-pasos": () => buildAcotarPiezaPasos(),
+  "vistas-proyeccion": () => buildVistasProyeccion(),
+  "caballera-pasos": () => buildCaballeraPasos(),
+  "isometrica-pasos": () => buildIsometricaPasos(),
+  "boceto-croquis-plano": () => buildBocetoCroquisPlano(),
+  "escala-reduccion": () => buildEscalaReduccion(),
   /* industrial-end */
 };
 

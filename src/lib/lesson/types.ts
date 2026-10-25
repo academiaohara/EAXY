@@ -1021,6 +1021,13 @@ export type SlideAnimId =
   | "economia-lineal-circular"
   | "fases-proyecto-eso"
   | "ciencia-tecnica-tecnologia"
+  | "trazo-paralela-escuadra"
+  | "acotar-pieza-pasos"
+  | "vistas-proyeccion"
+  | "caballera-pasos"
+  | "isometrica-pasos"
+  | "boceto-croquis-plano"
+  | "escala-reduccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1610,6 +1617,11 @@ export type SlideToolId =
   | "presupuesto-explorador"
   | "reparto-tareas-explorador"
   | "fuente-fiable-explorador"
+  | "trazados-basicos-explorador"
+  | "acotacion-explorador"
+  | "escala-dibujo-explorador"
+  | "vistas-pieza-explorador"
+  | "perspectiva-explorador"
   /* industrial-tool-end */;
 
 /**

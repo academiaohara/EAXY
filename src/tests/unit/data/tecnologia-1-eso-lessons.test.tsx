@@ -20,6 +20,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["tecnologia-proceso-tecnologico", 7],
+  ["expresion-comunicacion-grafica", 7],
 ];
 
 describe("curso Tecnología 1.º ESO (Introducción a la Tecnología)", () => {

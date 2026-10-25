@@ -289,6 +289,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 8,
   },
   {
+    slug: "expresion-grafica",
+    subject: "tecnologia",
+    title: "Expresión gráfica",
+    description: "Instrumentos, bocetos y croquis, acotación, escalas, vistas y perspectivas.",
+    orderIndex: 10,
+  },
+  {
     slug: "tecnologia-sostenible",
     subject: "tecnologia",
     title: "Tecnología sostenible",
@@ -499,6 +506,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-industrial-2-bachillerato/circuitos-secuenciales-control-cableado": "electronica-digital",
   // ── Tecnología 1.º ESO ──
   "tecnologia-1-eso/tecnologia-proceso-tecnologico": "proyectos-tecnologicos",
+  "tecnologia-1-eso/expresion-comunicacion-grafica": "expresion-grafica",
   // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
   "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
   "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",
