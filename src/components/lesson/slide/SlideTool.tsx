@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EnsayoMaterialExplorador, PropiedadesBarrasExplorador, MaderaDerivadosExplorador, MetalesPruebaExplorador, PlasticoCalorExplorador, SeleccionMaterialEsoExplorador, TallerPeligrosExplorador, ContenedoresReciclajeExplorador } from "@/components/lesson/slide/tools/TecEso1MaterialesTools";
 import { TrazadosBasicosExplorador, AcotacionExplorador, EscalaDibujoExplorador, VistasPiezaExplorador, PerspectivaExplorador } from "@/components/lesson/slide/tools/TecEso1GraficaTools";
 import { AnalisisObjetoExplorador, LineaTiempoExplorador, PresupuestoExplorador, RepartoTareasExplorador, FuenteFiableExplorador } from "@/components/lesson/slide/tools/TecEso1ProcesoTools";
 import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
@@ -1357,6 +1358,22 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <VistasPiezaExplorador block={block} />;
     case "perspectiva-explorador":
       return <PerspectivaExplorador block={block} />;
+    case "ensayo-material-explorador":
+      return <EnsayoMaterialExplorador block={block} />;
+    case "materiales-propiedades-explorador":
+      return <PropiedadesBarrasExplorador block={block} />;
+    case "madera-derivados-explorador":
+      return <MaderaDerivadosExplorador block={block} />;
+    case "metales-prueba-explorador":
+      return <MetalesPruebaExplorador block={block} />;
+    case "plastico-calor-explorador":
+      return <PlasticoCalorExplorador block={block} />;
+    case "seleccion-material-eso-explorador":
+      return <SeleccionMaterialEsoExplorador block={block} />;
+    case "taller-peligros-explorador":
+      return <TallerPeligrosExplorador block={block} />;
+    case "contenedores-reciclaje-explorador":
+      return <ContenedoresReciclajeExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

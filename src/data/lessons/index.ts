@@ -470,6 +470,7 @@ import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
+import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
@@ -589,6 +590,7 @@ import { logaritmosPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { logicaControlAutomatismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/07-logica-control-automatismos";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
+import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
@@ -596,6 +598,7 @@ import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industr
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
 import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/01-maquinas-mecanismos-elementos";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
+import { materiasPrimasMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/01-materias-primas-materiales";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
 import { matrizInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/08-matriz-inversa-2bach";
 import { matrizInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/08-matriz-inversa-ccss2";
@@ -612,6 +615,7 @@ import { medidaDesplazamientoLesson } from "@/data/lessons/tecnologia-industrial
 import { memoriaSecuencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/01-memoria-secuencial";
 import { memoriaTecnicaPresentacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/08-memoria-tecnica-presentacion";
 import { menoresAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/05-menores-adjuntos-2bach";
+import { metalesAleacionesBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/04-metales-aleaciones-basico";
 import { metalesYAleacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/06-metales-y-aleaciones";
 import { metodoIgualacion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/04-metodo-igualacion-4eso";
 import { metodoIgualacion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/09-metodo-igualacion-4esob";
@@ -724,6 +728,7 @@ import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematica
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
+import { plasticosBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/05-plasticos-basico";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
 import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
@@ -861,6 +866,7 @@ import { propiedadesDet22bachLesson } from "@/data/lessons/matematicas-2-bachill
 import { propiedadesFisicasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/03-propiedades-fisicas-mecanicas";
 import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/06-propiedades-limites-infinito-1bach";
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
+import { propiedadesMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/02-propiedades-materiales";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
 import { propiedadesProductoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/05-propiedades-producto-ccss2";
@@ -906,6 +912,7 @@ import { rangoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachil
 import { rangoMenores2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/11-rango-menores-2bach";
 import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/12-rango-parametro-2bach";
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
+import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
 import { recorridoSimetriasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/02-recorrido-simetrias-ccss1";
@@ -960,6 +967,7 @@ import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-ba
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
+import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
 import { seleccionMaterialesCriteriosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/05-seleccion-materiales-criterios";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
 import { semejanzaEscala4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/02-semejanza-escala-4esob";
@@ -1080,6 +1088,7 @@ import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerat
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { teoremasContinuas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/11-teoremas-continuas-2bach";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
+import { textilesPetreosCeramicosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/06-textiles-petreos-ceramicos";
 import { tipificacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/08-tipificacion-ccss1";
 import { tipificacionTablaNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/08-tipificacion-tabla-normal-2bach";
 import { tiposCorrosionProteccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/07-tipos-corrosion-proteccion";
@@ -1618,6 +1627,7 @@ export const interactiveLessons = {
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
+  "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
@@ -1737,6 +1747,7 @@ export const interactiveLessons = {
   "logica-control-automatismos": logicaControlAutomatismosLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "luz-detector-error": luzDetectorErrorLesson,
+  "madera-derivados": maderaDerivadosLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
@@ -1744,6 +1755,7 @@ export const interactiveLessons = {
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
   "maquinas-mecanismos-elementos": maquinasMecanismosElementosLesson,
   "materiales-ceramicos": materialesCeramicosLesson,
+  "materias-primas-materiales": materiasPrimasMaterialesLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
   "matriz-inversa-2bach": matrizInversa2bachLesson,
   "matriz-inversa-ccss2": matrizInversaCcss2Lesson,
@@ -1760,6 +1772,7 @@ export const interactiveLessons = {
   "memoria-secuencial": memoriaSecuencialLesson,
   "memoria-tecnica-presentacion": memoriaTecnicaPresentacionLesson,
   "menores-adjuntos-2bach": menoresAdjuntos2bachLesson,
+  "metales-aleaciones-basico": metalesAleacionesBasicoLesson,
   "metales-y-aleaciones": metalesYAleacionesLesson,
   "metodo-igualacion-4eso": metodoIgualacion4esoLesson,
   "metodo-igualacion-4esob": metodoIgualacion4esobLesson,
@@ -1872,6 +1885,7 @@ export const interactiveLessons = {
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
+  "plasticos-basico": plasticosBasicoLesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
   "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
@@ -2009,6 +2023,7 @@ export const interactiveLessons = {
   "propiedades-fisicas-mecanicas": propiedadesFisicasMecanicasLesson,
   "propiedades-limites-infinito-1bach": propiedadesLimitesInfinito1bachLesson,
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
+  "propiedades-materiales": propiedadesMaterialesLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
   "propiedades-producto-ccss2": propiedadesProductoCcss2Lesson,
@@ -2054,6 +2069,7 @@ export const interactiveLessons = {
   "rango-menores-2bach": rangoMenores2bachLesson,
   "rango-parametro-2bach": rangoParametro2bachLesson,
   "razones-agudas-1bach": razonesAgudas1bachLesson,
+  "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,
   "recorrido-simetrias-ccss1": recorridoSimetriasCcss1Lesson,
@@ -2108,6 +2124,7 @@ export const interactiveLessons = {
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
+  "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
   "seleccion-materiales-criterios": seleccionMaterialesCriteriosLesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
   "semejanza-escala-4esob": semejanzaEscala4esobLesson,
@@ -2228,6 +2245,7 @@ export const interactiveLessons = {
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "teoremas-continuas-2bach": teoremasContinuas2bachLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
+  "textiles-petreos-ceramicos": textilesPetreosCeramicosLesson,
   "tipificacion-ccss1": tipificacionCcss1Lesson,
   "tipificacion-tabla-normal-2bach": tipificacionTablaNormal2bachLesson,
   "tipos-corrosion-proteccion": tiposCorrosionProteccionLesson,

@@ -1028,6 +1028,10 @@ export type SlideAnimId =
   | "isometrica-pasos"
   | "boceto-croquis-plano"
   | "escala-reduccion"
+  | "materias-primas-proceso"
+  | "contrachapado-capas"
+  | "aleacion-mezcla"
+  | "ciclo-reciclaje-material"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1622,6 +1626,14 @@ export type SlideToolId =
   | "escala-dibujo-explorador"
   | "vistas-pieza-explorador"
   | "perspectiva-explorador"
+  | "ensayo-material-explorador"
+  | "materiales-propiedades-explorador"
+  | "madera-derivados-explorador"
+  | "metales-prueba-explorador"
+  | "plastico-calor-explorador"
+  | "seleccion-material-eso-explorador"
+  | "taller-peligros-explorador"
+  | "contenedores-reciclaje-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -504,6 +504,10 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `isometrica-pasos` | Perspectiva isométrica: tres ejes a 120°, medidas iguales, paralelas y caras | — |
 | `boceto-croquis-plano` | Boceto, croquis y plano de una misma pieza: finalidad de cada uno | — |
 | `escala-reduccion` | Escala de reducción 1:50: dividir para dibujar y multiplicar para leer un plano | — |
+| `materias-primas-proceso` | De la materia prima al objeto: árbol → mesa, mineral → clavo y petróleo → botella | — |
+| `contrachapado-capas` | Por qué el contrachapado es estable: láminas finas con las fibras cruzadas | — |
+| `aleacion-mezcla` | Aleación: átomos de cobre y estaño mezclados forman bronce, más duro que sus componentes | — |
+| `ciclo-reciclaje-material` | Ciclo del reciclaje: uso, recogida, planta, material reciclado y nuevo producto | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -972,6 +976,14 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `escala-dibujo-explorador` | Medida real × escala = dibujo, y si cabe en un A4 | `n` escala (0–7: 1:1, 1:2, 1:5, 1:10, 1:50, 1:100, 2:1, 5:1), `a` medida real (mm) |
 | `vistas-pieza-explorador` | Pieza de cubos 3×3 editable con su isométrica y sus tres vistas | `n` pieza inicial (0 L, 1 escalera, 2 torre) |
 | `perspectiva-explorador` | Prisma en perspectiva caballera o isométrica: fondo real y dibujado | `n` modo (0 caballera, 1 isométrica), `a` largo, `b` alto, `c` fondo (mm) |
+| `ensayo-material-explorador` | Cinco pruebas (golpe, calor, agua, electricidad, imán) sobre diez materiales | `n` muestra inicial (0–9) |
+| `materiales-propiedades-explorador` | Comparación de dos materiales en siete propiedades (valores orientativos de 0 a 10) y su densidad | `a`, `b` índices de los materiales (0–5) |
+| `madera-derivados-explorador` | Madera maciza, contrachapado, aglomerado y MDF: composición, usos y cuatro criterios | `n` tablero (0–3) |
+| `metales-prueba-explorador` | Imán, conducción y oxidación con los días de ocho metales y aleaciones | `n` metal (0–7), `a` días (0–200) |
+| `plastico-calor-explorador` | Termoplástico, termoestable y elastómero frente a la temperatura (20–300 °C) y al estiramiento | `n` tipo (0–2), `a` temperatura (°C) |
+| `seleccion-material-eso-explorador` | Ranking de seis materiales según la importancia de cuatro criterios para cuatro objetos | `n` objeto (0–3) |
+| `taller-peligros-explorador` | Escena de taller con seis situaciones peligrosas que se localizan pulsando | — |
+| `contenedores-reciclaje-explorador` | Diez residuos y seis contenedores, con aciertos, fallos y explicación | — |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

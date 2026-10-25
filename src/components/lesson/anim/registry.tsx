@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildMateriasPrimasProceso, buildContrachapadoCapas, buildAleacionMezcla, buildCicloReciclaje } from "@/components/lesson/anim/scenes/industrial/teceso1-materiales";
 import { buildTrazoParalelaEscuadra, buildAcotarPiezaPasos, buildVistasProyeccion, buildCaballeraPasos, buildIsometricaPasos, buildBocetoCroquisPlano, buildEscalaReduccion } from "@/components/lesson/anim/scenes/industrial/teceso1-grafica";
 import { buildFasesProyectoEso, buildCienciaTecnicaTecnologia } from "@/components/lesson/anim/scenes/industrial/teceso1-proceso";
 import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
@@ -710,6 +711,10 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "isometrica-pasos": () => buildIsometricaPasos(),
   "boceto-croquis-plano": () => buildBocetoCroquisPlano(),
   "escala-reduccion": () => buildEscalaReduccion(),
+  "materias-primas-proceso": () => buildMateriasPrimasProceso(),
+  "contrachapado-capas": () => buildContrachapadoCapas(),
+  "aleacion-mezcla": () => buildAleacionMezcla(),
+  "ciclo-reciclaje-material": () => buildCicloReciclaje(),
   /* industrial-end */
 };
 
