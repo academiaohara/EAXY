@@ -14,4 +14,14 @@ describe("herramientas de análisis (2.º Bachillerato)", () => {
     show("uno-infinito-explorador", [Number.NaN, 99, -4]);
     show("uno-infinito-explorador");
   });
+
+  it("lhopital-explorador: pasos, límite y tabla", () => {
+    show("lhopital-explorador", [2, 3]);
+    expect(screen.getByTestId("tool-lh-limite")).toHaveTextContent("1/2");
+    expect(screen.getByTestId("tool-lh-pasos")).toHaveTextContent("cos x / 2");
+    expect(screen.getByTestId("tool-lh-tabla")).toHaveTextContent("0,4999");
+    show("lhopital-explorador", [4, 5]);
+    show("lhopital-explorador", [Number.NaN, 99]);
+    show("lhopital-explorador");
+  });
 });

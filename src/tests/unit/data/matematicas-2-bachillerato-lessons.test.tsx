@@ -16,6 +16,7 @@ const TEMAS: [number, string, number][] = [
   [5, "rectas-y-planos", 12],
   [6, "geometria-metrica", 12],
   [7, "limites-y-continuidad", 12],
+  [8, "derivadas", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);

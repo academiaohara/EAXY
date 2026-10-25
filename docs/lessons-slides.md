@@ -460,6 +460,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `distancia-punto-recta-3d` | Distancia de un punto a una recta: paralelogramo de AP y v, área entre base y pie de la perpendicular | `nums`: `[P, A, v]` (9 valores) |
 | `distancia-rectas-cruzan-3d` | Distancia entre dos rectas que se cruzan: paralelepípedo de u, v y PQ, volumen entre área de la base | `nums`: `[P, u, Q, v]` (12 valores) |
 | `bolzano-biseccion` | Bolzano con f(x) = x³ − x − 1: cambio de signo en [1, 2] y bisección del intervalo | — |
+| `rolle-lagrange` | Teorema de Rolle (a = 0, x² − 4x + 3 en [1, 3]) y de Lagrange (a = 1, x² en [0, 3]): tangente paralela a la secante | `a` (0 Rolle, 1 Lagrange) |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -830,6 +831,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `proyeccion-simetrico-explorador` | Proyección ortogonal y simétrico de un punto respecto de un plano, una recta o un punto | `initial`: `[modo (0–2), P(3), …]` (plano: 4 valores; recta: A y v; punto: M) |
 | `distancias-espacio-explorador` | Distancia exacta y aproximada punto-plano, punto-recta y entre dos rectas | `initial`: `[modo (0–2)]` y los datos de cada caso |
 | `uno-infinito-explorador` | Límite de (1 + a/n)^(b·n) cuando n crece: valor con n = 10^k frente al límite e^(a·b) | `initial`: `[a (−3 a 3), b (1 a 3), k (0 a 7)]` |
+| `lhopital-explorador` | Seis límites resueltos con L'Hôpital (0/0 y ∞/∞, con una o varias aplicaciones) y tabla numérica de comprobación | `initial`: `[caso (0–5), valores de la tabla (0–5)]` |
 
 ## Respuesta como fracción
 

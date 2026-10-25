@@ -103,3 +103,4 @@ export const TEMA_2BACH_4_SUBTITLE = "2.º Bachillerato, Tema 4 — Vectores en 
 export const TEMA_2BACH_5_SUBTITLE = "2.º Bachillerato, Tema 5 — Rectas y planos en el espacio";
 export const TEMA_2BACH_6_SUBTITLE = "2.º Bachillerato, Tema 6 — Geometría métrica en el espacio";
 export const TEMA_2BACH_7_SUBTITLE = "2.º Bachillerato, Tema 7 — Límites y continuidad";
+export const TEMA_2BACH_8_SUBTITLE = "2.º Bachillerato, Tema 8 — Derivadas";

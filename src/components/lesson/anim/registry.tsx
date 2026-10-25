@@ -1,5 +1,5 @@
 // industrial-imports
-import { buildBolzanoBiseccion } from "@/components/lesson/anim/scenes/bach2-analisis";
+import { buildBolzanoBiseccion, buildRolleLagrange } from "@/components/lesson/anim/scenes/bach2-analisis";
 import { buildProyeccionPuntoPlano3d, buildDistanciaPuntoRecta3d, buildDistanciaRectasCruzan3d } from "@/components/lesson/anim/scenes/bach2-metrica";
 import { buildRectaEspacio3d, buildPlanoTresPuntos3d, buildRectasPosiciones3d } from "@/components/lesson/anim/scenes/bach2-rectas-planos";
 import { buildVectorComponentes3d, buildVectoresSuma3d, buildProductoEscalarProyeccion, buildProductoVectorial3d, buildParalelepipedoVolumen } from "@/components/lesson/anim/scenes/bach2-vectores";
@@ -653,6 +653,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "distancia-punto-recta-3d": (p) => buildDistanciaPuntoRecta3d(p),
   "distancia-rectas-cruzan-3d": (p) => buildDistanciaRectasCruzan3d(p),
   "bolzano-biseccion": () => buildBolzanoBiseccion(),
+  "rolle-lagrange": (p) => buildRolleLagrange(p),
   /* industrial-end */
 };
 
