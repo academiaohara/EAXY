@@ -51,6 +51,7 @@ import { arbolTabla1bachLesson } from "@/data/lessons/matematicas-1-bachillerato
 import { arbolTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/09-arbol-tabla-ccss1";
 import { arbolesTablas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/06-arboles-tablas-2bach";
 import { areaBajoCurvaRiemann2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/09-area-bajo-curva-riemann-2bach";
+import { areaBajoCurvaRiemannCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/08-area-bajo-curva-riemann-ccss2";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
 import { areaCuadrilateros3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/05-area-cuadrilateros-3eso";
 import { areaEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/05-area-esfera-3eso";
@@ -59,6 +60,7 @@ import { areaPoligonos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-pro
 import { areaTriangulos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/06-area-triangulos-3eso";
 import { areasCirculoLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/04-areas-circulo";
 import { areasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/01-areas-cuadrilateros";
+import { areasEntreCurvasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/11-areas-entre-curvas-ccss2";
 import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/09-areas-figuras-curvas-3eso";
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
@@ -94,6 +96,7 @@ import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematic
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
+import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
@@ -454,11 +457,16 @@ import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
 import { integracionPorPartes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/07-integracion-por-partes-2bach";
+import { integracionPorPartesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/07-integracion-por-partes-ccss2";
 import { integralDefinidaTfc2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/10-integral-definida-tfc-2bach";
+import { integralDefinidaTfcCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/09-integral-definida-tfc-ccss2";
 import { integralDerivativaPidLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/11-integral-derivativa-pid";
 import { integralesCadena2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/05-integrales-cadena-2bach";
+import { integralesCadenaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/05-integrales-cadena-ccss2";
 import { integralesExponencialesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/04-integrales-exponenciales-trigonometricas-2bach";
+import { integralesExponencialesTrigonometricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/04-integrales-exponenciales-trigonometricas-ccss2";
 import { integralesInmediatasPotencias2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/03-integrales-inmediatas-potencias-2bach";
+import { integralesInmediatasPotenciasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/03-integrales-inmediatas-potencias-ccss2";
 import { integralesRacionales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/08-integrales-racionales-2bach";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/03-interes-compuesto-ccss1";
@@ -684,6 +692,7 @@ import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
 import { primitivaIntegralIndefinida2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/01-primitiva-integral-indefinida-2bach";
+import { primitivaIntegralIndefinidaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/01-primitiva-integral-indefinida-ccss2";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
 import { probArbol4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/07-prob-arbol-4eso";
 import { probArbol4esobLesson } from "@/data/lessons/matematicas-4-eso-b/10-calculo-de-probabilidades/07-prob-arbol-4esob";
@@ -720,6 +729,7 @@ import { problemasFamososCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { problemasFinancierosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/07-problemas-financieros-ccss1";
 import { problemasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/06-problemas-fracciones-2eso";
 import { problemasFracciones4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/08-problemas-fracciones-4eso";
+import { problemasIntegralesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/12-problemas-integrales-ccss2";
 import { problemasLimitesContinuidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/12-problemas-limites-continuidad-2bach";
 import { problemasLimitesContinuidadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/12-problemas-limites-continuidad-ccss2";
 import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
@@ -765,6 +775,7 @@ import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
 import { propiedadesCondicionInicial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/02-propiedades-condicion-inicial-2bach";
+import { propiedadesCondicionInicialCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/02-propiedades-condicion-inicial-ccss2";
 import { propiedadesDet12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/02-propiedades-det-1-2bach";
 import { propiedadesDet22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/03-propiedades-det-2-2bach";
 import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/06-propiedades-limites-infinito-1bach";
@@ -840,6 +851,7 @@ import { reglaCadenaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachil
 import { reglaCadenaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/04-regla-cadena-ccss2";
 import { reglaCramer2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/07-regla-cramer-2bach";
 import { reglaDeBarrow2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/11-regla-de-barrow-2bach";
+import { reglaDeBarrowCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/10-regla-de-barrow-ccss2";
 import { reglaFasesGibbsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/03-regla-fases-gibbs";
 import { reglaRuffini4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/05-regla-ruffini-4esob";
 import { reglasDerivacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/03-reglas-derivacion-2bach";
@@ -1082,6 +1094,7 @@ export const interactiveLessons = {
   "arbol-tabla-ccss1": arbolTablaCcss1Lesson,
   "arboles-tablas-2bach": arbolesTablas2bachLesson,
   "area-bajo-curva-riemann-2bach": areaBajoCurvaRiemann2bachLesson,
+  "area-bajo-curva-riemann-ccss2": areaBajoCurvaRiemannCcss2Lesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
   "area-cuadrilateros-3eso": areaCuadrilateros3esoLesson,
   "area-esfera-3eso": areaEsfera3esoLesson,
@@ -1090,6 +1103,7 @@ export const interactiveLessons = {
   "area-triangulos-3eso": areaTriangulos3esoLesson,
   "areas-circulo": areasCirculoLesson,
   "areas-cuadrilateros": areasCuadrilaterosLesson,
+  "areas-entre-curvas-ccss2": areasEntreCurvasCcss2Lesson,
   "areas-figuras-curvas-3eso": areasFigurasCurvas3esoLesson,
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
@@ -1125,6 +1139,7 @@ export const interactiveLessons = {
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
+  "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
   "caudal-humedad": caudalHumedadLesson,
   "ciclo-carnot": cicloCarnotLesson,
@@ -1485,11 +1500,16 @@ export const interactiveLessons = {
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
   "integracion-por-partes-2bach": integracionPorPartes2bachLesson,
+  "integracion-por-partes-ccss2": integracionPorPartesCcss2Lesson,
   "integral-definida-tfc-2bach": integralDefinidaTfc2bachLesson,
+  "integral-definida-tfc-ccss2": integralDefinidaTfcCcss2Lesson,
   "integral-derivativa-pid": integralDerivativaPidLesson,
   "integrales-cadena-2bach": integralesCadena2bachLesson,
+  "integrales-cadena-ccss2": integralesCadenaCcss2Lesson,
   "integrales-exponenciales-trigonometricas-2bach": integralesExponencialesTrigonometricas2bachLesson,
+  "integrales-exponenciales-trigonometricas-ccss2": integralesExponencialesTrigonometricasCcss2Lesson,
   "integrales-inmediatas-potencias-2bach": integralesInmediatasPotencias2bachLesson,
+  "integrales-inmediatas-potencias-ccss2": integralesInmediatasPotenciasCcss2Lesson,
   "integrales-racionales-2bach": integralesRacionales2bachLesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "interes-compuesto-ccss1": interesCompuestoCcss1Lesson,
@@ -1715,6 +1735,7 @@ export const interactiveLessons = {
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
   "primitiva-integral-indefinida-2bach": primitivaIntegralIndefinida2bachLesson,
+  "primitiva-integral-indefinida-ccss2": primitivaIntegralIndefinidaCcss2Lesson,
   "prismas-2eso": prismas2esoLesson,
   "prob-arbol-4eso": probArbol4esoLesson,
   "prob-arbol-4esob": probArbol4esobLesson,
@@ -1751,6 +1772,7 @@ export const interactiveLessons = {
   "problemas-financieros-ccss1": problemasFinancierosCcss1Lesson,
   "problemas-fracciones-2eso": problemasFracciones2esoLesson,
   "problemas-fracciones-4eso": problemasFracciones4esoLesson,
+  "problemas-integrales-ccss2": problemasIntegralesCcss2Lesson,
   "problemas-limites-continuidad-2bach": problemasLimitesContinuidad2bachLesson,
   "problemas-limites-continuidad-ccss2": problemasLimitesContinuidadCcss2Lesson,
   "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
@@ -1796,6 +1818,7 @@ export const interactiveLessons = {
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
   "propiedades-condicion-inicial-2bach": propiedadesCondicionInicial2bachLesson,
+  "propiedades-condicion-inicial-ccss2": propiedadesCondicionInicialCcss2Lesson,
   "propiedades-det-1-2bach": propiedadesDet12bachLesson,
   "propiedades-det-2-2bach": propiedadesDet22bachLesson,
   "propiedades-limites-infinito-1bach": propiedadesLimitesInfinito1bachLesson,
@@ -1871,6 +1894,7 @@ export const interactiveLessons = {
   "regla-cadena-ccss2": reglaCadenaCcss2Lesson,
   "regla-cramer-2bach": reglaCramer2bachLesson,
   "regla-de-barrow-2bach": reglaDeBarrow2bachLesson,
+  "regla-de-barrow-ccss2": reglaDeBarrowCcss2Lesson,
   "regla-fases-gibbs": reglaFasesGibbsLesson,
   "regla-ruffini-4esob": reglaRuffini4esobLesson,
   "reglas-derivacion-2bach": reglasDerivacion2bachLesson,

@@ -486,6 +486,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-ccss-2-bachillerato/programacion-lineal": "programacion-lineal",
   "matematicas-ccss-2-bachillerato/limites-y-continuidad": "funciones-elementales",
   "matematicas-ccss-2-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-ccss-2-bachillerato/integrales": "calculo-integral",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {

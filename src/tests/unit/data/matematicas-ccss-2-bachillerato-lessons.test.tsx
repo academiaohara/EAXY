@@ -14,6 +14,7 @@ const TEMAS: [number, string, number][] = [
   [3, "programacion-lineal", 12],
   [4, "limites-y-continuidad", 12],
   [5, "derivadas", 12],
+  [6, "integrales", 12],
 ];
 
 const lessons = () => course.modules.flatMap((m) => m.lessons);
