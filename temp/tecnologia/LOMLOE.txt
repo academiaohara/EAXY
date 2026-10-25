@@ -1,0 +1,596 @@
+1. ESO
+1.º de ESO — Introducción a la Tecnología
+Distribución orientativa
+Tema 1. La tecnología y el proceso tecnológico
+- Concepto de tecnología y necesidades humanas.
+- Evolución histórica de la tecnología.
+- Tecnología, ciencia, técnica e ingeniería.
+- Identificación de problemas y necesidades.
+- Búsqueda de información y análisis de soluciones.
+- Fases del proyecto tecnológico.
+- Planificación del trabajo y reparto de tareas.
+- Elaboración de presupuestos sencillos.
+- Evaluación de resultados y propuestas de mejora.
+Tema 2. Expresión y comunicación gráfica
+- Instrumentos de dibujo técnico.
+- Trazados geométricos básicos.
+- Bocetos y croquis.
+- Acotación.
+- Escalas.
+- Vistas de objetos: alzado, planta y perfil.
+- Perspectiva caballera e isométrica, como iniciación.
+- Representación de piezas y objetos tecnológicos.
+Tema 3. Materiales de uso técnico
+- Materias primas y materiales transformados.
+- Propiedades físicas, mecánicas y tecnológicas.
+- Madera y derivados.
+- Metales y aleaciones.
+- Plásticos.
+- Materiales textiles, pétreos y cerámicos.
+- Selección de materiales según su aplicación.
+- Herramientas básicas de trabajo.
+- Normas de seguridad en el taller.
+- Reutilización, reciclaje y gestión de residuos.
+Tema 4. Estructuras
+- Concepto y función de una estructura.
+- Estructuras naturales y artificiales.
+- Elementos estructurales.
+- Vigas, pilares, tirantes y arcos.
+- Tipos de esfuerzos: tracción, compresión, flexión, torsión y cortadura.
+- Estabilidad y resistencia.
+- Triangulación.
+- Estructuras de edificios, puentes y torres.
+- Construcción y ensayo de pequeñas estructuras.
+Tema 5. Mecanismos básicos
+- Máquinas y mecanismos.
+- Movimiento lineal, circular y alternativo.
+- Palancas y poleas.
+- Ruedas y ejes.
+- Engranajes.
+- Transmisión del movimiento.
+- Relación de transmisión, como iniciación.
+- Aplicaciones cotidianas de los mecanismos.
+Tema 6. Iniciación a la electricidad
+- Concepto de corriente eléctrica.
+- Circuito eléctrico y sus componentes.
+- Generadores, conductores, receptores y elementos de control.
+- Símbolos eléctricos básicos.
+- Circuitos en serie y en paralelo.
+- Interruptores, pulsadores y lámparas.
+- Montaje y representación de circuitos sencillos.
+- Seguridad eléctrica.
+Tema 7. Pensamiento computacional
+- Algoritmos.
+- Secuencias ordenadas de instrucciones.
+- Diagramas de flujo.
+- Variables y datos, como iniciación.
+- Condiciones y repeticiones.
+- Programación visual por bloques.
+- Creación y depuración de programas sencillos.
+Tema 8. Tecnología sostenible
+- Impacto ambiental de los productos tecnológicos.
+- Consumo responsable.
+- Ahorro de materiales y energía.
+- Reducción y clasificación de residuos.
+- Reutilización y economía circular.
+- Seguridad, salud y accesibilidad en el diseño.
+Estos temas constituyen una propuesta para estructurar un libro inicial; no son una lista oficial obligatoria para 1.º de ESO. 
+
+BOE
++1
+
+
+
+
+2.º de ESO — Tecnología y Digitalización
+Tema 1. Proyecto tecnológico
+- Identificación y análisis de necesidades.
+- Investigación de soluciones existentes.
+- Definición de requisitos y especificaciones.
+- Generación y selección de ideas.
+- Bocetos y diseños.
+- Planificación de materiales, herramientas y tareas.
+- Construcción de prototipos.
+- Comprobación del funcionamiento.
+- Detección de errores y mejoras.
+- Memoria técnica y presentación del proyecto.
+- Trabajo en equipo y seguridad en el taller.
+Tema 2. Dibujo técnico y diseño digital
+- Croquis y bocetos.
+- Vistas normalizadas.
+- Acotación.
+- Escalas.
+- Perspectivas.
+- Interpretación de planos.
+- Simbología técnica.
+- Diseño asistido por ordenador.
+- Representación digital de piezas.
+- Documentación gráfica de proyectos.
+Tema 3. Materiales y fabricación
+- Propiedades de los materiales.
+- Madera, metales, plásticos y materiales compuestos.
+- Elección del material adecuado.
+- Herramientas manuales y máquinas de taller.
+- Técnicas de corte, unión y acabado.
+- Medición y marcado.
+- Fabricación de prototipos.
+- Impresión 3D y fabricación digital, cuando estén disponibles.
+- Normas de seguridad.
+- Reciclaje y aprovechamiento de materiales.
+Tema 4. Estructuras y mecanismos
+- Elementos resistentes.
+- Tipos de esfuerzos.
+- Estabilidad y resistencia estructural.
+- Triangulación y refuerzos.
+- Máquinas simples.
+- Palancas y poleas.
+- Engranajes y ruedas de fricción.
+- Poleas y correas.
+- Transmisión y transformación del movimiento.
+- Aplicaciones en máquinas y objetos cotidianos.
+Tema 5. Electricidad
+- Magnitudes eléctricas.
+- Tensión, intensidad y resistencia.
+- Ley de Ohm.
+- Potencia y energía eléctrica.
+- Circuitos en serie y en paralelo.
+- Esquemas y simbología.
+- Instrumentos de medida.
+- Simulación y montaje de circuitos.
+- Normas de seguridad.
+Tema 6. Programación
+- Algoritmos y diagramas de flujo.
+- Variables y tipos de datos.
+- Operadores.
+- Condiciones.
+- Bucles.
+- Funciones y procedimientos, como iniciación.
+- Programación por bloques.
+- Depuración y pruebas.
+- Desarrollo de pequeños programas y juegos.
+Tema 7. Digitalización del entorno personal
+- Hardware y software.
+- Componentes de un ordenador.
+- Sistemas operativos.
+- Gestión de archivos y carpetas.
+- Aplicaciones de productividad.
+- Búsqueda y selección de información.
+- Creación y edición de contenidos digitales.
+- Almacenamiento local y en la nube.
+- Contraseñas y protección de datos.
+- Seguridad, privacidad y bienestar digital.
+Tema 8. Tecnología sostenible
+- Ciclo de vida de un producto.
+- Consumo de materias primas.
+- Eficiencia energética.
+- Reutilización y reciclaje.
+- Impacto ambiental de la fabricación.
+- Diseño accesible.
+- Responsabilidad en el uso de la tecnología.
+
+3.º de ESO — Tecnología y Digitalización
+Tema 1. Desarrollo de proyectos tecnológicos
+- Investigación y análisis de problemas.
+- Diseño de soluciones.
+- Especificaciones técnicas.
+- Representación gráfica.
+- Planificación y gestión de recursos.
+- Fabricación y montaje.
+- Prototipado y pruebas.
+- Evaluación de resultados.
+- Documentación técnica.
+- Comunicación y difusión del proyecto.
+- Uso de herramientas digitales de diseño y simulación.
+Tema 2. Materiales y procesos de fabricación
+- Propiedades mecánicas y tecnológicas.
+- Materiales metálicos y no metálicos.
+- Plásticos y materiales compuestos.
+- Selección según las prestaciones requeridas.
+- Procesos de conformado.
+- Técnicas de unión.
+- Corte, mecanizado y acabado.
+- Fabricación manual y digital.
+- Impresión 3D y prototipado.
+- Prevención de riesgos.
+- Impacto ambiental de los materiales.
+Tema 3. Mecanismos y máquinas
+- Transmisión del movimiento.
+- Engranajes, poleas y correas.
+- Piñones y cadenas.
+- Tornillo sin fin y corona.
+- Levas y bielas.
+- Mecanismos de transformación del movimiento.
+- Relación de transmisión.
+- Velocidad y par.
+- Potencia y rendimiento mecánico.
+- Aplicaciones en máquinas reales.
+Tema 4. Electricidad y electrónica
+- Tensión, intensidad y resistencia.
+- Ley de Ohm.
+- Potencia y energía.
+- Circuitos en serie, paralelo y mixtos.
+- Medida de magnitudes eléctricas.
+- Componentes electrónicos básicos.
+- Resistencias, diodos, LED y transistores.
+- Sensores y actuadores.
+- Electrónica analógica básica.
+- Simulación y montaje de circuitos.
+- Seguridad eléctrica.
+Tema 5. Sistemas de control y automatización
+- Sistemas de entrada, proceso y salida.
+- Control manual y automático.
+- Sensores y actuadores.
+- Señales analógicas y digitales.
+- Lógica de control.
+- Sistemas programables.
+- Automatismos sencillos.
+- Simulación de sistemas de control.
+- Aplicaciones domésticas e industriales.
+Tema 6. Programación y robótica
+- Algoritmos.
+- Variables, operadores y estructuras de control.
+- Condiciones y bucles.
+- Funciones y modularización.
+- Programación de placas o dispositivos.
+- Lectura de sensores.
+- Control de motores y actuadores.
+- Montaje de robots sencillos.
+- Programación del comportamiento de un robot.
+- Pruebas, depuración y optimización.
+Tema 7. Redes y dispositivos digitales
+- Componentes de los sistemas informáticos.
+- Sistemas operativos.
+- Periféricos y dispositivos conectados.
+- Redes informáticas.
+- Router, punto de acceso y conexión a Internet.
+- Configuración básica de redes.
+- Internet de las cosas (IoT).
+- Dispositivos conectados y sensores.
+- Seguridad, privacidad y protección de la información.
+- Uso crítico y responsable de los recursos digitales.
+Tema 8. Tecnología sostenible
+- Ciclo de vida de productos y sistemas.
+- Eficiencia energética.
+- Energías renovables.
+- Impacto ambiental de los procesos industriales.
+- Reparación, reutilización y reciclaje.
+- Accesibilidad y diseño inclusivo.
+- Arquitectura bioclimática.
+- Transporte sostenible.
+- Proyectos tecnológicos para mejorar el entorno.
+Los contenidos de 2.º y 3.º se corresponden con áreas del currículo de Tecnología y Digitalización; su secuenciación exacta depende de la programación del centro. 
+
+BOE
++1
+
+
+
+
+4.º de ESO — Tecnología
+En 4.º la materia tiene un enfoque más aplicado: el currículo se estructura en proceso de resolución de problemas, operadores tecnológicos, pensamiento computacional, automatización y robótica, y tecnología sostenible. 
+
+BOE
++1
+
+
+
+Tema 1. Proyectos de ingeniería
+- Análisis de necesidades.
+- Investigación y búsqueda de soluciones.
+- Diseño de productos y sistemas.
+- Requisitos y especificaciones.
+- Croquis, planos y modelado digital.
+- Planificación de proyectos.
+- Gestión de materiales y costes.
+- Fabricación de prototipos.
+- Ensayos y evaluación.
+- Documentación técnica.
+- Comunicación de resultados.
+- Mejora iterativa del diseño.
+Tema 2. Materiales y fabricación
+- Propiedades físicas, mecánicas y tecnológicas.
+- Materiales metálicos, plásticos, cerámicos y compuestos.
+- Selección de materiales.
+- Procesos de fabricación.
+- Corte, mecanizado, conformado y unión.
+- Fabricación digital.
+- Diseño e impresión 3D.
+- Control de calidad.
+- Seguridad y prevención de riesgos.
+- Análisis del ciclo de vida de los materiales.
+Tema 3. Sistemas mecánicos
+- Mecanismos de transmisión.
+- Mecanismos de transformación del movimiento.
+- Engranajes, poleas, correas y cadenas.
+- Levas, bielas y otros mecanismos.
+- Cálculo de relaciones de transmisión.
+- Velocidad angular y par.
+- Potencia y rendimiento.
+- Diseño y simulación de mecanismos.
+- Aplicaciones en máquinas.
+Tema 4. Electricidad y electrónica
+- Corriente continua y corriente alterna, según el alcance de la programación.
+- Magnitudes eléctricas.
+- Ley de Ohm y leyes básicas de circuitos.
+- Potencia y energía.
+- Circuitos eléctricos y electrónicos.
+- Componentes electrónicos.
+- Diodos, transistores y circuitos integrados.
+- Sensores y actuadores.
+- Electrónica analógica y digital.
+- Simulación, montaje y comprobación.
+Tema 5. Pensamiento computacional
+- Descomposición de problemas.
+- Diseño de algoritmos.
+- Diagramas de flujo.
+- Variables y estructuras de datos.
+- Condiciones y bucles.
+- Funciones y programación modular.
+- Programación textual o por bloques.
+- Depuración y pruebas.
+- Tratamiento de datos.
+- Resolución de problemas mediante software.
+Tema 6. Automatización y robótica
+- Sistemas automáticos.
+- Arquitectura de un sistema de control.
+- Sensores.
+- Actuadores.
+- Controladores y placas programables.
+- Sistemas de lazo abierto y lazo cerrado.
+- Programación de automatismos.
+- Control de motores.
+- Robótica física y simulada.
+- Telecomunicaciones aplicadas al control.
+- Internet de las cosas.
+- Diseño y construcción de sistemas automatizados.
+Tema 7. Tecnología sostenible
+- Eficiencia en materiales y procesos.
+- Consumo energético.
+- Energías renovables.
+- Arquitectura bioclimática.
+- Ahorro energético en edificios.
+- Transporte y movilidad sostenible.
+- Impacto social y ambiental.
+- Reparación y economía circular.
+- Accesibilidad de los productos tecnológicos.
+- Voluntariado tecnológico y proyectos de servicio a la comunidad.
+Tema 8. Taller, simulación y fabricación digital
+- Herramientas manuales y máquinas.
+- Instrumentos de medida.
+- Software de diseño y simulación.
+- Prototipado rápido.
+- Fabricación digital.
+- Impresión 3D, cuando esté disponible.
+- Montaje de circuitos.
+- Construcción de prototipos.
+- Pruebas de funcionamiento.
+- Seguridad y documentación técnica.
+Este esquema es una organización temática orientativa: los puntos que debe cubrir el libro han de contrastarse con los saberes básicos oficiales y con la programación del centro. 
+
+BOE
++1
+
+
+
+2. Bachillerato
+La materia de modalidad se llama Tecnología e Ingeniería I en 1.º y Tecnología e Ingeniería II en 2.º de Bachillerato. En Asturias, su currículo está regulado por el Decreto 60/2022. 
+
+miPrincipado
++1
+
+
+
+1.º de Bachillerato — Tecnología e Ingeniería I
+Tema 1. Proyectos de investigación y desarrollo
+- Identificación de necesidades y problemas tecnológicos.
+- Investigación de soluciones.
+- Diseño y planificación de proyectos.
+- Especificaciones y requisitos técnicos.
+- Metodologías de gestión de proyectos.
+- Trabajo cooperativo.
+- Planificación temporal y gestión de recursos.
+- Desarrollo y evaluación de prototipos.
+- Documentación técnica.
+- Comunicación y presentación de resultados.
+- Creatividad, iniciativa y emprendimiento.
+- Uso de herramientas digitales en el desarrollo del proyecto.
+Tema 2. Materiales y fabricación
+- Clasificación de los materiales técnicos.
+- Estructura y composición de los materiales.
+- Propiedades físicas, químicas, mecánicas y tecnológicas.
+- Ensayos y caracterización de materiales.
+- Selección de materiales según su aplicación.
+- Materiales metálicos y aleaciones.
+- Polímeros y plásticos.
+- Materiales cerámicos, pétreos y compuestos.
+- Tratamientos y modificación de propiedades.
+- Procesos de fabricación.
+- Técnicas de conformado, mecanizado y unión.
+- Fabricación industrial y digital.
+- Control de calidad.
+- Seguridad y sostenibilidad en la fabricación.
+Tema 3. Sistemas mecánicos
+- Máquinas y mecanismos.
+- Transmisión del movimiento.
+- Engranajes, poleas y correas.
+- Cadenas y ruedas dentadas.
+- Tornillo sin fin y corona.
+- Transformación del movimiento.
+- Levas, bielas y mecanismos articulados.
+- Palancas y sistemas de poleas.
+- Velocidad lineal y angular.
+- Relación de transmisión.
+- Fuerza, par y potencia.
+- Rendimiento mecánico.
+- Cálculo y resolución de problemas.
+- Representación y simulación de mecanismos.
+Tema 4. Sistemas eléctricos y electrónicos
+- Magnitudes eléctricas fundamentales.
+- Tensión, intensidad y resistencia.
+- Ley de Ohm.
+- Corriente continua.
+- Circuitos eléctricos.
+- Asociación de resistencias.
+- Leyes de Kirchhoff, cuando se aborden en la programación.
+- Potencia y energía eléctrica.
+- Generadores, receptores y elementos de control.
+- Condensadores y bobinas, según el nivel de profundización.
+- Componentes electrónicos básicos.
+- Circuitos de corriente continua.
+- Montaje y simulación de circuitos.
+- Medición y comprobación de resultados.
+- Seguridad eléctrica.
+Tema 5. Sistemas informáticos y programación
+- Arquitectura de los sistemas informáticos.
+- Hardware y software.
+- Procesador, memoria y almacenamiento.
+- Sistemas operativos.
+- Representación y tratamiento de datos.
+- Algoritmos.
+- Variables, operadores y tipos de datos.
+- Condiciones y bucles.
+- Funciones y procedimientos.
+- Programación estructurada.
+- Programación textual.
+- Diseño y depuración de programas.
+- Resolución de problemas mediante programación.
+- Simulación y herramientas digitales.
+Tema 6. Sistemas automáticos
+- Concepto de automatización.
+- Sistemas de control.
+- Entrada, proceso y salida.
+- Sensores y transductores.
+- Actuadores.
+- Controladores y sistemas programables.
+- Señales analógicas y digitales.
+- Lógica de control.
+- Sistemas de lazo abierto y lazo cerrado.
+- Automatización de procesos.
+- Simulación de sistemas.
+- Aplicaciones industriales y domésticas.
+Tema 7. Tecnología sostenible
+- Desarrollo tecnológico y sostenibilidad.
+- Consumo de recursos.
+- Eficiencia energética.
+- Impacto ambiental de los materiales.
+- Procesos de fabricación sostenibles.
+- Análisis del ciclo de vida.
+- Reducción de residuos.
+- Economía circular.
+- Energías renovables.
+- Evaluación de impactos sociales y ambientales.
+- Responsabilidad ética en la ingeniería.
+
+2.º de Bachillerato — Tecnología e Ingeniería II
+Este curso profundiza en los contenidos de ingeniería y exige mayor capacidad de cálculo, análisis, diseño y resolución de problemas.
+Tema 1. Proyectos de I+D
+- Investigación y desarrollo de productos.
+- Identificación de necesidades tecnológicas.
+- Diseño y mejora continua.
+- Planificación y gestión de proyectos.
+- Metodologías ágiles.
+- Trabajo en equipo.
+- Simulación y modelado.
+- Fabricación y montaje de prototipos.
+- Documentación técnica.
+- Presentación y difusión de proyectos.
+- Evaluación de resultados.
+- Informes de impacto ambiental.
+- Innovación, emprendimiento y creatividad.
+Tema 2. Materiales
+- Estructura interna de los materiales.
+- Propiedades físicas, químicas y mecánicas.
+- Ensayos de materiales.
+- Resistencia y comportamiento mecánico.
+- Selección de materiales para aplicaciones industriales.
+- Tratamientos térmicos y superficiales.
+- Modificación y mejora de propiedades.
+- Materiales metálicos, poliméricos, cerámicos y compuestos.
+- Técnicas de fabricación industrial.
+- Control de calidad.
+- Eficiencia y sostenibilidad de los materiales.
+Tema 3. Estructuras
+- Elementos estructurales.
+- Tipos de estructuras.
+- Cargas y fuerzas.
+- Equilibrio estático.
+- Reacciones en apoyos.
+- Esfuerzos de tracción y compresión.
+- Flexión, torsión y cortadura.
+- Estabilidad estructural.
+- Resistencia de materiales.
+- Cálculo de estructuras sencillas.
+- Selección de materiales estructurales.
+- Simulación y comprobación de estructuras.
+Tema 4. Sistemas mecánicos
+- Análisis de mecanismos.
+- Transmisión y transformación del movimiento.
+- Engranajes, poleas, correas y cadenas.
+- Cinemática de mecanismos.
+- Velocidad y aceleración.
+- Fuerza, par y potencia.
+- Rendimiento de máquinas.
+- Máquinas térmicas.
+- Motores térmicos.
+- Máquinas frigoríficas.
+- Bombas de calor.
+- Principios termodinámicos aplicados.
+- Sistemas neumáticos.
+- Sistemas hidráulicos.
+- Componentes y esquemas de circuitos.
+- Diseño, montaje y simulación de sistemas.
+Tema 5. Sistemas eléctricos y electrónicos
+- Corriente alterna.
+- Valores eficaces de tensión e intensidad.
+- Impedancia y comportamiento de circuitos.
+- Circuitos de corriente alterna.
+- Potencia activa, reactiva y aparente.
+- Factor de potencia.
+- Triángulo de potencias.
+- Cálculo y análisis de circuitos.
+- Electrónica digital combinacional.
+- Puertas lógicas.
+- Álgebra de Boole.
+- Tablas de verdad.
+- Simplificación de funciones lógicas.
+- Mapas de Karnaugh.
+- Circuitos integrados.
+- Electrónica digital secuencial.
+- Biestables y sistemas de memoria.
+- Simulación y montaje de circuitos.
+Tema 6. Sistemas informáticos emergentes
+- Arquitectura de sistemas informáticos.
+- Tratamiento y gestión de datos.
+- Bases de datos.
+- Big data.
+- Inteligencia artificial.
+- Aplicaciones y limitaciones de la inteligencia artificial.
+- Sistemas distribuidos.
+- Ciberseguridad.
+- Protección de datos.
+- Riesgos de los sistemas conectados.
+- Uso ético y responsable de las tecnologías emergentes.
+Tema 7. Sistemas automáticos y control
+- Sistemas de control automático.
+- Sistemas de lazo abierto y lazo cerrado.
+- Sensores, actuadores y controladores.
+- Funciones de transferencia, cuando correspondan al nivel de estudio.
+- Diagramas de bloques.
+- Álgebra de bloques.
+- Simplificación de sistemas.
+- Estabilidad.
+- Respuesta de sistemas de control.
+- Controladores y sistemas programables.
+- Simulación de sistemas automáticos.
+- Aplicaciones industriales.
+Tema 8. Tecnología sostenible
+- Impacto social y ambiental de los sistemas de ingeniería.
+- Evaluación del impacto ambiental.
+- Eficiencia energética.
+- Sostenibilidad de los materiales.
+- Optimización de procesos de fabricación.
+- Consumo de recursos.
+- Gestión de residuos.
+- Economía circular.
+- Análisis de alternativas tecnológicas.
+- Responsabilidad social y ética de la ingeniería.
