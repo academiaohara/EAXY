@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CapitalizacionExplorador, PrestamoExplorador, TaeExplorador } from "@/components/lesson/slide/tools/Ccss1FinanzasTools";
 import { PercentilesExplorador, DobleEntradaExplorador, NubeRegresionExplorador } from "@/components/lesson/slide/tools/Bach1EstadTools";
 import { SucesosVennExplorador, ProbUnionExplorador, TablaContingenciaExplorador, ArbolTablaExplorador, ProbTotalExplorador, AzarFamosoExplorador } from "@/components/lesson/slide/tools/Bach1ProbTools";
 import { SecanteExplorador, DerivabilidadExplorador, FuncionDerivadaExplorador, ProductoCocienteExplorador, CadenaExplorador, DerivadaInversaExplorador, VelocidadAceleracionExplorador, ExtremosExplorador, OptimizacionExplorador } from "@/components/lesson/slide/tools/Bach1DerivTools";
@@ -1041,6 +1042,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DobleEntradaExplorador block={block} />;
     case "nube-regresion-explorador":
       return <NubeRegresionExplorador block={block} />;
+    case "capitalizacion-explorador":
+      return <CapitalizacionExplorador block={block} />;
+    case "prestamo-explorador":
+      return <PrestamoExplorador block={block} />;
+    case "tae-explorador":
+      return <TaeExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

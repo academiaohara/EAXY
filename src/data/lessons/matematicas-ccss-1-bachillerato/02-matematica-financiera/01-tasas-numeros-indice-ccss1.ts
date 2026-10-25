@@ -1,0 +1,107 @@
+import type { InteractiveLesson } from "@/lib/lesson/types";
+import { TEMA_CCSS1_2_SUBTITLE } from "@/data/lessons/shared";
+
+export const tasasNumerosIndiceCcss1Lesson: InteractiveLesson = {
+  slug: "tasas-numeros-indice-ccss1",
+  title: "1. Tasas y números índice",
+  subtitle: TEMA_CCSS1_2_SUBTITLE,
+  stage: { theme: "board" },
+  steps: [
+    {
+      id: "tasas",
+      type: "slide",
+      help: [{ label: "Idea", message: "Una tasa compara una cantidad con una cantidad de referencia: «tantos por cada 100» (porcentaje) o «tantos por cada 1 000» (por mil)." }],
+      title: "Tasas: una cantidad respecto a una referencia",
+      blocks: [
+        { kind: "definition", text: "Una **tasa** expresa la cantidad que interesa **en relación con una cantidad de referencia**. Sirve para comparar poblaciones de distinto tamaño." },
+        {
+          kind: "example",
+          title: "Tres tasas habituales",
+          lines: [
+            { math: "\\text{Paro } 12\\,\\% \\Rightarrow 12 \\text{ parados por cada } 100", note: "personas en edad laboral" },
+            { math: "\\text{Natalidad } 21{,}64\\,‰ \\Rightarrow 21{,}64 \\text{ bebés por cada } 1\\,000", note: "habitantes" },
+            { math: "\\text{Alcoholemia } 0{,}15 \\Rightarrow 0{,}15 \\text{ cm}^3 \\text{ por litro}", note: "de sangre" },
+          ],
+        },
+      ],
+      visual: { kind: "anim", scene: "cuadricula-porcentaje", params: { a: 12, b: 100 } },
+    },
+    {
+      id: "check-natalidad",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "8 ‰ son 8 por cada 1 000: multiplica $250\\,000/1\\,000$ por $8$." }],
+      title: "De la tasa a la cantidad",
+      question: "Una ciudad de $250\\,000$ habitantes tiene una tasa de natalidad de $8\\,‰$. ¿Cuántos bebés nacen al año? (solo el número)",
+      correctAnswers: ["2000"],
+      explanation: "$\\dfrac{250\\,000}{1\\,000}\\cdot 8 = 2\\,000$ nacimientos al año.",
+    },
+    {
+      id: "check-paro",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Un $12\\,\\%$ de la población activa." }],
+      title: "Tasa de paro",
+      question: "En una comarca con $40\\,000$ personas en edad laboral, la tasa de paro es del $12\\,\\%$. ¿Cuántas personas están en paro? (solo el número)",
+      correctAnswers: ["4800"],
+      explanation: "$40\\,000\\cdot 0{,}12 = 4\\,800$ personas.",
+    },
+    {
+      id: "numero-indice",
+      type: "slide",
+      help: [{ label: "Idea", message: "El número índice es un cociente: medida actual entre medida antigua. Si vale más que 1, la magnitud ha subido." }],
+      title: "Número índice: medir una variación en el tiempo",
+      blocks: [
+        { kind: "rule", title: "Número índice (NI)", formula: "\\text{NI} = \\dfrac{\\text{medida actual de la magnitud}}{\\text{medida antigua de la magnitud}}" },
+        { kind: "text", text: "Un NI de $1{,}06$ indica una subida del $6\\,\\%$; un NI de $0{,}92$, una bajada del $8\\,\\%$. El **IPC** (índice de precios al consumo) es el más conocido: compara el precio de una cesta de la compra con el del mes o el año anterior y mide la inflación." },
+        { kind: "warning", title: "Dos variaciones no se suman", text: "Si los precios suben un $3\\,\\%$ y luego un $2\\,\\%$, la subida acumulada no es $5\\,\\%$: se multiplican los índices ($1{,}03\\cdot 1{,}02$)." },
+      ],
+      visual: { kind: "tool", tool: "indice-variacion-explorador", params: { a: 1400, b: 10, c: -5 }, hint: "Prueba +10 % y después −5 %: el índice total es 1,1 · 0,95 = 1,045, no 1,05." },
+    },
+    {
+      id: "check-indice",
+      type: "predict",
+      mode: "numeric",
+      help: [{ label: "Pista", message: "Actual entre antigua: $265 : 250$." }],
+      title: "Calcular un número índice",
+      question: "Una cesta de la compra costaba $250$ € el año pasado y cuesta $265$ € este año. ¿Cuánto vale el número índice? (solo el número)",
+      correctAnswers: ["1,06", "1.06"],
+      explanation: "$\\text{NI} = \\dfrac{265}{250} = 1{,}06$: los precios han subido un $6\\,\\%$.",
+    },
+    {
+      id: "check-ipc",
+      type: "predict",
+      mode: "choice",
+      help: [{ label: "Pista", message: "Multiplica los índices $1{,}03$ y $1{,}02$." }],
+      title: "IPC acumulado",
+      question: "El IPC sube un $3\\,\\%$ un año y un $2\\,\\%$ el siguiente. ¿Cuál es el aumento acumulado de los dos años?",
+      choices: [
+        { id: "a", label: "$5{,}06\\,\\%$" },
+        { id: "b", label: "$5\\,\\%$", incorrectFeedback: "Sumar los porcentajes ignora que el $2\\,\\%$ se aplica sobre un precio ya subido." },
+        { id: "c", label: "$6\\,\\%$", incorrectFeedback: "Eso multiplicaría los porcentajes, no los índices ($3\\cdot 2$)." },
+        { id: "d", label: "$1{,}0506\\,\\%$", incorrectFeedback: "El índice es $1{,}0506$, que equivale a una subida del $5{,}06\\,\\%$." },
+      ],
+      correctChoiceId: "a",
+      shuffleChoices: true,
+      explanation: "$1{,}03\\cdot 1{,}02 = 1{,}0506$, es decir, una subida acumulada del $5{,}06\\,\\%$.",
+    },
+    {
+      id: "check-clasifica",
+      type: "classify",
+      help: [{ label: "Pista", message: "Una tasa compara con una referencia fija (100, 1 000…); un número índice compara dos momentos del tiempo." }],
+      title: "¿Tasa o número índice?",
+      question: "Clasifica cada dato.",
+      groups: [
+        { id: "tasa", label: "Tasa", tone: "cobalt" },
+        { id: "ni", label: "Número índice", tone: "amber" },
+      ],
+      items: [
+        { id: "a", text: "Hay $9$ parados por cada $100$ activos", group: "tasa" },
+        { id: "b", text: "El precio actual es $1{,}04$ veces el de hace un año", group: "ni" },
+        { id: "c", text: "Nacen $7$ bebés por cada $1\\,000$ habitantes", group: "tasa" },
+        { id: "d", text: "El IPC de mayo respecto a mayo del año anterior", group: "ni" },
+      ],
+      hint: "¿Se compara con una cantidad de referencia fija o con la misma magnitud en otra fecha?",
+    },
+  ],
+};

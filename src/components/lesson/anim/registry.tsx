@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildInteresCompuestoBarras, buildAnualidadCapitalizacion, buildAnualidadAmortizacion } from "@/components/lesson/anim/scenes/ccss1-finanzas";
 import { buildEstadisticaConceptos } from "@/components/lesson/anim/scenes/bach1-estadistica";
 import { buildBayesFrecuencias } from "@/components/lesson/anim/scenes/bach1-probabilidad";
 import { buildSecanteTangente, buildDerivadaSigno, buildExtremosCriterios } from "@/components/lesson/anim/scenes/bach1-derivadas";
@@ -607,6 +608,9 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "extremos-criterios": () => buildExtremosCriterios(),
   "bayes-frecuencias": () => buildBayesFrecuencias(),
   "estadistica-conceptos": () => buildEstadisticaConceptos(),
+  "interes-compuesto-barras": (p) => buildInteresCompuestoBarras(p),
+  "anualidad-capitalizacion": (p) => buildAnualidadCapitalizacion(p),
+  "anualidad-amortizacion": (p) => buildAnualidadAmortizacion(p),
   /* industrial-end */
 };
 

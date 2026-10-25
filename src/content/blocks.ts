@@ -417,6 +417,8 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
     },
   },
 
+  "matematicas-ccss-1-bachillerato/numeros-reales": { default: "potencias-y-raices", lessons: { 5: "numeros-decimales", 13: "numeros-decimales", 14: "logaritmos", 15: "logaritmos" } },
+  "matematicas-ccss-1-bachillerato/matematica-financiera": "proporcionalidad-y-porcentajes",
   // ── Tecnología Industrial II (2.º Bachillerato) ────────────────────────
   "tecnologia-industrial-2-bachillerato/estructura-materiales-ensayos": "materiales",
   "tecnologia-industrial-2-bachillerato/aleaciones-diagramas-equilibrio": "materiales",

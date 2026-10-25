@@ -948,6 +948,9 @@ export type SlideAnimId =
   | "extremos-criterios"
   | "bayes-frecuencias"
   | "estadistica-conceptos"
+  | "interes-compuesto-barras"
+  | "anualidad-capitalizacion"
+  | "anualidad-amortizacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1397,6 +1400,9 @@ export type SlideToolId =
   | "percentiles-explorador"
   | "doble-entrada-explorador"
   | "nube-regresion-explorador"
+  | "capitalizacion-explorador"
+  | "prestamo-explorador"
+  | "tae-explorador"
   /* industrial-tool-end */;
 
 /**

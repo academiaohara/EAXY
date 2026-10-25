@@ -86,3 +86,5 @@ export const TEMA_1BACH_7_SUBTITLE = "1.º Bachillerato, Tema 7 — Límites y c
 export const TEMA_1BACH_8_SUBTITLE = "1.º Bachillerato, Tema 8 — Derivadas";
 export const TEMA_1BACH_9_SUBTITLE = "1.º Bachillerato, Tema 9 — Probabilidad";
 export const TEMA_1BACH_10_SUBTITLE = "1.º Bachillerato, Tema 10 — Estadística";
+export const TEMA_CCSS1_1_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 1 — Números reales";
+export const TEMA_CCSS1_2_SUBTITLE = "CCSS I (1.º Bachillerato), Tema 2 — Matemática financiera";
