@@ -832,6 +832,7 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `distancias-espacio-explorador` | Distancia exacta y aproximada punto-plano, punto-recta y entre dos rectas | `initial`: `[modo (0–2)]` y los datos de cada caso |
 | `uno-infinito-explorador` | Límite de (1 + a/n)^(b·n) cuando n crece: valor con n = 10^k frente al límite e^(a·b) | `initial`: `[a (−3 a 3), b (1 a 3), k (0 a 7)]` |
 | `lhopital-explorador` | Seis límites resueltos con L'Hôpital (0/0 y ∞/∞, con una o varias aplicaciones) y tabla numérica de comprobación | `initial`: `[caso (0–5), valores de la tabla (0–5)]` |
+| `estudio-funcion-explorador` | Estudio completo en seis pasos (dominio, cortes, simetría, asíntotas, monotonía, curvatura) de siete funciones; cada paso añade sus puntos a la gráfica | `initial`: `[función (0–6), pasos mostrados (0–6)]` |
 
 ## Respuesta como fracción
 

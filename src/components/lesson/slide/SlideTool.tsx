@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
-import { UnoInfinitoExplorador, LHopitalExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
+import { UnoInfinitoExplorador, LHopitalExplorador, EstudioFuncionExplorador } from "@/components/lesson/slide/tools/Bach2AnalisisTools";
 import { AngulosEspacioExplorador, ProyeccionSimetricoExplorador, DistanciasEspacioExplorador } from "@/components/lesson/slide/tools/Bach2MetricaTools";
 import { RectaEspacioExplorador, PlanoEspacioExplorador, PosicionRectasExplorador, PosicionRectaPlanoExplorador, PosicionPlanosExplorador } from "@/components/lesson/slide/tools/Bach2RectasPlanosTools";
 import { VectoresPuntosExplorador, VectoresDependenciaExplorador, ProductoEscalar3dExplorador, ProductoVectorialExplorador, ProductoMixtoExplorador } from "@/components/lesson/slide/tools/Bach2VectoresTools";
@@ -1148,6 +1148,8 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <UnoInfinitoExplorador block={block} />;
     case "lhopital-explorador":
       return <LHopitalExplorador block={block} />;
+    case "estudio-funcion-explorador":
+      return <EstudioFuncionExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

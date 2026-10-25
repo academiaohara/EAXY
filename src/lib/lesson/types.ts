@@ -1481,6 +1481,7 @@ export type SlideToolId =
   | "distancias-espacio-explorador"
   | "uno-infinito-explorador"
   | "lhopital-explorador"
+  | "estudio-funcion-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -463,6 +463,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "matematicas-2-bachillerato/geometria-metrica": "geometria-del-espacio",
   "matematicas-2-bachillerato/limites-y-continuidad": "funciones-elementales",
   "matematicas-2-bachillerato/derivadas": "funciones-elementales",
+  "matematicas-2-bachillerato/representacion-de-funciones": "funciones-elementales",
 };
 
 export function moduleBlockKey(courseSlug: string, moduleSlug: string): string {
