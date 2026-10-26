@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PerifericoExplorador, TopologiaExplorador, DireccionIpExplorador, WifiExplorador, PaquetesExplorador, BateriaIotExplorador, ClaveWifiExplorador } from "@/components/lesson/slide/tools/TecEso3RedesTools";
 import { BlinkExplorador, PullPulsadorExplorador, LecturaAnalogicaExplorador, PwmServoExplorador, PuenteHExplorador, SeguidorLineaExplorador, UltrasonidoExplorador, RobotPruebasExplorador } from "@/components/lesson/slide/tools/TecEso3RoboticaTools";
 import { SistemaIpsExplorador, LazoControlExplorador, ConversorAdcExplorador, PuertasLogicasExplorador, AlarmaLogicaExplorador, PuertaGarajeExplorador, RiegoAutomaticoExplorador } from "@/components/lesson/slide/tools/TecEso3ControlTools";
 import { ConductorExplorador, CodigoColoresExplorador, LedResistenciaExplorador, TransistorLlaveExplorador, SensorDivisorExplorador, CondensadorRcExplorador, ProtoboardExplorador, ComparadorExplorador, LuzAutomaticaExplorador } from "@/components/lesson/slide/tools/TecEso3ElectronicaTools";
@@ -1634,6 +1635,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <UltrasonidoExplorador block={block} />;
     case "eso3-robot-pruebas-explorador":
       return <RobotPruebasExplorador block={block} />;
+    case "eso3-periferico-explorador":
+      return <PerifericoExplorador block={block} />;
+    case "eso3-topologia-explorador":
+      return <TopologiaExplorador block={block} />;
+    case "eso3-ip-explorador":
+      return <DireccionIpExplorador block={block} />;
+    case "eso3-wifi-explorador":
+      return <WifiExplorador block={block} />;
+    case "eso3-paquetes-explorador":
+      return <PaquetesExplorador block={block} />;
+    case "eso3-bateria-iot-explorador":
+      return <BateriaIotExplorador block={block} />;
+    case "eso3-clave-wifi-explorador":
+      return <ClaveWifiExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

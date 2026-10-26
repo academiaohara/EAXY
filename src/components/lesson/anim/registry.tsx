@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildRutaPaquetes } from "@/components/lesson/anim/scenes/industrial/teceso3-redes";
 import { buildSetupLoop, buildPwmCiclo } from "@/components/lesson/anim/scenes/industrial/teceso3-robotica";
 import { buildLazoCerradoEso3 } from "@/components/lesson/anim/scenes/industrial/teceso3-control";
 import { buildDiodoSentido, buildTransistorLlave } from "@/components/lesson/anim/scenes/industrial/teceso3-electronica";
@@ -765,6 +766,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-lazo-abierto-cerrado": () => buildLazoCerradoEso3(),
   "eso3-setup-loop": () => buildSetupLoop(),
   "eso3-pwm-ciclo": () => buildPwmCiclo(),
+  "eso3-ruta-paquetes": () => buildRutaPaquetes(),
   /* industrial-end */
 };
 

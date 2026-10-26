@@ -541,6 +541,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-lazo-abierto-cerrado` | Control en lazo abierto y cerrado con realimentación | — |
 | `eso3-setup-loop` | Estructura de un programa de placa: setup() una vez y loop() sin fin | — |
 | `eso3-pwm-ciclo` | PWM: ciclo de trabajo y tensión media | — |
+| `eso3-ruta-paquetes` | Un mensaje se trocea en paquetes, viaja por rutas distintas y se recompone | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1138,6 +1139,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-seguidor-explorador` | Robot seguidor de línea con dos sensores infrarrojos | `a` posición (−2 a 2) |
 | `eso3-ultrasonido-explorador` | Distancia por tiempo de eco y umbral de frenado | `a` distancia (cm), `b` umbral (cm) |
 | `eso3-robot-pruebas-explorador` | Casos de prueba de un robot y ajuste del umbral de frenado | `a` umbral (cm) |
+| `eso3-periferico-explorador` | Tipo, conexión y datos de siete periféricos | `n` periférico (0–6) |
+| `eso3-topologia-explorador` | Topologías de red: cables necesarios y efecto de un fallo | `n` topología (0–3), `a` equipos |
+| `eso3-ip-explorador` | Dirección IPv4 y máscara: red, difusión y número de equipos | `a` último número, `n` prefijo (16–30) |
+| `eso3-wifi-explorador` | Señal Wi-Fi según distancia, paredes y banda; velocidad por dispositivo | `a` distancia (m), `b` paredes |
+| `eso3-paquetes-explorador` | Paquetes necesarios para un archivo y reenvíos por pérdidas | `a` tamaño (MB), `b` pérdidas (%) |
+| `eso3-bateria-iot-explorador` | Autonomía de la batería de un sensor IoT | `a` capacidad (mAh), `b` intervalo (min) |
+| `eso3-clave-wifi-explorador` | Tiempo para adivinar una contraseña por fuerza bruta | `n` juego de caracteres (0–3), `a` longitud |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

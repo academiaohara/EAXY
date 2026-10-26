@@ -178,6 +178,7 @@ import { complejosPlano1bachLesson } from "@/data/lessons/matematicas-1-bachille
 import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/12-complejos-producto-moivre-1bach";
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
+import { componentesPerifericosDispositivos3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/01-componentes-perifericos-dispositivos-3eso";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
@@ -283,6 +284,7 @@ import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { diodosLed3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/03-diodos-led-3eso";
+import { direccionesIpRouter3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/03-direcciones-ip-router-3eso";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
 import { discontinuidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/11-discontinuidades-ccss2";
 import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/13-discusion-sistemas-1bach";
@@ -586,6 +588,7 @@ import { integralesRacionales2bachLesson } from "@/data/lessons/matematicas-2-ba
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/03-interes-compuesto-ccss1";
 import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/02-interes-simple-ccss1";
+import { internetDeLasCosas3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/06-internet-de-las-cosas-3eso";
 import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/10-interpolacion-extrapolacion-ccss1";
 import { interpretacionPlanosSimbologia2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/04-interpretacion-planos-simbologia-2eso";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
@@ -792,6 +795,7 @@ import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-cc
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
+import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
@@ -1031,6 +1035,7 @@ import { rectasYAngulosPoligonosLesson } from "@/data/lessons/matematicas-1-eso/
 import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-rectas-y-angulos/01-rectas-y-angulos-rectas";
 import { recursosNaturalesConsumoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/02-recursos-naturales-consumo";
 import { redDistribucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/04-red-distribucion";
+import { redesLocalesTopologias3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/02-redes-locales-topologias-3eso";
 import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/09-refrigeracion-carnot-eficiencia";
 import { regionFactibleVerticesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/03-region-factible-vertices-ccss2";
 import { registrosContadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/04-registros-contadores";
@@ -1080,6 +1085,7 @@ import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seguridadSaludAccesibilidadDisenoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/06-seguridad-salud-accesibilidad-diseno";
+import { seguridadUsoCriticoRecursosDigitales3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/07-seguridad-uso-critico-recursos-digitales-3eso";
 import { seleccionIdeasMatriz2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/03-seleccion-ideas-matriz-2eso";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
 import { seleccionMaterialesCriteriosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/05-seleccion-materiales-criterios";
@@ -1281,6 +1287,7 @@ import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { volumenPiramidesConos2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/03-volumen-piramides-conos-2eso";
 import { volumenPrismaCilindro3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/06-volumen-prisma-cilindro-3eso";
 import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/02-volumen-prismas-cilindros-2eso";
+import { wifiConexionInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/04-wifi-conexion-internet-3eso";
 
 export const interactiveLessons = {
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
@@ -1463,6 +1470,7 @@ export const interactiveLessons = {
   "complejos-producto-moivre-1bach": complejosProductoMoivre1bachLesson,
   "complejos-raices-1bach": complejosRaices1bachLesson,
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
+  "componentes-perifericos-dispositivos-3eso": componentesPerifericosDispositivos3esoLesson,
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
@@ -1568,6 +1576,7 @@ export const interactiveLessons = {
   "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "diodos-led-3eso": diodosLed3esoLesson,
+  "direcciones-ip-router-3eso": direccionesIpRouter3esoLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
   "discontinuidades-ccss2": discontinuidadesCcss2Lesson,
   "discusion-sistemas-1bach": discusionSistemas1bachLesson,
@@ -1871,6 +1880,7 @@ export const interactiveLessons = {
   "interes-bancario-4eso": interesBancario4esoLesson,
   "interes-compuesto-ccss1": interesCompuestoCcss1Lesson,
   "interes-simple-ccss1": interesSimpleCcss1Lesson,
+  "internet-de-las-cosas-3eso": internetDeLasCosas3esoLesson,
   "interpolacion-extrapolacion-ccss1": interpolacionExtrapolacionCcss1Lesson,
   "interpretacion-planos-simbologia-2eso": interpretacionPlanosSimbologia2esoLesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
@@ -2077,6 +2087,7 @@ export const interactiveLessons = {
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
+  "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
   "parabola-1bach": parabola1bachLesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
@@ -2316,6 +2327,7 @@ export const interactiveLessons = {
   "rectas-y-angulos-rectas": rectasYAngulosRectasLesson,
   "recursos-naturales-consumo": recursosNaturalesConsumoLesson,
   "red-distribucion": redDistribucionLesson,
+  "redes-locales-topologias-3eso": redesLocalesTopologias3esoLesson,
   "refrigeracion-carnot-eficiencia": refrigeracionCarnotEficienciaLesson,
   "region-factible-vertices-ccss2": regionFactibleVerticesCcss2Lesson,
   "registros-contadores": registrosContadoresLesson,
@@ -2365,6 +2377,7 @@ export const interactiveLessons = {
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seguridad-salud-accesibilidad-diseno": seguridadSaludAccesibilidadDisenoLesson,
+  "seguridad-uso-critico-recursos-digitales-3eso": seguridadUsoCriticoRecursosDigitales3esoLesson,
   "seleccion-ideas-matriz-2eso": seleccionIdeasMatriz2esoLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
   "seleccion-materiales-criterios": seleccionMaterialesCriteriosLesson,
@@ -2566,6 +2579,7 @@ export const interactiveLessons = {
   "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
   "volumen-prisma-cilindro-3eso": volumenPrismaCilindro3esoLesson,
   "volumen-prismas-cilindros-2eso": volumenPrismasCilindros2esoLesson,
+  "wifi-conexion-internet-3eso": wifiConexionInternet3esoLesson,
 } as const;
 
 export type InteractiveLessonSlug = keyof typeof interactiveLessons;

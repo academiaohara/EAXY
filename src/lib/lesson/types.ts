@@ -1065,6 +1065,7 @@ export type SlideAnimId =
   | "eso3-lazo-abierto-cerrado"
   | "eso3-setup-loop"
   | "eso3-pwm-ciclo"
+  | "eso3-ruta-paquetes"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1788,6 +1789,13 @@ export type SlideToolId =
   | "eso3-seguidor-explorador"
   | "eso3-ultrasonido-explorador"
   | "eso3-robot-pruebas-explorador"
+  | "eso3-periferico-explorador"
+  | "eso3-topologia-explorador"
+  | "eso3-ip-explorador"
+  | "eso3-wifi-explorador"
+  | "eso3-paquetes-explorador"
+  | "eso3-bateria-iot-explorador"
+  | "eso3-clave-wifi-explorador"
   /* industrial-tool-end */;
 
 /**
