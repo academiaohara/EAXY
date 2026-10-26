@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCapasEntornoDigital, buildPaquetesRed } from "@/components/lesson/anim/scenes/industrial/teceso1-digital";
 import { buildCicloVidaProductoEso, buildJerarquiaResiduos } from "@/components/lesson/anim/scenes/industrial/teceso1-sostenible";
 import { buildAlgoritmoReceta, buildDiagramaFlujoSimbolos, buildBucleRepeticionSimple, buildVariableCaja } from "@/components/lesson/anim/scenes/industrial/teceso1-computacional";
 import { buildElectronesCorriente, buildCircuitoComponentes, buildSerieParaleloCamino, buildCortocircuitoFusible } from "@/components/lesson/anim/scenes/industrial/teceso1-electricidad";
@@ -737,6 +738,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "variable-caja": () => buildVariableCaja(),
   "ciclo-vida-producto-eso": () => buildCicloVidaProductoEso(),
   "jerarquia-residuos": () => buildJerarquiaResiduos(),
+  "capas-entorno-digital": () => buildCapasEntornoDigital(),
+  "paquetes-red": () => buildPaquetesRed(),
   /* industrial-end */
 };
 

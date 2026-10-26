@@ -303,6 +303,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     orderIndex: 11,
   },
   {
+    slug: "competencia-digital",
+    subject: "tecnologia",
+    title: "Competencia digital",
+    description: "Dispositivos, almacenamiento, redes, búsqueda de información, seguridad, bienestar digital y propiedad intelectual.",
+    orderIndex: 12,
+  },
+  {
     slug: "tecnologia-sostenible",
     subject: "tecnologia",
     title: "Tecnología sostenible",
@@ -520,6 +527,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-1-eso/iniciacion-electricidad": "circuitos-electricos-electronicos",
   "tecnologia-1-eso/pensamiento-computacional": "programacion",
   "tecnologia-1-eso/tecnologia-sostenible": "tecnologia-sostenible",
+  "tecnologia-1-eso/digitalizacion-entorno-personal": "competencia-digital",
   // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
   "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
   "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",

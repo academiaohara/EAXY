@@ -1049,6 +1049,8 @@ export type SlideAnimId =
   | "variable-caja"
   | "ciclo-vida-producto-eso"
   | "jerarquia-residuos"
+  | "capas-entorno-digital"
+  | "paquetes-red"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1683,6 +1685,15 @@ export type SlideToolId =
   | "tiempo-descomposicion-explorador"
   | "lineal-circular-eso-explorador"
   | "rampa-accesibilidad-explorador"
+  | "dispositivo-componentes-explorador"
+  | "diagnostico-tecnico-explorador"
+  | "capacidad-almacenamiento-explorador"
+  | "copia-seguridad-explorador"
+  | "tiempo-descarga-explorador"
+  | "busqueda-operadores-explorador"
+  | "contrasena-fortaleza-explorador"
+  | "situaciones-digitales-explorador"
+  | "licencias-cc-explorador"
   /* industrial-tool-end */;
 
 /**

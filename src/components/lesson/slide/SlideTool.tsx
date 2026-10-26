@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DispositivoComponentesExplorador, DiagnosticoTecnicoExplorador, CapacidadAlmacenamientoExplorador, CopiaSeguridadExplorador, TiempoDescargaExplorador, BusquedaOperadoresExplorador, ContrasenaFortalezaExplorador, SituacionesDigitalesExplorador, LicenciasCcExplorador } from "@/components/lesson/slide/tools/TecEso1DigitalTools";
 import { HuellaProductoExplorador, ConsumoHabitosExplorador, AhorroEnergiaExplorador, TiempoDescomposicionExplorador, LinealCircularEsoExplorador, RampaAccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso1SostenibleTools";
 import { AlgoritmoOrdenaExplorador, ProgramaBloquesExplorador, FlujoSencilloExplorador, VariablesCajasExplorador, CondicionesExplorador, DepuraProgramaExplorador } from "@/components/lesson/slide/tools/TecEso1ComputacionalTools";
 import { ConductoresAislantesExplorador, CircuitoSimpleExplorador, SimbolosElectricosExplorador, ControlLuzExplorador, SerieParaleloExplorador, MontajeCircuitoExplorador, SeguridadElectricaExplorador } from "@/components/lesson/slide/tools/TecEso1ElectricidadTools";
@@ -1443,6 +1444,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LinealCircularEsoExplorador block={block} />;
     case "rampa-accesibilidad-explorador":
       return <RampaAccesibilidadExplorador block={block} />;
+    case "dispositivo-componentes-explorador":
+      return <DispositivoComponentesExplorador block={block} />;
+    case "diagnostico-tecnico-explorador":
+      return <DiagnosticoTecnicoExplorador block={block} />;
+    case "capacidad-almacenamiento-explorador":
+      return <CapacidadAlmacenamientoExplorador block={block} />;
+    case "copia-seguridad-explorador":
+      return <CopiaSeguridadExplorador block={block} />;
+    case "tiempo-descarga-explorador":
+      return <TiempoDescargaExplorador block={block} />;
+    case "busqueda-operadores-explorador":
+      return <BusquedaOperadoresExplorador block={block} />;
+    case "contrasena-fortaleza-explorador":
+      return <ContrasenaFortalezaExplorador block={block} />;
+    case "situaciones-digitales-explorador":
+      return <SituacionesDigitalesExplorador block={block} />;
+    case "licencias-cc-explorador":
+      return <LicenciasCcExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

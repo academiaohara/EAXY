@@ -525,6 +525,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `variable-caja` | Variable como caja con nombre: asignar, cambiar (edad = edad + 1), texto y tipos de datos | — |
 | `ciclo-vida-producto-eso` | Ciclo de vida de un producto (móvil): extraer, fabricar, transportar, usar y fin de vida, con el ciclo cerrado por el reciclaje | — |
 | `jerarquia-residuos` | Jerarquía de residuos: reducir, reutilizar, reciclar, valorizar y eliminar | — |
+| `capas-entorno-digital` | Un dispositivo digital por capas: hardware, sistema operativo, aplicaciones y usuario | — |
+| `paquetes-red` | Un archivo viaja dividido en paquetes por routers y se reensambla en el receptor | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1033,6 +1035,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `tiempo-descomposicion-explorador` | Siete residuos y su tiempo de descomposición en escala logarítmica | `n` paso de tiempo (0–7) |
 | `lineal-circular-eso-explorador` | Materia prima nueva y residuos finales al aumentar la reutilización y el reciclaje | `a` reutilización (%), `b` reciclaje (%) |
 | `rampa-accesibilidad-explorador` | Pendiente de una rampa según desnivel y longitud, límite accesible (10, 8 o 6 %) y longitud mínima | `a` desnivel (cm), `b` longitud (m) |
+| `dispositivo-componentes-explorador` | Componentes de un ordenador y de un móvil: función y si son hardware o software | `n` dispositivo (0 ordenador, 1 móvil) |
+| `diagnostico-tecnico-explorador` | Cuatro problemas técnicos sencillos: comprobaciones de lo simple a lo complejo hasta hallar la causa | `n` problema (0–3) |
+| `capacidad-almacenamiento-explorador` | Fotos, canciones, vídeos y aplicaciones frente a la capacidad de un USB, un móvil o un disco (1 GB = 1 000 MB) | `n` soporte (0–2) |
+| `copia-seguridad-explorador` | Copias en distintos soportes y lugares frente a cinco sucesos (regla 3-2-1) | — |
+| `tiempo-descarga-explorador` | Tiempo para descargar un archivo según su tamaño (MB) y la velocidad (Mb/s) | `n` conexión (0–4), `a` tamaño (MB) |
+| `busqueda-operadores-explorador` | Buscador con ocho resultados y operadores (frase exacta, excluir, sitio, tipo de archivo) | — |
+| `contrasena-fortaleza-explorador` | Combinaciones y tiempo orientativo de ataque según longitud y tipos de caracteres | `a` longitud |
+| `situaciones-digitales-explorador` | Tres series de cinco situaciones (phishing, bienestar digital y netiqueta) con explicación | `n` serie (0–2) |
+| `licencias-cc-explorador` | Licencia Creative Commons según se permita el uso comercial y la modificación | — |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

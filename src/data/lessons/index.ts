@@ -97,6 +97,7 @@ import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
+import { bienestarDigitalPropiedadIntelectualLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/07-bienestar-digital-propiedad-intelectual";
 import { biestableRsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/02-biestable-rs";
 import { biestablesJkDTLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/03-biestables-jk-d-t";
 import { binomialANormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/10-binomial-a-normal-2bach";
@@ -108,6 +109,7 @@ import { bloquesCreacionDepuracionLesson } from "@/data/lessons/tecnologia-1-eso
 import { bocetosCroquisLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/02-bocetos-croquis";
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
+import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
@@ -161,6 +163,7 @@ import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
+import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
@@ -215,6 +218,7 @@ import { cuadParabola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otra
 import { cuadParabola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/09-cuad-parabola-4esob";
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
+import { cuentasContrasenasDatosPersonalesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/05-cuentas-contrasenas-datos-personales";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
@@ -265,6 +269,7 @@ import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieri
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { dispersionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/07-dispersion-ccss1";
+import { dispositivosHardwareSoftwareLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/01-dispositivos-hardware-software";
 import { distanciaPlanosRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/09-distancia-planos-recta-plano-2bach";
 import { distanciaPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/07-distancia-punto-plano-2bach";
 import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/07-distancia-punto-recta-1bach";
@@ -996,6 +1001,7 @@ import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillera
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
+import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seguridadSaludAccesibilidadDisenoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/06-seguridad-salud-accesibilidad-diseno";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
@@ -1040,6 +1046,7 @@ import { sistemaMetricoLongitudLesson } from "@/data/lessons/matematicas-1-eso/0
 import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/01-sistema-metrico-magnitudes";
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
+import { sistemaOperativoAlmacenamientoCopiasLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/02-sistema-operativo-almacenamiento-copias";
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
 import { sistemasClasificacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/01-sistemas-clasificacion-2bach";
 import { sistemasClasificacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/02-sistemas-clasificacion-ccss2";
@@ -1288,6 +1295,7 @@ export const interactiveLessons = {
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
+  "bienestar-digital-propiedad-intelectual": bienestarDigitalPropiedadIntelectualLesson,
   "biestable-rs": biestableRsLesson,
   "biestables-jk-d-t": biestablesJkDTLesson,
   "binomial-a-normal-2bach": binomialANormal2bachLesson,
@@ -1299,6 +1307,7 @@ export const interactiveLessons = {
   "bocetos-croquis": bocetosCroquisLesson,
   "bomba-calor": bombaCalorLesson,
   "bucles-for-while": buclesForWhileLesson,
+  "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
@@ -1352,6 +1361,7 @@ export const interactiveLessons = {
   "complejos-raices-1bach": complejosRaices1bachLesson,
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "compresores": compresoresLesson,
+  "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
@@ -1406,6 +1416,7 @@ export const interactiveLessons = {
   "cuad-parabola-4esob": cuadParabola4esobLesson,
   "cuadrilateros-2eso": cuadrilateros2esoLesson,
   "cuartiles-2eso": cuartiles2esoLesson,
+  "cuentas-contrasenas-datos-personales": cuentasContrasenasDatosPersonalesLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
@@ -1456,6 +1467,7 @@ export const interactiveLessons = {
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "dispersion-ccss1": dispersionCcss1Lesson,
+  "dispositivos-hardware-software": dispositivosHardwareSoftwareLesson,
   "distancia-planos-recta-plano-2bach": distanciaPlanosRectaPlano2bachLesson,
   "distancia-punto-plano-2bach": distanciaPuntoPlano2bachLesson,
   "distancia-punto-recta-1bach": distanciaPuntoRecta1bachLesson,
@@ -2187,6 +2199,7 @@ export const interactiveLessons = {
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
+  "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seguridad-salud-accesibilidad-diseno": seguridadSaludAccesibilidadDisenoLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
@@ -2231,6 +2244,7 @@ export const interactiveLessons = {
   "sistema-metrico-magnitudes": sistemaMetricoMagnitudesLesson,
   "sistema-metrico-peso": sistemaMetricoPesoLesson,
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
+  "sistema-operativo-almacenamiento-copias": sistemaOperativoAlmacenamientoCopiasLesson,
   "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
   "sistemas-clasificacion-2bach": sistemasClasificacion2bachLesson,
   "sistemas-clasificacion-ccss2": sistemasClasificacionCcss2Lesson,
