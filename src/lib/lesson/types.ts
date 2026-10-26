@@ -1057,6 +1057,7 @@ export type SlideAnimId =
   | "eso2-biela-manivela"
   | "eso2-bucle-traza"
   | "eso2-vistas-europeo"
+  | "eso2-curva-traccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1732,6 +1733,13 @@ export type SlideToolId =
   | "eso2-cad-comandos-explorador"
   | "eso2-solido-operaciones-explorador"
   | "eso2-lamina-explorador"
+  | "eso2-densidad-explorador"
+  | "eso2-curva-traccion-explorador"
+  | "eso2-despiece-tablero-explorador"
+  | "eso2-matriz-decision-explorador"
+  | "eso2-tecnica-taller-explorador"
+  | "eso2-calibre-explorador"
+  | "eso2-impresion3d-explorador"
   /* industrial-tool-end */;
 
 /**

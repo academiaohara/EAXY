@@ -533,6 +533,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-biela-manivela` | Biela-manivela: giro continuo convertido en vaivén; carrera = 2·r | — |
 | `eso2-bucle-traza` | Un bucle «para» ejecutado paso a paso con tabla de variables | — |
 | `eso2-vistas-europeo` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
+| `eso2-curva-traccion` | Curva tensión-deformación de un ensayo de tracción con sus zonas | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1082,6 +1083,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-cad-comandos-explorador` | Órdenes de CAD 2D sobre una placa: círculo, matriz, redondeo y cotas | `n` cotas (0/1) |
 | `eso2-solido-operaciones-explorador` | Prisma con taladro pasante o ciego: volumen, masa y material quitado | `a` largo (mm), `b` alto (mm) |
 | `eso2-lamina-explorador` | Elementos de una lámina de proyecto y lo que falta | `n` elementos presentes (0–7) |
+| `eso2-densidad-explorador` | Masa y flotación de un bloque según material y dimensiones | `n` material (0–5), `a` largo (cm) |
+| `eso2-curva-traccion-explorador` | Ensayo de tracción: zona elástica, plástica y rotura por material | `n` material (0–3), `a` estirado (%) |
+| `eso2-despiece-tablero-explorador` | Piezas que salen de un tablero de 2 440 × 1 220 mm y desperdicio | `a` ancho (mm), `b` alto (mm) |
+| `eso2-matriz-decision-explorador` | Matriz de decisión ponderada para cinco materiales | `n` prioridades (0–2) |
+| `eso2-tecnica-taller-explorador` | Técnica y seguridad para cortar, unir o acabar madera, metal y plástico | `n` material (0–2), `a` operación (0–2) |
+| `eso2-calibre-explorador` | Lectura de un pie de rey con nonio de 0,1 mm | `a` apertura (mm) |
+| `eso2-impresion3d-explorador` | Plástico y tiempo estimados de un cubo impreso en 3D | `a` lado (mm), `b` capa (×0,01 mm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

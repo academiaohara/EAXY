@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DensidadMaterialesExplorador, CurvaTraccionExplorador, DespieceTableroExplorador, MatrizDecisionMaterialesExplorador, TecnicaTallerExplorador, CalibreExplorador, Impresion3dEsoExplorador } from "@/components/lesson/slide/tools/TecEso2MaterialesTools";
 import { PiezaVistasExplorador, EscalaConversionExplorador, PerspectivaConicaExplorador, PlanoViviendaExplorador, CadComandosExplorador, SolidoOperacionesExplorador, LaminaExplorador } from "@/components/lesson/slide/tools/TecEso2DibujoTools";
 import { TrazaExplorador, TiposDatosExplorador, OperadoresExplorador, FuncionProgramaExplorador, PruebasExplorador, AdivinaExplorador } from "@/components/lesson/slide/tools/TecEso2ProgramacionTools";
 import { TensionExplorador, PerfilCantoExplorador, VentajaMecanicaExplorador, TrenTransmisionExplorador, PoleasCorreasCalcExplorador, TransformacionExplorador, ElevadorExplorador } from "@/components/lesson/slide/tools/TecEso2MecanicaTools";
@@ -1531,6 +1532,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SolidoOperacionesExplorador block={block} />;
     case "eso2-lamina-explorador":
       return <LaminaExplorador block={block} />;
+    case "eso2-densidad-explorador":
+      return <DensidadMaterialesExplorador block={block} />;
+    case "eso2-curva-traccion-explorador":
+      return <CurvaTraccionExplorador block={block} />;
+    case "eso2-despiece-tablero-explorador":
+      return <DespieceTableroExplorador block={block} />;
+    case "eso2-matriz-decision-explorador":
+      return <MatrizDecisionMaterialesExplorador block={block} />;
+    case "eso2-tecnica-taller-explorador":
+      return <TecnicaTallerExplorador block={block} />;
+    case "eso2-calibre-explorador":
+      return <CalibreExplorador block={block} />;
+    case "eso2-impresion3d-explorador":
+      return <Impresion3dEsoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

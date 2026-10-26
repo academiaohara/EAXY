@@ -211,6 +211,7 @@ import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachil
 import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
 import { corrienteElectricaBasicaLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/01-corriente-electrica-basica";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
+import { corteUnionAcabado2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/06-corte-union-acabado-2eso";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
 import { cortesSignoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/03-cortes-signo-ccss1";
 import { crecimientoDecrecimiento1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/13-crecimiento-decrecimiento-1bach";
@@ -347,6 +348,7 @@ import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-b
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
+import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
 import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
@@ -362,6 +364,7 @@ import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-inge
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
+import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
@@ -418,6 +421,7 @@ import { expresionesAlgebraicasProblemas4esobLesson } from "@/data/lessons/matem
 import { expresionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/07-expresiones-primer-grado-4eso";
 import { expresionesSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/08-expresiones-segundo-grado-4eso";
 import { fabricacionDigitalCalidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/11-fabricacion-digital-calidad";
+import { fabricacionDigitalImpresion3d2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/08-fabricacion-digital-impresion-3d-2eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factorComun3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/05-factor-comun-3eso";
 import { factorComun4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/06-factor-comun-4eso";
@@ -637,6 +641,7 @@ import { logicaControlAutomatismosLesson } from "@/data/lessons/tecnologia-ingen
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
+import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/03-madera-tableros-despiece-2eso";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
 import { magnitudesElectricas2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/01-magnitudes-electricas-2eso";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
@@ -661,11 +666,13 @@ import { mediaMedianaModa2esoLesson } from "@/data/lessons/matematicas-2-eso/12-
 import { mediaMedianaModaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/05-media-mediana-moda-ccss1";
 import { mediaVarianza2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/02-media-varianza-2bach";
 import { mediatrizBisectriz1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/08-mediatriz-bisectriz-1bach";
+import { medicionMarcadoPieDeRey2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/07-medicion-marcado-pie-de-rey-2eso";
 import { medidaDesplazamientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/05-medida-desplazamiento";
 import { memoriaSecuencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/01-memoria-secuencial";
 import { memoriaTecnicaPresentacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/08-memoria-tecnica-presentacion";
 import { menoresAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/05-menores-adjuntos-2bach";
 import { metalesAleacionesBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/04-metales-aleaciones-basico";
+import { metalesPlasticosCompuestos2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/04-metales-plasticos-compuestos-2eso";
 import { metalesYAleacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/06-metales-y-aleaciones";
 import { metodoIgualacion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/04-metodo-igualacion-4eso";
 import { metodoIgualacion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/09-metodo-igualacion-4esob";
@@ -919,6 +926,7 @@ import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
 import { propiedadesCondicionInicial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/02-propiedades-condicion-inicial-2bach";
 import { propiedadesCondicionInicialCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/02-propiedades-condicion-inicial-ccss2";
+import { propiedadesDensidadMateriales2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/01-propiedades-densidad-materiales-2eso";
 import { propiedadesDet12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/02-propiedades-det-1-2bach";
 import { propiedadesDet22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/03-propiedades-det-2-2bach";
 import { propiedadesFisicasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/03-propiedades-fisicas-mecanicas";
@@ -1032,6 +1040,7 @@ import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillera
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
+import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seguridadSaludAccesibilidadDisenoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/06-seguridad-salud-accesibilidad-diseno";
@@ -1446,6 +1455,7 @@ export const interactiveLessons = {
   "corriente-continua-elementos": corrienteContinuaElementosLesson,
   "corriente-electrica-basica": corrienteElectricaBasicaLesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
+  "corte-union-acabado-2eso": corteUnionAcabado2esoLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
   "cortes-signo-ccss1": cortesSignoCcss1Lesson,
   "crecimiento-decrecimiento-1bach": crecimientoDecrecimiento1bachLesson,
@@ -1582,6 +1592,7 @@ export const interactiveLessons = {
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
+  "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
   "elementos-estructurales": elementosEstructuralesLesson,
@@ -1597,6 +1608,7 @@ export const interactiveLessons = {
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
+  "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
   "ensayos-caracterizacion": ensayosCaracterizacionLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
@@ -1653,6 +1665,7 @@ export const interactiveLessons = {
   "expresiones-primer-grado-4eso": expresionesPrimerGrado4esoLesson,
   "expresiones-segundo-grado-4eso": expresionesSegundoGrado4esoLesson,
   "fabricacion-digital-calidad": fabricacionDigitalCalidadLesson,
+  "fabricacion-digital-impresion-3d-2eso": fabricacionDigitalImpresion3d2esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factor-comun-3eso": factorComun3esoLesson,
   "factor-comun-4eso": factorComun4esoLesson,
@@ -1872,6 +1885,7 @@ export const interactiveLessons = {
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "luz-detector-error": luzDetectorErrorLesson,
   "madera-derivados": maderaDerivadosLesson,
+  "madera-tableros-despiece-2eso": maderaTablerosDespiece2esoLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
   "magnitudes-electricas-2eso": magnitudesElectricas2esoLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
@@ -1896,11 +1910,13 @@ export const interactiveLessons = {
   "media-mediana-moda-ccss1": mediaMedianaModaCcss1Lesson,
   "media-varianza-2bach": mediaVarianza2bachLesson,
   "mediatriz-bisectriz-1bach": mediatrizBisectriz1bachLesson,
+  "medicion-marcado-pie-de-rey-2eso": medicionMarcadoPieDeRey2esoLesson,
   "medida-desplazamiento": medidaDesplazamientoLesson,
   "memoria-secuencial": memoriaSecuencialLesson,
   "memoria-tecnica-presentacion": memoriaTecnicaPresentacionLesson,
   "menores-adjuntos-2bach": menoresAdjuntos2bachLesson,
   "metales-aleaciones-basico": metalesAleacionesBasicoLesson,
+  "metales-plasticos-compuestos-2eso": metalesPlasticosCompuestos2esoLesson,
   "metales-y-aleaciones": metalesYAleacionesLesson,
   "metodo-igualacion-4eso": metodoIgualacion4esoLesson,
   "metodo-igualacion-4esob": metodoIgualacion4esobLesson,
@@ -2154,6 +2170,7 @@ export const interactiveLessons = {
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
   "propiedades-condicion-inicial-2bach": propiedadesCondicionInicial2bachLesson,
   "propiedades-condicion-inicial-ccss2": propiedadesCondicionInicialCcss2Lesson,
+  "propiedades-densidad-materiales-2eso": propiedadesDensidadMateriales2esoLesson,
   "propiedades-det-1-2bach": propiedadesDet12bachLesson,
   "propiedades-det-2-2bach": propiedadesDet22bachLesson,
   "propiedades-fisicas-mecanicas": propiedadesFisicasMecanicasLesson,
@@ -2267,6 +2284,7 @@ export const interactiveLessons = {
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
+  "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seguridad-salud-accesibilidad-diseno": seguridadSaludAccesibilidadDisenoLesson,
