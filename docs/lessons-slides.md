@@ -527,6 +527,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `jerarquia-residuos` | Jerarquía de residuos: reducir, reutilizar, reciclar, valorizar y eliminar | — |
 | `capas-entorno-digital` | Un dispositivo digital por capas: hardware, sistema operativo, aplicaciones y usuario | — |
 | `paquetes-red` | Un archivo viaja dividido en paquetes por routers y se reensambla en el receptor | — |
+| `extrusion-perfil` | Croquis 2D acotado de un perfil en L que se extruye hasta formar un sólido, con operaciones posteriores | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1044,6 +1045,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `contrasena-fortaleza-explorador` | Combinaciones y tiempo orientativo de ataque según longitud y tipos de caracteres | `a` longitud |
 | `situaciones-digitales-explorador` | Tres series de cinco situaciones (phishing, bienestar digital y netiqueta) con explicación | `n` serie (0–2) |
 | `licencias-cc-explorador` | Licencia Creative Commons según se permita el uso comercial y la modificación | — |
+| `cad-placa-explorador` | Placa con matriz de agujeros: posiciones, separación, área de material y reglas de taller | `a` largo, `b` ancho (mm) |
+| `extrusion-explorador` | Perfil extruido en isométrica: área, volumen y masa según material | `n` perfil (0–4), `a` tamaño (cm), `b` altura (cm) |
+| `diapositiva-legible-explorador` | Diapositiva con colores, tamaño de letra y palabras: contraste (WCAG) y valoración | `n` colores (0–4), `a` tamaño (pt) |
+| `clasificador-ia-explorador` | Clasificador de manzanas y plátanos que aprende de ejemplos, con datos equilibrados o sesgados | `a` ejemplos por fruta (0–8) |
+| `app-eventos-explorador` | Aplicación de dados que reacciona a tres eventos (botón, reinicio y sacudida) | — |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

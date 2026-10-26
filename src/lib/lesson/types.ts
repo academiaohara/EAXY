@@ -1051,6 +1051,7 @@ export type SlideAnimId =
   | "jerarquia-residuos"
   | "capas-entorno-digital"
   | "paquetes-red"
+  | "extrusion-perfil"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1694,6 +1695,11 @@ export type SlideToolId =
   | "contrasena-fortaleza-explorador"
   | "situaciones-digitales-explorador"
   | "licencias-cc-explorador"
+  | "cad-placa-explorador"
+  | "extrusion-explorador"
+  | "diapositiva-legible-explorador"
+  | "clasificador-ia-explorador"
+  | "app-eventos-explorador"
   /* industrial-tool-end */;
 
 /**

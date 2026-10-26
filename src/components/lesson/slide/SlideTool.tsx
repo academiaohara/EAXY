@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CadPlacaExplorador, ExtrusionExplorador, DiapositivaLegibleExplorador, ClasificadorIaExplorador, AppEventosExplorador } from "@/components/lesson/slide/tools/TecEso1ComunicacionTools";
 import { DispositivoComponentesExplorador, DiagnosticoTecnicoExplorador, CapacidadAlmacenamientoExplorador, CopiaSeguridadExplorador, TiempoDescargaExplorador, BusquedaOperadoresExplorador, ContrasenaFortalezaExplorador, SituacionesDigitalesExplorador, LicenciasCcExplorador } from "@/components/lesson/slide/tools/TecEso1DigitalTools";
 import { HuellaProductoExplorador, ConsumoHabitosExplorador, AhorroEnergiaExplorador, TiempoDescomposicionExplorador, LinealCircularEsoExplorador, RampaAccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso1SostenibleTools";
 import { AlgoritmoOrdenaExplorador, ProgramaBloquesExplorador, FlujoSencilloExplorador, VariablesCajasExplorador, CondicionesExplorador, DepuraProgramaExplorador } from "@/components/lesson/slide/tools/TecEso1ComputacionalTools";
@@ -1462,6 +1463,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SituacionesDigitalesExplorador block={block} />;
     case "licencias-cc-explorador":
       return <LicenciasCcExplorador block={block} />;
+    case "cad-placa-explorador":
+      return <CadPlacaExplorador block={block} />;
+    case "extrusion-explorador":
+      return <ExtrusionExplorador block={block} />;
+    case "diapositiva-legible-explorador":
+      return <DiapositivaLegibleExplorador block={block} />;
+    case "clasificador-ia-explorador":
+      return <ClasificadorIaExplorador block={block} />;
+    case "app-eventos-explorador":
+      return <AppEventosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

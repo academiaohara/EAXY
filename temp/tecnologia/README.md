@@ -4,7 +4,7 @@ Coloca aquí tus recursos (por curso o por tema).
 
 ## LOMLOE.txt
 
-Temario orientativo por curso (1.º ESO a 2.º Bachillerato). Base del curso `tecnologia-1-eso` (**Introducción a la Tecnología**, 8 temas y 57 lecciones): ver `docs/tecnologia-1-eso.md`.
+Temario orientativo por curso (1.º ESO a 2.º Bachillerato). Base del curso `tecnologia-1-eso` (**Introducción a la Tecnología**, 10 temas y 69 lecciones): ver `docs/tecnologia-1-eso.md`.
 
 ## 2.º Bachillerato — Tecnología Industrial II
 

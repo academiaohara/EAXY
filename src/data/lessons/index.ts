@@ -45,6 +45,7 @@ import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-c
 import { anualidadesCapitalizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/04-anualidades-capitalizacion-ccss1";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
+import { aplicacionesInteligenciaArtificialLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/05-aplicaciones-inteligencia-artificial";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
 import { aplicacionesProductoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/08-aplicaciones-producto-vectorial-2bach";
@@ -110,6 +111,8 @@ import { bocetosCroquisLesson } from "@/data/lessons/tecnologia-1-eso/02-expresi
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
 import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
+import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
+import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
@@ -164,6 +167,7 @@ import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachill
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
+import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
@@ -290,6 +294,7 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matemati
 import { divisionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/04-division-polinomios-4esob";
 import { dobleEntrada1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/09-doble-entrada-1bach";
 import { dobleEntradaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/09-doble-entrada-ccss1";
+import { documentacionMultimediaDifusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/04-documentacion-multimedia-difusion";
 import { dominioCortesSigno2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/01-dominio-cortes-signo-2bach";
 import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/06-dos-planos-posicion-2bach";
 import { dosRectasPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/09-dos-rectas-posicion-2bach";
@@ -1111,6 +1116,7 @@ import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
+import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
@@ -1243,6 +1249,7 @@ export const interactiveLessons = {
   "anualidades-capitalizacion-ccss1": anualidadesCapitalizacionCcss1Lesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
+  "aplicaciones-inteligencia-artificial": aplicacionesInteligenciaArtificialLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
   "aplicaciones-producto-vectorial-2bach": aplicacionesProductoVectorial2bachLesson,
@@ -1308,6 +1315,8 @@ export const interactiveLessons = {
   "bomba-calor": bombaCalorLesson,
   "bucles-for-while": buclesForWhileLesson,
   "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
+  "cad-2d-iniciacion": cad2dIniciacionLesson,
+  "cad-3d-extrusion": cad3dExtrusionLesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
@@ -1362,6 +1371,7 @@ export const interactiveLessons = {
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
+  "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
@@ -1488,6 +1498,7 @@ export const interactiveLessons = {
   "division-polinomios-4esob": divisionPolinomios4esobLesson,
   "doble-entrada-1bach": dobleEntrada1bachLesson,
   "doble-entrada-ccss1": dobleEntradaCcss1Lesson,
+  "documentacion-multimedia-difusion": documentacionMultimediaDifusionLesson,
   "dominio-cortes-signo-2bach": dominioCortesSigno2bachLesson,
   "dos-planos-posicion-2bach": dosPlanosPosicion2bachLesson,
   "dos-rectas-posicion-2bach": dosRectasPosicion2bachLesson,
@@ -2309,6 +2320,7 @@ export const interactiveLessons = {
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
+  "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,

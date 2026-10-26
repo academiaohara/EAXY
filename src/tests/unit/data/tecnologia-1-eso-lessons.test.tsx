@@ -26,8 +26,9 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["mecanismos-basicos", 7],
   ["iniciacion-electricidad", 7],
   ["pensamiento-computacional", 7],
-  ["tecnologia-sostenible", 6],
+  ["tecnologia-sostenible", 7],
   ["digitalizacion-entorno-personal", 7],
+  ["comunicacion-difusion-ideas", 5],
 ];
 
 describe("curso Tecnología 1.º ESO (Introducción a la Tecnología)", () => {

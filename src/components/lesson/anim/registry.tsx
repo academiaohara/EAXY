@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildExtrusionPerfil } from "@/components/lesson/anim/scenes/industrial/teceso1-comunicacion";
 import { buildCapasEntornoDigital, buildPaquetesRed } from "@/components/lesson/anim/scenes/industrial/teceso1-digital";
 import { buildCicloVidaProductoEso, buildJerarquiaResiduos } from "@/components/lesson/anim/scenes/industrial/teceso1-sostenible";
 import { buildAlgoritmoReceta, buildDiagramaFlujoSimbolos, buildBucleRepeticionSimple, buildVariableCaja } from "@/components/lesson/anim/scenes/industrial/teceso1-computacional";
@@ -740,6 +741,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "jerarquia-residuos": () => buildJerarquiaResiduos(),
   "capas-entorno-digital": () => buildCapasEntornoDigital(),
   "paquetes-red": () => buildPaquetesRed(),
+  "extrusion-perfil": () => buildExtrusionPerfil(),
   /* industrial-end */
 };
 
