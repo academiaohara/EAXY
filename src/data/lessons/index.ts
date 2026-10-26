@@ -377,6 +377,7 @@ import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-indust
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
+import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
@@ -611,6 +612,7 @@ import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria
 import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/03-lazo-abierto-cerrado";
 import { lazoAbiertoCerrado3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/02-lazo-abierto-cerrado-3eso";
 import { lazoAbiertoCerradoControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/08-lazo-abierto-cerrado-control";
+import { lecturaSensoresAnalogicos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/03-lectura-sensores-analogicos-3eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
@@ -940,6 +942,7 @@ import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
 import { productoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/07-producto-vectorial-2bach";
+import { programarPlacaSetupLoop3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/01-programar-placa-setup-loop-3eso";
 import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
@@ -974,10 +977,13 @@ import { proyeccionRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-ba
 import { proyectoAdivinaNumero2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/08-proyecto-adivina-numero-2eso";
 import { proyectoLuzAutomatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/09-proyecto-luz-automatica-3eso";
 import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/09-pruebas-depuracion-codigo";
+import { pruebasDepuracionRobot3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/08-pruebas-depuracion-robot-3eso";
+import { puenteHSentidoGiro3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/05-puente-h-sentido-giro-3eso";
 import { puertasLogicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/04-puertas-logicas-3eso";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
+import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
 import { queEsTecnologiaNecesidadesLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/01-que-es-tecnologia-necesidades";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
@@ -1058,6 +1064,8 @@ import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
 import { responsabilidadTecnologicaHuellaDigital2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/05-responsabilidad-tecnologica-huella-digital-2eso";
 import { reutilizacionEconomiaCircularEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/05-reutilizacion-economia-circular-eso";
+import { robotSeguidorLinea3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/06-robot-seguidor-linea-3eso";
+import { robotUltrasonidosObstaculos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/07-robot-ultrasonidos-obstaculos-3eso";
 import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
@@ -1654,6 +1662,7 @@ export const interactiveLessons = {
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
   "ensayos-caracterizacion": ensayosCaracterizacionLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
+  "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
@@ -1888,6 +1897,7 @@ export const interactiveLessons = {
   "lazo-abierto-cerrado": lazoAbiertoCerradoLesson,
   "lazo-abierto-cerrado-3eso": lazoAbiertoCerrado3esoLesson,
   "lazo-abierto-cerrado-control": lazoAbiertoCerradoControlLesson,
+  "lectura-sensores-analogicos-3eso": lecturaSensoresAnalogicos3esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
@@ -2217,6 +2227,7 @@ export const interactiveLessons = {
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
   "producto-vectorial-2bach": productoVectorial2bachLesson,
+  "programar-placa-setup-loop-3eso": programarPlacaSetupLoop3esoLesson,
   "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
@@ -2251,10 +2262,13 @@ export const interactiveLessons = {
   "proyecto-adivina-numero-2eso": proyectoAdivinaNumero2esoLesson,
   "proyecto-luz-automatica-3eso": proyectoLuzAutomatica3esoLesson,
   "pruebas-depuracion-codigo": pruebasDepuracionCodigoLesson,
+  "pruebas-depuracion-robot-3eso": pruebasDepuracionRobot3esoLesson,
+  "puente-h-sentido-giro-3eso": puenteHSentidoGiro3esoLesson,
   "puertas-logicas-3eso": puertasLogicas3esoLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
+  "pwm-motores-servos-3eso": pwmMotoresServos3esoLesson,
   "que-es-tecnologia-necesidades": queEsTecnologiaNecesidadesLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
@@ -2335,6 +2349,8 @@ export const interactiveLessons = {
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
   "responsabilidad-tecnologica-huella-digital-2eso": responsabilidadTecnologicaHuellaDigital2esoLesson,
   "reutilizacion-economia-circular-eso": reutilizacionEconomiaCircularEsoLesson,
+  "robot-seguidor-linea-3eso": robotSeguidorLinea3esoLesson,
+  "robot-ultrasonidos-obstaculos-3eso": robotUltrasonidosObstaculos3esoLesson,
   "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,

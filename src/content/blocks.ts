@@ -541,6 +541,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   // ── Tecnología 3.º ESO ──
   "tecnologia-3-eso/electricidad-electronica": "circuitos-electricos-electronicos",
   "tecnologia-3-eso/control-automatizacion": "sistemas-de-control",
+  "tecnologia-3-eso/programacion-robotica": "programacion",
   // ── Tecnología e Ingeniería I (1.º Bachillerato) ───────────────────────
   "tecnologia-ingenieria-1-bachillerato/proyectos-investigacion-desarrollo": "proyectos-tecnologicos",
   "tecnologia-ingenieria-1-bachillerato/materiales-fabricacion": "materiales",

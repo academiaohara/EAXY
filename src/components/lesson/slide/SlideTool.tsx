@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { BlinkExplorador, PullPulsadorExplorador, LecturaAnalogicaExplorador, PwmServoExplorador, PuenteHExplorador, SeguidorLineaExplorador, UltrasonidoExplorador, RobotPruebasExplorador } from "@/components/lesson/slide/tools/TecEso3RoboticaTools";
 import { SistemaIpsExplorador, LazoControlExplorador, ConversorAdcExplorador, PuertasLogicasExplorador, AlarmaLogicaExplorador, PuertaGarajeExplorador, RiegoAutomaticoExplorador } from "@/components/lesson/slide/tools/TecEso3ControlTools";
 import { ConductorExplorador, CodigoColoresExplorador, LedResistenciaExplorador, TransistorLlaveExplorador, SensorDivisorExplorador, CondensadorRcExplorador, ProtoboardExplorador, ComparadorExplorador, LuzAutomaticaExplorador } from "@/components/lesson/slide/tools/TecEso3ElectronicaTools";
 import { CicloVidaFasesExplorador, EtiquetaEnergeticaExplorador, ResiduosHogarExplorador, DisenoUniversalExplorador, HuellaDigitalExplorador } from "@/components/lesson/slide/tools/TecEso2SostenibleTools";
@@ -1617,6 +1618,22 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PuertaGarajeExplorador block={block} />;
     case "eso3-riego-explorador":
       return <RiegoAutomaticoExplorador block={block} />;
+    case "eso3-blink-explorador":
+      return <BlinkExplorador block={block} />;
+    case "eso3-pull-explorador":
+      return <PullPulsadorExplorador block={block} />;
+    case "eso3-lectura-analogica-explorador":
+      return <LecturaAnalogicaExplorador block={block} />;
+    case "eso3-pwm-explorador":
+      return <PwmServoExplorador block={block} />;
+    case "eso3-puente-h-explorador":
+      return <PuenteHExplorador block={block} />;
+    case "eso3-seguidor-explorador":
+      return <SeguidorLineaExplorador block={block} />;
+    case "eso3-ultrasonido-explorador":
+      return <UltrasonidoExplorador block={block} />;
+    case "eso3-robot-pruebas-explorador":
+      return <RobotPruebasExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

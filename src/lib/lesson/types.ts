@@ -1063,6 +1063,8 @@ export type SlideAnimId =
   | "eso3-diodo-sentido"
   | "eso3-transistor-llave"
   | "eso3-lazo-abierto-cerrado"
+  | "eso3-setup-loop"
+  | "eso3-pwm-ciclo"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1778,6 +1780,14 @@ export type SlideToolId =
   | "eso3-alarma-explorador"
   | "eso3-puerta-garaje-explorador"
   | "eso3-riego-explorador"
+  | "eso3-blink-explorador"
+  | "eso3-pull-explorador"
+  | "eso3-lectura-analogica-explorador"
+  | "eso3-pwm-explorador"
+  | "eso3-puente-h-explorador"
+  | "eso3-seguidor-explorador"
+  | "eso3-ultrasonido-explorador"
+  | "eso3-robot-pruebas-explorador"
   /* industrial-tool-end */;
 
 /**

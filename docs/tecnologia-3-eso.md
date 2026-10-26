@@ -21,5 +21,6 @@ Total previsto: 57 lecciones. Orden de construcción propuesto: 4 → 5 → 6 �
 |---|---|
 | 4. Electricidad y electrónica | Hecho (9 lecciones, `04-electricidad-electronica/`; herramientas `TecEso3ElectronicaTools.tsx`, animaciones `teceso3-electronica.tsx`) |
 | 5. Sistemas de control y automatización | Hecho (7 lecciones, `05-control-automatizacion/`; herramientas `TecEso3ControlTools.tsx`, animación `teceso3-control.tsx`) |
+| 6. Programación y robótica | Hecho (8 lecciones, `06-programacion-robotica/`; herramientas `TecEso3RoboticaTools.tsx`, animaciones `teceso3-robotica.tsx`) |
 
 Test del curso: `src/tests/unit/data/tecnologia-3-eso-lessons.test.tsx` (añadir cada tema a `TEMAS`, en el orden del currículo).

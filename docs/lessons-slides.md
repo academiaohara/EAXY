@@ -539,6 +539,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-diodo-sentido` | Diodo y LED: polarización directa e inversa | — |
 | `eso3-transistor-llave` | Transistor NPN: corte y saturación, Ic = β·Ib | — |
 | `eso3-lazo-abierto-cerrado` | Control en lazo abierto y cerrado con realimentación | — |
+| `eso3-setup-loop` | Estructura de un programa de placa: setup() una vez y loop() sin fin | — |
+| `eso3-pwm-ciclo` | PWM: ciclo de trabajo y tensión media | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1128,6 +1130,14 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-alarma-explorador` | Alarma: armada Y (puerta O ventana O movimiento) | `n` armada inicial (0/1) |
 | `eso3-puerta-garaje-explorador` | Máquina de estados de una puerta de garaje | — |
 | `eso3-riego-explorador` | Riego programado frente a riego con sensor de humedad | `a` humedad inicial (%), `b` umbral (%) |
+| `eso3-blink-explorador` | Parpadeo de un LED con delay: periodo, frecuencia y ciclo de trabajo | `a` ms encendido, `b` ms apagado |
+| `eso3-pull-explorador` | Pulsador con pull-down, pull-up o sin resistencia: qué lee el pin | `n` montaje (0–2) |
+| `eso3-lectura-analogica-explorador` | analogRead 0–1023: tensión, temperatura y map() | `a` lectura |
+| `eso3-pwm-explorador` | PWM de un motor o LED y pulso de un servo | `n` actuador (0/1), `a` valor, `b` pulso (×0,1 ms) |
+| `eso3-puente-h-explorador` | Puente en H con cuatro interruptores: sentido de giro y cortocircuito | — |
+| `eso3-seguidor-explorador` | Robot seguidor de línea con dos sensores infrarrojos | `a` posición (−2 a 2) |
+| `eso3-ultrasonido-explorador` | Distancia por tiempo de eco y umbral de frenado | `a` distancia (cm), `b` umbral (cm) |
+| `eso3-robot-pruebas-explorador` | Casos de prueba de un robot y ajuste del umbral de frenado | `a` umbral (cm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
