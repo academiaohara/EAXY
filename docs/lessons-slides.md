@@ -544,6 +544,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-ruta-paquetes` | Un mensaje se trocea en paquetes, viaja por rutas distintas y se recompone | — |
 | `eso3-leva-seguidor` | Leva excéntrica y seguidor: carrera = 2·e | — |
 | `eso3-fundicion-molde` | Fundición en molde de arena: modelo, molde, colada, solidificación y desmoldeo | — |
+| `eso3-flujo-proyecto` | Flujo de un proyecto: especificar, simular, construir, probar, documentar y difundir | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1162,6 +1163,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-impacto-material-explorador` | Energía incorporada de un material según el porcentaje reciclado | `n` material (0–3), `a` cantidad (kg) |
 | `eso3-laser-explorador` | Longitud y tiempo de corte láser de una placa con agujeros | `n` material (0–2), `a` ancho (mm) |
 | `eso3-riesgos-explorador` | Matriz de riesgos: probabilidad × gravedad | `a` probabilidad, `b` gravedad |
+| `eso3-especificaciones-explorador` | Comprueba si un prototipo cumple especificaciones medibles y con qué margen | `a` masa (g) |
+| `eso3-simulacion-viga-explorador` | Simulación de una viga: carga máxima, masa y carga por gramo | `n` material (0–2), `a` alto (mm) |
+| `eso3-coste-proyecto-explorador` | Coste directo, indirectos, coste total y precio de venta | `a` materiales (€) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

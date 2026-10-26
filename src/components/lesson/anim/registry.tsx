@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildFlujoProyecto } from "@/components/lesson/anim/scenes/industrial/teceso3-proyectos";
 import { buildFundicionMolde } from "@/components/lesson/anim/scenes/industrial/teceso3-materiales";
 import { buildLevaSeguidor } from "@/components/lesson/anim/scenes/industrial/teceso3-mecanismos";
 import { buildRutaPaquetes } from "@/components/lesson/anim/scenes/industrial/teceso3-redes";
@@ -771,6 +772,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-ruta-paquetes": () => buildRutaPaquetes(),
   "eso3-leva-seguidor": () => buildLevaSeguidor(),
   "eso3-fundicion-molde": () => buildFundicionMolde(),
+  "eso3-flujo-proyecto": () => buildFlujoProyecto(),
   /* industrial-end */
 };
 

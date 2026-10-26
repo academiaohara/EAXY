@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EspecificacionesExplorador, SimulacionVigaExplorador, CosteProyectoExplorador } from "@/components/lesson/slide/tools/TecEso3ProyectosTools";
 import { PrestacionesExplorador, FundicionExplorador, CorteTornoExplorador, UnionExplorador, ImpactoMaterialExplorador, CorteLaserExplorador, MatrizRiesgosExplorador } from "@/components/lesson/slide/tools/TecEso3MaterialesTools";
 import { CadenaPinonExplorador, SinFinCoronaEso3Explorador, LevaSeguidorEso3Explorador, CajaCambiosExplorador, RendimientoCadenaExplorador, GruaPolipastoExplorador, LavadoraCentrifugadoExplorador } from "@/components/lesson/slide/tools/TecEso3MecanismosTools";
 import { PerifericoExplorador, TopologiaExplorador, DireccionIpExplorador, WifiExplorador, PaquetesExplorador, BateriaIotExplorador, ClaveWifiExplorador } from "@/components/lesson/slide/tools/TecEso3RedesTools";
@@ -1679,6 +1680,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CorteLaserExplorador block={block} />;
     case "eso3-riesgos-explorador":
       return <MatrizRiesgosExplorador block={block} />;
+    case "eso3-especificaciones-explorador":
+      return <EspecificacionesExplorador block={block} />;
+    case "eso3-simulacion-viga-explorador":
+      return <SimulacionVigaExplorador block={block} />;
+    case "eso3-coste-proyecto-explorador":
+      return <CosteProyectoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

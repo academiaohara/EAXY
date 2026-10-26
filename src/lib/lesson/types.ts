@@ -1068,6 +1068,7 @@ export type SlideAnimId =
   | "eso3-ruta-paquetes"
   | "eso3-leva-seguidor"
   | "eso3-fundicion-molde"
+  | "eso3-flujo-proyecto"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1812,6 +1813,9 @@ export type SlideToolId =
   | "eso3-impacto-material-explorador"
   | "eso3-laser-explorador"
   | "eso3-riesgos-explorador"
+  | "eso3-especificaciones-explorador"
+  | "eso3-simulacion-viga-explorador"
+  | "eso3-coste-proyecto-explorador"
   /* industrial-tool-end */;
 
 /**

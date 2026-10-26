@@ -284,6 +284,7 @@ import { diagramasArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bac
 import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
 import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
+import { difusionEvaluacionProyecto3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/05-difusion-evaluacion-proyecto-3eso";
 import { diodosLed3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/03-diodos-led-3eso";
 import { direccionesIpRouter3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/03-direcciones-ip-router-3eso";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
@@ -318,6 +319,7 @@ import { dobleEntrada1bachLesson } from "@/data/lessons/matematicas-1-bachillera
 import { dobleEntradaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/09-doble-entrada-ccss1";
 import { documentacionGraficaLamina2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/07-documentacion-grafica-lamina-2eso";
 import { documentacionMultimediaDifusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/04-documentacion-multimedia-difusion";
+import { documentacionTecnica3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/04-documentacion-tecnica-3eso";
 import { dominioCortesSigno2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/01-dominio-cortes-signo-2bach";
 import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/06-dos-planos-posicion-2bach";
 import { dosRectasPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/09-dos-rectas-posicion-2bach";
@@ -389,6 +391,7 @@ import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-g
 import { esfuerzosEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/03-esfuerzos-estructuras";
 import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/01-esfuerzos-tension-resistencia-2eso";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
+import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/01-especificaciones-tecnicas-3eso";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
@@ -527,6 +530,7 @@ import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bach
 import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
+import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -1132,6 +1136,7 @@ import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matema
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
 import { simplificarExtraerFactores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/07-simplificar-extraer-factores-4esob";
 import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/10-simplificar-radicales-ccss1";
+import { simulacionDigitalSoluciones3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/02-simulacion-digital-soluciones-3eso";
 import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
@@ -1590,6 +1595,7 @@ export const interactiveLessons = {
   "diagramas-bloques": diagramasBloquesLesson,
   "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
+  "difusion-evaluacion-proyecto-3eso": difusionEvaluacionProyecto3esoLesson,
   "diodos-led-3eso": diodosLed3esoLesson,
   "direcciones-ip-router-3eso": direccionesIpRouter3esoLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
@@ -1624,6 +1630,7 @@ export const interactiveLessons = {
   "doble-entrada-ccss1": dobleEntradaCcss1Lesson,
   "documentacion-grafica-lamina-2eso": documentacionGraficaLamina2esoLesson,
   "documentacion-multimedia-difusion": documentacionMultimediaDifusionLesson,
+  "documentacion-tecnica-3eso": documentacionTecnica3esoLesson,
   "dominio-cortes-signo-2bach": dominioCortesSigno2bachLesson,
   "dos-planos-posicion-2bach": dosPlanosPosicion2bachLesson,
   "dos-rectas-posicion-2bach": dosRectasPosicion2bachLesson,
@@ -1695,6 +1702,7 @@ export const interactiveLessons = {
   "esfuerzos-estructuras": esfuerzosEstructurasLesson,
   "esfuerzos-tension-resistencia-2eso": esfuerzosTensionResistencia2esoLesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
+  "especificaciones-tecnicas-3eso": especificacionesTecnicas3esoLesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
   "esquema-estudio-2bach": esquemaEstudio2bachLesson,
@@ -1833,6 +1841,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
+  "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -2438,6 +2447,7 @@ export const interactiveLessons = {
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,
   "simplificar-extraer-factores-4esob": simplificarExtraerFactores4esobLesson,
   "simplificar-radicales-ccss1": simplificarRadicalesCcss1Lesson,
+  "simulacion-digital-soluciones-3eso": simulacionDigitalSoluciones3esoLesson,
   "simulacion-seguridad-electrica-2eso": simulacionSeguridadElectrica2esoLesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
   "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
