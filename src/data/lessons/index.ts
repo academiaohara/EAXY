@@ -530,6 +530,7 @@ import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
+import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
@@ -618,6 +619,7 @@ import { lazoAbiertoCerradoControlLesson } from "@/data/lessons/tecnologia-ingen
 import { lecturaSensoresAnalogicos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/03-lectura-sensores-analogicos-3eso";
 import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/01-lenguaje-algebraico-2eso";
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
+import { levasBielasManivelas3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/03-levas-bielas-manivelas-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
@@ -671,6 +673,7 @@ import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industr
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
 import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/01-maquinas-mecanismos-elementos";
 import { maquinasMecanismosMovimientosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/01-maquinas-mecanismos-movimientos";
+import { maquinasRealesLavadoraBicicleta3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/07-maquinas-reales-lavadora-bicicleta-3eso";
 import { maquinasSimplesVentajaMecanica2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/04-maquinas-simples-ventaja-mecanica-2eso";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { materiasPrimasMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/01-materias-primas-materiales";
@@ -845,6 +848,7 @@ import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
 import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
 import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/03-potencia-energia-electrica-2eso";
+import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/05-potencia-par-rendimiento-3eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
@@ -1225,6 +1229,7 @@ import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
 import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
+import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
@@ -1235,10 +1240,12 @@ import { transformacionMovimiento2esoLesson } from "@/data/lessons/tecnologia-2-
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
+import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
 import { tratamientosPropiedadesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/09-tratamientos-propiedades";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
+import { trenesEngranajesCajaCambios3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/04-trenes-engranajes-caja-cambios-3eso";
 import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
 import { triangulacionEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/05-triangulacion-estructuras";
 import { triangulacionPerfilesRefuerzos2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/02-triangulacion-perfiles-refuerzos-2eso";
@@ -1822,6 +1829,7 @@ export const interactiveLessons = {
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
+  "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
@@ -1910,6 +1918,7 @@ export const interactiveLessons = {
   "lectura-sensores-analogicos-3eso": lecturaSensoresAnalogicos3esoLesson,
   "lenguaje-algebraico-2eso": lenguajeAlgebraico2esoLesson,
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
+  "levas-bielas-manivelas-3eso": levasBielasManivelas3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "ley-ohm-2eso": leyOhm2esoLesson,
@@ -1963,6 +1972,7 @@ export const interactiveLessons = {
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
   "maquinas-mecanismos-elementos": maquinasMecanismosElementosLesson,
   "maquinas-mecanismos-movimientos": maquinasMecanismosMovimientosLesson,
+  "maquinas-reales-lavadora-bicicleta-3eso": maquinasRealesLavadoraBicicleta3esoLesson,
   "maquinas-simples-ventaja-mecanica-2eso": maquinasSimplesVentajaMecanica2esoLesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "materias-primas-materiales": materiasPrimasMaterialesLesson,
@@ -2137,6 +2147,7 @@ export const interactiveLessons = {
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
   "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
   "potencia-energia-electrica-2eso": potenciaEnergiaElectrica2esoLesson,
+  "potencia-par-rendimiento-3eso": potenciaParRendimiento3esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
@@ -2517,6 +2528,7 @@ export const interactiveLessons = {
   "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
   "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
+  "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
@@ -2527,10 +2539,12 @@ export const interactiveLessons = {
   "transformaciones-gas": transformacionesGasLesson,
   "transformada-laplace": transformadaLaplaceLesson,
   "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
+  "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
   "tratamientos-propiedades": tratamientosPropiedadesLesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
+  "trenes-engranajes-caja-cambios-3eso": trenesEngranajesCajaCambios3esoLesson,
   "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
   "triangulacion-estructuras": triangulacionEstructurasLesson,
   "triangulacion-perfiles-refuerzos-2eso": triangulacionPerfilesRefuerzos2esoLesson,

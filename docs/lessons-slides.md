@@ -542,6 +542,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-setup-loop` | Estructura de un programa de placa: setup() una vez y loop() sin fin | — |
 | `eso3-pwm-ciclo` | PWM: ciclo de trabajo y tensión media | — |
 | `eso3-ruta-paquetes` | Un mensaje se trocea en paquetes, viaja por rutas distintas y se recompone | — |
+| `eso3-leva-seguidor` | Leva excéntrica y seguidor: carrera = 2·e | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1146,6 +1147,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-paquetes-explorador` | Paquetes necesarios para un archivo y reenvíos por pérdidas | `a` tamaño (MB), `b` pérdidas (%) |
 | `eso3-bateria-iot-explorador` | Autonomía de la batería de un sensor IoT | `a` capacidad (mAh), `b` intervalo (min) |
 | `eso3-clave-wifi-explorador` | Tiempo para adivinar una contraseña por fuerza bruta | `n` juego de caracteres (0–3), `a` longitud |
+| `eso3-cadena-pinon-explorador` | Piñón y cadena: relación, velocidad y eslabones | `a` dientes z₁, `b` dientes z₂ |
+| `eso3-sin-fin-explorador` | Tornillo sin fin y corona: reducción, par y pérdidas | `a` dientes de la corona, `n` entradas (1–3) |
+| `eso3-leva-explorador` | Leva excéntrica, de corazón y de caída brusca: altura del seguidor | `n` tipo (0–2), `a` ángulo (°) |
+| `eso3-caja-cambios-explorador` | Caja de cambios de cinco marchas: velocidad y par en la rueda | `a` rpm del motor, `n` marcha (0–4) |
+| `eso3-rendimiento-explorador` | Potencia y rendimiento de una cadena de tres etapas | `a` rendimiento de la 1.ª etapa (%) |
+| `eso3-grua-explorador` | Grúa con polipasto: fuerza en el cable, potencia y tiempo | `a` masa (kg), `n` tramos |
+| `eso3-lavadora-explorador` | Lavadora: poleas, rpm del tambor y centrifugado en g | `a` rpm del motor |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

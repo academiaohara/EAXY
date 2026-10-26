@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CadenaPinonExplorador, SinFinCoronaEso3Explorador, LevaSeguidorEso3Explorador, CajaCambiosExplorador, RendimientoCadenaExplorador, GruaPolipastoExplorador, LavadoraCentrifugadoExplorador } from "@/components/lesson/slide/tools/TecEso3MecanismosTools";
 import { PerifericoExplorador, TopologiaExplorador, DireccionIpExplorador, WifiExplorador, PaquetesExplorador, BateriaIotExplorador, ClaveWifiExplorador } from "@/components/lesson/slide/tools/TecEso3RedesTools";
 import { BlinkExplorador, PullPulsadorExplorador, LecturaAnalogicaExplorador, PwmServoExplorador, PuenteHExplorador, SeguidorLineaExplorador, UltrasonidoExplorador, RobotPruebasExplorador } from "@/components/lesson/slide/tools/TecEso3RoboticaTools";
 import { SistemaIpsExplorador, LazoControlExplorador, ConversorAdcExplorador, PuertasLogicasExplorador, AlarmaLogicaExplorador, PuertaGarajeExplorador, RiegoAutomaticoExplorador } from "@/components/lesson/slide/tools/TecEso3ControlTools";
@@ -1649,6 +1650,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <BateriaIotExplorador block={block} />;
     case "eso3-clave-wifi-explorador":
       return <ClaveWifiExplorador block={block} />;
+    case "eso3-cadena-pinon-explorador":
+      return <CadenaPinonExplorador block={block} />;
+    case "eso3-sin-fin-explorador":
+      return <SinFinCoronaEso3Explorador block={block} />;
+    case "eso3-leva-explorador":
+      return <LevaSeguidorEso3Explorador block={block} />;
+    case "eso3-caja-cambios-explorador":
+      return <CajaCambiosExplorador block={block} />;
+    case "eso3-rendimiento-explorador":
+      return <RendimientoCadenaExplorador block={block} />;
+    case "eso3-grua-explorador":
+      return <GruaPolipastoExplorador block={block} />;
+    case "eso3-lavadora-explorador":
+      return <LavadoraCentrifugadoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

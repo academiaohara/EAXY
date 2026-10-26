@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildLevaSeguidor } from "@/components/lesson/anim/scenes/industrial/teceso3-mecanismos";
 import { buildRutaPaquetes } from "@/components/lesson/anim/scenes/industrial/teceso3-redes";
 import { buildSetupLoop, buildPwmCiclo } from "@/components/lesson/anim/scenes/industrial/teceso3-robotica";
 import { buildLazoCerradoEso3 } from "@/components/lesson/anim/scenes/industrial/teceso3-control";
@@ -767,6 +768,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-setup-loop": () => buildSetupLoop(),
   "eso3-pwm-ciclo": () => buildPwmCiclo(),
   "eso3-ruta-paquetes": () => buildRutaPaquetes(),
+  "eso3-leva-seguidor": () => buildLevaSeguidor(),
   /* industrial-end */
 };
 
