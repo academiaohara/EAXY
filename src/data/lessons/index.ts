@@ -130,6 +130,7 @@ import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-indust
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
+import { cicloVidaProductoImpacto2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/01-ciclo-vida-producto-impacto-2eso";
 import { ciclosOttoDieselLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/06-ciclos-otto-diesel";
 import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/01-ciclos-reversibles-focos";
 import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/03-ciencia-tecnica-tecnologia-ingenieria";
@@ -281,6 +282,7 @@ import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachil
 import { discontinuidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/11-discontinuidades-ccss2";
 import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/13-discusion-sistemas-1bach";
 import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/16-discusion-sistemas-ccss1";
+import { disenoAccesibleUniversal2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/04-diseno-accesible-universal-2eso";
 import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/03-diseno-conceptual-ideas";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
@@ -350,6 +352,7 @@ import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-b
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
+import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
@@ -424,6 +427,7 @@ import { expresionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-e
 import { expresionesSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/08-expresiones-segundo-grado-4eso";
 import { fabricacionDigitalCalidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/11-fabricacion-digital-calidad";
 import { fabricacionDigitalImpresion3d2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/08-fabricacion-digital-impresion-3d-2eso";
+import { fabricacionReciclajeEconomiaCircular2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/03-fabricacion-reciclaje-economia-circular-2eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
 import { factorComun3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/05-factor-comun-3eso";
 import { factorComun4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/06-factor-comun-4eso";
@@ -1040,6 +1044,7 @@ import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-i
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
+import { responsabilidadTecnologicaHuellaDigital2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/05-responsabilidad-tecnologica-huella-digital-2eso";
 import { reutilizacionEconomiaCircularEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/05-reutilizacion-economia-circular-eso";
 import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
@@ -1386,6 +1391,7 @@ export const interactiveLessons = {
   "caudal-humedad": caudalHumedadLesson,
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
   "ciclo-carnot": cicloCarnotLesson,
+  "ciclo-vida-producto-impacto-2eso": cicloVidaProductoImpacto2esoLesson,
   "ciclos-otto-diesel": ciclosOttoDieselLesson,
   "ciclos-reversibles-focos": ciclosReversiblesFocosLesson,
   "ciencia-tecnica-tecnologia-ingenieria": cienciaTecnicaTecnologiaIngenieriaLesson,
@@ -1537,6 +1543,7 @@ export const interactiveLessons = {
   "discontinuidades-ccss2": discontinuidadesCcss2Lesson,
   "discusion-sistemas-1bach": discusionSistemas1bachLesson,
   "discusion-sistemas-ccss1": discusionSistemasCcss1Lesson,
+  "diseno-accesible-universal-2eso": disenoAccesibleUniversal2esoLesson,
   "diseno-conceptual-ideas": disenoConceptualIdeasLesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
@@ -1606,6 +1613,7 @@ export const interactiveLessons = {
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
+  "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
@@ -1680,6 +1688,7 @@ export const interactiveLessons = {
   "expresiones-segundo-grado-4eso": expresionesSegundoGrado4esoLesson,
   "fabricacion-digital-calidad": fabricacionDigitalCalidadLesson,
   "fabricacion-digital-impresion-3d-2eso": fabricacionDigitalImpresion3d2esoLesson,
+  "fabricacion-reciclaje-economia-circular-2eso": fabricacionReciclajeEconomiaCircular2esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
   "factor-comun-3eso": factorComun3esoLesson,
   "factor-comun-4eso": factorComun4esoLesson,
@@ -2296,6 +2305,7 @@ export const interactiveLessons = {
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
+  "responsabilidad-tecnologica-huella-digital-2eso": responsabilidadTecnologicaHuellaDigital2esoLesson,
   "reutilizacion-economia-circular-eso": reutilizacionEconomiaCircularEsoLesson,
   "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CicloVidaFasesExplorador, EtiquetaEnergeticaExplorador, ResiduosHogarExplorador, DisenoUniversalExplorador, HuellaDigitalExplorador } from "@/components/lesson/slide/tools/TecEso2SostenibleTools";
 import { SistemaRecursosExplorador, RutasExplorador, HojaCalculoExplorador, FormatoImagenExplorador, SubidaNubeExplorador, TiempoPantallaExplorador } from "@/components/lesson/slide/tools/TecEso2DigitalTools";
 import { RequisitosProyectoExplorador, ScamperExplorador, SeleccionIdeasExplorador, GanttProyectoExplorador, PruebasPrototipoExplorador, MemoriaProyectoExplorador } from "@/components/lesson/slide/tools/TecEso2ProyectoTools";
 import { DensidadMaterialesExplorador, CurvaTraccionExplorador, DespieceTableroExplorador, MatrizDecisionMaterialesExplorador, TecnicaTallerExplorador, CalibreExplorador, Impresion3dEsoExplorador } from "@/components/lesson/slide/tools/TecEso2MaterialesTools";
@@ -1572,6 +1573,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SubidaNubeExplorador block={block} />;
     case "eso2-tiempo-pantalla-explorador":
       return <TiempoPantallaExplorador block={block} />;
+    case "eso2-ciclo-vida-fases-explorador":
+      return <CicloVidaFasesExplorador block={block} />;
+    case "eso2-etiqueta-energetica-explorador":
+      return <EtiquetaEnergeticaExplorador block={block} />;
+    case "eso2-residuos-hogar-explorador":
+      return <ResiduosHogarExplorador block={block} />;
+    case "eso2-diseno-universal-explorador":
+      return <DisenoUniversalExplorador block={block} />;
+    case "eso2-huella-digital-explorador":
+      return <HuellaDigitalExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

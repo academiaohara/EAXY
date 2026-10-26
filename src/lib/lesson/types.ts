@@ -1754,6 +1754,11 @@ export type SlideToolId =
   | "eso2-formato-imagen-explorador"
   | "eso2-subida-nube-explorador"
   | "eso2-tiempo-pantalla-explorador"
+  | "eso2-ciclo-vida-fases-explorador"
+  | "eso2-etiqueta-energetica-explorador"
+  | "eso2-residuos-hogar-explorador"
+  | "eso2-diseno-universal-explorador"
+  | "eso2-huella-digital-explorador"
   /* industrial-tool-end */;
 
 /**

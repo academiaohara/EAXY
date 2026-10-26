@@ -1,4 +1,6 @@
-# Tecnología 2.º ESO (Tecnología y Digitalización) — plan
+# Tecnología 2.º ESO (Tecnología y Digitalización)
+
+Curso completo: 8 temas y 57 lecciones. Es la materia que en Asturias corresponde a *Tecnología y Digitalización* de 2.º ESO (Decreto 59/2022); los bloques A–E del decreto quedan cubiertos por estos temas junto con `tecnologia-1-eso`.
 
 Curso `tecnologia-2-eso`. Fuente: `temp/tecnologia/LOMLOE.txt`, sección «2.º de ESO — Tecnología y Digitalización» (8 temas). Repite el esqueleto de 1.º ESO a mayor profundidad: **cada tema parte de lo ya visto en `tecnologia-1-eso` (sin repetirlo) y añade cálculo, normalización y proyecto.** Es la materia que Asturias imparte en 2.º (Decreto 59/2022).
 
@@ -26,5 +28,6 @@ Total previsto: 57 lecciones. Se construye por temas en el orden 5 → 4 → 6 �
 | 5. Electricidad | Hecho (8 lecciones, `src/data/lessons/tecnologia-2-eso/05-electricidad/`; herramientas `TecEso2ElectricidadTools.tsx`, animaciones `teceso2-electricidad.tsx`; ids con prefijo `eso2-`) |
 | 6. Programación | Hecho (8 lecciones, `06-programacion/`; herramientas `TecEso2ProgramacionTools.tsx`, animación `teceso2-programacion.tsx`) |
 | 7. Digitalización del entorno personal | Hecho (6 lecciones, `07-digitalizacion-entorno-personal/`; herramientas `TecEso2DigitalTools.tsx`, animación `teceso2-digital.tsx`) |
+| 8. Tecnología sostenible | Hecho (5 lecciones, `08-tecnologia-sostenible/`; herramientas `TecEso2SostenibleTools.tsx`; reutiliza animaciones de 1.º ESO) |
 
 Convenciones: slugs de lección con sufijo `-2eso`; `moduleId(150 + n)` y `lessonId((150 + n) * 100 + k)`; subtítulos en `TECESO2_SUBTITLES` (`src/data/lessons/shared.ts`); test del curso en `src/tests/unit/data/tecnologia-2-eso-lessons.test.tsx` (añadir el tema a `TEMAS`).

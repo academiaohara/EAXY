@@ -1104,6 +1104,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-formato-imagen-explorador` | Tamaño aproximado de una imagen según dimensiones y formato (BMP, PNG, JPEG) | `a` ancho, `b` alto (px) |
 | `eso2-subida-nube-explorador` | Tiempo para subir datos a la nube según la velocidad | `a` GB, `b` Mbps |
 | `eso2-tiempo-pantalla-explorador` | Horas de pantalla por actividad, ocio y valoración | `a` horas de redes sociales |
+| `eso2-ciclo-vida-fases-explorador` | Reparto del impacto por fase en tres productos y el efecto de alargar su vida (datos didácticos) | `n` producto (0–2), `a` años de uso |
+| `eso2-etiqueta-energetica-explorador` | Compara el consumo anual, coste y CO₂ de dos aparatos equivalentes | `n` aparato A (0–3), `a` aparato B (0–3), `b` horas al día |
+| `eso2-residuos-hogar-explorador` | Porcentaje de residuos del hogar bien separados | `a` % de envases bien separados |
+| `eso2-diseno-universal-explorador` | Alturas de alcance recomendadas para mandos y mostradores | `n` elemento (0–3), `a` altura (cm) |
+| `eso2-huella-digital-explorador` | Datos y energía estimados de ver vídeo en streaming | `a` horas al día, `n` calidad (0–2) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
