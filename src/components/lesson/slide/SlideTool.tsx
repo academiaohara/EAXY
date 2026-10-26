@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { RequisitosProyectoExplorador, ScamperExplorador, SeleccionIdeasExplorador, GanttProyectoExplorador, PruebasPrototipoExplorador, MemoriaProyectoExplorador } from "@/components/lesson/slide/tools/TecEso2ProyectoTools";
 import { DensidadMaterialesExplorador, CurvaTraccionExplorador, DespieceTableroExplorador, MatrizDecisionMaterialesExplorador, TecnicaTallerExplorador, CalibreExplorador, Impresion3dEsoExplorador } from "@/components/lesson/slide/tools/TecEso2MaterialesTools";
 import { PiezaVistasExplorador, EscalaConversionExplorador, PerspectivaConicaExplorador, PlanoViviendaExplorador, CadComandosExplorador, SolidoOperacionesExplorador, LaminaExplorador } from "@/components/lesson/slide/tools/TecEso2DibujoTools";
 import { TrazaExplorador, TiposDatosExplorador, OperadoresExplorador, FuncionProgramaExplorador, PruebasExplorador, AdivinaExplorador } from "@/components/lesson/slide/tools/TecEso2ProgramacionTools";
@@ -1546,6 +1547,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CalibreExplorador block={block} />;
     case "eso2-impresion3d-explorador":
       return <Impresion3dEsoExplorador block={block} />;
+    case "eso2-requisitos-explorador":
+      return <RequisitosProyectoExplorador block={block} />;
+    case "eso2-scamper-explorador":
+      return <ScamperExplorador block={block} />;
+    case "eso2-seleccion-ideas-explorador":
+      return <SeleccionIdeasExplorador block={block} />;
+    case "eso2-gantt-explorador":
+      return <GanttProyectoExplorador block={block} />;
+    case "eso2-pruebas-prototipo-explorador":
+      return <PruebasPrototipoExplorador block={block} />;
+    case "eso2-memoria-explorador":
+      return <MemoriaProyectoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

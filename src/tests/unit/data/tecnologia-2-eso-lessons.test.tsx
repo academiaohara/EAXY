@@ -19,6 +19,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 const TEMAS: [slug: string, lecciones: number][] = [
+  ["proyecto-tecnologico", 6],
   ["dibujo-tecnico-diseno-digital", 7],
   ["materiales-fabricacion", 9],
   ["estructuras-mecanismos", 8],

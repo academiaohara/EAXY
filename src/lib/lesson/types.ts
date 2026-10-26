@@ -1058,6 +1058,7 @@ export type SlideAnimId =
   | "eso2-bucle-traza"
   | "eso2-vistas-europeo"
   | "eso2-curva-traccion"
+  | "eso2-ciclo-diseno"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1740,6 +1741,12 @@ export type SlideToolId =
   | "eso2-tecnica-taller-explorador"
   | "eso2-calibre-explorador"
   | "eso2-impresion3d-explorador"
+  | "eso2-requisitos-explorador"
+  | "eso2-scamper-explorador"
+  | "eso2-seleccion-ideas-explorador"
+  | "eso2-gantt-explorador"
+  | "eso2-pruebas-prototipo-explorador"
+  | "eso2-memoria-explorador"
   /* industrial-tool-end */;
 
 /**

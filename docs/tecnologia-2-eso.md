@@ -19,6 +19,7 @@ Total previsto: 57 lecciones. Se construye por temas en el orden 5 → 4 → 6 �
 
 | Tema | Estado |
 |---|---|
+| 1. Proyecto tecnológico | Hecho (6 lecciones, `01-proyecto-tecnologico/`; herramientas `TecEso2ProyectoTools.tsx`, animación `teceso2-proyecto.tsx`) |
 | 2. Dibujo técnico y diseño digital | Hecho (7 lecciones, `02-dibujo-tecnico-diseno-digital/`; herramientas `TecEso2DibujoTools.tsx`, animación `teceso2-dibujo.tsx`) |
 | 3. Materiales y fabricación | Hecho (9 lecciones, `03-materiales-fabricacion/`; herramientas `TecEso2MaterialesTools.tsx`, animación `teceso2-materiales.tsx`) |
 | 4. Estructuras y mecanismos | Hecho (8 lecciones, `04-estructuras-mecanismos/`; herramientas `TecEso2MecanicaTools.tsx`, animación `teceso2-mecanica.tsx`) |

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCicloDiseno } from "@/components/lesson/anim/scenes/industrial/teceso2-proyecto";
 import { buildCurvaTraccion } from "@/components/lesson/anim/scenes/industrial/teceso2-materiales";
 import { buildVistasEuropeo } from "@/components/lesson/anim/scenes/industrial/teceso2-dibujo";
 import { buildBucleTraza } from "@/components/lesson/anim/scenes/industrial/teceso2-programacion";
@@ -753,6 +754,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso2-bucle-traza": () => buildBucleTraza(),
   "eso2-vistas-europeo": () => buildVistasEuropeo(),
   "eso2-curva-traccion": () => buildCurvaTraccion(),
+  "eso2-ciclo-diseno": () => buildCicloDiseno(),
   /* industrial-end */
 };
 

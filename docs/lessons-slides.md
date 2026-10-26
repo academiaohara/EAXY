@@ -534,6 +534,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-bucle-traza` | Un bucle «para» ejecutado paso a paso con tabla de variables | — |
 | `eso2-vistas-europeo` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
 | `eso2-curva-traccion` | Curva tensión-deformación de un ensayo de tracción con sus zonas | — |
+| `eso2-ciclo-diseno` | El proyecto como ciclo: necesidad, ideas, diseño, prototipo, pruebas y mejora | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1090,6 +1091,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-tecnica-taller-explorador` | Técnica y seguridad para cortar, unir o acabar madera, metal y plástico | `n` material (0–2), `a` operación (0–2) |
 | `eso2-calibre-explorador` | Lectura de un pie de rey con nonio de 0,1 mm | `a` apertura (mm) |
 | `eso2-impresion3d-explorador` | Plástico y tiempo estimados de un cubo impreso en 3D | `a` lado (mm), `b` capa (×0,01 mm) |
+| `eso2-requisitos-explorador` | Escribe un requisito y valora si es verificable (valor y unidad) | `n` ejemplo inicial (0–3) |
+| `eso2-scamper-explorador` | SCAMPER: siete preguntas para generar ideas sobre tres objetos | `n` objeto (0–2), `a` técnica (0–6) |
+| `eso2-seleccion-ideas-explorador` | Matriz ponderada de tres ideas de soporte de móvil | `n` prioridades (0/1) |
+| `eso2-gantt-explorador` | Diagrama de Gantt con dependencias y camino crítico | `a` duración de «Construir» (días) |
+| `eso2-pruebas-prototipo-explorador` | Medidas de un prototipo frente a cuatro requisitos | `a` carga soportada (g) |
+| `eso2-memoria-explorador` | Secciones de una memoria técnica y las imprescindibles que faltan | `n` secciones iniciales (0–12) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

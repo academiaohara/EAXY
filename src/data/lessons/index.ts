@@ -510,6 +510,7 @@ import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/07-gauss-ampliada-ccss2";
 import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
+import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -668,6 +669,7 @@ import { mediaVarianza2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { mediatrizBisectriz1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/08-mediatriz-bisectriz-1bach";
 import { medicionMarcadoPieDeRey2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/07-medicion-marcado-pie-de-rey-2eso";
 import { medidaDesplazamientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/05-medida-desplazamiento";
+import { memoriaPresentacionEquipo2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/06-memoria-presentacion-equipo-2eso";
 import { memoriaSecuencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/01-memoria-secuencial";
 import { memoriaTecnicaPresentacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/08-memoria-tecnica-presentacion";
 import { menoresAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/05-menores-adjuntos-2bach";
@@ -710,6 +712,7 @@ import { multiplicacionDivisionNaturalesLesson } from "@/data/lessons/matematica
 import { multiplicacionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/03-multiplicacion-fracciones-2eso";
 import { multiplicacionFracciones3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/03-multiplicacion-fracciones-3eso";
 import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multiplicacion-naturales";
+import { necesidadesRequisitos2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/01-necesidades-requisitos-2eso";
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
@@ -783,6 +786,7 @@ import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-e
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
+import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
@@ -945,6 +949,7 @@ import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-e
 import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/03-proporcionalidad-mx-2eso";
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
+import { prototipoPruebasMejoras2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/05-prototipo-pruebas-mejoras-2eso";
 import { prototiposEnsayoMejoraLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/07-prototipos-ensayo-mejora";
 import { proyeccionOrtogonalidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/06-proyeccion-ortogonalidad-2bach";
 import { proyeccionPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/03-proyeccion-punto-2bach";
@@ -1044,6 +1049,7 @@ import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
 import { seguridadSaludAccesibilidadDisenoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/06-seguridad-salud-accesibilidad-diseno";
+import { seleccionIdeasMatriz2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/03-seleccion-ideas-matriz-2eso";
 import { seleccionMaterialesAplicacionLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/07-seleccion-materiales-aplicacion";
 import { seleccionMaterialesCriteriosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/05-seleccion-materiales-criterios";
 import { semejanzaEscala4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/02-semejanza-escala-4eso";
@@ -1754,6 +1760,7 @@ export const interactiveLessons = {
   "gauss-ampliada-ccss2": gaussAmpliadaCcss2Lesson,
   "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
+  "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -1912,6 +1919,7 @@ export const interactiveLessons = {
   "mediatriz-bisectriz-1bach": mediatrizBisectriz1bachLesson,
   "medicion-marcado-pie-de-rey-2eso": medicionMarcadoPieDeRey2esoLesson,
   "medida-desplazamiento": medidaDesplazamientoLesson,
+  "memoria-presentacion-equipo-2eso": memoriaPresentacionEquipo2esoLesson,
   "memoria-secuencial": memoriaSecuencialLesson,
   "memoria-tecnica-presentacion": memoriaTecnicaPresentacionLesson,
   "menores-adjuntos-2bach": menoresAdjuntos2bachLesson,
@@ -1954,6 +1962,7 @@ export const interactiveLessons = {
   "multiplicacion-fracciones-2eso": multiplicacionFracciones2esoLesson,
   "multiplicacion-fracciones-3eso": multiplicacionFracciones3esoLesson,
   "multiplicacion-naturales": multiplicacionNaturalesLesson,
+  "necesidades-requisitos-2eso": necesidadesRequisitos2esoLesson,
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
   "normal-estandar-tabla-ccss1": normalEstandarTablaCcss1Lesson,
@@ -2027,6 +2036,7 @@ export const interactiveLessons = {
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "piramides-2eso": piramides2esoLesson,
+  "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
   "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
@@ -2189,6 +2199,7 @@ export const interactiveLessons = {
   "proporcionalidad-mx-2eso": proporcionalidadMx2esoLesson,
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
+  "prototipo-pruebas-mejoras-2eso": prototipoPruebasMejoras2esoLesson,
   "prototipos-ensayo-mejora": prototiposEnsayoMejoraLesson,
   "proyeccion-ortogonalidad-2bach": proyeccionOrtogonalidad2bachLesson,
   "proyeccion-punto-2bach": proyeccionPunto2bachLesson,
@@ -2288,6 +2299,7 @@ export const interactiveLessons = {
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,
   "seguridad-salud-accesibilidad-diseno": seguridadSaludAccesibilidadDisenoLesson,
+  "seleccion-ideas-matriz-2eso": seleccionIdeasMatriz2esoLesson,
   "seleccion-materiales-aplicacion": seleccionMaterialesAplicacionLesson,
   "seleccion-materiales-criterios": seleccionMaterialesCriteriosLesson,
   "semejanza-escala-4eso": semejanzaEscala4esoLesson,
