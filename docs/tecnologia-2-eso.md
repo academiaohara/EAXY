@@ -21,5 +21,6 @@ Total previsto: 56 lecciones. Se construye por temas en el orden 5 → 4 → 6 �
 |---|---|
 | 4. Estructuras y mecanismos | Hecho (8 lecciones, `04-estructuras-mecanismos/`; herramientas `TecEso2MecanicaTools.tsx`, animación `teceso2-mecanica.tsx`) |
 | 5. Electricidad | Hecho (8 lecciones, `src/data/lessons/tecnologia-2-eso/05-electricidad/`; herramientas `TecEso2ElectricidadTools.tsx`, animaciones `teceso2-electricidad.tsx`; ids con prefijo `eso2-`) |
+| 6. Programación | Hecho (8 lecciones, `06-programacion/`; herramientas `TecEso2ProgramacionTools.tsx`, animación `teceso2-programacion.tsx`) |
 
 Convenciones: slugs de lección con sufijo `-2eso`; `moduleId(150 + n)` y `lessonId((150 + n) * 100 + k)`; subtítulos en `TECESO2_SUBTITLES` (`src/data/lessons/shared.ts`); test del curso en `src/tests/unit/data/tecnologia-2-eso-lessons.test.tsx` (añadir el tema a `TEMAS`).

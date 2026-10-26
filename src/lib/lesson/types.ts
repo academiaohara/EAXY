@@ -1055,6 +1055,7 @@ export type SlideAnimId =
   | "eso2-ohm-agua"
   | "eso2-mixto-reduccion"
   | "eso2-biela-manivela"
+  | "eso2-bucle-traza"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1717,6 +1718,12 @@ export type SlideToolId =
   | "eso2-poleas-correas-explorador"
   | "eso2-transformacion-explorador"
   | "eso2-elevador-explorador"
+  | "eso2-traza-explorador"
+  | "eso2-tipos-datos-explorador"
+  | "eso2-operadores-explorador"
+  | "eso2-funcion-explorador"
+  | "eso2-pruebas-explorador"
+  | "eso2-adivina-explorador"
   /* industrial-tool-end */;
 
 /**

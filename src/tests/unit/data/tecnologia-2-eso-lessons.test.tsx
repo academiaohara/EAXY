@@ -21,6 +21,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["estructuras-mecanismos", 8],
   ["electricidad", 8],
+  ["programacion", 8],
 ];
 
 describe("curso Tecnología 2.º ESO (Tecnología y Digitalización)", () => {

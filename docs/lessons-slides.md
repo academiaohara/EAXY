@@ -531,6 +531,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-ohm-agua` | Ley de Ohm con la analogía del depósito de agua: tensión, resistencia e intensidad | — |
 | `eso2-mixto-reduccion` | Reducción paso a paso de un circuito mixto (R1 en serie con R2 ∥ R3) y vuelta atrás | — |
 | `eso2-biela-manivela` | Biela-manivela: giro continuo convertido en vaivén; carrera = 2·r | — |
+| `eso2-bucle-traza` | Un bucle «para» ejecutado paso a paso con tabla de variables | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1067,6 +1068,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-poleas-correas-explorador` | Poleas con correa abierta o cruzada: rpm, sentido y longitud de correa | `a` d₁ (mm), `b` d₂ (mm) |
 | `eso2-transformacion-explorador` | Piñón-cremallera, tornillo-tuerca, biela-manivela y leva: desplazamiento de la salida | `n` mecanismo (0–3), `a` giro en cuartos de vuelta |
 | `eso2-elevador-explorador` | Elevador con motor, reductor y tambor: par necesario, velocidad y potencia | `a` rpm del motor, `b` masa (kg) |
+| `eso2-traza-explorador` | Traza de cuatro programas (suma, condicional, mientras, factorial) línea a línea con variables y pantalla | `n` programa (0–3), `a` nota |
+| `eso2-tipos-datos-explorador` | Suma y comparación de datos de distinto tipo (entero, decimal, texto, booleano) | `n` primer dato, `a` segundo dato |
+| `eso2-operadores-explorador` | Operadores aritméticos, de comparación y lógicos con a y b | `n` familia (0–2), `a`, `b` |
+| `eso2-funcion-explorador` | Definición y llamada de funciones con parámetros | `n` función (0–2), `a`, `b` argumentos |
+| `eso2-pruebas-explorador` | Casos de prueba de una función de año bisiesto con error lógico y su corrección | `a` año inicial |
+| `eso2-adivina-explorador` | Adivina el número del 1 al 100 y compara con la estrategia de las mitades | `a` número secreto |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

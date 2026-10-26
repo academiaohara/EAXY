@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TrazaExplorador, TiposDatosExplorador, OperadoresExplorador, FuncionProgramaExplorador, PruebasExplorador, AdivinaExplorador } from "@/components/lesson/slide/tools/TecEso2ProgramacionTools";
 import { TensionExplorador, PerfilCantoExplorador, VentajaMecanicaExplorador, TrenTransmisionExplorador, PoleasCorreasCalcExplorador, TransformacionExplorador, ElevadorExplorador } from "@/components/lesson/slide/tools/TecEso2MecanicaTools";
 import { AnalogiaAguaExplorador, OhmIncognitaExplorador, FacturaExplorador, SerieParaleloCalcExplorador, MixtoExplorador, PolimetroExplorador, FalloCircuitoExplorador } from "@/components/lesson/slide/tools/TecEso2ElectricidadTools";
 import { CadPlacaExplorador, ExtrusionExplorador, DiapositivaLegibleExplorador, ClasificadorIaExplorador, AppEventosExplorador } from "@/components/lesson/slide/tools/TecEso1ComunicacionTools";
@@ -1503,6 +1504,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TransformacionExplorador block={block} />;
     case "eso2-elevador-explorador":
       return <ElevadorExplorador block={block} />;
+    case "eso2-traza-explorador":
+      return <TrazaExplorador block={block} />;
+    case "eso2-tipos-datos-explorador":
+      return <TiposDatosExplorador block={block} />;
+    case "eso2-operadores-explorador":
+      return <OperadoresExplorador block={block} />;
+    case "eso2-funcion-explorador":
+      return <FuncionProgramaExplorador block={block} />;
+    case "eso2-pruebas-explorador":
+      return <PruebasExplorador block={block} />;
+    case "eso2-adivina-explorador":
+      return <AdivinaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
