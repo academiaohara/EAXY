@@ -1054,6 +1054,7 @@ export type SlideAnimId =
   | "extrusion-perfil"
   | "eso2-ohm-agua"
   | "eso2-mixto-reduccion"
+  | "eso2-biela-manivela"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1709,6 +1710,13 @@ export type SlideToolId =
   | "eso2-mixto-explorador"
   | "eso2-polimetro-explorador"
   | "eso2-fallo-explorador"
+  | "eso2-tension-explorador"
+  | "eso2-perfil-canto-explorador"
+  | "eso2-ventaja-mecanica-explorador"
+  | "eso2-tren-transmision-explorador"
+  | "eso2-poleas-correas-explorador"
+  | "eso2-transformacion-explorador"
+  | "eso2-elevador-explorador"
   /* industrial-tool-end */;
 
 /**

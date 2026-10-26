@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildBielaManivela } from "@/components/lesson/anim/scenes/industrial/teceso2-mecanica";
 import { buildOhmAgua, buildMixtoReduccion } from "@/components/lesson/anim/scenes/industrial/teceso2-electricidad";
 import { buildExtrusionPerfil } from "@/components/lesson/anim/scenes/industrial/teceso1-comunicacion";
 import { buildCapasEntornoDigital, buildPaquetesRed } from "@/components/lesson/anim/scenes/industrial/teceso1-digital";
@@ -745,6 +746,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "extrusion-perfil": () => buildExtrusionPerfil(),
   "eso2-ohm-agua": () => buildOhmAgua(),
   "eso2-mixto-reduccion": () => buildMixtoReduccion(),
+  "eso2-biela-manivela": () => buildBielaManivela(),
   /* industrial-end */
 };
 

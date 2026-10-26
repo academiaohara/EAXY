@@ -530,6 +530,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `extrusion-perfil` | Croquis 2D acotado de un perfil en L que se extruye hasta formar un sólido, con operaciones posteriores | — |
 | `eso2-ohm-agua` | Ley de Ohm con la analogía del depósito de agua: tensión, resistencia e intensidad | — |
 | `eso2-mixto-reduccion` | Reducción paso a paso de un circuito mixto (R1 en serie con R2 ∥ R3) y vuelta atrás | — |
+| `eso2-biela-manivela` | Biela-manivela: giro continuo convertido en vaivén; carrera = 2·r | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1059,6 +1060,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-mixto-explorador` | Circuito mixto R1 + (R2 ∥ R3) con pasos de reducción | `a` pila (V), `b` R1 (Ω) |
 | `eso2-polimetro-explorador` | Dónde y cómo conectar voltímetro, amperímetro y óhmetro | `n` magnitud (0 V, 1 A, 2 Ω), `a` pila (V) |
 | `eso2-fallo-explorador` | Diagnóstico de averías: cable cortado, lámpara fundida y cortocircuito | `n` avería (0–3), `a` pila (V) |
+| `eso2-tension-explorador` | Tensión σ = F/A en una barra, con material y coeficiente de seguridad | `a` fuerza (N), `b` ancho (mm) |
+| `eso2-perfil-canto-explorador` | Rigidez de un listón rectangular tumbado o de canto (I = b·h³/12) | `n` canto (0/1), `a` ancho, `b` alto (mm) |
+| `eso2-ventaja-mecanica-explorador` | Palanca, polipasto y plano inclinado: fuerza necesaria y recorrido | `n` máquina (0–2), `a` carga (N) |
+| `eso2-tren-transmision-explorador` | Reductor de dos etapas: relación, rpm, par y potencia con rendimiento | `a` rpm del motor |
+| `eso2-poleas-correas-explorador` | Poleas con correa abierta o cruzada: rpm, sentido y longitud de correa | `a` d₁ (mm), `b` d₂ (mm) |
+| `eso2-transformacion-explorador` | Piñón-cremallera, tornillo-tuerca, biela-manivela y leva: desplazamiento de la salida | `n` mecanismo (0–3), `a` giro en cuartos de vuelta |
+| `eso2-elevador-explorador` | Elevador con motor, reductor y tambor: par necesario, velocidad y potencia | `a` rpm del motor, `b` masa (kg) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

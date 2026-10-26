@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TensionExplorador, PerfilCantoExplorador, VentajaMecanicaExplorador, TrenTransmisionExplorador, PoleasCorreasCalcExplorador, TransformacionExplorador, ElevadorExplorador } from "@/components/lesson/slide/tools/TecEso2MecanicaTools";
 import { AnalogiaAguaExplorador, OhmIncognitaExplorador, FacturaExplorador, SerieParaleloCalcExplorador, MixtoExplorador, PolimetroExplorador, FalloCircuitoExplorador } from "@/components/lesson/slide/tools/TecEso2ElectricidadTools";
 import { CadPlacaExplorador, ExtrusionExplorador, DiapositivaLegibleExplorador, ClasificadorIaExplorador, AppEventosExplorador } from "@/components/lesson/slide/tools/TecEso1ComunicacionTools";
 import { DispositivoComponentesExplorador, DiagnosticoTecnicoExplorador, CapacidadAlmacenamientoExplorador, CopiaSeguridadExplorador, TiempoDescargaExplorador, BusquedaOperadoresExplorador, ContrasenaFortalezaExplorador, SituacionesDigitalesExplorador, LicenciasCcExplorador } from "@/components/lesson/slide/tools/TecEso1DigitalTools";
@@ -1488,6 +1489,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PolimetroExplorador block={block} />;
     case "eso2-fallo-explorador":
       return <FalloCircuitoExplorador block={block} />;
+    case "eso2-tension-explorador":
+      return <TensionExplorador block={block} />;
+    case "eso2-perfil-canto-explorador":
+      return <PerfilCantoExplorador block={block} />;
+    case "eso2-ventaja-mecanica-explorador":
+      return <VentajaMecanicaExplorador block={block} />;
+    case "eso2-tren-transmision-explorador":
+      return <TrenTransmisionExplorador block={block} />;
+    case "eso2-poleas-correas-explorador":
+      return <PoleasCorreasCalcExplorador block={block} />;
+    case "eso2-transformacion-explorador":
+      return <TransformacionExplorador block={block} />;
+    case "eso2-elevador-explorador":
+      return <ElevadorExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
