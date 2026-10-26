@@ -26,6 +26,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["control-automatizacion", 7],
   ["programacion-robotica", 8],
   ["redes-dispositivos-digitales", 7],
+  ["tecnologia-sostenible", 7],
 ];
 
 describe("curso Tecnología 3.º ESO (Tecnología y Digitalización)", () => {

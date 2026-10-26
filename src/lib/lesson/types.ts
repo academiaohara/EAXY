@@ -1069,6 +1069,7 @@ export type SlideAnimId =
   | "eso3-leva-seguidor"
   | "eso3-fundicion-molde"
   | "eso3-flujo-proyecto"
+  | "eso3-casa-bioclimatica"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1816,6 +1817,11 @@ export type SlideToolId =
   | "eso3-especificaciones-explorador"
   | "eso3-simulacion-viga-explorador"
   | "eso3-coste-proyecto-explorador"
+  | "eso3-solar-explorador"
+  | "eso3-eolica-explorador"
+  | "eso3-aislamiento-explorador"
+  | "eso3-transporte-explorador"
+  | "eso3-hidraulica-explorador"
   /* industrial-tool-end */;
 
 /**

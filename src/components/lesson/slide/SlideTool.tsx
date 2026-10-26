@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SolarFvExplorador, EolicaExplorador, AislamientoExplorador, TransporteCo2Explorador, HidraulicaExplorador } from "@/components/lesson/slide/tools/TecEso3SostenibleTools";
 import { EspecificacionesExplorador, SimulacionVigaExplorador, CosteProyectoExplorador } from "@/components/lesson/slide/tools/TecEso3ProyectosTools";
 import { PrestacionesExplorador, FundicionExplorador, CorteTornoExplorador, UnionExplorador, ImpactoMaterialExplorador, CorteLaserExplorador, MatrizRiesgosExplorador } from "@/components/lesson/slide/tools/TecEso3MaterialesTools";
 import { CadenaPinonExplorador, SinFinCoronaEso3Explorador, LevaSeguidorEso3Explorador, CajaCambiosExplorador, RendimientoCadenaExplorador, GruaPolipastoExplorador, LavadoraCentrifugadoExplorador } from "@/components/lesson/slide/tools/TecEso3MecanismosTools";
@@ -1686,6 +1687,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SimulacionVigaExplorador block={block} />;
     case "eso3-coste-proyecto-explorador":
       return <CosteProyectoExplorador block={block} />;
+    case "eso3-solar-explorador":
+      return <SolarFvExplorador block={block} />;
+    case "eso3-eolica-explorador":
+      return <EolicaExplorador block={block} />;
+    case "eso3-aislamiento-explorador":
+      return <AislamientoExplorador block={block} />;
+    case "eso3-transporte-explorador":
+      return <TransporteCo2Explorador block={block} />;
+    case "eso3-hidraulica-explorador":
+      return <HidraulicaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

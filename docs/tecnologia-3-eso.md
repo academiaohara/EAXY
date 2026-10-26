@@ -26,5 +26,8 @@ Total previsto: 57 lecciones. Orden de construcción propuesto: 4 → 5 → 6 �
 | 5. Sistemas de control y automatización | Hecho (7 lecciones, `05-control-automatizacion/`; herramientas `TecEso3ControlTools.tsx`, animación `teceso3-control.tsx`) |
 | 6. Programación y robótica | Hecho (8 lecciones, `06-programacion-robotica/`; herramientas `TecEso3RoboticaTools.tsx`, animaciones `teceso3-robotica.tsx`) |
 | 7. Redes y dispositivos digitales | Hecho (7 lecciones, `07-redes-dispositivos-digitales/`; herramientas `TecEso3RedesTools.tsx`, animación `teceso3-redes.tsx`) |
+| 8. Tecnología sostenible | Hecho (7 lecciones, `08-tecnologia-sostenible/`; herramientas `TecEso3SostenibleTools.tsx`, animación `teceso3-sostenible.tsx`) |
+
+**Curso completo: 8 temas, 57 lecciones.** Mapeo con Asturias (Decreto 59/2022): los saberes de «Tecnología y Digitalización» de 3.º se reparten así: proyectos → tema 1; materiales y fabricación → tema 2; mecanismos → tema 3; electricidad y electrónica → tema 4; control, programación y robótica → temas 5 y 6; digitalización, redes e IoT → tema 7; sostenibilidad y entorno asturiano → tema 8.
 
 Test del curso: `src/tests/unit/data/tecnologia-3-eso-lessons.test.tsx` (añadir cada tema a `TEMAS`, en el orden del currículo).

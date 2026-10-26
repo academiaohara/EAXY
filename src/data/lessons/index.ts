@@ -79,6 +79,7 @@ import { areasFigurasCurvas3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/03-areas-poligonos";
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { areasYVolumenes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/12-areas-y-volumenes-2bach";
+import { arquitecturaBioclimatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/04-arquitectura-bioclimatica-3eso";
 import { arquitecturaSistemasInformaticosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/01-arquitectura-sistemas-informaticos";
 import { asignacionProbabilidades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/03-asignacion-probabilidades-1bach";
 import { asignacionProbabilidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/03-asignacion-probabilidades-2bach";
@@ -361,6 +362,7 @@ import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso
 import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/09-ecuaciones-trig-metodos-1bach";
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
+import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/05-eficiencia-ahorro-hogar-3eso";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
@@ -372,6 +374,8 @@ import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
+import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
+import { energiasRenovablesMix3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/01-energias-renovables-mix-3eso";
 import { energiasRenovablesSistemasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/06-energias-renovables-sistemas";
 import { engranajesTransmisionGiroLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/05-engranajes-transmision-giro";
 import { engranajesTransmisionPar2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/05-engranajes-transmision-par-2eso";
@@ -383,6 +387,7 @@ import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/0
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
+import { eolicaHidraulica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/03-eolica-hidraulica-3eso";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
@@ -994,6 +999,7 @@ import { proyeccionPunto2bachLesson } from "@/data/lessons/matematicas-2-bachill
 import { proyeccionRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/04-proyeccion-recta-plano-2bach";
 import { proyectoAdivinaNumero2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/08-proyecto-adivina-numero-2eso";
 import { proyectoLuzAutomatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/09-proyecto-luz-automatica-3eso";
+import { proyectoMejoraEntorno3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/07-proyecto-mejora-entorno-3eso";
 import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/09-pruebas-depuracion-codigo";
 import { pruebasDepuracionRobot3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/08-pruebas-depuracion-robot-3eso";
 import { puenteHSentidoGiro3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/05-puente-h-sentido-giro-3eso";
@@ -1253,6 +1259,7 @@ import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
+import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
 import { tratamientosPropiedadesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/09-tratamientos-propiedades";
@@ -1390,6 +1397,7 @@ export const interactiveLessons = {
   "areas-poligonos": areasPoligonosLesson,
   "areas-triangulo": areasTrianguloLesson,
   "areas-y-volumenes-2bach": areasYVolumenes2bachLesson,
+  "arquitectura-bioclimatica-3eso": arquitecturaBioclimatica3esoLesson,
   "arquitectura-sistemas-informaticos": arquitecturaSistemasInformaticosLesson,
   "asignacion-probabilidades-1bach": asignacionProbabilidades1bachLesson,
   "asignacion-probabilidades-2bach": asignacionProbabilidades2bachLesson,
@@ -1672,6 +1680,7 @@ export const interactiveLessons = {
   "ecuaciones-trig-metodos-1bach": ecuacionesTrigMetodos1bachLesson,
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
+  "eficiencia-ahorro-hogar-3eso": eficienciaAhorroHogar3esoLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
@@ -1683,6 +1692,8 @@ export const interactiveLessons = {
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
+  "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
+  "energias-renovables-mix-3eso": energiasRenovablesMix3esoLesson,
   "energias-renovables-sistemas": energiasRenovablesSistemasLesson,
   "engranajes-transmision-giro": engranajesTransmisionGiroLesson,
   "engranajes-transmision-par-2eso": engranajesTransmisionPar2esoLesson,
@@ -1694,6 +1705,7 @@ export const interactiveLessons = {
   "ensayos-caracterizacion": ensayosCaracterizacionLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
+  "eolica-hidraulica-3eso": eolicaHidraulica3esoLesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
@@ -2305,6 +2317,7 @@ export const interactiveLessons = {
   "proyeccion-recta-plano-2bach": proyeccionRectaPlano2bachLesson,
   "proyecto-adivina-numero-2eso": proyectoAdivinaNumero2esoLesson,
   "proyecto-luz-automatica-3eso": proyectoLuzAutomatica3esoLesson,
+  "proyecto-mejora-entorno-3eso": proyectoMejoraEntorno3esoLesson,
   "pruebas-depuracion-codigo": pruebasDepuracionCodigoLesson,
   "pruebas-depuracion-robot-3eso": pruebasDepuracionRobot3esoLesson,
   "puente-h-sentido-giro-3eso": puenteHSentidoGiro3esoLesson,
@@ -2564,6 +2577,7 @@ export const interactiveLessons = {
   "transformada-laplace": transformadaLaplaceLesson,
   "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
+  "transporte-sostenible-3eso": transporteSostenible3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
   "tratamientos-propiedades": tratamientosPropiedadesLesson,
