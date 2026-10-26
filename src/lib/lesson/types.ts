@@ -1067,6 +1067,7 @@ export type SlideAnimId =
   | "eso3-pwm-ciclo"
   | "eso3-ruta-paquetes"
   | "eso3-leva-seguidor"
+  | "eso3-fundicion-molde"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1804,6 +1805,13 @@ export type SlideToolId =
   | "eso3-rendimiento-explorador"
   | "eso3-grua-explorador"
   | "eso3-lavadora-explorador"
+  | "eso3-prestaciones-explorador"
+  | "eso3-fundicion-explorador"
+  | "eso3-corte-explorador"
+  | "eso3-union-explorador"
+  | "eso3-impacto-material-explorador"
+  | "eso3-laser-explorador"
+  | "eso3-riesgos-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -543,6 +543,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-pwm-ciclo` | PWM: ciclo de trabajo y tensión media | — |
 | `eso3-ruta-paquetes` | Un mensaje se trocea en paquetes, viaja por rutas distintas y se recompone | — |
 | `eso3-leva-seguidor` | Leva excéntrica y seguidor: carrera = 2·e | — |
+| `eso3-fundicion-molde` | Fundición en molde de arena: modelo, molde, colada, solidificación y desmoldeo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1154,6 +1155,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-rendimiento-explorador` | Potencia y rendimiento de una cadena de tres etapas | `a` rendimiento de la 1.ª etapa (%) |
 | `eso3-grua-explorador` | Grúa con polipasto: fuerza en el cable, potencia y tiempo | `a` masa (kg), `n` tramos |
 | `eso3-lavadora-explorador` | Lavadora: poleas, rpm del tambor y centrifugado en g | `a` rpm del motor |
+| `eso3-prestaciones-explorador` | Índices de selección de seis materiales: resistencia específica, coste y densidad | `n` criterio (0–2) |
+| `eso3-fundicion-explorador` | Metal a fundir y medida del modelo según la contracción | `n` metal (0–2), `a` volumen (cm³) |
+| `eso3-corte-explorador` | Velocidad de corte, rpm y tiempo de una pasada | `n` material (0–4), `a` diámetro (mm) |
+| `eso3-union-explorador` | Qué uniones cumplen unos requisitos dados | — |
+| `eso3-impacto-material-explorador` | Energía incorporada de un material según el porcentaje reciclado | `n` material (0–3), `a` cantidad (kg) |
+| `eso3-laser-explorador` | Longitud y tiempo de corte láser de una placa con agujeros | `n` material (0–2), `a` ancho (mm) |
+| `eso3-riesgos-explorador` | Matriz de riesgos: probabilidad × gravedad | `a` probabilidad, `b` gravedad |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

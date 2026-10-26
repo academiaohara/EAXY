@@ -197,6 +197,7 @@ import { condicionadaIndependenciaCcss2Lesson } from "@/data/lessons/matematicas
 import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/06-condicionales-python";
 import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/04-condiciones-2eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
+import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
@@ -434,6 +435,7 @@ import { expresionesAlgebraicasProblemas4esobLesson } from "@/data/lessons/matem
 import { expresionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/07-expresiones-primer-grado-4eso";
 import { expresionesSegundoGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/08-expresiones-segundo-grado-4eso";
 import { fabricacionDigitalCalidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/11-fabricacion-digital-calidad";
+import { fabricacionDigitalCncLaser3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/06-fabricacion-digital-cnc-laser-3eso";
 import { fabricacionDigitalImpresion3d2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/08-fabricacion-digital-impresion-3d-2eso";
 import { fabricacionReciclajeEconomiaCircular2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/03-fabricacion-reciclaje-economia-circular-2eso";
 import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/05-factor-comun-2eso";
@@ -545,6 +547,7 @@ import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso
 import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
 import { impactoAmbientalProductosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/04-impacto-ambiental-productos";
 import { impactoAmbientalProductosEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/01-impacto-ambiental-productos-eso";
+import { impactoAmbientalRiesgos3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/07-impacto-ambiental-riesgos-3eso";
 import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
@@ -685,6 +688,7 @@ import { maximoComunDivisor2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { maximosMinimos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/14-maximos-minimos-1bach";
 import { maximosMinimosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/11-maximos-minimos-ccss1";
 import { mecanismosCotidianosBicicletaLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/07-mecanismos-cotidianos-bicicleta";
+import { mecanizadoTornoFresadoraTaladro3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/03-mecanizado-torno-fresadora-taladro-3eso";
 import { mediaMedianaModa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/05-media-mediana-moda-1bach";
 import { mediaMedianaModa2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/03-media-mediana-moda-2eso";
 import { mediaMedianaModaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/05-media-mediana-moda-ccss1";
@@ -820,6 +824,7 @@ import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematica
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
 import { plasticosBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/05-plasticos-basico";
+import { plasticosCompuestosProcesos3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/05-plasticos-compuestos-procesos-3eso";
 import { plasticosElastomerosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/05-plasticos-elastomeros";
 import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/01-poblacion-muestra-ccss2";
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
@@ -965,6 +970,7 @@ import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematica
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
 import { propiedadesMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/02-propiedades-materiales";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
+import { propiedadesPrestacionesSeleccion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/01-propiedades-prestaciones-seleccion-3eso";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
 import { propiedadesProductoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/05-propiedades-producto-ccss2";
 import { propiedadesSensoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/02-propiedades-sensores";
@@ -1200,6 +1206,7 @@ import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bac
 import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/01-tasa-variacion-media-1bach";
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
+import { tecnicasDeUnion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/04-tecnicas-de-union-3eso";
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
@@ -1496,6 +1503,7 @@ export const interactiveLessons = {
   "condicionales-python": condicionalesPythonLesson,
   "condiciones-2eso": condiciones2esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
+  "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
@@ -1733,6 +1741,7 @@ export const interactiveLessons = {
   "expresiones-primer-grado-4eso": expresionesPrimerGrado4esoLesson,
   "expresiones-segundo-grado-4eso": expresionesSegundoGrado4esoLesson,
   "fabricacion-digital-calidad": fabricacionDigitalCalidadLesson,
+  "fabricacion-digital-cnc-laser-3eso": fabricacionDigitalCncLaser3esoLesson,
   "fabricacion-digital-impresion-3d-2eso": fabricacionDigitalImpresion3d2esoLesson,
   "fabricacion-reciclaje-economia-circular-2eso": fabricacionReciclajeEconomiaCircular2esoLesson,
   "factor-comun-2eso": factorComun2esoLesson,
@@ -1844,6 +1853,7 @@ export const interactiveLessons = {
   "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
   "impacto-ambiental-productos": impactoAmbientalProductosLesson,
   "impacto-ambiental-productos-eso": impactoAmbientalProductosEsoLesson,
+  "impacto-ambiental-riesgos-3eso": impactoAmbientalRiesgos3esoLesson,
   "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
@@ -1984,6 +1994,7 @@ export const interactiveLessons = {
   "maximos-minimos-1bach": maximosMinimos1bachLesson,
   "maximos-minimos-ccss1": maximosMinimosCcss1Lesson,
   "mecanismos-cotidianos-bicicleta": mecanismosCotidianosBicicletaLesson,
+  "mecanizado-torno-fresadora-taladro-3eso": mecanizadoTornoFresadoraTaladro3esoLesson,
   "media-mediana-moda-1bach": mediaMedianaModa1bachLesson,
   "media-mediana-moda-2eso": mediaMedianaModa2esoLesson,
   "media-mediana-moda-ccss1": mediaMedianaModaCcss1Lesson,
@@ -2119,6 +2130,7 @@ export const interactiveLessons = {
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
   "plasticos-basico": plasticosBasicoLesson,
+  "plasticos-compuestos-procesos-3eso": plasticosCompuestosProcesos3esoLesson,
   "plasticos-elastomeros": plasticosElastomerosLesson,
   "poblacion-muestra-ccss2": poblacionMuestraCcss2Lesson,
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
@@ -2264,6 +2276,7 @@ export const interactiveLessons = {
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
   "propiedades-materiales": propiedadesMaterialesLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
+  "propiedades-prestaciones-seleccion-3eso": propiedadesPrestacionesSeleccion3esoLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
   "propiedades-producto-ccss2": propiedadesProductoCcss2Lesson,
   "propiedades-sensores": propiedadesSensoresLesson,
@@ -2499,6 +2512,7 @@ export const interactiveLessons = {
   "tasa-variacion-media-1bach": tasaVariacionMedia1bachLesson,
   "tasa-variacion-media-ccss1": tasaVariacionMediaCcss1Lesson,
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
+  "tecnicas-de-union-3eso": tecnicasDeUnion3esoLesson,
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,

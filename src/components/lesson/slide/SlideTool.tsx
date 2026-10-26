@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PrestacionesExplorador, FundicionExplorador, CorteTornoExplorador, UnionExplorador, ImpactoMaterialExplorador, CorteLaserExplorador, MatrizRiesgosExplorador } from "@/components/lesson/slide/tools/TecEso3MaterialesTools";
 import { CadenaPinonExplorador, SinFinCoronaEso3Explorador, LevaSeguidorEso3Explorador, CajaCambiosExplorador, RendimientoCadenaExplorador, GruaPolipastoExplorador, LavadoraCentrifugadoExplorador } from "@/components/lesson/slide/tools/TecEso3MecanismosTools";
 import { PerifericoExplorador, TopologiaExplorador, DireccionIpExplorador, WifiExplorador, PaquetesExplorador, BateriaIotExplorador, ClaveWifiExplorador } from "@/components/lesson/slide/tools/TecEso3RedesTools";
 import { BlinkExplorador, PullPulsadorExplorador, LecturaAnalogicaExplorador, PwmServoExplorador, PuenteHExplorador, SeguidorLineaExplorador, UltrasonidoExplorador, RobotPruebasExplorador } from "@/components/lesson/slide/tools/TecEso3RoboticaTools";
@@ -1664,6 +1665,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <GruaPolipastoExplorador block={block} />;
     case "eso3-lavadora-explorador":
       return <LavadoraCentrifugadoExplorador block={block} />;
+    case "eso3-prestaciones-explorador":
+      return <PrestacionesExplorador block={block} />;
+    case "eso3-fundicion-explorador":
+      return <FundicionExplorador block={block} />;
+    case "eso3-corte-explorador":
+      return <CorteTornoExplorador block={block} />;
+    case "eso3-union-explorador":
+      return <UnionExplorador block={block} />;
+    case "eso3-impacto-material-explorador":
+      return <ImpactoMaterialExplorador block={block} />;
+    case "eso3-laser-explorador":
+      return <CorteLaserExplorador block={block} />;
+    case "eso3-riesgos-explorador":
+      return <MatrizRiesgosExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
