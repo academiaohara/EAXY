@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SistemaRecursosExplorador, RutasExplorador, HojaCalculoExplorador, FormatoImagenExplorador, SubidaNubeExplorador, TiempoPantallaExplorador } from "@/components/lesson/slide/tools/TecEso2DigitalTools";
 import { RequisitosProyectoExplorador, ScamperExplorador, SeleccionIdeasExplorador, GanttProyectoExplorador, PruebasPrototipoExplorador, MemoriaProyectoExplorador } from "@/components/lesson/slide/tools/TecEso2ProyectoTools";
 import { DensidadMaterialesExplorador, CurvaTraccionExplorador, DespieceTableroExplorador, MatrizDecisionMaterialesExplorador, TecnicaTallerExplorador, CalibreExplorador, Impresion3dEsoExplorador } from "@/components/lesson/slide/tools/TecEso2MaterialesTools";
 import { PiezaVistasExplorador, EscalaConversionExplorador, PerspectivaConicaExplorador, PlanoViviendaExplorador, CadComandosExplorador, SolidoOperacionesExplorador, LaminaExplorador } from "@/components/lesson/slide/tools/TecEso2DibujoTools";
@@ -1559,6 +1560,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PruebasPrototipoExplorador block={block} />;
     case "eso2-memoria-explorador":
       return <MemoriaProyectoExplorador block={block} />;
+    case "eso2-sistema-recursos-explorador":
+      return <SistemaRecursosExplorador block={block} />;
+    case "eso2-rutas-explorador":
+      return <RutasExplorador block={block} />;
+    case "eso2-hoja-calculo-explorador":
+      return <HojaCalculoExplorador block={block} />;
+    case "eso2-formato-imagen-explorador":
+      return <FormatoImagenExplorador block={block} />;
+    case "eso2-subida-nube-explorador":
+      return <SubidaNubeExplorador block={block} />;
+    case "eso2-tiempo-pantalla-explorador":
+      return <TiempoPantallaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

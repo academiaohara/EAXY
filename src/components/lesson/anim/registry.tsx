@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildSincronizacionNube } from "@/components/lesson/anim/scenes/industrial/teceso2-digital";
 import { buildCicloDiseno } from "@/components/lesson/anim/scenes/industrial/teceso2-proyecto";
 import { buildCurvaTraccion } from "@/components/lesson/anim/scenes/industrial/teceso2-materiales";
 import { buildVistasEuropeo } from "@/components/lesson/anim/scenes/industrial/teceso2-dibujo";
@@ -755,6 +756,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso2-vistas-europeo": () => buildVistasEuropeo(),
   "eso2-curva-traccion": () => buildCurvaTraccion(),
   "eso2-ciclo-diseno": () => buildCicloDiseno(),
+  "eso2-sincronizacion-nube": () => buildSincronizacionNube(),
   /* industrial-end */
 };
 

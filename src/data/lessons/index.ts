@@ -62,6 +62,7 @@ import { arbolTabla1bachLesson } from "@/data/lessons/matematicas-1-bachillerato
 import { arbolTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/09-arbol-tabla-ccss1";
 import { arbolesTablas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/06-arboles-tablas-2bach";
 import { arbolesTablasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/06-arboles-tablas-ccss2";
+import { archivosCarpetasRutas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/02-archivos-carpetas-rutas-2eso";
 import { areaBajoCurvaRiemann2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/09-area-bajo-curva-riemann-2bach";
 import { areaBajoCurvaRiemannCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/08-area-bajo-curva-riemann-ccss2";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
@@ -113,6 +114,7 @@ import { bocetosCroquisLesson } from "@/data/lessons/tecnologia-1-eso/02-expresi
 import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/11-bomba-calor";
 import { bucles2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/05-bucles-2eso";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
+import { busquedaCreacionContenidos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/04-busqueda-creacion-contenidos-2eso";
 import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
 import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
@@ -517,10 +519,12 @@ import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
+import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
+import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
@@ -721,6 +725,7 @@ import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
 import { notacionCientifica4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/12-notacion-cientifica-4esob";
 import { notacionCientificaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/13-notacion-cientifica-ccss1";
+import { nubeAlmacenamientoCopias2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/05-nube-almacenamiento-copias-2eso";
 import { numeroE1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/09-numero-e-1bach";
 import { numeroIComplejos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/08-numero-i-complejos-1bach";
 import { numeroSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/03-numero-soluciones-3eso";
@@ -1045,6 +1050,7 @@ import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillera
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
+import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
 import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
 import { seguridadResiduosIndustriaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/12-seguridad-residuos-industria";
@@ -1312,6 +1318,7 @@ export const interactiveLessons = {
   "arbol-tabla-ccss1": arbolTablaCcss1Lesson,
   "arboles-tablas-2bach": arbolesTablas2bachLesson,
   "arboles-tablas-ccss2": arbolesTablasCcss2Lesson,
+  "archivos-carpetas-rutas-2eso": archivosCarpetasRutas2esoLesson,
   "area-bajo-curva-riemann-2bach": areaBajoCurvaRiemann2bachLesson,
   "area-bajo-curva-riemann-ccss2": areaBajoCurvaRiemannCcss2Lesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
@@ -1363,6 +1370,7 @@ export const interactiveLessons = {
   "bomba-calor": bombaCalorLesson,
   "bucles-2eso": bucles2esoLesson,
   "bucles-for-while": buclesForWhileLesson,
+  "busqueda-creacion-contenidos-2eso": busquedaCreacionContenidos2esoLesson,
   "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
   "cad-2d-diseno-asistido-2eso": cad2dDisenoAsistido2esoLesson,
   "cad-2d-iniciacion": cad2dIniciacionLesson,
@@ -1767,10 +1775,12 @@ export const interactiveLessons = {
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
+  "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
+  "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "idea-limite-funcion-ccss1": ideaLimiteFuncionCcss1Lesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
@@ -1971,6 +1981,7 @@ export const interactiveLessons = {
   "notacion-cientifica-4eso": notacionCientifica4esoLesson,
   "notacion-cientifica-4esob": notacionCientifica4esobLesson,
   "notacion-cientifica-ccss1": notacionCientificaCcss1Lesson,
+  "nube-almacenamiento-copias-2eso": nubeAlmacenamientoCopias2esoLesson,
   "numero-e-1bach": numeroE1bachLesson,
   "numero-i-complejos-1bach": numeroIComplejos1bachLesson,
   "numero-soluciones-3eso": numeroSoluciones3esoLesson,
@@ -2295,6 +2306,7 @@ export const interactiveLessons = {
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
+  "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
   "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
   "seguridad-residuos-industria": seguridadResiduosIndustriaLesson,

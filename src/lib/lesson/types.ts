@@ -1059,6 +1059,7 @@ export type SlideAnimId =
   | "eso2-vistas-europeo"
   | "eso2-curva-traccion"
   | "eso2-ciclo-diseno"
+  | "eso2-sincronizacion-nube"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1747,6 +1748,12 @@ export type SlideToolId =
   | "eso2-gantt-explorador"
   | "eso2-pruebas-prototipo-explorador"
   | "eso2-memoria-explorador"
+  | "eso2-sistema-recursos-explorador"
+  | "eso2-rutas-explorador"
+  | "eso2-hoja-calculo-explorador"
+  | "eso2-formato-imagen-explorador"
+  | "eso2-subida-nube-explorador"
+  | "eso2-tiempo-pantalla-explorador"
   /* industrial-tool-end */;
 
 /**

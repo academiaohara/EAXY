@@ -535,6 +535,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-vistas-europeo` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
 | `eso2-curva-traccion` | Curva tensión-deformación de un ensayo de tracción con sus zonas | — |
 | `eso2-ciclo-diseno` | El proyecto como ciclo: necesidad, ideas, diseño, prototipo, pruebas y mejora | — |
+| `eso2-sincronizacion-nube` | Un cambio en el ordenador se sube a la nube y se descarga en el móvil; cuidado con los borrados | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1097,6 +1098,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-gantt-explorador` | Diagrama de Gantt con dependencias y camino crítico | `a` duración de «Construir» (días) |
 | `eso2-pruebas-prototipo-explorador` | Medidas de un prototipo frente a cuatro requisitos | `a` carga soportada (g) |
 | `eso2-memoria-explorador` | Secciones de una memoria técnica y las imprescindibles que faltan | `n` secciones iniciales (0–12) |
+| `eso2-sistema-recursos-explorador` | Memoria RAM usada por el sistema, pestañas y aplicaciones, y estado del equipo | `n` RAM (0–2), `a` pestañas |
+| `eso2-rutas-explorador` | Ruta absoluta y relativa de un archivo desde una carpeta de trabajo | `n` archivo (0–4), `a` carpeta (0–2) |
+| `eso2-hoja-calculo-explorador` | Presupuesto en hoja de cálculo con fórmulas visibles o valores | `n` ver fórmulas (0/1) |
+| `eso2-formato-imagen-explorador` | Tamaño aproximado de una imagen según dimensiones y formato (BMP, PNG, JPEG) | `a` ancho, `b` alto (px) |
+| `eso2-subida-nube-explorador` | Tiempo para subir datos a la nube según la velocidad | `a` GB, `b` Mbps |
+| `eso2-tiempo-pantalla-explorador` | Horas de pantalla por actividad, ocio y valoración | `a` horas de redes sociales |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
