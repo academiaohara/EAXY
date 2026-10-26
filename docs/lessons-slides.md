@@ -538,6 +538,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-sincronizacion-nube` | Un cambio en el ordenador se sube a la nube y se descarga en el móvil; cuidado con los borrados | — |
 | `eso3-diodo-sentido` | Diodo y LED: polarización directa e inversa | — |
 | `eso3-transistor-llave` | Transistor NPN: corte y saturación, Ic = β·Ib | — |
+| `eso3-lazo-abierto-cerrado` | Control en lazo abierto y cerrado con realimentación | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1120,6 +1121,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso3-protoboard-explorador` | Nodos de una protoboard: ¿resistencia y LED en serie? | `a` columna del LED, `n` mitad |
 | `eso3-comparador-explorador` | Comparador de tensión normal o inversor | `a` Vin, `b` Vref |
 | `eso3-luz-automatica-explorador` | Luz automática con LDR, potenciómetro y transistor | `a` luz (lux), `b` potenciómetro (kΩ) |
+| `eso3-sistema-ips-explorador` | Entradas, proceso y salidas de cuatro sistemas cotidianos | `n` sistema (0–3) |
+| `eso3-lazo-control-explorador` | Calefactor de potencia fija (lazo abierto) frente a termostato (lazo cerrado) | `a` consigna (°C), `b` temperatura exterior (°C) |
+| `eso3-conversor-adc-explorador` | Conversor analógico-digital: niveles, código binario y error | `a` tensión (V), `n` bits (0–3) |
+| `eso3-puertas-explorador` | Puertas lógicas AND, OR, NOT, NAND, NOR y XOR con su tabla de verdad | `n` puerta (0–5) |
+| `eso3-alarma-explorador` | Alarma: armada Y (puerta O ventana O movimiento) | `n` armada inicial (0/1) |
+| `eso3-puerta-garaje-explorador` | Máquina de estados de una puerta de garaje | — |
+| `eso3-riego-explorador` | Riego programado frente a riego con sensor de humedad | `a` humedad inicial (%), `b` umbral (%) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

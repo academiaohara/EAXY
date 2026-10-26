@@ -1062,6 +1062,7 @@ export type SlideAnimId =
   | "eso2-sincronizacion-nube"
   | "eso3-diodo-sentido"
   | "eso3-transistor-llave"
+  | "eso3-lazo-abierto-cerrado"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1770,6 +1771,13 @@ export type SlideToolId =
   | "eso3-protoboard-explorador"
   | "eso3-comparador-explorador"
   | "eso3-luz-automatica-explorador"
+  | "eso3-sistema-ips-explorador"
+  | "eso3-lazo-control-explorador"
+  | "eso3-conversor-adc-explorador"
+  | "eso3-puertas-explorador"
+  | "eso3-alarma-explorador"
+  | "eso3-puerta-garaje-explorador"
+  | "eso3-riego-explorador"
   /* industrial-tool-end */;
 
 /**

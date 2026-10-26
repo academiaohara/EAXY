@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildLazoCerradoEso3 } from "@/components/lesson/anim/scenes/industrial/teceso3-control";
 import { buildDiodoSentido, buildTransistorLlave } from "@/components/lesson/anim/scenes/industrial/teceso3-electronica";
 import { buildSincronizacionNube } from "@/components/lesson/anim/scenes/industrial/teceso2-digital";
 import { buildCicloDiseno } from "@/components/lesson/anim/scenes/industrial/teceso2-proyecto";
@@ -760,6 +761,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso2-sincronizacion-nube": () => buildSincronizacionNube(),
   "eso3-diodo-sentido": () => buildDiodoSentido(),
   "eso3-transistor-llave": () => buildTransistorLlave(),
+  "eso3-lazo-abierto-cerrado": () => buildLazoCerradoEso3(),
   /* industrial-end */
 };
 

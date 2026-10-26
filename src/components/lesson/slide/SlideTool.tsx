@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SistemaIpsExplorador, LazoControlExplorador, ConversorAdcExplorador, PuertasLogicasExplorador, AlarmaLogicaExplorador, PuertaGarajeExplorador, RiegoAutomaticoExplorador } from "@/components/lesson/slide/tools/TecEso3ControlTools";
 import { ConductorExplorador, CodigoColoresExplorador, LedResistenciaExplorador, TransistorLlaveExplorador, SensorDivisorExplorador, CondensadorRcExplorador, ProtoboardExplorador, ComparadorExplorador, LuzAutomaticaExplorador } from "@/components/lesson/slide/tools/TecEso3ElectronicaTools";
 import { CicloVidaFasesExplorador, EtiquetaEnergeticaExplorador, ResiduosHogarExplorador, DisenoUniversalExplorador, HuellaDigitalExplorador } from "@/components/lesson/slide/tools/TecEso2SostenibleTools";
 import { SistemaRecursosExplorador, RutasExplorador, HojaCalculoExplorador, FormatoImagenExplorador, SubidaNubeExplorador, TiempoPantallaExplorador } from "@/components/lesson/slide/tools/TecEso2DigitalTools";
@@ -1602,6 +1603,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ComparadorExplorador block={block} />;
     case "eso3-luz-automatica-explorador":
       return <LuzAutomaticaExplorador block={block} />;
+    case "eso3-sistema-ips-explorador":
+      return <SistemaIpsExplorador block={block} />;
+    case "eso3-lazo-control-explorador":
+      return <LazoControlExplorador block={block} />;
+    case "eso3-conversor-adc-explorador":
+      return <ConversorAdcExplorador block={block} />;
+    case "eso3-puertas-explorador":
+      return <PuertasLogicasExplorador block={block} />;
+    case "eso3-alarma-explorador":
+      return <AlarmaLogicaExplorador block={block} />;
+    case "eso3-puerta-garaje-explorador":
+      return <PuertaGarajeExplorador block={block} />;
+    case "eso3-riego-explorador":
+      return <RiegoAutomaticoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
