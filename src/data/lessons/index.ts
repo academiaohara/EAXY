@@ -131,6 +131,9 @@ import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos
 import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
 import { circuitoElectricoComponentesLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/02-circuito-electrico-componentes";
 import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
+import { circuitosMixtos2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/06-circuitos-mixtos-2eso";
+import { circuitosParalelo2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/05-circuitos-paralelo-2eso";
+import { circuitosSerie2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/04-circuitos-serie-2eso";
 import { circuitosSerieParaleloEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/05-circuitos-serie-paralelo-eso";
 import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/07-circuitos-temporizadores";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
@@ -363,6 +366,7 @@ import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
 import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
+import { esquemasPolimetro2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/07-esquemas-polimetro-2eso";
 import { estabilidadResistenciaLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/04-estabilidad-resistencia";
 import { estabilidadRouthLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/09-estabilidad-routh";
 import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
@@ -579,6 +583,7 @@ import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
+import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
 import { limiteDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/01-limite-definicion-ccss2";
@@ -620,6 +625,7 @@ import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
+import { magnitudesElectricas2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/01-magnitudes-electricas-2eso";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
@@ -787,6 +793,7 @@ import { posicionesRelativas1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-postulados-morgan";
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
 import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
+import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/03-potencia-energia-electrica-2eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
@@ -1042,6 +1049,7 @@ import { simplificarEquivalentesOperador4esoLesson } from "@/data/lessons/matema
 import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/05-simplificar-extraer-factores-4eso";
 import { simplificarExtraerFactores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/07-simplificar-extraer-factores-4esob";
 import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/10-simplificar-radicales-ccss1";
+import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
 import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
@@ -1335,6 +1343,9 @@ export const interactiveLessons = {
   "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
   "circuito-electrico-componentes": circuitoElectricoComponentesLesson,
   "circuitos-aplicaciones": circuitosAplicacionesLesson,
+  "circuitos-mixtos-2eso": circuitosMixtos2esoLesson,
+  "circuitos-paralelo-2eso": circuitosParalelo2esoLesson,
+  "circuitos-serie-2eso": circuitosSerie2esoLesson,
   "circuitos-serie-paralelo-eso": circuitosSerieParaleloEsoLesson,
   "circuitos-temporizadores": circuitosTemporizadoresLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
@@ -1567,6 +1578,7 @@ export const interactiveLessons = {
   "espira-momento-motor": espiraMomentoMotorLesson,
   "esquema-estudio-2bach": esquemaEstudio2bachLesson,
   "esquema-estudio-ccss2": esquemaEstudioCcss2Lesson,
+  "esquemas-polimetro-2eso": esquemasPolimetro2esoLesson,
   "estabilidad-resistencia": estabilidadResistenciaLesson,
   "estabilidad-routh": estabilidadRouthLesson,
   "estadistica-caja-4eso": estadisticaCaja4esoLesson,
@@ -1783,6 +1795,7 @@ export const interactiveLessons = {
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
+  "ley-ohm-2eso": leyOhm2esoLesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
   "limite-definicion-ccss2": limiteDefinicionCcss2Lesson,
@@ -1824,6 +1837,7 @@ export const interactiveLessons = {
   "luz-detector-error": luzDetectorErrorLesson,
   "madera-derivados": maderaDerivadosLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
+  "magnitudes-electricas-2eso": magnitudesElectricas2esoLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
@@ -1991,6 +2005,7 @@ export const interactiveLessons = {
   "postulados-morgan": postuladosMorganLesson,
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
   "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
+  "potencia-energia-electrica-2eso": potenciaEnergiaElectrica2esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
@@ -2246,6 +2261,7 @@ export const interactiveLessons = {
   "simplificar-extraer-factores-4eso": simplificarExtraerFactores4esoLesson,
   "simplificar-extraer-factores-4esob": simplificarExtraerFactores4esobLesson,
   "simplificar-radicales-ccss1": simplificarRadicalesCcss1Lesson,
+  "simulacion-seguridad-electrica-2eso": simulacionSeguridadElectrica2esoLesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
   "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
   "sistema-matricial-2bach": sistemaMatricial2bachLesson,

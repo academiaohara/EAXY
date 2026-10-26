@@ -141,3 +141,14 @@ export const TECESO1_SUBTITLES = {
   9: "Tecnología 1.º ESO, Tema 9 — Digitalización del entorno personal de aprendizaje",
   10: "Tecnología 1.º ESO, Tema 10 — Comunicación y difusión de ideas",
 } as const;
+
+export const TECESO2_SUBTITLES = {
+  1: "Tecnología 2.º ESO, Tema 1 — Proyecto tecnológico",
+  2: "Tecnología 2.º ESO, Tema 2 — Dibujo técnico y diseño digital",
+  3: "Tecnología 2.º ESO, Tema 3 — Materiales y fabricación",
+  4: "Tecnología 2.º ESO, Tema 4 — Estructuras y mecanismos",
+  5: "Tecnología 2.º ESO, Tema 5 — Electricidad",
+  6: "Tecnología 2.º ESO, Tema 6 — Programación",
+  7: "Tecnología 2.º ESO, Tema 7 — Digitalización del entorno personal",
+  8: "Tecnología 2.º ESO, Tema 8 — Tecnología sostenible",
+} as const;

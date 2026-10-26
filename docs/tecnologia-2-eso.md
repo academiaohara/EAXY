@@ -14,3 +14,11 @@ Curso `tecnologia-2-eso`. Fuente: `temp/tecnologia/LOMLOE.txt`, sección «2.º 
 | 8. Tecnología sostenible | 5 | Ciclo de vida, eficiencia energética (etiqueta), fabricación y reciclaje, diseño accesible, responsabilidad digital |
 
 Total previsto: 56 lecciones. Se construye por temas en el orden 5 → 4 → 6 → 2 → 3 → 1 → 7 → 8 (primero los que más ganan con herramientas de cálculo e interactividad), con el mismo flujo que `docs/tecnologia-1-eso.md`: lecciones, herramientas, animaciones, tests, docs y commit por tema. Se reutilizan herramientas y animaciones de 1.º ESO cuando encajen y se crean nuevas para lo que sea nuevo (cálculo, Gantt, matriz de decisión, relación de transmisión, circuitos mixtos…).
+
+## Estado
+
+| Tema | Estado |
+|---|---|
+| 5. Electricidad | Hecho (8 lecciones, `src/data/lessons/tecnologia-2-eso/05-electricidad/`; herramientas `TecEso2ElectricidadTools.tsx`, animaciones `teceso2-electricidad.tsx`; ids con prefijo `eso2-`) |
+
+Convenciones: slugs de lección con sufijo `-2eso`; `moduleId(150 + n)` y `lessonId((150 + n) * 100 + k)`; subtítulos en `TECESO2_SUBTITLES` (`src/data/lessons/shared.ts`); test del curso en `src/tests/unit/data/tecnologia-2-eso-lessons.test.tsx` (añadir el tema a `TEMAS`).

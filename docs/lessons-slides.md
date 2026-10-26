@@ -528,6 +528,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `capas-entorno-digital` | Un dispositivo digital por capas: hardware, sistema operativo, aplicaciones y usuario | — |
 | `paquetes-red` | Un archivo viaja dividido en paquetes por routers y se reensambla en el receptor | — |
 | `extrusion-perfil` | Croquis 2D acotado de un perfil en L que se extruye hasta formar un sólido, con operaciones posteriores | — |
+| `eso2-ohm-agua` | Ley de Ohm con la analogía del depósito de agua: tensión, resistencia e intensidad | — |
+| `eso2-mixto-reduccion` | Reducción paso a paso de un circuito mixto (R1 en serie con R2 ∥ R3) y vuelta atrás | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1050,6 +1052,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `diapositiva-legible-explorador` | Diapositiva con colores, tamaño de letra y palabras: contraste (WCAG) y valoración | `n` colores (0–4), `a` tamaño (pt) |
 | `clasificador-ia-explorador` | Clasificador de manzanas y plátanos que aprende de ejemplos, con datos equilibrados o sesgados | `a` ejemplos por fruta (0–8) |
 | `app-eventos-explorador` | Aplicación de dados que reacciona a tres eventos (botón, reinicio y sacudida) | — |
+| `eso2-analogia-agua-explorador` | Analogía hidráulica de tensión, resistencia e intensidad | `a` tensión (V), `b` resistencia (Ω) |
+| `eso2-ohm-incognita-explorador` | Triángulo de Ohm: elige la incógnita y calcula | `n` incógnita (0 V, 1 I, 2 R), `a`, `b` datos |
+| `eso2-factura-explorador` | Energía y coste mensual de cinco aparatos según horas de uso | `a` precio (c€/kWh) |
+| `eso2-serie-paralelo-explorador` | Dos resistencias en serie o paralelo: Req, corriente y reparto | `n` montaje (0 serie, 1 paralelo), `a` pila (V), `b` R1 (Ω) |
+| `eso2-mixto-explorador` | Circuito mixto R1 + (R2 ∥ R3) con pasos de reducción | `a` pila (V), `b` R1 (Ω) |
+| `eso2-polimetro-explorador` | Dónde y cómo conectar voltímetro, amperímetro y óhmetro | `n` magnitud (0 V, 1 A, 2 Ω), `a` pila (V) |
+| `eso2-fallo-explorador` | Diagnóstico de averías: cable cortado, lámpara fundida y cortocircuito | `n` avería (0–3), `a` pila (V) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

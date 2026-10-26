@@ -1052,6 +1052,8 @@ export type SlideAnimId =
   | "capas-entorno-digital"
   | "paquetes-red"
   | "extrusion-perfil"
+  | "eso2-ohm-agua"
+  | "eso2-mixto-reduccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1700,6 +1702,13 @@ export type SlideToolId =
   | "diapositiva-legible-explorador"
   | "clasificador-ia-explorador"
   | "app-eventos-explorador"
+  | "eso2-analogia-agua-explorador"
+  | "eso2-ohm-incognita-explorador"
+  | "eso2-factura-explorador"
+  | "eso2-serie-paralelo-explorador"
+  | "eso2-mixto-explorador"
+  | "eso2-polimetro-explorador"
+  | "eso2-fallo-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AnalogiaAguaExplorador, OhmIncognitaExplorador, FacturaExplorador, SerieParaleloCalcExplorador, MixtoExplorador, PolimetroExplorador, FalloCircuitoExplorador } from "@/components/lesson/slide/tools/TecEso2ElectricidadTools";
 import { CadPlacaExplorador, ExtrusionExplorador, DiapositivaLegibleExplorador, ClasificadorIaExplorador, AppEventosExplorador } from "@/components/lesson/slide/tools/TecEso1ComunicacionTools";
 import { DispositivoComponentesExplorador, DiagnosticoTecnicoExplorador, CapacidadAlmacenamientoExplorador, CopiaSeguridadExplorador, TiempoDescargaExplorador, BusquedaOperadoresExplorador, ContrasenaFortalezaExplorador, SituacionesDigitalesExplorador, LicenciasCcExplorador } from "@/components/lesson/slide/tools/TecEso1DigitalTools";
 import { HuellaProductoExplorador, ConsumoHabitosExplorador, AhorroEnergiaExplorador, TiempoDescomposicionExplorador, LinealCircularEsoExplorador, RampaAccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso1SostenibleTools";
@@ -1473,6 +1474,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ClasificadorIaExplorador block={block} />;
     case "app-eventos-explorador":
       return <AppEventosExplorador block={block} />;
+    case "eso2-analogia-agua-explorador":
+      return <AnalogiaAguaExplorador block={block} />;
+    case "eso2-ohm-incognita-explorador":
+      return <OhmIncognitaExplorador block={block} />;
+    case "eso2-factura-explorador":
+      return <FacturaExplorador block={block} />;
+    case "eso2-serie-paralelo-explorador":
+      return <SerieParaleloCalcExplorador block={block} />;
+    case "eso2-mixto-explorador":
+      return <MixtoExplorador block={block} />;
+    case "eso2-polimetro-explorador":
+      return <PolimetroExplorador block={block} />;
+    case "eso2-fallo-explorador":
+      return <FalloCircuitoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

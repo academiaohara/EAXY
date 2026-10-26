@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildOhmAgua, buildMixtoReduccion } from "@/components/lesson/anim/scenes/industrial/teceso2-electricidad";
 import { buildExtrusionPerfil } from "@/components/lesson/anim/scenes/industrial/teceso1-comunicacion";
 import { buildCapasEntornoDigital, buildPaquetesRed } from "@/components/lesson/anim/scenes/industrial/teceso1-digital";
 import { buildCicloVidaProductoEso, buildJerarquiaResiduos } from "@/components/lesson/anim/scenes/industrial/teceso1-sostenible";
@@ -742,6 +743,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "capas-entorno-digital": () => buildCapasEntornoDigital(),
   "paquetes-red": () => buildPaquetesRed(),
   "extrusion-perfil": () => buildExtrusionPerfil(),
+  "eso2-ohm-agua": () => buildOhmAgua(),
+  "eso2-mixto-reduccion": () => buildMixtoReduccion(),
   /* industrial-end */
 };
 
