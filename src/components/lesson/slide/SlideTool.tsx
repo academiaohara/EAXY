@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PiezaVistasExplorador, EscalaConversionExplorador, PerspectivaConicaExplorador, PlanoViviendaExplorador, CadComandosExplorador, SolidoOperacionesExplorador, LaminaExplorador } from "@/components/lesson/slide/tools/TecEso2DibujoTools";
 import { TrazaExplorador, TiposDatosExplorador, OperadoresExplorador, FuncionProgramaExplorador, PruebasExplorador, AdivinaExplorador } from "@/components/lesson/slide/tools/TecEso2ProgramacionTools";
 import { TensionExplorador, PerfilCantoExplorador, VentajaMecanicaExplorador, TrenTransmisionExplorador, PoleasCorreasCalcExplorador, TransformacionExplorador, ElevadorExplorador } from "@/components/lesson/slide/tools/TecEso2MecanicaTools";
 import { AnalogiaAguaExplorador, OhmIncognitaExplorador, FacturaExplorador, SerieParaleloCalcExplorador, MixtoExplorador, PolimetroExplorador, FalloCircuitoExplorador } from "@/components/lesson/slide/tools/TecEso2ElectricidadTools";
@@ -1516,6 +1517,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PruebasExplorador block={block} />;
     case "eso2-adivina-explorador":
       return <AdivinaExplorador block={block} />;
+    case "eso2-pieza-vistas-explorador":
+      return <PiezaVistasExplorador block={block} />;
+    case "eso2-escala-conversion-explorador":
+      return <EscalaConversionExplorador block={block} />;
+    case "eso2-conica-explorador":
+      return <PerspectivaConicaExplorador block={block} />;
+    case "eso2-plano-vivienda-explorador":
+      return <PlanoViviendaExplorador block={block} />;
+    case "eso2-cad-comandos-explorador":
+      return <CadComandosExplorador block={block} />;
+    case "eso2-solido-operaciones-explorador":
+      return <SolidoOperacionesExplorador block={block} />;
+    case "eso2-lamina-explorador":
+      return <LaminaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

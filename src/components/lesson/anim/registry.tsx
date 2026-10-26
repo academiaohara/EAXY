@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildVistasEuropeo } from "@/components/lesson/anim/scenes/industrial/teceso2-dibujo";
 import { buildBucleTraza } from "@/components/lesson/anim/scenes/industrial/teceso2-programacion";
 import { buildBielaManivela } from "@/components/lesson/anim/scenes/industrial/teceso2-mecanica";
 import { buildOhmAgua, buildMixtoReduccion } from "@/components/lesson/anim/scenes/industrial/teceso2-electricidad";
@@ -749,6 +750,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso2-mixto-reduccion": () => buildMixtoReduccion(),
   "eso2-biela-manivela": () => buildBielaManivela(),
   "eso2-bucle-traza": () => buildBucleTraza(),
+  "eso2-vistas-europeo": () => buildVistasEuropeo(),
   /* industrial-end */
 };
 

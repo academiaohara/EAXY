@@ -532,6 +532,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-mixto-reduccion` | Reducción paso a paso de un circuito mixto (R1 en serie con R2 ∥ R3) y vuelta atrás | — |
 | `eso2-biela-manivela` | Biela-manivela: giro continuo convertido en vaivén; carrera = 2·r | — |
 | `eso2-bucle-traza` | Un bucle «para» ejecutado paso a paso con tabla de variables | — |
+| `eso2-vistas-europeo` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1074,6 +1075,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-funcion-explorador` | Definición y llamada de funciones con parámetros | `n` función (0–2), `a`, `b` argumentos |
 | `eso2-pruebas-explorador` | Casos de prueba de una función de año bisiesto con error lógico y su corrección | `a` año inicial |
 | `eso2-adivina-explorador` | Adivina el número del 1 al 100 y compara con la estrategia de las mitades | `a` número secreto |
+| `eso2-pieza-vistas-explorador` | Pieza de torres de cubos 3×3 con alzado, planta y perfil calculados | `n` pieza inicial (0/1) |
+| `eso2-escala-conversion-explorador` | Convierte entre medida real y dibujo según la escala; ¿cabe en un A4? | `n` escala (0–8), `a` medida real (mm) |
+| `eso2-conica-explorador` | Perspectiva cónica con punto de fuga y horizonte | `a` profundidad (%), `b` punto de fuga X |
+| `eso2-plano-vivienda-explorador` | Plano de habitaciones con escala, superficie real y símbolos | `n` habitación (0–2), `a` escala (50/100) |
+| `eso2-cad-comandos-explorador` | Órdenes de CAD 2D sobre una placa: círculo, matriz, redondeo y cotas | `n` cotas (0/1) |
+| `eso2-solido-operaciones-explorador` | Prisma con taladro pasante o ciego: volumen, masa y material quitado | `a` largo (mm), `b` alto (mm) |
+| `eso2-lamina-explorador` | Elementos de una lámina de proyecto y lo que falta | `n` elementos presentes (0–7) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

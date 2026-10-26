@@ -1056,6 +1056,7 @@ export type SlideAnimId =
   | "eso2-mixto-reduccion"
   | "eso2-biela-manivela"
   | "eso2-bucle-traza"
+  | "eso2-vistas-europeo"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1724,6 +1725,13 @@ export type SlideToolId =
   | "eso2-funcion-explorador"
   | "eso2-pruebas-explorador"
   | "eso2-adivina-explorador"
+  | "eso2-pieza-vistas-explorador"
+  | "eso2-escala-conversion-explorador"
+  | "eso2-conica-explorador"
+  | "eso2-plano-vivienda-explorador"
+  | "eso2-cad-comandos-explorador"
+  | "eso2-solido-operaciones-explorador"
+  | "eso2-lamina-explorador"
   /* industrial-tool-end */;
 
 /**

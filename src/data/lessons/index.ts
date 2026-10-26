@@ -1,5 +1,6 @@
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
+import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
@@ -113,6 +114,7 @@ import { bombaCalorLesson } from "@/data/lessons/tecnologia-industrial-2-bachill
 import { bucles2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/05-bucles-2eso";
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
 import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
+import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
@@ -301,6 +303,7 @@ import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matemati
 import { divisionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/04-division-polinomios-4esob";
 import { dobleEntrada1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/09-doble-entrada-1bach";
 import { dobleEntradaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/09-doble-entrada-ccss1";
+import { documentacionGraficaLamina2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/07-documentacion-grafica-lamina-2eso";
 import { documentacionMultimediaDifusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/04-documentacion-multimedia-difusion";
 import { dominioCortesSigno2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/01-dominio-cortes-signo-2bach";
 import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/06-dos-planos-posicion-2bach";
@@ -565,6 +568,7 @@ import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-p
 import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/03-interes-compuesto-ccss1";
 import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/02-interes-simple-ccss1";
 import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/10-interpolacion-extrapolacion-ccss1";
+import { interpretacionPlanosSimbologia2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/04-interpretacion-planos-simbologia-2eso";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
 import { interruptoresPulsadoresLamparasLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/04-interruptores-pulsadores-lamparas";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
@@ -674,6 +678,7 @@ import { metodoSustitucion4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
+import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -769,6 +774,7 @@ import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
+import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
@@ -1217,6 +1223,7 @@ import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { vistasAlzadoPlantaPerfilLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/05-vistas-alzado-planta-perfil";
+import { vistasNormalizadasCroquis2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/01-vistas-normalizadas-croquis-2eso";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenParalelepipedoTetraedro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/10-volumen-paralelepipedo-tetraedro-2bach";
@@ -1228,6 +1235,7 @@ import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-
 export const interactiveLessons = {
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
+  "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
   "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
@@ -1341,6 +1349,7 @@ export const interactiveLessons = {
   "bucles-2eso": bucles2esoLesson,
   "bucles-for-while": buclesForWhileLesson,
   "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
+  "cad-2d-diseno-asistido-2eso": cad2dDisenoAsistido2esoLesson,
   "cad-2d-iniciacion": cad2dIniciacionLesson,
   "cad-3d-extrusion": cad3dExtrusionLesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
@@ -1529,6 +1538,7 @@ export const interactiveLessons = {
   "division-polinomios-4esob": divisionPolinomios4esobLesson,
   "doble-entrada-1bach": dobleEntrada1bachLesson,
   "doble-entrada-ccss1": dobleEntradaCcss1Lesson,
+  "documentacion-grafica-lamina-2eso": documentacionGraficaLamina2esoLesson,
   "documentacion-multimedia-difusion": documentacionMultimediaDifusionLesson,
   "dominio-cortes-signo-2bach": dominioCortesSigno2bachLesson,
   "dos-planos-posicion-2bach": dosPlanosPosicion2bachLesson,
@@ -1793,6 +1803,7 @@ export const interactiveLessons = {
   "interes-compuesto-ccss1": interesCompuestoCcss1Lesson,
   "interes-simple-ccss1": interesSimpleCcss1Lesson,
   "interpolacion-extrapolacion-ccss1": interpolacionExtrapolacionCcss1Lesson,
+  "interpretacion-planos-simbologia-2eso": interpretacionPlanosSimbologia2esoLesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
   "interruptores-pulsadores-lamparas": interruptoresPulsadoresLamparasLesson,
   "intervalo-confianza-media-2bach": intervaloConfianzaMedia2bachLesson,
@@ -1902,6 +1913,7 @@ export const interactiveLessons = {
   "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
+  "modelado-3d-operaciones-2eso": modelado3dOperaciones2esoLesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
@@ -1997,6 +2009,7 @@ export const interactiveLessons = {
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "perspectiva-caballera": perspectivaCaballeraLesson,
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
+  "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
   "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
@@ -2445,6 +2458,7 @@ export const interactiveLessons = {
   "velocidad-lineal-angular": velocidadLinealAngularLesson,
   "viscosidad-indice": viscosidadIndiceLesson,
   "vistas-alzado-planta-perfil": vistasAlzadoPlantaPerfilLesson,
+  "vistas-normalizadas-croquis-2eso": vistasNormalizadasCroquis2esoLesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
   "volumen-paralelepipedo-tetraedro-2bach": volumenParalelepipedoTetraedro2bachLesson,
