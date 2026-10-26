@@ -14,3 +14,11 @@ Curso `tecnologia-3-eso`. Fuente: `temp/tecnologia/LOMLOE.txt`, sección «3.º 
 | 8. Tecnología sostenible | 7 | Energías renovables, arquitectura bioclimática, transporte sostenible, proyectos de mejora del entorno (también asturiano) |
 
 Total previsto: 57 lecciones. Orden de construcción propuesto: 4 → 5 → 6 → 7 → 3 → 2 → 1 → 8 (primero lo nuevo, donde más ganan las herramientas interactivas). Mismo flujo por tema que en 2.º ESO: lecciones, herramientas, animaciones, tests, revisión visual, build y commit.
+
+## Estado
+
+| Tema | Estado |
+|---|---|
+| 4. Electricidad y electrónica | Hecho (9 lecciones, `04-electricidad-electronica/`; herramientas `TecEso3ElectronicaTools.tsx`, animaciones `teceso3-electronica.tsx`) |
+
+Test del curso: `src/tests/unit/data/tecnologia-3-eso-lessons.test.tsx` (añadir cada tema a `TEMAS`, en el orden del currículo).

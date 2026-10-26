@@ -1060,6 +1060,8 @@ export type SlideAnimId =
   | "eso2-curva-traccion"
   | "eso2-ciclo-diseno"
   | "eso2-sincronizacion-nube"
+  | "eso3-diodo-sentido"
+  | "eso3-transistor-llave"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1759,6 +1761,15 @@ export type SlideToolId =
   | "eso2-residuos-hogar-explorador"
   | "eso2-diseno-universal-explorador"
   | "eso2-huella-digital-explorador"
+  | "eso3-conductor-explorador"
+  | "eso3-codigo-colores-explorador"
+  | "eso3-led-resistencia-explorador"
+  | "eso3-transistor-explorador"
+  | "eso3-sensor-divisor-explorador"
+  | "eso3-condensador-explorador"
+  | "eso3-protoboard-explorador"
+  | "eso3-comparador-explorador"
+  | "eso3-luz-automatica-explorador"
   /* industrial-tool-end */;
 
 /**

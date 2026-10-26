@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ConductorExplorador, CodigoColoresExplorador, LedResistenciaExplorador, TransistorLlaveExplorador, SensorDivisorExplorador, CondensadorRcExplorador, ProtoboardExplorador, ComparadorExplorador, LuzAutomaticaExplorador } from "@/components/lesson/slide/tools/TecEso3ElectronicaTools";
 import { CicloVidaFasesExplorador, EtiquetaEnergeticaExplorador, ResiduosHogarExplorador, DisenoUniversalExplorador, HuellaDigitalExplorador } from "@/components/lesson/slide/tools/TecEso2SostenibleTools";
 import { SistemaRecursosExplorador, RutasExplorador, HojaCalculoExplorador, FormatoImagenExplorador, SubidaNubeExplorador, TiempoPantallaExplorador } from "@/components/lesson/slide/tools/TecEso2DigitalTools";
 import { RequisitosProyectoExplorador, ScamperExplorador, SeleccionIdeasExplorador, GanttProyectoExplorador, PruebasPrototipoExplorador, MemoriaProyectoExplorador } from "@/components/lesson/slide/tools/TecEso2ProyectoTools";
@@ -1583,6 +1584,24 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DisenoUniversalExplorador block={block} />;
     case "eso2-huella-digital-explorador":
       return <HuellaDigitalExplorador block={block} />;
+    case "eso3-conductor-explorador":
+      return <ConductorExplorador block={block} />;
+    case "eso3-codigo-colores-explorador":
+      return <CodigoColoresExplorador block={block} />;
+    case "eso3-led-resistencia-explorador":
+      return <LedResistenciaExplorador block={block} />;
+    case "eso3-transistor-explorador":
+      return <TransistorLlaveExplorador block={block} />;
+    case "eso3-sensor-divisor-explorador":
+      return <SensorDivisorExplorador block={block} />;
+    case "eso3-condensador-explorador":
+      return <CondensadorRcExplorador block={block} />;
+    case "eso3-protoboard-explorador":
+      return <ProtoboardExplorador block={block} />;
+    case "eso3-comparador-explorador":
+      return <ComparadorExplorador block={block} />;
+    case "eso3-luz-automatica-explorador":
+      return <LuzAutomaticaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

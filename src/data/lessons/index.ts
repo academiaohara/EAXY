@@ -169,6 +169,7 @@ import { combinacionesNumerosCombinatorios2bachLesson } from "@/data/lessons/mat
 import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/09-combinatoria-conteo-2bach";
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
+import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
 import { complejosBinomicaOperaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/09-complejos-binomica-operaciones-1bach";
 import { complejosModuloArgumento1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/11-complejos-modulo-argumento-1bach";
 import { complejosPlano1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/10-complejos-plano-1bach";
@@ -185,6 +186,7 @@ import { conceptoMatriz2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { conceptoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/01-concepto-matriz-ccss2";
 import { conceptosEstadistica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/01-conceptos-estadistica-1bach";
 import { conceptosEstadisticaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/01-conceptos-estadistica-ccss1";
+import { condensadorCargaRc3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/06-condensador-carga-rc-3eso";
 import { condicionadaIndependencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/06-condicionada-independencia-1bach";
 import { condicionadaIndependencia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/05-condicionada-independencia-2bach";
 import { condicionadaIndependenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/06-condicionada-independencia-ccss1";
@@ -278,6 +280,7 @@ import { diagramasArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bac
 import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/07-diagramas-bloques";
 import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
+import { diodosLed3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/03-diodos-led-3eso";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
 import { discontinuidadesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/11-discontinuidades-ccss2";
 import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/13-discusion-sistemas-1bach";
@@ -958,12 +961,14 @@ import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-e
 import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/03-proporcionalidad-mx-2eso";
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
+import { protoboardMontajeSimulacion3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/07-protoboard-montaje-simulacion-3eso";
 import { prototipoPruebasMejoras2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/05-prototipo-pruebas-mejoras-2eso";
 import { prototiposEnsayoMejoraLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/07-prototipos-ensayo-mejora";
 import { proyeccionOrtogonalidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/06-proyeccion-ortogonalidad-2bach";
 import { proyeccionPunto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/03-proyeccion-punto-2bach";
 import { proyeccionRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/04-proyeccion-recta-plano-2bach";
 import { proyectoAdivinaNumero2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/08-proyecto-adivina-numero-2eso";
+import { proyectoLuzAutomatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/09-proyecto-luz-automatica-3eso";
 import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/09-pruebas-depuracion-codigo";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
@@ -1041,6 +1046,8 @@ import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-inge
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { residuosReduccionClasificacionLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/04-residuos-reduccion-clasificacion";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
+import { resistenciaConductorOhm3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/01-resistencia-conductor-ohm-3eso";
+import { resistenciasCodigoColores3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/02-resistencias-codigo-colores-3eso";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
@@ -1083,6 +1090,7 @@ import { semirrectasRectaReal4esobLesson } from "@/data/lessons/matematicas-4-es
 import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
 import { senalesAnalogicasDigitalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/06-senales-analogicas-digitales";
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
+import { sensoresDivisorTension3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/05-sensores-divisor-tension-3eso";
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
@@ -1205,6 +1213,7 @@ import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingeni
 import { transformacionMovimiento2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/07-transformacion-movimiento-2eso";
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
+import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
 import { tratamientosPropiedadesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/09-tratamientos-propiedades";
@@ -1430,6 +1439,7 @@ export const interactiveLessons = {
   "combinatoria-conteo-2bach": combinatoriaConteo2bachLesson,
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
+  "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
   "complejos-binomica-operaciones-1bach": complejosBinomicaOperaciones1bachLesson,
   "complejos-modulo-argumento-1bach": complejosModuloArgumento1bachLesson,
   "complejos-plano-1bach": complejosPlano1bachLesson,
@@ -1446,6 +1456,7 @@ export const interactiveLessons = {
   "concepto-matriz-ccss2": conceptoMatrizCcss2Lesson,
   "conceptos-estadistica-1bach": conceptosEstadistica1bachLesson,
   "conceptos-estadistica-ccss1": conceptosEstadisticaCcss1Lesson,
+  "condensador-carga-rc-3eso": condensadorCargaRc3esoLesson,
   "condicionada-independencia-1bach": condicionadaIndependencia1bachLesson,
   "condicionada-independencia-2bach": condicionadaIndependencia2bachLesson,
   "condicionada-independencia-ccss1": condicionadaIndependenciaCcss1Lesson,
@@ -1539,6 +1550,7 @@ export const interactiveLessons = {
   "diagramas-bloques": diagramasBloquesLesson,
   "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
+  "diodos-led-3eso": diodosLed3esoLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
   "discontinuidades-ccss2": discontinuidadesCcss2Lesson,
   "discusion-sistemas-1bach": discusionSistemas1bachLesson,
@@ -2219,12 +2231,14 @@ export const interactiveLessons = {
   "proporcionalidad-mx-2eso": proporcionalidadMx2esoLesson,
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
+  "protoboard-montaje-simulacion-3eso": protoboardMontajeSimulacion3esoLesson,
   "prototipo-pruebas-mejoras-2eso": prototipoPruebasMejoras2esoLesson,
   "prototipos-ensayo-mejora": prototiposEnsayoMejoraLesson,
   "proyeccion-ortogonalidad-2bach": proyeccionOrtogonalidad2bachLesson,
   "proyeccion-punto-2bach": proyeccionPunto2bachLesson,
   "proyeccion-recta-plano-2bach": proyeccionRectaPlano2bachLesson,
   "proyecto-adivina-numero-2eso": proyectoAdivinaNumero2esoLesson,
+  "proyecto-luz-automatica-3eso": proyectoLuzAutomatica3esoLesson,
   "pruebas-depuracion-codigo": pruebasDepuracionCodigoLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
@@ -2302,6 +2316,8 @@ export const interactiveLessons = {
   "residuos-reciclaje": residuosReciclajeLesson,
   "residuos-reduccion-clasificacion": residuosReduccionClasificacionLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
+  "resistencia-conductor-ohm-3eso": resistenciaConductorOhm3esoLesson,
+  "resistencias-codigo-colores-3eso": resistenciasCodigoColores3esoLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
@@ -2344,6 +2360,7 @@ export const interactiveLessons = {
   "senal-analogica-digital": senalAnalogicaDigitalLesson,
   "senales-analogicas-digitales": senalesAnalogicasDigitalesLesson,
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
+  "sensores-divisor-tension-3eso": sensoresDivisorTension3esoLesson,
   "sensores-transductores": sensoresTransductoresLesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
@@ -2466,6 +2483,7 @@ export const interactiveLessons = {
   "transformacion-movimiento-2eso": transformacionMovimiento2esoLesson,
   "transformaciones-gas": transformacionesGasLesson,
   "transformada-laplace": transformadaLaplaceLesson,
+  "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
   "tratamientos-propiedades": tratamientosPropiedadesLesson,

@@ -536,6 +536,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso2-curva-traccion` | Curva tensión-deformación de un ensayo de tracción con sus zonas | — |
 | `eso2-ciclo-diseno` | El proyecto como ciclo: necesidad, ideas, diseño, prototipo, pruebas y mejora | — |
 | `eso2-sincronizacion-nube` | Un cambio en el ordenador se sube a la nube y se descarga en el móvil; cuidado con los borrados | — |
+| `eso3-diodo-sentido` | Diodo y LED: polarización directa e inversa | — |
+| `eso3-transistor-llave` | Transistor NPN: corte y saturación, Ic = β·Ib | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1109,6 +1111,15 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso2-residuos-hogar-explorador` | Porcentaje de residuos del hogar bien separados | `a` % de envases bien separados |
 | `eso2-diseno-universal-explorador` | Alturas de alcance recomendadas para mandos y mostradores | `n` elemento (0–3), `a` altura (cm) |
 | `eso2-huella-digital-explorador` | Datos y energía estimados de ver vídeo en streaming | `a` horas al día, `n` calidad (0–2) |
+| `eso3-conductor-explorador` | Resistencia de un conductor R = ρ·L/S según material, longitud y sección | `n` material (0–3), `a` longitud (m), `b` sección (mm²) |
+| `eso3-codigo-colores-explorador` | Código de colores de una resistencia de cuatro bandas | `a` primera cifra, `b` segunda cifra |
+| `eso3-led-resistencia-explorador` | Resistencia limitadora de un LED y valor E12 | `n` color (0–4), `a` pila (V), `b` corriente (mA) |
+| `eso3-transistor-explorador` | Transistor NPN como interruptor: corriente de base, colector y estado | `a` tensión de entrada (V), `b` corriente de carga (mA) |
+| `eso3-sensor-divisor-explorador` | LDR o NTC en un divisor de tensión | `n` sensor (0/1), `a` luz (lux) |
+| `eso3-condensador-explorador` | Carga de un condensador RC y constante de tiempo | `a` R (kΩ), `b` C (µF) |
+| `eso3-protoboard-explorador` | Nodos de una protoboard: ¿resistencia y LED en serie? | `a` columna del LED, `n` mitad |
+| `eso3-comparador-explorador` | Comparador de tensión normal o inversor | `a` Vin, `b` Vref |
+| `eso3-luz-automatica-explorador` | Luz automática con LDR, potenciómetro y transistor | `a` luz (lux), `b` potenciómetro (kΩ) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
