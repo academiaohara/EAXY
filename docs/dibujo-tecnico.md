@@ -62,3 +62,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 6. Sistema diédrico: relaciones y distancias | Hecho (4 lecciones, `06-sistema-diedrico-relaciones-distancias/`; herramientas `DtDiedrico2Tools.tsx`) |
 | DT I · 7. Sistemas axonométricos | Hecho (5 lecciones, `07-sistemas-axonometricos/`; herramientas `DtAxonometricoTools.tsx`, animación `dt1-axonometria.tsx`) |
 | DT I · 8. Planos acotados y sistema cónico | Hecho (6 lecciones, `08-planos-acotados-conico/`; herramientas `DtAcotadosTools.tsx` y `DtConicoTools.tsx`, animación `dt1-conico.tsx`) |
+| DT I · 9. Normalización y documentación gráfica | Hecho (6 lecciones, `09-normalizacion-documentacion-grafica/`; herramientas `DtNormalizacionTools.tsx`, animación `dt1-vistas.tsx`; bloque `dibujo-normalizacion-documentacion`) |

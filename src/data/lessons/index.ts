@@ -3,6 +3,7 @@ import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industri
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
+import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
@@ -445,6 +446,7 @@ import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
+import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/03-escalas-numericas-graficas-dt1";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { esfuerzosEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/03-esfuerzos-estructuras";
 import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/01-esfuerzos-tension-resistencia-2eso";
@@ -526,6 +528,7 @@ import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-
 import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/06-forma-exponencial-radicales-4esob";
 import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/06-forma-general-recta-3eso";
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
+import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
 import { fraccionesAlgebraicas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/06-fracciones-algebraicas-1bach";
@@ -834,6 +837,7 @@ import { necesidadesRequisitos2esoLesson } from "@/data/lessons/tecnologia-2-eso
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
+import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
 import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
 import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/05-notacion-cientifica-3eso";
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
@@ -1249,6 +1253,7 @@ import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-indu
 import { sensoresDivisorTension3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/05-sensores-divisor-tension-3eso";
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
+import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/06-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
@@ -1434,6 +1439,7 @@ import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenier
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { vistasAlzadoPlantaPerfilLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/05-vistas-alzado-planta-perfil";
 import { vistasNormalizadasCroquis2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/01-vistas-normalizadas-croquis-2eso";
+import { vistasNormalizadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/04-vistas-normalizadas-dt1";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenParalelepipedoTetraedro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/10-volumen-paralelepipedo-tetraedro-2bach";
@@ -1450,6 +1456,7 @@ export const interactiveLessons = {
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
+  "acotacion-normalizada-dt1": acotacionNormalizadaDt1Lesson,
   "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
@@ -1892,6 +1899,7 @@ export const interactiveLessons = {
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "escalas-dibujo": escalasDibujoLesson,
+  "escalas-numericas-graficas-dt1": escalasNumericasGraficasDt1Lesson,
   "esferas-2eso": esferas2esoLesson,
   "esfuerzos-estructuras": esfuerzosEstructurasLesson,
   "esfuerzos-tension-resistencia-2eso": esfuerzosTensionResistencia2esoLesson,
@@ -1973,6 +1981,7 @@ export const interactiveLessons = {
   "forma-exponencial-radicales-4esob": formaExponencialRadicales4esobLesson,
   "forma-general-recta-3eso": formaGeneralRecta3esoLesson,
   "formas-canonicas": formasCanonicasLesson,
+  "formatos-plegado-dt1": formatosPlegadoDt1Lesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
   "fracciones-algebraicas-1bach": fraccionesAlgebraicas1bachLesson,
@@ -2281,6 +2290,7 @@ export const interactiveLessons = {
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
   "normal-estandar-tabla-ccss1": normalEstandarTablaCcss1Lesson,
+  "normalizacion-tipos-linea-dt1": normalizacionTiposLineaDt1Lesson,
   "notacion-cientifica-1bach": notacionCientifica1bachLesson,
   "notacion-cientifica-3eso": notacionCientifica3esoLesson,
   "notacion-cientifica-4eso": notacionCientifica4esoLesson,
@@ -2696,6 +2706,7 @@ export const interactiveLessons = {
   "sensores-divisor-tension-3eso": sensoresDivisorTension3esoLesson,
   "sensores-transductores": sensoresTransductoresLesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
+  "simbologia-industrial-arquitectonica-dt1": simbologiaIndustrialArquitectonicaDt1Lesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,
@@ -2881,6 +2892,7 @@ export const interactiveLessons = {
   "viscosidad-indice": viscosidadIndiceLesson,
   "vistas-alzado-planta-perfil": vistasAlzadoPlantaPerfilLesson,
   "vistas-normalizadas-croquis-2eso": vistasNormalizadasCroquis2esoLesson,
+  "vistas-normalizadas-dt1": vistasNormalizadasDt1Lesson,
   "volumen-esfera-2eso": volumenEsfera2esoLesson,
   "volumen-esfera-3eso": volumenEsfera3esoLesson,
   "volumen-paralelepipedo-tetraedro-2bach": volumenParalelepipedoTetraedro2bachLesson,

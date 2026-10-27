@@ -568,6 +568,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 | `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
+| `dt1-vistas-pieza` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1300,6 +1301,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-cubierta-explorador` | Cubierta a cuatro aguas: altura y longitud de la cumbrera, superficie | `a`, `b` largo y ancho de la planta (m) |
 | `dt1-curvas-nivel-explorador` | Curvas de nivel de una colina elíptica: separación y pendiente | `a` altura de la colina (m) |
 | `dt1-perspectiva-conica-explorador` | Perspectiva cónica frontal y oblicua de una caja: puntos de fuga y caras vistas | `n` modo (0–1), `a` distancia, `b` altura del ojo |
+| `dt1-tipos-linea-explorador` | Tipos de línea normalizados y espesores | `n` tipo de línea (0–6) |
+| `dt1-formatos-explorador` | Formatos de la serie A: dimensiones, superficie y márgenes | `a` formato A (0–6) |
+| `dt1-escala-explorador` | Escala normalizada adecuada y escala gráfica | `a` longitud real (mm), `b` espacio disponible (mm) |
+| `dt1-vistas-explorador` | Alzado, planta y perfil izquierdo de una pieza en L | `a`, `b` largo y ancho (mm) |
+| `dt1-acotacion-sistemas-explorador` | Acotación en cadena y en paralelo: acumulación de tolerancias | `a` número de agujeros |
+| `dt1-simbolos-explorador` | Galería de símbolos eléctricos, arquitectónicos y mecánicos | `n` categoría (0–2) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

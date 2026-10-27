@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TiposLineaDt1Explorador, FormatosDt1Explorador, EscalaDt1Explorador, VistasDt1Explorador, AcotacionSistemasDt1Explorador, SimbolosDt1Explorador } from "@/components/lesson/slide/tools/DtNormalizacionTools";
 import { PerspectivaConicaDt1Explorador } from "@/components/lesson/slide/tools/DtConicoTools";
 import { RectaAcotadaDt1Explorador, PlanoAcotadoDt1Explorador, CubiertaDt1Explorador, CurvasNivelDt1Explorador } from "@/components/lesson/slide/tools/DtAcotadosTools";
 import { AxonometriaOrtogonalDt1Explorador, IsometricaPiezaDt1Explorador, CaballeraDt1Explorador, PuntoPlanoAxoDt1Explorador } from "@/components/lesson/slide/tools/DtAxonometricoTools";
@@ -1930,6 +1931,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CurvasNivelDt1Explorador block={block} />;
     case "dt1-perspectiva-conica-explorador":
       return <PerspectivaConicaDt1Explorador block={block} />;
+    case "dt1-tipos-linea-explorador":
+      return <TiposLineaDt1Explorador block={block} />;
+    case "dt1-formatos-explorador":
+      return <FormatosDt1Explorador block={block} />;
+    case "dt1-escala-explorador":
+      return <EscalaDt1Explorador block={block} />;
+    case "dt1-vistas-explorador":
+      return <VistasDt1Explorador block={block} />;
+    case "dt1-acotacion-sistemas-explorador":
+      return <AcotacionSistemasDt1Explorador block={block} />;
+    case "dt1-simbolos-explorador":
+      return <SimbolosDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

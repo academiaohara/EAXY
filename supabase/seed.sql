@@ -194,7 +194,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000205', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-punto-recta-plano', 'Sistema diédrico: punto, recta y plano', 5),
   ('a2000000-0000-4000-8000-000000000206', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-relaciones-distancias', 'Sistema diédrico: relaciones y distancias', 6),
   ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7),
-  ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8);
+  ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8),
+  ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1638,4 +1639,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020803', 'a2000000-0000-4000-8000-000000000208', '3. Aplicación: cubiertas de edificios', 'Cumbrera, limatesas y superficie del tejado.', 3, null),
   ('a3000000-0000-4000-8000-000000020804', 'a2000000-0000-4000-8000-000000000208', '4. Topografía: curvas de nivel e interpretación de planos', 'Equidistancia, pendiente y relieve.', 4, null),
   ('a3000000-0000-4000-8000-000000020805', 'a2000000-0000-4000-8000-000000000208', '5. Sistema cónico: fundamentos y perspectiva frontal', 'Elementos del sistema y un punto de fuga.', 5, null),
-  ('a3000000-0000-4000-8000-000000020806', 'a2000000-0000-4000-8000-000000000208', '6. Perspectiva cónica oblicua', 'Dos puntos de fuga.', 6, null);
+  ('a3000000-0000-4000-8000-000000020806', 'a2000000-0000-4000-8000-000000000208', '6. Perspectiva cónica oblicua', 'Dos puntos de fuga.', 6, null),
+  ('a3000000-0000-4000-8000-000000020901', 'a2000000-0000-4000-8000-000000000209', '1. Normalización y líneas normalizadas', 'Normas UNE e ISO y tipos de línea.', 1, null),
+  ('a3000000-0000-4000-8000-000000020902', 'a2000000-0000-4000-8000-000000000209', '2. Formatos y doblado de planos', 'Serie A, recuadro y plegado.', 2, null),
+  ('a3000000-0000-4000-8000-000000020903', 'a2000000-0000-4000-8000-000000000209', '3. Escalas numéricas y gráficas', 'Ampliación, reducción y escala gráfica.', 3, null),
+  ('a3000000-0000-4000-8000-000000020904', 'a2000000-0000-4000-8000-000000000209', '4. Vistas de una pieza: elección y disposición', 'Alzado, planta y perfil.', 4, null),
+  ('a3000000-0000-4000-8000-000000020905', 'a2000000-0000-4000-8000-000000000209', '5. Acotación normalizada', 'Cotas, símbolos y sistemas de acotación.', 5, null),
+  ('a3000000-0000-4000-8000-000000020906', 'a2000000-0000-4000-8000-000000000209', '6. Simbología industrial y arquitectónica', 'Símbolos eléctricos, mecánicos y de construcción.', 6, null);

@@ -330,6 +330,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Diédrico, axonométrico, planos acotados y perspectiva cónica.",
     orderIndex: 2,
   },
+  {
+    slug: "dibujo-normalizacion-documentacion",
+    subject: "dibujo",
+    title: "Normalización y documentación gráfica",
+    description: "Escalas, formatos, vistas, líneas normalizadas, acotación y simbología.",
+    orderIndex: 3,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -591,6 +598,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-1-bachillerato/sistema-diedrico-relaciones-distancias": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/sistemas-axonometricos": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/planos-acotados-conico": "dibujo-sistemas-representacion",
+  "dibujo-tecnico-1-bachillerato/normalizacion-documentacion-grafica": "dibujo-normalizacion-documentacion",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",
