@@ -20,6 +20,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["estructuras", 8],
+  ["sistemas-informaticos-emergentes", 8],
 ];
 
 describe("curso Tecnología e Ingeniería II (ampliación)", () => {

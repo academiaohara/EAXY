@@ -181,7 +181,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000130', 'a1000000-0000-4000-8000-000000000020', 'sistemas-informaticos-programacion', 'Sistemas informáticos y programación', 5),
   ('a2000000-0000-4000-8000-000000000131', 'a1000000-0000-4000-8000-000000000020', 'sistemas-automaticos-control', 'Sistemas automáticos', 6),
   ('a2000000-0000-4000-8000-000000000132', 'a1000000-0000-4000-8000-000000000020', 'tecnologia-sostenible', 'Tecnología sostenible', 7),
-  ('a2000000-0000-4000-8000-000000000182', 'a1000000-0000-4000-8000-000000000021', 'estructuras', 'Estructuras', 2);
+  ('a2000000-0000-4000-8000-000000000182', 'a1000000-0000-4000-8000-000000000021', 'estructuras', 'Estructuras', 2),
+  ('a2000000-0000-4000-8000-000000000184', 'a1000000-0000-4000-8000-000000000021', 'sistemas-informaticos-emergentes', 'Sistemas informáticos emergentes', 4);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1562,4 +1563,12 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000018205', 'a2000000-0000-4000-8000-000000000182', '5. Esfuerzos: tracción, compresión y cortadura', 'Tensión normal y cortante.', 5, null),
   ('a3000000-0000-4000-8000-000000018206', 'a2000000-0000-4000-8000-000000000182', '6. Flexión en vigas: momento flector, tensión y flecha', 'Momento flector, inercia y flecha.', 6, null),
   ('a3000000-0000-4000-8000-000000018207', 'a2000000-0000-4000-8000-000000000182', '7. Torsión en ejes', 'Tensión y ángulo de torsión.', 7, null),
-  ('a3000000-0000-4000-8000-000000018208', 'a2000000-0000-4000-8000-000000000182', '8. Estabilidad: pandeo, vuelco y simulación', 'Pandeo de Euler, vuelco y elementos finitos.', 8, null);
+  ('a3000000-0000-4000-8000-000000018208', 'a2000000-0000-4000-8000-000000000182', '8. Estabilidad: pandeo, vuelco y simulación', 'Pandeo de Euler, vuelco y elementos finitos.', 8, null),
+  ('a3000000-0000-4000-8000-000000018401', 'a2000000-0000-4000-8000-000000000184', '1. Arquitectura de sistemas y sistemas distribuidos', 'Cliente-servidor, nube y disponibilidad.', 1, null),
+  ('a3000000-0000-4000-8000-000000018402', 'a2000000-0000-4000-8000-000000000184', '2. Bases de datos relacionales y SQL', 'Tablas, claves y consultas.', 2, null),
+  ('a3000000-0000-4000-8000-000000018403', 'a2000000-0000-4000-8000-000000000184', '3. Big data: tratamiento y gestión de datos', 'Las V del big data y el volumen de datos.', 3, null),
+  ('a3000000-0000-4000-8000-000000018404', 'a2000000-0000-4000-8000-000000000184', '4. Inteligencia artificial y aprendizaje automático', 'Aprendizaje supervisado y redes neuronales.', 4, null),
+  ('a3000000-0000-4000-8000-000000018405', 'a2000000-0000-4000-8000-000000000184', '5. Limitaciones y sesgos de la inteligencia artificial', 'Sesgos, métricas y falsos positivos.', 5, null),
+  ('a3000000-0000-4000-8000-000000018406', 'a2000000-0000-4000-8000-000000000184', '6. Ciberseguridad y criptografía', 'Amenazas, cifrado y contraseñas.', 6, null),
+  ('a3000000-0000-4000-8000-000000018407', 'a2000000-0000-4000-8000-000000000184', '7. Protección de datos y privacidad', 'RGPD, cuasi-identificadores y anonimización.', 7, null),
+  ('a3000000-0000-4000-8000-000000018408', 'a2000000-0000-4000-8000-000000000184', '8. Uso ético y responsable de las tecnologías emergentes', 'Principios éticos, dilemas y responsabilidad.', 8, null);

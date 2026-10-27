@@ -45,3 +45,4 @@ Total previsto: 59 lecciones. Orden de construcción: 3 → 6 → 5 → 1 → 4 
 | Tema | Estado |
 |---|---|
 | 2. Estructuras | Hecho (8 lecciones, `02-estructuras/`; herramientas `TecTi2EstructurasTools.tsx`, animación `tecti2-estructuras.tsx`) |
+| 4. Sistemas informáticos emergentes | Hecho (8 lecciones, `04-sistemas-informaticos-emergentes/`; herramientas `TecTi2InformaticaTools.tsx`, animación `tecti2-informatica.tsx`) |

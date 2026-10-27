@@ -555,6 +555,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-economia-circular` | Economía lineal frente a economía circular: reducir, reutilizar, reparar y reciclar | — |
 | `eso4-flujo-digital` | Flujo de fabricación digital: CAD, CAM, máquina y medida | — |
 | `ti2-cinco-esfuerzos` | Los cinco esfuerzos: tracción, compresión, cortadura, flexión y torsión | — |
+| `ti2-ciclo-aprendizaje` | Ciclo del aprendizaje automático: datos, entrenamiento, modelo, predicción y evaluación | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1229,6 +1230,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `ti2-torsion-explorador` | Eje macizo: tensión cortante máxima y ángulo de torsión | `a` par (N·m) |
 | `ti2-cortadura-explorador` | Tornillos a cortadura: tensión cortante y aplastamiento de la chapa | `a` fuerza (kN) |
 | `ti2-pandeo-vuelco-explorador` | Carga crítica de Euler y coeficiente de vuelco | `n` modo (0–1), `a` longitud (m) |
+| `ti2-disponibilidad-explorador` | Disponibilidad de un servicio replicado y tiempo de transferencia por la red | `a` réplicas |
+| `ti2-sql-explorador` | Consultas SQL (WHERE, ORDER BY, COUNT, SUM, AVG) sobre una tabla de piezas | — |
+| `ti2-volumen-datos-explorador` | Volumen de datos de una red de sensores y coste de almacenamiento | `a` número de sensores |
+| `ti2-clasificador-explorador` | Clasificador lineal de dos clases y perceptrón paso a paso | — |
+| `ti2-confusion-explorador` | Matriz de confusión, exactitud, sensibilidad y precisión según la prevalencia | `a` prevalencia (%) |
+| `ti2-cifrado-explorador` | Cifrado César y tiempo de fuerza bruta de una contraseña | `a` desplazamiento |
+| `ti2-privacidad-explorador` | Personas que comparten una combinación de cuasi-identificadores | `a` código postal (0–1) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

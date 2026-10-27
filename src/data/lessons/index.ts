@@ -85,6 +85,7 @@ import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-
 import { areasYVolumenes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/12-areas-y-volumenes-2bach";
 import { arquitecturaBioclimatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/04-arquitectura-bioclimatica-3eso";
 import { arquitecturaSistemaControl4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/01-arquitectura-sistema-control-4eso";
+import { arquitecturaSistemasDistribuidosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/01-arquitectura-sistemas-distribuidos-ti2";
 import { arquitecturaSistemasInformaticosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/01-arquitectura-sistemas-informaticos";
 import { asignacionProbabilidades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/03-asignacion-probabilidades-1bach";
 import { asignacionProbabilidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/03-asignacion-probabilidades-2bach";
@@ -108,11 +109,13 @@ import { axiomasKolmogorov2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/04-axiomas-kolmogorov-ccss2";
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
+import { basesDatosSqlTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/02-bases-datos-sql-ti2";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
 import { bielaManivelaCremallera4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/03-biela-manivela-cremallera-4eso";
 import { bienestarDigitalPropiedadIntelectualLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/07-bienestar-digital-propiedad-intelectual";
 import { biestableRsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/02-biestable-rs";
 import { biestablesJkDTLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/03-biestables-jk-d-t";
+import { bigDataTratamientoTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/03-big-data-tratamiento-ti2";
 import { binomialANormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/10-binomial-a-normal-2bach";
 import { binomialNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/09-binomial-normal-ccss1";
 import { binomialParametrosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/04-binomial-parametros-ccss1";
@@ -140,6 +143,7 @@ import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-indust
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
+import { ciberseguridadCriptografiaTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/06-ciberseguridad-criptografia-ti2";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
 import { cicloVidaProductoImpacto2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/01-ciclo-vida-producto-impacto-2eso";
 import { cicloVidaSeguridadMateriales4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/07-ciclo-vida-seguridad-materiales-4eso";
@@ -460,6 +464,7 @@ import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { estructuraSistemaControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/02-estructura-sistema-control";
+import { eticaTecnologiasEmergentesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/08-etica-tecnologias-emergentes-ti2";
 import { evaluacionSolucionesSosteniblesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/10-evaluacion-soluciones-sostenibles";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
@@ -588,6 +593,7 @@ import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bac
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
+import { iaLimitacionesSesgosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/05-ia-limitaciones-sesgos-ti2";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
@@ -640,6 +646,7 @@ import { integralesExponencialesTrigonometricasCcss2Lesson } from "@/data/lesson
 import { integralesInmediatasPotencias2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/03-integrales-inmediatas-potencias-2bach";
 import { integralesInmediatasPotenciasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/03-integrales-inmediatas-potencias-ccss2";
 import { integralesRacionales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/08-integrales-racionales-2bach";
+import { inteligenciaArtificialAprendizajeTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/04-inteligencia-artificial-aprendizaje-ti2";
 import { interesBancario4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/08-interes-bancario-4eso";
 import { interesCompuestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/03-interes-compuesto-ccss1";
 import { interesSimpleCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/02-interes-simple-ccss1";
@@ -1040,6 +1047,7 @@ import { proporcionalidadMagnitudesLesson } from "@/data/lessons/matematicas-1-e
 import { proporcionalidadMx2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/03-proporcionalidad-mx-2eso";
 import { proporcionalidadMx3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/01-proporcionalidad-mx-3eso";
 import { proporcionalidadSimple4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/01-proporcionalidad-simple-4eso";
+import { proteccionDatosPrivacidadTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/07-proteccion-datos-privacidad-ti2";
 import { protoboardMontajeSimulacion3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/07-protoboard-montaje-simulacion-3eso";
 import { prototipoPruebasMejoras2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/05-prototipo-pruebas-mejoras-2eso";
 import { prototiposEnsayoMejoraLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/07-prototipos-ensayo-mejora";
@@ -1469,6 +1477,7 @@ export const interactiveLessons = {
   "areas-y-volumenes-2bach": areasYVolumenes2bachLesson,
   "arquitectura-bioclimatica-3eso": arquitecturaBioclimatica3esoLesson,
   "arquitectura-sistema-control-4eso": arquitecturaSistemaControl4esoLesson,
+  "arquitectura-sistemas-distribuidos-ti2": arquitecturaSistemasDistribuidosTi2Lesson,
   "arquitectura-sistemas-informaticos": arquitecturaSistemasInformaticosLesson,
   "asignacion-probabilidades-1bach": asignacionProbabilidades1bachLesson,
   "asignacion-probabilidades-2bach": asignacionProbabilidades2bachLesson,
@@ -1492,11 +1501,13 @@ export const interactiveLessons = {
   "axiomas-kolmogorov-ccss2": axiomasKolmogorovCcss2Lesson,
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
+  "bases-datos-sql-ti2": basesDatosSqlTi2Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
   "biela-manivela-cremallera-4eso": bielaManivelaCremallera4esoLesson,
   "bienestar-digital-propiedad-intelectual": bienestarDigitalPropiedadIntelectualLesson,
   "biestable-rs": biestableRsLesson,
   "biestables-jk-d-t": biestablesJkDTLesson,
+  "big-data-tratamiento-ti2": bigDataTratamientoTi2Lesson,
   "binomial-a-normal-2bach": binomialANormal2bachLesson,
   "binomial-normal-ccss1": binomialNormalCcss1Lesson,
   "binomial-parametros-ccss1": binomialParametrosCcss1Lesson,
@@ -1524,6 +1535,7 @@ export const interactiveLessons = {
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
+  "ciberseguridad-criptografia-ti2": ciberseguridadCriptografiaTi2Lesson,
   "ciclo-carnot": cicloCarnotLesson,
   "ciclo-vida-producto-impacto-2eso": cicloVidaProductoImpacto2esoLesson,
   "ciclo-vida-seguridad-materiales-4eso": cicloVidaSeguridadMateriales4esoLesson,
@@ -1844,6 +1856,7 @@ export const interactiveLessons = {
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
   "estructura-cristalina": estructuraCristalinaLesson,
   "estructura-sistema-control": estructuraSistemaControlLesson,
+  "etica-tecnologias-emergentes-ti2": eticaTecnologiasEmergentesTi2Lesson,
   "evaluacion-soluciones-sostenibles": evaluacionSolucionesSosteniblesLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
@@ -1972,6 +1985,7 @@ export const interactiveLessons = {
   "hiperbola-1bach": hiperbola1bachLesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
+  "ia-limitaciones-sesgos-ti2": iaLimitacionesSesgosTi2Lesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "idea-limite-funcion-ccss1": ideaLimiteFuncionCcss1Lesson,
   "identidades-notables-3eso": identidadesNotables3esoLesson,
@@ -2024,6 +2038,7 @@ export const interactiveLessons = {
   "integrales-inmediatas-potencias-2bach": integralesInmediatasPotencias2bachLesson,
   "integrales-inmediatas-potencias-ccss2": integralesInmediatasPotenciasCcss2Lesson,
   "integrales-racionales-2bach": integralesRacionales2bachLesson,
+  "inteligencia-artificial-aprendizaje-ti2": inteligenciaArtificialAprendizajeTi2Lesson,
   "interes-bancario-4eso": interesBancario4esoLesson,
   "interes-compuesto-ccss1": interesCompuestoCcss1Lesson,
   "interes-simple-ccss1": interesSimpleCcss1Lesson,
@@ -2424,6 +2439,7 @@ export const interactiveLessons = {
   "proporcionalidad-mx-2eso": proporcionalidadMx2esoLesson,
   "proporcionalidad-mx-3eso": proporcionalidadMx3esoLesson,
   "proporcionalidad-simple-4eso": proporcionalidadSimple4esoLesson,
+  "proteccion-datos-privacidad-ti2": proteccionDatosPrivacidadTi2Lesson,
   "protoboard-montaje-simulacion-3eso": protoboardMontajeSimulacion3esoLesson,
   "prototipo-pruebas-mejoras-2eso": prototipoPruebasMejoras2esoLesson,
   "prototipos-ensayo-mejora": prototiposEnsayoMejoraLesson,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DisponibilidadExplorador, SqlExplorador, VolumenDatosExplorador, ClasificadorExplorador, ConfusionExplorador, CifradoExplorador, PrivacidadExplorador } from "@/components/lesson/slide/tools/TecTi2InformaticaTools";
 import { CargaRepartidaExplorador, ReaccionesExplorador, FlexionTi2Explorador, TorsionExplorador, CortaduraExplorador, PandeoVuelcoExplorador } from "@/components/lesson/slide/tools/TecTi2EstructurasTools";
 import { MicrometroExplorador, PolimetroEso4Explorador, ApiladoExplorador, Impresion3dFlujoExplorador, PistaPcbExplorador } from "@/components/lesson/slide/tools/TecEso4TallerTools";
 import { HuellaHogarExplorador, AutoconsumoExplorador, CertificadoExplorador, RepararExplorador, AccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso4SostenibleTools";
@@ -1802,6 +1803,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CortaduraExplorador block={block} />;
     case "ti2-pandeo-vuelco-explorador":
       return <PandeoVuelcoExplorador block={block} />;
+    case "ti2-disponibilidad-explorador":
+      return <DisponibilidadExplorador block={block} />;
+    case "ti2-sql-explorador":
+      return <SqlExplorador block={block} />;
+    case "ti2-volumen-datos-explorador":
+      return <VolumenDatosExplorador block={block} />;
+    case "ti2-clasificador-explorador":
+      return <ClasificadorExplorador block={block} />;
+    case "ti2-confusion-explorador":
+      return <ConfusionExplorador block={block} />;
+    case "ti2-cifrado-explorador":
+      return <CifradoExplorador block={block} />;
+    case "ti2-privacidad-explorador":
+      return <PrivacidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
