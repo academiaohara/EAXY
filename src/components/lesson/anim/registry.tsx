@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildBusquedaBinaria } from "@/components/lesson/anim/scenes/industrial/teceso4-computacional";
 import { buildFuenteAlimentacion } from "@/components/lesson/anim/scenes/industrial/teceso4-electronica";
 import { buildCasaBioclimatica } from "@/components/lesson/anim/scenes/industrial/teceso3-sostenible";
 import { buildFlujoProyecto } from "@/components/lesson/anim/scenes/industrial/teceso3-proyectos";
@@ -777,6 +778,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-flujo-proyecto": () => buildFlujoProyecto(),
   "eso3-casa-bioclimatica": () => buildCasaBioclimatica(),
   "eso4-fuente-alimentacion": () => buildFuenteAlimentacion(),
+  "eso4-busqueda-binaria": () => buildBusquedaBinaria(),
   /* industrial-end */
 };
 

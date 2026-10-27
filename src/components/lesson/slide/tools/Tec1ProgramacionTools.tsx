@@ -640,6 +640,49 @@ export const PROGRAMAS: PyPreset[] = [
     code: "nombre = \"Lucía\"\nedad = 16\naltura = 1.68\nes_estudiante = True\nprint(nombre, edad, altura, es_estudiante)\nprint(edad + altura)\nprint(nombre + str(edad))",
     nota: "Texto (str), entero (int), decimal (float) y lógico (bool). Prueba a cambiar la última línea por nombre + edad y lee el mensaje de error.",
   },
+  {
+    titulo: "Listas: guardar varios datos",
+    code: "datos = [18, 21, 25, 19]\ndatos.append(23)\nprint(\"Hay\", len(datos), \"datos\")\nprint(\"Máximo:\", max(datos), \"Mínimo:\", min(datos))\nprint(\"Media:\", sum(datos) / len(datos))\nprint(\"Primero:\", datos[0], \"Último:\", datos[-1])",
+    nota: "Una lista guarda varios valores en orden. Se accede con un índice que empieza en 0 (y -1 es el último). Prueba a añadir más datos con append.",
+  },
+  {
+    titulo: "Búsqueda lineal",
+    code: "lista = [3, 8, 12, 17, 21, 30]\nobjetivo = 17\nposicion = -1\nfor i in range(len(lista)):\n    if lista[i] == objetivo:\n        posicion = i\n        break\nprint(\"Posición:\", posicion)",
+    inputs: [{ name: "objetivo", label: "objetivo", min: 3, max: 30, step: 1 }],
+    nota: "La búsqueda lineal revisa los elementos uno a uno. Cambia el objetivo (por ejemplo a 30 o a 5) y cuenta cuántos pasos da el programa.",
+  },
+  {
+    titulo: "Búsqueda binaria",
+    code: "lista = [2, 5, 8, 12, 16, 23, 38, 56]\nobjetivo = 23\nbajo = 0\nalto = len(lista) - 1\npasos = 0\nposicion = -1\nwhile bajo <= alto:\n    medio = (bajo + alto) // 2\n    pasos += 1\n    if lista[medio] == objetivo:\n        posicion = medio\n        break\n    elif lista[medio] < objetivo:\n        bajo = medio + 1\n    else:\n        alto = medio - 1\nprint(\"Posición:\", posicion, \"en\", pasos, \"pasos\")",
+    inputs: [{ name: "objetivo", label: "objetivo", min: 2, max: 56, step: 1 }],
+    nota: "Solo funciona con la lista ordenada: se mira el elemento central y se descarta la mitad que no puede contener el objetivo. Compara el número de pasos con el de la búsqueda lineal.",
+  },
+  {
+    titulo: "Ordenar con el método de la burbuja",
+    code: "v = [5, 2, 9, 1]\nn = len(v)\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        if v[j] > v[j + 1]:\n            aux = v[j]\n            v[j] = v[j + 1]\n            v[j + 1] = aux\nprint(v)",
+    nota: "Se comparan elementos vecinos y se intercambian si están mal colocados. Tras cada vuelta del bucle externo, el mayor de los que quedan «sube» al final.",
+  },
+  {
+    titulo: "Funciones y programación modular",
+    code: "def media(lista):\n    return sum(lista) / len(lista)\n\ndef maximo(lista):\n    m = lista[0]\n    for x in lista:\n        if x > m:\n            m = x\n    return m\n\ntemps = [14, 17, 21, 19]\nprint(\"Media:\", media(temps))\nprint(\"Máxima:\", maximo(temps))",
+    nota: "Cada función resuelve una parte del problema y se puede probar por separado y reutilizar. El programa principal queda corto y legible.",
+  },
+  {
+    titulo: "Datos: filtrar y resumir",
+    code: "temps = [12, 14, 9, 17, 21, 25, 19]\numbral = 15\ncalidos = []\nfor t in temps:\n    if t > umbral:\n        calidos.append(t)\nprint(len(calidos), \"días por encima de\", umbral)\nprint(calidos)\nprint(sorted(temps))",
+    inputs: [{ name: "umbral", label: "umbral", min: 5, max: 25, step: 1 }],
+    nota: "Recorrer una lista y quedarse con lo que cumple una condición es la base del tratamiento de datos. Mueve el umbral y mira cómo cambia el resultado.",
+  },
+  {
+    titulo: "Depurar: el máximo falla con negativos",
+    code: "notas = [-4, -9, -2, -7]\nmaximo = 0\nfor x in notas:\n    if x > maximo:\n        maximo = x\nprint(\"Máximo:\", maximo)",
+    nota: "El resultado debería ser -2, pero sale 0: el valor inicial no pertenece a la lista. Arréglalo con maximo = notas[0] y vuelve a ejecutar.",
+  },
+  {
+    titulo: "Depurar: índice fuera de rango",
+    code: "precios = [3, 5, 8]\ntotal = 0\nfor i in range(len(precios) + 1):\n    total += precios[i]\nprint(total)",
+    nota: "El bucle da una vuelta de más y pide un índice que no existe (la lista tiene los índices 0, 1 y 2). Lee el mensaje de error, localiza la línea y corrige el rango.",
+  },
 ];
 
 export function PythonTrazaExplorador({ block }: { block: ToolBlock }) {

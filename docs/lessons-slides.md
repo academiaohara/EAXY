@@ -547,6 +547,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-flujo-proyecto` | Flujo de un proyecto: especificar, simular, construir, probar, documentar y difundir | — |
 | `eso3-casa-bioclimatica` | Casa bioclimática: sol de invierno, sombra de verano, aislamiento y ventilación cruzada | — |
 | `eso4-fuente-alimentacion` | Fuente de alimentación: red alterna, transformador, rectificador y filtro | — |
+| `eso4-busqueda-binaria` | Búsqueda binaria de un número en una lista ordenada de 16 elementos | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1180,6 +1181,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-transistor-explorador` | Resistencia de base para saturar un transistor | `a` corriente de colector (mA), `b` ganancia β |
 | `eso4-555-explorador` | Temporizador 555 astable: frecuencia, periodo y ciclo de trabajo | `a` R2 (kΩ) |
 | `eso4-boole-explorador` | Expresiones booleanas y su tabla de verdad | `n` expresión (0–3) |
+| `eso4-descomposicion-explorador` | Descomposición de un problema en subproblemas | `n` problema (0–2) |
+| `eso4-busqueda-explorador` | Búsqueda lineal frente a binaria: comparaciones realizadas | `a` número buscado |
+| `eso4-ordenacion-explorador` | Ordenación por burbuja paso a paso | `n` lista (0–1) |
+| `eso4-datos-explorador` | Temperaturas mensuales: media, máximo, mínimo y recuento sobre un umbral | `a` umbral (°C) |
+| `eso4-complejidad-explorador` | Operaciones de búsqueda binaria, lineal y burbuja según el número de datos | `a` número de datos |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

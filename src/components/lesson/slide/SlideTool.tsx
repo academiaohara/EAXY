@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DescomposicionExplorador, BusquedaExplorador, OrdenacionExplorador, DatosTemperaturasExplorador, ComplejidadExplorador } from "@/components/lesson/slide/tools/TecEso4ComputacionalTools";
 import { AlternaExplorador, PotenciaEnergiaExplorador, CircuitoMixtoExplorador, FuenteAlimentacionExplorador, TransistorBetaExplorador, Temporizador555Explorador, BooleExplorador } from "@/components/lesson/slide/tools/TecEso4ElectronicaTools";
 import { SolarFvExplorador, EolicaExplorador, AislamientoExplorador, TransporteCo2Explorador, HidraulicaExplorador } from "@/components/lesson/slide/tools/TecEso3SostenibleTools";
 import { EspecificacionesExplorador, SimulacionVigaExplorador, CosteProyectoExplorador } from "@/components/lesson/slide/tools/TecEso3ProyectosTools";
@@ -1712,6 +1713,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <Temporizador555Explorador block={block} />;
     case "eso4-boole-explorador":
       return <BooleExplorador block={block} />;
+    case "eso4-descomposicion-explorador":
+      return <DescomposicionExplorador block={block} />;
+    case "eso4-busqueda-explorador":
+      return <BusquedaExplorador block={block} />;
+    case "eso4-ordenacion-explorador":
+      return <OrdenacionExplorador block={block} />;
+    case "eso4-datos-explorador":
+      return <DatosTemperaturasExplorador block={block} />;
+    case "eso4-complejidad-explorador":
+      return <ComplejidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

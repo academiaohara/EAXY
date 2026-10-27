@@ -119,6 +119,7 @@ import { bucles2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacio
 import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/07-bucles-for-while";
 import { busquedaCreacionContenidos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/04-busqueda-creacion-contenidos-2eso";
 import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
+import { busquedaOrdenacionAlgoritmos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/06-busqueda-ordenacion-algoritmos-4eso";
 import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
@@ -199,6 +200,7 @@ import { condicionadaIndependenciaCcss1Lesson } from "@/data/lessons/matematicas
 import { condicionadaIndependenciaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/05-condicionada-independencia-ccss2";
 import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/06-condicionales-python";
 import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/04-condiciones-2eso";
+import { condicionesBuclesDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/04-condiciones-bucles-datos-4eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
@@ -257,6 +259,7 @@ import { datosAgrupados1bachLesson } from "@/data/lessons/matematicas-1-bachille
 import { datosAgrupadosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/03-datos-agrupados-ccss1";
 import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
 import { dependenciaBaseEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/03-dependencia-base-espacio-2bach";
+import { depuracionProyectoSoftware4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/08-depuracion-proyecto-software-4eso";
 import { depuracionPruebas2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/07-depuracion-pruebas-2eso";
 import { derivabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/04-derivabilidad-1bach";
 import { derivabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/02-derivabilidad-2bach";
@@ -272,6 +275,7 @@ import { derivadaPunto1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { derivadaPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/02-derivada-punto-ccss1";
 import { derivadasTrigInversas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/05-derivadas-trig-inversas-2bach";
 import { desarrolloAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/06-desarrollo-adjuntos-2bach";
+import { descomposicionAlgoritmos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/01-descomposicion-algoritmos-4eso";
 import { desigualdadChebychev2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/05-desigualdad-chebychev-2bach";
 import { desigualdadesInecuaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/04-desigualdades-inecuaciones-1bach";
 import { detOrdenSuperior2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/07-det-orden-superior-2bach";
@@ -524,6 +528,7 @@ import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07
 import { funcionesModularidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/08-funciones-modularidad";
 import { funcionesPolinomicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/07-funciones-polinomicas-2bach";
 import { funcionesPolinomicasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/10-funciones-polinomicas-ccss2";
+import { funcionesProgramacionModular4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/05-funciones-programacion-modular-4eso";
 import { funcionesRacionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/04-funciones-racionales-1bach";
 import { funcionesRacionales2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/08-funciones-racionales-2bach";
 import { funcionesRacionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/04-funciones-racionales-ccss1";
@@ -671,6 +676,7 @@ import { linealTipos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-f
 import { linealTipos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/02-lineal-tipos-4esob";
 import { linealTrozos4esoLesson } from "@/data/lessons/matematicas-4-eso/09-las-funciones-lineales/07-lineal-trozos-4eso";
 import { linealTrozos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/07-lineal-trozos-4esob";
+import { listasEstructurasDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/03-listas-estructuras-datos-4eso";
 import { logaritmosDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/14-logaritmos-definicion-1bach";
 import { logaritmosDefinicionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/14-logaritmos-definicion-ccss1";
 import { logaritmosPropiedades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/15-logaritmos-propiedades-1bach";
@@ -1013,6 +1019,7 @@ import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
+import { pythonVariablesTipos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/02-python-variables-tipos-4eso";
 import { queEsTecnologiaNecesidadesLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/01-que-es-tecnologia-necesidades";
 import { racionalesEquivalentes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/01-racionales-equivalentes-3eso";
 import { racionalesIrracionales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/01-racionales-irracionales-1bach";
@@ -1271,6 +1278,7 @@ import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-es
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
+import { tratamientoDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/07-tratamiento-datos-4eso";
 import { tratamientosPropiedadesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/09-tratamientos-propiedades";
 import { tratamientosTermoquimicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/04-tratamientos-termoquimicos";
 import { trenesEngranajesCajaCambios3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/04-trenes-engranajes-caja-cambios-3eso";
@@ -1446,6 +1454,7 @@ export const interactiveLessons = {
   "bucles-for-while": buclesForWhileLesson,
   "busqueda-creacion-contenidos-2eso": busquedaCreacionContenidos2esoLesson,
   "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
+  "busqueda-ordenacion-algoritmos-4eso": busquedaOrdenacionAlgoritmos4esoLesson,
   "cad-2d-diseno-asistido-2eso": cad2dDisenoAsistido2esoLesson,
   "cad-2d-iniciacion": cad2dIniciacionLesson,
   "cad-3d-extrusion": cad3dExtrusionLesson,
@@ -1526,6 +1535,7 @@ export const interactiveLessons = {
   "condicionada-independencia-ccss2": condicionadaIndependenciaCcss2Lesson,
   "condicionales-python": condicionalesPythonLesson,
   "condiciones-2eso": condiciones2esoLesson,
+  "condiciones-bucles-datos-4eso": condicionesBuclesDatos4esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conicas-3eso": conicas3esoLesson,
@@ -1584,6 +1594,7 @@ export const interactiveLessons = {
   "datos-agrupados-ccss1": datosAgrupadosCcss1Lesson,
   "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
   "dependencia-base-espacio-2bach": dependenciaBaseEspacio2bachLesson,
+  "depuracion-proyecto-software-4eso": depuracionProyectoSoftware4esoLesson,
   "depuracion-pruebas-2eso": depuracionPruebas2esoLesson,
   "derivabilidad-1bach": derivabilidad1bachLesson,
   "derivabilidad-2bach": derivabilidad2bachLesson,
@@ -1599,6 +1610,7 @@ export const interactiveLessons = {
   "derivada-punto-ccss1": derivadaPuntoCcss1Lesson,
   "derivadas-trig-inversas-2bach": derivadasTrigInversas2bachLesson,
   "desarrollo-adjuntos-2bach": desarrolloAdjuntos2bachLesson,
+  "descomposicion-algoritmos-4eso": descomposicionAlgoritmos4esoLesson,
   "desigualdad-chebychev-2bach": desigualdadChebychev2bachLesson,
   "desigualdades-inecuaciones-1bach": desigualdadesInecuaciones1bachLesson,
   "det-orden-superior-2bach": detOrdenSuperior2bachLesson,
@@ -1851,6 +1863,7 @@ export const interactiveLessons = {
   "funciones-modularidad": funcionesModularidadLesson,
   "funciones-polinomicas-2bach": funcionesPolinomicas2bachLesson,
   "funciones-polinomicas-ccss2": funcionesPolinomicasCcss2Lesson,
+  "funciones-programacion-modular-4eso": funcionesProgramacionModular4esoLesson,
   "funciones-racionales-1bach": funcionesRacionales1bachLesson,
   "funciones-racionales-2bach": funcionesRacionales2bachLesson,
   "funciones-racionales-ccss1": funcionesRacionalesCcss1Lesson,
@@ -1998,6 +2011,7 @@ export const interactiveLessons = {
   "lineal-tipos-4esob": linealTipos4esobLesson,
   "lineal-trozos-4eso": linealTrozos4esoLesson,
   "lineal-trozos-4esob": linealTrozos4esobLesson,
+  "listas-estructuras-datos-4eso": listasEstructurasDatos4esoLesson,
   "logaritmos-definicion-1bach": logaritmosDefinicion1bachLesson,
   "logaritmos-definicion-ccss1": logaritmosDefinicionCcss1Lesson,
   "logaritmos-propiedades-1bach": logaritmosPropiedades1bachLesson,
@@ -2340,6 +2354,7 @@ export const interactiveLessons = {
   "puertas-or-and-not": puertasOrAndNotLesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
   "pwm-motores-servos-3eso": pwmMotoresServos3esoLesson,
+  "python-variables-tipos-4eso": pythonVariablesTipos4esoLesson,
   "que-es-tecnologia-necesidades": queEsTecnologiaNecesidadesLesson,
   "racionales-equivalentes-3eso": racionalesEquivalentes3esoLesson,
   "racionales-irracionales-1bach": racionalesIrracionales1bachLesson,
@@ -2598,6 +2613,7 @@ export const interactiveLessons = {
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
+  "tratamiento-datos-4eso": tratamientoDatos4esoLesson,
   "tratamientos-propiedades": tratamientosPropiedadesLesson,
   "tratamientos-termoquimicos": tratamientosTermoquimicosLesson,
   "trenes-engranajes-caja-cambios-3eso": trenesEngranajesCajaCambios3esoLesson,

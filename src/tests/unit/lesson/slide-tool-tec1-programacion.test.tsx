@@ -50,10 +50,11 @@ describe("funciones de cálculo del tema 5", () => {
     expect(r.ram).toBeCloseTo(3.5, 6);
     expect(r.cpu).toBe(20);
   });
-  it("todos los programas de ejemplo se ejecutan, salvo el de error de sintaxis a propósito", () => {
+  it("todos los programas de ejemplo se ejecutan, salvo los de error a propósito (sintaxis e índice fuera de rango)", () => {
     for (const p of PROGRAMAS) {
       const r = runPython(p.code);
       if (p.titulo.includes("sintaxis")) expect(r.error?.kind).toBe("SyntaxError");
+      else if (p.titulo.includes("fuera de rango")) expect(r.error, p.titulo).toBeDefined();
       else if (p.titulo.includes("Tipos")) expect(r.error).toBeUndefined();
       else expect(r.error, p.titulo).toBeUndefined();
     }

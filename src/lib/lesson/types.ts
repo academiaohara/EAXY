@@ -1071,6 +1071,7 @@ export type SlideAnimId =
   | "eso3-flujo-proyecto"
   | "eso3-casa-bioclimatica"
   | "eso4-fuente-alimentacion"
+  | "eso4-busqueda-binaria"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1830,6 +1831,11 @@ export type SlideToolId =
   | "eso4-transistor-explorador"
   | "eso4-555-explorador"
   | "eso4-boole-explorador"
+  | "eso4-descomposicion-explorador"
+  | "eso4-busqueda-explorador"
+  | "eso4-ordenacion-explorador"
+  | "eso4-datos-explorador"
+  | "eso4-complejidad-explorador"
   /* industrial-tool-end */;
 
 /**
