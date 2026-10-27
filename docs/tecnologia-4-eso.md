@@ -26,5 +26,8 @@ Total previsto: 58 lecciones. Orden de construcción: 4 → 5 → 6 → 3 → 2 
 | 5. Pensamiento computacional | Hecho (8 lecciones, `05-pensamiento-computacional/`; herramientas `TecEso4ComputacionalTools.tsx` y 8 programas nuevos en `python-traza-explorador`, animación `teceso4-computacional.tsx`) |
 | 6. Automatización y robótica | Hecho (8 lecciones, `06-automatizacion-robotica/`; herramientas `TecEso4ControlTools.tsx`, animación `teceso4-control.tsx`) |
 | 7. Tecnología sostenible | Hecho (7 lecciones, `07-tecnologia-sostenible/`; herramientas `TecEso4SostenibleTools.tsx`, animación `teceso4-sostenible.tsx`) |
+| 8. Taller, simulación y fabricación digital | Hecho (6 lecciones, `08-taller-simulacion-fabricacion/`; herramientas `TecEso4TallerTools.tsx`, animación `teceso4-taller.tsx`) |
+
+**Curso completo: 8 temas, 58 lecciones.** Mapeo con Asturias (Decreto 59/2022): proyectos de ingeniería → tema 1; materiales y fabricación → temas 2 y 8; sistemas mecánicos → tema 3; electricidad y electrónica → tema 4; pensamiento computacional → tema 5; automatización, robótica e IoT → tema 6; sostenibilidad, accesibilidad y servicio a la comunidad → tema 7.
 
 Test del curso: `src/tests/unit/data/tecnologia-4-eso-lessons.test.tsx` (añadir cada tema a `TEMAS`, en el orden del currículo).

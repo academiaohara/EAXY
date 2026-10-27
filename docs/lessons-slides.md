@@ -553,6 +553,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-ensayo-traccion` | Ensayo de tracción: zona elástica, límite elástico, zona plástica, estricción y rotura | — |
 | `eso4-ciclo-ingenieria` | Ciclo de ingeniería iterativo: necesidad, diseño, prototipo, ensayo y mejora | — |
 | `eso4-economia-circular` | Economía lineal frente a economía circular: reducir, reutilizar, reparar y reciclar | — |
+| `eso4-flujo-digital` | Flujo de fabricación digital: CAD, CAM, máquina y medida | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1216,6 +1217,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-certificado-explorador` | Letra energética de una vivienda según demanda, aislamiento y sistema | `a` demanda (kWh/m²·año) |
 | `eso4-reparar-explorador` | Reparar o comprar nuevo: coste y CO₂ por año de uso | `a` coste de la reparación (€) |
 | `eso4-accesibilidad-explorador` | Pendiente de una rampa y contraste de una pantalla | `n` comprobación (0–1) |
+| `eso4-micrometro-explorador` | Lectura de un micrómetro: cilindro, tambor y medida | `a` medida (mm) |
+| `eso4-polimetro-explorador` | Polímetro: lectura, error absoluto y relativo según el rango | `n` magnitud (0–2) |
+| `eso4-apilado-explorador` | Tolerancias acumuladas en una cadena de piezas: caso peor y estadístico | `n` piezas, `a` tolerancia (mm) |
+| `eso4-impresion-flujo-explorador` | Impresión 3D: caudal, material y tiempo según capa, velocidad y relleno | `a` velocidad (mm/s) |
+| `eso4-pista-explorador` | Ancho, resistencia y caída de tensión de una pista de cobre en una PCB | `a` corriente (A) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

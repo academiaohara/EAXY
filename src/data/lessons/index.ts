@@ -576,6 +576,7 @@ import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bac
 import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
+import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
@@ -592,6 +593,7 @@ import { impactoAmbientalRiesgos3esoLesson } from "@/data/lessons/tecnologia-3-e
 import { impactoSocialAmbientalTecnologia4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/05-impacto-social-ambiental-tecnologia-4eso";
 import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
+import { impresion3dParametros4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/04-impresion-3d-parametros-4eso";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
 import { independenciaNubeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/10-independencia-nube-ccss1";
 import { indeterminacionCeroCero1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/09-indeterminacion-cero-cero-1bach";
@@ -619,6 +621,7 @@ import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
 import { instrumentosDibujoTrazadosLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/01-instrumentos-dibujo-trazados";
 import { instrumentosMedidaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/07-instrumentos-medida-electrica";
+import { instrumentosMedidaMetrologia4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/01-instrumentos-medida-metrologia-4eso";
 import { integracionPorPartes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/07-integracion-por-partes-2bach";
 import { integracionPorPartesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/07-integracion-por-partes-ccss2";
 import { integralDefinidaTfc2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/10-integral-definida-tfc-2bach";
@@ -763,6 +766,7 @@ import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
 import { monotoniaExtremos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/04-monotonia-extremos-2bach";
+import { montajeCircuitosPlacas4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/05-montaje-circuitos-placas-4eso";
 import { montajeCircuitosSencillosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/06-montaje-circuitos-sencillos";
 import { montajeSimulacionSeguridadElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/09-montaje-simulacion-seguridad-electrica";
 import { motorAlternativoTiemposLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/05-motor-alternativo-tiempos";
@@ -1041,6 +1045,7 @@ import { proyectoLuzAutomatica3esoLesson } from "@/data/lessons/tecnologia-3-eso
 import { proyectoMejoraEntorno3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/07-proyecto-mejora-entorno-3eso";
 import { pruebasDepuracionCodigoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/09-pruebas-depuracion-codigo";
 import { pruebasDepuracionRobot3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/08-pruebas-depuracion-robot-3eso";
+import { pruebasDocumentacionProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/06-pruebas-documentacion-proyecto-4eso";
 import { puenteHSentidoGiro3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/05-puente-h-sentido-giro-3eso";
 import { puertasLogicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/04-puertas-logicas-3eso";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
@@ -1191,6 +1196,7 @@ import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { simulacionDigitalSoluciones3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/02-simulacion-digital-soluciones-3eso";
 import { simulacionMontajeProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/09-simulacion-montaje-proyecto-4eso";
 import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
+import { simulacionToleranciasSoftware4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/03-simulacion-tolerancias-software-4eso";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
 import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
@@ -1946,6 +1952,7 @@ export const interactiveLessons = {
   "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
+  "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
@@ -1962,6 +1969,7 @@ export const interactiveLessons = {
   "impacto-social-ambiental-tecnologia-4eso": impactoSocialAmbientalTecnologia4esoLesson,
   "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
+  "impresion-3d-parametros-4eso": impresion3dParametros4esoLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
   "independencia-nube-ccss1": independenciaNubeCcss1Lesson,
   "indeterminacion-cero-cero-1bach": indeterminacionCeroCero1bachLesson,
@@ -1989,6 +1997,7 @@ export const interactiveLessons = {
   "instalacion-frigorifica": instalacionFrigorificaLesson,
   "instrumentos-dibujo-trazados": instrumentosDibujoTrazadosLesson,
   "instrumentos-medida-electrica": instrumentosMedidaElectricaLesson,
+  "instrumentos-medida-metrologia-4eso": instrumentosMedidaMetrologia4esoLesson,
   "integracion-por-partes-2bach": integracionPorPartes2bachLesson,
   "integracion-por-partes-ccss2": integracionPorPartesCcss2Lesson,
   "integral-definida-tfc-2bach": integralDefinidaTfc2bachLesson,
@@ -2133,6 +2142,7 @@ export const interactiveLessons = {
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
   "monotonia-extremos-2bach": monotoniaExtremos2bachLesson,
+  "montaje-circuitos-placas-4eso": montajeCircuitosPlacas4esoLesson,
   "montaje-circuitos-sencillos": montajeCircuitosSencillosLesson,
   "montaje-simulacion-seguridad-electrica": montajeSimulacionSeguridadElectricaLesson,
   "motor-alternativo-tiempos": motorAlternativoTiemposLesson,
@@ -2411,6 +2421,7 @@ export const interactiveLessons = {
   "proyecto-mejora-entorno-3eso": proyectoMejoraEntorno3esoLesson,
   "pruebas-depuracion-codigo": pruebasDepuracionCodigoLesson,
   "pruebas-depuracion-robot-3eso": pruebasDepuracionRobot3esoLesson,
+  "pruebas-documentacion-proyecto-4eso": pruebasDocumentacionProyecto4esoLesson,
   "puente-h-sentido-giro-3eso": puenteHSentidoGiro3esoLesson,
   "puertas-logicas-3eso": puertasLogicas3esoLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
@@ -2561,6 +2572,7 @@ export const interactiveLessons = {
   "simulacion-digital-soluciones-3eso": simulacionDigitalSoluciones3esoLesson,
   "simulacion-montaje-proyecto-4eso": simulacionMontajeProyecto4esoLesson,
   "simulacion-seguridad-electrica-2eso": simulacionSeguridadElectrica2esoLesson,
+  "simulacion-tolerancias-software-4eso": simulacionToleranciasSoftware4esoLesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
   "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
   "sistema-matricial-2bach": sistemaMatricial2bachLesson,

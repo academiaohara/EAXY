@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MicrometroExplorador, PolimetroEso4Explorador, ApiladoExplorador, Impresion3dFlujoExplorador, PistaPcbExplorador } from "@/components/lesson/slide/tools/TecEso4TallerTools";
 import { HuellaHogarExplorador, AutoconsumoExplorador, CertificadoExplorador, RepararExplorador, AccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso4SostenibleTools";
 import { CasaCalidadExplorador, VistasExplorador, PertExplorador, ViabilidadExplorador } from "@/components/lesson/slide/tools/TecEso4ProyectosTools";
 import { HookeEso4Explorador, BrinellEso4Explorador, CharpyEso4Explorador, AceroExplorador, AjusteExplorador, CalidadExplorador } from "@/components/lesson/slide/tools/TecEso4MaterialesTools";
@@ -1778,6 +1779,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RepararExplorador block={block} />;
     case "eso4-accesibilidad-explorador":
       return <AccesibilidadExplorador block={block} />;
+    case "eso4-micrometro-explorador":
+      return <MicrometroExplorador block={block} />;
+    case "eso4-polimetro-explorador":
+      return <PolimetroEso4Explorador block={block} />;
+    case "eso4-apilado-explorador":
+      return <ApiladoExplorador block={block} />;
+    case "eso4-impresion-flujo-explorador":
+      return <Impresion3dFlujoExplorador block={block} />;
+    case "eso4-pista-explorador":
+      return <PistaPcbExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

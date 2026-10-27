@@ -1077,6 +1077,7 @@ export type SlideAnimId =
   | "eso4-ensayo-traccion"
   | "eso4-ciclo-ingenieria"
   | "eso4-economia-circular"
+  | "eso4-flujo-digital"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1866,6 +1867,11 @@ export type SlideToolId =
   | "eso4-certificado-explorador"
   | "eso4-reparar-explorador"
   | "eso4-accesibilidad-explorador"
+  | "eso4-micrometro-explorador"
+  | "eso4-polimetro-explorador"
+  | "eso4-apilado-explorador"
+  | "eso4-impresion-flujo-explorador"
+  | "eso4-pista-explorador"
   /* industrial-tool-end */;
 
 /**

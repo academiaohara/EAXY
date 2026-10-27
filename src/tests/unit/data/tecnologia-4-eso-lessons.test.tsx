@@ -26,6 +26,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["pensamiento-computacional", 8],
   ["automatizacion-robotica", 8],
   ["tecnologia-sostenible", 7],
+  ["taller-simulacion-fabricacion", 6],
 ];
 
 describe("curso Tecnología 4.º ESO (Tecnología)", () => {
