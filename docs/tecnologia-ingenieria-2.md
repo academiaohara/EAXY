@@ -44,6 +44,7 @@ Total previsto: 59 lecciones. Orden de construcción: 3 → 6 → 5 → 1 → 4 
 
 | Tema | Estado |
 |---|---|
+| 1. Proyectos de I+D | Hecho (5 lecciones, `01-proyectos-id/`; herramientas `TecTi2ProyectosTools.tsx`, animación `tecti2-proyectos.tsx`) |
 | 2. Estructuras | Hecho (8 lecciones, `02-estructuras/`; herramientas `TecTi2EstructurasTools.tsx`, animación `tecti2-estructuras.tsx`) |
 | 3. Corriente alterna | Hecho (5 lecciones, `03-corriente-alterna/`; herramientas `TecTi2AlternaTools.tsx`, animación `tecti2-alterna.tsx`) |
 | 4. Sistemas informáticos emergentes | Hecho (8 lecciones, `04-sistemas-informaticos-emergentes/`; herramientas `TecTi2InformaticaTools.tsx`, animación `tecti2-informatica.tsx`) |

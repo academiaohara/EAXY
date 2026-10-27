@@ -557,6 +557,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `ti2-cinco-esfuerzos` | Los cinco esfuerzos: tracción, compresión, cortadura, flexión y torsión | — |
 | `ti2-ciclo-aprendizaje` | Ciclo del aprendizaje automático: datos, entrenamiento, modelo, predicción y evaluación | — |
 | `ti2-fase-carga` | Desfase entre tensión y corriente en una resistencia, una bobina, un condensador y una carga inductiva real | — |
+| `ti2-ciclo-scrum` | Ciclo de Scrum: backlog, planificación, sprint, revisión y retrospectiva | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1243,6 +1244,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `ti2-potencias-explorador` | Triángulo de potencias: activa, reactiva, aparente y factor de potencia | `a` corriente (A), `b` desfase (°) |
 | `ti2-correccion-fp-explorador` | Corrección del factor de potencia: reactiva a compensar, capacidad y corriente ahorrada | `a` potencia (kW) |
 | `ti2-trifasica-explorador` | Receptor trifásico en estrella o triángulo: potencias y magnitudes de fase | `n` conexión (0–1), `a` corriente de línea (A) |
+| `ti2-embudo-explorador` | Embudo de I+D: ideas que llegan al mercado y coste por producto | `a` ideas de partida |
+| `ti2-sprint-explorador` | Backlog, velocidad y burndown de un proyecto con sprints | `a` trabajo total (puntos) |
+| `ti2-kanban-explorador` | Kanban y ley de Little: tiempo de entrega según el WIP | `a` tareas en curso |
+| `ti2-estimacion-pert-explorador` | Estimación a tres puntos de tareas en serie y probabilidad de cumplir el plazo | `a` plazo (días) |
+| `ti2-van-explorador` | Valor actual neto y plazo de recuperación de una inversión | `a` inversión (miles de €) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

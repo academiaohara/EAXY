@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
 import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
 import { DisponibilidadExplorador, SqlExplorador, VolumenDatosExplorador, ClasificadorExplorador, ConfusionExplorador, CifradoExplorador, PrivacidadExplorador } from "@/components/lesson/slide/tools/TecTi2InformaticaTools";
 import { CargaRepartidaExplorador, ReaccionesExplorador, FlexionTi2Explorador, TorsionExplorador, CortaduraExplorador, PandeoVuelcoExplorador } from "@/components/lesson/slide/tools/TecTi2EstructurasTools";
@@ -1828,6 +1829,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CorreccionFpExplorador block={block} />;
     case "ti2-trifasica-explorador":
       return <TrifasicaExplorador block={block} />;
+    case "ti2-embudo-explorador":
+      return <EmbudoExplorador block={block} />;
+    case "ti2-sprint-explorador":
+      return <SprintExplorador block={block} />;
+    case "ti2-kanban-explorador":
+      return <KanbanExplorador block={block} />;
+    case "ti2-estimacion-pert-explorador":
+      return <EstimacionPertExplorador block={block} />;
+    case "ti2-van-explorador":
+      return <VanExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1081,6 +1081,7 @@ export type SlideAnimId =
   | "ti2-cinco-esfuerzos"
   | "ti2-ciclo-aprendizaje"
   | "ti2-fase-carga"
+  | "ti2-ciclo-scrum"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1893,6 +1894,11 @@ export type SlideToolId =
   | "ti2-potencias-explorador"
   | "ti2-correccion-fp-explorador"
   | "ti2-trifasica-explorador"
+  | "ti2-embudo-explorador"
+  | "ti2-sprint-explorador"
+  | "ti2-kanban-explorador"
+  | "ti2-estimacion-pert-explorador"
+  | "ti2-van-explorador"
   /* industrial-tool-end */;
 
 /**

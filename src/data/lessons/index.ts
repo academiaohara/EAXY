@@ -407,6 +407,7 @@ import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologi
 import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
+import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
@@ -426,6 +427,7 @@ import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-
 import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
 import { eolicaHidraulica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/03-eolica-hidraulica-3eso";
 import { equilibrioEstaticoTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/03-equilibrio-estatico-ti2";
+import { equipoDocumentacionVersionesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/04-equipo-documentacion-versiones-ti2";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
@@ -461,6 +463,7 @@ import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13
 import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/08-estadistica-repaso-4esob";
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
+import { estimacionSimulacionPrototiposTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/03-estimacion-simulacion-prototipos-ti2";
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
@@ -672,6 +675,7 @@ import { inversaGaussJordan2bachLesson } from "@/data/lessons/matematicas-2-bach
 import { inversaGaussJordanCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/09-inversa-gauss-jordan-ccss2";
 import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
 import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/12-inversa-hiperbola-4esob";
+import { investigacionDesarrolloInnovacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/01-investigacion-desarrollo-innovacion-ti2";
 import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
@@ -773,6 +777,7 @@ import { metodoSustitucion2esoLesson } from "@/data/lessons/matematicas-2-eso/07
 import { metodoSustitucion3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/04-metodo-sustitucion-3eso";
 import { metodoSustitucion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/03-metodo-sustitucion-4eso";
 import { metodoSustitucion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/08-metodo-sustitucion-4esob";
+import { metodologiasAgilesScrumKanbanTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/02-metodologias-agiles-scrum-kanban-ti2";
 import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
@@ -1804,6 +1809,7 @@ export const interactiveLessons = {
   "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
+  "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
@@ -1823,6 +1829,7 @@ export const interactiveLessons = {
   "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
   "eolica-hidraulica-3eso": eolicaHidraulica3esoLesson,
   "equilibrio-estatico-ti2": equilibrioEstaticoTi2Lesson,
+  "equipo-documentacion-versiones-ti2": equipoDocumentacionVersionesTi2Lesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
@@ -1858,6 +1865,7 @@ export const interactiveLessons = {
   "estadistica-repaso-4esob": estadisticaRepaso4esobLesson,
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
+  "estimacion-simulacion-prototipos-ti2": estimacionSimulacionPrototiposTi2Lesson,
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
   "estructura-cristalina": estructuraCristalinaLesson,
@@ -2069,6 +2077,7 @@ export const interactiveLessons = {
   "inversa-gauss-jordan-ccss2": inversaGaussJordanCcss2Lesson,
   "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
   "inversa-hiperbola-4esob": inversaHiperbola4esobLesson,
+  "investigacion-desarrollo-innovacion-ti2": investigacionDesarrolloInnovacionTi2Lesson,
   "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
@@ -2170,6 +2179,7 @@ export const interactiveLessons = {
   "metodo-sustitucion-3eso": metodoSustitucion3esoLesson,
   "metodo-sustitucion-4eso": metodoSustitucion4esoLesson,
   "metodo-sustitucion-4esob": metodoSustitucion4esobLesson,
+  "metodologias-agiles-scrum-kanban-ti2": metodologiasAgilesScrumKanbanTi2Lesson,
   "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
