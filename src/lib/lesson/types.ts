@@ -1089,6 +1089,7 @@ export type SlideAnimId =
   | "dt1-pentagono-euclides"
   | "dt1-tangentes-punto"
   | "dt1-trazado-ovalo"
+  | "dt1-abatimiento-diedrico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1929,6 +1930,11 @@ export type SlideToolId =
   | "dt1-enlace-explorador"
   | "dt1-ovalo-explorador"
   | "dt1-espiral-evolvente-explorador"
+  | "dt1-diedrico-punto-explorador"
+  | "dt1-recta-diedrico-explorador"
+  | "dt1-posiciones-recta-explorador"
+  | "dt1-plano-diedrico-explorador"
+  | "dt1-pertenencia-plano-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
 import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
 import { PuntosNotablesDt1Explorador, TrianguloDatosDt1Explorador, CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, MetodoGeneralDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
 import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador, ThalesExplorador, MediaProporcionalExplorador, EquivalenciaExplorador, HomoteciaDt1Explorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
@@ -1889,6 +1890,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OvaloDt1Explorador block={block} />;
     case "dt1-espiral-evolvente-explorador":
       return <EspiralEvolventeDt1Explorador block={block} />;
+    case "dt1-diedrico-punto-explorador":
+      return <PuntoDiedricoDt1Explorador block={block} />;
+    case "dt1-recta-diedrico-explorador":
+      return <RectaDiedricoDt1Explorador block={block} />;
+    case "dt1-posiciones-recta-explorador":
+      return <PosicionesRectaDt1Explorador block={block} />;
+    case "dt1-plano-diedrico-explorador":
+      return <PlanoTrazasDt1Explorador block={block} />;
+    case "dt1-pertenencia-plano-explorador":
+      return <PertenenciaPlanoDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

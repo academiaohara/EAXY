@@ -565,6 +565,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
 | `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
 | `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
+| `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1279,6 +1280,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-enlace-explorador` | Enlace tangente entre dos rectas: puntos de tangencia y centro | `a` ángulo (°), `b` radio (cm) |
 | `dt1-ovalo-explorador` | Óvalo de cuatro arcos dados sus semiejes | `a`, `b` semiejes (cm) |
 | `dt1-espiral-evolvente-explorador` | Espiral de dos centros y evolvente de la circunferencia | `n` curva (0–1), `a` semicircunferencias |
+| `dt1-diedrico-punto-explorador` | Épura de un punto: alejamiento, cota y cuadrante | `a` alejamiento, `b` cota (cm) |
+| `dt1-recta-diedrico-explorador` | Proyecciones y trazas de una recta; cuadrantes que atraviesa | `a`, `b` alejamientos de A y B (cm) |
+| `dt1-posiciones-recta-explorador` | Posiciones particulares de la recta y verdadera magnitud | `n` posición (0–6) |
+| `dt1-plano-diedrico-explorador` | Trazas de un plano, tipo e inclinación con los planos de proyección | `a`, `b` ángulos de las trazas (°) |
+| `dt1-pertenencia-plano-explorador` | Pertenencia de un punto a un plano mediante su recta horizontal | `a` x, `b` alejamiento (cm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

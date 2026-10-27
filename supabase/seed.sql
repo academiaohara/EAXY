@@ -190,7 +190,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000201', 'a1000000-0000-4000-8000-000000000022', 'historia-fundamentos-geometricos', 'Historia y fundamentos geométricos', 1),
   ('a2000000-0000-4000-8000-000000000202', 'a1000000-0000-4000-8000-000000000022', 'proporcionalidad-equivalencia-semejanza', 'Proporcionalidad, equivalencia y semejanza', 2),
   ('a2000000-0000-4000-8000-000000000203', 'a1000000-0000-4000-8000-000000000022', 'triangulos-cuadrilateros-poligonos', 'Triángulos, cuadriláteros y polígonos regulares', 3),
-  ('a2000000-0000-4000-8000-000000000204', 'a1000000-0000-4000-8000-000000000022', 'tangencias-curvas-tecnicas', 'Tangencias y curvas técnicas', 4);
+  ('a2000000-0000-4000-8000-000000000204', 'a1000000-0000-4000-8000-000000000022', 'tangencias-curvas-tecnicas', 'Tangencias y curvas técnicas', 4),
+  ('a2000000-0000-4000-8000-000000000205', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-punto-recta-plano', 'Sistema diédrico: punto, recta y plano', 5);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1613,4 +1614,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020402', 'a2000000-0000-4000-8000-000000000204', '2. Circunferencias tangentes y tangentes comunes', 'Posiciones relativas y tangentes comunes.', 2, null),
   ('a3000000-0000-4000-8000-000000020403', 'a2000000-0000-4000-8000-000000000204', '3. Enlaces y problemas de tangencias', 'Enlaces entre rectas y lugares geométricos.', 3, null),
   ('a3000000-0000-4000-8000-000000020404', 'a2000000-0000-4000-8000-000000000204', '4. Curvas técnicas: óvalo y ovoide', 'Óvalo con cuatro arcos y ovoide.', 4, null),
-  ('a3000000-0000-4000-8000-000000020405', 'a2000000-0000-4000-8000-000000000204', '5. Espirales, volutas y evolvente', 'Espirales de dos centros y evolvente.', 5, null);
+  ('a3000000-0000-4000-8000-000000020405', 'a2000000-0000-4000-8000-000000000204', '5. Espirales, volutas y evolvente', 'Espirales de dos centros y evolvente.', 5, null),
+  ('a3000000-0000-4000-8000-000000020501', 'a2000000-0000-4000-8000-000000000205', '1. Fundamentos de la geometría proyectiva y sistema diédrico', 'Proyecciones, planos y abatimiento.', 1, null),
+  ('a3000000-0000-4000-8000-000000020502', 'a2000000-0000-4000-8000-000000000205', '2. Representación del punto. Alejamiento y cota', 'Cuadrantes y proyecciones del punto.', 2, null),
+  ('a3000000-0000-4000-8000-000000020503', 'a2000000-0000-4000-8000-000000000205', '3. Representación de la recta. Trazas', 'Proyecciones y trazas de una recta.', 3, null),
+  ('a3000000-0000-4000-8000-000000020504', 'a2000000-0000-4000-8000-000000000205', '4. Posiciones particulares de la recta', 'Rectas paralelas, perpendiculares y de perfil.', 4, null),
+  ('a3000000-0000-4000-8000-000000020505', 'a2000000-0000-4000-8000-000000000205', '5. Representación del plano. Trazas y tipos', 'Trazas, planos proyectantes e inclinaciones.', 5, null),
+  ('a3000000-0000-4000-8000-000000020506', 'a2000000-0000-4000-8000-000000000205', '6. Pertenencia de punto y recta a un plano', 'Rectas horizontales del plano y pertenencia.', 6, null);

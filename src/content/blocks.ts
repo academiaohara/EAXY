@@ -323,6 +323,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Lugares geométricos, proporcionalidad, polígonos, tangencias y curvas técnicas.",
     orderIndex: 1,
   },
+  {
+    slug: "dibujo-sistemas-representacion",
+    subject: "dibujo",
+    title: "Sistemas de representación",
+    description: "Diédrico, axonométrico, planos acotados y perspectiva cónica.",
+    orderIndex: 2,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -580,6 +587,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-1-bachillerato/proporcionalidad-equivalencia-semejanza": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/triangulos-cuadrilateros-poligonos": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/tangencias-curvas-tecnicas": "dibujo-geometria-plana",
+  "dibujo-tecnico-1-bachillerato/sistema-diedrico-punto-recta-plano": "dibujo-sistemas-representacion",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

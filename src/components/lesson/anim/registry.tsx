@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
 import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
 import { buildPentagonoEuclides } from "@/components/lesson/anim/scenes/industrial/dt1-poligonos";
 import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz, buildSeccionAurea } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
@@ -810,6 +811,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-pentagono-euclides": () => buildPentagonoEuclides(),
   "dt1-tangentes-punto": () => buildTangentesPunto(),
   "dt1-trazado-ovalo": () => buildTrazadoOvalo(),
+  "dt1-abatimiento-diedrico": () => buildAbatimientoDiedrico(),
   /* industrial-end */
 };
 

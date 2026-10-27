@@ -58,3 +58,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 2. Proporcionalidad, equivalencia y semejanza | Hecho (4 lecciones, `02-proporcionalidad-equivalencia-semejanza/`; herramientas en `DtGeometriaTools.tsx`, animación `buildSeccionAurea` en `dt1-geometria.tsx`) |
 | DT I · 3. Triángulos, cuadriláteros y polígonos regulares | Hecho (6 lecciones, `03-triangulos-cuadrilateros-poligonos/`; herramientas `DtPoligonosTools.tsx`, animación `dt1-poligonos.tsx`) |
 | DT I · 4. Tangencias y curvas técnicas | Hecho (5 lecciones, `04-tangencias-curvas-tecnicas/`; herramientas `DtTangenciasTools.tsx`, animaciones `dt1-tangencias.tsx`) |
+| DT I · 5. Sistema diédrico: punto, recta y plano | Hecho (6 lecciones, `05-sistema-diedrico-punto-recta-plano/`; herramientas `DtDiedricoTools.tsx`, animación `dt1-diedrico.tsx`; bloque `dibujo-sistemas-representacion`) |
