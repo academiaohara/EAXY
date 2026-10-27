@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PuntosNotablesDt1Explorador, TrianguloDatosDt1Explorador, CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, MetodoGeneralDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
 import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador, ThalesExplorador, MediaProporcionalExplorador, EquivalenciaExplorador, HomoteciaDt1Explorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
@@ -1865,6 +1866,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <EquivalenciaExplorador block={block} />;
     case "dt1-homotecia-explorador":
       return <HomoteciaDt1Explorador block={block} />;
+    case "dt1-puntos-notables-explorador":
+      return <PuntosNotablesDt1Explorador block={block} />;
+    case "dt1-triangulo-datos-explorador":
+      return <TrianguloDatosDt1Explorador block={block} />;
+    case "dt1-cuadrilatero-explorador":
+      return <CuadrilateroDt1Explorador block={block} />;
+    case "dt1-poligono-regular-explorador":
+      return <PoligonoRegularDt1Explorador block={block} />;
+    case "dt1-metodo-general-explorador":
+      return <MetodoGeneralDt1Explorador block={block} />;
+    case "dt1-estrellado-explorador":
+      return <EstrelladoDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

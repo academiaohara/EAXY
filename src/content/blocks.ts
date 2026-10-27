@@ -578,6 +578,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
   "dibujo-tecnico-1-bachillerato/historia-fundamentos-geometricos": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/proporcionalidad-equivalencia-semejanza": "dibujo-geometria-plana",
+  "dibujo-tecnico-1-bachillerato/triangulos-cuadrilateros-poligonos": "dibujo-geometria-plana",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

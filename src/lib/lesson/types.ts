@@ -1086,6 +1086,7 @@ export type SlideAnimId =
   | "dt1-linea-tiempo-dibujo"
   | "dt1-trazado-arco-capaz"
   | "dt1-seccion-aurea"
+  | "dt1-pentagono-euclides"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1915,6 +1916,12 @@ export type SlideToolId =
   | "dt1-media-proporcional-explorador"
   | "dt1-equivalencia-explorador"
   | "dt1-homotecia-explorador"
+  | "dt1-puntos-notables-explorador"
+  | "dt1-triangulo-datos-explorador"
+  | "dt1-cuadrilatero-explorador"
+  | "dt1-poligono-regular-explorador"
+  | "dt1-metodo-general-explorador"
+  | "dt1-estrellado-explorador"
   /* industrial-tool-end */;
 
 /**

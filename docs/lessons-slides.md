@@ -562,6 +562,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
+| `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1265,6 +1266,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
 | `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
 | `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
+| `dt1-puntos-notables-explorador` | Baricentro, incentro, circuncentro y ortocentro de un triángulo | `n` punto resaltado (0–3) |
+| `dt1-triangulo-datos-explorador` | Existencia, ángulos y clasificación de un triángulo según sus lados | `a`, `b`, `c` (cm) |
+| `dt1-cuadrilatero-explorador` | Tipo, diagonales y área de un paralelogramo | `a`, `b` lados (cm) |
+| `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
+| `dt1-metodo-general-explorador` | Método general de inscripción de polígonos: lado aproximado y error | `n` lados |
+| `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -221,6 +221,8 @@ import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
+import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/05-construccion-poligonos-regulares-dt1";
+import { construccionTriangulosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/02-construccion-triangulos-dt1";
 import { consumoEnergeticoHuella4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/01-consumo-energetico-huella-4eso";
 import { consumoResponsableEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/02-consumo-responsable-eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
@@ -266,6 +268,7 @@ import { cuadGeneral4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-fu
 import { cuadParabola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/01-cuad-parabola-4eso";
 import { cuadParabola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/09-cuad-parabola-4esob";
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
+import { cuadrilaterosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/03-cuadrilateros-dt1";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
 import { cuentasContrasenasDatosPersonalesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/05-cuentas-contrasenas-datos-personales";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
@@ -914,7 +917,9 @@ import { poleasPolipastoBasicoLesson } from "@/data/lessons/tecnologia-1-eso/05-
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
 import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
+import { poligonosDadoLadoEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/06-poligonos-dado-lado-estrellados-dt1";
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
+import { poligonosRegularesPropiedadesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/04-poligonos-regulares-propiedades-dt1";
 import { polimerizacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/04-polimerizacion";
 import { polimerosPlasticosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/07-polimeros-plasticos-tecnicos";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
@@ -1082,6 +1087,7 @@ import { puenteHSentidoGiro3esoLesson } from "@/data/lessons/tecnologia-3-eso/06
 import { puertasLogicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/04-puertas-logicas-3eso";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
+import { puntosNotablesTrianguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/01-puntos-notables-triangulo-dt1";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
 import { pythonVariablesTipos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/02-python-variables-tipos-4eso";
@@ -1636,6 +1642,8 @@ export const interactiveLessons = {
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
+  "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
+  "construccion-triangulos-dt1": construccionTriangulosDt1Lesson,
   "consumo-energetico-huella-4eso": consumoEnergeticoHuella4esoLesson,
   "consumo-responsable-eso": consumoResponsableEsoLesson,
   "continuidad-3eso": continuidad3esoLesson,
@@ -1681,6 +1689,7 @@ export const interactiveLessons = {
   "cuad-parabola-4eso": cuadParabola4esoLesson,
   "cuad-parabola-4esob": cuadParabola4esobLesson,
   "cuadrilateros-2eso": cuadrilateros2esoLesson,
+  "cuadrilateros-dt1": cuadrilaterosDt1Lesson,
   "cuartiles-2eso": cuartiles2esoLesson,
   "cuentas-contrasenas-datos-personales": cuentasContrasenasDatosPersonalesLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
@@ -2329,7 +2338,9 @@ export const interactiveLessons = {
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
   "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
+  "poligonos-dado-lado-estrellados-dt1": poligonosDadoLadoEstrelladosDt1Lesson,
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
+  "poligonos-regulares-propiedades-dt1": poligonosRegularesPropiedadesDt1Lesson,
   "polimerizacion": polimerizacionLesson,
   "polimeros-plasticos-tecnicos": polimerosPlasticosTecnicosLesson,
   "polinomios-2eso": polinomios2esoLesson,
@@ -2497,6 +2508,7 @@ export const interactiveLessons = {
   "puertas-logicas-3eso": puertasLogicas3esoLesson,
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
+  "puntos-notables-triangulo-dt1": puntosNotablesTrianguloDt1Lesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
   "pwm-motores-servos-3eso": pwmMotoresServos3esoLesson,
   "python-variables-tipos-4eso": pythonVariablesTipos4esoLesson,

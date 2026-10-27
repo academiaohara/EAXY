@@ -21,6 +21,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
+  ["triangulos-cuadrilateros-poligonos", 6],
 ];
 
 describe("curso Dibujo Técnico I", () => {

@@ -56,3 +56,4 @@ Total previsto: unas 41 lecciones.
 | Plan | Aprobado por el usuario |
 | DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |
 | DT I · 2. Proporcionalidad, equivalencia y semejanza | Hecho (4 lecciones, `02-proporcionalidad-equivalencia-semejanza/`; herramientas en `DtGeometriaTools.tsx`, animación `buildSeccionAurea` en `dt1-geometria.tsx`) |
+| DT I · 3. Triángulos, cuadriláteros y polígonos regulares | Hecho (6 lecciones, `03-triangulos-cuadrilateros-poligonos/`; herramientas `DtPoligonosTools.tsx`, animación `dt1-poligonos.tsx`) |
