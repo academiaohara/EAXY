@@ -193,7 +193,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000204', 'a1000000-0000-4000-8000-000000000022', 'tangencias-curvas-tecnicas', 'Tangencias y curvas técnicas', 4),
   ('a2000000-0000-4000-8000-000000000205', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-punto-recta-plano', 'Sistema diédrico: punto, recta y plano', 5),
   ('a2000000-0000-4000-8000-000000000206', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-relaciones-distancias', 'Sistema diédrico: relaciones y distancias', 6),
-  ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7);
+  ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7),
+  ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1631,4 +1632,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020702', 'a2000000-0000-4000-8000-000000000207', '2. Axonometría ortogonal: ejes y coeficientes de reducción', 'Isométrica, dimétrica y trimétrica.', 2, null),
   ('a3000000-0000-4000-8000-000000020703', 'a2000000-0000-4000-8000-000000000207', '3. Perspectiva isométrica de piezas', 'Medidas, agujeros y elipses.', 3, null),
   ('a3000000-0000-4000-8000-000000020704', 'a2000000-0000-4000-8000-000000000207', '4. Axonometría oblicua: perspectivas caballera y militar', 'Cara en verdadera forma y reducción.', 4, null),
-  ('a3000000-0000-4000-8000-000000020705', 'a2000000-0000-4000-8000-000000000207', '5. Punto, recta y plano en axonometría', 'Coordenadas, trazas y planos.', 5, null);
+  ('a3000000-0000-4000-8000-000000020705', 'a2000000-0000-4000-8000-000000000207', '5. Punto, recta y plano en axonometría', 'Coordenadas, trazas y planos.', 5, null),
+  ('a3000000-0000-4000-8000-000000020801', 'a2000000-0000-4000-8000-000000000208', '1. Sistema de planos acotados: punto y recta', 'Cotas, pendiente, intervalo y graduación.', 1, null),
+  ('a3000000-0000-4000-8000-000000020802', 'a2000000-0000-4000-8000-000000000208', '2. El plano: horizontales y escala de pendiente', 'Horizontales equidistantes y máxima pendiente.', 2, null),
+  ('a3000000-0000-4000-8000-000000020803', 'a2000000-0000-4000-8000-000000000208', '3. Aplicación: cubiertas de edificios', 'Cumbrera, limatesas y superficie del tejado.', 3, null),
+  ('a3000000-0000-4000-8000-000000020804', 'a2000000-0000-4000-8000-000000000208', '4. Topografía: curvas de nivel e interpretación de planos', 'Equidistancia, pendiente y relieve.', 4, null),
+  ('a3000000-0000-4000-8000-000000020805', 'a2000000-0000-4000-8000-000000000208', '5. Sistema cónico: fundamentos y perspectiva frontal', 'Elementos del sistema y un punto de fuga.', 5, null),
+  ('a3000000-0000-4000-8000-000000020806', 'a2000000-0000-4000-8000-000000000208', '6. Perspectiva cónica oblicua', 'Dos puntos de fuga.', 6, null);

@@ -1091,6 +1091,7 @@ export type SlideAnimId =
   | "dt1-trazado-ovalo"
   | "dt1-abatimiento-diedrico"
   | "dt1-cubo-isometrico"
+  | "dt1-perspectiva-frontal"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1944,6 +1945,11 @@ export type SlideToolId =
   | "dt1-isometrica-pieza-explorador"
   | "dt1-caballera-explorador"
   | "dt1-axo-punto-plano-explorador"
+  | "dt1-recta-acotada-explorador"
+  | "dt1-plano-acotado-explorador"
+  | "dt1-cubierta-explorador"
+  | "dt1-curvas-nivel-explorador"
+  | "dt1-perspectiva-conica-explorador"
   /* industrial-tool-end */;
 
 /**

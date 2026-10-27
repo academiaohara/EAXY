@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildPerspectivaFrontal } from "@/components/lesson/anim/scenes/industrial/dt1-conico";
 import { buildCuboIsometrico } from "@/components/lesson/anim/scenes/industrial/dt1-axonometria";
 import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
 import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
@@ -814,6 +815,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-trazado-ovalo": () => buildTrazadoOvalo(),
   "dt1-abatimiento-diedrico": () => buildAbatimientoDiedrico(),
   "dt1-cubo-isometrico": () => buildCuboIsometrico(),
+  "dt1-perspectiva-frontal": () => buildPerspectivaFrontal(),
   /* industrial-end */
 };
 

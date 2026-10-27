@@ -15,7 +15,7 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 | 5. Sistema diédrico: punto, recta y plano | B | 6: proyecciones, punto, recta, plano, trazas, pertenencia |
 | 6. Diédrico: relaciones y distancias | B | 4: intersecciones, paralelismo, perpendicularidad, distancias |
 | 7. Sistemas axonométricos | B | 5: ortogonal (iso, dimétrica, trimétrica), coeficientes de reducción, caballera, punto/recta/plano |
-| 8. Planos acotados y sistema cónico | B | 5: fundamentos, recta y plano acotados; cónico frontal y oblicuo |
+| 8. Planos acotados y sistema cónico | B | 6: recta y plano acotados, cubiertas, curvas de nivel; cónico frontal y oblicuo |
 | 9. Normalización y documentación gráfica | C | 6: escalas, formatos y doblado, normas UNE/ISO, vistas, líneas, acotación, simbología |
 | 10. Sistemas CAD | D | 4: vectorial 2D, modelado 3D, primitivas y operaciones, trabajo en grupo |
 
@@ -61,3 +61,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 5. Sistema diédrico: punto, recta y plano | Hecho (6 lecciones, `05-sistema-diedrico-punto-recta-plano/`; herramientas `DtDiedricoTools.tsx`, animación `dt1-diedrico.tsx`; bloque `dibujo-sistemas-representacion`) |
 | DT I · 6. Sistema diédrico: relaciones y distancias | Hecho (4 lecciones, `06-sistema-diedrico-relaciones-distancias/`; herramientas `DtDiedrico2Tools.tsx`) |
 | DT I · 7. Sistemas axonométricos | Hecho (5 lecciones, `07-sistemas-axonometricos/`; herramientas `DtAxonometricoTools.tsx`, animación `dt1-axonometria.tsx`) |
+| DT I · 8. Planos acotados y sistema cónico | Hecho (6 lecciones, `08-planos-acotados-conico/`; herramientas `DtAcotadosTools.tsx` y `DtConicoTools.tsx`, animación `dt1-conico.tsx`) |

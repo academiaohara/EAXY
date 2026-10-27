@@ -567,6 +567,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
+| `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1294,6 +1295,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-isometrica-pieza-explorador` | Pieza en isométrica con agujero y elipse según el coeficiente | `a`, `b`, `c` largo, ancho y alto (cm) |
 | `dt1-caballera-explorador` | Pieza en perspectiva caballera: ángulo y coeficiente de reducción | `a`, `b`, `c` largo, profundidad y alto (cm) |
 | `dt1-axo-punto-plano-explorador` | Punto por sus coordenadas y plano por sus trazas en axonometría | `n` modo (0 punto, 1 plano), `a`, `b` coordenadas |
+| `dt1-recta-acotada-explorador` | Recta acotada: pendiente, intervalo, ángulo y graduación | `a`, `b` avance de B en x e y (m) |
+| `dt1-plano-acotado-explorador` | Plano acotado: horizontales, intervalo y máxima pendiente | `a` pendiente (%), `b` rumbo (°) |
+| `dt1-cubierta-explorador` | Cubierta a cuatro aguas: altura y longitud de la cumbrera, superficie | `a`, `b` largo y ancho de la planta (m) |
+| `dt1-curvas-nivel-explorador` | Curvas de nivel de una colina elíptica: separación y pendiente | `a` altura de la colina (m) |
+| `dt1-perspectiva-conica-explorador` | Perspectiva cónica frontal y oblicua de una caja: puntos de fuga y caras vistas | `n` modo (0–1), `a` distancia, `b` altura del ojo |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

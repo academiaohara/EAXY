@@ -272,11 +272,13 @@ import { cuadParabola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-f
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuadrilaterosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/03-cuadrilateros-dt1";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
+import { cubiertasPlanosAcotadosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/03-cubiertas-planos-acotados-dt1";
 import { cuentasContrasenasDatosPersonalesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/05-cuentas-contrasenas-datos-personales";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
+import { curvasNivelInterpretacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/04-curvas-nivel-interpretacion-dt1";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { curvaturaInflexion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/11-curvatura-inflexion-2bach";
 import { curvaturaInflexionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/07-curvatura-inflexion-ccss2";
@@ -907,6 +909,7 @@ import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas
 import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
 import { perspectivaCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/04-perspectiva-caballera-dt1";
+import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/06-perspectiva-conica-oblicua-dt1";
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
@@ -915,10 +918,12 @@ import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnolog
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
 import { planificacionPertCaminoCritico4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/04-planificacion-pert-camino-critico-4eso";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
+import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/02-plano-acotado-horizontales-dt1";
 import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
+import { planosAcotadosRectaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/01-planos-acotados-recta-dt1";
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
 import { plasticosBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/05-plasticos-basico";
@@ -1257,6 +1262,7 @@ import { simulacionDigitalSoluciones3esoLesson } from "@/data/lessons/tecnologia
 import { simulacionMontajeProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/09-simulacion-montaje-proyecto-4eso";
 import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
 import { simulacionToleranciasSoftware4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/03-simulacion-tolerancias-software-4eso";
+import { sistemaConicoFrontalDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/05-sistema-conico-frontal-dt1";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
 import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
@@ -1713,11 +1719,13 @@ export const interactiveLessons = {
   "cuadrilateros-2eso": cuadrilateros2esoLesson,
   "cuadrilateros-dt1": cuadrilaterosDt1Lesson,
   "cuartiles-2eso": cuartiles2esoLesson,
+  "cubiertas-planos-acotados-dt1": cubiertasPlanosAcotadosDt1Lesson,
   "cuentas-contrasenas-datos-personales": cuentasContrasenasDatosPersonalesLesson,
   "cuerpos-geometricos-piramides": cuerposGeometricosPiramidesLesson,
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
+  "curvas-nivel-interpretacion-dt1": curvasNivelInterpretacionDt1Lesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
   "curvatura-inflexion-2bach": curvaturaInflexion2bachLesson,
   "curvatura-inflexion-ccss2": curvaturaInflexionCcss2Lesson,
@@ -2348,6 +2356,7 @@ export const interactiveLessons = {
   "perpendicularidad-diedrico-dt1": perpendicularidadDiedricoDt1Lesson,
   "perspectiva-caballera": perspectivaCaballeraLesson,
   "perspectiva-caballera-dt1": perspectivaCaballeraDt1Lesson,
+  "perspectiva-conica-oblicua-dt1": perspectivaConicaOblicuaDt1Lesson,
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
@@ -2356,10 +2365,12 @@ export const interactiveLessons = {
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
   "planificacion-pert-camino-critico-4eso": planificacionPertCaminoCritico4esoLesson,
   "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
+  "plano-acotado-horizontales-dt1": planoAcotadoHorizontalesDt1Lesson,
   "plano-diedrico-trazas-dt1": planoDiedricoTrazasDt1Lesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
+  "planos-acotados-recta-dt1": planosAcotadosRectaDt1Lesson,
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
   "plasticos-basico": plasticosBasicoLesson,
@@ -2698,6 +2709,7 @@ export const interactiveLessons = {
   "simulacion-montaje-proyecto-4eso": simulacionMontajeProyecto4esoLesson,
   "simulacion-seguridad-electrica-2eso": simulacionSeguridadElectrica2esoLesson,
   "simulacion-tolerancias-software-4eso": simulacionToleranciasSoftware4esoLesson,
+  "sistema-conico-frontal-dt1": sistemaConicoFrontalDt1Lesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
   "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
   "sistema-matricial-2bach": sistemaMatricial2bachLesson,
