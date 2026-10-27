@@ -13,7 +13,7 @@ export const parPotenciaReductoras4esoLesson: InteractiveLesson = {
     ], anim("eso4-reductora-etapas"), "text-top"),
     slide("def", "Par y potencia", [
       { kind: "rule", title: "Potencia mecánica", text: "La potencia de un eje que gira es el par por la velocidad angular.", formula: "P = M · ω" },
-      { kind: "text", text: "En una transmisión sin pérdidas la potencia se conserva: si la velocidad baja, el par sube en la misma proporción. Con pérdidas, **P<sub>salida</sub> = η · P<sub>entrada</sub>**." },
+      { kind: "text", text: "En una transmisión sin pérdidas la potencia se conserva: si la velocidad baja, el par sube en la misma proporción. Con pérdidas, $P_{\\mathrm{salida}}$ = η · $P_{\\mathrm{entrada}}$." },
     ], undefined, "stack"),
     slide("red", "Diseña una reductora", [
       { kind: "text", text: "Elige el número de etapas y su relación. Observa la velocidad, el par y las pérdidas." },

@@ -11,7 +11,7 @@ export const rozamientoPerdidasLubricacion4esoLesson: InteractiveLesson = {
     slide("def", "La fuerza que se opone al movimiento", [
       { kind: "steps", items: [
         "El **rozamiento** es la fuerza que se opone al deslizamiento entre dos superficies.",
-        "**F<sub>r</sub> = μ · N**: depende del coeficiente μ (materiales y estado) y de la fuerza normal N, **no del área** de contacto.",
+        "$F_r$ = μ · N: depende del coeficiente μ (materiales y estado) y de la fuerza normal N, no del área de contacto.",
         "Es **útil** en frenos, neumáticos y correas; es **perjudicial** en cojinetes y engranajes: **pierde energía en forma de calor** y desgasta.",
         "Se reduce con **lubricantes**, **rodamientos** (rodar en vez de deslizar) y **superficies pulidas**.",
       ] },

@@ -20,7 +20,7 @@ export const potenciaEnergiaElectrica4esoLesson: InteractiveLesson = {
       { kind: "steps", items: [
         "Cuando la corriente pasa por un conductor se **calienta**: es el **efecto Joule**, con potencia perdida P = I²·R.",
         "Por eso los cables delgados con mucha corriente se calientan y se protegen con **fusibles** y **magnetotérmicos**.",
-        "El **rendimiento** compara la energía útil con la consumida: η = P<sub>útil</sub> / P<sub>consumida</sub>.",
+        "El rendimiento compara la energía útil con la consumida: η = $P_{\\mathrm{útil}}$ / $P_{\\mathrm{consumida}}$.",
         "Una bombilla LED convierte en luz mucho más energía que una incandescente, que pierde casi todo en calor.",
       ] },
     ]),

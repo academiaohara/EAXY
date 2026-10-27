@@ -174,3 +174,11 @@ export const TECESO4_SUBTITLES = {
   7: "Tecnología 4.º ESO, Tema 7 — Tecnología sostenible",
   8: "Tecnología 4.º ESO, Tema 8 — Taller, simulación y fabricación digital",
 } as const;
+
+export const TECTI2_SUBTITLES = {
+  1: "Tecnología e Ingeniería II (ampliación), Tema 1 — Proyectos de I+D",
+  2: "Tecnología e Ingeniería II (ampliación), Tema 2 — Estructuras",
+  3: "Tecnología e Ingeniería II (ampliación), Tema 3 — Corriente alterna",
+  4: "Tecnología e Ingeniería II (ampliación), Tema 4 — Sistemas informáticos emergentes",
+  5: "Tecnología e Ingeniería II (ampliación), Tema 5 — Impacto y sostenibilidad en ingeniería",
+} as const;

@@ -40,5 +40,8 @@ Total previsto: 59 lecciones. Orden de construcción: 3 → 6 → 5 → 1 → 4 
 
 ## Estado
 
+**Decisión final del usuario («Añade los que faltan»): no se hace el curso completo, sino un curso corto de ampliación `tecnologia-ingenieria-2-bachillerato` con solo los temas que Industrial II no cubre.** Temas: 1 Proyectos de I+D (5), 2 Estructuras (8), 3 Corriente alterna (5), 4 Sistemas informáticos emergentes (8), 5 Impacto y sostenibilidad en ingeniería (5): unas 31 lecciones, `moduleId(180 + n)`, subtítulos `TECTI2_SUBTITLES`, ids `-ti2` y `ti2-`. Orden de construcción: 2 → 4 → 3 → 1 → 5.
+
 | Tema | Estado |
 |---|---|
+| 2. Estructuras | Hecho (8 lecciones, `02-estructuras/`; herramientas `TecTi2EstructurasTools.tsx`, animación `tecti2-estructuras.tsx`) |

@@ -1078,6 +1078,7 @@ export type SlideAnimId =
   | "eso4-ciclo-ingenieria"
   | "eso4-economia-circular"
   | "eso4-flujo-digital"
+  | "ti2-cinco-esfuerzos"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1872,6 +1873,12 @@ export type SlideToolId =
   | "eso4-apilado-explorador"
   | "eso4-impresion-flujo-explorador"
   | "eso4-pista-explorador"
+  | "ti2-carga-repartida-explorador"
+  | "ti2-reacciones-explorador"
+  | "ti2-flexion-explorador"
+  | "ti2-torsion-explorador"
+  | "ti2-cortadura-explorador"
+  | "ti2-pandeo-vuelco-explorador"
   /* industrial-tool-end */;
 
 /**

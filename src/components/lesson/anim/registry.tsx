@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCincoEsfuerzos } from "@/components/lesson/anim/scenes/industrial/tecti2-estructuras";
 import { buildFlujoDigital } from "@/components/lesson/anim/scenes/industrial/teceso4-taller";
 import { buildEconomiaCircular } from "@/components/lesson/anim/scenes/industrial/teceso4-sostenible";
 import { buildCicloIngenieria } from "@/components/lesson/anim/scenes/industrial/teceso4-proyectos";
@@ -791,6 +792,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso4-ciclo-ingenieria": () => buildCicloIngenieria(),
   "eso4-economia-circular": () => buildEconomiaCircular(),
   "eso4-flujo-digital": () => buildFlujoDigital(),
+  "ti2-cinco-esfuerzos": () => buildCincoEsfuerzos(),
   /* industrial-end */
 };
 

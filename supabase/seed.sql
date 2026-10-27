@@ -21,7 +21,8 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000014', 'tecnologia-3-eso', 'Tecnología 3º ESO', 'Tercer curso de Tecnología y Digitalización: proyectos, materiales, mecanismos, electrónica, control, robótica, redes y tecnología sostenible.'),
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología: proyectos de ingeniería, materiales y fabricación, sistemas mecánicos, electrónica, pensamiento computacional, automatización y robótica, tecnología sostenible y taller digital.'),
   ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.'),
-  ('a1000000-0000-4000-8000-000000000020', 'tecnologia-ingenieria-1-bachillerato', 'Tecnología e Ingeniería I 1º Bachillerato', 'Proyectos de investigación y desarrollo, materiales y fabricación, sistemas mecánicos, sistemas eléctricos y electrónicos, programación, sistemas automáticos y tecnología sostenible.');
+  ('a1000000-0000-4000-8000-000000000020', 'tecnologia-ingenieria-1-bachillerato', 'Tecnología e Ingeniería I 1º Bachillerato', 'Proyectos de investigación y desarrollo, materiales y fabricación, sistemas mecánicos, sistemas eléctricos y electrónicos, programación, sistemas automáticos y tecnología sostenible.'),
+  ('a1000000-0000-4000-8000-000000000021', 'tecnologia-ingenieria-2-bachillerato', 'Tecnología e Ingeniería II 2º Bachillerato (ampliación)', 'Ampliación de Tecnología Industrial II con los contenidos de Tecnología e Ingeniería II que ese curso no cubre: estructuras, corriente alterna, sistemas informáticos emergentes, proyectos de I+D y evaluación de impacto.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -179,7 +180,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000129', 'a1000000-0000-4000-8000-000000000020', 'sistemas-electricos-electronicos', 'Sistemas eléctricos y electrónicos', 4),
   ('a2000000-0000-4000-8000-000000000130', 'a1000000-0000-4000-8000-000000000020', 'sistemas-informaticos-programacion', 'Sistemas informáticos y programación', 5),
   ('a2000000-0000-4000-8000-000000000131', 'a1000000-0000-4000-8000-000000000020', 'sistemas-automaticos-control', 'Sistemas automáticos', 6),
-  ('a2000000-0000-4000-8000-000000000132', 'a1000000-0000-4000-8000-000000000020', 'tecnologia-sostenible', 'Tecnología sostenible', 7);
+  ('a2000000-0000-4000-8000-000000000132', 'a1000000-0000-4000-8000-000000000020', 'tecnologia-sostenible', 'Tecnología sostenible', 7),
+  ('a2000000-0000-4000-8000-000000000182', 'a1000000-0000-4000-8000-000000000021', 'estructuras', 'Estructuras', 2);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1552,4 +1554,12 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000013207', 'a2000000-0000-4000-8000-000000000132', '7. Fabricación sostenible y ecodiseño', 'Reducir materiales y energía, diseño modular y reparable.', 7, null),
   ('a3000000-0000-4000-8000-000000013208', 'a2000000-0000-4000-8000-000000000132', '8. Análisis del ciclo de vida', 'Etapas, unidad funcional, límites del análisis e incertidumbres.', 8, null),
   ('a3000000-0000-4000-8000-000000013209', 'a2000000-0000-4000-8000-000000000132', '9. Impacto social, ética y responsabilidad tecnológica', 'Brecha digital, privacidad, empleo y consecuencias no previstas.', 9, null),
-  ('a3000000-0000-4000-8000-000000013210', 'a2000000-0000-4000-8000-000000000132', '10. Evaluación comparativa de soluciones sostenibles', 'Indicadores, ponderaciones y argumentación a partir de datos.', 10, null);
+  ('a3000000-0000-4000-8000-000000013210', 'a2000000-0000-4000-8000-000000000132', '10. Evaluación comparativa de soluciones sostenibles', 'Indicadores, ponderaciones y argumentación a partir de datos.', 10, null),
+  ('a3000000-0000-4000-8000-000000018201', 'a2000000-0000-4000-8000-000000000182', '1. Elementos y tipos de estructuras', 'Vigas, pilares, cerchas y tipos de estructuras.', 1, null),
+  ('a3000000-0000-4000-8000-000000018202', 'a2000000-0000-4000-8000-000000000182', '2. Cargas y fuerzas sobre una estructura', 'Cargas permanentes, variables y resultante.', 2, null),
+  ('a3000000-0000-4000-8000-000000018203', 'a2000000-0000-4000-8000-000000000182', '3. Equilibrio estático', 'Ecuaciones de equilibrio y momentos.', 3, null),
+  ('a3000000-0000-4000-8000-000000018204', 'a2000000-0000-4000-8000-000000000182', '4. Apoyos y reacciones en una viga', 'Tipos de apoyo y reacciones.', 4, null),
+  ('a3000000-0000-4000-8000-000000018205', 'a2000000-0000-4000-8000-000000000182', '5. Esfuerzos: tracción, compresión y cortadura', 'Tensión normal y cortante.', 5, null),
+  ('a3000000-0000-4000-8000-000000018206', 'a2000000-0000-4000-8000-000000000182', '6. Flexión en vigas: momento flector, tensión y flecha', 'Momento flector, inercia y flecha.', 6, null),
+  ('a3000000-0000-4000-8000-000000018207', 'a2000000-0000-4000-8000-000000000182', '7. Torsión en ejes', 'Tensión y ángulo de torsión.', 7, null),
+  ('a3000000-0000-4000-8000-000000018208', 'a2000000-0000-4000-8000-000000000182', '8. Estabilidad: pandeo, vuelco y simulación', 'Pandeo de Euler, vuelco y elementos finitos.', 8, null);

@@ -137,6 +137,7 @@ import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
+import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
@@ -398,6 +399,7 @@ import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-indust
 import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
 import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/05-elementos-soporte-acoplamiento-4eso";
+import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
@@ -418,6 +420,7 @@ import { ensayosEvaluacionDocumentacion4esoLesson } from "@/data/lessons/tecnolo
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
 import { eolicaHidraulica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/03-eolica-hidraulica-3eso";
+import { equilibrioEstaticoTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/03-equilibrio-estatico-ti2";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
@@ -425,6 +428,7 @@ import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresio
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { esfuerzosEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/03-esfuerzos-estructuras";
 import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/01-esfuerzos-tension-resistencia-2eso";
+import { esfuerzosTraccionCompresionCortaduraTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/05-esfuerzos-traccion-compresion-cortadura-ti2";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
 import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/01-especificaciones-tecnicas-3eso";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
@@ -433,6 +437,7 @@ import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
 import { esquemasPolimetro2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/07-esquemas-polimetro-2eso";
 import { estabilidadEstructuras2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/03-estabilidad-estructuras-2eso";
+import { estabilidadPandeoVuelcoTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/08-estabilidad-pandeo-vuelco-ti2";
 import { estabilidadResistenciaLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/04-estabilidad-resistencia";
 import { estabilidadRouthLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/09-estabilidad-routh";
 import { estadisticaCaja4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/07-estadistica-caja-4eso";
@@ -491,6 +496,7 @@ import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematica
 import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { figurasSemejantes2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/03-figuras-semejantes-2eso";
+import { flexionVigasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/06-flexion-vigas-ti2";
 import { fluidosDensidadVaporLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/01-fluidos-densidad-vapor";
 import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/04-forma-exponencial-radicales-4eso";
 import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/06-forma-exponencial-radicales-4esob";
@@ -1078,6 +1084,7 @@ import { rangoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachil
 import { rangoMenores2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/11-rango-menores-2bach";
 import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/12-rango-parametro-2bach";
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
+import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
@@ -1302,6 +1309,7 @@ import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bach
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
 import { toleranciasAjustes4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/04-tolerancias-ajustes-4eso";
 import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
+import { torsionEjesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/07-torsion-ejes-ti2";
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
@@ -1513,6 +1521,7 @@ export const interactiveLessons = {
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
+  "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
   "ciclo-carnot": cicloCarnotLesson,
@@ -1774,6 +1783,7 @@ export const interactiveLessons = {
   "elementos-estructurales": elementosEstructuralesLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
   "elementos-soporte-acoplamiento-4eso": elementosSoporteAcoplamiento4esoLesson,
+  "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
@@ -1794,6 +1804,7 @@ export const interactiveLessons = {
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
   "eolica-hidraulica-3eso": eolicaHidraulica3esoLesson,
+  "equilibrio-estatico-ti2": equilibrioEstaticoTi2Lesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
@@ -1801,6 +1812,7 @@ export const interactiveLessons = {
   "esferas-2eso": esferas2esoLesson,
   "esfuerzos-estructuras": esfuerzosEstructurasLesson,
   "esfuerzos-tension-resistencia-2eso": esfuerzosTensionResistencia2esoLesson,
+  "esfuerzos-traccion-compresion-cortadura-ti2": esfuerzosTraccionCompresionCortaduraTi2Lesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
   "especificaciones-tecnicas-3eso": especificacionesTecnicas3esoLesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
@@ -1809,6 +1821,7 @@ export const interactiveLessons = {
   "esquema-estudio-ccss2": esquemaEstudioCcss2Lesson,
   "esquemas-polimetro-2eso": esquemasPolimetro2esoLesson,
   "estabilidad-estructuras-2eso": estabilidadEstructuras2esoLesson,
+  "estabilidad-pandeo-vuelco-ti2": estabilidadPandeoVuelcoTi2Lesson,
   "estabilidad-resistencia": estabilidadResistenciaLesson,
   "estabilidad-routh": estabilidadRouthLesson,
   "estadistica-caja-4eso": estadisticaCaja4esoLesson,
@@ -1867,6 +1880,7 @@ export const interactiveLessons = {
   "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "figuras-semejantes-2eso": figurasSemejantes2esoLesson,
+  "flexion-vigas-ti2": flexionVigasTi2Lesson,
   "fluidos-densidad-vapor": fluidosDensidadVaporLesson,
   "forma-exponencial-radicales-4eso": formaExponencialRadicales4esoLesson,
   "forma-exponencial-radicales-4esob": formaExponencialRadicales4esobLesson,
@@ -2454,6 +2468,7 @@ export const interactiveLessons = {
   "rango-menores-2bach": rangoMenores2bachLesson,
   "rango-parametro-2bach": rangoParametro2bachLesson,
   "razones-agudas-1bach": razonesAgudas1bachLesson,
+  "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,
@@ -2678,6 +2693,7 @@ export const interactiveLessons = {
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
   "tolerancias-ajustes-4eso": toleranciasAjustes4esoLesson,
   "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,
+  "torsion-ejes-ti2": torsionEjesTi2Lesson,
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,

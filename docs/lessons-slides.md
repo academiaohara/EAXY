@@ -554,6 +554,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-ciclo-ingenieria` | Ciclo de ingeniería iterativo: necesidad, diseño, prototipo, ensayo y mejora | — |
 | `eso4-economia-circular` | Economía lineal frente a economía circular: reducir, reutilizar, reparar y reciclar | — |
 | `eso4-flujo-digital` | Flujo de fabricación digital: CAD, CAM, máquina y medida | — |
+| `ti2-cinco-esfuerzos` | Los cinco esfuerzos: tracción, compresión, cortadura, flexión y torsión | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1222,6 +1223,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-apilado-explorador` | Tolerancias acumuladas en una cadena de piezas: caso peor y estadístico | `n` piezas, `a` tolerancia (mm) |
 | `eso4-impresion-flujo-explorador` | Impresión 3D: caudal, material y tiempo según capa, velocidad y relleno | `a` velocidad (mm/s) |
 | `eso4-pista-explorador` | Ancho, resistencia y caída de tensión de una pista de cobre en una PCB | `a` corriente (A) |
+| `ti2-carga-repartida-explorador` | Resultante y posición de una carga repartida uniforme o triangular | `n` reparto (0–1), `a` carga (kN/m) |
+| `ti2-reacciones-explorador` | Reacciones de una viga biapoyada con carga puntual y uniforme | `a` carga P (kN), `b` posición (m) |
+| `ti2-flexion-explorador` | Viga biapoyada: momento máximo, tensión de flexión y flecha | `n` caso (0–1), `a` carga |
+| `ti2-torsion-explorador` | Eje macizo: tensión cortante máxima y ángulo de torsión | `a` par (N·m) |
+| `ti2-cortadura-explorador` | Tornillos a cortadura: tensión cortante y aplastamiento de la chapa | `a` fuerza (kN) |
+| `ti2-pandeo-vuelco-explorador` | Carga crítica de Euler y coeficiente de vuelco | `n` modo (0–1), `a` longitud (m) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

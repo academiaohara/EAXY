@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CargaRepartidaExplorador, ReaccionesExplorador, FlexionTi2Explorador, TorsionExplorador, CortaduraExplorador, PandeoVuelcoExplorador } from "@/components/lesson/slide/tools/TecTi2EstructurasTools";
 import { MicrometroExplorador, PolimetroEso4Explorador, ApiladoExplorador, Impresion3dFlujoExplorador, PistaPcbExplorador } from "@/components/lesson/slide/tools/TecEso4TallerTools";
 import { HuellaHogarExplorador, AutoconsumoExplorador, CertificadoExplorador, RepararExplorador, AccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso4SostenibleTools";
 import { CasaCalidadExplorador, VistasExplorador, PertExplorador, ViabilidadExplorador } from "@/components/lesson/slide/tools/TecEso4ProyectosTools";
@@ -1789,6 +1790,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <Impresion3dFlujoExplorador block={block} />;
     case "eso4-pista-explorador":
       return <PistaPcbExplorador block={block} />;
+    case "ti2-carga-repartida-explorador":
+      return <CargaRepartidaExplorador block={block} />;
+    case "ti2-reacciones-explorador":
+      return <ReaccionesExplorador block={block} />;
+    case "ti2-flexion-explorador":
+      return <FlexionTi2Explorador block={block} />;
+    case "ti2-torsion-explorador":
+      return <TorsionExplorador block={block} />;
+    case "ti2-cortadura-explorador":
+      return <CortaduraExplorador block={block} />;
+    case "ti2-pandeo-vuelco-explorador":
+      return <PandeoVuelcoExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;
