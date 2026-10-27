@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AlternaExplorador, PotenciaEnergiaExplorador, CircuitoMixtoExplorador, FuenteAlimentacionExplorador, TransistorBetaExplorador, Temporizador555Explorador, BooleExplorador } from "@/components/lesson/slide/tools/TecEso4ElectronicaTools";
 import { SolarFvExplorador, EolicaExplorador, AislamientoExplorador, TransporteCo2Explorador, HidraulicaExplorador } from "@/components/lesson/slide/tools/TecEso3SostenibleTools";
 import { EspecificacionesExplorador, SimulacionVigaExplorador, CosteProyectoExplorador } from "@/components/lesson/slide/tools/TecEso3ProyectosTools";
 import { PrestacionesExplorador, FundicionExplorador, CorteTornoExplorador, UnionExplorador, ImpactoMaterialExplorador, CorteLaserExplorador, MatrizRiesgosExplorador } from "@/components/lesson/slide/tools/TecEso3MaterialesTools";
@@ -1697,6 +1698,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TransporteCo2Explorador block={block} />;
     case "eso3-hidraulica-explorador":
       return <HidraulicaExplorador block={block} />;
+    case "eso4-alterna-explorador":
+      return <AlternaExplorador block={block} />;
+    case "eso4-potencia-explorador":
+      return <PotenciaEnergiaExplorador block={block} />;
+    case "eso4-circuito-mixto-explorador":
+      return <CircuitoMixtoExplorador block={block} />;
+    case "eso4-fuente-explorador":
+      return <FuenteAlimentacionExplorador block={block} />;
+    case "eso4-transistor-explorador":
+      return <TransistorBetaExplorador block={block} />;
+    case "eso4-555-explorador":
+      return <Temporizador555Explorador block={block} />;
+    case "eso4-boole-explorador":
+      return <BooleExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1070,6 +1070,7 @@ export type SlideAnimId =
   | "eso3-fundicion-molde"
   | "eso3-flujo-proyecto"
   | "eso3-casa-bioclimatica"
+  | "eso4-fuente-alimentacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1822,6 +1823,13 @@ export type SlideToolId =
   | "eso3-aislamiento-explorador"
   | "eso3-transporte-explorador"
   | "eso3-hidraulica-explorador"
+  | "eso4-alterna-explorador"
+  | "eso4-potencia-explorador"
+  | "eso4-circuito-mixto-explorador"
+  | "eso4-fuente-explorador"
+  | "eso4-transistor-explorador"
+  | "eso4-555-explorador"
+  | "eso4-boole-explorador"
   /* industrial-tool-end */;
 
 /**

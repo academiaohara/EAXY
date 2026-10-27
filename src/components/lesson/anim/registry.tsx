@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildFuenteAlimentacion } from "@/components/lesson/anim/scenes/industrial/teceso4-electronica";
 import { buildCasaBioclimatica } from "@/components/lesson/anim/scenes/industrial/teceso3-sostenible";
 import { buildFlujoProyecto } from "@/components/lesson/anim/scenes/industrial/teceso3-proyectos";
 import { buildFundicionMolde } from "@/components/lesson/anim/scenes/industrial/teceso3-materiales";
@@ -775,6 +776,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-fundicion-molde": () => buildFundicionMolde(),
   "eso3-flujo-proyecto": () => buildFlujoProyecto(),
   "eso3-casa-bioclimatica": () => buildCasaBioclimatica(),
+  "eso4-fuente-alimentacion": () => buildFuenteAlimentacion(),
   /* industrial-end */
 };
 

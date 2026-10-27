@@ -140,8 +140,10 @@ import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnolo
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
 import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
 import { circuitoElectricoComponentesLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/02-circuito-electrico-componentes";
+import { circuitoIntegradoTemporizador5554esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/06-circuito-integrado-temporizador-555-4eso";
 import { circuitosAplicacionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/10-circuitos-aplicaciones";
 import { circuitosMixtos2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/06-circuitos-mixtos-2eso";
+import { circuitosMixtosKirchhoff4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/03-circuitos-mixtos-kirchhoff-4eso";
 import { circuitosParalelo2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/05-circuitos-paralelo-2eso";
 import { circuitosSerie2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/04-circuitos-serie-2eso";
 import { circuitosSerieParaleloEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/05-circuitos-serie-paralelo-eso";
@@ -218,6 +220,7 @@ import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
 import { correlacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/11-correlacion-1bach";
 import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/11-correlacion-ccss1";
+import { corrienteContinuaAlterna4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/01-corriente-continua-alterna-4eso";
 import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
 import { corrienteElectricaBasicaLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/01-corriente-electrica-basica";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
@@ -367,6 +370,7 @@ import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
+import { electronicaDigitalBoole4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/07-electronica-digital-boole-4eso";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
 import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
@@ -862,6 +866,7 @@ import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
 import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
 import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/03-potencia-energia-electrica-2eso";
+import { potenciaEnergiaElectrica4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/02-potencia-energia-electrica-4eso";
 import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/05-potencia-par-rendimiento-3eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
@@ -1129,6 +1134,7 @@ import { semirrectasRectaReal4esobLesson } from "@/data/lessons/matematicas-4-es
 import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
 import { senalesAnalogicasDigitalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/06-senales-analogicas-digitales";
 import { senalesAnalogicasDigitalesAdc3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/03-senales-analogicas-digitales-adc-3eso";
+import { sensoresActuadoresSistema4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/08-sensores-actuadores-sistema-4eso";
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
 import { sensoresDivisorTension3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/05-sensores-divisor-tension-3eso";
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
@@ -1143,6 +1149,7 @@ import { simplificarExtraerFactores4esoLesson } from "@/data/lessons/matematicas
 import { simplificarExtraerFactores4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/07-simplificar-extraer-factores-4esob";
 import { simplificarRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/10-simplificar-radicales-ccss1";
 import { simulacionDigitalSoluciones3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/02-simulacion-digital-soluciones-3eso";
+import { simulacionMontajeProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/09-simulacion-montaje-proyecto-4eso";
 import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
@@ -1257,6 +1264,8 @@ import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingeni
 import { transformacionMovimiento2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/07-transformacion-movimiento-2eso";
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
+import { transformadorFuenteAlimentacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/04-transformador-fuente-alimentacion-4eso";
+import { transistorGananciaConmutacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/05-transistor-ganancia-conmutacion-4eso";
 import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
@@ -1458,8 +1467,10 @@ export const interactiveLessons = {
   "cilindros-2eso": cilindros2esoLesson,
   "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
   "circuito-electrico-componentes": circuitoElectricoComponentesLesson,
+  "circuito-integrado-temporizador-555-4eso": circuitoIntegradoTemporizador5554esoLesson,
   "circuitos-aplicaciones": circuitosAplicacionesLesson,
   "circuitos-mixtos-2eso": circuitosMixtos2esoLesson,
+  "circuitos-mixtos-kirchhoff-4eso": circuitosMixtosKirchhoff4esoLesson,
   "circuitos-paralelo-2eso": circuitosParalelo2esoLesson,
   "circuitos-serie-2eso": circuitosSerie2esoLesson,
   "circuitos-serie-paralelo-eso": circuitosSerieParaleloEsoLesson,
@@ -1536,6 +1547,7 @@ export const interactiveLessons = {
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
   "correlacion-1bach": correlacion1bachLesson,
   "correlacion-ccss1": correlacionCcss1Lesson,
+  "corriente-continua-alterna-4eso": corrienteContinuaAlterna4esoLesson,
   "corriente-continua-elementos": corrienteContinuaElementosLesson,
   "corriente-electrica-basica": corrienteElectricaBasicaLesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
@@ -1685,6 +1697,7 @@ export const interactiveLessons = {
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
+  "electronica-digital-boole-4eso": electronicaDigitalBoole4esoLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
   "elementos-estructurales": elementosEstructuralesLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
@@ -2180,6 +2193,7 @@ export const interactiveLessons = {
   "potencia-electrica-hidraulica": potenciaElectricaHidraulicaLesson,
   "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
   "potencia-energia-electrica-2eso": potenciaEnergiaElectrica2esoLesson,
+  "potencia-energia-electrica-4eso": potenciaEnergiaElectrica4esoLesson,
   "potencia-par-rendimiento-3eso": potenciaParRendimiento3esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
@@ -2447,6 +2461,7 @@ export const interactiveLessons = {
   "senal-analogica-digital": senalAnalogicaDigitalLesson,
   "senales-analogicas-digitales": senalesAnalogicasDigitalesLesson,
   "senales-analogicas-digitales-adc-3eso": senalesAnalogicasDigitalesAdc3esoLesson,
+  "sensores-actuadores-sistema-4eso": sensoresActuadoresSistema4esoLesson,
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
   "sensores-divisor-tension-3eso": sensoresDivisorTension3esoLesson,
   "sensores-transductores": sensoresTransductoresLesson,
@@ -2461,6 +2476,7 @@ export const interactiveLessons = {
   "simplificar-extraer-factores-4esob": simplificarExtraerFactores4esobLesson,
   "simplificar-radicales-ccss1": simplificarRadicalesCcss1Lesson,
   "simulacion-digital-soluciones-3eso": simulacionDigitalSoluciones3esoLesson,
+  "simulacion-montaje-proyecto-4eso": simulacionMontajeProyecto4esoLesson,
   "simulacion-seguridad-electrica-2eso": simulacionSeguridadElectrica2esoLesson,
   "sistema-inversa-2bach": sistemaInversa2bachLesson,
   "sistema-inversa-ccss2": sistemaInversaCcss2Lesson,
@@ -2575,6 +2591,8 @@ export const interactiveLessons = {
   "transformacion-movimiento-2eso": transformacionMovimiento2esoLesson,
   "transformaciones-gas": transformacionesGasLesson,
   "transformada-laplace": transformadaLaplaceLesson,
+  "transformador-fuente-alimentacion-4eso": transformadorFuenteAlimentacion4esoLesson,
+  "transistor-ganancia-conmutacion-4eso": transistorGananciaConmutacion4esoLesson,
   "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
