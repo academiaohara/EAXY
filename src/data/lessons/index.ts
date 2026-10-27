@@ -431,6 +431,7 @@ import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia
 import { eolicaHidraulica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/03-eolica-hidraulica-3eso";
 import { equilibrioEstaticoTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/03-equilibrio-estatico-ti2";
 import { equipoDocumentacionVersionesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/04-equipo-documentacion-versiones-ti2";
+import { equivalenciaAreasCuadraturaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/03-equivalencia-areas-cuadratura-dt1";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
@@ -765,6 +766,7 @@ import { mecanizadoTornoFresadoraTaladro3esoLesson } from "@/data/lessons/tecnol
 import { mediaMedianaModa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/05-media-mediana-moda-1bach";
 import { mediaMedianaModa2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/03-media-mediana-moda-2eso";
 import { mediaMedianaModaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/05-media-mediana-moda-ccss1";
+import { mediaProporcionalSeccionAureaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/02-media-proporcional-seccion-aurea-dt1";
 import { mediaVarianza2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/02-media-varianza-2bach";
 import { mediatrizBisectriz1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/08-mediatriz-bisectriz-1bach";
 import { medicionMarcadoPieDeRey2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/07-medicion-marcado-pie-de-rey-2eso";
@@ -1196,6 +1198,7 @@ import { semejanzaFiguras4esoLesson } from "@/data/lessons/matematicas-4-eso/11-
 import { semejanzaFiguras4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/01-semejanza-figuras-4esob";
 import { semejanzaHomotecia4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/08-semejanza-homotecia-4eso";
 import { semejanzaHomotecia4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/08-semejanza-homotecia-4esob";
+import { semejanzaHomoteciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/04-semejanza-homotecia-dt1";
 import { semejanzaRazones4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/03-semejanza-razones-4eso";
 import { semejanzaRazones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/03-semejanza-razones-4esob";
 import { semejanzaRectangulos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/06-semejanza-rectangulos-4eso";
@@ -1322,6 +1325,7 @@ import { teoremaPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-
 import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/01-teorema-pitagoras-3eso";
 import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
+import { teoremaThalesDivisionSegmentosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/01-teorema-thales-division-segmentos-dt1";
 import { teoremasContinuas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/11-teoremas-continuas-2bach";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { textilesPetreosCeramicosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/06-textiles-petreos-ceramicos";
@@ -1842,6 +1846,7 @@ export const interactiveLessons = {
   "eolica-hidraulica-3eso": eolicaHidraulica3esoLesson,
   "equilibrio-estatico-ti2": equilibrioEstaticoTi2Lesson,
   "equipo-documentacion-versiones-ti2": equipoDocumentacionVersionesTi2Lesson,
+  "equivalencia-areas-cuadratura-dt1": equivalenciaAreasCuadraturaDt1Lesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
@@ -2176,6 +2181,7 @@ export const interactiveLessons = {
   "media-mediana-moda-1bach": mediaMedianaModa1bachLesson,
   "media-mediana-moda-2eso": mediaMedianaModa2esoLesson,
   "media-mediana-moda-ccss1": mediaMedianaModaCcss1Lesson,
+  "media-proporcional-seccion-aurea-dt1": mediaProporcionalSeccionAureaDt1Lesson,
   "media-varianza-2bach": mediaVarianza2bachLesson,
   "mediatriz-bisectriz-1bach": mediatrizBisectriz1bachLesson,
   "medicion-marcado-pie-de-rey-2eso": medicionMarcadoPieDeRey2esoLesson,
@@ -2607,6 +2613,7 @@ export const interactiveLessons = {
   "semejanza-figuras-4esob": semejanzaFiguras4esobLesson,
   "semejanza-homotecia-4eso": semejanzaHomotecia4esoLesson,
   "semejanza-homotecia-4esob": semejanzaHomotecia4esobLesson,
+  "semejanza-homotecia-dt1": semejanzaHomoteciaDt1Lesson,
   "semejanza-razones-4eso": semejanzaRazones4esoLesson,
   "semejanza-razones-4esob": semejanzaRazones4esobLesson,
   "semejanza-rectangulos-4eso": semejanzaRectangulos4esoLesson,
@@ -2733,6 +2740,7 @@ export const interactiveLessons = {
   "teorema-pitagoras-3eso": teoremaPitagoras3esoLesson,
   "teorema-seno-1bach": teoremaSeno1bachLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
+  "teorema-thales-division-segmentos-dt1": teoremaThalesDivisionSegmentosDt1Lesson,
   "teoremas-continuas-2bach": teoremasContinuas2bachLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "textiles-petreos-ceramicos": textilesPetreosCeramicosLesson,

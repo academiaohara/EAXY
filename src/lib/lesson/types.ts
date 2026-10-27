@@ -1085,6 +1085,7 @@ export type SlideAnimId =
   | "ti2-fases-eia"
   | "dt1-linea-tiempo-dibujo"
   | "dt1-trazado-arco-capaz"
+  | "dt1-seccion-aurea"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1910,6 +1911,10 @@ export type SlideToolId =
   | "dt1-pitagoras-explorador"
   | "dt1-lugar-geometrico-explorador"
   | "dt1-arco-capaz-explorador"
+  | "dt1-thales-explorador"
+  | "dt1-media-proporcional-explorador"
+  | "dt1-equivalencia-explorador"
+  | "dt1-homotecia-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -187,7 +187,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000183', 'a1000000-0000-4000-8000-000000000021', 'corriente-alterna', 'Corriente alterna', 3),
   ('a2000000-0000-4000-8000-000000000184', 'a1000000-0000-4000-8000-000000000021', 'sistemas-informaticos-emergentes', 'Sistemas informáticos emergentes', 4),
   ('a2000000-0000-4000-8000-000000000185', 'a1000000-0000-4000-8000-000000000021', 'impacto-sostenibilidad-ingenieria', 'Impacto y sostenibilidad en ingeniería', 5),
-  ('a2000000-0000-4000-8000-000000000201', 'a1000000-0000-4000-8000-000000000022', 'historia-fundamentos-geometricos', 'Historia y fundamentos geométricos', 1);
+  ('a2000000-0000-4000-8000-000000000201', 'a1000000-0000-4000-8000-000000000022', 'historia-fundamentos-geometricos', 'Historia y fundamentos geométricos', 1),
+  ('a2000000-0000-4000-8000-000000000202', 'a1000000-0000-4000-8000-000000000022', 'proporcionalidad-equivalencia-semejanza', 'Proporcionalidad, equivalencia y semejanza', 2);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1595,4 +1596,8 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020101', 'a2000000-0000-4000-8000-000000000201', '1. Historia del dibujo técnico y campos de acción', 'Hitos históricos y campos de aplicación.', 1, null),
   ('a3000000-0000-4000-8000-000000020102', 'a2000000-0000-4000-8000-000000000201', '2. Orígenes de la geometría: Thales, Pitágoras, Euclides e Hipatia', 'Aportaciones griegas y Pitágoras.', 2, null),
   ('a3000000-0000-4000-8000-000000020103', 'a2000000-0000-4000-8000-000000000201', '3. Lugares geométricos fundamentales', 'Circunferencia, mediatriz, bisectriz y paralelas.', 3, null),
-  ('a3000000-0000-4000-8000-000000020104', 'a2000000-0000-4000-8000-000000000201', '4. Arco capaz y aplicaciones de los lugares geométricos', 'Arco capaz, radio y construcción.', 4, null);
+  ('a3000000-0000-4000-8000-000000020104', 'a2000000-0000-4000-8000-000000000201', '4. Arco capaz y aplicaciones de los lugares geométricos', 'Arco capaz, radio y construcción.', 4, null),
+  ('a3000000-0000-4000-8000-000000020201', 'a2000000-0000-4000-8000-000000000202', '1. Proporcionalidad y teorema de Thales', 'Cuarta proporcional y división de segmentos.', 1, null),
+  ('a3000000-0000-4000-8000-000000020202', 'a2000000-0000-4000-8000-000000000202', '2. Tercera y media proporcional. Sección áurea', 'Teorema de la altura y número áureo.', 2, null),
+  ('a3000000-0000-4000-8000-000000020203', 'a2000000-0000-4000-8000-000000000202', '3. Equivalencia de figuras y cuadratura', 'Figuras de igual área y cuadrado equivalente.', 3, null),
+  ('a3000000-0000-4000-8000-000000020204', 'a2000000-0000-4000-8000-000000000202', '4. Semejanza y homotecia', 'Razón de semejanza, áreas y volúmenes, homotecia.', 4, null);

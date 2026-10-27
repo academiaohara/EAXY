@@ -1,5 +1,5 @@
 // industrial-imports
-import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
+import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz, buildSeccionAurea } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
 import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
 import { buildCicloScrum } from "@/components/lesson/anim/scenes/industrial/tecti2-proyectos";
 import { buildFaseCarga } from "@/components/lesson/anim/scenes/industrial/tecti2-alterna";
@@ -804,6 +804,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "ti2-fases-eia": () => buildFasesEia(),
   "dt1-linea-tiempo-dibujo": () => buildLineaTiempoDibujo(),
   "dt1-trazado-arco-capaz": () => buildTrazadoArcoCapaz(),
+  "dt1-seccion-aurea": () => buildSeccionAurea(),
   /* industrial-end */
 };
 

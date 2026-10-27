@@ -561,6 +561,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `ti2-fases-eia` | Evaluación de impacto ambiental: identificar, valorar, corregir y vigilar | — |
 | `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
+| `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1260,6 +1261,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-pitagoras-explorador` | Cuadrados sobre los catetos y la hipotenusa; ternas pitagóricas | `a`, `b` catetos (cm) |
 | `dt1-lugar-geometrico-explorador` | Comprobar si un punto pertenece a una circunferencia, mediatriz, bisectriz o paralelas | `n` lugar (0–3) |
 | `dt1-arco-capaz-explorador` | Arco capaz de un ángulo sobre un segmento: radio, centro y ángulo desde P | `a` ángulo α (°) |
+| `dt1-thales-explorador` | Teorema de Thales: razones entre segmentos y cuarta proporcional | `a`, `b`, `c` (cm) |
+| `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
+| `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
+| `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

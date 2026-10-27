@@ -274,3 +274,220 @@ export function ArcoCapazExplorador({ block }: { block: ToolBlock }) {
     </Frame>
   );
 }
+
+/* ═════════════ Tema 2: proporcionalidad, equivalencia y semejanza ═════════════ */
+
+/** Cuarta proporcional x en a/b = c/x, es decir x = b·c/a (NaN si a = 0). */
+export const cuartaProporcional = (a: number, b: number, c: number) => (a !== 0 ? (b * c) / a : NaN);
+/** Tercera proporcional x en a/b = b/x, es decir x = b²/a. */
+export const terceraProporcional = (a: number, b: number) => cuartaProporcional(a, b, b);
+/** Media proporcional x en a/x = x/b, es decir x = √(a·b). */
+export const mediaProporcional = (a: number, b: number) => (a >= 0 && b >= 0 ? Math.sqrt(a * b) : NaN);
+export const PHI = (1 + Math.sqrt(5)) / 2;
+/** Parte áurea de un segmento de longitud a: el mayor trozo x con a/x = x/(a − x). */
+export const segmentoAureo = (a: number) => a / PHI;
+export const areaTriangulo = (base: number, altura: number) => (base * altura) / 2;
+/** Lado del cuadrado de igual área que un rectángulo b × h. */
+export const ladoCuadradoEquivalente = (b: number, h: number) => mediaProporcional(b, h);
+/** Altura que debe tener un triángulo de base `base` para tener la misma área que un rectángulo b × h. */
+export const alturaTrianguloEquivalente = (base: number, b: number, h: number) => (base > 0 ? (2 * b * h) / base : NaN);
+/** Imagen de un punto en la homotecia de centro O y razón k. */
+export const homotecia = (p: Pt, o: Pt, k: number): Pt => [o[0] + k * (p[0] - o[0]), o[1] + k * (p[1] - o[1])];
+export const razonAreas = (k: number) => k * k;
+export const razonVolumenes = (k: number) => Math.abs(k * k * k);
+
+/* ───────────── 4. Teorema de Thales: segmentos proporcionales ───────────── */
+
+export function ThalesExplorador({ block }: { block: ToolBlock }) {
+  const init = { a: Math.round(num(block.params?.a, 3, 1, 8)), b: Math.round(num(block.params?.b, 2, 1, 8)), c: Math.round(num(block.params?.c, 5, 1, 10)) };
+  const [s, setS] = useState(init);
+  const d = cuartaProporcional(s.a, s.b, s.c);
+  const O: Pt = [90, 245];
+  const u = 235 / Math.max(s.a + s.b, s.c + d, 1);
+  const dir1 = (-10 * Math.PI) / 180;
+  const dir2 = (-48 * Math.PI) / 180;
+  const at = (len: number, dir: number): Pt => [O[0] + len * u * Math.cos(dir), O[1] + len * u * Math.sin(dir)];
+  const A = at(s.a, dir1);
+  const B = at(s.a + s.b, dir1);
+  const A2 = at(s.c, dir2);
+  const B2 = at(s.c + d, dir2);
+  const lab = (p: Pt, t: string, dx = 8, dy = -8) => (
+    <text x={p[0] + dx} y={p[1] + dy} fill={MANIM.ink} fontSize={15} fontWeight={700}>
+      {t}
+    </text>
+  );
+  return (
+    <Frame
+      stacked
+      hint={block.hint ?? "Dos rectas que salen de O, cortadas por paralelas, quedan divididas en segmentos proporcionales."}
+      onReset={() => setS(init)}
+      controls={
+        <>
+          <Slider label="OA" value={s.a} min={1} max={8} step={1} unit=" cm" color={MANIM.blue} onChange={(a) => setS((x) => ({ ...x, a }))} />
+          <Slider label="AB" value={s.b} min={1} max={8} step={1} unit=" cm" color={MANIM.orange} onChange={(b) => setS((x) => ({ ...x, b }))} />
+          <Slider label="OA′" value={s.c} min={1} max={10} step={1} unit=" cm" color={MANIM.purple} onChange={(c) => setS((x) => ({ ...x, c }))} />
+        </>
+      }
+    >
+      <Svg w={520} h={280} testId="thales" maxH={310}>
+        <Seg a={O} b={at(Math.max(s.a + s.b, 1) * 1.05, dir1)} color={MANIM.ink} width={3} />
+        <Seg a={O} b={at((s.c + d) * 1.05, dir2)} color={MANIM.ink} width={3} />
+        <Seg a={A} b={A2} color={MANIM.green} width={3} />
+        <Seg a={B} b={B2} color={MANIM.green} width={3} />
+        <Dot p={O} r={5} />
+        <Dot p={A} color={MANIM.blue} r={5} />
+        <Dot p={B} color={MANIM.orange} r={5} />
+        <Dot p={A2} color={MANIM.purple} r={5} />
+        <Dot p={B2} color={MANIM.orange} r={5} />
+        {lab(O, "O", -16, 20)}
+        {lab(A, "A", 6, 20)}
+        {lab(B, "B", 6, 20)}
+        {lab(A2, "A′", -26, 4)}
+        {lab(B2, "B′", -26, 4)}
+      </Svg>
+      <Readout>
+        <Stat color={MANIM.blue} label="OA / OA′">{f2(s.a / s.c)}</Stat>
+        <Stat color={MANIM.orange} label="AB / A′B′">{Number.isFinite(d) && d > 0 ? f2(s.b / d) : "—"}</Stat>
+        <Stat color={MANIM.green} label="A′B′ = AB · OA′ / OA (cuarta proporcional)">{f2(d)} cm</Stat>
+      </Readout>
+      <Note><b>Teorema de Thales:</b> si dos rectas que se cortan en O son cortadas por rectas <b>paralelas</b>, los segmentos que se forman son proporcionales: OA/OA′ = AB/A′B′ = OB/OB′. Sirve para <b>dividir un segmento en partes iguales o proporcionales</b> y para hallar la <b>cuarta proporcional</b> sin calcular nada.</Note>
+    </Frame>
+  );
+}
+
+/* ───────────── 5. Media proporcional (teorema de la altura) ───────────── */
+
+export function MediaProporcionalExplorador({ block }: { block: ToolBlock }) {
+  const init = { a: Math.round(num(block.params?.a, 4, 1, 12)), b: Math.round(num(block.params?.b, 9, 1, 12)) };
+  const [s, setS] = useState(init);
+  const h = mediaProporcional(s.a, s.b);
+  const L = s.a + s.b;
+  const u = 400 / L;
+  const O: Pt = [60, 205];
+  const A: Pt = O;
+  const Hh: Pt = [O[0] + s.a * u, O[1]];
+  const B: Pt = [O[0] + L * u, O[1]];
+  const C: Pt = [Hh[0], O[1] - h * u];
+  const cx = O[0] + (L * u) / 2;
+  return (
+    <Frame
+      stacked
+      hint={block.hint ?? "En la semicircunferencia de diámetro AB, la altura desde C es media proporcional entre los dos trozos."}
+      onReset={() => setS(init)}
+      controls={
+        <>
+          <Slider label="AH" value={s.a} min={1} max={12} step={1} unit=" cm" color={MANIM.blue} onChange={(a) => setS((x) => ({ ...x, a }))} />
+          <Slider label="HB" value={s.b} min={1} max={12} step={1} unit=" cm" color={MANIM.orange} onChange={(b) => setS((x) => ({ ...x, b }))} />
+        </>
+      }
+    >
+      <Svg w={520} h={270} testId="media-proporcional" maxH={300}>
+        <path d={`M ${A[0]} ${A[1]} A ${(L * u) / 2} ${(L * u) / 2} 0 0 1 ${B[0]} ${B[1]}`} fill="none" stroke={MANIM.purple} strokeWidth={3} />
+        <Seg a={A} b={B} color={MANIM.ink} width={3.5} />
+        <Seg a={Hh} b={C} color={MANIM.green} width={3.5} />
+        <Seg a={A} b={C} color={MANIM.muted} width={2} dashed />
+        <Seg a={C} b={B} color={MANIM.muted} width={2} dashed />
+        <Dot p={A} r={5} />
+        <Dot p={B} r={5} />
+        <Dot p={Hh} r={5} />
+        <Dot p={C} color={MANIM.green} r={6} />
+        <text x={A[0] - 4} y={A[1] + 22} fill={MANIM.ink} fontSize={15} fontWeight={700}>A</text>
+        <text x={B[0] - 4} y={B[1] + 22} fill={MANIM.ink} fontSize={15} fontWeight={700}>B</text>
+        <text x={Hh[0] - 5} y={Hh[1] + 22} fill={MANIM.ink} fontSize={15} fontWeight={700}>H</text>
+        <text x={C[0] + 8} y={C[1] - 8} fill={MANIM.green} fontSize={15} fontWeight={700}>C</text>
+        <text x={cx} y={O[1] + 44} textAnchor="middle" fill={MANIM.muted} fontSize={13}>diámetro AB = {s.a} + {s.b} = {L} cm</text>
+      </Svg>
+      <Readout>
+        <Stat color={MANIM.green} label="Altura CH = √(AH · HB)">{f2(h)} cm</Stat>
+        <Stat color={MANIM.muted} label="CH² = AH · HB">{f1(h * h)} = {f1(s.a * s.b)}</Stat>
+        <Stat color={MANIM.purple} label="Cateto AC = √(AH · AB)">{f2(Math.sqrt(s.a * L))} cm</Stat>
+      </Readout>
+      <Note>Por Thales, el triángulo ACB es rectángulo en C. En todo triángulo rectángulo, la <b>altura sobre la hipotenusa</b> es <b>media proporcional</b> entre los segmentos que determina: AH/CH = CH/HB. Así se construye <b>√(a·b)</b> con regla y compás, la clave de la cuadratura de rectángulos. El <b>teorema del cateto</b> da AC² = AH · AB.</Note>
+    </Frame>
+  );
+}
+
+/* ───────────── 6. Equivalencia de áreas ───────────── */
+
+export function EquivalenciaExplorador({ block }: { block: ToolBlock }) {
+  const init = { b: Math.round(num(block.params?.a, 8, 1, 12)), h: Math.round(num(block.params?.b, 2, 1, 12)) };
+  const [s, setS] = useState(init);
+  const area = s.b * s.h;
+  const lado = ladoCuadradoEquivalente(s.b, s.h);
+  const hTri = alturaTrianguloEquivalente(s.b, s.b, s.h);
+  const u = Math.min(16, 150 / Math.max(s.b, s.h, lado, hTri));
+  const y0 = 220;
+  const rect = (x: number, w: number, hh: number, color: string) => <rect x={x} y={y0 - hh * u} width={w * u} height={hh * u} fill={color} fillOpacity={0.35} stroke={color} strokeWidth={2} />;
+  const x1 = 20;
+  const x2 = x1 + s.b * u + 30;
+  const x3 = x2 + lado * u + 30;
+  return (
+    <Frame
+      stacked
+      hint={block.hint ?? "Figuras distintas pueden tener la misma área: son equivalentes."}
+      onReset={() => setS(init)}
+      controls={
+        <>
+          <Slider label="Base del rectángulo" value={s.b} min={1} max={12} step={1} unit=" cm" color={MANIM.blue} onChange={(b) => setS((x) => ({ ...x, b }))} />
+          <Slider label="Altura del rectángulo" value={s.h} min={1} max={12} step={1} unit=" cm" color={MANIM.orange} onChange={(h) => setS((x) => ({ ...x, h }))} />
+        </>
+      }
+    >
+      <Svg w={520} h={250} testId="equivalencia" maxH={280}>
+        {rect(x1, s.b, s.h, MANIM.blue)}
+        {rect(x2, lado, lado, MANIM.green)}
+        <polygon points={`${x3},${y0} ${x3 + s.b * u},${y0} ${x3 + (s.b * u) / 2},${y0 - hTri * u}`} fill={MANIM.orange} fillOpacity={0.35} stroke={MANIM.orange} strokeWidth={2} />
+        <text x={x1} y={y0 + 22} fill={MANIM.blue} fontSize={13} fontWeight={700}>rectángulo</text>
+        <text x={x2} y={y0 + 22} fill={MANIM.green} fontSize={13} fontWeight={700}>cuadrado</text>
+        <text x={x3} y={y0 + 22} fill={MANIM.orange} fontSize={13} fontWeight={700}>triángulo</text>
+      </Svg>
+      <Readout>
+        <Stat color={MANIM.blue} label="Área del rectángulo">{f1(area)} cm²</Stat>
+        <Stat color={MANIM.green} label="Cuadrado equivalente: lado √(b·h)">{f2(lado)} cm → {f1(lado * lado)} cm²</Stat>
+        <Stat color={MANIM.orange} label="Triángulo equivalente de igual base: altura 2h">{f1(hTri)} cm → {f1(areaTriangulo(s.b, hTri))} cm²</Stat>
+      </Readout>
+      <Note>Dos figuras son <b>equivalentes</b> si tienen la misma área aunque su forma sea distinta. Transformar un rectángulo en un cuadrado equivalente (<b>cuadratura</b>) usa la <b>media proporcional</b>: lado = √(b·h). Un triángulo con la misma base y <b>doble de altura</b> que un rectángulo tiene su misma área.</Note>
+    </Frame>
+  );
+}
+
+/* ───────────── 7. Semejanza y homotecia ───────────── */
+
+export function HomoteciaDt1Explorador({ block }: { block: ToolBlock }) {
+  const init = { k: Math.max(-3, Math.min(3, Math.round(num(block.params?.a, 2, -3, 3) * 2) / 2)) };
+  const [s, setS] = useState(init);
+  const U = 22;
+  const O: Pt = [260, 140];
+  const tri: Pt[] = [[1, 0.5], [3, 0.5], [2, 2]];
+  const sc = (p: Pt): Pt => [O[0] + p[0] * U, O[1] - p[1] * U];
+  const img = tri.map((p) => homotecia(p, [0, 0], s.k));
+  const poly = (pts: Pt[]) => pts.map((p) => sc(p).join(",")).join(" ");
+  const tipo = s.k === 0 ? "degenerada (todo se reduce a O)" : s.k > 0 ? "directa (misma orientación)" : "inversa (figura girada 180°)";
+  const efecto = Math.abs(s.k) > 1 ? "ampliación" : Math.abs(s.k) === 1 ? "igual tamaño" : s.k === 0 ? "—" : "reducción";
+  return (
+    <Frame
+      stacked
+      hint={block.hint ?? "La homotecia agranda o reduce desde un centro O. Prueba razones negativas."}
+      onReset={() => setS(init)}
+      controls={<Slider label="Razón de homotecia k" value={s.k} min={-3} max={3} step={0.5} color={MANIM.purple} onChange={(k) => setS({ k })} />}
+    >
+      <Svg w={520} h={290} testId="homotecia" maxH={320}>
+        {tri.map((p, i) => (
+          <Seg key={i} a={sc([0, 0])} b={sc(img[i]!)} color={MANIM.muted} width={1.5} dashed />
+        ))}
+        <polygon points={poly(tri)} fill={MANIM.blue} fillOpacity={0.35} stroke={MANIM.blue} strokeWidth={2.5} />
+        <polygon points={poly(img)} fill={MANIM.orange} fillOpacity={0.3} stroke={MANIM.orange} strokeWidth={2.5} />
+        <Dot p={sc([0, 0])} color={MANIM.ink} r={5} />
+        <text x={sc([0, 0])[0] - 16} y={sc([0, 0])[1] + 18} fill={MANIM.ink} fontSize={15} fontWeight={700}>O</text>
+      </Svg>
+      <Readout>
+        <Stat color={MANIM.purple} label="Razón k">{fmtEs(s.k, 1)}</Stat>
+        <Stat color={MANIM.blue} label="Longitudes × |k|">{f2(Math.abs(s.k))}</Stat>
+        <Stat color={MANIM.orange} label="Áreas × k²">{f2(razonAreas(s.k))}</Stat>
+        <Stat color={MANIM.green} label="Volúmenes × |k|³">{f2(razonVolumenes(s.k))}</Stat>
+        <Stat color={MANIM.muted} label="Tipo">{tipo} · {efecto}</Stat>
+      </Readout>
+      <Note>En una <b>homotecia</b> de centro O y razón k, cada punto P pasa a P′ en la recta OP con OP′ = k · OP. Si k &gt; 0 es <b>directa</b>; si k &lt; 0 es <b>inversa</b> (P′ queda al otro lado de O). La figura resultante es <b>semejante</b>: mismos ángulos, lados proporcionales con razón |k|, áreas con razón k² y volúmenes con |k|³. Es la base de las <b>escalas</b> y de los cambios de tamaño en los planos.</Note>
+    </Frame>
+  );
+}

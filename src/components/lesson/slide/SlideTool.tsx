@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
-import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
+import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador, ThalesExplorador, MediaProporcionalExplorador, EquivalenciaExplorador, HomoteciaDt1Explorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
 import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
@@ -1857,6 +1857,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LugarGeometricoExplorador block={block} />;
     case "dt1-arco-capaz-explorador":
       return <ArcoCapazExplorador block={block} />;
+    case "dt1-thales-explorador":
+      return <ThalesExplorador block={block} />;
+    case "dt1-media-proporcional-explorador":
+      return <MediaProporcionalExplorador block={block} />;
+    case "dt1-equivalencia-explorador":
+      return <EquivalenciaExplorador block={block} />;
+    case "dt1-homotecia-explorador":
+      return <HomoteciaDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
