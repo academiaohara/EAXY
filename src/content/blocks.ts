@@ -566,6 +566,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-1-bachillerato/tecnologia-sostenible": "tecnologia-sostenible",
   "tecnologia-ingenieria-2-bachillerato/estructuras": "estructuras",
   "tecnologia-ingenieria-2-bachillerato/sistemas-informaticos-emergentes": "competencia-digital",
+  "tecnologia-ingenieria-2-bachillerato/corriente-alterna": "circuitos-electricos-electronicos",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

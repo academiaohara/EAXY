@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
 import { DisponibilidadExplorador, SqlExplorador, VolumenDatosExplorador, ClasificadorExplorador, ConfusionExplorador, CifradoExplorador, PrivacidadExplorador } from "@/components/lesson/slide/tools/TecTi2InformaticaTools";
 import { CargaRepartidaExplorador, ReaccionesExplorador, FlexionTi2Explorador, TorsionExplorador, CortaduraExplorador, PandeoVuelcoExplorador } from "@/components/lesson/slide/tools/TecTi2EstructurasTools";
 import { MicrometroExplorador, PolimetroEso4Explorador, ApiladoExplorador, Impresion3dFlujoExplorador, PistaPcbExplorador } from "@/components/lesson/slide/tools/TecEso4TallerTools";
@@ -1817,6 +1818,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CifradoExplorador block={block} />;
     case "ti2-privacidad-explorador":
       return <PrivacidadExplorador block={block} />;
+    case "ti2-senoidal-explorador":
+      return <SenoidalExplorador block={block} />;
+    case "ti2-rlc-explorador":
+      return <RlcExplorador block={block} />;
+    case "ti2-potencias-explorador":
+      return <PotenciasExplorador block={block} />;
+    case "ti2-correccion-fp-explorador":
+      return <CorreccionFpExplorador block={block} />;
+    case "ti2-trifasica-explorador":
+      return <TrifasicaExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -238,6 +238,7 @@ import { controladoresPlcMicrocontrolador4esoLesson } from "@/data/lessons/tecno
 import { controladoresProgramablesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/05-controladores-programables";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
+import { correccionFactorPotenciaTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/04-correccion-factor-potencia-ti2";
 import { correlacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/11-correlacion-1bach";
 import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/11-correlacion-ccss1";
 import { corrienteContinuaAlterna4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/01-corriente-continua-alterna-4eso";
@@ -604,6 +605,7 @@ import { impactoAmbientalProductosEsoLesson } from "@/data/lessons/tecnologia-1-
 import { impactoAmbientalRiesgos3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/07-impacto-ambiental-riesgos-3eso";
 import { impactoSocialAmbientalTecnologia4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/05-impacto-social-ambiental-tecnologia-4eso";
 import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
+import { impedanciaCircuitosRlcTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/02-impedancia-circuitos-rlc-ti2";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { impresion3dParametros4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/04-impresion-3d-parametros-4eso";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
@@ -921,6 +923,7 @@ import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-es
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
+import { potenciasActivaReactivaAparenteTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/03-potencias-activa-reactiva-aparente-ti2";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
 import { potenciasBaseEntera4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/03-potencias-base-entera-4eso";
 import { potenciasBaseExponenteLesson } from "@/data/lessons/matematicas-1-eso/02-potencias-y-raices/01-potencias-base-exponente";
@@ -1191,6 +1194,7 @@ import { semejanzaTriangulos4esobLesson } from "@/data/lessons/matematicas-4-eso
 import { semejanzaTroncos4esoLesson } from "@/data/lessons/matematicas-4-eso/11-la-semejanza-aplicaciones/07-semejanza-troncos-4eso";
 import { semejanzaTroncos4esobLesson } from "@/data/lessons/matematicas-4-eso-b/06-la-semejanza-aplicaciones/07-semejanza-troncos-4esob";
 import { semirrectasRectaReal4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/04-semirrectas-recta-real-4esob";
+import { senalAlternaDesfaseTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/01-senal-alterna-desfase-ti2";
 import { senalAnalogicaDigitalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/01-senal-analogica-digital";
 import { senalesAnalogicasDigitalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/06-senales-analogicas-digitales";
 import { senalesAnalogicasDigitalesAdc3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/03-senales-analogicas-digitales-adc-3eso";
@@ -1249,6 +1253,7 @@ import { sistemasOperativosRecursosLesson } from "@/data/lessons/tecnologia-inge
 import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
 import { sistemasParametro1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/10-sistemas-parametro-1-ccss2";
 import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
+import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
@@ -1630,6 +1635,7 @@ export const interactiveLessons = {
   "controladores-programables": controladoresProgramablesLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
+  "correccion-factor-potencia-ti2": correccionFactorPotenciaTi2Lesson,
   "correlacion-1bach": correlacion1bachLesson,
   "correlacion-ccss1": correlacionCcss1Lesson,
   "corriente-continua-alterna-4eso": corrienteContinuaAlterna4esoLesson,
@@ -1996,6 +2002,7 @@ export const interactiveLessons = {
   "impacto-ambiental-riesgos-3eso": impactoAmbientalRiesgos3esoLesson,
   "impacto-social-ambiental-tecnologia-4eso": impactoSocialAmbientalTecnologia4esoLesson,
   "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
+  "impedancia-circuitos-rlc-ti2": impedanciaCircuitosRlcTi2Lesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "impresion-3d-parametros-4eso": impresion3dParametros4esoLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
@@ -2313,6 +2320,7 @@ export const interactiveLessons = {
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
+  "potencias-activa-reactiva-aparente-ti2": potenciasActivaReactivaAparenteTi2Lesson,
   "potencias-base-10": potenciasBase10Lesson,
   "potencias-base-entera-4eso": potenciasBaseEntera4esoLesson,
   "potencias-base-exponente": potenciasBaseExponenteLesson,
@@ -2583,6 +2591,7 @@ export const interactiveLessons = {
   "semejanza-troncos-4eso": semejanzaTroncos4esoLesson,
   "semejanza-troncos-4esob": semejanzaTroncos4esobLesson,
   "semirrectas-recta-real-4esob": semirrectasRectaReal4esobLesson,
+  "senal-alterna-desfase-ti2": senalAlternaDesfaseTi2Lesson,
   "senal-analogica-digital": senalAnalogicaDigitalLesson,
   "senales-analogicas-digitales": senalesAnalogicasDigitalesLesson,
   "senales-analogicas-digitales-adc-3eso": senalesAnalogicasDigitalesAdc3esoLesson,
@@ -2641,6 +2650,7 @@ export const interactiveLessons = {
   "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
   "sistemas-parametro-1-ccss2": sistemasParametro1Ccss2Lesson,
   "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,
+  "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
   "sucesiones-3eso": sucesiones3esoLesson,

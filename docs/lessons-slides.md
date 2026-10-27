@@ -556,6 +556,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-flujo-digital` | Flujo de fabricación digital: CAD, CAM, máquina y medida | — |
 | `ti2-cinco-esfuerzos` | Los cinco esfuerzos: tracción, compresión, cortadura, flexión y torsión | — |
 | `ti2-ciclo-aprendizaje` | Ciclo del aprendizaje automático: datos, entrenamiento, modelo, predicción y evaluación | — |
+| `ti2-fase-carga` | Desfase entre tensión y corriente en una resistencia, una bobina, un condensador y una carga inductiva real | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1237,6 +1238,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `ti2-confusion-explorador` | Matriz de confusión, exactitud, sensibilidad y precisión según la prevalencia | `a` prevalencia (%) |
 | `ti2-cifrado-explorador` | Cifrado César y tiempo de fuerza bruta de una contraseña | `a` desplazamiento |
 | `ti2-privacidad-explorador` | Personas que comparten una combinación de cuasi-identificadores | `a` código postal (0–1) |
+| `ti2-senoidal-explorador` | Tensión y corriente senoidales: desfase y tiempo equivalente | `a` frecuencia (Hz), `b` desfase (°) |
+| `ti2-rlc-explorador` | Circuito RLC serie: reactancias, impedancia, ángulo, corriente y resonancia | `a` inductancia (mH) |
+| `ti2-potencias-explorador` | Triángulo de potencias: activa, reactiva, aparente y factor de potencia | `a` corriente (A), `b` desfase (°) |
+| `ti2-correccion-fp-explorador` | Corrección del factor de potencia: reactiva a compensar, capacidad y corriente ahorrada | `a` potencia (kW) |
+| `ti2-trifasica-explorador` | Receptor trifásico en estrella o triángulo: potencias y magnitudes de fase | `n` conexión (0–1), `a` corriente de línea (A) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -1080,6 +1080,7 @@ export type SlideAnimId =
   | "eso4-flujo-digital"
   | "ti2-cinco-esfuerzos"
   | "ti2-ciclo-aprendizaje"
+  | "ti2-fase-carga"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1887,6 +1888,11 @@ export type SlideToolId =
   | "ti2-confusion-explorador"
   | "ti2-cifrado-explorador"
   | "ti2-privacidad-explorador"
+  | "ti2-senoidal-explorador"
+  | "ti2-rlc-explorador"
+  | "ti2-potencias-explorador"
+  | "ti2-correccion-fp-explorador"
+  | "ti2-trifasica-explorador"
   /* industrial-tool-end */;
 
 /**

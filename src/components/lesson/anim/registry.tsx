@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildFaseCarga } from "@/components/lesson/anim/scenes/industrial/tecti2-alterna";
 import { buildCicloAprendizaje } from "@/components/lesson/anim/scenes/industrial/tecti2-informatica";
 import { buildCincoEsfuerzos } from "@/components/lesson/anim/scenes/industrial/tecti2-estructuras";
 import { buildFlujoDigital } from "@/components/lesson/anim/scenes/industrial/teceso4-taller";
@@ -795,6 +796,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso4-flujo-digital": () => buildFlujoDigital(),
   "ti2-cinco-esfuerzos": () => buildCincoEsfuerzos(),
   "ti2-ciclo-aprendizaje": () => buildCicloAprendizaje(),
+  "ti2-fase-carga": () => buildFaseCarga(),
   /* industrial-end */
 };
 
