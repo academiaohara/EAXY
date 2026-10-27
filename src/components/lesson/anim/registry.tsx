@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
 import { buildCicloScrum } from "@/components/lesson/anim/scenes/industrial/tecti2-proyectos";
 import { buildFaseCarga } from "@/components/lesson/anim/scenes/industrial/tecti2-alterna";
 import { buildCicloAprendizaje } from "@/components/lesson/anim/scenes/industrial/tecti2-informatica";
@@ -799,6 +800,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "ti2-ciclo-aprendizaje": () => buildCicloAprendizaje(),
   "ti2-fase-carga": () => buildFaseCarga(),
   "ti2-ciclo-scrum": () => buildCicloScrum(),
+  "ti2-fases-eia": () => buildFasesEia(),
   /* industrial-end */
 };
 

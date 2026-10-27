@@ -23,6 +23,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["estructuras", 8],
   ["corriente-alterna", 5],
   ["sistemas-informaticos-emergentes", 8],
+  ["impacto-sostenibilidad-ingenieria", 5],
 ];
 
 describe("curso Tecnología e Ingeniería II (ampliación)", () => {

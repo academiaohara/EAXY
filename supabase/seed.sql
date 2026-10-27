@@ -184,7 +184,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000181', 'a1000000-0000-4000-8000-000000000021', 'proyectos-id', 'Proyectos de I+D', 1),
   ('a2000000-0000-4000-8000-000000000182', 'a1000000-0000-4000-8000-000000000021', 'estructuras', 'Estructuras', 2),
   ('a2000000-0000-4000-8000-000000000183', 'a1000000-0000-4000-8000-000000000021', 'corriente-alterna', 'Corriente alterna', 3),
-  ('a2000000-0000-4000-8000-000000000184', 'a1000000-0000-4000-8000-000000000021', 'sistemas-informaticos-emergentes', 'Sistemas informáticos emergentes', 4);
+  ('a2000000-0000-4000-8000-000000000184', 'a1000000-0000-4000-8000-000000000021', 'sistemas-informaticos-emergentes', 'Sistemas informáticos emergentes', 4),
+  ('a2000000-0000-4000-8000-000000000185', 'a1000000-0000-4000-8000-000000000021', 'impacto-sostenibilidad-ingenieria', 'Impacto y sostenibilidad en ingeniería', 5);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1583,4 +1584,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000018405', 'a2000000-0000-4000-8000-000000000184', '5. Limitaciones y sesgos de la inteligencia artificial', 'Sesgos, métricas y falsos positivos.', 5, null),
   ('a3000000-0000-4000-8000-000000018406', 'a2000000-0000-4000-8000-000000000184', '6. Ciberseguridad y criptografía', 'Amenazas, cifrado y contraseñas.', 6, null),
   ('a3000000-0000-4000-8000-000000018407', 'a2000000-0000-4000-8000-000000000184', '7. Protección de datos y privacidad', 'RGPD, cuasi-identificadores y anonimización.', 7, null),
-  ('a3000000-0000-4000-8000-000000018408', 'a2000000-0000-4000-8000-000000000184', '8. Uso ético y responsable de las tecnologías emergentes', 'Principios éticos, dilemas y responsabilidad.', 8, null);
+  ('a3000000-0000-4000-8000-000000018408', 'a2000000-0000-4000-8000-000000000184', '8. Uso ético y responsable de las tecnologías emergentes', 'Principios éticos, dilemas y responsabilidad.', 8, null),
+  ('a3000000-0000-4000-8000-000000018501', 'a2000000-0000-4000-8000-000000000185', '1. Evaluación del impacto ambiental y social', 'Matriz de impacto, medidas y vigilancia.', 1, null),
+  ('a3000000-0000-4000-8000-000000018502', 'a2000000-0000-4000-8000-000000000185', '2. Eficiencia energética y cogeneración', 'Rendimiento, ahorro y cogeneración.', 2, null),
+  ('a3000000-0000-4000-8000-000000018503', 'a2000000-0000-4000-8000-000000000185', '3. Sostenibilidad de los materiales y análisis de ciclo de vida', 'Etapas, unidad funcional y ACV.', 3, null),
+  ('a3000000-0000-4000-8000-000000018504', 'a2000000-0000-4000-8000-000000000185', '4. Optimización de procesos de fabricación', 'Lean, residuos y OEE.', 4, null),
+  ('a3000000-0000-4000-8000-000000018505', 'a2000000-0000-4000-8000-000000000185', '5. Economía circular y elección de alternativas tecnológicas', 'Circularidad y matriz de decisión.', 5, null);

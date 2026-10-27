@@ -48,3 +48,6 @@ Total previsto: 59 lecciones. Orden de construcción: 3 → 6 → 5 → 1 → 4 
 | 2. Estructuras | Hecho (8 lecciones, `02-estructuras/`; herramientas `TecTi2EstructurasTools.tsx`, animación `tecti2-estructuras.tsx`) |
 | 3. Corriente alterna | Hecho (5 lecciones, `03-corriente-alterna/`; herramientas `TecTi2AlternaTools.tsx`, animación `tecti2-alterna.tsx`) |
 | 4. Sistemas informáticos emergentes | Hecho (8 lecciones, `04-sistemas-informaticos-emergentes/`; herramientas `TecTi2InformaticaTools.tsx`, animación `tecti2-informatica.tsx`) |
+| 5. Impacto y sostenibilidad en ingeniería | Hecho (5 lecciones, `05-impacto-sostenibilidad-ingenieria/`; herramientas `TecTi2SostenibleTools.tsx`, animación `tecti2-sostenible.tsx`) |
+
+**Curso cerrado: 31 lecciones en 5 temas** (`moduleId(181)`–`moduleId(185)`). Todo lo demás de Tecnología e Ingeniería II (materiales, sistemas mecánicos y fluídicos, electrónica digital y control) se estudia en `tecnologia-industrial-2-bachillerato`.

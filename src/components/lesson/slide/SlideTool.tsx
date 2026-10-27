@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
 import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
 import { DisponibilidadExplorador, SqlExplorador, VolumenDatosExplorador, ClasificadorExplorador, ConfusionExplorador, CifradoExplorador, PrivacidadExplorador } from "@/components/lesson/slide/tools/TecTi2InformaticaTools";
@@ -1839,6 +1840,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <EstimacionPertExplorador block={block} />;
     case "ti2-van-explorador":
       return <VanExplorador block={block} />;
+    case "ti2-eia-explorador":
+      return <EiaExplorador block={block} />;
+    case "ti2-cogeneracion-explorador":
+      return <CogeneracionExplorador block={block} />;
+    case "ti2-acv-explorador":
+      return <AcvTi2Explorador block={block} />;
+    case "ti2-oee-explorador":
+      return <OeeExplorador block={block} />;
+    case "ti2-circularidad-explorador":
+      return <CircularidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

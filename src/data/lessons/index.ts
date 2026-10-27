@@ -357,6 +357,7 @@ import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bach
 import { durezaResiliencia4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/02-dureza-resiliencia-4eso";
 import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
 import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/07-ecodiseno-fabricacion-sostenible";
+import { economiaCircularAlternativasTecnologicasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/05-economia-circular-alternativas-tecnologicas-ti2";
 import { economiaCircularReparacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/04-economia-circular-reparacion-4eso";
 import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
@@ -396,6 +397,7 @@ import { edificiosEficienciaCertificado4esoLesson } from "@/data/lessons/tecnolo
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
 import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/05-eficiencia-ahorro-hogar-3eso";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
+import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
@@ -469,6 +471,7 @@ import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia
 import { estructuraCristalinaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/07-estructura-cristalina";
 import { estructuraSistemaControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/02-estructura-sistema-control";
 import { eticaTecnologiasEmergentesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/08-etica-tecnologias-emergentes-ti2";
+import { evaluacionImpactoAmbientalSocialTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/01-evaluacion-impacto-ambiental-social-ti2";
 import { evaluacionSolucionesSosteniblesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/10-evaluacion-soluciones-sostenibles";
 import { experimentosSucesos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/01-experimentos-sucesos-1bach";
 import { experimentosSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/01-experimentos-sucesos-2bach";
@@ -862,6 +865,7 @@ import { optimizacion1bachLesson } from "@/data/lessons/matematicas-1-bachillera
 import { optimizacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/12-optimizacion-2bach";
 import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/12-optimizacion-ccss1";
 import { optimizacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/12-optimizacion-ccss2";
+import { optimizacionProcesosFabricacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/04-optimizacion-procesos-fabricacion-ti2";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
@@ -1261,6 +1265,7 @@ import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bach
 import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
+import { sostenibilidadMaterialesAcvTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/03-sostenibilidad-materiales-acv-ti2";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
 import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
 import { sucesionesTipos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/04-sucesiones-tipos-1bach";
@@ -1759,6 +1764,7 @@ export const interactiveLessons = {
   "dureza-resiliencia-4eso": durezaResiliencia4esoLesson,
   "dureza-vickers-rockwell": durezaVickersRockwellLesson,
   "ecodiseno-fabricacion-sostenible": ecodisenoFabricacionSostenibleLesson,
+  "economia-circular-alternativas-tecnologicas-ti2": economiaCircularAlternativasTecnologicasTi2Lesson,
   "economia-circular-reparacion-4eso": economiaCircularReparacion4esoLesson,
   "economia-circular-residuos": economiaCircularResiduosLesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
@@ -1798,6 +1804,7 @@ export const interactiveLessons = {
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
   "eficiencia-ahorro-hogar-3eso": eficienciaAhorroHogar3esoLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
+  "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
@@ -1871,6 +1878,7 @@ export const interactiveLessons = {
   "estructura-cristalina": estructuraCristalinaLesson,
   "estructura-sistema-control": estructuraSistemaControlLesson,
   "etica-tecnologias-emergentes-ti2": eticaTecnologiasEmergentesTi2Lesson,
+  "evaluacion-impacto-ambiental-social-ti2": evaluacionImpactoAmbientalSocialTi2Lesson,
   "evaluacion-soluciones-sostenibles": evaluacionSolucionesSosteniblesLesson,
   "experimentos-sucesos-1bach": experimentosSucesos1bachLesson,
   "experimentos-sucesos-2bach": experimentosSucesos2bachLesson,
@@ -2264,6 +2272,7 @@ export const interactiveLessons = {
   "optimizacion-2bach": optimizacion2bachLesson,
   "optimizacion-ccss1": optimizacionCcss1Lesson,
   "optimizacion-ccss2": optimizacionCcss2Lesson,
+  "optimizacion-procesos-fabricacion-ti2": optimizacionProcesosFabricacionTi2Lesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
@@ -2663,6 +2672,7 @@ export const interactiveLessons = {
   "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
+  "sostenibilidad-materiales-acv-ti2": sostenibilidadMaterialesAcvTi2Lesson,
   "sucesiones-3eso": sucesiones3esoLesson,
   "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,
   "sucesiones-tipos-1bach": sucesionesTipos1bachLesson,

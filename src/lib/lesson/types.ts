@@ -1082,6 +1082,7 @@ export type SlideAnimId =
   | "ti2-ciclo-aprendizaje"
   | "ti2-fase-carga"
   | "ti2-ciclo-scrum"
+  | "ti2-fases-eia"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1899,6 +1900,11 @@ export type SlideToolId =
   | "ti2-kanban-explorador"
   | "ti2-estimacion-pert-explorador"
   | "ti2-van-explorador"
+  | "ti2-eia-explorador"
+  | "ti2-cogeneracion-explorador"
+  | "ti2-acv-explorador"
+  | "ti2-oee-explorador"
+  | "ti2-circularidad-explorador"
   /* industrial-tool-end */;
 
 /**
