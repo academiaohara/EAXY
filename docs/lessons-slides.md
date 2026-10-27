@@ -552,6 +552,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-reductora-etapas` | Reductora de dos etapas: la velocidad baja y el par sube | — |
 | `eso4-ensayo-traccion` | Ensayo de tracción: zona elástica, límite elástico, zona plástica, estricción y rotura | — |
 | `eso4-ciclo-ingenieria` | Ciclo de ingeniería iterativo: necesidad, diseño, prototipo, ensayo y mejora | — |
+| `eso4-economia-circular` | Economía lineal frente a economía circular: reducir, reutilizar, reparar y reciclar | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1210,6 +1211,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-vistas-explorador` | Alzado, planta y perfil de un prisma a distintas escalas | `a` ancho (mm), `b` alto (mm) |
 | `eso4-pert-explorador` | Red de tareas: camino crítico, duración y holgura | `a` duración de la tarea D (días) |
 | `eso4-viabilidad-explorador` | Costes fijos y variables, punto de equilibrio y beneficio | `a` coste fijo (€) |
+| `eso4-huella-hogar-explorador` | Huella de carbono anual de un hogar por fuente y por persona | `a` electricidad (kWh/año) |
+| `eso4-autoconsumo-explorador` | Un día con paneles solares y batería: autoconsumo, cobertura y red | `a` potencia de paneles (kWp) |
+| `eso4-certificado-explorador` | Letra energética de una vivienda según demanda, aislamiento y sistema | `a` demanda (kWh/m²·año) |
+| `eso4-reparar-explorador` | Reparar o comprar nuevo: coste y CO₂ por año de uso | `a` coste de la reparación (€) |
+| `eso4-accesibilidad-explorador` | Pendiente de una rampa y contraste de una pantalla | `n` comprobación (0–1) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

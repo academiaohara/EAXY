@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { HuellaHogarExplorador, AutoconsumoExplorador, CertificadoExplorador, RepararExplorador, AccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso4SostenibleTools";
 import { CasaCalidadExplorador, VistasExplorador, PertExplorador, ViabilidadExplorador } from "@/components/lesson/slide/tools/TecEso4ProyectosTools";
 import { HookeEso4Explorador, BrinellEso4Explorador, CharpyEso4Explorador, AceroExplorador, AjusteExplorador, CalidadExplorador } from "@/components/lesson/slide/tools/TecEso4MaterialesTools";
 import { TransmisionExplorador, ReductoraExplorador, BielaManivelaPosExplorador, RozamientoExplorador, CintaTransportadoraExplorador } from "@/components/lesson/slide/tools/TecEso4MecanicaTools";
@@ -1767,6 +1768,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PertExplorador block={block} />;
     case "eso4-viabilidad-explorador":
       return <ViabilidadExplorador block={block} />;
+    case "eso4-huella-hogar-explorador":
+      return <HuellaHogarExplorador block={block} />;
+    case "eso4-autoconsumo-explorador":
+      return <AutoconsumoExplorador block={block} />;
+    case "eso4-certificado-explorador":
+      return <CertificadoExplorador block={block} />;
+    case "eso4-reparar-explorador":
+      return <RepararExplorador block={block} />;
+    case "eso4-accesibilidad-explorador":
+      return <AccesibilidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

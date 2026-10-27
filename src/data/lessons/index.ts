@@ -1,3 +1,4 @@
+import { accesibilidadDisenoUniversal4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/06-accesibilidad-diseno-universal-4eso";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
@@ -214,6 +215,7 @@ import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
+import { consumoEnergeticoHuella4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/01-consumo-energetico-huella-4eso";
 import { consumoResponsableEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/02-consumo-responsable-eso";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
@@ -349,6 +351,7 @@ import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bach
 import { durezaResiliencia4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/02-dureza-resiliencia-4eso";
 import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
 import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/07-ecodiseno-fabricacion-sostenible";
+import { economiaCircularReparacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/04-economia-circular-reparacion-4eso";
 import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
@@ -383,6 +386,7 @@ import { ecuacionesSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso
 import { ecuacionesSoluciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/01-ecuaciones-soluciones-4eso";
 import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/09-ecuaciones-trig-metodos-1bach";
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
+import { edificiosEficienciaCertificado4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/03-edificios-eficiencia-certificado-4eso";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
 import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/05-eficiencia-ahorro-hogar-3eso";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
@@ -585,6 +589,7 @@ import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematic
 import { impactoAmbientalProductosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/04-impacto-ambiental-productos";
 import { impactoAmbientalProductosEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/01-impacto-ambiental-productos-eso";
 import { impactoAmbientalRiesgos3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/07-impacto-ambiental-riesgos-3eso";
+import { impactoSocialAmbientalTecnologia4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/05-impacto-social-ambiental-tecnologia-4eso";
 import { impactoSocialEticaTecnologicaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/09-impacto-social-etica-tecnologica";
 import { implementacionNandNorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/11-implementacion-nand-nor";
 import { independenciaNube1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/10-independencia-nube-1bach";
@@ -1112,6 +1117,7 @@ import { regulacionTodoNadaProporcional4esoLesson } from "@/data/lessons/tecnolo
 import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
 import { relacionTransmisionVelocidadAngular4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/01-relacion-transmision-velocidad-angular-4eso";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
+import { renovablesAlmacenamientoAutoconsumo4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/02-renovables-almacenamiento-autoconsumo-4eso";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
 import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/06-repeticiones-bucles-eso";
@@ -1358,9 +1364,11 @@ import { volumenPiramideCono3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { volumenPiramidesConos2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/03-volumen-piramides-conos-2eso";
 import { volumenPrismaCilindro3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/06-volumen-prisma-cilindro-3eso";
 import { volumenPrismasCilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/02-volumen-prismas-cilindros-2eso";
+import { voluntariadoServicioComunidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/07-voluntariado-servicio-comunidad-4eso";
 import { wifiConexionInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/04-wifi-conexion-internet-3eso";
 
 export const interactiveLessons = {
+  "accesibilidad-diseno-universal-4eso": accesibilidadDisenoUniversal4esoLesson,
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
@@ -1577,6 +1585,7 @@ export const interactiveLessons = {
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conos-2eso": conos2esoLesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
+  "consumo-energetico-huella-4eso": consumoEnergeticoHuella4esoLesson,
   "consumo-responsable-eso": consumoResponsableEsoLesson,
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
@@ -1712,6 +1721,7 @@ export const interactiveLessons = {
   "dureza-resiliencia-4eso": durezaResiliencia4esoLesson,
   "dureza-vickers-rockwell": durezaVickersRockwellLesson,
   "ecodiseno-fabricacion-sostenible": ecodisenoFabricacionSostenibleLesson,
+  "economia-circular-reparacion-4eso": economiaCircularReparacion4esoLesson,
   "economia-circular-residuos": economiaCircularResiduosLesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
@@ -1746,6 +1756,7 @@ export const interactiveLessons = {
   "ecuaciones-soluciones-4eso": ecuacionesSoluciones4esoLesson,
   "ecuaciones-trig-metodos-1bach": ecuacionesTrigMetodos1bachLesson,
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
+  "edificios-eficiencia-certificado-4eso": edificiosEficienciaCertificado4esoLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
   "eficiencia-ahorro-hogar-3eso": eficienciaAhorroHogar3esoLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
@@ -1948,6 +1959,7 @@ export const interactiveLessons = {
   "impacto-ambiental-productos": impactoAmbientalProductosLesson,
   "impacto-ambiental-productos-eso": impactoAmbientalProductosEsoLesson,
   "impacto-ambiental-riesgos-3eso": impactoAmbientalRiesgos3esoLesson,
+  "impacto-social-ambiental-tecnologia-4eso": impactoSocialAmbientalTecnologia4esoLesson,
   "impacto-social-etica-tecnologica": impactoSocialEticaTecnologicaLesson,
   "implementacion-nand-nor": implementacionNandNorLesson,
   "independencia-nube-1bach": independenciaNube1bachLesson,
@@ -2475,6 +2487,7 @@ export const interactiveLessons = {
   "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
   "relacion-transmision-velocidad-angular-4eso": relacionTransmisionVelocidadAngular4esoLesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
+  "renovables-almacenamiento-autoconsumo-4eso": renovablesAlmacenamientoAutoconsumo4esoLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
   "repeticiones-bucles-eso": repeticionesBuclesEsoLesson,
@@ -2721,6 +2734,7 @@ export const interactiveLessons = {
   "volumen-piramides-conos-2eso": volumenPiramidesConos2esoLesson,
   "volumen-prisma-cilindro-3eso": volumenPrismaCilindro3esoLesson,
   "volumen-prismas-cilindros-2eso": volumenPrismasCilindros2esoLesson,
+  "voluntariado-servicio-comunidad-4eso": voluntariadoServicioComunidad4esoLesson,
   "wifi-conexion-internet-3eso": wifiConexionInternet3esoLesson,
 } as const;
 
