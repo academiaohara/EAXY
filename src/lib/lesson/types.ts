@@ -1074,6 +1074,7 @@ export type SlideAnimId =
   | "eso4-busqueda-binaria"
   | "eso4-lazo-cerrado"
   | "eso4-reductora-etapas"
+  | "eso4-ensayo-traccion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1848,6 +1849,12 @@ export type SlideToolId =
   | "eso4-biela-explorador"
   | "eso4-rozamiento-explorador"
   | "eso4-cinta-explorador"
+  | "eso4-hooke-explorador"
+  | "eso4-brinell-explorador"
+  | "eso4-charpy-explorador"
+  | "eso4-acero-explorador"
+  | "eso4-ajuste-explorador"
+  | "eso4-calidad-explorador"
   /* industrial-tool-end */;
 
 /**

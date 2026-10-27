@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { HookeEso4Explorador, BrinellEso4Explorador, CharpyEso4Explorador, AceroExplorador, AjusteExplorador, CalidadExplorador } from "@/components/lesson/slide/tools/TecEso4MaterialesTools";
 import { TransmisionExplorador, ReductoraExplorador, BielaManivelaPosExplorador, RozamientoExplorador, CintaTransportadoraExplorador } from "@/components/lesson/slide/tools/TecEso4MecanicaTools";
 import { ReguladorExplorador, MotorEncoderExplorador, RobotDiferencialExplorador, SecuenciaExplorador, ProtocoloIotExplorador } from "@/components/lesson/slide/tools/TecEso4ControlTools";
 import { DescomposicionExplorador, BusquedaExplorador, OrdenacionExplorador, DatosTemperaturasExplorador, ComplejidadExplorador } from "@/components/lesson/slide/tools/TecEso4ComputacionalTools";
@@ -1745,6 +1746,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RozamientoExplorador block={block} />;
     case "eso4-cinta-explorador":
       return <CintaTransportadoraExplorador block={block} />;
+    case "eso4-hooke-explorador":
+      return <HookeEso4Explorador block={block} />;
+    case "eso4-brinell-explorador":
+      return <BrinellEso4Explorador block={block} />;
+    case "eso4-charpy-explorador":
+      return <CharpyEso4Explorador block={block} />;
+    case "eso4-acero-explorador":
+      return <AceroExplorador block={block} />;
+    case "eso4-ajuste-explorador":
+      return <AjusteExplorador block={block} />;
+    case "eso4-calidad-explorador":
+      return <CalidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1,5 +1,6 @@
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
+import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
@@ -138,6 +139,7 @@ import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bach
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
 import { cicloCarnotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/02-ciclo-carnot";
 import { cicloVidaProductoImpacto2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/01-ciclo-vida-producto-impacto-2eso";
+import { cicloVidaSeguridadMateriales4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/07-ciclo-vida-seguridad-materiales-4eso";
 import { ciclosOttoDieselLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/06-ciclos-otto-diesel";
 import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/01-ciclos-reversibles-focos";
 import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/03-ciencia-tecnica-tecnologia-ingenieria";
@@ -220,6 +222,7 @@ import { continuidadPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { continuidadPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/10-continuidad-punto-ccss2";
 import { contrasteHipotesisMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/11-contraste-hipotesis-media-ccss2";
 import { contrasteProporcionErroresCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/12-contraste-proporcion-errores-ccss2";
+import { controlCalidadEstadistico4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/05-control-calidad-estadistico-4eso";
 import { controlMotoresEncoder4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/06-control-motores-encoder-4eso";
 import { controlPid4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/03-control-pid-4eso";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
@@ -308,6 +311,7 @@ import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachi
 import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/16-discusion-sistemas-ccss1";
 import { disenoAccesibleUniversal2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/04-diseno-accesible-universal-2eso";
 import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/03-diseno-conceptual-ideas";
+import { disenoImpresion3dPrototipado4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/06-diseno-impresion-3d-prototipado-4eso";
 import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
@@ -340,6 +344,7 @@ import { dominioCortesSigno2bachLesson } from "@/data/lessons/matematicas-2-bach
 import { dosPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/06-dos-planos-posicion-2bach";
 import { dosRectasPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/09-dos-rectas-posicion-2bach";
 import { durezaBrinellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/13-dureza-brinell";
+import { durezaResiliencia4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/02-dureza-resiliencia-4eso";
 import { durezaVickersRockwellLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/14-dureza-vickers-rockwell";
 import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/07-ecodiseno-fabricacion-sostenible";
 import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
@@ -401,6 +406,7 @@ import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industri
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
+import { ensayoTraccionHooke4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/01-ensayo-traccion-hooke-4eso";
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
@@ -1276,6 +1282,7 @@ import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
 import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
+import { toleranciasAjustes4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/04-tolerancias-ajustes-4eso";
 import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
@@ -1350,6 +1357,7 @@ import { wifiConexionInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/
 export const interactiveLessons = {
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
+  "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
   "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
@@ -1488,6 +1496,7 @@ export const interactiveLessons = {
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
   "ciclo-carnot": cicloCarnotLesson,
   "ciclo-vida-producto-impacto-2eso": cicloVidaProductoImpacto2esoLesson,
+  "ciclo-vida-seguridad-materiales-4eso": cicloVidaSeguridadMateriales4esoLesson,
   "ciclos-otto-diesel": ciclosOttoDieselLesson,
   "ciclos-reversibles-focos": ciclosReversiblesFocosLesson,
   "ciencia-tecnica-tecnologia-ingenieria": cienciaTecnicaTecnologiaIngenieriaLesson,
@@ -1570,6 +1579,7 @@ export const interactiveLessons = {
   "continuidad-punto-ccss2": continuidadPuntoCcss2Lesson,
   "contraste-hipotesis-media-ccss2": contrasteHipotesisMediaCcss2Lesson,
   "contraste-proporcion-errores-ccss2": contrasteProporcionErroresCcss2Lesson,
+  "control-calidad-estadistico-4eso": controlCalidadEstadistico4esoLesson,
   "control-motores-encoder-4eso": controlMotoresEncoder4esoLesson,
   "control-pid-4eso": controlPid4esoLesson,
   "controlador-proporcional": controladorProporcionalLesson,
@@ -1658,6 +1668,7 @@ export const interactiveLessons = {
   "discusion-sistemas-ccss1": discusionSistemasCcss1Lesson,
   "diseno-accesible-universal-2eso": disenoAccesibleUniversal2esoLesson,
   "diseno-conceptual-ideas": disenoConceptualIdeasLesson,
+  "diseno-impresion-3d-prototipado-4eso": disenoImpresion3dPrototipado4esoLesson,
   "diseno-simulacion-mecanismos-4eso": disenoSimulacionMecanismos4esoLesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
@@ -1690,6 +1701,7 @@ export const interactiveLessons = {
   "dos-planos-posicion-2bach": dosPlanosPosicion2bachLesson,
   "dos-rectas-posicion-2bach": dosRectasPosicion2bachLesson,
   "dureza-brinell": durezaBrinellLesson,
+  "dureza-resiliencia-4eso": durezaResiliencia4esoLesson,
   "dureza-vickers-rockwell": durezaVickersRockwellLesson,
   "ecodiseno-fabricacion-sostenible": ecodisenoFabricacionSostenibleLesson,
   "economia-circular-residuos": economiaCircularResiduosLesson,
@@ -1751,6 +1763,7 @@ export const interactiveLessons = {
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
+  "ensayo-traccion-hooke-4eso": ensayoTraccionHooke4esoLesson,
   "ensayos-caracterizacion": ensayosCaracterizacionLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
@@ -2626,6 +2639,7 @@ export const interactiveLessons = {
   "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
   "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
+  "tolerancias-ajustes-4eso": toleranciasAjustes4esoLesson,
   "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,

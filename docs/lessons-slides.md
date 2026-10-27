@@ -550,6 +550,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-busqueda-binaria` | Búsqueda binaria de un número en una lista ordenada de 16 elementos | — |
 | `eso4-lazo-cerrado` | Lazo cerrado: consigna, comparador, controlador, actuador, proceso y sensor | — |
 | `eso4-reductora-etapas` | Reductora de dos etapas: la velocidad baja y el par sube | — |
+| `eso4-ensayo-traccion` | Ensayo de tracción: zona elástica, límite elástico, zona plástica, estricción y rotura | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1198,6 +1199,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-biela-explorador` | Biela-manivela: posición del émbolo y carrera | `a` radio de la manivela (mm) |
 | `eso4-rozamiento-explorador` | Bloque en un plano inclinado con rozamiento | `a` masa (kg), `b` inclinación (°) |
 | `eso4-cinta-explorador` | Cinta transportadora: velocidad, potencia útil y potencia del motor | `a` relación de la reductora |
+| `eso4-hooke-explorador` | Barra a tracción: tensión, alargamiento y coeficiente de seguridad | `n` material (0–3), `a` fuerza (kN) |
+| `eso4-brinell-explorador` | Dureza Brinell según la huella y resistencia estimada | `a` diámetro de la huella (mm) |
+| `eso4-charpy-explorador` | Péndulo de Charpy: energía absorbida y resiliencia | `a` altura final (m) |
+| `eso4-acero-explorador` | Tipo de acero y dureza recocido y templado según el carbono | `a` carbono (%) |
+| `eso4-ajuste-explorador` | Ajuste eje-agujero: holgura máxima y mínima y tipo | `a` desviación superior del agujero (µm) |
+| `eso4-calidad-explorador` | Proceso de fabricación: piezas fuera de tolerancia, Cp y Cpk | `a` media (mm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
