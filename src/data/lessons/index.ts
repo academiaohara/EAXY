@@ -605,6 +605,7 @@ import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachil
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
 import { geometriaGriegaPitagorasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/02-geometria-griega-pitagoras-dt1";
+import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/01-geometria-revolucion-industrial-dt2";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
@@ -1330,6 +1331,7 @@ import { sumaRestaNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-nu
 import { sumaRestaPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/04-suma-resta-polinomios-4eso";
 import { sumaRestaPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/02-suma-resta-polinomios-4esob";
 import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/13-sumadores-binarios";
+import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
 import { tablasContingenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/08-tablas-contingencia-ccss1";
 import { tablasFrecuencias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/02-tablas-frecuencias-1bach";
@@ -1349,6 +1351,7 @@ import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bach
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
 import { tecnicasDeUnion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/04-tecnicas-de-union-3eso";
+import { tecnicasDigitalesDisenoParametricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/03-tecnicas-digitales-diseno-parametrico-dt2";
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
@@ -2062,6 +2065,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
   "geometria-griega-pitagoras-dt1": geometriaGriegaPitagorasDt1Lesson,
+  "geometria-revolucion-industrial-dt2": geometriaRevolucionIndustrialDt2Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
@@ -2787,6 +2791,7 @@ export const interactiveLessons = {
   "suma-resta-polinomios-4eso": sumaRestaPolinomios4esoLesson,
   "suma-resta-polinomios-4esob": sumaRestaPolinomios4esobLesson,
   "sumadores-binarios": sumadoresBinariosLesson,
+  "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,
   "tablas-contingencia-ccss1": tablasContingenciaCcss1Lesson,
   "tablas-frecuencias-1bach": tablasFrecuencias1bachLesson,
@@ -2806,6 +2811,7 @@ export const interactiveLessons = {
   "tasa-variacion-media-ccss1": tasaVariacionMediaCcss1Lesson,
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
   "tecnicas-de-union-3eso": tecnicasDeUnion3esoLesson,
+  "tecnicas-digitales-diseno-parametrico-dt2": tecnicasDigitalesDisenoParametricoDt2Lesson,
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,

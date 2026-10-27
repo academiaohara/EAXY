@@ -195,3 +195,16 @@ export const DT1_SUBTITLES = {
   9: "Dibujo Técnico I, Tema 9 — Normalización y documentación gráfica",
   10: "Dibujo Técnico I, Tema 10 — Sistemas CAD",
 } as const;
+
+export const DT2_SUBTITLES = {
+  1: "Dibujo Técnico II, Tema 1 — La geometría en la arquitectura y la ingeniería",
+  2: "Dibujo Técnico II, Tema 2 — Homología y afinidad",
+  3: "Dibujo Técnico II, Tema 3 — Potencia, eje radical y tangencias",
+  4: "Dibujo Técnico II, Tema 4 — Curvas cónicas",
+  5: "Dibujo Técnico II, Tema 5 — Diédrico: abatimientos, giros y cambios de plano",
+  6: "Dibujo Técnico II, Tema 6 — Cuerpos geométricos en diédrico",
+  7: "Dibujo Técnico II, Tema 7 — Axonométrico, cónico y planos acotados de sólidos",
+  8: "Dibujo Técnico II, Tema 8 — Normalización y proyecto",
+  9: "Dibujo Técnico II, Tema 9 — Sistemas CAD",
+} as const;
+

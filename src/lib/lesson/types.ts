@@ -1962,6 +1962,9 @@ export type SlideToolId =
   | "dt1-transformaciones-explorador"
   | "dt1-booleanas-explorador"
   | "dt1-pieza-compuesta-explorador"
+  | "dt2-catenaria-explorador"
+  | "dt2-hiperboloide-explorador"
+  | "dt2-fachada-parametrica-explorador"
   /* industrial-tool-end */;
 
 /**

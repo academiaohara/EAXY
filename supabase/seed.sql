@@ -23,7 +23,8 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.'),
   ('a1000000-0000-4000-8000-000000000020', 'tecnologia-ingenieria-1-bachillerato', 'Tecnología e Ingeniería I 1º Bachillerato', 'Proyectos de investigación y desarrollo, materiales y fabricación, sistemas mecánicos, sistemas eléctricos y electrónicos, programación, sistemas automáticos y tecnología sostenible.'),
   ('a1000000-0000-4000-8000-000000000021', 'tecnologia-ingenieria-2-bachillerato', 'Tecnología e Ingeniería II 2º Bachillerato (ampliación)', 'Ampliación de Tecnología Industrial II con los contenidos de Tecnología e Ingeniería II que ese curso no cubre: estructuras, corriente alterna, sistemas informáticos emergentes, proyectos de I+D y evaluación de impacto.'),
-  ('a1000000-0000-4000-8000-000000000022', 'dibujo-tecnico-1-bachillerato', 'Dibujo Técnico I 1º Bachillerato', 'Geometría plana, sistemas de representación (diédrico, axonométrico, planos acotados y cónico), normalización y sistemas CAD, según el currículo de Dibujo Técnico I.');
+  ('a1000000-0000-4000-8000-000000000022', 'dibujo-tecnico-1-bachillerato', 'Dibujo Técnico I 1º Bachillerato', 'Geometría plana, sistemas de representación (diédrico, axonométrico, planos acotados y cónico), normalización y sistemas CAD, según el currículo de Dibujo Técnico I.'),
+  ('a1000000-0000-4000-8000-000000000023', 'dibujo-tecnico-2-bachillerato', 'Dibujo Técnico II 2º Bachillerato', 'Transformaciones geométricas, tangencias, cónicas, diédrico avanzado, cuerpos, normalización industrial y proyecto, según el currículo de Dibujo Técnico II.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -196,7 +197,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7),
   ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8),
   ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9),
-  ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10);
+  ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10),
+  ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1650,4 +1652,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021001', 'a2000000-0000-4000-8000-000000000210', '1. Dibujo vectorial 2D: elementos y coordenadas', 'Capas, órdenes y coordenadas.', 1, null),
   ('a3000000-0000-4000-8000-000000021002', 'a2000000-0000-4000-8000-000000000210', '2. Curvas y transformaciones en 2D', 'Bézier, simetría, giro y escala.', 2, null),
   ('a3000000-0000-4000-8000-000000021003', 'a2000000-0000-4000-8000-000000000210', '3. Modelado 3D: primitivas y operaciones booleanas', 'Primitivas, extrusión y booleanas.', 3, null),
-  ('a3000000-0000-4000-8000-000000021004', 'a2000000-0000-4000-8000-000000000210', '4. Diseño de piezas complejas y trabajo en grupo', 'Parámetros, masa y formatos de intercambio.', 4, null);
+  ('a3000000-0000-4000-8000-000000021004', 'a2000000-0000-4000-8000-000000000210', '4. Diseño de piezas complejas y trabajo en grupo', 'Parámetros, masa y formatos de intercambio.', 4, null),
+  ('a3000000-0000-4000-8000-000000021101', 'a2000000-0000-4000-8000-000000000211', '1. La geometría desde la Revolución Industrial', 'Materiales, arcos catenarios y grandes autores.', 1, null),
+  ('a3000000-0000-4000-8000-000000021102', 'a2000000-0000-4000-8000-000000000211', '2. Superficies regladas y formas curvas con rectas', 'Hiperboloide y paraboloide hiperbólico.', 2, null),
+  ('a3000000-0000-4000-8000-000000021103', 'a2000000-0000-4000-8000-000000000211', '3. Técnicas digitales: diseño paramétrico y fabricación', 'CAD/BIM, simulación y fabricación digital.', 3, null);

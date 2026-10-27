@@ -1312,6 +1312,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-transformaciones-explorador` | Simetría, escala, giro y traslación de un triángulo | `a` factor de escala, `b` giro (°) |
 | `dt1-booleanas-explorador` | Unión, diferencia e intersección de una caja y un cilindro con sus volúmenes | `a`, `b` largo y ancho de la caja (cm) |
 | `dt1-pieza-compuesta-explorador` | Volumen y masa de una pieza compuesta por base, saliente y taladro | `a` largo de la base (mm) |
+| `dt2-catenaria-explorador` | Catenaria y parábola: parámetro, longitud y separación entre curvas | `a` luz, `b` flecha (m) |
+| `dt2-hiperboloide-explorador` | Hiperboloide de una hoja generado por rectas: garganta y longitud de las barras | `a` radio, `b` altura (m) |
+| `dt2-fachada-parametrica-explorador` | Fachada paramétrica con huecos que dependen de un atractor | `a` paneles por lado |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

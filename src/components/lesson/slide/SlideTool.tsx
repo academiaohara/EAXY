@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CatenariaDt2Explorador, HiperboloideDt2Explorador, FachadaParametricaDt2Explorador } from "@/components/lesson/slide/tools/DtIIArquitecturaTools";
 import { CoordenadasCadDt1Explorador, BezierDt1Explorador, TransformacionesDt1Explorador, BooleanasDt1Explorador, PiezaCompuestaDt1Explorador } from "@/components/lesson/slide/tools/DtCadTools";
 import { TiposLineaDt1Explorador, FormatosDt1Explorador, EscalaDt1Explorador, VistasDt1Explorador, AcotacionSistemasDt1Explorador, SimbolosDt1Explorador } from "@/components/lesson/slide/tools/DtNormalizacionTools";
 import { PerspectivaConicaDt1Explorador } from "@/components/lesson/slide/tools/DtConicoTools";
@@ -1954,6 +1955,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <BooleanasDt1Explorador block={block} />;
     case "dt1-pieza-compuesta-explorador":
       return <PiezaCompuestaDt1Explorador block={block} />;
+    case "dt2-catenaria-explorador":
+      return <CatenariaDt2Explorador block={block} />;
+    case "dt2-hiperboloide-explorador":
+      return <HiperboloideDt2Explorador block={block} />;
+    case "dt2-fachada-parametrica-explorador":
+      return <FachadaParametricaDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

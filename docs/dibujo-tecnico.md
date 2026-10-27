@@ -64,3 +64,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 8. Planos acotados y sistema cónico | Hecho (6 lecciones, `08-planos-acotados-conico/`; herramientas `DtAcotadosTools.tsx` y `DtConicoTools.tsx`, animación `dt1-conico.tsx`) |
 | DT I · 9. Normalización y documentación gráfica | Hecho (6 lecciones, `09-normalizacion-documentacion-grafica/`; herramientas `DtNormalizacionTools.tsx`, animación `dt1-vistas.tsx`; bloque `dibujo-normalizacion-documentacion`) |
 | DT I · 10. Sistemas CAD | Hecho (4 lecciones, `10-sistemas-cad/`; herramientas `DtCadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico I completo: 50 lecciones en 10 temas.** |
+| DT II · 1. La geometría en la arquitectura y la ingeniería | Hecho (3 lecciones, `src/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/`; herramientas `DtIIArquitecturaTools.tsx`; subtítulos `DT2_SUBTITLES`; ids `-dt2` y `dt2-`) |
