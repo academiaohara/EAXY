@@ -44,8 +44,14 @@ Total previsto: unas 41 lecciones.
 - Mismo flujo por tema que en Tecnología: lecciones, herramientas, animaciones, tests, revisión visual, build, commit; `moduleId` propios y subtítulos en `shared.ts`.
 - Orden: DT I completo (temas 1 → 10) y después DT II.
 
+## Infraestructura
+
+- Materia nueva **Dibujo Técnico** (`SubjectKey` `dibujo`; slug de curso `dibujo-…`): `src/lib/navigation/subjects.ts`, icono en `subject-icons.ts`, bloques `dibujo-*` en `src/content/blocks.ts` (los bloques se añaden cuando hay lecciones que los usan; el test de bloques prohíbe bloques vacíos).
+- Cursos: `dibujo-tecnico-1-bachillerato` (`courseId(22)`, `moduleId(200 + n)`) y `dibujo-tecnico-2-bachillerato` (`courseId(23)`, `moduleId(210 + n)`); subtítulos en `DT1_SUBTITLES` de `src/data/lessons/shared.ts`.
+
 ## Estado
 
 | Tema | Estado |
 |---|---|
-| Plan | Pendiente de visto bueno |
+| Plan | Aprobado por el usuario |
+| DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |

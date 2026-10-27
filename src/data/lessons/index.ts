@@ -68,6 +68,7 @@ import { arbolTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachill
 import { arbolesTablas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/06-arboles-tablas-2bach";
 import { arbolesTablasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/06-arboles-tablas-ccss2";
 import { archivosCarpetasRutas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/02-archivos-carpetas-rutas-2eso";
+import { arcoCapazDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/04-arco-capaz-dt1";
 import { areaBajoCurvaRiemann2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/09-area-bajo-curva-riemann-2bach";
 import { areaBajoCurvaRiemannCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/08-area-bajo-curva-riemann-ccss2";
 import { areaCilindroCono3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/04-area-cilindro-cono-3eso";
@@ -584,6 +585,7 @@ import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bach
 import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
+import { geometriaGriegaPitagorasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/02-geometria-griega-pitagoras-dt1";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
@@ -598,6 +600,7 @@ import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnolog
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
+import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
 import { iaLimitacionesSesgosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/05-ia-limitaciones-sesgos-ti2";
@@ -734,6 +737,7 @@ import { logaritmosPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { logicaControlAutomatismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/07-logica-control-automatismos";
 import { logicaControlTablasVerdad3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/05-logica-control-tablas-verdad-3eso";
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
+import { lugaresGeometricosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/03-lugares-geometricos-dt1";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
 import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
 import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/03-madera-tableros-despiece-2eso";
@@ -1475,6 +1479,7 @@ export const interactiveLessons = {
   "arboles-tablas-2bach": arbolesTablas2bachLesson,
   "arboles-tablas-ccss2": arbolesTablasCcss2Lesson,
   "archivos-carpetas-rutas-2eso": archivosCarpetasRutas2esoLesson,
+  "arco-capaz-dt1": arcoCapazDt1Lesson,
   "area-bajo-curva-riemann-2bach": areaBajoCurvaRiemann2bachLesson,
   "area-bajo-curva-riemann-ccss2": areaBajoCurvaRiemannCcss2Lesson,
   "area-cilindro-cono-3eso": areaCilindroCono3esoLesson,
@@ -1991,6 +1996,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
+  "geometria-griega-pitagoras-dt1": geometriaGriegaPitagorasDt1Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
@@ -2005,6 +2011,7 @@ export const interactiveLessons = {
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
+  "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
   "ia-limitaciones-sesgos-ti2": iaLimitacionesSesgosTi2Lesson,
@@ -2141,6 +2148,7 @@ export const interactiveLessons = {
   "logica-control-automatismos": logicaControlAutomatismosLesson,
   "logica-control-tablas-verdad-3eso": logicaControlTablasVerdad3esoLesson,
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
+  "lugares-geometricos-dt1": lugaresGeometricosDt1Lesson,
   "luz-detector-error": luzDetectorErrorLesson,
   "madera-derivados": maderaDerivadosLesson,
   "madera-tableros-despiece-2eso": maderaTablerosDespiece2esoLesson,

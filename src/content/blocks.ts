@@ -316,6 +316,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Recursos, eficiencia energética, ciclo de vida, economía circular y renovables.",
     orderIndex: 9,
   },
+  {
+    slug: "dibujo-geometria-plana",
+    subject: "dibujo",
+    title: "Geometría plana",
+    description: "Lugares geométricos, proporcionalidad, polígonos, tangencias y curvas técnicas.",
+    orderIndex: 1,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -569,6 +576,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/corriente-alterna": "circuitos-electricos-electronicos",
   "tecnologia-ingenieria-2-bachillerato/proyectos-id": "proyectos-tecnologicos",
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
+  "dibujo-tecnico-1-bachillerato/historia-fundamentos-geometricos": "dibujo-geometria-plana",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

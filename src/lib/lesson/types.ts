@@ -1083,6 +1083,8 @@ export type SlideAnimId =
   | "ti2-fase-carga"
   | "ti2-ciclo-scrum"
   | "ti2-fases-eia"
+  | "dt1-linea-tiempo-dibujo"
+  | "dt1-trazado-arco-capaz"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1905,6 +1907,9 @@ export type SlideToolId =
   | "ti2-acv-explorador"
   | "ti2-oee-explorador"
   | "ti2-circularidad-explorador"
+  | "dt1-pitagoras-explorador"
+  | "dt1-lugar-geometrico-explorador"
+  | "dt1-arco-capaz-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
 import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
@@ -1850,6 +1851,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OeeExplorador block={block} />;
     case "ti2-circularidad-explorador":
       return <CircularidadExplorador block={block} />;
+    case "dt1-pitagoras-explorador":
+      return <PitagorasExplorador block={block} />;
+    case "dt1-lugar-geometrico-explorador":
+      return <LugarGeometricoExplorador block={block} />;
+    case "dt1-arco-capaz-explorador":
+      return <ArcoCapazExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

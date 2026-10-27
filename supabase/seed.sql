@@ -22,7 +22,8 @@ insert into public.courses (id, slug, title, description) values
   ('a1000000-0000-4000-8000-000000000015', 'tecnologia-4-eso', 'Tecnología 4º ESO', 'Cuarto curso de Tecnología: proyectos de ingeniería, materiales y fabricación, sistemas mecánicos, electrónica, pensamiento computacional, automatización y robótica, tecnología sostenible y taller digital.'),
   ('a1000000-0000-4000-8000-000000000016', 'tecnologia-industrial-2-bachillerato', 'Tecnología Industrial II 2º Bachillerato', 'Estructura y ensayos de materiales, aleaciones, tratamientos térmicos, corrosión, principios de las máquinas, motores térmicos, circuitos frigoríficos, magnetismo, motores eléctricos, automatización neumática, oleohidráulica y sistemas automáticos de control.'),
   ('a1000000-0000-4000-8000-000000000020', 'tecnologia-ingenieria-1-bachillerato', 'Tecnología e Ingeniería I 1º Bachillerato', 'Proyectos de investigación y desarrollo, materiales y fabricación, sistemas mecánicos, sistemas eléctricos y electrónicos, programación, sistemas automáticos y tecnología sostenible.'),
-  ('a1000000-0000-4000-8000-000000000021', 'tecnologia-ingenieria-2-bachillerato', 'Tecnología e Ingeniería II 2º Bachillerato (ampliación)', 'Ampliación de Tecnología Industrial II con los contenidos de Tecnología e Ingeniería II que ese curso no cubre: estructuras, corriente alterna, sistemas informáticos emergentes, proyectos de I+D y evaluación de impacto.');
+  ('a1000000-0000-4000-8000-000000000021', 'tecnologia-ingenieria-2-bachillerato', 'Tecnología e Ingeniería II 2º Bachillerato (ampliación)', 'Ampliación de Tecnología Industrial II con los contenidos de Tecnología e Ingeniería II que ese curso no cubre: estructuras, corriente alterna, sistemas informáticos emergentes, proyectos de I+D y evaluación de impacto.'),
+  ('a1000000-0000-4000-8000-000000000022', 'dibujo-tecnico-1-bachillerato', 'Dibujo Técnico I 1º Bachillerato', 'Geometría plana, sistemas de representación (diédrico, axonométrico, planos acotados y cónico), normalización y sistemas CAD, según el currículo de Dibujo Técnico I.');
 
 insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000001', 'a1000000-0000-4000-8000-000000000001', 'numeros-naturales', 'Los números naturales', 1),
@@ -185,7 +186,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000182', 'a1000000-0000-4000-8000-000000000021', 'estructuras', 'Estructuras', 2),
   ('a2000000-0000-4000-8000-000000000183', 'a1000000-0000-4000-8000-000000000021', 'corriente-alterna', 'Corriente alterna', 3),
   ('a2000000-0000-4000-8000-000000000184', 'a1000000-0000-4000-8000-000000000021', 'sistemas-informaticos-emergentes', 'Sistemas informáticos emergentes', 4),
-  ('a2000000-0000-4000-8000-000000000185', 'a1000000-0000-4000-8000-000000000021', 'impacto-sostenibilidad-ingenieria', 'Impacto y sostenibilidad en ingeniería', 5);
+  ('a2000000-0000-4000-8000-000000000185', 'a1000000-0000-4000-8000-000000000021', 'impacto-sostenibilidad-ingenieria', 'Impacto y sostenibilidad en ingeniería', 5),
+  ('a2000000-0000-4000-8000-000000000201', 'a1000000-0000-4000-8000-000000000022', 'historia-fundamentos-geometricos', 'Historia y fundamentos geométricos', 1);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1589,4 +1591,8 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000018502', 'a2000000-0000-4000-8000-000000000185', '2. Eficiencia energética y cogeneración', 'Rendimiento, ahorro y cogeneración.', 2, null),
   ('a3000000-0000-4000-8000-000000018503', 'a2000000-0000-4000-8000-000000000185', '3. Sostenibilidad de los materiales y análisis de ciclo de vida', 'Etapas, unidad funcional y ACV.', 3, null),
   ('a3000000-0000-4000-8000-000000018504', 'a2000000-0000-4000-8000-000000000185', '4. Optimización de procesos de fabricación', 'Lean, residuos y OEE.', 4, null),
-  ('a3000000-0000-4000-8000-000000018505', 'a2000000-0000-4000-8000-000000000185', '5. Economía circular y elección de alternativas tecnológicas', 'Circularidad y matriz de decisión.', 5, null);
+  ('a3000000-0000-4000-8000-000000018505', 'a2000000-0000-4000-8000-000000000185', '5. Economía circular y elección de alternativas tecnológicas', 'Circularidad y matriz de decisión.', 5, null),
+  ('a3000000-0000-4000-8000-000000020101', 'a2000000-0000-4000-8000-000000000201', '1. Historia del dibujo técnico y campos de acción', 'Hitos históricos y campos de aplicación.', 1, null),
+  ('a3000000-0000-4000-8000-000000020102', 'a2000000-0000-4000-8000-000000000201', '2. Orígenes de la geometría: Thales, Pitágoras, Euclides e Hipatia', 'Aportaciones griegas y Pitágoras.', 2, null),
+  ('a3000000-0000-4000-8000-000000020103', 'a2000000-0000-4000-8000-000000000201', '3. Lugares geométricos fundamentales', 'Circunferencia, mediatriz, bisectriz y paralelas.', 3, null),
+  ('a3000000-0000-4000-8000-000000020104', 'a2000000-0000-4000-8000-000000000201', '4. Arco capaz y aplicaciones de los lugares geométricos', 'Arco capaz, radio y construcción.', 4, null);

@@ -559,6 +559,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `ti2-fase-carga` | Desfase entre tensión y corriente en una resistencia, una bobina, un condensador y una carga inductiva real | — |
 | `ti2-ciclo-scrum` | Ciclo de Scrum: backlog, planificación, sprint, revisión y retrospectiva | — |
 | `ti2-fases-eia` | Evaluación de impacto ambiental: identificar, valorar, corregir y vigilar | — |
+| `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
+| `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1255,6 +1257,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `ti2-acv-explorador` | CO₂ por uso de un envase reutilizable frente a uno desechable | `a` usos |
 | `ti2-oee-explorador` | Eficiencia global de un equipo: disponibilidad, rendimiento y calidad | `a` paradas (min) |
 | `ti2-circularidad-explorador` | Índice de circularidad de un producto | `a` material reciclado (%) |
+| `dt1-pitagoras-explorador` | Cuadrados sobre los catetos y la hipotenusa; ternas pitagóricas | `a`, `b` catetos (cm) |
+| `dt1-lugar-geometrico-explorador` | Comprobar si un punto pertenece a una circunferencia, mediatriz, bisectriz o paralelas | `n` lugar (0–3) |
+| `dt1-arco-capaz-explorador` | Arco capaz de un ángulo sobre un segmento: radio, centro y ángulo desde P | `a` ángulo α (°) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
