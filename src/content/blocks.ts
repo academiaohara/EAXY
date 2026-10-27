@@ -337,6 +337,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Escalas, formatos, vistas, líneas normalizadas, acotación y simbología.",
     orderIndex: 3,
   },
+  {
+    slug: "dibujo-sistemas-cad",
+    subject: "dibujo",
+    title: "Sistemas CAD",
+    description: "Dibujo vectorial 2D, modelado 3D con primitivas y trabajo colaborativo.",
+    orderIndex: 4,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -599,6 +606,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-1-bachillerato/sistemas-axonometricos": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/planos-acotados-conico": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/normalizacion-documentacion-grafica": "dibujo-normalizacion-documentacion",
+  "dibujo-tecnico-1-bachillerato/sistemas-cad": "dibujo-sistemas-cad",
   "matematicas-2-bachillerato/matrices": "algebra-lineal",
   "matematicas-2-bachillerato/determinantes": "algebra-lineal",
   "matematicas-2-bachillerato/sistemas-de-ecuaciones": "algebra-lineal",

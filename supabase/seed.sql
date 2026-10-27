@@ -195,7 +195,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000206', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-relaciones-distancias', 'Sistema diédrico: relaciones y distancias', 6),
   ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7),
   ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8),
-  ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9);
+  ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9),
+  ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1645,4 +1646,8 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020903', 'a2000000-0000-4000-8000-000000000209', '3. Escalas numéricas y gráficas', 'Ampliación, reducción y escala gráfica.', 3, null),
   ('a3000000-0000-4000-8000-000000020904', 'a2000000-0000-4000-8000-000000000209', '4. Vistas de una pieza: elección y disposición', 'Alzado, planta y perfil.', 4, null),
   ('a3000000-0000-4000-8000-000000020905', 'a2000000-0000-4000-8000-000000000209', '5. Acotación normalizada', 'Cotas, símbolos y sistemas de acotación.', 5, null),
-  ('a3000000-0000-4000-8000-000000020906', 'a2000000-0000-4000-8000-000000000209', '6. Simbología industrial y arquitectónica', 'Símbolos eléctricos, mecánicos y de construcción.', 6, null);
+  ('a3000000-0000-4000-8000-000000020906', 'a2000000-0000-4000-8000-000000000209', '6. Simbología industrial y arquitectónica', 'Símbolos eléctricos, mecánicos y de construcción.', 6, null),
+  ('a3000000-0000-4000-8000-000000021001', 'a2000000-0000-4000-8000-000000000210', '1. Dibujo vectorial 2D: elementos y coordenadas', 'Capas, órdenes y coordenadas.', 1, null),
+  ('a3000000-0000-4000-8000-000000021002', 'a2000000-0000-4000-8000-000000000210', '2. Curvas y transformaciones en 2D', 'Bézier, simetría, giro y escala.', 2, null),
+  ('a3000000-0000-4000-8000-000000021003', 'a2000000-0000-4000-8000-000000000210', '3. Modelado 3D: primitivas y operaciones booleanas', 'Primitivas, extrusión y booleanas.', 3, null),
+  ('a3000000-0000-4000-8000-000000021004', 'a2000000-0000-4000-8000-000000000210', '4. Diseño de piezas complejas y trabajo en grupo', 'Parámetros, masa y formatos de intercambio.', 4, null);

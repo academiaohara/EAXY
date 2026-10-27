@@ -135,6 +135,7 @@ import { busquedaOrdenacionAlgoritmos4esoLesson } from "@/data/lessons/tecnologi
 import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
+import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
@@ -279,6 +280,7 @@ import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
+import { curvasBezierTransformacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/02-curvas-bezier-transformaciones-dt1";
 import { curvasNivelInterpretacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/04-curvas-nivel-interpretacion-dt1";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { curvaturaInflexion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/11-curvatura-inflexion-2bach";
@@ -331,6 +333,7 @@ import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { disenoAccesibleUniversal2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/04-diseno-accesible-universal-2eso";
 import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/03-diseno-conceptual-ideas";
 import { disenoImpresion3dPrototipado4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/06-diseno-impresion-3d-prototipado-4eso";
+import { disenoPiezasTrabajoGrupoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/04-diseno-piezas-trabajo-grupo-dt1";
 import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
@@ -808,6 +811,7 @@ import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
+import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -1588,6 +1592,7 @@ export const interactiveLessons = {
   "cad-2d-diseno-asistido-2eso": cad2dDisenoAsistido2esoLesson,
   "cad-2d-iniciacion": cad2dIniciacionLesson,
   "cad-3d-extrusion": cad3dExtrusionLesson,
+  "cad-vectorial-coordenadas-dt1": cadVectorialCoordenadasDt1Lesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
@@ -1732,6 +1737,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
+  "curvas-bezier-transformaciones-dt1": curvasBezierTransformacionesDt1Lesson,
   "curvas-nivel-interpretacion-dt1": curvasNivelInterpretacionDt1Lesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
   "curvatura-inflexion-2bach": curvaturaInflexion2bachLesson,
@@ -1784,6 +1790,7 @@ export const interactiveLessons = {
   "diseno-accesible-universal-2eso": disenoAccesibleUniversal2esoLesson,
   "diseno-conceptual-ideas": disenoConceptualIdeasLesson,
   "diseno-impresion-3d-prototipado-4eso": disenoImpresion3dPrototipado4esoLesson,
+  "diseno-piezas-trabajo-grupo-dt1": disenoPiezasTrabajoGrupoDt1Lesson,
   "diseno-simulacion-mecanismos-4eso": disenoSimulacionMecanismos4esoLesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
@@ -2261,6 +2268,7 @@ export const interactiveLessons = {
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
   "modelado-3d-operaciones-2eso": modelado3dOperaciones2esoLesson,
+  "modelado-3d-primitivas-booleanas-dt1": modelado3dPrimitivasBooleanasDt1Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,

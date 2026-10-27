@@ -1307,6 +1307,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-vistas-explorador` | Alzado, planta y perfil izquierdo de una pieza en L | `a`, `b` largo y ancho (mm) |
 | `dt1-acotacion-sistemas-explorador` | Acotación en cadena y en paralelo: acumulación de tolerancias | `a` número de agujeros |
 | `dt1-simbolos-explorador` | Galería de símbolos eléctricos, arquitectónicos y mecánicos | `n` categoría (0–2) |
+| `dt1-coordenadas-cad-explorador` | Coordenadas absolutas, relativas y polares de un punto | `n` modo (0–2), `a`, `b` valores |
+| `dt1-bezier-explorador` | Curva de Bézier cúbica: puntos de control, punto medio y longitud | `a`, `b` coordenadas de P₁ |
+| `dt1-transformaciones-explorador` | Simetría, escala, giro y traslación de un triángulo | `a` factor de escala, `b` giro (°) |
+| `dt1-booleanas-explorador` | Unión, diferencia e intersección de una caja y un cilindro con sus volúmenes | `a`, `b` largo y ancho de la caja (cm) |
+| `dt1-pieza-compuesta-explorador` | Volumen y masa de una pieza compuesta por base, saliente y taladro | `a` largo de la base (mm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

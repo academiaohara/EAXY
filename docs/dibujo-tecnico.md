@@ -17,9 +17,9 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 | 7. Sistemas axonométricos | B | 5: ortogonal (iso, dimétrica, trimétrica), coeficientes de reducción, caballera, punto/recta/plano |
 | 8. Planos acotados y sistema cónico | B | 6: recta y plano acotados, cubiertas, curvas de nivel; cónico frontal y oblicuo |
 | 9. Normalización y documentación gráfica | C | 6: escalas, formatos y doblado, normas UNE/ISO, vistas, líneas, acotación, simbología |
-| 10. Sistemas CAD | D | 4: vectorial 2D, modelado 3D, primitivas y operaciones, trabajo en grupo |
+| 10. Sistemas CAD | D | 4: vectorial 2D y curvas, modelado 3D con primitivas y booleanas, piezas compuestas y trabajo en grupo |
 
-Total previsto: 49 lecciones.
+Total: 50 lecciones (el curso `dibujo-tecnico-1-bachillerato` está completo).
 
 ## Dibujo Técnico II (saberes A–D)
 
@@ -63,3 +63,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 7. Sistemas axonométricos | Hecho (5 lecciones, `07-sistemas-axonometricos/`; herramientas `DtAxonometricoTools.tsx`, animación `dt1-axonometria.tsx`) |
 | DT I · 8. Planos acotados y sistema cónico | Hecho (6 lecciones, `08-planos-acotados-conico/`; herramientas `DtAcotadosTools.tsx` y `DtConicoTools.tsx`, animación `dt1-conico.tsx`) |
 | DT I · 9. Normalización y documentación gráfica | Hecho (6 lecciones, `09-normalizacion-documentacion-grafica/`; herramientas `DtNormalizacionTools.tsx`, animación `dt1-vistas.tsx`; bloque `dibujo-normalizacion-documentacion`) |
+| DT I · 10. Sistemas CAD | Hecho (4 lecciones, `10-sistemas-cad/`; herramientas `DtCadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico I completo: 50 lecciones en 10 temas.** |

@@ -48,14 +48,14 @@ export function planoPorTrazas(a: number, b: number, c: number) {
 /* ───────────── Dibujo de la caja en axonometría ortogonal ───────────── */
 
 /** Vectores unitarios de pantalla (y hacia abajo) de los ejes X, Y, Z: Z vertical, X a 90° + θxz y Y a 90° − θyz (ángulos medidos hacia arriba). */
-function ejesPantalla(kx: number, ky: number, kz: number, xz: number, yz: number) {
+export function ejesPantalla(kx: number, ky: number, kz: number, xz: number, yz: number) {
   const v = (deg: number, k: number): Pt => [k * Math.cos(deg * RAD), -k * Math.sin(deg * RAD)];
   return { X: v(90 + xz, kx), Y: v(90 - yz, ky), Z: v(90, kz) };
 }
-type Ejes = ReturnType<typeof ejesPantalla>;
-const proy = (e: Ejes, o: Pt, u: number, x: number, y: number, z: number): Pt => [o[0] + u * (x * e.X[0] + y * e.Y[0] + z * e.Z[0]), o[1] + u * (x * e.X[1] + y * e.Y[1] + z * e.Z[1])];
+export type Ejes = ReturnType<typeof ejesPantalla>;
+export const proy = (e: Ejes, o: Pt, u: number, x: number, y: number, z: number): Pt => [o[0] + u * (x * e.X[0] + y * e.Y[0] + z * e.Z[0]), o[1] + u * (x * e.X[1] + y * e.Y[1] + z * e.Z[1])];
 
-function CajaAxo({ e, o, u, a, b, c, hueco, extra }: { e: Ejes; o: Pt; u: number; a: number; b: number; c: number; hueco?: number; extra?: ReactNode }) {
+export function CajaAxo({ e, o, u, a, b, c, hueco, extra }: { e: Ejes; o: Pt; u: number; a: number; b: number; c: number; hueco?: number; extra?: ReactNode }) {
   const P = (x: number, y: number, z: number) => proy(e, o, u, x, y, z);
   const poly = (pts: Pt[], color: string, op: number) => <polygon points={pts.map((p) => p.join(",")).join(" ")} fill={color} fillOpacity={op} stroke={MANIM.ink} strokeWidth={2} strokeLinejoin="round" />;
   const hid = (p: Pt, q: Pt) => <Seg a={p} b={q} color={MANIM.muted} width={1.2} dashed />;

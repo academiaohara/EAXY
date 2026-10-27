@@ -28,6 +28,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["sistemas-axonometricos", 5],
   ["planos-acotados-conico", 6],
   ["normalizacion-documentacion-grafica", 6],
+  ["sistemas-cad", 4],
 ];
 
 describe("curso Dibujo Técnico I", () => {

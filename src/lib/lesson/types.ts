@@ -1957,6 +1957,11 @@ export type SlideToolId =
   | "dt1-vistas-explorador"
   | "dt1-acotacion-sistemas-explorador"
   | "dt1-simbolos-explorador"
+  | "dt1-coordenadas-cad-explorador"
+  | "dt1-bezier-explorador"
+  | "dt1-transformaciones-explorador"
+  | "dt1-booleanas-explorador"
+  | "dt1-pieza-compuesta-explorador"
   /* industrial-tool-end */;
 
 /**

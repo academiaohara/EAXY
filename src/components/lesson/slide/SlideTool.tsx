@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CoordenadasCadDt1Explorador, BezierDt1Explorador, TransformacionesDt1Explorador, BooleanasDt1Explorador, PiezaCompuestaDt1Explorador } from "@/components/lesson/slide/tools/DtCadTools";
 import { TiposLineaDt1Explorador, FormatosDt1Explorador, EscalaDt1Explorador, VistasDt1Explorador, AcotacionSistemasDt1Explorador, SimbolosDt1Explorador } from "@/components/lesson/slide/tools/DtNormalizacionTools";
 import { PerspectivaConicaDt1Explorador } from "@/components/lesson/slide/tools/DtConicoTools";
 import { RectaAcotadaDt1Explorador, PlanoAcotadoDt1Explorador, CubiertaDt1Explorador, CurvasNivelDt1Explorador } from "@/components/lesson/slide/tools/DtAcotadosTools";
@@ -1943,6 +1944,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AcotacionSistemasDt1Explorador block={block} />;
     case "dt1-simbolos-explorador":
       return <SimbolosDt1Explorador block={block} />;
+    case "dt1-coordenadas-cad-explorador":
+      return <CoordenadasCadDt1Explorador block={block} />;
+    case "dt1-bezier-explorador":
+      return <BezierDt1Explorador block={block} />;
+    case "dt1-transformaciones-explorador":
+      return <TransformacionesDt1Explorador block={block} />;
+    case "dt1-booleanas-explorador":
+      return <BooleanasDt1Explorador block={block} />;
+    case "dt1-pieza-compuesta-explorador":
+      return <PiezaCompuestaDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
