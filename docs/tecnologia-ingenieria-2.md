@@ -1,10 +1,10 @@
 # Tecnología e Ingeniería II (2.º Bachillerato) — plan
 
-Curso nuevo `tecnologia-ingenieria-2-bachillerato`. Fuente: `temp/tecnologia/LOMLOE.txt`, sección «2.º de Bachillerato — Tecnología e Ingeniería II» (8 temas); Asturias lo regula en el Decreto 60/2022 (solo como documentación de mapeo). Continúa `tecnologia-ingenieria-1-bachillerato` (69 lecciones, ya completo: cubre los 7 temas de la LOMLOE de 1.º).
+**Borrador pendiente de confirmar con el usuario** (puede que no haga falta un curso nuevo). Curso propuesto `tecnologia-ingenieria-2-bachillerato`. Fuente: `temp/tecnologia/LOMLOE.txt`, sección «2.º de Bachillerato — Tecnología e Ingeniería II» (8 temas); Asturias lo regula en el Decreto 60/2022 (solo como documentación de mapeo). Continúa `tecnologia-ingenieria-1-bachillerato` (69 lecciones, ya completo: cubre los 7 temas de la LOMLOE de 1.º).
 
 ## Qué hay ya y qué falta
 
-`tecnologia-industrial-2-bachillerato` (13 temas, 136 lecciones) es un curso **profundo** que sigue la materia anterior (LOMCE). Se solapa mucho con los temas de TI II de la LOMLOE:
+`tecnologia-industrial-2-bachillerato` (13 temas, 136 lecciones) está construido a partir de los capítulos de un libro de texto de McGraw-Hill (`temp/tecnologia/2-bachillerato-industrial-II/`), que el usuario indica que es de la LOMLOE (no se ha podido comprobar la edición: los PDF son escaneados). Es un curso **profundo** y se solapa mucho con los temas de TI II de la LOMLOE (el esquema de `LOMLOE.txt` es orientativo y no coincide tema a tema con ese libro):
 
 | Tema LOMLOE (TI II) | Ya cubierto por Tecnología Industrial II | Falta |
 |---|---|---|
