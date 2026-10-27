@@ -548,6 +548,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso3-casa-bioclimatica` | Casa bioclimática: sol de invierno, sombra de verano, aislamiento y ventilación cruzada | — |
 | `eso4-fuente-alimentacion` | Fuente de alimentación: red alterna, transformador, rectificador y filtro | — |
 | `eso4-busqueda-binaria` | Búsqueda binaria de un número en una lista ordenada de 16 elementos | — |
+| `eso4-lazo-cerrado` | Lazo cerrado: consigna, comparador, controlador, actuador, proceso y sensor | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1186,6 +1187,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-ordenacion-explorador` | Ordenación por burbuja paso a paso | `n` lista (0–1) |
 | `eso4-datos-explorador` | Temperaturas mensuales: media, máximo, mínimo y recuento sobre un umbral | `a` umbral (°C) |
 | `eso4-complejidad-explorador` | Operaciones de búsqueda binaria, lineal y burbuja según el número de datos | `a` número de datos |
+| `eso4-regulador-explorador` | Regulación de temperatura con todo-nada, P, PI y PID: error, sobreoscilación y establecimiento | `n` regulador (0–3), `a` temperatura exterior (°C) |
+| `eso4-motor-explorador` | Encoder: rpm, velocidad del robot, potencia mecánica y rendimiento | `a` pulsos en 100 ms |
+| `eso4-robot-explorador` | Robot diferencial: trayectoria, velocidad angular, radio y posición final | `a` velocidad izquierda, `b` velocidad derecha (m/s) |
+| `eso4-secuencia-explorador` | Secuencia de etapas y transiciones (GRAFCET) de una taladradora automática | `n` etapa inicial (0–3) |
+| `eso4-iot-explorador` | Qué tecnologías inalámbricas cumplen alcance, velocidad y consumo | `n` alcance (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

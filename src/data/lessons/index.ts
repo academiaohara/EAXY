@@ -80,6 +80,7 @@ import { areasPoligonosLesson } from "@/data/lessons/matematicas-1-eso/13-areas-
 import { areasTrianguloLesson } from "@/data/lessons/matematicas-1-eso/13-areas-y-perimetros/02-areas-triangulo";
 import { areasYVolumenes2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/12-areas-y-volumenes-2bach";
 import { arquitecturaBioclimatica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/04-arquitectura-bioclimatica-3eso";
+import { arquitecturaSistemaControl4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/01-arquitectura-sistema-control-4eso";
 import { arquitecturaSistemasInformaticosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/01-arquitectura-sistemas-informaticos";
 import { asignacionProbabilidades1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/03-asignacion-probabilidades-1bach";
 import { asignacionProbabilidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/03-asignacion-probabilidades-2bach";
@@ -186,6 +187,7 @@ import { componentesPerifericosDispositivos3esoLesson } from "@/data/lessons/tec
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
+import { comunicacionesIotProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/08-comunicaciones-iot-proyecto-4eso";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
@@ -216,7 +218,10 @@ import { continuidadPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { continuidadPuntoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/10-continuidad-punto-ccss2";
 import { contrasteHipotesisMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/11-contraste-hipotesis-media-ccss2";
 import { contrasteProporcionErroresCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/12-contraste-proporcion-errores-ccss2";
+import { controlMotoresEncoder4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/06-control-motores-encoder-4eso";
+import { controlPid4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/03-control-pid-4eso";
 import { controladorProporcionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/10-controlador-proporcional";
+import { controladoresPlcMicrocontrolador4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/04-controladores-plc-microcontrolador-4eso";
 import { controladoresProgramablesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/05-controladores-programables";
 import { conversionesBasesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/02-conversiones-bases";
 import { coordenadasGeograficas3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/09-coordenadas-geograficas-3eso";
@@ -975,6 +980,7 @@ import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
 import { productoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/07-producto-vectorial-2bach";
+import { programacionAutomatismosSecuencias4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/05-programacion-automatismos-secuencias-4eso";
 import { programarPlacaSetupLoop3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/01-programar-placa-setup-loop-3eso";
 import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
@@ -1085,6 +1091,7 @@ import { reglasDerivacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { regresionCuadraticaDeterminacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/13-regresion-cuadratica-determinacion-ccss1";
 import { regresionPrediccion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/12-regresion-prediccion-1bach";
 import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/12-regresion-prediccion-ccss1";
+import { regulacionTodoNadaProporcional4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/02-regulacion-todo-nada-proporcional-4eso";
 import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
@@ -1103,6 +1110,7 @@ import { responsabilidadTecnologicaHuellaDigital2esoLesson } from "@/data/lesson
 import { reutilizacionEconomiaCircularEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/05-reutilizacion-economia-circular-eso";
 import { robotSeguidorLinea3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/06-robot-seguidor-linea-3eso";
 import { robotUltrasonidosObstaculos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/07-robot-ultrasonidos-obstaculos-3eso";
+import { roboticaMovilCinematica4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/07-robotica-movil-cinematica-4eso";
 import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
@@ -1415,6 +1423,7 @@ export const interactiveLessons = {
   "areas-triangulo": areasTrianguloLesson,
   "areas-y-volumenes-2bach": areasYVolumenes2bachLesson,
   "arquitectura-bioclimatica-3eso": arquitecturaBioclimatica3esoLesson,
+  "arquitectura-sistema-control-4eso": arquitecturaSistemaControl4esoLesson,
   "arquitectura-sistemas-informaticos": arquitecturaSistemasInformaticosLesson,
   "asignacion-probabilidades-1bach": asignacionProbabilidades1bachLesson,
   "asignacion-probabilidades-2bach": asignacionProbabilidades2bachLesson,
@@ -1521,6 +1530,7 @@ export const interactiveLessons = {
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
+  "comunicaciones-iot-proyecto-4eso": comunicacionesIotProyecto4esoLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
@@ -1551,7 +1561,10 @@ export const interactiveLessons = {
   "continuidad-punto-ccss2": continuidadPuntoCcss2Lesson,
   "contraste-hipotesis-media-ccss2": contrasteHipotesisMediaCcss2Lesson,
   "contraste-proporcion-errores-ccss2": contrasteProporcionErroresCcss2Lesson,
+  "control-motores-encoder-4eso": controlMotoresEncoder4esoLesson,
+  "control-pid-4eso": controlPid4esoLesson,
   "controlador-proporcional": controladorProporcionalLesson,
+  "controladores-plc-microcontrolador-4eso": controladoresPlcMicrocontrolador4esoLesson,
   "controladores-programables": controladoresProgramablesLesson,
   "conversiones-bases": conversionesBasesLesson,
   "coordenadas-geograficas-3eso": coordenadasGeograficas3esoLesson,
@@ -2310,6 +2323,7 @@ export const interactiveLessons = {
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
   "producto-vectorial-2bach": productoVectorial2bachLesson,
+  "programacion-automatismos-secuencias-4eso": programacionAutomatismosSecuencias4esoLesson,
   "programar-placa-setup-loop-3eso": programarPlacaSetupLoop3esoLesson,
   "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
@@ -2420,6 +2434,7 @@ export const interactiveLessons = {
   "regresion-cuadratica-determinacion-ccss1": regresionCuadraticaDeterminacionCcss1Lesson,
   "regresion-prediccion-1bach": regresionPrediccion1bachLesson,
   "regresion-prediccion-ccss1": regresionPrediccionCcss1Lesson,
+  "regulacion-todo-nada-proporcional-4eso": regulacionTodoNadaProporcional4esoLesson,
   "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
@@ -2438,6 +2453,7 @@ export const interactiveLessons = {
   "reutilizacion-economia-circular-eso": reutilizacionEconomiaCircularEsoLesson,
   "robot-seguidor-linea-3eso": robotSeguidorLinea3esoLesson,
   "robot-ultrasonidos-obstaculos-3eso": robotUltrasonidosObstaculos3esoLesson,
+  "robotica-movil-cinematica-4eso": roboticaMovilCinematica4esoLesson,
   "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,

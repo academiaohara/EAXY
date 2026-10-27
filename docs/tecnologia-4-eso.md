@@ -21,5 +21,6 @@ Total previsto: 58 lecciones. Orden de construcción: 4 → 5 → 6 → 3 → 2 
 |---|---|
 | 4. Electricidad y electrónica | Hecho (9 lecciones, `04-electricidad-electronica/`; herramientas `TecEso4ElectronicaTools.tsx`, animación `teceso4-electronica.tsx`) |
 | 5. Pensamiento computacional | Hecho (8 lecciones, `05-pensamiento-computacional/`; herramientas `TecEso4ComputacionalTools.tsx` y 8 programas nuevos en `python-traza-explorador`, animación `teceso4-computacional.tsx`) |
+| 6. Automatización y robótica | Hecho (8 lecciones, `06-automatizacion-robotica/`; herramientas `TecEso4ControlTools.tsx`, animación `teceso4-control.tsx`) |
 
 Test del curso: `src/tests/unit/data/tecnologia-4-eso-lessons.test.tsx` (añadir cada tema a `TEMAS`, en el orden del currículo).

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ReguladorExplorador, MotorEncoderExplorador, RobotDiferencialExplorador, SecuenciaExplorador, ProtocoloIotExplorador } from "@/components/lesson/slide/tools/TecEso4ControlTools";
 import { DescomposicionExplorador, BusquedaExplorador, OrdenacionExplorador, DatosTemperaturasExplorador, ComplejidadExplorador } from "@/components/lesson/slide/tools/TecEso4ComputacionalTools";
 import { AlternaExplorador, PotenciaEnergiaExplorador, CircuitoMixtoExplorador, FuenteAlimentacionExplorador, TransistorBetaExplorador, Temporizador555Explorador, BooleExplorador } from "@/components/lesson/slide/tools/TecEso4ElectronicaTools";
 import { SolarFvExplorador, EolicaExplorador, AislamientoExplorador, TransporteCo2Explorador, HidraulicaExplorador } from "@/components/lesson/slide/tools/TecEso3SostenibleTools";
@@ -1723,6 +1724,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DatosTemperaturasExplorador block={block} />;
     case "eso4-complejidad-explorador":
       return <ComplejidadExplorador block={block} />;
+    case "eso4-regulador-explorador":
+      return <ReguladorExplorador block={block} />;
+    case "eso4-motor-explorador":
+      return <MotorEncoderExplorador block={block} />;
+    case "eso4-robot-explorador":
+      return <RobotDiferencialExplorador block={block} />;
+    case "eso4-secuencia-explorador":
+      return <SecuenciaExplorador block={block} />;
+    case "eso4-iot-explorador":
+      return <ProtocoloIotExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

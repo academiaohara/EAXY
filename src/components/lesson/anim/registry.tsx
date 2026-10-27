@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildLazoCerrado } from "@/components/lesson/anim/scenes/industrial/teceso4-control";
 import { buildBusquedaBinaria } from "@/components/lesson/anim/scenes/industrial/teceso4-computacional";
 import { buildFuenteAlimentacion } from "@/components/lesson/anim/scenes/industrial/teceso4-electronica";
 import { buildCasaBioclimatica } from "@/components/lesson/anim/scenes/industrial/teceso3-sostenible";
@@ -779,6 +780,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso3-casa-bioclimatica": () => buildCasaBioclimatica(),
   "eso4-fuente-alimentacion": () => buildFuenteAlimentacion(),
   "eso4-busqueda-binaria": () => buildBusquedaBinaria(),
+  "eso4-lazo-cerrado": () => buildLazoCerrado(),
   /* industrial-end */
 };
 

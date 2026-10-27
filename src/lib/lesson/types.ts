@@ -1072,6 +1072,7 @@ export type SlideAnimId =
   | "eso3-casa-bioclimatica"
   | "eso4-fuente-alimentacion"
   | "eso4-busqueda-binaria"
+  | "eso4-lazo-cerrado"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1836,6 +1837,11 @@ export type SlideToolId =
   | "eso4-ordenacion-explorador"
   | "eso4-datos-explorador"
   | "eso4-complejidad-explorador"
+  | "eso4-regulador-explorador"
+  | "eso4-motor-explorador"
+  | "eso4-robot-explorador"
+  | "eso4-secuencia-explorador"
+  | "eso4-iot-explorador"
   /* industrial-tool-end */;
 
 /**
