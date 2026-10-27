@@ -337,6 +337,7 @@ import { distanciaPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bac
 import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/07-distancia-punto-recta-1bach";
 import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/08-distancia-punto-recta-2bach";
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
+import { distanciasVerdaderaMagnitudDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/04-distancias-verdadera-magnitud-dt1";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
 import { distribucionMediaMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/05-distribucion-media-muestral-ccss2";
@@ -674,6 +675,7 @@ import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematica
 import { interpretacionPlanosSimbologia2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/04-interpretacion-planos-simbologia-2eso";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
 import { interruptoresPulsadoresLamparasLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/04-interruptores-pulsadores-lamparas";
+import { interseccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/01-intersecciones-diedrico-dt1";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
 import { intervaloConfianzaMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/08-intervalo-confianza-media-ccss2";
 import { intervaloConfianzaProporcion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/11-intervalo-confianza-proporcion-2bach";
@@ -891,6 +893,7 @@ import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingeni
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
 import { parPotenciaReductoras4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/02-par-potencia-reductoras-4eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
+import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/02-paralelismo-diedrico-dt1";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { parteEnteraCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/08-parte-entera-ccss1";
@@ -898,6 +901,7 @@ import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachi
 import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/06-percentiles-cuartiles-1bach";
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
+import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
@@ -1769,6 +1773,7 @@ export const interactiveLessons = {
   "distancia-punto-recta-1bach": distanciaPuntoRecta1bachLesson,
   "distancia-punto-recta-2bach": distanciaPuntoRecta2bachLesson,
   "distancia-rectas-2bach": distanciaRectas2bachLesson,
+  "distancias-verdadera-magnitud-dt1": distanciasVerdaderaMagnitudDt1Lesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
   "distribucion-media-muestral-ccss2": distribucionMediaMuestralCcss2Lesson,
@@ -2106,6 +2111,7 @@ export const interactiveLessons = {
   "interpretacion-planos-simbologia-2eso": interpretacionPlanosSimbologia2esoLesson,
   "interpretar-graficas-2bach": interpretarGraficas2bachLesson,
   "interruptores-pulsadores-lamparas": interruptoresPulsadoresLamparasLesson,
+  "intersecciones-diedrico-dt1": interseccionesDiedricoDt1Lesson,
   "intervalo-confianza-media-2bach": intervaloConfianzaMedia2bachLesson,
   "intervalo-confianza-media-ccss2": intervaloConfianzaMediaCcss2Lesson,
   "intervalo-confianza-proporcion-2bach": intervaloConfianzaProporcion2bachLesson,
@@ -2323,6 +2329,7 @@ export const interactiveLessons = {
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
   "par-potencia-reductoras-4eso": parPotenciaReductoras4esoLesson,
   "parabola-1bach": parabola1bachLesson,
+  "paralelismo-diedrico-dt1": paralelismoDiedricoDt1Lesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
   "parte-entera-ccss1": parteEnteraCcss1Lesson,
@@ -2330,6 +2337,7 @@ export const interactiveLessons = {
   "percentiles-cuartiles-1bach": percentilesCuartiles1bachLesson,
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
+  "perpendicularidad-diedrico-dt1": perpendicularidadDiedricoDt1Lesson,
   "perspectiva-caballera": perspectivaCaballeraLesson,
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,

@@ -93,13 +93,13 @@ export function perteneceAPlano(phi1: number, phi2: number, p: P3, tol = 1e-6) {
 
 /* ───────────── Dibujo de la épura ───────────── */
 
-const X0 = 260;
-const Y0 = 150;
-const U = 26;
+export const X0 = 260;
+export const Y0 = 150;
+export const U = 26;
 /** Punto de la épura (x, y) con y hacia abajo desde la LT. */
-const ep = (x: number, y: number): Pt => [X0 + x * U, Y0 + y * U];
+export const ep = (x: number, y: number): Pt => [X0 + x * U, Y0 + y * U];
 
-function EpuraBase({ children, h = 300, testId }: { children: ReactNode; h?: number; testId: string }) {
+export function EpuraBase({ children, h = 300, testId }: { children: ReactNode; h?: number; testId: string }) {
   return (
     <Svg w={520} h={h} testId={testId} maxH={330}>
       <line x1={10} y1={Y0} x2={510} y2={Y0} stroke={MANIM.ink} strokeWidth={2.5} />
@@ -113,7 +113,7 @@ function EpuraBase({ children, h = 300, testId }: { children: ReactNode; h?: num
   );
 }
 
-const tag = (p: Pt, t: string, color: string, dx = 8, dy = -8) => (
+export const tag = (p: Pt, t: string, color: string, dx = 8, dy = -8) => (
   <text x={p[0] + dx} y={p[1] + dy} fill={color} fontSize={15} fontWeight={700}>
     {t}
   </text>

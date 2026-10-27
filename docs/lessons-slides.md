@@ -1285,6 +1285,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-posiciones-recta-explorador` | Posiciones particulares de la recta y verdadera magnitud | `n` posición (0–6) |
 | `dt1-plano-diedrico-explorador` | Trazas de un plano, tipo e inclinación con los planos de proyección | `a`, `b` ángulos de las trazas (°) |
 | `dt1-pertenencia-plano-explorador` | Pertenencia de un punto a un plano mediante su recta horizontal | `a` x, `b` alejamiento (cm) |
+| `dt1-interseccion-planos-explorador` | Recta intersección de dos planos por sus trazas | `a`, `b` ángulos de las trazas de β (°) |
+| `dt1-planos-paralelos-explorador` | Planos paralelos: trazas homónimas, ángulo y distancia | `a`, `b` ángulos de las trazas de β (°) |
+| `dt1-perpendicular-explorador` | Recta perpendicular a un plano y distancia punto-plano | `a`, `b` ángulos de las trazas (°) |
+| `dt1-distancia-verdadera-explorador` | Distancia entre dos puntos: triángulo de la verdadera magnitud | `a` x, `b` alejamiento de B (cm) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

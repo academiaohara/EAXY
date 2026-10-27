@@ -1935,6 +1935,10 @@ export type SlideToolId =
   | "dt1-posiciones-recta-explorador"
   | "dt1-plano-diedrico-explorador"
   | "dt1-pertenencia-plano-explorador"
+  | "dt1-interseccion-planos-explorador"
+  | "dt1-planos-paralelos-explorador"
+  | "dt1-perpendicular-explorador"
+  | "dt1-distancia-verdadera-explorador"
   /* industrial-tool-end */;
 
 /**

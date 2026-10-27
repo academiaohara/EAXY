@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { InterseccionPlanosDt1Explorador, PlanosParalelosDt1Explorador, PerpendicularPlanoDt1Explorador, DistanciaPuntosDt1Explorador } from "@/components/lesson/slide/tools/DtDiedrico2Tools";
 import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
 import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
 import { PuntosNotablesDt1Explorador, TrianguloDatosDt1Explorador, CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, MetodoGeneralDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
@@ -1900,6 +1901,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PlanoTrazasDt1Explorador block={block} />;
     case "dt1-pertenencia-plano-explorador":
       return <PertenenciaPlanoDt1Explorador block={block} />;
+    case "dt1-interseccion-planos-explorador":
+      return <InterseccionPlanosDt1Explorador block={block} />;
+    case "dt1-planos-paralelos-explorador":
+      return <PlanosParalelosDt1Explorador block={block} />;
+    case "dt1-perpendicular-explorador":
+      return <PerpendicularPlanoDt1Explorador block={block} />;
+    case "dt1-distancia-verdadera-explorador":
+      return <DistanciaPuntosDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

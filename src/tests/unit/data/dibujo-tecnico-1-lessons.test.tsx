@@ -24,6 +24,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["triangulos-cuadrilateros-poligonos", 6],
   ["tangencias-curvas-tecnicas", 5],
   ["sistema-diedrico-punto-recta-plano", 6],
+  ["sistema-diedrico-relaciones-distancias", 4],
 ];
 
 describe("curso Dibujo Técnico I", () => {
