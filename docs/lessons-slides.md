@@ -549,6 +549,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-fuente-alimentacion` | Fuente de alimentación: red alterna, transformador, rectificador y filtro | — |
 | `eso4-busqueda-binaria` | Búsqueda binaria de un número en una lista ordenada de 16 elementos | — |
 | `eso4-lazo-cerrado` | Lazo cerrado: consigna, comparador, controlador, actuador, proceso y sensor | — |
+| `eso4-reductora-etapas` | Reductora de dos etapas: la velocidad baja y el par sube | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1192,6 +1193,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-robot-explorador` | Robot diferencial: trayectoria, velocidad angular, radio y posición final | `a` velocidad izquierda, `b` velocidad derecha (m/s) |
 | `eso4-secuencia-explorador` | Secuencia de etapas y transiciones (GRAFCET) de una taladradora automática | `n` etapa inicial (0–3) |
 | `eso4-iot-explorador` | Qué tecnologías inalámbricas cumplen alcance, velocidad y consumo | `n` alcance (0–3) |
+| `eso4-transmision-explorador` | Etapa de engranajes: i, velocidad, ω, par y potencia de salida | `a` velocidad de entrada (rpm), `b` dientes z₂ |
+| `eso4-reductora-explorador` | Reductora de varias etapas: relación, rendimiento, par y potencia | `n` etapas (1–4), `a` relación por etapa |
+| `eso4-biela-explorador` | Biela-manivela: posición del émbolo y carrera | `a` radio de la manivela (mm) |
+| `eso4-rozamiento-explorador` | Bloque en un plano inclinado con rozamiento | `a` masa (kg), `b` inclinación (°) |
+| `eso4-cinta-explorador` | Cinta transportadora: velocidad, potencia útil y potencia del motor | `a` relación de la reductora |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

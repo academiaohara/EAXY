@@ -45,6 +45,7 @@ import { angulosCosenos2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/04-angulos-relacionados-1bach";
 import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/06-anualidades-amortizacion-ccss1";
 import { anualidadesCapitalizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/04-anualidades-capitalizacion-ccss1";
+import { aplicacionCintaTransportadora4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/07-aplicacion-cinta-transportadora-4eso";
 import { aplicacionesDomesticasIndustriales3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/07-aplicaciones-domesticas-industriales-3eso";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
@@ -105,6 +106,7 @@ import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
+import { bielaManivelaCremallera4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/03-biela-manivela-cremallera-4eso";
 import { bienestarDigitalPropiedadIntelectualLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/07-bienestar-digital-propiedad-intelectual";
 import { biestableRsLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/02-biestable-rs";
 import { biestablesJkDTLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/03-biestables-jk-d-t";
@@ -306,6 +308,7 @@ import { discusionSistemas1bachLesson } from "@/data/lessons/matematicas-1-bachi
 import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/16-discusion-sistemas-ccss1";
 import { disenoAccesibleUniversal2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/04-diseno-accesible-universal-2eso";
 import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/03-diseno-conceptual-ideas";
+import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { dispersionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/07-dispersion-ccss1";
@@ -383,6 +386,7 @@ import { electronicaDigitalBoole4esoLesson } from "@/data/lessons/tecnologia-4-e
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
 import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
+import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/05-elementos-soporte-acoplamiento-4eso";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
@@ -827,6 +831,7 @@ import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-in
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
+import { parPotenciaReductoras4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/02-par-potencia-reductoras-4eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
@@ -1093,6 +1098,7 @@ import { regresionPrediccion1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/12-regresion-prediccion-ccss1";
 import { regulacionTodoNadaProporcional4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/02-regulacion-todo-nada-proporcional-4eso";
 import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
+import { relacionTransmisionVelocidadAngular4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/01-relacion-transmision-velocidad-angular-4eso";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
@@ -1115,6 +1121,7 @@ import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
+import { rozamientoPerdidasLubricacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/04-rozamiento-perdidas-lubricacion-4eso";
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
@@ -1388,6 +1395,7 @@ export const interactiveLessons = {
   "angulos-relacionados-1bach": angulosRelacionados1bachLesson,
   "anualidades-amortizacion-ccss1": anualidadesAmortizacionCcss1Lesson,
   "anualidades-capitalizacion-ccss1": anualidadesCapitalizacionCcss1Lesson,
+  "aplicacion-cinta-transportadora-4eso": aplicacionCintaTransportadora4esoLesson,
   "aplicaciones-domesticas-industriales-3eso": aplicacionesDomesticasIndustriales3esoLesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
@@ -1448,6 +1456,7 @@ export const interactiveLessons = {
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
+  "biela-manivela-cremallera-4eso": bielaManivelaCremallera4esoLesson,
   "bienestar-digital-propiedad-intelectual": bienestarDigitalPropiedadIntelectualLesson,
   "biestable-rs": biestableRsLesson,
   "biestables-jk-d-t": biestablesJkDTLesson,
@@ -1649,6 +1658,7 @@ export const interactiveLessons = {
   "discusion-sistemas-ccss1": discusionSistemasCcss1Lesson,
   "diseno-accesible-universal-2eso": disenoAccesibleUniversal2esoLesson,
   "diseno-conceptual-ideas": disenoConceptualIdeasLesson,
+  "diseno-simulacion-mecanismos-4eso": disenoSimulacionMecanismos4esoLesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "dispersion-ccss1": dispersionCcss1Lesson,
@@ -1726,6 +1736,7 @@ export const interactiveLessons = {
   "elementos-control-cableado": elementosControlCableadoLesson,
   "elementos-estructurales": elementosEstructuralesLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
+  "elementos-soporte-acoplamiento-4eso": elementosSoporteAcoplamiento4esoLesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
@@ -2170,6 +2181,7 @@ export const interactiveLessons = {
   "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
+  "par-potencia-reductoras-4eso": parPotenciaReductoras4esoLesson,
   "parabola-1bach": parabola1bachLesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
@@ -2436,6 +2448,7 @@ export const interactiveLessons = {
   "regresion-prediccion-ccss1": regresionPrediccionCcss1Lesson,
   "regulacion-todo-nada-proporcional-4eso": regulacionTodoNadaProporcional4esoLesson,
   "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
+  "relacion-transmision-velocidad-angular-4eso": relacionTransmisionVelocidadAngular4esoLesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
@@ -2458,6 +2471,7 @@ export const interactiveLessons = {
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
+  "rozamiento-perdidas-lubricacion-4eso": rozamientoPerdidasLubricacion4esoLesson,
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,

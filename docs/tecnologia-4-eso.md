@@ -7,6 +7,7 @@ Curso `tecnologia-4-eso` (ya declarado, vacío, en `src/content/curriculum.ts`).
 | 1. Proyectos de ingeniería | 6 | Análisis de necesidades y especificaciones, croquis, planos y modelado, planificación, ensayos, documentación y mejora iterativa |
 | 2. Materiales y fabricación | 7 | Propiedades mecánicas y ensayos, selección de materiales, control de calidad, procesos y tolerancias, ciclo de vida |
 | 3. Sistemas mecánicos | 7 | Relación de transmisión, velocidad angular y par, potencia y rendimiento, levas y bielas, simulación de mecanismos |
+| 3. Sistemas mecánicos | Hecho (7 lecciones, `03-sistemas-mecanicos/`; herramientas `TecEso4MecanicaTools.tsx`, animación `teceso4-mecanica.tsx`) |
 | 4. Electricidad y electrónica | 9 | Corriente alterna, leyes de Kirchhoff, potencia y energía, transistor, circuitos integrados (555), electrónica digital, simulación |
 | 5. Pensamiento computacional | 8 | Descomposición, algoritmos y diagramas de flujo, variables y listas, condiciones y bucles, funciones, depuración, tratamiento de datos |
 | 6. Automatización y robótica | 8 | Arquitectura de control, lazo cerrado y regulación, placas programables, control de motores, comunicación e IoT, robot simulado |

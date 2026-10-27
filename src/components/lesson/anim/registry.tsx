@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildReductoraEtapas } from "@/components/lesson/anim/scenes/industrial/teceso4-mecanica";
 import { buildLazoCerrado } from "@/components/lesson/anim/scenes/industrial/teceso4-control";
 import { buildBusquedaBinaria } from "@/components/lesson/anim/scenes/industrial/teceso4-computacional";
 import { buildFuenteAlimentacion } from "@/components/lesson/anim/scenes/industrial/teceso4-electronica";
@@ -781,6 +782,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso4-fuente-alimentacion": () => buildFuenteAlimentacion(),
   "eso4-busqueda-binaria": () => buildBusquedaBinaria(),
   "eso4-lazo-cerrado": () => buildLazoCerrado(),
+  "eso4-reductora-etapas": () => buildReductoraEtapas(),
   /* industrial-end */
 };
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TransmisionExplorador, ReductoraExplorador, BielaManivelaPosExplorador, RozamientoExplorador, CintaTransportadoraExplorador } from "@/components/lesson/slide/tools/TecEso4MecanicaTools";
 import { ReguladorExplorador, MotorEncoderExplorador, RobotDiferencialExplorador, SecuenciaExplorador, ProtocoloIotExplorador } from "@/components/lesson/slide/tools/TecEso4ControlTools";
 import { DescomposicionExplorador, BusquedaExplorador, OrdenacionExplorador, DatosTemperaturasExplorador, ComplejidadExplorador } from "@/components/lesson/slide/tools/TecEso4ComputacionalTools";
 import { AlternaExplorador, PotenciaEnergiaExplorador, CircuitoMixtoExplorador, FuenteAlimentacionExplorador, TransistorBetaExplorador, Temporizador555Explorador, BooleExplorador } from "@/components/lesson/slide/tools/TecEso4ElectronicaTools";
@@ -1734,6 +1735,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SecuenciaExplorador block={block} />;
     case "eso4-iot-explorador":
       return <ProtocoloIotExplorador block={block} />;
+    case "eso4-transmision-explorador":
+      return <TransmisionExplorador block={block} />;
+    case "eso4-reductora-explorador":
+      return <ReductoraExplorador block={block} />;
+    case "eso4-biela-explorador":
+      return <BielaManivelaPosExplorador block={block} />;
+    case "eso4-rozamiento-explorador":
+      return <RozamientoExplorador block={block} />;
+    case "eso4-cinta-explorador":
+      return <CintaTransportadoraExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

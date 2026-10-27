@@ -1073,6 +1073,7 @@ export type SlideAnimId =
   | "eso4-fuente-alimentacion"
   | "eso4-busqueda-binaria"
   | "eso4-lazo-cerrado"
+  | "eso4-reductora-etapas"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1842,6 +1843,11 @@ export type SlideToolId =
   | "eso4-robot-explorador"
   | "eso4-secuencia-explorador"
   | "eso4-iot-explorador"
+  | "eso4-transmision-explorador"
+  | "eso4-reductora-explorador"
+  | "eso4-biela-explorador"
+  | "eso4-rozamiento-explorador"
+  | "eso4-cinta-explorador"
   /* industrial-tool-end */;
 
 /**
