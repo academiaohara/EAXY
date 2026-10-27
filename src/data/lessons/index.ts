@@ -110,6 +110,7 @@ import { axiomasKolmogorov2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/04-axiomas-kolmogorov-ccss2";
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
+import { axonometriaOrtogonalCoeficientesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/02-axonometria-ortogonal-coeficientes-dt1";
 import { basesDatosSqlTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/02-bases-datos-sql-ti2";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
 import { bielaManivelaCremallera4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/03-biela-manivela-cremallera-4eso";
@@ -587,6 +588,7 @@ import { funcionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-
 import { funcionesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/11-funciones-trigonometricas-2bach";
 import { funcionesTrigonometricasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/09-funciones-trigonometricas-ccss1";
 import { fundamentosAutomatizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/01-fundamentos-automatizacion";
+import { fundamentosAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/01-fundamentos-axonometria-dt1";
 import { fundamentosProyeccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/01-fundamentos-proyecciones-diedrico-dt1";
 import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-galgas-extensometricas";
 import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/04-gauss-ampliada-2bach";
@@ -694,6 +696,7 @@ import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/
 import { investigacionDesarrolloInnovacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/01-investigacion-desarrollo-innovacion-ti2";
 import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
+import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
 import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/05-kirchhoff-mallas-nudos";
@@ -903,6 +906,7 @@ import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
+import { perspectivaCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/04-perspectiva-caballera-dt1";
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
@@ -1100,6 +1104,7 @@ import { puertasLogicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-con
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntoDiedricoCuadrantesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/02-punto-diedrico-cuadrantes-dt1";
+import { puntoPlanoAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/05-punto-plano-axonometria-dt1";
 import { puntosNotablesTrianguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/01-puntos-notables-triangulo-dt1";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
@@ -1546,6 +1551,7 @@ export const interactiveLessons = {
   "axiomas-kolmogorov-ccss2": axiomasKolmogorovCcss2Lesson,
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
+  "axonometria-ortogonal-coeficientes-dt1": axonometriaOrtogonalCoeficientesDt1Lesson,
   "bases-datos-sql-ti2": basesDatosSqlTi2Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
   "biela-manivela-cremallera-4eso": bielaManivelaCremallera4esoLesson,
@@ -2023,6 +2029,7 @@ export const interactiveLessons = {
   "funciones-trigonometricas-2bach": funcionesTrigonometricas2bachLesson,
   "funciones-trigonometricas-ccss1": funcionesTrigonometricasCcss1Lesson,
   "fundamentos-automatizacion": fundamentosAutomatizacionLesson,
+  "fundamentos-axonometria-dt1": fundamentosAxonometriaDt1Lesson,
   "fundamentos-proyecciones-diedrico-dt1": fundamentosProyeccionesDiedricoDt1Lesson,
   "galgas-extensometricas": galgasExtensometricasLesson,
   "gauss-ampliada-2bach": gaussAmpliada2bachLesson,
@@ -2130,6 +2137,7 @@ export const interactiveLessons = {
   "investigacion-desarrollo-innovacion-ti2": investigacionDesarrolloInnovacionTi2Lesson,
   "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
+  "isometrica-piezas-elipses-dt1": isometricaPiezasElipsesDt1Lesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
   "kirchhoff-mallas-nudos": kirchhoffMallasNudosLesson,
@@ -2339,6 +2347,7 @@ export const interactiveLessons = {
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
   "perpendicularidad-diedrico-dt1": perpendicularidadDiedricoDt1Lesson,
   "perspectiva-caballera": perspectivaCaballeraLesson,
+  "perspectiva-caballera-dt1": perspectivaCaballeraDt1Lesson,
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
@@ -2536,6 +2545,7 @@ export const interactiveLessons = {
   "puertas-nor-nand-xor": puertasNorNandXorLesson,
   "puertas-or-and-not": puertasOrAndNotLesson,
   "punto-diedrico-cuadrantes-dt1": puntoDiedricoCuadrantesDt1Lesson,
+  "punto-plano-axonometria-dt1": puntoPlanoAxonometriaDt1Lesson,
   "puntos-notables-triangulo-dt1": puntosNotablesTrianguloDt1Lesson,
   "puntos-vectores-espacio-2bach": puntosVectoresEspacio2bachLesson,
   "pwm-motores-servos-3eso": pwmMotoresServos3esoLesson,

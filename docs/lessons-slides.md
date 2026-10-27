@@ -566,6 +566,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
 | `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
+| `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1289,6 +1290,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-planos-paralelos-explorador` | Planos paralelos: trazas homónimas, ángulo y distancia | `a`, `b` ángulos de las trazas de β (°) |
 | `dt1-perpendicular-explorador` | Recta perpendicular a un plano y distancia punto-plano | `a`, `b` ángulos de las trazas (°) |
 | `dt1-distancia-verdadera-explorador` | Distancia entre dos puntos: triángulo de la verdadera magnitud | `a` x, `b` alejamiento de B (cm) |
+| `dt1-axonometria-ortogonal-explorador` | Coeficientes de reducción de la axonometría ortogonal: tipo y ángulos entre ejes | `a`, `b` coeficientes kx y ky |
+| `dt1-isometrica-pieza-explorador` | Pieza en isométrica con agujero y elipse según el coeficiente | `a`, `b`, `c` largo, ancho y alto (cm) |
+| `dt1-caballera-explorador` | Pieza en perspectiva caballera: ángulo y coeficiente de reducción | `a`, `b`, `c` largo, profundidad y alto (cm) |
+| `dt1-axo-punto-plano-explorador` | Punto por sus coordenadas y plano por sus trazas en axonometría | `n` modo (0 punto, 1 plano), `a`, `b` coordenadas |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

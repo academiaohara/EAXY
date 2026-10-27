@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AxonometriaOrtogonalDt1Explorador, IsometricaPiezaDt1Explorador, CaballeraDt1Explorador, PuntoPlanoAxoDt1Explorador } from "@/components/lesson/slide/tools/DtAxonometricoTools";
 import { InterseccionPlanosDt1Explorador, PlanosParalelosDt1Explorador, PerpendicularPlanoDt1Explorador, DistanciaPuntosDt1Explorador } from "@/components/lesson/slide/tools/DtDiedrico2Tools";
 import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
 import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
@@ -1909,6 +1910,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PerpendicularPlanoDt1Explorador block={block} />;
     case "dt1-distancia-verdadera-explorador":
       return <DistanciaPuntosDt1Explorador block={block} />;
+    case "dt1-axonometria-ortogonal-explorador":
+      return <AxonometriaOrtogonalDt1Explorador block={block} />;
+    case "dt1-isometrica-pieza-explorador":
+      return <IsometricaPiezaDt1Explorador block={block} />;
+    case "dt1-caballera-explorador":
+      return <CaballeraDt1Explorador block={block} />;
+    case "dt1-axo-punto-plano-explorador":
+      return <PuntoPlanoAxoDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

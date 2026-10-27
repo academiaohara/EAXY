@@ -25,6 +25,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["tangencias-curvas-tecnicas", 5],
   ["sistema-diedrico-punto-recta-plano", 6],
   ["sistema-diedrico-relaciones-distancias", 4],
+  ["sistemas-axonometricos", 5],
 ];
 
 describe("curso Dibujo Técnico I", () => {

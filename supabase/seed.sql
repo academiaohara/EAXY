@@ -192,7 +192,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000203', 'a1000000-0000-4000-8000-000000000022', 'triangulos-cuadrilateros-poligonos', 'Triángulos, cuadriláteros y polígonos regulares', 3),
   ('a2000000-0000-4000-8000-000000000204', 'a1000000-0000-4000-8000-000000000022', 'tangencias-curvas-tecnicas', 'Tangencias y curvas técnicas', 4),
   ('a2000000-0000-4000-8000-000000000205', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-punto-recta-plano', 'Sistema diédrico: punto, recta y plano', 5),
-  ('a2000000-0000-4000-8000-000000000206', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-relaciones-distancias', 'Sistema diédrico: relaciones y distancias', 6);
+  ('a2000000-0000-4000-8000-000000000206', 'a1000000-0000-4000-8000-000000000022', 'sistema-diedrico-relaciones-distancias', 'Sistema diédrico: relaciones y distancias', 6),
+  ('a2000000-0000-4000-8000-000000000207', 'a1000000-0000-4000-8000-000000000022', 'sistemas-axonometricos', 'Sistemas axonométricos', 7);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1625,4 +1626,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020601', 'a2000000-0000-4000-8000-000000000206', '1. Intersecciones: plano con plano y recta con plano', 'Recta intersección y trazas.', 1, null),
   ('a3000000-0000-4000-8000-000000020602', 'a2000000-0000-4000-8000-000000000206', '2. Paralelismo entre rectas y planos', 'Planos paralelos y distancia entre ellos.', 2, null),
   ('a3000000-0000-4000-8000-000000020603', 'a2000000-0000-4000-8000-000000000206', '3. Perpendicularidad entre rectas y planos', 'Normal a un plano y distancia punto-plano.', 3, null),
-  ('a3000000-0000-4000-8000-000000020604', 'a2000000-0000-4000-8000-000000000206', '4. Distancias y verdadera magnitud', 'Triángulo de la verdadera magnitud.', 4, null);
+  ('a3000000-0000-4000-8000-000000020604', 'a2000000-0000-4000-8000-000000000206', '4. Distancias y verdadera magnitud', 'Triángulo de la verdadera magnitud.', 4, null),
+  ('a3000000-0000-4000-8000-000000020701', 'a2000000-0000-4000-8000-000000000207', '1. Fundamentos del sistema axonométrico', 'Triedro, cuadro y clases de axonometría.', 1, null),
+  ('a3000000-0000-4000-8000-000000020702', 'a2000000-0000-4000-8000-000000000207', '2. Axonometría ortogonal: ejes y coeficientes de reducción', 'Isométrica, dimétrica y trimétrica.', 2, null),
+  ('a3000000-0000-4000-8000-000000020703', 'a2000000-0000-4000-8000-000000000207', '3. Perspectiva isométrica de piezas', 'Medidas, agujeros y elipses.', 3, null),
+  ('a3000000-0000-4000-8000-000000020704', 'a2000000-0000-4000-8000-000000000207', '4. Axonometría oblicua: perspectivas caballera y militar', 'Cara en verdadera forma y reducción.', 4, null),
+  ('a3000000-0000-4000-8000-000000020705', 'a2000000-0000-4000-8000-000000000207', '5. Punto, recta y plano en axonometría', 'Coordenadas, trazas y planos.', 5, null);

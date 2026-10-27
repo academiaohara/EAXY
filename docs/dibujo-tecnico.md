@@ -60,3 +60,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 4. Tangencias y curvas técnicas | Hecho (5 lecciones, `04-tangencias-curvas-tecnicas/`; herramientas `DtTangenciasTools.tsx`, animaciones `dt1-tangencias.tsx`) |
 | DT I · 5. Sistema diédrico: punto, recta y plano | Hecho (6 lecciones, `05-sistema-diedrico-punto-recta-plano/`; herramientas `DtDiedricoTools.tsx`, animación `dt1-diedrico.tsx`; bloque `dibujo-sistemas-representacion`) |
 | DT I · 6. Sistema diédrico: relaciones y distancias | Hecho (4 lecciones, `06-sistema-diedrico-relaciones-distancias/`; herramientas `DtDiedrico2Tools.tsx`) |
+| DT I · 7. Sistemas axonométricos | Hecho (5 lecciones, `07-sistemas-axonometricos/`; herramientas `DtAxonometricoTools.tsx`, animación `dt1-axonometria.tsx`) |

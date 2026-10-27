@@ -1090,6 +1090,7 @@ export type SlideAnimId =
   | "dt1-tangentes-punto"
   | "dt1-trazado-ovalo"
   | "dt1-abatimiento-diedrico"
+  | "dt1-cubo-isometrico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1939,6 +1940,10 @@ export type SlideToolId =
   | "dt1-planos-paralelos-explorador"
   | "dt1-perpendicular-explorador"
   | "dt1-distancia-verdadera-explorador"
+  | "dt1-axonometria-ortogonal-explorador"
+  | "dt1-isometrica-pieza-explorador"
+  | "dt1-caballera-explorador"
+  | "dt1-axo-punto-plano-explorador"
   /* industrial-tool-end */;
 
 /**
