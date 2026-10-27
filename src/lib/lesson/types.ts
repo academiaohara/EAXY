@@ -1087,6 +1087,8 @@ export type SlideAnimId =
   | "dt1-trazado-arco-capaz"
   | "dt1-seccion-aurea"
   | "dt1-pentagono-euclides"
+  | "dt1-tangentes-punto"
+  | "dt1-trazado-ovalo"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1922,6 +1924,11 @@ export type SlideToolId =
   | "dt1-poligono-regular-explorador"
   | "dt1-metodo-general-explorador"
   | "dt1-estrellado-explorador"
+  | "dt1-tangente-punto-explorador"
+  | "dt1-circunferencias-explorador"
+  | "dt1-enlace-explorador"
+  | "dt1-ovalo-explorador"
+  | "dt1-espiral-evolvente-explorador"
   /* industrial-tool-end */;
 
 /**

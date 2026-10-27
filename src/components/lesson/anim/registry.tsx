@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
 import { buildPentagonoEuclides } from "@/components/lesson/anim/scenes/industrial/dt1-poligonos";
 import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz, buildSeccionAurea } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
 import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
@@ -807,6 +808,8 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-trazado-arco-capaz": () => buildTrazadoArcoCapaz(),
   "dt1-seccion-aurea": () => buildSeccionAurea(),
   "dt1-pentagono-euclides": () => buildPentagonoEuclides(),
+  "dt1-tangentes-punto": () => buildTangentesPunto(),
+  "dt1-trazado-ovalo": () => buildTrazadoOvalo(),
   /* industrial-end */
 };
 

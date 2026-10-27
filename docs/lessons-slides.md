@@ -563,6 +563,8 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
 | `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
+| `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
+| `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1272,6 +1274,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
 | `dt1-metodo-general-explorador` | Método general de inscripción de polígonos: lado aproximado y error | `n` lados |
 | `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
+| `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
+| `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |
+| `dt1-enlace-explorador` | Enlace tangente entre dos rectas: puntos de tangencia y centro | `a` ángulo (°), `b` radio (cm) |
+| `dt1-ovalo-explorador` | Óvalo de cuatro arcos dados sus semiejes | `a`, `b` semiejes (cm) |
+| `dt1-espiral-evolvente-explorador` | Espiral de dos centros y evolvente de la circunferencia | `n` curva (0–1), `a` semicircunferencias |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

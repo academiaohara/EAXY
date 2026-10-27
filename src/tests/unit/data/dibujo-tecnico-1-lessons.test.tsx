@@ -22,6 +22,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],
+  ["tangencias-curvas-tecnicas", 5],
 ];
 
 describe("curso Dibujo Técnico I", () => {

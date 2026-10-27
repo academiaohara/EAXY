@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
 import { PuntosNotablesDt1Explorador, TrianguloDatosDt1Explorador, CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, MetodoGeneralDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
 import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador, ThalesExplorador, MediaProporcionalExplorador, EquivalenciaExplorador, HomoteciaDt1Explorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
@@ -1878,6 +1879,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MetodoGeneralDt1Explorador block={block} />;
     case "dt1-estrellado-explorador":
       return <EstrelladoDt1Explorador block={block} />;
+    case "dt1-tangente-punto-explorador":
+      return <TangentePuntoDt1Explorador block={block} />;
+    case "dt1-circunferencias-explorador":
+      return <CircunferenciasTangentesDt1Explorador block={block} />;
+    case "dt1-enlace-explorador":
+      return <EnlaceDt1Explorador block={block} />;
+    case "dt1-ovalo-explorador":
+      return <OvaloDt1Explorador block={block} />;
+    case "dt1-espiral-evolvente-explorador":
+      return <EspiralEvolventeDt1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
