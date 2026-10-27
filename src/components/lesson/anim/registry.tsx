@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCicloIngenieria } from "@/components/lesson/anim/scenes/industrial/teceso4-proyectos";
 import { buildEnsayoTraccion } from "@/components/lesson/anim/scenes/industrial/teceso4-materiales";
 import { buildReductoraEtapas } from "@/components/lesson/anim/scenes/industrial/teceso4-mecanica";
 import { buildLazoCerrado } from "@/components/lesson/anim/scenes/industrial/teceso4-control";
@@ -785,6 +786,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "eso4-lazo-cerrado": () => buildLazoCerrado(),
   "eso4-reductora-etapas": () => buildReductoraEtapas(),
   "eso4-ensayo-traccion": () => buildEnsayoTraccion(),
+  "eso4-ciclo-ingenieria": () => buildCicloIngenieria(),
   /* industrial-end */
 };
 

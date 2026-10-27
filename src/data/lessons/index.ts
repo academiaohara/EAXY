@@ -22,6 +22,7 @@ import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingeni
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
 import { analisisCicloVidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/08-analisis-ciclo-vida";
+import { analisisNecesidadesEspecificaciones4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/01-analisis-necesidades-especificaciones-4eso";
 import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
 import { analiticaDistancia4esobLesson } from "@/data/lessons/matematicas-4-eso-b/08-geometria-analitica/05-analitica-distancia-4esob";
@@ -248,6 +249,7 @@ import { crecimientoExtremosCcss2Lesson } from "@/data/lessons/matematicas-ccss-
 import { criteriosDisenoRespuestaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/04-criterios-diseno-respuesta";
 import { criteriosDivisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/02-criterios-divisibilidad";
 import { criteriosDivisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/02-criterios-divisibilidad-2eso";
+import { croquisPlanosModelado4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/03-croquis-planos-modelado-4eso";
 import { cuadAplicaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/03-cuad-aplicaciones-4eso";
 import { cuadAplicaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/11-cuad-aplicaciones-4esob";
 import { cuadGeneral4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/02-cuad-general-4eso";
@@ -408,6 +410,7 @@ import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-indust
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
 import { ensayoTraccionHooke4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/01-ensayo-traccion-hooke-4eso";
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
+import { ensayosEvaluacionDocumentacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/06-ensayos-evaluacion-documentacion-4eso";
 import { enterosRectaValorAbsoluto4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/01-enteros-recta-valor-absoluto-4eso";
 import { entradasDigitalesPulsadores3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/02-entradas-digitales-pulsadores-3eso";
 import { eolicaHidraulica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/03-eolica-hidraulica-3eso";
@@ -559,6 +562,7 @@ import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bach
 import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/03-gauss-eliminacion-2bach";
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
+import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
@@ -645,6 +649,7 @@ import { inversaGaussJordan2bachLesson } from "@/data/lessons/matematicas-2-bach
 import { inversaGaussJordanCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/09-inversa-gauss-jordan-ccss2";
 import { inversaHiperbola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/04-inversa-hiperbola-4eso";
 import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/12-inversa-hiperbola-4esob";
+import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
@@ -852,6 +857,7 @@ import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
+import { planificacionPertCaminoCritico4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/04-planificacion-pert-camino-critico-4eso";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
@@ -1379,6 +1385,7 @@ export const interactiveLessons = {
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
   "analisis-ciclo-vida": analisisCicloVidaLesson,
+  "analisis-necesidades-especificaciones-4eso": analisisNecesidadesEspecificaciones4esoLesson,
   "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
   "analitica-distancia-4esob": analiticaDistancia4esobLesson,
@@ -1605,6 +1612,7 @@ export const interactiveLessons = {
   "criterios-diseno-respuesta": criteriosDisenoRespuestaLesson,
   "criterios-divisibilidad": criteriosDivisibilidadLesson,
   "criterios-divisibilidad-2eso": criteriosDivisibilidad2esoLesson,
+  "croquis-planos-modelado-4eso": croquisPlanosModelado4esoLesson,
   "cuad-aplicaciones-4eso": cuadAplicaciones4esoLesson,
   "cuad-aplicaciones-4esob": cuadAplicaciones4esobLesson,
   "cuad-general-4eso": cuadGeneral4esoLesson,
@@ -1765,6 +1773,7 @@ export const interactiveLessons = {
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
   "ensayo-traccion-hooke-4eso": ensayoTraccionHooke4esoLesson,
   "ensayos-caracterizacion": ensayosCaracterizacionLesson,
+  "ensayos-evaluacion-documentacion-4eso": ensayosEvaluacionDocumentacion4esoLesson,
   "enteros-recta-valor-absoluto-4eso": enterosRectaValorAbsoluto4esoLesson,
   "entradas-digitales-pulsadores-3eso": entradasDigitalesPulsadores3esoLesson,
   "eolica-hidraulica-3eso": eolicaHidraulica3esoLesson,
@@ -1916,6 +1925,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-2bach": gaussEliminacion2bachLesson,
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
+  "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
@@ -2002,6 +2012,7 @@ export const interactiveLessons = {
   "inversa-gauss-jordan-ccss2": inversaGaussJordanCcss2Lesson,
   "inversa-hiperbola-4eso": inversaHiperbola4esoLesson,
   "inversa-hiperbola-4esob": inversaHiperbola4esobLesson,
+  "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
@@ -2209,6 +2220,7 @@ export const interactiveLessons = {
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
+  "planificacion-pert-camino-critico-4eso": planificacionPertCaminoCritico4esoLesson,
   "planificacion-reparto-tareas": planificacionRepartoTareasLesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,

@@ -1075,6 +1075,7 @@ export type SlideAnimId =
   | "eso4-lazo-cerrado"
   | "eso4-reductora-etapas"
   | "eso4-ensayo-traccion"
+  | "eso4-ciclo-ingenieria"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -1855,6 +1856,10 @@ export type SlideToolId =
   | "eso4-acero-explorador"
   | "eso4-ajuste-explorador"
   | "eso4-calidad-explorador"
+  | "eso4-casa-calidad-explorador"
+  | "eso4-vistas-explorador"
+  | "eso4-pert-explorador"
+  | "eso4-viabilidad-explorador"
   /* industrial-tool-end */;
 
 /**

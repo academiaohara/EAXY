@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CasaCalidadExplorador, VistasExplorador, PertExplorador, ViabilidadExplorador } from "@/components/lesson/slide/tools/TecEso4ProyectosTools";
 import { HookeEso4Explorador, BrinellEso4Explorador, CharpyEso4Explorador, AceroExplorador, AjusteExplorador, CalidadExplorador } from "@/components/lesson/slide/tools/TecEso4MaterialesTools";
 import { TransmisionExplorador, ReductoraExplorador, BielaManivelaPosExplorador, RozamientoExplorador, CintaTransportadoraExplorador } from "@/components/lesson/slide/tools/TecEso4MecanicaTools";
 import { ReguladorExplorador, MotorEncoderExplorador, RobotDiferencialExplorador, SecuenciaExplorador, ProtocoloIotExplorador } from "@/components/lesson/slide/tools/TecEso4ControlTools";
@@ -1758,6 +1759,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AjusteExplorador block={block} />;
     case "eso4-calidad-explorador":
       return <CalidadExplorador block={block} />;
+    case "eso4-casa-calidad-explorador":
+      return <CasaCalidadExplorador block={block} />;
+    case "eso4-vistas-explorador":
+      return <VistasExplorador block={block} />;
+    case "eso4-pert-explorador":
+      return <PertExplorador block={block} />;
+    case "eso4-viabilidad-explorador":
+      return <ViabilidadExplorador block={block} />;
     /* industrial-tools */
     default:
       return null;

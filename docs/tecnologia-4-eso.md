@@ -5,6 +5,7 @@ Curso `tecnologia-4-eso` (ya declarado, vacío, en `src/content/curriculum.ts`).
 | Tema | Lecciones | Qué añade respecto a 3.º ESO |
 |---|---|---|
 | 1. Proyectos de ingeniería | 6 | Análisis de necesidades y especificaciones, croquis, planos y modelado, planificación, ensayos, documentación y mejora iterativa |
+| 1. Proyectos de ingeniería | Hecho (6 lecciones, `01-proyectos-ingenieria/`; herramientas `TecEso4ProyectosTools.tsx`, animación `teceso4-proyectos.tsx`) |
 | 2. Materiales y fabricación | 7 | Propiedades mecánicas y ensayos, selección de materiales, control de calidad, procesos y tolerancias, ciclo de vida |
 | 2. Materiales y fabricación | Hecho (7 lecciones, `02-materiales-fabricacion/`; herramientas `TecEso4MaterialesTools.tsx`, animación `teceso4-materiales.tsx`) |
 | 3. Sistemas mecánicos | 7 | Relación de transmisión, velocidad angular y par, potencia y rendimiento, levas y bielas, simulación de mecanismos |

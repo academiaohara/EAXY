@@ -551,6 +551,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `eso4-lazo-cerrado` | Lazo cerrado: consigna, comparador, controlador, actuador, proceso y sensor | — |
 | `eso4-reductora-etapas` | Reductora de dos etapas: la velocidad baja y el par sube | — |
 | `eso4-ensayo-traccion` | Ensayo de tracción: zona elástica, límite elástico, zona plástica, estricción y rotura | — |
+| `eso4-ciclo-ingenieria` | Ciclo de ingeniería iterativo: necesidad, diseño, prototipo, ensayo y mejora | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1205,6 +1206,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `eso4-acero-explorador` | Tipo de acero y dureza recocido y templado según el carbono | `a` carbono (%) |
 | `eso4-ajuste-explorador` | Ajuste eje-agujero: holgura máxima y mínima y tipo | `a` desviación superior del agujero (µm) |
 | `eso4-calidad-explorador` | Proceso de fabricación: piezas fuera de tolerancia, Cp y Cpk | `a` media (mm) |
+| `eso4-casa-calidad-explorador` | Casa de la calidad: prioridad técnica a partir de la importancia de las necesidades | `a` importancia de «Ligera» (1–5) |
+| `eso4-vistas-explorador` | Alzado, planta y perfil de un prisma a distintas escalas | `a` ancho (mm), `b` alto (mm) |
+| `eso4-pert-explorador` | Red de tareas: camino crítico, duración y holgura | `a` duración de la tarea D (días) |
+| `eso4-viabilidad-explorador` | Costes fijos y variables, punto de equilibrio y beneficio | `a` coste fijo (€) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
