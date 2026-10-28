@@ -1111,6 +1111,7 @@ export type SlideAnimId =
   | "fq3-bohr-salto"
   | "fq3-enlace-ionico"
   | "fq3-colisiones"
+  | "fq3-mrua"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2087,6 +2088,10 @@ export type SlideToolId =
   | "fq3-cristalizacion-explorador"
   | "fq3-dilucion-explorador"
   | "fq3-separacion-etapas-explorador"
+  | "fq3-aceleracion-explorador"
+  | "fq3-mrua-explorador"
+  | "fq3-grafica-vt-explorador"
+  | "fq3-caida-frenada-explorador"
   /* industrial-tool-end */;
 
 /**

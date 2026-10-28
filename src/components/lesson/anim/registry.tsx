@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildMrua } from "@/components/lesson/anim/scenes/industrial/fq3-mrua";
 import { buildColisiones } from "@/components/lesson/anim/scenes/industrial/fq3-colisiones";
 import { buildEnlaceIonico } from "@/components/lesson/anim/scenes/industrial/fq3-enlace";
 import { buildBohrSalto } from "@/components/lesson/anim/scenes/industrial/fq3-atomo";
@@ -849,6 +850,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq3-bohr-salto": () => buildBohrSalto(),
   "fq3-enlace-ionico": () => buildEnlaceIonico(),
   "fq3-colisiones": () => buildColisiones(),
+  "fq3-mrua": () => buildMrua(),
   /* industrial-end */
 };
 

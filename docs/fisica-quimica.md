@@ -64,3 +64,4 @@ Total previsto: 49 lecciones.
 | 3.º ESO · 3. Elementos y compuestos químicos | Hecho (6 lecciones, `03-elementos-y-compuestos-quimicos/`; herramientas `Fq3CompuestosTools.tsx`, animación `fq3-enlace.tsx`; bloque `fisica-materia`; moduleId 323) |
 | 3.º ESO · 4. La reacción química | Hecho (5 lecciones, `04-la-reaccion-quimica/`; herramientas `Fq3ReaccionesTools.tsx` (y reutiliza `fq2-ajuste-ecuacion-explorador`), animación `fq3-colisiones.tsx`; bloque `fisica-cambios-quimicos`; moduleId 324) |
 | 3.º ESO · 5. Disoluciones | Hecho (4 lecciones, `05-disoluciones/`; herramientas `Fq3DisolucionesTools.tsx`; bloque `fisica-materia`; moduleId 325) |
+| 3.º ESO · 6. El movimiento | Hecho (5 lecciones, `06-el-movimiento/`; herramientas `Fq3MovimientoTools.tsx` (y reutiliza `fq2-mru-explorador`), animación `fq3-mrua.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 326) |

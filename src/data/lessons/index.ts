@@ -2,6 +2,7 @@ import { abatimientoAfinidadAplicacionesDt2Lesson } from "@/data/lessons/dibujo-
 import { abatimientoPlanoPuntoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/01-abatimiento-plano-punto-dt2";
 import { accesibilidadDisenoUniversal4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/06-accesibilidad-diseno-universal-4eso";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
+import { aceleracionFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/02-aceleracion-fq3";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
@@ -144,6 +145,7 @@ import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comuni
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
 import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
+import { caidaLibreFrenadaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/05-caida-libre-frenada-fq3";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
@@ -657,6 +659,7 @@ import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachille
 import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
+import { graficasVelocidadTiempoFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/04-graficas-velocidad-tiempo-fq3";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -894,6 +897,7 @@ import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-i
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
 import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
+import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
@@ -1281,6 +1285,7 @@ import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-in
 import { renovablesAlmacenamientoAutoconsumo4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/02-renovables-almacenamiento-autoconsumo-4eso";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
+import { repasoVelocidadMruFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/01-repaso-velocidad-mru-fq3";
 import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/06-repeticiones-bucles-eso";
 import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
@@ -1568,6 +1573,7 @@ export const interactiveLessons = {
   "abatimiento-plano-punto-dt2": abatimientoPlanoPuntoDt2Lesson,
   "accesibilidad-diseno-universal-4eso": accesibilidadDisenoUniversal4esoLesson,
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
+  "aceleracion-fq3": aceleracionFq3Lesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
@@ -1710,6 +1716,7 @@ export const interactiveLessons = {
   "cad-3d-extrusion": cad3dExtrusionLesson,
   "cad-vectorial-coordenadas-dt1": cadVectorialCoordenadasDt1Lesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
+  "caida-libre-frenada-fq3": caidaLibreFrenadaFq3Lesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
@@ -2223,6 +2230,7 @@ export const interactiveLessons = {
   "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
+  "graficas-velocidad-tiempo-fq3": graficasVelocidadTiempoFq3Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -2460,6 +2468,7 @@ export const interactiveLessons = {
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
   "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
+  "mrua-fq3": mruaFq3Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
@@ -2847,6 +2856,7 @@ export const interactiveLessons = {
   "renovables-almacenamiento-autoconsumo-4eso": renovablesAlmacenamientoAutoconsumo4esoLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
+  "repaso-velocidad-mru-fq3": repasoVelocidadMruFq3Lesson,
   "repeticiones-bucles-eso": repeticionesBuclesEsoLesson,
   "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,

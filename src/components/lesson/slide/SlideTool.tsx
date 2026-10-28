@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AceleracionFq3Explorador, MruaFq3Explorador, GraficaVtFq3Explorador, CaidaFrenadaFq3Explorador } from "@/components/lesson/slide/tools/Fq3MovimientoTools";
 import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
 import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
 import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
@@ -2191,6 +2192,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DilucionFq3Explorador block={block} />;
     case "fq3-separacion-etapas-explorador":
       return <SeparacionEtapasFq3Explorador block={block} />;
+    case "fq3-aceleracion-explorador":
+      return <AceleracionFq3Explorador block={block} />;
+    case "fq3-mrua-explorador":
+      return <MruaFq3Explorador block={block} />;
+    case "fq3-grafica-vt-explorador":
+      return <GraficaVtFq3Explorador block={block} />;
+    case "fq3-caida-frenada-explorador":
+      return <CaidaFrenadaFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -587,6 +587,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
 | `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
 | `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
+| `fq3-mrua` | Marcas estroboscópicas de un MRU y un MRUA y gráfica v-t | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1437,6 +1438,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-cristalizacion-explorador` | Cristalización de una sal al enfriar | `n` sal (0 nitrato / 1 cloruro), `a` g disueltos, `b` temperatura (°C) |
 | `fq3-dilucion-explorador` | Dilución: C₁V₁ = C₂V₂ | `a` C₁ (g/L), `b` V₁ (mL), `c` V₂ (mL) |
 | `fq3-separacion-etapas-explorador` | Separación de mezclas por etapas | `n` mezcla (0–3) |
+| `fq3-aceleracion-explorador` | Velocidad, aceleración y tiempo | `a` v₀ (m/s), `b` aceleración (m/s²), `c` tiempo (s) |
+| `fq3-mrua-explorador` | Posición y velocidad en un MRUA | `a` v₀ (m/s), `b` aceleración (m/s²), `c` tiempo (s) |
+| `fq3-grafica-vt-explorador` | Gráfica v-t por tramos y área | `a` aceleración, `b` t acelerando, `c` t constante |
+| `fq3-caida-frenada-explorador` | Caída libre, lanzamiento vertical y distancia de frenado | `n` situación (0–2), `a` altura, `b` v₀, `c` km/h |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
