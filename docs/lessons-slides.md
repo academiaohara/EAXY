@@ -1315,6 +1315,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-catenaria-explorador` | Catenaria y parábola: parámetro, longitud y separación entre curvas | `a` luz, `b` flecha (m) |
 | `dt2-hiperboloide-explorador` | Hiperboloide de una hoja generado por rectas: garganta y longitud de las barras | `a` radio, `b` altura (m) |
 | `dt2-fachada-parametrica-explorador` | Fachada paramétrica con huecos que dependen de un atractor | `a` paneles por lado |
+| `dt2-transformaciones-generales-explorador` | Matriz de una transformación del plano: tipo, determinante y ángulos | `n` ejemplo (0–4) |
+| `dt2-afinidad-explorador` | Afinidad plana de eje, dirección y razón sobre un triángulo | `a` razón k, `b` dirección (°) |
+| `dt2-elipse-afinidad-explorador` | Elipse como afín de una circunferencia: razón, área y focos | `a`, `b` semiejes (cm) |
+| `dt2-homologia-explorador` | Homología plana: homólogos alineados con el centro y rectas límite | `a` parámetro μ (%), `b` posición x del centro |
+| `dt2-abatimiento-afinidad-explorador` | Proyección de una figura plana inclinada como afinidad de razón cos φ | `a` inclinación φ (°) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -198,7 +198,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000208', 'a1000000-0000-4000-8000-000000000022', 'planos-acotados-conico', 'Planos acotados y sistema cónico', 8),
   ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9),
   ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10),
-  ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1);
+  ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1),
+  ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1655,4 +1656,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021004', 'a2000000-0000-4000-8000-000000000210', '4. Diseño de piezas complejas y trabajo en grupo', 'Parámetros, masa y formatos de intercambio.', 4, null),
   ('a3000000-0000-4000-8000-000000021101', 'a2000000-0000-4000-8000-000000000211', '1. La geometría desde la Revolución Industrial', 'Materiales, arcos catenarios y grandes autores.', 1, null),
   ('a3000000-0000-4000-8000-000000021102', 'a2000000-0000-4000-8000-000000000211', '2. Superficies regladas y formas curvas con rectas', 'Hiperboloide y paraboloide hiperbólico.', 2, null),
-  ('a3000000-0000-4000-8000-000000021103', 'a2000000-0000-4000-8000-000000000211', '3. Técnicas digitales: diseño paramétrico y fabricación', 'CAD/BIM, simulación y fabricación digital.', 3, null);
+  ('a3000000-0000-4000-8000-000000021103', 'a2000000-0000-4000-8000-000000000211', '3. Técnicas digitales: diseño paramétrico y fabricación', 'CAD/BIM, simulación y fabricación digital.', 3, null),
+  ('a3000000-0000-4000-8000-000000021201', 'a2000000-0000-4000-8000-000000000212', '1. Transformaciones geométricas y lo que conservan', 'Isometrías, semejanza, afinidad y homología.', 1, null),
+  ('a3000000-0000-4000-8000-000000021202', 'a2000000-0000-4000-8000-000000000212', '2. Afinidad: eje, dirección y razón', 'Puntos y rectas homólogos.', 2, null),
+  ('a3000000-0000-4000-8000-000000021203', 'a2000000-0000-4000-8000-000000000212', '3. La elipse como afín de la circunferencia', 'Ejes, focos y excentricidad.', 3, null),
+  ('a3000000-0000-4000-8000-000000021204', 'a2000000-0000-4000-8000-000000000212', '4. Homología: eje, centro y rectas límite', 'Elementos y casos particulares.', 4, null),
+  ('a3000000-0000-4000-8000-000000021205', 'a2000000-0000-4000-8000-000000000212', '5. Aplicaciones a los sistemas de representación', 'Abatimientos, perspectiva y secciones.', 5, null);

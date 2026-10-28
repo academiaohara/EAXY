@@ -1,3 +1,4 @@
+import { abatimientoAfinidadAplicacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/05-abatimiento-afinidad-aplicaciones-dt2";
 import { accesibilidadDisenoUniversal4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/06-accesibilidad-diseno-universal-4eso";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
@@ -7,6 +8,7 @@ import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-b
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
+import { afinidadEjeDireccionRazonDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/02-afinidad-eje-direccion-razon-dt2";
 import { ahorroMaterialesEnergiaEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/03-ahorro-materiales-energia-eso";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
@@ -422,6 +424,7 @@ import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologi
 import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
+import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/03-elipse-por-afinidad-dt2";
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
@@ -623,6 +626,7 @@ import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/
 import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
+import { homologiaEjeCentroDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/04-homologia-eje-centro-dt2";
 import { iaLimitacionesSesgosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/05-ia-limitaciones-sesgos-ti2";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
@@ -1393,6 +1397,7 @@ import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industri
 import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/05-transformacion-movimiento";
 import { transformacionMovimiento2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/07-transformacion-movimiento-2eso";
 import { transformacionesGasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/09-transformaciones-gas";
+import { transformacionesGeometricasClasificacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/01-transformaciones-geometricas-clasificacion-dt2";
 import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/05-transformada-laplace";
 import { transformadorFuenteAlimentacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/04-transformador-fuente-alimentacion-4eso";
 import { transistorGananciaConmutacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/05-transistor-ganancia-conmutacion-4eso";
@@ -1458,6 +1463,7 @@ import { voluntariadoServicioComunidad4esoLesson } from "@/data/lessons/tecnolog
 import { wifiConexionInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/04-wifi-conexion-internet-3eso";
 
 export const interactiveLessons = {
+  "abatimiento-afinidad-aplicaciones-dt2": abatimientoAfinidadAplicacionesDt2Lesson,
   "accesibilidad-diseno-universal-4eso": accesibilidadDisenoUniversal4esoLesson,
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
@@ -1467,6 +1473,7 @@ export const interactiveLessons = {
   "acotacion-piezas": acotacionPiezasLesson,
   "actuadores-acelerador": actuadoresAceleradorLesson,
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
+  "afinidad-eje-direccion-razon-dt2": afinidadEjeDireccionRazonDt2Lesson,
   "ahorro-materiales-energia-eso": ahorroMaterialesEnergiaEsoLesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
@@ -1882,6 +1889,7 @@ export const interactiveLessons = {
   "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
+  "elipse-por-afinidad-dt2": elipsePorAfinidadDt2Lesson,
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
@@ -2083,6 +2091,7 @@ export const interactiveLessons = {
   "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
+  "homologia-eje-centro-dt2": homologiaEjeCentroDt2Lesson,
   "ia-limitaciones-sesgos-ti2": iaLimitacionesSesgosTi2Lesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "idea-limite-funcion-ccss1": ideaLimiteFuncionCcss1Lesson,
@@ -2853,6 +2862,7 @@ export const interactiveLessons = {
   "transformacion-movimiento": transformacionMovimientoLesson,
   "transformacion-movimiento-2eso": transformacionMovimiento2esoLesson,
   "transformaciones-gas": transformacionesGasLesson,
+  "transformaciones-geometricas-clasificacion-dt2": transformacionesGeometricasClasificacionDt2Lesson,
   "transformada-laplace": transformadaLaplaceLesson,
   "transformador-fuente-alimentacion-4eso": transformadorFuenteAlimentacion4esoLesson,
   "transistor-ganancia-conmutacion-4eso": transistorGananciaConmutacion4esoLesson,

@@ -1965,6 +1965,11 @@ export type SlideToolId =
   | "dt2-catenaria-explorador"
   | "dt2-hiperboloide-explorador"
   | "dt2-fachada-parametrica-explorador"
+  | "dt2-transformaciones-generales-explorador"
+  | "dt2-afinidad-explorador"
+  | "dt2-elipse-afinidad-explorador"
+  | "dt2-homologia-explorador"
+  | "dt2-abatimiento-afinidad-explorador"
   /* industrial-tool-end */;
 
 /**

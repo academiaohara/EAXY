@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TransformacionesGeneralesDt2Explorador, AfinidadDt2Explorador, ElipseAfinidadDt2Explorador, HomologiaDt2Explorador, AbatimientoAfinidadDt2Explorador } from "@/components/lesson/slide/tools/DtIITransformacionesTools";
 import { CatenariaDt2Explorador, HiperboloideDt2Explorador, FachadaParametricaDt2Explorador } from "@/components/lesson/slide/tools/DtIIArquitecturaTools";
 import { CoordenadasCadDt1Explorador, BezierDt1Explorador, TransformacionesDt1Explorador, BooleanasDt1Explorador, PiezaCompuestaDt1Explorador } from "@/components/lesson/slide/tools/DtCadTools";
 import { TiposLineaDt1Explorador, FormatosDt1Explorador, EscalaDt1Explorador, VistasDt1Explorador, AcotacionSistemasDt1Explorador, SimbolosDt1Explorador } from "@/components/lesson/slide/tools/DtNormalizacionTools";
@@ -1961,6 +1962,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <HiperboloideDt2Explorador block={block} />;
     case "dt2-fachada-parametrica-explorador":
       return <FachadaParametricaDt2Explorador block={block} />;
+    case "dt2-transformaciones-generales-explorador":
+      return <TransformacionesGeneralesDt2Explorador block={block} />;
+    case "dt2-afinidad-explorador":
+      return <AfinidadDt2Explorador block={block} />;
+    case "dt2-elipse-afinidad-explorador":
+      return <ElipseAfinidadDt2Explorador block={block} />;
+    case "dt2-homologia-explorador":
+      return <HomologiaDt2Explorador block={block} />;
+    case "dt2-abatimiento-afinidad-explorador":
+      return <AbatimientoAfinidadDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
