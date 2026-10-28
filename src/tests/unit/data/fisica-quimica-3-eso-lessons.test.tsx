@@ -28,6 +28,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["las-fuerzas-y-sus-efectos", 5],
   ["energia-y-calor", 5],
   ["electricidad", 6],
+  ["quimica-y-sociedad", 5],
 ];
 
 describe("curso Física y Química 3.º ESO", () => {

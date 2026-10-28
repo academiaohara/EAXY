@@ -1460,6 +1460,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-circuito-explorador` | Dos resistencias en serie o en paralelo | `n` 0 serie / 1 paralelo, `a` tensión, `b` R₁, `c` R₂ |
 | `fq3-consumo-electrico-explorador` | Consumo y coste de aparatos eléctricos | `n` aparato (0–6), `a` horas/día, `b` precio (€/kWh) |
 | `fq3-seguridad-electrica-explorador` | Corriente por el cuerpo y su peligro | `a` tensión (V), `n` piel mojada (0/1) |
+| `fq3-escala-ph-explorador` | Escala de pH y acidez de sustancias cotidianas | `n` sustancia (0–12) |
+| `fq3-pictogramas-explorador` | Pictogramas de peligro de productos químicos | `n` pictograma (0–8) |
+| `fq3-contaminantes-explorador` | Contaminantes atmosféricos: origen, efecto y medida | `n` contaminante (0–6) |
+| `fq3-efecto-invernadero-explorador` | Modelo sencillo del efecto invernadero | `a` fracción de IR retenida (0–1) |
+| `fq3-reciclaje-explorador` | Reciclaje de materiales: degradación y ahorro | `n` material (0–4), `a` % reciclado |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

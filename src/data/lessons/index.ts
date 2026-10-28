@@ -211,6 +211,7 @@ import { combinacionesNumerosCombinatorios2bachLesson } from "@/data/lessons/mat
 import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/09-combinatoria-conteo-2bach";
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
+import { combustiblesContaminacionAtmosfericaFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/03-combustibles-contaminacion-atmosferica-fq3";
 import { combustionOxidacionEnergiaFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/04-combustion-oxidacion-energia-fq3";
 import { combustionOxidacionFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/04-combustion-oxidacion-fq2";
 import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
@@ -448,6 +449,7 @@ import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-b
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { edificiosEficienciaCertificado4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/03-edificios-eficiencia-certificado-4eso";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
+import { efectoInvernaderoCambioClimaticoFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/04-efecto-invernadero-cambio-climatico-fq3";
 import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/05-eficiencia-ahorro-hogar-3eso";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
@@ -1167,6 +1169,7 @@ import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
 import { productoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/07-producto-vectorial-2bach";
+import { productosCotidianosAcidosBasesPhFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/01-productos-cotidianos-acidos-bases-ph-fq3";
 import { programacionAutomatismosSecuencias4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/05-programacion-automatismos-secuencias-4eso";
 import { programarPlacaSetupLoop3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/01-programar-placa-setup-loop-3eso";
 import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
@@ -1302,6 +1305,7 @@ import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-
 import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { residuosReduccionClasificacionLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/04-residuos-reduccion-clasificacion";
+import { residuosSostenibilidadFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/05-residuos-sostenibilidad-fq3";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resistenciaConductorOhm3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/01-resistencia-conductor-ohm-3eso";
 import { resistenciaLeyOhmFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/03-resistencia-ley-ohm-fq3";
@@ -1330,6 +1334,7 @@ import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-
 import { segundaLeyNewtonRozamientoFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/03-segunda-ley-newton-rozamiento-fq3";
 import { seguridadElectricaConsumoFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/06-seguridad-electrica-consumo-fq3";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
+import { seguridadEtiquetadoProductosFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/02-seguridad-etiquetado-productos-fq3";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
 import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
@@ -1798,6 +1803,7 @@ export const interactiveLessons = {
   "combinatoria-conteo-2bach": combinatoriaConteo2bachLesson,
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
+  "combustibles-contaminacion-atmosferica-fq3": combustiblesContaminacionAtmosfericaFq3Lesson,
   "combustion-oxidacion-energia-fq3": combustionOxidacionEnergiaFq3Lesson,
   "combustion-oxidacion-fq2": combustionOxidacionFq2Lesson,
   "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
@@ -2035,6 +2041,7 @@ export const interactiveLessons = {
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "edificios-eficiencia-certificado-4eso": edificiosEficienciaCertificado4esoLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
+  "efecto-invernadero-cambio-climatico-fq3": efectoInvernaderoCambioClimaticoFq3Lesson,
   "eficiencia-ahorro-hogar-3eso": eficienciaAhorroHogar3esoLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
@@ -2754,6 +2761,7 @@ export const interactiveLessons = {
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
   "producto-vectorial-2bach": productoVectorial2bachLesson,
+  "productos-cotidianos-acidos-bases-ph-fq3": productosCotidianosAcidosBasesPhFq3Lesson,
   "programacion-automatismos-secuencias-4eso": programacionAutomatismosSecuencias4esoLesson,
   "programar-placa-setup-loop-3eso": programarPlacaSetupLoop3esoLesson,
   "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
@@ -2889,6 +2897,7 @@ export const interactiveLessons = {
   "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "residuos-reduccion-clasificacion": residuosReduccionClasificacionLesson,
+  "residuos-sostenibilidad-fq3": residuosSostenibilidadFq3Lesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resistencia-conductor-ohm-3eso": resistenciaConductorOhm3esoLesson,
   "resistencia-ley-ohm-fq3": resistenciaLeyOhmFq3Lesson,
@@ -2917,6 +2926,7 @@ export const interactiveLessons = {
   "segunda-ley-newton-rozamiento-fq3": segundaLeyNewtonRozamientoFq3Lesson,
   "seguridad-electrica-consumo-fq3": seguridadElectricaConsumoFq3Lesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
+  "seguridad-etiquetado-productos-fq3": seguridadEtiquetadoProductosFq3Lesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
   "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,

@@ -2110,6 +2110,11 @@ export type SlideToolId =
   | "fq3-circuito-explorador"
   | "fq3-consumo-electrico-explorador"
   | "fq3-seguridad-electrica-explorador"
+  | "fq3-escala-ph-explorador"
+  | "fq3-pictogramas-explorador"
+  | "fq3-contaminantes-explorador"
+  | "fq3-efecto-invernadero-explorador"
+  | "fq3-reciclaje-explorador"
   /* industrial-tool-end */;
 
 /**

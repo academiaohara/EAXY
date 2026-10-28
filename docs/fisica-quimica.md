@@ -37,9 +37,9 @@ Ids con sufijo `-fq3`, herramientas y animaciones `fq3-…`, `FQ3_SUBTITLES`, `m
 | 7. Las fuerzas y sus efectos | 5: composición de fuerzas; leyes de Newton; peso, normal y rozamiento; presión; fluidos |
 | 8. Energía y calor | 5: trabajo y potencia; conservación; calor y Q = m·c·ΔT; transmisión y aislamiento; rendimiento |
 | 9. Electricidad | 6: carga; corriente, tensión y resistencia; ley de Ohm; serie y paralelo; potencia y energía; seguridad |
-| 10. Química y sociedad | 4: combustibles y contaminación; efecto invernadero; lluvia ácida y residuos; seguridad y etiquetado |
+| 10. Química y sociedad | 5: productos cotidianos y pH; seguridad y etiquetado; combustibles y contaminación (con lluvia ácida); efecto invernadero; residuos y sostenibilidad |
 
-Total previsto: 49 lecciones.
+Total previsto: 50 lecciones.
 
 ## Cursos siguientes (sin desarrollar)
 
@@ -68,3 +68,4 @@ Total previsto: 49 lecciones.
 | 3.º ESO · 7. Las fuerzas y sus efectos | Hecho (5 lecciones, `07-las-fuerzas-y-sus-efectos/`; herramientas `Fq3FuerzasTools.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 327) |
 | 3.º ESO · 8. Energía y calor | Hecho (5 lecciones, `08-energia-y-calor/`; herramientas `Fq3EnergiaTools.tsx`; bloque `fisica-energia-ondas`; moduleId 328) |
 | 3.º ESO · 9. Electricidad | Hecho (6 lecciones, `09-electricidad/`; herramientas `Fq3ElectricidadTools.tsx`, animación `fq3-corriente.tsx`; bloque nuevo `fisica-electricidad`; moduleId 329) |
+| 3.º ESO · 10. Química y sociedad | Hecho (5 lecciones, `10-quimica-y-sociedad/`; herramientas `Fq3SociedadTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 330). **Física y Química 3.º ESO completo: 50 lecciones en 10 temas.** |

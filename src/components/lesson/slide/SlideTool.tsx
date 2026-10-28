@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EscalaPhFq3Explorador, PictogramasFq3Explorador, ContaminantesFq3Explorador, EfectoInvernaderoFq3Explorador, ReciclajeFq3Explorador } from "@/components/lesson/slide/tools/Fq3SociedadTools";
 import { CargaCoulombFq3Explorador, IntensidadTensionFq3Explorador, LeyOhmFq3Explorador, ResistenciaHiloFq3Explorador, CircuitoFq3Explorador, ConsumoElectricoFq3Explorador, SeguridadElectricaFq3Explorador } from "@/components/lesson/slide/tools/Fq3ElectricidadTools";
 import { TrabajoPotenciaFq3Explorador, MontanaRusaFq3Explorador, CalorEspecificoFq3Explorador, CalentamientoHieloFq3Explorador, AislamientoFq3Explorador } from "@/components/lesson/slide/tools/Fq3EnergiaTools";
 import { ComposicionFuerzasFq3Explorador, AccionReaccionFq3Explorador, Newton2RozamientoFq3Explorador, PresionFq3Explorador, FlotacionFq3Explorador } from "@/components/lesson/slide/tools/Fq3FuerzasTools";
@@ -2237,6 +2238,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ConsumoElectricoFq3Explorador block={block} />;
     case "fq3-seguridad-electrica-explorador":
       return <SeguridadElectricaFq3Explorador block={block} />;
+    case "fq3-escala-ph-explorador":
+      return <EscalaPhFq3Explorador block={block} />;
+    case "fq3-pictogramas-explorador":
+      return <PictogramasFq3Explorador block={block} />;
+    case "fq3-contaminantes-explorador":
+      return <ContaminantesFq3Explorador block={block} />;
+    case "fq3-efecto-invernadero-explorador":
+      return <EfectoInvernaderoFq3Explorador block={block} />;
+    case "fq3-reciclaje-explorador":
+      return <ReciclajeFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
