@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildRutherford } from "@/components/lesson/anim/scenes/industrial/fq2-rutherford";
 import { buildDestilacion } from "@/components/lesson/anim/scenes/industrial/fq2-destilacion";
 import { buildParticulasEstados } from "@/components/lesson/anim/scenes/industrial/fq2-materia";
 import { buildMetodoCientifico } from "@/components/lesson/anim/scenes/industrial/fq2-metodo";
@@ -831,6 +832,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq2-metodo-cientifico": () => buildMetodoCientifico(),
   "fq2-particulas-estados": () => buildParticulasEstados(),
   "fq2-destilacion": () => buildDestilacion(),
+  "fq2-rutherford": () => buildRutherford(),
   /* industrial-end */
 };
 

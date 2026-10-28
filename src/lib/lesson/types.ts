@@ -1102,6 +1102,7 @@ export type SlideAnimId =
   | "fq2-metodo-cientifico"
   | "fq2-particulas-estados"
   | "fq2-destilacion"
+  | "fq2-rutherford"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2027,6 +2028,11 @@ export type SlideToolId =
   | "fq2-solubilidad-curva-explorador"
   | "fq2-separacion-mezclas-explorador"
   | "fq2-composicion-mezclas-explorador"
+  | "fq2-modelos-atomicos-explorador"
+  | "fq2-construir-atomo-explorador"
+  | "fq2-iones-isotopos-explorador"
+  | "fq2-tabla-periodica-explorador"
+  | "fq2-formulas-moleculas-explorador"
   /* industrial-tool-end */;
 
 /**

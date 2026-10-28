@@ -105,6 +105,7 @@ import { asintotasVerticalesHorizontalesCcss1Lesson } from "@/data/lessons/matem
 import { asintotasVerticalesHorizontalesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/06-asintotas-verticales-horizontales-ccss2";
 import { asociacionResistenciasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/04-asociacion-resistencias";
 import { atomoNucleoCortezaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/01-atomo-nucleo-corteza";
+import { atomosMoleculasIonesFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/05-atomos-moleculas-iones-fq2";
 import { aumentosDisminuciones2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-2eso";
 import { aumentosDisminucionesPorcentualesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/04-aumentos-disminuciones-porcentuales";
 import { automaticaDefinicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/01-automatica-definiciones";
@@ -730,6 +731,7 @@ import { inversaHiperbola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/
 import { investigacionDesarrolloInnovacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/01-investigacion-desarrollo-innovacion-ti2";
 import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
+import { ionesIsotoposFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/03-iones-isotopos-fq2";
 import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
@@ -846,6 +848,7 @@ import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-te
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
 import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
+import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -945,6 +948,7 @@ import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-ba
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { parteEnteraCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/08-parte-entera-ccss1";
+import { particulasAtomoNumerosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/02-particulas-atomo-numeros-fq2";
 import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/04-pascal-prensa";
 import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/06-percentiles-cuartiles-1bach";
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
@@ -1377,6 +1381,7 @@ import { sumaRestaPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso
 import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/13-sumadores-binarios";
 import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
 import { sustanciasPurasMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/01-sustancias-puras-mezclas-fq2";
+import { tablaPeriodicaFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/04-tabla-periodica-fq2";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
 import { tablasContingenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/08-tablas-contingencia-ccss1";
 import { tablasFrecuencias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/02-tablas-frecuencias-1bach";
@@ -1618,6 +1623,7 @@ export const interactiveLessons = {
   "asintotas-verticales-horizontales-ccss2": asintotasVerticalesHorizontalesCcss2Lesson,
   "asociacion-resistencias": asociacionResistenciasLesson,
   "atomo-nucleo-corteza": atomoNucleoCortezaLesson,
+  "atomos-moleculas-iones-fq2": atomosMoleculasIonesFq2Lesson,
   "aumentos-disminuciones-2eso": aumentosDisminuciones2esoLesson,
   "aumentos-disminuciones-porcentuales": aumentosDisminucionesPorcentualesLesson,
   "automatica-definiciones": automaticaDefinicionesLesson,
@@ -2243,6 +2249,7 @@ export const interactiveLessons = {
   "investigacion-desarrollo-innovacion-ti2": investigacionDesarrolloInnovacionTi2Lesson,
   "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
+  "iones-isotopos-fq2": ionesIsotoposFq2Lesson,
   "isometrica-piezas-elipses-dt1": isometricaPiezasElipsesDt1Lesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
@@ -2359,6 +2366,7 @@ export const interactiveLessons = {
   "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
   "modelo-cinetico-molecular-fq2": modeloCineticoMolecularFq2Lesson,
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
+  "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
@@ -2458,6 +2466,7 @@ export const interactiveLessons = {
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
   "parte-entera-ccss1": parteEnteraCcss1Lesson,
+  "particulas-atomo-numeros-fq2": particulasAtomoNumerosFq2Lesson,
   "pascal-prensa": pascalPrensaLesson,
   "percentiles-cuartiles-1bach": percentilesCuartiles1bachLesson,
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
@@ -2890,6 +2899,7 @@ export const interactiveLessons = {
   "sumadores-binarios": sumadoresBinariosLesson,
   "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
   "sustancias-puras-mezclas-fq2": sustanciasPurasMezclasFq2Lesson,
+  "tabla-periodica-fq2": tablaPeriodicaFq2Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,
   "tablas-contingencia-ccss1": tablasContingenciaCcss1Lesson,
   "tablas-frecuencias-1bach": tablasFrecuencias1bachLesson,

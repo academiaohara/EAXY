@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ModelosAtomicosFq2Explorador, ConstruirAtomoFq2Explorador, IonesIsotoposFq2Explorador, TablaPeriodicaFq2Explorador, FormulasMoleculasFq2Explorador } from "@/components/lesson/slide/tools/Fq2AtomoTools";
 import { ClasificacionMateriaFq2Explorador, ConcentracionDisolucionFq2Explorador, SolubilidadCurvaFq2Explorador, SeparacionMezclasFq2Explorador, ComposicionMezclasFq2Explorador } from "@/components/lesson/slide/tools/Fq2MezclasTools";
 import { DensidadFlotacionFq2Explorador, EstadosPropiedadesFq2Explorador, ModeloCineticoFq2Explorador, CambiosEstadoFq2Explorador, CurvaCalentamientoFq2Explorador } from "@/components/lesson/slide/tools/Fq2MateriaTools";
 import { ExperimentoVariablesFq2Explorador, UnidadesPrefijosFq2Explorador, MedidasErrorFq2Explorador, GraficaProporcionalFq2Explorador, InstrumentosLaboratorioFq2Explorador } from "@/components/lesson/slide/tools/Fq2MedidaTools";
@@ -2078,6 +2079,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <SeparacionMezclasFq2Explorador block={block} />;
     case "fq2-composicion-mezclas-explorador":
       return <ComposicionMezclasFq2Explorador block={block} />;
+    case "fq2-modelos-atomicos-explorador":
+      return <ModelosAtomicosFq2Explorador block={block} />;
+    case "fq2-construir-atomo-explorador":
+      return <ConstruirAtomoFq2Explorador block={block} />;
+    case "fq2-iones-isotopos-explorador":
+      return <IonesIsotoposFq2Explorador block={block} />;
+    case "fq2-tabla-periodica-explorador":
+      return <TablaPeriodicaFq2Explorador block={block} />;
+    case "fq2-formulas-moleculas-explorador":
+      return <FormulasMoleculasFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

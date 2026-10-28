@@ -578,6 +578,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-metodo-cientifico` | Etapas del método científico y su carácter cíclico | — |
 | `fq2-particulas-estados` | Partículas de un sólido, un líquido y un gas | — |
 | `fq2-destilacion` | Destilación de una mezcla de alcohol y agua | — |
+| `fq2-rutherford` | Experimento de Rutherford y descubrimiento del núcleo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1377,6 +1378,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-solubilidad-curva-explorador` | Curvas de solubilidad y estado de la disolución | `n` sal (0–1), `a` temperatura, `b` sal añadida (g) |
 | `fq2-separacion-mezclas-explorador` | Elegir la técnica de separación adecuada para cada mezcla | `n` mezcla (0–5) |
 | `fq2-composicion-mezclas-explorador` | Composición porcentual de mezclas cotidianas y masa de cada componente | `n` mezcla (0–4), `a` masa de la muestra (g) |
+| `fq2-modelos-atomicos-explorador` | Los cuatro modelos atómicos: dibujo, idea y limitación | `n` modelo (0–3) |
+| `fq2-construir-atomo-explorador` | Construir un átomo con protones, neutrones y electrones: Z, A y carga | `a` protones, `b` neutrones, `c` electrones |
+| `fq2-iones-isotopos-explorador` | Isótopos e iones de un elemento con su notación | `a` Z, `b` neutrones de más, `c` carga |
+| `fq2-tabla-periodica-explorador` | Los 20 primeros elementos de la tabla periódica | `a` número atómico |
+| `fq2-formulas-moleculas-explorador` | Fórmulas: átomos de cada elemento y masa molecular | `n` sustancia (0–7) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
