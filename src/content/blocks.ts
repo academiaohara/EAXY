@@ -633,6 +633,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/proyectos-id": "proyectos-tecnologicos",
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
   "fisica-3-eso/el-trabajo-cientifico": "fisica-metodo-medida",
+  "fisica-3-eso/el-atomo-y-el-sistema-periodico": "fisica-materia",
   "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
   "fisica-2-eso/materia-propiedades": "fisica-materia",
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildBohrSalto } from "@/components/lesson/anim/scenes/industrial/fq3-atomo";
 import { buildRayoLuz } from "@/components/lesson/anim/scenes/industrial/fq2-luz";
 import { buildConservacionEnergia } from "@/components/lesson/anim/scenes/industrial/fq2-energia";
 import { buildFuerzasResultante } from "@/components/lesson/anim/scenes/industrial/fq2-fuerzas";
@@ -843,6 +844,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq2-fuerzas-resultante": () => buildFuerzasResultante(),
   "fq2-conservacion-energia": () => buildConservacionEnergia(),
   "fq2-rayo-luz": () => buildRayoLuz(),
+  "fq3-bohr-salto": () => buildBohrSalto(),
   /* industrial-end */
 };
 

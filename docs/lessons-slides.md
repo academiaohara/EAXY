@@ -584,6 +584,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-fuerzas-resultante` | Suma de fuerzas en la misma recta y equilibrio | — |
 | `fq2-conservacion-energia` | Conservación de la energía en una rampa | — |
 | `fq2-rayo-luz` | Reflexión y refracción de un rayo en la superficie del agua | — |
+| `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1416,6 +1417,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-ordenes-magnitud-explorador` | Escala de tamaños en notación científica | `n` objeto (0–11) |
 | `fq3-factores-conversion-explorador` | Conversión de unidades con factores | `n` conversión (0–3), `a` valor |
 | `fq3-grafica-ajuste-explorador` | Ajuste de una recta a datos del péndulo | `a` pendiente inicial |
+| `fq3-niveles-bohr-explorador` | Niveles de energía de Bohr y fotón emitido | `a` nivel inicial (1–6), `b` nivel final (1–6) |
+| `fq3-masa-atomica-media-explorador` | Masa atómica media según la abundancia de isótopos | `n` elemento (0–3) |
+| `fq3-configuracion-electronica-explorador` | Distribución de electrones en capas (Z = 1–20) | `a` número atómico (1–20) |
+| `fq3-propiedades-periodicas-explorador` | Radio atómico y electronegatividad en periodos y grupos | `n` serie (0–3), `a` propiedad (0 radio / 1 electronegatividad) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

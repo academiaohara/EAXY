@@ -1108,6 +1108,7 @@ export type SlideAnimId =
   | "fq2-fuerzas-resultante"
   | "fq2-conservacion-energia"
   | "fq2-rayo-luz"
+  | "fq3-bohr-salto"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2066,6 +2067,10 @@ export type SlideToolId =
   | "fq3-ordenes-magnitud-explorador"
   | "fq3-factores-conversion-explorador"
   | "fq3-grafica-ajuste-explorador"
+  | "fq3-niveles-bohr-explorador"
+  | "fq3-masa-atomica-media-explorador"
+  | "fq3-configuracion-electronica-explorador"
+  | "fq3-propiedades-periodicas-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { NivelesBohrFq3Explorador, MasaAtomicaMediaFq3Explorador, ConfiguracionElectronicaFq3Explorador, PropiedadesPeriodicasFq3Explorador } from "@/components/lesson/slide/tools/Fq3AtomoTools";
 import { PenduloVariablesFq3Explorador, OrdenesMagnitudFq3Explorador, FactoresConversionFq3Explorador, GraficaAjusteFq3Explorador } from "@/components/lesson/slide/tools/Fq3TrabajoTools";
 import { SombrasFq2Explorador, ReflexionFq2Explorador, RefraccionFq2Explorador, OndaSonidoFq2Explorador, DecibeliosFq2Explorador } from "@/components/lesson/slide/tools/Fq2LuzSonidoTools";
 import { TransformacionesEnergiaFq2Explorador, CineticaPotencialFq2Explorador, ConservacionEnergiaFq2Explorador, CalorTemperaturaFq2Explorador, FuentesEnergiaFq2Explorador } from "@/components/lesson/slide/tools/Fq2EnergiaTools";
@@ -2151,6 +2152,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FactoresConversionFq3Explorador block={block} />;
     case "fq3-grafica-ajuste-explorador":
       return <GraficaAjusteFq3Explorador block={block} />;
+    case "fq3-niveles-bohr-explorador":
+      return <NivelesBohrFq3Explorador block={block} />;
+    case "fq3-masa-atomica-media-explorador":
+      return <MasaAtomicaMediaFq3Explorador block={block} />;
+    case "fq3-configuracion-electronica-explorador":
+      return <ConfiguracionElectronicaFq3Explorador block={block} />;
+    case "fq3-propiedades-periodicas-explorador":
+      return <PropiedadesPeriodicasFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

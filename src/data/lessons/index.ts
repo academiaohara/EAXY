@@ -371,6 +371,7 @@ import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachill
 import { distanciasVerdaderaMagnitudDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/04-distancias-verdadera-magnitud-dt1";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
+import { distribucionElectronicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/04-distribucion-electronica-fq3";
 import { distribucionMediaMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/05-distribucion-media-muestral-ccss2";
 import { distribucionNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/07-distribucion-normal-2bach";
 import { distribucionNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/06-distribucion-normal-ccss1";
@@ -748,6 +749,7 @@ import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologi
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { ionesIsotoposFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/03-iones-isotopos-fq2";
 import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
+import { isotoposMasaAtomicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/03-isotopos-masa-atomica-fq3";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
 import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/05-kirchhoff-mallas-nudos";
@@ -863,6 +865,7 @@ import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-te
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
 import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
+import { modelosAtomicosBohrFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/01-modelos-atomicos-bohr-fq3";
 import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
@@ -902,6 +905,7 @@ import { notacionCientifica4esobLesson } from "@/data/lessons/matematicas-4-eso-
 import { notacionCientificaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/13-notacion-cientifica-ccss1";
 import { notacionCientificaOrdenesFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/02-notacion-cientifica-ordenes-fq3";
 import { nubeAlmacenamientoCopias2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/05-nube-almacenamiento-copias-2eso";
+import { numeroAtomicoMasicoIonesFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/02-numero-atomico-masico-iones-fq3";
 import { numeroE1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/09-numero-e-1bach";
 import { numeroIComplejos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/08-numero-i-complejos-1bach";
 import { numeroSoluciones3esoLesson } from "@/data/lessons/matematicas-3-eso/06-sistemas-de-ecuaciones/03-numero-soluciones-3eso";
@@ -1408,6 +1412,7 @@ import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
 import { sustanciasPurasMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/01-sustancias-puras-mezclas-fq2";
 import { tablaPeriodicaFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/04-tabla-periodica-fq2";
+import { tablaPeriodicaPropiedadesFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/05-tabla-periodica-propiedades-fq3";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
 import { tablasContingenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/08-tablas-contingencia-ccss1";
 import { tablasFrecuencias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/02-tablas-frecuencias-1bach";
@@ -1917,6 +1922,7 @@ export const interactiveLessons = {
   "distancias-verdadera-magnitud-dt1": distanciasVerdaderaMagnitudDt1Lesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
+  "distribucion-electronica-fq3": distribucionElectronicaFq3Lesson,
   "distribucion-media-muestral-ccss2": distribucionMediaMuestralCcss2Lesson,
   "distribucion-normal-2bach": distribucionNormal2bachLesson,
   "distribucion-normal-ccss1": distribucionNormalCcss1Lesson,
@@ -2294,6 +2300,7 @@ export const interactiveLessons = {
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "iones-isotopos-fq2": ionesIsotoposFq2Lesson,
   "isometrica-piezas-elipses-dt1": isometricaPiezasElipsesDt1Lesson,
+  "isotopos-masa-atomica-fq3": isotoposMasaAtomicaFq3Lesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
   "kirchhoff-mallas-nudos": kirchhoffMallasNudosLesson,
@@ -2409,6 +2416,7 @@ export const interactiveLessons = {
   "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
   "modelo-cinetico-molecular-fq2": modeloCineticoMolecularFq2Lesson,
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
+  "modelos-atomicos-bohr-fq3": modelosAtomicosBohrFq3Lesson,
   "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
@@ -2448,6 +2456,7 @@ export const interactiveLessons = {
   "notacion-cientifica-ccss1": notacionCientificaCcss1Lesson,
   "notacion-cientifica-ordenes-fq3": notacionCientificaOrdenesFq3Lesson,
   "nube-almacenamiento-copias-2eso": nubeAlmacenamientoCopias2esoLesson,
+  "numero-atomico-masico-iones-fq3": numeroAtomicoMasicoIonesFq3Lesson,
   "numero-e-1bach": numeroE1bachLesson,
   "numero-i-complejos-1bach": numeroIComplejos1bachLesson,
   "numero-soluciones-3eso": numeroSoluciones3esoLesson,
@@ -2954,6 +2963,7 @@ export const interactiveLessons = {
   "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
   "sustancias-puras-mezclas-fq2": sustanciasPurasMezclasFq2Lesson,
   "tabla-periodica-fq2": tablaPeriodicaFq2Lesson,
+  "tabla-periodica-propiedades-fq3": tablaPeriodicaPropiedadesFq3Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,
   "tablas-contingencia-ccss1": tablasContingenciaCcss1Lesson,
   "tablas-frecuencias-1bach": tablasFrecuencias1bachLesson,
