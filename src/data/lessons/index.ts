@@ -414,6 +414,7 @@ import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
+import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { electronicaDigitalBoole4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/07-electronica-digital-boole-4eso";
@@ -975,6 +976,7 @@ import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-
 import { potenciaEnergiaElectrica4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/02-potencia-energia-electrica-4eso";
 import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/05-potencia-par-rendimiento-3eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
+import { potenciaPuntoCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/01-potencia-punto-circunferencia-dt2";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
 import { potenciasActivaReactivaAparenteTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/03-potencias-activa-reactiva-aparente-ti2";
@@ -1348,6 +1350,8 @@ import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matem
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
 import { taeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/05-tae-ccss1";
 import { tamanoRepresentatividadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/03-tamano-representatividad-ccss2";
+import { tangenciasPorPotenciaDosPuntosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/03-tangencias-por-potencia-dos-puntos-dt2";
+import { tangenciasRectaCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/04-tangencias-recta-circunferencia-dt2";
 import { tangenteNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/07-tangente-normal-2bach";
 import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/05-tangente-normal-ccss2";
 import { tangentesRectaCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/01-tangentes-recta-circunferencia-dt1";
@@ -1879,6 +1883,7 @@ export const interactiveLessons = {
   "eficiencia-energetica": eficienciaEnergeticaLesson,
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
+  "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "electronica-digital-boole-4eso": electronicaDigitalBoole4esoLesson,
@@ -2440,6 +2445,7 @@ export const interactiveLessons = {
   "potencia-energia-electrica-4eso": potenciaEnergiaElectrica4esoLesson,
   "potencia-par-rendimiento-3eso": potenciaParRendimiento3esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
+  "potencia-punto-circunferencia-dt2": potenciaPuntoCircunferenciaDt2Lesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
   "potencias-activa-reactiva-aparente-ti2": potenciasActivaReactivaAparenteTi2Lesson,
@@ -2813,6 +2819,8 @@ export const interactiveLessons = {
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
   "tae-ccss1": taeCcss1Lesson,
   "tamano-representatividad-ccss2": tamanoRepresentatividadCcss2Lesson,
+  "tangencias-por-potencia-dos-puntos-dt2": tangenciasPorPotenciaDosPuntosDt2Lesson,
+  "tangencias-recta-circunferencia-dt2": tangenciasRectaCircunferenciaDt2Lesson,
   "tangente-normal-2bach": tangenteNormal2bachLesson,
   "tangente-normal-ccss2": tangenteNormalCcss2Lesson,
   "tangentes-recta-circunferencia-dt1": tangentesRectaCircunferenciaDt1Lesson,

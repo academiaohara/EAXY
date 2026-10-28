@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PotenciaPuntoDt2Explorador, EjeRadicalDt2Explorador, CirculoDosPuntosTangenteDt2Explorador, TangenteRectaCirculoDt2Explorador } from "@/components/lesson/slide/tools/DtIIPotenciaTools";
 import { TransformacionesGeneralesDt2Explorador, AfinidadDt2Explorador, ElipseAfinidadDt2Explorador, HomologiaDt2Explorador, AbatimientoAfinidadDt2Explorador } from "@/components/lesson/slide/tools/DtIITransformacionesTools";
 import { CatenariaDt2Explorador, HiperboloideDt2Explorador, FachadaParametricaDt2Explorador } from "@/components/lesson/slide/tools/DtIIArquitecturaTools";
 import { CoordenadasCadDt1Explorador, BezierDt1Explorador, TransformacionesDt1Explorador, BooleanasDt1Explorador, PiezaCompuestaDt1Explorador } from "@/components/lesson/slide/tools/DtCadTools";
@@ -1972,6 +1973,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <HomologiaDt2Explorador block={block} />;
     case "dt2-abatimiento-afinidad-explorador":
       return <AbatimientoAfinidadDt2Explorador block={block} />;
+    case "dt2-potencia-punto-explorador":
+      return <PotenciaPuntoDt2Explorador block={block} />;
+    case "dt2-eje-radical-explorador":
+      return <EjeRadicalDt2Explorador block={block} />;
+    case "dt2-circulo-dos-puntos-tangente-explorador":
+      return <CirculoDosPuntosTangenteDt2Explorador block={block} />;
+    case "dt2-tangente-recta-circulo-explorador":
+      return <TangenteRectaCirculoDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

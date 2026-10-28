@@ -1320,6 +1320,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-elipse-afinidad-explorador` | Elipse como afín de una circunferencia: razón, área y focos | `a`, `b` semiejes (cm) |
 | `dt2-homologia-explorador` | Homología plana: homólogos alineados con el centro y rectas límite | `a` parámetro μ (%), `b` posición x del centro |
 | `dt2-abatimiento-afinidad-explorador` | Proyección de una figura plana inclinada como afinidad de razón cos φ | `a` inclinación φ (°) |
+| `dt2-potencia-punto-explorador` | Potencia de un punto: PA·PB = PT² para cualquier secante | `a` radio, `b` distancia, `c` giro (°) |
+| `dt2-eje-radical-explorador` | Eje radical de dos circunferencias y potencias iguales de sus puntos | `a` r₁, `b` r₂, `c` distancia entre centros |
+| `dt2-circulo-dos-puntos-tangente-explorador` | Circunferencias por dos puntos tangentes a una recta (PT² = PA·PB) | `a` altura de A, `b` posición de B |
+| `dt2-tangente-recta-circulo-explorador` | Circunferencias tangentes a una recta en T y a otra circunferencia | `a` posición de T, `b` radio |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

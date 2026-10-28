@@ -199,7 +199,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000209', 'a1000000-0000-4000-8000-000000000022', 'normalizacion-documentacion-grafica', 'Normalización y documentación gráfica', 9),
   ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10),
   ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1),
-  ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2);
+  ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2),
+  ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1661,4 +1662,8 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021202', 'a2000000-0000-4000-8000-000000000212', '2. Afinidad: eje, dirección y razón', 'Puntos y rectas homólogos.', 2, null),
   ('a3000000-0000-4000-8000-000000021203', 'a2000000-0000-4000-8000-000000000212', '3. La elipse como afín de la circunferencia', 'Ejes, focos y excentricidad.', 3, null),
   ('a3000000-0000-4000-8000-000000021204', 'a2000000-0000-4000-8000-000000000212', '4. Homología: eje, centro y rectas límite', 'Elementos y casos particulares.', 4, null),
-  ('a3000000-0000-4000-8000-000000021205', 'a2000000-0000-4000-8000-000000000212', '5. Aplicaciones a los sistemas de representación', 'Abatimientos, perspectiva y secciones.', 5, null);
+  ('a3000000-0000-4000-8000-000000021205', 'a2000000-0000-4000-8000-000000000212', '5. Aplicaciones a los sistemas de representación', 'Abatimientos, perspectiva y secciones.', 5, null),
+  ('a3000000-0000-4000-8000-000000021301', 'a2000000-0000-4000-8000-000000000213', '1. Potencia de un punto respecto de una circunferencia', 'Secantes, tangentes y signo de la potencia.', 1, null),
+  ('a3000000-0000-4000-8000-000000021302', 'a2000000-0000-4000-8000-000000000213', '2. Eje radical y centro radical', 'Lugar de igual potencia y su construcción.', 2, null),
+  ('a3000000-0000-4000-8000-000000021303', 'a2000000-0000-4000-8000-000000000213', '3. Tangencias por potencia: circunferencia por dos puntos', 'Circunferencias por A y B tangentes a una recta.', 3, null),
+  ('a3000000-0000-4000-8000-000000021304', 'a2000000-0000-4000-8000-000000000213', '4. Tangencias a una recta y una circunferencia', 'Problema de Apolonio y casos con potencia.', 4, null);

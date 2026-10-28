@@ -21,6 +21,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["geometria-arquitectura-ingenieria", 3],
   ["homologia-afinidad", 5],
+  ["potencia-eje-radical-tangencias", 4],
 ];
 
 describe("curso Dibujo Técnico II", () => {

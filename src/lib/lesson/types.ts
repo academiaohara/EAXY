@@ -1970,6 +1970,10 @@ export type SlideToolId =
   | "dt2-elipse-afinidad-explorador"
   | "dt2-homologia-explorador"
   | "dt2-abatimiento-afinidad-explorador"
+  | "dt2-potencia-punto-explorador"
+  | "dt2-eje-radical-explorador"
+  | "dt2-circulo-dos-puntos-tangente-explorador"
+  | "dt2-tangente-recta-circulo-explorador"
   /* industrial-tool-end */;
 
 /**

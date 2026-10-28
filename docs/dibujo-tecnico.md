@@ -66,3 +66,4 @@ Total previsto: unas 41 lecciones.
 | DT I · 10. Sistemas CAD | Hecho (4 lecciones, `10-sistemas-cad/`; herramientas `DtCadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico I completo: 50 lecciones en 10 temas.** |
 | DT II · 1. La geometría en la arquitectura y la ingeniería | Hecho (3 lecciones, `src/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/`; herramientas `DtIIArquitecturaTools.tsx`; subtítulos `DT2_SUBTITLES`; ids `-dt2` y `dt2-`) |
 | DT II · 2. Homología y afinidad | Hecho (5 lecciones, `02-homologia-afinidad/`; herramientas `DtIITransformacionesTools.tsx`) |
+| DT II · 3. Potencia, eje radical y tangencias | Hecho (4 lecciones, `03-potencia-eje-radical-tangencias/`; herramientas `DtIIPotenciaTools.tsx`) |
