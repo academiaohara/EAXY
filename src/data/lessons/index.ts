@@ -158,6 +158,7 @@ import { cicloVidaSeguridadMateriales4esoLesson } from "@/data/lessons/tecnologi
 import { ciclosOttoDieselLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/06-ciclos-otto-diesel";
 import { ciclosReversiblesFocosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/01-ciclos-reversibles-focos";
 import { cienciaTecnicaTecnologiaIngenieriaLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/03-ciencia-tecnica-tecnologia-ingenieria";
+import { cilindroConoSeccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/03-cilindro-cono-secciones-dt2";
 import { cilindros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/08-cilindros-2eso";
 import { cilindrosMotoresSimbologiaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/09-cilindros-motores-simbologia";
 import { circuitoElectricoComponentesLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/02-circuito-electrico-componentes";
@@ -311,6 +312,7 @@ import { derivadaPunto1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { derivadaPuntoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/02-derivada-punto-ccss1";
 import { derivadasTrigInversas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/05-derivadas-trig-inversas-2bach";
 import { desarrolloAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/06-desarrollo-adjuntos-2bach";
+import { desarrollosCuerposDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/05-desarrollos-cuerpos-dt2";
 import { descomposicionAlgoritmos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/01-descomposicion-algoritmos-4eso";
 import { desigualdadChebychev2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/05-desigualdad-chebychev-2bach";
 import { desigualdadesInecuaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/04-desigualdades-inecuaciones-1bach";
@@ -958,6 +960,7 @@ import { poleasCorreasFriccionLesson } from "@/data/lessons/tecnologia-ingenieri
 import { poleasPolipastoBasicoLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/03-poleas-polipasto-basico";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
+import { poliedrosRegularesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/04-poliedros-regulares-dt2";
 import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
 import { poligonosDadoLadoEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/06-poligonos-dado-lado-estrellados-dt1";
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
@@ -1005,6 +1008,7 @@ import { primerosPasosPythonLesson } from "@/data/lessons/tecnologia-ingenieria-
 import { primitivaIntegralIndefinida2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/01-primitiva-integral-indefinida-2bach";
 import { primitivaIntegralIndefinidaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/01-primitiva-integral-indefinida-ccss2";
 import { prismas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/06-prismas-2eso";
+import { prismasPiramidesDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/01-prismas-piramides-diedrico-dt2";
 import { probArbol4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/07-prob-arbol-4eso";
 import { probArbol4esobLesson } from "@/data/lessons/matematicas-4-eso-b/10-calculo-de-probabilidades/07-prob-arbol-4esob";
 import { probCompuestas4esoLesson } from "@/data/lessons/matematicas-4-eso/14-calculo-de-probabilidades/04-prob-compuestas-4eso";
@@ -1234,6 +1238,7 @@ import { rozamientoPerdidasLubricacion4esoLesson } from "@/data/lessons/tecnolog
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
+import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
@@ -1638,6 +1643,7 @@ export const interactiveLessons = {
   "ciclos-otto-diesel": ciclosOttoDieselLesson,
   "ciclos-reversibles-focos": ciclosReversiblesFocosLesson,
   "ciencia-tecnica-tecnologia-ingenieria": cienciaTecnicaTecnologiaIngenieriaLesson,
+  "cilindro-cono-secciones-dt2": cilindroConoSeccionesDt2Lesson,
   "cilindros-2eso": cilindros2esoLesson,
   "cilindros-motores-simbologia": cilindrosMotoresSimbologiaLesson,
   "circuito-electrico-componentes": circuitoElectricoComponentesLesson,
@@ -1791,6 +1797,7 @@ export const interactiveLessons = {
   "derivada-punto-ccss1": derivadaPuntoCcss1Lesson,
   "derivadas-trig-inversas-2bach": derivadasTrigInversas2bachLesson,
   "desarrollo-adjuntos-2bach": desarrolloAdjuntos2bachLesson,
+  "desarrollos-cuerpos-dt2": desarrollosCuerposDt2Lesson,
   "descomposicion-algoritmos-4eso": descomposicionAlgoritmos4esoLesson,
   "desigualdad-chebychev-2bach": desigualdadChebychev2bachLesson,
   "desigualdades-inecuaciones-1bach": desigualdadesInecuaciones1bachLesson,
@@ -2438,6 +2445,7 @@ export const interactiveLessons = {
   "poleas-polipasto-basico": poleasPolipastoBasicoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
+  "poliedros-regulares-dt2": poliedrosRegularesDt2Lesson,
   "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
   "poligonos-dado-lado-estrellados-dt1": poligonosDadoLadoEstrelladosDt1Lesson,
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
@@ -2485,6 +2493,7 @@ export const interactiveLessons = {
   "primitiva-integral-indefinida-2bach": primitivaIntegralIndefinida2bachLesson,
   "primitiva-integral-indefinida-ccss2": primitivaIntegralIndefinidaCcss2Lesson,
   "prismas-2eso": prismas2esoLesson,
+  "prismas-piramides-diedrico-dt2": prismasPiramidesDiedricoDt2Lesson,
   "prob-arbol-4eso": probArbol4esoLesson,
   "prob-arbol-4esob": probArbol4esobLesson,
   "prob-compuestas-4eso": probCompuestas4esoLesson,
@@ -2714,6 +2723,7 @@ export const interactiveLessons = {
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
+  "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,

@@ -1335,6 +1335,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-cambio-plano-explorador` | Cambio de plano vertical: nueva proyección y nuevo alejamiento | `a` ángulo ψ, `b` posición x |
 | `dt2-magnitud-angulos-explorador` | Triángulo de abatimiento: longitud real y ángulos con PH y PV | `a` x de B, `b` alejamiento, `c` cota |
 | `dt2-distancia-punto-recta-explorador` | Distancia de un punto a una recta, vista de punta | `a` x de P, `b` alejamiento, `c` cota |
+| `dt2-solido-diedrico-explorador` | Prisma o pirámide regular en planta y alzado, con volumen y área lateral | `n` 0 prisma / 1 pirámide, `a` lados, `b` radio, `c` altura |
+| `dt2-seccion-prisma-explorador` | Sección de un prisma por un plano proyectante y su verdadera forma | `a` lados, `b` inclinación α, `c` altura de corte |
+| `dt2-seccion-revolucion-explorador` | Sección elíptica de un cilindro o un cono por un plano proyectante | `n` 0 cilindro / 1 cono, `a` α, `b` altura de corte |
+| `dt2-poliedros-regulares-explorador` | Los cinco poliedros regulares: caras, aristas, vértices, área y volumen | `n` poliedro (0–4), `a` arista |
+| `dt2-desarrollo-cuerpos-explorador` | Desarrollo de un cilindro, un cono o una pirámide | `n` cuerpo (0–2), `a` radio, `b` altura |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

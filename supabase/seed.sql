@@ -202,7 +202,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2),
   ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3),
   ('a2000000-0000-4000-8000-000000000214', 'a1000000-0000-4000-8000-000000000023', 'curvas-conicas', 'Curvas cónicas', 4),
-  ('a2000000-0000-4000-8000-000000000215', 'a1000000-0000-4000-8000-000000000023', 'diedrico-avanzado', 'Sistema diédrico avanzado', 5);
+  ('a2000000-0000-4000-8000-000000000215', 'a1000000-0000-4000-8000-000000000023', 'diedrico-avanzado', 'Sistema diédrico avanzado', 5),
+  ('a2000000-0000-4000-8000-000000000216', 'a1000000-0000-4000-8000-000000000023', 'cuerpos-diedrico', 'Cuerpos geométricos en diédrico', 6);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1679,4 +1680,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021503', 'a2000000-0000-4000-8000-000000000215', '3. Giros en el sistema diédrico', 'Girar rectas y planos alrededor de un eje.', 3, null),
   ('a3000000-0000-4000-8000-000000021504', 'a2000000-0000-4000-8000-000000000215', '4. Cambios de plano', 'Nueva línea de tierra y nuevas proyecciones.', 4, null),
   ('a3000000-0000-4000-8000-000000021505', 'a2000000-0000-4000-8000-000000000215', '5. Verdadera magnitud y ángulos de una recta', 'Triángulo de abatimiento.', 5, null),
-  ('a3000000-0000-4000-8000-000000021506', 'a2000000-0000-4000-8000-000000000215', '6. Distancia de un punto a una recta', 'Recta de punta por dos cambios de plano.', 6, null);
+  ('a3000000-0000-4000-8000-000000021506', 'a2000000-0000-4000-8000-000000000215', '6. Distancia de un punto a una recta', 'Recta de punta por dos cambios de plano.', 6, null),
+  ('a3000000-0000-4000-8000-000000021601', 'a2000000-0000-4000-8000-000000000216', '1. Prismas y pirámides en diédrico', 'Planta, alzado y partes ocultas.', 1, null),
+  ('a3000000-0000-4000-8000-000000021602', 'a2000000-0000-4000-8000-000000000216', '2. Secciones planas de poliedros', 'Planos proyectantes y verdadera forma.', 2, null),
+  ('a3000000-0000-4000-8000-000000021603', 'a2000000-0000-4000-8000-000000000216', '3. Cilindro y cono: secciones', 'Elipses y generatrices.', 3, null),
+  ('a3000000-0000-4000-8000-000000021604', 'a2000000-0000-4000-8000-000000000216', '4. Poliedros regulares', 'Sólidos platónicos y relación de Euler.', 4, null),
+  ('a3000000-0000-4000-8000-000000021605', 'a2000000-0000-4000-8000-000000000216', '5. Desarrollos de cuerpos', 'Patrones de corte de poliedros y cuerpos de revolución.', 5, null);

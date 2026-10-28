@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SolidoDiedricoDt2Explorador, SeccionPrismaDt2Explorador, SeccionRevolucionDt2Explorador, PoliedrosRegularesDt2Explorador, DesarrolloCuerposDt2Explorador } from "@/components/lesson/slide/tools/DtIICuerposTools";
 import { AbatimientoPuntoDt2Explorador, VerdaderaFormaDt2Explorador, GiroRectaDt2Explorador, CambioPlanoDt2Explorador, MagnitudAngulosDt2Explorador, DistanciaPuntoRectaDt2Explorador } from "@/components/lesson/slide/tools/DtIIDiedricoAvanzadoTools";
 import { CorteConoDt2Explorador, ElipseFocosDt2Explorador, HiperbolaDt2Explorador, ParabolaDt2Explorador, TangentesConicasDt2Explorador } from "@/components/lesson/slide/tools/DtIIConicasTools";
 import { PotenciaPuntoDt2Explorador, EjeRadicalDt2Explorador, CirculoDosPuntosTangenteDt2Explorador, TangenteRectaCirculoDt2Explorador } from "@/components/lesson/slide/tools/DtIIPotenciaTools";
@@ -2005,6 +2006,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MagnitudAngulosDt2Explorador block={block} />;
     case "dt2-distancia-punto-recta-explorador":
       return <DistanciaPuntoRectaDt2Explorador block={block} />;
+    case "dt2-solido-diedrico-explorador":
+      return <SolidoDiedricoDt2Explorador block={block} />;
+    case "dt2-seccion-prisma-explorador":
+      return <SeccionPrismaDt2Explorador block={block} />;
+    case "dt2-seccion-revolucion-explorador":
+      return <SeccionRevolucionDt2Explorador block={block} />;
+    case "dt2-poliedros-regulares-explorador":
+      return <PoliedrosRegularesDt2Explorador block={block} />;
+    case "dt2-desarrollo-cuerpos-explorador":
+      return <DesarrolloCuerposDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1985,6 +1985,11 @@ export type SlideToolId =
   | "dt2-cambio-plano-explorador"
   | "dt2-magnitud-angulos-explorador"
   | "dt2-distancia-punto-recta-explorador"
+  | "dt2-solido-diedrico-explorador"
+  | "dt2-seccion-prisma-explorador"
+  | "dt2-seccion-revolucion-explorador"
+  | "dt2-poliedros-regulares-explorador"
+  | "dt2-desarrollo-cuerpos-explorador"
   /* industrial-tool-end */;
 
 /**

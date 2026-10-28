@@ -24,6 +24,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["potencia-eje-radical-tangencias", 4],
   ["curvas-conicas", 5],
   ["diedrico-avanzado", 6],
+  ["cuerpos-diedrico", 5],
 ];
 
 describe("curso Dibujo Técnico II", () => {

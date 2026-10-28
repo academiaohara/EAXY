@@ -69,3 +69,4 @@ Total previsto: unas 41 lecciones.
 | DT II · 3. Potencia, eje radical y tangencias | Hecho (4 lecciones, `03-potencia-eje-radical-tangencias/`; herramientas `DtIIPotenciaTools.tsx`) |
 | DT II · 4. Curvas cónicas | Hecho (5 lecciones, `04-curvas-conicas/`; herramientas `DtIIConicasTools.tsx`) |
 | DT II · 5. Diédrico avanzado | Hecho (6 lecciones, `05-diedrico-avanzado/`; herramientas `DtIIDiedricoAvanzadoTools.tsx`; bloque `dibujo-sistemas-representacion`) |
+| DT II · 6. Cuerpos en diédrico | Hecho (5 lecciones, `06-cuerpos-diedrico/`; herramientas `DtIICuerposTools.tsx`) |
