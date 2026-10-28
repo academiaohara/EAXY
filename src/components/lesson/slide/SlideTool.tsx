@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TrabajoPotenciaFq3Explorador, MontanaRusaFq3Explorador, CalorEspecificoFq3Explorador, CalentamientoHieloFq3Explorador, AislamientoFq3Explorador } from "@/components/lesson/slide/tools/Fq3EnergiaTools";
 import { ComposicionFuerzasFq3Explorador, AccionReaccionFq3Explorador, Newton2RozamientoFq3Explorador, PresionFq3Explorador, FlotacionFq3Explorador } from "@/components/lesson/slide/tools/Fq3FuerzasTools";
 import { AceleracionFq3Explorador, MruaFq3Explorador, GraficaVtFq3Explorador, CaidaFrenadaFq3Explorador } from "@/components/lesson/slide/tools/Fq3MovimientoTools";
 import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
@@ -2211,6 +2212,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PresionFq3Explorador block={block} />;
     case "fq3-flotacion-explorador":
       return <FlotacionFq3Explorador block={block} />;
+    case "fq3-trabajo-potencia-explorador":
+      return <TrabajoPotenciaFq3Explorador block={block} />;
+    case "fq3-montana-rusa-explorador":
+      return <MontanaRusaFq3Explorador block={block} />;
+    case "fq3-calor-especifico-explorador":
+      return <CalorEspecificoFq3Explorador block={block} />;
+    case "fq3-calentamiento-hielo-explorador":
+      return <CalentamientoHieloFq3Explorador block={block} />;
+    case "fq3-aislamiento-explorador":
+      return <AislamientoFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

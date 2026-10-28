@@ -2097,6 +2097,11 @@ export type SlideToolId =
   | "fq3-newton2-rozamiento-explorador"
   | "fq3-presion-explorador"
   | "fq3-flotacion-explorador"
+  | "fq3-trabajo-potencia-explorador"
+  | "fq3-montana-rusa-explorador"
+  | "fq3-calor-especifico-explorador"
+  | "fq3-calentamiento-hielo-explorador"
+  | "fq3-aislamiento-explorador"
   /* industrial-tool-end */;
 
 /**

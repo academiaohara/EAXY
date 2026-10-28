@@ -12,6 +12,7 @@ import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
 import { afinidadEjeDireccionRazonDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/02-afinidad-eje-direccion-razon-dt2";
 import { ahorroMaterialesEnergiaEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/03-ahorro-materiales-energia-eso";
+import { aislamientoRendimientoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/05-aislamiento-rendimiento-fq3";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
@@ -150,10 +151,12 @@ import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematic
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
+import { calorTemperaturaEspecificoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/03-calor-temperatura-especifico-fq3";
 import { calorTemperaturaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/04-calor-temperatura-fq2";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { cambiosDeEstadoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/04-cambios-de-estado-fq2";
+import { cambiosEstadoCalorLatenteFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/04-cambios-estado-calor-latente-fq3";
 import { cambiosFisicosQuimicosFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/01-cambios-fisicos-quimicos-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
@@ -246,6 +249,7 @@ import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachil
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
+import { conservacionEnergiaMecanicaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/02-conservacion-energia-mecanica-fq3";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
 import { conservacionMasaCalculosFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/02-conservacion-masa-calculos-fq3";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
@@ -1498,6 +1502,7 @@ import { torsionEjesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bac
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
+import { trabajoPotenciaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/01-trabajo-potencia-fq3";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
 import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/07-transductores-velocidad";
 import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/05-transformacion-movimiento";
@@ -1588,6 +1593,7 @@ export const interactiveLessons = {
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
   "afinidad-eje-direccion-razon-dt2": afinidadEjeDireccionRazonDt2Lesson,
   "ahorro-materiales-energia-eso": ahorroMaterialesEnergiaEsoLesson,
+  "aislamiento-rendimiento-fq3": aislamientoRendimientoFq3Lesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
@@ -1726,10 +1732,12 @@ export const interactiveLessons = {
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
+  "calor-temperatura-especifico-fq3": calorTemperaturaEspecificoFq3Lesson,
   "calor-temperatura-fq2": calorTemperaturaFq2Lesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "cambios-de-estado-fq2": cambiosDeEstadoFq2Lesson,
+  "cambios-estado-calor-latente-fq3": cambiosEstadoCalorLatenteFq3Lesson,
   "cambios-fisicos-quimicos-fq2": cambiosFisicosQuimicosFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
@@ -1822,6 +1830,7 @@ export const interactiveLessons = {
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
   "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
+  "conservacion-energia-mecanica-fq3": conservacionEnergiaMecanicaFq3Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
   "conservacion-masa-calculos-fq3": conservacionMasaCalculosFq3Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
@@ -3074,6 +3083,7 @@ export const interactiveLessons = {
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
+  "trabajo-potencia-fq3": trabajoPotenciaFq3Lesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
   "transductores-velocidad": transductoresVelocidadLesson,
   "transformacion-movimiento": transformacionMovimientoLesson,

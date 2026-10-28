@@ -1447,6 +1447,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-newton2-rozamiento-explorador` | Segunda ley de Newton con peso, normal y rozamiento | `a` fuerza (N), `b` masa (kg), `c` coeficiente μ |
 | `fq3-presion-explorador` | Presión según fuerza y superficie | `n` situación (0–4) |
 | `fq3-flotacion-explorador` | Flotación y empuje de Arquímedes | `a` objeto (0–5), `b` fluido (0–3) |
+| `fq3-trabajo-potencia-explorador` | Trabajo y potencia según fuerza, desplazamiento y ángulo | `a` F (N), `b` d (m), `c` ángulo (°) |
+| `fq3-montana-rusa-explorador` | Energías en una montaña rusa con y sin rozamiento | `a` posición (0–1), `b` masa (kg), `c` fracción de calor (0–0,5) |
+| `fq3-calor-especifico-explorador` | Calor necesario según material, masa y ΔT | `n` material (0–5), `a` masa (kg), `b` ΔT (°C), `c` potencia (W) |
+| `fq3-calentamiento-hielo-explorador` | Curva de calentamiento del agua de −20 °C a vapor | `a` masa (kg), `b` calor suministrado (0–100 %) |
+| `fq3-aislamiento-explorador` | Pérdida de calor por conducción en una pared | `n` material (0–5), `a` espesor (m), `b` ΔT (°C) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
