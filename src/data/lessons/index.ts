@@ -150,6 +150,7 @@ import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { cambiosDeEstadoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/04-cambios-de-estado-fq2";
+import { cambiosFisicosQuimicosFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/01-cambios-fisicos-quimicos-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
@@ -201,6 +202,7 @@ import { combinacionesNumerosCombinatorios2bachLesson } from "@/data/lessons/mat
 import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/09-combinatoria-conteo-2bach";
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
+import { combustionOxidacionFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/04-combustion-oxidacion-fq2";
 import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
 import { complejosBinomicaOperaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/09-complejos-binomica-operaciones-1bach";
 import { complejosModuloArgumento1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/11-complejos-modulo-argumento-1bach";
@@ -235,6 +237,7 @@ import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
+import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
 import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/05-construccion-poligonos-regulares-dt1";
 import { construccionTriangulosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/02-construccion-triangulos-dt1";
@@ -1194,6 +1197,7 @@ import { rangoMenores2bachLesson } from "@/data/lessons/matematicas-2-bachillera
 import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/12-rango-parametro-2bach";
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
 import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
+import { reaccionesQuimicasFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/02-reacciones-quimicas-fq2";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
@@ -1668,6 +1672,7 @@ export const interactiveLessons = {
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "cambios-de-estado-fq2": cambiosDeEstadoFq2Lesson,
+  "cambios-fisicos-quimicos-fq2": cambiosFisicosQuimicosFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
@@ -1719,6 +1724,7 @@ export const interactiveLessons = {
   "combinatoria-conteo-2bach": combinatoriaConteo2bachLesson,
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
+  "combustion-oxidacion-fq2": combustionOxidacionFq2Lesson,
   "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
   "complejos-binomica-operaciones-1bach": complejosBinomicaOperaciones1bachLesson,
   "complejos-modulo-argumento-1bach": complejosModuloArgumento1bachLesson,
@@ -1753,6 +1759,7 @@ export const interactiveLessons = {
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
+  "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
   "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
   "construccion-triangulos-dt1": construccionTriangulosDt1Lesson,
@@ -2712,6 +2719,7 @@ export const interactiveLessons = {
   "rango-parametro-2bach": rangoParametro2bachLesson,
   "razones-agudas-1bach": razonesAgudas1bachLesson,
   "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
+  "reacciones-quimicas-fq2": reaccionesQuimicasFq2Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CambioFisicoQuimicoFq2Explorador, AvanceReaccionFq2Explorador, AjusteEcuacionFq2Explorador, TrianguloFuegoFq2Explorador } from "@/components/lesson/slide/tools/Fq2ReaccionesTools";
 import { ModelosAtomicosFq2Explorador, ConstruirAtomoFq2Explorador, IonesIsotoposFq2Explorador, TablaPeriodicaFq2Explorador, FormulasMoleculasFq2Explorador } from "@/components/lesson/slide/tools/Fq2AtomoTools";
 import { ClasificacionMateriaFq2Explorador, ConcentracionDisolucionFq2Explorador, SolubilidadCurvaFq2Explorador, SeparacionMezclasFq2Explorador, ComposicionMezclasFq2Explorador } from "@/components/lesson/slide/tools/Fq2MezclasTools";
 import { DensidadFlotacionFq2Explorador, EstadosPropiedadesFq2Explorador, ModeloCineticoFq2Explorador, CambiosEstadoFq2Explorador, CurvaCalentamientoFq2Explorador } from "@/components/lesson/slide/tools/Fq2MateriaTools";
@@ -2089,6 +2090,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TablaPeriodicaFq2Explorador block={block} />;
     case "fq2-formulas-moleculas-explorador":
       return <FormulasMoleculasFq2Explorador block={block} />;
+    case "fq2-cambio-fisico-quimico-explorador":
+      return <CambioFisicoQuimicoFq2Explorador block={block} />;
+    case "fq2-avance-reaccion-explorador":
+      return <AvanceReaccionFq2Explorador block={block} />;
+    case "fq2-ajuste-ecuacion-explorador":
+      return <AjusteEcuacionFq2Explorador block={block} />;
+    case "fq2-triangulo-fuego-explorador":
+      return <TrianguloFuegoFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

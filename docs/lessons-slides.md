@@ -579,6 +579,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-particulas-estados` | Partículas de un sólido, un líquido y un gas | — |
 | `fq2-destilacion` | Destilación de una mezcla de alcohol y agua | — |
 | `fq2-rutherford` | Experimento de Rutherford y descubrimiento del núcleo | — |
+| `fq2-lavoisier` | Conservación de los átomos en la formación del agua | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1383,6 +1384,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-iones-isotopos-explorador` | Isótopos e iones de un elemento con su notación | `a` Z, `b` neutrones de más, `c` carga |
 | `fq2-tabla-periodica-explorador` | Los 20 primeros elementos de la tabla periódica | `a` número atómico |
 | `fq2-formulas-moleculas-explorador` | Fórmulas: átomos de cada elemento y masa molecular | `n` sustancia (0–7) |
+| `fq2-cambio-fisico-quimico-explorador` | Distinguir un cambio físico de uno químico en diez fenómenos | `n` fenómeno (0–9) |
+| `fq2-avance-reaccion-explorador` | Avance de una reacción: reactivos que se gastan y productos que aparecen | `n` reacción (0–3), `a` avance (0–4) |
+| `fq2-ajuste-ecuacion-explorador` | Ajustar ecuaciones: átomos y masa a cada lado | `n` reacción (0–3) |
+| `fq2-triangulo-fuego-explorador` | Triángulo del fuego: combustible, comburente y energía | `a` combustible, `b` comburente, `c` energía (0/1) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

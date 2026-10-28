@@ -1103,6 +1103,7 @@ export type SlideAnimId =
   | "fq2-particulas-estados"
   | "fq2-destilacion"
   | "fq2-rutherford"
+  | "fq2-lavoisier"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2033,6 +2034,10 @@ export type SlideToolId =
   | "fq2-iones-isotopos-explorador"
   | "fq2-tabla-periodica-explorador"
   | "fq2-formulas-moleculas-explorador"
+  | "fq2-cambio-fisico-quimico-explorador"
+  | "fq2-avance-reaccion-explorador"
+  | "fq2-ajuste-ecuacion-explorador"
+  | "fq2-triangulo-fuego-explorador"
   /* industrial-tool-end */;
 
 /**

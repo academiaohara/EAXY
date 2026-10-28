@@ -358,6 +358,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Propiedades, estados de agregación, mezclas y estructura de la materia.",
     orderIndex: 2,
   },
+  {
+    slug: "fisica-cambios-quimicos",
+    subject: "fisica",
+    title: "Cambios y reacciones químicas",
+    description: "Cambios físicos y químicos, reacciones, conservación de la masa y combustión.",
+    orderIndex: 3,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -615,6 +622,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-2-eso/materia-propiedades": "fisica-materia",
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",
   "fisica-2-eso/estructura-materia": "fisica-materia",
+  "fisica-2-eso/cambios-fisicos-quimicos": "fisica-cambios-quimicos",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",
