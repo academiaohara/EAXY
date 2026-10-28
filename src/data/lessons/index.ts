@@ -160,6 +160,7 @@ import { cambiosEstadoCalorLatenteFq3Lesson } from "@/data/lessons/fisica-3-eso/
 import { cambiosFisicosQuimicosFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/01-cambios-fisicos-quimicos-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
+import { cargaElectricaElectrizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/01-carga-electrica-electrizacion-fq3";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
@@ -181,6 +182,7 @@ import { circuitosMixtosKirchhoff4esoLesson } from "@/data/lessons/tecnologia-4-
 import { circuitosParalelo2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/05-circuitos-paralelo-2eso";
 import { circuitosSerie2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/04-circuitos-serie-2eso";
 import { circuitosSerieParaleloEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/05-circuitos-serie-paralelo-eso";
+import { circuitosSerieParaleloFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/04-circuitos-serie-paralelo-fq3";
 import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/07-circuitos-temporizadores";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
 import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/09-circunferencia-1bach";
@@ -280,6 +282,7 @@ import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachil
 import { corrienteContinuaAlterna4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/01-corriente-continua-alterna-4eso";
 import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
 import { corrienteElectricaBasicaLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/01-corriente-electrica-basica";
+import { corrienteIntensidadTensionFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/02-corriente-intensidad-tension-fq3";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
 import { corteUnionAcabado2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/06-corte-union-acabado-2eso";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
@@ -1055,6 +1058,7 @@ import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-ind
 import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
 import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/03-potencia-energia-electrica-2eso";
 import { potenciaEnergiaElectrica4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/02-potencia-energia-electrica-4eso";
+import { potenciaEnergiaElectricaFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/05-potencia-energia-electrica-fq3";
 import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/05-potencia-par-rendimiento-3eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaPuntoCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/01-potencia-punto-circunferencia-dt2";
@@ -1300,6 +1304,7 @@ import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { residuosReduccionClasificacionLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/04-residuos-reduccion-clasificacion";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resistenciaConductorOhm3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/01-resistencia-conductor-ohm-3eso";
+import { resistenciaLeyOhmFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/03-resistencia-ley-ohm-fq3";
 import { resistenciasCodigoColores3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/02-resistencias-codigo-colores-3eso";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
@@ -1323,6 +1328,7 @@ import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibu
 import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { segundaLeyNewtonRozamientoFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/03-segunda-ley-newton-rozamiento-fq3";
+import { seguridadElectricaConsumoFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/06-seguridad-electrica-consumo-fq3";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
 import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
@@ -1741,6 +1747,7 @@ export const interactiveLessons = {
   "cambios-fisicos-quimicos-fq2": cambiosFisicosQuimicosFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
+  "carga-electrica-electrizacion-fq3": cargaElectricaElectrizacionFq3Lesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
@@ -1762,6 +1769,7 @@ export const interactiveLessons = {
   "circuitos-paralelo-2eso": circuitosParalelo2esoLesson,
   "circuitos-serie-2eso": circuitosSerie2esoLesson,
   "circuitos-serie-paralelo-eso": circuitosSerieParaleloEsoLesson,
+  "circuitos-serie-paralelo-fq3": circuitosSerieParaleloFq3Lesson,
   "circuitos-temporizadores": circuitosTemporizadoresLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
   "circunferencia-1bach": circunferencia1bachLesson,
@@ -1861,6 +1869,7 @@ export const interactiveLessons = {
   "corriente-continua-alterna-4eso": corrienteContinuaAlterna4esoLesson,
   "corriente-continua-elementos": corrienteContinuaElementosLesson,
   "corriente-electrica-basica": corrienteElectricaBasicaLesson,
+  "corriente-intensidad-tension-fq3": corrienteIntensidadTensionFq3Lesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
   "corte-union-acabado-2eso": corteUnionAcabado2esoLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
@@ -2636,6 +2645,7 @@ export const interactiveLessons = {
   "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
   "potencia-energia-electrica-2eso": potenciaEnergiaElectrica2esoLesson,
   "potencia-energia-electrica-4eso": potenciaEnergiaElectrica4esoLesson,
+  "potencia-energia-electrica-fq3": potenciaEnergiaElectricaFq3Lesson,
   "potencia-par-rendimiento-3eso": potenciaParRendimiento3esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-punto-circunferencia-dt2": potenciaPuntoCircunferenciaDt2Lesson,
@@ -2881,6 +2891,7 @@ export const interactiveLessons = {
   "residuos-reduccion-clasificacion": residuosReduccionClasificacionLesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resistencia-conductor-ohm-3eso": resistenciaConductorOhm3esoLesson,
+  "resistencia-ley-ohm-fq3": resistenciaLeyOhmFq3Lesson,
   "resistencias-codigo-colores-3eso": resistenciasCodigoColores3esoLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
@@ -2904,6 +2915,7 @@ export const interactiveLessons = {
   "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "segunda-ley-newton-rozamiento-fq3": segundaLeyNewtonRozamientoFq3Lesson,
+  "seguridad-electrica-consumo-fq3": seguridadElectricaConsumoFq3Lesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
   "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,

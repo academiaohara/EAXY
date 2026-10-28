@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CargaCoulombFq3Explorador, IntensidadTensionFq3Explorador, LeyOhmFq3Explorador, ResistenciaHiloFq3Explorador, CircuitoFq3Explorador, ConsumoElectricoFq3Explorador, SeguridadElectricaFq3Explorador } from "@/components/lesson/slide/tools/Fq3ElectricidadTools";
 import { TrabajoPotenciaFq3Explorador, MontanaRusaFq3Explorador, CalorEspecificoFq3Explorador, CalentamientoHieloFq3Explorador, AislamientoFq3Explorador } from "@/components/lesson/slide/tools/Fq3EnergiaTools";
 import { ComposicionFuerzasFq3Explorador, AccionReaccionFq3Explorador, Newton2RozamientoFq3Explorador, PresionFq3Explorador, FlotacionFq3Explorador } from "@/components/lesson/slide/tools/Fq3FuerzasTools";
 import { AceleracionFq3Explorador, MruaFq3Explorador, GraficaVtFq3Explorador, CaidaFrenadaFq3Explorador } from "@/components/lesson/slide/tools/Fq3MovimientoTools";
@@ -2222,6 +2223,20 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CalentamientoHieloFq3Explorador block={block} />;
     case "fq3-aislamiento-explorador":
       return <AislamientoFq3Explorador block={block} />;
+    case "fq3-carga-coulomb-explorador":
+      return <CargaCoulombFq3Explorador block={block} />;
+    case "fq3-intensidad-tension-explorador":
+      return <IntensidadTensionFq3Explorador block={block} />;
+    case "fq3-ley-ohm-explorador":
+      return <LeyOhmFq3Explorador block={block} />;
+    case "fq3-resistencia-hilo-explorador":
+      return <ResistenciaHiloFq3Explorador block={block} />;
+    case "fq3-circuito-explorador":
+      return <CircuitoFq3Explorador block={block} />;
+    case "fq3-consumo-electrico-explorador":
+      return <ConsumoElectricoFq3Explorador block={block} />;
+    case "fq3-seguridad-electrica-explorador":
+      return <SeguridadElectricaFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

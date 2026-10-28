@@ -379,6 +379,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Formas y transformaciones de la energía, calor, fuentes de energía, luz y sonido.",
     orderIndex: 5,
   },
+  {
+    slug: "fisica-electricidad",
+    subject: "fisica",
+    title: "Electricidad",
+    description: "Carga eléctrica, corriente, ley de Ohm, circuitos, potencia y seguridad eléctrica.",
+    orderIndex: 6,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -640,6 +647,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-3-eso/el-movimiento": "fisica-movimiento-fuerzas",
   "fisica-3-eso/las-fuerzas-y-sus-efectos": "fisica-movimiento-fuerzas",
   "fisica-3-eso/energia-y-calor": "fisica-energia-ondas",
+  "fisica-3-eso/electricidad": "fisica-electricidad",
   "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
   "fisica-2-eso/materia-propiedades": "fisica-materia",
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",

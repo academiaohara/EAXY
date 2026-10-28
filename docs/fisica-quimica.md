@@ -67,3 +67,4 @@ Total previsto: 49 lecciones.
 | 3.º ESO · 6. El movimiento | Hecho (5 lecciones, `06-el-movimiento/`; herramientas `Fq3MovimientoTools.tsx` (y reutiliza `fq2-mru-explorador`), animación `fq3-mrua.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 326) |
 | 3.º ESO · 7. Las fuerzas y sus efectos | Hecho (5 lecciones, `07-las-fuerzas-y-sus-efectos/`; herramientas `Fq3FuerzasTools.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 327) |
 | 3.º ESO · 8. Energía y calor | Hecho (5 lecciones, `08-energia-y-calor/`; herramientas `Fq3EnergiaTools.tsx`; bloque `fisica-energia-ondas`; moduleId 328) |
+| 3.º ESO · 9. Electricidad | Hecho (6 lecciones, `09-electricidad/`; herramientas `Fq3ElectricidadTools.tsx`, animación `fq3-corriente.tsx`; bloque nuevo `fisica-electricidad`; moduleId 329) |

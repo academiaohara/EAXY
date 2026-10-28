@@ -588,6 +588,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
 | `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
 | `fq3-mrua` | Marcas estroboscópicas de un MRU y un MRUA y gráfica v-t | — |
+| `fq3-corriente` | Circuito sencillo: sentido de los electrones, convenio y aparatos de medida | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1452,6 +1453,13 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-calor-especifico-explorador` | Calor necesario según material, masa y ΔT | `n` material (0–5), `a` masa (kg), `b` ΔT (°C), `c` potencia (W) |
 | `fq3-calentamiento-hielo-explorador` | Curva de calentamiento del agua de −20 °C a vapor | `a` masa (kg), `b` calor suministrado (0–100 %) |
 | `fq3-aislamiento-explorador` | Pérdida de calor por conducción en una pared | `n` material (0–5), `a` espesor (m), `b` ΔT (°C) |
+| `fq3-carga-coulomb-explorador` | Fuerza entre dos cargas (ley de Coulomb) | `a` q₁ (µC), `b` q₂ (µC), `c` distancia (m) |
+| `fq3-intensidad-tension-explorador` | Intensidad y tensión a partir de carga, tiempo y energía | `a` carga (C), `b` tiempo (s), `c` energía (J) |
+| `fq3-ley-ohm-explorador` | Ley de Ohm y gráfica V-I | `a` tensión (V), `b` resistencia (Ω) |
+| `fq3-resistencia-hilo-explorador` | Resistencia de un hilo según material, longitud y sección | `n` material (0–4), `a` longitud (m), `b` sección (mm²) |
+| `fq3-circuito-explorador` | Dos resistencias en serie o en paralelo | `n` 0 serie / 1 paralelo, `a` tensión, `b` R₁, `c` R₂ |
+| `fq3-consumo-electrico-explorador` | Consumo y coste de aparatos eléctricos | `n` aparato (0–6), `a` horas/día, `b` precio (€/kWh) |
+| `fq3-seguridad-electrica-explorador` | Corriente por el cuerpo y su peligro | `a` tensión (V), `n` piel mojada (0/1) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

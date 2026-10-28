@@ -1112,6 +1112,7 @@ export type SlideAnimId =
   | "fq3-enlace-ionico"
   | "fq3-colisiones"
   | "fq3-mrua"
+  | "fq3-corriente"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2102,6 +2103,13 @@ export type SlideToolId =
   | "fq3-calor-especifico-explorador"
   | "fq3-calentamiento-hielo-explorador"
   | "fq3-aislamiento-explorador"
+  | "fq3-carga-coulomb-explorador"
+  | "fq3-intensidad-tension-explorador"
+  | "fq3-ley-ohm-explorador"
+  | "fq3-resistencia-hilo-explorador"
+  | "fq3-circuito-explorador"
+  | "fq3-consumo-electrico-explorador"
+  | "fq3-seguridad-electrica-explorador"
   /* industrial-tool-end */;
 
 /**
