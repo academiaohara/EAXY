@@ -201,7 +201,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1),
   ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2),
   ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3),
-  ('a2000000-0000-4000-8000-000000000214', 'a1000000-0000-4000-8000-000000000023', 'curvas-conicas', 'Curvas cónicas', 4);
+  ('a2000000-0000-4000-8000-000000000214', 'a1000000-0000-4000-8000-000000000023', 'curvas-conicas', 'Curvas cónicas', 4),
+  ('a2000000-0000-4000-8000-000000000215', 'a1000000-0000-4000-8000-000000000023', 'diedrico-avanzado', 'Sistema diédrico avanzado', 5);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1672,4 +1673,10 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021402', 'a2000000-0000-4000-8000-000000000214', '2. La elipse: focos y ejes', 'Definición por suma de distancias.', 2, null),
   ('a3000000-0000-4000-8000-000000021403', 'a2000000-0000-4000-8000-000000000214', '3. La hipérbola: ramas y asíntotas', 'Definición por diferencia de distancias.', 3, null),
   ('a3000000-0000-4000-8000-000000021404', 'a2000000-0000-4000-8000-000000000214', '4. La parábola: foco y directriz', 'Equidistancia y parámetro.', 4, null),
-  ('a3000000-0000-4000-8000-000000021405', 'a2000000-0000-4000-8000-000000000214', '5. Tangentes a las cónicas y propiedad reflexiva', 'Rectas tangentes y aplicaciones.', 5, null);
+  ('a3000000-0000-4000-8000-000000021405', 'a2000000-0000-4000-8000-000000000214', '5. Tangentes a las cónicas y propiedad reflexiva', 'Rectas tangentes y aplicaciones.', 5, null),
+  ('a3000000-0000-4000-8000-000000021501', 'a2000000-0000-4000-8000-000000000215', '1. Abatimiento de un plano: el punto y la charnela', 'Giro del plano sobre su traza.', 1, null),
+  ('a3000000-0000-4000-8000-000000021502', 'a2000000-0000-4000-8000-000000000215', '2. Verdadera forma de una figura plana', 'Abatir polígonos y afinidad.', 2, null),
+  ('a3000000-0000-4000-8000-000000021503', 'a2000000-0000-4000-8000-000000000215', '3. Giros en el sistema diédrico', 'Girar rectas y planos alrededor de un eje.', 3, null),
+  ('a3000000-0000-4000-8000-000000021504', 'a2000000-0000-4000-8000-000000000215', '4. Cambios de plano', 'Nueva línea de tierra y nuevas proyecciones.', 4, null),
+  ('a3000000-0000-4000-8000-000000021505', 'a2000000-0000-4000-8000-000000000215', '5. Verdadera magnitud y ángulos de una recta', 'Triángulo de abatimiento.', 5, null),
+  ('a3000000-0000-4000-8000-000000021506', 'a2000000-0000-4000-8000-000000000215', '6. Distancia de un punto a una recta', 'Recta de punta por dos cambios de plano.', 6, null);

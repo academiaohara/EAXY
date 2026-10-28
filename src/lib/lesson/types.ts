@@ -1979,6 +1979,12 @@ export type SlideToolId =
   | "dt2-hiperbola-explorador"
   | "dt2-parabola-explorador"
   | "dt2-tangentes-conicas-explorador"
+  | "dt2-abatimiento-punto-explorador"
+  | "dt2-verdadera-forma-explorador"
+  | "dt2-giro-recta-explorador"
+  | "dt2-cambio-plano-explorador"
+  | "dt2-magnitud-angulos-explorador"
+  | "dt2-distancia-punto-recta-explorador"
   /* industrial-tool-end */;
 
 /**

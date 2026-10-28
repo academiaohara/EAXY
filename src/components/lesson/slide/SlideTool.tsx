@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AbatimientoPuntoDt2Explorador, VerdaderaFormaDt2Explorador, GiroRectaDt2Explorador, CambioPlanoDt2Explorador, MagnitudAngulosDt2Explorador, DistanciaPuntoRectaDt2Explorador } from "@/components/lesson/slide/tools/DtIIDiedricoAvanzadoTools";
 import { CorteConoDt2Explorador, ElipseFocosDt2Explorador, HiperbolaDt2Explorador, ParabolaDt2Explorador, TangentesConicasDt2Explorador } from "@/components/lesson/slide/tools/DtIIConicasTools";
 import { PotenciaPuntoDt2Explorador, EjeRadicalDt2Explorador, CirculoDosPuntosTangenteDt2Explorador, TangenteRectaCirculoDt2Explorador } from "@/components/lesson/slide/tools/DtIIPotenciaTools";
 import { TransformacionesGeneralesDt2Explorador, AfinidadDt2Explorador, ElipseAfinidadDt2Explorador, HomologiaDt2Explorador, AbatimientoAfinidadDt2Explorador } from "@/components/lesson/slide/tools/DtIITransformacionesTools";
@@ -1992,6 +1993,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ParabolaDt2Explorador block={block} />;
     case "dt2-tangentes-conicas-explorador":
       return <TangentesConicasDt2Explorador block={block} />;
+    case "dt2-abatimiento-punto-explorador":
+      return <AbatimientoPuntoDt2Explorador block={block} />;
+    case "dt2-verdadera-forma-explorador":
+      return <VerdaderaFormaDt2Explorador block={block} />;
+    case "dt2-giro-recta-explorador":
+      return <GiroRectaDt2Explorador block={block} />;
+    case "dt2-cambio-plano-explorador":
+      return <CambioPlanoDt2Explorador block={block} />;
+    case "dt2-magnitud-angulos-explorador":
+      return <MagnitudAngulosDt2Explorador block={block} />;
+    case "dt2-distancia-punto-recta-explorador":
+      return <DistanciaPuntoRectaDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

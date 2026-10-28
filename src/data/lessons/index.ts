@@ -1,4 +1,5 @@
 import { abatimientoAfinidadAplicacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/05-abatimiento-afinidad-aplicaciones-dt2";
+import { abatimientoPlanoPuntoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/01-abatimiento-plano-punto-dt2";
 import { accesibilidadDisenoUniversal4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/06-accesibilidad-diseno-universal-4eso";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
@@ -145,6 +146,7 @@ import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
+import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
@@ -346,6 +348,7 @@ import { distanciaPlanosRectaPlano2bachLesson } from "@/data/lessons/matematicas
 import { distanciaPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/07-distancia-punto-plano-2bach";
 import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/07-distancia-punto-recta-1bach";
 import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/08-distancia-punto-recta-2bach";
+import { distanciaPuntoRectaCambioPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/06-distancia-punto-recta-cambio-plano-dt2";
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
 import { distanciasVerdaderaMagnitudDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/04-distancias-verdadera-magnitud-dt1";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
@@ -614,6 +617,7 @@ import { geometriaGriegaPitagorasDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/01-geometria-revolucion-industrial-dt2";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
+import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/03-giros-diedrico-dt2";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -1457,6 +1461,8 @@ import { vectoresPlano1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { velocidadAceleracion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/12-velocidad-aceleracion-1bach";
 import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/09-velocidad-aceleracion-ccss1";
 import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
+import { verdaderaFormaFiguraPlanaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/02-verdadera-forma-figura-plana-dt2";
+import { verdaderaMagnitudAngulosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/05-verdadera-magnitud-angulos-dt2";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { vistasAlzadoPlantaPerfilLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/05-vistas-alzado-planta-perfil";
 import { vistasNormalizadasCroquis2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/01-vistas-normalizadas-croquis-2eso";
@@ -1473,6 +1479,7 @@ import { wifiConexionInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/
 
 export const interactiveLessons = {
   "abatimiento-afinidad-aplicaciones-dt2": abatimientoAfinidadAplicacionesDt2Lesson,
+  "abatimiento-plano-punto-dt2": abatimientoPlanoPuntoDt2Lesson,
   "accesibilidad-diseno-universal-4eso": accesibilidadDisenoUniversal4esoLesson,
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
   "aceros-fundiciones": acerosFundicionesLesson,
@@ -1619,6 +1626,7 @@ export const interactiveLessons = {
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
+  "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
@@ -1820,6 +1828,7 @@ export const interactiveLessons = {
   "distancia-punto-plano-2bach": distanciaPuntoPlano2bachLesson,
   "distancia-punto-recta-1bach": distanciaPuntoRecta1bachLesson,
   "distancia-punto-recta-2bach": distanciaPuntoRecta2bachLesson,
+  "distancia-punto-recta-cambio-plano-dt2": distanciaPuntoRectaCambioPlanoDt2Lesson,
   "distancia-rectas-2bach": distanciaRectas2bachLesson,
   "distancias-verdadera-magnitud-dt1": distanciasVerdaderaMagnitudDt1Lesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
@@ -2088,6 +2097,7 @@ export const interactiveLessons = {
   "geometria-revolucion-industrial-dt2": geometriaRevolucionIndustrialDt2Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
+  "giros-diedrico-dt2": girosDiedricoDt2Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -2931,6 +2941,8 @@ export const interactiveLessons = {
   "velocidad-aceleracion-1bach": velocidadAceleracion1bachLesson,
   "velocidad-aceleracion-ccss1": velocidadAceleracionCcss1Lesson,
   "velocidad-lineal-angular": velocidadLinealAngularLesson,
+  "verdadera-forma-figura-plana-dt2": verdaderaFormaFiguraPlanaDt2Lesson,
+  "verdadera-magnitud-angulos-dt2": verdaderaMagnitudAngulosDt2Lesson,
   "viscosidad-indice": viscosidadIndiceLesson,
   "vistas-alzado-planta-perfil": vistasAlzadoPlantaPerfilLesson,
   "vistas-normalizadas-croquis-2eso": vistasNormalizadasCroquis2esoLesson,

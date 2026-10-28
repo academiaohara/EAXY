@@ -1329,6 +1329,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-hiperbola-explorador` | Hipérbola: diferencia de distancias a los focos y asíntotas | `a` a, `b` b, `c` posición de P |
 | `dt2-parabola-explorador` | Parábola: equidistancia del foco y de la directriz | `a` f, `b` posición de P |
 | `dt2-tangentes-conicas-explorador` | Tangente a la cónica y ángulos con los radios focales | `n` cónica (0–2), `a` parámetro, `b` posición (°) |
+| `dt2-abatimiento-punto-explorador` | Abatimiento de un punto de un plano: cota, distancia horizontal y distancia real | `a` cota z, `b` inclinación φ (°) |
+| `dt2-verdadera-forma-explorador` | Verdadera forma de un triángulo y sus proyecciones deformadas | `a` inclinación φ (°) |
+| `dt2-giro-recta-explorador` | Giro de una recta alrededor de un eje vertical hasta hacerla frontal | `a` ángulo de giro (°) |
+| `dt2-cambio-plano-explorador` | Cambio de plano vertical: nueva proyección y nuevo alejamiento | `a` ángulo ψ, `b` posición x |
+| `dt2-magnitud-angulos-explorador` | Triángulo de abatimiento: longitud real y ángulos con PH y PV | `a` x de B, `b` alejamiento, `c` cota |
+| `dt2-distancia-punto-recta-explorador` | Distancia de un punto a una recta, vista de punta | `a` x de P, `b` alejamiento, `c` cota |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
