@@ -1442,6 +1442,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-mrua-explorador` | Posición y velocidad en un MRUA | `a` v₀ (m/s), `b` aceleración (m/s²), `c` tiempo (s) |
 | `fq3-grafica-vt-explorador` | Gráfica v-t por tramos y área | `a` aceleración, `b` t acelerando, `c` t constante |
 | `fq3-caida-frenada-explorador` | Caída libre, lanzamiento vertical y distancia de frenado | `n` situación (0–2), `a` altura, `b` v₀, `c` km/h |
+| `fq3-composicion-fuerzas-explorador` | Resultante de dos fuerzas según el ángulo | `a` F₁ (N), `b` F₂ (N), `c` ángulo (°) |
+| `fq3-accion-reaccion-explorador` | Acción y reacción: aceleraciones según la masa | `a` fuerza (N), `b` masa 1 (kg), `c` masa 2 (kg) |
+| `fq3-newton2-rozamiento-explorador` | Segunda ley de Newton con peso, normal y rozamiento | `a` fuerza (N), `b` masa (kg), `c` coeficiente μ |
+| `fq3-presion-explorador` | Presión según fuerza y superficie | `n` situación (0–4) |
+| `fq3-flotacion-explorador` | Flotación y empuje de Arquímedes | `a` objeto (0–5), `b` fluido (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

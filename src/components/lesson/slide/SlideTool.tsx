@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ComposicionFuerzasFq3Explorador, AccionReaccionFq3Explorador, Newton2RozamientoFq3Explorador, PresionFq3Explorador, FlotacionFq3Explorador } from "@/components/lesson/slide/tools/Fq3FuerzasTools";
 import { AceleracionFq3Explorador, MruaFq3Explorador, GraficaVtFq3Explorador, CaidaFrenadaFq3Explorador } from "@/components/lesson/slide/tools/Fq3MovimientoTools";
 import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
 import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
@@ -2200,6 +2201,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <GraficaVtFq3Explorador block={block} />;
     case "fq3-caida-frenada-explorador":
       return <CaidaFrenadaFq3Explorador block={block} />;
+    case "fq3-composicion-fuerzas-explorador":
+      return <ComposicionFuerzasFq3Explorador block={block} />;
+    case "fq3-accion-reaccion-explorador":
+      return <AccionReaccionFq3Explorador block={block} />;
+    case "fq3-newton2-rozamiento-explorador":
+      return <Newton2RozamientoFq3Explorador block={block} />;
+    case "fq3-presion-explorador":
+      return <PresionFq3Explorador block={block} />;
+    case "fq3-flotacion-explorador":
+      return <FlotacionFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

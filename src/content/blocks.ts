@@ -638,6 +638,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-3-eso/la-reaccion-quimica": "fisica-cambios-quimicos",
   "fisica-3-eso/disoluciones": "fisica-materia",
   "fisica-3-eso/el-movimiento": "fisica-movimiento-fuerzas",
+  "fisica-3-eso/las-fuerzas-y-sus-efectos": "fisica-movimiento-fuerzas",
   "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
   "fisica-2-eso/materia-propiedades": "fisica-materia",
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",

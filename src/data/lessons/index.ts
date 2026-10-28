@@ -216,6 +216,7 @@ import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { componentesPerifericosDispositivos3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/01-componentes-perifericos-dispositivos-3eso";
+import { composicionFuerzasEquilibrioFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/01-composicion-fuerzas-equilibrio-fq3";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
@@ -569,6 +570,7 @@ import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matem
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { figurasSemejantes2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/03-figuras-semejantes-2eso";
 import { flexionVigasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/06-flexion-vigas-ti2";
+import { fluidosArquimedesFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/05-fluidos-arquimedes-fq3";
 import { fluidosDensidadVaporLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/01-fluidos-densidad-vapor";
 import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/04-forma-exponencial-radicales-4eso";
 import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/06-forma-exponencial-radicales-4esob";
@@ -714,6 +716,7 @@ import { inecuacionesPrimerGrado1bachLesson } from "@/data/lessons/matematicas-1
 import { inecuacionesPrimerGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/09-inecuaciones-primer-grado-ccss1";
 import { inecuacionesSegundoGrado1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/11-inecuaciones-segundo-grado-1bach";
 import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/10-inecuaciones-segundo-grado-ccss1";
+import { inerciaAccionReaccionFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/02-inercia-accion-reaccion-fq3";
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
 import { instrumentosDibujoTrazadosLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/01-instrumentos-dibujo-trazados";
@@ -1065,6 +1068,7 @@ import { potenciasMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/06-potencias-matrices-ccss2";
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
 import { preparacionDilucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/03-preparacion-diluciones-fq3";
+import { presionFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/04-presion-fq3";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
 import { presupuestoEvaluacionMejoraLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/07-presupuesto-evaluacion-mejora";
@@ -1314,6 +1318,7 @@ import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachi
 import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
 import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
+import { segundaLeyNewtonRozamientoFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/03-segunda-ley-newton-rozamiento-fq3";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
 import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
@@ -1787,6 +1792,7 @@ export const interactiveLessons = {
   "complejos-raices-1bach": complejosRaices1bachLesson,
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "componentes-perifericos-dispositivos-3eso": componentesPerifericosDispositivos3esoLesson,
+  "composicion-fuerzas-equilibrio-fq3": composicionFuerzasEquilibrioFq3Lesson,
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
@@ -2140,6 +2146,7 @@ export const interactiveLessons = {
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "figuras-semejantes-2eso": figurasSemejantes2esoLesson,
   "flexion-vigas-ti2": flexionVigasTi2Lesson,
+  "fluidos-arquimedes-fq3": fluidosArquimedesFq3Lesson,
   "fluidos-densidad-vapor": fluidosDensidadVaporLesson,
   "forma-exponencial-radicales-4eso": formaExponencialRadicales4esoLesson,
   "forma-exponencial-radicales-4esob": formaExponencialRadicales4esobLesson,
@@ -2285,6 +2292,7 @@ export const interactiveLessons = {
   "inecuaciones-primer-grado-ccss1": inecuacionesPrimerGradoCcss1Lesson,
   "inecuaciones-segundo-grado-1bach": inecuacionesSegundoGrado1bachLesson,
   "inecuaciones-segundo-grado-ccss1": inecuacionesSegundoGradoCcss1Lesson,
+  "inercia-accion-reaccion-fq3": inerciaAccionReaccionFq3Lesson,
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
   "instrumentos-dibujo-trazados": instrumentosDibujoTrazadosLesson,
@@ -2636,6 +2644,7 @@ export const interactiveLessons = {
   "potencias-matrices-ccss2": potenciasMatricesCcss2Lesson,
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
   "preparacion-diluciones-fq3": preparacionDilucionesFq3Lesson,
+  "presion-fq3": presionFq3Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
   "presupuesto-evaluacion-mejora": presupuestoEvaluacionMejoraLesson,
@@ -2885,6 +2894,7 @@ export const interactiveLessons = {
   "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
   "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
+  "segunda-ley-newton-rozamiento-fq3": segundaLeyNewtonRozamientoFq3Lesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
   "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,

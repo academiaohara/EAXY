@@ -2092,6 +2092,11 @@ export type SlideToolId =
   | "fq3-mrua-explorador"
   | "fq3-grafica-vt-explorador"
   | "fq3-caida-frenada-explorador"
+  | "fq3-composicion-fuerzas-explorador"
+  | "fq3-accion-reaccion-explorador"
+  | "fq3-newton2-rozamiento-explorador"
+  | "fq3-presion-explorador"
+  | "fq3-flotacion-explorador"
   /* industrial-tool-end */;
 
 /**
