@@ -35,7 +35,7 @@ Total: 50 lecciones (el curso `dibujo-tecnico-1-bachillerato` está completo).
 | 8. Normalización y proyecto | C | 6: piezas industriales, cortes, secciones y roturas, planos de taller y de montaje, diseño y sostenibilidad |
 | 9. CAD | D | 2 |
 
-Total previsto: unas 41 lecciones.
+Total: 41 lecciones (el curso `dibujo-tecnico-2-bachillerato` está completo).
 
 ## Enfoque
 
@@ -72,3 +72,4 @@ Total previsto: unas 41 lecciones.
 | DT II · 6. Cuerpos en diédrico | Hecho (5 lecciones, `06-cuerpos-diedrico/`; herramientas `DtIICuerposTools.tsx`) |
 | DT II · 7. Axonométrico, cónico y planos acotados de sólidos | Hecho (5 lecciones, `07-axonometrico-conico-acotados/`; herramientas `DtIISolidosAxoTools.tsx`) |
 | DT II · 8. Normalización y proyecto | Hecho (6 lecciones, `08-normalizacion-proyecto/`; herramientas `DtIINormalizacionTools.tsx`; bloque `dibujo-normalizacion-documentacion`) |
+| DT II · 9. Sistemas CAD | Hecho (2 lecciones, `09-sistemas-cad/`; herramientas `DtIICadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico II completo: 41 lecciones en 9 temas.** |

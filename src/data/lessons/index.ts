@@ -833,6 +833,8 @@ import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-d
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
 import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
+import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
+import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -2329,6 +2331,8 @@ export const interactiveLessons = {
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
   "modelado-3d-operaciones-2eso": modelado3dOperaciones2esoLesson,
   "modelado-3d-primitivas-booleanas-dt1": modelado3dPrimitivasBooleanasDt1Lesson,
+  "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
+  "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,

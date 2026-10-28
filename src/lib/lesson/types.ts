@@ -2001,6 +2001,8 @@ export type SlideToolId =
   | "dt2-ajuste-tolerancias-explorador"
   | "dt2-lista-piezas-explorador"
   | "dt2-huella-material-explorador"
+  | "dt2-croquis-restricciones-explorador"
+  | "dt2-modelo-a-vistas-explorador"
   /* industrial-tool-end */;
 
 /**

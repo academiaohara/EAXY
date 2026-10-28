@@ -1351,6 +1351,8 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-ajuste-tolerancias-explorador` | Ajuste eje–agujero: juego mínimo, máximo y tipo | `a` ES (µm), `b` es (µm) |
 | `dt2-lista-piezas-explorador` | Lista de piezas de un conjunto atornillado con cantidades y masa | `a` número de tornillos |
 | `dt2-huella-material-explorador` | Masa y huella de carbono orientativa según material, volumen y reciclado | `n` material (0–2), `a` volumen, `b` reciclado (%) |
+| `dt2-croquis-restricciones-explorador` | Croquis paramétrico: grados de libertad y estado según las restricciones | `a` lados horizontales, `b` lados verticales |
+| `dt2-modelo-a-vistas-explorador` | Perfil en L extruido: vistas generadas, volumen y masa | `a` ancho, `b` alto, `c` espesor |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

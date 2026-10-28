@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CroquisRestriccionesDt2Explorador, ModeloAVistasDt2Explorador } from "@/components/lesson/slide/tools/DtIICadTools";
 import { RoscaMetricaDt2Explorador, CortesPiezaDt2Explorador, PerfilesSeccionDt2Explorador, AjusteToleranciasDt2Explorador, ListaPiezasDt2Explorador, HuellaMaterialDt2Explorador } from "@/components/lesson/slide/tools/DtIINormalizacionTools";
 import { SolidoIsometricoDt2Explorador, CaballeraCirculosDt2Explorador, ConicaCasaDt2Explorador, ExplanacionDt2Explorador, ElegirSistemaDt2Explorador } from "@/components/lesson/slide/tools/DtIISolidosAxoTools";
 import { SolidoDiedricoDt2Explorador, SeccionPrismaDt2Explorador, SeccionRevolucionDt2Explorador, PoliedrosRegularesDt2Explorador, DesarrolloCuerposDt2Explorador } from "@/components/lesson/slide/tools/DtIICuerposTools";
@@ -2040,6 +2041,10 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ListaPiezasDt2Explorador block={block} />;
     case "dt2-huella-material-explorador":
       return <HuellaMaterialDt2Explorador block={block} />;
+    case "dt2-croquis-restricciones-explorador":
+      return <CroquisRestriccionesDt2Explorador block={block} />;
+    case "dt2-modelo-a-vistas-explorador":
+      return <ModeloAVistasDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

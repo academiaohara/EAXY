@@ -205,7 +205,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000215', 'a1000000-0000-4000-8000-000000000023', 'diedrico-avanzado', 'Sistema diédrico avanzado', 5),
   ('a2000000-0000-4000-8000-000000000216', 'a1000000-0000-4000-8000-000000000023', 'cuerpos-diedrico', 'Cuerpos geométricos en diédrico', 6),
   ('a2000000-0000-4000-8000-000000000217', 'a1000000-0000-4000-8000-000000000023', 'axonometrico-conico-acotados', 'Axonométrico, cónico y planos acotados de sólidos', 7),
-  ('a2000000-0000-4000-8000-000000000218', 'a1000000-0000-4000-8000-000000000023', 'normalizacion-proyecto', 'Normalización y proyecto', 8);
+  ('a2000000-0000-4000-8000-000000000218', 'a1000000-0000-4000-8000-000000000023', 'normalizacion-proyecto', 'Normalización y proyecto', 8),
+  ('a2000000-0000-4000-8000-000000000219', 'a1000000-0000-4000-8000-000000000023', 'sistemas-cad', 'Sistemas CAD', 9);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1698,4 +1699,6 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021803', 'a2000000-0000-4000-8000-000000000218', '3. Secciones, roturas y perfiles', 'Secciones abatidas, desplazadas y roturas.', 3, null),
   ('a3000000-0000-4000-8000-000000021804', 'a2000000-0000-4000-8000-000000000218', '4. Planos de taller: tolerancias y ajustes', 'Acotación funcional, ajustes y acabados.', 4, null),
   ('a3000000-0000-4000-8000-000000021805', 'a2000000-0000-4000-8000-000000000218', '5. Planos de montaje y listas de piezas', 'Globos, despiece y lista de materiales.', 5, null),
-  ('a3000000-0000-4000-8000-000000021806', 'a2000000-0000-4000-8000-000000000218', '6. Diseño, proyecto y sostenibilidad', 'Fases del proyecto y ecodiseño.', 6, null);
+  ('a3000000-0000-4000-8000-000000021806', 'a2000000-0000-4000-8000-000000000218', '6. Diseño, proyecto y sostenibilidad', 'Fases del proyecto y ecodiseño.', 6, null),
+  ('a3000000-0000-4000-8000-000000021901', 'a2000000-0000-4000-8000-000000000219', '1. Modelado paramétrico: croquis y restricciones', 'Grados de libertad y operaciones.', 1, null),
+  ('a3000000-0000-4000-8000-000000021902', 'a2000000-0000-4000-8000-000000000219', '2. Del modelo 3D a los planos y a la fabricación', 'Vistas, ensamblajes y procesos.', 2, null);
