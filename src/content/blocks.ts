@@ -635,6 +635,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-3-eso/el-trabajo-cientifico": "fisica-metodo-medida",
   "fisica-3-eso/el-atomo-y-el-sistema-periodico": "fisica-materia",
   "fisica-3-eso/elementos-y-compuestos-quimicos": "fisica-materia",
+  "fisica-3-eso/la-reaccion-quimica": "fisica-cambios-quimicos",
   "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
   "fisica-2-eso/materia-propiedades": "fisica-materia",
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",

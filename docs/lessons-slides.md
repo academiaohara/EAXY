@@ -586,6 +586,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-rayo-luz` | Reflexión y refracción de un rayo en la superficie del agua | — |
 | `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
 | `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
+| `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1428,6 +1429,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-propiedades-enlace-explorador` | Propiedades según el tipo de enlace | `n` tipo (0–3) |
 | `fq3-mol-explorador` | Masa molar, moles y partículas | `n` sustancia (0–7), `a` masa (g) |
 | `fq3-nomenclatura-explorador` | Nombre y fórmula de compuestos iónicos | `a` metal (0–5), `b` no metal (0–4) |
+| `fq3-estequiometria-masas-explorador` | Cálculo de masas en una reacción ajustada | `n` reacción (0–4), `a` masa del primer reactivo (g) |
+| `fq3-velocidad-reaccion-explorador` | Factores que modifican la velocidad de reacción | `a` temperatura (°C), `b` concentración, `c` trozos, `n` catalizador (0/1) |
+| `fq3-reacciones-entorno-explorador` | Reacciones del entorno y balance de energía | `n` reacción (0–4) |
+| `fq3-emisiones-combustion-explorador` | CO₂ emitido al quemar combustibles | `n` combustible (0–4), `a` masa (kg) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

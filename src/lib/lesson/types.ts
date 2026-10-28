@@ -1110,6 +1110,7 @@ export type SlideAnimId =
   | "fq2-rayo-luz"
   | "fq3-bohr-salto"
   | "fq3-enlace-ionico"
+  | "fq3-colisiones"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2078,6 +2079,10 @@ export type SlideToolId =
   | "fq3-propiedades-enlace-explorador"
   | "fq3-mol-explorador"
   | "fq3-nomenclatura-explorador"
+  | "fq3-estequiometria-masas-explorador"
+  | "fq3-velocidad-reaccion-explorador"
+  | "fq3-reacciones-entorno-explorador"
+  | "fq3-emisiones-combustion-explorador"
   /* industrial-tool-end */;
 
 /**

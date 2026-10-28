@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
 import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
 import { NivelesBohrFq3Explorador, MasaAtomicaMediaFq3Explorador, ConfiguracionElectronicaFq3Explorador, PropiedadesPeriodicasFq3Explorador } from "@/components/lesson/slide/tools/Fq3AtomoTools";
 import { PenduloVariablesFq3Explorador, OrdenesMagnitudFq3Explorador, FactoresConversionFq3Explorador, GraficaAjusteFq3Explorador } from "@/components/lesson/slide/tools/Fq3TrabajoTools";
@@ -2173,6 +2174,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MolFq3Explorador block={block} />;
     case "fq3-nomenclatura-explorador":
       return <NomenclaturaFq3Explorador block={block} />;
+    case "fq3-estequiometria-masas-explorador":
+      return <EstequiometriaMasasFq3Explorador block={block} />;
+    case "fq3-velocidad-reaccion-explorador":
+      return <VelocidadReaccionFq3Explorador block={block} />;
+    case "fq3-reacciones-entorno-explorador":
+      return <ReaccionesEntornoFq3Explorador block={block} />;
+    case "fq3-emisiones-combustion-explorador":
+      return <EmisionesCombustionFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

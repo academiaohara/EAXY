@@ -56,6 +56,7 @@ import { aplicacionCintaTransportadora4esoLesson } from "@/data/lessons/tecnolog
 import { aplicacionesDomesticasIndustriales3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/07-aplicaciones-domesticas-industriales-3eso";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
+import { aplicacionesIndustrialesAmbientalesFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/05-aplicaciones-industriales-ambientales-fq3";
 import { aplicacionesInteligenciaArtificialLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/05-aplicaciones-inteligencia-artificial";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
 import { aplicacionesPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/02-aplicaciones-pitagoras-3eso";
@@ -203,6 +204,7 @@ import { combinacionesNumerosCombinatorios2bachLesson } from "@/data/lessons/mat
 import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/09-combinatoria-conteo-2bach";
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
+import { combustionOxidacionEnergiaFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/04-combustion-oxidacion-energia-fq3";
 import { combustionOxidacionFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/04-combustion-oxidacion-fq2";
 import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
 import { complejosBinomicaOperaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/09-complejos-binomica-operaciones-1bach";
@@ -241,6 +243,7 @@ import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-b
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
+import { conservacionMasaCalculosFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/02-conservacion-masa-calculos-fq3";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
 import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/05-construccion-poligonos-regulares-dt1";
 import { construccionTriangulosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/02-construccion-triangulos-dt1";
@@ -419,6 +422,7 @@ import { ecuacionesPrimerGrado1bachLesson } from "@/data/lessons/matematicas-1-b
 import { ecuacionesPrimerGrado3esoLesson } from "@/data/lessons/matematicas-3-eso/05-ecuaciones/02-ecuaciones-primer-grado-3eso";
 import { ecuacionesPrimerGrado4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/02-ecuaciones-primer-grado-4eso";
 import { ecuacionesPrimerGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/07-ecuaciones-primer-grado-ccss1";
+import { ecuacionesQuimicasAjusteFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/01-ecuaciones-quimicas-ajuste-fq3";
 import { ecuacionesRacionalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/12-ecuaciones-racionales-ccss1";
 import { ecuacionesRadicalesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/13-ecuaciones-radicales-ccss1";
 import { ecuacionesRecta1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/05-ecuaciones-recta-1bach";
@@ -1538,6 +1542,7 @@ import { velocidadAceleracion1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/09-velocidad-aceleracion-ccss1";
 import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
 import { velocidadMediaFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/02-velocidad-media-fq2";
+import { velocidadReaccionFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/03-velocidad-reaccion-fq3";
 import { verdaderaFormaFiguraPlanaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/02-verdadera-forma-figura-plana-dt2";
 import { verdaderaMagnitudAngulosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/05-verdadera-magnitud-angulos-dt2";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
@@ -1613,6 +1618,7 @@ export const interactiveLessons = {
   "aplicaciones-domesticas-industriales-3eso": aplicacionesDomesticasIndustriales3esoLesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
+  "aplicaciones-industriales-ambientales-fq3": aplicacionesIndustrialesAmbientalesFq3Lesson,
   "aplicaciones-inteligencia-artificial": aplicacionesInteligenciaArtificialLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
   "aplicaciones-pitagoras-3eso": aplicacionesPitagoras3esoLesson,
@@ -1760,6 +1766,7 @@ export const interactiveLessons = {
   "combinatoria-conteo-2bach": combinatoriaConteo2bachLesson,
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
+  "combustion-oxidacion-energia-fq3": combustionOxidacionEnergiaFq3Lesson,
   "combustion-oxidacion-fq2": combustionOxidacionFq2Lesson,
   "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
   "complejos-binomica-operaciones-1bach": complejosBinomicaOperaciones1bachLesson,
@@ -1798,6 +1805,7 @@ export const interactiveLessons = {
   "conos-2eso": conos2esoLesson,
   "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
+  "conservacion-masa-calculos-fq3": conservacionMasaCalculosFq3Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
   "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
   "construccion-triangulos-dt1": construccionTriangulosDt1Lesson,
@@ -1976,6 +1984,7 @@ export const interactiveLessons = {
   "ecuaciones-primer-grado-3eso": ecuacionesPrimerGrado3esoLesson,
   "ecuaciones-primer-grado-4eso": ecuacionesPrimerGrado4esoLesson,
   "ecuaciones-primer-grado-ccss1": ecuacionesPrimerGradoCcss1Lesson,
+  "ecuaciones-quimicas-ajuste-fq3": ecuacionesQuimicasAjusteFq3Lesson,
   "ecuaciones-racionales-ccss1": ecuacionesRacionalesCcss1Lesson,
   "ecuaciones-radicales-ccss1": ecuacionesRadicalesCcss1Lesson,
   "ecuaciones-recta-1bach": ecuacionesRecta1bachLesson,
@@ -3095,6 +3104,7 @@ export const interactiveLessons = {
   "velocidad-aceleracion-ccss1": velocidadAceleracionCcss1Lesson,
   "velocidad-lineal-angular": velocidadLinealAngularLesson,
   "velocidad-media-fq2": velocidadMediaFq2Lesson,
+  "velocidad-reaccion-fq3": velocidadReaccionFq3Lesson,
   "verdadera-forma-figura-plana-dt2": verdaderaFormaFiguraPlanaDt2Lesson,
   "verdadera-magnitud-angulos-dt2": verdaderaMagnitudAngulosDt2Lesson,
   "viscosidad-indice": viscosidadIndiceLesson,
