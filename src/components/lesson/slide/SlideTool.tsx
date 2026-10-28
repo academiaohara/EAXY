@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
 import { NivelesBohrFq3Explorador, MasaAtomicaMediaFq3Explorador, ConfiguracionElectronicaFq3Explorador, PropiedadesPeriodicasFq3Explorador } from "@/components/lesson/slide/tools/Fq3AtomoTools";
 import { PenduloVariablesFq3Explorador, OrdenesMagnitudFq3Explorador, FactoresConversionFq3Explorador, GraficaAjusteFq3Explorador } from "@/components/lesson/slide/tools/Fq3TrabajoTools";
 import { SombrasFq2Explorador, ReflexionFq2Explorador, RefraccionFq2Explorador, OndaSonidoFq2Explorador, DecibeliosFq2Explorador } from "@/components/lesson/slide/tools/Fq2LuzSonidoTools";
@@ -2160,6 +2161,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ConfiguracionElectronicaFq3Explorador block={block} />;
     case "fq3-propiedades-periodicas-explorador":
       return <PropiedadesPeriodicasFq3Explorador block={block} />;
+    case "fq3-sustancias-explorador":
+      return <SustanciasFq3Explorador block={block} />;
+    case "fq3-enlace-ionico-explorador":
+      return <EnlaceIonicoFq3Explorador block={block} />;
+    case "fq3-enlace-covalente-explorador":
+      return <EnlaceCovalenteFq3Explorador block={block} />;
+    case "fq3-propiedades-enlace-explorador":
+      return <PropiedadesEnlaceFq3Explorador block={block} />;
+    case "fq3-mol-explorador":
+      return <MolFq3Explorador block={block} />;
+    case "fq3-nomenclatura-explorador":
+      return <NomenclaturaFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

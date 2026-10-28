@@ -1109,6 +1109,7 @@ export type SlideAnimId =
   | "fq2-conservacion-energia"
   | "fq2-rayo-luz"
   | "fq3-bohr-salto"
+  | "fq3-enlace-ionico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2071,6 +2072,12 @@ export type SlideToolId =
   | "fq3-masa-atomica-media-explorador"
   | "fq3-configuracion-electronica-explorador"
   | "fq3-propiedades-periodicas-explorador"
+  | "fq3-sustancias-explorador"
+  | "fq3-enlace-ionico-explorador"
+  | "fq3-enlace-covalente-explorador"
+  | "fq3-propiedades-enlace-explorador"
+  | "fq3-mol-explorador"
+  | "fq3-nomenclatura-explorador"
   /* industrial-tool-end */;
 
 /**

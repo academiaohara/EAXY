@@ -585,6 +585,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-conservacion-energia` | Conservación de la energía en una rampa | — |
 | `fq2-rayo-luz` | Reflexión y refracción de un rayo en la superficie del agua | — |
 | `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
+| `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1421,6 +1422,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-masa-atomica-media-explorador` | Masa atómica media según la abundancia de isótopos | `n` elemento (0–3) |
 | `fq3-configuracion-electronica-explorador` | Distribución de electrones en capas (Z = 1–20) | `a` número atómico (1–20) |
 | `fq3-propiedades-periodicas-explorador` | Radio atómico y electronegatividad en periodos y grupos | `n` serie (0–3), `a` propiedad (0 radio / 1 electronegatividad) |
+| `fq3-sustancias-explorador` | De los átomos a las sustancias: clase, partículas y enlace | `n` sustancia (0–6) |
+| `fq3-enlace-ionico-explorador` | Iones y fórmula de compuestos iónicos binarios | `a` metal (0–5), `b` no metal (0–4) |
+| `fq3-enlace-covalente-explorador` | Moléculas y pares de electrones compartidos | `n` molécula (0–7) |
+| `fq3-propiedades-enlace-explorador` | Propiedades según el tipo de enlace | `n` tipo (0–3) |
+| `fq3-mol-explorador` | Masa molar, moles y partículas | `n` sustancia (0–7), `a` masa (g) |
+| `fq3-nomenclatura-explorador` | Nombre y fórmula de compuestos iónicos | `a` metal (0–5), `b` no metal (0–4) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -447,6 +447,7 @@ import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-indust
 import { elementosEstructuralesLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/02-elementos-estructurales";
 import { elementosSistemaControlLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/02-elementos-sistema-control";
 import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/05-elementos-soporte-acoplamiento-4eso";
+import { elementosSustanciasFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/01-elementos-sustancias-fq3";
 import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
@@ -463,7 +464,9 @@ import { engranajesTransmisionGiroLesson } from "@/data/lessons/tecnologia-1-eso
 import { engranajesTransmisionPar2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/05-engranajes-transmision-par-2eso";
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
+import { enlaceCovalenteFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/03-enlace-covalente-fq3";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
+import { enlaceIonicoFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/02-enlace-ionico-fq3";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
@@ -566,6 +569,7 @@ import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
 import { formasTransformacionesEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/01-formas-transformaciones-energia-fq2";
 import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
+import { formulasMasaMolecularMolFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/05-formulas-masa-molecular-mol-fq3";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
 import { fraccionesAlgebraicas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/06-fracciones-algebraicas-1bach";
@@ -896,6 +900,7 @@ import { multiplicacionNaturalesLesson } from "@/data/lessons/_unlisted/multipli
 import { necesidadesRequisitos2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/01-necesidades-requisitos-2eso";
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
+import { nomenclaturaCompuestosFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/06-nomenclatura-compuestos-fq3";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
 import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
 import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
@@ -1152,6 +1157,7 @@ import { propiedadesCondicionInicialCcss2Lesson } from "@/data/lessons/matematic
 import { propiedadesDensidadMateriales2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/01-propiedades-densidad-materiales-2eso";
 import { propiedadesDet12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/02-propiedades-det-1-2bach";
 import { propiedadesDet22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/03-propiedades-det-2-2bach";
+import { propiedadesEnlaceMetalicoFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/04-propiedades-enlace-metalico-fq3";
 import { propiedadesFisicasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/03-propiedades-fisicas-mecanicas";
 import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/06-propiedades-limites-infinito-1bach";
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
@@ -1998,6 +2004,7 @@ export const interactiveLessons = {
   "elementos-estructurales": elementosEstructuralesLesson,
   "elementos-sistema-control": elementosSistemaControlLesson,
   "elementos-soporte-acoplamiento-4eso": elementosSoporteAcoplamiento4esoLesson,
+  "elementos-sustancias-fq3": elementosSustanciasFq3Lesson,
   "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
@@ -2014,7 +2021,9 @@ export const interactiveLessons = {
   "engranajes-transmision-par-2eso": engranajesTransmisionPar2esoLesson,
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
+  "enlace-covalente-fq3": enlaceCovalenteFq3Lesson,
   "enlace-ionico": enlaceIonicoLesson,
+  "enlace-ionico-fq3": enlaceIonicoFq3Lesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enlaces-dos-rectas-dt1": enlacesDosRectasDt1Lesson,
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
@@ -2117,6 +2126,7 @@ export const interactiveLessons = {
   "formas-canonicas": formasCanonicasLesson,
   "formas-transformaciones-energia-fq2": formasTransformacionesEnergiaFq2Lesson,
   "formatos-plegado-dt1": formatosPlegadoDt1Lesson,
+  "formulas-masa-molecular-mol-fq3": formulasMasaMolecularMolFq3Lesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
   "fracciones-algebraicas-1bach": fraccionesAlgebraicas1bachLesson,
@@ -2447,6 +2457,7 @@ export const interactiveLessons = {
   "necesidades-requisitos-2eso": necesidadesRequisitos2esoLesson,
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
+  "nomenclatura-compuestos-fq3": nomenclaturaCompuestosFq3Lesson,
   "normal-estandar-tabla-ccss1": normalEstandarTablaCcss1Lesson,
   "normalizacion-tipos-linea-dt1": normalizacionTiposLineaDt1Lesson,
   "notacion-cientifica-1bach": notacionCientifica1bachLesson,
@@ -2703,6 +2714,7 @@ export const interactiveLessons = {
   "propiedades-densidad-materiales-2eso": propiedadesDensidadMateriales2esoLesson,
   "propiedades-det-1-2bach": propiedadesDet12bachLesson,
   "propiedades-det-2-2bach": propiedadesDet22bachLesson,
+  "propiedades-enlace-metalico-fq3": propiedadesEnlaceMetalicoFq3Lesson,
   "propiedades-fisicas-mecanicas": propiedadesFisicasMecanicasLesson,
   "propiedades-limites-infinito-1bach": propiedadesLimitesInfinito1bachLesson,
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
