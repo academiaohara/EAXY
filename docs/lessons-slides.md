@@ -495,6 +495,98 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `triple-sostenibilidad` | Dimensiones ambiental, social y económica y su intersección | — |
 | `ciclo-vida-fases` | Ciclo de vida de un producto: extracción, fabricación, transporte, uso y fin de vida | — |
 | `economia-lineal-circular` | Economía lineal frente a circular y las «R» | — |
+| `fases-proyecto-eso` | Las siete fases del proyecto tecnológico (problema, información, diseño, planificación, construcción, evaluación, mejora) y la vuelta atrás | — |
+| `ciencia-tecnica-tecnologia` | Ciencia, técnica, tecnología e ingeniería repartidas en un mismo proyecto (un puente) | — |
+| `trazo-paralela-escuadra` | Paralela por un punto con escuadra y cartabón: apoyar, fijar la escuadra, deslizar y trazar | — |
+| `acotar-pieza-pasos` | Acotar una pieza: líneas auxiliares, línea de cota con flechas, cifra, diámetro y cotas repetidas | — |
+| `vistas-proyeccion` | Una pieza de cubos y sus tres vistas (alzado, planta y perfil) alineadas | — |
+| `caballera-pasos` | Perspectiva caballera: cara frontal real, rectas a 45°, fondo reducido a la mitad y aristas ocultas | — |
+| `isometrica-pasos` | Perspectiva isométrica: tres ejes a 120°, medidas iguales, paralelas y caras | — |
+| `boceto-croquis-plano` | Boceto, croquis y plano de una misma pieza: finalidad de cada uno | — |
+| `escala-reduccion` | Escala de reducción 1:50: dividir para dibujar y multiplicar para leer un plano | — |
+| `materias-primas-proceso` | De la materia prima al objeto: árbol → mesa, mineral → clavo y petróleo → botella | — |
+| `contrachapado-capas` | Por qué el contrachapado es estable: láminas finas con las fibras cruzadas | — |
+| `aleacion-mezcla` | Aleación: átomos de cobre y estaño mezclados forman bronce, más duro que sus componentes | — |
+| `ciclo-reciclaje-material` | Ciclo del reciclaje: uso, recogida, planta, material reciclado y nuevo producto | — |
+| `esfuerzos-tipos` | Los cinco esfuerzos (tracción, compresión, flexión, torsión y cortadura) con una barra y un ejemplo cotidiano | — |
+| `triangulo-rigido` | Un marco cuadrilátero se deforma con una fuerza lateral; un triángulo (o un cuadrilátero con diagonal) no | — |
+| `arco-descarga` | Viga que se flexiona frente a un arco que lleva la carga por compresión a los estribos | — |
+| `camino-cargas` | El camino de las cargas en un edificio: cubierta, vigas, pilares, cimientos y terreno | — |
+| `movimientos-tipos` | Tres movimientos básicos: lineal, circular y alternativo con su trayectoria | — |
+| `palanca-ley` | Ley de la palanca con números: R = 60 N a 1 m, F a 3 m (20 N) y a 1 m (60 N) | — |
+| `polea-fija-movil` | Sin polea, polea fija (cambia la dirección) y polea móvil (mitad de fuerza y doble recorrido) | — |
+| `electrones-corriente` | Electrones libres de un metal: movimiento desordenado, corriente al conectar la pila e intensidad; el aislante no conduce | — |
+| `circuito-componentes` | Generador, conductores, elemento de control y receptor en un circuito, con su transformación de energía | — |
+| `serie-paralelo-camino` | Dos lámparas en serie (un camino) y en paralelo (dos ramas): qué pasa al quitar una | — |
+| `cortocircuito-fusible` | Cortocircuito: corriente enorme, calentamiento y fusible que abre el circuito | — |
+| `algoritmo-receta` | Un algoritmo (hacer una tostada): ordenado, preciso y finito, y qué pasa si se cambia el orden | — |
+| `diagrama-flujo-simbolos` | Óvalo, rectángulo, rombo y paralelogramo: significado de cada figura de un diagrama de flujo | — |
+| `bucle-repeticion-simple` | Cuatro instrucciones «avanzar» copiadas frente a un bucle «repetir 4 veces» con un robot que avanza | — |
+| `variable-caja` | Variable como caja con nombre: asignar, cambiar (edad = edad + 1), texto y tipos de datos | — |
+| `ciclo-vida-producto-eso` | Ciclo de vida de un producto (móvil): extraer, fabricar, transportar, usar y fin de vida, con el ciclo cerrado por el reciclaje | — |
+| `jerarquia-residuos` | Jerarquía de residuos: reducir, reutilizar, reciclar, valorizar y eliminar | — |
+| `capas-entorno-digital` | Un dispositivo digital por capas: hardware, sistema operativo, aplicaciones y usuario | — |
+| `paquetes-red` | Un archivo viaja dividido en paquetes por routers y se reensambla en el receptor | — |
+| `extrusion-perfil` | Croquis 2D acotado de un perfil en L que se extruye hasta formar un sólido, con operaciones posteriores | — |
+| `eso2-ohm-agua` | Ley de Ohm con la analogía del depósito de agua: tensión, resistencia e intensidad | — |
+| `eso2-mixto-reduccion` | Reducción paso a paso de un circuito mixto (R1 en serie con R2 ∥ R3) y vuelta atrás | — |
+| `eso2-biela-manivela` | Biela-manivela: giro continuo convertido en vaivén; carrera = 2·r | — |
+| `eso2-bucle-traza` | Un bucle «para» ejecutado paso a paso con tabla de variables | — |
+| `eso2-vistas-europeo` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
+| `eso2-curva-traccion` | Curva tensión-deformación de un ensayo de tracción con sus zonas | — |
+| `eso2-ciclo-diseno` | El proyecto como ciclo: necesidad, ideas, diseño, prototipo, pruebas y mejora | — |
+| `eso2-sincronizacion-nube` | Un cambio en el ordenador se sube a la nube y se descarga en el móvil; cuidado con los borrados | — |
+| `eso3-diodo-sentido` | Diodo y LED: polarización directa e inversa | — |
+| `eso3-transistor-llave` | Transistor NPN: corte y saturación, Ic = β·Ib | — |
+| `eso3-lazo-abierto-cerrado` | Control en lazo abierto y cerrado con realimentación | — |
+| `eso3-setup-loop` | Estructura de un programa de placa: setup() una vez y loop() sin fin | — |
+| `eso3-pwm-ciclo` | PWM: ciclo de trabajo y tensión media | — |
+| `eso3-ruta-paquetes` | Un mensaje se trocea en paquetes, viaja por rutas distintas y se recompone | — |
+| `eso3-leva-seguidor` | Leva excéntrica y seguidor: carrera = 2·e | — |
+| `eso3-fundicion-molde` | Fundición en molde de arena: modelo, molde, colada, solidificación y desmoldeo | — |
+| `eso3-flujo-proyecto` | Flujo de un proyecto: especificar, simular, construir, probar, documentar y difundir | — |
+| `eso3-casa-bioclimatica` | Casa bioclimática: sol de invierno, sombra de verano, aislamiento y ventilación cruzada | — |
+| `eso4-fuente-alimentacion` | Fuente de alimentación: red alterna, transformador, rectificador y filtro | — |
+| `eso4-busqueda-binaria` | Búsqueda binaria de un número en una lista ordenada de 16 elementos | — |
+| `eso4-lazo-cerrado` | Lazo cerrado: consigna, comparador, controlador, actuador, proceso y sensor | — |
+| `eso4-reductora-etapas` | Reductora de dos etapas: la velocidad baja y el par sube | — |
+| `eso4-ensayo-traccion` | Ensayo de tracción: zona elástica, límite elástico, zona plástica, estricción y rotura | — |
+| `eso4-ciclo-ingenieria` | Ciclo de ingeniería iterativo: necesidad, diseño, prototipo, ensayo y mejora | — |
+| `eso4-economia-circular` | Economía lineal frente a economía circular: reducir, reutilizar, reparar y reciclar | — |
+| `eso4-flujo-digital` | Flujo de fabricación digital: CAD, CAM, máquina y medida | — |
+| `ti2-cinco-esfuerzos` | Los cinco esfuerzos: tracción, compresión, cortadura, flexión y torsión | — |
+| `ti2-ciclo-aprendizaje` | Ciclo del aprendizaje automático: datos, entrenamiento, modelo, predicción y evaluación | — |
+| `ti2-fase-carga` | Desfase entre tensión y corriente en una resistencia, una bobina, un condensador y una carga inductiva real | — |
+| `ti2-ciclo-scrum` | Ciclo de Scrum: backlog, planificación, sprint, revisión y retrospectiva | — |
+| `ti2-fases-eia` | Evaluación de impacto ambiental: identificar, valorar, corregir y vigilar | — |
+| `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
+| `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
+| `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
+| `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
+| `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
+| `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
+| `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
+| `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
+| `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
+| `dt1-vistas-pieza` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
+| `dt2-homologia-construccion` | Construcción de la figura homóloga con eje, centro y un par de homólogos | — |
+| `dt2-elipse-circunferencias` | Elipse punto a punto con las circunferencias de diámetros 2a y 2b | — |
+| `dt2-parabola-foco-directriz` | Parábola punto a punto desde el foco y la directriz | — |
+| `dt2-eje-radical-construccion` | Eje radical de dos circunferencias con una auxiliar | — |
+| `dt2-abatimiento-punto` | Abatimiento de un punto con el triángulo de abatimiento | — |
+| `dt2-desarrollo-cono` | Desarrollo de un cono: sector circular | — |
+| `fq2-metodo-cientifico` | Etapas del método científico y su carácter cíclico | — |
+| `fq2-particulas-estados` | Partículas de un sólido, un líquido y un gas | — |
+| `fq2-destilacion` | Destilación de una mezcla de alcohol y agua | — |
+| `fq2-rutherford` | Experimento de Rutherford y descubrimiento del núcleo | — |
+| `fq2-lavoisier` | Conservación de los átomos en la formación del agua | — |
+| `fq2-mru-estroboscopica` | MRU: espacios iguales en tiempos iguales | — |
+| `fq2-fuerzas-resultante` | Suma de fuerzas en la misma recta y equilibrio | — |
+| `fq2-conservacion-energia` | Conservación de la energía en una rampa | — |
+| `fq2-rayo-luz` | Reflexión y refracción de un rayo en la superficie del agua | — |
+| `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
+| `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
+| `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -953,6 +1045,398 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `economia-circular-explorador` | Material nuevo por año según vida, reparabilidad y reciclaje | `a` vida, `b` reparación, `c` reciclaje |
 | `parque-renovable-explorador` | Parque solar y eólico con demanda, nubes y almacenamiento | `a` solar, `b` eólica, `c` viento |
 | `acv-explorador` | ACV de tres bombillas por unidad funcional, con incertidumbre | `a` horas, `b` mix, `c` incertidumbre |
+| `analisis-objeto-explorador` | Análisis de un objeto en cinco capas: necesidad, función, forma, material y mejora | `n` objeto (0 tijeras, 1 bolígrafo, 2 botella, 3 silla) |
+| `linea-tiempo-explorador` | Línea del tiempo con siete épocas de la tecnología, sus inventos y el cambio que trajeron | `n` época inicial (0–6) |
+| `presupuesto-explorador` | Presupuesto de un proyecto: cantidad × precio, total, imprevistos del 10 % y comparación con el presupuesto disponible | `a` presupuesto disponible (€) |
+| `reparto-tareas-explorador` | Reparto de seis tareas entre tres personas: carga de cada una y duración del proyecto | — |
+| `fuente-fiable-explorador` | Evaluación de cuatro fuentes con cinco criterios (autor, fecha, datos, intención, experiencia) y contraste con una segunda fuente | `n` fuente inicial (0–3) |
+| `trazados-basicos-explorador` | Paralela, perpendicular y mediatriz sobre una recta inclinable | `n` trazado (0 paralela, 1 perpendicular, 2 mediatriz), `a` inclinación (°), `b` longitud del segmento |
+| `acotacion-explorador` | Pieza con agujero sin acotar, bien acotada y mal acotada (cotas repetidas) | `a` largo, `b` ancho, `c` diámetro (mm) |
+| `escala-dibujo-explorador` | Medida real × escala = dibujo, y si cabe en un A4 | `n` escala (0–7: 1:1, 1:2, 1:5, 1:10, 1:50, 1:100, 2:1, 5:1), `a` medida real (mm) |
+| `vistas-pieza-explorador` | Pieza de cubos 3×3 editable con su isométrica y sus tres vistas | `n` pieza inicial (0 L, 1 escalera, 2 torre) |
+| `perspectiva-explorador` | Prisma en perspectiva caballera o isométrica: fondo real y dibujado | `n` modo (0 caballera, 1 isométrica), `a` largo, `b` alto, `c` fondo (mm) |
+| `ensayo-material-explorador` | Cinco pruebas (golpe, calor, agua, electricidad, imán) sobre diez materiales | `n` muestra inicial (0–9) |
+| `materiales-propiedades-explorador` | Comparación de dos materiales en siete propiedades (valores orientativos de 0 a 10) y su densidad | `a`, `b` índices de los materiales (0–5) |
+| `madera-derivados-explorador` | Madera maciza, contrachapado, aglomerado y MDF: composición, usos y cuatro criterios | `n` tablero (0–3) |
+| `metales-prueba-explorador` | Imán, conducción y oxidación con los días de ocho metales y aleaciones | `n` metal (0–7), `a` días (0–200) |
+| `plastico-calor-explorador` | Termoplástico, termoestable y elastómero frente a la temperatura (20–300 °C) y al estiramiento | `n` tipo (0–2), `a` temperatura (°C) |
+| `seleccion-material-eso-explorador` | Ranking de seis materiales según la importancia de cuatro criterios para cuatro objetos | `n` objeto (0–3) |
+| `taller-peligros-explorador` | Escena de taller con seis situaciones peligrosas que se localizan pulsando | — |
+| `contenedores-reciclaje-explorador` | Diez residuos y seis contenedores, con aciertos, fallos y explicación | — |
+| `esfuerzos-barra-explorador` | Una barra sometida a tracción, compresión, flexión, torsión o cortadura con carga variable | `n` esfuerzo (0–4), `a` carga (%) |
+| `viga-flexion-explorador` | Flecha de un listón de madera biapoyado según carga, luz y colocación (de canto o plano) | `a` carga (kg), `b` luz (m) |
+| `estabilidad-explorador` | Vuelco de un bloque: base, altura, inclinación y lastre; ángulo crítico | `a` base (cm), `b` altura (cm) |
+| `triangulacion-explorador` | Marco articulado sin diagonal, con una o con dos, bajo una fuerza lateral | `n` modo (0–2), `a` fuerza (N) |
+| `puentes-tipos-explorador` | Puentes de vigas, de arco, colgante y atirantado con sus esfuerzos en rojo (tracción) y azul (compresión) | `n` puente (0–3) |
+| `ensayo-puente-explorador` | Puente de papel: forma, triangulación y luz; carga máxima y rotura | `n` forma (0–2), `a` luz (cm) |
+| `movimientos-explorador` | Objeto con movimiento lineal, circular o alternativo animado y su trayectoria | `n` movimiento (0–2), `a` velocidad (1–10) |
+| `palanca-equilibrio-explorador` | Palanca de primer género: cargas, fuerzas y brazos con inclinación y fuerza de equilibrio | `a` resistencia (kg), `b` brazo de la resistencia (cm) |
+| `poleas-aparejo-explorador` | Polea fija, móvil y polipasto: fuerza = carga ÷ n y cuerda recogida | `n` cuerdas (1–6), `a` carga (kg) |
+| `rueda-eje-explorador` | Rueda, eje y carga colgada: ventaja mecánica R ÷ r y fuerza en el borde | `a` radio de la rueda (cm), `b` radio del eje (cm) |
+| `engranajes-eso-explorador` | Dos ruedas dentadas o dos poleas con correa animadas: relación de transmisión, rpm y sentido | `n` sistema (0 engranajes, 1 correa), `a` z₁, `b` z₂ |
+| `tren-engranajes-explorador` | Tren de dos etapas: relaciones parciales y total, velocidad intermedia y de salida | `a` velocidad de entrada (rpm) |
+| `bici-marchas-explorador` | Plato y piñón de una bicicleta: vueltas de rueda, avance por pedalada y velocidad | `n` plato (0–2), `a` piñón (0–7) |
+| `conductores-aislantes-explorador` | Diez objetos en el hueco de un circuito con pila y bombilla: conductores frente a aislantes | `n` objeto (0–9) |
+| `circuito-simple-explorador` | Circuito con pila, interruptor, cable y bombilla: cada avería interrumpe el paso, con corriente animada | — |
+| `simbolos-electricos-explorador` | Ocho símbolos eléctricos con nombre, función y ejemplo, con modo de repaso | `n` símbolo (0–7) |
+| `control-luz-explorador` | Interruptor, pulsador y dos conmutadores controlando una lámpara | `n` control (0–2) |
+| `serie-paralelo-explorador` | Lámparas en serie o en paralelo (1–4), quitar una y ver tensión y corriente | `n` montaje (0 serie, 1 paralelo), `a` número de lámparas |
+| `montaje-circuito-explorador` | Conectar con cables los terminales de pila, interruptor y lámpara; detecta circuito abierto y cortocircuito | — |
+| `seguridad-electrica-explorador` | Ocho situaciones domésticas: ¿peligrosa o segura? con su explicación | — |
+| `algoritmo-ordena-explorador` | Cuatro algoritmos cotidianos con pasos desordenados que se reordenan y comprueban | `n` algoritmo (0–3) |
+| `programa-bloques-explorador` | Robot en una cuadrícula programable con bloques (avanzar, girar, repetir, si hay pared) en cuatro retos | `n` reto (0–3) |
+| `flujo-sencillo-explorador` | Tres diagramas de flujo que se recorren paso a paso (¿llueve?, par o impar, contar hasta 3) | `n` diagrama (0–2) |
+| `variables-cajas-explorador` | Tres programas de asignaciones ejecutados línea a línea con las variables como cajas | `n` programa (0–2) |
+| `condiciones-explorador` | Programa si/si no/si no con lluvia y temperatura: qué rama se ejecuta | `a` temperatura (°C) |
+| `depura-programa-explorador` | Cuatro programas con un error: encontrar la línea incorrecta y entender por qué | `n` programa (0–3) |
+| `huella-producto-explorador` | Reparto de la huella de cuatro productos por fases (valores orientativos) y efecto de los años de uso | `n` producto (0–3) |
+| `consumo-habitos-explorador` | Ocho hábitos de consumo responsable y su ahorro mensual estimado en CO₂, residuos y agua | — |
+| `ahorro-energia-explorador` | Consumo anual de un aparato antiguo frente a uno eficiente: energía, dinero y CO₂ (E = P·t) | `n` pareja de aparatos (0–2) |
+| `tiempo-descomposicion-explorador` | Siete residuos y su tiempo de descomposición en escala logarítmica | `n` paso de tiempo (0–7) |
+| `lineal-circular-eso-explorador` | Materia prima nueva y residuos finales al aumentar la reutilización y el reciclaje | `a` reutilización (%), `b` reciclaje (%) |
+| `rampa-accesibilidad-explorador` | Pendiente de una rampa según desnivel y longitud, límite accesible (10, 8 o 6 %) y longitud mínima | `a` desnivel (cm), `b` longitud (m) |
+| `dispositivo-componentes-explorador` | Componentes de un ordenador y de un móvil: función y si son hardware o software | `n` dispositivo (0 ordenador, 1 móvil) |
+| `diagnostico-tecnico-explorador` | Cuatro problemas técnicos sencillos: comprobaciones de lo simple a lo complejo hasta hallar la causa | `n` problema (0–3) |
+| `capacidad-almacenamiento-explorador` | Fotos, canciones, vídeos y aplicaciones frente a la capacidad de un USB, un móvil o un disco (1 GB = 1 000 MB) | `n` soporte (0–2) |
+| `copia-seguridad-explorador` | Copias en distintos soportes y lugares frente a cinco sucesos (regla 3-2-1) | — |
+| `tiempo-descarga-explorador` | Tiempo para descargar un archivo según su tamaño (MB) y la velocidad (Mb/s) | `n` conexión (0–4), `a` tamaño (MB) |
+| `busqueda-operadores-explorador` | Buscador con ocho resultados y operadores (frase exacta, excluir, sitio, tipo de archivo) | — |
+| `contrasena-fortaleza-explorador` | Combinaciones y tiempo orientativo de ataque según longitud y tipos de caracteres | `a` longitud |
+| `situaciones-digitales-explorador` | Tres series de cinco situaciones (phishing, bienestar digital y netiqueta) con explicación | `n` serie (0–2) |
+| `licencias-cc-explorador` | Licencia Creative Commons según se permita el uso comercial y la modificación | — |
+| `cad-placa-explorador` | Placa con matriz de agujeros: posiciones, separación, área de material y reglas de taller | `a` largo, `b` ancho (mm) |
+| `extrusion-explorador` | Perfil extruido en isométrica: área, volumen y masa según material | `n` perfil (0–4), `a` tamaño (cm), `b` altura (cm) |
+| `diapositiva-legible-explorador` | Diapositiva con colores, tamaño de letra y palabras: contraste (WCAG) y valoración | `n` colores (0–4), `a` tamaño (pt) |
+| `clasificador-ia-explorador` | Clasificador de manzanas y plátanos que aprende de ejemplos, con datos equilibrados o sesgados | `a` ejemplos por fruta (0–8) |
+| `app-eventos-explorador` | Aplicación de dados que reacciona a tres eventos (botón, reinicio y sacudida) | — |
+| `eso2-analogia-agua-explorador` | Analogía hidráulica de tensión, resistencia e intensidad | `a` tensión (V), `b` resistencia (Ω) |
+| `eso2-ohm-incognita-explorador` | Triángulo de Ohm: elige la incógnita y calcula | `n` incógnita (0 V, 1 I, 2 R), `a`, `b` datos |
+| `eso2-factura-explorador` | Energía y coste mensual de cinco aparatos según horas de uso | `a` precio (c€/kWh) |
+| `eso2-serie-paralelo-explorador` | Dos resistencias en serie o paralelo: Req, corriente y reparto | `n` montaje (0 serie, 1 paralelo), `a` pila (V), `b` R1 (Ω) |
+| `eso2-mixto-explorador` | Circuito mixto R1 + (R2 ∥ R3) con pasos de reducción | `a` pila (V), `b` R1 (Ω) |
+| `eso2-polimetro-explorador` | Dónde y cómo conectar voltímetro, amperímetro y óhmetro | `n` magnitud (0 V, 1 A, 2 Ω), `a` pila (V) |
+| `eso2-fallo-explorador` | Diagnóstico de averías: cable cortado, lámpara fundida y cortocircuito | `n` avería (0–3), `a` pila (V) |
+| `eso2-tension-explorador` | Tensión σ = F/A en una barra, con material y coeficiente de seguridad | `a` fuerza (N), `b` ancho (mm) |
+| `eso2-perfil-canto-explorador` | Rigidez de un listón rectangular tumbado o de canto (I = b·h³/12) | `n` canto (0/1), `a` ancho, `b` alto (mm) |
+| `eso2-ventaja-mecanica-explorador` | Palanca, polipasto y plano inclinado: fuerza necesaria y recorrido | `n` máquina (0–2), `a` carga (N) |
+| `eso2-tren-transmision-explorador` | Reductor de dos etapas: relación, rpm, par y potencia con rendimiento | `a` rpm del motor |
+| `eso2-poleas-correas-explorador` | Poleas con correa abierta o cruzada: rpm, sentido y longitud de correa | `a` d₁ (mm), `b` d₂ (mm) |
+| `eso2-transformacion-explorador` | Piñón-cremallera, tornillo-tuerca, biela-manivela y leva: desplazamiento de la salida | `n` mecanismo (0–3), `a` giro en cuartos de vuelta |
+| `eso2-elevador-explorador` | Elevador con motor, reductor y tambor: par necesario, velocidad y potencia | `a` rpm del motor, `b` masa (kg) |
+| `eso2-traza-explorador` | Traza de cuatro programas (suma, condicional, mientras, factorial) línea a línea con variables y pantalla | `n` programa (0–3), `a` nota |
+| `eso2-tipos-datos-explorador` | Suma y comparación de datos de distinto tipo (entero, decimal, texto, booleano) | `n` primer dato, `a` segundo dato |
+| `eso2-operadores-explorador` | Operadores aritméticos, de comparación y lógicos con a y b | `n` familia (0–2), `a`, `b` |
+| `eso2-funcion-explorador` | Definición y llamada de funciones con parámetros | `n` función (0–2), `a`, `b` argumentos |
+| `eso2-pruebas-explorador` | Casos de prueba de una función de año bisiesto con error lógico y su corrección | `a` año inicial |
+| `eso2-adivina-explorador` | Adivina el número del 1 al 100 y compara con la estrategia de las mitades | `a` número secreto |
+| `eso2-pieza-vistas-explorador` | Pieza de torres de cubos 3×3 con alzado, planta y perfil calculados | `n` pieza inicial (0/1) |
+| `eso2-escala-conversion-explorador` | Convierte entre medida real y dibujo según la escala; ¿cabe en un A4? | `n` escala (0–8), `a` medida real (mm) |
+| `eso2-conica-explorador` | Perspectiva cónica con punto de fuga y horizonte | `a` profundidad (%), `b` punto de fuga X |
+| `eso2-plano-vivienda-explorador` | Plano de habitaciones con escala, superficie real y símbolos | `n` habitación (0–2), `a` escala (50/100) |
+| `eso2-cad-comandos-explorador` | Órdenes de CAD 2D sobre una placa: círculo, matriz, redondeo y cotas | `n` cotas (0/1) |
+| `eso2-solido-operaciones-explorador` | Prisma con taladro pasante o ciego: volumen, masa y material quitado | `a` largo (mm), `b` alto (mm) |
+| `eso2-lamina-explorador` | Elementos de una lámina de proyecto y lo que falta | `n` elementos presentes (0–7) |
+| `eso2-densidad-explorador` | Masa y flotación de un bloque según material y dimensiones | `n` material (0–5), `a` largo (cm) |
+| `eso2-curva-traccion-explorador` | Ensayo de tracción: zona elástica, plástica y rotura por material | `n` material (0–3), `a` estirado (%) |
+| `eso2-despiece-tablero-explorador` | Piezas que salen de un tablero de 2 440 × 1 220 mm y desperdicio | `a` ancho (mm), `b` alto (mm) |
+| `eso2-matriz-decision-explorador` | Matriz de decisión ponderada para cinco materiales | `n` prioridades (0–2) |
+| `eso2-tecnica-taller-explorador` | Técnica y seguridad para cortar, unir o acabar madera, metal y plástico | `n` material (0–2), `a` operación (0–2) |
+| `eso2-calibre-explorador` | Lectura de un pie de rey con nonio de 0,1 mm | `a` apertura (mm) |
+| `eso2-impresion3d-explorador` | Plástico y tiempo estimados de un cubo impreso en 3D | `a` lado (mm), `b` capa (×0,01 mm) |
+| `eso2-requisitos-explorador` | Escribe un requisito y valora si es verificable (valor y unidad) | `n` ejemplo inicial (0–3) |
+| `eso2-scamper-explorador` | SCAMPER: siete preguntas para generar ideas sobre tres objetos | `n` objeto (0–2), `a` técnica (0–6) |
+| `eso2-seleccion-ideas-explorador` | Matriz ponderada de tres ideas de soporte de móvil | `n` prioridades (0/1) |
+| `eso2-gantt-explorador` | Diagrama de Gantt con dependencias y camino crítico | `a` duración de «Construir» (días) |
+| `eso2-pruebas-prototipo-explorador` | Medidas de un prototipo frente a cuatro requisitos | `a` carga soportada (g) |
+| `eso2-memoria-explorador` | Secciones de una memoria técnica y las imprescindibles que faltan | `n` secciones iniciales (0–12) |
+| `eso2-sistema-recursos-explorador` | Memoria RAM usada por el sistema, pestañas y aplicaciones, y estado del equipo | `n` RAM (0–2), `a` pestañas |
+| `eso2-rutas-explorador` | Ruta absoluta y relativa de un archivo desde una carpeta de trabajo | `n` archivo (0–4), `a` carpeta (0–2) |
+| `eso2-hoja-calculo-explorador` | Presupuesto en hoja de cálculo con fórmulas visibles o valores | `n` ver fórmulas (0/1) |
+| `eso2-formato-imagen-explorador` | Tamaño aproximado de una imagen según dimensiones y formato (BMP, PNG, JPEG) | `a` ancho, `b` alto (px) |
+| `eso2-subida-nube-explorador` | Tiempo para subir datos a la nube según la velocidad | `a` GB, `b` Mbps |
+| `eso2-tiempo-pantalla-explorador` | Horas de pantalla por actividad, ocio y valoración | `a` horas de redes sociales |
+| `eso2-ciclo-vida-fases-explorador` | Reparto del impacto por fase en tres productos y el efecto de alargar su vida (datos didácticos) | `n` producto (0–2), `a` años de uso |
+| `eso2-etiqueta-energetica-explorador` | Compara el consumo anual, coste y CO₂ de dos aparatos equivalentes | `n` aparato A (0–3), `a` aparato B (0–3), `b` horas al día |
+| `eso2-residuos-hogar-explorador` | Porcentaje de residuos del hogar bien separados | `a` % de envases bien separados |
+| `eso2-diseno-universal-explorador` | Alturas de alcance recomendadas para mandos y mostradores | `n` elemento (0–3), `a` altura (cm) |
+| `eso2-huella-digital-explorador` | Datos y energía estimados de ver vídeo en streaming | `a` horas al día, `n` calidad (0–2) |
+| `eso3-conductor-explorador` | Resistencia de un conductor R = ρ·L/S según material, longitud y sección | `n` material (0–3), `a` longitud (m), `b` sección (mm²) |
+| `eso3-codigo-colores-explorador` | Código de colores de una resistencia de cuatro bandas | `a` primera cifra, `b` segunda cifra |
+| `eso3-led-resistencia-explorador` | Resistencia limitadora de un LED y valor E12 | `n` color (0–4), `a` pila (V), `b` corriente (mA) |
+| `eso3-transistor-explorador` | Transistor NPN como interruptor: corriente de base, colector y estado | `a` tensión de entrada (V), `b` corriente de carga (mA) |
+| `eso3-sensor-divisor-explorador` | LDR o NTC en un divisor de tensión | `n` sensor (0/1), `a` luz (lux) |
+| `eso3-condensador-explorador` | Carga de un condensador RC y constante de tiempo | `a` R (kΩ), `b` C (µF) |
+| `eso3-protoboard-explorador` | Nodos de una protoboard: ¿resistencia y LED en serie? | `a` columna del LED, `n` mitad |
+| `eso3-comparador-explorador` | Comparador de tensión normal o inversor | `a` Vin, `b` Vref |
+| `eso3-luz-automatica-explorador` | Luz automática con LDR, potenciómetro y transistor | `a` luz (lux), `b` potenciómetro (kΩ) |
+| `eso3-sistema-ips-explorador` | Entradas, proceso y salidas de cuatro sistemas cotidianos | `n` sistema (0–3) |
+| `eso3-lazo-control-explorador` | Calefactor de potencia fija (lazo abierto) frente a termostato (lazo cerrado) | `a` consigna (°C), `b` temperatura exterior (°C) |
+| `eso3-conversor-adc-explorador` | Conversor analógico-digital: niveles, código binario y error | `a` tensión (V), `n` bits (0–3) |
+| `eso3-puertas-explorador` | Puertas lógicas AND, OR, NOT, NAND, NOR y XOR con su tabla de verdad | `n` puerta (0–5) |
+| `eso3-alarma-explorador` | Alarma: armada Y (puerta O ventana O movimiento) | `n` armada inicial (0/1) |
+| `eso3-puerta-garaje-explorador` | Máquina de estados de una puerta de garaje | — |
+| `eso3-riego-explorador` | Riego programado frente a riego con sensor de humedad | `a` humedad inicial (%), `b` umbral (%) |
+| `eso3-blink-explorador` | Parpadeo de un LED con delay: periodo, frecuencia y ciclo de trabajo | `a` ms encendido, `b` ms apagado |
+| `eso3-pull-explorador` | Pulsador con pull-down, pull-up o sin resistencia: qué lee el pin | `n` montaje (0–2) |
+| `eso3-lectura-analogica-explorador` | analogRead 0–1023: tensión, temperatura y map() | `a` lectura |
+| `eso3-pwm-explorador` | PWM de un motor o LED y pulso de un servo | `n` actuador (0/1), `a` valor, `b` pulso (×0,1 ms) |
+| `eso3-puente-h-explorador` | Puente en H con cuatro interruptores: sentido de giro y cortocircuito | — |
+| `eso3-seguidor-explorador` | Robot seguidor de línea con dos sensores infrarrojos | `a` posición (−2 a 2) |
+| `eso3-ultrasonido-explorador` | Distancia por tiempo de eco y umbral de frenado | `a` distancia (cm), `b` umbral (cm) |
+| `eso3-robot-pruebas-explorador` | Casos de prueba de un robot y ajuste del umbral de frenado | `a` umbral (cm) |
+| `eso3-periferico-explorador` | Tipo, conexión y datos de siete periféricos | `n` periférico (0–6) |
+| `eso3-topologia-explorador` | Topologías de red: cables necesarios y efecto de un fallo | `n` topología (0–3), `a` equipos |
+| `eso3-ip-explorador` | Dirección IPv4 y máscara: red, difusión y número de equipos | `a` último número, `n` prefijo (16–30) |
+| `eso3-wifi-explorador` | Señal Wi-Fi según distancia, paredes y banda; velocidad por dispositivo | `a` distancia (m), `b` paredes |
+| `eso3-paquetes-explorador` | Paquetes necesarios para un archivo y reenvíos por pérdidas | `a` tamaño (MB), `b` pérdidas (%) |
+| `eso3-bateria-iot-explorador` | Autonomía de la batería de un sensor IoT | `a` capacidad (mAh), `b` intervalo (min) |
+| `eso3-clave-wifi-explorador` | Tiempo para adivinar una contraseña por fuerza bruta | `n` juego de caracteres (0–3), `a` longitud |
+| `eso3-cadena-pinon-explorador` | Piñón y cadena: relación, velocidad y eslabones | `a` dientes z₁, `b` dientes z₂ |
+| `eso3-sin-fin-explorador` | Tornillo sin fin y corona: reducción, par y pérdidas | `a` dientes de la corona, `n` entradas (1–3) |
+| `eso3-leva-explorador` | Leva excéntrica, de corazón y de caída brusca: altura del seguidor | `n` tipo (0–2), `a` ángulo (°) |
+| `eso3-caja-cambios-explorador` | Caja de cambios de cinco marchas: velocidad y par en la rueda | `a` rpm del motor, `n` marcha (0–4) |
+| `eso3-rendimiento-explorador` | Potencia y rendimiento de una cadena de tres etapas | `a` rendimiento de la 1.ª etapa (%) |
+| `eso3-grua-explorador` | Grúa con polipasto: fuerza en el cable, potencia y tiempo | `a` masa (kg), `n` tramos |
+| `eso3-lavadora-explorador` | Lavadora: poleas, rpm del tambor y centrifugado en g | `a` rpm del motor |
+| `eso3-prestaciones-explorador` | Índices de selección de seis materiales: resistencia específica, coste y densidad | `n` criterio (0–2) |
+| `eso3-fundicion-explorador` | Metal a fundir y medida del modelo según la contracción | `n` metal (0–2), `a` volumen (cm³) |
+| `eso3-corte-explorador` | Velocidad de corte, rpm y tiempo de una pasada | `n` material (0–4), `a` diámetro (mm) |
+| `eso3-union-explorador` | Qué uniones cumplen unos requisitos dados | — |
+| `eso3-impacto-material-explorador` | Energía incorporada de un material según el porcentaje reciclado | `n` material (0–3), `a` cantidad (kg) |
+| `eso3-laser-explorador` | Longitud y tiempo de corte láser de una placa con agujeros | `n` material (0–2), `a` ancho (mm) |
+| `eso3-riesgos-explorador` | Matriz de riesgos: probabilidad × gravedad | `a` probabilidad, `b` gravedad |
+| `eso3-especificaciones-explorador` | Comprueba si un prototipo cumple especificaciones medibles y con qué margen | `a` masa (g) |
+| `eso3-simulacion-viga-explorador` | Simulación de una viga: carga máxima, masa y carga por gramo | `n` material (0–2), `a` alto (mm) |
+| `eso3-coste-proyecto-explorador` | Coste directo, indirectos, coste total y precio de venta | `a` materiales (€) |
+| `eso3-solar-explorador` | Instalación fotovoltaica: potencia pico, energía, ahorro y amortización | `a` superficie (m²) |
+| `eso3-eolica-explorador` | Potencia de un aerogenerador según viento y palas | `a` viento (m/s) |
+| `eso3-aislamiento-explorador` | Pérdidas de calor de un muro según aislante y espesor | `n` aislante (0–3), `a` espesor (cm) |
+| `eso3-transporte-explorador` | Emisiones anuales de CO₂ según medio de transporte y distancia | `n` medio (0–5), `a` distancia (km) |
+| `eso3-hidraulica-explorador` | Potencia de una central hidráulica según caudal y salto | `a` caudal (m³/s), `b` salto (m) |
+| `eso4-alterna-explorador` | Señal alterna: valor eficaz, periodo y frecuencia angular | `a` tensión de pico (V), `b` frecuencia (Hz) |
+| `eso4-potencia-explorador` | Potencia, energía al mes y coste de un aparato | `a` tensión (V), `b` corriente (A) |
+| `eso4-circuito-mixto-explorador` | Circuito mixto R1 + (R2 ∥ R3): equivalente, corrientes y tensiones | `a` tensión (V) |
+| `eso4-fuente-explorador` | Fuente de alimentación: secundario, continua de pico y rizado | `a` vueltas del secundario |
+| `eso4-transistor-explorador` | Resistencia de base para saturar un transistor | `a` corriente de colector (mA), `b` ganancia β |
+| `eso4-555-explorador` | Temporizador 555 astable: frecuencia, periodo y ciclo de trabajo | `a` R2 (kΩ) |
+| `eso4-boole-explorador` | Expresiones booleanas y su tabla de verdad | `n` expresión (0–3) |
+| `eso4-descomposicion-explorador` | Descomposición de un problema en subproblemas | `n` problema (0–2) |
+| `eso4-busqueda-explorador` | Búsqueda lineal frente a binaria: comparaciones realizadas | `a` número buscado |
+| `eso4-ordenacion-explorador` | Ordenación por burbuja paso a paso | `n` lista (0–1) |
+| `eso4-datos-explorador` | Temperaturas mensuales: media, máximo, mínimo y recuento sobre un umbral | `a` umbral (°C) |
+| `eso4-complejidad-explorador` | Operaciones de búsqueda binaria, lineal y burbuja según el número de datos | `a` número de datos |
+| `eso4-regulador-explorador` | Regulación de temperatura con todo-nada, P, PI y PID: error, sobreoscilación y establecimiento | `n` regulador (0–3), `a` temperatura exterior (°C) |
+| `eso4-motor-explorador` | Encoder: rpm, velocidad del robot, potencia mecánica y rendimiento | `a` pulsos en 100 ms |
+| `eso4-robot-explorador` | Robot diferencial: trayectoria, velocidad angular, radio y posición final | `a` velocidad izquierda, `b` velocidad derecha (m/s) |
+| `eso4-secuencia-explorador` | Secuencia de etapas y transiciones (GRAFCET) de una taladradora automática | `n` etapa inicial (0–3) |
+| `eso4-iot-explorador` | Qué tecnologías inalámbricas cumplen alcance, velocidad y consumo | `n` alcance (0–3) |
+| `eso4-transmision-explorador` | Etapa de engranajes: i, velocidad, ω, par y potencia de salida | `a` velocidad de entrada (rpm), `b` dientes z₂ |
+| `eso4-reductora-explorador` | Reductora de varias etapas: relación, rendimiento, par y potencia | `n` etapas (1–4), `a` relación por etapa |
+| `eso4-biela-explorador` | Biela-manivela: posición del émbolo y carrera | `a` radio de la manivela (mm) |
+| `eso4-rozamiento-explorador` | Bloque en un plano inclinado con rozamiento | `a` masa (kg), `b` inclinación (°) |
+| `eso4-cinta-explorador` | Cinta transportadora: velocidad, potencia útil y potencia del motor | `a` relación de la reductora |
+| `eso4-hooke-explorador` | Barra a tracción: tensión, alargamiento y coeficiente de seguridad | `n` material (0–3), `a` fuerza (kN) |
+| `eso4-brinell-explorador` | Dureza Brinell según la huella y resistencia estimada | `a` diámetro de la huella (mm) |
+| `eso4-charpy-explorador` | Péndulo de Charpy: energía absorbida y resiliencia | `a` altura final (m) |
+| `eso4-acero-explorador` | Tipo de acero y dureza recocido y templado según el carbono | `a` carbono (%) |
+| `eso4-ajuste-explorador` | Ajuste eje-agujero: holgura máxima y mínima y tipo | `a` desviación superior del agujero (µm) |
+| `eso4-calidad-explorador` | Proceso de fabricación: piezas fuera de tolerancia, Cp y Cpk | `a` media (mm) |
+| `eso4-casa-calidad-explorador` | Casa de la calidad: prioridad técnica a partir de la importancia de las necesidades | `a` importancia de «Ligera» (1–5) |
+| `eso4-vistas-explorador` | Alzado, planta y perfil de un prisma a distintas escalas | `a` ancho (mm), `b` alto (mm) |
+| `eso4-pert-explorador` | Red de tareas: camino crítico, duración y holgura | `a` duración de la tarea D (días) |
+| `eso4-viabilidad-explorador` | Costes fijos y variables, punto de equilibrio y beneficio | `a` coste fijo (€) |
+| `eso4-huella-hogar-explorador` | Huella de carbono anual de un hogar por fuente y por persona | `a` electricidad (kWh/año) |
+| `eso4-autoconsumo-explorador` | Un día con paneles solares y batería: autoconsumo, cobertura y red | `a` potencia de paneles (kWp) |
+| `eso4-certificado-explorador` | Letra energética de una vivienda según demanda, aislamiento y sistema | `a` demanda (kWh/m²·año) |
+| `eso4-reparar-explorador` | Reparar o comprar nuevo: coste y CO₂ por año de uso | `a` coste de la reparación (€) |
+| `eso4-accesibilidad-explorador` | Pendiente de una rampa y contraste de una pantalla | `n` comprobación (0–1) |
+| `eso4-micrometro-explorador` | Lectura de un micrómetro: cilindro, tambor y medida | `a` medida (mm) |
+| `eso4-polimetro-explorador` | Polímetro: lectura, error absoluto y relativo según el rango | `n` magnitud (0–2) |
+| `eso4-apilado-explorador` | Tolerancias acumuladas en una cadena de piezas: caso peor y estadístico | `n` piezas, `a` tolerancia (mm) |
+| `eso4-impresion-flujo-explorador` | Impresión 3D: caudal, material y tiempo según capa, velocidad y relleno | `a` velocidad (mm/s) |
+| `eso4-pista-explorador` | Ancho, resistencia y caída de tensión de una pista de cobre en una PCB | `a` corriente (A) |
+| `ti2-carga-repartida-explorador` | Resultante y posición de una carga repartida uniforme o triangular | `n` reparto (0–1), `a` carga (kN/m) |
+| `ti2-reacciones-explorador` | Reacciones de una viga biapoyada con carga puntual y uniforme | `a` carga P (kN), `b` posición (m) |
+| `ti2-flexion-explorador` | Viga biapoyada: momento máximo, tensión de flexión y flecha | `n` caso (0–1), `a` carga |
+| `ti2-torsion-explorador` | Eje macizo: tensión cortante máxima y ángulo de torsión | `a` par (N·m) |
+| `ti2-cortadura-explorador` | Tornillos a cortadura: tensión cortante y aplastamiento de la chapa | `a` fuerza (kN) |
+| `ti2-pandeo-vuelco-explorador` | Carga crítica de Euler y coeficiente de vuelco | `n` modo (0–1), `a` longitud (m) |
+| `ti2-disponibilidad-explorador` | Disponibilidad de un servicio replicado y tiempo de transferencia por la red | `a` réplicas |
+| `ti2-sql-explorador` | Consultas SQL (WHERE, ORDER BY, COUNT, SUM, AVG) sobre una tabla de piezas | — |
+| `ti2-volumen-datos-explorador` | Volumen de datos de una red de sensores y coste de almacenamiento | `a` número de sensores |
+| `ti2-clasificador-explorador` | Clasificador lineal de dos clases y perceptrón paso a paso | — |
+| `ti2-confusion-explorador` | Matriz de confusión, exactitud, sensibilidad y precisión según la prevalencia | `a` prevalencia (%) |
+| `ti2-cifrado-explorador` | Cifrado César y tiempo de fuerza bruta de una contraseña | `a` desplazamiento |
+| `ti2-privacidad-explorador` | Personas que comparten una combinación de cuasi-identificadores | `a` código postal (0–1) |
+| `ti2-senoidal-explorador` | Tensión y corriente senoidales: desfase y tiempo equivalente | `a` frecuencia (Hz), `b` desfase (°) |
+| `ti2-rlc-explorador` | Circuito RLC serie: reactancias, impedancia, ángulo, corriente y resonancia | `a` inductancia (mH) |
+| `ti2-potencias-explorador` | Triángulo de potencias: activa, reactiva, aparente y factor de potencia | `a` corriente (A), `b` desfase (°) |
+| `ti2-correccion-fp-explorador` | Corrección del factor de potencia: reactiva a compensar, capacidad y corriente ahorrada | `a` potencia (kW) |
+| `ti2-trifasica-explorador` | Receptor trifásico en estrella o triángulo: potencias y magnitudes de fase | `n` conexión (0–1), `a` corriente de línea (A) |
+| `ti2-embudo-explorador` | Embudo de I+D: ideas que llegan al mercado y coste por producto | `a` ideas de partida |
+| `ti2-sprint-explorador` | Backlog, velocidad y burndown de un proyecto con sprints | `a` trabajo total (puntos) |
+| `ti2-kanban-explorador` | Kanban y ley de Little: tiempo de entrega según el WIP | `a` tareas en curso |
+| `ti2-estimacion-pert-explorador` | Estimación a tres puntos de tareas en serie y probabilidad de cumplir el plazo | `a` plazo (días) |
+| `ti2-van-explorador` | Valor actual neto y plazo de recuperación de una inversión | `a` inversión (miles de €) |
+| `ti2-eia-explorador` | Matriz de impacto ambiental de tres proyectos con medidas correctoras | `n` proyecto (0–2) |
+| `ti2-cogeneracion-explorador` | Rendimiento global y ahorro de energía primaria de una cogeneración | `a` rendimiento eléctrico (%) |
+| `ti2-acv-explorador` | CO₂ por uso de un envase reutilizable frente a uno desechable | `a` usos |
+| `ti2-oee-explorador` | Eficiencia global de un equipo: disponibilidad, rendimiento y calidad | `a` paradas (min) |
+| `ti2-circularidad-explorador` | Índice de circularidad de un producto | `a` material reciclado (%) |
+| `dt1-pitagoras-explorador` | Cuadrados sobre los catetos y la hipotenusa; ternas pitagóricas | `a`, `b` catetos (cm) |
+| `dt1-lugar-geometrico-explorador` | Comprobar si un punto pertenece a una circunferencia, mediatriz, bisectriz o paralelas | `n` lugar (0–3) |
+| `dt1-arco-capaz-explorador` | Arco capaz de un ángulo sobre un segmento: radio, centro y ángulo desde P | `a` ángulo α (°) |
+| `dt1-thales-explorador` | Teorema de Thales: razones entre segmentos y cuarta proporcional | `a`, `b`, `c` (cm) |
+| `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
+| `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
+| `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
+| `dt1-puntos-notables-explorador` | Baricentro, incentro, circuncentro y ortocentro de un triángulo | `n` punto resaltado (0–3) |
+| `dt1-triangulo-datos-explorador` | Existencia, ángulos y clasificación de un triángulo según sus lados | `a`, `b`, `c` (cm) |
+| `dt1-cuadrilatero-explorador` | Tipo, diagonales y área de un paralelogramo | `a`, `b` lados (cm) |
+| `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
+| `dt1-metodo-general-explorador` | Método general de inscripción de polígonos: lado aproximado y error | `n` lados |
+| `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
+| `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
+| `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |
+| `dt1-enlace-explorador` | Enlace tangente entre dos rectas: puntos de tangencia y centro | `a` ángulo (°), `b` radio (cm) |
+| `dt1-ovalo-explorador` | Óvalo de cuatro arcos dados sus semiejes | `a`, `b` semiejes (cm) |
+| `dt1-espiral-evolvente-explorador` | Espiral de dos centros y evolvente de la circunferencia | `n` curva (0–1), `a` semicircunferencias |
+| `dt1-diedrico-punto-explorador` | Épura de un punto: alejamiento, cota y cuadrante | `a` alejamiento, `b` cota (cm) |
+| `dt1-recta-diedrico-explorador` | Proyecciones y trazas de una recta; cuadrantes que atraviesa | `a`, `b` alejamientos de A y B (cm) |
+| `dt1-posiciones-recta-explorador` | Posiciones particulares de la recta y verdadera magnitud | `n` posición (0–6) |
+| `dt1-plano-diedrico-explorador` | Trazas de un plano, tipo e inclinación con los planos de proyección | `a`, `b` ángulos de las trazas (°) |
+| `dt1-pertenencia-plano-explorador` | Pertenencia de un punto a un plano mediante su recta horizontal | `a` x, `b` alejamiento (cm) |
+| `dt1-interseccion-planos-explorador` | Recta intersección de dos planos por sus trazas | `a`, `b` ángulos de las trazas de β (°) |
+| `dt1-planos-paralelos-explorador` | Planos paralelos: trazas homónimas, ángulo y distancia | `a`, `b` ángulos de las trazas de β (°) |
+| `dt1-perpendicular-explorador` | Recta perpendicular a un plano y distancia punto-plano | `a`, `b` ángulos de las trazas (°) |
+| `dt1-distancia-verdadera-explorador` | Distancia entre dos puntos: triángulo de la verdadera magnitud | `a` x, `b` alejamiento de B (cm) |
+| `dt1-axonometria-ortogonal-explorador` | Coeficientes de reducción de la axonometría ortogonal: tipo y ángulos entre ejes | `a`, `b` coeficientes kx y ky |
+| `dt1-isometrica-pieza-explorador` | Pieza en isométrica con agujero y elipse según el coeficiente | `a`, `b`, `c` largo, ancho y alto (cm) |
+| `dt1-caballera-explorador` | Pieza en perspectiva caballera: ángulo y coeficiente de reducción | `a`, `b`, `c` largo, profundidad y alto (cm) |
+| `dt1-axo-punto-plano-explorador` | Punto por sus coordenadas y plano por sus trazas en axonometría | `n` modo (0 punto, 1 plano), `a`, `b` coordenadas |
+| `dt1-recta-acotada-explorador` | Recta acotada: pendiente, intervalo, ángulo y graduación | `a`, `b` avance de B en x e y (m) |
+| `dt1-plano-acotado-explorador` | Plano acotado: horizontales, intervalo y máxima pendiente | `a` pendiente (%), `b` rumbo (°) |
+| `dt1-cubierta-explorador` | Cubierta a cuatro aguas: altura y longitud de la cumbrera, superficie | `a`, `b` largo y ancho de la planta (m) |
+| `dt1-curvas-nivel-explorador` | Curvas de nivel de una colina elíptica: separación y pendiente | `a` altura de la colina (m) |
+| `dt1-perspectiva-conica-explorador` | Perspectiva cónica frontal y oblicua de una caja: puntos de fuga y caras vistas | `n` modo (0–1), `a` distancia, `b` altura del ojo |
+| `dt1-tipos-linea-explorador` | Tipos de línea normalizados y espesores | `n` tipo de línea (0–6) |
+| `dt1-formatos-explorador` | Formatos de la serie A: dimensiones, superficie y márgenes | `a` formato A (0–6) |
+| `dt1-escala-explorador` | Escala normalizada adecuada y escala gráfica | `a` longitud real (mm), `b` espacio disponible (mm) |
+| `dt1-vistas-explorador` | Alzado, planta y perfil izquierdo de una pieza en L | `a`, `b` largo y ancho (mm) |
+| `dt1-acotacion-sistemas-explorador` | Acotación en cadena y en paralelo: acumulación de tolerancias | `a` número de agujeros |
+| `dt1-simbolos-explorador` | Galería de símbolos eléctricos, arquitectónicos y mecánicos | `n` categoría (0–2) |
+| `dt1-coordenadas-cad-explorador` | Coordenadas absolutas, relativas y polares de un punto | `n` modo (0–2), `a`, `b` valores |
+| `dt1-bezier-explorador` | Curva de Bézier cúbica: puntos de control, punto medio y longitud | `a`, `b` coordenadas de P₁ |
+| `dt1-transformaciones-explorador` | Simetría, escala, giro y traslación de un triángulo | `a` factor de escala, `b` giro (°) |
+| `dt1-booleanas-explorador` | Unión, diferencia e intersección de una caja y un cilindro con sus volúmenes | `a`, `b` largo y ancho de la caja (cm) |
+| `dt1-pieza-compuesta-explorador` | Volumen y masa de una pieza compuesta por base, saliente y taladro | `a` largo de la base (mm) |
+| `dt2-catenaria-explorador` | Catenaria y parábola: parámetro, longitud y separación entre curvas | `a` luz, `b` flecha (m) |
+| `dt2-hiperboloide-explorador` | Hiperboloide de una hoja generado por rectas: garganta y longitud de las barras | `a` radio, `b` altura (m) |
+| `dt2-fachada-parametrica-explorador` | Fachada paramétrica con huecos que dependen de un atractor | `a` paneles por lado |
+| `dt2-transformaciones-generales-explorador` | Matriz de una transformación del plano: tipo, determinante y ángulos | `n` ejemplo (0–4) |
+| `dt2-afinidad-explorador` | Afinidad plana de eje, dirección y razón sobre un triángulo | `a` razón k, `b` dirección (°) |
+| `dt2-elipse-afinidad-explorador` | Elipse como afín de una circunferencia: razón, área y focos | `a`, `b` semiejes (cm) |
+| `dt2-homologia-explorador` | Homología plana: homólogos alineados con el centro y rectas límite | `a` parámetro μ (%), `b` posición x del centro |
+| `dt2-abatimiento-afinidad-explorador` | Proyección de una figura plana inclinada como afinidad de razón cos φ | `a` inclinación φ (°) |
+| `dt2-potencia-punto-explorador` | Potencia de un punto: PA·PB = PT² para cualquier secante | `a` radio, `b` distancia, `c` giro (°) |
+| `dt2-eje-radical-explorador` | Eje radical de dos circunferencias y potencias iguales de sus puntos | `a` r₁, `b` r₂, `c` distancia entre centros |
+| `dt2-circulo-dos-puntos-tangente-explorador` | Circunferencias por dos puntos tangentes a una recta (PT² = PA·PB) | `a` altura de A, `b` posición de B |
+| `dt2-tangente-recta-circulo-explorador` | Circunferencias tangentes a una recta en T y a otra circunferencia | `a` posición de T, `b` radio |
+| `dt2-corte-cono-explorador` | Corte de un cono con un plano: tipo de cónica y excentricidad | `a` ángulo del plano β, `b` semiángulo α |
+| `dt2-elipse-focos-explorador` | Elipse: suma de distancias a los focos constante | `a` a, `b` b, `c` posición de P (°) |
+| `dt2-hiperbola-explorador` | Hipérbola: diferencia de distancias a los focos y asíntotas | `a` a, `b` b, `c` posición de P |
+| `dt2-parabola-explorador` | Parábola: equidistancia del foco y de la directriz | `a` f, `b` posición de P |
+| `dt2-tangentes-conicas-explorador` | Tangente a la cónica y ángulos con los radios focales | `n` cónica (0–2), `a` parámetro, `b` posición (°) |
+| `dt2-abatimiento-punto-explorador` | Abatimiento de un punto de un plano: cota, distancia horizontal y distancia real | `a` cota z, `b` inclinación φ (°) |
+| `dt2-verdadera-forma-explorador` | Verdadera forma de un triángulo y sus proyecciones deformadas | `a` inclinación φ (°) |
+| `dt2-giro-recta-explorador` | Giro de una recta alrededor de un eje vertical hasta hacerla frontal | `a` ángulo de giro (°) |
+| `dt2-cambio-plano-explorador` | Cambio de plano vertical: nueva proyección y nuevo alejamiento | `a` ángulo ψ, `b` posición x |
+| `dt2-magnitud-angulos-explorador` | Triángulo de abatimiento: longitud real y ángulos con PH y PV | `a` x de B, `b` alejamiento, `c` cota |
+| `dt2-distancia-punto-recta-explorador` | Distancia de un punto a una recta, vista de punta | `a` x de P, `b` alejamiento, `c` cota |
+| `dt2-solido-diedrico-explorador` | Prisma o pirámide regular en planta y alzado, con volumen y área lateral | `n` 0 prisma / 1 pirámide, `a` lados, `b` radio, `c` altura |
+| `dt2-seccion-prisma-explorador` | Sección de un prisma por un plano proyectante y su verdadera forma | `a` lados, `b` inclinación α, `c` altura de corte |
+| `dt2-seccion-revolucion-explorador` | Sección elíptica de un cilindro o un cono por un plano proyectante | `n` 0 cilindro / 1 cono, `a` α, `b` altura de corte |
+| `dt2-poliedros-regulares-explorador` | Los cinco poliedros regulares: caras, aristas, vértices, área y volumen | `n` poliedro (0–4), `a` arista |
+| `dt2-desarrollo-cuerpos-explorador` | Desarrollo de un cilindro, un cono o una pirámide | `n` cuerpo (0–2), `a` radio, `b` altura |
+| `dt2-solido-isometrico-explorador` | Prisma o pirámide en isométrica con aristas vistas y ocultas | `n` 0 prisma / 1 pirámide, `a` lados, `b` radio, `c` altura |
+| `dt2-caballera-circulos-explorador` | Circunferencias en las tres caras de un cubo en caballera | `a` ángulo α, `b` coeficiente k |
+| `dt2-conica-casa-explorador` | Casa con tejado a dos aguas en perspectiva cónica oblicua | `a` giro (°), `b` distancia, `c` altura del horizonte |
+| `dt2-explanacion-explorador` | Perfil de una explanación: desmonte, terraplén y pie del talud | `a` cota de la plataforma, `b` pendiente del talud, `c` pendiente del terreno |
+| `dt2-elegir-sistema-explorador` | Comparador de sistemas de representación según la necesidad | `n` necesidad (0–4) |
+| `dt2-rosca-metrica-explorador` | Rosca métrica: paso, núcleo, flanco y broca previa | `a` índice de rosca (0–9), `b` longitud (mm) |
+| `dt2-cortes-pieza-explorador` | Pieza con taladro: vista sin corte, corte total y medio corte, con rayado | `n` modo (0–2), `a` diámetro, `b` separación del rayado |
+| `dt2-perfiles-seccion-explorador` | Sección rayada de un perfil: área y masa por metro | `n` perfil (0–3), `a` tamaño, `b` espesor |
+| `dt2-ajuste-tolerancias-explorador` | Ajuste eje–agujero: juego mínimo, máximo y tipo | `a` ES (µm), `b` es (µm) |
+| `dt2-lista-piezas-explorador` | Lista de piezas de un conjunto atornillado con cantidades y masa | `a` número de tornillos |
+| `dt2-huella-material-explorador` | Masa y huella de carbono orientativa según material, volumen y reciclado | `n` material (0–2), `a` volumen, `b` reciclado (%) |
+| `dt2-croquis-restricciones-explorador` | Croquis paramétrico: grados de libertad y estado según las restricciones | `a` lados horizontales, `b` lados verticales |
+| `dt2-modelo-a-vistas-explorador` | Perfil en L extruido: vistas generadas, volumen y masa | `a` ancho, `b` alto, `c` espesor |
+| `fq2-experimento-variables-explorador` | Experimento controlado: variables independiente, dependiente y controladas | `a` masa de agua (g), `b` potencia (W) |
+| `fq2-unidades-prefijos-explorador` | Conversión de unidades con prefijos del SI y notación científica | `a` valor, `b` prefijo origen, `c` prefijo destino |
+| `fq2-medidas-error-explorador` | Media, error absoluto y relativo y cifras significativas de una serie de medidas | `a` número de medidas, `b` cifras significativas |
+| `fq2-grafica-proporcional-explorador` | Gráfica de un muelle: ajustar una recta proporcional a los datos | `a` pendiente (cm/g) |
+| `fq2-instrumentos-laboratorio-explorador` | Elegir el instrumento de laboratorio según el error máximo admitido | `n` magnitud (0–4), `a` nivel de error |
+| `fq2-densidad-flotacion-explorador` | Densidad de un bloque y su flotación en distintos líquidos | `n` líquido (0–3), `a` masa (g), `b` volumen (cm³) |
+| `fq2-estados-propiedades-explorador` | Forma, volumen y compresibilidad de sólidos, líquidos y gases | `n` estado (0–2) |
+| `fq2-modelo-cinetico-explorador` | Partículas de un gas: velocidad y presión según temperatura y volumen | `a` temperatura (K), `b` volumen (%) |
+| `fq2-cambios-estado-explorador` | Los seis cambios de estado y la energía que absorben o desprenden | `n` cambio (0–5) |
+| `fq2-curva-calentamiento-explorador` | Gráfica de calentamiento con tramos de cambio de estado | `n` sustancia (0–3), `a` tiempo (min) |
+| `fq2-clasificacion-materia-explorador` | Clasificar un material: elemento, compuesto o mezcla | `n` material (0–9) |
+| `fq2-concentracion-disolucion-explorador` | Concentración de una disolución: % en masa y g/L | `a` soluto (g), `b` agua (mL) |
+| `fq2-solubilidad-curva-explorador` | Curvas de solubilidad y estado de la disolución | `n` sal (0–1), `a` temperatura, `b` sal añadida (g) |
+| `fq2-separacion-mezclas-explorador` | Elegir la técnica de separación adecuada para cada mezcla | `n` mezcla (0–5) |
+| `fq2-composicion-mezclas-explorador` | Composición porcentual de mezclas cotidianas y masa de cada componente | `n` mezcla (0–4), `a` masa de la muestra (g) |
+| `fq2-modelos-atomicos-explorador` | Los cuatro modelos atómicos: dibujo, idea y limitación | `n` modelo (0–3) |
+| `fq2-construir-atomo-explorador` | Construir un átomo con protones, neutrones y electrones: Z, A y carga | `a` protones, `b` neutrones, `c` electrones |
+| `fq2-iones-isotopos-explorador` | Isótopos e iones de un elemento con su notación | `a` Z, `b` neutrones de más, `c` carga |
+| `fq2-tabla-periodica-explorador` | Los 20 primeros elementos de la tabla periódica | `a` número atómico |
+| `fq2-formulas-moleculas-explorador` | Fórmulas: átomos de cada elemento y masa molecular | `n` sustancia (0–7) |
+| `fq2-cambio-fisico-quimico-explorador` | Distinguir un cambio físico de uno químico en diez fenómenos | `n` fenómeno (0–9) |
+| `fq2-avance-reaccion-explorador` | Avance de una reacción: reactivos que se gastan y productos que aparecen | `n` reacción (0–3), `a` avance (0–4) |
+| `fq2-ajuste-ecuacion-explorador` | Ajustar ecuaciones: átomos y masa a cada lado | `n` reacción (0–3) |
+| `fq2-triangulo-fuego-explorador` | Triángulo del fuego: combustible, comburente y energía | `a` combustible, `b` comburente, `c` energía (0/1) |
+| `fq2-referencia-desplazamiento-explorador` | Distancia recorrida, desplazamiento y posición según el origen | `a` ida (m), `b` vuelta (m), `c` origen (m) |
+| `fq2-velocidad-media-explorador` | Velocidad media en km/h y m/s comparada con referencias cotidianas | `a` distancia (km), `b` tiempo (h) |
+| `fq2-mru-explorador` | Movimiento rectilíneo uniforme: posición según x₀, v y t | `a` x₀ (m), `b` v (m/s), `c` t (s) |
+| `fq2-grafica-posicion-tiempo-explorador` | Gráfica posición-tiempo: pendiente y velocidad | `a` x₀ (m), `b` v (m/s) |
+| `fq2-encuentro-moviles-explorador` | Encuentro de dos móviles con MRU en la gráfica x–t | `a` distancia inicial, `b` v₁, `c` v₂ |
+| `fq2-fuerza-vector-explorador` | Fuerza como vector: módulo, ángulo y componentes | `a` módulo (N), `b` ángulo (°) |
+| `fq2-peso-masa-explorador` | Peso y masa de un cuerpo en la Tierra, la Luna, Marte y Júpiter | `a` masa (kg), `n` astro (0–3) |
+| `fq2-muelle-hooke-explorador` | Ley de Hooke: alargamiento de un muelle según la masa colgada | `a` masa (g), `n` muelle (0–2) |
+| `fq2-rozamiento-explorador` | Rozamiento: fuerza aplicada frente al máximo μ·N | `a` fuerza (N), `n` superficie (0–2) |
+| `fq2-equilibrio-fuerzas-explorador` | Resultante de dos fuerzas opuestas y equilibrio | `a` F₁ (N), `b` F₂ (N) |
+| `fq2-transformaciones-energia-explorador` | Cadenas de transformaciones de energía en seis sistemas | `n` sistema (0–5) |
+| `fq2-cinetica-potencial-explorador` | Energía cinética y potencial según masa, altura y velocidad | `a` masa (kg), `b` altura (m), `c` velocidad (m/s) |
+| `fq2-conservacion-energia-explorador` | Conservación de la energía en una caída, con y sin rozamiento | `a` altura (m), `n` rozamiento (0/1) |
+| `fq2-calor-temperatura-explorador` | Mezcla de agua y temperatura de equilibrio | `a` masa caliente, `b` temperatura caliente, `c` masa fría |
+| `fq2-fuentes-energia-explorador` | Fuentes de energía: renovables y emisiones de CO₂ | `n` fuente (0–7), `a` consumo (kWh) |
+| `fq2-sombras-explorador` | Sombra proyectada por un objeto según distancias | `a` foco–objeto (cm), `b` objeto–pantalla (cm), `c` tamaño (cm) |
+| `fq2-reflexion-explorador` | Reflexión de un rayo en un espejo plano | `a` ángulo de incidencia (°) |
+| `fq2-refraccion-explorador` | Refracción entre aire, agua, vidrio y diamante (ley de Snell) | `a` ángulo (°), `n` medio de arriba (0–3) |
+| `fq2-onda-sonido-explorador` | Onda sonora: frecuencia, amplitud y medio | `a` ciclos (1–10), `b` amplitud, `n` medio (0–3) |
+| `fq2-decibelios-explorador` | Nivel sonoro en decibelios según la distancia | `a` dB a 1 m, `b` distancia (m) |
+| `fq3-pendulo-variables-explorador` | Péndulo: qué variables influyen en el periodo | `a` longitud (m), `b` masa (g), `c` ángulo (°) |
+| `fq3-ordenes-magnitud-explorador` | Escala de tamaños en notación científica | `n` objeto (0–11) |
+| `fq3-factores-conversion-explorador` | Conversión de unidades con factores | `n` conversión (0–3), `a` valor |
+| `fq3-grafica-ajuste-explorador` | Ajuste de una recta a datos del péndulo | `a` pendiente inicial |
+| `fq3-niveles-bohr-explorador` | Niveles de energía de Bohr y fotón emitido | `a` nivel inicial (1–6), `b` nivel final (1–6) |
+| `fq3-masa-atomica-media-explorador` | Masa atómica media según la abundancia de isótopos | `n` elemento (0–3) |
+| `fq3-configuracion-electronica-explorador` | Distribución de electrones en capas (Z = 1–20) | `a` número atómico (1–20) |
+| `fq3-propiedades-periodicas-explorador` | Radio atómico y electronegatividad en periodos y grupos | `n` serie (0–3), `a` propiedad (0 radio / 1 electronegatividad) |
+| `fq3-sustancias-explorador` | De los átomos a las sustancias: clase, partículas y enlace | `n` sustancia (0–6) |
+| `fq3-enlace-ionico-explorador` | Iones y fórmula de compuestos iónicos binarios | `a` metal (0–5), `b` no metal (0–4) |
+| `fq3-enlace-covalente-explorador` | Moléculas y pares de electrones compartidos | `n` molécula (0–7) |
+| `fq3-propiedades-enlace-explorador` | Propiedades según el tipo de enlace | `n` tipo (0–3) |
+| `fq3-mol-explorador` | Masa molar, moles y partículas | `n` sustancia (0–7), `a` masa (g) |
+| `fq3-nomenclatura-explorador` | Nombre y fórmula de compuestos iónicos | `a` metal (0–5), `b` no metal (0–4) |
+| `fq3-estequiometria-masas-explorador` | Cálculo de masas en una reacción ajustada | `n` reacción (0–4), `a` masa del primer reactivo (g) |
+| `fq3-velocidad-reaccion-explorador` | Factores que modifican la velocidad de reacción | `a` temperatura (°C), `b` concentración, `c` trozos, `n` catalizador (0/1) |
+| `fq3-reacciones-entorno-explorador` | Reacciones del entorno y balance de energía | `n` reacción (0–4) |
+| `fq3-emisiones-combustion-explorador` | CO₂ emitido al quemar combustibles | `n` combustible (0–4), `a` masa (kg) |
+| `fq3-concentraciones-explorador` | Concentración en g/L, % masa/volumen y molaridad | `n` soluto (0–1), `a` masa (g), `b` volumen (mL) |
+| `fq3-cristalizacion-explorador` | Cristalización de una sal al enfriar | `n` sal (0 nitrato / 1 cloruro), `a` g disueltos, `b` temperatura (°C) |
+| `fq3-dilucion-explorador` | Dilución: C₁V₁ = C₂V₂ | `a` C₁ (g/L), `b` V₁ (mL), `c` V₂ (mL) |
+| `fq3-separacion-etapas-explorador` | Separación de mezclas por etapas | `n` mezcla (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

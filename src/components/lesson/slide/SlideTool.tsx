@@ -2,6 +2,78 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
+import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
+import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
+import { NivelesBohrFq3Explorador, MasaAtomicaMediaFq3Explorador, ConfiguracionElectronicaFq3Explorador, PropiedadesPeriodicasFq3Explorador } from "@/components/lesson/slide/tools/Fq3AtomoTools";
+import { PenduloVariablesFq3Explorador, OrdenesMagnitudFq3Explorador, FactoresConversionFq3Explorador, GraficaAjusteFq3Explorador } from "@/components/lesson/slide/tools/Fq3TrabajoTools";
+import { SombrasFq2Explorador, ReflexionFq2Explorador, RefraccionFq2Explorador, OndaSonidoFq2Explorador, DecibeliosFq2Explorador } from "@/components/lesson/slide/tools/Fq2LuzSonidoTools";
+import { TransformacionesEnergiaFq2Explorador, CineticaPotencialFq2Explorador, ConservacionEnergiaFq2Explorador, CalorTemperaturaFq2Explorador, FuentesEnergiaFq2Explorador } from "@/components/lesson/slide/tools/Fq2EnergiaTools";
+import { FuerzaVectorFq2Explorador, PesoMasaFq2Explorador, MuelleHookeFq2Explorador, RozamientoFq2Explorador, EquilibrioFuerzasFq2Explorador } from "@/components/lesson/slide/tools/Fq2FuerzasTools";
+import { ReferenciaDesplazamientoFq2Explorador, VelocidadMediaFq2Explorador, MruFq2Explorador, GraficaPosicionTiempoFq2Explorador, EncuentroMovilesFq2Explorador } from "@/components/lesson/slide/tools/Fq2MovimientoTools";
+import { CambioFisicoQuimicoFq2Explorador, AvanceReaccionFq2Explorador, AjusteEcuacionFq2Explorador, TrianguloFuegoFq2Explorador } from "@/components/lesson/slide/tools/Fq2ReaccionesTools";
+import { ModelosAtomicosFq2Explorador, ConstruirAtomoFq2Explorador, IonesIsotoposFq2Explorador, TablaPeriodicaFq2Explorador, FormulasMoleculasFq2Explorador } from "@/components/lesson/slide/tools/Fq2AtomoTools";
+import { ClasificacionMateriaFq2Explorador, ConcentracionDisolucionFq2Explorador, SolubilidadCurvaFq2Explorador, SeparacionMezclasFq2Explorador, ComposicionMezclasFq2Explorador } from "@/components/lesson/slide/tools/Fq2MezclasTools";
+import { DensidadFlotacionFq2Explorador, EstadosPropiedadesFq2Explorador, ModeloCineticoFq2Explorador, CambiosEstadoFq2Explorador, CurvaCalentamientoFq2Explorador } from "@/components/lesson/slide/tools/Fq2MateriaTools";
+import { ExperimentoVariablesFq2Explorador, UnidadesPrefijosFq2Explorador, MedidasErrorFq2Explorador, GraficaProporcionalFq2Explorador, InstrumentosLaboratorioFq2Explorador } from "@/components/lesson/slide/tools/Fq2MedidaTools";
+import { CroquisRestriccionesDt2Explorador, ModeloAVistasDt2Explorador } from "@/components/lesson/slide/tools/DtIICadTools";
+import { RoscaMetricaDt2Explorador, CortesPiezaDt2Explorador, PerfilesSeccionDt2Explorador, AjusteToleranciasDt2Explorador, ListaPiezasDt2Explorador, HuellaMaterialDt2Explorador } from "@/components/lesson/slide/tools/DtIINormalizacionTools";
+import { SolidoIsometricoDt2Explorador, CaballeraCirculosDt2Explorador, ConicaCasaDt2Explorador, ExplanacionDt2Explorador, ElegirSistemaDt2Explorador } from "@/components/lesson/slide/tools/DtIISolidosAxoTools";
+import { SolidoDiedricoDt2Explorador, SeccionPrismaDt2Explorador, SeccionRevolucionDt2Explorador, PoliedrosRegularesDt2Explorador, DesarrolloCuerposDt2Explorador } from "@/components/lesson/slide/tools/DtIICuerposTools";
+import { AbatimientoPuntoDt2Explorador, VerdaderaFormaDt2Explorador, GiroRectaDt2Explorador, CambioPlanoDt2Explorador, MagnitudAngulosDt2Explorador, DistanciaPuntoRectaDt2Explorador } from "@/components/lesson/slide/tools/DtIIDiedricoAvanzadoTools";
+import { CorteConoDt2Explorador, ElipseFocosDt2Explorador, HiperbolaDt2Explorador, ParabolaDt2Explorador, TangentesConicasDt2Explorador } from "@/components/lesson/slide/tools/DtIIConicasTools";
+import { PotenciaPuntoDt2Explorador, EjeRadicalDt2Explorador, CirculoDosPuntosTangenteDt2Explorador, TangenteRectaCirculoDt2Explorador } from "@/components/lesson/slide/tools/DtIIPotenciaTools";
+import { TransformacionesGeneralesDt2Explorador, AfinidadDt2Explorador, ElipseAfinidadDt2Explorador, HomologiaDt2Explorador, AbatimientoAfinidadDt2Explorador } from "@/components/lesson/slide/tools/DtIITransformacionesTools";
+import { CatenariaDt2Explorador, HiperboloideDt2Explorador, FachadaParametricaDt2Explorador } from "@/components/lesson/slide/tools/DtIIArquitecturaTools";
+import { CoordenadasCadDt1Explorador, BezierDt1Explorador, TransformacionesDt1Explorador, BooleanasDt1Explorador, PiezaCompuestaDt1Explorador } from "@/components/lesson/slide/tools/DtCadTools";
+import { TiposLineaDt1Explorador, FormatosDt1Explorador, EscalaDt1Explorador, VistasDt1Explorador, AcotacionSistemasDt1Explorador, SimbolosDt1Explorador } from "@/components/lesson/slide/tools/DtNormalizacionTools";
+import { PerspectivaConicaDt1Explorador } from "@/components/lesson/slide/tools/DtConicoTools";
+import { RectaAcotadaDt1Explorador, PlanoAcotadoDt1Explorador, CubiertaDt1Explorador, CurvasNivelDt1Explorador } from "@/components/lesson/slide/tools/DtAcotadosTools";
+import { AxonometriaOrtogonalDt1Explorador, IsometricaPiezaDt1Explorador, CaballeraDt1Explorador, PuntoPlanoAxoDt1Explorador } from "@/components/lesson/slide/tools/DtAxonometricoTools";
+import { InterseccionPlanosDt1Explorador, PlanosParalelosDt1Explorador, PerpendicularPlanoDt1Explorador, DistanciaPuntosDt1Explorador } from "@/components/lesson/slide/tools/DtDiedrico2Tools";
+import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
+import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
+import { PuntosNotablesDt1Explorador, TrianguloDatosDt1Explorador, CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, MetodoGeneralDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
+import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador, ThalesExplorador, MediaProporcionalExplorador, EquivalenciaExplorador, HomoteciaDt1Explorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
+import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
+import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
+import { SenoidalExplorador, RlcExplorador, PotenciasExplorador, CorreccionFpExplorador, TrifasicaExplorador } from "@/components/lesson/slide/tools/TecTi2AlternaTools";
+import { DisponibilidadExplorador, SqlExplorador, VolumenDatosExplorador, ClasificadorExplorador, ConfusionExplorador, CifradoExplorador, PrivacidadExplorador } from "@/components/lesson/slide/tools/TecTi2InformaticaTools";
+import { CargaRepartidaExplorador, ReaccionesExplorador, FlexionTi2Explorador, TorsionExplorador, CortaduraExplorador, PandeoVuelcoExplorador } from "@/components/lesson/slide/tools/TecTi2EstructurasTools";
+import { MicrometroExplorador, PolimetroEso4Explorador, ApiladoExplorador, Impresion3dFlujoExplorador, PistaPcbExplorador } from "@/components/lesson/slide/tools/TecEso4TallerTools";
+import { HuellaHogarExplorador, AutoconsumoExplorador, CertificadoExplorador, RepararExplorador, AccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso4SostenibleTools";
+import { CasaCalidadExplorador, VistasExplorador, PertExplorador, ViabilidadExplorador } from "@/components/lesson/slide/tools/TecEso4ProyectosTools";
+import { HookeEso4Explorador, BrinellEso4Explorador, CharpyEso4Explorador, AceroExplorador, AjusteExplorador, CalidadExplorador } from "@/components/lesson/slide/tools/TecEso4MaterialesTools";
+import { TransmisionExplorador, ReductoraExplorador, BielaManivelaPosExplorador, RozamientoExplorador, CintaTransportadoraExplorador } from "@/components/lesson/slide/tools/TecEso4MecanicaTools";
+import { ReguladorExplorador, MotorEncoderExplorador, RobotDiferencialExplorador, SecuenciaExplorador, ProtocoloIotExplorador } from "@/components/lesson/slide/tools/TecEso4ControlTools";
+import { DescomposicionExplorador, BusquedaExplorador, OrdenacionExplorador, DatosTemperaturasExplorador, ComplejidadExplorador } from "@/components/lesson/slide/tools/TecEso4ComputacionalTools";
+import { AlternaExplorador, PotenciaEnergiaExplorador, CircuitoMixtoExplorador, FuenteAlimentacionExplorador, TransistorBetaExplorador, Temporizador555Explorador, BooleExplorador } from "@/components/lesson/slide/tools/TecEso4ElectronicaTools";
+import { SolarFvExplorador, EolicaExplorador, AislamientoExplorador, TransporteCo2Explorador, HidraulicaExplorador } from "@/components/lesson/slide/tools/TecEso3SostenibleTools";
+import { EspecificacionesExplorador, SimulacionVigaExplorador, CosteProyectoExplorador } from "@/components/lesson/slide/tools/TecEso3ProyectosTools";
+import { PrestacionesExplorador, FundicionExplorador, CorteTornoExplorador, UnionExplorador, ImpactoMaterialExplorador, CorteLaserExplorador, MatrizRiesgosExplorador } from "@/components/lesson/slide/tools/TecEso3MaterialesTools";
+import { CadenaPinonExplorador, SinFinCoronaEso3Explorador, LevaSeguidorEso3Explorador, CajaCambiosExplorador, RendimientoCadenaExplorador, GruaPolipastoExplorador, LavadoraCentrifugadoExplorador } from "@/components/lesson/slide/tools/TecEso3MecanismosTools";
+import { PerifericoExplorador, TopologiaExplorador, DireccionIpExplorador, WifiExplorador, PaquetesExplorador, BateriaIotExplorador, ClaveWifiExplorador } from "@/components/lesson/slide/tools/TecEso3RedesTools";
+import { BlinkExplorador, PullPulsadorExplorador, LecturaAnalogicaExplorador, PwmServoExplorador, PuenteHExplorador, SeguidorLineaExplorador, UltrasonidoExplorador, RobotPruebasExplorador } from "@/components/lesson/slide/tools/TecEso3RoboticaTools";
+import { SistemaIpsExplorador, LazoControlExplorador, ConversorAdcExplorador, PuertasLogicasExplorador, AlarmaLogicaExplorador, PuertaGarajeExplorador, RiegoAutomaticoExplorador } from "@/components/lesson/slide/tools/TecEso3ControlTools";
+import { ConductorExplorador, CodigoColoresExplorador, LedResistenciaExplorador, TransistorLlaveExplorador, SensorDivisorExplorador, CondensadorRcExplorador, ProtoboardExplorador, ComparadorExplorador, LuzAutomaticaExplorador } from "@/components/lesson/slide/tools/TecEso3ElectronicaTools";
+import { CicloVidaFasesExplorador, EtiquetaEnergeticaExplorador, ResiduosHogarExplorador, DisenoUniversalExplorador, HuellaDigitalExplorador } from "@/components/lesson/slide/tools/TecEso2SostenibleTools";
+import { SistemaRecursosExplorador, RutasExplorador, HojaCalculoExplorador, FormatoImagenExplorador, SubidaNubeExplorador, TiempoPantallaExplorador } from "@/components/lesson/slide/tools/TecEso2DigitalTools";
+import { RequisitosProyectoExplorador, ScamperExplorador, SeleccionIdeasExplorador, GanttProyectoExplorador, PruebasPrototipoExplorador, MemoriaProyectoExplorador } from "@/components/lesson/slide/tools/TecEso2ProyectoTools";
+import { DensidadMaterialesExplorador, CurvaTraccionExplorador, DespieceTableroExplorador, MatrizDecisionMaterialesExplorador, TecnicaTallerExplorador, CalibreExplorador, Impresion3dEsoExplorador } from "@/components/lesson/slide/tools/TecEso2MaterialesTools";
+import { PiezaVistasExplorador, EscalaConversionExplorador, PerspectivaConicaExplorador, PlanoViviendaExplorador, CadComandosExplorador, SolidoOperacionesExplorador, LaminaExplorador } from "@/components/lesson/slide/tools/TecEso2DibujoTools";
+import { TrazaExplorador, TiposDatosExplorador, OperadoresExplorador, FuncionProgramaExplorador, PruebasExplorador, AdivinaExplorador } from "@/components/lesson/slide/tools/TecEso2ProgramacionTools";
+import { TensionExplorador, PerfilCantoExplorador, VentajaMecanicaExplorador, TrenTransmisionExplorador, PoleasCorreasCalcExplorador, TransformacionExplorador, ElevadorExplorador } from "@/components/lesson/slide/tools/TecEso2MecanicaTools";
+import { AnalogiaAguaExplorador, OhmIncognitaExplorador, FacturaExplorador, SerieParaleloCalcExplorador, MixtoExplorador, PolimetroExplorador, FalloCircuitoExplorador } from "@/components/lesson/slide/tools/TecEso2ElectricidadTools";
+import { CadPlacaExplorador, ExtrusionExplorador, DiapositivaLegibleExplorador, ClasificadorIaExplorador, AppEventosExplorador } from "@/components/lesson/slide/tools/TecEso1ComunicacionTools";
+import { DispositivoComponentesExplorador, DiagnosticoTecnicoExplorador, CapacidadAlmacenamientoExplorador, CopiaSeguridadExplorador, TiempoDescargaExplorador, BusquedaOperadoresExplorador, ContrasenaFortalezaExplorador, SituacionesDigitalesExplorador, LicenciasCcExplorador } from "@/components/lesson/slide/tools/TecEso1DigitalTools";
+import { HuellaProductoExplorador, ConsumoHabitosExplorador, AhorroEnergiaExplorador, TiempoDescomposicionExplorador, LinealCircularEsoExplorador, RampaAccesibilidadExplorador } from "@/components/lesson/slide/tools/TecEso1SostenibleTools";
+import { AlgoritmoOrdenaExplorador, ProgramaBloquesExplorador, FlujoSencilloExplorador, VariablesCajasExplorador, CondicionesExplorador, DepuraProgramaExplorador } from "@/components/lesson/slide/tools/TecEso1ComputacionalTools";
+import { ConductoresAislantesExplorador, CircuitoSimpleExplorador, SimbolosElectricosExplorador, ControlLuzExplorador, SerieParaleloExplorador, MontajeCircuitoExplorador, SeguridadElectricaExplorador } from "@/components/lesson/slide/tools/TecEso1ElectricidadTools";
+import { MovimientosExplorador, PalancaEquilibrioExplorador, PoleasAparejoExplorador, RuedaEjeExplorador, EngranajesEsoExplorador, TrenEngranajesExplorador, BiciMarchasExplorador } from "@/components/lesson/slide/tools/TecEso1MecanismosTools";
+import { EsfuerzosBarraExplorador, VigaFlexionExplorador, EstabilidadExplorador, TriangulacionExplorador, PuentesTiposExplorador, EnsayoPuenteExplorador } from "@/components/lesson/slide/tools/TecEso1EstructurasTools";
+import { EnsayoMaterialExplorador, PropiedadesBarrasExplorador, MaderaDerivadosExplorador, MetalesPruebaExplorador, PlasticoCalorExplorador, SeleccionMaterialEsoExplorador, TallerPeligrosExplorador, ContenedoresReciclajeExplorador } from "@/components/lesson/slide/tools/TecEso1MaterialesTools";
+import { TrazadosBasicosExplorador, AcotacionExplorador, EscalaDibujoExplorador, VistasPiezaExplorador, PerspectivaExplorador } from "@/components/lesson/slide/tools/TecEso1GraficaTools";
+import { AnalisisObjetoExplorador, LineaTiempoExplorador, PresupuestoExplorador, RepartoTareasExplorador, FuenteFiableExplorador } from "@/components/lesson/slide/tools/TecEso1ProcesoTools";
 import { IndicadoresDecisionExplorador, MapaRecursosExplorador, EdificioEficienciaExplorador, ProductoImpactoExplorador, EconomiaCircularExplorador, ParqueRenovableExplorador, AcvExplorador, GruposAfectadosExplorador } from "@/components/lesson/slide/tools/Tec1SostenibleTools";
 import { FabricaModosExplorador, BloquesControlExplorador, SensoresHabitacionExplorador, ActuadoresExplorador, PlacaVirtualExplorador, SenalUmbralExplorador, CompuertasAlarmaExplorador, TermostatoLazoExplorador, LineaClasificacionExplorador, RobotCuadriculaExplorador } from "@/components/lesson/slide/tools/Tec1AutomaticosTools";
 import { OrdenadorComponentesExplorador, ProcesosMemoriaExplorador, PermisosArchivosExplorador, TextoBinarioExplorador, TamanoArchivoExplorador, DiagramaFlujoExplorador, PythonTrazaExplorador, TestsAutomaticosExplorador } from "@/components/lesson/slide/tools/Tec1ProgramacionTools";
@@ -1335,6 +1407,790 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AcvExplorador block={block} />;
     case "grupos-afectados-explorador":
       return <GruposAfectadosExplorador block={block} />;
+    case "analisis-objeto-explorador":
+      return <AnalisisObjetoExplorador block={block} />;
+    case "linea-tiempo-explorador":
+      return <LineaTiempoExplorador block={block} />;
+    case "presupuesto-explorador":
+      return <PresupuestoExplorador block={block} />;
+    case "reparto-tareas-explorador":
+      return <RepartoTareasExplorador block={block} />;
+    case "fuente-fiable-explorador":
+      return <FuenteFiableExplorador block={block} />;
+    case "trazados-basicos-explorador":
+      return <TrazadosBasicosExplorador block={block} />;
+    case "acotacion-explorador":
+      return <AcotacionExplorador block={block} />;
+    case "escala-dibujo-explorador":
+      return <EscalaDibujoExplorador block={block} />;
+    case "vistas-pieza-explorador":
+      return <VistasPiezaExplorador block={block} />;
+    case "perspectiva-explorador":
+      return <PerspectivaExplorador block={block} />;
+    case "ensayo-material-explorador":
+      return <EnsayoMaterialExplorador block={block} />;
+    case "materiales-propiedades-explorador":
+      return <PropiedadesBarrasExplorador block={block} />;
+    case "madera-derivados-explorador":
+      return <MaderaDerivadosExplorador block={block} />;
+    case "metales-prueba-explorador":
+      return <MetalesPruebaExplorador block={block} />;
+    case "plastico-calor-explorador":
+      return <PlasticoCalorExplorador block={block} />;
+    case "seleccion-material-eso-explorador":
+      return <SeleccionMaterialEsoExplorador block={block} />;
+    case "taller-peligros-explorador":
+      return <TallerPeligrosExplorador block={block} />;
+    case "contenedores-reciclaje-explorador":
+      return <ContenedoresReciclajeExplorador block={block} />;
+    case "esfuerzos-barra-explorador":
+      return <EsfuerzosBarraExplorador block={block} />;
+    case "viga-flexion-explorador":
+      return <VigaFlexionExplorador block={block} />;
+    case "estabilidad-explorador":
+      return <EstabilidadExplorador block={block} />;
+    case "triangulacion-explorador":
+      return <TriangulacionExplorador block={block} />;
+    case "puentes-tipos-explorador":
+      return <PuentesTiposExplorador block={block} />;
+    case "ensayo-puente-explorador":
+      return <EnsayoPuenteExplorador block={block} />;
+    case "movimientos-explorador":
+      return <MovimientosExplorador block={block} />;
+    case "palanca-equilibrio-explorador":
+      return <PalancaEquilibrioExplorador block={block} />;
+    case "poleas-aparejo-explorador":
+      return <PoleasAparejoExplorador block={block} />;
+    case "rueda-eje-explorador":
+      return <RuedaEjeExplorador block={block} />;
+    case "engranajes-eso-explorador":
+      return <EngranajesEsoExplorador block={block} />;
+    case "tren-engranajes-explorador":
+      return <TrenEngranajesExplorador block={block} />;
+    case "bici-marchas-explorador":
+      return <BiciMarchasExplorador block={block} />;
+    case "conductores-aislantes-explorador":
+      return <ConductoresAislantesExplorador block={block} />;
+    case "circuito-simple-explorador":
+      return <CircuitoSimpleExplorador block={block} />;
+    case "simbolos-electricos-explorador":
+      return <SimbolosElectricosExplorador block={block} />;
+    case "control-luz-explorador":
+      return <ControlLuzExplorador block={block} />;
+    case "serie-paralelo-explorador":
+      return <SerieParaleloExplorador block={block} />;
+    case "montaje-circuito-explorador":
+      return <MontajeCircuitoExplorador block={block} />;
+    case "seguridad-electrica-explorador":
+      return <SeguridadElectricaExplorador block={block} />;
+    case "algoritmo-ordena-explorador":
+      return <AlgoritmoOrdenaExplorador block={block} />;
+    case "programa-bloques-explorador":
+      return <ProgramaBloquesExplorador block={block} />;
+    case "flujo-sencillo-explorador":
+      return <FlujoSencilloExplorador block={block} />;
+    case "variables-cajas-explorador":
+      return <VariablesCajasExplorador block={block} />;
+    case "condiciones-explorador":
+      return <CondicionesExplorador block={block} />;
+    case "depura-programa-explorador":
+      return <DepuraProgramaExplorador block={block} />;
+    case "huella-producto-explorador":
+      return <HuellaProductoExplorador block={block} />;
+    case "consumo-habitos-explorador":
+      return <ConsumoHabitosExplorador block={block} />;
+    case "ahorro-energia-explorador":
+      return <AhorroEnergiaExplorador block={block} />;
+    case "tiempo-descomposicion-explorador":
+      return <TiempoDescomposicionExplorador block={block} />;
+    case "lineal-circular-eso-explorador":
+      return <LinealCircularEsoExplorador block={block} />;
+    case "rampa-accesibilidad-explorador":
+      return <RampaAccesibilidadExplorador block={block} />;
+    case "dispositivo-componentes-explorador":
+      return <DispositivoComponentesExplorador block={block} />;
+    case "diagnostico-tecnico-explorador":
+      return <DiagnosticoTecnicoExplorador block={block} />;
+    case "capacidad-almacenamiento-explorador":
+      return <CapacidadAlmacenamientoExplorador block={block} />;
+    case "copia-seguridad-explorador":
+      return <CopiaSeguridadExplorador block={block} />;
+    case "tiempo-descarga-explorador":
+      return <TiempoDescargaExplorador block={block} />;
+    case "busqueda-operadores-explorador":
+      return <BusquedaOperadoresExplorador block={block} />;
+    case "contrasena-fortaleza-explorador":
+      return <ContrasenaFortalezaExplorador block={block} />;
+    case "situaciones-digitales-explorador":
+      return <SituacionesDigitalesExplorador block={block} />;
+    case "licencias-cc-explorador":
+      return <LicenciasCcExplorador block={block} />;
+    case "cad-placa-explorador":
+      return <CadPlacaExplorador block={block} />;
+    case "extrusion-explorador":
+      return <ExtrusionExplorador block={block} />;
+    case "diapositiva-legible-explorador":
+      return <DiapositivaLegibleExplorador block={block} />;
+    case "clasificador-ia-explorador":
+      return <ClasificadorIaExplorador block={block} />;
+    case "app-eventos-explorador":
+      return <AppEventosExplorador block={block} />;
+    case "eso2-analogia-agua-explorador":
+      return <AnalogiaAguaExplorador block={block} />;
+    case "eso2-ohm-incognita-explorador":
+      return <OhmIncognitaExplorador block={block} />;
+    case "eso2-factura-explorador":
+      return <FacturaExplorador block={block} />;
+    case "eso2-serie-paralelo-explorador":
+      return <SerieParaleloCalcExplorador block={block} />;
+    case "eso2-mixto-explorador":
+      return <MixtoExplorador block={block} />;
+    case "eso2-polimetro-explorador":
+      return <PolimetroExplorador block={block} />;
+    case "eso2-fallo-explorador":
+      return <FalloCircuitoExplorador block={block} />;
+    case "eso2-tension-explorador":
+      return <TensionExplorador block={block} />;
+    case "eso2-perfil-canto-explorador":
+      return <PerfilCantoExplorador block={block} />;
+    case "eso2-ventaja-mecanica-explorador":
+      return <VentajaMecanicaExplorador block={block} />;
+    case "eso2-tren-transmision-explorador":
+      return <TrenTransmisionExplorador block={block} />;
+    case "eso2-poleas-correas-explorador":
+      return <PoleasCorreasCalcExplorador block={block} />;
+    case "eso2-transformacion-explorador":
+      return <TransformacionExplorador block={block} />;
+    case "eso2-elevador-explorador":
+      return <ElevadorExplorador block={block} />;
+    case "eso2-traza-explorador":
+      return <TrazaExplorador block={block} />;
+    case "eso2-tipos-datos-explorador":
+      return <TiposDatosExplorador block={block} />;
+    case "eso2-operadores-explorador":
+      return <OperadoresExplorador block={block} />;
+    case "eso2-funcion-explorador":
+      return <FuncionProgramaExplorador block={block} />;
+    case "eso2-pruebas-explorador":
+      return <PruebasExplorador block={block} />;
+    case "eso2-adivina-explorador":
+      return <AdivinaExplorador block={block} />;
+    case "eso2-pieza-vistas-explorador":
+      return <PiezaVistasExplorador block={block} />;
+    case "eso2-escala-conversion-explorador":
+      return <EscalaConversionExplorador block={block} />;
+    case "eso2-conica-explorador":
+      return <PerspectivaConicaExplorador block={block} />;
+    case "eso2-plano-vivienda-explorador":
+      return <PlanoViviendaExplorador block={block} />;
+    case "eso2-cad-comandos-explorador":
+      return <CadComandosExplorador block={block} />;
+    case "eso2-solido-operaciones-explorador":
+      return <SolidoOperacionesExplorador block={block} />;
+    case "eso2-lamina-explorador":
+      return <LaminaExplorador block={block} />;
+    case "eso2-densidad-explorador":
+      return <DensidadMaterialesExplorador block={block} />;
+    case "eso2-curva-traccion-explorador":
+      return <CurvaTraccionExplorador block={block} />;
+    case "eso2-despiece-tablero-explorador":
+      return <DespieceTableroExplorador block={block} />;
+    case "eso2-matriz-decision-explorador":
+      return <MatrizDecisionMaterialesExplorador block={block} />;
+    case "eso2-tecnica-taller-explorador":
+      return <TecnicaTallerExplorador block={block} />;
+    case "eso2-calibre-explorador":
+      return <CalibreExplorador block={block} />;
+    case "eso2-impresion3d-explorador":
+      return <Impresion3dEsoExplorador block={block} />;
+    case "eso2-requisitos-explorador":
+      return <RequisitosProyectoExplorador block={block} />;
+    case "eso2-scamper-explorador":
+      return <ScamperExplorador block={block} />;
+    case "eso2-seleccion-ideas-explorador":
+      return <SeleccionIdeasExplorador block={block} />;
+    case "eso2-gantt-explorador":
+      return <GanttProyectoExplorador block={block} />;
+    case "eso2-pruebas-prototipo-explorador":
+      return <PruebasPrototipoExplorador block={block} />;
+    case "eso2-memoria-explorador":
+      return <MemoriaProyectoExplorador block={block} />;
+    case "eso2-sistema-recursos-explorador":
+      return <SistemaRecursosExplorador block={block} />;
+    case "eso2-rutas-explorador":
+      return <RutasExplorador block={block} />;
+    case "eso2-hoja-calculo-explorador":
+      return <HojaCalculoExplorador block={block} />;
+    case "eso2-formato-imagen-explorador":
+      return <FormatoImagenExplorador block={block} />;
+    case "eso2-subida-nube-explorador":
+      return <SubidaNubeExplorador block={block} />;
+    case "eso2-tiempo-pantalla-explorador":
+      return <TiempoPantallaExplorador block={block} />;
+    case "eso2-ciclo-vida-fases-explorador":
+      return <CicloVidaFasesExplorador block={block} />;
+    case "eso2-etiqueta-energetica-explorador":
+      return <EtiquetaEnergeticaExplorador block={block} />;
+    case "eso2-residuos-hogar-explorador":
+      return <ResiduosHogarExplorador block={block} />;
+    case "eso2-diseno-universal-explorador":
+      return <DisenoUniversalExplorador block={block} />;
+    case "eso2-huella-digital-explorador":
+      return <HuellaDigitalExplorador block={block} />;
+    case "eso3-conductor-explorador":
+      return <ConductorExplorador block={block} />;
+    case "eso3-codigo-colores-explorador":
+      return <CodigoColoresExplorador block={block} />;
+    case "eso3-led-resistencia-explorador":
+      return <LedResistenciaExplorador block={block} />;
+    case "eso3-transistor-explorador":
+      return <TransistorLlaveExplorador block={block} />;
+    case "eso3-sensor-divisor-explorador":
+      return <SensorDivisorExplorador block={block} />;
+    case "eso3-condensador-explorador":
+      return <CondensadorRcExplorador block={block} />;
+    case "eso3-protoboard-explorador":
+      return <ProtoboardExplorador block={block} />;
+    case "eso3-comparador-explorador":
+      return <ComparadorExplorador block={block} />;
+    case "eso3-luz-automatica-explorador":
+      return <LuzAutomaticaExplorador block={block} />;
+    case "eso3-sistema-ips-explorador":
+      return <SistemaIpsExplorador block={block} />;
+    case "eso3-lazo-control-explorador":
+      return <LazoControlExplorador block={block} />;
+    case "eso3-conversor-adc-explorador":
+      return <ConversorAdcExplorador block={block} />;
+    case "eso3-puertas-explorador":
+      return <PuertasLogicasExplorador block={block} />;
+    case "eso3-alarma-explorador":
+      return <AlarmaLogicaExplorador block={block} />;
+    case "eso3-puerta-garaje-explorador":
+      return <PuertaGarajeExplorador block={block} />;
+    case "eso3-riego-explorador":
+      return <RiegoAutomaticoExplorador block={block} />;
+    case "eso3-blink-explorador":
+      return <BlinkExplorador block={block} />;
+    case "eso3-pull-explorador":
+      return <PullPulsadorExplorador block={block} />;
+    case "eso3-lectura-analogica-explorador":
+      return <LecturaAnalogicaExplorador block={block} />;
+    case "eso3-pwm-explorador":
+      return <PwmServoExplorador block={block} />;
+    case "eso3-puente-h-explorador":
+      return <PuenteHExplorador block={block} />;
+    case "eso3-seguidor-explorador":
+      return <SeguidorLineaExplorador block={block} />;
+    case "eso3-ultrasonido-explorador":
+      return <UltrasonidoExplorador block={block} />;
+    case "eso3-robot-pruebas-explorador":
+      return <RobotPruebasExplorador block={block} />;
+    case "eso3-periferico-explorador":
+      return <PerifericoExplorador block={block} />;
+    case "eso3-topologia-explorador":
+      return <TopologiaExplorador block={block} />;
+    case "eso3-ip-explorador":
+      return <DireccionIpExplorador block={block} />;
+    case "eso3-wifi-explorador":
+      return <WifiExplorador block={block} />;
+    case "eso3-paquetes-explorador":
+      return <PaquetesExplorador block={block} />;
+    case "eso3-bateria-iot-explorador":
+      return <BateriaIotExplorador block={block} />;
+    case "eso3-clave-wifi-explorador":
+      return <ClaveWifiExplorador block={block} />;
+    case "eso3-cadena-pinon-explorador":
+      return <CadenaPinonExplorador block={block} />;
+    case "eso3-sin-fin-explorador":
+      return <SinFinCoronaEso3Explorador block={block} />;
+    case "eso3-leva-explorador":
+      return <LevaSeguidorEso3Explorador block={block} />;
+    case "eso3-caja-cambios-explorador":
+      return <CajaCambiosExplorador block={block} />;
+    case "eso3-rendimiento-explorador":
+      return <RendimientoCadenaExplorador block={block} />;
+    case "eso3-grua-explorador":
+      return <GruaPolipastoExplorador block={block} />;
+    case "eso3-lavadora-explorador":
+      return <LavadoraCentrifugadoExplorador block={block} />;
+    case "eso3-prestaciones-explorador":
+      return <PrestacionesExplorador block={block} />;
+    case "eso3-fundicion-explorador":
+      return <FundicionExplorador block={block} />;
+    case "eso3-corte-explorador":
+      return <CorteTornoExplorador block={block} />;
+    case "eso3-union-explorador":
+      return <UnionExplorador block={block} />;
+    case "eso3-impacto-material-explorador":
+      return <ImpactoMaterialExplorador block={block} />;
+    case "eso3-laser-explorador":
+      return <CorteLaserExplorador block={block} />;
+    case "eso3-riesgos-explorador":
+      return <MatrizRiesgosExplorador block={block} />;
+    case "eso3-especificaciones-explorador":
+      return <EspecificacionesExplorador block={block} />;
+    case "eso3-simulacion-viga-explorador":
+      return <SimulacionVigaExplorador block={block} />;
+    case "eso3-coste-proyecto-explorador":
+      return <CosteProyectoExplorador block={block} />;
+    case "eso3-solar-explorador":
+      return <SolarFvExplorador block={block} />;
+    case "eso3-eolica-explorador":
+      return <EolicaExplorador block={block} />;
+    case "eso3-aislamiento-explorador":
+      return <AislamientoExplorador block={block} />;
+    case "eso3-transporte-explorador":
+      return <TransporteCo2Explorador block={block} />;
+    case "eso3-hidraulica-explorador":
+      return <HidraulicaExplorador block={block} />;
+    case "eso4-alterna-explorador":
+      return <AlternaExplorador block={block} />;
+    case "eso4-potencia-explorador":
+      return <PotenciaEnergiaExplorador block={block} />;
+    case "eso4-circuito-mixto-explorador":
+      return <CircuitoMixtoExplorador block={block} />;
+    case "eso4-fuente-explorador":
+      return <FuenteAlimentacionExplorador block={block} />;
+    case "eso4-transistor-explorador":
+      return <TransistorBetaExplorador block={block} />;
+    case "eso4-555-explorador":
+      return <Temporizador555Explorador block={block} />;
+    case "eso4-boole-explorador":
+      return <BooleExplorador block={block} />;
+    case "eso4-descomposicion-explorador":
+      return <DescomposicionExplorador block={block} />;
+    case "eso4-busqueda-explorador":
+      return <BusquedaExplorador block={block} />;
+    case "eso4-ordenacion-explorador":
+      return <OrdenacionExplorador block={block} />;
+    case "eso4-datos-explorador":
+      return <DatosTemperaturasExplorador block={block} />;
+    case "eso4-complejidad-explorador":
+      return <ComplejidadExplorador block={block} />;
+    case "eso4-regulador-explorador":
+      return <ReguladorExplorador block={block} />;
+    case "eso4-motor-explorador":
+      return <MotorEncoderExplorador block={block} />;
+    case "eso4-robot-explorador":
+      return <RobotDiferencialExplorador block={block} />;
+    case "eso4-secuencia-explorador":
+      return <SecuenciaExplorador block={block} />;
+    case "eso4-iot-explorador":
+      return <ProtocoloIotExplorador block={block} />;
+    case "eso4-transmision-explorador":
+      return <TransmisionExplorador block={block} />;
+    case "eso4-reductora-explorador":
+      return <ReductoraExplorador block={block} />;
+    case "eso4-biela-explorador":
+      return <BielaManivelaPosExplorador block={block} />;
+    case "eso4-rozamiento-explorador":
+      return <RozamientoExplorador block={block} />;
+    case "eso4-cinta-explorador":
+      return <CintaTransportadoraExplorador block={block} />;
+    case "eso4-hooke-explorador":
+      return <HookeEso4Explorador block={block} />;
+    case "eso4-brinell-explorador":
+      return <BrinellEso4Explorador block={block} />;
+    case "eso4-charpy-explorador":
+      return <CharpyEso4Explorador block={block} />;
+    case "eso4-acero-explorador":
+      return <AceroExplorador block={block} />;
+    case "eso4-ajuste-explorador":
+      return <AjusteExplorador block={block} />;
+    case "eso4-calidad-explorador":
+      return <CalidadExplorador block={block} />;
+    case "eso4-casa-calidad-explorador":
+      return <CasaCalidadExplorador block={block} />;
+    case "eso4-vistas-explorador":
+      return <VistasExplorador block={block} />;
+    case "eso4-pert-explorador":
+      return <PertExplorador block={block} />;
+    case "eso4-viabilidad-explorador":
+      return <ViabilidadExplorador block={block} />;
+    case "eso4-huella-hogar-explorador":
+      return <HuellaHogarExplorador block={block} />;
+    case "eso4-autoconsumo-explorador":
+      return <AutoconsumoExplorador block={block} />;
+    case "eso4-certificado-explorador":
+      return <CertificadoExplorador block={block} />;
+    case "eso4-reparar-explorador":
+      return <RepararExplorador block={block} />;
+    case "eso4-accesibilidad-explorador":
+      return <AccesibilidadExplorador block={block} />;
+    case "eso4-micrometro-explorador":
+      return <MicrometroExplorador block={block} />;
+    case "eso4-polimetro-explorador":
+      return <PolimetroEso4Explorador block={block} />;
+    case "eso4-apilado-explorador":
+      return <ApiladoExplorador block={block} />;
+    case "eso4-impresion-flujo-explorador":
+      return <Impresion3dFlujoExplorador block={block} />;
+    case "eso4-pista-explorador":
+      return <PistaPcbExplorador block={block} />;
+    case "ti2-carga-repartida-explorador":
+      return <CargaRepartidaExplorador block={block} />;
+    case "ti2-reacciones-explorador":
+      return <ReaccionesExplorador block={block} />;
+    case "ti2-flexion-explorador":
+      return <FlexionTi2Explorador block={block} />;
+    case "ti2-torsion-explorador":
+      return <TorsionExplorador block={block} />;
+    case "ti2-cortadura-explorador":
+      return <CortaduraExplorador block={block} />;
+    case "ti2-pandeo-vuelco-explorador":
+      return <PandeoVuelcoExplorador block={block} />;
+    case "ti2-disponibilidad-explorador":
+      return <DisponibilidadExplorador block={block} />;
+    case "ti2-sql-explorador":
+      return <SqlExplorador block={block} />;
+    case "ti2-volumen-datos-explorador":
+      return <VolumenDatosExplorador block={block} />;
+    case "ti2-clasificador-explorador":
+      return <ClasificadorExplorador block={block} />;
+    case "ti2-confusion-explorador":
+      return <ConfusionExplorador block={block} />;
+    case "ti2-cifrado-explorador":
+      return <CifradoExplorador block={block} />;
+    case "ti2-privacidad-explorador":
+      return <PrivacidadExplorador block={block} />;
+    case "ti2-senoidal-explorador":
+      return <SenoidalExplorador block={block} />;
+    case "ti2-rlc-explorador":
+      return <RlcExplorador block={block} />;
+    case "ti2-potencias-explorador":
+      return <PotenciasExplorador block={block} />;
+    case "ti2-correccion-fp-explorador":
+      return <CorreccionFpExplorador block={block} />;
+    case "ti2-trifasica-explorador":
+      return <TrifasicaExplorador block={block} />;
+    case "ti2-embudo-explorador":
+      return <EmbudoExplorador block={block} />;
+    case "ti2-sprint-explorador":
+      return <SprintExplorador block={block} />;
+    case "ti2-kanban-explorador":
+      return <KanbanExplorador block={block} />;
+    case "ti2-estimacion-pert-explorador":
+      return <EstimacionPertExplorador block={block} />;
+    case "ti2-van-explorador":
+      return <VanExplorador block={block} />;
+    case "ti2-eia-explorador":
+      return <EiaExplorador block={block} />;
+    case "ti2-cogeneracion-explorador":
+      return <CogeneracionExplorador block={block} />;
+    case "ti2-acv-explorador":
+      return <AcvTi2Explorador block={block} />;
+    case "ti2-oee-explorador":
+      return <OeeExplorador block={block} />;
+    case "ti2-circularidad-explorador":
+      return <CircularidadExplorador block={block} />;
+    case "dt1-pitagoras-explorador":
+      return <PitagorasExplorador block={block} />;
+    case "dt1-lugar-geometrico-explorador":
+      return <LugarGeometricoExplorador block={block} />;
+    case "dt1-arco-capaz-explorador":
+      return <ArcoCapazExplorador block={block} />;
+    case "dt1-thales-explorador":
+      return <ThalesExplorador block={block} />;
+    case "dt1-media-proporcional-explorador":
+      return <MediaProporcionalExplorador block={block} />;
+    case "dt1-equivalencia-explorador":
+      return <EquivalenciaExplorador block={block} />;
+    case "dt1-homotecia-explorador":
+      return <HomoteciaDt1Explorador block={block} />;
+    case "dt1-puntos-notables-explorador":
+      return <PuntosNotablesDt1Explorador block={block} />;
+    case "dt1-triangulo-datos-explorador":
+      return <TrianguloDatosDt1Explorador block={block} />;
+    case "dt1-cuadrilatero-explorador":
+      return <CuadrilateroDt1Explorador block={block} />;
+    case "dt1-poligono-regular-explorador":
+      return <PoligonoRegularDt1Explorador block={block} />;
+    case "dt1-metodo-general-explorador":
+      return <MetodoGeneralDt1Explorador block={block} />;
+    case "dt1-estrellado-explorador":
+      return <EstrelladoDt1Explorador block={block} />;
+    case "dt1-tangente-punto-explorador":
+      return <TangentePuntoDt1Explorador block={block} />;
+    case "dt1-circunferencias-explorador":
+      return <CircunferenciasTangentesDt1Explorador block={block} />;
+    case "dt1-enlace-explorador":
+      return <EnlaceDt1Explorador block={block} />;
+    case "dt1-ovalo-explorador":
+      return <OvaloDt1Explorador block={block} />;
+    case "dt1-espiral-evolvente-explorador":
+      return <EspiralEvolventeDt1Explorador block={block} />;
+    case "dt1-diedrico-punto-explorador":
+      return <PuntoDiedricoDt1Explorador block={block} />;
+    case "dt1-recta-diedrico-explorador":
+      return <RectaDiedricoDt1Explorador block={block} />;
+    case "dt1-posiciones-recta-explorador":
+      return <PosicionesRectaDt1Explorador block={block} />;
+    case "dt1-plano-diedrico-explorador":
+      return <PlanoTrazasDt1Explorador block={block} />;
+    case "dt1-pertenencia-plano-explorador":
+      return <PertenenciaPlanoDt1Explorador block={block} />;
+    case "dt1-interseccion-planos-explorador":
+      return <InterseccionPlanosDt1Explorador block={block} />;
+    case "dt1-planos-paralelos-explorador":
+      return <PlanosParalelosDt1Explorador block={block} />;
+    case "dt1-perpendicular-explorador":
+      return <PerpendicularPlanoDt1Explorador block={block} />;
+    case "dt1-distancia-verdadera-explorador":
+      return <DistanciaPuntosDt1Explorador block={block} />;
+    case "dt1-axonometria-ortogonal-explorador":
+      return <AxonometriaOrtogonalDt1Explorador block={block} />;
+    case "dt1-isometrica-pieza-explorador":
+      return <IsometricaPiezaDt1Explorador block={block} />;
+    case "dt1-caballera-explorador":
+      return <CaballeraDt1Explorador block={block} />;
+    case "dt1-axo-punto-plano-explorador":
+      return <PuntoPlanoAxoDt1Explorador block={block} />;
+    case "dt1-recta-acotada-explorador":
+      return <RectaAcotadaDt1Explorador block={block} />;
+    case "dt1-plano-acotado-explorador":
+      return <PlanoAcotadoDt1Explorador block={block} />;
+    case "dt1-cubierta-explorador":
+      return <CubiertaDt1Explorador block={block} />;
+    case "dt1-curvas-nivel-explorador":
+      return <CurvasNivelDt1Explorador block={block} />;
+    case "dt1-perspectiva-conica-explorador":
+      return <PerspectivaConicaDt1Explorador block={block} />;
+    case "dt1-tipos-linea-explorador":
+      return <TiposLineaDt1Explorador block={block} />;
+    case "dt1-formatos-explorador":
+      return <FormatosDt1Explorador block={block} />;
+    case "dt1-escala-explorador":
+      return <EscalaDt1Explorador block={block} />;
+    case "dt1-vistas-explorador":
+      return <VistasDt1Explorador block={block} />;
+    case "dt1-acotacion-sistemas-explorador":
+      return <AcotacionSistemasDt1Explorador block={block} />;
+    case "dt1-simbolos-explorador":
+      return <SimbolosDt1Explorador block={block} />;
+    case "dt1-coordenadas-cad-explorador":
+      return <CoordenadasCadDt1Explorador block={block} />;
+    case "dt1-bezier-explorador":
+      return <BezierDt1Explorador block={block} />;
+    case "dt1-transformaciones-explorador":
+      return <TransformacionesDt1Explorador block={block} />;
+    case "dt1-booleanas-explorador":
+      return <BooleanasDt1Explorador block={block} />;
+    case "dt1-pieza-compuesta-explorador":
+      return <PiezaCompuestaDt1Explorador block={block} />;
+    case "dt2-catenaria-explorador":
+      return <CatenariaDt2Explorador block={block} />;
+    case "dt2-hiperboloide-explorador":
+      return <HiperboloideDt2Explorador block={block} />;
+    case "dt2-fachada-parametrica-explorador":
+      return <FachadaParametricaDt2Explorador block={block} />;
+    case "dt2-transformaciones-generales-explorador":
+      return <TransformacionesGeneralesDt2Explorador block={block} />;
+    case "dt2-afinidad-explorador":
+      return <AfinidadDt2Explorador block={block} />;
+    case "dt2-elipse-afinidad-explorador":
+      return <ElipseAfinidadDt2Explorador block={block} />;
+    case "dt2-homologia-explorador":
+      return <HomologiaDt2Explorador block={block} />;
+    case "dt2-abatimiento-afinidad-explorador":
+      return <AbatimientoAfinidadDt2Explorador block={block} />;
+    case "dt2-potencia-punto-explorador":
+      return <PotenciaPuntoDt2Explorador block={block} />;
+    case "dt2-eje-radical-explorador":
+      return <EjeRadicalDt2Explorador block={block} />;
+    case "dt2-circulo-dos-puntos-tangente-explorador":
+      return <CirculoDosPuntosTangenteDt2Explorador block={block} />;
+    case "dt2-tangente-recta-circulo-explorador":
+      return <TangenteRectaCirculoDt2Explorador block={block} />;
+    case "dt2-corte-cono-explorador":
+      return <CorteConoDt2Explorador block={block} />;
+    case "dt2-elipse-focos-explorador":
+      return <ElipseFocosDt2Explorador block={block} />;
+    case "dt2-hiperbola-explorador":
+      return <HiperbolaDt2Explorador block={block} />;
+    case "dt2-parabola-explorador":
+      return <ParabolaDt2Explorador block={block} />;
+    case "dt2-tangentes-conicas-explorador":
+      return <TangentesConicasDt2Explorador block={block} />;
+    case "dt2-abatimiento-punto-explorador":
+      return <AbatimientoPuntoDt2Explorador block={block} />;
+    case "dt2-verdadera-forma-explorador":
+      return <VerdaderaFormaDt2Explorador block={block} />;
+    case "dt2-giro-recta-explorador":
+      return <GiroRectaDt2Explorador block={block} />;
+    case "dt2-cambio-plano-explorador":
+      return <CambioPlanoDt2Explorador block={block} />;
+    case "dt2-magnitud-angulos-explorador":
+      return <MagnitudAngulosDt2Explorador block={block} />;
+    case "dt2-distancia-punto-recta-explorador":
+      return <DistanciaPuntoRectaDt2Explorador block={block} />;
+    case "dt2-solido-diedrico-explorador":
+      return <SolidoDiedricoDt2Explorador block={block} />;
+    case "dt2-seccion-prisma-explorador":
+      return <SeccionPrismaDt2Explorador block={block} />;
+    case "dt2-seccion-revolucion-explorador":
+      return <SeccionRevolucionDt2Explorador block={block} />;
+    case "dt2-poliedros-regulares-explorador":
+      return <PoliedrosRegularesDt2Explorador block={block} />;
+    case "dt2-desarrollo-cuerpos-explorador":
+      return <DesarrolloCuerposDt2Explorador block={block} />;
+    case "dt2-solido-isometrico-explorador":
+      return <SolidoIsometricoDt2Explorador block={block} />;
+    case "dt2-caballera-circulos-explorador":
+      return <CaballeraCirculosDt2Explorador block={block} />;
+    case "dt2-conica-casa-explorador":
+      return <ConicaCasaDt2Explorador block={block} />;
+    case "dt2-explanacion-explorador":
+      return <ExplanacionDt2Explorador block={block} />;
+    case "dt2-elegir-sistema-explorador":
+      return <ElegirSistemaDt2Explorador block={block} />;
+    case "dt2-rosca-metrica-explorador":
+      return <RoscaMetricaDt2Explorador block={block} />;
+    case "dt2-cortes-pieza-explorador":
+      return <CortesPiezaDt2Explorador block={block} />;
+    case "dt2-perfiles-seccion-explorador":
+      return <PerfilesSeccionDt2Explorador block={block} />;
+    case "dt2-ajuste-tolerancias-explorador":
+      return <AjusteToleranciasDt2Explorador block={block} />;
+    case "dt2-lista-piezas-explorador":
+      return <ListaPiezasDt2Explorador block={block} />;
+    case "dt2-huella-material-explorador":
+      return <HuellaMaterialDt2Explorador block={block} />;
+    case "dt2-croquis-restricciones-explorador":
+      return <CroquisRestriccionesDt2Explorador block={block} />;
+    case "dt2-modelo-a-vistas-explorador":
+      return <ModeloAVistasDt2Explorador block={block} />;
+    case "fq2-experimento-variables-explorador":
+      return <ExperimentoVariablesFq2Explorador block={block} />;
+    case "fq2-unidades-prefijos-explorador":
+      return <UnidadesPrefijosFq2Explorador block={block} />;
+    case "fq2-medidas-error-explorador":
+      return <MedidasErrorFq2Explorador block={block} />;
+    case "fq2-grafica-proporcional-explorador":
+      return <GraficaProporcionalFq2Explorador block={block} />;
+    case "fq2-instrumentos-laboratorio-explorador":
+      return <InstrumentosLaboratorioFq2Explorador block={block} />;
+    case "fq2-densidad-flotacion-explorador":
+      return <DensidadFlotacionFq2Explorador block={block} />;
+    case "fq2-estados-propiedades-explorador":
+      return <EstadosPropiedadesFq2Explorador block={block} />;
+    case "fq2-modelo-cinetico-explorador":
+      return <ModeloCineticoFq2Explorador block={block} />;
+    case "fq2-cambios-estado-explorador":
+      return <CambiosEstadoFq2Explorador block={block} />;
+    case "fq2-curva-calentamiento-explorador":
+      return <CurvaCalentamientoFq2Explorador block={block} />;
+    case "fq2-clasificacion-materia-explorador":
+      return <ClasificacionMateriaFq2Explorador block={block} />;
+    case "fq2-concentracion-disolucion-explorador":
+      return <ConcentracionDisolucionFq2Explorador block={block} />;
+    case "fq2-solubilidad-curva-explorador":
+      return <SolubilidadCurvaFq2Explorador block={block} />;
+    case "fq2-separacion-mezclas-explorador":
+      return <SeparacionMezclasFq2Explorador block={block} />;
+    case "fq2-composicion-mezclas-explorador":
+      return <ComposicionMezclasFq2Explorador block={block} />;
+    case "fq2-modelos-atomicos-explorador":
+      return <ModelosAtomicosFq2Explorador block={block} />;
+    case "fq2-construir-atomo-explorador":
+      return <ConstruirAtomoFq2Explorador block={block} />;
+    case "fq2-iones-isotopos-explorador":
+      return <IonesIsotoposFq2Explorador block={block} />;
+    case "fq2-tabla-periodica-explorador":
+      return <TablaPeriodicaFq2Explorador block={block} />;
+    case "fq2-formulas-moleculas-explorador":
+      return <FormulasMoleculasFq2Explorador block={block} />;
+    case "fq2-cambio-fisico-quimico-explorador":
+      return <CambioFisicoQuimicoFq2Explorador block={block} />;
+    case "fq2-avance-reaccion-explorador":
+      return <AvanceReaccionFq2Explorador block={block} />;
+    case "fq2-ajuste-ecuacion-explorador":
+      return <AjusteEcuacionFq2Explorador block={block} />;
+    case "fq2-triangulo-fuego-explorador":
+      return <TrianguloFuegoFq2Explorador block={block} />;
+    case "fq2-referencia-desplazamiento-explorador":
+      return <ReferenciaDesplazamientoFq2Explorador block={block} />;
+    case "fq2-velocidad-media-explorador":
+      return <VelocidadMediaFq2Explorador block={block} />;
+    case "fq2-mru-explorador":
+      return <MruFq2Explorador block={block} />;
+    case "fq2-grafica-posicion-tiempo-explorador":
+      return <GraficaPosicionTiempoFq2Explorador block={block} />;
+    case "fq2-encuentro-moviles-explorador":
+      return <EncuentroMovilesFq2Explorador block={block} />;
+    case "fq2-fuerza-vector-explorador":
+      return <FuerzaVectorFq2Explorador block={block} />;
+    case "fq2-peso-masa-explorador":
+      return <PesoMasaFq2Explorador block={block} />;
+    case "fq2-muelle-hooke-explorador":
+      return <MuelleHookeFq2Explorador block={block} />;
+    case "fq2-rozamiento-explorador":
+      return <RozamientoFq2Explorador block={block} />;
+    case "fq2-equilibrio-fuerzas-explorador":
+      return <EquilibrioFuerzasFq2Explorador block={block} />;
+    case "fq2-transformaciones-energia-explorador":
+      return <TransformacionesEnergiaFq2Explorador block={block} />;
+    case "fq2-cinetica-potencial-explorador":
+      return <CineticaPotencialFq2Explorador block={block} />;
+    case "fq2-conservacion-energia-explorador":
+      return <ConservacionEnergiaFq2Explorador block={block} />;
+    case "fq2-calor-temperatura-explorador":
+      return <CalorTemperaturaFq2Explorador block={block} />;
+    case "fq2-fuentes-energia-explorador":
+      return <FuentesEnergiaFq2Explorador block={block} />;
+    case "fq2-sombras-explorador":
+      return <SombrasFq2Explorador block={block} />;
+    case "fq2-reflexion-explorador":
+      return <ReflexionFq2Explorador block={block} />;
+    case "fq2-refraccion-explorador":
+      return <RefraccionFq2Explorador block={block} />;
+    case "fq2-onda-sonido-explorador":
+      return <OndaSonidoFq2Explorador block={block} />;
+    case "fq2-decibelios-explorador":
+      return <DecibeliosFq2Explorador block={block} />;
+    case "fq3-pendulo-variables-explorador":
+      return <PenduloVariablesFq3Explorador block={block} />;
+    case "fq3-ordenes-magnitud-explorador":
+      return <OrdenesMagnitudFq3Explorador block={block} />;
+    case "fq3-factores-conversion-explorador":
+      return <FactoresConversionFq3Explorador block={block} />;
+    case "fq3-grafica-ajuste-explorador":
+      return <GraficaAjusteFq3Explorador block={block} />;
+    case "fq3-niveles-bohr-explorador":
+      return <NivelesBohrFq3Explorador block={block} />;
+    case "fq3-masa-atomica-media-explorador":
+      return <MasaAtomicaMediaFq3Explorador block={block} />;
+    case "fq3-configuracion-electronica-explorador":
+      return <ConfiguracionElectronicaFq3Explorador block={block} />;
+    case "fq3-propiedades-periodicas-explorador":
+      return <PropiedadesPeriodicasFq3Explorador block={block} />;
+    case "fq3-sustancias-explorador":
+      return <SustanciasFq3Explorador block={block} />;
+    case "fq3-enlace-ionico-explorador":
+      return <EnlaceIonicoFq3Explorador block={block} />;
+    case "fq3-enlace-covalente-explorador":
+      return <EnlaceCovalenteFq3Explorador block={block} />;
+    case "fq3-propiedades-enlace-explorador":
+      return <PropiedadesEnlaceFq3Explorador block={block} />;
+    case "fq3-mol-explorador":
+      return <MolFq3Explorador block={block} />;
+    case "fq3-nomenclatura-explorador":
+      return <NomenclaturaFq3Explorador block={block} />;
+    case "fq3-estequiometria-masas-explorador":
+      return <EstequiometriaMasasFq3Explorador block={block} />;
+    case "fq3-velocidad-reaccion-explorador":
+      return <VelocidadReaccionFq3Explorador block={block} />;
+    case "fq3-reacciones-entorno-explorador":
+      return <ReaccionesEntornoFq3Explorador block={block} />;
+    case "fq3-emisiones-combustion-explorador":
+      return <EmisionesCombustionFq3Explorador block={block} />;
+    case "fq3-concentraciones-explorador":
+      return <ConcentracionesFq3Explorador block={block} />;
+    case "fq3-cristalizacion-explorador":
+      return <CristalizacionFq3Explorador block={block} />;
+    case "fq3-dilucion-explorador":
+      return <DilucionFq3Explorador block={block} />;
+    case "fq3-separacion-etapas-explorador":
+      return <SeparacionEtapasFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

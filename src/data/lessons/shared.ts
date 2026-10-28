@@ -127,3 +127,108 @@ export const TEC1_SUBTITLES = {
   6: "Tecnología e Ingeniería I, Tema 6 — Sistemas automáticos",
   7: "Tecnología e Ingeniería I, Tema 7 — Tecnología sostenible",
 } as const;
+
+/** Tecnología 1.º ESO (Introducción a la Tecnología): subtítulo de cada tema. */
+export const TECESO1_SUBTITLES = {
+  1: "Tecnología 1.º ESO, Tema 1 — La tecnología y el proceso tecnológico",
+  2: "Tecnología 1.º ESO, Tema 2 — Expresión y comunicación gráfica",
+  3: "Tecnología 1.º ESO, Tema 3 — Materiales de uso técnico",
+  4: "Tecnología 1.º ESO, Tema 4 — Estructuras",
+  5: "Tecnología 1.º ESO, Tema 5 — Mecanismos básicos",
+  6: "Tecnología 1.º ESO, Tema 6 — Iniciación a la electricidad",
+  7: "Tecnología 1.º ESO, Tema 7 — Pensamiento computacional",
+  8: "Tecnología 1.º ESO, Tema 8 — Tecnología sostenible",
+  9: "Tecnología 1.º ESO, Tema 9 — Digitalización del entorno personal de aprendizaje",
+  10: "Tecnología 1.º ESO, Tema 10 — Comunicación y difusión de ideas",
+} as const;
+
+export const TECESO2_SUBTITLES = {
+  1: "Tecnología 2.º ESO, Tema 1 — Proyecto tecnológico",
+  2: "Tecnología 2.º ESO, Tema 2 — Dibujo técnico y diseño digital",
+  3: "Tecnología 2.º ESO, Tema 3 — Materiales y fabricación",
+  4: "Tecnología 2.º ESO, Tema 4 — Estructuras y mecanismos",
+  5: "Tecnología 2.º ESO, Tema 5 — Electricidad",
+  6: "Tecnología 2.º ESO, Tema 6 — Programación",
+  7: "Tecnología 2.º ESO, Tema 7 — Digitalización del entorno personal",
+  8: "Tecnología 2.º ESO, Tema 8 — Tecnología sostenible",
+} as const;
+
+export const TECESO3_SUBTITLES = {
+  1: "Tecnología 3.º ESO, Tema 1 — Desarrollo de proyectos tecnológicos",
+  2: "Tecnología 3.º ESO, Tema 2 — Materiales y procesos de fabricación",
+  3: "Tecnología 3.º ESO, Tema 3 — Mecanismos y máquinas",
+  4: "Tecnología 3.º ESO, Tema 4 — Electricidad y electrónica",
+  5: "Tecnología 3.º ESO, Tema 5 — Sistemas de control y automatización",
+  6: "Tecnología 3.º ESO, Tema 6 — Programación y robótica",
+  7: "Tecnología 3.º ESO, Tema 7 — Redes y dispositivos digitales",
+  8: "Tecnología 3.º ESO, Tema 8 — Tecnología sostenible",
+} as const;
+
+export const TECESO4_SUBTITLES = {
+  1: "Tecnología 4.º ESO, Tema 1 — Proyectos de ingeniería",
+  2: "Tecnología 4.º ESO, Tema 2 — Materiales y fabricación",
+  3: "Tecnología 4.º ESO, Tema 3 — Sistemas mecánicos",
+  4: "Tecnología 4.º ESO, Tema 4 — Electricidad y electrónica",
+  5: "Tecnología 4.º ESO, Tema 5 — Pensamiento computacional",
+  6: "Tecnología 4.º ESO, Tema 6 — Automatización y robótica",
+  7: "Tecnología 4.º ESO, Tema 7 — Tecnología sostenible",
+  8: "Tecnología 4.º ESO, Tema 8 — Taller, simulación y fabricación digital",
+} as const;
+
+export const TECTI2_SUBTITLES = {
+  1: "Tecnología e Ingeniería II (ampliación), Tema 1 — Proyectos de I+D",
+  2: "Tecnología e Ingeniería II (ampliación), Tema 2 — Estructuras",
+  3: "Tecnología e Ingeniería II (ampliación), Tema 3 — Corriente alterna",
+  4: "Tecnología e Ingeniería II (ampliación), Tema 4 — Sistemas informáticos emergentes",
+  5: "Tecnología e Ingeniería II (ampliación), Tema 5 — Impacto y sostenibilidad en ingeniería",
+} as const;
+
+export const DT1_SUBTITLES = {
+  1: "Dibujo Técnico I, Tema 1 — Historia y fundamentos geométricos",
+  2: "Dibujo Técnico I, Tema 2 — Proporcionalidad, equivalencia y semejanza",
+  3: "Dibujo Técnico I, Tema 3 — Triángulos, cuadriláteros y polígonos regulares",
+  4: "Dibujo Técnico I, Tema 4 — Tangencias y curvas técnicas",
+  5: "Dibujo Técnico I, Tema 5 — Sistema diédrico: punto, recta y plano",
+  6: "Dibujo Técnico I, Tema 6 — Sistema diédrico: relaciones y distancias",
+  7: "Dibujo Técnico I, Tema 7 — Sistemas axonométricos",
+  8: "Dibujo Técnico I, Tema 8 — Planos acotados y sistema cónico",
+  9: "Dibujo Técnico I, Tema 9 — Normalización y documentación gráfica",
+  10: "Dibujo Técnico I, Tema 10 — Sistemas CAD",
+} as const;
+
+export const DT2_SUBTITLES = {
+  1: "Dibujo Técnico II, Tema 1 — La geometría en la arquitectura y la ingeniería",
+  2: "Dibujo Técnico II, Tema 2 — Homología y afinidad",
+  3: "Dibujo Técnico II, Tema 3 — Potencia, eje radical y tangencias",
+  4: "Dibujo Técnico II, Tema 4 — Curvas cónicas",
+  5: "Dibujo Técnico II, Tema 5 — Diédrico: abatimientos, giros y cambios de plano",
+  6: "Dibujo Técnico II, Tema 6 — Cuerpos geométricos en diédrico",
+  7: "Dibujo Técnico II, Tema 7 — Axonométrico, cónico y planos acotados de sólidos",
+  8: "Dibujo Técnico II, Tema 8 — Normalización y proyecto",
+  9: "Dibujo Técnico II, Tema 9 — Sistemas CAD",
+} as const;
+
+export const FQ2_SUBTITLES = {
+  1: "Física y Química 2.º ESO, Tema 1 — La actividad científica",
+  2: "Física y Química 2.º ESO, Tema 2 — La materia y sus propiedades",
+  3: "Física y Química 2.º ESO, Tema 3 — Sustancias puras y mezclas",
+  4: "Física y Química 2.º ESO, Tema 4 — Estructura de la materia",
+  5: "Física y Química 2.º ESO, Tema 5 — Cambios físicos y químicos",
+  6: "Física y Química 2.º ESO, Tema 6 — El movimiento",
+  7: "Física y Química 2.º ESO, Tema 7 — Las fuerzas",
+  8: "Física y Química 2.º ESO, Tema 8 — La energía",
+  9: "Física y Química 2.º ESO, Tema 9 — La luz y el sonido",
+} as const;
+
+export const FQ3_SUBTITLES = {
+  1: "Física y Química 3.º ESO, Tema 1 — El trabajo científico",
+  2: "Física y Química 3.º ESO, Tema 2 — El átomo y el sistema periódico",
+  3: "Física y Química 3.º ESO, Tema 3 — Elementos y compuestos químicos",
+  4: "Física y Química 3.º ESO, Tema 4 — La reacción química",
+  5: "Física y Química 3.º ESO, Tema 5 — Disoluciones",
+  6: "Física y Química 3.º ESO, Tema 6 — El movimiento",
+  7: "Física y Química 3.º ESO, Tema 7 — Las fuerzas y sus efectos",
+  8: "Física y Química 3.º ESO, Tema 8 — Energía y calor",
+  9: "Física y Química 3.º ESO, Tema 9 — Electricidad",
+  10: "Física y Química 3.º ESO, Tema 10 — Química y sociedad",
+} as const;

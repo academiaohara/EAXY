@@ -1,4 +1,4 @@
-export type SubjectKey = "matematicas" | "fisica" | "tecnologia";
+export type SubjectKey = "matematicas" | "fisica" | "tecnologia" | "dibujo";
 
 export type Subject = {
   key: SubjectKey;
@@ -24,11 +24,11 @@ export const SUBJECTS: readonly Subject[] = [
   },
   {
     key: "fisica",
-    label: "Física",
-    titlePrefix: "Física",
+    label: "Física y Química",
+    titlePrefix: "Física y Química",
     href: "/aprender/materia/fisica",
-    tagline: "Movimiento, energía y fuerzas",
-    description: "Entiende cómo funciona el mundo con simulaciones y problemas guiados.",
+    tagline: "Materia, movimiento y energía",
+    description: "Entiende cómo funciona el mundo, de los átomos a las fuerzas, con simulaciones y problemas guiados.",
     glyph: "⚛",
   },
   {
@@ -40,6 +40,15 @@ export const SUBJECTS: readonly Subject[] = [
     description: "Proyectos, electrónica y pensamiento computacional desde cero.",
     glyph: "</>",
   },
+  {
+    key: "dibujo",
+    label: "Dibujo Técnico",
+    titlePrefix: "Dibujo Técnico",
+    href: "/aprender/materia/dibujo",
+    tagline: "Geometría, vistas y planos",
+    description: "Trazados, sistemas de representación y normalización con construcciones paso a paso.",
+    glyph: "∠",
+  },
 ];
 
 export function getSubject(key: string | null | undefined): Subject | undefined {
@@ -50,11 +59,14 @@ export function getSubject(key: string | null | undefined): Subject | undefined 
 export function subjectOfCourse(course: { slug?: string; title?: string }): SubjectKey {
   const slug = course.slug?.toLowerCase() ?? "";
   const title = course.title?.toLowerCase() ?? "";
-  if (slug.startsWith("fisica") || title.startsWith("física")) {
+  if (slug.startsWith("fisica") || slug.startsWith("quimica") || title.startsWith("física") || title.startsWith("química")) {
     return "fisica";
   }
   if (slug.startsWith("tecnologia") || title.startsWith("tecnología")) {
     return "tecnologia";
+  }
+  if (slug.startsWith("dibujo") || title.startsWith("dibujo")) {
+    return "dibujo";
   }
   return "matematicas";
 }
@@ -115,5 +127,13 @@ export const SUBJECT_THEME: Record<
     ring: "ring-amber-500/20",
     glow: "bg-[radial-gradient(40rem_18rem_at_0%_0%,rgb(245_158_11/0.12),transparent_70%)]",
     hoverBorder: "hover:border-amber-500/40",
+  },
+  dibujo: {
+    gradient: "from-sky-500 via-blue-600 to-indigo-700",
+    badge: "bg-sky-50 text-sky-700",
+    text: "text-sky-700",
+    ring: "ring-sky-500/20",
+    glow: "bg-[radial-gradient(40rem_18rem_at_0%_0%,rgb(14_165_233/0.10),transparent_70%)]",
+    hoverBorder: "hover:border-sky-500/40",
   },
 };

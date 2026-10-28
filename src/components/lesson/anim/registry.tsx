@@ -1,4 +1,62 @@
 // industrial-imports
+import { buildColisiones } from "@/components/lesson/anim/scenes/industrial/fq3-colisiones";
+import { buildEnlaceIonico } from "@/components/lesson/anim/scenes/industrial/fq3-enlace";
+import { buildBohrSalto } from "@/components/lesson/anim/scenes/industrial/fq3-atomo";
+import { buildRayoLuz } from "@/components/lesson/anim/scenes/industrial/fq2-luz";
+import { buildConservacionEnergia } from "@/components/lesson/anim/scenes/industrial/fq2-energia";
+import { buildFuerzasResultante } from "@/components/lesson/anim/scenes/industrial/fq2-fuerzas";
+import { buildMruEstroboscopica } from "@/components/lesson/anim/scenes/industrial/fq2-mru";
+import { buildLavoisier } from "@/components/lesson/anim/scenes/industrial/fq2-lavoisier";
+import { buildRutherford } from "@/components/lesson/anim/scenes/industrial/fq2-rutherford";
+import { buildDestilacion } from "@/components/lesson/anim/scenes/industrial/fq2-destilacion";
+import { buildParticulasEstados } from "@/components/lesson/anim/scenes/industrial/fq2-materia";
+import { buildMetodoCientifico } from "@/components/lesson/anim/scenes/industrial/fq2-metodo";
+import { buildHomologiaConstruccion, buildElipseCircunferencias, buildParabolaFocoDirectriz, buildEjeRadicalConstruccion, buildAbatimientoPunto, buildDesarrolloConoDt2 } from "@/components/lesson/anim/scenes/industrial/dt2-construcciones";
+import { buildVistasPieza } from "@/components/lesson/anim/scenes/industrial/dt1-vistas";
+import { buildPerspectivaFrontal } from "@/components/lesson/anim/scenes/industrial/dt1-conico";
+import { buildCuboIsometrico } from "@/components/lesson/anim/scenes/industrial/dt1-axonometria";
+import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
+import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
+import { buildPentagonoEuclides } from "@/components/lesson/anim/scenes/industrial/dt1-poligonos";
+import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz, buildSeccionAurea } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
+import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
+import { buildCicloScrum } from "@/components/lesson/anim/scenes/industrial/tecti2-proyectos";
+import { buildFaseCarga } from "@/components/lesson/anim/scenes/industrial/tecti2-alterna";
+import { buildCicloAprendizaje } from "@/components/lesson/anim/scenes/industrial/tecti2-informatica";
+import { buildCincoEsfuerzos } from "@/components/lesson/anim/scenes/industrial/tecti2-estructuras";
+import { buildFlujoDigital } from "@/components/lesson/anim/scenes/industrial/teceso4-taller";
+import { buildEconomiaCircular } from "@/components/lesson/anim/scenes/industrial/teceso4-sostenible";
+import { buildCicloIngenieria } from "@/components/lesson/anim/scenes/industrial/teceso4-proyectos";
+import { buildEnsayoTraccion } from "@/components/lesson/anim/scenes/industrial/teceso4-materiales";
+import { buildReductoraEtapas } from "@/components/lesson/anim/scenes/industrial/teceso4-mecanica";
+import { buildLazoCerrado } from "@/components/lesson/anim/scenes/industrial/teceso4-control";
+import { buildBusquedaBinaria } from "@/components/lesson/anim/scenes/industrial/teceso4-computacional";
+import { buildFuenteAlimentacion } from "@/components/lesson/anim/scenes/industrial/teceso4-electronica";
+import { buildCasaBioclimatica } from "@/components/lesson/anim/scenes/industrial/teceso3-sostenible";
+import { buildFlujoProyecto } from "@/components/lesson/anim/scenes/industrial/teceso3-proyectos";
+import { buildFundicionMolde } from "@/components/lesson/anim/scenes/industrial/teceso3-materiales";
+import { buildLevaSeguidor } from "@/components/lesson/anim/scenes/industrial/teceso3-mecanismos";
+import { buildRutaPaquetes } from "@/components/lesson/anim/scenes/industrial/teceso3-redes";
+import { buildSetupLoop, buildPwmCiclo } from "@/components/lesson/anim/scenes/industrial/teceso3-robotica";
+import { buildLazoCerradoEso3 } from "@/components/lesson/anim/scenes/industrial/teceso3-control";
+import { buildDiodoSentido, buildTransistorLlave } from "@/components/lesson/anim/scenes/industrial/teceso3-electronica";
+import { buildSincronizacionNube } from "@/components/lesson/anim/scenes/industrial/teceso2-digital";
+import { buildCicloDiseno } from "@/components/lesson/anim/scenes/industrial/teceso2-proyecto";
+import { buildCurvaTraccion } from "@/components/lesson/anim/scenes/industrial/teceso2-materiales";
+import { buildVistasEuropeo } from "@/components/lesson/anim/scenes/industrial/teceso2-dibujo";
+import { buildBucleTraza } from "@/components/lesson/anim/scenes/industrial/teceso2-programacion";
+import { buildBielaManivela } from "@/components/lesson/anim/scenes/industrial/teceso2-mecanica";
+import { buildOhmAgua, buildMixtoReduccion } from "@/components/lesson/anim/scenes/industrial/teceso2-electricidad";
+import { buildExtrusionPerfil } from "@/components/lesson/anim/scenes/industrial/teceso1-comunicacion";
+import { buildCapasEntornoDigital, buildPaquetesRed } from "@/components/lesson/anim/scenes/industrial/teceso1-digital";
+import { buildCicloVidaProductoEso, buildJerarquiaResiduos } from "@/components/lesson/anim/scenes/industrial/teceso1-sostenible";
+import { buildAlgoritmoReceta, buildDiagramaFlujoSimbolos, buildBucleRepeticionSimple, buildVariableCaja } from "@/components/lesson/anim/scenes/industrial/teceso1-computacional";
+import { buildElectronesCorriente, buildCircuitoComponentes, buildSerieParaleloCamino, buildCortocircuitoFusible } from "@/components/lesson/anim/scenes/industrial/teceso1-electricidad";
+import { buildMovimientosTipos, buildPalancaLey, buildPoleaFijaMovil } from "@/components/lesson/anim/scenes/industrial/teceso1-mecanismos";
+import { buildEsfuerzosTipos, buildTrianguloRigido, buildArcoDescarga, buildCaminoCargas } from "@/components/lesson/anim/scenes/industrial/teceso1-estructuras";
+import { buildMateriasPrimasProceso, buildContrachapadoCapas, buildAleacionMezcla, buildCicloReciclaje } from "@/components/lesson/anim/scenes/industrial/teceso1-materiales";
+import { buildTrazoParalelaEscuadra, buildAcotarPiezaPasos, buildVistasProyeccion, buildCaballeraPasos, buildIsometricaPasos, buildBocetoCroquisPlano, buildEscalaReduccion } from "@/components/lesson/anim/scenes/industrial/teceso1-grafica";
+import { buildFasesProyectoEso, buildCienciaTecnicaTecnologia } from "@/components/lesson/anim/scenes/industrial/teceso1-proceso";
 import { buildTripleSostenibilidad, buildCicloVidaFases, buildEconomiaLinealCircular } from "@/components/lesson/anim/scenes/industrial/tec1-sostenible";
 import { buildSistemaControlTermostato, buildSensorDivisorTension, buildHisteresisComparador, buildSecuenciaClasificacion } from "@/components/lesson/anim/scenes/industrial/tec1-automaticos";
 import { buildCicloInstruccion, buildBucleIteraciones } from "@/components/lesson/anim/scenes/industrial/tec1-programacion";
@@ -699,6 +757,98 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "triple-sostenibilidad": () => buildTripleSostenibilidad(),
   "ciclo-vida-fases": () => buildCicloVidaFases(),
   "economia-lineal-circular": () => buildEconomiaLinealCircular(),
+  "fases-proyecto-eso": () => buildFasesProyectoEso(),
+  "ciencia-tecnica-tecnologia": () => buildCienciaTecnicaTecnologia(),
+  "trazo-paralela-escuadra": () => buildTrazoParalelaEscuadra(),
+  "acotar-pieza-pasos": () => buildAcotarPiezaPasos(),
+  "vistas-proyeccion": () => buildVistasProyeccion(),
+  "caballera-pasos": () => buildCaballeraPasos(),
+  "isometrica-pasos": () => buildIsometricaPasos(),
+  "boceto-croquis-plano": () => buildBocetoCroquisPlano(),
+  "escala-reduccion": () => buildEscalaReduccion(),
+  "materias-primas-proceso": () => buildMateriasPrimasProceso(),
+  "contrachapado-capas": () => buildContrachapadoCapas(),
+  "aleacion-mezcla": () => buildAleacionMezcla(),
+  "ciclo-reciclaje-material": () => buildCicloReciclaje(),
+  "esfuerzos-tipos": () => buildEsfuerzosTipos(),
+  "triangulo-rigido": () => buildTrianguloRigido(),
+  "arco-descarga": () => buildArcoDescarga(),
+  "camino-cargas": () => buildCaminoCargas(),
+  "movimientos-tipos": () => buildMovimientosTipos(),
+  "palanca-ley": () => buildPalancaLey(),
+  "polea-fija-movil": () => buildPoleaFijaMovil(),
+  "electrones-corriente": () => buildElectronesCorriente(),
+  "circuito-componentes": () => buildCircuitoComponentes(),
+  "serie-paralelo-camino": () => buildSerieParaleloCamino(),
+  "cortocircuito-fusible": () => buildCortocircuitoFusible(),
+  "algoritmo-receta": () => buildAlgoritmoReceta(),
+  "diagrama-flujo-simbolos": () => buildDiagramaFlujoSimbolos(),
+  "bucle-repeticion-simple": () => buildBucleRepeticionSimple(),
+  "variable-caja": () => buildVariableCaja(),
+  "ciclo-vida-producto-eso": () => buildCicloVidaProductoEso(),
+  "jerarquia-residuos": () => buildJerarquiaResiduos(),
+  "capas-entorno-digital": () => buildCapasEntornoDigital(),
+  "paquetes-red": () => buildPaquetesRed(),
+  "extrusion-perfil": () => buildExtrusionPerfil(),
+  "eso2-ohm-agua": () => buildOhmAgua(),
+  "eso2-mixto-reduccion": () => buildMixtoReduccion(),
+  "eso2-biela-manivela": () => buildBielaManivela(),
+  "eso2-bucle-traza": () => buildBucleTraza(),
+  "eso2-vistas-europeo": () => buildVistasEuropeo(),
+  "eso2-curva-traccion": () => buildCurvaTraccion(),
+  "eso2-ciclo-diseno": () => buildCicloDiseno(),
+  "eso2-sincronizacion-nube": () => buildSincronizacionNube(),
+  "eso3-diodo-sentido": () => buildDiodoSentido(),
+  "eso3-transistor-llave": () => buildTransistorLlave(),
+  "eso3-lazo-abierto-cerrado": () => buildLazoCerradoEso3(),
+  "eso3-setup-loop": () => buildSetupLoop(),
+  "eso3-pwm-ciclo": () => buildPwmCiclo(),
+  "eso3-ruta-paquetes": () => buildRutaPaquetes(),
+  "eso3-leva-seguidor": () => buildLevaSeguidor(),
+  "eso3-fundicion-molde": () => buildFundicionMolde(),
+  "eso3-flujo-proyecto": () => buildFlujoProyecto(),
+  "eso3-casa-bioclimatica": () => buildCasaBioclimatica(),
+  "eso4-fuente-alimentacion": () => buildFuenteAlimentacion(),
+  "eso4-busqueda-binaria": () => buildBusquedaBinaria(),
+  "eso4-lazo-cerrado": () => buildLazoCerrado(),
+  "eso4-reductora-etapas": () => buildReductoraEtapas(),
+  "eso4-ensayo-traccion": () => buildEnsayoTraccion(),
+  "eso4-ciclo-ingenieria": () => buildCicloIngenieria(),
+  "eso4-economia-circular": () => buildEconomiaCircular(),
+  "eso4-flujo-digital": () => buildFlujoDigital(),
+  "ti2-cinco-esfuerzos": () => buildCincoEsfuerzos(),
+  "ti2-ciclo-aprendizaje": () => buildCicloAprendizaje(),
+  "ti2-fase-carga": () => buildFaseCarga(),
+  "ti2-ciclo-scrum": () => buildCicloScrum(),
+  "ti2-fases-eia": () => buildFasesEia(),
+  "dt1-linea-tiempo-dibujo": () => buildLineaTiempoDibujo(),
+  "dt1-trazado-arco-capaz": () => buildTrazadoArcoCapaz(),
+  "dt1-seccion-aurea": () => buildSeccionAurea(),
+  "dt1-pentagono-euclides": () => buildPentagonoEuclides(),
+  "dt1-tangentes-punto": () => buildTangentesPunto(),
+  "dt1-trazado-ovalo": () => buildTrazadoOvalo(),
+  "dt1-abatimiento-diedrico": () => buildAbatimientoDiedrico(),
+  "dt1-cubo-isometrico": () => buildCuboIsometrico(),
+  "dt1-perspectiva-frontal": () => buildPerspectivaFrontal(),
+  "dt1-vistas-pieza": () => buildVistasPieza(),
+  "dt2-homologia-construccion": () => buildHomologiaConstruccion(),
+  "dt2-elipse-circunferencias": () => buildElipseCircunferencias(),
+  "dt2-parabola-foco-directriz": () => buildParabolaFocoDirectriz(),
+  "dt2-eje-radical-construccion": () => buildEjeRadicalConstruccion(),
+  "dt2-abatimiento-punto": () => buildAbatimientoPunto(),
+  "dt2-desarrollo-cono": () => buildDesarrolloConoDt2(),
+  "fq2-metodo-cientifico": () => buildMetodoCientifico(),
+  "fq2-particulas-estados": () => buildParticulasEstados(),
+  "fq2-destilacion": () => buildDestilacion(),
+  "fq2-rutherford": () => buildRutherford(),
+  "fq2-lavoisier": () => buildLavoisier(),
+  "fq2-mru-estroboscopica": () => buildMruEstroboscopica(),
+  "fq2-fuerzas-resultante": () => buildFuerzasResultante(),
+  "fq2-conservacion-energia": () => buildConservacionEnergia(),
+  "fq2-rayo-luz": () => buildRayoLuz(),
+  "fq3-bohr-salto": () => buildBohrSalto(),
+  "fq3-enlace-ionico": () => buildEnlaceIonico(),
+  "fq3-colisiones": () => buildColisiones(),
   /* industrial-end */
 };
 
