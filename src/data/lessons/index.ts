@@ -246,6 +246,7 @@ import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-t
 import { construccionTriangulosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/02-construccion-triangulos-dt1";
 import { consumoEnergeticoHuella4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/01-consumo-energetico-huella-4eso";
 import { consumoResponsableEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/02-consumo-responsable-eso";
+import { contaminacionAcusticaFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/05-contaminacion-acustica-fq2";
 import { continuidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/03-continuidad-3eso";
 import { continuidadBernoulliLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/05-continuidad-bernoulli";
 import { continuidadPunto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/12-continuidad-punto-1bach";
@@ -436,6 +437,7 @@ import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
+import { elSonidoFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/04-el-sonido-fq2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { eleccionSistemaRepresentacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/05-eleccion-sistema-representacion-dt2";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
@@ -1137,6 +1139,7 @@ import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1
 import { progresionesAritmeticas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/02-progresiones-aritmeticas-3eso";
 import { progresionesGeometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/03-progresiones-geometricas-1bach";
 import { progresionesGeometricas3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/04-progresiones-geometricas-3eso";
+import { propagacionLuzSombrasFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/01-propagacion-luz-sombras-fq2";
 import { propiedadesCondicionInicial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/02-propiedades-condicion-inicial-2bach";
 import { propiedadesCondicionInicialCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/02-propiedades-condicion-inicial-ccss2";
 import { propiedadesDensidadMateriales2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/01-propiedades-densidad-materiales-2eso";
@@ -1233,6 +1236,8 @@ import { rectasYAngulosRectasLesson } from "@/data/lessons/matematicas-1-eso/11-
 import { recursosNaturalesConsumoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/02-recursos-naturales-consumo";
 import { redDistribucionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/04-red-distribucion";
 import { redesLocalesTopologias3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/02-redes-locales-topologias-3eso";
+import { reflexionLuzFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/02-reflexion-luz-fq2";
+import { refraccionLuzFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/03-refraccion-luz-fq2";
 import { refrigeracionCarnotEficienciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/09-refrigeracion-carnot-eficiencia";
 import { regionFactibleVerticesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/03-region-factible-vertices-ccss2";
 import { registrosContadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/04-registros-contadores";
@@ -1783,6 +1788,7 @@ export const interactiveLessons = {
   "construccion-triangulos-dt1": construccionTriangulosDt1Lesson,
   "consumo-energetico-huella-4eso": consumoEnergeticoHuella4esoLesson,
   "consumo-responsable-eso": consumoResponsableEsoLesson,
+  "contaminacion-acustica-fq2": contaminacionAcusticaFq2Lesson,
   "continuidad-3eso": continuidad3esoLesson,
   "continuidad-bernoulli": continuidadBernoulliLesson,
   "continuidad-punto-1bach": continuidadPunto1bachLesson,
@@ -1973,6 +1979,7 @@ export const interactiveLessons = {
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
+  "el-sonido-fq2": elSonidoFq2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "eleccion-sistema-representacion-dt2": eleccionSistemaRepresentacionDt2Lesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
@@ -2674,6 +2681,7 @@ export const interactiveLessons = {
   "progresiones-aritmeticas-3eso": progresionesAritmeticas3esoLesson,
   "progresiones-geometricas-1bach": progresionesGeometricas1bachLesson,
   "progresiones-geometricas-3eso": progresionesGeometricas3esoLesson,
+  "propagacion-luz-sombras-fq2": propagacionLuzSombrasFq2Lesson,
   "propiedades-condicion-inicial-2bach": propiedadesCondicionInicial2bachLesson,
   "propiedades-condicion-inicial-ccss2": propiedadesCondicionInicialCcss2Lesson,
   "propiedades-densidad-materiales-2eso": propiedadesDensidadMateriales2esoLesson,
@@ -2770,6 +2778,8 @@ export const interactiveLessons = {
   "recursos-naturales-consumo": recursosNaturalesConsumoLesson,
   "red-distribucion": redDistribucionLesson,
   "redes-locales-topologias-3eso": redesLocalesTopologias3esoLesson,
+  "reflexion-luz-fq2": reflexionLuzFq2Lesson,
+  "refraccion-luz-fq2": refraccionLuzFq2Lesson,
   "refrigeracion-carnot-eficiencia": refrigeracionCarnotEficienciaLesson,
   "region-factible-vertices-ccss2": regionFactibleVerticesCcss2Lesson,
   "registros-contadores": registrosContadoresLesson,

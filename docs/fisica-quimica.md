@@ -39,3 +39,4 @@ Total previsto: 44 lecciones.
 | 2.º ESO · 6. El movimiento | Hecho (5 lecciones, `06-el-movimiento/`; herramientas `Fq2MovimientoTools.tsx`, animación `fq2-mru.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 306) |
 | 2.º ESO · 7. Las fuerzas | Hecho (5 lecciones, `07-las-fuerzas/`; herramientas `Fq2FuerzasTools.tsx`, animación `fq2-fuerzas.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 307) |
 | 2.º ESO · 8. La energía | Hecho (5 lecciones, `08-la-energia/`; herramientas `Fq2EnergiaTools.tsx`, animación `fq2-energia.tsx`; bloque `fisica-energia-ondas`; moduleId 308) |
+| 2.º ESO · 9. La luz y el sonido | Hecho (5 lecciones, `09-la-luz-y-el-sonido/`; herramientas `Fq2LuzSonidoTools.tsx`, animación `fq2-luz.tsx`; bloque `fisica-energia-ondas`; moduleId 309). **Física y Química 2.º ESO completo: 44 lecciones en 9 temas.** |

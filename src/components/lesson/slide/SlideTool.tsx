@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SombrasFq2Explorador, ReflexionFq2Explorador, RefraccionFq2Explorador, OndaSonidoFq2Explorador, DecibeliosFq2Explorador } from "@/components/lesson/slide/tools/Fq2LuzSonidoTools";
 import { TransformacionesEnergiaFq2Explorador, CineticaPotencialFq2Explorador, ConservacionEnergiaFq2Explorador, CalorTemperaturaFq2Explorador, FuentesEnergiaFq2Explorador } from "@/components/lesson/slide/tools/Fq2EnergiaTools";
 import { FuerzaVectorFq2Explorador, PesoMasaFq2Explorador, MuelleHookeFq2Explorador, RozamientoFq2Explorador, EquilibrioFuerzasFq2Explorador } from "@/components/lesson/slide/tools/Fq2FuerzasTools";
 import { ReferenciaDesplazamientoFq2Explorador, VelocidadMediaFq2Explorador, MruFq2Explorador, GraficaPosicionTiempoFq2Explorador, EncuentroMovilesFq2Explorador } from "@/components/lesson/slide/tools/Fq2MovimientoTools";
@@ -2131,6 +2132,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CalorTemperaturaFq2Explorador block={block} />;
     case "fq2-fuentes-energia-explorador":
       return <FuentesEnergiaFq2Explorador block={block} />;
+    case "fq2-sombras-explorador":
+      return <SombrasFq2Explorador block={block} />;
+    case "fq2-reflexion-explorador":
+      return <ReflexionFq2Explorador block={block} />;
+    case "fq2-refraccion-explorador":
+      return <RefraccionFq2Explorador block={block} />;
+    case "fq2-onda-sonido-explorador":
+      return <OndaSonidoFq2Explorador block={block} />;
+    case "fq2-decibelios-explorador":
+      return <DecibeliosFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

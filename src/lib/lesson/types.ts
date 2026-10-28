@@ -1107,6 +1107,7 @@ export type SlideAnimId =
   | "fq2-mru-estroboscopica"
   | "fq2-fuerzas-resultante"
   | "fq2-conservacion-energia"
+  | "fq2-rayo-luz"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2056,6 +2057,11 @@ export type SlideToolId =
   | "fq2-conservacion-energia-explorador"
   | "fq2-calor-temperatura-explorador"
   | "fq2-fuentes-energia-explorador"
+  | "fq2-sombras-explorador"
+  | "fq2-reflexion-explorador"
+  | "fq2-refraccion-explorador"
+  | "fq2-onda-sonido-explorador"
+  | "fq2-decibelios-explorador"
   /* industrial-tool-end */;
 
 /**

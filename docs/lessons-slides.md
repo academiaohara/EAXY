@@ -583,6 +583,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-mru-estroboscopica` | MRU: espacios iguales en tiempos iguales | — |
 | `fq2-fuerzas-resultante` | Suma de fuerzas en la misma recta y equilibrio | — |
 | `fq2-conservacion-energia` | Conservación de la energía en una rampa | — |
+| `fq2-rayo-luz` | Reflexión y refracción de un rayo en la superficie del agua | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1406,6 +1407,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-conservacion-energia-explorador` | Conservación de la energía en una caída, con y sin rozamiento | `a` altura (m), `n` rozamiento (0/1) |
 | `fq2-calor-temperatura-explorador` | Mezcla de agua y temperatura de equilibrio | `a` masa caliente, `b` temperatura caliente, `c` masa fría |
 | `fq2-fuentes-energia-explorador` | Fuentes de energía: renovables y emisiones de CO₂ | `n` fuente (0–7), `a` consumo (kWh) |
+| `fq2-sombras-explorador` | Sombra proyectada por un objeto según distancias | `a` foco–objeto (cm), `b` objeto–pantalla (cm), `c` tamaño (cm) |
+| `fq2-reflexion-explorador` | Reflexión de un rayo en un espejo plano | `a` ángulo de incidencia (°) |
+| `fq2-refraccion-explorador` | Refracción entre aire, agua, vidrio y diamante (ley de Snell) | `a` ángulo (°), `n` medio de arriba (0–3) |
+| `fq2-onda-sonido-explorador` | Onda sonora: frecuencia, amplitud y medio | `a` ciclos (1–10), `b` amplitud, `n` medio (0–3) |
+| `fq2-decibelios-explorador` | Nivel sonoro en decibelios según la distancia | `a` dB a 1 m, `b` distancia (m) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
