@@ -1412,6 +1412,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-refraccion-explorador` | Refracción entre aire, agua, vidrio y diamante (ley de Snell) | `a` ángulo (°), `n` medio de arriba (0–3) |
 | `fq2-onda-sonido-explorador` | Onda sonora: frecuencia, amplitud y medio | `a` ciclos (1–10), `b` amplitud, `n` medio (0–3) |
 | `fq2-decibelios-explorador` | Nivel sonoro en decibelios según la distancia | `a` dB a 1 m, `b` distancia (m) |
+| `fq3-pendulo-variables-explorador` | Péndulo: qué variables influyen en el periodo | `a` longitud (m), `b` masa (g), `c` ángulo (°) |
+| `fq3-ordenes-magnitud-explorador` | Escala de tamaños en notación científica | `n` objeto (0–11) |
+| `fq3-factores-conversion-explorador` | Conversión de unidades con factores | `n` conversión (0–3), `a` valor |
+| `fq3-grafica-ajuste-explorador` | Ajuste de una recta a datos del péndulo | `a` pendiente inicial |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

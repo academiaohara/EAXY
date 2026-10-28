@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { PenduloVariablesFq3Explorador, OrdenesMagnitudFq3Explorador, FactoresConversionFq3Explorador, GraficaAjusteFq3Explorador } from "@/components/lesson/slide/tools/Fq3TrabajoTools";
 import { SombrasFq2Explorador, ReflexionFq2Explorador, RefraccionFq2Explorador, OndaSonidoFq2Explorador, DecibeliosFq2Explorador } from "@/components/lesson/slide/tools/Fq2LuzSonidoTools";
 import { TransformacionesEnergiaFq2Explorador, CineticaPotencialFq2Explorador, ConservacionEnergiaFq2Explorador, CalorTemperaturaFq2Explorador, FuentesEnergiaFq2Explorador } from "@/components/lesson/slide/tools/Fq2EnergiaTools";
 import { FuerzaVectorFq2Explorador, PesoMasaFq2Explorador, MuelleHookeFq2Explorador, RozamientoFq2Explorador, EquilibrioFuerzasFq2Explorador } from "@/components/lesson/slide/tools/Fq2FuerzasTools";
@@ -2142,6 +2143,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OndaSonidoFq2Explorador block={block} />;
     case "fq2-decibelios-explorador":
       return <DecibeliosFq2Explorador block={block} />;
+    case "fq3-pendulo-variables-explorador":
+      return <PenduloVariablesFq3Explorador block={block} />;
+    case "fq3-ordenes-magnitud-explorador":
+      return <OrdenesMagnitudFq3Explorador block={block} />;
+    case "fq3-factores-conversion-explorador":
+      return <FactoresConversionFq3Explorador block={block} />;
+    case "fq3-grafica-ajuste-explorador":
+      return <GraficaAjusteFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

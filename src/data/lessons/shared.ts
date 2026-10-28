@@ -219,3 +219,16 @@ export const FQ2_SUBTITLES = {
   8: "Física y Química 2.º ESO, Tema 8 — La energía",
   9: "Física y Química 2.º ESO, Tema 9 — La luz y el sonido",
 } as const;
+
+export const FQ3_SUBTITLES = {
+  1: "Física y Química 3.º ESO, Tema 1 — El trabajo científico",
+  2: "Física y Química 3.º ESO, Tema 2 — El átomo y el sistema periódico",
+  3: "Física y Química 3.º ESO, Tema 3 — Elementos y compuestos químicos",
+  4: "Física y Química 3.º ESO, Tema 4 — La reacción química",
+  5: "Física y Química 3.º ESO, Tema 5 — Disoluciones",
+  6: "Física y Química 3.º ESO, Tema 6 — El movimiento",
+  7: "Física y Química 3.º ESO, Tema 7 — Las fuerzas y sus efectos",
+  8: "Física y Química 3.º ESO, Tema 8 — Energía y calor",
+  9: "Física y Química 3.º ESO, Tema 9 — Electricidad",
+  10: "Física y Química 3.º ESO, Tema 10 — Química y sociedad",
+} as const;

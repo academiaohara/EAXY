@@ -545,6 +545,7 @@ import { factorComun2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algeb
 import { factorComun3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/05-factor-comun-3eso";
 import { factorComun4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/06-factor-comun-4eso";
 import { factorComun4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/07-factor-comun-4esob";
+import { factoresConversionFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/03-factores-conversion-fq3";
 import { factoresPrimosLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/03-factores-primos";
 import { factoresPrimos2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/03-factores-primos-2eso";
 import { factorizacion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/05-factorizacion-1bach";
@@ -643,6 +644,7 @@ import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-te
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/03-giros-diedrico-dt2";
+import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
@@ -898,6 +900,7 @@ import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/0
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
 import { notacionCientifica4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/12-notacion-cientifica-4esob";
 import { notacionCientificaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/13-notacion-cientifica-ccss1";
+import { notacionCientificaOrdenesFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/02-notacion-cientifica-ordenes-fq3";
 import { nubeAlmacenamientoCopias2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/05-nube-almacenamiento-copias-2eso";
 import { numeroE1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/09-numero-e-1bach";
 import { numeroIComplejos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/08-numero-i-complejos-1bach";
@@ -1513,6 +1516,7 @@ import { variableAleatoriaDiscretaCcss1Lesson } from "@/data/lessons/matematicas
 import { variableContinuaDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/05-variable-continua-densidad-ccss1";
 import { variablesContinuasDensidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/06-variables-continuas-densidad-2bach";
 import { variablesDatosIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/04-variables-datos-iniciacion";
+import { variablesPenduloFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/01-variables-pendulo-fq3";
 import { variablesTiposDatos2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/02-variables-tipos-datos-2eso";
 import { variacionRelativa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/08-variacion-relativa-1bach";
 import { variacionRelativaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/08-variacion-relativa-ccss1";
@@ -2087,6 +2091,7 @@ export const interactiveLessons = {
   "factor-comun-3eso": factorComun3esoLesson,
   "factor-comun-4eso": factorComun4esoLesson,
   "factor-comun-4esob": factorComun4esobLesson,
+  "factores-conversion-fq3": factoresConversionFq3Lesson,
   "factores-primos": factoresPrimosLesson,
   "factores-primos-2eso": factoresPrimos2esoLesson,
   "factorizacion-1bach": factorizacion1bachLesson,
@@ -2185,6 +2190,7 @@ export const interactiveLessons = {
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "giros-diedrico-dt2": girosDiedricoDt2Lesson,
+  "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
@@ -2440,6 +2446,7 @@ export const interactiveLessons = {
   "notacion-cientifica-4eso": notacionCientifica4esoLesson,
   "notacion-cientifica-4esob": notacionCientifica4esobLesson,
   "notacion-cientifica-ccss1": notacionCientificaCcss1Lesson,
+  "notacion-cientifica-ordenes-fq3": notacionCientificaOrdenesFq3Lesson,
   "nube-almacenamiento-copias-2eso": nubeAlmacenamientoCopias2esoLesson,
   "numero-e-1bach": numeroE1bachLesson,
   "numero-i-complejos-1bach": numeroIComplejos1bachLesson,
@@ -3055,6 +3062,7 @@ export const interactiveLessons = {
   "variable-continua-densidad-ccss1": variableContinuaDensidadCcss1Lesson,
   "variables-continuas-densidad-2bach": variablesContinuasDensidad2bachLesson,
   "variables-datos-iniciacion": variablesDatosIniciacionLesson,
+  "variables-pendulo-fq3": variablesPenduloFq3Lesson,
   "variables-tipos-datos-2eso": variablesTiposDatos2esoLesson,
   "variacion-relativa-1bach": variacionRelativa1bachLesson,
   "variacion-relativa-ccss1": variacionRelativaCcss1Lesson,

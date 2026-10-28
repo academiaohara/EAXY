@@ -22,9 +22,28 @@ Convenciones (como en Dibujo Técnico): lecciones en `src/data/lessons/<curso>/<
 
 Total previsto: 44 lecciones.
 
+## 3.º de ESO (en desarrollo)
+
+Ids con sufijo `-fq3`, herramientas y animaciones `fq3-…`, `FQ3_SUBTITLES`, `moduleId(320 + n)` (curso `fisica-3-eso`, `courseId(8)`). Retoma 2.º con más cálculo: notación científica, enlace y mol, ajuste y cálculos con masas, MRUA, leyes de Newton, trabajo y potencia, electricidad.
+
+| Tema | Lecciones previstas |
+|---|---|
+| 1. El trabajo científico | 4: método y variables; notación científica y cifras significativas; factores de conversión; tablas, gráficas e informes |
+| 2. El átomo y el sistema periódico | 5: modelos atómicos; Z, A y partículas; isótopos e iones; distribución electrónica; tabla periódica y propiedades |
+| 3. Elementos y compuestos químicos | 6: elementos y símbolos; enlace iónico; enlace covalente; enlace metálico; fórmulas y masa molecular (mol); nomenclatura |
+| 4. La reacción química | 5: ecuaciones y ajuste; conservación de la masa y cálculos; velocidad de reacción; combustión y oxidación; aplicaciones |
+| 5. Disoluciones | 4: concentración; solubilidad; preparación y diluciones; separación |
+| 6. El movimiento | 5: posición y velocidad media; MRU; aceleración; MRUA; gráficas y problemas |
+| 7. Las fuerzas y sus efectos | 5: composición de fuerzas; leyes de Newton; peso, normal y rozamiento; presión; fluidos |
+| 8. Energía y calor | 5: trabajo y potencia; conservación; calor y Q = m·c·ΔT; transmisión y aislamiento; rendimiento |
+| 9. Electricidad | 6: carga; corriente, tensión y resistencia; ley de Ohm; serie y paralelo; potencia y energía; seguridad |
+| 10. Química y sociedad | 4: combustibles y contaminación; efecto invernadero; lluvia ácida y residuos; seguridad y etiquetado |
+
+Total previsto: 49 lecciones.
+
 ## Cursos siguientes (sin desarrollar)
 
-3.º ESO (10 temas), 4.º ESO (12), 1.º Bachillerato (12), 2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
+4.º ESO (12), 1.º Bachillerato (12), 2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
 
 ## Estado
 
@@ -40,3 +59,4 @@ Total previsto: 44 lecciones.
 | 2.º ESO · 7. Las fuerzas | Hecho (5 lecciones, `07-las-fuerzas/`; herramientas `Fq2FuerzasTools.tsx`, animación `fq2-fuerzas.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 307) |
 | 2.º ESO · 8. La energía | Hecho (5 lecciones, `08-la-energia/`; herramientas `Fq2EnergiaTools.tsx`, animación `fq2-energia.tsx`; bloque `fisica-energia-ondas`; moduleId 308) |
 | 2.º ESO · 9. La luz y el sonido | Hecho (5 lecciones, `09-la-luz-y-el-sonido/`; herramientas `Fq2LuzSonidoTools.tsx`, animación `fq2-luz.tsx`; bloque `fisica-energia-ondas`; moduleId 309). **Física y Química 2.º ESO completo: 44 lecciones en 9 temas.** |
+| 3.º ESO · 1. El trabajo científico | Hecho (4 lecciones, `src/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/`; herramientas `Fq3TrabajoTools.tsx`; bloque `fisica-metodo-medida`; moduleId 321; ids `-fq3`, herramientas `fq3-`) |

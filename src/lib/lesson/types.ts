@@ -2062,6 +2062,10 @@ export type SlideToolId =
   | "fq2-refraccion-explorador"
   | "fq2-onda-sonido-explorador"
   | "fq2-decibelios-explorador"
+  | "fq3-pendulo-variables-explorador"
+  | "fq3-ordenes-magnitud-explorador"
+  | "fq3-factores-conversion-explorador"
+  | "fq3-grafica-ajuste-explorador"
   /* industrial-tool-end */;
 
 /**
