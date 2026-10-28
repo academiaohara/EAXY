@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const parabolaFocoDirectrizDt2Lesson: InteractiveLesson = {
   slug: "parabola-foco-directriz-dt2",
@@ -19,6 +19,9 @@ export const parabolaFocoDirectrizDt2Lesson: InteractiveLesson = {
     slide("explora", "Equidistancia", [
       { kind: "text", text: "Mueve P a lo largo de la curva y cambia f. La distancia al foco y a la directriz siempre coinciden." },
     ], tool("dt2-parabola-explorador"), "visual-top"),
+    slide("traza-anim", "Trazado con compás", [
+      { kind: "text", text: "Mira cómo se halla cada punto con una paralela a la directriz y un arco con centro en el foco." },
+    ], anim("dt2-parabola-foco-directriz"), "visual-top"),
     slide("trazado", "Cómo se traza", [
       { kind: "steps", items: [
         "Se dibujan el eje, la directriz y el foco F.",

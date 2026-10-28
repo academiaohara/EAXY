@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const abatimientoPlanoPuntoDt2Lesson: InteractiveLesson = {
   slug: "abatimiento-plano-punto-dt2",
@@ -19,6 +19,9 @@ export const abatimientoPlanoPuntoDt2Lesson: InteractiveLesson = {
     slide("explora", "El triángulo de abatimiento", [
       { kind: "text", text: "Cambia la cota del punto y la inclinación del plano. Observa dónde cae el punto abatido P₀." },
     ], tool("dt2-abatimiento-punto-explorador"), "visual-top"),
+    slide("triangulo", "El triángulo de abatimiento", [
+      { kind: "text", text: "Sigue la construcción: de P′ y la cota al punto abatido P₀." },
+    ], anim("dt2-abatimiento-punto"), "visual-top"),
     slide("pasos", "Cómo se abate un punto", [
       { kind: "steps", items: [
         "Se traza por **P′** la perpendicular a la traza horizontal (la charnela).",

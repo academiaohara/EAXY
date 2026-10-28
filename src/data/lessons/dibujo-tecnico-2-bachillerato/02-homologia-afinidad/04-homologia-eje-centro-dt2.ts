@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const homologiaEjeCentroDt2Lesson: InteractiveLesson = {
   slug: "homologia-eje-centro-dt2",
@@ -19,6 +19,9 @@ export const homologiaEjeCentroDt2Lesson: InteractiveLesson = {
     slide("explora", "Una homología en acción", [
       { kind: "text", text: "Cambia el parámetro y el centro. Mira las rectas límite y qué le pasa a la figura al acercarse a la suya." },
     ], tool("dt2-homologia-explorador"), "visual-top"),
+    slide("constr", "Construir la figura homóloga", [
+      { kind: "text", text: "Sigue paso a paso cómo se halla la figura homóloga con el eje, el centro y un par de puntos homólogos." },
+    ], anim("dt2-homologia-construccion"), "visual-top"),
     slide("casos", "Casos particulares", [
       { kind: "steps", items: [
         "**Afinidad**: el **centro** está en el **infinito** (los rayos son paralelos a una dirección).",

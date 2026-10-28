@@ -569,6 +569,12 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 | `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
 | `dt1-vistas-pieza` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
+| `dt2-homologia-construccion` | Construcción de la figura homóloga con eje, centro y un par de homólogos | — |
+| `dt2-elipse-circunferencias` | Elipse punto a punto con las circunferencias de diámetros 2a y 2b | — |
+| `dt2-parabola-foco-directriz` | Parábola punto a punto desde el foco y la directriz | — |
+| `dt2-eje-radical-construccion` | Eje radical de dos circunferencias con una auxiliar | — |
+| `dt2-abatimiento-punto` | Abatimiento de un punto con el triángulo de abatimiento | — |
+| `dt2-desarrollo-cono` | Desarrollo de un cono: sector circular | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 

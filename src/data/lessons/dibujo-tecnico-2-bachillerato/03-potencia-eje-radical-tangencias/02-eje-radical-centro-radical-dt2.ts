@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const ejeRadicalCentroRadicalDt2Lesson: InteractiveLesson = {
   slug: "eje-radical-centro-radical-dt2",
@@ -19,6 +19,9 @@ export const ejeRadicalCentroRadicalDt2Lesson: InteractiveLesson = {
     slide("explora", "Mueve las circunferencias", [
       { kind: "text", text: "Cambia radios y distancia. Sitúa el punto Q sobre el eje y comprueba que las dos potencias coinciden." },
     ], tool("dt2-eje-radical-explorador"), "visual-top"),
+    slide("constr-anim", "Trazado con una auxiliar", [
+      { kind: "text", text: "Mira cómo se traza el eje radical con una circunferencia auxiliar y el centro radical." },
+    ], anim("dt2-eje-radical-construccion"), "visual-top"),
     slide("centro", "El centro radical", [
       { kind: "steps", items: [
         "Con **tres** circunferencias (centros no alineados) se tienen **tres** ejes radicales, uno por cada pareja.",

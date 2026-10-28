@@ -73,3 +73,5 @@ Total: 41 lecciones (el curso `dibujo-tecnico-2-bachillerato` está completo).
 | DT II · 7. Axonométrico, cónico y planos acotados de sólidos | Hecho (5 lecciones, `07-axonometrico-conico-acotados/`; herramientas `DtIISolidosAxoTools.tsx`) |
 | DT II · 8. Normalización y proyecto | Hecho (6 lecciones, `08-normalizacion-proyecto/`; herramientas `DtIINormalizacionTools.tsx`; bloque `dibujo-normalizacion-documentacion`) |
 | DT II · 9. Sistemas CAD | Hecho (2 lecciones, `09-sistemas-cad/`; herramientas `DtIICadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico II completo: 41 lecciones en 9 temas.** |
+
+**Animaciones de DT II** (`scenes/industrial/dt2-construcciones.tsx`): construcción de la figura homóloga (tema 2, lección 4), elipse por afinidad (tema 4, lección 2), parábola foco–directriz (tema 4, lección 4), eje radical con circunferencia auxiliar (tema 3, lección 2), triángulo de abatimiento (tema 5, lección 1) y desarrollo del cono (tema 6, lección 5).

@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const desarrollosCuerposDt2Lesson: InteractiveLesson = {
   slug: "desarrollos-cuerpos-dt2",
@@ -19,6 +19,9 @@ export const desarrollosCuerposDt2Lesson: InteractiveLesson = {
     slide("explora", "Tres desarrollos", [
       { kind: "text", text: "Elige un cuerpo y cambia radio y altura. Observa la forma del patrón y el área lateral." },
     ], tool("dt2-desarrollo-cuerpos-explorador"), "visual-top"),
+    slide("cono-anim", "De cono a sector", [
+      { kind: "text", text: "Mira cómo se desarrolla un cono y de dónde salen el radio y el ángulo del sector." },
+    ], anim("dt2-desarrollo-cono"), "visual-top"),
     slide("reglas", "Cómo se desarrolla", [
       { kind: "steps", items: [
         "**Prisma recto**: un rectángulo de largo la suma de los lados de la base y alto la altura (más las dos bases).",

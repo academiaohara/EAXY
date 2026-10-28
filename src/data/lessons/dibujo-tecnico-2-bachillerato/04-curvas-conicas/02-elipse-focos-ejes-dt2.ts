@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT2_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const elipseFocosEjesDt2Lesson: InteractiveLesson = {
   slug: "elipse-focos-ejes-dt2",
@@ -19,6 +19,9 @@ export const elipseFocosEjesDt2Lesson: InteractiveLesson = {
     slide("explora", "Suma constante", [
       { kind: "text", text: "Mueve el punto P por la elipse y cambia los semiejes. La suma de las dos distancias no varía." },
     ], tool("dt2-elipse-focos-explorador"), "visual-top"),
+    slide("traza-anim", "Trazado por afinidad", [
+      { kind: "text", text: "Mira cómo se obtiene la elipse punto a punto con las dos circunferencias de diámetros 2a y 2b." },
+    ], anim("dt2-elipse-circunferencias"), "visual-top"),
     slide("trazado", "Cómo se traza", [
       { kind: "steps", items: [
         "**Método del jardinero**: una cuerda de longitud 2a, con los extremos fijos en los focos, se tensa con un lápiz. Al moverlo traza la elipse.",

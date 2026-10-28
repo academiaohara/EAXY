@@ -1093,6 +1093,12 @@ export type SlideAnimId =
   | "dt1-cubo-isometrico"
   | "dt1-perspectiva-frontal"
   | "dt1-vistas-pieza"
+  | "dt2-homologia-construccion"
+  | "dt2-elipse-circunferencias"
+  | "dt2-parabola-foco-directriz"
+  | "dt2-eje-radical-construccion"
+  | "dt2-abatimiento-punto"
+  | "dt2-desarrollo-cono"
   /* industrial-anim-end */;
 
 export type ExprStep = {
