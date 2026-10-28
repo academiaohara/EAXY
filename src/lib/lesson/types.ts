@@ -1974,6 +1974,11 @@ export type SlideToolId =
   | "dt2-eje-radical-explorador"
   | "dt2-circulo-dos-puntos-tangente-explorador"
   | "dt2-tangente-recta-circulo-explorador"
+  | "dt2-corte-cono-explorador"
+  | "dt2-elipse-focos-explorador"
+  | "dt2-hiperbola-explorador"
+  | "dt2-parabola-explorador"
+  | "dt2-tangentes-conicas-explorador"
   /* industrial-tool-end */;
 
 /**

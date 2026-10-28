@@ -225,6 +225,7 @@ import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
+import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
 import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/05-construccion-poligonos-regulares-dt1";
@@ -425,6 +426,7 @@ import { elementosSoporteAcoplamiento4esoLesson } from "@/data/lessons/tecnologi
 import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
+import { elipseFocosEjesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/02-elipse-focos-ejes-dt2";
 import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/03-elipse-por-afinidad-dt2";
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
@@ -624,6 +626,7 @@ import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnolog
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
+import { hiperbolaAsintotasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/03-hiperbola-asintotas-dt2";
 import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
@@ -912,6 +915,7 @@ import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingeni
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
 import { parPotenciaReductoras4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/02-par-potencia-reductoras-4eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
+import { parabolaFocoDirectrizDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/04-parabola-foco-directriz-dt2";
 import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-relaciones-distancias/02-paralelismo-diedrico-dt1";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
@@ -1354,6 +1358,7 @@ import { tangenciasPorPotenciaDosPuntosDt2Lesson } from "@/data/lessons/dibujo-t
 import { tangenciasRectaCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/04-tangencias-recta-circunferencia-dt2";
 import { tangenteNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/07-tangente-normal-2bach";
 import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/05-tangente-normal-ccss2";
+import { tangentesPropiedadReflexivaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/05-tangentes-propiedad-reflexiva-dt2";
 import { tangentesRectaCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/01-tangentes-recta-circunferencia-dt1";
 import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/01-tasa-variacion-media-1bach";
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
@@ -1694,6 +1699,7 @@ export const interactiveLessons = {
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
+  "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
   "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
@@ -1894,6 +1900,7 @@ export const interactiveLessons = {
   "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
+  "elipse-focos-ejes-dt2": elipseFocosEjesDt2Lesson,
   "elipse-por-afinidad-dt2": elipsePorAfinidadDt2Lesson,
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
@@ -2093,6 +2100,7 @@ export const interactiveLessons = {
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hiperbola-1bach": hiperbola1bachLesson,
+  "hiperbola-asintotas-dt2": hiperbolaAsintotasDt2Lesson,
   "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
@@ -2381,6 +2389,7 @@ export const interactiveLessons = {
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
   "par-potencia-reductoras-4eso": parPotenciaReductoras4esoLesson,
   "parabola-1bach": parabola1bachLesson,
+  "parabola-foco-directriz-dt2": parabolaFocoDirectrizDt2Lesson,
   "paralelismo-diedrico-dt1": paralelismoDiedricoDt1Lesson,
   "parametros-binomial-2bach": parametrosBinomial2bachLesson,
   "parentesis-enteros": parentesisEnterosLesson,
@@ -2823,6 +2832,7 @@ export const interactiveLessons = {
   "tangencias-recta-circunferencia-dt2": tangenciasRectaCircunferenciaDt2Lesson,
   "tangente-normal-2bach": tangenteNormal2bachLesson,
   "tangente-normal-ccss2": tangenteNormalCcss2Lesson,
+  "tangentes-propiedad-reflexiva-dt2": tangentesPropiedadReflexivaDt2Lesson,
   "tangentes-recta-circunferencia-dt1": tangentesRectaCircunferenciaDt1Lesson,
   "tasa-variacion-media-1bach": tasaVariacionMedia1bachLesson,
   "tasa-variacion-media-ccss1": tasaVariacionMediaCcss1Lesson,

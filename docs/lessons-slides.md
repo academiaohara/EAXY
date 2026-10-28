@@ -1324,6 +1324,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-eje-radical-explorador` | Eje radical de dos circunferencias y potencias iguales de sus puntos | `a` r₁, `b` r₂, `c` distancia entre centros |
 | `dt2-circulo-dos-puntos-tangente-explorador` | Circunferencias por dos puntos tangentes a una recta (PT² = PA·PB) | `a` altura de A, `b` posición de B |
 | `dt2-tangente-recta-circulo-explorador` | Circunferencias tangentes a una recta en T y a otra circunferencia | `a` posición de T, `b` radio |
+| `dt2-corte-cono-explorador` | Corte de un cono con un plano: tipo de cónica y excentricidad | `a` ángulo del plano β, `b` semiángulo α |
+| `dt2-elipse-focos-explorador` | Elipse: suma de distancias a los focos constante | `a` a, `b` b, `c` posición de P (°) |
+| `dt2-hiperbola-explorador` | Hipérbola: diferencia de distancias a los focos y asíntotas | `a` a, `b` b, `c` posición de P |
+| `dt2-parabola-explorador` | Parábola: equidistancia del foco y de la directriz | `a` f, `b` posición de P |
+| `dt2-tangentes-conicas-explorador` | Tangente a la cónica y ángulos con los radios focales | `n` cónica (0–2), `a` parámetro, `b` posición (°) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

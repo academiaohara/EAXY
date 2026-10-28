@@ -22,6 +22,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["geometria-arquitectura-ingenieria", 3],
   ["homologia-afinidad", 5],
   ["potencia-eje-radical-tangencias", 4],
+  ["curvas-conicas", 5],
 ];
 
 describe("curso Dibujo Técnico II", () => {

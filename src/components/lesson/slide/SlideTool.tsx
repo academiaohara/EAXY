@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CorteConoDt2Explorador, ElipseFocosDt2Explorador, HiperbolaDt2Explorador, ParabolaDt2Explorador, TangentesConicasDt2Explorador } from "@/components/lesson/slide/tools/DtIIConicasTools";
 import { PotenciaPuntoDt2Explorador, EjeRadicalDt2Explorador, CirculoDosPuntosTangenteDt2Explorador, TangenteRectaCirculoDt2Explorador } from "@/components/lesson/slide/tools/DtIIPotenciaTools";
 import { TransformacionesGeneralesDt2Explorador, AfinidadDt2Explorador, ElipseAfinidadDt2Explorador, HomologiaDt2Explorador, AbatimientoAfinidadDt2Explorador } from "@/components/lesson/slide/tools/DtIITransformacionesTools";
 import { CatenariaDt2Explorador, HiperboloideDt2Explorador, FachadaParametricaDt2Explorador } from "@/components/lesson/slide/tools/DtIIArquitecturaTools";
@@ -1981,6 +1982,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CirculoDosPuntosTangenteDt2Explorador block={block} />;
     case "dt2-tangente-recta-circulo-explorador":
       return <TangenteRectaCirculoDt2Explorador block={block} />;
+    case "dt2-corte-cono-explorador":
+      return <CorteConoDt2Explorador block={block} />;
+    case "dt2-elipse-focos-explorador":
+      return <ElipseFocosDt2Explorador block={block} />;
+    case "dt2-hiperbola-explorador":
+      return <HiperbolaDt2Explorador block={block} />;
+    case "dt2-parabola-explorador":
+      return <ParabolaDt2Explorador block={block} />;
+    case "dt2-tangentes-conicas-explorador":
+      return <TangentesConicasDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

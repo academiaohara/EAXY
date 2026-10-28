@@ -200,7 +200,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000210', 'a1000000-0000-4000-8000-000000000022', 'sistemas-cad', 'Sistemas CAD', 10),
   ('a2000000-0000-4000-8000-000000000211', 'a1000000-0000-4000-8000-000000000023', 'geometria-arquitectura-ingenieria', 'La geometría en la arquitectura y la ingeniería', 1),
   ('a2000000-0000-4000-8000-000000000212', 'a1000000-0000-4000-8000-000000000023', 'homologia-afinidad', 'Homología y afinidad', 2),
-  ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3);
+  ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3),
+  ('a2000000-0000-4000-8000-000000000214', 'a1000000-0000-4000-8000-000000000023', 'curvas-conicas', 'Curvas cónicas', 4);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1666,4 +1667,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021301', 'a2000000-0000-4000-8000-000000000213', '1. Potencia de un punto respecto de una circunferencia', 'Secantes, tangentes y signo de la potencia.', 1, null),
   ('a3000000-0000-4000-8000-000000021302', 'a2000000-0000-4000-8000-000000000213', '2. Eje radical y centro radical', 'Lugar de igual potencia y su construcción.', 2, null),
   ('a3000000-0000-4000-8000-000000021303', 'a2000000-0000-4000-8000-000000000213', '3. Tangencias por potencia: circunferencia por dos puntos', 'Circunferencias por A y B tangentes a una recta.', 3, null),
-  ('a3000000-0000-4000-8000-000000021304', 'a2000000-0000-4000-8000-000000000213', '4. Tangencias a una recta y una circunferencia', 'Problema de Apolonio y casos con potencia.', 4, null);
+  ('a3000000-0000-4000-8000-000000021304', 'a2000000-0000-4000-8000-000000000213', '4. Tangencias a una recta y una circunferencia', 'Problema de Apolonio y casos con potencia.', 4, null),
+  ('a3000000-0000-4000-8000-000000021401', 'a2000000-0000-4000-8000-000000000214', '1. Las cónicas como secciones de un cono', 'Circunferencia, elipse, parábola e hipérbola.', 1, null),
+  ('a3000000-0000-4000-8000-000000021402', 'a2000000-0000-4000-8000-000000000214', '2. La elipse: focos y ejes', 'Definición por suma de distancias.', 2, null),
+  ('a3000000-0000-4000-8000-000000021403', 'a2000000-0000-4000-8000-000000000214', '3. La hipérbola: ramas y asíntotas', 'Definición por diferencia de distancias.', 3, null),
+  ('a3000000-0000-4000-8000-000000021404', 'a2000000-0000-4000-8000-000000000214', '4. La parábola: foco y directriz', 'Equidistancia y parámetro.', 4, null),
+  ('a3000000-0000-4000-8000-000000021405', 'a2000000-0000-4000-8000-000000000214', '5. Tangentes a las cónicas y propiedad reflexiva', 'Rectas tangentes y aplicaciones.', 5, null);

@@ -67,7 +67,7 @@ export function tangenteRectaYCirculo(t: number, cx: number, cy: number, R: numb
 
 /* ───────────── Utilidades de dibujo ───────────── */
 
-function ajuste(xmin: number, xmax: number, ymin: number, ymax: number, w = 520, h = 300) {
+export function ajuste(xmin: number, xmax: number, ymin: number, ymax: number, w = 520, h = 300) {
   const U = Math.min((w - 40) / (xmax - xmin), (h - 30) / (ymax - ymin));
   const ox = w / 2 - (U * (xmin + xmax)) / 2;
   const oy = h - 15 + ymin * U;
