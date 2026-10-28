@@ -1100,6 +1100,7 @@ export type SlideAnimId =
   | "dt2-abatimiento-punto"
   | "dt2-desarrollo-cono"
   | "fq2-metodo-cientifico"
+  | "fq2-particulas-estados"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2015,6 +2016,11 @@ export type SlideToolId =
   | "fq2-medidas-error-explorador"
   | "fq2-grafica-proporcional-explorador"
   | "fq2-instrumentos-laboratorio-explorador"
+  | "fq2-densidad-flotacion-explorador"
+  | "fq2-estados-propiedades-explorador"
+  | "fq2-modelo-cinetico-explorador"
+  | "fq2-cambios-estado-explorador"
+  | "fq2-curva-calentamiento-explorador"
   /* industrial-tool-end */;
 
 /**

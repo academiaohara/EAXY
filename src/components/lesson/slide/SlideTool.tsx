@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { DensidadFlotacionFq2Explorador, EstadosPropiedadesFq2Explorador, ModeloCineticoFq2Explorador, CambiosEstadoFq2Explorador, CurvaCalentamientoFq2Explorador } from "@/components/lesson/slide/tools/Fq2MateriaTools";
 import { ExperimentoVariablesFq2Explorador, UnidadesPrefijosFq2Explorador, MedidasErrorFq2Explorador, GraficaProporcionalFq2Explorador, InstrumentosLaboratorioFq2Explorador } from "@/components/lesson/slide/tools/Fq2MedidaTools";
 import { CroquisRestriccionesDt2Explorador, ModeloAVistasDt2Explorador } from "@/components/lesson/slide/tools/DtIICadTools";
 import { RoscaMetricaDt2Explorador, CortesPiezaDt2Explorador, PerfilesSeccionDt2Explorador, AjusteToleranciasDt2Explorador, ListaPiezasDt2Explorador, HuellaMaterialDt2Explorador } from "@/components/lesson/slide/tools/DtIINormalizacionTools";
@@ -2056,6 +2057,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <GraficaProporcionalFq2Explorador block={block} />;
     case "fq2-instrumentos-laboratorio-explorador":
       return <InstrumentosLaboratorioFq2Explorador block={block} />;
+    case "fq2-densidad-flotacion-explorador":
+      return <DensidadFlotacionFq2Explorador block={block} />;
+    case "fq2-estados-propiedades-explorador":
+      return <EstadosPropiedadesFq2Explorador block={block} />;
+    case "fq2-modelo-cinetico-explorador":
+      return <ModeloCineticoFq2Explorador block={block} />;
+    case "fq2-cambios-estado-explorador":
+      return <CambiosEstadoFq2Explorador block={block} />;
+    case "fq2-curva-calentamiento-explorador":
+      return <CurvaCalentamientoFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

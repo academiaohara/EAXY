@@ -576,6 +576,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt2-abatimiento-punto` | Abatimiento de un punto con el triángulo de abatimiento | — |
 | `dt2-desarrollo-cono` | Desarrollo de un cono: sector circular | — |
 | `fq2-metodo-cientifico` | Etapas del método científico y su carácter cíclico | — |
+| `fq2-particulas-estados` | Partículas de un sólido, un líquido y un gas | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1365,6 +1366,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-medidas-error-explorador` | Media, error absoluto y relativo y cifras significativas de una serie de medidas | `a` número de medidas, `b` cifras significativas |
 | `fq2-grafica-proporcional-explorador` | Gráfica de un muelle: ajustar una recta proporcional a los datos | `a` pendiente (cm/g) |
 | `fq2-instrumentos-laboratorio-explorador` | Elegir el instrumento de laboratorio según el error máximo admitido | `n` magnitud (0–4), `a` nivel de error |
+| `fq2-densidad-flotacion-explorador` | Densidad de un bloque y su flotación en distintos líquidos | `n` líquido (0–3), `a` masa (g), `b` volumen (cm³) |
+| `fq2-estados-propiedades-explorador` | Forma, volumen y compresibilidad de sólidos, líquidos y gases | `n` estado (0–2) |
+| `fq2-modelo-cinetico-explorador` | Partículas de un gas: velocidad y presión según temperatura y volumen | `a` temperatura (K), `b` volumen (%) |
+| `fq2-cambios-estado-explorador` | Los seis cambios de estado y la energía que absorben o desprenden | `n` cambio (0–5) |
+| `fq2-curva-calentamiento-explorador` | Gráfica de calentamiento con tramos de cambio de estado | `n` sustancia (0–3), `a` tiempo (min) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

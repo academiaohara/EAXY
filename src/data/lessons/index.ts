@@ -148,6 +148,7 @@ import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
+import { cambiosDeEstadoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/04-cambios-de-estado-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
@@ -299,6 +300,7 @@ import { curvaturaInflexionRep2bachLesson } from "@/data/lessons/matematicas-2-b
 import { datosAgrupados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/03-datos-agrupados-1bach";
 import { datosAgrupadosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/03-datos-agrupados-ccss1";
 import { decimalAFraccion4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/02-decimal-a-fraccion-4eso";
+import { densidadMasaVolumenFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/01-densidad-masa-volumen-fq2";
 import { dependenciaBaseEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/03-dependencia-base-espacio-2bach";
 import { depuracionProyectoSoftware4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/08-depuracion-proyecto-software-4eso";
 import { depuracionPruebas2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/07-depuracion-pruebas-2eso";
@@ -499,6 +501,7 @@ import { estadisticaRepaso4esoLesson } from "@/data/lessons/matematicas-4-eso/13
 import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/08-estadistica-repaso-4esob";
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
+import { estadosAgregacionFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/02-estados-agregacion-fq2";
 import { estimacionSimulacionPrototiposTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/03-estimacion-simulacion-prototipos-ti2";
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
@@ -626,6 +629,7 @@ import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-te
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/03-giros-diedrico-dt2";
+import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -838,6 +842,7 @@ import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
 import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
+import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
@@ -1651,6 +1656,7 @@ export const interactiveLessons = {
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
+  "cambios-de-estado-fq2": cambiosDeEstadoFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
@@ -1802,6 +1808,7 @@ export const interactiveLessons = {
   "datos-agrupados-1bach": datosAgrupados1bachLesson,
   "datos-agrupados-ccss1": datosAgrupadosCcss1Lesson,
   "decimal-a-fraccion-4eso": decimalAFraccion4esoLesson,
+  "densidad-masa-volumen-fq2": densidadMasaVolumenFq2Lesson,
   "dependencia-base-espacio-2bach": dependenciaBaseEspacio2bachLesson,
   "depuracion-proyecto-software-4eso": depuracionProyectoSoftware4esoLesson,
   "depuracion-pruebas-2eso": depuracionPruebas2esoLesson,
@@ -2002,6 +2009,7 @@ export const interactiveLessons = {
   "estadistica-repaso-4esob": estadisticaRepaso4esobLesson,
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
+  "estados-agregacion-fq2": estadosAgregacionFq2Lesson,
   "estimacion-simulacion-prototipos-ti2": estimacionSimulacionPrototiposTi2Lesson,
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
@@ -2129,6 +2137,7 @@ export const interactiveLessons = {
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "giros-diedrico-dt2": girosDiedricoDt2Lesson,
+  "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -2341,6 +2350,7 @@ export const interactiveLessons = {
   "modelado-3d-operaciones-2eso": modelado3dOperaciones2esoLesson,
   "modelado-3d-primitivas-booleanas-dt1": modelado3dPrimitivasBooleanasDt1Lesson,
   "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
+  "modelo-cinetico-molecular-fq2": modeloCineticoMolecularFq2Lesson,
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,

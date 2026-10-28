@@ -32,3 +32,4 @@ Total previsto: 44 lecciones.
 |---|---|
 | Plan de 2.º ESO | Aprobado por el usuario |
 | 2.º ESO · 1. La actividad científica | Hecho (5 lecciones, `src/data/lessons/fisica-2-eso/01-actividad-cientifica/`; herramientas `Fq2MedidaTools.tsx`, animación `fq2-metodo.tsx`; bloque `fisica-metodo-medida`; moduleId 301) |
+| 2.º ESO · 2. La materia y sus propiedades | Hecho (5 lecciones, `02-materia-propiedades/`; herramientas `Fq2MateriaTools.tsx`, animación `fq2-materia.tsx`; bloque `fisica-materia`; moduleId 302) |

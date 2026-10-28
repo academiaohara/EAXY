@@ -20,6 +20,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 
 const TEMAS: [slug: string, lecciones: number][] = [
   ["actividad-cientifica", 5],
+  ["materia-propiedades", 5],
 ];
 
 describe("curso Física y Química 2.º ESO", () => {

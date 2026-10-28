@@ -351,6 +351,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "El método científico, las magnitudes y unidades, el error de medida, las gráficas y el trabajo en el laboratorio.",
     orderIndex: 1,
   },
+  {
+    slug: "fisica-materia",
+    subject: "fisica",
+    title: "La materia",
+    description: "Propiedades, estados de agregación, mezclas y estructura de la materia.",
+    orderIndex: 2,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -605,6 +612,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/proyectos-id": "proyectos-tecnologicos",
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
   "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
+  "fisica-2-eso/materia-propiedades": "fisica-materia",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",
