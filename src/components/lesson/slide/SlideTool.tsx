@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ExperimentoVariablesFq2Explorador, UnidadesPrefijosFq2Explorador, MedidasErrorFq2Explorador, GraficaProporcionalFq2Explorador, InstrumentosLaboratorioFq2Explorador } from "@/components/lesson/slide/tools/Fq2MedidaTools";
 import { CroquisRestriccionesDt2Explorador, ModeloAVistasDt2Explorador } from "@/components/lesson/slide/tools/DtIICadTools";
 import { RoscaMetricaDt2Explorador, CortesPiezaDt2Explorador, PerfilesSeccionDt2Explorador, AjusteToleranciasDt2Explorador, ListaPiezasDt2Explorador, HuellaMaterialDt2Explorador } from "@/components/lesson/slide/tools/DtIINormalizacionTools";
 import { SolidoIsometricoDt2Explorador, CaballeraCirculosDt2Explorador, ConicaCasaDt2Explorador, ExplanacionDt2Explorador, ElegirSistemaDt2Explorador } from "@/components/lesson/slide/tools/DtIISolidosAxoTools";
@@ -2045,6 +2046,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CroquisRestriccionesDt2Explorador block={block} />;
     case "dt2-modelo-a-vistas-explorador":
       return <ModeloAVistasDt2Explorador block={block} />;
+    case "fq2-experimento-variables-explorador":
+      return <ExperimentoVariablesFq2Explorador block={block} />;
+    case "fq2-unidades-prefijos-explorador":
+      return <UnidadesPrefijosFq2Explorador block={block} />;
+    case "fq2-medidas-error-explorador":
+      return <MedidasErrorFq2Explorador block={block} />;
+    case "fq2-grafica-proporcional-explorador":
+      return <GraficaProporcionalFq2Explorador block={block} />;
+    case "fq2-instrumentos-laboratorio-explorador":
+      return <InstrumentosLaboratorioFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -344,6 +344,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Dibujo vectorial 2D, modelado 3D con primitivas y trabajo colaborativo.",
     orderIndex: 4,
   },
+  {
+    slug: "fisica-metodo-medida",
+    subject: "fisica",
+    title: "Método científico y medida",
+    description: "El método científico, las magnitudes y unidades, el error de medida, las gráficas y el trabajo en el laboratorio.",
+    orderIndex: 1,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -597,6 +604,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/corriente-alterna": "circuitos-electricos-electronicos",
   "tecnologia-ingenieria-2-bachillerato/proyectos-id": "proyectos-tecnologicos",
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
+  "fisica-2-eso/actividad-cientifica": "fisica-metodo-medida",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",

@@ -208,3 +208,14 @@ export const DT2_SUBTITLES = {
   9: "Dibujo Técnico II, Tema 9 — Sistemas CAD",
 } as const;
 
+export const FQ2_SUBTITLES = {
+  1: "Física y Química 2.º ESO, Tema 1 — La actividad científica",
+  2: "Física y Química 2.º ESO, Tema 2 — La materia y sus propiedades",
+  3: "Física y Química 2.º ESO, Tema 3 — Sustancias puras y mezclas",
+  4: "Física y Química 2.º ESO, Tema 4 — Estructura de la materia",
+  5: "Física y Química 2.º ESO, Tema 5 — Cambios físicos y químicos",
+  6: "Física y Química 2.º ESO, Tema 6 — El movimiento",
+  7: "Física y Química 2.º ESO, Tema 7 — Las fuerzas",
+  8: "Física y Química 2.º ESO, Tema 8 — La energía",
+  9: "Física y Química 2.º ESO, Tema 9 — La luz y el sonido",
+} as const;

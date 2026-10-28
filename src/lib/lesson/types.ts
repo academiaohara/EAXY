@@ -1099,6 +1099,7 @@ export type SlideAnimId =
   | "dt2-eje-radical-construccion"
   | "dt2-abatimiento-punto"
   | "dt2-desarrollo-cono"
+  | "fq2-metodo-cientifico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2009,6 +2010,11 @@ export type SlideToolId =
   | "dt2-huella-material-explorador"
   | "dt2-croquis-restricciones-explorador"
   | "dt2-modelo-a-vistas-explorador"
+  | "fq2-experimento-variables-explorador"
+  | "fq2-unidades-prefijos-explorador"
+  | "fq2-medidas-error-explorador"
+  | "fq2-grafica-proporcional-explorador"
+  | "fq2-instrumentos-laboratorio-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -575,6 +575,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt2-eje-radical-construccion` | Eje radical de dos circunferencias con una auxiliar | — |
 | `dt2-abatimiento-punto` | Abatimiento de un punto con el triángulo de abatimiento | — |
 | `dt2-desarrollo-cono` | Desarrollo de un cono: sector circular | — |
+| `fq2-metodo-cientifico` | Etapas del método científico y su carácter cíclico | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1359,6 +1360,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-huella-material-explorador` | Masa y huella de carbono orientativa según material, volumen y reciclado | `n` material (0–2), `a` volumen, `b` reciclado (%) |
 | `dt2-croquis-restricciones-explorador` | Croquis paramétrico: grados de libertad y estado según las restricciones | `a` lados horizontales, `b` lados verticales |
 | `dt2-modelo-a-vistas-explorador` | Perfil en L extruido: vistas generadas, volumen y masa | `a` ancho, `b` alto, `c` espesor |
+| `fq2-experimento-variables-explorador` | Experimento controlado: variables independiente, dependiente y controladas | `a` masa de agua (g), `b` potencia (W) |
+| `fq2-unidades-prefijos-explorador` | Conversión de unidades con prefijos del SI y notación científica | `a` valor, `b` prefijo origen, `c` prefijo destino |
+| `fq2-medidas-error-explorador` | Media, error absoluto y relativo y cifras significativas de una serie de medidas | `a` número de medidas, `b` cifras significativas |
+| `fq2-grafica-proporcional-explorador` | Gráfica de un muelle: ajustar una recta proporcional a los datos | `a` pendiente (cm/g) |
+| `fq2-instrumentos-laboratorio-explorador` | Elegir el instrumento de laboratorio según el error máximo admitido | `n` magnitud (0–4), `a` nivel de error |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

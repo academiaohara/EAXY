@@ -729,6 +729,7 @@ import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
 import { kirchhoffMallasNudosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/05-kirchhoff-mallas-nudos";
+import { laboratorioSeguridadInstrumentosFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/05-laboratorio-seguridad-instrumentos-fq2";
 import { lazoAbiertoCerradoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/03-lazo-abierto-cerrado";
 import { lazoAbiertoCerrado3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/02-lazo-abierto-cerrado-3eso";
 import { lazoAbiertoCerradoControlLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/08-lazo-abierto-cerrado-control";
@@ -786,6 +787,7 @@ import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-es
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
 import { magnitudesElectricas2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/01-magnitudes-electricas-2eso";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
+import { magnitudesUnidadesSiFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/02-magnitudes-unidades-si-fq2";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
 import { maquinaSistemaInternacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/01-maquina-sistema-internacional";
@@ -812,6 +814,7 @@ import { mediaVarianza2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { mediatrizBisectriz1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/08-mediatriz-bisectriz-1bach";
 import { medicionMarcadoPieDeRey2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/07-medicion-marcado-pie-de-rey-2eso";
 import { medidaDesplazamientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/05-medida-desplazamiento";
+import { medidaErrorCifrasFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/03-medida-error-cifras-fq2";
 import { memoriaPresentacionEquipo2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/06-memoria-presentacion-equipo-2eso";
 import { memoriaSecuencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/01-memoria-secuencial";
 import { memoriaTecnicaPresentacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/08-memoria-tecnica-presentacion";
@@ -819,6 +822,7 @@ import { menoresAdjuntos2bachLesson } from "@/data/lessons/matematicas-2-bachill
 import { metalesAleacionesBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/04-metales-aleaciones-basico";
 import { metalesPlasticosCompuestos2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/04-metales-plasticos-compuestos-2eso";
 import { metalesYAleacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/06-metales-y-aleaciones";
+import { metodoCientificoFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/01-metodo-cientifico-fq2";
 import { metodoIgualacion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/04-metodo-igualacion-4eso";
 import { metodoIgualacion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/09-metodo-igualacion-4esob";
 import { metodoReduccion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/05-metodo-reduccion-4eso";
@@ -1374,6 +1378,7 @@ import { tablasGraficasGraficosEstadisticosLesson } from "@/data/lessons/matemat
 import { tablasGraficasInformacionPuntosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/02-tablas-graficas-informacion-puntos";
 import { tablasGraficasInterpretacionGraficasLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/03-tablas-graficas-interpretacion-graficas";
 import { tablasGraficasParametrosEstadisticosLesson } from "@/data/lessons/matematicas-1-eso/14-tablas-y-graficas/05-tablas-graficas-parametros-estadisticos";
+import { tablasGraficasProporcionalidadFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/04-tablas-graficas-proporcionalidad-fq2";
 import { taeCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/05-tae-ccss1";
 import { tamanoRepresentatividadCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/03-tamano-representatividad-ccss2";
 import { tangenciasPorPotenciaDosPuntosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/03-tangencias-por-potencia-dos-puntos-dt2";
@@ -2227,6 +2232,7 @@ export const interactiveLessons = {
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
   "karnaugh-simplificacion": karnaughSimplificacionLesson,
   "kirchhoff-mallas-nudos": kirchhoffMallasNudosLesson,
+  "laboratorio-seguridad-instrumentos-fq2": laboratorioSeguridadInstrumentosFq2Lesson,
   "lazo-abierto-cerrado": lazoAbiertoCerradoLesson,
   "lazo-abierto-cerrado-3eso": lazoAbiertoCerrado3esoLesson,
   "lazo-abierto-cerrado-control": lazoAbiertoCerradoControlLesson,
@@ -2284,6 +2290,7 @@ export const interactiveLessons = {
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
   "magnitudes-electricas-2eso": magnitudesElectricas2esoLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
+  "magnitudes-unidades-si-fq2": magnitudesUnidadesSiFq2Lesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
   "maquina-sistema-internacional": maquinaSistemaInternacionalLesson,
@@ -2310,6 +2317,7 @@ export const interactiveLessons = {
   "mediatriz-bisectriz-1bach": mediatrizBisectriz1bachLesson,
   "medicion-marcado-pie-de-rey-2eso": medicionMarcadoPieDeRey2esoLesson,
   "medida-desplazamiento": medidaDesplazamientoLesson,
+  "medida-error-cifras-fq2": medidaErrorCifrasFq2Lesson,
   "memoria-presentacion-equipo-2eso": memoriaPresentacionEquipo2esoLesson,
   "memoria-secuencial": memoriaSecuencialLesson,
   "memoria-tecnica-presentacion": memoriaTecnicaPresentacionLesson,
@@ -2317,6 +2325,7 @@ export const interactiveLessons = {
   "metales-aleaciones-basico": metalesAleacionesBasicoLesson,
   "metales-plasticos-compuestos-2eso": metalesPlasticosCompuestos2esoLesson,
   "metales-y-aleaciones": metalesYAleacionesLesson,
+  "metodo-cientifico-fq2": metodoCientificoFq2Lesson,
   "metodo-igualacion-4eso": metodoIgualacion4esoLesson,
   "metodo-igualacion-4esob": metodoIgualacion4esobLesson,
   "metodo-reduccion-4eso": metodoReduccion4esoLesson,
@@ -2872,6 +2881,7 @@ export const interactiveLessons = {
   "tablas-graficas-informacion-puntos": tablasGraficasInformacionPuntosLesson,
   "tablas-graficas-interpretacion-graficas": tablasGraficasInterpretacionGraficasLesson,
   "tablas-graficas-parametros-estadisticos": tablasGraficasParametrosEstadisticosLesson,
+  "tablas-graficas-proporcionalidad-fq2": tablasGraficasProporcionalidadFq2Lesson,
   "tae-ccss1": taeCcss1Lesson,
   "tamano-representatividad-ccss2": tamanoRepresentatividadCcss2Lesson,
   "tangencias-por-potencia-dos-puntos-dt2": tangenciasPorPotenciaDosPuntosDt2Lesson,
