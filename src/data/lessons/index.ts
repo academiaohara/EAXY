@@ -115,6 +115,7 @@ import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
 import { axonometriaOrtogonalCoeficientesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/02-axonometria-ortogonal-coeficientes-dt1";
+import { axonometriaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/01-axonometria-solidos-dt2";
 import { basesDatosSqlTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/02-bases-datos-sql-ti2";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
 import { bielaManivelaCremallera4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/03-biela-manivela-cremallera-4eso";
@@ -135,6 +136,7 @@ import { buclesForWhileLesson } from "@/data/lessons/tecnologia-ingenieria-1-bac
 import { busquedaCreacionContenidos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/04-busqueda-creacion-contenidos-2eso";
 import { busquedaInformacionFuentesFiablesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/04-busqueda-informacion-fuentes-fiables";
 import { busquedaOrdenacionAlgoritmos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/06-busqueda-ordenacion-algoritmos-4eso";
+import { caballeraCircunferenciasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/02-caballera-circunferencias-dt2";
 import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
@@ -226,6 +228,7 @@ import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-progra
 import { condicionesBuclesDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/04-condiciones-bucles-datos-4eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
+import { conicaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/03-conica-solidos-dt2";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
@@ -422,6 +425,7 @@ import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnol
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
+import { eleccionSistemaRepresentacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/05-eleccion-sistema-representacion-dt2";
 import { electronegatividadReactividadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/03-electronegatividad-reactividad";
 import { electronicaDigitalBoole4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/07-electronica-digital-boole-4eso";
 import { elementosControlCableadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/05-elementos-control-cableado";
@@ -947,6 +951,7 @@ import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-ba
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
+import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
 import { planosAcotadosRectaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/01-planos-acotados-recta-dt1";
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
@@ -1600,6 +1605,7 @@ export const interactiveLessons = {
   "axiomas-probabilidad-1bach": axiomasProbabilidad1bachLesson,
   "axiomas-probabilidad-ccss1": axiomasProbabilidadCcss1Lesson,
   "axonometria-ortogonal-coeficientes-dt1": axonometriaOrtogonalCoeficientesDt1Lesson,
+  "axonometria-solidos-dt2": axonometriaSolidosDt2Lesson,
   "bases-datos-sql-ti2": basesDatosSqlTi2Lesson,
   "bases-ortonormales-1bach": basesOrtonormales1bachLesson,
   "biela-manivela-cremallera-4eso": bielaManivelaCremallera4esoLesson,
@@ -1620,6 +1626,7 @@ export const interactiveLessons = {
   "busqueda-creacion-contenidos-2eso": busquedaCreacionContenidos2esoLesson,
   "busqueda-informacion-fuentes-fiables": busquedaInformacionFuentesFiablesLesson,
   "busqueda-ordenacion-algoritmos-4eso": busquedaOrdenacionAlgoritmos4esoLesson,
+  "caballera-circunferencias-dt2": caballeraCircunferenciasDt2Lesson,
   "cad-2d-diseno-asistido-2eso": cad2dDisenoAsistido2esoLesson,
   "cad-2d-iniciacion": cad2dIniciacionLesson,
   "cad-3d-extrusion": cad3dExtrusionLesson,
@@ -1711,6 +1718,7 @@ export const interactiveLessons = {
   "condiciones-bucles-datos-4eso": condicionesBuclesDatos4esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
+  "conica-solidos-dt2": conicaSolidosDt2Lesson,
   "conicas-3eso": conicas3esoLesson,
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
@@ -1907,6 +1915,7 @@ export const interactiveLessons = {
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
+  "eleccion-sistema-representacion-dt2": eleccionSistemaRepresentacionDt2Lesson,
   "electronegatividad-reactividad": electronegatividadReactividadLesson,
   "electronica-digital-boole-4eso": electronicaDigitalBoole4esoLesson,
   "elementos-control-cableado": elementosControlCableadoLesson,
@@ -2432,6 +2441,7 @@ export const interactiveLessons = {
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
+  "planos-acotados-explanaciones-dt2": planosAcotadosExplanacionesDt2Lesson,
   "planos-acotados-recta-dt1": planosAcotadosRectaDt1Lesson,
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,

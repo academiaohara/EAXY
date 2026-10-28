@@ -1340,6 +1340,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-seccion-revolucion-explorador` | Sección elíptica de un cilindro o un cono por un plano proyectante | `n` 0 cilindro / 1 cono, `a` α, `b` altura de corte |
 | `dt2-poliedros-regulares-explorador` | Los cinco poliedros regulares: caras, aristas, vértices, área y volumen | `n` poliedro (0–4), `a` arista |
 | `dt2-desarrollo-cuerpos-explorador` | Desarrollo de un cilindro, un cono o una pirámide | `n` cuerpo (0–2), `a` radio, `b` altura |
+| `dt2-solido-isometrico-explorador` | Prisma o pirámide en isométrica con aristas vistas y ocultas | `n` 0 prisma / 1 pirámide, `a` lados, `b` radio, `c` altura |
+| `dt2-caballera-circulos-explorador` | Circunferencias en las tres caras de un cubo en caballera | `a` ángulo α, `b` coeficiente k |
+| `dt2-conica-casa-explorador` | Casa con tejado a dos aguas en perspectiva cónica oblicua | `a` giro (°), `b` distancia, `c` altura del horizonte |
+| `dt2-explanacion-explorador` | Perfil de una explanación: desmonte, terraplén y pie del talud | `a` cota de la plataforma, `b` pendiente del talud, `c` pendiente del terreno |
+| `dt2-elegir-sistema-explorador` | Comparador de sistemas de representación según la necesidad | `n` necesidad (0–4) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

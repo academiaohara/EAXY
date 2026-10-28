@@ -1990,6 +1990,11 @@ export type SlideToolId =
   | "dt2-seccion-revolucion-explorador"
   | "dt2-poliedros-regulares-explorador"
   | "dt2-desarrollo-cuerpos-explorador"
+  | "dt2-solido-isometrico-explorador"
+  | "dt2-caballera-circulos-explorador"
+  | "dt2-conica-casa-explorador"
+  | "dt2-explanacion-explorador"
+  | "dt2-elegir-sistema-explorador"
   /* industrial-tool-end */;
 
 /**

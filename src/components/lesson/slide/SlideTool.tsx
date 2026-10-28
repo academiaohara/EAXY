@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { SolidoIsometricoDt2Explorador, CaballeraCirculosDt2Explorador, ConicaCasaDt2Explorador, ExplanacionDt2Explorador, ElegirSistemaDt2Explorador } from "@/components/lesson/slide/tools/DtIISolidosAxoTools";
 import { SolidoDiedricoDt2Explorador, SeccionPrismaDt2Explorador, SeccionRevolucionDt2Explorador, PoliedrosRegularesDt2Explorador, DesarrolloCuerposDt2Explorador } from "@/components/lesson/slide/tools/DtIICuerposTools";
 import { AbatimientoPuntoDt2Explorador, VerdaderaFormaDt2Explorador, GiroRectaDt2Explorador, CambioPlanoDt2Explorador, MagnitudAngulosDt2Explorador, DistanciaPuntoRectaDt2Explorador } from "@/components/lesson/slide/tools/DtIIDiedricoAvanzadoTools";
 import { CorteConoDt2Explorador, ElipseFocosDt2Explorador, HiperbolaDt2Explorador, ParabolaDt2Explorador, TangentesConicasDt2Explorador } from "@/components/lesson/slide/tools/DtIIConicasTools";
@@ -2016,6 +2017,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PoliedrosRegularesDt2Explorador block={block} />;
     case "dt2-desarrollo-cuerpos-explorador":
       return <DesarrolloCuerposDt2Explorador block={block} />;
+    case "dt2-solido-isometrico-explorador":
+      return <SolidoIsometricoDt2Explorador block={block} />;
+    case "dt2-caballera-circulos-explorador":
+      return <CaballeraCirculosDt2Explorador block={block} />;
+    case "dt2-conica-casa-explorador":
+      return <ConicaCasaDt2Explorador block={block} />;
+    case "dt2-explanacion-explorador":
+      return <ExplanacionDt2Explorador block={block} />;
+    case "dt2-elegir-sistema-explorador":
+      return <ElegirSistemaDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

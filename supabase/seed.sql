@@ -203,7 +203,8 @@ insert into public.modules (id, course_id, slug, title, order_index) values
   ('a2000000-0000-4000-8000-000000000213', 'a1000000-0000-4000-8000-000000000023', 'potencia-eje-radical-tangencias', 'Potencia, eje radical y tangencias', 3),
   ('a2000000-0000-4000-8000-000000000214', 'a1000000-0000-4000-8000-000000000023', 'curvas-conicas', 'Curvas cónicas', 4),
   ('a2000000-0000-4000-8000-000000000215', 'a1000000-0000-4000-8000-000000000023', 'diedrico-avanzado', 'Sistema diédrico avanzado', 5),
-  ('a2000000-0000-4000-8000-000000000216', 'a1000000-0000-4000-8000-000000000023', 'cuerpos-diedrico', 'Cuerpos geométricos en diédrico', 6);
+  ('a2000000-0000-4000-8000-000000000216', 'a1000000-0000-4000-8000-000000000023', 'cuerpos-diedrico', 'Cuerpos geométricos en diédrico', 6),
+  ('a2000000-0000-4000-8000-000000000217', 'a1000000-0000-4000-8000-000000000023', 'axonometrico-conico-acotados', 'Axonométrico, cónico y planos acotados de sólidos', 7);
 
 insert into public.lessons (id, module_id, title, summary, order_index, video_url) values
   ('a3000000-0000-4000-8000-000000000101', 'a2000000-0000-4000-8000-000000000001', '1. Origen de los números y aproximación por redondeo', 'Sistemas aditivos y posicional, decimal, y regla del redondeo con ejemplos del temario.', 1, null),
@@ -1685,4 +1686,9 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000021602', 'a2000000-0000-4000-8000-000000000216', '2. Secciones planas de poliedros', 'Planos proyectantes y verdadera forma.', 2, null),
   ('a3000000-0000-4000-8000-000000021603', 'a2000000-0000-4000-8000-000000000216', '3. Cilindro y cono: secciones', 'Elipses y generatrices.', 3, null),
   ('a3000000-0000-4000-8000-000000021604', 'a2000000-0000-4000-8000-000000000216', '4. Poliedros regulares', 'Sólidos platónicos y relación de Euler.', 4, null),
-  ('a3000000-0000-4000-8000-000000021605', 'a2000000-0000-4000-8000-000000000216', '5. Desarrollos de cuerpos', 'Patrones de corte de poliedros y cuerpos de revolución.', 5, null);
+  ('a3000000-0000-4000-8000-000000021605', 'a2000000-0000-4000-8000-000000000216', '5. Desarrollos de cuerpos', 'Patrones de corte de poliedros y cuerpos de revolución.', 5, null),
+  ('a3000000-0000-4000-8000-000000021701', 'a2000000-0000-4000-8000-000000000217', '1. Axonometría ortogonal de sólidos', 'Isométrica de prismas y pirámides.', 1, null),
+  ('a3000000-0000-4000-8000-000000021702', 'a2000000-0000-4000-8000-000000000217', '2. Perspectiva caballera: circunferencias y cuerpos curvos', 'Caras frontales y deformación.', 2, null),
+  ('a3000000-0000-4000-8000-000000021703', 'a2000000-0000-4000-8000-000000000217', '3. Cónica de sólidos: una casa', 'Puntos de fuga y tejados.', 3, null),
+  ('a3000000-0000-4000-8000-000000021704', 'a2000000-0000-4000-8000-000000000217', '4. Planos acotados: explanaciones, desmonte y terraplén', 'Taludes y línea de ceros.', 4, null),
+  ('a3000000-0000-4000-8000-000000021705', 'a2000000-0000-4000-8000-000000000217', '5. Elegir el sistema de representación', 'Ventajas de cada sistema.', 5, null);
