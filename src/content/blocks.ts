@@ -372,6 +372,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Sistemas de referencia, velocidad, movimiento rectilíneo uniforme, fuerzas y su equilibrio.",
     orderIndex: 4,
   },
+  {
+    slug: "fisica-energia-ondas",
+    subject: "fisica",
+    title: "Energía, luz y sonido",
+    description: "Formas y transformaciones de la energía, calor, fuentes de energía, luz y sonido.",
+    orderIndex: 5,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -632,6 +639,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-2-eso/cambios-fisicos-quimicos": "fisica-cambios-quimicos",
   "fisica-2-eso/el-movimiento": "fisica-movimiento-fuerzas",
   "fisica-2-eso/las-fuerzas": "fisica-movimiento-fuerzas",
+  "fisica-2-eso/la-energia": "fisica-energia-ondas",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",

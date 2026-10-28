@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TransformacionesEnergiaFq2Explorador, CineticaPotencialFq2Explorador, ConservacionEnergiaFq2Explorador, CalorTemperaturaFq2Explorador, FuentesEnergiaFq2Explorador } from "@/components/lesson/slide/tools/Fq2EnergiaTools";
 import { FuerzaVectorFq2Explorador, PesoMasaFq2Explorador, MuelleHookeFq2Explorador, RozamientoFq2Explorador, EquilibrioFuerzasFq2Explorador } from "@/components/lesson/slide/tools/Fq2FuerzasTools";
 import { ReferenciaDesplazamientoFq2Explorador, VelocidadMediaFq2Explorador, MruFq2Explorador, GraficaPosicionTiempoFq2Explorador, EncuentroMovilesFq2Explorador } from "@/components/lesson/slide/tools/Fq2MovimientoTools";
 import { CambioFisicoQuimicoFq2Explorador, AvanceReaccionFq2Explorador, AjusteEcuacionFq2Explorador, TrianguloFuegoFq2Explorador } from "@/components/lesson/slide/tools/Fq2ReaccionesTools";
@@ -2120,6 +2121,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RozamientoFq2Explorador block={block} />;
     case "fq2-equilibrio-fuerzas-explorador":
       return <EquilibrioFuerzasFq2Explorador block={block} />;
+    case "fq2-transformaciones-energia-explorador":
+      return <TransformacionesEnergiaFq2Explorador block={block} />;
+    case "fq2-cinetica-potencial-explorador":
+      return <CineticaPotencialFq2Explorador block={block} />;
+    case "fq2-conservacion-energia-explorador":
+      return <ConservacionEnergiaFq2Explorador block={block} />;
+    case "fq2-calor-temperatura-explorador":
+      return <CalorTemperaturaFq2Explorador block={block} />;
+    case "fq2-fuentes-energia-explorador":
+      return <FuentesEnergiaFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

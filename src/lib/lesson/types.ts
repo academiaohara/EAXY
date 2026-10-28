@@ -1106,6 +1106,7 @@ export type SlideAnimId =
   | "fq2-lavoisier"
   | "fq2-mru-estroboscopica"
   | "fq2-fuerzas-resultante"
+  | "fq2-conservacion-energia"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2050,6 +2051,11 @@ export type SlideToolId =
   | "fq2-muelle-hooke-explorador"
   | "fq2-rozamiento-explorador"
   | "fq2-equilibrio-fuerzas-explorador"
+  | "fq2-transformaciones-energia-explorador"
+  | "fq2-cinetica-potencial-explorador"
+  | "fq2-conservacion-energia-explorador"
+  | "fq2-calor-temperatura-explorador"
+  | "fq2-fuentes-energia-explorador"
   /* industrial-tool-end */;
 
 /**

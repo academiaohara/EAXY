@@ -147,6 +147,7 @@ import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematic
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
+import { calorTemperaturaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/04-calor-temperatura-fq2";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { cambiosDeEstadoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/04-cambios-de-estado-fq2";
@@ -238,6 +239,7 @@ import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas
 import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/13-conicas-generales-1bach";
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
+import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
 import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/05-construccion-poligonos-regulares-dt1";
@@ -449,6 +451,7 @@ import { elipseFocosEjesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachil
 import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/03-elipse-por-afinidad-dt2";
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
+import { energiaCineticaPotencialFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/02-energia-cinetica-potencial-fq2";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
 import { energiasRenovablesMix3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/01-energias-renovables-mix-3eso";
@@ -557,6 +560,7 @@ import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-
 import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/06-forma-exponencial-radicales-4esob";
 import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/06-forma-general-recta-3eso";
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
+import { formasTransformacionesEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/01-formas-transformaciones-energia-fq2";
 import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
@@ -573,6 +577,7 @@ import { fraccionesParteUnidadLesson } from "@/data/lessons/matematicas-1-eso/07
 import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/07-fracciones-potencias-2eso";
 import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/05-fracciones-potencias-3eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
+import { fuentesEnergiaEficienciaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/05-fuentes-energia-eficiencia-fq2";
 import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
 import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/03-fuerza-elastica-hooke-fq2";
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
@@ -1679,6 +1684,7 @@ export const interactiveLessons = {
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
+  "calor-temperatura-fq2": calorTemperaturaFq2Lesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "cambios-de-estado-fq2": cambiosDeEstadoFq2Lesson,
@@ -1770,6 +1776,7 @@ export const interactiveLessons = {
   "conicas-generales-1bach": conicasGenerales1bachLesson,
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
+  "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
   "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
@@ -1981,6 +1988,7 @@ export const interactiveLessons = {
   "elipse-por-afinidad-dt2": elipsePorAfinidadDt2Lesson,
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
+  "energia-cinetica-potencial-fq2": energiaCineticaPotencialFq2Lesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
   "energias-renovables-mix-3eso": energiasRenovablesMix3esoLesson,
@@ -2089,6 +2097,7 @@ export const interactiveLessons = {
   "forma-exponencial-radicales-4esob": formaExponencialRadicales4esobLesson,
   "forma-general-recta-3eso": formaGeneralRecta3esoLesson,
   "formas-canonicas": formasCanonicasLesson,
+  "formas-transformaciones-energia-fq2": formasTransformacionesEnergiaFq2Lesson,
   "formatos-plegado-dt1": formatosPlegadoDt1Lesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
@@ -2105,6 +2114,7 @@ export const interactiveLessons = {
   "fracciones-potencias-2eso": fraccionesPotencias2esoLesson,
   "fracciones-potencias-3eso": fraccionesPotencias3esoLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
+  "fuentes-energia-eficiencia-fq2": fuentesEnergiaEficienciaFq2Lesson,
   "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
   "fuerza-elastica-hooke-fq2": fuerzaElasticaHookeFq2Lesson,
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,

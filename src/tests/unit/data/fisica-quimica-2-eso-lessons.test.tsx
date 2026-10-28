@@ -26,6 +26,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["cambios-fisicos-quimicos", 4],
   ["el-movimiento", 5],
   ["las-fuerzas", 5],
+  ["la-energia", 5],
 ];
 
 describe("curso Física y Química 2.º ESO", () => {

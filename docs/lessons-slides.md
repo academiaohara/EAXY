@@ -582,6 +582,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-lavoisier` | Conservación de los átomos en la formación del agua | — |
 | `fq2-mru-estroboscopica` | MRU: espacios iguales en tiempos iguales | — |
 | `fq2-fuerzas-resultante` | Suma de fuerzas en la misma recta y equilibrio | — |
+| `fq2-conservacion-energia` | Conservación de la energía en una rampa | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1400,6 +1401,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-muelle-hooke-explorador` | Ley de Hooke: alargamiento de un muelle según la masa colgada | `a` masa (g), `n` muelle (0–2) |
 | `fq2-rozamiento-explorador` | Rozamiento: fuerza aplicada frente al máximo μ·N | `a` fuerza (N), `n` superficie (0–2) |
 | `fq2-equilibrio-fuerzas-explorador` | Resultante de dos fuerzas opuestas y equilibrio | `a` F₁ (N), `b` F₂ (N) |
+| `fq2-transformaciones-energia-explorador` | Cadenas de transformaciones de energía en seis sistemas | `n` sistema (0–5) |
+| `fq2-cinetica-potencial-explorador` | Energía cinética y potencial según masa, altura y velocidad | `a` masa (kg), `b` altura (m), `c` velocidad (m/s) |
+| `fq2-conservacion-energia-explorador` | Conservación de la energía en una caída, con y sin rozamiento | `a` altura (m), `n` rozamiento (0/1) |
+| `fq2-calor-temperatura-explorador` | Mezcla de agua y temperatura de equilibrio | `a` masa caliente, `b` temperatura caliente, `c` masa fría |
+| `fq2-fuentes-energia-explorador` | Fuentes de energía: renovables y emisiones de CO₂ | `n` fuente (0–7), `a` consumo (kWh) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
