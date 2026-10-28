@@ -349,6 +349,7 @@ import { disenoImpresion3dPrototipado4esoLesson } from "@/data/lessons/tecnologi
 import { disenoPiezasTrabajoGrupoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/04-diseno-piezas-trabajo-grupo-dt1";
 import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
 import { disenoSostenibilidadProyectoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/06-diseno-sostenibilidad-proyecto-dt2";
+import { disolucionesConcentracionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/02-disoluciones-concentracion-fq2";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { dispersionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/07-dispersion-ccss1";
@@ -837,6 +838,7 @@ import { metodoSustitucion4esoLesson } from "@/data/lessons/matematicas-4-eso/07
 import { metodoSustitucion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/08-metodo-sustitucion-4esob";
 import { metodologiasAgilesScrumKanbanTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/02-metodologias-agiles-scrum-kanban-ti2";
 import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
+import { mezclasVidaCotidianaFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/05-mezclas-vida-cotidiana-fq2";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
@@ -1354,6 +1356,7 @@ import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bach
 import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
+import { solubilidadSaturacionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/03-solubilidad-saturacion-fq2";
 import { sostenibilidadMaterialesAcvTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/03-sostenibilidad-materiales-acv-ti2";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
 import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
@@ -1373,6 +1376,7 @@ import { sumaRestaPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/
 import { sumaRestaPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/02-suma-resta-polinomios-4esob";
 import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/13-sumadores-binarios";
 import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
+import { sustanciasPurasMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/01-sustancias-puras-mezclas-fq2";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
 import { tablasContingenciaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/08-tablas-contingencia-ccss1";
 import { tablasFrecuencias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/02-tablas-frecuencias-1bach";
@@ -1397,6 +1401,7 @@ import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
 import { tecnicasDeUnion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/04-tecnicas-de-union-3eso";
 import { tecnicasDigitalesDisenoParametricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/03-tecnicas-digitales-diseno-parametrico-dt2";
+import { tecnicasSeparacionMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/04-tecnicas-separacion-mezclas-fq2";
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
@@ -1857,6 +1862,7 @@ export const interactiveLessons = {
   "diseno-piezas-trabajo-grupo-dt1": disenoPiezasTrabajoGrupoDt1Lesson,
   "diseno-simulacion-mecanismos-4eso": disenoSimulacionMecanismos4esoLesson,
   "diseno-sostenibilidad-proyecto-dt2": disenoSostenibilidadProyectoDt2Lesson,
+  "disoluciones-concentracion-fq2": disolucionesConcentracionFq2Lesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "dispersion-ccss1": dispersionCcss1Lesson,
@@ -2345,6 +2351,7 @@ export const interactiveLessons = {
   "metodo-sustitucion-4esob": metodoSustitucion4esobLesson,
   "metodologias-agiles-scrum-kanban-ti2": metodologiasAgilesScrumKanbanTi2Lesson,
   "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
+  "mezclas-vida-cotidiana-fq2": mezclasVidaCotidianaFq2Lesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
   "minimo-comun-multiplo-2eso": minimoComunMultiplo2esoLesson,
   "modelado-3d-operaciones-2eso": modelado3dOperaciones2esoLesson,
@@ -2862,6 +2869,7 @@ export const interactiveLessons = {
   "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
+  "solubilidad-saturacion-fq2": solubilidadSaturacionFq2Lesson,
   "sostenibilidad-materiales-acv-ti2": sostenibilidadMaterialesAcvTi2Lesson,
   "sucesiones-3eso": sucesiones3esoLesson,
   "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,
@@ -2881,6 +2889,7 @@ export const interactiveLessons = {
   "suma-resta-polinomios-4esob": sumaRestaPolinomios4esobLesson,
   "sumadores-binarios": sumadoresBinariosLesson,
   "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
+  "sustancias-puras-mezclas-fq2": sustanciasPurasMezclasFq2Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,
   "tablas-contingencia-ccss1": tablasContingenciaCcss1Lesson,
   "tablas-frecuencias-1bach": tablasFrecuencias1bachLesson,
@@ -2905,6 +2914,7 @@ export const interactiveLessons = {
   "tasas-numeros-indice-ccss1": tasasNumerosIndiceCcss1Lesson,
   "tecnicas-de-union-3eso": tecnicasDeUnion3esoLesson,
   "tecnicas-digitales-diseno-parametrico-dt2": tecnicasDigitalesDisenoParametricoDt2Lesson,
+  "tecnicas-separacion-mezclas-fq2": tecnicasSeparacionMezclasFq2Lesson,
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,

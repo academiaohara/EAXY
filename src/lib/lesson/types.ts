@@ -1101,6 +1101,7 @@ export type SlideAnimId =
   | "dt2-desarrollo-cono"
   | "fq2-metodo-cientifico"
   | "fq2-particulas-estados"
+  | "fq2-destilacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2021,6 +2022,11 @@ export type SlideToolId =
   | "fq2-modelo-cinetico-explorador"
   | "fq2-cambios-estado-explorador"
   | "fq2-curva-calentamiento-explorador"
+  | "fq2-clasificacion-materia-explorador"
+  | "fq2-concentracion-disolucion-explorador"
+  | "fq2-solubilidad-curva-explorador"
+  | "fq2-separacion-mezclas-explorador"
+  | "fq2-composicion-mezclas-explorador"
   /* industrial-tool-end */;
 
 /**

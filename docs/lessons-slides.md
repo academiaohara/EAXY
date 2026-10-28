@@ -577,6 +577,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt2-desarrollo-cono` | Desarrollo de un cono: sector circular | — |
 | `fq2-metodo-cientifico` | Etapas del método científico y su carácter cíclico | — |
 | `fq2-particulas-estados` | Partículas de un sólido, un líquido y un gas | — |
+| `fq2-destilacion` | Destilación de una mezcla de alcohol y agua | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1371,6 +1372,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-modelo-cinetico-explorador` | Partículas de un gas: velocidad y presión según temperatura y volumen | `a` temperatura (K), `b` volumen (%) |
 | `fq2-cambios-estado-explorador` | Los seis cambios de estado y la energía que absorben o desprenden | `n` cambio (0–5) |
 | `fq2-curva-calentamiento-explorador` | Gráfica de calentamiento con tramos de cambio de estado | `n` sustancia (0–3), `a` tiempo (min) |
+| `fq2-clasificacion-materia-explorador` | Clasificar un material: elemento, compuesto o mezcla | `n` material (0–9) |
+| `fq2-concentracion-disolucion-explorador` | Concentración de una disolución: % en masa y g/L | `a` soluto (g), `b` agua (mL) |
+| `fq2-solubilidad-curva-explorador` | Curvas de solubilidad y estado de la disolución | `n` sal (0–1), `a` temperatura, `b` sal añadida (g) |
+| `fq2-separacion-mezclas-explorador` | Elegir la técnica de separación adecuada para cada mezcla | `n` mezcla (0–5) |
+| `fq2-composicion-mezclas-explorador` | Composición porcentual de mezclas cotidianas y masa de cada componente | `n` mezcla (0–4), `a` masa de la muestra (g) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildDestilacion } from "@/components/lesson/anim/scenes/industrial/fq2-destilacion";
 import { buildParticulasEstados } from "@/components/lesson/anim/scenes/industrial/fq2-materia";
 import { buildMetodoCientifico } from "@/components/lesson/anim/scenes/industrial/fq2-metodo";
 import { buildHomologiaConstruccion, buildElipseCircunferencias, buildParabolaFocoDirectriz, buildEjeRadicalConstruccion, buildAbatimientoPunto, buildDesarrolloConoDt2 } from "@/components/lesson/anim/scenes/industrial/dt2-construcciones";
@@ -829,6 +830,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt2-desarrollo-cono": () => buildDesarrolloConoDt2(),
   "fq2-metodo-cientifico": () => buildMetodoCientifico(),
   "fq2-particulas-estados": () => buildParticulasEstados(),
+  "fq2-destilacion": () => buildDestilacion(),
   /* industrial-end */
 };
 

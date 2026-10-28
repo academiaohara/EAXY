@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ClasificacionMateriaFq2Explorador, ConcentracionDisolucionFq2Explorador, SolubilidadCurvaFq2Explorador, SeparacionMezclasFq2Explorador, ComposicionMezclasFq2Explorador } from "@/components/lesson/slide/tools/Fq2MezclasTools";
 import { DensidadFlotacionFq2Explorador, EstadosPropiedadesFq2Explorador, ModeloCineticoFq2Explorador, CambiosEstadoFq2Explorador, CurvaCalentamientoFq2Explorador } from "@/components/lesson/slide/tools/Fq2MateriaTools";
 import { ExperimentoVariablesFq2Explorador, UnidadesPrefijosFq2Explorador, MedidasErrorFq2Explorador, GraficaProporcionalFq2Explorador, InstrumentosLaboratorioFq2Explorador } from "@/components/lesson/slide/tools/Fq2MedidaTools";
 import { CroquisRestriccionesDt2Explorador, ModeloAVistasDt2Explorador } from "@/components/lesson/slide/tools/DtIICadTools";
@@ -2067,6 +2068,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CambiosEstadoFq2Explorador block={block} />;
     case "fq2-curva-calentamiento-explorador":
       return <CurvaCalentamientoFq2Explorador block={block} />;
+    case "fq2-clasificacion-materia-explorador":
+      return <ClasificacionMateriaFq2Explorador block={block} />;
+    case "fq2-concentracion-disolucion-explorador":
+      return <ConcentracionDisolucionFq2Explorador block={block} />;
+    case "fq2-solubilidad-curva-explorador":
+      return <SolubilidadCurvaFq2Explorador block={block} />;
+    case "fq2-separacion-mezclas-explorador":
+      return <SeparacionMezclasFq2Explorador block={block} />;
+    case "fq2-composicion-mezclas-explorador":
+      return <ComposicionMezclasFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
