@@ -217,6 +217,7 @@ import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-
 import { comunicacionesIotProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/08-comunicaciones-iot-proyecto-4eso";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
+import { conceptoFuerzaVectoresFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/01-concepto-fuerza-vectores-fq2";
 import { conceptoFuncion2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/01-concepto-funcion-2eso";
 import { conceptoMatriz2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/01-concepto-matriz-2bach";
 import { conceptoMatrizCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/01-concepto-matriz-ccss2";
@@ -573,6 +574,7 @@ import { fraccionesPotencias2esoLesson } from "@/data/lessons/matematicas-2-eso/
 import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/05-fracciones-potencias-3eso";
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
+import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/03-fuerza-elastica-hooke-fq2";
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
 import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
@@ -965,6 +967,7 @@ import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
+import { pesoMasaGravedadFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/02-peso-masa-gravedad-fq2";
 import { piezasNormalizadasRoscasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/01-piezas-normalizadas-roscas-dt2";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
@@ -1260,6 +1263,7 @@ import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
 import { resolucionTriangulos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/12-resolucion-triangulos-1bach";
 import { responsabilidadTecnologicaHuellaDigital2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/05-responsabilidad-tecnologica-huella-digital-2eso";
+import { resultanteEquilibrioFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/05-resultante-equilibrio-fq2";
 import { reutilizacionEconomiaCircularEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/05-reutilizacion-economia-circular-eso";
 import { robotSeguidorLinea3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/06-robot-seguidor-linea-3eso";
 import { robotUltrasonidosObstaculos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/07-robot-ultrasonidos-obstaculos-3eso";
@@ -1268,6 +1272,7 @@ import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
+import { rozamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/04-rozamiento-fq2";
 import { rozamientoPerdidasLubricacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/04-rozamiento-perdidas-lubricacion-4eso";
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
@@ -1744,6 +1749,7 @@ export const interactiveLessons = {
   "comunicaciones-iot-proyecto-4eso": comunicacionesIotProyecto4esoLesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
+  "concepto-fuerza-vectores-fq2": conceptoFuerzaVectoresFq2Lesson,
   "concepto-funcion-2eso": conceptoFuncion2esoLesson,
   "concepto-matriz-2bach": conceptoMatriz2bachLesson,
   "concepto-matriz-ccss2": conceptoMatrizCcss2Lesson,
@@ -2100,6 +2106,7 @@ export const interactiveLessons = {
   "fracciones-potencias-3eso": fraccionesPotencias3esoLesson,
   "fracciones-problemas": fraccionesProblemasLesson,
   "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
+  "fuerza-elastica-hooke-fq2": fuerzaElasticaHookeFq2Lesson,
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
   "fuerza-par-potencia": fuerzaParPotenciaLesson,
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
@@ -2492,6 +2499,7 @@ export const interactiveLessons = {
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
+  "peso-masa-gravedad-fq2": pesoMasaGravedadFq2Lesson,
   "piezas-normalizadas-roscas-dt2": piezasNormalizadasRoscasDt2Lesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
@@ -2787,6 +2795,7 @@ export const interactiveLessons = {
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
   "resolucion-triangulos-1bach": resolucionTriangulos1bachLesson,
   "responsabilidad-tecnologica-huella-digital-2eso": responsabilidadTecnologicaHuellaDigital2esoLesson,
+  "resultante-equilibrio-fq2": resultanteEquilibrioFq2Lesson,
   "reutilizacion-economia-circular-eso": reutilizacionEconomiaCircularEsoLesson,
   "robot-seguidor-linea-3eso": robotSeguidorLinea3esoLesson,
   "robot-ultrasonidos-obstaculos-3eso": robotUltrasonidosObstaculos3esoLesson,
@@ -2795,6 +2804,7 @@ export const interactiveLessons = {
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
+  "rozamiento-fq2": rozamientoFq2Lesson,
   "rozamiento-perdidas-lubricacion-4eso": rozamientoPerdidasLubricacion4esoLesson,
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,

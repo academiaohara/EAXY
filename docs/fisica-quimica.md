@@ -37,3 +37,4 @@ Total previsto: 44 lecciones.
 | 2.º ESO · 4. Estructura de la materia | Hecho (5 lecciones, `04-estructura-materia/`; herramientas `Fq2AtomoTools.tsx`, animación `fq2-rutherford.tsx`; bloque `fisica-materia`; moduleId 304) |
 | 2.º ESO · 5. Cambios físicos y químicos | Hecho (4 lecciones, `05-cambios-fisicos-quimicos/`; herramientas `Fq2ReaccionesTools.tsx`, animación `fq2-lavoisier.tsx`; bloque `fisica-cambios-quimicos`; moduleId 305) |
 | 2.º ESO · 6. El movimiento | Hecho (5 lecciones, `06-el-movimiento/`; herramientas `Fq2MovimientoTools.tsx`, animación `fq2-mru.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 306) |
+| 2.º ESO · 7. Las fuerzas | Hecho (5 lecciones, `07-las-fuerzas/`; herramientas `Fq2FuerzasTools.tsx`, animación `fq2-fuerzas.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 307) |

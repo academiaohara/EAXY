@@ -581,6 +581,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-rutherford` | Experimento de Rutherford y descubrimiento del núcleo | — |
 | `fq2-lavoisier` | Conservación de los átomos en la formación del agua | — |
 | `fq2-mru-estroboscopica` | MRU: espacios iguales en tiempos iguales | — |
+| `fq2-fuerzas-resultante` | Suma de fuerzas en la misma recta y equilibrio | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1394,6 +1395,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-mru-explorador` | Movimiento rectilíneo uniforme: posición según x₀, v y t | `a` x₀ (m), `b` v (m/s), `c` t (s) |
 | `fq2-grafica-posicion-tiempo-explorador` | Gráfica posición-tiempo: pendiente y velocidad | `a` x₀ (m), `b` v (m/s) |
 | `fq2-encuentro-moviles-explorador` | Encuentro de dos móviles con MRU en la gráfica x–t | `a` distancia inicial, `b` v₁, `c` v₂ |
+| `fq2-fuerza-vector-explorador` | Fuerza como vector: módulo, ángulo y componentes | `a` módulo (N), `b` ángulo (°) |
+| `fq2-peso-masa-explorador` | Peso y masa de un cuerpo en la Tierra, la Luna, Marte y Júpiter | `a` masa (kg), `n` astro (0–3) |
+| `fq2-muelle-hooke-explorador` | Ley de Hooke: alargamiento de un muelle según la masa colgada | `a` masa (g), `n` muelle (0–2) |
+| `fq2-rozamiento-explorador` | Rozamiento: fuerza aplicada frente al máximo μ·N | `a` fuerza (N), `n` superficie (0–2) |
+| `fq2-equilibrio-fuerzas-explorador` | Resultante de dos fuerzas opuestas y equilibrio | `a` F₁ (N), `b` F₂ (N) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

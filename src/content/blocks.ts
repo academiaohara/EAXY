@@ -631,6 +631,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-2-eso/estructura-materia": "fisica-materia",
   "fisica-2-eso/cambios-fisicos-quimicos": "fisica-cambios-quimicos",
   "fisica-2-eso/el-movimiento": "fisica-movimiento-fuerzas",
+  "fisica-2-eso/las-fuerzas": "fisica-movimiento-fuerzas",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",

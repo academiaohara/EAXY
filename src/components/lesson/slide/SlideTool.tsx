@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { FuerzaVectorFq2Explorador, PesoMasaFq2Explorador, MuelleHookeFq2Explorador, RozamientoFq2Explorador, EquilibrioFuerzasFq2Explorador } from "@/components/lesson/slide/tools/Fq2FuerzasTools";
 import { ReferenciaDesplazamientoFq2Explorador, VelocidadMediaFq2Explorador, MruFq2Explorador, GraficaPosicionTiempoFq2Explorador, EncuentroMovilesFq2Explorador } from "@/components/lesson/slide/tools/Fq2MovimientoTools";
 import { CambioFisicoQuimicoFq2Explorador, AvanceReaccionFq2Explorador, AjusteEcuacionFq2Explorador, TrianguloFuegoFq2Explorador } from "@/components/lesson/slide/tools/Fq2ReaccionesTools";
 import { ModelosAtomicosFq2Explorador, ConstruirAtomoFq2Explorador, IonesIsotoposFq2Explorador, TablaPeriodicaFq2Explorador, FormulasMoleculasFq2Explorador } from "@/components/lesson/slide/tools/Fq2AtomoTools";
@@ -2109,6 +2110,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <GraficaPosicionTiempoFq2Explorador block={block} />;
     case "fq2-encuentro-moviles-explorador":
       return <EncuentroMovilesFq2Explorador block={block} />;
+    case "fq2-fuerza-vector-explorador":
+      return <FuerzaVectorFq2Explorador block={block} />;
+    case "fq2-peso-masa-explorador":
+      return <PesoMasaFq2Explorador block={block} />;
+    case "fq2-muelle-hooke-explorador":
+      return <MuelleHookeFq2Explorador block={block} />;
+    case "fq2-rozamiento-explorador":
+      return <RozamientoFq2Explorador block={block} />;
+    case "fq2-equilibrio-fuerzas-explorador":
+      return <EquilibrioFuerzasFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

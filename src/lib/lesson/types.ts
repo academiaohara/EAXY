@@ -1105,6 +1105,7 @@ export type SlideAnimId =
   | "fq2-rutherford"
   | "fq2-lavoisier"
   | "fq2-mru-estroboscopica"
+  | "fq2-fuerzas-resultante"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2044,6 +2045,11 @@ export type SlideToolId =
   | "fq2-mru-explorador"
   | "fq2-grafica-posicion-tiempo-explorador"
   | "fq2-encuentro-moviles-explorador"
+  | "fq2-fuerza-vector-explorador"
+  | "fq2-peso-masa-explorador"
+  | "fq2-muelle-hooke-explorador"
+  | "fq2-rozamiento-explorador"
+  | "fq2-equilibrio-fuerzas-explorador"
   /* industrial-tool-end */;
 
 /**
