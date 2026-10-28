@@ -24,11 +24,11 @@ export const SUBJECTS: readonly Subject[] = [
   },
   {
     key: "fisica",
-    label: "Física",
-    titlePrefix: "Física",
+    label: "Física y Química",
+    titlePrefix: "Física y Química",
     href: "/aprender/materia/fisica",
-    tagline: "Movimiento, energía y fuerzas",
-    description: "Entiende cómo funciona el mundo con simulaciones y problemas guiados.",
+    tagline: "Materia, movimiento y energía",
+    description: "Entiende cómo funciona el mundo, de los átomos a las fuerzas, con simulaciones y problemas guiados.",
     glyph: "⚛",
   },
   {
@@ -59,7 +59,7 @@ export function getSubject(key: string | null | undefined): Subject | undefined 
 export function subjectOfCourse(course: { slug?: string; title?: string }): SubjectKey {
   const slug = course.slug?.toLowerCase() ?? "";
   const title = course.title?.toLowerCase() ?? "";
-  if (slug.startsWith("fisica") || title.startsWith("física")) {
+  if (slug.startsWith("fisica") || slug.startsWith("quimica") || title.startsWith("física") || title.startsWith("química")) {
     return "fisica";
   }
   if (slug.startsWith("tecnologia") || title.startsWith("tecnología")) {

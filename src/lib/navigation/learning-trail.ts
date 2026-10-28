@@ -26,7 +26,7 @@ export function interactiveLessonHref(
 }
 
 export function courseShortTitle(title: string): string {
-  return title.replace(/^(Matemáticas|Física|Tecnología)\s+/i, "").trim() || title;
+  return title.replace(/^(Matemáticas|Física y Química|Física|Química|Tecnología)\s+/i, "").trim() || title;
 }
 
 export function stripLessonNumber(title: string): string {

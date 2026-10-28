@@ -27,6 +27,7 @@ describe("getActiveSubject", () => {
 describe("subjectOfCourse", () => {
   it("deduce la materia del slug o del título", () => {
     expect(subjectOfCourse({ slug: "fisica-4-eso" })).toBe("fisica");
+    expect(subjectOfCourse({ slug: "quimica-2-bachillerato" })).toBe("fisica");
     expect(subjectOfCourse({ title: "Tecnología 2º ESO" })).toBe("tecnologia");
     expect(subjectOfCourse({ slug: "matematicas-1-eso" })).toBe("matematicas");
   });
@@ -44,6 +45,8 @@ describe("learning-trail", () => {
   it("acorta títulos de curso y lección", () => {
     expect(courseShortTitle("Matemáticas 4º ESO")).toBe("4º ESO");
     expect(courseShortTitle("Física 4º ESO")).toBe("4º ESO");
+    expect(courseShortTitle("Física y Química 2º ESO")).toBe("2º ESO");
+    expect(courseShortTitle("Química 2º Bachillerato")).toBe("2º Bachillerato");
     expect(courseShortTitle("Álgebra")).toBe("Álgebra");
     expect(stripLessonNumber("3. Sistemas no lineales")).toBe("Sistemas no lineales");
   });

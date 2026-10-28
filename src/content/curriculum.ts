@@ -9269,15 +9269,15 @@ export const curriculum: Curriculum = {
     {
       id: courseId(7),
       slug: "fisica-2-eso",
-      title: "Física 2º ESO",
-      description: "Segundo curso de Física y Química de la ESO.",
+      title: "Física y Química 2º ESO",
+      description: "Segundo curso de Física y Química de la ESO: método científico, materia, mezclas, átomo, cambios, movimiento, fuerzas, energía, luz y sonido.",
       orderIndex: 10,
       modules: [],
     },
     {
       id: courseId(8),
       slug: "fisica-3-eso",
-      title: "Física 3º ESO",
+      title: "Física y Química 3º ESO",
       description: "Tercer curso de Física y Química de la ESO.",
       orderIndex: 11,
       modules: [],
@@ -9285,7 +9285,7 @@ export const curriculum: Curriculum = {
     {
       id: courseId(9),
       slug: "fisica-4-eso",
-      title: "Física 4º ESO",
+      title: "Física y Química 4º ESO",
       description: "Cuarto curso de Física y Química de la ESO.",
       orderIndex: 12,
       modules: [],
@@ -9293,8 +9293,8 @@ export const curriculum: Curriculum = {
     {
       id: courseId(10),
       slug: "fisica-1-bachillerato",
-      title: "Física 1º Bachillerato",
-      description: "Primer curso de Física de Bachillerato.",
+      title: "Física y Química 1º Bachillerato",
+      description: "Primer curso de Física y Química de Bachillerato.",
       orderIndex: 13,
       modules: [],
     },
