@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
 import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
 import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
 import { NivelesBohrFq3Explorador, MasaAtomicaMediaFq3Explorador, ConfiguracionElectronicaFq3Explorador, PropiedadesPeriodicasFq3Explorador } from "@/components/lesson/slide/tools/Fq3AtomoTools";
@@ -2182,6 +2183,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ReaccionesEntornoFq3Explorador block={block} />;
     case "fq3-emisiones-combustion-explorador":
       return <EmisionesCombustionFq3Explorador block={block} />;
+    case "fq3-concentraciones-explorador":
+      return <ConcentracionesFq3Explorador block={block} />;
+    case "fq3-cristalizacion-explorador":
+      return <CristalizacionFq3Explorador block={block} />;
+    case "fq3-dilucion-explorador":
+      return <DilucionFq3Explorador block={block} />;
+    case "fq3-separacion-etapas-explorador":
+      return <SeparacionEtapasFq3Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

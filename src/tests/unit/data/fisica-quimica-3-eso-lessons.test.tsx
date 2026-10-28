@@ -23,6 +23,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["el-atomo-y-el-sistema-periodico", 5],
   ["elementos-y-compuestos-quimicos", 6],
   ["la-reaccion-quimica", 5],
+  ["disoluciones", 4],
 ];
 
 describe("curso Física y Química 3.º ESO", () => {

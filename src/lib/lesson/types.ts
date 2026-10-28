@@ -2083,6 +2083,10 @@ export type SlideToolId =
   | "fq3-velocidad-reaccion-explorador"
   | "fq3-reacciones-entorno-explorador"
   | "fq3-emisiones-combustion-explorador"
+  | "fq3-concentraciones-explorador"
+  | "fq3-cristalizacion-explorador"
+  | "fq3-dilucion-explorador"
+  | "fq3-separacion-etapas-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -1433,6 +1433,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-velocidad-reaccion-explorador` | Factores que modifican la velocidad de reacción | `a` temperatura (°C), `b` concentración, `c` trozos, `n` catalizador (0/1) |
 | `fq3-reacciones-entorno-explorador` | Reacciones del entorno y balance de energía | `n` reacción (0–4) |
 | `fq3-emisiones-combustion-explorador` | CO₂ emitido al quemar combustibles | `n` combustible (0–4), `a` masa (kg) |
+| `fq3-concentraciones-explorador` | Concentración en g/L, % masa/volumen y molaridad | `n` soluto (0–1), `a` masa (g), `b` volumen (mL) |
+| `fq3-cristalizacion-explorador` | Cristalización de una sal al enfriar | `n` sal (0 nitrato / 1 cloruro), `a` g disueltos, `b` temperatura (°C) |
+| `fq3-dilucion-explorador` | Dilución: C₁V₁ = C₂V₂ | `a` C₁ (g/L), `b` V₁ (mL), `c` V₂ (mL) |
+| `fq3-separacion-etapas-explorador` | Separación de mezclas por etapas | `n` mezcla (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

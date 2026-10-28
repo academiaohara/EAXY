@@ -218,6 +218,7 @@ import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachil
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
 import { comunicacionesIotProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/08-comunicaciones-iot-proyecto-4eso";
+import { concentracionDisolucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/01-concentracion-disoluciones-fq3";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
 import { conceptoFuerzaVectoresFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/01-concepto-fuerza-vectores-fq2";
@@ -1059,6 +1060,7 @@ import { potenciasExponenteRacionalCcss1Lesson } from "@/data/lessons/matematica
 import { potenciasMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/06-potencias-matrices-2bach";
 import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/06-potencias-matrices-ccss2";
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
+import { preparacionDilucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/03-preparacion-diluciones-fq3";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
 import { presupuestoEvaluacionMejoraLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/07-presupuesto-evaluacion-mejora";
@@ -1343,6 +1345,7 @@ import { sensoresActuadoresSistema4esoLesson } from "@/data/lessons/tecnologia-4
 import { sensoresCapacitivosOpticosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/04-sensores-capacitivos-opticos";
 import { sensoresDivisorTension3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/05-sensores-divisor-tension-3eso";
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
+import { separacionMezclasEtapasFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/04-separacion-mezclas-etapas-fq3";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/06-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
@@ -1400,6 +1403,7 @@ import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bach
 import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
+import { solubilidadCristalizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/02-solubilidad-cristalizacion-fq3";
 import { solubilidadSaturacionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/03-solubilidad-saturacion-fq2";
 import { sostenibilidadMaterialesAcvTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/03-sostenibilidad-materiales-acv-ti2";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
@@ -1780,6 +1784,7 @@ export const interactiveLessons = {
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
   "comunicaciones-iot-proyecto-4eso": comunicacionesIotProyecto4esoLesson,
+  "concentracion-disoluciones-fq3": concentracionDisolucionesFq3Lesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
   "concepto-fuerza-vectores-fq2": conceptoFuerzaVectoresFq2Lesson,
@@ -2621,6 +2626,7 @@ export const interactiveLessons = {
   "potencias-matrices-2bach": potenciasMatrices2bachLesson,
   "potencias-matrices-ccss2": potenciasMatricesCcss2Lesson,
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
+  "preparacion-diluciones-fq3": preparacionDilucionesFq3Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
   "presupuesto-evaluacion-mejora": presupuestoEvaluacionMejoraLesson,
@@ -2905,6 +2911,7 @@ export const interactiveLessons = {
   "sensores-capacitivos-opticos": sensoresCapacitivosOpticosLesson,
   "sensores-divisor-tension-3eso": sensoresDivisorTension3esoLesson,
   "sensores-transductores": sensoresTransductoresLesson,
+  "separacion-mezclas-etapas-fq3": separacionMezclasEtapasFq3Lesson,
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simbologia-industrial-arquitectonica-dt1": simbologiaIndustrialArquitectonicaDt1Lesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
@@ -2962,6 +2969,7 @@ export const interactiveLessons = {
   "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
+  "solubilidad-cristalizacion-fq3": solubilidadCristalizacionFq3Lesson,
   "solubilidad-saturacion-fq2": solubilidadSaturacionFq2Lesson,
   "sostenibilidad-materiales-acv-ti2": sostenibilidadMaterialesAcvTi2Lesson,
   "sucesiones-3eso": sucesiones3esoLesson,

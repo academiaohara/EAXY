@@ -63,3 +63,4 @@ Total previsto: 49 lecciones.
 | 3.º ESO · 2. El átomo y el sistema periódico | Hecho (5 lecciones, `02-el-atomo-y-el-sistema-periodico/`; herramientas `Fq3AtomoTools.tsx` (y reutiliza `fq2-construir-atomo-explorador` y `fq2-tabla-periodica-explorador`), animación `fq3-atomo.tsx`; bloque `fisica-materia`; moduleId 322) |
 | 3.º ESO · 3. Elementos y compuestos químicos | Hecho (6 lecciones, `03-elementos-y-compuestos-quimicos/`; herramientas `Fq3CompuestosTools.tsx`, animación `fq3-enlace.tsx`; bloque `fisica-materia`; moduleId 323) |
 | 3.º ESO · 4. La reacción química | Hecho (5 lecciones, `04-la-reaccion-quimica/`; herramientas `Fq3ReaccionesTools.tsx` (y reutiliza `fq2-ajuste-ecuacion-explorador`), animación `fq3-colisiones.tsx`; bloque `fisica-cambios-quimicos`; moduleId 324) |
+| 3.º ESO · 5. Disoluciones | Hecho (4 lecciones, `05-disoluciones/`; herramientas `Fq3DisolucionesTools.tsx`; bloque `fisica-materia`; moduleId 325) |
