@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ReferenciaDesplazamientoFq2Explorador, VelocidadMediaFq2Explorador, MruFq2Explorador, GraficaPosicionTiempoFq2Explorador, EncuentroMovilesFq2Explorador } from "@/components/lesson/slide/tools/Fq2MovimientoTools";
 import { CambioFisicoQuimicoFq2Explorador, AvanceReaccionFq2Explorador, AjusteEcuacionFq2Explorador, TrianguloFuegoFq2Explorador } from "@/components/lesson/slide/tools/Fq2ReaccionesTools";
 import { ModelosAtomicosFq2Explorador, ConstruirAtomoFq2Explorador, IonesIsotoposFq2Explorador, TablaPeriodicaFq2Explorador, FormulasMoleculasFq2Explorador } from "@/components/lesson/slide/tools/Fq2AtomoTools";
 import { ClasificacionMateriaFq2Explorador, ConcentracionDisolucionFq2Explorador, SolubilidadCurvaFq2Explorador, SeparacionMezclasFq2Explorador, ComposicionMezclasFq2Explorador } from "@/components/lesson/slide/tools/Fq2MezclasTools";
@@ -2098,6 +2099,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <AjusteEcuacionFq2Explorador block={block} />;
     case "fq2-triangulo-fuego-explorador":
       return <TrianguloFuegoFq2Explorador block={block} />;
+    case "fq2-referencia-desplazamiento-explorador":
+      return <ReferenciaDesplazamientoFq2Explorador block={block} />;
+    case "fq2-velocidad-media-explorador":
+      return <VelocidadMediaFq2Explorador block={block} />;
+    case "fq2-mru-explorador":
+      return <MruFq2Explorador block={block} />;
+    case "fq2-grafica-posicion-tiempo-explorador":
+      return <GraficaPosicionTiempoFq2Explorador block={block} />;
+    case "fq2-encuentro-moviles-explorador":
+      return <EncuentroMovilesFq2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -1104,6 +1104,7 @@ export type SlideAnimId =
   | "fq2-destilacion"
   | "fq2-rutherford"
   | "fq2-lavoisier"
+  | "fq2-mru-estroboscopica"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2038,6 +2039,11 @@ export type SlideToolId =
   | "fq2-avance-reaccion-explorador"
   | "fq2-ajuste-ecuacion-explorador"
   | "fq2-triangulo-fuego-explorador"
+  | "fq2-referencia-desplazamiento-explorador"
+  | "fq2-velocidad-media-explorador"
+  | "fq2-mru-explorador"
+  | "fq2-grafica-posicion-tiempo-explorador"
+  | "fq2-encuentro-moviles-explorador"
   /* industrial-tool-end */;
 
 /**

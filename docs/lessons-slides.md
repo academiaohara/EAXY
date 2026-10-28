@@ -580,6 +580,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq2-destilacion` | Destilación de una mezcla de alcohol y agua | — |
 | `fq2-rutherford` | Experimento de Rutherford y descubrimiento del núcleo | — |
 | `fq2-lavoisier` | Conservación de los átomos en la formación del agua | — |
+| `fq2-mru-estroboscopica` | MRU: espacios iguales en tiempos iguales | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1388,6 +1389,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq2-avance-reaccion-explorador` | Avance de una reacción: reactivos que se gastan y productos que aparecen | `n` reacción (0–3), `a` avance (0–4) |
 | `fq2-ajuste-ecuacion-explorador` | Ajustar ecuaciones: átomos y masa a cada lado | `n` reacción (0–3) |
 | `fq2-triangulo-fuego-explorador` | Triángulo del fuego: combustible, comburente y energía | `a` combustible, `b` comburente, `c` energía (0/1) |
+| `fq2-referencia-desplazamiento-explorador` | Distancia recorrida, desplazamiento y posición según el origen | `a` ida (m), `b` vuelta (m), `c` origen (m) |
+| `fq2-velocidad-media-explorador` | Velocidad media en km/h y m/s comparada con referencias cotidianas | `a` distancia (km), `b` tiempo (h) |
+| `fq2-mru-explorador` | Movimiento rectilíneo uniforme: posición según x₀, v y t | `a` x₀ (m), `b` v (m/s), `c` t (s) |
+| `fq2-grafica-posicion-tiempo-explorador` | Gráfica posición-tiempo: pendiente y velocidad | `a` x₀ (m), `b` v (m/s) |
+| `fq2-encuentro-moviles-explorador` | Encuentro de dos móviles con MRU en la gráfica x–t | `a` distancia inicial, `b` v₁, `c` v₂ |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

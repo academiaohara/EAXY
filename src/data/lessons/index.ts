@@ -635,6 +635,7 @@ import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-e
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
 import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/03-giros-diedrico-dt2";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
+import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
@@ -869,6 +870,7 @@ import { motorTrifasicoCampoGiratorioLesson } from "@/data/lessons/tecnologia-in
 import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/11-motor-trifasico-conexion-balance";
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
+import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
@@ -1082,6 +1084,7 @@ import { problemasLimitesContinuidadCcss2Lesson } from "@/data/lessons/matematic
 import { problemasMetricos12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/11-problemas-metricos-1-2bach";
 import { problemasMetricos22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/12-problemas-metricos-2-2bach";
 import { problemasMoviles4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/05-problemas-moviles-4eso";
+import { problemasMovimientoEncuentroFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/05-problemas-movimiento-encuentro-fq2";
 import { problemasNecesidadesInformacionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/04-problemas-necesidades-informacion";
 import { problemasNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/09-problemas-normal-2bach";
 import { problemasNumerosReales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/08-problemas-numeros-reales-4eso";
@@ -1334,6 +1337,7 @@ import { sistemaMetricoMagnitudesLesson } from "@/data/lessons/matematicas-1-eso
 import { sistemaMetricoPesoLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/04-sistema-metrico-peso";
 import { sistemaMetricoSuperficieLesson } from "@/data/lessons/matematicas-1-eso/06-sistema-metrico-decimal/05-sistema-metrico-superficie";
 import { sistemaOperativoAlmacenamientoCopiasLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/02-sistema-operativo-almacenamiento-copias";
+import { sistemaReferenciaDesplazamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/01-sistema-referencia-desplazamiento-fq2";
 import { sistemaSexagesimal2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/06-sistema-sexagesimal-2eso";
 import { sistemasClasificacion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/01-sistemas-clasificacion-2bach";
 import { sistemasClasificacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/02-sistemas-clasificacion-ccss2";
@@ -1503,6 +1507,7 @@ import { vectoresPlano1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { velocidadAceleracion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/12-velocidad-aceleracion-1bach";
 import { velocidadAceleracionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/09-velocidad-aceleracion-ccss1";
 import { velocidadLinealAngularLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/07-velocidad-lineal-angular";
+import { velocidadMediaFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/02-velocidad-media-fq2";
 import { verdaderaFormaFiguraPlanaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/02-verdadera-forma-figura-plana-dt2";
 import { verdaderaMagnitudAngulosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/05-verdadera-magnitud-angulos-dt2";
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
@@ -2157,6 +2162,7 @@ export const interactiveLessons = {
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
   "giros-diedrico-dt2": girosDiedricoDt2Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
+  "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
@@ -2391,6 +2397,7 @@ export const interactiveLessons = {
   "motor-trifasico-conexion-balance": motorTrifasicoConexionBalanceLesson,
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
+  "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
@@ -2604,6 +2611,7 @@ export const interactiveLessons = {
   "problemas-metricos-1-2bach": problemasMetricos12bachLesson,
   "problemas-metricos-2-2bach": problemasMetricos22bachLesson,
   "problemas-moviles-4eso": problemasMoviles4esoLesson,
+  "problemas-movimiento-encuentro-fq2": problemasMovimientoEncuentroFq2Lesson,
   "problemas-necesidades-informacion": problemasNecesidadesInformacionLesson,
   "problemas-normal-2bach": problemasNormal2bachLesson,
   "problemas-numeros-reales-4eso": problemasNumerosReales4esoLesson,
@@ -2856,6 +2864,7 @@ export const interactiveLessons = {
   "sistema-metrico-peso": sistemaMetricoPesoLesson,
   "sistema-metrico-superficie": sistemaMetricoSuperficieLesson,
   "sistema-operativo-almacenamiento-copias": sistemaOperativoAlmacenamientoCopiasLesson,
+  "sistema-referencia-desplazamiento-fq2": sistemaReferenciaDesplazamientoFq2Lesson,
   "sistema-sexagesimal-2eso": sistemaSexagesimal2esoLesson,
   "sistemas-clasificacion-2bach": sistemasClasificacion2bachLesson,
   "sistemas-clasificacion-ccss2": sistemasClasificacionCcss2Lesson,
@@ -3025,6 +3034,7 @@ export const interactiveLessons = {
   "velocidad-aceleracion-1bach": velocidadAceleracion1bachLesson,
   "velocidad-aceleracion-ccss1": velocidadAceleracionCcss1Lesson,
   "velocidad-lineal-angular": velocidadLinealAngularLesson,
+  "velocidad-media-fq2": velocidadMediaFq2Lesson,
   "verdadera-forma-figura-plana-dt2": verdaderaFormaFiguraPlanaDt2Lesson,
   "verdadera-magnitud-angulos-dt2": verdaderaMagnitudAngulosDt2Lesson,
   "viscosidad-indice": viscosidadIndiceLesson,

@@ -24,6 +24,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["sustancias-puras-mezclas", 5],
   ["estructura-materia", 5],
   ["cambios-fisicos-quimicos", 4],
+  ["el-movimiento", 5],
 ];
 
 describe("curso Física y Química 2.º ESO", () => {

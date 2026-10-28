@@ -365,6 +365,13 @@ export const BLOCKS: readonly CurriculumBlock[] = [
     description: "Cambios físicos y químicos, reacciones, conservación de la masa y combustión.",
     orderIndex: 3,
   },
+  {
+    slug: "fisica-movimiento-fuerzas",
+    subject: "fisica",
+    title: "Movimiento y fuerzas",
+    description: "Sistemas de referencia, velocidad, movimiento rectilíneo uniforme, fuerzas y su equilibrio.",
+    orderIndex: 4,
+  },
 ];
 
 /** Clave `<curso>/<tema>` → bloque (o bloque por defecto más reasignaciones de lecciones). */
@@ -623,6 +630,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-2-eso/sustancias-puras-mezclas": "fisica-materia",
   "fisica-2-eso/estructura-materia": "fisica-materia",
   "fisica-2-eso/cambios-fisicos-quimicos": "fisica-cambios-quimicos",
+  "fisica-2-eso/el-movimiento": "fisica-movimiento-fuerzas",
   "dibujo-tecnico-2-bachillerato/geometria-arquitectura-ingenieria": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/homologia-afinidad": "dibujo-geometria-plana",
   "dibujo-tecnico-2-bachillerato/potencia-eje-radical-tangencias": "dibujo-geometria-plana",
