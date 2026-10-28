@@ -1345,6 +1345,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt2-conica-casa-explorador` | Casa con tejado a dos aguas en perspectiva cónica oblicua | `a` giro (°), `b` distancia, `c` altura del horizonte |
 | `dt2-explanacion-explorador` | Perfil de una explanación: desmonte, terraplén y pie del talud | `a` cota de la plataforma, `b` pendiente del talud, `c` pendiente del terreno |
 | `dt2-elegir-sistema-explorador` | Comparador de sistemas de representación según la necesidad | `n` necesidad (0–4) |
+| `dt2-rosca-metrica-explorador` | Rosca métrica: paso, núcleo, flanco y broca previa | `a` índice de rosca (0–9), `b` longitud (mm) |
+| `dt2-cortes-pieza-explorador` | Pieza con taladro: vista sin corte, corte total y medio corte, con rayado | `n` modo (0–2), `a` diámetro, `b` separación del rayado |
+| `dt2-perfiles-seccion-explorador` | Sección rayada de un perfil: área y masa por metro | `n` perfil (0–3), `a` tamaño, `b` espesor |
+| `dt2-ajuste-tolerancias-explorador` | Ajuste eje–agujero: juego mínimo, máximo y tipo | `a` ES (µm), `b` es (µm) |
+| `dt2-lista-piezas-explorador` | Lista de piezas de un conjunto atornillado con cantidades y masa | `a` número de tornillos |
+| `dt2-huella-material-explorador` | Masa y huella de carbono orientativa según material, volumen y reciclado | `n` material (0–2), `a` volumen, `b` reciclado (%) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

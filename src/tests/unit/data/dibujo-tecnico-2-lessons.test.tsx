@@ -26,6 +26,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["diedrico-avanzado", 6],
   ["cuerpos-diedrico", 5],
   ["axonometrico-conico-acotados", 5],
+  ["normalizacion-proyecto", 6],
 ];
 
 describe("curso Dibujo Técnico II", () => {

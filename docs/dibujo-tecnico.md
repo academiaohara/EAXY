@@ -71,3 +71,4 @@ Total previsto: unas 41 lecciones.
 | DT II · 5. Diédrico avanzado | Hecho (6 lecciones, `05-diedrico-avanzado/`; herramientas `DtIIDiedricoAvanzadoTools.tsx`; bloque `dibujo-sistemas-representacion`) |
 | DT II · 6. Cuerpos en diédrico | Hecho (5 lecciones, `06-cuerpos-diedrico/`; herramientas `DtIICuerposTools.tsx`) |
 | DT II · 7. Axonométrico, cónico y planos acotados de sólidos | Hecho (5 lecciones, `07-axonometrico-conico-acotados/`; herramientas `DtIISolidosAxoTools.tsx`) |
+| DT II · 8. Normalización y proyecto | Hecho (6 lecciones, `08-normalizacion-proyecto/`; herramientas `DtIINormalizacionTools.tsx`; bloque `dibujo-normalizacion-documentacion`) |

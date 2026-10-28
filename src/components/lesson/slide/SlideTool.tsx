@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { RoscaMetricaDt2Explorador, CortesPiezaDt2Explorador, PerfilesSeccionDt2Explorador, AjusteToleranciasDt2Explorador, ListaPiezasDt2Explorador, HuellaMaterialDt2Explorador } from "@/components/lesson/slide/tools/DtIINormalizacionTools";
 import { SolidoIsometricoDt2Explorador, CaballeraCirculosDt2Explorador, ConicaCasaDt2Explorador, ExplanacionDt2Explorador, ElegirSistemaDt2Explorador } from "@/components/lesson/slide/tools/DtIISolidosAxoTools";
 import { SolidoDiedricoDt2Explorador, SeccionPrismaDt2Explorador, SeccionRevolucionDt2Explorador, PoliedrosRegularesDt2Explorador, DesarrolloCuerposDt2Explorador } from "@/components/lesson/slide/tools/DtIICuerposTools";
 import { AbatimientoPuntoDt2Explorador, VerdaderaFormaDt2Explorador, GiroRectaDt2Explorador, CambioPlanoDt2Explorador, MagnitudAngulosDt2Explorador, DistanciaPuntoRectaDt2Explorador } from "@/components/lesson/slide/tools/DtIIDiedricoAvanzadoTools";
@@ -2027,6 +2028,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ExplanacionDt2Explorador block={block} />;
     case "dt2-elegir-sistema-explorador":
       return <ElegirSistemaDt2Explorador block={block} />;
+    case "dt2-rosca-metrica-explorador":
+      return <RoscaMetricaDt2Explorador block={block} />;
+    case "dt2-cortes-pieza-explorador":
+      return <CortesPiezaDt2Explorador block={block} />;
+    case "dt2-perfiles-seccion-explorador":
+      return <PerfilesSeccionDt2Explorador block={block} />;
+    case "dt2-ajuste-tolerancias-explorador":
+      return <AjusteToleranciasDt2Explorador block={block} />;
+    case "dt2-lista-piezas-explorador":
+      return <ListaPiezasDt2Explorador block={block} />;
+    case "dt2-huella-material-explorador":
+      return <HuellaMaterialDt2Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

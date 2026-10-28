@@ -604,6 +604,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-2-bachillerato/diedrico-avanzado": "dibujo-sistemas-representacion",
   "dibujo-tecnico-2-bachillerato/cuerpos-diedrico": "dibujo-sistemas-representacion",
   "dibujo-tecnico-2-bachillerato/axonometrico-conico-acotados": "dibujo-sistemas-representacion",
+  "dibujo-tecnico-2-bachillerato/normalizacion-proyecto": "dibujo-normalizacion-documentacion",
   "dibujo-tecnico-1-bachillerato/historia-fundamentos-geometricos": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/proporcionalidad-equivalencia-semejanza": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/triangulos-cuadrilateros-poligonos": "dibujo-geometria-plana",

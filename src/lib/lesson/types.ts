@@ -1995,6 +1995,12 @@ export type SlideToolId =
   | "dt2-conica-casa-explorador"
   | "dt2-explanacion-explorador"
   | "dt2-elegir-sistema-explorador"
+  | "dt2-rosca-metrica-explorador"
+  | "dt2-cortes-pieza-explorador"
+  | "dt2-perfiles-seccion-explorador"
+  | "dt2-ajuste-tolerancias-explorador"
+  | "dt2-lista-piezas-explorador"
+  | "dt2-huella-material-explorador"
   /* industrial-tool-end */;
 
 /**

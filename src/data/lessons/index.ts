@@ -264,6 +264,7 @@ import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-ind
 import { corteUnionAcabado2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/06-corte-union-acabado-2eso";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
 import { cortesSignoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/03-cortes-signo-ccss1";
+import { cortesTotalMedioDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/02-cortes-total-medio-dt2";
 import { crecimientoDecrecimiento1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/13-crecimiento-decrecimiento-1bach";
 import { crecimientoDecrecimientoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/10-crecimiento-decrecimiento-ccss1";
 import { crecimientoExtremos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/10-crecimiento-extremos-2bach";
@@ -345,6 +346,7 @@ import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieri
 import { disenoImpresion3dPrototipado4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/06-diseno-impresion-3d-prototipado-4eso";
 import { disenoPiezasTrabajoGrupoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/04-diseno-piezas-trabajo-grupo-dt1";
 import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
+import { disenoSostenibilidadProyectoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/06-diseno-sostenibilidad-proyecto-dt2";
 import { dispersion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/07-dispersion-1bach";
 import { dispersion2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/04-dispersion-2eso";
 import { dispersionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/07-dispersion-ccss1";
@@ -941,6 +943,7 @@ import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
+import { piezasNormalizadasRoscasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/01-piezas-normalizadas-roscas-dt2";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
@@ -953,6 +956,8 @@ import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematica
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
 import { planosAcotadosRectaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/01-planos-acotados-recta-dt1";
+import { planosMontajeDespieceDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/05-planos-montaje-despiece-dt2";
+import { planosTallerToleranciasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/04-planos-taller-tolerancias-dt2";
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
 import { plantearRestriccionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/11-plantear-restricciones-ccss2";
 import { plasticosBasicoLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/05-plasticos-basico";
@@ -1244,6 +1249,7 @@ import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-me
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
+import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
@@ -1754,6 +1760,7 @@ export const interactiveLessons = {
   "corte-union-acabado-2eso": corteUnionAcabado2esoLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
   "cortes-signo-ccss1": cortesSignoCcss1Lesson,
+  "cortes-total-medio-dt2": cortesTotalMedioDt2Lesson,
   "crecimiento-decrecimiento-1bach": crecimientoDecrecimiento1bachLesson,
   "crecimiento-decrecimiento-ccss1": crecimientoDecrecimientoCcss1Lesson,
   "crecimiento-extremos-2bach": crecimientoExtremos2bachLesson,
@@ -1835,6 +1842,7 @@ export const interactiveLessons = {
   "diseno-impresion-3d-prototipado-4eso": disenoImpresion3dPrototipado4esoLesson,
   "diseno-piezas-trabajo-grupo-dt1": disenoPiezasTrabajoGrupoDt1Lesson,
   "diseno-simulacion-mecanismos-4eso": disenoSimulacionMecanismos4esoLesson,
+  "diseno-sostenibilidad-proyecto-dt2": disenoSostenibilidadProyectoDt2Lesson,
   "dispersion-1bach": dispersion1bachLesson,
   "dispersion-2eso": dispersion2esoLesson,
   "dispersion-ccss1": dispersionCcss1Lesson,
@@ -2431,6 +2439,7 @@ export const interactiveLessons = {
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
+  "piezas-normalizadas-roscas-dt2": piezasNormalizadasRoscasDt2Lesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
   "planificacion-gestion-proyectos": planificacionGestionProyectosLesson,
@@ -2443,6 +2452,8 @@ export const interactiveLessons = {
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "planos-acotados-explanaciones-dt2": planosAcotadosExplanacionesDt2Lesson,
   "planos-acotados-recta-dt1": planosAcotadosRectaDt1Lesson,
+  "planos-montaje-despiece-dt2": planosMontajeDespieceDt2Lesson,
+  "planos-taller-tolerancias-dt2": planosTallerToleranciasDt2Lesson,
   "planteamiento-pl-ccss2": planteamientoPlCcss2Lesson,
   "plantear-restricciones-ccss2": plantearRestriccionesCcss2Lesson,
   "plasticos-basico": plasticosBasicoLesson,
@@ -2734,6 +2745,7 @@ export const interactiveLessons = {
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
+  "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
