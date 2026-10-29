@@ -643,6 +643,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-4-eso/el-atomo-y-la-tabla-periodica": "fisica-materia",
   "fisica-4-eso/enlace-quimico": "fisica-materia",
   "fisica-4-eso/formulacion-y-nomenclatura": "fisica-materia",
+  "fisica-4-eso/reacciones-quimicas": "fisica-cambios-quimicos",
   "fisica-3-eso/el-trabajo-cientifico": "fisica-metodo-medida",
   "fisica-3-eso/el-atomo-y-el-sistema-periodico": "fisica-materia",
   "fisica-3-eso/elementos-y-compuestos-quimicos": "fisica-materia",

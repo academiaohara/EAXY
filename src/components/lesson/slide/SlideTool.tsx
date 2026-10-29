@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MolGasesFq4Explorador, EstequiometriaFq4Explorador, ReactivoLimitanteFq4Explorador, TiposReaccionFq4Explorador, NeutralizacionFq4Explorador, RedoxFq4Explorador } from "@/components/lesson/slide/tools/Fq4ReaccionesTools";
 import { OxidacionFq4Explorador, OxidosFq4Explorador, HidurosFq4Explorador, SalesBinariasFq4Explorador, HidroxidosOxoacidosFq4Explorador, OxisalesFq4Explorador } from "@/components/lesson/slide/tools/Fq4FormulacionTools";
 import { RedIonicaFq4Explorador, LewisFq4Explorador, ClasificaSustanciaFq4Explorador, FuerzasIntermolecularesFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnlaceTools";
 import { ConfiguracionFq4Explorador, TablaBloquesFq4Explorador, PropiedadesPeriodicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4AtomoTools";
@@ -2284,6 +2285,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <HidroxidosOxoacidosFq4Explorador block={block} />;
     case "fq4-oxisales-explorador":
       return <OxisalesFq4Explorador block={block} />;
+    case "fq4-mol-gases-explorador":
+      return <MolGasesFq4Explorador block={block} />;
+    case "fq4-estequiometria-explorador":
+      return <EstequiometriaFq4Explorador block={block} />;
+    case "fq4-reactivo-limitante-explorador":
+      return <ReactivoLimitanteFq4Explorador block={block} />;
+    case "fq4-tipos-reaccion-explorador":
+      return <TiposReaccionFq4Explorador block={block} />;
+    case "fq4-neutralizacion-explorador":
+      return <NeutralizacionFq4Explorador block={block} />;
+    case "fq4-redox-explorador":
+      return <RedoxFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

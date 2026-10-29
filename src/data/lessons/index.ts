@@ -5,6 +5,7 @@ import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industri
 import { aceleracionFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/02-aceleracion-fq3";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
+import { acidosBasesNeutralizacionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/05-acidos-bases-neutralizacion-fq4";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
 import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
@@ -540,6 +541,7 @@ import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
 import { estadosAgregacionFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/02-estados-agregacion-fq2";
+import { estequiometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/02-estequiometria-fq4";
 import { estimacionSimulacionPrototiposTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/03-estimacion-simulacion-prototipos-ti2";
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
@@ -901,6 +903,7 @@ import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
 import { modelosAtomicosBohrFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/01-modelos-atomicos-bohr-fq3";
 import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
+import { molMasaMolarGasesFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/01-mol-masa-molar-gases-fq4";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -996,6 +999,7 @@ import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
 import { oxidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/02-oxidos-fq4";
 import { oxisalesFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/06-oxisales-fq4";
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
@@ -1264,6 +1268,7 @@ import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
 import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
 import { reaccionesQuimicasFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/02-reacciones-quimicas-fq2";
+import { reactivoLimitanteRendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/03-reactivo-limitante-rendimiento-fq4";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
@@ -1522,6 +1527,7 @@ import { tiposDiscontinuidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/02-tipos-matrices-2bach";
 import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
 import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
+import { tiposReaccionesCombustionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/04-tipos-reacciones-combustion-fq4";
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
 import { toleranciasAjustes4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/04-tolerancias-ajustes-4eso";
 import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
@@ -1613,6 +1619,7 @@ export const interactiveLessons = {
   "aceleracion-fq3": aceleracionFq3Lesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
+  "acidos-bases-neutralizacion-fq4": acidosBasesNeutralizacionFq4Lesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
   "acotacion-normalizada-dt1": acotacionNormalizadaDt1Lesson,
   "acotacion-piezas": acotacionPiezasLesson,
@@ -2148,6 +2155,7 @@ export const interactiveLessons = {
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
   "estados-agregacion-fq2": estadosAgregacionFq2Lesson,
+  "estequiometria-fq4": estequiometriaFq4Lesson,
   "estimacion-simulacion-prototipos-ti2": estimacionSimulacionPrototiposTi2Lesson,
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
@@ -2509,6 +2517,7 @@ export const interactiveLessons = {
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
   "modelos-atomicos-bohr-fq3": modelosAtomicosBohrFq3Lesson,
   "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
+  "mol-masa-molar-gases-fq4": molMasaMolarGasesFq4Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
@@ -2604,6 +2613,7 @@ export const interactiveLessons = {
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "ovalo-ovoide-dt1": ovaloOvoideDt1Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "oxidacion-reduccion-fq4": oxidacionReduccionFq4Lesson,
   "oxidos-fq4": oxidosFq4Lesson,
   "oxisales-fq4": oxisalesFq4Lesson,
   "palancas-ley-generos": palancasLeyGenerosLesson,
@@ -2872,6 +2882,7 @@ export const interactiveLessons = {
   "razones-agudas-1bach": razonesAgudas1bachLesson,
   "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
   "reacciones-quimicas-fq2": reaccionesQuimicasFq2Lesson,
+  "reactivo-limitante-rendimiento-fq4": reactivoLimitanteRendimientoFq4Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,
@@ -3130,6 +3141,7 @@ export const interactiveLessons = {
   "tipos-matrices-2bach": tiposMatrices2bachLesson,
   "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
   "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
+  "tipos-reacciones-combustion-fq4": tiposReaccionesCombustionFq4Lesson,
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
   "tolerancias-ajustes-4eso": toleranciasAjustes4esoLesson,
   "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,

@@ -1481,6 +1481,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-sales-binarias-explorador` | Sales binarias de un metal y un no metal | `a` metal (0–15), `b` índice de nº de oxidación, `n` anión (0–7) |
 | `fq4-hidroxidos-oxoacidos-explorador` | Hidróxidos y oxoácidos | `n` 0 hidróxido / 1 oxoácido, `a` metal, `b` oxoácido |
 | `fq4-oxisales-explorador` | Oxisales: metal y oxoanión | `a` metal (0–15), `b` índice de nº de oxidación, `n` oxoanión (0–9) |
+| `fq4-mol-gases-explorador` | Mol, masa molar y volumen de gases | `n` sustancia (0–7), `a` masa (g), `b` T (K), `c` P (atm) |
+| `fq4-estequiometria-explorador` | Cálculos de masa, moles y volumen en una reacción ajustada | `n` reacción (0–5), `a` masa (g) |
+| `fq4-reactivo-limitante-explorador` | Reactivo limitante, exceso y rendimiento | `n` reacción (0–5), `a`/`b` masas (g), `c` rendimiento (%) |
+| `fq4-tipos-reaccion-explorador` | Clasificación de reacciones químicas | `n` ejemplo (0–5) |
+| `fq4-neutralizacion-explorador` | Neutralización y valoración ácido-base | `a` concentración (M), `b` volumen ácido (mL), `c` volumen base (mL) |
+| `fq4-redox-explorador` | Reacciones redox y serie de actividad | `a` metal (0–4), `b` catión (0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

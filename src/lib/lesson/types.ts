@@ -2131,6 +2131,12 @@ export type SlideToolId =
   | "fq4-sales-binarias-explorador"
   | "fq4-hidroxidos-oxoacidos-explorador"
   | "fq4-oxisales-explorador"
+  | "fq4-mol-gases-explorador"
+  | "fq4-estequiometria-explorador"
+  | "fq4-reactivo-limitante-explorador"
+  | "fq4-tipos-reaccion-explorador"
+  | "fq4-neutralizacion-explorador"
+  | "fq4-redox-explorador"
   /* industrial-tool-end */;
 
 /**

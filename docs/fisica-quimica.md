@@ -94,3 +94,4 @@ Total previsto: 55 lecciones.
 | 4.º ESO · 2. El átomo y la tabla periódica | Hecho (3 lecciones, `02-el-atomo-y-la-tabla-periodica/`; herramientas `Fq4AtomoTools.tsx`; bloque `fisica-materia`; moduleId 342) |
 | 4.º ESO · 3. Enlace químico | Hecho (4 lecciones, `03-enlace-quimico/`; herramientas `Fq4EnlaceTools.tsx`; bloque `fisica-materia`; moduleId 343) |
 | 4.º ESO · 4. Formulación y nomenclatura | Hecho (6 lecciones, `04-formulacion-y-nomenclatura/`; motor de formulación y herramientas `Fq4FormulacionTools.tsx`; bloque `fisica-materia`; moduleId 344) |
+| 4.º ESO · 5. Reacciones químicas | Hecho (6 lecciones, `05-reacciones-quimicas/`; herramientas `Fq4ReaccionesTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 345) |
