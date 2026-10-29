@@ -258,6 +258,7 @@ import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-b
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
 import { conservacionEnergiaMecanicaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/02-conservacion-energia-mecanica-fq3";
+import { conservacionEnergiaMecanicaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/04-conservacion-energia-mecanica-fq4";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
 import { conservacionMasaCalculosFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/02-conservacion-masa-calculos-fq3";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
@@ -479,6 +480,7 @@ import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bach
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaCineticaPotencialFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/02-energia-cinetica-potencial-fq2";
+import { energiaCineticaPotencialFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/02-energia-cinetica-potencial-fq4";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
 import { energiasRenovablesMix3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/01-energias-renovables-mix-3eso";
@@ -1333,6 +1335,7 @@ import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { regulacionTodoNadaProporcional4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/02-regulacion-todo-nada-proporcional-4eso";
 import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
 import { relacionTransmisionVelocidadAngular4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/01-relacion-transmision-velocidad-angular-4eso";
+import { rendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/05-rendimiento-fq4";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { renovablesAlmacenamientoAutoconsumo4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/02-renovables-almacenamiento-autoconsumo-4eso";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
@@ -1535,6 +1538,7 @@ import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-
 import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { teoremaThalesDivisionSegmentosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/01-teorema-thales-division-segmentos-dt1";
+import { teoremaTrabajoEnergiaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/03-teorema-trabajo-energia-fq4";
 import { teoremasContinuas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/11-teoremas-continuas-2bach";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { textilesPetreosCeramicosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/06-textiles-petreos-ceramicos";
@@ -1555,6 +1559,7 @@ import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingeni
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoPotenciaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/01-trabajo-potencia-fq3";
+import { trabajoPotenciaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/01-trabajo-potencia-fq4";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
 import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/07-transductores-velocidad";
 import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/05-transformacion-movimiento";
@@ -1891,6 +1896,7 @@ export const interactiveLessons = {
   "conos-2eso": conos2esoLesson,
   "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
   "conservacion-energia-mecanica-fq3": conservacionEnergiaMecanicaFq3Lesson,
+  "conservacion-energia-mecanica-fq4": conservacionEnergiaMecanicaFq4Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
   "conservacion-masa-calculos-fq3": conservacionMasaCalculosFq3Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
@@ -2112,6 +2118,7 @@ export const interactiveLessons = {
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-cinetica-potencial-fq2": energiaCineticaPotencialFq2Lesson,
+  "energia-cinetica-potencial-fq4": energiaCineticaPotencialFq4Lesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
   "energias-renovables-mix-3eso": energiasRenovablesMix3esoLesson,
@@ -2966,6 +2973,7 @@ export const interactiveLessons = {
   "regulacion-todo-nada-proporcional-4eso": regulacionTodoNadaProporcional4esoLesson,
   "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
   "relacion-transmision-velocidad-angular-4eso": relacionTransmisionVelocidadAngular4esoLesson,
+  "rendimiento-fq4": rendimientoFq4Lesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "renovables-almacenamiento-autoconsumo-4eso": renovablesAlmacenamientoAutoconsumo4esoLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
@@ -3168,6 +3176,7 @@ export const interactiveLessons = {
   "teorema-seno-1bach": teoremaSeno1bachLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "teorema-thales-division-segmentos-dt1": teoremaThalesDivisionSegmentosDt1Lesson,
+  "teorema-trabajo-energia-fq4": teoremaTrabajoEnergiaFq4Lesson,
   "teoremas-continuas-2bach": teoremasContinuas2bachLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "textiles-petreos-ceramicos": textilesPetreosCeramicosLesson,
@@ -3188,6 +3197,7 @@ export const interactiveLessons = {
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-potencia-fq3": trabajoPotenciaFq3Lesson,
+  "trabajo-potencia-fq4": trabajoPotenciaFq4Lesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
   "transductores-velocidad": transductoresVelocidadLesson,
   "transformacion-movimiento": transformacionMovimientoLesson,

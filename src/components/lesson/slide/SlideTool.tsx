@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TrabajoPotenciaFq4Explorador, EnergiasFq4Explorador, TeoremaTrabajoEnergiaFq4Explorador, ConservacionEnergiaFq4Explorador, RendimientoFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnergiaTools";
 import { GravitacionFq4Explorador, GravedadAstrosFq4Explorador, OrbitasFq4Explorador, FasesLunaresFq4Explorador } from "@/components/lesson/slide/tools/Fq4GravitacionTools";
 import { NewtonFq4Explorador, RozamientoFq4Explorador, PlanoInclinadoFq4Explorador, PoleasFq4Explorador, ElasticaCentripetaFq4Explorador } from "@/components/lesson/slide/tools/Fq4DinamicaTools";
 import { VectoresMovimientoFq4Explorador, EncuentroFq4Explorador, TiroVerticalFq4Explorador, McuFq4Explorador, SeguridadVialFq4Explorador } from "@/components/lesson/slide/tools/Fq4CinematicaTools";
@@ -2339,6 +2340,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OrbitasFq4Explorador block={block} />;
     case "fq4-fases-lunares-explorador":
       return <FasesLunaresFq4Explorador block={block} />;
+    case "fq4-trabajo-potencia-explorador":
+      return <TrabajoPotenciaFq4Explorador block={block} />;
+    case "fq4-energias-explorador":
+      return <EnergiasFq4Explorador block={block} />;
+    case "fq4-teorema-trabajo-energia-explorador":
+      return <TeoremaTrabajoEnergiaFq4Explorador block={block} />;
+    case "fq4-conservacion-energia-explorador":
+      return <ConservacionEnergiaFq4Explorador block={block} />;
+    case "fq4-rendimiento-explorador":
+      return <RendimientoFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

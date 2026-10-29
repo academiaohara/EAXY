@@ -28,6 +28,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["cinematica", 5],
   ["dinamica", 5],
   ["fuerzas-gravitatorias", 4],
+  ["trabajo-energia-potencia", 5],
 ];
 
 describe("curso Física y Química 4.º ESO", () => {

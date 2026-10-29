@@ -1117,6 +1117,7 @@ export type SlideAnimId =
   | "fq4-mcu"
   | "fq4-diagrama-fuerzas"
   | "fq4-canon-newton"
+  | "fq4-conservacion-pista"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2160,6 +2161,11 @@ export type SlideToolId =
   | "fq4-gravedad-planetas-explorador"
   | "fq4-orbitas-explorador"
   | "fq4-fases-lunares-explorador"
+  | "fq4-trabajo-potencia-explorador"
+  | "fq4-energias-explorador"
+  | "fq4-teorema-trabajo-energia-explorador"
+  | "fq4-conservacion-energia-explorador"
+  | "fq4-rendimiento-explorador"
   /* industrial-tool-end */;
 
 /**

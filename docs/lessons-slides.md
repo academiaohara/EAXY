@@ -593,6 +593,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-mcu` | MCU: velocidad tangente y aceleración centrípeta | — |
 | `fq4-diagrama-fuerzas` | Diagrama de fuerzas de un bloque: P, N, F, Fr y resultante | — |
 | `fq4-canon-newton` | El cañón de Newton: de la caída libre a la órbita | — |
+| `fq4-conservacion-pista` | Bola en una pista en U: Ep y Ec con Em constante | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1510,6 +1511,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-gravedad-planetas-explorador` | Gravedad, peso y velocidad de escape en distintos astros | n (astro 0–5), a (masa), b (altura km) |
 | `fq4-orbitas-explorador` | Velocidad orbital y periodo según la altura de la órbita | a (altura km) |
 | `fq4-fases-lunares-explorador` | Fases de la Luna, mareas y eclipses según su posición | a (ángulo) |
+| `fq4-trabajo-potencia-explorador` | Trabajo de una fuerza inclinada y potencia | a (F), b (ángulo), c (distancia) |
+| `fq4-energias-explorador` | Energía cinética, potencial y mecánica | a (masa), b (velocidad), c (altura) |
+| `fq4-teorema-trabajo-energia-explorador` | Teorema trabajo-energía con fuerza y rozamiento | a (masa), b (v₀), c (F) |
+| `fq4-conservacion-energia-explorador` | Conservación de la energía en una pista, con pérdida opcional | a (masa), b (altura), c (pérdida 0–1) |
+| `fq4-rendimiento-explorador` | Rendimiento de aparatos, consumo en kWh y coste | n (aparato 0–5), a (potencia W), b (horas) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
