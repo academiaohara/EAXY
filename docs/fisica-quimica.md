@@ -41,6 +41,27 @@ Ids con sufijo `-fq3`, herramientas y animaciones `fq3-…`, `FQ3_SUBTITLES`, `m
 
 Total previsto: 50 lecciones.
 
+## 4.º de ESO (en desarrollo)
+
+Ids con sufijo `-fq4`, herramientas y animaciones `fq4-…`, `FQ4_SUBTITLES`, `moduleId(340 + n)` (curso `fisica-4-eso`, `courseId(9)`). Retoma 3.º con más cálculo, más rigor y formulación inorgánica y orgánica.
+
+| Tema | Lecciones previstas |
+|---|---|
+| 1. Actividad científica y magnitudes | 3: magnitudes escalares y vectoriales; error e incertidumbre; análisis de datos y ajuste lineal |
+| 2. El átomo y la tabla periódica | 3: configuración electrónica; tabla periódica y configuración; propiedades periódicas |
+| 3. Enlace químico | 4: iónico y redes cristalinas; covalente y diagramas de Lewis; metálico; propiedades y estructura |
+| 4. Formulación y nomenclatura | 6: números de oxidación; óxidos; hidruros e hidrácidos; sales binarias; hidróxidos y oxoácidos; oxisales |
+| 5. Reacciones químicas | 6: mol y masa molar; estequiometría; reactivo limitante; tipos de reacciones y combustión; ácidos, bases y neutralización; oxidación-reducción y velocidad |
+| 6. Química del carbono | 5: el carbono y sus enlaces; hidrocarburos; grupos funcionales; combustibles fósiles; polímeros y biomoléculas |
+| 7. Cinemática | 5: posición, velocidad y aceleración vectoriales; MRU y MRUA; caída libre y tiro vertical; movimiento circular uniforme; gráficas y seguridad vial |
+| 8. Dinámica | 5: leyes de Newton y diagramas de fuerzas; peso, normal y rozamiento; plano inclinado; tensión y poleas; fuerza elástica y fuerza centrípeta |
+| 9. Fuerzas gravitatorias | 4: ley de gravitación universal; peso en cuerpos celestes; órbitas y satélites; fenómenos astronómicos |
+| 10. Trabajo, energía y potencia | 5: trabajo y potencia; energías cinética y potencial; teorema trabajo-energía; conservación de la energía mecánica; rendimiento |
+| 11. Calor y energía térmica | 4: temperatura y equilibrio; calor específico y cambios de estado; transmisión y dilatación; máquinas térmicas y ahorro |
+| 12. Ondas | 5: movimiento ondulatorio; ondas mecánicas y electromagnéticas; sonido; luz (reflexión y refracción); aplicaciones y contaminación acústica |
+
+Total previsto: 55 lecciones.
+
 ## Cursos siguientes (sin desarrollar)
 
 4.º ESO (12), 1.º Bachillerato (12), 2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
@@ -69,3 +90,4 @@ Total previsto: 50 lecciones.
 | 3.º ESO · 8. Energía y calor | Hecho (5 lecciones, `08-energia-y-calor/`; herramientas `Fq3EnergiaTools.tsx`; bloque `fisica-energia-ondas`; moduleId 328) |
 | 3.º ESO · 9. Electricidad | Hecho (6 lecciones, `09-electricidad/`; herramientas `Fq3ElectricidadTools.tsx`, animación `fq3-corriente.tsx`; bloque nuevo `fisica-electricidad`; moduleId 329) |
 | 3.º ESO · 10. Química y sociedad | Hecho (5 lecciones, `10-quimica-y-sociedad/`; herramientas `Fq3SociedadTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 330). **Física y Química 3.º ESO completo: 50 lecciones en 10 temas.** |
+| 4.º ESO · 1. Actividad científica y magnitudes | Hecho (3 lecciones, `src/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/`; herramientas `Fq4MagnitudesTools.tsx`; bloque `fisica-metodo-medida`; moduleId 341; ids `-fq4`, herramientas `fq4-`) |

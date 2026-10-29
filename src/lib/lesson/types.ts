@@ -2115,6 +2115,9 @@ export type SlideToolId =
   | "fq3-contaminantes-explorador"
   | "fq3-efecto-invernadero-explorador"
   | "fq3-reciclaje-explorador"
+  | "fq4-vectores-explorador"
+  | "fq4-error-medida-explorador"
+  | "fq4-ajuste-lineal-explorador"
   /* industrial-tool-end */;
 
 /**

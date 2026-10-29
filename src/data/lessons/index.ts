@@ -29,6 +29,7 @@ import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingeni
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
 import { analisisCicloVidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/08-analisis-ciclo-vida";
+import { analisisDatosAjusteLinealFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/03-analisis-datos-ajuste-lineal-fq4";
 import { analisisNecesidadesEspecificaciones4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/01-analisis-necesidades-especificaciones-4eso";
 import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
@@ -497,6 +498,7 @@ import { equilibrioEstaticoTi2Lesson } from "@/data/lessons/tecnologia-ingenieri
 import { equipoDocumentacionVersionesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/04-equipo-documentacion-versiones-ti2";
 import { equivalenciaAreasCuadraturaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/03-equivalencia-areas-cuadratura-dt1";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
+import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/02-error-incertidumbre-medida-fq4";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
@@ -835,6 +837,7 @@ import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-es
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
 import { magnitudesElectricas2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/01-magnitudes-electricas-2eso";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
+import { magnitudesEscalaresVectorialesFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/01-magnitudes-escalares-vectoriales-fq4";
 import { magnitudesUnidadesSiFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/02-magnitudes-unidades-si-fq2";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
@@ -1621,6 +1624,7 @@ export const interactiveLessons = {
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
   "analisis-ciclo-vida": analisisCicloVidaLesson,
+  "analisis-datos-ajuste-lineal-fq4": analisisDatosAjusteLinealFq4Lesson,
   "analisis-necesidades-especificaciones-4eso": analisisNecesidadesEspecificaciones4esoLesson,
   "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
@@ -2089,6 +2093,7 @@ export const interactiveLessons = {
   "equipo-documentacion-versiones-ti2": equipoDocumentacionVersionesTi2Lesson,
   "equivalencia-areas-cuadratura-dt1": equivalenciaAreasCuadraturaDt1Lesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
+  "error-incertidumbre-medida-fq4": errorIncertidumbreMedidaFq4Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "escalas-dibujo": escalasDibujoLesson,
@@ -2427,6 +2432,7 @@ export const interactiveLessons = {
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
   "magnitudes-electricas-2eso": magnitudesElectricas2esoLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
+  "magnitudes-escalares-vectoriales-fq4": magnitudesEscalaresVectorialesFq4Lesson,
   "magnitudes-unidades-si-fq2": magnitudesUnidadesSiFq2Lesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,

@@ -1465,6 +1465,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-contaminantes-explorador` | Contaminantes atmosféricos: origen, efecto y medida | `n` contaminante (0–6) |
 | `fq3-efecto-invernadero-explorador` | Modelo sencillo del efecto invernadero | `a` fracción de IR retenida (0–1) |
 | `fq3-reciclaje-explorador` | Reciclaje de materiales: degradación y ahorro | `n` material (0–4), `a` % reciclado |
+| `fq4-vectores-explorador` | Suma y resta de vectores, componentes y producto escalar | `a` módulo A, `b` ángulo A, `c` módulo B, `n` ángulo B |
+| `fq4-error-medida-explorador` | Media, error e incertidumbre de una serie de medidas | `a` número de medidas (1–10) |
+| `fq4-ajuste-lineal-explorador` | Ajuste por mínimos cuadrados con tres conjuntos de datos | `n` conjunto (0–2) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

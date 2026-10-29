@@ -639,6 +639,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "tecnologia-ingenieria-2-bachillerato/corriente-alterna": "circuitos-electricos-electronicos",
   "tecnologia-ingenieria-2-bachillerato/proyectos-id": "proyectos-tecnologicos",
   "tecnologia-ingenieria-2-bachillerato/impacto-sostenibilidad-ingenieria": "tecnologia-sostenible",
+  "fisica-4-eso/actividad-cientifica-magnitudes": "fisica-metodo-medida",
   "fisica-3-eso/el-trabajo-cientifico": "fisica-metodo-medida",
   "fisica-3-eso/el-atomo-y-el-sistema-periodico": "fisica-materia",
   "fisica-3-eso/elementos-y-compuestos-quimicos": "fisica-materia",

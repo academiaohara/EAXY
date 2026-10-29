@@ -232,3 +232,18 @@ export const FQ3_SUBTITLES = {
   9: "Física y Química 3.º ESO, Tema 9 — Electricidad",
   10: "Física y Química 3.º ESO, Tema 10 — Química y sociedad",
 } as const;
+
+export const FQ4_SUBTITLES = {
+  1: "Física y Química 4.º ESO, Tema 1 — Actividad científica y magnitudes",
+  2: "Física y Química 4.º ESO, Tema 2 — El átomo y la tabla periódica",
+  3: "Física y Química 4.º ESO, Tema 3 — Enlace químico",
+  4: "Física y Química 4.º ESO, Tema 4 — Formulación y nomenclatura",
+  5: "Física y Química 4.º ESO, Tema 5 — Reacciones químicas",
+  6: "Física y Química 4.º ESO, Tema 6 — Química del carbono",
+  7: "Física y Química 4.º ESO, Tema 7 — Cinemática",
+  8: "Física y Química 4.º ESO, Tema 8 — Dinámica",
+  9: "Física y Química 4.º ESO, Tema 9 — Fuerzas gravitatorias",
+  10: "Física y Química 4.º ESO, Tema 10 — Trabajo, energía y potencia",
+  11: "Física y Química 4.º ESO, Tema 11 — Calor y energía térmica",
+  12: "Física y Química 4.º ESO, Tema 12 — Ondas",
+} as const;

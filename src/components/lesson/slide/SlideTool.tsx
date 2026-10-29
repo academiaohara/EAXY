@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { VectoresFq4Explorador, ErrorMedidaFq4Explorador, AjusteLinealFq4Explorador } from "@/components/lesson/slide/tools/Fq4MagnitudesTools";
 import { EscalaPhFq3Explorador, PictogramasFq3Explorador, ContaminantesFq3Explorador, EfectoInvernaderoFq3Explorador, ReciclajeFq3Explorador } from "@/components/lesson/slide/tools/Fq3SociedadTools";
 import { CargaCoulombFq3Explorador, IntensidadTensionFq3Explorador, LeyOhmFq3Explorador, ResistenciaHiloFq3Explorador, CircuitoFq3Explorador, ConsumoElectricoFq3Explorador, SeguridadElectricaFq3Explorador } from "@/components/lesson/slide/tools/Fq3ElectricidadTools";
 import { TrabajoPotenciaFq3Explorador, MontanaRusaFq3Explorador, CalorEspecificoFq3Explorador, CalentamientoHieloFq3Explorador, AislamientoFq3Explorador } from "@/components/lesson/slide/tools/Fq3EnergiaTools";
@@ -2248,6 +2249,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <EfectoInvernaderoFq3Explorador block={block} />;
     case "fq3-reciclaje-explorador":
       return <ReciclajeFq3Explorador block={block} />;
+    case "fq4-vectores-explorador":
+      return <VectoresFq4Explorador block={block} />;
+    case "fq4-error-medida-explorador":
+      return <ErrorMedidaFq4Explorador block={block} />;
+    case "fq4-ajuste-lineal-explorador":
+      return <AjusteLinealFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
