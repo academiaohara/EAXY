@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { LeyesGasesFb1Explorador, GasIdealFb1Explorador, MezclaGasesFb1Explorador, ConcentracionFb1Explorador, DilucionColigativasFb1Explorador } from "@/components/lesson/slide/tools/Fb1GasesTools";
 import { MolMasaFb1Explorador, CentesimalFb1Explorador, FormulaEmpiricaFb1Explorador, EstequiometriaPurezaFb1Explorador } from "@/components/lesson/slide/tools/Fb1CantidadTools";
 import { BinariosFb1Explorador, OxoacidosFb1Explorador, OxisalesFb1Explorador, EntrenadorFb1Explorador } from "@/components/lesson/slide/tools/Fb1FormulacionTools";
 import { EnergiaReticularFb1Explorador, LewisFb1Explorador, GeometriaFb1Explorador, FuerzasIntermolecularesFb1Explorador, SustanciasFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnlaceTools";
@@ -2419,6 +2420,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FormulaEmpiricaFb1Explorador block={block} />;
     case "fb1-estequiometria-pureza-explorador":
       return <EstequiometriaPurezaFb1Explorador block={block} />;
+    case "fb1-leyes-gases-explorador":
+      return <LeyesGasesFb1Explorador block={block} />;
+    case "fb1-gas-ideal-explorador":
+      return <GasIdealFb1Explorador block={block} />;
+    case "fb1-mezcla-gases-explorador":
+      return <MezclaGasesFb1Explorador block={block} />;
+    case "fb1-concentracion-explorador":
+      return <ConcentracionFb1Explorador block={block} />;
+    case "fb1-dilucion-coligativas-explorador":
+      return <DilucionColigativasFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

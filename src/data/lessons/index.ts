@@ -234,6 +234,7 @@ import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachil
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
 import { comunicacionesIotProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/08-comunicaciones-iot-proyecto-4eso";
+import { concentracionDisolucionesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/04-concentracion-disoluciones-fb1";
 import { concentracionDisolucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/01-concentracion-disoluciones-fq3";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
@@ -370,6 +371,7 @@ import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { difusionEvaluacionProyecto3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/05-difusion-evaluacion-proyecto-3eso";
+import { dilucionPropiedadesColigativasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/05-dilucion-propiedades-coligativas-fb1";
 import { diodosLed3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/03-diodos-led-3eso";
 import { direccionesIpRouter3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/03-direcciones-ip-router-3eso";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
@@ -423,6 +425,7 @@ import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-
 import { economiaCircularAlternativasTecnologicasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/05-economia-circular-alternativas-tecnologicas-ti2";
 import { economiaCircularReparacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/04-economia-circular-reparacion-4eso";
 import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
+import { ecuacionGasesIdealesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/02-ecuacion-gases-ideales-fb1";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesBicuadradas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/09-ecuaciones-bicuadradas-1bach";
@@ -919,6 +922,7 @@ import { metodoSustitucion3esoLesson } from "@/data/lessons/matematicas-3-eso/06
 import { metodoSustitucion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/03-metodo-sustitucion-4eso";
 import { metodoSustitucion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/08-metodo-sustitucion-4esob";
 import { metodologiasAgilesScrumKanbanTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/02-metodologias-agiles-scrum-kanban-ti2";
+import { mezclasGasesPresionesParcialesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/03-mezclas-gases-presiones-parciales-fb1";
 import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
 import { mezclasVidaCotidianaFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/05-mezclas-vida-cotidiana-fq2";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
@@ -1636,6 +1640,7 @@ import { variableAleatoriaDiscretaCcss1Lesson } from "@/data/lessons/matematicas
 import { variableContinuaDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/05-variable-continua-densidad-ccss1";
 import { variablesContinuasDensidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/06-variables-continuas-densidad-2bach";
 import { variablesDatosIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/04-variables-datos-iniciacion";
+import { variablesLeyesGasesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/01-variables-leyes-gases-fb1";
 import { variablesPenduloFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/01-variables-pendulo-fq3";
 import { variablesTiposDatos2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/02-variables-tipos-datos-2eso";
 import { variacionRelativa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/08-variacion-relativa-1bach";
@@ -1901,6 +1906,7 @@ export const interactiveLessons = {
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
   "comunicaciones-iot-proyecto-4eso": comunicacionesIotProyecto4esoLesson,
+  "concentracion-disoluciones-fb1": concentracionDisolucionesFb1Lesson,
   "concentracion-disoluciones-fq3": concentracionDisolucionesFq3Lesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
@@ -2037,6 +2043,7 @@ export const interactiveLessons = {
   "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "difusion-evaluacion-proyecto-3eso": difusionEvaluacionProyecto3esoLesson,
+  "dilucion-propiedades-coligativas-fb1": dilucionPropiedadesColigativasFb1Lesson,
   "diodos-led-3eso": diodosLed3esoLesson,
   "direcciones-ip-router-3eso": direccionesIpRouter3esoLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
@@ -2090,6 +2097,7 @@ export const interactiveLessons = {
   "economia-circular-alternativas-tecnologicas-ti2": economiaCircularAlternativasTecnologicasTi2Lesson,
   "economia-circular-reparacion-4eso": economiaCircularReparacion4esoLesson,
   "economia-circular-residuos": economiaCircularResiduosLesson,
+  "ecuacion-gases-ideales-fb1": ecuacionGasesIdealesFb1Lesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-bicuadradas-1bach": ecuacionesBicuadradas1bachLesson,
@@ -2586,6 +2594,7 @@ export const interactiveLessons = {
   "metodo-sustitucion-4eso": metodoSustitucion4esoLesson,
   "metodo-sustitucion-4esob": metodoSustitucion4esobLesson,
   "metodologias-agiles-scrum-kanban-ti2": metodologiasAgilesScrumKanbanTi2Lesson,
+  "mezclas-gases-presiones-parciales-fb1": mezclasGasesPresionesParcialesFb1Lesson,
   "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
   "mezclas-vida-cotidiana-fq2": mezclasVidaCotidianaFq2Lesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
@@ -3303,6 +3312,7 @@ export const interactiveLessons = {
   "variable-continua-densidad-ccss1": variableContinuaDensidadCcss1Lesson,
   "variables-continuas-densidad-2bach": variablesContinuasDensidad2bachLesson,
   "variables-datos-iniciacion": variablesDatosIniciacionLesson,
+  "variables-leyes-gases-fb1": variablesLeyesGasesFb1Lesson,
   "variables-pendulo-fq3": variablesPenduloFq3Lesson,
   "variables-tipos-datos-2eso": variablesTiposDatos2esoLesson,
   "variacion-relativa-1bach": variacionRelativa1bachLesson,

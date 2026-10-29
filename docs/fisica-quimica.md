@@ -126,3 +126,4 @@ Ids `-fb1`, herramientas `fb1-`, subtítulos `FB1_SUBTITLES`, carpeta `src/data/
 | 1.º Bach. · 3. Enlace químico | Hecho (5 lecciones, `03-enlace-quimico/`; herramientas `Fb1EnlaceTools.tsx`; animación `fb1-mar-electrones`; bloque `fisica-materia`; moduleId 363) |
 | 1.º Bach. · 4. Formulación inorgánica | Hecho (4 lecciones, `04-formulacion-inorganica/`; motor y herramientas `Fb1FormulacionTools.tsx` (binarios, oxoácidos, oxisales y entrenador, con nomenclatura sistemática, Stock y tradicional); animación `fb1-regla-aspa`; bloque `fisica-materia`; moduleId 364) |
 | 1.º Bach. · 5. Cantidad de sustancia | Hecho (4 lecciones, `05-cantidad-de-sustancia/`; herramientas `Fb1CantidadTools.tsx`; animación `fb1-mol`; bloque `fisica-cambios-quimicos`; moduleId 365) |
+| 1.º Bach. · 6. Gases y disoluciones | Hecho (5 lecciones, `06-gases-y-disoluciones/`; herramientas `Fb1GasesTools.tsx`; animación `fb1-gas-particulas`; bloque `fisica-cambios-quimicos`; moduleId 366) |

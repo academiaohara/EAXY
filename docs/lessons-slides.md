@@ -601,6 +601,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-mar-electrones` | Enlace metálico: mar de electrones, conducción, maleabilidad y fragilidad iónica | — |
 | `fb1-regla-aspa` | Regla del aspa: intercambio de números de oxidación y simplificación | — |
 | `fb1-mol` | El mol: número de Avogadro, masa molar y conversiones | — |
+| `fb1-gas-particulas` | Modelo cinético: presión, volumen, temperatura y cantidad de un gas | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1554,6 +1555,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-composicion-centesimal-explorador` | Porcentaje en masa de cada elemento y masa en una muestra | n (compuesto), a (g) |
 | `fb1-formula-empirica-explorador` | Fórmula empírica y molecular paso a paso desde porcentajes | n (problema 0–7) |
 | `fb1-estequiometria-pureza-explorador` | Estequiometría de 6 reacciones con pureza de la muestra | n (reacción), a (g), b (% pureza) |
+| `fb1-leyes-gases-explorador` | Leyes de Boyle, Charles, Gay-Lussac y Avogadro | n (ley 0–3), a (factor) |
+| `fb1-gas-ideal-explorador` | PV = nRT: moles, masa, densidad y volumen molar de 8 gases | n (gas), a (T), b (P), c (V) |
+| `fb1-mezcla-gases-explorador` | Mezclas de gases: fracciones molares y presiones parciales | n (mezcla 0–2) |
+| `fb1-concentracion-explorador` | Molaridad, g/L, % masa, molalidad y fracción molar de disoluciones | n (soluto), a (g), b (L), c (densidad) |
+| `fb1-dilucion-coligativas-explorador` | Dilución (C₁V₁ = C₂V₂) y propiedades coligativas del agua | n (modo 0–1), a (C₁), b (V₂) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

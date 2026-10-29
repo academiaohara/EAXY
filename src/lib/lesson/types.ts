@@ -1125,6 +1125,7 @@ export type SlideAnimId =
   | "fb1-mar-electrones"
   | "fb1-regla-aspa"
   | "fb1-mol"
+  | "fb1-gas-particulas"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2204,6 +2205,11 @@ export type SlideToolId =
   | "fb1-composicion-centesimal-explorador"
   | "fb1-formula-empirica-explorador"
   | "fb1-estequiometria-pureza-explorador"
+  | "fb1-leyes-gases-explorador"
+  | "fb1-gas-ideal-explorador"
+  | "fb1-mezcla-gases-explorador"
+  | "fb1-concentracion-explorador"
+  | "fb1-dilucion-coligativas-explorador"
   /* industrial-tool-end */;
 
 /**
