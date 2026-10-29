@@ -22,7 +22,7 @@ export const potenciaEnergiaElectricaFq3Lesson: InteractiveLesson = {
       { kind: "steps", items: [
         "La **energía** consumida es **E = P · t**. En la factura se mide en **kWh**: 1 kWh = 1 kW durante 1 h = **3,6 · 10⁶ J**.",
         "**Coste = kWh · precio del kWh**.",
-        "Para **ahorrar**: aparatos de **clase A**, bombillas **LED**, apagar el *standby*, aprovechar la luz natural.",
+        "Para **ahorrar**: aparatos de **clase A**, bombillas **LED**, apagar el «standby», aprovechar la luz natural.",
       ] },
     ]),
     calc("calc-p", "Potencia", "Un aparato conectado a 230 V consume 5 A. ¿Qué potencia tiene, en W?", nums(1150), "P = 230 · 5 = 1150 W.", "P = V·I."),

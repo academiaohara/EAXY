@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { BinariosFb1Explorador, OxoacidosFb1Explorador, OxisalesFb1Explorador, EntrenadorFb1Explorador } from "@/components/lesson/slide/tools/Fb1FormulacionTools";
 import { EnergiaReticularFb1Explorador, LewisFb1Explorador, GeometriaFb1Explorador, FuerzasIntermolecularesFb1Explorador, SustanciasFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnlaceTools";
 import { TablaBloquesFb1Explorador, TendenciasFb1Explorador, RadiosIonicosFb1Explorador, ReactividadFb1Explorador } from "@/components/lesson/slide/tools/Fb1PeriodicaTools";
 import { ParticulasIsotoposFb1Explorador, BohrEspectroFb1Explorador, DeBroglieFb1Explorador, NumerosCuanticosFb1Explorador, ConfiguracionFb1Explorador } from "@/components/lesson/slide/tools/Fb1AtomoTools";
@@ -2401,6 +2402,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <FuerzasIntermolecularesFb1Explorador block={block} />;
     case "fb1-sustancias-explorador":
       return <SustanciasFb1Explorador block={block} />;
+    case "fb1-binarios-explorador":
+      return <BinariosFb1Explorador block={block} />;
+    case "fb1-oxoacidos-explorador":
+      return <OxoacidosFb1Explorador block={block} />;
+    case "fb1-oxisales-explorador":
+      return <OxisalesFb1Explorador block={block} />;
+    case "fb1-entrenador-explorador":
+      return <EntrenadorFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

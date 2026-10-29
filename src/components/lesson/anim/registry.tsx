@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildReglaAspa } from "@/components/lesson/anim/scenes/industrial/fb1-aspa";
 import { buildMarElectrones } from "@/components/lesson/anim/scenes/industrial/fb1-metalico";
 import { buildRadioAtomico } from "@/components/lesson/anim/scenes/industrial/fb1-radio";
 import { buildOrbitales } from "@/components/lesson/anim/scenes/industrial/fb1-orbitales";
@@ -873,6 +874,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fb1-orbitales": () => buildOrbitales(),
   "fb1-radio-atomico": () => buildRadioAtomico(),
   "fb1-mar-electrones": () => buildMarElectrones(),
+  "fb1-regla-aspa": () => buildReglaAspa(),
   /* industrial-end */
 };
 

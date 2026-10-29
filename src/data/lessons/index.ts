@@ -710,6 +710,7 @@ import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnolog
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hidrocarburosFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/02-hidrocarburos-fq4";
+import { hidroxidosOxoacidosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/02-hidroxidos-oxoacidos-fb1";
 import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/05-hidroxidos-oxoacidos-fq4";
 import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
@@ -963,6 +964,7 @@ import { necesidadesRequisitos2esoLesson } from "@/data/lessons/tecnologia-2-eso
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
 import { nomenclaturaCompuestosFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/06-nomenclatura-compuestos-fq3";
+import { nomenclaturasComposicionStockFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/04-nomenclaturas-composicion-stock-fb1";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
 import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
 import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
@@ -983,6 +985,7 @@ import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numero
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { numerosIrracionales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/01-numeros-irracionales-4eso";
 import { numerosIrracionales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/01-numeros-irracionales-4esob";
+import { numerosOxidacionBinariosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/01-numeros-oxidacion-binarios-fb1";
 import { numerosOxidacionFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/01-numeros-oxidacion-fq4";
 import { numerosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/04-numeros-racionales-4eso";
 import { numerosRealesRecta4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/02-numeros-reales-recta-4eso";
@@ -1032,6 +1035,7 @@ import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillera
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
 import { oxidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/02-oxidos-fq4";
+import { oxisalesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/03-oxisales-fb1";
 import { oxisalesFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/06-oxisales-fq4";
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
@@ -2369,6 +2373,7 @@ export const interactiveLessons = {
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hidrocarburos-fq4": hidrocarburosFq4Lesson,
+  "hidroxidos-oxoacidos-fb1": hidroxidosOxoacidosFb1Lesson,
   "hidroxidos-oxoacidos-fq4": hidroxidosOxoacidosFq4Lesson,
   "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
   "hiperbola-1bach": hiperbola1bachLesson,
@@ -2622,6 +2627,7 @@ export const interactiveLessons = {
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
   "nomenclatura-compuestos-fq3": nomenclaturaCompuestosFq3Lesson,
+  "nomenclaturas-composicion-stock-fb1": nomenclaturasComposicionStockFb1Lesson,
   "normal-estandar-tabla-ccss1": normalEstandarTablaCcss1Lesson,
   "normalizacion-tipos-linea-dt1": normalizacionTiposLineaDt1Lesson,
   "notacion-cientifica-1bach": notacionCientifica1bachLesson,
@@ -2642,6 +2648,7 @@ export const interactiveLessons = {
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "numeros-irracionales-4eso": numerosIrracionales4esoLesson,
   "numeros-irracionales-4esob": numerosIrracionales4esobLesson,
+  "numeros-oxidacion-binarios-fb1": numerosOxidacionBinariosFb1Lesson,
   "numeros-oxidacion-fq4": numerosOxidacionFq4Lesson,
   "numeros-racionales-4eso": numerosRacionales4esoLesson,
   "numeros-reales-recta-4eso": numerosRealesRecta4esoLesson,
@@ -2691,6 +2698,7 @@ export const interactiveLessons = {
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "oxidacion-reduccion-fq4": oxidacionReduccionFq4Lesson,
   "oxidos-fq4": oxidosFq4Lesson,
+  "oxisales-fb1": oxisalesFb1Lesson,
   "oxisales-fq4": oxisalesFq4Lesson,
   "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,

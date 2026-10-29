@@ -22,9 +22,9 @@ export const hidrocarburosFq4Lesson: InteractiveLesson = {
     slide("nom", "Nomenclatura", [
       { kind: "steps", items: [
         "**Raíz** según el número de carbonos: **met-** (1), **et-** (2), **prop-** (3), **but-** (4), **pent-** (5), **hex-** (6), **hept-** (7), **oct-** (8), **non-** (9), **dec-** (10).",
-        "**Terminación**: **-ano** (alcano), **-eno** (alqueno), **-ino** (alquino): *propano*, *propeno*, *propino*.",
-        "A partir de 4 carbonos, un **número** indica dónde empieza el enlace múltiple, el **más bajo posible**: *but-1-eno* (CH₂=CH–CH₂–CH₃), *but-2-eno* (CH₃–CH=CH–CH₃).",
-        "Las cadenas **ramificadas** se nombran con la cadena principal más larga y los radicales (*metil*, *etil*) con su posición: 2-metilbutano.",
+        "**Terminación**: **-ano** (alcano), **-eno** (alqueno), **-ino** (alquino): «propano», «propeno», «propino».",
+        "A partir de 4 carbonos, un **número** indica dónde empieza el enlace múltiple, el **más bajo posible**: «but-1-eno» (CH₂=CH–CH₂–CH₃), «but-2-eno» (CH₃–CH=CH–CH₃).",
+        "Las cadenas **ramificadas** se nombran con la cadena principal más larga y los radicales («metil», «etil») con su posición: 2-metilbutano.",
       ] },
     ], undefined, "stack"),
     slide("prop", "Propiedades", [

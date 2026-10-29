@@ -599,6 +599,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-orbitales` | Orbitales atómicos s, p y d frente a las órbitas de Bohr | — |
 | `fb1-radio-atomico` | Tendencia del radio atómico en un periodo y un grupo | — |
 | `fb1-mar-electrones` | Enlace metálico: mar de electrones, conducción, maleabilidad y fragilidad iónica | — |
+| `fb1-regla-aspa` | Regla del aspa: intercambio de números de oxidación y simplificación | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1544,6 +1545,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-geometria-explorador` | RPECV: geometría, ángulo, hibridación y polaridad | a (enlazantes), b (solitarios) |
 | `fb1-fuerzas-intermoleculares-explorador` | Puntos de ebullición y fuerzas intermoleculares de series de hidruros | n (serie 0–5) |
 | `fb1-sustancias-explorador` | Tipos de sólidos: iónicos, metálicos y covalentes | n (sustancia 0–9) |
+| `fb1-binarios-explorador` | Compuestos binarios (óxidos, peróxidos, hidruros, sales) con nomenclatura sistemática y Stock | a (elemento), b (nox), n (parte negativa) |
+| `fb1-oxoacidos-explorador` | Oxoácidos: obtención, nombre tradicional, IUPAC 2005 y anión | n (ácido 0–24) |
+| `fb1-oxisales-explorador` | Oxisales y sales ácidas con catión, ácido y hidrógenos cedidos | a (catión), b (ácido), n (H cedidos) |
+| `fb1-entrenador-explorador` | Entrenador de formulación nombre↔fórmula con 25 compuestos | a (ejercicio), n (modo 0–1) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

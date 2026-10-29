@@ -1123,6 +1123,7 @@ export type SlideAnimId =
   | "fb1-orbitales"
   | "fb1-radio-atomico"
   | "fb1-mar-electrones"
+  | "fb1-regla-aspa"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2194,6 +2195,10 @@ export type SlideToolId =
   | "fb1-geometria-explorador"
   | "fb1-fuerzas-intermoleculares-explorador"
   | "fb1-sustancias-explorador"
+  | "fb1-binarios-explorador"
+  | "fb1-oxoacidos-explorador"
+  | "fb1-oxisales-explorador"
+  | "fb1-entrenador-explorador"
   /* industrial-tool-end */;
 
 /**
