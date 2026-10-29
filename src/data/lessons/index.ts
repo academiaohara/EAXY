@@ -228,6 +228,7 @@ import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { componentesPerifericosDispositivos3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/01-componentes-perifericos-dispositivos-3eso";
+import { composicionCentesimalFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/02-composicion-centesimal-fb1";
 import { composicionFuerzasEquilibrioFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/01-composicion-fuerzas-equilibrio-fq3";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
@@ -553,6 +554,7 @@ import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
 import { estadosAgregacionFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/02-estados-agregacion-fq2";
+import { estequiometriaDePartidaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/04-estequiometria-de-partida-fb1";
 import { estequiometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/02-estequiometria-fq4";
 import { estimacionSimulacionPrototiposTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/03-estimacion-simulacion-prototipos-ti2";
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
@@ -608,6 +610,7 @@ import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
 import { formasTransformacionesEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/01-formas-transformaciones-energia-fq2";
 import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
+import { formulaEmpiricaMolecularFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/03-formula-empirica-molecular-fb1";
 import { formulasMasaMolecularMolFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/05-formulas-masa-molecular-mol-fq3";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
@@ -929,6 +932,7 @@ import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-
 import { modelosAtomicosBohrFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/01-modelos-atomicos-bohr-fq3";
 import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
 import { modelosAtomicosParticulasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/01-modelos-atomicos-particulas-fb1";
+import { molMasaMolarAvogadroFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/01-mol-masa-molar-avogadro-fb1";
 import { molMasaMolarGasesFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/01-mol-masa-molar-gases-fq4";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
@@ -1891,6 +1895,7 @@ export const interactiveLessons = {
   "complejos-raices-1bach": complejosRaices1bachLesson,
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "componentes-perifericos-dispositivos-3eso": componentesPerifericosDispositivos3esoLesson,
+  "composicion-centesimal-fb1": composicionCentesimalFb1Lesson,
   "composicion-fuerzas-equilibrio-fq3": composicionFuerzasEquilibrioFq3Lesson,
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
@@ -2216,6 +2221,7 @@ export const interactiveLessons = {
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
   "estados-agregacion-fq2": estadosAgregacionFq2Lesson,
+  "estequiometria-de-partida-fb1": estequiometriaDePartidaFb1Lesson,
   "estequiometria-fq4": estequiometriaFq4Lesson,
   "estimacion-simulacion-prototipos-ti2": estimacionSimulacionPrototiposTi2Lesson,
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
@@ -2271,6 +2277,7 @@ export const interactiveLessons = {
   "formas-canonicas": formasCanonicasLesson,
   "formas-transformaciones-energia-fq2": formasTransformacionesEnergiaFq2Lesson,
   "formatos-plegado-dt1": formatosPlegadoDt1Lesson,
+  "formula-empirica-molecular-fb1": formulaEmpiricaMolecularFb1Lesson,
   "formulas-masa-molecular-mol-fq3": formulasMasaMolecularMolFq3Lesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
@@ -2592,6 +2599,7 @@ export const interactiveLessons = {
   "modelos-atomicos-bohr-fq3": modelosAtomicosBohrFq3Lesson,
   "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
   "modelos-atomicos-particulas-fb1": modelosAtomicosParticulasFb1Lesson,
+  "mol-masa-molar-avogadro-fb1": molMasaMolarAvogadroFb1Lesson,
   "mol-masa-molar-gases-fq4": molMasaMolarGasesFq4Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,

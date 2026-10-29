@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { MolMasaFb1Explorador, CentesimalFb1Explorador, FormulaEmpiricaFb1Explorador, EstequiometriaPurezaFb1Explorador } from "@/components/lesson/slide/tools/Fb1CantidadTools";
 import { BinariosFb1Explorador, OxoacidosFb1Explorador, OxisalesFb1Explorador, EntrenadorFb1Explorador } from "@/components/lesson/slide/tools/Fb1FormulacionTools";
 import { EnergiaReticularFb1Explorador, LewisFb1Explorador, GeometriaFb1Explorador, FuerzasIntermolecularesFb1Explorador, SustanciasFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnlaceTools";
 import { TablaBloquesFb1Explorador, TendenciasFb1Explorador, RadiosIonicosFb1Explorador, ReactividadFb1Explorador } from "@/components/lesson/slide/tools/Fb1PeriodicaTools";
@@ -2410,6 +2411,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OxisalesFb1Explorador block={block} />;
     case "fb1-entrenador-explorador":
       return <EntrenadorFb1Explorador block={block} />;
+    case "fb1-mol-masa-explorador":
+      return <MolMasaFb1Explorador block={block} />;
+    case "fb1-composicion-centesimal-explorador":
+      return <CentesimalFb1Explorador block={block} />;
+    case "fb1-formula-empirica-explorador":
+      return <FormulaEmpiricaFb1Explorador block={block} />;
+    case "fb1-estequiometria-pureza-explorador":
+      return <EstequiometriaPurezaFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
