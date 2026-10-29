@@ -91,3 +91,4 @@ Total previsto: 55 lecciones.
 | 3.º ESO · 9. Electricidad | Hecho (6 lecciones, `09-electricidad/`; herramientas `Fq3ElectricidadTools.tsx`, animación `fq3-corriente.tsx`; bloque nuevo `fisica-electricidad`; moduleId 329) |
 | 3.º ESO · 10. Química y sociedad | Hecho (5 lecciones, `10-quimica-y-sociedad/`; herramientas `Fq3SociedadTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 330). **Física y Química 3.º ESO completo: 50 lecciones en 10 temas.** |
 | 4.º ESO · 1. Actividad científica y magnitudes | Hecho (3 lecciones, `src/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/`; herramientas `Fq4MagnitudesTools.tsx`; bloque `fisica-metodo-medida`; moduleId 341; ids `-fq4`, herramientas `fq4-`) |
+| 4.º ESO · 2. El átomo y la tabla periódica | Hecho (3 lecciones, `02-el-atomo-y-la-tabla-periodica/`; herramientas `Fq4AtomoTools.tsx`; bloque `fisica-materia`; moduleId 342) |

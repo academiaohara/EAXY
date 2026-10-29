@@ -2118,6 +2118,9 @@ export type SlideToolId =
   | "fq4-vectores-explorador"
   | "fq4-error-medida-explorador"
   | "fq4-ajuste-lineal-explorador"
+  | "fq4-configuracion-explorador"
+  | "fq4-tabla-bloques-explorador"
+  | "fq4-propiedades-periodicas-explorador"
   /* industrial-tool-end */;
 
 /**

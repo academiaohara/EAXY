@@ -1468,6 +1468,9 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-vectores-explorador` | Suma y resta de vectores, componentes y producto escalar | `a` módulo A, `b` ángulo A, `c` módulo B, `n` ángulo B |
 | `fq4-error-medida-explorador` | Media, error e incertidumbre de una serie de medidas | `a` número de medidas (1–10) |
 | `fq4-ajuste-lineal-explorador` | Ajuste por mínimos cuadrados con tres conjuntos de datos | `n` conjunto (0–2) |
+| `fq4-configuracion-explorador` | Configuración electrónica y diagrama de orbitales (Z = 1–36) | `a` número atómico (1–36) |
+| `fq4-tabla-bloques-explorador` | Tabla periódica de los 36 primeros elementos por bloques | `a` número atómico (1–36) |
+| `fq4-propiedades-periodicas-explorador` | Radio, energía de ionización y electronegatividad (Z = 1–36) | `n` propiedad (0–2), `a` Z |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

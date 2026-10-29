@@ -246,6 +246,7 @@ import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-
 import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/04-condiciones-2eso";
 import { condicionesBuclesDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/04-condiciones-bucles-datos-4eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
+import { configuracionElectronicaFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/01-configuracion-electronica-fq4";
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/03-conica-solidos-dt2";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
@@ -1191,6 +1192,7 @@ import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematica
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
 import { propiedadesMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/02-propiedades-materiales";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
+import { propiedadesPeriodicasFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/03-propiedades-periodicas-fq4";
 import { propiedadesPrestacionesSeleccion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/01-propiedades-prestaciones-seleccion-3eso";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
 import { propiedadesProductoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/05-propiedades-producto-ccss2";
@@ -1453,6 +1455,7 @@ import { sumaRestaPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso
 import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/13-sumadores-binarios";
 import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
 import { sustanciasPurasMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/01-sustancias-puras-mezclas-fq2";
+import { tablaPeriodicaConfiguracionFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/02-tabla-periodica-configuracion-fq4";
 import { tablaPeriodicaFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/04-tabla-periodica-fq2";
 import { tablaPeriodicaPropiedadesFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/05-tabla-periodica-propiedades-fq3";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
@@ -1841,6 +1844,7 @@ export const interactiveLessons = {
   "condiciones-2eso": condiciones2esoLesson,
   "condiciones-bucles-datos-4eso": condicionesBuclesDatos4esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
+  "configuracion-electronica-fq4": configuracionElectronicaFq4Lesson,
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conica-solidos-dt2": conicaSolidosDt2Lesson,
   "conicas-3eso": conicas3esoLesson,
@@ -2786,6 +2790,7 @@ export const interactiveLessons = {
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
   "propiedades-materiales": propiedadesMaterialesLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
+  "propiedades-periodicas-fq4": propiedadesPeriodicasFq4Lesson,
   "propiedades-prestaciones-seleccion-3eso": propiedadesPrestacionesSeleccion3esoLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
   "propiedades-producto-ccss2": propiedadesProductoCcss2Lesson,
@@ -3048,6 +3053,7 @@ export const interactiveLessons = {
   "sumadores-binarios": sumadoresBinariosLesson,
   "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
   "sustancias-puras-mezclas-fq2": sustanciasPurasMezclasFq2Lesson,
+  "tabla-periodica-configuracion-fq4": tablaPeriodicaConfiguracionFq4Lesson,
   "tabla-periodica-fq2": tablaPeriodicaFq2Lesson,
   "tabla-periodica-propiedades-fq3": tablaPeriodicaPropiedadesFq3Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,

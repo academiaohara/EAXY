@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ConfiguracionFq4Explorador, TablaBloquesFq4Explorador, PropiedadesPeriodicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4AtomoTools";
 import { VectoresFq4Explorador, ErrorMedidaFq4Explorador, AjusteLinealFq4Explorador } from "@/components/lesson/slide/tools/Fq4MagnitudesTools";
 import { EscalaPhFq3Explorador, PictogramasFq3Explorador, ContaminantesFq3Explorador, EfectoInvernaderoFq3Explorador, ReciclajeFq3Explorador } from "@/components/lesson/slide/tools/Fq3SociedadTools";
 import { CargaCoulombFq3Explorador, IntensidadTensionFq3Explorador, LeyOhmFq3Explorador, ResistenciaHiloFq3Explorador, CircuitoFq3Explorador, ConsumoElectricoFq3Explorador, SeguridadElectricaFq3Explorador } from "@/components/lesson/slide/tools/Fq3ElectricidadTools";
@@ -2255,6 +2256,12 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ErrorMedidaFq4Explorador block={block} />;
     case "fq4-ajuste-lineal-explorador":
       return <AjusteLinealFq4Explorador block={block} />;
+    case "fq4-configuracion-explorador":
+      return <ConfiguracionFq4Explorador block={block} />;
+    case "fq4-tabla-bloques-explorador":
+      return <TablaBloquesFq4Explorador block={block} />;
+    case "fq4-propiedades-periodicas-explorador":
+      return <PropiedadesPeriodicasFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
