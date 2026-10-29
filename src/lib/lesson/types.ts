@@ -2125,6 +2125,12 @@ export type SlideToolId =
   | "fq4-lewis-explorador"
   | "fq4-clasifica-sustancia-explorador"
   | "fq4-fuerzas-intermoleculares-explorador"
+  | "fq4-oxidacion-explorador"
+  | "fq4-oxidos-explorador"
+  | "fq4-hidruros-explorador"
+  | "fq4-sales-binarias-explorador"
+  | "fq4-hidroxidos-oxoacidos-explorador"
+  | "fq4-oxisales-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { OxidacionFq4Explorador, OxidosFq4Explorador, HidurosFq4Explorador, SalesBinariasFq4Explorador, HidroxidosOxoacidosFq4Explorador, OxisalesFq4Explorador } from "@/components/lesson/slide/tools/Fq4FormulacionTools";
 import { RedIonicaFq4Explorador, LewisFq4Explorador, ClasificaSustanciaFq4Explorador, FuerzasIntermolecularesFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnlaceTools";
 import { ConfiguracionFq4Explorador, TablaBloquesFq4Explorador, PropiedadesPeriodicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4AtomoTools";
 import { VectoresFq4Explorador, ErrorMedidaFq4Explorador, AjusteLinealFq4Explorador } from "@/components/lesson/slide/tools/Fq4MagnitudesTools";
@@ -2271,6 +2272,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ClasificaSustanciaFq4Explorador block={block} />;
     case "fq4-fuerzas-intermoleculares-explorador":
       return <FuerzasIntermolecularesFq4Explorador block={block} />;
+    case "fq4-oxidacion-explorador":
+      return <OxidacionFq4Explorador block={block} />;
+    case "fq4-oxidos-explorador":
+      return <OxidosFq4Explorador block={block} />;
+    case "fq4-hidruros-explorador":
+      return <HidurosFq4Explorador block={block} />;
+    case "fq4-sales-binarias-explorador":
+      return <SalesBinariasFq4Explorador block={block} />;
+    case "fq4-hidroxidos-oxoacidos-explorador":
+      return <HidroxidosOxoacidosFq4Explorador block={block} />;
+    case "fq4-oxisales-explorador":
+      return <OxisalesFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

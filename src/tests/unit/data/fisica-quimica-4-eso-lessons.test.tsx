@@ -22,6 +22,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["actividad-cientifica-magnitudes", 3],
   ["el-atomo-y-la-tabla-periodica", 3],
   ["enlace-quimico", 4],
+  ["formulacion-y-nomenclatura", 6],
 ];
 
 describe("curso Física y Química 4.º ESO", () => {

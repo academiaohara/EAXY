@@ -93,3 +93,4 @@ Total previsto: 55 lecciones.
 | 4.º ESO · 1. Actividad científica y magnitudes | Hecho (3 lecciones, `src/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/`; herramientas `Fq4MagnitudesTools.tsx`; bloque `fisica-metodo-medida`; moduleId 341; ids `-fq4`, herramientas `fq4-`) |
 | 4.º ESO · 2. El átomo y la tabla periódica | Hecho (3 lecciones, `02-el-atomo-y-la-tabla-periodica/`; herramientas `Fq4AtomoTools.tsx`; bloque `fisica-materia`; moduleId 342) |
 | 4.º ESO · 3. Enlace químico | Hecho (4 lecciones, `03-enlace-quimico/`; herramientas `Fq4EnlaceTools.tsx`; bloque `fisica-materia`; moduleId 343) |
+| 4.º ESO · 4. Formulación y nomenclatura | Hecho (6 lecciones, `04-formulacion-y-nomenclatura/`; motor de formulación y herramientas `Fq4FormulacionTools.tsx`; bloque `fisica-materia`; moduleId 344) |

@@ -1475,6 +1475,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-lewis-explorador` | Estructuras de Lewis, geometría y polaridad de moléculas sencillas | `n` molécula (0–8) |
 | `fq4-clasifica-sustancia-explorador` | Deducir el tipo de enlace a partir de ensayos | `n` ejemplo inicial (0–3) |
 | `fq4-fuerzas-intermoleculares-explorador` | Fuerzas intermoleculares y puntos de ebullición | `n` sustancia (0–11) |
+| `fq4-oxidacion-explorador` | Cálculo del número de oxidación en compuestos | `n` compuesto (0–11) |
+| `fq4-oxidos-explorador` | Formulación de óxidos con nomenclatura sistemática y de Stock | `n` elemento (0–20), `a` índice de número de oxidación |
+| `fq4-hidruros-explorador` | Hidruros metálicos y no metálicos e hidrácidos | `n` compuesto (0–15) |
+| `fq4-sales-binarias-explorador` | Sales binarias de un metal y un no metal | `a` metal (0–15), `b` índice de nº de oxidación, `n` anión (0–7) |
+| `fq4-hidroxidos-oxoacidos-explorador` | Hidróxidos y oxoácidos | `n` 0 hidróxido / 1 oxoácido, `a` metal, `b` oxoácido |
+| `fq4-oxisales-explorador` | Oxisales: metal y oxoanión | `a` metal (0–15), `b` índice de nº de oxidación, `n` oxoanión (0–9) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

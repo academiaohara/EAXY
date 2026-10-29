@@ -689,6 +689,8 @@ import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-
 import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
+import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/05-hidroxidos-oxoacidos-fq4";
+import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { hiperbolaAsintotasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/03-hiperbola-asintotas-dt2";
 import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
@@ -950,6 +952,7 @@ import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numero
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { numerosIrracionales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/01-numeros-irracionales-4eso";
 import { numerosIrracionales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/01-numeros-irracionales-4esob";
+import { numerosOxidacionFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/01-numeros-oxidacion-fq4";
 import { numerosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/04-numeros-racionales-4eso";
 import { numerosRealesRecta4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/02-numeros-reales-recta-4eso";
 import { numerosRealesRecta4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/02-numeros-reales-recta-4esob";
@@ -993,6 +996,8 @@ import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { oxidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/02-oxidos-fq4";
+import { oxisalesFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/06-oxisales-fq4";
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
@@ -1337,6 +1342,7 @@ import { rozamientoPerdidasLubricacion4esoLesson } from "@/data/lessons/tecnolog
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
+import { salesBinariasFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/04-sales-binarias-fq4";
 import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
 import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
@@ -2291,6 +2297,8 @@ export const interactiveLessons = {
   "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
+  "hidroxidos-oxoacidos-fq4": hidroxidosOxoacidosFq4Lesson,
+  "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "hiperbola-asintotas-dt2": hiperbolaAsintotasDt2Lesson,
   "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
@@ -2552,6 +2560,7 @@ export const interactiveLessons = {
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "numeros-irracionales-4eso": numerosIrracionales4esoLesson,
   "numeros-irracionales-4esob": numerosIrracionales4esobLesson,
+  "numeros-oxidacion-fq4": numerosOxidacionFq4Lesson,
   "numeros-racionales-4eso": numerosRacionales4esoLesson,
   "numeros-reales-recta-4eso": numerosRealesRecta4esoLesson,
   "numeros-reales-recta-4esob": numerosRealesRecta4esobLesson,
@@ -2595,6 +2604,8 @@ export const interactiveLessons = {
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "ovalo-ovoide-dt1": ovaloOvoideDt1Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "oxidos-fq4": oxidosFq4Lesson,
+  "oxisales-fq4": oxisalesFq4Lesson,
   "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
@@ -2939,6 +2950,7 @@ export const interactiveLessons = {
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
+  "sales-binarias-fq4": salesBinariasFq4Lesson,
   "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
   "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
