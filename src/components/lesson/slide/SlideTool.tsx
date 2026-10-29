@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EnergiaReticularFb1Explorador, LewisFb1Explorador, GeometriaFb1Explorador, FuerzasIntermolecularesFb1Explorador, SustanciasFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnlaceTools";
 import { TablaBloquesFb1Explorador, TendenciasFb1Explorador, RadiosIonicosFb1Explorador, ReactividadFb1Explorador } from "@/components/lesson/slide/tools/Fb1PeriodicaTools";
 import { ParticulasIsotoposFb1Explorador, BohrEspectroFb1Explorador, DeBroglieFb1Explorador, NumerosCuanticosFb1Explorador, ConfiguracionFb1Explorador } from "@/components/lesson/slide/tools/Fb1AtomoTools";
 import { OndaFq4Explorador, EspectroFq4Explorador, SonidoFq4Explorador, OpticaFq4Explorador, ContaminacionAcusticaFq4Explorador } from "@/components/lesson/slide/tools/Fq4OndasTools";
@@ -2390,6 +2391,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RadiosIonicosFb1Explorador block={block} />;
     case "fb1-reactividad-explorador":
       return <ReactividadFb1Explorador block={block} />;
+    case "fb1-energia-reticular-explorador":
+      return <EnergiaReticularFb1Explorador block={block} />;
+    case "fb1-lewis-explorador":
+      return <LewisFb1Explorador block={block} />;
+    case "fb1-geometria-explorador":
+      return <GeometriaFb1Explorador block={block} />;
+    case "fb1-fuerzas-intermoleculares-explorador":
+      return <FuerzasIntermolecularesFb1Explorador block={block} />;
+    case "fb1-sustancias-explorador":
+      return <SustanciasFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

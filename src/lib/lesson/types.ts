@@ -1122,6 +1122,7 @@ export type SlideAnimId =
   | "fq4-ondas"
   | "fb1-orbitales"
   | "fb1-radio-atomico"
+  | "fb1-mar-electrones"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2188,6 +2189,11 @@ export type SlideToolId =
   | "fb1-tendencias-explorador"
   | "fb1-radios-ionicos-explorador"
   | "fb1-reactividad-explorador"
+  | "fb1-energia-reticular-explorador"
+  | "fb1-lewis-explorador"
+  | "fb1-geometria-explorador"
+  | "fb1-fuerzas-intermoleculares-explorador"
+  | "fb1-sustancias-explorador"
   /* industrial-tool-end */;
 
 /**

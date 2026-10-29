@@ -598,6 +598,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-ondas` | Onda transversal y longitudinal: amplitud y longitud de onda | — |
 | `fb1-orbitales` | Orbitales atómicos s, p y d frente a las órbitas de Bohr | — |
 | `fb1-radio-atomico` | Tendencia del radio atómico en un periodo y un grupo | — |
+| `fb1-mar-electrones` | Enlace metálico: mar de electrones, conducción, maleabilidad y fragilidad iónica | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1538,6 +1539,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-tendencias-explorador` | Mapa de calor de radio, ionización, afinidad y electronegatividad | n (propiedad 0–3), a (Z) |
 | `fb1-radios-ionicos-explorador` | Radio de átomos e iones y series isoelectrónicas | n (ion 0–14) |
 | `fb1-reactividad-explorador` | Carácter metálico, ion típico, óxido y reactividad de un elemento | a (Z) |
+| `fb1-energia-reticular-explorador` | Energía reticular y temperatura de fusión de compuestos iónicos | n (compuesto 0–8) |
+| `fb1-lewis-explorador` | Electrones de valencia, pares enlazantes y solitarios de moléculas | n (especie 0–14) |
+| `fb1-geometria-explorador` | RPECV: geometría, ángulo, hibridación y polaridad | a (enlazantes), b (solitarios) |
+| `fb1-fuerzas-intermoleculares-explorador` | Puntos de ebullición y fuerzas intermoleculares de series de hidruros | n (serie 0–5) |
+| `fb1-sustancias-explorador` | Tipos de sólidos: iónicos, metálicos y covalentes | n (sustancia 0–9) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

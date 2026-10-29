@@ -123,3 +123,4 @@ Ids `-fb1`, herramientas `fb1-`, subtítulos `FB1_SUBTITLES`, carpeta `src/data/
 | 4.º ESO · 12. Ondas | Hecho (5 lecciones, `12-ondas/`; herramientas `Fq4OndasTools.tsx`; animación `fq4-ondas`; bloque `fisica-energia-ondas`; moduleId 352) |
 | 1.º Bach. · 1. Estructura atómica | Hecho (4 lecciones, `src/data/lessons/fisica-1-bachillerato/01-estructura-atomica/`; herramientas `Fb1AtomoTools.tsx`; animación `fb1-orbitales`; bloque `fisica-materia`; moduleId 361; ids `-fb1`, herramientas `fb1-`) |
 | 1.º Bach. · 2. Sistema periódico | Hecho (3 lecciones, `02-sistema-periodico/`; herramientas `Fb1PeriodicaTools.tsx`; animación `fb1-radio-atomico`; bloque `fisica-materia`; moduleId 362) |
+| 1.º Bach. · 3. Enlace químico | Hecho (5 lecciones, `03-enlace-quimico/`; herramientas `Fb1EnlaceTools.tsx`; animación `fb1-mar-electrones`; bloque `fisica-materia`; moduleId 363) |

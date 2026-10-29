@@ -493,10 +493,13 @@ import { engranajesTransmisionPar2esoLesson } from "@/data/lessons/tecnologia-2-
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceCovalenteFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/03-enlace-covalente-fq3";
+import { enlaceCovalenteLewisFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/02-enlace-covalente-lewis-fb1";
 import { enlaceCovalenteLewisGeometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/02-enlace-covalente-lewis-geometria-fq4";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceIonicoFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/02-enlace-ionico-fq3";
 import { enlaceIonicoRedesCristalinasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/01-enlace-ionico-redes-cristalinas-fq4";
+import { enlaceIonicoRedesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/01-enlace-ionico-redes-fb1";
+import { enlaceMetalicoPropiedadesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/05-enlace-metalico-propiedades-fb1";
 import { enlaceMetalicoPropiedadesSustanciasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/03-enlace-metalico-propiedades-sustancias-fq4";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
@@ -628,6 +631,7 @@ import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
 import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
+import { fuerzasIntermolecularesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/04-fuerzas-intermoleculares-fb1";
 import { fuerzasIntermolecularesFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/04-fuerzas-intermoleculares-fq4";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConcepto4esobLesson } from "@/data/lessons/matematicas-4-eso-b/04-funciones-caracteristicas/01-funcion-concepto-4esob";
@@ -683,6 +687,7 @@ import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachil
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
 import { geometriaGriegaPitagorasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/02-geometria-griega-pitagoras-dt1";
+import { geometriaMolecularPolaridadFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/03-geometria-molecular-polaridad-fb1";
 import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/01-geometria-revolucion-industrial-dt2";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
@@ -2147,10 +2152,13 @@ export const interactiveLessons = {
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-covalente-fq3": enlaceCovalenteFq3Lesson,
+  "enlace-covalente-lewis-fb1": enlaceCovalenteLewisFb1Lesson,
   "enlace-covalente-lewis-geometria-fq4": enlaceCovalenteLewisGeometriaFq4Lesson,
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-ionico-fq3": enlaceIonicoFq3Lesson,
   "enlace-ionico-redes-cristalinas-fq4": enlaceIonicoRedesCristalinasFq4Lesson,
+  "enlace-ionico-redes-fb1": enlaceIonicoRedesFb1Lesson,
+  "enlace-metalico-propiedades-fb1": enlaceMetalicoPropiedadesFb1Lesson,
   "enlace-metalico-propiedades-sustancias-fq4": enlaceMetalicoPropiedadesSustanciasFq4Lesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enlaces-dos-rectas-dt1": enlacesDosRectasDt1Lesson,
@@ -2282,6 +2290,7 @@ export const interactiveLessons = {
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
   "fuerza-par-potencia": fuerzaParPotenciaLesson,
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
+  "fuerzas-intermoleculares-fb1": fuerzasIntermolecularesFb1Lesson,
   "fuerzas-intermoleculares-fq4": fuerzasIntermolecularesFq4Lesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-concepto-4esob": funcionConcepto4esobLesson,
@@ -2337,6 +2346,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
   "geometria-griega-pitagoras-dt1": geometriaGriegaPitagorasDt1Lesson,
+  "geometria-molecular-polaridad-fb1": geometriaMolecularPolaridadFb1Lesson,
   "geometria-revolucion-industrial-dt2": geometriaRevolucionIndustrialDt2Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
