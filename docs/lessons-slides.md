@@ -1471,6 +1471,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-configuracion-explorador` | Configuración electrónica y diagrama de orbitales (Z = 1–36) | `a` número atómico (1–36) |
 | `fq4-tabla-bloques-explorador` | Tabla periódica de los 36 primeros elementos por bloques | `a` número atómico (1–36) |
 | `fq4-propiedades-periodicas-explorador` | Radio, energía de ionización y electronegatividad (Z = 1–36) | `n` propiedad (0–2), `a` Z |
+| `fq4-red-ionica-explorador` | Energía reticular y punto de fusión de compuestos iónicos | `n` compuesto (0–4) |
+| `fq4-lewis-explorador` | Estructuras de Lewis, geometría y polaridad de moléculas sencillas | `n` molécula (0–8) |
+| `fq4-clasifica-sustancia-explorador` | Deducir el tipo de enlace a partir de ensayos | `n` ejemplo inicial (0–3) |
+| `fq4-fuerzas-intermoleculares-explorador` | Fuerzas intermoleculares y puntos de ebullición | `n` sustancia (0–11) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

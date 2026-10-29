@@ -49,7 +49,7 @@ Ids con sufijo `-fq4`, herramientas y animaciones `fq4-…`, `FQ4_SUBTITLES`, `m
 |---|---|
 | 1. Actividad científica y magnitudes | 3: magnitudes escalares y vectoriales; error e incertidumbre; análisis de datos y ajuste lineal |
 | 2. El átomo y la tabla periódica | 3: configuración electrónica; tabla periódica y configuración; propiedades periódicas |
-| 3. Enlace químico | 4: iónico y redes cristalinas; covalente y diagramas de Lewis; metálico; propiedades y estructura |
+| 3. Enlace químico | 4: iónico y redes cristalinas; covalente, Lewis y geometría; metálico y propiedades de las sustancias; fuerzas intermoleculares |
 | 4. Formulación y nomenclatura | 6: números de oxidación; óxidos; hidruros e hidrácidos; sales binarias; hidróxidos y oxoácidos; oxisales |
 | 5. Reacciones químicas | 6: mol y masa molar; estequiometría; reactivo limitante; tipos de reacciones y combustión; ácidos, bases y neutralización; oxidación-reducción y velocidad |
 | 6. Química del carbono | 5: el carbono y sus enlaces; hidrocarburos; grupos funcionales; combustibles fósiles; polímeros y biomoléculas |
@@ -92,3 +92,4 @@ Total previsto: 55 lecciones.
 | 3.º ESO · 10. Química y sociedad | Hecho (5 lecciones, `10-quimica-y-sociedad/`; herramientas `Fq3SociedadTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 330). **Física y Química 3.º ESO completo: 50 lecciones en 10 temas.** |
 | 4.º ESO · 1. Actividad científica y magnitudes | Hecho (3 lecciones, `src/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/`; herramientas `Fq4MagnitudesTools.tsx`; bloque `fisica-metodo-medida`; moduleId 341; ids `-fq4`, herramientas `fq4-`) |
 | 4.º ESO · 2. El átomo y la tabla periódica | Hecho (3 lecciones, `02-el-atomo-y-la-tabla-periodica/`; herramientas `Fq4AtomoTools.tsx`; bloque `fisica-materia`; moduleId 342) |
+| 4.º ESO · 3. Enlace químico | Hecho (4 lecciones, `03-enlace-quimico/`; herramientas `Fq4EnlaceTools.tsx`; bloque `fisica-materia`; moduleId 343) |

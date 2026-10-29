@@ -484,8 +484,11 @@ import { engranajesTransmisionPar2esoLesson } from "@/data/lessons/tecnologia-2-
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceCovalenteFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/03-enlace-covalente-fq3";
+import { enlaceCovalenteLewisGeometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/02-enlace-covalente-lewis-geometria-fq4";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceIonicoFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/02-enlace-ionico-fq3";
+import { enlaceIonicoRedesCristalinasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/01-enlace-ionico-redes-cristalinas-fq4";
+import { enlaceMetalicoPropiedadesSustanciasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/03-enlace-metalico-propiedades-sustancias-fq4";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
@@ -612,6 +615,7 @@ import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
 import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
+import { fuerzasIntermolecularesFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/04-fuerzas-intermoleculares-fq4";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConcepto4esobLesson } from "@/data/lessons/matematicas-4-eso-b/04-funciones-caracteristicas/01-funcion-concepto-4esob";
 import { funcionConstante2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/05-funcion-constante-2eso";
@@ -2082,8 +2086,11 @@ export const interactiveLessons = {
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-covalente-fq3": enlaceCovalenteFq3Lesson,
+  "enlace-covalente-lewis-geometria-fq4": enlaceCovalenteLewisGeometriaFq4Lesson,
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-ionico-fq3": enlaceIonicoFq3Lesson,
+  "enlace-ionico-redes-cristalinas-fq4": enlaceIonicoRedesCristalinasFq4Lesson,
+  "enlace-metalico-propiedades-sustancias-fq4": enlaceMetalicoPropiedadesSustanciasFq4Lesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enlaces-dos-rectas-dt1": enlacesDosRectasDt1Lesson,
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
@@ -2210,6 +2217,7 @@ export const interactiveLessons = {
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
   "fuerza-par-potencia": fuerzaParPotenciaLesson,
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
+  "fuerzas-intermoleculares-fq4": fuerzasIntermolecularesFq4Lesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-concepto-4esob": funcionConcepto4esobLesson,
   "funcion-constante-2eso": funcionConstante2esoLesson,

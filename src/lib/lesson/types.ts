@@ -2121,6 +2121,10 @@ export type SlideToolId =
   | "fq4-configuracion-explorador"
   | "fq4-tabla-bloques-explorador"
   | "fq4-propiedades-periodicas-explorador"
+  | "fq4-red-ionica-explorador"
+  | "fq4-lewis-explorador"
+  | "fq4-clasifica-sustancia-explorador"
+  | "fq4-fuerzas-intermoleculares-explorador"
   /* industrial-tool-end */;
 
 /**
