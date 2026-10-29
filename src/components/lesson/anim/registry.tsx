@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildOndas } from "@/components/lesson/anim/scenes/industrial/fq4-onda";
 import { buildCurvaCalentamiento } from "@/components/lesson/anim/scenes/industrial/fq4-calor";
 import { buildConservacionPista } from "@/components/lesson/anim/scenes/industrial/fq4-energia";
 import { buildCanonNewton } from "@/components/lesson/anim/scenes/industrial/fq4-orbita";
@@ -865,6 +866,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq4-canon-newton": () => buildCanonNewton(),
   "fq4-conservacion-pista": () => buildConservacionPista(),
   "fq4-curva-calentamiento": () => buildCurvaCalentamiento(),
+  "fq4-ondas": () => buildOndas(),
   /* industrial-end */
 };
 

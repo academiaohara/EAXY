@@ -57,6 +57,7 @@ import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/06-anualidades-amortizacion-ccss1";
 import { anualidadesCapitalizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/04-anualidades-capitalizacion-ccss1";
 import { aplicacionCintaTransportadora4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/07-aplicacion-cinta-transportadora-4eso";
+import { aplicacionesContaminacionAcusticaFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/05-aplicaciones-contaminacion-acustica-fq4";
 import { aplicacionesDomesticasIndustriales3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/07-aplicaciones-domesticas-industriales-3eso";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
@@ -854,6 +855,7 @@ import { logicaControlTablasVerdad3esoLesson } from "@/data/lessons/tecnologia-3
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { lugaresGeometricosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/03-lugares-geometricos-dt1";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
+import { luzReflexionRefraccionFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/04-luz-reflexion-refraccion-fq4";
 import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
 import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/03-madera-tableros-despiece-2eso";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
@@ -936,6 +938,7 @@ import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-i
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
 import { movimientoCircularUniformeFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/04-movimiento-circular-uniforme-fq4";
+import { movimientoOndulatorioFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/01-movimiento-ondulatorio-fq4";
 import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
 import { mruMruaFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/02-mru-mrua-fq4";
 import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
@@ -977,6 +980,7 @@ import { numerosRealesRecta4esoLesson } from "@/data/lessons/matematicas-4-eso/0
 import { numerosRealesRecta4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/02-numeros-reales-recta-4esob";
 import { ofertaDemanda1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/09-oferta-demanda-1bach";
 import { ofertaDemandaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/11-oferta-demanda-ccss1";
+import { ondasMecanicasElectromagneticasFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/02-ondas-mecanicas-electromagneticas-fq4";
 import { operacionesCombinadasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-operaciones-combinadas-fracciones-2eso";
 import { operacionesComposicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/10-operaciones-composicion-1bach";
 import { operacionesComposicionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/12-operaciones-composicion-ccss1";
@@ -1473,6 +1477,7 @@ import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { solubilidadCristalizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/02-solubilidad-cristalizacion-fq3";
 import { solubilidadSaturacionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/03-solubilidad-saturacion-fq2";
+import { sonidoFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/03-sonido-fq4";
 import { sostenibilidadMaterialesAcvTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/03-sostenibilidad-materiales-acv-ti2";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
 import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
@@ -1699,6 +1704,7 @@ export const interactiveLessons = {
   "anualidades-amortizacion-ccss1": anualidadesAmortizacionCcss1Lesson,
   "anualidades-capitalizacion-ccss1": anualidadesCapitalizacionCcss1Lesson,
   "aplicacion-cinta-transportadora-4eso": aplicacionCintaTransportadora4esoLesson,
+  "aplicaciones-contaminacion-acustica-fq4": aplicacionesContaminacionAcusticaFq4Lesson,
   "aplicaciones-domesticas-industriales-3eso": aplicacionesDomesticasIndustriales3esoLesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
@@ -2496,6 +2502,7 @@ export const interactiveLessons = {
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "lugares-geometricos-dt1": lugaresGeometricosDt1Lesson,
   "luz-detector-error": luzDetectorErrorLesson,
+  "luz-reflexion-refraccion-fq4": luzReflexionRefraccionFq4Lesson,
   "madera-derivados": maderaDerivadosLesson,
   "madera-tableros-despiece-2eso": maderaTablerosDespiece2esoLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
@@ -2578,6 +2585,7 @@ export const interactiveLessons = {
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
   "movimiento-circular-uniforme-fq4": movimientoCircularUniformeFq4Lesson,
+  "movimiento-ondulatorio-fq4": movimientoOndulatorioFq4Lesson,
   "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
   "mru-mrua-fq4": mruMruaFq4Lesson,
   "mrua-fq3": mruaFq3Lesson,
@@ -2619,6 +2627,7 @@ export const interactiveLessons = {
   "numeros-reales-recta-4esob": numerosRealesRecta4esobLesson,
   "oferta-demanda-1bach": ofertaDemanda1bachLesson,
   "oferta-demanda-ccss1": ofertaDemandaCcss1Lesson,
+  "ondas-mecanicas-electromagneticas-fq4": ondasMecanicasElectromagneticasFq4Lesson,
   "operaciones-combinadas-fracciones-2eso": operacionesCombinadasFracciones2esoLesson,
   "operaciones-composicion-1bach": operacionesComposicion1bachLesson,
   "operaciones-composicion-ccss1": operacionesComposicionCcss1Lesson,
@@ -3115,6 +3124,7 @@ export const interactiveLessons = {
   "solidificacion-metales": solidificacionMetalesLesson,
   "solubilidad-cristalizacion-fq3": solubilidadCristalizacionFq3Lesson,
   "solubilidad-saturacion-fq2": solubilidadSaturacionFq2Lesson,
+  "sonido-fq4": sonidoFq4Lesson,
   "sostenibilidad-materiales-acv-ti2": sostenibilidadMaterialesAcvTi2Lesson,
   "sucesiones-3eso": sucesiones3esoLesson,
   "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,

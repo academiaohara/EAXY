@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { OndaFq4Explorador, EspectroFq4Explorador, SonidoFq4Explorador, OpticaFq4Explorador, ContaminacionAcusticaFq4Explorador } from "@/components/lesson/slide/tools/Fq4OndasTools";
 import { EquilibrioTermicoFq4Explorador, CambiosEstadoFq4Explorador, TransmisionDilatacionFq4Explorador, MaquinasTermicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4CalorTools";
 import { TrabajoPotenciaFq4Explorador, EnergiasFq4Explorador, TeoremaTrabajoEnergiaFq4Explorador, ConservacionEnergiaFq4Explorador, RendimientoFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnergiaTools";
 import { GravitacionFq4Explorador, GravedadAstrosFq4Explorador, OrbitasFq4Explorador, FasesLunaresFq4Explorador } from "@/components/lesson/slide/tools/Fq4GravitacionTools";
@@ -2359,6 +2360,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <TransmisionDilatacionFq4Explorador block={block} />;
     case "fq4-maquinas-termicas-explorador":
       return <MaquinasTermicasFq4Explorador block={block} />;
+    case "fq4-onda-explorador":
+      return <OndaFq4Explorador block={block} />;
+    case "fq4-espectro-explorador":
+      return <EspectroFq4Explorador block={block} />;
+    case "fq4-sonido-explorador":
+      return <SonidoFq4Explorador block={block} />;
+    case "fq4-optica-explorador":
+      return <OpticaFq4Explorador block={block} />;
+    case "fq4-contaminacion-acustica-explorador":
+      return <ContaminacionAcusticaFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

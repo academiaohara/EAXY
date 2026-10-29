@@ -595,6 +595,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-canon-newton` | El cañón de Newton: de la caída libre a la órbita | — |
 | `fq4-conservacion-pista` | Bola en una pista en U: Ep y Ec con Em constante | — |
 | `fq4-curva-calentamiento` | Curva de calentamiento del agua: tramos y mesetas | — |
+| `fq4-ondas` | Onda transversal y longitudinal: amplitud y longitud de onda | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1521,6 +1522,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-cambios-estado-explorador` | Calentar hielo hasta vapor: temperatura y estado según el calor | a (masa), b (kJ) |
 | `fq4-transmision-dilatacion-explorador` | Conducción de calor y dilatación lineal de una barra | n (estudio 0–1), a (A), b (L) |
 | `fq4-maquinas-termicas-explorador` | Máquina térmica: trabajo, calor cedido y límite de Carnot | a (Q_h), b (rendimiento) |
+| `fq4-onda-explorador` | Onda armónica: amplitud, longitud de onda, frecuencia y velocidad | a (A), b (λ), c (f) |
+| `fq4-espectro-explorador` | Espectro electromagnético: banda, λ y frecuencia | a (log₁₀ λ) |
+| `fq4-sonido-explorador` | Sonido: velocidad según el medio, λ, nivel con la distancia y eco | n (medio 0–2), a (f), b (d) |
+| `fq4-optica-explorador` | Reflexión y refracción (ley de Snell) con reflexión total | n (medio 0–3), a (ángulo) |
+| `fq4-contaminacion-acustica-explorador` | Nivel sonoro en dB y tiempo máximo de exposición | a (dB) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

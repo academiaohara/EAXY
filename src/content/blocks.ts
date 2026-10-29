@@ -650,6 +650,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "fisica-4-eso/fuerzas-gravitatorias": "fisica-movimiento-fuerzas",
   "fisica-4-eso/trabajo-energia-potencia": "fisica-energia-ondas",
   "fisica-4-eso/calor-energia-termica": "fisica-energia-ondas",
+  "fisica-4-eso/ondas": "fisica-energia-ondas",
   "fisica-3-eso/el-trabajo-cientifico": "fisica-metodo-medida",
   "fisica-3-eso/el-atomo-y-el-sistema-periodico": "fisica-materia",
   "fisica-3-eso/elementos-y-compuestos-quimicos": "fisica-materia",

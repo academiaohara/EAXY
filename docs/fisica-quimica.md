@@ -101,3 +101,4 @@ Total previsto: 55 lecciones.
 | 4.º ESO · 9. Fuerzas gravitatorias | Hecho (4 lecciones, `09-fuerzas-gravitatorias/`; herramientas `Fq4GravitacionTools.tsx`; animación `fq4-canon-newton`; bloque `fisica-movimiento-fuerzas`; moduleId 349) |
 | 4.º ESO · 10. Trabajo, energía y potencia | Hecho (5 lecciones, `10-trabajo-energia-potencia/`; herramientas `Fq4EnergiaTools.tsx`; animación `fq4-conservacion-pista`; bloque `fisica-energia-ondas`; moduleId 350) |
 | 4.º ESO · 11. Calor y energía térmica | Hecho (4 lecciones, `11-calor-energia-termica/`; herramientas `Fq4CalorTools.tsx`; animación `fq4-curva-calentamiento`; bloque `fisica-energia-ondas`; moduleId 351) |
+| 4.º ESO · 12. Ondas | Hecho (5 lecciones, `12-ondas/`; herramientas `Fq4OndasTools.tsx`; animación `fq4-ondas`; bloque `fisica-energia-ondas`; moduleId 352) |

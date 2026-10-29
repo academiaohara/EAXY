@@ -1119,6 +1119,7 @@ export type SlideAnimId =
   | "fq4-canon-newton"
   | "fq4-conservacion-pista"
   | "fq4-curva-calentamiento"
+  | "fq4-ondas"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2171,6 +2172,11 @@ export type SlideToolId =
   | "fq4-cambios-estado-explorador"
   | "fq4-transmision-dilatacion-explorador"
   | "fq4-maquinas-termicas-explorador"
+  | "fq4-onda-explorador"
+  | "fq4-espectro-explorador"
+  | "fq4-sonido-explorador"
+  | "fq4-optica-explorador"
+  | "fq4-contaminacion-acustica-explorador"
   /* industrial-tool-end */;
 
 /**
