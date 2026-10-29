@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { VectoresMovimientoFq4Explorador, EncuentroFq4Explorador, TiroVerticalFq4Explorador, McuFq4Explorador, SeguridadVialFq4Explorador } from "@/components/lesson/slide/tools/Fq4CinematicaTools";
 import { CarbonoEnlacesFq4Explorador, HidrocarburosFq4Explorador, GruposFuncionalesFq4Explorador, PetroleoFq4Explorador, PolimerosFq4Explorador } from "@/components/lesson/slide/tools/Fq4CarbonoTools";
 import { MolGasesFq4Explorador, EstequiometriaFq4Explorador, ReactivoLimitanteFq4Explorador, TiposReaccionFq4Explorador, NeutralizacionFq4Explorador, RedoxFq4Explorador } from "@/components/lesson/slide/tools/Fq4ReaccionesTools";
 import { OxidacionFq4Explorador, OxidosFq4Explorador, HidurosFq4Explorador, SalesBinariasFq4Explorador, HidroxidosOxoacidosFq4Explorador, OxisalesFq4Explorador } from "@/components/lesson/slide/tools/Fq4FormulacionTools";
@@ -2308,6 +2309,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PetroleoFq4Explorador block={block} />;
     case "fq4-polimeros-explorador":
       return <PolimerosFq4Explorador block={block} />;
+    case "fq4-vectores-movimiento-explorador":
+      return <VectoresMovimientoFq4Explorador block={block} />;
+    case "fq4-encuentro-explorador":
+      return <EncuentroFq4Explorador block={block} />;
+    case "fq4-tiro-vertical-explorador":
+      return <TiroVerticalFq4Explorador block={block} />;
+    case "fq4-mcu-explorador":
+      return <McuFq4Explorador block={block} />;
+    case "fq4-seguridad-vial-explorador":
+      return <SeguridadVialFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

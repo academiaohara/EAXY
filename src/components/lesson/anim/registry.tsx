@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildMcu } from "@/components/lesson/anim/scenes/industrial/fq4-circular";
 import { buildPolimerizacion } from "@/components/lesson/anim/scenes/industrial/fq4-polimero";
 import { buildCorriente } from "@/components/lesson/anim/scenes/industrial/fq3-corriente";
 import { buildMrua } from "@/components/lesson/anim/scenes/industrial/fq3-mrua";
@@ -855,6 +856,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq3-mrua": () => buildMrua(),
   "fq3-corriente": () => buildCorriente(),
   "fq4-polimerizacion": () => buildPolimerizacion(),
+  "fq4-mcu": () => buildMcu(),
   /* industrial-end */
 };
 

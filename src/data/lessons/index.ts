@@ -149,6 +149,7 @@ import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunic
 import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { caidaLibreFrenadaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/05-caida-libre-frenada-fq3";
+import { caidaLibreTiroVerticalFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/03-caida-libre-tiro-vertical-fq4";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
@@ -681,6 +682,7 @@ import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachille
 import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
+import { graficasSeguridadVialFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/05-graficas-seguridad-vial-fq4";
 import { graficasVelocidadTiempoFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/04-graficas-velocidad-tiempo-fq3";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
@@ -925,7 +927,9 @@ import { motorTrifasicoCampoGiratorioLesson } from "@/data/lessons/tecnologia-in
 import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/11-motor-trifasico-conexion-balance";
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
+import { movimientoCircularUniformeFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/04-movimiento-circular-uniforme-fq4";
 import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
+import { mruMruaFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/02-mru-mrua-fq4";
 import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
@@ -1075,6 +1079,7 @@ import { polinomiosOperacionesCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
 import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/08-porcentajes-3eso";
+import { posicionVelocidadAceleracionFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/01-posicion-velocidad-aceleracion-fq4";
 import { posicionesRectaDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/04-posiciones-recta-diedrico-dt1";
 import { posicionesRelativas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/06-posiciones-relativas-1bach";
 import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-postulados-morgan";
@@ -1768,6 +1773,7 @@ export const interactiveLessons = {
   "cad-vectorial-coordenadas-dt1": cadVectorialCoordenadasDt1Lesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "caida-libre-frenada-fq3": caidaLibreFrenadaFq3Lesson,
+  "caida-libre-tiro-vertical-fq4": caidaLibreTiroVerticalFq4Lesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
@@ -2300,6 +2306,7 @@ export const interactiveLessons = {
   "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
+  "graficas-seguridad-vial-fq4": graficasSeguridadVialFq4Lesson,
   "graficas-velocidad-tiempo-fq3": graficasVelocidadTiempoFq3Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
@@ -2544,7 +2551,9 @@ export const interactiveLessons = {
   "motor-trifasico-conexion-balance": motorTrifasicoConexionBalanceLesson,
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
+  "movimiento-circular-uniforme-fq4": movimientoCircularUniformeFq4Lesson,
   "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
+  "mru-mrua-fq4": mruMruaFq4Lesson,
   "mrua-fq3": mruaFq3Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
@@ -2694,6 +2703,7 @@ export const interactiveLessons = {
   "porcentajes": porcentajesLesson,
   "porcentajes-2eso": porcentajes2esoLesson,
   "porcentajes-3eso": porcentajes3esoLesson,
+  "posicion-velocidad-aceleracion-fq4": posicionVelocidadAceleracionFq4Lesson,
   "posiciones-recta-diedrico-dt1": posicionesRectaDiedricoDt1Lesson,
   "posiciones-relativas-1bach": posicionesRelativas1bachLesson,
   "postulados-morgan": postuladosMorganLesson,

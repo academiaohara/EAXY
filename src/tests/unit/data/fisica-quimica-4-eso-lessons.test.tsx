@@ -25,6 +25,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["formulacion-y-nomenclatura", 6],
   ["reacciones-quimicas", 6],
   ["quimica-del-carbono", 5],
+  ["cinematica", 5],
 ];
 
 describe("curso Física y Química 4.º ESO", () => {

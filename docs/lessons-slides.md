@@ -590,6 +590,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq3-mrua` | Marcas estroboscópicas de un MRU y un MRUA y gráfica v-t | — |
 | `fq3-corriente` | Circuito sencillo: sentido de los electrones, convenio y aparatos de medida | — |
 | `fq4-polimerizacion` | Polimerización por adición del eteno a polietileno | — |
+| `fq4-mcu` | MCU: velocidad tangente y aceleración centrípeta | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1493,6 +1494,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-grupos-funcionales-explorador` | Familias funcionales con grupo, fórmula general, nombre y uso | n (familia 0–4), a (carbonos) |
 | `fq4-petroleo-explorador` | Torre de destilación fraccionada del petróleo | a (temperatura °C) |
 | `fq4-polimeros-explorador` | Polímeros: monómero, tipo, usos y masa molecular | n (polímero), a (nº de monómeros) |
+| `fq4-vectores-movimiento-explorador` | Desplazamiento frente a distancia, velocidad media y rapidez media | a, b (punto final), c (curvatura) |
+| `fq4-encuentro-explorador` | Encuentro de dos móviles con MRU/MRUA | a (x₂ inicial), b (v₁) |
+| `fq4-tiro-vertical-explorador` | Tiro vertical y caída libre: altura máxima, tiempo y velocidad de impacto | a (h₀), b (v₀) |
+| `fq4-mcu-explorador` | MCU: ω, v, f, aceleración centrípeta y ángulo | a (radio), b (periodo) |
+| `fq4-seguridad-vial-explorador` | Distancia de reacción, frenada y detención según superficie | a (km/h), b (t reacción), n (superficie 0–3) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

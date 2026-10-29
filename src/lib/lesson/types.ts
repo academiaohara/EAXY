@@ -1114,6 +1114,7 @@ export type SlideAnimId =
   | "fq3-mrua"
   | "fq3-corriente"
   | "fq4-polimerizacion"
+  | "fq4-mcu"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2143,6 +2144,11 @@ export type SlideToolId =
   | "fq4-grupos-funcionales-explorador"
   | "fq4-petroleo-explorador"
   | "fq4-polimeros-explorador"
+  | "fq4-vectores-movimiento-explorador"
+  | "fq4-encuentro-explorador"
+  | "fq4-tiro-vertical-explorador"
+  | "fq4-mcu-explorador"
+  | "fq4-seguridad-vial-explorador"
   /* industrial-tool-end */;
 
 /**
