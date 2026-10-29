@@ -592,6 +592,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-polimerizacion` | Polimerización por adición del eteno a polietileno | — |
 | `fq4-mcu` | MCU: velocidad tangente y aceleración centrípeta | — |
 | `fq4-diagrama-fuerzas` | Diagrama de fuerzas de un bloque: P, N, F, Fr y resultante | — |
+| `fq4-canon-newton` | El cañón de Newton: de la caída libre a la órbita | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1505,6 +1506,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-plano-inclinado-explorador` | Plano inclinado: componentes del peso, normal, rozamiento y aceleración | a (masa), b (ángulo), c (μ) |
 | `fq4-poleas-explorador` | Máquina de Atwood y bloque en mesa con polea: aceleración y tensión | n (montaje 0–1), a (m₁), b (m₂) |
 | `fq4-elastica-centripeta-explorador` | Ley de Hooke y fuerza centrípeta en una curva | n (estudio 0–1), a (k), b (x) |
+| `fq4-gravitacion-explorador` | Ley de gravitación universal: fuerza según masas y distancia | a (m₁), b (m₂), c (d) |
+| `fq4-gravedad-planetas-explorador` | Gravedad, peso y velocidad de escape en distintos astros | n (astro 0–5), a (masa), b (altura km) |
+| `fq4-orbitas-explorador` | Velocidad orbital y periodo según la altura de la órbita | a (altura km) |
+| `fq4-fases-lunares-explorador` | Fases de la Luna, mareas y eclipses según su posición | a (ángulo) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

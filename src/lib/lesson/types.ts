@@ -1116,6 +1116,7 @@ export type SlideAnimId =
   | "fq4-polimerizacion"
   | "fq4-mcu"
   | "fq4-diagrama-fuerzas"
+  | "fq4-canon-newton"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2155,6 +2156,10 @@ export type SlideToolId =
   | "fq4-plano-inclinado-explorador"
   | "fq4-poleas-explorador"
   | "fq4-elastica-centripeta-explorador"
+  | "fq4-gravitacion-explorador"
+  | "fq4-gravedad-planetas-explorador"
+  | "fq4-orbitas-explorador"
+  | "fq4-fases-lunares-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -584,6 +584,7 @@ import { factorizacion1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { factorizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/05-factorizacion-ccss1";
 import { factorizacionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/09-factorizacion-polinomios-4esob";
 import { fasesProyectoTecnologicoLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/05-fases-proyecto-tecnologico";
+import { fenomenosAstronomicosFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/04-fenomenos-astronomicos-fq4";
 import { figurasGeometricasCircunferenciaLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/04-figuras-geometricas-circunferencia";
 import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/02-figuras-geometricas-cuadrilateros";
 import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
@@ -804,6 +805,7 @@ import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { levasBielasManivelas3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/03-levas-bielas-manivelas-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
+import { leyGravitacionUniversalFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/01-ley-gravitacion-universal-fq4";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
 import { leyesDeNewtonFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/01-leyes-de-newton-fq4";
@@ -1002,6 +1004,7 @@ import { optimizacion2bachLesson } from "@/data/lessons/matematicas-2-bachillera
 import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/12-optimizacion-ccss1";
 import { optimizacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/12-optimizacion-ccss2";
 import { optimizacionProcesosFabricacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/04-optimizacion-procesos-fabricacion-ti2";
+import { orbitasSatelitesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/03-orbitas-satelites-fq4";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
@@ -1034,6 +1037,7 @@ import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
+import { pesoCuerposCelestesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/02-peso-cuerpos-celestes-fq4";
 import { pesoMasaGravedadFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/02-peso-masa-gravedad-fq2";
 import { pesoNormalRozamientoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/02-peso-normal-rozamiento-fq4";
 import { piezasNormalizadasRoscasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/01-piezas-normalizadas-roscas-dt2";
@@ -2213,6 +2217,7 @@ export const interactiveLessons = {
   "factorizacion-ccss1": factorizacionCcss1Lesson,
   "factorizacion-polinomios-4esob": factorizacionPolinomios4esobLesson,
   "fases-proyecto-tecnologico": fasesProyectoTecnologicoLesson,
+  "fenomenos-astronomicos-fq4": fenomenosAstronomicosFq4Lesson,
   "figuras-geometricas-circunferencia": figurasGeometricasCircunferenciaLesson,
   "figuras-geometricas-cuadrilateros": figurasGeometricasCuadrilaterosLesson,
   "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
@@ -2433,6 +2438,7 @@ export const interactiveLessons = {
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "levas-bielas-manivelas-3eso": levasBielasManivelas3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
+  "ley-gravitacion-universal-fq4": leyGravitacionUniversalFq4Lesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "ley-ohm-2eso": leyOhm2esoLesson,
   "leyes-de-newton-fq4": leyesDeNewtonFq4Lesson,
@@ -2631,6 +2637,7 @@ export const interactiveLessons = {
   "optimizacion-ccss1": optimizacionCcss1Lesson,
   "optimizacion-ccss2": optimizacionCcss2Lesson,
   "optimizacion-procesos-fabricacion-ti2": optimizacionProcesosFabricacionTi2Lesson,
+  "orbitas-satelites-fq4": orbitasSatelitesFq4Lesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
@@ -2663,6 +2670,7 @@ export const interactiveLessons = {
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
+  "peso-cuerpos-celestes-fq4": pesoCuerposCelestesFq4Lesson,
   "peso-masa-gravedad-fq2": pesoMasaGravedadFq2Lesson,
   "peso-normal-rozamiento-fq4": pesoNormalRozamientoFq4Lesson,
   "piezas-normalizadas-roscas-dt2": piezasNormalizadasRoscasDt2Lesson,

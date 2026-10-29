@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildCanonNewton } from "@/components/lesson/anim/scenes/industrial/fq4-orbita";
 import { buildDiagramaFuerzas } from "@/components/lesson/anim/scenes/industrial/fq4-fuerzas";
 import { buildMcu } from "@/components/lesson/anim/scenes/industrial/fq4-circular";
 import { buildPolimerizacion } from "@/components/lesson/anim/scenes/industrial/fq4-polimero";
@@ -859,6 +860,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq4-polimerizacion": () => buildPolimerizacion(),
   "fq4-mcu": () => buildMcu(),
   "fq4-diagrama-fuerzas": () => buildDiagramaFuerzas(),
+  "fq4-canon-newton": () => buildCanonNewton(),
   /* industrial-end */
 };
 

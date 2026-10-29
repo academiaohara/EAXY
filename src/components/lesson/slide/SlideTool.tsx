@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { GravitacionFq4Explorador, GravedadAstrosFq4Explorador, OrbitasFq4Explorador, FasesLunaresFq4Explorador } from "@/components/lesson/slide/tools/Fq4GravitacionTools";
 import { NewtonFq4Explorador, RozamientoFq4Explorador, PlanoInclinadoFq4Explorador, PoleasFq4Explorador, ElasticaCentripetaFq4Explorador } from "@/components/lesson/slide/tools/Fq4DinamicaTools";
 import { VectoresMovimientoFq4Explorador, EncuentroFq4Explorador, TiroVerticalFq4Explorador, McuFq4Explorador, SeguridadVialFq4Explorador } from "@/components/lesson/slide/tools/Fq4CinematicaTools";
 import { CarbonoEnlacesFq4Explorador, HidrocarburosFq4Explorador, GruposFuncionalesFq4Explorador, PetroleoFq4Explorador, PolimerosFq4Explorador } from "@/components/lesson/slide/tools/Fq4CarbonoTools";
@@ -2330,6 +2331,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <PoleasFq4Explorador block={block} />;
     case "fq4-elastica-centripeta-explorador":
       return <ElasticaCentripetaFq4Explorador block={block} />;
+    case "fq4-gravitacion-explorador":
+      return <GravitacionFq4Explorador block={block} />;
+    case "fq4-gravedad-planetas-explorador":
+      return <GravedadAstrosFq4Explorador block={block} />;
+    case "fq4-orbitas-explorador":
+      return <OrbitasFq4Explorador block={block} />;
+    case "fq4-fases-lunares-explorador":
+      return <FasesLunaresFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
