@@ -1121,6 +1121,7 @@ export type SlideAnimId =
   | "fq4-curva-calentamiento"
   | "fq4-ondas"
   | "fb1-orbitales"
+  | "fb1-radio-atomico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2183,6 +2184,10 @@ export type SlideToolId =
   | "fb1-de-broglie-explorador"
   | "fb1-numeros-cuanticos-explorador"
   | "fb1-configuracion-explorador"
+  | "fb1-tabla-bloques-explorador"
+  | "fb1-tendencias-explorador"
+  | "fb1-radios-ionicos-explorador"
+  | "fb1-reactividad-explorador"
   /* industrial-tool-end */;
 
 /**

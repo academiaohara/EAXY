@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TablaBloquesFb1Explorador, TendenciasFb1Explorador, RadiosIonicosFb1Explorador, ReactividadFb1Explorador } from "@/components/lesson/slide/tools/Fb1PeriodicaTools";
 import { ParticulasIsotoposFb1Explorador, BohrEspectroFb1Explorador, DeBroglieFb1Explorador, NumerosCuanticosFb1Explorador, ConfiguracionFb1Explorador } from "@/components/lesson/slide/tools/Fb1AtomoTools";
 import { OndaFq4Explorador, EspectroFq4Explorador, SonidoFq4Explorador, OpticaFq4Explorador, ContaminacionAcusticaFq4Explorador } from "@/components/lesson/slide/tools/Fq4OndasTools";
 import { EquilibrioTermicoFq4Explorador, CambiosEstadoFq4Explorador, TransmisionDilatacionFq4Explorador, MaquinasTermicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4CalorTools";
@@ -2381,6 +2382,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <NumerosCuanticosFb1Explorador block={block} />;
     case "fb1-configuracion-explorador":
       return <ConfiguracionFb1Explorador block={block} />;
+    case "fb1-tabla-bloques-explorador":
+      return <TablaBloquesFb1Explorador block={block} />;
+    case "fb1-tendencias-explorador":
+      return <TendenciasFb1Explorador block={block} />;
+    case "fb1-radios-ionicos-explorador":
+      return <RadiosIonicosFb1Explorador block={block} />;
+    case "fb1-reactividad-explorador":
+      return <ReactividadFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

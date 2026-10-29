@@ -597,6 +597,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-curva-calentamiento` | Curva de calentamiento del agua: tramos y mesetas | — |
 | `fq4-ondas` | Onda transversal y longitudinal: amplitud y longitud de onda | — |
 | `fb1-orbitales` | Orbitales atómicos s, p y d frente a las órbitas de Bohr | — |
+| `fb1-radio-atomico` | Tendencia del radio atómico en un periodo y un grupo | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1533,6 +1534,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-de-broglie-explorador` | Longitud de onda de De Broglie de distintas partículas | n (partícula 0–3), a (log v) |
 | `fb1-numeros-cuanticos-explorador` | Validez de combinaciones de números cuánticos y capacidades | a (n), b (l), c (m_l) |
 | `fb1-configuracion-explorador` | Configuración electrónica de átomos e iones (Z ≤ 54) con Hund y último electrón | a (Z), b (carga) |
+| `fb1-tabla-bloques-explorador` | Tabla periódica (Z ≤ 54) por bloques con periodo, grupo y configuración | a (Z) |
+| `fb1-tendencias-explorador` | Mapa de calor de radio, ionización, afinidad y electronegatividad | n (propiedad 0–3), a (Z) |
+| `fb1-radios-ionicos-explorador` | Radio de átomos e iones y series isoelectrónicas | n (ion 0–14) |
+| `fb1-reactividad-explorador` | Carácter metálico, ion típico, óxido y reactividad de un elemento | a (Z) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

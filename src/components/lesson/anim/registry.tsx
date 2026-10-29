@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildRadioAtomico } from "@/components/lesson/anim/scenes/industrial/fb1-radio";
 import { buildOrbitales } from "@/components/lesson/anim/scenes/industrial/fb1-orbitales";
 import { buildOndas } from "@/components/lesson/anim/scenes/industrial/fq4-onda";
 import { buildCurvaCalentamiento } from "@/components/lesson/anim/scenes/industrial/fq4-calor";
@@ -869,6 +870,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq4-curva-calentamiento": () => buildCurvaCalentamiento(),
   "fq4-ondas": () => buildOndas(),
   "fb1-orbitales": () => buildOrbitales(),
+  "fb1-radio-atomico": () => buildRadioAtomico(),
   /* industrial-end */
 };
 

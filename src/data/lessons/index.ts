@@ -1018,6 +1018,7 @@ import { optimizacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachi
 import { optimizacionProcesosFabricacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/04-optimizacion-procesos-fabricacion-ti2";
 import { orbitasSatelitesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/03-orbitas-satelites-fq4";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
+import { organizacionTablaPeriodicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/01-organizacion-tabla-periodica-fb1";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
@@ -1235,6 +1236,7 @@ import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematica
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
 import { propiedadesMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/02-propiedades-materiales";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
+import { propiedadesPeriodicasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/02-propiedades-periodicas-fb1";
 import { propiedadesPeriodicasFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/03-propiedades-periodicas-fq4";
 import { propiedadesPrestacionesSeleccion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/01-propiedades-prestaciones-seleccion-3eso";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
@@ -1298,6 +1300,7 @@ import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
 import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
 import { reaccionesQuimicasFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/02-reacciones-quimicas-fq2";
+import { reactividadEstructuraElectronicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/03-reactividad-estructura-electronica-fb1";
 import { reactivoLimitanteRendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/03-reactivo-limitante-rendimiento-fq4";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
@@ -2669,6 +2672,7 @@ export const interactiveLessons = {
   "optimizacion-procesos-fabricacion-ti2": optimizacionProcesosFabricacionTi2Lesson,
   "orbitas-satelites-fq4": orbitasSatelitesFq4Lesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
+  "organizacion-tabla-periodica-fb1": organizacionTablaPeriodicaFb1Lesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
@@ -2886,6 +2890,7 @@ export const interactiveLessons = {
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
   "propiedades-materiales": propiedadesMaterialesLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
+  "propiedades-periodicas-fb1": propiedadesPeriodicasFb1Lesson,
   "propiedades-periodicas-fq4": propiedadesPeriodicasFq4Lesson,
   "propiedades-prestaciones-seleccion-3eso": propiedadesPrestacionesSeleccion3esoLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
@@ -2949,6 +2954,7 @@ export const interactiveLessons = {
   "razones-agudas-1bach": razonesAgudas1bachLesson,
   "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
   "reacciones-quimicas-fq2": reaccionesQuimicasFq2Lesson,
+  "reactividad-estructura-electronica-fb1": reactividadEstructuraElectronicaFb1Lesson,
   "reactivo-limitante-rendimiento-fq4": reactivoLimitanteRendimientoFq4Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
