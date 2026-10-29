@@ -214,6 +214,7 @@ import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bach
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
 import { combustiblesContaminacionAtmosfericaFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/03-combustibles-contaminacion-atmosferica-fq3";
+import { combustiblesFosilesPetroleoFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/04-combustibles-fosiles-petroleo-fq4";
 import { combustionOxidacionEnergiaFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/04-combustion-oxidacion-energia-fq3";
 import { combustionOxidacionFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/04-combustion-oxidacion-fq2";
 import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
@@ -458,6 +459,7 @@ import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
+import { elCarbonoYSusEnlacesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/01-el-carbono-y-sus-enlaces-fq4";
 import { elSonidoFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/04-el-sonido-fq2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { eleccionSistemaRepresentacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/05-eleccion-sistema-representacion-dt2";
@@ -686,11 +688,13 @@ import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
 import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
+import { gruposFuncionalesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/03-grupos-funcionales-fq4";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
 import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
+import { hidrocarburosFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/02-hidrocarburos-fq4";
 import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/05-hidroxidos-oxoacidos-fq4";
 import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
@@ -1058,6 +1062,7 @@ import { poligonosDadoLadoEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tec
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
 import { poligonosRegularesPropiedadesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/04-poligonos-regulares-propiedades-dt1";
 import { polimerizacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/04-polimerizacion";
+import { polimerosBiomoleculasFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/05-polimeros-biomoleculas-fq4";
 import { polimerosPlasticosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/07-polimeros-plasticos-tecnicos";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
 import { polinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/03-polinomios-3eso";
@@ -1828,6 +1833,7 @@ export const interactiveLessons = {
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
   "combustibles-contaminacion-atmosferica-fq3": combustiblesContaminacionAtmosfericaFq3Lesson,
+  "combustibles-fosiles-petroleo-fq4": combustiblesFosilesPetroleoFq4Lesson,
   "combustion-oxidacion-energia-fq3": combustionOxidacionEnergiaFq3Lesson,
   "combustion-oxidacion-fq2": combustionOxidacionFq2Lesson,
   "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
@@ -2072,6 +2078,7 @@ export const interactiveLessons = {
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
+  "el-carbono-y-sus-enlaces-fq4": elCarbonoYSusEnlacesFq4Lesson,
   "el-sonido-fq2": elSonidoFq2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "eleccion-sistema-representacion-dt2": eleccionSistemaRepresentacionDt2Lesson,
@@ -2300,11 +2307,13 @@ export const interactiveLessons = {
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
   "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
+  "grupos-funcionales-fq4": gruposFuncionalesFq4Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
   "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
+  "hidrocarburos-fq4": hidrocarburosFq4Lesson,
   "hidroxidos-oxoacidos-fq4": hidroxidosOxoacidosFq4Lesson,
   "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
   "hiperbola-1bach": hiperbola1bachLesson,
@@ -2672,6 +2681,7 @@ export const interactiveLessons = {
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
   "poligonos-regulares-propiedades-dt1": poligonosRegularesPropiedadesDt1Lesson,
   "polimerizacion": polimerizacionLesson,
+  "polimeros-biomoleculas-fq4": polimerosBiomoleculasFq4Lesson,
   "polimeros-plasticos-tecnicos": polimerosPlasticosTecnicosLesson,
   "polinomios-2eso": polinomios2esoLesson,
   "polinomios-3eso": polinomios3esoLesson,

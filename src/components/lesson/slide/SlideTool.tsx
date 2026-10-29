@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { CarbonoEnlacesFq4Explorador, HidrocarburosFq4Explorador, GruposFuncionalesFq4Explorador, PetroleoFq4Explorador, PolimerosFq4Explorador } from "@/components/lesson/slide/tools/Fq4CarbonoTools";
 import { MolGasesFq4Explorador, EstequiometriaFq4Explorador, ReactivoLimitanteFq4Explorador, TiposReaccionFq4Explorador, NeutralizacionFq4Explorador, RedoxFq4Explorador } from "@/components/lesson/slide/tools/Fq4ReaccionesTools";
 import { OxidacionFq4Explorador, OxidosFq4Explorador, HidurosFq4Explorador, SalesBinariasFq4Explorador, HidroxidosOxoacidosFq4Explorador, OxisalesFq4Explorador } from "@/components/lesson/slide/tools/Fq4FormulacionTools";
 import { RedIonicaFq4Explorador, LewisFq4Explorador, ClasificaSustanciaFq4Explorador, FuerzasIntermolecularesFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnlaceTools";
@@ -2297,6 +2298,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <NeutralizacionFq4Explorador block={block} />;
     case "fq4-redox-explorador":
       return <RedoxFq4Explorador block={block} />;
+    case "fq4-carbono-enlaces-explorador":
+      return <CarbonoEnlacesFq4Explorador block={block} />;
+    case "fq4-hidrocarburos-explorador":
+      return <HidrocarburosFq4Explorador block={block} />;
+    case "fq4-grupos-funcionales-explorador":
+      return <GruposFuncionalesFq4Explorador block={block} />;
+    case "fq4-petroleo-explorador":
+      return <PetroleoFq4Explorador block={block} />;
+    case "fq4-polimeros-explorador":
+      return <PolimerosFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

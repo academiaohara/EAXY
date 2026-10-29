@@ -589,6 +589,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
 | `fq3-mrua` | Marcas estroboscópicas de un MRU y un MRUA y gráfica v-t | — |
 | `fq3-corriente` | Circuito sencillo: sentido de los electrones, convenio y aparatos de medida | — |
+| `fq4-polimerizacion` | Polimerización por adición del eteno a polietileno | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1487,6 +1488,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-tipos-reaccion-explorador` | Clasificación de reacciones químicas | `n` ejemplo (0–5) |
 | `fq4-neutralizacion-explorador` | Neutralización y valoración ácido-base | `a` concentración (M), `b` volumen ácido (mL), `c` volumen base (mL) |
 | `fq4-redox-explorador` | Reacciones redox y serie de actividad | `a` metal (0–4), `b` catión (0–3) |
+| `fq4-carbono-enlaces-explorador` | Enlaces del carbono: hibridación, ángulo, σ y π en metano, etano, eteno, etino y benceno | n (molécula 0–4) |
+| `fq4-hidrocarburos-explorador` | Alcanos, alquenos y alquinos: fórmula, semidesarrollada y nombre | a (carbonos), n (tipo 0–2), b (posición) |
+| `fq4-grupos-funcionales-explorador` | Familias funcionales con grupo, fórmula general, nombre y uso | n (familia 0–4), a (carbonos) |
+| `fq4-petroleo-explorador` | Torre de destilación fraccionada del petróleo | a (temperatura °C) |
+| `fq4-polimeros-explorador` | Polímeros: monómero, tipo, usos y masa molecular | n (polímero), a (nº de monómeros) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -1113,6 +1113,7 @@ export type SlideAnimId =
   | "fq3-colisiones"
   | "fq3-mrua"
   | "fq3-corriente"
+  | "fq4-polimerizacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2137,6 +2138,11 @@ export type SlideToolId =
   | "fq4-tipos-reaccion-explorador"
   | "fq4-neutralizacion-explorador"
   | "fq4-redox-explorador"
+  | "fq4-carbono-enlaces-explorador"
+  | "fq4-hidrocarburos-explorador"
+  | "fq4-grupos-funcionales-explorador"
+  | "fq4-petroleo-explorador"
+  | "fq4-polimeros-explorador"
   /* industrial-tool-end */;
 
 /**
