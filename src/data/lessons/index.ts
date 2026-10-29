@@ -153,6 +153,7 @@ import { caidaLibreTiroVerticalFq4Lesson } from "@/data/lessons/fisica-4-eso/07-
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
+import { calorEspecificoCambiosEstadoFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/02-calor-especifico-cambios-estado-fq4";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
 import { calorTemperaturaEspecificoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/03-calor-temperatura-especifico-fq3";
 import { calorTemperaturaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/04-calor-temperatura-fq2";
@@ -867,6 +868,7 @@ import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ing
 import { maquinasMecanismosMovimientosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/01-maquinas-mecanismos-movimientos";
 import { maquinasRealesLavadoraBicicleta3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/07-maquinas-reales-lavadora-bicicleta-3eso";
 import { maquinasSimplesVentajaMecanica2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/04-maquinas-simples-ventaja-mecanica-2eso";
+import { maquinasTermicasAhorroFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/04-maquinas-termicas-ahorro-fq4";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { materiasPrimasMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/01-materias-primas-materiales";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
@@ -1522,6 +1524,7 @@ import { tecnicasSeparacionMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
+import { temperaturaEquilibrioTermicoFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/01-temperatura-equilibrio-termico-fq4";
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
@@ -1570,6 +1573,7 @@ import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-
 import { transformadorFuenteAlimentacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/04-transformador-fuente-alimentacion-4eso";
 import { transistorGananciaConmutacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/05-transistor-ganancia-conmutacion-4eso";
 import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
+import { transmisionDilatacionFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/03-transmision-dilatacion-fq4";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
@@ -1791,6 +1795,7 @@ export const interactiveLessons = {
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
+  "calor-especifico-cambios-estado-fq4": calorEspecificoCambiosEstadoFq4Lesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
   "calor-temperatura-especifico-fq3": calorTemperaturaEspecificoFq3Lesson,
   "calor-temperatura-fq2": calorTemperaturaFq2Lesson,
@@ -2505,6 +2510,7 @@ export const interactiveLessons = {
   "maquinas-mecanismos-movimientos": maquinasMecanismosMovimientosLesson,
   "maquinas-reales-lavadora-bicicleta-3eso": maquinasRealesLavadoraBicicleta3esoLesson,
   "maquinas-simples-ventaja-mecanica-2eso": maquinasSimplesVentajaMecanica2esoLesson,
+  "maquinas-termicas-ahorro-fq4": maquinasTermicasAhorroFq4Lesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "materias-primas-materiales": materiasPrimasMaterialesLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
@@ -3160,6 +3166,7 @@ export const interactiveLessons = {
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,
+  "temperatura-equilibrio-termico-fq4": temperaturaEquilibrioTermicoFq4Lesson,
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
@@ -3208,6 +3215,7 @@ export const interactiveLessons = {
   "transformador-fuente-alimentacion-4eso": transformadorFuenteAlimentacion4esoLesson,
   "transistor-ganancia-conmutacion-4eso": transistorGananciaConmutacion4esoLesson,
   "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
+  "transmision-dilatacion-fq4": transmisionDilatacionFq4Lesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,

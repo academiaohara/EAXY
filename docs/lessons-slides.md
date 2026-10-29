@@ -594,6 +594,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-diagrama-fuerzas` | Diagrama de fuerzas de un bloque: P, N, F, Fr y resultante | — |
 | `fq4-canon-newton` | El cañón de Newton: de la caída libre a la órbita | — |
 | `fq4-conservacion-pista` | Bola en una pista en U: Ep y Ec con Em constante | — |
+| `fq4-curva-calentamiento` | Curva de calentamiento del agua: tramos y mesetas | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1516,6 +1517,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-teorema-trabajo-energia-explorador` | Teorema trabajo-energía con fuerza y rozamiento | a (masa), b (v₀), c (F) |
 | `fq4-conservacion-energia-explorador` | Conservación de la energía en una pista, con pérdida opcional | a (masa), b (altura), c (pérdida 0–1) |
 | `fq4-rendimiento-explorador` | Rendimiento de aparatos, consumo en kWh y coste | n (aparato 0–5), a (potencia W), b (horas) |
+| `fq4-equilibrio-termico-explorador` | Temperatura de equilibrio al mezclar un cuerpo con agua | n (material 0–4), a (masa), b (T) |
+| `fq4-cambios-estado-explorador` | Calentar hielo hasta vapor: temperatura y estado según el calor | a (masa), b (kJ) |
+| `fq4-transmision-dilatacion-explorador` | Conducción de calor y dilatación lineal de una barra | n (estudio 0–1), a (A), b (L) |
+| `fq4-maquinas-termicas-explorador` | Máquina térmica: trabajo, calor cedido y límite de Carnot | a (Q_h), b (rendimiento) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

@@ -1118,6 +1118,7 @@ export type SlideAnimId =
   | "fq4-diagrama-fuerzas"
   | "fq4-canon-newton"
   | "fq4-conservacion-pista"
+  | "fq4-curva-calentamiento"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2166,6 +2167,10 @@ export type SlideToolId =
   | "fq4-teorema-trabajo-energia-explorador"
   | "fq4-conservacion-energia-explorador"
   | "fq4-rendimiento-explorador"
+  | "fq4-equilibrio-termico-explorador"
+  | "fq4-cambios-estado-explorador"
+  | "fq4-transmision-dilatacion-explorador"
+  | "fq4-maquinas-termicas-explorador"
   /* industrial-tool-end */;
 
 /**

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { EquilibrioTermicoFq4Explorador, CambiosEstadoFq4Explorador, TransmisionDilatacionFq4Explorador, MaquinasTermicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4CalorTools";
 import { TrabajoPotenciaFq4Explorador, EnergiasFq4Explorador, TeoremaTrabajoEnergiaFq4Explorador, ConservacionEnergiaFq4Explorador, RendimientoFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnergiaTools";
 import { GravitacionFq4Explorador, GravedadAstrosFq4Explorador, OrbitasFq4Explorador, FasesLunaresFq4Explorador } from "@/components/lesson/slide/tools/Fq4GravitacionTools";
 import { NewtonFq4Explorador, RozamientoFq4Explorador, PlanoInclinadoFq4Explorador, PoleasFq4Explorador, ElasticaCentripetaFq4Explorador } from "@/components/lesson/slide/tools/Fq4DinamicaTools";
@@ -2350,6 +2351,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ConservacionEnergiaFq4Explorador block={block} />;
     case "fq4-rendimiento-explorador":
       return <RendimientoFq4Explorador block={block} />;
+    case "fq4-equilibrio-termico-explorador":
+      return <EquilibrioTermicoFq4Explorador block={block} />;
+    case "fq4-cambios-estado-explorador":
+      return <CambiosEstadoFq4Explorador block={block} />;
+    case "fq4-transmision-dilatacion-explorador":
+      return <TransmisionDilatacionFq4Explorador block={block} />;
+    case "fq4-maquinas-termicas-explorador":
+      return <MaquinasTermicasFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
