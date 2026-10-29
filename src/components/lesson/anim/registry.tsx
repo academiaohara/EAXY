@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildDiagramaFuerzas } from "@/components/lesson/anim/scenes/industrial/fq4-fuerzas";
 import { buildMcu } from "@/components/lesson/anim/scenes/industrial/fq4-circular";
 import { buildPolimerizacion } from "@/components/lesson/anim/scenes/industrial/fq4-polimero";
 import { buildCorriente } from "@/components/lesson/anim/scenes/industrial/fq3-corriente";
@@ -857,6 +858,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq3-corriente": () => buildCorriente(),
   "fq4-polimerizacion": () => buildPolimerizacion(),
   "fq4-mcu": () => buildMcu(),
+  "fq4-diagrama-fuerzas": () => buildDiagramaFuerzas(),
   /* industrial-end */
 };
 

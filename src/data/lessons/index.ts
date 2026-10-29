@@ -616,6 +616,7 @@ import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { fuentesEnergiaEficienciaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/05-fuentes-energia-eficiencia-fq2";
 import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
+import { fuerzaElasticaCentripetaFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/05-fuerza-elastica-centripeta-fq4";
 import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/03-fuerza-elastica-hooke-fq2";
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
 import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
@@ -805,6 +806,7 @@ import { levasBielasManivelas3esoLesson } from "@/data/lessons/tecnologia-3-eso/
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
+import { leyesDeNewtonFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/01-leyes-de-newton-fq4";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
 import { limiteDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/01-limite-definicion-ccss2";
@@ -1033,6 +1035,7 @@ import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-e
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
 import { pesoMasaGravedadFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/02-peso-masa-gravedad-fq2";
+import { pesoNormalRozamientoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/02-peso-normal-rozamiento-fq4";
 import { piezasNormalizadasRoscasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/01-piezas-normalizadas-roscas-dt2";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
@@ -1042,6 +1045,7 @@ import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-es
 import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/02-plano-acotado-horizontales-dt1";
 import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
+import { planoInclinadoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/03-plano-inclinado-fq4";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
@@ -1514,6 +1518,7 @@ import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
+import { tensionPoleasFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/04-tension-poleas-fq4";
 import { teoremaBayes1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/11-teorema-bayes-1bach";
 import { teoremaBayesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/11-teorema-bayes-ccss1";
 import { teoremaCentralLimiteCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/04-teorema-central-limite-ccss2";
@@ -2240,6 +2245,7 @@ export const interactiveLessons = {
   "fracciones-problemas": fraccionesProblemasLesson,
   "fuentes-energia-eficiencia-fq2": fuentesEnergiaEficienciaFq2Lesson,
   "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
+  "fuerza-elastica-centripeta-fq4": fuerzaElasticaCentripetaFq4Lesson,
   "fuerza-elastica-hooke-fq2": fuerzaElasticaHookeFq2Lesson,
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
   "fuerza-par-potencia": fuerzaParPotenciaLesson,
@@ -2429,6 +2435,7 @@ export const interactiveLessons = {
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "ley-ohm-2eso": leyOhm2esoLesson,
+  "leyes-de-newton-fq4": leyesDeNewtonFq4Lesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
   "limite-definicion-ccss2": limiteDefinicionCcss2Lesson,
@@ -2657,6 +2664,7 @@ export const interactiveLessons = {
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
   "peso-masa-gravedad-fq2": pesoMasaGravedadFq2Lesson,
+  "peso-normal-rozamiento-fq4": pesoNormalRozamientoFq4Lesson,
   "piezas-normalizadas-roscas-dt2": piezasNormalizadasRoscasDt2Lesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
@@ -2666,6 +2674,7 @@ export const interactiveLessons = {
   "plano-acotado-horizontales-dt1": planoAcotadoHorizontalesDt1Lesson,
   "plano-diedrico-trazas-dt1": planoDiedricoTrazasDt1Lesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
+  "plano-inclinado-fq4": planoInclinadoFq4Lesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "planos-acotados-explanaciones-dt2": planosAcotadosExplanacionesDt2Lesson,
@@ -3138,6 +3147,7 @@ export const interactiveLessons = {
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
+  "tension-poleas-fq4": tensionPoleasFq4Lesson,
   "teorema-bayes-1bach": teoremaBayes1bachLesson,
   "teorema-bayes-ccss1": teoremaBayesCcss1Lesson,
   "teorema-central-limite-ccss2": teoremaCentralLimiteCcss2Lesson,

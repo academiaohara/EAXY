@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { NewtonFq4Explorador, RozamientoFq4Explorador, PlanoInclinadoFq4Explorador, PoleasFq4Explorador, ElasticaCentripetaFq4Explorador } from "@/components/lesson/slide/tools/Fq4DinamicaTools";
 import { VectoresMovimientoFq4Explorador, EncuentroFq4Explorador, TiroVerticalFq4Explorador, McuFq4Explorador, SeguridadVialFq4Explorador } from "@/components/lesson/slide/tools/Fq4CinematicaTools";
 import { CarbonoEnlacesFq4Explorador, HidrocarburosFq4Explorador, GruposFuncionalesFq4Explorador, PetroleoFq4Explorador, PolimerosFq4Explorador } from "@/components/lesson/slide/tools/Fq4CarbonoTools";
 import { MolGasesFq4Explorador, EstequiometriaFq4Explorador, ReactivoLimitanteFq4Explorador, TiposReaccionFq4Explorador, NeutralizacionFq4Explorador, RedoxFq4Explorador } from "@/components/lesson/slide/tools/Fq4ReaccionesTools";
@@ -2319,6 +2320,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <McuFq4Explorador block={block} />;
     case "fq4-seguridad-vial-explorador":
       return <SeguridadVialFq4Explorador block={block} />;
+    case "fq4-newton-explorador":
+      return <NewtonFq4Explorador block={block} />;
+    case "fq4-rozamiento-explorador":
+      return <RozamientoFq4Explorador block={block} />;
+    case "fq4-plano-inclinado-explorador":
+      return <PlanoInclinadoFq4Explorador block={block} />;
+    case "fq4-poleas-explorador":
+      return <PoleasFq4Explorador block={block} />;
+    case "fq4-elastica-centripeta-explorador":
+      return <ElasticaCentripetaFq4Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

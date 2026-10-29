@@ -97,3 +97,4 @@ Total previsto: 55 lecciones.
 | 4.º ESO · 5. Reacciones químicas | Hecho (6 lecciones, `05-reacciones-quimicas/`; herramientas `Fq4ReaccionesTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 345) |
 | 4.º ESO · 6. Química del carbono | Hecho (5 lecciones, `06-quimica-del-carbono/`; herramientas `Fq4CarbonoTools.tsx`; animación `fq4-polimerizacion`; bloque `fisica-cambios-quimicos`; moduleId 346) |
 | 4.º ESO · 7. Cinemática | Hecho (5 lecciones, `07-cinematica/`; herramientas `Fq4CinematicaTools.tsx`; animación `fq4-mcu`; bloque `fisica-movimiento-fuerzas`; moduleId 347) |
+| 4.º ESO · 8. Dinámica | Hecho (5 lecciones, `08-dinamica/`; herramientas `Fq4DinamicaTools.tsx`; animación `fq4-diagrama-fuerzas`; bloque `fisica-movimiento-fuerzas`; moduleId 348) |

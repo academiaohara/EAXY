@@ -1115,6 +1115,7 @@ export type SlideAnimId =
   | "fq3-corriente"
   | "fq4-polimerizacion"
   | "fq4-mcu"
+  | "fq4-diagrama-fuerzas"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2149,6 +2150,11 @@ export type SlideToolId =
   | "fq4-tiro-vertical-explorador"
   | "fq4-mcu-explorador"
   | "fq4-seguridad-vial-explorador"
+  | "fq4-newton-explorador"
+  | "fq4-rozamiento-explorador"
+  | "fq4-plano-inclinado-explorador"
+  | "fq4-poleas-explorador"
+  | "fq4-elastica-centripeta-explorador"
   /* industrial-tool-end */;
 
 /**
