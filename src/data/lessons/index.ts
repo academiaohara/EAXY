@@ -251,6 +251,7 @@ import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-
 import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/04-condiciones-2eso";
 import { condicionesBuclesDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/04-condiciones-bucles-datos-4eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
+import { configuracionElectronicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/04-configuracion-electronica-fb1";
 import { configuracionElectronicaFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/01-configuracion-electronica-fq4";
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/03-conica-solidos-dt2";
@@ -521,6 +522,7 @@ import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia
 import { esfuerzosTraccionCompresionCortaduraTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/05-esfuerzos-traccion-compresion-cortadura-ti2";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
 import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/01-especificaciones-tecnicas-3eso";
+import { espectrosModeloBohrFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/02-espectros-modelo-bohr-fb1";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/05-espirales-evolvente-dt1";
@@ -916,9 +918,11 @@ import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso
 import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
 import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
+import { modeloMecanocuanticoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/03-modelo-mecanocuantico-fb1";
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
 import { modelosAtomicosBohrFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/01-modelos-atomicos-bohr-fq3";
 import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
+import { modelosAtomicosParticulasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/01-modelos-atomicos-particulas-fb1";
 import { molMasaMolarGasesFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/01-mol-masa-molar-gases-fq4";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
@@ -1898,6 +1902,7 @@ export const interactiveLessons = {
   "condiciones-2eso": condiciones2esoLesson,
   "condiciones-bucles-datos-4eso": condicionesBuclesDatos4esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
+  "configuracion-electronica-fb1": configuracionElectronicaFb1Lesson,
   "configuracion-electronica-fq4": configuracionElectronicaFq4Lesson,
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conica-solidos-dt2": conicaSolidosDt2Lesson,
@@ -2168,6 +2173,7 @@ export const interactiveLessons = {
   "esfuerzos-traccion-compresion-cortadura-ti2": esfuerzosTraccionCompresionCortaduraTi2Lesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
   "especificaciones-tecnicas-3eso": especificacionesTecnicas3esoLesson,
+  "espectros-modelo-bohr-fb1": espectrosModeloBohrFb1Lesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
   "espirales-evolvente-dt1": espiralesEvolventeDt1Lesson,
@@ -2563,9 +2569,11 @@ export const interactiveLessons = {
   "modelado-3d-primitivas-booleanas-dt1": modelado3dPrimitivasBooleanasDt1Lesson,
   "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
   "modelo-cinetico-molecular-fq2": modeloCineticoMolecularFq2Lesson,
+  "modelo-mecanocuantico-fb1": modeloMecanocuanticoFb1Lesson,
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
   "modelos-atomicos-bohr-fq3": modelosAtomicosBohrFq3Lesson,
   "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
+  "modelos-atomicos-particulas-fb1": modelosAtomicosParticulasFb1Lesson,
   "mol-masa-molar-gases-fq4": molMasaMolarGasesFq4Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,

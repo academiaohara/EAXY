@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { ParticulasIsotoposFb1Explorador, BohrEspectroFb1Explorador, DeBroglieFb1Explorador, NumerosCuanticosFb1Explorador, ConfiguracionFb1Explorador } from "@/components/lesson/slide/tools/Fb1AtomoTools";
 import { OndaFq4Explorador, EspectroFq4Explorador, SonidoFq4Explorador, OpticaFq4Explorador, ContaminacionAcusticaFq4Explorador } from "@/components/lesson/slide/tools/Fq4OndasTools";
 import { EquilibrioTermicoFq4Explorador, CambiosEstadoFq4Explorador, TransmisionDilatacionFq4Explorador, MaquinasTermicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4CalorTools";
 import { TrabajoPotenciaFq4Explorador, EnergiasFq4Explorador, TeoremaTrabajoEnergiaFq4Explorador, ConservacionEnergiaFq4Explorador, RendimientoFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnergiaTools";
@@ -2370,6 +2371,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <OpticaFq4Explorador block={block} />;
     case "fq4-contaminacion-acustica-explorador":
       return <ContaminacionAcusticaFq4Explorador block={block} />;
+    case "fb1-particulas-isotopos-explorador":
+      return <ParticulasIsotoposFb1Explorador block={block} />;
+    case "fb1-bohr-espectro-explorador":
+      return <BohrEspectroFb1Explorador block={block} />;
+    case "fb1-de-broglie-explorador":
+      return <DeBroglieFb1Explorador block={block} />;
+    case "fb1-numeros-cuanticos-explorador":
+      return <NumerosCuanticosFb1Explorador block={block} />;
+    case "fb1-configuracion-explorador":
+      return <ConfiguracionFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

@@ -596,6 +596,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq4-conservacion-pista` | Bola en una pista en U: Ep y Ec con Em constante | — |
 | `fq4-curva-calentamiento` | Curva de calentamiento del agua: tramos y mesetas | — |
 | `fq4-ondas` | Onda transversal y longitudinal: amplitud y longitud de onda | — |
+| `fb1-orbitales` | Orbitales atómicos s, p y d frente a las órbitas de Bohr | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1527,6 +1528,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq4-sonido-explorador` | Sonido: velocidad según el medio, λ, nivel con la distancia y eco | n (medio 0–2), a (f), b (d) |
 | `fq4-optica-explorador` | Reflexión y refracción (ley de Snell) con reflexión total | n (medio 0–3), a (ángulo) |
 | `fq4-contaminacion-acustica-explorador` | Nivel sonoro en dB y tiempo máximo de exposición | a (dB) |
+| `fb1-particulas-isotopos-explorador` | Protones, neutrones y electrones de átomos, isótopos e iones | a (Z), b (A), c (carga) |
+| `fb1-bohr-espectro-explorador` | Transiciones del hidrógeno: energía, λ, región y serie | a (nᵢ), b (n_f) |
+| `fb1-de-broglie-explorador` | Longitud de onda de De Broglie de distintas partículas | n (partícula 0–3), a (log v) |
+| `fb1-numeros-cuanticos-explorador` | Validez de combinaciones de números cuánticos y capacidades | a (n), b (l), c (m_l) |
+| `fb1-configuracion-explorador` | Configuración electrónica de átomos e iones (Z ≤ 54) con Hund y último electrón | a (Z), b (carga) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

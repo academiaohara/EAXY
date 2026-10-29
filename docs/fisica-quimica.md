@@ -62,9 +62,28 @@ Ids con sufijo `-fq4`, herramientas y animaciones `fq4-…`, `FQ4_SUBTITLES`, `m
 
 Total previsto: 55 lecciones.
 
+## 1.º de Bachillerato (Física y Química, 12 temas, 54 lecciones)
+
+Ids `-fb1`, herramientas `fb1-`, subtítulos `FB1_SUBTITLES`, carpeta `src/data/lessons/fisica-1-bachillerato/`, moduleId 361–372 (base 360). Contenido según el índice de `LOMLOE.txt` y los saberes básicos de Bachillerato (RD 243/2022); con enfoque de resolución de problemas y nivel de Bachillerato (cálculo con vectores, magnitudes con incertidumbre y unidades SI).
+
+| Tema | Lecciones previstas |
+|---|---|
+| 1. Estructura atómica | 4: modelos atómicos; espectros y modelo de Bohr; modelo mecanocuántico y números cuánticos; configuración electrónica |
+| 2. Sistema periódico | 3: organización y configuración; propiedades periódicas; reactividad |
+| 3. Enlace químico | 5: enlace iónico y redes; covalente y Lewis; geometría y polaridad; fuerzas intermoleculares; metálico y propiedades |
+| 4. Formulación inorgánica | 4: números de oxidación y binarios; hidróxidos y oxoácidos; oxisales; nomenclaturas de composición y Stock |
+| 5. Cantidad de sustancia | 4: mol y masa molar; composición centesimal; fórmula empírica y molecular; estequiometría de partida |
+| 6. Gases y disoluciones | 5: variables y leyes de los gases; gas ideal; mezclas y presiones parciales; concentración de disoluciones; dilución y propiedades coligativas |
+| 7. Reacciones químicas | 5: ajuste y estequiometría; reactivo limitante y rendimiento; ácidos y bases; oxidación-reducción; aplicaciones industriales y ambientales |
+| 8. Química orgánica | 5: carbono y cadenas; hidrocarburos; grupos funcionales oxigenados; funciones nitrogenadas y ésteres; isomería y aplicaciones |
+| 9. Cinemática | 5: sistemas de referencia y vectores; MRU y MRUA; caída libre y movimiento parabólico; movimiento circular; gráficas y problemas |
+| 10. Estática y dinámica | 5: leyes de Newton; rozamiento y normal; planos inclinados; sistemas de cuerpos; elástica y equilibrio |
+| 11. Trabajo, energía y potencia | 5: trabajo y potencia; energías y teorema; fuerzas conservativas; conservación; rendimiento y transformaciones |
+| 12. Fuerzas gravitatorias | 4: ley y campo gravitatorio; energía potencial gravitatoria; movimiento orbital; aplicaciones |
+
 ## Cursos siguientes (sin desarrollar)
 
-4.º ESO (12), 1.º Bachillerato (12), 2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
+2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
 
 ## Estado
 
@@ -102,3 +121,4 @@ Total previsto: 55 lecciones.
 | 4.º ESO · 10. Trabajo, energía y potencia | Hecho (5 lecciones, `10-trabajo-energia-potencia/`; herramientas `Fq4EnergiaTools.tsx`; animación `fq4-conservacion-pista`; bloque `fisica-energia-ondas`; moduleId 350) |
 | 4.º ESO · 11. Calor y energía térmica | Hecho (4 lecciones, `11-calor-energia-termica/`; herramientas `Fq4CalorTools.tsx`; animación `fq4-curva-calentamiento`; bloque `fisica-energia-ondas`; moduleId 351) |
 | 4.º ESO · 12. Ondas | Hecho (5 lecciones, `12-ondas/`; herramientas `Fq4OndasTools.tsx`; animación `fq4-ondas`; bloque `fisica-energia-ondas`; moduleId 352) |
+| 1.º Bach. · 1. Estructura atómica | Hecho (4 lecciones, `src/data/lessons/fisica-1-bachillerato/01-estructura-atomica/`; herramientas `Fb1AtomoTools.tsx`; animación `fb1-orbitales`; bloque `fisica-materia`; moduleId 361; ids `-fb1`, herramientas `fb1-`) |

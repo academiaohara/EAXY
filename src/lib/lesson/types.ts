@@ -1120,6 +1120,7 @@ export type SlideAnimId =
   | "fq4-conservacion-pista"
   | "fq4-curva-calentamiento"
   | "fq4-ondas"
+  | "fb1-orbitales"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2177,6 +2178,11 @@ export type SlideToolId =
   | "fq4-sonido-explorador"
   | "fq4-optica-explorador"
   | "fq4-contaminacion-acustica-explorador"
+  | "fb1-particulas-isotopos-explorador"
+  | "fb1-bohr-espectro-explorador"
+  | "fb1-de-broglie-explorador"
+  | "fb1-numeros-cuanticos-explorador"
+  | "fb1-configuracion-explorador"
   /* industrial-tool-end */;
 
 /**
