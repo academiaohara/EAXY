@@ -15,6 +15,7 @@ export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
         { eyebrow: "Dos puntos fijos", text: "Los puntos que equidistan de A y B forman su mediatriz.", highlights: [{ text: "equidistan", tone: "emerald" }, { text: "mediatriz", tone: "violet" }] },
         { eyebrow: "Dos lados fijos", text: "Los puntos que equidistan de los lados de un ángulo forman su bisectriz.", highlights: [{ text: "equidistan", tone: "emerald" }, { text: "bisectriz", tone: "amber" }] },
       ],
+      help: [{ label: "¿Cómo descubro el lugar?", message: "Mueve mentalmente P y pregunta qué medida debe permanecer igual. La igualdad te dice qué trazado contiene todas las posiciones válidas." }],
     },
     pick("predice-faro", "Predice antes de trazar", "Dos faros A y B deben oírse con la misma intensidad. Si solo importa la distancia, ¿por dónde puede moverse el barco?", "Por la mediatriz de AB, porque todos sus puntos equidistan de ambos faros", [["Por la circunferencia con centro A", "Esa condición solo fija la distancia a A."], ["Por el propio segmento AB", "Salvo el punto medio, sus puntos no equidistan de A y B."], ["Por cualquier paralela a AB", "La distancia a los faros cambia a lo largo de la paralela."]], "Traducir «misma distancia a A y B» conduce directamente a la mediatriz."),
     slide("explora-lugares", "Mueve P y comprueba la condición", [
@@ -28,6 +29,7 @@ export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
         { eyebrow: "Tangencia", text: "Si solo se tocan, existe una única solución.", highlights: [{ text: "única solución", tone: "amber" }] },
         { eyebrow: "Dos cruces", text: "Si se cortan en dos puntos, ambos son soluciones y hace falta otro dato para elegir.", highlights: [{ text: "dos puntos", tone: "emerald" }, { text: "otro dato", tone: "cobalt" }] },
       ],
+      help: [{ label: "¿Por qué cambia el número de soluciones?", message: "Imagina que desplazas uno de los lugares: puede quedar separado, tocar al otro o atravesarlo. Cada contacto común es una solución." }],
     },
     sort("traduce-condicion", "Traduce condiciones a lugares", "Asocia cada condición con el trazado que contiene todas sus soluciones.", [["cir", "Circunferencia", "cobalt"], ["med", "Mediatriz", "violet"], ["bis", "Bisectriz", "amber"], ["par", "Dos paralelas", "emerald"]], [["A 4 cm de un punto O", "cir"], ["A igual distancia de A y B", "med"], ["A igual distancia de dos paredes que forman una esquina", "bis"], ["A 2 m del borde recto de una carretera", "par"], ["Centro de una circunferencia que pasa por A y B", "med"], ["Posiciones alcanzadas por un radar con radio fijo", "cir"]], "La frase de distancia es el dato operativo: identifica qué elementos permanecen fijos y qué igualdad debe cumplir P."),
     slide("transferencia-localizacion", "Diseña una localización", [

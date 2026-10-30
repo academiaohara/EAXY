@@ -15,6 +15,7 @@ export const arcoCapazDt1Lesson: InteractiveLesson = {
         { eyebrow: "Mueve P", text: "Al desplazar P por un arco concreto cambian las distancias, pero el ángulo permanece.", highlights: [{ text: "arco", tone: "violet" }, { text: "permanece", tone: "emerald" }] },
         { eyebrow: "Nombra el lugar", text: "Ese conjunto de posiciones es el arco capaz de α sobre el segmento AB.", highlights: [{ text: "arco capaz", tone: "emerald" }, { text: "AB", tone: "cobalt" }] },
       ],
+      help: [{ label: "¿Qué permanece y qué cambia?", message: "Al mover P, compara por separado las longitudes PA, PB y la abertura entre ambas visuales; solo una de esas magnitudes define este lugar." }],
     },
     pick("predice-movimiento", "Predice antes de explorar", "P está sobre el arco capaz de 60° y se mueve por el mismo arco hacia A. ¿Qué ocurre con ∠APB?", "Sigue midiendo 60°, aunque cambien PA y PB", [["Aumenta porque P se acerca a A", "Las distancias cambian, pero todos los puntos del arco cumplen la misma condición angular."], ["Disminuye hasta 0°", "Eso no ocurre mientras P permanezca en el arco y sea distinto de A."], ["Solo se conserva si PA = PB", "La igualdad de distancias no define el arco capaz."]], "El lugar se define precisamente por conservar ∠APB = 60°."),
     slide("explora-arco", "Comprueba la invariancia", [
@@ -29,6 +30,7 @@ export const arcoCapazDt1Lesson: InteractiveLesson = {
         { eyebrow: "Dirección del radio", text: "La perpendicular a la tangente trazada por A corta la mediatriz en O.", highlights: [{ text: "perpendicular", tone: "cobalt" }, { text: "O", tone: "cobalt" }] },
         { eyebrow: "Trazado final", text: "Con centro O y radio OA dibujamos la circunferencia; el tramo útil es el arco capaz.", highlights: [{ text: "arco capaz", tone: "emerald" }] },
       ],
+      help: [{ label: "¿De dónde sale el centro?", message: "Combina dos condiciones sobre O: debe estar a igual distancia de A y B, y el radio OA debe ser perpendicular a la tangente en A." }],
     },
     sort("compara-angulos", "Relaciona ángulo y aspecto", "Clasifica qué ocurre al cambiar el ángulo bajo el que se ve AB.", [["agu", "α menor que 90°", "cobalt"], ["rec", "α igual a 90°", "amber"], ["obt", "α mayor que 90°", "emerald"]], [["El arco se aleja de AB", "agu"], ["La figura es una semicircunferencia de diámetro AB", "rec"], ["Es el caso de la propiedad de Tales", "rec"], ["El punto P queda más próximo a AB", "obt"], ["El segmento ocupa un ángulo visual pequeño", "agu"], ["El segmento ocupa un ángulo visual grande", "obt"]], "Acercarse al segmento aumenta su ángulo visual; alejarse lo reduce. El caso de 90° separa ambas situaciones."),
     {
