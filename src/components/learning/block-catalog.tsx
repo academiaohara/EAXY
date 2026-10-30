@@ -7,7 +7,7 @@ import { getCourseProgress } from "@/lib/curriculum/course-progress";
 import type { BlockSummary } from "@/lib/curriculum/blocks";
 import { applyLocalProgressToModules } from "@/lib/local-progress/storage";
 import { useLocalProgress } from "@/lib/local-progress/use-local-progress";
-import { blockHref, courseShortTitle } from "@/lib/navigation/learning-trail";
+import { blockHref, courseRangeLabel } from "@/lib/navigation/learning-trail";
 import { SUBJECT_THEME, type SubjectKey } from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
@@ -17,18 +17,6 @@ type BlockCatalogViewProps = {
   /** Si false, no mezcla progreso del navegador (usuario con sesión). */
   mergeLocalProgress?: boolean;
 };
-
-function courseRangeLabel(block: BlockSummary): string {
-  const first = block.courses[0];
-  const last = block.courses[block.courses.length - 1];
-  if (!first || !last) {
-    return "";
-  }
-  if (first.id === last.id) {
-    return courseShortTitle(first.title);
-  }
-  return `${courseShortTitle(first.title)} → ${courseShortTitle(last.title)}`;
-}
 
 function BlockCard({
   summary,
@@ -43,10 +31,13 @@ function BlockCard({
   const localStore = useLocalProgress();
   const modules = useMemo(
     () =>
-      mergeLocalProgress ? applyLocalProgressToModules(summary.modules, localStore) : summary.modules,
+      mergeLocalProgress
+        ? applyLocalProgressToModules(summary.modules, localStore)
+        : summary.modules,
     [mergeLocalProgress, localStore, summary.modules],
   );
-  const { totalLessons, completedLessons, percent } = getCourseProgress(modules);
+  const { totalLessons, completedLessons, percent } =
+    getCourseProgress(modules);
   const { block } = summary;
 
   return (
@@ -61,11 +52,11 @@ function BlockCard({
       <div className="flex items-start justify-between gap-3">
         <span
           className={cn(
-            "rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em]",
+            "rounded-full px-3 py-1.5 text-xs font-bold tabular-nums",
             theme.badge,
           )}
         >
-          {courseRangeLabel(summary)}
+          {courseRangeLabel(summary.courses.map((course) => course.title))}
         </span>
         <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-paper text-slate-400 transition-colors group-hover:bg-cobalt group-hover:text-white">
           <ArrowRightIcon className="size-4" aria-hidden />
@@ -73,17 +64,20 @@ function BlockCard({
       </div>
 
       <div className="space-y-1">
-        <h3 className="font-display text-lg font-bold leading-snug text-ink group-hover:text-cobalt">
+        <h3 className="font-display text-xl font-bold leading-tight text-ink group-hover:text-cobalt">
           {block.title}
         </h3>
-        <p className="text-sm leading-relaxed text-ink-muted">{block.description}</p>
+        <p className="text-sm leading-relaxed text-ink-muted">
+          {block.description}
+        </p>
       </div>
 
       <div className="mt-auto space-y-2">
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium text-ink-muted">
           <span className="inline-flex items-center gap-1.5">
             <BookOpenIcon className="size-3.5" aria-hidden />
-            {completedLessons}/{totalLessons} {totalLessons === 1 ? "lección" : "lecciones"}
+            {completedLessons}/{totalLessons}{" "}
+            {totalLessons === 1 ? "lección" : "lecciones"}
           </span>
           {summary.topicExerciseCount > 0 ? (
             <span className="inline-flex items-center gap-1.5">
@@ -122,7 +116,8 @@ export function BlockCatalogView({
         className="rounded-2xl border border-dashed border-border p-6 text-center text-sm text-ink-muted"
         data-testid="block-catalog-empty"
       >
-        Los contenidos de esta asignatura estarán disponibles cuando haya lecciones publicadas.
+        Los contenidos de esta asignatura estarán disponibles cuando haya
+        lecciones publicadas.
       </p>
     );
   }
@@ -130,7 +125,8 @@ export function BlockCatalogView({
   return (
     <section data-testid="block-catalog" className="space-y-3">
       <p className="max-w-2xl text-sm text-ink-muted">
-        Elige un contenido y recórrelo a lo largo de los cursos, de menor a mayor nivel.
+        Elige un contenido y recórrelo a lo largo de los cursos, de menor a
+        mayor nivel.
       </p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {blocks.map((summary) => (

@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   buildLearningTrail,
+  courseCardTitle,
   courseHref,
+  courseLevelLabel,
+  courseRangeLabel,
   courseShortTitle,
   interactiveLessonHref,
   stripLessonNumber,
@@ -12,8 +15,12 @@ import { getActiveSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 describe("getActiveSubject", () => {
   it("marca la materia por ruta de materia o de curso", () => {
     expect(getActiveSubject("/aprender/materia/fisica")).toBe("fisica");
-    expect(getActiveSubject("/aprender/curso/tecnologia-1-eso/tema/x")).toBe("tecnologia");
-    expect(getActiveSubject("/aprender/curso/matematicas-1-eso")).toBe("matematicas");
+    expect(getActiveSubject("/aprender/curso/tecnologia-1-eso/tema/x")).toBe(
+      "tecnologia",
+    );
+    expect(getActiveSubject("/aprender/curso/matematicas-1-eso")).toBe(
+      "matematicas",
+    );
   });
 
   it("no marca materia en rutas ajenas o desconocidas", () => {
@@ -48,11 +55,49 @@ describe("learning-trail", () => {
     expect(courseShortTitle("Física y Química 2º ESO")).toBe("2º ESO");
     expect(courseShortTitle("Química 2º Bachillerato")).toBe("2º Bachillerato");
     expect(courseShortTitle("Álgebra")).toBe("Álgebra");
-    expect(stripLessonNumber("3. Sistemas no lineales")).toBe("Sistemas no lineales");
+    expect(stripLessonNumber("3. Sistemas no lineales")).toBe(
+      "Sistemas no lineales",
+    );
+  });
+
+  it.each([
+    ["Dibujo Técnico I 1º Bachillerato", "1º", "Dibujo Técnico I"],
+    [
+      "Tecnología e Ingeniería II 2º Bachillerato (ampliación)",
+      "2º",
+      "Tecnología e Ingeniería II (ampliación)",
+    ],
+    [
+      "Matemáticas Aplicadas a las CCSS I (1º Bachillerato)",
+      "1º",
+      "Matemáticas Aplicadas a las CCSS I",
+    ],
+    ["Matemáticas 1º ESO", "1º", "Matemáticas 1º ESO"],
+    ["Física y Química 4º ESO", "4º", "Física y Química 4º ESO"],
+  ])("presenta el nivel y el título de %s", (title, level, cardTitle) => {
+    expect(courseLevelLabel(title)).toBe(level);
+    expect(courseCardTitle(title)).toBe(cardTitle);
+  });
+
+  it("resume los niveles de un bloque sin repetir la asignatura ni la etapa", () => {
+    expect(courseRangeLabel(["Dibujo Técnico I 1º Bachillerato"])).toBe("1º");
+    expect(
+      courseRangeLabel([
+        "Dibujo Técnico I 1º Bachillerato",
+        "Dibujo Técnico II 2º Bachillerato",
+      ]),
+    ).toBe("1º → 2º");
+    expect(courseRangeLabel(["Tecnología 2º ESO", "Tecnología 4º ESO"])).toBe(
+      "2º → 4º",
+    );
   });
 
   it("marca el curso como página actual cuando es el último nivel", () => {
-    expect(buildLearningTrail({ course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" } })).toEqual([
+    expect(
+      buildLearningTrail({
+        course: { slug: "matematicas-1-eso", title: "Matemáticas 1º ESO" },
+      }),
+    ).toEqual([
       { label: "Aprender", href: "/aprender" },
       { label: "Matemáticas", href: "/aprender/materia/matematicas" },
       { label: "1º ESO" },
@@ -70,7 +115,10 @@ describe("learning-trail", () => {
       { label: "Aprender", href: "/aprender" },
       { label: "Matemáticas", href: "/aprender/materia/matematicas" },
       { label: "1º ESO", href: "/aprender/curso/matematicas-1-eso" },
-      { label: "Tema 4: Fracciones", href: "/aprender/curso/matematicas-1-eso/tema/fracciones" },
+      {
+        label: "Tema 4: Fracciones",
+        href: "/aprender/curso/matematicas-1-eso/tema/fracciones",
+      },
       { label: "Fracciones equivalentes" },
     ]);
   });

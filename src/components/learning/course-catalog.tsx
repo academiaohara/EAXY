@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { ArrowRightIcon, BookOpenIcon, LayersIcon } from "lucide-react";
-import { courseHref, courseShortTitle } from "@/lib/navigation/learning-trail";
+import {
+  courseCardTitle,
+  courseHref,
+  courseLevelLabel,
+} from "@/lib/navigation/learning-trail";
 import { cn } from "@/lib/utils";
-import { SUBJECT_THEME, stageOfCourse, type SubjectKey } from "@/lib/navigation/subjects";
+import {
+  SUBJECT_THEME,
+  stageOfCourse,
+  type SubjectKey,
+} from "@/lib/navigation/subjects";
 import type { CourseCatalogEntry } from "@/lib/curriculum/types";
 
 type CourseCatalogViewProps = {
@@ -14,11 +22,17 @@ function lessonCountLabel(count: number): string {
   return count === 1 ? "1 lección" : `${count} lecciones`;
 }
 
-function CourseCard({ course, subject }: { course: CourseCatalogEntry; subject: SubjectKey }) {
+function CourseCard({
+  course,
+  subject,
+}: {
+  course: CourseCatalogEntry;
+  subject: SubjectKey;
+}) {
   const theme = SUBJECT_THEME[subject];
   const hasLessons = course.lessonCount > 0;
-  const shortTitle = courseShortTitle(course.title);
-  const [level] = shortTitle.split(" ");
+  const level = courseLevelLabel(course.title);
+  const displayTitle = courseCardTitle(course.title);
 
   return (
     <Link
@@ -27,15 +41,20 @@ function CourseCard({ course, subject }: { course: CourseCatalogEntry; subject: 
       className={cn(
         "group relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border bg-paper-raised p-5 shadow-xs outline-none transition-all focus-visible:ring-2 focus-visible:ring-cobalt/40",
         hasLessons
-          ? cn("border-border hover:-translate-y-0.5 hover:shadow-lg", theme.hoverBorder)
+          ? cn(
+              "border-border hover:-translate-y-0.5 hover:shadow-lg",
+              theme.hoverBorder,
+            )
           : "border-dashed border-border bg-paper-raised/60",
       )}
     >
       <div className="flex items-start justify-between gap-3">
         <span
           className={cn(
-            "flex size-12 items-center justify-center rounded-2xl font-display text-base font-extrabold text-white shadow-sm",
-            hasLessons ? cn("bg-gradient-to-br", theme.gradient) : "bg-slate-200 text-slate-500 shadow-none",
+            "flex size-14 shrink-0 items-center justify-center rounded-full font-display text-lg font-extrabold text-white shadow-sm",
+            hasLessons
+              ? cn("bg-gradient-to-br", theme.gradient)
+              : "bg-slate-200 text-slate-500 shadow-none",
           )}
           aria-hidden
         >
@@ -53,11 +72,16 @@ function CourseCard({ course, subject }: { course: CourseCatalogEntry; subject: 
       </div>
 
       <div className="space-y-1">
-        <h3 className="font-display text-lg font-bold leading-snug text-ink group-hover:text-cobalt">
-          {course.title}
+        <h3
+          className="font-display text-xl font-bold leading-tight text-ink group-hover:text-cobalt"
+          title={displayTitle === course.title ? undefined : course.title}
+        >
+          {displayTitle}
         </h3>
         {course.description ? (
-          <p className="text-sm leading-relaxed text-ink-muted">{course.description}</p>
+          <p className="text-sm leading-relaxed text-ink-muted">
+            {course.description}
+          </p>
         ) : null}
       </div>
 
@@ -77,11 +101,16 @@ function CourseCard({ course, subject }: { course: CourseCatalogEntry; subject: 
   );
 }
 
-export function CourseCatalogView({ courses, subject }: CourseCatalogViewProps) {
+export function CourseCatalogView({
+  courses,
+  subject,
+}: CourseCatalogViewProps) {
   const stages = (["ESO", "Bachillerato"] as const)
     .map((stage) => ({
       stage,
-      courses: courses.filter((course) => stageOfCourse(course.title) === stage),
+      courses: courses.filter(
+        (course) => stageOfCourse(course.title) === stage,
+      ),
     }))
     .filter((group) => group.courses.length > 0);
 

@@ -26,7 +26,50 @@ export function interactiveLessonHref(
 }
 
 export function courseShortTitle(title: string): string {
-  return title.replace(/^(Matemáticas|Física y Química|Física|Química|Tecnología)\s+/i, "").trim() || title;
+  return (
+    title
+      .replace(
+        /^(Matemáticas|Física y Química|Física|Química|Tecnología)\s+/i,
+        "",
+      )
+      .trim() || title
+  );
+}
+
+/** Ordinal breve que identifica el nivel del curso en tarjetas. */
+export function courseLevelLabel(title: string): string {
+  return title.match(/([1-4]º)(?=\s|\)|$)/)?.[1] ?? "";
+}
+
+/** Evita repetir el nivel cuando el nombre especializado ya distingue el curso con I/II. */
+export function courseCardTitle(title: string): string {
+  const parenthesizedGrade =
+    /^(.*\b(?:I|II))\s+\([1-4]º\s+(?:ESO|Bachillerato)\)$/i.exec(title);
+  if (parenthesizedGrade) {
+    return parenthesizedGrade[1];
+  }
+
+  const trailingGrade =
+    /^(.*\b(?:I|II))\s+[1-4]º\s+(?:ESO|Bachillerato)(\s+\([^)]*\))?$/i.exec(
+      title,
+    );
+  if (trailingGrade) {
+    return `${trailingGrade[1]}${trailingGrade[2] ?? ""}`;
+  }
+
+  return title;
+}
+
+/** Intervalo compacto de niveles para una agrupación de contenido. */
+export function courseRangeLabel(titles: string[]): string {
+  const levels = titles.map(courseLevelLabel).filter(Boolean);
+  const first = levels[0];
+  const last = levels.at(-1);
+
+  if (!first || !last) {
+    return "";
+  }
+  return first === last ? first : `${first} → ${last}`;
 }
 
 export function stripLessonNumber(title: string): string {
@@ -46,18 +89,25 @@ export function buildLearningTrail({
   topic?: TrailTopic;
   leaves?: string[];
 }): BreadcrumbItem[] {
-  const items: BreadcrumbItem[] = [{ label: "Aprender", href: APRENDER_HOME_HREF }];
+  const items: BreadcrumbItem[] = [
+    { label: "Aprender", href: APRENDER_HOME_HREF },
+  ];
 
   if (course) {
     const subject = getSubject(subjectOfCourse(course));
     if (subject) {
       items.push({ label: subject.label, href: subject.href });
     }
-    items.push({ label: courseShortTitle(course.title), href: courseHref(course.slug) });
+    items.push({
+      label: courseShortTitle(course.title),
+      href: courseHref(course.slug),
+    });
   }
 
   if (course && topic) {
-    const label = topic.number ? `Tema ${topic.number}: ${topic.title}` : topic.title;
+    const label = topic.number
+      ? `Tema ${topic.number}: ${topic.title}`
+      : topic.title;
     items.push({ label, href: topicHref(course.slug, topic.slug) });
   }
 
