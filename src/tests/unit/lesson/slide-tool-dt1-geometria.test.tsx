@@ -1,11 +1,37 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { buildSlideAnim, SLIDE_ANIM_REGISTRY } from "@/components/lesson/anim/registry";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { PHI, alturaTrianguloEquivalente, anguloEn, arcoCapaz, areaTriangulo, catetoFaltante, cuartaProporcional, cumpleLugar, esTerna, hipotenusa, homotecia, ladoCuadradoEquivalente, mediaProporcional, razonAreas, razonVolumenes, segmentoAureo, terceraProporcional } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import type { SlideToolId } from "@/lib/lesson/types";
 
 const TOOLS: SlideToolId[] = ["dt1-pitagoras-explorador", "dt1-lugar-geometrico-explorador", "dt1-arco-capaz-explorador", "dt1-thales-explorador", "dt1-media-proporcional-explorador", "dt1-equivalencia-explorador", "dt1-homotecia-explorador"];
 const mount = (tool: SlideToolId, params?: Record<string, number>) => render(<SlideTool block={{ kind: "tool", tool, params }} />);
+
+const FOUNDATION_SCENES = [
+  ["dt1-plano-informacion", ["VISTAS", "MEDIDAS", "ESCALA", "SÍMBOLOS"]],
+  ["dt1-geometria-medida-demostracion", ["MEDIR", "DEMOSTRAR"]],
+  ["dt1-pitagoras-areas", ["a²", "b²", "c²"]],
+  ["dt1-lugares-condiciones", ["EQUIDISTA", "MEDIATRIZ", "BISECTRIZ"]],
+  ["dt1-interseccion-lugares", ["0 soluciones", "1 solución", "2 soluciones"]],
+  ["dt1-arco-capaz-invariancia", ["α", "MISMO ÁNGULO"]],
+  ["dt1-arco-capaz-construccion", ["MEDIATRIZ", "CENTRO O", "ARCO CAPAZ"]],
+] as const;
+
+describe("escenas narrativas del tema 1", () => {
+  it.each(FOUNDATION_SCENES)("%s existe, progresa y muestra sus ideas clave", (id, labels) => {
+    expect(SLIDE_ANIM_REGISTRY[id as keyof typeof SLIDE_ANIM_REGISTRY]).toBeDefined();
+    const built = buildSlideAnim(id as never);
+    expect(built.captions.length).toBeGreaterThanOrEqual(3);
+    const markup = built.captions
+      .map((_, beat) => renderToStaticMarkup(<>{built.render(beat)}</>))
+      .join(" ");
+    for (const label of labels) {
+      expect(markup).toContain(label);
+    }
+  });
+});
 
 describe("herramientas de Dibujo Técnico I, geometría: valores extremos", () => {
   it.each(TOOLS)("%s se monta con parámetros absurdos, nulos o ausentes", (tool) => {
