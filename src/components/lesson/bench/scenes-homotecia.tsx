@@ -151,25 +151,27 @@ const CENTRO: [number, number] = [8, 7];
 const FIG_H: [number, number][] = [[10, 7], [10, 5], [9, 6]];
 
 export function HomoteciaCuadricula({ block }: { block: BenchBlock }) {
-  const raw = Math.round(block.params?.a ?? 2);
-  const k = raw === 3 ? 3 : raw === -1 ? -1 : raw === -2 ? -2 : 2;
-  const esperado = FIG_H.map(([x, y]) => [CENTRO[0] + k * (x - CENTRO[0]), CENTRO[1] + k * (y - CENTRO[1])] as [number, number]);
+  const raw = block.params?.a ?? 2;
+  const k = raw === 0.5 ? 0.5 : raw === 3 ? 3 : raw === -1 ? -1 : raw === -2 ? -2 : 2;
+  // con razón 1/2 la figura de partida es el doble de grande, para que la imagen caiga en intersecciones
+  const figura: [number, number][] = k === 0.5 ? [[12, 7], [12, 3], [10, 5]] : FIG_H;
+  const esperado = figura.map(([x, y]) => [CENTRO[0] + k * (x - CENTRO[0]), CENTRO[1] + k * (y - CENTRO[1])] as [number, number]);
   const o = gp(CENTRO);
   return (
     <CuadriculaEjercicio
       block={block}
       scene="homotecia-cuadricula"
-      figura={FIG_H}
+      figura={figura}
       esperado={esperado}
       flechas
-      mensajeOk={`Correcto: cada vértice queda en la recta que lo une con O, a ${Math.abs(k)} ${Math.abs(k) === 1 ? "vez" : "veces"} su distancia a O${k < 0 ? " y al otro lado de O" : ""}. La figura obtenida es semejante a la original, con razón ${k}.`}
+      mensajeOk={k === 0.5 ? "Correcto: cada vértice queda en la recta que lo une con O, a la mitad de su distancia a O. La figura obtenida es una reducción semejante a la original, con razón 1/2." : `Correcto: cada vértice queda en la recta que lo une con O, a ${Math.abs(k)} ${Math.abs(k) === 1 ? "vez" : "veces"} su distancia a O${k < 0 ? " y al otro lado de O" : ""}. La figura obtenida es semejante a la original, con razón ${k}.`}
       decoracion={
         <g>
           <clipPath id="homotecia-rejilla">
             <rect x={22} y={22} width={24 * CELDA} height={14 * CELDA} />
           </clipPath>
           <g clipPath="url(#homotecia-rejilla)">
-          {FIG_H.map((g, i) => {
+          {figura.map((g, i) => {
             const v = gp(g);
             const dx = v[0] - o[0];
             const dy = v[1] - o[1];
@@ -179,7 +181,7 @@ export function HomoteciaCuadricula({ block }: { block: BenchBlock }) {
           </g>
           <Punto p={o} nombre="O" dx={-18} dy={18} color={AZUL} />
           <text x={34} y={48} fontSize="17" fontWeight="800" fill={AMBAR} fontFamily={SANS} {...etiqueta}>
-            k = {k}
+            k = {k === 0.5 ? "1/2" : k}
           </text>
         </g>
       }

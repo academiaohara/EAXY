@@ -1121,7 +1121,6 @@ export type SlideAnimId =
   | "dt1-documentos-profesionales"
   | "dt1-plano-revision"
   | "dt1-localizacion-dos-arcos"
-  | "dt1-seccion-aurea"
   | "dt1-pentagono-euclides"
   | "dt1-tangentes-punto"
   | "dt1-trazado-ovalo"
@@ -1330,7 +1329,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "traslacion-cuadricula" | "giro-compas" | "giro-practica" | "giro-cuadricula" | "simetria-compas" | "simetria-practica" | "simetria-cuadricula" | "homotecia-compas" | "homotecia-practica" | "homotecia-cuadricula" | "union-imagen";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "traslacion-cuadricula" | "giro-compas" | "giro-practica" | "giro-cuadricula" | "simetria-compas" | "simetria-practica" | "simetria-cuadricula" | "homotecia-compas" | "homotecia-practica" | "homotecia-cuadricula" | "union-imagen" | "thales-dividir" | "thales-practica" | "thales-paralelas" | "media-compas" | "media-practica" | "aurea-compas" | "aurea-practica" | "equivalencia-triangulos" | "cuadratura-compas" | "cuadratura-practica" | "semejanza-razon";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =
@@ -2005,10 +2004,6 @@ export type SlideToolId =
   | "dt1-pitagoras-explorador"
   | "dt1-lugar-geometrico-explorador"
   | "dt1-arco-capaz-explorador"
-  | "dt1-thales-explorador"
-  | "dt1-media-proporcional-explorador"
-  | "dt1-equivalencia-explorador"
-  | "dt1-homotecia-explorador"
   | "dt1-puntos-notables-explorador"
   | "dt1-triangulo-datos-explorador"
   | "dt1-cuadrilatero-explorador"

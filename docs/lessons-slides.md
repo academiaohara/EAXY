@@ -96,6 +96,14 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `homotecia-practica` | 4 fases | **Práctica**: hallar `A′` (medida `OA`, punta en `A`, arco, marcar el corte que no es `O`) | — |
 | `homotecia-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al aplicar una homotecia de centro `O` y razón `k` (las rectas desde `O` se dibujan como guía) | `a` = k (2, 3, −1, −2) |
 | `union-imagen` | 1 paso (tres pasadas) | **Unir los puntos**: la regla pasa por `A′B′`, `B′C′` y `C′A′` (tocar dos extremos cada vez, con progreso «Lados trazados: n de 3»). `a` elige la transformación: 0 traslación, 1 giro, 2 simetría, 3 homotecia. Usa `nClics: 6`, `extRegla: 0` y `progreso` del motor | `a` (0…3) |
+| `thales-dividir` | 7 | **Explicación animada** de dividir `AB` en tres partes iguales con Thales: tres marcas con la misma abertura sobre una semirrecta, unión de la tercera con `B` y paralelas por las marcas 1 y 2 | — |
+| `thales-practica` | 8 fases | **Práctica** de las tres marcas iguales (abertura libre entre 40 y 100, punta en `A` y en cada marca) y unión de la tercera con `B` | — |
+| `thales-paralelas` | 1 paso | Marcar los puntos de `AB` por los que cortan las paralelas (un tercio y dos tercios; `sinRegla`) | — |
+| `media-compas` / `media-practica` | 5 / 4 fases | **Media proporcional** (teorema de la altura): punto medio, semicircunferencia de diámetro `a + b` y perpendicular por `H` | — |
+| `aurea-compas` / `aurea-practica` | 5 / 7 fases | **Sección áurea** con regla y compás: `BC = AB/2`, arco de radio `CB` hasta `D`, arco de radio `AD` hasta `E` | — |
+| `equivalencia-triangulos` | 4 | Triángulos de igual base y altura (el vértice recorre la paralela) y rectángulo de mitad de altura | — |
+| `cuadratura-compas` / `cuadratura-practica` | 5 / 7 fases | **Cuadratura de un rectángulo**: altura sobre la prolongación de la base, semicircunferencia y perpendicular por `B` | — |
+| `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
 

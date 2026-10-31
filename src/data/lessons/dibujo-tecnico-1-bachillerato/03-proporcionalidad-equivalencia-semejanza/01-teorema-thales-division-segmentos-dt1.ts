@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
   slug: "teorema-thales-division-segmentos-dt1",
@@ -8,37 +8,37 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Segmentos proporcionales", [
-      { kind: "steps", items: [
-        "Dos segmentos $a$ y $b$ son **proporcionales** a otros dos $c$ y $d$ si $\\dfrac{a}{b} = \\dfrac{c}{d}$.",
-        "**Teorema de Thales**: si dos rectas que se cortan en $O$ son cortadas por rectas **paralelas**, los segmentos que se determinan son proporcionales: $\\dfrac{OA}{OA'} = \\dfrac{AB}{A'B'} = \\dfrac{OB}{OB'}$.",
-        "Es la herramienta gráfica para **trasladar proporciones** sin calcular.",
-        "Con él se resuelven tres problemas: **dividir un segmento en partes iguales**, **dividirlo en partes proporcionales** y hallar la **cuarta proporcional**.",
-      ] },
-    ], undefined, "stack"),
-    slide("thales", "Comprueba la proporción", [
-      { kind: "text", text: "Mueve OA, AB y OA′: las dos razones coinciden siempre. Las paralelas AA′ y BB′ garantizan la proporción." },
-    ], tool("dt1-thales-explorador"), "visual-top"),
-    slide("construcciones", "Tres construcciones con Thales", [
-      { kind: "steps", items: [
-        "**Dividir AB en n partes iguales**: por A se traza una semirrecta cualquiera, se llevan n marcas iguales con el compás, se une la última con B y se trazan paralelas a esa unión.",
-        "**Dividir AB en partes proporcionales a m y n**: igual, llevando m y n marcas consecutivas.",
-        "**Cuarta proporcional** $x$ de $a$, $b$, $c$ (es decir, $a/b = c/x$): se llevan $a$ y $b$ sobre una recta, $c$ sobre la otra, y la paralela por los extremos da $x$.",
-        "Todas se basan en que las **paralelas** conservan la razón.",
-      ] },
-    ]),
-    calc("calc-cuarta", "Cuarta proporcional", "Con OA = 3, AB = 2 y OA′ = 6, ¿cuánto mide A′B′? (A′B′ = AB · OA′ / OA)", nums(4), "A′B′ = 2 · 6 / 3 = 4.", "Aplica la proporción de Thales."),
-    calc("calc-x", "Hallar x", "Halla x en 4/6 = 10/x.", nums(15), "x = 6 · 10 / 4 = 15.", "Producto cruzado."),
-    calc("calc-div", "Partes iguales", "Se divide un segmento de 12 cm en 5 partes iguales con Thales. ¿Cuánto mide cada parte, en cm?", nums(2.4), "12 / 5 = 2,4 cm.", "Divide entre cinco."),
-    sort("clasifica-thales", "¿Qué se pide?", "Clasifica cada problema.",
-      [["div", "Dividir en partes iguales", "cobalt"], ["pro", "Dividir proporcionalmente", "amber"], ["cua", "Cuarta proporcional", "emerald"]],
-      [["Repartir una barra en 7 trozos iguales", "div"], ["Dividir una pared en 3 partes iguales", "div"], ["Dividir un segmento en partes 2 : 3", "pro"], ["Repartir un terreno entre dos socios al 40 % y 60 %", "pro"], ["Hallar x en a/b = c/x", "cua"], ["Hallar la sombra de un poste a partir de otra sombra conocida", "cua"]],
-      "Los tres usan paralelas para conservar proporciones.",
-    ),
-    pick("check-paralelas", "Condición", "¿Qué condición exige el teorema de Thales para que los segmentos sean proporcionales?",
-      "Que las rectas que cortan a las dos semirrectas sean paralelas entre sí",
-      [["Que las rectas sean perpendiculares", "Eso no da proporcionalidad."], ["Que los segmentos sean iguales", "Entonces no habría que probar nada."], ["Que las semirrectas sean paralelas", "Deben cortarse en O."]],
-      "Las paralelas mantienen la razón entre los segmentos.",
-    ),
+    slide("thales", "Dividir un segmento en partes iguales", [], bench("thales-dividir", [
+      { title: "Una semirrecta cualquiera", text: "**Teorema de Thales**: si dos rectas que se cortan son cortadas por **paralelas**, los segmentos que determinan son **proporcionales**. Para dividir $AB$ en tres partes iguales, traza por $A$ una semirrecta cualquiera.", fact: "Las paralelas conservan la razón" },
+      { title: "Primera marca", text: "Abre el compás una abertura cualquiera, clava la punta en $A$ y marca el punto **1** sobre la semirrecta." },
+      { title: "Segunda marca", text: "**Sin cambiar la abertura**, clava la punta en el punto 1 y marca el punto **2**." },
+      { title: "Tercera marca", text: "Repite desde el punto 2 y marca el punto **3**: las tres partes de la semirrecta son iguales.", fact: "Tres aberturas iguales" },
+      { title: "Une la última marca con B", text: "Con la regla, une el punto **3** con $B$. Esa recta es la que hay que trasladar." },
+      { title: "Traza las paralelas", text: "Con escuadra y cartabón, traza por los puntos 2 y 1 **paralelas** a la recta $3B$. Cortan a $AB$ en $Q$ y en $P$.", fact: "Paralelas por 2 y por 1" },
+      { title: "Tres partes iguales", text: "Como las paralelas conservan la razón, $AP = PQ = QB$. Llevando $m$ y $n$ marcas se divide en partes **proporcionales**, y la misma idea resuelve la **cuarta proporcional** $x$ de $\\dfrac{a}{b} = \\dfrac{c}{x}$.", fact: "AP = PQ = QB" },
+    ]), "stack"),
+
+    benchTask("thales-marcas", "Marca tres partes iguales", "thales-practica", [
+      { title: "Clava la punta en A", text: "Toca el extremo $A$ para clavar la **punta seca** del compás." },
+      { title: "Abre el compás", text: "Arrastra la mina para elegir una abertura cualquiera y pulsa «Fijar abertura». Cuanto más grande, más lejos llegarán las marcas.", fact: "Una abertura, tres marcas" },
+      { title: "Marca el punto 1", text: "Arrastra la mina para trazar un arco que **corte la semirrecta**." },
+      { title: "Pasa al punto 1", text: "**Sin cambiar la abertura**, toca el punto 1 para clavar allí la punta." },
+      { title: "Marca el punto 2", text: "Traza otro arco que corte la semirrecta." },
+      { title: "Pasa al punto 2", text: "Toca el punto 2." },
+      { title: "Marca el punto 3", text: "Traza el tercer arco sobre la semirrecta." },
+      { title: "Une el 3 con B", text: "Toca **dos puntos**: la tercera marca y $B$. La regla trazará la recta. Después pulsa **Comprobar**." },
+    ], {
+      question: "Marca sobre la semirrecta tres partes iguales con el compás y une la tercera marca con B.",
+      hint: "No cambies la abertura entre una marca y la siguiente.",
+      explanation: "Con la misma abertura, las tres marcas quedan a la misma distancia unas de otras; la recta que une la tercera con B es la que se traslada con paralelas.",
+    }),
+
+    benchTask("thales-paralelas", "Traza las paralelas", "thales-paralelas", [
+      { title: "Paralelas por las marcas 1 y 2", text: "Imagina las **paralelas** a la recta $3B$ por los puntos 2 y 1 (con escuadra y cartabón). Toca los **dos puntos de $AB$** por los que cortan. Después pulsa **Comprobar**.", fact: "Cortan a AB en un tercio y en dos tercios" },
+    ], {
+      question: "Marca los dos puntos de AB por los que pasan las paralelas trazadas por las marcas 1 y 2.",
+      hint: "Divide AB en tres partes iguales.",
+      explanation: "Las paralelas conservan la razón: cortan a AB en P y Q, que lo dividen en tres partes iguales.",
+    }),
   ],
 };

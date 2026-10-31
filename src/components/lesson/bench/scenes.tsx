@@ -56,7 +56,18 @@ export type BenchSceneName =
   | "homotecia-compas"
   | "homotecia-practica"
   | "homotecia-cuadricula"
-  | "union-imagen";
+  | "union-imagen"
+  | "thales-dividir"
+  | "thales-practica"
+  | "thales-paralelas"
+  | "media-compas"
+  | "media-practica"
+  | "aurea-compas"
+  | "aurea-practica"
+  | "equivalencia-triangulos"
+  | "cuadratura-compas"
+  | "cuadratura-practica"
+  | "semejanza-razon";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -85,6 +96,17 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "homotecia-practica": 4,
   "homotecia-cuadricula": 3,
   "union-imagen": 1,
+  "thales-dividir": 7,
+  "thales-practica": 8,
+  "thales-paralelas": 1,
+  "media-compas": 5,
+  "media-practica": 4,
+  "aurea-compas": 5,
+  "aurea-practica": 7,
+  "equivalencia-triangulos": 4,
+  "cuadratura-compas": 5,
+  "cuadratura-practica": 7,
+  "semejanza-razon": 4,
 };
 
 export const INK = "#2a2f36";

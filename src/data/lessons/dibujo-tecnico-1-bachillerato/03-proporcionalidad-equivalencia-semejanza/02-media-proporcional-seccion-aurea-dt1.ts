@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { anim, calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const mediaProporcionalSeccionAureaDt1Lesson: InteractiveLesson = {
   slug: "media-proporcional-seccion-aurea-dt1",
@@ -8,40 +8,45 @@ export const mediaProporcionalSeccionAureaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Otras proporcionales", [
-      { kind: "steps", items: [
-        "**Tercera proporcional** de $a$ y $b$: el $x$ tal que $\\dfrac{a}{b} = \\dfrac{b}{x}$, es decir $x = \\dfrac{b^2}{a}$.",
-        "**Media proporcional** de $a$ y $b$: el $x$ tal que $\\dfrac{a}{x} = \\dfrac{x}{b}$, es decir $x = \\sqrt{a\\,b}$.",
-        "Se construye con el **teorema de la altura**: en el triángulo rectángulo inscrito en una semicircunferencia, la **altura sobre la hipotenusa** es media proporcional entre los dos segmentos que determina.",
-        "Con el **teorema del cateto**, cada cateto es media proporcional entre la hipotenusa y su proyección: $c^2 = a \\cdot c_a$.",
-      ] },
-    ], undefined, "stack"),
-    slide("media", "Teorema de la altura", [
-      { kind: "text", text: "Coloca H sobre el diámetro y verifica que CH² = AH · HB." },
-    ], tool("dt1-media-proporcional-explorador"), "visual-top"),
-    slide("aurea", "La sección áurea", [
-      { kind: "steps", items: [
-        "Un segmento se divide en **media y extrema razón** si el total es a la parte mayor como la mayor es a la menor.",
-        "La razón es el **número áureo** $\\varphi = \\dfrac{1 + \\sqrt{5}}{2} \\approx 1{,}618$. La parte mayor es $x = \\dfrac{a}{\\varphi} \\approx 0{,}618\\,a$.",
-        "Aparece en la arquitectura clásica, el diseño y la naturaleza; el **rectángulo áureo** tiene lados en razón $\\varphi$.",
-        "Se construye con regla y compás: observa el trazado.",
-      ] },
-    ]),
-    slide("traza", "Trazado del segmento áureo", [
-      { kind: "text", text: "Perpendicular de AB/2, arco desde C y arco desde A." },
-    ], anim("dt1-seccion-aurea"), "visual-top"),
-    calc("calc-media", "Media proporcional", "¿Cuánto vale la media proporcional de 4 y 9?", nums(6), "√(4 · 9) = √36 = 6.", "Raíz del producto."),
-    calc("calc-tercera", "Tercera proporcional", "¿Cuánto vale la tercera proporcional de 2 y 6 (2/6 = 6/x)?", nums(18), "x = 6² / 2 = 18.", "Cuadrado del segundo entre el primero."),
-    calc("calc-aurea", "Parte áurea", "¿Cuánto mide la parte mayor del segmento áureo de un segmento de 10 cm? (dos decimales)", nums(6.18, 6.1803), "10 / 1,618 ≈ 6,18 cm.", "Divide entre φ."),
-    sort("clasifica-prop", "¿Qué proporcional es?", "Clasifica cada relación.",
-      [["ter", "Tercera proporcional", "cobalt"], ["med", "Media proporcional", "amber"], ["aur", "Sección áurea", "emerald"]],
-      [["a/b = b/x", "ter"], ["x = b²/a", "ter"], ["a/x = x/b", "med"], ["x = √(a·b)", "med"], ["Altura sobre la hipotenusa", "med"], ["Total/parte mayor = parte mayor/parte menor", "aur"], ["Razón 1,618", "aur"]],
-      "La media proporcional usa una raíz; la tercera, un cuadrado; la áurea, φ.",
-    ),
-    pick("check-altura", "Teorema de la altura", "En un triángulo rectángulo, la hipotenusa queda dividida por la altura en trozos de 4 y 9 cm. ¿Cuánto mide la altura?",
-      "6 cm, porque h² = 4 · 9",
-      [["6,5 cm, la media de 4 y 9", "La aritmética no es la proporcional."], ["13 cm, la suma", "La suma es la hipotenusa."], ["36 cm", "Ese es el producto; la altura es su raíz."]],
-      "La altura sobre la hipotenusa es media proporcional entre los dos segmentos.",
-    ),
+    slide("media", "Media proporcional: teorema de la altura", [], bench("media-compas", [
+      { title: "Dos segmentos consecutivos", text: "La **media proporcional** de $a$ y $b$ es el $x$ tal que $\\dfrac{a}{x} = \\dfrac{x}{b}$, es decir, $x = \\sqrt{a\\,b}$. Para construirla se ponen $a$ y $b$ **uno a continuación del otro**: $AH = a$ y $HB = b$.", fact: "x = √(a · b)" },
+      { title: "Punto medio y radio", text: "Halla el punto medio $O$ de $AB$ (con la mediatriz) y toma con el compás la distancia $OB$." },
+      { title: "Semicircunferencia", text: "Con centro en $O$, traza la **semicircunferencia** de diámetro $AB$.", fact: "Diámetro AB" },
+      { title: "Perpendicular por H", text: "Levanta por $H$ la perpendicular a $AB$: corta a la semicircunferencia en $C$. El segmento $CH$ es la **altura**." },
+      { title: "Teorema de la altura", text: "En el triángulo rectángulo $ABC$, la altura sobre la hipotenusa cumple $h^2 = a \\cdot b$: $h$ es la **media proporcional**. La **tercera proporcional** $x = \\dfrac{b^2}{a}$ se halla como una cuarta proporcional con Thales.", fact: "h² = a · b" },
+    ]), "stack"),
+
+    benchTask("media-construye", "Traza la media proporcional", "media-practica", [
+      { title: "Toma la medida OB", text: "Toca $O$ para clavar la punta y $B$ para colocar la mina: el compás queda con el radio de la semicircunferencia.", fact: "Abertura = OB" },
+      { title: "Clava la punta en O", text: "Toca el punto medio $O$ del segmento." },
+      { title: "Traza la semicircunferencia", text: "Arrastra la mina para trazar el arco **desde $B$ hasta $A$**, por encima del segmento." },
+      { title: "Perpendicular por H", text: "Toca **dos puntos**: $H$ y el punto de la semicircunferencia que está justo encima. La regla trazará la altura. Después pulsa **Comprobar**." },
+    ], {
+      question: "Traza la media proporcional de a y b con la semicircunferencia de diámetro AB y la perpendicular por H.",
+      hint: "La perpendicular pasa por H y corta a la semicircunferencia.",
+      explanation: "CH es la altura sobre la hipotenusa del triángulo rectángulo ABC, y por el teorema de la altura CH² = AH · HB.",
+    }),
+
+    slide("aurea", "La sección áurea", [], bench("aurea-compas", [
+      { title: "Perpendicular de longitud AB/2", text: "Un segmento se divide en **media y extrema razón** si el total es a la parte mayor como la mayor es a la menor. En $B$ levanta una perpendicular $BC$ de longitud **$AB/2$**.", fact: "BC = AB / 2" },
+      { title: "Une A con C", text: "Con la regla, traza la hipotenusa $AC$." },
+      { title: "Arco desde C", text: "Con centro en $C$ y radio $CB$, traza un arco que corta a $AC$ en $D$." },
+      { title: "Arco desde A", text: "Con centro en $A$ y radio $AD$, traza un arco que corta a $AB$ en $E$." },
+      { title: "El número áureo", text: "$E$ divide $AB$ en media y extrema razón: $\\dfrac{AB}{AE} = \\dfrac{AE}{EB} = \\varphi = \\dfrac{1+\\sqrt{5}}{2} \\approx 1{,}618$. Aparece en la arquitectura clásica, el diseño y la naturaleza.", fact: "φ ≈ 1,618" },
+    ]), "stack"),
+
+    benchTask("aurea-construye", "Construye la sección áurea", "aurea-practica", [
+      { title: "Toma la medida CB", text: "Toca $C$ para clavar la punta y $B$ para colocar la mina.", fact: "Abertura = CB" },
+      { title: "Clava la punta en C", text: "Toca el vértice $C$." },
+      { title: "Corta la hipotenusa", text: "Arrastra la mina para trazar un arco que **corte a $AC$**: ese corte es $D$." },
+      { title: "Toma la medida AD", text: "Toca $A$ y luego $D$ para tomar la distancia $AD$.", fact: "Abertura = AD" },
+      { title: "Clava la punta en A", text: "Toca el vértice $A$." },
+      { title: "Corta el segmento", text: "Arrastra la mina para trazar un arco que **corte a $AB$**." },
+      { title: "Marca E", text: "Toca el punto donde el arco corta a $AB$: es $E$. Después pulsa **Comprobar**." },
+    ], {
+      question: "Divide el segmento AB en media y extrema razón (sección áurea) con regla y compás.",
+      hint: "Arco de centro C y radio CB hasta AC; arco de centro A y radio AD hasta AB.",
+      explanation: "La construcción da AE = AB/φ ≈ 0,618 · AB: el punto E divide AB en media y extrema razón.",
+    }),
   ],
 };

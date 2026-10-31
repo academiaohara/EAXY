@@ -1870,7 +1870,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020201', 'a2000000-0000-4000-8000-000000000202', '1. Proporcionalidad y teorema de Thales', 'Cuarta proporcional y división de segmentos.', 1, null),
   ('a3000000-0000-4000-8000-000000020202', 'a2000000-0000-4000-8000-000000000202', '2. Tercera y media proporcional. Sección áurea', 'Teorema de la altura y número áureo.', 2, null),
   ('a3000000-0000-4000-8000-000000020203', 'a2000000-0000-4000-8000-000000000202', '3. Equivalencia de figuras y cuadratura', 'Figuras de igual área y cuadrado equivalente.', 3, null),
-  ('a3000000-0000-4000-8000-000000020204', 'a2000000-0000-4000-8000-000000000202', '4. Semejanza y homotecia', 'Razón de semejanza, áreas y volúmenes, homotecia.', 4, null),
+  ('a3000000-0000-4000-8000-000000020204', 'a2000000-0000-4000-8000-000000000202', '4. Semejanza y escalas', 'Razón de semejanza, áreas y volúmenes, homotecia.', 4, null),
   ('a3000000-0000-4000-8000-000000020301', 'a2000000-0000-4000-8000-000000000203', '1. Rectas y puntos notables del triángulo', 'Baricentro, incentro, circuncentro y ortocentro.', 1, null),
   ('a3000000-0000-4000-8000-000000020302', 'a2000000-0000-4000-8000-000000000203', '2. Clasificación y construcción de triángulos', 'Desigualdad triangular y casos de construcción.', 2, null),
   ('a3000000-0000-4000-8000-000000020303', 'a2000000-0000-4000-8000-000000000203', '3. Cuadriláteros: clasificación y construcción', 'Paralelogramos, trapecios y trapezoides.', 3, null),

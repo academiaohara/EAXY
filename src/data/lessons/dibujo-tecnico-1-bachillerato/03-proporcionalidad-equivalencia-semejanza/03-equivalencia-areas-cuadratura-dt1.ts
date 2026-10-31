@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
   slug: "equivalencia-areas-cuadratura-dt1",
@@ -8,37 +8,33 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Distinta forma, misma área", [
-      { kind: "steps", items: [
-        "Dos figuras son **equivalentes** si tienen la **misma área**, aunque su forma sea distinta.",
-        "Un triángulo con la **misma base** que un rectángulo y el **doble de altura** es equivalente a él.",
-        "**Triángulos con la misma base y la misma altura** son equivalentes: sus vértices están en una paralela a la base.",
-        "La **cuadratura** de una figura es hallar el **cuadrado equivalente**. Se hace en dos pasos: transformarla en un **rectángulo** equivalente y después aplicar la **media proporcional**: lado $= \\sqrt{b \\cdot h}$.",
-      ] },
-    ], undefined, "stack"),
-    slide("equiv", "Compara áreas", [
-      { kind: "text", text: "Cambia la base y la altura del rectángulo y observa el cuadrado y el triángulo con su misma área." },
-    ], tool("dt1-equivalencia-explorador"), "visual-top"),
-    slide("transforma", "Transformaciones habituales", [
-      { kind: "steps", items: [
-        "**Triángulo → rectángulo**: misma base y mitad de la altura. $A = \\dfrac{b \\cdot h}{2}$.",
-        "**Paralelogramo → rectángulo**: misma base y misma altura. $A = b \\cdot h$.",
-        "**Polígono → triángulo**: se sustituyen vértices por otros situados en paralelas a una diagonal, reduciendo un lado cada vez.",
-        "**Rectángulo → cuadrado**: lado = media proporcional de la base y la altura.",
-      ] },
-    ]),
-    calc("calc-lado", "Cuadrado equivalente", "Un rectángulo de 8 × 2 cm. ¿Cuánto mide el lado, en cm, del cuadrado de igual área?", nums(4), "√(8 · 2) = √16 = 4 cm (área 16 cm²).", "Media proporcional de 8 y 2."),
-    calc("calc-tri", "Área de un triángulo", "¿Cuál es el área, en cm², de un triángulo de base 6 cm y altura 4 cm?", nums(12), "6 · 4 / 2 = 12 cm².", "Base por altura entre dos."),
-    calc("calc-alt", "Triángulo equivalente", "Un triángulo con base 5 cm debe tener el área de un rectángulo de 5 × 3 cm. ¿Qué altura necesita, en cm?", nums(6), "A = 15; h = 2 · 15 / 5 = 6 cm.", "Dobla la altura del rectángulo."),
-    sort("clasifica-equiv", "¿Equivalentes?", "Clasifica cada pareja de figuras según su relación.",
-      [["eq", "Equivalentes", "cobalt"], ["no", "No equivalentes", "amber"]],
-      [["Rectángulo 6 × 2 y cuadrado de lado √12", "eq"], ["Triángulo base 4 h 6 y rectángulo 4 × 3", "eq"], ["Dos triángulos con la misma base y la misma altura", "eq"], ["Rectángulo 6 × 2 y rectángulo 5 × 2", "no"], ["Cuadrado de lado 4 y triángulo base 4 h 4", "no"]],
-      "Equivalente significa igual área, no igual forma.",
-    ),
-    pick("check-cuad", "Cuadratura", "¿Qué construcción se usa para transformar un rectángulo en un cuadrado equivalente?",
-      "La media proporcional de la base y la altura",
-      [["La bisectriz", "No relaciona longitudes de ese modo."], ["La mediatriz", "No da la raíz del producto."], ["La suma de la base y la altura", "Eso no conserva el área."]],
-      "El lado del cuadrado es √(b·h).",
-    ),
+    slide("equivalencia", "Distinta forma, misma área", [], bench("equivalencia-triangulos", [
+      { title: "Triángulo y base", text: "Dos figuras son **equivalentes** si tienen la **misma área**, aunque su forma sea distinta. Parte de un triángulo $ABC$ con base $AB$ y altura $h$.", fact: "Equivalente = igual área" },
+      { title: "Paralela por C", text: "Traza por $C$ la **paralela** $r$ a la base. Todos los puntos de $r$ están a la misma altura $h$ de $AB$." },
+      { title: "Desliza el vértice", text: "Al mover $C$ por la paralela, el triángulo cambia de forma, pero **base y altura no cambian**: el área $\\dfrac{b \\cdot h}{2}$ es siempre la misma.", fact: "Misma base y misma altura" },
+      { title: "Del triángulo al rectángulo", text: "El triángulo es equivalente a un **rectángulo** de la misma base y **mitad de altura**. De un **paralelogramo** se pasa a un rectángulo con la misma base y la misma altura.", fact: "Rectángulo: base b, altura h/2" },
+    ]), "stack"),
+
+    slide("cuadratura", "Cuadratura de un rectángulo", [], bench("cuadratura-compas", [
+      { title: "Rectángulo ABCD", text: "La **cuadratura** de una figura es hallar el **cuadrado equivalente**. Para un rectángulo de base $b$ y altura $h$, el lado del cuadrado es la **media proporcional**: $x = \\sqrt{b \\cdot h}$.", fact: "x = √(b · h)" },
+      { title: "Lleva la altura sobre la base", text: "Con centro en $B$ y radio $BC$, traza un arco que corte a la prolongación de $AB$ en $H$: ahora $AH = b + h$.", fact: "BH = h" },
+      { title: "Semicircunferencia", text: "Halla el punto medio $O$ de $AH$ y traza la **semicircunferencia** de diámetro $AH$." },
+      { title: "Perpendicular por B", text: "Levanta por $B$ la perpendicular: corta a la semicircunferencia en $E$. $BE = x$ es la media proporcional de $b$ y $h$." },
+      { title: "El cuadrado", text: "El cuadrado de lado $BE$ tiene **la misma área** que el rectángulo: $x^2 = b \\cdot h$.", fact: "x² = b · h" },
+    ]), "stack"),
+
+    benchTask("cuadratura-construye", "Haz la cuadratura del rectángulo", "cuadratura-practica", [
+      { title: "Toma la medida BC", text: "Toca $B$ para clavar la punta y $C$ para colocar la mina: el compás queda con la altura del rectángulo.", fact: "Abertura = BC" },
+      { title: "Clava la punta en B", text: "Toca el vértice $B$." },
+      { title: "Prolonga la base", text: "Arrastra la mina para trazar un arco que **corte a la prolongación de $AB$**: ese corte es $H$." },
+      { title: "Toma la medida OH", text: "Ahora toca $O$ (el punto medio de $AH$) y luego $H$ para tomar el radio de la semicircunferencia.", fact: "Abertura = OH" },
+      { title: "Clava la punta en O", text: "Toca el punto $O$." },
+      { title: "Traza la semicircunferencia", text: "Arrastra la mina para trazar el arco **desde $H$ hasta $A$**, por encima de la base." },
+      { title: "Perpendicular por B", text: "Toca **dos puntos**: $B$ y el punto de la semicircunferencia que está justo encima. La regla marca el lado del cuadrado. Después pulsa **Comprobar**." },
+    ], {
+      question: "Halla el lado del cuadrado de igual área que el rectángulo ABCD con compás y regla.",
+      hint: "Lleva la altura sobre la prolongación de la base, traza la semicircunferencia de diámetro AH y levanta la perpendicular por B.",
+      explanation: "BE es la altura del triángulo rectángulo inscrito en la semicircunferencia, así que BE² = AB · BH = b · h.",
+    }),
   ],
 };

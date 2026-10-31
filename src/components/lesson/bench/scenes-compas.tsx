@@ -51,7 +51,7 @@ export function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2
 }
 
 /** La regla entra, el lápiz traza la recta por `a` y `b` y la regla se retira. `p` va de 0 a 1. */
-function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string }) {
+export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string }) {
   const L = 300;
   const ang = (Math.atan2(b[1] - a[1], b[0] - a[0]) * 180) / Math.PI;
   const rd = (ang * Math.PI) / 180;
@@ -344,6 +344,8 @@ export type Def = {
   cortes: (est: Est) => Pt[];
   /** Toques de la fase final (2 por defecto: dos puntos de la regla; 1: marcar un punto; 6: tres pasadas de la regla). */
   nClics?: number;
+  /** Si es true, la fase final no dibuja la recta de la regla (la construcción se muestra en `papel`). */
+  sinRegla?: boolean;
   /** Cuánto se prolonga la recta de la regla más allá de los puntos tocados (28 por defecto). */
   extRegla?: number;
   /** Texto de progreso bajo el paso (por ejemplo, «Lados trazados: 1 de 3»). */
@@ -658,7 +660,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             </g>
           );
         })() : null}
-        {Array.from({ length: parejas }, (_, i) => (
+        {Array.from({ length: def.sinRegla ? 0 : parejas }, (_, i) => (
           <ReglaTrazando key={i} a={est.clics[2 * i]} b={est.clics[2 * i + 1]} p={i === parejas - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === parejas - 1 ? "bench-regla-trazo" : undefined} />
         ))}
         {est.medida.map((c, i) => (
