@@ -34,7 +34,7 @@ export const arcoCapazDt1Lesson: InteractiveLesson = {
     },
     sort("compara-angulos", "Relaciona ángulo y aspecto", "Clasifica qué ocurre al cambiar el ángulo bajo el que se ve AB.", [["agu", "α menor que 90°", "cobalt"], ["rec", "α igual a 90°", "amber"], ["obt", "α mayor que 90°", "emerald"]], [["El arco se aleja de AB", "agu"], ["La figura es una semicircunferencia de diámetro AB", "rec"], ["Es el caso de la propiedad de Tales", "rec"], ["El punto P queda más próximo a AB", "obt"], ["El segmento ocupa un ángulo visual pequeño", "agu"], ["El segmento ocupa un ángulo visual grande", "obt"]], "Acercarse al segmento aumenta su ángulo visual; alejarse lo reduce. El caso de 90° separa ambas situaciones."),
     {
-      id: "localizacion-dos-arcos", type: "storyboard", title: "Localiza una posición con dos observaciones", scene: "dt1-interseccion-lugares", autoplay: false,
+      id: "localizacion-dos-arcos", type: "storyboard", title: "Localiza una posición con dos observaciones", scene: "dt1-localizacion-dos-arcos", autoplay: false,
       phases: [
         { eyebrow: "Primera observación", text: "Ver A y B bajo 40° sitúa al observador en un primer arco capaz.", highlights: [{ text: "primer arco", tone: "cobalt" }] },
         { eyebrow: "Segunda observación", text: "Ver B y C bajo 55° genera un segundo arco capaz.", highlights: [{ text: "segundo arco", tone: "violet" }] },

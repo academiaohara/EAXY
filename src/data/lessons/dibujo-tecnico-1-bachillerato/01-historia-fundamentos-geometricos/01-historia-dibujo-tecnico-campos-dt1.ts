@@ -20,7 +20,7 @@ export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
     },
     pick("diagnostica-plano", "Detecta la información que falta", "Un taller recibe una perspectiva de una pieza con buen aspecto, pero sin cotas ni escala. ¿Qué impide fabricarla con seguridad?", "No se conoce su tamaño real: distintas piezas podrían corresponder al mismo dibujo", [["Falta colorearla para distinguir las caras", "El color puede ayudar a verla, pero no fija ninguna dimensión."], ["Falta indicar quién hizo el dibujo", "La autoría no permite deducir el tamaño."], ["No se ha usado un programa CAD", "Un croquis manual bien acotado sí puede comunicar el tamaño."]], "La forma y el tamaño son informaciones distintas. Las cotas y la escala evitan que el fabricante tenga que adivinar.", "Pregúntate qué dato necesitarías para elegir una medida de material."),
     {
-      id: "documentos-profesionales", type: "storyboard", title: "El mismo lenguaje, documentos distintos", scene: "dt1-plano-informacion", autoplay: false,
+      id: "documentos-profesionales", type: "storyboard", title: "El mismo lenguaje, documentos distintos", scene: "dt1-documentos-profesionales", autoplay: false,
       phases: [
         { eyebrow: "Arquitectura", text: "Una planta organiza espacios y usa escalas como 1:50 para representar un edificio completo.", highlights: [{ text: "planta", tone: "cobalt" }, { text: "1:50", tone: "amber" }] },
         { eyebrow: "Mecánica", text: "Un plano de pieza añade cotas y tolerancias porque unas décimas pueden decidir si encaja.", highlights: [{ text: "tolerancias", tone: "amber" }] },
@@ -35,7 +35,7 @@ export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
       { kind: "rule", title: "Lo que ambos necesitan", text: "Vistas, escala, cotas, símbolos y normas siguen siendo necesarios: el programa no decide qué información debe comunicar el plano." },
     ]),
     {
-      id: "transferencia", type: "storyboard", title: "Antes de entregar, comprueba el mensaje", scene: "dt1-plano-informacion", autoplay: false,
+      id: "transferencia", type: "storyboard", title: "Antes de entregar, comprueba el mensaje", scene: "dt1-plano-revision", autoplay: false,
       phases: [
         { eyebrow: "Forma", text: "¿Se entiende la geometría completa sin imaginar caras ocultas?", highlights: [{ text: "geometría", tone: "cobalt" }] },
         { eyebrow: "Tamaño", text: "¿Las cotas y la escala permiten obtener las dimensiones reales?", highlights: [{ text: "cotas", tone: "amber" }, { text: "escala", tone: "amber" }] },

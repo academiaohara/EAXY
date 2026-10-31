@@ -2,6 +2,13 @@ import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { buildSlideAnim, SLIDE_ANIM_REGISTRY } from "@/components/lesson/anim/registry";
+import {
+  arcConstructionGeometry,
+  arcInvarianceGeometry,
+  bisectorGeometry,
+  intersectionExamplesGeometry,
+  pythagorasGeometry,
+} from "@/components/lesson/anim/scenes/industrial/dt1-fundamentos";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { PHI, alturaTrianguloEquivalente, anguloEn, arcoCapaz, areaTriangulo, catetoFaltante, cuartaProporcional, cumpleLugar, esTerna, hipotenusa, homotecia, ladoCuadradoEquivalente, mediaProporcional, razonAreas, razonVolumenes, segmentoAureo, terceraProporcional } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import type { SlideToolId } from "@/lib/lesson/types";
@@ -17,6 +24,9 @@ const FOUNDATION_SCENES = [
   ["dt1-interseccion-lugares", ["0 soluciones", "1 solución", "2 soluciones"]],
   ["dt1-arco-capaz-invariancia", ["α", "MISMO ÁNGULO"]],
   ["dt1-arco-capaz-construccion", ["MEDIATRIZ", "CENTRO O", "ARCO CAPAZ"]],
+  ["dt1-documentos-profesionales", ["PLANTA", "TOLERANCIA", "CIRCUITO", "CURVAS DE NIVEL"]],
+  ["dt1-plano-revision", ["FORMA", "TAMAÑO", "SÍMBOLOS"]],
+  ["dt1-localizacion-dos-arcos", ["40°", "55°", "OBSERVADOR"]],
 ] as const;
 
 describe("escenas narrativas del tema 1", () => {
@@ -30,6 +40,54 @@ describe("escenas narrativas del tema 1", () => {
     for (const label of labels) {
       expect(markup).toContain(label);
     }
+  });
+});
+
+const distance = (a: readonly [number, number], b: readonly [number, number]) =>
+  Math.hypot(a[0] - b[0], a[1] - b[1]);
+
+describe("corrección geométrica de las escenas narrativas", () => {
+  it("Pitágoras construye tres cuadrados y conserva la igualdad de áreas", () => {
+    const geometry = pythagorasGeometry();
+    for (const square of geometry.squares) {
+      const sides = square.points.map((point, index) =>
+        distance(point, square.points[(index + 1) % 4]!),
+      );
+      expect(Math.max(...sides) - Math.min(...sides)).toBeLessThan(0.001);
+    }
+    expect(geometry.squares[0]!.side ** 2 + geometry.squares[1]!.side ** 2).toBeCloseTo(
+      geometry.squares[2]!.side ** 2,
+      6,
+    );
+  });
+
+  it("los ejemplos de intersección tienen realmente 0, 1 y 2 soluciones", () => {
+    expect(intersectionExamplesGeometry().map((example) => example.solutions)).toEqual([0, 1, 2]);
+  });
+
+  it("todos los puntos de invariancia pertenecen a la circunferencia y ven AB con el mismo ángulo", () => {
+    const geometry = arcInvarianceGeometry();
+    const angles = geometry.points.map((point) => {
+      expect(distance(point, geometry.center)).toBeCloseTo(geometry.radius, 6);
+      const pa = [geometry.a[0] - point[0], geometry.a[1] - point[1]] as const;
+      const pb = [geometry.b[0] - point[0], geometry.b[1] - point[1]] as const;
+      return (Math.acos((pa[0] * pb[0] + pa[1] * pb[1]) / (Math.hypot(...pa) * Math.hypot(...pb))) * 180) / Math.PI;
+    });
+    expect(Math.max(...angles) - Math.min(...angles)).toBeLessThan(0.001);
+  });
+
+  it("la construcción une el arco con A y B y el radio es perpendicular a la tangente", () => {
+    const geometry = arcConstructionGeometry();
+    expect(distance(geometry.arcStart, geometry.a)).toBeLessThan(0.001);
+    expect(distance(geometry.arcEnd, geometry.b)).toBeLessThan(0.001);
+    const radius = [geometry.a[0] - geometry.center[0], geometry.a[1] - geometry.center[1]] as const;
+    expect(radius[0] * geometry.tangent[0] + radius[1] * geometry.tangent[1]).toBeCloseTo(0, 6);
+  });
+
+  it("el punto señalado pertenece a la bisectriz y equidista de ambos lados", () => {
+    const geometry = bisectorGeometry();
+    expect(geometry.distanceToFirstSide).toBeCloseTo(geometry.distanceToSecondSide, 6);
+    expect(geometry.point[0] * geometry.direction[1] - geometry.point[1] * geometry.direction[0]).toBeCloseTo(0, 6);
   });
 });
 
