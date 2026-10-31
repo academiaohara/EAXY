@@ -5,7 +5,6 @@ import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type Pointe
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import {
   CARTABON_LARGO,
-  ESCUADRA_L,
   PARALELA_S_MAX,
   add,
   apoyarTriangulo,
@@ -14,13 +13,13 @@ import {
   distanciaFiloAP,
   dot,
   escuadraPose,
-  filoEscuadra,
   filoPasaPorP,
   mul,
   paralelaSetup,
   sub,
   type Pt,
 } from "./geometry";
+import { useBenchCheck } from "./practice";
 import { BenchDefs, CARTABON_PTS, Cartabon, Compas, Desk, ESCUADRA_PTS, Escuadra, Lapiz, Regla, Transportador } from "./instruments";
 
 export type BenchNote = { title: string; text: string; fact?: string };
@@ -50,8 +49,8 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "paralelas-escuadra-cartabon": 3,
   "perpendicular-escuadra-cartabon": 3,
   "transportador-medir": 3,
-  "mediatriz-compas": 4,
-  "bisectriz-compas": 4,
+  "mediatriz-compas": 5,
+  "bisectriz-compas": 5,
 };
 
 export const INK = "#2a2f36";
@@ -82,27 +81,29 @@ export function BenchShell({
   const btn =
     "inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
   return (
-    <section className="grid items-center gap-5 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-8" data-testid="bench" data-scene={scene}>
-      <div className="flex min-w-0 flex-col gap-3" aria-label={label}>
+    <section className="grid h-full min-h-0 gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-8" data-testid="bench" data-scene={scene}>
+      <div className="flex min-h-0 min-w-0 items-center justify-center" aria-label={label}>
         {children}
       </div>
-      <div className="flex min-w-0 flex-col gap-3">
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
-          Paso {step + 1} de {total}
-        </p>
-        <div className="min-h-[7.5rem]" aria-live="polite">
-          <h3 className="text-2xl font-bold leading-tight text-[color:var(--stage-ink,#fff)]" data-testid="bench-titulo">
-            {note?.title ?? ""}
-          </h3>
-          <MathRenderer text={note?.text ?? ""} emphasis="mark-alternate" className="mt-2 block text-[1.05rem] leading-relaxed text-[color:var(--stage-ink,#fff)]" />
-          {note?.fact ? (
-            <p className="mt-2 text-sm font-semibold text-[#ffd866]" data-testid="bench-dato">
-              {note.fact}
-            </p>
-          ) : null}
+      <div className="flex min-h-0 min-w-0 flex-col py-2">
+        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden pt-[8%]" aria-live="polite">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
+            Paso {step + 1} de {total}
+          </p>
+          <div>
+            <h3 className="text-2xl font-bold leading-tight text-[color:var(--stage-ink,#fff)]" data-testid="bench-titulo">
+              {note?.title ?? ""}
+            </h3>
+            <MathRenderer text={note?.text ?? ""} emphasis="mark-alternate" className="mt-2 block text-[1.05rem] leading-relaxed text-[color:var(--stage-ink,#fff)]" />
+            {note?.fact ? (
+              <p className="mt-2 text-sm font-semibold text-[#ffd866]" data-testid="bench-dato">
+                {note.fact}
+              </p>
+            ) : null}
+          </div>
+          {extra}
         </div>
-        {extra}
-        <div className="flex items-center gap-3 pt-1">
+        <div className="flex shrink-0 items-center gap-3 pt-3" data-testid="bench-nav">
           <button type="button" className={btn} disabled={step === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
             <ChevronLeftIcon className="size-4" aria-hidden />
             Anterior
@@ -122,7 +123,7 @@ export function BenchShell({
   );
 }
 
-export const SVG_CLASS = "block h-auto w-full rounded-xl";
+export const SVG_CLASS = "block h-full max-h-full w-full max-w-full rounded-xl";
 
 /* ───────────── Ángulos: arcos de anotación ───────────── */
 
@@ -400,30 +401,42 @@ const VIEW_W = 520;
 const VIEW_H = 350;
 const SHEET = { x: 30, y: 16, w: 460, h: 334 };
 
+/** Resultado de una comprobación, bajo el texto del paso (el color lo da también el pie de la lección). */
+export function Resultado({ ok, children }: { ok: boolean; children: ReactNode }) {
+  return (
+    <p
+      className={`rounded-lg border px-3 py-2 text-sm leading-snug ${ok ? "border-emerald-400/60 bg-emerald-400/10 text-emerald-100" : "border-amber-400/60 bg-amber-400/10 text-amber-100"}`}
+      data-testid="bench-resultado"
+      data-ok={ok}
+    >
+      {children}
+    </p>
+  );
+}
+
 export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const theta = clamp(block.params?.a ?? 12, -15, 30);
   const dP = clamp(block.params?.b ?? 70, 40, 100);
+  const last = BENCH_STEPS["paralelas-escuadra-cartabon"] - 1;
   const [step, setStep] = useState(0);
   const [s, setS] = useState(0);
-  const [traced, setTraced] = useState(false);
+  const [agarrada, setAgarrada] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const drag = useRef<{ start: Pt; s0: number } | null>(null);
-  const [agarrada, setAgarrada] = useState(false);
 
   const setup = paralelaSetup([175, 70], theta, dP);
-  const eq = escuadraPose(setup, s);
-  const ct = cartabonPose(setup);
-  const [e0, e1] = filoEscuadra(setup, s);
-  const dist = distanciaFiloAP(setup, s);
   const ok = filoPasaPorP(setup, s);
-  const mueve = step === 2 && !traced;
+  const { resultado } = useBenchCheck({ ready: step === last, evaluate: () => filoPasaPorP(setup, s) });
+  const hecho = resultado === true;
+  const shown = resultado !== null ? last : step;
+  const sv = hecho && !ok ? setup.sStar : s;
+  const eq = escuadraPose(setup, sv);
+  const ct = cartabonPose(setup);
+  const mueve = shown === last && resultado === null;
 
   const goStep = (n: number) => {
     setStep(n);
-    if (n < 2) {
-      setS(0);
-      setTraced(false);
-    }
+    if (n < last) setS(0);
   };
 
   const toSvg = (ev: ReactPointerEvent): Pt => {
@@ -460,55 +473,18 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const rB = add(setup.c0, mul(setup.u, 280));
   const pa = add(setup.p, mul(setup.u, -150));
   const pb = add(setup.p, mul(setup.u, 200));
-  const mid = add(add(setup.c0, mul(setup.u, ESCUADRA_L * 0.5)), mul(setup.n, 0));
-  const flecha: [Pt, Pt] = [add(mid, mul(setup.n, 30)), add(add(mid, mul(setup.n, 30)), mul(setup.h, 52))];
+  const falta = Math.abs(distanciaFiloAP(setup, s));
 
   const extra =
-    step === 2 ? (
-      <div className="flex flex-col gap-2" data-testid="bench-paralelas-panel">
-        <p className="text-sm text-[color:var(--stage-muted,#b8c2d0)]">
-          Distancia del borde a P{" "}
-          <span className="text-xl font-bold tabular-nums" style={{ color: ok ? "#83c167" : "#fc6255" }} data-testid="bench-dist">
-            {f1(Math.abs(dist))} mm
-          </span>
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            type="button"
-            disabled={!ok || traced}
-            onClick={() => setTraced(true)}
-            data-testid="bench-trazar"
-            className="rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-4 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            Trazar la paralela
-          </button>
-          {s > 0 || traced ? (
-            <button
-              type="button"
-              onClick={() => {
-                setS(0);
-                setTraced(false);
-              }}
-              className="rounded-lg px-3 py-2 text-sm text-[color:var(--stage-muted,#b8c2d0)] underline-offset-2 hover:underline"
-              data-testid="bench-reiniciar"
-            >
-              Volver a empezar
-            </button>
-          ) : null}
-        </div>
-        <p className="text-sm leading-snug text-[color:var(--stage-ink,#fff)]" data-testid="bench-estado">
-          {traced
-            ? "Hecho: la recta es paralela a r porque la escuadra solo se ha desplazado, no ha girado."
-            : ok
-              ? "El borde pasa por P. Ya puedes trazar."
-              : "Arrastra la escuadra sobre el cartabón hasta que su borde pase por P."}
-        </p>
-      </div>
-    ) : null;
+    resultado === null ? null : resultado ? (
+      <Resultado ok>Correcto: la recta trazada es paralela a r porque la escuadra solo se ha desplazado, no ha girado.</Resultado>
+    ) : (
+      <Resultado ok={false}>El borde de la escuadra no pasa por P: queda a {f1(falta)} mm. Pulsa «Reintentar» y vuelve a deslizarla.</Resultado>
+    );
 
   return (
-    <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={step} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">
-      <svg ref={svgRef} viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} className={`${SVG_CLASS} touch-none select-none`} aria-hidden={false} role="group" aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón" data-testid="bench-paralelas">
+    <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">
+      <svg ref={svgRef} viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} className={`${SVG_CLASS} touch-none select-none`} role="group" aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón" data-testid="bench-paralelas">
         <BenchDefs />
         <clipPath id="bench-sheet-clip">
           <rect x={SHEET.x} y={SHEET.y} width={SHEET.w} height={SHEET.h} />
@@ -519,9 +495,9 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
           <text x={rA[0] - 4} y={rA[1] - 7} fontSize="11" fontWeight="700" fill={INK} fontFamily={SANS}>
             r
           </text>
-          {traced ? <line data-testid="bench-trazo" x1={pa[0]} y1={pa[1]} x2={pb[0]} y2={pb[1]} stroke="#2b3138" strokeWidth="1" strokeLinecap="round" /> : null}
+          {hecho ? <line data-testid="bench-trazo" x1={pa[0]} y1={pa[1]} x2={pb[0]} y2={pb[1]} stroke="#2b3138" strokeWidth="1" strokeLinecap="round" /> : null}
         </g>
-        <g style={{ opacity: step >= 1 ? 1 : 0, transition: "opacity 400ms" }} data-testid="bench-cartabon">
+        <g style={{ opacity: shown >= 1 ? 1 : 0, transition: "opacity 400ms" }} data-testid="bench-cartabon">
           <Cartabon pose={ct} />
         </g>
         <g
@@ -535,23 +511,16 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
           aria-label="Escuadra: arrástrala sobre el cartabón"
           aria-valuemin={0}
           aria-valuemax={PARALELA_S_MAX}
-          aria-valuenow={Math.round(s)}
+          aria-valuenow={Math.round(sv)}
           style={{ cursor: mueve ? (agarrada ? "grabbing" : "grab") : "default", outline: "none" }}
           data-testid="bench-escuadra"
         >
           <Escuadra pose={eq} />
         </g>
-        <circle cx={setup.p[0]} cy={setup.p[1]} r="2.4" fill={ok && step === 2 ? "#1f9d55" : "#c0392b"} />
+        <circle cx={setup.p[0]} cy={setup.p[1]} r="2.4" fill={resultado === true ? "#1f9d55" : "#c0392b"} />
         <text x={setup.p[0] + 5} y={setup.p[1] + 12} fontSize="11" fontWeight="700" fill={INK} fontFamily={SANS}>
           P
         </text>
-        {ok && mueve ? <line x1={e0[0]} y1={e0[1]} x2={e1[0]} y2={e1[1]} stroke="#1f9d55" strokeWidth="1.4" strokeDasharray="4 3" /> : null}
-        {mueve && s < 6 ? (
-          <g data-testid="bench-pista" pointerEvents="none">
-            <line x1={flecha[0][0]} y1={flecha[0][1]} x2={flecha[1][0]} y2={flecha[1][1]} stroke="#d97706" strokeWidth="2.4" strokeLinecap="round" />
-            <circle cx={flecha[1][0]} cy={flecha[1][1]} r="4" fill="#d97706" />
-          </g>
-        ) : null}
       </svg>
     </BenchShell>
   );

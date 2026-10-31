@@ -49,7 +49,13 @@ export type ExploreSnapshot = {
   isCorrect: boolean;
 };
 
+export type BenchTaskSnapshot = {
+  kind: "bench_task";
+  isCorrect: boolean;
+};
+
 export type PracticeStepSnapshot =
+  | BenchTaskSnapshot
   | FillInBlankSnapshot
   | FractionPickSnapshot
   | ClassifySnapshot

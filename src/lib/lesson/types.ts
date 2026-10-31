@@ -14,7 +14,8 @@ export type StepType =
   | "fraction_pick"
   | "classify"
   | "number_line_pick"
-  | "divisibility_grid";
+  | "divisibility_grid"
+  | "bench_task";
 
 export type LessonStageTheme = "paper" | "board";
 
@@ -465,7 +466,21 @@ export type DivisibilityGridStep = LessonStepBase &
     divisors: number[];
   };
 
+/**
+ * Ejercicio práctico sobre la mesa de dibujo: el alumno recorre los pasos guiados de una escena
+ * (`notes`, uno por paso) y en el último paso resuelve la tarea con los instrumentos. La comprobación
+ * va en el pie de la lección («Comprobar»: verde si está bien, naranja si no).
+ */
+export type BenchTaskStep = LessonStepBase &
+  PracticeFields & {
+    type: "bench_task";
+    scene: BenchSceneId;
+    params?: { a?: number; b?: number };
+    notes: { title: string; text: string; fact?: string }[];
+  };
+
 export type PracticeStep =
+  | BenchTaskStep
   | FillInBlankStep
   | FractionPickStep
   | ClassifyStep
@@ -2353,6 +2368,7 @@ const PRACTICE_TYPES: ReadonlySet<StepType> = new Set([
   "divisibility_grid",
   "predict",
   "explore",
+  "bench_task",
 ]);
 
 export function isQuizStep(

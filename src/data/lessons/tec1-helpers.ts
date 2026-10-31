@@ -56,6 +56,35 @@ export const bench = (
   params?: Extract<SlideBlock, { kind: "bench" }>["params"],
 ): Visual => ({ kind: "bench", scene, notes, ...(params ? { params } : {}) });
 
+/**
+ * Ejercicio práctico sobre la mesa de dibujo: pasos guiados (`notes`) y, en el último, una tarea que se
+ * comprueba desde el pie de la lección. `question` y `explanation` alimentan la ayuda del tutor.
+ */
+export function benchTask(
+  id: string,
+  title: string,
+  scene: Extract<SlideBlock, { kind: "bench" }>["scene"],
+  notes: NonNullable<Extract<SlideBlock, { kind: "bench" }>["notes"]>,
+  opts: { question: string; hint?: string; explanation: string; params?: Extract<SlideBlock, { kind: "bench" }>["params"] },
+): LessonStep {
+  return {
+    id,
+    type: "bench_task",
+    title,
+    scene,
+    notes,
+    question: opts.question,
+    ...(opts.hint ? { hint: opts.hint } : {}),
+    explanation: opts.explanation,
+    ...(opts.params ? { params: opts.params } : {}),
+    help: [
+      { label: "¿Por dónde empiezo?", message: "Sigue los pasos de la derecha: te guían con los instrumentos antes de la tarea final." },
+      { label: "No me sale", message: opts.hint ?? "Mueve un poco el instrumento y fíjate en qué cambia; ajusta hasta que cumpla lo que pide la tarea." },
+      { label: "¿Por qué funciona?", message: opts.explanation },
+    ],
+  };
+}
+
 /** Pregunta de elección: la primera opción es la correcta; el resto, errores típicos con su explicación. */
 export function pick(
   id: string,
