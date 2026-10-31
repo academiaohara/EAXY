@@ -587,6 +587,27 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fq3-bohr-salto` | Salto de un electrón entre niveles de Bohr y emisión de luz | — |
 | `fq3-enlace-ionico` | Transferencia de un electrón de Na a Cl | — |
 | `fq3-colisiones` | Teoría de colisiones y factores de la velocidad | — |
+| `fq3-mrua` | Marcas estroboscópicas de un MRU y un MRUA y gráfica v-t | — |
+| `fq3-corriente` | Circuito sencillo: sentido de los electrones, convenio y aparatos de medida | — |
+| `fq4-polimerizacion` | Polimerización por adición del eteno a polietileno | — |
+| `fq4-mcu` | MCU: velocidad tangente y aceleración centrípeta | — |
+| `fq4-diagrama-fuerzas` | Diagrama de fuerzas de un bloque: P, N, F, Fr y resultante | — |
+| `fq4-canon-newton` | El cañón de Newton: de la caída libre a la órbita | — |
+| `fq4-conservacion-pista` | Bola en una pista en U: Ep y Ec con Em constante | — |
+| `fq4-curva-calentamiento` | Curva de calentamiento del agua: tramos y mesetas | — |
+| `fq4-ondas` | Onda transversal y longitudinal: amplitud y longitud de onda | — |
+| `fb1-orbitales` | Orbitales atómicos s, p y d frente a las órbitas de Bohr | — |
+| `fb1-radio-atomico` | Tendencia del radio atómico en un periodo y un grupo | — |
+| `fb1-mar-electrones` | Enlace metálico: mar de electrones, conducción, maleabilidad y fragilidad iónica | — |
+| `fb1-regla-aspa` | Regla del aspa: intercambio de números de oxidación y simplificación | — |
+| `fb1-mol` | El mol: número de Avogadro, masa molar y conversiones | — |
+| `fb1-gas-particulas` | Modelo cinético: presión, volumen, temperatura y cantidad de un gas | — |
+| `fb1-pila-daniell` | Pila Daniell: ánodo, cátodo, electrones y puente salino | — |
+| `fb1-cadenas-carbono` | Cadenas del carbono: lineal, ramificada, cíclica y aromática | — |
+| `fb1-parabolico` | Tiro parabólico: MRU horizontal + MRUA vertical | — |
+| `fb1-plano` | Plano inclinado: peso descompuesto, normal y rozamiento | — |
+| `fb1-conservacion` | Conservación de la energía mecánica en una rampa, con y sin rozamiento | — |
+| `fb1-kepler` | Leyes de Kepler: elipse, áreas iguales y velocidades | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1437,6 +1458,143 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fq3-cristalizacion-explorador` | Cristalización de una sal al enfriar | `n` sal (0 nitrato / 1 cloruro), `a` g disueltos, `b` temperatura (°C) |
 | `fq3-dilucion-explorador` | Dilución: C₁V₁ = C₂V₂ | `a` C₁ (g/L), `b` V₁ (mL), `c` V₂ (mL) |
 | `fq3-separacion-etapas-explorador` | Separación de mezclas por etapas | `n` mezcla (0–3) |
+| `fq3-aceleracion-explorador` | Velocidad, aceleración y tiempo | `a` v₀ (m/s), `b` aceleración (m/s²), `c` tiempo (s) |
+| `fq3-mrua-explorador` | Posición y velocidad en un MRUA | `a` v₀ (m/s), `b` aceleración (m/s²), `c` tiempo (s) |
+| `fq3-grafica-vt-explorador` | Gráfica v-t por tramos y área | `a` aceleración, `b` t acelerando, `c` t constante |
+| `fq3-caida-frenada-explorador` | Caída libre, lanzamiento vertical y distancia de frenado | `n` situación (0–2), `a` altura, `b` v₀, `c` km/h |
+| `fq3-composicion-fuerzas-explorador` | Resultante de dos fuerzas según el ángulo | `a` F₁ (N), `b` F₂ (N), `c` ángulo (°) |
+| `fq3-accion-reaccion-explorador` | Acción y reacción: aceleraciones según la masa | `a` fuerza (N), `b` masa 1 (kg), `c` masa 2 (kg) |
+| `fq3-newton2-rozamiento-explorador` | Segunda ley de Newton con peso, normal y rozamiento | `a` fuerza (N), `b` masa (kg), `c` coeficiente μ |
+| `fq3-presion-explorador` | Presión según fuerza y superficie | `n` situación (0–4) |
+| `fq3-flotacion-explorador` | Flotación y empuje de Arquímedes | `a` objeto (0–5), `b` fluido (0–3) |
+| `fq3-trabajo-potencia-explorador` | Trabajo y potencia según fuerza, desplazamiento y ángulo | `a` F (N), `b` d (m), `c` ángulo (°) |
+| `fq3-montana-rusa-explorador` | Energías en una montaña rusa con y sin rozamiento | `a` posición (0–1), `b` masa (kg), `c` fracción de calor (0–0,5) |
+| `fq3-calor-especifico-explorador` | Calor necesario según material, masa y ΔT | `n` material (0–5), `a` masa (kg), `b` ΔT (°C), `c` potencia (W) |
+| `fq3-calentamiento-hielo-explorador` | Curva de calentamiento del agua de −20 °C a vapor | `a` masa (kg), `b` calor suministrado (0–100 %) |
+| `fq3-aislamiento-explorador` | Pérdida de calor por conducción en una pared | `n` material (0–5), `a` espesor (m), `b` ΔT (°C) |
+| `fq3-carga-coulomb-explorador` | Fuerza entre dos cargas (ley de Coulomb) | `a` q₁ (µC), `b` q₂ (µC), `c` distancia (m) |
+| `fq3-intensidad-tension-explorador` | Intensidad y tensión a partir de carga, tiempo y energía | `a` carga (C), `b` tiempo (s), `c` energía (J) |
+| `fq3-ley-ohm-explorador` | Ley de Ohm y gráfica V-I | `a` tensión (V), `b` resistencia (Ω) |
+| `fq3-resistencia-hilo-explorador` | Resistencia de un hilo según material, longitud y sección | `n` material (0–4), `a` longitud (m), `b` sección (mm²) |
+| `fq3-circuito-explorador` | Dos resistencias en serie o en paralelo | `n` 0 serie / 1 paralelo, `a` tensión, `b` R₁, `c` R₂ |
+| `fq3-consumo-electrico-explorador` | Consumo y coste de aparatos eléctricos | `n` aparato (0–6), `a` horas/día, `b` precio (€/kWh) |
+| `fq3-seguridad-electrica-explorador` | Corriente por el cuerpo y su peligro | `a` tensión (V), `n` piel mojada (0/1) |
+| `fq3-escala-ph-explorador` | Escala de pH y acidez de sustancias cotidianas | `n` sustancia (0–12) |
+| `fq3-pictogramas-explorador` | Pictogramas de peligro de productos químicos | `n` pictograma (0–8) |
+| `fq3-contaminantes-explorador` | Contaminantes atmosféricos: origen, efecto y medida | `n` contaminante (0–6) |
+| `fq3-efecto-invernadero-explorador` | Modelo sencillo del efecto invernadero | `a` fracción de IR retenida (0–1) |
+| `fq3-reciclaje-explorador` | Reciclaje de materiales: degradación y ahorro | `n` material (0–4), `a` % reciclado |
+| `fq4-vectores-explorador` | Suma y resta de vectores, componentes y producto escalar | `a` módulo A, `b` ángulo A, `c` módulo B, `n` ángulo B |
+| `fq4-error-medida-explorador` | Media, error e incertidumbre de una serie de medidas | `a` número de medidas (1–10) |
+| `fq4-ajuste-lineal-explorador` | Ajuste por mínimos cuadrados con tres conjuntos de datos | `n` conjunto (0–2) |
+| `fq4-configuracion-explorador` | Configuración electrónica y diagrama de orbitales (Z = 1–36) | `a` número atómico (1–36) |
+| `fq4-tabla-bloques-explorador` | Tabla periódica de los 36 primeros elementos por bloques | `a` número atómico (1–36) |
+| `fq4-propiedades-periodicas-explorador` | Radio, energía de ionización y electronegatividad (Z = 1–36) | `n` propiedad (0–2), `a` Z |
+| `fq4-red-ionica-explorador` | Energía reticular y punto de fusión de compuestos iónicos | `n` compuesto (0–4) |
+| `fq4-lewis-explorador` | Estructuras de Lewis, geometría y polaridad de moléculas sencillas | `n` molécula (0–8) |
+| `fq4-clasifica-sustancia-explorador` | Deducir el tipo de enlace a partir de ensayos | `n` ejemplo inicial (0–3) |
+| `fq4-fuerzas-intermoleculares-explorador` | Fuerzas intermoleculares y puntos de ebullición | `n` sustancia (0–11) |
+| `fq4-oxidacion-explorador` | Cálculo del número de oxidación en compuestos | `n` compuesto (0–11) |
+| `fq4-oxidos-explorador` | Formulación de óxidos con nomenclatura sistemática y de Stock | `n` elemento (0–20), `a` índice de número de oxidación |
+| `fq4-hidruros-explorador` | Hidruros metálicos y no metálicos e hidrácidos | `n` compuesto (0–15) |
+| `fq4-sales-binarias-explorador` | Sales binarias de un metal y un no metal | `a` metal (0–15), `b` índice de nº de oxidación, `n` anión (0–7) |
+| `fq4-hidroxidos-oxoacidos-explorador` | Hidróxidos y oxoácidos | `n` 0 hidróxido / 1 oxoácido, `a` metal, `b` oxoácido |
+| `fq4-oxisales-explorador` | Oxisales: metal y oxoanión | `a` metal (0–15), `b` índice de nº de oxidación, `n` oxoanión (0–9) |
+| `fq4-mol-gases-explorador` | Mol, masa molar y volumen de gases | `n` sustancia (0–7), `a` masa (g), `b` T (K), `c` P (atm) |
+| `fq4-estequiometria-explorador` | Cálculos de masa, moles y volumen en una reacción ajustada | `n` reacción (0–5), `a` masa (g) |
+| `fq4-reactivo-limitante-explorador` | Reactivo limitante, exceso y rendimiento | `n` reacción (0–5), `a`/`b` masas (g), `c` rendimiento (%) |
+| `fq4-tipos-reaccion-explorador` | Clasificación de reacciones químicas | `n` ejemplo (0–5) |
+| `fq4-neutralizacion-explorador` | Neutralización y valoración ácido-base | `a` concentración (M), `b` volumen ácido (mL), `c` volumen base (mL) |
+| `fq4-redox-explorador` | Reacciones redox y serie de actividad | `a` metal (0–4), `b` catión (0–3) |
+| `fq4-carbono-enlaces-explorador` | Enlaces del carbono: hibridación, ángulo, σ y π en metano, etano, eteno, etino y benceno | n (molécula 0–4) |
+| `fq4-hidrocarburos-explorador` | Alcanos, alquenos y alquinos: fórmula, semidesarrollada y nombre | a (carbonos), n (tipo 0–2), b (posición) |
+| `fq4-grupos-funcionales-explorador` | Familias funcionales con grupo, fórmula general, nombre y uso | n (familia 0–4), a (carbonos) |
+| `fq4-petroleo-explorador` | Torre de destilación fraccionada del petróleo | a (temperatura °C) |
+| `fq4-polimeros-explorador` | Polímeros: monómero, tipo, usos y masa molecular | n (polímero), a (nº de monómeros) |
+| `fq4-vectores-movimiento-explorador` | Desplazamiento frente a distancia, velocidad media y rapidez media | a, b (punto final), c (curvatura) |
+| `fq4-encuentro-explorador` | Encuentro de dos móviles con MRU/MRUA | a (x₂ inicial), b (v₁) |
+| `fq4-tiro-vertical-explorador` | Tiro vertical y caída libre: altura máxima, tiempo y velocidad de impacto | a (h₀), b (v₀) |
+| `fq4-mcu-explorador` | MCU: ω, v, f, aceleración centrípeta y ángulo | a (radio), b (periodo) |
+| `fq4-seguridad-vial-explorador` | Distancia de reacción, frenada y detención según superficie | a (km/h), b (t reacción), n (superficie 0–3) |
+| `fq4-newton-explorador` | Segunda ley: resultante, aceleración, velocidad y distancia | a (masa), b (F derecha), c (F izquierda) |
+| `fq4-rozamiento-explorador` | Rozamiento estático y cinético con gráfica Fr–F | a (masa), b (F), c (μ estático) |
+| `fq4-plano-inclinado-explorador` | Plano inclinado: componentes del peso, normal, rozamiento y aceleración | a (masa), b (ángulo), c (μ) |
+| `fq4-poleas-explorador` | Máquina de Atwood y bloque en mesa con polea: aceleración y tensión | n (montaje 0–1), a (m₁), b (m₂) |
+| `fq4-elastica-centripeta-explorador` | Ley de Hooke y fuerza centrípeta en una curva | n (estudio 0–1), a (k), b (x) |
+| `fq4-gravitacion-explorador` | Ley de gravitación universal: fuerza según masas y distancia | a (m₁), b (m₂), c (d) |
+| `fq4-gravedad-planetas-explorador` | Gravedad, peso y velocidad de escape en distintos astros | n (astro 0–5), a (masa), b (altura km) |
+| `fq4-orbitas-explorador` | Velocidad orbital y periodo según la altura de la órbita | a (altura km) |
+| `fq4-fases-lunares-explorador` | Fases de la Luna, mareas y eclipses según su posición | a (ángulo) |
+| `fq4-trabajo-potencia-explorador` | Trabajo de una fuerza inclinada y potencia | a (F), b (ángulo), c (distancia) |
+| `fq4-energias-explorador` | Energía cinética, potencial y mecánica | a (masa), b (velocidad), c (altura) |
+| `fq4-teorema-trabajo-energia-explorador` | Teorema trabajo-energía con fuerza y rozamiento | a (masa), b (v₀), c (F) |
+| `fq4-conservacion-energia-explorador` | Conservación de la energía en una pista, con pérdida opcional | a (masa), b (altura), c (pérdida 0–1) |
+| `fq4-rendimiento-explorador` | Rendimiento de aparatos, consumo en kWh y coste | n (aparato 0–5), a (potencia W), b (horas) |
+| `fq4-equilibrio-termico-explorador` | Temperatura de equilibrio al mezclar un cuerpo con agua | n (material 0–4), a (masa), b (T) |
+| `fq4-cambios-estado-explorador` | Calentar hielo hasta vapor: temperatura y estado según el calor | a (masa), b (kJ) |
+| `fq4-transmision-dilatacion-explorador` | Conducción de calor y dilatación lineal de una barra | n (estudio 0–1), a (A), b (L) |
+| `fq4-maquinas-termicas-explorador` | Máquina térmica: trabajo, calor cedido y límite de Carnot | a (Q_h), b (rendimiento) |
+| `fq4-onda-explorador` | Onda armónica: amplitud, longitud de onda, frecuencia y velocidad | a (A), b (λ), c (f) |
+| `fq4-espectro-explorador` | Espectro electromagnético: banda, λ y frecuencia | a (log₁₀ λ) |
+| `fq4-sonido-explorador` | Sonido: velocidad según el medio, λ, nivel con la distancia y eco | n (medio 0–2), a (f), b (d) |
+| `fq4-optica-explorador` | Reflexión y refracción (ley de Snell) con reflexión total | n (medio 0–3), a (ángulo) |
+| `fq4-contaminacion-acustica-explorador` | Nivel sonoro en dB y tiempo máximo de exposición | a (dB) |
+| `fb1-particulas-isotopos-explorador` | Protones, neutrones y electrones de átomos, isótopos e iones | a (Z), b (A), c (carga) |
+| `fb1-bohr-espectro-explorador` | Transiciones del hidrógeno: energía, λ, región y serie | a (nᵢ), b (n_f) |
+| `fb1-de-broglie-explorador` | Longitud de onda de De Broglie de distintas partículas | n (partícula 0–3), a (log v) |
+| `fb1-numeros-cuanticos-explorador` | Validez de combinaciones de números cuánticos y capacidades | a (n), b (l), c (m_l) |
+| `fb1-configuracion-explorador` | Configuración electrónica de átomos e iones (Z ≤ 54) con Hund y último electrón | a (Z), b (carga) |
+| `fb1-tabla-bloques-explorador` | Tabla periódica (Z ≤ 54) por bloques con periodo, grupo y configuración | a (Z) |
+| `fb1-tendencias-explorador` | Mapa de calor de radio, ionización, afinidad y electronegatividad | n (propiedad 0–3), a (Z) |
+| `fb1-radios-ionicos-explorador` | Radio de átomos e iones y series isoelectrónicas | n (ion 0–14) |
+| `fb1-reactividad-explorador` | Carácter metálico, ion típico, óxido y reactividad de un elemento | a (Z) |
+| `fb1-energia-reticular-explorador` | Energía reticular y temperatura de fusión de compuestos iónicos | n (compuesto 0–8) |
+| `fb1-lewis-explorador` | Electrones de valencia, pares enlazantes y solitarios de moléculas | n (especie 0–14) |
+| `fb1-geometria-explorador` | RPECV: geometría, ángulo, hibridación y polaridad | a (enlazantes), b (solitarios) |
+| `fb1-fuerzas-intermoleculares-explorador` | Puntos de ebullición y fuerzas intermoleculares de series de hidruros | n (serie 0–5) |
+| `fb1-sustancias-explorador` | Tipos de sólidos: iónicos, metálicos y covalentes | n (sustancia 0–9) |
+| `fb1-binarios-explorador` | Compuestos binarios (óxidos, peróxidos, hidruros, sales) con nomenclatura sistemática y Stock | a (elemento), b (nox), n (parte negativa) |
+| `fb1-oxoacidos-explorador` | Oxoácidos: obtención, nombre tradicional, IUPAC 2005 y anión | n (ácido 0–24) |
+| `fb1-oxisales-explorador` | Oxisales y sales ácidas con catión, ácido y hidrógenos cedidos | a (catión), b (ácido), n (H cedidos) |
+| `fb1-entrenador-explorador` | Entrenador de formulación nombre↔fórmula con 25 compuestos | a (ejercicio), n (modo 0–1) |
+| `fb1-mol-masa-explorador` | Conversión masa ↔ moles ↔ partículas ↔ átomos de 15 sustancias | n (sustancia), c (modo 0–2), a (g), b (mol) |
+| `fb1-composicion-centesimal-explorador` | Porcentaje en masa de cada elemento y masa en una muestra | n (compuesto), a (g) |
+| `fb1-formula-empirica-explorador` | Fórmula empírica y molecular paso a paso desde porcentajes | n (problema 0–7) |
+| `fb1-estequiometria-pureza-explorador` | Estequiometría de 6 reacciones con pureza de la muestra | n (reacción), a (g), b (% pureza) |
+| `fb1-leyes-gases-explorador` | Leyes de Boyle, Charles, Gay-Lussac y Avogadro | n (ley 0–3), a (factor) |
+| `fb1-gas-ideal-explorador` | PV = nRT: moles, masa, densidad y volumen molar de 8 gases | n (gas), a (T), b (P), c (V) |
+| `fb1-mezcla-gases-explorador` | Mezclas de gases: fracciones molares y presiones parciales | n (mezcla 0–2) |
+| `fb1-concentracion-explorador` | Molaridad, g/L, % masa, molalidad y fracción molar de disoluciones | n (soluto), a (g), b (L), c (densidad) |
+| `fb1-dilucion-coligativas-explorador` | Dilución (C₁V₁ = C₂V₂) y propiedades coligativas del agua | n (modo 0–1), a (C₁), b (V₂) |
+| `fb1-ajuste-explorador` | Ajuste interactivo de 10 ecuaciones con recuento de átomos | n (reacción 0–9) |
+| `fb1-limitante-explorador` | Reactivo limitante, sobrante y rendimiento | n (reacción), a (g), b (g), c (% rend.) |
+| `fb1-ph-explorador` | pH de ácidos y bases fuertes y débiles según la concentración | n (especie 0–6), a (log C) |
+| `fb1-valoracion-explorador` | Curva de valoración HCl-NaOH con equivalencia | a (Ca), b (Va), c (Cb) |
+| `fb1-redox-pila-explorador` | Pilas entre 13 metales: ánodo, cátodo, f.e.m. y reacción global | a, b (índices de metal) |
+| `fb1-industria-explorador` | Procesos industriales: producto, economía atómica y CO₂ | n (proceso 0–3), a (kg), b (% rend.) |
+| `fb1-ramificados-explorador` | Hidrocarburos ramificados: nombre IUPAC, fórmula y esqueleto | n (tipo 0–2), a (carbonos), b (posición), c (ramificación 0–2) |
+| `fb1-grupos-explorador` | Funciones orgánicas (10 familias): nombre IUPAC y fórmula | n (familia), a (carbonos), b (posición), c (carbonos del radical) |
+| `fb1-isomeria-explorador` | Isómeros de 8 fórmulas con tipo de isomería y punto de ebullición | n (fórmula 0–7) |
+| `fb1-reacciones-organicas-explorador` | Tipos de reacciones orgánicas y combustión de alcanos | n (modo 0–1), a (carbonos), b (tipo) |
+| `fb1-vectores-cinematicos-explorador` | r, v y a vectoriales con componentes tangencial y normal y radio de curvatura | a (vₓ), b (v_y), c (a_y) |
+| `fb1-graficas-mrua-explorador` | Gráficas x–t, v–t y a–t de MRU y MRUA | a (x₀), b (v₀), c (a) |
+| `fb1-parabolico-explorador` | Tiro oblicuo: alcance, altura máxima, tiempo de vuelo y velocidad de impacto | a (v₀), b (ángulo), c (h₀) |
+| `fb1-circular-explorador` | MCU/MCUA: ω, v, aₜ, aₙ, vueltas | a (R), b (rpm), c (α) |
+| `fb1-barca-rio-explorador` | Composición de movimientos: barca en un río | a (v barca), b (v río), c (proa) |
+| `fb1-fuerzas-resultante-explorador` | Suma vectorial de tres fuerzas y equilibrio | a (F₁), b (F₂), c (F₃) |
+| `fb1-plano-inclinado-explorador` | Plano inclinado con rozamiento: componentes, normal y aceleración | a (masa), b (ángulo), c (μ) |
+| `fb1-poleas-explorador` | Máquina de Atwood y mesa con cuerpo colgante | a (m₁), b (m₂), c (μ) |
+| `fb1-muelle-explorador` | Ley de Hooke, muelles en serie/paralelo, energía y periodo | a (k₁), b (k₂), c (masa) |
+| `fb1-choque-explorador` | Choques unidimensionales con coeficiente de restitución | a (m₁), b (v₁), c (m₂) |
+| `fb1-trabajo-explorador` | Trabajo de F, rozamiento y neto al arrastrar un bloque | a (F), b (α), c (d) |
+| `fb1-teorema-ec-explorador` | Teorema trabajo-energía cinética y distancia de frenado | a (masa), b (v₀), c (F neta) |
+| `fb1-rampa-energia-explorador` | Ep, Ec y calor en una rampa con rozamiento | a (masa), b (h₀), c (ángulo) |
+| `fb1-muelle-energia-explorador` | Muelle comprimido que lanza un cuerpo | a (k), b (x), c (masa) |
+| `fb1-potencia-rendimiento-explorador` | Potencia, rendimiento y coste en kWh al elevar una carga | a (masa), b (altura), c (tiempo) |
+| `fb1-kepler-explorador` | Órbita elíptica: periodo, perihelio, afelio y velocidad (vis-viva) | a (semieje UA), b (excentricidad), c (ángulo) |
+| `fb1-campo-gravitatorio-explorador` | Intensidad de campo g y peso según astro y altura | a (astro 0–4), b (altura ×10³ km), c (masa) |
+| `fb1-satelite-explorador` | Velocidad orbital, periodo, escape y órbita geoestacionaria | a (astro 0–4), b (altura km) |
+| `fb1-energia-orbital-explorador` | Energía de una órbita circular y coste de cambiar de órbita | a (masa), b (r₁ en R⊕), c (r₂ en R⊕) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

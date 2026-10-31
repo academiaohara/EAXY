@@ -37,13 +37,53 @@ Ids con sufijo `-fq3`, herramientas y animaciones `fq3-…`, `FQ3_SUBTITLES`, `m
 | 7. Las fuerzas y sus efectos | 5: composición de fuerzas; leyes de Newton; peso, normal y rozamiento; presión; fluidos |
 | 8. Energía y calor | 5: trabajo y potencia; conservación; calor y Q = m·c·ΔT; transmisión y aislamiento; rendimiento |
 | 9. Electricidad | 6: carga; corriente, tensión y resistencia; ley de Ohm; serie y paralelo; potencia y energía; seguridad |
-| 10. Química y sociedad | 4: combustibles y contaminación; efecto invernadero; lluvia ácida y residuos; seguridad y etiquetado |
+| 10. Química y sociedad | 5: productos cotidianos y pH; seguridad y etiquetado; combustibles y contaminación (con lluvia ácida); efecto invernadero; residuos y sostenibilidad |
 
-Total previsto: 49 lecciones.
+Total previsto: 50 lecciones.
+
+## 4.º de ESO (en desarrollo)
+
+Ids con sufijo `-fq4`, herramientas y animaciones `fq4-…`, `FQ4_SUBTITLES`, `moduleId(340 + n)` (curso `fisica-4-eso`, `courseId(9)`). Retoma 3.º con más cálculo, más rigor y formulación inorgánica y orgánica.
+
+| Tema | Lecciones previstas |
+|---|---|
+| 1. Actividad científica y magnitudes | 3: magnitudes escalares y vectoriales; error e incertidumbre; análisis de datos y ajuste lineal |
+| 2. El átomo y la tabla periódica | 3: configuración electrónica; tabla periódica y configuración; propiedades periódicas |
+| 3. Enlace químico | 4: iónico y redes cristalinas; covalente, Lewis y geometría; metálico y propiedades de las sustancias; fuerzas intermoleculares |
+| 4. Formulación y nomenclatura | 6: números de oxidación; óxidos; hidruros e hidrácidos; sales binarias; hidróxidos y oxoácidos; oxisales |
+| 5. Reacciones químicas | 6: mol y masa molar; estequiometría; reactivo limitante; tipos de reacciones y combustión; ácidos, bases y neutralización; oxidación-reducción y velocidad |
+| 6. Química del carbono | 5: el carbono y sus enlaces; hidrocarburos; grupos funcionales; combustibles fósiles; polímeros y biomoléculas |
+| 7. Cinemática | 5: posición, velocidad y aceleración vectoriales; MRU y MRUA; caída libre y tiro vertical; movimiento circular uniforme; gráficas y seguridad vial |
+| 8. Dinámica | 5: leyes de Newton y diagramas de fuerzas; peso, normal y rozamiento; plano inclinado; tensión y poleas; fuerza elástica y fuerza centrípeta |
+| 9. Fuerzas gravitatorias | 4: ley de gravitación universal; peso en cuerpos celestes; órbitas y satélites; fenómenos astronómicos |
+| 10. Trabajo, energía y potencia | 5: trabajo y potencia; energías cinética y potencial; teorema trabajo-energía; conservación de la energía mecánica; rendimiento |
+| 11. Calor y energía térmica | 4: temperatura y equilibrio; calor específico y cambios de estado; transmisión y dilatación; máquinas térmicas y ahorro |
+| 12. Ondas | 5: movimiento ondulatorio; ondas mecánicas y electromagnéticas; sonido; luz (reflexión y refracción); aplicaciones y contaminación acústica |
+
+Total previsto: 55 lecciones.
+
+## 1.º de Bachillerato (Física y Química, 12 temas, 54 lecciones)
+
+Ids `-fb1`, herramientas `fb1-`, subtítulos `FB1_SUBTITLES`, carpeta `src/data/lessons/fisica-1-bachillerato/`, moduleId 361–372 (base 360). Contenido según el índice de `LOMLOE.txt` y los saberes básicos de Bachillerato (RD 243/2022); con enfoque de resolución de problemas y nivel de Bachillerato (cálculo con vectores, magnitudes con incertidumbre y unidades SI).
+
+| Tema | Lecciones previstas |
+|---|---|
+| 1. Estructura atómica | 4: modelos atómicos; espectros y modelo de Bohr; modelo mecanocuántico y números cuánticos; configuración electrónica |
+| 2. Sistema periódico | 3: organización y configuración; propiedades periódicas; reactividad |
+| 3. Enlace químico | 5: enlace iónico y redes; covalente y Lewis; geometría y polaridad; fuerzas intermoleculares; metálico y propiedades |
+| 4. Formulación inorgánica | 4: números de oxidación y binarios; hidróxidos y oxoácidos; oxisales; nomenclaturas de composición y Stock |
+| 5. Cantidad de sustancia | 4: mol y masa molar; composición centesimal; fórmula empírica y molecular; estequiometría de partida |
+| 6. Gases y disoluciones | 5: variables y leyes de los gases; gas ideal; mezclas y presiones parciales; concentración de disoluciones; dilución y propiedades coligativas |
+| 7. Reacciones químicas | 5: ajuste y estequiometría; reactivo limitante y rendimiento; ácidos y bases; oxidación-reducción; aplicaciones industriales y ambientales |
+| 8. Química orgánica | 5: carbono y cadenas; hidrocarburos; grupos funcionales oxigenados; funciones nitrogenadas y ésteres; isomería y aplicaciones |
+| 9. Cinemática | 5: sistemas de referencia y vectores; MRU y MRUA; caída libre y movimiento parabólico; movimiento circular; gráficas y problemas |
+| 10. Estática y dinámica | 5: leyes de Newton; rozamiento y normal; planos inclinados; sistemas de cuerpos; elástica y equilibrio |
+| 11. Trabajo, energía y potencia | 5: trabajo y potencia; energías y teorema; fuerzas conservativas; conservación; rendimiento y transformaciones |
+| 12. Fuerzas gravitatorias | 4: ley y campo gravitatorio; energía potencial gravitatoria; movimiento orbital; aplicaciones |
 
 ## Cursos siguientes (sin desarrollar)
 
-4.º ESO (12), 1.º Bachillerato (12), 2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
+2.º Bachillerato Física (10) y 2.º Bachillerato Química (10), según el índice de `LOMLOE.txt`.
 
 ## Estado
 
@@ -64,3 +104,32 @@ Total previsto: 49 lecciones.
 | 3.º ESO · 3. Elementos y compuestos químicos | Hecho (6 lecciones, `03-elementos-y-compuestos-quimicos/`; herramientas `Fq3CompuestosTools.tsx`, animación `fq3-enlace.tsx`; bloque `fisica-materia`; moduleId 323) |
 | 3.º ESO · 4. La reacción química | Hecho (5 lecciones, `04-la-reaccion-quimica/`; herramientas `Fq3ReaccionesTools.tsx` (y reutiliza `fq2-ajuste-ecuacion-explorador`), animación `fq3-colisiones.tsx`; bloque `fisica-cambios-quimicos`; moduleId 324) |
 | 3.º ESO · 5. Disoluciones | Hecho (4 lecciones, `05-disoluciones/`; herramientas `Fq3DisolucionesTools.tsx`; bloque `fisica-materia`; moduleId 325) |
+| 3.º ESO · 6. El movimiento | Hecho (5 lecciones, `06-el-movimiento/`; herramientas `Fq3MovimientoTools.tsx` (y reutiliza `fq2-mru-explorador`), animación `fq3-mrua.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 326) |
+| 3.º ESO · 7. Las fuerzas y sus efectos | Hecho (5 lecciones, `07-las-fuerzas-y-sus-efectos/`; herramientas `Fq3FuerzasTools.tsx`; bloque `fisica-movimiento-fuerzas`; moduleId 327) |
+| 3.º ESO · 8. Energía y calor | Hecho (5 lecciones, `08-energia-y-calor/`; herramientas `Fq3EnergiaTools.tsx`; bloque `fisica-energia-ondas`; moduleId 328) |
+| 3.º ESO · 9. Electricidad | Hecho (6 lecciones, `09-electricidad/`; herramientas `Fq3ElectricidadTools.tsx`, animación `fq3-corriente.tsx`; bloque nuevo `fisica-electricidad`; moduleId 329) |
+| 3.º ESO · 10. Química y sociedad | Hecho (5 lecciones, `10-quimica-y-sociedad/`; herramientas `Fq3SociedadTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 330). **Física y Química 3.º ESO completo: 50 lecciones en 10 temas.** |
+| 4.º ESO · 1. Actividad científica y magnitudes | Hecho (3 lecciones, `src/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/`; herramientas `Fq4MagnitudesTools.tsx`; bloque `fisica-metodo-medida`; moduleId 341; ids `-fq4`, herramientas `fq4-`) |
+| 4.º ESO · 2. El átomo y la tabla periódica | Hecho (3 lecciones, `02-el-atomo-y-la-tabla-periodica/`; herramientas `Fq4AtomoTools.tsx`; bloque `fisica-materia`; moduleId 342) |
+| 4.º ESO · 3. Enlace químico | Hecho (4 lecciones, `03-enlace-quimico/`; herramientas `Fq4EnlaceTools.tsx`; bloque `fisica-materia`; moduleId 343) |
+| 4.º ESO · 4. Formulación y nomenclatura | Hecho (6 lecciones, `04-formulacion-y-nomenclatura/`; motor de formulación y herramientas `Fq4FormulacionTools.tsx`; bloque `fisica-materia`; moduleId 344) |
+| 4.º ESO · 5. Reacciones químicas | Hecho (6 lecciones, `05-reacciones-quimicas/`; herramientas `Fq4ReaccionesTools.tsx`; bloque `fisica-cambios-quimicos`; moduleId 345) |
+| 4.º ESO · 6. Química del carbono | Hecho (5 lecciones, `06-quimica-del-carbono/`; herramientas `Fq4CarbonoTools.tsx`; animación `fq4-polimerizacion`; bloque `fisica-cambios-quimicos`; moduleId 346) |
+| 4.º ESO · 7. Cinemática | Hecho (5 lecciones, `07-cinematica/`; herramientas `Fq4CinematicaTools.tsx`; animación `fq4-mcu`; bloque `fisica-movimiento-fuerzas`; moduleId 347) |
+| 4.º ESO · 8. Dinámica | Hecho (5 lecciones, `08-dinamica/`; herramientas `Fq4DinamicaTools.tsx`; animación `fq4-diagrama-fuerzas`; bloque `fisica-movimiento-fuerzas`; moduleId 348) |
+| 4.º ESO · 9. Fuerzas gravitatorias | Hecho (4 lecciones, `09-fuerzas-gravitatorias/`; herramientas `Fq4GravitacionTools.tsx`; animación `fq4-canon-newton`; bloque `fisica-movimiento-fuerzas`; moduleId 349) |
+| 4.º ESO · 10. Trabajo, energía y potencia | Hecho (5 lecciones, `10-trabajo-energia-potencia/`; herramientas `Fq4EnergiaTools.tsx`; animación `fq4-conservacion-pista`; bloque `fisica-energia-ondas`; moduleId 350) |
+| 4.º ESO · 11. Calor y energía térmica | Hecho (4 lecciones, `11-calor-energia-termica/`; herramientas `Fq4CalorTools.tsx`; animación `fq4-curva-calentamiento`; bloque `fisica-energia-ondas`; moduleId 351) |
+| 4.º ESO · 12. Ondas | Hecho (5 lecciones, `12-ondas/`; herramientas `Fq4OndasTools.tsx`; animación `fq4-ondas`; bloque `fisica-energia-ondas`; moduleId 352) |
+| 1.º Bach. · 1. Estructura atómica | Hecho (4 lecciones, `src/data/lessons/fisica-1-bachillerato/01-estructura-atomica/`; herramientas `Fb1AtomoTools.tsx`; animación `fb1-orbitales`; bloque `fisica-materia`; moduleId 361; ids `-fb1`, herramientas `fb1-`) |
+| 1.º Bach. · 2. Sistema periódico | Hecho (3 lecciones, `02-sistema-periodico/`; herramientas `Fb1PeriodicaTools.tsx`; animación `fb1-radio-atomico`; bloque `fisica-materia`; moduleId 362) |
+| 1.º Bach. · 3. Enlace químico | Hecho (5 lecciones, `03-enlace-quimico/`; herramientas `Fb1EnlaceTools.tsx`; animación `fb1-mar-electrones`; bloque `fisica-materia`; moduleId 363) |
+| 1.º Bach. · 4. Formulación inorgánica | Hecho (4 lecciones, `04-formulacion-inorganica/`; motor y herramientas `Fb1FormulacionTools.tsx` (binarios, oxoácidos, oxisales y entrenador, con nomenclatura sistemática, Stock y tradicional); animación `fb1-regla-aspa`; bloque `fisica-materia`; moduleId 364) |
+| 1.º Bach. · 5. Cantidad de sustancia | Hecho (4 lecciones, `05-cantidad-de-sustancia/`; herramientas `Fb1CantidadTools.tsx`; animación `fb1-mol`; bloque `fisica-cambios-quimicos`; moduleId 365) |
+| 1.º Bach. · 6. Gases y disoluciones | Hecho (5 lecciones, `06-gases-y-disoluciones/`; herramientas `Fb1GasesTools.tsx`; animación `fb1-gas-particulas`; bloque `fisica-cambios-quimicos`; moduleId 366) |
+| 1.º Bach. · 7. Reacciones químicas | Hecho (5 lecciones, `07-reacciones-quimicas/`; herramientas `Fb1ReaccionesTools.tsx` (ajuste, limitante, pH, valoración, pilas e industria); animación `fb1-pila-daniell`; bloque `fisica-cambios-quimicos`; moduleId 367) |
+| 1.º Bach. · 8. Química orgánica | Hecho (5 lecciones, `08-quimica-organica/`; herramientas `Fb1OrganicaTools.tsx` (nomenclatura de hidrocarburos ramificados, 10 funciones, isomería y reacciones); animación `fb1-cadenas-carbono`; bloque `fisica-cambios-quimicos`; moduleId 368) |
+| 1.º Bach. · 9. Cinemática | Hecho (5 lecciones, `09-cinematica/`; herramientas `Fb1CinematicaTools.tsx` (vectores r, v, a con componentes intrínsecas, gráficas MRU/MRUA, tiro oblicuo, MCU/MCUA, barca en un río); animación `fb1-parabolico`; bloque `fisica-movimiento-fuerzas`; moduleId 369) |
+| 1.º Bach. · 10. Estática y dinámica | Hecho (5 lecciones, `10-estatica-y-dinamica/`; herramientas `Fb1DinamicaTools.tsx` (composición de fuerzas, plano inclinado con rozamiento, Atwood y mesa con polea, muelles y Hooke, choques); animación `fb1-plano`; bloque `fisica-movimiento-fuerzas`; moduleId 370) |
+| 1.º Bach. · 11. Trabajo, energía y potencia | Hecho (5 lecciones, `11-trabajo-energia-potencia/`; herramientas `Fb1EnergiaTools.tsx` (trabajo de fuerzas, teorema de las fuerzas vivas, rampa con rozamiento, muelle y energía, potencia y rendimiento); animación `fb1-conservacion`; bloque `fisica-energia-ondas`; moduleId 371) |
+| 1.º Bach. · 12. Fuerzas gravitatorias | Hecho (4 lecciones, `12-fuerzas-gravitatorias/`; herramientas `Fb1GravitacionTools.tsx` (órbitas de Kepler, campo gravitatorio por astro, satélites y escape, energía orbital y cambio de órbita); animación `fb1-kepler`; bloque `fisica-movimiento-fuerzas`; moduleId 372) |

@@ -2,6 +2,35 @@
 
 import { useState } from "react";
 // industrial-imports
+import { KeplerFb1Explorador, CampoGravitatorioFb1Explorador, SateliteFb1Explorador, EnergiaOrbitalFb1Explorador } from "@/components/lesson/slide/tools/Fb1GravitacionTools";
+import { TrabajoFb1Explorador, TeoremaEnergiaCineticaFb1Explorador, RampaEnergiaFb1Explorador, MuelleEnergiaFb1Explorador, PotenciaRendimientoFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnergiaTools";
+import { FuerzasResultanteFb1Explorador, PlanoInclinadoFb1Explorador, PoleasFb1Explorador, MuelleFb1Explorador, ChoqueFb1Explorador } from "@/components/lesson/slide/tools/Fb1DinamicaTools";
+import { VectoresCinFb1Explorador, GraficasMruaFb1Explorador, ParabolicoFb1Explorador, CircularFb1Explorador, BarcaRioFb1Explorador } from "@/components/lesson/slide/tools/Fb1CinematicaTools";
+import { RamificadosFb1Explorador, GruposFb1Explorador, IsomeriaFb1Explorador, ReaccionesOrganicasFb1Explorador } from "@/components/lesson/slide/tools/Fb1OrganicaTools";
+import { AjusteFb1Explorador, LimitanteFb1Explorador, PhFb1Explorador, ValoracionFb1Explorador, RedoxPilaFb1Explorador, IndustriaFb1Explorador } from "@/components/lesson/slide/tools/Fb1ReaccionesTools";
+import { LeyesGasesFb1Explorador, GasIdealFb1Explorador, MezclaGasesFb1Explorador, ConcentracionFb1Explorador, DilucionColigativasFb1Explorador } from "@/components/lesson/slide/tools/Fb1GasesTools";
+import { MolMasaFb1Explorador, CentesimalFb1Explorador, FormulaEmpiricaFb1Explorador, EstequiometriaPurezaFb1Explorador } from "@/components/lesson/slide/tools/Fb1CantidadTools";
+import { BinariosFb1Explorador, OxoacidosFb1Explorador, OxisalesFb1Explorador, EntrenadorFb1Explorador } from "@/components/lesson/slide/tools/Fb1FormulacionTools";
+import { EnergiaReticularFb1Explorador, LewisFb1Explorador, GeometriaFb1Explorador, FuerzasIntermolecularesFb1Explorador, SustanciasFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnlaceTools";
+import { TablaBloquesFb1Explorador, TendenciasFb1Explorador, RadiosIonicosFb1Explorador, ReactividadFb1Explorador } from "@/components/lesson/slide/tools/Fb1PeriodicaTools";
+import { ParticulasIsotoposFb1Explorador, BohrEspectroFb1Explorador, DeBroglieFb1Explorador, NumerosCuanticosFb1Explorador, ConfiguracionFb1Explorador } from "@/components/lesson/slide/tools/Fb1AtomoTools";
+import { OndaFq4Explorador, EspectroFq4Explorador, SonidoFq4Explorador, OpticaFq4Explorador, ContaminacionAcusticaFq4Explorador } from "@/components/lesson/slide/tools/Fq4OndasTools";
+import { EquilibrioTermicoFq4Explorador, CambiosEstadoFq4Explorador, TransmisionDilatacionFq4Explorador, MaquinasTermicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4CalorTools";
+import { TrabajoPotenciaFq4Explorador, EnergiasFq4Explorador, TeoremaTrabajoEnergiaFq4Explorador, ConservacionEnergiaFq4Explorador, RendimientoFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnergiaTools";
+import { GravitacionFq4Explorador, GravedadAstrosFq4Explorador, OrbitasFq4Explorador, FasesLunaresFq4Explorador } from "@/components/lesson/slide/tools/Fq4GravitacionTools";
+import { NewtonFq4Explorador, RozamientoFq4Explorador, PlanoInclinadoFq4Explorador, PoleasFq4Explorador, ElasticaCentripetaFq4Explorador } from "@/components/lesson/slide/tools/Fq4DinamicaTools";
+import { VectoresMovimientoFq4Explorador, EncuentroFq4Explorador, TiroVerticalFq4Explorador, McuFq4Explorador, SeguridadVialFq4Explorador } from "@/components/lesson/slide/tools/Fq4CinematicaTools";
+import { CarbonoEnlacesFq4Explorador, HidrocarburosFq4Explorador, GruposFuncionalesFq4Explorador, PetroleoFq4Explorador, PolimerosFq4Explorador } from "@/components/lesson/slide/tools/Fq4CarbonoTools";
+import { MolGasesFq4Explorador, EstequiometriaFq4Explorador, ReactivoLimitanteFq4Explorador, TiposReaccionFq4Explorador, NeutralizacionFq4Explorador, RedoxFq4Explorador } from "@/components/lesson/slide/tools/Fq4ReaccionesTools";
+import { OxidacionFq4Explorador, OxidosFq4Explorador, HidurosFq4Explorador, SalesBinariasFq4Explorador, HidroxidosOxoacidosFq4Explorador, OxisalesFq4Explorador } from "@/components/lesson/slide/tools/Fq4FormulacionTools";
+import { RedIonicaFq4Explorador, LewisFq4Explorador, ClasificaSustanciaFq4Explorador, FuerzasIntermolecularesFq4Explorador } from "@/components/lesson/slide/tools/Fq4EnlaceTools";
+import { ConfiguracionFq4Explorador, TablaBloquesFq4Explorador, PropiedadesPeriodicasFq4Explorador } from "@/components/lesson/slide/tools/Fq4AtomoTools";
+import { VectoresFq4Explorador, ErrorMedidaFq4Explorador, AjusteLinealFq4Explorador } from "@/components/lesson/slide/tools/Fq4MagnitudesTools";
+import { EscalaPhFq3Explorador, PictogramasFq3Explorador, ContaminantesFq3Explorador, EfectoInvernaderoFq3Explorador, ReciclajeFq3Explorador } from "@/components/lesson/slide/tools/Fq3SociedadTools";
+import { CargaCoulombFq3Explorador, IntensidadTensionFq3Explorador, LeyOhmFq3Explorador, ResistenciaHiloFq3Explorador, CircuitoFq3Explorador, ConsumoElectricoFq3Explorador, SeguridadElectricaFq3Explorador } from "@/components/lesson/slide/tools/Fq3ElectricidadTools";
+import { TrabajoPotenciaFq3Explorador, MontanaRusaFq3Explorador, CalorEspecificoFq3Explorador, CalentamientoHieloFq3Explorador, AislamientoFq3Explorador } from "@/components/lesson/slide/tools/Fq3EnergiaTools";
+import { ComposicionFuerzasFq3Explorador, AccionReaccionFq3Explorador, Newton2RozamientoFq3Explorador, PresionFq3Explorador, FlotacionFq3Explorador } from "@/components/lesson/slide/tools/Fq3FuerzasTools";
+import { AceleracionFq3Explorador, MruaFq3Explorador, GraficaVtFq3Explorador, CaidaFrenadaFq3Explorador } from "@/components/lesson/slide/tools/Fq3MovimientoTools";
 import { ConcentracionesFq3Explorador, CristalizacionFq3Explorador, DilucionFq3Explorador, SeparacionEtapasFq3Explorador } from "@/components/lesson/slide/tools/Fq3DisolucionesTools";
 import { EstequiometriaMasasFq3Explorador, VelocidadReaccionFq3Explorador, ReaccionesEntornoFq3Explorador, EmisionesCombustionFq3Explorador } from "@/components/lesson/slide/tools/Fq3ReaccionesTools";
 import { SustanciasFq3Explorador, EnlaceIonicoFq3Explorador, EnlaceCovalenteFq3Explorador, PropiedadesEnlaceFq3Explorador, MolFq3Explorador, NomenclaturaFq3Explorador } from "@/components/lesson/slide/tools/Fq3CompuestosTools";
@@ -2191,6 +2220,280 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <DilucionFq3Explorador block={block} />;
     case "fq3-separacion-etapas-explorador":
       return <SeparacionEtapasFq3Explorador block={block} />;
+    case "fq3-aceleracion-explorador":
+      return <AceleracionFq3Explorador block={block} />;
+    case "fq3-mrua-explorador":
+      return <MruaFq3Explorador block={block} />;
+    case "fq3-grafica-vt-explorador":
+      return <GraficaVtFq3Explorador block={block} />;
+    case "fq3-caida-frenada-explorador":
+      return <CaidaFrenadaFq3Explorador block={block} />;
+    case "fq3-composicion-fuerzas-explorador":
+      return <ComposicionFuerzasFq3Explorador block={block} />;
+    case "fq3-accion-reaccion-explorador":
+      return <AccionReaccionFq3Explorador block={block} />;
+    case "fq3-newton2-rozamiento-explorador":
+      return <Newton2RozamientoFq3Explorador block={block} />;
+    case "fq3-presion-explorador":
+      return <PresionFq3Explorador block={block} />;
+    case "fq3-flotacion-explorador":
+      return <FlotacionFq3Explorador block={block} />;
+    case "fq3-trabajo-potencia-explorador":
+      return <TrabajoPotenciaFq3Explorador block={block} />;
+    case "fq3-montana-rusa-explorador":
+      return <MontanaRusaFq3Explorador block={block} />;
+    case "fq3-calor-especifico-explorador":
+      return <CalorEspecificoFq3Explorador block={block} />;
+    case "fq3-calentamiento-hielo-explorador":
+      return <CalentamientoHieloFq3Explorador block={block} />;
+    case "fq3-aislamiento-explorador":
+      return <AislamientoFq3Explorador block={block} />;
+    case "fq3-carga-coulomb-explorador":
+      return <CargaCoulombFq3Explorador block={block} />;
+    case "fq3-intensidad-tension-explorador":
+      return <IntensidadTensionFq3Explorador block={block} />;
+    case "fq3-ley-ohm-explorador":
+      return <LeyOhmFq3Explorador block={block} />;
+    case "fq3-resistencia-hilo-explorador":
+      return <ResistenciaHiloFq3Explorador block={block} />;
+    case "fq3-circuito-explorador":
+      return <CircuitoFq3Explorador block={block} />;
+    case "fq3-consumo-electrico-explorador":
+      return <ConsumoElectricoFq3Explorador block={block} />;
+    case "fq3-seguridad-electrica-explorador":
+      return <SeguridadElectricaFq3Explorador block={block} />;
+    case "fq3-escala-ph-explorador":
+      return <EscalaPhFq3Explorador block={block} />;
+    case "fq3-pictogramas-explorador":
+      return <PictogramasFq3Explorador block={block} />;
+    case "fq3-contaminantes-explorador":
+      return <ContaminantesFq3Explorador block={block} />;
+    case "fq3-efecto-invernadero-explorador":
+      return <EfectoInvernaderoFq3Explorador block={block} />;
+    case "fq3-reciclaje-explorador":
+      return <ReciclajeFq3Explorador block={block} />;
+    case "fq4-vectores-explorador":
+      return <VectoresFq4Explorador block={block} />;
+    case "fq4-error-medida-explorador":
+      return <ErrorMedidaFq4Explorador block={block} />;
+    case "fq4-ajuste-lineal-explorador":
+      return <AjusteLinealFq4Explorador block={block} />;
+    case "fq4-configuracion-explorador":
+      return <ConfiguracionFq4Explorador block={block} />;
+    case "fq4-tabla-bloques-explorador":
+      return <TablaBloquesFq4Explorador block={block} />;
+    case "fq4-propiedades-periodicas-explorador":
+      return <PropiedadesPeriodicasFq4Explorador block={block} />;
+    case "fq4-red-ionica-explorador":
+      return <RedIonicaFq4Explorador block={block} />;
+    case "fq4-lewis-explorador":
+      return <LewisFq4Explorador block={block} />;
+    case "fq4-clasifica-sustancia-explorador":
+      return <ClasificaSustanciaFq4Explorador block={block} />;
+    case "fq4-fuerzas-intermoleculares-explorador":
+      return <FuerzasIntermolecularesFq4Explorador block={block} />;
+    case "fq4-oxidacion-explorador":
+      return <OxidacionFq4Explorador block={block} />;
+    case "fq4-oxidos-explorador":
+      return <OxidosFq4Explorador block={block} />;
+    case "fq4-hidruros-explorador":
+      return <HidurosFq4Explorador block={block} />;
+    case "fq4-sales-binarias-explorador":
+      return <SalesBinariasFq4Explorador block={block} />;
+    case "fq4-hidroxidos-oxoacidos-explorador":
+      return <HidroxidosOxoacidosFq4Explorador block={block} />;
+    case "fq4-oxisales-explorador":
+      return <OxisalesFq4Explorador block={block} />;
+    case "fq4-mol-gases-explorador":
+      return <MolGasesFq4Explorador block={block} />;
+    case "fq4-estequiometria-explorador":
+      return <EstequiometriaFq4Explorador block={block} />;
+    case "fq4-reactivo-limitante-explorador":
+      return <ReactivoLimitanteFq4Explorador block={block} />;
+    case "fq4-tipos-reaccion-explorador":
+      return <TiposReaccionFq4Explorador block={block} />;
+    case "fq4-neutralizacion-explorador":
+      return <NeutralizacionFq4Explorador block={block} />;
+    case "fq4-redox-explorador":
+      return <RedoxFq4Explorador block={block} />;
+    case "fq4-carbono-enlaces-explorador":
+      return <CarbonoEnlacesFq4Explorador block={block} />;
+    case "fq4-hidrocarburos-explorador":
+      return <HidrocarburosFq4Explorador block={block} />;
+    case "fq4-grupos-funcionales-explorador":
+      return <GruposFuncionalesFq4Explorador block={block} />;
+    case "fq4-petroleo-explorador":
+      return <PetroleoFq4Explorador block={block} />;
+    case "fq4-polimeros-explorador":
+      return <PolimerosFq4Explorador block={block} />;
+    case "fq4-vectores-movimiento-explorador":
+      return <VectoresMovimientoFq4Explorador block={block} />;
+    case "fq4-encuentro-explorador":
+      return <EncuentroFq4Explorador block={block} />;
+    case "fq4-tiro-vertical-explorador":
+      return <TiroVerticalFq4Explorador block={block} />;
+    case "fq4-mcu-explorador":
+      return <McuFq4Explorador block={block} />;
+    case "fq4-seguridad-vial-explorador":
+      return <SeguridadVialFq4Explorador block={block} />;
+    case "fq4-newton-explorador":
+      return <NewtonFq4Explorador block={block} />;
+    case "fq4-rozamiento-explorador":
+      return <RozamientoFq4Explorador block={block} />;
+    case "fq4-plano-inclinado-explorador":
+      return <PlanoInclinadoFq4Explorador block={block} />;
+    case "fq4-poleas-explorador":
+      return <PoleasFq4Explorador block={block} />;
+    case "fq4-elastica-centripeta-explorador":
+      return <ElasticaCentripetaFq4Explorador block={block} />;
+    case "fq4-gravitacion-explorador":
+      return <GravitacionFq4Explorador block={block} />;
+    case "fq4-gravedad-planetas-explorador":
+      return <GravedadAstrosFq4Explorador block={block} />;
+    case "fq4-orbitas-explorador":
+      return <OrbitasFq4Explorador block={block} />;
+    case "fq4-fases-lunares-explorador":
+      return <FasesLunaresFq4Explorador block={block} />;
+    case "fq4-trabajo-potencia-explorador":
+      return <TrabajoPotenciaFq4Explorador block={block} />;
+    case "fq4-energias-explorador":
+      return <EnergiasFq4Explorador block={block} />;
+    case "fq4-teorema-trabajo-energia-explorador":
+      return <TeoremaTrabajoEnergiaFq4Explorador block={block} />;
+    case "fq4-conservacion-energia-explorador":
+      return <ConservacionEnergiaFq4Explorador block={block} />;
+    case "fq4-rendimiento-explorador":
+      return <RendimientoFq4Explorador block={block} />;
+    case "fq4-equilibrio-termico-explorador":
+      return <EquilibrioTermicoFq4Explorador block={block} />;
+    case "fq4-cambios-estado-explorador":
+      return <CambiosEstadoFq4Explorador block={block} />;
+    case "fq4-transmision-dilatacion-explorador":
+      return <TransmisionDilatacionFq4Explorador block={block} />;
+    case "fq4-maquinas-termicas-explorador":
+      return <MaquinasTermicasFq4Explorador block={block} />;
+    case "fq4-onda-explorador":
+      return <OndaFq4Explorador block={block} />;
+    case "fq4-espectro-explorador":
+      return <EspectroFq4Explorador block={block} />;
+    case "fq4-sonido-explorador":
+      return <SonidoFq4Explorador block={block} />;
+    case "fq4-optica-explorador":
+      return <OpticaFq4Explorador block={block} />;
+    case "fq4-contaminacion-acustica-explorador":
+      return <ContaminacionAcusticaFq4Explorador block={block} />;
+    case "fb1-particulas-isotopos-explorador":
+      return <ParticulasIsotoposFb1Explorador block={block} />;
+    case "fb1-bohr-espectro-explorador":
+      return <BohrEspectroFb1Explorador block={block} />;
+    case "fb1-de-broglie-explorador":
+      return <DeBroglieFb1Explorador block={block} />;
+    case "fb1-numeros-cuanticos-explorador":
+      return <NumerosCuanticosFb1Explorador block={block} />;
+    case "fb1-configuracion-explorador":
+      return <ConfiguracionFb1Explorador block={block} />;
+    case "fb1-tabla-bloques-explorador":
+      return <TablaBloquesFb1Explorador block={block} />;
+    case "fb1-tendencias-explorador":
+      return <TendenciasFb1Explorador block={block} />;
+    case "fb1-radios-ionicos-explorador":
+      return <RadiosIonicosFb1Explorador block={block} />;
+    case "fb1-reactividad-explorador":
+      return <ReactividadFb1Explorador block={block} />;
+    case "fb1-energia-reticular-explorador":
+      return <EnergiaReticularFb1Explorador block={block} />;
+    case "fb1-lewis-explorador":
+      return <LewisFb1Explorador block={block} />;
+    case "fb1-geometria-explorador":
+      return <GeometriaFb1Explorador block={block} />;
+    case "fb1-fuerzas-intermoleculares-explorador":
+      return <FuerzasIntermolecularesFb1Explorador block={block} />;
+    case "fb1-sustancias-explorador":
+      return <SustanciasFb1Explorador block={block} />;
+    case "fb1-binarios-explorador":
+      return <BinariosFb1Explorador block={block} />;
+    case "fb1-oxoacidos-explorador":
+      return <OxoacidosFb1Explorador block={block} />;
+    case "fb1-oxisales-explorador":
+      return <OxisalesFb1Explorador block={block} />;
+    case "fb1-entrenador-explorador":
+      return <EntrenadorFb1Explorador block={block} />;
+    case "fb1-mol-masa-explorador":
+      return <MolMasaFb1Explorador block={block} />;
+    case "fb1-composicion-centesimal-explorador":
+      return <CentesimalFb1Explorador block={block} />;
+    case "fb1-formula-empirica-explorador":
+      return <FormulaEmpiricaFb1Explorador block={block} />;
+    case "fb1-estequiometria-pureza-explorador":
+      return <EstequiometriaPurezaFb1Explorador block={block} />;
+    case "fb1-leyes-gases-explorador":
+      return <LeyesGasesFb1Explorador block={block} />;
+    case "fb1-gas-ideal-explorador":
+      return <GasIdealFb1Explorador block={block} />;
+    case "fb1-mezcla-gases-explorador":
+      return <MezclaGasesFb1Explorador block={block} />;
+    case "fb1-concentracion-explorador":
+      return <ConcentracionFb1Explorador block={block} />;
+    case "fb1-dilucion-coligativas-explorador":
+      return <DilucionColigativasFb1Explorador block={block} />;
+    case "fb1-ajuste-explorador":
+      return <AjusteFb1Explorador block={block} />;
+    case "fb1-limitante-explorador":
+      return <LimitanteFb1Explorador block={block} />;
+    case "fb1-ph-explorador":
+      return <PhFb1Explorador block={block} />;
+    case "fb1-valoracion-explorador":
+      return <ValoracionFb1Explorador block={block} />;
+    case "fb1-redox-pila-explorador":
+      return <RedoxPilaFb1Explorador block={block} />;
+    case "fb1-industria-explorador":
+      return <IndustriaFb1Explorador block={block} />;
+    case "fb1-ramificados-explorador":
+      return <RamificadosFb1Explorador block={block} />;
+    case "fb1-grupos-explorador":
+      return <GruposFb1Explorador block={block} />;
+    case "fb1-isomeria-explorador":
+      return <IsomeriaFb1Explorador block={block} />;
+    case "fb1-reacciones-organicas-explorador":
+      return <ReaccionesOrganicasFb1Explorador block={block} />;
+    case "fb1-vectores-cinematicos-explorador":
+      return <VectoresCinFb1Explorador block={block} />;
+    case "fb1-graficas-mrua-explorador":
+      return <GraficasMruaFb1Explorador block={block} />;
+    case "fb1-parabolico-explorador":
+      return <ParabolicoFb1Explorador block={block} />;
+    case "fb1-circular-explorador":
+      return <CircularFb1Explorador block={block} />;
+    case "fb1-barca-rio-explorador":
+      return <BarcaRioFb1Explorador block={block} />;
+    case "fb1-fuerzas-resultante-explorador":
+      return <FuerzasResultanteFb1Explorador block={block} />;
+    case "fb1-plano-inclinado-explorador":
+      return <PlanoInclinadoFb1Explorador block={block} />;
+    case "fb1-poleas-explorador":
+      return <PoleasFb1Explorador block={block} />;
+    case "fb1-muelle-explorador":
+      return <MuelleFb1Explorador block={block} />;
+    case "fb1-choque-explorador":
+      return <ChoqueFb1Explorador block={block} />;
+    case "fb1-trabajo-explorador":
+      return <TrabajoFb1Explorador block={block} />;
+    case "fb1-teorema-ec-explorador":
+      return <TeoremaEnergiaCineticaFb1Explorador block={block} />;
+    case "fb1-rampa-energia-explorador":
+      return <RampaEnergiaFb1Explorador block={block} />;
+    case "fb1-muelle-energia-explorador":
+      return <MuelleEnergiaFb1Explorador block={block} />;
+    case "fb1-potencia-rendimiento-explorador":
+      return <PotenciaRendimientoFb1Explorador block={block} />;
+    case "fb1-kepler-explorador":
+      return <KeplerFb1Explorador block={block} />;
+    case "fb1-campo-gravitatorio-explorador":
+      return <CampoGravitatorioFb1Explorador block={block} />;
+    case "fb1-satelite-explorador":
+      return <SateliteFb1Explorador block={block} />;
+    case "fb1-energia-orbital-explorador":
+      return <EnergiaOrbitalFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

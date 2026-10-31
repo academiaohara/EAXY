@@ -2,8 +2,11 @@ import { abatimientoAfinidadAplicacionesDt2Lesson } from "@/data/lessons/dibujo-
 import { abatimientoPlanoPuntoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/01-abatimiento-plano-punto-dt2";
 import { accesibilidadDisenoUniversal4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/06-accesibilidad-diseno-universal-4eso";
 import { aceitePropiedadesFlujoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/03-aceite-propiedades-flujo";
+import { aceleracionFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/02-aceleracion-fq3";
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
+import { acidosBasesNeutralizacionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/05-acidos-bases-neutralizacion-fq4";
+import { acidosBasesPhFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/03-acidos-bases-ph-fb1";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
 import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
@@ -11,6 +14,8 @@ import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
 import { afinidadEjeDireccionRazonDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/02-afinidad-eje-direccion-razon-dt2";
 import { ahorroMaterialesEnergiaEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/03-ahorro-materiales-energia-eso";
+import { aislamientoRendimientoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/05-aislamiento-rendimiento-fq3";
+import { ajusteEstequiometriaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/01-ajuste-estequiometria-fb1";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
@@ -27,6 +32,7 @@ import { algoritmosDiagramasFlujoLesson } from "@/data/lessons/tecnologia-ingeni
 import { alotropiaAmorfosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/08-alotropia-amorfos";
 import { amplificadorOperacionalLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/10-amplificador-operacional";
 import { analisisCicloVidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/08-analisis-ciclo-vida";
+import { analisisDatosAjusteLinealFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/03-analisis-datos-ajuste-lineal-fq4";
 import { analisisNecesidadesEspecificaciones4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/01-analisis-necesidades-especificaciones-4eso";
 import { analisisSimulacionMecanismosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/10-analisis-simulacion-mecanismos";
 import { analiticaDistancia4esoLesson } from "@/data/lessons/matematicas-4-eso/12-geometria-analitica/05-analitica-distancia-4eso";
@@ -53,9 +59,11 @@ import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { anualidadesAmortizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/06-anualidades-amortizacion-ccss1";
 import { anualidadesCapitalizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/04-anualidades-capitalizacion-ccss1";
 import { aplicacionCintaTransportadora4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/07-aplicacion-cinta-transportadora-4eso";
+import { aplicacionesContaminacionAcusticaFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/05-aplicaciones-contaminacion-acustica-fq4";
 import { aplicacionesDomesticasIndustriales3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/07-aplicaciones-domesticas-industriales-3eso";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
+import { aplicacionesIndustrialesAmbientalesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/05-aplicaciones-industriales-ambientales-fb1";
 import { aplicacionesIndustrialesAmbientalesFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/05-aplicaciones-industriales-ambientales-fq3";
 import { aplicacionesInteligenciaArtificialLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/05-aplicaciones-inteligencia-artificial";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
@@ -144,17 +152,25 @@ import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comuni
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
 import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
+import { caidaLibreFrenadaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/05-caida-libre-frenada-fq3";
+import { caidaLibreMovimientoParabolicoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/03-caida-libre-movimiento-parabolico-fb1";
+import { caidaLibreTiroVerticalFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/03-caida-libre-tiro-vertical-fq4";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
 import { calculosPorcentajes4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/06-calculos-porcentajes-4eso";
+import { calorEspecificoCambiosEstadoFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/02-calor-especifico-cambios-estado-fq4";
 import { calorPrimerPrincipioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/06-calor-primer-principio";
+import { calorTemperaturaEspecificoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/03-calor-temperatura-especifico-fq3";
 import { calorTemperaturaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/04-calor-temperatura-fq2";
 import { cambioDeVariable2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/10-integrales/06-cambio-de-variable-2bach";
 import { cambioDeVariableCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/06-integrales/06-cambio-de-variable-ccss2";
 import { cambiosDeEstadoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/04-cambios-de-estado-fq2";
+import { cambiosEstadoCalorLatenteFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/04-cambios-estado-calor-latente-fq3";
 import { cambiosFisicosQuimicosFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/01-cambios-fisicos-quimicos-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
+import { carbonoCadenasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/01-carbono-cadenas-fb1";
+import { cargaElectricaElectrizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/01-carga-electrica-electrizacion-fq3";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
 import { ceramicosPetreosCompuestosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/08-ceramicos-petreos-compuestos";
@@ -176,6 +192,7 @@ import { circuitosMixtosKirchhoff4esoLesson } from "@/data/lessons/tecnologia-4-
 import { circuitosParalelo2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/05-circuitos-paralelo-2eso";
 import { circuitosSerie2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/04-circuitos-serie-2eso";
 import { circuitosSerieParaleloEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/05-circuitos-serie-paralelo-eso";
+import { circuitosSerieParaleloFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/04-circuitos-serie-paralelo-fq3";
 import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/07-circuitos-temporizadores";
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
 import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/09-circunferencia-1bach";
@@ -204,6 +221,8 @@ import { combinacionesNumerosCombinatorios2bachLesson } from "@/data/lessons/mat
 import { combinatoriaConteo2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/09-combinatoria-conteo-2bach";
 import { combinatoriaProbabilidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/12-combinatoria-probabilidad-2bach";
 import { combinatoriaProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/09-combinatoria-probabilidad-ccss1";
+import { combustiblesContaminacionAtmosfericaFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/03-combustibles-contaminacion-atmosferica-fq3";
+import { combustiblesFosilesPetroleoFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/04-combustibles-fosiles-petroleo-fq4";
 import { combustionOxidacionEnergiaFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/04-combustion-oxidacion-energia-fq3";
 import { combustionOxidacionFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/04-combustion-oxidacion-fq2";
 import { comparadorElectronicaAnalogica3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/08-comparador-electronica-analogica-3eso";
@@ -214,10 +233,13 @@ import { complejosProductoMoivre1bachLesson } from "@/data/lessons/matematicas-1
 import { complejosRaices1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/13-complejos-raices-1bach";
 import { componentesElectronicosBasicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/08-componentes-electronicos-basicos";
 import { componentesPerifericosDispositivos3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/01-componentes-perifericos-dispositivos-3eso";
+import { composicionCentesimalFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/02-composicion-centesimal-fb1";
+import { composicionFuerzasEquilibrioFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/01-composicion-fuerzas-equilibrio-fq3";
 import { compresoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/03-compresores";
 import { comunicacionDigitalTransmisionDatosLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/03-comunicacion-digital-transmision-datos";
 import { comunicacionTecnicaNetiquetaLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/01-comunicacion-tecnica-netiqueta";
 import { comunicacionesIotProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/08-comunicaciones-iot-proyecto-4eso";
+import { concentracionDisolucionesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/04-concentracion-disoluciones-fb1";
 import { concentracionDisolucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/01-concentracion-disoluciones-fq3";
 import { conceptoDeterminante2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/01-concepto-determinante-2bach";
 import { conceptoEstructuraTiposLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/01-concepto-estructura-tipos";
@@ -236,6 +258,8 @@ import { condicionalesPythonLesson } from "@/data/lessons/tecnologia-ingenieria-
 import { condiciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/04-condiciones-2eso";
 import { condicionesBuclesDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/04-condiciones-bucles-datos-4eso";
 import { condicionesDecisionesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/05-condiciones-decisiones-eso";
+import { configuracionElectronicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/04-configuracion-electronica-fb1";
+import { configuracionElectronicaFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/01-configuracion-electronica-fq4";
 import { conformadoFundicionForjaLaminado3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/02-conformado-fundicion-forja-laminado-3eso";
 import { conicaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/03-conica-solidos-dt2";
 import { conicas3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/04-conicas-3eso";
@@ -243,6 +267,9 @@ import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachil
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
+import { conservacionEnergiaMecanicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/04-conservacion-energia-mecanica-fb1";
+import { conservacionEnergiaMecanicaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/02-conservacion-energia-mecanica-fq3";
+import { conservacionEnergiaMecanicaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/04-conservacion-energia-mecanica-fq4";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
 import { conservacionMasaCalculosFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/02-conservacion-masa-calculos-fq3";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
@@ -273,6 +300,7 @@ import { correlacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachil
 import { corrienteContinuaAlterna4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/01-corriente-continua-alterna-4eso";
 import { corrienteContinuaElementosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/03-corriente-continua-elementos";
 import { corrienteElectricaBasicaLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/01-corriente-electrica-basica";
+import { corrienteIntensidadTensionFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/02-corriente-intensidad-tension-fq3";
 import { corrosionPilaElectroquimicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/05-corrosion-pila-electroquimica";
 import { corteUnionAcabado2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/06-corte-union-acabado-2eso";
 import { cortesSigno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/03-cortes-signo-1bach";
@@ -349,6 +377,7 @@ import { diagramasBloquesLesson } from "@/data/lessons/tecnologia-industrial-2-b
 import { diagramasFlujoEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/03-diagramas-flujo-eso";
 import { diagramasReglaPalancaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/04-diagramas-regla-palanca";
 import { difusionEvaluacionProyecto3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/05-difusion-evaluacion-proyecto-3eso";
+import { dilucionPropiedadesColigativasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/05-dilucion-propiedades-coligativas-fb1";
 import { diodosLed3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/03-diodos-led-3eso";
 import { direccionesIpRouter3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/03-direcciones-ip-router-3eso";
 import { discontinuidades2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/10-discontinuidades-2bach";
@@ -402,6 +431,7 @@ import { ecodisenoFabricacionSostenibleLesson } from "@/data/lessons/tecnologia-
 import { economiaCircularAlternativasTecnologicasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/05-economia-circular-alternativas-tecnologicas-ti2";
 import { economiaCircularReparacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/04-economia-circular-reparacion-4eso";
 import { economiaCircularResiduosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/05-economia-circular-residuos";
+import { ecuacionGasesIdealesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/02-ecuacion-gases-ideales-fb1";
 import { ecuacionRecta2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/06-ecuacion-recta-2eso";
 import { ecuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/01-ecuaciones-2eso";
 import { ecuacionesBicuadradas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/09-ecuaciones-bicuadradas-1bach";
@@ -438,11 +468,13 @@ import { ecuacionesTrigMetodos1bachLesson } from "@/data/lessons/matematicas-1-b
 import { ecuacionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/08-ecuaciones-trigonometricas-1bach";
 import { edificiosEficienciaCertificado4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/03-edificios-eficiencia-certificado-4eso";
 import { edificiosPuentesTorresLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/06-edificios-puentes-torres";
+import { efectoInvernaderoCambioClimaticoFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/04-efecto-invernadero-cambio-climatico-fq3";
 import { eficienciaAhorroHogar3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/05-eficiencia-ahorro-hogar-3eso";
 import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/03-eficiencia-energetica";
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
+import { elCarbonoYSusEnlacesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/01-el-carbono-y-sus-enlaces-fq4";
 import { elSonidoFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/04-el-sonido-fq2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
 import { eleccionSistemaRepresentacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/05-eleccion-sistema-representacion-dt2";
@@ -461,6 +493,10 @@ import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bach
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaCineticaPotencialFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/02-energia-cinetica-potencial-fq2";
+import { energiaCineticaPotencialFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/02-energia-cinetica-potencial-fq4";
+import { energiaCineticaTeoremaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/02-energia-cinetica-teorema-fb1";
+import { energiaGravitatoriaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/04-energia-gravitatoria-fb1";
+import { energiaPotencialFuerzasConservativasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/03-energia-potencial-fuerzas-conservativas-fb1";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
 import { energiasRenovablesMix3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/01-energias-renovables-mix-3eso";
@@ -470,8 +506,14 @@ import { engranajesTransmisionPar2esoLesson } from "@/data/lessons/tecnologia-2-
 import { engranajesTrenesEngranajesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/03-engranajes-trenes-engranajes";
 import { enlaceCovalenteCarbonoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/05-enlace-covalente-carbono";
 import { enlaceCovalenteFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/03-enlace-covalente-fq3";
+import { enlaceCovalenteLewisFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/02-enlace-covalente-lewis-fb1";
+import { enlaceCovalenteLewisGeometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/02-enlace-covalente-lewis-geometria-fq4";
 import { enlaceIonicoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/04-enlace-ionico";
 import { enlaceIonicoFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/02-enlace-ionico-fq3";
+import { enlaceIonicoRedesCristalinasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/01-enlace-ionico-redes-cristalinas-fq4";
+import { enlaceIonicoRedesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/01-enlace-ionico-redes-fb1";
+import { enlaceMetalicoPropiedadesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/05-enlace-metalico-propiedades-fb1";
+import { enlaceMetalicoPropiedadesSustanciasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/03-enlace-metalico-propiedades-sustancias-fq4";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
 import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
@@ -485,6 +527,7 @@ import { equilibrioEstaticoTi2Lesson } from "@/data/lessons/tecnologia-ingenieri
 import { equipoDocumentacionVersionesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/04-equipo-documentacion-versiones-ti2";
 import { equivalenciaAreasCuadraturaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/03-equivalencia-areas-cuadratura-dt1";
 import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/09-error-confianza-tamano-ccss2";
+import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/02-error-incertidumbre-medida-fq4";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
@@ -495,6 +538,7 @@ import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia
 import { esfuerzosTraccionCompresionCortaduraTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/05-esfuerzos-traccion-compresion-cortadura-ti2";
 import { especificacionesRequisitosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/04-especificaciones-requisitos-tecnicos";
 import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/01-especificaciones-tecnicas-3eso";
+import { espectrosModeloBohrFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/02-espectros-modelo-bohr-fb1";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
 import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/05-espirales-evolvente-dt1";
@@ -522,6 +566,8 @@ import { estadisticaRepaso4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { estadisticaTablas4esoLesson } from "@/data/lessons/matematicas-4-eso/13-estadistica/02-estadistica-tablas-4eso";
 import { estadisticaTablas4esobLesson } from "@/data/lessons/matematicas-4-eso-b/09-estadistica/02-estadistica-tablas-4esob";
 import { estadosAgregacionFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/02-estados-agregacion-fq2";
+import { estequiometriaDePartidaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/04-estequiometria-de-partida-fb1";
+import { estequiometriaFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/02-estequiometria-fq4";
 import { estimacionSimulacionPrototiposTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/03-estimacion-simulacion-prototipos-ti2";
 import { estimadoresPuntualesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/07-estimadores-puntuales-ccss2";
 import { estructuraComposicionMaterialesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/02-estructura-composicion-materiales";
@@ -561,12 +607,14 @@ import { factorizacion1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { factorizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/05-factorizacion-ccss1";
 import { factorizacionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/09-factorizacion-polinomios-4esob";
 import { fasesProyectoTecnologicoLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/05-fases-proyecto-tecnologico";
+import { fenomenosAstronomicosFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/04-fenomenos-astronomicos-fq4";
 import { figurasGeometricasCircunferenciaLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/04-figuras-geometricas-circunferencia";
 import { figurasGeometricasCuadrilaterosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/02-figuras-geometricas-cuadrilateros";
 import { figurasGeometricasPoligonosRegularesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/03-figuras-geometricas-poligonos-regulares";
 import { figurasGeometricasTriangulosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/01-figuras-geometricas-triangulos";
 import { figurasSemejantes2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/03-figuras-semejantes-2eso";
 import { flexionVigasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/06-flexion-vigas-ti2";
+import { fluidosArquimedesFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/05-fluidos-arquimedes-fq3";
 import { fluidosDensidadVaporLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/01-fluidos-densidad-vapor";
 import { formaExponencialRadicales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/04-forma-exponencial-radicales-4eso";
 import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/06-forma-exponencial-radicales-4esob";
@@ -574,6 +622,7 @@ import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
 import { formasTransformacionesEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/01-formas-transformaciones-energia-fq2";
 import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
+import { formulaEmpiricaMolecularFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/03-formula-empirica-molecular-fb1";
 import { formulasMasaMolecularMolFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/05-formulas-masa-molecular-mol-fq3";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
 import { fraccionOperador3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/06-fraccion-operador-3eso";
@@ -592,10 +641,14 @@ import { fraccionesPotencias3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { fraccionesProblemasLesson } from "@/data/lessons/matematicas-1-eso/07-fracciones/05-fracciones-problemas";
 import { fuentesEnergiaEficienciaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/05-fuentes-energia-eficiencia-fq2";
 import { fuerzaConsumoCilindroLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/06-fuerza-consumo-cilindro";
+import { fuerzaElasticaCentripetaFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/05-fuerza-elastica-centripeta-fq4";
 import { fuerzaElasticaHookeFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/03-fuerza-elastica-hooke-fq2";
 import { fuerzaLorentzConductorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/03-fuerza-lorentz-conductor";
 import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/08-fuerza-par-potencia";
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
+import { fuerzasIntermolecularesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/04-fuerzas-intermoleculares-fb1";
+import { fuerzasIntermolecularesFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/04-fuerzas-intermoleculares-fq4";
+import { fuerzasLeyesNewtonFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/01-fuerzas-leyes-newton-fb1";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConcepto4esobLesson } from "@/data/lessons/matematicas-4-eso-b/04-funciones-caracteristicas/01-funcion-concepto-4esob";
 import { funcionConstante2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/05-funcion-constante-2eso";
@@ -629,6 +682,7 @@ import { funciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programa
 import { funcionesExponencialesLogaritmicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/10-funciones-exponenciales-logaritmicas-2bach";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { funcionesModularidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/08-funciones-modularidad";
+import { funcionesNitrogenadasHalogenadasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/04-funciones-nitrogenadas-halogenadas-fb1";
 import { funcionesPolinomicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/07-funciones-polinomicas-2bach";
 import { funcionesPolinomicasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/10-funciones-polinomicas-ccss2";
 import { funcionesProgramacionModular4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/05-funciones-programacion-modular-4eso";
@@ -650,6 +704,7 @@ import { gaussEliminacion2bachLesson } from "@/data/lessons/matematicas-2-bachil
 import { gaussEliminacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/05-gauss-eliminacion-ccss2";
 import { generacionIdeasScamper2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/02-generacion-ideas-scamper-2eso";
 import { geometriaGriegaPitagorasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/02-geometria-griega-pitagoras-dt1";
+import { geometriaMolecularPolaridadFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/03-geometria-molecular-polaridad-fb1";
 import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/01-geometria-revolucion-industrial-dt2";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
@@ -657,17 +712,28 @@ import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachille
 import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
+import { graficasProblemasCinematicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/05-graficas-problemas-cinematica-fb1";
+import { graficasSeguridadVialFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/05-graficas-seguridad-vial-fq4";
+import { graficasVelocidadTiempoFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/04-graficas-velocidad-tiempo-fq3";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
 import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/02-graficos-estadisticos-2eso";
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
+import { gravitacionUniversalCampoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/02-gravitacion-universal-campo-fb1";
 import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
+import { gruposFuncionalesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/03-grupos-funcionales-fq4";
+import { gruposFuncionalesOxigenadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/03-grupos-funcionales-oxigenados-fb1";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
 import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
+import { hidrocarburosFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/02-hidrocarburos-fq4";
+import { hidrocarburosNomenclaturaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/02-hidrocarburos-nomenclatura-fb1";
+import { hidroxidosOxoacidosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/02-hidroxidos-oxoacidos-fb1";
+import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/05-hidroxidos-oxoacidos-fq4";
+import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { hiperbolaAsintotasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/03-hiperbola-asintotas-dt2";
 import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
@@ -711,6 +777,7 @@ import { inecuacionesPrimerGrado1bachLesson } from "@/data/lessons/matematicas-1
 import { inecuacionesPrimerGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/09-inecuaciones-primer-grado-ccss1";
 import { inecuacionesSegundoGrado1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/11-inecuaciones-segundo-grado-1bach";
 import { inecuacionesSegundoGradoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/10-inecuaciones-segundo-grado-ccss1";
+import { inerciaAccionReaccionFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/02-inercia-accion-reaccion-fq3";
 import { instalacionBombasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/07-instalacion-bombas";
 import { instalacionFrigorificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/10-instalacion-frigorifica";
 import { instrumentosDibujoTrazadosLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/01-instrumentos-dibujo-trazados";
@@ -757,6 +824,7 @@ import { investigacionDesarrolloInnovacionTi2Lesson } from "@/data/lessons/tecno
 import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { ionesIsotoposFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/03-iones-isotopos-fq2";
+import { isomeriaAplicacionesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/05-isomeria-aplicaciones-fb1";
 import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
 import { isotoposMasaAtomicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/03-isotopos-masa-atomica-fq3";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
@@ -771,8 +839,11 @@ import { lenguajeAlgebraico2esoLesson } from "@/data/lessons/matematicas-2-eso/0
 import { lenguajeAlgebraico3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/01-lenguaje-algebraico-3eso";
 import { levasBielasManivelas3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/03-levas-bielas-manivelas-3eso";
 import { leyDeOhmCircuitosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/02-ley-de-ohm-circuitos";
+import { leyGravitacionUniversalFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/01-ley-gravitacion-universal-fq4";
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
+import { leyesDeNewtonFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/01-leyes-de-newton-fq4";
+import { leyesKeplerFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/01-leyes-kepler-fb1";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
 import { limiteDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/01-limite-definicion-ccss2";
@@ -815,11 +886,13 @@ import { logicaControlTablasVerdad3esoLesson } from "@/data/lessons/tecnologia-3
 import { lugaresGeometricos3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/03-lugares-geometricos-3eso";
 import { lugaresGeometricosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/03-lugares-geometricos-dt1";
 import { luzDetectorErrorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/09-luz-detector-error";
+import { luzReflexionRefraccionFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/04-luz-reflexion-refraccion-fq4";
 import { maderaDerivadosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/03-madera-derivados";
 import { maderaTablerosDespiece2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/03-madera-tableros-despiece-2eso";
 import { magnetismoImanesOerstedLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/01-magnetismo-imanes-oersted";
 import { magnitudesElectricas2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/01-magnitudes-electricas-2eso";
 import { magnitudesElectricasFundamentalesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/01-magnitudes-electricas-fundamentales";
+import { magnitudesEscalaresVectorialesFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/01-magnitudes-escalares-vectoriales-fq4";
 import { magnitudesUnidadesSiFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/02-magnitudes-unidades-si-fq2";
 import { mandoCilindrosEjemplosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/10-mando-cilindros-ejemplos";
 import { mandosBloqueoRegulacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/08-mandos-bloqueo-regulacion";
@@ -828,6 +901,7 @@ import { maquinasMecanismosElementosLesson } from "@/data/lessons/tecnologia-ing
 import { maquinasMecanismosMovimientosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/01-maquinas-mecanismos-movimientos";
 import { maquinasRealesLavadoraBicicleta3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/07-maquinas-reales-lavadora-bicicleta-3eso";
 import { maquinasSimplesVentajaMecanica2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/04-maquinas-simples-ventaja-mecanica-2eso";
+import { maquinasTermicasAhorroFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/04-maquinas-termicas-ahorro-fq4";
 import { materialesCeramicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/03-materiales-ceramicos";
 import { materiasPrimasMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/01-materias-primas-materiales";
 import { matrizAdjunta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/02-determinantes/09-matriz-adjunta-2bach";
@@ -865,6 +939,7 @@ import { metodoSustitucion3esoLesson } from "@/data/lessons/matematicas-3-eso/06
 import { metodoSustitucion4esoLesson } from "@/data/lessons/matematicas-4-eso/07-sistemas-de-ecuaciones/03-metodo-sustitucion-4eso";
 import { metodoSustitucion4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/08-metodo-sustitucion-4esob";
 import { metodologiasAgilesScrumKanbanTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/02-metodologias-agiles-scrum-kanban-ti2";
+import { mezclasGasesPresionesParcialesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/03-mezclas-gases-presiones-parciales-fb1";
 import { mezclasPromedios4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/04-mezclas-promedios-4eso";
 import { mezclasVidaCotidianaFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/05-mezclas-vida-cotidiana-fq2";
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
@@ -873,9 +948,14 @@ import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso
 import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
 import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
+import { modeloMecanocuanticoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/03-modelo-mecanocuantico-fb1";
 import { modeloPlanosFabricacionDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/02-modelo-planos-fabricacion-dt2";
 import { modelosAtomicosBohrFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/01-modelos-atomicos-bohr-fq3";
 import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/01-modelos-atomicos-fq2";
+import { modelosAtomicosParticulasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/01-modelos-atomicos-particulas-fb1";
+import { molMasaMolarAvogadroFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/01-mol-masa-molar-avogadro-fb1";
+import { molMasaMolarGasesFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/01-mol-masa-molar-gases-fq4";
+import { momentoLinealImpulsoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/05-momento-lineal-impulso-fb1";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -893,7 +973,14 @@ import { motorTrifasicoCampoGiratorioLesson } from "@/data/lessons/tecnologia-in
 import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/11-motor-trifasico-conexion-balance";
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
+import { movimientoCircularFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/04-movimiento-circular-fb1";
+import { movimientoCircularUniformeFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/04-movimiento-circular-uniforme-fq4";
+import { movimientoOndulatorioFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/01-movimiento-ondulatorio-fq4";
 import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
+import { mruMruaFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/02-mru-mrua-fq4";
+import { mruMruaGraficasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/02-mru-mrua-graficas-fb1";
+import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
+import { muellesHookeFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/04-muelles-hooke-fb1";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
@@ -906,6 +993,7 @@ import { necesidadesRequisitos2esoLesson } from "@/data/lessons/tecnologia-2-eso
 import { nernstFaradayCorrosionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/06-nernst-faraday-corrosion";
 import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/01-no-ferreos-resistencia-especifica";
 import { nomenclaturaCompuestosFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/06-nomenclatura-compuestos-fq3";
+import { nomenclaturasComposicionStockFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/04-nomenclaturas-composicion-stock-fb1";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
 import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
 import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
@@ -926,11 +1014,14 @@ import { numerosEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numero
 import { numerosGrandesAbreviadosLesson } from "@/data/lessons/_unlisted/numeros-grandes-abreviados";
 import { numerosIrracionales4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/01-numeros-irracionales-4eso";
 import { numerosIrracionales4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/01-numeros-irracionales-4esob";
+import { numerosOxidacionBinariosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/01-numeros-oxidacion-binarios-fb1";
+import { numerosOxidacionFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/01-numeros-oxidacion-fq4";
 import { numerosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/01-numeros-enteros-y-racionales/04-numeros-racionales-4eso";
 import { numerosRealesRecta4esoLesson } from "@/data/lessons/matematicas-4-eso/03-numeros-reales/02-numeros-reales-recta-4eso";
 import { numerosRealesRecta4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/02-numeros-reales-recta-4esob";
 import { ofertaDemanda1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/09-oferta-demanda-1bach";
 import { ofertaDemandaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/11-oferta-demanda-ccss1";
+import { ondasMecanicasElectromagneticasFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/02-ondas-mecanicas-electromagneticas-fq4";
 import { operacionesCombinadasFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/05-operaciones-combinadas-fracciones-2eso";
 import { operacionesComposicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/10-operaciones-composicion-1bach";
 import { operacionesComposicionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/12-operaciones-composicion-ccss1";
@@ -962,13 +1053,20 @@ import { optimizacion2bachLesson } from "@/data/lessons/matematicas-2-bachillera
 import { optimizacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/12-optimizacion-ccss1";
 import { optimizacionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/12-optimizacion-ccss2";
 import { optimizacionProcesosFabricacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/04-optimizacion-procesos-fabricacion-ti2";
+import { orbitasSatelitesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/03-orbitas-satelites-fq4";
 import { ordenesUnidadesDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/01-ordenes-unidades-decimales";
+import { organizacionTablaPeriodicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/01-organizacion-tabla-periodica-fb1";
 import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-ecuaciones-e-inecuaciones/07-otras-ecuaciones-4eso";
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { oxidacionReduccionFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/04-oxidacion-reduccion-fb1";
+import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
+import { oxidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/02-oxidos-fq4";
+import { oxisalesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/03-oxisales-fb1";
+import { oxisalesFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/06-oxisales-fq4";
 import { palancasLeyGenerosLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/02-palancas-ley-generos";
 import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/06-palancas-poleas-equilibrio";
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
@@ -991,7 +1089,9 @@ import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
 import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
+import { pesoCuerposCelestesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/02-peso-cuerpos-celestes-fq4";
 import { pesoMasaGravedadFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/02-peso-masa-gravedad-fq2";
+import { pesoNormalRozamientoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/02-peso-normal-rozamiento-fq4";
 import { piezasNormalizadasRoscasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/01-piezas-normalizadas-roscas-dt2";
 import { piramides2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/07-piramides-2eso";
 import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnologia-2-eso/01-proyecto-tecnologico/04-planificacion-gantt-presupuesto-2eso";
@@ -1001,6 +1101,8 @@ import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-es
 import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-planos-acotados-conico/02-plano-acotado-horizontales-dt1";
 import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
+import { planoInclinadoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/03-plano-inclinado-fq4";
+import { planoInclinadoRozamientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/02-plano-inclinado-rozamiento-fb1";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
@@ -1016,6 +1118,7 @@ import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poleasCorreas2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/06-poleas-correas-2eso";
 import { poleasCorreasFriccionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/02-poleas-correas-friccion";
+import { poleasCuerposEnlazadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/03-poleas-cuerpos-enlazados-fb1";
 import { poleasPolipastoBasicoLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/03-poleas-polipasto-basico";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
@@ -1025,6 +1128,7 @@ import { poligonosDadoLadoEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tec
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
 import { poligonosRegularesPropiedadesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-triangulos-cuadrilateros-poligonos/04-poligonos-regulares-propiedades-dt1";
 import { polimerizacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/04-polimerizacion";
+import { polimerosBiomoleculasFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/05-polimeros-biomoleculas-fq4";
 import { polimerosPlasticosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/07-polimeros-plasticos-tecnicos";
 import { polinomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/03-polinomios-2eso";
 import { polinomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/03-polinomios-3eso";
@@ -1037,6 +1141,7 @@ import { polinomiosOperacionesCcss1Lesson } from "@/data/lessons/matematicas-ccs
 import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcionalidad-y-porcentajes/03-porcentajes";
 import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/08-porcentajes-3eso";
+import { posicionVelocidadAceleracionFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/01-posicion-velocidad-aceleracion-fq4";
 import { posicionesRectaDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/04-posiciones-recta-diedrico-dt1";
 import { posicionesRelativas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/06-posiciones-relativas-1bach";
 import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-postulados-morgan";
@@ -1044,10 +1149,12 @@ import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-ind
 import { potenciaEnergiaElectricaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/04-sistemas-electricos-electronicos/06-potencia-energia-electrica";
 import { potenciaEnergiaElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/03-potencia-energia-electrica-2eso";
 import { potenciaEnergiaElectrica4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/02-potencia-energia-electrica-4eso";
+import { potenciaEnergiaElectricaFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/05-potencia-energia-electrica-fq3";
 import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/05-potencia-par-rendimiento-3eso";
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaPuntoCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/01-potencia-punto-circunferencia-dt2";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
+import { potenciaRendimientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/05-potencia-rendimiento-fb1";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
 import { potenciasActivaReactivaAparenteTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/03-potencias-activa-reactiva-aparente-ti2";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
@@ -1061,6 +1168,7 @@ import { potenciasMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { potenciasMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/06-potencias-matrices-ccss2";
 import { potenciasPropiedadesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/01-numeros-reales/06-potencias-propiedades-ccss1";
 import { preparacionDilucionesFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/03-preparacion-diluciones-fq3";
+import { presionFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/04-presion-fq3";
 import { presionNeumaticaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/01-presion-neumatica";
 import { presionTemperaturaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/08-presion-temperatura";
 import { presupuestoEvaluacionMejoraLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/07-presupuesto-evaluacion-mejora";
@@ -1151,6 +1259,7 @@ import { productoMixto2bachLesson } from "@/data/lessons/matematicas-2-bachiller
 import { productoPolinomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/05-producto-polinomios-4eso";
 import { productoPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/03-producto-polinomios-4esob";
 import { productoVectorial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/07-producto-vectorial-2bach";
+import { productosCotidianosAcidosBasesPhFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/01-productos-cotidianos-acidos-bases-ph-fq3";
 import { programacionAutomatismosSecuencias4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/05-programacion-automatismos-secuencias-4eso";
 import { programarPlacaSetupLoop3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/01-programar-placa-setup-loop-3eso";
 import { progresionesAritmeticas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/02-progresiones-aritmeticas-1bach";
@@ -1169,6 +1278,8 @@ import { propiedadesLimitesInfinito1bachLesson } from "@/data/lessons/matematica
 import { propiedadesLimitesInfinitoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/06-propiedades-limites-infinito-ccss1";
 import { propiedadesMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/02-propiedades-materiales";
 import { propiedadesMecanicasEnsayosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/09-propiedades-mecanicas-ensayos";
+import { propiedadesPeriodicasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/02-propiedades-periodicas-fb1";
+import { propiedadesPeriodicasFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/03-propiedades-periodicas-fq4";
 import { propiedadesPrestacionesSeleccion3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/01-propiedades-prestaciones-seleccion-3eso";
 import { propiedadesProducto2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/05-propiedades-producto-2bach";
 import { propiedadesProductoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/05-propiedades-producto-ccss2";
@@ -1231,6 +1342,9 @@ import { rangoParametro2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/02-razones-agudas-1bach";
 import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
 import { reaccionesQuimicasFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/02-reacciones-quimicas-fq2";
+import { reactividadEstructuraElectronicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/03-reactividad-estructura-electronica-fb1";
+import { reactivoLimitanteRendimientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/02-reactivo-limitante-rendimiento-fb1";
+import { reactivoLimitanteRendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/03-reactivo-limitante-rendimiento-fq4";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
@@ -1277,16 +1391,20 @@ import { regresionPrediccionCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { regulacionTodoNadaProporcional4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/02-regulacion-todo-nada-proporcional-4eso";
 import { relacionTransmisionTrenesLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/06-relacion-transmision-trenes";
 import { relacionTransmisionVelocidadAngular4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/01-relacion-transmision-velocidad-angular-4eso";
+import { rendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/05-rendimiento-fq4";
 import { rendimientoPerdidasMecanicasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/09-rendimiento-perdidas-mecanicas";
 import { renovablesAlmacenamientoAutoconsumo4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/02-renovables-almacenamiento-autoconsumo-4eso";
 import { repartosProporcionales4esoLesson } from "@/data/lessons/matematicas-4-eso/04-problemas-aritmeticos/03-repartos-proporcionales-4eso";
 import { repasoSistemas2x2Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/01-repaso-sistemas-2x2-ccss2";
+import { repasoVelocidadMruFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/01-repaso-velocidad-mru-fq3";
 import { repeticionesBuclesEsoLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/06-repeticiones-bucles-eso";
 import { representacionDatosBinarioLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/03-representacion-datos-binario";
 import { residuosReciclajeLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/06-residuos-reciclaje";
 import { residuosReduccionClasificacionLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/04-residuos-reduccion-clasificacion";
+import { residuosSostenibilidadFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/05-residuos-sostenibilidad-fq3";
 import { resilienciaFatigaTecnologicosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/15-resiliencia-fatiga-tecnologicos";
 import { resistenciaConductorOhm3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/01-resistencia-conductor-ohm-3eso";
+import { resistenciaLeyOhmFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/03-resistencia-ley-ohm-fq3";
 import { resistenciasCodigoColores3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/02-resistencias-codigo-colores-3eso";
 import { resolucionEcuaciones2esoLesson } from "@/data/lessons/matematicas-2-eso/06-ecuaciones/02-resolucion-ecuaciones-2eso";
 import { resolucionProblemasProgramacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/10-resolucion-problemas-programacion";
@@ -1306,10 +1424,15 @@ import { rozamientoPerdidasLubricacion4esoLesson } from "@/data/lessons/tecnolog
 import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/04-ruedas-ejes-manivelas";
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
+import { salesBinariasFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/04-sales-binarias-fq4";
+import { satelitesOrbitasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/03-satelites-orbitas-fb1";
 import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
 import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
+import { segundaLeyNewtonRozamientoFq3Lesson } from "@/data/lessons/fisica-3-eso/07-las-fuerzas-y-sus-efectos/03-segunda-ley-newton-rozamiento-fq3";
+import { seguridadElectricaConsumoFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/06-seguridad-electrica-consumo-fq3";
 import { seguridadElectricaEsoLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/07-seguridad-electrica-eso";
+import { seguridadEtiquetadoProductosFq3Lesson } from "@/data/lessons/fisica-3-eso/10-quimica-y-sociedad/02-seguridad-etiquetado-productos-fq3";
 import { seguridadPrivacidadBienestar2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/06-seguridad-privacidad-bienestar-2eso";
 import { seguridadReciclajeTaller2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/09-seguridad-reciclaje-taller-2eso";
 import { seguridadRedAmenazasProteccionLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/06-seguridad-red-amenazas-proteccion";
@@ -1400,11 +1523,13 @@ import { sistemasOperativosRecursosLesson } from "@/data/lessons/tecnologia-inge
 import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
 import { sistemasParametro1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/10-sistemas-parametro-1-ccss2";
 import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
+import { sistemasReferenciaVectoresFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/01-sistemas-referencia-vectores-fb1";
 import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
 import { solubilidadCristalizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/02-solubilidad-cristalizacion-fq3";
 import { solubilidadSaturacionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/03-solubilidad-saturacion-fq2";
+import { sonidoFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/03-sonido-fq4";
 import { sostenibilidadMaterialesAcvTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/03-sostenibilidad-materiales-acv-ti2";
 import { sucesiones3esoLesson } from "@/data/lessons/matematicas-3-eso/03-progresiones/01-sucesiones-3eso";
 import { sucesionesDefinicion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/03-sucesiones/01-sucesiones-definicion-1bach";
@@ -1425,6 +1550,7 @@ import { sumaRestaPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso
 import { sumadoresBinariosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/13-sumadores-binarios";
 import { superficiesRegladasHiperboloideDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/02-superficies-regladas-hiperboloide-dt2";
 import { sustanciasPurasMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/01-sustancias-puras-mezclas-fq2";
+import { tablaPeriodicaConfiguracionFq4Lesson } from "@/data/lessons/fisica-4-eso/02-el-atomo-y-la-tabla-periodica/02-tabla-periodica-configuracion-fq4";
 import { tablaPeriodicaFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/04-tabla-periodica-fq2";
 import { tablaPeriodicaPropiedadesFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/05-tabla-periodica-propiedades-fq3";
 import { tablasContingencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/08-tablas-contingencia-1bach";
@@ -1455,9 +1581,11 @@ import { tecnicasSeparacionMezclasFq2Lesson } from "@/data/lessons/fisica-2-eso/
 import { tecnologiaNecesidadesHumanasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/01-tecnologia-necesidades-humanas";
 import { tecnologiaSociedadSostenibilidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/01-tecnologia-sociedad-sostenibilidad";
 import { tecnologiaSostenibleAsturiasOdsLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/07-tecnologia-sostenible-asturias-ods";
+import { temperaturaEquilibrioTermicoFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/01-temperatura-equilibrio-termico-fq4";
 import { templeMartensitaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/01-temple-martensita";
 import { tendenciasPeriodicidad3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/04-tendencias-periodicidad-3eso";
 import { tensionDeformacionTraccionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/10-tension-deformacion-traccion";
+import { tensionPoleasFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/04-tension-poleas-fq4";
 import { teoremaBayes1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/11-teorema-bayes-1bach";
 import { teoremaBayesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/11-teorema-bayes-ccss1";
 import { teoremaCentralLimiteCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/04-teorema-central-limite-ccss2";
@@ -1470,6 +1598,7 @@ import { teoremaPitagoras3esoLesson } from "@/data/lessons/matematicas-3-eso/09-
 import { teoremaSeno1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/11-teorema-seno-1bach";
 import { teoremaTales2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/04-teorema-tales-2eso";
 import { teoremaThalesDivisionSegmentosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-proporcionalidad-equivalencia-semejanza/01-teorema-thales-division-segmentos-dt1";
+import { teoremaTrabajoEnergiaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/03-teorema-trabajo-energia-fq4";
 import { teoremasContinuas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/11-teoremas-continuas-2bach";
 import { teoriaBimodalGrafosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/06-teoria-bimodal-grafos";
 import { textilesPetreosCeramicosLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/06-textiles-petreos-ceramicos";
@@ -1481,13 +1610,17 @@ import { tiposDiscontinuidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-
 import { tiposMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/02-tipos-matrices-2bach";
 import { tiposMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/02-tipos-matrices-ccss2";
 import { tiposMuestreoCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/02-tipos-muestreo-ccss2";
+import { tiposReaccionesCombustionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/04-tipos-reacciones-combustion-fq4";
 import { tiposSolucionesPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/07-tipos-soluciones-pl-ccss2";
 import { toleranciasAjustes4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/04-tolerancias-ajustes-4eso";
 import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
 import { torsionEjesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/07-torsion-ejes-ti2";
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
+import { trabajoFuerzaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/01-trabajo-fuerza-fb1";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
+import { trabajoPotenciaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/01-trabajo-potencia-fq3";
+import { trabajoPotenciaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/01-trabajo-potencia-fq4";
 import { trabajoRotacionParLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/08-trabajo-rotacion-par";
 import { transductoresVelocidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/07-transductores-velocidad";
 import { transformacionMovimientoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/05-transformacion-movimiento";
@@ -1498,6 +1631,7 @@ import { transformadaLaplaceLesson } from "@/data/lessons/tecnologia-industrial-
 import { transformadorFuenteAlimentacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/04-transformador-fuente-alimentacion-4eso";
 import { transistorGananciaConmutacion4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/05-transistor-ganancia-conmutacion-4eso";
 import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso/04-electricidad-electronica/04-transistor-interruptor-3eso";
+import { transmisionDilatacionFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/03-transmision-dilatacion-fq4";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
@@ -1535,6 +1669,7 @@ import { variableAleatoriaDiscretaCcss1Lesson } from "@/data/lessons/matematicas
 import { variableContinuaDensidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/05-variable-continua-densidad-ccss1";
 import { variablesContinuasDensidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/06-variables-continuas-densidad-2bach";
 import { variablesDatosIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/04-variables-datos-iniciacion";
+import { variablesLeyesGasesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/06-gases-y-disoluciones/01-variables-leyes-gases-fb1";
 import { variablesPenduloFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/01-variables-pendulo-fq3";
 import { variablesTiposDatos2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programacion/02-variables-tipos-datos-2eso";
 import { variacionRelativa1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/08-variacion-relativa-1bach";
@@ -1568,8 +1703,11 @@ export const interactiveLessons = {
   "abatimiento-plano-punto-dt2": abatimientoPlanoPuntoDt2Lesson,
   "accesibilidad-diseno-universal-4eso": accesibilidadDisenoUniversal4esoLesson,
   "aceite-propiedades-flujo": aceitePropiedadesFlujoLesson,
+  "aceleracion-fq3": aceleracionFq3Lesson,
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
+  "acidos-bases-neutralizacion-fq4": acidosBasesNeutralizacionFq4Lesson,
+  "acidos-bases-ph-fb1": acidosBasesPhFb1Lesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
   "acotacion-normalizada-dt1": acotacionNormalizadaDt1Lesson,
   "acotacion-piezas": acotacionPiezasLesson,
@@ -1577,6 +1715,8 @@ export const interactiveLessons = {
   "actuadores-elementos-salida": actuadoresElementosSalidaLesson,
   "afinidad-eje-direccion-razon-dt2": afinidadEjeDireccionRazonDt2Lesson,
   "ahorro-materiales-energia-eso": ahorroMaterialesEnergiaEsoLesson,
+  "aislamiento-rendimiento-fq3": aislamientoRendimientoFq3Lesson,
+  "ajuste-estequiometria-fb1": ajusteEstequiometriaFb1Lesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
@@ -1593,6 +1733,7 @@ export const interactiveLessons = {
   "alotropia-amorfos": alotropiaAmorfosLesson,
   "amplificador-operacional": amplificadorOperacionalLesson,
   "analisis-ciclo-vida": analisisCicloVidaLesson,
+  "analisis-datos-ajuste-lineal-fq4": analisisDatosAjusteLinealFq4Lesson,
   "analisis-necesidades-especificaciones-4eso": analisisNecesidadesEspecificaciones4esoLesson,
   "analisis-simulacion-mecanismos": analisisSimulacionMecanismosLesson,
   "analitica-distancia-4eso": analiticaDistancia4esoLesson,
@@ -1619,9 +1760,11 @@ export const interactiveLessons = {
   "anualidades-amortizacion-ccss1": anualidadesAmortizacionCcss1Lesson,
   "anualidades-capitalizacion-ccss1": anualidadesCapitalizacionCcss1Lesson,
   "aplicacion-cinta-transportadora-4eso": aplicacionCintaTransportadora4esoLesson,
+  "aplicaciones-contaminacion-acustica-fq4": aplicacionesContaminacionAcusticaFq4Lesson,
   "aplicaciones-domesticas-industriales-3eso": aplicacionesDomesticasIndustriales3esoLesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
+  "aplicaciones-industriales-ambientales-fb1": aplicacionesIndustrialesAmbientalesFb1Lesson,
   "aplicaciones-industriales-ambientales-fq3": aplicacionesIndustrialesAmbientalesFq3Lesson,
   "aplicaciones-inteligencia-artificial": aplicacionesInteligenciaArtificialLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
@@ -1710,17 +1853,25 @@ export const interactiveLessons = {
   "cad-3d-extrusion": cad3dExtrusionLesson,
   "cad-vectorial-coordenadas-dt1": cadVectorialCoordenadasDt1Lesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
+  "caida-libre-frenada-fq3": caidaLibreFrenadaFq3Lesson,
+  "caida-libre-movimiento-parabolico-fb1": caidaLibreMovimientoParabolicoFb1Lesson,
+  "caida-libre-tiro-vertical-fq4": caidaLibreTiroVerticalFq4Lesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
   "calculos-porcentajes-4eso": calculosPorcentajes4esoLesson,
+  "calor-especifico-cambios-estado-fq4": calorEspecificoCambiosEstadoFq4Lesson,
   "calor-primer-principio": calorPrimerPrincipioLesson,
+  "calor-temperatura-especifico-fq3": calorTemperaturaEspecificoFq3Lesson,
   "calor-temperatura-fq2": calorTemperaturaFq2Lesson,
   "cambio-de-variable-2bach": cambioDeVariable2bachLesson,
   "cambio-de-variable-ccss2": cambioDeVariableCcss2Lesson,
   "cambios-de-estado-fq2": cambiosDeEstadoFq2Lesson,
+  "cambios-estado-calor-latente-fq3": cambiosEstadoCalorLatenteFq3Lesson,
   "cambios-fisicos-quimicos-fq2": cambiosFisicosQuimicosFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
+  "carbono-cadenas-fb1": carbonoCadenasFb1Lesson,
+  "carga-electrica-electrizacion-fq3": cargaElectricaElectrizacionFq3Lesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
   "ceramicos-petreos-compuestos": ceramicosPetreosCompuestosLesson,
@@ -1742,6 +1893,7 @@ export const interactiveLessons = {
   "circuitos-paralelo-2eso": circuitosParalelo2esoLesson,
   "circuitos-serie-2eso": circuitosSerie2esoLesson,
   "circuitos-serie-paralelo-eso": circuitosSerieParaleloEsoLesson,
+  "circuitos-serie-paralelo-fq3": circuitosSerieParaleloFq3Lesson,
   "circuitos-temporizadores": circuitosTemporizadoresLesson,
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
   "circunferencia-1bach": circunferencia1bachLesson,
@@ -1770,6 +1922,8 @@ export const interactiveLessons = {
   "combinatoria-conteo-2bach": combinatoriaConteo2bachLesson,
   "combinatoria-probabilidad-2bach": combinatoriaProbabilidad2bachLesson,
   "combinatoria-probabilidad-ccss1": combinatoriaProbabilidadCcss1Lesson,
+  "combustibles-contaminacion-atmosferica-fq3": combustiblesContaminacionAtmosfericaFq3Lesson,
+  "combustibles-fosiles-petroleo-fq4": combustiblesFosilesPetroleoFq4Lesson,
   "combustion-oxidacion-energia-fq3": combustionOxidacionEnergiaFq3Lesson,
   "combustion-oxidacion-fq2": combustionOxidacionFq2Lesson,
   "comparador-electronica-analogica-3eso": comparadorElectronicaAnalogica3esoLesson,
@@ -1780,10 +1934,13 @@ export const interactiveLessons = {
   "complejos-raices-1bach": complejosRaices1bachLesson,
   "componentes-electronicos-basicos": componentesElectronicosBasicosLesson,
   "componentes-perifericos-dispositivos-3eso": componentesPerifericosDispositivos3esoLesson,
+  "composicion-centesimal-fb1": composicionCentesimalFb1Lesson,
+  "composicion-fuerzas-equilibrio-fq3": composicionFuerzasEquilibrioFq3Lesson,
   "compresores": compresoresLesson,
   "comunicacion-digital-transmision-datos": comunicacionDigitalTransmisionDatosLesson,
   "comunicacion-tecnica-netiqueta": comunicacionTecnicaNetiquetaLesson,
   "comunicaciones-iot-proyecto-4eso": comunicacionesIotProyecto4esoLesson,
+  "concentracion-disoluciones-fb1": concentracionDisolucionesFb1Lesson,
   "concentracion-disoluciones-fq3": concentracionDisolucionesFq3Lesson,
   "concepto-determinante-2bach": conceptoDeterminante2bachLesson,
   "concepto-estructura-tipos": conceptoEstructuraTiposLesson,
@@ -1802,6 +1959,8 @@ export const interactiveLessons = {
   "condiciones-2eso": condiciones2esoLesson,
   "condiciones-bucles-datos-4eso": condicionesBuclesDatos4esoLesson,
   "condiciones-decisiones-eso": condicionesDecisionesEsoLesson,
+  "configuracion-electronica-fb1": configuracionElectronicaFb1Lesson,
+  "configuracion-electronica-fq4": configuracionElectronicaFq4Lesson,
   "conformado-fundicion-forja-laminado-3eso": conformadoFundicionForjaLaminado3esoLesson,
   "conica-solidos-dt2": conicaSolidosDt2Lesson,
   "conicas-3eso": conicas3esoLesson,
@@ -1809,6 +1968,9 @@ export const interactiveLessons = {
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
   "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
+  "conservacion-energia-mecanica-fb1": conservacionEnergiaMecanicaFb1Lesson,
+  "conservacion-energia-mecanica-fq3": conservacionEnergiaMecanicaFq3Lesson,
+  "conservacion-energia-mecanica-fq4": conservacionEnergiaMecanicaFq4Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
   "conservacion-masa-calculos-fq3": conservacionMasaCalculosFq3Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
@@ -1839,6 +2001,7 @@ export const interactiveLessons = {
   "corriente-continua-alterna-4eso": corrienteContinuaAlterna4esoLesson,
   "corriente-continua-elementos": corrienteContinuaElementosLesson,
   "corriente-electrica-basica": corrienteElectricaBasicaLesson,
+  "corriente-intensidad-tension-fq3": corrienteIntensidadTensionFq3Lesson,
   "corrosion-pila-electroquimica": corrosionPilaElectroquimicaLesson,
   "corte-union-acabado-2eso": corteUnionAcabado2esoLesson,
   "cortes-signo-1bach": cortesSigno1bachLesson,
@@ -1915,6 +2078,7 @@ export const interactiveLessons = {
   "diagramas-flujo-eso": diagramasFlujoEsoLesson,
   "diagramas-regla-palanca": diagramasReglaPalancaLesson,
   "difusion-evaluacion-proyecto-3eso": difusionEvaluacionProyecto3esoLesson,
+  "dilucion-propiedades-coligativas-fb1": dilucionPropiedadesColigativasFb1Lesson,
   "diodos-led-3eso": diodosLed3esoLesson,
   "direcciones-ip-router-3eso": direccionesIpRouter3esoLesson,
   "discontinuidades-2bach": discontinuidades2bachLesson,
@@ -1968,6 +2132,7 @@ export const interactiveLessons = {
   "economia-circular-alternativas-tecnologicas-ti2": economiaCircularAlternativasTecnologicasTi2Lesson,
   "economia-circular-reparacion-4eso": economiaCircularReparacion4esoLesson,
   "economia-circular-residuos": economiaCircularResiduosLesson,
+  "ecuacion-gases-ideales-fb1": ecuacionGasesIdealesFb1Lesson,
   "ecuacion-recta-2eso": ecuacionRecta2esoLesson,
   "ecuaciones-2eso": ecuaciones2esoLesson,
   "ecuaciones-bicuadradas-1bach": ecuacionesBicuadradas1bachLesson,
@@ -2004,11 +2169,13 @@ export const interactiveLessons = {
   "ecuaciones-trigonometricas-1bach": ecuacionesTrigonometricas1bachLesson,
   "edificios-eficiencia-certificado-4eso": edificiosEficienciaCertificado4esoLesson,
   "edificios-puentes-torres": edificiosPuentesTorresLesson,
+  "efecto-invernadero-cambio-climatico-fq3": efectoInvernaderoCambioClimaticoFq3Lesson,
   "eficiencia-ahorro-hogar-3eso": eficienciaAhorroHogar3esoLesson,
   "eficiencia-energetica": eficienciaEnergeticaLesson,
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
+  "el-carbono-y-sus-enlaces-fq4": elCarbonoYSusEnlacesFq4Lesson,
   "el-sonido-fq2": elSonidoFq2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
   "eleccion-sistema-representacion-dt2": eleccionSistemaRepresentacionDt2Lesson,
@@ -2027,6 +2194,10 @@ export const interactiveLessons = {
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-cinetica-potencial-fq2": energiaCineticaPotencialFq2Lesson,
+  "energia-cinetica-potencial-fq4": energiaCineticaPotencialFq4Lesson,
+  "energia-cinetica-teorema-fb1": energiaCineticaTeoremaFb1Lesson,
+  "energia-gravitatoria-fb1": energiaGravitatoriaFb1Lesson,
+  "energia-potencial-fuerzas-conservativas-fb1": energiaPotencialFuerzasConservativasFb1Lesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
   "energias-renovables-mix-3eso": energiasRenovablesMix3esoLesson,
@@ -2036,8 +2207,14 @@ export const interactiveLessons = {
   "engranajes-trenes-engranajes": engranajesTrenesEngranajesLesson,
   "enlace-covalente-carbono": enlaceCovalenteCarbonoLesson,
   "enlace-covalente-fq3": enlaceCovalenteFq3Lesson,
+  "enlace-covalente-lewis-fb1": enlaceCovalenteLewisFb1Lesson,
+  "enlace-covalente-lewis-geometria-fq4": enlaceCovalenteLewisGeometriaFq4Lesson,
   "enlace-ionico": enlaceIonicoLesson,
   "enlace-ionico-fq3": enlaceIonicoFq3Lesson,
+  "enlace-ionico-redes-cristalinas-fq4": enlaceIonicoRedesCristalinasFq4Lesson,
+  "enlace-ionico-redes-fb1": enlaceIonicoRedesFb1Lesson,
+  "enlace-metalico-propiedades-fb1": enlaceMetalicoPropiedadesFb1Lesson,
+  "enlace-metalico-propiedades-sustancias-fq4": enlaceMetalicoPropiedadesSustanciasFq4Lesson,
   "enlace-metalico-secundario": enlaceMetalicoSecundarioLesson,
   "enlaces-dos-rectas-dt1": enlacesDosRectasDt1Lesson,
   "ensayo-traccion-curva-2eso": ensayoTraccionCurva2esoLesson,
@@ -2051,6 +2228,7 @@ export const interactiveLessons = {
   "equipo-documentacion-versiones-ti2": equipoDocumentacionVersionesTi2Lesson,
   "equivalencia-areas-cuadratura-dt1": equivalenciaAreasCuadraturaDt1Lesson,
   "error-confianza-tamano-ccss2": errorConfianzaTamanoCcss2Lesson,
+  "error-incertidumbre-medida-fq4": errorIncertidumbreMedidaFq4Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
   "escalas-dibujo": escalasDibujoLesson,
@@ -2061,6 +2239,7 @@ export const interactiveLessons = {
   "esfuerzos-traccion-compresion-cortadura-ti2": esfuerzosTraccionCompresionCortaduraTi2Lesson,
   "especificaciones-requisitos-tecnicos": especificacionesRequisitosTecnicosLesson,
   "especificaciones-tecnicas-3eso": especificacionesTecnicas3esoLesson,
+  "espectros-modelo-bohr-fb1": espectrosModeloBohrFb1Lesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
   "espirales-evolvente-dt1": espiralesEvolventeDt1Lesson,
@@ -2088,6 +2267,8 @@ export const interactiveLessons = {
   "estadistica-tablas-4eso": estadisticaTablas4esoLesson,
   "estadistica-tablas-4esob": estadisticaTablas4esobLesson,
   "estados-agregacion-fq2": estadosAgregacionFq2Lesson,
+  "estequiometria-de-partida-fb1": estequiometriaDePartidaFb1Lesson,
+  "estequiometria-fq4": estequiometriaFq4Lesson,
   "estimacion-simulacion-prototipos-ti2": estimacionSimulacionPrototiposTi2Lesson,
   "estimadores-puntuales-ccss2": estimadoresPuntualesCcss2Lesson,
   "estructura-composicion-materiales": estructuraComposicionMaterialesLesson,
@@ -2127,12 +2308,14 @@ export const interactiveLessons = {
   "factorizacion-ccss1": factorizacionCcss1Lesson,
   "factorizacion-polinomios-4esob": factorizacionPolinomios4esobLesson,
   "fases-proyecto-tecnologico": fasesProyectoTecnologicoLesson,
+  "fenomenos-astronomicos-fq4": fenomenosAstronomicosFq4Lesson,
   "figuras-geometricas-circunferencia": figurasGeometricasCircunferenciaLesson,
   "figuras-geometricas-cuadrilateros": figurasGeometricasCuadrilaterosLesson,
   "figuras-geometricas-poligonos-regulares": figurasGeometricasPoligonosRegularesLesson,
   "figuras-geometricas-triangulos": figurasGeometricasTriangulosLesson,
   "figuras-semejantes-2eso": figurasSemejantes2esoLesson,
   "flexion-vigas-ti2": flexionVigasTi2Lesson,
+  "fluidos-arquimedes-fq3": fluidosArquimedesFq3Lesson,
   "fluidos-densidad-vapor": fluidosDensidadVaporLesson,
   "forma-exponencial-radicales-4eso": formaExponencialRadicales4esoLesson,
   "forma-exponencial-radicales-4esob": formaExponencialRadicales4esobLesson,
@@ -2140,6 +2323,7 @@ export const interactiveLessons = {
   "formas-canonicas": formasCanonicasLesson,
   "formas-transformaciones-energia-fq2": formasTransformacionesEnergiaFq2Lesson,
   "formatos-plegado-dt1": formatosPlegadoDt1Lesson,
+  "formula-empirica-molecular-fb1": formulaEmpiricaMolecularFb1Lesson,
   "formulas-masa-molecular-mol-fq3": formulasMasaMolecularMolFq3Lesson,
   "fraccion-a-decimal-4eso": fraccionADecimal4esoLesson,
   "fraccion-operador-3eso": fraccionOperador3esoLesson,
@@ -2158,10 +2342,14 @@ export const interactiveLessons = {
   "fracciones-problemas": fraccionesProblemasLesson,
   "fuentes-energia-eficiencia-fq2": fuentesEnergiaEficienciaFq2Lesson,
   "fuerza-consumo-cilindro": fuerzaConsumoCilindroLesson,
+  "fuerza-elastica-centripeta-fq4": fuerzaElasticaCentripetaFq4Lesson,
   "fuerza-elastica-hooke-fq2": fuerzaElasticaHookeFq2Lesson,
   "fuerza-lorentz-conductor": fuerzaLorentzConductorLesson,
   "fuerza-par-potencia": fuerzaParPotenciaLesson,
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
+  "fuerzas-intermoleculares-fb1": fuerzasIntermolecularesFb1Lesson,
+  "fuerzas-intermoleculares-fq4": fuerzasIntermolecularesFq4Lesson,
+  "fuerzas-leyes-newton-fb1": fuerzasLeyesNewtonFb1Lesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-concepto-4esob": funcionConcepto4esobLesson,
   "funcion-constante-2eso": funcionConstante2esoLesson,
@@ -2195,6 +2383,7 @@ export const interactiveLessons = {
   "funciones-exponenciales-logaritmicas-2bach": funcionesExponencialesLogaritmicas2bachLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "funciones-modularidad": funcionesModularidadLesson,
+  "funciones-nitrogenadas-halogenadas-fb1": funcionesNitrogenadasHalogenadasFb1Lesson,
   "funciones-polinomicas-2bach": funcionesPolinomicas2bachLesson,
   "funciones-polinomicas-ccss2": funcionesPolinomicasCcss2Lesson,
   "funciones-programacion-modular-4eso": funcionesProgramacionModular4esoLesson,
@@ -2216,6 +2405,7 @@ export const interactiveLessons = {
   "gauss-eliminacion-ccss2": gaussEliminacionCcss2Lesson,
   "generacion-ideas-scamper-2eso": generacionIdeasScamper2esoLesson,
   "geometria-griega-pitagoras-dt1": geometriaGriegaPitagorasDt1Lesson,
+  "geometria-molecular-polaridad-fb1": geometriaMolecularPolaridadFb1Lesson,
   "geometria-revolucion-industrial-dt2": geometriaRevolucionIndustrialDt2Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
@@ -2223,17 +2413,28 @@ export const interactiveLessons = {
   "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
+  "graficas-problemas-cinematica-fb1": graficasProblemasCinematicaFb1Lesson,
+  "graficas-seguridad-vial-fq4": graficasSeguridadVialFq4Lesson,
+  "graficas-velocidad-tiempo-fq3": graficasVelocidadTiempoFq3Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
   "graficos-estadisticos-2eso": graficosEstadisticos2esoLesson,
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
+  "gravitacion-universal-campo-fb1": gravitacionUniversalCampoFb1Lesson,
   "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
+  "grupos-funcionales-fq4": gruposFuncionalesFq4Lesson,
+  "grupos-funcionales-oxigenados-fb1": gruposFuncionalesOxigenadosFb1Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
   "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
+  "hidrocarburos-fq4": hidrocarburosFq4Lesson,
+  "hidrocarburos-nomenclatura-fb1": hidrocarburosNomenclaturaFb1Lesson,
+  "hidroxidos-oxoacidos-fb1": hidroxidosOxoacidosFb1Lesson,
+  "hidroxidos-oxoacidos-fq4": hidroxidosOxoacidosFq4Lesson,
+  "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "hiperbola-asintotas-dt2": hiperbolaAsintotasDt2Lesson,
   "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
@@ -2277,6 +2478,7 @@ export const interactiveLessons = {
   "inecuaciones-primer-grado-ccss1": inecuacionesPrimerGradoCcss1Lesson,
   "inecuaciones-segundo-grado-1bach": inecuacionesSegundoGrado1bachLesson,
   "inecuaciones-segundo-grado-ccss1": inecuacionesSegundoGradoCcss1Lesson,
+  "inercia-accion-reaccion-fq3": inerciaAccionReaccionFq3Lesson,
   "instalacion-bombas": instalacionBombasLesson,
   "instalacion-frigorifica": instalacionFrigorificaLesson,
   "instrumentos-dibujo-trazados": instrumentosDibujoTrazadosLesson,
@@ -2323,6 +2525,7 @@ export const interactiveLessons = {
   "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "iones-isotopos-fq2": ionesIsotoposFq2Lesson,
+  "isomeria-aplicaciones-fb1": isomeriaAplicacionesFb1Lesson,
   "isometrica-piezas-elipses-dt1": isometricaPiezasElipsesDt1Lesson,
   "isotopos-masa-atomica-fq3": isotoposMasaAtomicaFq3Lesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,
@@ -2337,8 +2540,11 @@ export const interactiveLessons = {
   "lenguaje-algebraico-3eso": lenguajeAlgebraico3esoLesson,
   "levas-bielas-manivelas-3eso": levasBielasManivelas3esoLesson,
   "ley-de-ohm-circuitos": leyDeOhmCircuitosLesson,
+  "ley-gravitacion-universal-fq4": leyGravitacionUniversalFq4Lesson,
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "ley-ohm-2eso": leyOhm2esoLesson,
+  "leyes-de-newton-fq4": leyesDeNewtonFq4Lesson,
+  "leyes-kepler-fb1": leyesKeplerFb1Lesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
   "limite-definicion-ccss2": limiteDefinicionCcss2Lesson,
@@ -2381,11 +2587,13 @@ export const interactiveLessons = {
   "lugares-geometricos-3eso": lugaresGeometricos3esoLesson,
   "lugares-geometricos-dt1": lugaresGeometricosDt1Lesson,
   "luz-detector-error": luzDetectorErrorLesson,
+  "luz-reflexion-refraccion-fq4": luzReflexionRefraccionFq4Lesson,
   "madera-derivados": maderaDerivadosLesson,
   "madera-tableros-despiece-2eso": maderaTablerosDespiece2esoLesson,
   "magnetismo-imanes-oersted": magnetismoImanesOerstedLesson,
   "magnitudes-electricas-2eso": magnitudesElectricas2esoLesson,
   "magnitudes-electricas-fundamentales": magnitudesElectricasFundamentalesLesson,
+  "magnitudes-escalares-vectoriales-fq4": magnitudesEscalaresVectorialesFq4Lesson,
   "magnitudes-unidades-si-fq2": magnitudesUnidadesSiFq2Lesson,
   "mando-cilindros-ejemplos": mandoCilindrosEjemplosLesson,
   "mandos-bloqueo-regulacion": mandosBloqueoRegulacionLesson,
@@ -2394,6 +2602,7 @@ export const interactiveLessons = {
   "maquinas-mecanismos-movimientos": maquinasMecanismosMovimientosLesson,
   "maquinas-reales-lavadora-bicicleta-3eso": maquinasRealesLavadoraBicicleta3esoLesson,
   "maquinas-simples-ventaja-mecanica-2eso": maquinasSimplesVentajaMecanica2esoLesson,
+  "maquinas-termicas-ahorro-fq4": maquinasTermicasAhorroFq4Lesson,
   "materiales-ceramicos": materialesCeramicosLesson,
   "materias-primas-materiales": materiasPrimasMaterialesLesson,
   "matriz-adjunta-2bach": matrizAdjunta2bachLesson,
@@ -2431,6 +2640,7 @@ export const interactiveLessons = {
   "metodo-sustitucion-4eso": metodoSustitucion4esoLesson,
   "metodo-sustitucion-4esob": metodoSustitucion4esobLesson,
   "metodologias-agiles-scrum-kanban-ti2": metodologiasAgilesScrumKanbanTi2Lesson,
+  "mezclas-gases-presiones-parciales-fb1": mezclasGasesPresionesParcialesFb1Lesson,
   "mezclas-promedios-4eso": mezclasPromedios4esoLesson,
   "mezclas-vida-cotidiana-fq2": mezclasVidaCotidianaFq2Lesson,
   "minimo-comun-multiplo": minimoComunMultiploLesson,
@@ -2439,9 +2649,14 @@ export const interactiveLessons = {
   "modelado-3d-primitivas-booleanas-dt1": modelado3dPrimitivasBooleanasDt1Lesson,
   "modelado-parametrico-restricciones-dt2": modeladoParametricoRestriccionesDt2Lesson,
   "modelo-cinetico-molecular-fq2": modeloCineticoMolecularFq2Lesson,
+  "modelo-mecanocuantico-fb1": modeloMecanocuanticoFb1Lesson,
   "modelo-planos-fabricacion-dt2": modeloPlanosFabricacionDt2Lesson,
   "modelos-atomicos-bohr-fq3": modelosAtomicosBohrFq3Lesson,
   "modelos-atomicos-fq2": modelosAtomicosFq2Lesson,
+  "modelos-atomicos-particulas-fb1": modelosAtomicosParticulasFb1Lesson,
+  "mol-masa-molar-avogadro-fb1": molMasaMolarAvogadroFb1Lesson,
+  "mol-masa-molar-gases-fq4": molMasaMolarGasesFq4Lesson,
+  "momento-lineal-impulso-fb1": momentoLinealImpulsoFb1Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
@@ -2459,7 +2674,14 @@ export const interactiveLessons = {
   "motor-trifasico-conexion-balance": motorTrifasicoConexionBalanceLesson,
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
+  "movimiento-circular-fb1": movimientoCircularFb1Lesson,
+  "movimiento-circular-uniforme-fq4": movimientoCircularUniformeFq4Lesson,
+  "movimiento-ondulatorio-fq4": movimientoOndulatorioFq4Lesson,
   "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
+  "mru-mrua-fq4": mruMruaFq4Lesson,
+  "mru-mrua-graficas-fb1": mruMruaGraficasFb1Lesson,
+  "mrua-fq3": mruaFq3Lesson,
+  "muelles-hooke-fb1": muellesHookeFb1Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
@@ -2472,6 +2694,7 @@ export const interactiveLessons = {
   "nernst-faraday-corrosion": nernstFaradayCorrosionLesson,
   "no-ferreos-resistencia-especifica": noFerreosResistenciaEspecificaLesson,
   "nomenclatura-compuestos-fq3": nomenclaturaCompuestosFq3Lesson,
+  "nomenclaturas-composicion-stock-fb1": nomenclaturasComposicionStockFb1Lesson,
   "normal-estandar-tabla-ccss1": normalEstandarTablaCcss1Lesson,
   "normalizacion-tipos-linea-dt1": normalizacionTiposLineaDt1Lesson,
   "notacion-cientifica-1bach": notacionCientifica1bachLesson,
@@ -2492,11 +2715,14 @@ export const interactiveLessons = {
   "numeros-grandes-abreviados": numerosGrandesAbreviadosLesson,
   "numeros-irracionales-4eso": numerosIrracionales4esoLesson,
   "numeros-irracionales-4esob": numerosIrracionales4esobLesson,
+  "numeros-oxidacion-binarios-fb1": numerosOxidacionBinariosFb1Lesson,
+  "numeros-oxidacion-fq4": numerosOxidacionFq4Lesson,
   "numeros-racionales-4eso": numerosRacionales4esoLesson,
   "numeros-reales-recta-4eso": numerosRealesRecta4esoLesson,
   "numeros-reales-recta-4esob": numerosRealesRecta4esobLesson,
   "oferta-demanda-1bach": ofertaDemanda1bachLesson,
   "oferta-demanda-ccss1": ofertaDemandaCcss1Lesson,
+  "ondas-mecanicas-electromagneticas-fq4": ondasMecanicasElectromagneticasFq4Lesson,
   "operaciones-combinadas-fracciones-2eso": operacionesCombinadasFracciones2esoLesson,
   "operaciones-composicion-1bach": operacionesComposicion1bachLesson,
   "operaciones-composicion-ccss1": operacionesComposicionCcss1Lesson,
@@ -2528,13 +2754,20 @@ export const interactiveLessons = {
   "optimizacion-ccss1": optimizacionCcss1Lesson,
   "optimizacion-ccss2": optimizacionCcss2Lesson,
   "optimizacion-procesos-fabricacion-ti2": optimizacionProcesosFabricacionTi2Lesson,
+  "orbitas-satelites-fq4": orbitasSatelitesFq4Lesson,
   "ordenes-unidades-decimales": ordenesUnidadesDecimalesLesson,
+  "organizacion-tabla-periodica-fb1": organizacionTablaPeriodicaFb1Lesson,
   "otras-ecuaciones-4eso": otrasEcuaciones4esoLesson,
   "otras-ecuaciones-4esob": otrasEcuaciones4esobLesson,
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "ovalo-ovoide-dt1": ovaloOvoideDt1Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "oxidacion-reduccion-fb1": oxidacionReduccionFb1Lesson,
+  "oxidacion-reduccion-fq4": oxidacionReduccionFq4Lesson,
+  "oxidos-fq4": oxidosFq4Lesson,
+  "oxisales-fb1": oxisalesFb1Lesson,
+  "oxisales-fq4": oxisalesFq4Lesson,
   "palancas-ley-generos": palancasLeyGenerosLesson,
   "palancas-poleas-equilibrio": palancasPoleasEquilibrioLesson,
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
@@ -2557,7 +2790,9 @@ export const interactiveLessons = {
   "perspectiva-isometrica-piezas": perspectivaIsometricaPiezasLesson,
   "perspectivas-isometrica-caballera-conica-2eso": perspectivasIsometricaCaballeraConica2esoLesson,
   "pertenencia-punto-recta-plano-dt1": pertenenciaPuntoRectaPlanoDt1Lesson,
+  "peso-cuerpos-celestes-fq4": pesoCuerposCelestesFq4Lesson,
   "peso-masa-gravedad-fq2": pesoMasaGravedadFq2Lesson,
+  "peso-normal-rozamiento-fq4": pesoNormalRozamientoFq4Lesson,
   "piezas-normalizadas-roscas-dt2": piezasNormalizadasRoscasDt2Lesson,
   "piramides-2eso": piramides2esoLesson,
   "planificacion-gantt-presupuesto-2eso": planificacionGanttPresupuesto2esoLesson,
@@ -2567,6 +2802,8 @@ export const interactiveLessons = {
   "plano-acotado-horizontales-dt1": planoAcotadoHorizontalesDt1Lesson,
   "plano-diedrico-trazas-dt1": planoDiedricoTrazasDt1Lesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
+  "plano-inclinado-fq4": planoInclinadoFq4Lesson,
+  "plano-inclinado-rozamiento-fb1": planoInclinadoRozamientoFb1Lesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "planos-acotados-explanaciones-dt2": planosAcotadosExplanacionesDt2Lesson,
@@ -2582,6 +2819,7 @@ export const interactiveLessons = {
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poleas-correas-2eso": poleasCorreas2esoLesson,
   "poleas-correas-friccion": poleasCorreasFriccionLesson,
+  "poleas-cuerpos-enlazados-fb1": poleasCuerposEnlazadosFb1Lesson,
   "poleas-polipasto-basico": poleasPolipastoBasicoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
@@ -2591,6 +2829,7 @@ export const interactiveLessons = {
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
   "poligonos-regulares-propiedades-dt1": poligonosRegularesPropiedadesDt1Lesson,
   "polimerizacion": polimerizacionLesson,
+  "polimeros-biomoleculas-fq4": polimerosBiomoleculasFq4Lesson,
   "polimeros-plasticos-tecnicos": polimerosPlasticosTecnicosLesson,
   "polinomios-2eso": polinomios2esoLesson,
   "polinomios-3eso": polinomios3esoLesson,
@@ -2603,6 +2842,7 @@ export const interactiveLessons = {
   "porcentajes": porcentajesLesson,
   "porcentajes-2eso": porcentajes2esoLesson,
   "porcentajes-3eso": porcentajes3esoLesson,
+  "posicion-velocidad-aceleracion-fq4": posicionVelocidadAceleracionFq4Lesson,
   "posiciones-recta-diedrico-dt1": posicionesRectaDiedricoDt1Lesson,
   "posiciones-relativas-1bach": posicionesRelativas1bachLesson,
   "postulados-morgan": postuladosMorganLesson,
@@ -2610,10 +2850,12 @@ export const interactiveLessons = {
   "potencia-energia-electrica": potenciaEnergiaElectricaLesson,
   "potencia-energia-electrica-2eso": potenciaEnergiaElectrica2esoLesson,
   "potencia-energia-electrica-4eso": potenciaEnergiaElectrica4esoLesson,
+  "potencia-energia-electrica-fq3": potenciaEnergiaElectricaFq3Lesson,
   "potencia-par-rendimiento-3eso": potenciaParRendimiento3esoLesson,
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-punto-circunferencia-dt2": potenciaPuntoCircunferenciaDt2Lesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
+  "potencia-rendimiento-fb1": potenciaRendimientoFb1Lesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
   "potencias-activa-reactiva-aparente-ti2": potenciasActivaReactivaAparenteTi2Lesson,
   "potencias-base-10": potenciasBase10Lesson,
@@ -2627,6 +2869,7 @@ export const interactiveLessons = {
   "potencias-matrices-ccss2": potenciasMatricesCcss2Lesson,
   "potencias-propiedades-ccss1": potenciasPropiedadesCcss1Lesson,
   "preparacion-diluciones-fq3": preparacionDilucionesFq3Lesson,
+  "presion-fq3": presionFq3Lesson,
   "presion-neumatica": presionNeumaticaLesson,
   "presion-temperatura": presionTemperaturaLesson,
   "presupuesto-evaluacion-mejora": presupuestoEvaluacionMejoraLesson,
@@ -2717,6 +2960,7 @@ export const interactiveLessons = {
   "producto-polinomios-4eso": productoPolinomios4esoLesson,
   "producto-polinomios-4esob": productoPolinomios4esobLesson,
   "producto-vectorial-2bach": productoVectorial2bachLesson,
+  "productos-cotidianos-acidos-bases-ph-fq3": productosCotidianosAcidosBasesPhFq3Lesson,
   "programacion-automatismos-secuencias-4eso": programacionAutomatismosSecuencias4esoLesson,
   "programar-placa-setup-loop-3eso": programarPlacaSetupLoop3esoLesson,
   "progresiones-aritmeticas-1bach": progresionesAritmeticas1bachLesson,
@@ -2735,6 +2979,8 @@ export const interactiveLessons = {
   "propiedades-limites-infinito-ccss1": propiedadesLimitesInfinitoCcss1Lesson,
   "propiedades-materiales": propiedadesMaterialesLesson,
   "propiedades-mecanicas-ensayos": propiedadesMecanicasEnsayosLesson,
+  "propiedades-periodicas-fb1": propiedadesPeriodicasFb1Lesson,
+  "propiedades-periodicas-fq4": propiedadesPeriodicasFq4Lesson,
   "propiedades-prestaciones-seleccion-3eso": propiedadesPrestacionesSeleccion3esoLesson,
   "propiedades-producto-2bach": propiedadesProducto2bachLesson,
   "propiedades-producto-ccss2": propiedadesProductoCcss2Lesson,
@@ -2797,6 +3043,9 @@ export const interactiveLessons = {
   "razones-agudas-1bach": razonesAgudas1bachLesson,
   "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
   "reacciones-quimicas-fq2": reaccionesQuimicasFq2Lesson,
+  "reactividad-estructura-electronica-fb1": reactividadEstructuraElectronicaFb1Lesson,
+  "reactivo-limitante-rendimiento-fb1": reactivoLimitanteRendimientoFb1Lesson,
+  "reactivo-limitante-rendimiento-fq4": reactivoLimitanteRendimientoFq4Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,
   "recorrido-simetrias-1bach": recorridoSimetrias1bachLesson,
@@ -2843,16 +3092,20 @@ export const interactiveLessons = {
   "regulacion-todo-nada-proporcional-4eso": regulacionTodoNadaProporcional4esoLesson,
   "relacion-transmision-trenes": relacionTransmisionTrenesLesson,
   "relacion-transmision-velocidad-angular-4eso": relacionTransmisionVelocidadAngular4esoLesson,
+  "rendimiento-fq4": rendimientoFq4Lesson,
   "rendimiento-perdidas-mecanicas": rendimientoPerdidasMecanicasLesson,
   "renovables-almacenamiento-autoconsumo-4eso": renovablesAlmacenamientoAutoconsumo4esoLesson,
   "repartos-proporcionales-4eso": repartosProporcionales4esoLesson,
   "repaso-sistemas-2x2-ccss2": repasoSistemas2x2Ccss2Lesson,
+  "repaso-velocidad-mru-fq3": repasoVelocidadMruFq3Lesson,
   "repeticiones-bucles-eso": repeticionesBuclesEsoLesson,
   "representacion-datos-binario": representacionDatosBinarioLesson,
   "residuos-reciclaje": residuosReciclajeLesson,
   "residuos-reduccion-clasificacion": residuosReduccionClasificacionLesson,
+  "residuos-sostenibilidad-fq3": residuosSostenibilidadFq3Lesson,
   "resiliencia-fatiga-tecnologicos": resilienciaFatigaTecnologicosLesson,
   "resistencia-conductor-ohm-3eso": resistenciaConductorOhm3esoLesson,
+  "resistencia-ley-ohm-fq3": resistenciaLeyOhmFq3Lesson,
   "resistencias-codigo-colores-3eso": resistenciasCodigoColores3esoLesson,
   "resolucion-ecuaciones-2eso": resolucionEcuaciones2esoLesson,
   "resolucion-problemas-programacion": resolucionProblemasProgramacionLesson,
@@ -2872,10 +3125,15 @@ export const interactiveLessons = {
   "ruedas-ejes-manivelas": ruedasEjesManivelasLesson,
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
+  "sales-binarias-fq4": salesBinariasFq4Lesson,
+  "satelites-orbitas-fb1": satelitesOrbitasFb1Lesson,
   "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
   "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,
+  "segunda-ley-newton-rozamiento-fq3": segundaLeyNewtonRozamientoFq3Lesson,
+  "seguridad-electrica-consumo-fq3": seguridadElectricaConsumoFq3Lesson,
   "seguridad-electrica-eso": seguridadElectricaEsoLesson,
+  "seguridad-etiquetado-productos-fq3": seguridadEtiquetadoProductosFq3Lesson,
   "seguridad-privacidad-bienestar-2eso": seguridadPrivacidadBienestar2esoLesson,
   "seguridad-reciclaje-taller-2eso": seguridadReciclajeTaller2esoLesson,
   "seguridad-red-amenazas-proteccion": seguridadRedAmenazasProteccionLesson,
@@ -2966,11 +3224,13 @@ export const interactiveLessons = {
   "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
   "sistemas-parametro-1-ccss2": sistemasParametro1Ccss2Lesson,
   "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,
+  "sistemas-referencia-vectores-fb1": sistemasReferenciaVectoresFb1Lesson,
   "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,
   "solubilidad-cristalizacion-fq3": solubilidadCristalizacionFq3Lesson,
   "solubilidad-saturacion-fq2": solubilidadSaturacionFq2Lesson,
+  "sonido-fq4": sonidoFq4Lesson,
   "sostenibilidad-materiales-acv-ti2": sostenibilidadMaterialesAcvTi2Lesson,
   "sucesiones-3eso": sucesiones3esoLesson,
   "sucesiones-definicion-1bach": sucesionesDefinicion1bachLesson,
@@ -2991,6 +3251,7 @@ export const interactiveLessons = {
   "sumadores-binarios": sumadoresBinariosLesson,
   "superficies-regladas-hiperboloide-dt2": superficiesRegladasHiperboloideDt2Lesson,
   "sustancias-puras-mezclas-fq2": sustanciasPurasMezclasFq2Lesson,
+  "tabla-periodica-configuracion-fq4": tablaPeriodicaConfiguracionFq4Lesson,
   "tabla-periodica-fq2": tablaPeriodicaFq2Lesson,
   "tabla-periodica-propiedades-fq3": tablaPeriodicaPropiedadesFq3Lesson,
   "tablas-contingencia-1bach": tablasContingencia1bachLesson,
@@ -3021,9 +3282,11 @@ export const interactiveLessons = {
   "tecnologia-necesidades-humanas": tecnologiaNecesidadesHumanasLesson,
   "tecnologia-sociedad-sostenibilidad": tecnologiaSociedadSostenibilidadLesson,
   "tecnologia-sostenible-asturias-ods": tecnologiaSostenibleAsturiasOdsLesson,
+  "temperatura-equilibrio-termico-fq4": temperaturaEquilibrioTermicoFq4Lesson,
   "temple-martensita": templeMartensitaLesson,
   "tendencias-periodicidad-3eso": tendenciasPeriodicidad3esoLesson,
   "tension-deformacion-traccion": tensionDeformacionTraccionLesson,
+  "tension-poleas-fq4": tensionPoleasFq4Lesson,
   "teorema-bayes-1bach": teoremaBayes1bachLesson,
   "teorema-bayes-ccss1": teoremaBayesCcss1Lesson,
   "teorema-central-limite-ccss2": teoremaCentralLimiteCcss2Lesson,
@@ -3036,6 +3299,7 @@ export const interactiveLessons = {
   "teorema-seno-1bach": teoremaSeno1bachLesson,
   "teorema-tales-2eso": teoremaTales2esoLesson,
   "teorema-thales-division-segmentos-dt1": teoremaThalesDivisionSegmentosDt1Lesson,
+  "teorema-trabajo-energia-fq4": teoremaTrabajoEnergiaFq4Lesson,
   "teoremas-continuas-2bach": teoremasContinuas2bachLesson,
   "teoria-bimodal-grafos": teoriaBimodalGrafosLesson,
   "textiles-petreos-ceramicos": textilesPetreosCeramicosLesson,
@@ -3047,13 +3311,17 @@ export const interactiveLessons = {
   "tipos-matrices-2bach": tiposMatrices2bachLesson,
   "tipos-matrices-ccss2": tiposMatricesCcss2Lesson,
   "tipos-muestreo-ccss2": tiposMuestreoCcss2Lesson,
+  "tipos-reacciones-combustion-fq4": tiposReaccionesCombustionFq4Lesson,
   "tipos-soluciones-pl-ccss2": tiposSolucionesPlCcss2Lesson,
   "tolerancias-ajustes-4eso": toleranciasAjustes4esoLesson,
   "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,
   "torsion-ejes-ti2": torsionEjesTi2Lesson,
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
+  "trabajo-fuerza-fb1": trabajoFuerzaFb1Lesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
+  "trabajo-potencia-fq3": trabajoPotenciaFq3Lesson,
+  "trabajo-potencia-fq4": trabajoPotenciaFq4Lesson,
   "trabajo-rotacion-par": trabajoRotacionParLesson,
   "transductores-velocidad": transductoresVelocidadLesson,
   "transformacion-movimiento": transformacionMovimientoLesson,
@@ -3064,6 +3332,7 @@ export const interactiveLessons = {
   "transformador-fuente-alimentacion-4eso": transformadorFuenteAlimentacion4esoLesson,
   "transistor-ganancia-conmutacion-4eso": transistorGananciaConmutacion4esoLesson,
   "transistor-interruptor-3eso": transistorInterruptor3esoLesson,
+  "transmision-dilatacion-fq4": transmisionDilatacionFq4Lesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
@@ -3101,6 +3370,7 @@ export const interactiveLessons = {
   "variable-continua-densidad-ccss1": variableContinuaDensidadCcss1Lesson,
   "variables-continuas-densidad-2bach": variablesContinuasDensidad2bachLesson,
   "variables-datos-iniciacion": variablesDatosIniciacionLesson,
+  "variables-leyes-gases-fb1": variablesLeyesGasesFb1Lesson,
   "variables-pendulo-fq3": variablesPenduloFq3Lesson,
   "variables-tipos-datos-2eso": variablesTiposDatos2esoLesson,
   "variacion-relativa-1bach": variacionRelativa1bachLesson,

@@ -1,4 +1,25 @@
 // industrial-imports
+import { buildKepler } from "@/components/lesson/anim/scenes/industrial/fb1-kepler";
+import { buildConservacion } from "@/components/lesson/anim/scenes/industrial/fb1-conservacion";
+import { buildPlano } from "@/components/lesson/anim/scenes/industrial/fb1-plano";
+import { buildParabolico } from "@/components/lesson/anim/scenes/industrial/fb1-parabolico";
+import { buildCadenasCarbono } from "@/components/lesson/anim/scenes/industrial/fb1-cadenas";
+import { buildPilaDaniell } from "@/components/lesson/anim/scenes/industrial/fb1-pila";
+import { buildGasParticulas } from "@/components/lesson/anim/scenes/industrial/fb1-gas";
+import { buildMol } from "@/components/lesson/anim/scenes/industrial/fb1-mol";
+import { buildReglaAspa } from "@/components/lesson/anim/scenes/industrial/fb1-aspa";
+import { buildMarElectrones } from "@/components/lesson/anim/scenes/industrial/fb1-metalico";
+import { buildRadioAtomico } from "@/components/lesson/anim/scenes/industrial/fb1-radio";
+import { buildOrbitales } from "@/components/lesson/anim/scenes/industrial/fb1-orbitales";
+import { buildOndas } from "@/components/lesson/anim/scenes/industrial/fq4-onda";
+import { buildCurvaCalentamiento } from "@/components/lesson/anim/scenes/industrial/fq4-calor";
+import { buildConservacionPista } from "@/components/lesson/anim/scenes/industrial/fq4-energia";
+import { buildCanonNewton } from "@/components/lesson/anim/scenes/industrial/fq4-orbita";
+import { buildDiagramaFuerzas } from "@/components/lesson/anim/scenes/industrial/fq4-fuerzas";
+import { buildMcu } from "@/components/lesson/anim/scenes/industrial/fq4-circular";
+import { buildPolimerizacion } from "@/components/lesson/anim/scenes/industrial/fq4-polimero";
+import { buildCorriente } from "@/components/lesson/anim/scenes/industrial/fq3-corriente";
+import { buildMrua } from "@/components/lesson/anim/scenes/industrial/fq3-mrua";
 import { buildColisiones } from "@/components/lesson/anim/scenes/industrial/fq3-colisiones";
 import { buildEnlaceIonico } from "@/components/lesson/anim/scenes/industrial/fq3-enlace";
 import { buildBohrSalto } from "@/components/lesson/anim/scenes/industrial/fq3-atomo";
@@ -860,6 +881,27 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fq3-bohr-salto": () => buildBohrSalto(),
   "fq3-enlace-ionico": () => buildEnlaceIonico(),
   "fq3-colisiones": () => buildColisiones(),
+  "fq3-mrua": () => buildMrua(),
+  "fq3-corriente": () => buildCorriente(),
+  "fq4-polimerizacion": () => buildPolimerizacion(),
+  "fq4-mcu": () => buildMcu(),
+  "fq4-diagrama-fuerzas": () => buildDiagramaFuerzas(),
+  "fq4-canon-newton": () => buildCanonNewton(),
+  "fq4-conservacion-pista": () => buildConservacionPista(),
+  "fq4-curva-calentamiento": () => buildCurvaCalentamiento(),
+  "fq4-ondas": () => buildOndas(),
+  "fb1-orbitales": () => buildOrbitales(),
+  "fb1-radio-atomico": () => buildRadioAtomico(),
+  "fb1-mar-electrones": () => buildMarElectrones(),
+  "fb1-regla-aspa": () => buildReglaAspa(),
+  "fb1-mol": () => buildMol(),
+  "fb1-gas-particulas": () => buildGasParticulas(),
+  "fb1-pila-daniell": () => buildPilaDaniell(),
+  "fb1-cadenas-carbono": () => buildCadenasCarbono(),
+  "fb1-parabolico": () => buildParabolico(),
+  "fb1-plano": () => buildPlano(),
+  "fb1-conservacion": () => buildConservacion(),
+  "fb1-kepler": () => buildKepler(),
   /* industrial-end */
 };
 

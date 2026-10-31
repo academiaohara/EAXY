@@ -232,3 +232,33 @@ export const FQ3_SUBTITLES = {
   9: "Física y Química 3.º ESO, Tema 9 — Electricidad",
   10: "Física y Química 3.º ESO, Tema 10 — Química y sociedad",
 } as const;
+
+export const FQ4_SUBTITLES = {
+  1: "Física y Química 4.º ESO, Tema 1 — Actividad científica y magnitudes",
+  2: "Física y Química 4.º ESO, Tema 2 — El átomo y la tabla periódica",
+  3: "Física y Química 4.º ESO, Tema 3 — Enlace químico",
+  4: "Física y Química 4.º ESO, Tema 4 — Formulación y nomenclatura",
+  5: "Física y Química 4.º ESO, Tema 5 — Reacciones químicas",
+  6: "Física y Química 4.º ESO, Tema 6 — Química del carbono",
+  7: "Física y Química 4.º ESO, Tema 7 — Cinemática",
+  8: "Física y Química 4.º ESO, Tema 8 — Dinámica",
+  9: "Física y Química 4.º ESO, Tema 9 — Fuerzas gravitatorias",
+  10: "Física y Química 4.º ESO, Tema 10 — Trabajo, energía y potencia",
+  11: "Física y Química 4.º ESO, Tema 11 — Calor y energía térmica",
+  12: "Física y Química 4.º ESO, Tema 12 — Ondas",
+} as const;
+
+export const FB1_SUBTITLES = {
+  1: "Física y Química 1.º Bachillerato, Tema 1 — Estructura atómica",
+  2: "Física y Química 1.º Bachillerato, Tema 2 — Sistema periódico",
+  3: "Física y Química 1.º Bachillerato, Tema 3 — Enlace químico",
+  4: "Física y Química 1.º Bachillerato, Tema 4 — Formulación inorgánica",
+  5: "Física y Química 1.º Bachillerato, Tema 5 — Cantidad de sustancia",
+  6: "Física y Química 1.º Bachillerato, Tema 6 — Gases y disoluciones",
+  7: "Física y Química 1.º Bachillerato, Tema 7 — Reacciones químicas",
+  8: "Física y Química 1.º Bachillerato, Tema 8 — Química orgánica",
+  9: "Física y Química 1.º Bachillerato, Tema 9 — Cinemática",
+  10: "Física y Química 1.º Bachillerato, Tema 10 — Estática y dinámica",
+  11: "Física y Química 1.º Bachillerato, Tema 11 — Trabajo, energía y potencia",
+  12: "Física y Química 1.º Bachillerato, Tema 12 — Fuerzas gravitatorias",
+} as const;
