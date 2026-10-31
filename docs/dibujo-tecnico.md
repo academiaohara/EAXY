@@ -22,7 +22,7 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 | 1. Historia y fundamentos geométricos | A | 4: historia del dibujo técnico y campos de acción, Thales, Pitágoras, Euclides, Hipatia; lugar geométrico y arco capaz |
 | 2. Proporcionalidad, equivalencia y semejanza | A | 4: Thales, cuarta/tercera/media proporcional, sección áurea, equivalencia, semejanza |
 | 3. Triángulos, cuadriláteros y polígonos regulares | A | 6: puntos notables, construcción de triángulos y cuadriláteros, polígonos regulares (método general y por lado) |
-| 3b. Transformaciones geométricas (nuevo, en pantalla «Tema 5»; Tangencias y siguientes pasan a numerarse +1) | A | 2 hechas: traslación (compás por paralelogramo y papel cuadriculado) y giro (transportador + compás y papel cuadriculado), en `05-transformaciones-geometricas/`. Pendientes: simetría axial y central, igualdad y homotecia |
+| 3b. Transformaciones geométricas (nuevo, en pantalla «Tema 5»; Tangencias y siguientes pasan a numerarse +1) | A | 3 hechas: traslación (compás por paralelogramo y papel cuadriculado), giro (transportador + compás y papel cuadriculado) y simetría axial y central (compás y papel cuadriculado), en `05-transformaciones-geometricas/`. Pendientes: igualdad y homotecia |
 | 4. Tangencias y curvas técnicas | A | 5: tangencias básicas, enlaces, óvalo, ovoide, espiral, volutas |
 | 5. Sistema diédrico: punto, recta y plano | B | 6: proyecciones, punto, recta, plano, trazas, pertenencia |
 | 6. Diédrico: relaciones y distancias | B | 4: intersecciones, paralelismo, perpendicularidad, distancias |

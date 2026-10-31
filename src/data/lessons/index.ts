@@ -1476,6 +1476,7 @@ import { separacionMezclasEtapasFq3Lesson } from "@/data/lessons/fisica-3-eso/05
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/06-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
+import { simetriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-transformaciones-geometricas/03-simetria-dt1";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
 import { simetricoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/06-simetrico-recta-2bach";
@@ -3183,6 +3184,7 @@ export const interactiveLessons = {
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simbologia-industrial-arquitectonica-dt1": simbologiaIndustrialArquitectonicaDt1Lesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
+  "simetria-dt1": simetriaDt1Lesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,
   "simetrico-recta-2bach": simetricoRecta2bachLesson,

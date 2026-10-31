@@ -1330,7 +1330,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "traslacion-cuadricula" | "giro-compas" | "giro-practica" | "giro-cuadricula";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "traslacion-cuadricula" | "giro-compas" | "giro-practica" | "giro-cuadricula" | "simetria-compas" | "simetria-practica" | "simetria-cuadricula";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =

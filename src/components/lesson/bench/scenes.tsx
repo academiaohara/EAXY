@@ -49,7 +49,10 @@ export type BenchSceneName =
   | "traslacion-cuadricula"
   | "giro-compas"
   | "giro-practica"
-  | "giro-cuadricula";
+  | "giro-cuadricula"
+  | "simetria-compas"
+  | "simetria-practica"
+  | "simetria-cuadricula";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -71,6 +74,9 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "giro-compas": 5,
   "giro-practica": 5,
   "giro-cuadricula": 3,
+  "simetria-compas": 5,
+  "simetria-practica": 7,
+  "simetria-cuadricula": 3,
 };
 
 export const INK = "#2a2f36";

@@ -29,8 +29,8 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 4. **CAD**: simulación realista de la interfaz.
 5. **Dibujo Técnico II**: homología, afinidad, potencia y cónicas reutilizan el motor de compás y regla; los cuerpos y el diédrico avanzado, los formatos del punto 3.
 
-## Qué se necesita de ti
+## Decisiones tomadas
 
-- Confirmar o cambiar el orden.
-- Decidir el nivel de realismo de los sistemas de representación (maqueta SVG con pasos frente a un modelo 3D interactivo).
-- Confirmar si, cuando un tema esté migrado, se retiran del código las herramientas y animaciones antiguas que ya nadie use.
+- **Orden:** el propuesto arriba (confirmado).
+- **Formato de los sistemas de representación:** la misma «mesa de dibujo» (`bench`) del tema 1: escenas SVG realistas con pasos dentro de la diapositiva, animación de la explicación y práctica paso a paso con «Comprobar» en el pie. No habrá modelo 3D interactivo. Se crearán las escenas nuevas que haga falta (planos de proyección, sólidos proyectados sobre la hoja…) reutilizando el motor de práctica.
+- **Código antiguo:** cuando un tema esté migrado, se retiran las herramientas, animaciones y talleres antiguos que ya no use ninguna lección (con sus tests).

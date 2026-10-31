@@ -29,7 +29,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],
-  ["transformaciones-geometricas", 2],
+  ["transformaciones-geometricas", 3],
   ["tangencias-curvas-tecnicas", 5],
   ["sistema-diedrico-punto-recta-plano", 6],
   ["sistema-diedrico-relaciones-distancias", 4],

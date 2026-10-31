@@ -89,6 +89,9 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `giro-compas` | 5 | **Explicación animada** del giro: centro `O` y ángulo, el transportador alineado con `OA` marca el segundo lado, el compás con radio `OA` traza el arco hasta `A′`, se repite con `B` y `C` y aparece la figura girada con `OA = OA′` | `a` ángulo (30…120°) |
 | `giro-practica` | 5 fases | **Práctica** de girar el punto `A`: `angulo` (arrastrar el segundo lado hasta marcar el ángulo en el transportador), `medida` `OA`, punta en `O`, arco y marcar `A′` | `a` ángulo (30…120°) |
 | `giro-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al girar el triángulo alrededor de `O` (90°, 180° o 270° antihorario) | `a` ángulo (90, 180, 270) |
+| `simetria-compas` | 5 | **Explicación animada** de la simetría axial con compás: dos puntos `P` y `Q` del eje, arco de radio `PA` desde `P`, arco de radio `QA` desde `Q` (se cortan en `A` y `A′`) y la figura simétrica con `AA′ ⟂ e` | — |
+| `simetria-practica` | 7 fases | **Práctica**: hallar `A′` con dos medidas, dos arcos y marcar el corte que no es `A` | — |
+| `simetria-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al reflejar el triángulo respecto de un eje vertical (`a = 0`) o diagonal (`a = 1`) | `a` = 0 o 1 |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
 

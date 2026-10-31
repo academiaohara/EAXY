@@ -9,7 +9,7 @@ import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerp, lerpP, tramo, useProgreso, 
 import { Punto, puntero } from "./scenes-trazados";
 
 /** Flecha de `a` a `b`, con punta. */
-function Flecha({ a, b, color = INK, grosor = 2, discontinua = false, opacidad = 1 }: { a: Pt; b: Pt; color?: string; grosor?: number; discontinua?: boolean; opacidad?: number }) {
+export function Flecha({ a, b, color = INK, grosor = 2, discontinua = false, opacidad = 1 }: { a: Pt; b: Pt; color?: string; grosor?: number; discontinua?: boolean; opacidad?: number }) {
   const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
   const l = 11;
   const p1: Pt = [b[0] - l * Math.cos(ang - 0.4), b[1] - l * Math.sin(ang - 0.4)];
@@ -22,7 +22,7 @@ function Flecha({ a, b, color = INK, grosor = 2, discontinua = false, opacidad =
   );
 }
 
-const poligono = (pts: Pt[]) => `M${pts.map((p) => `${p[0]} ${p[1]}`).join(" L")} Z`;
+export const poligono = (pts: Pt[]) => `M${pts.map((p) => `${p[0]} ${p[1]}`).join(" L")} Z`;
 
 /* ───────────── Traslación con compás (método del paralelogramo) ───────────── */
 

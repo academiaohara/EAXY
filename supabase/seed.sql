@@ -1879,6 +1879,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020306', 'a2000000-0000-4000-8000-000000000203', '6. Polígonos dado el lado y polígonos estrellados', 'Radio dado el lado y estrellas {n/k}.', 6, null),
   ('a3000000-0000-4000-8000-000000037401', 'a2000000-0000-4000-8000-000000000374', '1. Traslación', 'Trasladar un punto y una figura según un vector, con compás y en papel cuadriculado.', 1, null),
   ('a3000000-0000-4000-8000-000000037402', 'a2000000-0000-4000-8000-000000000374', '2. Giro', 'Girar un punto y una figura alrededor de un centro, con transportador y compás y en papel cuadriculado.', 2, null),
+  ('a3000000-0000-4000-8000-000000037403', 'a2000000-0000-4000-8000-000000000374', '3. Simetría axial y central', 'Simétrico de un punto y de una figura respecto de un eje (con compás y en papel cuadriculado) y respecto de un centro.', 3, null),
   ('a3000000-0000-4000-8000-000000020401', 'a2000000-0000-4000-8000-000000000204', '1. Tangentes a una circunferencia', 'Tangentes desde un punto exterior.', 1, null),
   ('a3000000-0000-4000-8000-000000020402', 'a2000000-0000-4000-8000-000000000204', '2. Circunferencias tangentes y tangentes comunes', 'Posiciones relativas y tangentes comunes.', 2, null),
   ('a3000000-0000-4000-8000-000000020403', 'a2000000-0000-4000-8000-000000000204', '3. Enlaces y problemas de tangencias', 'Enlaces entre rectas y lugares geométricos.', 3, null),

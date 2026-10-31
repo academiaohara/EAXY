@@ -16617,6 +16617,15 @@ export const curriculum: Curriculum = {
               interactiveSlug: "giro-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(37403),
+              title: "3. Simetría axial y central",
+              summary: "Simétrico de un punto y de una figura respecto de un eje (con compás y en papel cuadriculado) y respecto de un centro.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "simetria-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {

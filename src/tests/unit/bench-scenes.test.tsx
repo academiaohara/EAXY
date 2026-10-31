@@ -856,6 +856,106 @@ describe("giro", () => {
   });
 });
 
+describe("simetría", () => {
+  const E1: Pt = [260, 40];
+  const E2: Pt = [320, 350];
+  const eje = (t: number): Pt => [E1[0] + t * (E2[0] - E1[0]), E1[1] + t * (E2[1] - E1[1])];
+  const P = eje(0.3);
+  const Q = eje(0.75);
+  const A: Pt = [130, 240];
+  const refl = (p: Pt): Pt => {
+    const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
+    const l = Math.hypot(d[0], d[1]);
+    const u: Pt = [d[0] / l, d[1] / l];
+    const t = (p[0] - E1[0]) * u[0] + (p[1] - E1[1]) * u[1];
+    const pie: Pt = [E1[0] + u[0] * t, E1[1] + u[1] * t];
+    return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
+  };
+  const A2 = refl(A);
+  const rP = Math.hypot(P[0] - A[0], P[1] - A[1]);
+  const rQ = Math.hypot(Q[0] - A[0], Q[1] - A[1]);
+
+  it("explicación: los puntos del eje, los dos arcos y la figura simétrica aparecen por pasos", () => {
+    const { siguiente } = montar("simetria-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente(2);
+    expect(screen.getByTestId("bench-arco-p")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-q")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  function hastaMarcar() {
+    const t = pantalla("simetria-practica");
+    t.tocar(P);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(P);
+    expect(t.fase()).toBe("arco");
+    const base = ang(P, A2);
+    t.arrastrar(enCirc(P, rP, base - 25), enCirc(P, rP, base + 10));
+    expect(t.fase()).toBe("medida");
+    t.tocar(Q);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(Q);
+    expect(t.fase()).toBe("arco");
+    const base2 = ang(Q, A2);
+    t.arrastrar(enCirc(Q, rQ, base2 - 25), enCirc(Q, rQ, base2 + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: marcar el simétrico A′ (y no A) en el corte de los arcos es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 4, A2[1] - 5]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar el otro corte, que es A, es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(A);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("simetria-cuadricula", { a });
+      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+
+    it("eje vertical: A′, B′ y C′ en el lado opuesto, a la misma distancia, son correctos", () => {
+      const t = abrir(0);
+      for (const g of [[22, 11], [20, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("eje diagonal: se intercambian las distancias al eje en horizontal y vertical", () => {
+      const t = abrir(1);
+      for (const g of [[9, 11], [13, 9], [10, 7]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("trasladar en lugar de reflejar es incorrecto", () => {
+      const t = abrir(0);
+      for (const g of [[12, 11], [14, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
+  });
+});
+
 describe("mesa de dibujo · integración", () => {
   it("se monta desde una diapositiva (SlideBlockView)", () => {
     render(
