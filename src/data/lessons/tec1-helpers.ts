@@ -1,6 +1,6 @@
 import type { HelpBranch, LessonStep, SlideBlock, SlideStep, VisualTone } from "@/lib/lesson/types";
 
-type Visual = Extract<SlideBlock, { kind: "anim" | "figure" | "tool" }>;
+type Visual = Extract<SlideBlock, { kind: "anim" | "figure" | "tool" | "bench" }>;
 
 /** Diapositiva de teoría (bloques de texto + visual opcional). */
 export function slide(
@@ -31,6 +31,7 @@ function ayudaDiapositiva(title: string, blocks: SlideBlock[], visual?: Visual):
   const idea = primeraIdea(blocks);
   const out: HelpBranch[] = [{ label: "¿Qué debo retener?", message: `Idea clave de «${title}»: ${idea || "lee los bloques de arriba abajo, empezando por la definición o la regla."}` }];
   if (visual?.kind === "tool") out.push({ label: "¿Qué pruebo en la simulación?", message: "Cambia un solo control cada vez y observa qué resultados se mueven y cuáles no: así descubres la relación entre las magnitudes. Pulsa «Reiniciar» para volver al punto de partida." });
+  if (visual?.kind === "bench") out.push({ label: "¿Cómo uso la mesa de dibujo?", message: "Trabaja como en papel: arrastra el instrumento (o usa el deslizador) y mira qué se mantiene fijo y qué se mueve. El texto bajo el dibujo te dice cuándo la construcción está bien hecha." });
   if (visual?.kind === "anim") out.push({ label: "¿Cómo veo la animación?", message: "Puedes pausarla, avanzar o retroceder paso a paso. Lee el texto de cada paso antes de pasar al siguiente: dice qué cambia en el dibujo." });
   return out;
 }
@@ -47,6 +48,13 @@ export const tool = (
   params?: Extract<SlideBlock, { kind: "tool" }>["params"],
   hint?: string,
 ): Visual => ({ kind: "tool", tool: id, ...(params ? { params } : {}), ...(hint ? { hint } : {}) });
+
+/** Mesa de dibujo: instrumentos SVG realistas que el alumno manipula. */
+export const bench = (
+  scene: Extract<SlideBlock, { kind: "bench" }>["scene"],
+  params?: Extract<SlideBlock, { kind: "bench" }>["params"],
+  hint?: string,
+): Visual => ({ kind: "bench", scene, ...(params ? { params } : {}), ...(hint ? { hint } : {}) });
 
 /** Pregunta de elección: la primera opción es la correcta; el resto, errores típicos con su explicación. */
 export function pick(

@@ -16,6 +16,7 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 
 | Tema | Saber | Lecciones (previstas) |
 |---|---|---|
+| 0. Instrumentos y trazados fundamentales (nuevo, en pantalla «Tema 1»; el resto se numera +1) | A | 1 hecha: instrumentos y paralelas con escuadra y cartabón (`01-instrumentos-trazados-fundamentales/`, mesa de dibujo). Pendientes: perpendiculares, ángulos con escuadra/cartabón y transportador, mediatriz y bisectriz con compás |
 | 1. Historia y fundamentos geométricos | A | 4: historia del dibujo técnico y campos de acción, Thales, Pitágoras, Euclides, Hipatia; lugar geométrico y arco capaz |
 | 2. Proporcionalidad, equivalencia y semejanza | A | 4: Thales, cuarta/tercera/media proporcional, sección áurea, equivalencia, semejanza |
 | 3. Triángulos, cuadriláteros y polígonos regulares | A | 6: puntos notables, construcción de triángulos y cuadriláteros, polígonos regulares (método general y por lado) |
@@ -62,7 +63,7 @@ Total: 41 lecciones (el curso `dibujo-tecnico-2-bachillerato` está completo).
 | Tema | Estado |
 |---|---|
 | Plan | Aprobado por el usuario |
-| DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/01-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |
+| DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/02-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |
 | DT I · 2. Proporcionalidad, equivalencia y semejanza | Hecho (4 lecciones, `02-proporcionalidad-equivalencia-semejanza/`; herramientas en `DtGeometriaTools.tsx`, animación `buildSeccionAurea` en `dt1-geometria.tsx`) |
 | DT I · 3. Triángulos, cuadriláteros y polígonos regulares | Hecho (6 lecciones, `03-triangulos-cuadrilateros-poligonos/`; herramientas `DtPoligonosTools.tsx`, animación `dt1-poligonos.tsx`) |
 | DT I · 4. Tangencias y curvas técnicas | Hecho (5 lecciones, `04-tangencias-curvas-tecnicas/`; herramientas `DtTangenciasTools.tsx`, animaciones `dt1-tangencias.tsx`) |

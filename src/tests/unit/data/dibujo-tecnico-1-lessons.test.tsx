@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { SLIDE_ANIM_REGISTRY, buildSlideAnim } from "@/components/lesson/anim/registry";
 import { curriculum } from "@/content/curriculum";
@@ -10,15 +11,16 @@ import type { LessonStep, SlideBlock, SlideStep } from "@/lib/lesson/types";
 const course = curriculum.courses.find((c) => c.slug === "dibujo-tecnico-1-bachillerato")!;
 const lessons = course.modules.flatMap((m) => m.lessons.map((l) => ({ module: m.slug, lesson: l, data: interactiveLessons[l.interactiveSlug as keyof typeof interactiveLessons] })));
 
-function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" }>[] {
+function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" | "bench" }>[] {
   if (step.type !== "slide") {
     return [];
   }
   const slide = step as SlideStep;
-  return [...slide.blocks, ...(slide.visual ? [slide.visual] : [])].filter((b): b is Extract<SlideBlock, { kind: "anim" | "tool" }> => b.kind === "anim" || b.kind === "tool");
+  return [...slide.blocks, ...(slide.visual ? [slide.visual] : [])].filter((b): b is Extract<SlideBlock, { kind: "anim" | "tool" | "bench" }> => b.kind === "anim" || b.kind === "tool" || b.kind === "bench");
 }
 
 const TEMAS: [slug: string, lecciones: number][] = [
+  ["instrumentos-trazados-fundamentales", 1],
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],
@@ -103,6 +105,9 @@ describe("curso Dibujo Técnico I", () => {
         for (const v of visuals(step)) {
           if (v.kind === "tool") {
             expect(() => render(<SlideTool block={v} />), `${data.slug}/${step.id}`).not.toThrow();
+          }
+          if (v.kind === "bench") {
+            expect(() => render(<SlideBench block={v} />), `${data.slug}/${step.id}`).not.toThrow();
           }
         }
       }

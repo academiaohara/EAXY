@@ -16400,10 +16400,27 @@ export const curriculum: Curriculum = {
       orderIndex: 22,
       modules: [
         {
+          id: moduleId(373),
+          slug: "instrumentos-trazados-fundamentales",
+          title: "Instrumentos y trazados fundamentales",
+          orderIndex: 1,
+          lessons: [
+            {
+              id: lessonId(37301),
+              title: "1. Instrumentos de dibujo y paralelas con escuadra y cartabón",
+              summary: "Regla, escuadra, cartabón, transportador, compás y lápiz; trazado de paralelas.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "instrumentos-paralelas-dt1",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
           id: moduleId(201),
           slug: "historia-fundamentos-geometricos",
           title: "Historia y fundamentos geométricos",
-          orderIndex: 1,
+          orderIndex: 2,
           lessons: [
             {
               id: lessonId(20101),
@@ -16447,7 +16464,7 @@ export const curriculum: Curriculum = {
           id: moduleId(202),
           slug: "proporcionalidad-equivalencia-semejanza",
           title: "Proporcionalidad, equivalencia y semejanza",
-          orderIndex: 2,
+          orderIndex: 3,
           lessons: [
             {
               id: lessonId(20201),
@@ -16491,7 +16508,7 @@ export const curriculum: Curriculum = {
           id: moduleId(203),
           slug: "triangulos-cuadrilateros-poligonos",
           title: "Triángulos, cuadriláteros y polígonos regulares",
-          orderIndex: 3,
+          orderIndex: 4,
           lessons: [
             {
               id: lessonId(20301),
@@ -16553,7 +16570,7 @@ export const curriculum: Curriculum = {
           id: moduleId(204),
           slug: "tangencias-curvas-tecnicas",
           title: "Tangencias y curvas técnicas",
-          orderIndex: 4,
+          orderIndex: 5,
           lessons: [
             {
               id: lessonId(20401),
@@ -16606,7 +16623,7 @@ export const curriculum: Curriculum = {
           id: moduleId(205),
           slug: "sistema-diedrico-punto-recta-plano",
           title: "Sistema diédrico: punto, recta y plano",
-          orderIndex: 5,
+          orderIndex: 6,
           lessons: [
             {
               id: lessonId(20501),
@@ -16668,7 +16685,7 @@ export const curriculum: Curriculum = {
           id: moduleId(206),
           slug: "sistema-diedrico-relaciones-distancias",
           title: "Sistema diédrico: relaciones y distancias",
-          orderIndex: 6,
+          orderIndex: 7,
           lessons: [
             {
               id: lessonId(20601),
@@ -16712,7 +16729,7 @@ export const curriculum: Curriculum = {
           id: moduleId(207),
           slug: "sistemas-axonometricos",
           title: "Sistemas axonométricos",
-          orderIndex: 7,
+          orderIndex: 8,
           lessons: [
             {
               id: lessonId(20701),
@@ -16765,7 +16782,7 @@ export const curriculum: Curriculum = {
           id: moduleId(208),
           slug: "planos-acotados-conico",
           title: "Planos acotados y sistema cónico",
-          orderIndex: 8,
+          orderIndex: 9,
           lessons: [
             {
               id: lessonId(20801),
@@ -16827,7 +16844,7 @@ export const curriculum: Curriculum = {
           id: moduleId(209),
           slug: "normalizacion-documentacion-grafica",
           title: "Normalización y documentación gráfica",
-          orderIndex: 9,
+          orderIndex: 10,
           lessons: [
             {
               id: lessonId(20901),
@@ -16889,7 +16906,7 @@ export const curriculum: Curriculum = {
           id: moduleId(210),
           slug: "sistemas-cad",
           title: "Sistemas CAD",
-          orderIndex: 10,
+          orderIndex: 11,
           lessons: [
             {
               id: lessonId(21001),
