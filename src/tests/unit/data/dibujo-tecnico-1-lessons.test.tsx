@@ -21,7 +21,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 const TEMAS: [slug: string, lecciones: number][] = [
-  ["instrumentos-trazados-fundamentales", 1],
+  ["instrumentos-trazados-fundamentales", 3],
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],

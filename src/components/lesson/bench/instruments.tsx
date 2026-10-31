@@ -4,7 +4,9 @@ import {
   CARTABON_LARGO,
   ESCUADRA_L,
   RAD,
+  dist,
   insetTriangle,
+  rot,
   poseTransform,
   type Pt,
   type Pose,
@@ -154,6 +156,8 @@ function PlasticTriangle({ pts, gradient }: { pts: [Pt, Pt, Pt]; gradient: strin
 export function Escuadra({ pose, dim }: PoseProps) {
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
+      {/* área de agarre: incluye el hueco, para poder arrastrar desde cualquier punto de la escuadra */}
+      <path d={`M0 0 L${ESCUADRA_L} 0 L0 ${ESCUADRA_L} Z`} fill="transparent" />
       <PlasticTriangle pts={ESCUADRA_PTS} gradient="url(#bench-plastic)" />
     </g>
   );
@@ -168,7 +172,10 @@ export function Cartabon({ pose, dim }: PoseProps) {
   );
 }
 
-/** Transportador de 180°. Origen: centro; el diámetro queda a lo largo de +x y el arco hacia −y. */
+/**
+ * Transportador de 180° con dos escalas, como los reales. Origen: centro; el diámetro queda a lo largo de +x
+ * y el arco hacia −y. Escala exterior: 0° a la derecha. Escala interior (roja): 0° a la izquierda.
+ */
 export function Transportador({ pose, r = 70, dim }: PoseProps & { r?: number }) {
   const rr = r - 14;
   const ticks: ReactNode[] = [];
@@ -183,16 +190,11 @@ export function Transportador({ pose, r = 70, dim }: PoseProps & { r?: number })
     );
     if (big && a > 0 && a < 180) {
       ticks.push(
-        <text
-          key={`n${a}`}
-          x={cx * (r - 10.5)}
-          y={sy * (r - 10.5) + 1.6}
-          fontSize="4.4"
-          textAnchor="middle"
-          fill={TICK}
-          fontFamily="ui-sans-serif, system-ui"
-        >
+        <text key={`n${a}`} x={cx * (r - 10.5)} y={sy * (r - 10.5) + 1.6} fontSize="4.4" textAnchor="middle" fill={TICK} fontFamily="ui-sans-serif, system-ui">
           {a}
+        </text>,
+        <text key={`i${a}`} x={cx * (r - 17)} y={sy * (r - 17) + 1.5} fontSize="3.8" textAnchor="middle" fill="#a3302b" fontFamily="ui-sans-serif, system-ui">
+          {180 - a}
         </text>,
       );
     }
@@ -283,4 +285,18 @@ export function Compas({ pose, open = 40, dim }: PoseProps & { open?: number }) 
       </g>
     </g>
   );
+}
+
+/**
+ * Pose del compás con la punta seca en `n` y la mina en `m`, con la abertura que haga falta
+ * (máx. 2 · pata). Devuelve también la abertura para pasársela a `<Compas open>`.
+ */
+export function poseCompas(n: Pt, m: Pt): { pose: Pose; open: number } {
+  const radio = Math.min(dist(n, m), 2 * COMPAS_PATA - 0.01);
+  const open = compasApertura(radio);
+  const half = (open / 2) * RAD;
+  const punta: Pt = [-Math.sin(half) * COMPAS_PATA, Math.cos(half) * COMPAS_PATA];
+  const ang = (Math.atan2(m[1] - n[1], m[0] - n[0]) * 180) / Math.PI;
+  const t = rot(punta, ang);
+  return { pose: { x: n[0] - t[0], y: n[1] - t[1], rot: ang }, open };
 }

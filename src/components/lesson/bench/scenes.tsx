@@ -32,7 +32,15 @@ export type BenchBlock = {
   notes?: BenchNote[];
 };
 
-export type BenchSceneName = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon";
+export type BenchSceneName =
+  | "instrumentos-catalogo"
+  | "escuadra-cartabon-angulos"
+  | "lapices-dureza"
+  | "paralelas-escuadra-cartabon"
+  | "perpendicular-escuadra-cartabon"
+  | "transportador-medir"
+  | "mediatriz-compas"
+  | "bisectriz-compas";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -40,15 +48,19 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "escuadra-cartabon-angulos": 6,
   "lapices-dureza": 3,
   "paralelas-escuadra-cartabon": 3,
+  "perpendicular-escuadra-cartabon": 3,
+  "transportador-medir": 3,
+  "mediatriz-compas": 4,
+  "bisectriz-compas": 4,
 };
 
-const INK = "#2a2f36";
-const SANS = "ui-sans-serif, system-ui";
-const f1 = (v: number) => v.toFixed(1).replace(".", ",");
+export const INK = "#2a2f36";
+export const SANS = "ui-sans-serif, system-ui";
+export const f1 = (v: number) => v.toFixed(1).replace(".", ",");
 
 /* ───────────── Contenedor: instrumentos a la izquierda, información a la derecha ───────────── */
 
-function BenchShell({
+export function BenchShell({
   scene,
   notes,
   step,
@@ -110,14 +122,14 @@ function BenchShell({
   );
 }
 
-const SVG_CLASS = "block h-auto w-full rounded-xl";
+export const SVG_CLASS = "block h-auto w-full rounded-xl";
 
 /* ───────────── Ángulos: arcos de anotación ───────────── */
 
 const rad = (d: number) => (d * Math.PI) / 180;
 
 /** Arco de `a1` a `a2` (grados, eje Y hacia abajo) alrededor de `v`, con la cifra al lado. */
-function Arco({ v, a1, a2, r, color, text, textSize = 13, dr = 13, fuera = false }: { v: Pt; a1: number; a2: number; r: number; color: string; text?: string; textSize?: number; dr?: number; fuera?: boolean }) {
+export function Arco({ v, a1, a2, r, color, text, textSize = 13, dr = 13, fuera = false }: { v: Pt; a1: number; a2: number; r: number; color: string; text?: string; textSize?: number; dr?: number; fuera?: boolean }) {
   let d = a2 - a1;
   while (d > 180) d -= 360;
   while (d <= -180) d += 360;
@@ -171,9 +183,9 @@ export function InstrumentosCatalogo({ block }: { block: BenchBlock }) {
 
 /* ───────────── 2. Ángulos con escuadra y cartabón ───────────── */
 
-const AZUL = "#1f78b4";
-const AMBAR = "#d97706";
-const VERDE = "#1f9d55";
+export const AZUL = "#1f78b4";
+export const AMBAR = "#d97706";
+export const VERDE = "#1f9d55";
 
 /** Dirección (grados, eje Y hacia abajo) del vértice `i` hacia el vértice `j` de un triángulo. */
 const dirTri = (pts: Pt[], i: number, j: number) => (Math.atan2(pts[j][1] - pts[i][1], pts[j][0] - pts[i][0]) * 180) / Math.PI;

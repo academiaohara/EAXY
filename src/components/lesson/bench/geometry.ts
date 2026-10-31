@@ -158,3 +158,54 @@ export function distRecta(p: Pt, a: Pt, b: Pt) {
   const l = Math.hypot(d[0], d[1]);
   return Math.abs(d[0] * (p[1] - a[1]) - d[1] * (p[0] - a[0])) / l;
 }
+
+/* ───────────── Ángulos y circunferencias (ángulos en grados, antihorarios en pantalla, 0° = derecha) ───────────── */
+
+/** Ángulo de la semirrecta que va de `v` a `p`, en (−180, 180]. */
+export const angDe = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
+
+/** Punto de la circunferencia de centro `c` y radio `r` en la dirección `ang`. */
+export const enCirculo = (c: Pt, r: number, ang: number): Pt => [c[0] + r * Math.cos(ang * RAD), c[1] - r * Math.sin(ang * RAD)];
+
+/** Puntos de corte de dos circunferencias (primero el de la izquierda del sentido a→b), o `null` si no se cortan. */
+export function interseccionCirculos(a: Pt, ra: number, b: Pt, rb: number): [Pt, Pt] | null {
+  const d = dist(a, b);
+  if (d === 0 || d > ra + rb || d < Math.abs(ra - rb)) return null;
+  const x = (d * d + ra * ra - rb * rb) / (2 * d);
+  const h = Math.sqrt(Math.max(0, ra * ra - x * x));
+  const ux: Pt = [(b[0] - a[0]) / d, (b[1] - a[1]) / d];
+  const base: Pt = [a[0] + ux[0] * x, a[1] + ux[1] * x];
+  return [
+    [base[0] + ux[1] * h, base[1] - ux[0] * h],
+    [base[0] - ux[1] * h, base[1] + ux[0] * h],
+  ];
+}
+
+export const puntoMedio = (a: Pt, b: Pt): Pt => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+
+/** Ángulo en grados entre dos direcciones (0…180). */
+export function entreDirecciones(a1: number, a2: number) {
+  let d = Math.abs(a1 - a2) % 360;
+  if (d > 180) d = 360 - d;
+  return d;
+}
+
+/* ───────────── Perpendicular con escuadra y cartabón ─────────────
+ * Se trabaja en el sistema de la recta r: eje x a lo largo de r, y hacia abajo (como en SVG),
+ * origen en el pie de la guía. El cartabón queda bajo r con su cateto largo sobre r y la escuadra, encima,
+ * con un cateto apoyado en el cartabón: al deslizarla por r, su otro cateto es siempre perpendicular a r.
+ */
+export const PERP_PX = 200;
+export const PERP_EX0 = 40;
+export const PERP_S_MAX = 260;
+
+export type PerpSetup = { p: Pt; dP: number; sStar: number };
+
+export function perpSetup(dP: number): PerpSetup {
+  return { p: [PERP_PX, -dP], dP, sStar: PERP_PX - PERP_EX0 };
+}
+
+/** Posición x (en el sistema de r) del vértice recto de la escuadra tras deslizar `s` mm. */
+export const perpEx = (s: number) => PERP_EX0 + s;
+
+export const perpPasaPorP = (setup: PerpSetup, s: number, tol = 1.2) => Math.abs(perpEx(s) - setup.p[0]) <= tol;

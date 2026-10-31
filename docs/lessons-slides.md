@@ -61,8 +61,8 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 
 - **Maquetación**: el dibujo va a la izquierda y la información a la derecha, **sin marco ni scroll**. La escena avanza **por pasos dentro de la diapositiva** (Anterior / Siguiente y puntos): cada paso cambia el dibujo y el texto. Usa `blocks: []` y `arrange: "stack"`: todo el contenido sale de `notes` (un `{ title, text, fact? }` por paso; `text` admite `**negrita**` y `$LaTeX$`, no cursiva con `*`).
 - El número de pasos de cada escena está en `BENCH_STEPS` (`scenes.tsx`); el test de DT I comprueba que `notes` tenga exactamente ese número.
-- Código: `src/components/lesson/bench/` — `geometry.ts` (funciones puras, `bench-geometry.test.ts`), `instruments.tsx` (`Regla`, `Escuadra`, `Cartabon`, `Transportador`, `Compas`, `Lapiz`, `Desk`, `BenchDefs`), `scenes.tsx` (`BenchShell` y escenas) y `SlideBench.tsx` (registro). Tests de interacción en `bench-scenes.test.tsx`.
-- Cada instrumento se dibuja en coordenadas locales y se coloca con una `Pose { x, y, rot, anchor?, mirror? }`. `apoyarTriangulo` apoya un triángulo por una arista (vértice a un punto, arista horizontal, cuerpo arriba o abajo). Las escenas **no inventan geometría**: el movimiento sale de `geometry.ts`.
+- Código: `src/components/lesson/bench/` — `geometry.ts` (funciones puras, `bench-geometry.test.ts`), `instruments.tsx` (`Regla`, `Escuadra`, `Cartabon`, `Transportador` con doble escala, `Compas`, `poseCompas`, `Lapiz`, `Desk`, `BenchDefs`), `scenes.tsx` y `scenes-trazados.tsx` (`BenchShell` y escenas) y `SlideBench.tsx` (registro). Tests de interacción en `bench-scenes.test.tsx`.
+- Cada instrumento se dibuja en coordenadas locales y se coloca con una `Pose { x, y, rot, anchor?, mirror? }`. `apoyarTriangulo` apoya un triángulo por una arista (vértice a un punto, arista horizontal, cuerpo arriba o abajo); `poseCompas(N, M)` coloca el compás con la punta seca en `N` y la mina en `M`. Las escenas **no inventan geometría**: el movimiento sale de `geometry.ts`.
 - Las escenas interactivas se **manipulan arrastrando el propio instrumento** (puntero) y también con el teclado (flechas, `Shift` = pasos grandes). No se usan deslizadores.
 - Cuándo usarlo en vez de `anim`: **procedimientos con instrumentos** (trazar, medir, copiar un ángulo) y todo lo que se aprenda mejor «con las manos». Cuándo no: demostraciones y construcciones abstractas, donde la animación por pasos sigue siendo mejor.
 
@@ -71,6 +71,10 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `instrumentos-catalogo` | 6 | Los seis instrumentos sobre la mesa; cada paso destaca uno (sin interacción) | — |
 | `escuadra-cartabon-angulos` | 6 | Ángulos de escuadra y cartabón, longitud a juego, y 15°, 75° y 105° restando y sumando | — |
 | `lapices-dureza` | 3 | Escala 2H–2B con su trazo, cada fase con su mina y los errores típicos (mancha, surco) | — |
+| `perpendicular-escuadra-cartabon` | 3 | Perpendicular a `r` por `P`: el cartabón sobre `r` hace de guía y se arrastra la escuadra a lo largo de `r` hasta que su cateto vertical pasa por `P` | `a` inclinación de `r` (−15…25°), `b` altura de `P` sobre `r` (50…120 mm) |
+| `transportador-medir` | 3 | Centrar y alinear el transportador; leer la escala correcta (hay dos); dibujar un ángulo dado arrastrando el segundo lado (lectura en vivo y comprobación) | `a` ángulo inicial (°), `b` ángulo objetivo (°) |
+| `mediatriz-compas` | 4 | Arcos desde `A` y desde `B` con el compás (posicionado con punta seca y mina en su sitio), recta `CD` y comprobación arrastrando `Q` (`QA = QB`) | — |
+| `bisectriz-compas` | 4 | Arco desde el vértice, arcos desde `P` y `Q`, corte `T` y bisectriz `VT` con los dos ángulos iguales | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; solo deja trazar cuando coincide | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
 
 Para añadir una escena: función pura en `geometry.ts` + test, componente en `scenes.tsx` (envuelto en `BenchShell`), nombre en `BenchSceneId` (`src/lib/lesson/types.ts`), número de pasos en `BENCH_STEPS` y `case` en `SlideBench.tsx`.

@@ -920,6 +920,7 @@ import { mediaMedianaModaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-b
 import { mediaProporcionalSeccionAureaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-proporcionalidad-equivalencia-semejanza/02-media-proporcional-seccion-aurea-dt1";
 import { mediaVarianza2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/02-media-varianza-2bach";
 import { mediatrizBisectriz1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/08-mediatriz-bisectriz-1bach";
+import { mediatrizBisectrizCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-instrumentos-trazados-fundamentales/03-mediatriz-bisectriz-compas-dt1";
 import { medicionMarcadoPieDeRey2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/07-medicion-marcado-pie-de-rey-2eso";
 import { medidaDesplazamientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/05-medida-desplazamiento";
 import { medidaErrorCifrasFq2Lesson } from "@/data/lessons/fisica-2-eso/01-actividad-cientifica/03-medida-error-cifras-fq2";
@@ -1083,6 +1084,7 @@ import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachi
 import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/06-percentiles-cuartiles-1bach";
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
+import { perpendicularesTransportadorDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-instrumentos-trazados-fundamentales/02-perpendiculares-transportador-dt1";
 import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
 import { perspectivaCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/04-perspectiva-caballera-dt1";
@@ -2622,6 +2624,7 @@ export const interactiveLessons = {
   "media-proporcional-seccion-aurea-dt1": mediaProporcionalSeccionAureaDt1Lesson,
   "media-varianza-2bach": mediaVarianza2bachLesson,
   "mediatriz-bisectriz-1bach": mediatrizBisectriz1bachLesson,
+  "mediatriz-bisectriz-compas-dt1": mediatrizBisectrizCompasDt1Lesson,
   "medicion-marcado-pie-de-rey-2eso": medicionMarcadoPieDeRey2esoLesson,
   "medida-desplazamiento": medidaDesplazamientoLesson,
   "medida-error-cifras-fq2": medidaErrorCifrasFq2Lesson,
@@ -2785,6 +2788,7 @@ export const interactiveLessons = {
   "percentiles-cuartiles-1bach": percentilesCuartiles1bachLesson,
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
+  "perpendiculares-transportador-dt1": perpendicularesTransportadorDt1Lesson,
   "perpendicularidad-diedrico-dt1": perpendicularidadDiedricoDt1Lesson,
   "perspectiva-caballera": perspectivaCaballeraLesson,
   "perspectiva-caballera-dt1": perspectivaCaballeraDt1Lesson,

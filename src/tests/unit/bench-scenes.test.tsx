@@ -118,6 +118,99 @@ describe("mesa de dibujo · paralelas con la escuadra arrastrable", () => {
   });
 });
 
+describe("mesa de dibujo · perpendicular, transportador, mediatriz y bisectriz", () => {
+  it("perpendicular: arrastrando la escuadra por r llega a P y se puede trazar", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "perpendicular-escuadra-cartabon", notes: notas(3), params: { a: 0, b: 80 } }} />);
+    const esc = screen.getByTestId("bench-escuadra");
+    expect(esc.getAttribute("aria-valuenow")).toBe("0");
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    const trazar = screen.getByTestId("bench-trazar") as HTMLButtonElement;
+    expect(trazar.disabled).toBe(true);
+    // con r horizontal, 1 px = 1 mm: P está a 160 mm de la posición inicial
+    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 100 + 160, clientY: 100, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("160");
+    expect(trazar.disabled).toBe(false);
+    fireEvent.pointerUp(esc, { pointerId: 1 });
+    fireEvent.click(trazar);
+    expect(screen.getByTestId("bench-trazo")).toBeTruthy();
+  });
+
+  it("perpendicular: tiene tope y no avanza hacia atrás de la posición inicial", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "perpendicular-escuadra-cartabon", notes: notas(3), params: { a: 0 } }} />);
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    const esc = screen.getByTestId("bench-escuadra");
+    fireEvent.pointerDown(esc, { clientX: 0, clientY: 0, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 900, clientY: 0, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("260");
+    fireEvent.pointerMove(esc, { clientX: -900, clientY: 0, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("0");
+  });
+
+  it("transportador: la lectura sigue al lado arrastrado y reconoce el objetivo", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "transportador-medir", notes: notas(3), params: { a: 37, b: 130 } }} />);
+    expect(screen.queryByTestId("bench-lado")).toBeNull();
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    const lado = screen.getByTestId("bench-lado");
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("37°");
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    expect(screen.getByTestId("bench-estado").textContent).toContain("130°");
+    // vértice V = (240, 262): un punto a 130° está arriba-izquierda
+    const V = [240, 262];
+    const p = [V[0] + 100 * Math.cos((130 * Math.PI) / 180), V[1] - 100 * Math.sin((130 * Math.PI) / 180)];
+    fireEvent.pointerDown(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
+    fireEvent.pointerMove(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("130°");
+    expect(screen.getByTestId("bench-estado").textContent).toContain("Correcto");
+  });
+
+  it("transportador: el ángulo se limita a 0°–180° y el teclado lo ajusta", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "transportador-medir", notes: notas(3) }} />);
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    const lado = screen.getByTestId("bench-lado");
+    fireEvent.keyDown(lado, { key: "ArrowLeft" });
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("38°");
+    fireEvent.keyDown(lado, { key: "ArrowRight", shiftKey: true });
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("28°");
+    fireEvent.pointerDown(lado, { clientX: 240, clientY: 400, pointerId: 1 }); // debajo del vértice
+    fireEvent.pointerMove(lado, { clientX: 400, clientY: 400, pointerId: 1 });
+    expect(Number(lado.getAttribute("aria-valuenow"))).toBe(0);
+  });
+
+  it("mediatriz: los arcos aparecen por pasos y Q equidista de A y B", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "mediatriz-compas", notes: notas(4) }} />);
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    expect(screen.queryByTestId("bench-arcos-b")).toBeNull();
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    expect(screen.getByTestId("bench-arcos-b")).toBeTruthy();
+    expect(screen.queryByTestId("bench-recta")).toBeNull();
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    expect(screen.getByTestId("bench-recta")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    const q = screen.getByTestId("bench-q");
+    for (const y of [60, 150, 300]) {
+      fireEvent.pointerDown(q, { clientX: 310, clientY: 150, pointerId: 1 });
+      fireEvent.pointerMove(q, { clientX: 310, clientY: y, pointerId: 1 });
+      fireEvent.pointerUp(q, { pointerId: 1 });
+      const [qa, qb] = (screen.getByTestId("bench-dists").textContent ?? "").match(/[\d,]+(?= mm)/g) ?? [];
+      expect(qa).toBe(qb);
+    }
+  });
+
+  it("bisectriz: cuatro pasos y la bisectriz solo al final", () => {
+    render(<SlideBench block={{ kind: "bench", scene: "bisectriz-compas", notes: notas(4), params: { a: 110 } }} />);
+    for (let i = 0; i < 3; i += 1) {
+      expect(screen.queryByTestId("bench-bisectriz-recta")).toBeNull();
+      fireEvent.click(screen.getByTestId("bench-siguiente"));
+    }
+    expect(screen.getByTestId("bench-bisectriz-recta")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+});
+
 describe("mesa de dibujo · integración", () => {
   it("se monta desde una diapositiva (SlideBlockView)", () => {
     render(<SlideBlockView block={{ kind: "bench", scene: "instrumentos-catalogo", notes: notas(6) }} />);

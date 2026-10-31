@@ -1,6 +1,17 @@
 import { describe, expect, it } from "vitest";
 import {
   PARALELA_S_MAX,
+  PERP_EX0,
+  PERP_PX,
+  angDe,
+  dist,
+  enCirculo,
+  entreDirecciones,
+  interseccionCirculos,
+  perpEx,
+  perpPasaPorP,
+  perpSetup,
+  puntoMedio,
   apoyarTriangulo,
   applyPose,
   cartabonPose,
@@ -15,7 +26,7 @@ import {
   CARTABON_LARGO,
   type Pt,
 } from "@/components/lesson/bench/geometry";
-import { CARTABON_PTS, ESCUADRA_PTS, compasApertura, compasRadio } from "@/components/lesson/bench/instruments";
+import { CARTABON_PTS, ESCUADRA_PTS, compasApertura, compasRadio, poseCompas } from "@/components/lesson/bench/instruments";
 
 const ANGLES = [-25, -10, 0, 12, 35];
 const DISTS = [40, 70, 100];
@@ -120,6 +131,96 @@ describe("mesa de dibujo · apoyar un triángulo sobre una arista", () => {
       expect(w[0]).toBeGreaterThan(o[0]);
       expect(w[0] - o[0]).toBeCloseTo(Math.hypot(pts[wi][0] - pts[vi][0], pts[wi][1] - pts[vi][1]), 6);
       expect(t[1] < o[1]).toBe(arriba);
+    }
+  });
+});
+
+describe("mesa de dibujo · perpendicular con escuadra y cartabón", () => {
+  it("el cateto vertical pasa por P justo cuando la escuadra ha recorrido px − x0", () => {
+    for (const dP of [50, 80, 120]) {
+      const setup = perpSetup(dP);
+      expect(setup.p).toEqual([PERP_PX, -dP]);
+      expect(perpEx(setup.sStar)).toBeCloseTo(PERP_PX, 9);
+      expect(perpPasaPorP(setup, setup.sStar)).toBe(true);
+      expect(perpPasaPorP(setup, 0)).toBe(false);
+      expect(perpEx(0)).toBe(PERP_EX0);
+    }
+  });
+
+  it("el cateto vertical de la escuadra, apoyada sobre r, es perpendicular a r en cualquier posición", () => {
+    for (const s of [0, 60, 160, 260]) {
+      const pose = apoyarTriangulo(ESCUADRA_PTS, 0, 1, [perpEx(s), 0], true);
+      const a = applyPose(pose, ESCUADRA_PTS[0]);
+      const b = applyPose(pose, ESCUADRA_PTS[1]);
+      const c = applyPose(pose, ESCUADRA_PTS[2]);
+      expect(a[1]).toBeCloseTo(0, 9);
+      expect(b[1]).toBeCloseTo(0, 9);
+      expect(c[0]).toBeCloseTo(a[0], 9); // cateto vertical
+      expect(c[1]).toBeLessThan(0);
+    }
+  });
+});
+
+describe("mesa de dibujo · ángulos y circunferencias", () => {
+  it("angDe y enCirculo son inversas (0° a la derecha, antihorario en pantalla)", () => {
+    const c: Pt = [100, 200];
+    for (const a of [0, 30, 90, 130, 180, -45]) {
+      const p = enCirculo(c, 50, a);
+      expect(dist(c, p)).toBeCloseTo(50, 9);
+      expect(entreDirecciones(angDe(c, p), a)).toBeCloseTo(0, 6);
+    }
+    expect(enCirculo(c, 10, 90)[1]).toBeLessThan(200); // arriba en pantalla
+  });
+
+  it("las circunferencias del mismo radio desde A y B se cortan sobre la mediatriz", () => {
+    const A: Pt = [210, 190];
+    const B: Pt = [410, 190];
+    const [C, D] = interseccionCirculos(A, 130, B, 130)!;
+    const M = puntoMedio(A, B);
+    for (const p of [C, D]) {
+      expect(dist(p, A)).toBeCloseTo(130, 6);
+      expect(dist(p, B)).toBeCloseTo(130, 6);
+      expect(p[0]).toBeCloseTo(M[0], 6);
+    }
+    expect(C[1]).toBeLessThan(M[1]);
+    expect(D[1]).toBeGreaterThan(M[1]);
+  });
+
+  it("circunferencias que no se cortan devuelven null (abertura menor que la mitad)", () => {
+    expect(interseccionCirculos([0, 0], 50, [200, 0], 50)).toBeNull();
+  });
+
+  it("el punto de corte de los arcos desde P y Q está en la bisectriz", () => {
+    for (const alfa of [40, 70, 110, 130]) {
+      const V: Pt = [120, 300];
+      const P = enCirculo(V, 120, 0);
+      const Q = enCirculo(V, 120, alfa);
+      const r2 = dist(P, Q) / 2 + 45;
+      const cortes = interseccionCirculos(P, r2, Q, r2)!;
+      const T = dist(cortes[0], V) > dist(cortes[1], V) ? cortes[0] : cortes[1];
+      expect(angDe(V, T)).toBeCloseTo(alfa / 2, 6);
+    }
+  });
+
+  it("poseCompas: la punta seca va a N y la mina a M", () => {
+    const casos: [Pt, Pt][] = [
+      [[210, 262], [210 + 130, 262]],
+      [[210, 262], [240, 140]],
+      [[410, 262], [300, 330]],
+      [[120, 300], [60, 400]],
+    ];
+    for (const [n, m] of casos) {
+      const { pose, open } = poseCompas(n, m);
+      const half = (open / 2) * (Math.PI / 180);
+      const L = 110;
+      const agujaLocal: Pt = [-Math.sin(half) * L, Math.cos(half) * L];
+      const minaLocal: Pt = [Math.sin(half) * L, Math.cos(half) * L];
+      const a = applyPose(pose, agujaLocal);
+      const b = applyPose(pose, minaLocal);
+      expect(a[0]).toBeCloseTo(n[0], 6);
+      expect(a[1]).toBeCloseTo(n[1], 6);
+      expect(b[0]).toBeCloseTo(m[0], 6);
+      expect(b[1]).toBeCloseTo(m[1], 6);
     }
   });
 });

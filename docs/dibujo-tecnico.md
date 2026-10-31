@@ -16,7 +16,7 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 
 | Tema | Saber | Lecciones (previstas) |
 |---|---|---|
-| 0. Instrumentos y trazados fundamentales (nuevo, en pantalla «Tema 1»; el resto se numera +1) | A | 1 hecha: instrumentos y paralelas con escuadra y cartabón (`01-instrumentos-trazados-fundamentales/`, mesa de dibujo). Pendientes: perpendiculares, ángulos con escuadra/cartabón y transportador, mediatriz y bisectriz con compás |
+| 0. Instrumentos y trazados fundamentales (nuevo, en pantalla «Tema 1»; el resto se numera +1) | A | Hecho (3 lecciones, `01-instrumentos-trazados-fundamentales/`, mesa de dibujo): instrumentos y paralelas; perpendiculares y transportador; mediatriz y bisectriz con compás |
 | 1. Historia y fundamentos geométricos | A | 4: historia del dibujo técnico y campos de acción, Thales, Pitágoras, Euclides, Hipatia; lugar geométrico y arco capaz |
 | 2. Proporcionalidad, equivalencia y semejanza | A | 4: Thales, cuarta/tercera/media proporcional, sección áurea, equivalencia, semejanza |
 | 3. Triángulos, cuadriláteros y polígonos regulares | A | 6: puntos notables, construcción de triángulos y cuadriláteros, polígonos regulares (método general y por lado) |
