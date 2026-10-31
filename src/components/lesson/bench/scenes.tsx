@@ -10,7 +10,6 @@ import {
   apoyarTriangulo,
   cartabonPose,
   clamp,
-  distanciaFiloAP,
   dot,
   escuadraPose,
   filoPasaPorP,
@@ -46,17 +45,12 @@ export type BenchSceneName =
   | "trasladar-practica"
   | "traslacion-compas"
   | "traslacion-practica"
-  | "traslacion-cuadricula"
   | "giro-compas"
   | "giro-practica"
-  | "giro-cuadricula"
   | "simetria-compas"
   | "simetria-practica"
-  | "simetria-cuadricula"
   | "homotecia-compas"
   | "homotecia-practica"
-  | "homotecia-cuadricula"
-  | "union-imagen"
   | "thales-dividir"
   | "thales-practica"
   | "thales-paralelas"
@@ -67,7 +61,13 @@ export type BenchSceneName =
   | "equivalencia-triangulos"
   | "cuadratura-compas"
   | "cuadratura-practica"
-  | "semejanza-razon";
+  | "semejanza-razon"
+  | "puntos-notables"
+  | "circuncentro-practica"
+  | "triangulo-lll-compas"
+  | "triangulo-lll-practica"
+  | "hexagono-compas"
+  | "hexagono-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -84,18 +84,13 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "trasladar-angulo-compas": 5,
   "trasladar-practica": 9,
   "traslacion-compas": 5,
-  "traslacion-practica": 7,
-  "traslacion-cuadricula": 3,
+  "traslacion-practica": 15,
   "giro-compas": 5,
-  "giro-practica": 5,
-  "giro-cuadricula": 3,
+  "giro-practica": 16,
   "simetria-compas": 5,
-  "simetria-practica": 7,
-  "simetria-cuadricula": 3,
+  "simetria-practica": 22,
   "homotecia-compas": 5,
-  "homotecia-practica": 4,
-  "homotecia-cuadricula": 3,
-  "union-imagen": 1,
+  "homotecia-practica": 13,
   "thales-dividir": 7,
   "thales-practica": 8,
   "thales-paralelas": 1,
@@ -107,6 +102,12 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "cuadratura-compas": 5,
   "cuadratura-practica": 7,
   "semejanza-razon": 4,
+  "puntos-notables": 5,
+  "circuncentro-practica": 11,
+  "triangulo-lll-compas": 5,
+  "triangulo-lll-practica": 7,
+  "hexagono-compas": 5,
+  "hexagono-practica": 17,
 };
 
 export const INK = "#2a2f36";
@@ -169,11 +170,13 @@ export function BenchShell({
               Anterior
             </button>
           )}
-          <div className="flex items-center gap-1.5" aria-hidden>
-            {Array.from({ length: total }, (_, i) => (
-              <span key={i} className={`size-2 rounded-full ${i === step ? "bg-[#58c4dd]" : i < step ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
-            ))}
-          </div>
+          {total <= 12 ? (
+            <div className="flex items-center gap-1.5" aria-hidden>
+              {Array.from({ length: total }, (_, i) => (
+                <span key={i} className={`size-2 rounded-full ${i === step ? "bg-[#58c4dd]" : i < step ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
+              ))}
+            </div>
+          ) : null}
           {nav ? null : (
             <button type="button" className={btn} disabled={step === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
               Siguiente
@@ -489,10 +492,10 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
 
   const setup = paralelaSetup([175, 70], theta, dP);
   const ok = filoPasaPorP(setup, s);
-  const { resultado } = useBenchCheck({ ready: step === last, evaluate: () => filoPasaPorP(setup, s) });
+  const { resultado, finalizar } = useBenchCheck();
   const hecho = resultado === true;
   const shown = resultado !== null ? last : step;
-  const sv = hecho && !ok ? setup.sStar : s;
+  const sv = hecho ? setup.sStar : s;
   const eq = escuadraPose(setup, sv);
   const ct = cartabonPose(setup);
   const mueve = shown === last && resultado === null;
@@ -519,16 +522,20 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
     if (!drag.current) return;
     setS(clamp(drag.current.s0 + dot(sub(toSvg(ev), drag.current.start), setup.h), 0, PARALELA_S_MAX));
   };
+  // Al soltar (o al mover con el teclado) con el borde sobre P, la construcción queda hecha.
   const onUp = () => {
+    const estabaArrastrando = drag.current !== null;
     drag.current = null;
     setAgarrada(false);
+    if (estabaArrastrando && mueve && ok) finalizar();
   };
   const onKey = (ev: ReactKeyboardEvent) => {
     if (!mueve) return;
     const paso = ev.shiftKey ? 10 : 2;
-    if (ev.key === "ArrowUp" || ev.key === "ArrowRight") setS((v) => clamp(v + paso, 0, PARALELA_S_MAX));
-    else if (ev.key === "ArrowDown" || ev.key === "ArrowLeft") setS((v) => clamp(v - paso, 0, PARALELA_S_MAX));
-    else return;
+    const nuevo = ev.key === "ArrowUp" || ev.key === "ArrowRight" ? clamp(s + paso, 0, PARALELA_S_MAX) : ev.key === "ArrowDown" || ev.key === "ArrowLeft" ? clamp(s - paso, 0, PARALELA_S_MAX) : null;
+    if (nuevo === null) return;
+    setS(nuevo);
+    if (filoPasaPorP(setup, nuevo)) finalizar();
     ev.preventDefault();
   };
 
@@ -536,14 +543,8 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const rB = add(setup.c0, mul(setup.u, 280));
   const pa = add(setup.p, mul(setup.u, -150));
   const pb = add(setup.p, mul(setup.u, 200));
-  const falta = Math.abs(distanciaFiloAP(setup, s));
 
-  const extra =
-    resultado === null ? null : resultado ? (
-      <Resultado ok>Correcto: la recta trazada es paralela a r porque la escuadra solo se ha desplazado, no ha girado.</Resultado>
-    ) : (
-      <Resultado ok={false}>El borde de la escuadra no pasa por P: queda a {f1(falta)} mm. Pulsa «Reintentar» y vuelve a deslizarla.</Resultado>
-    );
+  const extra = resultado === null ? null : <Resultado ok>Correcto: la recta trazada es paralela a r porque la escuadra solo se ha desplazado, no ha girado.</Resultado>;
 
   return (
     <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">

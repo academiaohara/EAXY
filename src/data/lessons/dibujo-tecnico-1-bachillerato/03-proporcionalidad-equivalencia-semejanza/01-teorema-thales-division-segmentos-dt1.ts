@@ -26,7 +26,7 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
       { title: "Marca el punto 2", text: "Traza otro arco que corte la semirrecta." },
       { title: "Pasa al punto 2", text: "Toca el punto 2." },
       { title: "Marca el punto 3", text: "Traza el tercer arco sobre la semirrecta." },
-      { title: "Une el 3 con B", text: "Toca **dos puntos**: la tercera marca y $B$. La regla trazará la recta. Después pulsa **Comprobar**." },
+      { title: "Une el 3 con B", text: "Toca **dos puntos**: la tercera marca y $B$. La regla trazará la recta." },
     ], {
       question: "Marca sobre la semirrecta tres partes iguales con el compás y une la tercera marca con B.",
       hint: "No cambies la abertura entre una marca y la siguiente.",
@@ -34,7 +34,7 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
     }),
 
     benchTask("thales-paralelas", "Traza las paralelas", "thales-paralelas", [
-      { title: "Paralelas por las marcas 1 y 2", text: "Imagina las **paralelas** a la recta $3B$ por los puntos 2 y 1 (con escuadra y cartabón). Toca los **dos puntos de $AB$** por los que cortan. Después pulsa **Comprobar**.", fact: "Cortan a AB en un tercio y en dos tercios" },
+      { title: "Paralelas por las marcas 1 y 2", text: "Imagina las **paralelas** a la recta $3B$ por los puntos 2 y 1 (con escuadra y cartabón). Toca los **dos puntos de $AB$** por los que cortan.", fact: "Cortan a AB en un tercio y en dos tercios" },
     ], {
       question: "Marca los dos puntos de AB por los que pasan las paralelas trazadas por las marcas 1 y 2.",
       hint: "Divide AB en tres partes iguales.",

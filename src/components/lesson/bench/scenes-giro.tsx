@@ -4,9 +4,8 @@ import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, rotarPunto, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, Transportador, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
-import { CELDA, CuadriculaEjercicio, gp } from "./scenes-transformaciones";
-import { ArcoPlano, Punto } from "./scenes-trazados";
+import { ArcoAnim, MSHEET, MV, SNAP, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { Punto } from "./scenes-trazados";
 
 export const O: Pt = [180, 290];
 export const GA: Pt = [330, 290];
@@ -132,7 +131,7 @@ export const GIRO_CENTRO = O;
 const NOMBRES = ["A", "B", "C"];
 
 /** Práctica de girar el vértice `v` (0 = A, 1 = B, 2 = C); los anteriores se muestran ya girados. */
-function defGiro(th: number, v: number): Def {
+export function defGiro(th: number, v: number): Def {
   const P = GIRO_ORIG[v];
   const P2 = rotarPunto(P, O, th);
   const n = NOMBRES[v];
@@ -170,49 +169,4 @@ function defGiro(th: number, v: number): Def {
         : { ok: false, mensaje: `Ese punto no es ${n}′: ${n}′ es donde el arco de radio O${n} corta al segundo lado del ángulo. Pulsa «Reintentar».` };
     },
   };
-}
-
-export function GiroPractica({ block }: { block: BenchBlock }) {
-  const th = clamp(Math.round(block.params?.a ?? 60), 30, 120);
-  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
-  const [def] = useState(() => defGiro(th, v));
-  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
-}
-
-/* ───────────── Giro en papel cuadriculado ───────────── */
-
-const CENTRO: [number, number] = [8, 7];
-const FIG_GIRO: [number, number][] = [[12, 7], [12, 4], [9, 5]];
-
-/** Gira un punto de la cuadrícula `deg` (múltiplo de 90) grados en sentido antihorario alrededor del centro. */
-function girarCuadro(g: [number, number], deg: number): [number, number] {
-  const dx = g[0] - CENTRO[0];
-  const dy = g[1] - CENTRO[1];
-  const [x, y] = deg === 90 ? [dy, -dx] : deg === 180 ? [-dx, -dy] : [-dy, dx];
-  return [CENTRO[0] + x, CENTRO[1] + y];
-}
-
-export function GiroCuadricula({ block }: { block: BenchBlock }) {
-  const raw = Math.round((block.params?.a ?? 90) / 90) * 90;
-  const deg = raw === 180 ? 180 : raw === 270 ? 270 : 90;
-  const esperado = FIG_GIRO.map((g) => girarCuadro(g, deg));
-  const o = gp(CENTRO);
-  return (
-    <CuadriculaEjercicio
-      block={block}
-      scene="giro-cuadricula"
-      figura={FIG_GIRO}
-      esperado={esperado}
-      mensajeOk={`Correcto: cada vértice conserva su distancia a O y gira ${deg}° en sentido antihorario. La figura girada es igual que la original.`}
-      decoracion={
-        <g>
-          <ArcoPlano c={o} r={CELDA * 1.6} a1={0} a2={deg === 270 ? 269 : deg} grosor={2.4} color={AMBAR} />
-          <text x={o[0] + CELDA * 2.1} y={o[1] - CELDA * 0.6} fontSize="14" fontWeight="800" fill={AMBAR} fontFamily={SANS} {...etiqueta}>
-            {deg}° ↺
-          </text>
-          <Punto p={o} nombre="O" dx={-18} dy={18} color={AZUL} />
-        </g>
-      }
-    />
-  );
 }

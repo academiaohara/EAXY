@@ -38,7 +38,6 @@ import { buildPerspectivaFrontal } from "@/components/lesson/anim/scenes/industr
 import { buildCuboIsometrico } from "@/components/lesson/anim/scenes/industrial/dt1-axonometria";
 import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
 import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
-import { buildPentagonoEuclides } from "@/components/lesson/anim/scenes/industrial/dt1-poligonos";
 import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
 import { buildArcoCapazConstruccion, buildArcoCapazInvariancia, buildDocumentosProfesionales, buildGeometriaMedidaDemostracion, buildInterseccionLugares, buildLocalizacionDosArcos, buildLugaresCondiciones, buildPitagorasAreas, buildPlanoInformacion, buildPlanoRevision } from "@/components/lesson/anim/scenes/industrial/dt1-fundamentos";
 import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
@@ -855,7 +854,6 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-documentos-profesionales": () => buildDocumentosProfesionales(),
   "dt1-plano-revision": () => buildPlanoRevision(),
   "dt1-localizacion-dos-arcos": () => buildLocalizacionDosArcos(),
-  "dt1-pentagono-euclides": () => buildPentagonoEuclides(),
   "dt1-tangentes-punto": () => buildTangentesPunto(),
   "dt1-trazado-ovalo": () => buildTrazadoOvalo(),
   "dt1-abatimiento-diedrico": () => buildAbatimientoDiedrico(),

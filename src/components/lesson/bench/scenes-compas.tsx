@@ -303,7 +303,8 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 
 /** `angulo`: marcar un ángulo con el transportador arrastrando el segundo lado hasta su valor. */
 /** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
-export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo";
+/** `punto`: tocar un punto concreto de la construcción (solo vale el correcto). */
+export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo" | "punto";
 
 export type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
@@ -350,6 +351,14 @@ export type Def = {
   extRegla?: number;
   /** Texto de progreso bajo el paso (por ejemplo, «Lados trazados: 1 de 3»). */
   progreso?: (est: Est) => string | null;
+  /** Radio de ajuste de los toques de `punto` y `regla` (14 por defecto). */
+  snap?: number;
+  /** Permite tocar varias veces el mismo punto en la fase `regla` (la unión de A′, B′ y C′). */
+  repetir?: boolean;
+  /** Mensaje de error si el toque (ya ajustado a un punto de la construcción) no es válido en este momento. */
+  validarClic?: (est: Est, punto: Pt) => string | null;
+  /** Mensaje de error si la abertura elegida no sirve; el alumno la corrige antes de seguir. */
+  validarAbertura?: (est: Est, aIdx: number, radio: number) => string | null;
   evaluar: (est: Est) => { ok: boolean; mensaje: string };
 };
 
@@ -385,7 +394,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const hecha = est.fase >= fases.length;
   const tipo = hecha ? undefined : fases[est.fase];
   const evaluacion = def.evaluar(est);
-  const { resultado } = useBenchCheck({ ready: hecha, evaluate: () => def.evaluar(est).ok });
+  const { resultado, finalizar } = useBenchCheck();
   const bloqueada = resultado !== null;
 
   // Configuración del arco al que se refiere la fase actual.
@@ -402,6 +411,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     const t = fases[f];
     const out: Est = { ...e, fase: f, radios: [...e.radios], cub: [...e.cub] };
     if (t === "medida") out.medida = [];
+    if (t === "angulo") out.ang = 20;
     if (t === "abertura") {
       const a = cuentaAb(fases, f);
       if (out.radios[a] === undefined) out.radios[a] = def.radioIni(a, out);
@@ -413,9 +423,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     return out;
   };
   const avanzar = (e: Est) => {
+    const nuevo = entrar(e, e.fase + 1);
     setPrev((h) => [...h, est]);
-    setEst(entrar(e, e.fase + 1));
+    setEst(nuevo);
     setAviso(null);
+    if (nuevo.fase >= fases.length) finalizar();
   };
 
   const rhoDe = (cfg: CfgArco, p: Pt) => clamp(norm180(cfg.signo * (angDe(cfg.centro, p) - cfg.base)), cfg.rhoMin, cfg.rhoMax);
@@ -455,14 +467,35 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       avanzar({ ...est, medida: [...est.medida, cand], radios });
       return;
     }
-    if (tipo === "regla") {
-      const sn = def.cortes(est).find((c) => dist(c, p) <= SNAP) ?? p;
-      const clics = [...est.clics, sn];
+    if (tipo === "punto" || tipo === "regla") {
+      const snap = def.snap ?? SNAP;
+      const objetivos = def.cortes(est);
+      const cand = objetivos.find((c) => dist(c, p) <= snap);
+      if (!cand) {
+        setAviso(tipo === "punto" ? "Ese no es el punto que se busca: toca donde se cortan los arcos." : "Toca uno de los puntos de la construcción por donde debe pasar la regla.");
+        return;
+      }
+      if (tipo === "punto") {
+        // el punto queda marcado y los arcos de este vértice se borran para dejar la hoja limpia
+        avanzar({ ...est, cub: est.cub.map(() => null) });
+        return;
+      }
+      const mal = def.validarClic?.(est, cand);
+      if (mal) {
+        setAviso(mal);
+        return;
+      }
+      if (!def.repetir && est.clics.some((c) => dist(c, cand) < 1)) {
+        setAviso("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
+        return;
+      }
+      const clics = [...est.clics, cand];
+      setAviso(null);
       if (clics.length >= (def.nClics ?? 2)) {
         setPrev((h) => [...h, est]);
         setEst({ ...est, clics, fase: fases.length });
+        finalizar();
       } else setEst({ ...est, clics });
-      setAviso(null);
       return;
     }
     (ev.currentTarget as Element).setPointerCapture?.(ev.pointerId);
@@ -512,7 +545,14 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
 
   const fijar = () => {
-    if (tipo === "abertura" && !bloqueada) avanzar(est);
+    if (tipo !== "abertura" || bloqueada) return;
+    const aIdx = cuentaAb(fases, est.fase);
+    const mal = def.validarAbertura?.(est, aIdx, est.radios[aIdx] ?? 0);
+    if (mal) {
+      setAviso(mal);
+      return;
+    }
+    avanzar(est);
   };
   const deshacer = () => {
     setPrev((h) => {
@@ -566,7 +606,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         <Compas pose={c.pose} open={c.open} />
       </g>
     );
-  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "medida") {
+  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "punto" && tipo !== "medida") {
     const nn = Math.min(nDisp, mapa.length - 1);
     const cfg = cfgDe(nn, radioDe(nn));
     if (cfg) {
@@ -681,6 +721,93 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   );
 }
 
+/* ───────────── Encadenar construcciones en un solo recorrido ───────────── */
+
+const cuentaTipo = (fases: Tipo[], t: Tipo) => fases.filter((x) => x === t).length;
+
+/**
+ * Une varias construcciones (una por vértice) y, opcionalmente, una fase final en un único ejercicio guiado.
+ * En cada construcción la última fase `regla` se convierte en `punto` (marcar el resultado y seguir).
+ * Cada callback recibe un estado «local» como si la construcción fuera la única, así que se pueden reutilizar
+ * las definiciones de un solo vértice tal cual.
+ */
+export function secuenciar(scene: BenchSceneName, segs: Def[], final?: Def): Def {
+  const todos = final ? [...segs, final] : segs;
+  const fasesDe = (d: Def, esFinal: boolean): Tipo[] => (esFinal ? d.fases : d.fases.map((t) => (t === "regla" ? "punto" : t)));
+  const lista = todos.map((d, i) => fasesDe(d, final !== undefined && i === todos.length - 1));
+  const fases = lista.flat();
+  const info = lista.map((f, i) => {
+    const antes = lista.slice(0, i).flat();
+    return { d: todos[i], ini: antes.length, c: cuentaTipo(antes, "centro"), a: antes.filter((x) => x === "abertura" || x === "medida").length, r: cuentaTipo(antes, "arco"), n: f.length };
+  });
+  const porFase = (fase: number) => info.find((x) => fase >= x.ini && fase < x.ini + x.n) ?? info[info.length - 1];
+  const porAb = (a: number) => [...info].reverse().find((x) => a >= x.a) ?? info[0];
+  const porArco = (n: number) => [...info].reverse().find((x) => n >= x.r) ?? info[0];
+  const local = (x: (typeof info)[number], e: Est): Est => ({ ...e, fase: e.fase - x.ini, centros: e.centros.slice(x.c), radios: e.radios.slice(x.a), cub: e.cub.slice(x.r) });
+  const ult = info[info.length - 1];
+  const dFinal = ult.d;
+  const out: Def = {
+    scene,
+    fases,
+    nClics: dFinal.nClics,
+    sinRegla: dFinal.sinRegla,
+    extRegla: dFinal.extRegla,
+    snap: dFinal.snap,
+    repetir: dFinal.repetir,
+    papel: (e) => {
+      const x = porFase(e.fase);
+      return x.d.papel(local(x, e));
+    },
+    candidatos: (e, idx) => {
+      const x = porFase(e.fase);
+      return x.d.candidatos(local(x, e), idx - x.c);
+    },
+    medibles: (e) => {
+      const x = porFase(e.fase);
+      return x.d.medibles?.(local(x, e)) ?? [];
+    },
+    angulo: (e) => {
+      const x = porFase(e.fase);
+      return x.d.angulo!(local(x, e));
+    },
+    compasEspecial: (e, t) => {
+      const x = porFase(e.fase);
+      return x.d.compasEspecial?.(local(x, e), t) ?? null;
+    },
+    radioLim: (a) => {
+      const x = porAb(a);
+      return x.d.radioLim(a - x.a);
+    },
+    radioIni: (a, e) => {
+      const x = porAb(a);
+      return x.d.radioIni(a - x.a, local(x, e));
+    },
+    arco: (e, n, radio, c) => {
+      const x = porArco(n);
+      return x.d.arco(local(x, e), n - x.r, radio, c);
+    },
+    rhoIni: (n) => {
+      const x = porArco(n);
+      return x.d.rhoIni(n - x.r);
+    },
+    cortes: (e) => {
+      const x = porFase(e.fase);
+      return x.d.cortes(local(x, e));
+    },
+    progreso: (e) => {
+      const x = porFase(e.fase);
+      return x.d.progreso?.(local(x, e)) ?? null;
+    },
+    validarClic: (e, p) => dFinal.validarClic?.(local(ult, e), p) ?? null,
+    validarAbertura: (e, a, r) => {
+      const x = porAb(a);
+      return x.d.validarAbertura?.(local(x, e), a - x.a, r) ?? null;
+    },
+    evaluar: (e) => dFinal.evaluar(local(ult, e)),
+  };
+  return out;
+}
+
 /* ───────────── Mediatriz: práctica ───────────── */
 
 const MA: Pt = [210, 190];
@@ -707,6 +834,7 @@ const defMediatriz: Def = {
     const t = Math.max(th, 20) + 6;
     return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-t, t] };
   },
+  validarAbertura: (_est, _a, r) => (r <= MAB / 2 + 4 ? "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad de AB. Ábrela más y vuelve a fijarla." : null),
   cortes: (est) => {
     const r = est.radios[0];
     return r !== undefined && r > MAB / 2 + 0.5 ? (interseccionCirculos(MA, r, MB, r) as [Pt, Pt]) : [];
@@ -765,6 +893,11 @@ function defBisectriz(alfa: number): Def {
       if (idx === 0) return [V];
       if (idx === 1) return [P, Q];
       return [dist(est.centros[1], P) < 1 ? Q : P];
+    },
+    validarAbertura: (est, a, r) => {
+      if (a === 0) return null;
+      const [P, Q] = lado(est.radios[0] ?? 90);
+      return r <= dist(P, Q) / 2 + 5 ? "Con esa abertura los arcos desde P y desde Q no llegarían a cortarse: debe ser mayor que la mitad de PQ. Ábrela más y vuelve a fijarla." : null;
     },
     radioLim: (a) => (a === 0 ? [50, 170] : [30, 200]),
     radioIni: (a, est) => {

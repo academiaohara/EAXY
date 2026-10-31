@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const construccionTriangulosDt1Lesson: InteractiveLesson = {
   slug: "construccion-triangulos-dt1",
@@ -8,38 +8,36 @@ export const construccionTriangulosDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[3],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Triángulos", [
+    slide("def", "Triángulos y datos para construirlos", [
       { kind: "steps", items: [
-        "Por sus **lados**: **equilátero** (3 iguales), **isósceles** (2 iguales) y **escaleno** (ninguno igual).",
-        "Por sus **ángulos**: **acutángulo** (3 agudos), **rectángulo** (uno recto) y **obtusángulo** (uno obtuso).",
-        "Los ángulos interiores suman **180°**. El lado mayor se opone al ángulo mayor.",
-        "**Desigualdad triangular**: cada lado es menor que la suma de los otros dos (y mayor que su diferencia).",
+        "Por sus **lados**: **equilátero** (3 iguales), **isósceles** (2 iguales) y **escaleno** (ninguno igual). Por sus **ángulos**: **acutángulo**, **rectángulo** (uno recto) y **obtusángulo** (uno obtuso).",
+        "Los ángulos interiores suman **180°**, el lado mayor se opone al ángulo mayor y cada lado es **menor que la suma** de los otros dos (desigualdad triangular).",
+        "**Tres lados** (LLL): se traza uno y se cortan arcos con los radios de los otros dos. **Dos lados y el ángulo comprendido** (LAL): se traza el ángulo y se llevan los lados sobre sus brazos.",
+        "**Un lado y dos ángulos** (ALA): se traza el lado y desde sus extremos los dos ángulos (si falta uno, se calcula con 180°). Con **tres ángulos** no basta: hay infinitos triángulos **semejantes**.",
+        "**Dos lados y el ángulo opuesto al mayor** (LLA) tiene **una** solución; si es opuesto al menor puede haber **dos, una o ninguna**.",
       ] },
     ], undefined, "stack"),
-    slide("lados", "¿Existe con estos lados?", [
-      { kind: "text", text: "Mueve los tres lados. Observa cuándo el triángulo no se cierra y cómo cambian sus ángulos." },
-    ], tool("dt1-triangulo-datos-explorador"), "visual-top"),
-    slide("datos", "Construcción según los datos", [
-      { kind: "steps", items: [
-        "**Tres lados** (LLL): se traza uno de ellos y se cortan arcos con los radios de los otros dos.",
-        "**Dos lados y el ángulo comprendido** (LAL): se traza el ángulo y se llevan los lados sobre sus brazos.",
-        "**Un lado y dos ángulos** (ALA): se traza el lado y desde sus extremos los dos ángulos (si falta uno, se calcula con 180°).",
-        "**Dos lados y el ángulo opuesto al mayor** (LLA): tiene **una** solución; si es opuesto al menor puede haber **dos, una o ninguna**.",
-        "Con **tres ángulos** no se determina el triángulo: hay infinitos **semejantes**.",
-      ] },
-    ]),
-    calc("calc-ex", "Un lado imposible", "Dos lados de un triángulo miden 5 cm y 7 cm. ¿Cuál es la mayor longitud entera posible para el tercer lado, en cm?", nums(11), "Debe ser menor que 12; el mayor entero es 11 cm.", "Menor que la suma."),
-    calc("calc-ang", "Ángulo mayor", "Un triángulo de lados 3, 4 y 6 cm. ¿Cuántos grados mide, redondeado a una cifra decimal, el ángulo opuesto al lado de 6? (coseno = (9 + 16 − 36)/24)", nums(117.3), "cos θ = −11/24 = −0,4583 → θ ≈ 117,3° (obtusángulo).", "Teorema del coseno."),
-    calc("calc-180", "El tercer ángulo", "Un triángulo tiene ángulos de 48° y 67°. ¿Cuánto mide el tercero, en grados?", nums(65), "180 − 48 − 67 = 65°.", "Suma 180°."),
-    sort("clasifica-datos", "¿Cómo se construye?", "Clasifica cada conjunto de datos según el caso.",
-      [["lll", "Tres lados (LLL)", "cobalt"], ["lal", "Dos lados y el ángulo comprendido (LAL)", "amber"], ["ala", "Lado y dos ángulos (ALA)", "emerald"]],
-      [["a = 5, b = 6, c = 7", "lll"], ["Los tres lados de una cercha", "lll"], ["a = 4, b = 5, ángulo C = 60°", "lal"], ["Dos varillas y el ángulo que forman", "lal"], ["c = 6, A = 40°, B = 70°", "ala"], ["Un lado y los ángulos de sus extremos", "ala"]],
-      "El caso decide el orden de trazado.",
-    ),
-    pick("check-3ang", "Tres ángulos", "¿Qué ocurre si se conocen solo los tres ángulos de un triángulo?",
-      "Hay infinitos triángulos semejantes: falta conocer al menos un lado",
-      [["Hay un único triángulo", "Falta una longitud."], ["No existe ninguno", "Existen, y son semejantes."], ["Hay exactamente dos", "Hay infinitos."]],
-      "Los ángulos fijan la forma, no el tamaño.",
-    ),
+
+    slide("lll", "Construcción con los tres lados", [], bench("triangulo-lll-compas", [
+      { title: "Los tres lados", text: "Tienes tres segmentos: $a = 13$ cm, $b = 15$ cm y $c = 20$ cm. Existe el triángulo porque **cada lado es menor que la suma de los otros dos**.", fact: "20 < 13 + 15" },
+      { title: "Traza uno de ellos", text: "Con la regla traza el lado mayor $c$ como base $AB$.", fact: "AB = c" },
+      { title: "Arco de radio b desde A", text: "Toma $b$ con el compás, clava la punta en $A$ y traza un arco: $C$ está a distancia $b$ de $A$.", fact: "AC = b" },
+      { title: "Arco de radio a desde B", text: "Con la medida $a$ y la punta en $B$, traza otro arco: $C$ está a distancia $a$ de $B$. Donde se cortan los arcos está $C$.", fact: "BC = a" },
+      { title: "Une los puntos", text: "Une $C$ con $A$ y con $B$. El triángulo $ABC$ tiene los tres lados dados.", fact: "Tres lados: LLL" },
+    ]), "stack"),
+
+    benchTask("triangulo-lll-construye", "Construye el triángulo", "triangulo-lll-practica", [
+      { title: "Toma la medida b", text: "Toca los dos extremos del segmento $b$: el compás queda con esa abertura.", fact: "Abertura = b" },
+      { title: "Clava la punta en A", text: "Toca el vértice $A$ de la base." },
+      { title: "Arco desde A", text: "Arrastra la mina para trazar el arco por la zona donde estará $C$." },
+      { title: "Toma la medida a", text: "Toca los dos extremos del segmento $a$.", fact: "Abertura = a" },
+      { title: "Clava la punta en B", text: "Toca el vértice $B$." },
+      { title: "Arco desde B", text: "Traza el arco que corta al anterior: ahí está $C$." },
+      { title: "Une C con A y con B", text: "Toca los extremos de cada lado: $C$ y $A$, y después $C$ y $B$.", fact: "El lado AB ya está dibujado" },
+    ], {
+      question: "Construye el triángulo ABC conociendo AB = 20 cm, AC = 15 cm y BC = 13 cm.",
+      hint: "Toma cada lado con el compás y traza los arcos desde A y desde B; C es donde se cortan.",
+      explanation: "C está a 15 cm de A y a 13 cm de B, así que es uno de los dos puntos donde se cortan los arcos de esos radios.",
+    }),
   ],
 };

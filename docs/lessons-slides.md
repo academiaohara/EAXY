@@ -60,10 +60,8 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 ```
 
 - **Maquetación**: el dibujo va a la izquierda y la información a la derecha, **sin marco y sin scroll**: la escena ocupa todo el alto del escenario (el SVG se escala para caber). El texto va arriba y los botones Anterior / Siguiente (con los puntos) van **siempre abajo del todo**, en la misma posición. Cada paso cambia el dibujo y el texto. Con `blocks: []` y `arrange: "stack"` la diapositiva es solo la mesa; todo el contenido sale de `notes` (un `{ title, text, fact? }` por paso; `text` admite `**negrita**` y `$LaTeX$`, no cursiva con `*`).
-- **Práctica en vez de preguntas**: en dibujo técnico se prefieren ejercicios con los instrumentos antes que tests, clasificaciones o cálculos teóricos. Un ejercicio es un paso `bench_task` (helper `benchTask(...)` en `tec1-helpers.ts`): recorre los pasos guiados de la escena y, en el **último paso**, el alumno resuelve la tarea. La comprobación va en el **botón «Comprobar» del centro del pie de la lección** (siempre presente, desactivado hasta el último paso); al pulsarlo el pie se ilumina en **verde** (acierto) o **naranja** (fallo, con «Reintentar»), igual que en las lecciones de mates. La escena muestra el resultado bajo el texto del paso y, si acierta, dibuja la construcción. No se repite el mismo ejercicio con otros datos: cada tarea es una aplicación distinta.
-- Una escena se hace comprobable con `useBenchCheck({ ready, evaluate })` (`practice.tsx`); `BenchTaskStepView` le da el contexto (`BenchPracticeContext`). Sin ese contexto (diapositiva suelta con `bench(...)`) la escena no registra «Comprobar».
-- **Escenas animadas** (`mediatriz-compas`, `bisectriz-compas`): cada paso reproduce el gesto (`useProgreso(paso, ms)` da un progreso 0→1 que se reinicia al cambiar de paso; el compás se coloca con `poseCompas` en cada instante y el arco se dibuja hasta donde llega la mina; `ReglaTrazando` hace entrar la regla, trazar la recta y retirarse). Con «reducir movimiento» (o sin `matchMedia`, como en los tests) saltan al estado final.
-- **Práctica por fases** (`Practica` en `scenes-compas.tsx`): una secuencia de fases `centro` (tocar un punto), `abertura` (arrastrar la mina + «Fijar abertura»), `angulo` (arrastrar el segundo lado sobre un transportador hasta el valor pedido; confirma al soltar o con las flechas), `medida` (tocar dos puntos: punta en uno y mina en el otro; fija la abertura a esa distancia), `arco` (arrastrar; avanza solo al cubrir el tramo exigido) y `regla` (tocar dos puntos, con ajuste a los cortes; con `nClics: 1` se marca un solo punto). Cada escena se define con un objeto `Def` (fases, candidatos, límites, requisitos del arco, evaluación). Los botones Anterior / Siguiente se sustituyen por «Deshacer» y el «Comprobar» del pie valida la construcción.
+- **Práctica guiada en vez de preguntas**: en dibujo técnico se prefieren ejercicios con los instrumentos antes que tests, clasificaciones o cálculos teóricos. Un ejercicio es un paso `bench_task` (helper `benchTask(...)` en `tec1-helpers.ts`): recorre los pasos de la escena y **solo acepta acciones válidas**; no hay botón «Comprobar» ni respuestas incorrectas que corregir después. Si el alumno hace algo que no sirve (tocar un punto equivocado, una abertura que no corta, soltar el ángulo en otro valor) la escena avisa, no lo registra y le deja elegir otra vez. Al completar la construcción, el ejercicio se **da por superado solo**: el pie de la lección se ilumina en verde con «Correcto» y el botón para continuar. No se repite el mismo ejercicio con otros datos y **no hay ejercicios de «pinchar a ojo»** sobre una cuadrícula.
+- Una escena declara que se ha superado con `finalizar()` (`useBenchCheck()` en `practice.tsx`); `BenchTaskStepView` le da el contexto (`BenchPracticeContext`). Sin ese contexto (diapositiva suelta con `bench(...)`) la escena no registra nada.
 - No se regala la respuesta: en el paso práctico no hay lecturas ni distancias en pantalla (el alumno lee los instrumentos).
 - El número de pasos de cada escena está en `BENCH_STEPS` (`scenes.tsx`); el test de DT I comprueba que `notes` tenga exactamente ese número.
 - Código: `src/components/lesson/bench/` — `geometry.ts` (funciones puras, `bench-geometry.test.ts`), `instruments.tsx` (`Regla`, `Escuadra`, `Cartabon`, `Transportador` con doble escala, `Compas`, `poseCompas`, `Lapiz`, `Desk`, `BenchDefs`), `scenes.tsx` y `scenes-trazados.tsx` (`BenchShell` y escenas) y `scenes-compas.tsx` (animaciones y práctica con compás y regla) y `SlideBench.tsx` (registro). Tests de interacción en `bench-scenes.test.tsx`.
@@ -85,17 +83,12 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `trasladar-practica` | 9 fases | **Práctica** de copiar el ángulo con compás y regla; incluye la fase `medida` (tocar `P` y `Q` para tomar `PQ`). La regla debe pasar por `V′` y `Q′` | `a` ángulo (25…110°) |
 | `traslacion-compas` | 5 | **Explicación animada** de la traslación por el método del paralelogramo (solo compás): el vector `AA′`, su medida con el compás, arco de radio `AA′` desde `B`, arco de radio `AB` desde `A′` que corta en `B′`, y el triángulo `A′B′C′` con los vectores `BB′` y `CC′` | — |
 | `traslacion-practica` | 7 fases | **Práctica** del mismo método para el punto `B` (dos medidas, dos arcos y marcar `B′`; la fase final usa `nClics: 1`) | — |
-| `traslacion-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` en las intersecciones al trasladar un triángulo según un vector (`dx` cuadros a la derecha, `dy` arriba). Comprueba cada vértice y dibuja la figura trasladada | `a` = dx (3…14), `b` = dy (−3…5, positivo hacia arriba) |
 | `giro-compas` | 5 | **Explicación animada** del giro: centro `O` y ángulo, el transportador alineado con `OA` marca el segundo lado, el compás con radio `OA` traza el arco hasta `A′`, se repite con `B` y `C` y aparece la figura girada con `OA = OA′` | `a` ángulo (30…120°) |
 | `giro-practica` | 5 fases | **Práctica** de girar el punto `A`: `angulo` (arrastrar el segundo lado hasta marcar el ángulo en el transportador), `medida` `OA`, punta en `O`, arco y marcar `A′` | `a` ángulo (30…120°) |
-| `giro-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al girar el triángulo alrededor de `O` (90°, 180° o 270° antihorario) | `a` ángulo (90, 180, 270) |
 | `simetria-compas` | 5 | **Explicación animada** de la simetría axial con compás: dos puntos `P` y `Q` del eje, arco de radio `PA` desde `P`, arco de radio `QA` desde `Q` (se cortan en `A` y `A′`) y la figura simétrica con `AA′ ⟂ e` | — |
 | `simetria-practica` | 7 fases | **Práctica**: hallar `A′` con dos medidas, dos arcos y marcar el corte que no es `A` | — |
-| `simetria-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al reflejar el triángulo respecto de un eje vertical (`a = 0`) o diagonal (`a = 1`) | `a` = 0 o 1 |
 | `homotecia-compas` | 5 | **Explicación animada** de la homotecia de razón 2: rectas desde `O`, medida `OA`, arco de radio `OA` centrado en `A` que corta a la recta `OA` en `A′` (`OA′ = 2·OA`), y el triángulo ampliado con lados paralelos | — |
 | `homotecia-practica` | 4 fases | **Práctica**: hallar `A′` (medida `OA`, punta en `A`, arco, marcar el corte que no es `O`) | — |
-| `homotecia-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al aplicar una homotecia de centro `O` y razón `k` (las rectas desde `O` se dibujan como guía) | `a` = k (2, 3, −1, −2) |
-| `union-imagen` | 1 paso (tres pasadas) | **Unir los puntos**: la regla pasa por `A′B′`, `B′C′` y `C′A′` (tocar dos extremos cada vez, con progreso «Lados trazados: n de 3»). `a` elige la transformación: 0 traslación, 1 giro, 2 simetría, 3 homotecia. Usa `nClics: 6`, `extRegla: 0` y `progreso` del motor | `a` (0…3) |
 | `thales-dividir` | 7 | **Explicación animada** de dividir `AB` en tres partes iguales con Thales: tres marcas con la misma abertura sobre una semirrecta, unión de la tercera con `B` y paralelas por las marcas 1 y 2 | — |
 | `thales-practica` | 8 fases | **Práctica** de las tres marcas iguales (abertura libre entre 40 y 100, punta en `A` y en cada marca) y unión de la tercera con `B` | — |
 | `thales-paralelas` | 1 paso | Marcar los puntos de `AB` por los que cortan las paralelas (un tercio y dos tercios; `sinRegla`) | — |
@@ -103,6 +96,10 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `aurea-compas` / `aurea-practica` | 5 / 7 fases | **Sección áurea** con regla y compás: `BC = AB/2`, arco de radio `CB` hasta `D`, arco de radio `AD` hasta `E` | — |
 | `equivalencia-triangulos` | 4 | Triángulos de igual base y altura (el vértice recorre la paralela) y rectángulo de mitad de altura | — |
 | `cuadratura-compas` / `cuadratura-practica` | 5 / 7 fases | **Cuadratura de un rectángulo**: altura sobre la prolongación de la base, semicircunferencia y perpendicular por `B` | — |
+| `puntos-notables` | 5 | Medianas, bisectrices, mediatrices y alturas de un triángulo: baricentro, incentro (con la circunferencia inscrita), circuncentro (con la circunscrita), ortocentro y recta de Euler | — |
+| `circuncentro-practica` | 11 fases | **Circuncentro**: mediatrices de `AB` y de `AC` con el compás (abertura validada) y la regla por los dos cortes de cada una | — |
+| `triangulo-lll-compas` / `triangulo-lll-practica` | 5 / 7 fases | **Triángulo dados los tres lados**: se toma cada lado de su segmento, arcos desde `A` y `B` y unión de `C` | — |
+| `hexagono-compas` / `hexagono-practica` | 5 / 17 fases | **Hexágono inscrito**: el radio llevado seis veces sobre la circunferencia (cada arco se corta con la circunferencia y se marca el vértice) y unión de los seis lados | — |
 | `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
@@ -624,7 +621,6 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
-| `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
 | `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
 | `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
@@ -1373,11 +1369,8 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
 | `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
 | `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
-| `dt1-puntos-notables-explorador` | Baricentro, incentro, circuncentro y ortocentro de un triángulo | `n` punto resaltado (0–3) |
-| `dt1-triangulo-datos-explorador` | Existencia, ángulos y clasificación de un triángulo según sus lados | `a`, `b`, `c` (cm) |
 | `dt1-cuadrilatero-explorador` | Tipo, diagonales y área de un paralelogramo | `a`, `b` lados (cm) |
 | `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
-| `dt1-metodo-general-explorador` | Método general de inscripción de polígonos: lado aproximado y error | `n` lados |
 | `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
 | `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
 | `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |
@@ -1673,9 +1666,7 @@ Los pasos de práctica (`predict`, `fill_in_blank`…) aceptan `help: HelpBranch
 
 ### Patrón de las lecciones de transformaciones (tema 5 de DT I)
 
-Cada transformación se enseña vértice a vértice, sin saltarse pasos «porque es igual que el anterior»:
+Cada transformación es **un único recorrido guiado**, sin saltarse pasos «porque es igual que el anterior»:
 
 1. **Explicación animada** (`*-compas`): muestra el método con el primer vértice y la figura completa al final.
-2. **Un paso práctico por vértice** (`*-practica` con `params.b` = índice del vértice): cada uno lleva su «Comprobar» y deja a la vista los puntos ya obtenidos.
-3. **«Une los puntos»** (`union-imagen`): tres pasadas de la regla para cerrar el triángulo imagen.
-4. **Ejercicio en papel cuadriculado** (`*-cuadricula`) como aplicación libre.
+2. **Ejercicio seguido** (`*-practica`): se construye la imagen de **cada vértice** (A, B y C, o B y C en la traslación) paso a paso y, al final, la regla **une A′, B′ y C′** en tres pasadas (solo se pueden tocar los tres vértices nuevos y no se repite un lado). Se construye con `secuenciar(...)`, que encadena las definiciones de un vértice (`defGiro(th, v)`, `defSimetria(v)`…) y la unión (`defUnir`) en un solo `Def`. Al terminar sale el «Correcto» y el botón para continuar.

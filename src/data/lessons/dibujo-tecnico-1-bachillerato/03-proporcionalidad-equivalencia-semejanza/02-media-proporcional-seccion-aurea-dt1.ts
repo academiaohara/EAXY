@@ -20,7 +20,7 @@ export const mediaProporcionalSeccionAureaDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida OB", text: "Toca $O$ para clavar la punta y $B$ para colocar la mina: el compás queda con el radio de la semicircunferencia.", fact: "Abertura = OB" },
       { title: "Clava la punta en O", text: "Toca el punto medio $O$ del segmento." },
       { title: "Traza la semicircunferencia", text: "Arrastra la mina para trazar el arco **desde $B$ hasta $A$**, por encima del segmento." },
-      { title: "Perpendicular por H", text: "Toca **dos puntos**: $H$ y el punto de la semicircunferencia que está justo encima. La regla trazará la altura. Después pulsa **Comprobar**." },
+      { title: "Perpendicular por H", text: "Toca **dos puntos**: $H$ y el punto de la semicircunferencia que está justo encima. La regla trazará la altura." },
     ], {
       question: "Traza la media proporcional de a y b con la semicircunferencia de diámetro AB y la perpendicular por H.",
       hint: "La perpendicular pasa por H y corta a la semicircunferencia.",
@@ -42,7 +42,7 @@ export const mediaProporcionalSeccionAureaDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida AD", text: "Toca $A$ y luego $D$ para tomar la distancia $AD$.", fact: "Abertura = AD" },
       { title: "Clava la punta en A", text: "Toca el vértice $A$." },
       { title: "Corta el segmento", text: "Arrastra la mina para trazar un arco que **corte a $AB$**." },
-      { title: "Marca E", text: "Toca el punto donde el arco corta a $AB$: es $E$. Después pulsa **Comprobar**." },
+      { title: "Marca E", text: "Toca el punto donde el arco corta a $AB$: es $E$." },
     ], {
       question: "Divide el segmento AB en media y extrema razón (sección áurea) con regla y compás.",
       hint: "Arco de centro C y radio CB hasta AC; arco de centro A y radio AD hasta AB.",

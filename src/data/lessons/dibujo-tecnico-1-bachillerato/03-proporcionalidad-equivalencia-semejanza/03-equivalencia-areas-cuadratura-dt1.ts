@@ -30,7 +30,7 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida OH", text: "Ahora toca $O$ (el punto medio de $AH$) y luego $H$ para tomar el radio de la semicircunferencia.", fact: "Abertura = OH" },
       { title: "Clava la punta en O", text: "Toca el punto $O$." },
       { title: "Traza la semicircunferencia", text: "Arrastra la mina para trazar el arco **desde $H$ hasta $A$**, por encima de la base." },
-      { title: "Perpendicular por B", text: "Toca **dos puntos**: $B$ y el punto de la semicircunferencia que está justo encima. La regla marca el lado del cuadrado. Después pulsa **Comprobar**." },
+      { title: "Perpendicular por B", text: "Toca **dos puntos**: $B$ y el punto de la semicircunferencia que está justo encima. La regla marca el lado del cuadrado." },
     ], {
       question: "Halla el lado del cuadrado de igual área que el rectángulo ABCD con compás y regla.",
       hint: "Lleva la altura sobre la prolongación de la base, traza la semicircunferencia de diámetro AH y levanta la perpendicular por B.",

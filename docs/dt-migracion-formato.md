@@ -17,7 +17,7 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 
 1. **Nada se borra hasta que su sustituto está publicado.** Cada lección reescrita conserva `slug` e `id` para no perder el progreso de nadie.
 2. **Se conserva el contenido, no el formato.** Definiciones, reglas y notas de las diapositivas antiguas pasan a ser el texto (`notes`) de los pasos de la escena nueva.
-3. **Se eliminan** los `calc`, `pick` y `sort` teóricos, los storyboards y los talleres antiguos. La práctica es el propio ejercicio (construir, medir, marcar) con «Comprobar» en el pie.
+3. **Se eliminan** los `calc`, `pick` y `sort` teóricos, los storyboards y los talleres antiguos. La práctica es el propio ejercicio (construir, medir, marcar) con práctica guiada (solo se aceptan acciones válidas y al terminar sale el «Correcto» solo).
 4. **Un tema = una PR**, para poder revisar y corregir sobre un tema completo.
 5. **Cobertura curricular intacta:** al reescribir cada tema se contrasta de nuevo con los criterios y saberes del RD 243/2022 (DT I y DT II) y, en DT I, con la comparación frente al libro de Editorial Donostiarra.
 
@@ -32,9 +32,10 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 ## Decisiones tomadas
 
 - **Orden:** el propuesto arriba (confirmado).
-- **Formato de los sistemas de representación:** la misma «mesa de dibujo» (`bench`) del tema 1: escenas SVG realistas con pasos dentro de la diapositiva, animación de la explicación y práctica paso a paso con «Comprobar» en el pie. No habrá modelo 3D interactivo. Se crearán las escenas nuevas que haga falta (planos de proyección, sólidos proyectados sobre la hoja…) reutilizando el motor de práctica.
+- **Formato de los sistemas de representación:** la misma «mesa de dibujo» (`bench`) del tema 1: escenas SVG realistas con pasos dentro de la diapositiva, animación de la explicación y práctica paso a paso con práctica guiada (solo se aceptan acciones válidas y al terminar sale el «Correcto» solo). No habrá modelo 3D interactivo. Se crearán las escenas nuevas que haga falta (planos de proyección, sólidos proyectados sobre la hoja…) reutilizando el motor de práctica.
 - **Código antiguo:** cuando un tema esté migrado, se retiran las herramientas, animaciones y talleres antiguos que ya no use ninguna lección (con sus tests).
 
 ## Código antiguo retirado
 
 - Tema 3 (proporcionalidad, equivalencia y semejanza): herramientas `dt1-thales-explorador`, `dt1-media-proporcional-explorador`, `dt1-equivalencia-explorador` y `dt1-homotecia-explorador`, la animación `dt1-seccion-aurea` y sus helpers de cálculo y tests. La homotecia se trabaja en el tema 5; la lección 4 del tema 3 pasa a centrarse en semejanza y escalas.
+- Tema 4 (triángulos, cuadriláteros y polígonos), migración en curso: ya migradas «Rectas y puntos notables» (explicación + circuncentro con mediatrices), «Construcción de triángulos» (LLL con el compás) y «Construcción de polígonos regulares inscritos» (hexágono). Retiradas las herramientas `dt1-puntos-notables-explorador`, `dt1-triangulo-datos-explorador` y `dt1-metodo-general-explorador`, la animación `dt1-pentagono-euclides` y sus cálculos y tests. **Pendiente:** las lecciones de cuadriláteros, propiedades de polígonos regulares y estrellados siguen con `dt1-cuadrilatero-explorador`, `dt1-poligono-regular-explorador`, `dt1-estrellado-explorador` y con `calc`/`sort`/`pick` teóricos; se migran en el siguiente paso, y entonces se retira lo que quede de `DtPoligonosTools.tsx`.

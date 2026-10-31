@@ -25,7 +25,7 @@ export const trasladarAngulosCompasDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida PQ", text: "Ahora mide la distancia entre $P$ y $Q$: toca $P$ para clavar la punta y $Q$ para colocar la mina.", fact: "Abertura = PQ" },
       { title: "Clava la punta en P'", text: "Toca el punto $P'$ donde el arco corta a la semirrecta." },
       { title: "Corta el arco", text: "Arrastra la mina para trazar un arco que **corte al anterior**: ese corte es el punto $Q'$." },
-      { title: "Pasa la regla", text: "Toca **dos puntos**: el vértice $V'$ y el punto $Q'$ donde se cortan los arcos. La regla trazará el ángulo. Después pulsa **Comprobar**." },
+      { title: "Pasa la regla", text: "Toca **dos puntos**: el vértice $V'$ y el punto $Q'$ donde se cortan los arcos. La regla trazará el ángulo." },
     ], {
       question: "Traslada el ángulo de vértice V a la semirrecta de origen V' con compás y regla.",
       hint: "Haz el mismo arco en V y en V', toma la distancia PQ y córtala desde P' para encontrar Q'.",
