@@ -267,6 +267,7 @@ import { conicasGenerales1bachLesson } from "@/data/lessons/matematicas-1-bachil
 import { conicasSeccionesConoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/01-conicas-secciones-cono-dt2";
 import { conos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/09-conos-2eso";
 import { conservacionEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/03-conservacion-energia-fq2";
+import { conservacionEnergiaMecanicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/04-conservacion-energia-mecanica-fb1";
 import { conservacionEnergiaMecanicaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/02-conservacion-energia-mecanica-fq3";
 import { conservacionEnergiaMecanicaFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/04-conservacion-energia-mecanica-fq4";
 import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/03-conservacion-masa-ajuste-fq2";
@@ -493,6 +494,8 @@ import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/te
 import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/04-energia-cinetica-potencial";
 import { energiaCineticaPotencialFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/02-energia-cinetica-potencial-fq2";
 import { energiaCineticaPotencialFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/02-energia-cinetica-potencial-fq4";
+import { energiaCineticaTeoremaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/02-energia-cinetica-teorema-fb1";
+import { energiaPotencialFuerzasConservativasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/03-energia-potencial-fuerzas-conservativas-fb1";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
 import { energiasRenovablesMix3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/01-energias-renovables-mix-3eso";
@@ -1148,6 +1151,7 @@ import { potenciaParRendimiento3esoLesson } from "@/data/lessons/tecnologia-3-es
 import { potenciaPerdidaCargaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/06-potencia-perdida-carga";
 import { potenciaPuntoCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/01-potencia-punto-circunferencia-dt2";
 import { potenciaRendimientoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/07-potencia-rendimiento";
+import { potenciaRendimientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/05-potencia-rendimiento-fb1";
 import { potenciaRendimientoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/07-potencia-rendimiento-motor";
 import { potenciasActivaReactivaAparenteTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/03-potencias-activa-reactiva-aparente-ti2";
 import { potenciasBase10Lesson } from "@/data/lessons/_unlisted/potencias-base-10";
@@ -1608,6 +1612,7 @@ import { toleranciasAjustes4esoLesson } from "@/data/lessons/tecnologia-4-eso/02
 import { tornilloSinFinCorona3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/02-tornillo-sin-fin-corona-3eso";
 import { torsionEjesTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/07-torsion-ejes-ti2";
 import { trabajoCooperativoEquipoLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/06-trabajo-cooperativo-equipo";
+import { trabajoFuerzaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/01-trabajo-fuerza-fb1";
 import { trabajoFuerzaVariableLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/03-trabajo-fuerza-variable";
 import { trabajoPlanoInclinadoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/02-trabajo-plano-inclinado";
 import { trabajoPotenciaFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/01-trabajo-potencia-fq3";
@@ -1959,6 +1964,7 @@ export const interactiveLessons = {
   "conicas-secciones-cono-dt2": conicasSeccionesConoDt2Lesson,
   "conos-2eso": conos2esoLesson,
   "conservacion-energia-fq2": conservacionEnergiaFq2Lesson,
+  "conservacion-energia-mecanica-fb1": conservacionEnergiaMecanicaFb1Lesson,
   "conservacion-energia-mecanica-fq3": conservacionEnergiaMecanicaFq3Lesson,
   "conservacion-energia-mecanica-fq4": conservacionEnergiaMecanicaFq4Lesson,
   "conservacion-masa-ajuste-fq2": conservacionMasaAjusteFq2Lesson,
@@ -2185,6 +2191,8 @@ export const interactiveLessons = {
   "energia-cinetica-potencial": energiaCineticaPotencialLesson,
   "energia-cinetica-potencial-fq2": energiaCineticaPotencialFq2Lesson,
   "energia-cinetica-potencial-fq4": energiaCineticaPotencialFq4Lesson,
+  "energia-cinetica-teorema-fb1": energiaCineticaTeoremaFb1Lesson,
+  "energia-potencial-fuerzas-conservativas-fb1": energiaPotencialFuerzasConservativasFb1Lesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
   "energias-renovables-mix-3eso": energiasRenovablesMix3esoLesson,
@@ -2840,6 +2848,7 @@ export const interactiveLessons = {
   "potencia-perdida-carga": potenciaPerdidaCargaLesson,
   "potencia-punto-circunferencia-dt2": potenciaPuntoCircunferenciaDt2Lesson,
   "potencia-rendimiento": potenciaRendimientoLesson,
+  "potencia-rendimiento-fb1": potenciaRendimientoFb1Lesson,
   "potencia-rendimiento-motor": potenciaRendimientoMotorLesson,
   "potencias-activa-reactiva-aparente-ti2": potenciasActivaReactivaAparenteTi2Lesson,
   "potencias-base-10": potenciasBase10Lesson,
@@ -3300,6 +3309,7 @@ export const interactiveLessons = {
   "tornillo-sin-fin-corona-3eso": tornilloSinFinCorona3esoLesson,
   "torsion-ejes-ti2": torsionEjesTi2Lesson,
   "trabajo-cooperativo-equipo": trabajoCooperativoEquipoLesson,
+  "trabajo-fuerza-fb1": trabajoFuerzaFb1Lesson,
   "trabajo-fuerza-variable": trabajoFuerzaVariableLesson,
   "trabajo-plano-inclinado": trabajoPlanoInclinadoLesson,
   "trabajo-potencia-fq3": trabajoPotenciaFq3Lesson,

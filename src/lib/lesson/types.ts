@@ -1130,6 +1130,7 @@ export type SlideAnimId =
   | "fb1-cadenas-carbono"
   | "fb1-parabolico"
   | "fb1-plano"
+  | "fb1-conservacion"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2234,6 +2235,11 @@ export type SlideToolId =
   | "fb1-poleas-explorador"
   | "fb1-muelle-explorador"
   | "fb1-choque-explorador"
+  | "fb1-trabajo-explorador"
+  | "fb1-teorema-ec-explorador"
+  | "fb1-rampa-energia-explorador"
+  | "fb1-muelle-energia-explorador"
+  | "fb1-potencia-rendimiento-explorador"
   /* industrial-tool-end */;
 
 /**

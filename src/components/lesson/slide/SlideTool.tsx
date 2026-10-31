@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { TrabajoFb1Explorador, TeoremaEnergiaCineticaFb1Explorador, RampaEnergiaFb1Explorador, MuelleEnergiaFb1Explorador, PotenciaRendimientoFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnergiaTools";
 import { FuerzasResultanteFb1Explorador, PlanoInclinadoFb1Explorador, PoleasFb1Explorador, MuelleFb1Explorador, ChoqueFb1Explorador } from "@/components/lesson/slide/tools/Fb1DinamicaTools";
 import { VectoresCinFb1Explorador, GraficasMruaFb1Explorador, ParabolicoFb1Explorador, CircularFb1Explorador, BarcaRioFb1Explorador } from "@/components/lesson/slide/tools/Fb1CinematicaTools";
 import { RamificadosFb1Explorador, GruposFb1Explorador, IsomeriaFb1Explorador, ReaccionesOrganicasFb1Explorador } from "@/components/lesson/slide/tools/Fb1OrganicaTools";
@@ -2474,6 +2475,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MuelleFb1Explorador block={block} />;
     case "fb1-choque-explorador":
       return <ChoqueFb1Explorador block={block} />;
+    case "fb1-trabajo-explorador":
+      return <TrabajoFb1Explorador block={block} />;
+    case "fb1-teorema-ec-explorador":
+      return <TeoremaEnergiaCineticaFb1Explorador block={block} />;
+    case "fb1-rampa-energia-explorador":
+      return <RampaEnergiaFb1Explorador block={block} />;
+    case "fb1-muelle-energia-explorador":
+      return <MuelleEnergiaFb1Explorador block={block} />;
+    case "fb1-potencia-rendimiento-explorador":
+      return <PotenciaRendimientoFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

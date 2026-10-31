@@ -606,6 +606,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-cadenas-carbono` | Cadenas del carbono: lineal, ramificada, cíclica y aromática | — |
 | `fb1-parabolico` | Tiro parabólico: MRU horizontal + MRUA vertical | — |
 | `fb1-plano` | Plano inclinado: peso descompuesto, normal y rozamiento | — |
+| `fb1-conservacion` | Conservación de la energía mecánica en una rampa, con y sin rozamiento | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1584,6 +1585,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-poleas-explorador` | Máquina de Atwood y mesa con cuerpo colgante | a (m₁), b (m₂), c (μ) |
 | `fb1-muelle-explorador` | Ley de Hooke, muelles en serie/paralelo, energía y periodo | a (k₁), b (k₂), c (masa) |
 | `fb1-choque-explorador` | Choques unidimensionales con coeficiente de restitución | a (m₁), b (v₁), c (m₂) |
+| `fb1-trabajo-explorador` | Trabajo de F, rozamiento y neto al arrastrar un bloque | a (F), b (α), c (d) |
+| `fb1-teorema-ec-explorador` | Teorema trabajo-energía cinética y distancia de frenado | a (masa), b (v₀), c (F neta) |
+| `fb1-rampa-energia-explorador` | Ep, Ec y calor en una rampa con rozamiento | a (masa), b (h₀), c (ángulo) |
+| `fb1-muelle-energia-explorador` | Muelle comprimido que lanza un cuerpo | a (k), b (x), c (masa) |
+| `fb1-potencia-rendimiento-explorador` | Potencia, rendimiento y coste en kWh al elevar una carga | a (masa), b (altura), c (tiempo) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
