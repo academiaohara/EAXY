@@ -4,6 +4,8 @@ Plan técnico de Eaxy — plataforma de aprendizaje adaptativo de matemáticas.
 
 ## Índice
 
+Para crear o revisar lecciones: empezar por el [estándar de diseño y aceptación](./lesson-quality-standard.md) y la [ficha de diseño](./templates/lesson-design.md). Después consultar los catálogos técnicos de [diapositivas](./lessons-slides.md), [escenarios](./lessons-stage.md) y el [procedimiento de revisión](./revision-tema.md).
+
 | Documento                                    | Contenido                                      |
 | -------------------------------------------- | ---------------------------------------------- |
 | [product.md](./product.md)                   | Visión, modos de uso, personas, principios     |

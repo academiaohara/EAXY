@@ -10,7 +10,7 @@ globs:
 
 Al añadir o pedir imágenes para escenarios stage:
 
-- **Estilo:** dibujo 1.º ESO (libro de texto), no foto. Referencia: `public/lesson/mul-div-naturales/ticket.png`.
-- **Formato:** PNG fondo transparente; sin marcas; sin cifras del ejercicio en el dibujo (totales en UI).
+- **Estilo:** escoger según la tarea y la edad, conforme a `docs/lesson-quality-standard.md`. Documentos e interfaces deben ser fieles y legibles; fotografías, modelos o ilustraciones son válidos cuando aportan comprensión. El dibujo de libro de 1.º ESO se aplica solo a los recursos de esa familia (referencia: `public/lesson/mul-div-naturales/ticket.png`).
+- **Formato:** objetos recortados en PNG transparente; documentos y escenas pueden tener fondo propio. Mantener medidas y cifras variables en UI accesible y verificable; no generarlas como texto incrustado impreciso.
 - **Rutas:** entrega en `Assets/` → copiar a `public/lesson/<carpeta>/` → cablear en `ASSETS` del módulo.
 - **Prompts, tamaños y tabla mul-div:** `docs/lesson-illustrations.md` (leer antes de generar o integrar PNG).

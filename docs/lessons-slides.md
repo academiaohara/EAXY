@@ -1,6 +1,6 @@
 # Diapositivas de lección (`slide`) y animaciones tipo Manim
 
-Formato declarativo para **teoría nueva**: título + bloques de texto con forma propia + un elemento visual (animación o ilustración). Se escribe solo con datos; no hace falta un componente por lección.
+Catálogo técnico de una de las opciones disponibles: título, bloques de texto y visual. Antes de elegirla, aplicar el [estándar de diseño de lecciones](./lesson-quality-standard.md). La teoría también puede enseñarse con documentos, simulaciones, manipulables y otras composiciones; Manim no es un formato universal.
 
 ```ts
 {
@@ -22,10 +22,10 @@ Formato declarativo para **teoría nueva**: título + bloques de texto con forma
 
 - **Se habla a un adolescente de 12–17 años, no a un niño.** Sin «¡genial!», sin preguntas retóricas de relleno, sin repetir lo mismo con otras palabras.
 - Una idea por diapositiva. Si hay que explicarla de dos formas, **cada forma en un bloque distinto** (`definition` + `example`, `compare`, `rule`…), no en dos párrafos.
-- Primero lo que importa (definición/regla), luego el caso concreto, luego el matiz o error típico (`warning`).
+- Ordenar según la necesidad: situación y predicción, ejemplo concreto, explicación o regla y aplicación. Evitar una secuencia rígida que revele toda solución antes de dejar pensar.
 - Contextos reales (precios, recibos, listas de espera, mapas…) mejor que «Juan tiene 5 manzanas».
-- Cuando haya un **proceso** (canjear, redondear, repartir, reescribir una expresión) → animación. Cuando sea una **definición** → bloque de texto; no se anima por animar.
-- Cada diapositiva con preguntas debajo: tras 2–3 diapositivas de teoría, un `predict` con una decisión matemática con contexto (≥ 40 caracteres de enunciado, opciones con `incorrectFeedback` que explican el error típico).
+- Para procesos, valorar animación, simulación o ejecución por el alumno según qué haga comprensible la transformación. Las definiciones pueden surgir de observar y contrastar casos.
+- Alternar explicación con acción significativa. `predict` y `classify` sirven como comprobaciones puntuales; la práctica principal debe permitir aplicar el concepto sobre el objeto o documento. Ver criterios y excepciones en el estándar.
 
 ## Bloques (`blocks`)
 
@@ -604,13 +604,13 @@ El lienzo estándar es 800 × 420, pensado para la columna derecha. Si la escena
 
 ## Herramienta interactiva en la diapositiva
 
-Al preparar una lección nueva, plantéate si un concepto se entiende mejor **tocándolo**: una herramienta que muestra lo que se enseña y deja al alumno **cambiar los valores** para ver cómo responde el resultado. Es opcional; no se añade por sistema.
+Al preparar una lección, diseñar qué hará el alumno y elegir el manipulable si esa acción permite aprender. No se exige un deslizador por pantalla; sí práctica principal adecuada al objetivo, feedback y transferencia según el [estándar](./lesson-quality-standard.md). Una herramienta puede ser el centro de la explicación y de la práctica.
 
 - **Cuándo sí:** el concepto depende de parámetros y ver el efecto de moverlos aclara la idea (p. ej. un área al variar base y altura, una fracción al cambiar numerador y denominador, un salto en la recta al cambiar el signo, una escala, una proporción).
-- **Cuándo no:** definiciones, convenios y reglas sin variación que explorar; un proceso paso a paso, que ya cubre una `anim`.
+- **Cuándo no:** cuando cambiar controles no aporta evidencia al objetivo. Un proceso puede aprenderse ejecutándolo en una simulación o siguiéndolo en una animación; elegir por lo que necesite hacer el alumno.
 - **Diseño:** un único conjunto pequeño de controles (1–3), valores acotados para que nunca salga algo absurdo, el resultado visible junto a los controles (cifra, dibujo o ambos), valor inicial con sentido y botón de reiniciar. Sin bloquear: siempre se puede **Continuar**.
-- **Texto:** una línea que diga qué probar («Mueve la base y observa qué pasa con el área»), sin tono infantil.
-- **Estilo:** tema `board` y paleta de `anim/palette.ts`; solo escritorio (≥ 768 px).
+- **Texto:** un reto concreto y una observación que contrastar («Duplica la base sin cambiar la altura: predice el área y compruébala»), con ayuda si hace falta.
+- **Estilo:** las herramientas de este catálogo usan `board` y `anim/palette.ts`; otras experiencias pueden necesitar documentos e interfaces con otra presentación. Solo escritorio (≥ 768 px).
 - **Relación con el resto:** la `anim` muestra un proceso fijo; la herramienta interactiva deja explorar. Si lo que se pide es una decisión evaluable, va en `predict` / `explore` / `interactive_tool`, no aquí.
 - **Estado técnico:** `SlideStep.visual` admite `anim`, `figure` y `tool` (`{ kind: "tool", tool, params?, hint? }`). Las herramientas viven en `src/components/lesson/slide/SlideTool.tsx` y se registran en `SlideToolId` (`src/lib/lesson/types.ts`); su test (`slide-tool.test.tsx`) monta cada una con valores extremos. Añadir una nueva = id en `SlideToolId` + caso en `SlideTool` + test.
 

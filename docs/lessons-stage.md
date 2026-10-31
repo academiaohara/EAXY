@@ -1,6 +1,6 @@
 # Lecciones con escenario (stage)
 
-> **Teoría nueva → diapositivas `slide`** (bloques de texto + animaciones tipo Manim): ver [`lessons-slides.md`](./lessons-slides.md). Este documento cubre los módulos de escenario para actividades interactivas.
+> Elegir el formato por objetivo según el [estándar de lecciones](./lesson-quality-standard.md). Los escenarios también pueden integrar explicación y práctica. [`lessons-slides.md`](./lessons-slides.md) es un catálogo técnico de otra opción disponible.
 
 Las lecciones interactivas pueden declarar un **escenario** con tema visual y pasos que usan **módulos SVG** registrados.
 

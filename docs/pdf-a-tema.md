@@ -3,14 +3,15 @@
 Receta usada para las unidades 1–10 de **Tecnología Industrial II** (curso `tecnologia-industrial-2-bachillerato`). Sirve para cualquier libro troceado en PDF. Ejemplo completo y reciente: unidad 10, módulo `10-sistemas-automaticos`.
 
 ## 0. Antes de empezar
+- Aplicar primero el [estándar de diseño y aceptación](./lesson-quality-standard.md) y preparar la [ficha de diseño](./templates/lesson-design.md). Las cantidades y patrones históricos del ejemplo no son cuotas para nuevos temas.
 - `npm run git:sync-main`; rama de trabajo la que indique la tarea. No crear PR salvo que se pida.
 - Leer `docs/lessons-slides.md` y `node_modules/next/dist/docs/` si se toca Next. Solo escritorio: nada de móvil.
 - Si falta `node_modules`: `npm ci --ignore-scripts`.
 
 ## 1. Leer el PDF y planificar
 - Leer **todas** las páginas (≤20 por lectura). Anotar secciones, definiciones, fórmulas, ejemplos resueltos, autoevaluación y ejercicios.
-- Una lección por sección o grupo de secciones (10–15 lecciones, cada una con ≥5 pasos). Orden del libro.
-- Por unidad, elegir ~6–8 **animaciones** (procesos, curvas, esquemas que se construyen paso a paso) y ~5–9 **herramientas** (manipulables con sliders donde cambiar valores muestre la idea). Solo donde aporten.
+- Repartir los objetivos y prerrequisitos entre lecciones; documentar qué introduce, recupera y reserva cada una. Usar el libro como fuente sin trasladar automáticamente su orden o sus epígrafes a pantallas.
+- Elegir documentos interactivos, simulaciones, manipulables, imágenes o animaciones según lo que el alumno necesite observar y hacer. No fijar cantidades por unidad ni limitarse a los módulos existentes.
 - No copiar errores del libro (cifras que no cuadran, figuras ilegibles): usar el valor correcto y avisar al usuario en la respuesta final. Omitir ejercicios cuyo enunciado depende de una figura no legible.
 
 ## 2. Copiar el PDF
@@ -29,7 +30,7 @@ Receta usada para las unidades 1–10 de **Tecnología Industrial II** (curso `t
 Tipos de paso: `slide` (bloques `text`, `definition`, `rule`, `example` (`lines:{math}`), `warning`, `compare`, `steps` (`items: string[]`), `formula`, `relations`, `facts` (`tex`), `visual` anim/tool), `predict` (`choice` con `incorrectFeedback`+`shuffleChoices`, o `numeric` con `correctAnswers`), `classify`. En `Note`/`hint` de herramientas **no** uses LaTeX (texto plano); en lecciones y captions sí (`$…$`).
 
 ## 4. Estilo didáctico
-Tono para adolescentes, nunca infantil. Cada lección: idea → regla/fórmula → animación o herramienta → 2–4 comprobaciones (mezcla de elección, numérica y clasificar). Ejemplos numéricos del libro como ejercicios con `explanation` que muestre el cálculo. Cada animación: 3–5 beats con caption que explique qué cambia.
+Tono adecuado al curso, sin infantilizar. Partir de una pregunta central y una acción observable: observar, predecir, construir, diagnosticar, experimentar o producir. Integrar la explicación necesaria con esa acción, feedback que permita corregir y una aplicación a una variación. Tests, cálculos cerrados y clasificaciones pueden comprobar aspectos concretos; no deben dominar la práctica salvo justificación pedagógica. Las fases visuales deben corresponder exactamente al texto y al modelo, sin un número fijo de beats.
 
 ## 5. Tests y docs
 - Actualizar `src/tests/unit/data/tecnologia-industrial-lessons.test.tsx` (lista de módulos y nº de lecciones).
@@ -38,7 +39,7 @@ Tono para adolescentes, nunca infantil. Cada lección: idea → regla/fórmula �
 
 ## 6. Verificación (obligatoria antes de commit)
 ```
-npx tsc --noEmit -p .            # ignora ruido de e2e/playwright
+npx tsc --noEmit -p .            # revisar también los errores de e2e/playwright
 npx eslint <ficheros nuevos>     # el lint global tiene errores previos ajenos
 npx vitest run
 CONTENT_PREVIEW_MODE=true NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321 \

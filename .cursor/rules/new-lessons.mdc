@@ -1,12 +1,19 @@
 ---
-description: Checklist al añadir lecciones nuevas
+description: Diseño y aceptación de lecciones con práctica auténtica y medios adecuados
 globs:
   - src/lib/lesson/**
   - src/components/lesson/**
+  - src/data/lessons/**
   - docs/lessons-slides.md
+  - docs/lesson-quality-standard.md
+  - docs/templates/lesson-design.md
 ---
 
 # Lecciones nuevas
 
-- Teoría = `type: "slide"` (ver `docs/lessons-slides.md`).
-- **Herramienta interactiva (opcional):** valora si algún concepto gana con un manipulable donde el alumno cambie valores y vea el resultado al instante. Solo si aporta; no se fuerza. Criterios en `docs/lessons-slides.md` → «Herramienta interactiva en la diapositiva».
+- Leer `docs/lesson-quality-standard.md`; usar `docs/templates/lesson-design.md` antes de implementar. Revisar el tema completo para repartir conceptos.
+- Elegir formato por objetivo: documentos, interfaces funcionales, manipulables, imágenes o animación. Manim y `slide` son recursos disponibles, sin obligación de aplicarlos a toda teoría.
+- La práctica principal exige acciones de la materia y feedback que ayude a corregir. Tests y clasificaciones quedan como comprobaciones puntuales, con excepción pedagógica documentada si dominan una lección.
+- No rellenar listas vacías ni disfrazar cuestionarios con decoración. Integrar explicación y acción en el ancho útil del escritorio.
+- Verificar propiedades del modelo, sincronización de cada fase, interacción, reintentos, accesibilidad y progreso. Un render correcto no demuestra que la geometría o la enseñanza sean correctas.
+- Entregar evidencia según la puerta de aceptación del estándar; no imponer cuotas de pantallas o módulos. Respetar el presupuesto y la autonomía delegada por el usuario.
