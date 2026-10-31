@@ -95,6 +95,7 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `homotecia-compas` | 5 | **Explicación animada** de la homotecia de razón 2: rectas desde `O`, medida `OA`, arco de radio `OA` centrado en `A` que corta a la recta `OA` en `A′` (`OA′ = 2·OA`), y el triángulo ampliado con lados paralelos | — |
 | `homotecia-practica` | 4 fases | **Práctica**: hallar `A′` (medida `OA`, punta en `A`, arco, marcar el corte que no es `O`) | — |
 | `homotecia-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al aplicar una homotecia de centro `O` y razón `k` (las rectas desde `O` se dibujan como guía) | `a` = k (2, 3, −1, −2) |
+| `union-imagen` | 1 paso (tres pasadas) | **Unir los puntos**: la regla pasa por `A′B′`, `B′C′` y `C′A′` (tocar dos extremos cada vez, con progreso «Lados trazados: n de 3»). `a` elige la transformación: 0 traslación, 1 giro, 2 simetría, 3 homotecia. Usa `nClics: 6`, `extRegla: 0` y `progreso` del motor | `a` (0…3) |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
 
@@ -1661,3 +1662,12 @@ Las lecciones con módulos de escenario (`tienda-ciclista`, `bloques-numericos`,
 ## Ayuda del tutor en los ejercicios (`help`)
 
 Los pasos de práctica (`predict`, `fill_in_blank`…) aceptan `help: HelpBranch[]`: un árbol de preguntas del alumno («¿Qué operación hago?», «Quiero saber si mi resultado es razonable»…) con respuestas que **no repiten la diapositiva**: otro ángulo, una estimación, un caso más sencillo, una pregunta guiada. Cada rama puede abrir `branches` más concretas. Sin `help`, el tutor solo separa «lo que te dan» de «lo que te piden». Nunca des el resultado en una rama; la solución sale tras responder (`explanation`).
+
+### Patrón de las lecciones de transformaciones (tema 5 de DT I)
+
+Cada transformación se enseña vértice a vértice, sin saltarse pasos «porque es igual que el anterior»:
+
+1. **Explicación animada** (`*-compas`): muestra el método con el primer vértice y la figura completa al final.
+2. **Un paso práctico por vértice** (`*-practica` con `params.b` = índice del vértice): cada uno lleva su «Comprobar» y deja a la vista los puntos ya obtenidos.
+3. **«Une los puntos»** (`union-imagen`): tres pasadas de la regla para cerrar el triángulo imagen.
+4. **Ejercicio en papel cuadriculado** (`*-cuadricula`) como aplicación libre.

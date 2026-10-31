@@ -16,15 +16,27 @@ export const homoteciaDt1Lesson: InteractiveLesson = {
       { title: "Toda la figura", text: "Con $B$ y $C$ se hace igual. El triángulo $A'B'C'$ tiene los lados **paralelos** a los de $ABC$ y el **doble de largos**: es **semejante** al original, no igual.", fact: "Lados paralelos y razón k" },
     ]), "stack"),
 
-    benchTask("homotecia-practica", "Busca la imagen de A", "homotecia-practica", [
-      { title: "Toma la medida OA", text: "Toca $O$ para clavar la punta y $A$ para colocar la mina: el compás queda con la longitud $OA$.", fact: "Abertura = OA" },
-      { title: "Clava la punta en A", text: "Toca el vértice $A$." },
-      { title: "Traza el arco", text: "Arrastra la mina para trazar un arco que **corte la recta $OA$** más allá de $A$." },
-      { title: "Marca A′", text: "Toca el corte del arco con la recta $OA$ que **no** es $O$: es $A'$. Después pulsa **Comprobar**." },
+    ...["A", "B", "C"].map((n, i) =>
+      benchTask(`homotecia-${n.toLowerCase()}`, `Busca la imagen de ${n}`, "homotecia-practica", [
+        { title: `Toma la medida O${n}`, text: `Toca $O$ para clavar la punta y $${n}$ para colocar la mina: el compás queda con la longitud $O${n}$.`, fact: `Abertura = O${n}` },
+        { title: `Clava la punta en ${n}`, text: `Toca el vértice $${n}$.` },
+        { title: "Traza el arco", text: `Arrastra la mina para trazar un arco que **corte la recta $O${n}$** más allá de $${n}$.` },
+        { title: `Marca ${n}′`, text: `Toca el corte del arco con la recta $O${n}$ que **no** es $O$: es $${n}'$. Después pulsa **Comprobar**.${i > 0 ? " Las imágenes anteriores ya están hechas." : ""}` },
+      ], {
+        question: `Halla la imagen ${n}' de ${n} en la homotecia de centro O y razón 2 usando el compás.`,
+        hint: `Lleva la distancia O${n} a continuación de ${n} sobre la recta O${n}.`,
+        explanation: `El arco de radio O${n} centrado en ${n} corta a la recta O${n} en O y en ${n}′; ${n}′ es el que cumple O${n}′ = O${n} + ${n}${n}′ = 2·O${n}.`,
+        params: { b: i },
+      }),
+    ),
+
+    benchTask("homotecia-union", "Une A′, B′ y C′", "union-imagen", [
+      { title: "Une los puntos", text: "Pasa la regla por **dos puntos** cada vez: primero $A'$ y $B'$, luego $B'$ y $C'$ y por último $C'$ y $A'$. Toca los dos extremos de cada lado. Después pulsa **Comprobar**.", fact: "Tres pasadas de la regla" },
     ], {
-      question: "Halla la imagen A' de A en la homotecia de centro O y razón 2 usando el compás.",
-      hint: "Lleva la distancia OA a continuación de A sobre la recta OA.",
-      explanation: "El arco de radio OA centrado en A corta a la recta OA en O y en A′; A′ es el que cumple OA′ = OA + AA′ = 2·OA.",
+      question: "Une con la regla los puntos A', B' y C' para obtener el triángulo ampliado.",
+      hint: "Hay tres lados: A′B′, B′C′ y C′A′.",
+      explanation: "El triángulo A′B′C′ es semejante a ABC (razón 2): sus lados son paralelos a los de ABC y el doble de largos.",
+      params: { a: 3 },
     }),
 
     benchTask("homotecia-cuadricula", "Amplía el triángulo", "homotecia-cuadricula", [

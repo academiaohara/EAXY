@@ -8,14 +8,14 @@ import { BENCH_STEPS } from "@/components/lesson/bench/scenes";
 import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideBlockView } from "@/components/lesson/slide/SlideBlocks";
 import type { BenchSceneId } from "@/lib/lesson/types";
-import type { Pt } from "@/components/lesson/bench/geometry";
+import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
 
 afterEach(cleanup);
 
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e.endsWith("-cuadricula");
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e.endsWith("-cuadricula") || e === "union-imagen";
 const escenas = todas.filter((e) => !porAccion(e));
 
 /** Lee el control que la escena registra en el pie de la lección. */
@@ -1046,6 +1046,154 @@ describe("homotecia", () => {
       for (const g of [[4, 7], [4, 11], [6, 9]] as [number, number][]) t.tocar(px(g));
       act(() => t.out.control!.onClick());
       expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
+  });
+});
+
+describe("práctica de todos los vértices y unión de los puntos", () => {
+  const dist = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+
+  it("traslación: C se construye igual que B, con B′ ya a la vista", () => {
+    const A: Pt = [100, 270], C: Pt = [250, 290], A2: Pt = [270, 230];
+    const C2: Pt = [C[0] + 170, C[1] - 40];
+    const t = pantalla("traslacion-practica", { b: 2 });
+    expect(screen.getAllByText("B′").length).toBeGreaterThan(0);
+    t.tocar(A);
+    t.tocar(A2);
+    t.tocar(C);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(C, dist(A, A2), ang(C, C2) - 25), enCirc(C, dist(A, A2), ang(C, C2) + 10));
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(C);
+    t.tocar(A2);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(A2, dist(A, C), ang(A2, C2) - 25), enCirc(A2, dist(A, C), ang(A2, C2) + 10));
+    expect(t.fase()).toBe("regla");
+    t.tocar([C2[0] + 4, C2[1] - 3]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("C′");
+  });
+
+  it("giro: B se gira con su propio radio y su propio ángulo de partida", () => {
+    const O: Pt = [180, 290], B: Pt = [380, 225];
+    const base = ang(O, B);
+    const r = dist(O, B);
+    const B2 = enCirc(O, r, base + 60);
+    const t = pantalla("giro-practica", { a: 60, b: 1 });
+    t.arrastrar(enCirc(O, 120, base + 20), enCirc(O, 120, base + 60));
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(B);
+    t.tocar(O);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(O, r, ang(O, B2) - 25), enCirc(O, r, ang(O, B2) + 10));
+    expect(t.fase()).toBe("regla");
+    t.tocar([B2[0] + 4, B2[1] - 3]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("giro: marcar el ángulo de A en el paso de B no vale (el segundo lado parte de OB)", () => {
+    const O: Pt = [180, 290];
+    const t = pantalla("giro-practica", { a: 60, b: 1 });
+    t.arrastrar(enCirc(O, 120, 20), enCirc(O, 120, 60)); // 60° medidos desde el eje horizontal, no desde OB
+    expect(t.fase()).toBe("angulo");
+  });
+
+  it("simetría: C se halla con los mismos puntos P y Q del eje", () => {
+    const E1: Pt = [260, 40], E2: Pt = [320, 350], C: Pt = [205, 300];
+    const eje = (u: number): Pt => [E1[0] + u * (E2[0] - E1[0]), E1[1] + u * (E2[1] - E1[1])];
+    const P = eje(0.3), Q = eje(0.75);
+    const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
+    const l = Math.hypot(d[0], d[1]);
+    const u: Pt = [d[0] / l, d[1] / l];
+    const tt = (C[0] - E1[0]) * u[0] + (C[1] - E1[1]) * u[1];
+    const pie: Pt = [E1[0] + u[0] * tt, E1[1] + u[1] * tt];
+    const C2: Pt = [2 * pie[0] - C[0], 2 * pie[1] - C[1]];
+    const t = pantalla("simetria-practica", { b: 2 });
+    t.tocar(P);
+    t.tocar(C);
+    t.tocar(P);
+    t.arrastrar(enCirc(P, dist(P, C), ang(P, C2) - 25), enCirc(P, dist(P, C), ang(P, C2) + 10));
+    t.tocar(Q);
+    t.tocar(C);
+    t.tocar(Q);
+    t.arrastrar(enCirc(Q, dist(Q, C), ang(Q, C2) - 25), enCirc(Q, dist(Q, C), ang(Q, C2) + 10));
+    expect(t.fase()).toBe("regla");
+    t.tocar([C2[0] + 4, C2[1] - 3]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("homotecia: la imagen de C está en la recta OC, al doble de distancia", () => {
+    const O: Pt = [120, 300], C: Pt = [190, 240];
+    const C2: Pt = [260, 180];
+    const t = pantalla("homotecia-practica", { b: 2 });
+    t.tocar(O);
+    t.tocar(C);
+    t.tocar(C);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(C, dist(O, C), ang(C, C2) - 25), enCirc(C, dist(O, C), ang(C, C2) + 10));
+    t.tocar([C2[0] + 4, C2[1] - 3]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  describe("unir los puntos con la regla", () => {
+    const O: Pt = [180, 290];
+    const GIRO = ([[330, 290], [380, 225], [300, 235]] as Pt[]).map((p) => rotarPunto(p, O, 60));
+    const E1: Pt = [260, 40], E2: Pt = [320, 350];
+    const refl = (p: Pt): Pt => {
+      const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
+      const l = Math.hypot(d[0], d[1]);
+      const u: Pt = [d[0] / l, d[1] / l];
+      const k = (p[0] - E1[0]) * u[0] + (p[1] - E1[1]) * u[1];
+      const pie: Pt = [E1[0] + u[0] * k, E1[1] + u[1] * k];
+      return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
+    };
+    const imagenes: [string, number, Pt[]][] = [
+      ["traslación", 0, [[270, 230], [370, 130], [420, 250]]],
+      ["giro", 1, GIRO],
+      ["simetría", 2, ([[130, 240], [190, 130], [205, 300]] as Pt[]).map(refl)],
+      ["homotecia", 3, [[320, 300], [380, 140], [260, 180]]],
+    ];
+
+    it.each(imagenes)("%s: las tres pasadas de la regla por A′B′, B′C′ y C′A′ son correctas", (_n, tipo, [a, b, c]) => {
+      const t = pantalla("union-imagen", { a: tipo });
+      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 0 de 3");
+      t.tocar(a);
+      expect(screen.getByTestId("bench-progreso").textContent).toContain("elige el otro extremo");
+      t.tocar(b);
+      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 1 de 3");
+      expect(t.comprobar().disabled).toBe(true);
+      t.tocar(b);
+      t.tocar(c);
+      t.tocar([c[0] + 3, c[1] - 3]); // se ajusta al punto
+      t.tocar(a);
+      expect(t.fase()).toBe("hecha");
+      expect(screen.getAllByTestId("bench-regla-trazo")).toHaveLength(1);
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("repetir un lado en lugar de trazar los tres es incorrecto", () => {
+      const [a, b, c] = imagenes[0][2];
+      const t = pantalla("union-imagen", { a: 0 });
+      for (const p of [a, b, b, a, b, c]) t.tocar(p);
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("repetido");
+    });
+
+    it("pasar la regla por puntos que no son A′, B′ y C′ es incorrecto", () => {
+      const [a, b, c] = imagenes[0][2];
+      const t = pantalla("union-imagen", { a: 0 });
+      for (const p of [a, b, b, c, [300, 100] as Pt, [500, 300] as Pt]) t.tocar(p);
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("dos de los puntos");
     });
   });
 });
