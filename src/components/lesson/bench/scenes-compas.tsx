@@ -140,7 +140,7 @@ export function MediatrizCompas({ block }: { block: BenchBlock }) {
     <div className="flex flex-col gap-1" data-testid="bench-mediatriz-panel">
       <p className="text-lg font-bold tabular-nums" data-testid="bench-dists">
         <span style={{ color: AZUL }}>QA = {f1(dist(Q, A))} mm</span>
-        <span className="mx-2 text-[color:var(--stage-muted,#b8c2d0)]">·</span>
+        <span className="mx-2 text-[color:var(--stage-muted,#b8c2d0)]">;</span>
         <span style={{ color: AMBAR }}>QB = {f1(dist(Q, B))} mm</span>
       </p>
     </div>

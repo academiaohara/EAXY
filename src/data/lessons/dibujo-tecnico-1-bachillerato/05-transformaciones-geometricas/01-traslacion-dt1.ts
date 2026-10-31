@@ -18,13 +18,13 @@ export const traslacionDt1Lesson: InteractiveLesson = {
 
     benchTask("traslacion-construye", "Traslada el triángulo", "traslacion-practica", [
       ...["B", "C"].flatMap((n) => [
-        { title: `${n} · Toma la medida AA′`, text: "Toca $A$ para clavar la punta y $A'$ para colocar la mina: el compás queda con la longitud del vector.", fact: "Abertura = AA′" },
-        { title: `${n} · Clava la punta en ${n}`, text: `Toca el vértice $${n}$.` },
-        { title: `${n} · Primer arco`, text: `Arrastra la mina para trazar un arco **en la dirección del vector**, por donde estará $${n}'$.` },
-        { title: `${n} · Toma la medida A${n}`, text: `Mide ahora la distancia entre $A$ y $${n}$: toca $A$ y luego $${n}$.`, fact: `Abertura = A${n}` },
-        { title: `${n} · Clava la punta en A′`, text: "Toca el punto $A'$." },
-        { title: `${n} · Segundo arco`, text: "Arrastra la mina para trazar un arco que **corte al anterior**." },
-        { title: `${n} · Marca ${n}′`, text: `Toca el punto donde se cortan los dos arcos: es $${n}'$.` },
+        { title: `${n}; Toma la medida AA′`, text: "Toca $A$ para clavar la punta y $A'$ para colocar la mina: el compás queda con la longitud del vector.", fact: "Abertura = AA′" },
+        { title: `${n}; Clava la punta en ${n}`, text: `Toca el vértice $${n}$.` },
+        { title: `${n}; Primer arco`, text: `Arrastra la mina para trazar un arco **en la dirección del vector**, por donde estará $${n}'$.` },
+        { title: `${n}; Toma la medida A${n}`, text: `Mide ahora la distancia entre $A$ y $${n}$: toca $A$ y luego $${n}$.`, fact: `Abertura = A${n}` },
+        { title: `${n}; Clava la punta en A′`, text: "Toca el punto $A'$." },
+        { title: `${n}; Segundo arco`, text: "Arrastra la mina para trazar un arco que **corte al anterior**." },
+        { title: `${n}; Marca ${n}′`, text: `Toca el punto donde se cortan los dos arcos: es $${n}'$.` },
       ]),
       { title: "Une los puntos", text: "La regla traza sola los tres lados: $A'B'$, $B'C'$ y $C'A'$. Con eso queda construida la figura transformada.", fact: "Tres pasadas de la regla" },
     ], {
