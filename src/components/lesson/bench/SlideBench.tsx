@@ -9,7 +9,7 @@ import { SimetriaCompas } from "./scenes-simetria";
 import { GiroCompas } from "./scenes-giro";
 import { TraslacionCompas } from "./scenes-transformaciones";
 import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
-import { CircuncentroPractica, HexagonoCompas, HexagonoPractica, PuntosNotables, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
+import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, HexagonoPractica, PentagramaPractica, PoligonoElementos, PuntosNotables, RomboCompas, RomboPractica, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -90,6 +90,18 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <HexagonoCompas block={block} />;
     case "hexagono-practica":
       return <HexagonoPractica block={block} />;
+    case "rombo-compas":
+      return <RomboCompas block={block} />;
+    case "rombo-practica":
+      return <RomboPractica block={block} />;
+    case "poligono-elementos":
+      return <PoligonoElementos block={block} />;
+    case "apotema-practica":
+      return <ApotemaPractica block={block} />;
+    case "estrella-compas":
+      return <EstrellaCompas block={block} />;
+    case "pentagrama-practica":
+      return <PentagramaPractica block={block} />;
     default:
       return null;
   }

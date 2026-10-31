@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
   slug: "poligonos-dado-lado-estrellados-dt1",
@@ -16,9 +16,14 @@ export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
         "En general se usa el **método de los ángulos**: se traza el lado y, en cada extremo, el **ángulo interior**, y se cierra con las mediatrices.",
       ] },
     ], undefined, "stack"),
-    slide("estrellas", "Polígonos estrellados", [
-      { kind: "text", text: "Une cada vértice con el que está k lugares más allá. Cambia n y k y busca cuándo hay un solo trazo." },
-    ], tool("dt1-estrellado-explorador"), "visual-top"),
+
+    slide("estrellas", "Polígonos estrellados", [], bench("estrella-compas", [
+      { title: "Un polígono y su estrella", text: "Se parte de los $n$ vértices de un polígono regular inscrito. Un **polígono estrellado** $\\{n/k\\}$ une cada vértice con el que está $k$ lugares más allá.", fact: "{n/k}: salto de k vértices" },
+      { title: "El pentagrama {5/2}", text: "Con $n = 5$ y $k = 2$ se une cada vértice con el siguiente **saltando uno**. Se cierra tras pasar por los cinco vértices: es una estrella de **un solo trazo**.", fact: "Ángulo de cada punta: 36°" },
+      { title: "El hexagrama {6/2}", text: "Con $n = 6$ y $k = 2$ no se pasa por todos los vértices: salen **dos triángulos** superpuestos. Es un compuesto, no una estrella de un trazo.", fact: "mcd(6, 2) = 2" },
+      { title: "¿Un trazo o varios?", text: "Es de un solo trazo si $n$ y $k$ **no tienen divisores comunes**. El ángulo de cada punta es $\\dfrac{180^\\circ (n - 2k)}{n}$.", fact: "n y k primos entre sí" },
+    ]), "stack"),
+
     slide("usos", "Aplicaciones", [
       { kind: "steps", items: [
         "**Tuercas y tornillos** (hexágonos), **señales** (octógono de STOP), **baldosas** y **teselados** (triángulo, cuadrado y hexágono rellenan el plano).",
@@ -26,19 +31,14 @@ export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
         "**Pentagrama** y otras estrellas: símbolos, escudos y logotipos.",
         "En CAD, un polígono regular se define con el **número de lados** y el **radio** o el **lado**.",
       ] },
-    ]),
-    calc("calc-r6", "Radio dado el lado", "Un hexágono regular tiene lado 4 cm. ¿Cuánto mide el radio de su circunferencia circunscrita, en cm?", nums(4), "R = l/(2 sen 30°) = 4/(2 · 0,5) = 4 cm.", "En el hexágono, R = l."),
-    calc("calc-r8", "Octógono dado el lado", "Un octógono regular de lado 5 cm: R = 5 / (2 sen 22,5°). ¿Cuánto vale R, en cm? (dos decimales)", nums(6.53, 6.5328), "5 / (2 · 0,38268) ≈ 6,53 cm.", "sen 22,5° ≈ 0,38268."),
-    calc("calc-punta", "Punta del pentagrama", "El pentagrama es la estrella {5/2}. ¿Cuánto mide el ángulo de cada punta, en grados? (180°(n − 2k)/n)", nums(36), "180 · (5 − 4) / 5 = 36°.", "Sustituye n = 5 y k = 2."),
-    sort("clasifica-estrella", "¿Estrella de un trazo?", "Clasifica cada símbolo {n/k}.",
-      [["un", "Estrella de un solo trazo", "cobalt"], ["va", "Compuesto de varios polígonos", "amber"]],
-      [["{5/2}", "un"], ["{7/2}", "un"], ["{7/3}", "un"], ["{8/3}", "un"], ["{6/2}", "va"], ["{8/2}", "va"], ["{9/3}", "va"]],
-      "Es de un solo trazo si n y k son primos entre sí.",
-    ),
-    pick("check-hexagrama", "El hexagrama", "¿Por qué el hexagrama {6/2} no se dibuja de un solo trazo?",
-      "Porque 6 y 2 tienen divisores comunes: son dos triángulos distintos",
-      [["Porque tiene demasiadas puntas", "No es el número de puntas."], ["Porque k es impar", "k = 2 es par."], ["Porque n es primo", "6 no es primo."]],
-      "Con mcd(6, 2) = 2 se forman dos triángulos superpuestos.",
-    ),
+    ], undefined, "stack"),
+
+    benchTask("pentagrama-construye", "Dibuja el pentagrama", "pentagrama-practica", [
+      { title: "Une de dos en dos", text: "Pasa la regla por **dos vértices** cada vez, saltando siempre uno: $1$ con $3$, $3$ con $5$… Solo se aceptan vértices que estén dos lugares más allá y no se repite ningún trazo.", fact: "{5/2}: cinco trazos" },
+    ], {
+      question: "Dibuja el pentagrama {5/2} uniendo cada vértice del pentágono con el que está dos lugares más allá.",
+      hint: "Une el vértice 1 con el 3, el 3 con el 5, el 5 con el 2, el 2 con el 4 y el 4 con el 1.",
+      explanation: "Como mcd(5, 2) = 1, saltando de dos en dos se pasa por los cinco vértices y la estrella se cierra en un solo trazo.",
+    }),
   ],
 };

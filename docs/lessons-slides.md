@@ -100,6 +100,10 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `circuncentro-practica` | 11 fases | **Circuncentro**: mediatrices de `AB` y de `AC` con el compás (abertura validada) y la regla por los dos cortes de cada una | — |
 | `triangulo-lll-compas` / `triangulo-lll-practica` | 5 / 7 fases | **Triángulo dados los tres lados**: se toma cada lado de su segmento, arcos desde `A` y `B` y unión de `C` | — |
 | `hexagono-compas` / `hexagono-practica` | 5 / 17 fases | **Hexágono inscrito**: el radio llevado seis veces sobre la circunferencia (cada arco se corta con la circunferencia y se marca el vértice) y unión de los seis lados | — |
+| `rombo-compas` / `rombo-practica` | 5 / 8 fases | **Rombo dados el lado y una diagonal**: arcos de radio `l` desde `A` y `C`, marca de `B` y `D` y unión automática de los cuatro lados | — |
+| `poligono-elementos` | 5 | Elementos del polígono regular (hexágono): lado, radio, ángulo central, apotema y ángulo interior | — |
+| `apotema-practica` | 6 fases | **Apotema**: mediatriz de un lado del hexágono con el compás y la regla (pasa por el centro y por el punto medio) | — |
+| `estrella-compas` / `pentagrama-practica` | 4 / 1 | **Polígonos estrellados** `{n/k}`: pentagrama (un trazo) y hexagrama (dos triángulos); en la práctica se unen los vértices de dos en dos | — |
 | `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
@@ -1369,9 +1373,6 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
 | `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
 | `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
-| `dt1-cuadrilatero-explorador` | Tipo, diagonales y área de un paralelogramo | `a`, `b` lados (cm) |
-| `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
-| `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
 | `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
 | `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |
 | `dt1-enlace-explorador` | Enlace tangente entre dos rectas: puntos de tangencia y centro | `a` ángulo (°), `b` radio (cm) |

@@ -62,7 +62,6 @@ import { AxonometriaOrtogonalDt1Explorador, IsometricaPiezaDt1Explorador, Caball
 import { InterseccionPlanosDt1Explorador, PlanosParalelosDt1Explorador, PerpendicularPlanoDt1Explorador, DistanciaPuntosDt1Explorador } from "@/components/lesson/slide/tools/DtDiedrico2Tools";
 import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
 import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
-import { CuadrilateroDt1Explorador, PoligonoRegularDt1Explorador, EstrelladoDt1Explorador } from "@/components/lesson/slide/tools/DtPoligonosTools";
 import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
@@ -1918,12 +1917,6 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LugarGeometricoExplorador block={block} />;
     case "dt1-arco-capaz-explorador":
       return <ArcoCapazExplorador block={block} />;
-    case "dt1-cuadrilatero-explorador":
-      return <CuadrilateroDt1Explorador block={block} />;
-    case "dt1-poligono-regular-explorador":
-      return <PoligonoRegularDt1Explorador block={block} />;
-    case "dt1-estrellado-explorador":
-      return <EstrelladoDt1Explorador block={block} />;
     case "dt1-tangente-punto-explorador":
       return <TangentePuntoDt1Explorador block={block} />;
     case "dt1-circunferencias-explorador":

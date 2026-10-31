@@ -68,7 +68,7 @@ Total: 41 lecciones (el curso `dibujo-tecnico-2-bachillerato` está completo).
 | Plan | Aprobado por el usuario |
 | DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/02-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |
 | DT I · 2. Proporcionalidad, equivalencia y semejanza | Hecho (4 lecciones, `02-proporcionalidad-equivalencia-semejanza/`; herramientas en `DtGeometriaTools.tsx`, animación `buildSeccionAurea` en `dt1-geometria.tsx`) |
-| DT I · 3. Triángulos, cuadriláteros y polígonos regulares | En migración a la mesa de dibujo (6 lecciones, `04-triangulos-cuadrilateros-poligonos/`): puntos notables, triángulo LLL y hexágono ya migrados (`scenes-poligonos.tsx`); cuadriláteros, propiedades de polígonos regulares y estrellados aún con las herramientas de `DtPoligonosTools.tsx` |
+| DT I · 3. Triángulos, cuadriláteros y polígonos regulares | Hecho en la mesa de dibujo (6 lecciones, `04-triangulos-cuadrilateros-poligonos/`; escenas en `scenes-poligonos.tsx`) |
 | DT I · 4. Tangencias y curvas técnicas | Hecho (5 lecciones, `04-tangencias-curvas-tecnicas/`; herramientas `DtTangenciasTools.tsx`, animaciones `dt1-tangencias.tsx`) |
 | DT I · 5. Sistema diédrico: punto, recta y plano | Hecho (6 lecciones, `05-sistema-diedrico-punto-recta-plano/`; herramientas `DtDiedricoTools.tsx`, animación `dt1-diedrico.tsx`; bloque `dibujo-sistemas-representacion`) |
 | DT I · 6. Sistema diédrico: relaciones y distancias | Hecho (4 lecciones, `06-sistema-diedrico-relaciones-distancias/`; herramientas `DtDiedrico2Tools.tsx`) |

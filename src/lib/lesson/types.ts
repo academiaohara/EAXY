@@ -1328,7 +1328,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "giro-compas" | "giro-practica" | "simetria-compas" | "simetria-practica" | "homotecia-compas" | "homotecia-practica" | "thales-dividir" | "thales-practica" | "thales-paralelas" | "media-compas" | "media-practica" | "aurea-compas" | "aurea-practica" | "equivalencia-triangulos" | "cuadratura-compas" | "cuadratura-practica" | "semejanza-razon" | "puntos-notables" | "circuncentro-practica" | "triangulo-lll-compas" | "triangulo-lll-practica" | "hexagono-compas" | "hexagono-practica";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "giro-compas" | "giro-practica" | "simetria-compas" | "simetria-practica" | "homotecia-compas" | "homotecia-practica" | "thales-dividir" | "thales-practica" | "thales-paralelas" | "media-compas" | "media-practica" | "aurea-compas" | "aurea-practica" | "equivalencia-triangulos" | "cuadratura-compas" | "cuadratura-practica" | "semejanza-razon" | "puntos-notables" | "circuncentro-practica" | "triangulo-lll-compas" | "triangulo-lll-practica" | "hexagono-compas" | "hexagono-practica" | "rombo-compas" | "rombo-practica" | "poligono-elementos" | "apotema-practica" | "estrella-compas" | "pentagrama-practica";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =
@@ -2003,9 +2003,6 @@ export type SlideToolId =
   | "dt1-pitagoras-explorador"
   | "dt1-lugar-geometrico-explorador"
   | "dt1-arco-capaz-explorador"
-  | "dt1-cuadrilatero-explorador"
-  | "dt1-poligono-regular-explorador"
-  | "dt1-estrellado-explorador"
   | "dt1-tangente-punto-explorador"
   | "dt1-circunferencias-explorador"
   | "dt1-enlace-explorador"

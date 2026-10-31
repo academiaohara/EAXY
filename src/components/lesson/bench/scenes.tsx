@@ -67,7 +67,13 @@ export type BenchSceneName =
   | "triangulo-lll-compas"
   | "triangulo-lll-practica"
   | "hexagono-compas"
-  | "hexagono-practica";
+  | "hexagono-practica"
+  | "rombo-compas"
+  | "rombo-practica"
+  | "poligono-elementos"
+  | "apotema-practica"
+  | "estrella-compas"
+  | "pentagrama-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -108,6 +114,12 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "triangulo-lll-practica": 7,
   "hexagono-compas": 5,
   "hexagono-practica": 17,
+  "rombo-compas": 5,
+  "rombo-practica": 8,
+  "poligono-elementos": 5,
+  "apotema-practica": 6,
+  "estrella-compas": 4,
+  "pentagrama-practica": 1,
 };
 
 export const INK = "#2a2f36";

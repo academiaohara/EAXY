@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { clamp, dist, rotarPunto, type Pt } from "./geometry";
-import { MSHEET, MV, Practica, secuenciar, type Def, type Est } from "./scenes-compas";
+import { clamp, rotarPunto, type Pt } from "./geometry";
+import { MSHEET, MV, Practica, secuenciar, type Def } from "./scenes-compas";
 import { defGiro, GIRO_CENTRO, GIRO_ORIG, PapelGiro } from "./scenes-giro";
 import { defHomotecia, HOMO_IMG, PapelHomotecia } from "./scenes-homotecia";
 import { defSimetria, SIM_IMG, PapelSimetria } from "./scenes-simetria";

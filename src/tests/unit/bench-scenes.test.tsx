@@ -9,7 +9,7 @@ import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideBlockView } from "@/components/lesson/slide/SlideBlocks";
 import type { BenchSceneId } from "@/lib/lesson/types";
 import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
-import { POLIGONOS_GEOM, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
+import { POLIGONOS_GEOM, POLIGONOS_GEOM_2, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
 
 afterEach(cleanup);
 
@@ -1343,6 +1343,132 @@ describe("mesa de dibujo · triángulos y polígonos", () => {
     expect(screen.getByTestId("bench-compas")).toBeTruthy();
     t.siguiente(2);
     expect(screen.getByTestId("bench-lll-final")).toBeTruthy();
+  });
+});
+
+describe("mesa de dibujo · cuadriláteros, elementos y estrellas", () => {
+  const { RA, RC, RB, RD, SEG_LADO, AP, AQ, EO, PV } = POLIGONOS_GEOM_2;
+  const th = (Math.acos(120 / 150) * 180) / Math.PI + 8;
+
+  function rombo() {
+    const t = pantalla("rombo-practica");
+    t.tocar(SEG_LADO[0]);
+    t.tocar(SEG_LADO[1]);
+    expect(t.fase()).toBe("centro");
+    t.tocar(RA);
+    t.arrastrar(enCirc(RA, 150, th), enCirc(RA, 150, -th));
+    expect(t.fase()).toBe("centro");
+    t.tocar(RC);
+    t.arrastrar(enCirc(RC, 150, 180 + th), enCirc(RC, 150, 180 - th));
+    expect(t.fase()).toBe("punto");
+    return t;
+  }
+
+  it("rombo: los dos cortes se marcan en orden (B arriba y D abajo) y la regla une los cuatro lados sola", async () => {
+    const t = rombo();
+    t.tocar(RD);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(RB);
+    expect(t.fase()).toBe("punto");
+    t.tocar(RD);
+    expect(t.fase()).toBe("auto");
+    t.sinSuperar();
+    await esperarAuto();
+    t.superada();
+    expect(t.svg().querySelectorAll("line").length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("rombo: el lado se toma entre los extremos de su segmento", () => {
+    const t = pantalla("rombo-practica");
+    t.tocar(RA);
+    expect(t.aviso()).toContain("dos puntos marcados");
+    expect(t.fase()).toBe("medida");
+  });
+
+  describe("apotema", () => {
+    const M: Pt = [(AP[0] + AQ[0]) / 2, (AP[1] + AQ[1]) / 2];
+    const r = 100;
+    function hasta() {
+      const t = pantalla("apotema-practica");
+      const tt = Math.max((Math.acos(60 / r) * 180) / Math.PI, 20) + 8;
+      t.tocar(AP);
+      t.arrastrar(enCirc(AP, r, ang(AP, AQ) + 35));
+      t.fijar();
+      expect(t.fase()).toBe("arco");
+      t.arrastrar(enCirc(AP, r, ang(AP, AQ) + tt), enCirc(AP, r, ang(AP, AQ) - tt));
+      t.tocar(AQ);
+      t.arrastrar(enCirc(AQ, r, ang(AQ, AP) + tt), enCirc(AQ, r, ang(AQ, AP) - tt));
+      expect(t.fase()).toBe("regla");
+      return t;
+    }
+    it("la mediatriz del lado pasa por el centro y el ejercicio se supera solo", () => {
+      const t = hasta();
+      const h = Math.sqrt(r * r - 60 * 60);
+      const u: Pt = [-(AQ[1] - AP[1]) / 120, (AQ[0] - AP[0]) / 120];
+      t.tocar([M[0] + u[0] * h, M[1] + u[1] * h]);
+      t.sinSuperar();
+      t.tocar([M[0] - u[0] * h, M[1] - u[1] * h]);
+      t.superada();
+      expect(screen.getByTestId("bench-apotema")).toBeTruthy();
+      expect(d(M, EO)).toBeCloseTo(Math.sqrt(120 * 120 - 60 * 60), 6);
+    });
+    it("una abertura menor que la mitad del lado no se acepta", () => {
+      const t = pantalla("apotema-practica");
+      t.tocar(AP);
+      t.arrastrar(enCirc(AP, 50, 35));
+      t.fijar();
+      expect(t.fase()).toBe("abertura");
+      expect(t.aviso()).toContain("mitad");
+    });
+  });
+
+  describe("pentagrama", () => {
+    it("une los vértices de dos en dos: cinco trazos y el ejercicio se supera solo", () => {
+      const t = pantalla("pentagrama-practica");
+      for (const [i, j] of [[0, 2], [2, 4], [4, 1], [1, 3], [3, 0]]) {
+        t.sinSuperar();
+        t.tocar(PV[i]);
+        t.tocar(PV[j]);
+      }
+      t.superada();
+    });
+    it("un trazo entre vértices contiguos o repetido avisa y no se registra", () => {
+      const t = pantalla("pentagrama-practica");
+      t.tocar(PV[0]);
+      t.tocar(PV[1]);
+      expect(t.aviso()).toContain("salta un vértice");
+    });
+  });
+
+  it("elementos del polígono: el paso de la apotema y el del ángulo central dibujan cada elemento", () => {
+    const { siguiente } = montar("poligono-elementos");
+    expect(screen.getByTestId("bench-el-lado")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-el-central")).toBeTruthy();
+    siguiente(1);
+    expect(screen.getByTestId("bench-el-apotema")).toBeTruthy();
+    siguiente(1);
+    expect(screen.getByTestId("bench-el-interior")).toBeTruthy();
+  });
+
+  it("estrellas: el pentagrama se traza en el paso 2 y el hexagrama en el 3", () => {
+    const { siguiente } = montar("estrella-compas");
+    expect(screen.queryByTestId("bench-pentagrama")).toBeNull();
+    siguiente(1);
+    expect(screen.getByTestId("bench-pentagrama")).toBeTruthy();
+    expect(screen.queryByTestId("bench-hexagrama")).toBeNull();
+    siguiente(1);
+    expect(screen.getByTestId("bench-hexagrama")).toBeTruthy();
+  });
+
+  it("rombo: la explicación muestra los arcos, el rombo final y las diagonales", () => {
+    const { siguiente } = montar("rombo-compas");
+    siguiente(2);
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente(1);
+    expect(screen.getByTestId("bench-rombo-final")).toBeTruthy();
+    siguiente(1);
+    expect(screen.getByTestId("bench-rombo-diagonales")).toBeTruthy();
   });
 });
 
