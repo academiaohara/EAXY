@@ -70,12 +70,13 @@ describe("curso Dibujo Técnico I", () => {
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: tiene animaciones o herramientas interactivas", (_slug, { data }) => {
-    const n = data.steps.flatMap((s) => visuals(s)).length;
+    const n = data.steps.flatMap((s) => visuals(s)).length + data.steps.filter((s) => s.type === "storyboard").length;
     expect(n).toBeGreaterThanOrEqual(1);
   });
 
   it("el curso da prioridad a lo visual: casi todas las lecciones llevan animación o herramienta", () => {
-    const n = lessons.flatMap(({ data }) => data.steps.flatMap((s) => visuals(s))).length;
+    const n = lessons.flatMap(({ data }) => data.steps.flatMap((s) => visuals(s))).length
+      + lessons.flatMap(({ data }) => data.steps.filter((s) => s.type === "storyboard")).length;
     expect(n).toBeGreaterThanOrEqual(lessons.length);
   });
 
@@ -105,5 +106,59 @@ describe("curso Dibujo Técnico I", () => {
         }
       }
     }
+  });
+});
+
+describe("tema 1: recorrido didáctico sin solapamientos", () => {
+  const theme = course.modules
+    .find((module) => module.slug === "historia-fundamentos-geometricos")!
+    .lessons.map(
+      (lesson) => interactiveLessons[lesson.interactiveSlug as keyof typeof interactiveLessons],
+    );
+
+  it("plantea una pregunta central distinta en cada lección", () => {
+    expect(theme.map((lesson) => lesson.title)).toEqual([
+      "1. Un lenguaje para construir",
+      "2. De medir a demostrar",
+      "3. Encontrar puntos mediante condiciones",
+      "4. Ver un segmento bajo el mismo ángulo",
+    ]);
+    expect(theme.map((lesson) => lesson.steps[0]?.title)).toEqual([
+      "¿Cómo construimos todos el mismo objeto?",
+      "¿Cómo sabemos que un método siempre funciona?",
+      "¿Dónde están todos los puntos que cumplen una condición?",
+      "¿Desde dónde se ve AB con el mismo ángulo?",
+    ]);
+  });
+
+  it.each(theme.map((lesson) => [lesson.slug, lesson] as const))(
+    "%s alterna relato y acción",
+    (_slug, lesson) => {
+      expect(lesson.steps.length).toBeGreaterThanOrEqual(6);
+      expect(lesson.steps.length).toBeLessThanOrEqual(8);
+      expect(lesson.steps.some((step) => step.type === "storyboard")).toBe(true);
+      expect(
+        lesson.steps.filter((step) => step.type === "predict" || step.type === "classify").length,
+      ).toBeGreaterThanOrEqual(2);
+
+      let passiveRun = 0;
+      for (const step of lesson.steps) {
+        passiveRun = ["concept", "slide", "storyboard", "narrate", "reveal"].includes(step.type)
+          ? passiveRun + 1
+          : 0;
+        expect(passiveRun, `${lesson.slug}/${step.id}`).toBeLessThanOrEqual(2);
+        if (step.type === "slide") {
+          expect(step.blocks.some((block) => block.kind === "steps"), step.id).toBe(false);
+        }
+      }
+    },
+  );
+
+  it("reserva cada concepto para la lección que lo desarrolla", () => {
+    const [language, proof, loci, arc] = theme.map((lesson) => JSON.stringify(lesson));
+    expect(language).not.toMatch(/Monge|Euclides|Renacimiento/);
+    expect(proof).not.toMatch(/arco capaz/i);
+    expect((loci!.match(/arco capaz/gi) ?? []).length).toBeLessThanOrEqual(1);
+    expect(arc).toMatch(/arco capaz/i);
   });
 });

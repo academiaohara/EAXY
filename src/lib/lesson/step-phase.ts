@@ -8,6 +8,7 @@ const PHASE_BY_STEP_TYPE: Record<LessonStep["type"], LessonStepPhase> = {
   interactive_tool: "exploration",
   narrate: "explanation",
   slide: "explanation",
+  storyboard: "explanation",
   predict: "practice",
   explore: "exploration",
   reveal: "explanation",

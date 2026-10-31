@@ -6,6 +6,7 @@ export type StepType =
   | "interactive_tool"
   | "narrate"
   | "slide"
+  | "storyboard"
   | "predict"
   | "explore"
   | "reveal"
@@ -1085,6 +1086,16 @@ export type SlideAnimId =
   | "ti2-fases-eia"
   | "dt1-linea-tiempo-dibujo"
   | "dt1-trazado-arco-capaz"
+  | "dt1-plano-informacion"
+  | "dt1-geometria-medida-demostracion"
+  | "dt1-pitagoras-areas"
+  | "dt1-lugares-condiciones"
+  | "dt1-interseccion-lugares"
+  | "dt1-arco-capaz-invariancia"
+  | "dt1-arco-capaz-construccion"
+  | "dt1-documentos-profesionales"
+  | "dt1-plano-revision"
+  | "dt1-localizacion-dos-arcos"
   | "dt1-seccion-aurea"
   | "dt1-pentagono-euclides"
   | "dt1-tangentes-punto"
@@ -2109,9 +2120,35 @@ export type SlideStep = LessonStepBase &
     arrange?: "split" | "visual-top" | "text-top" | "stack";
   };
 
+export type StoryboardHighlight = {
+  text: string;
+  tone: VisualTone;
+};
+
+export type StoryboardPhase = {
+  /** Idea breve que acompaña a la fase visual y se anuncia al cambiar. */
+  text: string;
+  /** Rótulo que sitúa la fase dentro del razonamiento. */
+  eyebrow?: string;
+  /** Términos que comparten color semántico con la escena. */
+  highlights?: StoryboardHighlight[];
+};
+
+/** Relato visual a todo el ancho con explicación sincronizada por fases. */
+export type StoryboardStep = LessonStepBase &
+  StageStepFields & {
+    type: "storyboard";
+    scene: SlideAnimId;
+    params?: SlideAnimParams;
+    phases: StoryboardPhase[];
+    beatMs?: number;
+    autoplay?: boolean;
+  };
+
 export type LessonStep =
   | ConceptStep
   | SlideStep
+  | StoryboardStep
   | AnimatedSolutionStep
   | InteractiveToolStep
   | StageStep

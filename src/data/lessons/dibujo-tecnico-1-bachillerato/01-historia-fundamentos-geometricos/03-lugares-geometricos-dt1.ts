@@ -1,46 +1,40 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
 
 export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
   slug: "lugares-geometricos-dt1",
-  title: "3. Lugares geométricos fundamentales",
+  title: "3. Encontrar puntos mediante condiciones",
   subtitle: DT1_SUBTITLES[1],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Todos los puntos que cumplen una condición", [
-      { kind: "steps", items: [
-        "Un **lugar geométrico** es el conjunto de **todos** los puntos del plano que cumplen una propiedad, y **solo** de ellos.",
-        "**Circunferencia**: puntos a distancia fija $r$ de un punto $O$.",
-        "**Mediatriz** de AB: puntos que **equidistan** de A y B. Es la perpendicular al segmento por su punto medio.",
-        "**Bisectriz** de un ángulo: puntos que equidistan de **sus dos lados**.",
-        "**Paralelas** a una recta $r$ a distancia $d$: dos rectas, una a cada lado.",
-        "Resolver un problema de construcción suele ser **intersecar dos lugares geométricos**.",
-      ] },
-    ], undefined, "stack"),
-    slide("lugares", "Comprueba cada lugar", [
-      { kind: "text", text: "Elige un lugar, mueve el punto P y mira qué magnitudes se comparan. Encuentra varias posiciones donde se cumple." },
+    {
+      id: "pregunta-central", type: "storyboard", title: "¿Dónde están todos los puntos que cumplen una condición?", scene: "dt1-lugares-condiciones",
+      phases: [
+        { eyebrow: "De un punto a un conjunto", text: "Un lugar geométrico reúne todos los puntos que cumplen una condición y excluye los demás.", highlights: [{ text: "todos", tone: "cobalt" }, { text: "condición", tone: "cobalt" }] },
+        { eyebrow: "Dos puntos fijos", text: "Los puntos que equidistan de A y B forman su mediatriz.", highlights: [{ text: "equidistan", tone: "emerald" }, { text: "mediatriz", tone: "violet" }] },
+        { eyebrow: "Dos lados fijos", text: "Los puntos que equidistan de los lados de un ángulo forman su bisectriz.", highlights: [{ text: "equidistan", tone: "emerald" }, { text: "bisectriz", tone: "amber" }] },
+      ],
+      help: [{ label: "¿Cómo descubro el lugar?", message: "Mueve mentalmente P y pregunta qué medida debe permanecer igual. La igualdad te dice qué trazado contiene todas las posiciones válidas." }],
+    },
+    pick("predice-faro", "Predice antes de trazar", "Dos faros A y B deben oírse con la misma intensidad. Si solo importa la distancia, ¿por dónde puede moverse el barco?", "Por la mediatriz de AB, porque todos sus puntos equidistan de ambos faros", [["Por la circunferencia con centro A", "Esa condición solo fija la distancia a A."], ["Por el propio segmento AB", "Salvo el punto medio, sus puntos no equidistan de A y B."], ["Por cualquier paralela a AB", "La distancia a los faros cambia a lo largo de la paralela."]], "Traducir «misma distancia a A y B» conduce directamente a la mediatriz."),
+    slide("explora-lugares", "Mueve P y comprueba la condición", [
+      { kind: "text", text: "Elige circunferencia, mediatriz, bisectriz o paralelas. Mueve P primero fuera del lugar, predice qué medidas serán distintas y llévalo después a una posición que las iguale." },
+      { kind: "warning", title: "No busques un único punto", text: "Encuentra varias posiciones correctas: el conjunto completo es el lugar geométrico." },
     ], tool("dt1-lugar-geometrico-explorador"), "visual-top"),
-    slide("aplic", "Intersecar lugares", [
-      { kind: "steps", items: [
-        "**Circuncentro** del triángulo: intersección de **mediatrices**; equidista de los tres vértices.",
-        "**Incentro**: intersección de **bisectrices**; equidista de los tres lados.",
-        "Un punto **a 3 cm de A y a 4 cm de B**: intersección de dos circunferencias (hay 2 puntos, 1 o ninguno).",
-        "Un punto **a igual distancia de dos rectas y a 2 cm de una de ellas**: bisectriz con una paralela.",
-      ] },
+    {
+      id: "intersecciones", type: "storyboard", title: "Dos condiciones se resuelven a la vez", scene: "dt1-interseccion-lugares",
+      phases: [
+        { eyebrow: "Sin encuentro", text: "Si dos lugares no se cortan, ninguna posición cumple ambas condiciones.", highlights: [{ text: "ninguna", tone: "rose" }] },
+        { eyebrow: "Tangencia", text: "Si solo se tocan, existe una única solución.", highlights: [{ text: "única solución", tone: "amber" }] },
+        { eyebrow: "Dos cruces", text: "Si se cortan en dos puntos, ambos son soluciones y hace falta otro dato para elegir.", highlights: [{ text: "dos puntos", tone: "emerald" }, { text: "otro dato", tone: "cobalt" }] },
+      ],
+      help: [{ label: "¿Por qué cambia el número de soluciones?", message: "Imagina que desplazas uno de los lugares: puede quedar separado, tocar al otro o atravesarlo. Cada contacto común es una solución." }],
+    },
+    sort("traduce-condicion", "Traduce condiciones a lugares", "Asocia cada condición con el trazado que contiene todas sus soluciones.", [["cir", "Circunferencia", "cobalt"], ["med", "Mediatriz", "violet"], ["bis", "Bisectriz", "amber"], ["par", "Dos paralelas", "emerald"]], [["A 4 cm de un punto O", "cir"], ["A igual distancia de A y B", "med"], ["A igual distancia de dos paredes que forman una esquina", "bis"], ["A 2 m del borde recto de una carretera", "par"], ["Centro de una circunferencia que pasa por A y B", "med"], ["Posiciones alcanzadas por un radar con radio fijo", "cir"]], "La frase de distancia es el dato operativo: identifica qué elementos permanecen fijos y qué igualdad debe cumplir P."),
+    slide("transferencia-localizacion", "Diseña una localización", [
+      { kind: "story", text: "Una antena debe quedar a 5 km de A y a la misma distancia de los pueblos B y C. Traza primero la circunferencia de centro A y radio 5 km; después, la mediatriz de BC. Cada intersección es una ubicación posible." },
+      { kind: "rule", title: "Método", text: "Traduce cada condición a un lugar, dibuja los lugares e interpreta sus intersecciones. En la próxima lección una condición angular generará un nuevo lugar: el arco capaz." },
     ]),
-    calc("calc-pa", "Distancia a los extremos", "A(−3, 0) y B(3, 0). Un punto P de la mediatriz está a 4 cm de altura sobre AB. ¿Cuánto vale PA, en cm?", nums(5), "PA = √(3² + 4²) = 5 cm, y PB también.", "Pitágoras con catetos 3 y 4."),
-    calc("calc-par", "Dos paralelas", "El lugar de los puntos a 2 cm de una recta son dos paralelas. ¿Qué distancia hay entre ellas, en cm?", nums(4), "2 + 2 = 4 cm.", "Una está a cada lado de la recta."),
-    calc("calc-bis", "En la bisectriz", "Un punto de la bisectriz de un ángulo está a 2 cm de uno de sus lados. ¿A cuántos cm está del otro?", nums(2), "Equidista de ambos lados: 2 cm.", "Es la definición."),
-    sort("clasifica-lugar", "¿Qué lugar es?", "Relaciona cada propiedad con el lugar geométrico.",
-      [["cir", "Circunferencia", "cobalt"], ["med", "Mediatriz", "amber"], ["bis", "Bisectriz", "emerald"], ["par", "Paralelas", "rose"]],
-      [["Puntos a 3 cm de un punto fijo", "cir"], ["Posiciones de un radar que alcanza 50 km", "cir"], ["Puntos a igual distancia de dos faros", "med"], ["Centro de la circunferencia que pasa por A y B", "med"], ["Puntos a igual distancia de los lados de un ángulo", "bis"], ["Centro de la circunferencia tangente a dos rectas", "bis"], ["Puntos a 5 m de una carretera recta", "par"], ["Posiciones a 2 cm del borde de una regla", "par"]],
-      "La propiedad de distancia decide el lugar.",
-    ),
-    pick("check-centro", "Centro de la circunferencia por tres puntos", "¿Cómo se halla el centro de la circunferencia que pasa por tres puntos no alineados?",
-      "Como intersección de las mediatrices de dos de los segmentos que los unen",
-      [["Como intersección de las bisectrices", "Eso da el centro de la inscrita."], ["Trazando alturas", "Las alturas dan el ortocentro."], ["Tomando el punto medio de uno de los segmentos", "Solo sirve si es un diámetro."]],
-      "El centro equidista de los tres puntos, así que está en dos mediatrices.",
-    ),
   ],
 };

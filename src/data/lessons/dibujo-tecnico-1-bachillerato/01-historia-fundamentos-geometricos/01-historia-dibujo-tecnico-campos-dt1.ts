@@ -1,47 +1,47 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { anim, pick, slide, sort } from "@/data/lessons/tec1-helpers";
+import { pick, slide, sort } from "@/data/lessons/tec1-helpers";
 
 export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
   slug: "historia-dibujo-tecnico-campos-dt1",
-  title: "1. Historia del dibujo técnico y campos de acción",
+  title: "1. Un lenguaje para construir",
   subtitle: DT1_SUBTITLES[1],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Un lenguaje para construir", [
-      { kind: "steps", items: [
-        "El **dibujo técnico** es el lenguaje gráfico con el que se define con **precisión** un objeto, una máquina o un edificio **antes de construirlo**.",
-        "A diferencia del dibujo artístico, no busca expresar una impresión: busca que **cualquier persona entrenada** obtenga de él **las mismas medidas y la misma forma**.",
-        "Para ello se apoya en la **geometría**, en **sistemas de representación** (cómo pasar del espacio al plano) y en la **normalización** (reglas comunes).",
-        "Hoy se dibuja a mano (croquis, trazados) y con **programas CAD**, pero los fundamentos son los mismos.",
-      ] },
-    ], undefined, "stack"),
-    slide("historia", "Cuatro hitos", [
-      { kind: "text", text: "Recorre los hitos que explican por qué dibujamos como dibujamos." },
-    ], anim("dt1-linea-tiempo-dibujo"), "visual-top"),
-    slide("campos", "Campos de acción", [
-      { kind: "steps", items: [
-        "**Dibujo arquitectónico**: plantas, alzados y secciones de edificios; se acota en metros y se dibuja a escalas reducidas (1:50, 1:100).",
-        "**Dibujo mecánico**: piezas y conjuntos de máquinas, con tolerancias en milímetros o menos.",
-        "**Dibujo eléctrico y electrónico**: esquemas con **símbolos normalizados**; importa la conexión, no la forma.",
-        "**Dibujo geológico y topográfico**: mapas con **curvas de nivel** y cortes del terreno (sistema de planos acotados).",
-        "**Dibujo urbanístico**: planos de ciudades, redes de calles y servicios.",
-      ] },
+    {
+      id: "pregunta-central", type: "storyboard", title: "¿Cómo construimos todos el mismo objeto?", scene: "dt1-plano-informacion",
+      phases: [
+        { eyebrow: "El problema", text: "Un dibujo bonito puede sugerir una pieza, pero obliga a imaginar lo que no se ve.", highlights: [{ text: "imaginar", tone: "amber" }] },
+        { eyebrow: "Primera respuesta", text: "Las vistas describen cada cara y eliminan la ambigüedad de la forma.", highlights: [{ text: "vistas", tone: "cobalt" }, { text: "forma", tone: "cobalt" }] },
+        { eyebrow: "Tamaño real", text: "Las medidas y la escala permiten fabricar el objeto con el tamaño correcto.", highlights: [{ text: "medidas", tone: "amber" }, { text: "escala", tone: "amber" }] },
+        { eyebrow: "Lenguaje común", text: "Los símbolos y la normalización hacen que dos técnicos interpreten lo mismo.", highlights: [{ text: "símbolos", tone: "emerald" }, { text: "normalización", tone: "emerald" }] },
+      ],
+      help: [{ label: "¿Qué cambia en cada fase?", message: "Compara qué duda elimina cada capa del plano: primero la forma, después el tamaño y por último la interpretación común." }],
+    },
+    pick("diagnostica-plano", "Detecta la información que falta", "Un taller recibe una perspectiva de una pieza con buen aspecto, pero sin cotas ni escala. ¿Qué impide fabricarla con seguridad?", "No se conoce su tamaño real: distintas piezas podrían corresponder al mismo dibujo", [["Falta colorearla para distinguir las caras", "El color puede ayudar a verla, pero no fija ninguna dimensión."], ["Falta indicar quién hizo el dibujo", "La autoría no permite deducir el tamaño."], ["No se ha usado un programa CAD", "Un croquis manual bien acotado sí puede comunicar el tamaño."]], "La forma y el tamaño son informaciones distintas. Las cotas y la escala evitan que el fabricante tenga que adivinar.", "Pregúntate qué dato necesitarías para elegir una medida de material."),
+    {
+      id: "documentos-profesionales", type: "storyboard", title: "El mismo lenguaje, documentos distintos", scene: "dt1-documentos-profesionales", autoplay: false,
+      phases: [
+        { eyebrow: "Arquitectura", text: "Una planta organiza espacios y usa escalas como 1:50 para representar un edificio completo.", highlights: [{ text: "planta", tone: "cobalt" }, { text: "1:50", tone: "amber" }] },
+        { eyebrow: "Mecánica", text: "Un plano de pieza añade cotas y tolerancias porque unas décimas pueden decidir si encaja.", highlights: [{ text: "tolerancias", tone: "amber" }] },
+        { eyebrow: "Electricidad", text: "Un esquema prioriza conexiones y símbolos: importa cómo funciona el circuito.", highlights: [{ text: "conexiones", tone: "emerald" }, { text: "símbolos", tone: "emerald" }] },
+        { eyebrow: "Territorio", text: "Un mapa topográfico usa curvas de nivel para convertir alturas en información legible.", highlights: [{ text: "curvas de nivel", tone: "violet" }] },
+      ],
+      help: [{ label: "¿Cómo comparo los documentos?", message: "Piensa qué decisión debe tomar quien lo recibe: distribuir espacio, fabricar, conectar o comprender el relieve." }],
+    },
+    sort("elige-documento", "Elige el documento útil", "Clasifica cada encargo por el documento que permitiría tomar decisiones sin adivinar.", [["arq", "Planta o plano de espacios", "cobalt"], ["mec", "Plano de pieza", "amber"], ["ele", "Esquema de conexiones", "emerald"], ["top", "Mapa topográfico", "violet"]], [["Distribuir aulas en un instituto", "arq"], ["Comprobar si un eje entra en un rodamiento", "mec"], ["Localizar por qué no se enciende una lámpara", "ele"], ["Trazar una carretera evitando una fuerte pendiente", "top"], ["Definir el grosor de una arandela", "mec"], ["Decidir dónde situar una escalera", "arq"]], "El documento se elige por la decisión que debe permitir: espacio, fabricación, conexión o relieve."),
+    slide("manual-cad", "La herramienta cambia; el lenguaje permanece", [
+      { kind: "compare", left: { title: "A mano", text: "El croquis permite pensar, probar y comunicar una idea con rapidez.", tone: "info" }, right: { title: "Con CAD", text: "Facilita editar, medir, reutilizar y compartir un modelo con precisión.", tone: "ok" } },
+      { kind: "rule", title: "Lo que ambos necesitan", text: "Vistas, escala, cotas, símbolos y normas siguen siendo necesarios: el programa no decide qué información debe comunicar el plano." },
     ]),
-    sort("clasifica-campos", "¿A qué campo pertenece?", "Asocia cada documento con su campo de acción.",
-      [["arq", "Arquitectónico y urbanístico", "cobalt"], ["mec", "Mecánico", "amber"], ["ele", "Eléctrico y electrónico", "emerald"], ["geo", "Geológico y topográfico", "rose"]],
-      [["Planta de una vivienda a escala 1:50", "arq"], ["Plano de las calles de un barrio", "arq"], ["Despiece de un engranaje con tolerancias", "mec"], ["Plano de taller de un eje", "mec"], ["Esquema de un cuadro eléctrico", "ele"], ["Esquema de un circuito con transistores", "ele"], ["Mapa con curvas de nivel", "geo"], ["Corte geológico del terreno", "geo"]],
-      "Cada campo tiene sus convenciones, pero todos comparten la geometría y la normalización.",
-    ),
-    pick("check-monge", "Quién sistematizó el diédrico", "¿Qué aportó Gaspard Monge al dibujo técnico?",
-      "La geometría descriptiva: representar objetos del espacio en el plano con el sistema diédrico",
-      [["La perspectiva cónica del Renacimiento", "Eso fue anterior: Brunelleschi y Alberti."], ["Las normas UNE", "Las normas son del siglo XX."], ["Los Elementos de geometría", "Es obra de Euclides."]],
-      "Monge convirtió el dibujo de proyecciones en un método riguroso para definir objetos.",
-    ),
-    pick("check-norma", "Por qué normalizar", "¿Por qué se normaliza el dibujo técnico (líneas, escalas, formatos, acotación)?",
-      "Para que cualquier técnico interprete el plano de la misma forma, sea quien sea quien lo haya hecho",
-      [["Para que los dibujos sean más bonitos", "No es una cuestión estética."], ["Porque los programas CAD lo exigen", "La norma existía antes de los programas."], ["Para que cada empresa tenga su propio estilo", "Justo lo contrario: un lenguaje común."]],
-      "Un plano es un documento de comunicación: sin reglas comunes se pueden cometer errores graves.",
-    ),
+    {
+      id: "transferencia", type: "storyboard", title: "Antes de entregar, comprueba el mensaje", scene: "dt1-plano-revision", autoplay: false,
+      phases: [
+        { eyebrow: "Forma", text: "¿Se entiende la geometría completa sin imaginar caras ocultas?", highlights: [{ text: "geometría", tone: "cobalt" }] },
+        { eyebrow: "Tamaño", text: "¿Las cotas y la escala permiten obtener las dimensiones reales?", highlights: [{ text: "cotas", tone: "amber" }, { text: "escala", tone: "amber" }] },
+        { eyebrow: "Lectura", text: "¿Los símbolos siguen una convención que entiende quien recibirá el documento?", highlights: [{ text: "símbolos", tone: "emerald" }] },
+      ],
+      help: [{ label: "¿Cómo reviso mi propio plano?", message: "Pide a otra persona que responda tres preguntas sin tu ayuda: qué forma tiene, cuánto mide y qué significan sus signos." }],
+    },
   ],
 };

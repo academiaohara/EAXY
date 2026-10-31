@@ -11,6 +11,7 @@ describe("getLessonStepPhase", () => {
     expect(getLessonStepPhase(stepOfType("concept"))).toBe("explanation");
     expect(getLessonStepPhase(stepOfType("animated_solution"))).toBe("resolution");
     expect(getLessonStepPhase(stepOfType("interactive_tool"))).toBe("exploration");
+    expect(getLessonStepPhase(stepOfType("storyboard"))).toBe("explanation");
     expect(getLessonStepPhase(stepOfType("fill_in_blank"))).toBe("practice");
     expect(getLessonStepPhase(stepOfType("fraction_pick"))).toBe("practice");
     expect(getLessonStepPhase(stepOfType("classify"))).toBe("practice");

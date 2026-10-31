@@ -1,45 +1,42 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { pick, slide, sort } from "@/data/lessons/tec1-helpers";
 
 export const geometriaGriegaPitagorasDt1Lesson: InteractiveLesson = {
   slug: "geometria-griega-pitagoras-dt1",
-  title: "2. Orígenes de la geometría: Thales, Pitágoras, Euclides e Hipatia",
+  title: "2. De medir a demostrar",
   subtitle: DT1_SUBTITLES[1],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Demostrar en lugar de medir", [
-      { kind: "steps", items: [
-        "Egipcios y babilonios usaban reglas prácticas de medida. Los **griegos** las convirtieron en **razonamientos demostrados**.",
-        "**Thales de Mileto** (s. VI a. C.): relaciona **segmentos proporcionales** entre rectas paralelas y demuestra que el ángulo inscrito en una **semicircunferencia es recto**.",
-        "**Pitágoras** y su escuela (s. VI a. C.): en todo triángulo rectángulo, $a^2 + b^2 = c^2$.",
-        "**Euclides** (c. 300 a. C.): en los **Elementos** ordena la geometría con definiciones, postulados y teoremas, y sus construcciones usan solo **regla y compás**.",
-        "**Hipatia de Alejandría** (c. 360–415): matemática y astrónoma que comentó las *Cónicas* de Apolonio y la *Aritmética* de Diofanto, y enseñó geometría en la ciudad que era el centro del saber antiguo.",
+    {
+      id: "pregunta-central", type: "storyboard", title: "¿Cómo sabemos que un método siempre funciona?", scene: "dt1-geometria-medida-demostracion",
+      phases: [
+        { eyebrow: "Resolver un caso", text: "Egipcios y babilonios medían terrenos y aplicaban recetas que funcionaban en problemas concretos.", highlights: [{ text: "medían", tone: "amber" }, { text: "concretos", tone: "amber" }] },
+        { eyebrow: "Buscar una regla", text: "Los geómetras griegos compararon casos y formularon propiedades generales.", highlights: [{ text: "propiedades generales", tone: "cobalt" }] },
+        { eyebrow: "Dar una razón", text: "Una demostración encadena ideas aceptadas para explicar por qué la propiedad vale siempre.", highlights: [{ text: "demostración", tone: "emerald" }, { text: "siempre", tone: "emerald" }] },
+      ],
+      help: [{ label: "¿Por qué no bastan muchos ejemplos?", message: "Una lista de casos puede apoyar una conjetura, pero no descarta que el siguiente caso falle; un argumento general sí cubre todos los que cumplen las condiciones." }],
+    },
+    pick("medir-o-demostrar", "¿Medición o demostración?", "Mides tres triángulos rectángulos y en todos se cumple a² + b² ≈ c². ¿Qué puedes afirmar todavía?", "Es una evidencia que sugiere la propiedad, pero no prueba todos los triángulos posibles", [["Ya está demostrado porque hay tres ejemplos", "Siempre podrían existir otros casos no medidos."], ["La propiedad es falsa porque aparece ≈", "La aproximación puede proceder del instrumento."], ["Solo funciona si los lados son enteros", "Los lados pueden tener cualquier longitud positiva."]], "Medir ayuda a descubrir una regularidad. Demostrar cubre infinitos casos mediante un razonamiento."),
+    {
+      id: "pitagoras-visual", type: "storyboard", title: "Pitágoras: una igualdad de áreas", scene: "dt1-pitagoras-areas",
+      phases: [
+        { eyebrow: "Construye", text: "Sobre cada lado del triángulo rectángulo dibujamos un cuadrado.", highlights: [{ text: "cuadrado", tone: "cobalt" }] },
+        { eyebrow: "Compara", text: "Los cuadrados de los catetos tienen áreas a² y b².", highlights: [{ text: "a²", tone: "violet" }, { text: "b²", tone: "amber" }] },
+        { eyebrow: "Concluye", text: "Esas dos áreas juntas equivalen al área c² del cuadrado de la hipotenusa.", highlights: [{ text: "c²", tone: "emerald" }, { text: "equivalen", tone: "emerald" }] },
+      ],
+      help: [{ label: "¿Qué representan los cuadrados?", message: "No son una decoración algebraica: cada término es el área de una figura construida sobre uno de los tres lados." }],
+    },
+    sort("razonamiento-o-receta", "Distingue receta y razonamiento", "Clasifica cada acción según el tipo de conocimiento que aporta.", [["rec", "Regla práctica o medición", "amber"], ["raz", "Razonamiento general", "emerald"]], [["Tensar una cuerda 3-4-5 para obtener un ángulo recto", "rec"], ["Comprobar una longitud con una regla", "rec"], ["Partir de postulados y deducir una propiedad", "raz"], ["Explicar la igualdad de Pitágoras comparando áreas", "raz"], ["Repetir una construcción que enseñó un artesano", "rec"], ["Probar que una conclusión vale para cualquier figura que cumpla las condiciones", "raz"]], "Una receta puede ser útil; el razonamiento añade las condiciones y la razón por la que funciona."),
+    slide("legado", "Cuatro aportaciones a una misma pregunta", [
+      { kind: "relations", items: [
+        { left: "Tales", relation: "usa proporciones y propiedades angulares para deducir", right: "lo que no puede medirse directamente", tone: "info" },
+        { left: "Pitágoras", relation: "relaciona", right: "los lados de todo triángulo rectángulo", tone: "key" },
+        { left: "Euclides", relation: "organiza definiciones, postulados y teoremas en", right: "una cadena lógica", tone: "ok" },
+        { left: "Hipatia", relation: "explica, comenta y transmite", right: "el razonamiento geométrico", tone: "warn" },
       ] },
-    ], undefined, "stack"),
-    slide("pit", "Pitágoras en acción", [
-      { kind: "text", text: "Cambia los catetos y comprueba que el cuadrado de la hipotenusa es la suma de los otros dos. Busca ternas con tres lados enteros." },
-    ], tool("dt1-pitagoras-explorador"), "visual-top"),
-    slide("thales", "El ángulo recto de Thales", [
-      { kind: "steps", items: [
-        "Si **AB** es un diámetro y **C** está en la circunferencia, el ángulo **ACB mide 90°**.",
-        "Es el caso particular del **arco capaz de 90°** (próxima lección): la semicircunferencia.",
-        "Se usa para trazar **perpendiculares** y **tangentes** con compás: el centro de la circunferencia auxiliar es el punto medio de un segmento.",
-        "La suma de ángulos de un triángulo es 180°, así que, si $\\hat{A} = 35^\\circ$, entonces $\\hat{B} = 55^\\circ$.",
-      ] },
+      { kind: "text", text: "En la semicircunferencia de Tales, el ángulo que abarca el diámetro es recto. Aquí importa como ejemplo de una propiedad demostrada; la construiremos más adelante." },
     ]),
-    calc("calc-hip", "La terna 3-4-5", "En un triángulo rectángulo los catetos miden 3 cm y 4 cm. ¿Cuánto mide la hipotenusa, en cm?", nums(5), "√(9 + 16) = √25 = 5 cm.", "Suma los cuadrados y extrae la raíz."),
-    calc("calc-cat", "Cateto desconocido", "Una escalera de 13 dm se apoya en una pared con el pie a 5 dm de ella. ¿A qué altura, en dm, toca la pared?", nums(12), "√(13² − 5²) = √144 = 12 dm.", "La escalera es la hipotenusa."),
-    calc("calc-thales", "Ángulo inscrito", "El triángulo ABC está inscrito en una semicircunferencia de diámetro AB y el ángulo en A mide 35°. ¿Cuánto mide el ángulo en B, en grados?", nums(55), "C = 90° (Thales), así que B = 180° − 90° − 35° = 55°.", "Primero, el ángulo en C."),
-    sort("clasifica-autor", "¿Quién lo aportó?", "Relaciona cada aportación con su autor.",
-      [["tha", "Thales", "cobalt"], ["pit", "Pitágoras", "amber"], ["euc", "Euclides", "emerald"], ["hip", "Hipatia", "rose"]],
-      [["El ángulo inscrito en una semicircunferencia es recto", "tha"], ["Segmentos proporcionales entre paralelas", "tha"], ["a² + b² = c² en el triángulo rectángulo", "pit"], ["Los Elementos: la geometría ordenada con postulados", "euc"], ["Construcciones con regla y compás", "euc"], ["Comentó las Cónicas de Apolonio", "hip"]],
-      "La geometría griega pasó de la medida práctica a la demostración.",
-    ),
-    pick("check-terna", "¿Es rectángulo?", "Un triángulo tiene lados de 6, 8 y 10 cm. ¿Es rectángulo?",
-      "Sí, porque 6² + 8² = 100 = 10²",
-      [["No, porque 6 + 8 ≠ 10", "Pitágoras usa los cuadrados."], ["No, porque todos los lados son distintos", "Un triángulo rectángulo puede tener los tres lados distintos."], ["Sí, porque 10 es el mayor", "El mayor lado no basta."]],
-      "Si se cumple a² + b² = c², el ángulo opuesto al lado mayor es recto.",
-    ),
+    pick("decide-metodo", "Elige un argumento fiable", "Quieres asegurar que una escuadra fabricada en serie forma 90°. ¿Qué comprobación usa la propiedad de Pitágoras?", "Medir 30 mm y 40 mm en los catetos y comprobar que la diagonal mide 50 mm", [["Mirar si el ángulo parece recto", "La apariencia cambia con la posición y no fija una condición geométrica."], ["Comprobar que los dos catetos miden lo mismo", "Eso produciría un triángulo isósceles, pero no garantiza 90°."], ["Medir solo la diagonal", "Hace falta relacionar los tres lados."]], "Como 30² + 40² = 50², el ángulo opuesto al lado de 50 mm debe ser recto."),
   ],
 };
