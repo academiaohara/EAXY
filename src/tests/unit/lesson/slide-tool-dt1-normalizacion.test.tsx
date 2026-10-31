@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { render } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { ESCALAS, ESPESORES, dimensionDibujo, dimensionReal, escalaAdecuada, espesorFino, formatoA, hojasA4, margenRecuadro, pieza, toleranciaPosicion } from "@/components/lesson/slide/tools/DtNormalizacionTools";
 import type { SlideToolId } from "@/lib/lesson/types";
@@ -56,5 +56,53 @@ describe("resultados de las herramientas de normalización", () => {
     expect(pieza(80, 50, 20, 30, 200).areaAlzado).toBe(80 * 50);
     expect(toleranciaPosicion("cadena", 4, 0.1)).toBeCloseTo(0.4);
     expect(toleranciaPosicion("paralelo", 4, 0.1)).toBeCloseTo(0.1);
+  });
+
+  it("representa un cubo mediante tres vistas cuadradas enlazadas", () => {
+    mount("dt1-vistas-explorador");
+    fireEvent.click(screen.getByRole("button", { name: "Cubo" }));
+
+    const sheet = screen.getByTestId("orthographic-sheet");
+    expect(within(sheet).getByTestId("view-front")).toHaveAttribute(
+      "data-size",
+      "40x40",
+    );
+    expect(within(sheet).getByTestId("view-top")).toHaveAttribute(
+      "data-size",
+      "40x40",
+    );
+    expect(within(sheet).getByTestId("view-left")).toHaveAttribute(
+      "data-size",
+      "40x40",
+    );
+    expect(sheet).toHaveTextContent("ALZADO");
+    expect(sheet).toHaveTextContent("PLANTA");
+    expect(sheet).toHaveTextContent("PERFIL IZQUIERDO");
+    expect(screen.getByText(/método europeo/i)).toBeInTheDocument();
+  });
+
+  it("aplica la escala a la geometría y mantiene la cota real", () => {
+    mount("dt1-escala-explorador", { a: 120, b: 80 });
+    const drawing = screen.getByTestId("scaled-object");
+    expect(drawing).toHaveAttribute("data-real-mm", "120");
+    expect(drawing).toHaveAttribute("data-drawing-mm", "60");
+    expect(drawing).toHaveAttribute("data-space-used", "75%");
+    expect(screen.getByTestId("sheet-title-block")).toHaveTextContent("1:2");
+    expect(screen.getByTestId("scale-real-dimension")).toHaveTextContent(
+      "120",
+    );
+  });
+
+  it("dibuja cotas con auxiliares, flechas interiores y cifra real", () => {
+    mount("dt1-acotacion-sistemas-explorador", { a: 4 });
+    const sheet = screen.getByTestId("dimensioning-sheet");
+    expect(within(sheet).getAllByTestId("dimension-extension")).toHaveLength(
+      6,
+    );
+    expect(within(sheet).getAllByTestId("dimension-arrow")).toHaveLength(6);
+    expect(within(sheet).getAllByTestId("dimension-label")[0]).toHaveTextContent(
+      "15",
+    );
+    expect(sheet).toHaveTextContent("COTAS EN mm");
   });
 });
