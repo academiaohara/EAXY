@@ -1330,7 +1330,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =

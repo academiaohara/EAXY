@@ -1,7 +1,7 @@
 "use client";
 
 import type { SlideBlock } from "@/lib/lesson/types";
-import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica } from "./scenes-compas";
+import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -28,6 +28,10 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <MediatrizPractica block={block} />;
     case "bisectriz-practica":
       return <BisectrizPractica block={block} />;
+    case "trasladar-angulo-compas":
+      return <TrasladarAnguloCompas block={block} />;
+    case "trasladar-practica":
+      return <TrasladarPractica block={block} />;
     default:
       return null;
   }

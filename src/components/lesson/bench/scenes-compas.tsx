@@ -301,7 +301,8 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 
 /* ───────────── Práctica paso a paso con compás y regla ───────────── */
 
-type Tipo = "centro" | "abertura" | "arco" | "regla";
+/** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
+type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla";
 
 type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
@@ -313,6 +314,8 @@ type Est = {
   /** Tramo de ángulos ya trazado en cada arco. */
   cub: ({ lo: number; hi: number } | null)[];
   clics: Pt[];
+  /** Puntos tocados en una fase `medida`. */
+  medida: Pt[];
 };
 
 type CfgArco = { centro: Pt; base: number; signo: 1 | -1; rhoMin: number; rhoMax: number; req: [number, number] };
@@ -324,6 +327,10 @@ type Def = {
   papel: (est: Est) => ReactNode;
   /** Puntos donde se puede clavar la punta en el centro número `idx`. */
   candidatos: (est: Est, idx: number) => Pt[];
+  /** Puntos entre los que se puede tomar una medida con el compás (fase `medida`). */
+  medibles?: (est: Est) => Pt[];
+  /** Compás fijo que se muestra aparte (por ejemplo, con la medida ya tomada). */
+  compasEspecial?: (est: Est, tipo: Tipo | undefined) => { n: Pt; m: Pt } | null;
   radioLim: (a: number) => [number, number];
   radioIni: (a: number, est: Est) => number;
   arco: (est: Est, n: number, radio: number, c: Pt) => CfgArco;
@@ -342,18 +349,20 @@ function mapaFases(fases: Tipo[]) {
   let a = -1;
   fases.forEach((t) => {
     if (t === "centro") c += 1;
-    if (t === "abertura") a += 1;
+    if (t === "abertura" || t === "medida") a += 1;
     if (t === "arco") arcos.push({ c, a });
   });
   return arcos;
 }
 
 const cuenta = (fases: Tipo[], hasta: number, t: Tipo) => fases.slice(0, hasta).filter((x) => x === t).length;
+/** Cuántas aberturas se han fijado antes de la fase `hasta` (por «abertura» o por «medida»). */
+const cuentaAb = (fases: Tipo[], hasta: number) => fases.slice(0, hasta).filter((x) => x === "abertura" || x === "medida").length;
 
 function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
   const { fases } = def;
   const mapa = mapaFases(fases);
-  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [] };
+  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [] };
   const [est, setEst] = useState<Est>(inicial);
   const [prev, setPrev] = useState<Est[]>([]);
   const [agarrada, setAgarrada] = useState(false);
@@ -380,7 +389,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
     const t = fases[f];
     const out: Est = { ...e, fase: f, radios: [...e.radios], cub: [...e.cub] };
     if (t === "abertura") {
-      const a = cuenta(fases, f, "abertura");
+      const a = cuentaAb(fases, f);
       if (out.radios[a] === undefined) out.radios[a] = def.radioIni(a, out);
     }
     if (t === "arco") {
@@ -411,6 +420,22 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
       avanzar({ ...est, centros: [...est.centros, cand], rho: def.rhoIni(nSig) });
       return;
     }
+    if (tipo === "medida") {
+      const cand = (def.medibles?.(est) ?? []).find((c) => dist(c, p) <= HIT);
+      if (!cand || (est.medida[0] && dist(est.medida[0], cand) < 1)) {
+        setAviso(est.medida.length === 0 ? "Toca uno de los dos puntos marcados para clavar la punta del compás." : "Toca el otro punto para colocar la mina.");
+        return;
+      }
+      if (est.medida.length === 0) {
+        setEst({ ...est, medida: [cand] });
+        setAviso(null);
+        return;
+      }
+      const radios = [...est.radios];
+      radios[cuentaAb(fases, est.fase)] = dist(est.medida[0], cand);
+      avanzar({ ...est, medida: [...est.medida, cand], radios });
+      return;
+    }
     if (tipo === "regla") {
       const sn = def.cortes(est).find((c) => dist(c, p) <= SNAP) ?? p;
       const clics = [...est.clics, sn];
@@ -429,7 +454,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
     if (!agarrada || bloqueada || !tipo) return;
     const p = puntero(svgRef.current, ev);
     if (tipo === "abertura") {
-      const aIdx = cuenta(fases, est.fase, "abertura");
+      const aIdx = cuentaAb(fases, est.fase);
       const n = nArcoPrevio;
       const cfg = cfgDe(n, est.radios[aIdx] ?? 80);
       if (!cfg) return;
@@ -469,7 +494,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
   };
   const onKey = (ev: ReactKeyboardEvent) => {
     if (tipo !== "abertura" || bloqueada) return;
-    const aIdx = cuenta(fases, est.fase, "abertura");
+    const aIdx = cuentaAb(fases, est.fase);
     const [rMin, rMax] = def.radioLim(aIdx);
     const paso = ev.shiftKey ? 12 : 4;
     const r0 = est.radios[aIdx] ?? 80;
@@ -490,7 +515,15 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
   });
 
   let compas: ReactNode = null;
-  if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla") {
+  const especial = def.compasEspecial?.(est, tipo) ?? null;
+  if (especial) {
+    const c = poseCompas(especial.n, especial.m);
+    compas = (
+      <g data-testid="bench-compas" pointerEvents="none" opacity={tipo === "medida" ? 1 : 0.55}>
+        <Compas pose={c.pose} open={c.open} />
+      </g>
+    );
+  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "medida") {
     const nn = Math.min(nDisp, mapa.length - 1);
     const cfg = cfgDe(nn, radioDe(nn));
     if (cfg) {
@@ -563,6 +596,12 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
         {def.papel(est)}
         <g data-testid="bench-arcos-practica">{arcosDibujados}</g>
         {est.clics.length >= 2 ? <ReglaTrazando a={est.clics[0]} b={est.clics[1]} p={pRegla} ext={28} testId="bench-regla-trazo" /> : null}
+        {est.medida.map((c, i) => (
+          <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">
+            <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AZUL} strokeWidth="1.6" />
+            <circle cx={c[0]} cy={c[1]} r="0.9" fill={AZUL} />
+          </g>
+        ))}
         {est.clics.map((c, i) => (
           <g key={i} data-testid="bench-clic" pointerEvents="none">
             <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
@@ -699,3 +738,140 @@ export function BisectrizPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
+
+/* ───────────── Trasladar un ángulo con compás ───────────── */
+
+const TV1: Pt = [110, 270];
+const TV2: Pt = [380, 270];
+const TR0 = 90;
+
+/** Papel común: el ángulo original en `V`, la nueva semirrecta en `V'` y los puntos que se van marcando. */
+function papelTrasladar(alfa: number, nombres: { pq: boolean; p2: boolean; q2: boolean }, r0: number) {
+  const P = enCirculo(TV1, r0, 0);
+  const Q = enCirculo(TV1, r0, alfa);
+  const P2 = enCirculo(TV2, r0, 0);
+  const Q2 = enCirculo(TV2, r0, alfa);
+  const lado = enCirculo(TV1, 170, alfa);
+  return (
+    <g>
+      <line x1={TV1[0]} y1={TV1[1]} x2={TV1[0] + 200} y2={TV1[1]} stroke={INK} strokeWidth="1.4" strokeLinecap="round" />
+      <line x1={TV1[0]} y1={TV1[1]} x2={lado[0]} y2={lado[1]} stroke={INK} strokeWidth="1.4" strokeLinecap="round" />
+      <line x1={TV2[0]} y1={TV2[1]} x2={TV2[0] + 220} y2={TV2[1]} stroke={INK} strokeWidth="1.4" strokeLinecap="round" />
+      <Punto p={TV1} nombre="V" dx={-16} dy={18} />
+      <Punto p={TV2} nombre="V′" dx={-18} dy={18} />
+      {nombres.pq ? (
+        <>
+          <Punto p={P} nombre="P" dx={6} dy={18} />
+          <Punto p={Q} nombre="Q" dx={8} dy={-6} />
+        </>
+      ) : null}
+      {nombres.p2 ? <Punto p={P2} nombre="P′" dx={6} dy={18} /> : null}
+      {nombres.q2 ? <Punto p={Q2} nombre="Q′" dx={8} dy={-6} color={VERDE} /> : null}
+    </g>
+  );
+}
+
+export function TrasladarAnguloCompas({ block }: { block: BenchBlock }) {
+  const alfa = clamp(Math.round(block.params?.a ?? 55), 25, 110);
+  const r0 = TR0;
+  const P = enCirculo(TV1, r0, 0);
+  const Q = enCirculo(TV1, r0, alfa);
+  const P2 = enCirculo(TV2, r0, 0);
+  const Q2 = enCirculo(TV2, r0, alfa);
+  const aQ2 = angDe(P2, Q2);
+  const cuerda = dist(P, Q);
+  const S = 24;
+  const [step, setStep] = useState(0);
+  const p = useProgreso(step, step === 0 ? 3000 : step === 1 ? 3000 : step === 2 ? 1 : step === 3 ? 3000 : 3600);
+  const mitad = `${alfa}°`;
+
+  const tV = step === 0 ? p : 1;
+  const tV2 = step === 1 ? p : step > 1 ? 1 : 0;
+  const tQ2 = step === 3 ? p : step > 3 ? 1 : 0;
+  const pb = step === 4 ? p : 1;
+  const lejos = enCirculo(TV2, 200, alfa);
+  const hastaBorde = lerpP(Q2, lejos, tramo(pb, 0.3, 0.85));
+
+  let comp: ReturnType<typeof poseCompas> | null = null;
+  if (step === 0) comp = poseCompas(TV1, enCirculo(TV1, r0, lerp(-6, alfa + 6, tV)));
+  else if (step === 1) comp = poseCompas(TV2, enCirculo(TV2, r0, lerp(-6, alfa + 6, tV2)));
+  else if (step === 2) comp = poseCompas(P, Q);
+  else if (step === 3) comp = poseCompas(P2, enCirculo(P2, cuerda, lerp(aQ2 - S, aQ2 + S, tQ2)));
+
+  return (
+    <BenchShell scene="trasladar-angulo-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con un ángulo y su traslado a otra semirrecta con compás">
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un ángulo y su traslado a otra semirrecta con compás" data-testid="bench-trasladar">
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
+        {papelTrasladar(alfa, { pq: step > 0 || p > 0.9, p2: step > 1 || (step === 1 && p > 0.9), q2: step > 3 || (step === 3 && p > 0.9) }, r0)}
+        <g data-testid="bench-arco-v">
+          <ArcoAnim c={TV1} r={r0} a1={-6} a2={alfa + 6} t={tV} />
+        </g>
+        {step >= 1 ? (
+          <g data-testid="bench-arco-v2">
+            <ArcoAnim c={TV2} r={r0} a1={-6} a2={alfa + 6} t={tV2} />
+          </g>
+        ) : null}
+        {step === 2 ? <line x1={P[0]} y1={P[1]} x2={Q[0]} y2={Q[1]} stroke={AMBAR} strokeWidth="2" strokeDasharray="6 4" data-testid="bench-cuerda" /> : null}
+        {step >= 3 ? (
+          <g data-testid="bench-arco-q2">
+            <ArcoAnim c={P2} r={cuerda} a1={aQ2 - S} a2={aQ2 + S} t={tQ2} />
+          </g>
+        ) : null}
+        {step >= 4 ? (
+          <g data-testid="bench-trasladado">
+            <ReglaTrazando a={TV2} b={Q2} p={pb} ext={0} color={VERDE} />
+            <line x1={Q2[0]} y1={Q2[1]} x2={hastaBorde[0]} y2={hastaBorde[1]} stroke={VERDE} strokeWidth="1.5" strokeLinecap="round" />
+            <g opacity={tramo(pb, 0.85, 1)}>
+              <Arco v={TV1} a1={0} a2={-alfa} r={52} color={AMBAR} text={mitad} textSize={14} dr={16} />
+              <Arco v={TV2} a1={0} a2={-alfa} r={52} color={AMBAR} text={mitad} textSize={14} dr={16} />
+            </g>
+          </g>
+        ) : null}
+        {comp ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={comp.pose} open={comp.open} />
+          </g>
+        ) : null}
+      </svg>
+    </BenchShell>
+  );
+}
+
+function defTrasladar(alfa: number): Def {
+  const radio0 = (est: Est) => est.radios[0] ?? 80;
+  const PQ = (est: Est): [Pt, Pt] => [enCirculo(TV1, radio0(est), 0), enCirculo(TV1, radio0(est), alfa)];
+  const P2 = (est: Est): Pt => enCirculo(TV2, radio0(est), 0);
+  const Q2 = (est: Est): Pt => enCirculo(TV2, radio0(est), alfa);
+  return {
+    scene: "trasladar-practica",
+    fases: ["centro", "abertura", "arco", "centro", "arco", "medida", "centro", "arco", "regla"],
+    papel: (est) => papelTrasladar(alfa, { pq: est.fase >= 3, p2: est.fase >= 5, q2: est.fase >= 8 }, radio0(est)),
+    candidatos: (est, idx) => (idx === 0 ? [TV1] : idx === 1 ? [TV2] : [P2(est)]),
+    medibles: (est) => PQ(est),
+    compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+    radioLim: () => [40, 130],
+    radioIni: () => 80,
+    rhoIni: (n) => (n === 2 ? -25 : 25),
+    arco: (est, n, radio, c) => {
+      if (n < 2) return { centro: c, base: 0, signo: 1, rhoMin: -30, rhoMax: alfa + 40, req: [-4, alfa + 4] };
+      return { centro: c, base: angDe(c, Q2(est)), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] };
+    },
+    cortes: (est) => [TV2, Q2(est)],
+    evaluar: (est) => {
+      const [p1, p2] = est.clics;
+      if (!p1 || !p2) return { ok: false, mensaje: "Faltan los dos puntos por los que pasa la regla." };
+      const q2 = Q2(est);
+      const bien = (dist(p1, TV2) <= SNAP + 2 && dist(p2, q2) <= SNAP + 2) || (dist(p1, q2) <= SNAP + 2 && dist(p2, TV2) <= SNAP + 2);
+      return bien
+        ? { ok: true, mensaje: "Correcto: el ángulo trasladado mide lo mismo que el original, porque los triángulos VPQ y V′P′Q′ tienen los tres lados iguales." }
+        : { ok: false, mensaje: "La regla debe pasar por el vértice V′ y por el punto Q′ donde se cortan los arcos. Pulsa «Reintentar»." };
+    },
+  };
+}
+
+export function TrasladarPractica({ block }: { block: BenchBlock }) {
+  const alfa = clamp(Math.round(block.params?.a ?? 55), 25, 110);
+  const [def] = useState(() => defTrasladar(alfa));
+  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
+}
