@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { angDe, clamp, dist, enCirculo, type Pt } from "./geometry";
+import { angDe, dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
-import { CELDA, CuadriculaEjercicio, gp, poligono } from "./scenes-transformaciones";
+import { ArcoAnim, MSHEET, MV, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { poligono } from "./scenes-transformaciones";
 import { Punto } from "./scenes-trazados";
 
 const etiqueta = { stroke: "#fffefa", strokeWidth: 3.5, paintOrder: "stroke" as const, strokeLinejoin: "round" as const };
@@ -103,7 +103,7 @@ export const HOMO_CENTRO = HO;
 const NOMBRES = ["A", "B", "C"];
 
 /** Práctica de hallar la imagen del vértice `v` (0 = A, 1 = B, 2 = C); las anteriores se muestran ya halladas. */
-function defHomotecia(v: number): Def {
+export function defHomotecia(v: number): Def {
   const P = HOMO_ORIG[v];
   const P2 = HOMO_IMG[v];
   const n = NOMBRES[v];
@@ -138,54 +138,3 @@ function defHomotecia(v: number): Def {
     },
   };
 }
-
-export function HomoteciaPractica({ block }: { block: BenchBlock }) {
-  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
-  const [def] = useState(() => defHomotecia(v));
-  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
-}
-
-/* ───────────── Homotecia en papel cuadriculado ───────────── */
-
-const CENTRO: [number, number] = [8, 7];
-const FIG_H: [number, number][] = [[10, 7], [10, 5], [9, 6]];
-
-export function HomoteciaCuadricula({ block }: { block: BenchBlock }) {
-  const raw = block.params?.a ?? 2;
-  const k = raw === 0.5 ? 0.5 : raw === 3 ? 3 : raw === -1 ? -1 : raw === -2 ? -2 : 2;
-  // con razón 1/2 la figura de partida es el doble de grande, para que la imagen caiga en intersecciones
-  const figura: [number, number][] = k === 0.5 ? [[12, 7], [12, 3], [10, 5]] : FIG_H;
-  const esperado = figura.map(([x, y]) => [CENTRO[0] + k * (x - CENTRO[0]), CENTRO[1] + k * (y - CENTRO[1])] as [number, number]);
-  const o = gp(CENTRO);
-  return (
-    <CuadriculaEjercicio
-      block={block}
-      scene="homotecia-cuadricula"
-      figura={figura}
-      esperado={esperado}
-      flechas
-      mensajeOk={k === 0.5 ? "Correcto: cada vértice queda en la recta que lo une con O, a la mitad de su distancia a O. La figura obtenida es una reducción semejante a la original, con razón 1/2." : `Correcto: cada vértice queda en la recta que lo une con O, a ${Math.abs(k)} ${Math.abs(k) === 1 ? "vez" : "veces"} su distancia a O${k < 0 ? " y al otro lado de O" : ""}. La figura obtenida es semejante a la original, con razón ${k}.`}
-      decoracion={
-        <g>
-          <clipPath id="homotecia-rejilla">
-            <rect x={22} y={22} width={24 * CELDA} height={14 * CELDA} />
-          </clipPath>
-          <g clipPath="url(#homotecia-rejilla)">
-          {figura.map((g, i) => {
-            const v = gp(g);
-            const dx = v[0] - o[0];
-            const dy = v[1] - o[1];
-            const largo = 14;
-            return <line key={i} x1={o[0] - dx * (k < 0 ? largo : 0)} y1={o[1] - dy * (k < 0 ? largo : 0)} x2={o[0] + dx * largo} y2={o[1] + dy * largo} stroke={INK} strokeOpacity="0.35" strokeWidth="1" strokeDasharray="6 4" />;
-          })}
-          </g>
-          <Punto p={o} nombre="O" dx={-18} dy={18} color={AZUL} />
-          <text x={34} y={48} fontSize="17" fontWeight="800" fill={AMBAR} fontFamily={SANS} {...etiqueta}>
-            k = {k === 0.5 ? "1/2" : k}
-          </text>
-        </g>
-      }
-    />
-  );
-}
-

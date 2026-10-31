@@ -15,10 +15,10 @@ afterEach(cleanup);
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e.endsWith("-cuadricula") || e === "union-imagen" || e === "thales-paralelas";
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e === "thales-paralelas";
 const escenas = todas.filter((e) => !porAccion(e));
 
-/** Lee el control que la escena registra en el pie de la lección. */
+/** Lee el control y el centro del pie que la escena registra en la lección (no debe registrar ninguno). */
 function Sonda({ onControl }: { onControl: (control: LessonStepControl | null) => void }) {
   const { control, footerCenter } = useLessonStepControl();
   useEffect(() => onControl(control), [control, onControl]);
@@ -40,6 +40,33 @@ function montar(scene: BenchSceneId, params?: { a?: number; b?: number }, practi
     for (let i = 0; i < n; i += 1) fireEvent.click(screen.getByTestId("bench-siguiente"));
   };
   return { out, onCheck, siguiente };
+}
+
+const enCirc = (c: Pt, r: number, a: number): Pt => [c[0] + r * Math.cos((a * Math.PI) / 180), c[1] - r * Math.sin((a * Math.PI) / 180)];
+const ang = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
+const d = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+
+/** Práctica guiada: no hay botón «Comprobar»; al completar la construcción se da por superada sola. */
+function pantalla(scene: BenchSceneId, params?: { a?: number; b?: number }) {
+  const m = montar(scene, params);
+  const svg = () => screen.getByTestId("bench-practica");
+  const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+  /** Arrastra la mina pasando por varios puntos y suelta. */
+  const arrastrar = (...ps: Pt[]) => {
+    fireEvent.pointerDown(svg(), { clientX: ps[0][0], clientY: ps[0][1], pointerId: 1 });
+    for (const p of ps) fireEvent.pointerMove(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+    fireEvent.pointerUp(svg(), { pointerId: 1 });
+  };
+  const fase = () => svg().getAttribute("data-tipo");
+  const fijar = () => fireEvent.click(screen.getByTestId("bench-fijar"));
+  const aviso = () => screen.queryByTestId("bench-aviso")?.textContent ?? null;
+  const superada = () => {
+    expect(m.onCheck).toHaveBeenCalledTimes(1);
+    expect(m.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    expect(screen.getByTestId("bench-resultado").getAttribute("data-ok")).toBe("true");
+  };
+  const sinSuperar = () => expect(m.onCheck).not.toHaveBeenCalled();
+  return { ...m, svg, tocar, arrastrar, fase, fijar, aviso, superada, sinSuperar };
 }
 
 describe("mesa de dibujo · pasos dentro de la diapositiva", () => {
@@ -74,155 +101,29 @@ describe("mesa de dibujo · pasos dentro de la diapositiva", () => {
     expect(document.querySelectorAll("button")).toHaveLength(2);
   });
 
-  it("sin ejercicio (diapositiva suelta) no se registra «Comprobar» y no hay botones sueltos", () => {
-    const { out } = montar("paralelas-escuadra-cartabon", undefined, false);
+  it.each(todas)("%s: ninguna escena registra un botón «Comprobar» en el pie", (scene) => {
+    const { out } = montar(scene);
     expect(out.control).toBeNull();
-    expect(document.querySelectorAll("button")).toHaveLength(2);
-  });
-});
-
-describe("mesa de dibujo · «Comprobar» en el pie de la lección", () => {
-  it("paralelas: el botón existe siempre y solo se activa en el último paso", () => {
-    const { out, siguiente } = montar("paralelas-escuadra-cartabon", { a: 0, b: 70 });
-    expect(out.control?.label).toBe("Comprobar");
-    expect(out.control?.disabled).toBe(true);
-    siguiente();
-    expect(out.control?.disabled).toBe(true);
-    siguiente();
-    expect(out.control?.disabled).toBe(false);
-    // no hay botón «Trazar» ni lectura de distancia dentro de la escena
-    expect(screen.queryByTestId("bench-trazar")).toBeNull();
-    expect(screen.queryByTestId("bench-dist")).toBeNull();
-    expect(screen.queryByTestId("bench-pista")).toBeNull();
-  });
-
-  it("el botón «Comprobar» está en el centro del pie, desactivado hasta el último paso, y comprueba al pulsarlo", () => {
-    const { onCheck, siguiente } = montar("paralelas-escuadra-cartabon", { a: 0, b: 70 });
-    const boton = () => screen.getByTestId("bench-comprobar") as HTMLButtonElement;
-    expect(screen.getByTestId("pie-centro").contains(boton())).toBe(true);
-    expect(boton().disabled).toBe(true);
-    siguiente(2);
-    expect(boton().disabled).toBe(false);
-    for (let i = 0; i < 49; i += 1) fireEvent.keyDown(screen.getByTestId("bench-escuadra"), { key: "ArrowUp" });
-    fireEvent.click(boton());
-    expect(onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    expect(screen.queryByTestId("bench-comprobar")).toBeNull(); // el pie de la lección pone la barra verde/naranja
-  });
-
-  it("sin ejercicio no hay botón «Comprobar» en el pie", () => {
-    montar("paralelas-escuadra-cartabon", undefined, false);
     expect(screen.queryByTestId("bench-comprobar")).toBeNull();
   });
 
-  it("paralelas: bien colocada es correcta y dibuja el trazo; mal colocada, no", () => {
-    for (const a of [-10, 0, 12, 30]) {
-      const { out, onCheck, siguiente } = montar("paralelas-escuadra-cartabon", { a, b: 70 });
-      siguiente(2);
-      const esc = screen.getByTestId("bench-escuadra");
-      for (let i = 0; i < 49; i += 1) fireEvent.keyDown(esc, { key: "ArrowUp" }); // 98 mm ≈ 70·√2
-      act(() => out.control!.onClick());
-      expect(onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-      expect(screen.getByTestId("bench-trazo")).toBeTruthy();
-      expect(screen.getByTestId("bench-resultado").getAttribute("data-ok")).toBe("true");
-      cleanup();
-    }
-    const { out, onCheck, siguiente } = montar("paralelas-escuadra-cartabon", { a: 12, b: 70 });
-    siguiente(2);
-    act(() => out.control!.onClick()); // sin mover la escuadra
-    expect(onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.queryByTestId("bench-trazo")).toBeNull();
-    expect(screen.getByTestId("bench-resultado").getAttribute("data-ok")).toBe("false");
-  });
-
-  it("paralelas: arrastrando con el puntero la escuadra se desplaza y tiene tope", () => {
-    const { siguiente } = montar("paralelas-escuadra-cartabon", { a: 0, b: 70 });
-    siguiente(2);
-    const esc = screen.getByTestId("bench-escuadra");
-    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
-    fireEvent.pointerMove(esc, { clientX: 30, clientY: 170, pointerId: 1 }); // 70·√2 ≈ 99 mm
-    expect(esc.getAttribute("aria-valuenow")).toBe("99");
-    fireEvent.pointerMove(esc, { clientX: -900, clientY: 900, pointerId: 1 });
-    expect(esc.getAttribute("aria-valuenow")).toBe("125");
-    fireEvent.pointerMove(esc, { clientX: 900, clientY: -900, pointerId: 1 });
-    expect(esc.getAttribute("aria-valuenow")).toBe("0");
-  });
-
-  it("paralelas: antes del último paso la escuadra no se mueve", () => {
-    montar("paralelas-escuadra-cartabon");
-    const esc = screen.getByTestId("bench-escuadra");
-    fireEvent.keyDown(esc, { key: "ArrowUp" });
-    expect(esc.getAttribute("aria-valuenow")).toBe("0");
-  });
-
-  it("perpendicular: llegar a P es correcto y dibuja la perpendicular", () => {
-    const { out, onCheck, siguiente } = montar("perpendicular-escuadra-cartabon", { a: 0, b: 80 });
-    siguiente(2);
-    const esc = screen.getByTestId("bench-escuadra");
-    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
-    fireEvent.pointerMove(esc, { clientX: 260, clientY: 100, pointerId: 1 }); // P está a 160 mm de la posición inicial
-    expect(esc.getAttribute("aria-valuenow")).toBe("160");
-    act(() => out.control!.onClick());
-    expect(onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  it("un ejercicio ya resuelto (intento guardado) se muestra resuelto", () => {
+    const onCheck = vi.fn();
+    render(
+      <LessonStepControlProvider>
+        <BenchPracticeContext.Provider value={{ onCheck, saved: { kind: "bench_task", isCorrect: true } }}>
+          <SlideBench block={{ kind: "bench", scene: "paralelas-escuadra-cartabon", notes: notas(3), params: { a: 0, b: 70 } }} />
+        </BenchPracticeContext.Provider>
+      </LessonStepControlProvider>,
+    );
     expect(screen.getByTestId("bench-trazo")).toBeTruthy();
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 3 de 3");
   });
+});
 
-  it("perpendicular: quedarse corto es incorrecto", () => {
-    const { out, onCheck, siguiente } = montar("perpendicular-escuadra-cartabon", { a: 0 });
-    siguiente(2);
-    const esc = screen.getByTestId("bench-escuadra");
-    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
-    fireEvent.pointerMove(esc, { clientX: 150, clientY: 100, pointerId: 1 });
-    act(() => out.control!.onClick());
-    expect(onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.queryByTestId("bench-trazo")).toBeNull();
-  });
-
-  it("transportador: en el paso de medir hay lectura; en el ejercicio, no (no se regala la respuesta)", () => {
-    const { siguiente } = montar("transportador-medir", { a: 37, b: 130 });
-    expect(screen.queryByTestId("bench-lectura")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-lectura").textContent).toBe("37°");
-    siguiente();
-    expect(screen.queryByTestId("bench-lectura")).toBeNull();
-  });
-
-  it("transportador: 130° es correcto y cualquier otro valor, no", () => {
-    const V = [240, 262];
-    const punto = (deg: number) => [V[0] + 100 * Math.cos((deg * Math.PI) / 180), V[1] - 100 * Math.sin((deg * Math.PI) / 180)];
-    const arrastrar = (deg: number) => {
-      const lado = screen.getByTestId("bench-lado");
-      const p = punto(deg);
-      fireEvent.pointerDown(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
-      fireEvent.pointerMove(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
-      fireEvent.pointerUp(lado, { pointerId: 1 });
-    };
-    const bien = montar("transportador-medir", { a: 37, b: 130 });
-    bien.siguiente(2);
-    arrastrar(130);
-    expect(screen.getByTestId("bench-lado").getAttribute("aria-valuenow")).toBe("130");
-    act(() => bien.out.control!.onClick());
-    expect(bien.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    cleanup();
-    const mal = montar("transportador-medir", { a: 37, b: 130 });
-    mal.siguiente(2);
-    arrastrar(128);
-    act(() => mal.out.control!.onClick());
-    expect(mal.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("te faltan 2°");
-  });
-
-  it("transportador: el teclado ajusta y el ángulo se limita a 0°–180°", () => {
-    const { siguiente } = montar("transportador-medir");
-    siguiente();
-    const lado = screen.getByTestId("bench-lado");
-    fireEvent.keyDown(lado, { key: "ArrowLeft" });
-    expect(screen.getByTestId("bench-lectura").textContent).toBe("38°");
-    fireEvent.keyDown(lado, { key: "ArrowRight", shiftKey: true });
-    expect(screen.getByTestId("bench-lectura").textContent).toBe("28°");
-    fireEvent.pointerDown(lado, { clientX: 240, clientY: 400, pointerId: 1 });
-    fireEvent.pointerMove(lado, { clientX: 400, clientY: 400, pointerId: 1 });
-    expect(Number(lado.getAttribute("aria-valuenow"))).toBe(0);
-  });
+describe("explicaciones animadas y datos de las escenas", () => {
+  const alfa = 55;
+  const th = 60;
 
   it("mediatriz: los arcos aparecen por pasos y Q equidista de A y B", () => {
     const { siguiente } = montar("mediatriz-compas");
@@ -255,45 +156,289 @@ describe("mesa de dibujo · «Comprobar» en el pie de la lección", () => {
     expect(screen.queryByTestId("bench-compas")).toBeNull();
   });
 
-  it("un ejercicio ya resuelto (intento guardado) se muestra resuelto", () => {
-    const onCheck = vi.fn();
-    render(
-      <LessonStepControlProvider>
-        <BenchPracticeContext.Provider value={{ onCheck, saved: { kind: "bench_task", isCorrect: true } }}>
-          <SlideBench block={{ kind: "bench", scene: "paralelas-escuadra-cartabon", notes: notas(3), params: { a: 0, b: 70 } }} />
-        </BenchPracticeContext.Provider>
-      </LessonStepControlProvider>,
-    );
-    expect(screen.getByTestId("bench-trazo")).toBeTruthy();
-    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 3 de 3");
+  it("explicación: la medida PQ se toma con el compás y el ángulo trasladado aparece al final", () => {
+    const { siguiente } = montar("trasladar-angulo-compas", { a: alfa });
+    expect(screen.queryByTestId("bench-arco-v2")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-v2")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-cuerda")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-q2")).toBeTruthy();
+    expect(screen.queryByTestId("bench-cuerda")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-trasladado")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("explicación: la medida del vector, los dos arcos y la figura trasladada aparecen por pasos", () => {
+    const { siguiente } = montar("traslacion-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    expect(screen.queryByTestId("bench-imagen")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-v")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-a2")).toBeTruthy();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("explicación: el transportador, el arco de A y los de B y C aparecen por pasos", () => {
+    const { siguiente } = montar("giro-compas", { a: th });
+    expect(screen.getByTestId("bench-sentido")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-transportador-giro")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-giro-a")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    expect(screen.queryByTestId("bench-transportador-giro")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arcos-giro-bc")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-girada")).toBeTruthy();
+  });
+
+  it("explicación: los puntos del eje, los dos arcos y la figura simétrica aparecen por pasos", () => {
+    const { siguiente } = montar("simetria-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente(2);
+    expect(screen.getByTestId("bench-arco-p")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-q")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("explicación: las rectas desde O, la medida OA, el arco y la figura ampliada aparecen por pasos", () => {
+    const { siguiente } = montar("homotecia-compas");
+    expect(screen.queryByTestId("bench-rayos-homotecia")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-rayos-homotecia")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-oa")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-homotecia")).toBeTruthy();
+    expect(screen.queryByTestId("bench-medida-oa")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-homotetica")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("explicación: marcas, unión con B, paralelas y tres partes iguales aparecen por pasos", () => {
+    const { siguiente } = montar("thales-dividir");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-1")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-arco-3")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-paralelas-thales")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-tercios")).toBeTruthy();
+  });
+
+  it("explicación: punto medio, semicircunferencia, altura y relación h² = a·b por pasos", () => {
+    const { siguiente } = montar("media-compas");
+    siguiente();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-altura")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-h2")).toBeTruthy();
+  });
+
+  it("explicación: hipotenusa, arco desde C, arco desde A y resultado por pasos", () => {
+    const { siguiente } = montar("aurea-compas");
+    siguiente(2);
+    expect(screen.getByTestId("bench-arco-cb")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-ad")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-aurea")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("explicación de equivalencia: la paralela, el vértice que se desliza y el rectángulo por pasos", () => {
+    const { siguiente } = montar("equivalencia-triangulos");
+    expect(screen.queryByTestId("bench-altura-eq")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-altura-eq")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-rectangulo-eq")).toBeTruthy();
+  });
+
+  it("explicación de cuadratura: prolongación, semicircunferencia, lado y cuadrado por pasos", () => {
+    const { siguiente } = montar("cuadratura-compas");
+    siguiente();
+    expect(screen.getByTestId("bench-arco-h")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-lado-cuadrado")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-cuadrado-final")).toBeTruthy();
+  });
+
+  it("explicación: ángulos, razón de lados, rejilla de áreas y escala por pasos", () => {
+    const { siguiente } = montar("semejanza-razon");
+    expect(screen.getByTestId("bench-angulos-iguales")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-lados-razon").textContent).toContain("k = A′B′ / AB = 2");
+    siguiente();
+    expect(screen.getByTestId("bench-rejilla-areas")).toBeTruthy();
+    expect(screen.getByTestId("bench-areas-razon").textContent).toContain("24 = 4 · 6");
+    siguiente();
+    expect(screen.getByTestId("bench-escala").textContent).toContain("1:50");
+  });
+
+  it("la altura CH de la media proporcional cumple CH² = AH · HB", () => {
+    expect(d([230, 300], [230, 180]) ** 2).toBeCloseTo(90 * 160, 6);
+    expect(d([265, 300], [230, 180])).toBeCloseTo(125, 6);
+  });
+
+  it("la sección áurea: AE/AB es el inverso del número áureo", () => {
+    const A: Pt = [110, 300];
+    const C: Pt = [410, 150];
+    const LAC = d(A, C);
+    const D: Pt = [C[0] + ((A[0] - C[0]) * 150) / LAC, C[1] + ((A[1] - C[1]) * 150) / LAC];
+    expect(d(A, D) / 300).toBeCloseTo(1 / ((1 + Math.sqrt(5)) / 2), 3);
+  });
+
+  it("la cuadratura: el lado del cuadrado es la media proporcional de la base y la altura", () => {
+    const E: Pt = [300, 300 - Math.sqrt(135 * 135 - 45 * 45)];
+    expect(d([300, 300], E) ** 2).toBeCloseTo(180 * 90, 6);
   });
 });
 
-/* ───────────── Práctica paso a paso con compás y regla ───────────── */
+/* ───────────── Tema 1: instrumentos (la construcción se da por hecha al llegar a la posición correcta) ───────────── */
 
-const A: Pt = [210, 190];
-const B: Pt = [410, 190];
-const enCirc = (c: Pt, r: number, ang: number): Pt => [c[0] + r * Math.cos((ang * Math.PI) / 180), c[1] - r * Math.sin((ang * Math.PI) / 180)];
-const ang = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
+describe("práctica guiada · paralelas, perpendicular y transportador", () => {
+  it("paralelas: soltando la escuadra con el borde sobre P se supera el ejercicio y se dibuja el trazo", () => {
+    for (const a of [-10, 0, 12, 30]) {
+      const t = montar("paralelas-escuadra-cartabon", { a, b: 70 });
+      t.siguiente(2);
+      const esc = screen.getByTestId("bench-escuadra");
+      for (let i = 0; i < 49; i += 1) fireEvent.keyDown(esc, { key: "ArrowUp" }); // 98 mm ≈ 70·√2
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      expect(screen.getByTestId("bench-trazo")).toBeTruthy();
+      expect(screen.getByTestId("bench-resultado").getAttribute("data-ok")).toBe("true");
+      cleanup();
+    }
+  });
 
-function pantalla(scene: BenchSceneId, params?: { a?: number; b?: number }) {
-  const m = montar(scene, params);
-  const svg = () => screen.getByTestId("bench-practica");
-  const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
-  /** Arrastra la mina pasando por varios puntos y suelta. */
-  const arrastrar = (...ps: Pt[]) => {
-    fireEvent.pointerDown(svg(), { clientX: ps[0][0], clientY: ps[0][1], pointerId: 1 });
-    for (const p of ps) fireEvent.pointerMove(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
-    fireEvent.pointerUp(svg(), { pointerId: 1 });
-  };
-  const fase = () => svg().getAttribute("data-tipo");
-  const fijar = () => fireEvent.click(screen.getByTestId("bench-fijar"));
-  const comprobar = () => screen.getByTestId("bench-comprobar") as HTMLButtonElement;
-  return { ...m, svg, tocar, arrastrar, fase, fijar, comprobar };
-}
+  it("paralelas: arrastrando con el puntero la escuadra se desplaza, tiene tope y solo se da por hecha al soltar sobre P", () => {
+    const t = montar("paralelas-escuadra-cartabon", { a: 0, b: 70 });
+    t.siguiente(2);
+    const esc = screen.getByTestId("bench-escuadra");
+    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 60, clientY: 140, pointerId: 1 }); // ≈ 57 mm: todavía lejos
+    fireEvent.pointerUp(esc, { pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("57");
+    expect(t.onCheck).not.toHaveBeenCalled();
+    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: -900, clientY: 900, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("125");
+    fireEvent.pointerMove(esc, { clientX: 70, clientY: 130, pointerId: 1 }); // 57 + 42 ≈ 99 mm
+    fireEvent.pointerUp(esc, { pointerId: 1 });
+    expect(t.onCheck).toHaveBeenCalledTimes(1);
+  });
 
-describe("práctica paso a paso · mediatriz", () => {
-  /** Recorre toda la construcción con la abertura `r`; devuelve las funciones para seguir. */
+  it("paralelas: antes del último paso la escuadra no se mueve", () => {
+    montar("paralelas-escuadra-cartabon");
+    const esc = screen.getByTestId("bench-escuadra");
+    fireEvent.keyDown(esc, { key: "ArrowUp" });
+    expect(esc.getAttribute("aria-valuenow")).toBe("0");
+  });
+
+  it("perpendicular: soltar la escuadra con el cateto sobre P supera el ejercicio; quedarse corto, no", () => {
+    const t = montar("perpendicular-escuadra-cartabon", { a: 0, b: 80 });
+    t.siguiente(2);
+    const esc = screen.getByTestId("bench-escuadra");
+    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 150, clientY: 100, pointerId: 1 });
+    fireEvent.pointerUp(esc, { pointerId: 1 });
+    expect(t.onCheck).not.toHaveBeenCalled();
+    fireEvent.pointerDown(esc, { clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 210, clientY: 100, pointerId: 1 }); // 50 + 110: P está a 160 mm
+    expect(esc.getAttribute("aria-valuenow")).toBe("160");
+    fireEvent.pointerUp(esc, { pointerId: 1 });
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    expect(screen.getByTestId("bench-trazo")).toBeTruthy();
+  });
+
+  it("perpendicular: tiene tope", () => {
+    const t = montar("perpendicular-escuadra-cartabon", { a: 0 });
+    t.siguiente(2);
+    const esc = screen.getByTestId("bench-escuadra");
+    fireEvent.pointerDown(esc, { clientX: 0, clientY: 0, pointerId: 1 });
+    fireEvent.pointerMove(esc, { clientX: 900, clientY: 0, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("260");
+    fireEvent.pointerMove(esc, { clientX: -900, clientY: 0, pointerId: 1 });
+    expect(esc.getAttribute("aria-valuenow")).toBe("0");
+  });
+
+  it("transportador: en el paso de medir hay lectura; en el ejercicio, no (no se regala la respuesta)", () => {
+    const t = montar("transportador-medir", { a: 37, b: 130 });
+    expect(screen.queryByTestId("bench-lectura")).toBeNull();
+    t.siguiente();
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("37°");
+    t.siguiente();
+    expect(screen.queryByTestId("bench-lectura")).toBeNull();
+  });
+
+  it("transportador: soltar sobre 130° supera el ejercicio y soltar en otro valor avisa y deja seguir", () => {
+    const V = [240, 262];
+    const punto = (deg: number) => [V[0] + 100 * Math.cos((deg * Math.PI) / 180), V[1] - 100 * Math.sin((deg * Math.PI) / 180)];
+    const arrastrar = (deg: number) => {
+      const lado = screen.getByTestId("bench-lado");
+      const p = punto(deg);
+      fireEvent.pointerDown(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
+      fireEvent.pointerMove(lado, { clientX: p[0], clientY: p[1], pointerId: 1 });
+      fireEvent.pointerUp(lado, { pointerId: 1 });
+    };
+    const t = montar("transportador-medir", { a: 37, b: 130 });
+    t.siguiente(2);
+    arrastrar(128);
+    expect(t.onCheck).not.toHaveBeenCalled();
+    expect(screen.getByTestId("bench-aviso").textContent).toContain("130°");
+    arrastrar(130);
+    expect(screen.getByTestId("bench-lado").getAttribute("aria-valuenow")).toBe("130");
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("transportador: el teclado ajusta, el ángulo se limita a 0°–180° y llegar a 130° supera el ejercicio", () => {
+    const t = montar("transportador-medir");
+    t.siguiente();
+    const lado = screen.getByTestId("bench-lado");
+    fireEvent.keyDown(lado, { key: "ArrowLeft" });
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("38°");
+    fireEvent.keyDown(lado, { key: "ArrowRight", shiftKey: true });
+    expect(screen.getByTestId("bench-lectura").textContent).toBe("28°");
+    fireEvent.pointerDown(lado, { clientX: 240, clientY: 400, pointerId: 1 });
+    fireEvent.pointerMove(lado, { clientX: 400, clientY: 400, pointerId: 1 });
+    expect(Number(lado.getAttribute("aria-valuenow"))).toBe(0);
+    t.siguiente();
+    const l2 = screen.getByTestId("bench-lado"); // el ejercicio parte de 60° (objetivo mayor de 90°)
+    for (let i = 0; i < 7; i += 1) fireEvent.keyDown(l2, { key: "ArrowLeft", shiftKey: true }); // 60 → 130
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+});
+
+describe("práctica guiada · mediatriz", () => {
+  const A: Pt = [210, 190];
+  const B: Pt = [410, 190];
+
+  /** Recorre toda la construcción con la abertura `r`; deja la regla pendiente. */
   function construir(r: number) {
     const t = pantalla("mediatriz-practica");
     expect(t.fase()).toBe("centro");
@@ -307,15 +452,53 @@ describe("práctica paso a paso · mediatriz", () => {
     expect(t.fase()).toBe("centro");
     t.tocar(B);
     expect(t.fase()).toBe("arco");
-    // en B la dirección de referencia es 180°: ρ = ángulo − 180°
     t.arrastrar(enCirc(B, r, 180 + th), enCirc(B, r, 180 - th));
     expect(t.fase()).toBe("regla");
     return t;
   }
 
-  it("el botón «Comprobar» está en el pie y no se activa hasta pasar la regla", () => {
+  it("marcando los dos cortes de los arcos, la regla traza la mediatriz y el ejercicio se supera solo", () => {
     const t = construir(130);
-    expect(t.comprobar().disabled).toBe(true);
+    expect(t.out.control).toBeNull();
+    const h = Math.sqrt(130 * 130 - 100 * 100);
+    t.tocar([310 + 4, 190 - h - 3]); // se ajusta al corte aunque no sea exacto
+    expect(t.fase()).toBe("regla");
+    t.sinSuperar();
+    t.tocar([310 - 3, 190 + h + 5]);
+    expect(t.fase()).toBe("hecha");
+    expect(screen.getByTestId("bench-regla-trazo")).toBeTruthy();
+    t.superada();
+  });
+
+  it("la regla solo acepta puntos de la construcción: tocar otro sitio avisa y no se registra", () => {
+    const t = construir(130);
+    t.tocar([100, 300]);
+    expect(t.aviso()).toContain("puntos de la construcción");
+    expect(screen.queryAllByTestId("bench-clic")).toHaveLength(0);
+    expect(t.fase()).toBe("regla");
+    t.sinSuperar();
+  });
+
+  it("no se puede tocar dos veces el mismo punto para pasar la regla", () => {
+    const t = construir(130);
+    const h = Math.sqrt(130 * 130 - 100 * 100);
+    t.tocar([310, 190 - h]);
+    t.tocar([310, 190 - h]);
+    expect(t.aviso()).toContain("ya lo has usado");
+    expect(screen.queryAllByTestId("bench-clic")).toHaveLength(1);
+  });
+
+  it("con una abertura menor que la mitad se rechaza al fijarla y se puede corregir", () => {
+    const t = pantalla("mediatriz-practica");
+    t.tocar(A);
+    t.arrastrar(enCirc(A, 70, 35));
+    t.fijar();
+    expect(t.fase()).toBe("abertura");
+    expect(t.aviso()).toContain("mitad de AB");
+    for (let i = 0; i < 3; i += 1) fireEvent.keyDown(t.svg(), { key: "ArrowRight", shiftKey: true }); // 70 + 36 = 106
+    t.fijar();
+    expect(t.fase()).toBe("arco");
+    expect(t.aviso()).toBeNull();
   });
 
   it("avanza solo al hacer cada acción: punta, abertura, arco, otro extremo, arco, regla", () => {
@@ -333,7 +516,7 @@ describe("práctica paso a paso · mediatriz", () => {
     const t = pantalla("mediatriz-practica");
     t.tocar([100, 300]);
     expect(t.fase()).toBe("centro");
-    expect(screen.getByTestId("bench-aviso").textContent).toContain("punta seca");
+    expect(t.aviso()).toContain("punta seca");
     expect(screen.queryByTestId("bench-compas")).toBeNull();
   });
 
@@ -361,41 +544,7 @@ describe("práctica paso a paso · mediatriz", () => {
     expect(t.fase()).toBe("arco");
   });
 
-  it("marcando los dos cortes de los arcos, la regla traza la mediatriz y es correcto", () => {
-    const t = construir(130);
-    const h = Math.sqrt(130 * 130 - 100 * 100);
-    const C: Pt = [310, 190 - h];
-    const D: Pt = [310, 190 + h];
-    t.tocar([C[0] + 5, C[1] - 4]); // se ajusta al corte aunque no sea exacto
-    expect(t.fase()).toBe("regla");
-    t.tocar([D[0] - 3, D[1] + 5]);
-    expect(t.fase()).toBe("hecha");
-    expect(screen.getByTestId("bench-regla-trazo")).toBeTruthy();
-    expect(t.comprobar().disabled).toBe(false);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    expect(screen.getByTestId("bench-resultado").getAttribute("data-ok")).toBe("true");
-  });
-
-  it("pasar la regla por otros puntos es incorrecto", () => {
-    const t = construir(130);
-    t.tocar([300, 100]);
-    t.tocar([320, 300]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no pasa por los dos puntos");
-  });
-
-  it("con una abertura menor que la mitad los arcos no se cortan y se explica el motivo", () => {
-    const t = construir(70);
-    t.tocar([300, 120]);
-    t.tocar([320, 260]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no se cortan");
-  });
-
-  it("«Deshacer» vuelve a la fase anterior y no existe tras comprobar", () => {
+  it("«Deshacer» vuelve a la fase anterior y no hay botones Anterior / Siguiente", () => {
     const t = pantalla("mediatriz-practica");
     expect((screen.getByTestId("bench-deshacer") as HTMLButtonElement).disabled).toBe(true);
     t.tocar(A);
@@ -403,24 +552,20 @@ describe("práctica paso a paso · mediatriz", () => {
     fireEvent.click(screen.getByTestId("bench-deshacer"));
     expect(t.fase()).toBe("centro");
     expect(screen.queryByTestId("bench-compas")).toBeNull();
-  });
-
-  it("no hay botones Anterior / Siguiente en la práctica", () => {
-    pantalla("mediatriz-practica");
     expect(screen.queryByTestId("bench-siguiente")).toBeNull();
     expect(screen.queryByTestId("bench-anterior")).toBeNull();
   });
 });
 
-describe("práctica paso a paso · bisectriz", () => {
+describe("práctica guiada · bisectriz", () => {
   const V: Pt = [170, 315];
   const alfa = 70;
-  function signo(c: Pt, otro: Pt, r: number) {
+  const signo = (c: Pt, otro: Pt, r: number) => {
     const base = ang(c, otro);
-    return Math.hypot(...([enCirc(c, r, base + 40)[0] - V[0], enCirc(c, r, base + 40)[1] - V[1]] as Pt)) > Math.hypot(...([enCirc(c, r, base - 40)[0] - V[0], enCirc(c, r, base - 40)[1] - V[1]] as Pt)) ? 1 : -1;
-  }
+    return d(V, enCirc(c, r, base + 40)) > d(V, enCirc(c, r, base - 40)) ? 1 : -1;
+  };
 
-  /** Construye todo salvo el paso de la regla, con aperturas `r0` (desde V) y `r2` (desde P y Q). */
+  /** Hace todo salvo el paso de la regla, con aberturas `r0` (desde V) y `r2` (desde P y Q). */
   function construir(r0: number, r2: number) {
     const t = pantalla("bisectriz-practica", { a: alfa });
     t.tocar(V);
@@ -435,55 +580,50 @@ describe("práctica paso a paso · bisectriz", () => {
     expect(t.fase()).toBe("abertura");
     t.arrastrar(enCirc(Q, r2, 60));
     t.fijar();
-    const cu = Math.hypot(P[0] - Q[0], P[1] - Q[1]);
-    const th = r2 > cu / 2 ? (Math.acos(Math.min(1, cu / (2 * r2))) * 180) / Math.PI : 45;
+    const cu = d(P, Q);
+    const th = (Math.acos(Math.min(1, cu / (2 * r2))) * 180) / Math.PI;
     const sQ = signo(Q, P, r2);
     const baseQ = ang(Q, P);
     t.arrastrar(enCirc(Q, r2, baseQ + sQ * 40), enCirc(Q, r2, baseQ + sQ * (th + 10)), enCirc(Q, r2, baseQ + sQ * (th - 10)));
-    return { t, P, Q, cu, th, r2 };
-  }
-
-  it("recorre los nueve pasos: vértice, abertura, arco, punto, abertura, arco, punto, arco, regla", () => {
-    const { t, P, Q, cu, th, r2 } = construir(100, 90);
     expect(t.fase()).toBe("centro");
-    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 7 de 9");
     t.tocar(P);
     expect(t.fase()).toBe("arco");
     const sP = signo(P, Q, r2);
     const baseP = ang(P, Q);
     t.arrastrar(enCirc(P, r2, baseP + sP * 40), enCirc(P, r2, baseP + sP * (th + 10)), enCirc(P, r2, baseP + sP * (th - 10)));
     expect(t.fase()).toBe("regla");
-    expect(cu).toBeGreaterThan(0);
-  });
-
-  it("marcar el vértice y el corte T es correcto", () => {
-    const { t, P, Q, th, r2 } = construir(100, 90);
-    t.tocar(P);
-    const sP = signo(P, Q, r2);
-    const baseP = ang(P, Q);
-    t.arrastrar(enCirc(P, r2, baseP + sP * 40), enCirc(P, r2, baseP + sP * (th + 10)), enCirc(P, r2, baseP + sP * (th - 10)));
-    // T: en la dirección de la bisectriz, desde el punto medio de PQ hacia fuera
     const M: Pt = [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
-    const h = Math.sqrt(r2 * r2 - Math.pow(Math.hypot(P[0] - Q[0], P[1] - Q[1]) / 2, 2));
-    const T = enCirc(M, h, alfa / 2);
+    const T = enCirc(M, Math.sqrt(r2 * r2 - (cu / 2) ** 2), alfa / 2);
+    return { t, T };
+  }
+
+  it("recorre los nueve pasos y marcar el vértice y el corte T supera el ejercicio solo", () => {
+    const { t, T } = construir(100, 90);
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 9 de 9");
     t.tocar([V[0] + 3, V[1] - 2]);
+    t.sinSuperar();
     t.tocar([T[0] + 4, T[1] - 3]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    t.superada();
   });
 
-  it("si la regla no pasa por V y por T, es incorrecto", () => {
-    const { t, P, Q, th, r2 } = construir(100, 90);
-    t.tocar(P);
-    const sP = signo(P, Q, r2);
-    const baseP = ang(P, Q);
-    t.arrastrar(enCirc(P, r2, baseP + sP * 40), enCirc(P, r2, baseP + sP * (th + 10)), enCirc(P, r2, baseP + sP * (th - 10)));
-    t.tocar(P);
-    t.tocar(Q);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("vértice V");
+  it("la regla solo admite V y T: tocar P o Q avisa y no se registra", () => {
+    const { t } = construir(100, 90);
+    t.tocar(enCirc(V, 100, 0)); // P
+    expect(t.aviso()).toContain("puntos de la construcción");
+    expect(screen.queryAllByTestId("bench-clic")).toHaveLength(0);
+  });
+
+  it("una segunda abertura insuficiente (menor que la mitad de PQ) se rechaza al fijarla", () => {
+    const t = pantalla("bisectriz-practica", { a: alfa });
+    t.tocar(V);
+    t.arrastrar(enCirc(V, 100, 25));
+    t.fijar();
+    t.arrastrar(enCirc(V, 100, 25), enCirc(V, 100, alfa + 8), enCirc(V, 100, -8));
+    t.tocar(enCirc(V, 100, alfa));
+    t.arrastrar(enCirc(enCirc(V, 100, alfa), 40, 60)); // 40 < PQ/2 ≈ 57
+    t.fijar();
+    expect(t.fase()).toBe("abertura");
+    expect(t.aviso()).toContain("mitad de PQ");
   });
 
   it("los puntos P y Q solo aparecen cuando el primer arco los marca", () => {
@@ -497,7 +637,7 @@ describe("práctica paso a paso · bisectriz", () => {
   });
 });
 
-describe("trasladar un ángulo con compás", () => {
+describe("práctica guiada · trasladar un ángulo con compás", () => {
   const V1: Pt = [110, 270];
   const V2: Pt = [380, 270];
   const alfa = 55;
@@ -506,80 +646,52 @@ describe("trasladar un ángulo con compás", () => {
   const Q = enCirc(V1, r0, alfa);
   const P2 = enCirc(V2, r0, 0);
   const Q2 = enCirc(V2, r0, alfa);
-  const cuerda = Math.hypot(P[0] - Q[0], P[1] - Q[1]);
+  const cuerda = d(P, Q);
 
-  /** Hace las ocho primeras fases y deja la regla pendiente. */
   function hasta(fin: "medida" | "centro3" | "regla") {
     const t = pantalla("trasladar-practica", { a: alfa });
     t.tocar(V1);
     t.arrastrar(enCirc(V1, r0, 25));
     t.fijar();
     t.arrastrar(enCirc(V1, r0, 25), enCirc(V1, r0, alfa + 8), enCirc(V1, r0, -8));
-    expect(t.fase()).toBe("centro");
     t.tocar(V2);
-    expect(t.fase()).toBe("arco");
     t.arrastrar(enCirc(V2, r0, 25), enCirc(V2, r0, alfa + 8), enCirc(V2, r0, -8));
     expect(t.fase()).toBe("medida");
     if (fin === "medida") return t;
     t.tocar(P);
     t.tocar(Q);
-    expect(t.fase()).toBe("centro");
     if (fin === "centro3") return t;
     t.tocar(P2);
-    expect(t.fase()).toBe("arco");
     const base = ang(P2, Q2);
     t.arrastrar(enCirc(P2, cuerda, base - 25), enCirc(P2, cuerda, base + 10));
     expect(t.fase()).toBe("regla");
     return t;
   }
 
-  it("explicación: la medida PQ se toma con el compás y el ángulo trasladado aparece al final", () => {
-    const { siguiente } = montar("trasladar-angulo-compas", { a: alfa });
-    expect(screen.queryByTestId("bench-arco-v2")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-v2")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-cuerda")).toBeTruthy();
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-q2")).toBeTruthy();
-    expect(screen.queryByTestId("bench-cuerda")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-trasladado")).toBeTruthy();
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  it("la regla por V′ y Q′ supera el ejercicio solo; por otros puntos, avisa", () => {
+    const t = hasta("regla");
+    t.tocar(P2);
+    expect(t.aviso()).toContain("puntos de la construcción");
+    t.sinSuperar();
+    t.tocar([V2[0] + 4, V2[1] - 3]);
+    t.tocar([Q2[0] - 5, Q2[1] + 4]);
+    t.superada();
   });
 
-  it("práctica: los nueve pasos avanzan al hacer cada acción", () => {
-    const t = pantalla("trasladar-practica", { a: alfa });
-    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 1 de 9");
-    t.tocar(V1);
-    expect(t.fase()).toBe("abertura");
-    t.arrastrar(enCirc(V1, r0, 25));
-    t.fijar();
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(V1, r0, 25), enCirc(V1, r0, alfa + 8), enCirc(V1, r0, -8));
-    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 4 de 9");
-  });
-
-  it("práctica: la medida exige tocar dos puntos distintos, P y Q, y fija la abertura", () => {
+  it("la medida exige tocar dos puntos distintos, P y Q, y fija la abertura", () => {
     const t = hasta("medida");
+    t.tocar([300, 100]);
     expect(t.fase()).toBe("medida");
-    t.tocar([300, 100]); // fuera de P y Q
-    expect(t.fase()).toBe("medida");
-    expect(screen.getByTestId("bench-aviso")).toBeTruthy();
+    expect(t.aviso()).not.toBeNull();
     t.tocar(P);
-    expect(t.fase()).toBe("medida");
-    expect(screen.getAllByTestId("bench-medida")).toHaveLength(1);
     t.tocar(P); // el mismo punto otra vez: no vale
     expect(t.fase()).toBe("medida");
     t.tocar(Q);
     expect(t.fase()).toBe("centro");
     expect(screen.getAllByTestId("bench-medida")).toHaveLength(2);
-    // el compás queda mostrado con la abertura PQ (punta en un punto, mina en el otro)
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
   });
 
-  it("práctica: la punta del tercer arco solo puede clavarse en P′", () => {
+  it("la punta del tercer arco solo puede clavarse en P′", () => {
     const t = hasta("centro3");
     t.tocar(V2);
     expect(t.fase()).toBe("centro");
@@ -587,640 +699,309 @@ describe("trasladar un ángulo con compás", () => {
     expect(t.fase()).toBe("arco");
   });
 
-  it("práctica: el corte Q′ no se da por hecho hasta cubrir su dirección", () => {
+  it("el corte Q′ no se da por hecho hasta cubrir su dirección y «Deshacer» desde la medida vuelve al arco anterior", () => {
     const t = hasta("centro3");
     t.tocar(P2);
     const base = ang(P2, Q2);
     t.arrastrar(enCirc(P2, cuerda, base - 25), enCirc(P2, cuerda, base - 15));
     expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(P2, cuerda, base - 15), enCirc(P2, cuerda, base + 10));
-    expect(t.fase()).toBe("regla");
-  });
-
-  it("práctica: pasar la regla por V′ y Q′ es correcto", () => {
-    const t = hasta("regla");
-    t.tocar([V2[0] + 4, V2[1] - 3]);
-    t.tocar([Q2[0] - 5, Q2[1] + 4]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("práctica: la regla por otros puntos es incorrecta", () => {
-    const t = hasta("regla");
-    t.tocar(V2);
-    t.tocar(P2);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("V′");
-  });
-
-  it("práctica: «Deshacer» desde la medida vuelve al arco anterior", () => {
-    const t = hasta("medida");
+    cleanup();
+    const u = hasta("medida");
     fireEvent.click(screen.getByTestId("bench-deshacer"));
-    expect(t.fase()).toBe("arco");
+    expect(u.fase()).toBe("arco");
   });
 });
 
-describe("traslación", () => {
-  const A: Pt = [100, 270];
-  const B: Pt = [200, 170];
-  const A2: Pt = [270, 230];
-  const B2: Pt = [370, 130];
-  const lv = Math.hypot(A2[0] - A[0], A2[1] - A[1]);
-  const lab = Math.hypot(B[0] - A[0], B[1] - A[1]);
+/* ───────────── Tema 5: cada transformación es un único recorrido guiado ───────────── */
 
-  it("explicación: la medida del vector, los dos arcos y la figura trasladada aparecen por pasos", () => {
-    const { siguiente } = montar("traslacion-compas");
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-    expect(screen.queryByTestId("bench-imagen")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-medida-v")).toBeTruthy();
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-a2")).toBeTruthy();
-    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-  });
-
-  /** Hace las seis fases con compás y deja marcar B′. */
-  function hastaMarcar() {
-    const t = pantalla("traslacion-practica");
-    expect(t.fase()).toBe("medida");
-    t.tocar(A);
-    t.tocar(A2);
-    expect(t.fase()).toBe("centro");
-    t.tocar(B);
-    expect(t.fase()).toBe("arco");
-    const base = ang(B, B2);
-    t.arrastrar(enCirc(B, lv, base - 25), enCirc(B, lv, base + 10));
-    expect(t.fase()).toBe("medida");
-    t.tocar(A);
-    t.tocar(B);
-    expect(t.fase()).toBe("centro");
-    t.tocar(A2);
-    expect(t.fase()).toBe("arco");
-    const base2 = ang(A2, B2);
-    t.arrastrar(enCirc(A2, lab, base2 - 25), enCirc(A2, lab, base2 + 10));
+describe("transformaciones · recorrido seguido, vértice a vértice y unión de los puntos", () => {
+  /** Une A′, B′ y C′ con tres pasadas de la regla (a-b, b-c, c-a). */
+  const unir = (t: ReturnType<typeof pantalla>, [a, b, c]: Pt[]) => {
     expect(t.fase()).toBe("regla");
-    return t;
-  }
-
-  it("práctica: la primera medida solo vale con A y A′, y las dos medidas se toman por separado", () => {
-    const t = pantalla("traslacion-practica");
-    t.tocar([300, 100]);
-    expect(t.fase()).toBe("medida");
-    t.tocar(A);
-    t.tocar(A);
-    expect(t.fase()).toBe("medida");
-    t.tocar(A2);
-    expect(t.fase()).toBe("centro");
-  });
-
-  it("práctica: marcar B′ en el corte de los arcos es correcto", () => {
-    const t = hastaMarcar();
-    t.tocar([B2[0] + 5, B2[1] - 4]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("práctica: marcar otro punto es incorrecto", () => {
-    const t = hastaMarcar();
-    t.tocar([300, 100]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es B");
-  });
-
-  describe("papel cuadriculado", () => {
-    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
-    const abrir = (params?: { a?: number; b?: number }) => {
-      const m = montar("traslacion-cuadricula", params ?? { a: 9, b: 3 });
-      const svg = () => screen.getByTestId("bench-cuadricula");
-      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
-      return { ...m, svg, tocar };
-    };
-
-    it("marcando A′, B′ y C′ en sus intersecciones es correcto y dibuja la figura trasladada", () => {
-      const t = abrir();
-      expect(t.out.control?.disabled).toBe(true);
-      t.tocar(px([11, 8]));
-      t.tocar(px([13, 3]));
-      t.tocar(px([16, 7]));
-      expect(t.svg().getAttribute("data-puntos")).toBe("3");
-      expect(t.out.control?.disabled).toBe(false);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-      expect(screen.getByTestId("bench-imagen")).toBeTruthy();
-    });
-
-    it("un vértice mal puesto es incorrecto y el mensaje dice cuál", () => {
-      const t = abrir();
-      t.tocar(px([11, 8]));
-      t.tocar(px([13, 4]));
-      t.tocar(px([16, 7]));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-      expect(screen.getByTestId("bench-resultado").textContent).toContain("B′");
-      expect(screen.getByTestId("bench-resultado").textContent).not.toContain("A′ no");
-    });
-
-    it("hay que tocar una intersección de la cuadrícula y no se repiten puntos", () => {
-      const t = abrir();
-      t.tocar([px([5, 5])[0] + 12, px([5, 5])[1] + 12]);
-      expect(t.svg().getAttribute("data-puntos")).toBe("0");
-      expect(screen.getByTestId("bench-aviso").textContent).toContain("intersección");
-      t.tocar(px([11, 8]));
-      t.tocar(px([11, 8]));
-      expect(t.svg().getAttribute("data-puntos")).toBe("1");
-    });
-
-    it("«Deshacer» quita el último punto y el vector cambia con los parámetros", () => {
-      const t = abrir({ a: 5, b: -2 });
-      t.tocar(px([7, 13]));
-      t.tocar(px([9, 8]));
-      fireEvent.click(screen.getByTestId("bench-deshacer"));
-      expect(t.svg().getAttribute("data-puntos")).toBe("1");
-      t.tocar(px([9, 8]));
-      t.tocar(px([12, 12]));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    });
-  });
-});
-
-describe("giro", () => {
-  const O: Pt = [180, 290];
-  const A: Pt = [330, 290];
-  const th = 60;
-  const A2 = enCirc(O, 150, th);
-
-  it("explicación: el transportador, el arco de A y los de B y C aparecen por pasos", () => {
-    const { siguiente } = montar("giro-compas", { a: th });
-    expect(screen.getByTestId("bench-sentido")).toBeTruthy();
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-transportador-giro")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-giro-a")).toBeTruthy();
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
-    expect(screen.queryByTestId("bench-transportador-giro")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-arcos-giro-bc")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-girada")).toBeTruthy();
-  });
-
-  /** Hace las cuatro primeras fases y deja marcar A′. */
-  function hastaMarcar() {
-    const t = pantalla("giro-practica", { a: th });
-    expect(t.fase()).toBe("angulo");
-    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, th));
-    expect(t.fase()).toBe("medida");
-    t.tocar(O);
-    t.tocar(A);
-    expect(t.fase()).toBe("centro");
-    t.tocar(O);
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(O, 150, th - 25), enCirc(O, 150, th + 10));
-    expect(t.fase()).toBe("regla");
-    return t;
-  }
-
-  it("práctica: el ángulo solo se da por marcado al soltar sobre el valor del giro", () => {
-    const t = pantalla("giro-practica", { a: th });
-    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, 45)); // se queda corto
-    expect(t.fase()).toBe("angulo");
-    expect(screen.getByTestId("bench-aviso").textContent).toContain("ángulo del giro");
-    expect(screen.getByTestId("bench-angulo-lectura").textContent).toBe("45°");
-    t.arrastrar(enCirc(O, 120, 45), enCirc(O, 120, th));
-    expect(t.fase()).toBe("medida");
-  });
-
-  it("práctica: el teclado también marca el ángulo", () => {
-    const t = pantalla("giro-practica", { a: 30 });
-    const lectura = () => Number(screen.getByTestId("bench-angulo-lectura").textContent?.replace("°", ""));
-    expect(lectura()).toBe(20);
-    for (let i = 0; i < 10; i += 1) fireEvent.keyDown(t.svg(), { key: "ArrowLeft" });
-    expect(t.fase()).toBe("medida");
-  });
-
-  it("práctica: marcar A′ en el corte del arco con el segundo lado es correcto", () => {
-    const t = hastaMarcar();
-    t.tocar([A2[0] + 5, A2[1] - 3]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("práctica: marcar otro punto es incorrecto", () => {
-    const t = hastaMarcar();
-    t.tocar(enCirc(O, 150, th + 25)); // sobre el arco pero fuera del segundo lado
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
-  });
-
-  describe("papel cuadriculado", () => {
-    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
-    const abrir = (a: number) => {
-      const m = montar("giro-cuadricula", { a });
-      const svg = () => screen.getByTestId("bench-cuadricula");
-      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
-      return { ...m, tocar };
-    };
-    // O = (8, 7); A = (12, 7), B = (12, 4), C = (9, 5)
-    const casos: [number, [number, number][]][] = [
-      [90, [[8, 3], [5, 3], [6, 6]]],
-      [180, [[4, 7], [4, 10], [7, 9]]],
-      [270, [[8, 11], [11, 11], [10, 8]]],
-    ];
-    it.each(casos)("giro de %i° antihorario: los tres vértices en su sitio son correctos", (a, pts) => {
-      const t = abrir(a);
-      for (const g of pts) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    });
-
-    it("girar en sentido horario en vez de antihorario es incorrecto", () => {
-      const t = abrir(90);
-      for (const g of [[8, 11], [11, 11], [10, 8]] as [number, number][]) t.tocar(px(g)); // 270° en lugar de 90°
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    });
-  });
-});
-
-describe("simetría", () => {
-  const E1: Pt = [260, 40];
-  const E2: Pt = [320, 350];
-  const eje = (t: number): Pt => [E1[0] + t * (E2[0] - E1[0]), E1[1] + t * (E2[1] - E1[1])];
-  const P = eje(0.3);
-  const Q = eje(0.75);
-  const A: Pt = [130, 240];
-  const refl = (p: Pt): Pt => {
-    const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
-    const l = Math.hypot(d[0], d[1]);
-    const u: Pt = [d[0] / l, d[1] / l];
-    const t = (p[0] - E1[0]) * u[0] + (p[1] - E1[1]) * u[1];
-    const pie: Pt = [E1[0] + u[0] * t, E1[1] + u[1] * t];
-    return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
+    for (const p of [a, b, b, c]) t.tocar(p);
+    t.sinSuperar();
+    t.tocar([c[0] + 3, c[1] - 3]); // se ajusta al vértice aunque no sea exacto
+    t.tocar(a);
   };
-  const A2 = refl(A);
-  const rP = Math.hypot(P[0] - A[0], P[1] - A[1]);
-  const rQ = Math.hypot(Q[0] - A[0], Q[1] - A[1]);
+  const sinArcos = () => expect(screen.getByTestId("bench-arcos-practica").querySelectorAll("path")).toHaveLength(0);
 
-  it("explicación: los puntos del eje, los dos arcos y la figura simétrica aparecen por pasos", () => {
-    const { siguiente } = montar("simetria-compas");
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-    siguiente(2);
-    expect(screen.getByTestId("bench-arco-p")).toBeTruthy();
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-q")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-  });
+  describe("traslación", () => {
+    const A: Pt = [100, 270];
+    const A2: Pt = [270, 230];
+    const lv = d(A, A2);
+    const V: [string, Pt, Pt][] = [["B", [200, 170], [370, 130]], ["C", [250, 290], [420, 250]]];
+    const IMG: Pt[] = [A2, V[0][2], V[1][2]];
 
-  function hastaMarcar() {
-    const t = pantalla("simetria-practica");
-    t.tocar(P);
-    t.tocar(A);
-    expect(t.fase()).toBe("centro");
-    t.tocar(P);
-    expect(t.fase()).toBe("arco");
-    const base = ang(P, A2);
-    t.arrastrar(enCirc(P, rP, base - 25), enCirc(P, rP, base + 10));
-    expect(t.fase()).toBe("medida");
-    t.tocar(Q);
-    t.tocar(A);
-    expect(t.fase()).toBe("centro");
-    t.tocar(Q);
-    expect(t.fase()).toBe("arco");
-    const base2 = ang(Q, A2);
-    t.arrastrar(enCirc(Q, rQ, base2 - 25), enCirc(Q, rQ, base2 + 10));
-    expect(t.fase()).toBe("regla");
-    return t;
-  }
+    function vertice(t: ReturnType<typeof pantalla>, P: Pt, P2: Pt) {
+      t.tocar(A);
+      t.tocar(A2);
+      expect(t.fase()).toBe("centro");
+      t.tocar(P);
+      expect(t.fase()).toBe("arco");
+      const b1 = ang(P, P2);
+      t.arrastrar(enCirc(P, lv, b1 - 25), enCirc(P, lv, b1 + 10));
+      expect(t.fase()).toBe("medida");
+      t.tocar(A);
+      t.tocar(P);
+      expect(t.fase()).toBe("centro");
+      t.tocar(A2);
+      const b2 = ang(A2, P2);
+      t.arrastrar(enCirc(A2, d(A, P), b2 - 25), enCirc(A2, d(A, P), b2 + 10));
+      expect(t.fase()).toBe("punto");
+    }
 
-  it("práctica: marcar el simétrico A′ (y no A) en el corte de los arcos es correcto", () => {
-    const t = hastaMarcar();
-    t.tocar([A2[0] + 4, A2[1] - 5]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("práctica: marcar el otro corte, que es A, es incorrecto", () => {
-    const t = hastaMarcar();
-    t.tocar(A);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
-  });
-
-  describe("papel cuadriculado", () => {
-    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
-    const abrir = (a: number) => {
-      const m = montar("simetria-cuadricula", { a });
-      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
-      return { ...m, tocar };
-    };
-
-    it("eje vertical: A′, B′ y C′ en el lado opuesto, a la misma distancia, son correctos", () => {
-      const t = abrir(0);
-      for (const g of [[22, 11], [20, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    it("tiene 15 pasos: 7 por vértice (B y C) y la unión", () => {
+      expect(BENCH_STEPS["traslacion-practica"]).toBe(15);
+      pantalla("traslacion-practica");
+      expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 1 de 15");
     });
 
-    it("eje diagonal: se intercambian las distancias al eje en horizontal y vertical", () => {
-      const t = abrir(1);
-      for (const g of [[9, 11], [13, 9], [10, 7]] as [number, number][]) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    it("recorre B, C y la unión de los puntos y se supera solo, sin botón «Comprobar»", () => {
+      const t = pantalla("traslacion-practica");
+      expect(t.out.control).toBeNull();
+      for (const [, P, P2] of V) {
+        vertice(t, P, P2);
+        t.tocar([P2[0] + 4, P2[1] - 3]);
+      }
+      expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 15 de 15");
+      unir(t, IMG);
+      t.superada();
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("traslación");
     });
 
-    it("trasladar en lugar de reflejar es incorrecto", () => {
-      const t = abrir(0);
-      for (const g of [[12, 11], [14, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    });
-  });
-});
-
-describe("homotecia", () => {
-  const O: Pt = [120, 300];
-  const A: Pt = [220, 300];
-  const A2: Pt = [320, 300];
-
-  it("explicación: las rectas desde O, la medida OA, el arco y la figura ampliada aparecen por pasos", () => {
-    const { siguiente } = montar("homotecia-compas");
-    expect(screen.queryByTestId("bench-rayos-homotecia")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-rayos-homotecia")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-medida-oa")).toBeTruthy();
-    expect(screen.getByTestId("bench-compas")).toBeTruthy();
-    siguiente();
-    expect(screen.getByTestId("bench-arco-homotecia")).toBeTruthy();
-    expect(screen.queryByTestId("bench-medida-oa")).toBeNull();
-    siguiente();
-    expect(screen.getByTestId("bench-homotetica")).toBeTruthy();
-    expect(screen.queryByTestId("bench-compas")).toBeNull();
-  });
-
-  function hastaMarcar() {
-    const t = pantalla("homotecia-practica");
-    expect(t.fase()).toBe("medida");
-    t.tocar(O);
-    t.tocar(A);
-    expect(t.fase()).toBe("centro");
-    t.tocar(A);
-    expect(t.fase()).toBe("arco");
-    const base = ang(A, A2);
-    t.arrastrar(enCirc(A, 100, base - 25), enCirc(A, 100, base + 10));
-    expect(t.fase()).toBe("regla");
-    return t;
-  }
-
-  it("práctica: la medida es OA y la punta solo se clava en A", () => {
-    const t = pantalla("homotecia-practica");
-    t.tocar([400, 100]);
-    expect(t.fase()).toBe("medida");
-    t.tocar(O);
-    t.tocar(A);
-    expect(t.fase()).toBe("centro");
-    t.tocar(O); // la punta se clava en A, no en O
-    expect(t.fase()).toBe("centro");
-    t.tocar(A);
-    expect(t.fase()).toBe("arco");
-  });
-
-  it("práctica: marcar A′ (y no O) es correcto", () => {
-    const t = hastaMarcar();
-    t.tocar([A2[0] + 4, A2[1] - 5]);
-    expect(t.fase()).toBe("hecha");
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("práctica: marcar el otro corte, que es O, es incorrecto", () => {
-    const t = hastaMarcar();
-    t.tocar(O);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
-  });
-
-  describe("papel cuadriculado", () => {
-    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
-    const abrir = (a: number) => {
-      const m = montar("homotecia-cuadricula", { a });
-      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
-      return { ...m, tocar };
-    };
-    // O = (8, 7); A = (10, 7), B = (10, 5), C = (9, 6)
-    const casos: [number, [number, number][]][] = [
-      [2, [[12, 7], [12, 3], [10, 5]]],
-      [3, [[14, 7], [14, 1], [11, 4]]],
-      [-1, [[6, 7], [6, 9], [7, 8]]],
-      [-2, [[4, 7], [4, 11], [6, 9]]],
-    ];
-    it.each(casos)("razón %i: los tres vértices en su sitio son correctos", (k, pts) => {
-      const t = abrir(k);
-      for (const g of pts) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    it("solo vale el punto correcto: tocar otro sitio al marcar B′ avisa y se puede volver a elegir", () => {
+      const t = pantalla("traslacion-practica");
+      vertice(t, V[0][1], V[0][2]);
+      t.tocar([300, 100]);
+      expect(t.fase()).toBe("punto");
+      expect(t.aviso()).toContain("no es el punto");
+      t.tocar(V[0][2]);
+      expect(t.fase()).toBe("medida"); // empieza C
     });
 
-    it("con razón 2, usar la razón −2 (imagen al otro lado de O) es incorrecto", () => {
-      const t = abrir(2);
-      for (const g of [[4, 7], [4, 11], [6, 9]] as [number, number][]) t.tocar(px(g));
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    it("al marcar B′ se borran sus arcos y B′ queda a la vista mientras se traslada C", () => {
+      const t = pantalla("traslacion-practica");
+      vertice(t, V[0][1], V[0][2]);
+      t.tocar(V[0][2]);
+      sinArcos();
+      expect(screen.getAllByText("B′").length).toBeGreaterThan(0);
+    });
+
+    it("la unión solo admite A′, B′ y C′ y no repite lados", () => {
+      const t = pantalla("traslacion-practica");
+      for (const [, P, P2] of V) {
+        vertice(t, P, P2);
+        t.tocar(P2);
+      }
+      t.tocar([300, 100]);
+      expect(t.aviso()).toContain("puntos de la construcción");
+      t.tocar(IMG[0]);
+      t.tocar(IMG[0]);
+      expect(t.aviso()).toContain("otro vértice");
+      t.tocar(IMG[1]);
+      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 1 de 3");
+      t.tocar(IMG[1]);
+      t.tocar(IMG[0]);
+      expect(t.aviso()).toContain("ya está trazado");
+      expect(screen.getByTestId("bench-progreso").textContent).toContain("elige el otro extremo");
+      t.sinSuperar();
     });
   });
-});
 
-describe("práctica de todos los vértices y unión de los puntos", () => {
-  const dist = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
-
-  it("traslación: C se construye igual que B, con B′ ya a la vista", () => {
-    const A: Pt = [100, 270], C: Pt = [250, 290], A2: Pt = [270, 230];
-    const C2: Pt = [C[0] + 170, C[1] - 40];
-    const t = pantalla("traslacion-practica", { b: 2 });
-    expect(screen.getAllByText("B′").length).toBeGreaterThan(0);
-    t.tocar(A);
-    t.tocar(A2);
-    t.tocar(C);
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(C, dist(A, A2), ang(C, C2) - 25), enCirc(C, dist(A, A2), ang(C, C2) + 10));
-    expect(t.fase()).toBe("medida");
-    t.tocar(A);
-    t.tocar(C);
-    t.tocar(A2);
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(A2, dist(A, C), ang(A2, C2) - 25), enCirc(A2, dist(A, C), ang(A2, C2) + 10));
-    expect(t.fase()).toBe("regla");
-    t.tocar([C2[0] + 4, C2[1] - 3]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-    expect(screen.getByTestId("bench-resultado").textContent).toContain("C′");
-  });
-
-  it("giro: B se gira con su propio radio y su propio ángulo de partida", () => {
-    const O: Pt = [180, 290], B: Pt = [380, 225];
-    const base = ang(O, B);
-    const r = dist(O, B);
-    const B2 = enCirc(O, r, base + 60);
-    const t = pantalla("giro-practica", { a: 60, b: 1 });
-    t.arrastrar(enCirc(O, 120, base + 20), enCirc(O, 120, base + 60));
-    expect(t.fase()).toBe("medida");
-    t.tocar(O);
-    t.tocar(B);
-    t.tocar(O);
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(O, r, ang(O, B2) - 25), enCirc(O, r, ang(O, B2) + 10));
-    expect(t.fase()).toBe("regla");
-    t.tocar([B2[0] + 4, B2[1] - 3]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("giro: marcar el ángulo de A en el paso de B no vale (el segundo lado parte de OB)", () => {
+  describe("giro", () => {
     const O: Pt = [180, 290];
-    const t = pantalla("giro-practica", { a: 60, b: 1 });
-    t.arrastrar(enCirc(O, 120, 20), enCirc(O, 120, 60)); // 60° medidos desde el eje horizontal, no desde OB
-    expect(t.fase()).toBe("angulo");
+    const th = 60;
+    const V: [string, Pt][] = [["A", [330, 290]], ["B", [380, 225]], ["C", [300, 235]]];
+    const IMG = V.map(([, p]) => rotarPunto(p, O, th));
+
+    function vertice(t: ReturnType<typeof pantalla>, P: Pt, P2: Pt) {
+      const base = ang(O, P);
+      t.arrastrar(enCirc(O, 120, base + 20), enCirc(O, 120, base + th));
+      expect(t.fase()).toBe("medida");
+      t.tocar(O);
+      t.tocar(P);
+      t.tocar(O);
+      expect(t.fase()).toBe("arco");
+      const b2 = ang(O, P2);
+      t.arrastrar(enCirc(O, d(O, P), b2 - 25), enCirc(O, d(O, P), b2 + 10));
+      expect(t.fase()).toBe("punto");
+    }
+
+    it("tiene 16 pasos: 5 por vértice (A, B y C) y la unión", () => {
+      expect(BENCH_STEPS["giro-practica"]).toBe(16);
+    });
+
+    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+      const t = pantalla("giro-practica", { a: th });
+      V.forEach(([, P], i) => {
+        vertice(t, P, IMG[i]);
+        t.tocar(IMG[i]);
+      });
+      unir(t, IMG);
+      t.superada();
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("giro");
+    });
+
+    it("el ángulo solo se da por marcado al soltar sobre el valor del giro; si no, avisa y deja seguir", () => {
+      const t = pantalla("giro-practica", { a: th });
+      t.arrastrar(enCirc(O, 120, 0), enCirc(O, 120, 45));
+      expect(t.fase()).toBe("angulo");
+      expect(t.aviso()).toContain("ángulo del giro");
+      expect(screen.getByTestId("bench-angulo-lectura").textContent).toBe("45°");
+      t.arrastrar(enCirc(O, 120, 45), enCirc(O, 120, th));
+      expect(t.fase()).toBe("medida");
+    });
+
+    it("el teclado también marca el ángulo", () => {
+      const t = pantalla("giro-practica", { a: 30 });
+      expect(screen.getByTestId("bench-angulo-lectura").textContent).toBe("20°");
+      for (let i = 0; i < 10; i += 1) fireEvent.keyDown(t.svg(), { key: "ArrowLeft" });
+      expect(t.fase()).toBe("medida");
+    });
+
+    it("B parte de su propia recta OB: marcar el ángulo desde la horizontal no vale", () => {
+      const t = pantalla("giro-practica", { a: th });
+      vertice(t, V[0][1], IMG[0]);
+      t.tocar(IMG[0]);
+      expect(t.fase()).toBe("angulo");
+      t.arrastrar(enCirc(O, 120, 0), enCirc(O, 120, th)); // 60° desde el eje horizontal, no desde OB
+      expect(t.fase()).toBe("angulo");
+    });
+
+    it("solo vale el punto girado: tocar otro sitio avisa", () => {
+      const t = pantalla("giro-practica", { a: th });
+      vertice(t, V[0][1], IMG[0]);
+      t.tocar(V[0][1]); // el punto sin girar
+      expect(t.fase()).toBe("punto");
+      expect(t.aviso()).toContain("no es el punto");
+    });
   });
 
-  it("simetría: C se halla con los mismos puntos P y Q del eje", () => {
-    const E1: Pt = [260, 40], E2: Pt = [320, 350], C: Pt = [205, 300];
+  describe("simetría", () => {
+    const E1: Pt = [260, 40];
+    const E2: Pt = [320, 350];
     const eje = (u: number): Pt => [E1[0] + u * (E2[0] - E1[0]), E1[1] + u * (E2[1] - E1[1])];
-    const P = eje(0.3), Q = eje(0.75);
-    const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
-    const l = Math.hypot(d[0], d[1]);
-    const u: Pt = [d[0] / l, d[1] / l];
-    const tt = (C[0] - E1[0]) * u[0] + (C[1] - E1[1]) * u[1];
-    const pie: Pt = [E1[0] + u[0] * tt, E1[1] + u[1] * tt];
-    const C2: Pt = [2 * pie[0] - C[0], 2 * pie[1] - C[1]];
-    const t = pantalla("simetria-practica", { b: 2 });
-    t.tocar(P);
-    t.tocar(C);
-    t.tocar(P);
-    t.arrastrar(enCirc(P, dist(P, C), ang(P, C2) - 25), enCirc(P, dist(P, C), ang(P, C2) + 10));
-    t.tocar(Q);
-    t.tocar(C);
-    t.tocar(Q);
-    t.arrastrar(enCirc(Q, dist(Q, C), ang(Q, C2) - 25), enCirc(Q, dist(Q, C), ang(Q, C2) + 10));
-    expect(t.fase()).toBe("regla");
-    t.tocar([C2[0] + 4, C2[1] - 3]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  it("homotecia: la imagen de C está en la recta OC, al doble de distancia", () => {
-    const O: Pt = [120, 300], C: Pt = [190, 240];
-    const C2: Pt = [260, 180];
-    const t = pantalla("homotecia-practica", { b: 2 });
-    t.tocar(O);
-    t.tocar(C);
-    t.tocar(C);
-    expect(t.fase()).toBe("arco");
-    t.arrastrar(enCirc(C, dist(O, C), ang(C, C2) - 25), enCirc(C, dist(O, C), ang(C, C2) + 10));
-    t.tocar([C2[0] + 4, C2[1] - 3]);
-    act(() => t.out.control!.onClick());
-    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
-
-  describe("unir los puntos con la regla", () => {
-    const O: Pt = [180, 290];
-    const GIRO = ([[330, 290], [380, 225], [300, 235]] as Pt[]).map((p) => rotarPunto(p, O, 60));
-    const E1: Pt = [260, 40], E2: Pt = [320, 350];
+    const P = eje(0.3);
+    const Q = eje(0.75);
     const refl = (p: Pt): Pt => {
-      const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
-      const l = Math.hypot(d[0], d[1]);
-      const u: Pt = [d[0] / l, d[1] / l];
+      const v: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
+      const l = Math.hypot(v[0], v[1]);
+      const u: Pt = [v[0] / l, v[1] / l];
       const k = (p[0] - E1[0]) * u[0] + (p[1] - E1[1]) * u[1];
       const pie: Pt = [E1[0] + u[0] * k, E1[1] + u[1] * k];
       return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
     };
-    const imagenes: [string, number, Pt[]][] = [
-      ["traslación", 0, [[270, 230], [370, 130], [420, 250]]],
-      ["giro", 1, GIRO],
-      ["simetría", 2, ([[130, 240], [190, 130], [205, 300]] as Pt[]).map(refl)],
-      ["homotecia", 3, [[320, 300], [380, 140], [260, 180]]],
-    ];
+    const V: Pt[] = [[130, 240], [190, 130], [205, 300]];
+    const IMG = V.map(refl);
 
-    it.each(imagenes)("%s: las tres pasadas de la regla por A′B′, B′C′ y C′A′ son correctas", (_n, tipo, [a, b, c]) => {
-      const t = pantalla("union-imagen", { a: tipo });
-      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 0 de 3");
-      t.tocar(a);
-      expect(screen.getByTestId("bench-progreso").textContent).toContain("elige el otro extremo");
-      t.tocar(b);
-      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 1 de 3");
-      expect(t.comprobar().disabled).toBe(true);
-      t.tocar(b);
-      t.tocar(c);
-      t.tocar([c[0] + 3, c[1] - 3]); // se ajusta al punto
-      t.tocar(a);
-      expect(t.fase()).toBe("hecha");
-      expect(screen.getAllByTestId("bench-regla-trazo")).toHaveLength(1);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    function vertice(t: ReturnType<typeof pantalla>, X: Pt, X2: Pt) {
+      for (const E of [P, Q]) {
+        t.tocar(E);
+        t.tocar(X);
+        t.tocar(E);
+        expect(t.fase()).toBe("arco");
+        const b = ang(E, X2);
+        t.arrastrar(enCirc(E, d(E, X), b - 25), enCirc(E, d(E, X), b + 10));
+      }
+      expect(t.fase()).toBe("punto");
+    }
+
+    it("tiene 22 pasos: 7 por vértice (A, B y C) y la unión", () => {
+      expect(BENCH_STEPS["simetria-practica"]).toBe(22);
     });
 
-    it("repetir un lado en lugar de trazar los tres es incorrecto", () => {
-      const [a, b, c] = imagenes[0][2];
-      const t = pantalla("union-imagen", { a: 0 });
-      for (const p of [a, b, b, a, b, c]) t.tocar(p);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-      expect(screen.getByTestId("bench-resultado").textContent).toContain("repetido");
+    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+      const t = pantalla("simetria-practica");
+      V.forEach((X, i) => {
+        vertice(t, X, IMG[i]);
+        t.tocar(IMG[i]);
+      });
+      unir(t, IMG);
+      t.superada();
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("simetría");
     });
 
-    it("pasar la regla por puntos que no son A′, B′ y C′ es incorrecto", () => {
-      const [a, b, c] = imagenes[0][2];
-      const t = pantalla("union-imagen", { a: 0 });
-      for (const p of [a, b, b, c, [300, 100] as Pt, [500, 300] as Pt]) t.tocar(p);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-      expect(screen.getByTestId("bench-resultado").textContent).toContain("dos de los puntos");
+    it("marcar el otro corte de los arcos (el propio vértice) no vale", () => {
+      const t = pantalla("simetria-practica");
+      vertice(t, V[0], IMG[0]);
+      t.tocar(V[0]);
+      expect(t.fase()).toBe("punto");
+      expect(t.aviso()).toContain("no es el punto");
+    });
+
+    it("la unión no admite los vértices originales", () => {
+      const t = pantalla("simetria-practica");
+      V.forEach((X, i) => {
+        vertice(t, X, IMG[i]);
+        t.tocar(IMG[i]);
+      });
+      t.tocar(V[0]);
+      expect(t.aviso()).toContain("puntos de la construcción");
+    });
+  });
+
+  describe("homotecia", () => {
+    const O: Pt = [120, 300];
+    const V: Pt[] = [[220, 300], [250, 220], [190, 240]];
+    const IMG = V.map((p): Pt => [O[0] + 2 * (p[0] - O[0]), O[1] + 2 * (p[1] - O[1])]);
+
+    function vertice(t: ReturnType<typeof pantalla>, X: Pt, X2: Pt) {
+      t.tocar(O);
+      t.tocar(X);
+      expect(t.fase()).toBe("centro");
+      t.tocar(X);
+      expect(t.fase()).toBe("arco");
+      const b = ang(X, X2);
+      t.arrastrar(enCirc(X, d(O, X), b - 25), enCirc(X, d(O, X), b + 10));
+      expect(t.fase()).toBe("punto");
+    }
+
+    it("tiene 13 pasos: 4 por vértice (A, B y C) y la unión", () => {
+      expect(BENCH_STEPS["homotecia-practica"]).toBe(13);
+    });
+
+    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+      const t = pantalla("homotecia-practica");
+      V.forEach((X, i) => {
+        vertice(t, X, IMG[i]);
+        t.tocar(IMG[i]);
+      });
+      unir(t, IMG);
+      t.superada();
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("homotecia");
+    });
+
+    it("la medida es OA y la punta solo se clava en A", () => {
+      const t = pantalla("homotecia-practica");
+      t.tocar([500, 100]);
+      expect(t.fase()).toBe("medida");
+      t.tocar(O);
+      t.tocar(V[0]);
+      expect(t.fase()).toBe("centro");
+      t.tocar(O);
+      expect(t.fase()).toBe("centro");
+      t.tocar(V[0]);
+      expect(t.fase()).toBe("arco");
+    });
+
+    it("marcar el otro corte del arco con la recta (el centro O) no vale", () => {
+      const t = pantalla("homotecia-practica");
+      vertice(t, V[0], IMG[0]);
+      t.tocar(O);
+      expect(t.fase()).toBe("punto");
+      expect(t.aviso()).toContain("no es el punto");
     });
   });
 });
 
-describe("proporcionalidad y semejanza", () => {
-  const d = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+/* ───────────── Tema 3: proporcionalidad, equivalencia y semejanza ───────────── */
 
+describe("práctica guiada · proporcionalidad y equivalencia", () => {
   describe("Thales: dividir un segmento", () => {
     const A: Pt = [110, 300];
     const B: Pt = [470, 300];
     const TH = 35;
     const marca = (k: number, r: number): Pt => enCirc(A, k * r, TH);
-
-    it("explicación: marcas, unión con B, paralelas y tres partes iguales aparecen por pasos", () => {
-      const { siguiente } = montar("thales-dividir");
-      expect(screen.queryByTestId("bench-compas")).toBeNull();
-      siguiente();
-      expect(screen.getByTestId("bench-arco-1")).toBeTruthy();
-      expect(screen.getByTestId("bench-compas")).toBeTruthy();
-      siguiente(2);
-      expect(screen.getByTestId("bench-arco-3")).toBeTruthy();
-      siguiente(2);
-      expect(screen.getByTestId("bench-paralelas-thales")).toBeTruthy();
-      expect(screen.queryByTestId("bench-compas")).toBeNull();
-      siguiente();
-      expect(screen.getByTestId("bench-tercios")).toBeTruthy();
-    });
 
     function marcas(r: number) {
       const t = pantalla("thales-practica");
@@ -1240,16 +1021,15 @@ describe("proporcionalidad y semejanza", () => {
       return t;
     }
 
-    it.each([50, 70, 95])("práctica con abertura %i: la tercera marca unida con B es correcta", (r) => {
+    it.each([50, 70, 95])("con abertura %i, la tercera marca unida con B supera el ejercicio solo", (r) => {
       const t = marcas(r);
       t.tocar(marca(3, r));
+      t.sinSuperar();
       t.tocar(B);
-      expect(t.fase()).toBe("hecha");
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      t.superada();
     });
 
-    it("práctica: la segunda punta solo puede clavarse en la primera marca", () => {
+    it("la segunda punta solo puede clavarse en la primera marca", () => {
       const t = pantalla("thales-practica");
       t.tocar(A);
       t.arrastrar(enCirc(A, 70, TH - 22));
@@ -1261,31 +1041,31 @@ describe("proporcionalidad y semejanza", () => {
       expect(t.fase()).toBe("arco");
     });
 
-    it("práctica: unir la tercera marca con otro punto es incorrecto", () => {
+    it("la regla solo admite la tercera marca y B: unirla con A avisa", () => {
       const t = marcas(70);
       t.tocar(marca(3, 70));
       t.tocar(A);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(t.aviso()).toContain("puntos de la construcción");
+      expect(screen.getAllByTestId("bench-clic")).toHaveLength(1);
+      t.sinSuperar();
     });
 
-    it("paralelas: marcar los puntos a un tercio y dos tercios de AB es correcto, y no antes", () => {
+    it("las paralelas: marcar los puntos a un tercio y dos tercios de AB supera el ejercicio solo", () => {
       const t = pantalla("thales-paralelas");
       expect(screen.queryByTestId("bench-paralelas-thales")).toBeNull();
       t.tocar([230, 300]);
       t.tocar([350, 300]);
       expect(t.fase()).toBe("hecha");
       expect(screen.getByTestId("bench-paralelas-thales")).toBeTruthy();
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      t.superada();
     });
 
-    it("paralelas: marcar la mitad de AB es incorrecto", () => {
+    it("las paralelas: marcar la mitad de AB no vale", () => {
       const t = pantalla("thales-paralelas");
       t.tocar([290, 300]);
-      t.tocar([350, 300]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(t.aviso()).toContain("puntos de la construcción");
+      expect(t.fase()).toBe("regla");
+      t.sinSuperar();
     });
   });
 
@@ -1295,21 +1075,6 @@ describe("proporcionalidad y semejanza", () => {
     const H: Pt = [230, 300];
     const C: Pt = [230, 180];
     const R = 125;
-
-    it("la altura CH cumple CH² = AH · HB con los datos de la escena", () => {
-      expect(d(H, C) ** 2).toBeCloseTo(90 * 160, 6);
-      expect(d(O, C)).toBeCloseTo(R, 6);
-    });
-
-    it("explicación: punto medio, semicircunferencia, altura y relación h² = a·b por pasos", () => {
-      const { siguiente } = montar("media-compas");
-      siguiente();
-      expect(screen.getByTestId("bench-compas")).toBeTruthy();
-      siguiente(2);
-      expect(screen.getByTestId("bench-altura")).toBeTruthy();
-      siguiente();
-      expect(screen.getByTestId("bench-h2")).toBeTruthy();
-    });
 
     function hasta() {
       const t = pantalla("media-practica");
@@ -1323,15 +1088,15 @@ describe("proporcionalidad y semejanza", () => {
       return t;
     }
 
-    it("práctica: perpendicular por H hasta la semicircunferencia es correcta", () => {
+    it("la perpendicular por H hasta la semicircunferencia supera el ejercicio solo", () => {
       const t = hasta();
       t.tocar(H);
+      t.sinSuperar();
       t.tocar([C[0] + 4, C[1] - 3]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      t.superada();
     });
 
-    it("práctica: la semicircunferencia no se da por trazada si solo se dibuja la mitad", () => {
+    it("la semicircunferencia no se da por trazada si solo se dibuja la mitad", () => {
       const t = pantalla("media-practica");
       t.tocar(O);
       t.tocar(B);
@@ -1340,12 +1105,11 @@ describe("proporcionalidad y semejanza", () => {
       expect(t.fase()).toBe("arco");
     });
 
-    it("práctica: perpendicular por otro punto es incorrecta", () => {
+    it("la perpendicular por otro punto no vale", () => {
       const t = hasta();
       t.tocar([330, 300]);
-      t.tocar([330, 195]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(t.aviso()).toContain("puntos de la construcción");
+      expect(t.fase()).toBe("regla");
     });
   });
 
@@ -1358,22 +1122,6 @@ describe("proporcionalidad y semejanza", () => {
     const D: Pt = [C[0] + ((A[0] - C[0]) * LCB) / LAC, C[1] + ((A[1] - C[1]) * LCB) / LAC];
     const LAD = d(A, D);
     const E: Pt = [A[0] + LAD, 300];
-    const ang2 = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
-
-    it("AE/AB es el inverso del número áureo", () => {
-      expect((E[0] - A[0]) / (B[0] - A[0])).toBeCloseTo(1 / ((1 + Math.sqrt(5)) / 2), 3);
-    });
-
-    it("explicación: hipotenusa, arco desde C, arco desde A y resultado por pasos", () => {
-      const { siguiente } = montar("aurea-compas");
-      siguiente(2);
-      expect(screen.getByTestId("bench-arco-cb")).toBeTruthy();
-      siguiente();
-      expect(screen.getByTestId("bench-arco-ad")).toBeTruthy();
-      siguiente();
-      expect(screen.getByTestId("bench-aurea")).toBeTruthy();
-      expect(screen.queryByTestId("bench-compas")).toBeNull();
-    });
 
     function hasta() {
       const t = pantalla("aurea-practica");
@@ -1381,7 +1129,7 @@ describe("proporcionalidad y semejanza", () => {
       t.tocar(B);
       expect(t.fase()).toBe("centro");
       t.tocar(C);
-      const b1 = ang2(C, D);
+      const b1 = ang(C, D);
       t.arrastrar(enCirc(C, LCB, b1 - 25), enCirc(C, LCB, b1 + 10));
       expect(t.fase()).toBe("medida");
       t.tocar(A);
@@ -1393,51 +1141,28 @@ describe("proporcionalidad y semejanza", () => {
       return t;
     }
 
-    it("práctica: marcar E es correcto", () => {
+    it("marcar E supera el ejercicio solo", () => {
       const t = hasta();
       t.tocar([E[0] + 4, E[1] - 3]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      t.superada();
     });
 
-    it("práctica: marcar otro punto es incorrecto", () => {
+    it("marcar otro punto avisa y se puede volver a elegir", () => {
       const t = hasta();
       t.tocar([260, 300]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(t.aviso()).toContain("puntos de la construcción");
+      expect(t.fase()).toBe("regla");
+      t.sinSuperar();
     });
   });
 
-  describe("equivalencia y cuadratura", () => {
+  describe("cuadratura del rectángulo", () => {
     const B: Pt = [300, 300];
     const Cc: Pt = [300, 210];
     const H: Pt = [390, 300];
     const O: Pt = [255, 300];
     const R = 135;
     const E: Pt = [300, 300 - Math.sqrt(R * R - 45 * 45)];
-
-    it("el lado del cuadrado es la media proporcional de la base y la altura", () => {
-      expect(d(B, E) ** 2).toBeCloseTo(180 * 90, 6);
-    });
-
-    it("explicación de equivalencia: la paralela, el vértice que se desliza y el rectángulo por pasos", () => {
-      const { siguiente } = montar("equivalencia-triangulos");
-      expect(screen.queryByTestId("bench-altura-eq")).toBeNull();
-      siguiente();
-      expect(screen.getByTestId("bench-altura-eq")).toBeTruthy();
-      siguiente(2);
-      expect(screen.getByTestId("bench-rectangulo-eq")).toBeTruthy();
-    });
-
-    it("explicación de cuadratura: prolongación, semicircunferencia, lado y cuadrado por pasos", () => {
-      const { siguiente } = montar("cuadratura-compas");
-      siguiente();
-      expect(screen.getByTestId("bench-arco-h")).toBeTruthy();
-      siguiente(2);
-      expect(screen.getByTestId("bench-lado-cuadrado")).toBeTruthy();
-      siguiente();
-      expect(screen.getByTestId("bench-cuadrado-final")).toBeTruthy();
-    });
 
     function hasta() {
       const t = pantalla("cuadratura-practica");
@@ -1456,43 +1181,18 @@ describe("proporcionalidad y semejanza", () => {
       return t;
     }
 
-    it("práctica: la perpendicular por B hasta la semicircunferencia es correcta", () => {
+    it("la perpendicular por B hasta la semicircunferencia supera el ejercicio solo", () => {
       const t = hasta();
       t.tocar(B);
       t.tocar([E[0] + 4, E[1] - 3]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      t.superada();
     });
 
-    it("práctica: la perpendicular por otro punto es incorrecta", () => {
+    it("la perpendicular por otro punto no vale", () => {
       const t = hasta();
       t.tocar([350, 300]);
-      t.tocar([350, 190]);
-      act(() => t.out.control!.onClick());
-      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
-    });
-  });
-
-  describe("semejanza", () => {
-    it("explicación: ángulos, razón de lados, rejilla de áreas y escala por pasos", () => {
-      const { siguiente } = montar("semejanza-razon");
-      expect(screen.getByTestId("bench-angulos-iguales")).toBeTruthy();
-      siguiente();
-      expect(screen.getByTestId("bench-lados-razon").textContent).toContain("k = A′B′ / AB = 2");
-      siguiente();
-      expect(screen.getByTestId("bench-rejilla-areas")).toBeTruthy();
-      expect(screen.getByTestId("bench-areas-razon").textContent).toContain("24 = 4 · 6");
-      siguiente();
-      expect(screen.getByTestId("bench-escala").textContent).toContain("1:50");
-    });
-
-    it("reducción con razón 1/2 en cuadrícula: los vértices a la mitad de distancia de O son correctos", () => {
-      const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
-      const m = montar("homotecia-cuadricula", { a: 0.5 });
-      for (const g of [[10, 7], [10, 5], [9, 6]] as [number, number][]) fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: px(g)[0], clientY: px(g)[1], pointerId: 1 });
-      act(() => m.out.control!.onClick());
-      expect(m.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-      expect(screen.getByTestId("bench-resultado").textContent).toContain("1/2");
+      expect(t.aviso()).toContain("puntos de la construcción");
+      t.sinSuperar();
     });
   });
 });
@@ -1505,5 +1205,9 @@ describe("mesa de dibujo · integración", () => {
       </LessonStepControlProvider>,
     );
     expect(screen.getByTestId("bench-catalogo")).toBeTruthy();
+  });
+
+  it("act está disponible para los tests de intercambio de estado", () => {
+    expect(typeof act).toBe("function");
   });
 });

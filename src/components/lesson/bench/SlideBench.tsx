@@ -4,11 +4,11 @@ import type { SlideBlock } from "@/lib/lesson/types";
 import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
 import { CuadraturaCompas, CuadraturaPractica, EquivalenciaTriangulos, SemejanzaRazon } from "./scenes-equivalencia";
 import { AureaCompas, AureaPractica, MediaCompas, MediaPractica, ThalesDividir, ThalesParalelas, ThalesPractica } from "./scenes-proporcion";
-import { UnionImagen } from "./scenes-unir";
-import { HomoteciaCompas, HomoteciaCuadricula, HomoteciaPractica } from "./scenes-homotecia";
-import { SimetriaCompas, SimetriaCuadricula, SimetriaPractica } from "./scenes-simetria";
-import { GiroCompas, GiroCuadricula, GiroPractica } from "./scenes-giro";
-import { TraslacionCompas, TraslacionCuadricula, TraslacionPractica } from "./scenes-transformaciones";
+import { HomoteciaCompas } from "./scenes-homotecia";
+import { SimetriaCompas } from "./scenes-simetria";
+import { GiroCompas } from "./scenes-giro";
+import { TraslacionCompas } from "./scenes-transformaciones";
+import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -43,28 +43,18 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <TraslacionCompas block={block} />;
     case "traslacion-practica":
       return <TraslacionPractica block={block} />;
-    case "traslacion-cuadricula":
-      return <TraslacionCuadricula block={block} />;
     case "giro-compas":
       return <GiroCompas block={block} />;
     case "giro-practica":
       return <GiroPractica block={block} />;
-    case "giro-cuadricula":
-      return <GiroCuadricula block={block} />;
     case "simetria-compas":
       return <SimetriaCompas block={block} />;
     case "simetria-practica":
       return <SimetriaPractica block={block} />;
-    case "simetria-cuadricula":
-      return <SimetriaCuadricula block={block} />;
     case "homotecia-compas":
       return <HomoteciaCompas block={block} />;
     case "homotecia-practica":
       return <HomoteciaPractica block={block} />;
-    case "homotecia-cuadricula":
-      return <HomoteciaCuadricula block={block} />;
-    case "union-imagen":
-      return <UnionImagen block={block} />;
     case "thales-dividir":
       return <ThalesDividir block={block} />;
     case "thales-practica":

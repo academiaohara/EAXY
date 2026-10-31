@@ -15,7 +15,7 @@ import {
   type Pt,
 } from "./geometry";
 import { useBenchCheck } from "./practice";
-import { AMBAR, AZUL, Arco, BENCH_STEPS, BenchShell, INK, SANS, SVG_CLASS, VERDE, f1, Resultado, type BenchBlock } from "./scenes";
+import { AMBAR, AZUL, Arco, BENCH_STEPS, BenchShell, INK, SANS, SVG_CLASS, VERDE, Resultado, type BenchBlock } from "./scenes";
 import { BenchDefs, CARTABON_PTS, Cartabon, Desk, ESCUADRA_PTS, Escuadra, Transportador } from "./instruments";
 
 /** Punto del puntero en coordenadas del dibujo (en jsdom, sin matriz, se usan las del cliente). */
@@ -62,12 +62,11 @@ export function PerpendicularEscuadraCartabon({ block }: { block: BenchBlock }) 
   const svgRef = useRef<SVGSVGElement>(null);
   const drag = useRef<{ x0: number; s0: number } | null>(null);
   const ok = perpPasaPorP(setup, s);
-  const { resultado } = useBenchCheck({ ready: step === last, evaluate: () => perpPasaPorP(setup, s) });
+  const { resultado, finalizar } = useBenchCheck();
   const hecho = resultado === true;
   const shown = resultado !== null ? last : step;
-  const sv = hecho && !ok ? setup.sStar : s;
+  const sv = hecho ? setup.sStar : s;
   const mueve = shown === last && resultado === null;
-  const falta = Math.abs(perpEx(s) - setup.p[0]);
 
   const goStep = (n: number) => {
     setStep(n);
@@ -83,16 +82,20 @@ export function PerpendicularEscuadraCartabon({ block }: { block: BenchBlock }) 
   const onMove = (ev: ReactPointerEvent) => {
     if (drag.current) setS(clamp(drag.current.s0 + aLocal(ev) - drag.current.x0, 0, PERP_S_MAX));
   };
+  // Al soltar (o al mover con el teclado) con el cateto sobre P, la construcción queda hecha.
   const onUp = () => {
+    const estabaArrastrando = drag.current !== null;
     drag.current = null;
     setAgarrada(false);
+    if (estabaArrastrando && mueve && ok) finalizar();
   };
   const onKey = (ev: ReactKeyboardEvent) => {
     if (!mueve) return;
     const paso = ev.shiftKey ? 10 : 2;
-    if (ev.key === "ArrowRight" || ev.key === "ArrowUp") setS((v) => clamp(v + paso, 0, PERP_S_MAX));
-    else if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") setS((v) => clamp(v - paso, 0, PERP_S_MAX));
-    else return;
+    const nuevo = ev.key === "ArrowRight" || ev.key === "ArrowUp" ? clamp(s + paso, 0, PERP_S_MAX) : ev.key === "ArrowLeft" || ev.key === "ArrowDown" ? clamp(s - paso, 0, PERP_S_MAX) : null;
+    if (nuevo === null) return;
+    setS(nuevo);
+    if (perpPasaPorP(setup, nuevo)) finalizar();
     ev.preventDefault();
   };
 
@@ -100,12 +103,7 @@ export function PerpendicularEscuadraCartabon({ block }: { block: BenchBlock }) 
   const esc = apoyarTriangulo(ESCUADRA_PTS, 0, 1, [perpEx(sv), 0], true);
   const [px] = setup.p;
 
-  const extra =
-    resultado === null ? null : resultado ? (
-      <Resultado ok>Correcto: el cateto es perpendicular a r porque la escuadra solo se ha deslizado a lo largo de r.</Resultado>
-    ) : (
-      <Resultado ok={false}>El cateto no pasa por P: queda a {f1(falta)} mm. Pulsa «Reintentar» y vuelve a deslizar la escuadra.</Resultado>
-    );
+  const extra = resultado === null ? null : <Resultado ok>Correcto: el cateto es perpendicular a r porque la escuadra solo se ha deslizado a lo largo de r.</Resultado>;
 
   return (
     <BenchShell scene="perpendicular-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, el cartabón y la escuadra">
@@ -176,7 +174,8 @@ export function TransportadorMedir({ block }: { block: BenchBlock }) {
   const [phi, setPhi] = useState(inicial);
   const [agarrada, setAgarrada] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
-  const { resultado } = useBenchCheck({ ready: step === last, evaluate: () => phi === objetivo });
+  const [aviso, setAviso] = useState<string | null>(null);
+  const { resultado, finalizar } = useBenchCheck();
   const hecho = resultado === true;
   const shown = resultado !== null ? last : step;
   const phiV = hecho ? objetivo : phi;
@@ -186,6 +185,7 @@ export function TransportadorMedir({ block }: { block: BenchBlock }) {
 
   const goStep = (n: number) => {
     setStep(n);
+    setAviso(null);
     if (n === 1) setPhi(inicial);
     if (n === last) setPhi(objetivo > 90 ? 60 : 120);
   };
@@ -198,32 +198,39 @@ export function TransportadorMedir({ block }: { block: BenchBlock }) {
   const onMove = (ev: ReactPointerEvent) => {
     if (agarrada) setPhi(aAngulo(ev));
   };
-  const onUp = () => setAgarrada(false);
+  // En el ejercicio, al soltar sobre el ángulo pedido la construcción queda hecha; si no, se sigue ajustando.
+  const onUp = () => {
+    const estabaArrastrando = agarrada;
+    setAgarrada(false);
+    if (!estabaArrastrando || !mueve || !practica) return;
+    if (phi === objetivo) finalizar();
+    else setAviso(`Ahora marca ${phi}°: sigue ajustando hasta llegar a ${objetivo}°.`);
+  };
   const onKey = (ev: ReactKeyboardEvent) => {
     if (!mueve) return;
     const paso = ev.shiftKey ? 10 : 1;
-    if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") setPhi((v) => clamp(v + paso, 0, 180));
-    else if (ev.key === "ArrowRight" || ev.key === "ArrowDown") setPhi((v) => clamp(v - paso, 0, 180));
-    else return;
+    const nuevo = ev.key === "ArrowLeft" || ev.key === "ArrowUp" ? clamp(phi + paso, 0, 180) : ev.key === "ArrowRight" || ev.key === "ArrowDown" ? clamp(phi - paso, 0, 180) : null;
+    if (nuevo === null) return;
+    setPhi(nuevo);
+    setAviso(null);
+    if (practica && nuevo === objetivo) finalizar();
     ev.preventDefault();
   };
 
   const tip = enCirculo(V, 175, phiV);
   const extra =
     resultado !== null ? (
-      resultado ? (
-        <Resultado ok>Correcto: el segundo lado marca {objetivo}° en la escala que parte de 0 sobre el primer lado.</Resultado>
-      ) : (
-        <Resultado ok={false}>
-          El lado marca {phi}° y el ángulo pedido es de {objetivo}°: {phi < objetivo ? `te faltan ${objetivo - phi}°` : `te pasas ${phi - objetivo}°`}. Pulsa «Reintentar».
-        </Resultado>
-      )
+      <Resultado ok>Correcto: el segundo lado marca {objetivo}° en la escala que parte de 0 sobre el primer lado.</Resultado>
     ) : activo && !practica ? (
       <p className="text-sm text-[color:var(--stage-muted,#b8c2d0)]" data-testid="bench-transp-panel">
         Lectura en la escala exterior{" "}
         <span className="text-2xl font-bold tabular-nums text-[#58c4dd]" data-testid="bench-lectura">
           {phi}°
         </span>
+      </p>
+    ) : practica && aviso ? (
+      <p className="text-sm text-amber-200" data-testid="bench-aviso">
+        {aviso}
       </p>
     ) : null;
 

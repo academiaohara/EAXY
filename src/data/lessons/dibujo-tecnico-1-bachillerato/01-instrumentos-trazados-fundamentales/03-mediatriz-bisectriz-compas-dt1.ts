@@ -21,7 +21,7 @@ export const mediatrizBisectrizCompasDt1Lesson: InteractiveLesson = {
       { title: "Traza el primer arco", text: "Arrastra la mina para dibujar un arco **por encima y por debajo** del segmento." },
       { title: "Cambia de extremo", text: "**Sin cambiar la abertura**, toca el otro extremo para clavar allí la punta seca." },
       { title: "Traza el segundo arco", text: "Dibuja otro arco por encima y por debajo: debe cortar al primero en dos puntos." },
-      { title: "Pasa la regla", text: "Toca los **dos puntos** donde se cortan los arcos: la regla se colocará por ellos y trazará la mediatriz. Después pulsa **Comprobar**." },
+      { title: "Pasa la regla", text: "Toca los **dos puntos** donde se cortan los arcos: la regla se colocará por ellos y trazará la mediatriz." },
     ], {
       question: "Construye la mediatriz del segmento AB con compás y regla.",
       hint: "Usa la misma abertura desde A y desde B, mayor que la mitad de AB, y pasa la regla por los dos cortes.",
@@ -44,7 +44,7 @@ export const mediatrizBisectrizCompasDt1Lesson: InteractiveLesson = {
       { title: "Traza un arco dentro del ángulo", text: "Arrastra la mina para dibujar un arco **hacia el interior** del ángulo." },
       { title: "Cambia de punto", text: "**Sin cambiar la abertura**, toca el otro punto, $Q$ o $P$." },
       { title: "Traza el segundo arco", text: "Dibuja otro arco que **corte al anterior**: ese corte es el punto $T$." },
-      { title: "Pasa la regla", text: "Toca **dos puntos**: el vértice $V$ y el punto $T$ donde se cortan los arcos. La regla trazará la bisectriz. Después pulsa **Comprobar**." },
+      { title: "Pasa la regla", text: "Toca **dos puntos**: el vértice $V$ y el punto $T$ donde se cortan los arcos. La regla trazará la bisectriz." },
     ], {
       question: "Construye la bisectriz del ángulo con compás y regla.",
       hint: "Haz el arco desde V, usa la misma abertura desde P y desde Q (mayor que la mitad de PQ) y pasa la regla por V y por el corte T.",

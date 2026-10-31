@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { angDe, clamp, dist, enCirculo, reflejarPunto, type Pt } from "./geometry";
+import { angDe, dist, enCirculo, reflejarPunto, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
-import { CuadriculaEjercicio, gp, poligono } from "./scenes-transformaciones";
+import { ArcoAnim, MSHEET, MV, SNAP, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { poligono } from "./scenes-transformaciones";
 import { Punto } from "./scenes-trazados";
 
 /* ───────────── Simetría axial con compás ───────────── */
@@ -122,7 +122,7 @@ export const SIM_IMG: Pt[] = [SA2, SB2, SC2];
 const NOMBRES = ["A", "B", "C"];
 
 /** Práctica de hallar el simétrico del vértice `v` (0 = A, 1 = B, 2 = C); los anteriores se muestran ya hallados. */
-function defSimetria(v: number): Def {
+export function defSimetria(v: number): Def {
   const P0 = SIM_ORIG[v];
   const P2 = SIM_IMG[v];
   const n = NOMBRES[v];
@@ -156,54 +156,3 @@ function defSimetria(v: number): Def {
     },
   };
 }
-
-export function SimetriaPractica({ block }: { block: BenchBlock }) {
-  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
-  const [def] = useState(() => defSimetria(v));
-  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
-}
-
-/* ───────────── Simetría axial en papel cuadriculado ───────────── */
-
-type Variante = { figura: [number, number][]; esperado: [number, number][]; eje: [Pt, Pt] };
-
-function variante(a: number): Variante {
-  if (a === 1) {
-    // eje diagonal (sube hacia la derecha) que pasa por el cuadro (12, 7)
-    const c: [number, number] = [12, 7];
-    const figura: [number, number][] = [[8, 10], [10, 6], [12, 9]];
-    const esperado = figura.map(([x, y]) => {
-      const dx = x - c[0];
-      const dy = y - c[1];
-      return [c[0] - dy, c[1] - dx] as [number, number];
-    });
-    return { figura, esperado, eje: [gp([c[0] - 7, c[1] + 7]), gp([c[0] + 7, c[1] - 7])] };
-  }
-  const k = 12;
-  const figura: [number, number][] = [[2, 11], [4, 6], [7, 10]];
-  return { figura, esperado: figura.map(([x, y]) => [2 * k - x, y] as [number, number]), eje: [gp([k, 0]), gp([k, 14])] };
-}
-
-export function SimetriaCuadricula({ block }: { block: BenchBlock }) {
-  const a = block.params?.a === 1 ? 1 : 0;
-  const v = variante(a);
-  return (
-    <CuadriculaEjercicio
-      block={block}
-      scene="simetria-cuadricula"
-      figura={v.figura}
-      esperado={v.esperado}
-      flechas
-      mensajeOk="Correcto: cada vértice y su simétrico están a la misma distancia del eje, en lados opuestos, y el segmento que los une es perpendicular al eje."
-      decoracion={
-        <g>
-          <line x1={v.eje[0][0]} y1={v.eje[0][1]} x2={v.eje[1][0]} y2={v.eje[1][1]} stroke={AZUL} strokeWidth="2.2" strokeDasharray="10 5" />
-          <text x={v.eje[1][0] + 8} y={v.eje[1][1] + (a === 1 ? 4 : -4)} fontSize="15" fontWeight="800" fill={AZUL} fontFamily={SANS} {...etiqueta}>
-            e
-          </text>
-        </g>
-      }
-    />
-  );
-}
-

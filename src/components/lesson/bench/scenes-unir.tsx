@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { clamp, dist, rotarPunto, type Pt } from "./geometry";
-import { MSHEET, MV, Practica, SNAP, type Def, type Est } from "./scenes-compas";
-import { GIRO_CENTRO, GIRO_ORIG, PapelGiro } from "./scenes-giro";
-import { HOMO_IMG, PapelHomotecia } from "./scenes-homotecia";
-import { SIM_IMG, PapelSimetria } from "./scenes-simetria";
-import { PapelTraslacion, TRAS_IMG } from "./scenes-transformaciones";
+import { MSHEET, MV, Practica, secuenciar, type Def, type Est } from "./scenes-compas";
+import { defGiro, GIRO_CENTRO, GIRO_ORIG, PapelGiro } from "./scenes-giro";
+import { defHomotecia, HOMO_IMG, PapelHomotecia } from "./scenes-homotecia";
+import { defSimetria, SIM_IMG, PapelSimetria } from "./scenes-simetria";
+import { defTraslacion, PapelTraslacion, TRAS_IMG } from "./scenes-transformaciones";
 import { Punto } from "./scenes-trazados";
 import { VERDE, type BenchBlock } from "./scenes";
 
@@ -28,14 +29,16 @@ function imagenes(tipo: number, th: number): Pt[] {
   return HOMO_IMG;
 }
 
-function defUnir(tipo: number, th: number): Def {
+/** Fase final: unir A′, B′ y C′ con tres pasadas de la regla. Solo se pueden tocar los tres puntos y no se repite un lado. */
+export function defUnir(tipo: number, th: number): Def {
   const img = imagenes(tipo, th);
-  const indice = (p: Pt) => img.findIndex((q) => dist(p, q) <= SNAP + 2);
+  const indice = (p: Pt) => img.findIndex((q) => dist(p, q) <= 1);
   return {
-    scene: "union-imagen",
+    scene: "traslacion-practica",
     fases: ["regla"],
     nClics: 6,
     extRegla: 0,
+    repetir: true,
     papel: () => (
       <g>
         {tipo === 0 ? <PapelTraslacion etiquetas={{ a2: false, b2: false, c2: false }} /> : null}
@@ -57,19 +60,46 @@ function defUnir(tipo: number, th: number): Def {
       const lados = Math.floor(est.clics.length / 2);
       return est.clics.length % 2 === 1 ? `Lados trazados: ${lados} de 3 · elige el otro extremo del lado` : `Lados trazados: ${lados} de 3`;
     },
-    evaluar: (est) => {
-      const lados: [number, number][] = [];
-      for (let i = 0; i + 1 < est.clics.length; i += 2) lados.push([indice(est.clics[i]), indice(est.clics[i + 1])]);
-      if (lados.length < 3) return { ok: false, mensaje: "Faltan lados por trazar." };
-      if (lados.some(([a, b]) => a < 0 || b < 0 || a === b)) return { ok: false, mensaje: "Cada pasada de la regla debe pasar por dos de los puntos A′, B′ y C′. Pulsa «Reintentar»." };
-      const claves = new Set(lados.map(([a, b]) => `${Math.min(a, b)}-${Math.max(a, b)}`));
-      if (claves.size < 3) return { ok: false, mensaje: "Has repetido un lado: hay que trazar A′B′, B′C′ y C′A′, uno cada vez. Pulsa «Reintentar»." };
-      return { ok: true, mensaje: `Correcto: A′B′C′ es la figura transformada del triángulo ABC por la ${TEMA[tipo]}.` };
+    validarClic: (est, p) => {
+      if (est.clics.length % 2 === 0) return null;
+      const a = indice(est.clics[est.clics.length - 1]);
+      const b = indice(p);
+      if (a === b) return "Un lado une dos puntos distintos: toca otro vértice.";
+      for (let i = 0; i + 1 < est.clics.length; i += 2) {
+        const x = indice(est.clics[i]);
+        const y = indice(est.clics[i + 1]);
+        if ((x === a && y === b) || (x === b && y === a)) return "Ese lado ya está trazado: elige otro.";
+      }
+      return null;
     },
+    evaluar: () => ({ ok: true, mensaje: `Correcto: A′B′C′ es la figura transformada del triángulo ABC por la ${TEMA[tipo]}.` }),
   };
 }
 
-export function UnionImagen({ block }: { block: BenchBlock }) {
-  const tipo = clamp(Math.round(block.params?.a ?? 0), 0, 3);
-  return <Practica block={block} def={defUnir(tipo, 60)} vista={{ ...MV, sheet: MSHEET }} />;
+const vista = { ...MV, sheet: MSHEET };
+
+function Secuencia({ block, def }: { block: BenchBlock; def: () => Def }) {
+  const [d] = useState(def);
+  return <Practica block={block} def={d} vista={vista} />;
+}
+
+/** Traslación completa: B, C y unir los puntos. */
+export function TraslacionPractica({ block }: { block: BenchBlock }) {
+  return <Secuencia block={block} def={() => secuenciar("traslacion-practica", [defTraslacion(1), defTraslacion(2)], defUnir(0, 0))} />;
+}
+
+/** Giro completo: A, B, C y unir los puntos. */
+export function GiroPractica({ block }: { block: BenchBlock }) {
+  const th = clamp(Math.round(block.params?.a ?? 60), 30, 120);
+  return <Secuencia block={block} def={() => secuenciar("giro-practica", [defGiro(th, 0), defGiro(th, 1), defGiro(th, 2)], defUnir(1, th))} />;
+}
+
+/** Simetría completa: A, B, C y unir los puntos. */
+export function SimetriaPractica({ block }: { block: BenchBlock }) {
+  return <Secuencia block={block} def={() => secuenciar("simetria-practica", [defSimetria(0), defSimetria(1), defSimetria(2)], defUnir(2, 0))} />;
+}
+
+/** Homotecia completa: A, B, C y unir los puntos. */
+export function HomoteciaPractica({ block }: { block: BenchBlock }) {
+  return <Secuencia block={block} def={() => secuenciar("homotecia-practica", [defHomotecia(0), defHomotecia(1), defHomotecia(2)], defUnir(3, 0))} />;
 }

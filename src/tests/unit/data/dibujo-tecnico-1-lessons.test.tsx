@@ -52,7 +52,7 @@ describe("curso Dibujo Técnico I", () => {
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: pasos bien formados", (_slug, { data }) => {
     const conMesa = data.steps.some((st) => st.type === "bench_task" || (st.type === "slide" && st.visual?.kind === "bench"));
-    expect(data.steps.length).toBeGreaterThanOrEqual(conMesa ? 2 : 5);
+    expect(data.steps.length).toBeGreaterThanOrEqual(conMesa ? (data.slug === "semejanza-homotecia-dt1" ? 1 : 2) : 5);
     const ids = data.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
     let practice = 0;
@@ -81,7 +81,8 @@ describe("curso Dibujo Técnico I", () => {
         expect(step.explanation?.length ?? 0, step.id).toBeGreaterThan(10);
       }
     }
-    expect(practice).toBeGreaterThanOrEqual(conMesa ? 1 : 2);
+    // La lección de semejanza y escalas es solo explicación (sin ejercicio propio).
+    expect(practice).toBeGreaterThanOrEqual(conMesa ? (data.slug === "semejanza-homotecia-dt1" ? 0 : 1) : 2);
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: tiene animaciones o herramientas interactivas", (_slug, { data }) => {

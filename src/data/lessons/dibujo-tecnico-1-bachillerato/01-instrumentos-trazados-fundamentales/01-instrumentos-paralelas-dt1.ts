@@ -35,7 +35,7 @@ export const instrumentosParalelasDt1Lesson: InteractiveLesson = {
     benchTask("paralela", "Paralela por un punto con escuadra y cartabón", "paralelas-escuadra-cartabon", [
       { title: "Apoya la escuadra sobre r", text: "Dada la recta $r$ y el punto $P$, coloca un lado de la **escuadra** sobre $r$." },
       { title: "Pega el cartabón", text: "Apoya el **cartabón** contra la hipotenusa de la escuadra y **sujétalo**: no debe moverse en todo el proceso." },
-      { title: "Traza la paralela por P", text: "**Arrastra la escuadra** a lo largo del cartabón hasta que el lado que estaba sobre $r$ pase por $P$ y pulsa **Comprobar**.", fact: "La escuadra se desliza, no gira" },
+      { title: "Traza la paralela por P", text: "**Arrastra la escuadra** a lo largo del cartabón hasta que el lado que estaba sobre $r$ pase por $P$.", fact: "La escuadra se desliza, no gira" },
     ], {
       question: "Traza por P la paralela a r deslizando la escuadra sobre el cartabón.",
       hint: "Arrastra la escuadra hasta que su borde pase justo por P.",
