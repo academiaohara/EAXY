@@ -30,20 +30,22 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # EAXY — ilustraciones de lecciones
 
-- PNG de escenarios: estilo **libro 1.º ESO** (dibujo, no foto), fondo transparente, sin números del ejercicio en la imagen.
+- Elegir el realismo según la edad, la asignatura y la tarea: documentos e interfaces fieles, fotografías o ilustraciones cuando ayuden a observar; geometría precisa para construir. El estilo «libro 1.º ESO» solo corresponde a los recursos que lo especifiquen.
 - Flujo: `Assets/` → `public/lesson/<carpeta>/`; detalle, prompts y tamaños en **`docs/lesson-illustrations.md`** (regla Cursor: `.cursor/rules/lesson-illustrations.mdc`).
 
 
 # EAXY — diapositivas de lección
 
-- Teoría nueva = paso `type: "slide"`: bloques de texto con forma propia + animación tipo Manim o ilustración. Guía, catálogo de bloques/animaciones y tono (sin tratar al alumno como niño): **`docs/lessons-slides.md`**.
+- Antes de crear o revisar lecciones, leer **`docs/lesson-quality-standard.md`** y completar la ficha breve de **`docs/templates/lesson-design.md`** con el contexto ya disponible. Este estándar sustituye recetas antiguas de formato y cuotas de ejercicios.
+- Elegir el medio según el aprendizaje: documento interactivo, simulación de interfaz, manipulable, imagen, comparación o animación. `slide` y `storyboard` son opciones; Manim acompaña cuando hace visible una relación o construcción. Catálogo técnico: **`docs/lessons-slides.md`**.
 - Animaciones nuevas: `src/components/lesson/anim/` (registro en `registry.tsx`); el test `slide-anim.test.tsx` dibuja todos sus pasos.
 
 # EAXY — al añadir lecciones nuevas
 
-- Antes de escribir la lección, valora si algún concepto de teoría gana con una **herramienta interactiva** dentro de la diapositiva: un manipulable que muestra lo que se enseña y donde el alumno cambia los valores (deslizadores, campos numéricos, botones +/−) y ve el resultado al instante.
-- Es **opcional**: solo cuando explorar valores ayude a entender (relaciones, proporciones, signos, escalas, fórmulas con parámetros). No se fuerza en cada diapositiva ni sustituye a la animación ni a los ejercicios.
-- Criterios y límites: **`docs/lessons-slides.md`** (sección «Herramienta interactiva en la diapositiva»; regla Cursor: `.cursor/rules/new-lessons.mdc`).
+- Revisar primero el tema completo: objetivo observable, conocimientos previos y reparto de conceptos sin explicaciones duplicadas.
+- La práctica principal debe permitir construir, inspeccionar, experimentar, diagnosticar, reparar o producir algo propio de la materia, con consecuencias visibles y reintentos. Tests y clasificaciones son comprobaciones puntuales; no deben ser la única práctica ni la dominante salvo justificación pedagógica explícita.
+- Elegir o crear la interacción mínima que necesita el objetivo; no adaptar el aprendizaje al módulo disponible. Integrar explicación y acción, usar el ancho útil y sincronizar texto y visual sin imponer tarjetas con borde.
+- Aceptar con evidencia pedagógica, conceptual, visual y funcional según **`docs/lesson-quality-standard.md`**. Respetar el presupuesto del usuario, sin agentes adicionales ni verificaciones repetidas por rutina.
 
 # EAXY — convertir un PDF de libro en un tema
 

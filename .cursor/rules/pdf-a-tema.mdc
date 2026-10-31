@@ -5,6 +5,6 @@ alwaysApply: false
 
 # PDF del libro → tema de lecciones
 
-Cuando el usuario adjunte un PDF de un libro (p. ej. Tecnología Industrial II) para convertirlo en lecciones, sigue **`docs/pdf-a-tema.md`** paso a paso: leer todo el PDF, copiarlo a `temp/tecnologia/…`, 10–15 lecciones con animaciones y herramientas interactivas, registro (`registry.tsx`, `SlideTool.tsx`, `types.ts`), currículo, índice, seed, tests, docs, verificación visual y build, y commit en la rama indicada (sin PR).
+Cuando el usuario adjunte un PDF para convertirlo en lecciones, leer **`docs/lesson-quality-standard.md`** y después **`docs/pdf-a-tema.md`**. Preparar el reparto del tema y fichas con objetivos observables y práctica auténtica. Elegir medios por necesidad pedagógica, sin cuotas de lecciones, animaciones o herramientas. Mantener registros, currículo, índice, seed y docs coherentes; verificar contenido y experiencia. La entrega Git/PR sigue el alcance autorizado por el usuario.
 
 Modelo a imitar: unidad 10, `src/data/lessons/tecnologia-industrial-2-bachillerato/10-sistemas-automaticos/`, `scenes/industrial/control.tsx`, `tools/ControlTools.tsx`.

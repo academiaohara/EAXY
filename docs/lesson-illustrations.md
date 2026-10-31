@@ -1,8 +1,15 @@
 # Ilustraciones de lecciones (PNG)
 
-Guía para generar y colocar imágenes de escenarios interactivos (1.º ESO, estilo libro de texto).
+Guía para generar y colocar imágenes. Aplicar primero el [estándar de lecciones](./lesson-quality-standard.md): el grado de realismo se elige por edad, asignatura y objetivo. Las recetas y prompts de libro de 1.º ESO que siguen corresponden a esa familia de recursos, no a todo el catálogo.
 
-## Estilo visual (obligatorio)
+## Elección del recurso
+
+- Usar documentos e interfaces fieles cuando el alumno deba leerlos u operar con ellos. Texto, cotas y valores deben ser legibles y verificables; componerlos en la interfaz cuando sean variables o esenciales.
+- Fotografías y modelos realistas son apropiados para observar materiales, objetos y contextos cuando aporten información que una abstracción pierde.
+- Las ilustraciones editoriales son apropiadas para simplificar un escenario; las animaciones geométricas, para relaciones y construcciones.
+- No generar controles ficticios que parezcan operativos ni usar una imagen imprecisa como fuente de medidas. El fondo transparente corresponde a objetos recortados; no se impone a documentos o escenas completas.
+
+## Estilo visual de la familia editorial 1.º ESO
 
 - **Look:** dibujo didáctico de libro de matemáticas de la ESO (editorial tipo Santillana/Anaya): contornos finos, colores planos con sombreado suave, icono limpio.
 - **No** fotorealismo, no stock photo, no gradientes dramáticos, no 3D de lujo.

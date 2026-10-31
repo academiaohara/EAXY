@@ -5,4 +5,4 @@ alwaysApply: false
 
 # Revisión de un tema nuevo
 
-Al revisar lecciones, animaciones o herramientas añadidas por otro agente, sigue **`docs/revision-tema.md`**: `npx tsx scripts/review-tema.ts <curso> <tema>` (coherencia), tsc/eslint/vitest/build, contraste de fórmulas y ejemplos con el PDF, y capturas con `scripts/review-visual.mjs`.
+Al revisar lecciones, aplicar primero la puerta de aceptación de **`docs/lesson-quality-standard.md`** y después **`docs/revision-tema.md`**. Evaluar objetivos, reparto del tema, práctica auténtica, feedback, transferencia, fidelidad conceptual y accesibilidad. El script `review-tema.ts` y las pruebas verifican estructura; no acreditan calidad pedagógica. Revisar las fases y acciones reales en navegador y ejecutar controles técnicos proporcionales al cambio.

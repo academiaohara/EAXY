@@ -1,5 +1,7 @@
 # Lecciones interactivas (datos)
 
+Antes de crear o rediseñar contenido, leer el [estándar de diseño y aceptación](../../../docs/lesson-quality-standard.md) y completar la [ficha breve](../../../docs/templates/lesson-design.md). Elegir formatos e interacciones por objetivo pedagógico; la estructura de carpetas y los módulos existentes no determinan cómo debe enseñarse.
+
 Árbol alineado con el catálogo en `src/content/curriculum.ts`:
 
 ```text
