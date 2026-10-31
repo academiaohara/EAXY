@@ -1129,6 +1129,7 @@ export type SlideAnimId =
   | "fb1-pila-daniell"
   | "fb1-cadenas-carbono"
   | "fb1-parabolico"
+  | "fb1-plano"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2228,6 +2229,11 @@ export type SlideToolId =
   | "fb1-parabolico-explorador"
   | "fb1-circular-explorador"
   | "fb1-barca-rio-explorador"
+  | "fb1-fuerzas-resultante-explorador"
+  | "fb1-plano-inclinado-explorador"
+  | "fb1-poleas-explorador"
+  | "fb1-muelle-explorador"
+  | "fb1-choque-explorador"
   /* industrial-tool-end */;
 
 /**

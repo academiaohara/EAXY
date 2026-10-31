@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { FuerzasResultanteFb1Explorador, PlanoInclinadoFb1Explorador, PoleasFb1Explorador, MuelleFb1Explorador, ChoqueFb1Explorador } from "@/components/lesson/slide/tools/Fb1DinamicaTools";
 import { VectoresCinFb1Explorador, GraficasMruaFb1Explorador, ParabolicoFb1Explorador, CircularFb1Explorador, BarcaRioFb1Explorador } from "@/components/lesson/slide/tools/Fb1CinematicaTools";
 import { RamificadosFb1Explorador, GruposFb1Explorador, IsomeriaFb1Explorador, ReaccionesOrganicasFb1Explorador } from "@/components/lesson/slide/tools/Fb1OrganicaTools";
 import { AjusteFb1Explorador, LimitanteFb1Explorador, PhFb1Explorador, ValoracionFb1Explorador, RedoxPilaFb1Explorador, IndustriaFb1Explorador } from "@/components/lesson/slide/tools/Fb1ReaccionesTools";
@@ -2463,6 +2464,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <CircularFb1Explorador block={block} />;
     case "fb1-barca-rio-explorador":
       return <BarcaRioFb1Explorador block={block} />;
+    case "fb1-fuerzas-resultante-explorador":
+      return <FuerzasResultanteFb1Explorador block={block} />;
+    case "fb1-plano-inclinado-explorador":
+      return <PlanoInclinadoFb1Explorador block={block} />;
+    case "fb1-poleas-explorador":
+      return <PoleasFb1Explorador block={block} />;
+    case "fb1-muelle-explorador":
+      return <MuelleFb1Explorador block={block} />;
+    case "fb1-choque-explorador":
+      return <ChoqueFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

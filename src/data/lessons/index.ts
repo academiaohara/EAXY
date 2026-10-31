@@ -644,6 +644,7 @@ import { fuerzaParPotenciaLesson } from "@/data/lessons/tecnologia-ingenieria-1-
 import { fuerzasEnergiaEnlaceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/02-fuerzas-energia-enlace";
 import { fuerzasIntermolecularesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/04-fuerzas-intermoleculares-fb1";
 import { fuerzasIntermolecularesFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/04-fuerzas-intermoleculares-fq4";
+import { fuerzasLeyesNewtonFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/01-fuerzas-leyes-newton-fb1";
 import { funcionConcepto4esoLesson } from "@/data/lessons/matematicas-4-eso/08-funciones-caracteristicas/01-funcion-concepto-4eso";
 import { funcionConcepto4esobLesson } from "@/data/lessons/matematicas-4-eso-b/04-funciones-caracteristicas/01-funcion-concepto-4esob";
 import { funcionConstante2esoLesson } from "@/data/lessons/matematicas-2-eso/11-funciones/05-funcion-constante-2eso";
@@ -948,6 +949,7 @@ import { modelosAtomicosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estruct
 import { modelosAtomicosParticulasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/01-modelos-atomicos-particulas-fb1";
 import { molMasaMolarAvogadroFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/01-mol-masa-molar-avogadro-fb1";
 import { molMasaMolarGasesFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/01-mol-masa-molar-gases-fq4";
+import { momentoLinealImpulsoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/05-momento-lineal-impulso-fb1";
 import { monomios2esoLesson } from "@/data/lessons/matematicas-2-eso/05-algebra/02-monomios-2eso";
 import { monomios3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/02-monomios-3eso";
 import { monomios4esoLesson } from "@/data/lessons/matematicas-4-eso/05-expresiones-algebraicas/01-monomios-4eso";
@@ -972,6 +974,7 @@ import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-e
 import { mruMruaFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/02-mru-mrua-fq4";
 import { mruMruaGraficasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/02-mru-mrua-graficas-fb1";
 import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
+import { muellesHookeFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/04-muelles-hooke-fb1";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
 import { multiplicacionDivisionEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/04-multiplicacion-division-enteros";
@@ -1093,6 +1096,7 @@ import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico
 import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoInclinadoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/03-plano-inclinado-fq4";
+import { planoInclinadoRozamientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/02-plano-inclinado-rozamiento-fb1";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
@@ -1108,6 +1112,7 @@ import { poblacionMuestraCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-b
 import { poblacionVariables2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/01-poblacion-variables-2eso";
 import { poleasCorreas2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/06-poleas-correas-2eso";
 import { poleasCorreasFriccionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/02-poleas-correas-friccion";
+import { poleasCuerposEnlazadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/03-poleas-cuerpos-enlazados-fb1";
 import { poleasPolipastoBasicoLesson } from "@/data/lessons/tecnologia-1-eso/05-mecanismos-basicos/03-poleas-polipasto-basico";
 import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/05-poliedros-2eso";
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
@@ -2331,6 +2336,7 @@ export const interactiveLessons = {
   "fuerzas-energia-enlace": fuerzasEnergiaEnlaceLesson,
   "fuerzas-intermoleculares-fb1": fuerzasIntermolecularesFb1Lesson,
   "fuerzas-intermoleculares-fq4": fuerzasIntermolecularesFq4Lesson,
+  "fuerzas-leyes-newton-fb1": fuerzasLeyesNewtonFb1Lesson,
   "funcion-concepto-4eso": funcionConcepto4esoLesson,
   "funcion-concepto-4esob": funcionConcepto4esobLesson,
   "funcion-constante-2eso": funcionConstante2esoLesson,
@@ -2635,6 +2641,7 @@ export const interactiveLessons = {
   "modelos-atomicos-particulas-fb1": modelosAtomicosParticulasFb1Lesson,
   "mol-masa-molar-avogadro-fb1": molMasaMolarAvogadroFb1Lesson,
   "mol-masa-molar-gases-fq4": molMasaMolarGasesFq4Lesson,
+  "momento-lineal-impulso-fb1": momentoLinealImpulsoFb1Lesson,
   "monomios-2eso": monomios2esoLesson,
   "monomios-3eso": monomios3esoLesson,
   "monomios-4eso": monomios4esoLesson,
@@ -2659,6 +2666,7 @@ export const interactiveLessons = {
   "mru-mrua-fq4": mruMruaFq4Lesson,
   "mru-mrua-graficas-fb1": mruMruaGraficasFb1Lesson,
   "mrua-fq3": mruaFq3Lesson,
+  "muelles-hooke-fb1": muellesHookeFb1Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
   "multiplicacion-division-enteros": multiplicacionDivisionEnterosLesson,
@@ -2780,6 +2788,7 @@ export const interactiveLessons = {
   "plano-diedrico-trazas-dt1": planoDiedricoTrazasDt1Lesson,
   "plano-general-normal-2bach": planoGeneralNormal2bachLesson,
   "plano-inclinado-fq4": planoInclinadoFq4Lesson,
+  "plano-inclinado-rozamiento-fb1": planoInclinadoRozamientoFb1Lesson,
   "plano-tres-puntos-coplanarios-2bach": planoTresPuntosCoplanarios2bachLesson,
   "plano-vectorial-parametricas-2bach": planoVectorialParametricas2bachLesson,
   "planos-acotados-explanaciones-dt2": planosAcotadosExplanacionesDt2Lesson,
@@ -2795,6 +2804,7 @@ export const interactiveLessons = {
   "poblacion-variables-2eso": poblacionVariables2esoLesson,
   "poleas-correas-2eso": poleasCorreas2esoLesson,
   "poleas-correas-friccion": poleasCorreasFriccionLesson,
+  "poleas-cuerpos-enlazados-fb1": poleasCuerposEnlazadosFb1Lesson,
   "poleas-polipasto-basico": poleasPolipastoBasicoLesson,
   "poliedros-2eso": poliedros2esoLesson,
   "poliedros-3eso": poliedros3esoLesson,
