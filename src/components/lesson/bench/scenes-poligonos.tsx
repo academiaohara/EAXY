@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
-import { AMBAR, AZUL, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
+import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
 import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
@@ -272,9 +272,8 @@ export function TrianguloLllCompas({ block }: { block: BenchBlock }) {
 
 const defLll: Def = {
   scene: "triangulo-lll-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
-  nClics: 4,
-  extRegla: 0,
+  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "auto"],
+  autoLados: () => [[LA, LC], [LC, LB]],
   papel: (est: Est) => (
     <g>
       <DatosLll resaltar={null} ab={false} />
@@ -292,18 +291,7 @@ const defLll: Def = {
   radioIni: () => 100,
   rhoIni: (n) => (n === 0 ? -25 : 25),
   arco: (_est, _n, _r, c) => ({ centro: c, base: angDe(c, LC), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [LA, LB, LC],
-  validarClic: (est, punto) => {
-    const a = (q: Pt) => (dist(q, LA) < 1 ? "A" : dist(q, LB) < 1 ? "B" : "C");
-    if (est.clics.length % 2 === 0) return null;
-    const prev = a(est.clics[est.clics.length - 1]);
-    const act = a(punto);
-    if (prev === act) return "Un lado une dos puntos distintos: toca otro vértice.";
-    if ([prev, act].sort().join("") === "AB") return "El lado AB ya está dibujado: une C con A y con B.";
-    for (let i = 0; i + 1 < est.clics.length; i += 2) if ([a(est.clics[i]), a(est.clics[i + 1])].sort().join("") === [prev, act].sort().join("")) return "Ese lado ya está trazado: elige el otro.";
-    return null;
-  },
-  repetir: true,
+  cortes: () => [],
   evaluar: () => ({ ok: true, mensaje: "Correcto: el triángulo ABC tiene los tres lados dados, porque C está a b de A y a a de B." }),
 };
 
@@ -385,13 +373,11 @@ const hexDe = (fase: number) => Math.floor((fase - 1) / 3); // vértice cuyo arc
 
 const defHexagono: Def = {
   scene: "hexagono-practica",
-  fases: ["medida", ...Array.from({ length: 5 }, () => ["centro", "arco", "punto"] as const).flat(), "regla"],
-  nClics: 12,
-  extRegla: 0,
-  repetir: true,
+  fases: ["medida", ...Array.from({ length: 5 }, () => ["centro", "arco", "punto"] as const).flat(), "auto"],
+  autoLados: () => HV.map((v, i) => [v, HV[(i + 1) % 6]] as [Pt, Pt]),
   papel: (est: Est) => {
     const hechos = est.fase <= 0 ? 1 : 1 + Math.min(5, Math.floor((est.fase - 1) / 3));
-    return <PapelHexagono marcados={Math.min(6, hechos)} lados={Math.floor(est.clics.length / 2)} relleno={est.fase >= 17} />;
+    return <PapelHexagono marcados={Math.min(6, hechos)} relleno={est.fase >= 17} />;
   },
   medibles: () => [HO, HV[0]],
   candidatos: (_est, idx) => [HV[idx]],
@@ -400,20 +386,7 @@ const defHexagono: Def = {
   radioIni: () => 100,
   rhoIni: () => -25,
   arco: (_est, n, _r, c) => ({ centro: c, base: angDe(c, HV[(n + 1) % 6]), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: (est) => (est.fase >= 16 ? HV : [HV[hexDe(est.fase) + 1]]),
-  progreso: (est) => (est.fase >= 16 ? `Lados trazados: ${Math.floor(est.clics.length / 2)} de 6` : null),
-  validarClic: (est, punto) => {
-    if (est.clics.length % 2 === 0) return null;
-    const i = HV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1);
-    const j = HV.findIndex((v) => dist(v, punto) < 1);
-    if ((i - j + 6) % 6 !== 1 && (j - i + 6) % 6 !== 1) return "Un lado del hexágono une dos vértices consecutivos: toca el vértice contiguo.";
-    for (let m = 0; m + 1 < est.clics.length; m += 2) {
-      const x = HV.findIndex((v) => dist(v, est.clics[m]) < 1);
-      const y = HV.findIndex((v) => dist(v, est.clics[m + 1]) < 1);
-      if ((x === i && y === j) || (x === j && y === i)) return "Ese lado ya está trazado: elige otro.";
-    }
-    return null;
-  },
+  cortes: (est) => (est.fase >= 16 ? [] : [HV[hexDe(est.fase) + 1]]),
   evaluar: () => ({ ok: true, mensaje: "Correcto: los seis vértices están a una distancia R unos de otros, así que el lado del hexágono regular es igual al radio." }),
 };
 
@@ -423,3 +396,319 @@ export function HexagonoPractica({ block }: { block: BenchBlock }) {
 
 /** Geometría de las escenas, para los tests. */
 export const POLIGONOS_GEOM = { LA, LB, LC, SEG_A, SEG_B, HO, HR, HV, CC_O, CC_PARES };
+
+/* ───────────── Rombo dados el lado y una diagonal ───────────── */
+
+const RA: Pt = [150, 250];
+const RC: Pt = [390, 250];
+const R_LADO = 150;
+const [RB_, RD_] = (() => {
+  const [p, q] = interseccionCirculos(RA, R_LADO, RC, R_LADO) as [Pt, Pt];
+  return p[1] < q[1] ? [p, q] : [q, p];
+})();
+const RM: Pt = puntoMedio(RA, RC);
+const SEG_LADO: [Pt, Pt] = [[440, 80], [440 + R_LADO, 80]];
+
+function PapelRombo({ lado = true, b = false, d = false }: { lado?: boolean; b?: boolean; d?: boolean }) {
+  return (
+    <g>
+      <Seg a={RA} b={RC} w={1.8} />
+      <Punto p={RA} nombre="A" dx={-16} dy={18} />
+      <Punto p={RC} nombre="C" dx={8} dy={18} />
+      <Txt p={[RM[0] - 38, 276]} color={INK}>{`AC = ${dist(RA, RC) / 10} cm`}</Txt>
+      {lado ? (
+        <g>
+          <Seg a={SEG_LADO[0]} b={SEG_LADO[1]} color={AMBAR} w={3} />
+          <Seg a={[SEG_LADO[0][0], 74]} b={[SEG_LADO[0][0], 86]} color={INK} w={1.4} />
+          <Seg a={[SEG_LADO[1][0], 74]} b={[SEG_LADO[1][0], 86]} color={INK} w={1.4} />
+          <Txt p={[SEG_LADO[0][0], 66]} color={INK}>{`lado l = ${R_LADO / 10} cm`}</Txt>
+        </g>
+      ) : null}
+      {b ? <Punto p={RB_} nombre="B" dx={8} dy={-8} /> : null}
+      {d ? <Punto p={RD_} nombre="D" dx={8} dy={16} /> : null}
+    </g>
+  );
+}
+
+const rumbo = (v: Pt, o: Pt) => angDe(v, o);
+
+export function RomboCompas({ block }: { block: BenchBlock }) {
+  const [step, setStep] = useState(0);
+  const p = useProgreso(step, step === 1 ? 4200 : step === 2 ? 4200 : step === 3 ? 4800 : step === 4 ? 3000 : 1);
+  const aA = rumbo(RA, RB_);
+  const aC = rumbo(RC, RB_);
+  let comp: ReturnType<typeof poseCompas> | null = null;
+  if (step === 1) comp = poseCompas(RA, enCirculo(RA, R_LADO, lerp(aA + 14, -aA - 14, p)));
+  else if (step === 2) comp = poseCompas(RC, enCirculo(RC, R_LADO, lerp(aC - 14, 360 - aC + 14, p)));
+  const lados: [Pt, Pt][] = [[RA, RB_], [RB_, RC], [RC, RD_], [RD_, RA]];
+  return (
+    <BenchShell scene="rombo-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con una diagonal y el lado de un rombo, y su construcción con el compás">
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con una diagonal y el lado de un rombo, y su construcción con el compás" data-testid="bench-rombo">
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
+        <PapelRombo lado={step < 4} b={step >= 2 && (step > 2 || p > 0.95)} d={step >= 2 && (step > 2 || p > 0.95)} />
+        {step >= 1 ? <ArcoAnim c={RA} r={R_LADO} a1={aA + 14} a2={-aA - 14} t={step === 1 ? p : 1} /> : null}
+        {step >= 2 ? <ArcoAnim c={RC} r={R_LADO} a1={aC - 14} a2={360 - aC + 14} t={step === 2 ? p : 1} /> : null}
+        {step >= 3 ? (
+          <g data-testid="bench-rombo-final">
+            <path d={poligono([RA, RB_, RC, RD_])} fill="rgba(31,157,85,0.14)" stroke={VERDE} strokeWidth="2" strokeLinejoin="round" />
+          </g>
+        ) : null}
+        {step === 3
+          ? lados.map(([a, b], i) => <ReglaTrazando key={i} a={a} b={b} p={tramo(p, i / 4, (i + 1) / 4)} ext={0} color={VERDE} />)
+          : null}
+        {step === 4 ? (
+          <g data-testid="bench-rombo-diagonales">
+            <Seg a={RB_} b={RD_} color={AZUL} w={2} dash="7 5" />
+            <circle cx={RM[0]} cy={RM[1]} r="3" fill={AZUL} />
+            <Txt p={[RM[0] + 8, RM[1] - 6]} color={AZUL}>M</Txt>
+            <path d={`M${RM[0] + 12} ${RM[1]} V${RM[1] - 12} H${RM[0]}`} fill="none" stroke={AZUL} strokeWidth="1.6" />
+            <Txt p={[440, 130]} color={AZUL}>diagonales perpendiculares</Txt>
+            <Txt p={[440, 152]} color={AZUL}>que se cortan en su punto medio</Txt>
+          </g>
+        ) : null}
+        {comp ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={comp.pose} open={comp.open} />
+          </g>
+        ) : null}
+      </svg>
+    </BenchShell>
+  );
+}
+
+const defRombo: Def = {
+  scene: "rombo-practica",
+  fases: ["medida", "centro", "arco", "centro", "arco", "punto", "punto", "auto"],
+  autoLados: () => [[RA, RB_], [RB_, RC], [RC, RD_], [RD_, RA]],
+  papel: (est: Est) => <PapelRombo b={est.fase >= 6} d={est.fase >= 7} />,
+  medibles: () => SEG_LADO,
+  candidatos: (_est, idx) => (idx === 0 ? [RA] : [RC]),
+  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+  radioLim: () => [40, 215],
+  radioIni: () => 100,
+  rhoIni: () => 35,
+  arco: (_est, _n, radio, c) => {
+    const otro = dist(c, RA) < 1 ? RC : RA;
+    const th = grados(Math.acos(clamp(dist(RA, RC) / (2 * radio), 0, 1)));
+    return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-(th + 6), th + 6] };
+  },
+  cortes: (est) => (est.fase === 5 ? [RB_] : [RD_]),
+  evaluar: () => ({ ok: true, mensaje: "Correcto: B y D están a una distancia l de A y de C, así que los cuatro lados valen lo mismo: es un rombo. Sus diagonales se cortan en ángulo recto y en su punto medio." }),
+};
+
+export function RomboPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defRombo} vista={vista} />;
+}
+
+/* ───────────── Elementos del polígono regular ───────────── */
+
+const EO: Pt = [310, 190];
+const ER = 120;
+const EV: Pt[] = Array.from({ length: 6 }, (_, i) => enCirculo(EO, ER, 60 * i));
+const pantallaAng = (v: Pt, p: Pt) => (Math.atan2(p[1] - v[1], p[0] - v[0]) * 180) / Math.PI;
+
+export function PoligonoElementos({ block }: { block: BenchBlock }) {
+  const [step, setStep] = useState(0);
+  const M = puntoMedio(EV[0], EV[1]);
+  return (
+    <BenchShell scene="poligono-elementos" notes={block.notes} step={step} setStep={setStep} label="Hoja con un hexágono regular y sus elementos">
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un hexágono regular y sus elementos" data-testid="bench-elementos">
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
+        <circle cx={EO[0]} cy={EO[1]} r={ER} fill="none" stroke={INK} strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+        <path d={poligono(EV)} fill="rgba(31,120,180,0.10)" stroke={INK} strokeWidth="1.8" strokeLinejoin="round" />
+        <circle cx={EO[0]} cy={EO[1]} r="2.6" fill={INK} />
+        <Txt p={[EO[0] - 16, EO[1] + 16]} color={INK}>O</Txt>
+        {step === 0 ? (
+          <g data-testid="bench-el-lado">
+            <Seg a={EV[0]} b={EV[1]} color={VERDE} w={3.4} />
+            <Txt p={[M[0] + 14, M[1] - 8]} color={VERDE}>lado l</Txt>
+          </g>
+        ) : null}
+        {step >= 1 ? (
+          <g data-testid="bench-el-radio">
+            <Seg a={EO} b={EV[0]} color={AMBAR} w={step === 1 ? 3 : 1.6} />
+            <Seg a={EO} b={EV[1]} color={AMBAR} w={step === 1 ? 3 : 1.6} />
+            <Txt p={[(EO[0] + EV[0][0]) / 2 + 2, EO[1] + 16]} color={AMBAR}>R</Txt>
+          </g>
+        ) : null}
+        {step === 2 ? (
+          <g data-testid="bench-el-central">
+            <Arco v={EO} a1={-60} a2={0} r={34} color={AZUL} text="α = 360°/n" textSize={13} dr={34} />
+            <Txt p={[430, 330]} color={AZUL}>n = 6: α = 60°</Txt>
+          </g>
+        ) : null}
+        {step === 3 ? (
+          <g data-testid="bench-el-apotema">
+            <Seg a={EO} b={M} color={VERDE} w={3.2} />
+            <path d={`M${M[0] - 12} ${M[1] + 8} L${M[0] - 4} ${M[1] + 20} L${M[0] + 8} ${M[1] + 12}`} fill="none" stroke={VERDE} strokeWidth="1.4" />
+            <circle cx={M[0]} cy={M[1]} r="3" fill={VERDE} />
+            <Txt p={[EO[0] + 16, EO[1] - 22]} color={VERDE}>apotema a</Txt>
+          </g>
+        ) : null}
+        {step === 4 ? (
+          <g data-testid="bench-el-interior">
+            <Arco v={EV[1]} a1={pantallaAng(EV[1], EV[0])} a2={pantallaAng(EV[1], EV[2])} r={30} color={VERDE} text="β" textSize={14} dr={14} />
+            <Txt p={[430, 330]} color={VERDE}>β = 180°(n − 2)/n = 120°</Txt>
+          </g>
+        ) : null}
+        {EV.map((v, i) => (
+          <Punto key={i} p={v} nombre={`V${i + 1}`} dx={v[0] > EO[0] + 1 ? 8 : -22} dy={v[1] < EO[1] - 1 ? -8 : v[1] > EO[1] + 1 ? 16 : 4} />
+        ))}
+      </svg>
+    </BenchShell>
+  );
+}
+
+const AP = EV[0];
+const AQ = EV[1];
+const AM = puntoMedio(AP, AQ);
+const ACHORD = dist(AP, AQ);
+
+const defApotema: Def = {
+  scene: "apotema-practica",
+  fases: ["centro", "abertura", "arco", "centro", "arco", "regla"],
+  extRegla: 160,
+  papel: (est: Est) => (
+    <g>
+      <circle cx={EO[0]} cy={EO[1]} r={ER} fill="none" stroke={INK} strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+      <path d={poligono(EV)} fill="rgba(31,120,180,0.08)" stroke={INK} strokeWidth="1.6" strokeLinejoin="round" />
+      <circle cx={EO[0]} cy={EO[1]} r="2.6" fill={INK} />
+      <Txt p={[EO[0] - 16, EO[1] + 16]} color={INK}>O</Txt>
+      <Punto p={AP} nombre="P" dx={8} dy={-8} />
+      <Punto p={AQ} nombre="Q" dx={8} dy={-8} />
+      {est.fase >= 6 ? (
+        <g data-testid="bench-apotema">
+          <Seg a={EO} b={AM} color={VERDE} w={3.2} />
+          <circle cx={AM[0]} cy={AM[1]} r="3" fill={VERDE} />
+          <Txt p={[AM[0] - 4, AM[1] - 20]} color={VERDE}>M</Txt>
+          <Txt p={[EO[0] + 14, EO[1] - 22]} color={VERDE}>apotema</Txt>
+        </g>
+      ) : null}
+    </g>
+  ),
+  candidatos: (est, idx) => (idx === 0 ? [AP, AQ] : [dist(est.centros[0], AP) < 1 ? AQ : AP]),
+  radioLim: () => [40, 200],
+  radioIni: () => 70,
+  rhoIni: () => 35,
+  arco: (_est, _n, radio, c) => {
+    const otro = dist(c, AP) < 1 ? AQ : AP;
+    const th = radio > ACHORD / 2 ? grados(Math.acos(clamp(ACHORD / (2 * radio), 0, 1))) : 0;
+    const t = Math.max(th, 20) + 6;
+    return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-t, t] };
+  },
+  validarAbertura: (_est, _a, r) => (r <= ACHORD / 2 + 4 ? "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad del lado PQ. Ábrela más y vuelve a fijarla." : null),
+  cortes: (est) => {
+    const r = est.radios[0];
+    return r !== undefined && r > ACHORD / 2 + 0.5 ? (interseccionCirculos(AP, r, AQ, r) as [Pt, Pt]) : [];
+  },
+  evaluar: () => ({ ok: true, mensaje: "Correcto: la mediatriz del lado pasa por el centro O y lo corta en su punto medio M, perpendicularmente. El segmento OM es la apotema." }),
+};
+
+export function ApotemaPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defApotema} vista={vista} />;
+}
+
+/* ───────────── Polígonos estrellados ───────────── */
+
+const sv = (c: Pt, r: number, n: number, i: number): Pt => enCirculo(c, r, 90 + (360 / n) * i);
+const PC: Pt = [310, 190];
+const PR = 120;
+const PV: Pt[] = Array.from({ length: 5 }, (_, i) => sv(PC, PR, 5, i));
+const EC1: Pt = [170, 190];
+const EC2: Pt = [450, 190];
+const ER2 = 110;
+const EP5: Pt[] = Array.from({ length: 5 }, (_, i) => sv(EC1, ER2, 5, i));
+const EH6: Pt[] = Array.from({ length: 6 }, (_, i) => sv(EC2, ER2, 6, i));
+
+function Vertices({ pts, nombre = true }: { pts: Pt[]; nombre?: boolean }) {
+  return (
+    <g>
+      {pts.map((v, i) => (
+        <Punto key={i} p={v} nombre={nombre ? `${i + 1}` : ""} dx={v[0] > 310 ? 8 : -14} dy={v[1] < 190 ? -8 : 16} />
+      ))}
+    </g>
+  );
+}
+
+export function EstrellaCompas({ block }: { block: BenchBlock }) {
+  const [step, setStep] = useState(0);
+  const p = useProgreso(step, step === 1 ? 5000 : step === 2 ? 4000 : 1);
+  const penta: [Pt, Pt][] = EP5.map((v, i) => [v, EP5[(i + 2) % 5]]);
+  const tri1: [Pt, Pt][] = [[EH6[0], EH6[2]], [EH6[2], EH6[4]], [EH6[4], EH6[0]]];
+  const tri2: [Pt, Pt][] = [[EH6[1], EH6[3]], [EH6[3], EH6[5]], [EH6[5], EH6[1]]];
+  return (
+    <BenchShell scene="estrella-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con un pentagrama y un hexagrama">
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un pentagrama y un hexagrama" data-testid="bench-estrella">
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
+        <circle cx={EC1[0]} cy={EC1[1]} r={ER2} fill="none" stroke={INK} strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+        <Vertices pts={EP5} />
+        {step === 0 ? <path d={poligono(EP5)} fill="none" stroke={INK} strokeWidth="1.4" opacity="0.6" data-testid="bench-pentagono" /> : null}
+        {step >= 1 ? (
+          <g data-testid="bench-pentagrama">
+            {penta.map(([a, b], i) => (
+              <ReglaTrazando key={i} a={a} b={b} p={step === 1 ? tramo(p, i / 5, (i + 1) / 5) : 1} ext={0} color={VERDE} />
+            ))}
+          </g>
+        ) : null}
+        {step >= 2 ? (
+          <g data-testid="bench-hexagrama">
+            <circle cx={EC2[0]} cy={EC2[1]} r={ER2} fill="none" stroke={INK} strokeWidth="1" strokeDasharray="4 4" opacity="0.5" />
+            <Vertices pts={EH6} />
+            {tri1.map(([a, b], i) => (
+              <ReglaTrazando key={`a${i}`} a={a} b={b} p={step === 2 ? tramo(p, i / 6, (i + 1) / 6) : 1} ext={0} color={AMBAR} />
+            ))}
+            {tri2.map(([a, b], i) => (
+              <ReglaTrazando key={`b${i}`} a={a} b={b} p={step === 2 ? tramo(p, (i + 3) / 6, (i + 4) / 6) : 1} ext={0} color={AZUL} />
+            ))}
+          </g>
+        ) : null}
+        <Txt p={[110, 345]} color={VERDE} size={14}>{step >= 3 ? "{5/2}: un solo trazo" : "{5/2}"}</Txt>
+        {step >= 2 ? <Txt p={[375, 345]} color={step >= 3 ? AMBAR : INK} size={14}>{step >= 3 ? "{6/2}: dos triángulos" : "{6/2}"}</Txt> : null}
+      </svg>
+    </BenchShell>
+  );
+}
+
+const defPentagrama: Def = {
+  scene: "pentagrama-practica",
+  fases: ["regla"],
+  nClics: 10,
+  extRegla: 0,
+  repetir: true,
+  papel: () => (
+    <g>
+      <circle cx={PC[0]} cy={PC[1]} r={PR} fill="none" stroke={INK} strokeWidth="1.4" />
+      <Vertices pts={PV} />
+    </g>
+  ),
+  candidatos: () => [],
+  radioLim: () => [40, 200],
+  radioIni: () => 100,
+  rhoIni: () => 0,
+  arco: (_est, _n, _r, c) => ({ centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
+  cortes: () => PV,
+  progreso: (est) => `Trazos: ${Math.floor(est.clics.length / 2)} de 5`,
+  validarClic: (est, punto) => {
+    if (est.clics.length % 2 === 0) return null;
+    const i = PV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1);
+    const j = PV.findIndex((v) => dist(v, punto) < 1);
+    if (((j - i + 5) % 5) !== 2 && ((i - j + 5) % 5) !== 2) return "En el pentagrama {5/2} cada trazo salta un vértice: une con el que está dos lugares más allá.";
+    for (let m = 0; m + 1 < est.clics.length; m += 2) {
+      const x = PV.findIndex((v) => dist(v, est.clics[m]) < 1);
+      const y = PV.findIndex((v) => dist(v, est.clics[m + 1]) < 1);
+      if ((x === i && y === j) || (x === j && y === i)) return "Ese trazo ya está hecho: elige otro.";
+    }
+    return null;
+  },
+  evaluar: () => ({ ok: true, mensaje: "Correcto: con {5/2}, como 5 y 2 no tienen divisores comunes, saltando de dos en dos pasas por los cinco vértices y la estrella se cierra en un solo trazo." }),
+};
+
+export function PentagramaPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defPentagrama} vista={vista} />;
+}
+
+/** Geometría de las escenas del resto del tema, para los tests. */
+export const POLIGONOS_GEOM_2 = { RA, RC, RB: RB_, RD: RD_, SEG_LADO, R_LADO, AP, AQ, AM, EO, PV };

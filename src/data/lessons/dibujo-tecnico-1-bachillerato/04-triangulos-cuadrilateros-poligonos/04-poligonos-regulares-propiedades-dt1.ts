@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const poligonosRegularesPropiedadesDt1Lesson: InteractiveLesson = {
   slug: "poligonos-regulares-propiedades-dt1",
@@ -8,40 +8,34 @@ export const poligonosRegularesPropiedadesDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[3],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Lados y ángulos iguales", [
-      { kind: "steps", items: [
-        "Un **polígono regular** tiene todos sus lados y todos sus ángulos iguales. Siempre se puede **inscribir** en una circunferencia.",
-        "**Ángulo central**: $\\alpha = \\dfrac{360^\\circ}{n}$. **Ángulo interior**: $\\dfrac{180^\\circ (n-2)}{n}$.",
-        "**Lado**: $l = 2R\\,\\operatorname{sen}\\dfrac{180^\\circ}{n}$. **Apotema**: $a = R\\,\\cos\\dfrac{180^\\circ}{n}$.",
-        "**Área**: $A = \\dfrac{P \\cdot a}{2}$, con $P = n\\,l$ el perímetro.",
-        "Número de **diagonales**: $\\dfrac{n(n-3)}{2}$.",
-      ] },
-    ], undefined, "stack"),
-    slide("explora", "Cambia el número de lados", [
-      { kind: "text", text: "Aumenta n y observa cómo el área se acerca a la del círculo. Prueba el hexágono." },
-    ], tool("dt1-poligono-regular-explorador"), "visual-top"),
+    slide("def", "Lados y ángulos iguales", [], bench("poligono-elementos", [
+      { title: "Lados y vértices", text: "Un **polígono regular** tiene todos sus lados y todos sus ángulos iguales. Siempre se puede **inscribir** en una circunferencia: sus vértices están a la misma distancia de un centro $O$.", fact: "Lado: l = 2R sen(180°/n)" },
+      { title: "Radio", text: "El **radio** $R$ une el centro con un vértice. Si se conoce el lado, el radio es $R = \\dfrac{l}{2\\,\\operatorname{sen}(180^\\circ/n)}$.", fact: "R: centro–vértice" },
+      { title: "Ángulo central", text: "El **ángulo central** $\\alpha$ es el que forman dos radios consecutivos: $\\alpha = \\dfrac{360^\\circ}{n}$. En el hexágono mide $60^\\circ$.", fact: "α = 360°/n" },
+      { title: "Apotema", text: "La **apotema** $a$ es la perpendicular desde el centro al punto medio de un lado: $a = R\\cos\\dfrac{180^\\circ}{n}$. Con ella, el **área** es $A = \\dfrac{P \\cdot a}{2}$, siendo $P = n\\,l$ el perímetro.", fact: "Área = P · a / 2" },
+      { title: "Ángulo interior", text: "El **ángulo interior** vale $\\beta = \\dfrac{180^\\circ (n-2)}{n}$. El número de **diagonales** es $\\dfrac{n(n-3)}{2}$.", fact: "β = 180°(n − 2)/n" },
+    ]), "stack"),
+
     slide("casos", "Casos que conviene recordar", [
       { kind: "steps", items: [
         "**Triángulo equilátero**: $l = R\\sqrt{3}$.",
         "**Cuadrado**: $l = R\\sqrt{2}$.",
-        "**Hexágono**: $l = R$. Se compone de **6 triángulos equiláteros**.",
+        "**Hexágono**: $l = R$. Se compone de **6 triángulos equiláteros** y, con ángulo interior de $120^\\circ$, tres hexágonos encajan en $360^\\circ$: por eso **rellena el plano**.",
         "**Pentágono**: $l = 1{,}176\\,R$. **Decágono**: $l = 0{,}618\\,R$ (la sección áurea del radio).",
-        "Si se conoce el **lado**, el radio es $R = \\dfrac{l}{2\\,\\operatorname{sen}(180^\\circ/n)}$.",
       ] },
-    ]),
-    calc("calc-hex", "Lado del hexágono", "Un hexágono regular está inscrito en una circunferencia de 5 cm de radio. ¿Cuánto mide su lado, en cm?", nums(5), "En el hexágono, l = R = 5 cm.", "Seis triángulos equiláteros."),
-    calc("calc-int", "Ángulo interior", "¿Cuánto mide el ángulo interior de un octógono regular, en grados?", nums(135), "180 · 6 / 8 = 135°.", "180(n − 2)/n con n = 8."),
-    calc("calc-diag", "Diagonales", "¿Cuántas diagonales tiene un decágono?", nums(35), "10 · 7 / 2 = 35.", "n(n − 3)/2."),
-    calc("calc-area", "Área del hexágono", "Un hexágono regular de lado 4 cm. ¿Qué área tiene, en cm²? (6 triángulos equiláteros, un decimal)", nums(41.6, 41.57), "6 · (√3/4) · 16 ≈ 41,57 cm².", "Área del triángulo equilátero: l²√3/4."),
-    sort("clasifica-pol", "¿Qué polígono es?", "Asocia cada dato con el polígono.",
-      [["tri", "Triángulo (n = 3)", "cobalt"], ["cua", "Cuadrado (n = 4)", "amber"], ["hex", "Hexágono (n = 6)", "emerald"], ["dec", "Decágono (n = 10)", "rose"]],
-      [["Ángulo central de 120°", "tri"], ["Lado igual a R√3", "tri"], ["Ángulo central de 90°", "cua"], ["Lado igual a R√2", "cua"], ["Lado igual al radio", "hex"], ["Ángulo interior de 120°", "hex"], ["Ángulo central de 36°", "dec"], ["Lado igual a 0,618 R", "dec"]],
-      "El ángulo central 360°/n identifica el polígono.",
-    ),
-    pick("check-hex", "Teselar", "¿Por qué el hexágono regular rellena el plano sin huecos (como un panal)?",
-      "Porque su ángulo interior es 120° y tres encajan en 360°",
-      [["Porque tiene seis lados", "El número de lados no basta."], ["Porque su lado es igual al radio", "Eso no decide el encaje."], ["Porque su apotema es entera", "No tiene relación."]],
-      "Alrededor de un vértice caben 3 hexágonos: 3 · 120° = 360°.",
-    ),
+    ], undefined, "stack"),
+
+    benchTask("apotema-construye", "Traza la apotema", "apotema-practica", [
+      { title: "Clava la punta en P", text: "La apotema parte del centro y llega al punto medio de un lado: es su **mediatriz**. Toca el extremo $P$ del lado." },
+      { title: "Abre más de la mitad de PQ", text: "Arrastra la mina hasta una abertura **mayor que la mitad** de $PQ$ y pulsa «Fijar abertura».", fact: "Radio > PQ / 2" },
+      { title: "Arco desde P", text: "Arrastra la mina para trazar el arco **por dentro y por fuera** del lado." },
+      { title: "Clava la punta en Q", text: "Toca el otro extremo, $Q$, sin cambiar la abertura." },
+      { title: "Arco desde Q", text: "Traza el arco que corta al anterior en **dos puntos**." },
+      { title: "Traza la mediatriz", text: "Toca **dos puntos** donde se cortan los arcos: la regla pasa por el centro $O$ y por el punto medio $M$ del lado. El segmento $OM$ es la apotema.", fact: "Apotema ⟂ lado" },
+    ], {
+      question: "Traza la apotema del hexágono regular: la mediatriz del lado PQ, que pasa por el centro.",
+      hint: "Haz la mediatriz de PQ con el compás: arcos del mismo radio desde P y desde Q, y une los dos cortes.",
+      explanation: "En un polígono regular el centro equidista de los vértices, así que está en la mediatriz de cada lado. La apotema es el trozo de esa mediatriz entre el centro y el punto medio del lado.",
+    }),
   ],
 };

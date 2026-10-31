@@ -20,8 +20,8 @@ export const perpendicularesTransportadorDt1Lesson: InteractiveLesson = {
     }),
 
     benchTask("transportador", "Medir y dibujar ángulos con el transportador", "transportador-medir", [
-      { title: "Centra y alinea", text: "Coloca el **centro** del transportador sobre el vértice $V$ y el **0°** sobre uno de los lados. Si no coincide, el ángulo saldrá mal.", fact: "Centro en V · 0° sobre el lado" },
-      { title: "Lee en la escala correcta", text: "Hay **dos escalas**: una parte de 0 por la derecha y otra por la izquierda. Lee la que **empieza en 0 sobre tu lado**. Arrastra el segundo lado y mira cómo cambia la lectura.", fact: "Escala exterior: 0° a la derecha · interior: 0° a la izquierda" },
+      { title: "Centra y alinea", text: "Coloca el **centro** del transportador sobre el vértice $V$ y el **0°** sobre uno de los lados. Si no coincide, el ángulo saldrá mal.", fact: "Centro en V; 0° sobre el lado" },
+      { title: "Lee en la escala correcta", text: "Hay **dos escalas**: una parte de 0 por la derecha y otra por la izquierda. Lee la que **empieza en 0 sobre tu lado**. Arrastra el segundo lado y mira cómo cambia la lectura.", fact: "Escala exterior: 0° a la derecha; interior: 0° a la izquierda" },
       { title: "Dibuja un ángulo de 130°", text: "Ahora al revés: arrastra el segundo lado hasta marcar un ángulo de **130°**. En papel, marcarías ese punto y lo unirías con $V$." },
     ], {
       question: "Dibuja un ángulo de 130° con el transportador.",

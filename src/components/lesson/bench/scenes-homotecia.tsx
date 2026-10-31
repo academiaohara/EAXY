@@ -53,7 +53,10 @@ export function PapelHomotecia({ rayos = 0, imagen = 0 }: { rayos?: number; imag
             <Punto p={HB2} nombre="B′" dx={8} dy={-6} color={VERDE} />
             <Punto p={HC2} nombre="C′" dx={-22} dy={-6} color={VERDE} />
             <text x={HB2[0] + 16} y={HB2[1] + 34} fontSize="13" fontWeight="700" fill={VERDE} fontFamily={SANS} {...etiqueta}>
-              B′C′ ∥ BC · B′C′ = 2·BC
+              B′C′ es paralelo a BC
+            </text>
+            <text x={HB2[0] + 16} y={HB2[1] + 51} fontSize="13" fontWeight="700" fill={VERDE} fontFamily={SANS} {...etiqueta}>
+              y mide el doble
             </text>
           </g>
         </g>
