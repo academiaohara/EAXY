@@ -1,7 +1,8 @@
 "use client";
 
 import type { SlideBlock } from "@/lib/lesson/types";
-import { BisectrizCompas, MediatrizCompas, PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
+import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica } from "./scenes-compas";
+import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
 /** Monta una escena de la «mesa de dibujo» dentro de la diapositiva. */
@@ -23,6 +24,10 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <MediatrizCompas block={block} />;
     case "bisectriz-compas":
       return <BisectrizCompas block={block} />;
+    case "mediatriz-practica":
+      return <MediatrizPractica block={block} />;
+    case "bisectriz-practica":
+      return <BisectrizPractica block={block} />;
     default:
       return null;
   }
