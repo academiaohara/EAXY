@@ -20,7 +20,7 @@ export const vistasNormalizadasDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Alzado, planta y perfil izquierdo de una pieza en L, con sus alineaciones." },
     ], anim("dt1-vistas-pieza"), "visual-top"),
     slide("explora", "Cambia la pieza", [
-      { kind: "text", text: "Modifica las dimensiones y observa cómo cambian las tres vistas. Fíjate en la arista oculta del perfil." },
+      { kind: "text", text: "Empieza por el cubo y comprueba por qué produce tres cuadrados iguales. Después cambia a la pieza escalonada: las vistas deben seguir compartiendo largo, altura y fondo." },
     ], tool("dt1-vistas-explorador"), "visual-top"),
     slide("reglas", "Reglas básicas", [
       { kind: "steps", items: [

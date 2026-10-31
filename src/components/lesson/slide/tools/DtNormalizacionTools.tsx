@@ -2,10 +2,18 @@
 
 import { useState, type ReactNode } from "react";
 import { MANIM } from "@/components/lesson/anim/palette";
-import { Seg, type Pt } from "@/components/lesson/anim/geometry";
 import { Readout, Svg } from "@/components/lesson/slide/tools/GeometryTools";
 import { Choice, Note, Stat as StatBase, fmtEs, num } from "@/components/lesson/slide/tools/industrial-ui";
 import { Frame, Slider, type ToolBlock } from "@/components/lesson/slide/tool-ui";
+import {
+  LinearDimension,
+  OrthographicShape,
+  SheetFrame,
+} from "@/components/lesson/technical-drawing/TechnicalSheet";
+import {
+  drawingLength,
+  projectSteppedBlock,
+} from "@/components/lesson/technical-drawing/model";
 
 const Stat = (props: Parameters<typeof StatBase>[0]) => <StatBase plain {...props} />;
 const f0 = (v: number) => fmtEs(v, 0);
@@ -163,8 +171,10 @@ export function EscalaDt1Explorador({ block }: { block: ToolBlock }) {
   const e = escalaAdecuada(s.real, s.disp);
   const dib = e ? dimensionDibujo(s.real, e[0], e[1]) : NaN;
   const nom = e ? `${e[0]} : ${e[1]}` : "ninguna";
-  const maxBarra = 400;
-  const largoReal = Math.min(s.real, 20000);
+  const dibujoMm = e ? drawingLength(s.real, e[0], e[1]) : null;
+  const pxPerMm = 330 / s.disp;
+  const objectWidth = dibujoMm ? dibujoMm * pxPerMm : 0;
+  const spaceUsed = dibujoMm ? (dibujoMm / s.disp) * 100 : 0;
   return (
     <Frame
       stacked
@@ -177,25 +187,21 @@ export function EscalaDt1Explorador({ block }: { block: ToolBlock }) {
         </>
       }
     >
-      <Svg w={520} h={140} testId="escala" maxH={160}>
-        <rect x={60} y={20} width={maxBarra} height={34} fill={MANIM.blue} fillOpacity={0.1} stroke={MANIM.blue} strokeWidth={1.5} strokeDasharray="5 4" />
-        <text x={64} y={16} fill={MANIM.blue} fontSize={11} fontWeight={700}>espacio disponible = {s.disp} mm</text>
-        {e ? <rect x={60} y={26} width={Math.min(maxBarra, (dib / s.disp) * maxBarra)} height={22} fill={MANIM.green} fillOpacity={0.5} stroke={MANIM.green} strokeWidth={2} /> : null}
-        {e
-          ? [0, 1, 2, 3, 4].map((i) => {
-              const x = 60 + (i * Math.min(maxBarra, (dib / s.disp) * maxBarra)) / 4;
-              return (
-                <g key={i}>
-                  <line x1={x} y1={80} x2={x} y2={96} stroke={MANIM.ink} strokeWidth={2} />
-                  <text x={x} y={112} textAnchor="middle" fill={MANIM.ink} fontSize={11}>
-                    {fmtEs((i * largoReal) / 4 / 1000, 2)}
-                  </text>
-                </g>
-              );
-            })
-          : null}
-        {e ? <line x1={60} y1={88} x2={60 + Math.min(maxBarra, (dib / s.disp) * maxBarra)} y2={88} stroke={MANIM.ink} strokeWidth={2} /> : null}
-        {e ? <text x={60} y={130} fill={MANIM.muted} fontSize={11}>escala gráfica (m reales)</text> : null}
+      <Svg w={520} h={250} testId="escala" maxH={300}>
+        <SheetFrame width={520} height={250} title="PIEZA A · ESCALA" scale={e ? `${e[0]}:${e[1]}` : "—"}>
+          <g data-testid="scale-title-block">
+            <text x="34" y="35" fontSize="9" fill="#475569">LONGITUD REAL {s.real} mm · ESPACIO ÚTIL {s.disp} mm</text>
+          </g>
+          {e && dibujoMm ? (
+            <g data-testid="scaled-object" data-real-mm={s.real} data-drawing-mm={dibujoMm} data-space-used={`${fmtEs(spaceUsed, 1)}%`}>
+              <rect x="70" y="80" width={objectWidth} height="42" fill="none" stroke="#172033" strokeWidth="2.2" />
+              <LinearDimension from={[70, 122]} to={[70 + objectWidth, 122]} offset={35} value={s.real} />
+              <text data-testid="scale-real-dimension" x={70 + objectWidth / 2} y="190" textAnchor="middle" fontSize="9" fill="#475569">
+                La pieza mide {dibujoMm} mm en el papel; la cota sigue indicando {s.real} mm reales.
+              </text>
+            </g>
+          ) : null}
+        </SheetFrame>
       </Svg>
       <Readout>
         <Stat color={MANIM.green} label="Escala adecuada (dibujo : real)">{nom}</Stat>
@@ -210,57 +216,53 @@ export function EscalaDt1Explorador({ block }: { block: ToolBlock }) {
 /* ───────────── 4. Vistas normalizadas ───────────── */
 
 export function VistasDt1Explorador({ block }: { block: ToolBlock }) {
-  const init = { a: Math.round(num(block.params?.a, 80, 40, 100) / 10) * 10, b: Math.round(num(block.params?.b, 50, 30, 70) / 10) * 10, c1: 20, c2: 30, a2: 40 };
+  const init = { shape: "step" as "step" | "cube", a: Math.round(num(block.params?.a, 80, 40, 100) / 10) * 10, b: Math.round(num(block.params?.b, 50, 30, 70) / 10) * 10, c1: 20, c2: 30, a2: 40 };
   const [s, setS] = useState(init);
-  const a2 = Math.min(s.a2, s.a - 10);
-  const p = pieza(s.a, s.b, s.c1, s.c2, a2);
-  const k = Math.min(2.2, 300 / (s.a + s.b + 40), 200 / (p.altura + s.b + 40));
-  const gap = 30;
-  const total = s.a + gap / k + s.b;
-  const X0 = 260 - (total * k) / 2;
-  const Y0 = 20 + p.altura * k;
-  const alz: Pt[] = [[0, 0], [s.a, 0], [s.a, s.c1], [a2, s.c1], [a2, p.altura], [0, p.altura]];
-  const A = (x: number, z: number): Pt => [X0 + x * k, Y0 - z * k];
-  const PL = (x: number, y: number): Pt => [X0 + x * k, Y0 + gap + y * k];
-  const px0 = X0 + s.a * k + gap;
-  const PF = (y: number, z: number): Pt => [px0 + (s.b - y) * k, Y0 - z * k];
-  const rectPts = (pts: Pt[]) => pts.map((q) => q.join(",")).join(" ");
-  const tp = (q: Pt, t: string, dx = 0, dy = 0) => (
-    <text x={q[0] + dx} y={q[1] + dy} fill={MANIM.muted} fontSize={11} fontWeight={700} textAnchor="middle">
-      {t}
-    </text>
-  );
+  const cube = s.shape === "cube";
+  const a = cube ? 40 : s.a;
+  const b = cube ? 40 : s.b;
+  const c1 = cube ? 40 : s.c1;
+  const c2 = cube ? 0 : s.c2;
+  const a2 = cube ? 40 : Math.min(s.a2, s.a - 10);
+  const p = pieza(a, b, c1, c2, a2);
+  const views = projectSteppedBlock({ width: a, depth: b, baseHeight: c1, topHeight: c2, stepWidth: a2 });
+  const factor = Math.min(1.7, 130 / Math.max(a, b, p.altura));
+  const frontOrigin = [80, 125] as const;
+  const topOrigin = [80, 165] as const;
+  const leftOrigin = [290, 125] as const;
   return (
     <Frame
       stacked
-      hint={block.hint ?? "Cada vista muestra la pieza desde un lado. Observa la línea discontinua del perfil: es una arista oculta."}
+      hint={block.hint ?? "Las tres vistas nacen de la misma pieza: alzado y planta comparten largo; alzado y perfil comparten altura."}
       onReset={() => setS(init)}
       controls={
         <>
-          <Slider label="Largo" value={s.a} min={40} max={100} step={10} unit=" mm" color={MANIM.orange} onChange={(a) => setS((v) => ({ ...v, a }))} />
-          <Slider label="Ancho" value={s.b} min={30} max={70} step={10} unit=" mm" color={MANIM.green} onChange={(b) => setS((v) => ({ ...v, b }))} />
-          <Slider label="Altura de la base" value={s.c1} min={10} max={40} step={10} unit=" mm" color={MANIM.blue} onChange={(c1) => setS((v) => ({ ...v, c1 }))} />
-          <Slider label="Altura del bloque superior" value={s.c2} min={10} max={40} step={10} unit=" mm" color={MANIM.purple} onChange={(c2) => setS((v) => ({ ...v, c2 }))} />
-          <Slider label="Largo del bloque superior" value={a2} min={20} max={Math.max(20, s.a - 10)} step={10} unit=" mm" color={MANIM.yellow} onChange={(x) => setS((v) => ({ ...v, a2: x }))} />
+          <Choice label="Pieza" items={[{ value: "cube", label: "Cubo" }, { value: "step", label: "Pieza escalonada" }]} value={s.shape} onChange={(shape) => setS((v) => ({ ...v, shape }))} />
+          {!cube ? <Slider label="Largo" value={s.a} min={40} max={100} step={10} unit=" mm" color={MANIM.orange} onChange={(a) => setS((v) => ({ ...v, a }))} /> : null}
+          {!cube ? <Slider label="Fondo" value={s.b} min={30} max={70} step={10} unit=" mm" color={MANIM.green} onChange={(b) => setS((v) => ({ ...v, b }))} /> : null}
+          {!cube ? <Slider label="Altura de la base" value={s.c1} min={10} max={40} step={10} unit=" mm" color={MANIM.blue} onChange={(c1) => setS((v) => ({ ...v, c1 }))} /> : null}
+          {!cube ? <Slider label="Altura del resalte" value={s.c2} min={10} max={40} step={10} unit=" mm" color={MANIM.purple} onChange={(c2) => setS((v) => ({ ...v, c2 }))} /> : null}
+          {!cube ? <Slider label="Largo del resalte" value={a2} min={20} max={Math.max(20, s.a - 10)} step={10} unit=" mm" color={MANIM.yellow} onChange={(x) => setS((v) => ({ ...v, a2: x }))} /> : null}
         </>
       }
     >
-      <Svg w={520} h={290} testId="vistas" maxH={320}>
-        <polygon points={rectPts(alz.map(([x, z]) => A(x, z)))} fill={MANIM.blue} fillOpacity={0.15} stroke={MANIM.ink} strokeWidth={2.5} strokeLinejoin="round" />
-        <polygon points={rectPts([PL(0, 0), PL(s.a, 0), PL(s.a, s.b), PL(0, s.b)])} fill={MANIM.green} fillOpacity={0.15} stroke={MANIM.ink} strokeWidth={2.5} strokeLinejoin="round" />
-        <Seg a={PL(a2, 0)} b={PL(a2, s.b)} color={MANIM.ink} width={2} />
-        <polygon points={rectPts([PF(0, 0), PF(s.b, 0), PF(s.b, p.altura), PF(0, p.altura)])} fill={MANIM.orange} fillOpacity={0.15} stroke={MANIM.ink} strokeWidth={2.5} strokeLinejoin="round" />
-        <Seg a={PF(0, s.c1)} b={PF(s.b, s.c1)} color={MANIM.muted} width={1.5} dashed />
-        {tp(A(s.a / 2, 0), "Alzado", 0, 16)}
-        {tp(PL(s.a / 2, s.b), "Planta", 0, 16)}
-        {tp(PF(s.b / 2, 0), "Perfil izquierdo", 0, 16)}
+      <Svg w={520} h={330} testId="orthographic-sheet" maxH={370}>
+        <SheetFrame width={520} height={330} title="VISTAS ORTOGONALES · MÉTODO EUROPEO" scale="1:1">
+          <OrthographicShape view={views.front} origin={frontOrigin} factor={factor} testId="view-front" />
+          <OrthographicShape view={views.top} origin={topOrigin} factor={factor} invertY={false} testId="view-top" />
+          <OrthographicShape view={views.left} origin={leftOrigin} factor={factor} testId="view-left" />
+          <text x={frontOrigin[0] + (a * factor) / 2} y="142" textAnchor="middle" fontSize="9" fill="#475569">ALZADO</text>
+          <text x={topOrigin[0] + (a * factor) / 2} y={topOrigin[1] + b * factor + 14} textAnchor="middle" fontSize="9" fill="#475569">PLANTA</text>
+          <text x={leftOrigin[0] + (b * factor) / 2} y="142" textAnchor="middle" fontSize="9" fill="#475569">PERFIL IZQUIERDO</text>
+          <line x1={frontOrigin[0]} y1="150" x2={frontOrigin[0] + a * factor} y2="150" stroke="#94a3b8" strokeWidth="0.7" strokeDasharray="3 3" />
+        </SheetFrame>
       </Svg>
       <Readout>
         <Stat color={MANIM.blue} label="Altura total">{f0(p.altura)} mm</Stat>
         <Stat color={MANIM.muted} label="Superficie del alzado">{f0(p.areaAlzado)} mm²</Stat>
         <Stat color={MANIM.green} label="Volumen de la pieza">{f1(p.volumen / 1000)} cm³</Stat>
       </Readout>
-      <Note>En el <b>sistema europeo (método E)</b> la pieza se imagina dentro de una caja de cristal y cada cara se proyecta ortogonalmente: el <b>alzado</b> (vista frontal) es la principal y se elige la que da más información; la <b>planta</b> queda <b>debajo</b> y el <b>perfil izquierdo</b> a la <b>derecha</b> del alzado. Se dibujan solo las vistas <b>necesarias</b> para definir la pieza, sin repetir información. Las aristas que no se ven desde ese lado son <b>ocultas</b> y se trazan <b>discontinuas</b> (como la que ves en el perfil).</Note>
+      <Note>En el <b>sistema europeo (método E)</b> la pieza se imagina dentro de una caja de cristal y cada cara se proyecta ortogonalmente: el <b>alzado</b> (vista frontal) es la principal y se elige la que da más información; la <b>planta</b> queda <b>debajo</b> y el <b>perfil izquierdo</b> a la <b>derecha</b> del alzado. Las vistas están enlazadas: alzado y planta comparten <b>largo</b>; alzado y perfil comparten <b>altura</b>; planta y perfil comparten <b>fondo</b>. Una arista oculta solo se traza discontinua cuando existe y ayuda a definir la pieza.</Note>
     </Frame>
   );
 }
@@ -271,10 +273,9 @@ export function AcotacionSistemasDt1Explorador({ block }: { block: ToolBlock }) 
   const init = { sis: "cadena" as "cadena" | "paralelo", n: Math.round(num(block.params?.a, 4, 2, 6)), t: 10 };
   const [s, setS] = useState(init);
   const tol = toleranciaPosicion(s.sis, s.n - 1, s.t / 100);
-  const sp = 60;
-  const x0 = 70;
-  const yPlaca = 40;
-  const hCotas = 100;
+  const sp = 70;
+  const x0 = 80;
+  const yPlaca = 55;
   return (
     <Frame
       stacked
@@ -288,32 +289,25 @@ export function AcotacionSistemasDt1Explorador({ block }: { block: ToolBlock }) 
         </>
       }
     >
-      <Svg w={520} h={220} testId="acotacion-sistemas" maxH={240}>
-        <rect x={x0 - 30} y={yPlaca} width={(s.n + 0.5) * sp + 30} height={44} fill={MANIM.blue} fillOpacity={0.12} stroke={MANIM.ink} strokeWidth={2.5} />
-        {Array.from({ length: s.n }, (_, i) => (
-          <circle key={i} cx={x0 + i * sp} cy={yPlaca + 22} r={9} fill={MANIM.surface} stroke={MANIM.ink} strokeWidth={2} />
-        ))}
-        {Array.from({ length: s.n }, (_, i) => (
-          <line key={`e${i}`} x1={x0 + i * sp} y1={yPlaca + 44} x2={x0 + i * sp} y2={yPlaca + 44 + hCotas - 12 + (s.sis === "paralelo" ? i * 12 : 0)} stroke={MANIM.muted} strokeWidth={1} />
-        ))}
-        {s.sis === "cadena"
-          ? Array.from({ length: s.n - 1 }, (_, i) => (
-              <g key={`c${i}`}>
-                <Seg a={[x0 + i * sp, yPlaca + 44 + 38]} b={[x0 + (i + 1) * sp, yPlaca + 44 + 38]} color={MANIM.green} width={2} />
-                <text x={x0 + i * sp + sp / 2} y={yPlaca + 44 + 32} textAnchor="middle" fill={MANIM.green} fontSize={11} fontWeight={700}>
-                  {sp / 4} ± {fmtEs(s.t / 100, 2)}
-                </text>
-              </g>
-            ))
-          : Array.from({ length: s.n - 1 }, (_, i) => (
-              <g key={`p${i}`}>
-                <Seg a={[x0, yPlaca + 44 + 26 + i * 12]} b={[x0 + (i + 1) * sp, yPlaca + 44 + 26 + i * 12]} color={MANIM.green} width={2} />
-                <text x={x0 + (i + 1) * sp + 4} y={yPlaca + 44 + 30 + i * 12} fill={MANIM.green} fontSize={10} fontWeight={700}>
-                  {(i + 1) * (sp / 4)} ± {fmtEs(s.t / 100, 2)}
-                </text>
-              </g>
-            ))}
-        <text x={x0 - 14} y={yPlaca - 8} fill={MANIM.muted} fontSize={11}>referencia A (1.er agujero)</text>
+      <Svg w={520} h={270} testId="dimensioning-sheet" maxH={310}>
+        <SheetFrame width={520} height={270} title="PLACA PERFORADA" scale="1:1">
+          <rect x={x0 - 28} y={yPlaca} width={(s.n - 1) * sp + 56} height="50" fill="none" stroke="#172033" strokeWidth="2.2" />
+          {Array.from({ length: s.n }, (_, i) => (
+            <g key={i}>
+              <circle cx={x0 + i * sp} cy={yPlaca + 25} r="9" fill="none" stroke="#172033" strokeWidth="2.2" />
+              <line x1={x0 + i * sp - 14} y1={yPlaca + 25} x2={x0 + i * sp + 14} y2={yPlaca + 25} stroke="#64748b" strokeWidth="0.8" strokeDasharray="7 2 1 2" />
+              <line x1={x0 + i * sp} y1={yPlaca + 11} x2={x0 + i * sp} y2={yPlaca + 39} stroke="#64748b" strokeWidth="0.8" strokeDasharray="7 2 1 2" />
+            </g>
+          ))}
+          {s.sis === "cadena"
+            ? Array.from({ length: s.n - 1 }, (_, i) => (
+                <LinearDimension key={`chain-${i}`} from={[x0 + i * sp, yPlaca + 50]} to={[x0 + (i + 1) * sp, yPlaca + 50]} offset={40} value={15} tolerance={`±${fmtEs(s.t / 100, 2)}`} />
+              ))
+            : Array.from({ length: s.n - 1 }, (_, i) => (
+                <LinearDimension key={`parallel-${i}`} from={[x0, yPlaca + 50]} to={[x0 + (i + 1) * sp, yPlaca + 50]} offset={34 + i * 18} value={(i + 1) * 15} tolerance={`±${fmtEs(s.t / 100, 2)}`} />
+              ))}
+          <text x={x0 - 20} y={yPlaca - 10} fill="#475569" fontSize="9">REFERENCIA A</text>
+        </SheetFrame>
       </Svg>
       <Readout>
         <Stat color={MANIM.red} label="Tolerancia de posición del último agujero respecto de A">± {fmtEs(tol, 2)} mm</Stat>
