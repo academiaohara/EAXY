@@ -2,17 +2,17 @@
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
-import { BenchDefs, Compas, Desk, Regla, poseCompas } from "./instruments";
+import { BenchDefs, Compas, Desk, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
 
 /* ───────────── Utilidades de animación ───────────── */
 
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const lerpP = (a: Pt, b: Pt, t: number): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+export const lerpP = (a: Pt, b: Pt, t: number): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
 /** Fracción (0–1) de `p` dentro del tramo [a, b]. */
-const tramo = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
+export const tramo = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
 const norm180 = (a: number) => {
   const d = ((((a + 180) % 360) + 360) % 360) - 180;
   return d === -180 ? 180 : d;
@@ -45,7 +45,7 @@ export function useProgreso(clave: string | number, ms: number) {
 }
 
 /** Arco que se va dibujando de `a1` hacia `a2` según `t` (0–1). */
-function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2: number; t: number }) {
+export function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2: number; t: number }) {
   if (t <= 0) return null;
   return <ArcoPlano c={c} r={r} a1={a1} a2={a1 + (a2 - a1) * t} />;
 }
@@ -78,8 +78,8 @@ function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: P
   );
 }
 
-const MV = { w: 620, h: 380 };
-const MSHEET = { x: 10, y: 10, w: 600, h: 360 };
+export const MV = { w: 620, h: 380 };
+export const MSHEET = { x: 10, y: 10, w: 600, h: 360 };
 
 /* ───────────── Mediatriz: explicación animada ───────────── */
 
@@ -301,10 +301,11 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 
 /* ───────────── Práctica paso a paso con compás y regla ───────────── */
 
+/** `angulo`: marcar un ángulo con el transportador arrastrando el segundo lado hasta su valor. */
 /** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
-type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla";
+export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo";
 
-type Est = {
+export type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
   fase: number;
   centros: Pt[];
@@ -316,11 +317,13 @@ type Est = {
   clics: Pt[];
   /** Puntos tocados en una fase `medida`. */
   medida: Pt[];
+  /** Ángulo (°, antihorario) que marca el segundo lado en una fase `angulo`. */
+  ang: number;
 };
 
 type CfgArco = { centro: Pt; base: number; signo: 1 | -1; rhoMin: number; rhoMax: number; req: [number, number] };
 
-type Def = {
+export type Def = {
   scene: BenchSceneName;
   fases: Tipo[];
   /** Dibujo base de la hoja (segmento, ángulo, puntos…). */
@@ -329,6 +332,8 @@ type Def = {
   candidatos: (est: Est, idx: number) => Pt[];
   /** Puntos entre los que se puede tomar una medida con el compás (fase `medida`). */
   medibles?: (est: Est) => Pt[];
+  /** Fase `angulo`: vértice, dirección del primer lado, valor que hay que marcar y largo del segundo lado. */
+  angulo?: (est: Est) => { centro: Pt; base: number; objetivo: number; largo: number };
   /** Compás fijo que se muestra aparte (por ejemplo, con la medida ya tomada). */
   compasEspecial?: (est: Est, tipo: Tipo | undefined) => { n: Pt; m: Pt } | null;
   radioLim: (a: number) => [number, number];
@@ -337,10 +342,12 @@ type Def = {
   rhoIni: (n: number) => number;
   /** Puntos de la construcción a los que se ajustan los toques de la regla. */
   cortes: (est: Est) => Pt[];
+  /** Toques de la fase final (2 por defecto: dos puntos de la regla; 1: marcar un punto). */
+  nClics?: number;
   evaluar: (est: Est) => { ok: boolean; mensaje: string };
 };
 
-const SNAP = 14;
+export const SNAP = 14;
 const HIT = 24;
 
 function mapaFases(fases: Tipo[]) {
@@ -359,10 +366,10 @@ const cuenta = (fases: Tipo[], hasta: number, t: Tipo) => fases.slice(0, hasta).
 /** Cuántas aberturas se han fijado antes de la fase `hasta` (por «abertura» o por «medida»). */
 const cuentaAb = (fases: Tipo[], hasta: number) => fases.slice(0, hasta).filter((x) => x === "abertura" || x === "medida").length;
 
-function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
+export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
   const { fases } = def;
   const mapa = mapaFases(fases);
-  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [] };
+  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [], ang: 20 };
   const [est, setEst] = useState<Est>(inicial);
   const [prev, setPrev] = useState<Est[]>([]);
   const [agarrada, setAgarrada] = useState(false);
@@ -388,6 +395,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
   const entrar = (e: Est, f: number): Est => {
     const t = fases[f];
     const out: Est = { ...e, fase: f, radios: [...e.radios], cub: [...e.cub] };
+    if (t === "medida") out.medida = [];
     if (t === "abertura") {
       const a = cuentaAb(fases, f);
       if (out.radios[a] === undefined) out.radios[a] = def.radioIni(a, out);
@@ -420,6 +428,11 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
       avanzar({ ...est, centros: [...est.centros, cand], rho: def.rhoIni(nSig) });
       return;
     }
+    if (tipo === "angulo") {
+      (ev.currentTarget as Element).setPointerCapture?.(ev.pointerId);
+      setAgarrada(true);
+      return;
+    }
     if (tipo === "medida") {
       const cand = (def.medibles?.(est) ?? []).find((c) => dist(c, p) <= HIT);
       if (!cand || (est.medida[0] && dist(est.medida[0], cand) < 1)) {
@@ -439,7 +452,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
     if (tipo === "regla") {
       const sn = def.cortes(est).find((c) => dist(c, p) <= SNAP) ?? p;
       const clics = [...est.clics, sn];
-      if (clics.length >= 2) {
+      if (clics.length >= (def.nClics ?? 2)) {
         setPrev((h) => [...h, est]);
         setEst({ ...est, clics, fase: fases.length });
       } else setEst({ ...est, clics });
@@ -453,6 +466,11 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
   const onMove = (ev: ReactPointerEvent) => {
     if (!agarrada || bloqueada || !tipo) return;
     const p = puntero(svgRef.current, ev);
+    if (tipo === "angulo") {
+      const a = def.angulo?.(est);
+      if (a) setEst({ ...est, ang: clamp(Math.round(norm180(angDe(a.centro, p) - a.base)), 0, 180) });
+      return;
+    }
     if (tipo === "abertura") {
       const aIdx = cuentaAb(fases, est.fase);
       const n = nArcoPrevio;
@@ -478,7 +496,14 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
       } else setEst(nuevo);
     }
   };
-  const onUp = () => setAgarrada(false);
+  const onUp = () => {
+    setAgarrada(false);
+    if (tipo !== "angulo" || bloqueada) return;
+    const a = def.angulo?.(est);
+    if (!a) return;
+    if (Math.abs(est.ang - a.objetivo) <= 1) avanzar({ ...est, ang: a.objetivo });
+    else setAviso("El segundo lado todavía no marca el ángulo del giro: ajústalo con la escala del transportador.");
+  };
 
   const fijar = () => {
     if (tipo === "abertura" && !bloqueada) avanzar(est);
@@ -493,6 +518,18 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
     setAgarrada(false);
   };
   const onKey = (ev: ReactKeyboardEvent) => {
+    if (tipo === "angulo" && !bloqueada) {
+      const a = def.angulo?.(est);
+      const paso = ev.shiftKey ? 10 : 1;
+      const nuevo = ev.key === "ArrowLeft" || ev.key === "ArrowUp" ? est.ang + paso : ev.key === "ArrowRight" || ev.key === "ArrowDown" ? est.ang - paso : null;
+      if (a && nuevo !== null) {
+        const ang = clamp(nuevo, 0, 180);
+        if (Math.abs(ang - a.objetivo) <= 0) avanzar({ ...est, ang });
+        else setEst({ ...est, ang });
+        ev.preventDefault();
+      }
+      return;
+    }
     if (tipo !== "abertura" || bloqueada) return;
     const aIdx = cuentaAb(fases, est.fase);
     const [rMin, rMax] = def.radioLim(aIdx);
@@ -580,13 +617,13 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
         className={`${SVG_CLASS} touch-none select-none`}
         role="group"
         aria-label="Hoja de dibujo: construcción paso a paso con compás y regla"
-        tabIndex={tipo === "abertura" ? 0 : -1}
+        tabIndex={tipo === "abertura" || tipo === "angulo" ? 0 : -1}
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
         onKeyDown={onKey}
-        style={{ cursor: bloqueada || hecha ? "default" : tipo === "abertura" || tipo === "arco" ? (agarrada ? "grabbing" : "grab") : "crosshair", outline: "none" }}
+        style={{ cursor: bloqueada || hecha ? "default" : tipo === "abertura" || tipo === "arco" || tipo === "angulo" ? (agarrada ? "grabbing" : "grab") : "crosshair", outline: "none" }}
         data-testid="bench-practica"
         data-fase={est.fase}
         data-tipo={tipo ?? "hecha"}
@@ -595,6 +632,22 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
         <Desk w={vista.w} h={vista.h} sheet={vista.sheet} />
         {def.papel(est)}
         <g data-testid="bench-arcos-practica">{arcosDibujados}</g>
+        {tipo === "angulo" && def.angulo ? (() => {
+          const a = def.angulo(est);
+          const fin = enCirculo(a.centro, a.largo, a.base + est.ang);
+          return (
+            <g data-testid="bench-angulo" pointerEvents="none">
+              <g transform={`translate(${a.centro[0]} ${a.centro[1]}) scale(1.8)`}>
+                <Transportador pose={{ x: 0, y: 0, rot: -a.base }} r={70} />
+              </g>
+              <line x1={a.centro[0]} y1={a.centro[1]} x2={fin[0]} y2={fin[1]} stroke={INK} strokeWidth="1.3" strokeLinecap="round" />
+              <circle cx={fin[0]} cy={fin[1]} r="7" fill={AMBAR} stroke="#fff" strokeWidth="1.6" />
+              <text x={fin[0] + 10} y={fin[1] - 8} fontSize="14" fontWeight="800" fill={AMBAR} fontFamily={SANS} stroke="#fffefa" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round" data-testid="bench-angulo-lectura">
+                {est.ang}°
+              </text>
+            </g>
+          );
+        })() : null}
         {est.clics.length >= 2 ? <ReglaTrazando a={est.clics[0]} b={est.clics[1]} p={pRegla} ext={28} testId="bench-regla-trazo" /> : null}
         {est.medida.map((c, i) => (
           <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">

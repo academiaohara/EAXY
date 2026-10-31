@@ -16594,10 +16594,54 @@ export const curriculum: Curriculum = {
           ],
         },
         {
+          id: moduleId(374),
+          slug: "transformaciones-geometricas",
+          title: "Transformaciones geométricas",
+          orderIndex: 5,
+          lessons: [
+            {
+              id: lessonId(37401),
+              title: "1. Traslación",
+              summary: "Trasladar un punto y una figura según un vector, con compás y en papel cuadriculado.",
+              orderIndex: 1,
+              kind: "interactive",
+              interactiveSlug: "traslacion-dt1",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(37402),
+              title: "2. Giro",
+              summary: "Girar un punto y una figura alrededor de un centro, con transportador y compás y en papel cuadriculado.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "giro-dt1",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(37403),
+              title: "3. Simetría axial y central",
+              summary: "Simétrico de un punto y de una figura respecto de un eje (con compás y en papel cuadriculado) y respecto de un centro.",
+              orderIndex: 3,
+              kind: "interactive",
+              interactiveSlug: "simetria-dt1",
+              conceptSlugs: [],
+            },
+            {
+              id: lessonId(37404),
+              title: "4. Homotecia",
+              summary: "Imagen de un punto y de una figura en una homotecia de centro y razón dados, con compás y en papel cuadriculado.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "homotecia-dt1",
+              conceptSlugs: [],
+            },
+          ],
+        },
+        {
           id: moduleId(204),
           slug: "tangencias-curvas-tecnicas",
           title: "Tangencias y curvas técnicas",
-          orderIndex: 5,
+          orderIndex: 6,
           lessons: [
             {
               id: lessonId(20401),
@@ -16650,7 +16694,7 @@ export const curriculum: Curriculum = {
           id: moduleId(205),
           slug: "sistema-diedrico-punto-recta-plano",
           title: "Sistema diédrico: punto, recta y plano",
-          orderIndex: 6,
+          orderIndex: 7,
           lessons: [
             {
               id: lessonId(20501),
@@ -16712,7 +16756,7 @@ export const curriculum: Curriculum = {
           id: moduleId(206),
           slug: "sistema-diedrico-relaciones-distancias",
           title: "Sistema diédrico: relaciones y distancias",
-          orderIndex: 7,
+          orderIndex: 8,
           lessons: [
             {
               id: lessonId(20601),
@@ -16756,7 +16800,7 @@ export const curriculum: Curriculum = {
           id: moduleId(207),
           slug: "sistemas-axonometricos",
           title: "Sistemas axonométricos",
-          orderIndex: 8,
+          orderIndex: 9,
           lessons: [
             {
               id: lessonId(20701),
@@ -16809,7 +16853,7 @@ export const curriculum: Curriculum = {
           id: moduleId(208),
           slug: "planos-acotados-conico",
           title: "Planos acotados y sistema cónico",
-          orderIndex: 9,
+          orderIndex: 10,
           lessons: [
             {
               id: lessonId(20801),
@@ -16871,7 +16915,7 @@ export const curriculum: Curriculum = {
           id: moduleId(209),
           slug: "normalizacion-documentacion-grafica",
           title: "Normalización y documentación gráfica",
-          orderIndex: 10,
+          orderIndex: 11,
           lessons: [
             {
               id: lessonId(20901),
@@ -16933,7 +16977,7 @@ export const curriculum: Curriculum = {
           id: moduleId(210),
           slug: "sistemas-cad",
           title: "Sistemas CAD",
-          orderIndex: 11,
+          orderIndex: 12,
           lessons: [
             {
               id: lessonId(21001),

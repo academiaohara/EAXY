@@ -209,3 +209,22 @@ export function perpSetup(dP: number): PerpSetup {
 export const perpEx = (s: number) => PERP_EX0 + s;
 
 export const perpPasaPorP = (setup: PerpSetup, s: number, tol = 1.2) => Math.abs(perpEx(s) - setup.p[0]) <= tol;
+
+/** Gira `p` alrededor de `o` `deg` grados en sentido antihorario tal y como se ve en pantalla (eje Y hacia abajo). */
+export function rotarPunto(p: Pt, o: Pt, deg: number): Pt {
+  const c = Math.cos(deg * RAD);
+  const s = Math.sin(deg * RAD);
+  const x = p[0] - o[0];
+  const y = p[1] - o[1];
+  return [o[0] + x * c + y * s, o[1] - x * s + y * c];
+}
+
+/** Simétrico de `p` respecto de la recta que pasa por `a` y `b` (simetría axial). */
+export function reflejarPunto(p: Pt, a: Pt, b: Pt): Pt {
+  const d = sub(b, a);
+  const l = Math.hypot(d[0], d[1]);
+  const u: Pt = [d[0] / l, d[1] / l];
+  const t = dot(sub(p, a), u);
+  const pie: Pt = [a[0] + u[0] * t, a[1] + u[1] * t];
+  return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
+}

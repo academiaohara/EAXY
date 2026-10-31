@@ -184,18 +184,20 @@ export const TECTI2_SUBTITLES = {
 } as const;
 
 export const DT1_SUBTITLES = {
-  // Las claves 1–10 son las de los temas originales; en pantalla se numeran desde el tema 2 porque el tema 1 es «Instrumentos» (clave 11).
+  // Las claves 1–10 son las de los temas originales; en pantalla se numeran desde el tema 2 porque el tema 1 es «Instrumentos» (clave 11),
+  // y a partir de Tangencias (clave 4) desde el 6 porque el tema 5 es «Transformaciones» (clave 12).
   1: "Dibujo Técnico I, Tema 2 — Historia y fundamentos geométricos",
   2: "Dibujo Técnico I, Tema 3 — Proporcionalidad, equivalencia y semejanza",
   3: "Dibujo Técnico I, Tema 4 — Triángulos, cuadriláteros y polígonos regulares",
-  4: "Dibujo Técnico I, Tema 5 — Tangencias y curvas técnicas",
-  5: "Dibujo Técnico I, Tema 6 — Sistema diédrico: punto, recta y plano",
-  6: "Dibujo Técnico I, Tema 7 — Sistema diédrico: relaciones y distancias",
-  7: "Dibujo Técnico I, Tema 8 — Sistemas axonométricos",
-  8: "Dibujo Técnico I, Tema 9 — Planos acotados y sistema cónico",
-  9: "Dibujo Técnico I, Tema 10 — Normalización y documentación gráfica",
-  10: "Dibujo Técnico I, Tema 11 — Sistemas CAD",
+  4: "Dibujo Técnico I, Tema 6 — Tangencias y curvas técnicas",
+  5: "Dibujo Técnico I, Tema 7 — Sistema diédrico: punto, recta y plano",
+  6: "Dibujo Técnico I, Tema 8 — Sistema diédrico: relaciones y distancias",
+  7: "Dibujo Técnico I, Tema 9 — Sistemas axonométricos",
+  8: "Dibujo Técnico I, Tema 10 — Planos acotados y sistema cónico",
+  9: "Dibujo Técnico I, Tema 11 — Normalización y documentación gráfica",
+  10: "Dibujo Técnico I, Tema 12 — Sistemas CAD",
   11: "Dibujo Técnico I, Tema 1 — Instrumentos y trazados fundamentales",
+  12: "Dibujo Técnico I, Tema 5 — Transformaciones geométricas",
 } as const;
 
 export const DT2_SUBTITLES = {

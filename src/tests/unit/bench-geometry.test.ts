@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   PARALELA_S_MAX,
+  reflejarPunto,
+  rotarPunto,
   PERP_EX0,
   PERP_PX,
   angDe,
@@ -222,5 +224,45 @@ describe("mesa de dibujo · ángulos y circunferencias", () => {
       expect(b[0]).toBeCloseTo(m[0], 6);
       expect(b[1]).toBeCloseTo(m[1], 6);
     }
+  });
+});
+
+describe("mesa de dibujo · giro", () => {
+  it("rotarPunto gira en sentido antihorario tal y como se ve en pantalla y conserva la distancia", () => {
+    const o: Pt = [100, 100];
+    const a: Pt = [200, 100]; // a la derecha de O
+    const arriba = rotarPunto(a, o, 90);
+    expect(arriba[0]).toBeCloseTo(100, 9);
+    expect(arriba[1]).toBeCloseTo(0, 9); // sube en pantalla
+    const izq = rotarPunto(a, o, 180);
+    expect(izq[0]).toBeCloseTo(0, 9);
+    expect(izq[1]).toBeCloseTo(100, 9);
+    for (const g of [30, 60, 125, 270]) {
+      expect(dist(rotarPunto(a, o, g), o)).toBeCloseTo(100, 9);
+      expect(angDe(o, rotarPunto(a, o, g))).toBeCloseTo(((g + 180) % 360) - 180, 6);
+    }
+  });
+});
+
+describe("mesa de dibujo · simetría axial", () => {
+  it("reflejarPunto: el eje es la mediatriz del segmento entre un punto y su simétrico", () => {
+    const e1: Pt = [260, 40];
+    const e2: Pt = [320, 350];
+    for (const p of [[130, 240], [190, 130], [205, 300], [400, 100]] as Pt[]) {
+      const q = reflejarPunto(p, e1, e2);
+      // misma distancia a dos puntos cualesquiera del eje
+      for (const t of [0.1, 0.5, 0.9]) {
+        const e: Pt = [e1[0] + t * (e2[0] - e1[0]), e1[1] + t * (e2[1] - e1[1])];
+        expect(dist(e, p)).toBeCloseTo(dist(e, q), 6);
+      }
+      // la simetría es una involución
+      const r = reflejarPunto(q, e1, e2);
+      expect(r[0]).toBeCloseTo(p[0], 6);
+      expect(r[1]).toBeCloseTo(p[1], 6);
+    }
+    const sobre = reflejarPunto([290, 195], e1, e2);
+    expect(dist(sobre, [290, 195])).toBeLessThan(40); // un punto casi sobre el eje casi no se mueve
+    const sobreExacto: Pt = [e1[0] + 0.5 * (e2[0] - e1[0]), e1[1] + 0.5 * (e2[1] - e1[1])];
+    expect(dist(reflejarPunto(sobreExacto, e1, e2), sobreExacto)).toBeCloseTo(0, 9);
   });
 });

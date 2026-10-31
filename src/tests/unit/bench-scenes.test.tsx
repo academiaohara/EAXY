@@ -15,7 +15,8 @@ afterEach(cleanup);
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const escenas = todas.filter((e) => !e.endsWith("-practica"));
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e.endsWith("-cuadricula");
+const escenas = todas.filter((e) => !porAccion(e));
 
 /** Lee el control que la escena registra en el pie de la lección. */
 function Sonda({ onControl }: { onControl: (control: LessonStepControl | null) => void }) {
@@ -618,6 +619,434 @@ describe("trasladar un ángulo con compás", () => {
     const t = hasta("medida");
     fireEvent.click(screen.getByTestId("bench-deshacer"));
     expect(t.fase()).toBe("arco");
+  });
+});
+
+describe("traslación", () => {
+  const A: Pt = [100, 270];
+  const B: Pt = [200, 170];
+  const A2: Pt = [270, 230];
+  const B2: Pt = [370, 130];
+  const lv = Math.hypot(A2[0] - A[0], A2[1] - A[1]);
+  const lab = Math.hypot(B[0] - A[0], B[1] - A[1]);
+
+  it("explicación: la medida del vector, los dos arcos y la figura trasladada aparecen por pasos", () => {
+    const { siguiente } = montar("traslacion-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    expect(screen.queryByTestId("bench-imagen")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-v")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-a2")).toBeTruthy();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  /** Hace las seis fases con compás y deja marcar B′. */
+  function hastaMarcar() {
+    const t = pantalla("traslacion-practica");
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(A2);
+    expect(t.fase()).toBe("centro");
+    t.tocar(B);
+    expect(t.fase()).toBe("arco");
+    const base = ang(B, B2);
+    t.arrastrar(enCirc(B, lv, base - 25), enCirc(B, lv, base + 10));
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(B);
+    expect(t.fase()).toBe("centro");
+    t.tocar(A2);
+    expect(t.fase()).toBe("arco");
+    const base2 = ang(A2, B2);
+    t.arrastrar(enCirc(A2, lab, base2 - 25), enCirc(A2, lab, base2 + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: la primera medida solo vale con A y A′, y las dos medidas se toman por separado", () => {
+    const t = pantalla("traslacion-practica");
+    t.tocar([300, 100]);
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(A);
+    expect(t.fase()).toBe("medida");
+    t.tocar(A2);
+    expect(t.fase()).toBe("centro");
+  });
+
+  it("práctica: marcar B′ en el corte de los arcos es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([B2[0] + 5, B2[1] - 4]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar otro punto es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar([300, 100]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es B");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (params?: { a?: number; b?: number }) => {
+      const m = montar("traslacion-cuadricula", params ?? { a: 9, b: 3 });
+      const svg = () => screen.getByTestId("bench-cuadricula");
+      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, svg, tocar };
+    };
+
+    it("marcando A′, B′ y C′ en sus intersecciones es correcto y dibuja la figura trasladada", () => {
+      const t = abrir();
+      expect(t.out.control?.disabled).toBe(true);
+      t.tocar(px([11, 8]));
+      t.tocar(px([13, 3]));
+      t.tocar(px([16, 7]));
+      expect(t.svg().getAttribute("data-puntos")).toBe("3");
+      expect(t.out.control?.disabled).toBe(false);
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    });
+
+    it("un vértice mal puesto es incorrecto y el mensaje dice cuál", () => {
+      const t = abrir();
+      t.tocar(px([11, 8]));
+      t.tocar(px([13, 4]));
+      t.tocar(px([16, 7]));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("B′");
+      expect(screen.getByTestId("bench-resultado").textContent).not.toContain("A′ no");
+    });
+
+    it("hay que tocar una intersección de la cuadrícula y no se repiten puntos", () => {
+      const t = abrir();
+      t.tocar([px([5, 5])[0] + 12, px([5, 5])[1] + 12]);
+      expect(t.svg().getAttribute("data-puntos")).toBe("0");
+      expect(screen.getByTestId("bench-aviso").textContent).toContain("intersección");
+      t.tocar(px([11, 8]));
+      t.tocar(px([11, 8]));
+      expect(t.svg().getAttribute("data-puntos")).toBe("1");
+    });
+
+    it("«Deshacer» quita el último punto y el vector cambia con los parámetros", () => {
+      const t = abrir({ a: 5, b: -2 });
+      t.tocar(px([7, 13]));
+      t.tocar(px([9, 8]));
+      fireEvent.click(screen.getByTestId("bench-deshacer"));
+      expect(t.svg().getAttribute("data-puntos")).toBe("1");
+      t.tocar(px([9, 8]));
+      t.tocar(px([12, 12]));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+  });
+});
+
+describe("giro", () => {
+  const O: Pt = [180, 290];
+  const A: Pt = [330, 290];
+  const th = 60;
+  const A2 = enCirc(O, 150, th);
+
+  it("explicación: el transportador, el arco de A y los de B y C aparecen por pasos", () => {
+    const { siguiente } = montar("giro-compas", { a: th });
+    expect(screen.getByTestId("bench-sentido")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-transportador-giro")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-giro-a")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    expect(screen.queryByTestId("bench-transportador-giro")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arcos-giro-bc")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-girada")).toBeTruthy();
+  });
+
+  /** Hace las cuatro primeras fases y deja marcar A′. */
+  function hastaMarcar() {
+    const t = pantalla("giro-practica", { a: th });
+    expect(t.fase()).toBe("angulo");
+    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, th));
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(O);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(O, 150, th - 25), enCirc(O, 150, th + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: el ángulo solo se da por marcado al soltar sobre el valor del giro", () => {
+    const t = pantalla("giro-practica", { a: th });
+    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, 45)); // se queda corto
+    expect(t.fase()).toBe("angulo");
+    expect(screen.getByTestId("bench-aviso").textContent).toContain("ángulo del giro");
+    expect(screen.getByTestId("bench-angulo-lectura").textContent).toBe("45°");
+    t.arrastrar(enCirc(O, 120, 45), enCirc(O, 120, th));
+    expect(t.fase()).toBe("medida");
+  });
+
+  it("práctica: el teclado también marca el ángulo", () => {
+    const t = pantalla("giro-practica", { a: 30 });
+    const lectura = () => Number(screen.getByTestId("bench-angulo-lectura").textContent?.replace("°", ""));
+    expect(lectura()).toBe(20);
+    for (let i = 0; i < 10; i += 1) fireEvent.keyDown(t.svg(), { key: "ArrowLeft" });
+    expect(t.fase()).toBe("medida");
+  });
+
+  it("práctica: marcar A′ en el corte del arco con el segundo lado es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 5, A2[1] - 3]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar otro punto es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(enCirc(O, 150, th + 25)); // sobre el arco pero fuera del segundo lado
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("giro-cuadricula", { a });
+      const svg = () => screen.getByTestId("bench-cuadricula");
+      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+    // O = (8, 7); A = (12, 7), B = (12, 4), C = (9, 5)
+    const casos: [number, [number, number][]][] = [
+      [90, [[8, 3], [5, 3], [6, 6]]],
+      [180, [[4, 7], [4, 10], [7, 9]]],
+      [270, [[8, 11], [11, 11], [10, 8]]],
+    ];
+    it.each(casos)("giro de %i° antihorario: los tres vértices en su sitio son correctos", (a, pts) => {
+      const t = abrir(a);
+      for (const g of pts) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("girar en sentido horario en vez de antihorario es incorrecto", () => {
+      const t = abrir(90);
+      for (const g of [[8, 11], [11, 11], [10, 8]] as [number, number][]) t.tocar(px(g)); // 270° en lugar de 90°
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
+  });
+});
+
+describe("simetría", () => {
+  const E1: Pt = [260, 40];
+  const E2: Pt = [320, 350];
+  const eje = (t: number): Pt => [E1[0] + t * (E2[0] - E1[0]), E1[1] + t * (E2[1] - E1[1])];
+  const P = eje(0.3);
+  const Q = eje(0.75);
+  const A: Pt = [130, 240];
+  const refl = (p: Pt): Pt => {
+    const d: Pt = [E2[0] - E1[0], E2[1] - E1[1]];
+    const l = Math.hypot(d[0], d[1]);
+    const u: Pt = [d[0] / l, d[1] / l];
+    const t = (p[0] - E1[0]) * u[0] + (p[1] - E1[1]) * u[1];
+    const pie: Pt = [E1[0] + u[0] * t, E1[1] + u[1] * t];
+    return [2 * pie[0] - p[0], 2 * pie[1] - p[1]];
+  };
+  const A2 = refl(A);
+  const rP = Math.hypot(P[0] - A[0], P[1] - A[1]);
+  const rQ = Math.hypot(Q[0] - A[0], Q[1] - A[1]);
+
+  it("explicación: los puntos del eje, los dos arcos y la figura simétrica aparecen por pasos", () => {
+    const { siguiente } = montar("simetria-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente(2);
+    expect(screen.getByTestId("bench-arco-p")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-q")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  function hastaMarcar() {
+    const t = pantalla("simetria-practica");
+    t.tocar(P);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(P);
+    expect(t.fase()).toBe("arco");
+    const base = ang(P, A2);
+    t.arrastrar(enCirc(P, rP, base - 25), enCirc(P, rP, base + 10));
+    expect(t.fase()).toBe("medida");
+    t.tocar(Q);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(Q);
+    expect(t.fase()).toBe("arco");
+    const base2 = ang(Q, A2);
+    t.arrastrar(enCirc(Q, rQ, base2 - 25), enCirc(Q, rQ, base2 + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: marcar el simétrico A′ (y no A) en el corte de los arcos es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 4, A2[1] - 5]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar el otro corte, que es A, es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(A);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("simetria-cuadricula", { a });
+      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+
+    it("eje vertical: A′, B′ y C′ en el lado opuesto, a la misma distancia, son correctos", () => {
+      const t = abrir(0);
+      for (const g of [[22, 11], [20, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("eje diagonal: se intercambian las distancias al eje en horizontal y vertical", () => {
+      const t = abrir(1);
+      for (const g of [[9, 11], [13, 9], [10, 7]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("trasladar en lugar de reflejar es incorrecto", () => {
+      const t = abrir(0);
+      for (const g of [[12, 11], [14, 6], [17, 10]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
+  });
+});
+
+describe("homotecia", () => {
+  const O: Pt = [120, 300];
+  const A: Pt = [220, 300];
+  const A2: Pt = [320, 300];
+
+  it("explicación: las rectas desde O, la medida OA, el arco y la figura ampliada aparecen por pasos", () => {
+    const { siguiente } = montar("homotecia-compas");
+    expect(screen.queryByTestId("bench-rayos-homotecia")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-rayos-homotecia")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-oa")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-homotecia")).toBeTruthy();
+    expect(screen.queryByTestId("bench-medida-oa")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-homotetica")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  function hastaMarcar() {
+    const t = pantalla("homotecia-practica");
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(A);
+    expect(t.fase()).toBe("arco");
+    const base = ang(A, A2);
+    t.arrastrar(enCirc(A, 100, base - 25), enCirc(A, 100, base + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: la medida es OA y la punta solo se clava en A", () => {
+    const t = pantalla("homotecia-practica");
+    t.tocar([400, 100]);
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(O); // la punta se clava en A, no en O
+    expect(t.fase()).toBe("centro");
+    t.tocar(A);
+    expect(t.fase()).toBe("arco");
+  });
+
+  it("práctica: marcar A′ (y no O) es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 4, A2[1] - 5]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar el otro corte, que es O, es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(O);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("homotecia-cuadricula", { a });
+      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+    // O = (8, 7); A = (10, 7), B = (10, 5), C = (9, 6)
+    const casos: [number, [number, number][]][] = [
+      [2, [[12, 7], [12, 3], [10, 5]]],
+      [3, [[14, 7], [14, 1], [11, 4]]],
+      [-1, [[6, 7], [6, 9], [7, 8]]],
+      [-2, [[4, 7], [4, 11], [6, 9]]],
+    ];
+    it.each(casos)("razón %i: los tres vértices en su sitio son correctos", (k, pts) => {
+      const t = abrir(k);
+      for (const g of pts) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("con razón 2, usar la razón −2 (imagen al otro lado de O) es incorrecto", () => {
+      const t = abrir(2);
+      for (const g of [[4, 7], [4, 11], [6, 9]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
   });
 });
 

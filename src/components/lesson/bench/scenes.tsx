@@ -43,7 +43,19 @@ export type BenchSceneName =
   | "mediatriz-practica"
   | "bisectriz-practica"
   | "trasladar-angulo-compas"
-  | "trasladar-practica";
+  | "trasladar-practica"
+  | "traslacion-compas"
+  | "traslacion-practica"
+  | "traslacion-cuadricula"
+  | "giro-compas"
+  | "giro-practica"
+  | "giro-cuadricula"
+  | "simetria-compas"
+  | "simetria-practica"
+  | "simetria-cuadricula"
+  | "homotecia-compas"
+  | "homotecia-practica"
+  | "homotecia-cuadricula";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -59,6 +71,18 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "bisectriz-practica": 9,
   "trasladar-angulo-compas": 5,
   "trasladar-practica": 9,
+  "traslacion-compas": 5,
+  "traslacion-practica": 7,
+  "traslacion-cuadricula": 3,
+  "giro-compas": 5,
+  "giro-practica": 5,
+  "giro-cuadricula": 3,
+  "simetria-compas": 5,
+  "simetria-practica": 7,
+  "simetria-cuadricula": 3,
+  "homotecia-compas": 5,
+  "homotecia-practica": 4,
+  "homotecia-cuadricula": 3,
 };
 
 export const INK = "#2a2f36";
