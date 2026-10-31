@@ -39,7 +39,9 @@ export type BenchSceneName =
   | "perpendicular-escuadra-cartabon"
   | "transportador-medir"
   | "mediatriz-compas"
-  | "bisectriz-compas";
+  | "bisectriz-compas"
+  | "mediatriz-practica"
+  | "bisectriz-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -49,8 +51,10 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "paralelas-escuadra-cartabon": 3,
   "perpendicular-escuadra-cartabon": 3,
   "transportador-medir": 3,
-  "mediatriz-compas": 5,
-  "bisectriz-compas": 5,
+  "mediatriz-compas": 4,
+  "bisectriz-compas": 4,
+  "mediatriz-practica": 6,
+  "bisectriz-practica": 9,
 };
 
 export const INK = "#2a2f36";
@@ -65,6 +69,7 @@ export function BenchShell({
   step,
   setStep,
   extra,
+  nav,
   label,
   children,
 }: {
@@ -73,6 +78,8 @@ export function BenchShell({
   step: number;
   setStep: (n: number) => void;
   extra?: ReactNode;
+  /** Sustituye los botones Anterior / Siguiente (escenas donde los pasos avanzan al hacer la acción). */
+  nav?: ReactNode;
   label: string;
   children: ReactNode;
 }) {
@@ -104,19 +111,23 @@ export function BenchShell({
           {extra}
         </div>
         <div className="flex shrink-0 items-center gap-3 pt-3" data-testid="bench-nav">
-          <button type="button" className={btn} disabled={step === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
-            <ChevronLeftIcon className="size-4" aria-hidden />
-            Anterior
-          </button>
+          {nav ?? (
+            <button type="button" className={btn} disabled={step === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
+              <ChevronLeftIcon className="size-4" aria-hidden />
+              Anterior
+            </button>
+          )}
           <div className="flex items-center gap-1.5" aria-hidden>
             {Array.from({ length: total }, (_, i) => (
               <span key={i} className={`size-2 rounded-full ${i === step ? "bg-[#58c4dd]" : i < step ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
             ))}
           </div>
-          <button type="button" className={btn} disabled={step === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
-            Siguiente
-            <ChevronRightIcon className="size-4" aria-hidden />
-          </button>
+          {nav ? null : (
+            <button type="button" className={btn} disabled={step === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
+              Siguiente
+              <ChevronRightIcon className="size-4" aria-hidden />
+            </button>
+          )}
         </div>
       </div>
     </section>
