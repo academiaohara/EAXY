@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const puntosNotablesTrianguloDt1Lesson: InteractiveLesson = {
   slug: "puntos-notables-triangulo-dt1",
@@ -8,38 +8,30 @@ export const puntosNotablesTrianguloDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[3],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Cuatro puntos, cuatro rectas", [
-      { kind: "steps", items: [
-        "**Medianas**: unen cada vértice con el punto medio del lado opuesto. Se cortan en el **baricentro G**, el centro de gravedad. Lo dividen en razón **2 : 1** desde el vértice.",
-        "**Bisectrices**: dividen cada ángulo en dos iguales. Se cortan en el **incentro I**, centro de la circunferencia **inscrita**.",
-        "**Mediatrices**: perpendiculares por el punto medio de cada lado. Se cortan en el **circuncentro O**, centro de la circunferencia **circunscrita**.",
-        "**Alturas**: perpendiculares desde cada vértice al lado opuesto. Se cortan en el **ortocentro H**.",
-      ] },
-    ], undefined, "stack"),
-    slide("explora", "Muévelos", [
-      { kind: "text", text: "Cambia la posición de C. Mira dónde caen los puntos en triángulos acutángulos, rectángulos y obtusángulos." },
-    ], tool("dt1-puntos-notables-explorador"), "visual-top"),
-    slide("euler", "Posiciones y la recta de Euler", [
-      { kind: "steps", items: [
-        "**G** e **I** están siempre **dentro** del triángulo.",
-        "En un triángulo **rectángulo**: el circuncentro es el **punto medio de la hipotenusa** y el ortocentro es el **vértice del ángulo recto**.",
-        "En un triángulo **obtusángulo**, el circuncentro y el ortocentro quedan **fuera**.",
-        "**G, O y H están alineados**: es la **recta de Euler**, y se cumple $H = 3G - 2O$.",
-        "En un triángulo **equilátero** los cuatro puntos coinciden.",
-      ] },
-    ]),
-    calc("calc-bari", "Baricentro", "Un triángulo tiene vértices (0, 0), (6, 0) y (0, 9). ¿Cuál es la coordenada y del baricentro?", nums(3), "(0 + 0 + 9)/3 = 3; el baricentro es (2, 3).", "Promedia las coordenadas."),
-    calc("calc-circ", "Circuncentro de un rectángulo", "En ese mismo triángulo (rectángulo en el origen), el circuncentro es el punto medio de la hipotenusa que une (6, 0) y (0, 9). ¿Cuál es su coordenada y?", nums(4.5), "(0 + 9)/2 = 4,5; O = (3; 4,5).", "Punto medio de la hipotenusa."),
-    calc("calc-medi", "Razón 2:1", "Una mediana mide 9 cm. ¿A qué distancia del vértice está el baricentro, en cm?", nums(6), "2/3 de 9 = 6 cm; del lado, 3 cm.", "El baricentro divide la mediana en 2 : 1."),
-    sort("clasifica-puntos", "¿Qué punto es?", "Asocia cada propiedad con el punto notable.",
-      [["bar", "Baricentro", "cobalt"], ["inc", "Incentro", "amber"], ["cir", "Circuncentro", "emerald"], ["ort", "Ortocentro", "rose"]],
-      [["Punto de corte de las medianas", "bar"], ["Centro de gravedad de una placa triangular", "bar"], ["Equidista de los tres lados", "inc"], ["Centro de la circunferencia inscrita", "inc"], ["Equidista de los tres vértices", "cir"], ["Punto de corte de las mediatrices", "cir"], ["Punto de corte de las alturas", "ort"], ["Vértice del ángulo recto en un triángulo rectángulo", "ort"]],
-      "Cada punto sale de un tipo distinto de recta.",
-    ),
-    pick("check-obtuso", "Fuera del triángulo", "En un triángulo obtusángulo, ¿qué puntos notables quedan fuera?",
-      "El circuncentro y el ortocentro",
-      [["El baricentro y el incentro", "Esos siempre están dentro."], ["Solo el baricentro", "El baricentro siempre está dentro."], ["Ninguno", "Dos de ellos salen."]],
-      "G e I son siempre interiores; O y H salen del triángulo obtusángulo.",
-    ),
+    slide("def", "Cuatro puntos, cuatro rectas", [], bench("puntos-notables", [
+      { title: "Medianas y baricentro", text: "Las **medianas** unen cada vértice con el punto medio del lado opuesto. Se cortan en el **baricentro G**, el centro de gravedad, que las divide en razón **2 : 1** desde el vértice.", fact: "G: centro de gravedad" },
+      { title: "Bisectrices e incentro", text: "Las **bisectrices** dividen cada ángulo en dos iguales. Se cortan en el **incentro I**, el centro de la circunferencia **inscrita**, que toca a los tres lados.", fact: "I: equidista de los lados" },
+      { title: "Mediatrices y circuncentro", text: "Las **mediatrices** son las perpendiculares por el punto medio de cada lado. Se cortan en el **circuncentro O**, el centro de la circunferencia **circunscrita**, que pasa por los tres vértices.", fact: "O: equidista de los vértices" },
+      { title: "Alturas y ortocentro", text: "Las **alturas** son las perpendiculares desde cada vértice al lado opuesto. Se cortan en el **ortocentro H**.", fact: "H: corte de las alturas" },
+      { title: "La recta de Euler", text: "**G, O y H están alineados**: es la **recta de Euler**, con $H = 3G - 2O$. En un triángulo **rectángulo**, O es el punto medio de la hipotenusa y H el vértice del ángulo recto; en un **obtusángulo**, O y H quedan fuera. En el **equilátero** los cuatro coinciden.", fact: "G, O, H alineados" },
+    ]), "stack"),
+
+    benchTask("circuncentro-construye", "Halla el circuncentro", "circuncentro-practica", [
+      { title: "Clava la punta en A", text: "Para la mediatriz de $AB$, toca el vértice $A$ y clava la punta seca del compás." },
+      { title: "Abre más de la mitad de AB", text: "Arrastra la mina hasta una abertura **mayor que la mitad** de $AB$ y pulsa «Fijar abertura».", fact: "Radio > AB / 2" },
+      { title: "Arco desde A", text: "Arrastra la mina para trazar un arco **por encima y por debajo** de $AB$." },
+      { title: "Clava la punta en B", text: "Toca $B$ sin cambiar la abertura." },
+      { title: "Arco desde B", text: "Traza el arco que corta al anterior en **dos puntos**." },
+      { title: "Clava la punta en A", text: "Ahora la mediatriz de $AC$: toca de nuevo $A$." },
+      { title: "Abre más de la mitad de AC", text: "Fija una abertura **mayor que la mitad** de $AC$.", fact: "Radio > AC / 2" },
+      { title: "Arco desde A", text: "Traza el arco a ambos lados de $AC$." },
+      { title: "Clava la punta en C", text: "Toca $C$ con la misma abertura." },
+      { title: "Arco desde C", text: "Traza el arco que corta al anterior en dos puntos." },
+      { title: "Dibuja las dos mediatrices", text: "Toca **dos puntos** de una mediatriz y después los dos de la otra. Donde se cortan queda el circuncentro $O$, y con él la circunferencia circunscrita.", fact: "O equidista de A, B y C" },
+    ], {
+      question: "Halla el circuncentro del triángulo ABC con las mediatrices de dos de sus lados.",
+      hint: "Traza la mediatriz de AB y la de AC con el compás: el punto donde se cortan es el circuncentro.",
+      explanation: "Los puntos de la mediatriz de AB equidistan de A y B, y los de la de AC, de A y C. Su corte equidista de los tres vértices: es el centro de la circunferencia circunscrita.",
+    }),
   ],
 };

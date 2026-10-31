@@ -9,6 +9,7 @@ import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideBlockView } from "@/components/lesson/slide/SlideBlocks";
 import type { BenchSceneId } from "@/lib/lesson/types";
 import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
+import { POLIGONOS_GEOM, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
 
 afterEach(cleanup);
 
@@ -1194,6 +1195,181 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       expect(t.aviso()).toContain("puntos de la construcción");
       t.sinSuperar();
     });
+  });
+});
+
+describe("mesa de dibujo · triángulos y polígonos", () => {
+  const { LA, LB, LC, SEG_A, SEG_B, HO, HV, CC_O } = POLIGONOS_GEOM;
+
+  describe("triángulo dados los tres lados", () => {
+    function hasta() {
+      const t = pantalla("triangulo-lll-practica");
+      t.tocar(SEG_B[0]);
+      t.tocar(SEG_B[1]);
+      expect(t.fase()).toBe("centro");
+      t.tocar(LA);
+      const aA = ang(LA, LC);
+      t.arrastrar(enCirc(LA, 150, aA - 25), enCirc(LA, 150, aA + 10));
+      expect(t.fase()).toBe("medida");
+      t.tocar(SEG_A[0]);
+      t.tocar(SEG_A[1]);
+      t.tocar(LB);
+      const aB = ang(LB, LC);
+      t.arrastrar(enCirc(LB, 130, aB + 25), enCirc(LB, 130, aB - 10));
+      expect(t.fase()).toBe("regla");
+      return t;
+    }
+
+    it("tomar los dos lados, trazar los arcos y unir C con A y con B supera el ejercicio solo", () => {
+      const t = hasta();
+      t.tocar(LA);
+      t.tocar(LC);
+      t.sinSuperar();
+      t.tocar(LC);
+      t.tocar(LB);
+      t.superada();
+    });
+
+    it("el lado AB ya está dibujado y un lado no puede unir un punto consigo mismo", () => {
+      const t = hasta();
+      t.tocar(LA);
+      t.tocar(LB);
+      expect(t.aviso()).toContain("AB ya está dibujado");
+      t.tocar(LA);
+      expect(t.aviso()).toContain("distintos");
+      t.sinSuperar();
+    });
+
+    it("la medida solo se toma entre los extremos del segmento que toca", () => {
+      const t = pantalla("triangulo-lll-practica");
+      t.tocar(SEG_A[0]);
+      expect(t.aviso()).toContain("dos puntos marcados");
+      expect(t.fase()).toBe("medida");
+    });
+  });
+
+  describe("hexágono inscrito", () => {
+    function hasta(arcos = 5) {
+      const t = pantalla("hexagono-practica");
+      t.tocar(HO);
+      t.tocar(HV[0]);
+      for (let i = 0; i < arcos; i += 1) {
+        expect(t.fase()).toBe("centro");
+        t.tocar(HV[i]);
+        const a = ang(HV[i], HV[i + 1]);
+        t.arrastrar(enCirc(HV[i], 120, a - 25), enCirc(HV[i], 120, a + 10));
+        expect(t.fase()).toBe("punto");
+        t.tocar(HV[i + 1]);
+      }
+      return t;
+    }
+
+    it("cinco arcos con el radio marcan los seis vértices y la regla los une", () => {
+      const t = hasta();
+      expect(t.fase()).toBe("regla");
+      for (let i = 0; i < 6; i += 1) {
+        t.sinSuperar();
+        t.tocar(HV[i]);
+        t.tocar(HV[(i + 1) % 6]);
+      }
+      t.superada();
+    });
+
+    it("solo se aceptan lados entre vértices consecutivos y sin repetir", () => {
+      const t = hasta();
+      t.tocar(HV[0]);
+      t.tocar(HV[3]);
+      expect(t.aviso()).toContain("consecutivos");
+      t.tocar(HV[1]);
+      t.tocar(HV[0]);
+      t.tocar(HV[0]);
+      t.tocar(HV[1]);
+      expect(t.aviso()).toContain("ya está trazado");
+      t.sinSuperar();
+    });
+
+    it("el punto marcado tiene que ser el corte del arco con la circunferencia", () => {
+      const t = pantalla("hexagono-practica");
+      t.tocar(HO);
+      t.tocar(HV[0]);
+      t.tocar(HV[0]);
+      const a = ang(HV[0], HV[1]);
+      t.arrastrar(enCirc(HV[0], 120, a - 25), enCirc(HV[0], 120, a + 10));
+      expect(t.fase()).toBe("punto");
+      t.tocar(HV[3]);
+      expect(t.aviso()).toContain("no es el punto");
+      expect(t.fase()).toBe("punto");
+    });
+  });
+
+  describe("circuncentro con dos mediatrices", () => {
+    function hasta() {
+      const t = pantalla("circuncentro-practica");
+      const mediatriz = (P: Pt, Q: Pt, r: number) => {
+        const th = Math.max((Math.acos(Math.min(1, d(P, Q) / (2 * r))) * 180) / Math.PI, 20) + 8;
+        t.tocar(P);
+        t.arrastrar(enCirc(P, r, ang(P, Q) + 35));
+        t.fijar();
+        expect(t.fase()).toBe("arco");
+        t.arrastrar(enCirc(P, r, ang(P, Q) + th), enCirc(P, r, ang(P, Q) - th));
+        expect(t.fase()).toBe("centro");
+        t.tocar(Q);
+        t.arrastrar(enCirc(Q, r, ang(Q, P) + th), enCirc(Q, r, ang(Q, P) - th));
+      };
+      mediatriz(PN_A, PN_B, 160);
+      mediatriz(PN_A, PN_C, 150);
+      expect(t.fase()).toBe("regla");
+      return t;
+    }
+
+    it("dos mediatrices con la regla supera el ejercicio y marca el circuncentro", () => {
+      const t = hasta();
+      const [c1, c2] = [
+        [PN_A, PN_B, 160],
+        [PN_A, PN_C, 150],
+      ].map(([P, Q, r]) => {
+        const m: Pt = [((P as Pt)[0] + (Q as Pt)[0]) / 2, ((P as Pt)[1] + (Q as Pt)[1]) / 2];
+        const h = Math.sqrt((r as number) ** 2 - (d(P as Pt, Q as Pt) / 2) ** 2);
+        const u: Pt = [-((Q as Pt)[1] - (P as Pt)[1]) / d(P as Pt, Q as Pt), ((Q as Pt)[0] - (P as Pt)[0]) / d(P as Pt, Q as Pt)];
+        return [[m[0] + u[0] * h, m[1] + u[1] * h] as Pt, [m[0] - u[0] * h, m[1] - u[1] * h] as Pt];
+      });
+      t.tocar(c1[0]);
+      t.tocar(c2[0]);
+      expect(t.aviso()).toContain("mismo lado");
+      t.tocar(c1[1]);
+      t.tocar(c2[0]);
+      t.sinSuperar();
+      t.tocar(c2[1]);
+      t.superada();
+      expect(screen.getByTestId("bench-circuncentro")).toBeTruthy();
+      expect(d(CC_O, PN_A)).toBeCloseTo(d(CC_O, PN_B), 6);
+      expect(d(CC_O, PN_A)).toBeCloseTo(d(CC_O, PN_C), 6);
+    });
+  });
+
+  it("puntos notables: cada paso dibuja las rectas de su familia y el último la recta de Euler", () => {
+    const { siguiente } = montar("puntos-notables");
+    expect(screen.queryByTestId("bench-euler")).toBeNull();
+    siguiente(1);
+    expect(screen.getByTestId("bench-inscrita")).toBeTruthy();
+    siguiente(1);
+    expect(screen.getByTestId("bench-circunscrita")).toBeTruthy();
+    siguiente(2);
+    expect(screen.getByTestId("bench-euler")).toBeTruthy();
+  });
+
+  it("hexágono y triángulo: las explicaciones animadas muestran el compás y el resultado final", () => {
+    const h = montar("hexagono-compas");
+    h.siguiente(1);
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    h.siguiente(3);
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    cleanup();
+    const t = montar("triangulo-lll-compas");
+    t.siguiente(2);
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    t.siguiente(2);
+    expect(screen.getByTestId("bench-lll-final")).toBeTruthy();
   });
 });
 

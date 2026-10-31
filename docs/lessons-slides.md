@@ -96,6 +96,10 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `aurea-compas` / `aurea-practica` | 5 / 7 fases | **Sección áurea** con regla y compás: `BC = AB/2`, arco de radio `CB` hasta `D`, arco de radio `AD` hasta `E` | — |
 | `equivalencia-triangulos` | 4 | Triángulos de igual base y altura (el vértice recorre la paralela) y rectángulo de mitad de altura | — |
 | `cuadratura-compas` / `cuadratura-practica` | 5 / 7 fases | **Cuadratura de un rectángulo**: altura sobre la prolongación de la base, semicircunferencia y perpendicular por `B` | — |
+| `puntos-notables` | 5 | Medianas, bisectrices, mediatrices y alturas de un triángulo: baricentro, incentro (con la circunferencia inscrita), circuncentro (con la circunscrita), ortocentro y recta de Euler | — |
+| `circuncentro-practica` | 11 fases | **Circuncentro**: mediatrices de `AB` y de `AC` con el compás (abertura validada) y la regla por los dos cortes de cada una | — |
+| `triangulo-lll-compas` / `triangulo-lll-practica` | 5 / 7 fases | **Triángulo dados los tres lados**: se toma cada lado de su segmento, arcos desde `A` y `B` y unión de `C` | — |
+| `hexagono-compas` / `hexagono-practica` | 5 / 17 fases | **Hexágono inscrito**: el radio llevado seis veces sobre la circunferencia (cada arco se corta con la circunferencia y se marca el vértice) y unión de los seis lados | — |
 | `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
@@ -617,7 +621,6 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
-| `dt1-pentagono-euclides` | Construcción del pentágono regular inscrito en una circunferencia | — |
 | `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
 | `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
@@ -1366,11 +1369,8 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
 | `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
 | `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
-| `dt1-puntos-notables-explorador` | Baricentro, incentro, circuncentro y ortocentro de un triángulo | `n` punto resaltado (0–3) |
-| `dt1-triangulo-datos-explorador` | Existencia, ángulos y clasificación de un triángulo según sus lados | `a`, `b`, `c` (cm) |
 | `dt1-cuadrilatero-explorador` | Tipo, diagonales y área de un paralelogramo | `a`, `b` lados (cm) |
 | `dt1-poligono-regular-explorador` | Lado, apotema, ángulos y área de un polígono regular | `n` lados, `a` radio (cm) |
-| `dt1-metodo-general-explorador` | Método general de inscripción de polígonos: lado aproximado y error | `n` lados |
 | `dt1-estrellado-explorador` | Polígonos estrellados {n/k}: ángulo de punta y número de trazos | `n` puntos, `a` salto k |
 | `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
 | `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |

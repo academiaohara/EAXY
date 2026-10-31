@@ -61,7 +61,13 @@ export type BenchSceneName =
   | "equivalencia-triangulos"
   | "cuadratura-compas"
   | "cuadratura-practica"
-  | "semejanza-razon";
+  | "semejanza-razon"
+  | "puntos-notables"
+  | "circuncentro-practica"
+  | "triangulo-lll-compas"
+  | "triangulo-lll-practica"
+  | "hexagono-compas"
+  | "hexagono-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -96,6 +102,12 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "cuadratura-compas": 5,
   "cuadratura-practica": 7,
   "semejanza-razon": 4,
+  "puntos-notables": 5,
+  "circuncentro-practica": 11,
+  "triangulo-lll-compas": 5,
+  "triangulo-lll-practica": 7,
+  "hexagono-compas": 5,
+  "hexagono-practica": 17,
 };
 
 export const INK = "#2a2f36";

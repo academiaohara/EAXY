@@ -9,6 +9,7 @@ import { SimetriaCompas } from "./scenes-simetria";
 import { GiroCompas } from "./scenes-giro";
 import { TraslacionCompas } from "./scenes-transformaciones";
 import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
+import { CircuncentroPractica, HexagonoCompas, HexagonoPractica, PuntosNotables, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -77,6 +78,18 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <CuadraturaPractica block={block} />;
     case "semejanza-razon":
       return <SemejanzaRazon block={block} />;
+    case "puntos-notables":
+      return <PuntosNotables block={block} />;
+    case "circuncentro-practica":
+      return <CircuncentroPractica block={block} />;
+    case "triangulo-lll-compas":
+      return <TrianguloLllCompas block={block} />;
+    case "triangulo-lll-practica":
+      return <TrianguloLllPractica block={block} />;
+    case "hexagono-compas":
+      return <HexagonoCompas block={block} />;
+    case "hexagono-practica":
+      return <HexagonoPractica block={block} />;
     default:
       return null;
   }
