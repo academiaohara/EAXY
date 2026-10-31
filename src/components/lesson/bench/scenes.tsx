@@ -93,7 +93,7 @@ export function InstrumentosCatalogo({ block }: { block: BenchBlock }) {
         </>
       }
     >
-      <svg viewBox="0 0 620 380" className="mx-auto block h-auto w-full max-w-3xl rounded-lg" role="img" aria-label="Mesa con los instrumentos de dibujo técnico" data-testid="bench-catalogo">
+      <svg viewBox="0 0 620 380" className="mx-auto block h-auto w-full max-w-2xl rounded-lg" role="img" aria-label="Mesa con los instrumentos de dibujo técnico" data-testid="bench-catalogo">
         <BenchDefs />
         <Desk w={620} h={380} sheet={{ x: 10, y: 10, w: 600, h: 360 }} />
         <Hot id="regla" sel={sel} onSel={setSel} label="Regla graduada">
@@ -129,8 +129,8 @@ export function InstrumentosCatalogo({ block }: { block: BenchBlock }) {
 /* ───────────── 2. Paralela con escuadra y cartabón ───────────── */
 
 const VIEW_W = 520;
-const VIEW_H = 400;
-const SHEET = { x: 30, y: 20, w: 460, h: 380 };
+const VIEW_H = 350;
+const SHEET = { x: 30, y: 16, w: 460, h: 334 };
 
 export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const theta0 = clamp(block.params?.a ?? 12, -15, 30);
@@ -141,7 +141,7 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const svgRef = useRef<SVGSVGElement>(null);
   const drag = useRef<{ start: Pt; s0: number } | null>(null);
 
-  const setup = paralelaSetup([175, 80], theta, dP);
+  const setup = paralelaSetup([175, 70], theta, dP);
   const eq = escuadraPose(setup, s);
   const ct = cartabonPose(setup);
   const [e0, e1] = filoEscuadra(setup, s);
@@ -195,7 +195,7 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
       <svg
         ref={svgRef}
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-        className="mx-auto block h-auto w-full max-w-3xl touch-none rounded-lg select-none"
+        className="mx-auto block h-auto w-full max-w-2xl touch-none rounded-lg select-none"
         role="group"
         aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón"
         data-testid="bench-paralelas"
