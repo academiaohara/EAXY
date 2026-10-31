@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { LessonStepControlProvider } from "@/components/lesson/LessonStepControlContext";
 import { BENCH_STEPS } from "@/components/lesson/bench/scenes";
 import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
@@ -13,6 +14,9 @@ const course = curriculum.courses.find((c) => c.slug === "dibujo-tecnico-1-bachi
 const lessons = course.modules.flatMap((m) => m.lessons.map((l) => ({ module: m.slug, lesson: l, data: interactiveLessons[l.interactiveSlug as keyof typeof interactiveLessons] })));
 
 function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" | "bench" }>[] {
+  if (step.type === "bench_task") {
+    return [{ kind: "bench", scene: step.scene, params: step.params, notes: step.notes }];
+  }
   if (step.type !== "slide") {
     return [];
   }
@@ -46,7 +50,8 @@ describe("curso Dibujo Técnico I", () => {
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: pasos bien formados", (_slug, { data }) => {
-    expect(data.steps.length).toBeGreaterThanOrEqual(5);
+    const conMesa = data.steps.some((st) => st.type === "bench_task" || (st.type === "slide" && st.visual?.kind === "bench"));
+    expect(data.steps.length).toBeGreaterThanOrEqual(conMesa ? 2 : 5);
     const ids = data.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
     let practice = 0;
@@ -69,8 +74,13 @@ describe("curso Dibujo Técnico I", () => {
         expect(step.items.length, step.id).toBeGreaterThanOrEqual(4);
       }
       if (step.type === "interactive_tool" && step.tool === "dt1-workshop") practice += 1;
+      if (step.type === "bench_task") {
+        practice += 1;
+        expect(step.question.length, step.id).toBeGreaterThan(10);
+        expect(step.explanation?.length ?? 0, step.id).toBeGreaterThan(10);
+      }
     }
-    expect(practice).toBeGreaterThanOrEqual(2);
+    expect(practice).toBeGreaterThanOrEqual(conMesa ? 1 : 2);
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: tiene animaciones o herramientas interactivas", (_slug, { data }) => {
@@ -109,7 +119,7 @@ describe("curso Dibujo Técnico I", () => {
           }
           if (v.kind === "bench") {
             expect(v.notes?.length, `${data.slug}/${step.id}: un texto por paso`).toBe(BENCH_STEPS[v.scene]);
-            expect(() => render(<SlideBench block={v} />), `${data.slug}/${step.id}`).not.toThrow();
+            expect(() => render(<LessonStepControlProvider><SlideBench block={v} /></LessonStepControlProvider>), `${data.slug}/${step.id}`).not.toThrow();
           }
         }
       }

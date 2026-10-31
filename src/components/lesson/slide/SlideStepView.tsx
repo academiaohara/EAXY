@@ -33,6 +33,21 @@ export function SlideStepView({ step, theme, onContinue }: SlideStepViewProps) {
 
   const arrange = step.arrange ?? (step.visual ? "split" : "stack");
 
+  // Mesa de dibujo sola: ocupa todo el escenario, sin scroll (los textos van en sus pasos).
+  if (step.visual?.kind === "bench" && step.blocks.length === 0) {
+    return (
+      <StageViewport
+        theme={theme}
+        className="min-h-0 flex-1"
+        stage={
+          <div className="lesson-slide min-h-0 flex-1 pb-2" data-testid="lesson-slide" data-arrange="bench">
+            <SlideBlockView block={step.visual} />
+          </div>
+        }
+      />
+    );
+  }
+
   const text = (
     <div
       className={cn(

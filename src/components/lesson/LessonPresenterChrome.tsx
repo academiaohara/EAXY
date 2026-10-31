@@ -211,7 +211,7 @@ export function useLessonPresenterChrome(props: LessonPresenterChromeProps) {
   const header = (
     <header className="relative z-50 flex shrink-0 items-start justify-between gap-4 px-4 pb-4 pt-5 sm:px-6 sm:pb-4 sm:pt-5">
       <div
-        className="lesson-step-title min-w-0 max-w-[min(42rem,70vw)] font-heading text-[color:var(--stage-ink,#e8edf5)]"
+        className="lesson-step-title min-w-0 flex-1 font-heading text-[color:var(--stage-ink,#e8edf5)]"
         data-testid="lesson-step-title"
       >
         {stepTitle}

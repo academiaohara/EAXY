@@ -12,6 +12,7 @@ import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { FillInBlank } from "@/components/lesson/steps/FillInBlank";
 import { FractionPick } from "@/components/lesson/steps/FractionPick";
 import { InteractiveToolStepView } from "@/components/lesson/steps/InteractiveToolStep";
+import { BenchTaskStepView } from "@/components/lesson/steps/BenchTaskStep";
 import { NumberLinePick } from "@/components/lesson/steps/NumberLinePick";
 import { SlideStepView } from "@/components/lesson/slide/SlideStepView";
 import { StoryboardStepView } from "@/components/lesson/storyboard/StoryboardStepView";
@@ -207,6 +208,18 @@ export function InteractiveQuestion({
         disabled={disabled}
         compact={compact}
         saved={savedAttempt?.kind === "divisibility_grid" ? savedAttempt : null}
+      />
+    );
+  }
+
+  if (step.type === "bench_task") {
+    return (
+      <BenchTaskStepView
+        step={step}
+        theme={stageTheme}
+        onCheck={onCheck}
+        disabled={disabled}
+        saved={savedAttempt?.kind === "bench_task" ? savedAttempt : null}
       />
     );
   }
