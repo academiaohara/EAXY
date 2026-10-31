@@ -1128,6 +1128,7 @@ export type SlideAnimId =
   | "fb1-gas-particulas"
   | "fb1-pila-daniell"
   | "fb1-cadenas-carbono"
+  | "fb1-parabolico"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2222,6 +2223,11 @@ export type SlideToolId =
   | "fb1-grupos-explorador"
   | "fb1-isomeria-explorador"
   | "fb1-reacciones-organicas-explorador"
+  | "fb1-vectores-cinematicos-explorador"
+  | "fb1-graficas-mrua-explorador"
+  | "fb1-parabolico-explorador"
+  | "fb1-circular-explorador"
+  | "fb1-barca-rio-explorador"
   /* industrial-tool-end */;
 
 /**

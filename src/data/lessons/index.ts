@@ -153,6 +153,7 @@ import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunic
 import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { caidaLibreFrenadaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/05-caida-libre-frenada-fq3";
+import { caidaLibreMovimientoParabolicoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/03-caida-libre-movimiento-parabolico-fb1";
 import { caidaLibreTiroVerticalFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/03-caida-libre-tiro-vertical-fq4";
 import { calculoSustitucionLaterales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/07-calculo-sustitucion-laterales-1bach";
 import { calculoSustitucionLateralesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/07-calculo-sustitucion-laterales-ccss1";
@@ -706,6 +707,7 @@ import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachille
 import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
 import { graficasPosicionTiempoFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/04-graficas-posicion-tiempo-fq2";
+import { graficasProblemasCinematicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/05-graficas-problemas-cinematica-fb1";
 import { graficasSeguridadVialFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/05-graficas-seguridad-vial-fq4";
 import { graficasVelocidadTiempoFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/04-graficas-velocidad-tiempo-fq3";
 import { graficosEstadisticos1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/04-graficos-estadisticos-1bach";
@@ -963,10 +965,12 @@ import { motorTrifasicoCampoGiratorioLesson } from "@/data/lessons/tecnologia-in
 import { motorTrifasicoConexionBalanceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/11-motor-trifasico-conexion-balance";
 import { motoresCombustionExternaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/03-motores-combustion-externa";
 import { motoresContactoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/13-circuitos-secuenciales-control-cableado/08-motores-contactores";
+import { movimientoCircularFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/04-movimiento-circular-fb1";
 import { movimientoCircularUniformeFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/04-movimiento-circular-uniforme-fq4";
 import { movimientoOndulatorioFq4Lesson } from "@/data/lessons/fisica-4-eso/12-ondas/01-movimiento-ondulatorio-fq4";
 import { movimientoRectilineoUniformeFq2Lesson } from "@/data/lessons/fisica-2-eso/06-el-movimiento/03-movimiento-rectilineo-uniforme-fq2";
 import { mruMruaFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/02-mru-mrua-fq4";
+import { mruMruaGraficasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/02-mru-mrua-graficas-fb1";
 import { mruaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/03-mrua-fq3";
 import { muestreoEstimacionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/11-muestreo-estimacion-ccss1";
 import { multiplicacionDivisionDecimales2esoLesson } from "@/data/lessons/matematicas-2-eso/02-sistema-decimal-y-sexagesimal/04-multiplicacion-division-decimales-2eso";
@@ -1506,6 +1510,7 @@ import { sistemasOperativosRecursosLesson } from "@/data/lessons/tecnologia-inge
 import { sistemasParametro12bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/08-sistemas-parametro-1-2bach";
 import { sistemasParametro1Ccss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/10-sistemas-parametro-1-ccss2";
 import { sistemasParametro22bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/09-sistemas-parametro-2-2bach";
+import { sistemasReferenciaVectoresFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/01-sistemas-referencia-vectores-fb1";
 import { sistemasTrifasicosResolucionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/03-corriente-alterna/05-sistemas-trifasicos-resolucion-ti2";
 import { sobrealimentacionTurbocompresorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/06-motores-termicos-circuitos-frigorificos/08-sobrealimentacion-turbocompresor";
 import { solidificacionMetalesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/02-solidificacion-metales";
@@ -1835,6 +1840,7 @@ export const interactiveLessons = {
   "cad-vectorial-coordenadas-dt1": cadVectorialCoordenadasDt1Lesson,
   "cadenas-sin-fin-transmision": cadenasSinFinTransmisionLesson,
   "caida-libre-frenada-fq3": caidaLibreFrenadaFq3Lesson,
+  "caida-libre-movimiento-parabolico-fb1": caidaLibreMovimientoParabolicoFb1Lesson,
   "caida-libre-tiro-vertical-fq4": caidaLibreTiroVerticalFq4Lesson,
   "calculo-sustitucion-laterales-1bach": calculoSustitucionLaterales1bachLesson,
   "calculo-sustitucion-laterales-ccss1": calculoSustitucionLateralesCcss1Lesson,
@@ -2388,6 +2394,7 @@ export const interactiveLessons = {
   "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,
   "graficas-posicion-tiempo-fq2": graficasPosicionTiempoFq2Lesson,
+  "graficas-problemas-cinematica-fb1": graficasProblemasCinematicaFb1Lesson,
   "graficas-seguridad-vial-fq4": graficasSeguridadVialFq4Lesson,
   "graficas-velocidad-tiempo-fq3": graficasVelocidadTiempoFq3Lesson,
   "graficos-estadisticos-1bach": graficosEstadisticos1bachLesson,
@@ -2645,10 +2652,12 @@ export const interactiveLessons = {
   "motor-trifasico-conexion-balance": motorTrifasicoConexionBalanceLesson,
   "motores-combustion-externa": motoresCombustionExternaLesson,
   "motores-contactores": motoresContactoresLesson,
+  "movimiento-circular-fb1": movimientoCircularFb1Lesson,
   "movimiento-circular-uniforme-fq4": movimientoCircularUniformeFq4Lesson,
   "movimiento-ondulatorio-fq4": movimientoOndulatorioFq4Lesson,
   "movimiento-rectilineo-uniforme-fq2": movimientoRectilineoUniformeFq2Lesson,
   "mru-mrua-fq4": mruMruaFq4Lesson,
+  "mru-mrua-graficas-fb1": mruMruaGraficasFb1Lesson,
   "mrua-fq3": mruaFq3Lesson,
   "muestreo-estimacion-ccss1": muestreoEstimacionCcss1Lesson,
   "multiplicacion-division-decimales-2eso": multiplicacionDivisionDecimales2esoLesson,
@@ -3188,6 +3197,7 @@ export const interactiveLessons = {
   "sistemas-parametro-1-2bach": sistemasParametro12bachLesson,
   "sistemas-parametro-1-ccss2": sistemasParametro1Ccss2Lesson,
   "sistemas-parametro-2-2bach": sistemasParametro22bachLesson,
+  "sistemas-referencia-vectores-fb1": sistemasReferenciaVectoresFb1Lesson,
   "sistemas-trifasicos-resolucion-ti2": sistemasTrifasicosResolucionTi2Lesson,
   "sobrealimentacion-turbocompresor": sobrealimentacionTurbocompresorLesson,
   "solidificacion-metales": solidificacionMetalesLesson,

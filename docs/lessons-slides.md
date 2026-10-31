@@ -604,6 +604,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-gas-particulas` | Modelo cinético: presión, volumen, temperatura y cantidad de un gas | — |
 | `fb1-pila-daniell` | Pila Daniell: ánodo, cátodo, electrones y puente salino | — |
 | `fb1-cadenas-carbono` | Cadenas del carbono: lineal, ramificada, cíclica y aromática | — |
+| `fb1-parabolico` | Tiro parabólico: MRU horizontal + MRUA vertical | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1572,6 +1573,11 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-grupos-explorador` | Funciones orgánicas (10 familias): nombre IUPAC y fórmula | n (familia), a (carbonos), b (posición), c (carbonos del radical) |
 | `fb1-isomeria-explorador` | Isómeros de 8 fórmulas con tipo de isomería y punto de ebullición | n (fórmula 0–7) |
 | `fb1-reacciones-organicas-explorador` | Tipos de reacciones orgánicas y combustión de alcanos | n (modo 0–1), a (carbonos), b (tipo) |
+| `fb1-vectores-cinematicos-explorador` | r, v y a vectoriales con componentes tangencial y normal y radio de curvatura | a (vₓ), b (v_y), c (a_y) |
+| `fb1-graficas-mrua-explorador` | Gráficas x–t, v–t y a–t de MRU y MRUA | a (x₀), b (v₀), c (a) |
+| `fb1-parabolico-explorador` | Tiro oblicuo: alcance, altura máxima, tiempo de vuelo y velocidad de impacto | a (v₀), b (ángulo), c (h₀) |
+| `fb1-circular-explorador` | MCU/MCUA: ω, v, aₜ, aₙ, vueltas | a (R), b (rpm), c (α) |
+| `fb1-barca-rio-explorador` | Composición de movimientos: barca en un río | a (v barca), b (v río), c (proa) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

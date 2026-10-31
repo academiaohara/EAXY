@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { VectoresCinFb1Explorador, GraficasMruaFb1Explorador, ParabolicoFb1Explorador, CircularFb1Explorador, BarcaRioFb1Explorador } from "@/components/lesson/slide/tools/Fb1CinematicaTools";
 import { RamificadosFb1Explorador, GruposFb1Explorador, IsomeriaFb1Explorador, ReaccionesOrganicasFb1Explorador } from "@/components/lesson/slide/tools/Fb1OrganicaTools";
 import { AjusteFb1Explorador, LimitanteFb1Explorador, PhFb1Explorador, ValoracionFb1Explorador, RedoxPilaFb1Explorador, IndustriaFb1Explorador } from "@/components/lesson/slide/tools/Fb1ReaccionesTools";
 import { LeyesGasesFb1Explorador, GasIdealFb1Explorador, MezclaGasesFb1Explorador, ConcentracionFb1Explorador, DilucionColigativasFb1Explorador } from "@/components/lesson/slide/tools/Fb1GasesTools";
@@ -2452,6 +2453,16 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <IsomeriaFb1Explorador block={block} />;
     case "fb1-reacciones-organicas-explorador":
       return <ReaccionesOrganicasFb1Explorador block={block} />;
+    case "fb1-vectores-cinematicos-explorador":
+      return <VectoresCinFb1Explorador block={block} />;
+    case "fb1-graficas-mrua-explorador":
+      return <GraficasMruaFb1Explorador block={block} />;
+    case "fb1-parabolico-explorador":
+      return <ParabolicoFb1Explorador block={block} />;
+    case "fb1-circular-explorador":
+      return <CircularFb1Explorador block={block} />;
+    case "fb1-barca-rio-explorador":
+      return <BarcaRioFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;
