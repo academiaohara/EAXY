@@ -1,5 +1,9 @@
 # Dibujo Técnico I y II (Bachillerato) — plan
 
+## Mesa de dibujo (instrumentos realistas)
+
+Para trazados con instrumentos las diapositivas usan `visual: { kind: "bench" }` (SVG realista y manipulable) en lugar de animaciones tipo Manim. Ver «Mesa de dibujo» en [`lessons-slides.md`](./lessons-slides.md).
+
 ## Renovación didáctica en curso
 
 El catálogo de 50 lecciones de DT I tiene cobertura de contenido, pero eso no acredita el nuevo estándar de experiencia. Ver [renovación práctica de DT I](./dt1-renovation.md): mapeo estatal LOMLOE frente al libro antiguo, reparto del curso y primera entrega del tema 1 con ocho talleres aplicados. Los temas 2–10 siguen pendientes de renovación. Las tablas históricas de «Hecho» de este documento describen la implementación inicial, no la aceptación con el estándar actual.
