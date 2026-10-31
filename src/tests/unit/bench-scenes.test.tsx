@@ -10,6 +10,7 @@ import { SlideBlockView } from "@/components/lesson/slide/SlideBlocks";
 import type { BenchSceneId } from "@/lib/lesson/types";
 import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
 import { POLIGONOS_GEOM, POLIGONOS_GEOM_2, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
+import { TANGENCIAS_GEOM } from "@/components/lesson/bench/scenes-tangencias";
 
 afterEach(cleanup);
 
@@ -1469,6 +1470,182 @@ describe("mesa de dibujo · cuadriláteros, elementos y estrellas", () => {
     expect(screen.getByTestId("bench-rombo-final")).toBeTruthy();
     siguiente(1);
     expect(screen.getByTestId("bench-rombo-diagonales")).toBeTruthy();
+  });
+});
+
+describe("mesa de dibujo · tangencias y curvas técnicas", () => {
+  const G = TANGENCIAS_GEOM;
+
+  it("tangentes desde un punto: mediatriz de OP, circunferencia de diámetro OP y unión automática", async () => {
+    const t = pantalla("tangentes-practica");
+    const th = (Math.acos(135 / 160) * 180) / Math.PI + 8;
+    t.tocar(G.TO);
+    t.arrastrar(enCirc(G.TO, 160, ang(G.TO, G.TP) + 35));
+    t.fijar();
+    t.arrastrar(enCirc(G.TO, 160, th), enCirc(G.TO, 160, -th));
+    t.tocar(G.TP);
+    t.arrastrar(enCirc(G.TP, 160, 180 + th), enCirc(G.TP, 160, 180 - th));
+    expect(t.fase()).toBe("trazo");
+    const h = Math.sqrt(160 * 160 - 135 * 135);
+    t.tocar([G.TM[0], G.TM[1] - h]);
+    expect(screen.getByTestId("bench-pend")).toBeTruthy();
+    t.tocar([G.TM[0], G.TM[1] - h]);
+    expect(t.aviso()).toContain("ya lo has usado");
+    t.tocar([G.TM[0], G.TM[1] + h]);
+    expect(screen.getByTestId("bench-trazo-aux")).toBeTruthy();
+    expect(t.fase()).toBe("medida");
+    t.tocar(G.TM);
+    t.tocar(G.TO);
+    expect(t.fase()).toBe("centro");
+    t.tocar(G.TM);
+    const fi = Math.abs(ang(G.TM, G.T_ARRIBA) - 180) + 12;
+    t.arrastrar(enCirc(G.TM, 135, 180 + fi), enCirc(G.TM, 135, 180 - fi));
+    expect(t.fase()).toBe("punto");
+    t.tocar(G.T_ABAJO);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(G.T_ARRIBA);
+    t.tocar(G.T_ABAJO);
+    expect(t.fase()).toBe("auto");
+    t.sinSuperar();
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("circunferencia tangente en T: recta de los centros, arco de radio r, centro C y arco por T", () => {
+    const t = pantalla("circ-tangente-practica");
+    t.tocar(G.CT_O);
+    t.tocar(G.CT_T);
+    expect(t.fase()).toBe("medida");
+    t.tocar(G.CT_SEG[0]);
+    t.tocar(G.CT_SEG[1]);
+    t.tocar(G.CT_T);
+    t.arrastrar(enCirc(G.CT_T, 45, 40 - 25), enCirc(G.CT_T, 45, 40 + 10));
+    expect(t.fase()).toBe("punto");
+    t.tocar(G.CT_C);
+    t.tocar(G.CT_C);
+    const b = ang(G.CT_C, G.CT_T);
+    t.sinSuperar();
+    t.arrastrar(enCirc(G.CT_C, 45, b - 45), enCirc(G.CT_C, 45, b + 45));
+    t.superada();
+  });
+
+  it("enlace de 90°: T₁ y T₂ a distancia r de V, centro C y arco de enlace (resultado en trazo fuerte)", () => {
+    const t = pantalla("enlace-practica");
+    t.tocar(G.E_SEG[0]);
+    t.tocar(G.E_SEG[1]);
+    t.tocar(G.EV0);
+    t.arrastrar(enCirc(G.EV0, 70, 5), enCirc(G.EV0, 70, 85));
+    expect(t.fase()).toBe("punto");
+    t.tocar(G.E_T2);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(G.E_T1);
+    t.tocar(G.E_T2);
+    t.tocar(G.E_T1);
+    t.arrastrar(enCirc(G.E_T1, 70, 90 - 25), enCirc(G.E_T1, 70, 90 + 10));
+    t.tocar(G.E_T2);
+    t.arrastrar(enCirc(G.E_T2, 70, -25), enCirc(G.E_T2, 70, 10));
+    expect(t.fase()).toBe("punto");
+    t.tocar(G.E_C);
+    t.tocar(G.E_C);
+    t.sinSuperar();
+    t.arrastrar(enCirc(G.E_C, 70, 225 - 45), enCirc(G.E_C, 70, 225 + 45));
+    t.superada();
+    const fuertes = Array.from(screen.getByTestId("bench-arcos-practica").querySelectorAll("path")).filter((p) => p.getAttribute("stroke") !== "#8f98a3");
+    expect(fuertes).toHaveLength(1);
+  });
+
+  it("óvalo: cuatro centros, cuatro rectas de enlace, dos arcos grandes y dos pequeños", () => {
+    const t = pantalla("ovalo-practica");
+    t.tocar(G.O1);
+    t.tocar(G.O2);
+    t.tocar(G.O1);
+    t.arrastrar(enCirc(G.O1, 60, 72), enCirc(G.O1, 60, -72));
+    t.tocar(G.O2);
+    t.arrastrar(enCirc(G.O2, 60, 180 + 72), enCirc(G.O2, 60, 180 - 72));
+    expect(t.fase()).toBe("punto");
+    t.tocar(G.O3);
+    t.tocar(G.O4);
+    expect(t.fase()).toBe("trazo");
+    for (const [a, b] of [[G.O3, G.O1], [G.O3, G.O2], [G.O4, G.O1], [G.O4, G.O2]]) {
+      t.tocar(a);
+      t.tocar(b);
+    }
+    expect(screen.getAllByTestId("bench-trazo-aux")).toHaveLength(4);
+    expect(t.fase()).toBe("medida");
+    t.tocar(G.O_STRIP[0]);
+    t.tocar(G.O_STRIP[1]);
+    t.tocar(G.O3);
+    t.arrastrar(enCirc(G.O3, 120, -120), enCirc(G.O3, 120, -60));
+    t.tocar(G.O4);
+    t.arrastrar(enCirc(G.O4, 120, 60), enCirc(G.O4, 120, 120));
+    expect(t.fase()).toBe("medida");
+    t.tocar(G.O1);
+    t.tocar(G.O2);
+    t.tocar(G.O1);
+    t.arrastrar(enCirc(G.O1, 60, 125), enCirc(G.O1, 60, 235));
+    t.sinSuperar();
+    t.tocar(G.O2);
+    t.arrastrar(enCirc(G.O2, 60, -55), enCirc(G.O2, 60, 55));
+    t.superada();
+  });
+
+  it("espiral de dos centros: cuatro semicircunferencias alternando A y B", () => {
+    const t = pantalla("espiral-practica");
+    for (let k = 1; k <= 4; k += 1) {
+      const c = G.SA;
+      const centro: Pt = k % 2 === 1 ? G.SA : G.SB;
+      const inicio = G.SE[k - 1];
+      void c;
+      t.tocar(centro);
+      t.tocar(inicio);
+      expect(t.fase()).toBe("centro");
+      t.tocar(centro);
+      const r = k * G.SD;
+      if (k % 2 === 1) t.arrastrar(enCirc(centro, r, 0), enCirc(centro, r, 90), enCirc(centro, r, 180));
+      else t.arrastrar(enCirc(centro, r, 180), enCirc(centro, r, 270), enCirc(centro, r, 360));
+      if (k < 4) t.sinSuperar();
+    }
+    t.superada();
+  });
+
+  it("posiciones relativas: el punto de tangencia solo aparece cuando d = R + r o d = R − r", () => {
+    const { siguiente } = montar("circunferencias-posiciones");
+    expect(screen.queryByTestId("bench-tangencia")).toBeNull();
+    siguiente(1);
+    expect(screen.getByTestId("bench-tangencia")).toBeTruthy();
+    siguiente(1);
+    expect(screen.queryByTestId("bench-tangencia")).toBeNull();
+    siguiente(1);
+    expect(screen.getByTestId("bench-tangencia")).toBeTruthy();
+  });
+
+  it("explicaciones: tangentes (circunferencia de diámetro OP), enlace, óvalo y evolvente muestran lo que dicen", () => {
+    const a = montar("tangentes-compas");
+    a.siguiente(2);
+    expect(screen.getByTestId("bench-circ-diametro")).toBeTruthy();
+    a.siguiente(2);
+    expect(screen.getByTestId("bench-tangentes-rectas")).toBeTruthy();
+    cleanup();
+    const b = montar("enlace-compas");
+    b.siguiente(1);
+    expect(screen.getByTestId("bench-enlace-paralelas")).toBeTruthy();
+    b.siguiente(3);
+    expect(screen.getByTestId("bench-enlace-final")).toBeTruthy();
+    cleanup();
+    const c = montar("ovalo-compas");
+    expect(screen.queryByTestId("bench-ovalo-pequenos")).toBeNull();
+    c.siguiente(4);
+    expect(screen.getByTestId("bench-ovalo-pequenos")).toBeTruthy();
+    cleanup();
+    const d = montar("evolvente-hilo");
+    expect(screen.queryByTestId("bench-evolvente-curva")).toBeNull();
+    d.siguiente(3);
+    expect(screen.getByTestId("bench-evolvente-normal")).toBeTruthy();
+    cleanup();
+    const e = montar("espiral-compas");
+    e.siguiente(2);
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 3 de 5");
+    expect(screen.getByTestId("bench-espiral").querySelectorAll("path").length).toBeGreaterThanOrEqual(2);
   });
 });
 
