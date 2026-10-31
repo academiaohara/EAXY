@@ -1297,10 +1297,10 @@ export type SlideBlock =
   | {
       kind: "bench";
       scene: BenchSceneId;
-      /** `a`: inclinación inicial (°) y `b`: distancia (mm) según la escena. */
+      /** `a`: inclinación de la recta (°) y `b`: distancia de P (mm) en las paralelas. */
       params?: { a?: number; b?: number };
-      /** Una línea que dice qué hacer. */
-      hint?: string;
+      /** Un texto por paso de la escena (la información va a la derecha del dibujo). */
+      notes?: { title: string; text: string; fact?: string }[];
     }
   /** Herramienta interactiva: el alumno cambia valores y ve el resultado al instante. */
   | {
@@ -1315,7 +1315,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "paralelas-escuadra-cartabon";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =

@@ -8,26 +8,29 @@ export const instrumentosParalelasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[11],
   stage: { theme: "board" },
   steps: [
-    slide("mesa", "Los instrumentos del delineante", [
-      { kind: "text", text: "Un plano se lee igual en cualquier país porque todos trazan con los mismos instrumentos y la misma precisión. Seis cubren casi todo lo que harás en este curso." },
-      { kind: "text", text: "Toca cada uno en la mesa: qué hace y qué dato conviene recordar." },
-    ], bench("instrumentos-catalogo"), "visual-top"),
+    slide("mesa", "Los instrumentos del delineante", [], bench("instrumentos-catalogo", [
+      { title: "Regla graduada", text: "Sirve para **medir** longitudes y trazar rectas. En dibujo técnico se mide en **milímetros**: cada rayita es 1 mm.", fact: "30 cm · divisiones de 1 mm" },
+      { title: "Escuadra", text: "Triángulo rectángulo **isósceles**. Traza perpendiculares y paralelas, y ángulos de 45° y 90°.", fact: "Ángulos 90° · 45° · 45°" },
+      { title: "Cartabón", text: "Triángulo rectángulo **escaleno**, mitad de un triángulo equilátero. Traza ángulos de 30° y 60°.", fact: "Ángulos 90° · 60° · 30°" },
+      { title: "Transportador", text: "Mide y dibuja **cualquier ángulo** de 0° a 180° cuando no sale con escuadra y cartabón.", fact: "Precisión de 1°" },
+      { title: "Compás", text: "Traza **circunferencias y arcos** y traslada distancias sin medirlas. Una pata lleva la **punta seca** (se clava en el centro) y la otra, la **mina**.", fact: "Punta seca + mina" },
+      { title: "Lápiz o portaminas", text: "Todo lo que trazas es tan bueno como la línea que dejas: **fina, uniforme y sin manchar**. Lo veremos con las minas.", fact: "H = dura · B = blanda" },
+    ]), "stack"),
 
-    slide("triangulos", "Escuadra y cartabón: cinco ángulos con dos piezas", [
-      { kind: "compare",
-        left: { title: "Escuadra", text: "Triángulo rectángulo **isósceles**.", math: ["90^\\circ,\\ 45^\\circ,\\ 45^\\circ"], tone: "info" },
-        right: { title: "Cartabón", text: "Triángulo rectángulo **escaleno**, mitad de un equilátero.", math: ["90^\\circ,\\ 60^\\circ,\\ 30^\\circ"], tone: "warn" } },
-      { kind: "rule", title: "Se fabrican a juego", text: "El cateto largo del cartabón mide lo mismo que la hipotenusa de la escuadra. Por eso pueden apoyarse un lado contra el otro y deslizarse con holgura." },
-      { kind: "text", text: "Combinadas dan todos los múltiplos de 15° hasta 180°: 15°, 30°, 45°, 60°, 75°, 90°, 105°… Lo verás en la próxima lección." },
-    ], undefined, "stack"),
+    slide("angulos", "Todos los múltiplos de 15° con dos piezas", [], bench("escuadra-cartabon-angulos", [
+      { title: "La escuadra: 90°, 45° y 45°", text: "Es la mitad de un **cuadrado** cortado por su diagonal, por eso tiene dos ángulos iguales.", fact: "Isósceles: dos lados iguales" },
+      { title: "El cartabón: 90°, 60° y 30°", text: "Es la mitad de un **triángulo equilátero** cortado por una altura, por eso sus lados son todos distintos.", fact: "Escaleno: tres lados distintos" },
+      { title: "Se fabrican a juego", text: "El cateto largo del cartabón mide **lo mismo** que la hipotenusa de la escuadra. Así se apoyan un lado contra el otro y se deslizan con holgura." },
+      { title: "Restando: 15°", text: "Con el mismo vértice y la misma base, la diferencia entre el rayo de la escuadra y el del cartabón es $45^\\circ - 30^\\circ = 15^\\circ$.", fact: "45° − 30° = 15°" },
+      { title: "Sumando: 75°", text: "Se traza un rayo a 45° con la escuadra y, apoyando el cartabón en él, se suman otros 30°: $45^\\circ + 30^\\circ = 75^\\circ$.", fact: "45° + 30° = 75°" },
+      { title: "Sumando: 105°", text: "Con 60° del cartabón más 45° de la escuadra se llega a $105^\\circ$. Así salen todos los **múltiplos de 15°**: 15°, 30°, 45°, 60°, 75°, 90°, 105°…", fact: "60° + 45° = 105°" },
+    ]), "stack"),
 
-    slide("lapiz", "El lápiz también es un instrumento", [
-      { kind: "text", text: "La mina se clasifica por dureza: **H** (hard, dura) deja trazo fino y claro; **B** (black, blanda) deja trazo grueso y oscuro; **HB** está en medio." },
-      { kind: "compare",
-        left: { title: "Construcción", text: "Minas duras (**H** o **2H**): líneas finas y suaves que se pueden borrar o dejar sin estorbar.", tone: "info" },
-        right: { title: "Trazado final", text: "Mina media o blanda (**HB**): contorno visible, oscuro y uniforme.", tone: "key" } },
-      { kind: "warning", text: "Una mina blanda sobre un trazado de construcción mancha el papel y la línea no se puede corregir. Una dura apretada en exceso marca el papel." },
-    ], undefined, "stack"),
+    slide("lapiz", "El lápiz también es un instrumento", [], bench("lapices-dureza", [
+      { title: "Dureza de la mina", text: "**H** (del inglés hard: dura) deja un trazo **fino y claro**; **B** (black: blanda) deja un trazo **grueso y oscuro**; **HB** está en medio.", fact: "2H · H · HB · B · 2B" },
+      { title: "Cada fase, su mina", text: "Las **construcciones** se hacen con mina dura (H o 2H): líneas finas que se pueden borrar. El **trazado final** se hace con mina media o blanda (HB): contorno oscuro y uniforme." },
+      { title: "Dos errores típicos", text: "Una mina **blanda** sobre una construcción mancha el papel y la línea no se corrige bien. Una mina **dura** apretada en exceso marca un surco en el papel.", fact: "Trazo seguro: ni mancha ni surco" },
+    ]), "stack"),
 
     pick("check-lapiz", "Qué mina uso", "Vas a trazar las rectas auxiliares con las que localizarás un punto, y después el contorno definitivo de la figura. ¿Qué mina eliges para cada fase?",
       "Dura (2H) para lo auxiliar y media o blanda (HB) para el contorno",
@@ -35,15 +38,11 @@ export const instrumentosParalelasDt1Lesson: InteractiveLesson = {
       "Las construcciones se hacen finas y claras; el trazado final, más oscuro, para que destaque.",
     ),
 
-    slide("paralela", "Paralela por un punto con escuadra y cartabón", [
-      { kind: "steps", title: "Dada la recta r y el punto P", items: [
-        "Apoya un lado de la **escuadra** sobre r.",
-        "Pega el **cartabón** contra otro lado de la escuadra y **sujétalo**: no debe moverse.",
-        "**Desliza la escuadra** a lo largo del cartabón hasta que el lado que estaba sobre r pase por P.",
-        "Traza por ese lado: es la paralela.",
-      ] },
-      { kind: "text", text: "Hazlo con las manos: arrastra la escuadra sobre el cartabón o usa el deslizador." },
-    ], bench("paralelas-escuadra-cartabon", { a: 12, b: 70 }), "visual-top"),
+    slide("paralela", "Paralela por un punto con escuadra y cartabón", [], bench("paralelas-escuadra-cartabon", [
+      { title: "Apoya la escuadra sobre r", text: "Dada la recta $r$ y el punto $P$, coloca un lado de la **escuadra** sobre $r$." },
+      { title: "Pega el cartabón", text: "Apoya el **cartabón** contra la hipotenusa de la escuadra y **sujétalo**: no debe moverse en todo el proceso." },
+      { title: "Desliza la escuadra", text: "**Arrastra la escuadra** a lo largo del cartabón hasta que el lado que estaba sobre $r$ pase por $P$. Después traza." },
+    ], { a: 12, b: 70 }), "stack"),
 
     pick("check-paralela", "Por qué sale paralela", "¿Por qué la recta trazada es paralela a r?",
       "Porque la escuadra solo se traslada: no gira, así que su lado conserva la dirección de r",
@@ -63,9 +62,10 @@ export const instrumentosParalelasDt1Lesson: InteractiveLesson = {
       "Los ángulos que sí salen de escuadra y cartabón (múltiplos de 15°) no necesitan transportador; el resto, sí.",
     ),
 
-    slide("transferencia", "Otra recta, otro punto", [
-      { kind: "text", text: "Ahora r está inclinada hacia el otro lado y P queda más lejos. El procedimiento es el mismo; comprueba que la escuadra sigue sin girar." },
-      { kind: "rule", title: "Qué retener", text: "Con una escuadra y un cartabón se trazan paralelas a cualquier recta: uno se sujeta, el otro se desliza." },
-    ], bench("paralelas-escuadra-cartabon", { a: -8, b: 95 }, "Cambia la inclinación de r y vuelve a trazar: la construcción no cambia."), "visual-top"),
+    slide("transferencia", "Otra recta, otro punto", [], bench("paralelas-escuadra-cartabon", [
+      { title: "Misma recta, otro punto", text: "Ahora $r$ está inclinada hacia el otro lado y $P$ queda más lejos. Apoya la escuadra sobre $r$ como antes." },
+      { title: "El cartabón no cambia de papel", text: "Se pega igual contra la hipotenusa y se sujeta. Lo único distinto es **cuánto** tendrás que deslizar." },
+      { title: "Desliza y traza", text: "Arrastra la escuadra hasta $P$ y comprueba que sigue sin girar.", fact: "Una escuadra y un cartabón trazan paralelas a cualquier recta" },
+    ], { a: -8, b: 95 }), "stack"),
   ],
 };

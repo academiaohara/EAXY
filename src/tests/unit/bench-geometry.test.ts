@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   PARALELA_S_MAX,
+  apoyarTriangulo,
+  applyPose,
   cartabonPose,
   distRecta,
   distanciaFiloAP,
@@ -13,7 +15,7 @@ import {
   CARTABON_LARGO,
   type Pt,
 } from "@/components/lesson/bench/geometry";
-import { compasApertura, compasRadio } from "@/components/lesson/bench/instruments";
+import { CARTABON_PTS, ESCUADRA_PTS, compasApertura, compasRadio } from "@/components/lesson/bench/instruments";
 
 const ANGLES = [-25, -10, 0, 12, 35];
 const DISTS = [40, 70, 100];
@@ -94,5 +96,30 @@ describe("mesa de dibujo · utilidades", () => {
     }
     const lado = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
     expect(lado(i[0], i[1]) / lado(t[0], t[1])).toBeCloseTo(lado(i[0], i[2]) / lado(t[0], t[2]), 9);
+  });
+});
+
+describe("mesa de dibujo · apoyar un triángulo sobre una arista", () => {
+  const casos: [string, [Pt, Pt, Pt], 0 | 1 | 2, 0 | 1 | 2][] = [
+    ["escuadra por la hipotenusa", ESCUADRA_PTS, 1, 2],
+    ["escuadra por un cateto", ESCUADRA_PTS, 0, 1],
+    ["cartabón por el cateto largo", CARTABON_PTS, 0, 1],
+    ["cartabón por la hipotenusa", CARTABON_PTS, 1, 2],
+  ];
+  it.each(casos)("%s: el vértice va a O, la arista queda horizontal a su derecha y el cuerpo, encima", (_n, pts, vi, wi) => {
+    const o: Pt = [170, 300];
+    for (const arriba of [true, false]) {
+      const pose = apoyarTriangulo(pts, vi, wi, o, arriba);
+      const v = applyPose(pose, pts[vi]);
+      const w = applyPose(pose, pts[wi]);
+      const k = ([0, 1, 2] as const).find((i) => i !== vi && i !== wi)!;
+      const t = applyPose(pose, pts[k]);
+      expect(v[0]).toBeCloseTo(o[0], 6);
+      expect(v[1]).toBeCloseTo(o[1], 6);
+      expect(w[1]).toBeCloseTo(o[1], 6);
+      expect(w[0]).toBeGreaterThan(o[0]);
+      expect(w[0] - o[0]).toBeCloseTo(Math.hypot(pts[wi][0] - pts[vi][0], pts[wi][1] - pts[vi][1]), 6);
+      expect(t[1] < o[1]).toBe(arriba);
+    }
   });
 });
