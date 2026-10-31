@@ -49,12 +49,12 @@ export const tool = (
   hint?: string,
 ): Visual => ({ kind: "tool", tool: id, ...(params ? { params } : {}), ...(hint ? { hint } : {}) });
 
-/** Mesa de dibujo: instrumentos SVG realistas que el alumno manipula. */
+/** Mesa de dibujo: instrumentos SVG realistas a la izquierda y un texto por paso a la derecha. */
 export const bench = (
   scene: Extract<SlideBlock, { kind: "bench" }>["scene"],
+  notes: NonNullable<Extract<SlideBlock, { kind: "bench" }>["notes"]>,
   params?: Extract<SlideBlock, { kind: "bench" }>["params"],
-  hint?: string,
-): Visual => ({ kind: "bench", scene, ...(params ? { params } : {}), ...(hint ? { hint } : {}) });
+): Visual => ({ kind: "bench", scene, notes, ...(params ? { params } : {}) });
 
 /** Pregunta de elección: la primera opción es la correcta; el resto, errores típicos con su explicación. */
 export function pick(

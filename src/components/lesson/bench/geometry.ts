@@ -29,10 +29,39 @@ export function rot(p: Pt, deg: number): Pt {
   return [p[0] * c - p[1] * s, p[0] * s + p[1] * c];
 }
 
-/** Pose de un instrumento: dónde está su origen local y cuánto está girado. */
-export type Pose = { x: number; y: number; rot: number };
+/**
+ * Pose de un instrumento. Por defecto su origen local va a `(x, y)` girado `rot` grados.
+ * Con `anchor`, es ese punto local (un vértice, por ejemplo) el que va a `(x, y)`;
+ * con `mirror`, el instrumento se vuelve del revés (volteado sobre su eje x local).
+ */
+export type Pose = { x: number; y: number; rot: number; anchor?: Pt; mirror?: boolean };
 
-export const poseTransform = (p: Pose) => `translate(${p.x} ${p.y}) rotate(${p.rot})`;
+export const poseTransform = (p: Pose) =>
+  `translate(${p.x} ${p.y}) rotate(${p.rot})${p.mirror ? " scale(1 -1)" : ""}${p.anchor ? ` translate(${-p.anchor[0]} ${-p.anchor[1]})` : ""}`;
+
+/** Lleva un punto local de un instrumento a coordenadas de la hoja. */
+export function applyPose(pose: Pose, local: Pt): Pt {
+  let q: Pt = [local[0] - (pose.anchor?.[0] ?? 0), local[1] - (pose.anchor?.[1] ?? 0)];
+  if (pose.mirror) q = [q[0], -q[1]];
+  const r = rot(q, pose.rot);
+  return [pose.x + r[0], pose.y + r[1]];
+}
+
+/**
+ * Apoya un triángulo sobre una arista horizontal: el vértice `vi` va a `o`, el vértice `wi`
+ * queda a su derecha sobre la misma horizontal y el tercer vértice, por encima (`arriba`) o por debajo.
+ */
+export function apoyarTriangulo(pts: [Pt, Pt, Pt], vi: 0 | 1 | 2, wi: 0 | 1 | 2, o: Pt, arriba = true): Pose {
+  const v = pts[vi];
+  const e = sub(pts[wi], v);
+  const alpha = (Math.atan2(e[1], e[0]) * 180) / Math.PI;
+  const k = ([0, 1, 2] as const).find((i) => i !== vi && i !== wi)!;
+  const candidatos: Pose[] = [
+    { x: o[0], y: o[1], rot: -alpha, anchor: v },
+    { x: o[0], y: o[1], rot: alpha, anchor: v, mirror: true },
+  ];
+  return candidatos.find((c) => (applyPose(c, pts[k])[1] < o[1]) === arriba) ?? candidatos[0];
+}
 
 /** Triángulo achicado hacia su incentro: sirve para el vaciado interior de escuadra y cartabón. */
 export function insetTriangle(v: [Pt, Pt, Pt], width: number): [Pt, Pt, Pt] {
@@ -129,3 +158,54 @@ export function distRecta(p: Pt, a: Pt, b: Pt) {
   const l = Math.hypot(d[0], d[1]);
   return Math.abs(d[0] * (p[1] - a[1]) - d[1] * (p[0] - a[0])) / l;
 }
+
+/* ───────────── Ángulos y circunferencias (ángulos en grados, antihorarios en pantalla, 0° = derecha) ───────────── */
+
+/** Ángulo de la semirrecta que va de `v` a `p`, en (−180, 180]. */
+export const angDe = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
+
+/** Punto de la circunferencia de centro `c` y radio `r` en la dirección `ang`. */
+export const enCirculo = (c: Pt, r: number, ang: number): Pt => [c[0] + r * Math.cos(ang * RAD), c[1] - r * Math.sin(ang * RAD)];
+
+/** Puntos de corte de dos circunferencias (primero el de la izquierda del sentido a→b), o `null` si no se cortan. */
+export function interseccionCirculos(a: Pt, ra: number, b: Pt, rb: number): [Pt, Pt] | null {
+  const d = dist(a, b);
+  if (d === 0 || d > ra + rb || d < Math.abs(ra - rb)) return null;
+  const x = (d * d + ra * ra - rb * rb) / (2 * d);
+  const h = Math.sqrt(Math.max(0, ra * ra - x * x));
+  const ux: Pt = [(b[0] - a[0]) / d, (b[1] - a[1]) / d];
+  const base: Pt = [a[0] + ux[0] * x, a[1] + ux[1] * x];
+  return [
+    [base[0] + ux[1] * h, base[1] - ux[0] * h],
+    [base[0] - ux[1] * h, base[1] + ux[0] * h],
+  ];
+}
+
+export const puntoMedio = (a: Pt, b: Pt): Pt => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+
+/** Ángulo en grados entre dos direcciones (0…180). */
+export function entreDirecciones(a1: number, a2: number) {
+  let d = Math.abs(a1 - a2) % 360;
+  if (d > 180) d = 360 - d;
+  return d;
+}
+
+/* ───────────── Perpendicular con escuadra y cartabón ─────────────
+ * Se trabaja en el sistema de la recta r: eje x a lo largo de r, y hacia abajo (como en SVG),
+ * origen en el pie de la guía. El cartabón queda bajo r con su cateto largo sobre r y la escuadra, encima,
+ * con un cateto apoyado en el cartabón: al deslizarla por r, su otro cateto es siempre perpendicular a r.
+ */
+export const PERP_PX = 200;
+export const PERP_EX0 = 40;
+export const PERP_S_MAX = 260;
+
+export type PerpSetup = { p: Pt; dP: number; sStar: number };
+
+export function perpSetup(dP: number): PerpSetup {
+  return { p: [PERP_PX, -dP], dP, sStar: PERP_PX - PERP_EX0 };
+}
+
+/** Posición x (en el sistema de r) del vértice recto de la escuadra tras deslizar `s` mm. */
+export const perpEx = (s: number) => PERP_EX0 + s;
+
+export const perpPasaPorP = (setup: PerpSetup, s: number, tol = 1.2) => Math.abs(perpEx(s) - setup.p[0]) <= tol;

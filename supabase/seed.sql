@@ -1859,6 +1859,8 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000018504', 'a2000000-0000-4000-8000-000000000185', '4. Optimización de procesos de fabricación', 'Lean, residuos y OEE.', 4, null),
   ('a3000000-0000-4000-8000-000000018505', 'a2000000-0000-4000-8000-000000000185', '5. Economía circular y elección de alternativas tecnológicas', 'Circularidad y matriz de decisión.', 5, null),
   ('a3000000-0000-4000-8000-000000037301', 'a2000000-0000-4000-8000-000000000373', '1. Instrumentos de dibujo y paralelas con escuadra y cartabón', 'Regla, escuadra, cartabón, transportador, compás y lápiz; trazado de paralelas.', 1, null),
+  ('a3000000-0000-4000-8000-000000037302', 'a2000000-0000-4000-8000-000000000373', '2. Perpendiculares y ángulos con transportador', 'Perpendicular con escuadra y cartabón; medir y dibujar ángulos con el transportador.', 2, null),
+  ('a3000000-0000-4000-8000-000000037303', 'a2000000-0000-4000-8000-000000000373', '3. Mediatriz y bisectriz con compás', 'Construcción de la mediatriz de un segmento y de la bisectriz de un ángulo con compás.', 3, null),
   ('a3000000-0000-4000-8000-000000020101', 'a2000000-0000-4000-8000-000000000201', '1. Historia del dibujo técnico y campos de acción', 'Hitos históricos y campos de aplicación.', 1, null),
   ('a3000000-0000-4000-8000-000000020102', 'a2000000-0000-4000-8000-000000000201', '2. Orígenes de la geometría: Thales, Pitágoras, Euclides e Hipatia', 'Aportaciones griegas y Pitágoras.', 2, null),
   ('a3000000-0000-4000-8000-000000020103', 'a2000000-0000-4000-8000-000000000201', '3. Lugares geométricos fundamentales', 'Circunferencia, mediatriz, bisectriz y paralelas.', 3, null),

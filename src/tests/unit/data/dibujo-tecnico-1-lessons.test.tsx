@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { BENCH_STEPS } from "@/components/lesson/bench/scenes";
 import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { SLIDE_ANIM_REGISTRY, buildSlideAnim } from "@/components/lesson/anim/registry";
@@ -20,7 +21,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 const TEMAS: [slug: string, lecciones: number][] = [
-  ["instrumentos-trazados-fundamentales", 1],
+  ["instrumentos-trazados-fundamentales", 3],
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],
@@ -107,6 +108,7 @@ describe("curso Dibujo Técnico I", () => {
             expect(() => render(<SlideTool block={v} />), `${data.slug}/${step.id}`).not.toThrow();
           }
           if (v.kind === "bench") {
+            expect(v.notes?.length, `${data.slug}/${step.id}: un texto por paso`).toBe(BENCH_STEPS[v.scene]);
             expect(() => render(<SlideBench block={v} />), `${data.slug}/${step.id}`).not.toThrow();
           }
         }

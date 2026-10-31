@@ -1,11 +1,14 @@
 "use client";
 
-import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
-import { MANIM } from "@/components/lesson/anim/palette";
-import { Frame, Slider } from "@/components/lesson/slide/tool-ui";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { MathRenderer } from "@/components/lesson/MathRenderer";
 import {
+  CARTABON_LARGO,
+  ESCUADRA_L,
   PARALELA_S_MAX,
   add,
+  apoyarTriangulo,
   cartabonPose,
   clamp,
   distanciaFiloAP,
@@ -18,128 +21,394 @@ import {
   sub,
   type Pt,
 } from "./geometry";
-import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Lapiz, Regla, Transportador, compasRadio } from "./instruments";
+import { BenchDefs, CARTABON_PTS, Cartabon, Compas, Desk, ESCUADRA_PTS, Escuadra, Lapiz, Regla, Transportador } from "./instruments";
+
+export type BenchNote = { title: string; text: string; fact?: string };
 
 export type BenchBlock = {
-  scene: "instrumentos-catalogo" | "paralelas-escuadra-cartabon";
+  scene: BenchSceneName;
   params?: { a?: number; b?: number };
-  hint?: string;
+  /** Un texto por paso: título, explicación y, opcionalmente, un dato destacado. */
+  notes?: BenchNote[];
 };
 
-const f1 = (v: number) => v.toFixed(1).replace(".", ",");
+export type BenchSceneName =
+  | "instrumentos-catalogo"
+  | "escuadra-cartabon-angulos"
+  | "lapices-dureza"
+  | "paralelas-escuadra-cartabon"
+  | "perpendicular-escuadra-cartabon"
+  | "transportador-medir"
+  | "mediatriz-compas"
+  | "bisectriz-compas";
 
-/* ───────────── 1. Catálogo de instrumentos ───────────── */
-
-type Item = {
-  id: string;
-  nombre: string;
-  para: string;
-  dato: string;
+/** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
+export const BENCH_STEPS: Record<BenchSceneName, number> = {
+  "instrumentos-catalogo": 6,
+  "escuadra-cartabon-angulos": 6,
+  "lapices-dureza": 3,
+  "paralelas-escuadra-cartabon": 3,
+  "perpendicular-escuadra-cartabon": 3,
+  "transportador-medir": 3,
+  "mediatriz-compas": 4,
+  "bisectriz-compas": 4,
 };
 
-const ITEMS: Item[] = [
-  { id: "regla", nombre: "Regla graduada", para: "Medir longitudes y trazar rectas. La graduación en milímetros es la unidad del dibujo técnico.", dato: "30 cm · divisiones de 1 mm" },
-  { id: "escuadra", nombre: "Escuadra", para: "Trazar perpendiculares y paralelas, y ángulos de 45° y 90°.", dato: "Ángulos 90° · 45° · 45°" },
-  { id: "cartabon", nombre: "Cartabón", para: "Ángulos de 30°, 60° y 90°. Junto con la escuadra, da todos los múltiplos de 15°.", dato: "Ángulos 90° · 60° · 30°" },
-  { id: "transportador", nombre: "Transportador", para: "Medir y llevar ángulos cualesquiera, de 0° a 180°.", dato: "Precisión de 1°" },
-  { id: "compas", nombre: "Compás", para: "Trazar circunferencias y arcos, y trasladar distancias sin medirlas.", dato: "Punta seca + mina" },
-  { id: "lapiz", nombre: "Lápiz o portaminas", para: "Trazar con línea fina y uniforme. Para dibujo técnico: minas duras (H, 2H) para construcciones y blandas (HB) para el trazado final.", dato: "H = duro · B = blando" },
-];
+export const INK = "#2a2f36";
+export const SANS = "ui-sans-serif, system-ui";
+export const f1 = (v: number) => v.toFixed(1).replace(".", ",");
 
-function Hot({ id, sel, onSel, children, label }: { id: string; sel: string; onSel: (id: string) => void; children: React.ReactNode; label: string }) {
-  const on = sel === id;
+/* ───────────── Contenedor: instrumentos a la izquierda, información a la derecha ───────────── */
+
+export function BenchShell({
+  scene,
+  notes,
+  step,
+  setStep,
+  extra,
+  label,
+  children,
+}: {
+  scene: BenchSceneName;
+  notes?: BenchNote[];
+  step: number;
+  setStep: (n: number) => void;
+  extra?: ReactNode;
+  label: string;
+  children: ReactNode;
+}) {
+  const total = BENCH_STEPS[scene];
+  const note = notes?.[step];
+  const btn =
+    "inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
   return (
-    <g
-      role="button"
-      tabIndex={0}
-      aria-label={label}
-      aria-pressed={on}
-      data-testid={`bench-item-${id}`}
-      onClick={() => onSel(id)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSel(id);
-        }
-      }}
-      style={{ cursor: "pointer", outline: "none", filter: on ? "drop-shadow(0 0 5px #ffd866) drop-shadow(0 0 2px #ffd866)" : undefined }}
-    >
-      {children}
+    <section className="grid items-center gap-5 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:gap-8" data-testid="bench" data-scene={scene}>
+      <div className="flex min-w-0 flex-col gap-3" aria-label={label}>
+        {children}
+      </div>
+      <div className="flex min-w-0 flex-col gap-3">
+        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
+          Paso {step + 1} de {total}
+        </p>
+        <div className="min-h-[7.5rem]" aria-live="polite">
+          <h3 className="text-2xl font-bold leading-tight text-[color:var(--stage-ink,#fff)]" data-testid="bench-titulo">
+            {note?.title ?? ""}
+          </h3>
+          <MathRenderer text={note?.text ?? ""} emphasis="mark-alternate" className="mt-2 block text-[1.05rem] leading-relaxed text-[color:var(--stage-ink,#fff)]" />
+          {note?.fact ? (
+            <p className="mt-2 text-sm font-semibold text-[#ffd866]" data-testid="bench-dato">
+              {note.fact}
+            </p>
+          ) : null}
+        </div>
+        {extra}
+        <div className="flex items-center gap-3 pt-1">
+          <button type="button" className={btn} disabled={step === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
+            <ChevronLeftIcon className="size-4" aria-hidden />
+            Anterior
+          </button>
+          <div className="flex items-center gap-1.5" aria-hidden>
+            {Array.from({ length: total }, (_, i) => (
+              <span key={i} className={`size-2 rounded-full ${i === step ? "bg-[#58c4dd]" : i < step ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
+            ))}
+          </div>
+          <button type="button" className={btn} disabled={step === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
+            Siguiente
+            <ChevronRightIcon className="size-4" aria-hidden />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export const SVG_CLASS = "block h-auto w-full rounded-xl";
+
+/* ───────────── Ángulos: arcos de anotación ───────────── */
+
+const rad = (d: number) => (d * Math.PI) / 180;
+
+/** Arco de `a1` a `a2` (grados, eje Y hacia abajo) alrededor de `v`, con la cifra al lado. */
+export function Arco({ v, a1, a2, r, color, text, textSize = 13, dr = 13, fuera = false }: { v: Pt; a1: number; a2: number; r: number; color: string; text?: string; textSize?: number; dr?: number; fuera?: boolean }) {
+  let d = a2 - a1;
+  while (d > 180) d -= 360;
+  while (d <= -180) d += 360;
+  const p = (a: number, rr: number): Pt => [v[0] + rr * Math.cos(rad(a)), v[1] + rr * Math.sin(rad(a))];
+  const s = p(a1, r);
+  const e = p(a1 + d, r);
+  const mid = fuera ? p(a1 + d / 2 + 180, dr) : p(a1 + d / 2, r + dr);
+  return (
+    <g>
+      <path d={`M${s[0]} ${s[1]} A${r} ${r} 0 0 ${d > 0 ? 1 : 0} ${e[0]} ${e[1]}`} fill="none" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
+      {text ? (
+        <text x={mid[0]} y={mid[1] + textSize * 0.35} fontSize={textSize} fontWeight="800" fill={color} textAnchor="middle" fontFamily={SANS}>
+          {text}
+        </text>
+      ) : null}
     </g>
   );
 }
 
+/* ───────────── 1. Catálogo de instrumentos ───────────── */
+
+const ORDEN_CATALOGO = ["regla", "escuadra", "cartabon", "transportador", "compas", "lapiz"] as const;
+
 export function InstrumentosCatalogo({ block }: { block: BenchBlock }) {
-  const [sel, setSel] = useState("escuadra");
-  const [open, setOpen] = useState(38);
-  const item = ITEMS.find((i) => i.id === sel) ?? ITEMS[0];
-  return (
-    <Frame
-      stacked
-      hint={block.hint ?? "Toca cada instrumento para ver para qué sirve. En el compás, cambia la abertura."}
-      onReset={() => {
-        setSel("escuadra");
-        setOpen(38);
-      }}
-      controls={
-        <>
-          <Slider label="Abertura del compás" value={open} min={10} max={80} step={1} unit="°" color={MANIM.blue} onChange={setOpen} />
-          <div className="flex flex-col justify-center text-sm text-[color:var(--stage-muted,#b8c2d0)]">
-            <span>Radio que traza</span>
-            <span className="text-xl font-bold tabular-nums" style={{ color: MANIM.orange }} data-testid="bench-radio">
-              {f1(compasRadio(open) / 10)} cm
-            </span>
-          </div>
-        </>
-      }
+  const [step, setStep] = useState(0);
+  const foco = ORDEN_CATALOGO[step];
+  const wrap = (id: (typeof ORDEN_CATALOGO)[number], el: ReactNode) => (
+    <g
+      data-testid={`bench-item-${id}`}
+      data-foco={foco === id}
+      style={{ opacity: foco === id ? 1 : 0.38, transition: "opacity 300ms", filter: foco === id ? "drop-shadow(0 0 6px #ffd866) drop-shadow(0 0 2px #ffd866)" : undefined }}
     >
-      <svg viewBox="0 0 620 380" className="mx-auto block h-auto w-full max-w-2xl rounded-lg" role="img" aria-label="Mesa con los instrumentos de dibujo técnico" data-testid="bench-catalogo">
+      {el}
+    </g>
+  );
+  return (
+    <BenchShell scene="instrumentos-catalogo" notes={block.notes} step={step} setStep={setStep} label="Mesa con los instrumentos de dibujo técnico">
+      <svg viewBox="0 0 620 380" className={SVG_CLASS} aria-hidden focusable="false" data-testid="bench-catalogo">
         <BenchDefs />
         <Desk w={620} h={380} sheet={{ x: 10, y: 10, w: 600, h: 360 }} />
-        <Hot id="regla" sel={sel} onSel={setSel} label="Regla graduada">
-          <Regla pose={{ x: 28, y: 26, rot: 0 }} />
-        </Hot>
-        <Hot id="transportador" sel={sel} onSel={setSel} label="Transportador">
-          <Transportador pose={{ x: 480, y: 100, rot: 0 }} />
-        </Hot>
-        <Hot id="escuadra" sel={sel} onSel={setSel} label="Escuadra">
-          <Escuadra pose={{ x: 34, y: 100, rot: 0 }} />
-        </Hot>
-        <Hot id="cartabon" sel={sel} onSel={setSel} label="Cartabón">
-          <Cartabon pose={{ x: 235, y: 140, rot: 0 }} />
-        </Hot>
-        <Hot id="compas" sel={sel} onSel={setSel} label="Compás">
-          <Compas pose={{ x: 548, y: 190, rot: 0 }} open={open} />
-        </Hot>
-        <Hot id="lapiz" sel={sel} onSel={setSel} label="Lápiz">
-          <Lapiz pose={{ x: 250, y: 340, rot: 0 }} />
-        </Hot>
+        {wrap("regla", <Regla pose={{ x: 28, y: 26, rot: 0 }} />)}
+        {wrap("transportador", <Transportador pose={{ x: 480, y: 100, rot: 0 }} />)}
+        {wrap("escuadra", <Escuadra pose={{ x: 34, y: 100, rot: 0 }} />)}
+        {wrap("cartabon", <Cartabon pose={{ x: 235, y: 140, rot: 0 }} />)}
+        {wrap("compas", <Compas pose={{ x: 548, y: 190, rot: 0 }} open={38} />)}
+        {wrap("lapiz", <Lapiz pose={{ x: 250, y: 340, rot: 0 }} grade="HB" />)}
       </svg>
-      <div className="rounded-lg border border-[color:var(--stage-border,#3d4f66)] bg-black/20 px-4 py-3" data-testid="bench-item-info">
-        <p className="text-base font-bold text-[color:var(--stage-ink,#fff)]">{item.nombre}</p>
-        <p className="mt-0.5 text-sm leading-snug text-[color:var(--stage-ink,#fff)]">{item.para}</p>
-        <p className="mt-1 text-xs font-semibold" style={{ color: MANIM.yellow }}>
-          {item.dato}
-        </p>
-      </div>
-    </Frame>
+    </BenchShell>
   );
 }
 
-/* ───────────── 2. Paralela con escuadra y cartabón ───────────── */
+/* ───────────── 2. Ángulos con escuadra y cartabón ───────────── */
+
+export const AZUL = "#1f78b4";
+export const AMBAR = "#d97706";
+export const VERDE = "#1f9d55";
+
+/** Dirección (grados, eje Y hacia abajo) del vértice `i` hacia el vértice `j` de un triángulo. */
+const dirTri = (pts: Pt[], i: number, j: number) => (Math.atan2(pts[j][1] - pts[i][1], pts[j][0] - pts[i][0]) * 180) / Math.PI;
+
+/** Un triángulo grande con sus tres ángulos marcados. */
+function TrianguloConAngulos({ pts, k, o, color, vals, children }: { pts: [Pt, Pt, Pt]; k: number; o: Pt; color: string[]; vals: string[]; children: ReactNode }) {
+  const w = pts.map((p) => add(o, mul(p, k)));
+  return (
+    <g>
+      <g transform={`translate(${o[0]} ${o[1]}) scale(${k})`}>{children}</g>
+      {([0, 1, 2] as const).map((i) => {
+        const j = ((i + 1) % 3) as 0 | 1 | 2;
+        const m = ((i + 2) % 3) as 0 | 1 | 2;
+        return <Arco key={i} v={w[i]} a1={dirTri(w, i, j)} a2={dirTri(w, i, m)} r={i === 0 ? 30 : 38} color={color[i]} text={vals[i]} dr={30} textSize={16} fuera />;
+      })}
+    </g>
+  );
+}
+
+function Rayo({ o, deg, len = 270, etiqueta }: { o: Pt; deg: number; len?: number; etiqueta?: string }) {
+  const e: Pt = [o[0] + len * Math.cos(rad(deg)), o[1] - len * Math.sin(rad(deg))];
+  return (
+    <g>
+      <line x1={o[0]} y1={o[1]} x2={e[0]} y2={e[1]} stroke={INK} strokeWidth="1.3" strokeLinecap="round" />
+      {etiqueta ? (
+        <text x={e[0] + 6} y={e[1] - 4} fontSize="12" fontWeight="700" fill={INK} fontFamily={SANS}>
+          {etiqueta}
+        </text>
+      ) : null}
+    </g>
+  );
+}
+
+/** Arco de ángulo con la base en la horizontal (0° = hacia la derecha, sentido antihorario en pantalla). */
+function ArcoBase({ o, de, a, r, color, text, dr }: { o: Pt; de: number; a: number; r: number; color: string; text: string; dr?: number }) {
+  return <Arco v={o} a1={-de} a2={-a} r={r} color={color} text={text} dr={dr ?? 16} textSize={14} />;
+}
+
+export function EscuadraCartabonAngulos({ block }: { block: BenchBlock }) {
+  const [step, setStep] = useState(0);
+  const O: Pt = [120, 322];
+  const sobreEscuadra = apoyarTriangulo(ESCUADRA_PTS, 1, 2, [170, 168]);
+  const sobreCartabon = apoyarTriangulo(CARTABON_PTS, 0, 1, [170, 336]);
+  const xi = 170;
+  const xf = 170 + CARTABON_LARGO;
+  return (
+    <BenchShell scene="escuadra-cartabon-angulos" notes={block.notes} step={step} setStep={setStep} label="Escuadra y cartabón sobre la hoja">
+      <svg viewBox="0 0 620 380" className={SVG_CLASS} aria-hidden focusable="false" data-testid="bench-angulos">
+        <BenchDefs />
+        <Desk w={620} h={380} sheet={{ x: 10, y: 10, w: 600, h: 360 }} />
+        {step === 0 ? (
+          <TrianguloConAngulos pts={ESCUADRA_PTS} k={1.45} o={[190, 62]} color={[VERDE, AZUL, AZUL]} vals={["90°", "45°", "45°"]}>
+            <Escuadra pose={{ x: 0, y: 0, rot: 0 }} />
+          </TrianguloConAngulos>
+        ) : null}
+        {step === 1 ? (
+          <TrianguloConAngulos pts={CARTABON_PTS} k={1.3} o={[150, 105]} color={[VERDE, AMBAR, AMBAR]} vals={["90°", "30°", "60°"]}>
+            <Cartabon pose={{ x: 0, y: 0, rot: 0 }} />
+          </TrianguloConAngulos>
+        ) : null}
+        {step === 2 ? (
+          <g data-testid="bench-igual-longitud">
+            <Escuadra pose={sobreEscuadra} />
+            <Cartabon pose={sobreCartabon} />
+            <line x1={xi} y1={168} x2={xf} y2={168} stroke={AZUL} strokeWidth="3.2" strokeLinecap="round" />
+            <line x1={xi} y1={336} x2={xf} y2={336} stroke={AMBAR} strokeWidth="3.2" strokeLinecap="round" />
+            {[xi, xf].map((x) => (
+              <line key={x} x1={x} y1={34} x2={x} y2={352} stroke={INK} strokeWidth="0.9" strokeDasharray="5 4" />
+            ))}
+            <text x={(xi + xf) / 2} y={188} fontSize="12" fontWeight="700" fill={AZUL} textAnchor="middle" fontFamily={SANS}>
+              hipotenusa de la escuadra
+            </text>
+            <text x={(xi + xf) / 2} y={356} fontSize="12" fontWeight="700" fill={AMBAR} textAnchor="middle" fontFamily={SANS}>
+              cateto largo del cartabón
+            </text>
+          </g>
+        ) : null}
+        {step >= 3 ? (
+          <g data-testid="bench-rayos">
+            <line x1="40" y1={O[1]} x2="590" y2={O[1]} stroke={INK} strokeWidth="1.3" />
+            {step === 3 ? (
+              <>
+                <Rayo o={O} deg={30} etiqueta="30° cartabón" />
+                <Rayo o={O} deg={45} etiqueta="45° escuadra" />
+                <ArcoBase o={O} de={0} a={30} r={64} color={AMBAR} text="30°" />
+                <ArcoBase o={O} de={0} a={45} r={92} color={AZUL} text="45°" />
+                <ArcoBase o={O} de={30} a={45} r={160} color={VERDE} text="15°" dr={18} />
+              </>
+            ) : null}
+            {step === 4 ? (
+              <>
+                <Rayo o={O} deg={45} etiqueta="45°" />
+                <Rayo o={O} deg={75} etiqueta="75°" />
+                <ArcoBase o={O} de={0} a={45} r={70} color={AZUL} text="45°" />
+                <ArcoBase o={O} de={45} a={75} r={110} color={AMBAR} text="+30°" />
+                <ArcoBase o={O} de={0} a={75} r={170} color={VERDE} text="75°" dr={18} />
+              </>
+            ) : null}
+            {step === 5 ? (
+              <>
+                <Rayo o={O} deg={60} etiqueta="60°" />
+                <Rayo o={O} deg={105} etiqueta="105°" />
+                <ArcoBase o={O} de={0} a={60} r={70} color={AMBAR} text="60°" />
+                <ArcoBase o={O} de={60} a={105} r={110} color={AZUL} text="+45°" />
+                <ArcoBase o={O} de={0} a={105} r={170} color={VERDE} text="105°" dr={18} />
+              </>
+            ) : null}
+          </g>
+        ) : null}
+      </svg>
+    </BenchShell>
+  );
+}
+
+/* ───────────── 3. Lápices: dureza de la mina ───────────── */
+
+const GRADOS: { g: string; w: number; op: number }[] = [
+  { g: "2H", w: 0.6, op: 0.45 },
+  { g: "H", w: 0.9, op: 0.6 },
+  { g: "HB", w: 1.4, op: 0.82 },
+  { g: "B", w: 2.1, op: 0.94 },
+  { g: "2B", w: 3, op: 1 },
+];
+
+export function LapicesDureza({ block }: { block: BenchBlock }) {
+  const [step, setStep] = useState(0);
+  return (
+    <BenchShell scene="lapices-dureza" notes={block.notes} step={step} setStep={setStep} label="Lápices de distinta dureza y sus trazos">
+      <svg viewBox="0 0 620 380" className={SVG_CLASS} aria-hidden focusable="false" data-testid="bench-lapices">
+        <BenchDefs />
+        <filter id="bench-smudge" x="-20%" y="-300%" width="140%" height="700%">
+          <feGaussianBlur stdDeviation="3.2" />
+        </filter>
+        <Desk w={620} h={380} sheet={{ x: 10, y: 10, w: 600, h: 360 }} />
+        {step === 0 ? (
+          <g data-testid="bench-escala">
+            {GRADOS.map((p, i) => {
+              const y = 62 + i * 66;
+              return (
+                <g key={p.g}>
+                  <Lapiz pose={{ x: 40, y, rot: 0 }} len={200} grade={p.g} />
+                  <line x1="268" y1={y} x2="540" y2={y} stroke="#15181c" strokeOpacity={p.op} strokeWidth={p.w} strokeLinecap="round" />
+                </g>
+              );
+            })}
+            <text x="576" y="64" fontSize="11" fontWeight="700" fill={AZUL} textAnchor="middle" fontFamily={SANS}>
+              dura
+            </text>
+            <text x="576" y="338" fontSize="11" fontWeight="700" fill={AMBAR} textAnchor="middle" fontFamily={SANS}>
+              blanda
+            </text>
+            <line x1="576" y1="74" x2="576" y2="322" stroke={INK} strokeWidth="1.2" strokeDasharray="3 4" />
+          </g>
+        ) : null}
+        {step === 1 ? (
+          <g data-testid="bench-uso">
+            {/* construcción con mina dura: fina y clara */}
+            <g stroke="#15181c" strokeOpacity="0.45" strokeWidth="0.7">
+              <line x1="165" y1="70" x2="415" y2="320" />
+              <line x1="415" y1="70" x2="165" y2="320" />
+              <line x1="290" y1="60" x2="290" y2="330" />
+              <line x1="155" y1="195" x2="425" y2="195" />
+            </g>
+            {/* trazado final con mina media: oscuro y uniforme */}
+            <g fill="none" stroke="#15181c" strokeOpacity="0.9" strokeWidth="2.1" strokeLinejoin="round">
+              <rect x="165" y="70" width="250" height="250" />
+              <circle cx="290" cy="195" r="125" />
+            </g>
+            <Lapiz pose={{ x: 428, y: 190, rot: -10 }} len={150} grade="2H" />
+            <Lapiz pose={{ x: 417, y: 262, rot: 12 }} len={150} grade="HB" />
+            <text x="470" y="140" fontSize="12" fontWeight="700" fill={AZUL} fontFamily={SANS}>
+              construcción: 2H
+            </text>
+            <text x="470" y="322" fontSize="12" fontWeight="700" fill={AMBAR} fontFamily={SANS}>
+              trazado final: HB
+            </text>
+          </g>
+        ) : null}
+        {step === 2 ? (
+          <g data-testid="bench-errores">
+            {/* izquierda: mina blanda sobre una construcción: mancha */}
+            <line x1="50" y1="190" x2="290" y2="190" stroke="#15181c" strokeOpacity="0.5" strokeWidth="0.8" />
+            <line x1="60" y1="198" x2="280" y2="182" stroke="#15181c" strokeOpacity="0.55" strokeWidth="9" strokeLinecap="round" filter="url(#bench-smudge)" />
+            <line x1="60" y1="198" x2="280" y2="182" stroke="#15181c" strokeOpacity="0.8" strokeWidth="2.8" strokeLinecap="round" />
+            <text x="170" y="262" fontSize="13" fontWeight="800" fill="#b91c1c" textAnchor="middle" fontFamily={SANS}>
+              B sobre construcción
+            </text>
+            <text x="170" y="280" fontSize="12" fill={INK} textAnchor="middle" fontFamily={SANS}>
+              mancha y no se borra bien
+            </text>
+            {/* derecha: mina dura muy apretada: surco en el papel */}
+            <line x1="340" y1="186" x2="580" y2="186" stroke="#ffffff" strokeWidth="1.2" />
+            <line x1="340" y1="190" x2="580" y2="190" stroke="#15181c" strokeOpacity="0.45" strokeWidth="0.8" />
+            <line x1="340" y1="193.4" x2="580" y2="193.4" stroke="#000" strokeOpacity="0.16" strokeWidth="1.8" />
+            <text x="460" y="262" fontSize="13" fontWeight="800" fill="#b91c1c" textAnchor="middle" fontFamily={SANS}>
+              2H apretando
+            </text>
+            <text x="460" y="280" fontSize="12" fill={INK} textAnchor="middle" fontFamily={SANS}>
+              marca un surco en el papel
+            </text>
+            <line x1="310" y1="120" x2="310" y2="320" stroke={INK} strokeWidth="1" strokeDasharray="3 5" opacity="0.5" />
+          </g>
+        ) : null}
+      </svg>
+    </BenchShell>
+  );
+}
+
+/* ───────────── 4. Paralela con escuadra y cartabón (se arrastra la escuadra) ───────────── */
 
 const VIEW_W = 520;
 const VIEW_H = 350;
 const SHEET = { x: 30, y: 16, w: 460, h: 334 };
 
 export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
-  const theta0 = clamp(block.params?.a ?? 12, -15, 30);
+  const theta = clamp(block.params?.a ?? 12, -15, 30);
   const dP = clamp(block.params?.b ?? 70, 40, 100);
-  const [theta, setTheta] = useState(theta0);
+  const [step, setStep] = useState(0);
   const [s, setS] = useState(0);
   const [traced, setTraced] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const drag = useRef<{ start: Pt; s0: number } | null>(null);
+  const [agarrada, setAgarrada] = useState(false);
 
   const setup = paralelaSetup([175, 70], theta, dP);
   const eq = escuadraPose(setup, s);
@@ -147,121 +416,143 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const [e0, e1] = filoEscuadra(setup, s);
   const dist = distanciaFiloAP(setup, s);
   const ok = filoPasaPorP(setup, s);
+  const mueve = step === 2 && !traced;
+
+  const goStep = (n: number) => {
+    setStep(n);
+    if (n < 2) {
+      setS(0);
+      setTraced(false);
+    }
+  };
 
   const toSvg = (ev: ReactPointerEvent): Pt => {
     const svg = svgRef.current;
-    if (!svg) return [0, 0];
-    const ctm = svg.getScreenCTM();
-    if (!ctm) return [0, 0];
+    const ctm = svg && typeof svg.getScreenCTM === "function" ? svg.getScreenCTM() : null;
+    if (!ctm) return [ev.clientX, ev.clientY];
     const p = new DOMPoint(ev.clientX, ev.clientY).matrixTransform(ctm.inverse());
     return [p.x, p.y];
   };
-
   const onDown = (ev: ReactPointerEvent) => {
-    (ev.currentTarget as Element).setPointerCapture(ev.pointerId);
+    if (!mueve) return;
+    (ev.currentTarget as Element).setPointerCapture?.(ev.pointerId);
     drag.current = { start: toSvg(ev), s0: s };
-    setTraced(false);
+    setAgarrada(true);
   };
   const onMove = (ev: ReactPointerEvent) => {
     if (!drag.current) return;
-    const d = sub(toSvg(ev), drag.current.start);
-    setS(clamp(drag.current.s0 + dot(d, setup.h), 0, PARALELA_S_MAX));
+    setS(clamp(drag.current.s0 + dot(sub(toSvg(ev), drag.current.start), setup.h), 0, PARALELA_S_MAX));
   };
   const onUp = () => {
     drag.current = null;
+    setAgarrada(false);
+  };
+  const onKey = (ev: ReactKeyboardEvent) => {
+    if (!mueve) return;
+    const paso = ev.shiftKey ? 10 : 2;
+    if (ev.key === "ArrowUp" || ev.key === "ArrowRight") setS((v) => clamp(v + paso, 0, PARALELA_S_MAX));
+    else if (ev.key === "ArrowDown" || ev.key === "ArrowLeft") setS((v) => clamp(v - paso, 0, PARALELA_S_MAX));
+    else return;
+    ev.preventDefault();
   };
 
   const rA = add(setup.c0, mul(setup.u, -60));
   const rB = add(setup.c0, mul(setup.u, 280));
   const pa = add(setup.p, mul(setup.u, -150));
   const pb = add(setup.p, mul(setup.u, 200));
+  const mid = add(add(setup.c0, mul(setup.u, ESCUADRA_L * 0.5)), mul(setup.n, 0));
+  const flecha: [Pt, Pt] = [add(mid, mul(setup.n, 30)), add(add(mid, mul(setup.n, 30)), mul(setup.h, 52))];
+
+  const extra =
+    step === 2 ? (
+      <div className="flex flex-col gap-2" data-testid="bench-paralelas-panel">
+        <p className="text-sm text-[color:var(--stage-muted,#b8c2d0)]">
+          Distancia del borde a P{" "}
+          <span className="text-xl font-bold tabular-nums" style={{ color: ok ? "#83c167" : "#fc6255" }} data-testid="bench-dist">
+            {f1(Math.abs(dist))} mm
+          </span>
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            disabled={!ok || traced}
+            onClick={() => setTraced(true)}
+            data-testid="bench-trazar"
+            className="rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-4 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            Trazar la paralela
+          </button>
+          {s > 0 || traced ? (
+            <button
+              type="button"
+              onClick={() => {
+                setS(0);
+                setTraced(false);
+              }}
+              className="rounded-lg px-3 py-2 text-sm text-[color:var(--stage-muted,#b8c2d0)] underline-offset-2 hover:underline"
+              data-testid="bench-reiniciar"
+            >
+              Volver a empezar
+            </button>
+          ) : null}
+        </div>
+        <p className="text-sm leading-snug text-[color:var(--stage-ink,#fff)]" data-testid="bench-estado">
+          {traced
+            ? "Hecho: la recta es paralela a r porque la escuadra solo se ha desplazado, no ha girado."
+            : ok
+              ? "El borde pasa por P. Ya puedes trazar."
+              : "Arrastra la escuadra sobre el cartabón hasta que su borde pase por P."}
+        </p>
+      </div>
+    ) : null;
 
   return (
-    <Frame
-      stacked
-      hint={block.hint ?? "Sujeta el cartabón y desliza la escuadra a lo largo de él hasta que su borde pase por P. Después traza."}
-      onReset={() => {
-        setS(0);
-        setTraced(false);
-        setTheta(theta0);
-      }}
-      controls={
-        <>
-          <Slider label="Desliza la escuadra" value={Math.round(s)} min={0} max={PARALELA_S_MAX} step={1} unit=" mm" color={MANIM.blue} onChange={(v) => { setS(v); setTraced(false); }} />
-          <Slider label="Inclinación de r" value={theta} min={-15} max={30} step={1} unit="°" color={MANIM.orange} onChange={(v) => { setTheta(v); setS(0); setTraced(false); }} />
-        </>
-      }
-    >
-      <svg
-        ref={svgRef}
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-        className="mx-auto block h-auto w-full max-w-2xl touch-none rounded-lg select-none"
-        role="group"
-        aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón"
-        data-testid="bench-paralelas"
-      >
+    <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={step} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">
+      <svg ref={svgRef} viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} className={`${SVG_CLASS} touch-none select-none`} aria-hidden={false} role="group" aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón" data-testid="bench-paralelas">
         <BenchDefs />
         <clipPath id="bench-sheet-clip">
           <rect x={SHEET.x} y={SHEET.y} width={SHEET.w} height={SHEET.h} />
         </clipPath>
         <Desk w={VIEW_W} h={VIEW_H} sheet={SHEET} />
         <g clipPath="url(#bench-sheet-clip)">
-          {/* recta dada */}
-          <line x1={rA[0]} y1={rA[1]} x2={rB[0]} y2={rB[1]} stroke="#2a2f36" strokeWidth="0.9" />
-          <text x={rA[0] - 4} y={rA[1] - 7} fontSize="11" fontWeight="700" fill="#2a2f36" fontFamily="ui-sans-serif, system-ui">
+          <line x1={rA[0]} y1={rA[1]} x2={rB[0]} y2={rB[1]} stroke={INK} strokeWidth="0.9" />
+          <text x={rA[0] - 4} y={rA[1] - 7} fontSize="11" fontWeight="700" fill={INK} fontFamily={SANS}>
             r
           </text>
-          {/* paralela trazada */}
           {traced ? <line data-testid="bench-trazo" x1={pa[0]} y1={pa[1]} x2={pb[0]} y2={pb[1]} stroke="#2b3138" strokeWidth="1" strokeLinecap="round" /> : null}
         </g>
-        <g>
-          {/* cartabón fijo */}
-          <Cartabon pose={ct} label={false} />
-          {/* escuadra deslizante */}
-          <g
-            onPointerDown={onDown}
-            onPointerMove={onMove}
-            onPointerUp={onUp}
-            onPointerCancel={onUp}
-            style={{ cursor: "grab" }}
-            data-testid="bench-escuadra"
-          >
-            <Escuadra pose={eq} label={false} />
-          </g>
-          {/* punto P */}
-          <circle cx={setup.p[0]} cy={setup.p[1]} r="2.2" fill={ok ? "#1f9d55" : "#c0392b"} />
-          <text x={setup.p[0] + 5} y={setup.p[1] + 11} fontSize="11" fontWeight="700" fill="#2a2f36" fontFamily="ui-sans-serif, system-ui">
-            P
-          </text>
-          {/* lápiz sobre el punto cuando el filo pasa por P */}
-          {ok && !traced ? <line x1={e0[0]} y1={e0[1]} x2={e1[0]} y2={e1[1]} stroke="#1f9d55" strokeWidth="1.2" strokeDasharray="4 3" /> : null}
+        <g style={{ opacity: step >= 1 ? 1 : 0, transition: "opacity 400ms" }} data-testid="bench-cartabon">
+          <Cartabon pose={ct} />
         </g>
-      </svg>
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <div className="text-sm text-[color:var(--stage-muted,#b8c2d0)]">
-          Distancia del borde a P
-          <span className="ml-2 text-xl font-bold tabular-nums" style={{ color: ok ? MANIM.green : MANIM.red }} data-testid="bench-dist">
-            {f1(Math.abs(dist))} mm
-          </span>
-        </div>
-        <button
-          type="button"
-          disabled={!ok}
-          onClick={() => setTraced(true)}
-          data-testid="bench-trazar"
-          className="rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-4 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+        <g
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={onUp}
+          onPointerCancel={onUp}
+          onKeyDown={onKey}
+          tabIndex={mueve ? 0 : -1}
+          role="slider"
+          aria-label="Escuadra: arrástrala sobre el cartabón"
+          aria-valuemin={0}
+          aria-valuemax={PARALELA_S_MAX}
+          aria-valuenow={Math.round(s)}
+          style={{ cursor: mueve ? (agarrada ? "grabbing" : "grab") : "default", outline: "none" }}
+          data-testid="bench-escuadra"
         >
-          Trazar la paralela
-        </button>
-        <p className="text-sm text-[color:var(--stage-muted,#b8c2d0)]" data-testid="bench-estado">
-          {traced
-            ? "Hecho: la recta trazada es paralela a r porque la escuadra no ha girado, solo se ha desplazado."
-            : ok
-              ? "El borde pasa por P. Ya puedes trazar."
-              : "Sigue deslizando la escuadra sobre el cartabón."}
-        </p>
-      </div>
-    </Frame>
+          <Escuadra pose={eq} />
+        </g>
+        <circle cx={setup.p[0]} cy={setup.p[1]} r="2.4" fill={ok && step === 2 ? "#1f9d55" : "#c0392b"} />
+        <text x={setup.p[0] + 5} y={setup.p[1] + 12} fontSize="11" fontWeight="700" fill={INK} fontFamily={SANS}>
+          P
+        </text>
+        {ok && mueve ? <line x1={e0[0]} y1={e0[1]} x2={e1[0]} y2={e1[1]} stroke="#1f9d55" strokeWidth="1.4" strokeDasharray="4 3" /> : null}
+        {mueve && s < 6 ? (
+          <g data-testid="bench-pista" pointerEvents="none">
+            <line x1={flecha[0][0]} y1={flecha[0][1]} x2={flecha[1][0]} y2={flecha[1][1]} stroke="#d97706" strokeWidth="2.4" strokeLinecap="round" />
+            <circle cx={flecha[1][0]} cy={flecha[1][1]} r="4" fill="#d97706" />
+          </g>
+        ) : null}
+      </svg>
+    </BenchShell>
   );
 }
-
