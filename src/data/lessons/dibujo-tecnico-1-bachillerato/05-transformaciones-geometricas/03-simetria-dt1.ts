@@ -16,18 +16,30 @@ export const simetriaDt1Lesson: InteractiveLesson = {
       { title: "Toda la figura", text: "Al hacer lo mismo con $B$ y con $C$ se obtiene $A'B'C'$. Cada $AA'$ es **perpendicular** a $e$ y el eje lo corta por su punto medio: $e$ es la **mediatriz** de $AA'$.", fact: "El eje es la mediatriz de cada AA′" },
     ]), "stack"),
 
-    benchTask("simetria-practica", "Busca el simétrico de A", "simetria-practica", [
-      { title: "Toma la medida PA", text: "Toca $P$ para clavar la punta y $A$ para colocar la mina: el compás queda con el radio $PA$.", fact: "Abertura = PA" },
-      { title: "Clava la punta en P", text: "Toca el punto $P$ del eje." },
-      { title: "Traza el primer arco", text: "Arrastra la mina para trazar un arco que **cruce el eje**, hacia el otro lado." },
-      { title: "Toma la medida QA", text: "Ahora mide la distancia entre $Q$ y $A$.", fact: "Abertura = QA" },
-      { title: "Clava la punta en Q", text: "Toca el punto $Q$ del eje." },
-      { title: "Traza el segundo arco", text: "Arrastra la mina para trazar un arco que **corte al anterior**." },
-      { title: "Marca A′", text: "Toca el corte de los dos arcos que **no** es $A$: es $A'$. Después pulsa **Comprobar**." },
+    ...["A", "B", "C"].map((n, i) =>
+      benchTask(`simetria-${n.toLowerCase()}`, `Busca el simétrico de ${n}`, "simetria-practica", [
+        { title: `Toma la medida P${n}`, text: `Toca $P$ para clavar la punta y $${n}$ para colocar la mina: el compás queda con el radio $P${n}$.`, fact: `Abertura = P${n}` },
+        { title: "Clava la punta en P", text: "Toca el punto $P$ del eje." },
+        { title: "Traza el primer arco", text: "Arrastra la mina para trazar un arco que **cruce el eje**, hacia el otro lado." },
+        { title: `Toma la medida Q${n}`, text: `Ahora mide la distancia entre $Q$ y $${n}$.`, fact: `Abertura = Q${n}` },
+        { title: "Clava la punta en Q", text: "Toca el punto $Q$ del eje." },
+        { title: "Traza el segundo arco", text: "Arrastra la mina para trazar un arco que **corte al anterior**." },
+        { title: `Marca ${n}′`, text: `Toca el corte de los dos arcos que **no** es $${n}$: es $${n}'$. Después pulsa **Comprobar**.${i > 0 ? " Los puntos anteriores ya están hallados." : ""}` },
+      ], {
+        question: `Halla el simétrico ${n}' del punto ${n} respecto del eje e usando solo el compás.`,
+        hint: `Los arcos de radio P${n} desde P y de radio Q${n} desde Q se cortan en ${n} y en su simétrico ${n}′.`,
+        explanation: `${n}′ está a la misma distancia de P que ${n} y a la misma distancia de Q que ${n}; por eso el eje es la mediatriz de ${n}${n}′.`,
+        params: { b: i },
+      }),
+    ),
+
+    benchTask("simetria-union", "Une A′, B′ y C′", "union-imagen", [
+      { title: "Une los puntos", text: "Pasa la regla por **dos puntos** cada vez: primero $A'$ y $B'$, luego $B'$ y $C'$ y por último $C'$ y $A'$. Toca los dos extremos de cada lado. Después pulsa **Comprobar**.", fact: "Tres pasadas de la regla" },
     ], {
-      question: "Halla el simétrico A' del punto A respecto del eje e usando solo el compás.",
-      hint: "Los arcos de radio PA desde P y de radio QA desde Q se cortan en A y en su simétrico A′.",
-      explanation: "A′ está a la misma distancia de P que A y a la misma distancia de Q que A; por eso P y Q (y todo el eje) equidistan de A y de A′: el eje es la mediatriz de AA′.",
+      question: "Une con la regla los puntos A', B' y C' para obtener el triángulo simétrico.",
+      hint: "Hay tres lados: A′B′, B′C′ y C′A′.",
+      explanation: "El triángulo A′B′C′ es igual que ABC, pero con la orientación invertida: es su simétrico respecto del eje.",
+      params: { a: 2 },
     }),
 
     benchTask("simetria-cuadricula", "Refleja el triángulo", "simetria-cuadricula", [

@@ -2,6 +2,7 @@
 
 import type { SlideBlock } from "@/lib/lesson/types";
 import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
+import { UnionImagen } from "./scenes-unir";
 import { HomoteciaCompas, HomoteciaCuadricula, HomoteciaPractica } from "./scenes-homotecia";
 import { SimetriaCompas, SimetriaCuadricula, SimetriaPractica } from "./scenes-simetria";
 import { GiroCompas, GiroCuadricula, GiroPractica } from "./scenes-giro";
@@ -60,6 +61,8 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <HomoteciaPractica block={block} />;
     case "homotecia-cuadricula":
       return <HomoteciaCuadricula block={block} />;
+    case "union-imagen":
+      return <UnionImagen block={block} />;
     default:
       return null;
   }

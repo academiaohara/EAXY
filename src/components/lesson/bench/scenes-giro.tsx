@@ -8,8 +8,8 @@ import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerpP, tramo, useProgreso, type D
 import { CELDA, CuadriculaEjercicio, gp } from "./scenes-transformaciones";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 
-const O: Pt = [180, 290];
-const GA: Pt = [330, 290];
+export const O: Pt = [180, 290];
+export const GA: Pt = [330, 290];
 const GB: Pt = [380, 225];
 const GC: Pt = [300, 235];
 const RA = dist(O, GA);
@@ -18,7 +18,7 @@ const poligono = (pts: Pt[]) => `M${pts.map((p) => `${p[0]} ${p[1]}`).join(" L")
 const etiqueta = { stroke: "#fffefa", strokeWidth: 3.5, paintOrder: "stroke" as const, strokeLinejoin: "round" as const };
 
 /** Triángulo original con el centro del giro. */
-function PapelGiro() {
+export function PapelGiro() {
   return (
     <g>
       <path d={poligono([GA, GB, GC])} fill="rgba(31,120,180,0.08)" stroke={INK} strokeWidth="1.5" strokeLinejoin="round" />
@@ -127,9 +127,17 @@ export function GiroCompas({ block }: { block: BenchBlock }) {
 
 /* ───────────── Giro: práctica paso a paso ───────────── */
 
-function defGiro(th: number): Def {
-  const A2 = rotarPunto(GA, O, th);
+export const GIRO_ORIG: Pt[] = [GA, GB, GC];
+export const GIRO_CENTRO = O;
+const NOMBRES = ["A", "B", "C"];
+
+/** Práctica de girar el vértice `v` (0 = A, 1 = B, 2 = C); los anteriores se muestran ya girados. */
+function defGiro(th: number, v: number): Def {
+  const P = GIRO_ORIG[v];
+  const P2 = rotarPunto(P, O, th);
+  const n = NOMBRES[v];
   const rayoLargo = 235;
+  const dados = GIRO_ORIG.slice(0, v).map((q, i) => ({ p: rotarPunto(q, O, th), n: `${NOMBRES[i]}′` }));
   return {
     scene: "giro-practica",
     fases: ["angulo", "medida", "centro", "arco", "regla"],
@@ -137,33 +145,37 @@ function defGiro(th: number): Def {
     papel: (est: Est) => (
       <g>
         <PapelGiro />
-        <line x1={O[0]} y1={O[1]} x2={GA[0]} y2={GA[1]} stroke={INK} strokeWidth="1" strokeDasharray="5 4" />
-        {est.fase >= 1 ? <line x1={O[0]} y1={O[1]} x2={enCirculo(O, rayoLargo, th)[0]} y2={enCirculo(O, rayoLargo, th)[1]} stroke={INK} strokeWidth="1" strokeDasharray="5 4" /> : null}
-        {est.fase >= 5 ? <Punto p={A2} nombre="A′" dx={-20} dy={-6} color={VERDE} /> : null}
+        <line x1={O[0]} y1={O[1]} x2={P[0]} y2={P[1]} stroke={INK} strokeWidth="1" strokeDasharray="5 4" />
+        {est.fase >= 1 ? <line x1={O[0]} y1={O[1]} x2={enCirculo(O, rayoLargo, angDe(O, P) + th)[0]} y2={enCirculo(O, rayoLargo, angDe(O, P) + th)[1]} stroke={INK} strokeWidth="1" strokeDasharray="5 4" /> : null}
+        {dados.map((d) => (
+          <Punto key={d.n} p={d.p} nombre={d.n} dx={-22} dy={-6} color={VERDE} />
+        ))}
+        {est.fase >= 5 ? <Punto p={P2} nombre={`${n}′`} dx={-22} dy={-6} color={VERDE} /> : null}
       </g>
     ),
-    angulo: () => ({ centro: O, base: angDe(O, GA), objetivo: th, largo: rayoLargo }),
-    medibles: () => [O, GA],
+    angulo: () => ({ centro: O, base: angDe(O, P), objetivo: th, largo: rayoLargo }),
+    medibles: () => [O, P],
     candidatos: () => [O],
     compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-    radioLim: () => [40, 200],
-    radioIni: () => RA,
+    radioLim: () => [40, 215],
+    radioIni: () => dist(O, P),
     rhoIni: () => -th,
-    arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, A2), signo: 1, rhoMin: -(th + 25), rhoMax: 40, req: [-8, 8] }),
-    cortes: () => [A2],
+    arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, P2), signo: 1, rhoMin: -(th + 25), rhoMax: 40, req: [-8, 8] }),
+    cortes: () => [P2],
     evaluar: (est) => {
       const [p1] = est.clics;
-      if (!p1) return { ok: false, mensaje: "Falta marcar el punto A′." };
-      return dist(p1, A2) <= SNAP + 2
-        ? { ok: true, mensaje: `Correcto: A′ está a la misma distancia de O que A (OA = OA′) y el ángulo AOA′ mide ${th}°.` }
-        : { ok: false, mensaje: "Ese punto no es A′: A′ es donde el arco de radio OA corta al segundo lado del ángulo. Pulsa «Reintentar»." };
+      if (!p1) return { ok: false, mensaje: `Falta marcar el punto ${n}′.` };
+      return dist(p1, P2) <= SNAP + 2
+        ? { ok: true, mensaje: `Correcto: ${n}′ está a la misma distancia de O que ${n} (O${n} = O${n}′) y el ángulo ${n}O${n}′ mide ${th}°.` }
+        : { ok: false, mensaje: `Ese punto no es ${n}′: ${n}′ es donde el arco de radio O${n} corta al segundo lado del ángulo. Pulsa «Reintentar».` };
     },
   };
 }
 
 export function GiroPractica({ block }: { block: BenchBlock }) {
   const th = clamp(Math.round(block.params?.a ?? 60), 30, 120);
-  const [def] = useState(() => defGiro(th));
+  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
+  const [def] = useState(() => defGiro(th, v));
   return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
