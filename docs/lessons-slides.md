@@ -47,6 +47,27 @@ Formato declarativo para **teoría nueva**: título + bloques de texto con forma
 
 Las ilustraciones (`story`, `figure`) se pintan **tal cual**, sin tarjeta ni fondo: los PNG deben venir con fondo transparente y sin halos ni sombras semitransparentes. Si el PNG aún no existe, `story` se queda solo con el texto y `figure` se omite en producción (en desarrollo muestra un hueco con el nombre del archivo que falta).
 
+## Mesa de dibujo (`bench`)
+
+Formato alternativo a la animación tipo Manim para **dibujo técnico y cualquier contenido donde importe el gesto real**: instrumentos con aspecto de objeto (plástico translúcido con bisel y sombra, graduación a escala 1 u = 1 mm, metal, madera) sobre una hoja de papel en una mesa. El alumno **manipula** (arrastra la escuadra, mueve un deslizador) en lugar de ver una escena que se reproduce.
+
+```ts
+visual: { kind: "bench", scene: "paralelas-escuadra-cartabon", params: { a: 12, b: 70 }, hint: "…" }
+```
+
+- Código: `src/components/lesson/bench/` — `geometry.ts` (funciones puras, comprobadas en `src/tests/unit/bench-geometry.test.ts`), `instruments.tsx` (`Regla`, `Escuadra`, `Cartabon`, `Transportador`, `Compas`, `Lapiz`, `Desk`, `BenchDefs`), `scenes.tsx` (escenas) y `SlideBench.tsx` (registro). Tests de interacción en `bench-scenes.test.tsx`.
+- Cada instrumento se dibuja en coordenadas locales (origen en su vértice, bisagra o punta) y se coloca con una `Pose { x, y, rot }`. Las escenas **no inventan geometría**: el movimiento sale de `geometry.ts` (por ejemplo, la escuadra solo puede trasladarse a lo largo de la hipotenusa y su filo se mantiene paralelo a `r`).
+- Se puede arrastrar con el puntero **y** hay un deslizador equivalente (teclado, accesibilidad). Los controles y el texto de ayuda van fuera del SVG.
+- Los instrumentos pueden sobresalir de la hoja, como en la realidad; las líneas dibujadas se recortan a la hoja.
+- Cuándo usarlo en vez de `anim`: **procedimientos con instrumentos** (trazar, medir, copiar un ángulo) y todo lo que se aprenda mejor «con las manos». Cuándo no: demostraciones y construcciones abstractas, donde la animación por pasos sigue siendo mejor.
+
+| `scene` | Qué enseña | Parámetros |
+|---------|------------|------------|
+| `instrumentos-catalogo` | Los seis instrumentos sobre la mesa: se toca cada uno para ver su uso; el compás cambia de abertura y da su radio | — |
+| `paralelas-escuadra-cartabon` | Paralela a `r` por `P`: el cartabón se sujeta y la escuadra se desliza por su borde hasta que el filo pasa por `P`; solo deja trazar cuando coincide | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
+
+Para añadir una escena: función pura en `geometry.ts` + test, componente en `scenes.tsx`, id en `BenchSceneId` (`src/lib/lesson/types.ts`) y `case` en `SlideBench.tsx`.
+
 ## Animaciones (`anim`)
 
 Una animación es una lista de **pasos** (beats). Cada paso es un estado del lienzo; el movimiento lo ponen las transiciones CSS (aparecer, desplazar, dibujar). El alumno puede **pausar, retroceder, avanzar y reiniciar** sin salir de la diapositiva; arranca sola salvo con «reducir movimiento». Cada paso trae un **texto breve** (`captions`) que dice qué mirar.

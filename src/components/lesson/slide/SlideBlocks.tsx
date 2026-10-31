@@ -4,6 +4,7 @@ import { AlertTriangleIcon } from "lucide-react";
 import { useState } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import { SlideAnim } from "@/components/lesson/slide/SlideAnim";
+import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { Illustration, SlideFigure } from "@/components/lesson/slide/SlideFigure";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import type { SlideBlock, SlideTone } from "@/lib/lesson/types";
@@ -252,6 +253,9 @@ export function SlideBlockView({ block }: { block: SlideBlock }) {
 
     case "tool":
       return <SlideTool block={block} />;
+
+    case "bench":
+      return <SlideBench block={block} />;
 
     default:
       return null;
