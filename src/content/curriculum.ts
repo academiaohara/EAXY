@@ -16432,6 +16432,15 @@ export const curriculum: Curriculum = {
               interactiveSlug: "mediatriz-bisectriz-compas-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(37304),
+              title: "4. Trasladar un ángulo con compás",
+              summary: "Copiar un ángulo sobre otra semirrecta con compás y regla.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "trasladar-angulos-compas-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {

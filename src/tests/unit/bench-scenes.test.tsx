@@ -496,6 +496,131 @@ describe("práctica paso a paso · bisectriz", () => {
   });
 });
 
+describe("trasladar un ángulo con compás", () => {
+  const V1: Pt = [110, 270];
+  const V2: Pt = [380, 270];
+  const alfa = 55;
+  const r0 = 90;
+  const P = enCirc(V1, r0, 0);
+  const Q = enCirc(V1, r0, alfa);
+  const P2 = enCirc(V2, r0, 0);
+  const Q2 = enCirc(V2, r0, alfa);
+  const cuerda = Math.hypot(P[0] - Q[0], P[1] - Q[1]);
+
+  /** Hace las ocho primeras fases y deja la regla pendiente. */
+  function hasta(fin: "medida" | "centro3" | "regla") {
+    const t = pantalla("trasladar-practica", { a: alfa });
+    t.tocar(V1);
+    t.arrastrar(enCirc(V1, r0, 25));
+    t.fijar();
+    t.arrastrar(enCirc(V1, r0, 25), enCirc(V1, r0, alfa + 8), enCirc(V1, r0, -8));
+    expect(t.fase()).toBe("centro");
+    t.tocar(V2);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(V2, r0, 25), enCirc(V2, r0, alfa + 8), enCirc(V2, r0, -8));
+    expect(t.fase()).toBe("medida");
+    if (fin === "medida") return t;
+    t.tocar(P);
+    t.tocar(Q);
+    expect(t.fase()).toBe("centro");
+    if (fin === "centro3") return t;
+    t.tocar(P2);
+    expect(t.fase()).toBe("arco");
+    const base = ang(P2, Q2);
+    t.arrastrar(enCirc(P2, cuerda, base - 25), enCirc(P2, cuerda, base + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("explicación: la medida PQ se toma con el compás y el ángulo trasladado aparece al final", () => {
+    const { siguiente } = montar("trasladar-angulo-compas", { a: alfa });
+    expect(screen.queryByTestId("bench-arco-v2")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-v2")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-cuerda")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-q2")).toBeTruthy();
+    expect(screen.queryByTestId("bench-cuerda")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-trasladado")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  it("práctica: los nueve pasos avanzan al hacer cada acción", () => {
+    const t = pantalla("trasladar-practica", { a: alfa });
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 1 de 9");
+    t.tocar(V1);
+    expect(t.fase()).toBe("abertura");
+    t.arrastrar(enCirc(V1, r0, 25));
+    t.fijar();
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(V1, r0, 25), enCirc(V1, r0, alfa + 8), enCirc(V1, r0, -8));
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 4 de 9");
+  });
+
+  it("práctica: la medida exige tocar dos puntos distintos, P y Q, y fija la abertura", () => {
+    const t = hasta("medida");
+    expect(t.fase()).toBe("medida");
+    t.tocar([300, 100]); // fuera de P y Q
+    expect(t.fase()).toBe("medida");
+    expect(screen.getByTestId("bench-aviso")).toBeTruthy();
+    t.tocar(P);
+    expect(t.fase()).toBe("medida");
+    expect(screen.getAllByTestId("bench-medida")).toHaveLength(1);
+    t.tocar(P); // el mismo punto otra vez: no vale
+    expect(t.fase()).toBe("medida");
+    t.tocar(Q);
+    expect(t.fase()).toBe("centro");
+    expect(screen.getAllByTestId("bench-medida")).toHaveLength(2);
+    // el compás queda mostrado con la abertura PQ (punta en un punto, mina en el otro)
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+  });
+
+  it("práctica: la punta del tercer arco solo puede clavarse en P′", () => {
+    const t = hasta("centro3");
+    t.tocar(V2);
+    expect(t.fase()).toBe("centro");
+    t.tocar(P2);
+    expect(t.fase()).toBe("arco");
+  });
+
+  it("práctica: el corte Q′ no se da por hecho hasta cubrir su dirección", () => {
+    const t = hasta("centro3");
+    t.tocar(P2);
+    const base = ang(P2, Q2);
+    t.arrastrar(enCirc(P2, cuerda, base - 25), enCirc(P2, cuerda, base - 15));
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(P2, cuerda, base - 15), enCirc(P2, cuerda, base + 10));
+    expect(t.fase()).toBe("regla");
+  });
+
+  it("práctica: pasar la regla por V′ y Q′ es correcto", () => {
+    const t = hasta("regla");
+    t.tocar([V2[0] + 4, V2[1] - 3]);
+    t.tocar([Q2[0] - 5, Q2[1] + 4]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: la regla por otros puntos es incorrecta", () => {
+    const t = hasta("regla");
+    t.tocar(V2);
+    t.tocar(P2);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("V′");
+  });
+
+  it("práctica: «Deshacer» desde la medida vuelve al arco anterior", () => {
+    const t = hasta("medida");
+    fireEvent.click(screen.getByTestId("bench-deshacer"));
+    expect(t.fase()).toBe("arco");
+  });
+});
+
 describe("mesa de dibujo · integración", () => {
   it("se monta desde una diapositiva (SlideBlockView)", () => {
     render(

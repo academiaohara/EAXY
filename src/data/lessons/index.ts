@@ -1637,6 +1637,7 @@ import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso
 import { transmisionDilatacionFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/03-transmision-dilatacion-fq4";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
+import { trasladarAngulosCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-instrumentos-trazados-fundamentales/04-trasladar-angulos-compas-dt1";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
 import { tratamientoDatos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/07-tratamiento-datos-4eso";
@@ -3341,6 +3342,7 @@ export const interactiveLessons = {
   "transmision-dilatacion-fq4": transmisionDilatacionFq4Lesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
+  "trasladar-angulos-compas-dt1": trasladarAngulosCompasDt1Lesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
   "tratamiento-datos-4eso": tratamientoDatos4esoLesson,
