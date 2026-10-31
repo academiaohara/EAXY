@@ -26,7 +26,7 @@ export const simetriaDt1Lesson: InteractiveLesson = {
         { title: `${n} · Segundo arco`, text: "Arrastra la mina para trazar un arco que **corte al anterior**." },
         { title: `${n} · Marca ${n}′`, text: `Toca el corte de los dos arcos que **no** es $${n}$: es $${n}'$.` },
       ]),
-      { title: "Une los puntos", text: "Pasa la regla por **dos puntos** cada vez: primero $A'$ y $B'$, luego $B'$ y $C'$ y por último $C'$ y $A'$. Solo puedes tocar los tres vértices nuevos y no se repite ningún lado.", fact: "Tres pasadas de la regla" },
+      { title: "Une los puntos", text: "La regla traza sola los tres lados: $A'B'$, $B'C'$ y $C'A'$. Con eso queda construida la figura transformada.", fact: "Tres pasadas de la regla" },
     ], {
       question: "Halla el simétrico del triángulo ABC respecto del eje e con el compás y une los puntos con la regla.",
       hint: "Para cada vértice, los arcos desde P y desde Q se cortan en el vértice y en su simétrico.",

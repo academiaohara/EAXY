@@ -47,6 +47,12 @@ const enCirc = (c: Pt, r: number, a: number): Pt => [c[0] + r * Math.cos((a * Ma
 const ang = (v: Pt, p: Pt) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
 const d = (a: Pt, b: Pt) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 
+/** Espera a que la regla acabe de trazar sola los últimos lados y el ejercicio se dé por superado. */
+const esperarAuto = () =>
+  act(async () => {
+    await new Promise((r) => setTimeout(r, 450));
+  });
+
 /** Práctica guiada: no hay botón «Comprobar»; al completar la construcción se da por superada sola. */
 function pantalla(scene: BenchSceneId, params?: { a?: number; b?: number }) {
   const m = montar(scene, params);
@@ -716,22 +722,23 @@ describe("práctica guiada · trasladar un ángulo con compás", () => {
 /* ───────────── Tema 5: cada transformación es un único recorrido guiado ───────────── */
 
 describe("transformaciones · recorrido seguido, vértice a vértice y unión de los puntos", () => {
-  /** Une A′, B′ y C′ con tres pasadas de la regla (a-b, b-c, c-a). */
-  const unir = (t: ReturnType<typeof pantalla>, [a, b, c]: Pt[]) => {
-    expect(t.fase()).toBe("regla");
-    for (const p of [a, b, b, c]) t.tocar(p);
+  /** La regla une sola A′B′, B′C′ y C′A′; no hay que tocar nada y el ejercicio acaba al terminar. */
+  const unir = async (t: ReturnType<typeof pantalla>) => {
+    expect(t.fase()).toBe("auto");
     t.sinSuperar();
-    t.tocar([c[0] + 3, c[1] - 3]); // se ajusta al vértice aunque no sea exacto
-    t.tocar(a);
+    t.tocar([300, 100]); // tocar mientras la regla traza no hace nada
+    expect(t.aviso()).toBeNull();
+    await esperarAuto();
+    expect(screen.getAllByTestId("bench-regla-trazo")).toHaveLength(1);
+    expect(t.svg().querySelectorAll("line").length).toBeGreaterThanOrEqual(3);
   };
-  const sinArcos = () => expect(screen.getByTestId("bench-arcos-practica").querySelectorAll("path")).toHaveLength(0);
+  const arcosSuaves = () => Array.from(screen.getByTestId("bench-arcos-practica").querySelectorAll("path")).filter((p) => p.getAttribute("stroke") === "#8f98a3");
 
   describe("traslación", () => {
     const A: Pt = [100, 270];
     const A2: Pt = [270, 230];
     const lv = d(A, A2);
     const V: [string, Pt, Pt][] = [["B", [200, 170], [370, 130]], ["C", [250, 290], [420, 250]]];
-    const IMG: Pt[] = [A2, V[0][2], V[1][2]];
 
     function vertice(t: ReturnType<typeof pantalla>, P: Pt, P2: Pt) {
       t.tocar(A);
@@ -757,7 +764,7 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 1 de 15");
     });
 
-    it("recorre B, C y la unión de los puntos y se supera solo, sin botón «Comprobar»", () => {
+    it("recorre B, C y la unión de los puntos y se supera solo, sin botón «Comprobar»", async () => {
       const t = pantalla("traslacion-practica");
       expect(t.out.control).toBeNull();
       for (const [, P, P2] of V) {
@@ -765,7 +772,7 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
         t.tocar([P2[0] + 4, P2[1] - 3]);
       }
       expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 15 de 15");
-      unir(t, IMG);
+      await unir(t);
       t.superada();
       expect(screen.getByTestId("bench-resultado").textContent).toContain("traslación");
     });
@@ -780,32 +787,13 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       expect(t.fase()).toBe("medida"); // empieza C
     });
 
-    it("al marcar B′ se borran sus arcos y B′ queda a la vista mientras se traslada C", () => {
+    it("al marcar B′ sus arcos quedan como trazo auxiliar más suave y B′ queda a la vista mientras se traslada C", () => {
       const t = pantalla("traslacion-practica");
       vertice(t, V[0][1], V[0][2]);
+      expect(arcosSuaves()).toHaveLength(0);
       t.tocar(V[0][2]);
-      sinArcos();
+      expect(arcosSuaves().length).toBe(2);
       expect(screen.getAllByText("B′").length).toBeGreaterThan(0);
-    });
-
-    it("la unión solo admite A′, B′ y C′ y no repite lados", () => {
-      const t = pantalla("traslacion-practica");
-      for (const [, P, P2] of V) {
-        vertice(t, P, P2);
-        t.tocar(P2);
-      }
-      t.tocar([300, 100]);
-      expect(t.aviso()).toContain("puntos de la construcción");
-      t.tocar(IMG[0]);
-      t.tocar(IMG[0]);
-      expect(t.aviso()).toContain("otro vértice");
-      t.tocar(IMG[1]);
-      expect(screen.getByTestId("bench-progreso").textContent).toBe("Lados trazados: 1 de 3");
-      t.tocar(IMG[1]);
-      t.tocar(IMG[0]);
-      expect(t.aviso()).toContain("ya está trazado");
-      expect(screen.getByTestId("bench-progreso").textContent).toContain("elige el otro extremo");
-      t.sinSuperar();
     });
   });
 
@@ -832,13 +820,29 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       expect(BENCH_STEPS["giro-practica"]).toBe(16);
     });
 
-    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+    it("cerca de los 60° el segundo lado encaja en el valor exacto y se da por marcado", () => {
+      const t = pantalla("giro-practica", { a: th });
+      const base = ang(O, V[0][1]);
+      t.arrastrar(enCirc(O, 120, base + 20), enCirc(O, 120, base + th + 2));
+      expect(t.fase()).toBe("medida");
+    });
+
+    it("al marcar A′ no queda el compás en pantalla junto al transportador del vértice siguiente", () => {
+      const t = pantalla("giro-practica", { a: th });
+      vertice(t, V[0][1], IMG[0]);
+      t.tocar(IMG[0]);
+      expect(t.fase()).toBe("angulo");
+      expect(screen.getByTestId("bench-angulo")).toBeTruthy();
+      expect(screen.queryByTestId("bench-compas")).toBeNull();
+    });
+
+    it("recorre A, B, C y la unión de los puntos y se supera solo", async () => {
       const t = pantalla("giro-practica", { a: th });
       V.forEach(([, P], i) => {
         vertice(t, P, IMG[i]);
         t.tocar(IMG[i]);
       });
-      unir(t, IMG);
+      await unir(t);
       t.superada();
       expect(screen.getByTestId("bench-resultado").textContent).toContain("giro");
     });
@@ -911,13 +915,13 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       expect(BENCH_STEPS["simetria-practica"]).toBe(22);
     });
 
-    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+    it("recorre A, B, C y la unión de los puntos y se supera solo", async () => {
       const t = pantalla("simetria-practica");
       V.forEach((X, i) => {
         vertice(t, X, IMG[i]);
         t.tocar(IMG[i]);
       });
-      unir(t, IMG);
+      await unir(t);
       t.superada();
       expect(screen.getByTestId("bench-resultado").textContent).toContain("simetría");
     });
@@ -928,16 +932,6 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       t.tocar(V[0]);
       expect(t.fase()).toBe("punto");
       expect(t.aviso()).toContain("no es el punto");
-    });
-
-    it("la unión no admite los vértices originales", () => {
-      const t = pantalla("simetria-practica");
-      V.forEach((X, i) => {
-        vertice(t, X, IMG[i]);
-        t.tocar(IMG[i]);
-      });
-      t.tocar(V[0]);
-      expect(t.aviso()).toContain("puntos de la construcción");
     });
   });
 
@@ -961,13 +955,13 @@ describe("transformaciones · recorrido seguido, vértice a vértice y unión de
       expect(BENCH_STEPS["homotecia-practica"]).toBe(13);
     });
 
-    it("recorre A, B, C y la unión de los puntos y se supera solo", () => {
+    it("recorre A, B, C y la unión de los puntos y se supera solo", async () => {
       const t = pantalla("homotecia-practica");
       V.forEach((X, i) => {
         vertice(t, X, IMG[i]);
         t.tocar(IMG[i]);
       });
-      unir(t, IMG);
+      await unir(t);
       t.superada();
       expect(screen.getByTestId("bench-resultado").textContent).toContain("homotecia");
     });
@@ -1216,28 +1210,16 @@ describe("mesa de dibujo · triángulos y polígonos", () => {
       t.tocar(LB);
       const aB = ang(LB, LC);
       t.arrastrar(enCirc(LB, 130, aB + 25), enCirc(LB, 130, aB - 10));
-      expect(t.fase()).toBe("regla");
+      expect(t.fase()).toBe("auto");
       return t;
     }
 
-    it("tomar los dos lados, trazar los arcos y unir C con A y con B supera el ejercicio solo", () => {
+    it("tomar los dos lados y trazar los arcos: la regla une sola C con A y con B y el ejercicio se supera", async () => {
       const t = hasta();
-      t.tocar(LA);
-      t.tocar(LC);
       t.sinSuperar();
-      t.tocar(LC);
-      t.tocar(LB);
+      await esperarAuto();
       t.superada();
-    });
-
-    it("el lado AB ya está dibujado y un lado no puede unir un punto consigo mismo", () => {
-      const t = hasta();
-      t.tocar(LA);
-      t.tocar(LB);
-      expect(t.aviso()).toContain("AB ya está dibujado");
-      t.tocar(LA);
-      expect(t.aviso()).toContain("distintos");
-      t.sinSuperar();
+      expect(screen.getByTestId("bench-regla-trazo")).toBeTruthy();
     });
 
     it("la medida solo se toma entre los extremos del segmento que toca", () => {
@@ -1264,28 +1246,19 @@ describe("mesa de dibujo · triángulos y polígonos", () => {
       return t;
     }
 
-    it("cinco arcos con el radio marcan los seis vértices y la regla los une", () => {
+    it("cinco arcos con el radio marcan los seis vértices y la regla los une sola", async () => {
       const t = hasta();
-      expect(t.fase()).toBe("regla");
-      for (let i = 0; i < 6; i += 1) {
-        t.sinSuperar();
-        t.tocar(HV[i]);
-        t.tocar(HV[(i + 1) % 6]);
-      }
+      expect(t.fase()).toBe("auto");
+      t.sinSuperar();
+      await esperarAuto();
       t.superada();
+      expect(t.svg().querySelectorAll("line").length).toBeGreaterThanOrEqual(6);
     });
 
-    it("solo se aceptan lados entre vértices consecutivos y sin repetir", () => {
-      const t = hasta();
-      t.tocar(HV[0]);
-      t.tocar(HV[3]);
-      expect(t.aviso()).toContain("consecutivos");
-      t.tocar(HV[1]);
-      t.tocar(HV[0]);
-      t.tocar(HV[0]);
-      t.tocar(HV[1]);
-      expect(t.aviso()).toContain("ya está trazado");
-      t.sinSuperar();
+    it("los arcos de los vértices ya marcados quedan más suaves que el dibujo final", () => {
+      hasta(2);
+      const suaves = Array.from(screen.getByTestId("bench-arcos-practica").querySelectorAll("path")).filter((p) => p.getAttribute("stroke") === "#8f98a3");
+      expect(suaves.length).toBe(2);
     });
 
     it("el punto marcado tiene que ser el corte del arco con la circunferencia", () => {

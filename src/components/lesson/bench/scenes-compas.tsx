@@ -304,7 +304,7 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 /** `angulo`: marcar un ángulo con el transportador arrastrando el segundo lado hasta su valor. */
 /** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
 /** `punto`: tocar un punto concreto de la construcción (solo vale el correcto). */
-export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo" | "punto";
+export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo" | "punto" | "auto";
 
 export type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
@@ -347,6 +347,8 @@ export type Def = {
   nClics?: number;
   /** Si es true, la fase final no dibuja la recta de la regla (la construcción se muestra en `papel`). */
   sinRegla?: boolean;
+  /** Fase `auto`: segmentos que la regla traza sola, uno tras otro, y con los que acaba el ejercicio. */
+  autoLados?: (est: Est) => [Pt, Pt][];
   /** Cuánto se prolonga la recta de la regla más allá de los puntos tocados (28 por defecto). */
   extRegla?: number;
   /** Texto de progreso bajo el paso (por ejemplo, «Lados trazados: 1 de 3»). */
@@ -390,12 +392,25 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const [agarrada, setAgarrada] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const temporizador = useRef<number | null>(null);
 
   const hecha = est.fase >= fases.length;
   const tipo = hecha ? undefined : fases[est.fase];
   const evaluacion = def.evaluar(est);
   const { resultado, finalizar } = useBenchCheck();
   const bloqueada = resultado !== null;
+  const finalizarRef = useRef(finalizar);
+  useEffect(() => {
+    finalizarRef.current = finalizar;
+  }, [finalizar]);
+  useEffect(
+    () => () => {
+      if (temporizador.current !== null) window.clearTimeout(temporizador.current);
+    },
+    [],
+  );
+  const nAuto = fases[fases.length - 1] === "auto" ? (def.autoLados?.(est).length ?? 0) : 0;
+  const msAuto = sinMovimiento() ? 0 : nAuto * 1100;
 
   // Configuración del arco al que se refiere la fase actual.
   const nArcoPrevio = cuenta(fases, est.fase, "arco");
@@ -428,12 +443,19 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     setEst(nuevo);
     setAviso(null);
     if (nuevo.fase >= fases.length) finalizar();
+    else if (fases[nuevo.fase] === "auto") {
+      // la regla traza sola los lados que faltan y, al acabar, el ejercicio se da por superado
+      temporizador.current = window.setTimeout(() => {
+        setEst((e) => ({ ...e, fase: fases.length }));
+        finalizarRef.current();
+      }, msAuto + 250);
+    }
   };
 
   const rhoDe = (cfg: CfgArco, p: Pt) => clamp(norm180(cfg.signo * (angDe(cfg.centro, p) - cfg.base)), cfg.rhoMin, cfg.rhoMax);
 
   const onDown = (ev: ReactPointerEvent) => {
-    if (bloqueada || hecha || !tipo) return;
+    if (bloqueada || hecha || !tipo || tipo === "auto") return;
     const p = puntero(svgRef.current, ev);
     if (tipo === "centro") {
       const idx = cuenta(fases, est.fase, "centro");
@@ -476,8 +498,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         return;
       }
       if (tipo === "punto") {
-        // el punto queda marcado y los arcos de este vértice se borran para dejar la hoja limpia
-        avanzar({ ...est, cub: est.cub.map(() => null) });
+        // el punto queda marcado; los arcos de este vértice quedan como trazo auxiliar, más suave
+        avanzar(est);
         return;
       }
       const mal = def.validarClic?.(est, cand);
@@ -507,7 +529,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     const p = puntero(svgRef.current, ev);
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
-      if (a) setEst({ ...est, ang: clamp(Math.round(norm180(angDe(a.centro, p) - a.base)), 0, 180) });
+      if (a) {
+        const lectura = clamp(Math.round(norm180(angDe(a.centro, p) - a.base)), 0, 180);
+        // cerca del valor pedido el segundo lado «encaja» en él
+        setEst({ ...est, ang: Math.abs(lectura - a.objetivo) <= 3 ? a.objetivo : lectura });
+      }
       return;
     }
     if (tipo === "abertura") {
@@ -590,11 +616,16 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
 
   // --- Dibujo ---
+  // Los arcos son trazo auxiliar (como un lápiz 2H): los de vértices ya resueltos, o toda la construcción
+  // terminada, quedan más suaves que las rectas del dibujo final.
+  const ultPunto = fases.slice(0, est.fase).lastIndexOf("punto");
+  const arcosResueltos = ultPunto >= 0 ? cuenta(fases, ultPunto, "arco") : 0;
   const arcosDibujados = est.cub.map((cub, n) => {
     if (!cub) return null;
     const cfg = cfgDe(n, radioDe(n));
     if (!cfg) return null;
-    return <ArcoPlano key={n} c={cfg.centro} r={radioDe(n)} a1={cfg.base + cfg.signo * cub.lo} a2={cfg.base + cfg.signo * cub.hi} grosor={1.3} />;
+    const suave = hecha || n < arcosResueltos;
+    return <ArcoPlano key={n} c={cfg.centro} r={radioDe(n)} a1={cfg.base + cfg.signo * cub.lo} a2={cfg.base + cfg.signo * cub.hi} grosor={suave ? 0.9 : 1.3} color={suave ? "#8f98a3" : INK} />;
   });
 
   let compas: ReactNode = null;
@@ -606,7 +637,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         <Compas pose={c.pose} open={c.open} />
       </g>
     );
-  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "punto" && tipo !== "medida") {
+  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "punto" && tipo !== "medida" && tipo !== "angulo" && tipo !== "auto") {
     const nn = Math.min(nDisp, mapa.length - 1);
     const cfg = cfgDe(nn, radioDe(nn));
     if (cfg) {
@@ -621,6 +652,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   // Cada pareja de toques es una pasada de la regla; la última se anima y las anteriores quedan trazadas.
   const parejas = Math.floor(est.clics.length / 2);
   const pRegla = useProgreso(parejas > 0 ? `regla-${est.clics.length}` : "no", 1200);
+  const pAuto = useProgreso(tipo === "auto" ? "auto" : "no", Math.max(msAuto, 1));
 
   const nota = Math.min(est.fase, fases.length - 1);
   const extra = (
@@ -653,7 +685,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     <button
       type="button"
       onClick={deshacer}
-      disabled={prev.length === 0 || bloqueada}
+      disabled={prev.length === 0 || bloqueada || tipo === "auto"}
       data-testid="bench-deshacer"
       className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
     >
@@ -703,6 +735,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         {Array.from({ length: def.sinRegla ? 0 : parejas }, (_, i) => (
           <ReglaTrazando key={i} a={est.clics[2 * i]} b={est.clics[2 * i + 1]} p={i === parejas - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === parejas - 1 ? "bench-regla-trazo" : undefined} />
         ))}
+        {def.autoLados && (tipo === "auto" || hecha)
+          ? def.autoLados(est).map(([a, b], i, todos) => (
+              <ReglaTrazando key={`auto${i}`} a={a} b={b} p={hecha ? 1 : tramo(pAuto, i / todos.length, (i + 1) / todos.length)} ext={0} testId={i === 0 ? "bench-regla-trazo" : undefined} />
+            ))
+          : null}
         {est.medida.map((c, i) => (
           <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">
             <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AZUL} strokeWidth="1.6" />
@@ -803,6 +840,7 @@ export function secuenciar(scene: BenchSceneName, segs: Def[], final?: Def): Def
       const x = porAb(a);
       return x.d.validarAbertura?.(local(x, e), a - x.a, r) ?? null;
     },
+    autoLados: dFinal.autoLados ? (e) => dFinal.autoLados!(local(ult, e)) : undefined,
     evaluar: (e) => dFinal.evaluar(local(ult, e)),
   };
   return out;

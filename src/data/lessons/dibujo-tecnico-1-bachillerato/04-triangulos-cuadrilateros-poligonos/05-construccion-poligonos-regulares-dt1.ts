@@ -35,7 +35,7 @@ export const construccionPoligonosRegularesDt1Lesson: InteractiveLesson = {
         { title: `Arco desde ${vertice(n)}`, text: "Arrastra la mina para trazar un arco que corte a la circunferencia." },
         { title: `Marca ${vertice(n + 1)}`, text: `Toca el punto donde el arco corta a la circunferencia: es el vértice ${vertice(n + 1)}.`, ...(n === 5 ? { fact: "Cierra en V1" } : {}) },
       ]),
-      { title: "Une los vértices", text: "Une cada vértice con el siguiente, tocando sus extremos con la regla: seis lados en total.", fact: "6 lados iguales a R" },
+      { title: "Une los vértices", text: "La regla une sola cada vértice con el siguiente: seis lados iguales cierran el hexágono.", fact: "6 lados iguales a R" },
     ], {
       question: "Inscribe un hexágono regular en la circunferencia llevando el radio sobre ella con el compás.",
       hint: "No cambies la abertura: es el radio. Cada arco, centrado en un vértice, corta a la circunferencia en el siguiente.",

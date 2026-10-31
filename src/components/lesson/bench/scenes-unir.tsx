@@ -29,16 +29,13 @@ function imagenes(tipo: number, th: number): Pt[] {
   return HOMO_IMG;
 }
 
-/** Fase final: unir A′, B′ y C′ con tres pasadas de la regla. Solo se pueden tocar los tres puntos y no se repite un lado. */
+/** Fase final: la regla une sola A′B′, B′C′ y C′A′ y el ejercicio acaba. */
 export function defUnir(tipo: number, th: number): Def {
   const img = imagenes(tipo, th);
-  const indice = (p: Pt) => img.findIndex((q) => dist(p, q) <= 1);
   return {
     scene: "traslacion-practica",
-    fases: ["regla"],
-    nClics: 6,
-    extRegla: 0,
-    repetir: true,
+    fases: ["auto"],
+    autoLados: () => [[img[0], img[1]], [img[1], img[2]], [img[2], img[0]]],
     papel: () => (
       <g>
         {tipo === 0 ? <PapelTraslacion etiquetas={{ a2: false, b2: false, c2: false }} /> : null}
@@ -55,23 +52,7 @@ export function defUnir(tipo: number, th: number): Def {
     radioIni: () => 100,
     rhoIni: () => 0,
     arco: (_est, _n, _radio, c) => ({ centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-    cortes: () => img,
-    progreso: (est: Est) => {
-      const lados = Math.floor(est.clics.length / 2);
-      return est.clics.length % 2 === 1 ? `Lados trazados: ${lados} de 3 · elige el otro extremo del lado` : `Lados trazados: ${lados} de 3`;
-    },
-    validarClic: (est, p) => {
-      if (est.clics.length % 2 === 0) return null;
-      const a = indice(est.clics[est.clics.length - 1]);
-      const b = indice(p);
-      if (a === b) return "Un lado une dos puntos distintos: toca otro vértice.";
-      for (let i = 0; i + 1 < est.clics.length; i += 2) {
-        const x = indice(est.clics[i]);
-        const y = indice(est.clics[i + 1]);
-        if ((x === a && y === b) || (x === b && y === a)) return "Ese lado ya está trazado: elige otro.";
-      }
-      return null;
-    },
+    cortes: () => [],
     evaluar: () => ({ ok: true, mensaje: `Correcto: A′B′C′ es la figura transformada del triángulo ABC por la ${TEMA[tipo]}.` }),
   };
 }

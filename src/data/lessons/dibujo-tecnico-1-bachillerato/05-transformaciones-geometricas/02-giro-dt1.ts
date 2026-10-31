@@ -24,7 +24,7 @@ export const giroDt1Lesson: InteractiveLesson = {
         { title: `${n} · Traza el arco`, text: "Arrastra la mina para trazar un arco que **corte al segundo lado** del ángulo." },
         { title: `${n} · Marca ${n}′`, text: `Toca el punto donde el arco corta al segundo lado: es $${n}'$.` },
       ]),
-      { title: "Une los puntos", text: "Pasa la regla por **dos puntos** cada vez: primero $A'$ y $B'$, luego $B'$ y $C'$ y por último $C'$ y $A'$. Solo puedes tocar los tres vértices nuevos y no se repite ningún lado.", fact: "Tres pasadas de la regla" },
+      { title: "Une los puntos", text: "La regla traza sola los tres lados: $A'B'$, $B'C'$ y $C'A'$. Con eso queda construida la figura transformada.", fact: "Tres pasadas de la regla" },
     ], {
       question: "Gira el triángulo ABC 60° en sentido antihorario alrededor de O con transportador y compás, y une los puntos.",
       hint: "Para cada vértice, marca 60° desde O y el vértice con el transportador y corta ese lado con un arco de radio igual a la distancia al centro.",

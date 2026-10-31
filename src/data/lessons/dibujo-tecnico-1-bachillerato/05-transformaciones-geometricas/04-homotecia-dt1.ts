@@ -23,7 +23,7 @@ export const homoteciaDt1Lesson: InteractiveLesson = {
         { title: `${n} · Traza el arco`, text: `Arrastra la mina para trazar un arco que **corte la recta $O${n}$** más allá de $${n}$.` },
         { title: `${n} · Marca ${n}′`, text: `Toca el corte del arco con la recta $O${n}$ que **no** es $O$: es $${n}'$.` },
       ]),
-      { title: "Une los puntos", text: "Pasa la regla por **dos puntos** cada vez: primero $A'$ y $B'$, luego $B'$ y $C'$ y por último $C'$ y $A'$. Solo puedes tocar los tres vértices nuevos y no se repite ningún lado.", fact: "Tres pasadas de la regla" },
+      { title: "Une los puntos", text: "La regla traza sola los tres lados: $A'B'$, $B'C'$ y $C'A'$. Con eso queda construida la figura transformada.", fact: "Tres pasadas de la regla" },
     ], {
       question: "Amplía el triángulo ABC con una homotecia de centro O y razón 2 usando el compás, y une los puntos.",
       hint: "Lleva la distancia de O a cada vértice a continuación del vértice, sobre la recta que los une.",

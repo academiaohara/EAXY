@@ -33,7 +33,7 @@ export const construccionTriangulosDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida a", text: "Toca los dos extremos del segmento $a$.", fact: "Abertura = a" },
       { title: "Clava la punta en B", text: "Toca el vértice $B$." },
       { title: "Arco desde B", text: "Traza el arco que corta al anterior: ahí está $C$." },
-      { title: "Une C con A y con B", text: "Toca los extremos de cada lado: $C$ y $A$, y después $C$ y $B$.", fact: "El lado AB ya está dibujado" },
+      { title: "Une C con A y con B", text: "La regla une sola $C$ con $A$ y con $B$: el triángulo queda construido.", fact: "El lado AB ya está dibujado" },
     ], {
       question: "Construye el triángulo ABC conociendo AB = 20 cm, AC = 15 cm y BC = 13 cm.",
       hint: "Toma cada lado con el compás y traza los arcos desde A y desde B; C es donde se cortan.",

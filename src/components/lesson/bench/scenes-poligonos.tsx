@@ -272,9 +272,8 @@ export function TrianguloLllCompas({ block }: { block: BenchBlock }) {
 
 const defLll: Def = {
   scene: "triangulo-lll-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
-  nClics: 4,
-  extRegla: 0,
+  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "auto"],
+  autoLados: () => [[LA, LC], [LC, LB]],
   papel: (est: Est) => (
     <g>
       <DatosLll resaltar={null} ab={false} />
@@ -292,18 +291,7 @@ const defLll: Def = {
   radioIni: () => 100,
   rhoIni: (n) => (n === 0 ? -25 : 25),
   arco: (_est, _n, _r, c) => ({ centro: c, base: angDe(c, LC), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [LA, LB, LC],
-  validarClic: (est, punto) => {
-    const a = (q: Pt) => (dist(q, LA) < 1 ? "A" : dist(q, LB) < 1 ? "B" : "C");
-    if (est.clics.length % 2 === 0) return null;
-    const prev = a(est.clics[est.clics.length - 1]);
-    const act = a(punto);
-    if (prev === act) return "Un lado une dos puntos distintos: toca otro vértice.";
-    if ([prev, act].sort().join("") === "AB") return "El lado AB ya está dibujado: une C con A y con B.";
-    for (let i = 0; i + 1 < est.clics.length; i += 2) if ([a(est.clics[i]), a(est.clics[i + 1])].sort().join("") === [prev, act].sort().join("")) return "Ese lado ya está trazado: elige el otro.";
-    return null;
-  },
-  repetir: true,
+  cortes: () => [],
   evaluar: () => ({ ok: true, mensaje: "Correcto: el triángulo ABC tiene los tres lados dados, porque C está a b de A y a a de B." }),
 };
 
@@ -385,13 +373,11 @@ const hexDe = (fase: number) => Math.floor((fase - 1) / 3); // vértice cuyo arc
 
 const defHexagono: Def = {
   scene: "hexagono-practica",
-  fases: ["medida", ...Array.from({ length: 5 }, () => ["centro", "arco", "punto"] as const).flat(), "regla"],
-  nClics: 12,
-  extRegla: 0,
-  repetir: true,
+  fases: ["medida", ...Array.from({ length: 5 }, () => ["centro", "arco", "punto"] as const).flat(), "auto"],
+  autoLados: () => HV.map((v, i) => [v, HV[(i + 1) % 6]] as [Pt, Pt]),
   papel: (est: Est) => {
     const hechos = est.fase <= 0 ? 1 : 1 + Math.min(5, Math.floor((est.fase - 1) / 3));
-    return <PapelHexagono marcados={Math.min(6, hechos)} lados={Math.floor(est.clics.length / 2)} relleno={est.fase >= 17} />;
+    return <PapelHexagono marcados={Math.min(6, hechos)} relleno={est.fase >= 17} />;
   },
   medibles: () => [HO, HV[0]],
   candidatos: (_est, idx) => [HV[idx]],
@@ -400,20 +386,7 @@ const defHexagono: Def = {
   radioIni: () => 100,
   rhoIni: () => -25,
   arco: (_est, n, _r, c) => ({ centro: c, base: angDe(c, HV[(n + 1) % 6]), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: (est) => (est.fase >= 16 ? HV : [HV[hexDe(est.fase) + 1]]),
-  progreso: (est) => (est.fase >= 16 ? `Lados trazados: ${Math.floor(est.clics.length / 2)} de 6` : null),
-  validarClic: (est, punto) => {
-    if (est.clics.length % 2 === 0) return null;
-    const i = HV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1);
-    const j = HV.findIndex((v) => dist(v, punto) < 1);
-    if ((i - j + 6) % 6 !== 1 && (j - i + 6) % 6 !== 1) return "Un lado del hexágono une dos vértices consecutivos: toca el vértice contiguo.";
-    for (let m = 0; m + 1 < est.clics.length; m += 2) {
-      const x = HV.findIndex((v) => dist(v, est.clics[m]) < 1);
-      const y = HV.findIndex((v) => dist(v, est.clics[m + 1]) < 1);
-      if ((x === i && y === j) || (x === j && y === i)) return "Ese lado ya está trazado: elige otro.";
-    }
-    return null;
-  },
+  cortes: (est) => (est.fase >= 16 ? [] : [HV[hexDe(est.fase) + 1]]),
   evaluar: () => ({ ok: true, mensaje: "Correcto: los seis vértices están a una distancia R unos de otros, así que el lado del hexágono regular es igual al radio." }),
 };
 
