@@ -124,20 +124,16 @@ export function MediatrizCompas({ block }: { block: BenchBlock }) {
 
   // Arcos desde A (paso 0 se dibujan; después, completos) y desde B (paso 1 se dibujan).
   const a1 = step === 0 ? { arr: tramo(p, 0, 0.42), aba: tramo(p, 0.58, 1) } : { arr: 1, aba: 1 };
-  const b1 = step === 1 ? { arr: tramo(p, 0.2, 0.5), aba: tramo(p, 0.62, 1) } : step > 1 ? { arr: 1, aba: 1 } : { arr: 0, aba: 0 };
-  const finA = enCirculo(A, r, aD - S);
+  const b1 = step === 1 ? { arr: tramo(p, 0, 0.42), aba: tramo(p, 0.58, 1) } : step > 1 ? { arr: 1, aba: 1 } : { arr: 0, aba: 0 };
 
   let comp: ReturnType<typeof poseCompas> | null = null;
   if (step === 0) {
     const ang = p < 0.42 ? lerp(aC + S, aC - S, p / 0.42) : p < 0.58 ? lerp(aC - S, aD + S, (p - 0.42) / 0.16) : lerp(aD + S, aD - S, (p - 0.58) / 0.42);
     comp = poseCompas(A, enCirculo(A, r, ang));
   } else if (step === 1) {
-    const u = tramo(p, 0, 0.2);
-    if (p < 0.2) comp = poseCompas(lerpP(A, B, u), lerpP(finA, enCirculo(B, r, bC - S), u));
-    else {
-      const ang = p < 0.5 ? lerp(bC - S, bC + S, (p - 0.2) / 0.3) : p < 0.62 ? lerp(bC + S, bD - S, (p - 0.5) / 0.12) : lerp(bD - S, bD + S, (p - 0.62) / 0.38);
-      comp = poseCompas(B, enCirculo(B, r, ang));
-    }
+    // El compás aparece ya clavado en B, con la misma abertura, y empieza a dibujar.
+    const ang = p < 0.42 ? lerp(bC - S, bC + S, p / 0.42) : p < 0.58 ? lerp(bC + S, bD - S, (p - 0.42) / 0.16) : lerp(bD - S, bD + S, (p - 0.58) / 0.42);
+    comp = poseCompas(B, enCirculo(B, r, ang));
   }
 
   const extra = activoQ ? (
@@ -248,18 +244,13 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 
   // Arco desde V (paso 0), desde P (paso 1) y desde Q (paso 2).
   const tV = step === 0 ? tramo(p, 0, 1) : 1;
-  const tP = step === 1 ? tramo(p, 0.25, 1) : step > 1 ? 1 : 0;
-  const tQ = step === 2 ? tramo(p, 0.25, 1) : step > 2 ? 1 : 0;
+  const tP = step === 1 ? p : step > 1 ? 1 : 0;
+  const tQ = step === 2 ? p : step > 2 ? 1 : 0;
 
   let comp: ReturnType<typeof poseCompas> | null = null;
   if (step === 0) comp = poseCompas(V, enCirculo(V, r1, lerp(-6, alfa + 6, tV)));
-  else if (step === 1) {
-    const u = tramo(p, 0, 0.25);
-    comp = p < 0.25 ? poseCompas(lerpP(V, P, u), lerpP(enCirculo(V, r1, alfa + 6), enCirculo(P, r2, aTP - S), u)) : poseCompas(P, enCirculo(P, r2, lerp(aTP - S, aTP + S, tP)));
-  } else if (step === 2) {
-    const u = tramo(p, 0, 0.25);
-    comp = p < 0.25 ? poseCompas(lerpP(P, Qp, u), lerpP(enCirculo(P, r2, aTP + S), enCirculo(Qp, r2, aTQ + S), u)) : poseCompas(Qp, enCirculo(Qp, r2, lerp(aTQ + S, aTQ - S, tQ)));
-  }
+  else if (step === 1) comp = poseCompas(P, enCirculo(P, r2, lerp(aTP - S, aTP + S, tP)));
+  else if (step === 2) comp = poseCompas(Qp, enCirculo(Qp, r2, lerp(aTQ + S, aTQ - S, tQ)));
 
   const pb = step === 3 ? p : 1;
   const hastaBorde = lerpP(T, bis, tramo(pb, 0.3, 0.85));
