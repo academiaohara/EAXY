@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { KeplerFb1Explorador, CampoGravitatorioFb1Explorador, SateliteFb1Explorador, EnergiaOrbitalFb1Explorador } from "@/components/lesson/slide/tools/Fb1GravitacionTools";
 import { TrabajoFb1Explorador, TeoremaEnergiaCineticaFb1Explorador, RampaEnergiaFb1Explorador, MuelleEnergiaFb1Explorador, PotenciaRendimientoFb1Explorador } from "@/components/lesson/slide/tools/Fb1EnergiaTools";
 import { FuerzasResultanteFb1Explorador, PlanoInclinadoFb1Explorador, PoleasFb1Explorador, MuelleFb1Explorador, ChoqueFb1Explorador } from "@/components/lesson/slide/tools/Fb1DinamicaTools";
 import { VectoresCinFb1Explorador, GraficasMruaFb1Explorador, ParabolicoFb1Explorador, CircularFb1Explorador, BarcaRioFb1Explorador } from "@/components/lesson/slide/tools/Fb1CinematicaTools";
@@ -2485,6 +2486,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <MuelleEnergiaFb1Explorador block={block} />;
     case "fb1-potencia-rendimiento-explorador":
       return <PotenciaRendimientoFb1Explorador block={block} />;
+    case "fb1-kepler-explorador":
+      return <KeplerFb1Explorador block={block} />;
+    case "fb1-campo-gravitatorio-explorador":
+      return <CampoGravitatorioFb1Explorador block={block} />;
+    case "fb1-satelite-explorador":
+      return <SateliteFb1Explorador block={block} />;
+    case "fb1-energia-orbital-explorador":
+      return <EnergiaOrbitalFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

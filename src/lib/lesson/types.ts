@@ -1131,6 +1131,7 @@ export type SlideAnimId =
   | "fb1-parabolico"
   | "fb1-plano"
   | "fb1-conservacion"
+  | "fb1-kepler"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2240,6 +2241,10 @@ export type SlideToolId =
   | "fb1-rampa-energia-explorador"
   | "fb1-muelle-energia-explorador"
   | "fb1-potencia-rendimiento-explorador"
+  | "fb1-kepler-explorador"
+  | "fb1-campo-gravitatorio-explorador"
+  | "fb1-satelite-explorador"
+  | "fb1-energia-orbital-explorador"
   /* industrial-tool-end */;
 
 /**

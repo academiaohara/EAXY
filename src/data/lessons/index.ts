@@ -495,6 +495,7 @@ import { energiaCineticaPotencialLesson } from "@/data/lessons/tecnologia-indust
 import { energiaCineticaPotencialFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/02-energia-cinetica-potencial-fq2";
 import { energiaCineticaPotencialFq4Lesson } from "@/data/lessons/fisica-4-eso/10-trabajo-energia-potencia/02-energia-cinetica-potencial-fq4";
 import { energiaCineticaTeoremaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/02-energia-cinetica-teorema-fb1";
+import { energiaGravitatoriaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/04-energia-gravitatoria-fb1";
 import { energiaPotencialFuerzasConservativasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/11-trabajo-energia-potencia/03-energia-potencial-fuerzas-conservativas-fb1";
 import { energiaRotacionInerciaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/05-energia-rotacion-inercia";
 import { energiaSolarFotovoltaica3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/02-energia-solar-fotovoltaica-3eso";
@@ -719,6 +720,7 @@ import { graficosEstadisticos2esoLesson } from "@/data/lessons/matematicas-2-eso
 import { graficosEstadisticosCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/04-graficos-estadisticos-ccss1";
 import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/12-grafos-matrices-2bach";
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
+import { gravitacionUniversalCampoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/02-gravitacion-universal-campo-fb1";
 import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
 import { gruposFuncionalesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/03-grupos-funcionales-fq4";
 import { gruposFuncionalesOxigenadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/03-grupos-funcionales-oxigenados-fb1";
@@ -841,6 +843,7 @@ import { leyGravitacionUniversalFq4Lesson } from "@/data/lessons/fisica-4-eso/09
 import { leyHookeTensionTrabajoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/12-ley-hooke-tension-trabajo";
 import { leyOhm2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/02-ley-ohm-2eso";
 import { leyesDeNewtonFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/01-leyes-de-newton-fq4";
+import { leyesKeplerFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/01-leyes-kepler-fb1";
 import { lhopital2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/09-lhopital-2bach";
 import { limiteDefinicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/01-limite-definicion-2bach";
 import { limiteDefinicionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/01-limite-definicion-ccss2";
@@ -1422,6 +1425,7 @@ import { ruedasEjesManivelasLesson } from "@/data/lessons/tecnologia-1-eso/05-me
 import { ruffiniResto1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/02-algebra/03-ruffini-resto-1bach";
 import { ruffiniRestoCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/03-algebra/03-ruffini-resto-ccss1";
 import { salesBinariasFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/04-sales-binarias-fq4";
+import { satelitesOrbitasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/12-fuerzas-gravitatorias/03-satelites-orbitas-fb1";
 import { seccionesPoliedrosPlanoProyectanteDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/02-secciones-poliedros-plano-proyectante-dt2";
 import { seccionesRoturasPerfilesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/03-secciones-roturas-perfiles-dt2";
 import { secuenciasInstruccionesRobotLesson } from "@/data/lessons/tecnologia-1-eso/07-pensamiento-computacional/02-secuencias-instrucciones-robot";
@@ -2192,6 +2196,7 @@ export const interactiveLessons = {
   "energia-cinetica-potencial-fq2": energiaCineticaPotencialFq2Lesson,
   "energia-cinetica-potencial-fq4": energiaCineticaPotencialFq4Lesson,
   "energia-cinetica-teorema-fb1": energiaCineticaTeoremaFb1Lesson,
+  "energia-gravitatoria-fb1": energiaGravitatoriaFb1Lesson,
   "energia-potencial-fuerzas-conservativas-fb1": energiaPotencialFuerzasConservativasFb1Lesson,
   "energia-rotacion-inercia": energiaRotacionInerciaLesson,
   "energia-solar-fotovoltaica-3eso": energiaSolarFotovoltaica3esoLesson,
@@ -2416,6 +2421,7 @@ export const interactiveLessons = {
   "graficos-estadisticos-ccss1": graficosEstadisticosCcss1Lesson,
   "grafos-matrices-2bach": grafosMatrices2bachLesson,
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
+  "gravitacion-universal-campo-fb1": gravitacionUniversalCampoFb1Lesson,
   "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
   "grupos-funcionales-fq4": gruposFuncionalesFq4Lesson,
   "grupos-funcionales-oxigenados-fb1": gruposFuncionalesOxigenadosFb1Lesson,
@@ -2538,6 +2544,7 @@ export const interactiveLessons = {
   "ley-hooke-tension-trabajo": leyHookeTensionTrabajoLesson,
   "ley-ohm-2eso": leyOhm2esoLesson,
   "leyes-de-newton-fq4": leyesDeNewtonFq4Lesson,
+  "leyes-kepler-fb1": leyesKeplerFb1Lesson,
   "lhopital-2bach": lhopital2bachLesson,
   "limite-definicion-2bach": limiteDefinicion2bachLesson,
   "limite-definicion-ccss2": limiteDefinicionCcss2Lesson,
@@ -3119,6 +3126,7 @@ export const interactiveLessons = {
   "ruffini-resto-1bach": ruffiniResto1bachLesson,
   "ruffini-resto-ccss1": ruffiniRestoCcss1Lesson,
   "sales-binarias-fq4": salesBinariasFq4Lesson,
+  "satelites-orbitas-fb1": satelitesOrbitasFb1Lesson,
   "secciones-poliedros-plano-proyectante-dt2": seccionesPoliedrosPlanoProyectanteDt2Lesson,
   "secciones-roturas-perfiles-dt2": seccionesRoturasPerfilesDt2Lesson,
   "secuencias-instrucciones-robot": secuenciasInstruccionesRobotLesson,

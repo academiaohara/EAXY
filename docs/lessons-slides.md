@@ -607,6 +607,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-parabolico` | Tiro parabólico: MRU horizontal + MRUA vertical | — |
 | `fb1-plano` | Plano inclinado: peso descompuesto, normal y rozamiento | — |
 | `fb1-conservacion` | Conservación de la energía mecánica en una rampa, con y sin rozamiento | — |
+| `fb1-kepler` | Leyes de Kepler: elipse, áreas iguales y velocidades | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1590,6 +1591,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-rampa-energia-explorador` | Ep, Ec y calor en una rampa con rozamiento | a (masa), b (h₀), c (ángulo) |
 | `fb1-muelle-energia-explorador` | Muelle comprimido que lanza un cuerpo | a (k), b (x), c (masa) |
 | `fb1-potencia-rendimiento-explorador` | Potencia, rendimiento y coste en kWh al elevar una carga | a (masa), b (altura), c (tiempo) |
+| `fb1-kepler-explorador` | Órbita elíptica: periodo, perihelio, afelio y velocidad (vis-viva) | a (semieje UA), b (excentricidad), c (ángulo) |
+| `fb1-campo-gravitatorio-explorador` | Intensidad de campo g y peso según astro y altura | a (astro 0–4), b (altura ×10³ km), c (masa) |
+| `fb1-satelite-explorador` | Velocidad orbital, periodo, escape y órbita geoestacionaria | a (astro 0–4), b (altura km) |
+| `fb1-energia-orbital-explorador` | Energía de una órbita circular y coste de cambiar de órbita | a (masa), b (r₁ en R⊕), c (r₂ en R⊕) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

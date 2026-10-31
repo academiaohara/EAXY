@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildKepler } from "@/components/lesson/anim/scenes/industrial/fb1-kepler";
 import { buildConservacion } from "@/components/lesson/anim/scenes/industrial/fb1-conservacion";
 import { buildPlano } from "@/components/lesson/anim/scenes/industrial/fb1-plano";
 import { buildParabolico } from "@/components/lesson/anim/scenes/industrial/fb1-parabolico";
@@ -889,6 +890,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fb1-parabolico": () => buildParabolico(),
   "fb1-plano": () => buildPlano(),
   "fb1-conservacion": () => buildConservacion(),
+  "fb1-kepler": () => buildKepler(),
   /* industrial-end */
 };
 
