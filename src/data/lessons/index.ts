@@ -8,7 +8,7 @@ import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-
 import { acidosBasesNeutralizacionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/05-acidos-bases-neutralizacion-fq4";
 import { acidosBasesPhFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/03-acidos-bases-ph-fb1";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
-import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
+import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
 import { actuadoresAceleradorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/11-actuadores-acelerador";
 import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/04-actuadores-elementos-salida";
@@ -124,7 +124,7 @@ import { axiomasKolmogorov2bachLesson } from "@/data/lessons/matematicas-2-bachi
 import { axiomasKolmogorovCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/07-probabilidad/04-axiomas-kolmogorov-ccss2";
 import { axiomasProbabilidad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/09-probabilidad/04-axiomas-probabilidad-1bach";
 import { axiomasProbabilidadCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/08-probabilidad/04-axiomas-probabilidad-ccss1";
-import { axonometriaOrtogonalCoeficientesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/02-axonometria-ortogonal-coeficientes-dt1";
+import { axonometriaOrtogonalCoeficientesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-sistemas-axonometricos/02-axonometria-ortogonal-coeficientes-dt1";
 import { axonometriaSolidosDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/01-axonometria-solidos-dt2";
 import { basesDatosSqlTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/02-bases-datos-sql-ti2";
 import { basesOrtonormales1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/04-bases-ortonormales-1bach";
@@ -150,7 +150,7 @@ import { caballeraCircunferenciasDt2Lesson } from "@/data/lessons/dibujo-tecnico
 import { cad2dDisenoAsistido2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/05-cad-2d-diseno-asistido-2eso";
 import { cad2dIniciacionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/02-cad-2d-iniciacion";
 import { cad3dExtrusionLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/03-cad-3d-extrusion";
-import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
+import { cadVectorialCoordenadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistemas-cad/01-cad-vectorial-coordenadas-dt1";
 import { cadenasSinFinTransmisionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/03-sistemas-mecanicos/04-cadenas-sin-fin-transmision";
 import { caidaLibreFrenadaFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimiento/05-caida-libre-frenada-fq3";
 import { caidaLibreMovimientoParabolicoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/09-cinematica/03-caida-libre-movimiento-parabolico-fb1";
@@ -198,7 +198,7 @@ import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/
 import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/09-circunferencia-1bach";
 import { circunferenciaGoniometrica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/03-circunferencia-goniometrica-1bach";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
-import { circunferenciasTangentesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-tangencias-curvas-tecnicas/02-circunferencias-tangentes-dt1";
+import { circunferenciasTangentesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-tangencias-curvas-tecnicas/02-circunferencias-tangentes-dt1";
 import { clasificacionMaterialesTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/01-clasificacion-materiales-tecnicos";
 import { cobreAluminioMagnesioTitanioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/02-cobre-aluminio-magnesio-titanio";
 import { codificadoresMultiplexoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/12-codificadores-multiplexores";
@@ -325,14 +325,14 @@ import { cuadParabola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-f
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuadrilaterosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-triangulos-cuadrilateros-poligonos/03-cuadrilateros-dt1";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
-import { cubiertasPlanosAcotadosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/03-cubiertas-planos-acotados-dt1";
+import { cubiertasPlanosAcotadosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/03-cubiertas-planos-acotados-dt1";
 import { cuentasContrasenasDatosPersonalesLesson } from "@/data/lessons/tecnologia-1-eso/09-digitalizacion-entorno-personal/05-cuentas-contrasenas-datos-personales";
 import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/07-cuerpos-geometricos-piramides";
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
-import { curvasBezierTransformacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-sistemas-cad/02-curvas-bezier-transformaciones-dt1";
-import { curvasNivelInterpretacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/04-curvas-nivel-interpretacion-dt1";
+import { curvasBezierTransformacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistemas-cad/02-curvas-bezier-transformaciones-dt1";
+import { curvasNivelInterpretacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/04-curvas-nivel-interpretacion-dt1";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
 import { curvaturaInflexion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/11-curvatura-inflexion-2bach";
 import { curvaturaInflexionCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/07-curvatura-inflexion-ccss2";
@@ -387,7 +387,7 @@ import { discusionSistemasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { disenoAccesibleUniversal2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/04-diseno-accesible-universal-2eso";
 import { disenoConceptualIdeasLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/03-diseno-conceptual-ideas";
 import { disenoImpresion3dPrototipado4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/06-diseno-impresion-3d-prototipado-4eso";
-import { disenoPiezasTrabajoGrupoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-sistemas-cad/04-diseno-piezas-trabajo-grupo-dt1";
+import { disenoPiezasTrabajoGrupoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistemas-cad/04-diseno-piezas-trabajo-grupo-dt1";
 import { disenoSimulacionMecanismos4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/06-diseno-simulacion-mecanismos-4eso";
 import { disenoSostenibilidadProyectoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/06-diseno-sostenibilidad-proyecto-dt2";
 import { disolucionesConcentracionFq2Lesson } from "@/data/lessons/fisica-2-eso/03-sustancias-puras-mezclas/02-disoluciones-concentracion-fq2";
@@ -401,7 +401,7 @@ import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/08-distancia-punto-recta-2bach";
 import { distanciaPuntoRectaCambioPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/06-distancia-punto-recta-cambio-plano-dt2";
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
-import { distanciasVerdaderaMagnitudDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-relaciones-distancias/04-distancias-verdadera-magnitud-dt1";
+import { distanciasVerdaderaMagnitudDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistema-diedrico-relaciones-distancias/04-distancias-verdadera-magnitud-dt1";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
 import { distribucionElectronicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/04-distribucion-electronica-fq3";
@@ -515,7 +515,7 @@ import { enlaceIonicoRedesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato
 import { enlaceMetalicoPropiedadesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/03-enlace-quimico/05-enlace-metalico-propiedades-fb1";
 import { enlaceMetalicoPropiedadesSustanciasFq4Lesson } from "@/data/lessons/fisica-4-eso/03-enlace-quimico/03-enlace-metalico-propiedades-sustancias-fq4";
 import { enlaceMetalicoSecundarioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/01-estructura-materiales-ensayos/06-enlace-metalico-secundario";
-import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
+import { enlacesDosRectasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-tangencias-curvas-tecnicas/03-enlaces-dos-rectas-dt1";
 import { ensayoTraccionCurva2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/02-ensayo-traccion-curva-2eso";
 import { ensayoTraccionHooke4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/01-ensayo-traccion-hooke-4eso";
 import { ensayosCaracterizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/04-ensayos-caracterizacion";
@@ -531,7 +531,7 @@ import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/0
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
-import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/03-escalas-numericas-graficas-dt1";
+import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/03-escalas-numericas-graficas-dt1";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
 import { esfuerzosEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/03-esfuerzos-estructuras";
 import { esfuerzosTensionResistencia2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/01-esfuerzos-tension-resistencia-2eso";
@@ -541,7 +541,7 @@ import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-
 import { espectrosModeloBohrFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/02-espectros-modelo-bohr-fb1";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
-import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-tangencias-curvas-tecnicas/05-espirales-evolvente-dt1";
+import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-tangencias-curvas-tecnicas/05-espirales-evolvente-dt1";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
 import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
 import { esquemasPolimetro2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/07-esquemas-polimetro-2eso";
@@ -621,7 +621,7 @@ import { formaExponencialRadicales4esobLesson } from "@/data/lessons/matematicas
 import { formaGeneralRecta3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/06-forma-general-recta-3eso";
 import { formasCanonicasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/08-formas-canonicas";
 import { formasTransformacionesEnergiaFq2Lesson } from "@/data/lessons/fisica-2-eso/08-la-energia/01-formas-transformaciones-energia-fq2";
-import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
+import { formatosPlegadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/02-formatos-plegado-dt1";
 import { formulaEmpiricaMolecularFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/05-cantidad-de-sustancia/03-formula-empirica-molecular-fb1";
 import { formulasMasaMolecularMolFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/05-formulas-masa-molecular-mol-fq3";
 import { fraccionADecimal4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/01-fraccion-a-decimal-4eso";
@@ -695,8 +695,8 @@ import { funcionesTrigonometricas1bachLesson } from "@/data/lessons/matematicas-
 import { funcionesTrigonometricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/11-funciones-trigonometricas-2bach";
 import { funcionesTrigonometricasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/09-funciones-trigonometricas-ccss1";
 import { fundamentosAutomatizacionLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/01-fundamentos-automatizacion";
-import { fundamentosAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/01-fundamentos-axonometria-dt1";
-import { fundamentosProyeccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/01-fundamentos-proyecciones-diedrico-dt1";
+import { fundamentosAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-sistemas-axonometricos/01-fundamentos-axonometria-dt1";
+import { fundamentosProyeccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/01-fundamentos-proyecciones-diedrico-dt1";
 import { galgasExtensometricasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/11-componentes-sistema-control/06-galgas-extensometricas";
 import { gaussAmpliada2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/04-gauss-ampliada-2bach";
 import { gaussAmpliadaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/07-gauss-ampliada-ccss2";
@@ -805,7 +805,7 @@ import { interpolacionExtrapolacionCcss1Lesson } from "@/data/lessons/matematica
 import { interpretacionPlanosSimbologia2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/04-interpretacion-planos-simbologia-2eso";
 import { interpretarGraficas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/12-interpretar-graficas-2bach";
 import { interruptoresPulsadoresLamparasLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/04-interruptores-pulsadores-lamparas";
-import { interseccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-relaciones-distancias/01-intersecciones-diedrico-dt1";
+import { interseccionesDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistema-diedrico-relaciones-distancias/01-intersecciones-diedrico-dt1";
 import { intervaloConfianzaMedia2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/12-intervalo-confianza-media-2bach";
 import { intervaloConfianzaMediaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/08-intervalo-confianza-media-ccss2";
 import { intervaloConfianzaProporcion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/11-intervalo-confianza-proporcion-2bach";
@@ -826,7 +826,7 @@ import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologi
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { ionesIsotoposFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/03-iones-isotopos-fq2";
 import { isomeriaAplicacionesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/05-isomeria-aplicaciones-fb1";
-import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
+import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
 import { isotoposMasaAtomicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/03-isotopos-masa-atomica-fq3";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
 import { karnaughSimplificacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/09-karnaugh-simplificacion";
@@ -947,7 +947,7 @@ import { mezclasVidaCotidianaFq2Lesson } from "@/data/lessons/fisica-2-eso/03-su
 import { minimoComunMultiploLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/04-minimo-comun-multiplo";
 import { minimoComunMultiplo2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/04-minimo-comun-multiplo-2eso";
 import { modelado3dOperaciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/06-modelado-3d-operaciones-2eso";
-import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
+import { modelado3dPrimitivasBooleanasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistemas-cad/03-modelado-3d-primitivas-booleanas-dt1";
 import { modeladoParametricoRestriccionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/09-sistemas-cad/01-modelado-parametrico-restricciones-dt2";
 import { modeloCineticoMolecularFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/03-modelo-cinetico-molecular-fq2";
 import { modeloMecanocuanticoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/03-modelo-mecanocuantico-fb1";
@@ -997,7 +997,7 @@ import { noFerreosResistenciaEspecificaLesson } from "@/data/lessons/tecnologia-
 import { nomenclaturaCompuestosFq3Lesson } from "@/data/lessons/fisica-3-eso/03-elementos-y-compuestos-quimicos/06-nomenclatura-compuestos-fq3";
 import { nomenclaturasComposicionStockFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/04-nomenclaturas-composicion-stock-fb1";
 import { normalEstandarTablaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/07-normal-estandar-tabla-ccss1";
-import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
+import { normalizacionTiposLineaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/01-normalizacion-tipos-linea-dt1";
 import { notacionCientifica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/01-numeros-reales-y-complejos/07-notacion-cientifica-1bach";
 import { notacionCientifica3esoLesson } from "@/data/lessons/matematicas-3-eso/02-potencias-y-raices/05-notacion-cientifica-3eso";
 import { notacionCientifica4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/06-notacion-cientifica-4eso";
@@ -1062,7 +1062,7 @@ import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-e
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
-import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
+import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { oxidacionReduccionFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/04-oxidacion-reduccion-fb1";
 import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
@@ -1075,7 +1075,7 @@ import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-
 import { parPotenciaReductoras4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/02-par-potencia-reductoras-4eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
 import { parabolaFocoDirectrizDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/04-parabola-foco-directriz-dt2";
-import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-relaciones-distancias/02-paralelismo-diedrico-dt1";
+import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistema-diedrico-relaciones-distancias/02-paralelismo-diedrico-dt1";
 import { parametrosBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/04-parametros-binomial-2bach";
 import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-numeros-enteros/03-parentesis-enteros";
 import { parteEnteraCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/08-parte-entera-ccss1";
@@ -1085,13 +1085,13 @@ import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-ba
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
 import { perpendicularesTransportadorDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-instrumentos-trazados-fundamentales/02-perpendiculares-transportador-dt1";
-import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
+import { perpendicularidadDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistema-diedrico-relaciones-distancias/03-perpendicularidad-diedrico-dt1";
 import { perspectivaCaballeraLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/06-perspectiva-caballera";
-import { perspectivaCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/04-perspectiva-caballera-dt1";
-import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/06-perspectiva-conica-oblicua-dt1";
+import { perspectivaCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-sistemas-axonometricos/04-perspectiva-caballera-dt1";
+import { perspectivaConicaOblicuaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/06-perspectiva-conica-oblicua-dt1";
 import { perspectivaIsometricaPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/07-perspectiva-isometrica-piezas";
 import { perspectivasIsometricaCaballeraConica2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/03-perspectivas-isometrica-caballera-conica-2eso";
-import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
+import { pertenenciaPuntoRectaPlanoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/06-pertenencia-punto-recta-plano-dt1";
 import { pesoCuerposCelestesFq4Lesson } from "@/data/lessons/fisica-4-eso/09-fuerzas-gravitatorias/02-peso-cuerpos-celestes-fq4";
 import { pesoMasaGravedadFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/02-peso-masa-gravedad-fq2";
 import { pesoNormalRozamientoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/02-peso-normal-rozamiento-fq4";
@@ -1101,15 +1101,15 @@ import { planificacionGanttPresupuesto2esoLesson } from "@/data/lessons/tecnolog
 import { planificacionGestionProyectosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/05-planificacion-gestion-proyectos";
 import { planificacionPertCaminoCritico4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/04-planificacion-pert-camino-critico-4eso";
 import { planificacionRepartoTareasLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/06-planificacion-reparto-tareas";
-import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/02-plano-acotado-horizontales-dt1";
-import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
+import { planoAcotadoHorizontalesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/02-plano-acotado-horizontales-dt1";
+import { planoDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/05-plano-diedrico-trazas-dt1";
 import { planoGeneralNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/04-plano-general-normal-2bach";
 import { planoInclinadoFq4Lesson } from "@/data/lessons/fisica-4-eso/08-dinamica/03-plano-inclinado-fq4";
 import { planoInclinadoRozamientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/10-estatica-y-dinamica/02-plano-inclinado-rozamiento-fb1";
 import { planoTresPuntosCoplanarios2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/05-plano-tres-puntos-coplanarios-2bach";
 import { planoVectorialParametricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/03-plano-vectorial-parametricas-2bach";
 import { planosAcotadosExplanacionesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/07-axonometrico-conico-acotados/04-planos-acotados-explanaciones-dt2";
-import { planosAcotadosRectaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/01-planos-acotados-recta-dt1";
+import { planosAcotadosRectaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/01-planos-acotados-recta-dt1";
 import { planosMontajeDespieceDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/05-planos-montaje-despiece-dt2";
 import { planosTallerToleranciasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/08-normalizacion-proyecto/04-planos-taller-tolerancias-dt2";
 import { planteamientoPlCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/03-programacion-lineal/04-planteamiento-pl-ccss2";
@@ -1145,7 +1145,7 @@ import { porcentajesLesson } from "@/data/lessons/matematicas-1-eso/09-proporcio
 import { porcentajes2esoLesson } from "@/data/lessons/matematicas-2-eso/04-proporcionalidad-y-porcentajes/03-porcentajes-2eso";
 import { porcentajes3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/08-porcentajes-3eso";
 import { posicionVelocidadAceleracionFq4Lesson } from "@/data/lessons/fisica-4-eso/07-cinematica/01-posicion-velocidad-aceleracion-fq4";
-import { posicionesRectaDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/04-posiciones-recta-diedrico-dt1";
+import { posicionesRectaDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/04-posiciones-recta-diedrico-dt1";
 import { posicionesRelativas1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/06-posiciones-relativas-1bach";
 import { postuladosMorganLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/06-postulados-morgan";
 import { potenciaElectricaHidraulicaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/05-principios-generales-maquinas/10-potencia-electrica-hidraulica";
@@ -1312,8 +1312,8 @@ import { puenteHSentidoGiro3esoLesson } from "@/data/lessons/tecnologia-3-eso/06
 import { puertasLogicas3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/04-puertas-logicas-3eso";
 import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/07-puertas-nor-nand-xor";
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
-import { puntoDiedricoCuadrantesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/02-punto-diedrico-cuadrantes-dt1";
-import { puntoPlanoAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-sistemas-axonometricos/05-punto-plano-axonometria-dt1";
+import { puntoDiedricoCuadrantesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/02-punto-diedrico-cuadrantes-dt1";
+import { puntoPlanoAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-sistemas-axonometricos/05-punto-plano-axonometria-dt1";
 import { puntosNotablesTrianguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-triangulos-cuadrilateros-poligonos/01-puntos-notables-triangulo-dt1";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
@@ -1353,7 +1353,7 @@ import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-ind
 import { recorridoSimetrias1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/06-funciones/02-recorrido-simetrias-1bach";
 import { recorridoSimetriasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/02-recorrido-simetrias-ccss1";
 import { rectaContinuaImplicitas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/02-recta-continua-implicitas-2bach";
-import { rectaDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-sistema-diedrico-punto-recta-plano/03-recta-diedrico-trazas-dt1";
+import { rectaDiedricoTrazasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistema-diedrico-punto-recta-plano/03-recta-diedrico-trazas-dt1";
 import { rectaDosPuntos3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/05-recta-dos-puntos-3eso";
 import { rectaPlanoPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/08-recta-plano-posicion-2bach";
 import { rectaPuntoPendiente3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/04-recta-punto-pendiente-3eso";
@@ -1473,7 +1473,7 @@ import { sensoresDivisorTension3esoLesson } from "@/data/lessons/tecnologia-3-es
 import { sensoresTransductoresLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/03-sensores-transductores";
 import { separacionMezclasEtapasFq3Lesson } from "@/data/lessons/fisica-3-eso/05-disoluciones/04-separacion-mezclas-etapas-fq3";
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
-import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/06-simbologia-industrial-arquitectonica-dt1";
+import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/06-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
@@ -1487,7 +1487,7 @@ import { simulacionDigitalSoluciones3esoLesson } from "@/data/lessons/tecnologia
 import { simulacionMontajeProyecto4esoLesson } from "@/data/lessons/tecnologia-4-eso/04-electricidad-electronica/09-simulacion-montaje-proyecto-4eso";
 import { simulacionSeguridadElectrica2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/08-simulacion-seguridad-electrica-2eso";
 import { simulacionToleranciasSoftware4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/03-simulacion-tolerancias-software-4eso";
-import { sistemaConicoFrontalDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-planos-acotados-conico/05-sistema-conico-frontal-dt1";
+import { sistemaConicoFrontalDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-planos-acotados-conico/05-sistema-conico-frontal-dt1";
 import { sistemaInversa2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/05-sistema-inversa-2bach";
 import { sistemaInversaCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/08-sistema-inversa-ccss2";
 import { sistemaMatricial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/02-sistema-matricial-2bach";
@@ -1574,7 +1574,7 @@ import { tangenciasRectaCircunferenciaDt2Lesson } from "@/data/lessons/dibujo-te
 import { tangenteNormal2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/07-tangente-normal-2bach";
 import { tangenteNormalCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/05-tangente-normal-ccss2";
 import { tangentesPropiedadReflexivaDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/05-tangentes-propiedad-reflexiva-dt2";
-import { tangentesRectaCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-tangencias-curvas-tecnicas/01-tangentes-recta-circunferencia-dt1";
+import { tangentesRectaCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-tangencias-curvas-tecnicas/01-tangentes-recta-circunferencia-dt1";
 import { tasaVariacionMedia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/08-derivadas/01-tasa-variacion-media-1bach";
 import { tasaVariacionMediaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/01-tasa-variacion-media-ccss1";
 import { tasasNumerosIndiceCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/02-matematica-financiera/01-tasas-numeros-indice-ccss1";
@@ -1637,6 +1637,7 @@ import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso
 import { transmisionDilatacionFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/03-transmision-dilatacion-fq4";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
+import { traslacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-transformaciones-geometricas/01-traslacion-dt1";
 import { trasladarAngulosCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/01-instrumentos-trazados-fundamentales/04-trasladar-angulos-compas-dt1";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
 import { traspuestaSimetricasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/07-traspuesta-simetricas-ccss2";
@@ -1691,7 +1692,7 @@ import { verdaderaMagnitudAngulosDt2Lesson } from "@/data/lessons/dibujo-tecnico
 import { viscosidadIndiceLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/02-viscosidad-indice";
 import { vistasAlzadoPlantaPerfilLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/05-vistas-alzado-planta-perfil";
 import { vistasNormalizadasCroquis2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/01-vistas-normalizadas-croquis-2eso";
-import { vistasNormalizadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-normalizacion-documentacion-grafica/04-vistas-normalizadas-dt1";
+import { vistasNormalizadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/11-normalizacion-documentacion-grafica/04-vistas-normalizadas-dt1";
 import { volumenEsfera2esoLesson } from "@/data/lessons/matematicas-2-eso/10-medida-del-volumen/04-volumen-esfera-2eso";
 import { volumenEsfera3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/08-volumen-esfera-3eso";
 import { volumenParalelepipedoTetraedro2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/10-volumen-paralelepipedo-tetraedro-2bach";
@@ -3342,6 +3343,7 @@ export const interactiveLessons = {
   "transmision-dilatacion-fq4": transmisionDilatacionFq4Lesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
+  "traslacion-dt1": traslacionDt1Lesson,
   "trasladar-angulos-compas-dt1": trasladarAngulosCompasDt1Lesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,
   "traspuesta-simetricas-ccss2": traspuestaSimetricasCcss2Lesson,
