@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { RamificadosFb1Explorador, GruposFb1Explorador, IsomeriaFb1Explorador, ReaccionesOrganicasFb1Explorador } from "@/components/lesson/slide/tools/Fb1OrganicaTools";
 import { AjusteFb1Explorador, LimitanteFb1Explorador, PhFb1Explorador, ValoracionFb1Explorador, RedoxPilaFb1Explorador, IndustriaFb1Explorador } from "@/components/lesson/slide/tools/Fb1ReaccionesTools";
 import { LeyesGasesFb1Explorador, GasIdealFb1Explorador, MezclaGasesFb1Explorador, ConcentracionFb1Explorador, DilucionColigativasFb1Explorador } from "@/components/lesson/slide/tools/Fb1GasesTools";
 import { MolMasaFb1Explorador, CentesimalFb1Explorador, FormulaEmpiricaFb1Explorador, EstequiometriaPurezaFb1Explorador } from "@/components/lesson/slide/tools/Fb1CantidadTools";
@@ -2443,6 +2444,14 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <RedoxPilaFb1Explorador block={block} />;
     case "fb1-industria-explorador":
       return <IndustriaFb1Explorador block={block} />;
+    case "fb1-ramificados-explorador":
+      return <RamificadosFb1Explorador block={block} />;
+    case "fb1-grupos-explorador":
+      return <GruposFb1Explorador block={block} />;
+    case "fb1-isomeria-explorador":
+      return <IsomeriaFb1Explorador block={block} />;
+    case "fb1-reacciones-organicas-explorador":
+      return <ReaccionesOrganicasFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

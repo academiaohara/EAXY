@@ -168,6 +168,7 @@ import { cambiosEstadoCalorLatenteFq3Lesson } from "@/data/lessons/fisica-3-eso/
 import { cambiosFisicosQuimicosFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/01-cambios-fisicos-quimicos-fq2";
 import { cambiosPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/04-cambios-plano-dt2";
 import { campoInduccionBiotSavartLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/02-campo-induccion-biot-savart";
+import { carbonoCadenasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/01-carbono-cadenas-fb1";
 import { cargaElectricaElectrizacionFq3Lesson } from "@/data/lessons/fisica-3-eso/09-electricidad/01-carga-electrica-electrizacion-fq3";
 import { cargasFuerzasEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/02-cargas-fuerzas-estructuras-ti2";
 import { caudalHumedadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/02-caudal-humedad";
@@ -675,6 +676,7 @@ import { funciones2esoLesson } from "@/data/lessons/tecnologia-2-eso/06-programa
 import { funcionesExponencialesLogaritmicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/10-funciones-exponenciales-logaritmicas-2bach";
 import { funcionesGraficas3esoLesson } from "@/data/lessons/matematicas-3-eso/07-funciones-y-graficas/01-funciones-graficas-3eso";
 import { funcionesModularidadLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/05-sistemas-informaticos-programacion/08-funciones-modularidad";
+import { funcionesNitrogenadasHalogenadasFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/04-funciones-nitrogenadas-halogenadas-fb1";
 import { funcionesPolinomicas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/07-funciones-polinomicas-2bach";
 import { funcionesPolinomicasCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/10-funciones-polinomicas-ccss2";
 import { funcionesProgramacionModular4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/05-funciones-programacion-modular-4eso";
@@ -713,12 +715,14 @@ import { grafosMatrices2bachLesson } from "@/data/lessons/matematicas-2-bachille
 import { grafosMatricesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/01-matrices/12-grafos-matrices-ccss2";
 import { gruasPolipastosPotencia3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/06-gruas-polipastos-potencia-3eso";
 import { gruposFuncionalesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/03-grupos-funcionales-fq4";
+import { gruposFuncionalesOxigenadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/03-grupos-funcionales-oxigenados-fb1";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
 import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
 import { hidrocarburosFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/02-hidrocarburos-fq4";
+import { hidrocarburosNomenclaturaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/02-hidrocarburos-nomenclatura-fb1";
 import { hidroxidosOxoacidosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/02-hidroxidos-oxoacidos-fb1";
 import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/05-hidroxidos-oxoacidos-fq4";
 import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
@@ -812,6 +816,7 @@ import { investigacionDesarrolloInnovacionTi2Lesson } from "@/data/lessons/tecno
 import { investigacionNormasPropiedad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/02-investigacion-normas-propiedad-4eso";
 import { investigacionSolucionesFuentesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/01-proyectos-investigacion-desarrollo/02-investigacion-soluciones-fuentes";
 import { ionesIsotoposFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/03-iones-isotopos-fq2";
+import { isomeriaAplicacionesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/05-isomeria-aplicaciones-fb1";
 import { isometricaPiezasElipsesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-sistemas-axonometricos/03-isometrica-piezas-elipses-dt1";
 import { isotoposMasaAtomicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/03-isotopos-masa-atomica-fq3";
 import { karnaughCuatroVariablesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/10-karnaugh-cuatro-variables";
@@ -1845,6 +1850,7 @@ export const interactiveLessons = {
   "cambios-fisicos-quimicos-fq2": cambiosFisicosQuimicosFq2Lesson,
   "cambios-plano-dt2": cambiosPlanoDt2Lesson,
   "campo-induccion-biot-savart": campoInduccionBiotSavartLesson,
+  "carbono-cadenas-fb1": carbonoCadenasFb1Lesson,
   "carga-electrica-electrizacion-fq3": cargaElectricaElectrizacionFq3Lesson,
   "cargas-fuerzas-estructuras-ti2": cargasFuerzasEstructurasTi2Lesson,
   "caudal-humedad": caudalHumedadLesson,
@@ -2352,6 +2358,7 @@ export const interactiveLessons = {
   "funciones-exponenciales-logaritmicas-2bach": funcionesExponencialesLogaritmicas2bachLesson,
   "funciones-graficas-3eso": funcionesGraficas3esoLesson,
   "funciones-modularidad": funcionesModularidadLesson,
+  "funciones-nitrogenadas-halogenadas-fb1": funcionesNitrogenadasHalogenadasFb1Lesson,
   "funciones-polinomicas-2bach": funcionesPolinomicas2bachLesson,
   "funciones-polinomicas-ccss2": funcionesPolinomicasCcss2Lesson,
   "funciones-programacion-modular-4eso": funcionesProgramacionModular4esoLesson,
@@ -2390,12 +2397,14 @@ export const interactiveLessons = {
   "grafos-matrices-ccss2": grafosMatricesCcss2Lesson,
   "gruas-polipastos-potencia-3eso": gruasPolipastosPotencia3esoLesson,
   "grupos-funcionales-fq4": gruposFuncionalesFq4Lesson,
+  "grupos-funcionales-oxigenados-fb1": gruposFuncionalesOxigenadosFb1Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
   "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
   "hidrocarburos-fq4": hidrocarburosFq4Lesson,
+  "hidrocarburos-nomenclatura-fb1": hidrocarburosNomenclaturaFb1Lesson,
   "hidroxidos-oxoacidos-fb1": hidroxidosOxoacidosFb1Lesson,
   "hidroxidos-oxoacidos-fq4": hidroxidosOxoacidosFq4Lesson,
   "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
@@ -2489,6 +2498,7 @@ export const interactiveLessons = {
   "investigacion-normas-propiedad-4eso": investigacionNormasPropiedad4esoLesson,
   "investigacion-soluciones-fuentes": investigacionSolucionesFuentesLesson,
   "iones-isotopos-fq2": ionesIsotoposFq2Lesson,
+  "isomeria-aplicaciones-fb1": isomeriaAplicacionesFb1Lesson,
   "isometrica-piezas-elipses-dt1": isometricaPiezasElipsesDt1Lesson,
   "isotopos-masa-atomica-fq3": isotoposMasaAtomicaFq3Lesson,
   "karnaugh-cuatro-variables": karnaughCuatroVariablesLesson,

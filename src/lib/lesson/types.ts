@@ -1127,6 +1127,7 @@ export type SlideAnimId =
   | "fb1-mol"
   | "fb1-gas-particulas"
   | "fb1-pila-daniell"
+  | "fb1-cadenas-carbono"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2217,6 +2218,10 @@ export type SlideToolId =
   | "fb1-valoracion-explorador"
   | "fb1-redox-pila-explorador"
   | "fb1-industria-explorador"
+  | "fb1-ramificados-explorador"
+  | "fb1-grupos-explorador"
+  | "fb1-isomeria-explorador"
+  | "fb1-reacciones-organicas-explorador"
   /* industrial-tool-end */;
 
 /**

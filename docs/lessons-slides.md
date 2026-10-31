@@ -603,6 +603,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-mol` | El mol: número de Avogadro, masa molar y conversiones | — |
 | `fb1-gas-particulas` | Modelo cinético: presión, volumen, temperatura y cantidad de un gas | — |
 | `fb1-pila-daniell` | Pila Daniell: ánodo, cátodo, electrones y puente salino | — |
+| `fb1-cadenas-carbono` | Cadenas del carbono: lineal, ramificada, cíclica y aromática | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1567,6 +1568,10 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-valoracion-explorador` | Curva de valoración HCl-NaOH con equivalencia | a (Ca), b (Va), c (Cb) |
 | `fb1-redox-pila-explorador` | Pilas entre 13 metales: ánodo, cátodo, f.e.m. y reacción global | a, b (índices de metal) |
 | `fb1-industria-explorador` | Procesos industriales: producto, economía atómica y CO₂ | n (proceso 0–3), a (kg), b (% rend.) |
+| `fb1-ramificados-explorador` | Hidrocarburos ramificados: nombre IUPAC, fórmula y esqueleto | n (tipo 0–2), a (carbonos), b (posición), c (ramificación 0–2) |
+| `fb1-grupos-explorador` | Funciones orgánicas (10 familias): nombre IUPAC y fórmula | n (familia), a (carbonos), b (posición), c (carbonos del radical) |
+| `fb1-isomeria-explorador` | Isómeros de 8 fórmulas con tipo de isomería y punto de ebullición | n (fórmula 0–7) |
+| `fb1-reacciones-organicas-explorador` | Tipos de reacciones orgánicas y combustión de alcanos | n (modo 0–1), a (carbonos), b (tipo) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción
