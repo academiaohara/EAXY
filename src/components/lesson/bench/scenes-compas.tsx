@@ -9,10 +9,10 @@ import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
 
 /* ───────────── Utilidades de animación ───────────── */
 
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const lerpP = (a: Pt, b: Pt, t: number): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+export const lerpP = (a: Pt, b: Pt, t: number): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
 /** Fracción (0–1) de `p` dentro del tramo [a, b]. */
-const tramo = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
+export const tramo = (p: number, a: number, b: number) => clamp((p - a) / (b - a), 0, 1);
 const norm180 = (a: number) => {
   const d = ((((a + 180) % 360) + 360) % 360) - 180;
   return d === -180 ? 180 : d;
@@ -45,7 +45,7 @@ export function useProgreso(clave: string | number, ms: number) {
 }
 
 /** Arco que se va dibujando de `a1` hacia `a2` según `t` (0–1). */
-function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2: number; t: number }) {
+export function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2: number; t: number }) {
   if (t <= 0) return null;
   return <ArcoPlano c={c} r={r} a1={a1} a2={a1 + (a2 - a1) * t} />;
 }
@@ -78,8 +78,8 @@ function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: P
   );
 }
 
-const MV = { w: 620, h: 380 };
-const MSHEET = { x: 10, y: 10, w: 600, h: 360 };
+export const MV = { w: 620, h: 380 };
+export const MSHEET = { x: 10, y: 10, w: 600, h: 360 };
 
 /* ───────────── Mediatriz: explicación animada ───────────── */
 
@@ -302,9 +302,9 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 /* ───────────── Práctica paso a paso con compás y regla ───────────── */
 
 /** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
-type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla";
+export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla";
 
-type Est = {
+export type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
   fase: number;
   centros: Pt[];
@@ -320,7 +320,7 @@ type Est = {
 
 type CfgArco = { centro: Pt; base: number; signo: 1 | -1; rhoMin: number; rhoMax: number; req: [number, number] };
 
-type Def = {
+export type Def = {
   scene: BenchSceneName;
   fases: Tipo[];
   /** Dibujo base de la hoja (segmento, ángulo, puntos…). */
@@ -337,10 +337,12 @@ type Def = {
   rhoIni: (n: number) => number;
   /** Puntos de la construcción a los que se ajustan los toques de la regla. */
   cortes: (est: Est) => Pt[];
+  /** Toques de la fase final (2 por defecto: dos puntos de la regla; 1: marcar un punto). */
+  nClics?: number;
   evaluar: (est: Est) => { ok: boolean; mensaje: string };
 };
 
-const SNAP = 14;
+export const SNAP = 14;
 const HIT = 24;
 
 function mapaFases(fases: Tipo[]) {
@@ -359,7 +361,7 @@ const cuenta = (fases: Tipo[], hasta: number, t: Tipo) => fases.slice(0, hasta).
 /** Cuántas aberturas se han fijado antes de la fase `hasta` (por «abertura» o por «medida»). */
 const cuentaAb = (fases: Tipo[], hasta: number) => fases.slice(0, hasta).filter((x) => x === "abertura" || x === "medida").length;
 
-function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
+export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
   const { fases } = def;
   const mapa = mapaFases(fases);
   const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [] };
@@ -388,6 +390,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
   const entrar = (e: Est, f: number): Est => {
     const t = fases[f];
     const out: Est = { ...e, fase: f, radios: [...e.radios], cub: [...e.cub] };
+    if (t === "medida") out.medida = [];
     if (t === "abertura") {
       const a = cuentaAb(fases, f);
       if (out.radios[a] === undefined) out.radios[a] = def.radioIni(a, out);
@@ -439,7 +442,7 @@ function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: {
     if (tipo === "regla") {
       const sn = def.cortes(est).find((c) => dist(c, p) <= SNAP) ?? p;
       const clics = [...est.clics, sn];
-      if (clics.length >= 2) {
+      if (clics.length >= (def.nClics ?? 2)) {
         setPrev((h) => [...h, est]);
         setEst({ ...est, clics, fase: fases.length });
       } else setEst({ ...est, clics });

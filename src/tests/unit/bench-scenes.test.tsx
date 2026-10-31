@@ -15,7 +15,8 @@ afterEach(cleanup);
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const escenas = todas.filter((e) => !e.endsWith("-practica"));
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e === "traslacion-cuadricula";
+const escenas = todas.filter((e) => !porAccion(e));
 
 /** Lee el control que la escena registra en el pie de la lección. */
 function Sonda({ onControl }: { onControl: (control: LessonStepControl | null) => void }) {
@@ -618,6 +619,138 @@ describe("trasladar un ángulo con compás", () => {
     const t = hasta("medida");
     fireEvent.click(screen.getByTestId("bench-deshacer"));
     expect(t.fase()).toBe("arco");
+  });
+});
+
+describe("traslación", () => {
+  const A: Pt = [100, 270];
+  const B: Pt = [200, 170];
+  const A2: Pt = [270, 230];
+  const B2: Pt = [370, 130];
+  const lv = Math.hypot(A2[0] - A[0], A2[1] - A[1]);
+  const lab = Math.hypot(B[0] - A[0], B[1] - A[1]);
+
+  it("explicación: la medida del vector, los dos arcos y la figura trasladada aparecen por pasos", () => {
+    const { siguiente } = montar("traslacion-compas");
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    expect(screen.queryByTestId("bench-imagen")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-v")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-a2")).toBeTruthy();
+    expect(screen.getByTestId("bench-arco-b")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  /** Hace las seis fases con compás y deja marcar B′. */
+  function hastaMarcar() {
+    const t = pantalla("traslacion-practica");
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(A2);
+    expect(t.fase()).toBe("centro");
+    t.tocar(B);
+    expect(t.fase()).toBe("arco");
+    const base = ang(B, B2);
+    t.arrastrar(enCirc(B, lv, base - 25), enCirc(B, lv, base + 10));
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(B);
+    expect(t.fase()).toBe("centro");
+    t.tocar(A2);
+    expect(t.fase()).toBe("arco");
+    const base2 = ang(A2, B2);
+    t.arrastrar(enCirc(A2, lab, base2 - 25), enCirc(A2, lab, base2 + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: la primera medida solo vale con A y A′, y las dos medidas se toman por separado", () => {
+    const t = pantalla("traslacion-practica");
+    t.tocar([300, 100]);
+    expect(t.fase()).toBe("medida");
+    t.tocar(A);
+    t.tocar(A);
+    expect(t.fase()).toBe("medida");
+    t.tocar(A2);
+    expect(t.fase()).toBe("centro");
+  });
+
+  it("práctica: marcar B′ en el corte de los arcos es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([B2[0] + 5, B2[1] - 4]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar otro punto es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar([300, 100]);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es B");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (params?: { a?: number; b?: number }) => {
+      const m = montar("traslacion-cuadricula", params ?? { a: 9, b: 3 });
+      const svg = () => screen.getByTestId("bench-cuadricula");
+      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, svg, tocar };
+    };
+
+    it("marcando A′, B′ y C′ en sus intersecciones es correcto y dibuja la figura trasladada", () => {
+      const t = abrir();
+      expect(t.out.control?.disabled).toBe(true);
+      t.tocar(px([11, 8]));
+      t.tocar(px([13, 3]));
+      t.tocar(px([16, 7]));
+      expect(t.svg().getAttribute("data-puntos")).toBe("3");
+      expect(t.out.control?.disabled).toBe(false);
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+      expect(screen.getByTestId("bench-imagen")).toBeTruthy();
+    });
+
+    it("un vértice mal puesto es incorrecto y el mensaje dice cuál", () => {
+      const t = abrir();
+      t.tocar(px([11, 8]));
+      t.tocar(px([13, 4]));
+      t.tocar(px([16, 7]));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+      expect(screen.getByTestId("bench-resultado").textContent).toContain("B′");
+      expect(screen.getByTestId("bench-resultado").textContent).not.toContain("A′ no");
+    });
+
+    it("hay que tocar una intersección de la cuadrícula y no se repiten puntos", () => {
+      const t = abrir();
+      t.tocar([px([5, 5])[0] + 12, px([5, 5])[1] + 12]);
+      expect(t.svg().getAttribute("data-puntos")).toBe("0");
+      expect(screen.getByTestId("bench-aviso").textContent).toContain("intersección");
+      t.tocar(px([11, 8]));
+      t.tocar(px([11, 8]));
+      expect(t.svg().getAttribute("data-puntos")).toBe("1");
+    });
+
+    it("«Deshacer» quita el último punto y el vector cambia con los parámetros", () => {
+      const t = abrir({ a: 5, b: -2 });
+      t.tocar(px([7, 13]));
+      t.tocar(px([9, 8]));
+      fireEvent.click(screen.getByTestId("bench-deshacer"));
+      expect(t.svg().getAttribute("data-puntos")).toBe("1");
+      t.tocar(px([9, 8]));
+      t.tocar(px([12, 12]));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
   });
 });
 

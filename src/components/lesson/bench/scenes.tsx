@@ -43,7 +43,10 @@ export type BenchSceneName =
   | "mediatriz-practica"
   | "bisectriz-practica"
   | "trasladar-angulo-compas"
-  | "trasladar-practica";
+  | "trasladar-practica"
+  | "traslacion-compas"
+  | "traslacion-practica"
+  | "traslacion-cuadricula";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -59,6 +62,9 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "bisectriz-practica": 9,
   "trasladar-angulo-compas": 5,
   "trasladar-practica": 9,
+  "traslacion-compas": 5,
+  "traslacion-practica": 7,
+  "traslacion-cuadricula": 3,
 };
 
 export const INK = "#2a2f36";

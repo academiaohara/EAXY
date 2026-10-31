@@ -695,6 +695,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-1-bachillerato/historia-fundamentos-geometricos": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/proporcionalidad-equivalencia-semejanza": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/triangulos-cuadrilateros-poligonos": "dibujo-geometria-plana",
+  "dibujo-tecnico-1-bachillerato/transformaciones-geometricas": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/tangencias-curvas-tecnicas": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/sistema-diedrico-punto-recta-plano": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/sistema-diedrico-relaciones-distancias": "dibujo-sistemas-representacion",
