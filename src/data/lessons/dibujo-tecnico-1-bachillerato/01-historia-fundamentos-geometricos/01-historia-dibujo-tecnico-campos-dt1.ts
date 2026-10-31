@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { pick, slide, sort } from "@/data/lessons/tec1-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
   slug: "historia-dibujo-tecnico-campos-dt1",
@@ -18,7 +18,7 @@ export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿Qué cambia en cada fase?", message: "Compara qué duda elimina cada capa del plano: primero la forma, después el tamaño y por último la interpretación común." }],
     },
-    pick("diagnostica-plano", "Detecta la información que falta", "Un taller recibe una perspectiva de una pieza con buen aspecto, pero sin cotas ni escala. ¿Qué impide fabricarla con seguridad?", "No se conoce su tamaño real: distintas piezas podrían corresponder al mismo dibujo", [["Falta colorearla para distinguir las caras", "El color puede ayudar a verla, pero no fija ninguna dimensión."], ["Falta indicar quién hizo el dibujo", "La autoría no permite deducir el tamaño."], ["No se ha usado un programa CAD", "Un croquis manual bien acotado sí puede comunicar el tamaño."]], "La forma y el tamaño son informaciones distintas. Las cotas y la escala evitan que el fabricante tenga que adivinar.", "Pregúntate qué dato necesitarías para elegir una medida de material."),
+    { id: "taller-1", type: "interactive_tool", tool: "dt1-workshop", scene: "plan-repair", title: "Repara el plano antes de fabricar", transfer: false, help: [{ label: "¿Qué condición compruebo?", message: "Compara las dimensiones reales del encargo con las medidas en papel. Las cotas no son las longitudes que mides en el documento." }] },
     {
       id: "documentos-profesionales", type: "storyboard", title: "El mismo lenguaje, documentos distintos", scene: "dt1-documentos-profesionales", autoplay: false,
       phases: [
@@ -29,10 +29,10 @@ export const historiaDibujoTecnicoCamposDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿Cómo comparo los documentos?", message: "Piensa qué decisión debe tomar quien lo recibe: distribuir espacio, fabricar, conectar o comprender el relieve." }],
     },
-    sort("elige-documento", "Elige el documento útil", "Clasifica cada encargo por el documento que permitiría tomar decisiones sin adivinar.", [["arq", "Planta o plano de espacios", "cobalt"], ["mec", "Plano de pieza", "amber"], ["ele", "Esquema de conexiones", "emerald"], ["top", "Mapa topográfico", "violet"]], [["Distribuir aulas en un instituto", "arq"], ["Comprobar si un eje entra en un rodamiento", "mec"], ["Localizar por qué no se enciende una lámpara", "ele"], ["Trazar una carretera evitando una fuerte pendiente", "top"], ["Definir el grosor de una arandela", "mec"], ["Decidir dónde situar una escalera", "arq"]], "El documento se elige por la decisión que debe permitir: espacio, fabricación, conexión o relieve."),
-    slide("manual-cad", "La herramienta cambia; el lenguaje permanece", [
+    { id: "taller-2", type: "interactive_tool", tool: "dt1-workshop", scene: "plan-repair", title: "Nuevo encargo: otra placa", transfer: true, help: [{ label: "¿Qué condición compruebo?", message: "La escala cambia la proporción papel/realidad, pero las cotas siguen expresando el tamaño de fabricación." }] },
+    slide("manual-cad", "Del croquis al lenguaje técnico compartido", [
       { kind: "compare", left: { title: "A mano", text: "El croquis permite pensar, probar y comunicar una idea con rapidez.", tone: "info" }, right: { title: "Con CAD", text: "Facilita editar, medir, reutilizar y compartir un modelo con precisión.", tone: "ok" } },
-      { kind: "rule", title: "Lo que ambos necesitan", text: "Vistas, escala, cotas, símbolos y normas siguen siendo necesarios: el programa no decide qué información debe comunicar el plano." },
+      { kind: "rule", title: "Lo que ambos necesitan", text: "Los trazados geométricos, la perspectiva del Renacimiento y la geometría descriptiva hicieron posible pasar de observar a definir objetos. La industrialización añadió normas compartidas y el CAD facilitó su edición. El cambio de herramienta mantiene la necesidad de un mensaje preciso." },
     ]),
     {
       id: "transferencia", type: "storyboard", title: "Antes de entregar, comprueba el mensaje", scene: "dt1-plano-revision", autoplay: false,

@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { slide, tool } from "@/data/lessons/tec1-helpers";
 
 export const arcoCapazDt1Lesson: InteractiveLesson = {
   slug: "arco-capaz-dt1",
@@ -17,7 +17,7 @@ export const arcoCapazDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿Qué permanece y qué cambia?", message: "Al mover P, compara por separado las longitudes PA, PB y la abertura entre ambas visuales; solo una de esas magnitudes define este lugar." }],
     },
-    pick("predice-movimiento", "Predice antes de explorar", "P está sobre el arco capaz de 60° y se mueve por el mismo arco hacia A. ¿Qué ocurre con ∠APB?", "Sigue midiendo 60°, aunque cambien PA y PB", [["Aumenta porque P se acerca a A", "Las distancias cambian, pero todos los puntos del arco cumplen la misma condición angular."], ["Disminuye hasta 0°", "Eso no ocurre mientras P permanezca en el arco y sea distinto de A."], ["Solo se conserva si PA = PB", "La igualdad de distancias no define el arco capaz."]], "El lugar se define precisamente por conservar ∠APB = 60°."),
+    { id: "taller-1", type: "interactive_tool", tool: "dt1-workshop", scene: "view-angle", title: "Encuentra el encuadre de 90°", transfer: false, help: [{ label: "¿Qué condición compruebo?", message: "Para un ángulo recto, busca puntos de la semicircunferencia de diámetro AB por encima del segmento." }] },
     slide("explora-arco", "Comprueba la invariancia", [
       { kind: "text", text: "Cambia α y mueve P por el arco. Después separa P del arco y observa cómo deja de cumplirse la condición." },
       { kind: "compare", left: { title: "Sobre el arco", text: "∠APB mantiene el valor elegido.", tone: "ok" }, right: { title: "Fuera del arco", text: "El ángulo aumenta o disminuye.", tone: "warn" } },
@@ -32,7 +32,7 @@ export const arcoCapazDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿De dónde sale el centro?", message: "Combina dos condiciones sobre O: debe estar a igual distancia de A y B, y el radio OA debe ser perpendicular a la tangente en A." }],
     },
-    sort("compara-angulos", "Relaciona ángulo y aspecto", "Clasifica qué ocurre al cambiar el ángulo bajo el que se ve AB.", [["agu", "α menor que 90°", "cobalt"], ["rec", "α igual a 90°", "amber"], ["obt", "α mayor que 90°", "emerald"]], [["El arco se aleja de AB", "agu"], ["La figura es una semicircunferencia de diámetro AB", "rec"], ["Es el caso de la propiedad de Tales", "rec"], ["El punto P queda más próximo a AB", "obt"], ["El segmento ocupa un ángulo visual pequeño", "agu"], ["El segmento ocupa un ángulo visual grande", "obt"]], "Acercarse al segmento aumenta su ángulo visual; alejarse lo reduce. El caso de 90° separa ambas situaciones."),
+    { id: "taller-2", type: "interactive_tool", tool: "dt1-workshop", scene: "view-angle", title: "Busca un encuadre de 60°", transfer: true, help: [{ label: "¿Qué condición compruebo?", message: "Con 60° la cámara debe alejarse respecto a la posición central de 90°. Observa el ángulo, no solo una distancia." }] },
     {
       id: "localizacion-dos-arcos", type: "storyboard", title: "Localiza una posición con dos observaciones", scene: "dt1-localizacion-dos-arcos", autoplay: false,
       phases: [
