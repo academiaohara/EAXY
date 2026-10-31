@@ -6,6 +6,7 @@ import { ConceptCard } from "@/components/lesson/steps/ConceptCard";
 import { NaturalesNumeracionTool } from "@/components/lesson/tools/naturales-numeracion/NaturalesNumeracionTool";
 import { PotenciasRaicesTool } from "@/components/lesson/tools/potencias-raices/PotenciasRaicesTool";
 import { SystemGraphTool } from "@/components/lesson/tools/SystemGraphTool";
+import { Dt1Workshop } from "@/components/lesson/tools/dt1-workshop/Dt1Workshop";
 import type { LessonContinueMeta } from "@/components/lesson/LessonStepControlContext";
 import type {
   InteractiveToolStep as InteractiveToolStepType,
@@ -79,6 +80,9 @@ export function InteractiveToolStepView({
   compact = false,
   stageTheme = "board",
 }: InteractiveToolStepProps) {
+  if (step.tool === "dt1-workshop") {
+    return <Dt1Workshop step={step} onContinue={onContinue} />;
+  }
   if (step.tool === "naturales-numeracion") {
     return (
       <NaturalesNumeracionTool

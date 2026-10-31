@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { slide, tool } from "@/data/lessons/tec1-helpers";
 
 export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
   slug: "lugares-geometricos-dt1",
@@ -17,7 +17,7 @@ export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿Cómo descubro el lugar?", message: "Mueve mentalmente P y pregunta qué medida debe permanecer igual. La igualdad te dice qué trazado contiene todas las posiciones válidas." }],
     },
-    pick("predice-faro", "Predice antes de trazar", "Dos faros A y B deben oírse con la misma intensidad. Si solo importa la distancia, ¿por dónde puede moverse el barco?", "Por la mediatriz de AB, porque todos sus puntos equidistan de ambos faros", [["Por la circunferencia con centro A", "Esa condición solo fija la distancia a A."], ["Por el propio segmento AB", "Salvo el punto medio, sus puntos no equidistan de A y B."], ["Por cualquier paralela a AB", "La distancia a los faros cambia a lo largo de la paralela."]], "Traducir «misma distancia a A y B» conduce directamente a la mediatriz."),
+    { id: "taller-1", type: "interactive_tool", tool: "dt1-workshop", scene: "locus", title: "Sitúa la instalación con dos condiciones", transfer: false, help: [{ label: "¿Qué condición compruebo?", message: "Para igualar PA y PB, busca primero la mediatriz; después ajusta la distancia de 5 km." }] },
     slide("explora-lugares", "Mueve P y comprueba la condición", [
       { kind: "text", text: "Elige circunferencia, mediatriz, bisectriz o paralelas. Mueve P primero fuera del lugar, predice qué medidas serán distintas y llévalo después a una posición que las iguale." },
       { kind: "warning", title: "No busques un único punto", text: "Encuentra varias posiciones correctas: el conjunto completo es el lugar geométrico." },
@@ -31,7 +31,7 @@ export const lugaresGeometricosDt1Lesson: InteractiveLesson = {
       ],
       help: [{ label: "¿Por qué cambia el número de soluciones?", message: "Imagina que desplazas uno de los lugares: puede quedar separado, tocar al otro o atravesarlo. Cada contacto común es una solución." }],
     },
-    sort("traduce-condicion", "Traduce condiciones a lugares", "Asocia cada condición con el trazado que contiene todas sus soluciones.", [["cir", "Circunferencia", "cobalt"], ["med", "Mediatriz", "violet"], ["bis", "Bisectriz", "amber"], ["par", "Dos paralelas", "emerald"]], [["A 4 cm de un punto O", "cir"], ["A igual distancia de A y B", "med"], ["A igual distancia de dos paredes que forman una esquina", "bis"], ["A 2 m del borde recto de una carretera", "par"], ["Centro de una circunferencia que pasa por A y B", "med"], ["Posiciones alcanzadas por un radar con radio fijo", "cir"]], "La frase de distancia es el dato operativo: identifica qué elementos permanecen fijos y qué igualdad debe cumplir P."),
+    { id: "taller-2", type: "interactive_tool", tool: "dt1-workshop", scene: "locus", title: "Resuelve otra separación entre referencias", transfer: true, help: [{ label: "¿Qué condición compruebo?", message: "Hay una solución a cada lado del segmento. Refleja la coordenada y y comprueba ambas." }] },
     slide("transferencia-localizacion", "Diseña una localización", [
       { kind: "story", text: "Una antena debe quedar a 5 km de A y a la misma distancia de los pueblos B y C. Traza primero la circunferencia de centro A y radio 5 km; después, la mediatriz de BC. Cada intersección es una ubicación posible." },
       { kind: "rule", title: "Método", text: "Traduce cada condición a un lugar, dibuja los lugares e interpreta sus intersecciones. En la próxima lección una condición angular generará un nuevo lugar: el arco capaz." },

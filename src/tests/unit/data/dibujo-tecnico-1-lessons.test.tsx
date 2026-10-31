@@ -65,6 +65,7 @@ describe("curso Dibujo Técnico I", () => {
         expect(step.items.every((i) => groups.has(i.group)), step.id).toBe(true);
         expect(step.items.length, step.id).toBeGreaterThanOrEqual(4);
       }
+      if (step.type === "interactive_tool" && step.tool === "dt1-workshop") practice += 1;
     }
     expect(practice).toBeGreaterThanOrEqual(2);
   });
@@ -138,8 +139,9 @@ describe("tema 1: recorrido didáctico sin solapamientos", () => {
       expect(lesson.steps.length).toBeLessThanOrEqual(8);
       expect(lesson.steps.some((step) => step.type === "storyboard")).toBe(true);
       expect(
-        lesson.steps.filter((step) => step.type === "predict" || step.type === "classify").length,
+        lesson.steps.filter((step) => step.type === "interactive_tool" && step.tool === "dt1-workshop").length,
       ).toBeGreaterThanOrEqual(2);
+      expect(lesson.steps.some((step) => step.type === "predict" || step.type === "classify")).toBe(false);
 
       let passiveRun = 0;
       for (const step of lesson.steps) {
@@ -156,7 +158,8 @@ describe("tema 1: recorrido didáctico sin solapamientos", () => {
 
   it("reserva cada concepto para la lección que lo desarrolla", () => {
     const [language, proof, loci, arc] = theme.map((lesson) => JSON.stringify(lesson));
-    expect(language).not.toMatch(/Monge|Euclides|Renacimiento/);
+    expect(language).toMatch(/perspectiva del Renacimiento/);
+    expect(language).not.toMatch(/Euclides/);
     expect(proof).not.toMatch(/arco capaz/i);
     expect((loci!.match(/arco capaz/gi) ?? []).length).toBeLessThanOrEqual(1);
     expect(arc).toMatch(/arco capaz/i);

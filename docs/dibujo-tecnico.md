@@ -1,5 +1,9 @@
 # Dibujo Técnico I y II (Bachillerato) — plan
 
+## Renovación didáctica en curso
+
+El catálogo de 50 lecciones de DT I tiene cobertura de contenido, pero eso no acredita el nuevo estándar de experiencia. Ver [renovación práctica de DT I](./dt1-renovation.md): mapeo estatal LOMLOE frente al libro antiguo, reparto del curso y primera entrega del tema 1 con ocho talleres aplicados. Los temas 2–10 siguen pendientes de renovación. Las tablas históricas de «Hecho» de este documento describen la implementación inicial, no la aceptación con el estándar actual.
+
 Fuente: Real Decreto 243/2022 (`temp/BOE-A-2022-5521_copia.pdf`, materias «Dibujo Técnico I» y «Dibujo Técnico II», con criterios de evaluación y saberes básicos A–D). Asturias lo desarrolla en el Decreto 60/2022 (solo documentación de mapeo; no está subido). Cursos propuestos: `dibujo-tecnico-1-bachillerato` y `dibujo-tecnico-2-bachillerato`, ids `-dt1` / `-dt2`, herramientas `dt1-…` / `dt2-…`, animaciones `dt1-…` / `dt2-…`.
 
 Ya existe material relacionado (instrumentos y trazados, escalas, acotación en Tecnología) pero no cubre el temario de estas materias; no se reutilizan lecciones.

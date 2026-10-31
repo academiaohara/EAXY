@@ -359,7 +359,17 @@ export type PotenciasRaicesToolStep = LessonStepBase &
 export type InteractiveToolStep =
   | SystemGraphToolStep
   | NaturalesNumeracionToolStep
-  | PotenciasRaicesToolStep;
+  | PotenciasRaicesToolStep
+  | Dt1WorkshopStep;
+
+export type Dt1WorkshopScene = "plan-repair" | "right-angle" | "locus" | "view-angle";
+
+export type Dt1WorkshopStep = LessonStepBase & StageStepFields & {
+  type: "interactive_tool";
+  tool: "dt1-workshop";
+  scene: Dt1WorkshopScene;
+  transfer?: boolean;
+};
 
 /**
  * Una explicación del tutor escrita a propósito para el ejercicio: debe decir
