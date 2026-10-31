@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { angDe, dist, enCirculo, type Pt } from "./geometry";
+import { angDe, clamp, dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
 import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
@@ -22,7 +22,7 @@ const HA2 = homot(HA);
 const HB2 = homot(HB);
 const HC2 = homot(HC);
 
-function PapelHomotecia({ rayos = 0, imagen = 0 }: { rayos?: number; imagen?: number }) {
+export function PapelHomotecia({ rayos = 0, imagen = 0 }: { rayos?: number; imagen?: number }) {
   const orig: Pt[] = [HA, HB, HC];
   const img: Pt[] = [HA2, HB2, HC2];
   return (
@@ -97,36 +97,52 @@ export function HomoteciaCompas({ block }: { block: BenchBlock }) {
 
 /* ───────────── Homotecia: práctica paso a paso ───────────── */
 
-const defHomotecia: Def = {
-  scene: "homotecia-practica",
-  fases: ["medida", "centro", "arco", "regla"],
-  nClics: 1,
-  papel: (est: Est) => (
-    <g>
-      <PapelHomotecia />
-      <line x1={HO[0]} y1={HO[1]} x2={HO[0] + 2.4 * (HA[0] - HO[0])} y2={HO[1]} stroke={INK} strokeWidth="1" strokeDasharray="6 4" />
-      {est.fase >= 4 ? <Punto p={HA2} nombre="A′" dx={6} dy={18} color={VERDE} /> : null}
-    </g>
-  ),
-  medibles: () => [HO, HA],
-  candidatos: () => [HA],
-  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-  radioLim: () => [40, 200],
-  radioIni: () => 100,
-  rhoIni: () => -25,
-  arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, HA2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [HA2],
-  evaluar: (est) => {
-    const [p1] = est.clics;
-    if (!p1) return { ok: false, mensaje: "Falta marcar el punto A′." };
-    return dist(p1, HA2) <= SNAP + 2
-      ? { ok: true, mensaje: "Correcto: A′ está en la semirrecta OA, a doble distancia de O que A (OA′ = 2·OA), porque el compás ha llevado la longitud OA a continuación de A." }
-      : { ok: false, mensaje: "Ese punto no es A′: el arco corta a la recta OA en dos puntos, O y A′, y A′ es el que está más lejos de O. Pulsa «Reintentar»." };
-  },
-};
+export const HOMO_ORIG: Pt[] = [HA, HB, HC];
+export const HOMO_IMG: Pt[] = [HA2, HB2, HC2];
+export const HOMO_CENTRO = HO;
+const NOMBRES = ["A", "B", "C"];
+
+/** Práctica de hallar la imagen del vértice `v` (0 = A, 1 = B, 2 = C); las anteriores se muestran ya halladas. */
+function defHomotecia(v: number): Def {
+  const P = HOMO_ORIG[v];
+  const P2 = HOMO_IMG[v];
+  const n = NOMBRES[v];
+  return {
+    scene: "homotecia-practica",
+    fases: ["medida", "centro", "arco", "regla"],
+    nClics: 1,
+    papel: (est: Est) => (
+      <g>
+        <PapelHomotecia />
+        <line x1={HO[0]} y1={HO[1]} x2={HO[0] + 2.4 * (P[0] - HO[0])} y2={HO[1] + 2.4 * (P[1] - HO[1])} stroke={INK} strokeWidth="1" strokeDasharray="6 4" />
+        {HOMO_IMG.slice(0, v).map((q, i) => (
+          <Punto key={i} p={q} nombre={`${NOMBRES[i]}′`} dx={i === 1 ? 8 : 6} dy={i === 1 ? -6 : 18} color={VERDE} />
+        ))}
+        {est.fase >= 4 ? <Punto p={P2} nombre={`${n}′`} dx={v === 1 ? 8 : v === 2 ? -22 : 6} dy={v === 0 ? 18 : -6} color={VERDE} /> : null}
+      </g>
+    ),
+    medibles: () => [HO, P],
+    candidatos: () => [P],
+    compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+    radioLim: () => [40, 215],
+    radioIni: () => 100,
+    rhoIni: () => -25,
+    arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, P2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
+    cortes: () => [P2],
+    evaluar: (est) => {
+      const [p1] = est.clics;
+      if (!p1) return { ok: false, mensaje: `Falta marcar el punto ${n}′.` };
+      return dist(p1, P2) <= SNAP + 2
+        ? { ok: true, mensaje: `Correcto: ${n}′ está en la semirrecta O${n}, a doble distancia de O que ${n} (O${n}′ = 2·O${n}), porque el compás ha llevado la longitud O${n} a continuación de ${n}.` }
+        : { ok: false, mensaje: `Ese punto no es ${n}′: el arco corta a la recta O${n} en dos puntos, O y ${n}′, y ${n}′ es el que está más lejos de O. Pulsa «Reintentar».` };
+    },
+  };
+}
 
 export function HomoteciaPractica({ block }: { block: BenchBlock }) {
-  return <Practica block={block} def={defHomotecia} vista={{ ...MV, sheet: MSHEET }} />;
+  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
+  const [def] = useState(() => defHomotecia(v));
+  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
 /* ───────────── Homotecia en papel cuadriculado ───────────── */
@@ -135,25 +151,27 @@ const CENTRO: [number, number] = [8, 7];
 const FIG_H: [number, number][] = [[10, 7], [10, 5], [9, 6]];
 
 export function HomoteciaCuadricula({ block }: { block: BenchBlock }) {
-  const raw = Math.round(block.params?.a ?? 2);
-  const k = raw === 3 ? 3 : raw === -1 ? -1 : raw === -2 ? -2 : 2;
-  const esperado = FIG_H.map(([x, y]) => [CENTRO[0] + k * (x - CENTRO[0]), CENTRO[1] + k * (y - CENTRO[1])] as [number, number]);
+  const raw = block.params?.a ?? 2;
+  const k = raw === 0.5 ? 0.5 : raw === 3 ? 3 : raw === -1 ? -1 : raw === -2 ? -2 : 2;
+  // con razón 1/2 la figura de partida es el doble de grande, para que la imagen caiga en intersecciones
+  const figura: [number, number][] = k === 0.5 ? [[12, 7], [12, 3], [10, 5]] : FIG_H;
+  const esperado = figura.map(([x, y]) => [CENTRO[0] + k * (x - CENTRO[0]), CENTRO[1] + k * (y - CENTRO[1])] as [number, number]);
   const o = gp(CENTRO);
   return (
     <CuadriculaEjercicio
       block={block}
       scene="homotecia-cuadricula"
-      figura={FIG_H}
+      figura={figura}
       esperado={esperado}
       flechas
-      mensajeOk={`Correcto: cada vértice queda en la recta que lo une con O, a ${Math.abs(k)} ${Math.abs(k) === 1 ? "vez" : "veces"} su distancia a O${k < 0 ? " y al otro lado de O" : ""}. La figura obtenida es semejante a la original, con razón ${k}.`}
+      mensajeOk={k === 0.5 ? "Correcto: cada vértice queda en la recta que lo une con O, a la mitad de su distancia a O. La figura obtenida es una reducción semejante a la original, con razón 1/2." : `Correcto: cada vértice queda en la recta que lo une con O, a ${Math.abs(k)} ${Math.abs(k) === 1 ? "vez" : "veces"} su distancia a O${k < 0 ? " y al otro lado de O" : ""}. La figura obtenida es semejante a la original, con razón ${k}.`}
       decoracion={
         <g>
           <clipPath id="homotecia-rejilla">
             <rect x={22} y={22} width={24 * CELDA} height={14 * CELDA} />
           </clipPath>
           <g clipPath="url(#homotecia-rejilla)">
-          {FIG_H.map((g, i) => {
+          {figura.map((g, i) => {
             const v = gp(g);
             const dx = v[0] - o[0];
             const dy = v[1] - o[1];
@@ -163,7 +181,7 @@ export function HomoteciaCuadricula({ block }: { block: BenchBlock }) {
           </g>
           <Punto p={o} nombre="O" dx={-18} dy={18} color={AZUL} />
           <text x={34} y={48} fontSize="17" fontWeight="800" fill={AMBAR} fontFamily={SANS} {...etiqueta}>
-            k = {k}
+            k = {k === 0.5 ? "1/2" : k}
           </text>
         </g>
       }

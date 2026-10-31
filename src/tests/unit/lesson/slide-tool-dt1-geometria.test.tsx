@@ -10,10 +10,10 @@ import {
   pythagorasGeometry,
 } from "@/components/lesson/anim/scenes/industrial/dt1-fundamentos";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
-import { PHI, alturaTrianguloEquivalente, anguloEn, arcoCapaz, areaTriangulo, catetoFaltante, cuartaProporcional, cumpleLugar, esTerna, hipotenusa, homotecia, ladoCuadradoEquivalente, mediaProporcional, razonAreas, razonVolumenes, segmentoAureo, terceraProporcional } from "@/components/lesson/slide/tools/DtGeometriaTools";
+import { anguloEn, arcoCapaz, catetoFaltante, cumpleLugar, esTerna, hipotenusa } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import type { SlideToolId } from "@/lib/lesson/types";
 
-const TOOLS: SlideToolId[] = ["dt1-pitagoras-explorador", "dt1-lugar-geometrico-explorador", "dt1-arco-capaz-explorador", "dt1-thales-explorador", "dt1-media-proporcional-explorador", "dt1-equivalencia-explorador", "dt1-homotecia-explorador"];
+const TOOLS: SlideToolId[] = ["dt1-pitagoras-explorador", "dt1-lugar-geometrico-explorador", "dt1-arco-capaz-explorador"];
 const mount = (tool: SlideToolId, params?: Record<string, number>) => render(<SlideTool block={{ kind: "tool", tool, params }} />);
 
 const FOUNDATION_SCENES = [
@@ -138,34 +138,5 @@ describe("resultados de las herramientas de geometría", () => {
       expect(anguloEn([R * Math.cos(th), d + R * Math.sin(th)], [-3, 0], [3, 0])).toBeCloseTo(60, 3);
     }
     expect(anguloEn([0, 0.1], [-3, 0], [3, 0])).toBeGreaterThan(170);
-  });
-});
-
-describe("resultados de las herramientas de proporcionalidad, equivalencia y semejanza", () => {
-  it("proporcionales", () => {
-    expect(cuartaProporcional(3, 2, 6)).toBe(4);
-    expect(cuartaProporcional(4, 10, 6)).toBe(15);
-    expect(cuartaProporcional(0, 2, 6)).toBeNaN();
-    expect(terceraProporcional(2, 6)).toBe(18);
-    expect(mediaProporcional(4, 9)).toBe(6);
-    expect(mediaProporcional(-1, 4)).toBeNaN();
-    expect(PHI).toBeCloseTo(1.618, 3);
-    expect(segmentoAureo(10)).toBeCloseTo(6.1803, 3);
-    expect(10 / segmentoAureo(10)).toBeCloseTo(segmentoAureo(10) / (10 - segmentoAureo(10)), 6);
-  });
-  it("equivalencia", () => {
-    expect(ladoCuadradoEquivalente(8, 2)).toBe(4);
-    expect(areaTriangulo(6, 4)).toBe(12);
-    expect(alturaTrianguloEquivalente(5, 5, 3)).toBe(6);
-    expect(areaTriangulo(5, alturaTrianguloEquivalente(5, 5, 3))).toBe(15);
-    expect(alturaTrianguloEquivalente(0, 5, 3)).toBeNaN();
-  });
-  it("homotecia", () => {
-    expect(homotecia([2, 1], [0, 0], -2)).toEqual([-4, -2]);
-    expect(homotecia([3, 5], [1, 1], 2)).toEqual([5, 9]);
-    expect(razonAreas(3)).toBe(9);
-    expect(razonAreas(-2)).toBe(4);
-    expect(razonVolumenes(2)).toBe(8);
-    expect(razonVolumenes(-2)).toBe(8);
   });
 });

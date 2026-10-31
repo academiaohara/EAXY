@@ -39,7 +39,7 @@ import { buildCuboIsometrico } from "@/components/lesson/anim/scenes/industrial/
 import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
 import { buildTangentesPunto, buildTrazadoOvalo } from "@/components/lesson/anim/scenes/industrial/dt1-tangencias";
 import { buildPentagonoEuclides } from "@/components/lesson/anim/scenes/industrial/dt1-poligonos";
-import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz, buildSeccionAurea } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
+import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
 import { buildArcoCapazConstruccion, buildArcoCapazInvariancia, buildDocumentosProfesionales, buildGeometriaMedidaDemostracion, buildInterseccionLugares, buildLocalizacionDosArcos, buildLugaresCondiciones, buildPitagorasAreas, buildPlanoInformacion, buildPlanoRevision } from "@/components/lesson/anim/scenes/industrial/dt1-fundamentos";
 import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
 import { buildCicloScrum } from "@/components/lesson/anim/scenes/industrial/tecti2-proyectos";
@@ -855,7 +855,6 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-documentos-profesionales": () => buildDocumentosProfesionales(),
   "dt1-plano-revision": () => buildPlanoRevision(),
   "dt1-localizacion-dos-arcos": () => buildLocalizacionDosArcos(),
-  "dt1-seccion-aurea": () => buildSeccionAurea(),
   "dt1-pentagono-euclides": () => buildPentagonoEuclides(),
   "dt1-tangentes-punto": () => buildTangentesPunto(),
   "dt1-trazado-ovalo": () => buildTrazadoOvalo(),

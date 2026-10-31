@@ -2,6 +2,9 @@
 
 import type { SlideBlock } from "@/lib/lesson/types";
 import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
+import { CuadraturaCompas, CuadraturaPractica, EquivalenciaTriangulos, SemejanzaRazon } from "./scenes-equivalencia";
+import { AureaCompas, AureaPractica, MediaCompas, MediaPractica, ThalesDividir, ThalesParalelas, ThalesPractica } from "./scenes-proporcion";
+import { UnionImagen } from "./scenes-unir";
 import { HomoteciaCompas, HomoteciaCuadricula, HomoteciaPractica } from "./scenes-homotecia";
 import { SimetriaCompas, SimetriaCuadricula, SimetriaPractica } from "./scenes-simetria";
 import { GiroCompas, GiroCuadricula, GiroPractica } from "./scenes-giro";
@@ -60,6 +63,30 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <HomoteciaPractica block={block} />;
     case "homotecia-cuadricula":
       return <HomoteciaCuadricula block={block} />;
+    case "union-imagen":
+      return <UnionImagen block={block} />;
+    case "thales-dividir":
+      return <ThalesDividir block={block} />;
+    case "thales-practica":
+      return <ThalesPractica block={block} />;
+    case "thales-paralelas":
+      return <ThalesParalelas block={block} />;
+    case "media-compas":
+      return <MediaCompas block={block} />;
+    case "media-practica":
+      return <MediaPractica block={block} />;
+    case "aurea-compas":
+      return <AureaCompas block={block} />;
+    case "aurea-practica":
+      return <AureaPractica block={block} />;
+    case "equivalencia-triangulos":
+      return <EquivalenciaTriangulos block={block} />;
+    case "cuadratura-compas":
+      return <CuadraturaCompas block={block} />;
+    case "cuadratura-practica":
+      return <CuadraturaPractica block={block} />;
+    case "semejanza-razon":
+      return <SemejanzaRazon block={block} />;
     default:
       return null;
   }

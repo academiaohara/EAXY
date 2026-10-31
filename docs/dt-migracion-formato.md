@@ -11,7 +11,7 @@ El contenido creado a partir del RD 243/2022 (LOMLOE) antes de la «mesa de dibu
 
 Está hecho con animaciones tipo Manim, herramientas con deslizadores y preguntas teóricas. Cumple el temario, pero no el estándar actual: instrumentos y construcciones realistas, práctica en vez de preguntas, pasos dentro de la diapositiva sin scroll, comprobación en el pie (verde/naranja).
 
-Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4 lecciones) y tema 5 «Transformaciones geométricas» (4 lecciones: traslación, giro, simetría y homotecia).
+Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4 lecciones), tema 3 «Proporcionalidad, equivalencia y semejanza» (4 lecciones) y tema 5 «Transformaciones geométricas» (4 lecciones: traslación, giro, simetría y homotecia).
 
 ## Principios
 
@@ -34,3 +34,7 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 - **Orden:** el propuesto arriba (confirmado).
 - **Formato de los sistemas de representación:** la misma «mesa de dibujo» (`bench`) del tema 1: escenas SVG realistas con pasos dentro de la diapositiva, animación de la explicación y práctica paso a paso con «Comprobar» en el pie. No habrá modelo 3D interactivo. Se crearán las escenas nuevas que haga falta (planos de proyección, sólidos proyectados sobre la hoja…) reutilizando el motor de práctica.
 - **Código antiguo:** cuando un tema esté migrado, se retiran las herramientas, animaciones y talleres antiguos que ya no use ninguna lección (con sus tests).
+
+## Código antiguo retirado
+
+- Tema 3 (proporcionalidad, equivalencia y semejanza): herramientas `dt1-thales-explorador`, `dt1-media-proporcional-explorador`, `dt1-equivalencia-explorador` y `dt1-homotecia-explorador`, la animación `dt1-seccion-aurea` y sus helpers de cálculo y tests. La homotecia se trabaja en el tema 5; la lección 4 del tema 3 pasa a centrarse en semejanza y escalas.

@@ -16522,8 +16522,8 @@ export const curriculum: Curriculum = {
             },
             {
               id: lessonId(20204),
-              title: "4. Semejanza y homotecia",
-              summary: "Razón de semejanza, áreas y volúmenes, homotecia.",
+              title: "4. Semejanza y escalas",
+              summary: "Razón de semejanza, áreas y volúmenes, escalas y reducción por homotecia.",
               orderIndex: 4,
               kind: "interactive",
               interactiveSlug: "semejanza-homotecia-dt1",

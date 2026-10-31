@@ -35,7 +35,7 @@ const TA2 = mas(TA, VEC);
 const TB2 = mas(TB, VEC);
 const TC2 = mas(TC, VEC);
 
-function PapelTraslacion({ imagen, etiquetas }: { imagen?: number; etiquetas: { a2: boolean; b2: boolean; c2: boolean } }) {
+export function PapelTraslacion({ imagen, etiquetas }: { imagen?: number; etiquetas: { a2: boolean; b2: boolean; c2: boolean } }) {
   const t = imagen ?? 0;
   const tri2: Pt[] = [TA2, TB2, TC2];
   return (
@@ -113,40 +113,53 @@ export function TraslacionCompas({ block }: { block: BenchBlock }) {
   );
 }
 
-const defTraslacion: Def = {
-  scene: "traslacion-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
-  nClics: 1,
-  papel: (est: Est) => (
-    <g>
-      <path d={poligono([TA, TB, TC])} fill="rgba(31,120,180,0.08)" stroke={INK} strokeWidth="1.5" strokeLinejoin="round" />
-      <Punto p={TA} nombre="A" dx={-16} dy={16} />
-      <Punto p={TB} nombre="B" dx={-16} dy={-6} />
-      <Punto p={TC} nombre="C" dx={6} dy={16} />
-      <Flecha a={TA} b={TA2} color={AMBAR} grosor={2.4} />
-      <Punto p={TA2} nombre="A′" dx={6} dy={16} />
-      {est.fase >= 7 ? <Punto p={TB2} nombre="B′" dx={8} dy={-6} color={VERDE} /> : null}
-    </g>
-  ),
-  candidatos: (_est, idx) => (idx === 0 ? [TB] : [TA2]),
-  medibles: (est) => (est.fase === 0 ? [TA, TA2] : [TA, TB]),
-  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-  radioLim: () => [40, 200],
-  radioIni: () => 100,
-  rhoIni: () => -25,
-  arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, TB2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [TB2],
-  evaluar: (est) => {
-    const [p1] = est.clics;
-    if (!p1) return { ok: false, mensaje: "Falta marcar el punto B′." };
-    return dist(p1, TB2) <= SNAP + 2
-      ? { ok: true, mensaje: "Correcto: B′ es el cuarto vértice del paralelogramo AA′B′B, así que BB′ es igual y paralelo a AA′: B se ha trasladado según el vector v." }
-      : { ok: false, mensaje: "Ese punto no es B′: B′ es donde se cortan los dos arcos. Pulsa «Reintentar»." };
-  },
-};
+export const TRAS_ORIG: Pt[] = [TA, TB, TC];
+export const TRAS_IMG: Pt[] = [TA2, TB2, TC2];
+const NOMBRES = ["A", "B", "C"];
+
+/** Práctica de trasladar el vértice `v` (1 = B, 2 = C) con el método del paralelogramo; lo anterior se muestra ya hecho. */
+function defTraslacion(v: number): Def {
+  const P = TRAS_ORIG[v];
+  const P2 = TRAS_IMG[v];
+  const n = NOMBRES[v];
+  return {
+    scene: "traslacion-practica",
+    fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
+    nClics: 1,
+    papel: (est: Est) => (
+      <g>
+        <path d={poligono([TA, TB, TC])} fill="rgba(31,120,180,0.08)" stroke={INK} strokeWidth="1.5" strokeLinejoin="round" />
+        <Punto p={TA} nombre="A" dx={-16} dy={16} />
+        <Punto p={TB} nombre="B" dx={-16} dy={-6} />
+        <Punto p={TC} nombre="C" dx={6} dy={16} />
+        <Flecha a={TA} b={TA2} color={AMBAR} grosor={2.4} />
+        <Punto p={TA2} nombre="A′" dx={6} dy={16} />
+        {v > 1 ? <Punto p={TB2} nombre="B′" dx={8} dy={-6} color={VERDE} /> : null}
+        {est.fase >= 7 ? <Punto p={P2} nombre={`${n}′`} dx={8} dy={v === 1 ? -6 : 16} color={VERDE} /> : null}
+      </g>
+    ),
+    candidatos: (_est, idx) => (idx === 0 ? [P] : [TA2]),
+    medibles: (est) => (est.fase === 0 ? [TA, TA2] : [TA, P]),
+    compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+    radioLim: () => [40, 200],
+    radioIni: () => 100,
+    rhoIni: () => -25,
+    arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, P2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
+    cortes: () => [P2],
+    evaluar: (est) => {
+      const [p1] = est.clics;
+      if (!p1) return { ok: false, mensaje: `Falta marcar el punto ${n}′.` };
+      return dist(p1, P2) <= SNAP + 2
+        ? { ok: true, mensaje: `Correcto: ${n}′ es el cuarto vértice del paralelogramo AA′${n}′${n}, así que ${n}${n}′ es igual y paralelo a AA′: ${n} se ha trasladado según el vector v.` }
+        : { ok: false, mensaje: `Ese punto no es ${n}′: ${n}′ es donde se cortan los dos arcos. Pulsa «Reintentar».` };
+    },
+  };
+}
 
 export function TraslacionPractica({ block }: { block: BenchBlock }) {
-  return <Practica block={block} def={defTraslacion} vista={{ ...MV, sheet: MSHEET }} />;
+  const v = clamp(Math.round(block.params?.b ?? 1), 1, 2);
+  const [def] = useState(() => defTraslacion(v));
+  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
 /* ───────────── Ejercicio en papel cuadriculado (traslación, giro…) ───────────── */

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { angDe, dist, enCirculo, reflejarPunto, type Pt } from "./geometry";
+import { angDe, clamp, dist, enCirculo, reflejarPunto, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
 import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
@@ -33,7 +33,7 @@ function arcoPorSimetrico(c: Pt, a: Pt, a2: Pt, margen = 12) {
   return { a1: aA - s * margen, a2: aA + delta + s * margen };
 }
 
-function PapelSimetria({ imagen = 0, puntos = 1 }: { imagen?: number; puntos?: number }) {
+export function PapelSimetria({ imagen = 0, puntos = 1 }: { imagen?: number; puntos?: number }) {
   const t = imagen;
   const orig: Pt[] = [SA, SB, SC];
   const sim: Pt[] = [SA2, SB2, SC2];
@@ -117,35 +117,50 @@ export function SimetriaCompas({ block }: { block: BenchBlock }) {
 
 /* ───────────── Simetría axial: práctica paso a paso ───────────── */
 
-const defSimetria: Def = {
-  scene: "simetria-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
-  nClics: 1,
-  papel: (est: Est) => (
-    <g>
-      <PapelSimetria puntos={1} />
-      {est.fase >= 7 ? <Punto p={SA2} nombre="A′" dx={8} dy={16} color={VERDE} /> : null}
-    </g>
-  ),
-  candidatos: (_est, idx) => (idx === 0 ? [SP] : [SQ]),
-  medibles: (est) => (est.fase === 0 ? [SP, SA] : [SQ, SA]),
-  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-  radioLim: () => [40, 200],
-  radioIni: () => 100,
-  rhoIni: () => -25,
-  arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, SA2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [SA2],
-  evaluar: (est) => {
-    const [p1] = est.clics;
-    if (!p1) return { ok: false, mensaje: "Falta marcar el punto A′." };
-    return dist(p1, SA2) <= SNAP + 2
-      ? { ok: true, mensaje: "Correcto: A′ es simétrico de A respecto de e: está a la misma distancia de P y de Q que A, así que el eje e es la mediatriz de AA′." }
-      : { ok: false, mensaje: "Ese punto no es A′: A′ es donde se cortan los dos arcos (el otro punto de corte es A). Pulsa «Reintentar»." };
-  },
-};
+export const SIM_ORIG: Pt[] = [SA, SB, SC];
+export const SIM_IMG: Pt[] = [SA2, SB2, SC2];
+const NOMBRES = ["A", "B", "C"];
+
+/** Práctica de hallar el simétrico del vértice `v` (0 = A, 1 = B, 2 = C); los anteriores se muestran ya hallados. */
+function defSimetria(v: number): Def {
+  const P0 = SIM_ORIG[v];
+  const P2 = SIM_IMG[v];
+  const n = NOMBRES[v];
+  return {
+    scene: "simetria-practica",
+    fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
+    nClics: 1,
+    papel: (est: Est) => (
+      <g>
+        <PapelSimetria puntos={1} />
+        {SIM_IMG.slice(0, v).map((q, i) => (
+          <Punto key={i} p={q} nombre={`${NOMBRES[i]}′`} dx={8} dy={i === 1 ? -6 : 16} color={VERDE} />
+        ))}
+        {est.fase >= 7 ? <Punto p={P2} nombre={`${n}′`} dx={8} dy={v === 1 ? -6 : 16} color={VERDE} /> : null}
+      </g>
+    ),
+    candidatos: (_est, idx) => (idx === 0 ? [SP] : [SQ]),
+    medibles: (est) => (est.fase === 0 ? [SP, P0] : [SQ, P0]),
+    compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+    radioLim: () => [40, 215],
+    radioIni: () => 100,
+    rhoIni: () => -25,
+    arco: (_est, _n, _radio, c) => ({ centro: c, base: angDe(c, P2), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
+    cortes: () => [P2],
+    evaluar: (est) => {
+      const [p1] = est.clics;
+      if (!p1) return { ok: false, mensaje: `Falta marcar el punto ${n}′.` };
+      return dist(p1, P2) <= SNAP + 2
+        ? { ok: true, mensaje: `Correcto: ${n}′ es simétrico de ${n} respecto de e: está a la misma distancia de P y de Q que ${n}, así que el eje e es la mediatriz de ${n}${n}′.` }
+        : { ok: false, mensaje: `Ese punto no es ${n}′: ${n}′ es donde se cortan los dos arcos (el otro punto de corte es ${n}). Pulsa «Reintentar».` };
+    },
+  };
+}
 
 export function SimetriaPractica({ block }: { block: BenchBlock }) {
-  return <Practica block={block} def={defSimetria} vista={{ ...MV, sheet: MSHEET }} />;
+  const v = clamp(Math.round(block.params?.b ?? 0), 0, 2);
+  const [def] = useState(() => defSimetria(v));
+  return <Practica block={block} def={def} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
 /* ───────────── Simetría axial en papel cuadriculado ───────────── */

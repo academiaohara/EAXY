@@ -51,7 +51,7 @@ export function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2
 }
 
 /** La regla entra, el lápiz traza la recta por `a` y `b` y la regla se retira. `p` va de 0 a 1. */
-function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string }) {
+export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string }) {
   const L = 300;
   const ang = (Math.atan2(b[1] - a[1], b[0] - a[0]) * 180) / Math.PI;
   const rd = (ang * Math.PI) / 180;
@@ -342,8 +342,14 @@ export type Def = {
   rhoIni: (n: number) => number;
   /** Puntos de la construcción a los que se ajustan los toques de la regla. */
   cortes: (est: Est) => Pt[];
-  /** Toques de la fase final (2 por defecto: dos puntos de la regla; 1: marcar un punto). */
+  /** Toques de la fase final (2 por defecto: dos puntos de la regla; 1: marcar un punto; 6: tres pasadas de la regla). */
   nClics?: number;
+  /** Si es true, la fase final no dibuja la recta de la regla (la construcción se muestra en `papel`). */
+  sinRegla?: boolean;
+  /** Cuánto se prolonga la recta de la regla más allá de los puntos tocados (28 por defecto). */
+  extRegla?: number;
+  /** Texto de progreso bajo el paso (por ejemplo, «Lados trazados: 1 de 3»). */
+  progreso?: (est: Est) => string | null;
   evaluar: (est: Est) => { ok: boolean; mensaje: string };
 };
 
@@ -572,8 +578,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       );
     }
   }
-  const pReglaClave = est.clics.length >= 2 ? "regla" : "no";
-  const pRegla = useProgreso(pReglaClave, 1200);
+  // Cada pareja de toques es una pasada de la regla; la última se anima y las anteriores quedan trazadas.
+  const parejas = Math.floor(est.clics.length / 2);
+  const pRegla = useProgreso(parejas > 0 ? `regla-${est.clics.length}` : "no", 1200);
 
   const nota = Math.min(est.fase, fases.length - 1);
   const extra = (
@@ -587,6 +594,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         >
           Fijar abertura
         </button>
+      ) : null}
+      {def.progreso?.(est) && !bloqueada ? (
+        <p className="text-sm font-semibold text-[color:var(--stage-muted,#b8c2d0)]" data-testid="bench-progreso">
+          {def.progreso(est)}
+        </p>
       ) : null}
       {aviso && !bloqueada ? (
         <p className="text-sm text-amber-200" data-testid="bench-aviso">
@@ -648,7 +660,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             </g>
           );
         })() : null}
-        {est.clics.length >= 2 ? <ReglaTrazando a={est.clics[0]} b={est.clics[1]} p={pRegla} ext={28} testId="bench-regla-trazo" /> : null}
+        {Array.from({ length: def.sinRegla ? 0 : parejas }, (_, i) => (
+          <ReglaTrazando key={i} a={est.clics[2 * i]} b={est.clics[2 * i + 1]} p={i === parejas - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === parejas - 1 ? "bench-regla-trazo" : undefined} />
+        ))}
         {est.medida.map((c, i) => (
           <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">
             <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AZUL} strokeWidth="1.6" />
