@@ -2,6 +2,7 @@
 
 import type { SlideBlock } from "@/lib/lesson/types";
 import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
+import { GiroCompas, GiroCuadricula, GiroPractica } from "./scenes-giro";
 import { TraslacionCompas, TraslacionCuadricula, TraslacionPractica } from "./scenes-transformaciones";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
@@ -39,6 +40,12 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <TraslacionPractica block={block} />;
     case "traslacion-cuadricula":
       return <TraslacionCuadricula block={block} />;
+    case "giro-compas":
+      return <GiroCompas block={block} />;
+    case "giro-practica":
+      return <GiroPractica block={block} />;
+    case "giro-cuadricula":
+      return <GiroCuadricula block={block} />;
     default:
       return null;
   }

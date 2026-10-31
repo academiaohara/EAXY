@@ -46,7 +46,10 @@ export type BenchSceneName =
   | "trasladar-practica"
   | "traslacion-compas"
   | "traslacion-practica"
-  | "traslacion-cuadricula";
+  | "traslacion-cuadricula"
+  | "giro-compas"
+  | "giro-practica"
+  | "giro-cuadricula";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -65,6 +68,9 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "traslacion-compas": 5,
   "traslacion-practica": 7,
   "traslacion-cuadricula": 3,
+  "giro-compas": 5,
+  "giro-practica": 5,
+  "giro-cuadricula": 3,
 };
 
 export const INK = "#2a2f36";

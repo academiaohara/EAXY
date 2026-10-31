@@ -15,7 +15,7 @@ afterEach(cleanup);
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e === "traslacion-cuadricula";
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e.endsWith("-cuadricula");
 const escenas = todas.filter((e) => !porAccion(e));
 
 /** Lee el control que la escena registra en el pie de la lección. */
@@ -750,6 +750,108 @@ describe("traslación", () => {
       t.tocar(px([12, 12]));
       act(() => t.out.control!.onClick());
       expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+  });
+});
+
+describe("giro", () => {
+  const O: Pt = [180, 290];
+  const A: Pt = [330, 290];
+  const th = 60;
+  const A2 = enCirc(O, 150, th);
+
+  it("explicación: el transportador, el arco de A y los de B y C aparecen por pasos", () => {
+    const { siguiente } = montar("giro-compas", { a: th });
+    expect(screen.getByTestId("bench-sentido")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-transportador-giro")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-giro-a")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    expect(screen.queryByTestId("bench-transportador-giro")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-arcos-giro-bc")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-girada")).toBeTruthy();
+  });
+
+  /** Hace las cuatro primeras fases y deja marcar A′. */
+  function hastaMarcar() {
+    const t = pantalla("giro-practica", { a: th });
+    expect(t.fase()).toBe("angulo");
+    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, th));
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(O);
+    expect(t.fase()).toBe("arco");
+    t.arrastrar(enCirc(O, 150, th - 25), enCirc(O, 150, th + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: el ángulo solo se da por marcado al soltar sobre el valor del giro", () => {
+    const t = pantalla("giro-practica", { a: th });
+    t.arrastrar(enCirc(O, 120, 30), enCirc(O, 120, 45)); // se queda corto
+    expect(t.fase()).toBe("angulo");
+    expect(screen.getByTestId("bench-aviso").textContent).toContain("ángulo del giro");
+    expect(screen.getByTestId("bench-angulo-lectura").textContent).toBe("45°");
+    t.arrastrar(enCirc(O, 120, 45), enCirc(O, 120, th));
+    expect(t.fase()).toBe("medida");
+  });
+
+  it("práctica: el teclado también marca el ángulo", () => {
+    const t = pantalla("giro-practica", { a: 30 });
+    const lectura = () => Number(screen.getByTestId("bench-angulo-lectura").textContent?.replace("°", ""));
+    expect(lectura()).toBe(20);
+    for (let i = 0; i < 10; i += 1) fireEvent.keyDown(t.svg(), { key: "ArrowLeft" });
+    expect(t.fase()).toBe("medida");
+  });
+
+  it("práctica: marcar A′ en el corte del arco con el segundo lado es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 5, A2[1] - 3]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar otro punto es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(enCirc(O, 150, th + 25)); // sobre el arco pero fuera del segundo lado
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("giro-cuadricula", { a });
+      const svg = () => screen.getByTestId("bench-cuadricula");
+      const tocar = (p: Pt) => fireEvent.pointerDown(svg(), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+    // O = (8, 7); A = (12, 7), B = (12, 4), C = (9, 5)
+    const casos: [number, [number, number][]][] = [
+      [90, [[8, 3], [5, 3], [6, 6]]],
+      [180, [[4, 7], [4, 10], [7, 9]]],
+      [270, [[8, 11], [11, 11], [10, 8]]],
+    ];
+    it.each(casos)("giro de %i° antihorario: los tres vértices en su sitio son correctos", (a, pts) => {
+      const t = abrir(a);
+      for (const g of pts) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("girar en sentido horario en vez de antihorario es incorrecto", () => {
+      const t = abrir(90);
+      for (const g of [[8, 11], [11, 11], [10, 8]] as [number, number][]) t.tocar(px(g)); // 270° en lugar de 90°
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
     });
   });
 });

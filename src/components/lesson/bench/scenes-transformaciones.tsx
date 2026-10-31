@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, type PointerEvent as ReactPointerEvent, useRef } from "react";
+import { useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 import { angDe, clamp, dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
-import { AMBAR, AZUL, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
+import { AMBAR, AZUL, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoAnim, MSHEET, MV, Practica, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Punto, puntero } from "./scenes-trazados";
 
@@ -149,28 +149,46 @@ export function TraslacionPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={defTraslacion} vista={{ ...MV, sheet: MSHEET }} />;
 }
 
-/* ───────────── Traslación en papel cuadriculado ───────────── */
+/* ───────────── Ejercicio en papel cuadriculado (traslación, giro…) ───────────── */
 
-const CELDA = 24;
-const GX0 = 22;
-const GY0 = 22;
+export const CELDA = 24;
+export const GX0 = 22;
+export const GY0 = 22;
 const COLS = 24;
 const FILAS = 14;
-const gp = (g: [number, number]): Pt => [GX0 + g[0] * CELDA, GY0 + g[1] * CELDA];
+export const gp = (g: [number, number]): Pt => [GX0 + g[0] * CELDA, GY0 + g[1] * CELDA];
 const FIG: [number, number][] = [[2, 11], [4, 6], [7, 10]];
 
-export function TraslacionCuadricula({ block }: { block: BenchBlock }) {
-  const dx = clamp(Math.round(block.params?.a ?? 9), 3, 14);
-  const dy = clamp(Math.round(block.params?.b ?? 3), -3, 5); // positivo = hacia arriba
-  const esperado = FIG.map(([x, y]) => [x + dx, y - dy] as [number, number]);
+/**
+ * Papel cuadriculado con una figura de tres vértices: el alumno marca A′, B′ y C′ en las intersecciones.
+ * `decoracion` dibuja lo que define la transformación (vector, centro y ángulo…).
+ */
+export function CuadriculaEjercicio({
+  block,
+  scene,
+  figura,
+  esperado,
+  decoracion,
+  mensajeOk,
+  flechas = false,
+}: {
+  block: BenchBlock;
+  scene: BenchSceneName;
+  figura: [number, number][];
+  esperado: [number, number][];
+  decoracion: ReactNode;
+  mensajeOk: string;
+  /** Al comprobar, dibuja una flecha discontinua de cada vértice a su imagen. */
+  flechas?: boolean;
+}) {
   const [clics, setClics] = useState<[number, number][]>([]);
   const [aviso, setAviso] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const evaluar = () => {
     const mal = clics.map((c, i) => (c[0] === esperado[i][0] && c[1] === esperado[i][1] ? null : ["A′", "B′", "C′"][i])).filter(Boolean) as string[];
     return mal.length === 0
-      ? { ok: true, mensaje: "Correcto: los tres vértices se han movido lo mismo, " + dx + (dx === 1 ? " cuadro" : " cuadros") + " a la derecha y " + Math.abs(dy) + (dy >= 0 ? " hacia arriba" : " hacia abajo") + ". La figura trasladada es igual que la original." }
-      : { ok: false, mensaje: `${mal.join(", ")} no ${mal.length > 1 ? "están" : "está"} donde debe${mal.length > 1 ? "n" : ""}: cada vértice se mueve igual que el vector. Pulsa «Reintentar».` };
+      ? { ok: true, mensaje: mensajeOk }
+      : { ok: false, mensaje: `${mal.join(", ")} no ${mal.length > 1 ? "están" : "está"} donde debe${mal.length > 1 ? "n" : ""}: cada vértice se transforma igual. Pulsa «Reintentar».` };
   };
   const { resultado } = useBenchCheck({ ready: clics.length === 3, evaluate: () => evaluar().ok });
   const bloqueada = resultado !== null;
@@ -191,11 +209,6 @@ export function TraslacionCuadricula({ block }: { block: BenchBlock }) {
     setClics([...clics, g]);
     setAviso(null);
   };
-
-  const vertical = Array.from({ length: COLS + 1 }, (_, i) => i);
-  const horizontal = Array.from({ length: FILAS + 1 }, (_, i) => i);
-  const [ox, oy] = gp(FIG[0]);
-  const flechaFin: Pt = [ox + dx * CELDA, oy - dy * CELDA];
 
   const nav = (
     <button
@@ -223,13 +236,13 @@ export function TraslacionCuadricula({ block }: { block: BenchBlock }) {
   );
 
   return (
-    <BenchShell scene="traslacion-cuadricula" notes={block.notes} step={step} setStep={() => undefined} extra={extra} nav={nav} label="Papel cuadriculado con un triángulo y un vector de traslación">
+    <BenchShell scene={scene} notes={block.notes} step={step} setStep={() => undefined} extra={extra} nav={nav} label="Papel cuadriculado con una figura y una transformación">
       <svg
         ref={svgRef}
         viewBox={`0 0 ${MV.w} ${MV.h}`}
         className={`${SVG_CLASS} touch-none select-none`}
         role="group"
-        aria-label="Papel cuadriculado con un triángulo y un vector de traslación"
+        aria-label="Papel cuadriculado con una figura y una transformación"
         onPointerDown={onDown}
         style={{ cursor: bloqueada ? "default" : "crosshair" }}
         data-testid="bench-cuadricula"
@@ -238,33 +251,56 @@ export function TraslacionCuadricula({ block }: { block: BenchBlock }) {
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
         <g stroke="#7aa7c7" strokeOpacity="0.45" strokeWidth="0.7">
-          {vertical.map((i) => (
+          {Array.from({ length: COLS + 1 }, (_, i) => (
             <line key={`v${i}`} x1={GX0 + i * CELDA} y1={GY0} x2={GX0 + i * CELDA} y2={GY0 + FILAS * CELDA} />
           ))}
-          {horizontal.map((i) => (
+          {Array.from({ length: FILAS + 1 }, (_, i) => (
             <line key={`h${i}`} x1={GX0} y1={GY0 + i * CELDA} x2={GX0 + COLS * CELDA} y2={GY0 + i * CELDA} />
           ))}
         </g>
-        <path d={poligono(FIG.map(gp))} fill="rgba(31,120,180,0.12)" stroke={INK} strokeWidth="2" strokeLinejoin="round" />
+        <path d={poligono(figura.map(gp))} fill="rgba(31,120,180,0.12)" stroke={INK} strokeWidth="2" strokeLinejoin="round" />
         {["A", "B", "C"].map((n, i) => (
-          <Punto key={n} p={gp(FIG[i])} nombre={n} dx={-16} dy={i === 0 ? 16 : -6} />
+          <Punto key={n} p={gp(figura[i])} nombre={n} dx={-16} dy={i === 0 ? 16 : -6} />
         ))}
-        <Flecha a={[ox, oy + 16]} b={[flechaFin[0], flechaFin[1] + 16]} color={AMBAR} grosor={2.6} />
-        <text x={(ox + flechaFin[0]) / 2} y={(oy + flechaFin[1]) / 2 + 40} fontSize="14" fontWeight="800" fill={AMBAR} textAnchor="middle" fontFamily={SANS} stroke="#fffefa" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round">
-          {dx} →, {Math.abs(dy)} {dy >= 0 ? "↑" : "↓"}
-        </text>
+        {decoracion}
         {resultado !== null ? (
           <g data-testid="bench-imagen">
             <path d={poligono(esperado.map(gp))} fill="rgba(31,157,85,0.14)" stroke={VERDE} strokeWidth="2" strokeLinejoin="round" strokeDasharray={resultado ? undefined : "6 4"} />
-            {FIG.map((g, i) => (
-              <Flecha key={i} a={gp(g)} b={gp(esperado[i])} color={AMBAR} grosor={1.3} discontinua opacidad={0.8} />
-            ))}
+            {flechas ? figura.map((g, i) => <Flecha key={i} a={gp(g)} b={gp(esperado[i])} color={AMBAR} grosor={1.3} discontinua opacidad={0.8} />) : null}
           </g>
         ) : null}
         {clics.map((c, i) => (
-          <Punto key={i} p={gp(c)} nombre={["A′", "B′", "C′"][i]} dx={8} dy={-6} color={resultado === null ? AZUL : (c[0] === esperado[i][0] && c[1] === esperado[i][1] ? VERDE : "#c0392b")} />
+          <Punto key={i} p={gp(c)} nombre={["A′", "B′", "C′"][i]} dx={8} dy={-6} color={resultado === null ? AZUL : c[0] === esperado[i][0] && c[1] === esperado[i][1] ? VERDE : "#c0392b"} />
         ))}
       </svg>
     </BenchShell>
+  );
+}
+
+/* ───────────── Traslación en papel cuadriculado ───────────── */
+
+export function TraslacionCuadricula({ block }: { block: BenchBlock }) {
+  const dx = clamp(Math.round(block.params?.a ?? 9), 3, 14);
+  const dy = clamp(Math.round(block.params?.b ?? 3), -3, 5); // positivo = hacia arriba
+  const esperado = FIG.map(([x, y]) => [x + dx, y - dy] as [number, number]);
+  const [ox, oy] = gp(FIG[0]);
+  const fin: Pt = [ox + dx * CELDA, oy - dy * CELDA];
+  return (
+    <CuadriculaEjercicio
+      block={block}
+      scene="traslacion-cuadricula"
+      figura={FIG}
+      esperado={esperado}
+      flechas
+      mensajeOk={`Correcto: los tres vértices se han movido lo mismo, ${dx} ${dx === 1 ? "cuadro" : "cuadros"} a la derecha y ${Math.abs(dy)} ${dy >= 0 ? "hacia arriba" : "hacia abajo"}. La figura trasladada es igual que la original.`}
+      decoracion={
+        <g>
+          <Flecha a={[ox, oy + 16]} b={[fin[0], fin[1] + 16]} color={AMBAR} grosor={2.6} />
+          <text x={(ox + fin[0]) / 2} y={(oy + fin[1]) / 2 + 40} fontSize="14" fontWeight="800" fill={AMBAR} textAnchor="middle" fontFamily={SANS} stroke="#fffefa" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round">
+            {dx} →, {Math.abs(dy)} {dy >= 0 ? "↑" : "↓"}
+          </text>
+        </g>
+      }
+    />
   );
 }

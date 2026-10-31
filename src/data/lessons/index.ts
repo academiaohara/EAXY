@@ -708,6 +708,7 @@ import { geometriaMolecularPolaridadFb1Lesson } from "@/data/lessons/fisica-1-ba
 import { geometriaRevolucionIndustrialDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/01-geometria-revolucion-industrial-dt2";
 import { gestionCostesViabilidad4esoLesson } from "@/data/lessons/tecnologia-4-eso/01-proyectos-ingenieria/05-gestion-costes-viabilidad-4eso";
 import { gestionRecursosCostes3esoLesson } from "@/data/lessons/tecnologia-3-eso/01-desarrollo-proyectos/03-gestion-recursos-costes-3eso";
+import { giroDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-transformaciones-geometricas/02-giro-dt1";
 import { girosDiedricoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/03-giros-diedrico-dt2";
 import { graficasAjusteInformeFq3Lesson } from "@/data/lessons/fisica-3-eso/01-el-trabajo-cientifico/04-graficas-ajuste-informe-fq3";
 import { graficasCalentamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/02-materia-propiedades/05-graficas-calentamiento-fq2";
@@ -2414,6 +2415,7 @@ export const interactiveLessons = {
   "geometria-revolucion-industrial-dt2": geometriaRevolucionIndustrialDt2Lesson,
   "gestion-costes-viabilidad-4eso": gestionCostesViabilidad4esoLesson,
   "gestion-recursos-costes-3eso": gestionRecursosCostes3esoLesson,
+  "giro-dt1": giroDt1Lesson,
   "giros-diedrico-dt2": girosDiedricoDt2Lesson,
   "graficas-ajuste-informe-fq3": graficasAjusteInformeFq3Lesson,
   "graficas-calentamiento-fq2": graficasCalentamientoFq2Lesson,

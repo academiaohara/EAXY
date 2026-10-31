@@ -16608,6 +16608,15 @@ export const curriculum: Curriculum = {
               interactiveSlug: "traslacion-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(37402),
+              title: "2. Giro",
+              summary: "Girar un punto y una figura alrededor de un centro, con transportador y compás y en papel cuadriculado.",
+              orderIndex: 2,
+              kind: "interactive",
+              interactiveSlug: "giro-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {
