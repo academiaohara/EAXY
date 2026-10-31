@@ -16626,6 +16626,15 @@ export const curriculum: Curriculum = {
               interactiveSlug: "simetria-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(37404),
+              title: "4. Homotecia",
+              summary: "Imagen de un punto y de una figura en una homotecia de centro y razón dados, con compás y en papel cuadriculado.",
+              orderIndex: 4,
+              kind: "interactive",
+              interactiveSlug: "homotecia-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {

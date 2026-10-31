@@ -92,6 +92,9 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `simetria-compas` | 5 | **Explicación animada** de la simetría axial con compás: dos puntos `P` y `Q` del eje, arco de radio `PA` desde `P`, arco de radio `QA` desde `Q` (se cortan en `A` y `A′`) y la figura simétrica con `AA′ ⟂ e` | — |
 | `simetria-practica` | 7 fases | **Práctica**: hallar `A′` con dos medidas, dos arcos y marcar el corte que no es `A` | — |
 | `simetria-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al reflejar el triángulo respecto de un eje vertical (`a = 0`) o diagonal (`a = 1`) | `a` = 0 o 1 |
+| `homotecia-compas` | 5 | **Explicación animada** de la homotecia de razón 2: rectas desde `O`, medida `OA`, arco de radio `OA` centrado en `A` que corta a la recta `OA` en `A′` (`OA′ = 2·OA`), y el triángulo ampliado con lados paralelos | — |
+| `homotecia-practica` | 4 fases | **Práctica**: hallar `A′` (medida `OA`, punta en `A`, arco, marcar el corte que no es `O`) | — |
+| `homotecia-cuadricula` | 3 | **Papel cuadriculado**: se marcan `A′`, `B′` y `C′` al aplicar una homotecia de centro `O` y razón `k` (las rectas desde `O` se dibujan como guía) | `a` = k (2, 3, −1, −2) |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
 

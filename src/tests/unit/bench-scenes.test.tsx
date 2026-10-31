@@ -956,6 +956,100 @@ describe("simetría", () => {
   });
 });
 
+describe("homotecia", () => {
+  const O: Pt = [120, 300];
+  const A: Pt = [220, 300];
+  const A2: Pt = [320, 300];
+
+  it("explicación: las rectas desde O, la medida OA, el arco y la figura ampliada aparecen por pasos", () => {
+    const { siguiente } = montar("homotecia-compas");
+    expect(screen.queryByTestId("bench-rayos-homotecia")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-rayos-homotecia")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-medida-oa")).toBeTruthy();
+    expect(screen.getByTestId("bench-compas")).toBeTruthy();
+    siguiente();
+    expect(screen.getByTestId("bench-arco-homotecia")).toBeTruthy();
+    expect(screen.queryByTestId("bench-medida-oa")).toBeNull();
+    siguiente();
+    expect(screen.getByTestId("bench-homotetica")).toBeTruthy();
+    expect(screen.queryByTestId("bench-compas")).toBeNull();
+  });
+
+  function hastaMarcar() {
+    const t = pantalla("homotecia-practica");
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(A);
+    expect(t.fase()).toBe("arco");
+    const base = ang(A, A2);
+    t.arrastrar(enCirc(A, 100, base - 25), enCirc(A, 100, base + 10));
+    expect(t.fase()).toBe("regla");
+    return t;
+  }
+
+  it("práctica: la medida es OA y la punta solo se clava en A", () => {
+    const t = pantalla("homotecia-practica");
+    t.tocar([400, 100]);
+    expect(t.fase()).toBe("medida");
+    t.tocar(O);
+    t.tocar(A);
+    expect(t.fase()).toBe("centro");
+    t.tocar(O); // la punta se clava en A, no en O
+    expect(t.fase()).toBe("centro");
+    t.tocar(A);
+    expect(t.fase()).toBe("arco");
+  });
+
+  it("práctica: marcar A′ (y no O) es correcto", () => {
+    const t = hastaMarcar();
+    t.tocar([A2[0] + 4, A2[1] - 5]);
+    expect(t.fase()).toBe("hecha");
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+  });
+
+  it("práctica: marcar el otro corte, que es O, es incorrecto", () => {
+    const t = hastaMarcar();
+    t.tocar(O);
+    act(() => t.out.control!.onClick());
+    expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    expect(screen.getByTestId("bench-resultado").textContent).toContain("no es A");
+  });
+
+  describe("papel cuadriculado", () => {
+    const px = (g: [number, number]): Pt => [22 + g[0] * 24, 22 + g[1] * 24];
+    const abrir = (a: number) => {
+      const m = montar("homotecia-cuadricula", { a });
+      const tocar = (p: Pt) => fireEvent.pointerDown(screen.getByTestId("bench-cuadricula"), { clientX: p[0], clientY: p[1], pointerId: 1 });
+      return { ...m, tocar };
+    };
+    // O = (8, 7); A = (10, 7), B = (10, 5), C = (9, 6)
+    const casos: [number, [number, number][]][] = [
+      [2, [[12, 7], [12, 3], [10, 5]]],
+      [3, [[14, 7], [14, 1], [11, 4]]],
+      [-1, [[6, 7], [6, 9], [7, 8]]],
+      [-2, [[4, 7], [4, 11], [6, 9]]],
+    ];
+    it.each(casos)("razón %i: los tres vértices en su sitio son correctos", (k, pts) => {
+      const t = abrir(k);
+      for (const g of pts) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
+    });
+
+    it("con razón 2, usar la razón −2 (imagen al otro lado de O) es incorrecto", () => {
+      const t = abrir(2);
+      for (const g of [[4, 7], [4, 11], [6, 9]] as [number, number][]) t.tocar(px(g));
+      act(() => t.out.control!.onClick());
+      expect(t.onCheck).toHaveBeenCalledWith({ correct: false, snapshot: { kind: "bench_task", isCorrect: false } });
+    });
+  });
+});
+
 describe("mesa de dibujo · integración", () => {
   it("se monta desde una diapositiva (SlideBlockView)", () => {
     render(

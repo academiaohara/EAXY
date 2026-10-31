@@ -11,7 +11,7 @@ El contenido creado a partir del RD 243/2022 (LOMLOE) antes de la «mesa de dibu
 
 Está hecho con animaciones tipo Manim, herramientas con deslizadores y preguntas teóricas. Cumple el temario, pero no el estándar actual: instrumentos y construcciones realistas, práctica en vez de preguntas, pasos dentro de la diapositiva sin scroll, comprobación en el pie (verde/naranja).
 
-Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4 lecciones) y tema 5 «Transformaciones geométricas» (en curso: traslación y giro).
+Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4 lecciones) y tema 5 «Transformaciones geométricas» (4 lecciones: traslación, giro, simetría y homotecia).
 
 ## Principios
 
@@ -23,7 +23,7 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 
 ## Orden propuesto
 
-1. **Geometría plana** (encaja directamente con el motor de práctica con compás, regla y escuadra): terminar transformaciones (simetría, igualdad, homotecia), y después proporcionalidad y semejanza, triángulos y polígonos, tangencias y curvas técnicas. La «Historia» del tema 2 se mantiene como texto, sin preguntas.
+1. **Geometría plana** (encaja directamente con el motor de práctica con compás, regla y escuadra): ya hechos instrumentos y transformaciones; siguen proporcionalidad y semejanza, triángulos y polígonos, tangencias y curvas técnicas. La «Historia» del tema 2 se mantiene como texto, sin preguntas.
 2. **Normalización y documentación gráfica** (formatos, escalas, vistas, líneas, acotación, rotulación): necesita un formato nuevo de «lámina con pieza real».
 3. **Sistemas de representación** (diédrico, axonométrico, planos acotados, cónico): necesita formatos nuevos (maqueta de planos de proyección, proyección de un sólido sobre la hoja). Se diseñan y se validan contigo antes de escribir las lecciones.
 4. **CAD**: simulación realista de la interfaz.

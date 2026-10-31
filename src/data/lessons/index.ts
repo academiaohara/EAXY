@@ -741,6 +741,7 @@ import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecn
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
 import { homologiaEjeCentroDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/04-homologia-eje-centro-dt2";
+import { homoteciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-transformaciones-geometricas/04-homotecia-dt1";
 import { iaLimitacionesSesgosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/05-ia-limitaciones-sesgos-ti2";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
@@ -2449,6 +2450,7 @@ export const interactiveLessons = {
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
   "homologia-eje-centro-dt2": homologiaEjeCentroDt2Lesson,
+  "homotecia-dt1": homoteciaDt1Lesson,
   "ia-limitaciones-sesgos-ti2": iaLimitacionesSesgosTi2Lesson,
   "idea-limite-funcion-1bach": ideaLimiteFuncion1bachLesson,
   "idea-limite-funcion-ccss1": ideaLimiteFuncionCcss1Lesson,

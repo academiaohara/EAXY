@@ -52,7 +52,10 @@ export type BenchSceneName =
   | "giro-cuadricula"
   | "simetria-compas"
   | "simetria-practica"
-  | "simetria-cuadricula";
+  | "simetria-cuadricula"
+  | "homotecia-compas"
+  | "homotecia-practica"
+  | "homotecia-cuadricula";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -77,6 +80,9 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "simetria-compas": 5,
   "simetria-practica": 7,
   "simetria-cuadricula": 3,
+  "homotecia-compas": 5,
+  "homotecia-practica": 4,
+  "homotecia-cuadricula": 3,
 };
 
 export const INK = "#2a2f36";
