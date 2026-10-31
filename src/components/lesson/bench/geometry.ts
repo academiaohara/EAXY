@@ -29,10 +29,39 @@ export function rot(p: Pt, deg: number): Pt {
   return [p[0] * c - p[1] * s, p[0] * s + p[1] * c];
 }
 
-/** Pose de un instrumento: dónde está su origen local y cuánto está girado. */
-export type Pose = { x: number; y: number; rot: number };
+/**
+ * Pose de un instrumento. Por defecto su origen local va a `(x, y)` girado `rot` grados.
+ * Con `anchor`, es ese punto local (un vértice, por ejemplo) el que va a `(x, y)`;
+ * con `mirror`, el instrumento se vuelve del revés (volteado sobre su eje x local).
+ */
+export type Pose = { x: number; y: number; rot: number; anchor?: Pt; mirror?: boolean };
 
-export const poseTransform = (p: Pose) => `translate(${p.x} ${p.y}) rotate(${p.rot})`;
+export const poseTransform = (p: Pose) =>
+  `translate(${p.x} ${p.y}) rotate(${p.rot})${p.mirror ? " scale(1 -1)" : ""}${p.anchor ? ` translate(${-p.anchor[0]} ${-p.anchor[1]})` : ""}`;
+
+/** Lleva un punto local de un instrumento a coordenadas de la hoja. */
+export function applyPose(pose: Pose, local: Pt): Pt {
+  let q: Pt = [local[0] - (pose.anchor?.[0] ?? 0), local[1] - (pose.anchor?.[1] ?? 0)];
+  if (pose.mirror) q = [q[0], -q[1]];
+  const r = rot(q, pose.rot);
+  return [pose.x + r[0], pose.y + r[1]];
+}
+
+/**
+ * Apoya un triángulo sobre una arista horizontal: el vértice `vi` va a `o`, el vértice `wi`
+ * queda a su derecha sobre la misma horizontal y el tercer vértice, por encima (`arriba`) o por debajo.
+ */
+export function apoyarTriangulo(pts: [Pt, Pt, Pt], vi: 0 | 1 | 2, wi: 0 | 1 | 2, o: Pt, arriba = true): Pose {
+  const v = pts[vi];
+  const e = sub(pts[wi], v);
+  const alpha = (Math.atan2(e[1], e[0]) * 180) / Math.PI;
+  const k = ([0, 1, 2] as const).find((i) => i !== vi && i !== wi)!;
+  const candidatos: Pose[] = [
+    { x: o[0], y: o[1], rot: -alpha, anchor: v },
+    { x: o[0], y: o[1], rot: alpha, anchor: v, mirror: true },
+  ];
+  return candidatos.find((c) => (applyPose(c, pts[k])[1] < o[1]) === arriba) ?? candidatos[0];
+}
 
 /** Triángulo achicado hacia su incentro: sirve para el vaciado interior de escuadra y cartabón. */
 export function insetTriangle(v: [Pt, Pt, Pt], width: number): [Pt, Pt, Pt] {

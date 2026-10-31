@@ -53,6 +53,11 @@ export function BenchDefs() {
         <stop offset="0.5" stopColor="#f0b400" />
         <stop offset="1" stopColor="#b98200" />
       </linearGradient>
+      <linearGradient id="bench-graphite" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="#6d747c" />
+        <stop offset="0.45" stopColor="#3a4047" />
+        <stop offset="1" stopColor="#1d2126" />
+      </linearGradient>
       <linearGradient id="bench-paper" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stopColor="#fffefa" />
         <stop offset="1" stopColor="#f5f1e6" />
@@ -130,7 +135,10 @@ export function Regla({ pose, len = 300, dim }: PoseProps & { len?: number }) {
   );
 }
 
-function PlasticTriangle({ pts, gradient, ticksOn, children }: { pts: [Pt, Pt, Pt]; gradient: string; ticksOn?: ReactNode; children?: ReactNode }) {
+export const ESCUADRA_PTS: [Pt, Pt, Pt] = [[0, 0], [ESCUADRA_L, 0], [0, ESCUADRA_L]];
+export const CARTABON_PTS: [Pt, Pt, Pt] = [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]];
+
+function PlasticTriangle({ pts, gradient }: { pts: [Pt, Pt, Pt]; gradient: string }) {
   const inner = insetTriangle(pts, 24);
   const path = (v: Pt[]) => `M${v.map((p) => `${p[0]} ${p[1]}`).join(" L")}Z`;
   return (
@@ -138,61 +146,24 @@ function PlasticTriangle({ pts, gradient, ticksOn, children }: { pts: [Pt, Pt, P
       <path d={`${path(pts)} ${path(inner)}`} fillRule="evenodd" fill={gradient} stroke={PLASTIC_EDGE} strokeWidth="0.9" strokeLinejoin="round" />
       <path d={path(inner)} fill="none" stroke="#fff" strokeOpacity="0.75" strokeWidth="1" strokeLinejoin="round" />
       <path d={path(pts)} fill="none" stroke="#fff" strokeOpacity="0.55" strokeWidth="1.2" strokeLinejoin="round" transform="translate(0.6 0.6)" />
-      {ticksOn}
-      {children}
     </g>
   );
 }
 
-/** Escuadra 45°–45°–90°. Origen: vértice del ángulo recto; catetos a lo largo de +x y +y. */
-export function Escuadra({ pose, dim, label = true }: PoseProps & { label?: boolean }) {
-  const L = ESCUADRA_L;
-  const pts: [Pt, Pt, Pt] = [[0, 0], [L, 0], [0, L]];
+/** Escuadra 45°–45°–90°, lisa como las de dibujo. Origen: vértice del ángulo recto; catetos a lo largo de +x y +y. */
+export function Escuadra({ pose, dim }: PoseProps) {
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
-      <PlasticTriangle
-        pts={pts}
-        gradient="url(#bench-plastic)"
-        ticksOn={
-          <g transform="translate(0 0.9)">
-            <Ticks len={L - 6} dir={1} from={6} labels={false} />
-          </g>
-        }
-      >
-        {label ? (
-          <g fontFamily="ui-sans-serif, system-ui" fontSize="6" fill={PLASTIC_EDGE} fontWeight="700">
-            <text x="17" y="16">90°</text>
-            <text x={L - 50} y="10">45°</text>
-            <text x="6" y={L - 34} transform="rotate(0)">45°</text>
-          </g>
-        ) : null}
-      </PlasticTriangle>
+      <PlasticTriangle pts={ESCUADRA_PTS} gradient="url(#bench-plastic)" />
     </g>
   );
 }
 
-/** Cartabón 30°–60°–90°. Origen: vértice del ángulo recto; el cateto largo va a lo largo de +x. */
-export function Cartabon({ pose, dim, label = true }: PoseProps & { label?: boolean }) {
-  const pts: [Pt, Pt, Pt] = [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]];
+/** Cartabón 30°–60°–90°, liso. Origen: vértice del ángulo recto; el cateto largo va a lo largo de +x. */
+export function Cartabon({ pose, dim }: PoseProps) {
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
-      <PlasticTriangle
-        pts={pts}
-        gradient="url(#bench-plastic-orange)"
-        ticksOn={
-          <g transform="translate(0 0.9)">
-            <Ticks len={CARTABON_LARGO - 6} dir={1} from={6} labels={false} />
-          </g>
-        }
-      >
-        {label ? (
-          <g fontFamily="ui-sans-serif, system-ui" fontSize="6" fill="#9a5b0d" fontWeight="700">
-            <text x="17" y="16">90°</text>
-            <text x={CARTABON_LARGO - 50} y="9">30°</text>
-            <text x="5" y={CARTABON_CORTO - 18}>60°</text>
-          </g>
-        ) : null}
-      </PlasticTriangle>
+      <PlasticTriangle pts={CARTABON_PTS} gradient="url(#bench-plastic-orange)" />
     </g>
   );
 }
@@ -238,18 +209,20 @@ export function Transportador({ pose, r = 70, dim }: PoseProps & { r?: number })
   );
 }
 
-/** Lápiz de madera. Origen: la punta de grafito; el cuerpo se alarga hacia +x. */
-export function Lapiz({ pose, len = 170, dim }: PoseProps & { len?: number }) {
+/** Lápiz de madera. Origen: la punta de grafito; el cuerpo se alarga hacia +x. `grade` se rotula en el cuerpo. */
+export function Lapiz({ pose, len = 170, dim, grade }: PoseProps & { len?: number; grade?: string }) {
   const w = 7.5;
   return (
     <g transform={poseTransform(pose)} filter="url(#bench-shadow-soft)" opacity={dim ? 0.55 : 1}>
-      {/* madera afilada */}
       <path d={`M0 0 L16 ${-w / 2} L16 ${w / 2} Z`} fill="url(#bench-wood)" />
       <path d={`M0 0 L5 ${-1.6} L5 ${1.6} Z`} fill="#2f3438" />
-      {/* cuerpo */}
       <rect x="16" y={-w / 2} width={len - 16 - 20} height={w} fill="url(#bench-pencil)" />
       <rect x="16" y={-w / 2 + 1.2} width={len - 16 - 20} height="1" fill="#fff" opacity="0.45" />
-      {/* virola y goma */}
+      {grade ? (
+        <text x={34} y={2.2} fontSize="6" fontWeight="800" fill="#5b3a00" fontFamily="ui-sans-serif, system-ui">
+          {grade}
+        </text>
+      ) : null}
       <rect x={len - 20} y={-w / 2} width="10" height={w} fill="url(#bench-steel)" />
       <rect x={len - 20} y={-w / 2 + 1.6} width="10" height="0.7" fill="#6c7581" />
       <rect x={len - 20} y={w / 2 - 2.3} width="10" height="0.7" fill="#6c7581" />
@@ -260,49 +233,53 @@ export function Lapiz({ pose, len = 170, dim }: PoseProps & { len?: number }) {
 
 /**
  * Compás. Origen: la bisagra; las dos patas caen hacia +y con abertura total `open` (grados).
- * Pata izquierda: punta seca; pata derecha: mina. Devuelve el radio con `compasRadio`.
+ * Pata izquierda: punta seca de acero. Pata derecha: portaminas con mina de grafito.
+ * Las dos puntas quedan a la misma altura, como al trazar. Radio con `compasRadio`.
  */
 export const COMPAS_PATA = 110;
 export const compasRadio = (openDeg: number) => 2 * COMPAS_PATA * Math.sin((openDeg * RAD) / 2);
 export const compasApertura = (radio: number) => (2 * Math.asin(Math.min(1, radio / (2 * COMPAS_PATA))) * 180) / Math.PI;
 
+/** Tramo recto entre dos puntos, con ancho `w0` en el primero y `w1` en el segundo. */
+function tramo(a: Pt, b: Pt, w0: number, w1: number) {
+  const dx = b[0] - a[0];
+  const dy = b[1] - a[1];
+  const l = Math.hypot(dx, dy) || 1;
+  const nx = -dy / l;
+  const ny = dx / l;
+  const q = (p: Pt, n: number, w: number) => `${p[0] + nx * n * w} ${p[1] + ny * n * w}`;
+  return `M${q(a, 1, w0)} L${q(b, 1, w1)} L${q(b, -1, w1)} L${q(a, -1, w0)} Z`;
+}
+
 export function Compas({ pose, open = 40, dim }: PoseProps & { open?: number }) {
   const half = (open / 2) * RAD;
   const L = COMPAS_PATA;
-  const leg = (sign: -1 | 1): Pt => [sign * Math.sin(half) * L, Math.cos(half) * L];
-  const needle = leg(-1);
-  const lead = leg(1);
-  const legPath = (tip: Pt, wTop: number, wBot: number) => {
-    const ang = Math.atan2(tip[1], tip[0]);
-    const nx = -Math.sin(ang);
-    const ny = Math.cos(ang);
-    const p1: Pt = [nx * wTop, ny * wTop];
-    const p2: Pt = [-nx * wTop, -ny * wTop];
-    const p3: Pt = [tip[0] - nx * wBot, tip[1] - ny * wBot];
-    const p4: Pt = [tip[0] + nx * wBot, tip[1] + ny * wBot];
-    return `M${p1[0]} ${p1[1]} L${p4[0]} ${p4[1]} L${p3[0]} ${p3[1]} L${p2[0]} ${p2[1]} Z`;
-  };
-  const along = (tip: Pt, t: number): Pt => [tip[0] * t, tip[1] * t];
-  const nPoint = along(needle, 0.84);
-  const lPoint = along(lead, 0.8);
+  const tip = (sign: -1 | 1): Pt => [sign * Math.sin(half) * L, Math.cos(half) * L];
+  const at = (t: Pt, f: number): Pt => [t[0] * f, t[1] * f];
+  const aguja = tip(-1);
+  const mina = tip(1);
+  const EDGE = "#59616c";
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
       <g filter="url(#bench-shadow)">
-        {/* asa */}
-        <rect x="-2.3" y="-26" width="4.6" height="14" rx="1.5" fill="url(#bench-steel)" stroke="#59616c" strokeWidth="0.5" />
-        <rect x="-5.5" y="-34" width="11" height="9" rx="3" fill="#2b3340" stroke="#161b22" strokeWidth="0.5" />
-        {/* patas */}
-        <path d={legPath([needle[0] * 0.86, needle[1] * 0.86], 4.2, 2.6)} fill="url(#bench-steel)" stroke="#59616c" strokeWidth="0.5" />
-        <path d={legPath([lead[0] * 0.8, lead[1] * 0.8], 4.2, 2.8)} fill="url(#bench-steel)" stroke="#59616c" strokeWidth="0.5" />
-        {/* punta seca */}
-        <path d={`M${nPoint[0] - 1.2} ${nPoint[1] - 0.2} L${needle[0]} ${needle[1]} L${nPoint[0] + 1.2} ${nPoint[1] + 0.2}Z`} fill="#444c56" />
-        {/* portaminas y mina */}
-        <path d={legPath(lPoint, 3.4, 2.7)} fill="#c4cad3" stroke="#59616c" strokeWidth="0.5" transform={`translate(${(lead[0] - lPoint[0]) * 0.0} 0)`} />
-        <path d={`M${lPoint[0] - 1.1} ${lPoint[1]} L${lead[0]} ${lead[1]} L${lPoint[0] + 1.1} ${lPoint[1]}Z`} fill="#2f3438" />
-        {/* bisagra */}
-        <circle r="6" fill="url(#bench-steel)" stroke="#59616c" strokeWidth="0.6" />
-        <circle r="2.3" fill="#59616c" />
-        <circle r="0.9" fill="#d6dbe2" />
+        {/* patas superiores, de acero */}
+        <path d={tramo([0, 0], at(aguja, 0.7), 4.4, 3)} fill="url(#bench-steel)" stroke={EDGE} strokeWidth="0.5" />
+        <path d={tramo([0, 0], at(mina, 0.56), 4.4, 3.2)} fill="url(#bench-steel)" stroke={EDGE} strokeWidth="0.5" />
+        {/* pata izquierda: aguja de acero que remata en punta fina */}
+        <path d={tramo(at(aguja, 0.7), at(aguja, 0.78), 3.4, 2.4)} fill="#8a94a1" stroke={EDGE} strokeWidth="0.5" />
+        <path d={tramo(at(aguja, 0.78), aguja, 1.7, 0.18)} fill="url(#bench-steel)" stroke="#3d444d" strokeWidth="0.4" />
+        {/* pata derecha: portaminas con tornillo y mina de grafito */}
+        <path d={tramo(at(mina, 0.56), at(mina, 0.74), 4.4, 3.6)} fill="#39424e" stroke="#1d232b" strokeWidth="0.5" />
+        <circle cx={at(mina, 0.65)[0]} cy={at(mina, 0.65)[1]} r="1.5" fill="#aeb6c1" stroke="#1d232b" strokeWidth="0.4" />
+        <path d={tramo(at(mina, 0.74), at(mina, 0.86), 2.4, 1.9)} fill="url(#bench-steel)" stroke={EDGE} strokeWidth="0.45" />
+        <path d={tramo(at(mina, 0.86), mina, 1.3, 0.22)} fill="url(#bench-graphite)" stroke="#1f2328" strokeWidth="0.35" />
+        {/* bisagra y asa unidas: el vástago nace de la propia bisagra */}
+        <path d="M-2.4 -3 L-2.4 -22 L2.4 -22 L2.4 -3 Z" fill="url(#bench-steel)" stroke={EDGE} strokeWidth="0.5" />
+        <rect x="-6" y="-35" width="12" height="14" rx="4" fill="#2b3340" stroke="#161b22" strokeWidth="0.5" />
+        <rect x="-4.2" y="-33" width="2" height="10" rx="1" fill="#fff" opacity="0.18" />
+        <circle r="6.4" fill="url(#bench-steel)" stroke={EDGE} strokeWidth="0.6" />
+        <circle r="2.6" fill={EDGE} />
+        <circle r="1" fill="#d6dbe2" />
       </g>
     </g>
   );
