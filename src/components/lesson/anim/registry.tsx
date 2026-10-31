@@ -1,4 +1,5 @@
 // industrial-imports
+import { buildPilaDaniell } from "@/components/lesson/anim/scenes/industrial/fb1-pila";
 import { buildGasParticulas } from "@/components/lesson/anim/scenes/industrial/fb1-gas";
 import { buildMol } from "@/components/lesson/anim/scenes/industrial/fb1-mol";
 import { buildReglaAspa } from "@/components/lesson/anim/scenes/industrial/fb1-aspa";
@@ -879,6 +880,7 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "fb1-regla-aspa": () => buildReglaAspa(),
   "fb1-mol": () => buildMol(),
   "fb1-gas-particulas": () => buildGasParticulas(),
+  "fb1-pila-daniell": () => buildPilaDaniell(),
   /* industrial-end */
 };
 

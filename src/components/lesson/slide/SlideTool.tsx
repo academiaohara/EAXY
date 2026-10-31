@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 // industrial-imports
+import { AjusteFb1Explorador, LimitanteFb1Explorador, PhFb1Explorador, ValoracionFb1Explorador, RedoxPilaFb1Explorador, IndustriaFb1Explorador } from "@/components/lesson/slide/tools/Fb1ReaccionesTools";
 import { LeyesGasesFb1Explorador, GasIdealFb1Explorador, MezclaGasesFb1Explorador, ConcentracionFb1Explorador, DilucionColigativasFb1Explorador } from "@/components/lesson/slide/tools/Fb1GasesTools";
 import { MolMasaFb1Explorador, CentesimalFb1Explorador, FormulaEmpiricaFb1Explorador, EstequiometriaPurezaFb1Explorador } from "@/components/lesson/slide/tools/Fb1CantidadTools";
 import { BinariosFb1Explorador, OxoacidosFb1Explorador, OxisalesFb1Explorador, EntrenadorFb1Explorador } from "@/components/lesson/slide/tools/Fb1FormulacionTools";
@@ -2430,6 +2431,18 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <ConcentracionFb1Explorador block={block} />;
     case "fb1-dilucion-coligativas-explorador":
       return <DilucionColigativasFb1Explorador block={block} />;
+    case "fb1-ajuste-explorador":
+      return <AjusteFb1Explorador block={block} />;
+    case "fb1-limitante-explorador":
+      return <LimitanteFb1Explorador block={block} />;
+    case "fb1-ph-explorador":
+      return <PhFb1Explorador block={block} />;
+    case "fb1-valoracion-explorador":
+      return <ValoracionFb1Explorador block={block} />;
+    case "fb1-redox-pila-explorador":
+      return <RedoxPilaFb1Explorador block={block} />;
+    case "fb1-industria-explorador":
+      return <IndustriaFb1Explorador block={block} />;
     /* industrial-tools */
     default:
       return null;

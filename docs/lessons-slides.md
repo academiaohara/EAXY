@@ -602,6 +602,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fb1-regla-aspa` | Regla del aspa: intercambio de números de oxidación y simplificación | — |
 | `fb1-mol` | El mol: número de Avogadro, masa molar y conversiones | — |
 | `fb1-gas-particulas` | Modelo cinético: presión, volumen, temperatura y cantidad de un gas | — |
+| `fb1-pila-daniell` | Pila Daniell: ánodo, cátodo, electrones y puente salino | — |
 
 `captions` en el bloque `anim` sustituye los textos de paso de la escena (uno por paso): así una misma escena sirve para contextos distintos (p. ej. el fontanero de `area-distributiva`).
 
@@ -1560,6 +1561,12 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `fb1-mezcla-gases-explorador` | Mezclas de gases: fracciones molares y presiones parciales | n (mezcla 0–2) |
 | `fb1-concentracion-explorador` | Molaridad, g/L, % masa, molalidad y fracción molar de disoluciones | n (soluto), a (g), b (L), c (densidad) |
 | `fb1-dilucion-coligativas-explorador` | Dilución (C₁V₁ = C₂V₂) y propiedades coligativas del agua | n (modo 0–1), a (C₁), b (V₂) |
+| `fb1-ajuste-explorador` | Ajuste interactivo de 10 ecuaciones con recuento de átomos | n (reacción 0–9) |
+| `fb1-limitante-explorador` | Reactivo limitante, sobrante y rendimiento | n (reacción), a (g), b (g), c (% rend.) |
+| `fb1-ph-explorador` | pH de ácidos y bases fuertes y débiles según la concentración | n (especie 0–6), a (log C) |
+| `fb1-valoracion-explorador` | Curva de valoración HCl-NaOH con equivalencia | a (Ca), b (Va), c (Cb) |
+| `fb1-redox-pila-explorador` | Pilas entre 13 metales: ánodo, cátodo, f.e.m. y reacción global | a, b (índices de metal) |
+| `fb1-industria-explorador` | Procesos industriales: producto, economía atómica y CO₂ | n (proceso 0–3), a (kg), b (% rend.) |
 | `grupos-afectados-explorador` | Efectos de medidas sobre cinco grupos afectados | — |
 
 ## Respuesta como fracción

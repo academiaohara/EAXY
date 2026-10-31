@@ -6,6 +6,7 @@ import { aceleracionFq3Lesson } from "@/data/lessons/fisica-3-eso/06-el-movimien
 import { acerosFundicionesLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/08-aceros-fundiciones";
 import { acerosTratamientosTermicos4esoLesson } from "@/data/lessons/tecnologia-4-eso/02-materiales-fabricacion/03-aceros-tratamientos-termicos-4eso";
 import { acidosBasesNeutralizacionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/05-acidos-bases-neutralizacion-fq4";
+import { acidosBasesPhFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/03-acidos-bases-ph-fb1";
 import { acotacionEscalasNormalizadas2esoLesson } from "@/data/lessons/tecnologia-2-eso/02-dibujo-tecnico-diseno-digital/02-acotacion-escalas-normalizadas-2eso";
 import { acotacionNormalizadaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-normalizacion-documentacion-grafica/05-acotacion-normalizada-dt1";
 import { acotacionPiezasLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/03-acotacion-piezas";
@@ -14,6 +15,7 @@ import { actuadoresElementosSalidaLesson } from "@/data/lessons/tecnologia-ingen
 import { afinidadEjeDireccionRazonDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/02-afinidad-eje-direccion-razon-dt2";
 import { ahorroMaterialesEnergiaEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/03-ahorro-materiales-energia-eso";
 import { aislamientoRendimientoFq3Lesson } from "@/data/lessons/fisica-3-eso/08-energia-y-calor/05-aislamiento-rendimiento-fq3";
+import { ajusteEstequiometriaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/01-ajuste-estequiometria-fb1";
 import { aleacionesSolucionSolidaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/02-aleaciones-diagramas-equilibrio/01-aleaciones-solucion-solida";
 import { algebraBooleTablasLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/04-algebra-boole-tablas";
 import { algebraDeSucesos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/11-probabilidad-y-combinatoria/02-algebra-de-sucesos-2bach";
@@ -61,6 +63,7 @@ import { aplicacionesContaminacionAcusticaFq4Lesson } from "@/data/lessons/fisic
 import { aplicacionesDomesticasIndustriales3esoLesson } from "@/data/lessons/tecnologia-3-eso/05-control-automatizacion/07-aplicaciones-domesticas-industriales-3eso";
 import { aplicacionesEconomicasCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/06-derivadas/13-aplicaciones-economicas-ccss1";
 import { aplicacionesFuncionLineal3esoLesson } from "@/data/lessons/matematicas-3-eso/08-funciones-lineales/07-aplicaciones-funcion-lineal-3eso";
+import { aplicacionesIndustrialesAmbientalesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/05-aplicaciones-industriales-ambientales-fb1";
 import { aplicacionesIndustrialesAmbientalesFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/05-aplicaciones-industriales-ambientales-fq3";
 import { aplicacionesInteligenciaArtificialLesson } from "@/data/lessons/tecnologia-1-eso/10-comunicacion-difusion-ideas/05-aplicaciones-inteligencia-artificial";
 import { aplicacionesPitagoras2esoLesson } from "@/data/lessons/matematicas-2-eso/08-teorema-de-pitagoras-y-semejanza/02-aplicaciones-pitagoras-2eso";
@@ -1041,6 +1044,7 @@ import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
 import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-tangencias-curvas-tecnicas/04-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
+import { oxidacionReduccionFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/04-oxidacion-reduccion-fb1";
 import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
 import { oxidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/02-oxidos-fq4";
 import { oxisalesFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/04-formulacion-inorganica/03-oxisales-fb1";
@@ -1318,6 +1322,7 @@ import { razonesAgudas1bachLesson } from "@/data/lessons/matematicas-1-bachiller
 import { reaccionesApoyosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/04-reacciones-apoyos-ti2";
 import { reaccionesQuimicasFq2Lesson } from "@/data/lessons/fisica-2-eso/05-cambios-fisicos-quimicos/02-reacciones-quimicas-fq2";
 import { reactividadEstructuraElectronicaFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/02-sistema-periodico/03-reactividad-estructura-electronica-fb1";
+import { reactivoLimitanteRendimientoFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/02-reactivo-limitante-rendimiento-fb1";
 import { reactivoLimitanteRendimientoFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/03-reactivo-limitante-rendimiento-fq4";
 import { reciclajeResiduosMaterialesLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/09-reciclaje-residuos-materiales";
 import { recocidoNormalizadoRevenidoLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/03-recocido-normalizado-revenido";
@@ -1678,6 +1683,7 @@ export const interactiveLessons = {
   "aceros-fundiciones": acerosFundicionesLesson,
   "aceros-tratamientos-termicos-4eso": acerosTratamientosTermicos4esoLesson,
   "acidos-bases-neutralizacion-fq4": acidosBasesNeutralizacionFq4Lesson,
+  "acidos-bases-ph-fb1": acidosBasesPhFb1Lesson,
   "acotacion-escalas-normalizadas-2eso": acotacionEscalasNormalizadas2esoLesson,
   "acotacion-normalizada-dt1": acotacionNormalizadaDt1Lesson,
   "acotacion-piezas": acotacionPiezasLesson,
@@ -1686,6 +1692,7 @@ export const interactiveLessons = {
   "afinidad-eje-direccion-razon-dt2": afinidadEjeDireccionRazonDt2Lesson,
   "ahorro-materiales-energia-eso": ahorroMaterialesEnergiaEsoLesson,
   "aislamiento-rendimiento-fq3": aislamientoRendimientoFq3Lesson,
+  "ajuste-estequiometria-fb1": ajusteEstequiometriaFb1Lesson,
   "aleaciones-solucion-solida": aleacionesSolucionSolidaLesson,
   "algebra-boole-tablas": algebraBooleTablasLesson,
   "algebra-de-sucesos-2bach": algebraDeSucesos2bachLesson,
@@ -1733,6 +1740,7 @@ export const interactiveLessons = {
   "aplicaciones-domesticas-industriales-3eso": aplicacionesDomesticasIndustriales3esoLesson,
   "aplicaciones-economicas-ccss1": aplicacionesEconomicasCcss1Lesson,
   "aplicaciones-funcion-lineal-3eso": aplicacionesFuncionLineal3esoLesson,
+  "aplicaciones-industriales-ambientales-fb1": aplicacionesIndustrialesAmbientalesFb1Lesson,
   "aplicaciones-industriales-ambientales-fq3": aplicacionesIndustrialesAmbientalesFq3Lesson,
   "aplicaciones-inteligencia-artificial": aplicacionesInteligenciaArtificialLesson,
   "aplicaciones-pitagoras-2eso": aplicacionesPitagoras2esoLesson,
@@ -2713,6 +2721,7 @@ export const interactiveLessons = {
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "ovalo-ovoide-dt1": ovaloOvoideDt1Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
+  "oxidacion-reduccion-fb1": oxidacionReduccionFb1Lesson,
   "oxidacion-reduccion-fq4": oxidacionReduccionFq4Lesson,
   "oxidos-fq4": oxidosFq4Lesson,
   "oxisales-fb1": oxisalesFb1Lesson,
@@ -2990,6 +2999,7 @@ export const interactiveLessons = {
   "reacciones-apoyos-ti2": reaccionesApoyosTi2Lesson,
   "reacciones-quimicas-fq2": reaccionesQuimicasFq2Lesson,
   "reactividad-estructura-electronica-fb1": reactividadEstructuraElectronicaFb1Lesson,
+  "reactivo-limitante-rendimiento-fb1": reactivoLimitanteRendimientoFb1Lesson,
   "reactivo-limitante-rendimiento-fq4": reactivoLimitanteRendimientoFq4Lesson,
   "reciclaje-residuos-materiales": reciclajeResiduosMaterialesLesson,
   "recocido-normalizado-revenido": recocidoNormalizadoRevenidoLesson,

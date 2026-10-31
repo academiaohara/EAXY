@@ -1126,6 +1126,7 @@ export type SlideAnimId =
   | "fb1-regla-aspa"
   | "fb1-mol"
   | "fb1-gas-particulas"
+  | "fb1-pila-daniell"
   /* industrial-anim-end */;
 
 export type ExprStep = {
@@ -2210,6 +2211,12 @@ export type SlideToolId =
   | "fb1-mezcla-gases-explorador"
   | "fb1-concentracion-explorador"
   | "fb1-dilucion-coligativas-explorador"
+  | "fb1-ajuste-explorador"
+  | "fb1-limitante-explorador"
+  | "fb1-ph-explorador"
+  | "fb1-valoracion-explorador"
+  | "fb1-redox-pila-explorador"
+  | "fb1-industria-explorador"
   /* industrial-tool-end */;
 
 /**
