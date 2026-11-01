@@ -1,6 +1,6 @@
 "use client";
 
-import { angDe, clamp, dist, interseccionCirculos, type Pt } from "./geometry";
+import { angDe, clamp, dist, enCirculo, interseccionCirculos, type Pt } from "./geometry";
 import { AMBAR, AZUL, INK, VERDE, type BenchBlock } from "./scenes";
 import { MSHEET, MV, Practica, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
@@ -204,54 +204,156 @@ export function ParaleloCompasPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={defParalelo} vista={vista} />;
 }
 
-/* ───────────── Perpendicular a una recta por un punto de ella ───────────── */
+/* ───────────── Perpendicular a una recta por un punto (de ella o exterior) ───────────── */
 
 const QP: Pt = [320, 200];
+const QE: Pt = [330, 60];
+const QE_Y = 210;
 
-const defPerpendicularPunto: Def = {
-  scene: "perpendicular-punto-practica",
-  fases: ["centro", "abertura", "arco", "punto", "punto", "centro", "abertura", "arco", "centro", "arco", "regla"],
+/**
+ * Perpendicular a una recta por un punto `P`: arco con centro en `P` que corta a la recta en A y B y mediatriz de AB.
+ * Si `P` está sobre la recta (`h = 0`) A y B quedan a la distancia del radio; si es exterior, a `sqrt(r² − h²)`.
+ */
+function defPerpendicular(scene: Def["scene"], P: Pt, y: number, rLim: [number, number], rIni: number, r1Lim: [number, number], r1Ini: number): Def {
+  const h = y - P[1];
+  const dx = (r0: number) => Math.sqrt(Math.max(0, r0 * r0 - h * h));
+  const AB = (r0: number): [Pt, Pt] => [[P[0] - dx(r0), y], [P[0] + dx(r0), y]];
+  const abajo = h > 0;
+  return {
+    scene,
+    fases: ["centro", "abertura", "arco", "punto", "punto", "centro", "abertura", "arco", "centro", "arco", "regla"],
+    nClics: 2,
+    extRegla: 24,
+    papel: (est: Est) => {
+      const r0 = est.radios[0] ?? rIni;
+      const [A, B] = AB(r0);
+      return (
+        <g>
+          <Seg a={[60, y]} b={[580, y]} w={1.8} />
+          <Txt p={[560, y - 8]}>{abajo ? "t" : "r"}</Txt>
+          <Punto p={P} nombre="P" dx={abajo ? 10 : -4} dy={abajo ? 4 : -8} />
+          {est.fase >= 4 ? <Punto p={A} nombre="A" dx={-14} dy={20} color={AMBAR} /> : null}
+          {est.fase >= 5 ? <Punto p={B} nombre="B" dx={6} dy={20} color={AMBAR} /> : null}
+        </g>
+      );
+    },
+    candidatos: (est, idx) => {
+      const [A, B] = AB(est.radios[0] ?? rIni);
+      return idx === 0 ? [P] : idx === 1 ? [A, B] : [dist(est.centros[1], A) < 1 ? B : A];
+    },
+    radioLim: (a) => (a === 0 ? rLim : r1Lim),
+    radioIni: (a) => (a === 0 ? rIni : r1Ini),
+    rhoIni: (n) => (n === 0 ? (abajo ? -40 : -80) : 35),
+    validarAbertura: (est, a, r) => {
+      if (a === 0 && abajo && r <= h + 4) return "Con esa abertura el arco no llega a cortar a la recta: debe ser mayor que la distancia de P a ella. Ábrela más y vuelve a fijarla.";
+      return a === 1 && r <= dx(est.radios[0] ?? rIni) + 4 ? "Para que los arcos se corten, la abertura debe ser mayor que la mitad de AB. Ábrela más y vuelve a fijarla." : null;
+    },
+    arco: (est, n, radio, c) => {
+      if (n === 0) {
+        const th = abajo ? grados(Math.acos(clamp(h / radio, 0, 1))) : 90;
+        return { centro: c, base: abajo ? -90 : 90, signo: 1, rhoMin: -(th + 8), rhoMax: th + 8, req: [-(th - 3), th - 3] };
+      }
+      const [A, B] = AB(est.radios[0] ?? rIni);
+      const th = grados(Math.acos(clamp(dx(est.radios[0] ?? rIni) / radio, 0, 1)));
+      const otro = dist(c, A) < 1 ? B : A;
+      return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-(Math.max(th, 20) + 6), Math.max(th, 20) + 6] };
+    },
+    cortes: (est) => {
+      const r0 = est.radios[0] ?? rIni;
+      const [A, B] = AB(r0);
+      if (est.fase === 3) return [A];
+      if (est.fase === 4) return [B];
+      const r1 = est.radios[1];
+      return r1 !== undefined && r1 > dx(r0) + 0.5 ? (interseccionCirculos(A, r1, B, r1) as [Pt, Pt]) : [];
+    },
+    evaluar: () => ({
+      ok: true,
+      mensaje: abajo
+        ? "Correcto: P equidista de A y B, así que está en la mediatriz de AB, que es la perpendicular a t por P."
+        : "Correcto: P es el punto medio de AB (PA = PB), así que la mediatriz de AB es la perpendicular a r por P.",
+    }),
+  };
+}
+
+const defPerpendicularPunto = defPerpendicular("perpendicular-punto-practica", QP, QP[1], [60, 130], 90, [100, 175], 130);
+const defPerpendicularExterior = defPerpendicular("perpendicular-exterior-practica", QE, QE_Y, [168, 185], 175, [112, 165], 140);
+
+export function PerpendicularPuntoPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defPerpendicularPunto} vista={vista} />;
+}
+
+export function PerpendicularExteriorPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defPerpendicularExterior} vista={vista} />;
+}
+
+/* ───────────── Perpendicular a una semirrecta en su extremo ───────────── */
+
+const EO: Pt = [400, 280];
+const eoGeom = (R: number) => {
+  const N: Pt = [EO[0] - R, EO[1]];
+  const M = enCirculo(EO, R, 120);
+  const L = enCirculo(EO, R, 60);
+  return { N, M, L };
+};
+const eoCortes = (R: number, r1: number): [Pt, Pt] => {
+  const { M, L } = eoGeom(R);
+  return interseccionCirculos(M, r1, L, r1) as [Pt, Pt];
+};
+
+const defPerpendicularExtremo: Def = {
+  scene: "perpendicular-extremo-practica",
+  fases: ["centro", "abertura", "arco", "punto", "centro", "arco", "punto", "centro", "arco", "punto", "centro", "abertura", "arco", "centro", "arco", "regla"],
   nClics: 2,
   extRegla: 24,
   papel: (est: Est) => {
-    const r0 = est.radios[0] ?? 90;
+    const R = est.radios[0] ?? 120;
+    const g = eoGeom(R);
     return (
       <g>
-        <Seg a={[60, QP[1]]} b={[580, QP[1]]} w={1.8} />
-        <Txt p={[560, QP[1] - 8]}>r</Txt>
-        <Punto p={QP} nombre="P" dx={-4} dy={-8} />
-        {est.fase >= 4 ? <Punto p={[QP[0] - r0, QP[1]]} nombre="A" dx={-14} dy={20} color={AMBAR} /> : null}
-        {est.fase >= 5 ? <Punto p={[QP[0] + r0, QP[1]]} nombre="B" dx={6} dy={20} color={AMBAR} /> : null}
+        <Seg a={[60, EO[1]]} b={EO} w={1.8} />
+        <Txt p={[84, EO[1] - 8]}>t</Txt>
+        <Punto p={EO} nombre="O" dx={8} dy={20} />
+        {est.fase >= 4 ? <Punto p={g.N} nombre="N" dx={-8} dy={20} color={AMBAR} /> : null}
+        {est.fase >= 7 ? <Punto p={g.M} nombre="M" dx={-18} dy={-6} color={AMBAR} /> : null}
+        {est.fase >= 10 ? <Punto p={g.L} nombre="L" dx={8} dy={-6} color={AMBAR} /> : null}
       </g>
     );
   },
   candidatos: (est, idx) => {
-    const r0 = est.radios[0] ?? 90;
-    return idx === 0 ? [QP] : idx === 1 ? [[QP[0] - r0, QP[1]], [QP[0] + r0, QP[1]]] : [[QP[0] + (dist(est.centros[1], [QP[0] - r0, QP[1]]) < 1 ? r0 : -r0), QP[1]]];
+    const g = eoGeom(est.radios[0] ?? 120);
+    if (idx === 0) return [EO];
+    if (idx === 1) return [g.N];
+    if (idx === 2) return [g.M];
+    return idx === 3 ? [g.M, g.L] : [dist(est.centros[3], g.M) < 1 ? g.L : g.M];
   },
-  radioLim: (a) => (a === 0 ? [60, 130] : [100, 175]),
-  radioIni: (a) => (a === 0 ? 90 : 130),
-  rhoIni: (n) => (n === 0 ? -80 : 35),
-  validarAbertura: (est, a, r) => (a === 1 && r <= (est.radios[0] ?? 90) + 4 ? "Para que los arcos se corten, la abertura debe ser mayor que la anterior (la mitad de AB). Ábrela más y vuelve a fijarla." : null),
+  radioLim: (a) => (a === 0 ? [90, 150] : [80, 180]),
+  radioIni: (a) => (a === 0 ? 120 : 110),
+  rhoIni: (n) => (n === 0 ? -50 : n === 1 || n === 2 ? -20 : 35),
+  validarAbertura: (est, a, r) => (a === 1 && r <= (est.radios[0] ?? 120) / 2 + 4 ? "Para que los arcos se corten, la abertura debe ser mayor que la mitad de ML. Ábrela más y vuelve a fijarla." : null),
   arco: (est, n, radio, c) => {
-    if (n === 0) return { centro: c, base: 90, signo: 1, rhoMin: -90, rhoMax: 90, req: [-80, 80] };
-    const r0 = est.radios[0] ?? 90;
-    const th = grados(Math.acos(clamp(r0 / radio, 0, 1)));
-    const otro: Pt = dist(c, [QP[0] - r0, QP[1]]) < 1 ? [QP[0] + r0, QP[1]] : [QP[0] - r0, QP[1]];
+    const R = est.radios[0] ?? 120;
+    const g = eoGeom(R);
+    if (n === 0) return { centro: c, base: 120, signo: 1, rhoMin: -70, rhoMax: 70, req: [-58, 58] };
+    if (n === 1) return { centro: c, base: angDe(g.N, g.M), signo: 1, rhoMin: -30, rhoMax: 30, req: [-8, 8] };
+    if (n === 2) return { centro: c, base: angDe(g.M, g.L), signo: 1, rhoMin: -30, rhoMax: 30, req: [-8, 8] };
+    const th = grados(Math.acos(clamp(R / 2 / radio, 0, 1)));
+    const otro = dist(c, g.M) < 1 ? g.L : g.M;
     return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-(Math.max(th, 20) + 6), Math.max(th, 20) + 6] };
   },
   cortes: (est) => {
-    const r0 = est.radios[0] ?? 90;
-    if (est.fase === 3) return [[QP[0] - r0, QP[1]]];
-    if (est.fase === 4) return [[QP[0] + r0, QP[1]]];
+    const R = est.radios[0] ?? 120;
+    const g = eoGeom(R);
+    if (est.fase === 3) return [g.N];
+    if (est.fase === 6) return [g.M];
+    if (est.fase === 9) return [g.L];
     const r1 = est.radios[1];
-    return r1 !== undefined && r1 > r0 + 0.5 ? (interseccionCirculos([QP[0] - r0, QP[1]], r1, [QP[0] + r0, QP[1]], r1) as [Pt, Pt]) : [];
+    return r1 !== undefined && r1 > R / 2 + 0.5 ? eoCortes(R, r1) : [];
   },
-  evaluar: () => ({ ok: true, mensaje: "Correcto: P es el punto medio de AB (PA = PB), así que la mediatriz de AB es la perpendicular a r por P." }),
+  evaluar: () => ({ ok: true, mensaje: "Correcto: ON = NM = ML, así que M y L están a 60° y 120° de la semirrecta; la mediatriz de ML pasa por O y es perpendicular a la semirrecta." }),
 };
 
-export function PerpendicularPuntoPractica({ block }: { block: BenchBlock }) {
-  return <Practica block={block} def={defPerpendicularPunto} vista={vista} />;
+export function PerpendicularExtremoPractica({ block }: { block: BenchBlock }) {
+  return <Practica block={block} def={defPerpendicularExtremo} vista={vista} />;
 }
 
 /* ───────────── Construir 60° y 30° con el compás ───────────── */
@@ -311,6 +413,6 @@ export const TRAZADOS_GEOM = {
   SUMA_N, SUMA_PUNTOS, SUMA_TIRAS,
   DS_A, DS_B, DS_E, DS_N,
   PP, PY, geomPar,
-  QP,
+  QP, QE, QE_Y, EO, eoGeom, eoCortes,
   AO, geomAng,
 };

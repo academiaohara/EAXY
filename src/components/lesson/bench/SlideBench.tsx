@@ -13,7 +13,7 @@ import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, 
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
-import { ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
+import { PerpendicularExteriorPractica, PerpendicularExtremoPractica, ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { ReproProvider } from "./reproduccion";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, RangoCtx, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
@@ -171,6 +171,10 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <DiferenciaSegmentosPractica block={block} />;
     case "paralelo-compas-practica":
       return <ParaleloCompasPractica block={block} />;
+    case "perpendicular-exterior-practica":
+      return <PerpendicularExteriorPractica block={block} />;
+    case "perpendicular-extremo-practica":
+      return <PerpendicularExtremoPractica block={block} />;
     case "perpendicular-punto-practica":
       return <PerpendicularPuntoPractica block={block} />;
     case "construye-angulos-practica":
