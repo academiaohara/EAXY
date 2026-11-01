@@ -110,6 +110,20 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `ovalo-compas` / `ovalo-practica` | 6 / 21 fases | **Óvalo dado el eje mayor**: cuatro centros, rectas de enlace, arcos grandes y pequeños | — |
 | `espiral-compas` / `espiral-practica` | 5 / 12 fases | **Espiral de dos centros**: semicircunferencias de radio `d, 2d, 3d, 4d` alternando `A` y `B` | — |
 | `evolvente-hilo` | 4 | Evolvente de la circunferencia: el hilo es tangente a la circunferencia y normal a la curva | — |
+| `elementos-geometricos` | 7 | Punto, recta, curva, segmento, semirrecta, ángulo y plano con su designación (T02, fig. 2) | — |
+| `operaciones-regla-compas` | 7 | Recta por dos puntos, intersecciones, circunferencia, transporte de un segmento y de un ángulo (T02, fig. 3) | — |
+| `transporte-segmento-practica` | 5 fases | **Práctica**: transportar un segmento con el compás | — |
+| `lugar-geometrico` | 6 | Circunferencia, mediatriz, bisectriz, elipse, hipérbola y parábola como lugares geométricos | — |
+| `suma-segmentos-compas` / `suma-segmentos-practica` | 5 / 13 fases | Suma de tres segmentos sobre una recta (T02, fig. 4) | — |
+| `diferencia-segmentos-compas` / `diferencia-segmentos-practica` | 4 / 5 fases | Diferencia de segmentos (T02, fig. 5) | — |
+| `perpendicular-compas` / `perpendicular-punto-practica` | 9 / 11 fases | Perpendiculares con compás: por un punto exterior, por un punto de la recta y en el extremo de una semirrecta (fig. 7–9) | — |
+| `arco-bisecado-tres-puntos` | 6 | Arco dividido en dos partes iguales y arco por tres puntos (fig. 10–11) | — |
+| `division-2n` | 4 | División de un segmento en 2, 4, 8… partes con mediatrices (fig. 12) | — |
+| `paralelo-compas` / `paralelo-compas-practica` | 6 / 12 fases | Paralela por un punto con el compás (fig. 14) | — |
+| `angulos-tipos` / `angulos-circunferencia` | 12 / 7 | Tipos de ángulos y relaciones; ángulos en polígonos y en la circunferencia (fig. 15) | — |
+| `suma-angulos-compas` / `diferencia-angulos-compas` | 5 / 4 | Suma y diferencia de ángulos con cuerdas (fig. 17–18) | — |
+| `bisectriz-segundo-metodo` / `division-angulo-2n` | 5 / 3 | Segundo método de la bisectriz y división de un ángulo (fig. 20–21) | — |
+| `construccion-angulos` / `construye-angulos-practica` | 6 / 14 fases | Ángulos de 60°, 30°, 15°, 45°, 22° 30′ y 75° con el compás (fig. 22–27); práctica de 60° y 30° | — |
 | `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |

@@ -12,6 +12,8 @@ import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
 import { POLIGONOS_GEOM, POLIGONOS_GEOM_2, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
 import { TANGENCIAS_GEOM } from "@/components/lesson/bench/scenes-tangencias";
 import { prepararEscuadra } from "@/components/lesson/bench/scenes-compas";
+import { TRAZADOS_GEOM } from "@/components/lesson/bench/practicas-trazados";
+import { interseccionCirculos } from "@/components/lesson/bench/geometry";
 
 afterEach(cleanup);
 
@@ -1786,6 +1788,165 @@ describe("mesa de dibujo · ángulos con escuadra y cartabón (figura 14 del lib
       if (i < 5) siguiente();
     }
     expect(piezas).toEqual([2, 1, 1, 1, 2, 1]);
+  });
+});
+
+describe("mesa de dibujo · trazados fundamentales (libro, tema 2, págs. 20-26)", () => {
+  const G = TRAZADOS_GEOM;
+  const arco = (c: Pt, r: number, base: number, desde: number, hasta: number) => [enCirc(c, r, base + desde), enCirc(c, r, base + hasta)] as const;
+
+  it("transportar un segmento: se toma AB, se clava en C, el arco corta a la recta en D y la regla une C con D", async () => {
+    const t = pantalla("transporte-segmento-practica");
+    t.tocar(G.TS_A);
+    t.tocar(G.TS_B);
+    expect(t.fase()).toBe("centro");
+    t.tocar(G.TS_C);
+    t.arrastrar(...arco(G.TS_C, d(G.TS_A, G.TS_B), 0, -25, 10));
+    expect(t.fase()).toBe("punto");
+    t.tocar([G.TS_D[0] - 60, G.TS_D[1]]);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(G.TS_D);
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("suma de tres segmentos: cada uno se lleva a continuación del anterior y NM = a + b + c", async () => {
+    const t = pantalla("suma-segmentos-practica");
+    G.SUMA_TIRAS.forEach((tira, k) => {
+      expect(t.fase()).toBe("medida");
+      t.tocar([60, tira.y]);
+      t.tocar([60 + tira.len, tira.y]);
+      t.tocar(G.SUMA_PUNTOS[k]);
+      t.arrastrar(...arco(G.SUMA_PUNTOS[k], tira.len, 0, -25, 10));
+      expect(t.fase()).toBe("punto");
+      t.tocar(G.SUMA_PUNTOS[k + 1]);
+    });
+    expect(t.fase()).toBe("auto");
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("diferencia de segmentos: n se lleva sobre m desde A y EB = m − n", async () => {
+    const t = pantalla("diferencia-segmentos-practica");
+    t.tocar([90, 125]);
+    t.tocar([90 + G.DS_N, 125]);
+    t.tocar(G.DS_A);
+    t.arrastrar(...arco(G.DS_A, G.DS_N, 0, -25, 10));
+    t.tocar(G.DS_E);
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("paralela con el compás: N, M y R con arcos del mismo radio y la regla une P con R", async () => {
+    const t = pantalla("paralelo-compas-practica");
+    const r = 175;
+    const g = G.geomPar(r);
+    t.tocar(G.PP);
+    t.arrastrar(enCirc(G.PP, 110, 35));
+    t.fijar();
+    expect(t.fase()).toBe("abertura");
+    expect(t.aviso()).toContain("no llega a cortar");
+    t.arrastrar(enCirc(G.PP, r, 35));
+    t.fijar();
+    expect(t.fase()).toBe("arco");
+    const m1 = -g.tN / 2;
+    t.arrastrar(enCirc(G.PP, r, m1 - (g.tN / 2 + 6)), enCirc(G.PP, r, m1 + (g.tN / 2 + 6)));
+    expect(t.fase()).toBe("punto");
+    t.tocar(g.M);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(g.N);
+    t.tocar(g.N);
+    const m2 = 180 - g.tN / 2;
+    t.arrastrar(enCirc(g.N, r, m2 - (g.tN / 2 + 6)), enCirc(g.N, r, m2 + (g.tN / 2 + 6)));
+    t.tocar(g.M);
+    t.tocar(g.M);
+    t.tocar(G.PP);
+    expect(t.fase()).toBe("centro");
+    t.tocar(g.N);
+    const m3 = ang(g.N, g.R);
+    t.arrastrar(enCirc(g.N, d(g.M, G.PP), m3 - 12), enCirc(g.N, d(g.M, G.PP), m3 + 12));
+    t.tocar(g.R);
+    expect(t.fase()).toBe("auto");
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("perpendicular por un punto de la recta: A y B a igual distancia de P y mediatriz de AB", () => {
+    const t = pantalla("perpendicular-punto-practica");
+    const r0 = 90;
+    const A: Pt = [G.QP[0] - r0, G.QP[1]];
+    const B: Pt = [G.QP[0] + r0, G.QP[1]];
+    t.tocar(G.QP);
+    t.arrastrar(enCirc(G.QP, r0, 40));
+    t.fijar();
+    t.arrastrar(enCirc(G.QP, r0, 10), enCirc(G.QP, r0, 90), enCirc(G.QP, r0, 170));
+    expect(t.fase()).toBe("punto");
+    t.tocar(B);
+    expect(t.aviso()).toContain("no es el punto");
+    t.tocar(A);
+    t.tocar(B);
+    expect(t.fase()).toBe("centro");
+    t.tocar(A);
+    t.arrastrar(enCirc(A, 130, 35));
+    t.fijar();
+    const th = (Math.acos(r0 / 130) * 180) / Math.PI + 8;
+    t.arrastrar(enCirc(A, 130, th), enCirc(A, 130, -th));
+    t.tocar(B);
+    t.arrastrar(enCirc(B, 130, 180 + th), enCirc(B, 130, 180 - th));
+    expect(t.fase()).toBe("regla");
+    const [c1, c2] = interseccionCirculos(A, 130, B, 130) as [Pt, Pt];
+    t.tocar(c1);
+    t.tocar(c2);
+    t.superada();
+  });
+
+  it("construir 60° y 30°: arcos iguales desde O y A dan B; arcos iguales desde A y B dan C", async () => {
+    const t = pantalla("construye-angulos-practica");
+    const r = 150;
+    const g = G.geomAng(r);
+    t.tocar(G.AO);
+    t.arrastrar(enCirc(G.AO, r, 20));
+    t.fijar();
+    t.arrastrar(enCirc(G.AO, r, -4), enCirc(G.AO, r, 64));
+    t.tocar(g.A);
+    t.tocar(g.A);
+    t.arrastrar(enCirc(g.A, r, 100), enCirc(g.A, r, 135));
+    t.tocar(g.B);
+    t.tocar(G.AO);
+    t.tocar(g.B);
+    expect(t.fase()).toBe("centro");
+    t.tocar(g.A);
+    const bC = ang(g.A, g.C);
+    t.arrastrar(enCirc(g.A, r, bC - 12), enCirc(g.A, r, bC + 12));
+    t.tocar(g.B);
+    const bC2 = ang(g.B, g.C);
+    t.arrastrar(enCirc(g.B, r, bC2 - 12), enCirc(g.B, r, bC2 + 12));
+    expect(t.fase()).toBe("punto");
+    t.tocar(g.C);
+    await esperarAuto();
+    t.superada();
+  });
+
+  it("elementos geométricos: cada paso destaca un solo elemento", () => {
+    const { siguiente } = montar("elementos-geometricos");
+    for (let i = 0; i < 7; i += 1) {
+      expect(screen.getAllByTestId("bench-elemento-activo")).toHaveLength(1);
+      if (i < 6) siguiente();
+    }
+  });
+
+  it("las explicaciones muestran sus resultados finales", () => {
+    const a = montar("suma-segmentos-compas");
+    a.siguiente(4);
+    expect(screen.getByTestId("bench-suma-total")).toBeTruthy();
+    cleanup();
+    const b = montar("diferencia-segmentos-compas");
+    b.siguiente(3);
+    expect(screen.getByTestId("bench-diferencia")).toBeTruthy();
+    cleanup();
+    const c = montar("angulos-tipos");
+    c.siguiente(11);
+    expect(screen.getByTestId("bench-angulos-tipos")).toBeTruthy();
   });
 });
 

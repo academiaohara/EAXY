@@ -35,7 +35,7 @@ Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiar
 
 | Tema en la web (DT I) | Tema del libro (páginas) | Estado |
 |---|---|---|
-| Instrumentos y trazados fundamentales | T01 Instrumentos de dibujo (10–17); T02 Trazados fundamentales en el plano (18–29) | Migrado |
+| Instrumentos y trazados fundamentales (14 lecciones, en el orden del libro) | T01 Instrumentos de dibujo (10–17); T02 Trazados fundamentales en el plano (18–29). **T02, págs. 19–25 del PDF (20–26 impresas) hechas:** elementos y signos, operaciones con regla y compás, lugar geométrico, suma y diferencia de segmentos, mediatriz y aplicaciones, paralelas con compás, ángulos (tipos y relaciones), suma y diferencia de ángulos, bisectriz (2.º método), división de ángulos y construcción de ángulos. **Pendiente de T02:** págs. 26–29 del PDF (construcción de ángulos con plantillas, fig. 28, y actividades) | Migrado (parcial) |
 | Historia y fundamentos geométricos (lugares geométricos, arco capaz) | Sin tema propio; cerca de T02 y T06 | Sin migrar (oculto) |
 | Proporcionalidad, equivalencia y semejanza | T06 Relaciones geométricas (54–61); «Semejanza y escalas» toca T03 Escalas (30–35) | Migrado |
 | Triángulos, cuadriláteros y polígonos regulares | T04 Formas poligonales I (36–43); T05 Formas poligonales II (44–53) | Migrado |
@@ -60,3 +60,7 @@ Sin tema propio en la web: T03 Escalas (30–35), T10 Curvas cónicas (82–89; 
 - Tema 3 (proporcionalidad, equivalencia y semejanza): herramientas `dt1-thales-explorador`, `dt1-media-proporcional-explorador`, `dt1-equivalencia-explorador` y `dt1-homotecia-explorador`, la animación `dt1-seccion-aurea` y sus helpers de cálculo y tests. La homotecia se trabaja en el tema 5; la lección 4 del tema 3 pasa a centrarse en semejanza y escalas.
 - Tema 4 (triángulos, cuadriláteros y polígonos): herramientas `dt1-puntos-notables-explorador`, `dt1-triangulo-datos-explorador`, `dt1-cuadrilatero-explorador`, `dt1-poligono-regular-explorador`, `dt1-metodo-general-explorador` y `dt1-estrellado-explorador`, la animación `dt1-pentagono-euclides`, el archivo `DtPoligonosTools.tsx` y sus cálculos y tests.
 - Tema 6 (tangencias y curvas técnicas): herramientas `dt1-tangente-punto-explorador`, `dt1-circunferencias-explorador`, `dt1-enlace-explorador`, `dt1-ovalo-explorador` y `dt1-espiral-evolvente-explorador`, las animaciones `dt1-tangentes-punto` y `dt1-trazado-ovalo`, el archivo `DtTangenciasTools.tsx` y sus cálculos y tests.
+
+### Orden del libro (decisión del autor)
+
+A partir de ahora se sigue **el orden del libro**: se migra cada tema con todo su contenido, de principio a fin, y cuando se haya recorrido todo el libro se añade lo que falte de la LOMLOE. El contenido de cada tema se saca de `temp/dibujo-tecnico/1-bachillerato/` (los PDF están escaneados: se leen como imágenes, página a página).

@@ -85,7 +85,29 @@ export type BenchSceneName =
   | "ovalo-practica"
   | "espiral-compas"
   | "espiral-practica"
-  | "evolvente-hilo";
+  | "evolvente-hilo"
+  | "elementos-geometricos"
+  | "operaciones-regla-compas"
+  | "lugar-geometrico"
+  | "suma-segmentos-compas"
+  | "diferencia-segmentos-compas"
+  | "perpendicular-compas"
+  | "arco-bisecado-tres-puntos"
+  | "division-2n"
+  | "angulos-tipos"
+  | "angulos-circunferencia"
+  | "suma-angulos-compas"
+  | "diferencia-angulos-compas"
+  | "bisectriz-segundo-metodo"
+  | "division-angulo-2n"
+  | "construccion-angulos"
+  | "paralelo-compas"
+  | "transporte-segmento-practica"
+  | "suma-segmentos-practica"
+  | "diferencia-segmentos-practica"
+  | "paralelo-compas-practica"
+  | "perpendicular-punto-practica"
+  | "construye-angulos-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -142,6 +164,28 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "espiral-compas": 5,
   "espiral-practica": 12,
   "evolvente-hilo": 4,
+  "elementos-geometricos": 7,
+  "operaciones-regla-compas": 7,
+  "lugar-geometrico": 6,
+  "suma-segmentos-compas": 5,
+  "diferencia-segmentos-compas": 4,
+  "perpendicular-compas": 9,
+  "arco-bisecado-tres-puntos": 6,
+  "division-2n": 4,
+  "angulos-tipos": 12,
+  "angulos-circunferencia": 7,
+  "suma-angulos-compas": 5,
+  "diferencia-angulos-compas": 4,
+  "bisectriz-segundo-metodo": 5,
+  "division-angulo-2n": 3,
+  "construccion-angulos": 6,
+  "paralelo-compas": 6,
+  "transporte-segmento-practica": 5,
+  "suma-segmentos-practica": 13,
+  "diferencia-segmentos-practica": 5,
+  "paralelo-compas-practica": 12,
+  "perpendicular-punto-practica": 11,
+  "construye-angulos-practica": 14,
 };
 
 export const INK = "#2a2f36";

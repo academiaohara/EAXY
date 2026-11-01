@@ -4,7 +4,7 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const trasladarAngulosCompasDt1Lesson: InteractiveLesson = {
   slug: "trasladar-angulos-compas-dt1",
-  title: "4. Trasladar un ángulo con compás",
+  title: "11. Trasladar un ángulo con compás",
   subtitle: DT1_SUBTITLES[11],
   stage: { theme: "board" },
   steps: [

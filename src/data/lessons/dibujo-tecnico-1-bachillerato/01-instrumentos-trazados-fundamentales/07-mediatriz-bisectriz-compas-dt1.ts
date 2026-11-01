@@ -4,7 +4,7 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const mediatrizBisectrizCompasDt1Lesson: InteractiveLesson = {
   slug: "mediatriz-bisectriz-compas-dt1",
-  title: "3. Mediatriz y bisectriz con compás",
+  title: "7. Mediatriz y bisectriz con compás",
   subtitle: DT1_SUBTITLES[11],
   stage: { theme: "board" },
   steps: [
