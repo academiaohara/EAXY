@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
+import { bench, benchParte, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
   slug: "aplicaciones-mediatriz-dt1",
@@ -16,13 +16,19 @@ export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
       ] },
     ], undefined, "stack"),
 
-    slide("perpendiculares", "Perpendiculares con el compás", [], bench("perpendicular-compas", [
+    slide("perp-exterior", "Perpendicular desde un punto exterior", [], benchParte("perpendicular-compas", 0, [
       { title: "Desde un punto exterior: arco", text: "**Perpendicular a una recta $t$ por un punto exterior $P$.** Con centro en $P$ y un radio arbitrario, se traza un arco que corta a la recta $t$ en $A$ y $B$.", fact: "Arco con centro en P" },
       { title: "Desde un punto exterior: mediatriz", text: "La **mediatriz del segmento $AB$** es la solución. Se opera como en el caso anterior: arcos de igual radio desde $A$ y desde $B$.", fact: "Mediatriz de AB" },
       { title: "Desde un punto exterior: resultado", text: "La mediatriz de $AB$ pasa por $P$ y es **perpendicular a $t$**: $P$ equidista de $A$ y $B$.", fact: "P equidista de A y B" },
+    ]), "stack"),
+
+    slide("perp-recta", "Perpendicular por un punto de la recta", [], benchParte("perpendicular-compas", 3, [
       { title: "Por un punto de la recta: arco", text: "**Perpendicular a una recta $r$ por un punto $P$ de ella.** Con centro en $P$ se traza un arco de radio arbitrario que determina los puntos $A$ y $B$ sobre la recta.", fact: "PA = PB" },
       { title: "Por un punto de la recta: mediatriz", text: "La mediatriz del segmento $AB$ es la solución: se trazan los arcos 1 y 2 con centros en $A$ y $B$.", fact: "Mediatriz de AB" },
       { title: "Por un punto de la recta: resultado", text: "Como $P$ es el punto medio de $AB$, la mediatriz pasa por $P$ y es perpendicular a $r$.", fact: "P es el punto medio" },
+    ]), "stack"),
+
+    slide("perp-extremo", "Perpendicular en el extremo de una semirrecta", [], benchParte("perpendicular-compas", 6, [
       { title: "En el extremo de una semirrecta: arco", text: "**Perpendicular a una semirrecta en su extremo $O$.** Con centro en $O$ se traza un arco de radio $ON$ arbitrario, que corta a la semirrecta en $N$.", fact: "ON = radio" },
       { title: "En el extremo: arcos de igual radio", text: "Con centro en $N$ y el mismo radio se corta el arco en $M$; con centro en $M$ y el mismo radio se vuelve a cortar al primer arco en $L$.", fact: "NM = ML = ON" },
       { title: "En el extremo: resultado", text: "La mediatriz del segmento $ML$ es la recta $p$, **perpendicular a la semirrecta en $O$**.", fact: "p ⟂ semirrecta en O" },
@@ -46,10 +52,13 @@ export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
       explanation: "PA = PB, así que P es el punto medio de AB y la mediatriz de AB pasa por P y es perpendicular a r.",
     }),
 
-    slide("arcos", "Arco por tres puntos y arco bisecado", [], bench("arco-bisecado-tres-puntos", [
+    slide("arco-bisecado", "Arco bisecado", [], benchParte("arco-bisecado-tres-puntos", 0, [
       { title: "Un arco en dos partes iguales", text: "Para **dividir un arco $AB$ en dos partes iguales** se traza la cuerda $AB$ y su mediatriz.", fact: "Cuerda y mediatriz" },
       { title: "La mediatriz", text: "Se hace la mediatriz de la cuerda con arcos de igual radio desde $A$ y $B$.", fact: "Mediatriz de AB" },
       { title: "El punto medio del arco", text: "La mediatriz corta al arco en $C$: es su **punto medio**.", fact: "AC = CB" },
+    ]), "stack"),
+
+    slide("arco-tres-puntos", "Arco por tres puntos", [], benchParte("arco-bisecado-tres-puntos", 3, [
       { title: "Tres puntos", text: "**Arco que pasa por tres puntos** $A$, $B$ y $C$ no alineados. Se unen $A$ con $B$ y $B$ con $C$.", fact: "Cuerdas AB y BC" },
       { title: "Dos mediatrices", text: "Se trazan las mediatrices $n$ y $m$ de las cuerdas $AB$ y $BC$. Se cortan en el punto $O$.", fact: "Mediatrices n y m" },
       { title: "El centro", text: "El punto $O$, por pertenecer a las dos mediatrices, **equidista de los tres puntos**: es el centro del arco que pasa por $A$, $B$ y $C$.", fact: "OA = OB = OC" },

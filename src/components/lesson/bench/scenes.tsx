@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { createContext, useContext, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import {
   CARTABON_LARGO,
@@ -194,6 +194,14 @@ export const f1 = (v: number) => v.toFixed(1).replace(".", ",");
 
 /* ───────────── Contenedor: instrumentos a la izquierda, información a la derecha ───────────── */
 
+export const RangoCtx = createContext<{ desde: number } | null>(null);
+
+/** Paso actual de una escena: empieza en el primero que muestra la diapositiva. */
+export function usePaso() {
+  const c = useContext(RangoCtx);
+  return useState(c?.desde ?? 0);
+}
+
 export function BenchShell({
   scene,
   notes,
@@ -217,8 +225,12 @@ export function BenchShell({
   label: string;
   children: ReactNode;
 }) {
-  const total = BENCH_STEPS[scene];
-  const note = notes?.[step];
+  const desde = useContext(RangoCtx)?.desde;
+  const parcial = desde !== undefined && notes !== undefined;
+  const first = parcial ? desde : 0;
+  const total = parcial ? notes.length : BENCH_STEPS[scene];
+  const rel = step - first;
+  const note = notes?.[rel];
   const btn =
     "inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
   return (
@@ -251,25 +263,25 @@ export function BenchShell({
           </div>
           {extra}
         </div>
-        <div className="flex shrink-0 items-center gap-3 pt-3" data-testid="bench-nav">
+        <div className={`flex shrink-0 items-center gap-3 pt-3 ${total <= 1 ? "hidden" : ""}`} data-testid="bench-nav">
           {nav ?? (
-            <button type="button" className={btn} disabled={step === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
+            <button type="button" className={btn} disabled={rel === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">
               <ChevronLeftIcon className="size-4" aria-hidden />
               Anterior
             </button>
           )}
           <span className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
-            Paso {step + 1} de {total}
+            Paso {rel + 1} de {total}
           </span>
           {total <= 12 ? (
             <div className="flex items-center gap-1.5" aria-hidden>
               {Array.from({ length: total }, (_, i) => (
-                <span key={i} className={`size-2 rounded-full ${i === step ? "bg-[#58c4dd]" : i < step ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
+                <span key={i} className={`size-2 rounded-full ${i === rel ? "bg-[#58c4dd]" : i < rel ? "bg-[#58c4dd]/50" : "bg-white/20"}`} />
               ))}
             </div>
           ) : null}
           {nav ? null : (
-            <button type="button" className={btn} disabled={step === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
+            <button type="button" className={btn} disabled={rel === total - 1} onClick={() => setStep(step + 1)} data-testid="bench-siguiente">
               Siguiente
               <ChevronRightIcon className="size-4" aria-hidden />
             </button>

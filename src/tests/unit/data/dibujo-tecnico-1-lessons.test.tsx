@@ -130,7 +130,8 @@ describe("curso Dibujo Técnico I", () => {
             expect(() => render(<SlideTool block={v} />), `${data.slug}/${step.id}`).not.toThrow();
           }
           if (v.kind === "bench") {
-            expect(v.notes?.length, `${data.slug}/${step.id}: un texto por paso`).toBe(BENCH_STEPS[v.scene]);
+            if (v.desde === undefined) expect(v.notes?.length, `${data.slug}/${step.id}: un texto por paso`).toBe(BENCH_STEPS[v.scene]);
+            else expect((v.desde ?? 0) + (v.notes?.length ?? 0), `${data.slug}/${step.id}: parte de la escena`).toBeLessThanOrEqual(BENCH_STEPS[v.scene]);
             expect(() => render(<LessonStepControlProvider><SlideBench block={v} /></LessonStepControlProvider>), `${data.slug}/${step.id}`).not.toThrow();
           }
         }

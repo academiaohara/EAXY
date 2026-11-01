@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { angDe, dist, enCirculo, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
-import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
+import { AMBAR, AZUL, Arco, BenchShell, usePaso, INK, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoAnim, MSHEET, MV, ReglaTrazando, lerp, tramo, useProgreso } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano } from "./scenes-trazados";
@@ -97,7 +97,7 @@ function DibujoElemento({ i }: { i: number }) {
 }
 
 export function ElementosGeometricos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   return (
     <Hoja scene="elementos-geometricos" block={block} step={step} setStep={setStep} label="Hoja con los elementos geométricos: punto, recta, curva, segmento, semirrecta, ángulo y plano" testId="bench-elementos-geom">
       {ELEMENTOS.map((nombre, i) => (
@@ -114,7 +114,7 @@ export function ElementosGeometricos({ block }: { block: BenchBlock }) {
 /* ───────────── 2. Operaciones con la regla y el compás ───────────── */
 
 export function OperacionesReglaCompas({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step === 0 ? 3000 : step === 2 ? 4200 : step === 5 ? 7200 : step === 6 ? 10000 : 1);
   const A: Pt = [180, 200];
   const B: Pt = [440, 200];
@@ -225,7 +225,7 @@ const TickIgual = ({ a, b, k = 1, color = VERDE }: { a: Pt; b: Pt; k?: number; c
 };
 
 export function LugarGeometrico({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const nodos: ReactNode[] = [];
   const titulo = ["Circunferencia", "Mediatriz de un segmento", "Bisectriz de un ángulo", "Elipse", "Hipérbola", "Parábola"][step];
   const propiedad = ["todos sus puntos equidistan del centro", "todos sus puntos equidistan de los extremos", "todos sus puntos equidistan de los lados", "PF₁ + PF₂ = constante", "|PF₁ − PF₂| = constante", "PF = distancia de P a la directriz"][step];
@@ -335,7 +335,7 @@ function Segmento({ y, x0, len, nombre, extremos, color }: { y: number; x0: numb
 }
 
 export function SumaSegmentos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step >= 1 && step <= 3 ? 3000 : 1);
   const marcas: Pt[] = [N0, [N0[0] + SA, N0[1]], [N0[0] + SA + SB, N0[1]], [N0[0] + SA + SB + SC, N0[1]]];
   const largos = [SA, SB, SC];
@@ -388,7 +388,7 @@ const DM = 190;
 const DN = 100;
 
 export function DiferenciaSegmentos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step === 2 ? 3200 : 1);
   const A: Pt = [90, 280];
   const B: Pt = [A[0] + DM, 280];
@@ -454,7 +454,7 @@ function MediatrizDibujada({ a, b, r, p = 1, ext = 20, color = INK, arcos = true
 }
 
 export function PerpendicularCompas({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step % 3 === 1 ? 4000 : 1);
   const nodos: ReactNode[] = [];
   const caso = Math.floor(step / 3);
@@ -506,7 +506,7 @@ export function PerpendicularCompas({ block }: { block: BenchBlock }) {
 }
 
 export function ArcoBisecado({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step === 1 || step === 4 ? 4000 : 1);
   const nodos: ReactNode[] = [];
   if (step <= 2) {
@@ -545,7 +545,7 @@ export function ArcoBisecado({ block }: { block: BenchBlock }) {
 }
 
 export function DivisionDos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const A: Pt = [90, 200];
   const B: Pt = [530, 200];
   const px = (k: number, n: number): number => A[0] + ((B[0] - A[0]) * k) / n;

@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { angDe, dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
-import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
+import { AMBAR, AZUL, Arco, BenchShell, usePaso, INK, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoAnim, MSHEET, MV, ReglaTrazando, lerp, tramo, useProgreso } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano } from "./scenes-trazados";
@@ -36,7 +36,7 @@ const AngArco = ({ v, a1, a2, r, color, text, dr = 14 }: { v: Pt; a1: number; a2
 /* ───────────── Tipos de ángulos y relaciones ───────────── */
 
 export function AngulosTipos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const V: Pt = [190, 290];
   const nodos: ReactNode[] = [];
   const base = <Seg a={[40, V[1]]} b={[580, V[1]]} w={1.2} color={AUX} />;
@@ -105,7 +105,7 @@ export function AngulosTipos({ block }: { block: BenchBlock }) {
 /* ───────────── Ángulos en polígonos y circunferencias ───────────── */
 
 export function AngulosCircunferencia({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const O: Pt = [310, 205];
   const R = 120;
   const nodos: ReactNode[] = [];
@@ -182,7 +182,7 @@ function AnguloCuerda({ v, ang, r, color, nombre, cuerda = true }: { v: Pt; ang:
 }
 
 export function SumaAngulos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   useProgreso(step, 1);
   const VA: Pt = [60, 150];
   const VB: Pt = [330, 150];
@@ -220,7 +220,7 @@ export function SumaAngulos({ block }: { block: BenchBlock }) {
 }
 
 export function DiferenciaAngulos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const VA: Pt = [60, 150];
   const VB: Pt = [330, 150];
   const VC: Pt = [150, 330];
@@ -249,7 +249,7 @@ export function DiferenciaAngulos({ block }: { block: BenchBlock }) {
 /* ───────────── Bisectriz (segundo método) y división de un ángulo ───────────── */
 
 export function BisectrizSegundoMetodo({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step === 1 || step === 2 ? 3600 : step === 3 ? 3000 : 1);
   const A: Pt = [90, 200];
   const ang = 40;
@@ -284,7 +284,7 @@ export function BisectrizSegundoMetodo({ block }: { block: BenchBlock }) {
 }
 
 export function DivisionAngulo({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const V: Pt = [90, 200];
   const ang = 64;
   const nodos: ReactNode[] = [];
@@ -308,7 +308,7 @@ export function DivisionAngulo({ block }: { block: BenchBlock }) {
 /* ───────────── Construcción de ángulos con el compás ───────────── */
 
 export function ConstruccionAngulos({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const O: Pt = [110, 300];
   const R = 190;
   const A: Pt = [O[0] + R, O[1]];
@@ -352,7 +352,7 @@ export const PAR_M: Pt = [PAR_N[0] - PAR_R, PAR_Y];
 export const PAR_R2: Pt = [PAR_P[0] + PAR_R, PAR_P[1]];
 
 export function ParaleloCompas({ block }: { block: BenchBlock }) {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = usePaso();
   const p = useProgreso(step, step === 1 || step === 2 || step === 4 ? 3600 : 1);
   const MP = dist(PAR_M, PAR_P);
   const nodos: ReactNode[] = [];

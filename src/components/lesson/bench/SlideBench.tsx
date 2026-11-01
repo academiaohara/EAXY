@@ -15,10 +15,14 @@ import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, L
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
 import { ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
-import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
+import { EscuadraCartabonAngulos, InstrumentosCatalogo, RangoCtx, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
 /** Monta una escena de la «mesa de dibujo» dentro de la diapositiva. */
 export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
+  return <RangoCtx.Provider value={block.desde === undefined ? null : { desde: block.desde }}><Escena block={block} /></RangoCtx.Provider>;
+}
+
+function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
   switch (block.scene) {
     case "instrumentos-catalogo":
       return <InstrumentosCatalogo block={block} />;

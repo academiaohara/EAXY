@@ -50,6 +50,14 @@ export const tool = (
 ): Visual => ({ kind: "tool", tool: id, ...(params ? { params } : {}), ...(hint ? { hint } : {}) });
 
 /** Mesa de dibujo: instrumentos SVG realistas a la izquierda y un texto por paso a la derecha. */
+/** Diapositiva con una parte de una escena: pasos `desde` … `desde + notes.length - 1`. */
+export const benchParte = (
+  scene: Extract<SlideBlock, { kind: "bench" }>["scene"],
+  desde: number,
+  notes: NonNullable<Extract<SlideBlock, { kind: "bench" }>["notes"]>,
+  params?: Extract<SlideBlock, { kind: "bench" }>["params"],
+): Visual => ({ kind: "bench", scene, desde, notes, ...(params ? { params } : {}) });
+
 export const bench = (
   scene: Extract<SlideBlock, { kind: "bench" }>["scene"],
   notes: NonNullable<Extract<SlideBlock, { kind: "bench" }>["notes"]>,
