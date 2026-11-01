@@ -1763,6 +1763,32 @@ describe("mesa de dibujo · construcciones auxiliares con instrumentos", () => {
   });
 });
 
+describe("mesa de dibujo · ángulos con escuadra y cartabón (figura 14 del libro)", () => {
+  it("las seis posiciones marcan 15°/165°, 30°/150°, 45°/135°, 60°/120°, 75°/105° y 135°/45°", () => {
+    const { siguiente } = montar("escuadra-cartabon-angulos");
+    siguiente(3);
+    const esperados = [15, 150, 45, 120, 105, 135]; // ángulo de la recta con la horizontal (el otro es su suplementario)
+    esperados.forEach((a, i) => {
+      const g = screen.getByTestId("bench-posicion-angulos");
+      expect(Number(g.getAttribute("data-angulo")), `posición ${i + 1}`).toBe(a);
+      expect(g.textContent).toContain(`${a}°`);
+      expect(g.textContent).toContain(`${180 - a}°`);
+      if (i < esperados.length - 1) siguiente();
+    });
+  });
+
+  it("15° y 75° usan los dos instrumentos (un cateto de la escuadra en la hipotenusa del cartabón); el resto, una sola pieza", () => {
+    const { siguiente } = montar("escuadra-cartabon-angulos");
+    siguiente(3);
+    const piezas: number[] = [];
+    for (let i = 0; i < 6; i += 1) {
+      piezas.push(screen.getByTestId("bench-posicion-angulos").querySelectorAll("g[filter]").length);
+      if (i < 5) siguiente();
+    }
+    expect(piezas).toEqual([2, 1, 1, 1, 2, 1]);
+  });
+});
+
 describe("mesa de dibujo · integración", () => {
   it("se monta desde una diapositiva (SlideBlockView)", () => {
     render(

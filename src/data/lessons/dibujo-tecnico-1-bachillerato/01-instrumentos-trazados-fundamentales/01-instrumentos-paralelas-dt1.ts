@@ -21,9 +21,12 @@ export const instrumentosParalelasDt1Lesson: InteractiveLesson = {
       { title: "La escuadra: 90°, 45° y 45°", text: "Es la mitad de un **cuadrado** cortado por su diagonal, por eso tiene dos ángulos iguales.", fact: "Isósceles: dos lados iguales" },
       { title: "El cartabón: 90°, 60° y 30°", text: "Es la mitad de un **triángulo equilátero** cortado por una altura, por eso sus lados son todos distintos.", fact: "Escaleno: tres lados distintos" },
       { title: "Se fabrican a juego", text: "El cateto largo del cartabón mide **lo mismo** que la hipotenusa de la escuadra. Así se apoyan un lado contra el otro y se deslizan con holgura." },
-      { title: "Restando: 15°", text: "Con el mismo vértice y la misma base, la diferencia entre el rayo de la escuadra y el del cartabón es $45^\\circ - 30^\\circ = 15^\\circ$.", fact: "45° − 30° = 15°" },
-      { title: "Sumando: 75°", text: "Se traza un rayo a 45° con la escuadra y, apoyando el cartabón en él, se suman otros 30°: $45^\\circ + 30^\\circ = 75^\\circ$.", fact: "45° + 30° = 75°" },
-      { title: "Sumando: 105°", text: "Con 60° del cartabón más 45° de la escuadra se llega a $105^\\circ$. Así salen todos los **múltiplos de 15°**: 15°, 30°, 45°, 60°, 75°, 90°, 105°…", fact: "60° + 45° = 105°" },
+      { title: "15°: restando 45° − 30°", text: "El cartabón apoyado por su cateto largo deja su hipotenusa a 30°. Si apoyas **un cateto de la escuadra** en esa hipotenusa, la hipotenusa de la escuadra queda a $45^\\circ - 30^\\circ = 15^\\circ$ de la horizontal (y $165^\\circ$ por el otro lado).", fact: "15° y 165°" },
+      { title: "30°: el cartabón solo", text: "Con el **cateto largo** sobre la horizontal, la hipotenusa del cartabón marca $30^\\circ$; dándole la vuelta, $150^\\circ$.", fact: "30° y 150°" },
+      { title: "45°: la escuadra sola", text: "Con un **cateto** de la escuadra sobre la horizontal, su hipotenusa marca $45^\\circ$ y el otro cateto, $90^\\circ$.", fact: "45° y 90°" },
+      { title: "60°: el cartabón sobre su cateto corto", text: "Apoyado por su **cateto corto**, la hipotenusa del cartabón marca $60^\\circ$; al revés, $120^\\circ$.", fact: "60° y 120°" },
+      { title: "75°: sumando 45° + 30°", text: "Con el cartabón en su hipotenusa, apoya el cateto de la escuadra **por el otro lado**: la hipotenusa de la escuadra queda a $45^\\circ + 30^\\circ = 75^\\circ$ (y $105^\\circ$ por el otro lado).", fact: "75° y 105°" },
+      { title: "135°: la escuadra al revés", text: "Dándole la vuelta a la escuadra, su hipotenusa marca $135^\\circ$ (o $45^\\circ$ medidos desde el otro lado). Con las **seis posiciones** salen todos los múltiplos de 15° entre 0° y 180°.", fact: "135° y 45°" },
     ]), "stack"),
 
     slide("lapiz", "El lápiz también es un instrumento", [], bench("lapices-dureza", [
