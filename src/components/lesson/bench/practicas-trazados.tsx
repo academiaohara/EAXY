@@ -23,6 +23,8 @@ function Tira({ y, x0, len, nombre, extremos, color }: { y: number; x0: number; 
   );
 }
 
+const ROJO = "#e5484d";
+
 const arcoCorta = (base = 0, lim = 45, req = 8) => ({ base, signo: 1 as const, rhoMin: -lim, rhoMax: lim, req: [-req, req] as [number, number] });
 
 /* ───────────── Transportar un segmento ───────────── */
@@ -89,7 +91,7 @@ const defSumaSegmentos: Def = {
           <Marca key={i} p={q} color={SUMA_TIRAS[i].color} r={3.6} />
         ))}
         {est.fase >= 13 ? <Punto p={SUMA_PUNTOS[3]} nombre="M" dx={-4} dy={22} color={VERDE} /> : null}
-        {est.fase >= 13 ? <Seg a={SUMA_N} b={SUMA_PUNTOS[3]} color={VERDE} w={5} /> : null}
+        {est.fase >= 13 ? <Seg a={SUMA_N} b={SUMA_PUNTOS[3]} color={ROJO} w={5} /> : null}
       </g>
     );
   },
@@ -113,16 +115,16 @@ export function SumaSegmentosPractica({ block }: { block: BenchBlock }) {
 
 /* ───────────── Diferencia de segmentos ───────────── */
 
-const DS_A: Pt = [90, 280];
+const DS_A: Pt = [90, 240];
 const DS_M = 190;
 const DS_N = 100;
-const DS_B: Pt = [DS_A[0] + DS_M, 280];
-const DS_E: Pt = [DS_A[0] + DS_N, 280];
+const DS_B: Pt = [DS_A[0] + DS_M, 240];
+const DS_E: Pt = [DS_B[0] - DS_N, 240];
 
 const defDiferenciaSegmentos: Def = {
   scene: "diferencia-segmentos-practica",
   fases: ["medida", "centro", "arco", "punto", "auto"],
-  autoLados: () => [[DS_E, DS_B]],
+  autoLados: () => [[DS_A, DS_E]],
   papel: (est: Est) => (
     <g>
       <Tira y={70} x0={90} len={DS_M} nombre="m" extremos={["A", "B"]} color={AMBAR} />
@@ -130,19 +132,19 @@ const defDiferenciaSegmentos: Def = {
       <Seg a={DS_A} b={DS_B} w={2.2} color={AMBAR} />
       <Punto p={DS_A} nombre="A" dx={-6} dy={22} />
       <Punto p={DS_B} nombre="B" dx={-4} dy={22} />
-      {est.fase >= 4 ? <Punto p={DS_E} nombre="E" dx={-4} dy={22} color={VERDE} /> : null}
-      {est.fase >= 5 ? <Seg a={DS_E} b={DS_B} color={VERDE} w={5} /> : null}
+      {est.fase >= 4 ? <Punto p={DS_E} nombre="E" dx={-4} dy={22} color={AZUL} /> : null}
+      {est.fase >= 5 ? <Seg a={DS_A} b={DS_E} color={ROJO} w={5} /> : null}
     </g>
   ),
   medibles: () => [[90, 125], [90 + DS_N, 125]],
-  candidatos: () => [DS_A],
+  candidatos: () => [DS_B],
   compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
   radioLim: () => [40, 215],
   radioIni: () => 80,
   rhoIni: () => -25,
-  arco: (_est, _n, _r, c) => ({ centro: c, ...arcoCorta() }),
+  arco: (_est, _n, _r, c) => ({ centro: c, ...arcoCorta(180) }),
   cortes: () => [DS_E],
-  evaluar: () => ({ ok: true, mensaje: "Correcto: EB = m − n. Se coloca n sobre m desde A y lo que queda hasta B es la diferencia." }),
+  evaluar: () => ({ ok: true, mensaje: "Correcto: AE = m − n. Se lleva n desde B hacia A y lo que queda desde A hasta el corte es la diferencia." }),
 };
 
 export function DiferenciaSegmentosPractica({ block }: { block: BenchBlock }) {
