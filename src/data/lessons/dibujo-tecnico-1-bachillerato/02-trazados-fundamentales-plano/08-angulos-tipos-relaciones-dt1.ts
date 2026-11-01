@@ -34,18 +34,23 @@ export const angulosTiposRelacionesDt1Lesson: InteractiveLesson = {
 
     slide("pc-convexo", "Cóncavo, convexo, interior y exterior", [], benchParte("angulos-circunferencia", 0, [
       { title: "Cóncavo y convexo", text: "Un polígono es **convexo** si todos sus ángulos interiores miden menos de $180^\\circ$, y **cóncavo** si alguno mide más.", fact: "Cóncavo: algún ángulo > 180°" },
-      { title: "Interior y exterior", text: "En un polígono, $A$, $B$, $C$ y $D$ son los **ángulos interiores**; el ángulo $D'$, formado por un lado y la prolongación del siguiente, es un **ángulo exterior**.", fact: "Interiores y exteriores" },
+      { title: "Interior y exterior", text: "En un polígono los **ángulos interiores** ($\\alpha$, $\\beta$, $\\gamma$ en el triángulo) quedan dentro. Un **ángulo exterior** lo forman un lado y la prolongación del siguiente: es **adyacente** al interior, y los dos suman $180^\\circ$ ($180^\\circ - \\alpha$).", fact: "Interiores y exteriores" },
     ]), "stack"),
 
     slide("pc-circ", "Ángulos en la circunferencia", [], benchParte("angulos-circunferencia", 2, [
-      { title: "Ángulo central", text: "El ángulo **central** tiene su vértice en el **centro** de la circunferencia.", fact: "Vértice en el centro" },
-      { title: "Ángulo inscrito", text: "El ángulo **inscrito** tiene su vértice **en la circunferencia** y sus lados la cortan.", fact: "Vértice en la circunferencia" },
-      { title: "Ángulo semiinscrito", text: "El ángulo **semiinscrito** tiene el vértice en la circunferencia; un lado es **tangente** y el otro, una **cuerda**.", fact: "Un lado tangente" },
+      { title: "Ángulo central", text: "El ángulo **central** tiene su vértice en el **centro** de la circunferencia. Mide lo mismo que el arco $\\beta$ que abarca.", fact: "α = β" },
+      { title: "Ángulo inscrito", text: "El ángulo **inscrito** tiene su vértice **en la circunferencia** y sus lados la cortan. Mide la **mitad** del arco $\\beta$ que abarca.", fact: "β = 2α" },
+      { title: "Ángulo semiinscrito", text: "El ángulo **semiinscrito** tiene el vértice en la circunferencia; un lado es **tangente** y el otro, una **cuerda**. También mide la **mitad** del arco que abarca.", fact: "α = β / 2" },
     ]), "stack"),
 
-    slide("pc-secantes", "Ángulos interior y exterior a la circunferencia", [], benchParte("angulos-circunferencia", 5, [
-      { title: "Ángulo interior", text: "El ángulo **interior** tiene su vértice en un punto interior de la circunferencia y sus lados son cuerdas.", fact: "Vértice dentro" },
-      { title: "Ángulo exterior", text: "El ángulo **exterior** tiene su vértice fuera de la circunferencia y sus lados son secantes (o tangentes).", fact: "Vértice fuera" },
+    slide("pc-interior", "Ángulo interior a la circunferencia", [], benchParte("angulos-circunferencia", 5, [
+      { title: "Ángulo interior", text: "El ángulo **interior** tiene su vértice en un punto interior de la circunferencia y sus lados son cuerdas. Mide la **semisuma** de los arcos que abarca él ($\\beta$) y su opuesto por el vértice ($\\theta$).", fact: "α = (β + θ) / 2" },
+    ]), "stack"),
+
+    slide("pc-exterior", "Ángulo exterior a la circunferencia", [], benchParte("angulos-circunferencia", 6, [
+      { title: "Dos secantes", text: "El ángulo **exterior** tiene su vértice fuera de la circunferencia. Con **dos secantes** mide la **semidiferencia** del arco lejano ($\\beta$) y el cercano ($\\theta$).", fact: "α = (β − θ) / 2" },
+      { title: "Tangente y secante", text: "Si un lado es **tangente** (en $T$) y el otro **secante**, se cumple lo mismo: el ángulo es la semidiferencia de los arcos.", fact: "α = (β − θ) / 2" },
+      { title: "Dos tangentes", text: "Con **dos tangentes** (en $T$ y $S$) también: $\\beta$ es el arco mayor y $\\theta$ el menor entre los puntos de tangencia.", fact: "α = (β − θ) / 2" },
     ]), "stack"),
   ],
 };

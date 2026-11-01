@@ -176,7 +176,7 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "arco-bisecado-tres-puntos": 6,
   "division-2n": 4,
   "angulos-tipos": 12,
-  "angulos-circunferencia": 7,
+  "angulos-circunferencia": 9,
   "suma-angulos-compas": 5,
   "diferencia-angulos-compas": 4,
   "bisectriz-segundo-metodo": 5,

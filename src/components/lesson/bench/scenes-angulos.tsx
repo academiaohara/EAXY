@@ -57,10 +57,12 @@ export function AngulosTipos({ block }: { block: BenchBlock }) {
     case 3:
       nodos.push(<Rayo key="a" v={V} a={0} len={300} />, <Rayo key="b" v={V} a={125} len={250} />, <Marca key="v" p={V} />, <AngArco key="g" v={V} a1={0} a2={125} r={70} color={AMBAR} text="> 90°" />);
       break;
-    case 4:
-      nodos.push(<Seg key="a" a={[V[0] - 200, V[1]]} b={[V[0] + 200, V[1]]} w={1.8} />, <Marca key="v" p={V} />, <Marca key="o1" p={[V[0] - 200, V[1]]} />, <Marca key="o2" p={[V[0] + 200, V[1]]} />, <Txt key="ta" p={[V[0] - 210, V[1] + 22]}>A</Txt>, <Txt key="to" p={[V[0] - 4, V[1] + 22]}>O</Txt>, <Txt key="tb" p={[V[0] + 200, V[1] + 22]}>B</Txt>);
-      nodos.push(<AngArco key="g" v={V} a1={0} a2={180} r={70} color={AMBAR} text="180°" dr={18} />);
+    case 4: {
+      const C: Pt = [310, 215];
+      nodos.push(<Seg key="a" a={[C[0] - 200, C[1]]} b={[C[0] + 200, C[1]]} w={1.8} />, <Marca key="v" p={C} />, <Marca key="o1" p={[C[0] - 200, C[1]]} />, <Marca key="o2" p={[C[0] + 200, C[1]]} />, <Txt key="ta" p={[C[0] - 210, C[1] + 22]}>A</Txt>, <Txt key="to" p={[C[0] - 4, C[1] + 22]}>O</Txt>, <Txt key="tb" p={[C[0] + 200, C[1] + 22]}>B</Txt>);
+      nodos.push(<ArcoPlano key="g" c={C} r={80} a1={0} a2={180} color={AMBAR} grosor={2.4} />, <Txt key="tg" p={[C[0] - 24, C[1] - 96]} color={AMBAR} size={15}>180°</Txt>);
       break;
+    }
     case 5:
       nodos.push(base, <Rayo key="a" v={V} a={0} len={300} />, <Rayo key="b" v={V} a={90} len={230} />, <Rayo key="c" v={V} a={35} len={260} color={VERDE} />, <Marca key="v" p={V} />);
       nodos.push(<AngArco key="g1" v={V} a1={0} a2={35} r={80} color={AMBAR} text="A" />, <AngArco key="g2" v={V} a1={35} a2={90} r={60} color={AZUL} text="B" />, <Txt key="n" p={[24, 58]} color={AZUL} size={13}>A + B = 90°</Txt>);
@@ -83,10 +85,12 @@ export function AngulosTipos({ block }: { block: BenchBlock }) {
       nodos.push(<Seg key="a" a={[V[0] - 150, V[1]]} b={[V[0] + 300, V[1]]} w={1.8} />, <Rayo key="b" v={V} a={60} len={240} />, <Marca key="v" p={V} />, <Txt key="tc" p={[V[0] - 150, V[1] + 20]}>C</Txt>, <Txt key="to" p={[V[0] - 4, V[1] + 20]}>O</Txt>, <Txt key="ta" p={[V[0] + 290, V[1] + 20]}>A</Txt>, <Txt key="tbb" p={[V[0] + 120, V[1] - 215]}>B</Txt>);
       nodos.push(<AngArco key="g1" v={V} a1={0} a2={60} r={80} color={AMBAR} text="α" />, <AngArco key="g2" v={V} a1={60} a2={180} r={55} color={AZUL} text="β" dr={16} />, <Txt key="n" p={[24, 58]} color={AZUL} size={13}>α y β son adyacentes: suman 180°</Txt>);
       break;
-    case 10:
-      nodos.push(<Rayo key="a" v={V} a={0} len={300} />, <Rayo key="b" v={V} a={45} len={250} />, <Rayo key="c" v={V} a={-45} len={220} />, <Marca key="v" p={V} />);
-      nodos.push(<AngArco key="g1" v={V} a1={0} a2={45} r={90} color={VERDE} text="+" />, <AngArco key="g2" v={V} a1={-45} a2={0} r={90} color={AMBAR} text="−" />, <Txt key="n" p={[24, 58]} color={AZUL} size={13}>positivo: contrario a las agujas del reloj</Txt>);
+    case 10: {
+      const W: Pt = [170, 200];
+      nodos.push(<Rayo key="a" v={W} a={0} len={330} />, <Rayo key="b" v={W} a={45} len={230} />, <Rayo key="c" v={W} a={-45} len={230} />, <Marca key="v" p={W} />);
+      nodos.push(<AngArco key="g1" v={W} a1={0} a2={45} r={90} color={VERDE} text="+" />, <AngArco key="g2" v={W} a1={-45} a2={0} r={90} color={AMBAR} text="−" />, <Txt key="n" p={[24, 58]} color={AZUL} size={13}>positivo: contrario a las agujas del reloj</Txt>);
       break;
+    }
     default: {
       const O: Pt = [140, 230];
       const M: Pt = [160, 340];
@@ -104,13 +108,48 @@ export function AngulosTipos({ block }: { block: BenchBlock }) {
 
 /* ───────────── Ángulos en polígonos y circunferencias ───────────── */
 
+/** Punto donde el rayo que sale de `P` con la dirección `ang` (° con Y hacia arriba) corta a la circunferencia (`lejos`: el segundo corte). */
+function corteRayo(O: Pt, R: number, P: Pt, ang: number, lejos: boolean): Pt {
+  const rad = (ang * Math.PI) / 180;
+  const d: Pt = [Math.cos(rad), -Math.sin(rad)];
+  const f: Pt = [P[0] - O[0], P[1] - O[1]];
+  const b = f[0] * d[0] + f[1] * d[1];
+  const c = f[0] * f[0] + f[1] * f[1] - R * R;
+  const q = Math.sqrt(Math.max(0, b * b - c));
+  const t = lejos ? -b + q : -b - q;
+  return [P[0] + d[0] * t, P[1] + d[1] * t];
+}
+
+const norm360 = (a: number) => ((a % 360) + 360) % 360;
+
+/** Arco de la circunferencia que se destaca (la porción interceptada por el ángulo), con su letra. */
+function ArcoDestacado({ O, R, a1, a2, color, letra }: { O: Pt; R: number; a1: number; a2: number; color: string; letra: string }) {
+  const lo = Math.min(a1, a2);
+  const hi = Math.max(a1, a2);
+  const medio = enCirculo(O, R + 20, (lo + hi) / 2);
+  return (
+    <g>
+      <ArcoPlano c={O} r={R} a1={lo} a2={hi} color={color} grosor={4.5} />
+      <Txt p={[medio[0] - 5, medio[1] + 5]} color={color} size={16}>{letra}</Txt>
+    </g>
+  );
+}
+
+/** Arco corto entre dos puntos de la circunferencia (ángulos medidos desde O); `lejos` lo toma por el lado de 180°. */
+function entre(O: Pt, p: Pt, q: Pt, lejos: boolean): [number, number] {
+  const a = lejos ? norm360(angDe(O, p)) : angDe(O, p);
+  const b = lejos ? norm360(angDe(O, q)) : angDe(O, q);
+  return [Math.min(a, b), Math.max(a, b)];
+}
+
 export function AngulosCircunferencia({ block }: { block: BenchBlock }) {
   const [step, setStep] = usePaso();
   const O: Pt = [310, 205];
   const R = 120;
   const nodos: ReactNode[] = [];
-  const titulos = ["Cóncavo y convexo", "Ángulos interior y exterior de un polígono", "Ángulo central", "Ángulo inscrito", "Ángulo semiinscrito", "Ángulo interior a la circunferencia", "Ángulo exterior a la circunferencia"];
+  const titulos = ["Cóncavo y convexo", "Ángulos interiores y exteriores de un polígono", "Ángulo central", "Ángulo inscrito", "Ángulo semiinscrito", "Ángulo interior a la circunferencia", "Ángulo exterior: dos secantes", "Ángulo exterior: tangente y secante", "Ángulo exterior: dos tangentes"];
   const circ = <circle key="c" cx={O[0]} cy={O[1]} r={R} fill="none" stroke={INK} strokeWidth="1.5" />;
+  const formula = (t: string) => <Txt key="f" p={[24, 78]} color={AZUL} size={15}>{t}</Txt>;
   if (step === 0) {
     const conv: Pt[] = [[90, 300], [200, 120], [330, 100], [270, 300]];
     const conc: Pt[] = [[380, 300], [400, 120], [470, 200], [540, 120], [560, 300]];
@@ -119,37 +158,108 @@ export function AngulosCircunferencia({ block }: { block: BenchBlock }) {
     nodos.push(<Txt key="ta" p={[130, 330]} color={AZUL} size={14}>B: convexo</Txt>, <Txt key="tb" p={[420, 330]} color={VERDE} size={14}>A: cóncavo</Txt>);
     nodos.push(<Arco key="ang" v={conc[2]} a1={-150} a2={-30} r={20} color={AMBAR} text="> 180°" textSize={12} dr={14} />);
   } else if (step === 1) {
-    const P: Pt[] = [[150, 300], [180, 130], [360, 100], [440, 270]];
-    nodos.push(<path key="p" d={`M${P.map((q) => q.join(" ")).join(" L")} Z`} fill="rgba(31,120,180,0.10)" stroke={INK} strokeWidth="1.8" strokeLinejoin="round" />);
-    ["A", "B", "C", "D"].forEach((n, i) => nodos.push(<Marca key={`m${i}`} p={P[i]} />, <Txt key={`t${i}`} p={[P[i][0] + (i === 1 || i === 0 ? -20 : 8), P[i][1] + (i === 0 || i === 3 ? 20 : -8)]}>{n}</Txt>));
-    nodos.push(<Seg key="ext" a={P[2]} b={[P[3][0] + (P[3][0] - P[2][0]) * 0.6, P[3][1] + (P[3][1] - P[2][1]) * 0.6]} color={AUX} w={1.4} dash="6 4" />, <Txt key="te" p={[P[3][0] + 14, P[3][1] + 52]} color={AMBAR} size={13}>D′: exterior</Txt>);
-    nodos.push(<Txt key="ti" p={[24, 58]} color={VERDE} size={13}>A, B, C, D: ángulos interiores</Txt>);
+    // triángulo con sus ángulos interiores y los dos exteriores adyacentes de un vértice
+    const Lv: Pt = [110, 300];
+    const Rv: Pt = [500, 300];
+    const T: Pt = [330, 120];
+    nodos.push(<path key="p" d={`M${Lv.join(" ")} L${T.join(" ")} L${Rv.join(" ")} Z`} fill="rgba(31,157,85,0.10)" stroke={VERDE} strokeWidth="2" strokeLinejoin="round" />);
+    const dL = angDe(T, Lv);
+    const dR = angDe(T, Rv);
+    nodos.push(<Seg key="e1" a={T} b={enCirculo(T, 110, dL + 180)} color={AUX} w={1.5} dash="6 4" />, <Seg key="e2" a={T} b={enCirculo(T, 110, dR + 180)} color={AUX} w={1.5} dash="6 4" />);
+    nodos.push(<ArcoPlano key="ia" c={T} r={34} a1={dL} a2={dR} color={AZUL} grosor={2.4} />, <Txt key="iat" p={[T[0] - 4, T[1] + 62]} color={AZUL} size={14}>α</Txt>, <AngArco key="ig" v={Lv} a1={angDe(Lv, Rv)} a2={angDe(Lv, T)} r={40} color={AZUL} text="γ" dr={14} />, <AngArco key="ib" v={Rv} a1={angDe(Rv, T)} a2={angDe(Rv, Lv)} r={40} color={AZUL} text="β" dr={14} />);
+    const ex = (key: string, a1: number, a2: number) => {
+      const m = enCirculo(T, 76, (a1 + a2) / 2);
+      nodos.push(<ArcoPlano key={key} c={T} r={52} a1={a1} a2={a2} color={AMBAR} grosor={2.4} />, <Txt key={`${key}t`} p={[m[0] - 30, m[1] + 4]} color={AMBAR} size={14}>180° − α</Txt>);
+    };
+    ex("x1", dR, dL + 180);
+    ex("x2", dR + 180, dL + 360);
+    nodos.push(<Txt key="ti" p={[200, 250]} color={AZUL} size={14}>ángulos interiores</Txt>, <Txt key="te" p={[24, 78]} color={AMBAR} size={14}>ángulos exteriores (adyacentes a α)</Txt>);
   } else if (step === 2) {
     const A = enCirculo(O, R, 160);
     const B = enCirculo(O, R, 40);
-    nodos.push(circ, <Seg key="a" a={O} b={A} color={AMBAR} w={2} />, <Seg key="b" a={O} b={B} color={AMBAR} w={2} />, <Marca key="o" p={O} />, <Marca key="pa" p={A} />, <Marca key="pb" p={B} />);
-    nodos.push(<AngArco key="g" v={O} a1={40} a2={160} r={45} color={AMBAR} text="central" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice está en el centro de la circunferencia</Txt>);
+    nodos.push(circ, <Seg key="a" a={O} b={A} color={VERDE} w={2} />, <Seg key="b" a={O} b={B} color={VERDE} w={2} />, <Marca key="o" p={O} />, <Marca key="pa" p={A} />, <Marca key="pb" p={B} />);
+    nodos.push(<ArcoDestacado key="ar" O={O} R={R} a1={40} a2={160} color={AMBAR} letra="β" />, <AngArco key="g" v={O} a1={40} a2={160} r={45} color={VERDE} text="α" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice está en el centro de la circunferencia</Txt>, formula("α = β"));
   } else if (step === 3) {
     const V = enCirculo(O, R, 270);
     const A = enCirculo(O, R, 160);
     const B = enCirculo(O, R, 40);
-    nodos.push(circ, <Seg key="a" a={V} b={A} color={AMBAR} w={2} />, <Seg key="b" a={V} b={B} color={AMBAR} w={2} />, <Marca key="v" p={V} />, <Marca key="pa" p={A} />, <Marca key="pb" p={B} />);
-    nodos.push(<AngArco key="g" v={V} a1={angDe(V, B)} a2={angDe(V, A)} r={40} color={AMBAR} text="inscrito" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice está en la circunferencia y los lados la cortan</Txt>);
+    nodos.push(circ, <Seg key="a" a={V} b={A} color={VERDE} w={2} />, <Seg key="b" a={V} b={B} color={VERDE} w={2} />, <Marca key="v" p={V} />, <Marca key="pa" p={A} />, <Marca key="pb" p={B} />);
+    nodos.push(<ArcoDestacado key="ar" O={O} R={R} a1={40} a2={160} color={AMBAR} letra="β" />, <AngArco key="g" v={V} a1={angDe(V, B)} a2={angDe(V, A)} r={40} color={VERDE} text="α" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice está en la circunferencia y los lados la cortan</Txt>, formula("β = 2α"));
   } else if (step === 4) {
     const V = enCirculo(O, R, 270);
     const B = enCirculo(O, R, 40);
-    nodos.push(circ, <Seg key="t" a={[V[0] - 180, V[1]]} b={[V[0] + 180, V[1]]} color={AMBAR} w={2} />, <Seg key="b" a={V} b={B} color={AMBAR} w={2} />, <Marca key="v" p={V} />, <Marca key="pb" p={B} />);
-    nodos.push(<AngArco key="g" v={V} a1={0} a2={angDe(V, B)} r={50} color={AMBAR} text="semiinscrito" dr={20} />, <Txt key="n" p={[24, 56]} size={13}>un lado es tangente y el otro es una cuerda</Txt>);
+    nodos.push(circ, <Seg key="t" a={[V[0] - 180, V[1]]} b={[V[0] + 180, V[1]]} color={VERDE} w={2} />, <Seg key="b" a={V} b={B} color={VERDE} w={2} />, <Marca key="v" p={V} />, <Marca key="pb" p={B} />);
+    nodos.push(<ArcoDestacado key="ar" O={O} R={R} a1={-90} a2={40} color={AMBAR} letra="β" />, <AngArco key="g" v={V} a1={0} a2={angDe(V, B)} r={50} color={VERDE} text="α" dr={20} />, <Txt key="n" p={[24, 56]} size={13}>un lado es tangente y el otro es una cuerda</Txt>, formula("α = β / 2"));
   } else if (step === 5) {
-    const P: Pt = [320, 195];
-    nodos.push(circ, <Seg key="a" a={enCirculo(P, 160, 20)} b={enCirculo(P, 160, 200)} color={AMBAR} w={2} />, <Seg key="b" a={enCirculo(P, 160, 120)} b={enCirculo(P, 160, 300)} color={AMBAR} w={2} />, <Marca key="p" p={P} />);
-    nodos.push(<AngArco key="g" v={P} a1={20} a2={120} r={36} color={AMBAR} text="interior" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice es un punto interior; los lados son cuerdas</Txt>);
+    // dos cuerdas que se cortan en un punto interior P
+    const P: Pt = [300, 210];
+    const d1 = 28;
+    const d2 = 118;
+    const E1 = corteRayo(O, R, P, d1, true);
+    const E1b = corteRayo(O, R, P, d1 + 180, true);
+    const E2 = corteRayo(O, R, P, d2, true);
+    const E2b = corteRayo(O, R, P, d2 + 180, true);
+    nodos.push(circ, <Seg key="a" a={E1b} b={E1} color={VERDE} w={2} />, <Seg key="b" a={E2b} b={E2} color={VERDE} w={2} />, <Marca key="p" p={P} />);
+    const [b1, b2] = entre(O, E1, E2, false);
+    const [t1, t2] = entre(O, E1b, E2b, false);
+    nodos.push(<ArcoDestacado key="be" O={O} R={R} a1={b1} a2={b2} color={AMBAR} letra="β" />, <ArcoDestacado key="th" O={O} R={R} a1={t1} a2={t2} color={AZUL} letra="θ" />);
+    nodos.push(<AngArco key="g" v={P} a1={d1} a2={d2} r={34} color={VERDE} text="α" dr={18} />, <Txt key="n" p={[24, 56]} size={13}>el vértice es un punto interior; los lados son cuerdas</Txt>, formula("α = (β + θ) / 2"));
   } else {
+    // ángulo exterior: dos secantes (6), tangente y secante (7) o dos tangentes (8)
+    const O2: Pt = [230, 205];
     const P: Pt = [520, 205];
-    const t1 = angDe(P, enCirculo(O, R, 150));
-    nodos.push(circ, <Seg key="a" a={P} b={enCirculo(P, 340, 180 - 9)} color={AMBAR} w={2} />, <Seg key="b" a={P} b={enCirculo(P, 340, 180 + 24)} color={AMBAR} w={2} />, <Marca key="p" p={P} />);
-    nodos.push(<AngArco key="g" v={P} a1={180 - 9} a2={180 + 24} r={70} color={AMBAR} text="exterior" dr={16} />, <Txt key="n" p={[24, 56]} size={13}>el vértice es exterior y los lados son secantes</Txt>);
-    void t1;
+    const dist0 = P[0] - O2[0];
+    const fi = (Math.asin(R / dist0) * 180) / Math.PI;
+    const largo = Math.sqrt(dist0 * dist0 - R * R);
+    const tang = (sig: number): [Pt, number] => {
+      const ang = 180 - sig * fi;
+      return [enCirculo(P, largo, ang), ang];
+    };
+    let cercanos: Pt[] = [];
+    let lejanos: Pt[] = [];
+    let aA: number;
+    let aB: number;
+    let extremoA: Pt;
+    let extremoB: Pt;
+    if (step === 6) {
+      aA = 165;
+      aB = 196;
+      const nA = corteRayo(O2, R, P, aA, false);
+      const fA = corteRayo(O2, R, P, aA, true);
+      const nB = corteRayo(O2, R, P, aB, false);
+      const fB = corteRayo(O2, R, P, aB, true);
+      cercanos = [nA, nB];
+      lejanos = [fA, fB];
+      extremoA = enCirculo(P, dist(P, fA) + 24, aA);
+      extremoB = enCirculo(P, dist(P, fB) + 24, aB);
+    } else if (step === 7) {
+      const [T, angT] = tang(1);
+      aA = angT;
+      aB = 196;
+      const nB = corteRayo(O2, R, P, aB, false);
+      const fB = corteRayo(O2, R, P, aB, true);
+      cercanos = [T, nB];
+      lejanos = [T, fB];
+      extremoA = enCirculo(P, largo + 40, aA);
+      extremoB = enCirculo(P, dist(P, fB) + 24, aB);
+      nodos.push(<Marca key="tt" p={T} color={VERDE} r={4} />, <Txt key="ttl" p={[T[0] - 6, T[1] - 12]} color={VERDE}>T</Txt>);
+    } else {
+      const [T, angT] = tang(1);
+      const [S, angS] = tang(-1);
+      aA = angT;
+      aB = angS;
+      cercanos = [T, S];
+      lejanos = [T, S];
+      extremoA = enCirculo(P, largo + 40, aA);
+      extremoB = enCirculo(P, largo + 40, aB);
+      nodos.push(<Marca key="tt" p={T} color={VERDE} r={4} />, <Txt key="ttl" p={[T[0] - 6, T[1] - 12]} color={VERDE}>T</Txt>, <Marca key="ss" p={S} color={VERDE} r={4} />, <Txt key="ssl" p={[S[0] - 6, S[1] + 22]} color={VERDE}>S</Txt>);
+    }
+    nodos.push(<circle key="c" cx={O2[0]} cy={O2[1]} r={R} fill="none" stroke={INK} strokeWidth="1.5" />, <Seg key="a" a={P} b={extremoA} color={VERDE} w={2} />, <Seg key="b" a={P} b={extremoB} color={VERDE} w={2} />, <Marca key="p" p={P} />);
+    const [n1, n2] = entre(O2, cercanos[0], cercanos[1], false);
+    const [f1, f2] = entre(O2, lejanos[0], lejanos[1], true);
+    nodos.push(<ArcoDestacado key="th" O={O2} R={R} a1={n1} a2={n2} color={AZUL} letra="θ" />, <ArcoDestacado key="be" O={O2} R={R} a1={f1} a2={f2} color={AMBAR} letra="β" />);
+    nodos.push(<AngArco key="g" v={P} a1={aA} a2={aB} r={60} color={VERDE} text="α" dr={20} />);
+    nodos.push(<Txt key="n" p={[24, 56]} size={13}>{step === 6 ? "el vértice es exterior y los dos lados son secantes" : step === 7 ? "el vértice es exterior; un lado es tangente y el otro secante" : "el vértice es exterior y los dos lados son tangentes"}</Txt>, formula("α = (β − θ) / 2"));
   }
   return (
     <Hoja scene="angulos-circunferencia" block={block} step={step} setStep={setStep} label="Hoja con ángulos en polígonos y en la circunferencia" testId="bench-angulos-circ">
