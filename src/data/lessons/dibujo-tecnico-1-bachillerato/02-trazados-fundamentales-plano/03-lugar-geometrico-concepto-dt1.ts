@@ -21,17 +21,16 @@ export const lugarGeometricoConceptoDt1Lesson: InteractiveLesson = {
       { title: "Bisectriz de un ángulo", text: "**La bisectriz de un ángulo**: todos sus puntos **equidistan de los lados** del ángulo.", fact: "Equidista de los lados" },
     ]), "stack"),
 
-    slide("ej-conicas", "Lugares geométricos de las cónicas", [], benchParte("lugar-geometrico", 3, [
-      { title: "La elipse", text: "**La elipse**: la **suma** de las distancias de cada punto de ella a otros dos puntos fijos (los focos) es **constante**.", fact: "PF₁ + PF₂ = constante" },
-      { title: "La hipérbola", text: "**La hipérbola**: la **diferencia** de las distancias de cada punto de ella a otros dos puntos fijos es **constante**.", fact: "|PF₁ − PF₂| = constante" },
-      { title: "La parábola", text: "**La parábola**: todos sus puntos **equidistan de un punto y de una recta** dados (el foco y la directriz).", fact: "Equidista de F y de d" },
+    slide("ej-elipse", "La elipse", [], benchParte("lugar-geometrico", 3, [
+      { title: "La elipse", text: "La **elipse** es el lugar geométrico de los puntos del plano cuya **suma de distancias a dos puntos fijos**, los **focos**, es una constante igual a $2a$. Desde cualquier punto $P$ de la elipse, la distancia al foco 1 ($d_1$) más la distancia al foco 2 ($d_2$) **siempre da la misma cantidad**: mira cómo una crece cuando la otra disminuye.", fact: "d₁ + d₂ = 2a" },
     ]), "stack"),
 
-    slide("espacio", "En el espacio", [
-      { kind: "steps", items: [
-        "**La esfera**: todos sus puntos **equidistan del centro**. Es el equivalente en el espacio de la circunferencia.",
-        "Las **cónicas** (elipse, hipérbola y parábola) se estudian con detalle más adelante, en el tema de curvas cónicas.",
-      ] },
-    ], undefined, "stack"),
+    slide("ej-hiperbola", "La hipérbola", [], benchParte("lugar-geometrico", 4, [
+      { title: "La hipérbola", text: "La **hipérbola** es el lugar geométrico de los puntos del plano cuya **diferencia de distancias a dos puntos fijos**, los **focos**, es constante en valor absoluto e igual a $2a$. Es decir, la distancia de $P$ a un foco **menos** la distancia de $P$ al otro foco es siempre la distancia entre los vértices ($a + a = 2a$). Tiene **dos ramas**.", fact: "|d₁ − d₂| = 2a" },
+    ]), "stack"),
+
+    slide("ej-parabola", "La parábola", [], benchParte("lugar-geometrico", 5, [
+      { title: "La parábola", text: "La **parábola** es el lugar geométrico de los puntos del plano que **equidistan de un punto fijo**, el **foco**, y de una **recta fija**, la **directriz**. Es decir, la distancia de cualquier punto de la parábola al foco (que queda «dentro» de la curva) es **igual** a su distancia a la directriz (que queda «fuera»).", fact: "d₁ = d₂" },
+    ]), "stack"),
   ],
 };

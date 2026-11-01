@@ -1,6 +1,7 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon, RotateCcwIcon } from "lucide-react";
+import { ReproCtx } from "./reproduccion";
 import { createContext, useContext, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 import { MathRenderer } from "@/components/lesson/MathRenderer";
 import {
@@ -225,6 +226,7 @@ export function BenchShell({
   label: string;
   children: ReactNode;
 }) {
+  const repro = useContext(ReproCtx);
   const desde = useContext(RangoCtx)?.desde;
   const parcial = desde !== undefined && notes !== undefined;
   const first = parcial ? desde : 0;
@@ -263,6 +265,18 @@ export function BenchShell({
           </div>
           {extra}
         </div>
+        {repro?.anim?.activa && !nav ? (
+          <div className="flex shrink-0 items-center gap-2 pt-3" data-testid="bench-repro">
+            <button type="button" className={btn} onClick={repro.alternarPausa} data-testid="bench-pausa" aria-label={repro.pausaEn === null ? "Pausar la animación" : "Reanudar la animación"}>
+              {repro.pausaEn === null ? <PauseIcon className="size-4" aria-hidden /> : <PlayIcon className="size-4" aria-hidden />}
+              {repro.pausaEn === null ? "Pausar" : "Reanudar"}
+            </button>
+            <button type="button" className={btn} onClick={repro.repetir} data-testid="bench-repetir" aria-label="Repetir la animación">
+              <RotateCcwIcon className="size-4" aria-hidden />
+              Repetir
+            </button>
+          </div>
+        ) : null}
         <div className={`flex shrink-0 items-center gap-3 pt-3 ${total <= 1 ? "hidden" : ""}`} data-testid="bench-nav">
           {nav ?? (
             <button type="button" className={btn} disabled={rel === 0} onClick={() => setStep(step - 1)} data-testid="bench-anterior">

@@ -1684,3 +1684,9 @@ Cada transformación es **un único recorrido guiado**, sin saltarse pasos «por
 
 1. **Explicación animada** (`*-compas`): muestra el método con el primer vértice y la figura completa al final.
 2. **Ejercicio seguido** (`*-practica`): se construye la imagen de **cada vértice** (A, B y C, o B y C en la traslación) paso a paso y, al final, la regla **une sola A′, B′ y C′** (fase `auto`: el alumno no toca nada, se animan las tres pasadas y el ejercicio acaba). Se construye con `secuenciar(...)`, que encadena las definiciones de un vértice (`defGiro(th, v)`, `defSimetria(v)`…) y la unión (`defUnir`) en un solo `Def`. Al terminar sale el «Correcto» y el botón para continuar.
+
+## Mesa de dibujo: partir una escena y controlar la animación
+
+- **Pasos relacionados en una diapositiva; lo demás, en otra.** Una escena con varios pasos solo agrupa los que forman una misma construcción o idea. Para separar partes de una escena usa `benchParte(escena, desde, notes)` (`desde` = primer paso mostrado; `notes` = un texto por paso mostrado). Se avanza entre diapositivas con las flechas redondas del presentador.
+- **Animaciones automáticas**: toda escena que usa `useProgreso` muestra debajo los botones «Pausar/Reanudar» y «Repetir» (`bench/reproduccion.tsx`). No hace falta hacer nada en la escena nueva.
+- **Convención de color en sumas y restas de segmentos**: se marcan primero los puntos con el compás y al final se traza el segmento resultado en rojo.

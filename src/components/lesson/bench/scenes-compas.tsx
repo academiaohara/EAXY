@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
+import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
 import { ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
+import { ReproCtx } from "./reproduccion";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
 
@@ -24,24 +25,36 @@ function sinMovimiento() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-/** Progreso 0→1 que se reinicia cada vez que cambia `clave` (por ejemplo, el paso). */
+/** Progreso 0→1 que se reinicia cada vez que cambia `clave` (por ejemplo, el paso) o se pulsa «Repetir». Admite pausa. */
 export function useProgreso(clave: string | number, ms: number) {
   const reducido = sinMovimiento();
-  const [estado, setEstado] = useState<{ clave: string | number; p: number }>({ clave, p: 0 });
+  const repro = useContext(ReproCtx);
+  const rep = repro?.rep ?? 0;
+  const pausada = repro?.pausaEn === clave;
+  const registrar = repro?.registrar;
+  const [estado, setEstado] = useState<{ clave: string | number; rep: number; p: number }>({ clave, rep, p: 0 });
+  const avance = useRef({ clave, rep, p: 0 });
   useEffect(() => {
+    if (registrar) {
+      const id = requestAnimationFrame(() => registrar(clave, ms > 1));
+      if (reducido) return () => cancelAnimationFrame(id);
+    }
     if (reducido) return;
+    if (avance.current.clave !== clave || avance.current.rep !== rep) avance.current = { clave, rep, p: 0 };
+    if (pausada) return;
     let raf = 0;
-    const t0 = performance.now();
+    const t0 = performance.now() - avance.current.p * ms;
     const tick = (ahora: number) => {
       const v = Math.min(1, (ahora - t0) / ms);
-      setEstado({ clave, p: v });
+      avance.current.p = v;
+      setEstado({ clave, rep, p: v });
       if (v < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [clave, ms, reducido]);
+  }, [clave, ms, reducido, rep, pausada, registrar]);
   if (reducido) return 1;
-  return estado.clave === clave ? estado.p : 0;
+  return estado.clave === clave && estado.rep === rep ? estado.p : 0;
 }
 
 /** Arco que se va dibujando de `a1` hacia `a2` según `t` (0–1). */

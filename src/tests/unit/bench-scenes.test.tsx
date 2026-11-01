@@ -1826,12 +1826,12 @@ describe("mesa de dibujo · trazados fundamentales (libro, tema 2, págs. 20-26)
     t.superada();
   });
 
-  it("diferencia de segmentos: n se lleva sobre m desde A y EB = m − n", async () => {
+  it("diferencia de segmentos: n se lleva desde B hacia A y AE = m − n", async () => {
     const t = pantalla("diferencia-segmentos-practica");
     t.tocar([90, 125]);
     t.tocar([90 + G.DS_N, 125]);
-    t.tocar(G.DS_A);
-    t.arrastrar(...arco(G.DS_A, G.DS_N, 0, -25, 10));
+    t.tocar(G.DS_B);
+    t.arrastrar(...arco(G.DS_B, G.DS_N, 180, -25, 10));
     t.tocar(G.DS_E);
     await esperarAuto();
     t.superada();
@@ -1978,5 +1978,26 @@ describe("diapositiva con una parte de la escena", () => {
     fireEvent.click(screen.getByTestId("bench-siguiente"));
     expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 2 de 2");
     expect(screen.getByTestId("bench-siguiente")).toHaveProperty("disabled", true);
+  });
+});
+
+describe("animación automática: pausar y repetir", () => {
+  afterEach(() => {
+    cleanup();
+    vi.unstubAllGlobals();
+  });
+  it("muestra los controles, pausa, reanuda y repite", async () => {
+    vi.stubGlobal("matchMedia", () => ({ matches: false, addEventListener: () => {}, removeEventListener: () => {}, addListener: () => {}, removeListener: () => {} }));
+    const { findByTestId } = render(
+      <LessonStepControlProvider>
+        <SlideBench block={{ kind: "bench", scene: "lugar-geometrico", desde: 3, notes: notas(1) }} />
+      </LessonStepControlProvider>,
+    );
+    const pausa = await findByTestId("bench-pausa");
+    expect(pausa.textContent).toContain("Pausar");
+    fireEvent.click(pausa);
+    expect(screen.getByTestId("bench-pausa").textContent).toContain("Reanudar");
+    fireEvent.click(screen.getByTestId("bench-repetir"));
+    expect(screen.getByTestId("bench-pausa").textContent).toContain("Pausar");
   });
 });

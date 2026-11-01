@@ -4,7 +4,7 @@ import { type ReactNode } from "react";
 import { angDe, dist, enCirculo, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, usePaso, INK, SVG_CLASS, VERDE, type BenchBlock, type BenchSceneName } from "./scenes";
-import { ArcoAnim, MSHEET, MV, ReglaTrazando, lerp, tramo, useProgreso } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, ReglaTrazando, lerp, lerpP, tramo, useProgreso } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano } from "./scenes-trazados";
 
@@ -224,11 +224,15 @@ const TickIgual = ({ a, b, k = 1, color = VERDE }: { a: Pt; b: Pt; k?: number; c
   );
 };
 
+/** Distancia en pixels → unidades de la hoja (20 px = 1), con coma decimal. */
+const u1 = (px: number) => (px / 20).toFixed(1).replace(".", ",");
+
 export function LugarGeometrico({ block }: { block: BenchBlock }) {
   const [step, setStep] = usePaso();
   const nodos: ReactNode[] = [];
   const titulo = ["Circunferencia", "Mediatriz de un segmento", "Bisectriz de un ángulo", "Elipse", "Hipérbola", "Parábola"][step];
-  const propiedad = ["todos sus puntos equidistan del centro", "todos sus puntos equidistan de los extremos", "todos sus puntos equidistan de los lados", "PF₁ + PF₂ = constante", "|PF₁ − PF₂| = constante", "PF = distancia de P a la directriz"][step];
+  const p = useProgreso(step, step >= 3 ? 7000 : 1);
+  const propiedad = ["todos sus puntos equidistan del centro", "todos sus puntos equidistan de los extremos", "todos sus puntos equidistan de los lados", "d₁ + d₂ = 2a (constante)", "|d₁ − d₂| = 2a (constante)", "d₁ = d₂: distancia al foco = distancia a la directriz"][step];
   if (step === 0) {
     const O: Pt = [310, 190];
     const R = 120;
@@ -262,48 +266,67 @@ export function LugarGeometrico({ block }: { block: BenchBlock }) {
       nodos.push(<Marca key={`q${i}`} p={q} color={AMBAR} />, <Seg key={`pa${i}`} a={q} b={pieA} color={AMBAR} w={1.4} dash="5 4" />, <Seg key={`pb${i}`} a={q} b={pieB} color={AMBAR} w={1.4} dash="5 4" />, <TickIgual key={`ta${i}`} a={q} b={pieA} k={i + 1} />, <TickIgual key={`tb${i}`} a={q} b={pieB} k={i + 1} />);
     });
   } else if (step === 3) {
-    const c: Pt = [310, 190];
-    const a = 170;
-    const b = 105;
+    // elipse: P recorre la curva y d₁ + d₂ se mantiene en 2a
+    const c: Pt = [310, 200];
+    const a = 190;
+    const b = 115;
     const fc = Math.sqrt(a * a - b * b);
     const F1: Pt = [c[0] - fc, c[1]];
     const F2: Pt = [c[0] + fc, c[1]];
-    nodos.push(<ellipse key="e" cx={c[0]} cy={c[1]} rx={a} ry={b} fill="none" stroke={INK} strokeWidth="1.6" />, <Marca key="f1" p={F1} color={AZUL} r={4} />, <Marca key="f2" p={F2} color={AZUL} r={4} />, <Txt key="t1" p={[F1[0] - 10, F1[1] + 22]} color={AZUL}>F₁</Txt>, <Txt key="t2" p={[F2[0] - 6, F2[1] + 22]} color={AZUL}>F₂</Txt>);
-    [40, 125, 250].forEach((t, i) => {
-      const q: Pt = [c[0] + a * Math.cos((t * Math.PI) / 180), c[1] - b * Math.sin((t * Math.PI) / 180)];
-      nodos.push(<Marca key={`q${i}`} p={q} color={AMBAR} />, <Seg key={`a${i}`} a={q} b={F1} color={AMBAR} w={1.3} dash="5 4" />, <Seg key={`b${i}`} a={q} b={F2} color={AMBAR} w={1.3} dash="5 4" />);
-    });
+    const t = (20 + 340 * p) * (Math.PI / 180);
+    const P: Pt = [c[0] + a * Math.cos(t), c[1] - b * Math.sin(t)];
+    const d1 = dist(P, F1);
+    const d2 = dist(P, F2);
+    nodos.push(<Seg key="ex" a={[c[0] - a - 28, c[1]]} b={[c[0] + a + 28, c[1]]} color={AUX} w={1} />, <Seg key="ey" a={[c[0], c[1] - b - 28]} b={[c[0], c[1] + b + 28]} color={AUX} w={1} />);
+    nodos.push(<ellipse key="e" cx={c[0]} cy={c[1]} rx={a} ry={b} fill="none" stroke={INK} strokeWidth="1.8" />);
+    nodos.push(<Seg key="va" a={[c[0] - a, c[1] + b + 22]} b={[c[0] + a, c[1] + b + 22]} color={VERDE} w={2} />, <Txt key="v2a" p={[c[0] - 12, c[1] + b + 40]} color={VERDE}>2a</Txt>);
+    nodos.push(<Marca key="f1" p={F1} color={AZUL} r={4.5} />, <Marca key="f2" p={F2} color={AZUL} r={4.5} />, <Txt key="t1" p={[F1[0] - 28, F1[1] + 20]} color={AZUL}>Foco 1</Txt>, <Txt key="t2" p={[F2[0] - 14, F2[1] + 20]} color={AZUL}>Foco 2</Txt>);
+    nodos.push(<Seg key="d1" a={P} b={F1} color={AMBAR} w={1.8} />, <Seg key="d2" a={P} b={F2} color={AZUL} w={1.8} />, <Marca key="p" p={P} color={AMBAR} r={4.5} />, <Txt key="tp" p={[P[0] + 8, P[1] - 8]} color={AMBAR}>P</Txt>);
+    nodos.push(<Txt key="l1" p={[(P[0] + F1[0]) / 2 - 10, (P[1] + F1[1]) / 2 - 8]} color={AMBAR}>d₁</Txt>, <Txt key="l2" p={[(P[0] + F2[0]) / 2 + 6, (P[1] + F2[1]) / 2 - 8]} color={AZUL}>d₂</Txt>);
+    nodos.push(<Txt key="num" p={[24, 80]} color={INK} size={14}>{`d₁ = ${u1(d1)}; d₂ = ${u1(d2)}; d₁ + d₂ = ${u1(d1 + d2)} = 2a`}</Txt>);
   } else if (step === 4) {
-    const c: Pt = [310, 190];
-    const a = 75;
-    const fc = 135;
+    // hipérbola: P recorre la rama derecha y |d₁ − d₂| se mantiene en 2a
+    const c: Pt = [310, 200];
+    const a = 70;
+    const fc = 140;
     const b = Math.sqrt(fc * fc - a * a);
     const F1: Pt = [c[0] - fc, c[1]];
     const F2: Pt = [c[0] + fc, c[1]];
     const rama = (sig: number) => {
       const pts: string[] = [];
-      for (let t = -1.0; t <= 1.0; t += 0.05) pts.push(`${c[0] + sig * a * Math.cosh(t)},${c[1] + b * Math.sinh(t)}`);
+      for (let t = -0.95; t <= 0.951; t += 0.05) pts.push(`${c[0] + sig * a * Math.cosh(t)},${c[1] + b * Math.sinh(t)}`);
       return pts.join(" ");
     };
-    nodos.push(<polyline key="r1" points={rama(1)} fill="none" stroke={INK} strokeWidth="1.6" />, <polyline key="r2" points={rama(-1)} fill="none" stroke={INK} strokeWidth="1.6" />);
-    nodos.push(<Marca key="f1" p={F1} color={AZUL} r={4} />, <Marca key="f2" p={F2} color={AZUL} r={4} />, <Txt key="t1" p={[F1[0] - 10, F1[1] + 22]} color={AZUL}>F₁</Txt>, <Txt key="t2" p={[F2[0] - 6, F2[1] + 22]} color={AZUL}>F₂</Txt>);
-    [0.6, -0.8].forEach((t, i) => {
-      const q: Pt = [c[0] + a * Math.cosh(t), c[1] + b * Math.sinh(t)];
-      nodos.push(<Marca key={`q${i}`} p={q} color={AMBAR} />, <Seg key={`a${i}`} a={q} b={F1} color={AMBAR} w={1.3} dash="5 4" />, <Seg key={`b${i}`} a={q} b={F2} color={AMBAR} w={1.3} dash="5 4" />);
-    });
+    const tt = -0.9 + 1.8 * p;
+    const P: Pt = [c[0] + a * Math.cosh(tt), c[1] + b * Math.sinh(tt)];
+    const d1 = dist(P, F1);
+    const d2 = dist(P, F2);
+    nodos.push(<Seg key="ex" a={[c[0] - fc - 40, c[1]]} b={[c[0] + fc + 40, c[1]]} color={AUX} w={1} />, <Seg key="ey" a={[c[0], c[1] - 140]} b={[c[0], c[1] + 140]} color={AUX} w={1} />);
+    nodos.push(<polyline key="r1" points={rama(1)} fill="none" stroke={INK} strokeWidth="1.8" />, <polyline key="r2" points={rama(-1)} fill="none" stroke={INK} strokeWidth="1.8" />);
+    nodos.push(<Seg key="a1" a={[c[0] - a, c[1]]} b={c} color={AMBAR} w={3.5} />, <Seg key="a2" a={c} b={[c[0] + a, c[1]]} color={VERDE} w={3.5} />, <Txt key="ta1" p={[c[0] - a / 2 - 4, c[1] + 20]} color={AMBAR}>a</Txt>, <Txt key="ta2" p={[c[0] + a / 2 - 4, c[1] + 20]} color={VERDE}>a</Txt>);
+    nodos.push(<Marca key="f1" p={F1} color={AZUL} r={4.5} />, <Marca key="f2" p={F2} color={AZUL} r={4.5} />, <Txt key="t1" p={[F1[0] - 12, F1[1] + 20]} color={AZUL}>F₁</Txt>, <Txt key="t2" p={[F2[0] + 8, F2[1] + 20]} color={AZUL}>F₂</Txt>);
+    nodos.push(<Seg key="d1" a={P} b={F1} color={AMBAR} w={1.6} dash="6 4" />, <Seg key="d2" a={P} b={F2} color={AZUL} w={1.8} />, <Marca key="p" p={P} color={AMBAR} r={4.5} />, <Txt key="tp" p={[P[0] + 8, P[1] - 8]} color={AMBAR}>P</Txt>);
+    nodos.push(<Txt key="l1" p={[(P[0] + F1[0]) / 2 - 4, (P[1] + F1[1]) / 2 - 10]} color={AMBAR}>d₁</Txt>, <Txt key="l2" p={[(P[0] + F2[0]) / 2 + 8, (P[1] + F2[1]) / 2 + 6]} color={AZUL}>d₂</Txt>);
+    nodos.push(<Txt key="num" p={[24, 80]} color={INK} size={14}>{`d₁ = ${u1(d1)}; d₂ = ${u1(d2)}; d₁ − d₂ = ${u1(d1 - d2)} = 2a`}</Txt>);
   } else {
-    const F: Pt = [310, 140];
-    const pdir = 70; // distancia del foco a la directriz
-    const y0 = F[1] + pdir; // directriz horizontal
-    nodos.push(<Seg key="dir" a={[60, y0]} b={[560, y0]} color={VERDE} w={1.8} />, <Txt key="td" p={[500, y0 + 18]} color={VERDE}>directriz d</Txt>, <Marca key="f" p={F} color={AZUL} r={4} />, <Txt key="tf" p={[F[0] + 8, F[1] + 4]} color={AZUL}>F</Txt>);
-    const y = (x: number) => (F[1] + y0) / 2 - (x * x) / (2 * pdir) + 0; // vértice a medio camino
+    // parábola: P recorre la curva y la distancia al foco es igual a la distancia a la directriz
+    const V: Pt = [300, 200];
+    const pf = 62; // distancia del vértice al foco (y a la directriz)
+    const F: Pt = [V[0] + pf, V[1]];
+    const xd = V[0] - pf;
+    const s = -135 + 270 * p;
+    const xp = (y: number) => V[0] + (y * y) / (4 * pf);
+    const P: Pt = [xp(s), V[1] + s];
+    const Q: Pt = [xd, P[1]];
     const pol: string[] = [];
-    for (let x = -150; x <= 150; x += 6) pol.push(`${F[0] + x},${y(x) + 0}`);
-    nodos.push(<polyline key="par" points={pol.join(" ")} fill="none" stroke={INK} strokeWidth="1.6" />);
-    [-120, 60, 140].forEach((x, i) => {
-      const q: Pt = [F[0] + x, y(x)];
-      nodos.push(<Marca key={`q${i}`} p={q} color={AMBAR} />, <Seg key={`f${i}`} a={q} b={F} color={AMBAR} w={1.3} dash="5 4" />, <Seg key={`d${i}`} a={q} b={[q[0], y0]} color={AMBAR} w={1.3} dash="5 4" />, <TickIgual key={`tf${i}`} a={q} b={F} k={i + 1} />, <TickIgual key={`td${i}`} a={q} b={[q[0], y0]} k={i + 1} />);
-    });
+    for (let y = -150; y <= 150; y += 5) pol.push(`${xp(y)},${V[1] + y}`);
+    nodos.push(<Seg key="ex" a={[xd - 30, V[1]]} b={[V[0] + 220, V[1]]} color={AUX} w={1} />);
+    nodos.push(<Seg key="dir" a={[xd, V[1] - 165]} b={[xd, V[1] + 165]} color={VERDE} w={2.2} />, <Txt key="td" p={[xd - 6, V[1] - 172]} color={VERDE}>directriz d</Txt>);
+    nodos.push(<polyline key="par" points={pol.join(" ")} fill="none" stroke={INK} strokeWidth="1.8" />);
+    nodos.push(<Marca key="v" p={V} r={3} />, <Txt key="tv" p={[V[0] + 6, V[1] + 18]}>V</Txt>, <Marca key="f" p={F} color={AZUL} r={4.5} />, <Txt key="tf" p={[F[0] + 8, F[1] + 18]} color={AZUL}>Foco F</Txt>);
+    nodos.push(<Seg key="d1" a={P} b={F} color={AMBAR} w={1.8} />, <Seg key="d2" a={P} b={Q} color={AZUL} w={1.8} />, <Marca key="q" p={Q} color={AZUL} r={3.5} />, <Marca key="p" p={P} color={AMBAR} r={4.5} />, <Txt key="tp" p={[P[0] + 8, P[1] - 8]} color={AMBAR}>P</Txt>);
+    nodos.push(<Txt key="l1" p={[(P[0] + F[0]) / 2 + 8, (P[1] + F[1]) / 2 + (s < 0 ? -2 : 14)]} color={AMBAR}>d₁</Txt>, <Txt key="l2" p={[(P[0] + Q[0]) / 2 - 6, P[1] - 8]} color={AZUL}>d₂</Txt>);
+    nodos.push(<Txt key="num" p={[24, 80]} color={INK} size={14}>{`d₁ = ${u1(dist(P, F))}; d₂ = ${u1(dist(P, Q))}; d₁ = d₂`}</Txt>);
   }
   return (
     <Hoja scene="lugar-geometrico" block={block} step={step} setStep={setStep} label="Hoja con ejemplos de lugares geométricos" testId="bench-lugar-geometrico">
@@ -334,17 +357,34 @@ function Segmento({ y, x0, len, nombre, extremos, color }: { y: number; x0: numb
   );
 }
 
+const ROJO = "#e5484d";
+
+/** Compás que toma una medida sobre el segmento (extremos `a`, `b`), se lleva al centro `c` y traza el arco hacia `dirAng`. */
+function compasTransporte(a: Pt, b: Pt, c: Pt, dirAng: number, p: number) {
+  const len = dist(a, b);
+  const ini = enCirculo(c, len, dirAng - 22);
+  const t1 = tramo(p, 0, 0.2);
+  const t2 = tramo(p, 0.2, 0.45);
+  const t3 = tramo(p, 0.45, 0.85);
+  if (t2 <= 0) return { t3, pose: poseCompas(a, lerpP(a, b, Math.max(t1, 0.08))) };
+  if (t2 < 1) return { t3, pose: poseCompas(lerpP(a, c, t2), lerpP(b, ini, t2)) };
+  return { t3, pose: poseCompas(c, enCirculo(c, len, lerp(dirAng - 22, dirAng + 22, t3))) };
+}
+
 export function SumaSegmentos({ block }: { block: BenchBlock }) {
   const [step, setStep] = usePaso();
-  const p = useProgreso(step, step >= 1 && step <= 3 ? 3000 : 1);
+  const p = useProgreso(step, step >= 1 && step <= 3 ? 5200 : step === 4 ? 2400 : 1);
   const marcas: Pt[] = [N0, [N0[0] + SA, N0[1]], [N0[0] + SA + SB, N0[1]], [N0[0] + SA + SB + SC, N0[1]]];
   const largos = [SA, SB, SC];
-  const colores = [AMBAR, AZUL, VERDE];
+  const ys = [60, 105, 150];
+  const nombres = ["P", "Q", "M"];
   const k = step >= 1 && step <= 3 ? step - 1 : -1; // segmento que se transporta
   let comp: ReturnType<typeof poseCompas> | null = null;
+  let t3 = 1;
   if (k >= 0) {
-    const c = marcas[k];
-    comp = poseCompas(c, enCirculo(c, largos[k], lerp(-22, 22, p)));
+    const r = compasTransporte([60, ys[k]], [60 + largos[k], ys[k]], marcas[k], 0, p);
+    comp = r.pose;
+    t3 = r.t3;
   }
   const hecho = step === 4;
   return (
@@ -358,11 +398,11 @@ export function SumaSegmentos({ block }: { block: BenchBlock }) {
       {[0, 1, 2].map((i) =>
         step >= i + 1 ? (
           <g key={i} data-testid={`bench-tramo-${i}`}>
-            <ArcoAnim c={marcas[i]} r={largos[i]} a1={-22} a2={22} t={step === i + 1 ? p : 1} />
-            {step > i + 1 || p > 0.95 ? (
+            <ArcoAnim c={marcas[i]} r={largos[i]} a1={-22} a2={22} t={step === i + 1 ? t3 : 1} />
+            {step > i + 1 || p > 0.88 ? (
               <>
-                <Seg a={marcas[i]} b={marcas[i + 1]} color={colores[i]} w={4} />
-                <Marca p={marcas[i + 1]} color={colores[i]} r={3.6} />
+                <Marca p={marcas[i + 1]} color={colores3[i]} r={3.8} />
+                <Txt p={[marcas[i + 1][0] - 4, N0[1] + 22]} color={colores3[i]}>{nombres[i]}</Txt>
               </>
             ) : null}
           </g>
@@ -370,9 +410,8 @@ export function SumaSegmentos({ block }: { block: BenchBlock }) {
       )}
       {hecho ? (
         <g data-testid="bench-suma-total">
-          <path d={`M${N0[0]} ${N0[1] + 40} v8 H${marcas[3][0]} v-8`} fill="none" stroke={INK} strokeWidth="1.4" />
-          <Txt p={[(N0[0] + marcas[3][0]) / 2 - 56, N0[1] + 68]} color={INK} size={15}>NM = a + b + c</Txt>
-          <Txt p={[marcas[3][0] - 4, N0[1] + 22]}>M</Txt>
+          <Seg a={N0} b={[N0[0] + (marcas[3][0] - N0[0]) * p, N0[1]]} color={ROJO} w={5} />
+          {p > 0.95 ? <Txt p={[(N0[0] + marcas[3][0]) / 2 - 56, N0[1] + 52]} color={ROJO} size={15}>NM = a + b + c</Txt> : null}
         </g>
       ) : null}
       {comp ? (
@@ -384,21 +423,29 @@ export function SumaSegmentos({ block }: { block: BenchBlock }) {
   );
 }
 
+const colores3 = [AMBAR, AZUL, VERDE];
+
 const DM = 190;
 const DN = 100;
 
 export function DiferenciaSegmentos({ block }: { block: BenchBlock }) {
   const [step, setStep] = usePaso();
-  const p = useProgreso(step, step === 2 ? 3200 : 1);
-  const A: Pt = [90, 280];
-  const B: Pt = [A[0] + DM, 280];
-  const E: Pt = [A[0] + DN, 280];
-  const comp = step === 2 ? poseCompas(A, enCirculo(A, DN, lerp(-22, 22, p))) : step === 1 ? poseCompas(A, E) : null;
+  const p = useProgreso(step, step === 2 ? 5200 : step === 3 ? 2400 : 1);
+  const A: Pt = [90, 240];
+  const B: Pt = [A[0] + DM, 240];
+  const E: Pt = [B[0] - DN, 240];
+  let comp: ReturnType<typeof poseCompas> | null = null;
+  let t3 = 1;
+  if (step === 2) {
+    const r = compasTransporte([90, 125], [90 + DN, 125], B, 180, p);
+    comp = r.pose;
+    t3 = r.t3;
+  }
   return (
     <Hoja scene="diferencia-segmentos-compas" block={block} step={step} setStep={setStep} label="Hoja con dos segmentos y su diferencia con el compás" testId="bench-dif-segmentos">
       <Segmento y={70} x0={90} len={DM} nombre="m" extremos={["A", "B"]} color={AMBAR} />
       <Segmento y={125} x0={90} len={DN} nombre="n" extremos={["C", "D"]} color={AZUL} />
-      <Seg a={[60, 280]} b={[420, 280]} w={1} dash="5 4" />
+      <Seg a={[60, 240]} b={[420, 240]} w={1} dash="5 4" />
       {step >= 1 ? (
         <g>
           <Seg a={A} b={B} color={AMBAR} w={3} />
@@ -408,13 +455,17 @@ export function DiferenciaSegmentos({ block }: { block: BenchBlock }) {
           <Txt p={[B[0] - 4, B[1] + 22]}>B</Txt>
         </g>
       ) : null}
-      {step >= 2 ? <ArcoAnim c={A} r={DN} a1={-22} a2={22} t={step === 2 ? p : 1} /> : null}
+      {step >= 2 ? <ArcoAnim c={B} r={DN} a1={158} a2={202} t={step === 2 ? t3 : 1} /> : null}
+      {step >= 3 || (step === 2 && p > 0.88) ? (
+        <g>
+          <Marca p={E} color={AZUL} r={4} />
+          <Txt p={[E[0] - 4, E[1] + 22]} color={AZUL}>E</Txt>
+        </g>
+      ) : null}
       {step >= 3 ? (
         <g data-testid="bench-diferencia">
-          <Marca p={E} color={VERDE} r={4} />
-          <Txt p={[E[0] - 4, E[1] + 22]} color={VERDE}>E</Txt>
-          <Seg a={E} b={B} color={VERDE} w={4} />
-          <Txt p={[(E[0] + B[0]) / 2 - 36, 252]} color={VERDE} size={15}>EB = m − n</Txt>
+          <Seg a={A} b={[A[0] + (E[0] - A[0]) * p, A[1]]} color={ROJO} w={5} />
+          {p > 0.95 ? <Txt p={[(A[0] + E[0]) / 2 - 36, 212]} color={ROJO} size={15}>AE = m − n</Txt> : null}
         </g>
       ) : null}
       {comp ? (
