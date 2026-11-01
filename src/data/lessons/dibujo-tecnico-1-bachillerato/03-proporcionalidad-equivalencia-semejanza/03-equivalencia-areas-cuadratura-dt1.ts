@@ -12,7 +12,7 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
       { title: "Triángulo y base", text: "Dos figuras son **equivalentes** si tienen la **misma área**, aunque su forma sea distinta. Parte de un triángulo $ABC$ con base $AB$ y altura $h$.", fact: "Equivalente = igual área" },
       { title: "Paralela por C", text: "Traza por $C$ la **paralela** $r$ a la base. Todos los puntos de $r$ están a la misma altura $h$ de $AB$." },
       { title: "Desliza el vértice", text: "Al mover $C$ por la paralela, el triángulo cambia de forma, pero **base y altura no cambian**: el área $\\dfrac{b \\cdot h}{2}$ es siempre la misma.", fact: "Misma base y misma altura" },
-      { title: "Del triángulo al rectángulo", text: "El triángulo es equivalente a un **rectángulo** de la misma base y **mitad de altura**. De un **paralelogramo** se pasa a un rectángulo con la misma base y la misma altura.", fact: "Rectángulo: base b, altura h/2" },
+      { title: "Del triángulo al rectángulo", text: "El triángulo es equivalente a un **rectángulo** de la misma base y **mitad de altura**. Halla con la mediatriz el punto medio de la altura: sobre él se apoya el lado superior. De un **paralelogramo** se pasa a un rectángulo con la misma base y la misma altura.", fact: "Rectángulo: base b, altura h/2" },
     ]), "stack"),
 
     slide("cuadratura", "Cuadratura de un rectángulo", [], bench("cuadratura-compas", [

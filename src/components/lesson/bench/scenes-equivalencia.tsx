@@ -17,12 +17,16 @@ const ALT = 130;
 
 export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 1 ? 7500 : step === 2 ? 4200 : 1);
+  const p = useProgreso(step, step === 1 ? 7500 : step === 2 ? 4200 : step === 3 ? 9000 : 1);
   const cx = step === 2 ? (p < 0.65 ? lerp(220, 470, p / 0.65) : lerp(470, 340, (p - 0.65) / 0.35)) : step > 2 ? 340 : 220;
   const C1: Pt = [220, 300 - ALT];
   const C: Pt = [cx, 300 - ALT];
   const par = animParaleloEscuadra(QA, QB, C1, [[110, 300 - ALT], [560, 300 - ALT]], step === 1 ? p : 1);
-  const fantasma: Pt[] = step >= 3 ? [[340, 300 - ALT], [470, 300 - ALT]] : [];
+  // paso 3: el punto medio de la altura se halla con su mediatriz; sobre ella se apoya el lado superior del rectángulo
+  const Hf: Pt = [340, 300];
+  const pm = animPuntoMedio(Hf, [340, 300 - ALT], step === 3 ? tramo(p, 0, 0.6) : 1);
+  const nivel = step === 3 ? tramo(p, 0.6, 0.78) : 1;
+  const rect = step === 3 ? tramo(p, 0.78, 1) : 1;
   return (
     <BenchShell scene="equivalencia-triangulos" notes={block.notes} step={step} setStep={setStep} label="Hoja con triángulos de la misma base y la misma altura">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con triángulos de la misma base y la misma altura" data-testid="bench-equivalencia">
@@ -33,13 +37,10 @@ export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
         {step >= 2 || (step === 1 && par.listo) ? <Txt p={[520, 300 - ALT - 8]} color={AZUL}>r ∥ AB</Txt> : null}
         {step >= 2 || (step === 1 && par.listo) ? (
           <g data-testid="bench-altura-eq">
-            <Seg a={[C1[0], 300]} b={C1} color={AMBAR} w={1.4} dash="4 4" />
-            <Txt p={[C1[0] + 8, 300 - ALT / 2]} color={AMBAR}>h</Txt>
+            <Seg a={[step >= 3 ? 340 : C1[0], 300]} b={step >= 3 ? [340, 300 - ALT] : C1} color={AMBAR} w={1.4} dash="4 4" />
+            <Txt p={[(step >= 3 ? 340 : C1[0]) + 8, 300 - ALT / 2 + (step >= 3 ? 40 : 0)]} color={AMBAR}>h</Txt>
           </g>
         ) : null}
-        {fantasma.map((q, i) => (
-          <path key={i} d={poligono([QA, QB, q])} fill="rgba(31,157,85,0.07)" stroke={VERDE} strokeWidth="1.2" strokeDasharray="5 4" />
-        ))}
         <path d={poligono([QA, QB, step >= 2 ? C : C1])} fill="rgba(31,120,180,0.14)" stroke={INK} strokeWidth="1.8" strokeLinejoin="round" data-testid="bench-triangulo-eq" />
         <Punto p={QA} nombre="A" dx={-16} dy={18} />
         <Punto p={QB} nombre="B" dx={8} dy={18} />
@@ -49,12 +50,20 @@ export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
             Área = b · h / 2 (siempre la misma)
           </Txt>
         ) : null}
-        {step >= 3 ? (
-          <g data-testid="bench-rectangulo-eq">
+        {step >= 3 ? pm.nodos : null}
+        {step >= 3 && nivel > 0 ? <Seg a={[QA[0], 300 - ALT / 2]} b={[lerp(QA[0], QB[0], nivel), 300 - ALT / 2]} color={VERDE} w={1.4} dash="4 4" /> : null}
+        {step >= 3 && pm.listo ? <circle cx={340} cy={300 - ALT / 2} r="3.2" fill={AMBAR} /> : null}
+        {step >= 3 && rect > 0 ? (
+          <g data-testid="bench-rectangulo-eq" opacity={rect}>
             <path d={poligono([[QA[0], 300], [QB[0], 300], [QB[0], 300 - ALT / 2], [QA[0], 300 - ALT / 2]])} fill="rgba(31,157,85,0.10)" stroke={VERDE} strokeWidth="2" strokeDasharray="6 4" />
             <Txt p={[QA[0] + 8, 300 - ALT / 2 - 6]} color={VERDE} size={12}>
               rectángulo: base b y altura h/2
             </Txt>
+          </g>
+        ) : null}
+        {step === 3 && pm.pose ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={pm.pose.pose} open={pm.pose.open} />
           </g>
         ) : null}
       </svg>

@@ -110,7 +110,7 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "homotecia-practica": 13,
   "thales-dividir": 7,
   "thales-practica": 8,
-  "thales-paralelas": 1,
+  "thales-paralelas": 2,
   "media-compas": 5,
   "media-practica": 4,
   "aurea-compas": 5,

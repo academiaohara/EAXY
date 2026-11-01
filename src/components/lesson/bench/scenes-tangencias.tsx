@@ -431,7 +431,7 @@ export function OvaloCompas({ block }: { block: BenchBlock }) {
         <PapelOvalo centros={step >= 1 && (step > 1 || p > 0.95) ? 2 : 0} o1={step > 0 || par1.listo} o2={step > 0 || par2.listo} />
         {step === 0 ? (
           <g data-testid="bench-ovalo-thales">
-            <Seg a={OA} b={[OA[0] + dirR[0] * 3.4 * OD * pt(0, 0.05), OA[1] + dirR[1] * 3.4 * OD * pt(0, 0.05)]} w={1.4} />
+            <Seg a={OA} b={[OA[0] + dirR[0] * 4.4 * OD * pt(0, 0.05), OA[1] + dirR[1] * 4.4 * OD * pt(0, 0.05)]} w={1.4} />
             {[1, 2, 3].map((k) => (
               <g key={k}>
                 <ArcoAnim c={marcaT(k - 1)} r={OD} a1={13} a2={57} t={ventana(k)} />
