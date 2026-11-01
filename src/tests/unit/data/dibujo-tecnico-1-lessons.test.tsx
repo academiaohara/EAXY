@@ -6,7 +6,7 @@ import { BENCH_STEPS } from "@/components/lesson/bench/scenes";
 import { SlideBench } from "@/components/lesson/bench/SlideBench";
 import { SlideTool } from "@/components/lesson/slide/SlideTool";
 import { SLIDE_ANIM_REGISTRY, buildSlideAnim } from "@/components/lesson/anim/registry";
-import { curriculum } from "@/content/curriculum";
+import { fullCurriculum as curriculum } from "@/content/curriculum";
 import { interactiveLessons } from "@/data/lessons";
 import type { LessonStep, SlideBlock, SlideStep } from "@/lib/lesson/types";
 

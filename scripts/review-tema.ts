@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { curriculum } from "../src/content/curriculum";
+import { fullCurriculum as curriculum } from "../src/content/curriculum";
 import { interactiveLessons } from "../src/data/lessons";
 
 const [courseSlug, moduleSlug] = process.argv.slice(2);

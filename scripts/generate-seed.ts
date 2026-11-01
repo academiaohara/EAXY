@@ -7,7 +7,8 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { curriculum, getAllCourses, getOrderedLessons, validateCurriculum } from "../src/content";
+import { getAllCourses, getOrderedLessons, validateCurriculum } from "../src/content";
+import { fullCurriculum as curriculum } from "../src/content/curriculum";
 
 function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''")}'`;
