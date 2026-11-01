@@ -16426,8 +16426,8 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(37305),
-              title: "3. Elementos geométricos y signos",
-              summary: "Punto, recta, curva, segmento, semirrecta, ángulo y plano; designación y principales signos geométricos.",
+              title: "3. Elementos geométricos",
+              summary: "Punto, recta, curva, segmento, semirrecta, ángulo y plano, y cómo se designan.",
               orderIndex: 3,
               kind: "interactive",
               interactiveSlug: "elementos-signos-geometricos-dt1",

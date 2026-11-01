@@ -4,7 +4,7 @@ import { bench, slide } from "@/data/lessons/tec1-helpers";
 
 export const elementosSignosGeometricosDt1Lesson: InteractiveLesson = {
   slug: "elementos-signos-geometricos-dt1",
-  title: "3. Elementos geométricos y signos",
+  title: "3. Elementos geométricos",
   subtitle: DT1_SUBTITLES[11],
   stage: { theme: "board" },
   steps: [
@@ -26,16 +26,5 @@ export const elementosSignosGeometricosDt1Lesson: InteractiveLesson = {
       { title: "Ángulo", text: "Un **ángulo** es la porción de plano comprendida entre dos semirrectas que tienen el mismo origen. Las semirrectas son los **lados** y el origen, el **vértice**. Se designan con una letra mayúscula en el vértice o con una letra griega: ángulo $A$, ángulo $\\beta$.", fact: "Lados y vértice" },
       { title: "Plano", text: "Un **plano** es la superficie formada por puntos no alineados. Queda definido por **tres puntos** no alineados, por **dos rectas** que se cortan o son paralelas, o por una **recta y un punto** exterior. Se designan con letras griegas minúsculas: $\\alpha, \\beta, \\delta, \\pi, \\dots$", fact: "Tres puntos definen un plano" },
     ]), "stack"),
-
-    slide("signos", "Principales signos geométricos", [
-      { kind: "steps", items: [
-        "$\\parallel$ **paralela a**   ·   $\\perp$ **perpendicular a**.",
-        "$\\widehat{COD}$ **ángulo** $COD$   ·   $\\overset{\\frown}{NM}$ **arco** $NM$   ·   $\\angle$ con punto: **ángulo recto**.",
-        "$\\triangle$ **triángulo**   ·   $\\square$ **cuadrado**.",
-        "$\\varnothing$ **diámetro**   ·   $R$ **radio**   ·   $d$ **diámetro**.",
-        "$\\overline{RS}$ **segmento** $RS$   ·   $|\;|$ **longitud**.",
-        "$<$ **menor que**   ·   $>$ **mayor que**   ·   $\\le$ **igual o menor que**   ·   $\\ge$ **igual o mayor que**.",
-      ] },
-    ], undefined, "stack"),
   ],
 };
