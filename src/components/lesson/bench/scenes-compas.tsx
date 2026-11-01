@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { ESCUADRA_L, PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
+import { ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -501,6 +501,8 @@ export type Def = {
 };
 
 export const SNAP = 14;
+/** Margen (mm sobre el cartabón) con el que la escuadra encaja en la marca pedida. */
+const ENCAJE = 9;
 
 /** Datos de la escuadra deslizando sobre el cartabón para una `recta` y las `marcas` por las que debe pasar el filo. */
 export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[]) {
@@ -711,7 +713,10 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "escuadra") {
       if (prep && dragEsc.current) {
         const max = Math.max(...prep.sps) + 25;
-        setEst({ ...est, esc: clamp(dragEsc.current.esc0 + (p[0] - dragEsc.current.inicio[0]) * prep.desliza[0] + (p[1] - dragEsc.current.inicio[1]) * prep.desliza[1], 0, max) });
+        const crudo = clamp(dragEsc.current.esc0 + (p[0] - dragEsc.current.inicio[0]) * prep.desliza[0] + (p[1] - dragEsc.current.inicio[1]) * prep.desliza[1], 0, max);
+        // cerca de la marca pedida el filo «encaja» en ella (la escuadra se tiñe de verde)
+        const objetivo = prep.sps[cuenta(fases, est.fase, "escuadra")];
+        setEst({ ...est, esc: Math.abs(crudo - objetivo) <= ENCAJE ? objetivo : crudo });
       }
       return;
     }
@@ -754,7 +759,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (!prep || bloqueada) return;
     const k = cuenta(fases, est.fase, "escuadra");
     const objetivo = prep.sps[k];
-    if (Math.abs(valor - objetivo) <= 4) avanzar({ ...est, esc: objetivo });
+    if (Math.abs(valor - objetivo) <= ENCAJE) avanzar({ ...est, esc: objetivo });
     else if (valor > objetivo + 4) fallar(`Te has pasado de la marca: desliza la escuadra hacia atrás hasta que su filo pase por ella.`);
     else if (valor > 6) fallar("Todavía no llega: sigue deslizando la escuadra hasta que su filo pase por la marca.");
   };
@@ -873,6 +878,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
 
   const nota = Math.min(est.fase, fases.length - 1);
 
+  const objetivoEsc = prep && tipo === "escuadra" ? prep.sps[cuenta(fases, est.fase, "escuadra")] : null;
+  const alineada = objetivoEsc !== null && Math.abs(est.esc - objetivoEsc) < 0.5;
+  const poseEsc = prep ? escuadraPoseRef(prep.setup, est.esc) : null;
+  const filoEsc = poseEsc ? ([applyPose(poseEsc, [0, 0]), applyPose(poseEsc, [ESCUADRA_L, 0])] as [Pt, Pt]) : null;
+
   // Guía: con la pista pedida o tras dos fallos seguidos, la escena resalta lo que hay que tocar o trazar.
   const guiada = (pista || fallos >= 2) && !bloqueada && !hecha && tipo !== undefined && tipo !== "auto";
   const anillos: Pt[] = (() => {
@@ -880,7 +890,6 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "centro") return def.candidatos(est, cuenta(fases, est.fase, "centro"));
     if (tipo === "medida") return (def.medibles?.(est) ?? []).filter((c) => !(est.medida[0] && dist(est.medida[0], c) < 1));
     if (tipo === "punto" || tipo === "regla") return def.cortes(est);
-    if (tipo === "escuadra") return datosEsc ? [datosEsc.objetivos[cuenta(fases, est.fase, "escuadra")].marca] : [];
     if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
@@ -923,6 +932,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? TEXTO_ACCION[tipo] : null;
   const extra = (
     <div className="flex flex-col gap-2">
+      {alineada ? (
+        <p className="text-sm font-semibold text-emerald-300" data-testid="bench-alineada-texto">
+          ¡Ahí! El filo pasa por la marca: suelta la escuadra.
+        </p>
+      ) : null}
       {guiada && tipo ? (
         <p className="text-sm font-semibold text-[#ffd866]" data-testid="bench-pista-texto">
           Pista: {TEXTO_PISTA[tipo]}
@@ -1034,8 +1048,27 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         ))}
         {tipo === "escuadra" && prep ? (
           <g data-testid="bench-instrumentos" pointerEvents="none">
-            <Cartabon pose={cartabonPoseRef(prep.setup)} />
-            <Escuadra pose={escuadraPoseRef(prep.setup, est.esc)} />
+            <Cartabon pose={cartabonPoseRef(prep.setup)} tono={alineada ? "ok" : undefined} />
+            <Escuadra pose={poseEsc!} tono={alineada ? "ok" : undefined} />
+          </g>
+        ) : null}
+        {tipo === "escuadra" && filoEsc && objetivoEsc !== null && datosEsc ? (
+          <g pointerEvents="none" data-testid="bench-filo">
+            {(() => {
+              const d: Pt = [filoEsc[1][0] - filoEsc[0][0], filoEsc[1][1] - filoEsc[0][1]];
+              const l = Math.hypot(d[0], d[1]);
+              const u: Pt = [d[0] / l, d[1] / l];
+              const color = alineada ? "#1fa84f" : "#ffb400";
+              const marca = datosEsc.objetivos[cuenta(fases, est.fase, "escuadra")].marca;
+              return (
+                <>
+                  <line x1={filoEsc[0][0] - u[0] * 500} y1={filoEsc[0][1] - u[1] * 500} x2={filoEsc[1][0] + u[0] * 500} y2={filoEsc[1][1] + u[1] * 500} stroke={color} strokeWidth="1.6" strokeDasharray="8 6" opacity="0.9" />
+                  <circle cx={marca[0]} cy={marca[1]} r={alineada ? 10 : 12} fill="none" stroke={color} strokeWidth="2.8" data-testid={alineada ? "bench-alineada" : "bench-marca-objetivo"}>
+                    {alineada ? null : <animate attributeName="r" values="9;17;9" dur="1.4s" repeatCount="indefinite" />}
+                  </circle>
+                </>
+              );
+            })()}
           </g>
         ) : null}
         {arcoGuia ? <path d={arcoGuia} fill="none" stroke="#ffb400" strokeWidth="3.4" strokeDasharray="2 7" strokeLinecap="round" pointerEvents="none" data-testid="bench-guia-arco" /> : null}
