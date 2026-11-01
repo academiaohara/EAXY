@@ -11,12 +11,16 @@ export const CURSOS_OCULTOS: string[] = ["dibujo-tecnico-2-bachillerato"];
 
 export const MODULOS_OCULTOS: Record<string, string[]> = {
   "dibujo-tecnico-1-bachillerato": [
+    "escalas",
+    "sistemas-de-representacion",
+    "sistema-diedrico",
+    "sistema-planos-acotados",
+    "sistema-axonometrico",
+    "sistema-perspectiva-caballera",
+    "normalizacion-principios-generales",
+    "normalizacion-acotacion",
     "historia-fundamentos-geometricos",
-    "sistema-diedrico-punto-recta-plano",
-    "sistema-diedrico-relaciones-distancias",
-    "sistemas-axonometricos",
-    "planos-acotados-conico",
-    "normalizacion-documentacion-grafica",
+    "sistema-conico",
     "sistemas-cad",
   ],
 };

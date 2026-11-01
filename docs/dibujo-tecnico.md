@@ -16,6 +16,8 @@ Ya existe material relacionado (instrumentos y trazados, escalas, acotación en 
 
 ## Dibujo Técnico I (saberes A–D)
 
+> La numeración vigente de los temas es la del libro (tabla de `dt-migracion-formato.md`). La tabla de abajo es el plan curricular original y puede no coincidir en el número.
+
 | Tema | Saber | Lecciones (previstas) |
 |---|---|---|
 | 0. Instrumentos y trazados fundamentales (nuevo, en pantalla «Tema 1»; el resto se numera +1) | A | Hecho (4 lecciones, `01-instrumentos-trazados-fundamentales/`, mesa de dibujo): instrumentos y paralelas; perpendiculares y transportador; mediatriz y bisectriz con compás; trasladar un ángulo con compás |
@@ -67,27 +69,4 @@ La correspondencia de cada tema de la web con los temas y páginas del libro de 
 
 ## Estado
 
-| Tema | Estado |
-|---|---|
-| Plan | Aprobado por el usuario |
-| DT I · 1. Historia y fundamentos geométricos | Hecho (4 lecciones, `src/data/lessons/dibujo-tecnico-1-bachillerato/02-historia-fundamentos-geometricos/`; herramientas `DtGeometriaTools.tsx`, animaciones `dt1-geometria.tsx`) |
-| DT I · 2. Proporcionalidad, equivalencia y semejanza | Hecho (4 lecciones, `02-proporcionalidad-equivalencia-semejanza/`; herramientas en `DtGeometriaTools.tsx`, animación `buildSeccionAurea` en `dt1-geometria.tsx`) |
-| DT I · 3. Triángulos, cuadriláteros y polígonos regulares | Hecho en la mesa de dibujo (6 lecciones, `04-triangulos-cuadrilateros-poligonos/`; escenas en `scenes-poligonos.tsx`) |
-| DT I · 4. Tangencias y curvas técnicas | Hecho en la mesa de dibujo (5 lecciones, `06-tangencias-curvas-tecnicas/`; escenas en `scenes-tangencias.tsx`) |
-| DT I · 5. Sistema diédrico: punto, recta y plano | Hecho (6 lecciones, `05-sistema-diedrico-punto-recta-plano/`; herramientas `DtDiedricoTools.tsx`, animación `dt1-diedrico.tsx`; bloque `dibujo-sistemas-representacion`) |
-| DT I · 6. Sistema diédrico: relaciones y distancias | Hecho (4 lecciones, `06-sistema-diedrico-relaciones-distancias/`; herramientas `DtDiedrico2Tools.tsx`) |
-| DT I · 7. Sistemas axonométricos | Hecho (5 lecciones, `07-sistemas-axonometricos/`; herramientas `DtAxonometricoTools.tsx`, animación `dt1-axonometria.tsx`) |
-| DT I · 8. Planos acotados y sistema cónico | Hecho (6 lecciones, `08-planos-acotados-conico/`; herramientas `DtAcotadosTools.tsx` y `DtConicoTools.tsx`, animación `dt1-conico.tsx`) |
-| DT I · 9. Normalización y documentación gráfica | Hecho (6 lecciones, `09-normalizacion-documentacion-grafica/`; herramientas `DtNormalizacionTools.tsx`, animación `dt1-vistas.tsx`; bloque `dibujo-normalizacion-documentacion`) |
-| DT I · 10. Sistemas CAD | Hecho (4 lecciones, `10-sistemas-cad/`; herramientas `DtCadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico I completo: 50 lecciones en 10 temas.** |
-| DT II · 1. La geometría en la arquitectura y la ingeniería | Hecho (3 lecciones, `src/data/lessons/dibujo-tecnico-2-bachillerato/01-geometria-arquitectura-ingenieria/`; herramientas `DtIIArquitecturaTools.tsx`; subtítulos `DT2_SUBTITLES`; ids `-dt2` y `dt2-`) |
-| DT II · 2. Homología y afinidad | Hecho (5 lecciones, `02-homologia-afinidad/`; herramientas `DtIITransformacionesTools.tsx`) |
-| DT II · 3. Potencia, eje radical y tangencias | Hecho (4 lecciones, `03-potencia-eje-radical-tangencias/`; herramientas `DtIIPotenciaTools.tsx`) |
-| DT II · 4. Curvas cónicas | Hecho (5 lecciones, `04-curvas-conicas/`; herramientas `DtIIConicasTools.tsx`) |
-| DT II · 5. Diédrico avanzado | Hecho (6 lecciones, `05-diedrico-avanzado/`; herramientas `DtIIDiedricoAvanzadoTools.tsx`; bloque `dibujo-sistemas-representacion`) |
-| DT II · 6. Cuerpos en diédrico | Hecho (5 lecciones, `06-cuerpos-diedrico/`; herramientas `DtIICuerposTools.tsx`) |
-| DT II · 7. Axonométrico, cónico y planos acotados de sólidos | Hecho (5 lecciones, `07-axonometrico-conico-acotados/`; herramientas `DtIISolidosAxoTools.tsx`) |
-| DT II · 8. Normalización y proyecto | Hecho (6 lecciones, `08-normalizacion-proyecto/`; herramientas `DtIINormalizacionTools.tsx`; bloque `dibujo-normalizacion-documentacion`) |
-| DT II · 9. Sistemas CAD | Hecho (2 lecciones, `09-sistemas-cad/`; herramientas `DtIICadTools.tsx`; bloque `dibujo-sistemas-cad`). **Dibujo Técnico II completo: 41 lecciones en 9 temas.** |
-
-**Animaciones de DT II** (`scenes/industrial/dt2-construcciones.tsx`): construcción de la figura homóloga (tema 2, lección 4), elipse por afinidad (tema 4, lección 2), parábola foco–directriz (tema 4, lección 4), eje radical con circunferencia auxiliar (tema 3, lección 2), triángulo de abatimiento (tema 5, lección 1) y desarrollo del cono (tema 6, lección 5).
+El estado de cada tema (con su número del libro) está en la tabla de [`dt-migracion-formato.md`](./dt-migracion-formato.md#fuente-en-el-libro-de-cada-tema). La web y el libro tienen los mismos temas con el mismo número.

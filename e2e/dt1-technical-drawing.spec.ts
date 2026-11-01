@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.use({ viewport: { width: 1440, height: 1000 } });
 
 const COURSE = "dibujo-tecnico-1-bachillerato";
-const TOPIC = "normalizacion-documentacion-grafica";
+const TOPIC = "normalizacion-principios-generales";
 const cases = [
   ["escalas-numericas-graficas-dt1", "escala", "scale-real-dimension"],
   ["vistas-normalizadas-dt1", "orthographic-sheet", "view-front"],

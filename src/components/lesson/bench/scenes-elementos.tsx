@@ -115,7 +115,7 @@ export function ElementosGeometricos({ block }: { block: BenchBlock }) {
 
 export function OperacionesReglaCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 0 ? 3000 : step === 2 ? 4200 : step === 5 ? 7200 : step === 6 ? 6000 : 1);
+  const p = useProgreso(step, step === 0 ? 3000 : step === 2 ? 4200 : step === 5 ? 7200 : step === 6 ? 10000 : 1);
   const A: Pt = [180, 200];
   const B: Pt = [440, 200];
   const O: Pt = [310, 190];
@@ -138,9 +138,11 @@ export function OperacionesReglaCompas({ block }: { block: BenchBlock }) {
     comp = poseCompas(O, enCirculo(O, R, 360 * p));
     nodos.push(<Txt key="n" p={[190, 332]} color={AZUL} size={14}>circunferencia de centro O y radio R</Txt>);
   } else if (step === 3) {
-    const [P1, P2]: [Pt, Pt] = [enCirculo(O, R, 160), enCirculo(O, R, 20)];
+    const [P1, P2]: [Pt, Pt] = [enCirculo(O, R, 152), enCirculo(O, R, 18)];
+    const dd = dist(P1, P2);
+    const u: Pt = [(P2[0] - P1[0]) / dd, (P2[1] - P1[1]) / dd];
     nodos.push(<circle key="c" cx={O[0]} cy={O[1]} r={R} fill="none" stroke={INK} strokeWidth="1.5" />, <Marca key="o" p={O} />, <Txt key="to" p={[O[0] + 6, O[1] + 16]}>O</Txt>);
-    nodos.push(<Seg key="l" a={[P1[0] - 90, P1[1] + 16]} b={[P2[0] + 90, P2[1] - 16]} />);
+    nodos.push(<Seg key="l" a={[P1[0] - u[0] * 110, P1[1] - u[1] * 110]} b={[P2[0] + u[0] * 110, P2[1] + u[1] * 110]} />);
     nodos.push(<Marca key="a" p={P1} color={AMBAR} r={4} />, <Marca key="b" p={P2} color={AMBAR} r={4} />, <Txt key="ta" p={[P1[0] - 18, P1[1] - 8]} color={AMBAR} size={15}>A</Txt>, <Txt key="tb" p={[P2[0] + 8, P2[1] - 8]} color={AMBAR} size={15}>B</Txt>);
     nodos.push(<Txt key="n" p={[170, 332]} color={AZUL} size={14}>A y B: intersección de la recta y la circunferencia</Txt>);
   } else if (step === 4) {
@@ -168,20 +170,30 @@ export function OperacionesReglaCompas({ block }: { block: BenchBlock }) {
     comp = p < 0.4 ? poseCompas(a, b) : p < 0.95 ? poseCompas(C, enCirculo(C, 160, lerp(-22, 22, t2))) : null;
     void t1;
   } else {
-    // transporte de un ángulo: arco, cuerda y copia
+    // transporte de un ángulo: se toma la cuerda entre los dos cortes y se lleva sobre el arco trazado desde B
     const A: Pt = [120, 130];
     const B: Pt = [120, 290];
-    const r = 80;
+    const r = 90;
     const ang = 38;
-    const t = tramo(p, 0.1, 0.9);
+    const P1 = enCirculo(A, r, 0);
+    const P2 = enCirculo(A, r, ang);
+    const cuerda = dist(P1, P2);
+    const Q1 = enCirculo(B, r, 0);
+    const Q2 = enCirculo(B, r, ang);
+    const tB = tramo(p, 0.22, 0.42);
+    const tQ = tramo(p, 0.45, 0.75);
+    const tR = tramo(p, 0.78, 1);
     nodos.push(<Seg key="a1" a={A} b={[330, A[1]]} />, <Seg key="a2" a={A} b={enCirculo(A, 230, ang)} />, <Marca key="a" p={A} />, <Txt key="ta" p={[A[0] - 16, A[1] + 18]}>A</Txt>);
-    nodos.push(<ArcoPlano key="arc1" c={A} r={r} a1={0} a2={ang} />);
+    nodos.push(<ArcoPlano key="arc1" c={A} r={r} a1={-4} a2={ang + 8} />, <Marca key="p1" p={P1} color={AMBAR} r={3.6} />, <Marca key="p2" p={P2} color={AMBAR} r={3.6} />, <Seg key="ch" a={P1} b={P2} color={AMBAR} w={2.4} />);
+    nodos.push(<Txt key="tc" p={[P1[0] + 20, P1[1] - 40]} color={AMBAR} size={13}>cuerda</Txt>);
     nodos.push(<Seg key="b1" a={B} b={[330, B[1]]} />, <Marca key="b" p={B} />, <Txt key="tb" p={[B[0] - 16, B[1] + 18]}>B</Txt>);
-    nodos.push(<ArcoAnim key="arc2" c={B} r={r} a1={0} a2={ang + 8} t={tramo(p, 0, 0.5)} />);
-    const copia = enCirculo(B, r, ang);
-    if (t > 0.5) nodos.push(<Marca key="p" p={copia} color={AMBAR} r={4} />, <Seg key="r2" a={B} b={enCirculo(B, 230, ang)} color={AMBAR} w={2} />);
-    nodos.push(<Txt key="n" p={[370, 210]} color={AZUL} size={14}>el ángulo en B es igual al de A</Txt>);
-    comp = p < 0.5 ? poseCompas(B, enCirculo(B, r, lerp(0, ang + 8, tramo(p, 0, 0.5)))) : null;
+    if (tB > 0) nodos.push(<ArcoAnim key="arc2" c={B} r={r} a1={-4} a2={ang + 8} t={tB} />);
+    if (tB >= 1) nodos.push(<Marca key="q1" p={Q1} color={AMBAR} r={3.6} />);
+    if (tQ > 0) nodos.push(<ArcoAnim key="arc3" c={Q1} r={cuerda} a1={angDe(Q1, Q2) - 16} a2={angDe(Q1, Q2) + 16} t={tQ} />);
+    if (tQ >= 1) nodos.push(<Marca key="q2" p={Q2} color={AMBAR} r={4} />);
+    if (tR > 0) nodos.push(<ReglaTrazando key="r2" a={B} b={Q2} p={tR} ext={110} color={AMBAR} />);
+    nodos.push(<Txt key="n" p={[370, 330]} color={AZUL} size={13}>el ángulo en B es igual al de A</Txt>);
+    comp = p < 0.2 ? poseCompas(P1, P2) : tB > 0 && tB < 1 ? poseCompas(B, enCirculo(B, r, lerp(-4, ang + 8, tB))) : tQ > 0 && tQ < 1 ? poseCompas(Q1, enCirculo(Q1, cuerda, lerp(angDe(Q1, Q2) - 16, angDe(Q1, Q2) + 16, tQ))) : null;
   }
   return (
     <Hoja scene="operaciones-regla-compas" block={block} step={step} setStep={setStep} label="Hoja con las operaciones básicas con la regla y el compás" testId="bench-operaciones">
