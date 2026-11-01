@@ -183,21 +183,27 @@ export const TECTI2_SUBTITLES = {
   5: "Tecnología e Ingeniería II (ampliación), Tema 5 — Impacto y sostenibilidad en ingeniería",
 } as const;
 
+/** Subtítulos de Dibujo Técnico I: la clave es el número del tema en el libro de referencia (los temas 20 a 22 son ampliaciones sin tema en el libro). */
 export const DT1_SUBTITLES = {
-  // Las claves 1–10 son las de los temas originales; en pantalla se numeran desde el tema 2 porque el tema 1 es «Instrumentos» (clave 11),
-  // y a partir de Tangencias (clave 4) desde el 6 porque el tema 5 es «Transformaciones» (clave 12).
-  1: "Dibujo Técnico I, Tema 2 — Historia y fundamentos geométricos",
-  2: "Dibujo Técnico I, Tema 3 — Proporcionalidad, equivalencia y semejanza",
-  3: "Dibujo Técnico I, Tema 4 — Triángulos, cuadriláteros y polígonos regulares",
-  4: "Dibujo Técnico I, Tema 6 — Tangencias y curvas técnicas",
-  5: "Dibujo Técnico I, Tema 7 — Sistema diédrico: punto, recta y plano",
-  6: "Dibujo Técnico I, Tema 8 — Sistema diédrico: relaciones y distancias",
-  7: "Dibujo Técnico I, Tema 9 — Sistemas axonométricos",
-  8: "Dibujo Técnico I, Tema 10 — Planos acotados y sistema cónico",
-  9: "Dibujo Técnico I, Tema 11 — Normalización y documentación gráfica",
-  10: "Dibujo Técnico I, Tema 12 — Sistemas CAD",
-  11: "Dibujo Técnico I, Tema 1 — Instrumentos y trazados fundamentales",
-  12: "Dibujo Técnico I, Tema 5 — Transformaciones geométricas",
+  1: "Dibujo Técnico I, Tema 1 — Instrumentos de dibujo",
+  2: "Dibujo Técnico I, Tema 2 — Trazados fundamentales en el plano",
+  3: "Dibujo Técnico I, Tema 3 — Escalas",
+  4: "Dibujo Técnico I, Tema 4 — Formas poligonales I: triángulos",
+  5: "Dibujo Técnico I, Tema 5 — Formas poligonales II: cuadriláteros y polígonos regulares",
+  6: "Dibujo Técnico I, Tema 6 — Relaciones geométricas",
+  7: "Dibujo Técnico I, Tema 7 — Transformaciones geométricas",
+  8: "Dibujo Técnico I, Tema 8 — Tangencias",
+  9: "Dibujo Técnico I, Tema 9 — Curvas técnicas",
+  11: "Dibujo Técnico I, Tema 11 — Sistemas de representación",
+  12: "Dibujo Técnico I, Tema 12 — Sistema diédrico",
+  13: "Dibujo Técnico I, Tema 13 — Sistema de planos acotados",
+  14: "Dibujo Técnico I, Tema 14 — Sistema axonométrico",
+  15: "Dibujo Técnico I, Tema 15 — Sistema de perspectiva caballera",
+  16: "Dibujo Técnico I, Tema 16 — Normalización: principios generales de representación",
+  18: "Dibujo Técnico I, Tema 18 — Normalización: acotación",
+  20: "Dibujo Técnico I, Ampliación — Historia y fundamentos geométricos",
+  21: "Dibujo Técnico I, Ampliación — Sistema cónico",
+  22: "Dibujo Técnico I, Ampliación — Sistemas CAD",
 } as const;
 
 export const DT2_SUBTITLES = {

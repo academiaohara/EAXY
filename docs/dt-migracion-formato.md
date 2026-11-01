@@ -33,21 +33,34 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 
 Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiarra), ya dividido por temas en [`temp/dibujo-tecnico/1-bachillerato/`](../temp/dibujo-tecnico/1-bachillerato/README.md) (un PDF por tema; escaneado, sin texto seleccionable; la página del PDF es la impresa − 1). Las páginas de esta tabla son las del PDF completo, tal como las indica ese README. **Al migrar o añadir un tema, se apunta aquí su tema y páginas de origen.**
 
-| Tema en la web (DT I) | Tema del libro (páginas) | Estado |
-|---|---|---|
-| Instrumentos y trazados fundamentales (14 lecciones, en el orden del libro) | T01 Instrumentos de dibujo (10–17); T02 Trazados fundamentales en el plano (18–29). **T02, págs. 19–25 del PDF (20–26 impresas) hechas:** elementos y signos, operaciones con regla y compás, lugar geométrico, suma y diferencia de segmentos, mediatriz y aplicaciones, paralelas con compás, ángulos (tipos y relaciones), suma y diferencia de ángulos, bisectriz (2.º método), división de ángulos y construcción de ángulos. **Pendiente de T02:** págs. 26–29 del PDF (construcción de ángulos con plantillas, fig. 28, y actividades) | Migrado (parcial) |
-| Historia y fundamentos geométricos (lugares geométricos, arco capaz) | Sin tema propio; cerca de T02 y T06 | Sin migrar (oculto) |
-| Proporcionalidad, equivalencia y semejanza | T06 Relaciones geométricas (54–61); «Semejanza y escalas» toca T03 Escalas (30–35) | Migrado |
-| Triángulos, cuadriláteros y polígonos regulares | T04 Formas poligonales I (36–43); T05 Formas poligonales II (44–53) | Migrado |
-| Transformaciones geométricas | T07 Transformaciones geométricas (62–65) | Migrado |
-| Tangencias y curvas técnicas | T08 Tangencias (66–75); T09 Curvas técnicas (76–81) | Migrado |
-| Sistema diédrico (2 temas) | T11 Sistemas de representación (90–93); T12 Sistema diédrico (94–109) | Sin migrar (oculto) |
-| Sistemas axonométricos | T14 Sistema axonométrico (118–133); T15 Perspectiva caballera (134–145) | Sin migrar (oculto) |
-| Planos acotados y sistema cónico | T13 Sistema de planos acotados (110–117); el sistema cónico no figura en el índice del libro | Sin migrar (oculto) |
-| Normalización y documentación gráfica | T16 Principios generales de representación (146–161); T17 Rotulación normalizada (162–167); T18 Acotación (168–183) | Sin migrar (oculto) |
-| Sistemas CAD | Sin tema en el libro | Sin migrar (oculto) |
+**La web y el libro tienen los mismos temas con el mismo número.** El tema N de la web es el tema N del libro; la carpeta de las lecciones es `src/data/lessons/dibujo-tecnico-1-bachillerato/NN-<tema>/`. Los números que faltan son temas del libro que aún no tienen lecciones. Los temas 20 a 22 son ampliaciones que no están en el libro.
 
-Sin tema propio en la web: T03 Escalas (30–35), T10 Curvas cónicas (82–89; en la web están en DT II) y T19 Arte y dibujo técnico (184–205). El libro coloca la geometría descriptiva (T11–T15) antes de la normalización (T16–T18); el orden de la web es el acordado en «Orden propuesto».
+| Tema (libro y web) | Páginas del PDF | Lecciones en la web | Estado |
+|---|---|---|---|
+| 1. Instrumentos de dibujo | 10–17 | 2 | Migrado |
+| 2. Trazados fundamentales en el plano | 18–29 | 12 | Migrado hasta la pág. 25 (falta la 26 en adelante: ángulos con plantillas y actividades) |
+| 3. Escalas | 30–35 | 1 (sin migrar: escalas numéricas y gráficas, que venían de la normalización) | Oculto |
+| 4. Formas poligonales I (triángulos) | 36–43 | 2 | Migrado (por revisar contra el libro) |
+| 5. Formas poligonales II (cuadriláteros y polígonos regulares) | 44–53 | 4 | Migrado (por revisar contra el libro) |
+| 6. Relaciones geométricas | 54–61 | 4 (Thales, media proporcional y áurea, equivalencia y cuadratura, semejanza y escalas) | Migrado (por revisar contra el libro) |
+| 7. Transformaciones geométricas | 62–65 | 4 | Migrado |
+| 8. Tangencias | 66–75 | 3 | Migrado (por revisar contra el libro) |
+| 9. Curvas técnicas | 76–81 | 2 (óvalo y ovoide, espirales y evolvente) | Migrado (por revisar contra el libro) |
+| 10. Curvas cónicas | 82–89 | 0 (en la web están en DT II) | Sin lecciones |
+| 11. Sistemas de representación | 90–93 | 1 | Sin migrar (oculto) |
+| 12. Sistema diédrico | 94–109 | 9 | Sin migrar (oculto) |
+| 13. Sistema de planos acotados | 110–117 | 4 | Sin migrar (oculto) |
+| 14. Sistema axonométrico | 118–133 | 4 | Sin migrar (oculto) |
+| 15. Sistema de perspectiva caballera | 134–145 | 1 | Sin migrar (oculto) |
+| 16. Normalización: principios generales de representación | 146–161 | 4 (líneas, formatos, vistas, simbología) | Sin migrar (oculto) |
+| 17. Normalización: rotulación normalizada | 162–167 | 0 | Sin lecciones |
+| 18. Normalización: acotación | 168–183 | 1 | Sin migrar (oculto) |
+| 19. Arte y dibujo técnico | 184–205 | 0 | Sin lecciones |
+| 20. Historia y fundamentos geométricos (ampliación) | — | 4 | Oculto |
+| 21. Sistema cónico (ampliación) | — | 2 | Oculto |
+| 22. Sistemas CAD (ampliación) | — | 4 | Oculto |
+
+Los temas 3 y 4 a 9 llevan lecciones que antes estaban agrupadas de otra forma (por ejemplo, «Tangencias y curvas técnicas» era un solo tema); se repartieron para que cada tema de la web coincida con el del libro. Hay que revisar el contenido de los temas 3 a 9 contra el libro, tema por tema.
 
 ## Decisiones tomadas
 

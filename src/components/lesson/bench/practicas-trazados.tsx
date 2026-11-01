@@ -43,6 +43,7 @@ const defTransporte: Def = {
       <Seg a={[150, TS_C[1]]} b={[560, TS_C[1]]} w={1.6} />
       <Punto p={TS_C} nombre="C" dx={-6} dy={20} />
       {est.fase >= 4 ? <Punto p={TS_D} nombre="D" dx={-4} dy={20} color={VERDE} /> : null}
+      {est.fase >= 5 ? <Seg a={TS_C} b={TS_D} color={AMBAR} w={4.5} /> : null}
     </g>
   ),
   medibles: () => [TS_A, TS_B],
@@ -88,6 +89,7 @@ const defSumaSegmentos: Def = {
           <Marca key={i} p={q} color={SUMA_TIRAS[i].color} r={3.6} />
         ))}
         {est.fase >= 13 ? <Punto p={SUMA_PUNTOS[3]} nombre="M" dx={-4} dy={22} color={VERDE} /> : null}
+        {est.fase >= 13 ? <Seg a={SUMA_N} b={SUMA_PUNTOS[3]} color={VERDE} w={5} /> : null}
       </g>
     );
   },
@@ -129,6 +131,7 @@ const defDiferenciaSegmentos: Def = {
       <Punto p={DS_A} nombre="A" dx={-6} dy={22} />
       <Punto p={DS_B} nombre="B" dx={-4} dy={22} />
       {est.fase >= 4 ? <Punto p={DS_E} nombre="E" dx={-4} dy={22} color={VERDE} /> : null}
+      {est.fase >= 5 ? <Seg a={DS_E} b={DS_B} color={VERDE} w={5} /> : null}
     </g>
   ),
   medibles: () => [[90, 125], [90 + DS_N, 125]],
