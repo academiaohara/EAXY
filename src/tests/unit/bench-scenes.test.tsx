@@ -11,6 +11,7 @@ import type { BenchSceneId } from "@/lib/lesson/types";
 import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
 import { POLIGONOS_GEOM, POLIGONOS_GEOM_2, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
 import { TANGENCIAS_GEOM } from "@/components/lesson/bench/scenes-tangencias";
+import { THALES_PARALELAS_GEOM } from "@/components/lesson/bench/scenes-proporcion";
 
 afterEach(cleanup);
 
@@ -1046,21 +1047,47 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       t.sinSuperar();
     });
 
-    it("las paralelas: marcar los puntos a un tercio y dos tercios de AB supera el ejercicio solo", () => {
+    /** Arrastra la escuadra `delta` mm sobre el cartabón (en la dirección en que desliza hacia las marcas). */
+    function deslizar(delta: number) {
+      const { menosH } = THALES_PARALELAS_GEOM;
+      const esc = screen.getByTestId("bench-escuadra");
+      fireEvent.pointerDown(esc, { clientX: 300, clientY: 200, pointerId: 1 });
+      fireEvent.pointerMove(esc, { clientX: 300 + menosH[0] * delta, clientY: 200 + menosH[1] * delta, pointerId: 1 });
+      fireEvent.pointerUp(esc, { pointerId: 1 });
+    }
+
+    it("las paralelas: se desliza la escuadra hasta la marca 2 y después hasta la 1, y el ejercicio se supera solo", () => {
       const t = pantalla("thales-paralelas");
-      expect(screen.queryByTestId("bench-paralelas-thales")).toBeNull();
-      t.tocar([230, 300]);
-      t.tocar([350, 300]);
-      expect(t.fase()).toBe("hecha");
-      expect(screen.getByTestId("bench-paralelas-thales")).toBeTruthy();
+      const [o2, o1] = THALES_PARALELAS_GEOM.objetivos;
+      expect(screen.queryByTestId("bench-paralela-trazada")).toBeNull();
+      expect(screen.getByTestId("bench-accion").textContent).toContain("punto 2");
+      deslizar(o2.sp);
+      expect(t.svg().getAttribute("data-etapa")).toBe("1");
+      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(1);
+      expect(screen.getByTestId("bench-accion").textContent).toContain("punto 1");
+      t.sinSuperar();
+      deslizar(o1.sp - o2.sp);
+      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(2);
       t.superada();
     });
 
-    it("las paralelas: marcar la mitad de AB no vale", () => {
+    it("las paralelas: soltar antes de llegar o pasándose avisa y deja volver a intentarlo", () => {
       const t = pantalla("thales-paralelas");
-      t.tocar([290, 300]);
-      expect(t.aviso()).toContain("puntos de la construcción");
-      expect(t.fase()).toBe("regla");
+      const [o2] = THALES_PARALELAS_GEOM.objetivos;
+      deslizar(o2.sp / 2);
+      expect(t.aviso()).toContain("Todavía no llega");
+      expect(t.svg().getAttribute("data-etapa")).toBe("0");
+      deslizar(o2.sp + 40 - o2.sp / 2);
+      expect(t.aviso()).toContain("Te has pasado");
+      t.sinSuperar();
+    });
+
+    it("las paralelas: tras dos fallos se resalta la marca a la que hay que llegar", () => {
+      const t = pantalla("thales-paralelas");
+      deslizar(30);
+      expect(screen.queryByTestId("bench-guia")).toBeNull();
+      deslizar(-5);
+      expect(screen.getByTestId("bench-guia")).toBeTruthy();
       t.sinSuperar();
     });
   });

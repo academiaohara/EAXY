@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type Pt } from "./geometry";
+import { PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -128,6 +128,27 @@ export function animParalelaCompas(q0: Pt, q1: Pt, n: Pt, r: number, p: number) 
 }
 
 /**
+ * Disposición «de abajo»: se refleja la escuadra y el cartabón de `paralelaSetup` respecto de la recta, de modo que
+ * el cuerpo de la escuadra queda del lado contrario a P y su filo (el que traza) queda libre al llegar al punto.
+ */
+function reflejarPose(setup: ParalelaSetup, pose: Pose): Pose {
+  const vx = pose.x - setup.c0[0];
+  const vy = pose.y - setup.c0[1];
+  const a = vx * setup.u[0] + vy * setup.u[1];
+  const b = vx * setup.n[0] + vy * setup.n[1];
+  return { x: setup.c0[0] + a * setup.u[0] - b * setup.n[0], y: setup.c0[1] + a * setup.u[1] - b * setup.n[1], rot: 2 * setup.theta - pose.rot, mirror: !pose.mirror, anchor: pose.anchor };
+}
+/** Escuadra desplazada `sp` mm hacia P sobre el cartabón (disposición reflejada). */
+export const escuadraPoseRef = (setup: ParalelaSetup, sp: number) => reflejarPose(setup, escuadraPose(setup, -sp));
+export const cartabonPoseRef = (setup: ParalelaSetup) => reflejarPose(setup, cartabonPose(setup));
+/** Dirección (unitaria) en que desliza la escuadra hacia P. */
+export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
+  const a = -(setup.h[0] * setup.u[0] + setup.h[1] * setup.u[1]);
+  const b = -(setup.h[0] * setup.n[0] + setup.h[1] * setup.n[1]);
+  return [a * setup.u[0] - b * setup.n[0], a * setup.u[1] - b * setup.n[1]];
+};
+
+/**
  * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
  * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
  */
@@ -136,12 +157,10 @@ export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: nu
   const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
   const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
   const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
-  let theta = aGrados(Math.atan2(u0[1], u0[0]));
-  let d = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta + 90));
-  if (d < 0) {
-    theta += 180;
-    d = -d;
-  }
+  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
+  const d0 = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta0 + 90));
+  const theta = d0 < 0 ? theta0 + 180 : theta0;
+  const d = Math.abs(d0);
   const u = dir(theta);
   const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, d);
   const mov = tramo(p, 0.18, 0.7);
@@ -154,8 +173,8 @@ export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: nu
       {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
       {opacidad > 0 ? (
         <g opacity={opacidad} pointerEvents="none">
-          <Cartabon pose={cartabonPose(setup)} />
-          <Escuadra pose={escuadraPose(setup, s)} />
+          <Cartabon pose={cartabonPoseRef(setup)} />
+          <Escuadra pose={escuadraPoseRef(setup, s)} />
         </g>
       ) : null}
     </g>

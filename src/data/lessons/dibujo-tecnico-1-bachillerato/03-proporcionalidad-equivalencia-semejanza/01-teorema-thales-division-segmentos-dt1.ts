@@ -34,11 +34,12 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
     }),
 
     benchTask("thales-paralelas", "Traza las paralelas", "thales-paralelas", [
-      { title: "Paralelas por las marcas 1 y 2", text: "Imagina las **paralelas** a la recta $3B$ por los puntos 2 y 1 (con escuadra y cartabón). Toca los **dos puntos de $AB$** por los que cortan.", fact: "Cortan a AB en un tercio y en dos tercios" },
+      { title: "Paralela por la marca 2", text: "El cartabón ya está apoyado en la recta $3B$. **Arrastra la escuadra** sobre él hasta que su filo pase por la marca **2**: esa es la primera paralela.", fact: "Cortará a AB a dos tercios" },
+      { title: "Paralela por la marca 1", text: "Sigue **deslizando la escuadra**, sin girarla, hasta que su filo pase por la marca **1**: segunda paralela.", fact: "Cortará a AB a un tercio" },
     ], {
-      question: "Marca los dos puntos de AB por los que pasan las paralelas trazadas por las marcas 1 y 2.",
-      hint: "Divide AB en tres partes iguales.",
-      explanation: "Las paralelas conservan la razón: cortan a AB en P y Q, que lo dividen en tres partes iguales.",
+      question: "Traza con escuadra y cartabón las paralelas a 3B por las marcas 2 y 1.",
+      hint: "Desliza la escuadra a lo largo del cartabón sin girarla: su filo conserva la dirección de 3B.",
+      explanation: "Al deslizar la escuadra sin girarla, su filo se mantiene paralelo a 3B. Las paralelas conservan la razón: cortan a AB en P y Q, que lo dividen en tres partes iguales.",
     }),
   ],
 };
