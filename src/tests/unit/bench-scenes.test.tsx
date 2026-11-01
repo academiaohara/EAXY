@@ -11,14 +11,14 @@ import type { BenchSceneId } from "@/lib/lesson/types";
 import { rotarPunto, type Pt } from "@/components/lesson/bench/geometry";
 import { POLIGONOS_GEOM, POLIGONOS_GEOM_2, PN_A, PN_B, PN_C } from "@/components/lesson/bench/scenes-poligonos";
 import { TANGENCIAS_GEOM } from "@/components/lesson/bench/scenes-tangencias";
-import { THALES_PARALELAS_GEOM } from "@/components/lesson/bench/scenes-proporcion";
+import { prepararEscuadra } from "@/components/lesson/bench/scenes-compas";
 
 afterEach(cleanup);
 
 const notas = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `Título ${i + 1}`, text: `Texto del paso ${i + 1}`, fact: i === 0 ? "Dato" : undefined }));
 const todas = Object.keys(BENCH_STEPS) as BenchSceneId[];
 /** Escenas donde los pasos se recorren con «Anterior / Siguiente» (las de práctica avanzan al hacer la acción). */
-const porAccion = (e: BenchSceneId) => e.endsWith("-practica") || e === "thales-paralelas";
+const porAccion = (e: BenchSceneId) => e.endsWith("-practica");
 const escenas = todas.filter((e) => !porAccion(e));
 
 /** Lee el control y el centro del pie que la escena registra en la lección (no debe registrar ninguno). */
@@ -1014,16 +1014,46 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       t.arrastrar(enCirc(marca(1, r), r, TH - 22), enCirc(marca(1, r), r, TH + 10));
       t.tocar(marca(2, r));
       t.arrastrar(enCirc(marca(2, r), r, TH - 22), enCirc(marca(2, r), r, TH + 10));
-      expect(t.fase()).toBe("regla");
+      expect(t.fase()).toBe("trazo");
       return t;
     }
 
-    it.each([50, 70, 95])("con abertura %i, la tercera marca unida con B supera el ejercicio solo", (r) => {
+    /** Desliza la escuadra `delta` mm sobre el cartabón, en la dirección en que avanza hacia las marcas. */
+    function deslizar(t: ReturnType<typeof pantalla>, r: number, delta: number) {
+      const { desliza } = prepararEscuadra([marca(3, r), B], [marca(2, r), marca(1, r)]);
+      t.arrastrar([300, 200], [300 + desliza[0] * delta, 200 + desliza[1] * delta]);
+    }
+
+    it.each([50, 70, 95])("con abertura %i: marcas, unión con B y paralelas con escuadra y cartabón, todo en un solo ejercicio", (r) => {
       const t = marcas(r);
       t.tocar(marca(3, r));
       t.sinSuperar();
       t.tocar(B);
+      expect(t.fase()).toBe("escuadra");
+      expect(screen.getByTestId("bench-instrumentos")).toBeTruthy();
+      expect(screen.getByTestId("bench-accion").textContent).toContain("arrastra la escuadra");
+      const { sps } = prepararEscuadra([marca(3, r), B], [marca(2, r), marca(1, r)]);
+      deslizar(t, r, sps[0]);
+      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(1);
+      expect(t.fase()).toBe("escuadra");
+      t.sinSuperar();
+      deslizar(t, r, sps[1] - sps[0]);
+      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(2);
       t.superada();
+    });
+
+    it("la escuadra: soltar antes de llegar o pasándose avisa; tras dos fallos se resalta la marca", () => {
+      const t = marcas(70);
+      t.tocar(marca(3, 70));
+      t.tocar(B);
+      const { sps } = prepararEscuadra([marca(3, 70), B], [marca(2, 70), marca(1, 70)]);
+      deslizar(t, 70, sps[0] / 2);
+      expect(t.aviso()).toContain("Todavía no llega");
+      expect(screen.queryAllByTestId("bench-guia")).toHaveLength(0);
+      deslizar(t, 70, sps[0] + 40 - sps[0] / 2);
+      expect(t.aviso()).toContain("Te has pasado");
+      expect(screen.getAllByTestId("bench-guia")).toHaveLength(1);
+      t.sinSuperar();
     });
 
     it("la segunda punta solo puede clavarse en la primera marca", () => {
@@ -1042,52 +1072,8 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       const t = marcas(70);
       t.tocar(marca(3, 70));
       t.tocar(A);
-      expect(t.aviso()).toContain("puntos de la construcción");
-      expect(screen.getAllByTestId("bench-clic")).toHaveLength(1);
-      t.sinSuperar();
-    });
-
-    /** Arrastra la escuadra `delta` mm sobre el cartabón (en la dirección en que desliza hacia las marcas). */
-    function deslizar(delta: number) {
-      const { menosH } = THALES_PARALELAS_GEOM;
-      const esc = screen.getByTestId("bench-escuadra");
-      fireEvent.pointerDown(esc, { clientX: 300, clientY: 200, pointerId: 1 });
-      fireEvent.pointerMove(esc, { clientX: 300 + menosH[0] * delta, clientY: 200 + menosH[1] * delta, pointerId: 1 });
-      fireEvent.pointerUp(esc, { pointerId: 1 });
-    }
-
-    it("las paralelas: se desliza la escuadra hasta la marca 2 y después hasta la 1, y el ejercicio se supera solo", () => {
-      const t = pantalla("thales-paralelas");
-      const [o2, o1] = THALES_PARALELAS_GEOM.objetivos;
-      expect(screen.queryByTestId("bench-paralela-trazada")).toBeNull();
-      expect(screen.getByTestId("bench-accion").textContent).toContain("punto 2");
-      deslizar(o2.sp);
-      expect(t.svg().getAttribute("data-etapa")).toBe("1");
-      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(1);
-      expect(screen.getByTestId("bench-accion").textContent).toContain("punto 1");
-      t.sinSuperar();
-      deslizar(o1.sp - o2.sp);
-      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(2);
-      t.superada();
-    });
-
-    it("las paralelas: soltar antes de llegar o pasándose avisa y deja volver a intentarlo", () => {
-      const t = pantalla("thales-paralelas");
-      const [o2] = THALES_PARALELAS_GEOM.objetivos;
-      deslizar(o2.sp / 2);
-      expect(t.aviso()).toContain("Todavía no llega");
-      expect(t.svg().getAttribute("data-etapa")).toBe("0");
-      deslizar(o2.sp + 40 - o2.sp / 2);
-      expect(t.aviso()).toContain("Te has pasado");
-      t.sinSuperar();
-    });
-
-    it("las paralelas: tras dos fallos se resalta la marca a la que hay que llegar", () => {
-      const t = pantalla("thales-paralelas");
-      deslizar(30);
-      expect(screen.queryByTestId("bench-guia")).toBeNull();
-      deslizar(-5);
-      expect(screen.getByTestId("bench-guia")).toBeTruthy();
+      expect(t.aviso()).toContain("por los que debe pasar la regla");
+      expect(screen.getAllByTestId("bench-pend")).toHaveLength(1);
       t.sinSuperar();
     });
   });
@@ -1200,21 +1186,36 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       expect(t.fase()).toBe("centro");
       t.tocar(O);
       t.arrastrar(enCirc(O, R, 10), enCirc(O, R, 90), enCirc(O, R, 176));
-      expect(t.fase()).toBe("regla");
+      expect(t.fase()).toBe("trazo");
       return t;
     }
+    const lado = 300 - E[1];
+    const F: Pt = [300 - lado, 300];
 
-    it("la perpendicular por B hasta la semicircunferencia supera el ejercicio solo", () => {
+    it("la perpendicular por B, BE llevado sobre AB con el compás y el cuadrado sobre el rectángulo, en un solo ejercicio", async () => {
       const t = hasta();
       t.tocar(B);
       t.tocar([E[0] + 4, E[1] - 3]);
+      expect(t.fase()).toBe("medida");
+      t.sinSuperar();
+      t.tocar(B);
+      t.tocar(E);
+      t.tocar(B);
+      t.arrastrar(enCirc(B, lado, 100), enCirc(B, lado, 170));
+      expect(t.fase()).toBe("punto");
+      t.tocar([300 - lado / 2, 300]);
+      expect(t.aviso()).toContain("no es el punto");
+      t.tocar(F);
+      expect(t.fase()).toBe("auto");
+      await esperarAuto();
       t.superada();
+      expect(screen.getByTestId("bench-cuadrado-final")).toBeTruthy();
     });
 
     it("la perpendicular por otro punto no vale", () => {
       const t = hasta();
       t.tocar([350, 300]);
-      expect(t.aviso()).toContain("puntos de la construcción");
+      expect(t.aviso()).toContain("por los que debe pasar la regla");
       t.sinSuperar();
     });
   });

@@ -3,7 +3,7 @@
 import type { SlideBlock } from "@/lib/lesson/types";
 import { BisectrizCompas, BisectrizPractica, MediatrizCompas, MediatrizPractica, TrasladarAnguloCompas, TrasladarPractica } from "./scenes-compas";
 import { CuadraturaCompas, CuadraturaPractica, EquivalenciaTriangulos, SemejanzaRazon } from "./scenes-equivalencia";
-import { AureaCompas, AureaPractica, MediaCompas, MediaPractica, ThalesDividir, ThalesParalelas, ThalesPractica } from "./scenes-proporcion";
+import { AureaCompas, AureaPractica, MediaCompas, MediaPractica, ThalesDividir, ThalesPractica } from "./scenes-proporcion";
 import { HomoteciaCompas } from "./scenes-homotecia";
 import { SimetriaCompas } from "./scenes-simetria";
 import { GiroCompas } from "./scenes-giro";
@@ -61,8 +61,6 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <ThalesDividir block={block} />;
     case "thales-practica":
       return <ThalesPractica block={block} />;
-    case "thales-paralelas":
-      return <ThalesParalelas block={block} />;
     case "media-compas":
       return <MediaCompas block={block} />;
     case "media-practica":

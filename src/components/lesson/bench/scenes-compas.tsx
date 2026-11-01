@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
+import { ESCUADRA_L, PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -95,8 +95,9 @@ export function animPuntoMedio(a: Pt, b: Pt, p: number) {
   const t1 = tramo(p, 0, 0.28);
   const t2 = tramo(p, 0.28, 0.56);
   const t3 = tramo(p, 0.56, 0.86);
+  // una vez marcado el punto medio se retiran los arcos y la mediatriz para dejar el dibujo limpio
   const nodos = (
-    <g data-testid="bench-punto-medio-anim">
+    <g data-testid="bench-punto-medio-anim" opacity={1 - tramo(p, 0.9, 1)}>
       <ArcoAnim c={a} r={r} a1={baseA - th} a2={baseA + th} t={t1} />
       <ArcoAnim c={b} r={r} a1={baseB - th} a2={baseB + th} t={t2} />
       {p >= 0.56 ? <ReglaTrazando a={c1} b={c2} p={t3} ext={14} color={AUX_TRAZO} /> : null}
@@ -118,8 +119,10 @@ export function animParalelaCompas(q0: Pt, q1: Pt, n: Pt, r: number, p: number) 
   const top = (q: Pt): Pt => [q[0] + n[0] * r, q[1] + n[1] * r];
   const nodos = (
     <g data-testid="bench-paralela-anim">
-      <ArcoAnim c={q0} r={r} a1={ang - 16} a2={ang + 16} t={t1} />
-      <ArcoAnim c={q1} r={r} a1={ang - 16} a2={ang + 16} t={t2} />
+      <g opacity={1 - tramo(p, 0.94, 1)}>
+        <ArcoAnim c={q0} r={r} a1={ang - 16} a2={ang + 16} t={t1} />
+        <ArcoAnim c={q1} r={r} a1={ang - 16} a2={ang + 16} t={t2} />
+      </g>
       {p >= 0.56 ? <ReglaTrazando a={top(q0)} b={top(q1)} p={t3} ext={140} color="#1f78b4" /> : null}
     </g>
   );
@@ -152,7 +155,7 @@ export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
  * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
  * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
  */
-export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4") {
+export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4", modo: "cateto" | "hipotenusa" = "cateto") {
   const L = dist(a, b);
   const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
   const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
@@ -162,19 +165,33 @@ export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: nu
   const theta = d0 < 0 ? theta0 + 180 : theta0;
   const d = Math.abs(d0);
   const u = dir(theta);
+  const n: Pt = dir(theta + 90);
   const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, d);
   const mov = tramo(p, 0.18, 0.7);
   const s = setup.sStar * (mov * mov * (3 - 2 * mov));
   const opacidad = tramo(p, 0, 0.14) * (1 - tramo(p, 0.9, 1));
   const trazo = tramo(p, 0.7, 0.9);
   const fin: Pt = [lerp(linea[0][0], linea[1][0], trazo), lerp(linea[0][1], linea[1][1], trazo)];
+  // Modo «hipotenusa»: la hipotenusa de la escuadra va sobre la recta, el cartabón se apoya en uno de sus catetos y la escuadra
+  // desliza a lo largo de él hasta que la hipotenusa pasa por P.
+  let poses: { cartabon: Pose; escuadra: Pose };
+  if (modo === "hipotenusa") {
+    const k = ESCUADRA_L / Math.SQRT2;
+    const c0: Pt = [pie[0] - u[0] * d, pie[1] - u[1] * d];
+    const diag: Pt = [(u[0] + n[0]) / Math.SQRT2, (u[1] + n[1]) / Math.SQRT2];
+    const R: Pt = [c0[0] + u[0] * k, c0[1] + u[1] * k];
+    poses = {
+      escuadra: { x: c0[0] - n[0] * k + diag[0] * s, y: c0[1] - n[1] * k + diag[1] * s, rot: theta + 45 },
+      cartabon: { x: R[0] + diag[0] * 50, y: R[1] + diag[1] * 50, rot: theta + 225 },
+    };
+  } else poses = { cartabon: cartabonPoseRef(setup), escuadra: escuadraPoseRef(setup, s) };
   const nodos = (
     <g data-testid="bench-paralelo-escuadra">
       {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
       {opacidad > 0 ? (
         <g opacity={opacidad} pointerEvents="none">
-          <Cartabon pose={cartabonPoseRef(setup)} />
-          <Escuadra pose={escuadraPoseRef(setup, s)} />
+          <Cartabon pose={poses.cartabon} />
+          <Escuadra pose={poses.escuadra} />
         </g>
       ) : null}
     </g>
@@ -408,7 +425,7 @@ export function BisectrizCompas({ block }: { block: BenchBlock }) {
 /** `angulo`: marcar un ángulo con el transportador arrastrando el segundo lado hasta su valor. */
 /** `medida`: tomar con el compás la distancia entre dos puntos (punta en uno, mina en el otro). */
 /** `punto`: tocar un punto concreto de la construcción (solo vale el correcto). */
-export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo" | "punto" | "auto" | "trazo";
+export type Tipo = "centro" | "abertura" | "medida" | "arco" | "regla" | "angulo" | "punto" | "auto" | "trazo" | "escuadra";
 
 export type Est = {
   /** Fase actual; `fases.length` = construcción terminada. */
@@ -428,6 +445,8 @@ export type Est = {
   trazos: [Pt, Pt][];
   /** Primer punto tocado de la recta que se está trazando. */
   pend: Pt | null;
+  /** Cuánto se ha deslizado la escuadra sobre el cartabón (fases `escuadra`). */
+  esc: number;
 };
 
 type CfgArco = { centro: Pt; base: number; signo: 1 | -1; rhoMin: number; rhoMax: number; req: [number, number] };
@@ -455,6 +474,11 @@ export type Def = {
   nClics?: number;
   /** Si es true, la fase final no dibuja la recta de la regla (la construcción se muestra en `papel`). */
   sinRegla?: boolean;
+  /**
+   * Fases `escuadra`: el cartabón se apoya en la `recta` y el alumno desliza la escuadra hasta que su filo pasa por
+   * cada `marca` (una fase por objetivo, en orden); `corte` es donde la paralela trazada llega a la recta de trabajo.
+   */
+  escuadra?: (est: Est) => { recta: [Pt, Pt]; objetivos: { marca: Pt; corte: Pt }[] };
   /** Cuánto se prolongan las rectas de las fases `trazo` (40 por defecto). */
   extTrazo?: number;
   /** Índices de los arcos que forman el resultado: se dibujan con trazo fuerte aunque la construcción haya terminado. */
@@ -477,6 +501,22 @@ export type Def = {
 };
 
 export const SNAP = 14;
+
+/** Datos de la escuadra deslizando sobre el cartabón para una `recta` y las `marcas` por las que debe pasar el filo. */
+export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[]) {
+  const [a, b] = recta;
+  const L = dist(a, b);
+  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
+  const n0 = dir(theta0 + 90);
+  const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
+  const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
+  const t = (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1];
+  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  const u = dir(theta);
+  const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(marcas[0])));
+  return { setup, desliza: direccionDeslizamiento(setup), sps: marcas.map((m) => Math.abs(dist0(m)) * Math.SQRT2) };
+}
 const HIT = 24;
 
 function mapaFases(fases: Tipo[]) {
@@ -498,7 +538,7 @@ const cuentaAb = (fases: Tipo[], hasta: number) => fases.slice(0, hasta).filter(
 export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; vista: { w: number; h: number; sheet: { x: number; y: number; w: number; h: number } } }) {
   const { fases } = def;
   const mapa = mapaFases(fases);
-  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [], ang: 20, trazos: [], pend: null };
+  const inicial: Est = { fase: 0, centros: [], radios: [], rho: 0, cub: [], clics: [], medida: [], ang: 20, trazos: [], pend: null, esc: 0 };
   const [est, setEst] = useState<Est>(inicial);
   const [prev, setPrev] = useState<Est[]>([]);
   const [agarrada, setAgarrada] = useState(false);
@@ -512,10 +552,13 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
   const svgRef = useRef<SVGSVGElement>(null);
   const temporizador = useRef<number | null>(null);
+  const dragEsc = useRef<{ inicio: Pt; esc0: number } | null>(null);
 
   const hecha = est.fase >= fases.length;
   const tipo = hecha ? undefined : fases[est.fase];
   const evaluacion = def.evaluar(est);
+  const datosEsc = tipo === "escuadra" && def.escuadra ? def.escuadra(est) : null;
+  const prep = datosEsc ? prepararEscuadra(datosEsc.recta, datosEsc.objetivos.map((o) => o.marca)) : null;
   const { resultado, finalizar } = useBenchCheck();
   const bloqueada = resultado !== null;
   const finalizarRef = useRef(finalizar);
@@ -658,12 +701,20 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       return;
     }
     (ev.currentTarget as Element).setPointerCapture?.(ev.pointerId);
+    if (tipo === "escuadra") dragEsc.current = { inicio: p, esc0: est.esc };
     setAgarrada(true);
   };
 
   const onMove = (ev: ReactPointerEvent) => {
     if (!agarrada || bloqueada || !tipo) return;
     const p = puntero(svgRef.current, ev);
+    if (tipo === "escuadra") {
+      if (prep && dragEsc.current) {
+        const max = Math.max(...prep.sps) + 25;
+        setEst({ ...est, esc: clamp(dragEsc.current.esc0 + (p[0] - dragEsc.current.inicio[0]) * prep.desliza[0] + (p[1] - dragEsc.current.inicio[1]) * prep.desliza[1], 0, max) });
+      }
+      return;
+    }
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
       if (a) {
@@ -698,8 +749,23 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       } else setEst(nuevo);
     }
   };
+  /** Al soltar la escuadra con el filo sobre la marca pedida, la paralela queda trazada y se pasa a la siguiente. */
+  const comprobarEscuadra = (valor: number) => {
+    if (!prep || bloqueada) return;
+    const k = cuenta(fases, est.fase, "escuadra");
+    const objetivo = prep.sps[k];
+    if (Math.abs(valor - objetivo) <= 4) avanzar({ ...est, esc: objetivo });
+    else if (valor > objetivo + 4) fallar(`Te has pasado de la marca: desliza la escuadra hacia atrás hasta que su filo pase por ella.`);
+    else if (valor > 6) fallar("Todavía no llega: sigue deslizando la escuadra hasta que su filo pase por la marca.");
+  };
   const onUp = () => {
     setAgarrada(false);
+    if (tipo === "escuadra") {
+      const estaba = dragEsc.current !== null;
+      dragEsc.current = null;
+      if (estaba) comprobarEscuadra(est.esc);
+      return;
+    }
     if (tipo !== "angulo" || bloqueada) return;
     const a = def.angulo?.(est);
     if (!a) return;
@@ -729,6 +795,17 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     setAgarrada(false);
   };
   const onKey = (ev: ReactKeyboardEvent) => {
+    if (tipo === "escuadra" && !bloqueada && prep) {
+      const paso = ev.shiftKey ? 10 : 2;
+      const nuevo = ev.key === "ArrowUp" || ev.key === "ArrowRight" ? est.esc + paso : ev.key === "ArrowDown" || ev.key === "ArrowLeft" ? est.esc - paso : null;
+      if (nuevo === null) return;
+      const k = cuenta(fases, est.fase, "escuadra");
+      const valor = clamp(nuevo, 0, Math.max(...prep.sps) + 25);
+      if (Math.abs(valor - prep.sps[k]) <= 1) avanzar({ ...est, esc: prep.sps[k] });
+      else setEst({ ...est, esc: valor });
+      ev.preventDefault();
+      return;
+    }
     if (tipo === "angulo" && !bloqueada) {
       const a = def.angulo?.(est);
       const paso = ev.shiftKey ? 10 : 1;
@@ -776,7 +853,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         <Compas pose={c.pose} open={c.open} />
       </g>
     );
-  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "punto" && tipo !== "medida" && tipo !== "angulo" && tipo !== "auto" && tipo !== "trazo") {
+  } else if (nDisp >= 0 && est.centros.length > 0 && !hecha && tipo !== "regla" && tipo !== "punto" && tipo !== "medida" && tipo !== "angulo" && tipo !== "auto" && tipo !== "trazo" && tipo !== "escuadra") {
     const nn = Math.min(nDisp, mapa.length - 1);
     const cfg = cfgDe(nn, radioDe(nn));
     if (cfg) {
@@ -803,6 +880,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "centro") return def.candidatos(est, cuenta(fases, est.fase, "centro"));
     if (tipo === "medida") return (def.medibles?.(est) ?? []).filter((c) => !(est.medida[0] && dist(est.medida[0], c) < 1));
     if (tipo === "punto" || tipo === "regla") return def.cortes(est);
+    if (tipo === "escuadra") return datosEsc ? [datosEsc.objetivos[cuenta(fases, est.fase, "escuadra")].marca] : [];
     if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
@@ -829,6 +907,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     trazo: "toca los puntos resaltados para pasar la regla.",
     regla: "toca los puntos resaltados para pasar la regla.",
     angulo: "arrastra el segundo lado hasta la marca resaltada.",
+    escuadra: "arrastra la escuadra hacia la marca resaltada hasta que su filo pase por ella.",
   };
   const TEXTO_ACCION: Record<string, string> = {
     centro: "toca el punto donde clavar el compás",
@@ -839,6 +918,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     trazo: "toca dos puntos para pasar la regla",
     regla: "toca los puntos por donde pasa la regla",
     angulo: "arrastra el segundo lado hasta el ángulo",
+    escuadra: "arrastra la escuadra hasta la marca",
   };
   const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? TEXTO_ACCION[tipo] : null;
   const extra = (
@@ -892,13 +972,13 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         className={`${SVG_CLASS} touch-none select-none`}
         role="group"
         aria-label="Hoja de dibujo: construcción paso a paso con compás y regla"
-        tabIndex={tipo === "abertura" || tipo === "angulo" ? 0 : -1}
+        tabIndex={tipo === "abertura" || tipo === "angulo" || tipo === "escuadra" ? 0 : -1}
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
         onKeyDown={onKey}
-        style={{ cursor: bloqueada || hecha ? "default" : tipo === "abertura" || tipo === "arco" || tipo === "angulo" ? (agarrada ? "grabbing" : "grab") : "crosshair", outline: "none" }}
+        style={{ cursor: bloqueada || hecha ? "default" : tipo === "abertura" || tipo === "arco" || tipo === "angulo" || tipo === "escuadra" ? (agarrada ? "grabbing" : "grab") : "crosshair", outline: "none" }}
         data-testid="bench-practica"
         data-fase={est.fase}
         data-tipo={tipo ?? "hecha"}
@@ -952,6 +1032,12 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             <circle cx={c[0]} cy={c[1]} r="0.9" fill={AMBAR} />
           </g>
         ))}
+        {tipo === "escuadra" && prep ? (
+          <g data-testid="bench-instrumentos" pointerEvents="none">
+            <Cartabon pose={cartabonPoseRef(prep.setup)} />
+            <Escuadra pose={escuadraPoseRef(prep.setup, est.esc)} />
+          </g>
+        ) : null}
         {arcoGuia ? <path d={arcoGuia} fill="none" stroke="#ffb400" strokeWidth="3.4" strokeDasharray="2 7" strokeLinecap="round" pointerEvents="none" data-testid="bench-guia-arco" /> : null}
         {anillos.map((c, i) => (
           <g key={`g${i}`} data-testid="bench-guia" pointerEvents="none">

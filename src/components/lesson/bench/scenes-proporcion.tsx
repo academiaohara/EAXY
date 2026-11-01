@@ -1,12 +1,11 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type PointerEvent as ReactPointerEvent } from "react";
-import { PARALELA_A, clamp, dir, dist, dot, enCirculo, mul, paralelaSetup, sub, type Pt } from "./geometry";
-import { BenchDefs, Cartabon, Compas, Desk, Escuadra, poseCompas } from "./instruments";
-import { AMBAR, AZUL, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { useBenchCheck } from "./practice";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animParaleloEscuadra, animPuntoMedio, cartabonPoseRef, direccionDeslizamiento, escuadraPoseRef, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
-import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
+import { useState } from "react";
+import { dist, enCirculo, type Pt } from "./geometry";
+import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
+import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoPlano, Punto } from "./scenes-trazados";
 
 export const etiqueta = { stroke: "#fffefa", strokeWidth: 3.5, paintOrder: "stroke" as const, strokeLinejoin: "round" as const };
 export const Seg = ({ a, b, color = INK, w = 1.4, dash }: { a: Pt; b: Pt; color?: string; w?: number; dash?: string }) => (
@@ -120,14 +119,37 @@ export function ThalesDividir({ block }: { block: BenchBlock }) {
 
 /* ───────────── Thales: práctica (marcas iguales y unión con B) ───────────── */
 
+/** Las paralelas a 3B por las marcas 2 y 1: se trazan con la escuadra deslizando sobre el cartabón, en el mismo ejercicio. */
+const THALES_OBJETIVOS = (r: number) => [
+  { marca: marca(2, r), corte: TQ },
+  { marca: marca(1, r), corte: TP },
+];
+const PRIMERA_ESC = 8;
+
 const defThales: Def = {
   scene: "thales-practica",
-  fases: ["centro", "abertura", "arco", "centro", "arco", "centro", "arco", "regla"],
-  nClics: 2,
+  fases: ["centro", "abertura", "arco", "centro", "arco", "centro", "arco", "trazo", "escuadra", "escuadra"],
+  extTrazo: 0,
   papel: (est: Est) => {
     const r = est.radios[0] ?? R0;
     const k = est.fase >= 7 ? 3 : est.fase >= 5 ? 2 : est.fase >= 3 ? 1 : 0;
-    return <PapelThales marcas={k} r={r} />;
+    const trazadas = est.fase > PRIMERA_ESC ? Math.min(2, est.fase - PRIMERA_ESC) : 0;
+    return (
+      <g>
+        <PapelThales marcas={k} r={r} />
+        {THALES_OBJETIVOS(r).slice(0, trazadas).map((o, i) => (
+          <g key={i} data-testid="bench-paralela-trazada">
+            <Seg a={o.marca} b={o.corte} color={AZUL} w={1.6} dash="7 5" />
+          </g>
+        ))}
+        {trazadas >= 2 ? (
+          <>
+            <Punto p={TP} nombre="P" dx={-4} dy={20} color={AZUL} />
+            <Punto p={TQ} nombre="Q" dx={-4} dy={20} color={AZUL} />
+          </>
+        ) : null}
+      </g>
+    );
   },
   candidatos: (est, idx) => (idx === 0 ? [TA] : [marca(idx, est.radios[0] ?? R0)]),
   radioLim: () => [40, 100],
@@ -135,186 +157,12 @@ const defThales: Def = {
   rhoIni: () => -22,
   arco: (_est, _n, _radio, c) => ({ centro: c, base: TH, signo: 1, rhoMin: -35, rhoMax: 35, req: [-6, 6] }),
   cortes: (est) => [marca(3, est.radios[0] ?? R0), TB],
-  evaluar: (est) => {
-    const r = est.radios[0] ?? R0;
-    const m3 = marca(3, r);
-    const [p1, p2] = est.clics;
-    if (!p1 || !p2) return { ok: false, mensaje: "Faltan los dos puntos por los que pasa la regla." };
-    const bien = (dist(p1, m3) <= SNAP + 2 && dist(p2, TB) <= SNAP + 2) || (dist(p1, TB) <= SNAP + 2 && dist(p2, m3) <= SNAP + 2);
-    return bien
-      ? { ok: true, mensaje: "Correcto: has llevado tres veces la misma abertura sobre la semirrecta y has unido la última marca con B. Esa recta es la que hay que trasladar con paralelas." }
-      : { ok: false, mensaje: "La regla debe pasar por la tercera marca y por B. Pulsa «Reintentar»." };
-  },
+  escuadra: (est) => ({ recta: [marca(3, est.radios[0] ?? R0), TB], objetivos: THALES_OBJETIVOS(est.radios[0] ?? R0) }),
+  evaluar: () => ({ ok: true, mensaje: "Correcto: has llevado tres veces la misma abertura sobre la semirrecta, has unido la última marca con B y las paralelas a esa recta, trazadas con escuadra y cartabón, cortan a AB en P y Q y lo dividen en tres partes iguales: AP = PQ = QB." }),
 };
 
 export function ThalesPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={defThales} vista={{ ...MV, sheet: MSHEET }} />;
-}
-
-/* ───────────── Thales: las paralelas dividen AB en tres partes ───────────── */
-
-/** Las paralelas a 3B se trazan deslizando la escuadra sobre el cartabón: primero hasta la marca 2 y después hasta la 1. */
-const TL_A = marca(3);
-const TL_U0: Pt = [(TB[0] - TL_A[0]) / dist(TL_A, TB), (TB[1] - TL_A[1]) / dist(TL_A, TB)];
-const TL_THETA0 = (Math.atan2(TL_U0[1], TL_U0[0]) * 180) / Math.PI;
-const TL_OBJETIVOS: { marca: Pt; corte: Pt; sp: number }[] = [2, 1].map((k) => {
-  const m = marca(k);
-  const d = Math.abs(dot(sub(m, TL_A), dir(TL_THETA0 + 90)));
-  return { marca: m, corte: k === 2 ? TQ : TP, sp: d * Math.SQRT2 };
-});
-const TL_THETA = dot(sub(marca(2), TL_A), dir(TL_THETA0 + 90)) < 0 ? TL_THETA0 + 180 : TL_THETA0;
-const TL_PIE: Pt = (() => {
-  const m = marca(2);
-  const t = dot(sub(m, TL_A), TL_U0);
-  return [TL_A[0] + TL_U0[0] * t, TL_A[1] + TL_U0[1] * t];
-})();
-const TL_SETUP = paralelaSetup(sub(TL_PIE, mul(dir(TL_THETA), PARALELA_A)), TL_THETA, TL_OBJETIVOS[0].sp / Math.SQRT2);
-const TL_DESLIZA = direccionDeslizamiento(TL_SETUP);
-const TL_TOL = 4;
-
-/** Geometría de la práctica de paralelas, para los tests. */
-export const THALES_PARALELAS_GEOM = { objetivos: TL_OBJETIVOS, menosH: TL_DESLIZA };
-
-export function ThalesParalelas({ block }: { block: BenchBlock }) {
-  const [etapa, setEtapa] = useState(0);
-  const [sp, setSp] = useState(0);
-  const [agarrada, setAgarrada] = useState(false);
-  const [aviso, setAviso] = useState<string | null>(null);
-  const [fallos, setFallos] = useState(0);
-  const [pista, setPista] = useState(false);
-  const svgRef = useRef<SVGSVGElement>(null);
-  const drag = useRef<{ inicio: Pt; sp0: number } | null>(null);
-  const { resultado, finalizar } = useBenchCheck();
-  const hecho = resultado !== null;
-  const objetivo = TL_OBJETIVOS[Math.min(etapa, 1)];
-  const guiada = (pista || fallos >= 2) && !hecho;
-  const spMax = TL_OBJETIVOS[1].sp + 25;
-
-  const fallar = (m: string) => {
-    setAviso(m);
-    setFallos((n) => n + 1);
-  };
-  const onDown = (ev: ReactPointerEvent) => {
-    if (hecho) return;
-    (ev.currentTarget as Element).setPointerCapture?.(ev.pointerId);
-    drag.current = { inicio: puntero(svgRef.current, ev), sp0: sp };
-    setAgarrada(true);
-  };
-  const onMove = (ev: ReactPointerEvent) => {
-    if (!drag.current) return;
-    setSp(clamp(drag.current.sp0 + dot(sub(puntero(svgRef.current, ev), drag.current.inicio), TL_DESLIZA), 0, spMax));
-  };
-  // Al soltar con el filo sobre la marca pedida la paralela queda trazada y se pasa a la siguiente marca.
-  const comprobar = (valor: number) => {
-    if (hecho) return;
-    if (Math.abs(valor - objetivo.sp) <= TL_TOL) {
-      setSp(objetivo.sp);
-      setAviso(null);
-      setFallos(0);
-      setPista(false);
-      if (etapa === 0) setEtapa(1);
-      else {
-        setEtapa(2);
-        finalizar();
-      }
-    } else if (valor > objetivo.sp + TL_TOL) {
-      fallar(`Te has pasado del punto ${etapa === 0 ? 2 : 1}: desliza la escuadra hacia atrás hasta que su filo pase por él.`);
-    } else if (valor > 6) {
-      fallar(`Todavía no llega: sigue deslizando la escuadra hasta que su filo pase por el punto ${etapa === 0 ? 2 : 1}.`);
-    }
-  };
-  const onUp = () => {
-    const estaba = drag.current !== null;
-    drag.current = null;
-    setAgarrada(false);
-    if (estaba) comprobar(sp);
-  };
-  const onKey = (ev: ReactKeyboardEvent) => {
-    if (hecho) return;
-    const paso = ev.shiftKey ? 10 : 2;
-    const nuevo = ev.key === "ArrowUp" || ev.key === "ArrowRight" ? clamp(sp + paso, 0, spMax) : ev.key === "ArrowDown" || ev.key === "ArrowLeft" ? clamp(sp - paso, 0, spMax) : null;
-    if (nuevo === null) return;
-    setSp(nuevo);
-    if (Math.abs(nuevo - objetivo.sp) <= 1) comprobar(objetivo.sp);
-    ev.preventDefault();
-  };
-
-  const nodoEscuadra = escuadraPoseRef(TL_SETUP, sp);
-  const extra = (
-    <div className="flex flex-col gap-2">
-      {guiada ? (
-        <p className="text-sm font-semibold text-[#ffd866]" data-testid="bench-pista-texto">
-          Pista: arrastra la escuadra hacia el punto resaltado hasta que su filo pase por él.
-        </p>
-      ) : null}
-      {aviso && !hecho ? (
-        <p className="text-sm text-amber-200" data-testid="bench-aviso">
-          {aviso}
-        </p>
-      ) : null}
-      {hecho ? <Resultado ok>Correcto: las paralelas a 3B conservan la razón, así que cortan a AB en P y Q y lo dividen en tres partes iguales: AP = PQ = QB.</Resultado> : null}
-    </div>
-  );
-  const nav = (
-    <button
-      type="button"
-      onClick={() => setPista(true)}
-      disabled={hecho || guiada}
-      data-testid="bench-pista"
-      className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
-    >
-      Pista
-    </button>
-  );
-  return (
-    <BenchShell scene="thales-paralelas" notes={block.notes} step={Math.min(etapa, 1)} setStep={() => undefined} extra={extra} nav={nav} accion={hecho ? null : `arrastra la escuadra hasta el punto ${etapa === 0 ? 2 : 1}`} label="Hoja con el segmento AB, las marcas y la recta 3B, con escuadra y cartabón para trazar las paralelas">
-      <svg ref={svgRef} viewBox={`0 0 ${MV.w} ${MV.h}`} className={`${SVG_CLASS} touch-none select-none`} role="group" aria-label="Hoja con el segmento AB, las marcas y la recta 3B, con escuadra y cartabón para trazar las paralelas" data-testid="bench-practica" data-tipo={hecho ? "hecha" : "instrumentos"} data-etapa={etapa}>
-        <BenchDefs />
-        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelThales marcas={3} union={1} paralelas={0} partes={0} rayo={1} />
-        {TL_OBJETIVOS.map((o, i) =>
-          etapa > i ? (
-            <g key={i} data-testid="bench-paralela-trazada">
-              <Seg a={o.marca} b={o.corte} color={AZUL} w={1.6} dash="7 5" />
-            </g>
-          ) : null,
-        )}
-        {etapa >= 2 ? (
-          <>
-            <Punto p={TP} nombre="P" dx={-4} dy={20} color={AZUL} />
-            <Punto p={TQ} nombre="Q" dx={-4} dy={20} color={AZUL} />
-          </>
-        ) : null}
-        <g data-testid="bench-cartabon" pointerEvents="none">
-          <Cartabon pose={cartabonPoseRef(TL_SETUP)} />
-        </g>
-        <g
-          onPointerDown={onDown}
-          onPointerMove={onMove}
-          onPointerUp={onUp}
-          onPointerCancel={onUp}
-          onKeyDown={onKey}
-          tabIndex={hecho ? -1 : 0}
-          role="slider"
-          aria-label="Escuadra: arrástrala sobre el cartabón"
-          aria-valuemin={0}
-          aria-valuemax={Math.round(spMax)}
-          aria-valuenow={Math.round(sp)}
-          style={{ cursor: hecho ? "default" : agarrada ? "grabbing" : "grab", outline: "none" }}
-          data-testid="bench-escuadra"
-        >
-          <Escuadra pose={nodoEscuadra} />
-        </g>
-        {guiada && etapa < 2 ? (
-          <g pointerEvents="none" data-testid="bench-guia">
-            <circle cx={objetivo.marca[0]} cy={objetivo.marca[1]} r="12" fill="none" stroke="#ffb400" strokeWidth="2.6">
-              <animate attributeName="r" values="9;19;9" dur="1.4s" repeatCount="indefinite" />
-            </circle>
-          </g>
-        ) : null}
-      </svg>
-    </BenchShell>
-  );
 }
 
 /* ───────────── Media proporcional: teorema de la altura ───────────── */

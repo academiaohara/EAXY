@@ -18,7 +18,7 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
       { title: "Tres partes iguales", text: "Como las paralelas conservan la razón, $AP = PQ = QB$. Llevando $m$ y $n$ marcas se divide en partes **proporcionales**, y la misma idea resuelve la **cuarta proporcional** $x$ de $\\dfrac{a}{b} = \\dfrac{c}{x}$.", fact: "AP = PQ = QB" },
     ]), "stack"),
 
-    benchTask("thales-marcas", "Marca tres partes iguales", "thales-practica", [
+    benchTask("thales-marcas", "Divide AB en tres partes iguales", "thales-practica", [
       { title: "Clava la punta en A", text: "Toca el extremo $A$ para clavar la **punta seca** del compás." },
       { title: "Abre el compás", text: "Arrastra la mina para elegir una abertura cualquiera y pulsa «Fijar abertura». Cuanto más grande, más lejos llegarán las marcas.", fact: "Una abertura, tres marcas" },
       { title: "Marca el punto 1", text: "Arrastra la mina para trazar un arco que **corte la semirrecta**." },
@@ -27,19 +27,12 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
       { title: "Pasa al punto 2", text: "Toca el punto 2." },
       { title: "Marca el punto 3", text: "Traza el tercer arco sobre la semirrecta." },
       { title: "Une el 3 con B", text: "Toca **dos puntos**: la tercera marca y $B$. La regla trazará la recta." },
+      { title: "Paralela por la marca 2", text: "Ahora las paralelas, **en el mismo dibujo**. El cartabón queda apoyado en la recta $3B$: **arrastra la escuadra** sobre él, sin girarla, hasta que su filo pase por la marca **2**.", fact: "Cortará a AB a dos tercios" },
+      { title: "Paralela por la marca 1", text: "Sigue **deslizando la escuadra** hasta que su filo pase por la marca **1**: segunda paralela. Cortan a $AB$ en $Q$ y en $P$.", fact: "Cortará a AB a un tercio" },
     ], {
-      question: "Marca sobre la semirrecta tres partes iguales con el compás y une la tercera marca con B.",
-      hint: "No cambies la abertura entre una marca y la siguiente.",
-      explanation: "Con la misma abertura, las tres marcas quedan a la misma distancia unas de otras; la recta que une la tercera con B es la que se traslada con paralelas.",
-    }),
-
-    benchTask("thales-paralelas", "Traza las paralelas", "thales-paralelas", [
-      { title: "Paralela por la marca 2", text: "El cartabón ya está apoyado en la recta $3B$. **Arrastra la escuadra** sobre él hasta que su filo pase por la marca **2**: esa es la primera paralela.", fact: "Cortará a AB a dos tercios" },
-      { title: "Paralela por la marca 1", text: "Sigue **deslizando la escuadra**, sin girarla, hasta que su filo pase por la marca **1**: segunda paralela.", fact: "Cortará a AB a un tercio" },
-    ], {
-      question: "Traza con escuadra y cartabón las paralelas a 3B por las marcas 2 y 1.",
-      hint: "Desliza la escuadra a lo largo del cartabón sin girarla: su filo conserva la dirección de 3B.",
-      explanation: "Al deslizar la escuadra sin girarla, su filo se mantiene paralelo a 3B. Las paralelas conservan la razón: cortan a AB en P y Q, que lo dividen en tres partes iguales.",
+      question: "Divide AB en tres partes iguales: marca tres partes iguales sobre la semirrecta con el compás, une la tercera marca con B y traza con escuadra y cartabón las paralelas por las marcas 2 y 1.",
+      hint: "No cambies la abertura entre una marca y la siguiente, y desliza la escuadra sobre el cartabón sin girarla.",
+      explanation: "Con la misma abertura, las tres marcas quedan a la misma distancia unas de otras; la recta que une la tercera con B se traslada con paralelas (la escuadra desliza sin girar), y las paralelas conservan la razón: AP = PQ = QB.",
     }),
   ],
 };
