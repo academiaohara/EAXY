@@ -36,11 +36,6 @@ export function BenchDefs() {
         <stop offset="0.55" stopColor="#ffc476" stopOpacity="0.55" />
         <stop offset="1" stopColor="#f09a3a" stopOpacity="0.6" />
       </linearGradient>
-      <linearGradient id="bench-plastic-ok" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="#c8f5d2" stopOpacity="0.85" />
-        <stop offset="0.55" stopColor="#6fdc8c" stopOpacity="0.6" />
-        <stop offset="1" stopColor="#1fa84f" stopOpacity="0.65" />
-      </linearGradient>
       <linearGradient id="bench-regla" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stopColor="#fff6dc" />
         <stop offset="1" stopColor="#ecd9a3" />
@@ -123,7 +118,7 @@ function Ticks({ len, dir = 1, every = 1, labels = true, from = 0 }: { len: numb
   return <g>{out}</g>;
 }
 
-type PoseProps = { pose: Pose; className?: string; dim?: boolean; /** «ok»: el instrumento se tiñe de verde (alineado con la marca). */ tono?: "ok" };
+type PoseProps = { pose: Pose; className?: string; dim?: boolean; };
 
 /** Regla de 30 cm graduada en mm. Origen: esquina superior izquierda. */
 export function Regla({ pose, len = 300, dim }: PoseProps & { len?: number }) {
@@ -158,21 +153,21 @@ function PlasticTriangle({ pts, gradient }: { pts: [Pt, Pt, Pt]; gradient: strin
 }
 
 /** Escuadra 45°–45°–90°, lisa como las de dibujo. Origen: vértice del ángulo recto; catetos a lo largo de +x y +y. */
-export function Escuadra({ pose, dim, tono }: PoseProps) {
+export function Escuadra({ pose, dim }: PoseProps) {
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
       {/* área de agarre: incluye el hueco, para poder arrastrar desde cualquier punto de la escuadra */}
       <path d={`M0 0 L${ESCUADRA_L} 0 L0 ${ESCUADRA_L} Z`} fill="transparent" />
-      <PlasticTriangle pts={ESCUADRA_PTS} gradient={tono === "ok" ? "url(#bench-plastic-ok)" : "url(#bench-plastic)"} />
+      <PlasticTriangle pts={ESCUADRA_PTS} gradient="url(#bench-plastic)" />
     </g>
   );
 }
 
 /** Cartabón 30°–60°–90°, liso. Origen: vértice del ángulo recto; el cateto largo va a lo largo de +x. */
-export function Cartabon({ pose, dim, tono }: PoseProps) {
+export function Cartabon({ pose, dim }: PoseProps) {
   return (
     <g transform={poseTransform(pose)} opacity={dim ? 0.55 : 1}>
-      <PlasticTriangle pts={CARTABON_PTS} gradient={tono === "ok" ? "url(#bench-plastic-ok)" : "url(#bench-plastic-orange)"} />
+      <PlasticTriangle pts={CARTABON_PTS} gradient="url(#bench-plastic-orange)" />
     </g>
   );
 }

@@ -1048,8 +1048,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         ))}
         {tipo === "escuadra" && prep ? (
           <g data-testid="bench-instrumentos" pointerEvents="none">
-            <Cartabon pose={cartabonPoseRef(prep.setup)} tono={alineada ? "ok" : undefined} />
-            <Escuadra pose={poseEsc!} tono={alineada ? "ok" : undefined} />
+            <Cartabon pose={cartabonPoseRef(prep.setup)} />
+            <Escuadra pose={poseEsc!} />
           </g>
         ) : null}
         {tipo === "escuadra" && filoEsc && objetivoEsc !== null && datosEsc ? (
