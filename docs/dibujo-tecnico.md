@@ -61,6 +61,10 @@ Total: 41 lecciones (el curso `dibujo-tecnico-2-bachillerato` está completo).
 - Materia nueva **Dibujo Técnico** (`SubjectKey` `dibujo`; slug de curso `dibujo-…`): `src/lib/navigation/subjects.ts`, icono en `subject-icons.ts`, bloques `dibujo-*` en `src/content/blocks.ts` (los bloques se añaden cuando hay lecciones que los usan; el test de bloques prohíbe bloques vacíos).
 - Cursos: `dibujo-tecnico-1-bachillerato` (`courseId(22)`, `moduleId(200 + n)`) y `dibujo-tecnico-2-bachillerato` (`courseId(23)`, `moduleId(210 + n)`); subtítulos en `DT1_SUBTITLES` de `src/data/lessons/shared.ts`.
 
+## Fuente en el libro
+
+La correspondencia de cada tema de la web con los temas y páginas del libro de Editorial Donostiarra está en [`dt-migracion-formato.md`](./dt-migracion-formato.md#fuente-en-el-libro-de-cada-tema). Se actualiza al migrar o añadir un tema.
+
 ## Estado
 
 | Tema | Estado |

@@ -118,7 +118,7 @@ function Ticks({ len, dir = 1, every = 1, labels = true, from = 0 }: { len: numb
   return <g>{out}</g>;
 }
 
-type PoseProps = { pose: Pose; className?: string; dim?: boolean };
+type PoseProps = { pose: Pose; className?: string; dim?: boolean; };
 
 /** Regla de 30 cm graduada en mm. Origen: esquina superior izquierda. */
 export function Regla({ pose, len = 300, dim }: PoseProps & { len?: number }) {

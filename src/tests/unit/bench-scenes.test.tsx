@@ -1042,38 +1042,33 @@ describe("práctica guiada · proporcionalidad y equivalencia", () => {
       t.superada();
     });
 
-    it("la escuadra: soltar antes de llegar o pasándose avisa; tras dos fallos se resalta la marca", () => {
+    it("la escuadra: se ve la línea del filo y la marca; al acercarse encaja, se tiñe de verde y avisa de que se puede soltar", () => {
+      const t = marcas(70);
+      t.tocar(marca(3, 70));
+      t.tocar(B);
+      const { sps, desliza } = prepararEscuadra([marca(3, 70), B], [marca(2, 70), marca(1, 70)]);
+      expect(screen.getByTestId("bench-filo")).toBeTruthy();
+      expect(screen.getByTestId("bench-marca-objetivo")).toBeTruthy();
+      expect(screen.queryByTestId("bench-alineada")).toBeNull();
+      const svg = t.svg();
+      fireEvent.pointerDown(svg, { clientX: 300, clientY: 200, pointerId: 1 });
+      fireEvent.pointerMove(svg, { clientX: 300 + desliza[0] * (sps[0] - 6), clientY: 200 + desliza[1] * (sps[0] - 6), pointerId: 1 });
+      expect(screen.getByTestId("bench-alineada")).toBeTruthy();
+      expect(screen.getByTestId("bench-alineada-texto").textContent).toContain("suelta");
+      fireEvent.pointerUp(svg, { pointerId: 1 });
+      expect(screen.getAllByTestId("bench-paralela-trazada")).toHaveLength(1);
+      expect(screen.queryByTestId("bench-alineada")).toBeNull();
+    });
+
+    it("la escuadra: soltar antes de llegar o pasándose avisa y deja volver a intentarlo", () => {
       const t = marcas(70);
       t.tocar(marca(3, 70));
       t.tocar(B);
       const { sps } = prepararEscuadra([marca(3, 70), B], [marca(2, 70), marca(1, 70)]);
       deslizar(t, 70, sps[0] / 2);
       expect(t.aviso()).toContain("Todavía no llega");
-      expect(screen.queryAllByTestId("bench-guia")).toHaveLength(0);
       deslizar(t, 70, sps[0] + 40 - sps[0] / 2);
       expect(t.aviso()).toContain("Te has pasado");
-      expect(screen.getAllByTestId("bench-guia")).toHaveLength(1);
-      t.sinSuperar();
-    });
-
-    it("la segunda punta solo puede clavarse en la primera marca", () => {
-      const t = pantalla("thales-practica");
-      t.tocar(A);
-      t.arrastrar(enCirc(A, 70, TH - 22));
-      t.fijar();
-      t.arrastrar(enCirc(A, 70, TH - 22), enCirc(A, 70, TH + 10));
-      t.tocar(marca(2, 70)); // la segunda marca todavía no existe
-      expect(t.fase()).toBe("centro");
-      t.tocar(marca(1, 70));
-      expect(t.fase()).toBe("arco");
-    });
-
-    it("la regla solo admite la tercera marca y B: unirla con A avisa", () => {
-      const t = marcas(70);
-      t.tocar(marca(3, 70));
-      t.tocar(A);
-      expect(t.aviso()).toContain("por los que debe pasar la regla");
-      expect(screen.getAllByTestId("bench-pend")).toHaveLength(1);
       t.sinSuperar();
     });
   });

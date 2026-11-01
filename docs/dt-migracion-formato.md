@@ -29,6 +29,26 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 4. **CAD**: simulación realista de la interfaz.
 5. **Dibujo Técnico II**: homología, afinidad, potencia y cónicas reutilizan el motor de compás y regla; los cuerpos y el diédrico avanzado, los formatos del punto 3.
 
+## Fuente en el libro de cada tema
+
+Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiarra), ya dividido por temas en [`temp/dibujo-tecnico/1-bachillerato/`](../temp/dibujo-tecnico/1-bachillerato/README.md) (un PDF por tema; escaneado, sin texto seleccionable; la página del PDF es la impresa − 1). Las páginas de esta tabla son las del PDF completo, tal como las indica ese README. **Al migrar o añadir un tema, se apunta aquí su tema y páginas de origen.**
+
+| Tema en la web (DT I) | Tema del libro (páginas) | Estado |
+|---|---|---|
+| Instrumentos y trazados fundamentales | T01 Instrumentos de dibujo (10–17); T02 Trazados fundamentales en el plano (18–29) | Migrado |
+| Historia y fundamentos geométricos (lugares geométricos, arco capaz) | Sin tema propio; cerca de T02 y T06 | Sin migrar (oculto) |
+| Proporcionalidad, equivalencia y semejanza | T06 Relaciones geométricas (54–61); «Semejanza y escalas» toca T03 Escalas (30–35) | Migrado |
+| Triángulos, cuadriláteros y polígonos regulares | T04 Formas poligonales I (36–43); T05 Formas poligonales II (44–53) | Migrado |
+| Transformaciones geométricas | T07 Transformaciones geométricas (62–65) | Migrado |
+| Tangencias y curvas técnicas | T08 Tangencias (66–75); T09 Curvas técnicas (76–81) | Migrado |
+| Sistema diédrico (2 temas) | T11 Sistemas de representación (90–93); T12 Sistema diédrico (94–109) | Sin migrar (oculto) |
+| Sistemas axonométricos | T14 Sistema axonométrico (118–133); T15 Perspectiva caballera (134–145) | Sin migrar (oculto) |
+| Planos acotados y sistema cónico | T13 Sistema de planos acotados (110–117); el sistema cónico no figura en el índice del libro | Sin migrar (oculto) |
+| Normalización y documentación gráfica | T16 Principios generales de representación (146–161); T17 Rotulación normalizada (162–167); T18 Acotación (168–183) | Sin migrar (oculto) |
+| Sistemas CAD | Sin tema en el libro | Sin migrar (oculto) |
+
+Sin tema propio en la web: T03 Escalas (30–35), T10 Curvas cónicas (82–89; en la web están en DT II) y T19 Arte y dibujo técnico (184–205). El libro coloca la geometría descriptiva (T11–T15) antes de la normalización (T16–T18); el orden de la web es el acordado en «Orden propuesto».
+
 ## Decisiones tomadas
 
 - **Orden:** el propuesto arriba (confirmado).
