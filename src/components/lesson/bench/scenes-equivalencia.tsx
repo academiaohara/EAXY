@@ -4,7 +4,7 @@ import { useState } from "react";
 import { dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animParaleloEscuadra, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
@@ -21,7 +21,7 @@ export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
   const cx = step === 2 ? (p < 0.65 ? lerp(220, 470, p / 0.65) : lerp(470, 340, (p - 0.65) / 0.35)) : step > 2 ? 340 : 220;
   const C1: Pt = [220, 300 - ALT];
   const C: Pt = [cx, 300 - ALT];
-  const par = animParaleloEscuadra(QA, QB, C1, [[110, 300 - ALT], [560, 300 - ALT]], step === 1 ? p : 1);
+  const par = animParaleloEscuadra(QA, QB, C1, [[110, 300 - ALT], [560, 300 - ALT]], step === 1 ? p : 1, "#1f78b4", "hipotenusa");
   // paso 3: el punto medio de la altura se halla con su mediatriz; sobre ella se apoya el lado superior del rectángulo
   const Hf: Pt = [340, 300];
   const pm = animPuntoMedio(Hf, [340, 300 - ALT], step === 3 ? tramo(p, 0, 0.6) : 1);
@@ -83,8 +83,11 @@ const RO: Pt = [(RA[0] + RHp[0]) / 2, 300];
 const RR = dist(RO, RHp);
 const RCs: Pt = [RB[0], 300 - Math.sqrt(RR * RR - (RB[0] - RO[0]) ** 2)];
 const LADO = dist(RB, RCs);
+/** Punto de AB a distancia BE de B (hacia la izquierda): da la base del cuadrado sobre el rectángulo. */
+const RF: Pt = [RB[0] - LADO, 300];
+const RG: Pt = [RF[0], RCs[1]];
 
-function PapelCuadratura({ hp = false, centro = false, semi = 0, perp = 0 }: { hp?: boolean; centro?: boolean; semi?: number; perp?: number }) {
+function PapelCuadratura({ hp = false, centro = false, semi = 0, perp = 0, f = false, cuadro = 0 }: { hp?: boolean; centro?: boolean; semi?: number; perp?: number; f?: boolean; cuadro?: number }) {
   return (
     <g>
       <path d={poligono([RA, RB, RC, RD])} fill="rgba(31,120,180,0.10)" stroke={INK} strokeWidth="1.6" strokeLinejoin="round" />
@@ -96,6 +99,14 @@ function PapelCuadratura({ hp = false, centro = false, semi = 0, perp = 0 }: { h
       {hp ? <Punto p={RHp} nombre="H" dx={-4} dy={20} color={AZUL} /> : null}
       {centro ? <Punto p={RO} nombre="O" dx={-5} dy={20} color={AZUL} /> : null}
       {semi > 0 ? <ArcoPlano c={RO} r={RR} a1={0} a2={180 * semi} /> : null}
+      {cuadro > 0 ? (
+        <g data-testid="bench-cuadrado-final" opacity={cuadro}>
+          <path d={poligono([RF, RB, RCs, RG])} fill="rgba(31,157,85,0.14)" stroke={VERDE} strokeWidth="2" strokeLinejoin="round" />
+          <Txt p={[RB[0] + 34, 70]} color={VERDE}>cuadrado de lado x = BE</Txt>
+          <Txt p={[RB[0] + 34, 92]} color={VERDE} size={12}>misma área que ABCD</Txt>
+        </g>
+      ) : null}
+      {f ? <Punto p={RF} nombre="F" dx={-5} dy={20} color={VERDE} /> : null}
       {perp > 0 ? (
         <g data-testid="bench-lado-cuadrado">
           <Seg a={RB} b={lerpP(RB, RCs, perp)} color={VERDE} w={2.2} />
@@ -111,21 +122,22 @@ function PapelCuadratura({ hp = false, centro = false, semi = 0, perp = 0 }: { h
 
 export function CuadraturaCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 1 ? 2400 : step === 2 ? 9000 : step === 3 ? 2400 : 2000);
+  const p = useProgreso(step, step === 1 ? 2400 : step === 2 ? 9000 : step === 3 ? 2400 : step === 4 ? 7500 : 2000);
   // paso 2: primero se halla el punto medio O de AH con la mediatriz y después se traza la semicircunferencia
   const pm = animPuntoMedio(RA, RHp, step === 2 ? tramo(p, 0, 0.55) : 1);
   const semi = step === 2 ? tramo(p, 0.55, 1) : step > 2 ? 1 : 0;
   let comp: ReturnType<typeof poseCompas> | null = null;
   if (step === 1) comp = poseCompas(RB, enCirculo(RB, RH, lerp(-24, 24, p)));
   else if (step === 2) comp = pm.listo ? poseCompas(RO, enCirculo(RO, RR, 180 * semi)) : pm.pose;
-  const lado = LADO;
-  const cuadrado: Pt[] = [[450, 300], [450 + lado, 300], [450 + lado, 300 - lado], [450, 300 - lado]];
+  // paso 4: el compás toma BE con la punta en B y lo lleva hacia la izquierda hasta cortar a AB en F: esa es la base del cuadrado
+  const giro = step === 4 ? tramo(p, 0, 0.5) : 1;
+  if (step === 4 && p < 0.58) comp = poseCompas(RB, enCirculo(RB, LADO, lerp(90, 180, giro)));
   return (
     <BenchShell scene="cuadratura-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con un rectángulo y la construcción del cuadrado de igual área">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un rectángulo y la construcción del cuadrado de igual área" data-testid="bench-cuadratura">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelCuadratura hp={step >= 2 || (step === 1 && p > 0.9)} centro={step >= 3 || (step === 2 && pm.listo)} semi={semi} perp={step === 3 ? p : step > 3 ? 1 : 0} />
+        <PapelCuadratura hp={step >= 2 || (step === 1 && p > 0.9)} centro={step >= 3 || (step === 2 && pm.listo)} semi={semi} perp={step === 3 ? p : step > 3 ? 1 : 0} f={step === 4 && p >= 0.5} cuadro={step === 4 ? tramo(p, 0.62, 1) : 0} />
         {step >= 1 ? (
           <g data-testid="bench-arco-h">
             <ArcoAnim c={RB} r={RH} a1={-24} a2={24} t={step === 1 ? p : 1} />
@@ -134,10 +146,8 @@ export function CuadraturaCompas({ block }: { block: BenchBlock }) {
         {step >= 2 ? pm.nodos : null}
         {step === 3 ? <ReglaTrazando a={RB} b={RCs} p={p} ext={0} color={VERDE} /> : null}
         {step === 4 ? (
-          <g data-testid="bench-cuadrado-final">
-            <path d={poligono(cuadrado)} fill="rgba(31,157,85,0.14)" stroke={VERDE} strokeWidth="2" strokeLinejoin="round" />
-            <Txt p={[452, 300 - lado - 8]} color={VERDE}>lado x = BE</Txt>
-            <Txt p={[452, 322]} color={VERDE} size={12}>= misma área que ABCD</Txt>
+          <g data-testid="bench-arco-be">
+            <ArcoAnim c={RB} r={LADO} a1={90} a2={180} t={giro} />
           </g>
         ) : null}
         {comp ? (
@@ -152,26 +162,24 @@ export function CuadraturaCompas({ block }: { block: BenchBlock }) {
 
 const defCuadratura: Def = {
   scene: "cuadratura-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "regla"],
-  nClics: 2,
-  extRegla: 8,
-  papel: (est: Est) => <PapelCuadratura hp={est.fase >= 3} centro={est.fase >= 3} />,
-  medibles: (est) => (est.fase === 0 ? [RB, RC] : [RO, RHp]),
-  candidatos: (_e, idx) => (idx === 0 ? [RB] : [RO]),
+  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "trazo", "medida", "centro", "arco", "punto", "auto"],
+  extTrazo: 8,
+  autoLados: () => [[RCs, RG], [RG, RF], [RF, RB]],
+  papel: (est: Est) => <PapelCuadratura hp={est.fase >= 3} centro={est.fase >= 3} perp={est.fase >= 7 ? 1 : 0} f={est.fase >= 11} cuadro={est.fase >= 12 ? 1 : 0} />,
+  medibles: (est) => (est.fase === 0 ? [RB, RC] : est.fase === 3 ? [RO, RHp] : [RB, RCs]),
+  candidatos: (_e, idx) => (idx === 1 ? [RO] : [RB]),
   compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
   radioLim: () => [40, 215],
   radioIni: () => 100,
-  rhoIni: (n) => (n === 0 ? -25 : 12),
-  arco: (_e, n, _r, c) => (n === 0 ? { centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] } : { centro: c, base: 0, signo: 1, rhoMin: 0, rhoMax: 180, req: [14, 166] }),
-  cortes: () => [RB, RCs],
-  evaluar: (est) => {
-    const [p1, p2] = est.clics;
-    if (!p1 || !p2) return { ok: false, mensaje: "Faltan los dos puntos por los que pasa la regla." };
-    const bien = (dist(p1, RB) <= SNAP + 2 && dist(p2, RCs) <= SNAP + 2) || (dist(p1, RCs) <= SNAP + 2 && dist(p2, RB) <= SNAP + 2);
-    return bien
-      ? { ok: true, mensaje: "Correcto: BE² = AB · BH = b · h, así que el cuadrado de lado BE tiene la misma área que el rectángulo. BE es la media proporcional de la base y la altura." }
-      : { ok: false, mensaje: "La perpendicular debe pasar por B y cortar a la semicircunferencia: toca B y el punto del arco que está justo encima. Pulsa «Reintentar»." };
-  },
+  rhoIni: (n) => (n === 0 ? -25 : n === 1 ? 12 : -45),
+  arco: (_e, n, _r, c) =>
+    n === 0
+      ? { centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }
+      : n === 1
+        ? { centro: c, base: 0, signo: 1, rhoMin: 0, rhoMax: 180, req: [14, 166] }
+        : { centro: c, base: 135, signo: 1, rhoMin: -50, rhoMax: 50, req: [-35, 35] },
+  cortes: (est) => (est.fase === 6 ? [RB, RCs] : [RF]),
+  evaluar: () => ({ ok: true, mensaje: "Correcto: BE² = AB · BH = b · h. Al llevar BE sobre AB con el compás (BF = BE) el cuadrado de lado BE queda sobre el rectángulo y tiene su misma área." }),
 };
 
 export function CuadraturaPractica({ block }: { block: BenchBlock }) {
@@ -249,10 +257,10 @@ export function SemejanzaRazon({ block }: { block: BenchBlock }) {
         ) : null}
         {step === 3 ? (
           <g data-testid="bench-escala">
-            <Txt p={[110, 100]} color={INK} size={15}>Plano a escala 1:50 → k = 1/50</Txt>
-            <Txt p={[110, 124]} color={AMBAR} size={14}>4 cm en el plano ↔ 200 cm = 2 m reales</Txt>
-            <Txt p={[110, 148]} color={VERDE} size={14}>16 cm² en el plano ↔ 40 000 cm² = 4 m²</Txt>
-            <Txt p={[110, 172]} color={INK} size={12}>Las superficies guardan la razón k² = 1/2 500</Txt>
+            <Txt p={[26, 36]} color={INK} size={15}>Plano a escala 1:50 → k = 1/50</Txt>
+            <Txt p={[26, 60]} color={AMBAR} size={14}>4 cm en el plano ↔ 200 cm = 2 m reales</Txt>
+            <Txt p={[26, 84]} color={VERDE} size={14}>16 cm² en el plano ↔ 40 000 cm² = 4 m²</Txt>
+            <Txt p={[26, 106]} color={INK} size={12}>Las superficies guardan la razón k² = 1/2 500</Txt>
           </g>
         ) : null}
       </svg>

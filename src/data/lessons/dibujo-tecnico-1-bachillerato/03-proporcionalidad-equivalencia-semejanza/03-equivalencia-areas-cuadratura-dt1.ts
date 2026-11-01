@@ -20,7 +20,7 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
       { title: "Lleva la altura sobre la base", text: "Con centro en $B$ y radio $BC$, traza un arco que corte a la prolongación de $AB$ en $H$: ahora $AH = b + h$.", fact: "BH = h" },
       { title: "Semicircunferencia", text: "Halla el punto medio $O$ de $AH$ y traza la **semicircunferencia** de diámetro $AH$." },
       { title: "Perpendicular por B", text: "Levanta por $B$ la perpendicular: corta a la semicircunferencia en $E$. $BE = x$ es la media proporcional de $b$ y $h$." },
-      { title: "El cuadrado", text: "El cuadrado de lado $BE$ tiene **la misma área** que el rectángulo: $x^2 = b \\cdot h$.", fact: "x² = b · h" },
+      { title: "El cuadrado sobre el rectángulo", text: "Toma $BE$ con el compás, clava la punta en $B$ y llévala **hacia la izquierda** hasta cortar a $AB$ en $F$: $BF = BE$. El cuadrado de lado $BE$ queda sobre el rectángulo y tiene **la misma área**: $x^2 = b \\cdot h$.", fact: "x² = b · h" },
     ]), "stack"),
 
     benchTask("cuadratura-construye", "Haz la cuadratura del rectángulo", "cuadratura-practica", [
@@ -30,7 +30,12 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
       { title: "Toma la medida OH", text: "Ahora toca $O$ (el punto medio de $AH$) y luego $H$ para tomar el radio de la semicircunferencia.", fact: "Abertura = OH" },
       { title: "Clava la punta en O", text: "Toca el punto $O$." },
       { title: "Traza la semicircunferencia", text: "Arrastra la mina para trazar el arco **desde $H$ hasta $A$**, por encima de la base." },
-      { title: "Perpendicular por B", text: "Toca **dos puntos**: $B$ y el punto de la semicircunferencia que está justo encima. La regla marca el lado del cuadrado." },
+      { title: "Perpendicular por B", text: "Toca **dos puntos**: $B$ y el punto de la semicircunferencia que está justo encima. La regla traza la perpendicular y marca el lado $BE$ del cuadrado." },
+      { title: "Toma la medida BE", text: "Toca $B$ y después $E$: el compás queda con el lado del cuadrado.", fact: "Abertura = BE" },
+      { title: "Clava la punta en B", text: "Toca el vértice $B$." },
+      { title: "Llévala a la izquierda", text: "Arrastra la mina hacia la izquierda, girando desde $E$, hasta **cortar a $AB$**." },
+      { title: "Marca F", text: "Toca el corte con $AB$: es $F$, y $BF = BE$ es la base del cuadrado." },
+      { title: "El cuadrado", text: "La regla completa sola el cuadrado de lado $BE$ sobre el rectángulo.", fact: "Misma área que ABCD" },
     ], {
       question: "Halla el lado del cuadrado de igual área que el rectángulo ABCD con compás y regla.",
       hint: "Lleva la altura sobre la prolongación de la base, traza la semicircunferencia de diámetro AH y levanta la perpendicular por B.",

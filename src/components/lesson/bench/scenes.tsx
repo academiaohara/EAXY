@@ -53,7 +53,6 @@ export type BenchSceneName =
   | "homotecia-practica"
   | "thales-dividir"
   | "thales-practica"
-  | "thales-paralelas"
   | "media-compas"
   | "media-practica"
   | "aurea-compas"
@@ -109,15 +108,14 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "homotecia-compas": 5,
   "homotecia-practica": 13,
   "thales-dividir": 7,
-  "thales-practica": 8,
-  "thales-paralelas": 2,
+  "thales-practica": 10,
   "media-compas": 5,
   "media-practica": 4,
   "aurea-compas": 5,
   "aurea-practica": 7,
   "equivalencia-triangulos": 4,
   "cuadratura-compas": 5,
-  "cuadratura-practica": 7,
+  "cuadratura-practica": 12,
   "semejanza-razon": 4,
   "puntos-notables": 5,
   "circuncentro-practica": 11,
