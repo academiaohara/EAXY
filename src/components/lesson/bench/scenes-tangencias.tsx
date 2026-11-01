@@ -4,7 +4,7 @@ import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, animParalelaCompas, animPuntoMedio, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
 
@@ -73,15 +73,17 @@ function PapelTangentes({ tangentes = false, m = false, t = 0 }: { tangentes?: b
 
 export function TangentesCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 2 ? 5200 : step === 3 ? 3600 : 1);
-  const comp = step === 2 ? poseCompas(TM, enCirculo(TM, TMO, 360 * p)) : null;
+  const p = useProgreso(step, step === 1 ? 6200 : step === 2 ? 5200 : step === 3 ? 3600 : 1);
+  const pm = animPuntoMedio(TO, TP, step === 1 ? p : 1);
+  const comp = step === 1 ? pm.pose : step === 2 ? poseCompas(TM, enCirculo(TM, TMO, 360 * p)) : null;
   return (
     <BenchShell scene="tangentes-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con una circunferencia, un punto exterior y la construcción de sus tangentes">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con una circunferencia, un punto exterior y la construcción de sus tangentes" data-testid="bench-tangentes">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelTangentes m={step >= 1} t={step >= 3 ? 2 : step === 2 && p > 0.9 ? 2 : 0} />
+        <PapelTangentes m={step >= 2 || (step === 1 && pm.listo)} t={step >= 3 ? 2 : step === 2 && p > 0.9 ? 2 : 0} />
         {step >= 1 ? <Seg a={TO} b={TP} color={AUX} w={1} dash="5 4" /> : null}
+        {step >= 1 ? pm.nodos : null}
         {step >= 2 ? (
           <g data-testid="bench-circ-diametro">
             <ArcoAnim c={TM} r={TMO} a1={0} a2={360} t={step === 2 ? p : 1} />
@@ -302,7 +304,10 @@ const en = (v: Pt, u: Pt, t: number): Pt => [v[0] + u[0] * t, v[1] + u[1] * t];
 
 export function EnlaceCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, 2400);
+  const p = useProgreso(step, step === 1 ? 9000 : 2400);
+  const par1 = animParalelaCompas([NV[0] + 160, NV[1]], [NV[0] + 300, NV[1]], [0, -1], NR, step === 1 ? tramo(p, 0, 0.5) : 1);
+  const q = (t: number): Pt => en(NV, U2, t);
+  const par2 = animParalelaCompas(q(110), q(220), N2, NR, step === 1 ? tramo(p, 0.5, 1) : 1);
   const a1 = angDe(NC, NT2);
   const a2 = angDe(NC, NT1);
   return (
@@ -318,12 +323,16 @@ export function EnlaceCompas({ block }: { block: BenchBlock }) {
         <Txt p={[420, 70]} color={AMBAR}>{`radio del enlace r = ${NR / 10} cm`}</Txt>
         {step >= 1 ? (
           <g data-testid="bench-enlace-paralelas">
-            <Seg a={[NV[0], NV[1] - NR]} b={[NV[0] + 400, NV[1] - NR]} color={AZUL} w={1.3} dash="7 5" />
-            <Seg a={en(NV, N2, NR)} b={en(en(NV, N2, NR), U2, 280)} color={AZUL} w={1.3} dash="7 5" />
-            <Txt p={[430, NV[1] - NR - 8]} color={AZUL} size={12}>paralela a r</Txt>
+            {par1.nodos}
+            {par2.nodos}
           </g>
         ) : null}
-        {step >= 1 ? <Punto p={NC} nombre="C" dx={8} dy={-8} color={VERDE} /> : null}
+        {step === 1 ? (par1.pose ?? par2.pose) ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={(par1.pose ?? par2.pose)!.pose} open={(par1.pose ?? par2.pose)!.open} />
+          </g>
+        ) : null : null}
+        {step >= 2 || (step === 1 && p > 0.97) ? <Punto p={NC} nombre="C" dx={8} dy={-8} color={VERDE} /> : null}
         {step >= 2 ? (
           <g data-testid="bench-enlace-pies">
             <Seg a={NC} b={NT1} color={AUX} w={1.2} dash="4 4" />
@@ -379,14 +388,14 @@ function arcoPath(c: Pt, r: number, desde: Pt, hasta: Pt, color: string, w = 3) 
   return <path d={`M${s[0]} ${s[1]} A${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 0 ${e[0]} ${e[1]}`} fill="none" stroke={color} strokeWidth={w} strokeLinecap="round" />;
 }
 
-function PapelOvalo({ centros = 0, strip = false }: { centros?: 0 | 1 | 2; strip?: boolean }) {
+function PapelOvalo({ centros = 0, strip = false, o1 = true, o2 = true }: { centros?: 0 | 1 | 2; strip?: boolean; o1?: boolean; o2?: boolean }) {
   return (
     <g>
       <Seg a={OA} b={OB} w={1.8} />
       <Punto p={OA} nombre="A" dx={-16} dy={18} />
       <Punto p={OB} nombre="B" dx={8} dy={18} />
-      <Punto p={O1} nombre="O₁" dx={-8} dy={20} color={AZUL} />
-      <Punto p={O2} nombre="O₂" dx={-8} dy={20} color={AZUL} />
+      {o1 ? <Punto p={O1} nombre="O₁" dx={-8} dy={20} color={AZUL} /> : null}
+      {o2 ? <Punto p={O2} nombre="O₂" dx={-8} dy={20} color={AZUL} /> : null}
       {centros >= 1 ? <Punto p={O3} nombre="O₃" dx={-9} dy={22} color={VERDE} /> : null}
       {centros >= 2 ? <Punto p={O4} nombre="O₄" dx={-9} dy={-10} color={VERDE} /> : null}
       {strip ? (
@@ -403,7 +412,15 @@ function PapelOvalo({ centros = 0, strip = false }: { centros?: 0 | 1 | 2; strip
 
 export function OvaloCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 1 ? 4600 : step === 3 ? 4200 : 1);
+  const p = useProgreso(step, step === 0 ? 15000 : step === 1 ? 4600 : step === 3 ? 4200 : 1);
+  // paso 0: el eje mayor se divide en tres partes iguales con el teorema de Thales (compás, regla, escuadra y cartabón)
+  const dirR: Pt = [Math.cos((35 * Math.PI) / 180), -Math.sin((35 * Math.PI) / 180)];
+  const marcaT = (k: number): Pt => [OA[0] + dirR[0] * k * OD, OA[1] + dirR[1] * k * OD];
+  const pt = (a: number, b: number) => (step === 0 ? tramo(p, a, b) : 1);
+  const par2 = animParaleloEscuadra(marcaT(3), OB, marcaT(2), [marcaT(2), O2], pt(0.4, 0.7));
+  const par1 = animParaleloEscuadra(marcaT(3), OB, marcaT(1), [marcaT(1), O1], pt(0.7, 1));
+  const ventana = (k: number) => pt(0.05 + 0.08 * (k - 1), 0.05 + 0.08 * k);
+  const poseT = step === 0 ? ([1, 2, 3] as const).map((k) => (ventana(k) > 0 && ventana(k) < 1 ? poseCompas(marcaT(k - 1), enCirculo(marcaT(k - 1), OD, lerp(13, 57, ventana(k)))) : null)).find(Boolean) ?? null : null;
   const a3 = angDe(O3, E1);
   const a4 = angDe(O4, E3);
   return (
@@ -411,7 +428,27 @@ export function OvaloCompas({ block }: { block: BenchBlock }) {
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con el eje mayor de un óvalo y su construcción con cuatro arcos" data-testid="bench-ovalo">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelOvalo centros={step >= 1 && (step > 1 || p > 0.95) ? 2 : 0} />
+        <PapelOvalo centros={step >= 1 && (step > 1 || p > 0.95) ? 2 : 0} o1={step > 0 || par1.listo} o2={step > 0 || par2.listo} />
+        {step === 0 ? (
+          <g data-testid="bench-ovalo-thales">
+            <Seg a={OA} b={[OA[0] + dirR[0] * 3.4 * OD * pt(0, 0.05), OA[1] + dirR[1] * 3.4 * OD * pt(0, 0.05)]} w={1.4} />
+            {[1, 2, 3].map((k) => (
+              <g key={k}>
+                <ArcoAnim c={marcaT(k - 1)} r={OD} a1={13} a2={57} t={ventana(k)} />
+                {ventana(k) >= 1 ? <circle cx={marcaT(k)[0]} cy={marcaT(k)[1]} r="3" fill={INK} /> : null}
+                {ventana(k) >= 1 ? <Txt p={[marcaT(k)[0] - 16, marcaT(k)[1] - 6]}>{String(k)}</Txt> : null}
+              </g>
+            ))}
+            {p >= 0.3 ? <ReglaTrazando a={marcaT(3)} b={OB} p={pt(0.3, 0.38)} ext={0} color={VERDE} /> : null}
+            {par2.nodos}
+            {par1.nodos}
+          </g>
+        ) : null}
+        {poseT ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={poseT.pose} open={poseT.open} />
+          </g>
+        ) : null}
         {step >= 1 ? (
           <g data-testid="bench-ovalo-circulos">
             <ArcoAnim c={O1} r={OD} a1={0} a2={360} t={step === 1 ? tramo(p, 0, 0.5) : 1} />

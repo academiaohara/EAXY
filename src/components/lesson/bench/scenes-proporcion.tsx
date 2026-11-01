@@ -4,7 +4,7 @@ import { useState } from "react";
 import { dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animParaleloEscuadra, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 
 export const etiqueta = { stroke: "#fffefa", strokeWidth: 3.5, paintOrder: "stroke" as const, strokeLinejoin: "round" as const };
@@ -70,9 +70,12 @@ function PapelThales({ marcas = 0, r = R0, rayo = 1, union = 0, paralelas = 0, p
 
 export function ThalesDividir({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 0 ? 1600 : step <= 3 ? 2400 : step === 4 ? 2600 : step === 5 ? 4800 : 1800);
+  const p = useProgreso(step, step === 0 ? 1600 : step <= 3 ? 2400 : step === 4 ? 2600 : step === 5 ? 10000 : 1800);
   const S = 22;
   const a = TH;
+  // paso 5: las paralelas a la recta 3B por las marcas 2 y 1 se trazan con escuadra y cartabón
+  const par2 = animParaleloEscuadra(marca(3), TB, marca(2), [marca(2), TQ], step === 5 ? tramo(p, 0, 0.5) : 1);
+  const par1 = animParaleloEscuadra(marca(3), TB, marca(1), [marca(1), TP], step === 5 ? tramo(p, 0.5, 1) : 1);
   let comp: ReturnType<typeof poseCompas> | null = null;
   if (step >= 1 && step <= 3) {
     const c = marca(step - 1);
@@ -83,7 +86,7 @@ export function ThalesDividir({ block }: { block: BenchBlock }) {
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un segmento AB que se divide en tres partes iguales con el teorema de Thales" data-testid="bench-thales">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelThales rayo={step === 0 ? p : 1} marcas={step >= 4 ? 3 : step >= 1 ? step - 1 + (p > 0.9 ? 1 : 0) : 0} union={step === 4 ? p : step > 4 ? 1 : 0} paralelas={step === 5 ? p : step > 5 ? 1 : 0} partes={step === 6 ? p : 0} />
+        <PapelThales rayo={step === 0 ? p : 1} marcas={step >= 4 ? 3 : step >= 1 ? step - 1 + (p > 0.9 ? 1 : 0) : 0} union={step === 4 ? p : step > 4 ? 1 : 0} paralelas={0} partes={step === 6 ? p : 0} />
         {[1, 2, 3].map((k) =>
           step >= k ? (
             <g key={k} data-testid={`bench-arco-${k}`}>
@@ -92,6 +95,18 @@ export function ThalesDividir({ block }: { block: BenchBlock }) {
           ) : null,
         )}
         {step === 4 ? <ReglaTrazando a={marca(3)} b={TB} p={p} ext={0} color={VERDE} /> : null}
+        {step >= 5 ? (
+          <g data-testid="bench-paralelas-thales">
+            {par2.nodos}
+            {par1.nodos}
+            {step > 5 || par1.listo ? (
+              <>
+                <Punto p={TP} nombre="P" dx={-4} dy={20} color={AZUL} />
+                <Punto p={TQ} nombre="Q" dx={-4} dy={20} color={AZUL} />
+              </>
+            ) : null}
+          </g>
+        ) : null}
         {comp ? (
           <g data-testid="bench-compas" pointerEvents="none">
             <Compas pose={comp.pose} open={comp.open} />
@@ -215,15 +230,17 @@ function PapelMedia({ centro = false, semi = 0, altura = 0, marcas = true }: { c
 
 export function MediaCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 2 ? 4200 : step === 3 ? 2400 : 1);
+  const p = useProgreso(step, step === 1 ? 6200 : step === 2 ? 4200 : step === 3 ? 2400 : 1);
   const semi = step === 2 ? p : step > 2 ? 1 : 0;
-  const comp = step === 1 ? poseCompas(MO, MB) : step === 2 ? poseCompas(MO, enCirculo(MO, MR, 180 * semi)) : null;
+  const pm = animPuntoMedio(MA, MB, step === 1 ? p : 1);
+  const comp = step === 1 ? (pm.pose ?? (pm.listo ? poseCompas(MO, MB) : null)) : step === 2 ? poseCompas(MO, enCirculo(MO, MR, 180 * semi)) : null;
   return (
     <BenchShell scene="media-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con un segmento AB dividido por H y la construcción de la media proporcional">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un segmento AB dividido por H y la construcción de la media proporcional" data-testid="bench-media">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelMedia centro={step >= 1} semi={semi} altura={step === 3 ? p : step > 3 ? 1 : 0} />
+        <PapelMedia centro={step >= 2 || (step === 1 && pm.listo)} semi={semi} altura={step === 3 ? p : step > 3 ? 1 : 0} />
+        {step >= 1 ? pm.nodos : null}
         {step === 3 ? <ReglaTrazando a={MH} b={MC} p={p} ext={0} color={VERDE} /> : null}
         {step === 4 ? (
           <g data-testid="bench-h2">

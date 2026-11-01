@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
-import { BenchDefs, Compas, Desk, Regla, Transportador, poseCompas } from "./instruments";
+import { PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type Pt } from "./geometry";
+import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
@@ -76,6 +76,91 @@ export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: P
       ) : null}
     </g>
   );
+}
+
+const AUX_TRAZO = "#6b7480";
+const aGrados = (rad: number) => (rad * 180) / Math.PI;
+
+/**
+ * Cómo se halla el punto medio de `a`–`b` en el papel: arco desde `a`, arco desde `b` con la misma abertura
+ * y recta (mediatriz) por los dos cortes. `p` va de 0 a 1; el punto medio queda a la vista desde 0,86.
+ */
+export function animPuntoMedio(a: Pt, b: Pt, p: number) {
+  const d = dist(a, b);
+  const r = 0.56 * d;
+  const [c1, c2] = interseccionCirculos(a, r, b, r) as [Pt, Pt];
+  const th = aGrados(Math.acos(d / (2 * r))) + 14;
+  const baseA = angDe(a, b);
+  const baseB = angDe(b, a);
+  const t1 = tramo(p, 0, 0.28);
+  const t2 = tramo(p, 0.28, 0.56);
+  const t3 = tramo(p, 0.56, 0.86);
+  const nodos = (
+    <g data-testid="bench-punto-medio-anim">
+      <ArcoAnim c={a} r={r} a1={baseA - th} a2={baseA + th} t={t1} />
+      <ArcoAnim c={b} r={r} a1={baseB - th} a2={baseB + th} t={t2} />
+      {p >= 0.56 ? <ReglaTrazando a={c1} b={c2} p={t3} ext={14} color={AUX_TRAZO} /> : null}
+    </g>
+  );
+  const pose = p < 0.28 ? poseCompas(a, enCirculo(a, r, lerp(baseA - th, baseA + th, t1))) : p < 0.56 ? poseCompas(b, enCirculo(b, r, lerp(baseB - th, baseB + th, t2))) : null;
+  return { nodos, pose, listo: p >= 0.86 };
+}
+
+/**
+ * Cómo se traza una paralela a distancia `r` con compás y regla: arcos de radio `r` desde dos puntos de la recta
+ * (`q0`, `q1`, hacia el lado de la normal `n`) y regla apoyada en los dos arcos. `p` va de 0 a 1.
+ */
+export function animParalelaCompas(q0: Pt, q1: Pt, n: Pt, r: number, p: number) {
+  const ang = aGrados(Math.atan2(-n[1], n[0]));
+  const t1 = tramo(p, 0, 0.28);
+  const t2 = tramo(p, 0.28, 0.56);
+  const t3 = tramo(p, 0.56, 1);
+  const top = (q: Pt): Pt => [q[0] + n[0] * r, q[1] + n[1] * r];
+  const nodos = (
+    <g data-testid="bench-paralela-anim">
+      <ArcoAnim c={q0} r={r} a1={ang - 16} a2={ang + 16} t={t1} />
+      <ArcoAnim c={q1} r={r} a1={ang - 16} a2={ang + 16} t={t2} />
+      {p >= 0.56 ? <ReglaTrazando a={top(q0)} b={top(q1)} p={t3} ext={140} color="#1f78b4" /> : null}
+    </g>
+  );
+  const pose = p < 0.28 ? poseCompas(q0, enCirculo(q0, r, lerp(ang - 16, ang + 16, t1))) : p < 0.56 ? poseCompas(q1, enCirculo(q1, r, lerp(ang - 16, ang + 16, t2))) : null;
+  return { nodos, pose };
+}
+
+/**
+ * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
+ * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
+ */
+export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4") {
+  const L = dist(a, b);
+  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
+  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  let theta = aGrados(Math.atan2(u0[1], u0[0]));
+  let d = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta + 90));
+  if (d < 0) {
+    theta += 180;
+    d = -d;
+  }
+  const u = dir(theta);
+  const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, d);
+  const mov = tramo(p, 0.18, 0.7);
+  const s = setup.sStar * (mov * mov * (3 - 2 * mov));
+  const opacidad = tramo(p, 0, 0.14) * (1 - tramo(p, 0.9, 1));
+  const trazo = tramo(p, 0.7, 0.9);
+  const fin: Pt = [lerp(linea[0][0], linea[1][0], trazo), lerp(linea[0][1], linea[1][1], trazo)];
+  const nodos = (
+    <g data-testid="bench-paralelo-escuadra">
+      {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
+      {opacidad > 0 ? (
+        <g opacity={opacidad} pointerEvents="none">
+          <Cartabon pose={cartabonPose(setup)} />
+          <Escuadra pose={escuadraPose(setup, s)} />
+        </g>
+      ) : null}
+    </g>
+  );
+  return { nodos, listo: p >= 0.9 };
 }
 
 export const MV = { w: 620, h: 380 };
@@ -399,6 +484,13 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const [prev, setPrev] = useState<Est[]>([]);
   const [agarrada, setAgarrada] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
+  /** Intentos fallidos seguidos en la fase actual y pista pedida: con 2 fallos la escena enseña qué hacer. */
+  const [fallos, setFallos] = useState(0);
+  const [pista, setPista] = useState(false);
+  const fallar = (mensaje: string) => {
+    setAviso(mensaje);
+    setFallos((n) => n + 1);
+  };
   const svgRef = useRef<SVGSVGElement>(null);
   const temporizador = useRef<number | null>(null);
 
@@ -450,6 +542,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     setPrev((h) => [...h, est]);
     setEst(nuevo);
     setAviso(null);
+    setFallos(0);
+    setPista(false);
     if (nuevo.fase >= fases.length) finalizar();
     else if (fases[nuevo.fase] === "auto") {
       // la regla traza sola los lados que faltan y, al acabar, el ejercicio se da por superado
@@ -469,7 +563,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       const idx = cuenta(fases, est.fase, "centro");
       const cand = def.candidatos(est, idx).find((c) => dist(c, p) <= HIT);
       if (!cand) {
-        setAviso("Toca el punto donde quieres clavar la punta seca del compás.");
+        fallar("Toca el punto donde quieres clavar la punta seca del compás.");
         return;
       }
       const nSig = cuenta(fases, est.fase, "arco");
@@ -484,7 +578,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "medida") {
       const cand = (def.medibles?.(est) ?? []).find((c) => dist(c, p) <= HIT);
       if (!cand || (est.medida[0] && dist(est.medida[0], cand) < 1)) {
-        setAviso(est.medida.length === 0 ? "Toca uno de los dos puntos marcados para clavar la punta del compás." : "Toca el otro punto para colocar la mina.");
+        fallar(est.medida.length === 0 ? "Toca uno de los dos puntos marcados para clavar la punta del compás." : "Toca el otro punto para colocar la mina.");
         return;
       }
       if (est.medida.length === 0) {
@@ -501,11 +595,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       const objetivos = def.cortes(est);
       const cand = objetivos.find((c) => dist(c, p) <= (def.snap ?? SNAP));
       if (!cand) {
-        setAviso("Toca uno de los dos puntos por los que debe pasar la regla.");
+        fallar("Toca uno de los dos puntos por los que debe pasar la regla.");
         return;
       }
       if (est.pend && dist(est.pend, cand) < 1) {
-        setAviso("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
+        fallar("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
         return;
       }
       setAviso(null);
@@ -518,7 +612,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       const objetivos = def.cortes(est);
       const cand = objetivos.find((c) => dist(c, p) <= snap);
       if (!cand) {
-        setAviso(tipo === "punto" ? "Ese no es el punto que se busca: toca donde se cortan los arcos." : "Toca uno de los puntos de la construcción por donde debe pasar la regla.");
+        fallar(tipo === "punto" ? "Ese no es el punto que se busca: toca donde se cortan los arcos." : "Toca uno de los puntos de la construcción por donde debe pasar la regla.");
         return;
       }
       if (tipo === "punto") {
@@ -528,11 +622,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       }
       const mal = def.validarClic?.(est, cand);
       if (mal) {
-        setAviso(mal);
+        fallar(mal);
         return;
       }
       if (!def.repetir && est.clics.some((c) => dist(c, cand) < 1)) {
-        setAviso("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
+        fallar("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
         return;
       }
       const clics = [...est.clics, cand];
@@ -591,7 +685,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     const a = def.angulo?.(est);
     if (!a) return;
     if (Math.abs(est.ang - a.objetivo) <= 1) avanzar({ ...est, ang: a.objetivo });
-    else setAviso("El segundo lado todavía no marca el ángulo del giro: ajústalo con la escala del transportador.");
+    else fallar("El segundo lado todavía no marca el ángulo del giro: ajústalo con la escala del transportador.");
   };
 
   const fijar = () => {
@@ -599,7 +693,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     const aIdx = cuentaAb(fases, est.fase);
     const mal = def.validarAbertura?.(est, aIdx, est.radios[aIdx] ?? 0);
     if (mal) {
-      setAviso(mal);
+      fallar(mal);
       return;
     }
     avanzar(est);
@@ -611,6 +705,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       return h.slice(0, -1);
     });
     setAviso(null);
+    setFallos(0);
+    setPista(false);
     setAgarrada(false);
   };
   const onKey = (ev: ReactKeyboardEvent) => {
@@ -680,14 +776,65 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const pAuto = useProgreso(tipo === "auto" ? "auto" : "no", Math.max(msAuto, 1));
 
   const nota = Math.min(est.fase, fases.length - 1);
+
+  // Guía: con la pista pedida o tras dos fallos seguidos, la escena resalta lo que hay que tocar o trazar.
+  const guiada = (pista || fallos >= 2) && !bloqueada && !hecha && tipo !== undefined && tipo !== "auto";
+  const anillos: Pt[] = (() => {
+    if (!guiada) return [];
+    if (tipo === "centro") return def.candidatos(est, cuenta(fases, est.fase, "centro"));
+    if (tipo === "medida") return (def.medibles?.(est) ?? []).filter((c) => !(est.medida[0] && dist(est.medida[0], c) < 1));
+    if (tipo === "punto" || tipo === "regla") return def.cortes(est);
+    if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
+    if (tipo === "angulo") {
+      const a = def.angulo?.(est);
+      return a ? [enCirculo(a.centro, a.largo, a.base + a.objetivo)] : [];
+    }
+    return [];
+  })();
+  const arcoGuia = (() => {
+    if (!guiada || tipo !== "arco") return null;
+    const cfg = cfgDe(nArcoPrevio, radioDe(nArcoPrevio));
+    if (!cfg) return null;
+    const a1 = cfg.base + cfg.signo * cfg.req[0];
+    const a2 = cfg.base + cfg.signo * cfg.req[1];
+    const p1 = enCirculo(cfg.centro, radioDe(nArcoPrevio), Math.min(a1, a2));
+    const p2 = enCirculo(cfg.centro, radioDe(nArcoPrevio), Math.max(a1, a2));
+    return `M${p1[0]} ${p1[1]} A${radioDe(nArcoPrevio)} ${radioDe(nArcoPrevio)} 0 ${Math.abs(a2 - a1) > 180 ? 1 : 0} 0 ${p2[0]} ${p2[1]}`;
+  })();
+  const TEXTO_PISTA: Record<string, string> = {
+    centro: "toca uno de los puntos resaltados para clavar la punta.",
+    abertura: "arrastra la mina hasta la abertura que pide el paso y pulsa «Fijar abertura».",
+    medida: "toca los dos puntos resaltados, uno tras otro.",
+    arco: "arrastra la mina siguiendo el trazo punteado.",
+    punto: "toca el punto resaltado.",
+    trazo: "toca los puntos resaltados para pasar la regla.",
+    regla: "toca los puntos resaltados para pasar la regla.",
+    angulo: "arrastra el segundo lado hasta la marca resaltada.",
+  };
+  const TEXTO_ACCION: Record<string, string> = {
+    centro: "toca el punto donde clavar el compás",
+    abertura: "arrastra la mina y pulsa «Fijar abertura»",
+    medida: "toca dos puntos para tomar la medida",
+    arco: "arrastra la mina para trazar el arco",
+    punto: "toca el punto que has encontrado",
+    trazo: "toca dos puntos para pasar la regla",
+    regla: "toca los puntos por donde pasa la regla",
+    angulo: "arrastra el segundo lado hasta el ángulo",
+  };
+  const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? TEXTO_ACCION[tipo] : null;
   const extra = (
     <div className="flex flex-col gap-2">
+      {guiada && tipo ? (
+        <p className="text-sm font-semibold text-[#ffd866]" data-testid="bench-pista-texto">
+          Pista: {TEXTO_PISTA[tipo]}
+        </p>
+      ) : null}
       {tipo === "abertura" && !bloqueada ? (
         <button
           type="button"
           onClick={fijar}
           data-testid="bench-fijar"
-          className="self-start rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-4 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10"
+          className={`self-start rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-4 py-2 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 ${guiada ? "animate-pulse border-[#ffd866]" : ""}`}
         >
           Fijar abertura
         </button>
@@ -706,20 +853,20 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     </div>
   );
 
+  const botonNav = "inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35";
   const nav = (
-    <button
-      type="button"
-      onClick={deshacer}
-      disabled={prev.length === 0 || bloqueada || tipo === "auto"}
-      data-testid="bench-deshacer"
-      className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--stage-border,#3d4f66)] px-3 py-1.5 text-sm font-semibold text-[color:var(--stage-ink,#fff)] hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-35"
-    >
-      Deshacer
-    </button>
+    <>
+      <button type="button" onClick={deshacer} disabled={prev.length === 0 || bloqueada || tipo === "auto"} data-testid="bench-deshacer" className={botonNav}>
+        Deshacer
+      </button>
+      <button type="button" onClick={() => setPista(true)} disabled={bloqueada || hecha || tipo === "auto" || guiada} data-testid="bench-pista" className={botonNav}>
+        Pista
+      </button>
+    </>
   );
 
   return (
-    <BenchShell scene={def.scene} notes={block.notes} step={nota} setStep={() => undefined} extra={extra} nav={nav} label="Hoja de dibujo: construcción paso a paso con compás y regla">
+    <BenchShell scene={def.scene} notes={block.notes} step={nota} setStep={() => undefined} extra={extra} nav={nav} accion={accion} label="Hoja de dibujo: construcción paso a paso con compás y regla">
       <svg
         ref={svgRef}
         viewBox={`0 0 ${vista.w} ${vista.h}`}
@@ -784,6 +931,15 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
           <g key={i} data-testid="bench-clic" pointerEvents="none">
             <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
             <circle cx={c[0]} cy={c[1]} r="0.9" fill={AMBAR} />
+          </g>
+        ))}
+        {arcoGuia ? <path d={arcoGuia} fill="none" stroke="#ffb400" strokeWidth="3.4" strokeDasharray="2 7" strokeLinecap="round" pointerEvents="none" data-testid="bench-guia-arco" /> : null}
+        {anillos.map((c, i) => (
+          <g key={`g${i}`} data-testid="bench-guia" pointerEvents="none">
+            <circle cx={c[0]} cy={c[1]} r="12" fill="none" stroke="#ffb400" strokeWidth="2.6">
+              <animate attributeName="r" values="9;19;9" dur="1.4s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="1;0.35;1" dur="1.4s" repeatCount="indefinite" />
+            </circle>
           </g>
         ))}
         {compas}

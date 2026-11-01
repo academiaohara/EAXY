@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { useEffect } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { LessonStepControlProvider, useLessonStepControl, type LessonStepControl } from "@/components/lesson/LessonStepControlContext";
@@ -1646,6 +1646,97 @@ describe("mesa de dibujo · tangencias y curvas técnicas", () => {
     e.siguiente(2);
     expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 3 de 5");
     expect(screen.getByTestId("bench-espiral").querySelectorAll("path").length).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe("mesa de dibujo · guía, «Tu turno» y construcciones auxiliares", () => {
+  const G = TANGENCIAS_GEOM;
+
+  it("en los ejercicios se indica qué hace el alumno en cada paso («Tu turno») y desaparece al terminar", () => {
+    const t = pantalla("tangentes-practica");
+    expect(screen.getByTestId("bench-accion").textContent).toContain("toca el punto donde clavar el compás");
+    t.tocar(G.TO);
+    expect(screen.getByTestId("bench-accion").textContent).toContain("Fijar abertura");
+  });
+
+  it("las escenas de arrastre con instrumentos también dicen qué hacer", () => {
+    const { siguiente } = montar("paralelas-escuadra-cartabon", { a: 0, b: 70 });
+    expect(screen.queryByTestId("bench-accion")).toBeNull();
+    siguiente(BENCH_STEPS["paralelas-escuadra-cartabon"] - 1);
+    expect(screen.getByTestId("bench-accion").textContent).toContain("arrastra la escuadra");
+  });
+
+  it("tras dos fallos seguidos se resalta lo que hay que tocar, y al acertar la guía desaparece", () => {
+    const t = pantalla("tangentes-practica");
+    t.tocar([20, 20]);
+    expect(screen.queryAllByTestId("bench-guia")).toHaveLength(0);
+    t.tocar([30, 20]);
+    expect(screen.getAllByTestId("bench-guia")).toHaveLength(2);
+    expect(screen.getByTestId("bench-pista-texto").textContent).toContain("resaltados");
+    t.tocar(G.TO);
+    expect(screen.queryAllByTestId("bench-guia")).toHaveLength(0);
+  });
+
+  it("el botón Pista resalta la acción sin necesidad de fallar y no se puede pulsar al acabar", () => {
+    const t = pantalla("tangentes-practica");
+    fireEvent.click(screen.getByTestId("bench-pista"));
+    expect(screen.getAllByTestId("bench-guia").length).toBeGreaterThan(0);
+    t.tocar(G.TO);
+    expect(screen.queryAllByTestId("bench-guia")).toHaveLength(0);
+    expect((screen.getByTestId("bench-pista") as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it("la pista del arco dibuja el trazo punteado que hay que seguir", () => {
+    const t = pantalla("hexagono-practica");
+    t.tocar(POLIGONOS_GEOM.HO);
+    t.tocar(POLIGONOS_GEOM.HV[0]);
+    t.tocar(POLIGONOS_GEOM.HV[0]);
+    expect(t.fase()).toBe("arco");
+    fireEvent.click(screen.getByTestId("bench-pista"));
+    expect(screen.getByTestId("bench-guia-arco")).toBeTruthy();
+  });
+
+  it("al hallar un punto medio o una paralela, la explicación enseña cómo se construye", () => {
+    const a = montar("tangentes-compas");
+    expect(screen.queryByTestId("bench-punto-medio-anim")).toBeNull();
+    a.siguiente(1);
+    expect(screen.getByTestId("bench-punto-medio-anim")).toBeTruthy();
+    cleanup();
+    const b = montar("media-compas");
+    b.siguiente(1);
+    expect(screen.getByTestId("bench-punto-medio-anim")).toBeTruthy();
+    cleanup();
+    const c = montar("cuadratura-compas");
+    c.siguiente(2);
+    expect(screen.getByTestId("bench-punto-medio-anim")).toBeTruthy();
+    cleanup();
+    const d = montar("enlace-compas");
+    d.siguiente(1);
+    expect(screen.getAllByTestId("bench-paralela-anim")).toHaveLength(2);
+  });
+});
+
+describe("mesa de dibujo · construcciones auxiliares con instrumentos", () => {
+  it("las paralelas se trazan con escuadra y cartabón (equivalencia, Thales y óvalo) y los puntos medios con la mediatriz (medianas)", () => {
+    const a = montar("equivalencia-triangulos");
+    expect(screen.queryByTestId("bench-paralelo-escuadra")).toBeNull();
+    a.siguiente(1);
+    expect(screen.getAllByTestId("bench-paralelo-escuadra")).toHaveLength(1);
+    expect(screen.getByText("r ∥ AB")).toBeTruthy();
+    cleanup();
+    const b = montar("thales-dividir");
+    b.siguiente(5);
+    expect(within(screen.getByTestId("bench-paralelas-thales")).getAllByTestId("bench-paralelo-escuadra")).toHaveLength(2);
+    expect(screen.getAllByText("Q").length).toBeGreaterThan(0);
+    cleanup();
+    const c = montar("ovalo-compas");
+    expect(within(screen.getByTestId("bench-ovalo-thales")).getAllByTestId("bench-paralelo-escuadra")).toHaveLength(2);
+    expect(screen.getAllByText("O₁").length).toBeGreaterThan(0);
+    c.siguiente(1);
+    expect(screen.queryByTestId("bench-ovalo-thales")).toBeNull();
+    cleanup();
+    montar("puntos-notables");
+    expect(within(screen.getByTestId("bench-medios-anim")).getAllByTestId("bench-punto-medio-anim")).toHaveLength(3);
   });
 });
 

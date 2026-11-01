@@ -4,7 +4,7 @@ import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animPuntoMedio, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
@@ -57,7 +57,7 @@ function recta(a: Pt, b: Pt, ext: number): [Pt, Pt] {
 
 export function PuntosNotables({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, 2600);
+  const p = useProgreso(step, step === 0 ? 11000 : 2600);
   const A = PN_A;
   const B = PN_B;
   const C = PN_C;
@@ -68,7 +68,12 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
   const { p: I, r: rI } = incentro(A, B, C);
   const O = circuncentro(A, B, C);
   const H = ortocentro(A, B, C);
-  const t = tramo(p, 0, 0.7);
+  // paso 0: antes de trazar las medianas se hallan los puntos medios de los tres lados con la mediatriz
+  const pmAB = animPuntoMedio(A, B, step === 0 ? tramo(p, 0, 0.23) : 1);
+  const pmBC = animPuntoMedio(B, C, step === 0 ? tramo(p, 0.23, 0.46) : 1);
+  const pmAC = animPuntoMedio(A, C, step === 0 ? tramo(p, 0.46, 0.69) : 1);
+  const poseMedios = step === 0 ? (pmAB.pose ?? pmBC.pose ?? pmAC.pose) : null;
+  const t = step === 0 ? tramo(p, 0.72, 1) : tramo(p, 0, 0.7);
   const aparece = (a: Pt, b: Pt): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
 
   // bisectrices: del vértice al pie sobre el lado opuesto
@@ -98,6 +103,14 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
           lineas[k].map((l, i) => <Seg key={`${k}-${i}`} a={l.a} b={l.b} color={colores[k]} w={1} dash="5 4" />),
         )}
         <path d={poligono([A, B, C])} fill="rgba(31,120,180,0.10)" stroke={INK} strokeWidth="1.8" strokeLinejoin="round" />
+        {step === 0 ? (
+          <g data-testid="bench-medios-anim">
+            {pmAB.nodos}
+            {pmBC.nodos}
+            {pmAC.nodos}
+            {[[pmAB, mAB], [pmBC, mBC], [pmAC, mAC]].map(([pm, m], i) => ((pm as typeof pmAB).listo ? <circle key={i} cx={(m as Pt)[0]} cy={(m as Pt)[1]} r="3.2" fill={AMBAR} /> : null))}
+          </g>
+        ) : null}
         {step < 4
           ? lineas[step].map((l, i) => {
               const f = aparece(l.a, l.b);
@@ -124,6 +137,11 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
         <Punto p={A} nombre="A" dx={-16} dy={18} />
         <Punto p={B} nombre="B" dx={8} dy={18} />
         <Punto p={C} nombre="C" dx={8} dy={-8} />
+        {poseMedios ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={poseMedios.pose} open={poseMedios.open} />
+          </g>
+        ) : null}
         {step < 4 && t > 0.9 ? <Punto p={puntos[step][0]} nombre={puntos[step][1]} dx={puntos[step][2][0]} dy={puntos[step][2][1]} color={col} /> : null}
         {step < 4 ? <Txt p={[430, 70]} color={col} size={15}>{nombres[step]}</Txt> : null}
       </svg>
