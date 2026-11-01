@@ -90,7 +90,7 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `homotecia-compas` | 5 | **Explicación animada** de la homotecia de razón 2: rectas desde `O`, medida `OA`, arco de radio `OA` centrado en `A` que corta a la recta `OA` en `A′` (`OA′ = 2·OA`), y el triángulo ampliado con lados paralelos | — |
 | `homotecia-practica` | 4 fases | **Práctica**: hallar `A′` (medida `OA`, punta en `A`, arco, marcar el corte que no es `O`) | — |
 | `thales-dividir` | 7 | **Explicación animada** de dividir `AB` en tres partes iguales con Thales: tres marcas con la misma abertura sobre una semirrecta, unión de la tercera con `B` y paralelas por las marcas 1 y 2 | — |
-| `thales-practica` | 8 fases | **Práctica** de las tres marcas iguales (abertura libre entre 40 y 100, punta en `A` y en cada marca) y unión de la tercera con `B` | — |
+| `thales-practica` | 10 fases | **Práctica** de las tres marcas iguales (abertura libre entre 40 y 100, punta en `A` y en cada marca) y unión de la tercera con `B` | — |
 | `media-compas` / `media-practica` | 5 / 4 fases | **Media proporcional** (teorema de la altura): punto medio, semicircunferencia de diámetro `a + b` y perpendicular por `H` | — |
 | `aurea-compas` / `aurea-practica` | 5 / 7 fases | **Sección áurea** con regla y compás: `BC = AB/2`, arco de radio `CB` hasta `D`, arco de radio `AD` hasta `E` | — |
 | `equivalencia-triangulos` | 4 | Triángulos de igual base y altura (el vértice recorre la paralela) y rectángulo de mitad de altura | — |
