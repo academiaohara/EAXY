@@ -11,6 +11,9 @@ import { TraslacionCompas } from "./scenes-transformaciones";
 import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
 import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, HexagonoPractica, PentagramaPractica, PoligonoElementos, PuntosNotables, RomboCompas, RomboPractica, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
+import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
+import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
+import { ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -123,6 +126,50 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <EspiralPractica block={block} />;
     case "evolvente-hilo":
       return <EvolventeHilo block={block} />;
+    case "elementos-geometricos":
+      return <ElementosGeometricos block={block} />;
+    case "operaciones-regla-compas":
+      return <OperacionesReglaCompas block={block} />;
+    case "lugar-geometrico":
+      return <LugarGeometrico block={block} />;
+    case "suma-segmentos-compas":
+      return <SumaSegmentos block={block} />;
+    case "diferencia-segmentos-compas":
+      return <DiferenciaSegmentos block={block} />;
+    case "perpendicular-compas":
+      return <PerpendicularCompas block={block} />;
+    case "arco-bisecado-tres-puntos":
+      return <ArcoBisecado block={block} />;
+    case "division-2n":
+      return <DivisionDos block={block} />;
+    case "angulos-tipos":
+      return <AngulosTipos block={block} />;
+    case "angulos-circunferencia":
+      return <AngulosCircunferencia block={block} />;
+    case "suma-angulos-compas":
+      return <SumaAngulos block={block} />;
+    case "diferencia-angulos-compas":
+      return <DiferenciaAngulos block={block} />;
+    case "bisectriz-segundo-metodo":
+      return <BisectrizSegundoMetodo block={block} />;
+    case "division-angulo-2n":
+      return <DivisionAngulo block={block} />;
+    case "construccion-angulos":
+      return <ConstruccionAngulos block={block} />;
+    case "paralelo-compas":
+      return <ParaleloCompas block={block} />;
+    case "transporte-segmento-practica":
+      return <TransporteSegmentoPractica block={block} />;
+    case "suma-segmentos-practica":
+      return <SumaSegmentosPractica block={block} />;
+    case "diferencia-segmentos-practica":
+      return <DiferenciaSegmentosPractica block={block} />;
+    case "paralelo-compas-practica":
+      return <ParaleloCompasPractica block={block} />;
+    case "perpendicular-punto-practica":
+      return <PerpendicularPuntoPractica block={block} />;
+    case "construye-angulos-practica":
+      return <ConstruyeAngulosPractica block={block} />;
     default:
       return null;
   }

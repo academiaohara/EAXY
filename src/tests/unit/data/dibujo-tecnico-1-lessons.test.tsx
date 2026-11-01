@@ -24,8 +24,11 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
   return [...slide.blocks, ...(slide.visual ? [slide.visual] : [])].filter((b): b is Extract<SlideBlock, { kind: "anim" | "tool" | "bench" }> => b.kind === "anim" || b.kind === "tool" || b.kind === "bench");
 }
 
+/** Lecciones que son solo explicación (sin ejercicio propio). */
+const SOLO_EXPLICACION = new Set(["semejanza-homotecia-dt1", "elementos-signos-geometricos-dt1", "lugar-geometrico-concepto-dt1", "angulos-tipos-relaciones-dt1", "suma-diferencia-angulos-dt1", "division-angulo-bisectriz-dt1"]);
+
 const TEMAS: [slug: string, lecciones: number][] = [
-  ["instrumentos-trazados-fundamentales", 4],
+  ["instrumentos-trazados-fundamentales", 14],
   ["historia-fundamentos-geometricos", 4],
   ["proporcionalidad-equivalencia-semejanza", 4],
   ["triangulos-cuadrilateros-poligonos", 6],
@@ -52,7 +55,7 @@ describe("curso Dibujo Técnico I", () => {
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: pasos bien formados", (_slug, { data }) => {
     const conMesa = data.steps.some((st) => st.type === "bench_task" || (st.type === "slide" && st.visual?.kind === "bench"));
-    expect(data.steps.length).toBeGreaterThanOrEqual(conMesa ? (data.slug === "semejanza-homotecia-dt1" ? 1 : 2) : 5);
+    expect(data.steps.length).toBeGreaterThanOrEqual(conMesa ? (SOLO_EXPLICACION.has(data.slug) ? 1 : 2) : 5);
     const ids = data.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
     let practice = 0;
@@ -82,7 +85,7 @@ describe("curso Dibujo Técnico I", () => {
       }
     }
     // La lección de semejanza y escalas es solo explicación (sin ejercicio propio).
-    expect(practice).toBeGreaterThanOrEqual(conMesa ? (data.slug === "semejanza-homotecia-dt1" ? 0 : 1) : 2);
+    expect(practice).toBeGreaterThanOrEqual(conMesa ? (SOLO_EXPLICACION.has(data.slug) ? 0 : 1) : 2);
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: tiene animaciones o herramientas interactivas", (_slug, { data }) => {

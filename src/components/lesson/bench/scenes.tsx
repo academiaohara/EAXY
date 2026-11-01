@@ -7,6 +7,7 @@ import {
   CARTABON_LARGO,
   PARALELA_S_MAX,
   add,
+  applyPose,
   apoyarTriangulo,
   cartabonPose,
   clamp,
@@ -16,6 +17,7 @@ import {
   mul,
   paralelaSetup,
   sub,
+  type Pose,
   type Pt,
 } from "./geometry";
 import { useBenchCheck } from "./practice";
@@ -83,12 +85,34 @@ export type BenchSceneName =
   | "ovalo-practica"
   | "espiral-compas"
   | "espiral-practica"
-  | "evolvente-hilo";
+  | "evolvente-hilo"
+  | "elementos-geometricos"
+  | "operaciones-regla-compas"
+  | "lugar-geometrico"
+  | "suma-segmentos-compas"
+  | "diferencia-segmentos-compas"
+  | "perpendicular-compas"
+  | "arco-bisecado-tres-puntos"
+  | "division-2n"
+  | "angulos-tipos"
+  | "angulos-circunferencia"
+  | "suma-angulos-compas"
+  | "diferencia-angulos-compas"
+  | "bisectriz-segundo-metodo"
+  | "division-angulo-2n"
+  | "construccion-angulos"
+  | "paralelo-compas"
+  | "transporte-segmento-practica"
+  | "suma-segmentos-practica"
+  | "diferencia-segmentos-practica"
+  | "paralelo-compas-practica"
+  | "perpendicular-punto-practica"
+  | "construye-angulos-practica";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "instrumentos-catalogo": 6,
-  "escuadra-cartabon-angulos": 6,
+  "escuadra-cartabon-angulos": 9,
   "lapices-dureza": 3,
   "paralelas-escuadra-cartabon": 3,
   "perpendicular-escuadra-cartabon": 3,
@@ -140,6 +164,28 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "espiral-compas": 5,
   "espiral-practica": 12,
   "evolvente-hilo": 4,
+  "elementos-geometricos": 7,
+  "operaciones-regla-compas": 7,
+  "lugar-geometrico": 6,
+  "suma-segmentos-compas": 5,
+  "diferencia-segmentos-compas": 4,
+  "perpendicular-compas": 9,
+  "arco-bisecado-tres-puntos": 6,
+  "division-2n": 4,
+  "angulos-tipos": 12,
+  "angulos-circunferencia": 7,
+  "suma-angulos-compas": 5,
+  "diferencia-angulos-compas": 4,
+  "bisectriz-segundo-metodo": 5,
+  "division-angulo-2n": 3,
+  "construccion-angulos": 6,
+  "paralelo-compas": 6,
+  "transporte-segmento-practica": 5,
+  "suma-segmentos-practica": 13,
+  "diferencia-segmentos-practica": 5,
+  "paralelo-compas-practica": 12,
+  "perpendicular-punto-practica": 11,
+  "construye-angulos-practica": 14,
 };
 
 export const INK = "#2a2f36";
@@ -317,28 +363,101 @@ function TrianguloConAngulos({ pts, k, o, color, vals, children }: { pts: [Pt, P
   );
 }
 
-function Rayo({ o, deg, len = 270, etiqueta }: { o: Pt; deg: number; len?: number; etiqueta?: string }) {
-  const e: Pt = [o[0] + len * Math.cos(rad(deg)), o[1] - len * Math.sin(rad(deg))];
-  return (
-    <g>
-      <line x1={o[0]} y1={o[1]} x2={e[0]} y2={e[1]} stroke={INK} strokeWidth="1.3" strokeLinecap="round" />
-      {etiqueta ? (
-        <text x={e[0] + 6} y={e[1] - 4} fontSize="12" fontWeight="700" fill={INK} fontFamily={SANS}>
-          {etiqueta}
-        </text>
-      ) : null}
-    </g>
-  );
-}
-
 /** Arco de ángulo con la base en la horizontal (0° = hacia la derecha, sentido antihorario en pantalla). */
 function ArcoBase({ o, de, a, r, color, text, dr }: { o: Pt; de: number; a: number; r: number; color: string; text: string; dr?: number }) {
   return <Arco v={o} a1={-de} a2={-a} r={r} color={color} text={text} dr={dr ?? 16} textSize={14} />;
 }
 
+const BASE_Y = 300;
+
+type Colocacion = { instrumentos: { tipo: "escuadra" | "cartabon"; pose: Pose }[]; p1: Pt; p2: Pt };
+
+const ptsEscuadra = ESCUADRA_PTS;
+const ptsCartabon = CARTABON_PTS;
+
+/** Recta de la hipotenusa de un instrumento colocado con `pose`. */
+const hipotenusa = (pts: [Pt, Pt, Pt], pose: Pose): [Pt, Pt] => [applyPose(pose, pts[1]), applyPose(pose, pts[2])];
+
+/** Corte de la recta `p1`–`p2` con la horizontal y = BASE_Y. */
+function corteBase(p1: Pt, p2: Pt): Pt {
+  const t = (BASE_Y - p1[1]) / (p2[1] - p1[1]);
+  return [p1[0] + (p2[0] - p1[0]) * t, BASE_Y];
+}
+
+/**
+ * Seis posiciones de escuadra y cartabón sobre una horizontal (figura 14 del libro): solas o, para 15° y 75°, con un cateto de
+ * la escuadra apoyado en la hipotenusa del cartabón. El ángulo se mide con la recta que sigue la hipotenusa de la pieza de arriba.
+ */
+function colocar(cfg: number): Colocacion {
+  if (cfg === 1 || cfg === 3 || cfg === 5) {
+    // piezas solas
+    const sola: [Pose, "escuadra" | "cartabon"][] = [
+      [apoyarTriangulo(ptsCartabon, 0, 1, [250, BASE_Y], true), "cartabon"], // 30° / 150°
+      [apoyarTriangulo(ptsEscuadra, 1, 0, [210, BASE_Y], true), "escuadra"], // 45° hacia la derecha
+      [apoyarTriangulo(ptsEscuadra, 0, 1, [250, BASE_Y], true), "escuadra"], // 135° / 45° hacia la izquierda
+    ];
+    // 30°/150° (cfg 1), 60°/120° (cfg 3, cateto corto sobre la base), 135°/45° (cfg 5)
+    const pose: Pose = cfg === 1 ? sola[0][0] : cfg === 3 ? apoyarTriangulo(ptsCartabon, 0, 2, [250, BASE_Y], true) : sola[2][0];
+    const tipo = cfg === 3 ? "cartabon" : cfg === 1 ? "cartabon" : "escuadra";
+    const pts = tipo === "cartabon" ? ptsCartabon : ptsEscuadra;
+    const [p1, p2] = hipotenusa(pts, pose);
+    return { instrumentos: [{ tipo, pose }], p1, p2 };
+  }
+  if (cfg === 2) {
+    const pose = apoyarTriangulo(ptsEscuadra, 1, 0, [210, BASE_Y], true);
+    const [p1, p2] = hipotenusa(ptsEscuadra, pose);
+    return { instrumentos: [{ tipo: "escuadra", pose }], p1, p2 };
+  }
+  // cfg 0 (15°/165°) y cfg 4 (75°/105°): cartabón sobre su cateto largo y escuadra con un cateto en su hipotenusa
+  const cart = apoyarTriangulo(ptsCartabon, 0, 1, [170, BASE_Y], true);
+  const [H1, H2] = hipotenusa(ptsCartabon, cart);
+  const largo = Math.hypot(H2[0] - H1[0], H2[1] - H1[1]);
+  const h: Pt = [(H2[0] - H1[0]) / largo, (H2[1] - H1[1]) / largo];
+  const angH = (Math.atan2(h[1], h[0]) * 180) / Math.PI;
+  let mejor: Colocacion | null = null;
+  let mejorD = Infinity;
+  const [desde, hasta] = cfg === 0 ? [0, largo - 170] : [170, largo];
+  for (let sp = desde; sp <= hasta; sp += 5) {
+    const q: Pt = [H1[0] + h[0] * sp, H1[1] + h[1] * sp];
+    const pose: Pose = cfg === 0 ? { x: q[0], y: q[1], rot: angH } : { x: q[0], y: q[1], rot: angH + 180, mirror: true };
+    const [p1, p2] = hipotenusa(ptsEscuadra, pose);
+    const v = corteBase(p1, p2);
+    const d = Math.abs(v[0] - 150);
+    if (d < mejorD) {
+      mejorD = d;
+      mejor = { instrumentos: [{ tipo: "cartabon", pose: cart }, { tipo: "escuadra", pose }], p1, p2 };
+    }
+  }
+  return mejor!;
+}
+
+function PosicionAngulos({ cfg }: { cfg: number }) {
+  const { instrumentos, p1, p2 } = colocar(cfg);
+  const corte = corteBase(p1, p2);
+  // si la recta corta la horizontal fuera de la hoja (15°), se traslada el ángulo a un vértice visible con una paralela
+  const trasladado = corte[0] < 60 || corte[0] > 580;
+  const v: Pt = trasladado ? [130, BASE_Y] : corte;
+  let phi = (Math.atan2(-(p2[1] - p1[1]), p2[0] - p1[0]) * 180) / Math.PI;
+  phi = ((phi % 180) + 180) % 180;
+  const arriba = p1[1] < p2[1] ? p1 : p2;
+  const dir: Pt = [arriba[0] - corte[0], arriba[1] - corte[1]];
+  const l = Math.hypot(dir[0], dir[1]);
+  const u: Pt = [dir[0] / l, dir[1] / l];
+  const fin: Pt = trasladado ? [v[0] + u[0] * 360, v[1] + u[1] * 360] : [arriba[0] + u[0] * 50, arriba[1] + u[1] * 50];
+  const r = Math.round(phi);
+  return (
+    <g data-testid="bench-posicion-angulos" data-angulo={r}>
+      <line x1="20" y1={BASE_Y} x2="600" y2={BASE_Y} stroke={INK} strokeWidth="1.3" />
+      {instrumentos.map((i, k) => (i.tipo === "cartabon" ? <Cartabon key={k} pose={i.pose} /> : <Escuadra key={k} pose={i.pose} />))}
+      <line x1={v[0]} y1={v[1]} x2={fin[0]} y2={fin[1]} stroke={INK} strokeWidth="1.4" strokeLinecap="round" strokeDasharray={trasladado ? "7 5" : undefined} />
+      <ArcoBase o={v} de={0} a={phi} r={52} color={AMBAR} text={`${r}°`} dr={14} />
+      <ArcoBase o={v} de={phi} a={180} r={82} color={AZUL} text={`${180 - r}°`} dr={16} />
+    </g>
+  );
+}
+
 export function EscuadraCartabonAngulos({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const O: Pt = [120, 322];
   const sobreEscuadra = apoyarTriangulo(ESCUADRA_PTS, 1, 2, [170, 168]);
   const sobreCartabon = apoyarTriangulo(CARTABON_PTS, 0, 1, [170, 336]);
   const xi = 170;
@@ -375,38 +494,7 @@ export function EscuadraCartabonAngulos({ block }: { block: BenchBlock }) {
             </text>
           </g>
         ) : null}
-        {step >= 3 ? (
-          <g data-testid="bench-rayos">
-            <line x1="40" y1={O[1]} x2="590" y2={O[1]} stroke={INK} strokeWidth="1.3" />
-            {step === 3 ? (
-              <>
-                <Rayo o={O} deg={30} etiqueta="30° cartabón" />
-                <Rayo o={O} deg={45} etiqueta="45° escuadra" />
-                <ArcoBase o={O} de={0} a={30} r={64} color={AMBAR} text="30°" />
-                <ArcoBase o={O} de={0} a={45} r={92} color={AZUL} text="45°" />
-                <ArcoBase o={O} de={30} a={45} r={160} color={VERDE} text="15°" dr={18} />
-              </>
-            ) : null}
-            {step === 4 ? (
-              <>
-                <Rayo o={O} deg={45} etiqueta="45°" />
-                <Rayo o={O} deg={75} etiqueta="75°" />
-                <ArcoBase o={O} de={0} a={45} r={70} color={AZUL} text="45°" />
-                <ArcoBase o={O} de={45} a={75} r={110} color={AMBAR} text="+30°" />
-                <ArcoBase o={O} de={0} a={75} r={170} color={VERDE} text="75°" dr={18} />
-              </>
-            ) : null}
-            {step === 5 ? (
-              <>
-                <Rayo o={O} deg={60} etiqueta="60°" />
-                <Rayo o={O} deg={105} etiqueta="105°" />
-                <ArcoBase o={O} de={0} a={60} r={70} color={AMBAR} text="60°" />
-                <ArcoBase o={O} de={60} a={105} r={110} color={AZUL} text="+45°" />
-                <ArcoBase o={O} de={0} a={105} r={170} color={VERDE} text="105°" dr={18} />
-              </>
-            ) : null}
-          </g>
-        ) : null}
+        {step >= 3 ? <PosicionAngulos cfg={step - 3} /> : null}
       </svg>
     </BenchShell>
   );
