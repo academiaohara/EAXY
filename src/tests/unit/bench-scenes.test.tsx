@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { useEffect } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { LessonStepControlProvider, useLessonStepControl, type LessonStepControl } from "@/components/lesson/LessonStepControlContext";
@@ -1713,6 +1713,30 @@ describe("mesa de dibujo · guía, «Tu turno» y construcciones auxiliares", ()
     const d = montar("enlace-compas");
     d.siguiente(1);
     expect(screen.getAllByTestId("bench-paralela-anim")).toHaveLength(2);
+  });
+});
+
+describe("mesa de dibujo · construcciones auxiliares con instrumentos", () => {
+  it("las paralelas se trazan con escuadra y cartabón (equivalencia, Thales y óvalo) y los puntos medios con la mediatriz (medianas)", () => {
+    const a = montar("equivalencia-triangulos");
+    expect(screen.queryByTestId("bench-paralelo-escuadra")).toBeNull();
+    a.siguiente(1);
+    expect(screen.getAllByTestId("bench-paralelo-escuadra")).toHaveLength(1);
+    expect(screen.getByText("r ∥ AB")).toBeTruthy();
+    cleanup();
+    const b = montar("thales-dividir");
+    b.siguiente(5);
+    expect(within(screen.getByTestId("bench-paralelas-thales")).getAllByTestId("bench-paralelo-escuadra")).toHaveLength(2);
+    expect(screen.getAllByText("Q").length).toBeGreaterThan(0);
+    cleanup();
+    const c = montar("ovalo-compas");
+    expect(within(screen.getByTestId("bench-ovalo-thales")).getAllByTestId("bench-paralelo-escuadra")).toHaveLength(2);
+    expect(screen.getAllByText("O₁").length).toBeGreaterThan(0);
+    c.siguiente(1);
+    expect(screen.queryByTestId("bench-ovalo-thales")).toBeNull();
+    cleanup();
+    montar("puntos-notables");
+    expect(within(screen.getByTestId("bench-medios-anim")).getAllByTestId("bench-punto-medio-anim")).toHaveLength(3);
   });
 });
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
-import { BenchDefs, Compas, Desk, Regla, Transportador, poseCompas } from "./instruments";
+import { PARALELA_A, angDe, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type Pt } from "./geometry";
+import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { useBenchCheck } from "./practice";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoPlano, Punto, puntero } from "./scenes-trazados";
@@ -125,6 +125,42 @@ export function animParalelaCompas(q0: Pt, q1: Pt, n: Pt, r: number, p: number) 
   );
   const pose = p < 0.28 ? poseCompas(q0, enCirculo(q0, r, lerp(ang - 16, ang + 16, t1))) : p < 0.56 ? poseCompas(q1, enCirculo(q1, r, lerp(ang - 16, ang + 16, t2))) : null;
   return { nodos, pose };
+}
+
+/**
+ * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
+ * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
+ */
+export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4") {
+  const L = dist(a, b);
+  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
+  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  let theta = aGrados(Math.atan2(u0[1], u0[0]));
+  let d = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta + 90));
+  if (d < 0) {
+    theta += 180;
+    d = -d;
+  }
+  const u = dir(theta);
+  const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, d);
+  const mov = tramo(p, 0.18, 0.7);
+  const s = setup.sStar * (mov * mov * (3 - 2 * mov));
+  const opacidad = tramo(p, 0, 0.14) * (1 - tramo(p, 0.9, 1));
+  const trazo = tramo(p, 0.7, 0.9);
+  const fin: Pt = [lerp(linea[0][0], linea[1][0], trazo), lerp(linea[0][1], linea[1][1], trazo)];
+  const nodos = (
+    <g data-testid="bench-paralelo-escuadra">
+      {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
+      {opacidad > 0 ? (
+        <g opacity={opacidad} pointerEvents="none">
+          <Cartabon pose={cartabonPose(setup)} />
+          <Escuadra pose={escuadraPose(setup, s)} />
+        </g>
+      ) : null}
+    </g>
+  );
+  return { nodos, listo: p >= 0.9 };
 }
 
 export const MV = { w: 620, h: 380 };

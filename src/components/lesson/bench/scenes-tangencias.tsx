@@ -4,7 +4,7 @@ import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParalelaCompas, animPuntoMedio, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, animParalelaCompas, animPuntoMedio, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
 
@@ -388,14 +388,14 @@ function arcoPath(c: Pt, r: number, desde: Pt, hasta: Pt, color: string, w = 3) 
   return <path d={`M${s[0]} ${s[1]} A${r} ${r} 0 ${a2 - a1 > 180 ? 1 : 0} 0 ${e[0]} ${e[1]}`} fill="none" stroke={color} strokeWidth={w} strokeLinecap="round" />;
 }
 
-function PapelOvalo({ centros = 0, strip = false }: { centros?: 0 | 1 | 2; strip?: boolean }) {
+function PapelOvalo({ centros = 0, strip = false, o1 = true, o2 = true }: { centros?: 0 | 1 | 2; strip?: boolean; o1?: boolean; o2?: boolean }) {
   return (
     <g>
       <Seg a={OA} b={OB} w={1.8} />
       <Punto p={OA} nombre="A" dx={-16} dy={18} />
       <Punto p={OB} nombre="B" dx={8} dy={18} />
-      <Punto p={O1} nombre="O₁" dx={-8} dy={20} color={AZUL} />
-      <Punto p={O2} nombre="O₂" dx={-8} dy={20} color={AZUL} />
+      {o1 ? <Punto p={O1} nombre="O₁" dx={-8} dy={20} color={AZUL} /> : null}
+      {o2 ? <Punto p={O2} nombre="O₂" dx={-8} dy={20} color={AZUL} /> : null}
       {centros >= 1 ? <Punto p={O3} nombre="O₃" dx={-9} dy={22} color={VERDE} /> : null}
       {centros >= 2 ? <Punto p={O4} nombre="O₄" dx={-9} dy={-10} color={VERDE} /> : null}
       {strip ? (
@@ -412,7 +412,15 @@ function PapelOvalo({ centros = 0, strip = false }: { centros?: 0 | 1 | 2; strip
 
 export function OvaloCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 1 ? 4600 : step === 3 ? 4200 : 1);
+  const p = useProgreso(step, step === 0 ? 15000 : step === 1 ? 4600 : step === 3 ? 4200 : 1);
+  // paso 0: el eje mayor se divide en tres partes iguales con el teorema de Thales (compás, regla, escuadra y cartabón)
+  const dirR: Pt = [Math.cos((35 * Math.PI) / 180), -Math.sin((35 * Math.PI) / 180)];
+  const marcaT = (k: number): Pt => [OA[0] + dirR[0] * k * OD, OA[1] + dirR[1] * k * OD];
+  const pt = (a: number, b: number) => (step === 0 ? tramo(p, a, b) : 1);
+  const par2 = animParaleloEscuadra(marcaT(3), OB, marcaT(2), [marcaT(2), O2], pt(0.4, 0.7));
+  const par1 = animParaleloEscuadra(marcaT(3), OB, marcaT(1), [marcaT(1), O1], pt(0.7, 1));
+  const ventana = (k: number) => pt(0.05 + 0.08 * (k - 1), 0.05 + 0.08 * k);
+  const poseT = step === 0 ? ([1, 2, 3] as const).map((k) => (ventana(k) > 0 && ventana(k) < 1 ? poseCompas(marcaT(k - 1), enCirculo(marcaT(k - 1), OD, lerp(13, 57, ventana(k)))) : null)).find(Boolean) ?? null : null;
   const a3 = angDe(O3, E1);
   const a4 = angDe(O4, E3);
   return (
@@ -420,7 +428,27 @@ export function OvaloCompas({ block }: { block: BenchBlock }) {
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con el eje mayor de un óvalo y su construcción con cuatro arcos" data-testid="bench-ovalo">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelOvalo centros={step >= 1 && (step > 1 || p > 0.95) ? 2 : 0} />
+        <PapelOvalo centros={step >= 1 && (step > 1 || p > 0.95) ? 2 : 0} o1={step > 0 || par1.listo} o2={step > 0 || par2.listo} />
+        {step === 0 ? (
+          <g data-testid="bench-ovalo-thales">
+            <Seg a={OA} b={[OA[0] + dirR[0] * 3.4 * OD * pt(0, 0.05), OA[1] + dirR[1] * 3.4 * OD * pt(0, 0.05)]} w={1.4} />
+            {[1, 2, 3].map((k) => (
+              <g key={k}>
+                <ArcoAnim c={marcaT(k - 1)} r={OD} a1={13} a2={57} t={ventana(k)} />
+                {ventana(k) >= 1 ? <circle cx={marcaT(k)[0]} cy={marcaT(k)[1]} r="3" fill={INK} /> : null}
+                {ventana(k) >= 1 ? <Txt p={[marcaT(k)[0] - 16, marcaT(k)[1] - 6]}>{String(k)}</Txt> : null}
+              </g>
+            ))}
+            {p >= 0.3 ? <ReglaTrazando a={marcaT(3)} b={OB} p={pt(0.3, 0.38)} ext={0} color={VERDE} /> : null}
+            {par2.nodos}
+            {par1.nodos}
+          </g>
+        ) : null}
+        {poseT ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={poseT.pose} open={poseT.open} />
+          </g>
+        ) : null}
         {step >= 1 ? (
           <g data-testid="bench-ovalo-circulos">
             <ArcoAnim c={O1} r={OD} a1={0} a2={360} t={step === 1 ? tramo(p, 0, 0.5) : 1} />

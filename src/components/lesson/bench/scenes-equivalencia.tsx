@@ -4,7 +4,7 @@ import { useState } from "react";
 import { dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animParaleloEscuadra, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
@@ -17,10 +17,11 @@ const ALT = 130;
 
 export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 2 ? 4200 : 1);
+  const p = useProgreso(step, step === 1 ? 7500 : step === 2 ? 4200 : 1);
   const cx = step === 2 ? (p < 0.65 ? lerp(220, 470, p / 0.65) : lerp(470, 340, (p - 0.65) / 0.35)) : step > 2 ? 340 : 220;
   const C1: Pt = [220, 300 - ALT];
   const C: Pt = [cx, 300 - ALT];
+  const par = animParaleloEscuadra(QA, QB, C1, [[110, 300 - ALT], [560, 300 - ALT]], step === 1 ? p : 1);
   const fantasma: Pt[] = step >= 3 ? [[340, 300 - ALT], [470, 300 - ALT]] : [];
   return (
     <BenchShell scene="equivalencia-triangulos" notes={block.notes} step={step} setStep={setStep} label="Hoja con triángulos de la misma base y la misma altura">
@@ -28,9 +29,9 @@ export function EquivalenciaTriangulos({ block }: { block: BenchBlock }) {
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
         <Seg a={QA} b={QB} w={1.8} />
-        {step >= 1 ? <Seg a={[110, 300 - ALT]} b={[560, 300 - ALT]} color={AZUL} w={1.4} dash="8 5" /> : null}
-        {step >= 1 ? <Txt p={[520, 300 - ALT - 8]} color={AZUL}>r ∥ AB</Txt> : null}
-        {step >= 1 ? (
+        {step >= 1 ? par.nodos : null}
+        {step >= 2 || (step === 1 && par.listo) ? <Txt p={[520, 300 - ALT - 8]} color={AZUL}>r ∥ AB</Txt> : null}
+        {step >= 2 || (step === 1 && par.listo) ? (
           <g data-testid="bench-altura-eq">
             <Seg a={[C1[0], 300]} b={C1} color={AMBAR} w={1.4} dash="4 4" />
             <Txt p={[C1[0] + 8, 300 - ALT / 2]} color={AMBAR}>h</Txt>
