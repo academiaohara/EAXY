@@ -4,7 +4,7 @@ import { useState } from "react";
 import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animParalelaCompas, animPuntoMedio, lerp, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
 
@@ -73,15 +73,17 @@ function PapelTangentes({ tangentes = false, m = false, t = 0 }: { tangentes?: b
 
 export function TangentesCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 2 ? 5200 : step === 3 ? 3600 : 1);
-  const comp = step === 2 ? poseCompas(TM, enCirculo(TM, TMO, 360 * p)) : null;
+  const p = useProgreso(step, step === 1 ? 6200 : step === 2 ? 5200 : step === 3 ? 3600 : 1);
+  const pm = animPuntoMedio(TO, TP, step === 1 ? p : 1);
+  const comp = step === 1 ? pm.pose : step === 2 ? poseCompas(TM, enCirculo(TM, TMO, 360 * p)) : null;
   return (
     <BenchShell scene="tangentes-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con una circunferencia, un punto exterior y la construcción de sus tangentes">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con una circunferencia, un punto exterior y la construcción de sus tangentes" data-testid="bench-tangentes">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelTangentes m={step >= 1} t={step >= 3 ? 2 : step === 2 && p > 0.9 ? 2 : 0} />
+        <PapelTangentes m={step >= 2 || (step === 1 && pm.listo)} t={step >= 3 ? 2 : step === 2 && p > 0.9 ? 2 : 0} />
         {step >= 1 ? <Seg a={TO} b={TP} color={AUX} w={1} dash="5 4" /> : null}
+        {step >= 1 ? pm.nodos : null}
         {step >= 2 ? (
           <g data-testid="bench-circ-diametro">
             <ArcoAnim c={TM} r={TMO} a1={0} a2={360} t={step === 2 ? p : 1} />
@@ -302,7 +304,10 @@ const en = (v: Pt, u: Pt, t: number): Pt => [v[0] + u[0] * t, v[1] + u[1] * t];
 
 export function EnlaceCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, 2400);
+  const p = useProgreso(step, step === 1 ? 9000 : 2400);
+  const par1 = animParalelaCompas([NV[0] + 160, NV[1]], [NV[0] + 300, NV[1]], [0, -1], NR, step === 1 ? tramo(p, 0, 0.5) : 1);
+  const q = (t: number): Pt => en(NV, U2, t);
+  const par2 = animParalelaCompas(q(110), q(220), N2, NR, step === 1 ? tramo(p, 0.5, 1) : 1);
   const a1 = angDe(NC, NT2);
   const a2 = angDe(NC, NT1);
   return (
@@ -318,12 +323,16 @@ export function EnlaceCompas({ block }: { block: BenchBlock }) {
         <Txt p={[420, 70]} color={AMBAR}>{`radio del enlace r = ${NR / 10} cm`}</Txt>
         {step >= 1 ? (
           <g data-testid="bench-enlace-paralelas">
-            <Seg a={[NV[0], NV[1] - NR]} b={[NV[0] + 400, NV[1] - NR]} color={AZUL} w={1.3} dash="7 5" />
-            <Seg a={en(NV, N2, NR)} b={en(en(NV, N2, NR), U2, 280)} color={AZUL} w={1.3} dash="7 5" />
-            <Txt p={[430, NV[1] - NR - 8]} color={AZUL} size={12}>paralela a r</Txt>
+            {par1.nodos}
+            {par2.nodos}
           </g>
         ) : null}
-        {step >= 1 ? <Punto p={NC} nombre="C" dx={8} dy={-8} color={VERDE} /> : null}
+        {step === 1 ? (par1.pose ?? par2.pose) ? (
+          <g data-testid="bench-compas" pointerEvents="none">
+            <Compas pose={(par1.pose ?? par2.pose)!.pose} open={(par1.pose ?? par2.pose)!.open} />
+          </g>
+        ) : null : null}
+        {step >= 2 || (step === 1 && p > 0.97) ? <Punto p={NC} nombre="C" dx={8} dy={-8} color={VERDE} /> : null}
         {step >= 2 ? (
           <g data-testid="bench-enlace-pies">
             <Seg a={NC} b={NT1} color={AUX} w={1.2} dash="4 4" />

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SANS, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 
 export const etiqueta = { stroke: "#fffefa", strokeWidth: 3.5, paintOrder: "stroke" as const, strokeLinejoin: "round" as const };
@@ -215,15 +215,17 @@ function PapelMedia({ centro = false, semi = 0, altura = 0, marcas = true }: { c
 
 export function MediaCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 2 ? 4200 : step === 3 ? 2400 : 1);
+  const p = useProgreso(step, step === 1 ? 6200 : step === 2 ? 4200 : step === 3 ? 2400 : 1);
   const semi = step === 2 ? p : step > 2 ? 1 : 0;
-  const comp = step === 1 ? poseCompas(MO, MB) : step === 2 ? poseCompas(MO, enCirculo(MO, MR, 180 * semi)) : null;
+  const pm = animPuntoMedio(MA, MB, step === 1 ? p : 1);
+  const comp = step === 1 ? (pm.pose ?? (pm.listo ? poseCompas(MO, MB) : null)) : step === 2 ? poseCompas(MO, enCirculo(MO, MR, 180 * semi)) : null;
   return (
     <BenchShell scene="media-compas" notes={block.notes} step={step} setStep={setStep} label="Hoja con un segmento AB dividido por H y la construcción de la media proporcional">
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un segmento AB dividido por H y la construcción de la media proporcional" data-testid="bench-media">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelMedia centro={step >= 1} semi={semi} altura={step === 3 ? p : step > 3 ? 1 : 0} />
+        <PapelMedia centro={step >= 2 || (step === 1 && pm.listo)} semi={semi} altura={step === 3 ? p : step > 3 ? 1 : 0} />
+        {step >= 1 ? pm.nodos : null}
         {step === 3 ? <ReglaTrazando a={MH} b={MC} p={p} ext={0} color={VERDE} /> : null}
         {step === 4 ? (
           <g data-testid="bench-h2">

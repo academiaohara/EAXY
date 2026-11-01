@@ -4,7 +4,7 @@ import { useState } from "react";
 import { dist, enCirculo, type Pt } from "./geometry";
 import { BenchDefs, Compas, Desk, poseCompas } from "./instruments";
 import { AMBAR, AZUL, Arco, BenchShell, INK, SVG_CLASS, VERDE, type BenchBlock } from "./scenes";
-import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
+import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, SNAP, animPuntoMedio, lerp, lerpP, tramo, useProgreso, type Def, type Est } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
 import { ArcoPlano, Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
@@ -101,11 +101,13 @@ function PapelCuadratura({ hp = false, centro = false, semi = 0, perp = 0 }: { h
 
 export function CuadraturaCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 1 ? 2400 : step === 2 ? 4200 : step === 3 ? 2400 : 2000);
-  const semi = step === 2 ? p : step > 2 ? 1 : 0;
+  const p = useProgreso(step, step === 1 ? 2400 : step === 2 ? 9000 : step === 3 ? 2400 : 2000);
+  // paso 2: primero se halla el punto medio O de AH con la mediatriz y después se traza la semicircunferencia
+  const pm = animPuntoMedio(RA, RHp, step === 2 ? tramo(p, 0, 0.55) : 1);
+  const semi = step === 2 ? tramo(p, 0.55, 1) : step > 2 ? 1 : 0;
   let comp: ReturnType<typeof poseCompas> | null = null;
   if (step === 1) comp = poseCompas(RB, enCirculo(RB, RH, lerp(-24, 24, p)));
-  else if (step === 2) comp = poseCompas(RO, enCirculo(RO, RR, 180 * semi));
+  else if (step === 2) comp = pm.listo ? poseCompas(RO, enCirculo(RO, RR, 180 * semi)) : pm.pose;
   const lado = LADO;
   const cuadrado: Pt[] = [[450, 300], [450 + lado, 300], [450 + lado, 300 - lado], [450, 300 - lado]];
   return (
@@ -113,12 +115,13 @@ export function CuadraturaCompas({ block }: { block: BenchBlock }) {
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un rectángulo y la construcción del cuadrado de igual área" data-testid="bench-cuadratura">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        <PapelCuadratura hp={step >= 2 || (step === 1 && p > 0.9)} centro={step >= 2} semi={semi} perp={step === 3 ? p : step > 3 ? 1 : 0} />
+        <PapelCuadratura hp={step >= 2 || (step === 1 && p > 0.9)} centro={step >= 3 || (step === 2 && pm.listo)} semi={semi} perp={step === 3 ? p : step > 3 ? 1 : 0} />
         {step >= 1 ? (
           <g data-testid="bench-arco-h">
             <ArcoAnim c={RB} r={RH} a1={-24} a2={24} t={step === 1 ? p : 1} />
           </g>
         ) : null}
+        {step >= 2 ? pm.nodos : null}
         {step === 3 ? <ReglaTrazando a={RB} b={RCs} p={p} ext={0} color={VERDE} /> : null}
         {step === 4 ? (
           <g data-testid="bench-cuadrado-final">

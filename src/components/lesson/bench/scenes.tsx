@@ -157,6 +157,7 @@ export function BenchShell({
   setStep,
   extra,
   nav,
+  accion,
   label,
   children,
 }: {
@@ -167,6 +168,8 @@ export function BenchShell({
   extra?: ReactNode;
   /** Sustituye los botones Anterior / Siguiente (escenas donde los pasos avanzan al hacer la acción). */
   nav?: ReactNode;
+  /** Lo que tiene que hacer el alumno en este paso (escenas interactivas): se muestra como «Tu turno». */
+  accion?: string | null;
   label: string;
   children: ReactNode;
 }) {
@@ -180,17 +183,24 @@ export function BenchShell({
         {children}
       </div>
       <div className="flex min-h-0 min-w-0 flex-col py-2">
-        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden pt-[8%]" aria-live="polite">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
-            Paso {step + 1} de {total}
-          </p>
+        <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden pt-[6%]" aria-live="polite">
+          {accion ? (
+            <p className="inline-flex w-fit items-center gap-2 rounded-full bg-[#ffd866] px-3 py-1 text-xs font-extrabold uppercase tracking-[0.12em] text-[#1b2433]" data-testid="bench-accion">
+              <span aria-hidden className="inline-block size-2 animate-pulse rounded-full bg-[#1b2433]" />
+              Tu turno: <span className="normal-case tracking-normal">{accion}</span>
+            </p>
+          ) : null}
           <div>
-            <h3 className="text-2xl font-bold leading-tight text-[color:var(--stage-ink,#fff)]" data-testid="bench-titulo">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-muted,#b8c2d0)]" data-testid="bench-titulo">
               {note?.title ?? ""}
-            </h3>
-            <MathRenderer text={note?.text ?? ""} emphasis="mark-alternate" className="mt-2 block text-[1.05rem] leading-relaxed text-[color:var(--stage-ink,#fff)]" />
+            </p>
+            <MathRenderer
+              text={note?.text ?? ""}
+              emphasis="mark-alternate"
+              className={`mt-3 block font-semibold leading-snug text-[color:var(--stage-ink,#fff)] [text-wrap:pretty] ${(note?.text.length ?? 0) > 150 ? "text-[1.2rem]" : "text-[1.5rem]"}`}
+            />
             {note?.fact ? (
-              <p className="mt-2 text-sm font-semibold text-[#ffd866]" data-testid="bench-dato">
+              <p className="mt-3 text-sm font-semibold text-[#ffd866]" data-testid="bench-dato">
                 {note.fact}
               </p>
             ) : null}
@@ -204,6 +214,9 @@ export function BenchShell({
               Anterior
             </button>
           )}
+          <span className="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--stage-accent,#58c4dd)]" data-testid="bench-paso">
+            Paso {step + 1} de {total}
+          </span>
           {total <= 12 ? (
             <div className="flex items-center gap-1.5" aria-hidden>
               {Array.from({ length: total }, (_, i) => (
@@ -581,7 +594,7 @@ export function ParalelasEscuadraCartabon({ block }: { block: BenchBlock }) {
   const extra = resultado === null ? null : <Resultado ok>Correcto: la recta trazada es paralela a r porque la escuadra solo se ha desplazado, no ha girado.</Resultado>;
 
   return (
-    <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">
+    <BenchShell scene="paralelas-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} accion={mueve ? "arrastra la escuadra hasta que su filo pase por P" : null} label="Hoja con la recta r, el punto P, la escuadra y el cartabón">
       <svg ref={svgRef} viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} className={`${SVG_CLASS} touch-none select-none`} role="group" aria-label="Hoja con la recta r, el punto P, la escuadra y el cartabón" data-testid="bench-paralelas">
         <BenchDefs />
         <clipPath id="bench-sheet-clip">

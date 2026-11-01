@@ -99,10 +99,13 @@ export function MathRenderer({
 
     const renderPlain = (fragment: string) =>
       fragment
-        .split(/(\$[^$]+\$)/g)
+        // La puntuación que sigue a una fórmula ($A$.) va pegada a ella para que no empiece una línea.
+        .split(/(\$[^$]+\$[.,;:!?)»…]*)/g)
         .map((part) => {
-          if (part.length > 2 && part.startsWith("$") && part.endsWith("$")) {
-            return renderLatex(part.slice(1, -1), false);
+          const formula = part.match(/^(\$[^$]+\$)([.,;:!?)»…]*)$/);
+          if (formula && formula[1]!.length > 2) {
+            const matematica = renderLatex(formula[1]!.slice(1, -1), false);
+            return formula[2] ? `<span style="white-space:nowrap">${matematica}${escapeHtml(formula[2])}</span>` : matematica;
           }
           const { masked, slots } = maskAllowedInlineHtml(part);
           return restoreAllowedInlineHtml(escapeHtml(masked), slots);

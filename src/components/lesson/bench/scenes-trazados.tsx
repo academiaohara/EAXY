@@ -106,7 +106,7 @@ export function PerpendicularEscuadraCartabon({ block }: { block: BenchBlock }) 
   const extra = resultado === null ? null : <Resultado ok>Correcto: el cateto es perpendicular a r porque la escuadra solo se ha deslizado a lo largo de r.</Resultado>;
 
   return (
-    <BenchShell scene="perpendicular-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con la recta r, el punto P, el cartabón y la escuadra">
+    <BenchShell scene="perpendicular-escuadra-cartabon" notes={block.notes} step={shown} setStep={goStep} extra={extra} accion={mueve ? "arrastra la escuadra hasta que su cateto pase por P" : null} label="Hoja con la recta r, el punto P, el cartabón y la escuadra">
       <svg ref={svgRef} viewBox={`0 0 ${PV.w} ${PV.h}`} className={`${SVG_CLASS} touch-none select-none`} role="group" aria-label="Hoja con la recta r, el punto P, el cartabón y la escuadra" data-testid="bench-perpendicular">
         <BenchDefs />
         <clipPath id="bench-perp-clip">
@@ -235,7 +235,7 @@ export function TransportadorMedir({ block }: { block: BenchBlock }) {
     ) : null;
 
   return (
-    <BenchShell scene="transportador-medir" notes={block.notes} step={shown} setStep={goStep} extra={extra} label="Hoja con un transportador centrado en el vértice de un ángulo">
+    <BenchShell scene="transportador-medir" notes={block.notes} step={shown} setStep={goStep} extra={extra} accion={mueve ? (practica ? `arrastra el segundo lado hasta marcar ${objetivo}°` : "arrastra el segundo lado y mira la escala") : null} label="Hoja con un transportador centrado en el vértice de un ángulo">
       <svg ref={svgRef} viewBox={`0 0 ${TV.w} ${TV.h}`} className={`${SVG_CLASS} touch-none select-none`} role="group" aria-label="Hoja con un transportador centrado en el vértice de un ángulo" data-testid="bench-transportador">
         <BenchDefs />
         <Desk w={TV.w} h={TV.h} sheet={TSHEET} />
