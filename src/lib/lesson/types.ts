@@ -1121,8 +1121,6 @@ export type SlideAnimId =
   | "dt1-documentos-profesionales"
   | "dt1-plano-revision"
   | "dt1-localizacion-dos-arcos"
-  | "dt1-tangentes-punto"
-  | "dt1-trazado-ovalo"
   | "dt1-abatimiento-diedrico"
   | "dt1-cubo-isometrico"
   | "dt1-perspectiva-frontal"
@@ -1328,7 +1326,7 @@ export type SlideBlock =
     };
 
 /** Escenas de la «mesa de dibujo» (instrumentos SVG realistas). */
-export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "giro-compas" | "giro-practica" | "simetria-compas" | "simetria-practica" | "homotecia-compas" | "homotecia-practica" | "thales-dividir" | "thales-practica" | "thales-paralelas" | "media-compas" | "media-practica" | "aurea-compas" | "aurea-practica" | "equivalencia-triangulos" | "cuadratura-compas" | "cuadratura-practica" | "semejanza-razon" | "puntos-notables" | "circuncentro-practica" | "triangulo-lll-compas" | "triangulo-lll-practica" | "hexagono-compas" | "hexagono-practica" | "rombo-compas" | "rombo-practica" | "poligono-elementos" | "apotema-practica" | "estrella-compas" | "pentagrama-practica";
+export type BenchSceneId = "instrumentos-catalogo" | "escuadra-cartabon-angulos" | "lapices-dureza" | "paralelas-escuadra-cartabon" | "perpendicular-escuadra-cartabon" | "transportador-medir" | "mediatriz-compas" | "bisectriz-compas" | "mediatriz-practica" | "bisectriz-practica" | "trasladar-angulo-compas" | "trasladar-practica" | "traslacion-compas" | "traslacion-practica" | "giro-compas" | "giro-practica" | "simetria-compas" | "simetria-practica" | "homotecia-compas" | "homotecia-practica" | "thales-dividir" | "thales-practica" | "thales-paralelas" | "media-compas" | "media-practica" | "aurea-compas" | "aurea-practica" | "equivalencia-triangulos" | "cuadratura-compas" | "cuadratura-practica" | "semejanza-razon" | "puntos-notables" | "circuncentro-practica" | "triangulo-lll-compas" | "triangulo-lll-practica" | "hexagono-compas" | "hexagono-practica" | "rombo-compas" | "rombo-practica" | "poligono-elementos" | "apotema-practica" | "estrella-compas" | "pentagrama-practica" | "tangentes-compas" | "tangentes-practica" | "circunferencias-posiciones" | "circ-tangente-practica" | "enlace-compas" | "enlace-practica" | "ovalo-compas" | "ovalo-practica" | "espiral-compas" | "espiral-practica" | "evolvente-hilo";
 
 /** Herramientas interactivas disponibles para `{ kind: "tool", tool }`. */
 export type SlideToolId =
@@ -2003,11 +2001,6 @@ export type SlideToolId =
   | "dt1-pitagoras-explorador"
   | "dt1-lugar-geometrico-explorador"
   | "dt1-arco-capaz-explorador"
-  | "dt1-tangente-punto-explorador"
-  | "dt1-circunferencias-explorador"
-  | "dt1-enlace-explorador"
-  | "dt1-ovalo-explorador"
-  | "dt1-espiral-evolvente-explorador"
   | "dt1-diedrico-punto-explorador"
   | "dt1-recta-diedrico-explorador"
   | "dt1-posiciones-recta-explorador"

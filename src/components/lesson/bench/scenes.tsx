@@ -73,7 +73,18 @@ export type BenchSceneName =
   | "poligono-elementos"
   | "apotema-practica"
   | "estrella-compas"
-  | "pentagrama-practica";
+  | "pentagrama-practica"
+  | "tangentes-compas"
+  | "tangentes-practica"
+  | "circunferencias-posiciones"
+  | "circ-tangente-practica"
+  | "enlace-compas"
+  | "enlace-practica"
+  | "ovalo-compas"
+  | "ovalo-practica"
+  | "espiral-compas"
+  | "espiral-practica"
+  | "evolvente-hilo";
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
@@ -120,6 +131,17 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "apotema-practica": 6,
   "estrella-compas": 4,
   "pentagrama-practica": 1,
+  "tangentes-compas": 5,
+  "tangentes-practica": 12,
+  "circunferencias-posiciones": 5,
+  "circ-tangente-practica": 7,
+  "enlace-compas": 5,
+  "enlace-practica": 12,
+  "ovalo-compas": 6,
+  "ovalo-practica": 21,
+  "espiral-compas": 5,
+  "espiral-practica": 12,
+  "evolvente-hilo": 4,
 };
 
 export const INK = "#2a2f36";

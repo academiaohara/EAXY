@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { curriculum } from "@/content/curriculum";
+import { fullCurriculum as curriculum } from "@/content/curriculum";
 import {
   BLOCKS,
   MODULE_BLOCK_PLAN,

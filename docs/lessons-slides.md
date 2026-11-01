@@ -60,7 +60,7 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 ```
 
 - **Maquetación**: el dibujo va a la izquierda y la información a la derecha, **sin marco y sin scroll**: la escena ocupa todo el alto del escenario (el SVG se escala para caber). El texto va arriba y los botones Anterior / Siguiente (con los puntos) van **siempre abajo del todo**, en la misma posición. Cada paso cambia el dibujo y el texto. Con `blocks: []` y `arrange: "stack"` la diapositiva es solo la mesa; todo el contenido sale de `notes` (un `{ title, text, fact? }` por paso; `text` admite `**negrita**` y `$LaTeX$`, no cursiva con `*`).
-- **Práctica guiada en vez de preguntas**: en dibujo técnico se prefieren ejercicios con los instrumentos antes que tests, clasificaciones o cálculos teóricos. Un ejercicio es un paso `bench_task` (helper `benchTask(...)` en `tec1-helpers.ts`): recorre los pasos de la escena y **solo acepta acciones válidas**; no hay botón «Comprobar» ni respuestas incorrectas que corregir después. Si el alumno hace algo que no sirve (tocar un punto equivocado, una abertura que no corta, soltar el ángulo en otro valor) la escena avisa, no lo registra y le deja elegir otra vez. Al completar la construcción, el ejercicio se **da por superado solo**: el pie de la lección se ilumina en verde con «Correcto» y el botón para continuar. Los arcos del compás quedan en la hoja como trazo auxiliar, más suave (como un lápiz 2H), frente a las rectas del dibujo final. El ángulo del transportador «encaja» en el valor pedido cuando se acerca a menos de 3°. No se repite el mismo ejercicio con otros datos y **no hay ejercicios de «pinchar a ojo»** sobre una cuadrícula.
+- **Práctica guiada en vez de preguntas**: en dibujo técnico se prefieren ejercicios con los instrumentos antes que tests, clasificaciones o cálculos teóricos. Un ejercicio es un paso `bench_task` (helper `benchTask(...)` en `tec1-helpers.ts`): recorre los pasos de la escena y **solo acepta acciones válidas**; no hay botón «Comprobar» ni respuestas incorrectas que corregir después. Si el alumno hace algo que no sirve (tocar un punto equivocado, una abertura que no corta, soltar el ángulo en otro valor) la escena avisa, no lo registra y le deja elegir otra vez. Al completar la construcción, el ejercicio se **da por superado solo**: el pie de la lección se ilumina en verde con «Correcto» y el botón para continuar. Entre fases hay dos pasos más: `trazo` (el alumno toca dos puntos y la regla traza la recta, que queda en la hoja; sirve para construcciones intermedias como la mediatriz) y `auto` (la regla traza sola los lados finales). `principales` marca los arcos del resultado, que se dibujan con trazo fuerte aunque el resto de arcos queden como auxiliares. Los arcos del compás quedan en la hoja como trazo auxiliar, más suave (como un lápiz 2H), frente a las rectas del dibujo final. El ángulo del transportador «encaja» en el valor pedido cuando se acerca a menos de 3°. No se repite el mismo ejercicio con otros datos y **no hay ejercicios de «pinchar a ojo»** sobre una cuadrícula.
 - Una escena declara que se ha superado con `finalizar()` (`useBenchCheck()` en `practice.tsx`); `BenchTaskStepView` le da el contexto (`BenchPracticeContext`). Sin ese contexto (diapositiva suelta con `bench(...)`) la escena no registra nada.
 - No se regala la respuesta: en el paso práctico no hay lecturas ni distancias en pantalla (el alumno lee los instrumentos).
 - El número de pasos de cada escena está en `BENCH_STEPS` (`scenes.tsx`); el test de DT I comprueba que `notes` tenga exactamente ese número.
@@ -104,6 +104,13 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 | `poligono-elementos` | 5 | Elementos del polígono regular (hexágono): lado, radio, ángulo central, apotema y ángulo interior | — |
 | `apotema-practica` | 6 fases | **Apotema**: mediatriz de un lado del hexágono con el compás y la regla (pasa por el centro y por el punto medio) | — |
 | `estrella-compas` / `pentagrama-practica` | 4 / 1 | **Polígonos estrellados** `{n/k}`: pentagrama (un trazo) y hexagrama (dos triángulos); en la práctica se unen los vértices de dos en dos | — |
+| `tangentes-compas` / `tangentes-practica` | 5 / 12 fases | **Tangentes desde un punto exterior**: mediatriz de `OP` (con la fase `trazo`), circunferencia de diámetro `OP`, puntos de tangencia y unión automática | — |
+| `circunferencias-posiciones` | 5 | Posiciones relativas de dos circunferencias, con la recta de centros y el punto de tangencia | — |
+| `circ-tangente-practica` | 7 fases | Circunferencia de radio `r` tangente exterior en un punto `T`: recta `OT`, arco de radio `r` y centro | — |
+| `enlace-compas` / `enlace-practica` | 5 / 12 fases | **Enlace entre dos rectas**: centro como corte de las paralelas a distancia `r`, puntos de tangencia y arco (práctica en una esquina de 90°) | — |
+| `ovalo-compas` / `ovalo-practica` | 6 / 21 fases | **Óvalo dado el eje mayor**: cuatro centros, rectas de enlace, arcos grandes y pequeños | — |
+| `espiral-compas` / `espiral-practica` | 5 / 12 fases | **Espiral de dos centros**: semicircunferencias de radio `d, 2d, 3d, 4d` alternando `A` y `B` | — |
+| `evolvente-hilo` | 4 | Evolvente de la circunferencia: el hilo es tangente a la circunferencia y normal a la curva | — |
 | `semejanza-razon` | 4 | Ángulos iguales, razón de lados `k`, áreas `k²` (rejilla) y escalas de planos | — |
 | `bisectriz-practica` | 9 fases | Igual para la bisectriz, con **dos aberturas** distintas (arco desde `V` y arcos desde `P` y `Q`); la regla debe pasar por `V` y `T` | `a` ángulo (40…130°) |
 | `paralelas-escuadra-cartabon` | 3 | Paralela a `r` por `P`: se arrastra la escuadra por el cartabón hasta que el filo pasa por `P`; ejercicio comprobable (se dibuja el trazo al acertar) | `a` inclinación de `r` (−15…30°), `b` distancia de `P` a `r` (40…100 mm) |
@@ -625,8 +632,6 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-linea-tiempo-dibujo` | Historia del dibujo técnico: Euclides, Renacimiento, Monge y normalización | — |
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
-| `dt1-tangentes-punto` | Tangentes a una circunferencia desde un punto exterior | — |
-| `dt1-trazado-ovalo` | Trazado de un óvalo dados sus ejes mayor y menor | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 | `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
@@ -1373,11 +1378,6 @@ Al preparar una lección nueva, plantéate si un concepto se entiende mejor **to
 | `dt1-media-proporcional-explorador` | Teorema de la altura: media proporcional en el triángulo rectángulo | `a`, `b` (cm) |
 | `dt1-equivalencia-explorador` | Rectángulo, cuadrado y triángulo equivalentes | `a` base, `b` altura (cm) |
 | `dt1-homotecia-explorador` | Homotecia de un triángulo: razón, áreas y volúmenes | `a` razón k |
-| `dt1-tangente-punto-explorador` | Longitud y ángulo de las tangentes desde un punto exterior | `a` radio, `b` distancia (cm) |
-| `dt1-circunferencias-explorador` | Posición relativa de dos circunferencias y tangentes comunes | `a`, `b` radios (cm) |
-| `dt1-enlace-explorador` | Enlace tangente entre dos rectas: puntos de tangencia y centro | `a` ángulo (°), `b` radio (cm) |
-| `dt1-ovalo-explorador` | Óvalo de cuatro arcos dados sus semiejes | `a`, `b` semiejes (cm) |
-| `dt1-espiral-evolvente-explorador` | Espiral de dos centros y evolvente de la circunferencia | `n` curva (0–1), `a` semicircunferencias |
 | `dt1-diedrico-punto-explorador` | Épura de un punto: alejamiento, cota y cuadrante | `a` alejamiento, `b` cota (cm) |
 | `dt1-recta-diedrico-explorador` | Proyecciones y trazas de una recta; cuadrantes que atraviesa | `a`, `b` alejamientos de A y B (cm) |
 | `dt1-posiciones-recta-explorador` | Posiciones particulares de la recta y verdadera magnitud | `n` posición (0–6) |

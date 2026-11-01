@@ -61,7 +61,6 @@ import { RectaAcotadaDt1Explorador, PlanoAcotadoDt1Explorador, CubiertaDt1Explor
 import { AxonometriaOrtogonalDt1Explorador, IsometricaPiezaDt1Explorador, CaballeraDt1Explorador, PuntoPlanoAxoDt1Explorador } from "@/components/lesson/slide/tools/DtAxonometricoTools";
 import { InterseccionPlanosDt1Explorador, PlanosParalelosDt1Explorador, PerpendicularPlanoDt1Explorador, DistanciaPuntosDt1Explorador } from "@/components/lesson/slide/tools/DtDiedrico2Tools";
 import { PuntoDiedricoDt1Explorador, RectaDiedricoDt1Explorador, PosicionesRectaDt1Explorador, PlanoTrazasDt1Explorador, PertenenciaPlanoDt1Explorador } from "@/components/lesson/slide/tools/DtDiedricoTools";
-import { TangentePuntoDt1Explorador, CircunferenciasTangentesDt1Explorador, EnlaceDt1Explorador, OvaloDt1Explorador, EspiralEvolventeDt1Explorador } from "@/components/lesson/slide/tools/DtTangenciasTools";
 import { PitagorasExplorador, LugarGeometricoExplorador, ArcoCapazExplorador } from "@/components/lesson/slide/tools/DtGeometriaTools";
 import { EiaExplorador, CogeneracionExplorador, AcvTi2Explorador, OeeExplorador, CircularidadExplorador } from "@/components/lesson/slide/tools/TecTi2SostenibleTools";
 import { EmbudoExplorador, SprintExplorador, KanbanExplorador, EstimacionPertExplorador, VanExplorador } from "@/components/lesson/slide/tools/TecTi2ProyectosTools";
@@ -1917,16 +1916,6 @@ export function SlideTool({ block }: { block: ToolBlock }) {
       return <LugarGeometricoExplorador block={block} />;
     case "dt1-arco-capaz-explorador":
       return <ArcoCapazExplorador block={block} />;
-    case "dt1-tangente-punto-explorador":
-      return <TangentePuntoDt1Explorador block={block} />;
-    case "dt1-circunferencias-explorador":
-      return <CircunferenciasTangentesDt1Explorador block={block} />;
-    case "dt1-enlace-explorador":
-      return <EnlaceDt1Explorador block={block} />;
-    case "dt1-ovalo-explorador":
-      return <OvaloDt1Explorador block={block} />;
-    case "dt1-espiral-evolvente-explorador":
-      return <EspiralEvolventeDt1Explorador block={block} />;
     case "dt1-diedrico-punto-explorador":
       return <PuntoDiedricoDt1Explorador block={block} />;
     case "dt1-recta-diedrico-explorador":

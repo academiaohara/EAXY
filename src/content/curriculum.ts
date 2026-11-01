@@ -1,4 +1,5 @@
 import type { Curriculum } from "@/content/types";
+import { ocultarTemasEnRevision } from "@/content/temas-en-revision";
 
 /**
  * Fuente única de verdad del contenido curricular de desarrollo.
@@ -19,7 +20,7 @@ function lessonId(n: number) {
   return `a3000000-0000-4000-8000-${n.toString().padStart(12, "0")}`;
 }
 
-export const curriculum: Curriculum = {
+export const fullCurriculum: Curriculum = {
   courses: [
     {
       id: courseId(1),
@@ -17474,3 +17475,6 @@ export const curriculum: Curriculum = {
   concepts: [],
   exercises: [],
 };
+
+/** Catálogo que ve la web: sin los temas de Dibujo Técnico que están en revisión (ver `temas-en-revision.ts`). */
+export const curriculum: Curriculum = ocultarTemasEnRevision(fullCurriculum);

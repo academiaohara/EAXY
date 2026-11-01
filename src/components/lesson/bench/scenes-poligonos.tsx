@@ -16,7 +16,7 @@ const grados = (rad: number) => (rad * 180) / Math.PI;
 
 export const PN_A: Pt = [130, 290];
 export const PN_B: Pt = [390, 290];
-export const PN_C: Pt = [270, 110];
+export const PN_C: Pt = [320, 110];
 
 /** Pie de la perpendicular desde `p` a la recta `a`–`b`. */
 function pie(p: Pt, a: Pt, b: Pt): Pt {
@@ -415,7 +415,7 @@ function PapelRombo({ lado = true, b = false, d = false }: { lado?: boolean; b?:
       <Seg a={RA} b={RC} w={1.8} />
       <Punto p={RA} nombre="A" dx={-16} dy={18} />
       <Punto p={RC} nombre="C" dx={8} dy={18} />
-      <Txt p={[RM[0] - 38, 276]} color={INK}>{`AC = ${dist(RA, RC) / 10} cm`}</Txt>
+      <Txt p={[RC[0] + 22, RC[1] + 4]} color={INK}>{`AC = ${dist(RA, RC) / 10} cm`}</Txt>
       {lado ? (
         <g>
           <Seg a={SEG_LADO[0]} b={SEG_LADO[1]} color={AMBAR} w={3} />
@@ -461,10 +461,10 @@ export function RomboCompas({ block }: { block: BenchBlock }) {
           <g data-testid="bench-rombo-diagonales">
             <Seg a={RB_} b={RD_} color={AZUL} w={2} dash="7 5" />
             <circle cx={RM[0]} cy={RM[1]} r="3" fill={AZUL} />
-            <Txt p={[RM[0] + 8, RM[1] - 6]} color={AZUL}>M</Txt>
+            <Txt p={[RM[0] + 8, RM[1] + 18]} color={AZUL}>M</Txt>
             <path d={`M${RM[0] + 12} ${RM[1]} V${RM[1] - 12} H${RM[0]}`} fill="none" stroke={AZUL} strokeWidth="1.6" />
-            <Txt p={[440, 130]} color={AZUL}>diagonales perpendiculares</Txt>
-            <Txt p={[440, 152]} color={AZUL}>que se cortan en su punto medio</Txt>
+            <Txt p={[30, 50]} color={AZUL}>diagonales perpendiculares</Txt>
+            <Txt p={[30, 72]} color={AZUL}>que se cortan en su punto medio</Txt>
           </g>
         ) : null}
         {comp ? (

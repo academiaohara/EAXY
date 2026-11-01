@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const espiralesEvolventeDt1Lesson: InteractiveLesson = {
   slug: "espirales-evolvente-dt1",
@@ -11,34 +11,37 @@ export const espiralesEvolventeDt1Lesson: InteractiveLesson = {
     slide("def", "Curvas abiertas de curvatura creciente", [
       { kind: "steps", items: [
         "Una **espiral** es una curva abierta que se aleja de un punto con radio creciente. Las **espirales técnicas** se trazan con **arcos de circunferencia** tangentes.",
-        "**Espiral de dos centros**: semicircunferencias alternas centradas en dos puntos A y B, con radios $d, 2d, 3d, \\dots$ ($d = AB$).",
-        "**Espiral de tres centros**: igual, centrando en los tres vértices de un **triángulo equilátero**; los arcos son de 120° y los radios crecen $d, 2d, 3d, \\dots$",
+        "**Espiral de tres centros**: igual que la de dos, centrando en los tres vértices de un **triángulo equilátero**; los arcos son de 120° y los radios crecen $d, 2d, 3d, \\dots$",
         "La **voluta** es una espiral decorativa usada en los capiteles jónicos.",
-        "La **evolvente de la circunferencia** es otra curva técnica distinta: la traza el extremo de un hilo que se desenrolla.",
+        "**Aplicaciones**: levas, muelles planos, volutas de bombas centrífugas y caracoles de turbinas.",
       ] },
     ], undefined, "stack"),
-    slide("explora", "Espiral y evolvente", [
-      { kind: "text", text: "Prueba la espiral de dos centros con distinto número de semicircunferencias y desenrolla la evolvente." },
-    ], tool("dt1-espiral-evolvente-explorador"), "visual-top"),
-    slide("usos", "Aplicaciones", [
-      { kind: "steps", items: [
-        "**Espiral**: levas, muelles planos, volutas de bombas centrífugas y caracoles de turbinas.",
-        "**Evolvente**: perfil de los **dientes de engranaje**: los dientes engranan con **relación de velocidades constante** aunque varíe la distancia entre ejes.",
-        "**Hélice cilíndrica** (en el espacio): tornillos y muelles; su proyección es una circunferencia o una sinusoide.",
-      ] },
-    ]),
-    calc("calc-paso", "Paso de la espiral", "Una espiral de dos centros con d = 5 mm. ¿Cuánto vale el paso, es decir, lo que crece el radio en una vuelta completa (dos semicircunferencias), en mm?", nums(10), "El paso por vuelta es 2d = 10 mm.", "2 · d."),
-    calc("calc-r4", "Radio del cuarto arco", "En esa espiral, ¿qué radio tiene el cuarto arco, en mm?", nums(20), "El arco k tiene radio k · d = 4 · 5 = 20 mm.", "Multiplica k por d."),
-    calc("calc-long", "Longitud de 4 arcos", "Con d = 1 cm, ¿qué longitud tienen los cuatro primeros arcos (π·d·n(n + 1)/2), en cm? (un decimal)", nums(31.4, 31.42), "π · 1 · 4 · 5 / 2 = 10π ≈ 31,4 cm.", "Suma de π·k para k = 1..4."),
-    sort("clasifica-curva", "¿Qué curva usa?", "Asocia cada aplicación con su curva.",
-      [["esp", "Espiral", "cobalt"], ["evo", "Evolvente", "amber"]],
-      [["Muelle plano de un reloj", "esp"], ["Voluta de una bomba centrífuga", "esp"], ["Capitel jónico", "esp"], ["Diente de un engranaje", "evo"], ["Perfil de una rueda dentada de relojería", "evo"], ["Curva del extremo de un hilo que se desenrolla", "evo"]],
-      "La evolvente da engranajes de velocidad constante; las espirales, perfiles de crecimiento.",
-    ),
-    pick("check-hilo", "El hilo", "En la evolvente de una circunferencia, ¿cómo es el hilo tenso respecto a la circunferencia y a la curva?",
-      "Tangente a la circunferencia y normal (perpendicular) a la evolvente",
-      [["Normal a la circunferencia y tangente a la evolvente", "Es al revés."], ["Tangente a ambas", "Es normal a la evolvente."], ["Paralelo al eje", "No tiene relación."]],
-      "El hilo es la normal a la evolvente: el centro de curvatura está en el punto donde el hilo toca la circunferencia.",
-    ),
+
+    slide("espiral", "Espiral de dos centros", [], bench("espiral-compas", [
+      { title: "Dos centros", text: "Se parte de dos puntos $A$ y $B$ a distancia $d$. Los arcos son **semicircunferencias** que se apoyan alternativamente en $A$ y en $B$, con radios $d, 2d, 3d, \\dots$", fact: "d = AB" },
+      { title: "Primer semicírculo", text: "Con centro en $A$ y radio $d$ traza una semicircunferencia **por encima** del eje, de $B$ hasta el otro lado de $A$.", fact: "Radio d" },
+      { title: "Segundo semicírculo", text: "Con centro en $B$ y radio $2d$ continúa **por debajo**, desde donde acabó el anterior. Los arcos son **tangentes**.", fact: "Radio 2d" },
+      { title: "Tercer semicírculo", text: "De nuevo con centro en $A$, ahora radio $3d$, **por encima**.", fact: "Radio 3d" },
+      { title: "Cuarto semicírculo", text: "Con centro en $B$ y radio $4d$, por debajo. Cada vuelta completa crece el radio $2d$.", fact: "Paso por vuelta: 2d" },
+    ]), "stack"),
+
+    slide("evolvente", "La evolvente de la circunferencia", [], bench("evolvente-hilo", [
+      { title: "Un hilo enrollado", text: "La **evolvente de la circunferencia** es la curva que traza el extremo de un hilo tenso que se **desenrolla** de ella.", fact: "No es una espiral de arcos" },
+      { title: "Empieza a desenrollar", text: "Al desenrollar un cuarto de vuelta, el hilo tenso es **tangente a la circunferencia** y su extremo se aleja del punto de partida." },
+      { title: "La curva", text: "El hilo mide siempre lo que el arco que ya se ha desenrollado, así que la curva se abre cada vez más." },
+      { title: "El hilo es la normal", text: "El hilo es **tangente a la circunferencia** y **perpendicular a la evolvente**. Por eso el perfil de los **dientes de engranaje** usa esta curva: engranan con relación de velocidades constante.", fact: "Perfil de los engranajes" },
+    ]), "stack"),
+
+    benchTask("espiral-construye", "Traza la espiral", "espiral-practica", [
+      ...[1, 2, 3, 4].flatMap((k) => [
+        { title: `Toma el radio ${k}d`, text: k === 1 ? "Toca el centro $A$ y después $B$: el compás queda con la abertura $d$." : `Toca el centro del arco y el extremo donde acabó el anterior: la abertura es $${k}d$.`, fact: `Radio ${k}d` },
+        { title: `Clava la punta en ${k % 2 === 1 ? "A" : "B"}`, text: `Toca el punto $${k % 2 === 1 ? "A" : "B"}$.` },
+        { title: `Semicircunferencia ${k}`, text: `Arrastra la mina para trazar la semicircunferencia ${k % 2 === 1 ? "**por encima**" : "**por debajo**"} del eje, hasta el otro lado.` },
+      ]),
+    ], {
+      question: "Traza una espiral de dos centros de cuatro semicircunferencias a partir de los puntos A y B.",
+      hint: "Alterna los centros A y B: cada semicircunferencia empieza donde acabó la anterior y su radio es la distancia del centro a ese punto.",
+      explanation: "Cada semicircunferencia empieza en el extremo de la anterior sobre el eje, y su radio es la distancia al centro que toca: crece d en cada arco (d, 2d, 3d, 4d). Los arcos son tangentes porque el centro y el punto de enlace están alineados.",
+    }),
   ],
 };

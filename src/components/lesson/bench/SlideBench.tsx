@@ -10,6 +10,7 @@ import { GiroCompas } from "./scenes-giro";
 import { TraslacionCompas } from "./scenes-transformaciones";
 import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
 import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, HexagonoPractica, PentagramaPractica, PoligonoElementos, PuntosNotables, RomboCompas, RomboPractica, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
+import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { EscuadraCartabonAngulos, InstrumentosCatalogo, LapicesDureza, ParalelasEscuadraCartabon } from "./scenes";
 
@@ -102,6 +103,28 @@ export function SlideBench({ block }: { block: Extract<SlideBlock, { kind: "benc
       return <EstrellaCompas block={block} />;
     case "pentagrama-practica":
       return <PentagramaPractica block={block} />;
+    case "tangentes-compas":
+      return <TangentesCompas block={block} />;
+    case "tangentes-practica":
+      return <TangentesPractica block={block} />;
+    case "circunferencias-posiciones":
+      return <CircunferenciasPosiciones block={block} />;
+    case "circ-tangente-practica":
+      return <CircTangentePractica block={block} />;
+    case "enlace-compas":
+      return <EnlaceCompas block={block} />;
+    case "enlace-practica":
+      return <EnlacePractica block={block} />;
+    case "ovalo-compas":
+      return <OvaloCompas block={block} />;
+    case "ovalo-practica":
+      return <OvaloPractica block={block} />;
+    case "espiral-compas":
+      return <EspiralCompas block={block} />;
+    case "espiral-practica":
+      return <EspiralPractica block={block} />;
+    case "evolvente-hilo":
+      return <EvolventeHilo block={block} />;
     default:
       return null;
   }
