@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
+import { benchParte, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const construccionAngulosCompasDt1Lesson: InteractiveLesson = {
   slug: "construccion-angulos-compas-dt1",
@@ -8,12 +8,21 @@ export const construccionAngulosCompasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("angulos", "Ángulos que salen sin transportador", [], bench("construccion-angulos", [
+    slide("ang-60", "Ángulo de 60°", [], benchParte("construccion-angulos", 0, [
       { title: "Ángulo de 60°", text: "Con centros en $O$ y en $A$ se trazan **dos arcos iguales** que se cortan en $B$. Las rectas $a$ y $b$ forman **$60^\\circ$**: $OAB$ es un triángulo equilátero.", fact: "OA = OB = AB" },
+    ]), "stack"),
+
+    slide("ang-30-15", "Ángulos de 30° y 15°", [], benchParte("construccion-angulos", 1, [
       { title: "Ángulo de 30°", text: "Basta trazar la **bisectriz $c$** del ángulo anterior: $60^\\circ / 2 = 30^\\circ$.", fact: "60° / 2" },
       { title: "Ángulo de 15°", text: "Se traza la bisectriz $d$ del ángulo de $30^\\circ$ hallado antes: $30^\\circ / 2 = 15^\\circ$.", fact: "30° / 2" },
+    ]), "stack"),
+
+    slide("ang-45", "Ángulos de 45° y 22° 30′", [], benchParte("construccion-angulos", 3, [
       { title: "Ángulo de 45°", text: "Se traza la bisectriz $d$ del ángulo recto $\\widehat{AOC}$ de $90^\\circ$: $90^\\circ / 2 = 45^\\circ$.", fact: "90° / 2" },
       { title: "Ángulo de 22° 30′", text: "Se traza la bisectriz del ángulo de $45^\\circ$ anterior: $45^\\circ / 2 = 22^\\circ 30'$.", fact: "45° / 2" },
+    ]), "stack"),
+
+    slide("ang-75", "Ángulo de 75°", [], benchParte("construccion-angulos", 5, [
       { title: "Ángulo de 75°", text: "Se construye el ángulo recto $\\widehat{AOB}$ y el ángulo $\\widehat{AOC}$ de $60^\\circ$. La diferencia $\\widehat{COB}$ vale $30^\\circ$; su bisectriz $d$ lo divide en $15^\\circ$, así que $a$ y $d$ forman $60^\\circ + 15^\\circ = 75^\\circ$.", fact: "60° + 15° = 75°" },
     ]), "stack"),
 

@@ -1310,6 +1310,8 @@ export type SlideBlock =
       scene: BenchSceneId;
       /** `a`: ángulo (°) y `b`: distancia o valor objetivo, según la escena (ver `docs/lessons-slides.md`). */
       params?: { a?: number; b?: number };
+      /** Si la diapositiva solo muestra una parte de la escena: primer paso (0 por defecto); `notes` trae un texto por paso mostrado. */
+      desde?: number;
       /** Un texto por paso de la escena (la información va a la derecha del dibujo). */
       notes?: { title: string; text: string; fact?: string }[];
     }

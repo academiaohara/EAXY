@@ -1964,3 +1964,19 @@ describe("mesa de dibujo · integración", () => {
     expect(typeof act).toBe("function");
   });
 });
+
+describe("diapositiva con una parte de la escena", () => {
+  afterEach(cleanup);
+  it("empieza en el paso `desde` y recorre solo sus pasos", () => {
+    render(
+      <LessonStepControlProvider>
+        <SlideBench block={{ kind: "bench", scene: "operaciones-regla-compas", desde: 3, notes: notas(2) }} />
+      </LessonStepControlProvider>,
+    );
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 1 de 2");
+    expect(screen.getByTestId("bench-anterior")).toHaveProperty("disabled", true);
+    fireEvent.click(screen.getByTestId("bench-siguiente"));
+    expect(screen.getByTestId("bench-paso").textContent).toBe("Paso 2 de 2");
+    expect(screen.getByTestId("bench-siguiente")).toHaveProperty("disabled", true);
+  });
+});

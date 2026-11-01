@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, slide } from "@/data/lessons/tec1-helpers";
+import { benchParte, slide } from "@/data/lessons/tec1-helpers";
 
 export const lugarGeometricoConceptoDt1Lesson: InteractiveLesson = {
   slug: "lugar-geometrico-concepto-dt1",
@@ -15,10 +15,13 @@ export const lugarGeometricoConceptoDt1Lesson: InteractiveLesson = {
       ] },
     ], undefined, "stack"),
 
-    slide("ejemplos", "Ejemplos de lugares geométricos", [], bench("lugar-geometrico", [
+    slide("ej-equidistan", "Lugares geométricos que equidistan", [], benchParte("lugar-geometrico", 0, [
       { title: "La circunferencia", text: "**La circunferencia**: todos sus puntos **equidistan del centro**. Su distancia al centro es el radio $R$.", fact: "Equidista del centro" },
       { title: "Mediatriz de un segmento", text: "**La mediatriz de un segmento**: todos sus puntos **equidistan de los extremos** del segmento.", fact: "Equidista de A y B" },
       { title: "Bisectriz de un ángulo", text: "**La bisectriz de un ángulo**: todos sus puntos **equidistan de los lados** del ángulo.", fact: "Equidista de los lados" },
+    ]), "stack"),
+
+    slide("ej-conicas", "Lugares geométricos de las cónicas", [], benchParte("lugar-geometrico", 3, [
       { title: "La elipse", text: "**La elipse**: la **suma** de las distancias de cada punto de ella a otros dos puntos fijos (los focos) es **constante**.", fact: "PF₁ + PF₂ = constante" },
       { title: "La hipérbola", text: "**La hipérbola**: la **diferencia** de las distancias de cada punto de ella a otros dos puntos fijos es **constante**.", fact: "|PF₁ − PF₂| = constante" },
       { title: "La parábola", text: "**La parábola**: todos sus puntos **equidistan de un punto y de una recta** dados (el foco y la directriz).", fact: "Equidista de F y de d" },
