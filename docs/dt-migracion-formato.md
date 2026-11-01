@@ -31,7 +31,7 @@ Ya renovado (formato nuevo): tema 1 «Instrumentos y trazados fundamentales» (4
 
 ## Fuente en el libro de cada tema
 
-Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiarra), PDF en `temp/dibujo-tecnico/` (no versionado: la carpeta `temp/` está en `.gitignore`). Los números de página son los del índice del libro; no se han vuelto a contrastar con el PDF al escribir esta tabla. **Al migrar o añadir un tema, se apunta aquí su temas y páginas de origen.**
+Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiarra), ya dividido por temas en [`temp/dibujo-tecnico/1-bachillerato/`](../temp/dibujo-tecnico/1-bachillerato/README.md) (un PDF por tema; escaneado, sin texto seleccionable; la página del PDF es la impresa − 1). Las páginas de esta tabla son las del PDF completo, tal como las indica ese README. **Al migrar o añadir un tema, se apunta aquí su tema y páginas de origen.**
 
 | Tema en la web (DT I) | Tema del libro (páginas) | Estado |
 |---|---|---|
