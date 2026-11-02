@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
+import { bench, slide } from "@/data/lessons/tec1-helpers";
 
 export const escalaTransversalesEscalimetroDt1Lesson: InteractiveLesson = {
   slug: "escala-transversales-escalimetro-dt1",
@@ -20,18 +20,5 @@ export const escalaTransversalesEscalimetroDt1Lesson: InteractiveLesson = {
       { title: "De sección triangular", text: "En la práctica se utilizan reglas llamadas **escalímetros**, de **sección triangular**, donde vienen marcadas la escala natural y otras cinco escalas.", fact: "Escala natural + otras cinco" },
       { title: "En abanico", text: "También se utilizan los escalímetros **en abanico**: una serie de reglas, cada una con una escala, dispuestas en forma de abanico.", fact: "Una regla por escala" },
     ]), "stack"),
-
-    calc("t-1", "Pasar a metros", "Una medida de 1,64 Dm, ¿cuántos metros son?", nums(16.4), "1 Dm = 10 m; 1,64 · 10 = 16,4 m.", "Multiplica por 10."),
-    calc("t-2", "Pasar a decímetros", "Una medida de 2,38 Dm, ¿cuántos decímetros son?", nums(238), "1 Dm = 100 dm; 2,38 · 100 = 238 dm.", "Multiplica por 100."),
-    pick("t-3", "Dónde se lee 1,25 Dm", "En la escala decimal de transversales, 1,25 Dm se lee como 1 Dm más…",
-      "2 divisiones de la contraescala y 5 décimas más (horizontal 5)",
-      [["5 divisiones de la contraescala", "Eso son 0,5 Dm, no 0,25."], ["12 divisiones y 5 décimas", "La contraescala tiene 10 divisiones."]],
-      "0,25 Dm = 2 divisiones (0,2) + 5 décimas de división (0,05).",
-    ),
-    pick("t-4", "El escalímetro", "¿Qué es un escalímetro?",
-      "Una regla de sección triangular con la escala natural y otras escalas marcadas",
-      [["Un compás para dibujar arcos", "El compás es otro instrumento."], ["Una escala gráfica fotocopiada", "Es una regla, no una escala dibujada."]],
-      "Permite medir directamente a varias escalas.",
-    ),
   ],
 };

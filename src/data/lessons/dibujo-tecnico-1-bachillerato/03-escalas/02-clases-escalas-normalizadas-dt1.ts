@@ -58,11 +58,5 @@ export const clasesEscalasNormalizadasDt1Lesson: InteractiveLesson = {
     calc("act-8", "Dibujar a 1:10 (340 mm)", "Se va a dibujar una pieza a escala 1:10. ¿Cuántos mm deberá medir en el plano una medida real de 340 mm?", nums(34), "340/10 = 34 mm.", "Divide entre 10."),
     calc("act-8b", "Dibujar a 1:10 (750 mm)", "A escala 1:10, ¿cuántos mm deberá medir en el plano una medida real de 750 mm?", nums(75), "750/10 = 75 mm.", "Divide entre 10."),
     calc("act-9", "Ampliación 2:1", "Sobre un plano hecho a escala 2:1 se ha medido una longitud de 44 mm. ¿Cuánto mide en la realidad (mm)?", nums(22), "44/2 = 22 mm.", "En una ampliación el dibujo es mayor: divide."),
-    calc("calc-adec", "Escala adecuada", "Un objeto de 1250 mm debe caber en 400 mm de hoja. ¿Cuál es el denominador de la mayor escala de reducción normalizada que lo permite (1:n)?", nums(5), "1:2 daría 625 mm (no cabe); 1:5 da 250 mm (cabe): n = 5.", "Prueba 1:2 y 1:5."),
-    pick("check-cota", "Las cotas", "Un plano está a escala 1:100. Una pared mide 30 mm en el dibujo. ¿Qué cota se escribe?",
-      "3000 mm (3 m), la medida real",
-      [["30 mm, la del dibujo", "Las cotas son siempre reales."], ["300 mm", "Se multiplica por 100, no por 10."], ["0,3 mm", "Se multiplica, no se divide."]],
-      "Cualquiera que lea el plano necesita la medida real, no la del papel.",
-    ),
   ],
 };
