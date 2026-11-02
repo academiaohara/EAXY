@@ -2068,3 +2068,26 @@ describe("animación automática: pausar y repetir", () => {
     expect(screen.getByTestId("bench-pausa").textContent).toContain("Pausar");
   });
 });
+
+describe("construcciones con compás animadas (suma, diferencia, bisectriz, división y construcción de ángulos)", () => {
+  afterEach(cleanup);
+  const casos: [BenchSceneId, number[], number[]][] = [
+    ["suma-angulos-compas", [1, 2, 3], [0, 4]],
+    ["diferencia-angulos-compas", [1, 2], [0, 3]],
+    ["bisectriz-segundo-metodo", [1, 2], [0, 3, 4]],
+    ["division-angulo-2n", [0, 1, 2], []],
+    ["construccion-angulos", [0, 1, 2, 3, 4, 5], []],
+  ];
+  it.each(casos)("%s: el compás aparece en los pasos con arcos y no en los demás", (scene, con, sin) => {
+    const { siguiente } = montar(scene);
+    let actual = 0;
+    const ir = (n: number) => {
+      siguiente(n - actual);
+      actual = n;
+    };
+    for (const n of [...con, ...sin].sort((a, b) => a - b)) {
+      ir(n);
+      expect(!!screen.queryByTestId("bench-compas"), `${scene} paso ${n}`).toBe(con.includes(n));
+    }
+  });
+});
