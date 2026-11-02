@@ -52,6 +52,7 @@ describe("construcciones del tema 5: animación y práctica", () => {
     const tipo = () => svg().getAttribute("data-tipo");
     const pt = (n: string) => c.pts[n];
     let radio = 0;
+    let paralelas = 0;
     c.ops.forEach((o: Op, i) => {
       const donde = `${id} op ${i} (${o.k})`;
       switch (o.k) {
@@ -105,10 +106,12 @@ describe("construcciones del tema 5: animación y práctica", () => {
           break;
         }
         case "paralelas":
-          o.marcas.forEach((_m, k) => {
-            expect(tipo(), `${donde} #${k}`).toBe("escuadra");
-            for (let j = 0; j < 500 && screen.queryAllByTestId("bench-paralela-trazada").length <= k; j += 1) fireEvent.keyDown(svg(), { key: "ArrowUp" });
-            expect(screen.queryAllByTestId("bench-paralela-trazada").length, `${donde} #${k}`).toBe(k + 1);
+          o.marcas.forEach((_m) => {
+            expect(tipo(), `${donde} #${paralelas}`).toBe("escuadra");
+            const objetivo = paralelas + 1;
+            for (let j = 0; j < 500 && screen.queryAllByTestId("bench-paralela-trazada").length < objetivo; j += 1) fireEvent.keyDown(svg(), { key: "ArrowUp" });
+            expect(screen.queryAllByTestId("bench-paralela-trazada").length, `${donde} #${paralelas}`).toBe(objetivo);
+            paralelas += 1;
           });
           break;
         default:
