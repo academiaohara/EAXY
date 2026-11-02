@@ -112,6 +112,11 @@ export type BenchSceneName =
   | "escala-grafica"
   | "triangulo-universal-escalas"
   | "escala-transversales"
+  | "escala-proporcion"
+  | "escalas-normalizadas"
+  | "escala-detalles"
+  | "escala-fotocopia"
+  | "escalimetro"
   | "perpendicular-exterior-practica"
   | "perpendicular-extremo-practica"
   | "perpendicular-punto-practica"
@@ -197,6 +202,11 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "escala-grafica": 7,
   "triangulo-universal-escalas": 6,
   "escala-transversales": 5,
+  "escala-proporcion": 3,
+  "escalas-normalizadas": 5,
+  "escala-detalles": 3,
+  "escala-fotocopia": 2,
+  "escalimetro": 2,
   "perpendicular-exterior-practica": 11,
   "perpendicular-extremo-practica": 16,
   "perpendicular-punto-practica": 11,

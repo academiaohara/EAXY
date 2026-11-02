@@ -13,7 +13,7 @@ import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, 
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
-import { EscalaClases, EscalaConcepto, EscalaGrafica, EscalaTransversales, TrianguloUniversal } from "./scenes-escalas";
+import { EscalaClases, EscalaConcepto, EscalaDetalles, EscalaFotocopia, EscalaGrafica, EscalaProporcion, EscalaTransversales, Escalimetro, EscalasNormalizadas, TrianguloUniversal } from "./scenes-escalas";
 import { PerpendicularExteriorPractica, PerpendicularExtremoPractica, ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { ReproProvider } from "./reproduccion";
@@ -172,6 +172,16 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <DiferenciaSegmentosPractica block={block} />;
     case "paralelo-compas-practica":
       return <ParaleloCompasPractica block={block} />;
+    case "escala-proporcion":
+      return <EscalaProporcion block={block} />;
+    case "escalas-normalizadas":
+      return <EscalasNormalizadas block={block} />;
+    case "escala-detalles":
+      return <EscalaDetalles block={block} />;
+    case "escala-fotocopia":
+      return <EscalaFotocopia block={block} />;
+    case "escalimetro":
+      return <Escalimetro block={block} />;
     case "escala-concepto":
       return <EscalaConcepto block={block} />;
     case "escala-clases":

@@ -8,13 +8,11 @@ export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[3],
   stage: { theme: "board" },
   steps: [
-    slide("proporcion", "Reducir o ampliar en la misma proporción", [
-      { kind: "steps", items: [
-        "Al representar un objeto sobre el papel para tener su «plano industrial», a veces su tamaño, grande o pequeño, **no permite dibujarlo con las medidas reales**. Hay que **reducir o ampliar** las medidas reales **en una misma proporción**.",
-        "La **proporción** o **escala del dibujo** es la relación que existe entre las medidas del dibujo y las medidas reales del objeto.",
-        "Se llama también **razón** o proporción a la relación entre los valores numéricos de dos segmentos rectilíneos: el número que expresa el valor de un segmento cuando el otro se toma como unidad.",
-      ] },
-    ], undefined, "stack"),
+    slide("proporcion", "Reducir o ampliar en la misma proporción", [], bench("escala-proporcion", [
+      { title: "Una pieza demasiado grande", text: "Al representar un cuerpo sobre el papel para obtener su «plano industrial», muchas veces su tamaño real **no cabe en la hoja** (o es tan pequeño que no se aprecia).", fact: "Hay que reducir o ampliar" },
+      { title: "La misma proporción", text: "Se **reducen o amplían** las medidas reales **en una misma proporción**: todas las medidas del dibujo guardan la misma relación con las reales. Esa relación es la **proporción** o **escala del dibujo**.", fact: "Todas las medidas, en la misma proporción" },
+      { title: "Razón entre dos segmentos", text: "Se llama **razón** o proporción a la relación entre los valores de dos segmentos rectilíneos: el número que expresa el valor de un segmento cuando el otro se toma como unidad. Aquí, $AB/ab = 3$.", fact: "AB / ab = 3" },
+    ]), "stack"),
 
     slide("escala", "La escala es un cociente", [], bench("escala-concepto", [
       { title: "Dibujo y realidad", text: "Una medida de **1 400 mm** en la realidad se representa en el dibujo por **70 mm**. Hay que decir cuánto se ha reducido.", fact: "Real: 1 400 mm; dibujo: 70 mm" },
