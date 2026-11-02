@@ -80,6 +80,9 @@ function plan(c: Construccion) {
   return { ops, ms: [1, ...ops.map((i) => ms(c.ops[i]))] };
 }
 
+/** Puntos de la hoja que los instrumentos no deben tapar (los que tienen nombre a la vista, no los auxiliares). */
+const puntosImportantes = (c: Construccion): Pt[] => Object.entries(c.pts).filter(([n]) => !n.startsWith("_")).map(([, q]) => q as Pt);
+
 /** Pasada del cartabón o la escuadra que traza un ángulo de 30°, 45° o 60°. */
 function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
   const v = pt(c, o.v);
@@ -226,7 +229,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         x.marcas.forEach((m, k) => {
           const sub = j < o ? 1 : tramo(p, k / n, (k + 1) / n);
           if (sub <= 0) return;
-          const r = animParaleloEscuadra(pt(c, x.recta[0]), pt(c, x.recta[1]), pt(c, m), [pt(c, m), pt(c, x.cortes[k])], sub, "#6b7480", "cateto", c.escala ?? 1);
+          const r = animParaleloEscuadra(pt(c, x.recta[0]), pt(c, x.recta[1]), pt(c, m), [pt(c, m), pt(c, x.cortes[k])], sub, "#6b7480", "cateto", puntosImportantes(c));
           nodos.push(<g key={`${key}-${k}`}>{r.nodos}</g>);
         });
         break;
@@ -369,7 +372,7 @@ function defDe(id: ConstruccionId): Def {
       // el motor indexa los objetivos por el nº de fases «escuadra» ya hechas: se rellena con los de las operaciones previas
       const previas = c.ops.slice(0, c.ops.indexOf(o)).reduce((n, x) => n + (x.k === "paralelas" ? x.marcas.length : 0), 0);
       const propios = o.marcas.map((m, k) => ({ marca: pt(c, m), corte: pt(c, o.cortes[k]) }));
-      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios], escala: c.escala };
+      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios], importantes: puntosImportantes(c) };
     },
     ocultarArcos: (est) => {
       const out: number[] = [];
