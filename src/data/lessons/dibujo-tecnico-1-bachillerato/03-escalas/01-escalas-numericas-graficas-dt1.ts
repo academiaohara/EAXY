@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
+import { bench, slide } from "@/data/lessons/tec1-helpers";
 
 export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
   slug: "escalas-numericas-graficas-dt1",
@@ -23,15 +23,5 @@ export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
     slide("explora", "Elige la escala", [], bench("escala-explorador", [
       { title: "La mayor escala normalizada que cabe", text: "Indica el **tamaño real** del objeto y el **espacio** de la hoja: se elige la **mayor escala normalizada** con la que el objeto cabe. La **cota** sigue indicando la medida real, sea cual sea la escala.", fact: "Escala = dibujo / real" },
     ]), "stack"),
-
-    calc("calc-razon", "Calcula la escala", "Una medida de 1 400 mm se representa en el dibujo por 70 mm. ¿Cuál es N en la escala 1:N?", nums(20), "E = 70/1 400 = 1/20, es decir, 1:20.", "Divide la medida real entre la del dibujo."),
-    calc("calc-1-50", "Reducir", "Una pared de 2 m (2000 mm) se dibuja a escala 1:50. ¿Cuántos mm mide en el dibujo?", nums(40), "2000/50 = 40 mm.", "Divide entre 50."),
-    calc("calc-2-1", "Ampliar", "Una pieza de 15 mm se dibuja a escala 2:1. ¿Cuántos mm mide en el dibujo?", nums(30), "15 · 2 = 30 mm.", "Multiplica por 2."),
-    calc("calc-real", "Medida real", "En un plano a escala 1:200, una distancia mide 45 mm. ¿Cuántos metros reales son?", nums(9), "45 · 200 = 9000 mm = 9 m.", "Multiplica por 200 y pasa a metros."),
-    pick("pick-lectura", "Cómo se lee", "La escala E = 1:20 se lee…",
-      "«escala 1 es a 20»: 1 unidad del dibujo equivale a 20 de la realidad",
-      [["«escala 20 es a 1»: 20 unidades del dibujo equivalen a 1 de la realidad", "Eso sería una ampliación 20:1."], ["«escala 1 menos 20»", "Los dos puntos no son una resta, indican la razón."]],
-      "El primer número es el del dibujo y el segundo, el de la realidad.",
-    ),
   ],
 };

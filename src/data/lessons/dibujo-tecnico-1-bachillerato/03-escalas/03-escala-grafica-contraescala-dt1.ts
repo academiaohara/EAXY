@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, benchParte, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
+import { bench, benchParte, slide } from "@/data/lessons/tec1-helpers";
 
 export const escalaGraficaContraescalaDt1Lesson: InteractiveLesson = {
   slug: "escala-grafica-contraescala-dt1",
@@ -25,15 +25,5 @@ export const escalaGraficaContraescalaDt1Lesson: InteractiveLesson = {
       { title: "El plano y su escala gráfica", text: "Un plano lleva su escala numérica (E 1:200) y su **escala gráfica**, dibujadas a la vez.", fact: "Numérica y gráfica" },
       { title: "Se amplía con la fotocopiadora", text: "Si el plano se **fotocopia ampliado**, la escala gráfica cambia **con él** y **sigue siendo válida**; la numérica ya no lo es.", fact: "La gráfica se amplía con el plano" },
     ]), "stack"),
-
-    calc("g-1", "Unidad de la escala gráfica", "En una escala gráfica de E 1:50, ¿cuántos cm del dibujo representan 1 m real?", nums(2), "1 m = 100 cm; 100/50 = 2 cm.", "Divide la medida real entre 50."),
-    calc("g-2", "Escala 1:250", "A escala 1:250, ¿cuántos cm del dibujo representan 3 Dm (30 m) reales?", nums(12), "3 Dm = 30 m = 3 000 cm; 3 000/250 = 12 cm.", "Pasa a cm y divide entre 250."),
-    calc("g-3", "La contraescala", "En la escala gráfica de E 1:2, la contraescala mide 5 cm y se divide en 10 partes. ¿Cuántos mm mide cada parte en el dibujo?", nums(5), "5 cm = 50 mm; 50/10 = 5 mm (equivalen a 1 cm real).", "Divide 50 mm entre 10."),
-    calc("g-4", "Leer la escala", "En la escala gráfica de E 1:250 se lee 2 Dm y 4 divisiones de la contraescala (1 m cada una). ¿Cuántos metros son?", nums(24), "2 Dm = 20 m; 20 + 4 = 24 m.", "1 Dm = 10 m."),
-    pick("g-5", "Fotocopiar un plano", "Un plano se amplía con la fotocopiadora. ¿Qué sigue siendo válido?",
-      "La escala gráfica, porque se amplía junto con el dibujo",
-      [["La escala numérica", "Tras ampliar ya no es la misma relación."], ["Ninguna de las dos", "La gráfica cambia con el plano y se sigue leyendo bien."]],
-      "La escala gráfica se deforma igual que el dibujo.",
-    ),
   ],
 };

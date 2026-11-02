@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
+import { bench, slide } from "@/data/lessons/tec1-helpers";
 
 export const trianguloUniversalEscalasDt1Lesson: InteractiveLesson = {
   slug: "triangulo-universal-escalas-dt1",
@@ -16,18 +16,5 @@ export const trianguloUniversalEscalasDt1Lesson: InteractiveLesson = {
       { title: "Ampliaciones", text: "Si se prolongan los lados y se siguen tomando divisiones **por debajo de la base**, las paralelas dan escalas de **ampliación**: $E\\,11\\!:\\!10$, $E\\,12\\!:\\!10 = 6\\!:\\!5$.", fact: "Por debajo: ampliación" },
       { title: "Cómo se usa", text: "Una medida real de 8 cm es el tramo $0\\text{-}8$ de la base. En la fila $5$ ($E\\,1\\!:\\!2$) el mismo tramo entre radios mide **4 cm**: es el tamaño del dibujo a escala 1:2.", fact: "8 cm reales → 4 cm a 1:2" },
     ]), "stack"),
-
-    calc("tu-1", "Una fila", "Con el triángulo universal se toma la fila 4 (E 4:10 = 2:5). ¿Cuántos cm mide en el dibujo una medida real de 15 cm?", nums(6), "15 · 2/5 = 6 cm.", "Multiplica por 4/10."),
-    calc("tu-2", "Una ampliación", "Con la fila 12 (E 12:10 = 6:5), ¿cuántos mm mide en el dibujo una medida real de 50 mm?", nums(60), "50 · 6/5 = 60 mm.", "Multiplica por 12/10."),
-    pick("tu-3", "Reducción o ampliación", "En el triángulo universal, las paralelas a la base que quedan por encima de ella dan escalas…",
-      "de reducción",
-      [["de ampliación", "Esas quedan por debajo de la base."], ["normalizadas solamente", "Se pueden obtener también escalas no normalizadas."]],
-      "Por encima de la base E < 1; por debajo, E > 1.",
-    ),
-    pick("tu-4", "Qué es la base", "¿Qué escala representa la base del triángulo universal, dividida en centímetros?",
-      "La natural, E 1:1",
-      [["E 1:10", "Esa es la primera fila."], ["E 2:1", "Sería de ampliación."]],
-      "La base mide 10 cm y se divide en 10 partes de 1 cm.",
-    ),
   ],
 };
