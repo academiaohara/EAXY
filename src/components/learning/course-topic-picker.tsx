@@ -58,13 +58,13 @@ export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: Cour
       </header>
 
       <ol className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        {sorted.map((courseModule, index) => {
+        {sorted.map((courseModule) => {
           const { total, completed, percent } = getModuleProgress(courseModule);
           const exerciseCount = courseModule.topicExercises?.length ?? 0;
           const status = topicStatus(courseModule);
           const isAvailable = status !== "soon";
           const isCurrent = isAvailable && courseModule.id === currentModuleId;
-          const number = index + 1;
+          const number = courseModule.orderIndex;
 
           const inner = (
             <>
