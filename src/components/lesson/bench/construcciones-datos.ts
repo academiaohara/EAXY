@@ -856,6 +856,215 @@ function eneagonoLado(): Construccion {
 
 /* ───────────── Tema 6: relaciones geométricas ───────────── */
 
+/* ───────────── Tema 7: transformaciones geométricas ───────────── */
+
+/** Traslación de un triángulo según un vector: paralela al vector por cada vértice (escuadra y cartabón) y el vector con el compás. */
+function traslacionFigura(): Construccion {
+  const V: P = [40, 60];
+  const Vp: P = [240, 110];
+  const d: P = [Vp[0] - V[0], Vp[1] - V[1]];
+  const tri: Record<string, P> = { A: [80, 160], B: [190, 270], C: [55, 260] };
+  const pts: Record<string, P> = { V, Vp };
+  const ops: Op[] = [];
+  Object.entries(tri).forEach(([k, q]) => {
+    pts[k] = q;
+    pts[`${k}p`] = [q[0] + d[0], q[1] + d[1]];
+    pts[`_t${k}`] = [q[0] + d[0] * 1.12, q[1] + d[1] * 1.12];
+    ops.push({ k: "paralelas", recta: ["V", "Vp"], marcas: [k], cortes: [`_t${k}`] }, { k: "medir", de: "V", a: "Vp" }, ...marcaArco(k, `${k}p`));
+  });
+  ops.push({ k: "lados", pts: ["Ap", "Bp", "Cp"] });
+  return {
+    titulo: "Traslación de una figura",
+    intro: "Dado el vector de traslación $\\overrightarrow{VV'}$, se quiere hallar la figura $F'$ transformada del triángulo $F = ABC$. Cada punto se mueve lo mismo que el vector: $\\overrightarrow{AA'}$ es **igual y paralelo** a $\\overrightarrow{VV'}$.",
+    pts,
+    dados: ["V", "Vp", "A", "B", "C"],
+    datos: [],
+    base: [["V", "Vp"], ["A", "B"], ["B", "C"], ["C", "A"]],
+    ops,
+    ext: 10,
+  };
+}
+
+/** Punto de la circunferencia de centro `o` y radio `r` en el ángulo `a` (grados, sentido matemático). */
+const polar = (o: P, r: number, a: number): P => [o[0] + r * Math.cos((a * Math.PI) / 180), o[1] - r * Math.sin((a * Math.PI) / 180)];
+
+/** Giro de un segmento 60° en sentido horario con el cartabón y el compás. */
+function giroSegmento(): Construccion {
+  const O: P = [120, 240];
+  const A = polar(O, 150, 70);
+  const B = polar(O, 230, 40);
+  return {
+    titulo: "Giro de un segmento",
+    intro: "Se tiene el segmento $AB$ y un centro de giro $O$. Para girarlo $60^\\circ$ en el sentido de las agujas del reloj se gira cada extremo: $A'$ y $B'$ están a la misma distancia de $O$ que $A$ y $B$ y $\\widehat{AOA'} = \\widehat{BOB'} = 60^\\circ$.",
+    pts: { O, A, B, Ap: polar(O, 150, 10), Bp: polar(O, 230, -20) },
+    dados: ["O", "A", "B"],
+    datos: [],
+    base: [["O", "A"], ["O", "B"], ["A", "B"]],
+    ops: [
+      { k: "angulo", v: "O", base: 70, obj: 60, signo: -1, largo: 200 },
+      { k: "medir", de: "O", a: "A" },
+      ...marcaArco("O", "Ap"),
+      { k: "angulo", v: "O", base: 40, obj: 60, signo: -1, largo: 270 },
+      { k: "medir", de: "O", a: "B" },
+      ...marcaArco("O", "Bp"),
+      { k: "lados", pts: ["Ap", "Bp"] },
+    ],
+  };
+}
+
+/** Giro de una recta: se gira el pie de la perpendicular desde el centro y se traza la perpendicular al nuevo radio. */
+function giroRecta(): Construccion {
+  const O: P = [110, 230];
+  const A = polar(O, 120, 60);
+  const u: P = [Math.sin((60 * Math.PI) / 180), Math.cos((60 * Math.PI) / 180)];
+  const R1: P = [A[0] - u[0] * 130, A[1] - u[1] * 130];
+  const R2: P = [A[0] + u[0] * 260, A[1] + u[1] * 260];
+  const Ap = polar(O, 120, 0);
+  const dirOA: P = [(A[0] - O[0]) / 120, (A[1] - O[1]) / 120];
+  return {
+    titulo: "Giro de una recta",
+    intro: "Se quiere girar $60^\\circ$ en sentido horario la recta $r$ con centro de giro $O$. Basta girar el pie $A$ de la perpendicular a $r$ por $O$: la recta girada $r'$ es perpendicular a $OA'$ por $A'$.",
+    pts: { O, R1, R2, A, _xA: [A[0] + dirOA[0] * 25, A[1] + dirOA[1] * 25], Ap, _q1: [Ap[0], Ap[1] - 110], _q2: [Ap[0], Ap[1] + 110] },
+    dados: ["O", "R1", "R2"],
+    datos: [],
+    base: [["R1", "R2"]],
+    ops: [
+      perp(["R1", "R2"], "O", ["O", "_xA"]),
+      { k: "marca", p: "A" },
+      { k: "angulo", v: "O", base: 60, obj: 60, signo: -1, largo: 150 },
+      { k: "medir", de: "O", a: "A" },
+      ...marcaArco("O", "Ap"),
+      perp(["O", "Ap"], "Ap", ["_q1", "_q2"]),
+    ],
+    ext: 10,
+  };
+}
+
+/** Homotecia directa de razón 2: rayos desde el centro, A' con el compás y el resto con paralelas. */
+function homoteciaDirecta(): Construccion {
+  const C: P = [120, 210];
+  const A: P = [190, 150];
+  const B: P = [225, 195];
+  const D: P = [215, 255];
+  const E: P = [165, 265];
+  const h = (q: P): P => [2 * q[0] - C[0], 2 * q[1] - C[1]];
+  return {
+    titulo: "Homotecia directa (K = 2)",
+    intro: "Se quiere hallar la figura homotética de $ABDE$ con centro $C$ y razón $K = 2$. Los puntos homólogos están alineados con $C$ y se cumple $CA' = 2\\,CA$; las rectas homólogas, como $AB$ y $A'B'$, son **paralelas**.",
+    pts: { C, A, B, D, E, Ap: h(A), Bp: h(B), Dp: h(D), Ep: h(E) },
+    dados: ["C", "A", "B", "D", "E"],
+    datos: [],
+    base: [["A", "B"], ["B", "D"], ["D", "E"]],
+    ext: 110,
+    ops: [
+      { k: "recta", a: "C", b: "A" },
+      { k: "recta", a: "C", b: "B" },
+      { k: "recta", a: "C", b: "D" },
+      { k: "recta", a: "C", b: "E" },
+      { k: "medir", de: "C", a: "A" },
+      ...marcaArco("A", "Ap"),
+      { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
+      { k: "paralelas", recta: ["B", "D"], marcas: ["Bp"], cortes: ["Dp"] },
+      { k: "paralelas", recta: ["D", "E"], marcas: ["Dp"], cortes: ["Ep"] },
+      { k: "lados", pts: ["Ap", "Bp", "Dp", "Ep"] },
+    ],
+  };
+}
+
+/** Homotecia inversa de razón −2: A' al otro lado del centro (dos arcos con la misma abertura) y el resto con paralelas. */
+function homoteciaInversa(): Construccion {
+  const C: P = [260, 190];
+  const A: P = [180, 150];
+  const B: P = [150, 230];
+  const D: P = [215, 235];
+  const h = (q: P, k: number): P => [C[0] - k * (q[0] - C[0]), C[1] - k * (q[1] - C[1])];
+  return {
+    titulo: "Homotecia inversa (K = −2)",
+    intro: "Se quiere hallar la figura homotética de $ABD$ con centro $C$ y razón $K = -2$. Al ser **negativa**, cada punto homólogo queda al **otro lado** del centro: $CA' = 2\\,CA$ y las rectas homólogas siguen siendo paralelas.",
+    pts: { C, A, B, D, X: h(A, 1), Ap: h(A, 2), Bp: h(B, 2), Dp: h(D, 2) },
+    dados: ["C", "A", "B", "D"],
+    datos: [],
+    base: [["A", "B"], ["B", "D"], ["D", "A"]],
+    ext: 170,
+    ops: [
+      { k: "recta", a: "C", b: "A" },
+      { k: "medir", de: "C", a: "A" },
+      ...marcaArco("C", "X"),
+      { k: "medir", de: "C", a: "A" },
+      ...marcaArco("X", "Ap"),
+      { k: "recta", a: "C", b: "B" },
+      { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
+      { k: "recta", a: "C", b: "D" },
+      { k: "paralelas", recta: ["A", "D"], marcas: ["Ap"], cortes: ["Dp"] },
+      { k: "lados", pts: ["Ap", "Bp", "Dp"] },
+    ],
+  };
+}
+
+/** Centros de homotecia de dos segmentos paralelos (Fig. 8): el directo en AA′·BB′ y el inverso en AB′·A′B. */
+function homoteciaCentrosSegmentos(): Construccion {
+  const A: P = [240, 130];
+  const B: P = [300, 220];
+  const Ap: P = [400, 60];
+  const Bp: P = [520, 240];
+  const corte = (p1: P, p2: P, p3: P, p4: P): P => {
+    const d = (p2[0] - p1[0]) * (p4[1] - p3[1]) - (p2[1] - p1[1]) * (p4[0] - p3[0]);
+    const t = ((p3[0] - p1[0]) * (p4[1] - p3[1]) - (p3[1] - p1[1]) * (p4[0] - p3[0])) / d;
+    return [p1[0] + t * (p2[0] - p1[0]), p1[1] + t * (p2[1] - p1[1])];
+  };
+  return {
+    titulo: "Centros de homotecia de dos segmentos paralelos",
+    intro: "Dos segmentos paralelos $AB$ y $A'B'$ son homotéticos respecto de **dos centros**: $C_1$ en una homotecia **directa** (con $A \\to A'$ y $B \\to B'$) y $C_2$ en una **inversa** (con $A \\to B'$ y $B \\to A'$). Cada centro está donde se cortan las rectas que unen los puntos homólogos.",
+    pts: { A, B, Ap, Bp, C1: corte(A, Ap, B, Bp), C2: corte(A, Bp, B, Ap) },
+    dados: ["A", "B", "Ap", "Bp"],
+    datos: [],
+    base: [["A", "B"], ["Ap", "Bp"]],
+    ext: 185,
+    ops: [
+      { k: "recta", a: "A", b: "Ap" },
+      { k: "recta", a: "B", b: "Bp" },
+      { k: "marca", p: "C1" },
+      { k: "recta", a: "A", b: "Bp" },
+      { k: "recta", a: "B", b: "Ap" },
+      { k: "marca", p: "C2" },
+    ],
+  };
+}
+
+/** Centros de homotecia de dos circunferencias (Fig. 9): rectas por los extremos de radios paralelos (del mismo sentido y de sentido contrario). */
+function homoteciaCentrosCircunferencias(): Construccion {
+  const Op: P = [160, 210];
+  const O: P = [340, 210];
+  const R = 100;
+  const r = 45;
+  const P1: P = [O[0], O[1] - r];
+  const Q1: P = [O[0], O[1] + r];
+  const P2: P = [Op[0], Op[1] - R];
+  const Q2: P = [Op[0], Op[1] + R];
+  return {
+    titulo: "Centros de homotecia de dos circunferencias",
+    intro: "Dos circunferencias de centros $O'$ y $O$ son siempre homotéticas. Los extremos de dos **radios paralelos** son puntos homólogos: si tienen el mismo sentido, la recta que los une corta a $O'O$ en el centro **directo** $C_1$; si tienen sentido contrario, en el centro **inverso** $C_2$.",
+    pts: { Op, O, _m0: [40, 210], _m1: [600, 210], _a1: [O[0], O[1] - 60], _a2: [O[0], O[1] + 60], _b1: [Op[0], Op[1] - 115], _b2: [Op[0], Op[1] + 115], P: P1, Q: Q1, Pp: P2, Qp: Q2, C1: [O[0] + ((O[0] - Op[0]) * r) / (R - r), 210], C2: [Op[0] + ((O[0] - Op[0]) * R) / (R + r), 210] },
+    dados: ["Op", "O"],
+    datos: [],
+    base: [["_m0", "_m1"]],
+    circulos: [{ c: "O", r }, { c: "Op", r: R }],
+    ops: [
+      perp(["_m0", "_m1"], "O", ["_a1", "_a2"]),
+      { k: "marca", p: "P" },
+      { k: "marca", p: "Q" },
+      perp(["_m0", "_m1"], "Op", ["_b1", "_b2"]),
+      { k: "marca", p: "Pp" },
+      { k: "marca", p: "Qp" },
+      { k: "recta", a: "P", b: "Pp" },
+      { k: "marca", p: "C1" },
+      { k: "recta", a: "P", b: "Qp" },
+      { k: "marca", p: "C2" },
+    ],
+    ext: 30,
+  };
+}
+
 /** Simétrico de `q` respecto del eje que pasa por `e0` y `e1`, y pie de la perpendicular. */
 function reflejo(e0: P, e1: P, q: P) {
   const l = dist(e0, e1);
@@ -867,8 +1076,8 @@ function reflejo(e0: P, e1: P, q: P) {
 
 /** Simetría axial de uno o varios puntos: perpendicular al eje (escuadra y cartabón), pie y compás con la misma distancia. */
 function simetriaAxial(nombres: string[], originales: P[], titulo: string, intro: string, lados: boolean, baseOrig: [string, string][]): Construccion {
-  const e0: P = [40, 215];
-  const e1: P = [580, 195];
+  const e0: P = [40, 190];
+  const e1: P = [580, 170];
   const pts: Record<string, P> = { _e0: e0, e: e1 };
   const ops: Op[] = [];
   const base: [string, string][] = [["_e0", "e"], ...baseOrig];
@@ -1306,6 +1515,13 @@ export const CONSTRUCCIONES = {
   "simetria-figura": simetriaFigura(),
   "simetria-axial-punto": simetriaAxial(["A"], [[180, 110]], "Simetría axial de un punto", "Dos puntos $A$ y $A'$ son **simétricos** respecto de un eje $e$ cuando están en la misma **perpendicular** al eje y a la misma distancia de él, uno a cada lado.", false, []),
   "simetria-axial-segmento": simetriaAxial(["A", "B"], [[120, 90], [250, 120]], "Simetría axial de un segmento", "Para hallar el simétrico del segmento $s = AB$ se halla el simétrico de cada extremo. Las rectas simétricas se cortan en un punto del eje.", true, [["A", "B"]]),
+  "traslacion-figura": traslacionFigura(),
+  "giro-segmento": giroSegmento(),
+  "giro-recta": giroRecta(),
+  "homotecia-directa": homoteciaDirecta(),
+  "homotecia-inversa": homoteciaInversa(),
+  "homotecia-centros-segmentos": homoteciaCentrosSegmentos(),
+  "homotecia-centros-circunferencias": homoteciaCentrosCircunferencias(),
   "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
 } satisfies Record<string, Construccion>;
 
@@ -1318,6 +1534,7 @@ const ESCALA_INSTRUMENTOS: Record<string, number> = {
   "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.45, "eneagono-lado": 0.4, "tercero-proporcional": 0.8,
   "semejante-radial": 0.5, "semejante-coordenadas": 0.5, "igual-coordenadas": 0.5, "igual-traslacion": 0.5,
   "simetria-axial-segmento": 0.7, "simetria-axial-figura": 0.7,
+  "traslacion-figura": 0.5, "giro-segmento": 0.7, "giro-recta": 0.7, "homotecia-directa": 0.7, "homotecia-inversa": 0.5,
 };
 for (const [id, k] of Object.entries(ESCALA_INSTRUMENTOS)) (CONSTRUCCIONES as Record<string, Construccion>)[id].escala = k;
 
@@ -1326,7 +1543,7 @@ export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 /** Nombre con el que se rotula un punto (los puntos auxiliares de la división de `CD` llevan una prima). */
 const ETIQUETAS: Record<string, string> = {
   Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "",
-  Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
+  Vp: "V'", Op: "O'", Pp: "P'", Qp: "Q'", C1: "C₁", C2: "C₂", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
   p1: "1'", p2: "2'", p3: "3'", p4: "4'", "1s": "1'", "2s": "2'", "3s": "3'", "4s": "4'", As: "A'", Bs: "B'", f0: "", f1: "", f2: "", f3: "", e: "e", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
 };

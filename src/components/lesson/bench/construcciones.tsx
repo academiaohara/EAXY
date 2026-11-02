@@ -81,7 +81,7 @@ function plan(c: Construccion) {
 }
 
 /** Pasada del cartabón o la escuadra que traza un ángulo de 30°, 45° o 60°. */
-export function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
+function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
   const v = pt(c, o.v);
   const signo = o.signo ?? 1;
   const largo = o.largo ?? 160;
@@ -233,10 +233,11 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       }
       case "lados": {
         const pts = x.pts.map((n) => pt(c, n));
-        const n = pts.length;
+        // con dos puntos es un solo segmento (no un polígono cerrado): una única pasada de regla
+        const n = pts.length === 2 ? 1 : pts.length;
         if (t >= 0.97 || j < o) nodos.push(<Poli key={key} pts={pts} color={INK} w={3} fill={j === ultimoLados ? VERDE_RELLENO : "none"} />);
         else
-          pts.forEach((q, k) => {
+          pts.slice(0, n).forEach((q, k) => {
             const sub = tramo(t, k / n, (k + 1) / n);
             if (sub > 0) nodos.push(<ReglaTrazando key={`${key}-${k}`} a={q} b={pts[(k + 1) % n]} p={sub} ext={0} color={INK} w={3} />);
           });
@@ -282,7 +283,7 @@ function defDe(id: ConstruccionId): Def {
     grosorAuto: 3,
     extTrazo: c.ext ?? 30,
     reiniciarEscuadra: true,
-    autoLados: () => lados.flatMap((l) => l.pts.map((n, k) => [pt(c, n), pt(c, l.pts[(k + 1) % l.pts.length])] as [Pt, Pt])),
+    autoLados: () => lados.flatMap((l) => (l.pts.length === 2 ? [[pt(c, l.pts[0]), pt(c, l.pts[1])] as [Pt, Pt]] : l.pts.map((n, k) => [pt(c, n), pt(c, l.pts[(k + 1) % l.pts.length])] as [Pt, Pt]))),
     papel: (est: Est) => {
       const visibles = new Set<string>(c.dados);
       meta.forEach((m, f) => {
