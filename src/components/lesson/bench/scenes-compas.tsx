@@ -184,7 +184,7 @@ export function pieParalela(a: Pt, b: Pt, marcas: Pt[], k = 1): Pt {
   const fuera = (q: Pt) => Math.max(0, 8 - q[0]) + Math.max(0, q[0] - 612) + Math.max(0, 8 - q[1]) + Math.max(0, q[1] - 372);
   let mejor = proy;
   let costeMejor = Infinity;
-  for (let t = -1.2 * L; t <= 2.2 * L; t += 10) {
+  for (let t = -450; t <= L + 450; t += 10) {
     const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
     const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(lejana)) / k);
     const aEsc = (q: Pt): Pt => [pie[0] + k * (q[0] - pie[0]), pie[1] + k * (q[1] - pie[1])];
