@@ -16851,6 +16851,15 @@ export const fullCurriculum: Curriculum = {
               interactiveSlug: "simetria-central-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(20207),
+              title: "7. Simetría axial",
+              summary: "Simétrico de un punto, un segmento y una figura respecto de un eje.",
+              orderIndex: 7,
+              kind: "interactive",
+              interactiveSlug: "simetria-axial-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {

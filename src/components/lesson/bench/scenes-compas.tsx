@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
+import { CARTABON_CORTO, CARTABON_LARGO, ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { geoDesliza, type DatosDesliza } from "./escuadra-perpendicular";
 import { useBenchCheck } from "./practice";
@@ -165,6 +165,43 @@ export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
   return [a * setup.u[0] - b * setup.n[0], a * setup.u[1] - b * setup.n[1]];
 };
 
+
+/**
+ * Punto de la recta `a`–`b` donde se apoyan el cartabón y la escuadra para trazar paralelas por `marcas`. Da igual en qué
+ * parte de la recta se apoyen, así que se elige el sitio donde los instrumentos (al principio y al final del
+ * deslizamiento) quedan más dentro de la hoja, cerca del segmento dado.
+ */
+export function pieParalela(a: Pt, b: Pt, marcas: Pt[]): Pt {
+  const L = dist(a, b);
+  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
+  const n0 = dir(theta0 + 90);
+  const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
+  const lejana = marcas.reduce((m, x) => (Math.abs(dist0(x)) > Math.abs(dist0(m)) ? x : m), marcas[0]);
+  const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
+  const u = dir(theta);
+  const proy = Math.min(L, Math.max(0, (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1]));
+  const fuera = (q: Pt) => Math.max(0, 8 - q[0]) + Math.max(0, q[0] - 612) + Math.max(0, 8 - q[1]) + Math.max(0, q[1] - 372);
+  let mejor = proy;
+  let costeMejor = Infinity;
+  for (let t = -1.2 * L; t <= 2.2 * L; t += 10) {
+    const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+    const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(lejana)));
+    let coste = Math.abs(t - proy) * 0.08;
+    for (const sp of [0, setup.sStar]) {
+      const esc = escuadraPoseRef(setup, sp);
+      coste += [[0, 0], [ESCUADRA_L, 0], [0, ESCUADRA_L]].reduce((n, v) => n + fuera(applyPose(esc, v as Pt)), 0);
+      const car = cartabonPoseRef(setup);
+      coste += [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]].reduce((n, v) => n + fuera(applyPose(car, v as Pt)), 0);
+    }
+    if (coste < costeMejor - 1e-6) {
+      costeMejor = coste;
+      mejor = t;
+    }
+  }
+  return [a[0] + u0[0] * mejor, a[1] + u0[1] * mejor];
+}
+
 /**
  * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
  * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
@@ -172,9 +209,7 @@ export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
 export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4", modo: "cateto" | "hipotenusa" = "cateto") {
   const L = dist(a, b);
   const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
-  // los instrumentos se apoyan sobre la propia recta dada (no más allá de sus extremos): la paralela puede quedar lejos de ella
-  const t = Math.min(L, Math.max(0, (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1]));
-  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  const pie = pieParalela(a, b, [P]);
   const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
   const d0 = dot([P[0] - a[0], P[1] - a[1]], dir(theta0 + 90));
   const theta = d0 < 0 ? theta0 + 180 : theta0;
@@ -573,8 +608,7 @@ export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[]) {
   const n0 = dir(theta0 + 90);
   const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
   const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
-  const t = Math.min(L, Math.max(0, (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1]));
-  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  const pie = pieParalela(a, b, marcas);
   const u = dir(theta);
   const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(marcas[0])));
   return { setup, desliza: direccionDeslizamiento(setup), sps: marcas.map((m) => Math.abs(dist0(m)) * Math.SQRT2) };

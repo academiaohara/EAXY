@@ -854,6 +854,38 @@ function eneagonoLado(): Construccion {
 
 /* ───────────── Tema 6: relaciones geométricas ───────────── */
 
+/** Simétrico de `q` respecto del eje que pasa por `e0` y `e1`, y pie de la perpendicular. */
+function reflejo(e0: P, e1: P, q: P) {
+  const l = dist(e0, e1);
+  const u: P = [(e1[0] - e0[0]) / l, (e1[1] - e0[1]) / l];
+  const t = (q[0] - e0[0]) * u[0] + (q[1] - e0[1]) * u[1];
+  const pie: P = [e0[0] + u[0] * t, e0[1] + u[1] * t];
+  return { pie, sim: [2 * pie[0] - q[0], 2 * pie[1] - q[1]] as P };
+}
+
+/** Simetría axial de uno o varios puntos: perpendicular al eje (escuadra y cartabón), pie y compás con la misma distancia. */
+function simetriaAxial(nombres: string[], originales: P[], titulo: string, intro: string, lados: boolean, baseOrig: [string, string][]): Construccion {
+  const e0: P = [40, 215];
+  const e1: P = [580, 195];
+  const pts: Record<string, P> = { _e0: e0, e: e1 };
+  const ops: Op[] = [];
+  const base: [string, string][] = [["_e0", "e"], ...baseOrig];
+  nombres.forEach((n, i) => {
+    const { pie, sim } = reflejo(e0, e1, originales[i]);
+    const largo = dist(originales[i], sim);
+    const ext: P = [sim[0] + ((sim[0] - originales[i][0]) / largo) * 14, sim[1] + ((sim[1] - originales[i][1]) / largo) * 14];
+    pts[n] = originales[i];
+    pts[`f${i}`] = pie;
+    pts[`${n}s`] = sim;
+    pts[`_x${i}`] = ext;
+    ops.push(perp(["_e0", "e"], n, [n, `_x${i}`]), { k: "marca", p: `f${i}` }, { k: "medir", de: `f${i}`, a: n }, ...marcaArco(`f${i}`, `${n}s`));
+  });
+  if (lados) ops.push({ k: "lados", pts: nombres.map((n) => `${n}s`) });
+  return { titulo, intro, pts, dados: ["e", ...nombres], datos: [], base, ops, ext: 10 };
+}
+
+
+
 const prima = (clave: string) => `${clave}p`;
 
 /** Rayos de partida y datos comunes de las construcciones de cuarto y tercer proporcional. */
@@ -1270,6 +1302,9 @@ export const CONSTRUCCIONES = {
   "simetria-punto": simetriaPunto(),
   "simetria-segmento": simetriaSegmento(),
   "simetria-figura": simetriaFigura(),
+  "simetria-axial-punto": simetriaAxial(["A"], [[180, 110]], "Simetría axial de un punto", "Dos puntos $A$ y $A'$ son **simétricos** respecto de un eje $e$ cuando están en la misma **perpendicular** al eje y a la misma distancia de él, uno a cada lado.", false, []),
+  "simetria-axial-segmento": simetriaAxial(["A", "B"], [[120, 90], [250, 120]], "Simetría axial de un segmento", "Para hallar el simétrico del segmento $s = AB$ se halla el simétrico de cada extremo. Las rectas simétricas se cortan en un punto del eje.", true, [["A", "B"]]),
+  "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
 } satisfies Record<string, Construccion>;
 
 export type ConstruccionId = keyof typeof CONSTRUCCIONES;
@@ -1278,7 +1313,7 @@ export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 const ETIQUETAS: Record<string, string> = {
   Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "",
   Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
-  p1: "1'", p2: "2'", p3: "3'", p4: "4'", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
+  p1: "1'", p2: "2'", p3: "3'", p4: "4'", "1s": "1'", "2s": "2'", "3s": "3'", "4s": "4'", As: "A'", Bs: "B'", f0: "", f1: "", f2: "", f3: "", e: "e", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
