@@ -16593,6 +16593,15 @@ export const fullCurriculum: Curriculum = {
               interactiveSlug: "escala-transversales-escalimetro-dt1",
               conceptSlugs: [],
             },
+            {
+              id: lessonId(20911),
+              title: "6. Ejercicios del tema",
+              summary: "Actividades del libro: clases de escalas, escalas normalizadas y cálculo de medidas.",
+              orderIndex: 6,
+              kind: "interactive",
+              interactiveSlug: "ejercicios-escalas-dt1",
+              conceptSlugs: [],
+            },
           ],
         },
         {

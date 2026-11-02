@@ -537,6 +537,7 @@ import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/0
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalaGraficaContraescalaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/03-escala-grafica-contraescala-dt1";
+import { ejerciciosEscalasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/06-ejercicios-escalas-dt1";
 import { escalaTransversalesEscalimetroDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/05-escala-transversales-escalimetro-dt1";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
 import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/01-escalas-numericas-graficas-dt1";
@@ -2259,6 +2260,7 @@ export const interactiveLessons = {
   "error-incertidumbre-medida-fq4": errorIncertidumbreMedidaFq4Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
+  "ejercicios-escalas-dt1": ejerciciosEscalasDt1Lesson,
   "escala-grafica-contraescala-dt1": escalaGraficaContraescalaDt1Lesson,
   "escala-transversales-escalimetro-dt1": escalaTransversalesEscalimetroDt1Lesson,
   "escalas-dibujo": escalasDibujoLesson,

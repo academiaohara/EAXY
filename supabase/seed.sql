@@ -1885,6 +1885,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020908', 'a2000000-0000-4000-8000-000000000391', '3. Escala gráfica y contraescala', 'Construir y leer la escala gráfica: E 1:2 y E 1:250.', 3, null),
   ('a3000000-0000-4000-8000-000000020909', 'a2000000-0000-4000-8000-000000000391', '4. Triángulo universal de escalas', 'Construcción y uso del triángulo universal de escalas.', 4, null),
   ('a3000000-0000-4000-8000-000000020910', 'a2000000-0000-4000-8000-000000000391', '5. Escala decimal de transversales y escalímetro', 'Apreciar las décimas de la contraescala; el escalímetro.', 5, null),
+  ('a3000000-0000-4000-8000-000000020911', 'a2000000-0000-4000-8000-000000000391', '6. Ejercicios del tema', 'Actividades del libro: clases de escalas, escalas normalizadas y cálculo de medidas.', 6, null),
   ('a3000000-0000-4000-8000-000000020301', 'a2000000-0000-4000-8000-000000000203', '1. Rectas y puntos notables del triángulo', 'Baricentro, incentro, circuncentro y ortocentro.', 1, null),
   ('a3000000-0000-4000-8000-000000020302', 'a2000000-0000-4000-8000-000000000203', '2. Clasificación y construcción de triángulos', 'Desigualdad triangular y casos de construcción.', 2, null),
   ('a3000000-0000-4000-8000-000000020303', 'a2000000-0000-4000-8000-000000000392', '1. Cuadriláteros: clasificación y construcción', 'Paralelogramos, trapecios y trapezoides.', 1, null),

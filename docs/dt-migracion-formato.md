@@ -39,7 +39,7 @@ Libro de referencia: *Dibujo Técnico I, 1.º Bachillerato* (Editorial Donostiar
 |---|---|---|---|
 | 1. Instrumentos de dibujo | 10–17 | 2 | Migrado |
 | 2. Trazados fundamentales en el plano | 18–29 | 12 | Migrado hasta la pág. 25 (falta la 26 en adelante: ángulos con plantillas y actividades) |
-| 3. Escalas | 30–33 | 5 (proporcionalidad y concepto de escala; clases y escalas normalizadas con las actividades 1–9; escala gráfica y contraescala; triángulo universal; escala decimal de transversales y escalímetro) | Hecho. Las piezas a escala (figuras 6–12) quedan pendientes del formato «lámina con pieza real» |
+| 3. Escalas | 30–33 | 6 (proporcionalidad y concepto de escala; clases y escalas normalizadas; escala gráfica y contraescala; triángulo universal; escala decimal de transversales y escalímetro; y una sección aparte de ejercicios con las actividades 1–9) | Hecho. Las piezas a escala (figuras 6–12) quedan pendientes del formato «lámina con pieza real» |
 | 4. Formas poligonales I (triángulos) | 36–43 | 2 | Migrado (por revisar contra el libro) |
 | 5. Formas poligonales II (cuadriláteros y polígonos regulares) | 44–53 | 4 | Migrado (por revisar contra el libro) |
 | 6. Relaciones geométricas | 54–61 | 4 (Thales, media proporcional y áurea, equivalencia y cuadratura, semejanza y escalas) | Migrado (por revisar contra el libro) |
