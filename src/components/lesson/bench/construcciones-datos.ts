@@ -1111,28 +1111,25 @@ function igualRodeo(): Construccion {
 
 function igualTraslacion(): Construccion {
   const dx = 300;
-  const V: Record<string, P> = { A: [100, 60], B: [170, 110], C: [150, 170], D: [110, 240], E: [60, 150] };
+  const V: Record<string, P> = { A: [100, 140], B: [170, 190], C: [150, 245], D: [110, 320], E: [60, 230] };
   const pts: Record<string, P> = {};
   const etiquetas = ["a", "b", "c", "d", "e"];
   Object.entries(V).forEach(([k, q], i) => {
     pts[k] = q;
     pts[`${k}p`] = [q[0] + dx, q[1]];
-    pts[`l${etiquetas[i]}`] = [575, q[1]];
+    pts[`_l${etiquetas[i]}`] = [575, q[1]];
   });
   return {
     titulo: "Figura igual por traslación",
-    intro: "Se quiere copiar el pentágono $ABCDE$. Se trazan por sus vértices rectas paralelas $a, b, c\\dots$ y, desde un punto cualquiera $A'$ de la recta $a$, se van trazando paralelas a los lados hasta cortar a las rectas siguientes: es una simple traslación.",
+    intro: "Se quiere copiar el pentágono $ABCDE$. Se traza por $A$ y por un punto cualquiera $A'$ una recta y, con escuadra y cartabón, por los demás vértices sus paralelas. Después, desde $A'$, se van trazando paralelas a los lados hasta cortar a las rectas siguientes: es una simple traslación.",
     pts,
-    dados: ["A", "B", "C", "D", "E", "Ap", "la", "lb", "lc", "ld", "le"],
+    dados: ["A", "B", "C", "D", "E", "Ap"],
     datos: [],
     base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"]],
     ext: 8,
     ops: [
-      { k: "recta", a: "A", b: "la" },
-      { k: "recta", a: "B", b: "lb" },
-      { k: "recta", a: "C", b: "lc" },
-      { k: "recta", a: "D", b: "ld" },
-      { k: "recta", a: "E", b: "le" },
+      { k: "recta", a: "A", b: "Ap" },
+      { k: "paralelas", recta: ["A", "Ap"], marcas: ["B", "C", "D", "E"], cortes: ["_lb", "_lc", "_ld", "_le"] },
       { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
       { k: "paralelas", recta: ["B", "C"], marcas: ["Bp"], cortes: ["Cp"] },
       { k: "paralelas", recta: ["C", "D"], marcas: ["Cp"], cortes: ["Dp"] },

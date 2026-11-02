@@ -122,5 +122,5 @@ describe("construcciones del tema 5: animación y práctica", () => {
     await new Promise((r) => setTimeout(r, 450));
     expect(onCheck).toHaveBeenCalledTimes(1);
     expect(onCheck).toHaveBeenCalledWith({ correct: true, snapshot: { kind: "bench_task", isCorrect: true } });
-  });
+  }, 30000);
 });

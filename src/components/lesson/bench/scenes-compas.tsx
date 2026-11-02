@@ -172,10 +172,11 @@ export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
 export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4", modo: "cateto" | "hipotenusa" = "cateto") {
   const L = dist(a, b);
   const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
-  const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
+  // los instrumentos se apoyan sobre la propia recta dada (no más allá de sus extremos): la paralela puede quedar lejos de ella
+  const t = Math.min(L, Math.max(0, (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1]));
   const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
   const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
-  const d0 = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta0 + 90));
+  const d0 = dot([P[0] - a[0], P[1] - a[1]], dir(theta0 + 90));
   const theta = d0 < 0 ? theta0 + 180 : theta0;
   const d = Math.abs(d0);
   const u = dir(theta);
@@ -572,7 +573,7 @@ export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[]) {
   const n0 = dir(theta0 + 90);
   const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
   const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
-  const t = (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1];
+  const t = Math.min(L, Math.max(0, (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1]));
   const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
   const u = dir(theta);
   const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(marcas[0])));
