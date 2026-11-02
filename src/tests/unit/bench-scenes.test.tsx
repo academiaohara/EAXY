@@ -1404,20 +1404,32 @@ describe("mesa de dibujo · cuadriláteros, elementos y estrellas", () => {
   });
 
   describe("pentagrama", () => {
-    it("une los vértices de dos en dos: cinco trazos y el ejercicio se supera solo", () => {
+    it("se une cada vértice con el siguiente sin levantar la pluma: seis toques y el ejercicio se supera solo", () => {
       const t = pantalla("pentagrama-practica");
-      for (const [i, j] of [[0, 2], [2, 4], [4, 1], [1, 3], [3, 0]]) {
+      for (const i of [0, 2, 4, 1, 3]) {
         t.sinSuperar();
         t.tocar(PV[i]);
-        t.tocar(PV[j]);
       }
+      t.sinSuperar();
+      t.tocar(PV[0]);
       t.superada();
     });
-    it("un trazo entre vértices contiguos o repetido avisa y no se registra", () => {
+    it("el vértice de salida queda marcado y los trazos hechos no se repiten", () => {
+      const t = pantalla("pentagrama-practica");
+      t.tocar(PV[0]);
+      expect(screen.getByTestId("bench-origen")).toBeTruthy();
+      t.tocar(PV[2]);
+      t.tocar(PV[0]);
+      expect(t.aviso()).toContain("ya está hecho");
+      expect(screen.getAllByTestId("bench-regla-trazo")).toHaveLength(1);
+      expect(screen.getAllByTestId("bench-clic")).toHaveLength(1);
+    });
+    it("un trazo entre vértices contiguos avisa y no se registra", () => {
       const t = pantalla("pentagrama-practica");
       t.tocar(PV[0]);
       t.tocar(PV[1]);
       expect(t.aviso()).toContain("salta un vértice");
+      expect(screen.queryAllByTestId("bench-regla-trazo")).toHaveLength(0);
     });
   });
 

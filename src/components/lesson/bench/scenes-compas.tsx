@@ -508,6 +508,15 @@ export type Def = {
   trazoFino?: boolean;
   /** Grosor de los lados que traza la regla al final (fase `auto`): el dibujo definitivo, como un lápiz B. */
   grosorAuto?: number;
+  /**
+   * Fase `regla` en cadena: cada toque es un vértice y la regla une cada uno con el anterior (la pluma no se levanta);
+   * `nClics` es el total de toques (el de salida y uno por trazo).
+   */
+  cadena?: boolean;
+  /** Puntos que se resaltan como guía (por defecto, los de `cortes`): en una cadena, solo los destinos válidos. */
+  guia?: (est: Est) => Pt[];
+  /** Texto de «Tu turno» propio del paso actual (por ejemplo, según cuántos puntos se han tocado ya). */
+  accion?: (est: Est) => string | null;
   /** Cada fase `escuadra` empieza con la escuadra en su posición inicial (rectas de apoyo distintas en cada una). */
   reiniciarEscuadra?: boolean;
   /** Índices de los arcos que forman el resultado: se dibujan con trazo fuerte aunque la construcción haya terminado. */
@@ -584,6 +593,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   /** Intentos fallidos seguidos en la fase actual y pista pedida: con 2 fallos la escena enseña qué hacer. */
   const [fallos, setFallos] = useState(0);
   const [pista, setPista] = useState(false);
+  /** Posición del puntero sobre la hoja cuando hay un punto elegido: de ahí sale la goma hasta el puntero. */
+  const [hover, setHover] = useState<Pt | null>(null);
   const fallar = (mensaje: string) => {
     setAviso(mensaje);
     setFallos((n) => n + 1);
@@ -648,6 +659,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     setAviso(null);
     setFallos(0);
     setPista(false);
+    setHover(null);
     if (nuevo.fase >= fases.length) finalizar();
     else if (fases[nuevo.fase] === "auto") {
       // la regla traza sola los lados que faltan y, al acabar, el ejercicio se da por superado
@@ -706,6 +718,10 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         fallar("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
         return;
       }
+      if (est.pend && est.trazos.some(([x, y]) => (dist(x, est.pend!) < 1 && dist(y, cand) < 1) || (dist(x, cand) < 1 && dist(y, est.pend!) < 1))) {
+        fallar("Esa recta ya está trazada: elige otros dos puntos.");
+        return;
+      }
       setAviso(null);
       if (!est.pend) setEst({ ...est, pend: cand });
       else avanzar({ ...est, trazos: [...est.trazos, [est.pend, cand]], pend: null });
@@ -748,7 +764,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
 
   const onMove = (ev: ReactPointerEvent) => {
-    if (!agarrada || bloqueada || !tipo) return;
+    if (bloqueada || !tipo) return;
+    if (!agarrada) {
+      if ((tipo === "regla" && def.cadena && est.clics.length > 0) || (tipo === "trazo" && est.pend) || (tipo === "medida" && est.medida.length === 1)) setHover(puntero(svgRef.current, ev));
+      return;
+    }
     const p = puntero(svgRef.current, ev);
     if (tipo === "escuadra") {
       if (prep && dragEsc.current) {
@@ -943,7 +963,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   }
   // Cada pareja de toques es una pasada de la regla; la última se anima y las anteriores quedan trazadas.
   const parejas = Math.floor(est.clics.length / 2);
-  const pRegla = useProgreso(parejas > 0 ? `regla-${est.clics.length}` : "no", 1200);
+  const nSegRegla = def.sinRegla ? 0 : def.cadena ? Math.max(0, est.clics.length - 1) : parejas;
+  const pRegla = useProgreso((def.cadena ? est.clics.length > 1 : parejas > 0) ? `regla-${est.clics.length}` : "no", 1200);
   const pTrazo = useProgreso(est.trazos.length > 0 ? `trazo-${est.trazos.length}` : "no", 1200);
   const pAuto = useProgreso(tipo === "auto" ? "auto" : "no", Math.max(msAuto, 1));
 
@@ -961,7 +982,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "centro") return def.candidatos(est, cuenta(fases, est.fase, "centro"));
     if (tipo === "medida") return (def.medibles?.(est) ?? []).filter((c) => !(est.medida[0] && dist(est.medida[0], c) < 1));
     if (tipo === "perpendicular") return datosPerp ? [datosPerp.punto] : [];
-    if (tipo === "punto" || tipo === "regla") return def.cortes(est);
+    if (tipo === "punto" || tipo === "regla") return def.guia?.(est) ?? def.cortes(est);
     if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
@@ -1003,7 +1024,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     escuadra: "arrastra la escuadra hasta la marca",
     perpendicular: "desliza el instrumento hasta el punto",
   };
-  const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? TEXTO_ACCION[tipo] : null;
+  const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? (def.accion?.(est) ?? TEXTO_ACCION[tipo]) : null;
   const extra = (
     <div className="flex flex-col gap-2">
       {alineada ? (
@@ -1063,6 +1084,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         tabIndex={tipo === "abertura" || tipo === "angulo" || tipo === "escuadra" || tipo === "perpendicular" ? 0 : -1}
         onPointerDown={onDown}
         onPointerMove={onMove}
+        onPointerLeave={() => setHover(null)}
         onPointerUp={onUp}
         onPointerCancel={onUp}
         onKeyDown={onKey}
@@ -1091,8 +1113,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             </g>
           );
         })() : null}
-        {Array.from({ length: def.sinRegla ? 0 : parejas }, (_, i) => (
-          <ReglaTrazando key={i} a={est.clics[2 * i]} b={est.clics[2 * i + 1]} p={i === parejas - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === parejas - 1 ? "bench-regla-trazo" : undefined} />
+        {Array.from({ length: nSegRegla }, (_, i) => (
+          <ReglaTrazando key={i} a={def.cadena ? est.clics[i] : est.clics[2 * i]} b={def.cadena ? est.clics[i + 1] : est.clics[2 * i + 1]} p={i === nSegRegla - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === nSegRegla - 1 ? "bench-regla-trazo" : undefined} />
         ))}
         {def.autoLados && (tipo === "auto" || hecha)
           ? def.autoLados(est).map(([a, b], i, todos) => (
@@ -1106,24 +1128,35 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             <ReglaTrazando key={`t${i}`} a={a} b={b} p={i === est.trazos.length - 1 ? pTrazo : 1} ext={def.extTrazo ?? 40} color={def.trazoFino ? "#6b7480" : INK} w={def.trazoFino ? 1.1 : 1.5} testId="bench-trazo-aux" />
           ),
         )}
-        {est.pend ? (
-          <g data-testid="bench-pend" pointerEvents="none">
-            <circle cx={est.pend[0]} cy={est.pend[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
-            <circle cx={est.pend[0]} cy={est.pend[1]} r="0.9" fill={AMBAR} />
-          </g>
-        ) : null}
-        {est.medida.map((c, i) => (
-          <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">
-            <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AZUL} strokeWidth="1.6" />
-            <circle cx={c[0]} cy={c[1]} r="0.9" fill={AZUL} />
-          </g>
-        ))}
-        {est.clics.map((c, i) => (
-          <g key={i} data-testid="bench-clic" pointerEvents="none">
-            <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
-            <circle cx={c[0]} cy={c[1]} r="0.9" fill={AMBAR} />
-          </g>
-        ))}
+        {(() => {
+          /** Punto elegido que espera al siguiente: aro grande que late, nombre y una goma hasta el puntero. */
+          const origen = (c: Pt, color: string, texto: string, id?: string) => (
+            <g data-testid={id} pointerEvents="none">
+              {hover ? <line x1={c[0]} y1={c[1]} x2={hover[0]} y2={hover[1]} stroke={color} strokeWidth="1.8" strokeDasharray="6 5" opacity="0.85" /> : null}
+              <circle cx={c[0]} cy={c[1]} r="11" fill={color} fillOpacity="0.22" stroke={color} strokeWidth="3">
+                <animate attributeName="r" values="10;14;10" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={c[0]} cy={c[1]} r="4.6" fill={color} stroke="#fff" strokeWidth="1.6" />
+              <text x={c[0] - 18} y={c[1] < vista.h / 2 ? c[1] + 30 : c[1] - 20} fontSize="12" fontWeight="800" fill={color} fontFamily={SANS} stroke="#fffefa" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round">
+                {texto}
+              </text>
+            </g>
+          );
+          const marca = (c: Pt, color: string, k: string | number, id: string) => (
+            <g key={k} data-testid={id} pointerEvents="none">
+              <circle cx={c[0]} cy={c[1]} r="5" fill={color} stroke="#fff" strokeWidth="1.6" />
+            </g>
+          );
+          const ultimoClic = def.cadena && tipo === "regla" && est.clics.length > 0 ? est.clics[est.clics.length - 1] : null;
+          return (
+            <g>
+              {est.pend ? origen(est.pend, AMBAR, "elegido", "bench-pend") : null}
+              {est.medida.length === 1 ? origen(est.medida[0], AZUL, "1.º punto", "bench-medida") : est.medida.map((c, i) => marca(c, AZUL, `m${i}`, "bench-medida"))}
+              {est.clics.map((c, i) => (ultimoClic && i === est.clics.length - 1 ? null : marca(c, AMBAR, i, "bench-clic")))}
+              {ultimoClic ? origen(ultimoClic, AMBAR, "salida", "bench-origen") : null}
+            </g>
+          );
+        })()}
         {tipo === "perpendicular" && desl && datosPerp ? (
           <g data-testid="bench-perpendicular">
             {desl.nodo(est.esc)}
