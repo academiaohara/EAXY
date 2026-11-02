@@ -1000,7 +1000,7 @@ function semejanteRadial(): Construccion {
 /** Copia de un cuadrilátero por coordenadas: igual (`esc` = 1) o semejante de razón 2. */
 function coordenadas(esc: 1 | 2): Construccion {
   const Y = 255;
-  const O: P = [50, Y];
+  const O: P = [105, Y];
   const Ot: P = [esc === 1 ? 300 : 285, Y];
   // vértices (x, altura) en el orden A, B, C, D; los pies sobre el eje se numeran en el orden de x
   const loc: Record<string, [number, number]> = { A: [15, 50], B: [75, 70], C: [100, 35], D: [45, 34] };
@@ -1314,8 +1314,8 @@ export const CONSTRUCCIONES = {
  * (se comprobó dibujando cada pasada de escuadra y cartabón y midiendo cuánto sobresalía). El filo queda en el mismo sitio.
  */
 const ESCALA_INSTRUMENTOS: Record<string, number> = {
-  "cuadrado-lado": 0.5, "rectangulo-lados": 0.5, "trapecio-isosceles": 0.5, "trapecio-rectangulo": 0.5, "division-n": 0.6,
-  "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.5, "eneagono-lado": 0.5, "tercero-proporcional": 0.8,
+  "cuadrado-lado": 0.45, "rectangulo-lados": 0.45, "trapecio-isosceles": 0.5, "trapecio-rectangulo": 0.5, "division-n": 0.6,
+  "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.45, "eneagono-lado": 0.4, "tercero-proporcional": 0.8,
   "semejante-radial": 0.5, "semejante-coordenadas": 0.5, "igual-coordenadas": 0.5, "igual-traslacion": 0.5,
   "simetria-axial-segmento": 0.7, "simetria-axial-figura": 0.7,
 };
