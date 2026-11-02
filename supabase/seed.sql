@@ -1911,6 +1911,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020204', 'a2000000-0000-4000-8000-000000000202', '4. Semejanza y escalas', 'Razón de semejanza, áreas y volúmenes, escalas y reducción por homotecia.', 4, null),
   ('a3000000-0000-4000-8000-000000020205', 'a2000000-0000-4000-8000-000000000202', '5. Igualdad de figuras', 'Copiar una figura por triangulación, coordenadas, rodeo y traslación.', 5, null),
   ('a3000000-0000-4000-8000-000000020206', 'a2000000-0000-4000-8000-000000000202', '6. Simetría central', 'Simétrico de un punto, un segmento y una figura respecto de un centro.', 6, null),
+  ('a3000000-0000-4000-8000-000000020207', 'a2000000-0000-4000-8000-000000000202', '7. Simetría axial', 'Simétrico de un punto, un segmento y una figura respecto de un eje.', 7, null),
   ('a3000000-0000-4000-8000-000000037401', 'a2000000-0000-4000-8000-000000000374', '1. Traslación', 'Trasladar un punto y una figura según un vector, con compás y en papel cuadriculado.', 1, null),
   ('a3000000-0000-4000-8000-000000037402', 'a2000000-0000-4000-8000-000000000374', '2. Giro', 'Girar un punto y una figura alrededor de un centro, con transportador y compás y en papel cuadriculado.', 2, null),
   ('a3000000-0000-4000-8000-000000037403', 'a2000000-0000-4000-8000-000000000374', '3. Simetría axial y central', 'Simétrico de un punto y de una figura respecto de un eje (con compás y en papel cuadriculado) y respecto de un centro.', 3, null),

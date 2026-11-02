@@ -1498,6 +1498,7 @@ import { separacionMezclasEtapasFq3Lesson } from "@/data/lessons/fisica-3-eso/05
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/16-normalizacion-principios-generales/04-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
+import { simetriaAxialDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/07-simetria-axial-dt1";
 import { simetriaCentralDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/06-simetria-central-dt1";
 import { simetriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/03-simetria-dt1";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
@@ -3237,6 +3238,7 @@ export const interactiveLessons = {
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simbologia-industrial-arquitectonica-dt1": simbologiaIndustrialArquitectonicaDt1Lesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
+  "simetria-axial-dt1": simetriaAxialDt1Lesson,
   "simetria-central-dt1": simetriaCentralDt1Lesson,
   "simetria-dt1": simetriaDt1Lesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,

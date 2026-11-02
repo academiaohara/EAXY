@@ -36,7 +36,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["escalas", 6],
   ["formas-poligonales-1-triangulos", 7],
   ["formas-poligonales-2-cuadrilateros-poligonos", 12],
-  ["relaciones-geometricas", 6],
+  ["relaciones-geometricas", 7],
   ["transformaciones-geometricas", 4],
   ["tangencias", 3],
   ["curvas-tecnicas", 2],

@@ -64,6 +64,8 @@ export type Construccion = {
   ops: Op[];
   /** Cuánto se prolongan las rectas de la regla más allá de los puntos tocados. */
   ext?: number;
+  /** Tamaño de la escuadra y el cartabón en esta construcción (1 = normal): se reducen si no caben en la hoja. */
+  escala?: number;
   /** Textos propios de un paso (por índice de operación) en vez de los generados. */
   notas?: Record<number, Nota>;
 };
@@ -854,6 +856,38 @@ function eneagonoLado(): Construccion {
 
 /* ───────────── Tema 6: relaciones geométricas ───────────── */
 
+/** Simétrico de `q` respecto del eje que pasa por `e0` y `e1`, y pie de la perpendicular. */
+function reflejo(e0: P, e1: P, q: P) {
+  const l = dist(e0, e1);
+  const u: P = [(e1[0] - e0[0]) / l, (e1[1] - e0[1]) / l];
+  const t = (q[0] - e0[0]) * u[0] + (q[1] - e0[1]) * u[1];
+  const pie: P = [e0[0] + u[0] * t, e0[1] + u[1] * t];
+  return { pie, sim: [2 * pie[0] - q[0], 2 * pie[1] - q[1]] as P };
+}
+
+/** Simetría axial de uno o varios puntos: perpendicular al eje (escuadra y cartabón), pie y compás con la misma distancia. */
+function simetriaAxial(nombres: string[], originales: P[], titulo: string, intro: string, lados: boolean, baseOrig: [string, string][]): Construccion {
+  const e0: P = [40, 215];
+  const e1: P = [580, 195];
+  const pts: Record<string, P> = { _e0: e0, e: e1 };
+  const ops: Op[] = [];
+  const base: [string, string][] = [["_e0", "e"], ...baseOrig];
+  nombres.forEach((n, i) => {
+    const { pie, sim } = reflejo(e0, e1, originales[i]);
+    const largo = dist(originales[i], sim);
+    const ext: P = [sim[0] + ((sim[0] - originales[i][0]) / largo) * 14, sim[1] + ((sim[1] - originales[i][1]) / largo) * 14];
+    pts[n] = originales[i];
+    pts[`f${i}`] = pie;
+    pts[`${n}s`] = sim;
+    pts[`_x${i}`] = ext;
+    ops.push(perp(["_e0", "e"], n, [n, `_x${i}`]), { k: "marca", p: `f${i}` }, { k: "medir", de: `f${i}`, a: n }, ...marcaArco(`f${i}`, `${n}s`));
+  });
+  if (lados) ops.push({ k: "lados", pts: nombres.map((n) => `${n}s`) });
+  return { titulo, intro, pts, dados: ["e", ...nombres], datos: [], base, ops, ext: 10 };
+}
+
+
+
 const prima = (clave: string) => `${clave}p`;
 
 /** Rayos de partida y datos comunes de las construcciones de cuarto y tercer proporcional. */
@@ -965,8 +999,8 @@ function semejanteRadial(): Construccion {
 
 /** Copia de un cuadrilátero por coordenadas: igual (`esc` = 1) o semejante de razón 2. */
 function coordenadas(esc: 1 | 2): Construccion {
-  const Y = 300;
-  const O: P = [50, Y];
+  const Y = 255;
+  const O: P = [105, Y];
   const Ot: P = [esc === 1 ? 300 : 285, Y];
   // vértices (x, altura) en el orden A, B, C, D; los pies sobre el eje se numeran en el orden de x
   const loc: Record<string, [number, number]> = { A: [15, 50], B: [75, 70], C: [100, 35], D: [45, 34] };
@@ -1110,29 +1144,26 @@ function igualRodeo(): Construccion {
 }
 
 function igualTraslacion(): Construccion {
-  const dx = 300;
-  const V: Record<string, P> = { A: [100, 60], B: [170, 110], C: [150, 170], D: [110, 240], E: [60, 150] };
+  const dx = 215;
+  const V: Record<string, P> = { A: [100, 140], B: [170, 190], C: [150, 245], D: [110, 320], E: [60, 230] };
   const pts: Record<string, P> = {};
   const etiquetas = ["a", "b", "c", "d", "e"];
   Object.entries(V).forEach(([k, q], i) => {
     pts[k] = q;
     pts[`${k}p`] = [q[0] + dx, q[1]];
-    pts[`l${etiquetas[i]}`] = [575, q[1]];
+    pts[`_l${etiquetas[i]}`] = [575, q[1]];
   });
   return {
     titulo: "Figura igual por traslación",
-    intro: "Se quiere copiar el pentágono $ABCDE$. Se trazan por sus vértices rectas paralelas $a, b, c\\dots$ y, desde un punto cualquiera $A'$ de la recta $a$, se van trazando paralelas a los lados hasta cortar a las rectas siguientes: es una simple traslación.",
+    intro: "Se quiere copiar el pentágono $ABCDE$. Se traza por $A$ y por un punto cualquiera $A'$ una recta y, con escuadra y cartabón, por los demás vértices sus paralelas. Después, desde $A'$, se van trazando paralelas a los lados hasta cortar a las rectas siguientes: es una simple traslación.",
     pts,
-    dados: ["A", "B", "C", "D", "E", "Ap", "la", "lb", "lc", "ld", "le"],
+    dados: ["A", "B", "C", "D", "E", "Ap"],
     datos: [],
     base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"]],
     ext: 8,
     ops: [
-      { k: "recta", a: "A", b: "la" },
-      { k: "recta", a: "B", b: "lb" },
-      { k: "recta", a: "C", b: "lc" },
-      { k: "recta", a: "D", b: "ld" },
-      { k: "recta", a: "E", b: "le" },
+      { k: "recta", a: "A", b: "Ap" },
+      { k: "paralelas", recta: ["A", "Ap"], marcas: ["B", "C", "D", "E"], cortes: ["_lb", "_lc", "_ld", "_le"] },
       { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
       { k: "paralelas", recta: ["B", "C"], marcas: ["Bp"], cortes: ["Cp"] },
       { k: "paralelas", recta: ["C", "D"], marcas: ["Cp"], cortes: ["Dp"] },
@@ -1273,7 +1304,22 @@ export const CONSTRUCCIONES = {
   "simetria-punto": simetriaPunto(),
   "simetria-segmento": simetriaSegmento(),
   "simetria-figura": simetriaFigura(),
+  "simetria-axial-punto": simetriaAxial(["A"], [[180, 110]], "Simetría axial de un punto", "Dos puntos $A$ y $A'$ son **simétricos** respecto de un eje $e$ cuando están en la misma **perpendicular** al eje y a la misma distancia de él, uno a cada lado.", false, []),
+  "simetria-axial-segmento": simetriaAxial(["A", "B"], [[120, 90], [250, 120]], "Simetría axial de un segmento", "Para hallar el simétrico del segmento $s = AB$ se halla el simétrico de cada extremo. Las rectas simétricas se cortan en un punto del eje.", true, [["A", "B"]]),
+  "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
 } satisfies Record<string, Construccion>;
+
+/**
+ * Tamaño de la escuadra y el cartabón en las construcciones donde, a tamaño normal, se saldrían de la hoja al trazar
+ * (se comprobó dibujando cada pasada de escuadra y cartabón y midiendo cuánto sobresalía). El filo queda en el mismo sitio.
+ */
+const ESCALA_INSTRUMENTOS: Record<string, number> = {
+  "cuadrado-lado": 0.45, "rectangulo-lados": 0.45, "trapecio-isosceles": 0.5, "trapecio-rectangulo": 0.5, "division-n": 0.6,
+  "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.45, "eneagono-lado": 0.4, "tercero-proporcional": 0.8,
+  "semejante-radial": 0.5, "semejante-coordenadas": 0.5, "igual-coordenadas": 0.5, "igual-traslacion": 0.5,
+  "simetria-axial-segmento": 0.7, "simetria-axial-figura": 0.7,
+};
+for (const [id, k] of Object.entries(ESCALA_INSTRUMENTOS)) (CONSTRUCCIONES as Record<string, Construccion>)[id].escala = k;
 
 export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 
@@ -1281,7 +1327,7 @@ export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 const ETIQUETAS: Record<string, string> = {
   Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "",
   Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
-  p1: "1'", p2: "2'", p3: "3'", p4: "4'", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
+  p1: "1'", p2: "2'", p3: "3'", p4: "4'", "1s": "1'", "2s": "2'", "3s": "3'", "4s": "4'", As: "A'", Bs: "B'", f0: "", f1: "", f2: "", f3: "", e: "e", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);

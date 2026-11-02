@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { AnimDesliza, AnimPerpendicular, type DatosDesliza } from "./escuadra-perpendicular";
+import { AnimDesliza, type DatosDesliza } from "./escuadra-perpendicular";
 import { angDe, dist, enCirculo, type Pt } from "./geometry";
 import { Compas, poseCompas } from "./instruments";
 import { AMBAR, INK, type BenchBlock } from "./scenes";
@@ -81,11 +81,11 @@ function plan(c: Construccion) {
 }
 
 /** Pasada del cartabón o la escuadra que traza un ángulo de 30°, 45° o 60°. */
-function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
+export function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
   const v = pt(c, o.v);
   const signo = o.signo ?? 1;
   const largo = o.largo ?? 160;
-  return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo } };
+  return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo }, escala: c.escala };
 }
 
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
@@ -146,6 +146,32 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
     return op;
   };
 
+  /** Los trazos auxiliares que ya han dado su punto se aclaran para que no estorben. */
+  const LUZ = 0.28;
+  const luz = (j: number) => {
+    const x = c.ops[j];
+    let fin = -1; // índice de la operación tras la que el trazo ya no hace falta
+    if (x.k === "arco") {
+      let m = j + 1;
+      while (m < c.ops.length && c.ops[m].k === "arco") m += 1;
+      if (c.ops[m]?.k === "marca") {
+        while (c.ops[m + 1]?.k === "marca") m += 1;
+        fin = m;
+      }
+    } else if (x.k === "recta") {
+      if (c.ops[j + 1]?.k === "marca") fin = j + 1;
+      else {
+        c.ops.forEach((y, k) => {
+          if (k > j && y.k === "paralelas" && [...y.marcas, ...y.cortes].some((n) => n === x.a || n === x.b)) fin = k;
+        });
+      }
+    }
+    if (fin < 0) return 1;
+    if (o > fin) return LUZ;
+    if (o === fin) return 1 - (1 - LUZ) * tramo(p, 0.85, 1);
+    return 1;
+  };
+
   const nodos: ReactNode[] = [];
   let instrumento: ReactNode = null;
   const ultimoLados = c.ops.map((x) => x.k).lastIndexOf("lados");
@@ -161,7 +187,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         const r = radioEn(c, j);
         const [a1, a2] = angulosArco(c, x);
         nodos.push(
-          <g key={key} opacity={fade}>
+          <g key={key} opacity={fade * luz(j)}>
             {x.k === "circulo" && t >= 0.999 ? <circle cx={pt(c, x.c)[0]} cy={pt(c, x.c)[1]} r={r} fill="none" stroke={AUX} strokeWidth="1.4" /> : <ArcoCompas c={pt(c, x.c)} r={r} a1={a1} a2={a2} t={t} mostrarCompas={false} />}
           </g>,
         );
@@ -177,11 +203,11 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       }
       case "recta": {
         const [a, b] = prolongar(pt(c, x.a), pt(c, x.b), ext);
-        nodos.push(<ReglaTrazando key={key} a={a} b={b} p={t} ext={0} color={AUX} w={1.1} />);
+        nodos.push(<g key={key} opacity={luz(j)}><ReglaTrazando a={a} b={b} p={t} ext={0} color={AUX} w={1.1} /></g>);
         break;
       }
       case "perp":
-        nodos.push(<AnimPerpendicular key={key} recta={[pt(c, x.recta[0]), pt(c, x.recta[1])]} punto={pt(c, x.punto)} linea={[pt(c, x.traza[0]), pt(c, x.traza[1])]} p={t} />);
+        nodos.push(<AnimDesliza key={key} datos={{ recta: [pt(c, x.recta[0]), pt(c, x.recta[1])], punto: pt(c, x.punto), traza: [pt(c, x.traza[0]), pt(c, x.traza[1])], escala: c.escala }} p={t} />);
         break;
       case "angulo": {
         if (instrumentoAngulo(x.obj)) {
@@ -200,7 +226,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         x.marcas.forEach((m, k) => {
           const sub = j < o ? 1 : tramo(p, k / n, (k + 1) / n);
           if (sub <= 0) return;
-          const r = animParaleloEscuadra(pt(c, x.recta[0]), pt(c, x.recta[1]), pt(c, m), [pt(c, m), pt(c, x.cortes[k])], sub, "#6b7480");
+          const r = animParaleloEscuadra(pt(c, x.recta[0]), pt(c, x.recta[1]), pt(c, m), [pt(c, m), pt(c, x.cortes[k])], sub, "#6b7480", "cateto", c.escala ?? 1);
           nodos.push(<g key={`${key}-${k}`}>{r.nodos}</g>);
         });
         break;
@@ -331,7 +357,7 @@ function defDe(id: ConstruccionId): Def {
       const o = faseActual(est)!;
       if (o.k === "angulo") return datosAngulo(c, o);
       const q = o as Extract<Op, { k: "perp" }>;
-      return { recta: [pt(c, q.recta[0]), pt(c, q.recta[1])], punto: pt(c, q.punto), traza: [pt(c, q.traza[0]), pt(c, q.traza[1])] };
+      return { recta: [pt(c, q.recta[0]), pt(c, q.recta[1])], punto: pt(c, q.punto), traza: [pt(c, q.traza[0]), pt(c, q.traza[1])], escala: c.escala };
     },
     angulo: (est) => {
       const o = faseActual(est) as Extract<Op, { k: "angulo" }>;
@@ -342,7 +368,7 @@ function defDe(id: ConstruccionId): Def {
       // el motor indexa los objetivos por el nº de fases «escuadra» ya hechas: se rellena con los de las operaciones previas
       const previas = c.ops.slice(0, c.ops.indexOf(o)).reduce((n, x) => n + (x.k === "paralelas" ? x.marcas.length : 0), 0);
       const propios = o.marcas.map((m, k) => ({ marca: pt(c, m), corte: pt(c, o.cortes[k]) }));
-      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios] };
+      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios], escala: c.escala };
     },
     ocultarArcos: (est) => {
       const out: number[] = [];
