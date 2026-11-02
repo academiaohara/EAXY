@@ -9,11 +9,12 @@ import { SimetriaCompas } from "./scenes-simetria";
 import { GiroCompas } from "./scenes-giro";
 import { TraslacionCompas } from "./scenes-transformaciones";
 import { GiroPractica, HomoteciaPractica, SimetriaPractica, TraslacionPractica } from "./scenes-unir";
-import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, HexagonoPractica, PentagramaPractica, PoligonoElementos, PuntosNotables, RomboCompas, RomboPractica, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
+import { ApotemaPractica, EstrellaCompas, HexagonoCompas, HexagonoPractica, PentagramaPractica, PoligonoElementos, PuntosNotables, RomboCompas, RomboPractica, TrianguloLllCompas, TrianguloLllPractica } from "./scenes-poligonos";
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
 import { EquilateroLadoPractica, TrianguloLalPractica, RectanguloCatetosPractica, IsoscelesLadoAnguloPractica, TrianguloAlaPractica, RectanguloCatetoAnguloPractica, IsoscelesDesigualPractica, RectanguloHipotenusaPractica, IsoscelesIgualAnguloPractica, EquilateroAlturaPractica } from "./practicas-triangulos";
+import { BaricentroPractica, CircuncentroPractica, IncentroPractica, OrtocentroPractica } from "./practicas-notables";
 import { TrianguloLineasNotables, TrianguloDatos } from "./scenes-triangulos";
 import { TrianguloAla, TrianguloLal, EquilateroLado, EquilateroAltura, RectanguloCatetos, RectanguloCatetoAngulo, RectanguloHipotenusa, IsoscelesLadoAngulo, IsoscelesDesigual, IsoscelesIgualAngulo } from "./scenes-construcciones";
 import { ComoEstudiar, LugaresInterseccion, MediatrizAplicaciones, RectasParalelas, TriangulosClasificacion, CuadrilaterosFamilias, CuadrilaterosPropiedades, PoligonosLadoRadio, ConstruccionesExactas, PoligonoDadoLado, PoligonosUsos, TangentePropiedades, TangentesSencillas, TangentesComunes, EnlaceLugares, EnlaceCasos, OvaloCurvas, OvoideDescripcion, EspiralesDescripcion } from "./scenes-teoria";
@@ -95,6 +96,12 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <PuntosNotables block={block} />;
     case "circuncentro-practica":
       return <CircuncentroPractica block={block} />;
+    case "incentro-practica":
+      return <IncentroPractica block={block} />;
+    case "baricentro-practica":
+      return <BaricentroPractica block={block} />;
+    case "ortocentro-practica":
+      return <OrtocentroPractica block={block} />;
     case "triangulo-lll-compas":
       return <TrianguloLllCompas block={block} />;
     case "triangulo-lll-practica":

@@ -66,6 +66,9 @@ export type BenchSceneName =
   | "semejanza-razon"
   | "puntos-notables"
   | "circuncentro-practica"
+  | "incentro-practica"
+  | "baricentro-practica"
+  | "ortocentro-practica"
   | "triangulo-lll-compas"
   | "triangulo-lll-practica"
   | "hexagono-compas"
@@ -197,7 +200,10 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "cuadratura-practica": 12,
   "semejanza-razon": 4,
   "puntos-notables": 5,
-  "circuncentro-practica": 11,
+  "circuncentro-practica": 13,
+  "incentro-practica": 19,
+  "baricentro-practica": 17,
+  "ortocentro-practica": 19,
   "triangulo-lll-compas": 5,
   "triangulo-lll-practica": 7,
   "hexagono-compas": 5,
@@ -274,7 +280,7 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "triangulo-ala-practica": 4,
   "rectangulo-cateto-angulo-practica": 4,
   "isosceles-desigual-practica": 4,
-  "rectangulo-hipotenusa-practica": 7,
+  "rectangulo-hipotenusa-practica": 14,
   "isosceles-igual-angulo-practica": 7,
   "equilatero-altura-practica": 6,
   "cuadrilateros-familias": 4,

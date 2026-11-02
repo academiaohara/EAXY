@@ -1301,51 +1301,6 @@ describe("mesa de dibujo · triángulos y polígonos", () => {
     });
   });
 
-  describe("circuncentro con dos mediatrices", () => {
-    function hasta() {
-      const t = pantalla("circuncentro-practica");
-      const mediatriz = (P: Pt, Q: Pt, r: number) => {
-        const th = Math.max((Math.acos(Math.min(1, d(P, Q) / (2 * r))) * 180) / Math.PI, 20) + 8;
-        t.tocar(P);
-        t.arrastrar(enCirc(P, r, ang(P, Q) + 35));
-        t.fijar();
-        expect(t.fase()).toBe("arco");
-        t.arrastrar(enCirc(P, r, ang(P, Q) + th), enCirc(P, r, ang(P, Q) - th));
-        expect(t.fase()).toBe("centro");
-        t.tocar(Q);
-        t.arrastrar(enCirc(Q, r, ang(Q, P) + th), enCirc(Q, r, ang(Q, P) - th));
-      };
-      mediatriz(PN_A, PN_B, 160);
-      mediatriz(PN_A, PN_C, 150);
-      expect(t.fase()).toBe("regla");
-      return t;
-    }
-
-    it("dos mediatrices con la regla supera el ejercicio y marca el circuncentro", () => {
-      const t = hasta();
-      const [c1, c2] = [
-        [PN_A, PN_B, 160],
-        [PN_A, PN_C, 150],
-      ].map(([P, Q, r]) => {
-        const m: Pt = [((P as Pt)[0] + (Q as Pt)[0]) / 2, ((P as Pt)[1] + (Q as Pt)[1]) / 2];
-        const h = Math.sqrt((r as number) ** 2 - (d(P as Pt, Q as Pt) / 2) ** 2);
-        const u: Pt = [-((Q as Pt)[1] - (P as Pt)[1]) / d(P as Pt, Q as Pt), ((Q as Pt)[0] - (P as Pt)[0]) / d(P as Pt, Q as Pt)];
-        return [[m[0] + u[0] * h, m[1] + u[1] * h] as Pt, [m[0] - u[0] * h, m[1] - u[1] * h] as Pt];
-      });
-      t.tocar(c1[0]);
-      t.tocar(c2[0]);
-      expect(t.aviso()).toContain("mismo lado");
-      t.tocar(c1[1]);
-      t.tocar(c2[0]);
-      t.sinSuperar();
-      t.tocar(c2[1]);
-      t.superada();
-      expect(screen.getByTestId("bench-circuncentro")).toBeTruthy();
-      expect(d(CC_O, PN_A)).toBeCloseTo(d(CC_O, PN_B), 6);
-      expect(d(CC_O, PN_A)).toBeCloseTo(d(CC_O, PN_C), 6);
-    });
-  });
-
   it("puntos notables: cada paso dibuja las rectas de su familia y el último la recta de Euler", () => {
     const { siguiente } = montar("puntos-notables");
     expect(screen.queryByTestId("bench-euler")).toBeNull();

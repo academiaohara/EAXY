@@ -64,7 +64,7 @@ export function ArcoAnim({ c, r, a1, a2, t }: { c: Pt; r: number; a1: number; a2
 }
 
 /** La regla entra, el lápiz traza la recta por `a` y `b` y la regla se retira. `p` va de 0 a 1. */
-export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string }) {
+export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId, w = 1.5 }: { a: Pt; b: Pt; p: number; ext?: number; color?: string; testId?: string; w?: number }) {
   const L = 300;
   const ang = (Math.atan2(b[1] - a[1], b[0] - a[0]) * 180) / Math.PI;
   const rd = (ang * Math.PI) / 180;
@@ -81,7 +81,7 @@ export function ReglaTrazando({ a, b, p, ext = 40, color = INK, testId }: { a: P
   const desp = (1 - entra) * 70;
   return (
     <g data-testid={testId}>
-      {traza > 0 ? <line x1={ini[0]} y1={ini[1]} x2={hasta[0]} y2={hasta[1]} stroke={color} strokeWidth="1.5" strokeLinecap="round" /> : null}
+      {traza > 0 ? <line x1={ini[0]} y1={ini[1]} x2={hasta[0]} y2={hasta[1]} stroke={color} strokeWidth={w} strokeLinecap="round" /> : null}
       {p < 1 ? (
         <g opacity={entra * (1 - sale)} transform={`translate(${n[0] * desp} ${n[1] * desp})`} pointerEvents="none">
           <Regla pose={pose} len={L} />
@@ -494,6 +494,14 @@ export type Def = {
   escuadra?: (est: Est) => { recta: [Pt, Pt]; objetivos: { marca: Pt; corte: Pt }[] };
   /** Cuánto se prolongan las rectas de las fases `trazo` (40 por defecto). */
   extTrazo?: number;
+  /** Índices de los arcos que dejan de dibujarse (trazo auxiliar que ya no hace falta). */
+  ocultarArcos?: (est: Est) => number[];
+  /** Índices (en `est.trazos`) de las rectas auxiliares que dejan de dibujarse. */
+  ocultarTrazos?: (est: Est) => number[];
+  /** Las rectas de las fases `trazo` son auxiliares: se dibujan finas y grises (como un lápiz 2H). */
+  trazoFino?: boolean;
+  /** Grosor de los lados que traza la regla al final (fase `auto`): el dibujo definitivo, como un lápiz B. */
+  grosorAuto?: number;
   /** Cada fase `escuadra` empieza con la escuadra en su posición inicial (rectas de apoyo distintas en cada una). */
   reiniciarEscuadra?: boolean;
   /** Índices de los arcos que forman el resultado: se dibujan con trazo fuerte aunque la construcción haya terminado. */
@@ -857,8 +865,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   // terminada, quedan más suaves que las rectas del dibujo final.
   const ultPunto = fases.slice(0, est.fase).lastIndexOf("punto");
   const arcosResueltos = ultPunto >= 0 ? cuenta(fases, ultPunto, "arco") : 0;
+  const ocultos = def.ocultarArcos?.(est) ?? [];
   const arcosDibujados = est.cub.map((cub, n) => {
-    if (!cub) return null;
+    if (!cub || ocultos.includes(n)) return null;
     const cfg = cfgDe(n, radioDe(n));
     if (!cfg) return null;
     const suave = !def.principales?.includes(n) && (hecha || n < arcosResueltos);
@@ -1038,12 +1047,14 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         ))}
         {def.autoLados && (tipo === "auto" || hecha)
           ? def.autoLados(est).map(([a, b], i, todos) => (
-              <ReglaTrazando key={`auto${i}`} a={a} b={b} p={hecha ? 1 : tramo(pAuto, i / todos.length, (i + 1) / todos.length)} ext={0} testId={i === 0 ? "bench-regla-trazo" : undefined} />
+              <ReglaTrazando key={`auto${i}`} a={a} b={b} p={hecha ? 1 : tramo(pAuto, i / todos.length, (i + 1) / todos.length)} ext={0} w={def.grosorAuto ?? 1.5} testId={i === 0 ? "bench-regla-trazo" : undefined} />
             ))
           : null}
-        {est.trazos.map(([a, b], i) => (
-          <ReglaTrazando key={`t${i}`} a={a} b={b} p={i === est.trazos.length - 1 ? pTrazo : 1} ext={def.extTrazo ?? 40} testId="bench-trazo-aux" />
-        ))}
+        {est.trazos.map(([a, b], i) =>
+          (def.ocultarTrazos?.(est) ?? []).includes(i) ? null : (
+            <ReglaTrazando key={`t${i}`} a={a} b={b} p={i === est.trazos.length - 1 ? pTrazo : 1} ext={def.extTrazo ?? 40} color={def.trazoFino ? "#6b7480" : INK} w={def.trazoFino ? 1.1 : 1.5} testId="bench-trazo-aux" />
+          ),
+        )}
         {est.pend ? (
           <g data-testid="bench-pend" pointerEvents="none">
             <circle cx={est.pend[0]} cy={est.pend[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
