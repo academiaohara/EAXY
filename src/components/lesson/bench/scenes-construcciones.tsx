@@ -2,7 +2,7 @@
 
 import { type ReactNode } from "react";
 import { angDe, dist, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
-import { BenchDefs, Compas, Desk, Transportador, poseCompas } from "./instruments";
+import { BenchDefs, Compas, Desk, Escuadra, Transportador, poseCompas } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SVG_CLASS, VERDE, usePaso, type BenchBlock, type BenchSceneName } from "./scenes";
 import { ArcoAnim, MSHEET, MV, ReglaTrazando, animPuntoMedio, lerp, tramo, useProgreso } from "./scenes-compas";
 import { Seg, Txt } from "./scenes-proporcion";
@@ -90,6 +90,27 @@ function TransportadorMarca({ v, base, objetivo, signo = 1, t = 1 }: { v: Pt; ba
         <circle cx={m[0]} cy={m[1]} r="5" fill={AMBAR} stroke="#fff" strokeWidth="1.6" />
         <Txt p={[m[0] + 9, m[1] - 8]} color={AMBAR} size={14}>{`${objetivo}°`}</Txt>
       </g>
+    </g>
+  );
+}
+
+/** La escuadra entra apoyada en la recta, con el ángulo recto en `a`, y el lápiz traza por su otro cateto hasta `b`. */
+export function EscuadraTrazando({ a, b, p, color = AUX }: { a: Pt; b: Pt; p: number; color?: string }) {
+  const ang = angDe(a, b);
+  const lado = enCirculo([0, 0], 1, ang - 90);
+  const entra = tramo(p, 0, 0.3);
+  const traza = tramo(p, 0.3, 0.85);
+  const sale = tramo(p, 0.85, 1);
+  const desp = (1 - entra) * 80;
+  const fin: Pt = [lerp(a[0], b[0], traza), lerp(a[1], b[1], traza)];
+  return (
+    <g data-testid="bench-escuadra-trazo">
+      {traza > 0 ? <Seg a={a} b={fin} color={color} w={1.1} /> : null}
+      {p < 1 ? (
+        <g opacity={entra * (1 - sale)} pointerEvents="none">
+          <Escuadra pose={{ x: a[0] + lado[0] * desp, y: a[1] + lado[1] * desp, rot: -ang }} />
+        </g>
+      ) : null}
     </g>
   );
 }
@@ -218,12 +239,12 @@ export function TrianguloAla({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[130, 290]} b={[480, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) nodos.push(<TransportadorMarca key="tb" v={B} base={0} objetivo={aB} t={u(3)} />);
-  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, dist(B, A) + 30, aB)} p={u(4)} ext={0} color={AMBAR} />);
+  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, dist(B, A) + 30, aB)} p={u(4)} ext={0} color={AUX} w={1.1} />);
   if (step === 5) nodos.push(<TransportadorMarca key="tc" v={C} base={180} signo={-1} objetivo={aCext} t={u(5)} />);
-  if (step >= 6) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, A) + 30, aC)} p={u(6)} ext={0} color={AMBAR} />);
-  if (step >= 7) nodos.push(<Poli key="t" pts={[B, C, A]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-8} />);
+  if (step >= 6) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, A) + 30, aC)} p={u(6)} ext={0} color={AUX} w={1.1} />);
+  if (step >= 7) nodos.push(<Poli key="t" pts={[B, C, A]} color={INK} w={3} fill={VERDE_RELLENO} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-8} />);
   return (
     <Lamina scene="triangulo-ala" block={block} step={step} setStep={setStep} label="Construcción de un triángulo dados un lado y los dos ángulos adyacentes" testId="bench-triangulo-ala" titulo={["Los datos: a, B y C", "Se toma la medida a con el compás", "Se lleva a la recta: BC = a", "El ángulo B con el transportador", "Se traza el lado desde B", "El ángulo C con el transportador", "Se traza el lado desde C", "El vértice A"][step]}>
       {nodos}
@@ -241,14 +262,14 @@ export function TrianguloLal({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={datoA[0]} m={datoA[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[120, 290]} b={[470, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) nodos.push(<TransportadorMarca key="tb" v={B} base={0} objetivo={aB} t={u(3)} />);
-  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, c + 50, aB)} p={u(4)} ext={0} color={AMBAR} />);
+  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, c + 50, aB)} p={u(4)} ext={0} color={AUX} w={1.1} />);
   if (step === 5) nodos.push(<CompasEn key="c2" n={datoC[0]} m={datoC[1]} opacidad={tramo(p, 0, 0.3)} />);
-  if (step === 6) nodos.push(<ArcoCompas key="ar2" c={B} r={c} a1={aB - 14} a2={aB + 14} t={u(6)} color={AMBAR} />);
-  if (step >= 7) nodos.push(<ArcoPlano key="ar2f" c={B} r={c} a1={aB - 14} a2={aB + 14} color={AMBAR} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-18} dy={-6} />);
-  if (step === 7) nodos.push(<ReglaTrazando key="rac" a={A} b={C} p={p} ext={0} color={VERDE} />);
-  if (step === 7 && p > 0.85) nodos.push(<Poli key="t7" pts={[B, C, A]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />);
+  if (step === 6) nodos.push(<ArcoCompas key="ar2" c={B} r={c} a1={aB - 14} a2={aB + 14} t={u(6)} />);
+  if (step >= 7) nodos.push(<ArcoPlano key="ar2f" c={B} r={c} a1={aB - 14} a2={aB + 14} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-18} dy={-6} />);
+  if (step === 7) nodos.push(<ReglaTrazando key="rac" a={A} b={C} p={p} ext={0} color={INK} w={3} />);
+  if (step === 7 && p > 0.85) nodos.push(<Poli key="t7" pts={[B, C, A]} color={INK} w={3} fill={VERDE_RELLENO} />);
   return (
     <Lamina scene="triangulo-lal" block={block} step={step} setStep={setStep} label="Construcción de un triángulo dados dos lados y el ángulo comprendido" testId="bench-triangulo-lal" titulo={["Los datos: a, c y B", "Se toma la medida a", "Se lleva a la recta: BC = a", "El ángulo B con el transportador", "Se traza el lado desde B", "Se toma la medida c", "Se lleva c sobre el lado: A", "Se une A con C"][step]}>
       {nodos}
@@ -265,13 +286,13 @@ export function EquilateroLado({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[140, 290]} b={[440, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
-  if (step === 3) nodos.push(<ArcoCompas key="a1" c={B} r={a} a1={40} a2={80} t={u(3)} color={AMBAR} />);
-  if (step >= 4) nodos.push(<ArcoPlano key="a1f" c={B} r={a} a1={40} a2={80} color={AMBAR} grosor={1.5} />);
-  if (step === 4) nodos.push(<ArcoCompas key="a2" c={C} r={a} a1={140} a2={100} t={u(4)} color={AMBAR} />);
-  if (step >= 5) nodos.push(<ArcoPlano key="a2f" c={C} r={a} a1={140} a2={100} color={AMBAR} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-8} />);
-  if (step === 5) nodos.push(<ReglaTrazando key="ra" a={A} b={B} p={tramo(p, 0, 0.5)} ext={0} color={VERDE} />, <ReglaTrazando key="rc" a={A} b={C} p={tramo(p, 0.5, 1)} ext={0} color={VERDE} />);
-  if (step === 5 && p > 0.9) nodos.push(<Poli key="t5" pts={[B, C, A]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step === 3) nodos.push(<ArcoCompas key="a1" c={B} r={a} a1={40} a2={80} t={u(3)} />);
+  if (step >= 4) nodos.push(<ArcoPlano key="a1f" c={B} r={a} a1={40} a2={80} color={AUX} grosor={1.2} />);
+  if (step === 4) nodos.push(<ArcoCompas key="a2" c={C} r={a} a1={140} a2={100} t={u(4)} />);
+  if (step >= 5) nodos.push(<ArcoPlano key="a2f" c={C} r={a} a1={140} a2={100} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-8} />);
+  if (step === 5) nodos.push(<ReglaTrazando key="ra" a={A} b={B} p={tramo(p, 0, 0.5)} ext={0} color={INK} w={3} />, <ReglaTrazando key="rc" a={A} b={C} p={tramo(p, 0.5, 1)} ext={0} color={INK} w={3} />);
+  if (step === 5 && p > 0.9) nodos.push(<Poli key="t5" pts={[B, C, A]} color={INK} w={3} fill={VERDE_RELLENO} />);
   return (
     <Lamina scene="equilatero-lado" block={block} step={step} setStep={setStep} label="Construcción de un triángulo equilátero dado su lado" testId="bench-equilatero-lado" titulo={["El dato: el lado a", "Se toma la medida a", "Se lleva a la recta: BC = a", "Arco de radio a desde B", "Arco de radio a desde C", "Se une A con B y con C"][step]}>
       {nodos}
@@ -289,17 +310,17 @@ export function EquilateroAltura({ block }: Props) {
   if (step === 1) nodos.push(<ArcoCompas key="r1" c={P1} r={s} a1={30} a2={80} t={u(1)} />, <Marca key="p2m" p={P2} color={INK} />);
   if (step >= 2) nodos.push(<ArcoPlano key="r1f" c={P1} r={s} a1={30} a2={80} color={AUX} grosor={1.3} />, <Marca key="p2" p={P2} color={INK} />, <Nombre key="n2" p={P2} n="2" dx={6} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="r2" c={P2} r={s} a1={150} a2={100} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="r2f" c={P2} r={s} a1={150} a2={100} color={AUX} grosor={1.3} />, <Poli key="e" pts={[P1, P2, V]} color={AMBAR} w={2} fill="rgba(224,168,0,0.1)" />, <Nombre key="n3" p={V} n="3" dx={8} dy={-4} />);
-  if (step === 3) nodos.push(<ReglaTrazando key="alt" a={V} b={N} p={u(3)} ext={0} color={AUX} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="r2f" c={P2} r={s} a1={150} a2={100} color={AUX} grosor={1.3} />, <Poli key="e" pts={[P1, P2, V]} color={AUX} w={1.2} />, <Nombre key="n3" p={V} n="3" dx={8} dy={-4} />);
+  if (step === 3) nodos.push(<EscuadraTrazando key="alt" a={N} b={V} p={u(3)} />);
   if (step >= 4) nodos.push(<Seg key="altf" a={V} b={N} color={AUX} w={1.4} dash="5 4" />, <Recto key="rr" v={N} a={P2} b={V} />, <Nombre key="N" p={N} n="N" dx={6} dy={18} />);
   if (step >= 4) nodos.push(<ReglaTrazando key="pro" a={V} b={[N[0], A[1] - 18]} p={u(4)} ext={0} color={AUX} />);
   if (step === 5) nodos.push(<CompasEn key="c5" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 5 && step < 8) nodos.push(<Seg key="prof" a={V} b={[N[0], A[1] - 18]} color={AUX} w={1.4} dash="5 4" />);
-  if (step === 6) nodos.push(<ArcoCompas key="rh" c={N} r={h} a1={72} a2={108} t={u(6)} color={VERDE} />);
-  if (step >= 7) nodos.push(<ArcoPlano key="rhf" c={N} r={h} a1={72} a2={108} color={VERDE} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-6} />);
-  if (step === 7) nodos.push(<ReglaTrazando key="pc" a={A} b={C} p={u(7)} ext={0} color={VERDE} />);
-  if (step >= 8) nodos.push(<ReglaTrazando key="pc2" a={A} b={C} p={1} ext={0} color={VERDE} />, <ReglaTrazando key="pb" a={A} b={B} p={u(8)} ext={0} color={VERDE} />, <Nombre key="C" p={C} n="C" dx={-16} dy={18} />, <Nombre key="B" p={B} n="B" dx={8} dy={18} />);
-  if (step >= 8) nodos.push(<Poli key="t" pts={[C, B, A]} color={VERDE} w={2.4} fill={p > 0.9 || step > 8 ? VERDE_RELLENO : "none"} />);
+  if (step === 6) nodos.push(<ArcoCompas key="rh" c={N} r={h} a1={72} a2={108} t={u(6)} />);
+  if (step >= 7) nodos.push(<ArcoPlano key="rhf" c={N} r={h} a1={72} a2={108} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-6} />);
+  if (step === 7) nodos.push(<ReglaTrazando key="pc" a={A} b={C} p={u(7)} ext={0} color={INK} w={3} />);
+  if (step >= 8) nodos.push(<ReglaTrazando key="pc2" a={A} b={C} p={1} ext={0} color={INK} w={3} />, <ReglaTrazando key="pb" a={A} b={B} p={u(8)} ext={0} color={INK} w={3} />, <Nombre key="C" p={C} n="C" dx={-16} dy={18} />, <Nombre key="B" p={B} n="B" dx={8} dy={18} />);
+  if (step >= 8) nodos.push(<Poli key="t" pts={[C, B, A]} color={INK} w={3} fill={p > 0.9 || step > 8 ? VERDE_RELLENO : "none"} />);
   return (
     <Lamina scene="equilatero-altura" block={block} step={step} setStep={setStep} label="Construcción de un triángulo equilátero dada su altura" testId="bench-equilatero-altura" titulo={["El dato: la altura h", "Un equilátero cualquiera: arco desde 1", "Arco desde 2 con la misma abertura", "Su altura 3-N", "Se prolonga la recta 3-N", "Se toma la medida h", "Se lleva h desde N: vértice A", "Paralela a 1-3 por A", "Paralela a 2-3 por A"][step]}>
       {nodos}
@@ -316,13 +337,13 @@ export function RectanguloCatetos({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={datoC[0]} m={datoC[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[120, 290]} b={[440, 290]} color={AUX} w={1.2} />, <Marca key="ma" p={A} color={INK} />, <Nombre key="A" p={A} n="A" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={A} r={c} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={c} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ab" a={A} b={B} color={INK} w={1.8} />, <Nombre key="B" p={B} n="B" dx={8} dy={18} />);
-  if (step >= 3) nodos.push(<ReglaTrazando key="per" a={A} b={[A[0], 110]} p={u(3)} ext={0} color={AMBAR} />, <Recto key="rr" v={A} a={B} b={[A[0], 100]} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={c} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ab" a={A} b={B} color={AUX} w={1.4} />, <Nombre key="B" p={B} n="B" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<EscuadraTrazando key="per" a={A} b={[A[0], 110]} p={u(3)} />, <Recto key="rr" v={A} a={B} b={[A[0], 100]} />);
   if (step === 4) nodos.push(<CompasEn key="c4" n={datoB[0]} m={datoB[1]} opacidad={tramo(p, 0, 0.3)} />);
-  if (step === 5) nodos.push(<ArcoCompas key="rb" c={A} r={b} a1={78} a2={102} t={u(5)} color={AMBAR} />);
-  if (step >= 6) nodos.push(<ArcoPlano key="rbf" c={A} r={b} a1={78} a2={102} color={AMBAR} grosor={1.5} />, <Marca key="dc" p={C} color={VERDE} />, <Nombre key="C" p={C} n="C" dx={-16} dy={-4} />);
-  if (step === 6) nodos.push(<ReglaTrazando key="rcb" a={C} b={B} p={p} ext={0} color={VERDE} />);
-  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[A, B, C]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />);
+  if (step === 5) nodos.push(<ArcoCompas key="rb" c={A} r={b} a1={78} a2={102} t={u(5)} />);
+  if (step >= 6) nodos.push(<ArcoPlano key="rbf" c={A} r={b} a1={78} a2={102} color={AUX} grosor={1.2} />, <Marca key="dc" p={C} color={VERDE} />, <Nombre key="C" p={C} n="C" dx={-16} dy={-4} />);
+  if (step === 6) nodos.push(<ReglaTrazando key="rcb" a={C} b={B} p={p} ext={0} color={INK} w={3} />);
+  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[A, B, C]} color={INK} w={3} fill={VERDE_RELLENO} />);
   return (
     <Lamina scene="rectangulo-catetos" block={block} step={step} setStep={setStep} label="Construcción de un triángulo rectángulo dados los dos catetos" testId="bench-rectangulo-catetos" titulo={["Los datos: catetos b y c", "Se toma la medida c", "Se lleva a la recta: AB = c", "La perpendicular por A", "Se toma la medida b", "Se lleva b sobre la perpendicular: C", "Se une C con B"][step]}>
       {nodos}
@@ -340,11 +361,11 @@ export function RectanguloCatetoAngulo({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[120, 290]} b={[440, 290]} color={AUX} w={1.2} />, <Marca key="ma" p={A} color={INK} />, <Nombre key="A" p={A} n="A" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={A} r={b} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={b} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ac" a={A} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={b} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ac" a={A} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) nodos.push(<TransportadorMarca key="tc" v={C} base={180} signo={-1} objetivo={aC} t={u(3)} />);
-  if (step >= 4) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, B) + 30, 180 - aC)} p={u(4)} ext={0} color={AMBAR} />);
-  if (step >= 5) nodos.push(<ReglaTrazando key="per" a={A} b={[A[0], B[1] - 20]} p={u(5)} ext={0} color={AMBAR} />, <Recto key="rr" v={A} a={C} b={[A[0], 100]} />);
-  if (step >= 6) nodos.push(<Poli key="t" pts={[A, C, B]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Marca key="db" p={B} color={VERDE} />, <Nombre key="B" p={B} n="B" dx={-18} dy={-4} />);
+  if (step >= 4) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, B) + 30, 180 - aC)} p={u(4)} ext={0} color={AUX} w={1.1} />);
+  if (step >= 5) nodos.push(<EscuadraTrazando key="per" a={A} b={[A[0], B[1] - 20]} p={u(5)} />, <Recto key="rr" v={A} a={C} b={[A[0], 100]} />);
+  if (step >= 6) nodos.push(<Poli key="t" pts={[A, C, B]} color={INK} w={3} fill={VERDE_RELLENO} />, <Marca key="db" p={B} color={VERDE} />, <Nombre key="B" p={B} n="B" dx={-18} dy={-4} />);
   return (
     <Lamina scene="rectangulo-cateto-angulo" block={block} step={step} setStep={setStep} label="Construcción de un triángulo rectángulo dados un cateto y un ángulo agudo" testId="bench-rectangulo-cateto-angulo" titulo={["Los datos: cateto b y ángulo C", "Se toma la medida b", "Se lleva a la recta: AC = b", "El ángulo C con el transportador", "Se traza el lado desde C", "La perpendicular por A", "Se cortan en B"][step]}>
       {nodos}
@@ -361,7 +382,7 @@ export function RectanguloHipotenusa({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={datoA[0]} m={datoA[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[110, 290]} b={[420, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) {
     const pm = animPuntoMedio(B, C, p);
     nodos.push(<g key="pm">{pm.nodos}</g>);
@@ -371,10 +392,10 @@ export function RectanguloHipotenusa({ block }: Props) {
   if (step === 4) nodos.push(<ArcoCompas key="sc" c={O} r={a / 2} a1={180} a2={0} t={u(4)} />);
   if (step >= 5) nodos.push(<ArcoPlano key="scf" c={O} r={a / 2} a1={0} a2={180} color={AUX} grosor={1.4} />);
   if (step === 5) nodos.push(<CompasEn key="c5" n={datoB[0]} m={datoB[1]} opacidad={tramo(p, 0, 0.3)} />);
-  if (step === 6) nodos.push(<ArcoCompas key="rb" c={C} r={b} a1={angDe(C, A) - 14} a2={angDe(C, A) + 14} t={u(6)} color={AMBAR} />);
-  if (step >= 7) nodos.push(<ArcoPlano key="rbf" c={C} r={b} a1={angDe(C, A) - 14} a2={angDe(C, A) + 14} color={AMBAR} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-6} dy={-10} />);
-  if (step === 7) nodos.push(<ReglaTrazando key="rab" a={A} b={B} p={tramo(p, 0, 0.5)} ext={0} color={VERDE} />, <ReglaTrazando key="rac" a={A} b={C} p={tramo(p, 0.5, 1)} ext={0} color={VERDE} />);
-  if (step === 7 && p > 0.9) nodos.push(<Poli key="t7" pts={[A, B, C]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Recto key="rr" v={A} a={B} b={C} />);
+  if (step === 6) nodos.push(<ArcoCompas key="rb" c={C} r={b} a1={angDe(C, A) - 14} a2={angDe(C, A) + 14} t={u(6)} />);
+  if (step >= 7) nodos.push(<ArcoPlano key="rbf" c={C} r={b} a1={angDe(C, A) - 14} a2={angDe(C, A) + 14} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-6} dy={-10} />);
+  if (step === 7) nodos.push(<ReglaTrazando key="rab" a={A} b={B} p={tramo(p, 0, 0.5)} ext={0} color={INK} w={3} />, <ReglaTrazando key="rac" a={A} b={C} p={tramo(p, 0.5, 1)} ext={0} color={INK} w={3} />);
+  if (step === 7 && p > 0.9) nodos.push(<Poli key="t7" pts={[A, B, C]} color={INK} w={3} fill={VERDE_RELLENO} />, <Recto key="rr" v={A} a={B} b={C} />);
   return (
     <Lamina scene="rectangulo-hipotenusa" block={block} step={step} setStep={setStep} label="Construcción de un triángulo rectángulo dados un cateto y la hipotenusa" testId="bench-rectangulo-hipotenusa" titulo={["Los datos: hipotenusa a y cateto b", "Se toma la medida a", "Se lleva a la recta: BC = a", "El punto medio O de BC", "La semicircunferencia de diámetro BC", "Se toma la medida b", "Arco de radio b desde C: A", "Se une A con B y con C"][step]}>
       {nodos}
@@ -392,13 +413,13 @@ export function IsoscelesLadoAngulo({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[130, 290]} b={[420, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) nodos.push(<TransportadorMarca key="tb" v={B} base={0} objetivo={aB} t={u(3)} />);
-  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, a + 50, aB)} p={u(4)} ext={0} color={AMBAR} />);
-  if (step === 5) nodos.push(<ArcoCompas key="ra" c={B} r={a} a1={aB - 14} a2={aB + 14} t={u(5)} color={AMBAR} />);
-  if (step >= 6) nodos.push(<ArcoPlano key="raf" c={B} r={a} a1={aB - 14} a2={aB + 14} color={AMBAR} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-6} />);
-  if (step === 6) nodos.push(<ReglaTrazando key="rac" a={A} b={C} p={p} ext={0} color={VERDE} />);
-  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[B, C, A]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Tick key="k1" a={B} b={C} color={VERDE} />, <Tick key="k2" a={B} b={A} color={VERDE} />);
+  if (step >= 4) nodos.push(<ReglaTrazando key="rb" a={B} b={enCirculo(B, a + 50, aB)} p={u(4)} ext={0} color={AUX} w={1.1} />);
+  if (step === 5) nodos.push(<ArcoCompas key="ra" c={B} r={a} a1={aB - 14} a2={aB + 14} t={u(5)} />);
+  if (step >= 6) nodos.push(<ArcoPlano key="raf" c={B} r={a} a1={aB - 14} a2={aB + 14} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={8} dy={-6} />);
+  if (step === 6) nodos.push(<ReglaTrazando key="rac" a={A} b={C} p={p} ext={0} color={INK} w={3} />);
+  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[B, C, A]} color={INK} w={3} fill={VERDE_RELLENO} />, <Tick key="k1" a={B} b={C} color={VERDE} />, <Tick key="k2" a={B} b={A} color={VERDE} />);
   return (
     <Lamina scene="isosceles-lado-angulo" block={block} step={step} setStep={setStep} label="Construcción de un triángulo isósceles dado el lado igual y el ángulo desigual" testId="bench-isosceles-lado-angulo" titulo={["Los datos: lado a y ángulo B", "Se toma la medida a", "Se lleva a la recta: BC = a", "El ángulo B con el transportador", "Se traza el lado desde B", "Con la misma abertura, arco desde B", "Se une A con C"][step]}>
       {nodos}
@@ -416,12 +437,12 @@ export function IsoscelesDesigual({ block }: Props) {
   if (step === 1) nodos.push(<CompasEn key="c1" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
   if (step >= 2) nodos.push(<Seg key="rec" a={[110, 290]} b={[420, 290]} color={AUX} w={1.2} />, <Marca key="ma" p={A} color={INK} />, <Nombre key="A" p={A} n="A" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={A} r={b} a1={14} a2={-6} t={u(2)} />);
-  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={b} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ac" a={A} b={C} color={INK} w={1.8} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
+  if (step >= 3) nodos.push(<ArcoPlano key="arc" c={A} r={b} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="ac" a={A} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) nodos.push(<TransportadorMarca key="ta" v={A} base={0} objetivo={aA} t={u(3)} />);
-  if (step >= 4) nodos.push(<ReglaTrazando key="ra" a={A} b={enCirculo(A, dist(A, B) + 30, aA)} p={u(4)} ext={0} color={AMBAR} />);
+  if (step >= 4) nodos.push(<ReglaTrazando key="ra" a={A} b={enCirculo(A, dist(A, B) + 30, aA)} p={u(4)} ext={0} color={AUX} w={1.1} />);
   if (step === 5) nodos.push(<TransportadorMarca key="tc" v={C} base={180} signo={-1} objetivo={aA} t={u(5)} />);
-  if (step >= 6) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, B) + 30, 180 - aA)} p={u(6)} ext={0} color={AMBAR} />);
-  if (step >= 7) nodos.push(<Poli key="t" pts={[A, C, B]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Marca key="db" p={B} color={VERDE} />, <Nombre key="B" p={B} n="B" dx={8} dy={-6} />, <Tick key="k1" a={A} b={B} color={VERDE} />, <Tick key="k2" a={C} b={B} color={VERDE} />);
+  if (step >= 6) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, dist(C, B) + 30, 180 - aA)} p={u(6)} ext={0} color={AUX} w={1.1} />);
+  if (step >= 7) nodos.push(<Poli key="t" pts={[A, C, B]} color={INK} w={3} fill={VERDE_RELLENO} />, <Marca key="db" p={B} color={VERDE} />, <Nombre key="B" p={B} n="B" dx={8} dy={-6} />, <Tick key="k1" a={A} b={B} color={VERDE} />, <Tick key="k2" a={C} b={B} color={VERDE} />);
   return (
     <Lamina scene="isosceles-desigual" block={block} step={step} setStep={setStep} label="Construcción de un triángulo isósceles dado el lado desigual y un ángulo igual" testId="bench-isosceles-desigual" titulo={["Los datos: lado b y ángulo A", "Se toma la medida b", "Se lleva a la recta: AC = b", "El ángulo A con el transportador", "Se traza el lado desde A", "El mismo ángulo en C", "Se traza el lado desde C", "El vértice B"][step]}>
       {nodos}
@@ -438,14 +459,14 @@ export function IsoscelesIgualAngulo({ block }: Props) {
   if (step === 0) nodos.push(<AnguloDato key="ang" v={[400, 150]} ang={aC} nombre="C" />);
   if (step >= 1) nodos.push(<Seg key="rec" a={[130, 290]} b={[500, 290]} color={AUX} w={1.2} />, <Marca key="mc" p={C} color={INK} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 1) nodos.push(<TransportadorMarca key="tc" v={C} base={180} signo={-1} objetivo={aC} t={u(1)} />);
-  if (step >= 2) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, a + 40, 180 - aC)} p={u(2)} ext={0} color={AMBAR} />);
+  if (step >= 2) nodos.push(<ReglaTrazando key="rc" a={C} b={enCirculo(C, a + 40, 180 - aC)} p={u(2)} ext={0} color={AUX} w={1.1} />);
   if (step === 3) nodos.push(<CompasEn key="c3" n={dato[0]} m={dato[1]} opacidad={tramo(p, 0, 0.3)} />);
-  if (step === 4) nodos.push(<ArcoCompas key="rb" c={C} r={a} a1={180 - aC - 12} a2={180 - aC + 12} t={u(4)} color={AMBAR} />);
-  if (step >= 5) nodos.push(<ArcoPlano key="rbf" c={C} r={a} a1={180 - aC - 12} a2={180 - aC + 12} color={AMBAR} grosor={1.5} />, <Marca key="db" p={B} color={AMBAR} />, <Nombre key="B" p={B} n="B" dx={8} dy={-6} />);
-  if (step === 5) nodos.push(<ArcoCompas key="ra" c={B} r={a} a1={angDe(B, A) - 14} a2={angDe(B, A) + 14} t={u(5)} color={VERDE} />);
-  if (step >= 6) nodos.push(<ArcoPlano key="raf" c={B} r={a} a1={angDe(B, A) - 14} a2={angDe(B, A) + 14} color={VERDE} grosor={1.5} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-16} dy={18} />);
-  if (step === 6) nodos.push(<ReglaTrazando key="rba" a={B} b={A} p={p} ext={0} color={VERDE} />);
-  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[A, C, B]} color={VERDE} w={2.4} fill={VERDE_RELLENO} />, <Tick key="k1" a={C} b={B} color={VERDE} />, <Tick key="k2" a={A} b={B} color={VERDE} />);
+  if (step === 4) nodos.push(<ArcoCompas key="rb" c={C} r={a} a1={180 - aC - 12} a2={180 - aC + 12} t={u(4)} />);
+  if (step >= 5) nodos.push(<ArcoPlano key="rbf" c={C} r={a} a1={180 - aC - 12} a2={180 - aC + 12} color={AUX} grosor={1.2} />, <Marca key="db" p={B} color={AMBAR} />, <Nombre key="B" p={B} n="B" dx={8} dy={-6} />);
+  if (step === 5) nodos.push(<ArcoCompas key="ra" c={B} r={a} a1={angDe(B, A) - 14} a2={angDe(B, A) + 14} t={u(5)} />);
+  if (step >= 6) nodos.push(<ArcoPlano key="raf" c={B} r={a} a1={angDe(B, A) - 14} a2={angDe(B, A) + 14} color={AUX} grosor={1.2} />, <Marca key="da" p={A} color={VERDE} />, <Nombre key="A" p={A} n="A" dx={-16} dy={18} />);
+  if (step === 6) nodos.push(<ReglaTrazando key="rba" a={B} b={A} p={p} ext={0} color={INK} w={3} />);
+  if (step === 6 && p > 0.9) nodos.push(<Poli key="t6" pts={[A, C, B]} color={INK} w={3} fill={VERDE_RELLENO} />, <Tick key="k1" a={C} b={B} color={VERDE} />, <Tick key="k2" a={A} b={B} color={VERDE} />);
   return (
     <Lamina scene="isosceles-igual-angulo" block={block} step={step} setStep={setStep} label="Construcción de un triángulo isósceles dado el lado igual y un ángulo igual" testId="bench-isosceles-igual-angulo" titulo={["Los datos: lado a y ángulo C", "El ángulo C con el transportador", "Se traza el lado desde C", "Se toma la medida a", "Se lleva a sobre el lado: B", "Con la misma abertura, arco desde B: A", "Se une B con A"][step]}>
       {nodos}

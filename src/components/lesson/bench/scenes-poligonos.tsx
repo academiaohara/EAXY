@@ -19,7 +19,7 @@ export const PN_B: Pt = [390, 290];
 export const PN_C: Pt = [320, 110];
 
 /** Pie de la perpendicular desde `p` a la recta `a`–`b`. */
-function pie(p: Pt, a: Pt, b: Pt): Pt {
+export function pie(p: Pt, a: Pt, b: Pt): Pt {
   const dx = b[0] - a[0];
   const dy = b[1] - a[1];
   const t = ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy);
@@ -33,7 +33,7 @@ export function circuncentro(a: Pt, b: Pt, c: Pt): Pt {
   return [ux, uy];
 }
 
-function incentro(a: Pt, b: Pt, c: Pt): { p: Pt; r: number } {
+export function incentro(a: Pt, b: Pt, c: Pt): { p: Pt; r: number } {
   const la = dist(b, c);
   const lb = dist(a, c);
   const lc = dist(a, b);
@@ -42,8 +42,8 @@ function incentro(a: Pt, b: Pt, c: Pt): { p: Pt; r: number } {
   return { p, r: dist(p, pie(p, a, b)) };
 }
 
-const baricentro = (a: Pt, b: Pt, c: Pt): Pt => [(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3];
-const ortocentro = (a: Pt, b: Pt, c: Pt): Pt => {
+export const baricentro = (a: Pt, b: Pt, c: Pt): Pt => [(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3];
+export const ortocentro = (a: Pt, b: Pt, c: Pt): Pt => {
   const o = circuncentro(a, b, c);
   return [a[0] + b[0] + c[0] - 2 * o[0], a[1] + b[1] + c[1] - 2 * o[1]];
 };
@@ -98,10 +98,8 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un triángulo y sus cuatro rectas notables" data-testid="bench-notables">
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
-        {/* lo ya construido, en tenue */}
-        {Array.from({ length: Math.min(step, 4) }, (_, k) =>
-          lineas[k].map((l, i) => <Seg key={`${k}-${i}`} a={l.a} b={l.b} color={colores[k]} w={1} dash="5 4" />),
-        )}
+        {/* de lo ya construido solo quedan los puntos hallados, sin las rectas auxiliares */}
+        {step < 4 ? Array.from({ length: step }, (_, k) => <Punto key={`pt${k}`} p={puntos[k][0]} nombre={puntos[k][1]} dx={puntos[k][2][0]} dy={puntos[k][2][1]} color={colores[k]} />) : null}
         <path d={poligono([A, B, C])} fill="rgba(31,120,180,0.10)" stroke={INK} strokeWidth="1.8" strokeLinejoin="round" />
         {step === 0 ? (
           <g data-testid="bench-medios-anim">
@@ -127,7 +125,7 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
           : null}
         {step === 4 ? (
           <g data-testid="bench-euler">
-            <Seg a={recta(H, O, 28)[0]} b={recta(H, O, 28)[1]} color={INK} w={1.4} dash="7 5" />
+            <Seg a={recta(H, O, 28)[0]} b={recta(H, O, 28)[1]} color={INK} w={1.6} />
             <Txt p={[430, 150]} color={INK}>recta de Euler</Txt>
             {puntos.map(([q, n, d]) => (
               <Punto key={n} p={q} nombre={n} dx={d[0]} dy={d[1]} color={colores[puntos.findIndex((x) => x[1] === n)]} />
@@ -149,66 +147,8 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
   );
 }
 
-/* ───────────── Circuncentro: dos mediatrices con el compás (práctica) ───────────── */
-
 const CC_PARES: [Pt, Pt][] = [[PN_A, PN_B], [PN_A, PN_C]];
 const CC_O = circuncentro(PN_A, PN_B, PN_C);
-
-const mitadMin = (s: number) => dist(CC_PARES[s][0], CC_PARES[s][1]) / 2;
-const cortesDe = (s: number, r: number | undefined): Pt[] =>
-  r !== undefined && r > mitadMin(s) + 0.5 ? (interseccionCirculos(CC_PARES[s][0], r, CC_PARES[s][1], r) as [Pt, Pt]) : [];
-
-const defCircuncentro: Def = {
-  scene: "circuncentro-practica",
-  fases: ["centro", "abertura", "arco", "centro", "arco", "centro", "abertura", "arco", "centro", "arco", "regla"],
-  nClics: 4,
-  extRegla: 24,
-  papel: (est: Est) => (
-    <g>
-      <path d={poligono([PN_A, PN_B, PN_C])} fill="rgba(31,120,180,0.08)" stroke={INK} strokeWidth="1.6" strokeLinejoin="round" />
-      <Punto p={PN_A} nombre="A" dx={-16} dy={18} />
-      <Punto p={PN_B} nombre="B" dx={8} dy={18} />
-      <Punto p={PN_C} nombre="C" dx={8} dy={-8} />
-      {est.fase >= 11 ? (
-        <g data-testid="bench-circuncentro">
-          <circle cx={CC_O[0]} cy={CC_O[1]} r={dist(CC_O, PN_A)} fill="none" stroke={VERDE} strokeWidth="1.6" />
-          <Punto p={CC_O} nombre="O" dx={8} dy={-8} color={VERDE} />
-        </g>
-      ) : null}
-    </g>
-  ),
-  candidatos: (est, idx) => {
-    const s = Math.floor(idx / 2);
-    const [P, Q] = CC_PARES[s];
-    return idx % 2 === 0 ? [P, Q] : [dist(est.centros[idx - 1], P) < 1 ? Q : P];
-  },
-  radioLim: () => [40, 235],
-  radioIni: () => 80,
-  rhoIni: () => 35,
-  arco: (est, n, radio, c) => {
-    const s = Math.floor(n / 2);
-    const [P, Q] = CC_PARES[s];
-    const otro = dist(c, P) < 1 ? Q : P;
-    const largo = dist(P, Q);
-    const th = radio > largo / 2 ? grados(Math.acos(clamp(largo / (2 * radio), 0, 1))) : 0;
-    const t = Math.max(th, 20) + 6;
-    return { centro: c, base: angDe(c, otro), signo: 1, rhoMin: -100, rhoMax: 100, req: [-t, t] };
-  },
-  validarAbertura: (est, a, r) => (r <= mitadMin(a) + 4 ? "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad del lado. Ábrela más y vuelve a fijarla." : null),
-  cortes: (est) => [...cortesDe(0, est.radios[0]), ...cortesDe(1, est.radios[1])],
-  validarClic: (est, punto) => {
-    const s0 = cortesDe(0, est.radios[0]);
-    const lado = (q: Pt) => (s0.some((c) => dist(c, q) < 1) ? 0 : 1);
-    if (est.clics.length % 2 === 1) return lado(est.clics[est.clics.length - 1]) === lado(punto) ? null : "La regla de una mediatriz pasa por los dos puntos del mismo lado: toca el otro punto donde se cortan esos arcos.";
-    const usados = est.clics.filter((_, i) => i % 2 === 0).map(lado);
-    return usados.includes(lado(punto)) ? "Esa mediatriz ya está trazada: ahora la del otro lado." : null;
-  },
-  evaluar: () => ({ ok: true, mensaje: "Correcto: las mediatrices se cortan en el circuncentro O, que equidista de A, B y C. Es el centro de la circunferencia circunscrita." }),
-};
-
-export function CircuncentroPractica({ block }: { block: BenchBlock }) {
-  return <Practica block={block} def={defCircuncentro} vista={vista} />;
-}
 
 /* ───────────── Triángulo dados los tres lados (LLL) ───────────── */
 

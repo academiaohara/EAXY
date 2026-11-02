@@ -1,12 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { angDe, enCirculo, type Pt } from "./geometry";
-import { INK, VERDE, type BenchBlock } from "./scenes";
+import { angDe, dist, enCirculo, type Pt } from "./geometry";
+import { VERDE, type BenchBlock } from "./scenes";
 import { GEO, AnguloDato, Dato } from "./scenes-construcciones";
 import { MSHEET, MV, Practica, type Def, type Est } from "./scenes-compas";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Dot, Poli, Recto } from "./scenes-teoria";
+import { arcoPar, cortesPar } from "./practicas-notables";
 import { Punto } from "./scenes-trazados";
 
 /**
@@ -20,7 +21,7 @@ type Seg2 = [Pt, Pt];
 const Nom = ({ p, n, dx, dy }: { p: Pt; n: string; dx?: number; dy?: number }) => <Punto p={p} nombre={n} dx={dx} dy={dy} />;
 const Rayo = ({ v, ang, largo }: { v: Pt; ang: number; largo: number }) => {
   const f = enCirculo(v, largo, ang);
-  return <Seg a={v} b={f} color={INK} w={1.4} />;
+  return <Seg a={v} b={f} color={AUX} w={1.1} />;
 };
 const finalOk = (mensaje: string) => () => ({ ok: true, mensaje });
 
@@ -35,11 +36,12 @@ const eq = GEO.eqLado;
 const defEqLado: Def = {
   scene: "equilatero-lado-practica",
   fases: ["medida", "centro", "arco", "centro", "arco", "auto"],
-  autoLados: () => [[eq.A, eq.B], [eq.A, eq.C]],
+  autoLados: () => [[eq.A, eq.B], [eq.A, eq.C], [eq.B, eq.C]],
+  grosorAuto: 3,
   papel: (est: Est) => (
     <g>
       <Dato a={eq.dato[0]} b={eq.dato[1]} nombre="a" />
-      <Seg a={eq.B} b={eq.C} w={1.8} />
+      <Seg a={eq.B} b={eq.C} color={AUX} w={1.4} />
       <Nom p={eq.B} n="B" dx={-16} dy={18} />
       <Nom p={eq.C} n="C" dx={8} dy={18} />
       {est.fase >= 6 ? <Nom p={eq.A} n="A" dx={8} dy={-8} /> : null}
@@ -85,11 +87,12 @@ function defAnguloLado(c: CfgAnguloLado): Def {
   return {
     scene: c.scene,
     fases: ["angulo", "medida", "centro", "arco", "auto"],
-    autoLados: () => c.lados,
+    autoLados: () => [...c.lados, c.base],
+    grosorAuto: 3,
     papel: (est: Est) => (
       <g>
         {c.datos}
-        <Seg a={c.base[0]} b={c.base[1]} w={1.8} />
+        <Seg a={c.base[0]} b={c.base[1]} color={AUX} w={1.4} />
         <Nom p={c.base[0]} n={c.nombresBase[0]} dx={c.nom[0][0]} dy={c.nom[0][1]} />
         <Nom p={c.base[1]} n={c.nombresBase[1]} dx={c.nom[1][0]} dy={c.nom[1][1]} />
         {est.fase >= 1 ? <Rayo v={c.angulo.centro} ang={c.angulo.base + (c.angulo.signo ?? 1) * c.angulo.objetivo} largo={largo} /> : null}
@@ -203,11 +206,12 @@ function defDosAngulos(c: CfgDosAngulos): Def {
   return {
     scene: c.scene,
     fases: ["angulo", "angulo", "punto", "auto"],
-    autoLados: () => [[c.angulos[0].centro, c.vertice], [c.angulos[1].centro, c.vertice]],
+    autoLados: () => [[c.angulos[0].centro, c.vertice], [c.angulos[1].centro, c.vertice], c.base],
+    grosorAuto: 3,
     papel: (est: Est) => (
       <g>
         {c.datos}
-        <Seg a={c.base[0]} b={c.base[1]} w={1.8} />
+        <Seg a={c.base[0]} b={c.base[1]} color={AUX} w={1.4} />
         <Nom p={c.base[0]} n={c.nombresBase[0]} dx={c.nom[0][0]} dy={c.nom[0][1]} />
         <Nom p={c.base[1]} n={c.nombresBase[1]} dx={c.nom[1][0]} dy={c.nom[1][1]} />
         {est.fase >= 1 ? <Rayo v={c.angulos[0].centro} ang={rayo(c.angulos[0])} largo={largo} /> : null}
@@ -294,20 +298,28 @@ export function IsoscelesDesigualPractica({ block }: { block: BenchBlock }) {
 /* ───────────── Rectángulo: cateto e hipotenusa (semicircunferencia de diámetro BC) ───────────── */
 
 const rh = GEO.recHip;
+const RH_FASES = ["centro", "abertura", "arco", "centro", "arco", "trazo", "punto", "medida", "centro", "arco", "medida", "centro", "arco", "auto"] as const;
 const defRecHip: Def = {
   scene: "rectangulo-hipotenusa-practica",
-  fases: ["medida", "centro", "arco", "medida", "centro", "arco", "auto"],
-  autoLados: () => [[rh.A, rh.B], [rh.A, rh.C]],
+  fases: [...RH_FASES],
+  autoLados: () => [[rh.A, rh.B], [rh.A, rh.C], [rh.B, rh.C]],
+  grosorAuto: 3,
+  trazoFino: true,
+  extTrazo: 60,
   papel: (est: Est) => (
     <g>
       <Dato a={rh.datoA[0]} b={rh.datoA[1]} nombre="a" />
       <Dato a={rh.datoB[0]} b={rh.datoB[1]} nombre="b" color="#e0a800" />
-      <Seg a={rh.B} b={rh.C} w={1.8} />
+      <Seg a={rh.B} b={rh.C} color={AUX} w={1.4} />
       <Nom p={rh.B} n="B" dx={-16} dy={18} />
       <Nom p={rh.C} n="C" dx={8} dy={18} />
-      <Nom p={rh.O} n="O" dx={-5} dy={20} />
-      <Dot p={rh.O} color="#1f78b4" r={3.6} />
       {est.fase >= 7 ? (
+        <g>
+          <Dot p={rh.O} color="#1f78b4" r={3.8} />
+          <Nom p={rh.O} n="O" dx={-5} dy={20} />
+        </g>
+      ) : null}
+      {est.fase >= 14 ? (
         <g>
           <Nom p={rh.A} n="A" dx={-6} dy={-10} />
           <Recto v={rh.A} a={rh.B} b={rh.C} />
@@ -315,14 +327,20 @@ const defRecHip: Def = {
       ) : null}
     </g>
   ),
-  medibles: (est) => (est.fase === 0 ? [rh.O, rh.B] : [rh.datoB[0], rh.datoB[1]]),
-  candidatos: (_est, idx) => (idx === 0 ? [rh.O] : [rh.C]),
+  medibles: (est) => (est.fase === 7 ? [rh.O, rh.B] : [rh.datoB[0], rh.datoB[1]]),
+  candidatos: (est, idx) => (idx < 2 ? (idx === 0 ? [rh.B, rh.C] : [dist(est.centros[0], rh.B) < 1 ? rh.C : rh.B]) : idx === 2 ? [rh.O] : [rh.C]),
   compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
   radioLim: () => [40, 215],
   radioIni: () => 100,
-  rhoIni: (n) => (n === 0 ? -90 : -25),
-  arco: (_est, n, _r, c) => (n === 0 ? { centro: c, base: 90, signo: 1, rhoMin: -95, rhoMax: 95, req: [-86, 86] } : { centro: c, base: angDe(c, rh.A), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
-  cortes: () => [],
+  rhoIni: (n) => (n === 2 ? -90 : n < 2 ? 35 : -25),
+  validarAbertura: (_est, _a, r) => (r <= rh.a / 2 + 4 ? "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad de BC. Ábrela más y vuelve a fijarla." : null),
+  arco: (_est, n, radio, c) => {
+    if (n < 2) return arcoPar(c, rh.B, rh.C, radio);
+    return n === 2 ? { centro: c, base: 90, signo: 1, rhoMin: -95, rhoMax: 95, req: [-86, 86] } : { centro: c, base: angDe(c, rh.A), signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] };
+  },
+  cortes: (est) => (est.fase === 5 ? cortesPar(rh.B, rh.C, est.radios[0]) : [rh.O]),
+  ocultarArcos: (est) => (est.fase >= 7 ? [0, 1] : []),
+  ocultarTrazos: (est) => (est.fase >= 7 ? [0] : []),
   evaluar: finalOk("Correcto: A está en la semicircunferencia de diámetro BC, así que el ángulo A es recto, y a la distancia b de C."),
 };
 export function RectanguloHipotenusaPractica({ block }: { block: BenchBlock }) {
@@ -336,11 +354,12 @@ const defIsoIgualAng: Def = {
   scene: "isosceles-igual-angulo-practica",
   fases: ["angulo", "medida", "centro", "arco", "centro", "arco", "auto"],
   autoLados: () => [[ii.C, ii.B], [ii.B, ii.A], [ii.A, ii.C]],
+  grosorAuto: 3,
   papel: (est: Est) => (
     <g>
       <Dato a={ii.dato[0]} b={ii.dato[1]} nombre="a" />
       <AnguloDato v={[400, 150]} ang={ii.aC} nombre="C" />
-      <Seg a={[130, 290]} b={[500, 290]} w={1.4} />
+      <Seg a={[130, 290]} b={[500, 290]} color={AUX} w={1.2} />
       <Nom p={ii.C} n="C" dx={8} dy={18} />
       {est.fase >= 1 ? <Rayo v={ii.C} ang={180 - ii.aC} largo={260} /> : null}
       {est.fase >= 4 ? <Nom p={ii.B} n="B" dx={8} dy={-6} /> : null}
@@ -370,6 +389,7 @@ const defEqAltura: Def = {
   scene: "equilatero-altura-practica",
   fases: ["medida", "centro", "arco", "escuadra", "escuadra", "auto"],
   autoLados: () => [[ea.C, ea.A], [ea.A, ea.B], [ea.C, ea.B]],
+  grosorAuto: 3,
   papel: (est: Est) => {
     const trazadas = Math.max(0, Math.min(2, est.fase - FASE_ESC));
     return (
