@@ -8,15 +8,16 @@ import { ArcoAnim, MSHEET, MV, Practica, ReglaTrazando, animPuntoMedio, lerp, tr
 import { Seg, Txt } from "./scenes-proporcion";
 import { Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
+import { animAlturas, animBisectrices, animMediatrices } from "./notables-anim";
 
 const vista = { ...MV, sheet: MSHEET };
 const grados = (rad: number) => (rad * 180) / Math.PI;
 
 /* ───────────── Puntos notables del triángulo (explicación) ───────────── */
 
-export const PN_A: Pt = [130, 290];
-export const PN_B: Pt = [390, 290];
-export const PN_C: Pt = [320, 110];
+export const PN_A: Pt = [190, 250];
+export const PN_B: Pt = [450, 250];
+export const PN_C: Pt = [380, 70];
 
 /** Pie de la perpendicular desde `p` a la recta `a`–`b`. */
 export function pie(p: Pt, a: Pt, b: Pt): Pt {
@@ -57,7 +58,7 @@ function recta(a: Pt, b: Pt, ext: number): [Pt, Pt] {
 
 export function PuntosNotables({ block }: { block: BenchBlock }) {
   const [step, setStep] = useState(0);
-  const p = useProgreso(step, step === 0 ? 11000 : 2600);
+  const p = useProgreso(step, [11000, 17000, 14000, 11000, 2600][step] ?? 2600);
   const A = PN_A;
   const B = PN_B;
   const C = PN_C;
@@ -74,6 +75,7 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
   const pmAC = animPuntoMedio(A, C, step === 0 ? tramo(p, 0.46, 0.69) : 1);
   const poseMedios = step === 0 ? (pmAB.pose ?? pmBC.pose ?? pmAC.pose) : null;
   const t = step === 0 ? tramo(p, 0.72, 1) : tramo(p, 0, 0.7);
+  const anim = step === 1 ? animBisectrices(A, B, C, I, rI, p, AZUL) : step === 2 ? animMediatrices(A, B, C, O, p, VERDE) : step === 3 ? animAlturas(A, B, C, [pie(A, B, C), pie(B, A, C), pie(C, A, B)], p, "#d6457a") : null;
   const aparece = (a: Pt, b: Pt): Pt => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
 
   // bisectrices: del vértice al pie sobre el lado opuesto
@@ -109,20 +111,15 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
             {[[pmAB, mAB], [pmBC, mBC], [pmAC, mAC]].map(([pm, m], i) => ((pm as typeof pmAB).listo ? <circle key={i} cx={(m as Pt)[0]} cy={(m as Pt)[1]} r="3.2" fill={AMBAR} /> : null))}
           </g>
         ) : null}
-        {step < 4
-          ? lineas[step].map((l, i) => {
+        {step === 0
+          ? lineas[0].map((l, i) => {
               const f = aparece(l.a, l.b);
               return <Seg key={i} a={l.a} b={f} color={col} w={2} />;
             })
           : null}
-        {step === 1 && t > 0.9 ? <circle cx={I[0]} cy={I[1]} r={rI} fill="none" stroke={AZUL} strokeWidth="1.6" data-testid="bench-inscrita" /> : null}
-        {step === 2 && t > 0.9 ? <circle cx={O[0]} cy={O[1]} r={dist(O, A)} fill="none" stroke={VERDE} strokeWidth="1.6" data-testid="bench-circunscrita" /> : null}
-        {step === 2 && t > 0.9
-          ? [mAB, mBC, mAC].map((m, i) => <circle key={i} cx={m[0]} cy={m[1]} r="3.2" fill={VERDE} />)
-          : null}
-        {step === 3 && t > 0.9
-          ? [pie(A, B, C), pie(B, A, C), pie(C, A, B)].map((q, i) => <circle key={i} cx={q[0]} cy={q[1]} r="3" fill="#d6457a" />)
-          : null}
+        {anim ? anim.nodos : null}
+        {step === 1 && anim?.punto && p >= 0.999 ? <circle cx={I[0]} cy={I[1]} r={rI} fill="none" stroke={AZUL} strokeWidth="1.8" data-testid="bench-inscrita" /> : null}
+        {step === 2 && anim?.punto && p >= 0.999 ? <circle cx={O[0]} cy={O[1]} r={dist(O, A)} fill="none" stroke={VERDE} strokeWidth="1.8" data-testid="bench-circunscrita" /> : null}
         {step === 4 ? (
           <g data-testid="bench-euler">
             <Seg a={recta(H, O, 28)[0]} b={recta(H, O, 28)[1]} color={INK} w={1.6} />
@@ -140,7 +137,7 @@ export function PuntosNotables({ block }: { block: BenchBlock }) {
             <Compas pose={poseMedios.pose} open={poseMedios.open} />
           </g>
         ) : null}
-        {step < 4 && t > 0.9 ? <Punto p={puntos[step][0]} nombre={puntos[step][1]} dx={puntos[step][2][0]} dy={puntos[step][2][1]} color={col} /> : null}
+        {step < 4 && (step === 0 ? t > 0.9 : anim?.punto) ? <Punto p={puntos[step][0]} nombre={puntos[step][1]} dx={puntos[step][2][0]} dy={puntos[step][2][1]} color={col} /> : null}
         {step < 4 ? <Txt p={[430, 70]} color={col} size={15}>{nombres[step]}</Txt> : null}
       </svg>
     </BenchShell>

@@ -198,8 +198,8 @@ export const GEO = {
   recHip: (() => {
     const a = 210;
     const b = 130;
-    const B: Pt = [160, 290];
-    const C: Pt = [160 + a, 290];
+    const B: Pt = [280, 215];
+    const C: Pt = [280 + a, 215];
     const O = puntoMedio(B, C);
     const A = (interseccionCirculos(O, a / 2, C, b) as [Pt, Pt]).reduce((m, p) => (p[1] < m[1] ? p : m));
     return { a, b, B, C, O, A, datoA: [[24, 96], [24 + a, 96]] as [Pt, Pt], datoB: [[24, 122], [24 + b, 122]] as [Pt, Pt] };
@@ -380,7 +380,7 @@ export function RectanguloHipotenusa({ block }: Props) {
   const { a, b, B, C, O, A, datoA, datoB } = GEO.recHip;
   const nodos: ReactNode[] = [<Dato key="a" a={datoA[0]} b={datoA[1]} nombre="a" />, <Dato key="b" a={datoB[0]} b={datoB[1]} nombre="b" color={AMBAR} />];
   if (step === 1) nodos.push(<CompasEn key="c1" n={datoA[0]} m={datoA[1]} opacidad={tramo(p, 0, 0.3)} />);
-  if (step >= 2) nodos.push(<Seg key="rec" a={[110, 290]} b={[420, 290]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
+  if (step >= 2) nodos.push(<Seg key="rec" a={[B[0] - 60, B[1]]} b={[C[0] + 60, B[1]]} color={AUX} w={1.2} />, <Marca key="mb" p={B} color={INK} />, <Nombre key="B" p={B} n="B" dx={-16} dy={18} />);
   if (step === 2) nodos.push(<ArcoCompas key="ar" c={B} r={a} a1={14} a2={-6} t={u(2)} />);
   if (step >= 3) nodos.push(<ArcoPlano key="arc" c={B} r={a} a1={14} a2={-6} color={AUX} grosor={1.3} />, <Seg key="bc" a={B} b={C} color={AUX} w={1.4} />, <Nombre key="C" p={C} n="C" dx={8} dy={18} />);
   if (step === 3) {

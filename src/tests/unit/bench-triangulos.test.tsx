@@ -64,7 +64,19 @@ function pantalla(scene: BenchSceneId) {
     arrastrar(enCirc(c, r, 20));
     fireEvent.click(screen.getByTestId("bench-fijar"));
   };
-  return { onCheck, svg, tocar, arrastrar, fase, medir, angulo, arco, abertura, superada };
+  /** Desliza la escuadra con el teclado sobre el cartabón hasta que la perpendicular queda trazada. */
+  const perpendicular = () => {
+    expect(fase()).toBe("perpendicular");
+    const antes = screen.queryAllByTestId("bench-trazo-aux").length;
+    for (let i = 0; i < 300 && screen.queryAllByTestId("bench-trazo-aux").length === antes; i += 1) fireEvent.keyDown(svg(), { key: "ArrowRight" });
+    expect(screen.queryAllByTestId("bench-trazo-aux").length).toBe(antes + 1);
+  };
+  /** Circunferencia completa con el compás ya abierto: la mina da la vuelta entera alrededor de `c`. */
+  const circunferencia = (c: Pt, r: number) => {
+    expect(fase()).toBe("arco");
+    arrastrar(enCirc(c, r, -175), enCirc(c, r, -90), enCirc(c, r, 0), enCirc(c, r, 90), enCirc(c, r, 175));
+  };
+  return { onCheck, svg, tocar, arrastrar, fase, medir, angulo, arco, abertura, perpendicular, circunferencia, superada };
 }
 
 type Pantalla = ReturnType<typeof pantalla>;
@@ -121,7 +133,11 @@ describe("mesa de dibujo · rectas notables del triángulo", () => {
     expect(t.onCheck).not.toHaveBeenCalled();
     t.tocar([PN_B[0] - 30, PN_B[1] - 30]);
     expect(t.fase()).toBe("punto");
-    t.tocar(circuncentro(PN_A, PN_B, PN_C));
+    const O = circuncentro(PN_A, PN_B, PN_C);
+    t.tocar(O);
+    t.medir([O, PN_A]);
+    t.tocar(O);
+    t.circunferencia(O, d(O, PN_A));
     t.superada();
     expect(screen.getByTestId("bench-circuncentro")).toBeTruthy();
   });
@@ -138,7 +154,12 @@ describe("mesa de dibujo · rectas notables del triángulo", () => {
     expect(sinArcos()).toBe(true);
     lado(PN_B, [PN_A, PN_C]);
     expect(t.fase()).toBe("punto");
-    t.tocar(incentro(PN_A, PN_B, PN_C).p);
+    const I = incentro(PN_A, PN_B, PN_C);
+    t.tocar(I.p);
+    t.perpendicular();
+    t.medir([I.p, pie(I.p, PN_A, PN_B)]);
+    t.tocar(I.p);
+    t.circunferencia(I.p, I.r);
     t.superada();
     expect(screen.getByTestId("bench-incentro")).toBeTruthy();
   });
@@ -165,25 +186,21 @@ describe("mesa de dibujo · rectas notables del triángulo", () => {
     t.superada();
   });
 
-  it("alturas: la perpendicular desde el vértice con arcos y el ortocentro", () => {
+  it("alturas: cada altura se traza con la escuadra deslizando sobre el cartabón y después se marca el ortocentro", () => {
     const t = pantalla("ortocentro-practica");
-    const altura = (V: Pt, L: [Pt, Pt]) => {
-      const F = pie(V, L[0], L[1]);
-      const h = d(V, F);
-      const r1 = h + 25;
-      const u: Pt = [(L[1][0] - L[0][0]) / d(L[0], L[1]), (L[1][1] - L[0][1]) / d(L[0], L[1])];
-      const k = Math.sqrt(r1 * r1 - h * h);
-      const P: Pt = [F[0] - u[0] * k, F[1] - u[1] * k];
-      const Q: Pt = [F[0] + u[0] * k, F[1] + u[1] * k];
-      recta(t, V, P, Q, r1, d(P, Q) / 2 + 40);
-    };
-    altura(PN_C, [PN_A, PN_B]);
-    expect(t.fase()).toBe("centro");
-    expect(sinArcos()).toBe(true);
-    altura(PN_B, [PN_A, PN_C]);
+    t.perpendicular();
+    t.perpendicular();
     expect(t.fase()).toBe("punto");
     t.tocar(ortocentro(PN_A, PN_B, PN_C));
     t.superada();
+  });
+
+  it("alturas: la escuadra solo se da por buena al soltarla con el filo por el vértice", () => {
+    const t = pantalla("ortocentro-practica");
+    fireEvent.keyDown(t.svg(), { key: "ArrowRight" });
+    expect(screen.queryAllByTestId("bench-trazo-aux")).toHaveLength(0);
+    expect(screen.getByTestId("bench-marca-objetivo")).toBeTruthy();
+    expect(t.fase()).toBe("perpendicular");
   });
 });
 
@@ -212,7 +229,7 @@ describe("mesa de dibujo · prácticas de construcción de triángulos", () => {
   it("rectángulo con los dos catetos: ángulo recto y arco de radio b", async () => {
     const t = pantalla("rectangulo-catetos-practica");
     const { A, C, datoB } = GEO.recCatetos;
-    t.angulo(A, 0, 1, 90);
+    t.perpendicular();
     t.medir(datoB);
     t.arco(A, C);
     await esperarAuto();
@@ -247,7 +264,7 @@ describe("mesa de dibujo · prácticas de construcción de triángulos", () => {
     const t = pantalla("rectangulo-cateto-angulo-practica");
     const { A, B, C, aC } = GEO.recCatAng;
     t.angulo(C, 180, -1, aC);
-    t.angulo(A, 0, 1, 90);
+    t.perpendicular();
     t.tocar(B);
     await esperarAuto();
     t.superada();

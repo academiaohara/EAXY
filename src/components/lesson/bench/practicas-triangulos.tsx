@@ -7,7 +7,7 @@ import { GEO, AnguloDato, Dato } from "./scenes-construcciones";
 import { MSHEET, MV, Practica, type Def, type Est } from "./scenes-compas";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Dot, Poli, Recto } from "./scenes-teoria";
-import { arcoPar, cortesPar } from "./practicas-notables";
+import { arcoPar, cortesPar, rMaxCortes } from "./practicas-notables";
 import { Punto } from "./scenes-trazados";
 
 /**
@@ -70,7 +70,9 @@ type CfgAnguloLado = {
   nombresBase: [string, string];
   /** Posiciones de los nombres de los extremos de la base. */
   nom: [[number, number], [number, number]];
-  angulo: CfgAngulo;
+  angulo?: CfgAngulo;
+  /** En vez de marcar el ángulo con el transportador, se traza una perpendicular con escuadra y cartabón. */
+  perp?: { recta: Seg2; punto: Pt; traza: Seg2 };
   /** Segmento dato cuya medida se lleva con el compás. */
   medida: Seg2;
   /** Centro del arco y vértice que se encuentra. */
@@ -86,20 +88,23 @@ function defAnguloLado(c: CfgAnguloLado): Def {
   const largo = 270;
   return {
     scene: c.scene,
-    fases: ["angulo", "medida", "centro", "arco", "auto"],
+    fases: [c.perp ? "perpendicular" : "angulo", "medida", "centro", "arco", "auto"],
     autoLados: () => [...c.lados, c.base],
     grosorAuto: 3,
+    trazoFino: true,
+    extTrazo: 0,
+    perpendicular: c.perp ? () => c.perp! : undefined,
     papel: (est: Est) => (
       <g>
         {c.datos}
         <Seg a={c.base[0]} b={c.base[1]} color={AUX} w={1.4} />
         <Nom p={c.base[0]} n={c.nombresBase[0]} dx={c.nom[0][0]} dy={c.nom[0][1]} />
         <Nom p={c.base[1]} n={c.nombresBase[1]} dx={c.nom[1][0]} dy={c.nom[1][1]} />
-        {est.fase >= 1 ? <Rayo v={c.angulo.centro} ang={c.angulo.base + (c.angulo.signo ?? 1) * c.angulo.objetivo} largo={largo} /> : null}
+        {est.fase >= 1 && c.angulo ? <Rayo v={c.angulo.centro} ang={c.angulo.base + (c.angulo.signo ?? 1) * c.angulo.objetivo} largo={largo} /> : null}
         {est.fase >= 5 ? <Nom p={c.vertice} n={c.nombreVertice} dx={8} dy={-8} /> : null}
       </g>
     ),
-    angulo: () => ({ ...c.angulo, largo }),
+    angulo: c.angulo ? () => ({ ...c.angulo!, largo }) : undefined,
     medibles: () => [c.medida[0], c.medida[1]],
     candidatos: () => [c.centro],
     compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
@@ -149,7 +154,7 @@ const defRecCatetos = defAnguloLado({
   base: [rc.A, rc.B],
   nombresBase: ["A", "B"],
   nom: [[-16, 18], [8, 18]],
-  angulo: { centro: rc.A, base: 0, objetivo: 90 },
+  perp: { recta: [rc.A, rc.B], punto: rc.A, traza: [rc.A, [rc.A[0], rc.A[1] - 215]] },
   medida: rc.datoB,
   centro: rc.A,
   vertice: rc.C,
@@ -194,6 +199,8 @@ type CfgDosAngulos = {
   nombresBase: [string, string];
   nom: [[number, number], [number, number]];
   angulos: [CfgAngulo, CfgAngulo];
+  /** El segundo ángulo es recto y se traza con escuadra y cartabón: recta de apoyo, punto y recta trazada. */
+  perp?: { recta: Seg2; punto: Pt; traza: Seg2 };
   vertice: Pt;
   nombreVertice: string;
   marcaRecto?: Pt;
@@ -205,7 +212,10 @@ function defDosAngulos(c: CfgDosAngulos): Def {
   const rayo = (a: CfgAngulo) => a.base + (a.signo ?? 1) * a.objetivo;
   return {
     scene: c.scene,
-    fases: ["angulo", "angulo", "punto", "auto"],
+    fases: ["angulo", c.perp ? "perpendicular" : "angulo", "punto", "auto"],
+    perpendicular: c.perp ? () => c.perp! : undefined,
+    trazoFino: true,
+    extTrazo: 0,
     autoLados: () => [[c.angulos[0].centro, c.vertice], [c.angulos[1].centro, c.vertice], c.base],
     grosorAuto: 3,
     papel: (est: Est) => (
@@ -215,7 +225,7 @@ function defDosAngulos(c: CfgDosAngulos): Def {
         <Nom p={c.base[0]} n={c.nombresBase[0]} dx={c.nom[0][0]} dy={c.nom[0][1]} />
         <Nom p={c.base[1]} n={c.nombresBase[1]} dx={c.nom[1][0]} dy={c.nom[1][1]} />
         {est.fase >= 1 ? <Rayo v={c.angulos[0].centro} ang={rayo(c.angulos[0])} largo={largo} /> : null}
-        {est.fase >= 2 ? <Rayo v={c.angulos[1].centro} ang={rayo(c.angulos[1])} largo={largo} /> : null}
+        {est.fase >= 2 && !c.perp ? <Rayo v={c.angulos[1].centro} ang={rayo(c.angulos[1])} largo={largo} /> : null}
         {est.fase >= 3 ? <Nom p={c.vertice} n={c.nombreVertice} dx={8} dy={-8} /> : null}
         {est.fase >= 3 && c.marcaRecto ? <Dot p={c.vertice} color={VERDE} r={4} /> : null}
       </g>
@@ -266,6 +276,7 @@ const defRecCatAng = defDosAngulos({
   nombresBase: ["A", "C"],
   nom: [[-16, 18], [8, 18]],
   angulos: [{ centro: rca.C, base: 180, objetivo: rca.aC, signo: -1 }, { centro: rca.A, base: 0, objetivo: 90 }],
+  perp: { recta: [rca.A, rca.C], punto: rca.A, traza: [rca.A, [rca.A[0], rca.B[1] - 25]] },
   vertice: rca.B,
   nombreVertice: "B",
   mensaje: "Correcto: el lado de C y la perpendicular por A se cortan en B, y el triángulo tiene el cateto b, el ángulo C y el ángulo recto en A.",
@@ -330,7 +341,7 @@ const defRecHip: Def = {
   medibles: (est) => (est.fase === 7 ? [rh.O, rh.B] : [rh.datoB[0], rh.datoB[1]]),
   candidatos: (est, idx) => (idx < 2 ? (idx === 0 ? [rh.B, rh.C] : [dist(est.centros[0], rh.B) < 1 ? rh.C : rh.B]) : idx === 2 ? [rh.O] : [rh.C]),
   compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-  radioLim: () => [40, 215],
+  radioLim: () => [rh.a / 2 + 12, rMaxCortes(rh.B, rh.C)],
   radioIni: () => 100,
   rhoIni: (n) => (n === 2 ? -90 : n < 2 ? 35 : -25),
   validarAbertura: (_est, _a, r) => (r <= rh.a / 2 + 4 ? "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad de BC. Ábrela más y vuelve a fijarla." : null),
