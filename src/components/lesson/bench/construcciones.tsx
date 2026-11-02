@@ -88,7 +88,7 @@ function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDes
   const v = pt(c, o.v);
   const signo = o.signo ?? 1;
   const largo = o.largo ?? 160;
-  return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo }, escala: c.escala };
+  return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo }, importantes: puntosImportantes(c) };
 }
 
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
@@ -210,7 +210,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         break;
       }
       case "perp":
-        nodos.push(<AnimDesliza key={key} datos={{ recta: [pt(c, x.recta[0]), pt(c, x.recta[1])], punto: pt(c, x.punto), traza: [pt(c, x.traza[0]), pt(c, x.traza[1])], escala: c.escala }} p={t} />);
+        nodos.push(<AnimDesliza key={key} datos={{ recta: [pt(c, x.recta[0]), pt(c, x.recta[1])], punto: pt(c, x.punto), traza: [pt(c, x.traza[0]), pt(c, x.traza[1])], importantes: puntosImportantes(c) }} p={t} />);
         break;
       case "angulo": {
         if (instrumentoAngulo(x.obj)) {
@@ -361,7 +361,7 @@ function defDe(id: ConstruccionId): Def {
       const o = faseActual(est)!;
       if (o.k === "angulo") return datosAngulo(c, o);
       const q = o as Extract<Op, { k: "perp" }>;
-      return { recta: [pt(c, q.recta[0]), pt(c, q.recta[1])], punto: pt(c, q.punto), traza: [pt(c, q.traza[0]), pt(c, q.traza[1])], escala: c.escala };
+      return { recta: [pt(c, q.recta[0]), pt(c, q.recta[1])], punto: pt(c, q.punto), traza: [pt(c, q.traza[0]), pt(c, q.traza[1])], importantes: puntosImportantes(c) };
     },
     angulo: (est) => {
       const o = faseActual(est) as Extract<Op, { k: "angulo" }>;

@@ -13,21 +13,21 @@ import { Cartabon, Escuadra } from "./instruments";
  * longitud de borde, se agrandan los instrumentos antes de empezar (siempre con sus proporciones reales).
  */
 
-const ESC_V: Pt[] = [[0, 0], [ESCUADRA_L, 0], [0, ESCUADRA_L]];
-const CAR_V: Pt[] = [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]];
+export const ESC_V: Pt[] = [[0, 0], [ESCUADRA_L, 0], [0, ESCUADRA_L]];
+export const CAR_V: Pt[] = [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]];
 /** Bordes de un triángulo con vértice recto en el índice 0: cateto x, cateto y e hipotenusa. */
-const BORDES: [number, number][] = [[0, 1], [0, 2], [1, 2]];
-const ESCALAS = [1, 1.2, 1.45, 1.75, 2.1];
+export const BORDES: [number, number][] = [[0, 1], [0, 2], [1, 2]];
+export const ESCALAS = [1, 1.2, 1.45, 1.75, 2.1];
 
-const sub = (a: Pt, b: Pt): Pt => [a[0] - b[0], a[1] - b[1]];
-const dot = (a: Pt, b: Pt) => a[0] * b[0] + a[1] * b[1];
-const cross = (a: Pt, b: Pt) => a[0] * b[1] - a[1] * b[0];
-const largo = (a: Pt) => Math.hypot(a[0], a[1]);
-const unit = (a: Pt): Pt => [a[0] / largo(a), a[1] / largo(a)];
-const grados = (v: Pt) => (Math.atan2(v[1], v[0]) * 180) / Math.PI;
+export const sub = (a: Pt, b: Pt): Pt => [a[0] - b[0], a[1] - b[1]];
+export const dot = (a: Pt, b: Pt) => a[0] * b[0] + a[1] * b[1];
+export const cross = (a: Pt, b: Pt) => a[0] * b[1] - a[1] * b[0];
+export const largo = (a: Pt) => Math.hypot(a[0], a[1]);
+export const unit = (a: Pt): Pt => [a[0] / largo(a), a[1] / largo(a)];
+export const grados = (v: Pt) => (Math.atan2(v[1], v[0]) * 180) / Math.PI;
 
 /** Vértices de un triángulo con la orientación (giro y volteo) y el tamaño dados, con el origen local en (0, 0). */
-function vertices(V: Pt[], rot: number, mirror: boolean, k: number): Pt[] {
+export function vertices(V: Pt[], rot: number, mirror: boolean, k: number): Pt[] {
   return V.map((v) => {
     const w = applyPose({ x: 0, y: 0, rot, mirror }, v);
     return [w[0] * k, w[1] * k] as Pt;
@@ -35,16 +35,16 @@ function vertices(V: Pt[], rot: number, mirror: boolean, k: number): Pt[] {
 }
 
 /** Giro que lleva la dirección local `d` (tras el volteo) a la dirección del mundo `objetivo`. */
-function giroPara(d: Pt, mirror: boolean, objetivo: Pt): number {
+export function giroPara(d: Pt, mirror: boolean, objetivo: Pt): number {
   const m: Pt = [d[0], mirror ? -d[1] : d[1]];
   return grados(objetivo) - grados(m);
 }
 
 /** Longitud de solape de dos intervalos. */
-const solape = (a0: number, a1: number, b0: number, b1: number) => Math.max(0, Math.min(Math.max(a0, a1), Math.max(b0, b1)) - Math.max(Math.min(a0, a1), Math.min(b0, b1)));
+export const solape = (a0: number, a1: number, b0: number, b1: number) => Math.max(0, Math.min(Math.max(a0, a1), Math.max(b0, b1)) - Math.max(Math.min(a0, a1), Math.min(b0, b1)));
 
 /** ¿Está `p` dentro del triángulo (a distancia mayor que `margen` de sus bordes)? */
-function dentro(p: Pt, t: Pt[], margen: number) {
+export function dentro(p: Pt, t: Pt[], margen: number) {
   let signo = 0;
   for (let i = 0; i < 3; i += 1) {
     const a = t[i];
