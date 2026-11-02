@@ -339,7 +339,10 @@ function defDe(id: ConstruccionId): Def {
     },
     escuadra: (est) => {
       const o = faseActual(est) as Extract<Op, { k: "paralelas" }>;
-      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: o.marcas.map((m, k) => ({ marca: pt(c, m), corte: pt(c, o.cortes[k]) })) };
+      // el motor indexa los objetivos por el nº de fases «escuadra» ya hechas: se rellena con los de las operaciones previas
+      const previas = c.ops.slice(0, c.ops.indexOf(o)).reduce((n, x) => n + (x.k === "paralelas" ? x.marcas.length : 0), 0);
+      const propios = o.marcas.map((m, k) => ({ marca: pt(c, m), corte: pt(c, o.cortes[k]) }));
+      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios] };
     },
     ocultarArcos: (est) => {
       const out: number[] = [];

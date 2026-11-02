@@ -852,6 +852,391 @@ function eneagonoLado(): Construccion {
   };
 }
 
+/* ───────────── Tema 6: relaciones geométricas ───────────── */
+
+const prima = (clave: string) => `${clave}p`;
+
+/** Rayos de partida y datos comunes de las construcciones de cuarto y tercer proporcional. */
+function proporcional(tercero: boolean): Construccion {
+  const a = 110;
+  const b = 70;
+  const c = tercero ? b : 90;
+  const A: P = [170, 300];
+  const dir = 35;
+  const N: P = [A[0] + a, A[1]];
+  const Pp: P = [N[0] + b, A[1]];
+  const M = en(A, c, dir);
+  const Q = en(A, (c * (a + b)) / a, dir);
+  const da = dato("a", a, 70);
+  const db = dato("b", b, 96, { color: "ambar" });
+  const dc = tercero ? null : dato("c", c, 122);
+  return {
+    titulo: tercero ? "Tercero proporcional" : "Cuarto proporcional",
+    intro: tercero
+      ? "Se conocen dos segmentos $a$ y $b$. El **tercero proporcional** $x$ es el que cumple $\\dfrac{a}{b} = \\dfrac{b}{x}$: el término $b$ se repite en los medios. Se resuelve con el teorema de Thales."
+      : "Se conocen tres segmentos $a$, $b$ y $c$. El **cuarto proporcional** $x$ es el que cumple $\\dfrac{a}{b} = \\dfrac{c}{x}$. Su valor sale del teorema de Thales.",
+    pts: { ...da.pts, ...db.pts, ...(dc?.pts ?? {}), A, N, P: Pp, M, Q, _r: [A[0] + 340, A[1]], _s: en(A, 330, dir) },
+    dados: ["A"],
+    datos: [da.d, db.d, ...(dc ? [dc.d] : [])],
+    base: [["A", "_r"], ["A", "_s"]],
+    ops: [
+      { k: "medir", de: "a1", a: "a2" },
+      ...marcaArco("A", "N"),
+      { k: "medir", de: "b1", a: "b2" },
+      ...marcaArco("N", "P"),
+      ...(tercero ? [] : ([{ k: "medir", de: "c1", a: "c2" }] as Op[])),
+      ...marcaArco("A", "M"),
+      { k: "recta", a: "N", b: "M" },
+      { k: "paralelas", recta: ["N", "M"], marcas: ["P"], cortes: ["Q"] },
+      { k: "lados", pts: ["M", "Q"] },
+    ],
+  };
+}
+
+/** Medio proporcional (teorema de la altura): semicircunferencia sobre `a` o sobre `a + b`. */
+function medioProporcional(suma: boolean): Construccion {
+  const a = suma ? 100 : 170;
+  const b = suma ? 60 : 60;
+  const y = 210;
+  const A: P = [suma ? 180 : 190, y];
+  const Pp: P = [A[0] + (suma ? a : b), y];
+  const B: P = [A[0] + (suma ? a + b : a), y];
+  const O = medio(A, B);
+  const R = dist(O, A);
+  const par = cortes(A, dist(A, B), B, dist(A, B));
+  const M: P = [Pp[0], y - Math.sqrt(R * R - (Pp[0] - O[0]) ** 2)];
+  const da = dato("a", a, 70);
+  const db = dato("b", b, 96, { color: "ambar" });
+  const datos = suma ? [da, db] : [db];
+  return {
+    titulo: suma ? "Medio proporcional entre a y b (sobre a + b)" : "Medio proporcional entre a y b (sobre a)",
+    intro: suma
+      ? "Se conocen los segmentos $a$ y $b$. El **medio proporcional** $x$ cumple $\\dfrac{a}{x} = \\dfrac{x}{b}$, es decir, $x^2 = a\\cdot b$. Con $a$ y $b$ seguidos se forma un diámetro $AB = a + b$ y $x$ es la altura sobre la semicircunferencia."
+      : "Se conocen los segmentos $a = AB$ y $b$. El **medio proporcional** $x$ cumple $x^2 = a\\cdot b$: es el cateto de un triángulo rectángulo cuya hipotenusa es $a$ y cuya proyección es $b$.",
+    pts: { ...Object.assign({}, ...datos.map((d) => d.pts)), A, B, P: Pp, O, M, P1: arriba(par), P2: abajo(par), _p1: [Pp[0], y + 40], _p2: [Pp[0], M[1] - 40], _r: [B[0] + 40, y] },
+    dados: suma ? ["A"] : ["A", "B"],
+    datos: datos.map((d) => d.d),
+    base: suma ? [["A", "_r"]] : [["A", "B"]],
+    ops: [
+      ...(suma
+        ? [{ k: "medir", de: "a1", a: "a2" } as Op, ...marcaArco("A", "P"), { k: "medir", de: "b1", a: "b2" } as Op, ...marcaArco("P", "B")]
+        : [{ k: "medir", de: "b1", a: "b2" } as Op, ...marcaArco("A", "P")]),
+      ...mediatriz("A", "B", "P1", "P2", "O", 66),
+      { k: "medir", de: "O", a: "A" },
+      { k: "arco", c: "O", hacia: "M", abs: [2, 178] },
+      perp(["A", "B"], "P", ["_p1", "_p2"]),
+      { k: "marca", p: "M" },
+      { k: "lados", pts: suma ? ["P", "M"] : ["A", "M"] },
+    ],
+  };
+}
+
+function semejanteRadial(): Construccion {
+  const Pp: P = [110, 205];
+  const A: P = [250, 125];
+  const B: P = [400, 180];
+  const Cc: P = [370, 290];
+  const D: P = [250, 300];
+  const E: P = [200, 200];
+  const mid = (q: P): P => medio(Pp, q);
+  const par = cortes(Pp, dist(Pp, A), A, dist(Pp, A));
+  return {
+    titulo: "Figura semejante: método radial",
+    intro: "Se tiene el polígono $F = ABCDE$ y se quiere otro semejante con razón $\\tfrac12$. Se toma un punto $P$ cualquiera y se une con los vértices: la figura semejante tiene sus vértices sobre esas rectas.",
+    pts: { P: Pp, A, B, C: Cc, D, E, m1: arriba(par), m2: abajo(par), Ap: mid(A), Bp: mid(B), Cp: mid(Cc), Dp: mid(D), Ep: mid(E) },
+    dados: ["P", "A", "B", "C", "D", "E"],
+    datos: [],
+    base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"]],
+    ops: [
+      { k: "recta", a: "P", b: "A" },
+      { k: "recta", a: "P", b: "B" },
+      { k: "recta", a: "P", b: "C" },
+      { k: "recta", a: "P", b: "D" },
+      { k: "recta", a: "P", b: "E" },
+      ...mediatriz("P", "A", "m1", "m2", "Ap", 66),
+      { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
+      { k: "paralelas", recta: ["B", "C"], marcas: ["Bp"], cortes: ["Cp"] },
+      { k: "paralelas", recta: ["C", "D"], marcas: ["Cp"], cortes: ["Dp"] },
+      { k: "paralelas", recta: ["D", "E"], marcas: ["Dp"], cortes: ["Ep"] },
+      { k: "lados", pts: ["Ap", "Bp", "Cp", "Dp", "Ep"] },
+    ],
+  };
+}
+
+/** Copia de un cuadrilátero por coordenadas: igual (`esc` = 1) o semejante de razón 2. */
+function coordenadas(esc: 1 | 2): Construccion {
+  const Y = 300;
+  const O: P = [50, Y];
+  const Ot: P = [esc === 1 ? 300 : 285, Y];
+  // vértices (x, altura) en el orden A, B, C, D; los pies sobre el eje se numeran en el orden de x
+  const loc: Record<string, [number, number]> = { A: [15, 50], B: [75, 70], C: [100, 35], D: [45, 34] };
+  const orden = ["A", "D", "B", "C"];
+  const pts: Record<string, P> = { _r1: [O[0] - 10, Y], _r2: [O[0] + 150, Y], _s1: [Ot[0] - 10, Y], _s2: [Ot[0] + esc * 150 + 10, Y] };
+  orden.forEach((v, i) => {
+    const [x, h] = loc[v];
+    pts[v] = [O[0] + x, Y - h];
+    pts[String(i + 1)] = [O[0] + x, Y];
+    pts[`t${i + 1}`] = [Ot[0] + esc * x, Y];
+    pts[`${v}p`] = [Ot[0] + esc * x, Y - esc * h];
+    pts[`_a${i + 1}`] = [O[0] + x, Y + 14];
+    pts[`_u${i + 1}`] = [Ot[0] + esc * x, Y - esc * h - 25];
+    if (esc === 2) {
+      pts[`hy${i + 1}`] = [Ot[0] + esc * x, Y - h];
+      if (i < 3) pts[`hx${i + 1}`] = [Ot[0] + esc * (x + (loc[orden[i + 1]][0] - x) / 2), Y];
+    }
+  });
+  const ops: Op[] = [];
+  orden.forEach((v, i) => {
+    ops.push(perp(["_r1", "_r2"], v, [v, `_a${i + 1}`]), { k: "marca", p: String(i + 1) });
+  });
+  for (let i = 1; i <= 3; i += 1) {
+    ops.push({ k: "medir", de: String(i), a: String(i + 1) });
+    if (esc === 2) ops.push(...marcaArco(`t${i}`, `hx${i}`), { k: "medir", de: String(i), a: String(i + 1) }, ...marcaArco(`hx${i}`, `t${i + 1}`));
+    else ops.push(...marcaArco(`t${i}`, `t${i + 1}`));
+  }
+  orden.forEach((v, i) => ops.push(perp(["_s1", "_s2"], `t${i + 1}`, [`t${i + 1}`, `_u${i + 1}`])));
+  orden.forEach((v, i) => {
+    ops.push({ k: "medir", de: String(i + 1), a: v });
+    if (esc === 2) ops.push(...marcaArco(`t${i + 1}`, `hy${i + 1}`), { k: "medir", de: String(i + 1), a: v }, ...marcaArco(`hy${i + 1}`, `${v}p`));
+    else ops.push(...marcaArco(`t${i + 1}`, `${v}p`));
+  });
+  ops.push({ k: "lados", pts: ["Ap", "Bp", "Cp", "Dp"] });
+  return {
+    titulo: esc === 1 ? "Figura igual por coordenadas" : "Figura semejante por coordenadas",
+    intro:
+      esc === 1
+        ? "Se quiere construir una figura igual al cuadrilátero $ABCD$. Se proyectan sus vértices sobre una recta $r$ (el eje) y se copian sobre otra recta $r'$ las distancias entre las proyecciones y las alturas: son sus **coordenadas**."
+        : "Se quiere construir una figura semejante al cuadrilátero $ABCD$ con razón 2. Se proyectan sus vértices sobre una recta $r$ y se copian sobre otra recta $r'$ las distancias y las alturas **dos veces**, es decir, multiplicadas por la razón.",
+    pts,
+    dados: ["t1", "A", "B", "C", "D"],
+    datos: [],
+    base: [["_r1", "_r2"], ["_s1", "_s2"], ["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"]],
+    ops,
+    ext: 20,
+  };
+}
+
+function igualTriangulacion(): Construccion {
+  const dx = 280;
+  const A: P = [100, 120];
+  const B: P = [210, 85];
+  const C: P = [260, 175];
+  const D: P = [190, 265];
+  const E: P = [90, 225];
+  const sh = (q: P): P => [q[0] + dx, q[1]];
+  return {
+    titulo: "Figura igual por triangulación",
+    intro: "Se quiere copiar el pentágono $ABCDE$. Se descompone en triángulos con las diagonales que parten de un vértice ($B$) y se construyen uno a uno, en el mismo orden, a partir del lado $A'B' = AB$.",
+    pts: { A, B, C, D, E, Ap: sh(A), Bp: sh(B), Cp: sh(C), Dp: sh(D), Ep: sh(E) },
+    dados: ["A", "B", "C", "D", "E", "Ap", "Bp"],
+    datos: [],
+    base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"], ["B", "D"], ["B", "E"], ["Ap", "Bp"]],
+    ops: [
+      { k: "medir", de: "A", a: "E" },
+      { k: "arco", c: "Ap", hacia: "Ep" },
+      { k: "medir", de: "B", a: "E" },
+      { k: "arco", c: "Bp", hacia: "Ep" },
+      { k: "marca", p: "Ep" },
+      { k: "medir", de: "B", a: "D" },
+      { k: "arco", c: "Bp", hacia: "Dp" },
+      { k: "medir", de: "E", a: "D" },
+      { k: "arco", c: "Ep", hacia: "Dp" },
+      { k: "marca", p: "Dp" },
+      { k: "medir", de: "B", a: "C" },
+      { k: "arco", c: "Bp", hacia: "Cp" },
+      { k: "medir", de: "D", a: "C" },
+      { k: "arco", c: "Dp", hacia: "Cp" },
+      { k: "marca", p: "Cp" },
+      { k: "lados", pts: ["Ap", "Bp", "Cp", "Dp", "Ep"] },
+    ],
+  };
+}
+
+function igualRodeo(): Construccion {
+  const dx = 290;
+  const r = 45;
+  const A: P = [60, 100];
+  const B: P = [90, 240];
+  const C: P = [220, 270];
+  const D: P = [240, 130];
+  const sh = (q: P): P => [q[0] + dx, q[1]];
+  const dirA = angDe(B, A);
+  const dirC = angDe(B, C);
+  const p = en(B, r, dirA);
+  const q = en(B, r, dirC);
+  const dirB = angDe(C, B);
+  const dirD = angDe(C, D);
+  const u = en(C, r, dirB);
+  const v = en(C, r, dirD);
+  const dr = dato("r", r, 70);
+  const abB: [number, number] = [dirA, dirC];
+  const abC: [number, number] = [dirB, dirD];
+  const ordenar = ([x, y]: [number, number]): [number, number] => {
+    const lo = Math.min(x, y);
+    const hi = Math.max(x, y);
+    return hi - lo > 180 ? [hi - 360 - 8, lo + 8] : [lo - 8, hi + 8];
+  };
+  return {
+    titulo: "Figura igual por copia de ángulos (rodeo)",
+    intro: "Se quiere copiar el cuadrilátero $ABCD$ a partir de $A'B' = AB$. En cada vértice se copia el ángulo con el compás (se toma su cuerda sobre un arco de radio fijo) y se lleva el lado: así se va «rodeando» la figura.",
+    pts: { ...dr.pts, A, B, C, D, Ap: sh(A), Bp: sh(B), p, q, pp: sh(p), qq: sh(q), Cp: sh(C), u, v, uu: sh(u), vv: sh(v), Dp: sh(D) },
+    dados: ["A", "B", "C", "D", "Ap", "Bp"],
+    datos: [dr.d],
+    base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"], ["Ap", "Bp"]],
+    ops: [
+      { k: "medir", de: "r1", a: "r2" },
+      { k: "arco", c: "B", hacia: "p", abs: ordenar(abB) },
+      { k: "marca", p: "p" },
+      { k: "marca", p: "q" },
+      ...marcaArco("Bp", "pp"),
+      { k: "medir", de: "p", a: "q" },
+      ...marcaArco("pp", "qq"),
+      { k: "recta", a: "Bp", b: "qq" },
+      { k: "medir", de: "B", a: "C" },
+      ...marcaArco("Bp", "Cp"),
+      { k: "medir", de: "r1", a: "r2" },
+      { k: "arco", c: "C", hacia: "u", abs: ordenar(abC) },
+      { k: "marca", p: "u" },
+      { k: "marca", p: "v" },
+      ...marcaArco("Cp", "uu"),
+      { k: "medir", de: "u", a: "v" },
+      ...marcaArco("uu", "vv"),
+      { k: "recta", a: "Cp", b: "vv" },
+      { k: "medir", de: "C", a: "D" },
+      ...marcaArco("Cp", "Dp"),
+      { k: "lados", pts: ["Ap", "Bp", "Cp", "Dp"] },
+    ],
+  };
+}
+
+function igualTraslacion(): Construccion {
+  const dx = 300;
+  const V: Record<string, P> = { A: [100, 60], B: [170, 110], C: [150, 170], D: [110, 240], E: [60, 150] };
+  const pts: Record<string, P> = {};
+  const etiquetas = ["a", "b", "c", "d", "e"];
+  Object.entries(V).forEach(([k, q], i) => {
+    pts[k] = q;
+    pts[`${k}p`] = [q[0] + dx, q[1]];
+    pts[`l${etiquetas[i]}`] = [575, q[1]];
+  });
+  return {
+    titulo: "Figura igual por traslación",
+    intro: "Se quiere copiar el pentágono $ABCDE$. Se trazan por sus vértices rectas paralelas $a, b, c\\dots$ y, desde un punto cualquiera $A'$ de la recta $a$, se van trazando paralelas a los lados hasta cortar a las rectas siguientes: es una simple traslación.",
+    pts,
+    dados: ["A", "B", "C", "D", "E", "Ap", "la", "lb", "lc", "ld", "le"],
+    datos: [],
+    base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"]],
+    ext: 8,
+    ops: [
+      { k: "recta", a: "A", b: "la" },
+      { k: "recta", a: "B", b: "lb" },
+      { k: "recta", a: "C", b: "lc" },
+      { k: "recta", a: "D", b: "ld" },
+      { k: "recta", a: "E", b: "le" },
+      { k: "paralelas", recta: ["A", "B"], marcas: ["Ap"], cortes: ["Bp"] },
+      { k: "paralelas", recta: ["B", "C"], marcas: ["Bp"], cortes: ["Cp"] },
+      { k: "paralelas", recta: ["C", "D"], marcas: ["Cp"], cortes: ["Dp"] },
+      { k: "paralelas", recta: ["D", "E"], marcas: ["Dp"], cortes: ["Ep"] },
+      { k: "lados", pts: ["Ap", "Bp", "Cp", "Dp", "Ep"] },
+    ],
+  };
+}
+
+function equivalenteLadoMenos(): Construccion {
+  const A: P = [250, 90];
+  const B: P = [350, 150];
+  const C: P = [330, 260];
+  const D: P = [200, 280];
+  const E: P = [140, 180];
+  // G: corte de la prolongación de CB con la paralela a EB por A
+  const u: P = [B[0] - E[0], B[1] - E[1]];
+  const w: P = [B[0] - C[0], B[1] - C[1]];
+  const det = u[0] * -w[1] + w[0] * u[1];
+  const s = ((B[0] - A[0]) * -w[1] + w[0] * (B[1] - A[1])) / det;
+  const G: P = [A[0] + u[0] * s, A[1] + u[1] * s];
+  return {
+    titulo: "Polígono equivalente con un lado menos",
+    intro: "Se tiene el pentágono $ABCDE$ y se quiere otro **equivalente** (misma área) con un lado menos. Se toma una diagonal que deje aislado un solo vértice ($A$): los triángulos que tienen esa diagonal por base y la misma altura son equivalentes.",
+    pts: { A, B, C, D, E, G },
+    dados: ["A", "B", "C", "D", "E"],
+    datos: [],
+    base: [["A", "B"], ["B", "C"], ["C", "D"], ["D", "E"], ["E", "A"]],
+    ext: 100,
+    ops: [
+      { k: "recta", a: "E", b: "B" },
+      { k: "recta", a: "C", b: "B" },
+      { k: "paralelas", recta: ["E", "B"], marcas: ["A"], cortes: ["G"] },
+      { k: "lados", pts: ["G", "C", "D", "E"] },
+    ],
+  };
+}
+
+function simetriaPunto(): Construccion {
+  const A: P = [150, 120];
+  const Cc: P = [300, 210];
+  const Ap: P = [2 * Cc[0] - A[0], 2 * Cc[1] - A[1]];
+  return {
+    titulo: "Simetría central de un punto",
+    intro: "Dos puntos $A$ y $A'$ son **simétricos** respecto de un centro $C$ cuando están alineados con él y a la misma distancia: $CA = CA'$.",
+    pts: { A, C: Cc, Ap },
+    dados: ["A", "C"],
+    datos: [],
+    ops: [
+      { k: "recta", a: "A", b: "C" },
+      { k: "medir", de: "C", a: "A" },
+      ...marcaArco("C", "Ap"),
+      { k: "lados", pts: ["A", "Ap"] },
+    ],
+  };
+}
+
+function simetriaSegmento(): Construccion {
+  const Cc: P = [300, 200];
+  const M: P = [160, 120];
+  const N: P = [210, 290];
+  const sim = (q: P): P => [2 * Cc[0] - q[0], 2 * Cc[1] - q[1]];
+  return {
+    titulo: "Simetría central de un segmento",
+    intro: "Se tiene un segmento $r = MN$ y un centro de simetría $C$. Basta hallar los simétricos de sus extremos: el segmento $M'N'$ es **paralelo** a $MN$ y de la misma longitud.",
+    pts: { M, N, C: Cc, Mp: sim(M), Np: sim(N) },
+    dados: ["M", "N", "C"],
+    datos: [],
+    base: [["M", "N"]],
+    ops: [
+      { k: "recta", a: "M", b: "C" },
+      { k: "medir", de: "C", a: "M" },
+      ...marcaArco("C", "Mp"),
+      { k: "recta", a: "N", b: "C" },
+      { k: "medir", de: "C", a: "N" },
+      ...marcaArco("C", "Np"),
+      { k: "lados", pts: ["Mp", "Np"] },
+    ],
+  };
+}
+
+function simetriaFigura(): Construccion {
+  const Cc: P = [300, 200];
+  const V: Record<string, P> = { "1": [190, 95], "2": [120, 150], "3": [145, 265], "4": [235, 300] };
+  const sim = (q: P): P => [2 * Cc[0] - q[0], 2 * Cc[1] - q[1]];
+  const pts: Record<string, P> = { C: Cc };
+  Object.entries(V).forEach(([k, q]) => {
+    pts[k] = q;
+    pts[`p${k}`] = sim(q);
+  });
+  const ops: Op[] = [];
+  ["1", "2", "3", "4"].forEach((k) => ops.push({ k: "recta", a: k, b: "C" }, { k: "medir", de: "C", a: k }, ...marcaArco("C", `p${k}`)));
+  ops.push({ k: "lados", pts: ["p1", "p2", "p3", "p4"] });
+  return {
+    titulo: "Simetría central de una figura",
+    intro: "Para hallar la figura $F'$ simétrica de $F$ respecto del punto $C$ se repite la operación punto a punto: cada vértice y su simétrico están alineados con $C$ y a la misma distancia. Los lados simétricos son paralelos.",
+    pts,
+    dados: ["1", "2", "3", "4", "C"],
+    datos: [],
+    base: [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]],
+    ops,
+  };
+}
+
 export const CONSTRUCCIONES = {
   "cuadrado-lado": cuadradoLado(),
   "cuadrado-diagonal": cuadradoDiagonal(),
@@ -874,13 +1259,32 @@ export const CONSTRUCCIONES = {
   "heptagono-lado": heptagonoLado(),
   "octogono-lado": octogonoLado(),
   "eneagono-lado": eneagonoLado(),
+  "cuarto-proporcional": proporcional(false),
+  "tercero-proporcional": proporcional(true),
+  "medio-proporcional": medioProporcional(false),
+  "medio-proporcional-suma": medioProporcional(true),
+  "semejante-radial": semejanteRadial(),
+  "semejante-coordenadas": coordenadas(2),
+  "igual-triangulacion": igualTriangulacion(),
+  "igual-coordenadas": coordenadas(1),
+  "igual-rodeo": igualRodeo(),
+  "igual-traslacion": igualTraslacion(),
+  "equivalente-lado-menos": equivalenteLadoMenos(),
+  "simetria-punto": simetriaPunto(),
+  "simetria-segmento": simetriaSegmento(),
+  "simetria-figura": simetriaFigura(),
 } satisfies Record<string, Construccion>;
 
 export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 
 /** Nombre con el que se rotula un punto (los puntos auxiliares de la división de `CD` llevan una prima). */
-const ETIQUETAS: Record<string, string> = { Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "" };
-export const etiqueta = (clave: string) => ETIQUETAS[clave] ?? clave;
+const ETIQUETAS: Record<string, string> = {
+  Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "",
+  Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
+  p1: "1'", p2: "2'", p3: "3'", p4: "4'", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
+  la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
+};
+export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;
 export const ID_PRACTICA = (id: ConstruccionId) => `c-${id}-practica` as const;
 /** Identificadores de escena de las construcciones: `c-<id>` (animación) y `c-<id>-practica`. */

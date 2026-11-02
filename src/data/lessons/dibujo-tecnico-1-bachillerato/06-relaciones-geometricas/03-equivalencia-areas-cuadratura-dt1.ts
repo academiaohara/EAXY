@@ -1,5 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
 import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
@@ -41,5 +42,7 @@ export const equivalenciaAreasCuadraturaDt1Lesson: InteractiveLesson = {
       hint: "Lleva la altura sobre la prolongación de la base, traza la semicircunferencia de diámetro AH y levanta la perpendicular por B.",
       explanation: "BE es la altura del triángulo rectángulo inscrito en la semicircunferencia, así que BE² = AB · BH = b · h.",
     }),
+
+    ...construccionPasos("equivalente-lado-menos"),
   ],
 };
