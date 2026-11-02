@@ -85,7 +85,12 @@ export type DatosDesliza = {
   traza: [Pt, Pt];
   /** Si está, el instrumento hace un ángulo (con cartabón o escuadra) en `punto` en vez de una perpendicular. */
   angulo?: { base: number; obj: number; signo?: 1 | -1 };
+  /** Factor de tamaño de los instrumentos (1 = tamaño normal): se dibujan a escala, con el filo en el mismo sitio. */
+  escala?: number;
 };
+
+/** Dibuja `nodo` (instrumentos a tamaño normal) a escala `k` respecto del punto `c`. */
+const aEscala = (c: Pt, k: number, nodo: ReactNode) => (k === 1 ? nodo : <g transform={`translate(${c[0]} ${c[1]}) scale(${k}) translate(${-c[0]} ${-c[1]})`}>{nodo}</g>);
 
 export type Desliza = {
   /** Dirección en que desliza el instrumento. */
@@ -145,7 +150,22 @@ function geoAngulo(v: Pt, base: number, obj: number, signo: 1 | -1): Desliza {
 
 /** Geometría de un instrumento que desliza: perpendicular con escuadra y cartabón, o ángulo con uno de ellos. */
 export function geoDesliza(d: DatosDesliza): Desliza {
-  if (d.angulo && instrumentoAngulo(d.angulo.obj)) return geoAngulo(d.punto, d.angulo.base, d.angulo.obj, d.angulo.signo ?? 1);
+  const k = d.escala ?? 1;
+  const base = geoDeslizaNormal(d);
+  if (k === 1) return base;
+  // Con tamaño k, el instrumento recorre k veces más para llegar al mismo sitio: el vértice parte de `p0 - u·k·ANTES`.
+  const f = base.filo(base.objetivo);
+  const pie = f.p;
+  return {
+    ...base,
+    objetivo: base.objetivo * k,
+    max: base.max * k,
+    nodo: (s, opacidad = 1) => aEscala(pie, k, base.nodo(s / k, opacidad)),
+    filo: (s) => ({ p: [pie[0] + base.u[0] * (s - base.objetivo * k), pie[1] + base.u[1] * (s - base.objetivo * k)], dir: base.filo(0).dir }),
+  };
+}
+
+function geoDeslizaNormal(d: DatosDesliza): Desliza {  if (d.angulo && instrumentoAngulo(d.angulo.obj)) return geoAngulo(d.punto, d.angulo.base, d.angulo.obj, d.angulo.signo ?? 1);
   const g = geoPerp(d.recta, d.punto);
   return {
     u: g.u,

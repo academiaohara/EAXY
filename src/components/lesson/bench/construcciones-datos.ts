@@ -64,6 +64,8 @@ export type Construccion = {
   ops: Op[];
   /** Cuánto se prolongan las rectas de la regla más allá de los puntos tocados. */
   ext?: number;
+  /** Tamaño de la escuadra y el cartabón en esta construcción (1 = normal): se reducen si no caben en la hoja. */
+  escala?: number;
   /** Textos propios de un paso (por índice de operación) en vez de los generados. */
   notas?: Record<number, Nota>;
 };
@@ -997,7 +999,7 @@ function semejanteRadial(): Construccion {
 
 /** Copia de un cuadrilátero por coordenadas: igual (`esc` = 1) o semejante de razón 2. */
 function coordenadas(esc: 1 | 2): Construccion {
-  const Y = 300;
+  const Y = 255;
   const O: P = [50, Y];
   const Ot: P = [esc === 1 ? 300 : 285, Y];
   // vértices (x, altura) en el orden A, B, C, D; los pies sobre el eje se numeran en el orden de x
@@ -1306,6 +1308,18 @@ export const CONSTRUCCIONES = {
   "simetria-axial-segmento": simetriaAxial(["A", "B"], [[120, 90], [250, 120]], "Simetría axial de un segmento", "Para hallar el simétrico del segmento $s = AB$ se halla el simétrico de cada extremo. Las rectas simétricas se cortan en un punto del eje.", true, [["A", "B"]]),
   "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
 } satisfies Record<string, Construccion>;
+
+/**
+ * Tamaño de la escuadra y el cartabón en las construcciones donde, a tamaño normal, se saldrían de la hoja al trazar
+ * (se comprobó dibujando cada pasada de escuadra y cartabón y midiendo cuánto sobresalía). El filo queda en el mismo sitio.
+ */
+const ESCALA_INSTRUMENTOS: Record<string, number> = {
+  "cuadrado-lado": 0.5, "rectangulo-lados": 0.5, "trapecio-isosceles": 0.5, "trapecio-rectangulo": 0.5, "division-n": 0.6,
+  "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.5, "eneagono-lado": 0.5, "tercero-proporcional": 0.8,
+  "semejante-radial": 0.5, "semejante-coordenadas": 0.5, "igual-coordenadas": 0.5, "igual-traslacion": 0.5,
+  "simetria-axial-segmento": 0.7, "simetria-axial-figura": 0.7,
+};
+for (const [id, k] of Object.entries(ESCALA_INSTRUMENTOS)) (CONSTRUCCIONES as Record<string, Construccion>)[id].escala = k;
 
 export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 
