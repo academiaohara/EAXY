@@ -135,6 +135,16 @@ slide("paralela", "Paralela por un punto", [], bench("paralelas-escuadra-cartabo
 
 Para añadir una escena: función pura en `geometry.ts` + test, componente en `scenes.tsx` (envuelto en `BenchShell`), nombre en `BenchSceneId` (`src/lib/lesson/types.ts`), número de pasos en `BENCH_STEPS` y `case` en `SlideBench.tsx`.
 
+
+### Construcciones como datos (tema 5 de Dibujo Técnico I)
+
+Las construcciones de cuadriláteros y polígonos regulares (`c-<id>` y `c-<id>-practica`) no tienen una escena escrita a mano: se describen en `src/components/lesson/bench/construcciones-datos.ts` como una lista de operaciones con instrumentos (`medir`, `arco`, `circulo`, `marca`, `recta`, `perp`, `angulo`, `paralelas`, `lados`). De esa descripción salen la **animación paso a paso** (`ConstruccionAnim`: un paso por operación, con el compás tomando medidas y trazando arcos, la regla, la escuadra con el cartabón y el transportador), la **práctica interactiva** (`ConstruccionPractica`: el alumno repite cada operación) y los **textos** de cada paso (`construcciones-notas.ts`). Así explicación y ejercicio son siempre la misma construcción.
+
+- En la lección: `construccionPasos("cuadrado-lado", …)` (`src/data/lessons/construcciones-helpers.ts`) añade, para cada construcción, la diapositiva animada y el ejercicio práctico.
+- Convenios: ángulos antihorarios con Y hacia arriba; los puntos cuyo nombre empieza por `_` son auxiliares; el radio de un arco es la última medida tomada con `medir`; los puntos que se usan después de hallarlos se declaran con `marca`; `recta … limpia: true` borra los arcos auxiliares anteriores.
+- `src/tests/unit/construcciones-datos.test.ts` comprueba la geometría (radios, perpendiculares, puntos a la vista, lados iguales de los polígonos regulares) y `construcciones.test.tsx` recorre la animación y completa cada práctica siguiendo la descripción.
+- Para añadir una construcción: describirla en `CONSTRUCCIONES`, añadir sus textos si los generados no bastan (`notas`) y usarla en una lección; no hay que registrar nada más.
+
 ## Animaciones (`anim`)
 
 Una animación es una lista de **pasos** (beats). Cada paso es un estado del lienzo; el movimiento lo ponen las transiciones CSS (aparecer, desplazar, dibujar). El alumno puede **pausar, retroceder, avanzar y reiniciar** sin salir de la diapositiva; arranca sola salvo con «reducir movimiento». Cada paso trae un **texto breve** (`captions`) que dice qué mirar.

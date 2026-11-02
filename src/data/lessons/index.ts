@@ -278,7 +278,6 @@ import { conservacionMasaAjusteFq2Lesson } from "@/data/lessons/fisica-2-eso/05-
 import { conservacionMasaCalculosFq3Lesson } from "@/data/lessons/fisica-3-eso/04-la-reaccion-quimica/02-conservacion-masa-calculos-fq3";
 import { construccionAngulosCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-trazados-fundamentales-plano/12-construccion-angulos-compas-dt1";
 import { construccionEnsayoEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/07-construccion-ensayo-estructuras";
-import { construccionPoligonosRegularesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/03-construccion-poligonos-regulares-dt1";
 import { construccionTriangulosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/02-construccion-triangulos-dt1";
 import { consumoEnergeticoHuella4esoLesson } from "@/data/lessons/tecnologia-4-eso/07-tecnologia-sostenible/01-consumo-energetico-huella-4eso";
 import { consumoResponsableEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/02-consumo-responsable-eso";
@@ -327,6 +326,7 @@ import { cuadGeneral4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras
 import { cuadGeneral4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/10-cuad-general-4esob";
 import { cuadParabola4esoLesson } from "@/data/lessons/matematicas-4-eso/10-otras-funciones-elementales/01-cuad-parabola-4eso";
 import { cuadParabola4esobLesson } from "@/data/lessons/matematicas-4-eso-b/05-funciones-elementales/09-cuad-parabola-4esob";
+import { cuadradoRectanguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/02-cuadrado-rectangulo-dt1";
 import { cuadrilateros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/02-cuadrilateros-2eso";
 import { cuadrilaterosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/01-cuadrilateros-dt1";
 import { cuartiles2esoLesson } from "@/data/lessons/matematicas-2-eso/12-estadistica/05-cuartiles-2eso";
@@ -416,9 +416,13 @@ import { distribucionNormalCcss1Lesson } from "@/data/lessons/matematicas-ccss-1
 import { distribucionProporcionMuestralCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/08-estimacion/06-distribucion-proporcion-muestral-ccss2";
 import { divisibilidadLesson } from "@/data/lessons/matematicas-1-eso/03-divisibilidad/01-divisibilidad";
 import { divisibilidad2esoLesson } from "@/data/lessons/matematicas-2-eso/01-divisibilidad-y-numeros-enteros/01-divisibilidad-2eso";
+import { division3468Dt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/06-division-3-4-6-8-dt1";
+import { division510Dt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/07-division-5-10-dt1";
+import { division79Dt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/08-division-7-9-dt1";
 import { divisionAnguloBisectrizDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-trazados-fundamentales-plano/11-division-angulo-bisectriz-dt1";
 import { divisionFracciones2esoLesson } from "@/data/lessons/matematicas-2-eso/03-las-fracciones/04-division-fracciones-2eso";
 import { divisionFracciones3esoLesson } from "@/data/lessons/matematicas-3-eso/01-fracciones-y-decimales/04-division-fracciones-3eso";
+import { divisionNDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/09-division-n-dt1";
 import { divisionNumerosDecimalesLesson } from "@/data/lessons/matematicas-1-eso/05-numeros-decimales/03-division-numeros-decimales";
 import { divisionOrdenOperacionesNaturalesLesson } from "@/data/lessons/matematicas-1-eso/01-numeros-naturales/04-division-orden-operaciones-naturales";
 import { divisionPolinomios4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/04-division-polinomios-4esob";
@@ -737,6 +741,7 @@ import { gruposFuncionalesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimi
 import { gruposFuncionalesOxigenadosFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/08-quimica-organica/03-grupos-funcionales-oxigenados-fb1";
 import { hacesPlanos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/10-haces-planos-2bach";
 import { hardwareSoftwareRecursos2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/01-hardware-software-recursos-2eso";
+import { heptagonoOctogonoEneagonoLadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/11-heptagono-octogono-eneagono-lado-dt1";
 import { herramientasMaquinasSeguridad4esoLesson } from "@/data/lessons/tecnologia-4-eso/08-taller-simulacion-fabricacion/02-herramientas-maquinas-seguridad-4eso";
 import { herramientasSeguridadTallerLesson } from "@/data/lessons/tecnologia-1-eso/03-materiales-uso-tecnico/08-herramientas-seguridad-taller";
 import { hexadecimalBcdLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/03-hexadecimal-bcd";
@@ -1096,6 +1101,7 @@ import { parentesisEnterosLesson } from "@/data/lessons/matematicas-1-eso/04-num
 import { parteEnteraCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/04-funciones/08-parte-entera-ccss1";
 import { particulasAtomoNumerosFq2Lesson } from "@/data/lessons/fisica-2-eso/04-estructura-materia/02-particulas-atomo-numeros-fq2";
 import { pascalPrensaLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/09-automatismos-oleohidraulicos/04-pascal-prensa";
+import { pentagonoHexagonoLadoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/10-pentagono-hexagono-lado-dt1";
 import { percentilesCuartiles1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/10-estadistica/06-percentiles-cuartiles-1bach";
 import { percentilesCuartilesCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/07-estadistica/06-percentiles-cuartiles-ccss1";
 import { periodicosMixtosRacionales4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/03-periodicos-mixtos-racionales-4eso";
@@ -1142,9 +1148,9 @@ import { poliedros2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos
 import { poliedros3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/01-poliedros-3eso";
 import { poliedrosRegularesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/06-cuerpos-diedrico/04-poliedros-regulares-dt2";
 import { poliedrosSemirregulares3esoLesson } from "@/data/lessons/matematicas-3-eso/10-cuerpos-geometricos/02-poliedros-semirregulares-3eso";
-import { poligonosDadoLadoEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/04-poligonos-dado-lado-estrellados-dt1";
+import { poligonosEstrelladosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/12-poligonos-estrellados-dt1";
 import { poligonosRegulares2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/03-poligonos-regulares-2eso";
-import { poligonosRegularesPropiedadesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/02-poligonos-regulares-propiedades-dt1";
+import { poligonosRegularesPropiedadesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/05-poligonos-regulares-propiedades-dt1";
 import { polimerizacionLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/04-polimerizacion";
 import { polimerosBiomoleculasFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/05-polimeros-biomoleculas-fq4";
 import { polimerosPlasticosTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/07-polimeros-plasticos-tecnicos";
@@ -1435,6 +1441,7 @@ import { robotUltrasonidosObstaculos3esoLesson } from "@/data/lessons/tecnologia
 import { roboticaMovilCinematica4esoLesson } from "@/data/lessons/tecnologia-4-eso/06-automatizacion-robotica/07-robotica-movil-cinematica-4eso";
 import { roboticaSimulacionAplicacionesLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/06-sistemas-automaticos-control/10-robotica-simulacion-aplicaciones";
 import { rolleValorMedio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/08-derivadas/08-rolle-valor-medio-2bach";
+import { romboRomboideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/03-rombo-romboide-dt1";
 import { roucheFrobenius2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/03-sistemas-de-ecuaciones/06-rouche-frobenius-2bach";
 import { roucheFrobeniusCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/02-sistemas-de-ecuaciones/09-rouche-frobenius-ccss2";
 import { rozamientoFq2Lesson } from "@/data/lessons/fisica-2-eso/07-las-fuerzas/04-rozamiento-fq2";
@@ -1655,6 +1662,7 @@ import { transistorInterruptor3esoLesson } from "@/data/lessons/tecnologia-3-eso
 import { transmisionDilatacionFq4Lesson } from "@/data/lessons/fisica-4-eso/11-calor-energia-termica/03-transmision-dilatacion-fq4";
 import { transmisionPinonCadena3esoLesson } from "@/data/lessons/tecnologia-3-eso/03-mecanismos-maquinas/01-transmision-pinon-cadena-3eso";
 import { transporteSostenible3esoLesson } from "@/data/lessons/tecnologia-3-eso/08-tecnologia-sostenible/06-transporte-sostenible-3eso";
+import { trapeciosDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/05-formas-poligonales-2-cuadrilateros-poligonos/04-trapecios-dt1";
 import { traslacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/01-traslacion-dt1";
 import { trasladarAngulosCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-trazados-fundamentales-plano/09-trasladar-angulos-compas-dt1";
 import { traspuestaSimetricas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/01-matrices/07-traspuesta-simetricas-2bach";
@@ -2007,7 +2015,6 @@ export const interactiveLessons = {
   "conservacion-masa-calculos-fq3": conservacionMasaCalculosFq3Lesson,
   "construccion-angulos-compas-dt1": construccionAngulosCompasDt1Lesson,
   "construccion-ensayo-estructuras": construccionEnsayoEstructurasLesson,
-  "construccion-poligonos-regulares-dt1": construccionPoligonosRegularesDt1Lesson,
   "construccion-triangulos-dt1": construccionTriangulosDt1Lesson,
   "consumo-energetico-huella-4eso": consumoEnergeticoHuella4esoLesson,
   "consumo-responsable-eso": consumoResponsableEsoLesson,
@@ -2056,6 +2063,7 @@ export const interactiveLessons = {
   "cuad-general-4esob": cuadGeneral4esobLesson,
   "cuad-parabola-4eso": cuadParabola4esoLesson,
   "cuad-parabola-4esob": cuadParabola4esobLesson,
+  "cuadrado-rectangulo-dt1": cuadradoRectanguloDt1Lesson,
   "cuadrilateros-2eso": cuadrilateros2esoLesson,
   "cuadrilateros-dt1": cuadrilaterosDt1Lesson,
   "cuartiles-2eso": cuartiles2esoLesson,
@@ -2145,9 +2153,13 @@ export const interactiveLessons = {
   "distribucion-proporcion-muestral-ccss2": distribucionProporcionMuestralCcss2Lesson,
   "divisibilidad": divisibilidadLesson,
   "divisibilidad-2eso": divisibilidad2esoLesson,
+  "division-3-4-6-8-dt1": division3468Dt1Lesson,
+  "division-5-10-dt1": division510Dt1Lesson,
+  "division-7-9-dt1": division79Dt1Lesson,
   "division-angulo-bisectriz-dt1": divisionAnguloBisectrizDt1Lesson,
   "division-fracciones-2eso": divisionFracciones2esoLesson,
   "division-fracciones-3eso": divisionFracciones3esoLesson,
+  "division-n-dt1": divisionNDt1Lesson,
   "division-numeros-decimales": divisionNumerosDecimalesLesson,
   "division-orden-operaciones-naturales": divisionOrdenOperacionesNaturalesLesson,
   "division-polinomios-4esob": divisionPolinomios4esobLesson,
@@ -2466,6 +2478,7 @@ export const interactiveLessons = {
   "grupos-funcionales-oxigenados-fb1": gruposFuncionalesOxigenadosFb1Lesson,
   "haces-planos-2bach": hacesPlanos2bachLesson,
   "hardware-software-recursos-2eso": hardwareSoftwareRecursos2esoLesson,
+  "heptagono-octogono-eneagono-lado-dt1": heptagonoOctogonoEneagonoLadoDt1Lesson,
   "herramientas-maquinas-seguridad-4eso": herramientasMaquinasSeguridad4esoLesson,
   "herramientas-seguridad-taller": herramientasSeguridadTallerLesson,
   "hexadecimal-bcd": hexadecimalBcdLesson,
@@ -2825,6 +2838,7 @@ export const interactiveLessons = {
   "parte-entera-ccss1": parteEnteraCcss1Lesson,
   "particulas-atomo-numeros-fq2": particulasAtomoNumerosFq2Lesson,
   "pascal-prensa": pascalPrensaLesson,
+  "pentagono-hexagono-lado-dt1": pentagonoHexagonoLadoDt1Lesson,
   "percentiles-cuartiles-1bach": percentilesCuartiles1bachLesson,
   "percentiles-cuartiles-ccss1": percentilesCuartilesCcss1Lesson,
   "periodicos-mixtos-racionales-4eso": periodicosMixtosRacionales4esoLesson,
@@ -2871,7 +2885,7 @@ export const interactiveLessons = {
   "poliedros-3eso": poliedros3esoLesson,
   "poliedros-regulares-dt2": poliedrosRegularesDt2Lesson,
   "poliedros-semirregulares-3eso": poliedrosSemirregulares3esoLesson,
-  "poligonos-dado-lado-estrellados-dt1": poligonosDadoLadoEstrelladosDt1Lesson,
+  "poligonos-estrellados-dt1": poligonosEstrelladosDt1Lesson,
   "poligonos-regulares-2eso": poligonosRegulares2esoLesson,
   "poligonos-regulares-propiedades-dt1": poligonosRegularesPropiedadesDt1Lesson,
   "polimerizacion": polimerizacionLesson,
@@ -3164,6 +3178,7 @@ export const interactiveLessons = {
   "robotica-movil-cinematica-4eso": roboticaMovilCinematica4esoLesson,
   "robotica-simulacion-aplicaciones": roboticaSimulacionAplicacionesLesson,
   "rolle-valor-medio-2bach": rolleValorMedio2bachLesson,
+  "rombo-romboide-dt1": romboRomboideDt1Lesson,
   "rouche-frobenius-2bach": roucheFrobenius2bachLesson,
   "rouche-frobenius-ccss2": roucheFrobeniusCcss2Lesson,
   "rozamiento-fq2": rozamientoFq2Lesson,
@@ -3384,6 +3399,7 @@ export const interactiveLessons = {
   "transmision-dilatacion-fq4": transmisionDilatacionFq4Lesson,
   "transmision-pinon-cadena-3eso": transmisionPinonCadena3esoLesson,
   "transporte-sostenible-3eso": transporteSostenible3esoLesson,
+  "trapecios-dt1": trapeciosDt1Lesson,
   "traslacion-dt1": traslacionDt1Lesson,
   "trasladar-angulos-compas-dt1": trasladarAngulosCompasDt1Lesson,
   "traspuesta-simetricas-2bach": traspuestaSimetricas2bachLesson,

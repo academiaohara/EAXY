@@ -53,11 +53,11 @@ export function AnguloDato({ v, ang, nombre, color = AMBAR, len = 56 }: { v: Pt;
   );
 }
 
-const Nombre = ({ p, n, dx, dy }: { p: Pt; n: string; dx?: number; dy?: number }) => <Punto p={p} nombre={n} dx={dx} dy={dy} />;
-const Marca = ({ p, color = AMBAR }: { p: Pt; color?: string }) => <Dot p={p} color={color} r={4.4} />;
+export const Nombre = ({ p, n, dx, dy }: { p: Pt; n: string; dx?: number; dy?: number }) => <Punto p={p} nombre={n} dx={dx} dy={dy} />;
+export const Marca = ({ p, color = AMBAR }: { p: Pt; color?: string }) => <Dot p={p} color={color} r={4.4} />;
 
 /** Compás con la punta seca en `n` y la mina en `m` (la abertura que ha tomado). */
-function CompasEn({ n, m, opacidad = 1 }: { n: Pt; m: Pt; opacidad?: number }) {
+export function CompasEn({ n, m, opacidad = 1 }: { n: Pt; m: Pt; opacidad?: number }) {
   const c = poseCompas(n, m);
   return (
     <g data-testid="bench-compas" pointerEvents="none" opacity={opacidad}>
@@ -67,7 +67,7 @@ function CompasEn({ n, m, opacidad = 1 }: { n: Pt; m: Pt; opacidad?: number }) {
 }
 
 /** Arco que se traza con el compás: la mina recorre de `a1` a `a2` según `t` (0–1) y deja el trazo. */
-function ArcoCompas({ c, r, a1, a2, t, color = AUX, mostrarCompas = true }: { c: Pt; r: number; a1: number; a2: number; t: number; color?: string; mostrarCompas?: boolean }) {
+export function ArcoCompas({ c, r, a1, a2, t, color = AUX, mostrarCompas = true }: { c: Pt; r: number; a1: number; a2: number; t: number; color?: string; mostrarCompas?: boolean }) {
   return (
     <g>
       <ArcoAnim c={c} r={r} a1={a1} a2={a2} t={t} />
@@ -78,7 +78,7 @@ function ArcoCompas({ c, r, a1, a2, t, color = AUX, mostrarCompas = true }: { c:
 }
 
 /** Transportador (a escala 1,8) sobre el vértice `v` con su base en la dirección `base`; marca el ángulo pedido. */
-function TransportadorMarca({ v, base, objetivo, signo = 1, t = 1 }: { v: Pt; base: number; objetivo: number; signo?: 1 | -1; t?: number }) {
+export function TransportadorMarca({ v, base, objetivo, signo = 1, t = 1 }: { v: Pt; base: number; objetivo: number; signo?: 1 | -1; t?: number }) {
   const m = enCirculo(v, R_TRANSP, base + signo * objetivo);
   return (
     <g data-testid="bench-transportador" pointerEvents="none" opacity={tramo(t, 0, 0.35)}>
@@ -115,7 +115,7 @@ export function EscuadraTrazando({ a, b, p, color = AUX }: { a: Pt; b: Pt; p: nu
   );
 }
 
-function usePasoAnim(ms: number[]) {
+export function usePasoAnim(ms: number[]) {
   const [step, setStep] = usePaso();
   const p = useProgreso(step, ms[step] ?? 1);
   /** Avance (0–1) del acontecimiento del paso `k`: 0 antes, `p` durante, 1 después. */
@@ -123,7 +123,7 @@ function usePasoAnim(ms: number[]) {
   return { step, setStep, p, u };
 }
 
-function Lamina({ scene, block, step, setStep, label, titulo, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo: string; testId: string; children: ReactNode }) {
+export function Lamina({ scene, block, step, setStep, label, titulo, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo: string; testId: string; children: ReactNode }) {
   return (
     <BenchShell scene={scene} notes={block.notes} step={step} setStep={setStep} label={label}>
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label={label} data-testid={testId}>

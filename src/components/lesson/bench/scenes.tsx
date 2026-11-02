@@ -33,7 +33,10 @@ export type BenchBlock = {
   notes?: BenchNote[];
 };
 
+import { PASOS_CONSTRUCCION, type ConstruccionEscena } from "./construcciones-datos";
+
 export type BenchSceneName =
+  | ConstruccionEscena
   | "instrumentos-catalogo"
   | "escuadra-cartabon-angulos"
   | "lapices-dureza"
@@ -169,6 +172,7 @@ export type BenchSceneName =
 
 /** Número de pasos de cada escena: la lección debe aportar un texto por paso. */
 export const BENCH_STEPS: Record<BenchSceneName, number> = {
+  ...PASOS_CONSTRUCCION,
   "instrumentos-catalogo": 6,
   "escuadra-cartabon-angulos": 9,
   "lapices-dureza": 3,

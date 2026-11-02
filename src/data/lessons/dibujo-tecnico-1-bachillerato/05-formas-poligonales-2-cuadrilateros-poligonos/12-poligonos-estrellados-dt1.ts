@@ -2,19 +2,12 @@ import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
-export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
-  slug: "poligonos-dado-lado-estrellados-dt1",
-  title: "4. Polígonos dado el lado y polígonos estrellados",
+export const poligonosEstrelladosDt1Lesson: InteractiveLesson = {
+  slug: "poligonos-estrellados-dt1",
+  title: "12. Polígonos estrellados y aplicaciones",
   subtitle: DT1_SUBTITLES[5],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Cuando se conoce el lado", [], bench("poligono-dado-lado", [
-      { title: "Construir y ampliar", text: "A menudo el dato es el **lado** $l$ y no el radio. Se puede construir **primero el polígono** en una circunferencia auxiliar y después **ampliarlo** (semejanza) hasta que el lado valga $l$.", fact: "Semejanza" },
-      { title: "Calcular el radio", text: "O se calcula el radio: $R = \\dfrac{l}{2\\,\\operatorname{sen}(180^\\circ/n)}$ y se inscribe.", fact: "R = l / (2 sen(180°/n))" },
-      { title: "Casos directos", text: "El **hexágono** y el **cuadrado** son directos: el lado del hexágono es el radio; el del cuadrado se obtiene con las diagonales.", fact: "Hexágono: l = R" },
-      { title: "Método de los ángulos", text: "En general se usa el **método de los ángulos**: se traza el lado y, en cada extremo, el **ángulo interior**, y se cierra con las mediatrices.", fact: "Ángulo interior en cada extremo" },
-    ]), "stack"),
-
     slide("estrellas", "Polígonos estrellados", [], bench("estrella-compas", [
       { title: "Un polígono y su estrella", text: "Se parte de los $n$ vértices de un polígono regular inscrito. Un **polígono estrellado** $\\{n/k\\}$ une cada vértice con el que está $k$ lugares más allá.", fact: "{n/k}: salto de k vértices" },
       { title: "El pentagrama {5/2}", text: "Con $n = 5$ y $k = 2$ se une cada vértice con el siguiente **saltando uno**. Se cierra tras pasar por los cinco vértices: es una estrella de **un solo trazo**.", fact: "Ángulo de cada punta: 36°" },
