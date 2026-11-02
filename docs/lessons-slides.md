@@ -225,6 +225,18 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `triangulo-180` | Los ángulos de un triángulo suman 180°: la paralela por un vértice copia a y b junto a c | — |
 | `poligono-triangulos` | Cuadrilátero, pentágono y hexágono partidos en triángulos: suma `(n − 2)·180°` y ángulo del regular | — |
 | `triangulos-clasificacion` | Triángulos según ángulos (acutángulo, rectángulo, obtusángulo) y lados (equilátero, isósceles, escaleno) | — |
+| `triangulo-lineas-notables` | 4 | Mediatriz, mediana, bisectriz y altura de un triángulo (libro, Fig. 9–12) | — |
+| `triangulo-datos` | 3 | Datos necesarios para construir un polígono (2n − 3) y casos del triángulo, rectángulo e isósceles | — |
+| `triangulo-ala` | 5 | Triángulo dados un lado y los dos ángulos adyacentes (Fig. 14) | — |
+| `triangulo-lal` | 5 | Triángulo dados dos lados y el ángulo comprendido (Fig. 15) | — |
+| `equilatero-lado` | 3 | Equilátero a partir del lado (Fig. 16) | — |
+| `equilatero-altura` | 5 | Equilátero a partir de la altura, por semejanza (Fig. 17) | — |
+| `rectangulo-catetos` | 4 | Rectángulo dados los dos catetos (Fig. 18) | — |
+| `rectangulo-cateto-angulo` | 4 | Rectángulo dados un cateto y un ángulo agudo (Fig. 19) | — |
+| `rectangulo-hipotenusa` | 5 | Rectángulo dados un cateto y la hipotenusa, con la semicircunferencia (Fig. 20) | — |
+| `isosceles-lado-angulo` | 4 | Isósceles dados el lado igual y el ángulo desigual (Fig. 21) | — |
+| `isosceles-desigual` | 3 | Isósceles dados el lado desigual y un ángulo igual (Fig. 22) | — |
+| `isosceles-igual-angulo` | 4 | Isósceles dados el lado igual y un ángulo igual (Fig. 23) | — |
 | `triangulo-mediana` | Las tres medianas, el baricentro y su reparto 2 : 1 | — |
 | `triangulo-altura` | Las tres alturas y el ortocentro, dentro (acutángulo) y fuera (obtusángulo, con prolongación) | — |
 | `cuadrilateros-familia` | Cuadrilátero → romboide, rombo, rectángulo, cuadrado, trapecio y trapezoide | — |

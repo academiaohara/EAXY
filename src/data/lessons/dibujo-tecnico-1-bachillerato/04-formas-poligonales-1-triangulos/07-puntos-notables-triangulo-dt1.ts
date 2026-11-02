@@ -4,7 +4,7 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const puntosNotablesTrianguloDt1Lesson: InteractiveLesson = {
   slug: "puntos-notables-triangulo-dt1",
-  title: "1. Rectas y puntos notables del triángulo",
+  title: "7. Rectas y puntos notables del triángulo",
   subtitle: DT1_SUBTITLES[4],
   stage: { theme: "board" },
   steps: [

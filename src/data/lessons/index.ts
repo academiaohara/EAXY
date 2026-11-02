@@ -54,6 +54,7 @@ import { analiticaVectores4esobLesson } from "@/data/lessons/matematicas-4-eso-b
 import { anguloDobleMitad1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/06-angulo-doble-mitad-1bach";
 import { anguloPlanosPerpendicularidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/02-angulo-planos-perpendicularidad-2bach";
 import { anguloRectasRectaPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/01-angulo-rectas-recta-plano-2bach";
+import { angulosCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/06-angulos-circunferencia-dt1";
 import { angulosCosenos2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/05-angulos-cosenos-2bach";
 import { angulosRelacionados1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/04-angulos-relacionados-1bach";
 import { angulosTiposRelacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-trazados-fundamentales-plano/08-angulos-tipos-relaciones-dt1";
@@ -479,6 +480,7 @@ import { eficienciaEnergeticaLesson } from "@/data/lessons/tecnologia-ingenieria
 import { eficienciaEnergeticaCogeneracionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/05-impacto-sostenibilidad-ingenieria/02-eficiencia-energetica-cogeneracion-ti2";
 import { eficienciaEnergeticaEtiqueta2esoLesson } from "@/data/lessons/tecnologia-2-eso/08-tecnologia-sostenible/02-eficiencia-energetica-etiqueta-2eso";
 import { ejeRadicalCentroRadicalDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/03-potencia-eje-radical-tangencias/02-eje-radical-centro-radical-dt2";
+import { ejerciciosEscalasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/06-ejercicios-escalas-dt1";
 import { elCarbonoYSusEnlacesFq4Lesson } from "@/data/lessons/fisica-4-eso/06-quimica-del-carbono/01-el-carbono-y-sus-enlaces-fq4";
 import { elSonidoFq2Lesson } from "@/data/lessons/fisica-2-eso/09-la-luz-y-el-sonido/04-el-sonido-fq2";
 import { eleccionMaterialMatrizDecision2esoLesson } from "@/data/lessons/tecnologia-2-eso/03-materiales-fabricacion/05-eleccion-material-matriz-decision-2eso";
@@ -537,7 +539,6 @@ import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/0
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
 import { escalaGraficaContraescalaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/03-escala-grafica-contraescala-dt1";
-import { ejerciciosEscalasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/06-ejercicios-escalas-dt1";
 import { escalaTransversalesEscalimetroDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/05-escala-transversales-escalimetro-dt1";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
 import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/01-escalas-numericas-graficas-dt1";
@@ -1328,7 +1329,7 @@ import { puertasNorNandXorLesson } from "@/data/lessons/tecnologia-industrial-2-
 import { puertasOrAndNotLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/05-puertas-or-and-not";
 import { puntoDiedricoCuadrantesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistema-diedrico/01-punto-diedrico-cuadrantes-dt1";
 import { puntoPlanoAxonometriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/14-sistema-axonometrico/04-punto-plano-axonometria-dt1";
-import { puntosNotablesTrianguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/01-puntos-notables-triangulo-dt1";
+import { puntosNotablesTrianguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/07-puntos-notables-triangulo-dt1";
 import { puntosVectoresEspacio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/04-vectores-en-el-espacio/01-puntos-vectores-espacio-2bach";
 import { pwmMotoresServos3esoLesson } from "@/data/lessons/tecnologia-3-eso/06-programacion-robotica/04-pwm-motores-servos-3eso";
 import { pythonVariablesTipos4esoLesson } from "@/data/lessons/tecnologia-4-eso/05-pensamiento-computacional/02-python-variables-tipos-4eso";
@@ -1665,8 +1666,12 @@ import { trenesEngranajesCajaCambios3esoLesson } from "@/data/lessons/tecnologia
 import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
 import { triangulacionEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/05-triangulacion-estructuras";
 import { triangulacionPerfilesRefuerzos2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/02-triangulacion-perfiles-refuerzos-2eso";
+import { trianguloEquilateroDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/03-triangulo-equilatero-dt1";
+import { trianguloIsoscelesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/05-triangulo-isosceles-dt1";
+import { trianguloRectanguloDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/04-triangulo-rectangulo-dt1";
 import { trianguloUniversalEscalasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/04-triangulo-universal-escalas-dt1";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
+import { triangulosClasesLineasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/04-formas-poligonales-1-triangulos/01-triangulos-clases-lineas-dt1";
 import { trigAngulosNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/05-trig-angulos-notables-4esob";
 import { trigCalculadora4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/06-trig-calculadora-4esob";
 import { trigConocidaUnaRazon4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/04-trig-conocida-una-razon-4esob";
@@ -1778,6 +1783,7 @@ export const interactiveLessons = {
   "angulo-doble-mitad-1bach": anguloDobleMitad1bachLesson,
   "angulo-planos-perpendicularidad-2bach": anguloPlanosPerpendicularidad2bachLesson,
   "angulo-rectas-recta-plano-2bach": anguloRectasRectaPlano2bachLesson,
+  "angulos-circunferencia-dt1": angulosCircunferenciaDt1Lesson,
   "angulos-cosenos-2bach": angulosCosenos2bachLesson,
   "angulos-relacionados-1bach": angulosRelacionados1bachLesson,
   "angulos-tipos-relaciones-dt1": angulosTiposRelacionesDt1Lesson,
@@ -2203,6 +2209,7 @@ export const interactiveLessons = {
   "eficiencia-energetica-cogeneracion-ti2": eficienciaEnergeticaCogeneracionTi2Lesson,
   "eficiencia-energetica-etiqueta-2eso": eficienciaEnergeticaEtiqueta2esoLesson,
   "eje-radical-centro-radical-dt2": ejeRadicalCentroRadicalDt2Lesson,
+  "ejercicios-escalas-dt1": ejerciciosEscalasDt1Lesson,
   "el-carbono-y-sus-enlaces-fq4": elCarbonoYSusEnlacesFq4Lesson,
   "el-sonido-fq2": elSonidoFq2Lesson,
   "eleccion-material-matriz-decision-2eso": eleccionMaterialMatrizDecision2esoLesson,
@@ -2260,7 +2267,6 @@ export const interactiveLessons = {
   "error-incertidumbre-medida-fq4": errorIncertidumbreMedidaFq4Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
-  "ejercicios-escalas-dt1": ejerciciosEscalasDt1Lesson,
   "escala-grafica-contraescala-dt1": escalaGraficaContraescalaDt1Lesson,
   "escala-transversales-escalimetro-dt1": escalaTransversalesEscalimetroDt1Lesson,
   "escalas-dibujo": escalasDibujoLesson,
@@ -3389,8 +3395,12 @@ export const interactiveLessons = {
   "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
   "triangulacion-estructuras": triangulacionEstructurasLesson,
   "triangulacion-perfiles-refuerzos-2eso": triangulacionPerfilesRefuerzos2esoLesson,
+  "triangulo-equilatero-dt1": trianguloEquilateroDt1Lesson,
+  "triangulo-isosceles-dt1": trianguloIsoscelesDt1Lesson,
+  "triangulo-rectangulo-dt1": trianguloRectanguloDt1Lesson,
   "triangulo-universal-escalas-dt1": trianguloUniversalEscalasDt1Lesson,
   "triangulos-2eso": triangulos2esoLesson,
+  "triangulos-clases-lineas-dt1": triangulosClasesLineasDt1Lesson,
   "trig-angulos-notables-4esob": trigAngulosNotables4esobLesson,
   "trig-calculadora-4esob": trigCalculadora4esobLesson,
   "trig-conocida-una-razon-4esob": trigConocidaUnaRazon4esobLesson,
