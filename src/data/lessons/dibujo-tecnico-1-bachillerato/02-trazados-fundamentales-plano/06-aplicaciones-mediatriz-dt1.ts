@@ -8,13 +8,11 @@ export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "La mediatriz resuelve muchos problemas", [
-      { kind: "steps", items: [
-        "La **mediatriz** de un segmento $AB$ es la recta **perpendicular a él en su punto medio**. Es un **lugar geométrico**: todos sus puntos equidistan de $A$ y de $B$.",
-        "Con centros en $A$ y $B$ y un radio **mayor que la mitad de $AB$** se trazan los arcos $1$ y $2$, que se cortan en $P$ y $Q$. La recta $PQ$ es la mediatriz.",
-        "Aplicaciones: **perpendiculares** a una recta, **división de arcos y segmentos** en partes iguales y **arco por tres puntos**.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "La mediatriz resuelve muchos problemas", [], bench("mediatriz-aplicaciones", [
+      { title: "La mediatriz", text: "La **mediatriz** de un segmento $AB$ es la recta **perpendicular a él en su punto medio**. Es un **lugar geométrico**: todos sus puntos equidistan de $A$ y de $B$.", fact: "Equidista de A y de B" },
+      { title: "Cómo se traza", text: "Con centros en $A$ y $B$ y un radio **mayor que la mitad de $AB$** se trazan los arcos $1$ y $2$, que se cortan en $P$ y $Q$. La recta $PQ$ es la mediatriz.", fact: "Radio > AB/2" },
+      { title: "Aplicaciones", text: "Aplicaciones: **perpendiculares** a una recta, **división de arcos y segmentos** en partes iguales y **arco por tres puntos**.", fact: "Perpendiculares, divisiones, arco por tres puntos" },
+    ]), "stack"),
 
     slide("perp-exterior", "Perpendicular desde un punto exterior", [], benchParte("perpendicular-compas", 0, [
       { title: "Arco con centro en P", text: "**Perpendicular a una recta $t$ por un punto exterior $P$.** Con centro en $P$ y un radio arbitrario $r$ se traza un arco que **corta a la recta $t$** en los puntos $A$ y $B$.", fact: "PA = PB = r" },

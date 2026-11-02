@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, calc, nums, pick, slide, tool } from "@/data/lessons/tec1-helpers";
+import { bench, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
 
 export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
   slug: "escalas-numericas-graficas-dt1",
@@ -20,9 +20,9 @@ export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
       { title: "Cómo se lee", text: "El dibujo cabe **20 veces** en la realidad: la escala es $1/20$ y se lee **«escala 1 es a 20»**, que se escribe $E = 1:20$.", fact: "1:20 = «1 es a 20»" },
     ]), "stack"),
 
-    slide("explora", "Elige la escala", [
-      { kind: "text", text: "Indica el tamaño real del objeto y el espacio de la hoja: la herramienta elige la mayor escala normalizada que cabe y dibuja la escala gráfica." },
-    ], tool("dt1-escala-explorador"), "visual-top"),
+    slide("explora", "Elige la escala", [], bench("escala-explorador", [
+      { title: "La mayor escala normalizada que cabe", text: "Indica el **tamaño real** del objeto y el **espacio** de la hoja: se elige la **mayor escala normalizada** con la que el objeto cabe. La **cota** sigue indicando la medida real, sea cual sea la escala.", fact: "Escala = dibujo / real" },
+    ]), "stack"),
 
     calc("calc-razon", "Calcula la escala", "Una medida de 1 400 mm se representa en el dibujo por 70 mm. ¿Cuál es N en la escala 1:N?", nums(20), "E = 70/1 400 = 1/20, es decir, 1:20.", "Divide la medida real entre la del dibujo."),
     calc("calc-1-50", "Reducir", "Una pared de 2 m (2000 mm) se dibuja a escala 1:50. ¿Cuántos mm mide en el dibujo?", nums(40), "2000/50 = 40 mm.", "Divide entre 50."),

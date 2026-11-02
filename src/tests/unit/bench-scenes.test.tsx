@@ -2091,3 +2091,18 @@ describe("construcciones con compás animadas (suma, diferencia, bisectriz, divi
     }
   });
 });
+
+describe("escala-explorador: la mayor escala normalizada que cabe", () => {
+  afterEach(cleanup);
+  it("cambia la escala al mover los deslizadores", () => {
+    montar("escala-explorador");
+    expect(screen.getByTestId("escala-explorador-escala").textContent).toBe("1:5");
+    expect(screen.getByTestId("escala-explorador-dibujo").textContent).toBe("250 mm");
+    fireEvent.change(screen.getByTestId("escala-explorador-real"), { target: { value: "1000" } });
+    fireEvent.change(screen.getByTestId("escala-explorador-espacio"), { target: { value: "600" } });
+    expect(screen.getByTestId("escala-explorador-escala").textContent).toBe("1:2");
+    fireEvent.change(screen.getByTestId("escala-explorador-real"), { target: { value: "100" } });
+    fireEvent.change(screen.getByTestId("escala-explorador-espacio"), { target: { value: "500" } });
+    expect(screen.getByTestId("escala-explorador-escala").textContent).toBe("5:1");
+  });
+});

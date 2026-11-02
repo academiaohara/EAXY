@@ -117,6 +117,26 @@ export type BenchSceneName =
   | "escala-detalles"
   | "escala-fotocopia"
   | "escalimetro"
+  | "escala-explorador"
+  | "dt-como-estudiar"
+  | "lugares-interseccion"
+  | "mediatriz-aplicaciones"
+  | "rectas-paralelas"
+  | "triangulos-clasificacion"
+  | "cuadrilateros-familias"
+  | "cuadrilateros-propiedades"
+  | "poligonos-lado-radio"
+  | "construcciones-exactas"
+  | "poligono-dado-lado"
+  | "poligonos-usos"
+  | "tangente-propiedades"
+  | "tangentes-sencillas"
+  | "tangentes-comunes"
+  | "enlace-lugares"
+  | "enlace-casos"
+  | "curvas-ovalo-ovoide"
+  | "ovoide-descripcion"
+  | "espirales-descripcion"
   | "perpendicular-exterior-practica"
   | "perpendicular-extremo-practica"
   | "perpendicular-punto-practica"
@@ -207,6 +227,26 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "escala-detalles": 3,
   "escala-fotocopia": 2,
   "escalimetro": 2,
+  "escala-explorador": 1,
+  "dt-como-estudiar": 4,
+  "lugares-interseccion": 2,
+  "mediatriz-aplicaciones": 3,
+  "rectas-paralelas": 2,
+  "triangulos-clasificacion": 4,
+  "cuadrilateros-familias": 4,
+  "cuadrilateros-propiedades": 5,
+  "poligonos-lado-radio": 5,
+  "construcciones-exactas": 5,
+  "poligono-dado-lado": 4,
+  "poligonos-usos": 4,
+  "tangente-propiedades": 4,
+  "tangentes-sencillas": 3,
+  "tangentes-comunes": 4,
+  "enlace-lugares": 4,
+  "enlace-casos": 4,
+  "curvas-ovalo-ovoide": 5,
+  "ovoide-descripcion": 3,
+  "espirales-descripcion": 4,
   "perpendicular-exterior-practica": 11,
   "perpendicular-extremo-practica": 16,
   "perpendicular-punto-practica": 11,

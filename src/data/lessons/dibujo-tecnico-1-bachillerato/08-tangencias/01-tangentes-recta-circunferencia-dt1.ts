@@ -8,14 +8,12 @@ export const tangentesRectaCircunferenciaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Tocar sin cortar", [
-      { kind: "steps", items: [
-        "Una recta es **tangente** a una circunferencia si tiene **un solo punto en común**, el **punto de tangencia** T.",
-        "La tangente es **perpendicular al radio** en T: $OT \\perp t$.",
-        "Desde un punto **exterior** P se pueden trazar **dos tangentes**, y **PT₁ = PT₂**. Desde un punto de la circunferencia, **una**; desde un punto interior, **ninguna**.",
-        "La longitud de la tangente es $PT = \\sqrt{OP^2 - R^2}$ (Pitágoras).",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Tocar sin cortar", [], bench("tangente-propiedades", [
+      { title: "Un solo punto en común", text: "Una recta es **tangente** a una circunferencia si tiene **un solo punto en común**, el **punto de tangencia** T.", fact: "Punto de tangencia T" },
+      { title: "Perpendicular al radio", text: "La tangente es **perpendicular al radio** en T: $OT \\perp t$.", fact: "OT ⟂ t" },
+      { title: "Desde un punto exterior", text: "Desde un punto **exterior** P se pueden trazar **dos tangentes**, y **PT₁ = PT₂**. Desde un punto de la circunferencia, **una**; desde un punto interior, **ninguna**.", fact: "PT₁ = PT₂" },
+      { title: "Longitud de la tangente", text: "La longitud de la tangente es $PT = \\sqrt{OP^2 - R^2}$ (Pitágoras).", fact: "PT = √(OP² − R²)" },
+    ]), "stack"),
 
     slide("traza", "Tangentes desde un punto exterior", [], bench("tangentes-compas", [
       { title: "Circunferencia y punto", text: "Tienes una circunferencia de centro $O$ y radio $R$, y un punto $P$ **exterior**. Se buscan las rectas por $P$ que la tocan en un solo punto.", fact: "Dos tangentes desde P" },
@@ -25,13 +23,11 @@ export const tangentesRectaCircunferenciaDt1Lesson: InteractiveLesson = {
       { title: "Por qué funciona", text: "$T$ está en una circunferencia de diámetro $OP$, así que el ángulo $OTP$ es **recto**: $PT$ es perpendicular al radio $OT$, que es justo la condición de tangente.", fact: "Ángulo inscrito en semicircunferencia = 90°" },
     ]), "stack"),
 
-    slide("otras", "Otras tangentes sencillas", [
-      { kind: "steps", items: [
-        "**Tangente en un punto T de la circunferencia**: perpendicular al radio OT por T.",
-        "**Tangente paralela a una recta dada**: se traza el diámetro perpendicular a esa dirección; las tangentes por sus extremos son las pedidas (son dos).",
-        "**Tangente que forma un ángulo dado con una recta**: se traza el radio con la dirección perpendicular y se levanta la tangente en su extremo.",
-      ] },
-    ], undefined, "stack"),
+    slide("otras", "Otras tangentes sencillas", [], bench("tangentes-sencillas", [
+      { title: "Tangente en un punto", text: "**Tangente en un punto T de la circunferencia**: perpendicular al radio OT por T.", fact: "Perpendicular al radio" },
+      { title: "Paralela a una recta", text: "**Tangente paralela a una recta dada**: se traza el diámetro perpendicular a esa dirección; las tangentes por sus extremos son las pedidas (son dos).", fact: "Diámetro perpendicular" },
+      { title: "Con un ángulo dado", text: "**Tangente que forma un ángulo dado con una recta**: se traza el radio con la dirección perpendicular y se levanta la tangente en su extremo.", fact: "Radio y tangente" },
+    ]), "stack"),
 
     benchTask("tangentes-construye", "Traza las tangentes desde P", "tangentes-practica", [
       { title: "Clava la punta en O", text: "Primero el punto medio de $OP$: toca $O$ para clavar la punta del compás." },

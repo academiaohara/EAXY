@@ -8,15 +8,12 @@ export const enlacesDosRectasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Redondear una esquina", [
-      { kind: "steps", items: [
-        "Un **enlace** es un arco de circunferencia que **une dos líneas** (rectas o curvas) sin cambio brusco de dirección: **tangente** a ambas.",
-        "Todos los problemas de tangencias se resuelven buscando el **centro** del arco como **intersección de lugares geométricos**.",
-        "Centro a distancia $r$ de una recta ⇒ está en **dos paralelas** a ella.",
-        "Centro a distancia $R \\pm r$ de otro centro ⇒ está en una **circunferencia concéntrica** de radio $R \\pm r$.",
-        "Centro equidistante de **dos rectas** ⇒ está en su **bisectriz**.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Redondear una esquina", [], bench("enlace-lugares", [
+      { title: "Redondear una esquina", text: "Un **enlace** es un arco de circunferencia que **une dos líneas** (rectas o curvas) sin cambio brusco de dirección: **tangente** a ambas. Todos los problemas de tangencias se resuelven buscando el **centro** del arco como **intersección de lugares geométricos**.", fact: "Centro = ∩ de lugares geométricos" },
+      { title: "Paralelas a una recta", text: "Centro a distancia $r$ de una recta ⇒ está en **dos paralelas** a ella.", fact: "A distancia r" },
+      { title: "Circunferencia concéntrica", text: "Centro a distancia $R \\pm r$ de otro centro ⇒ está en una **circunferencia concéntrica** de radio $R \\pm r$.", fact: "Radio R ± r" },
+      { title: "Bisectriz de dos rectas", text: "Centro equidistante de **dos rectas** ⇒ está en su **bisectriz**.", fact: "Equidistante" },
+    ]), "stack"),
 
     slide("enlace", "Enlace entre dos rectas", [], bench("enlace-compas", [
       { title: "Dos rectas y un radio", text: "Dos rectas se cortan en $V$ formando $60^\\circ$ y se quiere **redondear la esquina** con un arco de radio $r$ tangente a las dos.", fact: "Enlace de radio r" },
@@ -26,14 +23,12 @@ export const enlacesDosRectasDt1Lesson: InteractiveLesson = {
       { title: "El resultado", text: "Los puntos de tangencia están a una distancia $t = \\dfrac{r}{\\tan(\\alpha/2)}$ del vértice. En una esquina de $90^\\circ$, $t = r$.", fact: "t = r / tan(α/2)" },
     ]), "stack"),
 
-    slide("casos", "Casos típicos", [
-      { kind: "steps", items: [
-        "**Circunferencia de radio r tangente a dos rectas**: centro en la intersección de dos paralelas (a distancia r) o de la bisectriz.",
-        "**Circunferencia de radio r tangente a una recta y a una circunferencia**: la paralela a la recta y la concéntrica de radio $R \\pm r$ se cortan en el centro.",
-        "**Circunferencia tangente a una recta por un punto de ella**: el centro está en la **perpendicular** por ese punto.",
-        "**Enlace de dos circunferencias con un arco de radio r**: el centro está en la intersección de las dos concéntricas de radios $R_1 \\pm r$ y $R_2 \\pm r$.",
-      ] },
-    ], undefined, "stack"),
+    slide("casos", "Casos típicos", [], bench("enlace-casos", [
+      { title: "Tangente a dos rectas", text: "**Circunferencia de radio r tangente a dos rectas**: centro en la intersección de dos paralelas (a distancia r) o de la bisectriz.", fact: "Paralelas o bisectriz" },
+      { title: "Tangente a recta y circunferencia", text: "**Circunferencia de radio r tangente a una recta y a una circunferencia**: la paralela a la recta y la concéntrica de radio $R \\pm r$ se cortan en el centro.", fact: "Paralela y concéntrica" },
+      { title: "Tangente a una recta por un punto", text: "**Circunferencia tangente a una recta por un punto de ella**: el centro está en la **perpendicular** por ese punto.", fact: "Perpendicular por el punto" },
+      { title: "Enlace de dos circunferencias", text: "**Enlace de dos circunferencias con un arco de radio r**: el centro está en la intersección de las dos concéntricas de radios $R_1 \\pm r$ y $R_2 \\pm r$.", fact: "Concéntricas R₁ ± r y R₂ ± r" },
+    ]), "stack"),
 
     benchTask("enlace-construye", "Redondea la esquina", "enlace-practica", [
       { title: "Toma el radio r", text: "Toca los dos extremos del segmento $r$: el compás queda con el radio del enlace.", fact: "Abertura = r" },

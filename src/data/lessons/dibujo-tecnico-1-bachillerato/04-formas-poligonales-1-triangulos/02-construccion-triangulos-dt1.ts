@@ -8,15 +8,12 @@ export const construccionTriangulosDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[4],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Triángulos y datos para construirlos", [
-      { kind: "steps", items: [
-        "Por sus **lados**: **equilátero** (3 iguales), **isósceles** (2 iguales) y **escaleno** (ninguno igual). Por sus **ángulos**: **acutángulo**, **rectángulo** (uno recto) y **obtusángulo** (uno obtuso).",
-        "Los ángulos interiores suman **180°**, el lado mayor se opone al ángulo mayor y cada lado es **menor que la suma** de los otros dos (desigualdad triangular).",
-        "**Tres lados** (LLL): se traza uno y se cortan arcos con los radios de los otros dos. **Dos lados y el ángulo comprendido** (LAL): se traza el ángulo y se llevan los lados sobre sus brazos.",
-        "**Un lado y dos ángulos** (ALA): se traza el lado y desde sus extremos los dos ángulos (si falta uno, se calcula con 180°). Con **tres ángulos** no basta: hay infinitos triángulos **semejantes**.",
-        "**Dos lados y el ángulo opuesto al mayor** (LLA) tiene **una** solución; si es opuesto al menor puede haber **dos, una o ninguna**.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Triángulos y datos para construirlos", [], bench("triangulos-clasificacion", [
+      { title: "Según sus lados", text: "Por sus **lados**: **equilátero** (3 iguales), **isósceles** (2 iguales) y **escaleno** (ninguno igual).", fact: "Equilátero, isósceles, escaleno" },
+      { title: "Según sus ángulos", text: "Por sus **ángulos**: **acutángulo**, **rectángulo** (uno recto) y **obtusángulo** (uno obtuso).", fact: "Acutángulo, rectángulo, obtusángulo" },
+      { title: "Propiedades", text: "Los ángulos interiores suman **180°**, el lado mayor se opone al ángulo mayor y cada lado es **menor que la suma** de los otros dos (desigualdad triangular).", fact: "α + β + γ = 180°" },
+      { title: "Datos para construirlos", text: "**Tres lados** (LLL): se traza uno y se cortan arcos con los radios de los otros dos. **Dos lados y el ángulo comprendido** (LAL): se traza el ángulo y se llevan los lados sobre sus brazos. **Un lado y dos ángulos** (ALA): se traza el lado y desde sus extremos los dos ángulos (si falta uno, se calcula con 180°). Con **tres ángulos** no basta: hay infinitos triángulos **semejantes**. **Dos lados y el ángulo opuesto al mayor** (LLA) tiene **una** solución; si es opuesto al menor puede haber **dos, una o ninguna**.", fact: "LLL, LAL, ALA" },
+    ]), "stack"),
 
     slide("lll", "Construcción con los tres lados", [], bench("triangulo-lll-compas", [
       { title: "Los tres lados", text: "Tienes tres segmentos: $a = 13$ cm, $b = 15$ cm y $c = 20$ cm. Existe el triángulo porque **cada lado es menor que la suma de los otros dos**.", fact: "20 < 13 + 15" },

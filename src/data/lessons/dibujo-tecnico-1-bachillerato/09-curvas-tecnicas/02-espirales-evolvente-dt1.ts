@@ -8,14 +8,12 @@ export const espiralesEvolventeDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[9],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Curvas abiertas de curvatura creciente", [
-      { kind: "steps", items: [
-        "Una **espiral** es una curva abierta que se aleja de un punto con radio creciente. Las **espirales técnicas** se trazan con **arcos de circunferencia** tangentes.",
-        "**Espiral de tres centros**: igual que la de dos, centrando en los tres vértices de un **triángulo equilátero**; los arcos son de 120° y los radios crecen $d, 2d, 3d, \\dots$",
-        "La **voluta** es una espiral decorativa usada en los capiteles jónicos.",
-        "**Aplicaciones**: levas, muelles planos, volutas de bombas centrífugas y caracoles de turbinas.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Curvas abiertas de curvatura creciente", [], bench("espirales-descripcion", [
+      { title: "Una espiral técnica", text: "Una **espiral** es una curva abierta que se aleja de un punto con radio creciente. Las **espirales técnicas** se trazan con **arcos de circunferencia** tangentes.", fact: "Radio creciente" },
+      { title: "Espiral de tres centros", text: "**Espiral de tres centros**: igual que la de dos, centrando en los tres vértices de un **triángulo equilátero**; los arcos son de 120° y los radios crecen $d, 2d, 3d, \\dots$", fact: "Arcos de 120°: d, 2d, 3d…" },
+      { title: "La voluta", text: "La **voluta** es una espiral decorativa usada en los capiteles jónicos.", fact: "Capiteles jónicos" },
+      { title: "Aplicaciones", text: "**Aplicaciones**: levas, muelles planos, volutas de bombas centrífugas y caracoles de turbinas.", fact: "Levas, muelles, bombas" },
+    ]), "stack"),
 
     slide("espiral", "Espiral de dos centros", [], bench("espiral-compas", [
       { title: "Dos centros", text: "Se parte de dos puntos $A$ y $B$ a distancia $d$. Los arcos son **semicircunferencias** que se apoyan alternativamente en $A$ y en $B$, con radios $d, 2d, 3d, \\dots$", fact: "d = AB" },

@@ -8,14 +8,12 @@ export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[5],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Cuando se conoce el lado", [
-      { kind: "steps", items: [
-        "A menudo el dato es el **lado** $l$ y no el radio. Se puede construir **primero el polígono** en una circunferencia auxiliar y después **ampliarlo** (semejanza) hasta que el lado valga $l$.",
-        "O se calcula el radio: $R = \\dfrac{l}{2\\,\\operatorname{sen}(180^\\circ/n)}$ y se inscribe.",
-        "El **hexágono** y el **cuadrado** son directos: el lado del hexágono es el radio; el del cuadrado se obtiene con las diagonales.",
-        "En general se usa el **método de los ángulos**: se traza el lado y, en cada extremo, el **ángulo interior**, y se cierra con las mediatrices.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Cuando se conoce el lado", [], bench("poligono-dado-lado", [
+      { title: "Construir y ampliar", text: "A menudo el dato es el **lado** $l$ y no el radio. Se puede construir **primero el polígono** en una circunferencia auxiliar y después **ampliarlo** (semejanza) hasta que el lado valga $l$.", fact: "Semejanza" },
+      { title: "Calcular el radio", text: "O se calcula el radio: $R = \\dfrac{l}{2\\,\\operatorname{sen}(180^\\circ/n)}$ y se inscribe.", fact: "R = l / (2 sen(180°/n))" },
+      { title: "Casos directos", text: "El **hexágono** y el **cuadrado** son directos: el lado del hexágono es el radio; el del cuadrado se obtiene con las diagonales.", fact: "Hexágono: l = R" },
+      { title: "Método de los ángulos", text: "En general se usa el **método de los ángulos**: se traza el lado y, en cada extremo, el **ángulo interior**, y se cierra con las mediatrices.", fact: "Ángulo interior en cada extremo" },
+    ]), "stack"),
 
     slide("estrellas", "Polígonos estrellados", [], bench("estrella-compas", [
       { title: "Un polígono y su estrella", text: "Se parte de los $n$ vértices de un polígono regular inscrito. Un **polígono estrellado** $\\{n/k\\}$ une cada vértice con el que está $k$ lugares más allá.", fact: "{n/k}: salto de k vértices" },
@@ -24,14 +22,12 @@ export const poligonosDadoLadoEstrelladosDt1Lesson: InteractiveLesson = {
       { title: "¿Un trazo o varios?", text: "Es de un solo trazo si $n$ y $k$ **no tienen divisores comunes**. El ángulo de cada punta es $\\dfrac{180^\\circ (n - 2k)}{n}$.", fact: "n y k primos entre sí" },
     ]), "stack"),
 
-    slide("usos", "Aplicaciones", [
-      { kind: "steps", items: [
-        "**Tuercas y tornillos** (hexágonos), **señales** (octógono de STOP), **baldosas** y **teselados** (triángulo, cuadrado y hexágono rellenan el plano).",
-        "**Arquitectura**: rosetones, cúpulas y planos de torres basados en polígonos regulares.",
-        "**Pentagrama** y otras estrellas: símbolos, escudos y logotipos.",
-        "En CAD, un polígono regular se define con el **número de lados** y el **radio** o el **lado**.",
-      ] },
-    ], undefined, "stack"),
+    slide("usos", "Aplicaciones", [], bench("poligonos-usos", [
+      { title: "Tuercas, señales y teselados", text: "**Tuercas y tornillos** (hexágonos), **señales** (octógono de STOP), **baldosas** y **teselados** (triángulo, cuadrado y hexágono rellenan el plano).", fact: "Hexágonos, octógonos, baldosas" },
+      { title: "Arquitectura", text: "**Arquitectura**: rosetones, cúpulas y planos de torres basados en polígonos regulares.", fact: "Rosetones y cúpulas" },
+      { title: "Pentagrama y estrellas", text: "**Pentagrama** y otras estrellas: símbolos, escudos y logotipos.", fact: "Símbolos y logotipos" },
+      { title: "En CAD", text: "En CAD, un polígono regular se define con el **número de lados** y el **radio** o el **lado**.", fact: "Número de lados y radio" },
+    ]), "stack"),
 
     benchTask("pentagrama-construye", "Dibuja el pentagrama", "pentagrama-practica", [
       { title: "Une de dos en dos", text: "Pasa la regla por **dos vértices** cada vez, saltando siempre uno: $1$ con $3$, $3$ con $5$… Solo se aceptan vértices que estén dos lugares más allá y no se repite ningún trazo.", fact: "{5/2}: cinco trazos" },

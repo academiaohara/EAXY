@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { type Pt } from "./geometry";
 import { BenchDefs, Desk } from "./instruments";
 import { AMBAR, AZUL, BenchShell, INK, SVG_CLASS, VERDE, usePaso, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -491,5 +491,67 @@ export function Escalimetro({ block }: { block: BenchBlock }) {
       {nodos}
       <Titulo>{["Escalímetro de sección triangular", "Escalímetro en abanico"][step]}</Titulo>
     </Hoja>
+  );
+}
+
+/* ───────────── Elegir la escala (explorador interactivo) ───────────── */
+
+/** Escalas normalizadas como cociente dibujo/real, de mayor a menor. */
+const ESCALAS_NORM: { v: number; txt: string }[] = [
+  { v: 10, txt: "10:1" }, { v: 5, txt: "5:1" }, { v: 2, txt: "2:1" }, { v: 1, txt: "1:1" },
+  { v: 1 / 2, txt: "1:2" }, { v: 1 / 5, txt: "1:5" }, { v: 1 / 10, txt: "1:10" }, { v: 1 / 20, txt: "1:20" }, { v: 1 / 50, txt: "1:50" },
+  { v: 1 / 100, txt: "1:100" }, { v: 1 / 200, txt: "1:200" }, { v: 1 / 500, txt: "1:500" }, { v: 1 / 1000, txt: "1:1 000" },
+];
+
+export function EscalaExplorador({ block }: { block: BenchBlock }) {
+  const [step, setStep] = usePaso();
+  const [real, setReal] = useState(1250);
+  const [espacio, setEspacio] = useState(400);
+  const esc = ESCALAS_NORM.find((e) => real * e.v <= espacio) ?? ESCALAS_NORM[ESCALAS_NORM.length - 1];
+  const dib = real * esc.v;
+  const W = 440;
+  const x0 = 90;
+  const wPieza = Math.max(6, (W * dib) / espacio);
+  const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1).replace(".", ","));
+  const slider = (label: string, value: number, min: number, max: number, stepV: number, onChange: (n: number) => void, color: string, testId: string) => (
+    <label className="flex flex-col gap-1 text-sm text-[color:var(--stage-muted,#b8c2d0)]">
+      <span className="flex items-baseline justify-between gap-3">
+        {label}
+        <span className="font-heading text-lg font-bold" style={{ color }}>{`${value} mm`}</span>
+      </span>
+      <input type="range" min={min} max={max} step={stepV} value={value} onChange={(e) => onChange(Number(e.target.value))} data-testid={testId} className="w-full" style={{ accentColor: color }} />
+    </label>
+  );
+  const extra = (
+    <div className="flex flex-col gap-4" data-testid="escala-explorador-controles">
+      <div className="flex flex-wrap gap-x-6 gap-y-1 text-[color:var(--stage-ink,#fff)]">
+        <p className="text-sm">Escala adecuada <span className="ml-1 font-heading text-2xl font-extrabold text-[#58c4dd]" data-testid="escala-explorador-escala">{esc.txt}</span></p>
+        <p className="text-sm">En el dibujo <span className="ml-1 font-heading text-2xl font-extrabold text-[#ffd866]" data-testid="escala-explorador-dibujo">{`${fmt(dib)} mm`}</span></p>
+      </div>
+      {slider("Longitud real del objeto", real, 100, 5000, 50, setReal, "#ffd866", "escala-explorador-real")}
+      {slider("Espacio disponible en la hoja", espacio, 100, 600, 10, setEspacio, "#58c4dd", "escala-explorador-espacio")}
+    </div>
+  );
+  return (
+    <BenchShell scene="escala-explorador" notes={block.notes} step={step} setStep={setStep} label="Hoja con un objeto dibujado a la mayor escala normalizada que cabe" extra={extra}>
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label="Hoja con un objeto dibujado a la mayor escala normalizada que cabe" data-testid="bench-escala-explorador">
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
+        <Seg a={[x0, 110]} b={[x0 + W, 110]} color={AZUL} w={2} dash="6 4" />
+        <Seg a={[x0, 102]} b={[x0, 118]} color={AZUL} w={2} />
+        <Seg a={[x0 + W, 102]} b={[x0 + W, 118]} color={AZUL} w={2} />
+        <Txt p={[x0 + W / 2 - 100, 98]} color={AZUL} size={13}>{`espacio disponible: ${espacio} mm`}</Txt>
+        <rect x={x0} y={170} width={wPieza} height={70} rx="3" fill="rgba(224,168,0,0.18)" stroke={INK} strokeWidth="2" />
+        <Seg a={[x0, 262]} b={[x0 + wPieza, 262]} color={VERDE} w={1.6} />
+        <Seg a={[x0, 256]} b={[x0, 268]} color={VERDE} w={1.6} />
+        <Seg a={[x0 + wPieza, 256]} b={[x0 + wPieza, 268]} color={VERDE} w={1.6} />
+        <Txt p={[x0, 288]} color={VERDE} size={14}>{`cota: ${real} mm (siempre la real)`}</Txt>
+        <Txt p={[x0, 308]} color={AMBAR} size={13}>{`en el papel mide ${fmt(dib)} mm`}</Txt>
+        <rect x={430} y={296} width={150} height={52} fill="rgba(255,252,240,0.95)" stroke={INK} strokeWidth="1.4" />
+        <Txt p={[440, 314]} size={11}>ESCALA</Txt>
+        <Txt p={[440, 340]} color={AMBAR} size={22}>{esc.txt}</Txt>
+        <Titulo>Elige la escala</Titulo>
+      </svg>
+    </BenchShell>
   );
 }
