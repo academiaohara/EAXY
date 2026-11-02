@@ -867,8 +867,8 @@ function reflejo(e0: P, e1: P, q: P) {
 
 /** Simetría axial de uno o varios puntos: perpendicular al eje (escuadra y cartabón), pie y compás con la misma distancia. */
 function simetriaAxial(nombres: string[], originales: P[], titulo: string, intro: string, lados: boolean, baseOrig: [string, string][]): Construccion {
-  const e0: P = [40, 215];
-  const e1: P = [580, 195];
+  const e0: P = [40, 190];
+  const e1: P = [580, 170];
   const pts: Record<string, P> = { _e0: e0, e: e1 };
   const ops: Op[] = [];
   const base: [string, string][] = [["_e0", "e"], ...baseOrig];
