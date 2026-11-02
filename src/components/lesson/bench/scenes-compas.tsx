@@ -474,7 +474,7 @@ export type Def = {
   /** Puntos entre los que se puede tomar una medida con el compás (fase `medida`). */
   medibles?: (est: Est) => Pt[];
   /** Fase `angulo`: vértice, dirección del primer lado, valor que hay que marcar y largo del segundo lado. */
-  angulo?: (est: Est) => { centro: Pt; base: number; objetivo: number; largo: number };
+  angulo?: (est: Est) => { centro: Pt; base: number; objetivo: number; largo: number; /** Sentido en que se mide el ángulo desde `base`: 1 antihorario (por defecto), -1 horario. */ signo?: 1 | -1 };
   /** Compás fijo que se muestra aparte (por ejemplo, con la medida ya tomada). */
   compasEspecial?: (est: Est, tipo: Tipo | undefined) => { n: Pt; m: Pt } | null;
   radioLim: (a: number) => [number, number];
@@ -494,6 +494,8 @@ export type Def = {
   escuadra?: (est: Est) => { recta: [Pt, Pt]; objetivos: { marca: Pt; corte: Pt }[] };
   /** Cuánto se prolongan las rectas de las fases `trazo` (40 por defecto). */
   extTrazo?: number;
+  /** Cada fase `escuadra` empieza con la escuadra en su posición inicial (rectas de apoyo distintas en cada una). */
+  reiniciarEscuadra?: boolean;
   /** Índices de los arcos que forman el resultado: se dibujan con trazo fuerte aunque la construcción haya terminado. */
   principales?: number[];
   /** Fase `auto`: segmentos que la regla traza sola, uno tras otro, y con los que acaba el ejercicio. */
@@ -604,6 +606,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     const out: Est = { ...e, fase: f, radios: [...e.radios], cub: [...e.cub] };
     if (t === "medida") out.medida = [];
     if (t === "angulo") out.ang = 20;
+    if (t === "escuadra" && def.reiniciarEscuadra) out.esc = 0;
     if (t === "abertura") {
       const a = cuentaAb(fases, f);
       if (out.radios[a] === undefined) out.radios[a] = def.radioIni(a, out);
@@ -736,7 +739,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
       if (a) {
-        const lectura = clamp(Math.round(norm180(angDe(a.centro, p) - a.base)), 0, 180);
+        const lectura = clamp(Math.round(norm180((a.signo ?? 1) * (angDe(a.centro, p) - a.base))), 0, 180);
         // cerca del valor pedido el segundo lado «encaja» en él
         setEst({ ...est, ang: Math.abs(lectura - a.objetivo) <= 3 ? a.objetivo : lectura });
       }
@@ -906,7 +909,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
-      return a ? [enCirculo(a.centro, a.largo, a.base + a.objetivo)] : [];
+      return a ? [enCirculo(a.centro, a.largo, a.base + (a.signo ?? 1) * a.objetivo)] : [];
     }
     return [];
   })();
@@ -1016,11 +1019,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         <g data-testid="bench-arcos-practica">{arcosDibujados}</g>
         {tipo === "angulo" && def.angulo ? (() => {
           const a = def.angulo(est);
-          const fin = enCirculo(a.centro, a.largo, a.base + est.ang);
+          const fin = enCirculo(a.centro, a.largo, a.base + (a.signo ?? 1) * est.ang);
           return (
             <g data-testid="bench-angulo" pointerEvents="none">
               <g transform={`translate(${a.centro[0]} ${a.centro[1]}) scale(1.8)`}>
-                <Transportador pose={{ x: 0, y: 0, rot: -a.base }} r={70} />
+                <Transportador pose={{ x: 0, y: 0, rot: -(a.base + ((a.signo ?? 1) === 1 ? 0 : 180)) }} r={70} />
               </g>
               <line x1={a.centro[0]} y1={a.centro[1]} x2={fin[0]} y2={fin[1]} stroke={INK} strokeWidth="1.3" strokeLinecap="round" />
               <circle cx={fin[0]} cy={fin[1]} r="7" fill={AMBAR} stroke="#fff" strokeWidth="1.6" />

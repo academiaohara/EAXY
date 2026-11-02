@@ -25,7 +25,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 /** Lecciones que son solo explicación (sin ejercicio propio). */
-const SOLO_EXPLICACION = new Set(["semejanza-homotecia-dt1", "elementos-signos-geometricos-dt1", "lugar-geometrico-concepto-dt1", "angulos-tipos-relaciones-dt1", "suma-diferencia-angulos-dt1", "division-angulo-bisectriz-dt1", "escalas-numericas-graficas-dt1", "escala-grafica-contraescala-dt1", "triangulo-universal-escalas-dt1", "escala-transversales-escalimetro-dt1", "clases-escalas-normalizadas-dt1", "triangulos-clases-lineas-dt1", "triangulo-equilatero-dt1", "triangulo-rectangulo-dt1", "triangulo-isosceles-dt1", "angulos-circunferencia-dt1"]);
+const SOLO_EXPLICACION = new Set(["semejanza-homotecia-dt1", "elementos-signos-geometricos-dt1", "lugar-geometrico-concepto-dt1", "angulos-tipos-relaciones-dt1", "suma-diferencia-angulos-dt1", "division-angulo-bisectriz-dt1", "escalas-numericas-graficas-dt1", "escala-grafica-contraescala-dt1", "triangulo-universal-escalas-dt1", "escala-transversales-escalimetro-dt1", "clases-escalas-normalizadas-dt1", "triangulos-clases-lineas-dt1", "angulos-circunferencia-dt1"]);
 
 /** Lecciones que son solo una colección de ejercicios del libro (sin diapositivas). */
 const SOLO_EJERCICIOS = new Set(["ejercicios-escalas-dt1"]);

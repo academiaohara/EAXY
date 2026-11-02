@@ -135,6 +135,16 @@ export type BenchSceneName =
   | "isosceles-lado-angulo"
   | "isosceles-desigual"
   | "isosceles-igual-angulo"
+  | "equilatero-lado-practica"
+  | "triangulo-lal-practica"
+  | "rectangulo-catetos-practica"
+  | "isosceles-lado-angulo-practica"
+  | "triangulo-ala-practica"
+  | "rectangulo-cateto-angulo-practica"
+  | "isosceles-desigual-practica"
+  | "rectangulo-hipotenusa-practica"
+  | "isosceles-igual-angulo-practica"
+  | "equilatero-altura-practica"
   | "cuadrilateros-familias"
   | "cuadrilateros-propiedades"
   | "poligonos-lado-radio"
@@ -247,16 +257,26 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "triangulos-clasificacion": 4,
   "triangulo-lineas-notables": 4,
   "triangulo-datos": 3,
-  "triangulo-ala": 5,
-  "triangulo-lal": 5,
-  "equilatero-lado": 3,
-  "equilatero-altura": 5,
-  "rectangulo-catetos": 4,
-  "rectangulo-cateto-angulo": 4,
-  "rectangulo-hipotenusa": 5,
-  "isosceles-lado-angulo": 4,
-  "isosceles-desigual": 3,
-  "isosceles-igual-angulo": 4,
+  "triangulo-ala": 8,
+  "triangulo-lal": 8,
+  "equilatero-lado": 6,
+  "equilatero-altura": 9,
+  "rectangulo-catetos": 7,
+  "rectangulo-cateto-angulo": 7,
+  "rectangulo-hipotenusa": 8,
+  "isosceles-lado-angulo": 7,
+  "isosceles-desigual": 8,
+  "isosceles-igual-angulo": 7,
+  "equilatero-lado-practica": 6,
+  "triangulo-lal-practica": 5,
+  "rectangulo-catetos-practica": 5,
+  "isosceles-lado-angulo-practica": 5,
+  "triangulo-ala-practica": 4,
+  "rectangulo-cateto-angulo-practica": 4,
+  "isosceles-desigual-practica": 4,
+  "rectangulo-hipotenusa-practica": 7,
+  "isosceles-igual-angulo-practica": 7,
+  "equilatero-altura-practica": 6,
   "cuadrilateros-familias": 4,
   "cuadrilateros-propiedades": 5,
   "poligonos-lado-radio": 5,
