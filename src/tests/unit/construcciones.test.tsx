@@ -5,7 +5,7 @@ import { LessonStepControlProvider } from "@/components/lesson/LessonStepControl
 import { BenchPracticeContext } from "@/components/lesson/bench/practice";
 import { BENCH_STEPS } from "@/components/lesson/bench/scenes";
 import { SlideBench } from "@/components/lesson/bench/SlideBench";
-import { CONSTRUCCIONES, fasesPractica, pasosAnimacion, type Construccion, type ConstruccionId, type Op, type P } from "@/components/lesson/bench/construcciones-datos";
+import { CONSTRUCCIONES, fasesPractica, instrumentoAngulo, pasosAnimacion, type Construccion, type ConstruccionId, type Op, type P } from "@/components/lesson/bench/construcciones-datos";
 import { notasAnimacion, notasPractica } from "@/components/lesson/bench/construcciones-notas";
 
 afterEach(cleanup);
@@ -92,6 +92,13 @@ describe("construcciones del tema 5: animación y práctica", () => {
           break;
         }
         case "angulo": {
+          if (instrumentoAngulo(o.obj)) {
+            expect(tipo(), donde).toBe("perpendicular");
+            const antes = screen.queryAllByTestId("bench-trazo-aux").length;
+            for (let k = 0; k < 400 && screen.queryAllByTestId("bench-trazo-aux").length === antes; k += 1) fireEvent.keyDown(svg(), { key: "ArrowRight" });
+            expect(screen.queryAllByTestId("bench-trazo-aux").length, donde).toBe(antes + 1);
+            break;
+          }
           expect(tipo(), donde).toBe("angulo");
           const s = o.signo ?? 1;
           arrastrar(enCirc(pt(o.v), 120, o.base + s * (o.obj - 15)), enCirc(pt(o.v), 120, o.base + s * o.obj));

@@ -90,6 +90,9 @@ function mediatriz(a: string, b: string, p1: string, p2: string, m: string, abs:
   ];
 }
 
+/** Ángulos que se trazan con la escuadra (45°) o con el cartabón (30° y 60°); el resto, con el transportador. */
+export const instrumentoAngulo = (obj: number): "cartabon30" | "cartabon60" | "escuadra45" | null => (obj === 30 ? "cartabon30" : obj === 60 ? "cartabon60" : obj === 45 ? "escuadra45" : null);
+
 const marcaArco = (c: string, hacia: string, ang?: [number, number]): Op[] => [{ k: "arco", c, hacia, ang }, { k: "marca", p: hacia }];
 
 /** Perpendicular por `punto` a `recta`, con un trazo de `traza`. */
@@ -566,7 +569,8 @@ function divN(): Construccion {
   const a: P = [O0[0] - R0, O0[1]];
   const b: P = [O0[0] + R0, O0[1]];
   const u = 40;
-  const ang = 250;
+  const X: P = en(O0, R0, 215);
+  const ang = angDe(C, X);
   const T = Array.from({ length: n + 1 }, (_, i) => en(C, u * i, ang));
   const Q = Array.from({ length: n + 1 }, (_, i) => [C[0], C[1] + ((D[1] - C[1]) * i) / n] as P);
   const E: P = [O0[0] + Math.sqrt((2 * R0) ** 2 - R0 ** 2), O0[1]];
@@ -587,7 +591,7 @@ function divN(): Construccion {
   return {
     titulo: "Circunferencia en un número cualquiera de partes iguales",
     intro: "Se tiene una circunferencia con dos diámetros perpendiculares, $AB$ y $CD$. Para dividirla en $n$ partes se divide $CD$ en $n$ partes iguales (aquí, $n = 5$) y con el punto 2 se halla el lado.",
-    pts: { ...du.pts, O: O0, A: a, B: b, C, D, E, F, G: V[2], H: V[3], I: V[4], X: en(C, 230, ang), "1": Q[1], "2": Q[2], "3": Q[3], "4": Q[4], T1: T[1], T2: T[2], T3: T[3], T4: T[4], T5: T[5] },
+    pts: { ...du.pts, O: O0, A: a, B: b, C, D, E, F, G: V[2], H: V[3], I: V[4], X, "1": Q[1], "2": Q[2], "3": Q[3], "4": Q[4], T1: T[1], T2: T[2], T3: T[3], T4: T[4], T5: T[5] },
     dados: ["O", "C", "D", "A", "B", "X"],
     datos: [du.d],
     base: [["A", "B"], ["C", "D"]],
@@ -651,6 +655,7 @@ function pentagonoLado(): Construccion {
       { k: "marca", p: "P2" },
       { k: "recta", a: "P1", b: "P2", limpia: true },
       { k: "marca", p: "N" },
+      { k: "recta", a: "A", b: "B" },
       { k: "medir", de: "N", a: "M" },
       ...marcaArco("N", "F"),
       { k: "medir", de: "A", a: "F" },
@@ -662,7 +667,7 @@ function pentagonoLado(): Construccion {
       ...marcaArco("B", "C"),
       { k: "lados", pts: ["A", "B", "C", "D", "E"] },
     ],
-    notas: {},
+    ext: 90,
   };
 }
 
@@ -874,7 +879,7 @@ export const CONSTRUCCIONES = {
 export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 
 /** Nombre con el que se rotula un punto (los puntos auxiliares de la división de `CD` llevan una prima). */
-const ETIQUETAS: Record<string, string> = { Pl: "P'", T1: "1'", T2: "2'", T3: "3'", T4: "4'", T5: "5'", X: "X" };
+const ETIQUETAS: Record<string, string> = { Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "" };
 export const etiqueta = (clave: string) => ETIQUETAS[clave] ?? clave;
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;
 export const ID_PRACTICA = (id: ConstruccionId) => `c-${id}-practica` as const;
@@ -896,7 +901,7 @@ export function fasesPractica(c: Construccion): FaseP[] {
     else if (o.k === "marca") f.push("punto");
     else if (o.k === "recta") f.push("trazo");
     else if (o.k === "perp") f.push("perpendicular");
-    else if (o.k === "angulo") f.push("angulo");
+    else if (o.k === "angulo") f.push(instrumentoAngulo(o.obj) ? "perpendicular" : "angulo");
     else if (o.k === "paralelas") o.marcas.forEach(() => f.push("escuadra"));
   }
   f.push("auto");
