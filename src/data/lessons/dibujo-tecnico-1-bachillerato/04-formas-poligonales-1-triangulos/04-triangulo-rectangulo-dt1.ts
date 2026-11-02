@@ -19,14 +19,14 @@ export const trianguloRectanguloDt1Lesson: InteractiveLesson = {
     ]), "stack"),
 
     benchTask("catetos-practica", "Construye el rectángulo con los dos catetos", "rectangulo-catetos-practica", [
-      { title: "Perpendicular", text: "Marca con el transportador el ángulo recto en $A$: el segundo lado a $90^\\circ$ de $AB$.", fact: "90° en A" },
+      { title: "Perpendicular con la escuadra", text: "Apoya el **cartabón** en $AB$ y desliza la **escuadra** sobre él hasta que su filo pase por $A$: así queda trazada la perpendicular.", fact: "90° en A" },
       { title: "Toma b", text: "Toca los dos extremos del segmento $b$ para tomar su medida con el compás.", fact: "Abertura = b" },
       { title: "Clava en A", text: "Toca $A$ para clavar la punta seca." },
       { title: "Arco", text: "Traza el arco que corta a la perpendicular: ahí está $C$." },
       { title: "Cierra el triángulo", text: "La regla traza sola los lados $AC$ y $CB$." },
     ], {
       question: "Construye el triángulo rectángulo de catetos b y c.",
-      hint: "Perpendicular por A y arco de radio b desde A sobre ella.",
+      hint: "Perpendicular por A con escuadra y cartabón y arco de radio b desde A sobre ella.",
       explanation: "Los catetos AB y AC forman 90° y miden c y b; la hipotenusa BC es el tercer lado.",
     }),
 
@@ -42,7 +42,7 @@ export const trianguloRectanguloDt1Lesson: InteractiveLesson = {
 
     benchTask("cateto-angulo-practica", "Construye el rectángulo con un cateto y un ángulo", "rectangulo-cateto-angulo-practica", [
       { title: "Ángulo C", text: "Marca con el transportador el ángulo $\\hat C = 35^\\circ$ en $C$, midiéndolo desde $CA$.", fact: "35° en C" },
-      { title: "Ángulo recto", text: "Marca el ángulo recto en $A$.", fact: "90° en A" },
+      { title: "Perpendicular con la escuadra", text: "Apoya el **cartabón** en $AC$ y desliza la **escuadra** hasta que su filo pase por $A$: es la perpendicular a $AC$.", fact: "90° en A" },
       { title: "Marca B", text: "Toca el punto $B$ donde se cortan los dos lados.", fact: "B = corte" },
       { title: "Cierra el triángulo", text: "La regla traza sola los lados $CB$ y $AB$." },
     ], {

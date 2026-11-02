@@ -4,7 +4,6 @@ import { angDe, clamp, dist, enCirculo, interseccionCirculos, puntoMedio, type P
 import { INK, VERDE, type BenchBlock } from "./scenes";
 import { MSHEET, MV, Practica, type Def, type Est } from "./scenes-compas";
 import { PN_A, PN_B, PN_C, baricentro, circuncentro, incentro, ortocentro, pie } from "./scenes-poligonos";
-import { Seg } from "./scenes-proporcion";
 import { Dot } from "./scenes-teoria";
 import { Punto } from "./scenes-trazados";
 import { poligono } from "./scenes-transformaciones";
@@ -40,6 +39,26 @@ export function cortesPar(P: Pt, Q: Pt, r: number | undefined): Pt[] {
   return r !== undefined && r > dist(P, Q) / 2 + 0.5 ? (interseccionCirculos(P, r, Q, r) as [Pt, Pt]) : [];
 }
 
+/**
+ * Mayor radio con el que los arcos desde los extremos de `P`–`Q` siguen cortándose dentro de la hoja (así los cortes se
+ * pueden tocar) y que cabe en el compás.
+ */
+export function rMaxCortes(P: Pt, Q: Pt): number {
+  const M = puntoMedio(P, Q);
+  const d = dist(P, Q);
+  const n: Pt = [-(Q[1] - P[1]) / d, (Q[0] - P[0]) / d];
+  const lim: [number, number][] = [[40, 580], [30, 345]];
+  let h = Infinity;
+  for (const sg of [1, -1]) {
+    for (let i = 0; i < 2; i += 1) {
+      const c = n[i] * sg;
+      if (c > 1e-6) h = Math.min(h, (lim[i][1] - M[i]) / c);
+      else if (c < -1e-6) h = Math.min(h, (lim[i][0] - M[i]) / c);
+    }
+  }
+  return Math.min(190, Math.sqrt(Math.max(0, h) ** 2 + (d / 2) ** 2));
+}
+
 const mensajeMitad = "Con esa abertura los arcos no llegarían a cortarse: debe ser mayor que la mitad del segmento. Ábrela más y vuelve a fijarla.";
 
 function Triangulo({ nombres = true }: { nombres?: boolean }) {
@@ -70,28 +89,32 @@ const CC_LADOS: [Pt, Pt][] = [[A, B], [A, C]];
 const CC_O = circuncentro(A, B, C);
 const defCircuncentro: Def = {
   scene: "circuncentro-practica",
-  fases: ["centro", "abertura", "arco", "centro", "arco", "trazo", "centro", "abertura", "arco", "centro", "arco", "trazo", "punto"],
+  fases: ["centro", "abertura", "arco", "centro", "arco", "trazo", "centro", "abertura", "arco", "centro", "arco", "trazo", "punto", "medida", "centro", "arco"],
   trazoFino: true,
   extTrazo: 70,
+  principales: [4],
   papel: (est: Est) => (
     <g>
       <Triangulo />
-      {est.fase >= 13 ? (
+      {est.fase >= 13 ? <Marca p={CC_O} nombre="O" /> : null}
+      {est.fase >= 16 ? (
         <g data-testid="bench-circuncentro">
-          <circle cx={CC_O[0]} cy={CC_O[1]} r={dist(CC_O, A)} fill="none" stroke={VERDE} strokeWidth="2.2" />
-          <Marca p={CC_O} nombre="O" />
+          <circle cx={CC_O[0]} cy={CC_O[1]} r={dist(CC_O, A)} fill="none" stroke={VERDE} strokeWidth="2.4" />
         </g>
       ) : null}
     </g>
   ),
   candidatos: (est, idx) => {
+    if (idx >= 4) return [CC_O];
     const [P, Q] = CC_LADOS[Math.floor(idx / 2)];
     return idx % 2 === 0 ? [P, Q] : [dist(est.centros[idx - 1], P) < 1 ? Q : P];
   },
-  radioLim: () => [40, 235],
-  radioIni: () => 80,
-  rhoIni: () => 35,
-  arco: (_est, n, radio, c) => arcoPar(c, ...CC_LADOS[Math.floor(n / 2)], radio),
+  medibles: () => [CC_O, A],
+  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
+  radioLim: (a) => (a < 2 ? [dist(...CC_LADOS[a]) / 2 + 12, rMaxCortes(...CC_LADOS[a])] : [40, 190]),
+  radioIni: (a) => (a < 2 ? dist(...CC_LADOS[a]) / 2 + 20 : 80),
+  rhoIni: (n) => (n === 4 ? -175 : 35),
+  arco: (_est, n, radio, c) => (n === 4 ? { centro: c, base: 0, signo: 1, rhoMin: -180, rhoMax: 180, req: [-170, 170] } : arcoPar(c, ...CC_LADOS[Math.floor(n / 2)], radio)),
   validarAbertura: (_est, a, r) => (r <= dist(...CC_LADOS[a]) / 2 + 4 ? mensajeMitad : null),
   cortes: (est) => (est.fase === 5 ? cortesPar(...CC_LADOS[0], est.radios[0]) : est.fase === 11 ? cortesPar(...CC_LADOS[1], est.radios[1]) : [CC_O]),
   ocultarArcos: (est) => [...(est.fase >= 6 ? [0, 1] : []), ...(est.fase >= 12 ? [2, 3] : [])],
@@ -115,23 +138,31 @@ const bisT = (k: number, est: Est): Pt[] => {
   return pq ? cortesPar(pq[0], pq[1], est.radios[2 * k + 1]) : [];
 };
 const IN = incentro(A, B, C);
+/** Punto de tangencia de la circunferencia inscrita con el lado AB: pie de la perpendicular desde I. */
+const IN_T = pie(IN.p, A, B);
 const defIncentro: Def = {
   scene: "incentro-practica",
-  fases: [...Array.from({ length: 2 }, () => ["centro", "abertura", "arco", "centro", "abertura", "arco", "centro", "arco", "trazo"] as const).flat(), "punto"],
+  fases: [...Array.from({ length: 2 }, () => ["centro", "abertura", "arco", "centro", "abertura", "arco", "centro", "arco", "trazo"] as const).flat(), "punto", "perpendicular", "medida", "centro", "arco"],
   trazoFino: true,
   extTrazo: 90,
+  principales: [6],
+  perpendicular: () => ({ recta: [A, B], punto: IN.p, traza: [IN.p, IN_T] }),
   papel: (est: Est) => (
     <g>
       <Triangulo />
-      {est.fase >= 19 ? (
+      {est.fase >= 19 ? <Marca p={IN.p} nombre="I" /> : null}
+      {est.fase >= 20 ? <Marca p={IN_T} nombre="T" color="#1f78b4" dx={6} dy={18} /> : null}
+      {est.fase >= 23 ? (
         <g data-testid="bench-incentro">
-          <circle cx={IN.p[0]} cy={IN.p[1]} r={IN.r} fill="none" stroke={VERDE} strokeWidth="2.2" />
-          <Marca p={IN.p} nombre="I" />
+          <circle cx={IN.p[0]} cy={IN.p[1]} r={IN.r} fill="none" stroke={VERDE} strokeWidth="2.4" />
         </g>
       ) : null}
     </g>
   ),
+  medibles: () => [IN.p, IN_T],
+  compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
   candidatos: (est, i) => {
+    if (i >= 6) return [IN.p];
     const k = Math.floor(i / 3);
     const j = i % 3;
     if (j === 0) return [BIS[k].V];
@@ -139,10 +170,11 @@ const defIncentro: Def = {
     if (!pq) return [];
     return j === 1 ? pq : [dist(est.centros[i - 1], pq[0]) < 1 ? pq[1] : pq[0]];
   },
-  radioLim: (a) => (a % 2 === 0 ? [40, 150] : [30, 235]),
+  radioLim: (a) => (a % 2 === 0 ? [40, 150] : [30, 170]),
   radioIni: () => 80,
-  rhoIni: (n) => (n % 3 === 0 ? -8 : 35),
+  rhoIni: (n) => (n === 6 ? -175 : n % 3 === 0 ? -8 : 35),
   arco: (est, n, radio, c) => {
+    if (n === 6) return { centro: c, base: 0, signo: 1, rhoMin: -180, rhoMax: 180, req: [-170, 170] };
     const k = Math.floor(n / 3);
     const { V, S } = BIS[k];
     if (n % 3 === 0) {
@@ -188,8 +220,8 @@ const defBaricentro: Def = {
     const [P, Q] = MED[Math.floor(i / 2)].L;
     return i % 2 === 0 ? [P, Q] : [dist(est.centros[i - 1], P) < 1 ? Q : P];
   },
-  radioLim: () => [40, 235],
-  radioIni: () => 80,
+  radioLim: (a) => [dist(...MED[a].L) / 2 + 12, rMaxCortes(...MED[a].L)],
+  radioIni: (a) => dist(...MED[a].L) / 2 + 20,
   rhoIni: () => 35,
   arco: (_est, n, radio, c) => arcoPar(c, ...MED[Math.floor(n / 2)].L, radio),
   validarAbertura: (_est, a, r) => (r <= dist(...MED[a].L) / 2 + 4 ? mensajeMitad : null),
@@ -212,73 +244,39 @@ export function BaricentroPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={defBaricentro} vista={vista} />;
 }
 
-/* ───────────── Alturas → ortocentro ───────────── */
+/* ───────────── Alturas → ortocentro (con escuadra y cartabón) ───────────── */
 
 const ALT = [{ V: C, L: [A, B] as [Pt, Pt] }, { V: B, L: [A, C] as [Pt, Pt] }];
-const altPie = (k: number) => pie(ALT[k].V, ...ALT[k].L);
-const altH = (k: number) => dist(ALT[k].V, altPie(k));
-const altCortes = (k: number, r1: number | undefined): [Pt, Pt] | null => {
-  if (r1 === undefined || r1 <= altH(k)) return null;
-  const F = altPie(k);
-  const [P0, Q0] = ALT[k].L;
-  const u: Pt = [(Q0[0] - P0[0]) / dist(P0, Q0), (Q0[1] - P0[1]) / dist(P0, Q0)];
-  const d = Math.sqrt(r1 * r1 - altH(k) ** 2);
-  return [[F[0] - u[0] * d, F[1] - u[1] * d], [F[0] + u[0] * d, F[1] + u[1] * d]];
-};
-const altT = (k: number, est: Est): Pt[] => {
-  const pq = altCortes(k, est.radios[2 * k]);
-  return pq ? cortesPar(pq[0], pq[1], est.radios[2 * k + 1]) : [];
-};
 const ORTO = ortocentro(A, B, C);
-/** Prolongación de un lado (trazo fino) para que los cortes del arco caigan siempre sobre una recta visible. */
-const Prolongacion = ({ lado }: { lado: [Pt, Pt] }) => {
-  const d = dist(lado[0], lado[1]);
-  const u: Pt = [(lado[1][0] - lado[0][0]) / d, (lado[1][1] - lado[0][1]) / d];
-  return <Seg a={[lado[0][0] - u[0] * 70, lado[0][1] - u[1] * 70]} b={[lado[1][0] + u[0] * 70, lado[1][1] + u[1] * 70]} color="#6b7480" w={1} dash="2 5" />;
+/** Recta de la altura: del vértice al pie, un poco más allá para que se vea cortar al lado. */
+const altTraza = (k: number): [Pt, Pt] => {
+  const { V, L } = ALT[k];
+  const F = pie(V, ...L);
+  return [V, [F[0] + (F[0] - V[0]) * 0.12, F[1] + (F[1] - V[1]) * 0.12]];
 };
 const defOrtocentro: Def = {
   scene: "ortocentro-practica",
-  fases: [...Array.from({ length: 2 }, () => ["centro", "abertura", "arco", "centro", "abertura", "arco", "centro", "arco", "trazo"] as const).flat(), "punto"],
+  fases: ["perpendicular", "perpendicular", "punto"],
   trazoFino: true,
-  extTrazo: 90,
+  extTrazo: 0,
+  perpendicular: (est) => {
+    const k = est.fase === 0 ? 0 : 1;
+    return { recta: ALT[k].L, punto: ALT[k].V, traza: altTraza(k) };
+  },
   papel: (est: Est) => (
     <g>
-      <Prolongacion lado={ALT[0].L} />
-      <Prolongacion lado={ALT[1].L} />
       <Triangulo />
-      {est.fase >= 19 ? <Marca p={ORTO} nombre="H" /> : null}
+      {est.fase >= 3 ? <Marca p={ORTO} nombre="H" /> : null}
     </g>
   ),
-  candidatos: (est, i) => {
-    const k = Math.floor(i / 3);
-    const j = i % 3;
-    if (j === 0) return [ALT[k].V];
-    const pq = altCortes(k, est.radios[2 * k]);
-    if (!pq) return [];
-    return j === 1 ? pq : [dist(est.centros[i - 1], pq[0]) < 1 ? pq[1] : pq[0]];
-  },
-  radioLim: (a) => (a % 2 === 0 ? [altH(Math.floor(a / 2)) + 14, 215] : [30, 235]),
-  radioIni: (a) => (a % 2 === 0 ? altH(Math.floor(a / 2)) + 30 : 80),
-  rhoIni: (n) => (n % 3 === 0 ? -50 : 35),
-  arco: (est, n, radio, c) => {
-    const k = Math.floor(n / 3);
-    if (n % 3 === 0) {
-      const th = grados(Math.acos(clamp(altH(k) / radio, 0, 1)));
-      return { centro: c, base: angDe(ALT[k].V, altPie(k)), signo: 1, rhoMin: -70, rhoMax: 70, req: [-(th + 3), th + 3] };
-    }
-    const pq = altCortes(k, est.radios[2 * k]) ?? [c, c];
-    return arcoPar(c, pq[0], pq[1], radio);
-  },
-  validarAbertura: (est, a, r) => {
-    if (a % 2 === 0) return r <= altH(Math.floor(a / 2)) + 4 ? "Con esa abertura el arco no llegaría a cortar al lado opuesto: debe ser mayor que la distancia del vértice a ese lado." : null;
-    const pq = altCortes((a - 1) / 2, est.radios[a - 1]);
-    return pq && r <= dist(pq[0], pq[1]) / 2 + 4 ? mensajeMitad : null;
-  },
-  cortes: (est) => (est.fase === 8 ? [ALT[0].V, ...altT(0, est)] : est.fase === 17 ? [ALT[1].V, ...altT(1, est)] : [ORTO]),
-  ocultarArcos: (est) => [...(est.fase >= 9 ? [0, 1, 2] : []), ...(est.fase >= 18 ? [3, 4, 5] : [])],
+  candidatos: () => [],
+  radioLim: () => [40, 190],
+  radioIni: () => 80,
+  rhoIni: () => 0,
+  arco: (_est, _n, _r, c) => ({ centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
+  cortes: () => [ORTO],
   evaluar: () => ({ ok: true, mensaje: "Correcto: las alturas se cortan en el ortocentro H. En un triángulo acutángulo queda dentro del triángulo." }),
 };
 export function OrtocentroPractica({ block }: { block: BenchBlock }) {
   return <Practica block={block} def={defOrtocentro} vista={vista} />;
 }
-
