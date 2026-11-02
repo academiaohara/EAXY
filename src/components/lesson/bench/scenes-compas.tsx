@@ -1,9 +1,10 @@
 "use client";
 
 import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
-import { CARTABON_CORTO, CARTABON_LARGO, ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
+import { ESCUADRA_L, angDe, clamp, dir, dist, dot, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { geoDesliza, type DatosDesliza } from "./escuadra-perpendicular";
+import { InstrumentosParalela, planParalela, type OpcionesParalela } from "./paralela-plan";
 import { useBenchCheck } from "./practice";
 import { ReproCtx } from "./reproduccion";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -145,123 +146,69 @@ export function animParalelaCompas(q0: Pt, q1: Pt, n: Pt, r: number, p: number) 
 }
 
 /**
- * Disposición «de abajo»: se refleja la escuadra y el cartabón de `paralelaSetup` respecto de la recta, de modo que
- * el cuerpo de la escuadra queda del lado contrario a P y su filo (el que traza) queda libre al llegar al punto.
+ * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón queda fijo, la escuadra
+ * desliza rígidamente por él hasta que su borde de dibujo pasa por `P` y el lápiz traza `linea`. La colocación de los
+ * instrumentos la planifica `planParalela`. `p` va de 0 a 1.
  */
-function reflejarPose(setup: ParalelaSetup, pose: Pose): Pose {
-  const vx = pose.x - setup.c0[0];
-  const vy = pose.y - setup.c0[1];
-  const a = vx * setup.u[0] + vy * setup.u[1];
-  const b = vx * setup.n[0] + vy * setup.n[1];
-  return { x: setup.c0[0] + a * setup.u[0] - b * setup.n[0], y: setup.c0[1] + a * setup.u[1] - b * setup.n[1], rot: 2 * setup.theta - pose.rot, mirror: !pose.mirror, anchor: pose.anchor };
-}
-/** Escuadra desplazada `sp` mm hacia P sobre el cartabón (disposición reflejada). */
-export const escuadraPoseRef = (setup: ParalelaSetup, sp: number) => reflejarPose(setup, escuadraPose(setup, -sp));
-export const cartabonPoseRef = (setup: ParalelaSetup) => reflejarPose(setup, cartabonPose(setup));
-/** Dirección (unitaria) en que desliza la escuadra hacia P. */
-export const direccionDeslizamiento = (setup: ParalelaSetup): Pt => {
-  const a = -(setup.h[0] * setup.u[0] + setup.h[1] * setup.u[1]);
-  const b = -(setup.h[0] * setup.n[0] + setup.h[1] * setup.n[1]);
-  return [a * setup.u[0] - b * setup.n[0], a * setup.u[1] - b * setup.n[1]];
-};
-
-
-/**
- * Punto de la recta `a`–`b` donde se apoyan el cartabón y la escuadra para trazar paralelas por `marcas`. Da igual en qué
- * parte de la recta se apoyen, así que se elige el sitio donde los instrumentos (al principio y al final del
- * deslizamiento) quedan más dentro de la hoja, cerca del segmento dado.
- */
-export function pieParalela(a: Pt, b: Pt, marcas: Pt[], k = 1): Pt {
-  const L = dist(a, b);
-  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
-  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
-  const n0 = dir(theta0 + 90);
-  const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
-  const lejana = marcas.reduce((m, x) => (Math.abs(dist0(x)) > Math.abs(dist0(m)) ? x : m), marcas[0]);
-  const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
-  const u = dir(theta);
-  const proy = Math.min(L, Math.max(0, (marcas[0][0] - a[0]) * u0[0] + (marcas[0][1] - a[1]) * u0[1]));
-  const fuera = (q: Pt) => Math.max(0, 8 - q[0]) + Math.max(0, q[0] - 612) + Math.max(0, 8 - q[1]) + Math.max(0, q[1] - 372);
-  let mejor = proy;
-  let costeMejor = Infinity;
-  for (let t = -450; t <= L + 450; t += 10) {
-    const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
-    const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(lejana)) / k);
-    const aEsc = (q: Pt): Pt => [pie[0] + k * (q[0] - pie[0]), pie[1] + k * (q[1] - pie[1])];
-    let coste = Math.abs(t - proy) * 0.08;
-    for (const sp of [0, setup.sStar]) {
-      const esc = escuadraPoseRef(setup, sp);
-      coste += [[0, 0], [ESCUADRA_L, 0], [0, ESCUADRA_L]].reduce((n, v) => n + fuera(aEsc(applyPose(esc, v as Pt))), 0);
-      const car = cartabonPoseRef(setup);
-      coste += [[0, 0], [CARTABON_LARGO, 0], [0, CARTABON_CORTO]].reduce((n, v) => n + fuera(aEsc(applyPose(car, v as Pt))), 0);
-    }
-    if (coste < costeMejor - 1e-6) {
-      costeMejor = coste;
-      mejor = t;
-    }
-  }
-  return [a[0] + u0[0] * mejor, a[1] + u0[1] * mejor];
-}
-
-/**
- * Cómo se traza con escuadra y cartabón la paralela a la recta `a`–`b` por el punto `P`: el cartabón se apoya en la
- * recta, la escuadra desliza sobre él hasta que su filo pasa por `P` y el lápiz traza `linea`. `p` va de 0 a 1.
- */
-export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4", modo: "cateto" | "hipotenusa" = "cateto", k = 1) {
-  const L = dist(a, b);
-  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
-  const pie = pieParalela(a, b, [P], k);
-  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
-  const d0 = dot([P[0] - a[0], P[1] - a[1]], dir(theta0 + 90));
-  const theta = d0 < 0 ? theta0 + 180 : theta0;
-  const d = Math.abs(d0) / k;
-  const u = dir(theta);
-  const n: Pt = dir(theta + 90);
-  const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, d);
-  const mov = tramo(p, 0.18, 0.7);
-  const s = setup.sStar * (mov * mov * (3 - 2 * mov));
+export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: number, color = "#1f78b4", modo: "cateto" | "hipotenusa" = "cateto", importantes?: Pt[]) {
   const opacidad = tramo(p, 0, 0.14) * (1 - tramo(p, 0.9, 1));
   const trazo = tramo(p, 0.7, 0.9);
   const fin: Pt = [lerp(linea[0][0], linea[1][0], trazo), lerp(linea[0][1], linea[1][1], trazo)];
-  // Modo «hipotenusa»: la hipotenusa de la escuadra va sobre la recta, el cartabón se apoya en uno de sus catetos y la escuadra
-  // desliza a lo largo de él hasta que la hipotenusa pasa por P.
-  let poses: { cartabon: Pose; escuadra: Pose };
-  if (modo === "hipotenusa") {
-    const k = ESCUADRA_L / Math.SQRT2;
-    const c0: Pt = [pie[0] - u[0] * d, pie[1] - u[1] * d];
-    const diag: Pt = [(u[0] + n[0]) / Math.SQRT2, (u[1] + n[1]) / Math.SQRT2];
-    const R: Pt = [c0[0] + u[0] * k, c0[1] + u[1] * k];
-    poses = {
-      escuadra: { x: c0[0] - n[0] * k + diag[0] * s, y: c0[1] - n[1] * k + diag[1] * s, rot: theta + 45 },
-      cartabon: { x: R[0] + diag[0] * 50, y: R[1] + diag[1] * 50, rot: theta + 225 },
-    };
-  } else poses = { cartabon: cartabonPoseRef(setup), escuadra: escuadraPoseRef(setup, s) };
+  const mov = tramo(p, 0.18, 0.7);
+  const suave = mov * mov * (3 - 2 * mov);
+  const guia = (q: Pt, d: Pt) => (
+    <line data-testid="bench-guia-filo" x1={q[0] - d[0] * 420} y1={q[1] - d[1] * 420} x2={q[0] + d[0] * 420} y2={q[1] + d[1] * 420} stroke="#e0a100" strokeWidth="1.3" strokeDasharray="8 6" opacity={0.9 * opacidad} pointerEvents="none" />
+  );
+  const trazoNodo = trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null;
+  if (modo === "hipotenusa") return { nodos: animHipotenusa(a, b, P, suave, opacidad, trazo, guia, trazoNodo), listo: p >= 0.9 };
+  const plan = planParalela(a, b, [P], { importantes, trazos: [linea] });
+  const s = plan.sps[0] * suave;
+  const [f0, f1] = plan.filo(s);
+  const d: Pt = [f1[0] - f0[0], f1[1] - f0[1]];
+  const l = Math.hypot(d[0], d[1]);
   const nodos = (
     <g data-testid="bench-paralelo-escuadra">
-      {opacidad > 0 && trazo < 1 ? (
-        <line
-          data-testid="bench-guia-filo"
-          x1={pie[0] + n[0] * ((k * s) / Math.SQRT2) - u[0] * 420}
-          y1={pie[1] + n[1] * ((k * s) / Math.SQRT2) - u[1] * 420}
-          x2={pie[0] + n[0] * ((k * s) / Math.SQRT2) + u[0] * 420}
-          y2={pie[1] + n[1] * ((k * s) / Math.SQRT2) + u[1] * 420}
-          stroke="#e0a100"
-          strokeWidth="1.3"
-          strokeDasharray="8 6"
-          opacity={0.9 * opacidad}
-          pointerEvents="none"
-        />
-      ) : null}
-      {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
+      {opacidad > 0 && trazo < 1 ? guia(f0, [d[0] / l, d[1] / l]) : null}
+      {trazoNodo}
+      {opacidad > 0 ? <InstrumentosParalela plan={plan} s={s} opacidad={opacidad} /> : null}
+    </g>
+  );
+  return { nodos, listo: p >= 0.9 };
+}
+
+/** Modo «hipotenusa»: la hipotenusa de la escuadra va sobre la recta, el cartabón se apoya en un cateto suyo y la escuadra desliza hasta que la hipotenusa pasa por P. */
+function animHipotenusa(a: Pt, b: Pt, P: Pt, suave: number, opacidad: number, trazo: number, guia: (q: Pt, d: Pt) => ReactNode, trazoNodo: ReactNode) {
+  const L = dist(a, b);
+  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
+  const t = (P[0] - a[0]) * u0[0] + (P[1] - a[1]) * u0[1];
+  const pie: Pt = [a[0] + u0[0] * t, a[1] + u0[1] * t];
+  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
+  const d0 = dot([P[0] - pie[0], P[1] - pie[1]], dir(theta0 + 90));
+  const theta = d0 < 0 ? theta0 + 180 : theta0;
+  const d = Math.abs(d0);
+  const u = dir(theta);
+  const n: Pt = dir(theta + 90);
+  const s = d * Math.SQRT2 * suave;
+  const k = ESCUADRA_L / Math.SQRT2;
+  const c0: Pt = [pie[0] - u[0] * d, pie[1] - u[1] * d];
+  const diag: Pt = [(u[0] + n[0]) / Math.SQRT2, (u[1] + n[1]) / Math.SQRT2];
+  const R: Pt = [c0[0] + u[0] * k, c0[1] + u[1] * k];
+  const poses = {
+    escuadra: { x: c0[0] - n[0] * k + diag[0] * s, y: c0[1] - n[1] * k + diag[1] * s, rot: theta + 45 },
+    cartabon: { x: R[0] + diag[0] * 50, y: R[1] + diag[1] * 50, rot: theta + 225 },
+  };
+  return (
+    <g data-testid="bench-paralelo-escuadra">
+      {opacidad > 0 && trazo < 1 ? guia([pie[0] + n[0] * (s / Math.SQRT2), pie[1] + n[1] * (s / Math.SQRT2)], u) : null}
+      {trazoNodo}
       {opacidad > 0 ? (
-        <g opacity={opacidad} pointerEvents="none" transform={k === 1 ? undefined : `translate(${pie[0]} ${pie[1]}) scale(${k}) translate(${-pie[0]} ${-pie[1]})`}>
+        <g opacity={opacidad} pointerEvents="none">
           <Cartabon pose={poses.cartabon} />
           <Escuadra pose={poses.escuadra} />
         </g>
       ) : null}
     </g>
   );
-  return { nodos, listo: p >= 0.9 };
 }
 
 export const MV = { w: 620, h: 380 };
@@ -543,7 +490,7 @@ export type Def = {
    * Fases `escuadra`: el cartabón se apoya en la `recta` y el alumno desliza la escuadra hasta que su filo pasa por
    * cada `marca` (una fase por objetivo, en orden); `corte` es donde la paralela trazada llega a la recta de trabajo.
    */
-  escuadra?: (est: Est) => { recta: [Pt, Pt]; objetivos: { marca: Pt; corte: Pt }[]; escala?: number };
+  escuadra?: (est: Est) => { recta: [Pt, Pt]; objetivos: { marca: Pt; corte: Pt }[]; /** Puntos que los instrumentos no deben tapar. */ importantes?: Pt[] };
   /** Cuánto se prolongan las rectas de las fases `trazo` (40 por defecto). */
   extTrazo?: number;
   /**
@@ -600,19 +547,10 @@ const trazoDirecto = (t: [Pt, Pt]): [Pt, Pt] => {
 /** Margen (mm sobre el cartabón) con el que la escuadra encaja en la marca pedida. */
 const ENCAJE = 9;
 
-/** Datos de la escuadra deslizando sobre el cartabón para una `recta` y las `marcas` por las que debe pasar el filo. */
-export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[], k = 1) {
-  const [a, b] = recta;
-  const L = dist(a, b);
-  const u0: Pt = [(b[0] - a[0]) / L, (b[1] - a[1]) / L];
-  const theta0 = aGrados(Math.atan2(u0[1], u0[0]));
-  const n0 = dir(theta0 + 90);
-  const dist0 = (m: Pt) => dot([m[0] - a[0], m[1] - a[1]], n0);
-  const theta = dist0(marcas[0]) < 0 ? theta0 + 180 : theta0;
-  const pie = pieParalela(a, b, marcas, k);
-  const u = dir(theta);
-  const setup = paralelaSetup([pie[0] - u[0] * PARALELA_A, pie[1] - u[1] * PARALELA_A], theta, Math.abs(dist0(marcas[0])) / k);
-  return { setup, pie, k, desliza: direccionDeslizamiento(setup), sps: marcas.map((m) => Math.abs(dist0(m)) * Math.SQRT2) };
+/** Datos de la escuadra deslizando sobre el cartabón para una `recta` y las `marcas` por las que debe pasar el borde de dibujo. */
+export function prepararEscuadra(recta: [Pt, Pt], marcas: Pt[], opciones: OpcionesParalela = {}) {
+  const plan = planParalela(recta[0], recta[1], marcas, opciones);
+  return { plan, desliza: plan.desliza, sps: plan.sps };
 }
 const HIT = 24;
 
@@ -659,7 +597,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const datosEsc = tipo === "escuadra" && def.escuadra ? def.escuadra(est) : null;
   const datosPerp = tipo === "perpendicular" && def.perpendicular ? def.perpendicular(est) : null;
   const desl = datosPerp ? geoDesliza(datosPerp) : null;
-  const prep = datosEsc ? prepararEscuadra(datosEsc.recta, datosEsc.objetivos.map((o) => o.marca), datosEsc.escala ?? 1) : null;
+  const prep = datosEsc ? prepararEscuadra(datosEsc.recta, datosEsc.objetivos.map((o) => o.marca), { importantes: datosEsc.importantes, trazos: datosEsc.objetivos.map((o) => [o.marca, o.corte] as [Pt, Pt]) }) : null;
   const { resultado, finalizar } = useBenchCheck();
   const bloqueada = resultado !== null;
   const finalizarRef = useRef(finalizar);
@@ -1022,10 +960,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
 
   const objetivoEsc = prep && tipo === "escuadra" ? prep.sps[cuenta(fases, est.fase, "escuadra")] : null;
   const alineada = objetivoEsc !== null && Math.abs(est.esc - objetivoEsc) < 0.5;
-  const kEsc = prep?.k ?? 1;
-  const poseEsc = prep ? escuadraPoseRef(prep.setup, est.esc / kEsc) : null;
-  const aEscala = (q: Pt): Pt => (prep ? [prep.pie[0] + kEsc * (q[0] - prep.pie[0]), prep.pie[1] + kEsc * (q[1] - prep.pie[1])] : q);
-  const filoEsc = poseEsc ? ([aEscala(applyPose(poseEsc, [0, 0])), aEscala(applyPose(poseEsc, [ESCUADRA_L, 0]))] as [Pt, Pt]) : null;
+  const filoEsc = prep ? prep.plan.filo(est.esc) : null;
 
   // Guía: con la pista pedida o tras dos fallos seguidos, la escena resalta lo que hay que tocar o trazar.
   const guiada = (pista || fallos >= 2) && !bloqueada && !hecha && tipo !== undefined && tipo !== "auto";
@@ -1229,9 +1164,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
           </g>
         ) : null}
         {tipo === "escuadra" && prep ? (
-          <g data-testid="bench-instrumentos" pointerEvents="none" transform={kEsc === 1 ? undefined : `translate(${prep.pie[0]} ${prep.pie[1]}) scale(${kEsc}) translate(${-prep.pie[0]} ${-prep.pie[1]})`}>
-            <Cartabon pose={cartabonPoseRef(prep.setup)} />
-            <Escuadra pose={poseEsc!} />
+          <g data-testid="bench-instrumentos" pointerEvents="none">
+            <InstrumentosParalela plan={prep.plan} s={est.esc} />
           </g>
         ) : null}
         {tipo === "escuadra" && filoEsc && objetivoEsc !== null && datosEsc ? (
