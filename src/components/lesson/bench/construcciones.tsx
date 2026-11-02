@@ -81,7 +81,7 @@ function plan(c: Construccion) {
 }
 
 /** Pasada del cartabón o la escuadra que traza un ángulo de 30°, 45° o 60°. */
-export function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
+function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
   const v = pt(c, o.v);
   const signo = o.signo ?? 1;
   const largo = o.largo ?? 160;

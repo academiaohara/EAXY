@@ -756,7 +756,7 @@ import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecn
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
 import { homologiaEjeCentroDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/04-homologia-eje-centro-dt2";
-import { homoteciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/04-homotecia-dt1";
+import { homoteciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/03-homotecia-dt1";
 import { iaLimitacionesSesgosTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/04-sistemas-informaticos-emergentes/05-ia-limitaciones-sesgos-ti2";
 import { ideaLimiteFuncion1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/07-limites-y-continuidad/01-idea-limite-funcion-1bach";
 import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/05-limites-y-continuidad/01-idea-limite-funcion-ccss1";
@@ -1500,7 +1500,6 @@ import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibu
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
 import { simetriaAxialDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/07-simetria-axial-dt1";
 import { simetriaCentralDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/06-simetria-central-dt1";
-import { simetriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/03-simetria-dt1";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
 import { simetricoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/06-simetrico-recta-2bach";
@@ -3240,7 +3239,6 @@ export const interactiveLessons = {
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
   "simetria-axial-dt1": simetriaAxialDt1Lesson,
   "simetria-central-dt1": simetriaCentralDt1Lesson,
-  "simetria-dt1": simetriaDt1Lesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,
   "simetrico-recta-2bach": simetricoRecta2bachLesson,

@@ -1468,6 +1468,7 @@ const ESCALA_INSTRUMENTOS: Record<string, number> = {
   "pentagono-lado": 0.8, "heptagono-lado": 0.5, "octogono-lado": 0.45, "eneagono-lado": 0.4, "tercero-proporcional": 0.8,
   "semejante-radial": 0.5, "semejante-coordenadas": 0.5, "igual-coordenadas": 0.5, "igual-traslacion": 0.5,
   "simetria-axial-segmento": 0.7, "simetria-axial-figura": 0.7,
+  "traslacion-figura": 0.5, "giro-segmento": 0.7, "giro-recta": 0.7, "homotecia-directa": 0.7, "homotecia-inversa": 0.5,
 };
 for (const [id, k] of Object.entries(ESCALA_INSTRUMENTOS)) (CONSTRUCCIONES as Record<string, Construccion>)[id].escala = k;
 
