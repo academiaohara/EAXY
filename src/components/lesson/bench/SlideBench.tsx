@@ -13,7 +13,9 @@ import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, 
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
-import { TrianguloLineasNotables, TrianguloDatos, TrianguloAla, TrianguloLal, EquilateroLado, EquilateroAltura, RectanguloCatetos, RectanguloCatetoAngulo, RectanguloHipotenusa, IsoscelesLadoAngulo, IsoscelesDesigual, IsoscelesIgualAngulo } from "./scenes-triangulos";
+import { EquilateroLadoPractica, TrianguloLalPractica, RectanguloCatetosPractica, IsoscelesLadoAnguloPractica, TrianguloAlaPractica, RectanguloCatetoAnguloPractica, IsoscelesDesigualPractica, RectanguloHipotenusaPractica, IsoscelesIgualAnguloPractica, EquilateroAlturaPractica } from "./practicas-triangulos";
+import { TrianguloLineasNotables, TrianguloDatos } from "./scenes-triangulos";
+import { TrianguloAla, TrianguloLal, EquilateroLado, EquilateroAltura, RectanguloCatetos, RectanguloCatetoAngulo, RectanguloHipotenusa, IsoscelesLadoAngulo, IsoscelesDesigual, IsoscelesIgualAngulo } from "./scenes-construcciones";
 import { ComoEstudiar, LugaresInterseccion, MediatrizAplicaciones, RectasParalelas, TriangulosClasificacion, CuadrilaterosFamilias, CuadrilaterosPropiedades, PoligonosLadoRadio, ConstruccionesExactas, PoligonoDadoLado, PoligonosUsos, TangentePropiedades, TangentesSencillas, TangentesComunes, EnlaceLugares, EnlaceCasos, OvaloCurvas, OvoideDescripcion, EspiralesDescripcion } from "./scenes-teoria";
 import { EscalaExplorador } from "./scenes-escalas";
 import { EscalaClases, EscalaConcepto, EscalaDetalles, EscalaFotocopia, EscalaGrafica, EscalaProporcion, EscalaTransversales, Escalimetro, EscalasNormalizadas, TrianguloUniversal } from "./scenes-escalas";
@@ -209,6 +211,26 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <IsoscelesDesigual block={block} />;
     case "isosceles-igual-angulo":
       return <IsoscelesIgualAngulo block={block} />;
+    case "equilatero-lado-practica":
+      return <EquilateroLadoPractica block={block} />;
+    case "triangulo-lal-practica":
+      return <TrianguloLalPractica block={block} />;
+    case "rectangulo-catetos-practica":
+      return <RectanguloCatetosPractica block={block} />;
+    case "isosceles-lado-angulo-practica":
+      return <IsoscelesLadoAnguloPractica block={block} />;
+    case "triangulo-ala-practica":
+      return <TrianguloAlaPractica block={block} />;
+    case "rectangulo-cateto-angulo-practica":
+      return <RectanguloCatetoAnguloPractica block={block} />;
+    case "isosceles-desigual-practica":
+      return <IsoscelesDesigualPractica block={block} />;
+    case "rectangulo-hipotenusa-practica":
+      return <RectanguloHipotenusaPractica block={block} />;
+    case "isosceles-igual-angulo-practica":
+      return <IsoscelesIgualAnguloPractica block={block} />;
+    case "equilatero-altura-practica":
+      return <EquilateroAlturaPractica block={block} />;
     case "cuadrilateros-familias":
       return <CuadrilaterosFamilias block={block} />;
     case "cuadrilateros-propiedades":

@@ -37,19 +37,48 @@ export const construccionTriangulosDt1Lesson: InteractiveLesson = {
     }),
 
     slide("ala", "Un lado y los dos ángulos adyacentes", [], bench("triangulo-ala", [
-      { title: "Los datos", text: "Se conocen el lado $a = \\overline{BC}$ y los ángulos $\\hat B$ y $\\hat C$ adyacentes a ese lado.", fact: "Lado a y ángulos B y C" },
-      { title: "El lado a", text: "Se traza el segmento $BC = a$.", fact: "BC = a" },
-      { title: "El ángulo B", text: "En el vértice $B$ se dibuja el ángulo $\\hat B$ con ayuda del arco $1\\text{-}2$.", fact: "Arco 1-2" },
-      { title: "El ángulo C", text: "En el vértice $C$ se dibuja el ángulo $\\hat C$ con ayuda del arco $3\\text{-}4$.", fact: "Arco 3-4" },
-      { title: "El tercer vértice", text: "Los lados $c$ y $b$ de estos ángulos, **prolongados**, se cortan en el vértice $A$, que completa el triángulo.", fact: "A: corte de los lados" },
+      { title: "Los datos", text: "Se conocen el lado $a = BC$ y los ángulos $\\hat B = 65^\\circ$ y $\\hat C = 50^\\circ$ adyacentes a ese lado.", fact: "Lado a y ángulos B y C" },
+      { title: "Se toma la medida a", text: "Se **abre el compás** hasta que la punta seca esté en un extremo del segmento $a$ y la mina en el otro: la abertura del compás es ahora $a$.", fact: "Abertura = a" },
+      { title: "Se lleva a la recta: BC = a", text: "Se marca el punto $B$ en la recta, se **clava la punta seca en $B$** sin cambiar la abertura y se traza un pequeño arco que corta a la recta: ese corte es $C$. Así queda el lado $BC = a$.", fact: "BC = a" },
+      { title: "El ángulo B con el transportador", text: "Se coloca el **transportador** con su centro en $B$ y su base sobre $BC$. Se busca la marca de $65^\\circ$ en la escala que empieza en $C$ y se señala con el lápiz.", fact: "B = 65°" },
+      { title: "Se traza el lado desde B", text: "Se apoya la **regla** en $B$ y en la marca y se traza la recta: es el lado del ángulo $\\hat B$.", fact: "Regla por B y la marca" },
+      { title: "El ángulo C con el transportador", text: "Se pasa el transportador a $C$ con su base sobre $CB$. Ahora se lee la escala que empieza en $B$ (la roja) hasta $50^\\circ$ y se marca.", fact: "C = 50°" },
+      { title: "Se traza el lado desde C", text: "Se apoya la regla en $C$ y en la nueva marca y se traza el otro lado.", fact: "Regla por C y la marca" },
+      { title: "El vértice A", text: "Los dos lados, **prolongados**, se cortan en el vértice $A$: queda construido el triángulo $ABC$.", fact: "A: corte de los lados" },
     ]), "stack"),
 
+    benchTask("ala-practica", "Construye el triángulo con un lado y dos ángulos", "triangulo-ala-practica", [
+      { title: "Ángulo B", text: "Marca con el transportador el ángulo $\\hat B = 65^\\circ$ en el vértice $B$: arrastra el segundo lado hasta ese valor.", fact: "65° en B" },
+      { title: "Ángulo C", text: "Ahora el ángulo $\\hat C = 50^\\circ$ en $C$, midiéndolo desde $CB$ con la escala roja del transportador.", fact: "50° en C" },
+      { title: "Marca A", text: "Toca el punto $A$ donde se cortan los dos lados.", fact: "A = corte" },
+      { title: "Cierra el triángulo", text: "La regla traza sola los lados $BA$ y $CA$." },
+    ], {
+      question: "Construye el triángulo ABC conociendo el lado a = BC y los ángulos B = 65° y C = 50°.",
+      hint: "Con el transportador en B marca 65° y con el transportador en C marca 50° hacia el mismo lado.",
+      explanation: "Los lados de los ángulos B y C se cortan en A, que es el único punto desde el que se ven BC con esos dos ángulos.",
+    }),
+
     slide("lal", "Dos lados y el ángulo comprendido", [], bench("triangulo-lal", [
-      { title: "Los datos", text: "Se conocen los lados $a = \\overline{BC}$ y $c = \\overline{BA}$ y el ángulo $\\hat B$ que forman.", fact: "Lados a y c y ángulo B" },
-      { title: "Uno de los lados", text: "Se coloca uno de los lados conocidos, por ejemplo $a = \\overline{BC}$.", fact: "BC = a" },
-      { title: "El ángulo B", text: "En el vértice $B$ se construye el ángulo de $\\hat B$ con ayuda del arco $1\\text{-}2$.", fact: "Arco 1-2" },
-      { title: "El lado c", text: "Sobre el lado obtenido de este ángulo se lleva $c = \\overline{BA}$ con el compás.", fact: "BA = c" },
-      { title: "Une A con C", text: "Finalmente se une $A$ con $C$ para completar el triángulo.", fact: "Triángulo ABC" },
+      { title: "Los datos", text: "Se conocen los lados $a = BC$ y $c = BA$ y el ángulo $\\hat B = 55^\\circ$ que forman.", fact: "Lados a y c y ángulo B" },
+      { title: "Se toma la medida a", text: "Se **abre el compás** hasta que la punta seca esté en un extremo del segmento $a$ y la mina en el otro: la abertura del compás es ahora $a$.", fact: "Abertura = a" },
+      { title: "Se lleva a la recta: BC = a", text: "Se marca el punto $B$ en la recta, se **clava la punta seca en $B$** sin cambiar la abertura y se traza un pequeño arco que corta a la recta: ese corte es $C$. Así queda el lado $BC = a$.", fact: "BC = a" },
+      { title: "El ángulo B con el transportador", text: "Con el transportador centrado en $B$ y su base sobre $BC$ se marca el ángulo de $55^\\circ$.", fact: "B = 55°" },
+      { title: "Se traza el lado desde B", text: "Se apoya la regla en $B$ y en la marca y se traza el lado que sale de $B$, **más largo que $c$**.", fact: "Lado del ángulo B" },
+      { title: "Se toma la medida c", text: "Se **abre el compás** hasta que la punta seca esté en un extremo del segmento $c$ y la mina en el otro: la abertura del compás es ahora $c$.", fact: "Abertura = c" },
+      { title: "Se lleva c sobre el lado: A", text: "Se clava la punta seca en $B$ y, con la abertura $c$, se traza un arco que **corta al lado del ángulo**: ese corte es $A$.", fact: "BA = c" },
+      { title: "Se une A con C", text: "Se une $A$ con $C$ con la regla para completar el triángulo.", fact: "Triángulo ABC" },
     ]), "stack"),
+
+    benchTask("lal-practica", "Construye el triángulo con dos lados y el ángulo", "triangulo-lal-practica", [
+      { title: "Ángulo B", text: "Marca con el transportador el ángulo $\\hat B = 55^\\circ$ en el vértice $B$.", fact: "55° en B" },
+      { title: "Toma c", text: "Toca los dos extremos del segmento $c$ para tomar su medida con el compás.", fact: "Abertura = c" },
+      { title: "Clava en B", text: "Toca $B$ para clavar la punta seca del compás." },
+      { title: "Arco", text: "Traza el arco que corta al lado del ángulo: ahí está $A$." },
+      { title: "Cierra el triángulo", text: "La regla traza sola los lados $BA$ y $AC$." },
+    ], {
+      question: "Construye el triángulo ABC conociendo a = BC, c = BA y el ángulo B = 55°.",
+      hint: "Marca el ángulo en B, toma c con el compás y corta el lado del ángulo con un arco desde B.",
+      explanation: "A está sobre el lado del ángulo B y a la distancia c de B.",
+    }),
   ],
 };

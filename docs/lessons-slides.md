@@ -227,16 +227,26 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `triangulos-clasificacion` | Triángulos según ángulos (acutángulo, rectángulo, obtusángulo) y lados (equilátero, isósceles, escaleno) | — |
 | `triangulo-lineas-notables` | 4 | Mediatriz, mediana, bisectriz y altura de un triángulo (libro, Fig. 9–12) | — |
 | `triangulo-datos` | 3 | Datos necesarios para construir un polígono (2n − 3) y casos del triángulo, rectángulo e isósceles | — |
-| `triangulo-ala` | 5 | Triángulo dados un lado y los dos ángulos adyacentes (Fig. 14) | — |
-| `triangulo-lal` | 5 | Triángulo dados dos lados y el ángulo comprendido (Fig. 15) | — |
-| `equilatero-lado` | 3 | Equilátero a partir del lado (Fig. 16) | — |
-| `equilatero-altura` | 5 | Equilátero a partir de la altura, por semejanza (Fig. 17) | — |
-| `rectangulo-catetos` | 4 | Rectángulo dados los dos catetos (Fig. 18) | — |
-| `rectangulo-cateto-angulo` | 4 | Rectángulo dados un cateto y un ángulo agudo (Fig. 19) | — |
-| `rectangulo-hipotenusa` | 5 | Rectángulo dados un cateto y la hipotenusa, con la semicircunferencia (Fig. 20) | — |
-| `isosceles-lado-angulo` | 4 | Isósceles dados el lado igual y el ángulo desigual (Fig. 21) | — |
-| `isosceles-desigual` | 3 | Isósceles dados el lado desigual y un ángulo igual (Fig. 22) | — |
-| `isosceles-igual-angulo` | 4 | Isósceles dados el lado igual y un ángulo igual (Fig. 23) | — |
+| `triangulo-ala` | 8 | Triángulo dados un lado y los dos ángulos adyacentes (Fig. 14) | — |
+| `triangulo-lal` | 8 | Triángulo dados dos lados y el ángulo comprendido (Fig. 15) | — |
+| `equilatero-lado` | 6 | Equilátero a partir del lado (Fig. 16) | — |
+| `equilatero-altura` | 9 | Equilátero a partir de la altura, por semejanza (Fig. 17) | — |
+| `rectangulo-catetos` | 7 | Rectángulo dados los dos catetos (Fig. 18) | — |
+| `rectangulo-cateto-angulo` | 7 | Rectángulo dados un cateto y un ángulo agudo (Fig. 19) | — |
+| `rectangulo-hipotenusa` | 8 | Rectángulo dados un cateto y la hipotenusa, con la semicircunferencia (Fig. 20) | — |
+| `isosceles-lado-angulo` | 7 | Isósceles dados el lado igual y el ángulo desigual (Fig. 21) | — |
+| `isosceles-desigual` | 8 | Isósceles dados el lado desigual y un ángulo igual (Fig. 22) | — |
+| `isosceles-igual-angulo` | 7 | Isósceles dados el lado igual y un ángulo igual (Fig. 23) | — |
+| `equilatero-lado-practica` | 6 | Construir el equilátero con el lado: tomar a con el compás y dos arcos | — |
+| `triangulo-lal-practica` | 5 | Dos lados y el ángulo comprendido: transportador, medida y arco | — |
+| `rectangulo-catetos-practica` | 5 | Rectángulo con los dos catetos: ángulo recto con el transportador, medida y arco | — |
+| `isosceles-lado-angulo-practica` | 5 | Isósceles con el lado igual y el ángulo desigual | — |
+| `triangulo-ala-practica` | 4 | Un lado y dos ángulos adyacentes: dos ángulos con el transportador (el segundo en sentido horario) y el vértice | — |
+| `rectangulo-cateto-angulo-practica` | 4 | Rectángulo con un cateto y un ángulo agudo | — |
+| `isosceles-desigual-practica` | 4 | Isósceles con el lado desigual y el ángulo igual | — |
+| `rectangulo-hipotenusa-practica` | 7 | Rectángulo con cateto e hipotenusa: semicircunferencia y arco de radio b | — |
+| `isosceles-igual-angulo-practica` | 7 | Isósceles con el lado igual y un ángulo igual: dos arcos con la misma abertura | — |
+| `equilatero-altura-practica` | 6 | Equilátero con la altura: h desde N y las dos paralelas con escuadra y cartabón | — |
 | `triangulo-mediana` | Las tres medianas, el baricentro y su reparto 2 : 1 | — |
 | `triangulo-altura` | Las tres alturas y el ortocentro, dentro (acutángulo) y fuera (obtusángulo, con prolongación) | — |
 | `cuadrilateros-familia` | Cuadrilátero → romboide, rombo, rectángulo, cuadrado, trapecio y trapezoide | — |
