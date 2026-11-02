@@ -11,7 +11,6 @@ export const CURSOS_OCULTOS: string[] = ["dibujo-tecnico-2-bachillerato"];
 
 export const MODULOS_OCULTOS: Record<string, string[]> = {
   "dibujo-tecnico-1-bachillerato": [
-    "escalas",
     "sistemas-de-representacion",
     "sistema-diedrico",
     "sistema-planos-acotados",

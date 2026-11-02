@@ -201,6 +201,7 @@ import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachille
 import { circunferenciaGoniometrica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/03-circunferencia-goniometrica-1bach";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
 import { circunferenciasTangentesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/02-circunferencias-tangentes-dt1";
+import { clasesEscalasNormalizadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/02-clases-escalas-normalizadas-dt1";
 import { clasificacionMaterialesTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/01-clasificacion-materiales-tecnicos";
 import { cobreAluminioMagnesioTitanioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/02-cobre-aluminio-magnesio-titanio";
 import { codificadoresMultiplexoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/12-codificadores-multiplexores";
@@ -535,6 +536,8 @@ import { errorConfianzaTamanoCcss2Lesson } from "@/data/lessons/matematicas-ccss
 import { errorIncertidumbreMedidaFq4Lesson } from "@/data/lessons/fisica-4-eso/01-actividad-cientifica-magnitudes/02-error-incertidumbre-medida-fq4";
 import { erroresAbsolutoRelativo4esoLesson } from "@/data/lessons/matematicas-4-eso/02-numeros-decimales/05-errores-absoluto-relativo-4eso";
 import { erroresAbsolutoRelativo4esobLesson } from "@/data/lessons/matematicas-4-eso-b/01-numeros-reales/11-errores-absoluto-relativo-4esob";
+import { escalaGraficaContraescalaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/03-escala-grafica-contraescala-dt1";
+import { escalaTransversalesEscalimetroDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/05-escala-transversales-escalimetro-dt1";
 import { escalasDibujoLesson } from "@/data/lessons/tecnologia-1-eso/02-expresion-comunicacion-grafica/04-escalas-dibujo";
 import { escalasNumericasGraficasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/01-escalas-numericas-graficas-dt1";
 import { esferas2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/10-esferas-2eso";
@@ -1661,6 +1664,7 @@ import { trenesEngranajesCajaCambios3esoLesson } from "@/data/lessons/tecnologia
 import { tresPlanosPosicion2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/05-rectas-y-planos/07-tres-planos-posicion-2bach";
 import { triangulacionEstructurasLesson } from "@/data/lessons/tecnologia-1-eso/04-estructuras/05-triangulacion-estructuras";
 import { triangulacionPerfilesRefuerzos2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/02-triangulacion-perfiles-refuerzos-2eso";
+import { trianguloUniversalEscalasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/04-triangulo-universal-escalas-dt1";
 import { triangulos2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/01-triangulos-2eso";
 import { trigAngulosNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/05-trig-angulos-notables-4esob";
 import { trigCalculadora4esobLesson } from "@/data/lessons/matematicas-4-eso-b/07-trigonometria/06-trig-calculadora-4esob";
@@ -1920,6 +1924,7 @@ export const interactiveLessons = {
   "circunferencia-goniometrica-1bach": circunferenciaGoniometrica1bachLesson,
   "circunferencias-2eso": circunferencias2esoLesson,
   "circunferencias-tangentes-dt1": circunferenciasTangentesDt1Lesson,
+  "clases-escalas-normalizadas-dt1": clasesEscalasNormalizadasDt1Lesson,
   "clasificacion-materiales-tecnicos": clasificacionMaterialesTecnicosLesson,
   "cobre-aluminio-magnesio-titanio": cobreAluminioMagnesioTitanioLesson,
   "codificadores-multiplexores": codificadoresMultiplexoresLesson,
@@ -2254,6 +2259,8 @@ export const interactiveLessons = {
   "error-incertidumbre-medida-fq4": errorIncertidumbreMedidaFq4Lesson,
   "errores-absoluto-relativo-4eso": erroresAbsolutoRelativo4esoLesson,
   "errores-absoluto-relativo-4esob": erroresAbsolutoRelativo4esobLesson,
+  "escala-grafica-contraescala-dt1": escalaGraficaContraescalaDt1Lesson,
+  "escala-transversales-escalimetro-dt1": escalaTransversalesEscalimetroDt1Lesson,
   "escalas-dibujo": escalasDibujoLesson,
   "escalas-numericas-graficas-dt1": escalasNumericasGraficasDt1Lesson,
   "esferas-2eso": esferas2esoLesson,
@@ -3380,6 +3387,7 @@ export const interactiveLessons = {
   "tres-planos-posicion-2bach": tresPlanosPosicion2bachLesson,
   "triangulacion-estructuras": triangulacionEstructurasLesson,
   "triangulacion-perfiles-refuerzos-2eso": triangulacionPerfilesRefuerzos2esoLesson,
+  "triangulo-universal-escalas-dt1": trianguloUniversalEscalasDt1Lesson,
   "triangulos-2eso": triangulos2esoLesson,
   "trig-angulos-notables-4esob": trigAngulosNotables4esobLesson,
   "trig-calculadora-4esob": trigCalculadora4esobLesson,

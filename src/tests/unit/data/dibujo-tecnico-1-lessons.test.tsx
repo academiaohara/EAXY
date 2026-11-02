@@ -30,7 +30,7 @@ const SOLO_EXPLICACION = new Set(["semejanza-homotecia-dt1", "elementos-signos-g
 const TEMAS: [slug: string, lecciones: number][] = [
   ["instrumentos-de-dibujo", 2],
   ["trazados-fundamentales-plano", 12],
-  ["escalas", 1],
+  ["escalas", 5],
   ["formas-poligonales-1-triangulos", 2],
   ["formas-poligonales-2-cuadrilateros-poligonos", 4],
   ["relaciones-geometricas", 4],

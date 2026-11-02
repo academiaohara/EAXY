@@ -107,6 +107,11 @@ export type BenchSceneName =
   | "suma-segmentos-practica"
   | "diferencia-segmentos-practica"
   | "paralelo-compas-practica"
+  | "escala-concepto"
+  | "escala-clases"
+  | "escala-grafica"
+  | "triangulo-universal-escalas"
+  | "escala-transversales"
   | "perpendicular-exterior-practica"
   | "perpendicular-extremo-practica"
   | "perpendicular-punto-practica"
@@ -187,6 +192,11 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "suma-segmentos-practica": 13,
   "diferencia-segmentos-practica": 5,
   "paralelo-compas-practica": 12,
+  "escala-concepto": 3,
+  "escala-clases": 3,
+  "escala-grafica": 7,
+  "triangulo-universal-escalas": 6,
+  "escala-transversales": 5,
   "perpendicular-exterior-practica": 11,
   "perpendicular-extremo-practica": 16,
   "perpendicular-punto-practica": 11,

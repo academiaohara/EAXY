@@ -13,6 +13,7 @@ import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, 
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
+import { EscalaClases, EscalaConcepto, EscalaGrafica, EscalaTransversales, TrianguloUniversal } from "./scenes-escalas";
 import { PerpendicularExteriorPractica, PerpendicularExtremoPractica, ConstruyeAngulosPractica, DiferenciaSegmentosPractica, ParaleloCompasPractica, PerpendicularPuntoPractica, SumaSegmentosPractica, TransporteSegmentoPractica } from "./practicas-trazados";
 import { PerpendicularEscuadraCartabon, TransportadorMedir } from "./scenes-trazados";
 import { ReproProvider } from "./reproduccion";
@@ -171,6 +172,16 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <DiferenciaSegmentosPractica block={block} />;
     case "paralelo-compas-practica":
       return <ParaleloCompasPractica block={block} />;
+    case "escala-concepto":
+      return <EscalaConcepto block={block} />;
+    case "escala-clases":
+      return <EscalaClases block={block} />;
+    case "escala-grafica":
+      return <EscalaGrafica block={block} />;
+    case "triangulo-universal-escalas":
+      return <TrianguloUniversal block={block} />;
+    case "escala-transversales":
+      return <EscalaTransversales block={block} />;
     case "perpendicular-exterior-practica":
       return <PerpendicularExteriorPractica block={block} />;
     case "perpendicular-extremo-practica":
