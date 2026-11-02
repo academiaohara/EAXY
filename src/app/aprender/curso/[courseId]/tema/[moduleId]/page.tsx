@@ -40,7 +40,7 @@ export default async function CourseTopicPage({ params }: CourseTopicPageProps) 
       <CourseTopicView
         outline={outline}
         courseModule={courseModule}
-        moduleNumber={moduleIndex + 1}
+        moduleNumber={courseModule.orderIndex}
       />
     </div>
   );

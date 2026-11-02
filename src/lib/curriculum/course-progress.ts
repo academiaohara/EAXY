@@ -66,9 +66,10 @@ export function getCourseProgress(modules: ModuleSummary[]): CourseProgress {
 
 /** Lección que se propone al alumno: la empezada, la primera pendiente o un repaso. */
 export function findNextLesson(modules: ModuleSummary[]): NextLessonRef | null {
-  const withNumber = modules.map((courseModule, index) => ({
+  // El número de tema es el del libro/temario (`orderIndex`), aunque haya temas ocultos entre medias.
+  const withNumber = modules.map((courseModule) => ({
     courseModule,
-    moduleNumber: index + 1,
+    moduleNumber: courseModule.orderIndex,
   }));
 
   for (const { courseModule, moduleNumber } of withNumber) {

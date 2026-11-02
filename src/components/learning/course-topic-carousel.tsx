@@ -108,7 +108,7 @@ export function CourseTopicCarousel({
           {prev ? (
             <SideTopic
               href={prevHref}
-              moduleNumber={activeModuleNumber - 1}
+              moduleNumber={prev.orderIndex}
               title={prev.title}
               side="left"
             />
@@ -119,7 +119,7 @@ export function CourseTopicCarousel({
 
         <div className="relative z-10 flex min-w-0 flex-col items-center px-1 text-center sm:px-2">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-cobalt">
-            Tema {activeModuleNumber} de {sorted.length}
+            Tema {activeModuleNumber}
           </p>
           <p
             className="font-display text-6xl font-extrabold tabular-nums leading-none tracking-tight text-ink sm:text-7xl"
@@ -136,7 +136,7 @@ export function CourseTopicCarousel({
           {next ? (
             <SideTopic
               href={nextHref}
-              moduleNumber={activeModuleNumber + 1}
+              moduleNumber={next.orderIndex}
               title={next.title}
               side="right"
             />

@@ -24,7 +24,7 @@ function lesson(
 }
 
 function courseModule(id: string, lessons: LessonSummary[]): ModuleSummary {
-  return { id, slug: id, title: `Tema ${id}`, orderIndex: 0, lessons, topicExercises: [] };
+  return { id, slug: id, title: `Tema ${id}`, orderIndex: Number(id.replace(/\D/g, "")) || 0, lessons, topicExercises: [] };
 }
 
 describe("getModuleProgress", () => {
@@ -77,6 +77,15 @@ describe("findNextLesson", () => {
 
     expect(next?.lesson.id).toBe("c");
     expect(next?.moduleNumber).toBe(2);
+  });
+
+  it("el número de tema es el del temario aunque falten temas ocultos entre medias", () => {
+    const next = findNextLesson([
+      courseModule("m2", [lesson("a", "completed")]),
+      courseModule("m4", [lesson("c", "not_started")]),
+    ]);
+
+    expect(next?.moduleNumber).toBe(4);
   });
 
   it("propone repaso cuando todo está completado", () => {

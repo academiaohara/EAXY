@@ -39,5 +39,5 @@ export function getModulePosition(
     return null;
   }
 
-  return { courseModule: sorted[index], index, number: index + 1 };
+  return { courseModule: sorted[index], index, number: sorted[index].orderIndex };
 }
