@@ -8,12 +8,10 @@ export const paralelaCompasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Rectas paralelas", [
-      { kind: "steps", items: [
-        "Son **rectas coplanarias que no tienen ningún punto común**: es decir, se cortan en el infinito.",
-        "Se han trazado ya con escuadra y cartabón; aquí se hace **solo con compás y regla**.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Rectas paralelas", [], bench("rectas-paralelas", [
+      { title: "Rectas paralelas", text: "Son **rectas coplanarias que no tienen ningún punto común**: es decir, se cortan en el infinito.", fact: "Se cortan en el infinito" },
+      { title: "Con compás y regla", text: "Se han trazado ya con escuadra y cartabón; aquí se hace **solo con compás y regla**.", fact: "Sin escuadra ni cartabón" },
+    ]), "stack"),
 
     slide("construccion", "Paralela a una recta por un punto P", [], bench("paralelo-compas", [
       { title: "Recta y punto", text: "Sean la recta $t$ y el punto $P$. Se quiere trazar por $P$ la **paralela** a $t$.", fact: "p ∥ t por P" },

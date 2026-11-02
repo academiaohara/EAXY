@@ -8,15 +8,13 @@ export const ovaloOvoideDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[9],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Curvas hechas con arcos", [
-      { kind: "steps", items: [
-        "Las **curvas técnicas** se trazan con **arcos de circunferencia** tangentes entre sí, por lo que se pueden construir con compás y mecanizar fácilmente.",
-        "**Óvalo**: curva cerrada de **4 arcos** con **dos ejes de simetría** (mayor y menor). Se usa en trazados de pistas, arcos escarzanos, contornos de piezas y bridas.",
-        "**Ovoide**: curva cerrada de **4 arcos** con **un solo eje de simetría**, con forma de huevo.",
-        "En todos, los **puntos de enlace** están sobre las **rectas que unen los centros** de los arcos consecutivos.",
-        "No son **elipses**: la elipse es una cónica (curva de curvatura continua) que se estudia en 2.º.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Curvas hechas con arcos", [], bench("curvas-ovalo-ovoide", [
+      { title: "Curvas hechas con arcos", text: "Las **curvas técnicas** se trazan con **arcos de circunferencia** tangentes entre sí, por lo que se pueden construir con compás y mecanizar fácilmente.", fact: "Arcos tangentes" },
+      { title: "El óvalo", text: "**Óvalo**: curva cerrada de **4 arcos** con **dos ejes de simetría** (mayor y menor). Se usa en trazados de pistas, arcos escarzanos, contornos de piezas y bridas.", fact: "4 arcos, 2 ejes" },
+      { title: "El ovoide", text: "**Ovoide**: curva cerrada de **4 arcos** con **un solo eje de simetría**, con forma de huevo.", fact: "4 arcos, 1 eje" },
+      { title: "Puntos de enlace", text: "En todos, los **puntos de enlace** están sobre las **rectas que unen los centros** de los arcos consecutivos.", fact: "En las rectas de centros" },
+      { title: "No son elipses", text: "No son **elipses**: la elipse es una cónica (curva de curvatura continua) que se estudia en 2.º.", fact: "Curvatura no continua" },
+    ]), "stack"),
 
     slide("traza", "Óvalo dado el eje mayor", [], bench("ovalo-compas", [
       { title: "Eje mayor en tres partes", text: "Se conoce el **eje mayor** $AB$. Divídelo en **tres partes iguales** de longitud $d$: los puntos de división son $O_1$ y $O_2$, centros de los arcos pequeños.", fact: "AB = 3d" },
@@ -27,13 +25,11 @@ export const ovaloOvoideDt1Lesson: InteractiveLesson = {
       { title: "El óvalo", text: "Los cuatro arcos son **tangentes** entre sí. El óvalo tiene dos ejes de simetría y **no es una elipse**.", fact: "Cuatro arcos tangentes" },
     ]), "stack"),
 
-    slide("ovoide", "El ovoide", [
-      { kind: "steps", items: [
-        "**Ovoide**: un **semicírculo** de radio $r$ en la parte inferior, dos **arcos laterales** de radio $2r$ con centros en los extremos del diámetro y un **arco superior** más pequeño que cierra la curva, tangente a los dos laterales.",
-        "En su construcción se emplean **triángulos equiláteros** o **ángulos de 60°** que fijan las posiciones de los centros.",
-        "La forma resultante es **simétrica respecto a un solo eje**, lo que la hace útil para **perfiles de levas y huevos de diseño**.",
-      ] },
-    ], undefined, "stack"),
+    slide("ovoide", "El ovoide", [], bench("ovoide-descripcion", [
+      { title: "El ovoide", text: "**Ovoide**: un **semicírculo** de radio $r$ en la parte inferior, dos **arcos laterales** de radio $2r$ con centros en los extremos del diámetro y un **arco superior** más pequeño que cierra la curva, tangente a los dos laterales.", fact: "Semicírculo + 2 laterales + superior" },
+      { title: "Triángulos de 60°", text: "En su construcción se emplean **triángulos equiláteros** o **ángulos de 60°** que fijan las posiciones de los centros.", fact: "Fijan los centros" },
+      { title: "Un solo eje", text: "La forma resultante es **simétrica respecto a un solo eje**, lo que la hace útil para **perfiles de levas y huevos de diseño**.", fact: "Levas y huevos" },
+    ]), "stack"),
 
     benchTask("ovalo-construye", "Dibuja el óvalo", "ovalo-practica", [
       { title: "Toma la medida d", text: "Toca $O_1$ y $O_2$: el compás queda con la abertura $d$.", fact: "Abertura = d" },

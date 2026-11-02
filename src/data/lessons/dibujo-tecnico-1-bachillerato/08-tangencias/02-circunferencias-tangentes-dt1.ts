@@ -16,14 +16,12 @@ export const circunferenciasTangentesDt1Lesson: InteractiveLesson = {
       { title: "Interiores", text: "Si $d < R - r$ una circunferencia queda dentro de la otra sin tocarla: no hay tangentes comunes.", fact: "d < R − r" },
     ]), "stack"),
 
-    slide("construir", "Tangentes comunes", [
-      { kind: "steps", items: [
-        "Las tangentes comunes exteriores miden $\\sqrt{d^2 - (R-r)^2}$ entre los puntos de tangencia; las interiores, $\\sqrt{d^2 - (R+r)^2}$.",
-        "**Exteriores**: se traza la **circunferencia auxiliar** de radio $R - r$ con el mismo centro que la mayor, se trazan las tangentes desde el centro de la menor a esa circunferencia y se **desplazan** una distancia $r$.",
-        "**Interiores**: igual, con circunferencia auxiliar de radio $R + r$.",
-        "Los puntos de tangencia se hallan prolongando los **radios** (perpendiculares a las tangentes). Se usan en el dibujo de **correas y cadenas** entre dos poleas.",
-      ] },
-    ], undefined, "stack"),
+    slide("construir", "Tangentes comunes", [], bench("tangentes-comunes", [
+      { title: "Dos circunferencias", text: "Se buscan las **tangentes comunes** a dos circunferencias de radios $R$ y $r$ cuyos centros distan $d$. Se usan en el dibujo de **correas y cadenas** entre dos poleas.", fact: "Correas y cadenas entre poleas" },
+      { title: "Tangentes exteriores", text: "Las tangentes comunes **exteriores** miden $\\sqrt{d^2 - (R-r)^2}$ entre los puntos de tangencia.", fact: "√(d² − (R − r)²)" },
+      { title: "Circunferencia auxiliar", text: "**Exteriores**: se traza la **circunferencia auxiliar** de radio $R - r$ con el mismo centro que la mayor, se trazan las tangentes desde el centro de la menor a esa circunferencia y se **desplazan** una distancia $r$.", fact: "Radio R − r" },
+      { title: "Tangentes interiores", text: "**Interiores**: igual, con circunferencia auxiliar de radio $R + r$; miden $\\sqrt{d^2 - (R+r)^2}$. Los puntos de tangencia se hallan prolongando los **radios** (perpendiculares a las tangentes).", fact: "√(d² − (R + r)²)" },
+    ]), "stack"),
 
     benchTask("circ-tangente-construye", "Circunferencia tangente en un punto", "circ-tangente-practica", [
       { title: "Recta de los centros", text: "El centro de una circunferencia tangente en $T$ está **en la recta $OT$**. Toca $O$ y $T$ para trazarla con la regla.", fact: "Centros y T alineados" },

@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { benchParte, slide } from "@/data/lessons/tec1-helpers";
+import { bench, benchParte, slide } from "@/data/lessons/tec1-helpers";
 
 export const elementosSignosGeometricosDt1Lesson: InteractiveLesson = {
   slug: "elementos-signos-geometricos-dt1",
@@ -8,14 +8,12 @@ export const elementosSignosGeometricosDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("intro", "Cómo estudiar las construcciones", [
-      { kind: "steps", items: [
-        "Este tema reúne construcciones **sencillas y elementales**, necesarias después en construcciones de mayor dificultad.",
-        "La **rapidez** y la **precisión** son las dos características principales de un dibujo técnico: a ellas hay que dedicar la mayor atención.",
-        "Las construcciones **no se aprenden de memoria**: a partir de los datos y de las propiedades geométricas de cada caso se **razona el problema** y se fija bien **el porqué** de cada operación.",
-        "Si se dominan estas construcciones sin consultar apuntes, se ha dado el primer paso seguro en el aprendizaje de este idioma: el dibujo.",
-      ] },
-    ], undefined, "stack"),
+    slide("intro", "Cómo estudiar las construcciones", [], bench("dt-como-estudiar", [
+      { title: "Construcciones elementales", text: "Este tema reúne construcciones **sencillas y elementales**, necesarias después en construcciones de mayor dificultad.", fact: "Base de las más difíciles" },
+      { title: "Rapidez y precisión", text: "La **rapidez** y la **precisión** son las dos características principales de un dibujo técnico: a ellas hay que dedicar la mayor atención.", fact: "Rapidez + precisión" },
+      { title: "No se aprenden de memoria", text: "Las construcciones **no se aprenden de memoria**: a partir de los datos y de las propiedades geométricas de cada caso se **razona el problema** y se fija bien **el porqué** de cada operación.", fact: "Razonar el porqué" },
+      { title: "El primer paso", text: "Si se dominan estas construcciones sin consultar apuntes, se ha dado el primer paso seguro en el aprendizaje de este idioma: el dibujo.", fact: "El idioma del dibujo" },
+    ]), "stack"),
 
     slide("el-puntos-lineas", "Punto, recta y línea curva", [], benchParte("elementos-geometricos", 0, [
       { title: "Punto", text: "El **punto** es la intersección de dos rectas. Se designa con **letras mayúsculas** ($A, B, C, \\dots, P, Q, R, \\dots$) o con **números** ($1, 2, 3, \\dots$).", fact: "Mayúsculas o números" },

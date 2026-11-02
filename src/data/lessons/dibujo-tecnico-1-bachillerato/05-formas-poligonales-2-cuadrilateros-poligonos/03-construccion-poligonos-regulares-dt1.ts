@@ -10,15 +10,13 @@ export const construccionPoligonosRegularesDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[5],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Construcciones exactas y método general", [
-      { kind: "steps", items: [
-        "Con regla y compás hay construcciones **exactas** para $n = 3, 4, 5, 6, 8, 10, 12$ y sus dobles. Para **cualquier** $n$ existe el **método general**, que es **aproximado**.",
-        "**Triángulo**: se unen vértices alternos del hexágono. **Dodecágono**: se bisecan los arcos del hexágono.",
-        "**Cuadrado**: dos diámetros perpendiculares. **Octógono**: se bisecan los arcos del cuadrado.",
-        "**Pentágono y decágono**: se construyen con el **lado áureo** (el lado del decágono es $R/\\varphi$).",
-        "Los polígonos de **7, 9 y 11 lados** no se pueden construir exactamente con regla y compás.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Construcciones exactas y método general", [], bench("construcciones-exactas", [
+      { title: "Exactas y método general", text: "Con regla y compás hay construcciones **exactas** para $n = 3, 4, 5, 6, 8, 10, 12$ y sus dobles. Para **cualquier** $n$ existe el **método general**, que es **aproximado**.", fact: "Exactas: 3, 4, 5, 6, 8, 10, 12" },
+      { title: "Triángulo y dodecágono", text: "**Triángulo**: se unen vértices alternos del hexágono. **Dodecágono**: se bisecan los arcos del hexágono.", fact: "Vértices alternos; bisecar" },
+      { title: "Cuadrado y octógono", text: "**Cuadrado**: dos diámetros perpendiculares. **Octógono**: se bisecan los arcos del cuadrado.", fact: "Dos diámetros; bisecar" },
+      { title: "Pentágono y decágono", text: "**Pentágono y decágono**: se construyen con el **lado áureo** (el lado del decágono es $R/\\varphi$).", fact: "Lado áureo" },
+      { title: "Imposibles", text: "Los polígonos de **7, 9 y 11 lados** no se pueden construir exactamente con regla y compás.", fact: "7, 9 y 11 lados" },
+    ]), "stack"),
 
     slide("hexagono", "Hexágono regular", [], bench("hexagono-compas", [
       { title: "Circunferencia y radio", text: "El **hexágono regular** se inscribe en una circunferencia de radio $R$. Su lado vale **exactamente el radio**: $l = R$.", fact: "l = R" },

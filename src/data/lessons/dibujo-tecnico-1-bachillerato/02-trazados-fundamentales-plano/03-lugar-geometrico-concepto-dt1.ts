@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { benchParte, slide } from "@/data/lessons/tec1-helpers";
+import { bench, benchParte, slide } from "@/data/lessons/tec1-helpers";
 
 export const lugarGeometricoConceptoDt1Lesson: InteractiveLesson = {
   slug: "lugar-geometrico-concepto-dt1",
@@ -8,12 +8,10 @@ export const lugarGeometricoConceptoDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[2],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Una propiedad que comparten todos los puntos", [
-      { kind: "steps", items: [
-        "Un **lugar geométrico** es el **conjunto de puntos** (del plano o del espacio) que gozan **todos** de una misma propiedad.",
-        "Es un concepto muy importante: casi todas las construcciones se resuelven buscando un punto como **intersección de dos lugares geométricos**.",
-      ] },
-    ], undefined, "stack"),
+    slide("def", "Una propiedad que comparten todos los puntos", [], bench("lugares-interseccion", [
+      { title: "Un lugar geométrico", text: "Un **lugar geométrico** es el **conjunto de puntos** (del plano o del espacio) que gozan **todos** de una misma propiedad.", fact: "Todos cumplen la misma propiedad" },
+      { title: "Intersección de dos lugares", text: "Es un concepto muy importante: casi todas las construcciones se resuelven buscando un punto como **intersección de dos lugares geométricos**.", fact: "P = lugar 1 ∩ lugar 2" },
+    ]), "stack"),
 
     slide("ej-equidistan", "Lugares geométricos que equidistan", [], benchParte("lugar-geometrico", 0, [
       { title: "La circunferencia", text: "**La circunferencia**: todos sus puntos **equidistan del centro**. Su distancia al centro es el radio $R$.", fact: "Equidista del centro" },

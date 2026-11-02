@@ -16,14 +16,13 @@ export const poligonosRegularesPropiedadesDt1Lesson: InteractiveLesson = {
       { title: "Ángulo interior", text: "El **ángulo interior** vale $\\beta = \\dfrac{180^\\circ (n-2)}{n}$. El número de **diagonales** es $\\dfrac{n(n-3)}{2}$.", fact: "β = 180°(n − 2)/n" },
     ]), "stack"),
 
-    slide("casos", "Casos que conviene recordar", [
-      { kind: "steps", items: [
-        "**Triángulo equilátero**: $l = R\\sqrt{3}$.",
-        "**Cuadrado**: $l = R\\sqrt{2}$.",
-        "**Hexágono**: $l = R$. Se compone de **6 triángulos equiláteros** y, con ángulo interior de $120^\\circ$, tres hexágonos encajan en $360^\\circ$: por eso **rellena el plano**.",
-        "**Pentágono**: $l = 1{,}176\\,R$. **Decágono**: $l = 0{,}618\\,R$ (la sección áurea del radio).",
-      ] },
-    ], undefined, "stack"),
+    slide("casos", "Casos que conviene recordar", [], bench("poligonos-lado-radio", [
+      { title: "Triángulo equilátero", text: "**Triángulo equilátero**: $l = R\\sqrt{3}$.", fact: "l = R√3" },
+      { title: "Cuadrado", text: "**Cuadrado**: $l = R\\sqrt{2}$.", fact: "l = R√2" },
+      { title: "Hexágono", text: "**Hexágono**: $l = R$. Se compone de **6 triángulos equiláteros** y, con ángulo interior de $120^\\circ$, tres hexágonos encajan en $360^\\circ$: por eso **rellena el plano**.", fact: "l = R" },
+      { title: "Pentágono", text: "**Pentágono**: $l = 1{,}176\\,R$.", fact: "l = 1,176 R" },
+      { title: "Decágono", text: "**Decágono**: $l = 0{,}618\\,R$ (la sección áurea del radio).", fact: "l = 0,618 R" },
+    ]), "stack"),
 
     benchTask("apotema-construye", "Traza la apotema", "apotema-practica", [
       { title: "Clava la punta en P", text: "La apotema parte del centro y llega al punto medio de un lado: es su **mediatriz**. Toca el extremo $P$ del lado." },

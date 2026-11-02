@@ -14,24 +14,19 @@ export const clasesEscalasNormalizadasDt1Lesson: InteractiveLesson = {
       { title: "Escala de ampliación", text: "Cuando el dibujo es **mayor** que el cuerpo real ($E > 1$) la escala es **de ampliación**: 2:1, 5:1, 10:1.", fact: "El primer número es mayor que el segundo" },
     ]), "stack"),
 
-    slide("normalizadas", "Escalas normalizadas (Tabla 1)", [
-      { kind: "text", text: "Las escalas que deben utilizarse están **normalizadas**. Se agrupan según el tipo de trabajo:" },
-      { kind: "steps", items: [
-        "**Fabricación e instalaciones**: 1:2, 1:5, 1:10, 1:20, 1:50, 1:100, 1:200.",
-        "**Construcciones civiles**: 1:5, 1:10, 1:20, 1:50, 1:100, 1:200, 1:500, 1:1 000.",
-        "**Topografía**: 1:100, 1:200, 1:500, 1:1 000, 1:2 000, 1:5 000, 1:10 000, 1:25 000, 1:50 000.",
-        "**Escalas de ampliación**: 2:1, 5:1 y 10:1.",
-      ] },
-      { kind: "warning", title: "Se permiten, pero no se recomiendan", text: "Las escalas 1:2,5, 1:25, 1:250 y 1:2 500 y, en urbanismo, 1:1 000 y 1:10 000." },
-    ], undefined, "stack"),
+    slide("normalizadas", "Escalas normalizadas (Tabla 1)", [], bench("escalas-normalizadas", [
+      { title: "Fabricación e instalaciones", text: "Las escalas que deben utilizarse están **normalizadas**. Para **fabricación e instalaciones**: 1:2, 1:5, 1:10, 1:20, 1:50, 1:100 y 1:200.", fact: "De 1:2 a 1:200" },
+      { title: "Construcciones civiles", text: "Para **construcciones civiles**: 1:5, 1:10, 1:20, 1:50, 1:100, 1:200, 1:500 y 1:1 000.", fact: "De 1:5 a 1:1 000" },
+      { title: "Topografía", text: "En **topografía** se usan las más reducidas: de 1:100 hasta **1:50 000** (1:100, 1:200, 1:500, 1:1 000, 1:2 000, 1:5 000, 1:10 000, 1:25 000 y 1:50 000).", fact: "Hasta 1:50 000" },
+      { title: "Ampliación", text: "Las escalas normalizadas **de ampliación** son tres: **2:1, 5:1 y 10:1**.", fact: "2:1, 5:1, 10:1" },
+      { title: "Permitidas, no recomendadas", text: "Se permite, aunque no se recomienda, el uso de 1:2,5, 1:25, 1:250 y 1:2 500 y, en urbanismo, 1:1 000 y 1:10 000.", fact: "Mejor, las normalizadas" },
+    ]), "stack"),
 
-    slide("detalles", "Detalles que hay que tener en cuenta", [
-      { kind: "steps", items: [
-        "Todas las escalas empleadas se **indicarán en la rotulación**, destacando la **principal** con caracteres de mayor tamaño. Las secundarias se indican también en las partes correspondientes del dibujo.",
-        "En general, **todo se dibuja a escala**. Las cotas que no estén a escala se deben **subrayar**.",
-        "Sobre un plano dibujado a escala, las cifras de cota son **siempre las reales**, es decir, las medidas reales de la pieza.",
-      ] },
-    ], undefined, "stack"),
+    slide("detalles", "Detalles que hay que tener en cuenta", [], bench("escala-detalles", [
+      { title: "En la rotulación", text: "Todas las escalas empleadas se indican en la **rotulación**, destacando la **principal** con caracteres de mayor tamaño. Las secundarias se indican también en las partes correspondientes del dibujo.", fact: "Principal: tamaño mayor" },
+      { title: "Todo a escala", text: "En general, **todo se dibuja a escala**. Las cotas que no estén a escala se deben **subrayar**.", fact: "Cota no a escala: subrayada" },
+      { title: "Cotas reales", text: "Sobre un plano dibujado a escala, las cifras de cota son **siempre las reales**, es decir, las medidas reales de la pieza.", fact: "Cota = medida real" },
+    ]), "stack"),
 
     pick("act-1", "Reducción y ampliación", "¿Cuál es la diferencia entre una escala de reducción y una de ampliación?",
       "En la de reducción el dibujo es menor que la realidad; en la de ampliación, mayor",

@@ -1,6 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, calc, nums, pick, slide, tool } from "@/data/lessons/tec1-helpers";
+import { bench, calc, nums, pick, slide } from "@/data/lessons/tec1-helpers";
 
 export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
   slug: "escalas-numericas-graficas-dt1",
@@ -8,13 +8,11 @@ export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[3],
   stage: { theme: "board" },
   steps: [
-    slide("proporcion", "Reducir o ampliar en la misma proporción", [
-      { kind: "steps", items: [
-        "Al representar un objeto sobre el papel para tener su «plano industrial», a veces su tamaño, grande o pequeño, **no permite dibujarlo con las medidas reales**. Hay que **reducir o ampliar** las medidas reales **en una misma proporción**.",
-        "La **proporción** o **escala del dibujo** es la relación que existe entre las medidas del dibujo y las medidas reales del objeto.",
-        "Se llama también **razón** o proporción a la relación entre los valores numéricos de dos segmentos rectilíneos: el número que expresa el valor de un segmento cuando el otro se toma como unidad.",
-      ] },
-    ], undefined, "stack"),
+    slide("proporcion", "Reducir o ampliar en la misma proporción", [], bench("escala-proporcion", [
+      { title: "Una pieza demasiado grande", text: "Al representar un cuerpo sobre el papel para obtener su «plano industrial», muchas veces su tamaño real **no cabe en la hoja** (o es tan pequeño que no se aprecia).", fact: "Hay que reducir o ampliar" },
+      { title: "La misma proporción", text: "Se **reducen o amplían** las medidas reales **en una misma proporción**: todas las medidas del dibujo guardan la misma relación con las reales. Esa relación es la **proporción** o **escala del dibujo**.", fact: "Todas las medidas, en la misma proporción" },
+      { title: "Razón entre dos segmentos", text: "Se llama **razón** o proporción a la relación entre los valores de dos segmentos rectilíneos: el número que expresa el valor de un segmento cuando el otro se toma como unidad. Aquí, $AB/ab = 3$.", fact: "AB / ab = 3" },
+    ]), "stack"),
 
     slide("escala", "La escala es un cociente", [], bench("escala-concepto", [
       { title: "Dibujo y realidad", text: "Una medida de **1 400 mm** en la realidad se representa en el dibujo por **70 mm**. Hay que decir cuánto se ha reducido.", fact: "Real: 1 400 mm; dibujo: 70 mm" },
@@ -22,9 +20,9 @@ export const escalasNumericasGraficasDt1Lesson: InteractiveLesson = {
       { title: "Cómo se lee", text: "El dibujo cabe **20 veces** en la realidad: la escala es $1/20$ y se lee **«escala 1 es a 20»**, que se escribe $E = 1:20$.", fact: "1:20 = «1 es a 20»" },
     ]), "stack"),
 
-    slide("explora", "Elige la escala", [
-      { kind: "text", text: "Indica el tamaño real del objeto y el espacio de la hoja: la herramienta elige la mayor escala normalizada que cabe y dibuja la escala gráfica." },
-    ], tool("dt1-escala-explorador"), "visual-top"),
+    slide("explora", "Elige la escala", [], bench("escala-explorador", [
+      { title: "La mayor escala normalizada que cabe", text: "Indica el **tamaño real** del objeto y el **espacio** de la hoja: se elige la **mayor escala normalizada** con la que el objeto cabe. La **cota** sigue indicando la medida real, sea cual sea la escala.", fact: "Escala = dibujo / real" },
+    ]), "stack"),
 
     calc("calc-razon", "Calcula la escala", "Una medida de 1 400 mm se representa en el dibujo por 70 mm. ¿Cuál es N en la escala 1:N?", nums(20), "E = 70/1 400 = 1/20, es decir, 1:20.", "Divide la medida real entre la del dibujo."),
     calc("calc-1-50", "Reducir", "Una pared de 2 m (2000 mm) se dibuja a escala 1:50. ¿Cuántos mm mide en el dibujo?", nums(40), "2000/50 = 40 mm.", "Divide entre 50."),
