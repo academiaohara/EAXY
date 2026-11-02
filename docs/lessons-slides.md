@@ -1694,3 +1694,5 @@ Cada transformación es **un único recorrido guiado**, sin saltarse pasos «por
 ### Compás animado paso a paso (`bench/linea-tiempo.tsx`)
 
 Las escenas de construcción con compás describen cada paso como una lista de acciones (`Acc`): el compás **entra** en la hoja, **va** a un punto con una abertura (se pincha y se abre), **traza un arco** girando, la regla **traza un rayo o una recta**, se **marcan** puntos y se **etiquetan** ángulos; al terminar el compás **sale**. `montarLinea(accs, paso, progreso)` dibuja lo hecho, lo que ocurre ahora y el compás; `useLinea` en `scenes-angulos.tsx` lo une con `useProgreso`. Úsala en escenas nuevas para que el alumno vea de dónde sale cada arco. Ejemplos: suma/diferencia de ángulos, bisectriz por el segundo método, división y construcción de ángulos.
+
+| `escala-concepto` / `escala-clases` / `escala-grafica` / `triangulo-universal-escalas` / `escala-transversales` | 3 / 3 / 7 / 6 / 5 | Tema 3 (Escalas): escala como cociente, clases de escalas, escala gráfica con contraescala (E 1:2 y E 1:250), triángulo universal y escala decimal de transversales | — |
