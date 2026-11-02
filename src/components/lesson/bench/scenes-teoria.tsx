@@ -12,11 +12,11 @@ import { ArcoPlano } from "./scenes-trazados";
  * Escenas de la «mesa de dibujo» para las ideas de teoría de los temas 2, 4, 5, 8 y 9: figuras que se destacan paso a paso
  * (el texto va a la derecha). Son diagramas estáticos: cada paso resalta una idea.
  */
-const AUX = "#6b7480";
-const ROJO = "#c0392b";
+export const AUX = "#6b7480";
+export const ROJO = "#c0392b";
 const MORADO = "#7c5cbf";
 
-function Hoja({ scene, block, step, setStep, label, testId, titulo, sub, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; testId: string; titulo: string; sub?: string; children: ReactNode }) {
+export function Hoja({ scene, block, step, setStep, label, testId, titulo, sub, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; testId: string; titulo: string; sub?: string; children: ReactNode }) {
   return (
     <BenchShell scene={scene} notes={block.notes} step={step} setStep={setStep} label={label}>
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label={label} data-testid={testId}>
@@ -30,12 +30,12 @@ function Hoja({ scene, block, step, setStep, label, testId, titulo, sub, childre
   );
 }
 
-const Dot = ({ p, color = INK, r = 3.4 }: { p: Pt; color?: string; r?: number }) => <circle cx={p[0]} cy={p[1]} r={r} fill={color} />;
-const Circ = ({ c, r, color = INK, w = 1.8, dash, fill = "none" }: { c: Pt; r: number; color?: string; w?: number; dash?: string; fill?: string }) => <circle cx={c[0]} cy={c[1]} r={r} fill={fill} stroke={color} strokeWidth={w} strokeDasharray={dash} />;
+export const Dot = ({ p, color = INK, r = 3.4 }: { p: Pt; color?: string; r?: number }) => <circle cx={p[0]} cy={p[1]} r={r} fill={color} />;
+export const Circ = ({ c, r, color = INK, w = 1.8, dash, fill = "none" }: { c: Pt; r: number; color?: string; w?: number; dash?: string; fill?: string }) => <circle cx={c[0]} cy={c[1]} r={r} fill={fill} stroke={color} strokeWidth={w} strokeDasharray={dash} />;
 const poly = (c: Pt, R: number, n: number, rot = 90): Pt[] => Array.from({ length: n }, (_, i) => enCirculo(c, R, rot + (360 * i) / n));
-const Poli = ({ pts, color = INK, w = 1.8, fill = "none" }: { pts: Pt[]; color?: string; w?: number; fill?: string }) => <polygon points={pts.map((p) => p.join(",")).join(" ")} fill={fill} stroke={color} strokeWidth={w} strokeLinejoin="round" />;
+export const Poli = ({ pts, color = INK, w = 1.8, fill = "none" }: { pts: Pt[]; color?: string; w?: number; fill?: string }) => <polygon points={pts.map((p) => p.join(",")).join(" ")} fill={fill} stroke={color} strokeWidth={w} strokeLinejoin="round" />;
 /** Marca de igualdad (rayita) en el punto medio de un segmento. */
-const Tick = ({ a, b, k = 1, color = INK }: { a: Pt; b: Pt; k?: number; color?: string }) => {
+export const Tick = ({ a, b, k = 1, color = INK }: { a: Pt; b: Pt; k?: number; color?: string }) => {
   const m = puntoMedio(a, b);
   const d = dist(a, b) || 1;
   const u: Pt = [(b[0] - a[0]) / d, (b[1] - a[1]) / d];
@@ -50,7 +50,7 @@ const Tick = ({ a, b, k = 1, color = INK }: { a: Pt; b: Pt; k?: number; color?: 
     </g>
   );
 };
-const Recto = ({ v, a, b, s = 12 }: { v: Pt; a: Pt; b: Pt; s?: number }) => {
+export const Recto = ({ v, a, b, s = 12 }: { v: Pt; a: Pt; b: Pt; s?: number }) => {
   const da = dist(v, a) || 1;
   const db = dist(v, b) || 1;
   const ua: Pt = [(a[0] - v[0]) / da, (a[1] - v[1]) / da];
@@ -60,7 +60,7 @@ const Recto = ({ v, a, b, s = 12 }: { v: Pt; a: Pt; b: Pt; s?: number }) => {
   const p3: Pt = [v[0] + ub[0] * s, v[1] + ub[1] * s];
   return <path d={`M${p1.join(" ")} L${p2.join(" ")} L${p3.join(" ")}`} fill="none" stroke={AMBAR} strokeWidth="1.6" />;
 };
-const T = (p: Pt, txt: string, color = INK, size = 14, dx = 6, dy = -6) => <Txt p={[p[0] + dx, p[1] + dy]} color={color} size={size}>{txt}</Txt>;
+export const T = (p: Pt, txt: string, color = INK, size = 14, dx = 6, dy = -6) => <Txt p={[p[0] + dx, p[1] + dy]} color={color} size={size}>{txt}</Txt>;
 
 /* ───────────── Tema 2: cómo estudiar las construcciones ───────────── */
 

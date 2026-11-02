@@ -4,15 +4,14 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const construccionTriangulosDt1Lesson: InteractiveLesson = {
   slug: "construccion-triangulos-dt1",
-  title: "2. Clasificación y construcción de triángulos",
+  title: "2. Construcción de triángulos a partir de sus datos",
   subtitle: DT1_SUBTITLES[4],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Triángulos y datos para construirlos", [], bench("triangulos-clasificacion", [
-      { title: "Según sus lados", text: "Por sus **lados**: **equilátero** (3 iguales), **isósceles** (2 iguales) y **escaleno** (ninguno igual).", fact: "Equilátero, isósceles, escaleno" },
-      { title: "Según sus ángulos", text: "Por sus **ángulos**: **acutángulo**, **rectángulo** (uno recto) y **obtusángulo** (uno obtuso).", fact: "Acutángulo, rectángulo, obtusángulo" },
-      { title: "Propiedades", text: "Los ángulos interiores suman **180°**, el lado mayor se opone al ángulo mayor y cada lado es **menor que la suma** de los otros dos (desigualdad triangular).", fact: "α + β + γ = 180°" },
-      { title: "Datos para construirlos", text: "**Tres lados** (LLL): se traza uno y se cortan arcos con los radios de los otros dos. **Dos lados y el ángulo comprendido** (LAL): se traza el ángulo y se llevan los lados sobre sus brazos. **Un lado y dos ángulos** (ALA): se traza el lado y desde sus extremos los dos ángulos (si falta uno, se calcula con 180°). Con **tres ángulos** no basta: hay infinitos triángulos **semejantes**. **Dos lados y el ángulo opuesto al mayor** (LLA) tiene **una** solución; si es opuesto al menor puede haber **dos, una o ninguna**.", fact: "LLL, LAL, ALA" },
+    slide("datos", "Datos necesarios para construir un triángulo", [], bench("triangulo-datos", [
+      { title: "Cuántos datos hacen falta", text: "Para construir un polígono de $n$ lados hay que conocer **$2n - 3$ datos**.", fact: "2n − 3 datos" },
+      { title: "En un triángulo, tres", text: "En el triángulo son $2 \cdot 3 - 3 = 3$ datos: tres lados, o dos lados y el ángulo que forman, o un lado y los dos ángulos adyacentes.", fact: "3 datos" },
+      { title: "Rectángulo e isósceles", text: "Si el triángulo es **rectángulo**, el ángulo de $90^\\circ$ ya es un dato y hacen falta otros dos. Lo mismo ocurre con el **isósceles**, donde dos lados iguales cuentan como otro dato.", fact: "Faltan otros dos datos" },
     ]), "stack"),
 
     slide("lll", "Construcción con los tres lados", [], bench("triangulo-lll-compas", [
@@ -36,5 +35,21 @@ export const construccionTriangulosDt1Lesson: InteractiveLesson = {
       hint: "Toma cada lado con el compás y traza los arcos desde A y desde B; C es donde se cortan.",
       explanation: "C está a 15 cm de A y a 13 cm de B, así que es uno de los dos puntos donde se cortan los arcos de esos radios.",
     }),
+
+    slide("ala", "Un lado y los dos ángulos adyacentes", [], bench("triangulo-ala", [
+      { title: "Los datos", text: "Se conocen el lado $a = \\overline{BC}$ y los ángulos $\\hat B$ y $\\hat C$ adyacentes a ese lado.", fact: "Lado a y ángulos B y C" },
+      { title: "El lado a", text: "Se traza el segmento $BC = a$.", fact: "BC = a" },
+      { title: "El ángulo B", text: "En el vértice $B$ se dibuja el ángulo $\\hat B$ con ayuda del arco $1\\text{-}2$.", fact: "Arco 1-2" },
+      { title: "El ángulo C", text: "En el vértice $C$ se dibuja el ángulo $\\hat C$ con ayuda del arco $3\\text{-}4$.", fact: "Arco 3-4" },
+      { title: "El tercer vértice", text: "Los lados $c$ y $b$ de estos ángulos, **prolongados**, se cortan en el vértice $A$, que completa el triángulo.", fact: "A: corte de los lados" },
+    ]), "stack"),
+
+    slide("lal", "Dos lados y el ángulo comprendido", [], bench("triangulo-lal", [
+      { title: "Los datos", text: "Se conocen los lados $a = \\overline{BC}$ y $c = \\overline{BA}$ y el ángulo $\\hat B$ que forman.", fact: "Lados a y c y ángulo B" },
+      { title: "Uno de los lados", text: "Se coloca uno de los lados conocidos, por ejemplo $a = \\overline{BC}$.", fact: "BC = a" },
+      { title: "El ángulo B", text: "En el vértice $B$ se construye el ángulo de $\\hat B$ con ayuda del arco $1\\text{-}2$.", fact: "Arco 1-2" },
+      { title: "El lado c", text: "Sobre el lado obtenido de este ángulo se lleva $c = \\overline{BA}$ con el compás.", fact: "BA = c" },
+      { title: "Une A con C", text: "Finalmente se une $A$ con $C$ para completar el triángulo.", fact: "Triángulo ABC" },
+    ]), "stack"),
   ],
 };

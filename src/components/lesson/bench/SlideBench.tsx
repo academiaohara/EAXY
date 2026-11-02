@@ -13,6 +13,7 @@ import { ApotemaPractica, CircuncentroPractica, EstrellaCompas, HexagonoCompas, 
 import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePractica, EspiralCompas, EspiralPractica, EvolventeHilo, OvaloCompas, OvaloPractica, TangentesCompas, TangentesPractica } from "./scenes-tangencias";
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
+import { TrianguloLineasNotables, TrianguloDatos, TrianguloAla, TrianguloLal, EquilateroLado, EquilateroAltura, RectanguloCatetos, RectanguloCatetoAngulo, RectanguloHipotenusa, IsoscelesLadoAngulo, IsoscelesDesigual, IsoscelesIgualAngulo } from "./scenes-triangulos";
 import { ComoEstudiar, LugaresInterseccion, MediatrizAplicaciones, RectasParalelas, TriangulosClasificacion, CuadrilaterosFamilias, CuadrilaterosPropiedades, PoligonosLadoRadio, ConstruccionesExactas, PoligonoDadoLado, PoligonosUsos, TangentePropiedades, TangentesSencillas, TangentesComunes, EnlaceLugares, EnlaceCasos, OvaloCurvas, OvoideDescripcion, EspiralesDescripcion } from "./scenes-teoria";
 import { EscalaExplorador } from "./scenes-escalas";
 import { EscalaClases, EscalaConcepto, EscalaDetalles, EscalaFotocopia, EscalaGrafica, EscalaProporcion, EscalaTransversales, Escalimetro, EscalasNormalizadas, TrianguloUniversal } from "./scenes-escalas";
@@ -184,6 +185,30 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <RectasParalelas block={block} />;
     case "triangulos-clasificacion":
       return <TriangulosClasificacion block={block} />;
+    case "triangulo-lineas-notables":
+      return <TrianguloLineasNotables block={block} />;
+    case "triangulo-datos":
+      return <TrianguloDatos block={block} />;
+    case "triangulo-ala":
+      return <TrianguloAla block={block} />;
+    case "triangulo-lal":
+      return <TrianguloLal block={block} />;
+    case "equilatero-lado":
+      return <EquilateroLado block={block} />;
+    case "equilatero-altura":
+      return <EquilateroAltura block={block} />;
+    case "rectangulo-catetos":
+      return <RectanguloCatetos block={block} />;
+    case "rectangulo-cateto-angulo":
+      return <RectanguloCatetoAngulo block={block} />;
+    case "rectangulo-hipotenusa":
+      return <RectanguloHipotenusa block={block} />;
+    case "isosceles-lado-angulo":
+      return <IsoscelesLadoAngulo block={block} />;
+    case "isosceles-desigual":
+      return <IsoscelesDesigual block={block} />;
+    case "isosceles-igual-angulo":
+      return <IsoscelesIgualAngulo block={block} />;
     case "cuadrilateros-familias":
       return <CuadrilaterosFamilias block={block} />;
     case "cuadrilateros-propiedades":

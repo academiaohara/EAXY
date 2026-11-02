@@ -123,6 +123,18 @@ export type BenchSceneName =
   | "mediatriz-aplicaciones"
   | "rectas-paralelas"
   | "triangulos-clasificacion"
+  | "triangulo-lineas-notables"
+  | "triangulo-datos"
+  | "triangulo-ala"
+  | "triangulo-lal"
+  | "equilatero-lado"
+  | "equilatero-altura"
+  | "rectangulo-catetos"
+  | "rectangulo-cateto-angulo"
+  | "rectangulo-hipotenusa"
+  | "isosceles-lado-angulo"
+  | "isosceles-desigual"
+  | "isosceles-igual-angulo"
   | "cuadrilateros-familias"
   | "cuadrilateros-propiedades"
   | "poligonos-lado-radio"
@@ -233,6 +245,18 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "mediatriz-aplicaciones": 3,
   "rectas-paralelas": 2,
   "triangulos-clasificacion": 4,
+  "triangulo-lineas-notables": 4,
+  "triangulo-datos": 3,
+  "triangulo-ala": 5,
+  "triangulo-lal": 5,
+  "equilatero-lado": 3,
+  "equilatero-altura": 5,
+  "rectangulo-catetos": 4,
+  "rectangulo-cateto-angulo": 4,
+  "rectangulo-hipotenusa": 5,
+  "isosceles-lado-angulo": 4,
+  "isosceles-desigual": 3,
+  "isosceles-igual-angulo": 4,
   "cuadrilateros-familias": 4,
   "cuadrilateros-propiedades": 5,
   "poligonos-lado-radio": 5,
