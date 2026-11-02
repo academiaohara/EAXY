@@ -146,6 +146,32 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
     return op;
   };
 
+  /** Los trazos auxiliares que ya han dado su punto se aclaran para que no estorben. */
+  const LUZ = 0.28;
+  const luz = (j: number) => {
+    const x = c.ops[j];
+    let fin = -1; // índice de la operación tras la que el trazo ya no hace falta
+    if (x.k === "arco") {
+      let m = j + 1;
+      while (m < c.ops.length && c.ops[m].k === "arco") m += 1;
+      if (c.ops[m]?.k === "marca") {
+        while (c.ops[m + 1]?.k === "marca") m += 1;
+        fin = m;
+      }
+    } else if (x.k === "recta") {
+      if (c.ops[j + 1]?.k === "marca") fin = j + 1;
+      else {
+        c.ops.forEach((y, k) => {
+          if (k > j && y.k === "paralelas" && [...y.marcas, ...y.cortes].some((n) => n === x.a || n === x.b)) fin = k;
+        });
+      }
+    }
+    if (fin < 0) return 1;
+    if (o > fin) return LUZ;
+    if (o === fin) return 1 - (1 - LUZ) * tramo(p, 0.85, 1);
+    return 1;
+  };
+
   const nodos: ReactNode[] = [];
   let instrumento: ReactNode = null;
   const ultimoLados = c.ops.map((x) => x.k).lastIndexOf("lados");
@@ -161,7 +187,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         const r = radioEn(c, j);
         const [a1, a2] = angulosArco(c, x);
         nodos.push(
-          <g key={key} opacity={fade}>
+          <g key={key} opacity={fade * luz(j)}>
             {x.k === "circulo" && t >= 0.999 ? <circle cx={pt(c, x.c)[0]} cy={pt(c, x.c)[1]} r={r} fill="none" stroke={AUX} strokeWidth="1.4" /> : <ArcoCompas c={pt(c, x.c)} r={r} a1={a1} a2={a2} t={t} mostrarCompas={false} />}
           </g>,
         );
@@ -177,7 +203,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       }
       case "recta": {
         const [a, b] = prolongar(pt(c, x.a), pt(c, x.b), ext);
-        nodos.push(<ReglaTrazando key={key} a={a} b={b} p={t} ext={0} color={AUX} w={1.1} />);
+        nodos.push(<g key={key} opacity={luz(j)}><ReglaTrazando a={a} b={b} p={t} ext={0} color={AUX} w={1.1} /></g>);
         break;
       }
       case "perp":

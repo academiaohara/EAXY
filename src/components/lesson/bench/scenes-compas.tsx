@@ -201,6 +201,20 @@ export function animParaleloEscuadra(a: Pt, b: Pt, P: Pt, linea: [Pt, Pt], p: nu
   } else poses = { cartabon: cartabonPoseRef(setup), escuadra: escuadraPoseRef(setup, s) };
   const nodos = (
     <g data-testid="bench-paralelo-escuadra">
+      {opacidad > 0 && trazo < 1 ? (
+        <line
+          data-testid="bench-guia-filo"
+          x1={pie[0] + n[0] * (s / Math.SQRT2) - u[0] * 420}
+          y1={pie[1] + n[1] * (s / Math.SQRT2) - u[1] * 420}
+          x2={pie[0] + n[0] * (s / Math.SQRT2) + u[0] * 420}
+          y2={pie[1] + n[1] * (s / Math.SQRT2) + u[1] * 420}
+          stroke="#e0a100"
+          strokeWidth="1.3"
+          strokeDasharray="8 6"
+          opacity={0.9 * opacidad}
+          pointerEvents="none"
+        />
+      ) : null}
       {trazo > 0 ? <line x1={linea[0][0]} y1={linea[0][1]} x2={fin[0]} y2={fin[1]} stroke={color} strokeWidth="1.6" strokeDasharray="7 5" strokeLinecap="round" /> : null}
       {opacidad > 0 ? (
         <g opacity={opacidad} pointerEvents="none">

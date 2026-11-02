@@ -172,6 +172,10 @@ export function AnimDesliza({ datos, p, color = "#6b7480", w = 1.1 }: { datos: D
   const fin: Pt = [lerp(linea[0][0], linea[1][0], traza), lerp(linea[0][1], linea[1][1], traza)];
   return (
     <g data-testid="bench-perpendicular-anim">
+      {entra > 0 && p < 0.94 ? (() => {
+        const { p: q, dir } = g.filo(s);
+        return <line data-testid="bench-guia-filo" x1={q[0] - dir[0] * 420} y1={q[1] - dir[1] * 420} x2={q[0] + dir[0] * 420} y2={q[1] + dir[1] * 420} stroke="#e0a100" strokeWidth="1.3" strokeDasharray="8 6" opacity={0.9 * entra} pointerEvents="none" />;
+      })() : null}
       {traza > 0 ? <Seg a={linea[0]} b={fin} color={color} w={w} /> : null}
       {p < 1 ? g.nodo(s, entra * (1 - sale)) : null}
     </g>
