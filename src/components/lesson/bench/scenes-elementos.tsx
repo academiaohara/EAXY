@@ -506,52 +506,115 @@ function MediatrizDibujada({ a, b, r, p = 1, ext = 20, color = INK, arcos = true
 
 export function PerpendicularCompas({ block }: { block: BenchBlock }) {
   const [step, setStep] = usePaso();
-  const p = useProgreso(step, step % 3 === 1 ? 4000 : 1);
+  const p = useProgreso(step, 4600);
   const nodos: ReactNode[] = [];
-  const caso = Math.floor(step / 3);
-  const sub = step % 3;
+  const caso = step < 4 ? 0 : step < 8 ? 1 : 2;
+  const sub = step - [0, 4, 8][caso];
   let titulo = "";
+  let comp: ReturnType<typeof poseCompas> | null = null;
+  /** Arco de `a1` a `a2` con centro `c`: si es el paso actual se dibuja poco a poco y el compás lo sigue. */
+  const arco = (key: string, c: Pt, r: number, a1: number, a2: number, actual: boolean, color = INK) => {
+    const t = actual ? tramo(p, 0.12, 0.92) : 1;
+    if (t > 0) nodos.push(<ArcoPlano key={key} c={c} r={r} a1={a1} a2={a1 + (a2 - a1) * t} color={color} />);
+    if (actual) comp = poseCompas(c, enCirculo(c, r, lerp(a1, a2, t)));
+  };
+  const punto = (key: string, q: Pt, nombre: string, visible: boolean, dx: number, dy: number) => {
+    if (!visible) return;
+    nodos.push(<Marca key={key} p={q} color={AMBAR} r={4} />, <Txt key={`${key}t`} p={[q[0] + dx, q[1] + dy]} color={AMBAR}>{nombre}</Txt>);
+  };
+  const fin = p > 0.93;
   if (caso === 0) {
     titulo = "Perpendicular a t por un punto exterior P";
-    const P: Pt = [330, 80];
-    const A: Pt = [214, 290];
-    const B: Pt = [446, 290];
-    const r = 215;
-    nodos.push(<Seg key="t" a={[90, 290]} b={[570, 290]} w={1.8} />, <Txt key="tt" p={[548, 280]}>t</Txt>, <Marca key="p" p={P} />, <Txt key="tp" p={[P[0] + 8, P[1] + 4]}>P</Txt>);
-    if (sub >= 0) nodos.push(<ArcoPlano key="arc" c={P} r={r} a1={-90 - 38} a2={-90 + 38} />, <Marca key="a" p={A} color={AMBAR} r={4} />, <Marca key="b" p={B} color={AMBAR} r={4} />, <Txt key="ta" p={[A[0] - 12, A[1] + 20]} color={AMBAR}>A</Txt>, <Txt key="tb" p={[B[0] + 4, B[1] + 20]} color={AMBAR}>B</Txt>);
-    if (sub >= 1) nodos.push(<MediatrizDibujada key="m" a={A} b={B} r={135} p={sub === 1 ? p : 1} ext={150} color={VERDE} />);
-    if (sub >= 2) nodos.push(<Txt key="n" p={[370, 190]} color={VERDE} size={14}>perpendicular a t por P</Txt>);
+    const P: Pt = [330, 62];
+    const y = 215;
+    const r = 190;
+    const dx = Math.sqrt(r * r - (y - P[1]) ** 2);
+    const A: Pt = [P[0] - dx, y];
+    const B: Pt = [P[0] + dx, y];
+    const r1 = 140;
+    const h2 = Math.sqrt(r1 * r1 - dx * dx);
+    const M: Pt = [P[0], y - h2];
+    const N: Pt = [P[0], y + h2];
+    const th = (Math.atan2(h2, dx) * 180) / Math.PI;
+    nodos.push(<Seg key="t" a={[90, y]} b={[570, y]} w={1.8} />, <Txt key="tt" p={[548, y - 10]}>t</Txt>, <Marca key="p" p={P} />, <Txt key="tp" p={[P[0] + 10, P[1] + 4]}>P</Txt>);
+    const aP = angDe(P, A);
+    const bP = angDe(P, B);
+    arco("c0", P, r, aP - 9, bP + 9 + 0, sub === 0);
+    punto("a", A, "A", sub > 0 || (sub === 0 && fin), -14, 20);
+    punto("b", B, "B", sub > 0 || (sub === 0 && fin), 6, 20);
+    if (sub >= 1) arco("c1", A, r1, -th - 10, th + 10, sub === 1, AUX);
+    if (sub >= 2) arco("c2", B, r1, 180 - th - 10, 180 + th + 10, sub === 2, AUX);
+    punto("m", M, "M", sub > 2 || (sub === 2 && fin), 8, -4);
+    punto("n", N, "N", sub > 2 || (sub === 2 && fin), 8, 16);
+    if (sub >= 3) {
+      nodos.push(<ReglaTrazando key="l" a={M} b={N} p={p} ext={76} color={VERDE} />);
+      if (fin) nodos.push(<Txt key="np" p={[P[0] + 16, 150]} color={VERDE} size={14}>perpendicular a t por P</Txt>);
+    }
   } else if (caso === 1) {
     titulo = "Perpendicular a r por un punto P de ella";
-    const P: Pt = [320, 280];
+    const P: Pt = [330, 230];
     const r0 = 110;
-    const A: Pt = [P[0] - r0, 280];
-    const B: Pt = [P[0] + r0, 280];
-    nodos.push(<Seg key="r" a={[90, 280]} b={[560, 280]} w={1.8} />, <Marca key="p" p={P} />, <Txt key="tp" p={[P[0] + 6, P[1] + 20]}>P</Txt>);
-    nodos.push(<ArcoPlano key="arc" c={P} r={r0} a1={0} a2={180} />, <Marca key="a" p={A} color={AMBAR} r={4} />, <Marca key="b" p={B} color={AMBAR} r={4} />, <Txt key="ta" p={[A[0] - 14, A[1] + 20]} color={AMBAR}>A</Txt>, <Txt key="tb" p={[B[0] + 4, B[1] + 20]} color={AMBAR}>B</Txt>);
-    if (sub >= 1) nodos.push(<MediatrizDibujada key="m" a={A} b={B} r={130} p={sub === 1 ? p : 1} ext={110} color={VERDE} />);
-    if (sub >= 2) nodos.push(<Txt key="n" p={[345, 150]} color={VERDE} size={14}>perpendicular a r en P</Txt>);
+    const A: Pt = [P[0] - r0, P[1]];
+    const B: Pt = [P[0] + r0, P[1]];
+    const r1 = 135;
+    const h2 = Math.sqrt(r1 * r1 - r0 * r0);
+    const M: Pt = [P[0], P[1] - h2];
+    const N: Pt = [P[0], P[1] + h2];
+    const th = (Math.atan2(h2, r0) * 180) / Math.PI;
+    nodos.push(<Seg key="r" a={[90, P[1]]} b={[570, P[1]]} w={1.8} />, <Txt key="tr" p={[548, P[1] - 10]}>r</Txt>, <Marca key="p" p={P} />, <Txt key="tp" p={[P[0] + 8, P[1] + 20]}>P</Txt>);
+    arco("c0", P, r0, 0, 180, sub === 0);
+    punto("a", A, "A", sub > 0 || (sub === 0 && fin), -14, 20);
+    punto("b", B, "B", sub > 0 || (sub === 0 && fin), 6, 20);
+    if (sub >= 1) arco("c1", A, r1, -th - 10, th + 10, sub === 1, AUX);
+    if (sub >= 2) arco("c2", B, r1, 180 - th - 10, 180 + th + 10, sub === 2, AUX);
+    punto("m", M, "M", sub > 2 || (sub === 2 && fin), 8, -4);
+    punto("n", N, "N", sub > 2 || (sub === 2 && fin), 8, 16);
+    if (sub >= 3) {
+      nodos.push(<ReglaTrazando key="l" a={M} b={N} p={p} ext={30} color={VERDE} />);
+      if (fin) nodos.push(<Txt key="np" p={[P[0] + 16, 120]} color={VERDE} size={14}>perpendicular a r en P</Txt>);
+    }
   } else {
     titulo = "Perpendicular a una semirrecta en su extremo O";
-    const O: Pt = [260, 290];
-    const R = 120;
-    const N: Pt = [O[0] - R, 290];
+    const O: Pt = [380, 270];
+    const R = 130;
+    const N: Pt = [O[0] - R, O[1]];
     const M = enCirculo(O, R, 120);
     const L = enCirculo(O, R, 60);
-    nodos.push(<Seg key="t" a={[90, 290]} b={O} w={1.8} />, <Marca key="o" p={O} />, <Txt key="to" p={[O[0] + 6, O[1] + 20]}>O</Txt>);
-    nodos.push(<ArcoPlano key="arc0" c={O} r={R} a1={180} a2={50} />, <Marca key="n" p={N} color={AMBAR} r={4} />, <Txt key="tn" p={[N[0] - 8, N[1] + 20]} color={AMBAR}>N</Txt>);
-    if (sub >= 1) {
-      nodos.push(<ArcoPlano key="arc1" c={N} r={R} a1={angDe(N, M) - 22} a2={angDe(N, M) + 22} color={AUX} />, <Marca key="m" p={M} color={AMBAR} r={4} />, <Txt key="tm" p={[M[0] - 18, M[1] - 6]} color={AMBAR}>M</Txt>);
-      nodos.push(<ArcoPlano key="arc2" c={M} r={R} a1={angDe(M, L) - 22} a2={angDe(M, L) + 22} color={AUX} />, <Marca key="l" p={L} color={AMBAR} r={4} />, <Txt key="tl" p={[L[0] + 6, L[1] - 4]} color={AMBAR}>L</Txt>);
+    const r1 = 100;
+    const K = puntoMedio(M, L);
+    const h2 = Math.sqrt(r1 * r1 - (R / 2) ** 2);
+    const arriba: Pt = [K[0], K[1] - h2];
+    const abajo: Pt = [K[0], K[1] + h2];
+    const th = (Math.atan2(h2, R / 2) * 180) / Math.PI;
+    nodos.push(<Seg key="t" a={[70, O[1]]} b={O} w={2.2} />, <Txt key="tt" p={[96, O[1] - 10]}>t</Txt>, <Marca key="o" p={O} />, <Txt key="to" p={[O[0] + 8, O[1] + 20]}>O</Txt>);
+    arco("c0", O, R, 190, 55, sub === 0);
+    punto("n", N, "N", sub > 0 || (sub === 0 && fin), -8, 20);
+    if (sub >= 1) arco("c1", N, R, angDe(N, M) - 28, angDe(N, M) + 28, sub === 1, AUX);
+    punto("m", M, "M", sub > 1 || (sub === 1 && fin), -18, -6);
+    if (sub >= 2) arco("c2", M, R, -28, 28, sub === 2, AUX);
+    punto("l", L, "L", sub > 2 || (sub === 2 && fin), 8, -6);
+    if (sub === 3) {
+      const t1 = tramo(p, 0.05, 0.47);
+      const t2 = tramo(p, 0.53, 0.95);
+      if (t1 > 0) nodos.push(<ArcoPlano key="c3" c={M} r={r1} a1={-th - 10} a2={-th - 10 + (2 * th + 20) * t1} color={AUX} />);
+      if (t2 > 0) nodos.push(<ArcoPlano key="c4" c={L} r={r1} a1={180 - th - 10} a2={180 - th - 10 + (2 * th + 20) * t2} color={AUX} />);
+      comp = p < 0.5 ? poseCompas(M, enCirculo(M, r1, lerp(-th - 10, th + 10, t1))) : poseCompas(L, enCirculo(L, r1, lerp(180 - th - 10, 180 + th + 10, t2)));
     }
-    if (sub >= 2) {
-      nodos.push(<MediatrizDibujada key="p" a={M} b={L} r={0.75 * dist(M, L)} p={1} ext={40} color={VERDE} />, <Txt key="np" p={[O[0] + 14, 130]} color={VERDE} size={14}>p ⟂ semirrecta en O</Txt>);
+    if (sub >= 4) {
+      nodos.push(<ArcoPlano key="c3" c={M} r={r1} a1={-th - 10} a2={th + 10} color={AUX} />, <ArcoPlano key="c4" c={L} r={r1} a1={180 - th - 10} a2={180 + th + 10} color={AUX} />);
+      nodos.push(<ReglaTrazando key="l" a={arriba} b={abajo} p={p} ext={50} color={VERDE} />);
+      if (fin) nodos.push(<Txt key="np" p={[O[0] + 16, 120]} color={VERDE} size={14}>p ⟂ semirrecta en O</Txt>);
     }
   }
   return (
     <Hoja scene="perpendicular-compas" block={block} step={step} setStep={setStep} label="Hoja con perpendiculares trazadas con compás y regla" testId="bench-perp-compas">
       {nodos}
       <Txt p={[24, 34]} color={VERDE} size={15}>{titulo}</Txt>
+      {comp ? (
+        <g data-testid="bench-compas" pointerEvents="none">
+          <Compas pose={(comp as ReturnType<typeof poseCompas>).pose} open={(comp as ReturnType<typeof poseCompas>).open} />
+        </g>
+      ) : null}
     </Hoja>
   );
 }
@@ -582,8 +645,17 @@ export function ArcoBisecado({ block }: { block: BenchBlock }) {
     nodos.push(<Marca key="a" p={A} />, <Marca key="b" p={B} />, <Marca key="c" p={C} />, <Txt key="ta" p={[A[0] - 12, A[1] + 18]}>A</Txt>, <Txt key="tb" p={[B[0] - 16, B[1] - 6]}>B</Txt>, <Txt key="tc" p={[C[0] + 6, C[1] - 6]}>C</Txt>);
     nodos.push(<Seg key="ab" a={A} b={B} color={AMBAR} w={1.6} />, <Seg key="bc" a={B} b={C} color={AMBAR} w={1.6} />);
     if (step >= 4) {
-      nodos.push(<MediatrizDibujada key="n" a={A} b={B} r={0.7 * dist(A, B)} p={step === 4 ? p : 1} ext={150} color={VERDE} arcos={false} />);
-      nodos.push(<MediatrizDibujada key="m" a={B} b={C} r={0.62 * dist(B, C)} p={step === 4 ? p : 1} ext={150} color={VERDE} arcos={false} />);
+      const hacia = (key: string, a: Pt, b: Pt, r: number) => {
+        const m = puntoMedio(a, b);
+        const d = dist(m, O);
+        const u: Pt = [(O[0] - m[0]) / d, (O[1] - m[1]) / d];
+        const ini: Pt = [m[0] - u[0] * 40, m[1] - u[1] * 40];
+        const fin: Pt = [O[0] + u[0] * 45, O[1] + u[1] * 45];
+        const t = step === 4 ? p : 1;
+        nodos.push(<MediatrizDibujada key={`${key}a`} a={a} b={b} r={r} p={0} arcos />, <Seg key={`${key}l`} a={ini} b={[ini[0] + (fin[0] - ini[0]) * t, ini[1] + (fin[1] - ini[1]) * t]} color={VERDE} w={2} />);
+      };
+      hacia("n", A, B, 0.7 * dist(A, B));
+      hacia("m", B, C, 0.62 * dist(B, C));
     }
     if (step >= 5) nodos.push(<Marca key="o" p={O} color={VERDE} r={4.5} />, <Txt key="to" p={[O[0] + 8, O[1] + 18]} color={VERDE} size={15}>O</Txt>, <ArcoPlano key="arc" c={O} r={R} a1={160} a2={68} color={INK} grosor={1.8} />);
     nodos.push(<Txt key="tt" p={[24, 34]} color={VERDE} size={15}>Arco de circunferencia que pasa por tres puntos</Txt>);

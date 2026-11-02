@@ -17,21 +17,35 @@ export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
     ], undefined, "stack"),
 
     slide("perp-exterior", "Perpendicular desde un punto exterior", [], benchParte("perpendicular-compas", 0, [
-      { title: "Desde un punto exterior: arco", text: "**Perpendicular a una recta $t$ por un punto exterior $P$.** Con centro en $P$ y un radio arbitrario, se traza un arco que corta a la recta $t$ en $A$ y $B$.", fact: "Arco con centro en P" },
-      { title: "Desde un punto exterior: mediatriz", text: "La **mediatriz del segmento $AB$** es la solución. Se opera como en el caso anterior: arcos de igual radio desde $A$ y desde $B$.", fact: "Mediatriz de AB" },
-      { title: "Desde un punto exterior: resultado", text: "La mediatriz de $AB$ pasa por $P$ y es **perpendicular a $t$**: $P$ equidista de $A$ y $B$.", fact: "P equidista de A y B" },
+      { title: "Arco con centro en P", text: "**Perpendicular a una recta $t$ por un punto exterior $P$.** Con centro en $P$ y un radio arbitrario $r$ se traza un arco que **corta a la recta $t$** en los puntos $A$ y $B$.", fact: "PA = PB = r" },
+      { title: "Arco con centro en A", text: "Se busca la **mediatriz del segmento $AB$**. Con el compás en $A$ y una abertura **mayor que la mitad de $AB$** se trazan arcos por encima y por debajo de la recta (arco 1).", fact: "Radio > AB/2" },
+      { title: "Arco con centro en B", text: "Sin cambiar la abertura, con el compás en $B$ se trazan los arcos 2: cortan a los anteriores en $M$ (arriba) y en $N$ (abajo).", fact: "Mismo radio desde B" },
+      { title: "La perpendicular", text: "Con la regla se une $M$ con $N$: la recta pasa por $P$ y es **perpendicular a $t$**, porque $P$ equidista de $A$ y de $B$.", fact: "MN ⟂ t por P" },
     ]), "stack"),
 
-    slide("perp-recta", "Perpendicular por un punto de la recta", [], benchParte("perpendicular-compas", 3, [
-      { title: "Por un punto de la recta: arco", text: "**Perpendicular a una recta $r$ por un punto $P$ de ella.** Con centro en $P$ se traza un arco de radio arbitrario que determina los puntos $A$ y $B$ sobre la recta.", fact: "PA = PB" },
-      { title: "Por un punto de la recta: mediatriz", text: "La mediatriz del segmento $AB$ es la solución: se trazan los arcos 1 y 2 con centros en $A$ y $B$.", fact: "Mediatriz de AB" },
-      { title: "Por un punto de la recta: resultado", text: "Como $P$ es el punto medio de $AB$, la mediatriz pasa por $P$ y es perpendicular a $r$.", fact: "P es el punto medio" },
-    ]), "stack"),
+    benchTask("perpendicular-exterior", "Perpendicular por un punto exterior", "perpendicular-exterior-practica", [
+      { title: "Clava la punta en P", text: "Toca el punto exterior $P$." },
+      { title: "Abre el compás", text: "Elige una abertura **mayor que la distancia de $P$ a la recta** y pulsa «Fijar abertura».", fact: "Radio arbitrario, mayor que la distancia" },
+      { title: "Traza el arco", text: "Arrastra la mina para trazar un arco que **corte a la recta $t$ a los dos lados** (hasta pasar la recta por los dos cortes)." },
+      { title: "Marca A", text: "Toca el corte de la **izquierda**: es el punto $A$." },
+      { title: "Marca B", text: "Toca el corte de la **derecha**: es el punto $B$. Ahora $PA = PB$." },
+      { title: "Clava la punta en A", text: "Para la mediatriz de $AB$, toca $A$ o $B$." },
+      { title: "Abre más", text: "Abre el compás **más que la mitad de $AB$** y pulsa «Fijar abertura».", fact: "Radio > AB/2" },
+      { title: "Arco desde A", text: "Traza el arco **por encima y por debajo** de la recta." },
+      { title: "Clava la punta en el otro extremo", text: "Toca el otro extremo, sin cambiar la abertura." },
+      { title: "Arco desde B", text: "Traza el arco que corta al anterior en **dos puntos**." },
+      { title: "Traza la perpendicular", text: "Toca **los dos puntos** donde se cortan los arcos: la regla pasa por $P$ y es perpendicular a $t$.", fact: "Mediatriz de AB" },
+    ], {
+      question: "Traza la perpendicular a la recta t por el punto exterior P, con compás y regla.",
+      hint: "Corta la recta con un arco con centro en P para obtener A y B, y traza la mediatriz de AB.",
+      explanation: "PA = PB, así que P pertenece a la mediatriz de AB; esta es perpendicular a t y pasa por P.",
+    }),
 
-    slide("perp-extremo", "Perpendicular en el extremo de una semirrecta", [], benchParte("perpendicular-compas", 6, [
-      { title: "En el extremo de una semirrecta: arco", text: "**Perpendicular a una semirrecta en su extremo $O$.** Con centro en $O$ se traza un arco de radio $ON$ arbitrario, que corta a la semirrecta en $N$.", fact: "ON = radio" },
-      { title: "En el extremo: arcos de igual radio", text: "Con centro en $N$ y el mismo radio se corta el arco en $M$; con centro en $M$ y el mismo radio se vuelve a cortar al primer arco en $L$.", fact: "NM = ML = ON" },
-      { title: "En el extremo: resultado", text: "La mediatriz del segmento $ML$ es la recta $p$, **perpendicular a la semirrecta en $O$**.", fact: "p ⟂ semirrecta en O" },
+    slide("perp-recta", "Perpendicular por un punto de la recta", [], benchParte("perpendicular-compas", 4, [
+      { title: "Arco con centro en P", text: "**Perpendicular a una recta $r$ por un punto $P$ de ella.** Con centro en $P$ y radio arbitrario se traza un arco que **corta a la recta** en $A$ y $B$.", fact: "PA = PB" },
+      { title: "Arco con centro en A", text: "Se busca la mediatriz de $AB$. Con el compás en $A$ y una abertura **mayor que $PA$** se trazan los arcos 1, por encima y por debajo de la recta.", fact: "Radio > PA" },
+      { title: "Arco con centro en B", text: "Con la misma abertura y el compás en $B$ se trazan los arcos 2, que cortan a los anteriores en $M$ y $N$.", fact: "Mismo radio desde B" },
+      { title: "La perpendicular", text: "Como $P$ es el punto medio de $AB$, la recta $MN$ pasa por $P$ y es **perpendicular a $r$**.", fact: "P es el punto medio" },
     ]), "stack"),
 
     benchTask("perpendicular-punto", "Perpendicular por un punto de la recta", "perpendicular-punto-practica", [
@@ -50,6 +64,37 @@ export const aplicacionesMediatrizDt1Lesson: InteractiveLesson = {
       question: "Traza la perpendicular a la recta r por su punto P, con compás y regla.",
       hint: "Marca A y B a la misma distancia de P y haz la mediatriz de AB con arcos de mayor radio.",
       explanation: "PA = PB, así que P es el punto medio de AB y la mediatriz de AB pasa por P y es perpendicular a r.",
+    }),
+
+    slide("perp-extremo", "Perpendicular en el extremo de una semirrecta", [], benchParte("perpendicular-compas", 8, [
+      { title: "Arco con centro en O", text: "**Perpendicular a una semirrecta en su extremo $O$.** Con centro en $O$ se traza un arco de radio $ON$ arbitrario, que corta a la semirrecta en $N$.", fact: "ON = radio" },
+      { title: "Arco con centro en N", text: "Con centro en $N$ y el **mismo radio** se corta al primer arco en $M$ (arco 1).", fact: "NM = ON" },
+      { title: "Arco con centro en M", text: "Con centro en $M$ y el mismo radio se vuelve a cortar al primer arco, ahora en $L$ (arco 2).", fact: "ML = ON" },
+      { title: "Mediatriz de ML", text: "Se hace la **mediatriz del segmento $ML$**: arcos de igual radio con centros en $M$ y en $L$.", fact: "Radio > ML/2" },
+      { title: "La perpendicular", text: "La recta $p$ que une los cortes de esos arcos es la mediatriz de $ML$: pasa por $O$ y es **perpendicular a la semirrecta**.", fact: "p ⟂ semirrecta en O" },
+    ]), "stack"),
+
+    benchTask("perpendicular-extremo", "Perpendicular en el extremo de una semirrecta", "perpendicular-extremo-practica", [
+      { title: "Clava la punta en O", text: "Toca el extremo $O$ de la semirrecta." },
+      { title: "Abre el compás", text: "Elige una abertura cualquiera y pulsa «Fijar abertura». Se usará **la misma** para los tres arcos siguientes.", fact: "Radio arbitrario" },
+      { title: "Traza el arco", text: "Arrastra la mina: el arco debe **cortar a la semirrecta** a la izquierda y subir hasta pasar por encima de $O$." },
+      { title: "Marca N", text: "Toca el corte del arco con la semirrecta: es el punto $N$." },
+      { title: "Clava la punta en N", text: "Toca $N$, sin cambiar la abertura." },
+      { title: "Arco desde N", text: "Traza un arco que **corte al primero**." },
+      { title: "Marca M", text: "Toca el corte: es el punto $M$. Ahora $NM = ON$." },
+      { title: "Clava la punta en M", text: "Toca $M$, con la misma abertura." },
+      { title: "Arco desde M", text: "Traza un arco que **vuelva a cortar al primero**, a la derecha." },
+      { title: "Marca L", text: "Toca el corte: es el punto $L$. Ahora $ML = ON$." },
+      { title: "Clava la punta en M o en L", text: "Vas a hacer la mediatriz de $ML$: toca $M$ o $L$." },
+      { title: "Abre más", text: "Abre el compás **más que la mitad de $ML$** y pulsa «Fijar abertura».", fact: "Radio > ML/2" },
+      { title: "Arco desde M", text: "Traza el arco por encima y por debajo de $ML$." },
+      { title: "Clava la punta en el otro extremo", text: "Toca el otro punto, sin cambiar la abertura." },
+      { title: "Arco desde L", text: "Traza el arco que corta al anterior en **dos puntos**." },
+      { title: "Traza la perpendicular", text: "Toca **los dos puntos** donde se cortan los arcos: la regla pasa por $O$ y es perpendicular a la semirrecta.", fact: "Mediatriz de ML" },
+    ], {
+      question: "Traza la perpendicular a la semirrecta en su extremo O, con compás y regla.",
+      hint: "Con el mismo radio desde O, N y M obtienes M y L; la mediatriz de ML pasa por O.",
+      explanation: "ON = NM = ML = OM = OL: los triángulos ONM y OML son equiláteros, así que el ángulo MOL mide 60° y su lado OM forma 60° con la semirrecta. La mediatriz de ML es la bisectriz de ese ángulo y forma 90° con la semirrecta.",
     }),
 
     slide("arco-bisecado", "Arco bisecado", [], benchParte("arco-bisecado-tres-puntos", 0, [

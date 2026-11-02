@@ -107,6 +107,8 @@ export type BenchSceneName =
   | "suma-segmentos-practica"
   | "diferencia-segmentos-practica"
   | "paralelo-compas-practica"
+  | "perpendicular-exterior-practica"
+  | "perpendicular-extremo-practica"
   | "perpendicular-punto-practica"
   | "construye-angulos-practica";
 
@@ -170,11 +172,11 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "lugar-geometrico": 6,
   "suma-segmentos-compas": 5,
   "diferencia-segmentos-compas": 4,
-  "perpendicular-compas": 9,
+  "perpendicular-compas": 13,
   "arco-bisecado-tres-puntos": 6,
   "division-2n": 4,
   "angulos-tipos": 12,
-  "angulos-circunferencia": 7,
+  "angulos-circunferencia": 9,
   "suma-angulos-compas": 5,
   "diferencia-angulos-compas": 4,
   "bisectriz-segundo-metodo": 5,
@@ -185,6 +187,8 @@ export const BENCH_STEPS: Record<BenchSceneName, number> = {
   "suma-segmentos-practica": 13,
   "diferencia-segmentos-practica": 5,
   "paralelo-compas-practica": 12,
+  "perpendicular-exterior-practica": 11,
+  "perpendicular-extremo-practica": 16,
   "perpendicular-punto-practica": 11,
   "construye-angulos-practica": 14,
 };
