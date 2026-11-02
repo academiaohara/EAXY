@@ -14,6 +14,8 @@ import { CircTangentePractica, CircunferenciasPosiciones, EnlaceCompas, EnlacePr
 import { ArcoBisecado, DiferenciaSegmentos, DivisionDos, ElementosGeometricos, LugarGeometrico, OperacionesReglaCompas, PerpendicularCompas, SumaSegmentos } from "./scenes-elementos";
 import { AngulosCircunferencia, AngulosTipos, BisectrizSegundoMetodo, ConstruccionAngulos, DiferenciaAngulos, DivisionAngulo, ParaleloCompas, SumaAngulos } from "./scenes-angulos";
 import { EquilateroLadoPractica, TrianguloLalPractica, RectanguloCatetosPractica, IsoscelesLadoAnguloPractica, TrianguloAlaPractica, RectanguloCatetoAnguloPractica, IsoscelesDesigualPractica, RectanguloHipotenusaPractica, IsoscelesIgualAnguloPractica, EquilateroAlturaPractica } from "./practicas-triangulos";
+import { CONSTRUCCIONES, type ConstruccionId } from "./construcciones-datos";
+import { ConstruccionAnim, ConstruccionPractica } from "./construcciones";
 import { BaricentroPractica, CircuncentroPractica, IncentroPractica, OrtocentroPractica } from "./practicas-notables";
 import { TrianguloLineasNotables, TrianguloDatos } from "./scenes-triangulos";
 import { TrianguloAla, TrianguloLal, EquilateroLado, EquilateroAltura, RectanguloCatetos, RectanguloCatetoAngulo, RectanguloHipotenusa, IsoscelesLadoAngulo, IsoscelesDesigual, IsoscelesIgualAngulo } from "./scenes-construcciones";
@@ -296,7 +298,11 @@ function Escena({ block }: { block: Extract<SlideBlock, { kind: "bench" }> }) {
       return <PerpendicularPuntoPractica block={block} />;
     case "construye-angulos-practica":
       return <ConstruyeAngulosPractica block={block} />;
-    default:
+    default: {
+      const m = /^c-(.+?)(-practica)?$/.exec(block.scene);
+      const id = m?.[1] as ConstruccionId | undefined;
+      if (id && id in CONSTRUCCIONES) return m?.[2] ? <ConstruccionPractica block={block} id={id} /> : <ConstruccionAnim block={block} id={id} />;
       return null;
+    }
   }
 }

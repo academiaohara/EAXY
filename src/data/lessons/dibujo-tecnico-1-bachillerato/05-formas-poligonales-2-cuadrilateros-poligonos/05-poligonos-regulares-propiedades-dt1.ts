@@ -4,7 +4,7 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const poligonosRegularesPropiedadesDt1Lesson: InteractiveLesson = {
   slug: "poligonos-regulares-propiedades-dt1",
-  title: "2. Polígonos regulares: propiedades",
+  title: "5. Polígonos: definiciones y clases",
   subtitle: DT1_SUBTITLES[5],
   stage: { theme: "board" },
   steps: [
