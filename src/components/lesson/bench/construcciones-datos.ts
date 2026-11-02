@@ -355,16 +355,20 @@ function circunferenciaBase(extra: Record<string, P> = {}) {
   return { A, pts: { O: O0, A, ...extra } };
 }
 
-function div6y3(): Construccion {
-  const { A, pts } = circunferenciaBase();
-  const V = vertices(O0, R0, 90, R0, 6, -1);
-  const nombres = ["A", "B", "C", "D", "E", "F"];
+function nombrar(pts: P[], nombres: string[]): Record<string, P> {
   const v: Record<string, P> = {};
-  nombres.forEach((n, i) => (v[n] = V[i]));
+  pts.forEach((p, i) => (v[nombres[i]] = p));
+  return v;
+}
+const LETRAS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+
+function div6y3(): Construccion {
+  const A: P = [O0[0], O0[1] - R0];
+  const v = nombrar(vertices(O0, R0, 90, R0, 6, 1), LETRAS);
   return {
     titulo: "Circunferencia en tres y en seis partes iguales",
-    intro: "Se tiene una circunferencia de centro $O$ y radio $R$. El lado del hexágono regular inscrito es igual al radio.",
-    pts: { ...pts, ...v, A },
+    intro: "Se tiene una circunferencia de centro $O$ y radio $R$. El lado del hexágono regular inscrito es igual al radio: se lleva seis veces sobre la circunferencia empezando en $A$.",
+    pts: { O: O0, ...v, A },
     dados: ["O", "A"],
     datos: [],
     circulos: [{ c: "O", r: R0 }],
@@ -382,17 +386,18 @@ function div6y3(): Construccion {
 }
 
 function div4y8(): Construccion {
+  // vértices del octógono desde A, en sentido antihorario: A, B, C, D, E, F, G, H (C a la izquierda y G a la derecha)
   const A: P = [O0[0], O0[1] - R0];
   const E: P = [O0[0], O0[1] + R0];
-  const C: P = [O0[0] + R0, O0[1]];
-  const G: P = [O0[0] - R0, O0[1]];
+  const C: P = [O0[0] - R0, O0[1]];
+  const G: P = [O0[0] + R0, O0[1]];
   const H = en(O0, R0, 45);
   const X: P = [O0[0] + R0, O0[1] - R0];
-  const V = vertices(O0, R0, 90, dist(A, H), 8, -1);
+  const V = vertices(O0, R0, 90, dist(A, H), 8, 1);
   return {
     titulo: "Circunferencia en cuatro y en ocho partes iguales",
-    intro: "Se tiene una circunferencia de centro $O$ con un diámetro $AE$ dibujado. Dos diámetros perpendiculares la dividen en cuatro partes iguales; la bisectriz del ángulo central entre dos de ellos da las ocho.",
-    pts: { O: O0, A, E, C, G, H, X, I: V[3], J: V[5], K: V[7], _l: [G[0] - 25, O0[1]], _r: [C[0] + 25, O0[1]] },
+    intro: "Se tiene una circunferencia de centro $O$ con un diámetro $AE$ dibujado. Dos diámetros perpendiculares la dividen en cuatro partes iguales; la bisectriz del ángulo central $AOG$ da el punto $H$, y $AH$ es el lado del octógono.",
+    pts: { O: O0, A, E, C, G, H, X, B: V[1], D: V[3], F: V[5], _l: [C[0] - 25, O0[1]], _r: [G[0] + 25, O0[1]] },
     dados: ["O", "A", "E"],
     datos: [],
     base: [["A", "E"]],
@@ -404,42 +409,39 @@ function div4y8(): Construccion {
       { k: "lados", pts: ["A", "C", "E", "G"] },
       { k: "medir", de: "O", a: "A" },
       { k: "arco", c: "A", hacia: "O", abs: [-100, 5] },
-      { k: "arco", c: "C", hacia: "O", abs: [85, 185] },
+      { k: "arco", c: "G", hacia: "O", abs: [85, 185] },
       { k: "marca", p: "X" },
       { k: "recta", a: "O", b: "X", limpia: true },
       { k: "marca", p: "H" },
       { k: "medir", de: "A", a: "H" },
-      ...marcaArco("C", "I"),
-      ...marcaArco("E", "J"),
-      ...marcaArco("G", "K"),
-      { k: "lados", pts: ["A", "H", "C", "I", "E", "J", "G", "K"] },
+      ...marcaArco("A", "B"),
+      ...marcaArco("C", "D"),
+      ...marcaArco("E", "F"),
+      { k: "lados", pts: ["A", "B", "C", "D", "E", "F", "G", "H"] },
     ],
   };
 }
 
-/** Primer tramo común del pentágono y del decágono. */
+/** Primer tramo común del pentágono y del decágono (libro, figs. 20 y 21). */
 function pentagonoBase() {
   const A: P = [O0[0], O0[1] - R0];
   const M: P = [O0[0] + R0, O0[1]];
-  const Pl: P = [O0[0] - R0, O0[1]];
-  const E: P = [O0[0], O0[1] + R0];
   const N = en(O0, R0, 60);
   const L: P = [N[0], O0[1]];
   const Pp: P = [L[0] - dist(L, A), O0[1]];
-  return { A, M, Pl, E, N, L, Pp };
+  return { A, M, N, L, Pp, ocultos: { _b: [O0[0], O0[1] + R0] as P, _l: [O0[0] - R0, O0[1]] as P, _nl: [N[0], O0[1] + 22] as P } };
 }
 
 function div5(): Construccion {
-  const { A, M, Pl, E, N, L, Pp } = pentagonoBase();
-  const lado = dist(A, Pp);
-  const V = vertices(O0, R0, 90, lado, 5, 1);
+  const { A, M, N, L, Pp, ocultos } = pentagonoBase();
+  const v = nombrar(vertices(O0, R0, 90, dist(A, Pp), 5, 1), LETRAS);
   return {
     titulo: "Circunferencia en cinco partes iguales",
-    intro: "Se tiene una circunferencia con dos diámetros perpendiculares dibujados. Se halla el lado $l_5$ del pentágono con el método de Euclides y se lleva cinco veces sobre la circunferencia.",
-    pts: { O: O0, A, M, E, Pl, N, L, P: Pp, B: V[1], C: V[2], D: V[3], F: V[4], _nl: [N[0], O0[1] + 22] },
-    dados: ["O", "A", "M", "E", "Pl"],
+    intro: "Se tiene una circunferencia con dos diámetros perpendiculares dibujados. Se halla el lado $l_5 = AP$ del pentágono con el método de Euclides y se lleva cinco veces sobre la circunferencia, empezando en $A$.",
+    pts: { O: O0, M, N, L, P: Pp, ...v, A, ...ocultos },
+    dados: ["O", "A", "M"],
     datos: [],
-    base: [["A", "E"], ["Pl", "M"]],
+    base: [["A", "_b"], ["_l", "M"]],
     circulos: [{ c: "O", r: R0 }],
     ops: [
       { k: "medir", de: "M", a: "O" },
@@ -452,26 +454,23 @@ function div5(): Construccion {
       ...marcaArco("A", "B"),
       ...marcaArco("B", "C"),
       ...marcaArco("C", "D"),
-      ...marcaArco("D", "F"),
-      { k: "lados", pts: ["A", "B", "C", "D", "F"] },
+      ...marcaArco("D", "E"),
+      { k: "lados", pts: ["A", "B", "C", "D", "E"] },
     ],
   };
 }
 
 function div10(): Construccion {
-  const { A, M, Pl, E, N, L, Pp } = pentagonoBase();
-  const lado = dist(O0, Pp);
-  const V = vertices(O0, R0, 90, lado, 10, 1);
-  const nombres = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K"];
-  const v: Record<string, P> = {};
-  nombres.forEach((n, i) => (v[n] = V[i]));
+  const { A, M, N, L, Pp, ocultos } = pentagonoBase();
+  const nombres = LETRAS;
+  const v = nombrar(vertices(O0, R0, 90, dist(O0, Pp), 10, 1), nombres);
   return {
     titulo: "Circunferencia en diez partes iguales",
-    intro: "Con la misma construcción del pentágono, el segmento $OP$ es el lado $l_{10}$ del decágono regular inscrito.",
-    pts: { O: O0, M, E, Pl, N, L, P: Pp, ...v, A, _nl: [N[0], O0[1] + 22] },
-    dados: ["O", "A", "M", "E", "Pl"],
+    intro: "Con la misma construcción del pentágono, el segmento $OP$ es el lado $l_{10}$ del decágono regular inscrito: se lleva diez veces sobre la circunferencia, empezando en $A$.",
+    pts: { O: O0, M, N, L, P: Pp, ...v, A, ...ocultos },
+    dados: ["O", "A", "M"],
     datos: [],
-    base: [["A", "E"], ["Pl", "M"]],
+    base: [["A", "_b"], ["_l", "M"]],
     circulos: [{ c: "O", r: R0 }],
     ops: [
       { k: "medir", de: "M", a: "O" },
@@ -481,15 +480,7 @@ function div10(): Construccion {
       { k: "medir", de: "L", a: "A" },
       ...marcaArco("L", "P"),
       { k: "medir", de: "O", a: "P" },
-      ...marcaArco("A", "B"),
-      ...marcaArco("B", "C"),
-      ...marcaArco("C", "D"),
-      ...marcaArco("D", "F"),
-      ...marcaArco("F", "G"),
-      ...marcaArco("G", "H"),
-      ...marcaArco("H", "I"),
-      ...marcaArco("I", "J"),
-      ...marcaArco("J", "K"),
+      ...nombres.slice(0, 9).flatMap((n, i) => marcaArco(n, nombres[i + 1])),
       { k: "lados", pts: nombres },
     ],
   };
@@ -497,35 +488,34 @@ function div10(): Construccion {
 
 function div7(): Construccion {
   const A: P = [O0[0], O0[1] - R0];
+  const Lb: P = [O0[0], O0[1] + R0];
+  const M: P = [O0[0] - R0, O0[1]];
   const N: P = [O0[0] + R0, O0[1]];
-  const S = en(O0, R0, 60);
-  const Pm: P = [S[0], O0[1]];
-  const lado = dist(Pm, S);
-  const V = vertices(O0, R0, 90, lado, 7, 1);
-  const nombres = ["A", "B", "C", "D", "E", "F", "G"];
-  const v: Record<string, P> = {};
-  nombres.forEach((n, i) => (v[n] = V[i]));
+  const Q = en(O0, R0, 60);
+  const Pm: P = [Q[0], O0[1]];
+  const v = nombrar(vertices(O0, R0, 90, dist(Pm, Q), 7, 1), LETRAS);
   return {
     titulo: "Circunferencia en siete partes iguales",
-    intro: "Se tiene una circunferencia de centro $O$ con un diámetro horizontal dibujado. La mitad de la cuerda del triángulo equilátero inscrito, $PQ$, es una muy buena aproximación del lado del heptágono.",
-    pts: { O: O0, A, N, S, P: Pm, ...v, Pl: [O0[0] - R0, O0[1]], _s: [S[0], O0[1] + 22] },
-    dados: ["O", "A", "N", "Pl"],
+    intro: "Se tiene una circunferencia de centro $O$ con los diámetros $AL$ y $MN$ dibujados. El segmento $PQ$, con $P$ el punto medio del radio $ON$, es el lado $l_7$ del heptágono inscrito: se lleva siete veces sobre la circunferencia, empezando en $A$.",
+    pts: { O: O0, A, L: Lb, M, N, Q, P: Pm, ...v, _q: [Q[0], O0[1] + 22] },
+    dados: ["O", "A", "L", "M", "N"],
     datos: [],
-    base: [["A", "O"], ["Pl", "N"]],
+    base: [["A", "L"], ["M", "N"]],
     circulos: [{ c: "O", r: R0 }],
     ops: [
       { k: "medir", de: "N", a: "O" },
-      ...marcaArco("N", "S"),
-      perp(["O", "N"], "S", ["S", "_s"]),
+      { k: "arco", c: "N", hacia: "Q", abs: [112, 182] },
+      { k: "marca", p: "Q" },
+      perp(["O", "N"], "Q", ["Q", "_q"]),
       { k: "marca", p: "P" },
-      { k: "medir", de: "P", a: "S" },
+      { k: "medir", de: "P", a: "Q" },
       ...marcaArco("A", "B"),
       ...marcaArco("B", "C"),
       ...marcaArco("C", "D"),
       ...marcaArco("D", "E"),
       ...marcaArco("E", "F"),
       ...marcaArco("F", "G"),
-      { k: "lados", pts: nombres },
+      { k: "lados", pts: ["A", "B", "C", "D", "E", "F", "G"] },
     ],
   };
 }
@@ -534,23 +524,20 @@ function div9(): Construccion {
   const A: P = [O0[0], O0[1] - R0];
   const N: P = [O0[0], O0[1] + R0];
   const Pl: P = [O0[0] - R0, O0[1]];
+  const Rr: P = [O0[0] + R0, O0[1]];
   const K2 = en(O0, R0, 30);
   const K1 = en(O0, R0, -30);
   const K3: P = [O0[0] + R0 * Math.SQRT2, O0[1]];
   const rad3 = dist(K3, A);
   const Q: P = [K3[0] - rad3, O0[1]];
-  const lado = dist(Pl, Q);
-  const V = vertices(O0, R0, 180, lado, 9, -1);
-  const nombres = ["P", "B", "C", "D", "E", "F", "G", "H", "I"];
-  const v: Record<string, P> = {};
-  nombres.forEach((n, i) => (v[n] = V[i]));
+  const v = nombrar(vertices(O0, R0, 90, dist(Pl, Q), 9, 1), LETRAS);
   return {
     titulo: "Circunferencia en nueve partes iguales",
-    intro: "Se tiene una circunferencia con dos diámetros perpendiculares dibujados. El lado $l_9$ del eneágono se obtiene con unos arcos auxiliares y se lleva nueve veces sobre la circunferencia.",
-    pts: { O: O0, A, N, Q, "1": K1, "2": K2, "3": K3, ...v, P: Pl, _r: [O0[0] + R0 + 30, O0[1]] },
-    dados: ["O", "A", "N", "P"],
+    intro: "Se tiene una circunferencia con los diámetros perpendiculares $AN$ y $PR$ dibujados. El segmento $PQ$ es el lado $l_9$ del eneágono inscrito: se lleva nueve veces sobre la circunferencia, empezando en $A$.",
+    pts: { O: O0, A, N, P: Pl, R: Rr, "1": K1, "2": K2, "3": K3, Q, ...v },
+    dados: ["O", "A", "N", "P", "R"],
     datos: [],
-    base: [["A", "N"], ["P", "_r"]],
+    base: [["A", "N"], ["P", "R"]],
     circulos: [{ c: "O", r: R0 }],
     ops: [
       { k: "medir", de: "O", a: "A" },
@@ -566,15 +553,8 @@ function div9(): Construccion {
       { k: "arco", c: "3", hacia: "Q", abs: [140, 220] },
       { k: "marca", p: "Q" },
       { k: "medir", de: "P", a: "Q" },
-      ...marcaArco("P", "B"),
-      ...marcaArco("B", "C"),
-      ...marcaArco("C", "D"),
-      ...marcaArco("D", "E"),
-      ...marcaArco("E", "F"),
-      ...marcaArco("F", "G"),
-      ...marcaArco("G", "H"),
-      ...marcaArco("H", "I"),
-      { k: "lados", pts: nombres },
+      ...LETRAS.slice(0, 8).flatMap((n, i) => marcaArco(n, LETRAS[i + 1])),
+      { k: "lados", pts: LETRAS.slice(0, 9) },
     ],
   };
 }
