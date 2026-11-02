@@ -27,6 +27,9 @@ export type PlanDesliza = {
   config: Record<string, number | boolean>;
 };
 
+/** Que un instrumento tape un punto importante pesa poco: se retira al terminar el trazo; importa más no usar instrumentos de más. */
+const PESO_TAPADO = 1500;
+
 const cache = new Map<string, PlanDesliza>();
 const r = (p: Pt) => `${Math.round(p[0])},${Math.round(p[1])}`;
 const fueraHoja = (p: Pt) => Math.max(0, 8 - p[0]) + Math.max(0, p[0] - 612) + Math.max(0, 8 - p[1]) + Math.max(0, p[1] - 372);
@@ -48,6 +51,84 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
   const nrm: Pt = [-u[1], u[0]];
   const tau = RECORRIDO;
   let mejor: { coste: number; plan: PlanDesliza } | null = null;
+
+  // Solo la escuadra: un cateto apoyado en la propia recta y el otro, perpendicular, que pasa por P. Desliza por la recta.
+  const foot: Pt = (() => {
+    const t = dot(sub(P, recta[0]), u);
+    return [recta[0][0] + u[0] * t, recta[0][1] + u[1] * t];
+  })();
+  const distP = Math.hypot(P[0] - foot[0], P[1] - foot[1]);
+  for (const [iD, iS] of [[0, 1], [1, 0]]) {
+    const [Da, Db] = BORDES[iD];
+    const [Sa, Sb] = BORDES[iS];
+    const dLocal = unit(sub(ESC_V[Db], ESC_V[Da]));
+    for (const espejo of [false, true]) {
+      for (const e of [1, -1]) {
+        const rotE = giroPara(dLocal, espejo, [e * nrm[0], e * nrm[1]]);
+        // el borde de dibujo sale del pie de la perpendicular hacia P (o hacia el trazo si P está en la recta)
+        const haciaP: Pt = distP > 1 ? unit(sub(P, foot)) : unit(sub(traza[1], traza[0]));
+        if (dot([e * nrm[0], e * nrm[1]], haciaP) < 0.5) continue;
+        for (const se of ESCALAS) {
+          const W = vertices(ESC_V, rotE, espejo, se);
+          const lD = largo(sub(W[Db], W[Da]));
+          if (distP > 0.9 * lD) continue;
+          const phi = unit(sub(W[Sb], W[Sa]));
+          for (const sigma of [1, -1]) {
+            const v: Pt = [sigma * phi[0], sigma * phi[1]];
+            const dirD = unit(sub(W[Db], W[Da]));
+            const originEn = (s: number): Pt => [foot[0] - W[Da][0] + v[0] * (s - tau), foot[1] - W[Da][1] + v[1] * (s - tau)];
+            const inicioD = (s: number): Pt => {
+              const o = originEn(s);
+              return [o[0] + W[Da][0], o[1] + W[Da][1]];
+            };
+            const fT = [traza[0], traza[1]].map((q) => dot(sub(q, foot), dirD) / lD);
+            const sinCubrir = lD * (Math.max(0, -Math.min(...fT)) + Math.max(0, Math.max(...fT) - 1));
+            let coste = sinCubrir * 0.6 + (se - 1) * 400 + (espejo ? 8 : 0);
+            const tapados = new Set<number>();
+            let fuera = 0;
+            for (const s of [0, tau]) {
+              const o = originEn(s);
+              const te = W.map((w) => [o[0] + w[0], o[1] + w[1]] as Pt);
+              importantes.forEach((p, k) => {
+                if (Math.hypot(P[0] - p[0], P[1] - p[1]) < 3) return;
+                if (dentro(p, te, 5)) tapados.add(k);
+              });
+              for (const p of te) fuera += fueraHoja(p);
+            }
+            coste += tapados.size * PESO_TAPADO + fuera * 0.6;
+            if (mejor && coste >= mejor.coste) continue;
+            const pose: Pose = { x: 0, y: 0, rot: rotE, mirror: espejo };
+            mejor = {
+              coste,
+              plan: {
+                u: v,
+                objetivo: tau,
+                max: tau + 90,
+                nodo: (s, opacidad = 1) => {
+                  const o = originEn(s);
+                  const p: Pose = { ...pose, x: o[0], y: o[1] };
+                  return (
+                    <g data-testid="bench-instrumentos" pointerEvents="none" opacity={opacidad}>
+                      <g transform={aEscala(p, se)}>
+                        <Escuadra pose={p} />
+                      </g>
+                    </g>
+                  );
+                },
+                filo: (s) => ({ p: inicioD(s), dir: dirD }),
+                borde: (s) => {
+                  const a0 = inicioD(s);
+                  return [a0, [a0[0] + dirD[0] * lD, a0[1] + dirD[1] * lD]];
+                },
+                config: { solo: true, dibujo: iD, apoyo: iS, escuadra: se, contacto: 1e9 },
+              },
+            };
+          }
+        }
+      }
+    }
+  }
+  const dosInstrumentos = 6000;
 
   for (let iD = 0; iD < 3; iD += 1) {
     for (let iS = 0; iS < 3; iS += 1) {
@@ -106,7 +187,7 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
                           }
                         }
                         const minimo = Math.min(60, 0.5 * Math.min(lS, g));
-                        let coste = base + (sc - 1) * 400 + (iG === 0 ? 0 : 15) + (espejoC ? 4 : 0);
+                        let coste = base + dosInstrumentos + (sc - 1) * 400 + (iG === 0 ? 0 : 15) + (espejoC ? 4 : 0);
                         if (contacto < minimo) coste += 1e6 + (minimo - contacto) * 1000;
                         if (mejor && coste >= mejor.coste) continue;
                         const lamGa = fl === 1 ? mejorG0 : mejorG0 + g;
@@ -122,7 +203,7 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
                           });
                           for (const t of [te, triC]) for (const p of t) fuera += fueraHoja(p);
                         }
-                        coste += tapados.size * 8000 + fuera * 0.6;
+                        coste += tapados.size * PESO_TAPADO + fuera * 0.6;
                         if (mejor && coste >= mejor.coste) continue;
                         const pose: Pose = { x: 0, y: 0, rot: rotE, mirror: espejo };
                         const cart: Pose = { x: Cx[0], y: Cx[1], rot: rotC, mirror: espejoC };
@@ -220,7 +301,7 @@ function calcularAngulo(v: Pt, base: number, obj: number, signo: 1 | -1, largoTr
             });
             for (const p of t) fuera += fueraHoja(p);
           }
-          coste += tapados.size * 8000 + fuera * 0.6;
+          coste += tapados.size * PESO_TAPADO + fuera * 0.6;
           if (mejor && coste >= mejor.coste) continue;
           const pose = (s: number): Pose => {
             const o = origenEn(s);

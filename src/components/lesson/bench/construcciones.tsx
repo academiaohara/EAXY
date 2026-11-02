@@ -242,7 +242,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         else
           pts.slice(0, n).forEach((q, k) => {
             const sub = tramo(t, k / n, (k + 1) / n);
-            if (sub > 0) nodos.push(<ReglaTrazando key={`${key}-${k}`} a={q} b={pts[(k + 1) % n]} p={sub} ext={0} color={INK} w={3} />);
+            if (sub > 0) nodos.push(<ReglaTrazando key={`${key}-${k}`} a={q} b={pts[(k + 1) % pts.length]} p={sub} ext={0} color={INK} w={3} />);
           });
         break;
       }

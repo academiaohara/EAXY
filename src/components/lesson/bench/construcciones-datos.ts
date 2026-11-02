@@ -1167,8 +1167,8 @@ function medioProporcional(suma: boolean): Construccion {
       ...mediatriz("A", "B", "P1", "P2", "O", 66),
       { k: "medir", de: "O", a: "A" },
       { k: "arco", c: "O", hacia: "M", abs: [2, 178] },
-      perp(["A", "B"], "P", ["_p1", "_p2"]),
-      { k: "marca", p: "M" },
+      // la perpendicular por P es paralela a la mediatriz P1P2 (que ya es perpendicular a AB): se desliza la escuadra desde ella
+      { k: "paralelas", recta: ["P1", "P2"], marcas: ["P"], cortes: ["M"] },
       { k: "lados", pts: suma ? ["P", "M"] : ["A", "M"] },
     ],
   };

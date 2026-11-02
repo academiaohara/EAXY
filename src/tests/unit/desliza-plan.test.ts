@@ -25,8 +25,15 @@ describe("planPerp: perpendicular con escuadra y cartabón", () => {
         expect(Math.abs(dot(unit(e), u))).toBeLessThan(1e-6);
         expect(Math.abs(cross(unit(e), sub(P, g0)))).toBeLessThan(1e-6);
         const t = dot(sub(P, g0), e) / dot(e, e);
-        expect(t).toBeGreaterThanOrEqual(0.2);
-        expect(t).toBeLessThanOrEqual(0.8);
+        if (plan.config.solo) {
+          // solo escuadra: el borde de dibujo sale de la recta y P queda dentro de él
+          expect(t).toBeGreaterThanOrEqual(0);
+          expect(t).toBeLessThanOrEqual(0.9);
+          expect(Math.abs(cross(sub(g0, a), u))).toBeLessThan(1e-6);
+        } else {
+          expect(t).toBeGreaterThanOrEqual(0.2);
+          expect(t).toBeLessThanOrEqual(0.8);
+        }
         // la escuadra no gira: el borde conserva su dirección durante el recorrido
         const [h0, h1] = plan.borde(0);
         expect(Math.abs(cross(unit(sub(h1, h0)), unit(e)))).toBeLessThan(1e-6);
