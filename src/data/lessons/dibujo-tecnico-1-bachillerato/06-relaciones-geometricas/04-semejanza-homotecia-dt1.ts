@@ -1,5 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
 import { bench, slide } from "@/data/lessons/tec1-helpers";
 
 export const semejanzaHomoteciaDt1Lesson: InteractiveLesson = {
@@ -14,5 +15,7 @@ export const semejanzaHomoteciaDt1Lesson: InteractiveLesson = {
       { title: "Las áreas guardan k²", text: "Si la razón de longitudes es $k$, las **áreas** están en razón $k^2$ y los **volúmenes** en razón $k^3$. Con $k = 2$, el área se multiplica por **4**.", fact: "Área × k²; Volumen × k³" },
       { title: "Escalas de los planos", text: "Una **escala** es una semejanza: $1:50$ significa $k = \\dfrac{1}{50}$. Una longitud de 4 cm en el plano son 2 m reales, y las superficies guardan la razón $k^2 = \\dfrac{1}{2\\,500}$.", fact: "Escala 1:50 → k = 1/50" },
     ]), "stack"),
+
+    ...construccionPasos("semejante-radial", "semejante-coordenadas"),
   ],
 };

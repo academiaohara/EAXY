@@ -763,6 +763,7 @@ import { ideaLimiteFuncionCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-
 import { identidadesNotables3esoLesson } from "@/data/lessons/matematicas-3-eso/04-lenguaje-algebraico/06-identidades-notables-3eso";
 import { identidadesNotables4esobLesson } from "@/data/lessons/matematicas-4-eso-b/02-polinomios-y-fracciones-algebraicas/08-identidades-notables-4esob";
 import { identidadesTransformaciones1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/07-identidades-transformaciones-1bach";
+import { igualdadFigurasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/05-igualdad-figuras-dt1";
 import { impactoAmbientalProductosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/07-tecnologia-sostenible/04-impacto-ambiental-productos";
 import { impactoAmbientalProductosEsoLesson } from "@/data/lessons/tecnologia-1-eso/08-tecnologia-sostenible/01-impacto-ambiental-productos-eso";
 import { impactoAmbientalRiesgos3esoLesson } from "@/data/lessons/tecnologia-3-eso/02-materiales-procesos/07-impacto-ambiental-riesgos-3eso";
@@ -1497,6 +1498,7 @@ import { separacionMezclasEtapasFq3Lesson } from "@/data/lessons/fisica-3-eso/05
 import { simbologiaCilindrosLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/08-automatizacion-neumatica/05-simbologia-cilindros";
 import { simbologiaIndustrialArquitectonicaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/16-normalizacion-principios-generales/04-simbologia-industrial-arquitectonica-dt1";
 import { simbolosEsquemasElectricosLesson } from "@/data/lessons/tecnologia-1-eso/06-iniciacion-electricidad/03-simbolos-esquemas-electricos";
+import { simetriaCentralDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/06-relaciones-geometricas/06-simetria-central-dt1";
 import { simetriaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/07-transformaciones-geometricas/03-simetria-dt1";
 import { simetriasPeriodicidad2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/02-simetrias-periodicidad-2bach";
 import { simetricoPuntoPlano2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/05-simetrico-punto-plano-2bach";
@@ -2500,6 +2502,7 @@ export const interactiveLessons = {
   "identidades-notables-3eso": identidadesNotables3esoLesson,
   "identidades-notables-4esob": identidadesNotables4esobLesson,
   "identidades-transformaciones-1bach": identidadesTransformaciones1bachLesson,
+  "igualdad-figuras-dt1": igualdadFigurasDt1Lesson,
   "impacto-ambiental-productos": impactoAmbientalProductosLesson,
   "impacto-ambiental-productos-eso": impactoAmbientalProductosEsoLesson,
   "impacto-ambiental-riesgos-3eso": impactoAmbientalRiesgos3esoLesson,
@@ -3234,6 +3237,7 @@ export const interactiveLessons = {
   "simbologia-cilindros": simbologiaCilindrosLesson,
   "simbologia-industrial-arquitectonica-dt1": simbologiaIndustrialArquitectonicaDt1Lesson,
   "simbolos-esquemas-electricos": simbolosEsquemasElectricosLesson,
+  "simetria-central-dt1": simetriaCentralDt1Lesson,
   "simetria-dt1": simetriaDt1Lesson,
   "simetrias-periodicidad-2bach": simetriasPeriodicidad2bachLesson,
   "simetrico-punto-plano-2bach": simetricoPuntoPlano2bachLesson,

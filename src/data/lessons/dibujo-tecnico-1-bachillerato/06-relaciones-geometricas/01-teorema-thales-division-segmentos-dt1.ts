@@ -1,5 +1,6 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
 import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
@@ -34,5 +35,7 @@ export const teoremaThalesDivisionSegmentosDt1Lesson: InteractiveLesson = {
       hint: "No cambies la abertura entre una marca y la siguiente, y desliza la escuadra sobre el cartabón sin girarla.",
       explanation: "Con la misma abertura, las tres marcas quedan a la misma distancia unas de otras; la recta que une la tercera con B se traslada con paralelas (la escuadra desliza sin girar), y las paralelas conservan la razón: AP = PQ = QB.",
     }),
+
+    ...construccionPasos("cuarto-proporcional", "tercero-proporcional"),
   ],
 };
