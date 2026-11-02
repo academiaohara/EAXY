@@ -1,6 +1,8 @@
 "use client";
 
-import { CARTABON_LARGO, dist, type Pose, type Pt } from "./geometry";
+import type { ReactNode } from "react";
+import { instrumentoAngulo } from "./construcciones-datos";
+import { CARTABON_CORTO, CARTABON_LARGO, ESCUADRA_L, dist, type Pose, type Pt } from "./geometry";
 import { Cartabon, Escuadra } from "./instruments";
 import { Seg } from "./scenes-proporcion";
 
@@ -76,12 +78,92 @@ export function filoPerp(g: GeoPerp, s: number): [Pt, Pt] {
 /** Longitud mínima del cartabón: la escuadra no debe salirse de él al deslizar. */
 export const LARGO_CARTABON = CARTABON_LARGO;
 
+/** Datos de una pasada de la escuadra o del cartabón: perpendicular por un punto o ángulo de 30°, 45° o 60° en un vértice. */
+export type DatosDesliza = {
+  recta: [Pt, Pt];
+  punto: Pt;
+  traza: [Pt, Pt];
+  /** Si está, el instrumento hace un ángulo (con cartabón o escuadra) en `punto` en vez de una perpendicular. */
+  angulo?: { base: number; obj: number; signo?: 1 | -1 };
+};
+
+export type Desliza = {
+  /** Dirección en que desliza el instrumento. */
+  u: Pt;
+  objetivo: number;
+  max: number;
+  nodo: (s: number, opacidad?: number) => ReactNode;
+  /** Filo que traza (recta de guía) con el instrumento a `s`: un punto y su dirección unitaria. */
+  filo: (s: number) => { p: Pt; dir: Pt };
+  marca: Pt;
+  texto: string;
+};
+
+const unit = (a: Pt): Pt => [a[0] / Math.hypot(a[0], a[1]), a[1] / Math.hypot(a[0], a[1])];
+
+/** Cartabón o escuadra con el vértice agudo de `obj` grados en `v`, un cateto sobre la recta y la hipotenusa en el lado del ángulo. */
+function geoAngulo(v: Pt, base: number, obj: number, signo: 1 | -1): Desliza {
+  const inst = instrumentoAngulo(obj)!;
+  const a = inst === "escuadra45" ? ESCUADRA_L : CARTABON_LARGO;
+  const b = inst === "escuadra45" ? ESCUADRA_L : CARTABON_CORTO;
+  // vértice agudo W, dirección l de W al ángulo recto (cateto sobre la recta) y h de W al otro vértice agudo (hipotenusa)
+  const W: Pt = inst === "cartabon60" ? [0, b] : [a, 0];
+  const l: Pt = inst === "cartabon60" ? [0, -1] : [-1, 0];
+  const h: Pt = inst === "cartabon60" ? unit([a, -b]) : unit([-a, b]);
+  const rad = (d: number) => (d * Math.PI) / 180;
+  const bdir: Pt = [Math.cos(rad(base)), -Math.sin(rad(base))];
+  const rdir: Pt = [Math.cos(rad(base + signo * obj)), -Math.sin(rad(base + signo * obj))];
+  // M lleva l → bdir y h → rdir: M = [bdir rdir] · [l h]⁻¹
+  const det = l[0] * h[1] - h[0] * l[1];
+  const inv = [[h[1] / det, -h[0] / det], [-l[1] / det, l[0] / det]];
+  const M = [
+    [bdir[0] * inv[0][0] + rdir[0] * inv[1][0], bdir[0] * inv[0][1] + rdir[0] * inv[1][1]],
+    [bdir[1] * inv[0][0] + rdir[1] * inv[1][0], bdir[1] * inv[0][1] + rdir[1] * inv[1][1]],
+  ];
+  const q0: Pt = [v[0] - bdir[0] * ANTES, v[1] - bdir[1] * ANTES];
+  const vertice = (s: number): Pt => [q0[0] + bdir[0] * s, q0[1] + bdir[1] * s];
+  const nombre = inst === "escuadra45" ? "la escuadra" : "el cartabón";
+  return {
+    u: bdir,
+    objetivo: ANTES,
+    max: ANTES + 90,
+    nodo: (s, opacidad = 1) => {
+      const w = vertice(s);
+      const e = w[0] - (M[0][0] * W[0] + M[0][1] * W[1]);
+      const f = w[1] - (M[1][0] * W[0] + M[1][1] * W[1]);
+      return (
+        <g data-testid="bench-instrumentos" pointerEvents="none" opacity={opacidad}>
+          <g transform={`matrix(${M[0][0]} ${M[1][0]} ${M[0][1]} ${M[1][1]} ${e} ${f})`}>{inst === "escuadra45" ? <Escuadra pose={{ x: 0, y: 0, rot: 0 }} /> : <Cartabon pose={{ x: 0, y: 0, rot: 0 }} />}</g>
+        </g>
+      );
+    },
+    filo: (s) => ({ p: vertice(s), dir: rdir }),
+    marca: v,
+    texto: `arrastra ${nombre} a lo largo de la recta hasta que su vértice de ${obj}° llegue al punto resaltado.`,
+  };
+}
+
+/** Geometría de un instrumento que desliza: perpendicular con escuadra y cartabón, o ángulo con uno de ellos. */
+export function geoDesliza(d: DatosDesliza): Desliza {
+  if (d.angulo && instrumentoAngulo(d.angulo.obj)) return geoAngulo(d.punto, d.angulo.base, d.angulo.obj, d.angulo.signo ?? 1);
+  const g = geoPerp(d.recta, d.punto);
+  return {
+    u: g.u,
+    objetivo: g.objetivo,
+    max: g.max,
+    nodo: (s, opacidad = 1) => <InstrumentosPerp g={g} s={s} opacidad={opacidad} />,
+    filo: (s) => ({ p: filoPerp(g, s)[0], dir: g.n }),
+    marca: d.punto,
+    texto: "arrastra la escuadra sobre el cartabón hasta que su filo pase por el punto resaltado.",
+  };
+}
+
 /**
- * Animación: la escuadra entra, desliza sobre el cartabón hasta que su filo pasa por `P` y el lápiz traza `linea`.
- * `p` va de 0 a 1.
+ * Animación: el instrumento entra, desliza hasta su sitio y el lápiz traza `traza` guiado por su filo. `p` va de 0 a 1.
  */
-export function AnimPerpendicular({ recta, punto, linea, p, color = "#6b7480", w = 1.1 }: { recta: [Pt, Pt]; punto: Pt; linea: [Pt, Pt]; p: number; color?: string; w?: number }) {
-  const g = geoPerp(recta, punto);
+export function AnimDesliza({ datos, p, color = "#6b7480", w = 1.1 }: { datos: DatosDesliza; p: number; color?: string; w?: number }) {
+  const g = geoDesliza(datos);
+  const linea = datos.traza;
   const entra = tramo(p, 0, 0.12);
   const mov = tramo(p, 0.12, 0.62);
   const traza = tramo(p, 0.66, 0.92);
@@ -91,7 +173,12 @@ export function AnimPerpendicular({ recta, punto, linea, p, color = "#6b7480", w
   return (
     <g data-testid="bench-perpendicular-anim">
       {traza > 0 ? <Seg a={linea[0]} b={fin} color={color} w={w} /> : null}
-      {p < 1 ? <InstrumentosPerp g={g} s={s} opacidad={entra * (1 - sale)} /> : null}
+      {p < 1 ? g.nodo(s, entra * (1 - sale)) : null}
     </g>
   );
+}
+
+/** Perpendicular con escuadra y cartabón (animación). */
+export function AnimPerpendicular({ recta, punto, linea, p, color, w }: { recta: [Pt, Pt]; punto: Pt; linea: [Pt, Pt]; p: number; color?: string; w?: number }) {
+  return <AnimDesliza datos={{ recta, punto, traza: linea }} p={p} color={color} w={w} />;
 }

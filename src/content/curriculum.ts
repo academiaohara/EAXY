@@ -16782,8 +16782,8 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20306),
-              title: "12. Polígonos estrellados y aplicaciones",
-              summary: "Estrellas {n/k} y usos de los polígonos regulares.",
+              title: "12. Polígonos estrellados",
+              summary: "Cómo se trazan las estrellas {n/k} y práctica del pentagrama.",
               orderIndex: 12,
               kind: "interactive",
               interactiveSlug: "poligonos-estrellados-dt1",

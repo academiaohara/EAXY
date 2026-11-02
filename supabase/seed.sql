@@ -1904,7 +1904,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020326', 'a2000000-0000-4000-8000-000000000392', '9. División de la circunferencia en n partes', 'Método general con el teorema de Thales.', 9, null),
   ('a3000000-0000-4000-8000-000000020327', 'a2000000-0000-4000-8000-000000000392', '10. Pentágono y hexágono regulares dado el lado', 'Construcción del pentágono y del hexágono conocido el lado.', 10, null),
   ('a3000000-0000-4000-8000-000000020328', 'a2000000-0000-4000-8000-000000000392', '11. Heptágono, octógono y eneágono regulares dado el lado', 'Construcción del heptágono, el octógono y el eneágono conocido el lado.', 11, null),
-  ('a3000000-0000-4000-8000-000000020306', 'a2000000-0000-4000-8000-000000000392', '12. Polígonos estrellados y aplicaciones', 'Estrellas {n/k} y usos de los polígonos regulares.', 12, null),
+  ('a3000000-0000-4000-8000-000000020306', 'a2000000-0000-4000-8000-000000000392', '12. Polígonos estrellados', 'Cómo se trazan las estrellas {n/k} y práctica del pentagrama.', 12, null),
   ('a3000000-0000-4000-8000-000000020201', 'a2000000-0000-4000-8000-000000000202', '1. Proporcionalidad y teorema de Thales', 'Cuarta proporcional y división de segmentos.', 1, null),
   ('a3000000-0000-4000-8000-000000020202', 'a2000000-0000-4000-8000-000000000202', '2. Tercera y media proporcional. Sección áurea', 'Teorema de la altura y número áureo.', 2, null),
   ('a3000000-0000-4000-8000-000000020203', 'a2000000-0000-4000-8000-000000000202', '3. Equivalencia de figuras y cuadratura', 'Figuras de igual área y cuadrado equivalente.', 3, null),

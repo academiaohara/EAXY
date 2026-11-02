@@ -143,6 +143,7 @@ Las construcciones de cuadriláteros y polígonos regulares (`c-<id>` y `c-<id>-
 - En la lección: `construccionPasos("cuadrado-lado", …)` (`src/data/lessons/construcciones-helpers.ts`) añade, para cada construcción, la diapositiva animada y el ejercicio práctico.
 - Convenios: ángulos antihorarios con Y hacia arriba; los puntos cuyo nombre empieza por `_` son auxiliares; el radio de un arco es la última medida tomada con `medir`; los puntos que se usan después de hallarlos se declaran con `marca`; `recta … limpia: true` borra los arcos auxiliares anteriores.
 - `src/tests/unit/construcciones-datos.test.ts` comprueba la geometría (radios, perpendiculares, puntos a la vista, lados iguales de los polígonos regulares) y `construcciones.test.tsx` recorre la animación y completa cada práctica siguiendo la descripción.
+- **Instrumentos**: los ángulos de 30°, 45° y 60° se trazan con **cartabón o escuadra** (`instrumentoAngulo`), no con transportador; el alumno desliza el instrumento a lo largo de la recta hasta que su vértice llega al punto (fase `perpendicular`, que también sirve para las perpendiculares). Lo trazado con el filo de la escuadra o del cartabón se dibuja directamente, sin animar la regla. Cualquier cambio de la animación se hace también en la práctica: las dos salen de la misma descripción.
 - Para añadir una construcción: describirla en `CONSTRUCCIONES`, añadir sus textos si los generados no bastan (`notas`) y usarla en una lección; no hay que registrar nada más.
 
 ## Animaciones (`anim`)

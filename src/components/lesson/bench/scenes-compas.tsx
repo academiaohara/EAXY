@@ -3,7 +3,7 @@
 import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
 import { ESCUADRA_L, PARALELA_A, angDe, applyPose, cartabonPose, clamp, dir, dist, dot, enCirculo, escuadraPose, interseccionCirculos, paralelaSetup, puntoMedio, type ParalelaSetup, type Pose, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
-import { InstrumentosPerp, filoPerp, geoPerp } from "./escuadra-perpendicular";
+import { geoDesliza, type DatosDesliza } from "./escuadra-perpendicular";
 import { useBenchCheck } from "./practice";
 import { ReproCtx } from "./reproduccion";
 import { AMBAR, AZUL, Arco, BenchShell, INK, Resultado, SANS, SVG_CLASS, VERDE, f1, type BenchBlock, type BenchSceneName } from "./scenes";
@@ -499,7 +499,7 @@ export type Def = {
    * Fase `perpendicular`: la escuadra desliza sobre el cartabón (apoyado en `recta`) hasta que su filo pasa por `punto`;
    * al soltarla ahí queda trazada la recta `traza`.
    */
-  perpendicular?: (est: Est) => { recta: [Pt, Pt]; punto: Pt; traza: [Pt, Pt] };
+  perpendicular?: (est: Est) => DatosDesliza;
   /** Índices de los arcos que dejan de dibujarse (trazo auxiliar que ya no hace falta). */
   ocultarArcos?: (est: Est) => number[];
   /** Índices (en `est.trazos`) de las rectas auxiliares que dejan de dibujarse. */
@@ -508,6 +508,15 @@ export type Def = {
   trazoFino?: boolean;
   /** Grosor de los lados que traza la regla al final (fase `auto`): el dibujo definitivo, como un lápiz B. */
   grosorAuto?: number;
+  /**
+   * Fase `regla` en cadena: cada toque es un vértice y la regla une cada uno con el anterior (la pluma no se levanta);
+   * `nClics` es el total de toques (el de salida y uno por trazo).
+   */
+  cadena?: boolean;
+  /** Puntos que se resaltan como guía (por defecto, los de `cortes`): en una cadena, solo los destinos válidos. */
+  guia?: (est: Est) => Pt[];
+  /** Texto de «Tu turno» propio del paso actual (por ejemplo, según cuántos puntos se han tocado ya). */
+  accion?: (est: Est) => string | null;
   /** Cada fase `escuadra` empieza con la escuadra en su posición inicial (rectas de apoyo distintas en cada una). */
   reiniciarEscuadra?: boolean;
   /** Índices de los arcos que forman el resultado: se dibujan con trazo fuerte aunque la construcción haya terminado. */
@@ -530,6 +539,13 @@ export type Def = {
 };
 
 export const SNAP = 14;
+
+/** Trazos hechos directamente con el filo de la escuadra o del cartabón: se dibujan sin animar la regla. */
+const TRAZOS_DIRECTOS = new WeakSet<object>();
+const trazoDirecto = (t: [Pt, Pt]): [Pt, Pt] => {
+  TRAZOS_DIRECTOS.add(t);
+  return t;
+};
 /** Margen (mm sobre el cartabón) con el que la escuadra encaja en la marca pedida. */
 const ENCAJE = 9;
 
@@ -577,6 +593,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   /** Intentos fallidos seguidos en la fase actual y pista pedida: con 2 fallos la escena enseña qué hacer. */
   const [fallos, setFallos] = useState(0);
   const [pista, setPista] = useState(false);
+  /** Posición del puntero sobre la hoja cuando hay un punto elegido: de ahí sale la goma hasta el puntero. */
+  const [hover, setHover] = useState<Pt | null>(null);
   const fallar = (mensaje: string) => {
     setAviso(mensaje);
     setFallos((n) => n + 1);
@@ -590,7 +608,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   const evaluacion = def.evaluar(est);
   const datosEsc = tipo === "escuadra" && def.escuadra ? def.escuadra(est) : null;
   const datosPerp = tipo === "perpendicular" && def.perpendicular ? def.perpendicular(est) : null;
-  const geoP = datosPerp ? geoPerp(datosPerp.recta, datosPerp.punto) : null;
+  const desl = datosPerp ? geoDesliza(datosPerp) : null;
   const prep = datosEsc ? prepararEscuadra(datosEsc.recta, datosEsc.objetivos.map((o) => o.marca)) : null;
   const { resultado, finalizar } = useBenchCheck();
   const bloqueada = resultado !== null;
@@ -641,6 +659,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     setAviso(null);
     setFallos(0);
     setPista(false);
+    setHover(null);
     if (nuevo.fase >= fases.length) finalizar();
     else if (fases[nuevo.fase] === "auto") {
       // la regla traza sola los lados que faltan y, al acabar, el ejercicio se da por superado
@@ -699,6 +718,10 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         fallar("Ese punto ya lo has usado: toca el otro punto por el que pasa la regla.");
         return;
       }
+      if (est.pend && est.trazos.some(([x, y]) => (dist(x, est.pend!) < 1 && dist(y, cand) < 1) || (dist(x, cand) < 1 && dist(y, est.pend!) < 1))) {
+        fallar("Esa recta ya está trazada: elige otros dos puntos.");
+        return;
+      }
       setAviso(null);
       if (!est.pend) setEst({ ...est, pend: cand });
       else avanzar({ ...est, trazos: [...est.trazos, [est.pend, cand]], pend: null });
@@ -741,7 +764,11 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
 
   const onMove = (ev: ReactPointerEvent) => {
-    if (!agarrada || bloqueada || !tipo) return;
+    if (bloqueada || !tipo) return;
+    if (!agarrada) {
+      if ((tipo === "regla" && def.cadena && est.clics.length > 0) || (tipo === "trazo" && est.pend) || (tipo === "medida" && est.medida.length === 1)) setHover(puntero(svgRef.current, ev));
+      return;
+    }
     const p = puntero(svgRef.current, ev);
     if (tipo === "escuadra") {
       if (prep && dragEsc.current) {
@@ -754,9 +781,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       return;
     }
     if (tipo === "perpendicular") {
-      if (geoP && dragEsc.current) {
-        const crudo = clamp(dragEsc.current.esc0 + (p[0] - dragEsc.current.inicio[0]) * geoP.u[0] + (p[1] - dragEsc.current.inicio[1]) * geoP.u[1], 0, geoP.max);
-        setEst({ ...est, esc: Math.abs(crudo - geoP.objetivo) <= ENCAJE ? geoP.objetivo : crudo });
+      if (desl && dragEsc.current) {
+        const crudo = clamp(dragEsc.current.esc0 + (p[0] - dragEsc.current.inicio[0]) * desl.u[0] + (p[1] - dragEsc.current.inicio[1]) * desl.u[1], 0, desl.max);
+        setEst({ ...est, esc: Math.abs(crudo - desl.objetivo) <= ENCAJE ? desl.objetivo : crudo });
       }
       return;
     }
@@ -805,10 +832,10 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   };
   /** Al soltar la escuadra con el filo por el punto pedido, la perpendicular queda trazada. */
   const comprobarPerpendicular = () => {
-    if (!geoP || !datosPerp || bloqueada) return;
-    if (Math.abs(est.esc - geoP.objetivo) <= 1) avanzar({ ...est, esc: 0, trazos: [...est.trazos, datosPerp.traza] });
-    else if (est.esc > geoP.objetivo + 4) fallar("Te has pasado: desliza la escuadra hacia atrás hasta que su filo pase por el punto marcado.");
-    else if (est.esc > 6) fallar("Todavía no llega: sigue deslizando la escuadra sobre el cartabón hasta que su filo pase por el punto marcado.");
+    if (!desl || !datosPerp || bloqueada) return;
+    if (Math.abs(est.esc - desl.objetivo) <= 1) avanzar({ ...est, esc: 0, trazos: [...est.trazos, trazoDirecto(datosPerp.traza)] });
+    else if (est.esc > desl.objetivo + 4) fallar("Te has pasado: desliza el instrumento hacia atrás hasta que llegue al punto marcado.");
+    else if (est.esc > 6) fallar("Todavía no llega: sigue deslizando el instrumento hasta el punto marcado.");
   };
   const onUp = () => {
     setAgarrada(false);
@@ -864,12 +891,12 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       ev.preventDefault();
       return;
     }
-    if (tipo === "perpendicular" && !bloqueada && geoP && datosPerp) {
+    if (tipo === "perpendicular" && !bloqueada && desl && datosPerp) {
       const paso = ev.shiftKey ? 10 : 2;
       const nuevo = ev.key === "ArrowUp" || ev.key === "ArrowRight" ? est.esc + paso : ev.key === "ArrowDown" || ev.key === "ArrowLeft" ? est.esc - paso : null;
       if (nuevo === null) return;
-      const valor = clamp(nuevo, 0, geoP.max);
-      if (Math.abs(valor - geoP.objetivo) <= 1) avanzar({ ...est, esc: 0, trazos: [...est.trazos, datosPerp.traza] });
+      const valor = clamp(nuevo, 0, desl.max);
+      if (Math.abs(valor - desl.objetivo) <= 1) avanzar({ ...est, esc: 0, trazos: [...est.trazos, trazoDirecto(datosPerp.traza)] });
       else setEst({ ...est, esc: valor });
       ev.preventDefault();
       return;
@@ -936,7 +963,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
   }
   // Cada pareja de toques es una pasada de la regla; la última se anima y las anteriores quedan trazadas.
   const parejas = Math.floor(est.clics.length / 2);
-  const pRegla = useProgreso(parejas > 0 ? `regla-${est.clics.length}` : "no", 1200);
+  const nSegRegla = def.sinRegla ? 0 : def.cadena ? Math.max(0, est.clics.length - 1) : parejas;
+  const pRegla = useProgreso((def.cadena ? est.clics.length > 1 : parejas > 0) ? `regla-${est.clics.length}` : "no", 1200);
   const pTrazo = useProgreso(est.trazos.length > 0 ? `trazo-${est.trazos.length}` : "no", 1200);
   const pAuto = useProgreso(tipo === "auto" ? "auto" : "no", Math.max(msAuto, 1));
 
@@ -954,7 +982,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     if (tipo === "centro") return def.candidatos(est, cuenta(fases, est.fase, "centro"));
     if (tipo === "medida") return (def.medibles?.(est) ?? []).filter((c) => !(est.medida[0] && dist(est.medida[0], c) < 1));
     if (tipo === "perpendicular") return datosPerp ? [datosPerp.punto] : [];
-    if (tipo === "punto" || tipo === "regla") return def.cortes(est);
+    if (tipo === "punto" || tipo === "regla") return def.guia?.(est) ?? def.cortes(est);
     if (tipo === "trazo") return def.cortes(est).filter((c) => !(est.pend && dist(est.pend, c) < 1));
     if (tipo === "angulo") {
       const a = def.angulo?.(est);
@@ -982,7 +1010,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     regla: "toca los puntos resaltados para pasar la regla.",
     angulo: "arrastra el segundo lado hasta la marca resaltada.",
     escuadra: "arrastra la escuadra hacia la marca resaltada hasta que su filo pase por ella.",
-    perpendicular: "arrastra la escuadra sobre el cartabón hasta que su filo pase por el punto resaltado.",
+    perpendicular: desl?.texto ?? "arrastra el instrumento hasta el punto resaltado.",
   };
   const TEXTO_ACCION: Record<string, string> = {
     centro: "toca el punto donde clavar el compás",
@@ -994,9 +1022,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     regla: "toca los puntos por donde pasa la regla",
     angulo: "arrastra el segundo lado hasta el ángulo",
     escuadra: "arrastra la escuadra hasta la marca",
-    perpendicular: "desliza la escuadra sobre el cartabón hasta el punto",
+    perpendicular: "desliza el instrumento hasta el punto",
   };
-  const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? TEXTO_ACCION[tipo] : null;
+  const accion = !bloqueada && !hecha && tipo && tipo !== "auto" ? (def.accion?.(est) ?? TEXTO_ACCION[tipo]) : null;
   const extra = (
     <div className="flex flex-col gap-2">
       {alineada ? (
@@ -1056,6 +1084,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         tabIndex={tipo === "abertura" || tipo === "angulo" || tipo === "escuadra" || tipo === "perpendicular" ? 0 : -1}
         onPointerDown={onDown}
         onPointerMove={onMove}
+        onPointerLeave={() => setHover(null)}
         onPointerUp={onUp}
         onPointerCancel={onUp}
         onKeyDown={onKey}
@@ -1084,8 +1113,8 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             </g>
           );
         })() : null}
-        {Array.from({ length: def.sinRegla ? 0 : parejas }, (_, i) => (
-          <ReglaTrazando key={i} a={est.clics[2 * i]} b={est.clics[2 * i + 1]} p={i === parejas - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === parejas - 1 ? "bench-regla-trazo" : undefined} />
+        {Array.from({ length: nSegRegla }, (_, i) => (
+          <ReglaTrazando key={i} a={def.cadena ? est.clics[i] : est.clics[2 * i]} b={def.cadena ? est.clics[i + 1] : est.clics[2 * i + 1]} p={i === nSegRegla - 1 ? pRegla : 1} ext={def.extRegla ?? 28} testId={i === nSegRegla - 1 ? "bench-regla-trazo" : undefined} />
         ))}
         {def.autoLados && (tipo === "auto" || hecha)
           ? def.autoLados(est).map(([a, b], i, todos) => (
@@ -1093,39 +1122,52 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             ))
           : null}
         {est.trazos.map(([a, b], i) =>
-          (def.ocultarTrazos?.(est) ?? []).includes(i) ? null : (
+          (def.ocultarTrazos?.(est) ?? []).includes(i) ? null : TRAZOS_DIRECTOS.has(est.trazos[i]) ? (
+            <line key={`t${i}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={def.trazoFino ? "#6b7480" : INK} strokeWidth={def.trazoFino ? 1.1 : 1.5} strokeLinecap="round" data-testid="bench-trazo-aux" />
+          ) : (
             <ReglaTrazando key={`t${i}`} a={a} b={b} p={i === est.trazos.length - 1 ? pTrazo : 1} ext={def.extTrazo ?? 40} color={def.trazoFino ? "#6b7480" : INK} w={def.trazoFino ? 1.1 : 1.5} testId="bench-trazo-aux" />
           ),
         )}
-        {est.pend ? (
-          <g data-testid="bench-pend" pointerEvents="none">
-            <circle cx={est.pend[0]} cy={est.pend[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
-            <circle cx={est.pend[0]} cy={est.pend[1]} r="0.9" fill={AMBAR} />
-          </g>
-        ) : null}
-        {est.medida.map((c, i) => (
-          <g key={`m${i}`} data-testid="bench-medida" pointerEvents="none">
-            <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AZUL} strokeWidth="1.6" />
-            <circle cx={c[0]} cy={c[1]} r="0.9" fill={AZUL} />
-          </g>
-        ))}
-        {est.clics.map((c, i) => (
-          <g key={i} data-testid="bench-clic" pointerEvents="none">
-            <circle cx={c[0]} cy={c[1]} r="3.4" fill="none" stroke={AMBAR} strokeWidth="1.6" />
-            <circle cx={c[0]} cy={c[1]} r="0.9" fill={AMBAR} />
-          </g>
-        ))}
-        {tipo === "perpendicular" && geoP && datosPerp ? (
+        {(() => {
+          /** Punto elegido que espera al siguiente: aro grande que late, nombre y una goma hasta el puntero. */
+          const origen = (c: Pt, color: string, texto: string, id?: string) => (
+            <g data-testid={id} pointerEvents="none">
+              {hover ? <line x1={c[0]} y1={c[1]} x2={hover[0]} y2={hover[1]} stroke={color} strokeWidth="1.8" strokeDasharray="6 5" opacity="0.85" /> : null}
+              <circle cx={c[0]} cy={c[1]} r="11" fill={color} fillOpacity="0.22" stroke={color} strokeWidth="3">
+                <animate attributeName="r" values="10;14;10" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={c[0]} cy={c[1]} r="4.6" fill={color} stroke="#fff" strokeWidth="1.6" />
+              <text x={c[0] - 18} y={c[1] < vista.h / 2 ? c[1] + 30 : c[1] - 20} fontSize="12" fontWeight="800" fill={color} fontFamily={SANS} stroke="#fffefa" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round">
+                {texto}
+              </text>
+            </g>
+          );
+          const marca = (c: Pt, color: string, k: string | number, id: string) => (
+            <g key={k} data-testid={id} pointerEvents="none">
+              <circle cx={c[0]} cy={c[1]} r="5" fill={color} stroke="#fff" strokeWidth="1.6" />
+            </g>
+          );
+          const ultimoClic = def.cadena && tipo === "regla" && est.clics.length > 0 ? est.clics[est.clics.length - 1] : null;
+          return (
+            <g>
+              {est.pend ? origen(est.pend, AMBAR, "elegido", "bench-pend") : null}
+              {est.medida.length === 1 ? origen(est.medida[0], AZUL, "1.º punto", "bench-medida") : est.medida.map((c, i) => marca(c, AZUL, `m${i}`, "bench-medida"))}
+              {est.clics.map((c, i) => (ultimoClic && i === est.clics.length - 1 ? null : marca(c, AMBAR, i, "bench-clic")))}
+              {ultimoClic ? origen(ultimoClic, AMBAR, "salida", "bench-origen") : null}
+            </g>
+          );
+        })()}
+        {tipo === "perpendicular" && desl && datosPerp ? (
           <g data-testid="bench-perpendicular">
-            <InstrumentosPerp g={geoP} s={est.esc} />
+            {desl.nodo(est.esc)}
             {(() => {
-              const filo = filoPerp(geoP, est.esc);
-              const alin = Math.abs(est.esc - geoP.objetivo) < 0.5;
+              const filo = desl.filo(est.esc);
+              const alin = Math.abs(est.esc - desl.objetivo) < 0.5;
               const color = alin ? "#1fa84f" : "#ffb400";
-              const q = datosPerp.punto;
+              const q = desl.marca;
               return (
                 <g pointerEvents="none" data-testid="bench-filo">
-                  <line x1={filo[0][0] - geoP.n[0] * 500} y1={filo[0][1] - geoP.n[1] * 500} x2={filo[1][0] + geoP.n[0] * 500} y2={filo[1][1] + geoP.n[1] * 500} stroke={color} strokeWidth="1.6" strokeDasharray="8 6" opacity="0.9" />
+                  <line x1={filo.p[0] - filo.dir[0] * 500} y1={filo.p[1] - filo.dir[1] * 500} x2={filo.p[0] + filo.dir[0] * 500} y2={filo.p[1] + filo.dir[1] * 500} stroke={color} strokeWidth="1.6" strokeDasharray="8 6" opacity="0.9" />
                   <circle cx={q[0]} cy={q[1]} r={alin ? 10 : 12} fill="none" stroke={color} strokeWidth="2.8" data-testid={alin ? "bench-alineada" : "bench-marca-objetivo"}>
                     {alin ? null : <animate attributeName="r" values="9;17;9" dur="1.4s" repeatCount="indefinite" />}
                   </circle>

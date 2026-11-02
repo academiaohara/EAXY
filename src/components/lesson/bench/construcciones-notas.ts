@@ -1,10 +1,12 @@
-import { CONSTRUCCIONES, etiqueta, fasesPractica, type Construccion, type ConstruccionId, type Nota, type Op } from "./construcciones-datos";
+import { CONSTRUCCIONES, etiqueta, fasesPractica, instrumentoAngulo, type Construccion, type ConstruccionId, type Nota, type Op } from "./construcciones-datos";
 
 /**
  * Textos de las construcciones del tema 5: un texto por paso de la animación y uno por fase de la práctica, generados a
  * partir de las operaciones para que explicación y ejercicio cuenten siempre la misma construcción.
  */
-const L = (p: string) => `$${etiqueta(p)}$`;
+const L = (p: string) => (etiqueta(p) ? `$${etiqueta(p)}$` : "el punto");
+/** Nombre de un punto en un título (los puntos de la recta auxiliar no llevan rótulo). */
+const tit = (p: string) => etiqueta(p) || "la última marca";
 const seg = (a: string, b: string) => `$${etiqueta(a)}${etiqueta(b)}$`;
 
 /** Puntos que se marcan justo después de la operación `i` (las marcas que la siguen). */
@@ -26,17 +28,23 @@ function notaOp(c: Construccion, o: Op, i: number): Nota {
       return { title: dato ? `Se toma la medida ${dato.nombre}` : `Se toma la medida ${etiqueta(o.de)}${etiqueta(o.a)}`, text: `Se abre el compás hasta que la punta seca esté en ${L(o.de)} y la mina en ${L(o.a)}: así se toma ${que}.`, fact: `Abertura = ${etiqueta(o.de)}${etiqueta(o.a)}` };
     }
     case "arco":
-      return { title: `Arco con centro en ${etiqueta(o.c)}`, text: `Se clava la punta seca en ${L(o.c)} y, sin cambiar la abertura, se traza un arco hacia ${esDato(c, o.hacia) ? "el segmento" : L(o.hacia)}.${donde}` };
+      return { title: `Arco con centro en ${tit(o.c)}`, text: `Se clava la punta seca en ${L(o.c)} y, sin cambiar la abertura, se traza un arco hacia ${esDato(c, o.hacia) ? "el segmento" : L(o.hacia)}.${donde}` };
     case "circulo":
-      return { title: `Circunferencia de centro ${etiqueta(o.c)}`, text: `Se clava la punta seca en ${L(o.c)} y se da la vuelta completa con la mina: la circunferencia pasa por ${L(o.hacia)}.`, fact: `Centro ${etiqueta(o.c)}` };
+      return { title: `Circunferencia de centro ${tit(o.c)}`, text: `Se clava la punta seca en ${L(o.c)} y se da la vuelta completa con la mina: la circunferencia pasa por ${L(o.hacia)}.`, fact: `Centro ${tit(o.c)}` };
     case "marca":
-      return { title: `Punto ${etiqueta(o.p)}`, text: `Se marca el punto ${L(o.p)}.` };
+      return { title: etiqueta(o.p) ? `Punto ${etiqueta(o.p)}` : "Marca del corte", text: `Se marca el punto ${L(o.p)}.` };
     case "recta":
       return { title: `Recta por ${etiqueta(o.a)} y ${etiqueta(o.b)}`, text: `Se apoya la regla en ${L(o.a)} y ${L(o.b)} y se traza la recta.${o.limpia ? " Se borran los arcos auxiliares y queda solo la recta." : ""}${donde}` };
     case "perp":
       return { title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Con la escuadra y el cartabón: el cartabón se apoya en la recta y la escuadra desliza sobre él hasta que su filo pasa por ${L(o.punto)}. Se traza la perpendicular.${donde}`, fact: "90°" };
-    case "angulo":
+    case "angulo": {
+      const inst = instrumentoAngulo(o.obj);
+      if (inst) {
+        const quien = inst === "escuadra45" ? "la escuadra" : "el cartabón";
+        return { title: `Ángulo de ${o.obj}° en ${etiqueta(o.v)}`, text: `Se apoya ${quien} con un cateto sobre la recta y su vértice de $${o.obj}^\\circ$ en ${L(o.v)}; el lápiz traza por la hipotenusa.${donde}`, fact: `${o.obj}°` };
+      }
       return { title: `Ángulo de ${o.obj}° en ${etiqueta(o.v)}`, text: `Se centra el transportador en ${L(o.v)}, se marca el ángulo de $${o.obj}^\\circ$ y con la regla se traza su lado.${donde}`, fact: `${o.obj}°` };
+    }
     case "paralelas":
       return { title: "Paralelas con escuadra y cartabón", text: `Por ${o.marcas.map(L).join(", ")} se trazan **paralelas** a ${seg(o.recta[0], o.recta[1])}: el cartabón se apoya en esa recta y la escuadra desliza hasta cada punto. Cortan al segmento en partes iguales.` };
     case "lados":
@@ -68,11 +76,11 @@ export function notasPractica(id: ConstruccionId): Nota[] {
         break;
       case "arco":
       case "circulo":
-        out.push({ title: `Clava la punta en ${etiqueta(o.c)}`, text: `Toca ${L(o.c)} para clavar la punta seca del compás.` });
-        out.push({ title: o.k === "circulo" ? "Circunferencia" : `Arco desde ${etiqueta(o.c)}`, text: o.k === "circulo" ? "Da la vuelta completa con la mina siguiendo la circunferencia." : "Arrastra la mina para trazar el arco por donde debe cortar." });
+        out.push({ title: `Clava la punta en ${tit(o.c)}`, text: `Toca ${L(o.c)} para clavar la punta seca del compás.` });
+        out.push({ title: o.k === "circulo" ? "Circunferencia" : `Arco desde ${tit(o.c)}`, text: o.k === "circulo" ? "Da la vuelta completa con la mina siguiendo la circunferencia." : "Arrastra la mina para trazar el arco por donde debe cortar." });
         break;
       case "marca":
-        out.push({ title: `Marca ${etiqueta(o.p)}`, text: `Toca el punto ${L(o.p)} donde se cortan los trazos.` });
+        out.push({ title: etiqueta(o.p) ? `Marca ${etiqueta(o.p)}` : "Marca el corte", text: `Toca el punto ${L(o.p)} donde se cortan los trazos.` });
         break;
       case "recta":
         out.push({ title: `Regla por ${etiqueta(o.a)} y ${etiqueta(o.b)}`, text: `Toca ${L(o.a)} y ${L(o.b)}: la regla traza la recta.${o.limpia ? " Después se borran los arcos auxiliares." : ""}` });
@@ -80,9 +88,11 @@ export function notasPractica(id: ConstruccionId): Nota[] {
       case "perp":
         out.push({ title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Arrastra la escuadra sobre el cartabón hasta que su filo pase por ${L(o.punto)}: queda trazada la perpendicular.`, fact: "90°" });
         break;
-      case "angulo":
-        out.push({ title: `Ángulo de ${o.obj}° en ${etiqueta(o.v)}`, text: "Con el transportador, arrastra el segundo lado hasta ese ángulo.", fact: `${o.obj}°` });
+      case "angulo": {
+        const inst = instrumentoAngulo(o.obj);
+        out.push({ title: `Ángulo de ${o.obj}° en ${etiqueta(o.v)}`, text: inst ? `Desliza ${inst === "escuadra45" ? "la escuadra" : "el cartabón"} a lo largo de la recta hasta que su vértice de ${o.obj}° llegue a ${L(o.v)}: el lápiz traza el lado.` : "Con el transportador, arrastra el segundo lado hasta ese ángulo.", fact: `${o.obj}°` });
         break;
+      }
       case "paralelas":
         o.marcas.forEach((m) => out.push({ title: `Paralela por ${etiqueta(m)}`, text: `Desliza la escuadra sobre el cartabón hasta que su filo pase por ${L(m)}.`, fact: "Paralela" }));
         break;

@@ -627,13 +627,20 @@ export function EstrellaCompas({ block }: { block: BenchBlock }) {
   );
 }
 
+/** Vértices a los que se puede ir desde `i` en el pentagrama {5/2} sin repetir un trazo ya hecho. */
+const saltos = (est: Est, i: number): Pt[] => {
+  const hechos = est.clics.slice(1).map((c, k) => [PV.findIndex((v) => dist(v, est.clics[k]) < 1), PV.findIndex((v) => dist(v, c) < 1)]);
+  return [(i + 2) % 5, (i + 3) % 5].filter((j) => !hechos.some(([x, y]) => (x === i && y === j) || (x === j && y === i))).map((j) => PV[j]);
+};
+
 const defPentagrama: Def = {
   scene: "pentagrama-practica",
   fases: ["regla"],
-  nClics: 10,
+  cadena: true,
+  nClics: 6,
   extRegla: 0,
   repetir: true,
-  papel: () => (
+  papel: (est: Est) => (
     <g>
       <circle cx={PC[0]} cy={PC[1]} r={PR} fill="none" stroke={INK} strokeWidth="1.4" />
       <Vertices pts={PV} />
@@ -645,17 +652,20 @@ const defPentagrama: Def = {
   rhoIni: () => 0,
   arco: (_est, _n, _r, c) => ({ centro: c, base: 0, signo: 1, rhoMin: -45, rhoMax: 45, req: [-8, 8] }),
   cortes: () => PV,
-  progreso: (est) => `Trazos: ${Math.floor(est.clics.length / 2)} de 5`,
+  guia: (est) => {
+    if (est.clics.length === 0) return PV;
+    const i = PV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1);
+    return saltos(est, i);
+  },
+  accion: (est) => (est.clics.length === 0 ? "toca el vértice por el que empiezas" : `estás en el ${PV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1) + 1}: toca el vértice al que sigues, saltando uno`),
+  progreso: (est) => `Trazos: ${Math.max(0, est.clics.length - 1)} de 5`,
   validarClic: (est, punto) => {
-    if (est.clics.length % 2 === 0) return null;
+    if (est.clics.length === 0) return null;
     const i = PV.findIndex((v) => dist(v, est.clics[est.clics.length - 1]) < 1);
     const j = PV.findIndex((v) => dist(v, punto) < 1);
+    if (i === j) return "Ya estás en ese vértice: toca otro.";
     if (((j - i + 5) % 5) !== 2 && ((i - j + 5) % 5) !== 2) return "En el pentagrama {5/2} cada trazo salta un vértice: une con el que está dos lugares más allá.";
-    for (let m = 0; m + 1 < est.clics.length; m += 2) {
-      const x = PV.findIndex((v) => dist(v, est.clics[m]) < 1);
-      const y = PV.findIndex((v) => dist(v, est.clics[m + 1]) < 1);
-      if ((x === i && y === j) || (x === j && y === i)) return "Ese trazo ya está hecho: elige otro.";
-    }
+    if (!saltos(est, i).some((v) => dist(v, punto) < 1)) return "Ese trazo ya está hecho: sigue hacia el otro vértice.";
     return null;
   },
   evaluar: () => ({ ok: true, mensaje: "Correcto: con {5/2}, como 5 y 2 no tienen divisores comunes, saltando de dos en dos pasas por los cinco vértices y la estrella se cierra en un solo trazo." }),

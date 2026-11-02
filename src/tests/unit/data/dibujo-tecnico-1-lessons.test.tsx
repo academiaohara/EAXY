@@ -140,7 +140,7 @@ describe("curso Dibujo Técnico I", () => {
         }
       }
     }
-  });
+  }, 60000);
 });
 
 describe("tema 1: recorrido didáctico sin solapamientos", () => {

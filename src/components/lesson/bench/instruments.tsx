@@ -238,7 +238,7 @@ export function Lapiz({ pose, len = 170, dim, grade }: PoseProps & { len?: numbe
  * Pata izquierda: punta seca de acero. Pata derecha: portaminas con mina de grafito.
  * Las dos puntas quedan a la misma altura, como al trazar. Radio con `compasRadio`.
  */
-export const COMPAS_PATA = 110;
+export const COMPAS_PATA = 170;
 export const compasRadio = (openDeg: number) => 2 * COMPAS_PATA * Math.sin((openDeg * RAD) / 2);
 export const compasApertura = (radio: number) => (2 * Math.asin(Math.min(1, radio / (2 * COMPAS_PATA))) * 180) / Math.PI;
 

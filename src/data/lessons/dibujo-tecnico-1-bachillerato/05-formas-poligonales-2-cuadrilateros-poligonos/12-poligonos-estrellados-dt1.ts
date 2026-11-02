@@ -4,7 +4,7 @@ import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
 
 export const poligonosEstrelladosDt1Lesson: InteractiveLesson = {
   slug: "poligonos-estrellados-dt1",
-  title: "12. Polígonos estrellados y aplicaciones",
+  title: "12. Polígonos estrellados",
   subtitle: DT1_SUBTITLES[5],
   stage: { theme: "board" },
   steps: [
@@ -13,13 +13,6 @@ export const poligonosEstrelladosDt1Lesson: InteractiveLesson = {
       { title: "El pentagrama {5/2}", text: "Con $n = 5$ y $k = 2$ se une cada vértice con el siguiente **saltando uno**. Se cierra tras pasar por los cinco vértices: es una estrella de **un solo trazo**.", fact: "Ángulo de cada punta: 36°" },
       { title: "El hexagrama {6/2}", text: "Con $n = 6$ y $k = 2$ no se pasa por todos los vértices: salen **dos triángulos** superpuestos. Es un compuesto, no una estrella de un trazo.", fact: "mcd(6, 2) = 2" },
       { title: "¿Un trazo o varios?", text: "Es de un solo trazo si $n$ y $k$ **no tienen divisores comunes**. El ángulo de cada punta es $\\dfrac{180^\\circ (n - 2k)}{n}$.", fact: "n y k primos entre sí" },
-    ]), "stack"),
-
-    slide("usos", "Aplicaciones", [], bench("poligonos-usos", [
-      { title: "Tuercas, señales y teselados", text: "**Tuercas y tornillos** (hexágonos), **señales** (octógono de STOP), **baldosas** y **teselados** (triángulo, cuadrado y hexágono rellenan el plano).", fact: "Hexágonos, octógonos, baldosas" },
-      { title: "Arquitectura", text: "**Arquitectura**: rosetones, cúpulas y planos de torres basados en polígonos regulares.", fact: "Rosetones y cúpulas" },
-      { title: "Pentagrama y estrellas", text: "**Pentagrama** y otras estrellas: símbolos, escudos y logotipos.", fact: "Símbolos y logotipos" },
-      { title: "En CAD", text: "En CAD, un polígono regular se define con el **número de lados** y el **radio** o el **lado**.", fact: "Número de lados y radio" },
     ]), "stack"),
 
     benchTask("pentagrama-construye", "Dibuja el pentagrama", "pentagrama-practica", [

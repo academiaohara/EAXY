@@ -28,7 +28,7 @@ import {
   CARTABON_LARGO,
   type Pt,
 } from "@/components/lesson/bench/geometry";
-import { CARTABON_PTS, ESCUADRA_PTS, compasApertura, compasRadio, poseCompas } from "@/components/lesson/bench/instruments";
+import { CARTABON_PTS, COMPAS_PATA, ESCUADRA_PTS, compasApertura, compasRadio, poseCompas } from "@/components/lesson/bench/instruments";
 
 const ANGLES = [-25, -10, 0, 12, 35];
 const DISTS = [40, 70, 100];
@@ -214,7 +214,7 @@ describe("mesa de dibujo · ángulos y circunferencias", () => {
     for (const [n, m] of casos) {
       const { pose, open } = poseCompas(n, m);
       const half = (open / 2) * (Math.PI / 180);
-      const L = 110;
+      const L = COMPAS_PATA;
       const agujaLocal: Pt = [-Math.sin(half) * L, Math.cos(half) * L];
       const minaLocal: Pt = [Math.sin(half) * L, Math.cos(half) * L];
       const a = applyPose(pose, agujaLocal);

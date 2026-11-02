@@ -1,13 +1,13 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { AnimPerpendicular } from "./escuadra-perpendicular";
+import { AnimDesliza, AnimPerpendicular, type DatosDesliza } from "./escuadra-perpendicular";
 import { angDe, dist, enCirculo, type Pt } from "./geometry";
 import { Compas, poseCompas } from "./instruments";
 import { AMBAR, INK, type BenchBlock } from "./scenes";
 import { ArcoCompas, CompasEn, Lamina, TransportadorMarca, VERDE_RELLENO, AnguloDato, Dato, usePasoAnim } from "./scenes-construcciones";
 import { MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, lerp, tramo, type Def, type Est } from "./scenes-compas";
-import { CONSTRUCCIONES, etiqueta, fasesPractica, type Construccion, type ConstruccionId, type Op } from "./construcciones-datos";
+import { CONSTRUCCIONES, etiqueta, fasesPractica, instrumentoAngulo, type Construccion, type ConstruccionId, type Op } from "./construcciones-datos";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Circ, Dot, Poli } from "./scenes-teoria";
 import { Punto } from "./scenes-trazados";
@@ -78,6 +78,14 @@ function plan(c: Construccion) {
     if (o.k !== "marca") ops.push(i);
   });
   return { ops, ms: [1, ...ops.map((i) => ms(c.ops[i]))] };
+}
+
+/** Pasada del cartabón o la escuadra que traza un ángulo de 30°, 45° o 60°. */
+function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDesliza {
+  const v = pt(c, o.v);
+  const signo = o.signo ?? 1;
+  const largo = o.largo ?? 160;
+  return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo } };
 }
 
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
@@ -176,6 +184,10 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         nodos.push(<AnimPerpendicular key={key} recta={[pt(c, x.recta[0]), pt(c, x.recta[1])]} punto={pt(c, x.punto)} linea={[pt(c, x.traza[0]), pt(c, x.traza[1])]} p={t} />);
         break;
       case "angulo": {
+        if (instrumentoAngulo(x.obj)) {
+          nodos.push(<AnimDesliza key={key} datos={datosAngulo(c, x)} p={t} />);
+          break;
+        }
         const largo = x.largo ?? 160;
         const v = pt(c, x.v);
         const fin = enCirculo(v, largo, x.base + (x.signo ?? 1) * x.obj);
@@ -261,7 +273,7 @@ function defDe(id: ConstruccionId): Def {
           {c.ops.map((o, j) => {
             const f = inicioFase(j);
             if (f < 0 || est.fase <= f + (o.k === "arco" || o.k === "circulo" ? 1 : 0)) return null;
-            if (o.k === "angulo") {
+            if (o.k === "angulo" && !instrumentoAngulo(o.obj)) {
               const v = pt(c, o.v);
               return <Seg key={j} a={v} b={enCirculo(v, o.largo ?? 160, o.base + (o.signo ?? 1) * o.obj)} color={AUX} w={1.1} />;
             }
@@ -316,8 +328,10 @@ function defDe(id: ConstruccionId): Def {
       return [];
     },
     perpendicular: (est) => {
-      const o = faseActual(est) as Extract<Op, { k: "perp" }>;
-      return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], punto: pt(c, o.punto), traza: [pt(c, o.traza[0]), pt(c, o.traza[1])] };
+      const o = faseActual(est)!;
+      if (o.k === "angulo") return datosAngulo(c, o);
+      const q = o as Extract<Op, { k: "perp" }>;
+      return { recta: [pt(c, q.recta[0]), pt(c, q.recta[1])], punto: pt(c, q.punto), traza: [pt(c, q.traza[0]), pt(c, q.traza[1])] };
     },
     angulo: (est) => {
       const o = faseActual(est) as Extract<Op, { k: "angulo" }>;
