@@ -1690,3 +1690,7 @@ Cada transformación es **un único recorrido guiado**, sin saltarse pasos «por
 - **Pasos relacionados en una diapositiva; lo demás, en otra.** Una escena con varios pasos solo agrupa los que forman una misma construcción o idea. Para separar partes de una escena usa `benchParte(escena, desde, notes)` (`desde` = primer paso mostrado; `notes` = un texto por paso mostrado). Se avanza entre diapositivas con las flechas redondas del presentador.
 - **Animaciones automáticas**: toda escena que usa `useProgreso` muestra debajo los botones «Pausar/Reanudar» y «Repetir» (`bench/reproduccion.tsx`). No hace falta hacer nada en la escena nueva.
 - **Convención de color en sumas y restas de segmentos**: se marcan primero los puntos con el compás y al final se traza el segmento resultado en rojo.
+
+### Compás animado paso a paso (`bench/linea-tiempo.tsx`)
+
+Las escenas de construcción con compás describen cada paso como una lista de acciones (`Acc`): el compás **entra** en la hoja, **va** a un punto con una abertura (se pincha y se abre), **traza un arco** girando, la regla **traza un rayo o una recta**, se **marcan** puntos y se **etiquetan** ángulos; al terminar el compás **sale**. `montarLinea(accs, paso, progreso)` dibuja lo hecho, lo que ocurre ahora y el compás; `useLinea` en `scenes-angulos.tsx` lo une con `useProgreso`. Úsala en escenas nuevas para que el alumno vea de dónde sale cada arco. Ejemplos: suma/diferencia de ángulos, bisectriz por el segundo método, división y construcción de ángulos.
