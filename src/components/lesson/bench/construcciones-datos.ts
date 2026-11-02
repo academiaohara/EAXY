@@ -1001,6 +1001,70 @@ function homoteciaInversa(): Construccion {
   };
 }
 
+/** Centros de homotecia de dos segmentos paralelos (Fig. 8): el directo en AA′·BB′ y el inverso en AB′·A′B. */
+function homoteciaCentrosSegmentos(): Construccion {
+  const A: P = [240, 130];
+  const B: P = [300, 220];
+  const Ap: P = [400, 60];
+  const Bp: P = [520, 240];
+  const corte = (p1: P, p2: P, p3: P, p4: P): P => {
+    const d = (p2[0] - p1[0]) * (p4[1] - p3[1]) - (p2[1] - p1[1]) * (p4[0] - p3[0]);
+    const t = ((p3[0] - p1[0]) * (p4[1] - p3[1]) - (p3[1] - p1[1]) * (p4[0] - p3[0])) / d;
+    return [p1[0] + t * (p2[0] - p1[0]), p1[1] + t * (p2[1] - p1[1])];
+  };
+  return {
+    titulo: "Centros de homotecia de dos segmentos paralelos",
+    intro: "Dos segmentos paralelos $AB$ y $A'B'$ son homotéticos respecto de **dos centros**: $C_1$ en una homotecia **directa** (con $A \\to A'$ y $B \\to B'$) y $C_2$ en una **inversa** (con $A \\to B'$ y $B \\to A'$). Cada centro está donde se cortan las rectas que unen los puntos homólogos.",
+    pts: { A, B, Ap, Bp, C1: corte(A, Ap, B, Bp), C2: corte(A, Bp, B, Ap) },
+    dados: ["A", "B", "Ap", "Bp"],
+    datos: [],
+    base: [["A", "B"], ["Ap", "Bp"]],
+    ext: 185,
+    ops: [
+      { k: "recta", a: "A", b: "Ap" },
+      { k: "recta", a: "B", b: "Bp" },
+      { k: "marca", p: "C1" },
+      { k: "recta", a: "A", b: "Bp" },
+      { k: "recta", a: "B", b: "Ap" },
+      { k: "marca", p: "C2" },
+    ],
+  };
+}
+
+/** Centros de homotecia de dos circunferencias (Fig. 9): rectas por los extremos de radios paralelos (del mismo sentido y de sentido contrario). */
+function homoteciaCentrosCircunferencias(): Construccion {
+  const Op: P = [160, 210];
+  const O: P = [340, 210];
+  const R = 100;
+  const r = 45;
+  const P1: P = [O[0], O[1] - r];
+  const Q1: P = [O[0], O[1] + r];
+  const P2: P = [Op[0], Op[1] - R];
+  const Q2: P = [Op[0], Op[1] + R];
+  return {
+    titulo: "Centros de homotecia de dos circunferencias",
+    intro: "Dos circunferencias de centros $O'$ y $O$ son siempre homotéticas. Los extremos de dos **radios paralelos** son puntos homólogos: si tienen el mismo sentido, la recta que los une corta a $O'O$ en el centro **directo** $C_1$; si tienen sentido contrario, en el centro **inverso** $C_2$.",
+    pts: { Op, O, _m0: [40, 210], _m1: [600, 210], _a1: [O[0], O[1] - 60], _a2: [O[0], O[1] + 60], _b1: [Op[0], Op[1] - 115], _b2: [Op[0], Op[1] + 115], P: P1, Q: Q1, Pp: P2, Qp: Q2, C1: [O[0] + ((O[0] - Op[0]) * r) / (R - r), 210], C2: [Op[0] + ((O[0] - Op[0]) * R) / (R + r), 210] },
+    dados: ["Op", "O"],
+    datos: [],
+    base: [["_m0", "_m1"]],
+    circulos: [{ c: "O", r }, { c: "Op", r: R }],
+    ops: [
+      perp(["_m0", "_m1"], "O", ["_a1", "_a2"]),
+      { k: "marca", p: "P" },
+      { k: "marca", p: "Q" },
+      perp(["_m0", "_m1"], "Op", ["_b1", "_b2"]),
+      { k: "marca", p: "Pp" },
+      { k: "marca", p: "Qp" },
+      { k: "recta", a: "P", b: "Pp" },
+      { k: "marca", p: "C1" },
+      { k: "recta", a: "P", b: "Qp" },
+      { k: "marca", p: "C2" },
+    ],
+    ext: 30,
+  };
+}
+
 /** Simétrico de `q` respecto del eje que pasa por `e0` y `e1`, y pie de la perpendicular. */
 function reflejo(e0: P, e1: P, q: P) {
   const l = dist(e0, e1);
@@ -1456,6 +1520,8 @@ export const CONSTRUCCIONES = {
   "giro-recta": giroRecta(),
   "homotecia-directa": homoteciaDirecta(),
   "homotecia-inversa": homoteciaInversa(),
+  "homotecia-centros-segmentos": homoteciaCentrosSegmentos(),
+  "homotecia-centros-circunferencias": homoteciaCentrosCircunferencias(),
   "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
 } satisfies Record<string, Construccion>;
 
@@ -1477,7 +1543,7 @@ export type ConstruccionId = keyof typeof CONSTRUCCIONES;
 /** Nombre con el que se rotula un punto (los puntos auxiliares de la división de `CD` llevan una prima). */
 const ETIQUETAS: Record<string, string> = {
   Pl: "P'", T1: "", T2: "", T3: "", T4: "", T5: "", X: "",
-  Vp: "V'", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
+  Vp: "V'", Op: "O'", Pp: "P'", Qp: "Q'", C1: "C₁", C2: "C₂", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
   p1: "1'", p2: "2'", p3: "3'", p4: "4'", "1s": "1'", "2s": "2'", "3s": "3'", "4s": "4'", As: "A'", Bs: "B'", f0: "", f1: "", f2: "", f3: "", e: "e", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
 };

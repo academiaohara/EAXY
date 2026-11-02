@@ -19,6 +19,6 @@ export const homoteciaDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Las rectas que pasan por el centro son **dobles**. En figuras homotéticas los ángulos homólogos son iguales (por el paralelismo de las rectas homólogas), así que son figuras **semejantes**; dos figuras semejantes son homotéticas cuando sus rectas homólogas son paralelas." },
       { kind: "text", text: "Dos segmentos paralelos $AB$ y $A'B'$ son homotéticos respecto de **dos centros**, $C_1$ en una homotecia directa y $C_2$ en una inversa. Dos **circunferencias** son siempre homotéticas: los centros $C_1$ (directa) y $C_2$ (inversa) son los puntos de intersección de sus tangentes comunes exteriores o interiores." },
     ]),
-    ...construccionPasos("homotecia-directa", "homotecia-inversa"),
+    ...construccionPasos("homotecia-directa", "homotecia-inversa", "homotecia-centros-segmentos", "homotecia-centros-circunferencias"),
   ],
 };
