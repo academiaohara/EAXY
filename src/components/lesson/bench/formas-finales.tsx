@@ -9,7 +9,8 @@ export type FormaFinal =
   | { tipo: "circulo"; c: Pt; r: number; desde?: Pt; hasta?: Pt; por?: Pt }
   | { tipo: "curva"; a: Pt; c: Pt; b: Pt }
   | { tipo: "suave"; pts: Pt[]; /** Curva cerrada: vuelve al primer punto con tangente continua. */ cerrada?: boolean }
-  | { tipo: "elipse"; c: Pt; a: number; b: number };
+  | { tipo: "elipse"; c: Pt; a: number; b: number }
+  | { tipo: "conjugada"; c: Pt; u: Pt; v: Pt };
 
 /** Ángulo inicial y recorrido (por el camino corto) de un arco de centro `c` entre `desde` y `hasta`. */
 export function barrido(c: Pt, desde: Pt, hasta: Pt, por?: Pt): [number, number] {
@@ -48,6 +49,11 @@ export function FormaTrazo({ forma, t, w = 3 }: { forma: FormaFinal; t: number; 
   }
   if (forma.tipo === "elipse") {
     return <ellipse cx={forma.c[0]} cy={forma.c[1]} rx={forma.a} ry={forma.b} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} data-testid="bench-forma-final" />;
+  }
+  if (forma.tipo === "conjugada") {
+    // imagen afín de la circunferencia unidad: u y v son los semidiámetros conjugados (vectores desde el centro)
+    const m = `matrix(${forma.u[0] - forma.c[0]} ${forma.u[1] - forma.c[1]} ${forma.v[0] - forma.c[0]} ${forma.v[1] - forma.c[1]} ${forma.c[0]} ${forma.c[1]})`;
+    return <circle r={1} transform={m} vectorEffect="non-scaling-stroke" pathLength={1} strokeDasharray={t >= 0.999 ? undefined : `${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} data-testid="bench-forma-final" />;
   }
   if (forma.tipo === "suave") {
     return <path d={trazadoSuave(forma.pts, forma.cerrada)} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" data-testid="bench-forma-final" />;

@@ -200,12 +200,14 @@ import { circuitosTemporizadoresLesson } from "@/data/lessons/tecnologia-industr
 import { circuloLongitudArea3esoLesson } from "@/data/lessons/matematicas-3-eso/09-problemas-metricos-en-el-plano/08-circulo-longitud-area-3eso";
 import { circunferencia1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/09-circunferencia-1bach";
 import { circunferenciaGoniometrica1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/04-trigonometria/03-circunferencia-goniometrica-1bach";
+import { circunferenciaPiezasCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/15-sistema-perspectiva-caballera/04-circunferencia-piezas-caballera-dt1";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
 import { circunferenciasTangentesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/02-circunferencias-tangentes-dt1";
 import { clasesEscalasNormalizadasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/03-escalas/02-clases-escalas-normalizadas-dt1";
 import { clasificacionMaterialesTecnicosLesson } from "@/data/lessons/tecnologia-ingenieria-1-bachillerato/02-materiales-fabricacion/01-clasificacion-materiales-tecnicos";
 import { cobreAluminioMagnesioTitanioLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/03-materiales-no-ferreos-reciclaje/02-cobre-aluminio-magnesio-titanio";
 import { codificadoresMultiplexoresLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/12-circuitos-combinacionales-boole/12-codificadores-multiplexores";
+import { coeficienteReduccionPuntoCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/15-sistema-perspectiva-caballera/02-coeficiente-reduccion-punto-caballera-dt1";
 import { combArbol4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-combinatoria/02-comb-arbol-4esob";
 import { combArbolCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/09-combinatoria/01-comb-arbol-ccss1";
 import { combCombinaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/11-combinatoria/07-comb-combinaciones-4esob";
@@ -407,6 +409,7 @@ import { distanciaPuntoRecta1bachLesson } from "@/data/lessons/matematicas-1-bac
 import { distanciaPuntoRecta2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/08-distancia-punto-recta-2bach";
 import { distanciaPuntoRectaCambioPlanoDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/05-diedrico-avanzado/06-distancia-punto-recta-cambio-plano-dt2";
 import { distanciaRectas2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/06-geometria-metrica/10-distancia-rectas-2bach";
+import { distanciasFigurasPlanasCaballeraDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/15-sistema-perspectiva-caballera/03-distancias-figuras-planas-caballera-dt1";
 import { distribucionBinomial2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/12-distribuciones-de-probabilidad/03-distribucion-binomial-2bach";
 import { distribucionBinomialCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/03-distribucion-binomial-ccss1";
 import { distribucionElectronicaFq3Lesson } from "@/data/lessons/fisica-3-eso/02-el-atomo-y-el-sistema-periodico/04-distribucion-electronica-fq3";
@@ -1942,12 +1945,14 @@ export const interactiveLessons = {
   "circulo-longitud-area-3eso": circuloLongitudArea3esoLesson,
   "circunferencia-1bach": circunferencia1bachLesson,
   "circunferencia-goniometrica-1bach": circunferenciaGoniometrica1bachLesson,
+  "circunferencia-piezas-caballera-dt1": circunferenciaPiezasCaballeraDt1Lesson,
   "circunferencias-2eso": circunferencias2esoLesson,
   "circunferencias-tangentes-dt1": circunferenciasTangentesDt1Lesson,
   "clases-escalas-normalizadas-dt1": clasesEscalasNormalizadasDt1Lesson,
   "clasificacion-materiales-tecnicos": clasificacionMaterialesTecnicosLesson,
   "cobre-aluminio-magnesio-titanio": cobreAluminioMagnesioTitanioLesson,
   "codificadores-multiplexores": codificadoresMultiplexoresLesson,
+  "coeficiente-reduccion-punto-caballera-dt1": coeficienteReduccionPuntoCaballeraDt1Lesson,
   "comb-arbol-4esob": combArbol4esobLesson,
   "comb-arbol-ccss1": combArbolCcss1Lesson,
   "comb-combinaciones-4esob": combCombinaciones4esobLesson,
@@ -2149,6 +2154,7 @@ export const interactiveLessons = {
   "distancia-punto-recta-2bach": distanciaPuntoRecta2bachLesson,
   "distancia-punto-recta-cambio-plano-dt2": distanciaPuntoRectaCambioPlanoDt2Lesson,
   "distancia-rectas-2bach": distanciaRectas2bachLesson,
+  "distancias-figuras-planas-caballera-dt1": distanciasFigurasPlanasCaballeraDt1Lesson,
   "distribucion-binomial-2bach": distribucionBinomial2bachLesson,
   "distribucion-binomial-ccss1": distribucionBinomialCcss1Lesson,
   "distribucion-electronica-fq3": distribucionElectronicaFq3Lesson,

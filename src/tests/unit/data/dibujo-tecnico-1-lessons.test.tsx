@@ -45,7 +45,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["sistema-diedrico", 8],
   ["sistema-planos-acotados", 4],
   ["sistema-axonometrico", 4],
-  ["sistema-perspectiva-caballera", 1],
+  ["sistema-perspectiva-caballera", 4],
   ["normalizacion-principios-generales", 4],
   ["normalizacion-acotacion", 1],
   ["historia-fundamentos-geometricos", 4],

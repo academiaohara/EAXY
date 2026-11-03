@@ -12,6 +12,7 @@ import { CONSTRUCCIONES_SISTEMAS, ETIQUETAS_SISTEMAS } from "./construcciones-si
 import { CONSTRUCCIONES_DIEDRICO, ETIQUETAS_DIEDRICO } from "./construcciones-diedrico";
 import { CONSTRUCCIONES_ACOTADOS, ETIQUETAS_ACOTADOS } from "./construcciones-acotados";
 import { CONSTRUCCIONES_AXONOMETRICO, ETIQUETAS_AXONOMETRICO } from "./construcciones-axonometrico";
+import { CONSTRUCCIONES_CABALLERA, ETIQUETAS_CABALLERA } from "./construcciones-caballera";
 import { CONSTRUCCIONES_CURVAS, ETIQUETAS_CURVAS } from "./construcciones-curvas";
 import { CONSTRUCCIONES_TANGENCIAS, ETIQUETAS_TANGENCIAS } from "./construcciones-tangencias";
 
@@ -58,7 +59,9 @@ export type Op =
   /** Curva suave (a mano alzada o con plantilla) que pasa por estos puntos, en trazo grueso. */
   | { k: "curvaPuntos"; pts: string[]; /** La curva vuelve al primer punto (por ejemplo, una elipse por puntos). */ cerrada?: boolean }
   /** Elipse de centro `c` y semiejes `a` (horizontal) y `b` (vertical), en trazo grueso. */
-  | { k: "elipse"; c: string; a: number; b: number };
+  | { k: "elipse"; c: string; a: number; b: number }
+  /** Elipse (imagen afín de una circunferencia) de centro `c` y semidiámetros conjugados `c`–`u` y `c`–`v`, en trazo grueso. */
+  | { k: "elipseConjugada"; c: string; u: string; v: string };
 
 export type Nota = { title: string; text: string; fact?: string };
 
@@ -1552,6 +1555,7 @@ export const CONSTRUCCIONES = {
   ...CONSTRUCCIONES_DIEDRICO,
   ...CONSTRUCCIONES_ACOTADOS,
   ...CONSTRUCCIONES_AXONOMETRICO,
+  ...CONSTRUCCIONES_CABALLERA,
 } satisfies Record<string, Construccion>;
 
 /**
@@ -1582,6 +1586,7 @@ const ETIQUETAS: Record<string, string> = {
   ...ETIQUETAS_DIEDRICO,
   ...ETIQUETAS_ACOTADOS,
   ...ETIQUETAS_AXONOMETRICO,
+  ...ETIQUETAS_CABALLERA,
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;

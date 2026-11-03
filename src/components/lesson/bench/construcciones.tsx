@@ -72,6 +72,7 @@ const ms = (o: Op): number => {
     case "curva": return 2800;
     case "curvaPuntos": return 3200;
     case "elipse": return 3000;
+    case "elipseConjugada": return 3000;
     default: return 1;
   }
 };
@@ -97,8 +98,9 @@ function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDes
 }
 
 /** Forma final (en trazo grueso) de una operación `solucion` o `curva`. */
-function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" }>): FormaFinal {
+function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" | "elipseConjugada" }>): FormaFinal {
   if (o.k === "elipse") return { tipo: "elipse", c: pt(c, o.c), a: o.a, b: o.b };
+  if (o.k === "elipseConjugada") return { tipo: "conjugada", c: pt(c, o.c), u: pt(c, o.u), v: pt(c, o.v) };
   if (o.k === "curvaPuntos") return { tipo: "suave", pts: o.pts.map((n) => pt(c, n)), cerrada: o.cerrada };
   if (o.k === "curva") return { tipo: "curva", a: pt(c, o.a), c: pt(c, o.c), b: pt(c, o.b) };
   const centro = pt(c, o.c);
@@ -265,6 +267,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       case "curva":
       case "curvaPuntos":
       case "elipse":
+      case "elipseConjugada":
         nodos.push(<FormaTrazo key={key} forma={formaDe(c, x)} t={t} w={3} />);
         break;
       default:
@@ -307,7 +310,7 @@ function defDe(id: ConstruccionId): Def {
     grosorAuto: 3,
     extTrazo: c.ext ?? 30,
     reiniciarEscuadra: true,
-    autoFormas: () => c.ops.filter((o): o is Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" }> => o.k === "solucion" || o.k === "curva" || o.k === "curvaPuntos" || o.k === "elipse").map((o) => formaDe(c, o)),
+    autoFormas: () => c.ops.filter((o): o is Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" | "elipseConjugada" }> => o.k === "solucion" || o.k === "curva" || o.k === "curvaPuntos" || o.k === "elipse" || o.k === "elipseConjugada").map((o) => formaDe(c, o)),
     autoLados: () => lados.flatMap((l) => (l.pts.length === 2 ? [[pt(c, l.pts[0]), pt(c, l.pts[1])] as [Pt, Pt]] : l.pts.map((n, k) => [pt(c, n), pt(c, l.pts[(k + 1) % l.pts.length])] as [Pt, Pt]))),
     papel: (est: Est) => {
       const visibles = new Set<string>(c.dados);
