@@ -8,7 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
-  Rp: "r'", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
+  Rp: "r'", N: "N", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -197,4 +197,94 @@ function rectaFrontal(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal() } satisfies Record<string, Construccion>;
+// Plano α(α₁-α₂) de trazas que se cortan en N (150, LT): α₁ baja con pendiente 0,35 y α₂ sube con pendiente 0,6.
+const NX = 150;
+const alfa1 = (x: number): number => LT_Y + 0.35 * (x - NX);
+const alfa2 = (x: number): number => LT_Y - 0.6 * (x - NX);
+const PLANO_PTS: Record<string, P> = { ...LT_BASE, N: [NX, LT_Y], _a1: [560, alfa1(560)], _a2: [400, alfa2(400)] };
+
+/** Trazas de un plano definido por dos rectas r y s que se cortan en A (Fig. 29). */
+function planoDosRectas(): Construccion {
+  // r pasa por V(260) y H(420); s pasa por A y por H₁(520).
+  const pr1 = (x: number): number => 190 + ((alfa1(420) - 190) / 160) * (x - 260);
+  const pr2 = (x: number): number => alfa2(260) + ((190 - alfa2(260)) / 160) * (x - 260);
+  const ax = 330;
+  const ps1 = (x: number): number => pr1(ax) + ((alfa1(520) - pr1(ax)) / (520 - ax)) * (x - ax);
+  const ps2 = (x: number): number => pr2(ax) + ((190 - pr2(ax)) / (520 - ax)) * (x - ax);
+  return {
+    titulo: "Trazas de un plano definido por dos rectas",
+    intro: "Un plano definido por dos rectas que se cortan, $r$ y $s$ (o por tres puntos no alineados), se representa por sus **trazas**. Las trazas del plano son los lugares geométricos de las trazas de todas sus rectas: se hallan las **trazas horizontales** $H'$ y $H_1'$ de $r$ y $s$ y se unen para obtener $\\alpha_1$; $\\alpha_2$ pasa por $N$ y por la traza vertical $V''$.",
+    pts: {
+      _l1: [40, LT_Y], lt: [580, LT_Y], N: [NX, LT_Y],
+      Ap: [ax, pr1(ax)], Av: [ax, pr2(ax)], Bp: [370, pr1(370)], Bv: [370, pr2(370)], Cp: [470, ps1(470)], Cv: [470, ps2(470)],
+      Hv: [420, 190], Hp: [420, alfa1(420)], H1v: [520, 190], H1p: [520, alfa1(520)], Vp: [260, 190], Vv: [260, alfa2(260)],
+    },
+    dados: ["lt", "Ap", "Av", "Bp", "Bv", "Cp", "Cv"],
+    datos: [],
+    base: [["_l1", "lt"], ["Ap", "Bp"], ["Av", "Bv"], ["Ap", "Cp"], ["Av", "Cv"]],
+    ext: 200,
+    escala: 0.8,
+    ops: [
+      { k: "recta", a: "Av", b: "Bv" }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hv", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hp" },
+      { k: "recta", a: "Av", b: "Cv" }, { k: "marca", p: "H1v" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "H1v", traza: ["H1v", "H1p"] }, { k: "marca", p: "H1p" },
+      { k: "recta", a: "Hp", b: "H1p" }, { k: "marca", p: "N" },
+      { k: "recta", a: "Ap", b: "Bp" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+      { k: "recta", a: "N", b: "Vv" },
+    ],
+  };
+}
+
+/** Recta contenida en un plano (Fig. 30): dada r′, hallar r″ con las trazas. */
+function rectaEnPlano(): Construccion {
+  const pr1 = (x: number): number => 190 + ((alfa1(420) - 190) / 160) * (x - 260);
+  return {
+    titulo: "Recta contenida en un plano",
+    intro: "Una recta está en un plano cuando **sus trazas están sobre las trazas del mismo nombre del plano**. Dado el plano $\\alpha$ y la proyección horizontal $r'$ de una recta contenida en él, halla $r''$: $H'$ es donde $r'$ corta a $\\alpha_1$ y $V'$ donde corta a la L.T.",
+    pts: {
+      ...PLANO_PTS,
+      Rp1: [330, pr1(330)], Rp2: [380, pr1(380)],
+      Hp: [420, alfa1(420)], Hv: [420, 190], Vp: [260, 190], Vv: [260, alfa2(260)],
+    },
+    dados: ["lt", "N", "Rp1", "Rp2"],
+    datos: [],
+    base: [["_l1", "lt"], ["N", "_a1"], ["N", "_a2"], ["Rp1", "Rp2"]],
+    ext: 200,
+    ops: [
+      { k: "recta", a: "Rp1", b: "Rp2" }, { k: "marca", p: "Hp" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hp", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+      { k: "recta", a: "Hv", b: "Vv" },
+    ],
+  };
+}
+
+/** Recta horizontal de un plano a una cota dada (Fig. 31): h″ paralela a la L.T. y h′ paralela a α₁. */
+function horizontalDelPlano(): Construccion {
+  const c = 70;
+  const vx = NX + c / 0.6;
+  const dc = dato("cota", c, 90, "azul");
+  return {
+    titulo: "Recta horizontal de un plano",
+    intro: "Las **rectas horizontales** de un plano son paralelas al plano $H$: su proyección vertical $h''$ es **paralela a la L.T.** a una distancia igual a la cota, y $h'$ es **paralela a $\\alpha_1$**. Halla la horizontal del plano $\\alpha$ de **cota** dada.",
+    pts: {
+      ...PLANO_PTS, ...dc.pts,
+      O: [200, LT_Y], C0: [200, LT_Y - c], Vv: [vx, LT_Y - c], Vp: [vx, LT_Y], Hq: [vx + 150, LT_Y + 0.35 * 150],
+    },
+    dados: ["lt", "N", "O", dc.d.a, dc.d.b],
+    datos: [dc.d],
+    base: [["_l1", "lt"], ["N", "_a1"], ["N", "_a2"]],
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: "O", traza: ["C0", "O"] },
+      { k: "medir", de: dc.d.a, a: dc.d.b }, { k: "arco", c: "O", hacia: "C0" }, { k: "marca", p: "C0" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["C0"], cortes: ["Vv"] },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vv", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vp" },
+      { k: "paralelas", recta: ["N", "_a1"], marcas: ["Vp"], cortes: ["Hq"] },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano() } satisfies Record<string, Construccion>;

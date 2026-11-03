@@ -1,6 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const planoDiedricoTrazasDt1Lesson: InteractiveLesson = {
   slug: "plano-diedrico-trazas-dt1",
@@ -8,38 +9,37 @@ export const planoDiedricoTrazasDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Un plano por sus trazas", [
+    slide("trazas", "Trazas de un plano", [
+      { kind: "text", text: "Se llaman **trazas de un plano** las rectas intersección de este con cada uno de los planos de proyección. Un plano tiene dos: la **horizontal** $\\alpha_1$ y la **vertical** $\\alpha_2$." },
       { kind: "steps", items: [
-        "Un plano queda definido por **tres puntos**, **dos rectas que se cortan**, **dos paralelas** o **una recta y un punto**. En diédrico se usa casi siempre por sus **trazas**.",
-        "La **traza horizontal α₁** es su intersección con el **PH**; la **traza vertical α₂**, con el **PV**.",
-        "Las dos trazas **se cortan en un punto de la LT** (salvo que sean paralelas a ella).",
-        "Cada traza es una **recta del plano**: α₁ es una recta con cota 0 y α₂, con alejamiento 0.",
+        "Las dos trazas **se cortan en un punto $N$ de la L.T.**",
+        "La traza horizontal $\\alpha_1$ es una recta del plano horizontal y, por tanto, se proyecta verticalmente sobre la L.T. Igualmente, $\\alpha_2$ se proyecta horizontalmente sobre la L.T.",
+        "Al abatir el plano vertical sobre el horizontal, el plano queda como una **pareja de rectas que parten de $N$**.",
       ] },
     ], undefined, "stack"),
-    slide("explora", "Cambia las trazas", [
-      { kind: "text", text: "Mueve los ángulos de las dos trazas. Mira el tipo de plano y los ángulos que forma con los planos de proyección.", },
-    ], tool("dt1-plano-diedrico-explorador", { a: 135, b: 45 }), "visual-top"),
-    slide("tipos", "Tipos de plano", [
+    slide("definir", "Formas de definir un plano", [
       { kind: "steps", items: [
-        "**Oblicuo**: sus dos trazas son oblicuas a la LT y no es perpendicular a ningún plano.",
-        "**Paralelo a la LT**: ambas trazas son **paralelas a la LT**.",
-        "**Horizontal** (paralelo al PH): solo tiene traza vertical, **paralela a la LT**. **Frontal** (paralelo al PV): solo tiene traza horizontal, paralela a la LT.",
-        "**Proyectante horizontal** (⟂ PH): su traza vertical es **perpendicular a la LT**. **Proyectante vertical** (⟂ PV): su traza horizontal lo es.",
-        "**De perfil** (⟂ LT): las dos trazas son perpendiculares a la LT.",
+        "Por **tres puntos** no alineados.",
+        "Por **dos rectas que se cortan**.",
+        "Por **dos rectas paralelas**.",
+        "Por **un punto y una recta** que no se pertenecen.",
       ] },
-    ]),
-    calc("calc-ph", "Inclinación del plano", "Un plano cuyas trazas forman 135° y 45° con la LT forma el mismo ángulo con el PH y con el PV. ¿Cuántos grados? (un decimal; cos θ = 1/√3)", nums(54.7, 54.74), "arccos(0,5774) ≈ 54,7°.", "cos θ = 0,5774."),
-    calc("calc-proy", "Plano proyectante", "Si la traza vertical de un plano es perpendicular a la LT, el plano es perpendicular a uno de los planos de proyección. ¿Cuántos grados forma con él?", nums(90), "Es perpendicular: 90°.", "Es proyectante horizontal."),
-    calc("calc-trazas", "Trazas", "¿Cuántas trazas tiene un plano horizontal (paralelo al PH)?", nums(1), "Solo corta al PV: tiene una traza, la vertical.", "No corta al PH."),
-    sort("clasifica-plano", "¿Qué plano es?", "Clasifica según las trazas.",
-      [["obl", "Oblicuo", "cobalt"], ["pro", "Proyectante", "amber"], ["par", "Paralelo a un plano o a la LT", "emerald"]],
-      [["Las dos trazas oblicuas a la LT", "obl"], ["Traza vertical perpendicular a la LT", "pro"], ["Traza horizontal perpendicular a la LT", "pro"], ["Solo traza vertical, paralela a la LT", "par"], ["Solo traza horizontal, paralela a la LT", "par"], ["Dos trazas paralelas a la LT", "par"]],
-      "Las trazas perpendiculares a la LT indican planos proyectantes; las paralelas, planos paralelos.",
-    ),
-    pick("check-corte", "Dónde se cortan las trazas", "¿Dónde se cortan las dos trazas de un plano oblicuo?",
-      "En un punto de la línea de tierra",
-      [["En el punto de mayor cota", "No depende de la cota."], ["En el origen del PH", "No hay un origen especial."], ["No se cortan nunca", "Se cortan en la LT, salvo paralelas a ella."]],
-      "Ambas trazas están en el plano; la LT es la intersección de PH y PV, así que allí coinciden.",
-    ),
+      { kind: "rule", title: "En el sistema diédrico", text: "El plano se define normalmente por sus **trazas**. Si está dado de otra forma, se hallan sus trazas, que son los **lugares geométricos de las trazas de todas las rectas** contenidas en él." },
+    ], undefined, "stack"),
+    ...construccionPasos("plano-dos-rectas"),
+    slide("proyectantes", "Planos proyectantes", [
+      { kind: "text", text: "Un plano **proyectante** es perpendicular a uno de los planos de proyección. Son los planos más importantes: en la práctica se utilizan para **todas las construcciones auxiliares**." },
+      { kind: "steps", items: [
+        "**Proyectante horizontal** (perpendicular al $H$): su traza vertical $\\alpha_2$ es **perpendicular a la L.T.** y $\\alpha_1$ es cualquiera. Todo lo que contiene se proyecta horizontalmente **sobre $\\alpha_1$**.",
+        "**Proyectante vertical** (perpendicular al $V$): su traza horizontal $\\beta_1$ es **perpendicular a la L.T.** y $\\beta_2$ es cualquiera. Todo lo que contiene se proyecta verticalmente **sobre $\\beta_2$**.",
+      ] },
+    ], undefined, "stack"),
+    slide("paralelos", "Planos paralelos a los de proyección y de perfil", [
+      { kind: "steps", items: [
+        "**Plano horizontal** $\\omega(\\omega_2)$: paralelo al $H$. No tiene traza horizontal y su traza vertical es **paralela a la L.T.** Los elementos que contiene se proyectan horizontalmente en **verdadera magnitud**.",
+        "**Plano frontal** $\\alpha(\\alpha_1)$: paralelo al $V$. No tiene traza vertical y su traza horizontal es **paralela a la L.T.** Lo que contiene se ve en verdadera magnitud en el alzado.",
+        "**Plano de perfil** $\\beta(\\beta_1\\text{-}\\beta_2)$: perpendicular a los dos planos de proyección y a la L.T. Sus dos trazas están **confundidas** en una sola recta perpendicular a la L.T.",
+      ] },
+    ], undefined, "stack"),
   ],
 };
