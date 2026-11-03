@@ -1,51 +1,22 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { bench, benchTask, slide } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const tangentesRectaCircunferenciaDt1Lesson: InteractiveLesson = {
   slug: "tangentes-recta-circunferencia-dt1",
-  title: "1. Tangentes a una circunferencia",
+  title: "1. Posiciones relativas y rectas tangentes",
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Tocar sin cortar", [], bench("tangente-propiedades", [
-      { title: "Un solo punto en común", text: "Una recta es **tangente** a una circunferencia si tiene **un solo punto en común**, el **punto de tangencia** T.", fact: "Punto de tangencia T" },
-      { title: "Perpendicular al radio", text: "La tangente es **perpendicular al radio** en T: $OT \\perp t$.", fact: "OT ⟂ t" },
-      { title: "Desde un punto exterior", text: "Desde un punto **exterior** P se pueden trazar **dos tangentes**, y **PT₁ = PT₂**. Desde un punto de la circunferencia, **una**; desde un punto interior, **ninguna**.", fact: "PT₁ = PT₂" },
-      { title: "Longitud de la tangente", text: "La longitud de la tangente es $PT = \\sqrt{OP^2 - R^2}$ (Pitágoras).", fact: "PT = √(OP² − R²)" },
-    ]), "stack"),
-
-    slide("traza", "Tangentes desde un punto exterior", [], bench("tangentes-compas", [
-      { title: "Circunferencia y punto", text: "Tienes una circunferencia de centro $O$ y radio $R$, y un punto $P$ **exterior**. Se buscan las rectas por $P$ que la tocan en un solo punto.", fact: "Dos tangentes desde P" },
-      { title: "Punto medio de OP", text: "Halla el punto medio $M$ del segmento $OP$ (con su mediatriz).", fact: "M = punto medio de OP" },
-      { title: "Circunferencia de diámetro OP", text: "Con centro en $M$ y radio $MO$, traza la circunferencia que pasa por $O$ y por $P$. Corta a la dada en **dos puntos**: $T_1$ y $T_2$.", fact: "Radio MO" },
-      { title: "Une P con los puntos", text: "Une $P$ con $T_1$ y con $T_2$: son las dos tangentes." },
-      { title: "Por qué funciona", text: "$T$ está en una circunferencia de diámetro $OP$, así que el ángulo $OTP$ es **recto**: $PT$ es perpendicular al radio $OT$, que es justo la condición de tangente.", fact: "Ángulo inscrito en semicircunferencia = 90°" },
-    ]), "stack"),
-
-    slide("otras", "Otras tangentes sencillas", [], bench("tangentes-sencillas", [
-      { title: "Tangente en un punto", text: "**Tangente en un punto T de la circunferencia**: perpendicular al radio OT por T.", fact: "Perpendicular al radio" },
-      { title: "Paralela a una recta", text: "**Tangente paralela a una recta dada**: se traza el diámetro perpendicular a esa dirección; las tangentes por sus extremos son las pedidas (son dos).", fact: "Diámetro perpendicular" },
-      { title: "Con un ángulo dado", text: "**Tangente que forma un ángulo dado con una recta**: se traza el radio con la dirección perpendicular y se levanta la tangente en su extremo.", fact: "Radio y tangente" },
-    ]), "stack"),
-
-    benchTask("tangentes-construye", "Traza las tangentes desde P", "tangentes-practica", [
-      { title: "Clava la punta en O", text: "Primero el punto medio de $OP$: toca $O$ para clavar la punta del compás." },
-      { title: "Abre más de la mitad de OP", text: "Arrastra la mina hasta una abertura **mayor que la mitad** de $OP$ y pulsa «Fijar abertura».", fact: "Radio > OP / 2" },
-      { title: "Arco desde O", text: "Traza el arco **por encima y por debajo** de $OP$." },
-      { title: "Clava la punta en P", text: "Toca $P$ sin cambiar la abertura." },
-      { title: "Arco desde P", text: "Traza el arco que corta al anterior en **dos puntos**." },
-      { title: "Traza la mediatriz", text: "Toca los **dos puntos** donde se cortan los arcos: la recta pasa por el punto medio $M$ de $OP$." },
-      { title: "Toma el radio MO", text: "Toca $M$ y después $O$: el compás queda con la abertura $MO$.", fact: "Abertura = MO" },
-      { title: "Clava la punta en M", text: "Toca el punto medio $M$." },
-      { title: "Circunferencia de diámetro OP", text: "Arrastra la mina para trazar el arco que **corte a la circunferencia dada** por encima y por debajo." },
-      { title: "Marca T₁", text: "Toca el corte de **arriba**: es el primer punto de tangencia, $T_1$." },
-      { title: "Marca T₂", text: "Toca el corte de **abajo**: es $T_2$." },
-      { title: "Une P con los puntos", text: "La regla une sola $P$ con $T_1$ y con $T_2$: las dos tangentes.", fact: "PT₁ = PT₂" },
-    ], {
-      question: "Traza las dos tangentes a la circunferencia desde el punto exterior P con compás y regla.",
-      hint: "Halla el punto medio M de OP con su mediatriz y traza la circunferencia de centro M que pasa por O y P: corta a la dada en los puntos de tangencia.",
-      explanation: "Los puntos T están en la circunferencia de diámetro OP, así que OTP vale 90° y PT es perpendicular al radio OT: es tangente. Por simetría hay dos, y PT₁ = PT₂.",
-    }),
+    slide("posiciones", "Posiciones relativas y tangencia", [
+      { kind: "definition", text: "Una recta y una circunferencia, o dos circunferencias, son **tangentes** cuando tienen **un solo punto común**: el **punto de tangencia** $T$." },
+      { kind: "compare",
+        left: { title: "Recta y circunferencia", text: "Según la distancia $d$ del centro $O$ a la recta $r$:", math: ["d > R \\;\\Rightarrow\\; \\text{exteriores}", "d = R \\;\\Rightarrow\\; \\text{tangentes}", "d < R \\;\\Rightarrow\\; \\text{secantes}"] },
+        right: { title: "Dos circunferencias", text: "Según la distancia $d$ entre centros:", math: ["d > R + R_1 \\;\\Rightarrow\\; \\text{exteriores}", "d = R + R_1 \\;\\Rightarrow\\; \\text{tangentes exteriores}", "d < R + R_1 \\;\\Rightarrow\\; \\text{secantes}", "d = R - R_1 \\;\\Rightarrow\\; \\text{tangentes interiores}", "d < R - R_1 \\;\\Rightarrow\\; \\text{interiores}", "d = 0 \\;\\Rightarrow\\; \\text{concéntricas}"] } },
+      { kind: "rule", title: "Dos propiedades en las que se funda todo el tema", text: "**1.** Si dos circunferencias son tangentes, el punto de tangencia $T$ está en la **línea de centros**. **2.** Si una recta es tangente a una circunferencia, $T$ es el pie de la **perpendicular** trazada por el centro $O$ a la recta tangente." },
+      { kind: "text", text: "Hay que recordar también que el **radio perpendicular a una cuerda** la divide en dos partes iguales, y que la **mediatriz de una cuerda pasa por el centro**. Para resolver un problema basta fijarse en los datos y en lo que se desea obtener, razonando el porqué de cada paso." },
+    ]),
+    ...construccionPasos("tangente-punto", "tangentes-paralelas", "tangente-sin-centro", "tangentes-punto-exterior", "tangente-comun-exterior", "tangente-comun-interior"),
   ],
 };

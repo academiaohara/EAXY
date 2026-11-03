@@ -1,6 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
   slug: "punto-plano-axonometria-dt1",
@@ -8,37 +9,52 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[14],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Elementos básicos", [
+    slide("punto", "Representación del punto", [
+      { kind: "text", text: "Los tres planos del sistema dividen el espacio en **ocho triedros**. Para designar cada uno se consideran los dos sentidos, $+$ y $-$, de cada eje a partir del origen." },
       { kind: "steps", items: [
-        "Un **punto** se define por sus **coordenadas** (x, y, z). Se llevan sobre los ejes con el **coeficiente** correspondiente.",
-        "Para evitar ambigüedades se dibuja también su **proyección secundaria** (la del plano XY) y se une con él por una paralela al eje Z.",
-        "Una **recta** se define por **dos puntos**. Sus **trazas** son los puntos donde corta a los planos coordenados (XY, XZ y YZ).",
-        "Un **plano** se define por las **rectas** (trazas) en que corta a los planos coordenados, es decir, por los puntos donde corta a los **ejes**.",
+        "Punto $A$: en el triedro $+X$, $+Y$, $+Z$.",
+        "Punto $B$: en el triedro $+X$, $-Y$, $+Z$.",
+        "Punto $C$: en el triedro $-X$, $-Y$, $+Z$.",
+        "Punto $D$: en el triedro $-X$, $+Y$, $+Z$.",
       ] },
     ], undefined, "stack"),
-    slide("explora", "Punto y plano", [
-      { kind: "text", text: "Coloca un punto con sus coordenadas, y después un plano por sus cortes con los ejes." },
-    ], tool("dt1-axo-punto-plano-explorador"), "visual-top"),
-    slide("operaciones", "Qué se puede resolver", [
+    slide("recta", "Proyecciones de una recta. Trazas", [
+      { kind: "text", text: "Una recta del espacio queda definida conociendo **dos puntos** con dos de sus proyecciones. Se obtiene uniendo las proyecciones **homónimas** de los puntos: la proyección directa $r$ pasa por $P$ y $Q$ y la horizontal $r'$ por $P'$ y $Q'$. Para situar un punto en una recta, sus proyecciones deben estar sobre las proyecciones homónimas de la recta." },
+      { kind: "text", text: "Una recta oblicua $t$ tiene tres **trazas**: con los planos $XOY$, $XOZ$ y $ZOY$. El punto $T_1$-$T_1'$ es la traza con $XOY$, por donde se cortan $t$ y $t'$. Prolongando $t'$ hasta el eje $X$ y refiriendo a $t$ se halla la traza con $XOZ$; análogamente con $Y$ para la traza con $ZOY$." },
+    ], undefined, "stack"),
+    ...construccionPasos("axo-trazas-recta", "axo-recta-paralela-plano"),
+    slide("rectas-particulares", "Rectas paralelas a planos y a ejes", [
       { kind: "steps", items: [
-        "**Pertenencia**: un punto está en un plano si está en una recta del plano.",
-        "**Intersección de dos planos**: la recta que une los puntos donde se cortan sus trazas homónimas.",
-        "**Verdaderas magnitudes**: se obtienen **abatiendo** el plano sobre uno de los coordenados; el triángulo de trazas se abate sobre el cuadro.",
-        "Estas construcciones son análogas a las del sistema **diédrico**, pero con una sola imagen.",
+        "**Paralela a $XOY$**: no tiene traza horizontal; sus proyecciones $t$ y $t'$ son paralelas y las otras se cortan en el eje $Z$.",
+        "**Paralela a $XOZ$**: su proyección directa $r$ y la segunda $r''$ son paralelas; solo tiene dos trazas, $R_1$ y $R_3$.",
+        "**Paralela a $YOZ$** (frontal): $r$ y $r'''$ son paralelas y $r'$ y $r''$ se cortan en un punto de un eje; solo tiene dos trazas.",
+        "**Paralela al eje $X$**: es perpendicular a $YOZ$, su proyección sobre ese plano es un punto y solo tiene una traza, con $ZOY$.",
+        "**Paralela al eje $Y$**: sus proyecciones $s$ y $s'$ son paralelas al eje; solo tiene la traza con $ZOX$.",
+        "**Paralela al eje $Z$**: su proyección horizontal es un punto y solo tiene traza con $XOY$.",
       ] },
-    ]),
-    calc("calc-dist", "Distancia al origen", "El punto P(3, 4, 12). ¿A qué distancia está del origen, en cm?", nums(13), "√(9 + 16 + 144) = √169 = 13 cm.", "Pitágoras en 3D."),
-    calc("calc-area", "Triángulo de trazas", "Un plano corta a los ejes en a = b = c = 3 cm. El triángulo de trazas tiene área ½·√((ab)² + (bc)² + (ca)²). ¿Cuánto vale, en cm²? (dos decimales)", nums(7.79, 7.7942), "½ · √243 ≈ 7,79 cm².", "(ab)² = 81, tres veces."),
-    calc("calc-d0", "Distancia del origen al plano", "Para ese mismo plano, la distancia del origen es abc/√((ab)² + (bc)² + (ca)²). ¿Cuánto vale, en cm? (dos decimales)", nums(1.73, 1.7321), "27 / 15,59 ≈ 1,73 cm.", "√243 = 15,59."),
-    sort("clasifica-elem", "¿Qué elemento?", "Clasifica cada dato.",
-      [["pun", "Punto", "cobalt"], ["rec", "Recta", "amber"], ["pla", "Plano", "emerald"]],
-      [["Tres coordenadas (x, y, z)", "pun"], ["Proyección secundaria en el plano XY", "pun"], ["Dos puntos", "rec"], ["Sus trazas están en los planos coordenados", "rec"], ["Se define por sus cortes con los ejes", "pla"], ["Triángulo de trazas", "pla"]],
-      "Cada elemento tiene su forma habitual de definirse.",
-    ),
-    pick("check-secundaria", "Proyección secundaria", "¿Para qué se dibuja la proyección secundaria de un punto?",
-      "Para eliminar la ambigüedad: una sola imagen no determina la posición del punto en el espacio",
-      [["Para abreviar el dibujo", "Añade un elemento, no lo quita."], ["Para calcular el coeficiente de reducción", "No tiene relación."], ["Porque la normativa lo exige", "Es un recurso geométrico."]],
-      "Un punto de la imagen puede corresponder a infinitos puntos del espacio sobre su rayo proyectante.",
-    ),
+    ], undefined, "stack"),
+    ...construccionPasos("axo-rectas-paralelas-ejes"),
+    slide("plano", "Representación del plano", [
+      { kind: "text", text: "El plano viene definido de la forma más sencilla por sus **trazas**. Un plano oblicuo corta a los planos del sistema según tres rectas que se cortan dos a dos en un punto de cada eje: si corta a $X$ en $A$, a $Y$ en $B$ y a $Z$ en $C$, la traza con $XOY$ es $\\alpha_1$, con $ZOX$ es $\\alpha_2$ y con $ZOY$ es $\\alpha_3$. El triángulo $ABC$ se llama **triángulo de trazas**." },
+    ], undefined, "stack"),
+    ...construccionPasos("axo-trazas-plano"),
+    slide("planos-particulares", "Planos paralelos a ejes y a planos coordenados", [
+      { kind: "steps", items: [
+        "**Paralelo al eje $X$** (o $Y$, o $Z$): tiene dos trazas paralelas a ese eje y el punto donde corta al eje es impropio. El plano paralelo al eje $X$ es proyectante sobre $ZOY$; el paralelo a $Z$ es proyectante horizontal.",
+        "**Paralelo a $XOY$**: es horizontal, de cota $OT$. Corta al eje $Z$ en $T$ y es proyectante sobre $ZOX$ y $ZOY$: sus proyecciones segunda y tercera quedan confundidas con las trazas $\\beta_2$ y $\\beta_3$.",
+        "**Paralelo a $XOZ$**: tiene trazas propias $\\alpha_1$ y $\\alpha_3$ paralelas a $X$ y $Z$; la traza $\\alpha_2$ es impropia.",
+        "**Paralelo a $YOZ$**: tiene por trazas con $XOY$ y $ZOX$ dos rectas paralelas a $Y$ y $Z$; la traza $\\alpha_3$ es impropia.",
+      ] },
+    ], undefined, "stack"),
+    ...construccionPasos("axo-plano-paralelo-eje", "axo-plano-paralelo-coordenado"),
+    slide("intersecciones", "Trazas por tres puntos, posiciones relativas e intersecciones", [
+      { kind: "steps", items: [
+        "**Plano por tres puntos** $P$, $Q$, $T$: se unen dos a dos para obtener las rectas que definen, se hallan sus trazas y se unen las **homónimas**.",
+        "**Rectas que se cortan**: las proyecciones directas se cortan en $P$ y las horizontales en $P'$, y ambos puntos están en una **paralela al eje $Z$**. Son **paralelas** si lo son sus proyecciones del mismo nombre; si no cumplen ninguna de las dos condiciones, se **cruzan**.",
+        "**Intersección de dos planos**: al cortarlos por los planos del sistema se obtienen trazas que, al cortarse las del mismo nombre, dan **puntos de la intersección**. Se unen $S_1$, $S_2$ y $S_3$.",
+        "**Intersección de recta y plano**: se hace pasar por la recta un plano cualquiera, el mejor es un **proyectante**, y se halla su intersección con el plano dado; esa recta encuentra a la dada en el punto buscado.",
+      ] },
+    ], undefined, "stack"),
+    ...construccionPasos("axo-interseccion-planos", "axo-recta-plano"),
   ],
 };

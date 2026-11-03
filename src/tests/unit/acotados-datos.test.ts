@@ -1,0 +1,82 @@
+import { describe, expect, it } from "vitest";
+import { CONSTRUCCIONES } from "@/components/lesson/bench/construcciones-datos";
+import type { Construccion, P } from "@/components/lesson/bench/construcciones-datos";
+
+const c = (id: string) => CONSTRUCCIONES[id as keyof typeof CONSTRUCCIONES] as Construccion;
+const dist = (a: P, b: P) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+const dot = (o: P, a: P, b: P) => (a[0] - o[0]) * (b[0] - o[0]) + (a[1] - o[1]) * (b[1] - o[1]);
+
+describe("sistema de planos acotados (tema 13)", () => {
+  it("graduar: las divisiones son equidistantes sobre r' y la traza está a un intervalo de A'", () => {
+    const k = c("acotados-graduar").pts;
+    const i = dist(k.nA, k.nB);
+    expect(dist(k.nB, k.nC)).toBeCloseTo(i, 6);
+    expect(dist(k.nC, k.nD)).toBeCloseTo(i, 6);
+    expect(dist(k.nD, k.nE)).toBeCloseTo(i, 6);
+    expect(dist(k.nA, k.nT)).toBeCloseTo(i, 6);
+  });
+  it("plano por su l.m.p.: la distancia de C₀ a la l.m.p. son tres unidades y las horizontales son perpendiculares", () => {
+    const k = c("acotados-plano-lmp").pts;
+    expect(dist(k.l3, k.Cz)).toBeCloseTo(k.c32[0] - k.c31[0], 6);
+    expect(k.hi1[1]).toBe(k.l1[1]);
+    expect(k.hi3[1]).toBe(k.l3[1]);
+  });
+  it("intersección: cada punto P_k está en las dos horizontales (perpendiculares a las l.m.p.)", () => {
+    const k = c("acotados-interseccion").pts;
+    for (const n of [13, 14, 15]) {
+      expect(Math.abs(dot(k[`a${n}`], k[`P${n}`], k.a12) - dot(k[`a${n}`], k[`a${n}`], k.a12)) ).toBeGreaterThanOrEqual(0);
+      const ua: P = [k._ta[0] - k.a12[0], k._ta[1] - k.a12[1]];
+      const ub: P = [k._tb[0] - k.b12[0], k._tb[1] - k.b12[1]];
+      expect((k[`P${n}`][0] - k[`a${n}`][0]) * ua[0] + (k[`P${n}`][1] - k[`a${n}`][1]) * ua[1]).toBeCloseTo(0, 4);
+      expect((k[`P${n}`][0] - k[`b${n}`][0]) * ub[0] + (k[`P${n}`][1] - k[`b${n}`][1]) * ub[1]).toBeCloseTo(0, 4);
+    }
+  });
+  it("perfil: la altura de cada punto es la distancia de la escala entre la cota 2 y su cota", () => {
+    const k = c("acotados-perfil").pts;
+    const cotas = [3, 4, 5, 4, 3];
+    cotas.forEach((co, i) => expect(dist(k[`F${i + 1}`], k[`Q${i + 1}`])).toBeCloseTo(dist(k.s2, k[`s${co}`]), 6));
+  });
+});
+
+describe("tema 13: ampliación", () => {
+  it("graduar por el intervalo: las divisiones están a un intervalo unas de otras", () => {
+    const k = c("acotados-graduar-intervalo").pts;
+    for (let i = 0; i < 4; i += 1) expect(dist(k[`gT${i}`], k[`gT${i + 1}`])).toBeCloseTo(k.i2[0] - k.i1[0], 6);
+  });
+  it("cubierta: las limatesas forman 45° y la cumbrera es horizontal", () => {
+    const k = c("acotados-cubierta").pts;
+    expect(Math.abs(k.cR1[0] - k.cA[0])).toBeCloseTo(Math.abs(k.cA[1] - k.cR1[1]), 6);
+    expect(Math.abs(k.cR2[0] - k.cB[0])).toBeCloseTo(Math.abs(k.cB[1] - k.cR2[1]), 6);
+    expect(k.cR1[1]).toBe(k.cR2[1]);
+  });
+  it("camino: N está en la rasante y en el tramo Q4–Q5 del terreno", () => {
+    const k = c("acotados-perfil-camino").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect(col(k.Q1, k.Cb, k.cN)).toBeLessThan(1e-6);
+    expect(col(k.Q4, k.Q5, k.cN)).toBeLessThan(1e-6);
+  });
+});
+
+describe("tema 13: l.m.p. paralelas", () => {
+  it("V₀ está en las dos abatidas y la perpendicular baja a AB", () => {
+    const k = c("acotados-interseccion-paralelas").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect(col(k.aA, k.pMa, k.pV0)).toBeLessThan(1e-6);
+    expect(col(k.aB, k.pMb, k.pV0)).toBeLessThan(1e-6);
+    expect(k.pF[0]).toBeCloseTo(k.pV0[0], 6);
+    expect(dist(k.pa10, k.pMa)).toBeCloseTo(3 * 30, 6);
+  });
+});
+
+describe("tema 13: explanación", () => {
+  it("los taludes cumplen sus pendientes y N y M están en ellos y en el terreno", () => {
+    const k = c("acotados-explanacion").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect((k.tA[1] - k.tPl[1]) / (k.tA[0] - k.tPl[0])).toBeCloseTo(10 / 6, 6);
+    expect((k.tPr[1] - k.tB[1]) / (k.tPr[0] - k.tB[0])).toBeCloseTo(10 / 9, 6);
+    expect(col(k.tA, k.tPl, k.tN1)).toBeLessThan(1e-6);
+    expect(col(k._g0, k._g1, k.tN1)).toBeLessThan(1e-6);
+    expect(col(k.tB, k.tPr, k.tN2)).toBeLessThan(1e-6);
+    expect(col(k._g2, k._g3, k.tN2)).toBeLessThan(1e-6);
+  });
+});

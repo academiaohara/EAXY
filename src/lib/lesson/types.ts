@@ -1122,6 +1122,8 @@ export type SlideAnimId =
   | "dt1-plano-revision"
   | "dt1-localizacion-dos-arcos"
   | "dt1-abatimiento-diedrico"
+  | "dt1-curvas-nivel"
+  | "dt1-simbolos-topograficos"
   | "dt1-cubo-isometrico"
   | "dt1-perspectiva-frontal"
   | "dt1-vistas-pieza"

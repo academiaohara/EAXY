@@ -194,6 +194,7 @@ export const DT1_SUBTITLES = {
   7: "Dibujo Técnico I, Tema 7 — Transformaciones geométricas",
   8: "Dibujo Técnico I, Tema 8 — Tangencias",
   9: "Dibujo Técnico I, Tema 9 — Curvas técnicas",
+  10: "Dibujo Técnico I, Tema 10 — Curvas cónicas",
   11: "Dibujo Técnico I, Tema 11 — Sistemas de representación",
   12: "Dibujo Técnico I, Tema 12 — Sistema diédrico",
   13: "Dibujo Técnico I, Tema 13 — Sistema de planos acotados",

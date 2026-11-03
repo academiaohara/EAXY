@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPoin
 import { ESCUADRA_L, angDe, clamp, dir, dist, dot, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { geoDesliza, type DatosDesliza } from "./escuadra-perpendicular";
+import { FormaTrazo, type FormaFinal } from "./formas-finales";
 import { InstrumentosParalela, planParalela, type OpcionesParalela } from "./paralela-plan";
 import { useBenchCheck } from "./practice";
 import { ReproCtx } from "./reproduccion";
@@ -521,6 +522,8 @@ export type Def = {
   principales?: number[];
   /** Fase `auto`: segmentos que la regla traza sola, uno tras otro, y con los que acaba el ejercicio. */
   autoLados?: (est: Est) => [Pt, Pt][];
+  /** Resultado en trazo grueso (circunferencias, arcos o curvas) que se dibuja al final. */
+  autoFormas?: () => FormaFinal[];
   /** Cuánto se prolonga la recta de la regla más allá de los puntos tocados (28 por defecto). */
   extRegla?: number;
   /** Texto de progreso bajo el paso (por ejemplo, «Lados trazados: 1 de 3»). */
@@ -610,7 +613,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
     },
     [],
   );
-  const nAuto = fases[fases.length - 1] === "auto" ? (def.autoLados?.(est).length ?? 0) : 0;
+  const nAuto = fases[fases.length - 1] === "auto" ? (def.autoLados?.(est).length ?? 0) + (def.autoFormas?.().length ?? 0) : 0;
   const msAuto = sinMovimiento() ? 0 : nAuto * 1100;
 
   // Configuración del arco al que se refiere la fase actual.
@@ -680,7 +683,7 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
       return;
     }
     if (tipo === "medida") {
-      const cand = (def.medibles?.(est) ?? []).find((c) => dist(c, p) <= HIT);
+      const cand = (def.medibles?.(est) ?? []).filter((c) => dist(c, p) <= HIT).sort((u, v) => dist(u, p) - dist(v, p))[0];
       if (!cand || (est.medida[0] && dist(est.medida[0], cand) < 1)) {
         fallar(est.medida.length === 0 ? "Toca uno de los dos puntos marcados para clavar la punta del compás." : "Toca el otro punto para colocar la mina.");
         return;
@@ -1107,6 +1110,9 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
           ? def.autoLados(est).map(([a, b], i, todos) => (
               <ReglaTrazando key={`auto${i}`} a={a} b={b} p={hecha ? 1 : tramo(pAuto, i / todos.length, (i + 1) / todos.length)} ext={0} w={def.grosorAuto ?? 1.5} testId={i === 0 ? "bench-regla-trazo" : undefined} />
             ))
+          : null}
+        {def.autoFormas && (tipo === "auto" || hecha)
+          ? def.autoFormas().map((f, i, todas) => <FormaTrazo key={`forma${i}`} forma={f} t={hecha ? 1 : tramo(pAuto, i / todas.length, (i + 1) / todas.length)} w={def.grosorAuto ?? 1.5} />)
           : null}
         {est.trazos.map(([a, b], i) =>
           (def.ocultarTrazos?.(est) ?? []).includes(i) ? null : TRAZOS_DIRECTOS.has(est.trazos[i]) ? (

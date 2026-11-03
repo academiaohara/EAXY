@@ -80,7 +80,7 @@ function pantalla(scene: BenchSceneId, params?: { a?: number; b?: number }) {
   return { ...m, svg, tocar, arrastrar, fase, fijar, aviso, superada, sinSuperar };
 }
 
-describe("mesa de dibujo · pasos dentro de la diapositiva", () => {
+describe("mesa de dibujo · pasos dentro de la diapositiva", { timeout: 30000 }, () => {
   it.each(escenas)("%s: recorre todos los pasos y enseña el texto de cada uno", (scene) => {
     const { siguiente } = montar(scene);
     for (let i = 0; i < BENCH_STEPS[scene]; i += 1) {

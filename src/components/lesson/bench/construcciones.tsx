@@ -8,6 +8,7 @@ import { AMBAR, INK, type BenchBlock } from "./scenes";
 import { ArcoCompas, CompasEn, Lamina, TransportadorMarca, VERDE_RELLENO, AnguloDato, Dato, usePasoAnim } from "./scenes-construcciones";
 import { MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, lerp, tramo, type Def, type Est } from "./scenes-compas";
 import { CONSTRUCCIONES, etiqueta, fasesPractica, instrumentoAngulo, type Construccion, type ConstruccionId, type Op } from "./construcciones-datos";
+import { FormaTrazo, type FormaFinal } from "./formas-finales";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Circ, Dot, Poli } from "./scenes-teoria";
 import { Punto } from "./scenes-trazados";
@@ -67,6 +68,11 @@ const ms = (o: Op): number => {
     case "angulo": return 3600;
     case "paralelas": return 2600 * o.marcas.length;
     case "lados": return 900 * o.pts.length + 500;
+    case "solucion": return 2600;
+    case "curva": return 2800;
+    case "curvaPuntos": return 3200;
+    case "elipse": return 3000;
+    case "elipseConjugada": return 3000;
     default: return 1;
   }
 };
@@ -91,6 +97,16 @@ function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDes
   return { recta: [v, enCirculo(v, 100, o.base)], punto: v, traza: [v, enCirculo(v, largo, o.base + signo * o.obj)], angulo: { base: o.base, obj: o.obj, signo }, importantes: puntosImportantes(c) };
 }
 
+/** Forma final (en trazo grueso) de una operación `solucion` o `curva`. */
+function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" | "elipseConjugada" }>): FormaFinal {
+  if (o.k === "elipse") return { tipo: "elipse", c: pt(c, o.c), a: o.a, b: o.b };
+  if (o.k === "elipseConjugada") return { tipo: "conjugada", c: pt(c, o.c), u: pt(c, o.u), v: pt(c, o.v) };
+  if (o.k === "curvaPuntos") return { tipo: "suave", pts: o.pts.map((n) => pt(c, n)), cerrada: o.cerrada };
+  if (o.k === "curva") return { tipo: "curva", a: pt(c, o.a), c: pt(c, o.c), b: pt(c, o.b) };
+  const centro = pt(c, o.c);
+  return { tipo: "circulo", c: centro, r: dist(centro, pt(c, o.hacia)), desde: o.hasta ? pt(c, o.hacia) : undefined, hasta: o.hasta ? pt(c, o.hasta) : undefined, por: o.por ? pt(c, o.por) : undefined };
+}
+
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
 function prolongar(a: Pt, b: Pt, ext: number): [Pt, Pt] {
   const d = dist(a, b) || 1;
@@ -103,6 +119,7 @@ function BaseHoja({ c, visibles }: { c: Construccion; visibles: Set<string> }) {
     <g>
       {c.circulos?.map((x, i) => <Circ key={`c${i}`} c={pt(c, x.c)} r={x.r} color={AUX} w={1.4} />)}
       {c.base?.map(([a, b], i) => <Seg key={`b${i}`} a={pt(c, a)} b={pt(c, b)} color={AUX} w={1.4} />)}
+      {c.curvaBase ? <polyline points={c.curvaBase.map((q) => q.join(",")).join(" ")} fill="none" stroke={INK} strokeWidth="1.5" strokeLinejoin="round" /> : null}
       {c.datos.map((d) => (
         <g key={d.nombre}>
           <Dato a={pt(c, d.a)} b={pt(c, d.b)} nombre={d.nombre} color={d.color === "ambar" ? AMBAR : undefined} />
@@ -242,10 +259,17 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         else
           pts.slice(0, n).forEach((q, k) => {
             const sub = tramo(t, k / n, (k + 1) / n);
-            if (sub > 0) nodos.push(<ReglaTrazando key={`${key}-${k}`} a={q} b={pts[(k + 1) % n]} p={sub} ext={0} color={INK} w={3} />);
+            if (sub > 0) nodos.push(<ReglaTrazando key={`${key}-${k}`} a={q} b={pts[(k + 1) % pts.length]} p={sub} ext={0} color={INK} w={3} />);
           });
         break;
       }
+      case "solucion":
+      case "curva":
+      case "curvaPuntos":
+      case "elipse":
+      case "elipseConjugada":
+        nodos.push(<FormaTrazo key={key} forma={formaDe(c, x)} t={t} w={3} />);
+        break;
       default:
         break;
     }
@@ -286,6 +310,7 @@ function defDe(id: ConstruccionId): Def {
     grosorAuto: 3,
     extTrazo: c.ext ?? 30,
     reiniciarEscuadra: true,
+    autoFormas: () => c.ops.filter((o): o is Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" | "elipseConjugada" }> => o.k === "solucion" || o.k === "curva" || o.k === "curvaPuntos" || o.k === "elipse" || o.k === "elipseConjugada").map((o) => formaDe(c, o)),
     autoLados: () => lados.flatMap((l) => (l.pts.length === 2 ? [[pt(c, l.pts[0]), pt(c, l.pts[1])] as [Pt, Pt]] : l.pts.map((n, k) => [pt(c, n), pt(c, l.pts[(k + 1) % l.pts.length])] as [Pt, Pt]))),
     papel: (est: Est) => {
       const visibles = new Set<string>(c.dados);
@@ -335,7 +360,7 @@ function defDe(id: ConstruccionId): Def {
       return o?.k === "medir" ? [pt(c, o.de), pt(c, o.a)] : [];
     },
     compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-    radioLim: () => [40, 215],
+    radioLim: () => [c.radioMin ?? 40, c.radioMax ?? 215],
     radioIni: () => 100,
     rhoIni: (n) => {
       const o = arcos[n];

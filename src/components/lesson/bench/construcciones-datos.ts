@@ -7,6 +7,15 @@
  * Convenios: ángulos en grados, antihorarios, con el eje Y hacia arriba (como `geometry.ts`). Los puntos cuyo nombre empieza
  * por «_» son auxiliares (no se dibujan ni se rotulan). El radio de un arco es la última medida tomada con `medir`.
  */
+import { CONSTRUCCIONES_CONICAS, ETIQUETAS_CONICAS } from "./construcciones-conicas";
+import { CONSTRUCCIONES_SISTEMAS, ETIQUETAS_SISTEMAS } from "./construcciones-sistemas";
+import { CONSTRUCCIONES_DIEDRICO, ETIQUETAS_DIEDRICO } from "./construcciones-diedrico";
+import { CONSTRUCCIONES_ACOTADOS, ETIQUETAS_ACOTADOS } from "./construcciones-acotados";
+import { CONSTRUCCIONES_AXONOMETRICO, ETIQUETAS_AXONOMETRICO } from "./construcciones-axonometrico";
+import { CONSTRUCCIONES_CABALLERA, ETIQUETAS_CABALLERA } from "./construcciones-caballera";
+import { CONSTRUCCIONES_CURVAS, ETIQUETAS_CURVAS } from "./construcciones-curvas";
+import { CONSTRUCCIONES_TANGENCIAS, ETIQUETAS_TANGENCIAS } from "./construcciones-tangencias";
+
 export type P = [number, number];
 const rad = (d: number) => (d * Math.PI) / 180;
 const deg = (r: number) => (r * 180) / Math.PI;
@@ -42,7 +51,17 @@ export type Op =
   | { k: "perp"; recta: [string, string]; punto: string; traza: [string, string] }
   | { k: "angulo"; v: string; base: number; obj: number; signo?: 1 | -1; largo?: number }
   | { k: "paralelas"; recta: [string, string]; marcas: string[]; cortes: string[] }
-  | { k: "lados"; pts: string[] };
+  | { k: "lados"; pts: string[] }
+  /** Resultado en trazo grueso: la circunferencia de centro `c` que pasa por `hacia` o, con `hasta`, solo el arco entre ambos puntos. */
+  | { k: "solucion"; c: string; hacia: string; hasta?: string; /** Punto por el que pasa el arco (si no, se toma el camino corto). */ por?: string }
+  /** Arco de parábola tangente a `a`–`c` en `a` y a `c`–`b` en `b` (curva de Bézier cuadrática con control en `c`). */
+  | { k: "curva"; a: string; c: string; b: string }
+  /** Curva suave (a mano alzada o con plantilla) que pasa por estos puntos, en trazo grueso. */
+  | { k: "curvaPuntos"; pts: string[]; /** La curva vuelve al primer punto (por ejemplo, una elipse por puntos). */ cerrada?: boolean }
+  /** Elipse de centro `c` y semiejes `a` (horizontal) y `b` (vertical), en trazo grueso. */
+  | { k: "elipse"; c: string; a: number; b: number }
+  /** Elipse (imagen afín de una circunferencia) de centro `c` y semidiámetros conjugados `c`–`u` y `c`–`v`, en trazo grueso. */
+  | { k: "elipseConjugada"; c: string; u: string; v: string };
 
 export type Nota = { title: string; text: string; fact?: string };
 
@@ -60,8 +79,14 @@ export type Construccion = {
   base?: [string, string][];
   /** Circunferencias ya dibujadas (centro y radio). */
   circulos?: { c: string; r: number }[];
+  /** Curva ya dibujada (una línea quebrada fina por estos puntos), por ejemplo la curva que se quiere rectificar. */
+  curvaBase?: P[];
   angDatos?: { v: P; ang: number; nombre: string }[];
   ops: Op[];
+  /** Abertura mínima del compás en la práctica (por defecto 40): se baja si hay que tomar una medida muy pequeña. */
+  radioMin?: number;
+  /** Abertura máxima del compás en la práctica (por defecto 215). */
+  radioMax?: number;
   /** Cuánto se prolongan las rectas de la regla más allá de los puntos tocados. */
   ext?: number;
   /** Tamaño de la escuadra y el cartabón en esta construcción (1 = normal): se reducen si no caben en la hoja. */
@@ -1167,8 +1192,8 @@ function medioProporcional(suma: boolean): Construccion {
       ...mediatriz("A", "B", "P1", "P2", "O", 66),
       { k: "medir", de: "O", a: "A" },
       { k: "arco", c: "O", hacia: "M", abs: [2, 178] },
-      perp(["A", "B"], "P", ["_p1", "_p2"]),
-      { k: "marca", p: "M" },
+      // la perpendicular por P es paralela a la mediatriz P1P2 (que ya es perpendicular a AB): se desliza la escuadra desde ella
+      { k: "paralelas", recta: ["P1", "P2"], marcas: ["P"], cortes: ["M"] },
       { k: "lados", pts: suma ? ["P", "M"] : ["A", "M"] },
     ],
   };
@@ -1523,6 +1548,14 @@ export const CONSTRUCCIONES = {
   "homotecia-centros-segmentos": homoteciaCentrosSegmentos(),
   "homotecia-centros-circunferencias": homoteciaCentrosCircunferencias(),
   "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
+  ...CONSTRUCCIONES_TANGENCIAS,
+  ...CONSTRUCCIONES_CURVAS,
+  ...CONSTRUCCIONES_CONICAS,
+  ...CONSTRUCCIONES_SISTEMAS,
+  ...CONSTRUCCIONES_DIEDRICO,
+  ...CONSTRUCCIONES_ACOTADOS,
+  ...CONSTRUCCIONES_AXONOMETRICO,
+  ...CONSTRUCCIONES_CABALLERA,
 } satisfies Record<string, Construccion>;
 
 /**
@@ -1546,6 +1579,14 @@ const ETIQUETAS: Record<string, string> = {
   Vp: "V'", Op: "O'", Pp: "P'", Qp: "Q'", C1: "C₁", C2: "C₂", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'", Mp: "M'", Np: "N'", pp: "p'", qq: "q'", uu: "u'", vv: "v'",
   p1: "1'", p2: "2'", p3: "3'", p4: "4'", "1s": "1'", "2s": "2'", "3s": "3'", "4s": "4'", As: "A'", Bs: "B'", f0: "", f1: "", f2: "", f3: "", e: "e", t1: "1'", t2: "2'", t3: "3'", t4: "4'",
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
+  ...ETIQUETAS_TANGENCIAS,
+  ...ETIQUETAS_CURVAS,
+  ...ETIQUETAS_CONICAS,
+  ...ETIQUETAS_SISTEMAS,
+  ...ETIQUETAS_DIEDRICO,
+  ...ETIQUETAS_ACOTADOS,
+  ...ETIQUETAS_AXONOMETRICO,
+  ...ETIQUETAS_CABALLERA,
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;

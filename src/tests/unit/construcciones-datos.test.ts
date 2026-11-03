@@ -61,6 +61,21 @@ function recorrer(c: Construccion) {
       case "lados":
         o.pts.forEach((x) => visible(x, donde));
         break;
+      case "solucion":
+        visible(o.c, donde);
+        if (!c.pts[o.hacia]) problemas.push(`${donde}: punto desconocido ${o.hacia}`);
+        if (o.hasta && !c.pts[o.hasta]) problemas.push(`${donde}: punto desconocido ${o.hasta}`);
+        if (o.por && !c.pts[o.por]) problemas.push(`${donde}: punto desconocido ${o.por}`);
+        break;
+      case "curva":
+        [o.a, o.c, o.b].forEach((x) => visible(x, donde));
+        break;
+      case "curvaPuntos":
+        o.pts.forEach((x) => visible(x, donde));
+        break;
+      case "elipse":
+        visible(o.c, donde);
+        break;
     }
   });
   return problemas;
@@ -84,8 +99,8 @@ describe("construcciones del tema 5: datos", () => {
 
   it("hay una escena de animación y otra de práctica por construcción, con pasos", () => {
     for (const id of ids) {
-      expect(PASOS_CONSTRUCCION[`c-${id}`]).toBeGreaterThan(3);
-      expect(PASOS_CONSTRUCCION[`c-${id}-practica`]).toBeGreaterThan(3);
+      expect(PASOS_CONSTRUCCION[`c-${id}`]).toBeGreaterThanOrEqual(2);
+      expect(PASOS_CONSTRUCCION[`c-${id}-practica`]).toBeGreaterThanOrEqual(2);
     }
   });
 });

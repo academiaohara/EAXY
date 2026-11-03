@@ -36,7 +36,7 @@ function notaOp(c: Construccion, o: Op, i: number): Nota {
     case "recta":
       return { title: `Recta por ${etiqueta(o.a)} y ${etiqueta(o.b)}`, text: `Se apoya la regla en ${L(o.a)} y ${L(o.b)} y se traza la recta.${o.limpia ? " Se borran los arcos auxiliares y queda solo la recta." : ""}${donde}` };
     case "perp":
-      return { title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Con la escuadra y el cartabón: el cartabón se apoya en la recta y la escuadra desliza sobre él hasta que su filo pasa por ${L(o.punto)}. Se traza la perpendicular.${donde}`, fact: "90°" };
+      return { title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Con la escuadra apoyada por un cateto en la recta (y el cartabón de guía, si hace falta) se desliza hasta que su otro cateto pasa por ${L(o.punto)}. Se traza la perpendicular.${donde}`, fact: "90°" };
     case "angulo": {
       const inst = instrumentoAngulo(o.obj);
       if (inst) {
@@ -49,6 +49,18 @@ function notaOp(c: Construccion, o: Op, i: number): Nota {
       return { title: "Paralelas con escuadra y cartabón", text: `Por ${o.marcas.map(L).join(", ")} se trazan **paralelas** a ${seg(o.recta[0], o.recta[1])}: el cartabón se apoya en esa recta y la escuadra desliza hasta cada punto. Cortan al segmento en partes iguales.` };
     case "lados":
       return { title: o.pts.length === 3 && c.ops.filter((x) => x.k === "lados").length > 1 ? "Se unen los vértices alternos" : "Se dibuja la figura", text: `Con la regla se unen ${o.pts.map(L).join(", ")} en orden. Los lados definitivos se dibujan en trazo grueso.` };
+    case "solucion":
+      return o.hasta
+        ? { title: "Se dibuja el arco de enlace", text: `Con centro en ${L(o.c)} se traza el arco entre ${L(o.hacia)} y ${L(o.hasta)}, que son los puntos de tangencia. Queda en trazo grueso.`, fact: "Arco de enlace" }
+        : { title: "Se dibuja la solución", text: `Con centro en ${L(o.c)} y pasando por ${L(o.hacia)} se traza la circunferencia solución, en trazo grueso.`, fact: `Centro ${tit(o.c)}` };
+    case "elipseConjugada":
+      return { title: "Se dibuja la elipse", text: `Con los diámetros conjugados por ${L(o.c)} y la elipse inscrita en el paralelogramo de sus tangentes, se traza a lápiz y a mano alzada, o con plantilla, la elipse de centro ${L(o.c)} en trazo grueso.`, fact: "Elipse" };
+    case "elipse":
+      return { title: "Se dibuja la elipse", text: `Se unen los puntos obtenidos con una curva suave, a mano alzada o con plantilla de curvas, y se remarca la elipse de centro ${L(o.c)} en trazo grueso.`, fact: "Elipse" };
+    case "curvaPuntos":
+      return { title: "Se dibuja la curva", text: `Se unen ${o.pts.map(L).join(", ")} con una curva suave, a mano alzada o con plantilla de curvas, en trazo grueso.`, fact: "Curva por los puntos" };
+    case "curva":
+      return { title: "Se dibuja la parábola", text: `Se traza a mano alzada, o con plantilla, la curva tangente a las rectas ${seg(o.a, o.c)} y ${seg(o.c, o.b)} en ${L(o.a)} y ${L(o.b)}: es el arco de parábola, en trazo grueso.`, fact: "Envolvente de las rectas" };
     default:
       return { title: "", text: "" };
   }
@@ -86,7 +98,7 @@ export function notasPractica(id: ConstruccionId): Nota[] {
         out.push({ title: `Regla por ${etiqueta(o.a)} y ${etiqueta(o.b)}`, text: `Toca ${L(o.a)} y ${L(o.b)}: la regla traza la recta.${o.limpia ? " Después se borran los arcos auxiliares." : ""}` });
         break;
       case "perp":
-        out.push({ title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Arrastra la escuadra sobre el cartabón hasta que su filo pase por ${L(o.punto)}: queda trazada la perpendicular.`, fact: "90°" });
+        out.push({ title: `Perpendicular por ${etiqueta(o.punto)}`, text: `Arrastra la escuadra a lo largo de la recta hasta que su filo pase por ${L(o.punto)}: queda trazada la perpendicular.`, fact: "90°" });
         break;
       case "angulo": {
         const inst = instrumentoAngulo(o.obj);
@@ -100,7 +112,7 @@ export function notasPractica(id: ConstruccionId): Nota[] {
         break;
     }
   }
-  out.push({ title: "Cierra la figura", text: "La regla traza sola los lados, ya en trazo grueso." });
+  out.push({ title: "Cierra la figura", text: "Lo que has construido se dibuja solo, ya en trazo grueso." });
   return out;
 }
 
