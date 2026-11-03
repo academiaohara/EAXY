@@ -17160,7 +17160,7 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20702),
-              title: "2. Axonometría ortogonal: ejes y coeficientes de reducción",
+              title: "2. Sistema isométrico y escala isométrica",
               summary: "Isométrica, dimétrica y trimétrica.",
               orderIndex: 2,
               kind: "interactive",
@@ -17169,7 +17169,7 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20703),
-              title: "3. Perspectiva isométrica de piezas",
+              title: "3. Circunferencia en perspectiva isométrica",
               summary: "Medidas, agujeros y elipses.",
               orderIndex: 3,
               kind: "interactive",

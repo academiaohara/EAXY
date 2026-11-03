@@ -1,6 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { anim, calc, nums, pick, slide, sort } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const fundamentosAxonometriaDt1Lesson: InteractiveLesson = {
   slug: "fundamentos-axonometria-dt1",
@@ -8,37 +9,38 @@ export const fundamentosAxonometriaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[14],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Una sola imagen del objeto", [
+    slide("triedro", "El triedro trirrectángulo", [
+      { kind: "text", text: "Se considera en el espacio un **triedro trirrectángulo** cuyos planos son $(X)(O)(Y)$, $(Z)(O)(X)$ y $(Z)(O)(Y)$, con vértice en el **origen** $(O)$. Sus aristas $(X)$, $(Y)$ y $(Z)$ son los **ejes del sistema** y los planos de sus caras, los **planos coordenados**." },
+      { kind: "text", text: "Un punto $(P)$ del espacio se proyecta ortogonalmente sobre cada cara del triedro en $(P')$, $(P'')$ y $(P''')$." },
+    ], undefined, "stack"),
+    slide("cuadro", "El plano del cuadro", [
+      { kind: "text", text: "Un cuarto plano, que no contiene a ningún eje ni es una cara del triedro, es el **plano del papel** o **plano del cuadro** $\\pi$. Al proyectar ortogonalmente sobre él el triedro y los puntos, el origen se proyecta en $O$, los ejes según tres rectas $X$, $Y$, $Z$ concurrentes en $O$ y los puntos en $P$, $P'$, $P''$ y $P'''$." },
       { kind: "steps", items: [
-        "En el sistema **axonométrico** el objeto se refiere a un **triedro trirrectángulo** de ejes **X, Y, Z** y se proyecta **con rayos paralelos** sobre **un solo plano**, el **cuadro**.",
-        "Se ve el objeto en **tres dimensiones** a la vez, con una única proyección. Se conserva el **paralelismo**.",
-        "Las longitudes sobre los ejes se ven **reducidas**; la razón es el **coeficiente de reducción** de cada eje.",
-        "Según los rayos sean **perpendiculares** u **oblicuos** al cuadro: **axonometría ortogonal** u **oblicua**.",
+        "$P$ es la **proyección directa ortogonal**: es la perspectiva axonométrica verdadera. $P'$, $P''$ y $P'''$ son **proyecciones de proyecciones** y se llaman proyecciones primera, segunda y tercera.",
+        "Los segmentos $(P)$-$(P')$, $(P)$-$(P'')$ y $(P)$-$(P''')$ son paralelos a los ejes $Z$, $Y$ y $X$ y se proyectan paralelamente a ellos.",
+        "Los ejes forman en proyección ángulos $\\varepsilon = \\widehat{XOY}$, $\\omega = \\widehat{XOZ}$ y $\\rho = \\widehat{ZOY}$, con $\\varepsilon + \\omega + \\rho = 360°$.",
       ] },
     ], undefined, "stack"),
-    slide("iso", "El cubo isométrico", [
-      { kind: "text", text: "Sigue la construcción de un cubo en isométrica y fíjate en cómo quedan las circunferencias de sus caras." },
-    ], anim("dt1-cubo-isometrico"), "visual-top"),
-    slide("clases", "Clases de axonometría", [
+    slide("reversible", "Reversibilidad", [
+      { kind: "text", text: "Un punto tiene **cuatro proyecciones**: una directa ortogonal y tres laterales sobre los planos del sistema. Dadas dos proyecciones cualesquiera, se pueden hallar las otras dos: un punto queda definido por **dos proyecciones**." },
+      { kind: "text", text: "El punto $P$ está a las distancias $x$, $y$, $z$ de los planos $ZOY$, $ZOX$ y $XOY$: son sus **coordenadas cartesianas**." },
+    ], undefined, "stack"),
+    ...construccionPasos("axo-proyecciones-punto"),
+    slide("triangulo", "El triángulo fundamental", [
+      { kind: "text", text: "Un plano paralelo al cuadro corta a los ejes en $(A)$, $(B)$, $(C)$ y a las caras del triedro según el triángulo $ABC$, de lados $\\pi_1$, $\\pi_2$, $\\pi_3$ (las **trazas** del cuadro). Es el **triángulo fundamental**: su conocimiento basta para definir un sistema axonométrico." },
       { kind: "steps", items: [
-        "**Ortogonal**: los rayos son **perpendiculares** al cuadro. Los tres ejes se ven reducidos. Puede ser **isométrica**, **dimétrica** o **trimétrica**.",
-        "**Oblicua**: los rayos son **oblicuos**. Un plano coordenado puede ser **paralelo al cuadro** y verse **en verdadera forma**: **caballera** (plano frontal XZ) y **militar** (plano horizontal XY).",
-        "En la práctica se dibujan con ángulos y **coeficientes simplificados** para trazar rápido.",
-        "La elección depende de **qué caras** del objeto tengan más detalle y de la **claridad** de la imagen.",
+        "Los ejes $X$, $Y$, $Z$ son **perpendiculares a los lados** $BC$, $CA$, $AB$.",
+        "Los pies de las alturas $H$, $I$, $J$ definen el **triángulo órtico** de $ABC$, y los ejes son las **bisectrices** de sus ángulos.",
+        "Se deducen los ángulos de los ejes con el cuadro: $\\alpha$ para $X$, $\\beta$ para $Y$, $\\gamma$ para $Z$.",
       ] },
-    ]),
-    calc("calc-120", "Ejes de la isométrica", "En la perspectiva isométrica, ¿qué ángulo forman entre sí los ejes, en grados?", nums(120), "Los tres ángulos son iguales y suman 360°: 360/3 = 120°.", "Reparte 360° en tres."),
-    calc("calc-k", "Coeficiente isométrico", "En una isométrica los tres coeficientes de reducción son iguales y cumplen kx² + ky² + kz² = 2. ¿Cuánto vale cada uno? (dos decimales)", nums(0.82, 0.8165), "3k² = 2 ⇒ k = √(2/3) ≈ 0,82.", "k² = 2/3."),
-    calc("calc-kz", "Dimétrica", "En una dimétrica con kx = ky = 0,9, ¿cuánto vale kz? (dos decimales; kz² = 2 − 2·0,81)", nums(0.62, 0.6164), "kz = √0,38 ≈ 0,62.", "Resta del 2."),
-    sort("clasifica-axo", "¿Qué tipo es?", "Clasifica cada descripción.",
-      [["ort", "Axonometría ortogonal", "cobalt"], ["obl", "Axonometría oblicua", "amber"]],
-      [["Rayos perpendiculares al cuadro", "ort"], ["Isométrica, dimétrica y trimétrica", "ort"], ["Los tres ejes se ven reducidos", "ort"], ["Perspectiva caballera", "obl"], ["Perspectiva militar", "obl"], ["Una cara paralela al cuadro en verdadera forma", "obl"]],
-      "Solo en la oblicua puede una cara quedar en verdadera forma.",
-    ),
-    pick("check-paralelo", "Qué se conserva", "En un sistema axonométrico, ¿qué ocurre con dos aristas paralelas del objeto?",
-      "Se dibujan paralelas",
-      [["Se dibujan convergentes en un punto de fuga", "Eso ocurre en el sistema cónico."], ["Se dibujan perpendiculares", "No cambia su dirección relativa."], ["Se dibujan con la misma longitud sin importar el eje", "Su longitud depende del coeficiente del eje."]],
-      "La proyección cilíndrica conserva el paralelismo.",
-    ),
+    ], undefined, "stack"),
+    slide("notacion", "Notaciones", [
+      { kind: "steps", items: [
+        "Los **ejes** se designan por $X$, $Y$ y $Z$.",
+        "Un **punto** se designa por una letra o un número: $A(A'\\text{-}A''\\text{-}A''')$ o $3(3'\\text{-}3''\\text{-}3''')$, siendo $A$ la proyección directa, $A'$ la proyección sobre $XOY$, $A''$ sobre $XOZ$ y $A'''$ sobre $YOZ$.",
+        "Una **recta** por una letra minúscula: $r(r'\\text{-}r''\\text{-}r''')$.",
+        "Un **plano** por una letra griega: $\\alpha(\\alpha_1\\text{-}\\alpha_2\\text{-}\\alpha_3)$, con sus trazas en los planos del sistema.",
+      ] },
+    ], undefined, "stack"),
   ],
 };

@@ -11,6 +11,7 @@ import { CONSTRUCCIONES_CONICAS, ETIQUETAS_CONICAS } from "./construcciones-coni
 import { CONSTRUCCIONES_SISTEMAS, ETIQUETAS_SISTEMAS } from "./construcciones-sistemas";
 import { CONSTRUCCIONES_DIEDRICO, ETIQUETAS_DIEDRICO } from "./construcciones-diedrico";
 import { CONSTRUCCIONES_ACOTADOS, ETIQUETAS_ACOTADOS } from "./construcciones-acotados";
+import { CONSTRUCCIONES_AXONOMETRICO, ETIQUETAS_AXONOMETRICO } from "./construcciones-axonometrico";
 import { CONSTRUCCIONES_CURVAS, ETIQUETAS_CURVAS } from "./construcciones-curvas";
 import { CONSTRUCCIONES_TANGENCIAS, ETIQUETAS_TANGENCIAS } from "./construcciones-tangencias";
 
@@ -1550,6 +1551,7 @@ export const CONSTRUCCIONES = {
   ...CONSTRUCCIONES_SISTEMAS,
   ...CONSTRUCCIONES_DIEDRICO,
   ...CONSTRUCCIONES_ACOTADOS,
+  ...CONSTRUCCIONES_AXONOMETRICO,
 } satisfies Record<string, Construccion>;
 
 /**
@@ -1579,6 +1581,7 @@ const ETIQUETAS: Record<string, string> = {
   ...ETIQUETAS_SISTEMAS,
   ...ETIQUETAS_DIEDRICO,
   ...ETIQUETAS_ACOTADOS,
+  ...ETIQUETAS_AXONOMETRICO,
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;
