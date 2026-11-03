@@ -56,3 +56,14 @@ describe("tema 13: ampliación", () => {
     expect(col(k.Q4, k.Q5, k.cN)).toBeLessThan(1e-6);
   });
 });
+
+describe("tema 13: l.m.p. paralelas", () => {
+  it("V₀ está en las dos abatidas y la perpendicular baja a AB", () => {
+    const k = c("acotados-interseccion-paralelas").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect(col(k.aA, k.pMa, k.pV0)).toBeLessThan(1e-6);
+    expect(col(k.aB, k.pMb, k.pV0)).toBeLessThan(1e-6);
+    expect(k.pF[0]).toBeCloseTo(k.pV0[0], 6);
+    expect(dist(k.pa10, k.pMa)).toBeCloseTo(3 * 30, 6);
+  });
+});

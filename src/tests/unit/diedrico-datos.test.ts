@@ -120,3 +120,24 @@ describe("tema 12: ampliación", () => {
     expect(pend).toBeCloseTo((k._a2[1] - k.N[1]) / (k._a2[0] - k.N[0]), 3);
   });
 });
+
+describe("tema 12: octantes y l.m.p.", () => {
+  it("octantes: más alejamiento que cota (1.º y 4.º) o más cota que alejamiento (2.º y 3.º)", () => {
+    const d = (id: string, a: string, b: string) => [Math.abs(c(id).pts[a][1] - LT), Math.abs(c(id).pts[b][1] - LT)];
+    const [h1, v1] = d("punto-primer-octante", "Bp", "Bv");
+    expect(h1).toBeGreaterThan(v1);
+    const [h2, v2] = d("punto-segundo-octante", "Dp", "Dv");
+    expect(v2).toBeGreaterThan(h2);
+    const [h3, v3] = d("punto-tercer-octante", "Fp", "Fv");
+    expect(v3).toBeGreaterThan(h3);
+    const [h4, v4] = d("punto-cuarto-octante", "Hp", "Hv");
+    expect(h4).toBeGreaterThan(v4);
+  });
+  it("l.m.p.: r' es perpendicular a α₁ (que pasa por N y H')", () => {
+    const k = c("plano-lmp").pts;
+    const r = [k._r2[0] - k._r1[0], k._r2[1] - k._r1[1]];
+    const a1 = [k.Hp[0] - k.N[0], k.Hp[1] - k.N[1]];
+    expect(r[0] * a1[0] + r[1] * a1[1]).toBeCloseTo(0, 4);
+    expect((k._s2[1] - k.Vv[1]) / (k._s2[0] - k.Vv[0])).toBeCloseTo((k._s1[1] - k.Vv[1]) / (k._s1[0] - k.Vv[0]), 4);
+  });
+});

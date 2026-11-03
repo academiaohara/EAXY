@@ -32,5 +32,6 @@ export const pertenenciaPuntoRectaPlanoDt1Lesson: InteractiveLesson = {
         "Un plano queda definido conociendo **una de sus l.m.p.** o **una de sus l.m.i.** Dada $r'$-$r''$ como l.m.p., se dibuja por $H'$ la perpendicular a $r'$ y su corte $N$ con la L.T., unido con $V''$, da la traza vertical.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("plano-lmp"),
   ],
 };

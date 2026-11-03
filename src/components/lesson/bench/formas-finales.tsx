@@ -8,7 +8,7 @@ import { ArcoPlano } from "./scenes-trazados";
 export type FormaFinal =
   | { tipo: "circulo"; c: Pt; r: number; desde?: Pt; hasta?: Pt; por?: Pt }
   | { tipo: "curva"; a: Pt; c: Pt; b: Pt }
-  | { tipo: "suave"; pts: Pt[] }
+  | { tipo: "suave"; pts: Pt[]; /** Curva cerrada: vuelve al primer punto con tangente continua. */ cerrada?: boolean }
   | { tipo: "elipse"; c: Pt; a: number; b: number };
 
 /** Ángulo inicial y recorrido (por el camino corto) de un arco de centro `c` entre `desde` y `hasta`. */
@@ -24,16 +24,19 @@ export function barrido(c: Pt, desde: Pt, hasta: Pt, por?: Pt): [number, number]
 }
 
 /** Trazado de una curva suave que pasa por los puntos (Catmull-Rom convertida a curvas de Bézier cúbicas). */
-export function trazadoSuave(p: Pt[]): string {
+export function trazadoSuave(p: Pt[], cerrada = false): string {
   let d = `M${p[0][0]} ${p[0][1]}`;
-  for (let i = 0; i < p.length - 1; i += 1) {
-    const a = p[Math.max(0, i - 1)];
-    const b = p[i];
-    const c = p[i + 1];
-    const e = p[Math.min(p.length - 1, i + 2)];
+  const n = p.length;
+  const get = (i: number) => (cerrada ? p[((i % n) + n) % n] : p[Math.min(n - 1, Math.max(0, i))]);
+  const tramos = cerrada ? n : n - 1;
+  for (let i = 0; i < tramos; i += 1) {
+    const a = get(i - 1);
+    const b = get(i);
+    const c = get(i + 1);
+    const e = get(i + 2);
     d += ` C${b[0] + (c[0] - a[0]) / 6} ${b[1] + (c[1] - a[1]) / 6} ${c[0] - (e[0] - b[0]) / 6} ${c[1] - (e[1] - b[1]) / 6} ${c[0]} ${c[1]}`;
   }
-  return d;
+  return cerrada ? `${d} Z` : d;
 }
 
 /** Forma final dibujada hasta la fracción `t` (de 0 a 1). */
@@ -47,7 +50,7 @@ export function FormaTrazo({ forma, t, w = 3 }: { forma: FormaFinal; t: number; 
     return <ellipse cx={forma.c[0]} cy={forma.c[1]} rx={forma.a} ry={forma.b} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} data-testid="bench-forma-final" />;
   }
   if (forma.tipo === "suave") {
-    return <path d={trazadoSuave(forma.pts)} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" data-testid="bench-forma-final" />;
+    return <path d={trazadoSuave(forma.pts, forma.cerrada)} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" data-testid="bench-forma-final" />;
   }
   if (!forma.desde || !forma.hasta) {
     return t >= 0.999 ? (

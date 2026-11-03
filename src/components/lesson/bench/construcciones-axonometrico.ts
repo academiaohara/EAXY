@@ -12,6 +12,9 @@ export const ETIQUETAS_AXONOMETRICO: Record<string, string> = {
   eO: "O", eA: "A", eP1: "1", eP2: "2", eP3: "3", eP4: "4", eQ1: "1'", eQ2: "2'", eQ3: "3'", eQ4: "4'", eb: "", ec: "",
   // punto
   pP: "P", pPp: "P'", pL: "L", pM: "M", pPdd: "P''", pPddd: "P'''",
+  rI1: "I₁", rI2: "I₂", rR1: "R₁'", rI: "I", rP: "", rQ: "", rPp: "", rQp: "",
+  sA: "A", sB: "B", sC: "C", sa1: "", sa2: "",
+  lA: "A", lB: "B", lC: "C", lD: "D", l1a: "1", l1b: "1", l2a: "2", l2b: "2", l2c: "2", l2d: "2", lP1: "P", lP2: "Q", lP3: "R", lP4: "S", lv1: "", lv2: "", lv3: "", lv4: "", lP5: "", lP6: "", lP7: "", lP8: "",
   // trazas de recta, planos paralelos e intersección
   aP: "P", aQ: "Q", aPp: "P'", aQp: "Q'", aT1: "T₁", aT2: "T₂", aT3: "T₃", aT2p: "T₂'", aT3p: "T₃'", ae1: "", ae2: "", ae3: "", pz: "", e1: "α₁", e2: "α₂",
   iA: "A₁", iB: "B₁", iC: "C₁", jA: "A₂", jB: "B₂", jC: "C₂", iS1: "S₁", iS2: "S₂", iS3: "S₃",
@@ -264,6 +267,99 @@ function interseccionPlanos(): Construccion {
   };
 }
 
+/** Fig. 28: intersección de una recta y un plano mediante un plano proyectante horizontal que contiene a la recta. */
+function rectaPlano(): Construccion {
+  const al = { A: [100, 0, 0], B: [0, 80, 0], C: [0, 0, 160] };
+  // r pasa por I = (70, 12, 24) con dirección (−40, 48, 60); su proyección horizontal r' corta a X en R₁ y a α₁ en I₁
+  const I = [70, 12, 24];
+  const Pe = [74, 7.2, 18];
+  const Qe = [50, 36, 54];
+  const pts: Record<string, P> = { ...AXES };
+  for (const k of ["A", "B", "C"] as const) pts[`i${k}`] = iso(al[k][0], al[k][1], al[k][2]);
+  pts.rP = iso(Pe[0], Pe[1], Pe[2]);
+  pts.rQ = iso(Qe[0], Qe[1], Qe[2]);
+  pts.rPp = iso(Pe[0], Pe[1], 0);
+  pts.rQp = iso(Qe[0], Qe[1], 0);
+  pts.rI1 = iso(40, 48, 0);
+  pts.rR1 = iso(80, 0, 0);
+  pts.rI2 = iso(80, 0, 32);
+  pts.rI = iso(I[0], I[1], I[2]);
+  return {
+    titulo: "Intersección de recta y plano",
+    intro: "Para hallar dónde una recta $r$ corta a un plano $\\alpha$, se hace pasar por $r$ un plano auxiliar: el mejor es un **proyectante**, aquí el que proyecta $r$ sobre $XOY$. Su traza horizontal es $r'$ y su traza con $XOZ$ es la paralela al eje $Z$ por $R_1'$. Se halla la intersección $I_1I_2$ de este plano con $\\alpha$; la recta $I_1I_2$ corta a $r$ en el punto buscado $I$.",
+    pts,
+    dados: ["ao", "ax", "ay", "az", "iA", "iB", "iC", "rP", "rQ", "rPp", "rQp"],
+    datos: [],
+    base: [...AXES_BASE, ["iA", "iB"], ["iA", "iC"], ["iB", "iC"], ["rP", "rQ"], ["rPp", "rQp"]],
+    ext: 160,
+    escala: 0.8,
+    ops: [
+      { k: "recta", a: "rPp", b: "rQp" }, { k: "marca", p: "rI1" }, { k: "marca", p: "rR1" },
+      { k: "paralelas", recta: ["ao", "az"], marcas: ["rR1"], cortes: ["rI2"] }, { k: "marca", p: "rI2" },
+      { k: "recta", a: "rI1", b: "rI2" }, { k: "marca", p: "rI" },
+    ],
+  };
+}
+
+/** Fig. 36: rayado de secciones: los lados del triángulo de las trazas dan las direcciones del rayado en cada plano. */
+function rayado(): Construccion {
+  const s = 100;
+  const A = iso(0, 0, s);
+  const B = iso(0, s, 0);
+  const C = iso(s, 0, 0);
+  const ds = dato("s", s, 70, "ambar");
+  return {
+    titulo: "Rayado de secciones en isométrica",
+    intro: "Las superficies de corte se rayan en cada plano con líneas **paralelas a los lados del triángulo** que forman los puntos $A$, $B$ y $C$ tomados a la **misma distancia** $s$ del origen sobre cada eje. Con el compás se lleva $s$ sobre los ejes y se unen los puntos.",
+    pts: { ...ds.pts, ...AXES, sA: A, sB: B, sC: C },
+    dados: ["ao", "ax", "ay", "az"],
+    datos: [ds.d],
+    base: AXES_BASE,
+    radioMin: 40,
+    ops: [
+      { k: "medir", de: "s1", a: "s2" },
+      { k: "arco", c: "ao", hacia: "sA" }, { k: "marca", p: "sA" },
+      { k: "arco", c: "ao", hacia: "sB" }, { k: "marca", p: "sB" },
+      { k: "arco", c: "ao", hacia: "sC" }, { k: "marca", p: "sC" },
+      { k: "recta", a: "sA", b: "sB" }, { k: "recta", a: "sB", b: "sC" }, { k: "recta", a: "sC", b: "sA" },
+    ],
+  };
+}
+
+/** Fig. 34: elipse isométrica por puntos: las rectas A–2 y B–1 se cortan en puntos de la elipse. */
+function elipsePuntos(): Construccion {
+  const r = 72;
+  const q = (x: number, y: number): P => iso(x * r, y * r, 0);
+  const pts: Record<string, P> = {
+    ao: O,
+    // puntos de tangencia sobre los ejes del rombo: A (0,1), B (0,−1), C (−1,0), D (1,0)
+    lA: q(0, 1), lB: q(0, -1), lC: q(-1, 0), lD: q(1, 0),
+    // puntos medios: 1 sobre los semiejes y 2 en los lados del rombo
+    l1a: q(0.5, 0), l1b: q(-0.5, 0),
+    l2a: q(1, 0.5), l2b: q(1, -0.5), l2c: q(-1, 0.5), l2d: q(-1, -0.5),
+    // vértices del rombo
+    lv1: q(1, 1), lv2: q(-1, 1), lv3: q(-1, -1), lv4: q(1, -1),
+    // puntos de la elipse
+    lP1: q(0.8, 0.6), lP2: q(-0.8, 0.6), lP3: q(-0.8, -0.6), lP4: q(0.8, -0.6),
+  };
+  return {
+    titulo: "Elipse isométrica por puntos",
+    intro: "Se completa el cuadrado circunscrito (el rombo de la perspectiva) y se toman los puntos medios $1$ y $2$ indicados. Las rectas $A$-$2$ y $B$-$1$, al cortarse, dan un punto de la elipse; repitiendo en los cuatro cuadrantes se obtienen $P$, $Q$, $R$ y $S$ y, con los puntos de tangencia, la elipse se traza a mano o con plantilla: su eje mayor, horizontal, es perpendicular al eje $Z$ y mide $2R$.",
+    pts,
+    dados: ["ao", "lA", "lB", "lC", "lD", "l1a", "l1b", "l2a", "l2b", "l2c", "l2d"],
+    datos: [],
+    base: [["lv1", "lv2"], ["lv2", "lv3"], ["lv3", "lv4"], ["lv4", "lv1"]],
+    escala: 0.8,
+    ops: [
+      { k: "recta", a: "lA", b: "l2a" }, { k: "recta", a: "lB", b: "l1a" }, { k: "marca", p: "lP1" },
+      { k: "recta", a: "lA", b: "l2c" }, { k: "recta", a: "lB", b: "l1b" }, { k: "marca", p: "lP2" },
+      { k: "recta", a: "lB", b: "l2d" }, { k: "recta", a: "lA", b: "l1b" }, { k: "marca", p: "lP3" },
+      { k: "recta", a: "lB", b: "l2b" }, { k: "recta", a: "lA", b: "l1a" }, { k: "marca", p: "lP4" },
+      { k: "elipse", c: "ao", a: r * Math.sqrt(1.5), b: r * Math.sqrt(0.5) },
+    ],
+  };
+}
+
 export const CONSTRUCCIONES_AXONOMETRICO = {
   "axo-escala-isometrica": escalaIsometrica(),
   "axo-proyecciones-punto": proyeccionesPunto(),
@@ -274,4 +370,7 @@ export const CONSTRUCCIONES_AXONOMETRICO = {
   "axo-plano-paralelo-eje": planoParaleloEje(),
   "axo-plano-paralelo-coordenado": planoParaleloCoordenado(),
   "axo-interseccion-planos": interseccionPlanos(),
+  "axo-recta-plano": rectaPlano(),
+  "axo-rayado": rayado(),
+  "axo-elipse-puntos": elipsePuntos(),
 } satisfies Record<string, Construccion>;

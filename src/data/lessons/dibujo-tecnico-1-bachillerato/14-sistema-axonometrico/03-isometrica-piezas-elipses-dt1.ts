@@ -21,6 +21,7 @@ export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
     slide("puntos", "Puntos auxiliares de la elipse", [
       { kind: "text", text: "Si la elipse es muy grande, pueden obtenerse algunos puntos de ella: se completa el cuadrado circunscrito y el rombo y se toman los puntos medios $1$ y $2$ de los segmentos respectivos; las rectas $A$-$2$ y $B$-$1$, al cortarse, proporcionan dos puntos $P$ y $Q$ de la elipse." },
     ], undefined, "stack"),
+    ...construccionPasos("axo-elipse-puntos"),
     slide("ovalo", "El óvalo de cuatro centros", [
       { kind: "text", text: "Se puede sustituir la elipse por un **óvalo**: curva aproximada, algo achatada en los extremos del eje mayor. Los centros de curvatura son los puntos $C_1$, $C_2$, $C_3$ y $C_4$. El procedimiento es más laborioso y requiere mayor precisión para que los arcos sean tangentes." },
     ], undefined, "stack"),
@@ -29,5 +30,6 @@ export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Las superficies producidas por un corte se rayan en cada plano del sistema con líneas **paralelas a las direcciones** $d_1$, $d_2$ y $d_3$. Se toma un segmento $s$ cualquiera sobre cada eje y se unen los puntos $A$, $B$ y $C$." },
       { kind: "warning", title: "Antes de dibujar una pieza", text: "Hay que estudiar con detenimiento las **vistas diédricas** o el dibujo de taller que la definen. Mentalmente se descompone en **sólidos geométricos** (paralelepípedos, cilindros, prismas, conos…) que guardan una posición relativa que debe conservarse en la perspectiva. Después se empieza por algún extremo de la pieza o por un eje de simetría total." },
     ], undefined, "stack"),
+    ...construccionPasos("axo-rayado"),
   ],
 };

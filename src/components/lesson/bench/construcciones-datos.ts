@@ -56,7 +56,7 @@ export type Op =
   /** Arco de parábola tangente a `a`–`c` en `a` y a `c`–`b` en `b` (curva de Bézier cuadrática con control en `c`). */
   | { k: "curva"; a: string; c: string; b: string }
   /** Curva suave (a mano alzada o con plantilla) que pasa por estos puntos, en trazo grueso. */
-  | { k: "curvaPuntos"; pts: string[] }
+  | { k: "curvaPuntos"; pts: string[]; /** La curva vuelve al primer punto (por ejemplo, una elipse por puntos). */ cerrada?: boolean }
   /** Elipse de centro `c` y semiejes `a` (horizontal) y `b` (vertical), en trazo grueso. */
   | { k: "elipse"; c: string; a: number; b: number };
 

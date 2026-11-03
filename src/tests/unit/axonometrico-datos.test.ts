@@ -50,3 +50,32 @@ describe("tema 14: rectas y planos (ampliación)", () => {
     expect(col(k.jB, k.jC, k.iS3)).toBeLessThan(1e-6);
   });
 });
+
+describe("tema 14: elipse, rayado y recta-plano", () => {
+  const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+  it("elipse por puntos: cada punto está en las dos rectas y sobre la elipse isométrica", () => {
+    const k = c("axo-elipse-puntos");
+    expect(col(k.lA, k.l2a, k.lP1)).toBeLessThan(1e-6);
+    expect(col(k.lB, k.l1a, k.lP1)).toBeLessThan(1e-6);
+    expect(col(k.lB, k.l2d, k.lP3)).toBeLessThan(1e-6);
+    expect(col(k.lA, k.l1b, k.lP3)).toBeLessThan(1e-6);
+    const a = 72 * Math.sqrt(1.5);
+    const b = 72 * Math.sqrt(0.5);
+    for (const n of ["lP1", "lP2", "lP3", "lP4", "lA", "lB", "lC", "lD"]) expect(((k[n][0] - k.ao[0]) / a) ** 2 + ((k[n][1] - k.ao[1]) / b) ** 2).toBeCloseTo(1, 6);
+  });
+  it("rayado: A, B y C equidistan del origen en la escala isométrica", () => {
+    const k = c("axo-rayado");
+    expect(dist(k.ao, k.sA)).toBeCloseTo(dist(k.ao, k.sB), 6);
+    expect(dist(k.ao, k.sB)).toBeCloseTo(dist(k.ao, k.sC), 6);
+    expect(k.sA[0]).toBe(k.ao[0]);
+  });
+  it("recta-plano: I está en r y en I₁I₂; I₁ en la traza AB y I₂ en la traza AC", () => {
+    const k = c("axo-recta-plano");
+    expect(col(k.rP, k.rQ, k.rI)).toBeLessThan(1e-6);
+    expect(col(k.rI1, k.rI2, k.rI)).toBeLessThan(1e-6);
+    expect(col(k.iA, k.iB, k.rI1)).toBeLessThan(1e-6);
+    expect(col(k.iA, k.iC, k.rI2)).toBeLessThan(1e-6);
+    expect(col(k.rPp, k.rQp, k.rI1)).toBeLessThan(1e-6);
+    expect(col(k.rPp, k.rQp, k.rR1)).toBeLessThan(1e-6);
+  });
+});

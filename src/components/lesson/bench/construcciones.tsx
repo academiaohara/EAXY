@@ -99,7 +99,7 @@ function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDes
 /** Forma final (en trazo grueso) de una operación `solucion` o `curva`. */
 function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" | "elipse" }>): FormaFinal {
   if (o.k === "elipse") return { tipo: "elipse", c: pt(c, o.c), a: o.a, b: o.b };
-  if (o.k === "curvaPuntos") return { tipo: "suave", pts: o.pts.map((n) => pt(c, n)) };
+  if (o.k === "curvaPuntos") return { tipo: "suave", pts: o.pts.map((n) => pt(c, n)), cerrada: o.cerrada };
   if (o.k === "curva") return { tipo: "curva", a: pt(c, o.a), c: pt(c, o.c), b: pt(c, o.b) };
   const centro = pt(c, o.c);
   return { tipo: "circulo", c: centro, r: dist(centro, pt(c, o.hacia)), desde: o.hasta ? pt(c, o.hacia) : undefined, hasta: o.hasta ? pt(c, o.hasta) : undefined, por: o.por ? pt(c, o.por) : undefined };

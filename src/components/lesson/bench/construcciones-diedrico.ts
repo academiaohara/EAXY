@@ -8,7 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
-  Rp: "r'", N: "N", Gp: "G'≡G''", Pv: "P''", Fq: "f''", Qp: "Q'", Qv: "Q''", Ea: "α₁", Eb: "α₂", Pa1: "", Pa2: "", b1: "β₁", b2: "β₂", rp: "r'", rv: "r''", Hl: "H", Hb: "", Aa: "", Ab: "", Ba: "", Bb: "", Al: "", Bl: "", A1: "A₁", B1: "B₁", V1: "V", Hq1: "", Hh: "", Uv1: "", Uv2: "", Uv3: "", Uc1: "", Uc2: "", Uc3: "", T1v: "1''", T2v: "2''", T3v: "3''", T1p: "1'", T2p: "2'", T3p: "3'", Pm: "", Pq: "", Pf: "", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
+  Fp: "F'", Fv: "F''", Rp: "r'", N: "N", Gp: "G'≡G''", Pv: "P''", Fq: "f''", Qp: "Q'", Qv: "Q''", Ea: "α₁", Eb: "α₂", Pa1: "", Pa2: "", b1: "β₁", b2: "β₂", rp: "r'", rv: "r''", Hl: "H", Hb: "", Aa: "", Ab: "", Ba: "", Bb: "", Al: "", Bl: "", A1: "A₁", B1: "B₁", V1: "V", Hq1: "", Hh: "", Uv1: "", Uv2: "", Uv3: "", Uc1: "", Uc2: "", Uc3: "", T1v: "1''", T2v: "2''", T3v: "3''", T1p: "1'", T2p: "2'", T3p: "3'", Pm: "", Pq: "", Pf: "", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -21,7 +21,7 @@ function dato(id: string, largo: number, y: number, color: "azul" | "ambar") {
 }
 
 type Config = {
-  letra: "A" | "B" | "C" | "D" | "E";
+  letra: "A" | "B" | "C" | "D" | "E" | "F" | "H";
   titulo: string;
   intro: string;
   /** Cota y alejamiento con signo: cota > 0 por encima del PH, alejamiento > 0 por delante del PV. */
@@ -85,6 +85,10 @@ const PUNTOS = {
     titulo: "Punto del cuarto diedro",
     intro: "Representa el punto $D$ del **cuarto diedro**: cota **negativa** y alejamiento **positivo**. Sus dos proyecciones quedan **bajo** la LT.",
   }),
+  "punto-primer-octante": punto({ letra: "B", cota: 40, alej: 70, titulo: "Punto del primer octante", intro: "Los ocho **octantes** son las mitades de los diedros que dividen los planos bisectores. Un punto $B$ del **primer octante** (primer diedro, bajo el primer bisector) tiene **más alejamiento que cota**: su proyección horizontal queda más lejos de la L.T. que la vertical." }),
+  "punto-segundo-octante": punto({ letra: "D", cota: 70, alej: -40, titulo: "Punto del segundo octante", intro: "Un punto $D$ del **segundo octante** (segundo diedro, sobre el segundo bisector) tiene **más cota que alejamiento** en valor absoluto: sus dos proyecciones quedan sobre la L.T. y la vertical más lejos." }),
+  "punto-tercer-octante": punto({ letra: "F", cota: -70, alej: -40, titulo: "Punto del tercer octante", intro: "Un punto $F$ del **tercer octante** (tercer diedro) tiene **más cota que alejamiento** en valor absoluto, ambos negativos: la proyección horizontal queda sobre la L.T. y la vertical bajo ella, más lejos." }),
+  "punto-cuarto-octante": punto({ letra: "H", cota: -40, alej: 70, titulo: "Punto del cuarto octante", intro: "Un punto $H$ del **cuarto octante** (cuarto diedro) tiene **más alejamiento que cota** en valor absoluto: sus dos proyecciones quedan bajo la L.T. y la horizontal más lejos." }),
   "punto-primer-bisector": punto({
     letra: "E", cota: 65, alej: 65, unaMedida: true,
     titulo: "Punto del primer bisector",
@@ -551,4 +555,36 @@ function planoParaleloLT(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana(), "punto-plano-horizontal": puntoEspecial({ id: "A", letra: "A", alej: 60, titulo: "Punto del plano horizontal anterior", intro: "Un punto $A$ del **plano horizontal anterior** tiene **cota nula**: su proyección vertical $A''$ está en la **L.T.** y la horizontal $A'$ coincide con el punto, por debajo de la L.T. Dado el alejamiento, halla $A'$." }), "punto-plano-vertical": puntoEspecial({ id: "E", letra: "E", cota: 60, titulo: "Punto del plano vertical superior", intro: "Un punto $E$ del **plano vertical superior** tiene **alejamiento nulo**: su proyección horizontal $E'$ está en la **L.T.** y la vertical $E''$ coincide con el punto, por encima de la L.T. Dada la cota, halla $E''$." }), "punto-segundo-bisector": puntoSegundoBisector(), "rectas-se-cortan": rectasSeCortan(), "frontal-del-plano": frontalDelPlano(), "plano-proyectante-vertical": planoProyectante(true), "plano-proyectante-horizontal": planoProyectante(false), "plano-paralelo-lt": planoParaleloLT(), } satisfies Record<string, Construccion>;
+/** Fig. 33: línea de máxima pendiente de un plano: se obtienen las trazas del plano a partir de ella. */
+function lineaMaximaPendiente(): Construccion {
+  const s1 = 0.6; // pendiente de α₁
+  const s2 = 0.45; // pendiente de α₂ (sube)
+  const N0: P = [150, LT_Y];
+  const Hx = 380;
+  const Hp0: P = [Hx, LT_Y + s1 * (Hx - N0[0])];
+  const Vpx = Hx + s1 * (Hp0[1] - LT_Y);
+  const Vv0: P = [Vpx, LT_Y - s2 * (Vpx - N0[0])];
+  // r' perpendicular a α₁: dirección (0,6; −1); r'' pasa por H'' y V''
+  const rP = (t: number): P => [Hx + 0.6 * t, Hp0[1] - t];
+  const pendV = (Vv0[1] - LT_Y) / (Vv0[0] - Hx);
+  const rV = (x: number): P => [x, LT_Y + pendV * (x - Hx)];
+  return {
+    titulo: "Plano por su línea de máxima pendiente",
+    intro: "Un plano queda definido por una de sus **líneas de máxima pendiente** $r'$-$r''$. Su proyección horizontal $r'$ es **perpendicular a $\\alpha_1$**. Para hallar las trazas: se halla $H'$ (referido desde $H''$), se traza por $H'$ la **perpendicular a $r'$**, que corta a la L.T. en $N$, y $N$ unido con $V''$ da la traza vertical.",
+    pts: { ...LT_BASE, _r1: rP(60), _r2: rP(100), _s1: rV(400), _s2: rV(440), N: N0, Hv: [Hx, LT_Y], Hp: Hp0, Vp: [Vpx, LT_Y], Vv: Vv0 },
+    dados: ["lt"],
+    datos: [],
+    base: [["_l1", "lt"], ["_r1", "_r2"], ["_s1", "_s2"]],
+    ext: 250,
+    ops: [
+      { k: "recta", a: "_s1", b: "_s2" }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hv", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hp" },
+      { k: "recta", a: "_r1", b: "_r2" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+      { k: "perp", recta: ["_r1", "_r2"], punto: "Hp", traza: ["Hp", "N"] }, { k: "marca", p: "N" },
+      { k: "recta", a: "N", b: "Vv" },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana(), "punto-plano-horizontal": puntoEspecial({ id: "A", letra: "A", alej: 60, titulo: "Punto del plano horizontal anterior", intro: "Un punto $A$ del **plano horizontal anterior** tiene **cota nula**: su proyección vertical $A''$ está en la **L.T.** y la horizontal $A'$ coincide con el punto, por debajo de la L.T. Dado el alejamiento, halla $A'$." }), "punto-plano-vertical": puntoEspecial({ id: "E", letra: "E", cota: 60, titulo: "Punto del plano vertical superior", intro: "Un punto $E$ del **plano vertical superior** tiene **alejamiento nulo**: su proyección horizontal $E'$ está en la **L.T.** y la vertical $E''$ coincide con el punto, por encima de la L.T. Dada la cota, halla $E''$." }), "punto-segundo-bisector": puntoSegundoBisector(), "rectas-se-cortan": rectasSeCortan(), "frontal-del-plano": frontalDelPlano(), "plano-proyectante-vertical": planoProyectante(true), "plano-proyectante-horizontal": planoProyectante(false), "plano-paralelo-lt": planoParaleloLT(), "plano-lmp": lineaMaximaPendiente(), } satisfies Record<string, Construccion>;

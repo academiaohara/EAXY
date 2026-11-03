@@ -6,6 +6,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
  */
 
 export const ETIQUETAS_ACOTADOS: Record<string, string> = {
+  pa7: "7", pa8: "8", pa9: "9", pa10: "10", pb7: "7", pb8: "8", pb9: "9", pb10: "10", pMa: "", pMb: "", pV0: "V₀", pF: "", aA: "A", aB: "B",
   t1: "", t2: "", t3: "", t4: "", gT0: "T'(0)", gT1: "A'(1)", gT2: "B'(2)", gT3: "C'(3)", gT4: "D'(4)", cA: "A", cB: "B", cC: "C", cD: "D", cR1: "", cR2: "", cN: "N", Cb: "", nA: "A'(1)", nB: "B'(2)", nC: "C'(3)", nD: "D'(4)", nE: "E'(5)", nT: "T'(0)", _x: "",
   // plano por su l.m.p.
   Cz: "C₀", lO: "0", l1: "1", l2: "2", l3: "3", a0: "α₀", h1: "h(1)", h2: "h(2)", h3: "h(3)", hi1: "", hi2: "", hi3: "", hi0: "",
@@ -269,6 +270,48 @@ function perfilCamino(): Construccion {
   };
 }
 
+/** Fig. 8 (pág. 115): intersección de dos planos cuyas l.m.p. son paralelas: se abaten ambas y su corte V₀ da la recta, horizontal. */
+function interseccionParalelas(): Construccion {
+  const y = 150;
+  const u = 30; // una unidad de cota en el abatimiento
+  const ia = 40; // intervalo del plano α
+  const ib = 60; // intervalo del plano β
+  const xa = 90;
+  const xb = 560;
+  const pts: Record<string, P> = { aA: [xa, y], aB: [xb, y] };
+  for (let k = 7; k <= 10; k += 1) {
+    pts[`pa${k}`] = [xa + ia * (k - 7), y];
+    pts[`pb${k}`] = [xb - ib * (k - 7), y];
+  }
+  pts.pMa = [pts.pa10[0], y + 3 * u];
+  pts.pMb = [pts.pb10[0], y + 3 * u];
+  // abatidas: A–Ma y B–Mb
+  const ma = (pts.pMa[1] - y) / (pts.pMa[0] - xa);
+  const mb = (pts.pMb[1] - y) / (pts.pMb[0] - xb);
+  const x0 = (y + ma * xa - (y + mb * xb)) / (ma - mb) + 0;
+  const xv = (mb * xb - ma * xa) / (mb - ma);
+  void x0;
+  pts.pV0 = [xv, y + ma * (xv - xa)];
+  pts.pF = [xv, y];
+  return {
+    titulo: "Intersección de planos de l.m.p. paralelas",
+    intro: "Cuando las **l.m.p.** de los dos planos son paralelas, las horizontales de igual cota no se cortan en puntos útiles. Se **abaten las dos l.m.p.** como si se quisieran hallar los ángulos que los planos forman con el cuadro: por el punto de cota 10 de cada una se levanta una perpendicular de 3 unidades (la diferencia de cotas desde el 7) y se une con el origen. El corte $V_0$ de las abatidas define la intersección, que es **horizontal**; su cota se mide desde $V_0$ hasta $AB$.",
+    pts,
+    dados: ["aA", "aB", "pa7", "pa8", "pa9", "pa10", "pb7", "pb8", "pb9", "pb10"],
+    datos: [],
+    base: [["aA", "aB"]],
+    ext: 120,
+    radioMin: 40,
+    ops: [
+      { k: "perp", recta: ["aA", "aB"], punto: "pa10", traza: ["pa10", "pMa"] }, { k: "marca", p: "pMa" },
+      { k: "recta", a: "aA", b: "pMa" },
+      { k: "perp", recta: ["aA", "aB"], punto: "pb10", traza: ["pb10", "pMb"] }, { k: "marca", p: "pMb" },
+      { k: "recta", a: "aB", b: "pMb" }, { k: "marca", p: "pV0" },
+      { k: "perp", recta: ["aA", "aB"], punto: "pV0", traza: ["pV0", "pF"] }, { k: "marca", p: "pF" },
+    ],
+  };
+}
+
 export const CONSTRUCCIONES_ACOTADOS = {
   "acotados-graduar": graduar(),
   "acotados-plano-lmp": planoLmp(),
@@ -276,5 +319,6 @@ export const CONSTRUCCIONES_ACOTADOS = {
   "acotados-perfil": perfil(),
   "acotados-graduar-intervalo": graduarIntervalo(),
   "acotados-cubierta": cubierta(),
+  "acotados-interseccion-paralelas": interseccionParalelas(),
   "acotados-perfil-camino": perfilCamino(),
 } satisfies Record<string, Construccion>;

@@ -55,6 +55,6 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
         "**Intersección de recta y plano**: se hace pasar por la recta un plano cualquiera, el mejor es un **proyectante**, y se halla su intersección con el plano dado; esa recta encuentra a la dada en el punto buscado.",
       ] },
     ], undefined, "stack"),
-    ...construccionPasos("axo-interseccion-planos"),
+    ...construccionPasos("axo-interseccion-planos", "axo-recta-plano"),
   ],
 };

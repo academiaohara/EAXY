@@ -16,6 +16,7 @@ export const cubiertasPlanosAcotadosDt1Lesson: InteractiveLesson = {
     slide("paralelas", "Cuando las l.m.p. son paralelas", [
       { kind: "text", text: "Cuando las **trazas** de los dos planos con el plano del cuadro son **paralelas**, no puede seguirse ese procedimiento. Se **abaten las dos l.m.p.** como si se quisieran hallar los ángulos $\\alpha$ y $\\beta$ que los planos forman con el cuadro; el punto de intersección $V_0$ define la recta intersección, que es **horizontal** en este caso. Su cota se halla midiendo en centímetros la distancia de $V_0$ a la recta $AB$." },
     ], undefined, "stack"),
+    ...construccionPasos("acotados-interseccion-paralelas"),
     slide("arista-gotera", "Arista y gotera", [
       { kind: "text", text: "Según la posición de los planos respecto al plano del cuadro forman una **arista** o una **gotera**. Las vertientes de los lados opuestos de un tejado rectangular forman arista; en la gotera, las cotas de las l.m.p. de los planos **aumentan al alejarse** de la intersección, y en la arista ocurre lo contrario." },
     ], undefined, "stack"),
