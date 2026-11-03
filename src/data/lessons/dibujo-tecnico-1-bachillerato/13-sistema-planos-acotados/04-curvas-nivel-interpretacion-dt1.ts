@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { anim, slide } from "@/data/lessons/tec1-helpers";
+import { anim, slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
   slug: "curvas-nivel-interpretacion-dt1",
@@ -21,16 +21,16 @@ export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
     ], anim("dt1-curvas-nivel"), "visual-top"),
     slide("perfiles", "Perfiles", [
       { kind: "text", text: "Para construir el **perfil** que produce en el terreno un plano vertical, se trazan perpendiculares a la traza del plano en los puntos en que corta a las curvas de nivel, y sobre ellas se llevan las **cotas** de cada curva. Uniendo los puntos se obtiene el perfil abatido aproximado. Para medir las cotas se suelen emplear **escalas más pequeñas** que las del dibujo, para resaltar las diferencias." },
-    ], undefined, "stack"),
+    ], diagrama("d13-perfiles"), "visual-top"),
     ...construccionPasos("acotados-perfil"),
     slide("desmonte", "Desmonte y terraplén de un camino", [
       { kind: "text", text: "**Problema:** determinar el desmonte y el terraplén entre dos puntos $A$ y $B$ en la dirección del eje de un camino de pendiente uniforme. Se abate la sección que produce en el terreno el plano vertical por $AB$, tomando las alturas respectivas. La parte comprendida entre $B$ y $N$ es **desmonte** y la comprendida entre $N$ y $A$ es **terraplén**. La tangente del ángulo $B'AB$ es la pendiente del camino." },
-    ], undefined, "stack"),
+    ], diagrama("d13-desmonte"), "visual-top"),
     ...construccionPasos("acotados-perfil-camino"),
     ...construccionPasos("acotados-explanacion"),
     slide("explanacion", "Explanación de una superficie topográfica", [
       { kind: "text", text: "La forma de la explanación es la de un rectángulo rematado por un semicírculo. Se toman las l.m.p. de los planos inclinados y del tronco de cono cuya base menor es el citado semicírculo, y se hallan los puntos de intersección de las horizontales de plano con las curvas de nivel de igual cota. El perfil transversal se obtiene tomando sobre el eje $\\alpha_0$ los puntos $C, B, A, N, M, L$, trazando perpendiculares y llevando las cotas." },
-    ], undefined, "stack"),
+    ], diagrama("d13-explanacion"), "visual-top"),
     slide("dibujo-topografico", "Dibujo topográfico", [
       { kind: "text", text: "El dibujo topográfico representa, mediante **curvas de nivel acotadas**, una parte de la superficie terrestre y, con ayuda de **símbolos**, indica los accidentes naturales del terreno y las obras artificiales hechas por el hombre. Quienes confeccionan estos planos deben conocer los símbolos y los métodos propios de ellos." },
     ], anim("dt1-simbolos-topograficos"), "visual-top"),
