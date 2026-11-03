@@ -8,6 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
+  Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -63,7 +64,7 @@ function punto(c: Config): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = {
+const PUNTOS = {
   "punto-primer-diedro": punto({
     letra: "A", cota: 70, alej: 55,
     titulo: "Punto del primer diedro",
@@ -90,3 +91,43 @@ export const CONSTRUCCIONES_DIEDRICO = {
     intro: "Representa el punto $E$ del **primer bisector**: cota y alejamiento son **iguales**, así que sus proyecciones están a la misma distancia de la LT, una a cada lado. Una sola abertura del compás sirve para las dos.",
   }),
 } satisfies Record<string, Construccion>;
+
+/** Recta r por los puntos A y B: sus proyecciones son las rectas que unen las proyecciones de los dos puntos. */
+function proyeccionesRecta(): Construccion {
+  return {
+    titulo: "Proyecciones de una recta",
+    intro: "Una recta queda definida por dos puntos. Dados $A(A'-A'')$ y $B(B'-B'')$, dibuja las proyecciones de la recta $r$: $r'$ une $A'$ con $B'$ y $r''$ une $A''$ con $B''$.",
+    pts: { _l1: [40, LT_Y], lt: [580, LT_Y], Ap: [200, 220], Av: [200, 120], Bp: [320, 292], Bv: [320, 170] },
+    dados: ["lt", "Ap", "Av", "Bp", "Bv"],
+    datos: [],
+    base: [["_l1", "lt"]],
+    ops: [{ k: "recta", a: "Ap", b: "Bp" }, { k: "recta", a: "Av", b: "Bv" }],
+  };
+}
+
+/** Trazas de una recta: la horizontal tiene cota 0 (su alzado está en la LT) y la vertical alejamiento 0 (su planta está en la LT). */
+function trazasRecta(): Construccion {
+  // r'': de A''(200,120) a B''(300,170), pendiente 0,5; corta la LT en x = 340.
+  // r': de A'(200,220) a B'(300,280), pendiente 0,6; corta la LT en x = 150.
+  return {
+    titulo: "Trazas de una recta",
+    intro: "Se llaman **trazas** los puntos donde la recta corta a los planos de proyección. La **traza horizontal** $H(H'-H'')$ está en el $PH$: su proyección vertical $H''$ está en la **LT**. La **traza vertical** $V(V'-V'')$ está en el $PV$: su proyección horizontal $V'$ está en la **LT**.",
+    pts: {
+      _l1: [40, LT_Y], lt: [580, LT_Y],
+      Ap: [200, 220], Av: [200, 120], Bp: [300, 280], Bv: [300, 170],
+      Hv: [340, LT_Y], Hp: [340, 304], Vp: [150, LT_Y], Vv: [150, 95],
+    },
+    dados: ["lt", "Ap", "Av", "Bp", "Bv"],
+    datos: [],
+    base: [["_l1", "lt"], ["Ap", "Bp"], ["Av", "Bv"]],
+    ext: 200,
+    ops: [
+      { k: "recta", a: "Av", b: "Bv" }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hv", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hp" },
+      { k: "recta", a: "Ap", b: "Bp" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta() } satisfies Record<string, Construccion>;
