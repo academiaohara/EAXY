@@ -14,6 +14,8 @@ export const ETIQUETAS_CABALLERA: Record<string, string> = {
   hA: "A", hB: "B", hC: "C", hD: "D", hE: "E", hF: "F", hXr: "", hXl: "", 
   oA: "A", oB: "B", oC: "C", oD: "D", o1: "C₁", o2: "C₂", o3: "C₃", o4: "C₄", oa1: "", oa2: "", ob1: "", ob2: "", oc1: "", oc2: "", od1: "", od2: "",
   vP1: "1", vP2: "2", vP3: "3", vP4: "4", vP5: "5", vf1: "", vf2: "", vf3: "", vf4: "", vc1: "1", vc2: "2", vc3: "3", vc4: "4", vc5: "5", vg1: "", vg2: "", vg3: "", vg4: "", vg5: "",
+  abN: "N", abB: "B", abNx: "", abBx: "", abN0: "N₀", abB0: "B₀", ab1: "1", abV1: "", abV2: "(1)₀", abV: "",
+  hl1: "A", hl2: "B", hl3: "C", hl4: "D", hm1: "1", hm2: "1", hn1: "2", hn2: "2", hn3: "2", hn4: "2", hp1: "P", hp2: "Q", hp3: "R", hp4: "S", hv1: "", hv2: "", hv3: "", hv4: "",
   zA: "A", zB: "B", zC: "C", zD: "D", zP: "", zQ: "", zR: "", zS: "", zCen: "O'",
   kAx: "", kAy: "", kAz: "", kXY: "", kTx: "", kTy: "", kTxy: "",
 };
@@ -547,6 +549,77 @@ function curvaXOY(): Construccion {
   };
 }
 
+/** Fig. 9 con σ: abatimiento del plano XOY sobre ZOX; las rectas de abatimiento son paralelas a la que une 1 con (1)₀. */
+function abatimientoXOY(): Construccion {
+  const o: P = [300, 90];
+  const u = 30; // O-1 reducido (y = 60 en verdadera magnitud)
+  const Nn = cab(30, 20, 0, o);
+  const Bb = cab(110, 90, 0, o);
+  const N0: P = [o[0] + 30, o[1] + 20];
+  const B0: P = [o[0] + 110, o[1] + 90];
+  const Nx: P = [Nn[0] + (Nn[1] - o[1]) * 1, o[1]]; // pie sobre X por la paralela a Y (45°)
+  const Bx: P = [Bb[0] + (Bb[1] - o[1]) * 1, o[1]];
+  const du = dato("u", u, 60, "ambar");
+  const c1 = cab(0, 2 * u, 0, o);
+  const v1: P = [o[0], o[1] + u];
+  const v2: P = [o[0], o[1] + 2 * u];
+  return {
+    titulo: "Abatimiento del plano XOY: distancia real",
+    intro: "Se **abate** el plano $XOY$ sobre $ZOX$ girando alrededor del eje $X$ (la charnela). El eje $Y$ abatido es la vertical por $O$, donde la medida reducida $\\overline{O1}$ se duplica hasta $(1)_0$. Todos los puntos se abaten según rectas **paralelas a $1$-$(1)_0$**, y la distancia real entre $N$ y $B$ es $\\overline{N_0B_0}$.",
+    pts: { ...du.pts, cO: o, cX: [560, o[1]], cY: cab(0, 300, 0, o), cZ: [o[0], 20], abN: Nn, abB: Bb, abNx: Nx, abBx: Bx, abN0: N0, abB0: B0, ab1: c1, abV: [o[0], 340], abV1: v1, abV2: v2 },
+    dados: ["cO", "cX", "cY", "cZ", "abN", "abB", "u1", "u2"],
+    datos: [du.d],
+    base: [["cO", "cX"], ["cO", "cY"], ["cO", "abV"]],
+    ext: 160,
+    radioMin: 25,
+    escala: 0.8,
+    ops: [
+      { k: "medir", de: "u1", a: "u2" }, { k: "arco", c: "cO", hacia: "ab1" }, { k: "marca", p: "ab1" },
+      { k: "medir", de: "u1", a: "u2" }, { k: "arco", c: "cO", hacia: "abV1" }, { k: "marca", p: "abV1" },
+      { k: "medir", de: "u1", a: "u2" }, { k: "arco", c: "abV1", hacia: "abV2" }, { k: "marca", p: "abV2" },
+      { k: "recta", a: "abV2", b: "ab1" },
+      { k: "paralelas", recta: ["cO", "cY"], marcas: ["abN"], cortes: ["abNx"] }, { k: "marca", p: "abNx" },
+      { k: "perp", recta: ["cO", "cX"], punto: "abNx", traza: ["abNx", "abN0"] },
+      { k: "paralelas", recta: ["abV2", "ab1"], marcas: ["abN"], cortes: ["abN0"] }, { k: "marca", p: "abN0" },
+      { k: "paralelas", recta: ["cO", "cY"], marcas: ["abB"], cortes: ["abBx"] }, { k: "marca", p: "abBx" },
+      { k: "perp", recta: ["cO", "cX"], punto: "abBx", traza: ["abBx", "abB0"] },
+      { k: "paralelas", recta: ["abV2", "ab1"], marcas: ["abB"], cortes: ["abB0"] }, { k: "marca", p: "abB0" },
+      { k: "recta", a: "abN0", b: "abB0" },
+    ],
+  };
+}
+
+/** Fig. 24: elipse por haces proyectivos: las rectas A–2 y B–1 se cortan en puntos de la elipse (aquí, en caballera). */
+function elipseHaces(): Construccion {
+  const R = 80;
+  const o: P = [300, 170];
+  const q = (x: number, y: number): P => cab(x * R, y * R, 0, o);
+  const pts: Record<string, P> = {
+    cO: o, cX: [560, o[1]], cY: cab(0, 300, 0, o), cZ: [o[0], 20],
+    hl1: q(0, 1), hl2: q(0, -1), hl3: q(-1, 0), hl4: q(1, 0),
+    hm1: q(0.5, 0), hm2: q(-0.5, 0),
+    hn1: q(1, 0.5), hn2: q(1, -0.5), hn3: q(-1, 0.5), hn4: q(-1, -0.5),
+    hp1: q(0.8, 0.6), hp2: q(-0.8, 0.6), hp3: q(-0.8, -0.6), hp4: q(0.8, -0.6),
+    hv1: q(1, 1), hv2: q(-1, 1), hv3: q(-1, -1), hv4: q(1, -1),
+  };
+  return {
+    titulo: "Elipse por haces proyectivos",
+    intro: "Se completa el romboide circunscrito (el cuadrado en caballera) y se toman los puntos medios $1$ y $2$. Las rectas $A$-$2$ y $B$-$1$ se cortan en un punto de la elipse; repitiendo en los cuatro cuadrantes se obtienen $P$, $Q$, $R$ y $S$. Con los puntos de tangencia, la elipse se traza a lápiz y a mano alzada, o con plantilla.",
+    pts,
+    dados: ["cO", "cX", "cY", "cZ", "hl1", "hl2", "hl3", "hl4", "hm1", "hm2", "hn1", "hn2", "hn3", "hn4"],
+    datos: [],
+    base: [...EJES_BASE, ["hv1", "hv2"], ["hv2", "hv3"], ["hv3", "hv4"], ["hv4", "hv1"]],
+    escala: 0.8,
+    ops: [
+      { k: "recta", a: "hl1", b: "hn1" }, { k: "recta", a: "hl2", b: "hm1" }, { k: "marca", p: "hp1" },
+      { k: "recta", a: "hl1", b: "hn3" }, { k: "recta", a: "hl2", b: "hm2" }, { k: "marca", p: "hp2" },
+      { k: "recta", a: "hl2", b: "hn4" }, { k: "recta", a: "hl1", b: "hm2" }, { k: "marca", p: "hp3" },
+      { k: "recta", a: "hl2", b: "hn2" }, { k: "recta", a: "hl1", b: "hm1" }, { k: "marca", p: "hp4" },
+      { k: "elipseConjugada", c: "cO", u: "hl4", v: "hl1" },
+    ],
+  };
+}
+
 export const CONSTRUCCIONES_CABALLERA = {
   "cab-ejes": ejes(),
   "cab-reduccion": reduccion(),
@@ -563,4 +636,6 @@ export const CONSTRUCCIONES_CABALLERA = {
   "cab-circunferencia-zox": circunferenciaZOX(),
   "cab-cinco-lados-xoy": cincoLadosXOY(),
   "cab-curva-xoy": curvaXOY(),
+  "cab-abatimiento-xoy": abatimientoXOY(),
+  "cab-elipse-haces": elipseHaces(),
 } satisfies Record<string, Construccion>;

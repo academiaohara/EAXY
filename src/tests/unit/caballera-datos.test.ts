@@ -95,3 +95,31 @@ describe("tema 15: distancias, polígonos, óvalo y elipse ZOY", () => {
     expect(dist(k.vg2, k.vc2)).toBeCloseTo(k.b2[0] - k.b1[0], 6);
   });
 });
+
+describe("tema 15: abatimiento y elipse por haces", () => {
+  it("abatimiento: N₀B₀ es la distancia real y las rectas de abatimiento son paralelas a 1–(1)₀", () => {
+    const k = c("cab-abatimiento-xoy");
+    expect(dist(k.abN0, k.abB0)).toBeCloseTo(Math.hypot(110 - 30, 90 - 20), 6);
+    const d: P = [k.ab1[0] - k.abV2[0], k.ab1[1] - k.abV2[1]];
+    expect(col([0, 0], d, [k.abN[0] - k.abN0[0], k.abN[1] - k.abN0[1]])).toBeLessThan(1e-6);
+    expect(col([0, 0], d, [k.abB[0] - k.abB0[0], k.abB[1] - k.abB0[1]])).toBeLessThan(1e-6);
+    expect(dist(k.cO, k.abV2)).toBeCloseTo(2 * (k.u2[0] - k.u1[0]), 6);
+    expect(k.abNx[1]).toBe(k.cO[1]);
+  });
+  it("elipse por haces: P está en las rectas A–2 y B–1 y en la elipse de diámetros conjugados", () => {
+    const k = c("cab-elipse-haces");
+    expect(col(k.hl1, k.hn1, k.hp1)).toBeLessThan(1e-6);
+    expect(col(k.hl2, k.hm1, k.hp1)).toBeLessThan(1e-6);
+    expect(col(k.hl2, k.hn4, k.hp3)).toBeLessThan(1e-6);
+    // coordenadas afines (u, v) respecto de los semidiámetros conjugados: u² + v² = 1
+    const ux = [k.hl4[0] - k.cO[0], k.hl4[1] - k.cO[1]];
+    const vx = [k.hl1[0] - k.cO[0], k.hl1[1] - k.cO[1]];
+    for (const n of ["hp1", "hp2", "hp3", "hp4"]) {
+      const p = [k[n][0] - k.cO[0], k[n][1] - k.cO[1]];
+      const det = ux[0] * vx[1] - ux[1] * vx[0];
+      const a = (p[0] * vx[1] - p[1] * vx[0]) / det;
+      const b = (ux[0] * p[1] - ux[1] * p[0]) / det;
+      expect(a * a + b * b).toBeCloseTo(1, 6);
+    }
+  });
+});

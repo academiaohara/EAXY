@@ -18,7 +18,7 @@ export const circunferenciaPiezasCaballeraDt1Lesson: InteractiveLesson = {
         "La elipse, inscrita en el romboide, se traza **a lápiz y a mano alzada**, ayudándose de las tangentes en los extremos de los diámetros, y se pasa a tinta con la plantilla de curvas.",
       ] },
     ], undefined, "stack"),
-    ...construccionPasos("cab-circunferencia-zox", "cab-circunferencia-xoy", "cab-circunferencia-zoy"),
+    ...construccionPasos("cab-circunferencia-zox", "cab-circunferencia-xoy", "cab-circunferencia-zoy", "cab-elipse-haces"),
     slide("ovalo", "Óvalo en lugar de elipse", [
       { kind: "text", text: "Con un coeficiente $\\mu = 1$ (caso no recomendado) en el eje $Y$ no habría reducción y las elipses se pueden sustituir por **óvalos** de forma aproximada, que resultan algo achatados o recortados respecto a la elipse. Se toman $\\overline{OA} = \\overline{OB} = \\overline{OC} = \\overline{OD} = R$; se construye el romboide $NMPQ$ y por los puntos de tangencia se trazan las normales, que se cortan en los centros de curvatura $C_1$, $C_2$, $C_3$ y $C_4$ de los arcos del óvalo. Este procedimiento solo sirve cuando no hay reducción en $Y$ y requiere más tiempo y precisión." },
       { kind: "text", text: "En los planos $YOZ$ o paralelos a él se sigue el mismo procedimiento. Se recomienda el método de los **diámetros conjugados**, ayudándose de las tangentes a la elipse en los extremos de esos diámetros. También se pueden obtener puntos de la elipse por haces proyectivos (Fig. 24)." },

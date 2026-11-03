@@ -23,7 +23,7 @@ export const distanciasFigurasPlanasCaballeraDt1Lesson: InteractiveLesson = {
         "**Recta oblicua a los planos del sistema** $PQ$: la verdadera magnitud $D$ es la **hipotenusa** del triángulo $PNQ$; un cateto $\\overline{PN} = h$ es la diferencia de cotas y el otro cateto $\\overline{NQ}$ es la verdadera magnitud de $d'$, que se halla como en el caso anterior.",
       ] },
     ], undefined, "stack"),
-    ...construccionPasos("cab-distancia-xoy", "cab-distancia-oblicua"),
+    ...construccionPasos("cab-distancia-xoy", "cab-abatimiento-xoy", "cab-distancia-oblicua"),
     slide("figuras", "Perspectiva de figuras planas en planos del sistema", [
       { kind: "text", text: "Una figura plana situada en un plano del sistema se dibuja **punto a punto**. En el plano $XOY$ las medidas paralelas a $X$ se toman en verdadera magnitud y las paralelas a $Y$, **reducidas**; en $ZOX$ la figura se ve en **verdadera forma**; en $ZOY$ se toman la $Z$ sin reducir y la $Y$ reducida." },
       { kind: "steps", items: [
