@@ -6,6 +6,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
  */
 
 export const ETIQUETAS_ACOTADOS: Record<string, string> = {
+  tA: "A", tB: "B", tHl: "", tPl: "", tHr: "", tPr: "", tN1: "N", tN2: "M", t6: "", t9: "",
   pa7: "7", pa8: "8", pa9: "9", pa10: "10", pb7: "7", pb8: "8", pb9: "9", pb10: "10", pMa: "", pMb: "", pV0: "V₀", pF: "", aA: "A", aB: "B",
   t1: "", t2: "", t3: "", t4: "", gT0: "T'(0)", gT1: "A'(1)", gT2: "B'(2)", gT3: "C'(3)", gT4: "D'(4)", cA: "A", cB: "B", cC: "C", cD: "D", cR1: "", cR2: "", cN: "N", Cb: "", nA: "A'(1)", nB: "B'(2)", nC: "C'(3)", nD: "D'(4)", nE: "E'(5)", nT: "T'(0)", _x: "",
   // plano por su l.m.p.
@@ -312,6 +313,50 @@ function interseccionParalelas(): Construccion {
   };
 }
 
+/** Figs. 14 y 15 (pág. 117): explanación de una plataforma: los taludes de desmonte (10/6) y de terraplén (10/9) hasta el terreno. */
+function explanacion(): Construccion {
+  const A: P = [250, 200];
+  const B: P = [380, 200];
+  const h6 = dato("h6", 72, 80, "azul");
+  const h9 = dato("h9", 108, 125, "ambar");
+  const v10 = dato("v10", 120, 170);
+  const Hl: P = [A[0] - 72, A[1]];
+  const Pl: P = [Hl[0], Hl[1] - 120];
+  const Hr: P = [B[0] + 108, B[1]];
+  const Pr: P = [Hr[0], Hr[1] + 120];
+  const G: P[] = [[20, 60], [250, 163.5], [380, 260], [560, 287]];
+  const corte = (a1: P, a2: P, b1: P, b2: P): P => {
+    const d = (a2[0] - a1[0]) * (b2[1] - b1[1]) - (a2[1] - a1[1]) * (b2[0] - b1[0]);
+    const t = ((b1[0] - a1[0]) * (b2[1] - b1[1]) - (b1[1] - a1[1]) * (b2[0] - b1[0])) / d;
+    return [a1[0] + t * (a2[0] - a1[0]), a1[1] + t * (a2[1] - a1[1])];
+  };
+  const N1 = corte(A, Pl, G[0], G[1]);
+  const N2 = corte(B, Pr, G[2], G[3]);
+  return {
+    titulo: "Explanación: taludes de desmonte y terraplén",
+    intro: "Una **explanación** es una plataforma horizontal (aquí $AB$, a cota constante) con **taludes** a ambos lados que se prolongan hasta el terreno. Con la pendiente $p = 10/6$ del **desmonte** se toman 6 unidades en horizontal y 10 en vertical; con $p = 10/9$ del **terraplén**, 9 y 10. El talud corta al terreno en $N$ y en $M$.",
+    pts: {
+      ...h6.pts, ...h9.pts, ...v10.pts, tA: A, tB: B, tHl: Hl, tPl: Pl, tHr: Hr, tPr: Pr, tN1: N1, tN2: N2,
+      _g0: G[0], _g1: G[1], _g2: G[2], _g3: G[3],
+    },
+    dados: ["tA", "tB", "h61", "h62", "h91", "h92", "v101", "v102"],
+    datos: [h6.d, h9.d, v10.d],
+    base: [["tA", "tB"], ["_g0", "_g1"], ["_g1", "_g2"], ["_g2", "_g3"]],
+    ext: 80,
+    radioMin: 40,
+    ops: [
+      { k: "medir", de: "h61", a: "h62" }, { k: "arco", c: "tA", hacia: "tHl" }, { k: "marca", p: "tHl" },
+      { k: "perp", recta: ["tA", "tB"], punto: "tHl", traza: ["tHl", "tPl"] },
+      { k: "medir", de: "v101", a: "v102" }, { k: "arco", c: "tHl", hacia: "tPl" }, { k: "marca", p: "tPl" },
+      { k: "recta", a: "tA", b: "tPl" }, { k: "marca", p: "tN1" },
+      { k: "medir", de: "h91", a: "h92" }, { k: "arco", c: "tB", hacia: "tHr" }, { k: "marca", p: "tHr" },
+      { k: "perp", recta: ["tA", "tB"], punto: "tHr", traza: ["tHr", "tPr"] },
+      { k: "medir", de: "v101", a: "v102" }, { k: "arco", c: "tHr", hacia: "tPr" }, { k: "marca", p: "tPr" },
+      { k: "recta", a: "tB", b: "tPr" }, { k: "marca", p: "tN2" },
+    ],
+  };
+}
+
 export const CONSTRUCCIONES_ACOTADOS = {
   "acotados-graduar": graduar(),
   "acotados-plano-lmp": planoLmp(),
@@ -319,6 +364,7 @@ export const CONSTRUCCIONES_ACOTADOS = {
   "acotados-perfil": perfil(),
   "acotados-graduar-intervalo": graduarIntervalo(),
   "acotados-cubierta": cubierta(),
+  "acotados-explanacion": explanacion(),
   "acotados-interseccion-paralelas": interseccionParalelas(),
   "acotados-perfil-camino": perfilCamino(),
 } satisfies Record<string, Construccion>;

@@ -79,3 +79,19 @@ describe("tema 14: elipse, rayado y recta-plano", () => {
     expect(col(k.rPp, k.rQp, k.rR1)).toBeLessThan(1e-6);
   });
 });
+
+describe("tema 14: recta paralela a un plano y pieza", () => {
+  it("la recta paralela a XOY tiene t paralela a t' y la misma altura sobre ella", () => {
+    const k = c("axo-recta-paralela-plano");
+    expect(k.pt2[0] - k.pP1[0]).toBeCloseTo(k.pt1[0] - k.pPp1[0], 6);
+    expect(k.pt2[1] - k.pP1[1]).toBeCloseTo(k.pt1[1] - k.pPp1[1], 6);
+  });
+  it("pieza: las aristas del paralelepípedo miden lo que los datos y son paralelas a los ejes", () => {
+    const k = c("axo-pieza");
+    expect(dist(k.ao, k.pAx)).toBeCloseTo(k.a2[0] - k.a1[0], 6);
+    expect(dist(k.ao, k.pAy)).toBeCloseTo(k.b2[0] - k.b1[0], 6);
+    expect(dist(k.ao, k.pAz)).toBeCloseTo(k.c2[0] - k.c1[0], 6);
+    expect(k.pTxy[0]).toBeCloseTo(k.pxy[0], 6);
+    expect(k.pxy[1] - k.pTxy[1]).toBeCloseTo(k.pAz[0] === k.ao[0] ? k.ao[1] - k.pAz[1] : 0, 6);
+  });
+});

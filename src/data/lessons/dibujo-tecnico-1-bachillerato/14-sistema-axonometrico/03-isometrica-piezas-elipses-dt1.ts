@@ -30,6 +30,6 @@ export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Las superficies producidas por un corte se rayan en cada plano del sistema con líneas **paralelas a las direcciones** $d_1$, $d_2$ y $d_3$. Se toma un segmento $s$ cualquiera sobre cada eje y se unen los puntos $A$, $B$ y $C$." },
       { kind: "warning", title: "Antes de dibujar una pieza", text: "Hay que estudiar con detenimiento las **vistas diédricas** o el dibujo de taller que la definen. Mentalmente se descompone en **sólidos geométricos** (paralelepípedos, cilindros, prismas, conos…) que guardan una posición relativa que debe conservarse en la perspectiva. Después se empieza por algún extremo de la pieza o por un eje de simetría total." },
     ], undefined, "stack"),
-    ...construccionPasos("axo-rayado"),
+    ...construccionPasos("axo-rayado", "axo-pieza"),
   ],
 };

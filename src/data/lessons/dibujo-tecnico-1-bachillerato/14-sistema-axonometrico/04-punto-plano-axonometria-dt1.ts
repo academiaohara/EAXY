@@ -22,7 +22,7 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Una recta del espacio queda definida conociendo **dos puntos** con dos de sus proyecciones. Se obtiene uniendo las proyecciones **homónimas** de los puntos: la proyección directa $r$ pasa por $P$ y $Q$ y la horizontal $r'$ por $P'$ y $Q'$. Para situar un punto en una recta, sus proyecciones deben estar sobre las proyecciones homónimas de la recta." },
       { kind: "text", text: "Una recta oblicua $t$ tiene tres **trazas**: con los planos $XOY$, $XOZ$ y $ZOY$. El punto $T_1$-$T_1'$ es la traza con $XOY$, por donde se cortan $t$ y $t'$. Prolongando $t'$ hasta el eje $X$ y refiriendo a $t$ se halla la traza con $XOZ$; análogamente con $Y$ para la traza con $ZOY$." },
     ], undefined, "stack"),
-    ...construccionPasos("axo-trazas-recta"),
+    ...construccionPasos("axo-trazas-recta", "axo-recta-paralela-plano"),
     slide("rectas-particulares", "Rectas paralelas a planos y a ejes", [
       { kind: "steps", items: [
         "**Paralela a $XOY$**: no tiene traza horizontal; sus proyecciones $t$ y $t'$ son paralelas y las otras se cortan en el eje $Z$.",

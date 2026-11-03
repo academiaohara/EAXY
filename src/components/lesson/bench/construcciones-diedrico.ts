@@ -587,4 +587,73 @@ function lineaMaximaPendiente(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana(), "punto-plano-horizontal": puntoEspecial({ id: "A", letra: "A", alej: 60, titulo: "Punto del plano horizontal anterior", intro: "Un punto $A$ del **plano horizontal anterior** tiene **cota nula**: su proyección vertical $A''$ está en la **L.T.** y la horizontal $A'$ coincide con el punto, por debajo de la L.T. Dado el alejamiento, halla $A'$." }), "punto-plano-vertical": puntoEspecial({ id: "E", letra: "E", cota: 60, titulo: "Punto del plano vertical superior", intro: "Un punto $E$ del **plano vertical superior** tiene **alejamiento nulo**: su proyección horizontal $E'$ está en la **L.T.** y la vertical $E''$ coincide con el punto, por encima de la L.T. Dada la cota, halla $E''$." }), "punto-segundo-bisector": puntoSegundoBisector(), "rectas-se-cortan": rectasSeCortan(), "frontal-del-plano": frontalDelPlano(), "plano-proyectante-vertical": planoProyectante(true), "plano-proyectante-horizontal": planoProyectante(false), "plano-paralelo-lt": planoParaleloLT(), "plano-lmp": lineaMaximaPendiente(), } satisfies Record<string, Construccion>;
+/** Fig. 34: línea de máxima inclinación de un plano: se obtienen las trazas a partir de ella (simétrico de la l.m.p.). */
+function lineaMaximaInclinacion(): Construccion {
+  const Hx = 380;
+  const Hx2 = 462.8;
+  const yv = 52;
+  const pendV = (49.3 - LT_Y) / (462.8 - 380);
+  const iPrima = (x: number): P => [x, LT_Y - pendV * (x - Hx)];
+  return {
+    titulo: "Plano por su línea de máxima inclinación",
+    intro: "La **línea de máxima inclinación** $i'$-$i''$ de un plano forma el mayor ángulo con el plano vertical: su proyección vertical $i''$ es **perpendicular a $\\alpha_2$**. Para hallar las trazas: se halla $V''$ (referido desde $V'$), se traza por $V''$ la **perpendicular a $i''$**, que corta a la L.T. en $N$, y $N$ unido con $H'$ da la traza horizontal.",
+    pts: {
+      ...LT_BASE,
+      _r1: [Hx + 0.6 * 60, yv + 60], _r2: [Hx + 0.6 * 100, yv + 100], _s1: iPrima(400), _s2: iPrima(440),
+      N: [NX, LT_Y], Vp: [Hx, LT_Y], Vv: [Hx, yv], Hv: [Hx2, LT_Y], Hp: [Hx2, LT_Y + 0.45 * (Hx2 - NX)],
+    },
+    dados: ["lt"],
+    datos: [],
+    base: [["_l1", "lt"], ["_r1", "_r2"], ["_s1", "_s2"]],
+    ext: 250,
+    ops: [
+      { k: "recta", a: "_s1", b: "_s2" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+      { k: "recta", a: "_r1", b: "_r2" }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hv", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hp" },
+      { k: "perp", recta: ["_r1", "_r2"], punto: "Vv", traza: ["Vv", "N"] }, { k: "marca", p: "N" },
+      { k: "recta", a: "N", b: "Hp" },
+    ],
+  };
+}
+
+/** Pág. 104: recta de perfil no perpendicular a los bisectores, dada por sus trazas (que no son simétricas ni coinciden). */
+function perfilPorTrazas(): Construccion {
+  const da = dato("alej", 90, 90, "ambar");
+  const dc = dato("cota", 50, 120, "azul");
+  return {
+    titulo: "Recta de perfil dada por sus trazas",
+    intro: "Una recta de perfil se define por sus **trazas** $H'$ y $V''$, que están en una misma perpendicular a la L.T. Si **no es perpendicular a un bisector**, las trazas **no son simétricas** respecto de la L.T. ni coinciden: aquí $H'$ está a 90 bajo la L.T. y $V''$ a 50 sobre ella. Sus dos proyecciones quedan confundidas en esa perpendicular.",
+    pts: { _l1: [40, LT_Y], lt: [580, LT_Y], O: [O_X, LT_Y], Hp: [O_X, LT_Y + 90], Vv: [O_X, LT_Y - 50], ...da.pts, ...dc.pts },
+    dados: ["lt", "O", da.d.a, da.d.b, dc.d.a, dc.d.b],
+    datos: [da.d, dc.d],
+    base: [["_l1", "lt"]],
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: "O", traza: ["Vv", "Hp"] },
+      { k: "medir", de: da.d.a, a: da.d.b }, { k: "arco", c: "O", hacia: "Hp" }, { k: "marca", p: "Hp" },
+      { k: "medir", de: dc.d.a, a: dc.d.b }, { k: "arco", c: "O", hacia: "Vv" }, { k: "marca", p: "Vv" },
+    ],
+  };
+}
+
+/** Fig. 23 (pág. 104): tercera proyección de un punto sobre un plano de perfil. */
+function terceraProyeccion(): Construccion {
+  return {
+    titulo: "Tercera proyección de un punto",
+    intro: "Para tener la **tercera proyección** $A_1$ de un punto $A(A'\\text{-}A'')$ se proyecta sobre un **plano de perfil** $\\beta$ (perpendicular a la L.T.), que se abate sobre el vertical y este sobre el horizontal. La cota de $A''$ se lleva con una paralela a la L.T. y el alejamiento de $A'$ con otra paralela y un arco de centro $O$ hasta la L.T.",
+    pts: { ...PERFIL_BASE, Ap: [RX, 250], Av: [RX, 140], Aa: [OX, 250], Al: [390, LT_Y], A1: [390, 140] },
+    dados: ["lt", "O", "Ap", "Av"],
+    datos: [],
+    base: PERFIL_BASES,
+    radioMin: 30,
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Ap"], cortes: ["Aa"] },
+      { k: "medir", de: "O", a: "Aa" }, { k: "arco", c: "O", hacia: "Al" }, { k: "marca", p: "Al" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Al", traza: ["Al", "A1"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Av"], cortes: ["A1"] }, { k: "marca", p: "A1" },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana(), "punto-plano-horizontal": puntoEspecial({ id: "A", letra: "A", alej: 60, titulo: "Punto del plano horizontal anterior", intro: "Un punto $A$ del **plano horizontal anterior** tiene **cota nula**: su proyección vertical $A''$ está en la **L.T.** y la horizontal $A'$ coincide con el punto, por debajo de la L.T. Dado el alejamiento, halla $A'$." }), "punto-plano-vertical": puntoEspecial({ id: "E", letra: "E", cota: 60, titulo: "Punto del plano vertical superior", intro: "Un punto $E$ del **plano vertical superior** tiene **alejamiento nulo**: su proyección horizontal $E'$ está en la **L.T.** y la vertical $E''$ coincide con el punto, por encima de la L.T. Dada la cota, halla $E''$." }), "punto-segundo-bisector": puntoSegundoBisector(), "rectas-se-cortan": rectasSeCortan(), "frontal-del-plano": frontalDelPlano(), "plano-proyectante-vertical": planoProyectante(true), "plano-proyectante-horizontal": planoProyectante(false), "plano-paralelo-lt": planoParaleloLT(), "plano-lmp": lineaMaximaPendiente(), "plano-lmi": lineaMaximaInclinacion(), "perfil-por-trazas": perfilPorTrazas(), "tercera-proyeccion": terceraProyeccion(), } satisfies Record<string, Construccion>;

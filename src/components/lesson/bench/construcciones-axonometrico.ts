@@ -15,6 +15,7 @@ export const ETIQUETAS_AXONOMETRICO: Record<string, string> = {
   rI1: "I₁", rI2: "I₂", rR1: "R₁'", rI: "I", rP: "", rQ: "", rPp: "", rQp: "",
   sA: "A", sB: "B", sC: "C", sa1: "", sa2: "",
   lA: "A", lB: "B", lC: "C", lD: "D", l1a: "1", l1b: "1", l2a: "2", l2b: "2", l2c: "2", l2d: "2", lP1: "P", lP2: "Q", lP3: "R", lP4: "S", lv1: "", lv2: "", lv3: "", lv4: "", lP5: "", lP6: "", lP7: "", lP8: "",
+  pP1: "P", pPp1: "P'", pt1: "t'", pt2: "t", pa: "", pb: "", pc: "", pxy: "", pAx: "", pAy: "", pAz: "", pTx: "", pTy: "", pTxy: "",
   // trazas de recta, planos paralelos e intersección
   aP: "P", aQ: "Q", aPp: "P'", aQp: "Q'", aT1: "T₁", aT2: "T₂", aT3: "T₃", aT2p: "T₂'", aT3p: "T₃'", ae1: "", ae2: "", ae3: "", pz: "", e1: "α₁", e2: "α₂",
   iA: "A₁", iB: "B₁", iC: "C₁", jA: "A₂", jB: "B₂", jC: "C₂", iS1: "S₁", iS2: "S₂", iS3: "S₃",
@@ -360,6 +361,65 @@ function elipsePuntos(): Construccion {
   };
 }
 
+/** Fig. 9: recta paralela a un plano coordenado: su proyección sobre él es paralela a ella. */
+function rectaParalelaPlano(): Construccion {
+  const Pp = iso(60, 20, 0);
+  const Pe = iso(60, 20, 55);
+  const Q1 = iso(30, 70, 0);
+  return {
+    titulo: "Recta paralela al plano XOY",
+    intro: "Una recta **paralela a un plano coordenado** no tiene traza con él: su proyección directa $t$ y su proyección $t'$ sobre ese plano son **paralelas**. Dada la proyección $t'$ y un punto $P$ de la recta (con su proyección $P'$), traza $t$ por $P$ paralela a $t'$.",
+    pts: { ...AXES, pPp1: Pp, pP1: Pe, pt1: Q1, pt2: [Pe[0] + (Q1[0] - Pp[0]), Pe[1] + (Q1[1] - Pp[1])] },
+    dados: ["ao", "ax", "ay", "az", "pPp1", "pP1", "pt1"],
+    datos: [],
+    base: [...AXES_BASE, ["pPp1", "pt1"]],
+    ext: 100,
+    escala: 0.8,
+    ops: [{ k: "paralelas", recta: ["pPp1", "pt1"], marcas: ["pP1"], cortes: ["pt2"] }],
+  };
+}
+
+/** Perspectiva de una pieza: paralelepípedo en isométrica sin reducir, medido con el compás sobre los ejes. */
+function pieza(): Construccion {
+  const a = 100;
+  const b = 80;
+  const h = 60;
+  const o: P = [310, 250];
+  const isoO = (x: number, y: number, z: number): P => [o[0] + (x - y) * Math.cos(rad(30)), o[1] + (x + y) * 0.5 - z];
+  const da = dato("a", a, 70, "azul");
+  const db = dato("b", b, 95, "ambar");
+  const dc = dato("c", h, 120);
+  const pts: Record<string, P> = {
+    ...da.pts, ...db.pts, ...dc.pts,
+    ao: o, ax: isoO(190, 0, 0), ay: isoO(0, 190, 0), az: isoO(0, 0, 150),
+    pAx: isoO(a, 0, 0), pAy: isoO(0, b, 0), pAz: isoO(0, 0, h), pxy: isoO(a, b, 0),
+    pTx: isoO(a, 0, h), pTy: isoO(0, b, h), pTxy: isoO(a, b, h),
+  };
+  return {
+    titulo: "Perspectiva isométrica de una pieza",
+    intro: "Para dibujar una pieza en isométrica, **sin reducir**, se llevan sus medidas reales con el compás sobre los ejes $X$, $Y$ y $Z$ desde el origen y se completa el paralelepípedo con **paralelas a los ejes**. Aquí: largo 100, ancho 80 y alto 60.",
+    pts,
+    dados: ["ao", "ax", "ay", "az", "a1", "a2", "b1", "b2", "c1", "c2"],
+    datos: [da.d, db.d, dc.d],
+    base: AXES_BASE,
+    radioMin: 40,
+    escala: 0.8,
+    ops: [
+      { k: "medir", de: "a1", a: "a2" }, { k: "arco", c: "ao", hacia: "pAx" }, { k: "marca", p: "pAx" },
+      { k: "medir", de: "b1", a: "b2" }, { k: "arco", c: "ao", hacia: "pAy" }, { k: "marca", p: "pAy" },
+      { k: "medir", de: "c1", a: "c2" }, { k: "arco", c: "ao", hacia: "pAz" }, { k: "marca", p: "pAz" },
+      { k: "paralelas", recta: ["ao", "ay"], marcas: ["pAx"], cortes: ["pxy"] },
+      { k: "paralelas", recta: ["ao", "ax"], marcas: ["pAy"], cortes: ["pxy"] }, { k: "marca", p: "pxy" },
+      { k: "paralelas", recta: ["ao", "ax"], marcas: ["pAz"], cortes: ["pTx"] },
+      { k: "paralelas", recta: ["ao", "ay"], marcas: ["pAz"], cortes: ["pTy"] },
+      { k: "paralelas", recta: ["ao", "az"], marcas: ["pAx"], cortes: ["pTx"] },
+      { k: "paralelas", recta: ["ao", "az"], marcas: ["pAy"], cortes: ["pTy"] },
+      { k: "paralelas", recta: ["ao", "az"], marcas: ["pxy"], cortes: ["pTxy"] }, { k: "marca", p: "pTxy" },
+      { k: "lados", pts: ["pAz", "pTx", "pAx", "pxy", "pAy", "pTy"] },
+    ],
+  };
+}
+
 export const CONSTRUCCIONES_AXONOMETRICO = {
   "axo-escala-isometrica": escalaIsometrica(),
   "axo-proyecciones-punto": proyeccionesPunto(),
@@ -373,4 +433,6 @@ export const CONSTRUCCIONES_AXONOMETRICO = {
   "axo-recta-plano": rectaPlano(),
   "axo-rayado": rayado(),
   "axo-elipse-puntos": elipsePuntos(),
+  "axo-recta-paralela-plano": rectaParalelaPlano(),
+  "axo-pieza": pieza(),
 } satisfies Record<string, Construccion>;

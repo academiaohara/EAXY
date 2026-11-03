@@ -141,3 +141,24 @@ describe("tema 12: octantes y l.m.p.", () => {
     expect((k._s2[1] - k.Vv[1]) / (k._s2[0] - k.Vv[0])).toBeCloseTo((k._s1[1] - k.Vv[1]) / (k._s1[0] - k.Vv[0]), 4);
   });
 });
+
+describe("tema 12: l.m.i., perfil por trazas y tercera proyección", () => {
+  it("l.m.i.: i'' es perpendicular a α₂ (N–V'') y las dos referencias están en perpendiculares a la LT", () => {
+    const k = c("plano-lmi").pts;
+    const r = [k._r2[0] - k._r1[0], k._r2[1] - k._r1[1]];
+    const a2 = [k.Vv[0] - k.N[0], k.Vv[1] - k.N[1]];
+    expect(r[0] * a2[0] + r[1] * a2[1]).toBeCloseTo(0, 3);
+    expect(k.Vp[0]).toBe(k.Vv[0]);
+    expect(k.Hv[0]).toBe(k.Hp[0]);
+  });
+  it("perfil por trazas: las trazas no son simétricas y están en la misma perpendicular", () => {
+    const k = c("perfil-por-trazas").pts;
+    expect(k.Hp[0]).toBe(k.Vv[0]);
+    expect(k.Hp[1] - LT).not.toBe(LT - k.Vv[1]);
+  });
+  it("tercera proyección: A₁ tiene la cota de A'' y su distancia al eje β es el alejamiento de A'", () => {
+    const k = c("tercera-proyeccion").pts;
+    expect(k.A1[1]).toBe(k.Av[1]);
+    expect(k.A1[0] - k.O[0]).toBeCloseTo(k.Ap[1] - LT, 6);
+  });
+});

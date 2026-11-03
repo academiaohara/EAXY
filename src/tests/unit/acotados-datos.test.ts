@@ -67,3 +67,16 @@ describe("tema 13: l.m.p. paralelas", () => {
     expect(dist(k.pa10, k.pMa)).toBeCloseTo(3 * 30, 6);
   });
 });
+
+describe("tema 13: explanación", () => {
+  it("los taludes cumplen sus pendientes y N y M están en ellos y en el terreno", () => {
+    const k = c("acotados-explanacion").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect((k.tA[1] - k.tPl[1]) / (k.tA[0] - k.tPl[0])).toBeCloseTo(10 / 6, 6);
+    expect((k.tPr[1] - k.tB[1]) / (k.tPr[0] - k.tB[0])).toBeCloseTo(10 / 9, 6);
+    expect(col(k.tA, k.tPl, k.tN1)).toBeLessThan(1e-6);
+    expect(col(k._g0, k._g1, k.tN1)).toBeLessThan(1e-6);
+    expect(col(k.tB, k.tPr, k.tN2)).toBeLessThan(1e-6);
+    expect(col(k._g2, k._g3, k.tN2)).toBeLessThan(1e-6);
+  });
+});
