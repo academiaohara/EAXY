@@ -1,51 +1,55 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { anim, calc, nums, pick, slide, sort } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { anim, slide } from "@/data/lessons/tec1-helpers";
 
 export const fundamentosProyeccionesDiedricoDt1Lesson: InteractiveLesson = {
   slug: "fundamentos-proyecciones-diedrico-dt1",
-  title: "1. Fundamentos de la geometría proyectiva y sistema diédrico",
+  title: "1. Geometría descriptiva y sistemas de representación",
   subtitle: DT1_SUBTITLES[11],
   stage: { theme: "board" },
   steps: [
-    slide("def", "Representar el espacio en un plano", [
-      { kind: "steps", items: [
-        "Un objeto tiene **tres dimensiones**; el papel, dos. Los **sistemas de representación** son métodos para pasar del espacio al plano **sin perder la posibilidad de volver**.",
-        "Se basan en la **proyección**: desde un **centro de proyección** salen **rayos proyectantes** que atraviesan el objeto y cortan un **plano de proyección**; las intersecciones forman la imagen.",
-        "Si el centro está a **distancia finita**, la proyección es **cónica** (el sistema cónico). Si está en el **infinito**, los rayos son **paralelos**: proyección **cilíndrica**.",
-        "La cilíndrica es **ortogonal** si los rayos son **perpendiculares** al plano y **oblicua** si no lo son.",
+    slide("descriptiva", "La geometría descriptiva", [
+      { kind: "definition", text: "La **geometría descriptiva** es la parte de la geometría que tiene por objeto la **representación de cuerpos mediante proyecciones planas**. Es una ciencia de aplicación: su primer tratado científico se debe a **Monge** (1746–1818), publicado en 1798." },
+      { kind: "steps", title: "Para qué sirven las proyecciones", items: [
+        "La obtención de **elementos geométricos**.",
+        "La determinación de **verdaderas magnitudes** de segmentos, ángulos o superficies.",
+        "La determinación de **secciones planas** de cuerpos y de **líneas de intersección** de superficies.",
+        "La obtención del **desarrollo** de superficies y de las **sombras** propia y arrojada de un cuerpo.",
       ] },
-    ], undefined, "stack"),
-    slide("sistemas", "Qué sistema usa cada proyección", [
-      { kind: "steps", items: [
-        "**Diédrico**: proyección cilíndrica **ortogonal** sobre **dos** planos perpendiculares. Exige **dos proyecciones** para definir cada elemento.",
-        "**Axonométrico**: cilíndrica sobre **un** plano, **ortogonal** (isométrica…) u **oblicua** (caballera). Muestra el objeto en una sola imagen.",
-        "**Planos acotados**: cilíndrica ortogonal sobre **un** plano horizontal, con la **altura** indicada con un número (cota).",
-        "**Cónico**: proyección con centro **propio**; es la que más se parece a lo que vemos.",
-      ] },
+      { kind: "rule", title: "El problema fundamental", text: "Reducir las construcciones del espacio a construcciones en el plano." },
     ]),
-    slide("diedrico", "El sistema diédrico", [
-      { kind: "text", text: "Dos planos perpendiculares, un punto y el giro que convierte el espacio en un dibujo." },
-    ], anim("dt1-abatimiento-diedrico"), "visual-top"),
-    slide("cuadrantes", "Planos, línea de tierra y cuadrantes", [
-      { kind: "steps", items: [
-        "El **plano vertical (PV)** y el **plano horizontal (PH)** son perpendiculares y se cortan en la **línea de tierra (LT)**.",
-        "Dividen el espacio en **cuatro diedros** o **cuadrantes**. El **1.º** es el que queda **delante del PV y sobre el PH**.",
-        "Se **abate** el PH girándolo **90°** hasta que coincide con el PV: el semiplano horizontal **anterior** queda **bajo** la LT.",
-        "La **épura** es el dibujo de las proyecciones sobre un único plano. Todo punto está en su **línea de referencia**, perpendicular a la LT.",
-      ] },
+    slide("proyecciones", "Sistemas de proyección", [
+      { kind: "compare",
+        left: { title: "Proyección paralela o cilíndrica", text: "Los rayos proyectantes son **paralelos**. Según sean **perpendiculares** u **oblicuos** al plano de proyección, la proyección es **ortogonal** u **oblicua**." },
+        right: { title: "Proyección central o cónica", text: "Los rayos parten de un **punto propio** $V$, el punto de vista u ojo del observador." } },
     ]),
-    calc("calc-cuad", "Cuadrantes", "Los planos vertical y horizontal dividen el espacio en cuántos cuadrantes?", nums(4), "Cuatro diedros: del 1.º al 4.º.", "Dos planos que se cortan dan cuatro regiones."),
-    calc("calc-giro", "Abatimiento", "¿Cuántos grados se gira el PH para abatirlo sobre el PV?", nums(90), "Los planos son perpendiculares: se gira 90°.", "Es un ángulo recto."),
-    sort("clasifica-sistema", "¿Qué sistema es?", "Relaciona cada característica con el sistema de representación.",
-      [["die", "Diédrico", "cobalt"], ["axo", "Axonométrico", "amber"], ["aco", "Planos acotados", "emerald"], ["con", "Cónico", "rose"]],
-      [["Dos planos perpendiculares y dos proyecciones", "die"], ["Línea de tierra y abatimiento", "die"], ["Ejes con coeficientes de reducción", "axo"], ["Perspectiva isométrica y caballera", "axo"], ["Alturas indicadas con números sobre un plano", "aco"], ["Mapas con curvas de nivel", "aco"], ["Centro de proyección a distancia finita", "con"], ["Líneas que convergen en puntos de fuga", "con"]],
-      "Cada sistema se distingue por su centro de proyección, sus planos y su forma de informar de la altura.",
-    ),
-    pick("check-dos", "Dos proyecciones", "¿Por qué en el sistema diédrico hacen falta dos proyecciones para definir un punto?",
-      "Porque una sola proyección ortogonal no determina la distancia del punto al plano de proyección",
-      [["Porque los planos son dos y hay que usarlos", "La razón es geométrica, no una regla."], ["Porque la LT lo exige", "La LT solo es la intersección de los planos."], ["Porque el punto está siempre en el 1.er cuadrante", "Puede estar en cualquiera."]],
-      "Todos los puntos de un mismo rayo proyectante comparten proyección; la segunda las distingue.",
-    ),
+    ...construccionPasos("proyeccion-ortogonal", "proyeccion-oblicua", "proyeccion-conica"),
+    slide("sistemas", "Los cinco sistemas de representación", [
+      { kind: "relations", items: [
+        { left: "Sistema diédrico", relation: "usa", right: "proyección paralela ortogonal" },
+        { left: "Sistema de planos acotados", relation: "usa", right: "proyección paralela ortogonal" },
+        { left: "Sistema axonométrico", relation: "usa", right: "proyección paralela ortogonal" },
+        { left: "Perspectiva caballera", relation: "usa", right: "proyección paralela oblicua" },
+        { left: "Perspectiva cónica", relation: "usa", right: "proyección central o cónica" },
+      ] },
+      { kind: "text", text: "El diédrico y el de planos acotados son sistemas de **representación** de piezas y del terreno; el axonométrico, la caballera y la cónica son sistemas de **perspectiva**, que muestran el cuerpo en una sola vista." },
+    ]),
+    slide("diedrico", "Sistema diédrico: dibujos de taller", [
+      { kind: "text", text: "Utiliza la proyección cilíndrica ortogonal sobre **dos planos perpendiculares**. Sus representaciones son los **dibujos de taller** o planos industriales." },
+      { kind: "warning", title: "Su inconveniente", text: "Las caras perpendiculares a los planos de proyección se proyectan según una **recta** y no se aprecia su forma: las proyecciones de un cubo (planta y alzado) no bastan para afirmar que el cuerpo es un cubo. La indeterminación se resuelve con un tercer plano perpendicular: el **perfil**." },
+    ], anim("dt1-vistas-pieza"), "visual-top"),
+    slide("acotados", "Sistema de planos acotados", [
+      { kind: "text", text: "Usa la proyección cilíndrica ortogonal sobre un **solo plano**, indicando las **cotas** o alturas de los puntos sobre ese plano: un cubo de arista 4 cm tiene cota 3 en la cara inferior y $3 + 4 = 7$ en la superior." },
+      { kind: "text", text: "Su aplicación real es la **topografía**: el terreno se supone cortado por planos paralelos acotados, que producen las **curvas de nivel**. Su forma, su separación y su graduación permiten conocer el relieve, trazar perfiles y vías de comunicación o calcular desmontes y terraplenes." },
+    ]),
+    slide("axonometrico", "Sistemas axonométrico y de perspectiva caballera", [
+      { kind: "text", text: "El **axonométrico** proyecta ortogonalmente el cuerpo sobre un triedro trirrectángulo y, a su vez, el cuerpo y las tres proyecciones sobre un plano que no es uno del triedro. Según la inclinación de los ejes, es **isométrico**, **dimétrico** o **trimétrico**; en la práctica se usa el isométrico por ser el más rápido." },
+      { kind: "text", text: "La **perspectiva caballera** es el único que emplea la proyección cilíndrica **oblicua**. Todo lo paralelo al plano del dibujo aparece **sin deformarse**; las aristas en profundidad se reducen según un coeficiente de reducción. Por eso se llama también **perspectiva rápida**." },
+    ], anim("dt1-cubo-isometrico"), "visual-top"),
+    slide("conico", "Sistema de perspectiva cónica", [
+      { kind: "text", text: "Utiliza la proyección central: se proyecta un cuerpo sobre un plano, el **cuadro**, desde un punto de vista que hace de ojo. Son las perspectivas **más reales**, las que vería un ser humano con visión monocular." },
+      { kind: "text", text: "Las rectas paralelas en el espacio que no lo son al cuadro **convergen** o «fugan» en un **punto de fuga** $P$ común a todas las paralelas entre sí." },
+    ], anim("dt1-perspectiva-frontal"), "visual-top"),
   ],
 };

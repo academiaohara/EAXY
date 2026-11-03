@@ -8,6 +8,7 @@
  * por «_» son auxiliares (no se dibujan ni se rotulan). El radio de un arco es la última medida tomada con `medir`.
  */
 import { CONSTRUCCIONES_CONICAS, ETIQUETAS_CONICAS } from "./construcciones-conicas";
+import { CONSTRUCCIONES_SISTEMAS, ETIQUETAS_SISTEMAS } from "./construcciones-sistemas";
 import { CONSTRUCCIONES_CURVAS, ETIQUETAS_CURVAS } from "./construcciones-curvas";
 import { CONSTRUCCIONES_TANGENCIAS, ETIQUETAS_TANGENCIAS } from "./construcciones-tangencias";
 
@@ -1544,6 +1545,7 @@ export const CONSTRUCCIONES = {
   ...CONSTRUCCIONES_TANGENCIAS,
   ...CONSTRUCCIONES_CURVAS,
   ...CONSTRUCCIONES_CONICAS,
+  ...CONSTRUCCIONES_SISTEMAS,
 } satisfies Record<string, Construccion>;
 
 /**
@@ -1570,6 +1572,7 @@ const ETIQUETAS: Record<string, string> = {
   ...ETIQUETAS_TANGENCIAS,
   ...ETIQUETAS_CURVAS,
   ...ETIQUETAS_CONICAS,
+  ...ETIQUETAS_SISTEMAS,
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;

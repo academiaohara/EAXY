@@ -1925,7 +1925,7 @@ insert into public.lessons (id, module_id, title, summary, order_index, video_ur
   ('a3000000-0000-4000-8000-000000020410', 'a2000000-0000-4000-8000-000000000398', '1. La elipse', 'Las cónicas como secciones del cono y la elipse por puntos, haces proyectivos, envolventes y circunferencias.', 1, null),
   ('a3000000-0000-4000-8000-000000020411', 'a2000000-0000-4000-8000-000000000398', '2. La hipérbola', 'Hipérbola por puntos y por envolventes, y asíntotas.', 2, null),
   ('a3000000-0000-4000-8000-000000020412', 'a2000000-0000-4000-8000-000000000398', '3. La parábola', 'Parábola por puntos, por haces proyectivos y por envolventes.', 3, null),
-  ('a3000000-0000-4000-8000-000000020501', 'a2000000-0000-4000-8000-000000000394', '1. Fundamentos de la geometría proyectiva y sistema diédrico', 'Proyecciones, planos y abatimiento.', 1, null),
+  ('a3000000-0000-4000-8000-000000020501', 'a2000000-0000-4000-8000-000000000394', '1. Geometría descriptiva y sistemas de representación', 'Proyecciones paralela y cónica y los cinco sistemas de representación.', 1, null),
   ('a3000000-0000-4000-8000-000000020502', 'a2000000-0000-4000-8000-000000000205', '1. Representación del punto. Alejamiento y cota', 'Cuadrantes y proyecciones del punto.', 1, null),
   ('a3000000-0000-4000-8000-000000020503', 'a2000000-0000-4000-8000-000000000205', '2. Representación de la recta. Trazas', 'Proyecciones y trazas de una recta.', 2, null),
   ('a3000000-0000-4000-8000-000000020504', 'a2000000-0000-4000-8000-000000000205', '3. Posiciones particulares de la recta', 'Rectas paralelas, perpendiculares y de perfil.', 3, null),

@@ -17010,8 +17010,8 @@ export const fullCurriculum: Curriculum = {
           lessons: [
             {
               id: lessonId(20501),
-              title: "1. Fundamentos de la geometría proyectiva y sistema diédrico",
-              summary: "Proyecciones, planos y abatimiento.",
+              title: "1. Geometría descriptiva y sistemas de representación",
+              summary: "Proyecciones paralela y cónica y los cinco sistemas de representación.",
               orderIndex: 1,
               kind: "interactive",
               interactiveSlug: "fundamentos-proyecciones-diedrico-dt1",
