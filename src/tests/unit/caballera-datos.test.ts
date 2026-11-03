@@ -51,3 +51,47 @@ describe("perspectiva caballera (tema 15)", () => {
     expect(k.kTxy[0]).toBeCloseTo(k.kXY[0], 6);
   });
 });
+
+describe("tema 15: distancias, polígonos, óvalo y elipse ZOY", () => {
+  it("distancia XOY: la hipotenusa construida es la distancia real entre N y B", () => {
+    const k = c("cab-distancia-xoy");
+    const real = Math.hypot(110 - 30, 90 - 20);
+    expect(dist(k.dV, k.dW2)).toBeCloseTo(real, 6);
+    expect(dist(k.dU, k.dV)).toBeCloseTo(k.a2[0] - k.a1[0], 6);
+  });
+  it("distancia oblicua: D es la hipotenusa de d₀ y la diferencia de cotas", () => {
+    const k = c("cab-distancia-oblicua");
+    const d0 = Math.hypot(110 - 30, 90 - 20);
+    expect(dist(k.dV2, k.dW3)).toBeCloseTo(Math.hypot(d0, k.h2[0] - k.h1[0]), 6);
+  });
+  it("seis lados: los vértices están a ±R, ±R/2 y las ordenadas son la mitad de las reales", () => {
+    const k = c("cab-seis-lados-xoy");
+    expect(dist(k.cO, k.hD)).toBeCloseTo(80, 6);
+    expect(k.hC[0] - k.hXr[0]).toBeCloseTo(k.hB[0] - k.hXl[0], 6);
+    expect(dist(k.hXr, k.hC)).toBeCloseTo(k.t2[0] - k.t1[0], 6);
+  });
+  it("cinco lados: cada vértice está en la paralela a Y por su pie y su ordenada es la reducida", () => {
+    const k = c("cab-cinco-lados-xoy");
+    const pie: Record<number, string> = { 2: "vf1", 3: "vf2", 4: "vf3", 5: "vf4" };
+    for (const i of [2, 3, 4, 5]) expect(k[`vP${i}`][0] - k[pie[i]][0]).toBeCloseTo(-(k[`vP${i}`][1] - k[pie[i]][1]), 6);
+    expect(dist(k.vf2, k.vP3)).toBeCloseTo(dist(k.vf3, k.vP4), 6);
+  });
+  it("óvalo: los centros están a la misma distancia de los dos puntos de tangencia de cada arco", () => {
+    const k = c("cab-ovalo-xoy");
+    expect(dist(k.o1, k.oD)).toBeCloseTo(dist(k.o1, k.oB), 6);
+    expect(dist(k.o2, k.oB)).toBeCloseTo(dist(k.o2, k.oC), 6);
+    expect(dist(k.o3, k.oC)).toBeCloseTo(dist(k.o3, k.oA), 6);
+    expect(dist(k.o4, k.oA)).toBeCloseTo(dist(k.o4, k.oD), 6);
+  });
+  it("elipse en ZOY: AB vertical de R y CD sobre Y de μR", () => {
+    const k = c("cab-circunferencia-zoy");
+    expect(dist(k.cO, k.zA)).toBeCloseTo(k.R2[0] - k.R1[0], 6);
+    expect(dist(k.cO, k.zC)).toBeCloseTo(k.r2[0] - k.r1[0], 6);
+    expect(k.zA[0]).toBe(k.cO[0]);
+  });
+  it("curva: las abscisas son equidistantes y las ordenadas reducidas", () => {
+    const k = c("cab-curva-xoy");
+    expect(dist(k.vg1, k.vg2)).toBeCloseTo(k.x2[0] - k.x1[0], 6);
+    expect(dist(k.vg2, k.vc2)).toBeCloseTo(k.b2[0] - k.b1[0], 6);
+  });
+});
