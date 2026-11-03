@@ -700,6 +700,7 @@ export const MODULE_BLOCK_PLAN: Readonly<Record<string, ModuleBlockPlan>> = {
   "dibujo-tecnico-1-bachillerato/transformaciones-geometricas": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/tangencias": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/curvas-tecnicas": "dibujo-geometria-plana",
+  "dibujo-tecnico-1-bachillerato/curvas-conicas-dt1": "dibujo-geometria-plana",
   "dibujo-tecnico-1-bachillerato/sistemas-de-representacion": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/sistema-diedrico": "dibujo-sistemas-representacion",
   "dibujo-tecnico-1-bachillerato/sistema-planos-acotados": "dibujo-sistemas-representacion",
