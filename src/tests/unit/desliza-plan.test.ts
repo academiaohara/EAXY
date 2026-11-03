@@ -66,3 +66,24 @@ describe("planAngulo: ángulos de 30°, 45° y 60° con un solo instrumento", ()
     });
   }
 });
+
+describe("planPerp: punto sobre la recta, instrumento del lado del trazo", () => {
+  for (const [a, b] of rectas) {
+    for (const lado of [1, -1]) {
+      it(`recta ${a}→${b}, trazo hacia el lado ${lado}`, () => {
+        const u = unit(sub(b, a));
+        const nrm: Pt = [-u[1] * lado, u[0] * lado];
+        const P: Pt = [a[0] + u[0] * 120, a[1] + u[1] * 120];
+        const plan = planPerp([a, b], P, [P, [P[0] + nrm[0] * 90, P[1] + nrm[1] * 90]], []);
+        const [g0, g1] = plan.borde(plan.objetivo);
+        // el borde de dibujo que sale de la recta va hacia el lado del trazo
+        const lejos = dot(sub(g1, g0), nrm) > 0 ? g1 : g0;
+        const cerca = lejos === g1 ? g0 : g1;
+        expect(dot(sub(lejos, cerca), nrm)).toBeGreaterThan(0);
+        expect(dot(sub(P, cerca), nrm)).toBeGreaterThanOrEqual(-1e-6);
+        // y el instrumento (su recorrido) queda de ese mismo lado de la recta respecto del pie
+        expect(dot(sub(lejos, P), nrm)).toBeGreaterThan(0);
+      });
+    }
+  }
+});

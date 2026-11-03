@@ -1379,7 +1379,7 @@ function igualRodeo(): Construccion {
 
 function igualTraslacion(): Construccion {
   const dx = 215;
-  const V: Record<string, P> = { A: [100, 140], B: [170, 190], C: [150, 245], D: [110, 320], E: [60, 230] };
+  const V: Record<string, P> = { A: [40, 140], B: [170, 190], C: [150, 245], D: [110, 320], E: [75, 230] };
   const pts: Record<string, P> = {};
   const etiquetas = ["a", "b", "c", "d", "e"];
   Object.entries(V).forEach(([k, q], i) => {
