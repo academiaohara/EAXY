@@ -9,11 +9,7 @@ export const ovaloOvoideDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[9],
   stage: { theme: "board" },
   steps: [
-    slide("ovalo", "Óvalo y ovoide", [
-      { kind: "definition", text: "El **óvalo** es una curva cerrada formada por arcos de circunferencia y **simétrica respecto a dos ejes perpendiculares**. Su aplicación práctica más importante en dibujo industrial es el trazado de perspectivas, porque puede sustituir a una elipse de forma aproximada." },
-      { kind: "definition", text: "El **ovoide** es una curva cerrada formada por arcos de circunferencia y **simétrica respecto a un solo eje**. Se utiliza en arquitectura y, esporádicamente, aparece en dibujo industrial." },
-      { kind: "text", text: "En ambas curvas los arcos se enlazan **con tangencia**: los puntos de enlace están siempre sobre la recta que une los centros de los dos arcos. Por eso la clave del trazado es hallar bien los **centros** y los **puntos de tangencia**." },
-    ], diagrama("d9-ovalo"), "visual-top"),
+    slide("ovalo", "Óvalo y ovoide", [], diagrama("d9-ovalo"), "visual-top"),
     ...construccionPasos("ovalo-eje-mayor", "ovalo-eje-menor", "ovalo-cuatro-centros", "ovoide-eje-mayor", "ovoide-eje-menor"),
   ],
 };

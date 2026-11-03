@@ -9,11 +9,7 @@ export const curvaParabolicaRectificacionesDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
-    slide("rectificar", "Rectificar una curva", [
-      { kind: "definition", text: "**Rectificar** una curva es hallar un **segmento** de la misma longitud que ella. En la práctica hay que rectificar una curva cualquiera o un arco de circunferencia." },
-      { kind: "formula", tex: "L = 2\\pi r = \\pi d \\approx \\dfrac{22}{7}\\,d = 3d + \\dfrac{d}{7}" },
-      { kind: "text", text: "Antes, la **curva parabólica** une dos curvas o dos rectas por medio de un arco de parábola tangente en los puntos $A$ y $B$: se dividen los segmentos de las tangentes en el mismo número de partes iguales y las rectas que unen las divisiones envuelven la parábola." },
-    ], diagrama("d8-rectificar"), "visual-top"),
+    slide("rectificar", "Rectificar una curva", [], diagrama("d8-rectificar"), "visual-top"),
     ...construccionPasos("parabola", "rectificar-curva", "rectificar-circunferencia", "rectificar-semicircunferencia"),
   ],
 };

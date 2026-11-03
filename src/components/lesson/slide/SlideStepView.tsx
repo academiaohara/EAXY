@@ -5,6 +5,7 @@ import {
   useRegisterLessonStepControl,
   type LessonContinueMeta,
 } from "@/components/lesson/LessonStepControlContext";
+import { AnimLienzo } from "@/components/lesson/slide/AnimLienzo";
 import { SlideBlockView } from "@/components/lesson/slide/SlideBlocks";
 import { StageViewport } from "@/components/lesson/stage/StageViewport";
 import type { LessonStageTheme, SlideStep } from "@/lib/lesson/types";
@@ -42,6 +43,21 @@ export function SlideStepView({ step, theme, onContinue }: SlideStepViewProps) {
         stage={
           <div className="lesson-slide min-h-0 flex-1 pb-2" data-testid="lesson-slide" data-arrange="bench">
             <SlideBlockView block={step.visual} />
+          </div>
+        }
+      />
+    );
+  }
+
+  // Animación sola: lienzo grande con la explicación a la derecha, que cambia con cada paso (como la mesa de dibujo).
+  if (step.visual?.kind === "anim" && step.blocks.length === 0) {
+    return (
+      <StageViewport
+        theme={theme}
+        className="min-h-0 flex-1"
+        stage={
+          <div className="lesson-slide min-h-0 flex-1 pb-2" data-testid="lesson-slide" data-arrange="lienzo">
+            <AnimLienzo block={step.visual} titulo={step.title} />
           </div>
         }
       />
