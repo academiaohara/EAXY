@@ -144,7 +144,8 @@ function calcular(a: Pt, b: Pt, marcas: Pt[], opciones: OpcionesParalela): PlanP
               const ini0 = x + dot(W[Da], u);
               const ov = solape(ini0, ini0 + e * lD, 0, largoRecta) / Math.min(lD, largoRecta);
               const centrado = fP.reduce((m, f) => m + Math.abs(f - 0.5), 0) / fP.length;
-              return { sinCub, coste: sinCub * 0.6 + (1 - ov) * 250 + centrado * 300, fP };
+              // La posición inicial debe estar sobre la recta de referencia dibujada: si no solapa con ella, se penaliza mucho.
+              return { sinCub, coste: sinCub * 0.6 + (1 - ov) * 250 + (ov < 0.5 ? (0.5 - ov) * 8000 : 0) + centrado * 300, fP };
             };
             const xs: number[] = [e * lD * (centra(fT0) - 0.5), e * lD * (centra(fP0) - 0.5)];
             const xa = e * lD * (Math.max(...fP0) - 0.85);

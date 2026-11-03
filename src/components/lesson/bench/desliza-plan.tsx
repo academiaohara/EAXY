@@ -58,6 +58,8 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
     return [recta[0][0] + u[0] * t, recta[0][1] + u[1] * t];
   })();
   const distP = Math.hypot(P[0] - foot[0], P[1] - foot[1]);
+  const lado = traza.reduce((a, q) => a + dot(sub(q, foot), nrm), 0);
+  const ladoTraza = Math.abs(lado) > 2 ? Math.sign(lado) : 0;
   for (const [iD, iS] of [[0, 1], [1, 0]]) {
     const [Da, Db] = BORDES[iD];
     const [Sa, Sb] = BORDES[iS];
@@ -68,6 +70,8 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
         // el borde de dibujo sale del pie de la perpendicular hacia P (o hacia el trazo si P está en la recta)
         // (si P está en la propia recta, sirve cualquiera de los dos sentidos y se elige el que mejor quepa)
         if (distP > 1 && dot([e * nrm[0], e * nrm[1]], unit(sub(P, foot))) < 0.5) continue;
+        // Si P está en la recta, el instrumento va del lado hacia el que se dibuja la perpendicular (donde está el trazo).
+        if (distP <= 1 && ladoTraza !== 0 && e * ladoTraza < 0) continue;
         for (const se of ESCALAS) {
           const W = vertices(ESC_V, rotE, espejo, se);
           const lD = largo(sub(W[Db], W[Da]));
