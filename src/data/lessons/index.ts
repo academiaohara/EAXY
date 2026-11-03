@@ -336,6 +336,7 @@ import { cuerposGeometricosPiramidesLesson } from "@/data/lessons/matematicas-1-
 import { cuerposGeometricosPoliedrosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/05-cuerpos-geometricos-poliedros";
 import { cuerposGeometricosPrismasLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/06-cuerpos-geometricos-prismas";
 import { cuerposGeometricosRedondosLesson } from "@/data/lessons/matematicas-1-eso/12-figuras-geometricas/08-cuerpos-geometricos-redondos";
+import { curvaParabolicaRectificacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/04-curva-parabolica-rectificaciones-dt1";
 import { curvasBezierTransformacionesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/22-sistemas-cad/02-curvas-bezier-transformaciones-dt1";
 import { curvasNivelInterpretacionDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/13-sistema-planos-acotados/04-curvas-nivel-interpretacion-dt1";
 import { curvasTttTemplabilidadLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/02-curvas-ttt-templabilidad";
@@ -2075,6 +2076,7 @@ export const interactiveLessons = {
   "cuerpos-geometricos-poliedros": cuerposGeometricosPoliedrosLesson,
   "cuerpos-geometricos-prismas": cuerposGeometricosPrismasLesson,
   "cuerpos-geometricos-redondos": cuerposGeometricosRedondosLesson,
+  "curva-parabolica-rectificaciones-dt1": curvaParabolicaRectificacionesDt1Lesson,
   "curvas-bezier-transformaciones-dt1": curvasBezierTransformacionesDt1Lesson,
   "curvas-nivel-interpretacion-dt1": curvasNivelInterpretacionDt1Lesson,
   "curvas-ttt-templabilidad": curvasTttTemplabilidadLesson,
