@@ -24,6 +24,7 @@ export const pertenenciaPuntoRectaPlanoDt1Lesson: InteractiveLesson = {
     slide("frontal", "Recta frontal de un plano", [
       { kind: "text", text: "De la misma forma, una **frontal** $f(f'\\text{-}f'')$ de un plano $\\omega$ tiene su única traza $H'$ en la traza horizontal $\\omega_1$; $f'$ es **paralela a la L.T.** y $f''$ es **paralela a $\\omega_2$**. Su alejamiento es $a$." },
     ], undefined, "stack"),
+    ...construccionPasos("frontal-del-plano"),
     slide("lineas-max", "Líneas de máxima pendiente y de máxima inclinación", [
       { kind: "steps", items: [
         "La **línea de máxima pendiente** (**l.m.p.**) es la recta del plano que forma el **mayor ángulo con el plano horizontal**. Su proyección horizontal es **perpendicular a la traza horizontal** $\\alpha_1$.",

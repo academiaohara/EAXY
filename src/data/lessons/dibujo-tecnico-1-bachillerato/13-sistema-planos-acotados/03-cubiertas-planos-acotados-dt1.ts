@@ -27,5 +27,6 @@ export const cubiertasPlanosAcotadosDt1Lesson: InteractiveLesson = {
       ] },
       { kind: "text", text: "Este sistema, **determinado y reversible**, permite resolver cualquier problema del espacio: representar cuerpos, seccionarlos y hacer todo tipo de operaciones con ellos." },
     ], undefined, "stack"),
+    ...construccionPasos("acotados-cubierta"),
   ],
 };

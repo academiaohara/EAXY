@@ -37,3 +37,22 @@ describe("sistema de planos acotados (tema 13)", () => {
     cotas.forEach((co, i) => expect(dist(k[`F${i + 1}`], k[`Q${i + 1}`])).toBeCloseTo(dist(k.s2, k[`s${co}`]), 6));
   });
 });
+
+describe("tema 13: ampliación", () => {
+  it("graduar por el intervalo: las divisiones están a un intervalo unas de otras", () => {
+    const k = c("acotados-graduar-intervalo").pts;
+    for (let i = 0; i < 4; i += 1) expect(dist(k[`gT${i}`], k[`gT${i + 1}`])).toBeCloseTo(k.i2[0] - k.i1[0], 6);
+  });
+  it("cubierta: las limatesas forman 45° y la cumbrera es horizontal", () => {
+    const k = c("acotados-cubierta").pts;
+    expect(Math.abs(k.cR1[0] - k.cA[0])).toBeCloseTo(Math.abs(k.cA[1] - k.cR1[1]), 6);
+    expect(Math.abs(k.cR2[0] - k.cB[0])).toBeCloseTo(Math.abs(k.cB[1] - k.cR2[1]), 6);
+    expect(k.cR1[1]).toBe(k.cR2[1]);
+  });
+  it("camino: N está en la rasante y en el tramo Q4–Q5 del terreno", () => {
+    const k = c("acotados-perfil-camino").pts;
+    const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+    expect(col(k.Q1, k.Cb, k.cN)).toBeLessThan(1e-6);
+    expect(col(k.Q4, k.Q5, k.cN)).toBeLessThan(1e-6);
+  });
+});

@@ -6,7 +6,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
  */
 
 export const ETIQUETAS_ACOTADOS: Record<string, string> = {
-  t1: "", t2: "", t3: "", t4: "", nA: "A'(1)", nB: "B'(2)", nC: "C'(3)", nD: "D'(4)", nE: "E'(5)", nT: "T'(0)", _x: "",
+  t1: "", t2: "", t3: "", t4: "", gT0: "T'(0)", gT1: "A'(1)", gT2: "B'(2)", gT3: "C'(3)", gT4: "D'(4)", cA: "A", cB: "B", cC: "C", cD: "D", cR1: "", cR2: "", cN: "N", Cb: "", nA: "A'(1)", nB: "B'(2)", nC: "C'(3)", nD: "D'(4)", nE: "E'(5)", nT: "T'(0)", _x: "",
   // plano por su l.m.p.
   Cz: "C₀", lO: "0", l1: "1", l2: "2", l3: "3", a0: "α₀", h1: "h(1)", h2: "h(2)", h3: "h(3)", hi1: "", hi2: "", hi3: "", hi0: "",
   // intersección de planos
@@ -193,9 +193,88 @@ function perfil(): Construccion {
   };
 }
 
+/** Fig. 4 (pág. 113): la pendiente y el intervalo son inversos; con la pendiente 2/3 el intervalo es 3/2. */
+function graduarIntervalo(): Construccion {
+  const T0: P = [80, 305];
+  const u = 90;
+  const ang = 20;
+  const T = Array.from({ length: 5 }, (_, k) => en(T0, u * k, ang));
+  const du = dato("i", u, 70, "ambar");
+  const ops: Op[] = [{ k: "medir", de: "i1", a: "i2" }];
+  for (let k = 1; k <= 4; k += 1) ops.push(...marcaArco(`gT${k - 1}`, `gT${k}`));
+  return {
+    titulo: "Graduar una recta conocida su pendiente",
+    intro: "La **pendiente** es la inversa del **intervalo**: $p = 1/i$. Una recta de pendiente $2/3$ tiene intervalo $i = 3/2$, es decir, 1,5 unidades de longitud por cada unidad de cota. Conocido el intervalo $i$ y la traza $T'(0)$, se gradúa la recta llevándolo con el compás.",
+    pts: { ...du.pts, gT0: T[0], gT1: T[1], gT2: T[2], gT3: T[3], gT4: T[4], _fin: en(T0, 430, ang) },
+    dados: ["gT0"],
+    datos: [du.d],
+    base: [["gT0", "_fin"]],
+    radioMin: 40,
+    ops,
+  };
+}
+
+/** Fig. 10 (pág. 116): cubierta de planta rectangular con todos los faldones de la misma pendiente: limahoyas a 45° y cumbrera. */
+function cubierta(): Construccion {
+  const A: P = [120, 305];
+  const B: P = [500, 305];
+  const C: P = [500, 155];
+  const D: P = [120, 155];
+  const R1: P = [195, 230];
+  const R2: P = [425, 230];
+  return {
+    titulo: "Cubierta de planta rectangular",
+    intro: "En una cubierta con **todos los faldones de la misma pendiente**, las intersecciones de los planos inclinados de lados contiguos (las **limatesas**) son las **bisectrices de los ángulos** de la planta: rectas a 45° desde cada vértice. Donde se cortan por parejas están los extremos de la **cumbrera**, que es horizontal.",
+    pts: { cA: A, cB: B, cC: C, cD: D, cR1: R1, cR2: R2 },
+    dados: ["cA", "cB", "cC", "cD"],
+    datos: [],
+    base: [["cA", "cB"], ["cB", "cC"], ["cC", "cD"], ["cD", "cA"]],
+    escala: 0.8,
+    ops: [
+      { k: "angulo", v: "cA", base: 0, obj: 45, largo: 130 },
+      { k: "angulo", v: "cD", base: 0, obj: 45, signo: -1, largo: 130 },
+      { k: "marca", p: "cR1" },
+      { k: "angulo", v: "cB", base: 180, obj: 45, signo: -1, largo: 130 },
+      { k: "angulo", v: "cC", base: 180, obj: 45, largo: 130 },
+      { k: "marca", p: "cR2" },
+      { k: "recta", a: "cR1", b: "cR2" },
+    ],
+  };
+}
+
+/** Fig. 13 (pág. 117): desmonte y terraplén: el perfil del terreno y la rasante del camino. */
+function perfilCamino(): Construccion {
+  const base = perfil();
+  const y0 = 260;
+  const paso = 30;
+  const pts: Record<string, P> = { ...base.pts };
+  const yF = y0 + 20;
+  pts.Cb = [490, yF - 66];
+  // la rasante corta al terreno (poligonal Q4–Q5) en N
+  const q4 = pts.Q4;
+  const q5 = pts.Q5;
+  const q1 = pts.Q1;
+  const cb = pts.Cb;
+  const d = (q5[0] - q4[0]) * (cb[1] - q1[1]) - (q5[1] - q4[1]) * (cb[0] - q1[0]);
+  const t = ((q1[0] - q4[0]) * (cb[1] - q1[1]) - (q1[1] - q4[1]) * (cb[0] - q1[0])) / d;
+  pts.cN = [q4[0] + t * (q5[0] - q4[0]), q4[1] + t * (q5[1] - q4[1])];
+  void paso;
+  return {
+    ...base,
+    titulo: "Desmonte y terraplén de un camino",
+    intro: "Para hallar el **desmonte** y el **terraplén** de un camino de pendiente uniforme se **abate la sección** que produce en el terreno el plano vertical por el eje $AB$ y se dibuja la **rasante** del camino. Donde la rasante corta al terreno ($N$) termina el desmonte, con la rasante por debajo del terreno, y empieza el terraplén, con la rasante por encima.",
+    pts,
+    dados: [...base.dados, "Cb"],
+    ops: [...base.ops, { k: "recta", a: "Q1", b: "Cb" }, { k: "marca", p: "cN" }],
+  };
+}
+
 export const CONSTRUCCIONES_ACOTADOS = {
   "acotados-graduar": graduar(),
   "acotados-plano-lmp": planoLmp(),
   "acotados-interseccion": interseccion(),
   "acotados-perfil": perfil(),
+  "acotados-graduar-intervalo": graduarIntervalo(),
+  "acotados-cubierta": cubierta(),
+  "acotados-perfil-camino": perfilCamino(),
 } satisfies Record<string, Construccion>;

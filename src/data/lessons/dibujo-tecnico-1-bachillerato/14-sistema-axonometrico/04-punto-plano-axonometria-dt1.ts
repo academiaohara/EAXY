@@ -22,6 +22,7 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
       { kind: "text", text: "Una recta del espacio queda definida conociendo **dos puntos** con dos de sus proyecciones. Se obtiene uniendo las proyecciones **homónimas** de los puntos: la proyección directa $r$ pasa por $P$ y $Q$ y la horizontal $r'$ por $P'$ y $Q'$. Para situar un punto en una recta, sus proyecciones deben estar sobre las proyecciones homónimas de la recta." },
       { kind: "text", text: "Una recta oblicua $t$ tiene tres **trazas**: con los planos $XOY$, $XOZ$ y $ZOY$. El punto $T_1$-$T_1'$ es la traza con $XOY$, por donde se cortan $t$ y $t'$. Prolongando $t'$ hasta el eje $X$ y refiriendo a $t$ se halla la traza con $XOZ$; análogamente con $Y$ para la traza con $ZOY$." },
     ], undefined, "stack"),
+    ...construccionPasos("axo-trazas-recta"),
     slide("rectas-particulares", "Rectas paralelas a planos y a ejes", [
       { kind: "steps", items: [
         "**Paralela a $XOY$**: no tiene traza horizontal; sus proyecciones $t$ y $t'$ son paralelas y las otras se cortan en el eje $Z$.",
@@ -32,6 +33,7 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
         "**Paralela al eje $Z$**: su proyección horizontal es un punto y solo tiene traza con $XOY$.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("axo-rectas-paralelas-ejes"),
     slide("plano", "Representación del plano", [
       { kind: "text", text: "El plano viene definido de la forma más sencilla por sus **trazas**. Un plano oblicuo corta a los planos del sistema según tres rectas que se cortan dos a dos en un punto de cada eje: si corta a $X$ en $A$, a $Y$ en $B$ y a $Z$ en $C$, la traza con $XOY$ es $\\alpha_1$, con $ZOX$ es $\\alpha_2$ y con $ZOY$ es $\\alpha_3$. El triángulo $ABC$ se llama **triángulo de trazas**." },
     ], undefined, "stack"),
@@ -44,6 +46,7 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
         "**Paralelo a $YOZ$**: tiene por trazas con $XOY$ y $ZOX$ dos rectas paralelas a $Y$ y $Z$; la traza $\\alpha_3$ es impropia.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("axo-plano-paralelo-eje", "axo-plano-paralelo-coordenado"),
     slide("intersecciones", "Trazas por tres puntos, posiciones relativas e intersecciones", [
       { kind: "steps", items: [
         "**Plano por tres puntos** $P$, $Q$, $T$: se unen dos a dos para obtener las rectas que definen, se hallan sus trazas y se unen las **homónimas**.",
@@ -52,5 +55,6 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
         "**Intersección de recta y plano**: se hace pasar por la recta un plano cualquiera, el mejor es un **proyectante**, y se halla su intersección con el plano dado; esa recta encuentra a la dada en el punto buscado.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("axo-interseccion-planos"),
   ],
 };

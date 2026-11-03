@@ -8,7 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
-  Rp: "r'", N: "N", b1: "β₁", b2: "β₂", rp: "r'", rv: "r''", Hl: "H", Hb: "", Aa: "", Ab: "", Ba: "", Bb: "", Al: "", Bl: "", A1: "A₁", B1: "B₁", V1: "V", Hq1: "", Hh: "", Uv1: "", Uv2: "", Uv3: "", Uc1: "", Uc2: "", Uc3: "", T1v: "1''", T2v: "2''", T3v: "3''", T1p: "1'", T2p: "2'", T3p: "3'", Pm: "", Pq: "", Pf: "", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
+  Rp: "r'", N: "N", Gp: "G'≡G''", Pv: "P''", Fq: "f''", Qp: "Q'", Qv: "Q''", Ea: "α₁", Eb: "α₂", Pa1: "", Pa2: "", b1: "β₁", b2: "β₂", rp: "r'", rv: "r''", Hl: "H", Hb: "", Aa: "", Ab: "", Ba: "", Bb: "", Al: "", Bl: "", A1: "A₁", B1: "B₁", V1: "V", Hq1: "", Hh: "", Uv1: "", Uv2: "", Uv3: "", Uc1: "", Uc2: "", Uc3: "", T1v: "1''", T2v: "2''", T3v: "3''", T1p: "1'", T2p: "2'", T3p: "3'", Pm: "", Pq: "", Pf: "", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -417,4 +417,138 @@ function figuraPlana(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana() } satisfies Record<string, Construccion>;
+// ---- Puntos en los planos de proyección y en el segundo bisector (pág. 99) ----
+function puntoEspecial(o: { id: string; titulo: string; intro: string; letra: "A" | "E"; alej?: number; cota?: number }): Construccion {
+  const hp = `${o.letra}p`;
+  const vp = `${o.letra}v`;
+  const lado = o.alej !== undefined; // punto en el PH: tiene alejamiento y su alzado está en la L.T.
+  const d = dato(lado ? "alej" : "cota", lado ? o.alej! : o.cota!, 90, lado ? "ambar" : "azul");
+  const pts: Record<string, P> = { _l1: [40, LT_Y], lt: [580, LT_Y], ...d.pts };
+  if (lado) { pts[vp] = [O_X, LT_Y]; pts[hp] = [O_X, LT_Y + o.alej!]; } else { pts[hp] = [O_X, LT_Y]; pts[vp] = [O_X, LT_Y - o.cota!]; }
+  const fijo = lado ? vp : hp;
+  const nuevo = lado ? hp : vp;
+  return {
+    titulo: o.titulo,
+    intro: o.intro,
+    pts,
+    dados: ["lt", fijo, d.d.a, d.d.b],
+    datos: [d.d],
+    base: [["_l1", "lt"]],
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: fijo, traza: lado ? [vp, hp] : [vp, hp] },
+      { k: "medir", de: d.d.a, a: d.d.b }, { k: "arco", c: fijo, hacia: nuevo }, { k: "marca", p: nuevo },
+    ],
+  };
+}
+
+function puntoSegundoBisector(): Construccion {
+  const d = dato("cota", 60, 90, "azul");
+  return {
+    titulo: "Punto del segundo bisector",
+    intro: "Un punto $G$ del **segundo bisector** (segundo diedro) tiene cota y alejamiento **iguales en valor** y de signo contrario: sus dos proyecciones **coinciden** y están sobre la L.T. Con una sola medida basta.",
+    pts: { _l1: [40, LT_Y], lt: [580, LT_Y], O: [O_X, LT_Y], Gp: [O_X, LT_Y - 60], ...d.pts },
+    dados: ["lt", "O", d.d.a, d.d.b],
+    datos: [d.d],
+    base: [["_l1", "lt"]],
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: "O", traza: ["Gp", "O"] },
+      { k: "medir", de: d.d.a, a: d.d.b }, { k: "arco", c: "O", hacia: "Gp" }, { k: "marca", p: "Gp" },
+    ],
+  };
+}
+
+/** Fig. 11: dos rectas se cortan si los puntos de corte de sus proyecciones están en una misma perpendicular a la L.T. */
+function rectasSeCortan(): Construccion {
+  const Pp: P = [330, 300];
+  const Pq: P = [330, 130];
+  return {
+    titulo: "Rectas que se cortan",
+    intro: "Dos rectas $r$ y $s$ **se cortan** en el espacio si las proyecciones del mismo nombre se cortan en puntos que están en una **misma perpendicular a la L.T.** Halla el punto de corte $P(P'\\text{-}P'')$ y comprueba que las referencias coinciden.",
+    pts: {
+      _l1: [40, LT_Y], lt: [580, LT_Y], Pp, Pv: Pq,
+      _r1: [200, 248], _r2: [460, 352], _s1: [220, 345], _s2: [440, 255],
+      _r3: [200, 91], _r4: [460, 169], _s3: [220, 183], _s4: [440, 83],
+    },
+    dados: ["lt"],
+    datos: [],
+    base: [["_l1", "lt"], ["_r1", "_r2"], ["_s1", "_s2"], ["_r3", "_r4"], ["_s3", "_s4"]],
+    ops: [
+      { k: "marca", p: "Pp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Pp", traza: ["Pv", "Pp"] }, { k: "marca", p: "Pv" },
+    ],
+  };
+}
+
+/** Fig. 32: recta frontal de un plano, a un alejamiento dado. */
+function frontalDelPlano(): Construccion {
+  const a = 60;
+  const fx = NX + a / 0.35;
+  const da = dato("alej", a, 90, "ambar");
+  return {
+    titulo: "Recta frontal de un plano",
+    intro: "Las **rectas frontales** de un plano son paralelas al plano $V$: su proyección horizontal $f'$ es **paralela a la L.T.** a una distancia igual al alejamiento, y $f''$ es **paralela a $\\alpha_2$**. Halla la frontal del plano $\\alpha$ de **alejamiento** dado.",
+    pts: {
+      ...PLANO_PTS, ...da.pts,
+      O: [200, LT_Y], C0: [200, LT_Y + a], Hp: [fx, LT_Y + a], Hv: [fx, LT_Y], Fq: [fx + 150, LT_Y - 0.6 * 150],
+    },
+    dados: ["lt", "N", "O", da.d.a, da.d.b],
+    datos: [da.d],
+    base: [["_l1", "lt"], ["N", "_a1"], ["N", "_a2"]],
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: "O", traza: ["O", "C0"] },
+      { k: "medir", de: da.d.a, a: da.d.b }, { k: "arco", c: "O", hacia: "C0" }, { k: "marca", p: "C0" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["C0"], cortes: ["Hp"] },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hp", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hv" },
+      { k: "paralelas", recta: ["N", "_a2"], marcas: ["Hv"], cortes: ["Fq"] },
+    ],
+  };
+}
+
+/** Figs. 35 y 36: planos proyectantes: todo lo que contienen se proyecta sobre una de sus trazas. */
+function planoProyectante(vertical: boolean): Construccion {
+  const N0: P = [250, LT_Y];
+  const qx = 400;
+  const pend = 0.5;
+  if (vertical) {
+    // perpendicular al V: β₁ ⟂ L.T. y β₂ cualquiera; los puntos del plano se proyectan en β₂
+    return {
+      titulo: "Plano proyectante vertical",
+      intro: "Un plano **perpendicular al plano vertical** tiene su traza horizontal $\\beta_1$ **perpendicular a la L.T.** y $\\beta_2$ cualquiera. Todos sus puntos se proyectan verticalmente **sobre $\\beta_2$**. Dado $Q'$, halla $Q''$ en $\\beta_2$.",
+      pts: { _l1: [40, LT_Y], lt: [580, LT_Y], N: N0, _b1: [250, 355], _b2: [540, LT_Y - pend * 290], Qp: [qx, 265], Qv: [qx, LT_Y - pend * (qx - 250)] },
+      dados: ["lt", "N", "Qp"],
+      datos: [],
+      base: [["_l1", "lt"], ["N", "_b1"], ["N", "_b2"]],
+      ops: [{ k: "perp", recta: ["_l1", "lt"], punto: "Qp", traza: ["Qv", "Qp"] }, { k: "marca", p: "Qv" }],
+    };
+  }
+  return {
+    titulo: "Plano proyectante horizontal",
+    intro: "Un plano **perpendicular al plano horizontal** tiene su traza vertical $\\alpha_2$ **perpendicular a la L.T.** y $\\alpha_1$ cualquiera. Todos sus puntos se proyectan horizontalmente **sobre $\\alpha_1$**. Dado $Q''$, halla $Q'$ en $\\alpha_1$.",
+    pts: { _l1: [40, LT_Y], lt: [580, LT_Y], N: N0, _b1: [250, 30], _b2: [540, LT_Y + pend * 290], Qv: [qx, 120], Qp: [qx, LT_Y + pend * (qx - 250)] },
+    dados: ["lt", "N", "Qv"],
+    datos: [],
+    base: [["_l1", "lt"], ["N", "_b1"], ["N", "_b2"]],
+    ops: [{ k: "perp", recta: ["_l1", "lt"], punto: "Qv", traza: ["Qv", "Qp"] }, { k: "marca", p: "Qp" }],
+  };
+}
+
+/** Fig. 41: plano paralelo a la L.T.: sus dos trazas son paralelas a la L.T. */
+function planoParaleloLT(): Construccion {
+  return {
+    titulo: "Plano paralelo a la línea de tierra",
+    intro: "Un plano **paralelo a la L.T.** tiene sus dos trazas $\\alpha_1$ y $\\alpha_2$ **paralelas a la L.T.** Dados un punto de cada traza, dibuja las dos trazas con escuadra y cartabón.",
+    pts: { _l1: [40, LT_Y], lt: [580, LT_Y], Pa1: [230, 270], Pa2: [290, 105], Ea: [530, 270], Eb: [530, 105] },
+    dados: ["lt", "Pa1", "Pa2"],
+    datos: [],
+    base: [["_l1", "lt"]],
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Pa1"], cortes: ["Ea"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Pa2"], cortes: ["Eb"] },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana(), "punto-plano-horizontal": puntoEspecial({ id: "A", letra: "A", alej: 60, titulo: "Punto del plano horizontal anterior", intro: "Un punto $A$ del **plano horizontal anterior** tiene **cota nula**: su proyección vertical $A''$ está en la **L.T.** y la horizontal $A'$ coincide con el punto, por debajo de la L.T. Dado el alejamiento, halla $A'$." }), "punto-plano-vertical": puntoEspecial({ id: "E", letra: "E", cota: 60, titulo: "Punto del plano vertical superior", intro: "Un punto $E$ del **plano vertical superior** tiene **alejamiento nulo**: su proyección horizontal $E'$ está en la **L.T.** y la vertical $E''$ coincide con el punto, por encima de la L.T. Dada la cota, halla $E''$." }), "punto-segundo-bisector": puntoSegundoBisector(), "rectas-se-cortan": rectasSeCortan(), "frontal-del-plano": frontalDelPlano(), "plano-proyectante-vertical": planoProyectante(true), "plano-proyectante-horizontal": planoProyectante(false), "plano-paralelo-lt": planoParaleloLT(), } satisfies Record<string, Construccion>;

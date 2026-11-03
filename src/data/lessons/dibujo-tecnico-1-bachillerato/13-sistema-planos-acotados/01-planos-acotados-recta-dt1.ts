@@ -41,6 +41,6 @@ export const planosAcotadosRectaDt1Lesson: InteractiveLesson = {
         "La pendiente es la **inversa del intervalo**: $p = \\dfrac{1}{i}$. Si el intervalo es $3/2$, la pendiente es $2/3$.",
       ] },
     ], undefined, "stack"),
-    ...construccionPasos("acotados-graduar"),
+    ...construccionPasos("acotados-graduar-intervalo", "acotados-graduar"),
   ],
 };

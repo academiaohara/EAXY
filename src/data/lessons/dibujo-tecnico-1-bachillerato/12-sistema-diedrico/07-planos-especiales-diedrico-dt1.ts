@@ -20,5 +20,6 @@ export const planosEspecialesDiedricoDt1Lesson: InteractiveLesson = {
     slide("paralelos-lt", "Planos paralelos a la línea de tierra", [
       { kind: "text", text: "Un plano **paralelo a la L.T.** tiene sus **dos trazas paralelas a la L.T.** En el espacio se ve de perfil como una recta; en diédrico sus trazas pueden estar vistas u ocultas según el diedro por el que pasen, lo que se deduce fácilmente de la perspectiva." },
     ], undefined, "stack"),
+    ...construccionPasos("plano-paralelo-lt"),
   ],
 };

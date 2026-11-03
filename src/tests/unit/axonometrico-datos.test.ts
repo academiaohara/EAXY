@@ -26,3 +26,27 @@ describe("sistema axonométrico isométrico (tema 14)", () => {
     expect(col(k.oC4, k.om2, k.oC3)).toBeLessThan(1e-6);
   });
 });
+
+describe("tema 14: rectas y planos (ampliación)", () => {
+  const col = (a: P, b: P, p: P) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+  it("trazas de una recta: T₁ está en t y t', T₂ y T₃ en t, y sus proyecciones en t'", () => {
+    const k = c("axo-trazas-recta");
+    expect(col(k.aP, k.aQ, k.aT1)).toBeLessThan(1e-6);
+    expect(col(k.aPp, k.aQp, k.aT1)).toBeLessThan(1e-6);
+    expect(col(k.aP, k.aQ, k.aT2)).toBeLessThan(1e-6);
+    expect(col(k.aP, k.aQ, k.aT3)).toBeLessThan(1e-6);
+    expect(k.aT2[0]).toBeCloseTo(k.aT2p[0], 6);
+    expect(col(k.ao, k.ax, k.aT2p)).toBeLessThan(1e-6);
+    expect(col(k.ao, k.ay, k.aT3p)).toBeLessThan(1e-6);
+  });
+  it("intersección de planos: S₁, S₂ y S₃ están alineados y cada uno en las dos trazas del mismo nombre", () => {
+    const k = c("axo-interseccion-planos");
+    expect(col(k.iS1, k.iS2, k.iS3)).toBeLessThan(1e-6);
+    expect(col(k.iA, k.iB, k.iS1)).toBeLessThan(1e-6);
+    expect(col(k.jA, k.jB, k.iS1)).toBeLessThan(1e-6);
+    expect(col(k.iA, k.iC, k.iS2)).toBeLessThan(1e-6);
+    expect(col(k.jA, k.jC, k.iS2)).toBeLessThan(1e-6);
+    expect(col(k.iB, k.iC, k.iS3)).toBeLessThan(1e-6);
+    expect(col(k.jB, k.jC, k.iS3)).toBeLessThan(1e-6);
+  });
+});

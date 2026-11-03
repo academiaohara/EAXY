@@ -92,3 +92,31 @@ describe("perfil, bisectores y figura plana (tema 12)", () => {
     }
   });
 });
+
+describe("tema 12: ampliación", () => {
+  it("puntos en los planos de proyección: una proyección está en la LT", () => {
+    expect(c("punto-plano-horizontal").pts.Av[1]).toBe(LT);
+    expect(c("punto-plano-vertical").pts.Ep[1]).toBe(LT);
+  });
+  it("segundo bisector: las proyecciones coinciden, sobre la LT", () => {
+    const k = c("punto-segundo-bisector").pts;
+    expect(k.Gp[1]).toBeLessThan(LT);
+  });
+  it("rectas que se cortan: los dos puntos de corte están en una perpendicular a la LT", () => {
+    const k = c("rectas-se-cortan").pts;
+    expect(k.Pp[0]).toBe(k.Pv[0]);
+  });
+  it("planos proyectantes: el punto del plano está en la traza oblicua y en la referencia del punto dado", () => {
+    const v = c("plano-proyectante-vertical").pts;
+    expect(v.Qv[0]).toBe(v.Qp[0]);
+    expect((LT - v.Qv[1]) / (v.Qv[0] - v.N[0])).toBeCloseTo((LT - v._b2[1]) / (v._b2[0] - v.N[0]), 6);
+    const h = c("plano-proyectante-horizontal").pts;
+    expect((h.Qp[1] - LT) / (h.Qp[0] - h.N[0])).toBeCloseTo((h._b2[1] - LT) / (h._b2[0] - h.N[0]), 6);
+  });
+  it("frontal del plano: f' a alejamiento dado sobre α₁ y f'' paralela a α₂", () => {
+    const k = c("frontal-del-plano").pts;
+    expect(k.Hp[1] - LT).toBe(k.alej2[0] - k.alej1[0]);
+    const pend = (k.Fq[1] - k.Hv[1]) / (k.Fq[0] - k.Hv[0]);
+    expect(pend).toBeCloseTo((k._a2[1] - k.N[1]) / (k._a2[0] - k.N[0]), 3);
+  });
+});

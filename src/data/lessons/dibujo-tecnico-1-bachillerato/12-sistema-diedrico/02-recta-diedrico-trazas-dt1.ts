@@ -37,6 +37,7 @@ export const rectaDiedricoTrazasDt1Lesson: InteractiveLesson = {
         "Un punto **pertenece** a una recta si sus proyecciones están sobre las proyecciones del mismo nombre de la recta.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("rectas-se-cortan"),
     slide("de-punta", "Rectas perpendiculares a los planos de proyección", [
       { kind: "text", text: "Pueden ser perpendiculares al plano $H$ o al $V$ y se llaman también **rectas de punta**." },
       { kind: "steps", items: [

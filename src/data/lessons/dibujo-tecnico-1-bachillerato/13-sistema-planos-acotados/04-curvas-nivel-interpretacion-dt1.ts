@@ -26,6 +26,7 @@ export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
     slide("desmonte", "Desmonte y terraplén de un camino", [
       { kind: "text", text: "**Problema:** determinar el desmonte y el terraplén entre dos puntos $A$ y $B$ en la dirección del eje de un camino de pendiente uniforme. Se abate la sección que produce en el terreno el plano vertical por $AB$, tomando las alturas respectivas. La parte comprendida entre $B$ y $N$ es **desmonte** y la comprendida entre $N$ y $A$ es **terraplén**. La tangente del ángulo $B'AB$ es la pendiente del camino." },
     ], undefined, "stack"),
+    ...construccionPasos("acotados-perfil-camino"),
     slide("explanacion", "Explanación de una superficie topográfica", [
       { kind: "text", text: "La forma de la explanación es la de un rectángulo rematado por un semicírculo. Se toman las l.m.p. de los planos inclinados y del tronco de cono cuya base menor es el citado semicírculo, y se hallan los puntos de intersección de las horizontales de plano con las curvas de nivel de igual cota. El perfil transversal se obtiene tomando sobre el eje $\\alpha_0$ los puntos $C, B, A, N, M, L$, trazando perpendiculares y llevando las cotas." },
     ], undefined, "stack"),

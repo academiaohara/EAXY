@@ -60,6 +60,6 @@ export const puntoDiedricoCuadrantesDt1Lesson: InteractiveLesson = {
       ] },
       { kind: "rule", title: "Resumen", text: "Primer diedro: horizontal debajo y vertical encima. Segundo y cuarto: las dos del mismo lado. Tercero: horizontal encima y vertical debajo." },
     ], undefined, "stack"),
-    ...construccionPasos("punto-primer-bisector"),
+    ...construccionPasos("punto-plano-horizontal", "punto-plano-vertical", "punto-primer-bisector", "punto-segundo-bisector"),
   ],
 };

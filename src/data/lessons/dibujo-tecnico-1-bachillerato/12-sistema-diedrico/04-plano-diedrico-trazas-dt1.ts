@@ -34,6 +34,7 @@ export const planoDiedricoTrazasDt1Lesson: InteractiveLesson = {
         "**Proyectante vertical** (perpendicular al $V$): su traza horizontal $\\beta_1$ es **perpendicular a la L.T.** y $\\beta_2$ es cualquiera. Todo lo que contiene se proyecta verticalmente **sobre $\\beta_2$**.",
       ] },
     ], undefined, "stack"),
+    ...construccionPasos("plano-proyectante-horizontal", "plano-proyectante-vertical"),
     slide("paralelos", "Planos paralelos a los de proyección y de perfil", [
       { kind: "steps", items: [
         "**Plano horizontal** $\\omega(\\omega_2)$: paralelo al $H$. No tiene traza horizontal y su traza vertical es **paralela a la L.T.** Los elementos que contiene se proyectan horizontalmente en **verdadera magnitud**.",

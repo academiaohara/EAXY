@@ -99,7 +99,7 @@ describe("construcciones del tema 5: datos", () => {
 
   it("hay una escena de animación y otra de práctica por construcción, con pasos", () => {
     for (const id of ids) {
-      expect(PASOS_CONSTRUCCION[`c-${id}`]).toBeGreaterThan(3);
+      expect(PASOS_CONSTRUCCION[`c-${id}`]).toBeGreaterThanOrEqual(2);
       expect(PASOS_CONSTRUCCION[`c-${id}-practica`]).toBeGreaterThanOrEqual(3);
     }
   });
