@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const circunferenciasTangentesDt1Lesson: InteractiveLesson = {
   slug: "circunferencias-tangentes-dt1",
@@ -18,7 +18,7 @@ export const circunferenciasTangentesDt1Lesson: InteractiveLesson = {
         { tex: "\\text{Tangente a otra circunferencia con radio } R", label: "Circunferencia de radio R + r o R − r" },
         { tex: "\\text{Pasa por dos puntos}", label: "Mediatriz de los puntos" },
       ] },
-    ]),
+    ], diagrama("d8-lugares"), "visual-top"),
     ...construccionPasos("circ-recta-punto-radio", "circ-recta-punto-pasa", "circ-recta-por-punto-radio", "circ-dos-rectas-radio", "circ-dos-rectas-punto", "circ-tres-rectas", "circ-otra-t-radio", "circ-otra-t-punto", "circ-otra-por-punto-radio", "circ-otra-recta-radio", "circ-otra-recta-t"),
   ],
 };

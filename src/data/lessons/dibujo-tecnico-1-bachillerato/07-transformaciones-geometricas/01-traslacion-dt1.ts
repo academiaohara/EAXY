@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { anim, slide } from "@/data/lessons/tec1-helpers";
+import { anim, slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const traslacionDt1Lesson: InteractiveLesson = {
   slug: "traslacion-dt1",
@@ -28,7 +28,7 @@ export const traslacionDt1Lesson: InteractiveLesson = {
         { left: "Una recta paralela al vector", relation: "se transforma en", right: "sí misma (recta doble)" },
       ] },
       { kind: "rule", title: "Vector traslación", text: "Su módulo, dirección y sentido son la **amplitud**, la **dirección** y el **sentido** de la traslación. Queda determinada por una pareja de puntos homólogos $A$ y $A'$, y la **aplicación sucesiva** de traslaciones es otra traslación." },
-    ]),
+    ], diagrama("d7-trasl-prop"), "visual-top"),
     ...construccionPasos("traslacion-figura"),
   ],
 };

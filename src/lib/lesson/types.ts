@@ -1122,6 +1122,7 @@ export type SlideAnimId =
   | "dt1-plano-revision"
   | "dt1-localizacion-dos-arcos"
   | "dt1-abatimiento-diedrico"
+  | "dt1-diagrama"
   | "dt1-curvas-nivel"
   | "dt1-transformaciones-tipos"
   | "dt1-traslacion"
@@ -1183,6 +1184,8 @@ export type ExprStep = {
 
 /** Parámetros opcionales de cada animación (cada escena lee los suyos). */
 export type SlideAnimParams = {
+  /** `dt1-diagrama`: clave del diagrama (ver `src/components/lesson/anim/diagramas`). */
+  clave?: string;
   /** Número protagonista (redondeo, egipcio, posición…). */
   n?: number;
   /** Orden de redondeo (potencia de 10 de la cifra que se conserva). */

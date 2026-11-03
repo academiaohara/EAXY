@@ -43,6 +43,9 @@ export const anim = (scene: Extract<SlideBlock, { kind: "anim" }>["scene"], para
   ...(beatMs ? { beatMs } : {}),
 });
 
+/** Diagrama animado descrito como datos (`src/components/lesson/anim/diagramas`). */
+export const diagrama = (clave: string): Visual => anim("dt1-diagrama", { clave });
+
 export const tool = (
   id: Extract<SlideBlock, { kind: "tool" }>["tool"],
   params?: Extract<SlideBlock, { kind: "tool" }>["params"],

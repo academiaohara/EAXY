@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { anim, slide } from "@/data/lessons/tec1-helpers";
+import { anim, slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const giroDt1Lesson: InteractiveLesson = {
   slug: "giro-dt1",
@@ -24,7 +24,7 @@ export const giroDt1Lesson: InteractiveLesson = {
         { left: "El centro O", relation: "es", right: "el único punto doble" },
       ] },
       { kind: "rule", title: "Para girar una recta", text: "Se traza la perpendicular a $r$ por $O$, se gira su pie $A$ hasta $A'$ y se traza $r'$ **perpendicular a $OA'$ por $A'$**. El ángulo recto en $A$ se conserva." },
-    ]),
+    ], diagrama("d7-giro-prop"), "visual-top"),
     ...construccionPasos("giro-segmento", "giro-recta"),
   ],
 };

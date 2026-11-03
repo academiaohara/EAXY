@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { anim, slide } from "@/data/lessons/tec1-helpers";
+import { anim, slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const homoteciaDt1Lesson: InteractiveLesson = {
   slug: "homotecia-dt1",
@@ -24,7 +24,7 @@ export const homoteciaDt1Lesson: InteractiveLesson = {
         { left: "Ángulos homólogos", relation: "son", right: "iguales: las figuras son semejantes" },
       ] },
       { kind: "rule", title: "Semejanza", text: "Dos figuras **semejantes** son homotéticas cuando sus rectas homólogas son **paralelas**." },
-    ]),
+    ], diagrama("d7-homo-casos"), "visual-top"),
     slide("homotecia-centros", "Dos segmentos y dos circunferencias", [
       { kind: "text", text: "Dos **segmentos paralelos** $AB$ y $A'B'$ son homotéticos respecto de **dos centros**: $C_1$ en una homotecia directa y $C_2$ en una inversa." },
       { kind: "text", text: "Dos **circunferencias** son siempre homotéticas: $C_1$ (directa) y $C_2$ (inversa) son los puntos de corte de sus tangentes comunes **exteriores** o **interiores**." },
