@@ -8,7 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
-  Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
+  Rp: "r'", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -130,4 +130,71 @@ function trazasRecta(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta() } satisfies Record<string, Construccion>;
+const LT_BASE = { _l1: [40, LT_Y] as P, lt: [580, LT_Y] as P };
+
+/** Recta perpendicular al plano horizontal (recta de punta respecto al H): su proyección horizontal es un punto. */
+function rectaVertical(): Construccion {
+  return {
+    titulo: "Recta perpendicular al plano horizontal",
+    intro: "Una recta $a$ **perpendicular al plano $H$**, situada delante del $V$, tiene por proyección horizontal un **punto** $a'$. Dibuja su proyección vertical $a''$: es **perpendicular a la L.T.** por $a'$ (un punto $N$ de ella es $N'$-$N''$, con $N'$ en $a'$).",
+    pts: { ...LT_BASE, Ap: [330, 270], Nv: [330, 80] },
+    dados: ["lt", "Ap"],
+    datos: [],
+    base: [["_l1", "lt"]],
+    ops: [{ k: "perp", recta: ["_l1", "lt"], punto: "Ap", traza: ["Nv", "Ap"] }, { k: "marca", p: "Nv" }],
+  };
+}
+
+/** Recta paralela a la L.T.: sus dos proyecciones son paralelas a la L.T. */
+function rectaParalelaLT(): Construccion {
+  return {
+    titulo: "Recta paralela a la línea de tierra",
+    intro: "Una recta **paralela a la L.T.** tiene sus dos proyecciones paralelas a la L.T. Dado el punto $A(A'-A'')$ de la recta, dibuja $r'$ y $r''$ por $A'$ y $A''$.",
+    pts: { ...LT_BASE, Ap: [220, 255], Av: [220, 115], Rp: [520, 255], Rv: [520, 115] },
+    dados: ["lt", "Ap", "Av"],
+    datos: [],
+    base: [["_l1", "lt"]],
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Ap"], cortes: ["Rp"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Av"], cortes: ["Rv"] },
+    ],
+  };
+}
+
+/** Recta horizontal (paralela al plano H): su proyección vertical es paralela a la L.T. y su traza vertical está en el PV. */
+function rectaHorizontal(): Construccion {
+  return {
+    titulo: "Recta paralela al plano horizontal",
+    intro: "Una recta **paralela al plano $H$** está por encima de él y no tiene traza horizontal. Su proyección vertical $r''$ es **paralela a la L.T.** y $r'$ es cualquiera. Dados $r'$ y el punto $A''$, traza $r''$ y halla la **traza vertical** $V(V'-V'')$.",
+    pts: { ...LT_BASE, Ap: [200, 260], Bp: [300, 220], Av: [200, 115], Rv: [520, 115], Vp: [375, LT_Y], Vv: [375, 115] },
+    dados: ["lt", "Ap", "Bp", "Av"],
+    datos: [],
+    base: [["_l1", "lt"], ["Ap", "Bp"]],
+    ext: 200,
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Av"], cortes: ["Rv"] },
+      { k: "recta", a: "Ap", b: "Bp" }, { k: "marca", p: "Vp" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Vp", traza: ["Vv", "Vp"] }, { k: "marca", p: "Vv" },
+    ],
+  };
+}
+
+/** Recta frontal (paralela al plano V): su proyección horizontal es paralela a la L.T. y su traza horizontal está en el PH. */
+function rectaFrontal(): Construccion {
+  return {
+    titulo: "Recta paralela al plano vertical",
+    intro: "Una recta **paralela al plano $V$**, llamada **frontal**, no tiene traza vertical. Su proyección horizontal $r'$ es **paralela a la L.T.** y $r''$ es cualquiera. Dados $r''$ y el punto $A'$, traza $r'$ y halla la **traza horizontal** $H(H'-H'')$.",
+    pts: { ...LT_BASE, Av: [200, 115], Bv: [300, 155], Ap: [200, 255], Rp: [520, 255], Hv: [375, LT_Y], Hp: [375, 255] },
+    dados: ["lt", "Av", "Bv", "Ap"],
+    datos: [],
+    base: [["_l1", "lt"], ["Av", "Bv"]],
+    ext: 200,
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Ap"], cortes: ["Rp"] },
+      { k: "recta", a: "Av", b: "Bv" }, { k: "marca", p: "Hv" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Hv", traza: ["Hv", "Hp"] }, { k: "marca", p: "Hp" },
+    ],
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal() } satisfies Record<string, Construccion>;
