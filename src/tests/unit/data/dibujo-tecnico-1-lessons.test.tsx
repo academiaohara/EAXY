@@ -42,7 +42,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["curvas-tecnicas", 2],
   ["curvas-conicas-dt1", 3],
   ["sistemas-de-representacion", 1],
-  ["sistema-diedrico", 9],
+  ["sistema-diedrico", 8],
   ["sistema-planos-acotados", 4],
   ["sistema-axonometrico", 4],
   ["sistema-perspectiva-caballera", 1],

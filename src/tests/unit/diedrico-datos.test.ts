@@ -61,3 +61,34 @@ describe("épura del plano (tema 12)", () => {
     expect(colineales(k.pts.N, k.pts._a2, k.pts.Vv)).toBeLessThan(1);
   });
 });
+
+describe("perfil, bisectores y figura plana (tema 12)", () => {
+  const colin = (a: [number, number], b: [number, number], p: [number, number]) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]));
+  it("perfil-punto: A₁ está en la recta r₁ (V₁–H) y A'' a su altura", () => {
+    const k = c("perfil-punto");
+    expect(colin(k.pts.V1, k.pts.Hl, k.pts.A1)).toBeLessThan(1e-6);
+    expect(k.pts.Av[1]).toBeCloseTo(k.pts.A1[1], 6);
+    expect(k.pts.Al[0] - k.pts.O[0]).toBeCloseTo(k.pts.Ap[1] - LT, 6);
+  });
+  it("perfil-trazas: A₁, B₁, H y V están alineados y los arcos conservan las distancias", () => {
+    const k = c("perfil-trazas");
+    expect(colin(k.pts.A1, k.pts.B1, k.pts.Hl)).toBeLessThan(1e-6);
+    expect(colin(k.pts.A1, k.pts.B1, k.pts.V1)).toBeLessThan(1e-6);
+    expect(k.pts.Hb[1] - LT).toBeCloseTo(k.pts.Hl[0] - k.pts.O[0], 6);
+    expect(LT - k.pts.Vv[1]).toBeCloseTo(LT - k.pts.V1[1], 6);
+  });
+  it("plano-perp-bisector: las trazas son simétricas respecto de la L.T.", () => {
+    const k = c("plano-perp-bisector");
+    expect(k.pts.Pm[1] - LT).toBeCloseTo(LT - k.pts.Pq[1], 6);
+  });
+  it("figura-plana: cada vértice del alzado y su planta están en una perpendicular a la L.T. y en una horizontal del plano", () => {
+    const k = c("figura-plana");
+    for (const i of [1, 2, 3]) {
+      expect(k.pts[`T${i}p`][0]).toBe(k.pts[`T${i}v`][0]);
+      expect(colin(k.pts.N, k.pts._a2, k.pts[`Uv${i}`])).toBeLessThan(1e-6);
+      // h' paralela a α₁: pasa por Uc y su pendiente es la de α₁
+      const pend = (k.pts._a1[1] - k.pts.N[1]) / (k.pts._a1[0] - k.pts.N[0]);
+      expect((k.pts[`T${i}p`][1] - LT) / (k.pts[`T${i}p`][0] - k.pts[`Uc${i}`][0])).toBeCloseTo(pend, 6);
+    }
+  });
+});

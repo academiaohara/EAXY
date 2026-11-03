@@ -8,7 +8,7 @@ import type { Construccion, Dato, Op, P } from "./construcciones-datos";
 
 export const ETIQUETAS_DIEDRICO: Record<string, string> = {
   lt: "LT", O: "O", Av: "A''", Bv: "B''", Cv: "C''", Dv: "D''", Ev: "E''", Ap: "A'", Bp: "B'", Cp: "C'", Dp: "D'", Ep: "E'",
-  Rp: "r'", N: "N", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
+  Rp: "r'", N: "N", b1: "β₁", b2: "β₂", rp: "r'", rv: "r''", Hl: "H", Hb: "", Aa: "", Ab: "", Ba: "", Bb: "", Al: "", Bl: "", A1: "A₁", B1: "B₁", V1: "V", Hq1: "", Hh: "", Uv1: "", Uv2: "", Uv3: "", Uc1: "", Uc2: "", Uc3: "", T1v: "1''", T2v: "2''", T3v: "3''", T1p: "1'", T2p: "2'", T3p: "3'", Pm: "", Pq: "", Pf: "", C0: "", Hq: "h'", _a1: "α₁", _a2: "α₂", H1p: "H₁'", H1v: "H₁''", Rv: "r''", Nv: "N''", Hp: "H'", Hv: "H''", Vp: "V'", Vv: "V''",
 };
 
 const LT_Y = 190;
@@ -287,4 +287,134 @@ function horizontalDelPlano(): Construccion {
   };
 }
 
-export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano() } satisfies Record<string, Construccion>;
+// ---- Tercera proyección de una recta de perfil (págs. 103-105, problemas 12 y 13) ----
+// La recta r(r'-r'') está en la perpendicular x = 190; el plano de perfil β tiene su traza en x = 330 y O = β ∩ LT.
+const RX = 190;
+const OX = 330;
+const PERFIL_BASE: Record<string, P> = { ...LT_BASE, O: [OX, LT_Y], b1: [OX, 350], b2: [OX, 30], rp: [RX, 345], rv: [RX, 40] };
+const PERFIL_BASES: [string, string][] = [["_l1", "lt"], ["b1", "b2"], ["rp", "rv"]];
+
+/** Problema 12: dadas las trazas de una recta de perfil y A', hallar A''. */
+function perfilPunto(): Construccion {
+  return {
+    titulo: "Punto de una recta de perfil",
+    intro: "Una recta de perfil tiene sus dos proyecciones en una misma perpendicular a la L.T., así que **no basta con ellas** para situar un punto. Se pasa a una **tercera proyección** sobre un plano de perfil $\\beta$. Conocidas las trazas $H'$ y $V''$ de la recta y la proyección $A'$ de un punto, halla $A''$.",
+    pts: {
+      ...PERFIL_BASE,
+      Hp: [RX, 300], Vv: [RX, 80], Ap: [RX, 250], Av: [RX, 140],
+      Hb: [OX, 300], Hl: [440, LT_Y], V1: [OX, 80], Ab: [OX, 250], Al: [390, LT_Y], A1: [390, 140],
+    },
+    dados: ["lt", "O", "Hp", "Vv", "Ap"],
+    datos: [],
+    base: PERFIL_BASES,
+    radioMin: 30,
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Hp"], cortes: ["Hb"] },
+      { k: "medir", de: "O", a: "Hb" }, { k: "arco", c: "O", hacia: "Hl" }, { k: "marca", p: "Hl" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Vv"], cortes: ["V1"] },
+      { k: "recta", a: "V1", b: "Hl" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Ap"], cortes: ["Ab"] },
+      { k: "medir", de: "O", a: "Ab" }, { k: "arco", c: "O", hacia: "Al" }, { k: "marca", p: "Al" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Al", traza: ["Al", "A1"] }, { k: "marca", p: "A1" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["A1"], cortes: ["Av"] }, { k: "marca", p: "Av" },
+    ],
+  };
+}
+
+/** Problema 13: dada una recta de perfil por dos puntos A y B, hallar sus trazas. */
+function perfilTrazas(): Construccion {
+  // A1 = (375, 140), B1 = (425, 170): la recta r1 corta a la L.T. en x = 458,3 y a β₂ en y = 113.
+  const xH = 375 + (LT_Y - 140) / 0.6;
+  const yV = 140 - 0.6 * 45;
+  const dH = xH - OX;
+  return {
+    titulo: "Trazas de una recta de perfil",
+    intro: "Una recta de perfil se da por **dos de sus puntos** $A$ y $B$. Se pasa a la **tercera proyección**: $A_1$ y $B_1$ definen $r_1$, que corta a los planos $H$ y $V$ en las trazas pedidas; después se **refieren** a la recta en $H'$-$H''$ y $V'$-$V''$.",
+    pts: {
+      ...PERFIL_BASE,
+      Ap: [RX, 235], Av: [RX, 140], Bp: [RX, 285], Bv: [RX, 170],
+      Aa: [OX, 235], Al: [375, LT_Y], A1: [375, 140],
+      Ba: [OX, 285], Bl: [425, LT_Y], B1: [425, 170],
+      Hl: [xH, LT_Y], V1: [OX, yV], Hb: [OX, LT_Y + dH], Hp: [RX, LT_Y + dH], Vv: [RX, yV],
+    },
+    dados: ["lt", "O", "Ap", "Av", "Bp", "Bv"],
+    datos: [],
+    base: PERFIL_BASES,
+    radioMin: 30,
+    ops: [
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Ap"], cortes: ["Aa"] },
+      { k: "medir", de: "O", a: "Aa" }, { k: "arco", c: "O", hacia: "Al" }, { k: "marca", p: "Al" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Al", traza: ["Al", "A1"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Av"], cortes: ["A1"] }, { k: "marca", p: "A1" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Bp"], cortes: ["Ba"] },
+      { k: "medir", de: "O", a: "Ba" }, { k: "arco", c: "O", hacia: "Bl" }, { k: "marca", p: "Bl" },
+      { k: "perp", recta: ["_l1", "lt"], punto: "Bl", traza: ["Bl", "B1"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Bv"], cortes: ["B1"] }, { k: "marca", p: "B1" },
+      { k: "recta", a: "A1", b: "B1" }, { k: "marca", p: "Hl" }, { k: "marca", p: "V1" },
+      { k: "medir", de: "O", a: "Hl" }, { k: "arco", c: "O", hacia: "Hb" }, { k: "marca", p: "Hb" },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["Hb"], cortes: ["Hp"] },
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: ["V1"], cortes: ["Vv"] },
+    ],
+  };
+}
+
+/** Plano perpendicular al primer bisector (Fig. 40): sus trazas son simétricas respecto de la L.T. */
+function planoPerpBisector(): Construccion {
+  const px = 330;
+  const py = LT_Y + 0.7 * (px - NX);
+  return {
+    titulo: "Plano perpendicular al primer bisector",
+    intro: "Un plano **perpendicular al primer bisector** tiene sus trazas **simétricas respecto de la L.T.**, es decir, forman el mismo ángulo con ella. Dada la traza horizontal $\\alpha_1$, halla $\\alpha_2$ llevando con el compás un punto de $\\alpha_1$ al otro lado de la L.T.",
+    pts: {
+      ...LT_BASE, N: [NX, LT_Y], _a1: [480, LT_Y + 0.7 * (480 - NX)],
+      Pq: [px, py], Pf: [px, LT_Y], Pm: [px, 2 * LT_Y - py],
+    },
+    dados: ["lt", "N", "Pq"],
+    datos: [],
+    base: [["_l1", "lt"], ["N", "_a1"]],
+    ext: 200,
+    radioMin: 30,
+    ops: [
+      { k: "perp", recta: ["_l1", "lt"], punto: "Pq", traza: ["Pm", "Pq"] }, { k: "marca", p: "Pf" },
+      { k: "medir", de: "Pf", a: "Pq" }, { k: "arco", c: "Pf", hacia: "Pm" }, { k: "marca", p: "Pm" },
+      { k: "recta", a: "N", b: "Pm" },
+    ],
+  };
+}
+
+/** Proyecciones de una figura plana (Fig. 43): dada la proyección vertical de un triángulo contenido en un plano, hallar la horizontal. */
+function figuraPlana(): Construccion {
+  const vertices: [number, number][] = [[340, 110], [400, 140], [300, 160]];
+  const pts: Record<string, P> = { ...PLANO_PTS };
+  const ops: Op[] = [];
+  const base: [string, string][] = [["_l1", "lt"], ["N", "_a1"], ["N", "_a2"]];
+  vertices.forEach(([x, y], i) => {
+    const k = i + 1;
+    const cota = LT_Y - y;
+    const ux = NX + cota / 0.6; // V'' de la horizontal que pasa por el vértice
+    pts[`T${k}v`] = [x, y];
+    pts[`Uv${k}`] = [ux, y];
+    pts[`Uc${k}`] = [ux, LT_Y];
+    pts[`T${k}p`] = [x, alfa1(NX) + 0.35 * (x - ux) + (LT_Y - alfa1(NX))];
+    ops.push(
+      { k: "paralelas", recta: ["_l1", "lt"], marcas: [`T${k}v`], cortes: [`Uv${k}`] },
+      { k: "perp", recta: ["_l1", "lt"], punto: `Uv${k}`, traza: [`Uv${k}`, `Uc${k}`] }, { k: "marca", p: `Uc${k}` },
+      { k: "paralelas", recta: ["N", "_a1"], marcas: [`Uc${k}`], cortes: [`T${k}p`] },
+      { k: "perp", recta: ["_l1", "lt"], punto: `T${k}v`, traza: [`T${k}v`, `T${k}p`] }, { k: "marca", p: `T${k}p` },
+    );
+  });
+  ops.push({ k: "lados", pts: ["T1p", "T2p", "T3p"] });
+  return {
+    titulo: "Proyecciones de una figura plana",
+    intro: "Dado un plano $\\alpha$ y una figura contenida en él de la que se conoce **una proyección**, hay que hallar la otra. Se traza por cada vértice una **recta horizontal** del plano: $h''$ por el vértice corta a $\\alpha_2$ en $V''$; por $V'$ se traza $h'$ paralela a $\\alpha_1$, y el vértice $1''$ se refiere a $h'$ en $1'$.",
+    pts,
+    dados: ["lt", "N", "T1v", "T2v", "T3v"],
+    datos: [],
+    base: [...base, ["T1v", "T2v"], ["T2v", "T3v"], ["T3v", "T1v"]],
+    ext: 200,
+    escala: 0.8,
+    ops,
+  };
+}
+
+export const CONSTRUCCIONES_DIEDRICO = { ...PUNTOS, "recta-proyecciones": proyeccionesRecta(), "recta-trazas": trazasRecta(), "recta-vertical": rectaVertical(), "recta-paralela-lt": rectaParalelaLT(), "recta-horizontal": rectaHorizontal(), "recta-frontal": rectaFrontal(), "plano-dos-rectas": planoDosRectas(), "recta-en-plano": rectaEnPlano(), "horizontal-del-plano": horizontalDelPlano(), "perfil-punto": perfilPunto(), "perfil-trazas": perfilTrazas(), "plano-perp-bisector": planoPerpBisector(), "figura-plana": figuraPlana() } satisfies Record<string, Construccion>;
