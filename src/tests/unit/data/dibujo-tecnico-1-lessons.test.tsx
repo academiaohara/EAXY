@@ -40,6 +40,7 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["transformaciones-geometricas", 3],
   ["tangencias", 4],
   ["curvas-tecnicas", 2],
+  ["curvas-conicas-dt1", 3],
   ["sistemas-de-representacion", 1],
   ["sistema-diedrico", 9],
   ["sistema-planos-acotados", 4],

@@ -73,6 +73,9 @@ function recorrer(c: Construccion) {
       case "curvaPuntos":
         o.pts.forEach((x) => visible(x, donde));
         break;
+      case "elipse":
+        visible(o.c, donde);
+        break;
     }
   });
   return problemas;

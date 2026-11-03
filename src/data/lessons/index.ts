@@ -501,6 +501,7 @@ import { elementosSustanciasFq3Lesson } from "@/data/lessons/fisica-3-eso/03-ele
 import { elementosTiposEstructurasTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/02-estructuras/01-elementos-tipos-estructuras-ti2";
 import { elevadorMaquinaCotidiana2esoLesson } from "@/data/lessons/tecnologia-2-eso/04-estructuras-mecanismos/08-elevador-maquina-cotidiana-2eso";
 import { elipse1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/10-elipse-1bach";
+import { elipseDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-curvas-conicas-dt1/01-elipse-dt1";
 import { elipseFocosEjesDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/02-elipse-focos-ejes-dt2";
 import { elipsePorAfinidadDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/02-homologia-afinidad/03-elipse-por-afinidad-dt2";
 import { emprendimientoViabilidadComunicacionTi2Lesson } from "@/data/lessons/tecnologia-ingenieria-2-bachillerato/01-proyectos-id/05-emprendimiento-viabilidad-comunicacion-ti2";
@@ -753,6 +754,7 @@ import { hidroxidosOxoacidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-for
 import { hidrurosHidracidosFq4Lesson } from "@/data/lessons/fisica-4-eso/04-formulacion-y-nomenclatura/03-hidruros-hidracidos-fq4";
 import { hiperbola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/11-hiperbola-1bach";
 import { hiperbolaAsintotasDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/03-hiperbola-asintotas-dt2";
+import { hiperbolaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-curvas-conicas-dt1/02-hiperbola-dt1";
 import { historiaDibujoTecnicoCamposDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/20-historia-fundamentos-geometricos/01-historia-dibujo-tecnico-campos-dt1";
 import { historiaTecnologiaEvolucionLesson } from "@/data/lessons/tecnologia-1-eso/01-tecnologia-proceso-tecnologico/02-historia-tecnologia-evolucion";
 import { hojaCalculoFormulas2esoLesson } from "@/data/lessons/tecnologia-2-eso/07-digitalizacion-entorno-personal/03-hoja-calculo-formulas-2eso";
@@ -1095,6 +1097,7 @@ import { palancasPoleasEquilibrioLesson } from "@/data/lessons/tecnologia-ingeni
 import { paquetesProtocolosInternet3esoLesson } from "@/data/lessons/tecnologia-3-eso/07-redes-dispositivos-digitales/05-paquetes-protocolos-internet-3eso";
 import { parPotenciaReductoras4esoLesson } from "@/data/lessons/tecnologia-4-eso/03-sistemas-mecanicos/02-par-potencia-reductoras-4eso";
 import { parabola1bachLesson } from "@/data/lessons/matematicas-1-bachillerato/05-geometria/12-parabola-1bach";
+import { parabolaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/10-curvas-conicas-dt1/03-parabola-dt1";
 import { parabolaFocoDirectrizDt2Lesson } from "@/data/lessons/dibujo-tecnico-2-bachillerato/04-curvas-conicas/04-parabola-foco-directriz-dt2";
 import { paralelaCompasDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/02-trazados-fundamentales-plano/07-paralela-compas-dt1";
 import { paralelismoDiedricoDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/12-sistema-diedrico/07-paralelismo-diedrico-dt1";
@@ -2241,6 +2244,7 @@ export const interactiveLessons = {
   "elementos-tipos-estructuras-ti2": elementosTiposEstructurasTi2Lesson,
   "elevador-maquina-cotidiana-2eso": elevadorMaquinaCotidiana2esoLesson,
   "elipse-1bach": elipse1bachLesson,
+  "elipse-dt1": elipseDt1Lesson,
   "elipse-focos-ejes-dt2": elipseFocosEjesDt2Lesson,
   "elipse-por-afinidad-dt2": elipsePorAfinidadDt2Lesson,
   "emprendimiento-viabilidad-comunicacion-ti2": emprendimientoViabilidadComunicacionTi2Lesson,
@@ -2493,6 +2497,7 @@ export const interactiveLessons = {
   "hidruros-hidracidos-fq4": hidrurosHidracidosFq4Lesson,
   "hiperbola-1bach": hiperbola1bachLesson,
   "hiperbola-asintotas-dt2": hiperbolaAsintotasDt2Lesson,
+  "hiperbola-dt1": hiperbolaDt1Lesson,
   "historia-dibujo-tecnico-campos-dt1": historiaDibujoTecnicoCamposDt1Lesson,
   "historia-tecnologia-evolucion": historiaTecnologiaEvolucionLesson,
   "hoja-calculo-formulas-2eso": hojaCalculoFormulas2esoLesson,
@@ -2835,6 +2840,7 @@ export const interactiveLessons = {
   "paquetes-protocolos-internet-3eso": paquetesProtocolosInternet3esoLesson,
   "par-potencia-reductoras-4eso": parPotenciaReductoras4esoLesson,
   "parabola-1bach": parabola1bachLesson,
+  "parabola-dt1": parabolaDt1Lesson,
   "parabola-foco-directriz-dt2": parabolaFocoDirectrizDt2Lesson,
   "paralela-compas-dt1": paralelaCompasDt1Lesson,
   "paralelismo-diedrico-dt1": paralelismoDiedricoDt1Lesson,

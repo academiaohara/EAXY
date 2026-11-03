@@ -7,6 +7,7 @@
  * Convenios: ángulos en grados, antihorarios, con el eje Y hacia arriba (como `geometry.ts`). Los puntos cuyo nombre empieza
  * por «_» son auxiliares (no se dibujan ni se rotulan). El radio de un arco es la última medida tomada con `medir`.
  */
+import { CONSTRUCCIONES_CONICAS, ETIQUETAS_CONICAS } from "./construcciones-conicas";
 import { CONSTRUCCIONES_CURVAS, ETIQUETAS_CURVAS } from "./construcciones-curvas";
 import { CONSTRUCCIONES_TANGENCIAS, ETIQUETAS_TANGENCIAS } from "./construcciones-tangencias";
 
@@ -51,7 +52,9 @@ export type Op =
   /** Arco de parábola tangente a `a`–`c` en `a` y a `c`–`b` en `b` (curva de Bézier cuadrática con control en `c`). */
   | { k: "curva"; a: string; c: string; b: string }
   /** Curva suave (a mano alzada o con plantilla) que pasa por estos puntos, en trazo grueso. */
-  | { k: "curvaPuntos"; pts: string[] };
+  | { k: "curvaPuntos"; pts: string[] }
+  /** Elipse de centro `c` y semiejes `a` (horizontal) y `b` (vertical), en trazo grueso. */
+  | { k: "elipse"; c: string; a: number; b: number };
 
 export type Nota = { title: string; text: string; fact?: string };
 
@@ -1540,6 +1543,7 @@ export const CONSTRUCCIONES = {
   "simetria-axial-figura": simetriaAxial(["1", "2", "3", "4"], [[120, 85], [215, 60], [270, 130], [150, 150]], "Simetría axial de una figura", "Para hallar la figura $F'$ simétrica de $F$ respecto de un eje se repite la operación punto a punto: por cada vértice se traza la perpendicular al eje y se lleva la misma distancia al otro lado.", true, [["1", "2"], ["2", "3"], ["3", "4"], ["4", "1"]]),
   ...CONSTRUCCIONES_TANGENCIAS,
   ...CONSTRUCCIONES_CURVAS,
+  ...CONSTRUCCIONES_CONICAS,
 } satisfies Record<string, Construccion>;
 
 /**
@@ -1565,6 +1569,7 @@ const ETIQUETAS: Record<string, string> = {
   la: "a", lb: "b", lc: "c", ld: "d", le: "e", m1: "", m2: "",
   ...ETIQUETAS_TANGENCIAS,
   ...ETIQUETAS_CURVAS,
+  ...ETIQUETAS_CONICAS,
 };
 export const etiqueta = (clave: string) => (/^h[xy]\d$/.test(clave) ? "" : ETIQUETAS[clave] ?? clave);
 export const ID_ANIM = (id: ConstruccionId) => `c-${id}` as const;

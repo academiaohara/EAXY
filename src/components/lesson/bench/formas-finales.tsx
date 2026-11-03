@@ -8,7 +8,8 @@ import { ArcoPlano } from "./scenes-trazados";
 export type FormaFinal =
   | { tipo: "circulo"; c: Pt; r: number; desde?: Pt; hasta?: Pt; por?: Pt }
   | { tipo: "curva"; a: Pt; c: Pt; b: Pt }
-  | { tipo: "suave"; pts: Pt[] };
+  | { tipo: "suave"; pts: Pt[] }
+  | { tipo: "elipse"; c: Pt; a: number; b: number };
 
 /** Ángulo inicial y recorrido (por el camino corto) de un arco de centro `c` entre `desde` y `hasta`. */
 export function barrido(c: Pt, desde: Pt, hasta: Pt, por?: Pt): [number, number] {
@@ -41,6 +42,9 @@ export function FormaTrazo({ forma, t, w = 3 }: { forma: FormaFinal; t: number; 
   if (forma.tipo === "curva") {
     const d = `M${forma.a[0]} ${forma.a[1]} Q${forma.c[0]} ${forma.c[1]} ${forma.b[0]} ${forma.b[1]}`;
     return <path d={d} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} strokeLinecap="round" data-testid="bench-forma-final" />;
+  }
+  if (forma.tipo === "elipse") {
+    return <ellipse cx={forma.c[0]} cy={forma.c[1]} rx={forma.a} ry={forma.b} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} data-testid="bench-forma-final" />;
   }
   if (forma.tipo === "suave") {
     return <path d={trazadoSuave(forma.pts)} pathLength={1} strokeDasharray={`${Math.min(1, t)} 1.01`} fill="none" stroke={INK} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" data-testid="bench-forma-final" />;

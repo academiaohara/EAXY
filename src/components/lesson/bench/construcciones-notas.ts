@@ -53,6 +53,8 @@ function notaOp(c: Construccion, o: Op, i: number): Nota {
       return o.hasta
         ? { title: "Se dibuja el arco de enlace", text: `Con centro en ${L(o.c)} se traza el arco entre ${L(o.hacia)} y ${L(o.hasta)}, que son los puntos de tangencia. Queda en trazo grueso.`, fact: "Arco de enlace" }
         : { title: "Se dibuja la solución", text: `Con centro en ${L(o.c)} y pasando por ${L(o.hacia)} se traza la circunferencia solución, en trazo grueso.`, fact: `Centro ${tit(o.c)}` };
+    case "elipse":
+      return { title: "Se dibuja la elipse", text: `Se unen los puntos obtenidos con una curva suave, a mano alzada o con plantilla de curvas, y se remarca la elipse de centro ${L(o.c)} en trazo grueso.`, fact: "Elipse" };
     case "curvaPuntos":
       return { title: "Se dibuja la curva", text: `Se unen ${o.pts.map(L).join(", ")} con una curva suave, a mano alzada o con plantilla de curvas, en trazo grueso.`, fact: "Curva por los puntos" };
     case "curva":
