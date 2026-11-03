@@ -17116,7 +17116,7 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20802),
-              title: "2. El plano: horizontales y escala de pendiente",
+              title: "2. Representación del plano",
               summary: "Horizontales equidistantes y máxima pendiente.",
               orderIndex: 2,
               kind: "interactive",
@@ -17125,7 +17125,7 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20803),
-              title: "3. Aplicación: cubiertas de edificios",
+              title: "3. Intersección de planos. Cubiertas",
               summary: "Cumbrera, limatesas y superficie del tejado.",
               orderIndex: 3,
               kind: "interactive",
@@ -17134,7 +17134,7 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20804),
-              title: "4. Topografía: curvas de nivel e interpretación de planos",
+              title: "4. Superficies topográficas, perfiles y dibujo topográfico",
               summary: "Equidistancia, pendiente y relieve.",
               orderIndex: 4,
               kind: "interactive",

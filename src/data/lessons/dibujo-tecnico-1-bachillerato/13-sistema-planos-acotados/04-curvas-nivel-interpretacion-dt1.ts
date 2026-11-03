@@ -1,44 +1,36 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { calc, nums, pick, slide, sort, tool } from "@/data/lessons/tec1-helpers";
+import { construccionPasos } from "@/data/lessons/construcciones-helpers";
+import { slide } from "@/data/lessons/tec1-helpers";
 
 export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
   slug: "curvas-nivel-interpretacion-dt1",
-  title: "4. Topografía: curvas de nivel e interpretación de planos",
+  title: "4. Superficies topográficas, perfiles y dibujo topográfico",
   subtitle: DT1_SUBTITLES[13],
   stage: { theme: "board" },
   steps: [
-    slide("def", "El relieve en un mapa", [
+    slide("topografica", "Superficies topográficas", [
+      { kind: "text", text: "La aplicación más importante del sistema es la representación de la **superficie de la Tierra**. Como no es una superficie geométrica, se sustituye por otra convencional: la **superficie topográfica**, que se representa con las proyecciones acotadas de las **secciones horizontales** producidas por planos horizontales que la cortan." },
       { kind: "steps", items: [
-        "Una **curva de nivel** une los puntos del terreno de **la misma cota**: es la intersección del terreno con un **plano horizontal**.",
-        "La **equidistancia** es la diferencia de cota entre dos curvas consecutivas. Se escribe en la leyenda del plano.",
-        "Las curvas **no se cortan** ni se bifurcan; se cierran dentro o fuera del mapa.",
-        "Cada cierto número se dibuja una **curva directora** más gruesa con su cota escrita (curva **maestra**).",
+        "El contorno de cada sección es una **curva de nivel**. La separación fija entre planos es la **equidistancia**. Todos los puntos de una curva tienen la misma cota.",
+        "La superficie se aproxima más a la terrestre cuanto **más pequeña** es la equidistancia.",
+        "Si la cota de las curvas **aumenta hacia dentro**, es un monte o colina; si **aumenta hacia afuera**, un valle o hondonada.",
+        "Si el terreno tiene poca pendiente se intercalan **curvas intercalares**, dibujadas a trazos.",
+        "La intersección de la superficie con un plano se halla con los puntos de encuentro de cada curva con la horizontal del plano de la misma cota. Si el plano es vertical, la sección se llama **perfil**.",
       ] },
     ], undefined, "stack"),
-    slide("explora", "Una colina", [
-      { kind: "text", text: "La colina es más larga en x que en y. Observa dónde están más juntas las curvas y qué pendiente tiene el terreno allí." },
-    ], tool("dt1-curvas-nivel-explorador"), "visual-top"),
-    slide("lectura", "Cómo interpretarlas", [
-      { kind: "steps", items: [
-        "**Curvas juntas** ⇒ terreno **empinado**; **separadas** ⇒ terreno **suave**.",
-        "**Curvas cerradas concéntricas** con cotas crecientes: **colina** o cima. Con cotas decrecientes hacia el centro: **depresión**.",
-        "**Curvas en V** apuntando **hacia la cota más alta**: un **valle**; apuntando hacia la más baja: una **loma**.",
-        "La **pendiente** entre dos puntos de dos curvas = **equidistancia / distancia horizontal** medida en el plano con la escala.",
-      ] },
-    ]),
-    calc("calc-num", "Número de curvas", "Una colina de 100 m de altura se dibuja con equidistancia de 10 m. ¿Cuántas curvas de nivel hay entre la base (cota 0) y la cima, sin contar ni la base ni la cima?", nums(9), "Cotas 10, 20, …, 90: 9 curvas.", "Cuenta las cotas intermedias."),
-    calc("calc-sep", "Separación de curvas", "En una ladera con pendiente del 50 % y equidistancia de 10 m, ¿qué distancia horizontal separa dos curvas consecutivas, en m?", nums(20), "d = 10 / 0,5 = 20 m.", "Equidistancia entre pendiente."),
-    calc("calc-pend", "Pendiente de la ladera", "Dos curvas consecutivas con equidistancia de 10 m están a 10 m de distancia horizontal. ¿Qué pendiente tiene el terreno, en %?", nums(100), "10/10 = 1 = 100 % (45°).", "Desnivel entre distancia."),
-    sort("clasifica-rel", "¿Qué relieve es?", "Clasifica cada situación en un plano.",
-      [["emp", "Terreno empinado", "cobalt"], ["sua", "Terreno suave", "amber"], ["cim", "Cima o depresión", "emerald"]],
-      [["Curvas muy juntas", "emp"], ["Curvas casi superpuestas en un acantilado", "emp"], ["Curvas muy separadas", "sua"], ["Llanura con pocas curvas", "sua"], ["Curvas cerradas concéntricas", "cim"], ["Un círculo con una cota más alta en el centro", "cim"]],
-      "La separación indica la pendiente; el cierre concéntrico, un máximo o mínimo.",
-    ),
-    pick("check-v", "Un valle", "Las curvas de nivel forman V con el vértice hacia la cota más alta. ¿Qué relieve es?",
-      "Un valle, por el que corre el agua",
-      [["Una loma o cresta", "En la loma la V apunta hacia la cota más baja."], ["Una cima", "Sería una curva cerrada."], ["Una meseta", "En una meseta las curvas se separan."]],
-      "En el valle las curvas «entran» hacia las cotas altas siguiendo el cauce.",
-    ),
+    slide("perfiles", "Perfiles", [
+      { kind: "text", text: "Para construir el **perfil** que produce en el terreno un plano vertical, se trazan perpendiculares a la traza del plano en los puntos en que corta a las curvas de nivel, y sobre ellas se llevan las **cotas** de cada curva. Uniendo los puntos se obtiene el perfil abatido aproximado. Para medir las cotas se suelen emplear **escalas más pequeñas** que las del dibujo, para resaltar las diferencias." },
+    ], undefined, "stack"),
+    ...construccionPasos("acotados-perfil"),
+    slide("desmonte", "Desmonte y terraplén de un camino", [
+      { kind: "text", text: "**Problema:** determinar el desmonte y el terraplén entre dos puntos $A$ y $B$ en la dirección del eje de un camino de pendiente uniforme. Se abate la sección que produce en el terreno el plano vertical por $AB$, tomando las alturas respectivas. La parte comprendida entre $B$ y $N$ es **desmonte** y la comprendida entre $N$ y $A$ es **terraplén**. La tangente del ángulo $B'AB$ es la pendiente del camino." },
+    ], undefined, "stack"),
+    slide("explanacion", "Explanación de una superficie topográfica", [
+      { kind: "text", text: "La forma de la explanación es la de un rectángulo rematado por un semicírculo. Se toman las l.m.p. de los planos inclinados y del tronco de cono cuya base menor es el citado semicírculo, y se hallan los puntos de intersección de las horizontales de plano con las curvas de nivel de igual cota. El perfil transversal se obtiene tomando sobre el eje $\\alpha_0$ los puntos $C, B, A, N, M, L$, trazando perpendiculares y llevando las cotas." },
+    ], undefined, "stack"),
+    slide("dibujo-topografico", "Dibujo topográfico", [
+      { kind: "text", text: "El dibujo topográfico representa, mediante **curvas de nivel acotadas**, una parte de la superficie terrestre y, con ayuda de **símbolos**, indica los accidentes naturales del terreno y las obras artificiales hechas por el hombre. Quienes confeccionan estos planos deben conocer los símbolos y los métodos propios de ellos." },
+    ], undefined, "stack"),
   ],
 };
