@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const coeficienteReduccionPuntoCaballeraDt1Lesson: InteractiveLesson = {
   slug: "coeficiente-reduccion-punto-caballera-dt1",
@@ -19,14 +19,14 @@ export const coeficienteReduccionPuntoCaballeraDt1Lesson: InteractiveLesson = {
         "Como valores más aconsejables se emplean **0,5, 0,6 y 0,7**. Cuanto mayor es $\\mu$, mayor es la deformación.",
       ] },
       { kind: "rule", title: "Norma UNE 1031", text: "El valor normalizado es $\\varphi = 45°$ y el coeficiente de reducción $\\mu = 0{,}5$." },
-    ], undefined, "stack"),
+    ], diagrama("d15-coeficiente"), "visual-top"),
     ...construccionPasos("cab-reduccion"),
     slide("punto-caballera", "Representación del punto", [
       { kind: "text", text: "Un punto $P(x, y, z)$ se representa en un sistema definido por $X$, $Y$, $Z$ y el ángulo $\\sigma$. Sobre el eje $X$ se toma $\\overline{ON} = x$ en verdadera magnitud y sobre $OZ$ la coordenada $\\overline{OM} = z$. La coordenada $y$ **se reduce** sobre $Y_0$ (el eje $Y$ abatido): $\\overline{O L_0} = y$ y, por $L_0$, la paralela a $1_0$-$1$ da el punto $L$ en el eje $Y$. Por paralelas a los ejes se obtienen $P'$, $P''$ y $P'''$, y completando el paralelepípedo, $P$." },
-    ], undefined, "stack"),
+    ], diagrama("d15-punto-cab"), "visual-top"),
     ...construccionPasos("cab-punto"),
     slide("paso-diedrico", "Paso del sistema diédrico a la perspectiva caballera", [
       { kind: "text", text: "Dado un punto $P'$-$P''$ en el sistema diédrico, referido a un plano de perfil $ZY$, sus coordenadas son $x = \\overline{ON}$, $y = \\overline{NP'}$ y $z = \\overline{NP''}$. Para representarlo en caballera se toman la coordenada $x$ y la $z$ en **verdadera magnitud** y la $-y$ **reducida** sobre $Y_0$, abatiendo el eje $Y$; con las coordenadas $ON$, $OB$ y $OM$ se completa el paralelepípedo y se obtienen $P$, $P'$, $P''$ y $P'''$." },
-    ], undefined, "stack"),
+    ], diagrama("d15-paso-diedrico"), "visual-top"),
   ],
 };

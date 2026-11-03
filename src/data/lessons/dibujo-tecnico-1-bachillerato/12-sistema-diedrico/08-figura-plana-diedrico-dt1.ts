@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const figuraPlanaDiedricoDt1Lesson: InteractiveLesson = {
   slug: "figura-plana-diedrico-dt1",
@@ -17,7 +17,7 @@ export const figuraPlanaDiedricoDt1Lesson: InteractiveLesson = {
         "Se repite la operación con todos los vértices y se unen: queda la proyección horizontal $1'$-$2'$-$3'$.",
       ] },
       { kind: "text", text: "También puede resolverse con la **afinidad** que existe entre las proyecciones vertical y horizontal; ese procedimiento se estudia el curso próximo." },
-    ], undefined, "stack"),
+    ], diagrama("d12-figura-plana"), "visual-top"),
     ...construccionPasos("figura-plana"),
   ],
 };

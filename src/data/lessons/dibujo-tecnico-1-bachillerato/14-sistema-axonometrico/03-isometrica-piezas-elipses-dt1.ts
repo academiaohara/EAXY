@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
   slug: "isometrica-piezas-elipses-dt1",
@@ -17,19 +17,19 @@ export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
         "El **eje mayor** de la elipse es perpendicular a la dirección del eje $Z$, e igual a $2R$; el **eje menor** es paralelo a ella.",
         "En los planos $XOZ$ y $YOZ$ la construcción es igual: el eje mayor es perpendicular a la dirección del eje $Y$ (o $X$) y mide $2R$.",
       ] },
-    ], undefined, "stack"),
+    ], diagrama("d14-circunferencia"), "visual-top"),
     slide("puntos", "Puntos auxiliares de la elipse", [
       { kind: "text", text: "Si la elipse es muy grande, pueden obtenerse algunos puntos de ella: se completa el cuadrado circunscrito y el rombo y se toman los puntos medios $1$ y $2$ de los segmentos respectivos; las rectas $A$-$2$ y $B$-$1$, al cortarse, proporcionan dos puntos $P$ y $Q$ de la elipse." },
-    ], undefined, "stack"),
+    ], diagrama("d14-puntos"), "visual-top"),
     ...construccionPasos("axo-elipse-puntos"),
     slide("ovalo", "El óvalo de cuatro centros", [
       { kind: "text", text: "Se puede sustituir la elipse por un **óvalo**: curva aproximada, algo achatada en los extremos del eje mayor. Los centros de curvatura son los puntos $C_1$, $C_2$, $C_3$ y $C_4$. El procedimiento es más laborioso y requiere mayor precisión para que los arcos sean tangentes." },
-    ], undefined, "stack"),
+    ], diagrama("d14-ovalo"), "visual-top"),
     ...construccionPasos("axo-ovalo-isometrico"),
     slide("rayados", "Rayados de secciones en perspectiva isométrica", [
       { kind: "text", text: "Las superficies producidas por un corte se rayan en cada plano del sistema con líneas **paralelas a las direcciones** $d_1$, $d_2$ y $d_3$. Se toma un segmento $s$ cualquiera sobre cada eje y se unen los puntos $A$, $B$ y $C$." },
       { kind: "warning", title: "Antes de dibujar una pieza", text: "Hay que estudiar con detenimiento las **vistas diédricas** o el dibujo de taller que la definen. Mentalmente se descompone en **sólidos geométricos** (paralelepípedos, cilindros, prismas, conos…) que guardan una posición relativa que debe conservarse en la perspectiva. Después se empieza por algún extremo de la pieza o por un eje de simetría total." },
-    ], undefined, "stack"),
+    ], diagrama("d14-rayados"), "visual-top"),
     ...construccionPasos("axo-rayado", "axo-pieza"),
   ],
 };

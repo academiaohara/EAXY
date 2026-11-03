@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const parabolaDt1Lesson: InteractiveLesson = {
   slug: "parabola-dt1",
@@ -16,7 +16,7 @@ export const parabolaDt1Lesson: InteractiveLesson = {
         { tex: "\\overline{VA} = \\overline{VF} = \\dfrac{p}{2}", label: "El vértice equidista de la directriz y del foco" },
       ] },
       { kind: "text", text: "Tiene un **vértice** $V$ y un **eje de simetría**, perpendicular a la directriz, que pasa por $V$ y por el foco. La **tangente en el vértice** es paralela a la directriz y hace de circunferencia principal. El **parámetro** $2p$ es la longitud de la cuerda perpendicular al eje por el foco. La directriz es la circunferencia focal, de radio infinito." },
-    ]),
+    ], diagrama("d10-parabola"), "visual-top"),
     ...construccionPasos("parabola-puntos", "parabola-vertice-punto", "parabola-envolventes"),
   ],
 };

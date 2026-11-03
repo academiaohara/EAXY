@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const hiperbolaDt1Lesson: InteractiveLesson = {
   slug: "hiperbola-dt1",
@@ -17,7 +17,7 @@ export const hiperbolaDt1Lesson: InteractiveLesson = {
         { tex: "AB = 2a,\\; CD = 2b,\\; FF' = 2c", label: "Eje real, eje imaginario y distancia focal" },
       ] },
       { kind: "text", text: "El eje $CD$ se llama **imaginario** porque no tiene puntos comunes con la curva. Las **asíntotas** son las tangentes a la curva en el infinito: son simétricas respecto de los ejes y pasan por el centro $O$ y por el extremo de la altura $b$ levantada en el vértice. La circunferencia principal es el lugar de los pies de las perpendiculares desde los focos a las tangentes." },
-    ]),
+    ], diagrama("d10-hiperbola"), "visual-top"),
     ...construccionPasos("hiperbola-puntos", "hiperbola-envolventes"),
   ],
 };
