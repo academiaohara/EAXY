@@ -1,7 +1,7 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
 import { construccionPasos } from "@/data/lessons/construcciones-helpers";
-import { slide } from "@/data/lessons/tec1-helpers";
+import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const distanciasFigurasPlanasCaballeraDt1Lesson: InteractiveLesson = {
   slug: "distancias-figuras-planas-caballera-dt1",
@@ -14,7 +14,7 @@ export const distanciasFigurasPlanasCaballeraDt1Lesson: InteractiveLesson = {
         "Un segmento $AB$ **paralelo al eje $Z$** está ya en verdadera magnitud; igual el $CD$, paralelo al eje $X$.",
         "Un segmento $EF$ **paralelo al eje $Y$** está reducido: basta llevarlo según $\\overline{ON}$ en el eje $Y$ y obtener $\\overline{O\\text{-}N_0}$, que es la verdadera magnitud $H$.",
       ] },
-    ], undefined, "stack"),
+    ], diagrama("d15-distancia-1"), "visual-top"),
     ...construccionPasos("cab-distancia-y"),
     slide("distancia-2", "Distancia entre dos puntos: segundo y tercer caso", [
       { kind: "steps", items: [
@@ -22,7 +22,7 @@ export const distanciasFigurasPlanasCaballeraDt1Lesson: InteractiveLesson = {
         "**Segmento de un plano del cuadro**: la verdadera magnitud del segmento $\\overline{AB}$ del plano $ZOX$ es él mismo.",
         "**Recta oblicua a los planos del sistema** $PQ$: la verdadera magnitud $D$ es la **hipotenusa** del triángulo $PNQ$; un cateto $\\overline{PN} = h$ es la diferencia de cotas y el otro cateto $\\overline{NQ}$ es la verdadera magnitud de $d'$, que se halla como en el caso anterior.",
       ] },
-    ], undefined, "stack"),
+    ], diagrama("d15-distancia-2"), "visual-top"),
     ...construccionPasos("cab-distancia-xoy", "cab-abatimiento-xoy", "cab-distancia-oblicua"),
     slide("figuras", "Perspectiva de figuras planas en planos del sistema", [
       { kind: "text", text: "Una figura plana situada en un plano del sistema se dibuja **punto a punto**. En el plano $XOY$ las medidas paralelas a $X$ se toman en verdadera magnitud y las paralelas a $Y$, **reducidas**; en $ZOX$ la figura se ve en **verdadera forma**; en $ZOY$ se toman la $Z$ sin reducir y la $Y$ reducida." },
@@ -31,11 +31,11 @@ export const distanciasFigurasPlanasCaballeraDt1Lesson: InteractiveLesson = {
         "Rectángulo y trapecio en $ZOY$ (Fig. 14) y triángulo en $ZOY$ por cotas (Fig. 15).",
         "Hexágono regular en cada plano del sistema (Figs. 16 y 17) y pentágono regular en $XOY$ a partir de su verdadera magnitud en $ZOX$ (Fig. 18).",
       ] },
-    ], undefined, "stack"),
+    ], diagrama("d15-figuras"), "visual-top"),
     ...construccionPasos("cab-triangulo-xoy", "cab-seis-lados-xoy", "cab-cinco-lados-xoy"),
     slide("curvas", "Perspectiva de una curva situada en un plano", [
       { kind: "text", text: "Dada una curva situada, por ejemplo, en el plano horizontal del sistema diédrico, para representarla en el plano $XOY$ de caballera basta pasar **punto a punto**: las rectas paralelas al eje $Y$ se reducen según el coeficiente del sistema, y las paralelas a $X$ se conservan." },
-    ], undefined, "stack"),
+    ], diagrama("d15-curvas"), "visual-top"),
     ...construccionPasos("cab-curva-xoy"),
   ],
 };
