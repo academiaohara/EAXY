@@ -65,9 +65,13 @@ function recorrer(c: Construccion) {
         visible(o.c, donde);
         if (!c.pts[o.hacia]) problemas.push(`${donde}: punto desconocido ${o.hacia}`);
         if (o.hasta && !c.pts[o.hasta]) problemas.push(`${donde}: punto desconocido ${o.hasta}`);
+        if (o.por && !c.pts[o.por]) problemas.push(`${donde}: punto desconocido ${o.por}`);
         break;
       case "curva":
         [o.a, o.c, o.b].forEach((x) => visible(x, donde));
+        break;
+      case "curvaPuntos":
+        o.pts.forEach((x) => visible(x, donde));
         break;
     }
   });

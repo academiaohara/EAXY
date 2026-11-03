@@ -70,6 +70,7 @@ const ms = (o: Op): number => {
     case "lados": return 900 * o.pts.length + 500;
     case "solucion": return 2600;
     case "curva": return 2800;
+    case "curvaPuntos": return 3200;
     default: return 1;
   }
 };
@@ -95,10 +96,11 @@ function datosAngulo(c: Construccion, o: Extract<Op, { k: "angulo" }>): DatosDes
 }
 
 /** Forma final (en trazo grueso) de una operación `solucion` o `curva`. */
-function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" }>): FormaFinal {
+function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" }>): FormaFinal {
+  if (o.k === "curvaPuntos") return { tipo: "suave", pts: o.pts.map((n) => pt(c, n)) };
   if (o.k === "curva") return { tipo: "curva", a: pt(c, o.a), c: pt(c, o.c), b: pt(c, o.b) };
   const centro = pt(c, o.c);
-  return { tipo: "circulo", c: centro, r: dist(centro, pt(c, o.hacia)), desde: o.hasta ? pt(c, o.hacia) : undefined, hasta: o.hasta ? pt(c, o.hasta) : undefined };
+  return { tipo: "circulo", c: centro, r: dist(centro, pt(c, o.hacia)), desde: o.hasta ? pt(c, o.hacia) : undefined, hasta: o.hasta ? pt(c, o.hasta) : undefined, por: o.por ? pt(c, o.por) : undefined };
 }
 
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
@@ -259,6 +261,7 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       }
       case "solucion":
       case "curva":
+      case "curvaPuntos":
         nodos.push(<FormaTrazo key={key} forma={formaDe(c, x)} t={t} w={3} />);
         break;
       default:
@@ -301,7 +304,7 @@ function defDe(id: ConstruccionId): Def {
     grosorAuto: 3,
     extTrazo: c.ext ?? 30,
     reiniciarEscuadra: true,
-    autoFormas: () => c.ops.filter((o): o is Extract<Op, { k: "solucion" | "curva" }> => o.k === "solucion" || o.k === "curva").map((o) => formaDe(c, o)),
+    autoFormas: () => c.ops.filter((o): o is Extract<Op, { k: "solucion" | "curva" | "curvaPuntos" }> => o.k === "solucion" || o.k === "curva" || o.k === "curvaPuntos").map((o) => formaDe(c, o)),
     autoLados: () => lados.flatMap((l) => (l.pts.length === 2 ? [[pt(c, l.pts[0]), pt(c, l.pts[1])] as [Pt, Pt]] : l.pts.map((n, k) => [pt(c, n), pt(c, l.pts[(k + 1) % l.pts.length])] as [Pt, Pt]))),
     papel: (est: Est) => {
       const visibles = new Set<string>(c.dados);
@@ -351,7 +354,7 @@ function defDe(id: ConstruccionId): Def {
       return o?.k === "medir" ? [pt(c, o.de), pt(c, o.a)] : [];
     },
     compasEspecial: (est, tipo) => (est.medida.length === 2 && tipo === "centro" ? { n: est.medida[0], m: est.medida[1] } : null),
-    radioLim: () => [c.radioMin ?? 40, 215],
+    radioLim: () => [c.radioMin ?? 40, c.radioMax ?? 215],
     radioIni: () => 100,
     rhoIni: (n) => {
       const o = arcos[n];

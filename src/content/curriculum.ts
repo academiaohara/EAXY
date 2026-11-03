@@ -16949,8 +16949,8 @@ export const fullCurriculum: Curriculum = {
           lessons: [
             {
               id: lessonId(20404),
-              title: "1. Curvas técnicas: óvalo y ovoide",
-              summary: "Óvalo con cuatro arcos y ovoide.",
+              title: "1. Óvalo y ovoide",
+              summary: "Óvalo y ovoide a partir de sus ejes.",
               orderIndex: 1,
               kind: "interactive",
               interactiveSlug: "ovalo-ovoide-dt1",
@@ -16958,8 +16958,8 @@ export const fullCurriculum: Curriculum = {
             },
             {
               id: lessonId(20405),
-              title: "2. Espirales, volutas y evolvente",
-              summary: "Espirales de dos centros y evolvente.",
+              title: "2. Voluta, espiral y hélice",
+              summary: "Voluta, espiral de Arquímedes y hélice cilíndrica.",
               orderIndex: 2,
               kind: "interactive",
               interactiveSlug: "espirales-evolvente-dt1",
