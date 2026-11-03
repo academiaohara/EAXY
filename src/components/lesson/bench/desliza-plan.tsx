@@ -66,8 +66,8 @@ function calcularPerp(recta: [Pt, Pt], P: Pt, traza: [Pt, Pt], importantes: Pt[]
       for (const e of [1, -1]) {
         const rotE = giroPara(dLocal, espejo, [e * nrm[0], e * nrm[1]]);
         // el borde de dibujo sale del pie de la perpendicular hacia P (o hacia el trazo si P está en la recta)
-        const haciaP: Pt = distP > 1 ? unit(sub(P, foot)) : unit(sub(traza[1], traza[0]));
-        if (dot([e * nrm[0], e * nrm[1]], haciaP) < 0.5) continue;
+        // (si P está en la propia recta, sirve cualquiera de los dos sentidos y se elige el que mejor quepa)
+        if (distP > 1 && dot([e * nrm[0], e * nrm[1]], unit(sub(P, foot))) < 0.5) continue;
         for (const se of ESCALAS) {
           const W = vertices(ESC_V, rotE, espejo, se);
           const lD = largo(sub(W[Db], W[Da]));
