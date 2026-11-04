@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const planoDiedricoTrazasDt1Lesson: InteractiveLesson = {
   slug: "plano-diedrico-trazas-dt1",
-  title: "4. Representación del plano. Trazas y tipos",
+  title: "8. Representación del plano. Trazas y tipos",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [

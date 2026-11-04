@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const curvaParabolicaRectificacionesDt1Lesson: InteractiveLesson = {
   slug: "curva-parabolica-rectificaciones-dt1",
-  title: "4. Curva parabólica y rectificaciones",
+  title: "8. Curva parabólica y rectificaciones",
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [

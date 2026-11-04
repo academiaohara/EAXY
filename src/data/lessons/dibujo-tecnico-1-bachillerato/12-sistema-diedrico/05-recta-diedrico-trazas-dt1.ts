@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const rectaDiedricoTrazasDt1Lesson: InteractiveLesson = {
   slug: "recta-diedrico-trazas-dt1",
-  title: "2. Representación de la recta. Trazas",
+  title: "5. Representación de la recta. Trazas",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [

@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const figuraPlanaDiedricoDt1Lesson: InteractiveLesson = {
   slug: "figura-plana-diedrico-dt1",
-  title: "8. Proyecciones de una figura plana",
+  title: "14. Proyecciones de una figura plana",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [

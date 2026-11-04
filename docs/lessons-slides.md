@@ -684,6 +684,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
+| `dt1-diagrama` | Diagrama de teoría de DT I en la hoja de la mesa de dibujo, con un paso por idea (temas 7 a 15); los datos están en `src/components/lesson/anim/diagramas/` | — |
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 | `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
 | `dt1-vistas-pieza` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |

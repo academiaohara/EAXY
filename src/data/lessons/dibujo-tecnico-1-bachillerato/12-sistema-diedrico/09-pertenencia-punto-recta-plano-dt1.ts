@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const pertenenciaPuntoRectaPlanoDt1Lesson: InteractiveLesson = {
   slug: "pertenencia-punto-recta-plano-dt1",
-  title: "5. Pertenencia de punto y recta a un plano",
+  title: "9. Pertenencia de punto y recta a un plano I",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
@@ -14,9 +14,5 @@ export const pertenenciaPuntoRectaPlanoDt1Lesson: InteractiveLesson = {
     slide("punto-plano", "Punto contenido en un plano", [], diagrama("d12-punto-plano"), "visual-top"),
     slide("horizontal", "Recta horizontal de un plano", [], diagrama("d12-horizontal-plano"), "visual-top"),
     ...construccionPasos("horizontal-del-plano"),
-    slide("frontal", "Recta frontal de un plano", [], diagrama("d12-frontal-plano"), "visual-top"),
-    ...construccionPasos("frontal-del-plano"),
-    slide("lineas-max", "Líneas de máxima pendiente y de máxima inclinación", [], diagrama("d12-lineas-max"), "visual-top"),
-    ...construccionPasos("plano-lmp", "plano-lmi"),
   ],
 };

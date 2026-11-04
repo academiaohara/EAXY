@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const planosEspecialesDiedricoDt1Lesson: InteractiveLesson = {
   slug: "planos-especiales-diedrico-dt1",
-  title: "7. Planos perpendiculares a los bisectores y paralelos a la L.T.",
+  title: "13. Planos perpendiculares a los bisectores y paralelos a la L.T.",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
