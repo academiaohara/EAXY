@@ -1,10 +1,5 @@
 export type CourseLevelKey =
-  | "1-eso"
-  | "2-eso"
-  | "3-eso"
-  | "4-eso"
-  | "1-bachillerato"
-  | "2-bachillerato";
+  "1-eso" | "2-eso" | "3-eso" | "4-eso" | "1-bachillerato" | "2-bachillerato";
 
 export type CourseLevel = {
   key: CourseLevelKey;
@@ -26,8 +21,18 @@ const COURSE_LEVELS: readonly CourseLevel[] = [
   { key: "2-eso", label: "2 ESO", stage: "ESO", order: 1 },
   { key: "3-eso", label: "3 ESO", stage: "ESO", order: 2 },
   { key: "4-eso", label: "4 ESO", stage: "ESO", order: 3 },
-  { key: "1-bachillerato", label: "1 Bachillerato", stage: "Bachillerato", order: 4 },
-  { key: "2-bachillerato", label: "2 Bachillerato", stage: "Bachillerato", order: 5 },
+  {
+    key: "1-bachillerato",
+    label: "1 Bachillerato",
+    stage: "Bachillerato",
+    order: 4,
+  },
+  {
+    key: "2-bachillerato",
+    label: "2 Bachillerato",
+    stage: "Bachillerato",
+    order: 5,
+  },
 ];
 
 export function getCourseLevel(title: string): CourseLevel | null {
@@ -73,13 +78,32 @@ export function getCourseVariantLabel(title: string): string {
   return qualifier ? `${base} · ${qualifier.toLowerCase()}` : base;
 }
 
+/** Etiqueta contextual para recorridos profundos sin recuperar el ordinal antiguo. */
+export function formatCourseContext(
+  title: string,
+  subjectLabel: string,
+): string {
+  const level = formatCourseLevel(title);
+  const variant = getCourseVariantLabel(title);
+  const needsVariant =
+    /\([AB]\)\s*$/i.test(title) ||
+    /CCSS/i.test(title) ||
+    /^Matemáticas\s+[12]º\s+Bachillerato$/i.test(title) ||
+    /Tecnología Industrial|Tecnología e Ingeniería II|ampliación/i.test(title);
+
+  return [subjectLabel, level, needsVariant ? variant : null]
+    .filter(Boolean)
+    .join(" · ");
+}
+
 export function groupCoursesByLevel<
   T extends { id: string; title: string; orderIndex: number },
 >(courses: readonly T[]): CourseLevelGroup<T>[] {
   const groups = new Map<string, CourseLevelGroup<T>>();
   const sorted = [...courses].sort(
     (left, right) =>
-      left.orderIndex - right.orderIndex || left.title.localeCompare(right.title, "es"),
+      left.orderIndex - right.orderIndex ||
+      left.title.localeCompare(right.title, "es"),
   );
 
   for (const course of sorted) {
@@ -101,6 +125,7 @@ export function groupCoursesByLevel<
   }
 
   return [...groups.values()].sort(
-    (left, right) => left.order - right.order || left.label.localeCompare(right.label, "es"),
+    (left, right) =>
+      left.order - right.order || left.label.localeCompare(right.label, "es"),
   );
 }

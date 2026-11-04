@@ -30,6 +30,14 @@ test("inicio conduce a 4 ESO, revela sus variantes y conserva la URL del curso",
   await expect(
     page.getByRole("heading", { level: 1, name: "4 ESO" }),
   ).toBeVisible();
+  await expect(page.getByTestId("course-hero-primary-cta")).toHaveCSS(
+    "background-color",
+    "rgb(244, 201, 93)",
+  );
+  await expect(page.getByTestId("course-progress-fill")).toHaveCSS(
+    "background-color",
+    "rgb(244, 201, 93)",
+  );
 });
 
 test("la lección mantiene la pizarra y oculta el campus global", async ({

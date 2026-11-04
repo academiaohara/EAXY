@@ -69,4 +69,30 @@ describe("CourseLevelCatalog", () => {
     expect(within(group).getByText("Próximamente")).toBeVisible();
     expect(within(group).queryByRole("link")).toBeNull();
   });
+
+  it("no hace accionable un año duplicado si ninguna variante tiene lecciones", () => {
+    render(
+      <CourseLevelCatalog
+        subject="tecnologia"
+        courses={[
+          course(
+            "industrial",
+            "Tecnología Industrial II 2º Bachillerato",
+            1,
+            0,
+          ),
+          course(
+            "ingenieria",
+            "Tecnología e Ingeniería II 2º Bachillerato (ampliación)",
+            2,
+            0,
+          ),
+        ]}
+      />,
+    );
+
+    const group = screen.getByTestId("course-level-2-bachillerato");
+    expect(within(group).getByText("Próximamente")).toBeVisible();
+    expect(within(group).queryByRole("link")).toBeNull();
+  });
 });

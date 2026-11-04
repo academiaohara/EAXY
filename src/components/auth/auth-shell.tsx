@@ -10,7 +10,7 @@ type AuthShellProps = {
 
 export function AuthShell({ title, description, children }: AuthShellProps) {
   return (
-    <main className="grid min-h-dvh flex-1 grid-cols-[minmax(0,1fr)_minmax(24rem,0.86fr)] bg-paper">
+    <main className="campus-motion grid min-h-dvh flex-1 grid-cols-[minmax(0,1fr)_minmax(24rem,0.86fr)] bg-paper">
       <section className="relative flex min-h-full flex-col overflow-hidden bg-ink p-10 text-white lg:p-14">
         <span
           className="absolute -left-20 top-1/3 size-64 rounded-full bg-coral/80"
@@ -47,7 +47,7 @@ export function AuthShell({ title, description, children }: AuthShellProps) {
       >
         <div className="w-full max-w-md">
           <header className="mb-8 space-y-3">
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-coral">
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-ink-muted">
               Eaxy Campus
             </p>
             <h1

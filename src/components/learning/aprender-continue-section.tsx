@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { ArrowRightIcon, PlayIcon, SparklesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { AprenderContinueStudying, AprenderStudyShortcut } from "@/lib/curriculum/aprender-home";
+import type {
+  AprenderContinueStudying,
+  AprenderStudyShortcut,
+} from "@/lib/curriculum/aprender-home";
 import type { LessonSummary } from "@/lib/curriculum/types";
-import { courseHref, courseShortTitle } from "@/lib/navigation/learning-trail";
-import { SUBJECT_THEME, getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
+import { formatCourseContext } from "@/lib/navigation/course-levels";
+import { courseHref } from "@/lib/navigation/learning-trail";
+import {
+  SUBJECT_THEME,
+  getSubject,
+  subjectOfCourse,
+} from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
 type AprenderContinueSectionProps = {
@@ -13,14 +21,23 @@ type AprenderContinueSectionProps = {
 
 function lessonMetaLabel(lesson: LessonSummary): string {
   if (lesson.kind === "interactive") {
-    return lesson.stepCount ? `${lesson.stepCount} pasos guiados` : "Lección guiada";
+    return lesson.stepCount
+      ? `${lesson.stepCount} pasos guiados`
+      : "Lección guiada";
   }
   return `${lesson.exerciseCount} ${lesson.exerciseCount === 1 ? "ejercicio" : "ejercicios"}`;
 }
 
 function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
-  const subjectKey = subjectOfCourse({ slug: entry.courseSlug, title: entry.courseTitle });
+  const subjectKey = subjectOfCourse({
+    slug: entry.courseSlug,
+    title: entry.courseTitle,
+  });
   const subject = getSubject(subjectKey);
+  const courseContext = formatCourseContext(
+    entry.courseTitle,
+    subject?.label ?? "Curso",
+  );
   return (
     <div
       className={cn(
@@ -42,7 +59,9 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
 
       <div className="relative">
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-white/75">
-          {entry.actionLabel === "Continuar" ? "Retoma tu estudio" : "Tu siguiente paso"}
+          {entry.actionLabel === "Continuar"
+            ? "Retoma tu estudio"
+            : "Tu siguiente paso"}
         </p>
 
         <p className="mt-4 flex flex-wrap items-center gap-1.5 text-sm text-white/80">
@@ -50,10 +69,13 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
             href={courseHref(entry.courseSlug)}
             className="rounded-full bg-white/15 px-2.5 py-0.5 font-medium text-white transition-colors hover:bg-white/25"
           >
-            {subject?.label} · {courseShortTitle(entry.courseTitle)}
+            {courseContext}
           </Link>
           <span aria-hidden>›</span>
-          <Link href={entry.topicHref} className="hover:text-white hover:underline underline-offset-4">
+          <Link
+            href={entry.topicHref}
+            className="hover:text-white hover:underline underline-offset-4"
+          >
             Tema {entry.moduleNumber}: {entry.moduleTitle}
           </Link>
         </p>
@@ -72,9 +94,18 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
             size="lg"
             nativeButton={false}
             className="rounded-full bg-white text-ink shadow-md hover:bg-white/90 sm:min-w-[11rem]"
-            render={<Link href={entry.lessonHref} data-testid="aprender-continue-primary-cta" />}
+            render={
+              <Link
+                href={entry.lessonHref}
+                data-testid="aprender-continue-primary-cta"
+              />
+            }
           >
-            <PlayIcon data-icon="inline-start" className="fill-current" aria-hidden />
+            <PlayIcon
+              data-icon="inline-start"
+              className="fill-current"
+              aria-hidden
+            />
             {entry.actionLabel}
           </Button>
           <Button
@@ -82,7 +113,12 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
             variant="ghost"
             nativeButton={false}
             className="rounded-full text-white hover:bg-white/15 hover:text-white"
-            render={<Link href={entry.topicHref} data-testid="aprender-continue-topic-link" />}
+            render={
+              <Link
+                href={entry.topicHref}
+                data-testid="aprender-continue-topic-link"
+              />
+            }
           >
             Ver tema
             <ArrowRightIcon data-icon="inline-end" aria-hidden />
@@ -94,6 +130,14 @@ function PrimaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
 }
 
 function SecondaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
+  const subject = getSubject(
+    subjectOfCourse({ slug: entry.courseSlug, title: entry.courseTitle }),
+  );
+  const courseContext = formatCourseContext(
+    entry.courseTitle,
+    subject?.label ?? "Curso",
+  );
+
   return (
     <Link
       href={entry.lessonHref}
@@ -108,10 +152,11 @@ function SecondaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
       </span>
       <div className="min-w-0 flex-1 space-y-0.5">
         <p className="text-xs font-semibold text-cobalt">
-          {entry.actionLabel} — {getSubject(subjectOfCourse({ slug: entry.courseSlug, title: entry.courseTitle }))?.label}{" "}
-          {courseShortTitle(entry.courseTitle)}
+          {entry.actionLabel} — {courseContext}
         </p>
-        <p className="truncate text-sm font-semibold text-ink">{entry.lessonTitle}</p>
+        <p className="truncate text-sm font-semibold text-ink">
+          {entry.lessonTitle}
+        </p>
         <p className="truncate text-xs text-ink-muted">
           Tema {entry.moduleNumber}: {entry.moduleTitle}
         </p>
@@ -124,7 +169,9 @@ function SecondaryContinueCard({ entry }: { entry: AprenderStudyShortcut }) {
   );
 }
 
-export function AprenderContinueSection({ data }: AprenderContinueSectionProps) {
+export function AprenderContinueSection({
+  data,
+}: AprenderContinueSectionProps) {
   return (
     <section className="space-y-4" data-testid="aprender-continue-studying">
       <h2 className="sr-only">Sigue estudiando</h2>
@@ -133,10 +180,15 @@ export function AprenderContinueSection({ data }: AprenderContinueSectionProps) 
 
       {data.others.length > 0 ? (
         <div className="space-y-2">
-          <p className="text-sm font-semibold text-ink-muted">También en tus otros cursos</p>
+          <p className="text-sm font-semibold text-ink-muted">
+            También en tus otros cursos
+          </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {data.others.map((entry) => (
-              <SecondaryContinueCard key={`${entry.courseId}-${entry.lessonId}`} entry={entry} />
+              <SecondaryContinueCard
+                key={`${entry.courseId}-${entry.lessonId}`}
+                entry={entry}
+              />
             ))}
           </div>
         </div>

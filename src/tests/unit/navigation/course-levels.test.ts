@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  formatCourseContext,
   formatCourseLevel,
   getCourseLevel,
   getCourseVariantLabel,
@@ -13,6 +14,15 @@ type CourseFixture = {
 };
 
 describe("course levels", () => {
+  it("compone contexto profundo sin recuperar ordinales antiguos", () => {
+    expect(formatCourseContext("Matemáticas 4º ESO (A)", "Matemáticas")).toBe(
+      "Matemáticas · 4 ESO · Opción A",
+    );
+    expect(
+      formatCourseContext("Física y Química 2º ESO", "Física y Química"),
+    ).toBe("Física y Química · 2 ESO");
+  });
+
   it.each([
     ["Matemáticas 1º ESO", "1 ESO"],
     ["Física y Química 4º ESO", "4 ESO"],
@@ -29,7 +39,9 @@ describe("course levels", () => {
       stage: "ESO",
       order: 2,
     });
-    expect(getCourseLevel("Tecnología e Ingeniería II 2º Bachillerato")).toEqual({
+    expect(
+      getCourseLevel("Tecnología e Ingeniería II 2º Bachillerato"),
+    ).toEqual({
       key: "2-bachillerato",
       label: "2 Bachillerato",
       stage: "Bachillerato",
@@ -41,7 +53,10 @@ describe("course levels", () => {
     ["Matemáticas 4º ESO (A)", "Opción A"],
     ["Matemáticas 4º ESO (B)", "Opción B"],
     ["Matemáticas 1º Bachillerato", "Ciencias"],
-    ["Matemáticas Aplicadas a las CCSS I (1º Bachillerato)", "Ciencias Sociales"],
+    [
+      "Matemáticas Aplicadas a las CCSS I (1º Bachillerato)",
+      "Ciencias Sociales",
+    ],
     ["Tecnología Industrial II 2º Bachillerato", "Tecnología Industrial II"],
     [
       "Tecnología e Ingeniería II 2º Bachillerato (ampliación)",
@@ -65,7 +80,10 @@ describe("course levels", () => {
 
     const groups = groupCoursesByLevel(courses);
 
-    expect(groups.map((group) => group.label)).toEqual(["4 ESO", "1 Bachillerato"]);
+    expect(groups.map((group) => group.label)).toEqual([
+      "4 ESO",
+      "1 Bachillerato",
+    ]);
     expect(groups[0]?.courses.map((course) => course.id)).toEqual(["4a", "4b"]);
     expect(groups[1]?.courses.map((course) => course.id)).toEqual(["1c", "1s"]);
   });

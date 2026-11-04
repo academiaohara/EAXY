@@ -107,7 +107,7 @@ export function PracticeSession({
           </div>
           {updatedMasteryLabel ? (
             <p
-              className="text-sm text-emerald-700"
+              className="text-sm font-medium text-emerald-200"
               role="status"
               data-testid="mastery-update"
             >

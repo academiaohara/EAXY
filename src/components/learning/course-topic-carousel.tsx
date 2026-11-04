@@ -6,6 +6,8 @@ import {
 } from "@/lib/curriculum/course-navigation";
 import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
 import type { ModuleSummary } from "@/lib/curriculum/types";
+import { formatCourseContext } from "@/lib/navigation/course-levels";
+import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
 type CourseTopicCarouselProps = {
@@ -88,6 +90,13 @@ export function CourseTopicCarousel({
     prev && isModuleAccessible(prev) ? topicHref(courseSlug, prev.slug) : null;
   const nextHref =
     next && isModuleAccessible(next) ? topicHref(courseSlug, next.slug) : null;
+  const subject = getSubject(
+    subjectOfCourse({ slug: courseSlug, title: courseTitle }),
+  );
+  const courseContext = formatCourseContext(
+    courseTitle,
+    subject?.label ?? "Curso",
+  );
 
   return (
     <section
@@ -107,7 +116,7 @@ export function CourseTopicCarousel({
           data-testid="topic-carousel-course-link"
         >
           <LayoutListIcon className="size-3.5" aria-hidden />
-          {courseTitle} — Ver temario
+          {courseContext} — Ver temario
         </Link>
       </div>
 

@@ -5,16 +5,19 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  countCompletedExercises,
-} from "@/lib/learning-paths/completion";
+import { countCompletedExercises } from "@/lib/learning-paths/completion";
 import { resolveLessonHref } from "@/lib/curriculum/lesson-meta";
+import { formatCourseContext } from "@/lib/navigation/course-levels";
 import {
   formatMasteryPercent,
   getMasteryState,
   MASTERY_STATE_LABELS,
 } from "@/lib/mastery/states";
-import { buildLearningTrail, stripLessonNumber } from "@/lib/navigation/learning-trail";
+import {
+  buildLearningTrail,
+  stripLessonNumber,
+} from "@/lib/navigation/learning-trail";
+import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 import type { LessonDetail } from "@/lib/curriculum/types";
 
 type LessonDetailViewProps = {
@@ -34,17 +37,29 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
     topic: { slug: lesson.moduleSlug, title: lesson.moduleTitle },
     leaves: [stripLessonNumber(lesson.title)],
   });
+  const subject = getSubject(
+    subjectOfCourse({ slug: lesson.courseSlug, title: lesson.courseTitle }),
+  );
+  const courseContext = formatCourseContext(
+    lesson.courseTitle,
+    subject?.label ?? "Curso",
+  );
 
   if (lesson.kind === "interactive" && lesson.interactiveSlug) {
     return (
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">
+      <div
+        className="mx-auto flex w-full max-w-3xl flex-col gap-8"
+        data-testid="lesson-detail"
+      >
         <header className="space-y-4">
           <Breadcrumbs items={trail} />
           <div className="space-y-1">
             <p className="text-sm text-muted-foreground">
-              {lesson.courseTitle} — {lesson.moduleTitle}
+              {courseContext} — {lesson.moduleTitle}
             </p>
-            <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
+            <h1 className="font-display text-3xl font-bold tracking-tight">
+              {lesson.title}
+            </h1>
           </div>
         </header>
 
@@ -73,17 +88,23 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8" data-testid="lesson-detail">
+    <div
+      className="mx-auto flex w-full max-w-3xl flex-col gap-8"
+      data-testid="lesson-detail"
+    >
       <header className="space-y-4">
         <Breadcrumbs items={trail} />
         <div className="space-y-1">
           <p className="text-sm text-muted-foreground">
-            {lesson.courseTitle} — {lesson.moduleTitle}
+            {courseContext} — {lesson.moduleTitle}
           </p>
-          <h1 className="font-display text-3xl font-bold tracking-tight">{lesson.title}</h1>
+          <h1 className="font-display text-3xl font-bold tracking-tight">
+            {lesson.title}
+          </h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Progreso: {completedExercises} de {lesson.exerciseCount} ejercicios completados
+          Progreso: {completedExercises} de {lesson.exerciseCount} ejercicios
+          completados
         </p>
       </header>
 
@@ -92,12 +113,16 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
           <h2 className="font-heading text-lg font-medium">Conceptos</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {lesson.concepts.map((concept) => {
-              const state = getMasteryState(concept.mastery, concept.attemptCount);
+              const state = getMasteryState(
+                concept.mastery,
+                concept.attemptCount,
+              );
               return (
                 <Card key={concept.id} className="p-3">
                   <p className="font-medium">{concept.title}</p>
                   <p className="text-sm text-muted-foreground">
-                    {MASTERY_STATE_LABELS[state]} — {formatMasteryPercent(concept.mastery)}
+                    {MASTERY_STATE_LABELS[state]} —{" "}
+                    {formatMasteryPercent(concept.mastery)}
                   </p>
                 </Card>
               );
@@ -122,10 +147,14 @@ export function LessonDetailView({ lesson }: LessonDetailViewProps) {
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Ejercicio {index + 1}</p>
+                  <p className="text-sm text-muted-foreground">
+                    Ejercicio {index + 1}
+                  </p>
                   <p className="font-medium">{exercise.questionPreview}</p>
                   <div className="flex gap-2">
-                    <Badge variant="outline">Dificultad {exercise.difficulty}</Badge>
+                    <Badge variant="outline">
+                      Dificultad {exercise.difficulty}
+                    </Badge>
                     {exercise.hasCorrectAttempt ? (
                       <Badge className="gap-1 bg-emerald-600 text-white hover:bg-emerald-600">
                         <CheckCircle2Icon className="size-3" aria-hidden />

@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { TopicExercisesSection } from "@/components/learning/topic-exercises-section";
 import type { TopicExerciseSummary } from "@/lib/curriculum/types";
+import { formatCourseContext } from "@/lib/navigation/course-levels";
+import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 
 type PracticeTopicViewProps = {
   courseTitle: string;
@@ -13,6 +15,12 @@ export function PracticeTopicView({
   moduleTitle,
   exercises,
 }: PracticeTopicViewProps) {
+  const subject = getSubject(subjectOfCourse({ title: courseTitle }));
+  const courseContext = formatCourseContext(
+    courseTitle,
+    subject?.label ?? "Curso",
+  );
+
   return (
     <div
       className="mx-auto w-full max-w-7xl space-y-8 px-6 py-10 lg:px-10 lg:py-14"
@@ -32,7 +40,7 @@ export function PracticeTopicView({
             aria-hidden
           />
           <p className="relative text-sm font-semibold text-sun">
-            {courseTitle}
+            {courseContext}
           </p>
           <h1 className="relative font-display text-4xl font-extrabold tracking-tight text-white">
             Práctica: {moduleTitle}

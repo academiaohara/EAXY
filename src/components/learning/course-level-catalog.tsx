@@ -118,7 +118,7 @@ export function CourseLevelCatalog({
                   );
                 }
 
-                if (onlyCourse) {
+                if (!hasAvailable) {
                   return (
                     <article
                       id={group.key}
@@ -141,6 +141,11 @@ export function CourseLevelCatalog({
                         <h3 className="font-display text-2xl font-extrabold tracking-tight text-ink">
                           {group.label}
                         </h3>
+                        {group.courses.length > 1 ? (
+                          <p className="mt-1 text-sm text-ink-muted">
+                            Sus itinerarios estarán disponibles más adelante.
+                          </p>
+                        ) : null}
                       </div>
                     </article>
                   );

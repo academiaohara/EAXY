@@ -119,6 +119,7 @@ export function CourseHero({ course, modules }: CourseHeroProps) {
               <div
                 className="h-full rounded-full bg-sun transition-all duration-500"
                 style={{ width: `${percent}%` }}
+                data-testid="course-progress-fill"
               />
             </div>
           </div>

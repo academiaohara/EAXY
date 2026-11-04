@@ -5,11 +5,15 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { CourseHero } from "@/components/learning/course-hero";
 import { CourseTopicPicker } from "@/components/learning/course-topic-picker";
 import { Card } from "@/components/ui/card";
-import { findDefaultModuleId, sortModules } from "@/lib/curriculum/course-navigation";
+import {
+  findDefaultModuleId,
+  sortModules,
+} from "@/lib/curriculum/course-navigation";
 import { findNextLesson } from "@/lib/curriculum/course-progress";
 import { applyLocalProgressToModules } from "@/lib/local-progress/storage";
 import { useLocalProgress } from "@/lib/local-progress/use-local-progress";
 import { buildLearningTrail } from "@/lib/navigation/learning-trail";
+import { formatCourseLevel } from "@/lib/navigation/course-levels";
 import type { CourseOutline } from "@/lib/curriculum/types";
 
 type CourseOutlineProps = {
@@ -18,18 +22,25 @@ type CourseOutlineProps = {
   mergeLocalProgress?: boolean;
 };
 
-export function CourseOutlineView({ outline, mergeLocalProgress = true }: CourseOutlineProps) {
+export function CourseOutlineView({
+  outline,
+  mergeLocalProgress = true,
+}: CourseOutlineProps) {
   const localStore = useLocalProgress();
   const modules = useMemo(() => {
     const sorted = sortModules(outline.modules);
-    return mergeLocalProgress ? applyLocalProgressToModules(sorted, localStore) : sorted;
+    return mergeLocalProgress
+      ? applyLocalProgressToModules(sorted, localStore)
+      : sorted;
   }, [mergeLocalProgress, localStore, outline.modules]);
 
   const hasContent = modules.some(
-    (module) => module.lessons.length > 0 || (module.topicExercises?.length ?? 0) > 0,
+    (module) =>
+      module.lessons.length > 0 || (module.topicExercises?.length ?? 0) > 0,
   );
   const hasModules = modules.length > 0;
-  const currentModuleId = findNextLesson(modules)?.module.id ?? findDefaultModuleId(modules);
+  const currentModuleId =
+    findNextLesson(modules)?.module.id ?? findDefaultModuleId(modules);
 
   return (
     <div className="flex w-full flex-col gap-6" data-testid="course-outline">
@@ -38,7 +49,7 @@ export function CourseOutlineView({ outline, mergeLocalProgress = true }: Course
       {!hasModules ? (
         <>
           <h1 className="font-display text-3xl font-bold tracking-tight text-ink">
-            {outline.course.title}
+            {formatCourseLevel(outline.course.title)}
           </h1>
           <Card className="p-6 text-center" data-testid="course-empty-state">
             <p className="font-medium">Contenido próximamente</p>
