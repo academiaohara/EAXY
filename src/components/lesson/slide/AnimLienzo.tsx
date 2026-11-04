@@ -41,7 +41,7 @@ export function AnimLienzo({ block, titulo }: Props) {
   return (
     <section className="grid h-full min-h-0 gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-8" data-testid="anim-lienzo" data-beat={paso}>
       <div className="flex min-h-0 min-w-0 items-center justify-center" role="img" aria-label={built.label}>
-        <div className="w-full overflow-hidden rounded-2xl border border-[color:var(--stage-border,#3d4f66)] bg-black/25 [&_svg]:max-h-[70vh]">{built.render(paso)}</div>
+        <div className="h-full w-full">{built.render(paso)}</div>
       </div>
       <div className="flex min-h-0 min-w-0 flex-col py-2">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden pt-[6%]" aria-live="polite">
@@ -52,7 +52,7 @@ export function AnimLienzo({ block, titulo }: Props) {
             <MathRenderer
               text={texto}
               emphasis="mark-alternate"
-              className={`mt-3 block font-semibold leading-snug text-[color:var(--stage-ink,#fff)] [text-wrap:pretty] ${texto.length > 150 ? "text-[1.2rem]" : "text-[1.5rem]"}`}
+              className={`mt-3 block font-semibold leading-snug text-[color:var(--stage-ink,#fff)] [text-wrap:pretty] ${texto.length > 300 ? "text-[1.3rem]" : "text-[1.5rem]"}`}
             />
           </div>
         </div>

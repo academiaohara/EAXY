@@ -14,8 +14,8 @@ const triedro = (): Diagrama => ({
   label: "El triedro trirrectángulo: ejes y planos coordenados",
   pasos: [
     { texto: "Un **triedro trirrectángulo** de vértice $O$: sus aristas $X$, $Y$, $Z$ son los **ejes del sistema**.", items: ejes(200) },
-    { texto: "Los planos de sus caras son los **planos coordenados** $XOY$, $XOZ$ y $YOZ$.", items: [poli(cara("xy", 150), "naranja", 0.2), poli(cara("xz", 150), "azul", 0.2), poli(cara("yz", 150), "verde", 0.2), txt(iso(110, 110, 0), "XOY", "naranja", 19), txt(iso(100, 0, 100), "XOZ", "azul", 19), txt(iso(0, 100, 100), "YOZ", "verde", 19)] },
-    { texto: "Un punto $(P)$ se proyecta ortogonalmente sobre cada cara en $(P')$, $(P'')$ y $(P''')$.", items: [pt(iso(90, 70, 80), "P", "amarillo", 12, -8), pt(iso(90, 70, 0), "P′", "naranja", 12, 20), pt(iso(90, 0, 80), "P″", "azul", 12, -8), pt(iso(0, 70, 80), "P‴", "verde", -34, -8), seg(iso(90, 70, 80), iso(90, 70, 0), "gris", true), seg(iso(90, 70, 80), iso(90, 0, 80), "gris", true), seg(iso(90, 70, 80), iso(0, 70, 80), "gris", true)] },
+    { texto: "Los planos de sus caras son los **planos coordenados** $XOY$, $XOZ$ y $YOZ$.", items: [poli(cara("xy", 150), "naranja", 0.2), poli(cara("xz", 150), "azul", 0.2), poli(cara("yz", 150), "verde", 0.2), txt(iso(125, 125, 0), "XOY", "naranja", 19), txt(iso(130, 0, 135), "XOZ", "azul", 19), txt(iso(0, 130, 135), "YOZ", "verde", 19)] },
+    { texto: "Un punto $(P)$ se proyecta ortogonalmente sobre cada cara en $(P')$, $(P'')$ y $(P''')$.", items: [pt(iso(90, 70, 80), "P", "amarillo", 14, 4), pt(iso(90, 70, 0), "P′", "naranja", 14, 20), pt(iso(90, 0, 80), "P″", "azul", 14, -2), pt(iso(0, 70, 80), "P‴", "verde", -34, 4), seg(iso(90, 70, 80), iso(90, 70, 0), "gris", true), seg(iso(90, 70, 80), iso(90, 0, 80), "gris", true), seg(iso(90, 70, 80), iso(0, 70, 80), "gris", true)] },
   ],
 });
 

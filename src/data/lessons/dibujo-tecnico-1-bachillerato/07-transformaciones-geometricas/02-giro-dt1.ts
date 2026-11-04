@@ -9,7 +9,7 @@ export const giroDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[7],
   stage: { theme: "board" },
   steps: [
-    slide("giro", "El giro", [], anim("dt1-giro"), "visual-top"),
+    slide("giro", "El giro", [], diagrama("d7-giro"), "visual-top"),
     slide("giro-propiedades", "Qué ocurre con las figuras", [], diagrama("d7-giro-prop"), "visual-top"),
     ...construccionPasos("giro-segmento", "giro-recta"),
   ],
