@@ -4,7 +4,10 @@ test("la página principal carga correctamente", async ({ page }) => {
   await page.goto("/");
 
   await expect(page).toHaveTitle(/Eaxy/);
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { level: 1, name: /Tu siguiente gran idea/ }),
+  ).toBeVisible();
+  await expect(page.locator('a[href="#materias"]', { hasText: "Elegir mi curso" })).toBeVisible();
 });
 
 test("la cabecera de inicio enlaza a las secciones de la app", async ({ page }) => {
@@ -17,22 +20,29 @@ test("la cabecera de inicio enlaza a las secciones de la app", async ({ page }) 
   await expect(page.getByTestId("app-nav-progreso")).toHaveAttribute("href", "/perfil");
 });
 
-test("los puntos laterales navegan por las secciones de inicio", async ({ page }) => {
+test("inicio organiza materias por año sin repetir la asignatura", async ({ page }) => {
   await page.goto("/");
 
-  const dotNav = page.getByTestId("section-dot-nav");
-  await expect(dotNav).toBeVisible();
-  await expect(page.getByTestId("section-dot-inicio")).toHaveAttribute("aria-current", "location");
+  await expect(page.getByTestId("section-dot-nav")).toHaveCount(0);
+  await expect(page.getByRole("region", { name: "¿Qué quieres aprender?" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Menos dudas. Más avanzar." })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Preguntas frecuentes" })).toBeVisible();
 
-  const cursosDot = page.getByTestId("section-dot-cursos");
-  const cursosLabel = cursosDot.getByText("Cursos").first();
-  await expect(cursosLabel).toHaveCSS("opacity", "0");
-  await cursosDot.hover();
-  await expect(cursosLabel).toHaveCSS("opacity", "1");
+  const matematicas = page.getByTestId("home-subject-matematicas");
+  await expect(matematicas.getByText("1 ESO", { exact: true })).toBeVisible();
+  await expect(matematicas.getByText("4 ESO", { exact: true })).toBeVisible();
+  await expect(matematicas.getByText("1 Bachillerato", { exact: true })).toBeVisible();
+  await expect(matematicas.getByText("2 Bachillerato", { exact: true })).toBeVisible();
+  await expect(matematicas.getByText(/1º/)).toHaveCount(0);
+  await expect(matematicas.getByText(/Matemáticas 1/)).toHaveCount(0);
+});
 
-  await cursosDot.click();
-  await expect(page).toHaveURL(/#cursos$/);
-  await expect(cursosDot).toHaveAttribute("aria-current", "location");
+test("inicio muestra un siguiente paso real cuando existe", async ({ page }) => {
+  await page.goto("/");
+
+  const card = page.getByTestId("home-continue-card");
+  await expect(card).toBeVisible();
+  await expect(card.locator('a[href*="/aprender/"]', { hasText: /Empezar|Continuar|Repasar/ })).toBeVisible();
 });
 
 test("el logo de la app lleva a inicio", async ({ page }) => {

@@ -1,391 +1,255 @@
 import Link from "next/link";
 import {
   ArrowRightIcon,
-  BookOpenIcon,
+  BookOpenCheckIcon,
   BrainCircuitIcon,
   CheckIcon,
   ChevronDownIcon,
-  CloudIcon,
-  LineChartIcon,
+  CompassIcon,
+  RouteIcon,
   SparklesIcon,
 } from "lucide-react";
 import { BrandLogo } from "@/components/layout/brand-logo";
+import { SiteHeader } from "@/components/layout/site-header";
 import { DemoExercise } from "@/components/marketing/demo-exercise";
 import { HeroEquation } from "@/components/marketing/hero-equation";
-import { SectionDotNav } from "@/components/marketing/section-dot-nav";
-import { SiteHeader } from "@/components/layout/site-header";
+import { HomeContinueCard } from "@/components/marketing/home-continue-card";
+import { HomeCourseExplorer } from "@/components/marketing/home-course-explorer";
 import { Button } from "@/components/ui/button";
 import { curriculum } from "@/content";
-import { SUBJECT_ICONS } from "@/components/layout/subject-icons";
-import { courseHref, courseShortTitle } from "@/lib/navigation/learning-trail";
-import { SUBJECTS, SUBJECT_THEME, subjectOfCourse } from "@/lib/navigation/subjects";
-import { cn } from "@/lib/utils";
-
-const features = [
-  {
-    icon: BrainCircuitIcon,
-    title: "Aprendizaje adaptativo",
-    description:
-      "El sistema mide tu dominio en cada concepto y te sugiere qué practicar, reforzar o avanzar — con una explicación clara de por qué.",
-    className: "lg:col-span-2",
-  },
-  {
-    icon: SparklesIcon,
-    title: "Lecciones interactivas",
-    description:
-      "Recorridos guiados con tutor integrado, teoría resaltada y feedback inmediato en cada paso.",
-  },
-  {
-    icon: BookOpenIcon,
-    title: "De 1.º ESO a 2.º Bachillerato",
-    description:
-      "Catálogo progresivo por niveles: elige tu curso y accede a lecciones y ejercicios adaptados a lo que ya dominas.",
-  },
-  {
-    icon: LineChartIcon,
-    title: "Dominio visible",
-    description:
-      "Cada respuesta actualiza tu dominio. Ves en qué conceptos vas bien y cuáles necesitan más práctica.",
-  },
-  {
-    icon: CloudIcon,
-    title: "Con o sin cuenta",
-    description:
-      "Empieza al instante sin registrarte; tu progreso se guarda en el navegador. Con cuenta, se sincroniza para no perderlo.",
-  },
-];
+import { getAuthenticatedUserIdOrNull } from "@/lib/classrooms/authorization";
+import { getAprenderContinueStudying } from "@/lib/curriculum/aprender-home";
 
 const steps = [
   {
-    title: "Elige tu curso",
-    description: "Entra en tu nivel y abre el temario: verás qué temas hay y por dónde seguir.",
+    icon: CompassIcon,
+    number: "01",
+    title: "Elige tu año",
+    description: "Entra en una materia y abre tu nivel. Si hay itinerarios, los verás después.",
   },
   {
-    title: "Aprende y practica",
-    description: "Lecciones guiadas paso a paso y ejercicios con feedback inmediato.",
+    icon: BookOpenCheckIcon,
+    number: "02",
+    title: "Aprende haciendo",
+    description: "Recorre explicaciones visuales, responde y recibe feedback en cada paso.",
   },
   {
-    title: "Sigue la recomendación",
-    description: "Tu dominio se actualiza en cada intento y te indica el siguiente paso: recuperar, reforzar o avanzar.",
+    icon: RouteIcon,
+    number: "03",
+    title: "Sigue tu ruta",
+    description: "Tu progreso queda visible y Eaxy te devuelve siempre al siguiente paso útil.",
   },
 ];
 
 const faqs = [
   {
     q: "¿Para quién es Eaxy?",
-    a: "Para estudiantes de ESO y bachillerato que quieren practicar matemáticas a su ritmo, con o sin cuenta.",
+    a: "Para estudiantes de ESO y Bachillerato que quieren entender, practicar y avanzar en ciencias a su ritmo.",
   },
   {
-    q: "¿Puedo usar Eaxy sin registrarme?",
-    a: "Sí. Entra en Aprender y empieza. Tu progreso se guarda solo en este navegador; si borras datos o cambias de dispositivo, puedes perderlo.",
+    q: "¿Puedo empezar sin registrarme?",
+    a: "Sí. Puedes abrir una materia y empezar de inmediato. El progreso se guarda en este navegador.",
   },
   {
     q: "¿Qué gano con una cuenta?",
-    a: "Tu progreso, intentos y dominio se guardan en la nube y te siguen en cualquier dispositivo donde inicies sesión.",
+    a: "Tu progreso se sincroniza para que puedas continuar en otro momento o dispositivo.",
   },
   {
-    q: "¿Usa inteligencia artificial?",
-    a: "No en esta versión. Las recomendaciones se basan en reglas explícitas sobre tu dominio y tu historial de intentos.",
+    q: "¿Cómo decide Eaxy qué hacer después?",
+    a: "Usa reglas claras basadas en las lecciones completadas, tus intentos y el dominio de cada concepto.",
   },
 ];
 
-const HIGHLIGHTS = ["Gratis", "Sin registro para empezar", "Feedback inmediato"];
-
-const PAGE_SECTIONS = [
-  { id: "inicio", label: "Inicio" },
-  { id: "como-funciona", label: "Cómo funciona" },
-  { id: "cursos", label: "Cursos" },
-  { id: "ventajas", label: "Ventajas" },
-  { id: "preguntas", label: "Preguntas" },
-] as const;
-
-export default function HomePage() {
+export default async function HomePage() {
+  const studentId = await getAuthenticatedUserIdOrNull();
+  const continueStudying = await getAprenderContinueStudying(studentId);
   const courses = [...curriculum.courses].sort((a, b) => a.orderIndex - b.orderIndex);
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="campus-motion flex flex-1 flex-col bg-paper">
       <SiteHeader />
-      <SectionDotNav sections={PAGE_SECTIONS} />
 
       <main className="flex-1">
-        <section id="inicio" className="relative scroll-mt-20 overflow-hidden bg-app-glow">
-          <div className="mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-24">
-            <div className="space-y-7">
-              <p className="inline-flex items-center gap-2 rounded-full border border-cobalt/15 bg-paper-raised/80 px-3 py-1 text-xs font-semibold text-cobalt shadow-xs">
-                <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
-                Matemáticas, física y tecnología · ESO y Bachillerato
+        <section className="px-4 pb-16 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+          <div className="relative mx-auto grid min-h-[36rem] w-full max-w-7xl items-center gap-10 overflow-hidden rounded-[2.5rem] bg-[#cfe9dd] px-7 py-12 sm:px-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(22rem,0.72fr)] lg:px-14 lg:py-16">
+            <span className="pointer-events-none absolute -right-10 -top-16 size-60 rounded-full bg-[var(--sun)]/90" aria-hidden />
+            <span className="pointer-events-none absolute -bottom-16 right-[28%] size-36 rounded-full bg-[var(--coral)]" aria-hidden />
+            <span className="pointer-events-none absolute left-[52%] top-10 size-5 rounded-full bg-ink/20" aria-hidden />
+
+            <div className="relative z-10 max-w-2xl">
+              <p className="inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1.5 text-xs font-extrabold uppercase tracking-[0.12em] text-[#2b7664] ring-1 ring-white/60">
+                <SparklesIcon className="size-3.5" aria-hidden />
+                Aprende haciendo
               </p>
-              <h1 className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                Aprende ciencias{" "}
-                <span className="bg-gradient-to-r from-cobalt to-violet-500 bg-clip-text text-transparent">
-                  haciendo
-                </span>
-                , a tu ritmo
+              <h1 className="mt-6 font-display text-5xl font-extrabold leading-[0.98] tracking-[-0.055em] text-ink sm:text-6xl lg:text-[4.6rem]">
+                Tu siguiente gran idea empieza aquí.
               </h1>
-              <p className="max-w-lg text-lg leading-relaxed text-ink-muted">
-                Un curso estructurado con lecciones interactivas y un motor de recomendaciones que te
-                dice qué practicar a continuación — y por qué.
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#46655d]">
+                Ciencias explicadas con claridad, práctica con ayuda y una ruta que te enseña qué
+                hacer después.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <Button
                   size="lg"
-                  className="rounded-full"
+                  className="rounded-full px-6"
                   nativeButton={false}
-                  render={<Link href="/aprender" />}
+                  render={<Link href="#materias" />}
                 >
-                  Empezar ahora
+                  Elegir mi curso
                   <ArrowRightIcon data-icon="inline-end" aria-hidden />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full"
+                  className="rounded-full border-white/75 bg-white/55 px-6"
                   nativeButton={false}
-                  render={<Link href="/registro" />}
+                  render={<Link href="#como-funciona" />}
                 >
-                  Crear cuenta
+                  Ver cómo funciona
                 </Button>
               </div>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ink-muted">
-                {HIGHLIGHTS.map((item) => (
+              <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-[#4d6b63]">
+                {["Sin registro para empezar", "Feedback inmediato", "Progreso claro"].map((item) => (
                   <li key={item} className="inline-flex items-center gap-1.5">
-                    <CheckIcon className="size-4 text-emerald-500" aria-hidden />
+                    <CheckIcon className="size-4 text-[#2b7664]" aria-hidden />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="relative">
-              <div
-                className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-cobalt/15 via-violet-400/10 to-emerald-300/15 blur-2xl"
-                aria-hidden
-              />
-              <div className="relative space-y-4 rounded-[2rem] border border-white/60 bg-white/50 p-4 shadow-xl shadow-cobalt/5 backdrop-blur sm:p-5">
-                <HeroEquation />
-                <DemoExercise />
-              </div>
+            <div className="relative z-10 lg:pl-4">
+              {continueStudying ? (
+                <HomeContinueCard entry={continueStudying.primary} />
+              ) : (
+                <div className="rounded-[1.75rem] border border-white/70 bg-white/80 p-5 shadow-xl backdrop-blur">
+                  <HeroEquation />
+                  <p className="mt-4 text-sm font-semibold text-ink-muted">
+                    Explora una idea, compruébala y sigue avanzando.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-        <section id="como-funciona" className="scroll-mt-20 border-y border-border bg-paper-raised">
-          <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-            <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt">Cómo funciona</p>
-              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Siempre sabes cuál es tu siguiente paso
-              </h2>
-              <p className="mt-3 text-ink-muted">
-                Sin algoritmos opacos: cada recomendación incluye su motivo.
-              </p>
-            </div>
-
-            <ol className="mt-12 grid gap-4 md:grid-cols-3">
-              {steps.map((step, index) => (
-                <li
-                  key={step.title}
-                  className="relative rounded-2xl border border-border bg-paper p-6"
-                >
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-cobalt font-display text-base font-bold text-white shadow-md shadow-cobalt/25">
-                    {index + 1}
-                  </span>
-                  <h3 className="mt-4 font-display text-lg font-bold text-ink">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.description}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section id="cursos" className="scroll-mt-20">
-          <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <section
+          id="materias"
+          aria-labelledby="materias-title"
+          className="scroll-mt-24 px-4 py-16 sm:px-6 lg:py-24"
+        >
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="flex items-end justify-between gap-6">
               <div className="max-w-2xl">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt">Cursos</p>
-                <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                  Elige tu materia y tu curso
+                <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#a55439]">Materias</p>
+                <h2 id="materias-title" className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink">
+                  ¿Qué quieres aprender?
                 </h2>
+                <p className="mt-3 text-ink-muted">
+                  Primero elige una materia. Dentro verás tus años y, solo cuando haga falta, el itinerario.
+                </p>
               </div>
-              <Link
-                href="/aprender"
-                className="inline-flex items-center gap-1 text-sm font-semibold text-cobalt hover:underline underline-offset-4"
-              >
-                Ver todo en Aprender
+              <Link href="/aprender" className="hidden items-center gap-1 text-sm font-bold text-ink hover:underline md:inline-flex">
+                Abrir Aprender
                 <ArrowRightIcon className="size-4" aria-hidden />
               </Link>
             </div>
+            <div className="mt-10"><HomeCourseExplorer courses={courses} /></div>
+          </div>
+        </section>
 
-            <div className="mt-10 grid gap-6 lg:grid-cols-3">
-              {SUBJECTS.map((subject) => {
-                const theme = SUBJECT_THEME[subject.key];
-                const Icon = SUBJECT_ICONS[subject.key];
-                const own = courses.filter((course) => subjectOfCourse(course) === subject.key);
-                return (
-                  <div
-                    key={subject.key}
-                    className="overflow-hidden rounded-3xl border border-border bg-paper-raised shadow-xs"
-                  >
-                    <Link
-                      href={subject.href}
-                      className={cn(
-                        "flex items-center gap-3 bg-gradient-to-br px-5 py-4 text-white",
-                        theme.gradient,
-                      )}
-                    >
-                      <span className="flex size-10 items-center justify-center rounded-xl bg-white/20 ring-1 ring-white/30">
-                        <Icon className="size-5" aria-hidden />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block font-display text-lg font-bold">{subject.label}</span>
-                        <span className="block text-xs text-white/80">{subject.tagline}</span>
-                      </span>
-                    </Link>
-                    <ul className="divide-y divide-border">
-                      {own.map((course) => {
-                        const lessonCount = course.modules.reduce(
-                          (sum, courseModule) => sum + courseModule.lessons.length,
-                          0,
-                        );
-                        const available = lessonCount > 0;
-                        return (
-                          <li key={course.id}>
-                            <Link
-                              href={courseHref(course.slug)}
-                              className={cn(
-                                "group flex items-center justify-between gap-3 px-5 py-3 text-sm transition-colors hover:bg-paper",
-                                !available && "opacity-60",
-                              )}
-                            >
-                              <span className="font-semibold text-ink group-hover:text-cobalt">
-                                {courseShortTitle(course.title)}
-                              </span>
-                              <span className="text-xs text-ink-muted">
-                                {available ? `${lessonCount} lecciones` : "Próximamente"}
-                              </span>
-                            </Link>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-              })}
+        <section
+          id="como-funciona"
+          aria-labelledby="como-funciona-title"
+          className="scroll-mt-24 border-y border-border bg-[#fff9eb] px-4 py-16 sm:px-6 lg:py-24"
+        >
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+              <div>
+                <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#a55439]">Cómo funciona</p>
+                <h2 id="como-funciona-title" className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink">
+                  Menos dudas. Más avanzar.
+                </h2>
+                <p className="mt-4 max-w-md leading-relaxed text-ink-muted">
+                  La estructura siempre te orienta: dónde estás, qué estás aprendiendo y qué viene después.
+                </p>
+              </div>
+              <ol className="grid gap-4 md:grid-cols-3">
+                {steps.map((step) => {
+                  const Icon = step.icon;
+                  return (
+                    <li key={step.number} className="rounded-[1.5rem] border border-border bg-paper-raised p-5 shadow-[0_16px_40px_-32px_rgb(25_58_50/0.45)]">
+                      <div className="flex items-center justify-between">
+                        <span className="flex size-10 items-center justify-center rounded-2xl bg-cobalt-tint text-ink"><Icon className="size-5" aria-hidden /></span>
+                        <span className="font-mono text-xs font-bold text-ink-muted/60">{step.number}</span>
+                      </div>
+                      <h3 className="mt-5 font-display text-lg font-extrabold text-ink">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-muted">{step.description}</p>
+                    </li>
+                  );
+                })}
+              </ol>
             </div>
           </div>
         </section>
 
-        <section id="ventajas" className="scroll-mt-20 border-y border-border bg-paper-raised">
-          <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-            <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-              Todo lo que necesitas para aprender
-            </h2>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {features.map((feature) => {
-                const Icon = feature.icon;
-                return (
-                  <div
-                    key={feature.title}
-                    className={cn(
-                      "rounded-2xl border border-border bg-paper p-6 transition-colors hover:border-cobalt/30",
-                      feature.className,
-                    )}
-                  >
-                    <span className="inline-flex rounded-xl bg-cobalt-tint p-2.5 text-cobalt">
-                      <Icon className="size-5" aria-hidden />
-                    </span>
-                    <h3 className="mt-4 font-display text-lg font-bold text-ink">{feature.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{feature.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="preguntas" className="scroll-mt-20">
-          <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.5fr] lg:py-20">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt">FAQ</p>
-              <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
-                Preguntas frecuentes
+        <section aria-labelledby="demo-title" className="px-4 py-16 sm:px-6 lg:py-24">
+          <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="max-w-xl">
+              <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#2b7664]">Dentro de una lección</p>
+              <h2 id="demo-title" className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink">
+                Las ideas se entienden cuando puedes probarlas.
               </h2>
+              <p className="mt-4 leading-relaxed text-ink-muted">
+                Una explicación visual y una pregunta concreta convierten la teoría en algo que puedes comprobar por ti mismo.
+              </p>
+              <div className="mt-7 rounded-[1.5rem] border border-border bg-paper-raised p-4"><HeroEquation /></div>
             </div>
-            <div className="space-y-3">
+            <div className="rounded-[2rem] border border-border bg-[#e5eee9] p-4 shadow-[0_26px_60px_-42px_rgb(25_58_50/0.55)] sm:p-6"><DemoExercise /></div>
+          </div>
+        </section>
+
+        <section aria-labelledby="preguntas-title" className="border-t border-border bg-paper-raised px-4 py-16 sm:px-6 lg:py-24">
+          <div className="mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[0.65fr_1.35fr]">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#a55439]">Antes de empezar</p>
+              <h2 id="preguntas-title" className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink">Preguntas frecuentes</h2>
+            </div>
+            <div className="grid gap-3">
               {faqs.map((faq) => (
-                <details
-                  key={faq.q}
-                  className="group rounded-2xl border border-border bg-paper-raised px-5 py-4 shadow-xs open:border-cobalt/30"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                <details key={faq.q} className="group rounded-2xl border border-border bg-paper px-5 py-4 open:bg-[#fff9eb]">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-ink [&::-webkit-details-marker]:hidden">
                     {faq.q}
-                    <ChevronDownIcon
-                      className="size-4 shrink-0 text-ink-muted transition-transform group-open:rotate-180"
-                      aria-hidden
-                    />
+                    <ChevronDownIcon className="size-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden />
                   </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-muted">{faq.a}</p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">{faq.a}</p>
                 </details>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="px-4 pb-16 sm:px-6 lg:pb-24">
-          <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-3xl bg-gradient-to-br from-cobalt via-indigo-600 to-violet-600 px-6 py-14 text-center text-white shadow-xl shadow-cobalt/20 sm:px-12">
-            <div
-              className="pointer-events-none absolute -left-10 -top-24 size-80 rounded-full bg-white/10 blur-3xl"
-              aria-hidden
-            />
-            <h2 className="relative font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Empieza hoy con Eaxy
-            </h2>
-            <p className="relative mx-auto mt-3 max-w-xl text-white/80">
-              Prueba el catálogo sin registro o crea una cuenta gratis para guardar tu progreso en la
-              nube.
-            </p>
-            <div className="relative mt-8 flex flex-wrap justify-center gap-3">
-              <Button
-                size="lg"
-                className="rounded-full bg-white text-cobalt hover:bg-white/90"
-                nativeButton={false}
-                render={<Link href="/aprender" />}
-              >
-                Ir a Aprender
-              </Button>
-              <Button
-                size="lg"
-                variant="ghost"
-                className="rounded-full text-white ring-1 ring-white/40 hover:bg-white/15 hover:text-white"
-                nativeButton={false}
-                render={<Link href="/registro" />}
-              >
-                Crear cuenta
-              </Button>
+        <section className="px-4 py-16 sm:px-6 lg:py-24">
+          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.25rem] bg-ink px-8 py-14 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:gap-12">
+            <span className="pointer-events-none absolute -right-16 -top-24 size-64 rounded-full bg-[var(--sun)]/90" aria-hidden />
+            <div className="relative max-w-2xl">
+              <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.14em] text-[#cfe9dd]"><BrainCircuitIcon className="size-4" aria-hidden />Tu ruta empieza aquí</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl">Elige tu curso y abre la primera lección.</h2>
             </div>
+            <Button variant="sun" size="lg" className="relative mt-7 rounded-full lg:mt-0" nativeButton={false} render={<Link href="/aprender" />}>
+              Ir a Aprender<ArrowRightIcon data-icon="inline-end" aria-hidden />
+            </Button>
           </div>
         </section>
       </main>
 
       <footer className="border-t border-border bg-paper-raised">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <div className="space-y-2">
-            <BrandLogo />
-            <p>© {new Date().getFullYear()} Eaxy — Matemáticas, física y tecnología</p>
-          </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Pie de página">
-            <Link href="/aprender" className="transition-colors hover:text-cobalt">
-              Aprender
-            </Link>
-            <Link href="/practicar" className="transition-colors hover:text-cobalt">
-              Practicar
-            </Link>
-            <Link href="/perfil" className="transition-colors hover:text-cobalt">
-              Perfil
-            </Link>
-            <Link href="/login" className="transition-colors hover:text-cobalt">
-              Iniciar sesión
-            </Link>
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-9 text-sm text-ink-muted sm:px-6">
+          <div className="space-y-2"><BrandLogo /><p>© {new Date().getFullYear()} Eaxy — Ciencias para ESO y Bachillerato</p></div>
+          <nav className="flex gap-5" aria-label="Pie de página">
+            <Link href="/aprender" className="hover:text-ink">Aprender</Link>
+            <Link href="/practicar" className="hover:text-ink">Practicar</Link>
+            <Link href="/perfil" className="hover:text-ink">Mi progreso</Link>
           </nav>
         </div>
       </footer>
