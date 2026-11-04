@@ -9,8 +9,8 @@ export const traslacionDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[7],
   stage: { theme: "board" },
   steps: [
-    slide("transformaciones", "Transformaciones del plano", [], anim("dt1-transformaciones-tipos"), "visual-top"),
-    slide("traslacion", "La traslación", [], anim("dt1-traslacion"), "visual-top"),
+    slide("transformaciones", "Transformaciones del plano", [], diagrama("d7-tipos"), "visual-top"),
+    slide("traslacion", "La traslación", [], diagrama("d7-traslacion"), "visual-top"),
     slide("traslacion-propiedades", "Qué ocurre con las figuras", [], diagrama("d7-trasl-prop"), "visual-top"),
     ...construccionPasos("traslacion-figura"),
   ],

@@ -1,4 +1,4 @@
-import { arc, circ, fl, gira, homo, lin, medio, pol, poli, pt, seg, suma, txt, type Diagrama, type Pt } from "./engine";
+import { arc, circ, fl, gira, homo, lin, medio, pol, poli, pt, seg, suma, txt, type Diagrama, type Item, type Pt } from "./engine";
 
 const T = (p: Pt, d: Pt): Pt => suma(p, d);
 
@@ -418,7 +418,158 @@ const acotadosIntro = (): Diagrama => {
   };
 };
 
+/* ───────────── Tema 7: las tres transformaciones, una a una ───────────── */
+
+const TRI: Pt[] = [[300, 260], [440, 260], [370, 130]];
+const tiposTransf = (): Diagrama => {
+  const d: Pt = [150, -70];
+  const O: Pt = [250, 330];
+  const G = TRI.map((p) => gira(p, O, -65));
+  const C: Pt = [180, 300];
+  const H = TRI.map((p) => homo(p, C, 1.6));
+  const nombres = ["A", "B", "C"];
+  const rotulos = (f: Pt[], c: "azul" | "naranja", ap = "") => f.map((p, i) => pt(p, `${nombres[i]}${ap}`, c, i === 2 ? 0 : i === 0 ? -14 : 14, i === 2 ? -14 : 20));
+  return {
+    label: "Las tres transformaciones sencillas del plano: traslación, giro y homotecia",
+    pasos: [
+      { solo: true, texto: "Una **transformación** hace corresponder a cada punto de una figura otro punto del plano. Veremos las tres más sencillas con el mismo triángulo $F$.", items: [poli(TRI, "azul", 0.16), ...rotulos(TRI, "azul")] },
+      { solo: true, texto: "**Traslación**: todos los puntos se desplazan lo mismo, con la misma **dirección, magnitud y sentido** (un vector). La figura no cambia ni de forma ni de tamaño.", items: [
+        poli(TRI, "azul", 0.16), poli(TRI.map((p) => suma(p, d)), "naranja", 0.16), ...TRI.map((p) => fl(p, suma(p, d), "verde", 2.4)), ...rotulos(TRI, "azul"), ...rotulos(TRI.map((p) => suma(p, d)), "naranja", "′"),
+      ] },
+      { solo: true, texto: "**Giro**: todos los puntos giran el **mismo ángulo** alrededor de un **centro** $O$. La figura tampoco se deforma, pero queda girada.", items: [
+        poli(TRI, "azul", 0.16), poli(G, "naranja", 0.16), pt(O, "O", "verde", -16, 22), arc(O, 90, 0, 65, "verde"), ...TRI.map((p) => seg(O, p, "gris", true, 1.6)), ...G.map((p) => seg(O, p, "gris", true, 1.6)), ...rotulos(TRI, "azul"), ...rotulos(G, "naranja", "′"),
+      ] },
+      { solo: true, texto: "**Homotecia**: los puntos se alejan o acercan de un **centro** $C$ según una **razón**. Cambia el tamaño pero se conserva la forma: las figuras son **semejantes**.", items: [
+        poli(TRI, "azul", 0.16), poli(H, "naranja", 0.16), pt(C, "C", "verde", -16, 22), ...TRI.map((p, i) => seg(C, H[i]!, "gris", true, 1.6)), ...rotulos(TRI, "azul"), ...rotulos(H, "naranja", "′"),
+      ] },
+    ],
+  };
+};
+
+const traslacionDg = (): Diagrama => {
+  const F: Pt[] = [[110, 300], [250, 320], [200, 195]];
+  const d: Pt = [330, -85];
+  const Fp = F.map((p) => suma(p, d));
+  const V: Pt = [90, 110];
+  const Vp = suma(V, d);
+  const nombres = ["A", "B", "C"];
+  const rot = (f: Pt[], c: "azul" | "naranja", ap = "") => f.map((p, i) => pt(p, `${nombres[i]}${ap}`, c, i === 2 ? 8 : i === 0 ? -16 : 14, i === 2 ? -12 : 22));
+  return {
+    label: "Traslación: figura, vector traslación, vectores equipolentes y paralelogramo AA′B′B",
+    pasos: [
+      { texto: "La traslación queda definida por un **vector** $\\overrightarrow{VV'}$: tiene **dirección**, **magnitud** (módulo) y **sentido**.", items: [fl(V, Vp, "verde", 4), pt(V, "V", "verde", -14, -8), pt(Vp, "V′", "verde", 16, -8), poli(F, "azul", 0.16), ...rot(F, "azul")] },
+      { texto: "Cada punto $A$ de la figura $F$ se lleva a un punto $A'$ con $\\overrightarrow{AA'}$ **equipolente** a $\\overrightarrow{VV'}$: mismo módulo, dirección y sentido.", items: F.map((p, i) => fl(p, Fp[i]!, "verde", 2.4)) },
+      { texto: "Los puntos trasladados forman la figura $F'$, **igual** a $F$: rectas paralelas, ángulos iguales y mismos lados.", items: [poli(Fp, "naranja", 0.16), ...rot(Fp, "naranja", "′")] },
+      { texto: "$AA'B'B$ es un **paralelogramo**: por eso $AB = A'B'$ y los lados homólogos son **paralelos**.", items: [poli([F[0]!, Fp[0]!, Fp[1]!, F[1]!], "amarillo", 0.2)] },
+      { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble** de la traslación.", items: [seg([20, 380], [400, 250], "morado", false, 3.4), txt([120, 392], "recta doble", "morado", 19)] },
+    ],
+  };
+};
+
+const giroDg = (): Diagrama => {
+  const O: Pt = [250, 300];
+  const A: Pt = pol(O, 190, 38);
+  const alfa = 62;
+  const Ap = gira(A, O, alfa);
+  const B: Pt = pol(O, 120, 6);
+  const Bp = gira(B, O, alfa);
+  return {
+    label: "Giro: centro, amplitud, igualdad de radios y triángulos directamente iguales",
+    pasos: [
+      { texto: "Un **giro** de centro $O$ lleva $A$ a $A'$ con $OA = OA'$: ambos puntos están en la **misma circunferencia** de centro $O$.", items: [circ(O, 190, "gris", 0, true), seg(O, A, "azul"), seg(O, Ap, "naranja"), pt(O, "O", "verde", -16, 22), pt(A, "A", "azul", 14, -4), pt(Ap, "A′", "naranja", 0, -14)] },
+      { texto: "El ángulo $\\widehat{AOA'}$ es la **amplitud del giro**. Hay que conocer el **ángulo** y el **sentido**.", items: [arc(O, 70, 38, 38 + alfa, "verde"), txt(pol(O, 92, 38 + alfa / 2), "α", "verde", 24)] },
+      { texto: "Todo punto $B$ gira el **mismo ángulo** y en el mismo sentido: $OB = OB'$ y $\\widehat{BOB'} = \\widehat{AOA'}$.", items: [circ(O, 120, "gris", 0, true), seg(O, B, "azul"), seg(O, Bp, "naranja"), pt(B, "B", "azul", 14, 20), pt(Bp, "B′", "naranja", 16, -6), arc(O, 45, 6, 6 + alfa, "verde")] },
+      { texto: "Los triángulos $AOB$ y $A'OB'$ son **directamente iguales**: la figura girada es **igual** a la original.", items: [poli([O, A, B], "azul", 0.16), poli([O, Ap, Bp], "naranja", 0.16)] },
+      { texto: "El centro $O$ es el **único punto doble**: no se mueve.", items: [circ(O, 13, "verde"), txt([O[0] + 30, O[1] + 40], "punto doble", "verde", 19, "start")] },
+    ],
+  };
+};
+
+const homotecia = (): Diagrama => {
+  const C: Pt = [250, 240];
+  const F: Pt[] = [[420, 140], [440, 270], [530, 205]];
+  const nombres = ["A", "B", "D"];
+  const fig = (k: number, c: "azul" | "naranja", ap = ""): Pt[] => F.map((p) => homo(p, C, k));
+  const rot = (f: Pt[], c: "azul" | "naranja" | "rojo" | "morado", ap: string) => f.map((p, i) => pt(p, `${nombres[i]}${ap}`, c, 14, i === 0 ? -8 : 20));
+  return {
+    label: "Homotecia: centro, razón, directa e inversa, simetría central",
+    pasos: [
+      { texto: "Dos figuras son **homotéticas** si sus puntos homólogos están **alineados con un punto fijo** $C$, el **centro de homotecia**.", items: [poli(F, "azul", 0.16), ...rot(F, "azul", ""), pt(C, "C", "verde", -16, 22)] },
+      { solo: false, texto: "La razón es $\\dfrac{\\overline{CA}}{\\overline{CA'}} = \\pm K$. Con $K > 0$ ($K = 1{,}5$) la homotecia es **directa**: $A'$ queda al mismo lado de $C$ que $A$.", items: [poli(fig(1.5, "naranja"), "naranja", 0.16), ...F.map((p, i) => seg(C, fig(1.5, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(1.5, "naranja"), "naranja", "′"), txt([590, 392], "K = 1,5 · directa", "amarillo", 22, "end")] },
+      { solo: false, texto: "Con $K < 0$ ($K = -0{,}8$) la homotecia es **inversa**: $A'$ queda al lado contrario de $C$. Las rectas homólogas siguen siendo **paralelas**.", items: [poli(fig(-0.8, "naranja"), "rojo", 0.16), ...F.map((p, i) => seg(C, fig(-0.8, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(-0.8, "naranja"), "rojo", "″"), txt([590, 416], "K = −0,8 · inversa", "rojo", 22, "end")] },
+      { solo: false, texto: "Si $K = -1$ la homotecia es una **simetría central**: $A$ y $A'$ son simétricos respecto de $C$ y la figura es **igual**.", items: [poli(fig(-1, "naranja"), "morado", 0.16), ...rot(fig(-1, "naranja"), "morado", "‴"), txt([590, 440], "K = −1 · simetría central", "morado", 22, "end")] },
+      { texto: "Las figuras homotéticas tienen los **ángulos iguales**: son **semejantes**. Las rectas que pasan por $C$ son **dobles**.", items: [seg([C[0] - 200, C[1] + 40], [C[0] + 400, C[1] - 70], "morado", false, 3), txt([C[0] + 330, C[1] - 82], "recta doble", "morado", 19)] },
+    ],
+  };
+};
+
+const homoCentros = (): Diagrama => {
+  const O1: Pt = [170, 215];
+  const R1 = 90;
+  const O2: Pt = [440, 215];
+  const R2 = 40;
+  const C1: Pt = [(R1 * O2[0] - R2 * O1[0]) / (R1 - R2), 215];
+  const C2: Pt = [(R1 * O2[0] + R2 * O1[0]) / (R1 + R2), 215];
+  const tg = (C: Pt, lado: 1 | -1, izq: number, der: number): [Pt, Pt] => {
+    const a = (Math.asin(R1 / Math.abs(C[0] - O1[0])) * 180) / Math.PI;
+    return [pol(C, izq, 180 + lado * a), pol(C, der, lado * a)];
+  };
+  return {
+    label: "Dos circunferencias: centros de homotecia directa (tangentes exteriores) e inversa (tangentes interiores)",
+    pasos: [
+      { texto: "Dos **circunferencias** son siempre **homotéticas**: sus centros $O$ y $O'$ son puntos homólogos y la razón es el cociente de los radios.", items: [circ(O1, R1, "azul", 0.1), circ(O2, R2, "naranja", 0.1), seg([40, 215], [780, 215], "gris", true, 1.6), pt(O1, "O", "azul", 0, 26), pt(O2, "O′", "naranja", 0, 24)] },
+      { texto: "Las **tangentes comunes exteriores** se cortan en $C_1$: es el centro de la homotecia **directa** ($K > 0$).", items: [...[1, -1].map((l) => seg(...tg(C1, l as 1 | -1, C1[0] - O1[0] + 60, 0), "verde", false, 2.6)), pt(C1, "C₁", "verde", 4, 24)] },
+      { texto: "Las **tangentes comunes interiores** se cortan en $C_2$, entre las dos circunferencias: es el centro de la homotecia **inversa** ($K < 0$).", items: [...[1, -1].map((l) => seg(...tg(C2, l as 1 | -1, C2[0] - O1[0] + 60, O2[0] - C2[0] + 60), "rojo", false, 2.6)), pt(C2, "C₂", "rojo", 4, 24)] },
+    ],
+  };
+};
+
+const curvasNivel = (): Diagrama => {
+  const base = 330;
+  const perfil = (x: number) => base - 190 * Math.exp(-(((x - 230) / 95) ** 2));
+  const pts: Pt[] = Array.from({ length: 81 }, (_, i) => [20 + i * 5, perfil(20 + i * 5)] as Pt);
+  const semi = (h: number) => 95 * Math.sqrt(Math.log(190 / h));
+  const hs = [40, 90, 140];
+  const el = (cx: number, cy: number, a: number, b: number): Pt[] => Array.from({ length: 73 }, (_, i) => [cx + a * Math.cos((i / 72) * 6.2832), cy + b * Math.sin((i / 72) * 6.2832)] as Pt);
+  return {
+    label: "Curvas de nivel: secciones horizontales de una colina y su proyección acotada",
+    pasos: [
+      { texto: "Unos **planos horizontales equidistantes** cortan la superficie del terreno. Cada plano da una **sección**, cuyo contorno es una **curva de nivel**.", items: [lin(pts, "verde", false, 4), seg([20, base], [420, base], "gris", false, 2), ...hs.map((h) => seg([20, base - h], [420, base - h], "azul", true, 1.8)), ...hs.map((h, i) => txt([436, base - h + 5], `cota ${(i + 1) * 10}`, "azul", 17, "start"))] },
+      { texto: "Proyectadas sobre el plano de comparación, las secciones son **curvas cerradas acotadas**: todos los puntos de una curva tienen **la misma cota**.", items: [...hs.map((h, i) => lin(el(230, 410, semi(h), semi(h) * 0.35), "azul", false, 3)), ...hs.map((h, i) => seg([230 + semi(h), base - h], [230 + semi(h), 410], "gris", true, 1.2)), ...hs.map((h, i) => txt([230 + semi(h) + 10, 416], `${(i + 1) * 10}`, "azul", 16, "start"))] },
+      { texto: "Si la cota **aumenta hacia dentro**, el plano representa un **monte** o colina; si **aumenta hacia afuera**, un **valle** u hondonada.", items: [txt([230, 470], "monte: la cota sube hacia dentro", "verde", 18), ...hs.map((h, i) => lin(el(610, 410, semi(hs[2 - i]!), semi(hs[2 - i]!) * 0.35), "naranja", false, 3)), txt([610, 470], "valle: la cota sube hacia afuera", "naranja", 18)] },
+      { texto: "La separación entre planos es la **equidistancia**. Con poca pendiente se intercalan **curvas intercalares**, dibujadas a trazos.", items: [lin(el(230, 410, (semi(40) + semi(90)) / 2, ((semi(40) + semi(90)) / 2) * 0.35), "amarillo", true, 2.4), txt([40, 410], "curva intercalar", "amarillo", 17, "start")] },
+    ],
+  };
+};
+
+const simbolos = (): Diagrama => {
+  const fila = (y: number, texto: string): Item[] => [txt([290, y + 6], texto, "blanco", 19, "start")];
+  return {
+    label: "Símbolos del dibujo topográfico",
+    pasos: [
+      { texto: "El relieve se representa con **curvas de nivel acotadas**: las ordinarias son líneas continuas y las **intercalares**, a trazos. Un **punto acotado** indica la altitud de un punto concreto.", items: [
+        lin([[60, 60], [100, 30], [150, 90], [230, 55]], "verde", false, 3), ...fila(60, "Curva de nivel (continua)"),
+        lin([[60, 110], [100, 80], [150, 140], [230, 105]], "verde", true, 2.6), ...fila(110, "Curva intercalar (a trazos)"),
+        pt([110, 160], "125,3", "blanco", 40, 6), ...fila(160, "Punto acotado"),
+      ] },
+      { texto: "Los **accidentes naturales** (ríos, vaguadas) y las **obras artificiales** (caminos, edificios, taludes) se indican con **símbolos convencionales**.", items: [
+        lin([[60, 215], [80, 201], [100, 215], [120, 201], [140, 215], [160, 201], [180, 215], [200, 201], [220, 215]], "azul", false, 3.4), ...fila(215, "Río o arroyo"),
+        seg([60, 258], [230, 258], "blanco", false, 2.4), seg([60, 272], [230, 272], "blanco", false, 2.4), ...fila(265, "Camino"),
+        poli([[90, 305], [200, 305], [200, 335], [90, 335]], "gris", 0.1), seg([90, 335], [120, 305], "gris", false, 1.4), seg([125, 335], [155, 305], "gris", false, 1.4), seg([160, 335], [190, 305], "gris", false, 1.4), ...fila(320, "Edificio"),
+        seg([60, 375], [230, 375], "blanco", false, 2.4), ...[75, 100, 125, 150, 175, 200].map((x, i) => seg([x, 375], [x, 375 + (i % 2 ? 12 : 18)], "blanco", false, 1.8)), ...fila(375, "Talud (desmonte o terraplén)"),
+      ] },
+    ],
+  };
+};
+
 export const DIAGRAMAS_GEOMETRIA: Record<string, Diagrama> = {
+  "d7-tipos": tiposTransf(),
+  "d7-traslacion": traslacionDg(),
+  "d7-giro": giroDg(),
+  "d7-homotecia": homotecia(),
+  "d7-homo-centros": homoCentros(),
+  "d13-curvas-nivel-teoria": curvasNivel(),
+  "d13-simbolos": simbolos(),
   "d7-trasl-prop": trasProp(),
   "d7-giro-prop": giroProp(),
   "d7-homo-casos": homoCasos(),

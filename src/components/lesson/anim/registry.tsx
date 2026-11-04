@@ -37,9 +37,7 @@ import { buildVistasPieza } from "@/components/lesson/anim/scenes/industrial/dt1
 import { buildPerspectivaFrontal } from "@/components/lesson/anim/scenes/industrial/dt1-conico";
 import { buildCuboIsometrico } from "@/components/lesson/anim/scenes/industrial/dt1-axonometria";
 import { buildAbatimientoDiedrico } from "@/components/lesson/anim/scenes/industrial/dt1-diedrico";
-import { buildCurvasNivel, buildSimbolosTopograficos } from "@/components/lesson/anim/scenes/industrial/dt1-topografia";
 import { buildDiagrama } from "@/components/lesson/anim/diagramas";
-import { buildGiro, buildHomotecia, buildHomoteciaCentros, buildTraslacion, buildTransformacionesTipos } from "@/components/lesson/anim/scenes/industrial/dt1-transformaciones";
 import { buildLineaTiempoDibujo, buildTrazadoArcoCapaz } from "@/components/lesson/anim/scenes/industrial/dt1-geometria";
 import { buildArcoCapazConstruccion, buildArcoCapazInvariancia, buildDocumentosProfesionales, buildGeometriaMedidaDemostracion, buildInterseccionLugares, buildLocalizacionDosArcos, buildLugaresCondiciones, buildPitagorasAreas, buildPlanoInformacion, buildPlanoRevision } from "@/components/lesson/anim/scenes/industrial/dt1-fundamentos";
 import { buildFasesEia } from "@/components/lesson/anim/scenes/industrial/tecti2-sostenible";
@@ -858,13 +856,6 @@ export const SLIDE_ANIM_REGISTRY: Record<SlideAnimId, Builder> = {
   "dt1-localizacion-dos-arcos": () => buildLocalizacionDosArcos(),
   "dt1-abatimiento-diedrico": () => buildAbatimientoDiedrico(),
   "dt1-diagrama": (p) => buildDiagrama(p.clave),
-  "dt1-curvas-nivel": () => buildCurvasNivel(),
-  "dt1-transformaciones-tipos": () => buildTransformacionesTipos(),
-  "dt1-traslacion": () => buildTraslacion(),
-  "dt1-giro": () => buildGiro(),
-  "dt1-homotecia": () => buildHomotecia(),
-  "dt1-homotecia-centros": () => buildHomoteciaCentros(),
-  "dt1-simbolos-topograficos": () => buildSimbolosTopograficos(),
   "dt1-cubo-isometrico": () => buildCuboIsometrico(),
   "dt1-perspectiva-frontal": () => buildPerspectivaFrontal(),
   "dt1-vistas-pieza": () => buildVistasPieza(),

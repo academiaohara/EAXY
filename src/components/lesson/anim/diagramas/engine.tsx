@@ -1,7 +1,8 @@
-import { Canvas, Fade, Txt } from "@/components/lesson/anim/primitives";
+import { Fade } from "@/components/lesson/anim/primitives";
 import { arcPath, arrowHead, angleOf, polar, type Pt } from "@/components/lesson/anim/geometry";
-import { MANIM } from "@/components/lesson/anim/palette";
 import type { AnimBuild } from "@/components/lesson/anim/types";
+import { BenchDefs, Desk } from "@/components/lesson/bench/instruments";
+import { AMBAR, AZUL, INK, SANS, SVG_CLASS, VERDE } from "@/components/lesson/bench/scenes";
 
 /**
  * Diagramas animados descritos como datos: cada paso añade elementos (segmentos, puntos, polígonos, circunferencias,
@@ -9,10 +10,23 @@ import type { AnimBuild } from "@/components/lesson/anim/types";
  */
 
 export type Color = "azul" | "verde" | "naranja" | "amarillo" | "rojo" | "morado" | "gris" | "blanco" | "cuadricula";
+/** Colores de la mesa de dibujo: tinta oscura sobre la hoja y los mismos azul, ámbar y verde de las construcciones. */
 const COLOR: Record<Color, string> = {
-  azul: MANIM.blue, verde: MANIM.green, naranja: MANIM.orange, amarillo: MANIM.yellow, rojo: MANIM.red,
-  morado: MANIM.purple, gris: MANIM.muted, blanco: MANIM.ink, cuadricula: MANIM.grid,
+  azul: AZUL, verde: VERDE, naranja: AMBAR, amarillo: "#b7791f", rojo: "#d64545",
+  morado: "#7e57c2", gris: "#6b7480", blanco: INK, cuadricula: "#c9c4b8",
 };
+/** Los trazos de los diagramas se pensaron más gruesos: en la hoja se dibujan algo más finos. */
+const FINO = 0.62;
+const MV = { w: 620, h: 380 };
+const HOJA = { x: 10, y: 10, w: 600, h: 360 };
+
+function Texto({ x, y, size, color, anchor, children }: { x: number; y: number; size: number; color: string; anchor: "start" | "middle" | "end"; children: string }) {
+  return (
+    <text x={x} y={y} fontSize={size} fill={color} fontWeight={700} textAnchor={anchor} style={{ fontFamily: SANS, paintOrder: "stroke", stroke: "#fbf8f0", strokeWidth: 3, strokeLinejoin: "round" }}>
+      {children}
+    </text>
+  );
+}
 
 export type Item =
   | { t: "seg"; a: Pt; b: Pt; c?: Color; d?: boolean; w?: number }
@@ -34,16 +48,18 @@ export type Paso = {
 
 export type Diagrama = { label: string; pasos: Paso[]; beatMs?: number };
 
-function Nodo({ it }: { it: Item }) {
+function Nodo({ it, k }: { it: Item; k: number }) {
+  /** El texto no crece con la ampliación del dibujo: se mantiene legible sin invadir la hoja. */
+  const tx = (t: number) => t * (Math.min(k, 1.1) / k);
   switch (it.t) {
     case "seg":
-      return <line x1={it.a[0]} y1={it.a[1]} x2={it.b[0]} y2={it.b[1]} stroke={COLOR[it.c ?? "azul"]} strokeWidth={it.w ?? 3} strokeLinecap="round" strokeDasharray={it.d ? "8 7" : undefined} />;
+      return <line x1={it.a[0]} y1={it.a[1]} x2={it.b[0]} y2={it.b[1]} stroke={COLOR[it.c ?? "azul"]} strokeWidth={(it.w ?? 3) * FINO} strokeLinecap="round" strokeDasharray={it.d ? "6 5" : undefined} />;
     case "fl": {
       const col = COLOR[it.c ?? "verde"];
       const fin = polar(it.b, 10, angleOf(it.a, it.b) + 180);
       return (
         <g>
-          <line x1={it.a[0]} y1={it.a[1]} x2={fin[0]} y2={fin[1]} stroke={col} strokeWidth={it.w ?? 3.4} strokeLinecap="round" />
+          <line x1={it.a[0]} y1={it.a[1]} x2={fin[0]} y2={fin[1]} stroke={col} strokeWidth={(it.w ?? 3.4) * FINO} strokeLinecap="round" />
           <polygon points={arrowHead(it.a, it.b, 15)} fill={col} />
         </g>
       );
@@ -52,27 +68,27 @@ function Nodo({ it }: { it: Item }) {
       const col = COLOR[it.c ?? "blanco"];
       return (
         <g>
-          <circle cx={it.p[0]} cy={it.p[1]} r={it.r ?? 5.5} fill={col} stroke={MANIM.surface} strokeWidth={2} />
-          {it.n ? <Txt x={it.p[0] + (it.dx ?? 12)} y={it.p[1] + (it.dy ?? -10)} size={it.s ?? 21} color={col}>{it.n}</Txt> : null}
+          <circle cx={it.p[0]} cy={it.p[1]} r={(it.r ?? 5.5) * 0.8} fill={col} stroke="#fbf8f0" strokeWidth={1.4} />
+          {it.n ? <Texto x={it.p[0] + (it.dx ?? 12)} y={it.p[1] + (it.dy ?? -10)} size={tx(it.s ?? 21)} color={col} anchor="middle">{it.n}</Texto> : null}
         </g>
       );
     }
     case "poli": {
       const col = COLOR[it.c ?? "azul"];
-      return <polygon points={it.p.map((q) => q.join(",")).join(" ")} fill={col} fillOpacity={it.f ?? 0.18} stroke={col} strokeWidth={it.w ?? 3} strokeLinejoin="round" strokeDasharray={it.d ? "8 7" : undefined} />;
+      return <polygon points={it.p.map((q) => q.join(",")).join(" ")} fill={col} fillOpacity={it.f ?? 0.18} stroke={col} strokeWidth={(it.w ?? 3) * FINO} strokeLinejoin="round" strokeDasharray={it.d ? "6 5" : undefined} />;
     }
     case "lin": {
       const col = COLOR[it.c ?? "azul"];
-      return <polyline points={it.p.map((q) => q.join(",")).join(" ")} fill="none" stroke={col} strokeWidth={it.w ?? 3} strokeLinejoin="round" strokeLinecap="round" strokeDasharray={it.d ? "8 7" : undefined} />;
+      return <polyline points={it.p.map((q) => q.join(",")).join(" ")} fill="none" stroke={col} strokeWidth={(it.w ?? 3) * FINO} strokeLinejoin="round" strokeLinecap="round" strokeDasharray={it.d ? "6 5" : undefined} />;
     }
     case "circ": {
       const col = COLOR[it.col ?? "azul"];
-      return <circle cx={it.c[0]} cy={it.c[1]} r={it.r} fill={col} fillOpacity={it.f ?? 0} stroke={col} strokeWidth={it.w ?? 3} strokeDasharray={it.d ? "8 7" : undefined} />;
+      return <circle cx={it.c[0]} cy={it.c[1]} r={it.r} fill={col} fillOpacity={it.f ?? 0} stroke={col} strokeWidth={(it.w ?? 3) * FINO} strokeDasharray={it.d ? "6 5" : undefined} />;
     }
     case "arc":
-      return <path d={arcPath(it.c, it.r, it.a0, it.a1)} fill="none" stroke={COLOR[it.col ?? "verde"]} strokeWidth={it.w ?? 2.8} />;
+      return <path d={arcPath(it.c, it.r, it.a0, it.a1)} fill="none" stroke={COLOR[it.col ?? "verde"]} strokeWidth={(it.w ?? 2.8) * FINO} />;
     case "txt":
-      return <Txt x={it.p[0]} y={it.p[1]} size={it.size ?? 21} color={COLOR[it.c ?? "blanco"]} anchor={it.anchor ?? "middle"}>{it.s}</Txt>;
+      return <Texto x={it.p[0]} y={it.p[1]} size={tx(it.size ?? 21)} color={COLOR[it.c ?? "blanco"]} anchor={it.anchor ?? "middle"}>{it.s}</Texto>;
   }
 }
 
@@ -105,26 +121,28 @@ function limites(def: Diagrama): { x0: number; y0: number; x1: number; y1: numbe
 
 export function construirDiagrama(def: Diagrama): AnimBuild {
   const b = limites(def);
-  const margen = 34;
   const w = Math.max(1, b.x1 - b.x0);
   const h = Math.max(1, b.y1 - b.y0);
-  const k = Math.max(0.7, Math.min(1.45, (800 - 2 * margen) / w, (420 - 2 * margen) / h));
-  const tx = (800 - w * k) / 2 - b.x0 * k;
-  const ty = (420 - h * k) / 2 - b.y0 * k;
+  const area = { x: HOJA.x + 26, y: HOJA.y + 26, w: HOJA.w - 52, h: HOJA.h - 52 };
+  const k = Math.min(area.w / w, area.h / h, 2.2);
+  const tx = area.x + (area.w - w * k) / 2 - b.x0 * k;
+  const ty = area.y + (area.h - h * k) / 2 - b.y0 * k;
   return {
     label: def.label,
     beatMs: def.beatMs ?? 5600,
     captions: def.pasos.map((p) => p.texto),
     render: (beat) => (
-      <Canvas>
+      <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="img" aria-label={def.label}>
+        <BenchDefs />
+        <Desk w={MV.w} h={MV.h} sheet={HOJA} />
         <g transform={`translate(${tx} ${ty}) scale(${k})`}>
           {def.pasos.map((paso, n) => (
             <Fade key={n} show={n <= beat && (!paso.solo || n === beat)}>
-              {paso.items.map((it, i) => <Nodo key={i} it={it} />)}
+              {paso.items.map((it, i) => <Nodo key={i} it={it} k={k} />)}
             </Fade>
           ))}
         </g>
-      </Canvas>
+      </svg>
     ),
   };
 }

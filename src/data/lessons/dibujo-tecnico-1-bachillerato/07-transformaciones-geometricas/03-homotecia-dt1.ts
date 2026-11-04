@@ -9,9 +9,9 @@ export const homoteciaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[7],
   stage: { theme: "board" },
   steps: [
-    slide("homotecia", "La homotecia", [], anim("dt1-homotecia"), "visual-top"),
+    slide("homotecia", "La homotecia", [], diagrama("d7-homotecia"), "visual-top"),
     slide("homotecia-casos", "Casos y propiedades", [], diagrama("d7-homo-casos"), "visual-top"),
-    slide("homotecia-centros", "Dos segmentos y dos circunferencias", [], anim("dt1-homotecia-centros"), "visual-top"),
+    slide("homotecia-centros", "Dos segmentos y dos circunferencias", [], diagrama("d7-homo-centros"), "visual-top"),
     ...construccionPasos("homotecia-directa", "homotecia-inversa", "homotecia-centros-segmentos", "homotecia-centros-circunferencias"),
   ],
 };

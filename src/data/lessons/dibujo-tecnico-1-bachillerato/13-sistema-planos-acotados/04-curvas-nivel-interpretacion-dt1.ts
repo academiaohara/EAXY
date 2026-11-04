@@ -9,13 +9,13 @@ export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[13],
   stage: { theme: "board" },
   steps: [
-    slide("topografica", "Superficies topográficas", [], anim("dt1-curvas-nivel"), "visual-top"),
+    slide("topografica", "Superficies topográficas", [], diagrama("d13-curvas-nivel-teoria"), "visual-top"),
     slide("perfiles", "Perfiles", [], diagrama("d13-perfiles"), "visual-top"),
     ...construccionPasos("acotados-perfil"),
     slide("desmonte", "Desmonte y terraplén de un camino", [], diagrama("d13-desmonte"), "visual-top"),
     ...construccionPasos("acotados-perfil-camino"),
     ...construccionPasos("acotados-explanacion"),
     slide("explanacion", "Explanación de una superficie topográfica", [], diagrama("d13-explanacion"), "visual-top"),
-    slide("dibujo-topografico", "Dibujo topográfico", [], anim("dt1-simbolos-topograficos"), "visual-top"),
+    slide("dibujo-topografico", "Dibujo topográfico", [], diagrama("d13-simbolos"), "visual-top"),
   ],
 };
