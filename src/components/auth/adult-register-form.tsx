@@ -28,18 +28,7 @@ export function AdultRegisterForm() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-sm space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">Crear cuenta</h1>
-        <p className="text-sm text-ink-muted">
-          Aprende matemáticas a tu ritmo y guarda tu progreso de forma segura. También puedes{" "}
-          <Link href="/aprender" className="font-medium text-cobalt underline-offset-4 hover:underline">
-            probar sin registrarte
-          </Link>
-          .
-        </p>
-      </div>
-
+    <div className="w-full space-y-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <Label htmlFor="displayName">Nombre</Label>
@@ -81,10 +70,17 @@ export function AdultRegisterForm() {
         </div>
 
         {errorMessage && (
-          <p className="text-sm text-destructive" role="alert">{errorMessage}</p>
+          <p className="text-sm text-destructive" role="alert">
+            {errorMessage}
+          </p>
         )}
 
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full rounded-full"
+          disabled={isPending}
+        >
           {isPending ? (
             <>
               <Loader2Icon className="animate-spin" data-icon="inline-start" />
@@ -98,9 +94,22 @@ export function AdultRegisterForm() {
 
       <p className="text-center text-sm text-ink-muted">
         ¿Ya tienes cuenta?{" "}
-        <Link href="/login" className="font-medium text-cobalt underline-offset-4 hover:underline">
+        <Link
+          href="/login"
+          className="font-medium text-cobalt underline-offset-4 hover:underline"
+        >
           Entrar
         </Link>
+      </p>
+      <p className="text-center text-xs text-ink-muted">
+        También puedes{" "}
+        <Link
+          href="/aprender"
+          className="font-semibold text-ink underline-offset-4 hover:underline"
+        >
+          probar sin registrarte
+        </Link>
+        .
       </p>
     </div>
   );

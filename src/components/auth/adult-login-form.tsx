@@ -34,18 +34,7 @@ export function AdultLoginForm() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-sm space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="font-display text-2xl font-semibold tracking-tight text-ink">Iniciar sesión</h1>
-        <p className="text-sm text-ink-muted">
-          Entra con email o Google para guardar tu progreso en la nube. También puedes{" "}
-          <Link href="/aprender" className="font-medium text-cobalt underline-offset-4 hover:underline">
-            usar Eaxy sin cuenta
-          </Link>
-          .
-        </p>
-      </div>
-
+    <div className="w-full space-y-6">
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
@@ -79,7 +68,12 @@ export function AdultLoginForm() {
           </p>
         )}
 
-        <Button type="submit" className="w-full" disabled={isPending}>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full rounded-full"
+          disabled={isPending}
+        >
           {isPending ? (
             <>
               <Loader2Icon className="animate-spin" data-icon="inline-start" />
@@ -103,7 +97,7 @@ export function AdultLoginForm() {
       <Button
         type="button"
         variant="outline"
-        className="w-full"
+        className="w-full rounded-full"
         disabled={isGooglePending}
         onClick={handleGoogle}
       >
@@ -112,9 +106,22 @@ export function AdultLoginForm() {
 
       <p className="text-center text-sm text-ink-muted">
         ¿No tienes cuenta?{" "}
-        <Link href="/registro" className="font-medium text-cobalt underline-offset-4 hover:underline">
+        <Link
+          href="/registro"
+          className="font-medium text-cobalt underline-offset-4 hover:underline"
+        >
           Regístrate
         </Link>
+      </p>
+      <p className="text-center text-xs text-ink-muted">
+        También puedes{" "}
+        <Link
+          href="/aprender"
+          className="font-semibold text-ink underline-offset-4 hover:underline"
+        >
+          usar Eaxy sin cuenta
+        </Link>
+        .
       </p>
     </div>
   );
