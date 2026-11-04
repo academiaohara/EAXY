@@ -25,7 +25,8 @@ const trasProp = (): Diagrama => {
         pt(cc, "O", "azul"), pt(T(cc, [0, 100]), "O′", "naranja"),
       ] },
       { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble**.", items: [
-        seg([20, 340], [250, 255], "morado"), fl([90, 313], [160, 287], "verde"), txt([135, 372], "recta doble", "morado", 20),
+        seg([50, 30], [250, 177.4], "morado", false, 3), pt([80, 52.1], "P", "morado", -14, -4), pt([175, 122.1], "P′", "morado", 16, -6), fl([80, 52.1], [175, 122.1], "verde"),
+        txt([150, 18], "recta doble (paralela al vector)", "morado", 18),
       ] },
     ],
   };
@@ -75,7 +76,7 @@ const homoCasos = (): Diagrama => {
         poli(F2, "naranja", 0.2), ...F.map((p, i) => seg(p, F2[i]!, "gris", true)), txt([380, 370], "K = −1 · simetría central", "amarillo", 22),
       ], solo: false },
       { texto: "Las **rectas que pasan por el centro** son **dobles**: cada una se transforma en sí misma.", items: [
-        seg([60, 330], [740, 90], "morado"), txt([650, 70], "recta doble", "morado", 20),
+        seg([90, 334], [490, -6], "morado", false, 3), txt([480, -20], "recta doble", "morado", 20),
       ] },
       { texto: "Los ángulos homólogos son **iguales** (rectas homólogas paralelas): las figuras son **semejantes**.", items: [
         arc(F[0]!, 28, 250, 335, "amarillo"), arc(F2[0]!, 28, 70, 155, "amarillo"),
@@ -461,7 +462,7 @@ const traslacionDg = (): Diagrama => {
       { texto: "Cada punto $A$ de la figura $F$ se lleva a un punto $A'$ con $\\overrightarrow{AA'}$ **equipolente** a $\\overrightarrow{VV'}$: mismo módulo, dirección y sentido.", items: F.map((p, i) => fl(p, Fp[i]!, "verde", 2.4)) },
       { texto: "Los puntos trasladados forman la figura $F'$, **igual** a $F$: rectas paralelas, ángulos iguales y mismos lados.", items: [poli(Fp, "naranja", 0.16), ...rot(Fp, "naranja", "′")] },
       { texto: "$AA'B'B$ es un **paralelogramo**: por eso $AB = A'B'$ y los lados homólogos son **paralelos**.", items: [poli([F[0]!, Fp[0]!, Fp[1]!, F[1]!], "amarillo", 0.2)] },
-      { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble** de la traslación.", items: [seg([20, 380], [400, 250], "morado", false, 3.4), txt([120, 392], "recta doble", "morado", 19)] },
+      { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble** de la traslación.", items: [seg([11, 325.5], [522.5, 193.75], "morado", false, 3.4), txt([470, 175], "recta doble", "morado", 19)] },
     ],
   };
 };
@@ -498,7 +499,7 @@ const homotecia = (): Diagrama => {
       { solo: false, texto: "La razón es $\\dfrac{\\overline{CA}}{\\overline{CA'}} = \\pm K$. Con $K > 0$ ($K = 1{,}5$) la homotecia es **directa**: $A'$ queda al mismo lado de $C$ que $A$.", items: [poli(fig(1.5, "naranja"), "naranja", 0.16), ...F.map((p, i) => seg(C, fig(1.5, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(1.5, "naranja"), "naranja", "′"), txt([590, 392], "K = 1,5 · directa", "amarillo", 22, "end")] },
       { solo: false, texto: "Con $K < 0$ ($K = -0{,}8$) la homotecia es **inversa**: $A'$ queda al lado contrario de $C$. Las rectas homólogas siguen siendo **paralelas**.", items: [poli(fig(-0.8, "naranja"), "rojo", 0.16), ...F.map((p, i) => seg(C, fig(-0.8, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(-0.8, "naranja"), "rojo", "″"), txt([590, 416], "K = −0,8 · inversa", "rojo", 22, "end")] },
       { solo: false, texto: "Si $K = -1$ la homotecia es una **simetría central**: $A$ y $A'$ son simétricos respecto de $C$ y la figura es **igual**.", items: [poli(fig(-1, "naranja"), "morado", 0.16), ...rot(fig(-1, "naranja"), "morado", "‴"), txt([590, 440], "K = −1 · simetría central", "morado", 22, "end")] },
-      { texto: "Las figuras homotéticas tienen los **ángulos iguales**: son **semejantes**. Las rectas que pasan por $C$ son **dobles**.", items: [seg([C[0] - 200, C[1] + 40], [C[0] + 400, C[1] - 70], "morado", false, 3), txt([C[0] + 330, C[1] - 82], "recta doble", "morado", 19)] },
+      { texto: "Las figuras homotéticas tienen los **ángulos iguales**: son **semejantes**. Las rectas que pasan por $C$ son **dobles**.", items: [seg([C[0] - 1.2 * 170, C[1] + 1.2 * 100], [C[0] + 2.2 * 170, C[1] - 2.2 * 100], "morado", false, 3), txt([C[0] + 2.2 * 170 - 20, C[1] - 2.2 * 100 - 14], "recta doble", "morado", 19)] },
     ],
   };
 };
