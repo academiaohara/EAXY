@@ -29,7 +29,7 @@ function primeraIdea(blocks: SlideBlock[]): string {
 
 function ayudaDiapositiva(title: string, blocks: SlideBlock[], visual?: Visual): HelpBranch[] {
   const idea = primeraIdea(blocks);
-  const out: HelpBranch[] = [{ label: "¿Qué debo retener?", message: `Idea clave de «${title}»: ${idea || "lee los bloques de arriba abajo, empezando por la definición o la regla."}` }];
+  const out: HelpBranch[] = [{ label: "¿Qué debo retener?", message: `Idea clave de «${title}»: ${idea || (visual?.kind === "anim" ? "sigue el dibujo paso a paso y lee la explicación de cada paso." : "lee los bloques de arriba abajo, empezando por la definición o la regla.")}` }];
   if (visual?.kind === "tool") out.push({ label: "¿Qué pruebo en la simulación?", message: "Cambia un solo control cada vez y observa qué resultados se mueven y cuáles no: así descubres la relación entre las magnitudes. Pulsa «Reiniciar» para volver al punto de partida." });
   if (visual?.kind === "bench") out.push({ label: "¿Cómo uso la mesa de dibujo?", message: "Trabaja como en papel: arrastra el instrumento (o usa el deslizador) y mira qué se mantiene fijo y qué se mueve. El texto bajo el dibujo te dice cuándo la construcción está bien hecha." });
   if (visual?.kind === "anim") out.push({ label: "¿Cómo veo la animación?", message: "Puedes pausarla, avanzar o retroceder paso a paso. Lee el texto de cada paso antes de pasar al siguiente: dice qué cambia en el dibujo." });
