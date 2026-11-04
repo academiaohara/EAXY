@@ -21,12 +21,13 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run dev",
+    command: process.env.EAXY_E2E_SERVER_COMMAND ?? "npm run dev",
     url: "http://localhost:3000",
     reuseExistingServer: true,
     env: {
       E2E_MOCK_CLASSROOM: "true",
-      CREDENTIALS_ENCRYPTION_KEY: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      CREDENTIALS_ENCRYPTION_KEY:
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=",
       NEXT_PUBLIC_SUPABASE_URL: "http://127.0.0.1:54321",
       NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "e2e-publishable-key",
       SUPABASE_SECRET_KEY: "e2e-secret-key",

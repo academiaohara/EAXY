@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 const LESSON_SLUG = "multiplicacion-division-naturales";
 const STORAGE_KEY = "eaxy-local-progress";
 
-test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => {
+test("pizarra tipo PowerPoint: título, tutor y controles", async ({
+  page,
+}, testInfo) => {
   await page.addInitScript((key) => {
     window.localStorage.removeItem(key);
   }, STORAGE_KEY);
@@ -11,7 +13,9 @@ test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => 
   await page.goto(
     `/aprender/curso/matematicas-1-eso/tema/numeros-naturales/leccion/${LESSON_SLUG}?reiniciar=1`,
   );
-  await expect(page.getByTestId("interactive-lesson")).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByTestId("interactive-lesson")).toBeVisible({
+    timeout: 20_000,
+  });
 
   await expect(page.getByTestId("lesson-progress-bar")).toHaveCount(0);
   await expect(page.getByTestId("lesson-step-phase")).toHaveCount(0);
@@ -34,5 +38,8 @@ test("pizarra tipo PowerPoint: título, tutor y controles", async ({ page }) => 
     expect(panelBox.height).toBeGreaterThan(frameBox.height * 0.55);
   }
 
-  await page.screenshot({ path: "/opt/cursor/artifacts/lesson-layout-chrome.png", fullPage: false });
+  await page.screenshot({
+    path: testInfo.outputPath("lesson-layout-chrome.png"),
+    fullPage: false,
+  });
 });
