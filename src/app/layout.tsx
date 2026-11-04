@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s — Eaxy",
   },
   description:
-    "Plataforma de aprendizaje adaptativo de matemáticas, física y tecnología para ESO y Bachillerato. Practica a tu ritmo o gestiona aulas con seguimiento del progreso.",
+    "Plataforma de aprendizaje de matemáticas, física, tecnología y dibujo técnico para ESO y Bachillerato. Aprende con lecciones interactivas y practica a tu ritmo.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

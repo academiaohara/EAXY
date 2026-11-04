@@ -57,13 +57,19 @@
 }
 
 :root {
-  --ink: #0f172a;
-  --ink-muted: #526077;
-  --paper: #f6f7fb;
-  --paper-raised: #ffffff;
-  --cobalt: #4353ff;
-  --cobalt-tint: #eceeff;
-  --border: #e3e6ef;
+  --forest: #193a32;
+  --ivory: #f4f3ec;
+  --surface: #fffdf8;
+  --sun: #f4c95d;
+  --coral: #e9785c;
+  --muted-ink: #60736c;
+  --ink: var(--forest);
+  --ink-muted: var(--muted-ink);
+  --paper: var(--ivory);
+  --paper-raised: var(--surface);
+  --cobalt: var(--forest);
+  --cobalt-tint: #e5eee9;
+  --border: #d8dfd9;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -96,6 +102,18 @@
   --chart-3: var(--ink);
   --chart-4: var(--border);
   --chart-5: var(--cobalt-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-motion,
+  .campus-motion *,
+  .campus-motion *::before,
+  .campus-motion *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /**
