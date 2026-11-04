@@ -46,7 +46,9 @@ export function PracticeSession({
   const [mastery, setMastery] = useState(initialMastery);
   const [attemptCount, setAttemptCount] = useState(initialAttemptCount);
   const [sessionKey, setSessionKey] = useState(0);
-  const [updatedMasteryLabel, setUpdatedMasteryLabel] = useState<string | null>(null);
+  const [updatedMasteryLabel, setUpdatedMasteryLabel] = useState<string | null>(
+    null,
+  );
 
   const currentExercise = exercises[exerciseIndex];
   const isFinished = exerciseIndex >= exercises.length;
@@ -74,7 +76,7 @@ export function PracticeSession({
 
   return (
     <div
-      className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:px-6"
+      className="mx-auto w-full max-w-5xl space-y-8 px-6 py-10 lg:px-10 lg:py-14"
       data-testid="practice-session"
     >
       <Breadcrumbs
@@ -84,35 +86,53 @@ export function PracticeSession({
         ]}
       />
 
-      <header className="space-y-3">
-        <p className="text-sm font-medium text-ink-muted">
-          {moduleTitle} — {lessonTitle}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-3xl font-bold tracking-tight text-ink">{conceptTitle}</h1>
-          <MasteryBadge mastery={mastery} attemptCount={attemptCount} showPercent />
-        </div>
-        {updatedMasteryLabel ? (
-          <p className="text-sm text-emerald-700" role="status" data-testid="mastery-update">
-            {updatedMasteryLabel}
+      <header className="relative space-y-3 overflow-hidden rounded-[2rem] bg-ink p-8 text-white shadow-[0_24px_64px_-44px_rgb(25_58_50/0.75)]">
+        <span
+          className="absolute -right-12 -top-20 size-56 rounded-full bg-sun"
+          aria-hidden
+        />
+        <div className="relative space-y-3">
+          <p className="text-sm font-semibold text-sun">
+            {moduleTitle} — {lessonTitle}
           </p>
-        ) : null}
-        <p className="text-ink-muted">{conceptDescription}</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-white">
+              {conceptTitle}
+            </h1>
+            <MasteryBadge
+              mastery={mastery}
+              attemptCount={attemptCount}
+              showPercent
+            />
+          </div>
+          {updatedMasteryLabel ? (
+            <p
+              className="text-sm font-medium text-emerald-200"
+              role="status"
+              data-testid="mastery-update"
+            >
+              {updatedMasteryLabel}
+            </p>
+          ) : null}
+          <p className="max-w-2xl text-white/70">{conceptDescription}</p>
+        </div>
       </header>
 
       {lessonSummary && (
-        <Card>
+        <Card className="rounded-[1.5rem]">
           <CardHeader>
             <CardTitle className="text-base">Repaso de la lección</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm leading-relaxed text-ink-muted">{lessonSummary}</p>
+            <p className="text-sm leading-relaxed text-ink-muted">
+              {lessonSummary}
+            </p>
           </CardContent>
         </Card>
       )}
 
       {!isFinished && currentExercise ? (
-        <Card>
+        <Card className="rounded-[1.5rem]">
           <CardHeader>
             <CardTitle className="text-base">
               Ejercicio {exerciseIndex + 1} de {exercises.length}
@@ -133,11 +153,14 @@ export function PracticeSession({
           <CardContent className="flex flex-col items-start gap-4 py-8">
             <div className="flex items-center gap-2 text-emerald-800">
               <CheckCircle2Icon className="size-6" aria-hidden />
-              <p className="font-display text-xl font-semibold">Sesión completada</p>
+              <p className="font-display text-xl font-semibold">
+                Sesión completada
+              </p>
             </div>
             <p className="text-sm text-emerald-900/80">
-              Has completado {completedCount} ejercicio{completedCount === 1 ? "" : "s"} de «{conceptTitle}».
-              Tu dominio actual es {Math.round(mastery * 100)} %.
+              Has completado {completedCount} ejercicio
+              {completedCount === 1 ? "" : "s"} de «{conceptTitle}». Tu dominio
+              actual es {Math.round(mastery * 100)} %.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/aprender">

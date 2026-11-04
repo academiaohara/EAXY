@@ -30,13 +30,13 @@ export async function AppShell({ children }: AppShellProps) {
 
   return (
     <div
-      className="flex min-h-dvh flex-col bg-app-glow [&:has([data-testid=interactive-lesson-layout])]:[--app-chrome-h:0px] [&:has([data-testid=interactive-lesson-layout])_[data-app-chrome]]:hidden"
+      className="campus-motion flex min-h-dvh flex-col bg-app-glow [&:has([data-testid=interactive-lesson-layout])]:[--app-chrome-h:0px] [&:has([data-testid=interactive-lesson-layout])_[data-app-chrome]]:hidden"
       style={{ "--app-chrome-h": appChromeHeight } as React.CSSProperties}
     >
       <div className="sticky top-0 z-30" data-app-chrome>
         {isGuest ? <GuestProgressBanner /> : null}
-        <header className="border-b border-border/80 bg-paper-raised/75 backdrop-blur-xl">
-          <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] gap-4 px-4 sm:px-6">
+        <header className="border-b border-border/80 bg-paper-raised/82 backdrop-blur-xl">
+          <div className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6 lg:gap-5">
             <BrandLogo className="justify-self-start" />
 
             <AppNav />
@@ -56,7 +56,7 @@ export async function AppShell({ children }: AppShellProps) {
                     >
                       {initials(user.displayName)}
                     </span>
-                    <span className="hidden text-sm font-medium text-ink lg:block">{user.displayName}</span>
+                      <span className="hidden text-sm font-medium text-ink xl:block">{user.displayName}</span>
                   </Link>
                   <form action={signOut}>
                     <Button
@@ -93,7 +93,7 @@ export async function AppShell({ children }: AppShellProps) {
                   <Button
                     size="sm"
                     nativeButton={false}
-                    className="hidden sm:inline-flex"
+                    className="hidden lg:inline-flex"
                     render={<Link href="/registro" />}
                   >
                     Crear cuenta

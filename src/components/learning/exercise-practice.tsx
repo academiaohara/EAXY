@@ -7,7 +7,10 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { ExerciseType } from "@/lib/exercise-engine/types";
-import { APRENDER_HOME_HREF, stripLessonNumber } from "@/lib/navigation/learning-trail";
+import {
+  APRENDER_HOME_HREF,
+  stripLessonNumber,
+} from "@/lib/navigation/learning-trail";
 
 type ExercisePracticeProps = {
   exerciseId: string;
@@ -27,22 +30,40 @@ export function ExercisePractice({
   const [lessonCompleted, setLessonCompleted] = useState(false);
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-6" data-testid="exercise-practice">
+    <div
+      className="mx-auto flex w-full max-w-4xl flex-col gap-8"
+      data-testid="exercise-practice"
+    >
       <header className="space-y-4">
         <Breadcrumbs
           items={[
             { label: "Aprender", href: APRENDER_HOME_HREF },
             ...(lessonId && lessonTitle
-              ? [{ label: stripLessonNumber(lessonTitle), href: `/aprender/leccion/${lessonId}` }]
+              ? [
+                  {
+                    label: stripLessonNumber(lessonTitle),
+                    href: `/aprender/leccion/${lessonId}`,
+                  },
+                ]
               : []),
             { label: "Ejercicio" },
           ]}
         />
-        <h1 className="font-display text-2xl font-bold tracking-tight">Practicar</h1>
+        <div className="rounded-[2rem] bg-ink p-8 text-white shadow-[0_24px_64px_-44px_rgb(25_58_50/0.75)]">
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-sun">
+            Zona de práctica
+          </p>
+          <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight">
+            Practicar
+          </h1>
+        </div>
       </header>
 
       {lessonCompleted ? (
-        <Card className="border-cobalt-tint bg-cobalt-tint/30 p-4" data-testid="lesson-completed-banner">
+        <Card
+          className="border-cobalt-tint bg-cobalt-tint/30 p-4"
+          data-testid="lesson-completed-banner"
+        >
           <p className="font-medium">¡Lección completada!</p>
           <p className="mt-1 text-sm text-muted-foreground">
             Has resuelto correctamente todos los ejercicios de esta lección.
@@ -60,7 +81,7 @@ export function ExercisePractice({
         </Card>
       ) : null}
 
-      <Card className="p-6">
+      <Card className="rounded-[1.5rem] p-6">
         <ExerciseRenderer
           exerciseId={exerciseId}
           type={type}

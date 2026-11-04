@@ -15,7 +15,12 @@ type SubjectViewTabsProps = {
 export function SubjectViewTabs({ subject, active }: SubjectViewTabsProps) {
   const theme = SUBJECT_THEME[subject.key];
   const tabs = [
-    { view: "cursos" as const, label: "Por curso", href: subject.href, Icon: SchoolIcon },
+    {
+      view: "cursos" as const,
+      label: "Por curso",
+      href: subject.href,
+      Icon: SchoolIcon,
+    },
     {
       view: "contenido" as const,
       label: "Por contenido",
@@ -27,7 +32,7 @@ export function SubjectViewTabs({ subject, active }: SubjectViewTabsProps) {
   return (
     <nav
       aria-label={`Cómo recorrer ${subject.label}`}
-      className="inline-flex w-fit gap-1 rounded-2xl border border-border bg-paper-raised p-1 shadow-xs"
+      className="inline-flex w-fit gap-1 rounded-full border border-border bg-paper-raised p-1 shadow-xs"
       data-testid="subject-view-tabs"
     >
       {tabs.map(({ view, label, href, Icon }) => (
@@ -37,9 +42,9 @@ export function SubjectViewTabs({ subject, active }: SubjectViewTabsProps) {
           aria-current={view === active ? "page" : undefined}
           data-testid={`subject-view-tab-${view}`}
           className={cn(
-            "inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40",
+            "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-cobalt/40",
             view === active
-              ? cn("bg-gradient-to-br text-white shadow-sm", theme.gradient)
+              ? cn("shadow-sm", theme.badge)
               : "text-ink-muted hover:bg-paper hover:text-ink",
           )}
         >

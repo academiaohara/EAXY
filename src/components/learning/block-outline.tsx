@@ -14,10 +14,10 @@ import { useLocalProgress } from "@/lib/local-progress/use-local-progress";
 import {
   APRENDER_HOME_HREF,
   courseHref,
-  courseShortTitle,
   subjectBlocksHref,
   topicHref,
 } from "@/lib/navigation/learning-trail";
+import { formatCourseLevel } from "@/lib/navigation/course-levels";
 import { SUBJECT_THEME, type Subject } from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
@@ -126,7 +126,7 @@ export function BlockOutlineView({
                 )}
                 title={`Ir al curso: ${section.course.title}`}
               >
-                {courseShortTitle(section.course.title)}
+                {formatCourseLevel(section.course.title)}
                 <ArrowUpRightIcon
                   className="size-4 opacity-0 transition-opacity group-hover:opacity-100"
                   aria-hidden

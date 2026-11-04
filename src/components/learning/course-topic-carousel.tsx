@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { LayoutListIcon } from "lucide-react";
-import { isModuleAccessible, sortModules } from "@/lib/curriculum/course-navigation";
+import {
+  isModuleAccessible,
+  sortModules,
+} from "@/lib/curriculum/course-navigation";
 import { courseHref, topicHref } from "@/lib/navigation/learning-trail";
 import type { ModuleSummary } from "@/lib/curriculum/types";
+import { formatCourseContext } from "@/lib/navigation/course-levels";
+import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
 type CourseTopicCarouselProps = {
@@ -33,7 +38,8 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
 
   const wrapperClassName = cn(
     "group flex size-[4.75rem] items-center justify-center sm:size-[5.5rem]",
-    href && "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
+    href &&
+      "rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
   );
 
   if (!href) {
@@ -51,7 +57,10 @@ function SideTopic({ href, moduleNumber, title, side }: SideTopicProps) {
       data-testid={`topic-carousel-${side}`}
       aria-label={`Ir al tema ${moduleNumber}: ${title}`}
     >
-      <span className={numberClassName} data-testid={`topic-carousel-${side}-number`}>
+      <span
+        className={numberClassName}
+        data-testid={`topic-carousel-${side}-number`}
+      >
         {numberLabel}
       </span>
     </Link>
@@ -67,28 +76,36 @@ export function CourseTopicCarousel({
   courseTitle,
 }: CourseTopicCarouselProps) {
   const sorted = sortModules(modules);
-  const activeIndex = sorted.findIndex((courseModule) => courseModule.id === activeModuleId);
+  const activeIndex = sorted.findIndex(
+    (courseModule) => courseModule.id === activeModuleId,
+  );
 
   const prev = activeIndex > 0 ? sorted[activeIndex - 1] : null;
-  const next = activeIndex >= 0 && activeIndex < sorted.length - 1 ? sorted[activeIndex + 1] : null;
+  const next =
+    activeIndex >= 0 && activeIndex < sorted.length - 1
+      ? sorted[activeIndex + 1]
+      : null;
 
   const prevHref =
-    prev && isModuleAccessible(prev)
-      ? topicHref(courseSlug, prev.slug)
-      : null;
+    prev && isModuleAccessible(prev) ? topicHref(courseSlug, prev.slug) : null;
   const nextHref =
-    next && isModuleAccessible(next)
-      ? topicHref(courseSlug, next.slug)
-      : null;
+    next && isModuleAccessible(next) ? topicHref(courseSlug, next.slug) : null;
+  const subject = getSubject(
+    subjectOfCourse({ slug: courseSlug, title: courseTitle }),
+  );
+  const courseContext = formatCourseContext(
+    courseTitle,
+    subject?.label ?? "Curso",
+  );
 
   return (
     <section
-      className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-b from-cobalt-tint/70 via-paper-raised to-paper-raised px-4 py-6 shadow-sm sm:px-8 sm:py-8"
+      className="relative overflow-hidden rounded-[2.25rem] border border-border bg-paper-raised px-4 py-6 shadow-[0_24px_60px_-44px_rgb(25_58_50/0.55)] sm:px-8 sm:py-8"
       data-testid="course-topic-carousel"
       aria-label="Temas del curso"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(47,95,224,0.12),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(244,201,93,0.22),transparent_55%)]"
         aria-hidden
       />
 
@@ -99,7 +116,7 @@ export function CourseTopicCarousel({
           data-testid="topic-carousel-course-link"
         >
           <LayoutListIcon className="size-3.5" aria-hidden />
-          {courseTitle} — Ver temario
+          {courseContext} — Ver temario
         </Link>
       </div>
 
@@ -113,7 +130,10 @@ export function CourseTopicCarousel({
               side="left"
             />
           ) : (
-            <div className="size-[4.75rem] shrink-0 sm:size-[5.5rem]" aria-hidden />
+            <div
+              className="size-[4.75rem] shrink-0 sm:size-[5.5rem]"
+              aria-hidden
+            />
           )}
         </div>
 
@@ -141,7 +161,10 @@ export function CourseTopicCarousel({
               side="right"
             />
           ) : (
-            <div className="size-[4.75rem] shrink-0 sm:size-[5.5rem]" aria-hidden />
+            <div
+              className="size-[4.75rem] shrink-0 sm:size-[5.5rem]"
+              aria-hidden
+            />
           )}
         </div>
       </div>

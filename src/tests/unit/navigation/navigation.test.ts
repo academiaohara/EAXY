@@ -100,7 +100,7 @@ describe("learning-trail", () => {
     ).toEqual([
       { label: "Aprender", href: "/aprender" },
       { label: "Matemáticas", href: "/aprender/materia/matematicas" },
-      { label: "1º ESO" },
+      { label: "1 ESO" },
     ]);
   });
 
@@ -114,7 +114,7 @@ describe("learning-trail", () => {
     ).toEqual([
       { label: "Aprender", href: "/aprender" },
       { label: "Matemáticas", href: "/aprender/materia/matematicas" },
-      { label: "1º ESO", href: "/aprender/curso/matematicas-1-eso" },
+      { label: "1 ESO", href: "/aprender/curso/matematicas-1-eso" },
       {
         label: "Tema 4: Fracciones",
         href: "/aprender/curso/matematicas-1-eso/tema/fracciones",

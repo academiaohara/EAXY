@@ -43,10 +43,14 @@ export function ProgressStats({ concepts }: ProgressStatsProps) {
       {(Object.keys(counts) as MasteryState[]).map((state) => (
         <div
           key={state}
-          className="rounded-lg border border-border bg-paper-raised px-3 py-4 text-center"
+          className="rounded-[1.25rem] border border-border bg-paper-raised px-3 py-4 text-center shadow-[0_12px_32px_-30px_rgb(25_58_50/0.45)]"
         >
-          <p className="font-display text-2xl font-semibold text-ink">{counts[state]}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{STAT_LABELS[state]}</p>
+          <p className="font-display text-2xl font-semibold text-ink">
+            {counts[state]}
+          </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            {STAT_LABELS[state]}
+          </p>
         </div>
       ))}
     </div>
