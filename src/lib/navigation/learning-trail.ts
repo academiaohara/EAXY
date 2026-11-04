@@ -1,4 +1,5 @@
 import { getSubject, subjectOfCourse } from "@/lib/navigation/subjects";
+import { formatCourseLevel } from "@/lib/navigation/course-levels";
 
 export type BreadcrumbItem = {
   label: string;
@@ -99,7 +100,7 @@ export function buildLearningTrail({
       items.push({ label: subject.label, href: subject.href });
     }
     items.push({
-      label: courseShortTitle(course.title),
+      label: formatCourseLevel(course.title),
       href: courseHref(course.slug),
     });
   }
