@@ -2,38 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SUBJECT_ICONS } from "@/components/layout/subject-icons";
-import { SUBJECTS, getActiveSubject } from "@/lib/navigation/subjects";
+import {
+  APP_DESTINATIONS,
+  getActiveAppDestination,
+} from "@/lib/navigation/app-destinations";
 import { cn } from "@/lib/utils";
 
 export function AppNav() {
-  const active = getActiveSubject(usePathname());
+  const active = getActiveAppDestination(usePathname());
 
   return (
     <nav
-      className="flex items-center gap-1 rounded-full border border-border bg-paper/70 p-1"
-      aria-label="Materias"
+      className="flex items-center gap-0.5 rounded-full border border-border/80 bg-white/55 p-1 shadow-[0_8px_24px_-20px_rgb(25_58_50/0.45)] backdrop-blur"
+      aria-label="Navegación principal"
       data-testid="app-nav"
     >
-      {SUBJECTS.map((subject) => {
-        const Icon = SUBJECT_ICONS[subject.key];
-        const isActive = active === subject.key;
+      {APP_DESTINATIONS.map((destination) => {
+        const isActive = active === destination.key;
         return (
           <Link
-            key={subject.key}
-            href={subject.href}
-            title={subject.tagline}
+            key={destination.key}
+            href={destination.href}
             aria-current={isActive ? "page" : undefined}
-            data-testid={`app-nav-${subject.key}`}
+            data-testid={`app-nav-${destination.key}`}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40",
+              "inline-flex items-center rounded-full px-3 py-1.5 text-[13px] font-semibold transition-all outline-none focus-visible:ring-2 focus-visible:ring-cobalt/40 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-raised lg:px-3.5 lg:text-sm",
               isActive
-                ? "bg-paper-raised text-cobalt shadow-sm ring-1 ring-border"
-                : "text-ink-muted hover:text-ink",
+                ? "bg-ink text-white shadow-sm"
+                : "text-ink-muted hover:bg-white/80 hover:text-ink",
             )}
           >
-            <Icon className="size-4" aria-hidden />
-            {subject.label}
+            {destination.label}
           </Link>
         );
       })}
