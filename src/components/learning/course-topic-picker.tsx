@@ -1,7 +1,16 @@
 import Link from "next/link";
-import { BookOpenIcon, CheckIcon, ChevronRightIcon, DumbbellIcon, MapPinIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  CheckIcon,
+  ChevronRightIcon,
+  DumbbellIcon,
+  MapPinIcon,
+} from "lucide-react";
 import { getModuleProgress } from "@/lib/curriculum/course-progress";
-import { isModuleAccessible, sortModules } from "@/lib/curriculum/course-navigation";
+import {
+  isModuleAccessible,
+  sortModules,
+} from "@/lib/curriculum/course-navigation";
 import { topicHref } from "@/lib/navigation/learning-trail";
 import type { ModuleSummary } from "@/lib/curriculum/types";
 import { cn } from "@/lib/utils";
@@ -23,7 +32,9 @@ function topicStatus(courseModule: ModuleSummary): TopicStatus {
   if (total > 0 && completed === total) {
     return "completed";
   }
-  if (courseModule.lessons.some((lesson) => lesson.pathStatus !== "not_started")) {
+  if (
+    courseModule.lessons.some((lesson) => lesson.pathStatus !== "not_started")
+  ) {
     return "started";
   }
   return "pending";
@@ -43,14 +54,24 @@ const STATUS_CHIP: Record<TopicStatus, string> = {
   soon: "bg-slate-50 text-slate-400 ring-slate-200",
 };
 
-export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: CourseTopicPickerProps) {
+export function CourseTopicPicker({
+  courseSlug,
+  modules,
+  currentModuleId,
+}: CourseTopicPickerProps) {
   const sorted = sortModules(modules);
 
   return (
-    <nav className="space-y-4" aria-label="Temario del curso" data-testid="course-topic-picker">
+    <nav
+      className="space-y-4"
+      aria-label="Temario del curso"
+      data-testid="course-topic-picker"
+    >
       <header className="flex items-end justify-between gap-4">
         <div className="space-y-1">
-          <h2 className="font-display text-xl font-bold tracking-tight text-ink">Temario</h2>
+          <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+            Temario
+          </h2>
           <p className="text-sm text-ink-muted">
             Elige un tema para ver sus lecciones y ejercicios de refuerzo.
           </p>
@@ -81,7 +102,11 @@ export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: Cour
                 )}
                 aria-hidden
               >
-                {status === "completed" ? <CheckIcon className="size-5" /> : String(number).padStart(2, "0")}
+                {status === "completed" ? (
+                  <CheckIcon className="size-5" />
+                ) : (
+                  String(number).padStart(2, "0")
+                )}
               </span>
 
               <div className="min-w-0 flex-1 space-y-2">
@@ -111,18 +136,22 @@ export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: Cour
                     {total > 0 ? (
                       <span className="inline-flex items-center gap-1.5">
                         <BookOpenIcon className="size-3.5" aria-hidden />
-                        {completed}/{total} {total === 1 ? "lección" : "lecciones"}
+                        {completed}/{total}{" "}
+                        {total === 1 ? "lección" : "lecciones"}
                       </span>
                     ) : null}
                     {exerciseCount > 0 ? (
                       <span className="inline-flex items-center gap-1.5">
                         <DumbbellIcon className="size-3.5" aria-hidden />
-                        {exerciseCount} {exerciseCount === 1 ? "ejercicio" : "ejercicios"}
+                        {exerciseCount}{" "}
+                        {exerciseCount === 1 ? "ejercicio" : "ejercicios"}
                       </span>
                     ) : null}
                   </div>
                 ) : (
-                  <p className="text-xs text-ink-muted">Estamos preparando este tema.</p>
+                  <p className="text-xs text-ink-muted">
+                    Estamos preparando este tema.
+                  </p>
                 )}
 
                 {total > 0 ? (
@@ -152,8 +181,8 @@ export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: Cour
           );
 
           const cardClassName = cn(
-            "flex h-full items-start gap-4 rounded-2xl border bg-paper-raised p-4 shadow-xs",
-            isCurrent ? "border-cobalt/40 ring-2 ring-cobalt/10" : "border-border",
+            "flex h-full items-start gap-4 rounded-[1.5rem] border bg-paper-raised p-5 shadow-[0_14px_40px_-34px_rgb(25_58_50/0.45)]",
+            isCurrent ? "border-ink/35 ring-2 ring-ink/5" : "border-border",
             !isAvailable && "opacity-70",
           );
 
@@ -166,13 +195,16 @@ export function CourseTopicPicker({ courseSlug, modules, currentModuleId }: Cour
                   aria-current={isCurrent ? "step" : undefined}
                   className={cn(
                     cardClassName,
-                    "group outline-none transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40",
+                    "group outline-none transition-all hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-md focus-visible:ring-2 focus-visible:ring-cobalt/40",
                   )}
                 >
                   {inner}
                 </Link>
               ) : (
-                <div className={cardClassName} data-testid={`topic-link-${courseModule.id}`}>
+                <div
+                  className={cardClassName}
+                  data-testid={`topic-link-${courseModule.id}`}
+                >
                   {inner}
                 </div>
               )}

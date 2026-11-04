@@ -28,7 +28,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-6 sm:px-6 sm:py-8">
+    <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-10 lg:px-10 lg:py-14">
       <CourseOutlineView outline={outline} mergeLocalProgress={!studentId} />
     </div>
   );

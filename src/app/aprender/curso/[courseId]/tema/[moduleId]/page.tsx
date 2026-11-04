@@ -9,7 +9,9 @@ type CourseTopicPageProps = {
   params: Promise<{ courseId: string; moduleId: string }>;
 };
 
-export default async function CourseTopicPage({ params }: CourseTopicPageProps) {
+export default async function CourseTopicPage({
+  params,
+}: CourseTopicPageProps) {
   const { courseId: courseParam, moduleId: moduleParam } = await params;
   const resolved = resolveModuleRef(courseParam, moduleParam);
   if (!resolved) {
@@ -27,8 +29,12 @@ export default async function CourseTopicPage({ params }: CourseTopicPageProps) 
     permanentRedirect(topicHref(resolved.courseSlug, resolved.slug));
   }
 
-  const sortedModules = [...outline.modules].sort((a, b) => a.orderIndex - b.orderIndex);
-  const moduleIndex = sortedModules.findIndex((courseModule) => courseModule.id === resolved.id);
+  const sortedModules = [...outline.modules].sort(
+    (a, b) => a.orderIndex - b.orderIndex,
+  );
+  const moduleIndex = sortedModules.findIndex(
+    (courseModule) => courseModule.id === resolved.id,
+  );
   if (moduleIndex < 0) {
     notFound();
   }
@@ -36,7 +42,7 @@ export default async function CourseTopicPage({ params }: CourseTopicPageProps) 
   const courseModule = sortedModules[moduleIndex];
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-6 sm:px-6 sm:py-8">
+    <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-6 py-10 lg:px-10 lg:py-14">
       <CourseTopicView
         outline={outline}
         courseModule={courseModule}
