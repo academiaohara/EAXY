@@ -9,7 +9,9 @@ export const tangentesRectaCircunferenciaDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
-    slide("posiciones", "Posiciones relativas y tangencia", [], diagrama("d8-posiciones"), "visual-top"),
+    slide("pos-recta", "Posiciones relativas de recta y circunferencia", [], diagrama("d8-pos-recta"), "visual-top"),
+    slide("pos-circ", "Posiciones relativas de dos circunferencias", [], diagrama("d8-pos-circ"), "visual-top"),
+    slide("consideraciones", "Consideraciones sobre las tangencias", [], diagrama("d8-consideraciones"), "visual-top"),
     ...construccionPasos("tangente-punto", "tangentes-paralelas", "tangente-sin-centro", "tangentes-punto-exterior", "tangente-comun-exterior", "tangente-comun-interior"),
   ],
 };
