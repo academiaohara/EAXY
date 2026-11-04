@@ -2,7 +2,12 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { SUBJECT_ICONS } from "@/components/layout/subject-icons";
 import type { CourseCatalogEntry } from "@/lib/curriculum/types";
-import { SUBJECTS, SUBJECT_THEME, subjectOfCourse } from "@/lib/navigation/subjects";
+import { groupCoursesByLevel } from "@/lib/navigation/course-levels";
+import {
+  SUBJECTS,
+  SUBJECT_THEME,
+  subjectOfCourse,
+} from "@/lib/navigation/subjects";
 import { cn } from "@/lib/utils";
 
 type SubjectCardsProps = {
@@ -11,32 +16,47 @@ type SubjectCardsProps = {
 
 export function SubjectCards({ courses }: SubjectCardsProps) {
   return (
-    <section className="space-y-4" data-testid="subject-cards" aria-labelledby="materias-title">
+    <section
+      className="space-y-4"
+      data-testid="subject-cards"
+      aria-labelledby="materias-title"
+    >
       <header className="space-y-1">
-        <h2 id="materias-title" className="font-display text-xl font-bold tracking-tight text-ink">
+        <h2
+          id="materias-title"
+          className="font-display text-xl font-bold tracking-tight text-ink"
+        >
           Tus materias
         </h2>
-        <p className="text-sm text-ink-muted">Elige una materia para ver sus cursos y temarios.</p>
+        <p className="text-sm text-ink-muted">
+          Elige una materia para ver sus cursos y temarios.
+        </p>
       </header>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {SUBJECTS.map((subject) => {
           const theme = SUBJECT_THEME[subject.key];
           const Icon = SUBJECT_ICONS[subject.key];
-          const own = courses.filter((course) => subjectOfCourse(course) === subject.key);
+          const own = courses.filter(
+            (course) => subjectOfCourse(course) === subject.key,
+          );
           const available = own.filter((course) => course.lessonCount > 0);
-          const lessons = available.reduce((sum, course) => sum + course.lessonCount, 0);
+          const lessons = available.reduce(
+            (sum, course) => sum + course.lessonCount,
+            0,
+          );
+          const levels = groupCoursesByLevel(own);
 
           return (
             <Link
               key={subject.key}
               href={subject.href}
               data-testid={`subject-card-${subject.key}`}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-paper-raised shadow-xs outline-none transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-cobalt/40"
+              className="group relative flex min-h-[25rem] flex-col overflow-hidden rounded-[2rem] border border-border bg-paper-raised shadow-[0_18px_50px_-38px_rgb(25_58_50/0.55)] outline-none transition-all hover:-translate-y-1 hover:border-ink/15 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-cobalt/40"
             >
               <div
                 className={cn(
-                  "relative flex h-28 items-end justify-between overflow-hidden bg-gradient-to-br p-5 text-white",
+                  "relative flex h-32 items-end justify-between overflow-hidden bg-gradient-to-br p-5 text-white",
                   theme.gradient,
                 )}
               >
@@ -58,13 +78,35 @@ export function SubjectCards({ courses }: SubjectCardsProps) {
 
               <div className="flex flex-1 flex-col gap-3 p-5">
                 <div className="space-y-1">
-                  <h3 className="font-display text-xl font-bold text-ink">{subject.label}</h3>
-                  <p className="text-sm leading-relaxed text-ink-muted">{subject.description}</p>
+                  <h3 className="font-display text-xl font-bold text-ink">
+                    {subject.label}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-muted">
+                    {subject.description}
+                  </p>
+                </div>
+                <div
+                  className="flex flex-wrap gap-1.5"
+                  aria-label={`Años de ${subject.label}`}
+                >
+                  {levels.map((level) => (
+                    <span
+                      key={level.key}
+                      className={cn(
+                        "rounded-full px-2.5 py-1 text-xs font-bold",
+                        level.courses.some((course) => course.lessonCount > 0)
+                          ? theme.badge
+                          : "bg-paper text-ink-muted",
+                      )}
+                    >
+                      {level.label}
+                    </span>
+                  ))}
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-1">
                   <p className="text-xs font-medium text-ink-muted">
                     {available.length > 0
-                      ? `${available.length} ${available.length === 1 ? "curso" : "cursos"} · ${lessons} ${lessons === 1 ? "lección" : "lecciones"}`
+                      ? `${lessons} ${lessons === 1 ? "lección" : "lecciones"}`
                       : `${own.length} cursos en preparación`}
                   </p>
                   <span
