@@ -11,7 +11,7 @@ export const traslacionDt1Lesson: InteractiveLesson = {
   steps: [
     slide("transformaciones", "Transformaciones del plano", [], diagrama("d7-tipos"), "visual-top"),
     slide("traslacion", "La traslación", [], diagrama("d7-traslacion"), "visual-top"),
-    slide("traslacion-propiedades", "Qué ocurre con las figuras", [], diagrama("d7-trasl-prop"), "visual-top"),
+    slide("traslacion-propiedades", "Propiedades de la traslación", [], diagrama("d7-trasl-prop"), "visual-top"),
     ...construccionPasos("traslacion-figura"),
   ],
 };
