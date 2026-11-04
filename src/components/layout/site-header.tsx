@@ -13,8 +13,8 @@ export async function SiteHeader({ variant = "marketing" }: SiteHeaderProps) {
   const user = await getSessionUser();
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border/70 bg-paper/75 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 md:grid md:grid-cols-[1fr_auto_1fr]">
+    <header className="sticky top-0 z-30 border-b border-border/70 bg-paper-raised/82 backdrop-blur-xl">
+      <div className="mx-auto grid h-16 w-full max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-3 px-4 sm:px-6 lg:gap-5">
         <BrandLogo className="justify-self-start" />
 
         {variant === "marketing" ? <AppNav /> : null}

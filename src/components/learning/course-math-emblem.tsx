@@ -17,7 +17,7 @@ export function CourseMathEmblem({ className }: CourseMathEmblemProps) {
   return (
     <div
       className={cn(
-        "grid size-32 grid-cols-3 place-items-center gap-1 rounded-3xl bg-gradient-to-br from-cobalt-tint via-white to-cobalt-tint/60 p-3 ring-1 ring-cobalt/10 sm:size-36",
+        "grid size-36 rotate-3 grid-cols-3 place-items-center gap-1 rounded-[2rem] bg-white/8 p-3 ring-1 ring-white/15 sm:size-40",
         className,
       )}
       role="img"
@@ -30,8 +30,8 @@ export function CourseMathEmblem({ className }: CourseMathEmblemProps) {
           className={cn(
             "font-heading leading-none",
             ACCENTS.has(index)
-              ? "text-2xl font-semibold text-cobalt sm:text-[1.75rem]"
-              : "text-xl text-slate-400/80 sm:text-2xl",
+              ? "text-2xl font-semibold text-sun sm:text-[1.75rem]"
+              : "text-xl text-white/45 sm:text-2xl",
           )}
           aria-hidden
         >

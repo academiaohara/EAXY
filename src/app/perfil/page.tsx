@@ -24,7 +24,9 @@ function initials(name: string): string {
 export default async function PerfilPage() {
   const studentId = await getAuthenticatedUserIdOrNull();
   const user = await getSessionUser();
-  const overview = studentId ? await getCourseOverview() : getGuestCourseOverview();
+  const overview = studentId
+    ? await getCourseOverview()
+    : getGuestCourseOverview();
 
   const averageMastery =
     overview.concepts.length > 0
@@ -54,26 +56,48 @@ export default async function PerfilPage() {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6 sm:py-10">
-      <header className="flex flex-col gap-5 rounded-3xl border border-border bg-paper-raised p-6 shadow-xs sm:flex-row sm:items-center sm:p-8">
+    <div className="mx-auto w-full max-w-7xl space-y-8 px-6 py-10 lg:px-10 lg:py-14">
+      <header className="relative flex flex-col gap-5 overflow-hidden rounded-[2.25rem] bg-ink p-8 text-white shadow-[0_30px_80px_-48px_rgb(25_58_50/0.8)] sm:flex-row sm:items-center sm:p-10">
         <span
-          className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-cobalt to-violet-500 font-display text-xl font-bold text-white shadow-sm shadow-cobalt/30"
+          className="absolute -right-14 -top-20 size-64 rounded-full bg-sun"
+          aria-hidden
+        />
+        <span
+          className="absolute -bottom-24 right-44 size-44 rotate-12 rounded-[2.5rem] bg-coral/85"
+          aria-hidden
+        />
+        <span
+          className="relative flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white/10 font-display text-xl font-bold text-white ring-1 ring-white/20"
           aria-hidden
         >
-          {user ? initials(user.displayName) : <UserRoundIcon className="size-7" />}
+          {user ? (
+            initials(user.displayName)
+          ) : (
+            <UserRoundIcon className="size-7" />
+          )}
         </span>
-        <div className="min-w-0 space-y-1">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-cobalt">Perfil</p>
-          <h1 className="font-display text-3xl font-bold tracking-tight text-ink">
+        <div className="relative min-w-0 space-y-1">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-sun">
+            Mi progreso
+          </p>
+          <h1 className="font-display text-4xl font-extrabold tracking-tight text-white">
             {user ? user.displayName : "Invitado"}
           </h1>
-          <p className="text-ink-muted">
-            Tu progreso en {overview.courseTitle}. Cada color refleja tu dominio actual.
+          <p className="text-white/70">
+            Tu progreso en {overview.courseTitle}. Cada color refleja tu dominio
+            actual.
           </p>
           {!studentId ? (
-            <p className="text-sm text-amber-900/80" data-testid="progreso-guest-notice">
-              Sin cuenta, el dominio detallado no se sincroniza entre dispositivos.{" "}
-              <Link href="/registro" className="font-medium text-cobalt underline-offset-4 hover:underline">
+            <p
+              className="text-sm text-white/70"
+              data-testid="progreso-guest-notice"
+            >
+              Sin cuenta, el dominio detallado no se sincroniza entre
+              dispositivos.{" "}
+              <Link
+                href="/registro"
+                className="font-semibold text-sun underline-offset-4 hover:underline"
+              >
                 Regístrate
               </Link>{" "}
               para guardar tu progreso.
@@ -88,7 +112,7 @@ export default async function PerfilPage() {
           return (
             <div
               key={stat.label}
-              className="flex items-center gap-4 rounded-2xl border border-border bg-paper-raised p-5 shadow-xs"
+              className="flex items-center gap-4 rounded-[1.5rem] border border-border bg-paper-raised p-5 shadow-[0_14px_38px_-32px_rgb(25_58_50/0.45)]"
             >
               <span
                 className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${stat.accent}`}
@@ -98,7 +122,9 @@ export default async function PerfilPage() {
               </span>
               <div>
                 <dt className="text-sm text-ink-muted">{stat.label}</dt>
-                <dd className="font-display text-2xl font-bold tabular-nums text-ink">{stat.value}</dd>
+                <dd className="font-display text-2xl font-bold tabular-nums text-ink">
+                  {stat.value}
+                </dd>
               </div>
             </div>
           );

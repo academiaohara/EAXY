@@ -8,16 +8,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-cobalt text-primary-foreground shadow-sm shadow-cobalt/25 hover:bg-cobalt/90 hover:shadow-md hover:shadow-cobalt/25",
+          "bg-ink text-primary-foreground shadow-sm shadow-ink/15 hover:bg-ink/90 hover:shadow-md hover:shadow-ink/20",
+        sun:
+          "bg-[var(--sun)] text-ink shadow-sm shadow-amber-900/10 hover:bg-[#f1bf42] hover:shadow-md",
         outline:
-          "border-border bg-paper-raised text-ink shadow-xs hover:border-cobalt/30 hover:bg-cobalt-tint hover:text-ink aria-expanded:bg-cobalt-tint aria-expanded:text-ink",
+          "border-border bg-paper-raised text-ink shadow-xs hover:border-ink/25 hover:bg-cobalt-tint hover:text-ink aria-expanded:bg-cobalt-tint aria-expanded:text-ink",
         secondary:
           "bg-cobalt-tint text-ink hover:bg-[color-mix(in_srgb,var(--cobalt-tint),var(--cobalt)_8%)] aria-expanded:bg-cobalt-tint aria-expanded:text-ink",
         ghost:
           "text-ink hover:bg-cobalt-tint hover:text-ink aria-expanded:bg-cobalt-tint aria-expanded:text-ink",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-cobalt underline-offset-4 hover:underline",
+        link: "text-ink underline-offset-4 hover:underline",
       },
       size: {
         default:
