@@ -10,7 +10,7 @@ export const giroDt1Lesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     slide("giro", "El giro", [], diagrama("d7-giro"), "visual-top"),
-    slide("giro-propiedades", "Qué ocurre con las figuras", [], diagrama("d7-giro-prop"), "visual-top"),
+    slide("giro-propiedades", "Propiedades del giro", [], diagrama("d7-giro-prop"), "visual-top"),
     ...construccionPasos("giro-segmento", "giro-recta"),
   ],
 };

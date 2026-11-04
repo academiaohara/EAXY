@@ -1,62 +1,93 @@
-import { arc, circ, fl, gira, homo, lin, medio, pol, poli, pt, seg, suma, txt, type Diagrama, type Item, type Pt } from "./engine";
+import { arc, circ, fl, gira, homo, lerp2, lin, medio, pol, poli, pt, resta, seg, suma, txt, type Diagrama, type Item, type Pt } from "./engine";
 
 const T = (p: Pt, d: Pt): Pt => suma(p, d);
 
 /* ───────────── Tema 7: transformaciones geométricas ───────────── */
 
 const trasProp = (): Diagrama => {
-  const d: Pt = [95, 70];
-  const r: Pt[] = [[40, 250], [150, 175]];
-  const ang: Pt[] = [[310, 270], [350, 180], [440, 240]];
-  const cc: Pt = [640, 215];
+  const d: Pt = [260, -70];
+  const flechas = (f: Pt[], w = 2): Item[] => f.map((p) => fl(p, T(p, d), "verde", w));
+  /** Rótulos de los vértices de una figura: la original con su letra y la trasladada con prima. */
+  const nom = (f: Pt[], n: string[], c: "azul" | "naranja", ap: string, off: [number, number][]): Item[] =>
+    f.map((p, i) => pt(p, `${n[i]}${ap}`, c, off[i]![0], off[i]![1]));
+  const arcoAng = (v: Pt, a: Pt, b: Pt, r: number, c: "amarillo" | "verde" | "naranja"): Item => {
+    const g = (q: Pt) => (Math.atan2(-(q[1] - v[1]), q[0] - v[0]) * 180) / Math.PI;
+    const g1 = g(a);
+    let df = g(b) - g1;
+    while (df > 180) df -= 360;
+    while (df <= -180) df += 360;
+    return df > 0 ? arc(v, r, g1, g1 + df, c) : arc(v, r, g1 + df, g1, c);
+  };
+  const A: Pt = [60, 280], B: Pt = [170, 190];
+  const P: Pt[] = [[90, 230], [60, 330], [160, 380], [250, 330], [210, 235]];
+  const V: Pt = [90, 300], Q1: Pt = [40, 200], Q2: Pt = [210, 250];
+  const Cc: Pt = [140, 290];
   return {
-    label: "Traslación: qué le ocurre a una recta, un ángulo y un círculo",
+    label: "Traslación: propiedades de la recta, el ángulo, la figura y el círculo",
     pasos: [
-      { texto: "Una **recta** se transforma en otra recta **paralela** a ella.", items: [
-        seg(r[0]!, r[1]!, "azul"), seg(T(r[0]!, d), T(r[1]!, d), "naranja"), fl(medio(...r as [Pt, Pt]), T(medio(...r as [Pt, Pt]), d), "verde"),
-        txt([60, 280], "r", "azul", 22), txt([190, 320], "r′ ∥ r", "naranja", 22),
+      { solo: true, texto: "**Recta.** La trasladada de una recta es otra recta **paralela** a ella: $r' \\parallel r$. Cada punto de $r$ se mueve según el mismo vector.", items: [
+        seg(lerp2(A, B, -0.4), lerp2(A, B, 1.4), "azul"), seg(T(lerp2(A, B, -0.4), d), T(lerp2(A, B, 1.4), d), "naranja"),
+        ...flechas([A, B]), pt(A, "A", "azul", -16, 8), pt(B, "B", "azul", -14, -8), pt(T(A, d), "A′", "naranja", 14, 20), pt(T(B, d), "B′", "naranja", 14, 20),
+        txt(lerp2(A, B, -0.5), "r", "azul", 24), txt(T(lerp2(A, B, -0.5), d), "r′", "naranja", 24),
       ] },
-      { texto: "Un **ángulo** se transforma en otro ángulo **igual** (congruente con él).", items: [
-        lin(ang, "azul"), lin(ang.map((p) => T(p, [0, 90])), "naranja"), fl(ang[1]!, T(ang[1]!, [0, 90]), "verde"),
-        arc(ang[1]!, 34, 235, 305, "amarillo"), arc(T(ang[1]!, [0, 90]), 34, 235, 305, "amarillo"),
+      { solo: true, texto: "**Ángulo.** Un ángulo se transforma en otro ángulo **igual**: $\\alpha' = \\alpha$. Los lados se mueven sin girar, así que no cambia su abertura.", items: [
+        lin([Q1, V, Q2], "azul"), lin([Q1, V, Q2].map((q) => T(q, d)), "naranja"), ...flechas([V]),
+        arcoAng(V, Q1, Q2, 36, "amarillo"), arcoAng(T(V, d), T(Q1, d), T(Q2, d), 36, "amarillo"),
+        txt(pol(V, 58, 75), "α", "amarillo", 24), txt(pol(T(V, d), 58, 75), "α′", "amarillo", 24),
+        pt(V, "V", "azul", -16, 18), pt(T(V, d), "V′", "naranja", -16, 18),
       ] },
-      { texto: "Un **círculo** se transforma en otro círculo **igual**, cuyo centro es el trasladado del centro.", items: [
-        circ(cc, 52, "azul", 0.18), circ(T(cc, [0, 100]), 52, "naranja", 0.18), fl(cc, T(cc, [0, 100]), "verde"),
-        pt(cc, "O", "azul"), pt(T(cc, [0, 100]), "O′", "naranja"),
+      { solo: true, texto: "**Figura.** Cualquier figura poligonal se transforma en otra **igual**: mismos lados y mismos ángulos. Todos sus vértices se trasladan con el **mismo vector**.", items: [
+        poli(P, "azul", 0.16), poli(P.map((q) => T(q, d)), "naranja", 0.16), ...flechas(P, 1.8),
+        ...nom(P, ["A", "B", "C", "D", "E"], "azul", "", [[-16, 4], [-16, 14], [0, 24], [16, 14], [16, -4]]),
+        ...nom(P.map((q) => T(q, d)), ["A", "B", "C", "D", "E"], "naranja", "′", [[-16, 4], [-18, 14], [4, 24], [18, 14], [18, -4]]),
+        txt([140, 300], "F", "azul", 26), txt(T([140, 300], d), "F′", "naranja", 26),
       ] },
-      { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble**.", items: [
-        seg([50, 30], [250, 177.4], "morado", false, 3), pt([80, 52.1], "P", "morado", -14, -4), pt([175, 122.1], "P′", "morado", 16, -6), fl([80, 52.1], [175, 122.1], "verde"),
-        txt([150, 18], "recta doble (paralela al vector)", "morado", 18),
+      { solo: true, texto: "**Círculo.** Un círculo se transforma en otro círculo **igual**, de **igual radio**, cuyo centro $O'$ es el trasladado del centro $O$.", items: [
+        circ(Cc, 70, "azul", 0.16), circ(T(Cc, d), 70, "naranja", 0.16), fl(Cc, T(Cc, d), "verde", 2.4),
+        seg(Cc, pol(Cc, 70, 200), "azul"), seg(T(Cc, d), pol(T(Cc, d), 70, 200), "naranja"),
+        pt(Cc, "O", "azul", 14, 18), pt(T(Cc, d), "O′", "naranja", 14, 18),
+        txt(pol(Cc, 42, 215), "r", "azul", 22), txt(pol(T(Cc, d), 42, 215), "r", "naranja", 22),
       ] },
     ],
   };
 };
 
 const giroProp = (): Diagrama => {
-  const O: Pt = [150, 270];
-  const A: Pt = pol(O, 90, 50);
-  const Ap = gira(A, O, 55);
-  const rdir = (p: Pt, deg: number, l: number): [Pt, Pt] => [pol(p, l, deg + 90), pol(p, l, deg - 90)];
-  const [r0, r1] = rdir(A, 50, 110);
-  const [s0, s1] = rdir(Ap, 105, 110);
-  const cc: Pt = [560, 250];
-  const Oc: Pt = [470, 330];
-  const ccp = gira(cc, Oc, 70);
+  const O: Pt = [150, 300];
+  const al = 60;
+  const A: Pt = pol(O, 130, 35);
+  const Ap = gira(A, O, al);
+  const recta = (p: Pt, deg: number, l: number): [Pt, Pt] => [pol(p, l, deg + 90), pol(p, l, deg - 90)];
+  const [r0, r1] = recta(A, 35, 130);
+  const [s0, s1] = recta(Ap, 35 + al, 130);
+  /** Marca de ángulo recto en `p`, entre la dirección `d1` y la `d2` (grados). */
+  const recto = (p: Pt, d1: number, d2: number): Item => {
+    const a = pol(p, 14, d1);
+    const b = pol(p, 14, d2);
+    return lin([a, suma(a, resta(b, p)), b], "gris");
+  };
+  const Oc: Pt = O;
+  const cc: Pt = pol(Oc, 150, 5);
+  const ccp = gira(cc, Oc, al);
   return {
     label: "Giro: transformada de una recta y de una circunferencia",
     pasos: [
-      { texto: "Para girar una **recta** $r$: se traza por $O$ su **perpendicular** y se obtiene el pie $A$.", items: [
-        seg(r0, r1, "azul"), seg(O, A, "azul", true), pt(O, "O", "verde", -22, 8), pt(A, "A", "azul", 14, -8), txt([r1[0] + 14, r1[1] + 6], "r", "azul", 22),
+      { solo: true, texto: "Para girar una **recta** $r$: por el centro $O$ se traza la **perpendicular** a $r$. Su pie es el punto $A$.", items: [
+        seg(r0, r1, "azul"), seg(O, A, "azul", true), recto(A, 215, 125), pt(O, "O", "verde", -18, 8), pt(A, "A", "azul", 14, -8), txt(r1, "r", "azul", 24),
       ] },
-      { texto: "Se gira el pie $A$ hasta $A'$ (mismo radio, mismo ángulo).", items: [
-        arc(O, 90, 50, 105, "verde"), seg(O, Ap, "naranja", true), pt(Ap, "A′", "naranja", 14, -8),
+      { solo: true, texto: "Se **gira el punto $A$** el ángulo $\\alpha$ alrededor de $O$ y se obtiene $A'$, con $OA' = OA$.", items: [
+        seg(r0, r1, "azul"), seg(O, A, "azul", true), pt(O, "O", "verde", -18, 8), pt(A, "A", "azul", 14, -8), txt(r1, "r", "azul", 24),
+        seg(O, Ap, "naranja", true), arc(O, 55, 35, 35 + al, "verde"), txt(pol(O, 80, 35 + al / 2), "α", "verde", 24), pt(Ap, "A′", "naranja", -16, -8),
+        arc(O, 130, 35, 35 + al, "gris"),
       ] },
-      { texto: "La recta girada $r'$ es **perpendicular a $OA'$** por $A'$: el ángulo recto se conserva.", items: [
-        seg(s0, s1, "naranja"), txt([s0[0] - 16, s0[1] - 4], "r′", "naranja", 22),
+      { solo: true, texto: "La **recta girada** $r'$ es la **perpendicular a $OA'$** por $A'$: el ángulo recto se conserva, y $r'$ forma con $r$ el mismo ángulo $\\alpha$.", items: [
+        seg(r0, r1, "azul"), seg(O, A, "azul", true), pt(O, "O", "verde", -18, 8), pt(A, "A", "azul", 14, -8), txt(r1, "r", "azul", 24),
+        seg(O, Ap, "naranja", true), arc(O, 55, 35, 35 + al, "verde"), txt(pol(O, 80, 35 + al / 2), "α", "verde", 24), pt(Ap, "A′", "naranja", -16, -8),
+        seg(s0, s1, "naranja"), recto(Ap, 275, 185), txt(s0, "r′", "naranja", 24),
       ] },
-      { texto: "Una **circunferencia** gira hasta otra **igual**: basta girar el centro y trazarla con el mismo radio.", items: [
-        circ(cc, 46, "azul", 0.16), circ(ccp, 46, "naranja", 0.16), pt(Oc, "O", "verde", -20, 8), pt(cc, "C", "azul"), pt(ccp, "C′", "naranja"),
-        seg(Oc, cc, "azul", true), seg(Oc, ccp, "naranja", true), arc(Oc, 70, 78, 150, "verde"),
+      { solo: true, texto: "Una **circunferencia** gira hasta otra **igual**: basta girar su centro $C$ hasta $C'$ y trazarla con el **mismo radio**.", items: [
+        circ(cc, 50, "azul", 0.16), circ(ccp, 50, "naranja", 0.16), pt(Oc, "O", "verde", -18, 8), pt(cc, "C", "azul", 14, 18), pt(ccp, "C′", "naranja", 14, 18),
+        seg(Oc, cc, "azul", true), seg(Oc, ccp, "naranja", true), arc(Oc, 55, 5, 5 + al, "verde"), txt(pol(Oc, 80, 5 + al / 2), "α", "verde", 24),
       ] },
     ],
   };
@@ -66,20 +97,40 @@ const homoCasos = (): Diagrama => {
   const C: Pt = [230, 215];
   const F: Pt[] = [[330, 130], [350, 250], [430, 190]];
   const F2 = F.map((p) => homo(p, C, -1));
+  const N = ["A", "B", "D"];
+  const g = (v: Pt, q: Pt) => (Math.atan2(-(q[1] - v[1]), q[0] - v[0]) * 180) / Math.PI;
+  /** Arco del ángulo que forman, en `v`, las rectas hacia `a` y hacia `b`. */
+  const angulo = (v: Pt, a: Pt, b: Pt, r: number, col: "amarillo"): Item => {
+    const g1 = g(v, a);
+    let df = g(v, b) - g1;
+    while (df > 180) df -= 360;
+    while (df <= -180) df += 360;
+    return df > 0 ? arc(v, r, g1, g1 + df, col) : arc(v, r, g1 + df, g1, col);
+  };
+  const bis = (v: Pt, a: Pt, b: Pt, r: number): Pt => {
+    const g1 = g(v, a);
+    let df = g(v, b) - g1;
+    while (df > 180) df -= 360;
+    while (df <= -180) df += 360;
+    return pol(v, r, g1 + df / 2);
+  };
+  const rot = (f: Pt[], c: "azul" | "naranja", ap: string) => f.map((p, i) => pt(p, `${N[i]}${ap}`, c, i === 0 ? 14 : i === 1 ? 14 : 16, i === 0 ? -8 : 20));
   return {
-    label: "Homotecia: identidad, simetría central, rectas dobles y semejanza",
+    label: "Homotecia: identidad, simetría central y semejanza",
     pasos: [
-      { texto: "Si $K = 1$ la homotecia es la **identidad**: cada punto coincide con su homólogo.", items: [
-        poli(F, "azul", 0.2), poli(F, "naranja", 0.0, true), pt(C, "C", "verde", -20, 8), txt([380, 300], "K = 1 · identidad", "amarillo", 22),
+      { solo: true, texto: "Si $K = 1$ la homotecia es la **identidad**: cada punto coincide con su homólogo y la figura no cambia.", items: [
+        poli(F, "azul", 0.2), ...rot(F, "azul", ""), pt(C, "C", "verde", -16, 22), txt([380, 300], "K = 1 · identidad", "amarillo", 22),
       ] },
-      { texto: "Si $K = -1$ es una **simetría central**: $A$ y $A'$ son simétricos respecto de $C$.", items: [
-        poli(F2, "naranja", 0.2), ...F.map((p, i) => seg(p, F2[i]!, "gris", true)), txt([380, 370], "K = −1 · simetría central", "amarillo", 22),
-      ], solo: false },
-      { texto: "Las **rectas que pasan por el centro** son **dobles**: cada una se transforma en sí misma.", items: [
-        seg([90, 334], [490, -6], "morado", false, 3), txt([480, -20], "recta doble", "morado", 20),
+      { solo: true, texto: "Si $K = -1$ es una **simetría central**: $A$ y $A'$ quedan a la misma distancia de $C$, uno a cada lado, y la figura es **igual**.", items: [
+        poli(F, "azul", 0.2), poli(F2, "naranja", 0.2), ...F.map((p, i) => seg(p, F2[i]!, "gris", true)),
+        ...rot(F, "azul", ""), ...rot(F2, "naranja", "′"), pt(C, "C", "verde", -16, 22), txt([380, 330], "K = −1 · simetría central", "amarillo", 22),
       ] },
-      { texto: "Los ángulos homólogos son **iguales** (rectas homólogas paralelas): las figuras son **semejantes**.", items: [
-        arc(F[0]!, 28, 250, 335, "amarillo"), arc(F2[0]!, 28, 70, 155, "amarillo"),
+      { solo: true, texto: "Las rectas homólogas son **paralelas**, así que los **ángulos homólogos son iguales** ($\\alpha' = \\alpha$): las figuras homotéticas son **semejantes**.", items: [
+        poli(F, "azul", 0.2), poli(F2, "naranja", 0.2), ...F.map((p, i) => seg(p, F2[i]!, "gris", true)),
+        ...rot(F, "azul", ""), ...rot(F2, "naranja", "′"), pt(C, "C", "verde", -16, 22),
+        angulo(F[0]!, F[1]!, F[2]!, 30, "amarillo"), txt(bis(F[0]!, F[1]!, F[2]!, 50), "α", "amarillo", 22),
+        angulo(F2[0]!, F2[1]!, F2[2]!, 30, "amarillo"), txt(bis(F2[0]!, F2[1]!, F2[2]!, 50), "α′", "amarillo", 22),
+        txt([380, 330], "AB ∥ A′B′ · AD ∥ A′D′", "gris", 20),
       ] },
     ],
   };
@@ -462,7 +513,6 @@ const traslacionDg = (): Diagrama => {
       { texto: "Cada punto $A$ de la figura $F$ se lleva a un punto $A'$ con $\\overrightarrow{AA'}$ **equipolente** a $\\overrightarrow{VV'}$: mismo módulo, dirección y sentido.", items: F.map((p, i) => fl(p, Fp[i]!, "verde", 2.4)) },
       { texto: "Los puntos trasladados forman la figura $F'$, **igual** a $F$: rectas paralelas, ángulos iguales y mismos lados.", items: [poli(Fp, "naranja", 0.16), ...rot(Fp, "naranja", "′")] },
       { texto: "$AA'B'B$ es un **paralelogramo**: por eso $AB = A'B'$ y los lados homólogos son **paralelos**.", items: [poli([F[0]!, Fp[0]!, Fp[1]!, F[1]!], "amarillo", 0.2)] },
-      { texto: "Una recta **paralela al vector** se transforma en sí misma: es una **recta doble** de la traslación.", items: [seg([11, 325.5], [522.5, 193.75], "morado", false, 3.4), txt([470, 175], "recta doble", "morado", 19)] },
     ],
   };
 };
@@ -481,7 +531,7 @@ const giroDg = (): Diagrama => {
       { texto: "El ángulo $\\widehat{AOA'}$ es la **amplitud del giro**. Hay que conocer el **ángulo** y el **sentido**.", items: [arc(O, 70, 38, 38 + alfa, "verde"), txt(pol(O, 92, 38 + alfa / 2), "α", "verde", 24)] },
       { texto: "Todo punto $B$ gira el **mismo ángulo** y en el mismo sentido: $OB = OB'$ y $\\widehat{BOB'} = \\widehat{AOA'}$.", items: [circ(O, 120, "gris", 0, true), seg(O, B, "azul"), seg(O, Bp, "naranja"), pt(B, "B", "azul", 14, 20), pt(Bp, "B′", "naranja", 16, -6), arc(O, 45, 6, 6 + alfa, "verde")] },
       { texto: "Los triángulos $AOB$ y $A'OB'$ son **directamente iguales**: la figura girada es **igual** a la original.", items: [poli([O, A, B], "azul", 0.16), poli([O, Ap, Bp], "naranja", 0.16)] },
-      { texto: "El centro $O$ es el **único punto doble**: no se mueve.", items: [circ(O, 13, "verde"), txt([O[0] + 30, O[1] + 40], "punto doble", "verde", 19, "start")] },
+      { texto: "El centro $O$ es el **único punto que no se mueve** (punto doble): todos los demás giran a su alrededor.", items: [circ(O, 13, "verde"), txt([O[0] + 30, O[1] + 40], "punto doble", "verde", 19, "start")] },
     ],
   };
 };
@@ -499,7 +549,6 @@ const homotecia = (): Diagrama => {
       { solo: false, texto: "La razón es $\\dfrac{\\overline{CA}}{\\overline{CA'}} = \\pm K$. Con $K > 0$ ($K = 1{,}5$) la homotecia es **directa**: $A'$ queda al mismo lado de $C$ que $A$.", items: [poli(fig(1.5, "naranja"), "naranja", 0.16), ...F.map((p, i) => seg(C, fig(1.5, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(1.5, "naranja"), "naranja", "′"), txt([590, 392], "K = 1,5 · directa", "amarillo", 22, "end")] },
       { solo: false, texto: "Con $K < 0$ ($K = -0{,}8$) la homotecia es **inversa**: $A'$ queda al lado contrario de $C$. Las rectas homólogas siguen siendo **paralelas**.", items: [poli(fig(-0.8, "naranja"), "rojo", 0.16), ...F.map((p, i) => seg(C, fig(-0.8, "naranja")[i]!, "gris", true, 1.6)), ...rot(fig(-0.8, "naranja"), "rojo", "″"), txt([590, 416], "K = −0,8 · inversa", "rojo", 22, "end")] },
       { solo: false, texto: "Si $K = -1$ la homotecia es una **simetría central**: $A$ y $A'$ son simétricos respecto de $C$ y la figura es **igual**.", items: [poli(fig(-1, "naranja"), "morado", 0.16), ...rot(fig(-1, "naranja"), "morado", "‴"), txt([590, 440], "K = −1 · simetría central", "morado", 22, "end")] },
-      { texto: "Las figuras homotéticas tienen los **ángulos iguales**: son **semejantes**. Las rectas que pasan por $C$ son **dobles**.", items: [seg([C[0] - 1.2 * 170, C[1] + 1.2 * 100], [C[0] + 2.2 * 170, C[1] - 2.2 * 100], "morado", false, 3), txt([C[0] + 2.2 * 170 - 20, C[1] - 2.2 * 100 - 14], "recta doble", "morado", 19)] },
     ],
   };
 };
