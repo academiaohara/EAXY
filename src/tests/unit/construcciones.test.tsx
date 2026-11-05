@@ -15,6 +15,27 @@ const enCirc = (c: P, r: number, a: number): P => [c[0] + r * Math.cos((a * Math
 const angDe = (v: P, p: P) => (Math.atan2(-(p[1] - v[1]), p[0] - v[0]) * 180) / Math.PI;
 const dist = (a: P, b: P) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 
+describe("la circunferencia solución se traza con el compás", () => {
+  it("en el último paso de la animación el compás recorre la solución, no aparece sola", async () => {
+    const original = window.matchMedia;
+    window.matchMedia = (() => ({ matches: false, addEventListener() {}, removeEventListener() {}, addListener() {}, removeListener() {} })) as unknown as typeof window.matchMedia;
+    try {
+      const id: ConstruccionId = "circ-otra-por-punto-radio";
+      const n = pasosAnimacion(CONSTRUCCIONES[id] as Construccion);
+      render(
+        <LessonStepControlProvider>
+          <SlideBench block={{ kind: "bench", scene: `c-${id}`, notes: notasAnimacion(id) }} />
+        </LessonStepControlProvider>,
+      );
+      for (let i = 0; i < n - 1; i += 1) fireEvent.click(screen.getByTestId("bench-siguiente"));
+      await new Promise((r) => setTimeout(r, 1500));
+      expect(screen.queryByTestId("bench-compas")).not.toBeNull();
+    } finally {
+      window.matchMedia = original;
+    }
+  });
+});
+
 describe("construcciones del tema 5: animación y práctica", () => {
   it.each(ids)("%s: los pasos de la animación coinciden con las notas y se recorren", (id) => {
     const c = CONSTRUCCIONES[id] as Construccion;

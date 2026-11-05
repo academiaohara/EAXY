@@ -53,17 +53,17 @@ describe("curvas técnicas: los arcos de óvalos, ovoides y voluta son tangentes
 
   it("espiral de Arquímedes: el radio crece de forma uniforme", () => {
     const c = C("espiral-arquimedes");
-    for (let k = 1; k < 8; k += 1) cerca(d(c.pts.O, c.pts[`s${k}`]), (160 * k) / 8, 1e-6);
+    for (let k = 1; k < 8; k += 1) cerca(d(c.pts.O, c.pts[`espS${k}`]), (160 * k) / 8, 1e-6);
   });
 
   it("hélice: puntos sobre la sinusoide de la proyección", () => {
     const c = C("helice");
     for (let j = 1; j <= 8; j += 1) {
-      cerca(c.pts[`g${j}`][1], 210 - (j - 1) * 20, 1e-6);
-      cerca(c.pts[`g${j}`][0], c.pts[`h${j}`][0], 1e-6);
+      cerca(c.pts[`helG${j}`][1], 195 - (j - 1) * 18, 1e-6);
+      cerca(c.pts[`helG${j}`][0], c.pts[`helB${j}`][0], 1e-6);
     }
-    cerca(c.pts.g9[0], c.pts.g1[0], 1e-6);
-    cerca(c.pts.g9[1], 210 - 160, 1e-6);
+    cerca(c.pts.helG9[0], c.pts.helG1[0], 1e-6);
+    cerca(c.pts.helG9[1], 195 - 144, 1e-6);
   });
 
   it("todo cabe en la hoja y está registrado", () => {

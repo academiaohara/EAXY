@@ -36,7 +36,8 @@ export function Dato({ a, b, nombre, color = AZUL }: { a: Pt; b: Pt; nombre: str
       <Seg a={a} b={b} color={color} w={3} />
       <Seg a={[a[0], a[1] - 6]} b={[a[0], a[1] + 6]} color={INK} w={1.4} />
       <Seg a={[b[0], b[1] - 6]} b={[b[0], b[1] + 6]} color={INK} w={1.4} />
-      <Txt p={[m[0] - 4, m[1] - 12]} color={color} size={14}>{nombre}</Txt>
+      {/* el nombre se centra sobre el segmento y queda pegado a él, no a la línea de datos de arriba */}
+      <Txt p={[m[0] - nombre.length * 4, m[1] - 9]} color={color} size={14}>{nombre}</Txt>
     </g>
   );
 }
@@ -123,14 +124,13 @@ export function usePasoAnim(ms: number[]) {
   return { step, setStep, p, u };
 }
 
-export function Lamina({ scene, block, step, setStep, label, titulo, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo: string; testId: string; children: ReactNode }) {
+export function Lamina({ scene, block, step, setStep, label, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo?: string; testId: string; children: ReactNode }) {
   return (
     <BenchShell scene={scene} notes={block.notes} step={step} setStep={setStep} label={label}>
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label={label} data-testid={testId}>
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
         {children}
-        <Txt p={[24, 34]} color={VERDE} size={15}>{titulo}</Txt>
       </svg>
     </BenchShell>
   );

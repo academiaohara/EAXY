@@ -376,8 +376,8 @@ function dosRectasRadio(arco: boolean): Construccion {
   return {
     titulo: arco ? "Enlace de dos rectas con un arco de radio dado" : "Circunferencia tangente a dos rectas que se cortan, dado el radio",
     intro: arco
-      ? "Se quiere enlazar las rectas $r$ y $s$ con un arco de radio $R$. El centro $O_1$ está donde se cortan las **paralelas a $r$ y a $s$ trazadas a distancia $R$**, y los puntos de tangencia son los pies de las perpendiculares desde $O_1$."
-      : "Los centros de las circunferencias de radio $R$ tangentes a $r$ y a $s$ están donde se cortan las **paralelas a ambas a distancia $R$**. Aquí se halla la que queda en el ángulo señalado.",
+      ? "Se quiere enlazar las rectas $r$ y $s$ con un arco de radio $R$. El centro $O_1$ está donde se cortan las **paralelas a $r$ y a $s$ trazadas a distancia $R$**, y los puntos de tangencia son los pies de las perpendiculares desde $O_1$. Los puntos $A$ de $s$ y $B$ de $r$ son **arbitrarios**: solo sirven para llevar la distancia $R$ sobre una perpendicular; vale cualquier otro punto de cada recta, porque la paralela a distancia $R$ sale igual."
+      : "Los centros de las circunferencias de radio $R$ tangentes a $r$ y a $s$ están donde se cortan las **paralelas a ambas a distancia $R$**. Aquí se halla la que queda en el ángulo señalado. Los puntos $A$ de $s$ y $B$ de $r$ son **arbitrarios**: solo sirven para llevar la distancia $R$ sobre una perpendicular; vale cualquier otro punto de cada recta, porque la paralela a distancia $R$ sale igual.",
     pts: {
       _s1: [40, 300], s: [580, 300], _r1: suma(V, por(dirR, -60)), r: suma(V, por(dirR, 260)), A, B, ...dr.pts,
       _p1: [480, 220], _p2: [480, 320], Y, _ys: [300, 300 - R], _q1: resta(B, por(n, 10)), _q2: suma(B, por(n, 70)), Z, _zr: resta(Z, por(dirR, 100)),
@@ -836,8 +836,11 @@ function rectificarCircunferencia(): Construccion {
   const d = 2 * r;
   const pts: Record<string, P> = { O, c0: [170, 110], c4: [170, 270], xo: [60, 330], x1: [60 + d, 330], x2: [60 + 2 * d, 330], x3: [60 + 3 * d, 330], x4: [60 + 3 * d + d / 7, 330] };
   for (let k = 1; k <= 6; k += 1) pts[`k${k}`] = [170, 110 + (d * k) / 7];
+  // los números de las divisiones van todos a la izquierda de su punto, a su altura, para no confundirlos con A ni con B
+  const rotulos: Record<string, [number, number]> = Object.fromEntries([1, 2, 3, 4, 5, 6].map((k) => [`k${k}`, [-18, 5] as [number, number]]));
   return {
     titulo: "Rectificación de la circunferencia",
+    rotulos,
     intro: "La longitud de la circunferencia es $2\\pi r = \\pi d \\approx \\dfrac{22}{7}\\,d$, es decir, **tres diámetros y una séptima parte**. El diámetro $d$ ya está dividido en siete partes iguales.",
     pts,
     dados: ["c0", "c4", "k1", "k2", "k3", "k4", "k5", "k6", "xo"],
