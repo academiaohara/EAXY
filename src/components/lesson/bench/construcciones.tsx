@@ -8,7 +8,7 @@ import { AMBAR, INK, type BenchBlock } from "./scenes";
 import { ArcoCompas, CompasEn, Lamina, TransportadorMarca, VERDE_RELLENO, AnguloDato, Dato, usePasoAnim } from "./scenes-construcciones";
 import { MSHEET, MV, Practica, ReglaTrazando, animParaleloEscuadra, lerp, tramo, type Def, type Est } from "./scenes-compas";
 import { CONSTRUCCIONES, etiqueta, fasesPractica, instrumentoAngulo, type Construccion, type ConstruccionId, type Op } from "./construcciones-datos";
-import { FormaTrazo, type FormaFinal } from "./formas-finales";
+import { CompasSobreForma, FormaTrazo, type FormaFinal } from "./formas-finales";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Circ, Dot, Poli } from "./scenes-teoria";
 import { Punto } from "./scenes-trazados";
@@ -68,7 +68,7 @@ const ms = (o: Op): number => {
     case "angulo": return 3600;
     case "paralelas": return 2600 * o.marcas.length;
     case "lados": return 900 * o.pts.length + 500;
-    case "solucion": return 2600;
+    case "solucion": return o.hasta ? 3200 : 4200;
     case "curva": return 2800;
     case "curvaPuntos": return 3200;
     case "elipse": return 3000;
@@ -267,9 +267,13 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
       case "curva":
       case "curvaPuntos":
       case "elipse":
-      case "elipseConjugada":
-        nodos.push(<FormaTrazo key={key} forma={formaDe(c, x)} t={t} w={3} />);
+      case "elipseConjugada": {
+        const forma = formaDe(c, x);
+        nodos.push(<FormaTrazo key={key} forma={forma} t={t} w={3} />);
+        // las circunferencias y los arcos se trazan con el compás, no aparecen solos
+        if (j === o && x.k === "solucion") instrumento = <CompasSobreForma forma={forma} t={t} />;
         break;
+      }
       default:
         break;
     }

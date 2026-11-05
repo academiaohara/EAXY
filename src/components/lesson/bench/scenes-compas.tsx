@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef, useState, type PointerEvent as ReactPoin
 import { ESCUADRA_L, angDe, clamp, dir, dist, dot, enCirculo, interseccionCirculos, puntoMedio, type Pt } from "./geometry";
 import { BenchDefs, Cartabon, Compas, Desk, Escuadra, Regla, Transportador, poseCompas } from "./instruments";
 import { geoDesliza, type DatosDesliza } from "./escuadra-perpendicular";
-import { FormaTrazo, type FormaFinal } from "./formas-finales";
+import { CompasSobreForma, FormaTrazo, type FormaFinal } from "./formas-finales";
 import { InstrumentosParalela, planParalela, type OpcionesParalela } from "./paralela-plan";
 import { useBenchCheck } from "./practice";
 import { ReproCtx } from "./reproduccion";
@@ -1112,7 +1112,15 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
             ))
           : null}
         {def.autoFormas && (tipo === "auto" || hecha)
-          ? def.autoFormas().map((f, i, todas) => <FormaTrazo key={`forma${i}`} forma={f} t={hecha ? 1 : tramo(pAuto, i / todas.length, (i + 1) / todas.length)} w={def.grosorAuto ?? 1.5} />)
+          ? def.autoFormas().map((f, i, todas) => {
+              const t = hecha ? 1 : tramo(pAuto, i / todas.length, (i + 1) / todas.length);
+              return (
+                <g key={`forma${i}`}>
+                  <FormaTrazo forma={f} t={t} w={def.grosorAuto ?? 1.5} />
+                  <CompasSobreForma forma={f} t={t} />
+                </g>
+              );
+            })
           : null}
         {est.trazos.map(([a, b], i) =>
           (def.ocultarTrazos?.(est) ?? []).includes(i) ? null : TRAZOS_DIRECTOS.has(est.trazos[i]) ? (

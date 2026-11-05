@@ -376,8 +376,8 @@ function dosRectasRadio(arco: boolean): Construccion {
   return {
     titulo: arco ? "Enlace de dos rectas con un arco de radio dado" : "Circunferencia tangente a dos rectas que se cortan, dado el radio",
     intro: arco
-      ? "Se quiere enlazar las rectas $r$ y $s$ con un arco de radio $R$. El centro $O_1$ está donde se cortan las **paralelas a $r$ y a $s$ trazadas a distancia $R$**, y los puntos de tangencia son los pies de las perpendiculares desde $O_1$."
-      : "Los centros de las circunferencias de radio $R$ tangentes a $r$ y a $s$ están donde se cortan las **paralelas a ambas a distancia $R$**. Aquí se halla la que queda en el ángulo señalado.",
+      ? "Se quiere enlazar las rectas $r$ y $s$ con un arco de radio $R$. El centro $O_1$ está donde se cortan las **paralelas a $r$ y a $s$ trazadas a distancia $R$**, y los puntos de tangencia son los pies de las perpendiculares desde $O_1$. Los puntos $A$ de $s$ y $B$ de $r$ son **arbitrarios**: solo sirven para llevar la distancia $R$ sobre una perpendicular; vale cualquier otro punto de cada recta, porque la paralela a distancia $R$ sale igual."
+      : "Los centros de las circunferencias de radio $R$ tangentes a $r$ y a $s$ están donde se cortan las **paralelas a ambas a distancia $R$**. Aquí se halla la que queda en el ángulo señalado. Los puntos $A$ de $s$ y $B$ de $r$ son **arbitrarios**: solo sirven para llevar la distancia $R$ sobre una perpendicular; vale cualquier otro punto de cada recta, porque la paralela a distancia $R$ sale igual.",
     pts: {
       _s1: [40, 300], s: [580, 300], _r1: suma(V, por(dirR, -60)), r: suma(V, por(dirR, 260)), A, B, ...dr.pts,
       _p1: [480, 220], _p2: [480, 320], Y, _ys: [300, 300 - R], _q1: resta(B, por(n, 10)), _q2: suma(B, por(n, 70)), Z, _zr: resta(Z, por(dirR, 100)),

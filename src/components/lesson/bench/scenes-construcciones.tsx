@@ -36,7 +36,8 @@ export function Dato({ a, b, nombre, color = AZUL }: { a: Pt; b: Pt; nombre: str
       <Seg a={a} b={b} color={color} w={3} />
       <Seg a={[a[0], a[1] - 6]} b={[a[0], a[1] + 6]} color={INK} w={1.4} />
       <Seg a={[b[0], b[1] - 6]} b={[b[0], b[1] + 6]} color={INK} w={1.4} />
-      <Txt p={[m[0] - 4, m[1] - 12]} color={color} size={14}>{nombre}</Txt>
+      {/* el nombre se centra sobre el segmento y queda pegado a él, no a la línea de datos de arriba */}
+      <Txt p={[m[0] - nombre.length * 4, m[1] - 9]} color={color} size={14}>{nombre}</Txt>
     </g>
   );
 }

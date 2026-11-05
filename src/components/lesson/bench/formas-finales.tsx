@@ -1,6 +1,7 @@
 "use client";
 
-import { angDe, dist, type Pt } from "./geometry";
+import { angDe, dist, enCirculo, type Pt } from "./geometry";
+import { Compas, poseCompas } from "./instruments";
 import { INK } from "./scenes";
 import { ArcoPlano } from "./scenes-trazados";
 
@@ -71,6 +72,18 @@ export function FormaTrazo({ forma, t, w = 3 }: { forma: FormaFinal; t: number; 
   return (
     <g data-testid="bench-forma-final">
       <ArcoPlano c={forma.c} r={forma.r} a1={a1} a2={a1 + delta * Math.min(1, t)} color={INK} grosor={w} />
+    </g>
+  );
+}
+
+/** El compás que traza una circunferencia o un arco de circunferencia final: la mina va por la forma según `t` (0–1). */
+export function CompasSobreForma({ forma, t }: { forma: FormaFinal; t: number }) {
+  if (forma.tipo !== "circulo" || t <= 0 || t >= 1) return null;
+  const [a1, delta] = forma.desde && forma.hasta ? barrido(forma.c, forma.desde, forma.hasta, forma.por) : [-90, 360];
+  const cp = poseCompas(forma.c, enCirculo(forma.c, forma.r, a1 + delta * t));
+  return (
+    <g data-testid="bench-compas" pointerEvents="none">
+      <Compas pose={cp.pose} open={cp.open} />
     </g>
   );
 }
