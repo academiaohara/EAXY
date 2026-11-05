@@ -20,6 +20,11 @@ describe("cónicas: las construcciones cumplen la definición de cada curva", ()
     expect(texto).toContain("directriz");
   });
 
+  it("el diagrama de la elipse representa visualmente la distancia focal c", () => {
+    const paso = DIAGRAMAS_GEOMETRIA["d10-elipse"]!.pasos[2]!;
+    expect(paso.items.some((item) => item.t === "seg" && item.a[0] === 400 && item.a[1] === 215 && item.b[0] < 400 && item.b[1] === 215)).toBe(true);
+  });
+
   it("las construcciones explican el dato y la comprobación geométrica", () => {
     for (const id of Object.keys(CONSTRUCCIONES_CONICAS)) {
       const c = C(id);

@@ -415,7 +415,7 @@ const elipse = (): Diagrama => {
         pt(P, "P", "amarillo", 10, -8), seg(F1, P, "amarillo", true), seg(F2, P, "amarillo", true),
       ] },
       { texto: "Los **ejes** son perpendiculares; el centro $O$ es su punto medio y $a² = b² + c²$ (por tanto, $b² = a² - c²$).", items: [
-        seg([O[0] - a, 215], [O[0] + a, 215], "azul", true), seg([O[0], 215 - b], [O[0], 215 + b], "azul", true), pt(O, "O", "blanco", 8, 22),
+        seg([O[0] - a, 215], [O[0] + a, 215], "azul", true), seg([O[0], 215 - b], [O[0], 215 + b], "azul", true), seg(O, F1, "verde", true), pt(O, "O", "blanco", 8, 22),
         txt([O[0] + 110, 205], "a", "azul", 20), txt([O[0] + 14, 150], "b", "azul", 20), txt([O[0] - 22, 240], "c", "verde", 20),
       ] },
       { texto: "La **circunferencia principal** tiene centro $O$ y radio $a$; las **circunferencias focales** tienen centro en cada foco y radio $2a$.", items: [
