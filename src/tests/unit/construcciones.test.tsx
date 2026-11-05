@@ -98,6 +98,7 @@ describe("construcciones del tema 5: animación y práctica", () => {
           break;
         }
         case "marca":
+          if (o.sim) break;
           expect(tipo(), donde).toBe("punto");
           tocar(pt(o.p));
           break;

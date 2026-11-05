@@ -12,7 +12,10 @@ const seg = (a: string, b: string) => `$${etiqueta(a)}${etiqueta(b)}$`;
 /** Puntos que se marcan justo después de la operación `i` (las marcas que la siguen). */
 function marcasTras(c: Construccion, i: number): string[] {
   const out: string[] = [];
-  for (let j = i + 1; j < c.ops.length && c.ops[j].k === "marca"; j += 1) out.push((c.ops[j] as Extract<Op, { k: "marca" }>).p);
+  for (let j = i + 1; j < c.ops.length && c.ops[j].k === "marca"; j += 1) {
+    const m = c.ops[j] as Extract<Op, { k: "marca" }>;
+    if (!m.sim) out.push(m.p);
+  }
   return out;
 }
 
@@ -92,7 +95,7 @@ export function notasPractica(id: ConstruccionId): Nota[] {
         out.push({ title: o.k === "circulo" ? "Circunferencia" : `Arco desde ${tit(o.c)}`, text: o.k === "circulo" ? "Da la vuelta completa con la mina siguiendo la circunferencia." : "Arrastra la mina para trazar el arco por donde debe cortar." });
         break;
       case "marca":
-        out.push({ title: etiqueta(o.p) ? `Marca ${etiqueta(o.p)}` : "Marca el corte", text: `Toca el punto ${L(o.p)} donde se cortan los trazos.` });
+        if (!o.sim) out.push({ title: etiqueta(o.p) ? `Marca ${etiqueta(o.p)}` : "Marca el corte", text: `Toca el punto ${L(o.p)} donde se cortan los trazos.` });
         break;
       case "recta":
         out.push({ title: `Regla por ${etiqueta(o.a)} y ${etiqueta(o.b)}`, text: `Toca ${L(o.a)} y ${L(o.b)}: la regla traza la recta.${o.limpia ? " Después se borran los arcos auxiliares." : ""}` });

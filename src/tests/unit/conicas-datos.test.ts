@@ -35,7 +35,11 @@ describe("cónicas: las construcciones cumplen la definición de cada curva", ()
 
   it("elipse por puntos: suma de distancias a los focos igual a 2a", () => {
     const c = C("elipse-puntos");
-    for (let k = 1; k <= 4; k += 1) cerca(d(c.pts[`M${k}`], c.pts.F) + d(c.pts[`M${k}`], c.pts.Fp), 300);
+    for (let k = 1; k <= 4; k += 1) {
+      cerca(d(c.pts[`M${k}`], c.pts.F) + d(c.pts[`M${k}`], c.pts.Fp), 300);
+      // el punto de debajo del eje cumple la misma suma
+      cerca(d(c.pts[`Mb${k}`], c.pts.F) + d(c.pts[`Mb${k}`], c.pts.Fp), 300);
+    }
     cerca(d(c.pts.F, c.pts.C), 150);
   });
 
@@ -50,8 +54,8 @@ describe("cónicas: las construcciones cumplen la definición de cada curva", ()
     const c = C("elipse-envolventes");
     const F = c.pts.F;
     const Fp = c.pts.Fp;
-    for (let k = 1; k <= 6; k += 1) {
-      const L = c.pts[`l${k}`];
+    for (let k = 1; k <= 8; k += 1) {
+      const L = c.pts[`ev${k}`];
       const dF = d(F, L);
       const dFp = dRecta(Fp, c.pts[`_a${k}`], c.pts[`_b${k}`]);
       cerca(dF * dFp, 90 * 90, 1);
@@ -64,15 +68,28 @@ describe("cónicas: las construcciones cumplen la definición de cada curva", ()
     let c = C("hiperbola-puntos");
     for (let k = 1; k <= 3; k += 1) cerca(d(c.pts[`M${k}`], c.pts.F) - d(c.pts[`M${k}`], c.pts.Fp), 120, 1e-6);
     c = C("hiperbola-envolventes");
-    for (let k = 1; k <= 6; k += 1) {
+    for (let k = 1; k <= 4; k += 1) {
       cerca(d(c.pts[`t${k}`], c.pts.O), 60, 1e-6);
       cerca(dRecta(c.pts.Fp, c.pts[`_a${k}`], c.pts[`_b${k}`]), d(c.pts.Fp, c.pts[`t${k}`]), 1e-6);
+      // rama izquierda: el pie de la perpendicular desde F también está en la circunferencia principal
+      cerca(d(c.pts[`tl${k}`], c.pts.O), 60, 1e-6);
+      cerca(dRecta(c.pts.F, c.pts[`_c${k}`], c.pts[`_d${k}`]), d(c.pts.F, c.pts[`tl${k}`]), 1e-6);
+    }
+    c = C("hiperbola-puntos");
+    for (let k = 1; k <= 3; k += 1) {
+      // los cuatro puntos de cada N: simétricos y con la misma diferencia de distancias
+      cerca(Math.abs(d(c.pts[`Mi${k}`], c.pts.F) - d(c.pts[`Mi${k}`], c.pts.Fp)), 120, 1e-6);
+      cerca(d(c.pts[`Mb${k}`], c.pts.F) - d(c.pts[`Mb${k}`], c.pts.Fp), 120, 1e-6);
+      cerca(Math.abs(d(c.pts[`Mj${k}`], c.pts.F) - d(c.pts[`Mj${k}`], c.pts.Fp)), 120, 1e-6);
     }
   });
 
   it("parábola: equidistancia al foco y a la directriz", () => {
     let c = C("parabola-puntos");
-    for (let k = 1; k <= 4; k += 1) cerca(d(c.pts[`P${k}`], c.pts.F), Math.abs(c.pts[`P${k}`][0] - c.pts.A[0]), 1e-6);
+    for (let k = 1; k <= 4; k += 1) {
+      cerca(d(c.pts[`P${k}`], c.pts.F), Math.abs(c.pts[`P${k}`][0] - c.pts.A[0]), 1e-6);
+      cerca(d(c.pts[`Pb${k}`], c.pts.F), Math.abs(c.pts[`Pb${k}`][0] - c.pts.A[0]), 1e-6);
+    }
     c = C("parabola-vertice-punto");
     for (let k = 1; k <= 4; k += 1) {
       const M = c.pts[`M${k}`];
