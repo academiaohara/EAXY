@@ -11,7 +11,7 @@ import { CONSTRUCCIONES, etiqueta, fasesPractica, instrumentoAngulo, type Constr
 import { CompasSobreForma, FormaTrazo, type FormaFinal } from "./formas-finales";
 import { Seg } from "./scenes-proporcion";
 import { AUX, Circ, Dot, Poli } from "./scenes-teoria";
-import { Punto } from "./scenes-trazados";
+import { ArcoPlano, Punto } from "./scenes-trazados";
 
 /**
  * Animación paso a paso y práctica interactiva de las construcciones de `construcciones-datos.ts`. La práctica reproduce
@@ -108,6 +108,42 @@ function formaDe(c: Construccion, o: Extract<Op, { k: "solucion" | "curva" | "cu
   return { tipo: "circulo", c: centro, r: dist(centro, pt(c, o.hacia)), desde: o.hasta ? pt(c, o.hacia) : undefined, hasta: o.hasta ? pt(c, o.hasta) : undefined, por: o.por ? pt(c, o.por) : undefined };
 }
 
+/**
+ * Índice de la última marca que sigue a un grupo de arcos (con sus medidas de compás intercaladas): cuando se ha obtenido el punto
+ * que se buscaba, esos arcos se borran de la hoja. Devuelve -1 si el arco no termina en una marca.
+ */
+function finDeArco(c: Construccion, j: number): number {
+  let m = j + 1;
+  while (m < c.ops.length && (c.ops[m].k === "arco" || c.ops[m].k === "medir")) m += 1;
+  const real = (i: number) => { const x = c.ops[i]; return x?.k === "marca" && !x.sim; };
+  if (!real(m)) return -1;
+  while (real(m + 1)) m += 1;
+  return m;
+}
+
+/** Pequeños arcos que quedan sobre los puntos hallados con un arco (las marcas del compás), cuando el arco entero se borra. */
+function miniArcosDe(c: Construccion, j: number): { c: Pt; r: number; a: number }[] {
+  const x = c.ops[j];
+  const f = finDeArco(c, j);
+  if (x.k !== "arco" || f < 0) return [];
+  const centro = pt(c, x.c);
+  const r = radioEn(c, j);
+  const out: { c: Pt; r: number; a: number }[] = [];
+  for (let i = j + 1; i <= f; i += 1) {
+    const y = c.ops[i];
+    if (y.k !== "marca" || y.sim) continue;
+    const q = pt(c, y.p);
+    if (Math.abs(dist(centro, q) - r) < 1.5) out.push({ c: centro, r, a: angDe(centro, q) });
+  }
+  return out;
+}
+
+/** Trozo de arco (marca de compás) de unos 20 px centrado en el ángulo `a`. */
+const MiniArco = ({ m }: { m: { c: Pt; r: number; a: number } }) => {
+  const d = Math.min(12, Math.max(2.5, (10 / m.r) * (180 / Math.PI)));
+  return <ArcoPlano c={m.c} r={m.r} a1={m.a - d} a2={m.a + d} color="#8f98a3" grosor={0.9} />;
+};
+
 /** Extremos de una recta de la regla, prolongada `ext` por cada lado. */
 function prolongar(a: Pt, b: Pt, ext: number): [Pt, Pt] {
   const d = dist(a, b) || 1;
@@ -167,18 +203,13 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
     return op;
   };
 
-  /** Los trazos auxiliares que ya han dado su punto se aclaran para que no estorben. */
+  /** Los arcos que ya han dado su punto se borran; las rectas auxiliares se aclaran para que no estorben. */
   const LUZ = 0.28;
   const luz = (j: number) => {
     const x = c.ops[j];
     let fin = -1; // índice de la operación tras la que el trazo ya no hace falta
     if (x.k === "arco") {
-      let m = j + 1;
-      while (m < c.ops.length && c.ops[m].k === "arco") m += 1;
-      if (c.ops[m]?.k === "marca") {
-        while (c.ops[m + 1]?.k === "marca") m += 1;
-        fin = m;
-      }
+      return 1; // el arco entero se borra aparte (queda solo su marca en el punto)
     } else if (x.k === "recta") {
       if (c.ops[j + 1]?.k === "marca") fin = j + 1;
       else {
@@ -207,8 +238,15 @@ export function ConstruccionAnim({ block, id }: { block: BenchBlock; id: Constru
         if (fade <= 0) break;
         const r = radioEn(c, j);
         const [a1, a2] = angulosArco(c, x);
+        // cuando el arco ha dado su punto se borra como con una goma y solo quedan unas marcas pequeñas donde cortaba
+        const fin = x.k === "arco" ? finDeArco(c, j) : -1;
+        const borrado = fin < 0 ? 0 : o > fin ? 1 : o === fin ? tramo(p, 0.85, 1) : 0;
+        if (borrado > 0) {
+          nodos.push(<g key={`${key}-m`} opacity={fade * borrado}>{miniArcosDe(c, j).map((m, i) => <MiniArco key={i} m={m} />)}</g>);
+          if (borrado >= 1) break;
+        }
         nodos.push(
-          <g key={key} opacity={fade * luz(j)}>
+          <g key={key} opacity={fade * luz(j) * (1 - borrado)}>
             {x.k === "circulo" && t >= 0.999 ? <circle cx={pt(c, x.c)[0]} cy={pt(c, x.c)[1]} r={r} fill="none" stroke={AUX} strokeWidth="1.4" /> : <ArcoCompas c={pt(c, x.c)} r={r} a1={a1} a2={a2} t={t} mostrarCompas={false} />}
           </g>,
         );
@@ -412,8 +450,32 @@ function defDe(id: ConstruccionId): Def {
       const propios = o.marcas.map((m, k) => ({ marca: pt(c, m), corte: pt(c, o.cortes[k]) }));
       return { recta: [pt(c, o.recta[0]), pt(c, o.recta[1])], objetivos: [...Array.from({ length: previas }, () => propios[0]), ...propios], importantes: puntosImportantes(c) };
     },
+    miniArcos: (est) => {
+      const out: { c: Pt; r: number; a: number }[] = [];
+      c.ops.forEach((o, j) => {
+        if (o.k !== "arco") return;
+        const fin = finDeArco(c, j);
+        const fase = fin >= 0 ? meta.findIndex((m) => m.opIdx === fin) : -1;
+        if (fase >= 0 && est.fase > fase) out.push(...miniArcosDe(c, j));
+      });
+      return out;
+    },
     ocultarArcos: (est) => {
       const out: number[] = [];
+      // los arcos que ya han dado su punto se borran de la hoja
+      let n0 = 0;
+      c.ops.forEach((o, j) => {
+        if (o.k === "arco" || o.k === "circulo") {
+          if (o.k === "arco") {
+            const fin = finDeArco(c, j);
+            if (fin >= 0) {
+              const fase = meta.findIndex((m) => m.opIdx === fin);
+              if (fase >= 0 && est.fase > fase) out.push(n0);
+            }
+          }
+          n0 += 1;
+        }
+      });
       c.ops.forEach((o, j) => {
         if (o.k !== "recta" || !o.limpia) return;
         const f = inicioFase(j);

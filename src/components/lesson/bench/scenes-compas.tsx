@@ -501,6 +501,8 @@ export type Def = {
   perpendicular?: (est: Est) => DatosDesliza;
   /** Índices de los arcos que dejan de dibujarse (trazo auxiliar que ya no hace falta). */
   ocultarArcos?: (est: Est) => number[];
+  /** Marcas pequeñas que quedan donde un arco ya borrado dio su punto (centro, radio y ángulo en grados). */
+  miniArcos?: (est: Est) => { c: Pt; r: number; a: number }[];
   /** Índices (en `est.trazos`) de las rectas auxiliares que dejan de dibujarse. */
   ocultarTrazos?: (est: Est) => number[];
   /** Las rectas de las fases `trazo` son auxiliares: se dibujan finas y grises (como un lápiz 2H). */
@@ -1087,6 +1089,14 @@ export function Practica({ block, def, vista }: { block: BenchBlock; def: Def; v
         <Desk w={vista.w} h={vista.h} sheet={vista.sheet} />
         {def.papel(est)}
         <g data-testid="bench-arcos-practica">{arcosDibujados}</g>
+        {def.miniArcos ? (
+          <g data-testid="bench-marcas-compas">
+            {def.miniArcos(est).map((m, i) => {
+              const d = Math.min(12, Math.max(2.5, (10 / m.r) * (180 / Math.PI)));
+              return <ArcoPlano key={i} c={m.c} r={m.r} a1={m.a - d} a2={m.a + d} grosor={0.9} color="#8f98a3" />;
+            })}
+          </g>
+        ) : null}
         {tipo === "angulo" && def.angulo ? (() => {
           const a = def.angulo(est);
           const fin = enCirculo(a.centro, a.largo, a.base + (a.signo ?? 1) * est.ang);
