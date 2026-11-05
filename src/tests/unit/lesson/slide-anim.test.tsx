@@ -47,7 +47,9 @@ describe("registro de animaciones de diapositiva", () => {
               { tokens: ["14"], fresh: [0, 0] as [number, number], note: "b" },
             ],
           }
-        : {};
+        : id === "dt1-diagrama"
+          ? { clave: "d7-tipos" }
+          : {};
     const built = buildSlideAnim(id, params);
     expect(built.label.length).toBeGreaterThan(10);
     expect(built.captions.length).toBeGreaterThanOrEqual(2);

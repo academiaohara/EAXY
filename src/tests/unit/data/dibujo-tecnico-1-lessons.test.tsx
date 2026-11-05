@@ -25,7 +25,7 @@ function visuals(step: LessonStep): Extract<SlideBlock, { kind: "anim" | "tool" 
 }
 
 /** Lecciones que son solo explicación (sin ejercicio propio). */
-const SOLO_EXPLICACION = new Set(["elementos-signos-geometricos-dt1", "lugar-geometrico-concepto-dt1", "angulos-tipos-relaciones-dt1", "suma-diferencia-angulos-dt1", "division-angulo-bisectriz-dt1", "escalas-numericas-graficas-dt1", "escala-grafica-contraescala-dt1", "triangulo-universal-escalas-dt1", "escala-transversales-escalimetro-dt1", "clases-escalas-normalizadas-dt1", "cuadrilateros-dt1", "triangulos-clases-lineas-dt1", "angulos-circunferencia-dt1"]);
+const SOLO_EXPLICACION = new Set(["elementos-signos-geometricos-dt1", "lugar-geometrico-concepto-dt1", "angulos-tipos-relaciones-dt1", "suma-diferencia-angulos-dt1", "division-angulo-bisectriz-dt1", "escalas-numericas-graficas-dt1", "escala-grafica-contraescala-dt1", "triangulo-universal-escalas-dt1", "escala-transversales-escalimetro-dt1", "clases-escalas-normalizadas-dt1", "cuadrilateros-dt1", "triangulos-clases-lineas-dt1", "angulos-circunferencia-dt1", "punto-diedrico-cuadrantes-dt1", "fundamentos-proyecciones-diedrico-ii-dt1"]);
 
 /** Lecciones que son solo una colección de ejercicios del libro (sin diapositivas). */
 const SOLO_EJERCICIOS = new Set(["ejercicios-escalas-dt1"]);
@@ -38,14 +38,14 @@ const TEMAS: [slug: string, lecciones: number][] = [
   ["formas-poligonales-2-cuadrilateros-poligonos", 12],
   ["relaciones-geometricas", 7],
   ["transformaciones-geometricas", 3],
-  ["tangencias", 4],
-  ["curvas-tecnicas", 2],
+  ["tangencias", 8],
+  ["curvas-tecnicas", 5],
   ["curvas-conicas-dt1", 3],
-  ["sistemas-de-representacion", 1],
-  ["sistema-diedrico", 8],
+  ["sistemas-de-representacion", 2],
+  ["sistema-diedrico", 14],
   ["sistema-planos-acotados", 4],
-  ["sistema-axonometrico", 4],
-  ["sistema-perspectiva-caballera", 4],
+  ["sistema-axonometrico", 6],
+  ["sistema-perspectiva-caballera", 6],
   ["normalizacion-principios-generales", 4],
   ["normalizacion-acotacion", 1],
   ["historia-fundamentos-geometricos", 4],
@@ -66,7 +66,7 @@ describe("curso Dibujo Técnico I", () => {
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: pasos bien formados", (_slug, { data }) => {
     const conMesa = data.steps.some((st) => st.type === "bench_task" || (st.type === "slide" && st.visual?.kind === "bench"));
-    expect(data.steps.length).toBeGreaterThanOrEqual(SOLO_EJERCICIOS.has(data.slug) ? 5 : conMesa ? (SOLO_EXPLICACION.has(data.slug) ? 1 : 2) : 5);
+    expect(data.steps.length).toBeGreaterThanOrEqual(SOLO_EJERCICIOS.has(data.slug) ? 5 : SOLO_EXPLICACION.has(data.slug) ? 1 : conMesa ? 2 : 5);
     const ids = data.steps.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
     let practice = 0;
@@ -96,7 +96,7 @@ describe("curso Dibujo Técnico I", () => {
       }
     }
     // La lección de semejanza y escalas es solo explicación (sin ejercicio propio).
-    expect(practice).toBeGreaterThanOrEqual(conMesa ? (SOLO_EXPLICACION.has(data.slug) ? 0 : 1) : 2);
+    expect(practice).toBeGreaterThanOrEqual(SOLO_EXPLICACION.has(data.slug) ? 0 : conMesa ? 1 : 2);
   });
 
   it.each(lessons.map((l) => [l.lesson.interactiveSlug!, l] as const))("%s: tiene animaciones o herramientas interactivas", (_slug, { data }) => {
