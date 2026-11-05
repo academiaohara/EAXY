@@ -469,29 +469,53 @@ const heliceDg = (): Diagrama => {
 
 /* ───────────── Tema 10: curvas cónicas ───────────── */
 
+/** Las cónicas como secciones de un cono: el cono visto de lado (el plano de corte es una recta) y la curva que resulta a la derecha. */
 const conicas = (): Diagrama => {
   const V: Pt = [220, 210];
+  const T = Math.tan((35 * Math.PI) / 180);
+  const cono: Item[] = [
+    poli([[V[0] - T * 150, 60], V, [V[0] + T * 150, 60]], "gris", 0.06), poli([[V[0] - T * 150, 360], V, [V[0] + T * 150, 360]], "gris", 0.06),
+    seg([V[0], 45], [V[0], 375], "gris", true, 1.6), pt(V, "V", "blanco", 12, -12), txt([V[0] + 10, 42], "eje", "gris", 18, "start"),
+  ];
+  const marca = (p: Pt, c: "naranja" | "verde" | "amarillo" | "rojo" = "naranja") => pt(p, "", c);
+  const C: Pt = [600, 210];
+  const elipse = Array.from({ length: 61 }, (_, i) => [C[0] + 70 * Math.cos((i / 60) * 2 * Math.PI), C[1] + 44 * Math.sin((i / 60) * 2 * Math.PI)] as Pt);
+  const parabola = Array.from({ length: 41 }, (_, i) => [C[0] + (i - 20) * 3.5, 290 - ((i - 20) * 3.5) ** 2 / 55] as Pt);
+  const rama = (sentido: 1 | -1, v: number) => Array.from({ length: 41 }, (_, i) => {
+    const x = (i - 20) * 3;
+    return [C[0] + x, v + sentido * (Math.sqrt(1 + (x / 30) ** 2) - 1) * 30] as Pt;
+  });
   return {
     label: "Las curvas cónicas como secciones de un cono",
     pasos: [
-      { texto: "Las **cónicas** son las curvas que resultan de cortar un **cono de revolución** con un plano.", items: [
-        poli([[60, 60], [220, 210], [380, 60]], "gris", 0.06), poli([[60, 360], [220, 210], [380, 360]], "gris", 0.06), pt(V, "V", "blanco", 10, -12),
+      { solo: true, texto: "Las **cónicas** son las curvas que resultan de cortar un **cono de revolución** con un plano. El cono se ve aquí **de lado**: el plano de corte aparecerá como una **recta**.", items: [
+        ...cono, txt([V[0] + T * 150 + 8, 66], "generatriz", "gris", 18, "start"),
       ] },
-      { texto: "Un plano **perpendicular al eje** da una **circunferencia**; **oblicuo** a todas las generatrices, una **elipse**.", items: [
-        seg([90, 130], [350, 130], "naranja"), seg([110, 100], [330, 160], "verde"),
-        circ([560, 110], 42, "naranja", 0.14), txt([560, 175], "circunferencia", "naranja", 19),
-        lin(Array.from({ length: 40 }, (_, i) => [680 + 52 * Math.cos((i / 39) * 6.2832), 110 + 30 * Math.sin((i / 39) * 6.2832)] as Pt), "verde", false, 3),
-        txt([680, 175], "elipse", "verde", 19),
+      { solo: true, texto: "Un plano **perpendicular al eje** corta todas las generatrices a la misma altura: la sección es una **circunferencia**.", items: [
+        ...cono, seg([90, 125], [350, 125], "naranja", false, 3), txt([356, 130], "plano", "naranja", 18, "start"),
+        marca([V[0] - T * 85, 125]), marca([V[0] + T * 85, 125]),
+        circ(C, 58, "naranja", 0.16), txt([C[0], 300], "circunferencia", "naranja", 21),
       ] },
-      { texto: "Paralelo a una generatriz: **parábola**. Corta a las dos hojas del cono: **hipérbola**.", items: [
-        seg([110, 330], [360, 100], "amarillo"), seg([300, 40], [300, 380], "rojo"),
-        lin(Array.from({ length: 31 }, (_, i) => [560 + (i - 15) * 8, 280 + ((i - 15) * 8) ** 2 / 200 - 40] as Pt), "amarillo", false, 3), txt([580, 340], "parábola", "amarillo", 19),
-        lin(Array.from({ length: 21 }, (_, i) => [680 + (i - 10) * 5 + 0, 240 - Math.sqrt(1 + ((i - 10) / 5) ** 2) * 20 + 30] as Pt), "rojo", false, 3),
-        lin(Array.from({ length: 21 }, (_, i) => [680 + (i - 10) * 5 + 0, 300 + Math.sqrt(1 + ((i - 10) / 5) ** 2) * 20 - 30] as Pt), "rojo", false, 3), txt([700, 370], "hipérbola", "rojo", 19),
+      { solo: true, texto: "Un plano **inclinado** que corta **todas** las generatrices de una misma hoja del cono da una curva cerrada: la **elipse**.", items: [
+        ...cono, seg([160, 194], [343, 56], "verde", false, 3), txt([348, 58], "plano", "verde", 18, "start"),
+        marca([192, 170], "verde"), marca([311, 80], "verde"),
+        lin(elipse, "verde", false, 3.4), txt([C[0], 300], "elipse", "verde", 21),
       ] },
-      { texto: "Si el plano pasa por el vértice del cono, la sección es una **cónica degenerada**: puede ser un punto, una recta o dos rectas secantes. En el caso no degenerado, el plano no pasa por el vértice.", items: [
-        pt(V, "V", "rojo", 10, -14), seg([80, 210], [360, 210], "rojo", true), seg([120, 320], [320, 100], "rojo", true),
-        txt([500, 210], "sección degenerada", "rojo", 18),
+      { solo: true, texto: "Un plano **paralelo a una generatriz** corta a todas las demás menos a esa: la curva queda **abierta**. Es la **parábola**.", items: [
+        ...cono, seg([188, 195], [283, 60], "amarillo", false, 3), txt([288, 58], "plano", "amarillo", 18, "start"),
+        marca([199, 180], "amarillo"),
+        lin(parabola, "amarillo", false, 3.4), txt([C[0], 325], "parábola", "amarillo", 21),
+      ] },
+      { solo: true, texto: "Un plano **paralelo al eje** corta a **las dos hojas** del cono: la sección tiene **dos ramas**. Es la **hipérbola**.", items: [
+        ...cono, seg([250, 50], [250, 370], "rojo", false, 3), txt([256, 388], "plano", "rojo", 18, "start"),
+        marca([250, 167], "rojo"), marca([250, 253], "rojo"),
+        lin(rama(-1, 185), "rojo", false, 3.4), lin(rama(1, 235), "rojo", false, 3.4), txt([C[0], 330], "hipérbola", "rojo", 21),
+      ] },
+      { solo: true, texto: "Si el plano **pasa por el vértice** $V$, la sección es una **cónica degenerada**: un **punto** (plano perpendicular al eje), una **recta** (plano paralelo a una generatriz) o **dos rectas** que se cortan (plano paralelo al eje).", items: [
+        ...cono, seg([90, 210], [350, 210], "azul", true, 2.6), seg([115, 360], [325, 60], "verde", true, 2.6), seg([V[0] + 1, 40], [V[0] + 1, 380], "morado", true, 2.6),
+        pt([480, 210], "", "azul"), txt([480, 255], "un punto", "azul", 19),
+        seg([545, 160], [625, 260], "verde", false, 3.4), txt([585, 295], "una recta", "verde", 19),
+        seg([680, 160], [760, 260], "morado", false, 3.4), seg([760, 160], [680, 260], "morado", false, 3.4), txt([720, 295], "dos rectas", "morado", 19),
       ] },
     ],
   };
