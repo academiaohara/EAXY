@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { CONSTRUCCIONES, type Construccion, type P } from "@/components/lesson/bench/construcciones-datos";
 import { CONSTRUCCIONES_CONICAS } from "@/components/lesson/bench/construcciones-conicas";
+import { DIAGRAMAS_GEOMETRIA } from "@/components/lesson/anim/diagramas/geometria";
 
 const d = (a: P, b: P) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 const C = (id: string) => (CONSTRUCCIONES_CONICAS as Record<string, Construccion>)[id];
@@ -8,6 +9,30 @@ const cerca = (a: number, b: number, tol = 0.5) => expect(Math.abs(a - b)).toBeL
 const dRecta = (p: P, a: P, b: P) => Math.abs((b[0] - a[0]) * (a[1] - p[1]) - (a[0] - p[0]) * (b[1] - a[1])) / d(a, b);
 
 describe("cónicas: las construcciones cumplen la definición de cada curva", () => {
+  it("la teoría incluye las condiciones de corte y los elementos métricos del PDF", () => {
+    const texto = ["d10-conicas", "d10-elipse", "d10-hiperbola", "d10-parabola"]
+      .map((id) => DIAGRAMAS_GEOMETRIA[id]!.pasos.map((paso) => paso.texto).join(" "))
+      .join(" ")
+      .toLowerCase();
+    expect(texto).toContain("degenerada");
+    expect(texto).toContain("circunferencias focales");
+    expect(texto).toContain("a² = b² + c²");
+    expect(texto).toContain("directriz");
+  });
+
+  it("el diagrama de la elipse representa visualmente la distancia focal c", () => {
+    const paso = DIAGRAMAS_GEOMETRIA["d10-elipse"]!.pasos[2]!;
+    expect(paso.items.some((item) => item.t === "seg" && item.a[0] === 400 && item.a[1] === 215 && item.b[0] < 400 && item.b[1] === 215)).toBe(true);
+  });
+
+  it("las construcciones explican el dato y la comprobación geométrica", () => {
+    for (const id of Object.keys(CONSTRUCCIONES_CONICAS)) {
+      const c = C(id);
+      expect(c.intro, id).toMatch(/(Se conocen|Se toma|Se construye|se trazan|se traza)/i);
+      expect(c.intro, id).toMatch(/(suma|diferencia|equidistan|tangente|tangentes|proporción|coordenadas)/i);
+    }
+  });
+
   it("elipse por puntos: suma de distancias a los focos igual a 2a", () => {
     const c = C("elipse-puntos");
     for (let k = 1; k <= 4; k += 1) cerca(d(c.pts[`M${k}`], c.pts.F) + d(c.pts[`M${k}`], c.pts.Fp), 300);
@@ -31,6 +56,8 @@ describe("cónicas: las construcciones cumplen la definición de cada curva", ()
       const dFp = dRecta(Fp, c.pts[`_a${k}`], c.pts[`_b${k}`]);
       cerca(dF * dFp, 90 * 90, 1);
     }
+    const auxiliar = C("elipse-circunferencias");
+    cerca(d(auxiliar.pts.C, auxiliar.pts.D), 180, 1e-6);
   });
 
   it("hipérbola: diferencia de distancias igual a 2a y tangentes con pies en la circunferencia principal", () => {

@@ -126,7 +126,7 @@ function elipseHaces(): Construccion {
   ops.push({ k: "elipse", c: "O", a, b });
   return {
     titulo: "Elipse por haces proyectivos a partir de los ejes",
-    intro: "Se construye el rectángulo $OAEC$ y se dividen $OA$ y $AE$ en el mismo número de partes iguales (cinco). Los rayos que parten de $D$ hacia las divisiones de $OA$ y los que parten de $C$ hacia las divisiones de $AE$ se cortan, de dos en dos, en puntos de la elipse.",
+    intro: "Se construye el rectángulo $OAEC$ y se dividen $OA$ y $AE$ en el mismo número de partes iguales (cinco). Los rayos que parten de $D$ hacia las divisiones de $OA$ y los que parten de $C$ hacia las divisiones de $AE$ se cortan, de dos en dos, en puntos de la elipse: cada intersección conserva la proporción entre los ejes $a$ y $b$.",
     pts,
     dados: ["O", "A", "B", "C", "D", "E", "oa1", "oa2", "oa3", "oa4", "ae1", "ae2", "ae3", "ae4"],
     datos: [],
@@ -177,7 +177,7 @@ function elipseCircunferencias(): Construccion {
   const a = 150;
   const b = 90;
   const angulos = [20, 40, 62, 80];
-  const pts: Record<string, P> = { O, A: [O[0] - a, O[1]], B: [O[0] + a, O[1]], C: [O[0], O[1] - a], D: [O[0], O[1] + a], _e1: [100, O[1]], _e2: [520, O[1]], _v1: [O[0], 30], _v2: [O[0], 370] };
+  const pts: Record<string, P> = { O, A: [O[0] - a, O[1]], B: [O[0] + a, O[1]], C: [O[0], O[1] - b], D: [O[0], O[1] + b], _e1: [100, O[1]], _e2: [520, O[1]], _v1: [O[0], 30], _v2: [O[0], 370] };
   const ops: Op[] = [];
   angulos.forEach((ang, i) => {
     const k = i + 1;
@@ -192,7 +192,7 @@ function elipseCircunferencias(): Construccion {
   ops.push({ k: "elipse", c: "O", a, b });
   return {
     titulo: "Elipse por puntos con la circunferencia principal y la de diámetro 2b",
-    intro: "Se trazan las dos circunferencias concéntricas, de radios $a$ y $b$, y un radio cualquiera que corta en $R'$ a la mayor y en $R''$ a la menor. Por $R'$ se traza la paralela a $CD$ y por $R''$ la paralela a $AB$: se cortan en un punto $R$ de la elipse.",
+    intro: "Se trazan las dos circunferencias concéntricas, de radios $a$ y $b$, y un radio cualquiera que corta en $R'$ a la mayor y en $R''$ a la menor. Por $R'$ se traza la paralela a $CD$ y por $R''$ la paralela a $AB$: se cortan en un punto $R$ de la elipse, porque sus coordenadas cumplen $x²/a² + y²/b² = 1$.",
     pts,
     dados: ["O", "A", "B", "C", "D", "po1", "po2", "po3", "po4"],
     datos: [],
@@ -420,7 +420,7 @@ function parabolaEnvolventes(): Construccion {
   ops.push({ k: "curvaPuntos", pts: curva });
   return {
     titulo: "Parábola por envolventes",
-    intro: "La tangente en el vértice, $t_v$, hace de circunferencia principal de la parábola. Basta tomar un punto $N$ de ella, unirlo con el foco $F$ y trazar por $N$ la **perpendicular a $FN$**: esa recta es tangente a la curva. Al repetirlo, las tangentes envuelven la parábola.",
+    intro: "La tangente en el vértice, $t_v$, hace de circunferencia principal de la parábola. Se toma un punto $N$ de ella, se une con el foco $F$ y se traza por $N$ la **perpendicular a $FN$**: esa recta es tangente a la curva. Al repetirlo, las tangentes envuelven la parábola.",
     pts,
     dados: ["A", "F", "V", "t1", "t2", "t3", "t4", "t5", "t6"],
     datos: [],

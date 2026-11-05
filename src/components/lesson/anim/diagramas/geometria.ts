@@ -489,6 +489,10 @@ const conicas = (): Diagrama => {
         lin(Array.from({ length: 21 }, (_, i) => [680 + (i - 10) * 5 + 0, 240 - Math.sqrt(1 + ((i - 10) / 5) ** 2) * 20 + 30] as Pt), "rojo", false, 3),
         lin(Array.from({ length: 21 }, (_, i) => [680 + (i - 10) * 5 + 0, 300 + Math.sqrt(1 + ((i - 10) / 5) ** 2) * 20 - 30] as Pt), "rojo", false, 3), txt([700, 370], "hipérbola", "rojo", 19),
       ] },
+      { texto: "Si el plano pasa por el vértice del cono, la sección es una **cónica degenerada**: puede ser un punto, una recta o dos rectas secantes. En el caso no degenerado, el plano no pasa por el vértice.", items: [
+        pt(V, "V", "rojo", 10, -14), seg([80, 210], [360, 210], "rojo", true), seg([120, 320], [320, 100], "rojo", true),
+        txt([500, 210], "sección degenerada", "rojo", 18),
+      ] },
     ],
   };
 };
@@ -511,9 +515,12 @@ const elipse = (): Diagrama => {
       { texto: "Para cualquier punto $P$: $PF + PF' = 2a$, la longitud del **eje mayor**.", items: [
         pt(P, "P", "amarillo", 10, -8), seg(F1, P, "amarillo", true), seg(F2, P, "amarillo", true),
       ] },
-      { texto: "Los **ejes** son perpendiculares; el centro $O$ es su punto medio y $b^2 = a^2 - c^2$.", items: [
-        seg([O[0] - a, 215], [O[0] + a, 215], "azul", true), seg([O[0], 215 - b], [O[0], 215 + b], "azul", true), pt(O, "O", "blanco", 8, 22),
+      { texto: "Los **ejes** son perpendiculares; el centro $O$ es su punto medio y $a² = b² + c²$ (por tanto, $b² = a² - c²$).", items: [
+        seg([O[0] - a, 215], [O[0] + a, 215], "azul", true), seg([O[0], 215 - b], [O[0], 215 + b], "azul", true), seg(O, F1, "verde", true), pt(O, "O", "blanco", 8, 22),
         txt([O[0] + 110, 205], "a", "azul", 20), txt([O[0] + 14, 150], "b", "azul", 20), txt([O[0] - 22, 240], "c", "verde", 20),
+      ] },
+      { texto: "La **circunferencia principal** tiene centro $O$ y radio $a$; las **circunferencias focales** tienen centro en cada foco y radio $2a$.", items: [
+        circ(O, a, "azul", 0.08), circ(F1, 2 * a, "verde", 0.04), circ(F2, 2 * a, "verde", 0.04),
       ] },
     ],
   };
@@ -538,7 +545,7 @@ const hiperbola = (): Diagrama => {
       { texto: "La **hipérbola** es el lugar geométrico de los puntos cuya **diferencia de distancias** a dos focos es constante, $2a$. Tiene **dos ramas**.", items: [
         lin(ramaD, "naranja", false, 3.5), lin(ramaI, "naranja", false, 3.5), pt(F1, "F", "verde", -8, 28), pt(F2, "F′", "verde", -8, 28), pt(O, "O", "blanco", 8, 22),
       ] },
-      { texto: "Para cualquier punto $P$: $|PF - PF'| = 2a$.", items: [
+      { texto: "Para cualquier punto $P$: $|PF - PF'| = 2a$. Sus ejes cumplen $c² = a² + b²$ y las circunferencias focales tienen radio $2a$.", items: [
         pt(P, "P", "amarillo", 10, -8), seg(F1, P, "amarillo", true), seg(F2, P, "amarillo", true),
       ] },
       { texto: "Las **asíntotas** son las rectas a las que se acercan las ramas sin tocarlas, con pendiente $\\pm b/a$.", items: [
@@ -566,7 +573,7 @@ const parabola = (): Diagrama => {
       { texto: "Para cualquier punto $P$: la distancia a $F$ es igual a la distancia a $d$.", items: [
         pt(P, "P", "amarillo", 12, -8), seg(P, F, "amarillo", true), seg(P, [P[0], V[1] + p / 2], "amarillo", true),
       ] },
-      { texto: "El **eje** es la perpendicular a la directriz por el foco; el **vértice** $V$ es el punto medio entre foco y directriz.", items: [
+      { texto: "El **eje** es la perpendicular a la directriz por el foco; el **vértice** $V$ es el punto medio entre foco y directriz. La tangente en $V$ es paralela a la directriz.", items: [
         seg([400, 30], [400, 390], "gris", true), pt(V, "V", "blanco", 10, 22),
       ] },
     ],
