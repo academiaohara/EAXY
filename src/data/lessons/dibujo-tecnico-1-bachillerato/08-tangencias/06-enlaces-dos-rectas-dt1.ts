@@ -5,11 +5,11 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const enlacesDosRectasDt1Lesson: InteractiveLesson = {
   slug: "enlaces-dos-rectas-dt1",
-  title: "3. Enlace de líneas",
+  title: "6. Enlace de líneas I",
   subtitle: DT1_SUBTITLES[8],
   stage: { theme: "board" },
   steps: [
     slide("enlace", "Enlace de líneas", [], diagrama("d8-enlace"), "visual-top"),
-    ...construccionPasos("enlace-rectas-90", "enlace-dos-rectas-radio", "enlace-dos-rectas-punto", "enlace-recta-arco", "enlace-arco-t-punto", "enlace-arco-recta-t", "enlace-dos-arcos"),
+    ...construccionPasos("enlace-rectas-90", "enlace-dos-rectas-radio", "enlace-dos-rectas-punto"),
   ],
 };

@@ -1,4 +1,4 @@
-import { arc, circ, fl, gira, homo, lerp2, lin, medio, pol, poli, pt, resta, seg, suma, txt, type Diagrama, type Item, type Pt } from "./engine";
+import { arc, circ, fl, gira, homo, lerp2, lin, medio, pol, poli, pt, resta, seg, suma, txt, type Diagrama, type Item, type Paso, type Pt } from "./engine";
 
 const T = (p: Pt, d: Pt): Pt => suma(p, d);
 
@@ -138,45 +138,133 @@ const homoCasos = (): Diagrama => {
 
 /* ───────────── Tema 8: tangencias ───────────── */
 
-const posiciones = (): Diagrama => {
-  const rec = (x: number, r: number, dy: number) => ({ c: [x, 150 + dy] as Pt, r });
-  const L = (x: number): [Pt, Pt] => [[x - 90, 300], [x + 90, 300]];
-  const p1 = rec(110, 50, 0);
-  const p2 = rec(330, 50, 50);
-  const p3 = rec(550, 50, 80);
+/** Marca de ángulo recto en `p` entre las direcciones `d1` y `d2` (grados). */
+const marcaRecta = (p: Pt, d1: number, d2: number): Item => {
+  const a = pol(p, 14, d1);
+  const b = pol(p, 14, d2);
+  return lin([a, suma(a, resta(b, p)), b], "gris");
+};
+
+const posRecta = (): Diagrama => {
+  const O: Pt = [200, 220];
+  const R = 90;
+  const base = (): Item[] => [circ(O, R, "azul", 0.14), pt(O, "O", "azul", 16, 22), seg(O, pol(O, R, 215), "azul"), txt(pol(O, R * 0.55, 215 + 14), "R", "azul", 22)];
+  const recta = (f: Pt, nombre = "r"): Item[] => [seg(pol(f, 130, 130), pol(f, 130, -50), "naranja", false, 3), txt(pol(f, 138, -50), nombre, "naranja", 24)];
+  const F1 = pol(O, 150, 40);
+  const T = pol(O, R, 40);
+  const F3 = pol(O, 50, 40);
+  const h = Math.sqrt(R * R - 50 * 50);
+  const A = pol(F3, h, 130);
+  const B = pol(F3, h, -50);
   return {
-    label: "Posiciones relativas de recta y circunferencia, y de dos circunferencias",
+    label: "Posiciones relativas de recta y circunferencia",
     pasos: [
-      { texto: "Una recta y una circunferencia pueden ser **exteriores**: no tienen ningún punto común.", items: [
-        circ(p1.c, p1.r, "azul", 0.16), seg(...L(110), "naranja"), txt([110, 340], "exteriores", "gris", 20),
+      { solo: true, texto: "**Exteriores**: la recta $r$ y la circunferencia **no tienen ningún punto común**. La distancia de $O$ a $r$ es **mayor** que el radio $R$.", items: [
+        ...base(), ...recta(F1), seg(O, F1, "gris", true), marcaRecta(F1, 220, 130), txt([330, 330], "exteriores", "gris", 22),
       ] },
-      { texto: "**Tangentes**: un único punto común, el de tangencia $T$, donde el radio es perpendicular a la recta.", items: [
-        circ(p2.c, p2.r, "azul", 0.16), seg(...L(330), "naranja"), pt([330, 300], "T", "verde", 10, 22), seg(p2.c, [330, 300], "verde", true), txt([330, 340], "tangentes", "gris", 20),
+      { solo: true, texto: "**Tangentes**: tienen **un único punto común**, el punto de tangencia $T$. El radio $OT$ es **perpendicular** a la recta y la distancia de $O$ a $r$ es **igual** a $R$.", items: [
+        ...base(), ...recta(T), seg(O, T, "verde", false, 3), pt(T, "T", "verde", 14, -8), marcaRecta(T, 220, 130), txt([330, 330], "tangentes", "gris", 22),
       ] },
-      { texto: "**Secantes**: dos puntos comunes.", items: [
-        circ(p3.c, p3.r, "azul", 0.16), seg(...L(550), "naranja"), pt([514, 300], "", "rojo"), pt([586, 300], "", "rojo"), txt([550, 340], "secantes", "gris", 20),
+      { solo: true, texto: "**Secantes**: tienen **dos puntos comunes**, $A$ y $B$. La distancia de $O$ a $r$ es **menor** que el radio $R$.", items: [
+        ...base(), ...recta(F3), pt(A, "A", "rojo", -14, -8), pt(B, "B", "rojo", 14, 20), txt([330, 330], "secantes", "gris", 22),
+      ] },
+    ],
+  };
+};
+
+const posCirc = (): Diagrama => {
+  const O: Pt = [170, 230];
+  const R = 90;
+  const R1 = 50;
+  const caso = (d: number, texto: string, etiqueta: string, tang: boolean): Paso => {
+    const O1: Pt = [O[0] + d, O[1]];
+    return {
+      solo: true,
+      texto,
+      items: [
+        circ(O, R, "azul", 0.12), circ(O1, R1, "naranja", 0.14),
+        seg(O, pol(O, R, 215), "azul"), txt(pol(O, R * 0.55, 215 + 16), "R", "azul", 22),
+        seg(O1, pol(O1, R1, 55), "naranja"), txt(pol(O1, R1 * 0.62, 55 - 24), "R₁", "naranja", 20),
+        pt(O, d === 0 ? "O ≡ O₁" : "O", "azul", 4, 26), ...(d === 0 ? [] : [pt(O1, "O₁", "naranja", 4, 26), seg(O, O1, "gris", true)]),
+        ...(tang ? [pt(d > 0 && d >= R ? [O[0] + R, O[1]] : [O[0] + R, O[1]], "T", "verde", 12, -10)] : []),
+        txt([O[0] + 130, 345], etiqueta, "amarillo", 24),
+      ],
+    };
+  };
+  return {
+    label: "Posiciones relativas de dos circunferencias",
+    pasos: [
+      caso(170, "**Exteriores**: no tienen puntos comunes. La distancia entre centros es **mayor** que la suma de radios.", "d > R + R₁", false),
+      caso(140, "**Tangentes exteriores**: un único punto común $T$, en la línea de centros. $d$ es **igual** a la suma de radios.", "d = R + R₁", true),
+      caso(100, "**Secantes**: dos puntos comunes. $d$ es **menor** que la suma de radios y **mayor** que su diferencia.", "R − R₁ < d < R + R₁", false),
+      caso(40, "**Tangentes interiores**: un único punto común $T$. La distancia entre centros es **igual** a la diferencia de radios.", "d = R − R₁", true),
+      caso(20, "**Interiores**: una está dentro de la otra y no se tocan. $d$ es **menor** que la diferencia de radios.", "d < R − R₁", false),
+      caso(0, "**Concéntricas**: tienen el **mismo centro**, $d = 0$.", "d = 0", false),
+    ],
+  };
+};
+
+const consideraciones = (): Diagrama => {
+  const tick = (a: Pt, b: Pt, deg: number): Item => {
+    const m = medio(a, b);
+    return seg(pol(m, 8, deg + 90), pol(m, 8, deg - 90), "gris", false, 2.6);
+  };
+  const O: Pt = [380, 230];
+  const R = 90;
+  const C = pol(O, 40, 60);
+  const hc = Math.sqrt(R * R - 40 * 40);
+  const A = pol(C, hc, 150);
+  const B = pol(C, hc, -30);
+  return {
+    label: "Consideraciones sobre las tangencias",
+    pasos: [
+      { solo: true, texto: "Si dos circunferencias son **tangentes**, el punto de tangencia $T$ está en la **línea de centros** $O_1O_2$.", items: [
+        circ([150, 230], 70, "azul", 0.14), circ([270, 230], 50, "naranja", 0.14), seg([60, 230], [345, 230], "gris", true),
+        pt([150, 230], "O₁", "azul", -6, 24), pt([270, 230], "O₂", "naranja", 6, 24), pt([220, 230], "T", "verde", 8, -12),
+        circ([560, 230], 90, "azul", 0.14), circ([590, 230], 60, "naranja", 0.14), seg([440, 230], [700, 230], "gris", true),
+        pt([560, 230], "O₁", "azul", -6, 24), pt([590, 230], "O₂", "naranja", 14, 24), pt([650, 230], "T", "verde", 6, -12),
+      ] },
+      { solo: true, texto: "Si una **recta es tangente** a una circunferencia, el punto de tangencia $T$ es el **pie de la perpendicular** trazada por el centro $O$ a la recta.", items: [
+        circ(O, R, "azul", 0.14), pt(O, "O", "azul", -16, 18), seg([O[0] + R, 100], [O[0] + R, 360], "naranja", false, 3), txt([O[0] + R + 20, 112], "t", "naranja", 24),
+        seg(O, [O[0] + R, O[1]], "verde", false, 3), pt([O[0] + R, O[1]], "T", "verde", 14, -12), marcaRecta([O[0] + R, O[1]], 180, 90),
+      ] },
+      { solo: true, texto: "El **radio perpendicular a una cuerda** la divide en dos partes iguales: la **mediatriz** de una cuerda pasa por el centro.", items: [
+        circ(O, R, "azul", 0.14), pt(O, "O", "azul", -16, 18),
+        seg(A, B, "naranja", false, 3), pt(A, "A", "naranja", -14, -6), pt(B, "B", "naranja", 14, 20), pt(C, "C", "verde", 14, -8),
+        seg(O, C, "verde", false, 3), marcaRecta(C, 240, 150), tick(A, C, 150), tick(C, B, 150), txt([380, 360], "AC = CB", "gris", 22),
       ] },
     ],
   };
 };
 
 const lugares = (): Diagrama => {
-  const r = 40;
-  const recta: [Pt, Pt] = [[60, 330], [740, 330]];
-  const T0: Pt = [260, 330];
+  const Y = 300;
+  const T0: Pt = [380, Y];
+  const rho = 45;
+  const O: Pt = [380, 150];
+  const R = 110;
+  const rr = 45;
+  const Ext = pol(O, R + rr, 30);
+  const Int = pol(O, R - rr, 200);
   return {
     label: "Centros de las circunferencias tangentes: lugares geométricos",
     pasos: [
-      { texto: "Las circunferencias **tangentes a una recta en un punto** $T$ tienen el centro en la **perpendicular** a la recta por $T$.", items: [
-        seg(...recta, "naranja"), pt(T0, "T", "naranja", 10, 22), seg([T0[0], 330], [T0[0], 60], "morado", true),
-        circ([T0[0], 330 - 50], 50, "azul", 0.1), circ([T0[0], 330 - 110], 110, "azul", 0.06), pt([T0[0], 280], "", "azul"), pt([T0[0], 220], "", "azul"),
+      { solo: true, texto: "Las circunferencias **tangentes a una recta $r$ en un punto $T$** tienen el centro en la **perpendicular** a $r$ por $T$.", items: [
+        seg([120, Y], [640, Y], "naranja", false, 3), txt([650, Y - 12], "r", "naranja", 24), pt(T0, "T", "naranja", 14, 24),
+        seg(T0, [T0[0], 40], "morado", true, 2.2),
+        circ([T0[0], Y - 50], 50, "azul", 0.1), circ([T0[0], Y - 100], 100, "azul", 0.06), pt([T0[0], Y - 50], "C₁", "azul", 18, 4), pt([T0[0], Y - 100], "C₂", "azul", 18, 4),
+        marcaRecta(T0, 180, 90),
       ] },
-      { texto: "Las de **radio dado** $r$ tangentes a la recta tienen el centro en la **paralela** a distancia $r$.", items: [
-        seg([60, 330 - r], [740, 330 - r], "verde", true), circ([460, 330 - r], r, "azul", 0.16), circ([580, 330 - r], r, "azul", 0.16), circ([670, 330 - r], r, "azul", 0.16),
-        txt([720, 330 - r - 10], "r", "verde", 20),
+      { solo: true, texto: "Las circunferencias de **radio $r$ dado** tangentes a una recta tienen el centro en una **paralela** a la recta, a distancia $r$.", items: [
+        seg([120, Y], [640, Y], "naranja", false, 3), txt([650, Y - 12], "r", "naranja", 24),
+        seg([120, Y - rho], [640, Y - rho], "verde", true, 2.2), txt([650, Y - rho - 10], "paralela", "verde", 20),
+        circ([220, Y - rho], rho, "azul", 0.14), circ([380, Y - rho], rho, "azul", 0.14), circ([540, Y - rho], rho, "azul", 0.14),
+        pt([380, Y - rho], "C", "azul", 4, 26), seg([380, Y - rho], [380, Y], "azul", false, 2.4), txt([362, Y - rho / 2 + 6], "r", "azul", 20),
       ] },
-      { texto: "Las **tangentes a una circunferencia** de centro $O$ y radio $R$ con radio $r$ tienen el centro en una **concéntrica** de radio $R \\pm r$.", items: [
-        circ([560, 140], 50, "naranja", 0.14), circ([560, 140], 90, "verde", 0, true), circ([620, 80], 40, "azul", 0.16), pt([560, 140], "O", "naranja", -22, 8),
+      { solo: true, texto: "Las circunferencias de radio $r$ **tangentes a otra** de centro $O$ y radio $R$ tienen el centro en una **concéntrica** de radio $R + r$ (tangentes exteriores) o $R - r$ (interiores).", items: [
+        circ(O, R, "naranja", 0.14), pt(O, "O", "naranja", -6, 24),
+        circ(O, R + rr, "verde", 0, true), circ(O, R - rr, "verde", 0, true),
+        circ(Ext, rr, "azul", 0.18), pt(Ext, "C", "azul", 16, -6), circ(Int, rr, "azul", 0.18), pt(Int, "C′", "azul", -4, 22),
       ] },
     ],
   };
@@ -206,22 +294,26 @@ const enlace = (): Diagrama => {
 };
 
 const rectificar = (): Diagrama => {
-  const O: Pt = [170, 215];
-  const r = 80;
-  const x0 = 360;
-  const L = Math.PI * 2 * r;
+  const r = 70;
+  const d = 2 * r;
+  const x0 = 160;
+  const y0 = 330;
+  const O: Pt = [x0 + 1.75 * d, 130];
+  const marca = (x: number): Item => seg([x, y0 - 10], [x, y0 + 10], "gris", false, 2.4);
   return {
-    label: "Rectificación de la circunferencia: longitud 2πr",
+    label: "Rectificación de la circunferencia: 3 diámetros y 1/7 de diámetro",
     pasos: [
-      { texto: "**Rectificar** una circunferencia es hallar un **segmento** de su misma longitud.", items: [
-        circ(O, r, "azul", 0.14), pt(O, "O", "azul", -20, 8),
+      { texto: "**Rectificar** una circunferencia es hallar un **segmento recto** de la misma longitud que ella: $2\\pi r = \\pi d$.", items: [
+        circ(O, r, "azul", 0.14), pt(O, "O", "azul", 14, 24), seg([O[0] - r, O[1]], [O[0] + r, O[1]], "verde", false, 3), txt([O[0], O[1] - 12], "d", "verde", 22),
       ] },
-      { texto: "La longitud de la circunferencia es $2\\pi r \\approx 6{,}28\\,r$: algo más de **tres diámetros**.", items: [
-        seg([x0, 150], [x0 + 2 * r, 150], "naranja"), seg([x0 + 2 * r, 150], [x0 + 4 * r, 150], "naranja"), seg([x0 + 4 * r, 150], [x0 + 6 * r, 150], "naranja"),
-        seg([x0 + 6 * r, 150], [x0 + 6.28 * r + 0, 150], "amarillo"), txt([x0 + 3 * r, 120], "3 diámetros", "naranja", 20),
+      { texto: "El número $\\pi \\approx 22/7 = 3 + 1/7$: la longitud es **tres diámetros** más una **séptima parte** del diámetro.", items: [
+        seg([x0, y0], [x0 + d, y0], "naranja", false, 4), seg([x0 + d, y0], [x0 + 2 * d, y0], "naranja", false, 4), seg([x0 + 2 * d, y0], [x0 + 3 * d, y0], "naranja", false, 4),
+        marca(x0), marca(x0 + d), marca(x0 + 2 * d), marca(x0 + 3 * d),
+        txt([x0 + d / 2, y0 - 22], "d", "naranja", 22), txt([x0 + 1.5 * d, y0 - 22], "d", "naranja", 22), txt([x0 + 2.5 * d, y0 - 22], "d", "naranja", 22),
       ] },
-      { texto: "El segmento rectificado mide $2\\pi r$.", items: [
-        seg([x0, 300], [x0 + L * 0.5, 300], "verde", false, 4.5), txt([x0 + L * 0.25, 335], "2πr (semicircunferencia = πr)", "verde", 20),
+      { texto: "Para la séptima parte se divide el diámetro en **siete partes iguales** con el teorema de Tales, y se suma una al final.", items: [
+        seg([x0 + 3 * d, y0], [x0 + 3 * d + d / 7, y0], "amarillo", false, 4), marca(x0 + 3 * d + d / 7), txt([x0 + 3 * d + d / 14, y0 - 22], "d/7", "amarillo", 20),
+        txt([x0 + 1.6 * d, y0 + 46], "longitud ≈ 3d + d/7 = 2πr", "verde", 24),
       ] },
     ],
   };
@@ -623,7 +715,9 @@ export const DIAGRAMAS_GEOMETRIA: Record<string, Diagrama> = {
   "d7-trasl-prop": trasProp(),
   "d7-giro-prop": giroProp(),
   "d7-homo-casos": homoCasos(),
-  "d8-posiciones": posiciones(),
+  "d8-pos-recta": posRecta(),
+  "d8-pos-circ": posCirc(),
+  "d8-consideraciones": consideraciones(),
   "d8-lugares": lugares(),
   "d8-enlace": enlace(),
   "d8-rectificar": rectificar(),

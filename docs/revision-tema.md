@@ -10,7 +10,7 @@ Objetivo: revisar rápido y bien un tema nuevo (ver la receta en `docs/pdf-a-tem
 npx tsx scripts/generate-lessons-index.ts && npm run seed:generate && git status --short   # no debe aparecer nada nuevo sin commitear
 npx tsx scripts/review-tema.ts <slug-curso> <slug-tema>
 ```
-Comprueba: ids únicos y correlativos, fichero ↔ slug, ≥5 pasos, al menos un visual por lección, animaciones/herramientas registradas, en los tipos y documentadas, tests de herramientas, seed e índice al día, README y test del curso. Corrige los `ERROR`; valora los `aviso`.
+Comprueba: ids únicos y correlativos, fichero ↔ slug, ≥2 pasos (mejor lecciones cortas que se aprendan que una larga que se haga bola), al menos un visual por lección, animaciones/herramientas registradas, en los tipos y documentadas, tests de herramientas, seed e índice al día, README y test del curso. Corrige los `ERROR`; valora los `aviso`.
 
 ## 3. Calidad técnica (3–5 min)
 ```

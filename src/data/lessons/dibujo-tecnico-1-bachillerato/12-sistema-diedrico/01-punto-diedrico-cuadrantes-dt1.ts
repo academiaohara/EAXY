@@ -1,11 +1,10 @@
 import type { InteractiveLesson } from "@/lib/lesson/types";
 import { DT1_SUBTITLES } from "@/data/lessons/shared";
-import { construccionPasos } from "@/data/lessons/construcciones-helpers";
 import { anim, slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const puntoDiedricoCuadrantesDt1Lesson: InteractiveLesson = {
   slug: "punto-diedrico-cuadrantes-dt1",
-  title: "1. Fundamentos, notación y representación del punto",
+  title: "1. Fundamentos, notación y representación del punto I",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
@@ -18,9 +17,5 @@ export const puntoDiedricoCuadrantesDt1Lesson: InteractiveLesson = {
     ], anim("dt1-abatimiento-diedrico"), "visual-top"),
     slide("notacion", "Notación", [], diagrama("d12-notacion"), "visual-top"),
     slide("cota-alejamiento", "Cota y alejamiento", [], diagrama("d12-cota-alej"), "visual-top"),
-    ...construccionPasos("punto-primer-diedro", "punto-segundo-diedro", "punto-tercer-diedro", "punto-cuarto-diedro"),
-    slide("puntos-especiales", "Puntos en los planos de proyección y en los bisectores", [], diagrama("d12-especiales"), "visual-top"),
-    ...construccionPasos("punto-primer-octante", "punto-segundo-octante", "punto-tercer-octante", "punto-cuarto-octante"),
-    ...construccionPasos("punto-plano-horizontal", "punto-plano-vertical", "punto-primer-bisector", "punto-segundo-bisector"),
   ],
 };

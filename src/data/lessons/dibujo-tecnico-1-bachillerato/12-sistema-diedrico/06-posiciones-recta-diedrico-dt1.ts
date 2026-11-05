@@ -5,7 +5,7 @@ import { slide, diagrama } from "@/data/lessons/tec1-helpers";
 
 export const posicionesRectaDiedricoDt1Lesson: InteractiveLesson = {
   slug: "posiciones-recta-diedrico-dt1",
-  title: "3. Posiciones particulares de la recta",
+  title: "6. Posiciones particulares de la recta I",
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
@@ -15,9 +15,5 @@ export const posicionesRectaDiedricoDt1Lesson: InteractiveLesson = {
     ...construccionPasos("recta-paralela-lt"),
     slide("horizontal", "Recta paralela al plano horizontal", [], diagrama("d12-horizontal"), "visual-top"),
     ...construccionPasos("recta-horizontal"),
-    slide("frontal", "Recta paralela al plano vertical (frontal)", [], diagrama("d12-frontal"), "visual-top"),
-    ...construccionPasos("recta-frontal"),
-    slide("oblicuas", "Rectas oblicuas que cortan a la L.T.", [], diagrama("d12-oblicuas"), "visual-top"),
-    slide("perfil", "Rectas de perfil", [], diagrama("d12-perfil"), "visual-top"),
   ],
 };
