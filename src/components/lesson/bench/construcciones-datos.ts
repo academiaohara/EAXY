@@ -46,7 +46,8 @@ export type Op =
   | { k: "medir"; de: string; a: string }
   | { k: "arco"; c: string; hacia: string; /** Extensión relativa a la dirección de `hacia`. */ ang?: [number, number]; /** Ángulos absolutos del arco. */ abs?: [number, number] }
   | { k: "circulo"; c: string; hacia: string }
-  | { k: "marca"; p: string }
+  /** Punto que se marca. Con `sim`, es el simétrico de otro respecto de un eje: aparece solo, sin pedírselo al alumno en la práctica. */
+  | { k: "marca"; p: string; sim?: boolean }
   | { k: "recta"; a: string; b: string; limpia?: boolean }
   | { k: "perp"; recta: [string, string]; punto: string; traza: [string, string] }
   | { k: "angulo"; v: string; base: number; obj: number; signo?: 1 | -1; largo?: number }
@@ -1608,7 +1609,7 @@ export function fasesPractica(c: Construccion): FaseP[] {
   for (const o of c.ops) {
     if (o.k === "medir") f.push("medida");
     else if (o.k === "arco" || o.k === "circulo") f.push("centro", "arco");
-    else if (o.k === "marca") f.push("punto");
+    else if (o.k === "marca") { if (!o.sim) f.push("punto"); }
     else if (o.k === "recta") f.push("trazo");
     else if (o.k === "perp") f.push("perpendicular");
     else if (o.k === "angulo") f.push(instrumentoAngulo(o.obj) ? "perpendicular" : "angulo");

@@ -543,8 +543,9 @@ const elipse = (): Diagrama => {
         seg([O[0] - a, 215], [O[0] + a, 215], "azul", true), seg([O[0], 215 - b], [O[0], 215 + b], "azul", true), seg(O, F1, "verde", true), pt(O, "O", "blanco", 8, 22),
         txt([O[0] + 110, 205], "a", "azul", 20), txt([O[0] + 14, 150], "b", "azul", 20), txt([O[0] - 22, 240], "c", "verde", 20),
       ] },
-      { texto: "La **circunferencia principal** tiene centro $O$ y radio $a$; las **circunferencias focales** tienen centro en cada foco y radio $2a$.", items: [
-        circ(O, a, "azul", 0.08), circ(F1, 2 * a, "verde", 0.04), circ(F2, 2 * a, "verde", 0.04),
+      { solo: true, recorta: true, texto: "La **circunferencia principal** tiene centro $O$ y radio $a$; las **circunferencias focales** tienen centro en cada foco y radio $2a$.", items: [
+        circ(O, a, "azul", 0), circ(F1, 2 * a, "verde", 0), circ(F2, 2 * a, "verde", 0),
+        lin(pts, "naranja", false, 3.5), pt(F1, "F", "verde", -8, 28), pt(F2, "F′", "verde", -8, 28), pt(O, "O", "blanco", 8, 22),
       ] },
     ],
   };

@@ -44,6 +44,8 @@ export type Paso = {
   items: Item[];
   /** Los elementos de este paso solo se ven en él. */
   solo?: boolean;
+  /** Dibujo mayor que la hoja: no cuenta para el encuadre y se recorta con el borde del papel (por ejemplo, circunferencias de radio 2a). */
+  recorta?: boolean;
 };
 
 export type Diagrama = { label: string; pasos: Paso[]; beatMs?: number };
@@ -105,6 +107,7 @@ function limites(def: Diagrama): { x0: number; y0: number; x1: number; y1: numbe
     y1 = Math.max(y1, y);
   };
   for (const paso of def.pasos) {
+    if (paso.recorta) continue;
     for (const it of paso.items) {
       switch (it.t) {
         case "seg": case "fl": mete(...it.a); mete(...it.b); break;
@@ -127,6 +130,7 @@ export function construirDiagrama(def: Diagrama): AnimBuild {
   const k = Math.min(area.w / w, area.h / h, 2.2);
   const tx = area.x + (area.w - w * k) / 2 - b.x0 * k;
   const ty = area.y + (area.h - h * k) / 2 - b.y0 * k;
+  const clipId = `dgclip${[...def.label].reduce((n, c) => (n * 31 + c.charCodeAt(0)) | 0, 7) >>> 0}`;
   return {
     label: def.label,
     beatMs: def.beatMs ?? 5600,
@@ -136,9 +140,14 @@ export function construirDiagrama(def: Diagrama): AnimBuild {
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={HOJA} />
         <g transform={`translate(${tx} ${ty}) scale(${k})`}>
+          <clipPath id={clipId}>
+            <rect x={(HOJA.x - tx) / k} y={(HOJA.y - ty) / k} width={HOJA.w / k} height={HOJA.h / k} />
+          </clipPath>
           {def.pasos.map((paso, n) => (
             <Fade key={n} show={n <= beat && (!paso.solo || n === beat)}>
-              {paso.items.map((it, i) => <Nodo key={i} it={it} k={k} />)}
+              <g clipPath={paso.recorta ? `url(#${clipId})` : undefined}>
+                {paso.items.map((it, i) => <Nodo key={i} it={it} k={k} />)}
+              </g>
             </Fade>
           ))}
         </g>

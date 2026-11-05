@@ -299,6 +299,7 @@ function defDe(id: ConstruccionId): Def {
   const fases = fasesPractica(c);
   const meta: Meta[] = [];
   c.ops.forEach((o, i) => {
+    if (o.k === "marca" && o.sim) return;
     if (o.k === "medir" || o.k === "marca" || o.k === "recta" || o.k === "perp" || o.k === "angulo") meta.push({ op: o, opIdx: i });
     else if (o.k === "arco" || o.k === "circulo") meta.push({ op: o, opIdx: i }, { op: o, opIdx: i });
     else if (o.k === "paralelas") o.marcas.forEach(() => meta.push({ op: o, opIdx: i }));
@@ -325,6 +326,13 @@ function defDe(id: ConstruccionId): Def {
           const k = meta.slice(0, f + 1).filter((x) => x.op === m.op).length - 1;
           visibles.add(m.op.cortes[k]);
         }
+      });
+      // los puntos simétricos aparecen solos cuando se completa la fase anterior a ellos
+      c.ops.forEach((o, i) => {
+        if (o.k !== "marca" || !o.sim) return;
+        let f = -1;
+        meta.forEach((m, idx) => { if (m.opIdx < i) f = idx; });
+        if (est.fase > f) visibles.add(o.p);
       });
       const hecha = est.fase >= fases.length;
       return (
