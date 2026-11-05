@@ -346,22 +346,123 @@ const ovalo = (): Diagrama => {
   };
 };
 
-const espirales = (): Diagrama => {
-  const O: Pt = [210, 215];
-  const spiral: Pt[] = Array.from({ length: 70 }, (_, i) => pol(O, 6 + i * 2.3, i * 18));
-  const helix: Pt[] = Array.from({ length: 50 }, (_, i) => [440 + i * 6 + 28 * Math.cos(i * 0.5), 300 - i * 4.5 + 22 * Math.sin(i * 0.5)] as Pt);
+/** Ovoide: una semicircunferencia, dos arcos laterales de radio mayor y un arco pequeño que cierra la curva. */
+const ovoide = (): Diagrama => {
+  const O: Pt = [380, 150];
+  const r = 70;
+  const R = 210;
+  const rho = 35;
+  const dy = Math.sqrt((R - rho) ** 2 - (R - r) ** 2);
+  const CL: Pt = [O[0] + (R - r), O[1]];
+  const CR: Pt = [O[0] - (R - r), O[1]];
+  const M: Pt = [O[0], O[1] + dy];
+  const ang = (c: Pt, p: Pt) => (Math.atan2(-(p[1] - c[1]), p[0] - c[0]) * 180) / Math.PI;
+  const dirL: Pt = [(M[0] - CL[0]) / (R - rho), (M[1] - CL[1]) / (R - rho)];
+  const TL: Pt = [M[0] + rho * dirL[0], M[1] + rho * dirL[1]];
+  const TR: Pt = [2 * O[0] - TL[0], TL[1]];
+  const aL = ang(CL, TL);
+  const aR = ang(CR, TR);
+  const aMl = ang(M, TL);
+  const aMr = ang(M, TR);
+  const A: Pt = [O[0] - r, O[1]];
+  const B: Pt = [O[0] + r, O[1]];
   return {
-    label: "Voluta, espiral de Arquímedes y hélice",
+    label: "Ovoide: semicircunferencia, dos arcos laterales y un arco pequeño",
     pasos: [
-      { texto: "La **espiral de Arquímedes**: un punto se aleja del centro con **velocidad constante** mientras gira con velocidad angular constante; el radio crece de forma **uniforme**.", items: [
-        pt(O, "O", "verde", -20, 8), lin(spiral, "naranja", false, 3.5),
+      { texto: "Un **ovoide** es una curva cerrada con **un solo eje de simetría**. Se parte de una **semicircunferencia** de diámetro $AB$ y centro $O$.", items: [
+        seg([O[0] - 120, O[1]], [O[0] + 120, O[1]], "gris", true), seg([O[0], O[1] - 100], [O[0], O[1] + 190], "gris", true), arc(O, r, 0, 180, "naranja", 3),
+        pt(A, "A", "azul", -18, 20), pt(B, "B", "azul", 8, 20), pt(O, "O", "verde", 8, 20),
       ] },
-      { texto: "La **voluta** se forma con **arcos de circunferencia** de centros sucesivos y radios crecientes, enlazados.", items: [
-        lin([[330, 100], [315, 80], [300, 82], [290, 100], [297, 118], [316, 122]], "azul", false, 3.5), circ([310, 100], 1, "azul"),
+      { texto: "Los **arcos laterales** se enlazan con ella en $A$ y $B$: sus centros están en el diámetro, y cada uno parte del extremo opuesto de la semicircunferencia.", items: [
+        pt(CL, "C₁", "verde", 8, 20), pt(CR, "C₂", "verde", -26, 20),
+        arc(CL, R, 180, aL < 180 ? aL + 360 : aL, "naranja", 3), arc(CR, R, aR, 0, "naranja", 3),
+        seg(CL, A, "gris", true), seg(CR, B, "gris", true),
       ] },
-      { texto: "La **hélice** es una curva que sube con **paso constante** alrededor de un cilindro: en proyección vertical es una sinusoide.", items: [
-        lin(helix, "morado", false, 3.5), seg([420, 330], [420, 70], "gris", true),
+      { texto: "Un **arco pequeño** de centro $M$ en el eje cierra la curva: lo enlaza con los laterales en $T_1$ y $T_2$, alineados con los centros $C_1$ y $C_2$.", items: [
+        pt(M, "M", "verde", 12, -6), arc(M, rho, aMl < 0 ? aMl + 360 : aMl, aMr < 0 ? aMr + 360 : aMr, "naranja", 3),
+        pt(TL, "T₁", "amarillo", -26, 8), pt(TR, "T₂", "amarillo", 8, 8), seg(CL, TL, "gris", true), seg(CR, TR, "gris", true),
       ] },
+    ],
+  };
+};
+
+/** Voluta: seis arcos de centros sucesivos en los vértices de un cuadrado y radios que crecen de lado en lado. */
+const volutaDg = (): Diagrama => {
+  const s = 36;
+  const v: Pt[] = [[300, 170], [300, 170 + s], [300 - s, 170 + s], [300 - s, 170]];
+  const centro = (k: number): Pt => v[(k - 1) % 4]!;
+  const rango: [number, number][] = [[90, 180], [0, 90], [-90, 0], [-180, -90]];
+  const rr = (k: number) => s / 2 + (k - 1) * s;
+  const arco = (k: number, c: "naranja" | "azul" = "naranja"): Item => arc(centro(k), rr(k), rango[(k - 1) % 4]![0], rango[(k - 1) % 4]![1], c, 3.4);
+  const num = (k: number, off: [number, number]) => pt(v[k - 1]!, String(k), "verde", off[0], off[1]);
+  return {
+    label: "Voluta: arcos de circunferencia con centros en los vértices de un cuadrado",
+    pasos: [
+      { texto: "La **voluta** es una curva formada por **arcos de circunferencia** enlazados. Sus centros son, uno tras otro, los vértices de un polígono: aquí, el **cuadrado** $1\\text{-}2\\text{-}3\\text{-}4$.", items: [
+        poli(v, "gris", 0), num(1, [8, -8]), num(2, [8, 18]), num(3, [-18, 18]), num(4, [-18, -8]),
+      ] },
+      { texto: "El primer arco tiene centro en $1$; el siguiente, en $2$ y de radio mayor, y así sucesivamente: cada arco **empieza donde acaba el anterior**, y por eso la curva no tiene picos.", items: [arco(1), arco(2), arco(3), arco(4)] },
+      { texto: "Al dar la vuelta completa, los centros se repiten pero el **radio crece** un lado del cuadrado cada vez: la curva se abre en espiral.", items: [arco(5), arco(6)] },
+    ],
+  };
+};
+
+/** Espiral de Arquímedes: el radio crece en proporción al ángulo girado (una vuelta, ocho divisiones). */
+const espiralDg = (): Diagrama => {
+  const O: Pt = [300, 215];
+  const R = 170;
+  const n = 8;
+  const rayos: Item[] = Array.from({ length: n }, (_, k) => seg(O, pol(O, R, (360 * k) / n), "gris"));
+  const q = Array.from({ length: n - 1 }, (_, k) => [O[0] + (R * (k + 1)) / n, O[1]] as Pt);
+  const puntos: Item[] = Array.from({ length: n - 1 }, (_, k) => pt(pol(O, (R * (k + 1)) / n, (360 * (k + 1)) / n), "", "naranja"));
+  const curva: Pt[] = Array.from({ length: 121 }, (_, i) => pol(O, (R * i) / 120, (360 * i) / 120));
+  return {
+    label: "Espiral de Arquímedes: el radio crece de forma uniforme con el ángulo",
+    pasos: [
+      { texto: "Se tiene el **paso** $OP$ de la espiral. Con centro en $O$ y radio $OP$ se traza la circunferencia y se divide en **ocho partes iguales**; el paso se divide en el **mismo número** de partes.", items: [
+        circ(O, R, "gris", 0), ...rayos, pt(O, "O", "verde", -18, 20), pt([O[0] + R, O[1]], "P", "azul", 8, -9),
+        ...q.map((p, k) => pt(p, String(k + 1), "azul", -4, -11)),
+      ] },
+      { texto: "Con centro en $O$ y radio igual a la división $k$ del paso se traza un arco hasta el radio de la división $k$ de la circunferencia: ahí hay un **punto de la espiral**.", items: [
+        ...q.map((_p, k) => arc(O, (R * (k + 1)) / n, ((360 * (k + 1)) / n) - 14, ((360 * (k + 1)) / n) + 14, "azul", 1.6)), ...puntos,
+      ] },
+      { texto: "Se unen los puntos con una curva **suave** (a mano alzada o con plantilla): es la **espiral de Arquímedes**, en la que el radio crece **de forma uniforme** con el ángulo girado.", items: [lin(curva, "naranja", false, 3.6)] },
+    ],
+  };
+};
+
+/** Hélice cilíndrica en proyecciones: planta (circunferencia) y alzado (sinusoide). */
+const heliceDg = (): Diagrama => {
+  const cx = 300;
+  const R = 55;
+  const d = 18;
+  const base = 195;
+  const Op: Pt = [cx, 290];
+  const ang = (j: number) => 180 - 45 * (j - 1);
+  const h = (j: number) => pol(Op, R, ang(j));
+  const g = (j: number): Pt => [cx + R * Math.cos((ang(j) * Math.PI) / 180), base - (j - 1) * d];
+  const planta: Item[] = Array.from({ length: 8 }, (_, i) => {
+    const th = (ang(i + 1) * Math.PI) / 180;
+    return pt(h(i + 1), `${i + 1}′`, "azul", Math.round(Math.cos(th) * 16) + (Math.cos(th) < -0.3 ? -12 : Math.cos(th) > 0.3 ? 2 : -5), Math.round(-Math.sin(th) * 16) + 5);
+  });
+  const lineas: Item[] = Array.from({ length: 8 }, (_, i) => seg(h(i + 1), g(i + 1), "gris", true));
+  const horiz: Item[] = Array.from({ length: 7 }, (_, i) => seg([200, base - (i + 1) * d], [440, base - (i + 1) * d], "gris", true));
+  const puntos: Item[] = Array.from({ length: 8 }, (_, i) => pt(g(i + 1), `${i + 1}″`, "morado", i + 1 <= 4 ? 8 : 10, i + 1 <= 4 ? 17 : i + 1 === 5 ? 5 : -6));
+  const curva: Pt[] = Array.from({ length: 121 }, (_, i) => {
+    const t = i / 120;
+    return [cx + R * Math.cos(((180 - 360 * t) * Math.PI) / 180), base - 8 * d * t] as Pt;
+  });
+  return {
+    label: "Hélice cilíndrica: planta circular y alzado sinusoidal",
+    pasos: [
+      { texto: "La **hélice** es la curva que describe un punto que **gira** alrededor del eje de un cilindro mientras **asciende** con movimiento uniforme. En la planta es una **circunferencia**, que se divide en ocho partes.", items: [
+        circ(Op, R, "gris", 0), ...planta, seg([150, base], [450, base], "gris"),
+      ] },
+      { texto: "El **paso** $p$ (lo que sube en una vuelta) se divide en **ocho partes iguales**, y por cada división se traza una horizontal.", items: [
+        seg([200, base], [200, base - 8 * d], "gris"), ...horiz,
+      ] },
+      { texto: "Cada punto del alzado está donde se cortan la **vertical** por la división de la base y la **horizontal** de la misma división del paso.", items: [...lineas, ...puntos] },
+      { texto: "Uniendo los puntos queda una **sinusoide**: la proyección vertical de la hélice.", items: [lin(curva, "morado", false, 3.6)] },
     ],
   };
 };
@@ -722,7 +823,10 @@ export const DIAGRAMAS_GEOMETRIA: Record<string, Diagrama> = {
   "d8-enlace": enlace(),
   "d8-rectificar": rectificar(),
   "d9-ovalo": ovalo(),
-  "d9-espirales": espirales(),
+  "d9-ovoide": ovoide(),
+  "d9-voluta": volutaDg(),
+  "d9-espiral": espiralDg(),
+  "d9-helice": heliceDg(),
   "d10-conicas": conicas(),
   "d10-elipse": elipse(),
   "d10-hiperbola": hiperbola(),

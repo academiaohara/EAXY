@@ -155,7 +155,7 @@ export const pt = (p: Pt, n?: string, c?: Color, dx?: number, dy?: number): Item
 export const poli = (p: Pt[], c?: Color, f?: number, d?: boolean): Item => ({ t: "poli", p, c, f, d });
 export const lin = (p: Pt[], c?: Color, d?: boolean, w?: number): Item => ({ t: "lin", p, c, d, w });
 export const circ = (c: Pt, r: number, col?: Color, f?: number, d?: boolean): Item => ({ t: "circ", c, r, col, f, d });
-export const arc = (c: Pt, r: number, a0: number, a1: number, col?: Color): Item => ({ t: "arc", c, r, a0, a1, col });
+export const arc = (c: Pt, r: number, a0: number, a1: number, col?: Color, w?: number): Item => ({ t: "arc", c, r, a0, a1, col, w });
 export const txt = (p: Pt, s: string, c?: Color, size?: number, anchor?: "start" | "middle" | "end"): Item => ({ t: "txt", p, s, c, size, anchor });
 /** Punto a distancia `r` de `c` en la dirección `deg` (antihoraria, y hacia arriba). */
 export const pol = (c: Pt, r: number, deg: number): Pt => polar(c, r, deg);

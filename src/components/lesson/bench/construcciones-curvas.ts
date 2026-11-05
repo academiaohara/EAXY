@@ -48,10 +48,12 @@ export const ETIQUETAS_CURVAS: Record<string, string> = {
   Td: "T₄", O3: "O₃", O4: "O₄", d5: "5",
   v1: "1", v2: "2", v3: "3", v4: "4",
   q1: "1", q2: "2", q3: "3", q4: "4", q5: "5", q6: "6", q7: "7",
-  s1: "", s2: "", s3: "", s4: "", s5: "", s6: "", s7: "",
-  h1: "1'", h2: "2'", h3: "3'", h4: "4'", h5: "5'", h6: "6'", h7: "7'", h8: "8'",
-  g1: "1''", g2: "2''", g3: "3''", g4: "4''", g5: "5''", g6: "6''", g7: "7''", g8: "8''", g9: "1''",
-  m2: "", m3: "", m4: "", m5: "", m6: "", m7: "", m8: "",
+  // nombres propios de esta unidad (espS = punto de la espiral; helB, helG, helM = base, proyección vertical y paso de la hélice):
+  // los nombres cortos (s2, h1, g3…) chocaban con los de otros temas y se rotulaban con sus etiquetas
+  espS1: "", espS2: "", espS3: "", espS4: "", espS5: "", espS6: "", espS7: "",
+  helB1: "1'", helB2: "2'", helB3: "3'", helB4: "4'", helB5: "5'", helB6: "6'", helB7: "7'", helB8: "8'",
+  helG1: "1''", helG2: "2''", helG3: "3''", helG4: "4''", helG5: "5''", helG6: "6''", helG7: "7''", helG8: "8''", helG9: "1''",
+  helM2: "", helM3: "", helM4: "", helM5: "", helM6: "", helM7: "", helM8: "",
 };
 
 /** §2 (Fig. 2): óvalo dado el eje mayor AB (dividido en tres partes iguales). */
@@ -306,6 +308,8 @@ function voluta(): Construccion {
     titulo: "Voluta",
     intro: "La voluta es una curva formada por arcos de circunferencia tangentes cuyos centros sucesivos son los vértices de un polígono, aquí el cuadrado $1\\text{-}2\\text{-}3\\text{-}4$. Con centro en $1$ y radio $1A$ se traza el arco $AB$, con $B$ en la prolongación de $2\\text{-}1$; con centro en $2$ y radio $2B$, el arco $BC$, y así sucesivamente.",
     pts: { ...v, A, B, C, D, E, F, G },
+    // los vértices del cuadrado se rotulan por fuera de él y las letras de los arcos hacia fuera de la espiral
+    rotulos: { v1: [8, -8], v2: [8, 18], v3: [-18, 18], v4: [-18, -8], A: [-4, -12], B: [-4, -10], C: [10, 5], D: [-4, 20], E: [-22, 5], F: [-4, -10], G: [10, 5] },
     dados: ["v1", "v2", "v3", "v4", "A"],
     datos: [],
     base: [["v1", "v2"], ["v2", "v3"], ["v3", "v4"], ["v4", "v1"]],
@@ -352,21 +356,27 @@ function espiralArquimedes(): Construccion {
   const pts: Record<string, P> = { O, P: [O[0] + p, O[1]] };
   const base: [string, string][] = [];
   const ops: Op[] = [];
-  const lista = ["O"];
   for (let k = 1; k < n; k += 1) {
     pts[`q${k}`] = [O[0] + (p * k) / n, O[1]];
-    pts[`s${k}`] = polar(O, (p * k) / n, (360 * k) / n);
+    pts[`espS${k}`] = polar(O, (p * k) / n, (360 * k) / n);
     pts[`_g${k}`] = polar(O, p, (360 * k) / n);
     base.push(["O", `_g${k}`]);
-    ops.push({ k: "medir", de: "O", a: `q${k}` }, { k: "arco", c: "O", hacia: `s${k}` }, { k: "marca", p: `s${k}` });
-    lista.push(`s${k}`);
+    ops.push({ k: "medir", de: "O", a: `q${k}` }, { k: "arco", c: "O", hacia: `espS${k}` }, { k: "marca", p: `espS${k}` });
   }
-  lista.push("P");
-  ops.push({ k: "curvaPuntos", pts: lista });
+  // la curva pasa por los puntos hallados y, para que quede suave, por otros intermedios de la misma espiral (ocultos)
+  const fina: string[] = ["O"];
+  for (let i = 1; i <= 8 * 4; i += 1) {
+    const th = (360 * i) / (8 * 4);
+    pts[`_e${i}`] = polar(O, (p * i) / (8 * 4), th);
+    fina.push(i % 4 === 0 ? (i === 32 ? "P" : `espS${i / 4}`) : `_e${i}`);
+  }
+  ops.push({ k: "curvaPuntos", pts: fina });
   return {
     titulo: "Espiral de Arquímedes",
     intro: "Se tiene el paso de la espiral $OP$. Con centro en $O$ y radio $OP$ se traza la circunferencia, dividida en ocho partes iguales; el paso se divide en el mismo número de partes. Los puntos de la espiral están donde se cortan las circunferencias concéntricas con los radios que pasan por las mismas divisiones.",
     pts,
+    // números de las divisiones del paso: centrados sobre su punto, encima del radio; O abajo a la izquierda y P arriba a la derecha
+    rotulos: { O: [-18, 20], P: [8, -9], ...Object.fromEntries([1, 2, 3, 4, 5, 6, 7].map((k) => [`q${k}`, [-4, -11] as [number, number]])) },
     dados: ["O", "P", "q1", "q2", "q3", "q4", "q5", "q6", "q7"],
     datos: [],
     circulos: [{ c: "O", r: p }],
@@ -378,35 +388,47 @@ function espiralArquimedes(): Construccion {
 
 /** §11 (Fig. 12): hélice cilíndrica en proyecciones (ocho divisiones de la base y del paso). */
 function helice(): Construccion {
-  const R = 60;
-  const d = 20;
+  const R = 55;
+  const d = 18;
   const cx = 300;
-  const base = 210;
-  const Op: P = [cx, 300];
+  const base = 195;
+  const Op: P = [cx, 285];
   const pts: Record<string, P> = { _b1: [150, base], _b2: [450, base], _m0: [200, base], _m9: [200, base - 8 * d], O: Op };
   const ops: Op[] = [];
-  const lista: string[] = ["g1"];
+  // rótulos de la base hacia fuera de la circunferencia y de la proyección vertical a la derecha de su punto
+  const rotulos: Record<string, [number, number]> = {};
+  for (let j = 1; j <= 8; j += 1) {
+    const th = rad(180 - 45 * (j - 1));
+    const cx_ = Math.cos(th);
+    rotulos[`helB${j}`] = [Math.round(cx_ * 16) + (cx_ < -0.3 ? -12 : cx_ > 0.3 ? 2 : -5), Math.round(-Math.sin(th) * 16) + 5];
+  }
+  // los puntos que suben hacia la derecha se rotulan debajo a la derecha; los que suben hacia la izquierda, a la derecha
+  for (let j = 2; j <= 8; j += 1) rotulos[`helG${j}`] = j <= 4 ? [8, 17] : j === 5 ? [10, 5] : [10, -6];
+  rotulos.helG1 = [-26, 20];
+  rotulos.helG9 = [-26, -6];
+  const lista: string[] = ["helG1"];
   const ang = (j: number) => 180 - 45 * (j - 1);
-  for (let j = 1; j <= 8; j += 1) pts[`h${j}`] = polar(Op, R, ang(j));
-  pts.g1 = [cx + R * Math.cos(rad(ang(1))), base];
-  pts.g9 = [cx + R * Math.cos(rad(ang(1))), base - 8 * d];
+  for (let j = 1; j <= 8; j += 1) pts[`helB${j}`] = polar(Op, R, ang(j));
+  pts.helG1 = [cx + R * Math.cos(rad(ang(1))), base];
+  pts.helG9 = [cx + R * Math.cos(rad(ang(1))), base - 8 * d];
   for (let j = 2; j <= 8; j += 1) {
     const x = cx + R * Math.cos(rad(ang(j)));
     const y = base - (j - 1) * d;
-    pts[`m${j}`] = [200, y];
-    pts[`g${j}`] = [x, y];
+    pts[`helM${j}`] = [200, y];
+    pts[`helG${j}`] = [x, y];
     pts[`_u${j}`] = [x, y - 14];
     pts[`_c${j}`] = [430, y];
-    ops.push({ k: "perp", recta: ["_b1", "_b2"], punto: `h${j}`, traza: [`h${j}`, `_u${j}`] }, { k: "paralelas", recta: ["_b1", "_b2"], marcas: [`m${j}`], cortes: [`_c${j}`] }, { k: "marca", p: `g${j}` });
-    lista.push(`g${j}`);
+    ops.push({ k: "perp", recta: ["_b1", "_b2"], punto: `helB${j}`, traza: [`helB${j}`, `_u${j}`] }, { k: "paralelas", recta: ["_b1", "_b2"], marcas: [`helM${j}`], cortes: [`_c${j}`] }, { k: "marca", p: `helG${j}` });
+    lista.push(`helG${j}`);
   }
-  lista.push("g9");
+  lista.push("helG9");
   ops.push({ k: "curvaPuntos", pts: lista });
   return {
     titulo: "Hélice cilíndrica en proyecciones",
     intro: "La hélice es la curva que describe un punto que gira alrededor del eje de un cilindro mientras asciende con movimiento uniforme. Se dividen la base y el **paso** $p = 8d$ en el mismo número de partes iguales (ocho); la proyección vertical de cada punto está donde se cortan la vertical por la división de la base y la horizontal por la división del paso.",
     pts,
-    dados: ["g1", "g9", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "m2", "m3", "m4", "m5", "m6", "m7", "m8"],
+    rotulos,
+    dados: ["helG1", "helG9", ...[1, 2, 3, 4, 5, 6, 7, 8].map((j) => `helB${j}`), ...[2, 3, 4, 5, 6, 7, 8].map((j) => `helM${j}`)],
     datos: [],
     circulos: [{ c: "O", r: R }],
     base: [["_b1", "_b2"], ["_m0", "_m9"]],

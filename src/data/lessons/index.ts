@@ -213,6 +213,11 @@ import { circunferenciaPiezasCaballeraDt1Lesson } from "@/data/lessons/dibujo-te
 import { circunferenciaPiezasCaballeraIIDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/15-sistema-perspectiva-caballera/06-circunferencia-piezas-caballera-ii-dt1";
 import { circunferencias2esoLesson } from "@/data/lessons/matematicas-2-eso/09-cuerpos-geometricos/04-circunferencias-2eso";
 import { tangentesRectaCircunferenciaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/01-tangentes-recta-circunferencia-dt1";
+import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/01-ovalo-ovoide-dt1";
+import { ovoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/02-ovoide-dt1";
+import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/03-espirales-evolvente-dt1";
+import { espiralArquimedesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/04-espiral-arquimedes-dt1";
+import { heliceCilindricaDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/05-helice-cilindrica-dt1";
 import { tangentesRectaCircunferenciaIIDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/02-tangentes-recta-circunferencia-ii-dt1";
 import { circunferenciasTangentesDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/03-circunferencias-tangentes-dt1";
 import { circunferenciasTangentesIIDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/08-tangencias/04-circunferencias-tangentes-ii-dt1";
@@ -572,7 +577,6 @@ import { especificacionesTecnicas3esoLesson } from "@/data/lessons/tecnologia-3-
 import { espectrosModeloBohrFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/01-estructura-atomica/02-espectros-modelo-bohr-fb1";
 import { esperanzaVarianzaCcss1Lesson } from "@/data/lessons/matematicas-ccss-1-bachillerato/10-distribuciones/02-esperanza-varianza-ccss1";
 import { espiraMomentoMotorLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/07-magnetismo-motores-electricos/04-espira-momento-motor";
-import { espiralesEvolventeDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/02-espirales-evolvente-dt1";
 import { esquemaEstudio2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/09-representacion-de-funciones/06-esquema-estudio-2bach";
 import { esquemaEstudioCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/05-derivadas/09-esquema-estudio-ccss2";
 import { esquemasPolimetro2esoLesson } from "@/data/lessons/tecnologia-2-eso/05-electricidad/07-esquemas-polimetro-2eso";
@@ -1112,7 +1116,6 @@ import { otrasEcuaciones4esoLesson } from "@/data/lessons/matematicas-4-eso/06-e
 import { otrasEcuaciones4esobLesson } from "@/data/lessons/matematicas-4-eso-b/03-ecuaciones-inecuaciones-y-sistemas/04-otras-ecuaciones-4esob";
 import { otrasIndeterminaciones2bachLesson } from "@/data/lessons/matematicas-2-bachillerato/07-limites-y-continuidad/08-otras-indeterminaciones-2bach";
 import { otrasIndeterminacionesCcss2Lesson } from "@/data/lessons/matematicas-ccss-2-bachillerato/04-limites-y-continuidad/09-otras-indeterminaciones-ccss2";
-import { ovaloOvoideDt1Lesson } from "@/data/lessons/dibujo-tecnico-1-bachillerato/09-curvas-tecnicas/01-ovalo-ovoide-dt1";
 import { oxidacionDegradacionDesgasteLesson } from "@/data/lessons/tecnologia-industrial-2-bachillerato/04-tratamientos-termicos-corrosion/08-oxidacion-degradacion-desgaste";
 import { oxidacionReduccionFb1Lesson } from "@/data/lessons/fisica-1-bachillerato/07-reacciones-quimicas/04-oxidacion-reduccion-fb1";
 import { oxidacionReduccionFq4Lesson } from "@/data/lessons/fisica-4-eso/05-reacciones-quimicas/06-oxidacion-reduccion-fq4";
@@ -2324,7 +2327,6 @@ export const interactiveLessons = {
   "espectros-modelo-bohr-fb1": espectrosModeloBohrFb1Lesson,
   "esperanza-varianza-ccss1": esperanzaVarianzaCcss1Lesson,
   "espira-momento-motor": espiraMomentoMotorLesson,
-  "espirales-evolvente-dt1": espiralesEvolventeDt1Lesson,
   "esquema-estudio-2bach": esquemaEstudio2bachLesson,
   "esquema-estudio-ccss2": esquemaEstudioCcss2Lesson,
   "esquemas-polimetro-2eso": esquemasPolimetro2esoLesson,
@@ -2854,6 +2856,10 @@ export const interactiveLessons = {
   "otras-indeterminaciones-2bach": otrasIndeterminaciones2bachLesson,
   "otras-indeterminaciones-ccss2": otrasIndeterminacionesCcss2Lesson,
   "ovalo-ovoide-dt1": ovaloOvoideDt1Lesson,
+  "ovoide-dt1": ovoideDt1Lesson,
+  "espirales-evolvente-dt1": espiralesEvolventeDt1Lesson,
+  "espiral-arquimedes-dt1": espiralArquimedesDt1Lesson,
+  "helice-cilindrica-dt1": heliceCilindricaDt1Lesson,
   "oxidacion-degradacion-desgaste": oxidacionDegradacionDesgasteLesson,
   "oxidacion-reduccion-fb1": oxidacionReduccionFb1Lesson,
   "oxidacion-reduccion-fq4": oxidacionReduccionFq4Lesson,

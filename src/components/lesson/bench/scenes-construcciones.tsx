@@ -124,14 +124,13 @@ export function usePasoAnim(ms: number[]) {
   return { step, setStep, p, u };
 }
 
-export function Lamina({ scene, block, step, setStep, label, titulo, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo: string; testId: string; children: ReactNode }) {
+export function Lamina({ scene, block, step, setStep, label, testId, children }: { scene: BenchSceneName; block: BenchBlock; step: number; setStep: (n: number) => void; label: string; titulo?: string; testId: string; children: ReactNode }) {
   return (
     <BenchShell scene={scene} notes={block.notes} step={step} setStep={setStep} label={label}>
       <svg viewBox={`0 0 ${MV.w} ${MV.h}`} className={SVG_CLASS} role="group" aria-label={label} data-testid={testId}>
         <BenchDefs />
         <Desk w={MV.w} h={MV.h} sheet={MSHEET} />
         {children}
-        <Txt p={[24, 34]} color={VERDE} size={15}>{titulo}</Txt>
       </svg>
     </BenchShell>
   );
