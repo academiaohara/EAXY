@@ -836,8 +836,11 @@ function rectificarCircunferencia(): Construccion {
   const d = 2 * r;
   const pts: Record<string, P> = { O, c0: [170, 110], c4: [170, 270], xo: [60, 330], x1: [60 + d, 330], x2: [60 + 2 * d, 330], x3: [60 + 3 * d, 330], x4: [60 + 3 * d + d / 7, 330] };
   for (let k = 1; k <= 6; k += 1) pts[`k${k}`] = [170, 110 + (d * k) / 7];
+  // los números de las divisiones van todos a la izquierda de su punto, a su altura, para no confundirlos con A ni con B
+  const rotulos: Record<string, [number, number]> = Object.fromEntries([1, 2, 3, 4, 5, 6].map((k) => [`k${k}`, [-18, 5] as [number, number]]));
   return {
     titulo: "Rectificación de la circunferencia",
+    rotulos,
     intro: "La longitud de la circunferencia es $2\\pi r = \\pi d \\approx \\dfrac{22}{7}\\,d$, es decir, **tres diámetros y una séptima parte**. El diámetro $d$ ya está dividido en siete partes iguales.",
     pts,
     dados: ["c0", "c4", "k1", "k2", "k3", "k4", "k5", "k6", "xo"],

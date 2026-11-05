@@ -72,6 +72,8 @@ export type Construccion = {
   /** Texto del primer paso (los datos del problema). */
   intro: string;
   pts: Record<string, P>;
+  /** Posición del rótulo de algunos puntos respecto al punto (dx, dy), cuando la colocación automática no sirve, por ejemplo en una fila de puntos numerados. */
+  rotulos?: Record<string, [number, number]>;
   /** Puntos visibles desde el principio. */
   dados: string[];
   datos: Dato[];

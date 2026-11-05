@@ -30,8 +30,9 @@ function centroFigura(c: Construccion): Pt {
 function Rotulo({ c, n, color = INK }: { c: Construccion; n: string; color?: string }) {
   const p = pt(c, n);
   const g = centroFigura(c);
-  const dx = p[0] >= g[0] ? 8 : -8 - 7 * etiqueta(n).length;
-  const dy = p[1] > 345 ? -8 : p[1] >= g[1] ? 18 : -9;
+  const fijo = c.rotulos?.[n];
+  const dx = fijo ? fijo[0] : p[0] >= g[0] ? 8 : -8 - 7 * etiqueta(n).length;
+  const dy = fijo ? fijo[1] : p[1] > 345 ? -8 : p[1] >= g[1] ? 18 : -9;
   return (
     <g>
       <Dot p={p} color={color} r={3.2} />
