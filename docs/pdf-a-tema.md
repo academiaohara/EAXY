@@ -9,7 +9,7 @@ Receta usada para las unidades 1–10 de **Tecnología Industrial II** (curso `t
 
 ## 1. Leer el PDF y planificar
 - Leer **todas** las páginas (≤20 por lectura). Anotar secciones, definiciones, fórmulas, ejemplos resueltos, autoevaluación y ejercicios.
-- Una lección por sección o grupo de secciones (10–15 lecciones, cada una con ≥5 pasos). Orden del libro.
+- Una lección por sección o grupo de secciones (10–15 lecciones, cada una corta, de ≥2 pasos; si pasa de unos 12 pasos se divide en partes «I», «II», «III»…). Orden del libro.
 - Por unidad, elegir ~6–8 **animaciones** (procesos, curvas, esquemas que se construyen paso a paso) y ~5–9 **herramientas** (manipulables con sliders donde cambiar valores muestre la idea). Solo donde aporten.
 - No copiar errores del libro (cifras que no cuadran, figuras ilegibles): usar el valor correcto y avisar al usuario en la respuesta final. Omitir ejercicios cuyo enunciado depende de una figura no legible.
 

@@ -82,13 +82,14 @@ for (const lesson of mod.lessons) {
   if (data.slug !== slug) err(`${slug}: el slug interno es ${data.slug}`);
   if (data.title !== lesson.title) warn(`${slug}: el título de la lección ("${data.title}") difiere del del currículo ("${lesson.title}")`);
   if (!data.subtitle) err(`${slug}: sin subtitle`);
-  if (data.steps.length < 5) err(`${slug}: solo ${data.steps.length} pasos (mínimo 5)`);
+  // Mejor una lección corta que se pueda aprender que una larga que se haga bola: basta con 2 pasos.
+  if (data.steps.length < 2) err(`${slug}: solo ${data.steps.length} paso (mínimo 2)`);
   const ids = data.steps.map((s) => s.id);
   if (new Set(ids).size !== ids.length) err(`${slug}: ids de paso repetidos`);
   visuals(data.steps);
   let practice = 0;
   for (const s of data.steps) {
-    if (s.type === "predict" || s.type === "classify") practice += 1;
+    if (s.type === "predict" || s.type === "classify" || s.type === "bench_task") practice += 1;
     if (s.type === "predict" && s.mode !== "numeric") {
       const wrong = (s.choices ?? []).filter((c: any) => c.id !== s.correctChoiceId && !c.incorrectFeedback);
       if (wrong.length) warn(`${slug}/${s.id}: opciones incorrectas sin incorrectFeedback`);
@@ -96,7 +97,8 @@ for (const lesson of mod.lessons) {
     }
     if (!s.help || s.help.length === 0) warn(`${slug}/${s.id}: sin help`);
   }
-  if (practice < 2) warn(`${slug}: pocos ejercicios (${practice})`);
+  // Sin ejercicios no es un fallo: lo que cuenta es que la lección sea corta y se entienda.
+  if (practice === 0) warn(`${slug}: sin ejercicios`);
   const hasVisual = data.steps.some((s) => s.visual || (s.blocks ?? []).some((b: any) => b.kind === "anim" || b.kind === "tool"));
   if (!hasVisual) err(`${slug}: ninguna animación ni herramienta`);
 }
