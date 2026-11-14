@@ -14,8 +14,8 @@ export const curvasNivelInterpretacionDt1Lesson: InteractiveLesson = {
     ...construccionPasos("acotados-perfil"),
     slide("desmonte", "Desmonte y terraplén de un camino", [], diagrama("d13-desmonte"), "visual-top"),
     ...construccionPasos("acotados-perfil-camino"),
-    ...construccionPasos("acotados-explanacion"),
     slide("explanacion", "Explanación de una superficie topográfica", [], diagrama("d13-explanacion"), "visual-top"),
+    ...construccionPasos("acotados-explanacion"),
     slide("dibujo-topografico", "Dibujo topográfico", [], diagrama("d13-simbolos"), "visual-top"),
   ],
 };

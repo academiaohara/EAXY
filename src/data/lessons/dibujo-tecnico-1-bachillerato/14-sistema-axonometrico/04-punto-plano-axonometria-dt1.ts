@@ -14,5 +14,6 @@ export const puntoPlanoAxonometriaDt1Lesson: InteractiveLesson = {
     ...construccionPasos("axo-trazas-recta", "axo-recta-paralela-plano"),
     slide("rectas-particulares", "Rectas paralelas a planos y a ejes", [], diagrama("d14-rectas-particulares"), "visual-top"),
     ...construccionPasos("axo-rectas-paralelas-ejes"),
+    slide("rectas-relativas", "Posiciones relativas de dos rectas", [], diagrama("d14-rectas-relativas"), "visual-top"),
   ],
 };

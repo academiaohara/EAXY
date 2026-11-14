@@ -44,6 +44,10 @@ export type Paso = {
   items: Item[];
   /** Los elementos de este paso solo se ven en él. */
   solo?: boolean;
+  /** Número de pasos que duran los elementos de este paso (lo auxiliar se retira cuando ya no hace falta); sin valor, se quedan hasta el final. */
+  dura?: number;
+  /** Elementos de este paso que se quedan hasta el final aunque el resto (`items`) sea temporal. */
+  base?: Item[];
   /** Dibujo mayor que la hoja: no cuenta para el encuadre y se recorta con el borde del papel (por ejemplo, circunferencias de radio 2a). */
   recorta?: boolean;
 };
@@ -108,7 +112,7 @@ function limites(def: Diagrama): { x0: number; y0: number; x1: number; y1: numbe
   };
   for (const paso of def.pasos) {
     if (paso.recorta) continue;
-    for (const it of paso.items) {
+    for (const it of [...paso.items, ...(paso.base ?? [])]) {
       switch (it.t) {
         case "seg": case "fl": mete(...it.a); mete(...it.b); break;
         case "pt": mete(it.p[0] - 8, it.p[1] - 8); mete(it.p[0] + 8 + (it.n ? 22 : 0), it.p[1] + 8 + (it.n ? 10 : 0)); break;
@@ -143,8 +147,13 @@ export function construirDiagrama(def: Diagrama): AnimBuild {
           <clipPath id={clipId}>
             <rect x={(HOJA.x - tx) / k} y={(HOJA.y - ty) / k} width={HOJA.w / k} height={HOJA.h / k} />
           </clipPath>
+          {def.pasos.map((paso, n) => (paso.base ? (
+            <Fade key={`b${n}`} show={n <= beat}>
+              <g>{paso.base.map((it, i) => <Nodo key={i} it={it} k={k} />)}</g>
+            </Fade>
+          ) : null))}
           {def.pasos.map((paso, n) => (
-            <Fade key={n} show={n <= beat && (!paso.solo || n === beat)}>
+            <Fade key={n} show={n <= beat && (!paso.solo || n === beat) && (paso.dura === undefined || beat < n + paso.dura)}>
               <g clipPath={paso.recorta ? `url(#${clipId})` : undefined}>
                 {paso.items.map((it, i) => <Nodo key={i} it={it} k={k} />)}
               </g>

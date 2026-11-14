@@ -12,8 +12,10 @@ export const planoDiedricoTrazasDt1Lesson: InteractiveLesson = {
     slide("trazas", "Trazas de un plano", [], diagrama("d12-plano-trazas"), "visual-top"),
     slide("definir", "Formas de definir un plano", [], diagrama("d12-definir"), "visual-top"),
     ...construccionPasos("plano-dos-rectas"),
-    slide("proyectantes", "Planos proyectantes", [], diagrama("d12-proyectantes"), "visual-top"),
-    ...construccionPasos("plano-proyectante-horizontal", "plano-proyectante-vertical"),
+    slide("proyectante-horizontal", "Plano proyectante horizontal", [], diagrama("d12-proyectante-h"), "visual-top"),
+    ...construccionPasos("plano-proyectante-horizontal"),
+    slide("proyectante-vertical", "Plano proyectante vertical", [], diagrama("d12-proyectante-v"), "visual-top"),
+    ...construccionPasos("plano-proyectante-vertical"),
     slide("paralelos", "Planos paralelos a los de proyección y de perfil", [], diagrama("d12-planos-paralelos"), "visual-top"),
   ],
 };
