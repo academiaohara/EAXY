@@ -210,6 +210,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `fraccion-operador` | Fracción de una cantidad: el total `a` se divide en `b` partes y se toman `c` (÷ den, × num) | `a`, `b`, `c` |
 | `fraccion-equivalente` | Barra `a`/`b` que se vuelve a partir (×`c`, después ×2): mismo trozo coloreado, fracciones equivalentes | `a`, `b`, `c` |
 | `fraccion-barras-suma` | Suma/resta con barras: con mismo denominador se cuenta; con distinto se corta hasta el m.c.m. y se cuenta (en la resta, lo que se quita va en rojo); el último paso deja solo el resultado en grande | `a`, `b`, `c`, `d` (`a/b` y `c/d`), `op` |
+| `fraccion-suma-pasos` | Suma o resta de dos fracciones escrita paso a paso, como en la libreta: m.c.m. de los denominadores, cada fracción pasada a ese denominador, una sola raya y numeradores operados (y simplificación si procede). Pensada como **solución animada** de un ejercicio (campo `solution` del paso) | `a`, `b`, `c`, `d` (`a/b` y `c/d`), `op` |
 | `fraccion-de-fraccion` | Producto como área: `a/b` del ancho por `c/d` del alto; el solape son `a·c` de `b·d` cuadraditos | `a`, `b`, `c`, `d` |
 | `simplificar-factores` | Se marca cada número (4, 3, 8, 4) y a la vez se muestra su descomposición en primos; luego se sustituye en la fracción (la original queda arriba con un «=»). Factores primos que se quedan en su fracción, viajan a una sola fracción y se tachan por parejas (cada pareja, de un color); con `inv` parte de una división (se da la vuelta a la segunda) | `a`, `b`, `c`, `d`, `inv?` |
 | `fraccion-cabe` | Dividir = cuántas veces cabe: con trozos del m.c.m. basta contar | `a`, `b`, `c`, `d` |
@@ -684,7 +685,7 @@ Una animación es una lista de **pasos** (beats). Cada paso es un estado del lie
 | `dt1-trazado-arco-capaz` | Trazado del arco capaz de 60° sobre un segmento AB | — |
 | `dt1-seccion-aurea` | Construcción de la sección áurea de un segmento AB | — |
 | `dt1-abatimiento-diedrico` | Sistema diédrico: planos de proyección, proyecciones de un punto y abatimiento del PH | — |
-| `dt1-diagrama` | Diagrama de teoría de DT I en la hoja de la mesa de dibujo, con un paso por idea (temas 7 a 15); los datos están en `src/components/lesson/anim/diagramas/` | — |
+| `dt1-diagrama` | Diagrama de teoría de DT I en la hoja de la mesa de dibujo, con un paso por idea (temas 7 a 15); los datos están en `src/components/lesson/anim/diagramas/`. Cada paso añade sus `items` a los anteriores; `solo` los muestra únicamente en ese paso, `dura: n` los retira al cabo de `n` pasos (para lo auxiliar) y `base` son los que se quedan aunque el resto del paso sea temporal. Los del sistema diédrico (`diedrico-espacio.ts`) se escriben con el modelo de `diedrico-modelo.ts`: cada elemento se define en el espacio (x, alejamiento, cota) y de ahí salen la vista en el espacio (`S`) y el dibujo plano (`h`, `v`). **Dibujos claros**: pocos elementos nuevos por paso y cuidado con las rectas cuya dirección coincide con la fuga de la perspectiva (se ven de canto) | — |
 | `dt1-cubo-isometrico` | Cubo en isométrica: ejes a 120°, medidas sobre los ejes y circunferencias convertidas en elipses | — |
 | `dt1-perspectiva-frontal` | Perspectiva cónica frontal de un cubo con un punto de fuga | — |
 | `dt1-vistas-pieza` | Alzado, planta y perfil izquierdo de una pieza en el sistema europeo | — |
@@ -1739,3 +1740,12 @@ Las escenas de construcción con compás describen cada paso como una lista de a
 ### Diapositivas de teoría en Dibujo Técnico: siempre visuales (lienzo a la izquierda, explicación a la derecha)
 
 En DT I no se usan diapositivas de solo texto ni la herramienta apilada («tool» con el lienzo arriba y el texto debajo). Toda idea de teoría va en una escena de la mesa de dibujo (`bench`): la figura se destaca paso a paso a la izquierda y el texto va a la derecha. Si hay controles (deslizadores), van en la columna derecha (`extra` de `BenchShell`, ejemplo `escala-explorador`). Escenas de teoría de los temas 2, 4, 5, 8 y 9 en `bench/scenes-teoria.tsx`; las del tema 3, en `bench/scenes-escalas.tsx`.
+
+## Ejercicio hecho en la hoja: `fraction_work`
+
+Paso de práctica en el que el alumno resuelve `a/b ± c/d` **línea a línea sobre la hoja de libreta**, en vez de elegir una opción: denominador común → fracciones equivalentes → operar numeradores → simplificar (esta última solo si hace falta). Campos: `a`, `b`, `c`, `d`, `op` (`"+"` o `"-"`), más `question`, `hint`, `explanation` y `help` como en cualquier práctica.
+
+- Cada línea se comprueba antes de pasar a la siguiente; si falla, la pista dice qué ha pasado (denominadores sumados, numerador sin multiplicar, signo cambiado, fracción sin simplificar del todo) y el alumno corrige.
+- Como denominador común vale **cualquier múltiplo común**, no solo el m.c.m.; el resto de líneas se adapta al que elija y al final se le dice que con el m.c.m. salen números más pequeños.
+- Tras dos fallos en una línea aparece «Escríbeme esta línea»: la línea queda escrita en naranja y el ejercicio termina como no correcto.
+- Lógica en `src/lib/lesson/fraction-work.ts`, componente en `src/components/lesson/steps/FractionWork.tsx`, tests en `src/tests/unit/lesson/fraction-work.test.tsx`. Lección de referencia: «2. Suma y resta de fracciones» (1.º ESO, tema 8).

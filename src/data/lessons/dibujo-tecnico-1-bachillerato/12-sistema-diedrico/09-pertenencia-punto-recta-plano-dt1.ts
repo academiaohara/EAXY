@@ -9,7 +9,7 @@ export const pertenenciaPuntoRectaPlanoDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
-    slide("recta-plano", "Rectas particulares de un plano", [], diagrama("d12-recta-plano"), "visual-top"),
+    slide("recta-plano", "Recta contenida en un plano", [], diagrama("d12-recta-plano"), "visual-top"),
     ...construccionPasos("recta-en-plano"),
     slide("punto-plano", "Punto contenido en un plano", [], diagrama("d12-punto-plano"), "visual-top"),
     slide("horizontal", "Recta horizontal de un plano", [], diagrama("d12-horizontal-plano"), "visual-top"),

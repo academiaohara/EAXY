@@ -9,7 +9,10 @@ export const puntoPlanoAxonometriaIIIDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[14],
   stage: { theme: "board" },
   steps: [
-    slide("intersecciones", "Trazas por tres puntos, posiciones relativas e intersecciones", [], diagrama("d14-intersecciones"), "visual-top"),
-    ...construccionPasos("axo-interseccion-planos", "axo-recta-plano"),
+    slide("tres-puntos", "Trazas de un plano dado por tres puntos", [], diagrama("d14-tres-puntos"), "visual-top"),
+    slide("intersecciones", "Intersección de dos planos", [], diagrama("d14-intersecciones"), "visual-top"),
+    ...construccionPasos("axo-interseccion-planos"),
+    slide("recta-plano", "Intersección de una recta con un plano", [], diagrama("d14-recta-plano"), "visual-top"),
+    ...construccionPasos("axo-recta-plano"),
   ],
 };

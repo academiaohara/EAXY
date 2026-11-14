@@ -10,7 +10,9 @@ export const distanciasFigurasPlanasCaballeraIIDt1Lesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     slide("figuras", "Perspectiva de figuras planas en planos del sistema", [], diagrama("d15-figuras"), "visual-top"),
-    ...construccionPasos("cab-triangulo-xoy", "cab-seis-lados-xoy", "cab-cinco-lados-xoy"),
+    ...construccionPasos("cab-triangulo-xoy"),
+    slide("hexagonos", "Un hexágono en cada plano del sistema", [], diagrama("d15-hexagonos"), "visual-top"),
+    ...construccionPasos("cab-seis-lados-xoy", "cab-cinco-lados-xoy"),
     slide("curvas", "Perspectiva de una curva situada en un plano", [], diagrama("d15-curvas"), "visual-top"),
     ...construccionPasos("cab-curva-xoy"),
   ],

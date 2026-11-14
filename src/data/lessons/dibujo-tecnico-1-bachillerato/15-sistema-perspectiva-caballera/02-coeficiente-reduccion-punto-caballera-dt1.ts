@@ -10,6 +10,7 @@ export const coeficienteReduccionPuntoCaballeraDt1Lesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     slide("coeficiente", "Coeficiente de reducción", [], diagrama("d15-coeficiente"), "visual-top"),
+    slide("mu-cubos", "Un cubo con μ = 1 y con μ = 0,5", [], diagrama("d15-mu-cubos"), "visual-top"),
     ...construccionPasos("cab-reduccion"),
     slide("punto-caballera", "Representación del punto", [], diagrama("d15-punto-cab"), "visual-top"),
     ...construccionPasos("cab-punto"),

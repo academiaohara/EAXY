@@ -9,7 +9,7 @@ export const rectasPerfilTerceraProyeccionDt1Lesson: InteractiveLesson = {
   subtitle: DT1_SUBTITLES[12],
   stage: { theme: "board" },
   steps: [
-    slide("perfil", "Rectas de perfil", [], diagrama("d12-perfil"), "visual-top"),
+    slide("perfil", "Rectas de perfil y planos bisectores", [], diagrama("d12-perfil-bisectores"), "visual-top"),
     ...construccionPasos("perfil-por-trazas"),
     slide("tercera", "Tercera proyección de una recta de perfil", [], diagrama("d12-tercera"), "visual-top"),
     ...construccionPasos("tercera-proyeccion"),

@@ -14,8 +14,7 @@ export const rectaDiedricoTrazasDt1Lesson: InteractiveLesson = {
     slide("trazas", "Trazas de una recta", [], diagrama("d12-trazas"), "visual-top"),
     ...construccionPasos("recta-trazas"),
     slide("vistas", "Partes vistas y ocultas", [], diagrama("d12-vistas"), "visual-top"),
-    slide("cortan", "Rectas que se cortan y punto de una recta", [], diagrama("d12-cortan"), "visual-top"),
+    slide("cortan", "Rectas que se cortan y rectas que se cruzan", [], diagrama("d12-cortan"), "visual-top"),
     ...construccionPasos("rectas-se-cortan"),
-    slide("de-punta", "Rectas perpendiculares a los planos de proyección", [], diagrama("d12-perpendiculares"), "visual-top"),
   ],
 };

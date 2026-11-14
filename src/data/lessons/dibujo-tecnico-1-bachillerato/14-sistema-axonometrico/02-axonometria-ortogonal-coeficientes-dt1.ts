@@ -12,7 +12,6 @@ export const axonometriaOrtogonalCoeficientesDt1Lesson: InteractiveLesson = {
     slide("isometrico", "Sistema axonométrico isométrico", [], diagrama("d14-isometrico"), "visual-top"),
     slide("escala", "Escala isométrica", [], diagrama("d14-escala"), "visual-top"),
     ...construccionPasos("axo-escala-isometrica"),
-    slide("construccion-escala", "Cómo se obtiene la escala sobre los ejes", [], diagrama("d14-escala"), "visual-top"),
     slide("sin-reducir", "Perspectivas sin reducir", [], diagrama("d14-sin-reducir"), "visual-top"),
   ],
 };

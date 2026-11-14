@@ -11,7 +11,9 @@ export const pertenenciaPuntoRectaPlanoIIDt1Lesson: InteractiveLesson = {
   steps: [
     slide("frontal", "Recta frontal de un plano", [], diagrama("d12-frontal-plano"), "visual-top"),
     ...construccionPasos("frontal-del-plano"),
-    slide("lineas-max", "Líneas de máxima pendiente y de máxima inclinación", [], diagrama("d12-lineas-max"), "visual-top"),
-    ...construccionPasos("plano-lmp", "plano-lmi"),
+    slide("lmp", "Línea de máxima pendiente", [], diagrama("d12-lmp"), "visual-top"),
+    ...construccionPasos("plano-lmp"),
+    slide("lmi", "Línea de máxima inclinación", [], diagrama("d12-lmi"), "visual-top"),
+    ...construccionPasos("plano-lmi"),
   ],
 };

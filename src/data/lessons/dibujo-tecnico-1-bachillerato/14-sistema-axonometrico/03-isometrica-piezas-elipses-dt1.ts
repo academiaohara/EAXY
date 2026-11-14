@@ -10,6 +10,7 @@ export const isometricaPiezasElipsesDt1Lesson: InteractiveLesson = {
   stage: { theme: "board" },
   steps: [
     slide("circunferencia", "La circunferencia se proyecta como elipse", [], diagrama("d14-circunferencia"), "visual-top"),
+    slide("circunferencia-planos", "La circunferencia en los tres planos del triedro", [], diagrama("d14-circunferencia-planos"), "visual-top"),
     slide("puntos", "Puntos auxiliares de la elipse", [], diagrama("d14-puntos"), "visual-top"),
     ...construccionPasos("axo-elipse-puntos"),
     slide("ovalo", "El óvalo de cuatro centros", [], diagrama("d14-ovalo"), "visual-top"),
